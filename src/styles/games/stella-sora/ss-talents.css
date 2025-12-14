@@ -1,0 +1,731 @@
+/* Stella Sora Talents Database Page Styles
+ * Styles for the talents database/index page
+ */
+
+/* Main Talents Container */
+.talents-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Shard Requirements Info Section */
+.shard-requirements-info {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.shard-requirements-info h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.shard-info-desc {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.shard-requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.shard-requirement-card {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  border: 1px solid var(--ss-border);
+}
+
+.shard-requirement-card.rarity-4 {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.shard-requirement-card.rarity-5 {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.shard-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  margin-bottom: var(--ss-spacing-md);
+  padding-bottom: var(--ss-spacing-sm);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.shard-rarity-label {
+  font-size: 1rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+.shard-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-sm);
+}
+
+.shard-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ss-spacing-xs) 0;
+}
+
+.shard-label {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+}
+
+.shard-value {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shard-icon {
+  flex-shrink: 0;
+}
+
+.dupe-info {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  color: var(--ss-accent);
+  margin-left: 4px;
+}
+
+.shard-note {
+  font-size: 0.8125rem;
+  color: var(--ss-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.total-row {
+  border-top: 1px solid var(--ss-border);
+  padding-top: var(--ss-spacing-sm);
+  margin-top: var(--ss-spacing-xs);
+}
+
+.total-row .shard-value {
+  color: var(--ss-accent);
+}
+
+/* Filter Section */
+.talents-filters {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.talents-filters h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  min-width: 150px;
+}
+
+.filter-group select {
+  cursor: pointer;
+}
+
+.filter-group input[type="text"] {
+  min-width: 200px;
+}
+
+.filter-group input[type="text"]::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Character Section */
+.talent-character-section {
+  margin-bottom: 3rem;
+}
+
+.talent-character-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-lg);
+  padding-bottom: var(--ss-spacing-sm);
+  border-bottom: 2px solid var(--ss-accent);
+}
+
+.character-icon-container {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.character-icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.talent-character-info {
+  flex: 1;
+}
+
+.talent-character-name {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.talent-character-meta {
+  display: flex;
+  gap: var(--ss-spacing-sm);
+  margin-top: var(--ss-spacing-xs);
+}
+
+.talent-meta-badge {
+  padding: 2px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+}
+
+/* Talents Grid */
+.talents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* Talent Card */
+.talent-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Talent Card Header */
+.talent-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.talent-icon-container {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--ss-radius-md);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ss-bg-tertiary);
+  overflow: hidden;
+}
+
+.talent-icon-container img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.talent-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.talent-card-number {
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.talent-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+/* Main Effect Section */
+.talent-main-effect {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.talent-effect-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.talent-effect-description {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+}
+
+/* Talent description styling for parsed HTML */
+.talent-effect-description .talent-highlight {
+  font-weight: var(--ss-font-semibold);
+}
+
+.talent-effect-description .talent-skill-ref {
+  color: #60a5fa;
+  font-weight: var(--ss-font-medium);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+.talent-effect-description .inline-marker-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+}
+
+/* Stat Bonuses Section */
+.talent-stat-bonuses {
+  margin-top: auto;
+}
+
+.talent-bonuses-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.talent-bonuses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ss-spacing-xs);
+}
+
+.talent-bonus-item {
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.talent-bonus-name {
+  color: var(--ss-text-secondary);
+}
+
+.talent-bonus-value {
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+/* Stat type colors */
+.talent-bonus-item[data-stat="atk"] .talent-bonus-value {
+  color: #f87171;
+}
+
+.talent-bonus-item[data-stat="hp"] .talent-bonus-value {
+  color: #4ade80;
+}
+
+.talent-bonus-item[data-stat="def"] .talent-bonus-value {
+  color: #60a5fa;
+}
+
+.talent-bonus-item[data-stat="crit"] .talent-bonus-value {
+  color: #fbbf24;
+}
+
+/* Talent Shard Requirements */
+.talent-shard-requirements {
+  margin-top: var(--ss-spacing-md);
+  padding-top: var(--ss-spacing-md);
+  border-top: 1px solid var(--ss-border);
+}
+
+.shard-req-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.shard-req-icon {
+  flex-shrink: 0;
+}
+
+.shard-req-title {
+  font-size: 1rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.shard-req-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.shard-req-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+}
+
+.shard-req-text {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+}
+
+.shard-req-value {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shard-req-dupe {
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-medium);
+  color: var(--ss-accent);
+  margin-left: 2px;
+}
+
+.shard-req-shards {
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-normal);
+  color: var(--ss-text-muted);
+  margin-left: 4px;
+}
+
+/* Summary Stats */
+.talent-summary {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.talent-summary h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.summary-stat {
+  text-align: center;
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+}
+
+.summary-stat-value {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Total Stats Summary per Character */
+.character-total-stats {
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-top: var(--ss-spacing-lg);
+}
+
+.character-total-stats h4 {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.total-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--ss-spacing-sm);
+}
+
+.total-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--ss-spacing-sm);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-sm);
+}
+
+.total-stat-label {
+  font-size: 0.625rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.total-stat-value {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .talents-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .talents-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-md);
+  }
+
+  .talents-filters,
+  .talent-summary,
+  .shard-requirements-info {
+    padding: var(--ss-spacing-md);
+  }
+
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-group select,
+  .filter-group input[type="text"] {
+    width: 100%;
+  }
+
+  .talents-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .talent-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .talent-character-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .talent-character-name {
+    font-size: 1.25rem;
+  }
+
+  .talent-bonuses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shard-requirements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shard-req-header {
+    gap: var(--ss-spacing-xs);
+  }
+
+  .shard-req-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .shard-req-title {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .talents-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .talents-index {
+    padding: var(--ss-spacing-md) var(--ss-spacing-sm);
+  }
+
+  .talents-filters,
+  .talent-summary,
+  .shard-requirements-info {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .talent-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .talent-icon-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .talent-icon-container img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .talent-card-name {
+    font-size: 1rem;
+  }
+
+  .talent-effect-description {
+    font-size: 0.8125rem;
+  }
+
+  .total-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Shard requirements mobile */
+  .shard-requirement-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .shard-card-header {
+    gap: var(--ss-spacing-xs);
+  }
+
+  .shard-rarity-label {
+    font-size: 0.875rem;
+  }
+
+  .shard-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .shard-label,
+  .shard-value {
+    font-size: 0.8125rem;
+  }
+
+  .shard-req-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .shard-req-text,
+  .shard-req-value {
+    font-size: 0.75rem;
+  }
+
+  .shard-req-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .shard-req-title {
+    font-size: 0.8125rem;
+  }
+
+  .shard-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}

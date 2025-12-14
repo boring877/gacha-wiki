@@ -1,0 +1,155 @@
+---
+// Stella Sora Potential All Image Component
+// Loads potential images from potentials-all folder using icon identifiers
+import { Image } from 'astro:assets';
+
+// Import potential background images for rarity display
+import bgRarity4 from '../../assets/images/games/stella-sora/potentials/bg-4.png';
+import bgRarity5 from '../../assets/images/games/stella-sora/potentials/bg-5.png';
+import bgRarity6 from '../../assets/images/games/stella-sora/potentials/bg-6.png';
+import bgRarity7 from '../../assets/images/games/stella-sora/potentials/bg-7.png';
+import bgRarity8 from '../../assets/images/games/stella-sora/potentials/bg-8.png';
+import bgRarity9 from '../../assets/images/games/stella-sora/potentials/bg-9.png';
+
+// Background selection based on stype and rarity:
+// stype 42 (Core) = Pink (bg-6)
+// stype 41 (Normal) + rarity 1 = Blue/Purple (bg-5)
+// stype 41 (Normal) + rarity 2 = Yellow/Orange (bg-4)
+function getBgImage(stype: number, rarity: number): ImageMetadata {
+  if (stype === 42) {
+    return bgRarity6; // Pink for Core
+  }
+  if (rarity === 1) {
+    return bgRarity5; // Blue/Purple for Normal rarity 1
+  }
+  return bgRarity4; // Yellow/Orange for Normal rarity 2
+}
+
+// Legacy bgMap for backwards compatibility
+const bgMap: Record<number, ImageMetadata> = {
+  1: bgRarity5,
+  2: bgRarity4,
+  3: bgRarity7,
+  4: bgRarity4,
+  5: bgRarity8,
+  6: bgRarity6,
+};
+
+// Dynamic glob import for all potential images
+const potentialImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/stella-sora/potentials-all/*.png',
+  { eager: true }
+);
+
+// Build lookup map: icon name -> ImageMetadata
+const imageMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(potentialImages)) {
+  const match = path.match(/potentials-all\/(.+)\.png$/);
+  if (match) {
+    imageMap[match[1]] = module.default;
+  }
+}
+
+export interface Props {
+  icon: string;
+  rarity?: number;
+  stype?: number;
+  alt?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  icon,
+  rarity = 1,
+  stype = 41,
+  alt,
+  width = 80,
+  height = 80,
+  loading = 'lazy',
+  class: className,
+} = Astro.props;
+
+// Use stype-based selection if stype is provided, otherwise fall back to legacy bgMap
+const bgSrc = stype ? getBgImage(stype, rarity) : (bgMap[rarity] || bgMap[1]);
+const imageSrc = imageMap[icon];
+const imageAlt = alt || `Potential ${icon}`;
+---
+
+<div class={`potential-all-image-wrapper ${className || ''}`}>
+  <Image
+    src={bgSrc}
+    alt=""
+    width={width * 2}
+    height={height * 2}
+    class="potential-bg"
+    loading={loading}
+    format="webp"
+    quality={100}
+  />
+  {imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      width={(width - 16) * 2}
+      height={(height - 16) * 2}
+      loading={loading}
+      class="potential-icon"
+      quality={100}
+      format="webp"
+    />
+  ) : (
+    <div class="potential-placeholder">
+      <span class="placeholder-text">?</span>
+    </div>
+  )}
+</div>
+
+<style>
+  .potential-all-image-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .potential-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .potential-icon {
+    position: relative;
+    z-index: 1;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .potential-placeholder {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .placeholder-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+  }
+</style>

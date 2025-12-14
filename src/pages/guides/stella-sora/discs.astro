@@ -1,90 +1,581 @@
 ---
-// Stella Sora Disc Index Page
-// Lists all available discs with filtering and navigation
-
 import DiscLayout from '../../../layouts/stella-sora/DiscLayout.astro';
-import DiscImage from '../../../components/stella-sora/DiscImage.astro';
-import { getAllDiscs, getElementsByDisc } from '../../../data/stella-sora/discs.js';
+import SSDiscIconImage from '../../../components/stella-sora/SSDiscIconImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import { discDatabase as rawDiscDatabase, uniqueElements, databaseStats } from '../../../data/stella-sora/disc-database.js';
 
-const discs = getAllDiscs();
-const elements = getElementsByDisc();
+// Sort discs by rarity (highest first) - this is the default order readers want
+const discDatabase = [...rawDiscDatabase].sort((a, b) => b.star - a.star);
 
-const title = 'Stella Sora Discs Database';
-const description =
-  'Complete list of all discs in Stella Sora with detailed stats, skills, and character information.';
-const gameTitle = 'Discs Database';
+// Get unique elements (excluding None for filter display order)
+const elements = uniqueElements.filter(e => e !== 'None').sort();
+if (uniqueElements.includes('None')) {
+  elements.push('None');
+}
+
+// Page metadata
+const title = `Stella Sora Disc Database - All ${discDatabase.length} Discs`;
+const description = `Complete Stella Sora disc database with ${discDatabase.length} discs. Browse all discs with stats, skills, upgrades, and more. Filter by element, rarity, and tags.`;
+const gameTitle = 'Disc Database';
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://gachawiki.info'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Guides',
+      item: 'https://gachawiki.info/guides/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Stella Sora',
+      item: 'https://gachawiki.info/guides/stella-sora/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Disc Database',
+      item: 'https://gachawiki.info/guides/stella-sora/discs/'
+    }
+  ]
+};
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Disc Database',
+  description: description,
+  numberOfItems: discDatabase.length,
+  itemListElement: discDatabase.slice(0, 50).map((disc, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `https://gachawiki.info/guides/stella-sora/discs/${disc.slug}/`,
+    item: {
+      '@type': 'Thing',
+      name: disc.name,
+      description: `${disc.star}-Star ${disc.element !== 'None' ? disc.element + ' ' : ''}Disc`
+    }
+  }))
+};
+
+// FAQ Schema for common questions
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many discs are in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are currently ${discDatabase.length} discs in Stella Sora, including ${databaseStats.byRarity['5'] || 0} 5-star discs, ${databaseStats.byRarity['4'] || 0} 4-star discs, and ${databaseStats.byRarity['3'] || 0} 3-star discs.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What elements are available for discs in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Stella Sora discs come in ${uniqueElements.length} elements: ${uniqueElements.filter(e => e !== 'None').join(', ')}, plus element-neutral discs.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the max level for discs in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The maximum level for discs depends on rarity: 5-star discs can reach level 99, 4-star discs max at level 78, and 3-star discs max at level 57.'
+      }
+    }
+  ]
+};
 ---
 
 <DiscLayout title={title} description={description} gameTitle={gameTitle}>
-  <div class="discs-index">
-    <!-- Discs Grid -->
-    <div class="discs-grid">
-      {
-        discs.map(disc => (
-          <a href={`/guides/stella-sora/discs/${disc.slug}`} class="disc-card-link">
-            <div class="disc-card">
-              {/* Disc Header with Image and Basic Info */}
-              <div class="disc-card-header">
-                <DiscImage
-                  imageName={disc.image}
-                  alt={disc.name}
-                  width={256}
-                  height={256}
-                  class="disc-card-image"
-                />
-                <div class="disc-card-info">
-                  <h2 class="disc-card-name">{disc.name}</h2>
-                  <p class="disc-card-character">{disc.character}</p>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <div class="disc-database">
+    <!-- Summary Section -->
+    <section class="disc-db-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{databaseStats.total}</div>
+          <div class="summary-stat-label">Total Discs</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{databaseStats.byRarity[5]}</div>
+          <div class="summary-stat-label">5-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{databaseStats.byRarity[4]}</div>
+          <div class="summary-stat-label">4-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{databaseStats.byRarity[3]}</div>
+          <div class="summary-stat-label">3-Star</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="disc-db-filters">
+      <h2>Filters</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search disc name..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter">
+            <option value="">All Rarities</option>
+            <option value="5">5-Star</option>
+            <option value="4">4-Star</option>
+            <option value="3">3-Star</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="">All Elements</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="filter-group sort-group">
+          <label>Sort By</label>
+          <div class="sort-buttons" id="sort-buttons">
+            <button class="sort-btn active" data-field="rarity" data-state="desc">Rarity ↓</button>
+            <button class="sort-btn" data-field="atk" data-state="none">ATK</button>
+            <button class="sort-btn" data-field="hp" data-state="none">HP</button>
+            <button class="sort-btn" data-field="element" data-state="none">Element%</button>
+            <button class="sort-btn" data-field="ultimate" data-state="none">Ultimate%</button>
+            <button class="sort-btn" data-field="skill" data-state="none">Skill%</button>
+          </div>
+        </div>
+
+        <div class="filter-group filter-actions">
+          <button id="clear-filters" class="clear-btn">Clear Filters & Sort</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+      Showing <span id="visible-count">{discDatabase.length}</span> of {discDatabase.length} discs
+    </div>
+
+    <!-- Disc Table (Desktop) -->
+    <div class="disc-table-container">
+      <table class="disc-table" id="disc-table">
+        <thead>
+          <tr>
+            <th class="col-icon">Icon</th>
+            <th class="col-name">Name</th>
+            <th class="col-rarity">Rarity</th>
+            <th class="col-element">Element</th>
+            <th class="col-tags">Tags</th>
+            <th class="col-atk">ATK (Lv.90)</th>
+            <th class="col-hp">HP (Lv.90)</th>
+            <th class="col-element-dmg">Element%</th>
+            <th class="col-ultimate-dmg">Ultimate%</th>
+            <th class="col-skill-dmg">Skill%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {discDatabase.map(disc => {
+            // Get max level stats (level 90 is index 89, but some discs may have fewer)
+            const maxLevelStats = disc.stats && disc.stats.length > 0 ? disc.stats[disc.stats.length - 1] : [];
+            const atkStat = maxLevelStats.find(s => s.id === 'atk');
+            const hpStat = maxLevelStats.find(s => s.id === 'hp');
+            const elementStat = maxLevelStats.find(s => s.id && s.id.includes('Damage') && !s.id.includes('ultimate') && !s.id.includes('skill'));
+            const ultimateStat = maxLevelStats.find(s => s.id === 'ultimateDamage');
+            const skillStat = maxLevelStats.find(s => s.id === 'skillDamage');
+
+            return (
+              <tr
+                class="disc-row"
+                data-slug={disc.slug}
+                data-name={disc.name.toLowerCase()}
+                data-rarity={disc.star}
+                data-element={disc.element}
+                data-tags={disc.tag.join(',')}
+                data-atk={atkStat ? atkStat.value : 0}
+                data-hp={hpStat ? hpStat.value : 0}
+                data-element-dmg={elementStat ? elementStat.value : 0}
+                data-ultimate-dmg={ultimateStat ? ultimateStat.value : 0}
+                data-skill-dmg={skillStat ? skillStat.value : 0}
+              >
+                <td class="col-icon">
+                  <a href={`/guides/stella-sora/discs/${disc.slug}`} class="disc-link">
+                    <SSDiscIconImage discSlug={disc.slug} alt={disc.name} width={64} height={64} />
+                  </a>
+                </td>
+                <td class="col-name">
+                  <a href={`/guides/stella-sora/discs/${disc.slug}`} class="disc-name-link">
+                    {disc.name}
+                  </a>
+                </td>
+                <td class="col-rarity">
+                  <SSRarityImage rarity={disc.star} alt={`${disc.star}-Star`} width={disc.star * 18} height={18} />
+                </td>
+                <td class="col-element">
+                  <div class="element-display">
+                    <SSElementImage elementName={disc.element} alt={disc.element} width={24} height={24} />
+                    <span class="element-name">{disc.element}</span>
+                  </div>
+                </td>
+                <td class="col-tags">
+                  <div class="tag-list">
+                    {disc.tag.slice(0, 3).map(tag => (
+                      <span class="tag-badge">{tag}</span>
+                    ))}
+                  </div>
+                </td>
+                <td class="col-atk">
+                  <span class="stat-value">{atkStat ? atkStat.value : '-'}</span>
+                </td>
+                <td class="col-hp">
+                  <span class="stat-value">{hpStat ? hpStat.value : '-'}</span>
+                </td>
+                <td class="col-element-dmg">
+                  <span class="stat-value">{elementStat ? `${elementStat.value}%` : '-'}</span>
+                </td>
+                <td class="col-ultimate-dmg">
+                  <span class="stat-value">{ultimateStat ? `${ultimateStat.value}%` : '-'}</span>
+                </td>
+                <td class="col-skill-dmg">
+                  <span class="stat-value">{skillStat ? `${skillStat.value}%` : '-'}</span>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Disc Cards (Mobile) -->
+    <div class="disc-cards-mobile" id="disc-cards-mobile">
+      {discDatabase.map(disc => {
+        const maxLevelStats = disc.stats && disc.stats.length > 0 ? disc.stats[disc.stats.length - 1] : [];
+        const atkStat = maxLevelStats.find(s => s.id === 'atk');
+        const hpStat = maxLevelStats.find(s => s.id === 'hp');
+        const elementStat = maxLevelStats.find(s => s.id && s.id.includes('Damage') && !s.id.includes('ultimate') && !s.id.includes('skill'));
+        const ultimateStat = maxLevelStats.find(s => s.id === 'ultimateDamage');
+        const skillStat = maxLevelStats.find(s => s.id === 'skillDamage');
+
+        return (
+          <a
+            href={`/guides/stella-sora/discs/${disc.slug}`}
+            class="disc-card-mobile"
+            data-slug={disc.slug}
+            data-name={disc.name.toLowerCase()}
+            data-rarity={disc.star}
+            data-element={disc.element}
+            data-tags={disc.tag.join(',')}
+            data-atk={atkStat ? atkStat.value : 0}
+            data-hp={hpStat ? hpStat.value : 0}
+            data-element-dmg={elementStat ? elementStat.value : 0}
+            data-ultimate-dmg={ultimateStat ? ultimateStat.value : 0}
+            data-skill-dmg={skillStat ? skillStat.value : 0}
+          >
+            <div class="disc-card-icon">
+              <SSDiscIconImage discSlug={disc.slug} alt={disc.name} width={72} height={72} />
+            </div>
+            <div class="disc-card-info">
+              <div class="disc-card-name">{disc.name}</div>
+              <div class="disc-card-meta">
+                <SSRarityImage rarity={disc.star} alt={`${disc.star}-Star`} width={disc.star * 14} height={14} />
+                <div class="element-display-mobile">
+                  <SSElementImage elementName={disc.element} alt={disc.element} width={20} height={20} />
+                  <span class="element-name">{disc.element}</span>
                 </div>
               </div>
-
-              {/* Disc Meta Information */}
-              <div class="disc-card-meta">
-                <span class="disc-badge" data-element={disc.element.toLowerCase()}>
-                  {disc.element}
-                </span>
-                <span class="disc-badge" data-rarity={disc.rarity.toLowerCase()}>
-                  {disc.rarity}
-                </span>
-              </div>
-
-              {/* Disc Tags */}
-              <div class="disc-tags">
-                {disc.tags.map(tag => (
-                  <span class="disc-tag">{tag}</span>
-                ))}
-              </div>
-
-              {/* Disc Description */}
-              <p class="disc-card-description">{disc.description}</p>
-
-              {/* Basic Stats Preview */}
               <div class="disc-card-stats">
-                {Object.entries(disc.stats)
-                  .slice(0, 2)
-                  .map(([key, value]) => {
-                    const statName =
-                      key === 'basicAtk'
-                        ? 'ATK'
-                        : key === 'baseATK'
-                          ? 'ATK'
-                          : key === 'baseHP'
-                            ? 'HP'
-                            : key.includes('Dmg')
-                              ? key.replace('Dmg', ' DMG')
-                              : key.replace(/([A-Z])/g, ' ').trim();
-
-                    return (
-                      <span class="disc-stat">
-                        {statName.toUpperCase()}: {value}
-                      </span>
-                    );
-                  })}
+                <span class="stat-atk">ATK: {atkStat ? atkStat.value : '-'}</span>
+                {hpStat && <span class="stat-hp">HP: {hpStat.value}</span>}
+                {elementStat && <span class="stat-element">Elem: {elementStat.value}%</span>}
+                {ultimateStat && <span class="stat-ultimate">Ult: {ultimateStat.value}%</span>}
+                {skillStat && <span class="stat-skill">Skill: {skillStat.value}%</span>}
               </div>
             </div>
           </a>
-        ))
-      }
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No discs found matching your filters.
     </div>
   </div>
 </DiscLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const sortButtons = document.getElementById('sort-buttons');
+    const clearBtn = document.getElementById('clear-filters');
+    const visibleCount = document.getElementById('visible-count');
+    const noResults = document.getElementById('no-results');
+    const tableBody = document.querySelector('.disc-table tbody');
+    const mobileContainer = document.getElementById('disc-cards-mobile');
+
+    // Track current sort field and direction
+    let currentField = 'rarity';
+    let currentDirection = 'desc';
+
+    // Store original order (already sorted by rarity desc from server)
+    const originalRowOrder = Array.from(document.querySelectorAll('.disc-row'));
+    const originalCardOrder = Array.from(document.querySelectorAll('.disc-card-mobile'));
+
+    const labels: Record<string, string> = {
+      rarity: 'Rarity',
+      atk: 'ATK',
+      hp: 'HP',
+      element: 'Element%',
+      ultimate: 'Ultimate%',
+      skill: 'Skill%'
+    };
+
+    function getRows() {
+      return Array.from(document.querySelectorAll('.disc-row'));
+    }
+
+    function getCards() {
+      return Array.from(document.querySelectorAll('.disc-card-mobile'));
+    }
+
+    function sortItems(items: Element[], field: string, direction: string) {
+      if (direction === 'none') return [...items];
+
+      const isDesc = direction === 'desc';
+
+      return [...items].sort((a, b) => {
+        let aVal = 0;
+        let bVal = 0;
+
+        if (field === 'atk') {
+          aVal = parseFloat(a.getAttribute('data-atk') || '0');
+          bVal = parseFloat(b.getAttribute('data-atk') || '0');
+        } else if (field === 'rarity') {
+          aVal = parseInt(a.getAttribute('data-rarity') || '0');
+          bVal = parseInt(b.getAttribute('data-rarity') || '0');
+        } else if (field === 'hp') {
+          aVal = parseFloat(a.getAttribute('data-hp') || '0');
+          bVal = parseFloat(b.getAttribute('data-hp') || '0');
+        } else if (field === 'element') {
+          aVal = parseFloat(a.getAttribute('data-element-dmg') || '0');
+          bVal = parseFloat(b.getAttribute('data-element-dmg') || '0');
+        } else if (field === 'ultimate') {
+          aVal = parseFloat(a.getAttribute('data-ultimate-dmg') || '0');
+          bVal = parseFloat(b.getAttribute('data-ultimate-dmg') || '0');
+        } else if (field === 'skill') {
+          aVal = parseFloat(a.getAttribute('data-skill-dmg') || '0');
+          bVal = parseFloat(b.getAttribute('data-skill-dmg') || '0');
+        }
+
+        return isDesc ? bVal - aVal : aVal - bVal;
+      });
+    }
+
+    function updateButtonLabels() {
+      sortButtons?.querySelectorAll('.sort-btn').forEach(btn => {
+        const field = btn.getAttribute('data-field');
+        const state = btn.getAttribute('data-state');
+        const label = labels[field || ''] || field;
+
+        // Always remove active first, then add if needed
+        btn.classList.remove('active');
+
+        if (state === 'desc') {
+          btn.textContent = `${label} ↓`;
+          btn.classList.add('active');
+        } else if (state === 'asc') {
+          btn.textContent = `${label} ↑`;
+          btn.classList.add('active');
+        } else {
+          btn.textContent = label;
+        }
+      });
+    }
+
+    function sortAndFilter() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const rarityValue = rarityFilter.value;
+      const elementValue = elementFilter.value;
+
+      // Sort table rows
+      const sortedRows = sortItems(getRows(), currentField, currentDirection);
+      sortedRows.forEach(row => tableBody?.appendChild(row));
+
+      // Sort mobile cards
+      const sortedCards = sortItems(getCards(), currentField, currentDirection);
+      sortedCards.forEach(card => mobileContainer?.appendChild(card));
+
+      // Apply filters
+      let visible = 0;
+
+      sortedRows.forEach(row => {
+        const name = row.getAttribute('data-name') || '';
+        const rarity = row.getAttribute('data-rarity') || '';
+        const element = row.getAttribute('data-element') || '';
+
+        const matchesSearch = !searchTerm || name.includes(searchTerm);
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+        const matchesElement = !elementValue || element === elementValue;
+
+        const isVisible = matchesSearch && matchesRarity && matchesElement;
+        (row as HTMLElement).style.display = isVisible ? '' : 'none';
+
+        if (isVisible) visible++;
+      });
+
+      sortedCards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const element = card.getAttribute('data-element') || '';
+
+        const matchesSearch = !searchTerm || name.includes(searchTerm);
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+        const matchesElement = !elementValue || element === elementValue;
+
+        const isVisible = matchesSearch && matchesRarity && matchesElement;
+        (card as HTMLElement).style.display = isVisible ? '' : 'none';
+      });
+
+      // Update count and no results message
+      if (visibleCount) visibleCount.textContent = visible.toString();
+      if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    function toggleSort(btn: HTMLElement) {
+      const field = btn.getAttribute('data-field') || 'rarity';
+      const currentState = btn.getAttribute('data-state');
+
+      // Cycle: none -> desc -> asc -> none
+      let newState: string;
+      if (currentState === 'none') {
+        newState = 'desc';
+      } else if (currentState === 'desc') {
+        newState = 'asc';
+      } else {
+        newState = 'none';
+      }
+
+      // Reset all buttons to 'none' first
+      sortButtons?.querySelectorAll('.sort-btn').forEach(b => {
+        b.setAttribute('data-state', 'none');
+      });
+
+      // If clicking to 'none', fall back to default rarity sort
+      if (newState === 'none') {
+        currentField = 'rarity';
+        currentDirection = 'desc';
+        // Set rarity button back to desc
+        const rarityBtn = sortButtons?.querySelector('.sort-btn[data-field="rarity"]');
+        rarityBtn?.setAttribute('data-state', 'desc');
+      } else {
+        // Set clicked button to new state
+        btn.setAttribute('data-state', newState);
+        currentField = field;
+        currentDirection = newState;
+      }
+
+      updateButtonLabels();
+      sortAndFilter();
+    }
+
+    function clearFilters() {
+      searchInput.value = '';
+      rarityFilter.value = '';
+      elementFilter.value = '';
+
+      // Reset all sort buttons to none, then set rarity to desc
+      sortButtons?.querySelectorAll('.sort-btn').forEach(btn => {
+        const field = btn.getAttribute('data-field');
+        if (field === 'rarity') {
+          btn.setAttribute('data-state', 'desc');
+        } else {
+          btn.setAttribute('data-state', 'none');
+        }
+      });
+
+      // Reset to default rarity descending sort
+      currentField = 'rarity';
+      currentDirection = 'desc';
+      updateButtonLabels();
+
+      // Restore original order (already sorted by rarity desc)
+      originalRowOrder.forEach(row => tableBody?.appendChild(row));
+      originalCardOrder.forEach(card => mobileContainer?.appendChild(card));
+
+      // Apply filters (show all)
+      originalRowOrder.forEach(row => (row as HTMLElement).style.display = '');
+      originalCardOrder.forEach(card => (card as HTMLElement).style.display = '');
+
+      // Update count
+      if (visibleCount) visibleCount.textContent = originalRowOrder.length.toString();
+      if (noResults) noResults.style.display = 'none';
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', sortAndFilter);
+    rarityFilter.addEventListener('change', sortAndFilter);
+    elementFilter.addEventListener('change', sortAndFilter);
+
+    // Sort button clicks
+    sortButtons?.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('sort-btn')) {
+        toggleSort(target);
+      }
+    });
+
+    clearBtn?.addEventListener('click', clearFilters);
+
+    // Make table rows clickable
+    document.querySelector('.disc-table tbody')?.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A') return;
+      const row = target.closest('.disc-row');
+      if (row) {
+        const slug = row.getAttribute('data-slug');
+        if (slug) {
+          window.location.href = `/guides/stella-sora/discs/${slug}`;
+        }
+      }
+    });
+
+    // Initialize button labels and apply initial sort
+    updateButtonLabels();
+    sortAndFilter();
+  });
+</script>

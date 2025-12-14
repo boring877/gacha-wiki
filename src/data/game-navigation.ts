@@ -192,8 +192,33 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/stella-sora/characters/' },
+          { name: 'Skills', href: '/guides/stella-sora/character-skills/' },
+          { name: 'Profiles & VAs', href: '/guides/stella-sora/character-info/' },
+          { name: 'Talents', href: '/guides/stella-sora/talents/' },
+          { name: 'All Potentials', href: '/guides/stella-sora/all-potentials/' },
+          { name: 'Upgrades', href: '/guides/stella-sora/character-upgrades/' },
+          { name: 'Stats', href: '/guides/stella-sora/character-stats/' },
           { name: 'Team Builds', href: '/guides/stella-sora/team-builds/' },
+        ],
+      },
+      {
+        title: 'Equipment',
+        links: [
           { name: 'Discs', href: '/guides/stella-sora/discs/' },
+          { name: 'Disc Skills', href: '/guides/stella-sora/disc-skills/' },
+          { name: 'Disc Stats', href: '/guides/stella-sora/disc-stats/' },
+          { name: 'Disc Upgrades', href: '/guides/stella-sora/disc-upgrades/' },
+          { name: 'Support Notes', href: '/guides/stella-sora/support-notes/' },
+          { name: 'Emblem Stats', href: '/guides/stella-sora/emblem-stats/' },
+          { name: 'Materials', href: '/guides/stella-sora/materials-database/' },
+        ],
+      },
+      {
+        title: 'Dating',
+        links: [
+          { name: 'Dating Events', href: '/guides/stella-sora/dating/' },
+          { name: 'Gifts', href: '/guides/stella-sora/gifts/' },
+          { name: 'Character Gifts', href: '/guides/stella-sora/character-gifts/' },
         ],
       },
       {
@@ -205,20 +230,12 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         ],
       },
       {
-        title: 'Emblems',
-        links: [{ name: 'Emblem Stats', href: '/guides/stella-sora/emblem-stats/' }],
-      },
-      {
-        title: 'Ascension',
-        links: [{ name: 'Q&A', href: '/guides/stella-sora/ascension-qa/' }],
-      },
-      {
-        title: 'Game Resources',
+        title: 'Resources',
         links: [
+          { name: 'Ascension Q&A', href: '/guides/stella-sora/ascension-qa/' },
           { name: 'Exclusive Items', href: '/guides/stella-sora/exclusive-items/' },
           { name: 'Clock', href: '/clock/stella-sora/' },
           { name: 'Redeem Codes', href: '/guides/stella-sora/redeem-codes/' },
-          { name: 'Official Website', href: 'https://stellasora.global/' },
         ],
       },
     ],

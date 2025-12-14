@@ -1,0 +1,39 @@
+---
+// Stella Sora Character Stat Image Component
+// For character-specific images like q.png (stats portrait with transparency)
+import { Image } from 'astro:assets';
+
+// Import character stat images (q.png = stats portrait)
+import amberStatImage from '../../assets/images/games/stella-sora/characters/amber/q.png';
+
+// Centralized character stat image mapping
+const characterStatImageMap: Record<string, ImageMetadata> = {
+  amber: amberStatImage,
+};
+
+export interface Props {
+  characterSlug: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { characterSlug, alt, class: className = '', width = 400, height = 400 } = Astro.props;
+
+// Get the imported image object from the map
+const imageSrc = characterStatImageMap[characterSlug.toLowerCase()];
+---
+
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt={alt || `${characterSlug} stats portrait`}
+    width={width}
+    height={height}
+    class={`${className} character-stat-img`}
+    loading="lazy"
+    format="png"
+    quality={95}
+  />
+)}

@@ -1,0 +1,324 @@
+---
+import SupportNotesLayout from '../../../layouts/stella-sora/SupportNotesLayout.astro';
+import SSDiscIconImage from '../../../components/stella-sora/SSDiscIconImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import SSNotesImage from '../../../components/stella-sora/SSNotesImage.astro';
+import { discSupportNotes, uniqueMaterials } from '../../../data/stella-sora/support-notes.js';
+
+// Count discs by rarity
+const rarityCount = {
+  3: discSupportNotes.filter(d => d.star === 3).length,
+  4: discSupportNotes.filter(d => d.star === 4).length,
+  5: discSupportNotes.filter(d => d.star === 5).length,
+};
+
+// Get unique elements
+const elements = [...new Set(discSupportNotes.map(d => d.element))].filter(e => e !== 'None').sort();
+
+// Helper to convert material name to image name
+function getMaterialImageName(materialName) {
+  // Convert "Melody of Luck" to "Melody of Luck" (keeping as-is for image lookup)
+  return materialName;
+}
+
+// Stage to Disc Level mapping
+// Stage 0 = Lv.1, Stage 1 = Lv.10, Stage 2 = Lv.20, etc.
+const stageLevelMap = [1, 10, 20, 30, 40, 50, 60, 70, 80];
+function getDiscLevelForStage(stageIndex) {
+  return stageLevelMap[stageIndex] || (stageIndex * 10);
+}
+
+// Page metadata with SEO optimization
+const title = `Stella Sora Disc Support Notes Database - All ${discSupportNotes.length} Discs Melody Notes Guide`;
+const description = `Complete Stella Sora disc support notes database. Browse ${discSupportNotes.length} discs and find the best Melody notes (Luck, Lux, Skill, Ultimate, etc.) for your build. Filter by element, rarity, and note type.`;
+const gameTitle = 'Disc Support Notes';
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Disc Support Notes Database',
+  description: description,
+  numberOfItems: discSupportNotes.length,
+  itemListElement: discSupportNotes.slice(0, 50).map((disc, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: disc.name,
+      description: `${disc.star}-Star ${disc.element !== 'None' ? disc.element + ' ' : ''}Disc Support Notes`
+    }
+  }))
+};
+
+// FAQ structured data
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What are support notes in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Support notes are Melody bonuses that support discs provide to enhance your main disc build in Stella Sora. Each support disc gives specific Melody notes based on its level.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do support note levels work in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Support discs provide different Melody notes based on their level. The notes change at disc levels 1, 10, 20, 30, 40, 50, 60, 70, and 80, with higher levels providing more notes.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What types of Melody notes are there in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are ${uniqueMaterials.length} types of Melody notes: ${uniqueMaterials.join(', ')}. Each disc provides different combinations of these notes.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I find discs with specific Melody notes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Use the filter checkboxes on this page to select the Melody notes you need. You can select multiple notes to find discs that provide all of them.'
+      }
+    }
+  ]
+};
+---
+
+<SupportNotesLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+  <div class="support-notes-index">
+    <!-- Summary Section -->
+    <section class="support-notes-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discSupportNotes.length}</div>
+          <div class="summary-stat-label">Total Discs</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[5]}</div>
+          <div class="summary-stat-label">5-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[4]}</div>
+          <div class="summary-stat-label">4-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[3]}</div>
+          <div class="summary-stat-label">3-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{uniqueMaterials.length}</div>
+          <div class="summary-stat-label">Material Types</div>
+        </div>
+      </div>
+      <div class="support-info-note">
+        <strong>Support Notes:</strong> Support discs provide Melody notes to enhance your main disc build. Notes are based on the support disc level (Lv. 1, 10, 20, 30, 40, 50, 60, 70, 80).
+      </div>
+    </section>
+
+    <!-- Materials Legend -->
+    <section class="materials-legend">
+      <h2>Materials Reference</h2>
+      <div class="materials-legend-grid">
+        {uniqueMaterials.map(material => (
+          <div class="material-legend-item">
+            <SSNotesImage imageName={getMaterialImageName(material)} alt={material} width={40} height={40} />
+            <span class="material-legend-name">{material}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="support-notes-filters">
+      <h2>Filters</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name..." />
+        </div>
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter">
+            <option value="all">All Rarities</option>
+            <option value="5">5-Star</option>
+            <option value="4">4-Star</option>
+            <option value="3">3-Star</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="all">All Elements</option>
+            <option value="None">None</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group filter-group-wide">
+          <label>Filter by Notes</label>
+          <div class="material-checkboxes" id="material-checkboxes">
+            {uniqueMaterials.map(material => (
+              <label class="material-checkbox">
+                <input type="checkbox" value={material.toLowerCase()} />
+                <SSNotesImage imageName={getMaterialImageName(material)} alt={material} width={24} height={24} />
+                <span>{material.replace('Melody of ', '')}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Notes Grid -->
+    <div class="support-notes-grid" id="support-grid">
+      {discSupportNotes.map((disc) => {
+        // Get all unique material names used by this disc
+        const materialNames = [...new Set(disc.supportNote.flatMap(level => level.map(mat => mat.name)))];
+
+        return (
+          <article
+            class={`support-notes-card rarity-${disc.star}`}
+            data-name={disc.name.toLowerCase()}
+            data-rarity={disc.star}
+            data-element={disc.element}
+            data-materials={materialNames.join(',').toLowerCase()}
+            data-slug={disc.slug}
+          >
+            <div class="support-card-header">
+              <div class="support-icon-container">
+                <SSDiscIconImage discSlug={disc.slug} width={72} height={72} alt={disc.name} />
+              </div>
+              <div class="support-card-info">
+                <h3 class="support-card-name">{disc.name}</h3>
+                <div class="support-card-meta">
+                  <SSRarityImage grade={disc.star} width={60} height={15} />
+                  <span class="support-meta-badge element">
+                    <SSElementImage elementName={disc.element} width={20} height={20} />
+                    <span>{disc.element}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes by Disc Level -->
+            <div class="support-levels-section">
+              <div class="support-levels-label">Notes Provided (by Disc Level)</div>
+              <div class="support-levels-grid">
+                {disc.supportNote.map((level, index) => (
+                  <div class="support-level-item">
+                    <div class="support-level-num">Disc Lv. {getDiscLevelForStage(index)}</div>
+                    <div class="support-level-materials">
+                      {level.map(mat => (
+                        <div class="level-material-row">
+                          <SSNotesImage imageName={getMaterialImageName(mat.name)} alt={mat.name} width={18} height={18} />
+                          <span class="level-material-qty">x{mat.quantity}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No discs found matching your filters.
+    </div>
+  </div>
+</SupportNotesLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const materialCheckboxes = document.getElementById('material-checkboxes') as HTMLDivElement;
+    const supportGrid = document.getElementById('support-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    const cards = supportGrid.querySelectorAll('.support-notes-card');
+
+    // Get selected materials from checkboxes
+    function getSelectedMaterials(): string[] {
+      const checkboxes = materialCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
+      return Array.from(checkboxes).map(cb => (cb as HTMLInputElement).value);
+    }
+
+    // Filter discs
+    function filterDiscs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarityValue = rarityFilter.value;
+      const elementValue = elementFilter.value;
+      const selectedMaterials = getSelectedMaterials();
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const element = card.getAttribute('data-element') || '';
+        const materials = card.getAttribute('data-materials') || '';
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRarity = rarityValue === 'all' || rarity === rarityValue;
+        const matchesElement = elementValue === 'all' || element === elementValue;
+
+        // Check if disc has ALL selected materials (AND logic)
+        const matchesMaterials = selectedMaterials.length === 0 ||
+          selectedMaterials.every(mat => materials.includes(mat));
+
+        if (matchesSearch && matchesRarity && matchesElement && matchesMaterials) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Clear all filters
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    function clearFilters() {
+      searchInput.value = '';
+      rarityFilter.value = 'all';
+      elementFilter.value = 'all';
+      // Uncheck all material checkboxes
+      materialCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        (cb as HTMLInputElement).checked = false;
+      });
+      filterDiscs();
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', filterDiscs);
+    rarityFilter.addEventListener('change', filterDiscs);
+    elementFilter.addEventListener('change', filterDiscs);
+    materialCheckboxes.addEventListener('change', filterDiscs);
+    clearBtn.addEventListener('click', clearFilters);
+  });
+</script>

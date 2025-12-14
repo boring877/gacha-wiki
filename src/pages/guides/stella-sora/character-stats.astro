@@ -1,0 +1,424 @@
+---
+import CharacterStatsLayout from '../../../layouts/stella-sora/CharacterStatsLayout.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import { characterStats } from '../../../data/stella-sora/character-stats.js';
+
+// Get all character names sorted alphabetically
+const characters = Object.keys(characterStats).sort();
+const totalCharacters = characters.length;
+const maxLevel = 90;
+
+// Breakthrough levels
+const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
+
+// Page metadata
+const title = `Stella Sora Character Stats - All ${totalCharacters} Character HP & ATK Stats`;
+const description = `Complete Stella Sora character stats database. View HP and ATK stats for all ${totalCharacters} characters at every level from 1 to ${maxLevel} with 8 breakthrough stages.`;
+const gameTitle = 'Character Stats Database';
+
+// Convert level to stats array index (accounting for breakthroughs)
+// Stats array: 90 levels + 8 breakthrough bonuses = 98 entries
+// Breakthroughs happen AT levels 10, 20, 30, 40, 50, 60, 70, 80
+function levelToIndex(level: number): number {
+  const breakthroughsPassed = Math.min(Math.floor(level / 10), 8);
+  return (level - 1) + breakthroughsPassed;
+}
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Character Stats Database',
+  description: description,
+  numberOfItems: totalCharacters,
+  itemListElement: characters.map((char, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Person',
+      name: char.charAt(0).toUpperCase() + char.slice(1),
+      description: `Stella Sora character with HP and ATK stats`
+    }
+  }))
+};
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://gachawiki.com'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Stella Sora',
+      item: 'https://gachawiki.com/guides/stella-sora'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Character Stats',
+      item: 'https://gachawiki.com/guides/stella-sora/character-stats'
+    }
+  ]
+};
+
+// FAQ structured data for SEO
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many characters are in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are currently ${totalCharacters} playable characters in Stella Sora, each with unique HP and ATK stats.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the max level for characters in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Characters in Stella Sora can reach level ${maxLevel} with 8 breakthrough stages at levels 10, 20, 30, 40, 50, 60, 70, and 80.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What are character breakthroughs in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Character breakthroughs are stat boosts that occur at specific levels (10, 20, 30, 40, 50, 60, 70, 80). Each breakthrough provides bonus HP and ATK stats.'
+      }
+    }
+  ]
+};
+---
+
+<CharacterStatsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+
+  <div class="character-stats-index">
+    <!-- Summary Section -->
+    <section class="character-stats-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{maxLevel}</div>
+          <div class="summary-stat-label">Max Level</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">8</div>
+          <div class="summary-stat-label">Breakthroughs</div>
+        </div>
+      </div>
+      <div class="breakthrough-info-note">
+        <strong>Breakthrough Stages:</strong> Characters gain bonus stats at levels 10, 20, 30, 40, 50, 60, 70, and 80.
+      </div>
+    </section>
+
+    <!-- Global Level Control -->
+    <section class="global-level-control">
+      <h2>Filters & Sorting</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="global-level-input">Level</label>
+          <input type="number" id="global-level-input" min="1" max="90" value="90" aria-label="Set level for all characters" />
+        </div>
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name..." aria-label="Search characters by name" />
+        </div>
+        <div class="filter-group">
+          <label for="sort-select">Sort By</label>
+          <select id="sort-select" aria-label="Sort characters by stat">
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="hp-desc">HP (Highest)</option>
+            <option value="hp-asc">HP (Lowest)</option>
+            <option value="atk-desc">ATK (Highest)</option>
+            <option value="atk-asc">ATK (Lowest)</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="apply-all-btn" class="apply-all-btn">Apply Level to All</button>
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Reset All</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Character Stats Grid -->
+    <div class="character-stats-grid" id="character-grid">
+      {characters.map((charName) => {
+        const stats = characterStats[charName];
+        const displayName = charName.charAt(0).toUpperCase() + charName.slice(1);
+        const maxLevelIndex = levelToIndex(90);
+        const maxStats = stats[maxLevelIndex] || stats[stats.length - 1];
+
+        return (
+          <article
+            class="character-stat-card"
+            data-character={charName}
+            data-name={charName.toLowerCase()}
+            data-stats={JSON.stringify(stats)}
+          >
+            <div class="character-card-header">
+              <div class="character-icon-container">
+                <SSCharacterSmallImage
+                  characterName={charName}
+                  alt={displayName}
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="character-card-info">
+                <h3 class="character-card-name">{displayName}</h3>
+                <div class="character-level-input">
+                  <label for={`level-${charName}`}>Lv.</label>
+                  <input
+                    type="number"
+                    class="level-input"
+                    id={`level-${charName}`}
+                    min="1"
+                    max="90"
+                    value="90"
+                    data-character={charName}
+                    aria-label={`Set level for ${displayName}`}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats at current level -->
+            <div class="character-stats-section">
+              <div class="character-stats-label">Stats at <span class="current-level">Lv. 90</span></div>
+              <div class="character-stats-list">
+                <div class="character-stat-row" data-stat="hp">
+                  <span class="character-stat-name">HP</span>
+                  <span class="character-stat-value hp">{maxStats.hp.toLocaleString()}</span>
+                </div>
+                <div class="character-stat-row" data-stat="atk">
+                  <span class="character-stat-name">ATK</span>
+                  <span class="character-stat-value atk">{maxStats.atk.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breakthrough Bonuses -->
+            <div class="character-breakthrough-section">
+              <div class="character-breakthrough-label">Breakthrough Bonuses</div>
+              <div class="character-breakthrough-grid">
+                {breakthroughLevels.map((btLevel) => {
+                  const btIndex = levelToIndex(btLevel);
+                  const prevIndex = btIndex - 1;
+                  const btStats = stats[btIndex];
+                  const prevStats = stats[prevIndex];
+                  const hpBonus = (btStats?.hp || 0) - (prevStats?.hp || 0);
+                  const atkBonus = (btStats?.atk || 0) - (prevStats?.atk || 0);
+                  return (
+                    <div class="character-breakthrough-item">
+                      <div class="character-breakthrough-level">Lv{btLevel}</div>
+                      <div class="character-breakthrough-values">
+                        <span class="breakthrough-stat hp">+{hpBonus}</span>
+                        <span class="breakthrough-stat atk">+{atkBonus}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <!-- Max Stats Section -->
+            <div class="character-max-stats-section">
+              <div class="character-max-stats-label">Max Stats (Lv. 90)</div>
+              <div class="character-stats-list">
+                <div class="character-stat-row">
+                  <span class="character-stat-name">HP</span>
+                  <span class="character-stat-value hp">{maxStats.hp.toLocaleString()}</span>
+                </div>
+                <div class="character-stat-row">
+                  <span class="character-stat-name">ATK</span>
+                  <span class="character-stat-value atk">{maxStats.atk.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No characters found matching your search.
+    </div>
+  </div>
+</CharacterStatsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const globalLevelInput = document.getElementById('global-level-input') as HTMLInputElement;
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+    const applyAllBtn = document.getElementById('apply-all-btn') as HTMLButtonElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const characterGrid = document.getElementById('character-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    let cards = Array.from(characterGrid.querySelectorAll('.character-stat-card'));
+
+    // Convert level (1-90) to stats array index
+    function levelToIndex(level: number): number {
+      const breakthroughsPassed = Math.min(Math.floor(level / 10), 8);
+      return (level - 1) + breakthroughsPassed;
+    }
+
+    // Get current stats for a card
+    function getCardCurrentStats(card: Element): { hp: number; atk: number } {
+      const statsData = JSON.parse(card.getAttribute('data-stats') || '[]');
+      const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+      const level = parseInt(levelInput?.value) || 90;
+      const levelIndex = levelToIndex(level);
+      return statsData[levelIndex] || { hp: 0, atk: 0 };
+    }
+
+    // Update stats for a single card
+    function updateCardStats(card: Element, level: number) {
+      const statsData = JSON.parse(card.getAttribute('data-stats') || '[]');
+      const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+      const currentLevelLabel = card.querySelector('.current-level');
+      const statsList = card.querySelector('.character-stats-section .character-stats-list');
+
+      // Clamp level
+      level = Math.max(1, Math.min(90, level));
+      const levelIndex = levelToIndex(level);
+
+      // Update input
+      if (levelInput) levelInput.value = level.toString();
+
+      // Update label
+      if (currentLevelLabel) currentLevelLabel.textContent = `Lv. ${level}`;
+
+      // Update stats
+      if (statsData[levelIndex] && statsList) {
+        const stats = statsData[levelIndex];
+        const hpEl = statsList.querySelector('[data-stat="hp"] .character-stat-value');
+        const atkEl = statsList.querySelector('[data-stat="atk"] .character-stat-value');
+
+        if (hpEl) hpEl.textContent = stats.hp.toLocaleString();
+        if (atkEl) atkEl.textContent = stats.atk.toLocaleString();
+      }
+    }
+
+    // Apply level to all cards
+    function applyLevelToAll() {
+      const level = parseInt(globalLevelInput.value) || 90;
+      cards.forEach(card => updateCardStats(card, level));
+      sortCards(); // Re-sort after level change
+    }
+
+    // Sort cards
+    function sortCards() {
+      const sortValue = sortSelect.value;
+      const [sortBy, sortOrder] = sortValue.split('-');
+
+      cards.sort((a, b) => {
+        let valueA: number | string;
+        let valueB: number | string;
+
+        if (sortBy === 'name') {
+          valueA = a.getAttribute('data-name') || '';
+          valueB = b.getAttribute('data-name') || '';
+          return sortOrder === 'asc'
+            ? valueA.localeCompare(valueB)
+            : valueB.localeCompare(valueA);
+        } else {
+          const statsA = getCardCurrentStats(a);
+          const statsB = getCardCurrentStats(b);
+          valueA = sortBy === 'hp' ? statsA.hp : statsA.atk;
+          valueB = sortBy === 'hp' ? statsB.hp : statsB.atk;
+          return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+        }
+      });
+
+      // Re-append cards in sorted order
+      cards.forEach(card => characterGrid.appendChild(card));
+    }
+
+    // Filter characters
+    function filterCharacters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const matches = name.includes(searchTerm);
+
+        if (matches) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Reset all
+    function resetAll() {
+      globalLevelInput.value = '90';
+      searchInput.value = '';
+      sortSelect.value = 'name-asc';
+      cards.forEach(card => updateCardStats(card, 90));
+      sortCards();
+      filterCharacters();
+    }
+
+    // Individual level input listeners
+    cards.forEach(card => {
+      const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+      if (levelInput) {
+        levelInput.addEventListener('input', () => {
+          const level = parseInt(levelInput.value) || 1;
+          updateCardStats(card, level);
+        });
+        levelInput.addEventListener('change', () => {
+          let level = parseInt(levelInput.value) || 1;
+          level = Math.max(1, Math.min(90, level));
+          levelInput.value = level.toString();
+          updateCardStats(card, level);
+          sortCards(); // Re-sort when individual level changes
+        });
+      }
+    });
+
+    // Event listeners
+    applyAllBtn.addEventListener('click', applyLevelToAll);
+    clearBtn.addEventListener('click', resetAll);
+    searchInput.addEventListener('input', filterCharacters);
+    sortSelect.addEventListener('change', sortCards);
+    globalLevelInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') applyLevelToAll();
+    });
+
+    // Initial state is already at level 90
+  });
+</script>

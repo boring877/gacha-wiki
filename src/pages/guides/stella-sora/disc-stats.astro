@@ -1,0 +1,495 @@
+---
+import DiscStatsLayout from '../../../layouts/stella-sora/DiscStatsLayout.astro';
+import SSDiscIconImage from '../../../components/stella-sora/SSDiscIconImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import { discStats } from '../../../data/stella-sora/disc-stats.js';
+
+// Count discs by rarity
+const rarityCount = {
+  3: discStats.filter(d => d.star === 3).length,
+  4: discStats.filter(d => d.star === 4).length,
+  5: discStats.filter(d => d.star === 5).length,
+};
+
+// Get unique elements
+const elements = [...new Set(discStats.map(d => d.element))].filter(e => e !== 'None').sort();
+
+// Get unique stat types (excluding atk which all discs have)
+const statTypeLabels: Record<string, string> = {
+  'hp': 'HP',
+  'aquaDamage': 'Aqua DMG',
+  'ignisDamage': 'Ignis DMG',
+  'luxDamage': 'Lux DMG',
+  'terraDamage': 'Terra DMG',
+  'umbraDamage': 'Umbra DMG',
+  'ventusDamage': 'Ventus DMG',
+  'ultimateDamage': 'Ultimate DMG'
+};
+
+// Get main stat type for each disc (first non-atk stat)
+const getMainStatType = (disc: any) => {
+  const stats = disc.stats[0] || [];
+  const mainStat = stats.find((s: any) => s.id !== 'atk');
+  return mainStat?.id || 'hp';
+};
+
+const statTypes = [...new Set(discStats.map(getMainStatType))].sort();
+
+// Page metadata with SEO optimization
+const title = `Stella Sora Disc Stats Database - All ${discStats.length} Disc Equipment Stats`;
+const description = `Complete Stella Sora disc stats database with ${discStats.length} discs. View stats at all levels, dupe bonuses, and compare ${rarityCount[5]} 5-star, ${rarityCount[4]} 4-star, and ${rarityCount[3]} 3-star disc equipment.`;
+const gameTitle = 'Disc Stats Database';
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Disc Stats Database',
+  description: description,
+  numberOfItems: discStats.length,
+  itemListElement: discStats.slice(0, 50).map((disc, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: disc.name,
+      description: `${disc.star}-Star ${disc.element !== 'None' ? disc.element + ' ' : ''}Disc`
+    }
+  }))
+};
+
+// FAQ structured data
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many discs are in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are currently ${discStats.length} discs in Stella Sora: ${rarityCount[5]} 5-star discs, ${rarityCount[4]} 4-star discs, and ${rarityCount[3]} 3-star discs.`
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the max level for discs in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'All discs in Stella Sora can reach level 90 with 8 breakthrough stages at levels 10, 20, 30, 40, 50, 60, 70, and 80.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What are disc dupe bonuses in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Disc dupe bonuses (D1-D5) are additional stat bonuses gained by obtaining duplicate copies of the same disc. Each dupe level provides extra stats.'
+      }
+    }
+  ]
+};
+---
+
+<DiscStatsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+  <div class="disc-stats-index">
+    <!-- Summary Section -->
+    <section class="disc-stats-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discStats.length}</div>
+          <div class="summary-stat-label">Total Discs</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[5]}</div>
+          <div class="summary-stat-label">5-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[4]}</div>
+          <div class="summary-stat-label">4-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{rarityCount[3]}</div>
+          <div class="summary-stat-label">3-Star</div>
+        </div>
+      </div>
+      <div class="dupe-info-note">
+        <strong>Dupe Bonuses:</strong> Obtaining duplicate copies of a disc only increases its <strong>ATK</strong> stat. Each dupe level (D1-D5) provides additional ATK.
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="disc-stats-filters">
+      <h2>Filters</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name..." />
+        </div>
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter">
+            <option value="all">All Rarities</option>
+            <option value="5">5-Star</option>
+            <option value="4">4-Star</option>
+            <option value="3">3-Star</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="all">All Elements</option>
+            <option value="None">None</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="stat-filter">Stat Type</label>
+          <select id="stat-filter">
+            <option value="all">All Stats</option>
+            {statTypes.map(statType => (
+              <option value={statType}>{statTypeLabels[statType] || statType}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="level-input">Level</label>
+          <input type="number" id="level-input" min="1" max="90" value="90" />
+        </div>
+        <div class="filter-group">
+          <label>Dupe Level</label>
+          <div class="dupe-buttons" id="dupe-buttons">
+            <button type="button" class="dupe-btn active" data-dupe="0">D0</button>
+            <button type="button" class="dupe-btn" data-dupe="1">D1</button>
+            <button type="button" class="dupe-btn" data-dupe="2">D2</button>
+            <button type="button" class="dupe-btn" data-dupe="3">D3</button>
+            <button type="button" class="dupe-btn" data-dupe="4">D4</button>
+            <button type="button" class="dupe-btn" data-dupe="5">D5</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disc Stats Grid -->
+    <div class="disc-stats-grid" id="disc-grid">
+      {discStats.map((disc) => {
+        // Get level 90 stats (index 97 = level 90 with 8 breakthroughs)
+        // Formula: (level - 1) + breakthroughs = (90 - 1) + 8 = 97
+        const maxLevelStats = disc.stats[97] || disc.stats[disc.stats.length - 1] || [];
+
+        const mainStatType = getMainStatType(disc);
+
+        return (
+          <article
+            class={`disc-stats-card rarity-${disc.star}`}
+            data-name={disc.name.toLowerCase()}
+            data-rarity={disc.star}
+            data-element={disc.element}
+            data-stat-type={mainStatType}
+            data-slug={disc.slug}
+            data-stats={JSON.stringify(disc.stats)}
+            data-dupe={JSON.stringify(disc.dupe)}
+            data-max-level={disc.stats.length}
+          >
+            <div class="disc-card-header">
+              <div class="disc-icon-container">
+                <SSDiscIconImage discSlug={disc.slug} width={72} height={72} alt={disc.name} />
+              </div>
+              <div class="disc-card-info">
+                <h3 class="disc-card-name">{disc.name}</h3>
+                <div class="disc-card-meta">
+                  <SSRarityImage rarity={disc.star} width={60} height={15} />
+                  {disc.element !== 'None' && (
+                    <span class="disc-meta-badge element">
+                      <SSElementImage elementName={disc.element} width={20} height={20} />
+                      <span>{disc.element}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats at current level -->
+            <div class="disc-stats-section">
+              <div class="disc-stats-label">Stats at <span class="current-level">Lv. 90</span> <span class="current-dupe"></span></div>
+              <div class="disc-stats-list">
+                {maxLevelStats.map((stat: any) => (
+                  <div class="disc-stat-row" data-stat={stat.id}>
+                    <span class="disc-stat-name">{stat.label}</span>
+                    <span class="disc-stat-value">
+                      <span class="base-value">{stat.value}</span><span class="dupe-bonus"></span>{stat.unit || ''}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Breakthrough Bonuses -->
+            {(() => {
+              const breakthroughIndices = [10, 21, 32, 43, 54, 65, 76, 87];
+              const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
+              return (
+                <div class="disc-breakthrough-section">
+                  <div class="disc-breakthrough-label">Breakthrough Bonuses</div>
+                  <div class="disc-breakthrough-grid">
+                    {breakthroughIndices.map((idx, i) => {
+                      const stats = disc.stats[idx];
+                      const prevStats = disc.stats[idx - 1];
+                      const hpBonus = (stats?.find((s: any) => s.id === 'hp')?.value || 0) - (prevStats?.find((s: any) => s.id === 'hp')?.value || 0);
+                      const atkBonus = (stats?.find((s: any) => s.id === 'atk')?.value || 0) - (prevStats?.find((s: any) => s.id === 'atk')?.value || 0);
+                      return (
+                        <div class="disc-breakthrough-item">
+                          <div class="disc-breakthrough-level">Lv{breakthroughLevels[i]}</div>
+                          <div class="disc-breakthrough-values">
+                            <span class="breakthrough-stat hp">+{hpBonus}</span>
+                            <span class="breakthrough-stat atk">+{atkBonus}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
+
+            <!-- Dupe Bonuses (ATK only) -->
+            {disc.dupe && disc.dupe.length > 0 && (
+              <div class="disc-dupe-section">
+                <div class="disc-dupe-label">Dupe Bonuses</div>
+                <div class="disc-dupe-grid">
+                  {disc.dupe.map((dupeLevel: any[], index: number) => (
+                    <div class="disc-dupe-item">
+                      <div class="disc-dupe-level">D{index + 1}</div>
+                      <div class="disc-dupe-value">
+                        <span class="dupe-stat-label">ATK</span>
+                        <span class="dupe-stat-amount">+{dupeLevel[0]?.value || 0}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Full Stats at Max Level + D5 -->
+            {disc.dupe && disc.dupe.length > 0 && (() => {
+              const d5Bonus = disc.dupe[4]?.[0]?.value || 0;
+              const maxAtk = maxLevelStats.find((s: any) => s.id === 'atk');
+              const totalAtk = (maxAtk?.value || 0) + d5Bonus;
+              return (
+                <div class="disc-full-stats-section">
+                  <div class="disc-full-stats-label">Max Stats (Lv. 90 + D5)</div>
+                  <div class="disc-stats-list">
+                    {maxLevelStats.map((stat: any) => {
+                      const isAtk = stat.id === 'atk';
+                      const finalValue = isAtk ? (stat.value + d5Bonus) : stat.value;
+                      return (
+                        <div class="disc-stat-row" data-stat={stat.id}>
+                          <span class="disc-stat-name">{stat.label}</span>
+                          <span class="disc-stat-value">
+                            {finalValue}{stat.unit || ''}
+                            {isAtk && <span class="dupe-bonus-indicator">(+{d5Bonus})</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No discs found matching your filters.
+    </div>
+  </div>
+</DiscStatsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const statFilter = document.getElementById('stat-filter') as HTMLSelectElement;
+    const levelInput = document.getElementById('level-input') as HTMLInputElement;
+    const dupeButtons = document.querySelectorAll('#dupe-buttons .dupe-btn');
+    const discGrid = document.getElementById('disc-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    const cards = discGrid.querySelectorAll('.disc-stats-card');
+
+    // Track current dupe level
+    let currentDupeLevel = 0;
+
+    // Convert level (1-90) to stats array index
+    // Stats array has 98 entries: 90 levels + 8 breakthrough bonuses
+    // Breakthroughs happen AT levels 10, 20, 30, 40, 50, 60, 70, 80
+    // After each breakthrough level, there's an extra entry with the breakthrough stats
+    function levelToIndex(level: number): number {
+      // For levels 1-10: index = level - 1 (0-9)
+      // Breakthrough at 10 is at index 10
+      // For levels 11-20: index = level (11-20)
+      // Breakthrough at 20 is at index 21
+      // Pattern: index = (level - 1) + number of breakthroughs passed
+      const breakthroughsPassed = Math.min(Math.floor(level / 10), 8);
+      return (level - 1) + breakthroughsPassed;
+    }
+
+    // Update level and stats with dupe bonuses
+    function updateStats(clampInput = false) {
+      let level = parseInt(levelInput.value) || 1;
+      const dupeLevel = currentDupeLevel;
+
+      // Clamp level between 1 and 90
+      if (level < 1) level = 1;
+      if (level > 90) level = 90;
+
+      // Only update the input value when explicitly clamping (on blur/change)
+      if (clampInput) {
+        levelInput.value = level.toString();
+      }
+
+      // Update all card stats based on their individual max level
+      cards.forEach((card) => {
+        const statsData = JSON.parse(card.getAttribute('data-stats') || '[]');
+        const dupeData = JSON.parse(card.getAttribute('data-dupe') || '[]');
+        const currentLevelLabel = card.querySelector('.current-level');
+        const currentDupeLabel = card.querySelector('.current-dupe');
+        const statsList = card.querySelector('.disc-stats-list');
+
+        // Convert level to stats index
+        const levelIndex = levelToIndex(level);
+
+        if (currentLevelLabel) {
+          currentLevelLabel.textContent = `Lv. ${level}`;
+        }
+
+        if (currentDupeLabel) {
+          currentDupeLabel.textContent = dupeLevel > 0 ? `(D${dupeLevel})` : '';
+        }
+
+        // Get dupe ATK bonus for the selected dupe level
+        let dupeAtkBonus = 0;
+        if (dupeLevel > 0 && dupeData[dupeLevel - 1]) {
+          const dupeStats = dupeData[dupeLevel - 1];
+          const atkDupe = dupeStats.find((s: any) => s.id === 'atk');
+          if (atkDupe) {
+            dupeAtkBonus = atkDupe.value;
+          }
+        }
+
+        if (statsData[levelIndex] && statsList) {
+          const stats = statsData[levelIndex];
+          statsList.innerHTML = stats.map((stat: any) => {
+            const isAtk = stat.id === 'atk';
+            const totalValue = isAtk ? stat.value + dupeAtkBonus : stat.value;
+            const bonusText = (isAtk && dupeAtkBonus > 0) ? ` <span class="dupe-bonus-indicator">(+${dupeAtkBonus})</span>` : '';
+
+            return `
+              <div class="disc-stat-row" data-stat="${stat.id}">
+                <span class="disc-stat-name">${stat.label}</span>
+                <span class="disc-stat-value">${totalValue}${stat.unit || ''}${bonusText}</span>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Highlight the active dupe level in the dupe grid
+        const dupeItems = card.querySelectorAll('.disc-dupe-item');
+        dupeItems.forEach((item, index) => {
+          if (index < dupeLevel) {
+            item.classList.add('dupe-active');
+          } else {
+            item.classList.remove('dupe-active');
+          }
+        });
+      });
+    }
+
+    // Filter discs
+    function filterDiscs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarityValue = rarityFilter.value;
+      const elementValue = elementFilter.value;
+      const statValue = statFilter.value;
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const element = card.getAttribute('data-element') || '';
+        const statType = card.getAttribute('data-stat-type') || '';
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRarity = rarityValue === 'all' || rarity === rarityValue;
+        const matchesElement = elementValue === 'all' || element === elementValue;
+        const matchesStat = statValue === 'all' || statType === statValue;
+
+        if (matchesSearch && matchesRarity && matchesElement && matchesStat) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Clear all filters
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    function clearFilters() {
+      searchInput.value = '';
+      rarityFilter.value = 'all';
+      elementFilter.value = 'all';
+      statFilter.value = 'all';
+      levelInput.value = '90';
+      currentDupeLevel = 0;
+      // Reset dupe buttons
+      dupeButtons.forEach(btn => btn.classList.remove('active'));
+      dupeButtons[0]?.classList.add('active');
+      filterDiscs();
+      updateStats(false);
+    }
+
+    // Dupe button event listeners
+    dupeButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        currentDupeLevel = parseInt(this.getAttribute('data-dupe') || '0');
+        // Update active state
+        dupeButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        updateStats(false);
+      });
+    });
+
+    // Event listeners
+    searchInput.addEventListener('input', filterDiscs);
+    rarityFilter.addEventListener('change', filterDiscs);
+    elementFilter.addEventListener('change', filterDiscs);
+    statFilter.addEventListener('change', filterDiscs);
+    levelInput.addEventListener('input', () => updateStats(false));
+    levelInput.addEventListener('change', () => updateStats(true));
+    levelInput.addEventListener('blur', () => updateStats(true));
+    clearBtn.addEventListener('click', clearFilters);
+
+    // Initial update
+    updateStats(false);
+  });
+</script>

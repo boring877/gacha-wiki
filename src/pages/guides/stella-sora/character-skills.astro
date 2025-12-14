@@ -1,0 +1,627 @@
+---
+import CharacterSkillsLayout from '../../../layouts/stella-sora/CharacterSkillsLayout.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import SSCharacterSkillIcon from '../../../components/stella-sora/SSCharacterSkillIcon.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import { characterSkills } from '../../../data/stella-sora/skills.js';
+
+// Character element mapping
+const characterElementMap: Record<string, string> = {
+  amber: 'Ignis',
+  ann: 'Terra',
+  canace: 'Aqua',
+  caramel: 'Umbra',
+  chitose: 'Aqua',
+  chixia: 'Ignis',
+  coronis: 'Umbra',
+  cosette: 'Ventus',
+  flora: 'Terra',
+  freesia: 'Ventus',
+  fuyuka: 'Aqua',
+  gerie: 'Lux',
+  iris: 'Lux',
+  jinglin: 'Ignis',
+  kasimira: 'Umbra',
+  laru: 'Terra',
+  minova: 'Aqua',
+  mistique: 'Umbra',
+  nanoha: 'Lux',
+  nazuka: 'Umbra',
+  nazuna: 'Ventus',
+  noya: 'Ignis',
+  ridge: 'Terra',
+  shia: 'Aqua',
+  shimiao: 'Aqua',
+  teresa: 'Ventus',
+  tilia: 'Terra',
+};
+
+// Map skill type from data to image file type
+function mapSkillType(type: string): 'normal-attack' | 'skill' | 'support-skill' | 'ultimate' {
+  const typeMap: Record<string, 'normal-attack' | 'skill' | 'support-skill' | 'ultimate'> = {
+    'Attack': 'normal-attack',
+    'Main Skill': 'skill',
+    'Support Skill': 'support-skill',
+    'Ultimate': 'ultimate',
+  };
+  return typeMap[type] || 'normal-attack';
+}
+
+// Get skill type CSS class
+function getSkillTypeClass(type: string): string {
+  const classMap: Record<string, string> = {
+    'Attack': 'attack',
+    'Main Skill': 'main-skill',
+    'Support Skill': 'support-skill',
+    'Ultimate': 'ultimate',
+  };
+  return classMap[type] || 'attack';
+}
+
+// Skill data structure for normalized skills
+interface NormalizedSkill {
+  name: string;
+  type: string;
+  cooldown: number;
+  energyCost: number;
+  description: string;
+  params: string[];
+}
+
+// Helper function to convert character data to unified skills array format
+function normalizeSkills(charData: any): NormalizedSkill[] {
+  // Check if raw data with params exists - prefer this for level scaling
+  const hasRawData = charData.normalAttack || charData.skill || charData.supportSkill || charData.ultimate;
+
+  // If only pre-formatted skills array exists (no raw data), use it
+  if (!hasRawData && charData.skills && Array.isArray(charData.skills)) {
+    return charData.skills.map((skill: any) => ({
+      name: skill.name,
+      type: skill.type,
+      cooldown: skill.cooldown || 0,
+      energyCost: skill.energyCost || 0,
+      description: skill.description || '',
+      params: [] // Pre-formatted skills don't have params
+    }));
+  }
+
+  // Build skills array from individual skill properties (with params for level scaling)
+  const skills: NormalizedSkill[] = [];
+
+  if (charData.normalAttack) {
+    skills.push({
+      name: charData.normalAttack.name,
+      type: 'Attack',
+      cooldown: 0,
+      energyCost: 0,
+      description: charData.normalAttack.description || '',
+      params: charData.normalAttack.params || []
+    });
+  }
+
+  if (charData.skill) {
+    skills.push({
+      name: charData.skill.name,
+      type: 'Main Skill',
+      cooldown: parseInt(charData.skill.cooldown) || 0,
+      energyCost: 0,
+      description: charData.skill.description || '',
+      params: charData.skill.params || []
+    });
+  }
+
+  if (charData.supportSkill) {
+    skills.push({
+      name: charData.supportSkill.name,
+      type: 'Support Skill',
+      cooldown: parseInt(charData.supportSkill.cooldown) || 0,
+      energyCost: 0,
+      description: charData.supportSkill.description || '',
+      params: charData.supportSkill.params || []
+    });
+  }
+
+  if (charData.ultimate) {
+    skills.push({
+      name: charData.ultimate.name,
+      type: 'Ultimate',
+      cooldown: parseInt(charData.ultimate.cooldown) || 0,
+      energyCost: charData.ultimate.energy || 0,
+      description: charData.ultimate.description || '',
+      params: charData.ultimate.params || []
+    });
+  }
+
+  return skills;
+}
+
+// Convert object to array for iteration
+const skillsArray = Object.entries(characterSkills).map(([slug, data]) => {
+  const charData = data as any;
+  return {
+    slug,
+    name: charData.name,
+    id: charData.id,
+    element: characterElementMap[slug] || 'Ignis',
+    skills: normalizeSkills(charData)
+  };
+}).sort((a, b) => a.name.localeCompare(b.name));
+
+// Calculate stats
+const totalCharacters = skillsArray.length;
+const totalSkills = skillsArray.reduce((acc, char) => acc + (char.skills?.length || 0), 0);
+
+// Get unique elements for filtering
+const elements = [...new Set(Object.values(characterElementMap))].sort();
+
+// Page metadata
+const title = `Stella Sora Character Skills Database - All ${totalCharacters} Characters`;
+const description = `Complete Stella Sora character skills database with ${totalCharacters} characters and ${totalSkills} skills. View all Normal Attacks, Main Skills, Support Skills, and Ultimates with detailed descriptions, cooldowns, and damage values.`;
+const gameTitle = 'Character Skills Database';
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://gachawiki.info'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Guides',
+      item: 'https://gachawiki.info/guides/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Stella Sora',
+      item: 'https://gachawiki.info/guides/stella-sora/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Character Skills',
+      item: 'https://gachawiki.info/guides/stella-sora/character-skills/'
+    }
+  ]
+};
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Character Skills Database',
+  description: description,
+  numberOfItems: totalCharacters,
+  itemListElement: skillsArray.slice(0, 30).map((char, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: char.name,
+      description: `${char.element} character with ${char.skills?.length || 4} skills`
+    }
+  }))
+};
+---
+
+<CharacterSkillsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+  <div class="character-skills-index">
+    <!-- Summary Section -->
+    <section class="skills-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalSkills}</div>
+          <div class="summary-stat-label">Total Skills</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">4</div>
+          <div class="summary-stat-label">Skills per Character</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{elements.length}</div>
+          <div class="summary-stat-label">Elements</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="skills-filters">
+      <h2>Filter Skills</h2>
+      <form class="filter-row" onsubmit="return false;">
+        <div class="filter-group">
+          <label for="search-input">Search Character</label>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Enter character name..."
+            autocomplete="off"
+          />
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="">All Elements</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+      Showing <span id="visible-count">{totalCharacters}</span> of {totalCharacters} characters
+    </div>
+
+    <!-- Character Sections -->
+    {skillsArray.map(char => (
+      <section
+        class="skill-character-section"
+        id={`character-${char.slug}`}
+        data-name={char.name.toLowerCase()}
+        data-element={char.element}
+      >
+        <!-- Character Header -->
+        <div class="skill-character-header">
+          <div class="character-icon-container">
+            <SSCharacterSmallImage
+              characterName={char.slug}
+              alt={`${char.name} icon`}
+              width={64}
+              height={64}
+            />
+          </div>
+          <div class="skill-character-info">
+            <h2 class="skill-character-name">{char.name}</h2>
+            <div class="skill-character-meta">
+              <span class={`skill-meta-badge element-badge element-${char.element?.toLowerCase()}`}>
+                <SSElementImage
+                  elementName={char.element}
+                  alt={char.element}
+                  width={20}
+                  height={20}
+                />
+                {char.element}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-content">
+          <div class="skills-cards">
+            {char.skills?.map((skill: NormalizedSkill, index: number) => (
+              <div
+                class={`skill-card-mini ${getSkillTypeClass(skill.type)}`}
+                data-skill={JSON.stringify({
+                  name: skill.name,
+                  type: skill.type,
+                  cooldown: skill.cooldown,
+                  energyCost: skill.energyCost,
+                  description: skill.description,
+                  params: skill.params,
+                  charSlug: char.slug
+                })}
+                data-skill-id={`${char.slug}-${index}`}
+              >
+                <div class="skill-card-icon">
+                  <SSCharacterSkillIcon
+                    characterSlug={char.slug}
+                    skillType={mapSkillType(skill.type)}
+                    alt={`${skill.name} icon`}
+                    width={80}
+                    height={80}
+                  />
+                </div>
+                <span class="skill-card-name">{skill.name}</span>
+                <span class={`skill-card-type ${getSkillTypeClass(skill.type)}`}>{skill.type}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Skill Detail Panel (per character) -->
+          <div class="skill-detail-panel" data-char={char.slug}>
+            <div class="detail-header">
+              <div class="detail-icon" id={`detail-icon-${char.slug}`}></div>
+              <div class="detail-info">
+                <h3 class="detail-name" id={`detail-name-${char.slug}`}></h3>
+                <div class="detail-meta" id={`detail-meta-${char.slug}`}></div>
+              </div>
+            </div>
+            <div class="detail-description" id={`detail-description-${char.slug}`}></div>
+            <div class="level-selector" id={`level-selector-${char.slug}`} style="display: none;">
+              <span class="level-label">Level:</span>
+              <button class="level-btn level-minus" type="button">-</button>
+              <input type="number" class="level-input" min="1" value="1" />
+              <button class="level-btn level-plus" type="button">+</button>
+              <span class="level-max"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- Client-side filtering and skill detail script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input') as HTMLInputElement;
+      const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+      const visibleCount = document.getElementById('visible-count');
+      const sections = document.querySelectorAll('.skill-character-section');
+
+      // Filter functionality
+      function filterSections() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const selectedElement = elementFilter.value;
+
+        let visibleCountNum = 0;
+
+        sections.forEach(section => {
+          const el = section as HTMLElement;
+          const name = el.dataset.name || '';
+          const element = el.dataset.element || '';
+
+          const matchesSearch = !searchTerm || name.includes(searchTerm);
+          const matchesElement = !selectedElement || element === selectedElement;
+
+          if (matchesSearch && matchesElement) {
+            el.style.display = '';
+            visibleCountNum++;
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        if (visibleCount) {
+          visibleCount.textContent = visibleCountNum.toString();
+        }
+      }
+
+      searchInput?.addEventListener('input', filterSections);
+      elementFilter?.addEventListener('change', filterSections);
+
+      // Parse and format description
+      function formatDescription(desc: string, params: string[], level: number): string {
+        if (!desc) return '';
+
+        let formatted = desc;
+
+        // Replace &Param1&, &Param2&, etc. with actual values based on level
+        params.forEach((param, index) => {
+          const placeholder = `&Param${index + 1}&`;
+          let value = param;
+
+          if (typeof param === 'string' && param.includes('/')) {
+            const levels = param.split('/');
+            value = levels[Math.min(level - 1, levels.length - 1)] || levels[0];
+          }
+
+          formatted = formatted.split(placeholder).join(`<span class="color-highlight">${value}</span>`);
+        });
+
+        // Parse color tags
+        formatted = formatted
+          .replace(/<color=#fb8037>(.*?)<\/color>/gi, '<span class="color-highlight">$1</span>')
+          .replace(/<color=#ec6d21>(.*?)<\/color>/gi, '<span class="color-highlight">$1</span>')
+          .replace(/<color=#0abec5>(.*?)<\/color>/gi, '<span class="color-highlight">$1</span>')
+          .replace(/<color=[^>]+>(.*?)<\/color>/gi, '<span class="color-highlight">$1</span>');
+
+        // Parse skill references ##Name#ID#
+        formatted = formatted.replace(/##([^#]+)#(\d+)#/g, '<span class="color-highlight">$1</span>');
+
+        // Replace vertical tab with line break
+        formatted = formatted.replace(/\u000b/g, '<br><br>');
+
+        // Convert **text** to bold
+        formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<span class="color-highlight">$1</span>');
+
+        return formatted;
+      }
+
+      // Get max level from params
+      function getMaxLevel(params: string[]): number {
+        let max = 1;
+        params.forEach(param => {
+          if (typeof param === 'string' && param.includes('/')) {
+            const levels = param.split('/').length;
+            if (levels > max) max = levels;
+          }
+        });
+        return max;
+      }
+
+      // Skill detail functionality
+      let currentSkill: any = null;
+      let currentCard: HTMLElement | null = null;
+      let currentCharSlug: string = '';
+      let maxLevel = 1;
+
+      function showSkillDetail(card: HTMLElement, skill: any) {
+        const charSlug = skill.charSlug;
+        currentSkill = skill;
+        currentCard = card;
+        currentCharSlug = charSlug;
+
+        const panel = document.querySelector(`.skill-detail-panel[data-char="${charSlug}"]`) as HTMLElement;
+        const nameEl = document.getElementById(`detail-name-${charSlug}`);
+        const metaEl = document.getElementById(`detail-meta-${charSlug}`);
+        const descEl = document.getElementById(`detail-description-${charSlug}`);
+        const iconEl = document.getElementById(`detail-icon-${charSlug}`);
+        const levelSelector = document.getElementById(`level-selector-${charSlug}`) as HTMLElement;
+
+        if (!panel || !nameEl || !metaEl || !descEl || !iconEl) return;
+
+        // Set name
+        nameEl.textContent = skill.name;
+
+        // Set meta (cooldown, energy)
+        let metaHtml = `<span class="meta-badge ${skill.type.toLowerCase().replace(' ', '-')}">${skill.type}</span>`;
+        if (skill.cooldown > 0) {
+          metaHtml += `<span class="meta-item">CD: ${skill.cooldown}s</span>`;
+        }
+        if (skill.energyCost > 0) {
+          metaHtml += `<span class="meta-item">Energy: ${skill.energyCost}</span>`;
+        }
+        metaEl.innerHTML = metaHtml;
+
+        // Copy icon from card
+        const cardIcon = card.querySelector('.skill-card-icon');
+        if (cardIcon) {
+          iconEl.innerHTML = cardIcon.innerHTML;
+        }
+
+        // Get max level
+        maxLevel = skill.params && skill.params.length > 0 ? getMaxLevel(skill.params) : 1;
+
+        // Show/hide level selector
+        if (maxLevel > 1 && levelSelector) {
+          levelSelector.style.display = 'flex';
+          const levelInput = levelSelector.querySelector('.level-input') as HTMLInputElement;
+          const levelMax = levelSelector.querySelector('.level-max') as HTMLElement;
+          if (levelInput) {
+            levelInput.max = maxLevel.toString();
+            levelInput.value = '1';
+          }
+          if (levelMax) {
+            levelMax.textContent = `/ ${maxLevel}`;
+          }
+        } else if (levelSelector) {
+          levelSelector.style.display = 'none';
+        }
+
+        // Set description
+        updateDescription(charSlug, 1);
+
+        // Show panel
+        panel.classList.add('active');
+
+        // Mark card as active
+        const allCards = card.closest('.skills-cards')?.querySelectorAll('.skill-card-mini');
+        allCards?.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+      }
+
+      function updateDescription(charSlug: string, level: number) {
+        const descEl = document.getElementById(`detail-description-${charSlug}`);
+        if (!descEl || !currentSkill) return;
+
+        descEl.innerHTML = formatDescription(
+          currentSkill.description,
+          currentSkill.params || [],
+          level
+        );
+      }
+
+      function hideSkillDetail(charSlug: string) {
+        const panel = document.querySelector(`.skill-detail-panel[data-char="${charSlug}"]`) as HTMLElement;
+        if (panel) {
+          panel.classList.remove('active');
+        }
+
+        const section = document.getElementById(`character-${charSlug}`);
+        section?.querySelectorAll('.skill-card-mini').forEach(c => c.classList.remove('active'));
+
+        currentSkill = null;
+        currentCard = null;
+        currentCharSlug = '';
+      }
+
+      // Card click handlers
+      document.querySelectorAll('.skill-card-mini').forEach(card => {
+        card.addEventListener('click', () => {
+          const el = card as HTMLElement;
+          const skillData = el.dataset.skill;
+
+          if (!skillData) return;
+
+          try {
+            const skill = JSON.parse(skillData);
+
+            // If clicking same card, toggle off
+            if (currentCard === el) {
+              hideSkillDetail(skill.charSlug);
+            } else {
+              // Hide any other open panel first
+              if (currentCharSlug && currentCharSlug !== skill.charSlug) {
+                hideSkillDetail(currentCharSlug);
+              }
+              showSkillDetail(el, skill);
+            }
+          } catch (err) {
+            console.error('Error parsing skill data:', err);
+          }
+        });
+      });
+
+      // Level control handlers - use event delegation for dynamic content
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+
+        // Handle minus button
+        if (target.classList.contains('level-minus')) {
+          const selector = target.closest('.level-selector');
+          const input = selector?.querySelector('.level-input') as HTMLInputElement;
+          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+          if (input && currentSkill && currentCharSlug === charSlug) {
+            const current = parseInt(input.value) || 1;
+            if (current > 1) {
+              input.value = (current - 1).toString();
+              updateDescription(charSlug, current - 1);
+            }
+          }
+        }
+
+        // Handle plus button
+        if (target.classList.contains('level-plus')) {
+          const selector = target.closest('.level-selector');
+          const input = selector?.querySelector('.level-input') as HTMLInputElement;
+          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+          if (input && currentSkill && currentCharSlug === charSlug) {
+            const current = parseInt(input.value) || 1;
+            const max = parseInt(input.max) || 13;
+            if (current < max) {
+              input.value = (current + 1).toString();
+              updateDescription(charSlug, current + 1);
+            }
+          }
+        }
+      });
+
+      // Handle input change
+      document.querySelectorAll('.level-input').forEach(input => {
+        input.addEventListener('change', () => {
+          const inputEl = input as HTMLInputElement;
+          const selector = inputEl.closest('.level-selector');
+          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+          if (currentSkill && currentCharSlug === charSlug) {
+            let value = parseInt(inputEl.value) || 1;
+            const max = parseInt(inputEl.max) || 13;
+            value = Math.max(1, Math.min(value, max));
+            inputEl.value = value.toString();
+            updateDescription(charSlug, value);
+          }
+        });
+      });
+    });
+  </script>
+</CharacterSkillsLayout>

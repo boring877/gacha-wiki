@@ -1,0 +1,159 @@
+---
+// Stella Sora Dating Event Image Component
+import { Image } from 'astro:assets';
+
+// Import all dating event images
+import amberEvent0 from '../../assets/images/games/stella-sora/dating/amber-event-0.png';
+import amberEvent1 from '../../assets/images/games/stella-sora/dating/amber-event-1.png';
+import annEvent0 from '../../assets/images/games/stella-sora/dating/ann-event-0.png';
+import annEvent1 from '../../assets/images/games/stella-sora/dating/ann-event-1.png';
+import canaceEvent0 from '../../assets/images/games/stella-sora/dating/canace-event-0.png';
+import canaceEvent1 from '../../assets/images/games/stella-sora/dating/canace-event-1.png';
+import caramelEvent0 from '../../assets/images/games/stella-sora/dating/caramel-event-0.png';
+import caramelEvent1 from '../../assets/images/games/stella-sora/dating/caramel-event-1.png';
+import chitoseEvent0 from '../../assets/images/games/stella-sora/dating/chitose-event-0.png';
+import chitoseEvent1 from '../../assets/images/games/stella-sora/dating/chitose-event-1.png';
+import chixiaEvent0 from '../../assets/images/games/stella-sora/dating/chixia-event-0.png';
+import chixiaEvent1 from '../../assets/images/games/stella-sora/dating/chixia-event-1.png';
+import coronisEvent0 from '../../assets/images/games/stella-sora/dating/coronis-event-0.png';
+import coronisEvent1 from '../../assets/images/games/stella-sora/dating/coronis-event-1.png';
+import cosetteEvent0 from '../../assets/images/games/stella-sora/dating/cosette-event-0.png';
+import cosetteEvent1 from '../../assets/images/games/stella-sora/dating/cosette-event-1.png';
+import floraEvent0 from '../../assets/images/games/stella-sora/dating/flora-event-0.png';
+import floraEvent1 from '../../assets/images/games/stella-sora/dating/flora-event-1.png';
+import freesiaEvent0 from '../../assets/images/games/stella-sora/dating/freesia-event-0.png';
+import freesiaEvent1 from '../../assets/images/games/stella-sora/dating/freesia-event-1.png';
+import fuyukaEvent0 from '../../assets/images/games/stella-sora/dating/fuyuka-event-0.png';
+import fuyukaEvent1 from '../../assets/images/games/stella-sora/dating/fuyuka-event-1.png';
+import gerieEvent0 from '../../assets/images/games/stella-sora/dating/gerie-event-0.png';
+import gerieEvent1 from '../../assets/images/games/stella-sora/dating/gerie-event-1.png';
+import irisEvent0 from '../../assets/images/games/stella-sora/dating/iris-event-0.png';
+import irisEvent1 from '../../assets/images/games/stella-sora/dating/iris-event-1.png';
+import jinglinEvent0 from '../../assets/images/games/stella-sora/dating/jinglin-event-0.png';
+import jinglinEvent1 from '../../assets/images/games/stella-sora/dating/jinglin-event-1.png';
+import kasimiraEvent0 from '../../assets/images/games/stella-sora/dating/kasimira-event-0.png';
+import kasimiraEvent1 from '../../assets/images/games/stella-sora/dating/kasimira-event-1.png';
+import laruEvent0 from '../../assets/images/games/stella-sora/dating/laru-event-0.png';
+import laruEvent1 from '../../assets/images/games/stella-sora/dating/laru-event-1.png';
+import minovaEvent0 from '../../assets/images/games/stella-sora/dating/minova-event-0.png';
+import minovaEvent1 from '../../assets/images/games/stella-sora/dating/minova-event-1.png';
+import mistiqueEvent0 from '../../assets/images/games/stella-sora/dating/mistique-event-0.png';
+import mistiqueEvent1 from '../../assets/images/games/stella-sora/dating/mistique-event-1.png';
+import nanohaEvent0 from '../../assets/images/games/stella-sora/dating/nanoha-event-0.png';
+import nanohaEvent1 from '../../assets/images/games/stella-sora/dating/nanoha-event-1.png';
+import nazukaEvent0 from '../../assets/images/games/stella-sora/dating/nazuka-event-0.png';
+import nazukaEvent1 from '../../assets/images/games/stella-sora/dating/nazuka-event-1.png';
+import nazunaEvent0 from '../../assets/images/games/stella-sora/dating/nazuna-event-0.png';
+import nazunaEvent1 from '../../assets/images/games/stella-sora/dating/nazuna-event-1.png';
+import noyaEvent0 from '../../assets/images/games/stella-sora/dating/noya-event-0.png';
+import noyaEvent1 from '../../assets/images/games/stella-sora/dating/noya-event-1.png';
+import ridgeEvent0 from '../../assets/images/games/stella-sora/dating/ridge-event-0.png';
+import ridgeEvent1 from '../../assets/images/games/stella-sora/dating/ridge-event-1.png';
+import shiaEvent0 from '../../assets/images/games/stella-sora/dating/shia-event-0.png';
+import shiaEvent1 from '../../assets/images/games/stella-sora/dating/shia-event-1.png';
+import shimiaoEvent0 from '../../assets/images/games/stella-sora/dating/shimiao-event-0.png';
+import shimiaoEvent1 from '../../assets/images/games/stella-sora/dating/shimiao-event-1.png';
+import teresaEvent0 from '../../assets/images/games/stella-sora/dating/teresa-event-0.png';
+import teresaEvent1 from '../../assets/images/games/stella-sora/dating/teresa-event-1.png';
+import tiliaEvent0 from '../../assets/images/games/stella-sora/dating/tilia-event-0.png';
+import tiliaEvent1 from '../../assets/images/games/stella-sora/dating/tilia-event-1.png';
+
+// Centralized dating image mapping
+const datingImageMap: Record<string, ImageMetadata> = {
+  'amber-event-0.png': amberEvent0,
+  'amber-event-1.png': amberEvent1,
+  'ann-event-0.png': annEvent0,
+  'ann-event-1.png': annEvent1,
+  'canace-event-0.png': canaceEvent0,
+  'canace-event-1.png': canaceEvent1,
+  'caramel-event-0.png': caramelEvent0,
+  'caramel-event-1.png': caramelEvent1,
+  'chitose-event-0.png': chitoseEvent0,
+  'chitose-event-1.png': chitoseEvent1,
+  'chixia-event-0.png': chixiaEvent0,
+  'chixia-event-1.png': chixiaEvent1,
+  'coronis-event-0.png': coronisEvent0,
+  'coronis-event-1.png': coronisEvent1,
+  'cosette-event-0.png': cosetteEvent0,
+  'cosette-event-1.png': cosetteEvent1,
+  'flora-event-0.png': floraEvent0,
+  'flora-event-1.png': floraEvent1,
+  'freesia-event-0.png': freesiaEvent0,
+  'freesia-event-1.png': freesiaEvent1,
+  'fuyuka-event-0.png': fuyukaEvent0,
+  'fuyuka-event-1.png': fuyukaEvent1,
+  'gerie-event-0.png': gerieEvent0,
+  'gerie-event-1.png': gerieEvent1,
+  'iris-event-0.png': irisEvent0,
+  'iris-event-1.png': irisEvent1,
+  'jinglin-event-0.png': jinglinEvent0,
+  'jinglin-event-1.png': jinglinEvent1,
+  'kasimira-event-0.png': kasimiraEvent0,
+  'kasimira-event-1.png': kasimiraEvent1,
+  'laru-event-0.png': laruEvent0,
+  'laru-event-1.png': laruEvent1,
+  'minova-event-0.png': minovaEvent0,
+  'minova-event-1.png': minovaEvent1,
+  'mistique-event-0.png': mistiqueEvent0,
+  'mistique-event-1.png': mistiqueEvent1,
+  'nanoha-event-0.png': nanohaEvent0,
+  'nanoha-event-1.png': nanohaEvent1,
+  'nazuka-event-0.png': nazukaEvent0,
+  'nazuka-event-1.png': nazukaEvent1,
+  'nazuna-event-0.png': nazunaEvent0,
+  'nazuna-event-1.png': nazunaEvent1,
+  'noya-event-0.png': noyaEvent0,
+  'noya-event-1.png': noyaEvent1,
+  'ridge-event-0.png': ridgeEvent0,
+  'ridge-event-1.png': ridgeEvent1,
+  'shia-event-0.png': shiaEvent0,
+  'shia-event-1.png': shiaEvent1,
+  'shimiao-event-0.png': shimiaoEvent0,
+  'shimiao-event-1.png': shimiaoEvent1,
+  'teresa-event-0.png': teresaEvent0,
+  'teresa-event-1.png': teresaEvent1,
+  'tilia-event-0.png': tiliaEvent0,
+  'tilia-event-1.png': tiliaEvent1,
+};
+
+export interface Props {
+  imageName: string; // e.g., 'amber-event-0.png' or 'amber-event-0'
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'png' | 'jpg' | 'avif';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt,
+  class: className = '',
+  width = 512,
+  height = 512,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Normalize image name - add .png if missing
+let imageKey = imageName;
+if (!imageKey.endsWith('.png')) {
+  imageKey = `${imageKey}.png`;
+}
+
+const imageSrc = datingImageMap[imageKey] || datingImageMap['amber-event-0.png'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt || `Dating Event`}
+  width={width}
+  height={height}
+  class={`${className} dating-event-img`}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

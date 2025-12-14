@@ -1,0 +1,606 @@
+/* Stella Sora Gift Database Page Styles
+ * Styles for the gift database/index page
+ */
+
+/* Main Gifts Container */
+.gifts-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Point System Info Box */
+.gift-points-info {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.gift-points-info h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.points-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--ss-spacing-md);
+}
+
+.points-table th,
+.points-table td {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  text-align: center;
+  border: 1px solid var(--ss-border);
+}
+
+.points-table th {
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-primary);
+  font-weight: var(--ss-font-semibold);
+  font-size: 0.875rem;
+}
+
+.points-table td {
+  background: var(--ss-bg-secondary);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+}
+
+.points-table .rarity-col {
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+.points-loved {
+  color: #4ade80 !important;
+  font-weight: var(--ss-font-semibold);
+}
+
+.points-neutral {
+  color: var(--ss-text-primary) !important;
+}
+
+.points-hated {
+  color: #f87171 !important;
+  font-weight: var(--ss-font-semibold);
+}
+
+/* Gift Crafting Info Box */
+.gift-crafting-info {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.gift-crafting-info h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.gift-crafting-info > p {
+  color: var(--ss-text-secondary);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+/* Crafting Material Display */
+.crafting-material {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.crafting-material-icon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crafting-rarity-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--ss-radius-sm);
+}
+
+.crafting-material-image {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--ss-radius-sm);
+}
+
+.crafting-material-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.crafting-material-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+}
+
+.crafting-material-desc {
+  font-size: 0.875rem;
+  color: var(--ss-text-muted);
+}
+
+/* Crafting Recipes */
+.crafting-recipes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.crafting-recipe {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md) var(--ss-spacing-lg);
+}
+
+.recipe-input,
+.recipe-output {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+}
+
+.recipe-quantity {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+}
+
+.recipe-icon-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-rarity-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--ss-radius-sm);
+}
+
+.recipe-icon {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--ss-radius-sm);
+}
+
+.recipe-arrow {
+  font-size: 1.5rem;
+  color: var(--ss-accent);
+  font-weight: var(--ss-font-bold);
+  padding: 0 var(--ss-spacing-sm);
+}
+
+.recipe-result {
+  font-size: 1rem;
+  font-weight: var(--ss-font-semibold);
+  padding: 6px 12px;
+  border-radius: var(--ss-radius-sm);
+  background: var(--ss-bg-tertiary);
+}
+
+.recipe-result[data-rarity="3"] {
+  color: #60a5fa;
+  border: 1px solid #60a5fa40;
+}
+
+.recipe-result[data-rarity="4"] {
+  color: #a78bfa;
+  border: 1px solid #a78bfa40;
+}
+
+.recipe-result[data-rarity="5"] {
+  color: #fbbf24;
+  border: 1px solid #fbbf2440;
+}
+
+.crafting-note {
+  font-size: 0.875rem;
+  color: var(--ss-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.crafting-note-warning {
+  color: #fbbf24;
+  margin-top: var(--ss-spacing-sm);
+}
+
+/* Gift Category Section */
+.gift-category {
+  margin-bottom: 4rem;
+}
+
+.gift-category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-lg);
+  padding-bottom: var(--ss-spacing-sm);
+  border-bottom: 2px solid var(--ss-accent);
+}
+
+.gift-category-header h2 {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.gift-category-count {
+  background: var(--ss-accent-20);
+  color: var(--ss-accent);
+  padding: 4px 12px;
+  border-radius: var(--ss-radius-full);
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-medium);
+}
+
+/* Gifts Grid Layout */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* Gift Card */
+.gift-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gift Card Header */
+.gift-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+/* Gift Image Container with Rarity Background Image */
+.gift-image-container {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--ss-radius-md);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gift-rarity-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gift-card-image {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.gift-card-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gift-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.gift-card-category {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+/* Gift Rarity Text */
+.gift-rarity-text {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.gift-rarity-text[data-rarity="3"] {
+  color: #60a5fa;
+}
+
+.gift-rarity-text[data-rarity="4"] {
+  color: #a78bfa;
+}
+
+.gift-rarity-text[data-rarity="5"] {
+  color: #fbbf24;
+}
+
+/* Gift Points Section */
+.gift-points {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-top: auto;
+}
+
+.gift-points-title {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.gift-points-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ss-spacing-sm);
+}
+
+.gift-point-item {
+  text-align: center;
+  padding: var(--ss-spacing-sm);
+  border-radius: var(--ss-radius-sm);
+  background: var(--ss-bg-secondary);
+}
+
+.gift-point-label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.gift-point-value {
+  display: block;
+  font-size: 1rem;
+  font-weight: var(--ss-font-bold);
+}
+
+.gift-point-item.loved .gift-point-label {
+  color: #4ade80;
+}
+
+.gift-point-item.loved .gift-point-value {
+  color: #4ade80;
+}
+
+.gift-point-item.neutral .gift-point-label {
+  color: var(--ss-text-secondary);
+}
+
+.gift-point-item.neutral .gift-point-value {
+  color: var(--ss-text-primary);
+}
+
+.gift-point-item.hated .gift-point-label {
+  color: #f87171;
+}
+
+.gift-point-item.hated .gift-point-value {
+  color: #f87171;
+}
+
+/* Bonus/Penalty indicators */
+.gift-point-bonus {
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-medium);
+  margin-left: 2px;
+}
+
+.gift-point-item.loved .gift-point-bonus {
+  color: #4ade80;
+}
+
+.gift-point-item.hated .gift-point-bonus {
+  color: #f87171;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gifts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .gifts-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-md);
+  }
+
+  .gift-points-info,
+  .gift-crafting-info {
+    padding: var(--ss-spacing-md);
+  }
+
+  .crafting-recipe {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .points-table th,
+  .points-table td {
+    padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+    font-size: 0.75rem;
+  }
+
+  .gifts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .gift-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .gift-category-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .gift-card-header {
+    gap: var(--ss-spacing-sm);
+  }
+
+  .gift-image-container {
+    width: 64px;
+    height: 64px;
+  }
+
+  .gift-card-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .gift-card-name {
+    font-size: 1rem;
+  }
+
+  .gift-points-values {
+    gap: var(--ss-spacing-xs);
+  }
+
+  .gift-point-value {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .gifts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gift-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ss-spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .gifts-index {
+    padding: var(--ss-spacing-md) var(--ss-spacing-sm);
+  }
+
+  .gift-points-info,
+  .gift-crafting-info {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .crafting-material {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .crafting-material-info {
+    align-items: center;
+  }
+
+  .recipe-quantity {
+    font-size: 1rem;
+  }
+
+  .recipe-arrow {
+    font-size: 1.25rem;
+  }
+
+  .recipe-result {
+    font-size: 0.875rem;
+    padding: 4px 8px;
+  }
+
+  .points-table {
+    font-size: 0.625rem;
+  }
+
+  .points-table th,
+  .points-table td {
+    padding: 4px 6px;
+  }
+
+  .gift-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .gift-image-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .gift-card-image {
+    width: 42px;
+    height: 42px;
+  }
+
+  .gift-card-name {
+    font-size: 0.9rem;
+  }
+
+  .gift-point-item {
+    padding: var(--ss-spacing-xs);
+  }
+
+  .gift-point-label {
+    font-size: 0.5rem;
+  }
+
+  .gift-point-value {
+    font-size: 0.75rem;
+  }
+}

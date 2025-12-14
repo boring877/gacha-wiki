@@ -1,0 +1,50 @@
+---
+// Stella Sora Disc Base Image Component
+import { Image } from 'astro:assets';
+
+// Dynamically import all disc base images
+const discImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/stella-sora/discs/*/base.png',
+  { eager: true }
+);
+
+// Create a map from disc slug to image
+const discImageMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(discImages)) {
+  // Extract disc slug from path: ../../assets/images/games/stella-sora/discs/disc-name/base.png
+  const match = path.match(/discs\/([^/]+)\/base\.png$/);
+  if (match) {
+    discImageMap[match[1]] = module.default;
+  }
+}
+
+export interface Props {
+  discSlug: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { discSlug, alt, class: className = '', width = 128, height = 128 } = Astro.props;
+
+// Get the imported image object from the map
+const imageSrc = discImageMap[discSlug];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt || discSlug}
+    width={width}
+    height={height}
+    class={className}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+) : (
+  <div class={`disc-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    {discSlug}
+  </div>
+)}

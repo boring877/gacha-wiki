@@ -29,7 +29,8 @@ const imageModules: Record<string, ImageModule> = import.meta.glob(
 );
 
 // Build the image path - handle both with and without extension
-let imageKey = imageName;
+// Convert spaces to underscores for image filename lookup
+let imageKey = imageName.replace(/\s+/g, '_');
 if (!imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
@@ -53,12 +54,13 @@ if (imageModule?.default) {
     <Image
       src={imageSrc}
       alt={imageAlt}
-      width={width}
-      height={height}
+      width={width * 2}
+      height={height * 2}
       loading={loading}
       class={`notes-image ${className || ''}`}
+      style={`width: ${width}px; height: ${height}px;`}
       quality={quality}
-      format="webp"
+      format="png"
     />
   ) : (
     <div
@@ -73,7 +75,7 @@ if (imageModule?.default) {
 <style>
   .notes-image {
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .notes-image-placeholder {

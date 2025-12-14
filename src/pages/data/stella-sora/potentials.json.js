@@ -1,86 +1,108 @@
-// Stella Sora Potentials (Ascension/Character Progression) API Endpoint
+// Stella Sora Potentials API Endpoint
 // Generates /data/stella-sora/potentials.json
 
-import {
-  ALL_POTENTIALS,
-  shiaPotentials,
-  tiliaPotentials,
-  minovaPotentials,
-} from '../../../data/stella-sora/potentials.js';
+import { allPotentials } from '../../../data/stella-sora/all-potentials.js';
 
 export const prerender = true;
 
 export async function GET() {
   // Process potentials by character
-  const characterPotentials = Object.entries(ALL_POTENTIALS).map(([characterName, potentials]) => ({
-    character: characterName,
-    potentialCount: Object.keys(potentials).length,
-    potentials: Object.entries(potentials).map(([key, potential]) => ({
-      id: key,
-      name: potential.name,
-      level: potential.level || null,
-      description: potential.description?.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?em>/gi, ''),
-      hasLevelRequirement: !!potential.level,
-    })),
-  }));
+  const characterPotentials = Object.entries(allPotentials).map(([charKey, charData]) => {
+    const { id, name, element, potentials } = charData;
 
-  // Group potentials by type/build for Shia (the most detailed character)
-  const shiaBuildGuide = {
-    snowRabbitBuild: [
-      'Phantom Step Radiance',
-      'Rimecrystal Edge',
-      'Subzero Dominion',
-      'Glacial Dash',
-      'Rimeheart Pulse',
-    ],
-    nightRabbitBuild: [
-      'Moonlight Overflow',
-      'Astral Pirouette',
-      'Lunar Detonation',
-      'Final Crescent',
-      'Lunar Combo',
-    ],
-    genericMainRole: [
-      'Leporine Gale',
-      "Hare's Pursuit",
-      "Rabbit's Beam",
-      'Howl to the Moon',
-      'Silent Tide',
-      'Wave to Oblivion',
-    ],
-  };
+    // Count total potentials across all categories
+    const totalPotentials =
+      (potentials.mainCore?.length || 0) +
+      (potentials.mainNormal?.length || 0) +
+      (potentials.common?.length || 0) +
+      (potentials.supportCore?.length || 0) +
+      (potentials.supportNormal?.length || 0);
+
+    return {
+      id,
+      character: name,
+      element,
+      potentialCount: totalPotentials,
+      potentials: {
+        mainCore: potentials.mainCore?.map(p => ({
+          name: p.name,
+          icon: p.icon,
+          description: p.description?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          shortDescription: p.shortDescription?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          rarity: p.rarity,
+          stype: p.stype,
+        })) || [],
+        mainNormal: potentials.mainNormal?.map(p => ({
+          name: p.name,
+          icon: p.icon,
+          description: p.description?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          shortDescription: p.shortDescription?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          rarity: p.rarity,
+          stype: p.stype,
+          corner: p.corner,
+        })) || [],
+        common: potentials.common?.map(p => ({
+          name: p.name,
+          icon: p.icon,
+          description: p.description?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          shortDescription: p.shortDescription?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          rarity: p.rarity,
+          stype: p.stype,
+          corner: p.corner,
+        })) || [],
+        supportCore: potentials.supportCore?.map(p => ({
+          name: p.name,
+          icon: p.icon,
+          description: p.description?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          shortDescription: p.shortDescription?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          rarity: p.rarity,
+          stype: p.stype,
+        })) || [],
+        supportNormal: potentials.supportNormal?.map(p => ({
+          name: p.name,
+          icon: p.icon,
+          description: p.description?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          shortDescription: p.shortDescription?.replace(/<color=[^>]+>([^<]+)<\/color>/g, '$1'),
+          rarity: p.rarity,
+          stype: p.stype,
+          corner: p.corner,
+        })) || [],
+      },
+    };
+  });
 
   const response = {
     game: 'Stella Sora',
     type: 'potentials',
     description:
-      'Character potentials (ascension abilities) that enhance Trekker skills and abilities. Potentials are unlocked and leveled through character progression.',
+      'Character potentials that enhance Trekker skills and abilities. Organized into mainCore, mainNormal, common, supportCore, and supportNormal categories.',
     lastUpdated: new Date().toISOString().split('T')[0],
 
     // Summary
     summary: {
       totalCharacters: characterPotentials.length,
       totalPotentials: characterPotentials.reduce((acc, char) => acc + char.potentialCount, 0),
-      characters: characterPotentials.map(c => c.character),
+      characters: characterPotentials.map(c => ({ name: c.character, element: c.element })),
     },
 
     // All character potentials
     characters: characterPotentials,
 
-    // Build guides (for characters with documented builds)
-    buildGuides: {
-      Shia: {
-        description: 'Shia has two main build paths based on summoned rabbit type',
-        builds: shiaBuildGuide,
-      },
+    // Category descriptions
+    categories: {
+      mainCore: 'Core potentials for main skill (4 per character, rarity 1)',
+      mainNormal: 'Normal potentials for main skill (6-9 per character, mixed rarity)',
+      common: 'Common potentials for ultimate (3 per character, rarity 2)',
+      supportCore: 'Core potentials for support skill (4 per character, rarity 1)',
+      supportNormal: 'Normal potentials for support skill (7-10 per character, mixed rarity)',
     },
 
     // System notes
     notes: [
       'Potentials are character-specific abilities that enhance skills',
-      'Some potentials require Level 6 to unlock full effects',
-      'Build choice depends on content type (single target vs AoE)',
-      'Potentials synergize with disc sets and team compositions',
+      'Core potentials (stype 42) are fundamental upgrades with corner: null',
+      'Normal potentials (stype 41) are positioned with corner values 1, 2, or 3',
+      'Rarity 1 = common, Rarity 2 = rare',
     ],
   };
 

@@ -1,0 +1,113 @@
+---
+// Stella Sora Gift Image Component
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora gift/item images with correct in-game names
+import cardPhotoCapturer from '../../assets/images/games/stella-sora/items/card-photo-capturer.png';
+import reflectivePhotoCapturer from '../../assets/images/games/stella-sora/items/reflective-photo-capturer.png';
+import ultraPrecisionPhotoCapturer from '../../assets/images/games/stella-sora/items/ultra-precision-photo-capturer.png';
+import risingStar from '../../assets/images/games/stella-sora/items/rising-star.png';
+import emergingTalent from '../../assets/images/games/stella-sora/items/emerging-talent.png';
+import cosmicForm from '../../assets/images/games/stella-sora/items/cosmic-form.png';
+import loveCandle from '../../assets/images/games/stella-sora/items/love-candle.png';
+import blazingWings from '../../assets/images/games/stella-sora/items/blazing-wings.png';
+import fieryHoneypot from '../../assets/images/games/stella-sora/items/fiery-honeypot.png';
+import whisperWindSpinner from '../../assets/images/games/stella-sora/items/whisper-wind-spinner.png';
+import blazingWindSpinner from '../../assets/images/games/stella-sora/items/blazing-wind-spinner.png';
+import chillingWindSpinner from '../../assets/images/games/stella-sora/items/chilling-wind-spinner.png';
+import portableBlower from '../../assets/images/games/stella-sora/items/portable-blower.png';
+import exquisiteBlower from '../../assets/images/games/stella-sora/items/exquisite-blower.png';
+import deluxeBlower from '../../assets/images/games/stella-sora/items/deluxe-blower.png';
+import summerChillCrushedIce from '../../assets/images/games/stella-sora/items/summer-chill-crushed-ice.png';
+import fragrantIceDelight from '../../assets/images/games/stella-sora/items/fragrant-ice-delight.png';
+import sweetIcefurry from '../../assets/images/games/stella-sora/items/sweet-icefurry.png';
+import gildedCeramicBowl from '../../assets/images/games/stella-sora/items/gilded-ceramic-bowl.png';
+import blossomPorcelainCup from '../../assets/images/games/stella-sora/items/blossom-porcelain-cup.png';
+import mysticPotionKettle from '../../assets/images/games/stella-sora/items/mystic-potion-kettle.png';
+import stellaniteEnchantment from '../../assets/images/games/stella-sora/items/stellanite-enchantment.png';
+import moonlitCompanion from '../../assets/images/games/stella-sora/items/moonlit-companion.png';
+import shiningStar from '../../assets/images/games/stella-sora/items/shining-star.png';
+
+// Centralized gift image mapping (gift name from data -> image)
+const giftImageMap: Record<string, ImageMetadata> = {
+  // Photo Capturer category
+  'Card Photo Capturer': cardPhotoCapturer,
+  'Reflective Photo Capturer': reflectivePhotoCapturer,
+  'Ultra-Precision Photo Capturer': ultraPrecisionPhotoCapturer,
+
+  // Star category
+  'Rising Star': risingStar,
+  'Moonlit Companion': moonlitCompanion,
+  'Cosmic Form': cosmicForm,
+
+  // Candle category
+  'Love Candle': loveCandle,
+  'Blazing Wings': blazingWings,
+  'Fiery Honeypot': fieryHoneypot,
+
+  // Wind Spinner category
+  'Whisper Wind Spinner': whisperWindSpinner,
+  'Blazing Wind Spinner': blazingWindSpinner,
+  'Chilling Wind Spinner': chillingWindSpinner,
+
+  // Blower category
+  'Portable Blower': portableBlower,
+  'Exquisite Blower': exquisiteBlower,
+  'Deluxe Blower': deluxeBlower,
+
+  // Shaved Ice category
+  'Summer Chill Crushed Ice': summerChillCrushedIce,
+  'Fragrant Ice Delight': fragrantIceDelight,
+  'Sweet IceFurry': sweetIcefurry,
+
+  // Ceramic category
+  'Gilded Ceramic Bowl': gildedCeramicBowl,
+  'Blossom Porcelain Cup': blossomPorcelainCup,
+  'Mystic Potion Kettle': mysticPotionKettle,
+
+  // Enchantment category
+  'Stellanite Enchantment': stellaniteEnchantment,
+  'Emerging Talent': emergingTalent,
+  'Shining Star': shiningStar,
+};
+
+export interface Props {
+  giftName: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { giftName, alt, class: className = '', width = 48, height = 48 } = Astro.props;
+
+// Get the imported image object from the map
+const imageSrc = giftImageMap[giftName];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt || giftName}
+    width={width}
+    height={height}
+    class={`${className} gift-img`}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+) : (
+  <span class={`${className} gift-placeholder`} title={giftName}>{giftName}</span>
+)}
+
+<style>
+  .gift-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .gift-placeholder {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #888;
+  }
+</style>

@@ -1,0 +1,379 @@
+---
+// Stella Sora Dating Events Database Page
+import DatingLayout from '../../../layouts/stella-sora/DatingLayout.astro';
+import SSDatingImage from '../../../components/stella-sora/SSDatingImage.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import { datingEvents, datingLocations } from '../../../data/stella-sora/dating.js';
+
+// Calculate statistics
+const totalCharacters = datingEvents.length;
+const totalEvents = datingEvents.reduce((acc, char) => acc + char.events.length, 0);
+
+// Get events count by location
+const locationCounts = {};
+datingLocations.forEach(location => {
+  locationCounts[location] = 0;
+  datingEvents.forEach(char => {
+    char.events.forEach(event => {
+      if (event.clue.includes(location)) {
+        locationCounts[location]++;
+      }
+    });
+  });
+});
+
+// Sort characters alphabetically
+const sortedCharacters = [...datingEvents].sort((a, b) => a.character.localeCompare(b.character));
+
+// Generate structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Stella Sora Dating Events Guide',
+  description: 'Complete guide to all dating events in Stella Sora. Find unlock locations, dialogue choices, and event details for every character.',
+  url: new URL(Astro.url.pathname, Astro.site),
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://gachawiki.info/' },
+      { '@type': 'ListItem', position: 2, name: 'Stella Sora', item: 'https://gachawiki.info/guides/stella-sora/' },
+      { '@type': 'ListItem', position: 3, name: 'Dating Events', item: 'https://gachawiki.info/guides/stella-sora/dating/' },
+    ],
+  },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: totalEvents,
+    itemListElement: sortedCharacters.map((character, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Thing',
+        name: `${character.character} Dating Events`,
+        description: `${character.events.length} dating events for ${character.character}: ${character.events.map(e => e.name).join(', ')}`,
+        url: `https://gachawiki.info/guides/stella-sora/characters/${character.slug}`,
+      },
+    })),
+  },
+};
+
+// FAQ structured data for better SEO
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many dating events are in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are ${totalEvents} dating events in Stella Sora, with 2 events per character across ${totalCharacters} characters.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where can I unlock dating events in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Dating events can be unlocked by visiting these locations: ${datingLocations.join(', ')}. Each character has events tied to specific locations.`,
+      },
+    },
+  ],
+};
+---
+
+<DatingLayout
+  title="Stella Sora Dating Events Guide - All Character Dates & Unlock Locations"
+  description="Complete guide to all dating events in Stella Sora. Find unlock locations, dialogue choices, and event details for every character. Maximize your character relationships."
+  gameTitle="Dating Events Guide"
+>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
+
+  <section class="dating-page" aria-label="Dating Events Database">
+    <!-- Statistics Overview -->
+    <div class="dating-stats-overview" role="region" aria-label="Dating Statistics">
+      <h2>Dating Overview</h2>
+      <div class="dating-stats-grid">
+        <div class="dating-stat-card">
+          <div class="dating-stat-number" aria-label={`${totalCharacters} characters`}>{totalCharacters}</div>
+          <div class="dating-stat-label">Characters</div>
+        </div>
+        <div class="dating-stat-card">
+          <div class="dating-stat-number" aria-label={`${totalEvents} total events`}>{totalEvents}</div>
+          <div class="dating-stat-label">Total Events</div>
+        </div>
+        <div class="dating-stat-card">
+          <div class="dating-stat-number" aria-label={`${datingLocations.length} locations`}>{datingLocations.length}</div>
+          <div class="dating-stat-label">Locations</div>
+        </div>
+        <div class="dating-stat-card">
+          <div class="dating-stat-number" aria-label="2 events per character">2</div>
+          <div class="dating-stat-label">Events Per Character</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="dating-controls" role="search" aria-label="Filter dating events">
+      <div class="dating-controls-header">
+        <h3 class="dating-controls-title" id="filter-heading">Filter & Search</h3>
+        <button
+          class="dating-clear-btn"
+          id="clear-filters"
+          type="button"
+          aria-label="Clear all filters"
+        >
+          <span>Clear All</span>
+        </button>
+      </div>
+      <div class="dating-filter-row">
+        <div class="dating-search-container">
+          <label for="search-input" class="visually-hidden">Search characters or events</label>
+          <input
+            type="search"
+            class="dating-search-input"
+            id="search-input"
+            placeholder="Search by character name or event name..."
+            aria-describedby="filter-heading"
+            autocomplete="off"
+          />
+        </div>
+        <label for="location-filter" class="visually-hidden">Filter by location</label>
+        <select
+          class="dating-filter-select"
+          id="location-filter"
+          aria-describedby="filter-heading"
+        >
+          <option value="">All Locations</option>
+          {datingLocations.map(location => (
+            <option value={location}>{location} ({locationCounts[location]})</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <!-- Location Quick Tabs -->
+    <nav class="dating-location-tabs" role="tablist" aria-label="Filter by location">
+      <button
+        class="dating-location-tab active"
+        data-location=""
+        role="tab"
+        aria-selected="true"
+        type="button"
+      >All</button>
+      {datingLocations.map(location => (
+        <button
+          class="dating-location-tab"
+          data-location={location}
+          role="tab"
+          aria-selected="false"
+          type="button"
+        >{location}</button>
+      ))}
+    </nav>
+
+    <!-- Characters Section -->
+    <div class="dating-characters-section">
+      <header class="dating-section-header">
+        <h2>All Dating Events</h2>
+        <p class="dating-section-description">
+          Click on a character to view their page. Each character has 2 dating events that can be unlocked by visiting specific locations.
+        </p>
+      </header>
+
+      <div class="dating-characters-grid" id="characters-grid" role="list">
+        {sortedCharacters.map(character => (
+          <article
+            class="dating-character-card"
+            data-character={character.slug}
+            data-locations={character.events.map(e => {
+              const match = e.clue.match(/Visit the (.+) to unlock/);
+              return match ? match[1] : '';
+            }).join(',')}
+            role="listitem"
+          >
+            <header class="dating-character-header">
+              <div class="dating-character-avatar">
+                <SSCharacterSmallImage
+                  characterName={character.slug}
+                  alt={`${character.character} avatar`}
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div class="dating-character-info">
+                <h3 class="dating-character-name">
+                  <a href={`/guides/stella-sora/characters/${character.slug}`}>
+                    {character.character}
+                  </a>
+                </h3>
+                <span class="dating-events-count">{character.events.length} Dating Events</span>
+              </div>
+            </header>
+
+            <div class="dating-events-list">
+              {character.events.map((event, eventIndex) => (
+                <article class="dating-event-item" data-event-name={event.name.toLowerCase()}>
+                  <figure class="dating-event-image-container">
+                    <SSDatingImage
+                      imageName={event.image}
+                      alt={`${character.character} dating event: ${event.name}`}
+                      width={592}
+                      height={592}
+                    />
+                  </figure>
+                  <div class="dating-event-content">
+                    <h4 class="dating-event-name">{event.name}</h4>
+                    <dl class="dating-event-details">
+                      <div class="dating-event-detail">
+                        <dt class="dating-event-label">Unlock:</dt>
+                        <dd class="dating-event-clue">{event.clue}</dd>
+                      </div>
+                      <div class="dating-event-detail">
+                        <dt class="dating-event-label">Choice:</dt>
+                        <dd class="dating-event-choice">"{event.secondChoice}"</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div class="dating-no-results" id="no-results" style="display: none;" role="status" aria-live="polite">
+        <div class="dating-no-results-icon" aria-hidden="true">&#128557;</div>
+        <p class="dating-no-results-text">No matching dating events found</p>
+        <p class="dating-no-results-hint">Try adjusting your search or filter criteria</p>
+      </div>
+    </div>
+  </section>
+</DatingLayout>
+
+<style>
+  /* Visually hidden but accessible */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  // Dating Events Filter Script
+  function initializeDatingFilters() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const locationFilter = document.getElementById('location-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const locationTabs = document.querySelectorAll('.dating-location-tab');
+    const charactersGrid = document.getElementById('characters-grid');
+    const noResults = document.getElementById('no-results');
+    const characterCards = document.querySelectorAll('.dating-character-card');
+
+    if (!searchInput || !locationFilter || !charactersGrid) return;
+
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const selectedLocation = locationFilter.value;
+      let visibleCount = 0;
+
+      characterCards.forEach(card => {
+        const characterName = card.getAttribute('data-character') || '';
+        const locations = card.getAttribute('data-locations') || '';
+        const eventItems = card.querySelectorAll('.dating-event-item');
+
+        // Check if character matches search
+        let characterMatches = !searchTerm || characterName.includes(searchTerm);
+
+        // Check if any event name matches search
+        if (!characterMatches && searchTerm) {
+          eventItems.forEach(event => {
+            const eventName = event.getAttribute('data-event-name') || '';
+            if (eventName.includes(searchTerm)) {
+              characterMatches = true;
+            }
+          });
+        }
+
+        // Check location filter
+        const locationMatches = !selectedLocation || locations.includes(selectedLocation);
+
+        // Show/hide card
+        const shouldShow = characterMatches && locationMatches;
+        (card as HTMLElement).style.display = shouldShow ? '' : 'none';
+        if (shouldShow) visibleCount++;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? '' : 'none';
+      }
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', applyFilters);
+    locationFilter.addEventListener('change', () => {
+      applyFilters();
+      // Update active tab and aria-selected
+      locationTabs.forEach(tab => {
+        const tabLocation = tab.getAttribute('data-location') || '';
+        const isActive = tabLocation === locationFilter.value;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive.toString());
+      });
+    });
+
+    // Location tabs
+    locationTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const location = tab.getAttribute('data-location') || '';
+        locationFilter.value = location;
+        locationTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        applyFilters();
+      });
+    });
+
+    // Clear button
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        locationFilter.value = '';
+        locationTabs.forEach(tab => {
+          const isAll = tab.getAttribute('data-location') === '';
+          tab.classList.toggle('active', isAll);
+          tab.setAttribute('aria-selected', isAll.toString());
+        });
+        applyFilters();
+      });
+    }
+
+    // Initial filter
+    applyFilters();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDatingFilters);
+  } else {
+    initializeDatingFilters();
+  }
+</script>

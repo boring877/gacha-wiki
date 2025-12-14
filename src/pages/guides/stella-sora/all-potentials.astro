@@ -1,0 +1,971 @@
+---
+// Stella Sora All Potentials Database Page
+// Lists all character potentials organized by Main/Support with Build structure
+
+import AllPotentialsLayout from '../../../layouts/stella-sora/AllPotentialsLayout.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import SSPotentialAllImage from '../../../components/stella-sora/SSPotentialAllImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import { allPotentials, getAllCharacterNames } from '../../../data/stella-sora/all-potentials.js';
+
+// Get all character names
+const characterNames = getAllCharacterNames();
+
+// Calculate summary stats
+const totalCharacters = characterNames.length;
+let totalPotentials = 0;
+let mainPotentials = 0;
+let supportPotentials = 0;
+let commonPotentials = 0;
+
+// Get unique elements
+const elementsSet = new Set<string>();
+
+// Process all potentials
+for (const charName of characterNames) {
+  const charData = allPotentials[charName];
+  if (charData && charData.potentials) {
+    elementsSet.add(charData.element);
+    const pots = charData.potentials;
+    if (pots.mainCore) {
+      mainPotentials += pots.mainCore.length;
+      totalPotentials += pots.mainCore.length;
+    }
+    if (pots.mainNormal) {
+      mainPotentials += pots.mainNormal.length;
+      totalPotentials += pots.mainNormal.length;
+    }
+    if (pots.supportCore) {
+      supportPotentials += pots.supportCore.length;
+      totalPotentials += pots.supportCore.length;
+    }
+    if (pots.supportNormal) {
+      supportPotentials += pots.supportNormal.length;
+      totalPotentials += pots.supportNormal.length;
+    }
+    if (pots.common) {
+      commonPotentials += pots.common.length;
+      totalPotentials += pots.common.length;
+    }
+  }
+}
+
+const elements = Array.from(elementsSet).sort();
+
+const title = 'Stella Sora All Potentials Database - Character Potentials & Skills';
+const description = `Complete Stella Sora potentials database with ${totalPotentials} potentials across ${totalCharacters} characters. View all Main Skill, Support Skill builds with Core and Normal potentials.`;
+const gameTitle = 'All Potentials Database';
+
+// Helper to group normals by corner
+function groupByCorner(normals: any[]): Record<number, any[]> {
+  const groups: Record<number, any[]> = { 1: [], 2: [], 3: [] };
+  normals.forEach(n => {
+    if (n.corner && groups[n.corner]) {
+      groups[n.corner].push(n);
+    }
+  });
+  return groups;
+}
+
+// Helper to get potential by name from all potential arrays
+function getPotentialByName(pots: any, name: string): any {
+  const allPots = [
+    ...(pots.mainCore || []),
+    ...(pots.mainNormal || []),
+    ...(pots.supportCore || []),
+    ...(pots.supportNormal || []),
+    ...(pots.common || [])
+  ];
+  return allPots.find((p: any) => p.name === name);
+}
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora All Potentials Database',
+  description: description,
+  numberOfItems: totalPotentials,
+  itemListElement: characterNames.slice(0, 20).map((charName, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: `${allPotentials[charName]?.name || charName} Potentials`,
+      description: `${allPotentials[charName]?.element || ''} character potentials.`
+    }
+  }))
+};
+---
+
+<AllPotentialsLayout title={title} description={description} gameTitle={gameTitle}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+  <div class="all-potentials-index">
+    <!-- Summary Stats -->
+    <div class="potentials-summary">
+      <h2>Potentials Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalPotentials}</div>
+          <div class="summary-stat-label">Total Potentials</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{mainPotentials}</div>
+          <div class="summary-stat-label">Main Skill</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{supportPotentials}</div>
+          <div class="summary-stat-label">Support Skill</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{commonPotentials}</div>
+          <div class="summary-stat-label">Generic</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="potentials-filters" role="search" aria-label="Filter potentials by character or element">
+      <h2>Filter Potentials</h2>
+      <form class="filter-row" onsubmit="return false;" role="search">
+        <div class="filter-group">
+          <label for="character-filter">Character</label>
+          <input
+            type="search"
+            id="character-filter"
+            placeholder="Search character..."
+            autocomplete="off"
+            inputmode="search"
+            aria-label="Search for a character by name"
+          />
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter" aria-label="Filter by element type">
+            <option value="">All Elements</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" style="display: none;">
+      <p>No potentials found matching your filters.</p>
+    </div>
+
+    <!-- Character Potentials Sections -->
+    {characterNames.map(charName => {
+      const charData = allPotentials[charName];
+      if (!charData) return null;
+
+      const pots = charData.potentials || {};
+      const mainCore = pots.mainCore || [];
+      const mainNormal = pots.mainNormal || [];
+      const supportCore = pots.supportCore || [];
+      const supportNormal = pots.supportNormal || [];
+      const common = pots.common || [];
+
+      // Group normals by corner for builds
+      const mainNormalByCorner = groupByCorner(mainNormal);
+      const supportNormalByCorner = groupByCorner(supportNormal);
+
+      // Split cores into Build 1 (first 2) and Build 2 (next 2)
+      const mainCoreBuild1 = mainCore.slice(0, 2);
+      const mainCoreBuild2 = mainCore.slice(2, 4);
+      const supportCoreBuild1 = supportCore.slice(0, 2);
+      const supportCoreBuild2 = supportCore.slice(2, 4);
+
+      // Collect remaining normals (index 2+) for Generic section
+      const getRemaining = (normalByCorner: any) => {
+        const remaining: any[] = [];
+        for (const corner of [1, 2, 3]) {
+          const arr = normalByCorner[corner] || [];
+          remaining.push(...arr.slice(2));
+        }
+        return remaining;
+      };
+      const mainRemaining = getRemaining(mainNormalByCorner);
+      const supportRemaining = getRemaining(supportNormalByCorner);
+
+      // Get normals for a build, sorted by rarity (1 purple first, then 2 orange)
+      const getBuildNormals = (normalByCorner: any, buildIndex: number) => {
+        const normals: any[] = [];
+        for (const corner of [1, 2, 3]) {
+          const pot = normalByCorner[corner]?.[buildIndex];
+          if (pot) normals.push(pot);
+        }
+        return normals.sort((a, b) => a.rarity - b.rarity);
+      };
+      const mainBuild1Normals = getBuildNormals(mainNormalByCorner, 0);
+      const mainBuild2Normals = getBuildNormals(mainNormalByCorner, 1);
+      const supportBuild1Normals = getBuildNormals(supportNormalByCorner, 0);
+      const supportBuild2Normals = getBuildNormals(supportNormalByCorner, 1);
+
+      return (
+        <section
+          class="potential-character-section"
+          id={`character-${charName}`}
+          data-character={charData.name}
+          data-element={charData.element}
+          aria-label={`${charData.name} potentials`}
+        >
+          <!-- Character Header -->
+          <div class="potential-character-header">
+            <div class="character-icon-container">
+              <SSCharacterSmallImage
+                characterName={charName}
+                alt={charData.name}
+                width={64}
+                height={64}
+              />
+            </div>
+            <div class="potential-character-info">
+              <h2 class="potential-character-name">{charData.name}</h2>
+              <div class="potential-character-meta">
+                <span class={`potential-meta-badge element-badge element-${charData.element?.toLowerCase()}`}>
+                  <SSElementImage
+                    elementName={charData.element}
+                    width={20}
+                    height={20}
+                  />
+                  {charData.element}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main/Support Tabs -->
+          <div class="skill-tabs" role="tablist" aria-label="Skill type tabs">
+            <button class="skill-tab active" data-tab="main" role="tab" aria-selected="true" aria-controls={`main-content-${charName}`} id={`main-tab-${charName}`}>Main</button>
+            <button class="skill-tab" data-tab="support" role="tab" aria-selected="false" aria-controls={`support-content-${charName}`} id={`support-tab-${charName}`}>Support</button>
+          </div>
+
+          <!-- Main Tab Content -->
+          <div class="skill-tab-content active" data-content="main" role="tabpanel" id={`main-content-${charName}`} aria-labelledby={`main-tab-${charName}`}>
+            <!-- Build 1 -->
+            {charData.buildOrder?.main?.build1 ? (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Main Build 1</h3>
+                  <p class="build-description">{charData.buildOrder.main.build1.description}</p>
+                </div>
+                <div class="build-cards">
+                  {charData.buildOrder.main.build1.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div
+                        class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (mainCoreBuild1.length > 0 || mainBuild1Normals.length > 0) && (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Main Build 1</h3>
+                </div>
+                <div class="build-cards">
+                  {mainCoreBuild1.map((potential: any) => (
+                    <div
+                      class="potential-card-mini core"
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                  {mainBuild1Normals.map((normalPot: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${normalPot.rarity}`}
+                      data-potential={JSON.stringify(normalPot)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={normalPot.icon}
+                        rarity={normalPot.rarity}
+                        stype={normalPot.stype}
+                        alt={normalPot.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{normalPot.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Build 2 -->
+            {charData.buildOrder?.main?.build2 ? (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Main Build 2</h3>
+                  <p class="build-description">{charData.buildOrder.main.build2.description}</p>
+                </div>
+                <div class="build-cards">
+                  {charData.buildOrder.main.build2.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div
+                        class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (mainCoreBuild2.length > 0 || mainBuild2Normals.length > 0) && (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Main Build 2</h3>
+                </div>
+                <div class="build-cards">
+                  {mainCoreBuild2.map((potential: any) => (
+                    <div
+                      class="potential-card-mini core"
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                  {mainBuild2Normals.map((normalPot: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${normalPot.rarity}`}
+                      data-potential={JSON.stringify(normalPot)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={normalPot.icon}
+                        rarity={normalPot.rarity}
+                        stype={normalPot.stype}
+                        alt={normalPot.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{normalPot.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Generic (Main) - includes common + remaining mainNormal, sorted by rarity -->
+            {(charData.buildOrder?.mainGeneric || charData.buildOrder?.generic) ? (
+              <div class="build-section generic">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {(charData.buildOrder.mainGeneric || charData.buildOrder.generic).potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    return (
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (common.length > 0 || mainRemaining.length > 0) && (
+              <div class="build-section generic">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {[...common, ...mainRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${potential.rarity}`}
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Support Tab Content -->
+          <div class="skill-tab-content" data-content="support" role="tabpanel" id={`support-content-${charName}`} aria-labelledby={`support-tab-${charName}`}>
+            <!-- Build 1 -->
+            {charData.buildOrder?.support?.build1 ? (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Support Build 1</h3>
+                  <p class="build-description">{charData.buildOrder.support.build1.description}</p>
+                </div>
+                <div class="build-cards">
+                  {charData.buildOrder.support.build1.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div
+                        class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (supportCoreBuild1.length > 0 || supportBuild1Normals.length > 0) && (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Support Build 1</h3>
+                </div>
+                <div class="build-cards">
+                  {supportCoreBuild1.map((potential: any) => (
+                    <div
+                      class="potential-card-mini core"
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                  {supportBuild1Normals.map((normalPot: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${normalPot.rarity}`}
+                      data-potential={JSON.stringify(normalPot)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={normalPot.icon}
+                        rarity={normalPot.rarity}
+                        stype={normalPot.stype}
+                        alt={normalPot.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{normalPot.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Build 2 -->
+            {charData.buildOrder?.support?.build2 ? (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Support Build 2</h3>
+                  <p class="build-description">{charData.buildOrder.support.build2.description}</p>
+                </div>
+                <div class="build-cards">
+                  {charData.buildOrder.support.build2.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div
+                        class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (supportCoreBuild2.length > 0 || supportBuild2Normals.length > 0) && (
+              <div class="build-section">
+                <div class="build-header">
+                  <h3 class="build-title">{charData.name}: Support Build 2</h3>
+                </div>
+                <div class="build-cards">
+                  {supportCoreBuild2.map((potential: any) => (
+                    <div
+                      class="potential-card-mini core"
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                  {supportBuild2Normals.map((normalPot: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${normalPot.rarity}`}
+                      data-potential={JSON.stringify(normalPot)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={normalPot.icon}
+                        rarity={normalPot.rarity}
+                        stype={normalPot.stype}
+                        alt={normalPot.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{normalPot.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Generic (Support) - includes common + remaining supportNormal, sorted by rarity -->
+            {(charData.buildOrder?.supportGeneric || charData.buildOrder?.generic) ? (
+              <div class="build-section generic">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {(charData.buildOrder.supportGeneric || charData.buildOrder.generic).potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    return (
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={120}
+                          height={120}
+                        />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (common.length > 0 || supportRemaining.length > 0) && (
+              <div class="build-section generic">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {[...common, ...supportRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
+                    <div
+                      class={`potential-card-mini normal rarity-${potential.rarity}`}
+                      data-potential={JSON.stringify(potential)}
+                    >
+                      <div class="card-level">1</div>
+                      <SSPotentialAllImage
+                        icon={potential.icon}
+                        rarity={potential.rarity}
+                        stype={potential.stype}
+                        alt={potential.name}
+                        width={120}
+                        height={120}
+                      />
+                      <span class="card-name">{potential.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    })}
+
+    <!-- Detail Panel (shared, positioned by JS) -->
+    <div id="potential-detail-panel" class="potential-detail-panel" role="region" aria-label="Potential details" aria-live="polite">
+      <div class="detail-header">
+        <div class="detail-icon" id="detail-icon" aria-hidden="true"></div>
+        <div class="detail-info">
+          <h3 class="detail-name" id="detail-name"></h3>
+          <div class="detail-description" id="detail-description"></div>
+        </div>
+      </div>
+      <div class="level-selector" id="level-selector" style="display: none;" role="group" aria-label="Level selector">
+        <span class="level-label" id="level-label-text">Level:</span>
+        <button class="level-btn" id="level-minus" aria-label="Decrease level" type="button">-</button>
+        <input type="number" class="level-input" id="level-input" min="1" value="1" aria-labelledby="level-label-text" inputmode="numeric" />
+        <button class="level-btn" id="level-plus" aria-label="Increase level" type="button">+</button>
+        <span class="level-max" id="level-max" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+</AllPotentialsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Detail panel functionality
+    const detailPanel = document.getElementById('potential-detail-panel') as HTMLElement;
+    const detailName = document.getElementById('detail-name') as HTMLElement;
+    const detailDescription = document.getElementById('detail-description') as HTMLElement;
+    const detailIcon = document.getElementById('detail-icon') as HTMLElement;
+    const levelSelector = document.getElementById('level-selector') as HTMLElement;
+    const levelInput = document.getElementById('level-input') as HTMLInputElement;
+    const levelMinus = document.getElementById('level-minus') as HTMLButtonElement;
+    const levelPlus = document.getElementById('level-plus') as HTMLButtonElement;
+    const levelMax = document.getElementById('level-max') as HTMLElement;
+
+    let currentPotential: any = null;
+    let currentCard: HTMLElement | null = null;
+    let maxLevel = 1;
+
+    // Parse description with params and color tags
+    function parseDescription(desc: string, params: string[], level: number): string {
+      if (!desc) return '';
+
+      let parsed = desc;
+
+      // Replace &Param1&, &Param2&, etc. with actual values
+      params.forEach((param, index) => {
+        const placeholder = `&Param${index + 1}&`;
+        let value = param;
+
+        // Check if param has level scaling (contains "/")
+        if (typeof param === 'string' && param.includes('/')) {
+          const levels = param.split('/');
+          value = levels[Math.min(level - 1, levels.length - 1)] || levels[0];
+        }
+
+        parsed = parsed.split(placeholder).join(`<span class="color-cyan">${value}</span>`);
+      });
+
+      // Parse color tags
+      parsed = parsed
+        .replace(/<color=#0abec5>(.*?)<\/color>/gi, '<span class="color-cyan">$1</span>')
+        .replace(/<color=#ec6d21>(.*?)<\/color>/gi, '<span class="color-orange">$1</span>')
+        .replace(/<color=#fbbf24>(.*?)<\/color>/gi, '<span class="color-yellow">$1</span>')
+        .replace(/<color=#34d399>(.*?)<\/color>/gi, '<span class="color-green">$1</span>')
+        .replace(/<color=#a78bfa>(.*?)<\/color>/gi, '<span class="color-purple">$1</span>')
+        .replace(/<color=#60a5fa>(.*?)<\/color>/gi, '<span class="color-blue">$1</span>')
+        .replace(/<color=[^>]+>(.*?)<\/color>/gi, '<span class="color-cyan">$1</span>');
+
+      // Parse skill references
+      parsed = parsed.replace(/##([^#]+)#(\d+)#/g, '<span class="color-cyan">$1</span>');
+
+      // Replace vertical tab with line break
+      parsed = parsed.replace(/\u000b/g, '<br>');
+
+      return parsed;
+    }
+
+    // Get max level from params
+    function getMaxLevel(params: string[]): number {
+      let max = 1;
+      params.forEach(param => {
+        if (typeof param === 'string' && param.includes('/')) {
+          const levels = param.split('/').length;
+          if (levels > max) max = levels;
+        }
+      });
+      return max;
+    }
+
+    // Update description with current level
+    function updateDescription() {
+      if (!currentPotential) return;
+      const level = parseInt(levelInput.value) || 1;
+      detailDescription.innerHTML = parseDescription(
+        currentPotential.description,
+        currentPotential.params || [],
+        level
+      );
+
+      // Update card level badge
+      if (currentCard) {
+        const levelBadge = currentCard.querySelector('.card-level');
+        if (levelBadge) {
+          levelBadge.textContent = level.toString();
+        }
+      }
+    }
+
+    // Show detail panel for a potential
+    function showDetail(card: HTMLElement, potential: any) {
+      currentPotential = potential;
+      currentCard = card;
+
+      // Set name
+      detailName.textContent = potential.name;
+
+      // Check if this is a Core potential (corner === null means Core)
+      const isCore = potential.corner === null;
+
+      // Get max level - Core potentials don't have levels
+      maxLevel = isCore ? 1 : getMaxLevel(potential.params || []);
+
+      // Show/hide level selector - never show for Core potentials
+      if (!isCore && maxLevel > 1) {
+        levelSelector.style.display = 'flex';
+        levelInput.max = maxLevel.toString();
+        levelMax.textContent = `/ ${maxLevel}`;
+
+        // Reset to level 1 or keep current
+        const currentLevel = parseInt(levelInput.value) || 1;
+        levelInput.value = Math.min(currentLevel, maxLevel).toString();
+      } else {
+        levelSelector.style.display = 'none';
+        levelInput.value = '1';
+      }
+
+      // Update description
+      updateDescription();
+
+      // Copy icon from card
+      const cardIcon = card.querySelector('.potential-all-image-wrapper');
+      if (cardIcon) {
+        detailIcon.innerHTML = cardIcon.outerHTML;
+      }
+
+      // Position panel after the card's build-cards container
+      const buildCards = card.closest('.build-cards');
+      if (buildCards && buildCards.parentNode) {
+        // Remove from current position if exists
+        if (detailPanel.parentNode) {
+          detailPanel.classList.remove('active');
+        }
+
+        // Insert after build-cards
+        buildCards.parentNode.insertBefore(detailPanel, buildCards.nextSibling);
+        detailPanel.classList.add('active');
+      }
+    }
+
+    // Hide detail panel
+    function hideDetail() {
+      detailPanel.classList.remove('active');
+      currentPotential = null;
+      currentCard = null;
+    }
+
+    // Card click handler
+    document.querySelectorAll('.potential-card-mini').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const el = card as HTMLElement;
+        const potentialData = el.dataset.potential;
+
+        if (!potentialData) return;
+
+        try {
+          const potential = JSON.parse(potentialData);
+
+          // If clicking same card, toggle off
+          if (currentCard === el && detailPanel.classList.contains('active')) {
+            hideDetail();
+          } else {
+            showDetail(el, potential);
+          }
+        } catch (err) {
+          console.error('Error parsing potential data:', err);
+        }
+      });
+    });
+
+    // Level controls
+    levelMinus.addEventListener('click', () => {
+      const current = parseInt(levelInput.value) || 1;
+      if (current > 1) {
+        levelInput.value = (current - 1).toString();
+        updateDescription();
+      }
+    });
+
+    levelPlus.addEventListener('click', () => {
+      const current = parseInt(levelInput.value) || 1;
+      if (current < maxLevel) {
+        levelInput.value = (current + 1).toString();
+        updateDescription();
+      }
+    });
+
+    levelInput.addEventListener('change', () => {
+      let value = parseInt(levelInput.value) || 1;
+      value = Math.max(1, Math.min(value, maxLevel));
+      levelInput.value = value.toString();
+      updateDescription();
+    });
+
+    // Tab switching with accessibility
+    document.querySelectorAll('.potential-character-section').forEach(section => {
+      const tabs = section.querySelectorAll('.skill-tab');
+      const contents = section.querySelectorAll('.skill-tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetTab = (tab as HTMLElement).dataset.tab;
+
+          // Update tab styles and aria-selected
+          tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          // Update content visibility
+          contents.forEach(content => {
+            const el = content as HTMLElement;
+            if (el.dataset.content === targetTab) {
+              el.classList.add('active');
+            } else {
+              el.classList.remove('active');
+            }
+          });
+        });
+
+        // Keyboard navigation for tabs
+        tab.addEventListener('keydown', (e) => {
+          const event = e as KeyboardEvent;
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            const tabsArray = Array.from(tabs) as HTMLElement[];
+            const currentIndex = tabsArray.indexOf(tab as HTMLElement);
+            let nextIndex: number;
+
+            if (event.key === 'ArrowRight') {
+              nextIndex = (currentIndex + 1) % tabsArray.length;
+            } else {
+              nextIndex = (currentIndex - 1 + tabsArray.length) % tabsArray.length;
+            }
+
+            tabsArray[nextIndex].focus();
+            tabsArray[nextIndex].click();
+          }
+        });
+      });
+    });
+
+    // Filtering
+    const characterFilter = document.getElementById('character-filter') as HTMLInputElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const sections = document.querySelectorAll('.potential-character-section');
+    const noResults = document.querySelector('.no-results') as HTMLElement;
+
+    function applyFilters() {
+      const selectedCharacter = characterFilter?.value.trim().toLowerCase() || '';
+      const selectedElement = elementFilter?.value || '';
+
+      let visibleCount = 0;
+
+      sections.forEach((section) => {
+        const el = section as HTMLElement;
+        const charName = el.dataset.character?.toLowerCase() || '';
+        const charElement = el.dataset.element || '';
+
+        const matchesCharacter = !selectedCharacter || charName.includes(selectedCharacter);
+        const matchesElement = !selectedElement || charElement === selectedElement;
+
+        if (matchesCharacter && matchesElement) {
+          el.style.display = '';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    characterFilter?.addEventListener('input', applyFilters);
+    elementFilter?.addEventListener('change', applyFilters);
+  });
+</script>

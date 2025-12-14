@@ -1,0 +1,61 @@
+---
+// Stella Sora Rarity Image Component
+import { Image } from 'astro:assets';
+
+// Import character rarity images
+import rarity5 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_5.png';
+import rarity4 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_4.png';
+import rarity3 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_3.png';
+import rarity2 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_2.png';
+
+// Import item rarity images
+import itemRarity5 from '../../assets/images/games/stella-sora/rarity/rare_item_a_5.png';
+import itemRarity4 from '../../assets/images/games/stella-sora/rarity/rare_item_a_4.png';
+import itemRarity3 from '../../assets/images/games/stella-sora/rarity/rare_item_a_3.png';
+
+const characterRarityMap: Record<number, ImageMetadata> = {
+  5: rarity5,
+  4: rarity4,
+  3: rarity3,
+  2: rarity2,
+};
+
+const itemRarityMap: Record<number, ImageMetadata> = {
+  5: itemRarity5,
+  4: itemRarity4,
+  3: itemRarity3,
+};
+
+export interface Props {
+  rarity: number;
+  type?: 'character' | 'item';
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { rarity, type = 'character', alt, class: className = '', width = 24, height = 24 } = Astro.props;
+
+const rarityMap = type === 'item' ? itemRarityMap : characterRarityMap;
+const fallback = type === 'item' ? itemRarityMap[4] : characterRarityMap[4];
+const imageSrc = rarityMap[rarity] || fallback;
+---
+
+<Image
+  src={imageSrc}
+  alt={alt || `${rarity}-Star ${type}`}
+  width={width}
+  height={height}
+  class={`${className} rarity-img`}
+  loading="lazy"
+  format="webp"
+  quality={95}
+/>
+
+<style>
+  .rarity-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

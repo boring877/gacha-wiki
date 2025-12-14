@@ -1,0 +1,547 @@
+/* Stella Sora Disc Support Notes Page Styles
+ * Styles for the disc support notes database page
+ */
+
+/* Main Container */
+.support-notes-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Summary Section */
+.support-notes-summary {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.support-notes-summary h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.summary-stat {
+  text-align: center;
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+}
+
+.summary-stat-value {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Info Note */
+.support-info-note {
+  margin-top: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: rgba(100, 149, 237, 0.1);
+  border: 1px solid rgba(100, 149, 237, 0.3);
+  border-radius: var(--ss-radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ss-text-secondary);
+}
+
+.support-info-note strong {
+  color: var(--ss-text-primary);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+/* Filter Section */
+.support-notes-filters {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.support-notes-filters h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  min-width: 150px;
+  min-height: 44px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter-group select {
+  cursor: pointer;
+}
+
+.filter-group-wide {
+  flex: 1 1 100%;
+}
+
+/* Material Checkboxes */
+.material-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+  padding: var(--ss-spacing-sm);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+}
+
+.material-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-xs);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  min-height: 44px; /* Touch-friendly height */
+}
+
+.material-checkbox:hover {
+  border-color: var(--ss-accent);
+  background: rgba(100, 149, 237, 0.1);
+}
+
+.material-checkbox:has(input:checked) {
+  border-color: var(--ss-accent);
+  background: rgba(100, 149, 237, 0.2);
+  color: var(--ss-text-primary);
+}
+
+.material-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.material-checkbox img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.material-checkbox span {
+  white-space: nowrap;
+}
+
+.filter-group input[type="text"] {
+  min-width: 200px;
+}
+
+.filter-group input[type="text"]::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Clear Filters Button */
+.clear-filters-btn {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.clear-filters-btn:hover {
+  background: var(--ss-bg-secondary);
+  border-color: var(--ss-accent);
+}
+
+/* Support Notes Grid */
+.support-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* Support Notes Card */
+.support-notes-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rarity border colors */
+.support-notes-card.rarity-3 {
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.support-notes-card.rarity-4 {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.support-notes-card.rarity-5 {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Card Header */
+.support-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.support-icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--ss-radius-md);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--ss-bg-tertiary);
+}
+
+.support-icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.support-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.support-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  margin: 0 0 var(--ss-spacing-xs) 0;
+  word-wrap: break-word;
+}
+
+.support-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  align-items: center;
+}
+
+.support-meta-badge {
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.support-meta-badge.element {
+  background: rgba(100, 100, 100, 0.2);
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.support-meta-badge.element img {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.support-meta-badge.element span {
+  line-height: 1;
+}
+
+/* Notes by Disc Level Section */
+.support-levels-section {
+  margin-top: auto;
+}
+
+.support-levels-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.support-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ss-spacing-xs);
+}
+
+.support-level-item {
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs);
+  text-align: center;
+}
+
+.support-level-num {
+  font-size: 0.625rem;
+  color: var(--ss-text-muted);
+  margin-bottom: 2px;
+}
+
+.support-level-materials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.level-material-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+}
+
+.level-material-row img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.level-material-qty {
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: var(--ss-spacing-xl);
+  color: var(--ss-text-muted);
+  font-size: 1rem;
+}
+
+/* Materials Legend */
+.materials-legend {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.materials-legend h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.materials-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.material-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  padding: var(--ss-spacing-sm);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+}
+
+.material-legend-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.material-legend-name {
+  font-size: 0.875rem;
+  color: var(--ss-text-primary);
+  font-weight: var(--ss-font-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .support-notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .support-notes-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-md);
+  }
+
+  .support-notes-filters,
+  .support-notes-summary,
+  .materials-legend {
+    padding: var(--ss-spacing-md);
+  }
+
+  .filter-row {
+    flex-direction: column;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group select,
+  .filter-group input[type="text"] {
+    width: 100%;
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+
+  /* Mobile checkbox improvements */
+  .material-checkboxes {
+    gap: var(--ss-spacing-xs);
+  }
+
+  .material-checkbox {
+    flex: 1 1 calc(50% - var(--ss-spacing-xs));
+    min-width: 140px;
+    justify-content: center;
+    padding: var(--ss-spacing-sm);
+  }
+
+  .support-notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .support-notes-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .support-levels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .materials-legend-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .support-notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .support-notes-index {
+    padding: var(--ss-spacing-md) var(--ss-spacing-sm);
+  }
+
+  .support-notes-filters,
+  .support-notes-summary,
+  .materials-legend {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .support-notes-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .support-icon-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .support-card-name {
+    font-size: 1rem;
+  }
+
+  .support-levels-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .support-level-item {
+    padding: 4px;
+  }
+
+  .materials-legend-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .material-legend-item img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .material-legend-name {
+    font-size: 0.75rem;
+  }
+}

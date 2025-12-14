@@ -1,0 +1,402 @@
+/* Stella Sora Character Personal Information Styles */
+
+/* ========================================
+   CHARACTER INFO PAGE LAYOUT
+   ======================================== */
+
+.character-info-page {
+  padding: var(--ss-spacing-md);
+}
+
+/* Stats Overview Section */
+.character-info-stats {
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.character-info-stats h2 {
+  color: var(--ss-text-primary);
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.character-info-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.character-info-stat-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  text-align: center;
+}
+
+.character-info-stat-number {
+  font-size: 2rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.character-info-stat-label {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   FILTER CONTROLS
+   ======================================== */
+
+.character-info-controls {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.character-info-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  align-items: center;
+}
+
+.character-info-search-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.character-info-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+}
+
+.character-info-search-input:focus {
+  outline: none;
+  border-color: var(--ss-primary);
+}
+
+.character-info-search-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.character-info-filter-select {
+  padding: 0.75rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.character-info-filter-select:focus {
+  outline: none;
+  border-color: var(--ss-primary);
+}
+
+/* ========================================
+   CHARACTER INFO CARDS GRID
+   ======================================== */
+
+.character-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* ========================================
+   INDIVIDUAL CHARACTER INFO CARD
+   ======================================== */
+
+.character-info-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  overflow: hidden;
+}
+
+/* Card Header with Character Image and Name */
+.character-info-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.character-info-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--ss-border);
+}
+
+.character-info-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-info-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.character-info-name {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0 0 var(--ss-spacing-xs) 0;
+}
+
+.character-info-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+}
+
+.character-info-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.7rem;
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+}
+
+/* Badge with icon (rarity/element) */
+.character-info-badge-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.7rem;
+  font-weight: var(--ss-font-medium);
+  text-transform: uppercase;
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+}
+
+.character-info-badge-with-icon img {
+  height: 16px;
+  width: auto;
+}
+
+/* Card Body with Personal Info */
+.character-info-card-body {
+  padding: var(--ss-spacing-md);
+}
+
+/* Description */
+.character-info-description {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: var(--ss-spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Info Grid for personal details */
+.character-info-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ss-spacing-sm);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.character-info-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.character-info-detail-label {
+  font-size: 0.7rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.character-info-detail-value {
+  font-size: 0.875rem;
+  color: var(--ss-text-primary);
+  font-weight: var(--ss-font-medium);
+}
+
+/* Voice Actor Section */
+.character-info-voice-actors {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-sm);
+  margin-top: var(--ss-spacing-sm);
+}
+
+.character-info-va-title {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.character-info-va-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--ss-spacing-sm);
+}
+
+.character-info-va-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-info-va-lang {
+  font-size: 0.65rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+}
+
+.character-info-va-name {
+  font-size: 0.8rem;
+  color: var(--ss-text-primary);
+}
+
+.character-info-va-localized {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+}
+
+/* Tags Section */
+.character-info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  margin-top: var(--ss-spacing-sm);
+}
+
+.character-info-tag {
+  padding: 0.15rem 0.4rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.7rem;
+  color: var(--ss-text-secondary);
+}
+
+/* ========================================
+   NO RESULTS STATE
+   ======================================== */
+
+.character-info-no-results {
+  text-align: center;
+  padding: var(--ss-spacing-xl) var(--ss-spacing-lg);
+  color: var(--ss-text-secondary);
+}
+
+.character-info-no-results h3 {
+  color: var(--ss-text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  .character-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .character-info-filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .character-info-search-container {
+    min-width: 100%;
+  }
+
+  .character-info-filter-select {
+    width: 100%;
+  }
+
+  .character-info-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .character-info-page {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .character-info-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .character-info-stat-number {
+    font-size: 1.5rem;
+  }
+
+  .character-info-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .character-info-card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .character-info-badges {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .character-info-badge-with-icon,
+  .character-info-badges .position-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .character-info-badge-with-icon img {
+    height: 14px;
+  }
+
+  .character-info-name {
+    font-size: 1.1rem;
+  }
+
+  .character-info-description {
+    font-size: 0.8rem;
+  }
+
+  .character-info-details {
+    grid-template-columns: 1fr;
+  }
+
+  .character-info-va-grid {
+    grid-template-columns: 1fr;
+  }
+}

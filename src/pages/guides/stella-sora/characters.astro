@@ -2,13 +2,15 @@
 // Stella Sora Characters Database Page
 import CharactersLayout from '../../../layouts/stella-sora/CharactersLayout.astro';
 import CharacterFilterBar from '../../../components/stella-sora/CharacterFilterBar.astro';
-import SSSortComponent from '../../../components/stella-sora/SSSortComponent.astro';
-import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
 import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
 import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
 
-// Sort characters by HP initially (descending)
-const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => b.stats.hp - a.stats.hp);
+// Sort characters by Rarity initially (5-Star first, then 4-Star, then 3-Star)
+const rarityOrder = { '5-Star': 0, '4-Star': 1, '3-Star': 2 };
+const sortedCharacters = [...STELLA_SORA_CHARACTERS].sort((a, b) => {
+  return (rarityOrder[a.rarity] || 99) - (rarityOrder[b.rarity] || 99);
+});
 
 // Generate structured data for character database
 const structuredData = {
@@ -85,8 +87,42 @@ const structuredData = {
           <!-- Filter Bar -->
           <CharacterFilterBar showFilters={true} />
 
-          <!-- Sort Component -->
-          <SSSortComponent />
+          <!-- Sort Controls -->
+          <div class="ss-sort-component">
+            <div class="sort-section">
+              <h3 class="sort-title">Sort By</h3>
+              <div class="sort-controls">
+                <button class="sort-btn" data-sort="rarity">
+                  Rarity
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="name">
+                  Name
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="hp">
+                  HP
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="attack">
+                  ATK
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="defense">
+                  DEF
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="critRate">
+                  Crit%
+                  <span class="sort-arrow"></span>
+                </button>
+                <button class="sort-btn" data-sort="critDmg">
+                  Crit DMG
+                  <span class="sort-arrow"></span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -157,12 +193,14 @@ const structuredData = {
                     <td>{index + 1}</td>
                     <td>
                       <div class="character-image-container">
-                        <SSCharacterImage
-                          imageName={character.image}
+                        <SSCharacterSmallImage
+                          characterName={character.slug}
                           alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
                           class="character-img"
-                          width={500}
-                          height={500}
+                          width={200}
+                          height={200}
+                          quality={100}
+                          format="png"
                         />
                       </div>
                     </td>
@@ -235,12 +273,14 @@ const structuredData = {
                 {/* Card Header: Image + Basic Info */}
                 <div class="mobile-card-header">
                   <div class="character-image-container">
-                    <SSCharacterImage
-                      imageName={character.image}
+                    <SSCharacterSmallImage
+                      characterName={character.slug}
                       alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
                       class="character-img"
-                      width={500}
-                      height={500}
+                      width={200}
+                      height={200}
+                      quality={100}
+                      format="png"
                     />
                   </div>
                   <div class="mobile-card-title-group">
@@ -383,32 +423,47 @@ const structuredData = {
     initializeCharacterNavigation();
   }
 
-  // Character Filtering Script
-  // --- Filter Component State ---
-  let originalRows = [];
-  let originalCards = [];
+  // ==========================================
+  // Combined Filter & Sort Script
+  // ==========================================
 
-  // DOM references for filter elements
-  let searchInput, rarityFilter, elementFilter, roleFilter;
+  // State
+  let originalRows: HTMLElement[] = [];
+  let originalCards: HTMLElement[] = [];
+  let currentSortKey: string | null = null;
+  let currentSortDirection: 'asc' | 'desc' | 'normal' = 'normal';
 
-  function initializeCharacterFilters() {
+  // DOM references
+  let tableBody: HTMLElement | null;
+  let mobileCardsContainer: HTMLElement | null;
+  let searchInput: HTMLInputElement | null;
+  let rarityFilter: HTMLSelectElement | null;
+  let elementFilter: HTMLSelectElement | null;
+  let roleFilter: HTMLSelectElement | null;
+
+  // Rarity order for sorting (5-Star first)
+  const rarityOrder: Record<string, number> = { '5-Star': 0, '4-Star': 1, '3-Star': 2 };
+
+  function initializeDatabase() {
     // Get DOM elements
-    searchInput = document.getElementById('search-input');
-    rarityFilter = document.getElementById('rarity-filter');
-    elementFilter = document.getElementById('element-filter');
-    roleFilter = document.getElementById('role-filter');
+    tableBody = document.getElementById('character-table-body');
+    mobileCardsContainer = document.getElementById('character-cards');
+    searchInput = document.getElementById('search-input') as HTMLInputElement;
+    rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
 
-    // Store original rows and cards for filtering
-    const tableBody = document.getElementById('character-table-body');
-    const mobileCardsContainer = document.getElementById('character-cards');
+    if (!tableBody || !mobileCardsContainer) {
+      console.error('Required elements not found');
+      return;
+    }
 
-    originalRows = tableBody ? Array.from(tableBody.querySelectorAll('.character-row')) : [];
-    originalCards = mobileCardsContainer
-      ? Array.from(mobileCardsContainer.querySelectorAll('.character-card'))
-      : [];
+    // Store original rows and cards
+    originalRows = Array.from(tableBody.querySelectorAll('.character-row'));
+    originalCards = Array.from(mobileCardsContainer.querySelectorAll('.character-card'));
 
     if (!originalRows.length) {
-      console.log('No character rows found for filtering');
+      console.log('No character rows found');
       return;
     }
 
@@ -421,64 +476,224 @@ const structuredData = {
     // Setup Clear All button
     const globalClearBtn = document.getElementById('global-clear-btn');
     if (globalClearBtn) {
-      globalClearBtn.addEventListener('click', resetFilters);
+      globalClearBtn.addEventListener('click', resetAll);
     }
 
-    // Apply initial filters
-    applyFilters();
+    // Setup sort buttons
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    sortButtons.forEach(button => {
+      button.addEventListener('click', () => handleSortClick(button as HTMLElement));
+    });
+
+    // Apply initial sort by rarity
+    sortByRarity();
   }
+
+  // ==========================================
+  // Filter Functions
+  // ==========================================
 
   function applyFilters() {
-    const search = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const rarity = rarityFilter ? rarityFilter.value : '';
-    const element = elementFilter ? elementFilter.value : '';
-    const role = roleFilter ? roleFilter.value : '';
+    const search = searchInput?.value.toLowerCase().trim() || '';
+    const rarity = rarityFilter?.value || '';
+    const element = elementFilter?.value || '';
+    const role = roleFilter?.value || '';
 
-    // Apply filters to rows and cards
     originalRows.forEach((row, index) => {
       const card = originalCards[index];
-      const showRow = shouldShowCharacter(row, search, rarity, element, role);
-
-      if (row) (row as HTMLElement).style.display = showRow ? '' : 'none';
-      if (card) (card as HTMLElement).style.display = showRow ? '' : 'none';
+      const show = shouldShowCharacter(row, search, rarity, element, role);
+      row.style.display = show ? '' : 'none';
+      if (card) card.style.display = show ? '' : 'none';
     });
+
+    // Re-apply sort after filtering
+    if (currentSortKey && currentSortDirection !== 'normal') {
+      applySort(currentSortKey);
+    }
   }
 
-  function shouldShowCharacter(row, search, rarity, element, role) {
-    if (search && !row.dataset.name.toLowerCase().includes(search)) {
-      return false;
-    }
-    if (rarity && row.dataset.rarity !== rarity) {
-      return false;
-    }
-    if (element && row.dataset.element !== element) {
-      return false;
-    }
-    if (role && row.dataset.role !== role) {
-      return false;
-    }
+  function shouldShowCharacter(row: HTMLElement, search: string, rarity: string, element: string, role: string): boolean {
+    if (search && !row.dataset.name?.toLowerCase().includes(search)) return false;
+    if (rarity && row.dataset.rarity !== rarity) return false;
+    if (element && row.dataset.element !== element) return false;
+    if (role && row.dataset.role !== role) return false;
     return true;
   }
 
-  function resetFilters() {
+  // ==========================================
+  // Sort Functions
+  // ==========================================
+
+  function handleSortClick(button: HTMLElement) {
+    const sortKey = button.dataset.sort;
+    if (!sortKey) return;
+
+    if (currentSortKey !== sortKey) {
+      // New sort field
+      currentSortKey = sortKey;
+      currentSortDirection = 'desc';
+    } else {
+      // Cycle: desc -> asc -> normal
+      if (currentSortDirection === 'desc') {
+        currentSortDirection = 'asc';
+      } else if (currentSortDirection === 'asc') {
+        currentSortDirection = 'normal';
+        currentSortKey = null;
+      } else {
+        currentSortDirection = 'desc';
+      }
+    }
+
+    updateSortButtons();
+
+    if (currentSortKey) {
+      applySort(currentSortKey);
+    } else {
+      sortByRarity(); // Default sort
+    }
+  }
+
+  function updateSortButtons() {
+    const sortButtons = document.querySelectorAll('.sort-btn');
+    sortButtons.forEach(button => {
+      button.classList.remove('active');
+      const arrow = button.querySelector('.sort-arrow');
+      if (arrow) arrow.textContent = '';
+    });
+
+    if (currentSortKey && currentSortDirection !== 'normal') {
+      const activeBtn = document.querySelector(`[data-sort="${currentSortKey}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        const arrow = activeBtn.querySelector('.sort-arrow');
+        if (arrow) {
+          arrow.textContent = currentSortDirection === 'desc' ? ' ↑' : ' ↓';
+        }
+      }
+    }
+  }
+
+  function applySort(sortKey: string) {
+    if (!tableBody || !mobileCardsContainer) return;
+
+    // Get visible rows
+    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+
+    // Sort rows
+    const sortedRows = [...visibleRows].sort((a, b) => {
+      let valueA: any, valueB: any;
+
+      switch (sortKey) {
+        case 'rarity':
+          valueA = rarityOrder[a.dataset.rarity || ''] ?? 99;
+          valueB = rarityOrder[b.dataset.rarity || ''] ?? 99;
+          return currentSortDirection === 'asc' ? valueB - valueA : valueA - valueB;
+
+        case 'name':
+          valueA = a.querySelector('.character-name')?.textContent || '';
+          valueB = b.querySelector('.character-name')?.textContent || '';
+          return currentSortDirection === 'asc'
+            ? valueA.localeCompare(valueB)
+            : valueB.localeCompare(valueA);
+
+        case 'hp':
+        case 'attack':
+        case 'defense':
+        case 'critRate':
+        case 'critDmg':
+          const cellA = a.querySelector(`[data-${sortKey}]`) as HTMLElement;
+          const cellB = b.querySelector(`[data-${sortKey}]`) as HTMLElement;
+          valueA = parseFloat(cellA?.dataset[sortKey] || '0');
+          valueB = parseFloat(cellB?.dataset[sortKey] || '0');
+          return currentSortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+
+        default:
+          return 0;
+      }
+    });
+
+    // Get corresponding cards
+    const sortedCards = sortedRows.map(row => {
+      const idx = originalRows.indexOf(row);
+      return originalCards[idx];
+    }).filter(Boolean);
+
+    // Re-append in sorted order
+    tableBody.innerHTML = '';
+    sortedRows.forEach((row, index) => {
+      const numberCell = row.querySelector('td:first-child');
+      if (numberCell) numberCell.textContent = String(index + 1);
+      tableBody!.appendChild(row);
+    });
+
+    mobileCardsContainer.innerHTML = '';
+    sortedCards.forEach(card => mobileCardsContainer!.appendChild(card));
+  }
+
+  function sortByRarity() {
+    if (!tableBody || !mobileCardsContainer) return;
+
+    // Get visible rows
+    const visibleRows = originalRows.filter(row => row.style.display !== 'none');
+
+    // Sort by rarity (5-Star first)
+    const sortedRows = [...visibleRows].sort((a, b) => {
+      const rarityA = rarityOrder[a.dataset.rarity || ''] ?? 99;
+      const rarityB = rarityOrder[b.dataset.rarity || ''] ?? 99;
+      return rarityA - rarityB;
+    });
+
+    // Get corresponding cards
+    const sortedCards = sortedRows.map(row => {
+      const idx = originalRows.indexOf(row);
+      return originalCards[idx];
+    }).filter(Boolean);
+
+    // Re-append in sorted order
+    tableBody.innerHTML = '';
+    sortedRows.forEach((row, index) => {
+      const numberCell = row.querySelector('td:first-child');
+      if (numberCell) numberCell.textContent = String(index + 1);
+      tableBody!.appendChild(row);
+    });
+
+    mobileCardsContainer.innerHTML = '';
+    sortedCards.forEach(card => mobileCardsContainer!.appendChild(card));
+  }
+
+  // ==========================================
+  // Reset Function
+  // ==========================================
+
+  function resetAll() {
+    // Clear filters
     if (searchInput) searchInput.value = '';
     if (rarityFilter) rarityFilter.value = '';
     if (elementFilter) elementFilter.value = '';
     if (roleFilter) roleFilter.value = '';
 
     // Clear filter active states
-    const filterSelects = document.querySelectorAll('.filter-select');
-    filterSelects.forEach(select => {
+    document.querySelectorAll('.filter-select').forEach(select => {
       select.classList.remove('active');
     });
 
-    applyFilters();
+    // Reset sort state
+    currentSortKey = null;
+    currentSortDirection = 'normal';
+    updateSortButtons();
+
+    // Show all rows and cards
+    originalRows.forEach(row => row.style.display = '');
+    originalCards.forEach(card => card.style.display = '');
+
+    // Sort by rarity (default)
+    sortByRarity();
   }
 
-  // Initialize filters when DOM is ready
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeCharacterFilters);
+    document.addEventListener('DOMContentLoaded', initializeDatabase);
   } else {
-    initializeCharacterFilters();
+    initializeDatabase();
   }
 </script>

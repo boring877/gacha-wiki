@@ -1,87 +1,1803 @@
-// Claw the Claw Disc Data
-// Nazuna's Terra Element Disc
-
-export const clawTheClawData = {
-  id: 5,
-  name: 'Claw the Claw',
-  slug: 'claw-the-claw',
-  image: 'Claw_the_claw.jpg',
-  rarity: '5-Star',
-  element: 'Terra',
-  tags: ['Terra', 'Element', 'Skills', 'VUL'],
-  character: 'Nazuna',
-
-  // Basic Stats
-  stats: {
-    basicAtk: 1582,
-    terraDmg: '15%',
+export const disc = {
+  "id": 214037,
+  "name": "Claw the Claw",
+  "icon": "/stella/assets/outfit_4037_b.png",
+  "background": "/stella/assets/4037.png",
+  "variants": {
+    "base": "/stella/assets/outfit_4037.png",
+    "a": "/stella/assets/outfit_4037_a.png",
+    "b": "/stella/assets/outfit_4037_b.png",
+    "c": "/stella/assets/outfit_4037_c.png",
+    "d": "/stella/assets/outfit_4037_d.png",
+    "gacha": "/stella/assets/outfit_4037_gacha.png",
+    "default": "/stella/assets/outfit_4037_b.png"
   },
-
-  // Disc Skills
-  skills: {
-    melody: {
-      name: 'Claw the Claw',
-      effect:
-        "Increases the squad's Terra DMG by **20%**. When a target's Terra Mark is triggered, the target takes **15%** more Terra DMG for **4s**.",
-    },
-    harmony: [
-      {
-        name: 'Lucky Clip',
-        level: 5,
-        effect:
-          "When any Terra Trekker restores HP, increases the squad's Terra DMG by **25%** for **10s**.",
-        requirements: {
-          'Melody of Terra': '≥ Lv.70',
-          'Melody of Skill': '≥ Lv.70',
-        },
-      },
-      {
-        name: 'Record Breaker',
-        level: 5,
-        effect:
-          "When any Terra Trekker's damage exceeds a threshold, increases the squad's Terra DMG by **25%** for **10s**.",
-        requirements: {
-          'Melody of Luck': '≥ Lv.70',
-          'Melody of Skill': '≥ Lv.70',
-        },
-      },
+  "star": 5,
+  "element": "Terra",
+  "tag": [
+    "Element",
+    "Skills",
+    "VUL"
+  ],
+  "mainSkill": {
+    "name": "Claw the Claw",
+    "icon": "DiscSkill_214037",
+    "description": "Increases the squad's Terra DMG by <color=#ec6d21>{1}</color>.\u000bWhen a target's ##Terra Mark#1020# is triggered, the target takes <color=#ec6d21>{2}</color> more Terra DMG for {3}s.",
+    "params": [
+      [
+        "10%",
+        "7.5%",
+        "4"
+      ],
+      [
+        "12%",
+        "9%",
+        "4"
+      ],
+      [
+        "14%",
+        "10.5%",
+        "4"
+      ],
+      [
+        "16%",
+        "12%",
+        "4"
+      ],
+      [
+        "18%",
+        "13.5%",
+        "4"
+      ],
+      [
+        "20%",
+        "15%",
+        "4"
+      ]
     ],
-    skill: {
-      name: 'Unleashed Fury',
-      level: 5,
-      effect:
-        "Increases Terra squadmates' Skill DMG by **40%**. When triggering Terra Mark, increases this effect by an additional **20%**.",
-      requirements: {
-        'Melody of Luck': '≥ Lv.75',
-        'Melody of Skill': '≥ Lv.75',
-        'Melody of Terra': '≥ Lv.75',
-      },
-    },
+    "iconBackground": "db_DiscSkill_2"
   },
-
-  // Support Information
-  support: {
-    musicalNotesSource: 'Monolith Ascension',
-    melodies: {
-      luck: {
-        baseEffect: 'Crit Rate +0.1% per level',
-        maxEffect: 'Crit Rate +9.9%',
-      },
-      skill: {
-        baseEffect: 'Skill DMG +0.5% per level',
-        maxEffect: 'Skill DMG +49.5%',
-      },
+  "secondarySkills": [
+    {
+      "name": "Lucky Clip",
+      "icon": "DiscSkill_11",
+      "description": "When any Terra Trekker restores HP, increases the squad's Terra DMG by <color=#ec6d21>{1}</color> for {2}s.",
+      "params": [
+        [
+          "5%",
+          "10"
+        ],
+        [
+          "10%",
+          "10"
+        ],
+        [
+          "15%",
+          "10"
+        ],
+        [
+          "20%",
+          "10"
+        ],
+        [
+          "25%",
+          "10"
+        ]
+      ],
+      "requirements": [
+        [
+          {
+            "name": "Melody of Skill",
+            "quantity": 10
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 10
+          }
+        ],
+        [
+          {
+            "name": "Melody of Skill",
+            "quantity": 25
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 25
+          }
+        ],
+        [
+          {
+            "name": "Melody of Skill",
+            "quantity": 40
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 40
+          }
+        ],
+        [
+          {
+            "name": "Melody of Skill",
+            "quantity": 55
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 55
+          }
+        ],
+        [
+          {
+            "name": "Melody of Skill",
+            "quantity": 70
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 70
+          }
+        ]
+      ],
+      "iconBackground": "db_DiscSkill_2"
     },
-  },
-
-  // Disc Description
-  description:
-    'Terra-focused disc that amplifies damage through mark vulnerability and provides flexible harmony options.',
-};
-
-export const clawTheClawSEO = {
-  title: 'Claw the Claw - Stella Sora Disc Guide',
-  description:
-    'Complete guide for Claw the Claw, a 5-Star Terra disc in Stella Sora. Stats, skills, and detailed information.',
-  keywords: ['Claw the Claw', 'Stella Sora', '5-Star', 'Terra', 'Disc', 'Nazuna', 'disc guide'],
+    {
+      "name": "Record Breaker",
+      "icon": "DiscSkill_4",
+      "description": "When a support Trekker deals Skill DMG, increases Terra squadmates' Skill DMG by <color=#ec6d21>{1}</color> for {2}s, stacking up to {3} times.",
+      "params": [
+        [
+          "1.4%",
+          "8",
+          "6"
+        ],
+        [
+          "2.8%",
+          "8",
+          "6"
+        ],
+        [
+          "4.2%",
+          "8",
+          "6"
+        ],
+        [
+          "5.6%",
+          "8",
+          "6"
+        ],
+        [
+          "7%",
+          "8",
+          "6"
+        ]
+      ],
+      "requirements": [
+        [
+          {
+            "name": "Melody of Luck",
+            "quantity": 15
+          },
+          {
+            "name": "Melody of Skill",
+            "quantity": 15
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 15
+          }
+        ],
+        [
+          {
+            "name": "Melody of Luck",
+            "quantity": 30
+          },
+          {
+            "name": "Melody of Skill",
+            "quantity": 30
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 30
+          }
+        ],
+        [
+          {
+            "name": "Melody of Luck",
+            "quantity": 45
+          },
+          {
+            "name": "Melody of Skill",
+            "quantity": 45
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 45
+          }
+        ],
+        [
+          {
+            "name": "Melody of Luck",
+            "quantity": 60
+          },
+          {
+            "name": "Melody of Skill",
+            "quantity": 60
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 60
+          }
+        ],
+        [
+          {
+            "name": "Melody of Luck",
+            "quantity": 75
+          },
+          {
+            "name": "Melody of Skill",
+            "quantity": 75
+          },
+          {
+            "name": "Melody of Terra",
+            "quantity": 75
+          }
+        ]
+      ],
+      "iconBackground": "db_DiscSkill_2"
+    }
+  ],
+  "supportNote": [
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 2
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 4
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 2
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 5
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 2
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 6
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 3
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 6
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 3
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 7
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 3
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 8
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 4
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 8
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 4
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 9
+      }
+    ],
+    [
+      {
+        "name": "Melody of Luck",
+        "quantity": 4
+      },
+      {
+        "name": "Melody of Ultimate",
+        "quantity": 10
+      }
+    ]
+  ],
+  "stats":   [
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 14
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 19
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 23
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 28
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 31
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 36
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 40
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 45
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 48
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 53
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 2,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 64
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 67
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 72
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 76
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 81
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 85
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 89
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 93
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 98
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 102
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 106
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 3,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 127
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 131
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 136
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 140
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 144
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 148
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 153
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 157
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 162
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 165
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 170
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 5,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 204
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 208
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 213
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 217
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 221
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 225
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 230
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 234
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 238
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 242
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 247
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 7,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 296
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 300
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 305
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 309
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 314
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 317
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 322
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 326
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 331
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 334
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 339
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 8,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 407
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 411
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 415
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 420
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 424
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 428
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 432
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 437
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 441
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 446
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 449
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 10,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 540
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 543
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 548
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 552
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 557
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 561
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 565
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 569
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 574
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 578
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 582
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 12,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 698
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 703
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 707
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 712
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 715
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 720
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 724
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 729
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 732
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 737
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 741
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 13,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 889
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 894
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 898
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 903
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 906
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 911
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 915
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 920
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 923
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 928
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 932
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 936
+      },
+      {
+        "id": "terraDamage",
+        "label": "Terra Damage",
+        "value": 15,
+        "unit": "%"
+      }
+    ]
+  ],
+  "dupe": [
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 130
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 260
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 390
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 520
+      }
+    ],
+    [
+      {
+        "id": "atk",
+        "label": "ATK",
+        "value": 650
+      }
+    ]
+  ],
+  "upgrades": [
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 6
+        }
+      ],
+      "currency": {
+        "dorra": 10700
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 6
+        },
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 13
+        }
+      ],
+      "currency": {
+        "dorra": 26700
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 13
+        },
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 20
+        }
+      ],
+      "currency": {
+        "dorra": 59900
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 20
+        },
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 33
+        }
+      ],
+      "currency": {
+        "dorra": 89900
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 26
+        },
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 53
+        }
+      ],
+      "currency": {
+        "dorra": 197200
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21071,
+          "name": "Eerie Breath",
+          "quantity": 40
+        },
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 73
+        },
+        {
+          "id": 21073,
+          "name": "Frenzied Waltz Essence",
+          "quantity": 26
+        }
+      ],
+      "currency": {
+        "dorra": 393700
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 100
+        },
+        {
+          "id": 21073,
+          "name": "Frenzied Waltz Essence",
+          "quantity": 40
+        }
+      ],
+      "currency": {
+        "dorra": 756300
+      }
+    },
+    {
+      "items": [
+        {
+          "id": 21072,
+          "name": "Phantom Step Remnant",
+          "quantity": 126
+        },
+        {
+          "id": 21073,
+          "name": "Frenzied Waltz Essence",
+          "quantity": 66
+        }
+      ],
+      "currency": {
+        "dorra": 1513800
+      }
+    }
+  ]
 };

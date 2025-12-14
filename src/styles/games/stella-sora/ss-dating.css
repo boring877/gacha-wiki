@@ -1,0 +1,532 @@
+/* Stella Sora Dating Events Styles */
+
+/* ========================================
+   DATING PAGE LAYOUT
+   ======================================== */
+
+.dating-page {
+  padding: var(--ss-spacing-md);
+}
+
+/* Stats Overview Section */
+.dating-stats-overview {
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.dating-stats-overview h2 {
+  color: var(--ss-text-primary);
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.dating-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.dating-stat-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  text-align: center;
+}
+
+.dating-stat-number {
+  font-size: 2.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-primary);
+  line-height: 1;
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.dating-stat-label {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   FILTER CONTROLS
+   ======================================== */
+
+.dating-controls {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.dating-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.dating-controls-title {
+  color: var(--ss-text-primary);
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-semibold);
+}
+
+.dating-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  align-items: center;
+}
+
+.dating-search-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dating-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+}
+
+.dating-search-input:focus {
+  outline: none;
+  border-color: var(--ss-primary);
+}
+
+.dating-search-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.dating-filter-select {
+  padding: 0.75rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.dating-filter-select:focus {
+  outline: none;
+  border-color: var(--ss-primary);
+}
+
+.dating-clear-btn {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ========================================
+   CHARACTER DATING CARDS
+   ======================================== */
+
+.dating-characters-section {
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.dating-section-header {
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.dating-section-header h2 {
+  color: var(--ss-text-primary);
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.dating-section-description {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+}
+
+.dating-characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* Character Dating Card */
+.dating-character-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  overflow: hidden;
+}
+
+.dating-character-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.dating-character-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  border: 2px solid var(--ss-primary);
+  flex-shrink: 0;
+}
+
+.dating-character-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dating-character-info {
+  flex: 1;
+}
+
+.dating-character-name {
+  color: var(--ss-text-primary);
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-xs);
+}
+
+.dating-character-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dating-events-count {
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Dating Events List */
+.dating-events-list {
+  padding: var(--ss-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-md);
+}
+
+.dating-event-item {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+}
+
+.dating-event-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.dating-event-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dating-event-content {
+  padding: var(--ss-spacing-md);
+}
+
+.dating-event-name {
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  font-weight: var(--ss-font-semibold);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.dating-event-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-sm);
+}
+
+.dating-event-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ss-spacing-sm);
+  font-size: 0.875rem;
+}
+
+.dating-event-label {
+  color: var(--ss-text-muted);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.dating-event-value {
+  color: var(--ss-text-secondary);
+}
+
+.dating-event-clue {
+  background: rgba(110, 231, 183, 0.1);
+  border: 1px solid rgba(110, 231, 183, 0.2);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  color: var(--ss-accent);
+  font-size: 0.75rem;
+}
+
+.dating-event-choice {
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  color: var(--ss-primary-light);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* ========================================
+   LOCATION FILTER TABS
+   ======================================== */
+
+.dating-location-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.dating-location-tab {
+  padding: 0.5rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.dating-location-tab.active {
+  background: var(--ss-primary);
+  border-color: var(--ss-primary);
+  color: var(--ss-bg-primary);
+  font-weight: var(--ss-font-medium);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .dating-page {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .dating-stats-overview h2,
+  .dating-section-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .dating-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ss-spacing-sm);
+  }
+
+  .dating-stat-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .dating-stat-number {
+    font-size: 1.75rem;
+  }
+
+  .dating-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .dating-controls {
+    padding: var(--ss-spacing-md);
+  }
+
+  .dating-filter-row {
+    flex-direction: column;
+  }
+
+  .dating-search-container {
+    width: 100%;
+  }
+
+  .dating-filter-select {
+    width: 100%;
+  }
+
+  .dating-clear-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dating-characters-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-md);
+  }
+
+  .dating-character-header {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .dating-character-name {
+    font-size: 1.1rem;
+  }
+
+  .dating-location-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: var(--ss-spacing-xs);
+  }
+
+  .dating-location-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dating-location-tab {
+    flex-shrink: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .dating-event-content {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .dating-event-name {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .dating-page {
+    padding: var(--ss-spacing-xs);
+  }
+
+  .dating-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ss-spacing-xs);
+  }
+
+  .dating-stat-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .dating-stat-number {
+    font-size: 1.5rem;
+  }
+
+  .dating-controls-header {
+    flex-direction: column;
+    gap: var(--ss-spacing-sm);
+    align-items: stretch;
+  }
+
+  .dating-controls-title {
+    text-align: center;
+  }
+
+  .dating-character-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dating-character-name {
+    font-size: 1rem;
+  }
+
+  .dating-events-count {
+    font-size: 0.75rem;
+  }
+
+  .dating-events-list {
+    padding: var(--ss-spacing-sm);
+    gap: var(--ss-spacing-sm);
+  }
+
+  .dating-event-detail {
+    flex-direction: column;
+    gap: var(--ss-spacing-xs);
+  }
+
+  .dating-event-label {
+    min-width: auto;
+    font-size: 0.75rem;
+  }
+
+  .dating-event-clue,
+  .dating-event-choice {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .dating-section-description {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .dating-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dating-stat-number {
+    font-size: 1.25rem;
+  }
+
+  .dating-location-tab {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ========================================
+   NO RESULTS STATE
+   ======================================== */
+
+.dating-no-results {
+  text-align: center;
+  padding: var(--ss-spacing-xl);
+  color: var(--ss-text-secondary);
+}
+
+.dating-no-results-icon {
+  font-size: 3rem;
+  margin-bottom: var(--ss-spacing-md);
+  opacity: 0.5;
+}
+
+.dating-no-results-text {
+  font-size: 1.125rem;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.dating-no-results-hint {
+  font-size: 0.875rem;
+  color: var(--ss-text-muted);
+}

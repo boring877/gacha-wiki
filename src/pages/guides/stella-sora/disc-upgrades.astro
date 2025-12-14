@@ -1,0 +1,291 @@
+---
+import DiscUpgradesLayout from '../../../layouts/stella-sora/DiscUpgradesLayout.astro';
+import SSDiscIconImage from '../../../components/stella-sora/SSDiscIconImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import SSUpgradeImage from '../../../components/stella-sora/SSUpgradeImage.astro';
+import { discUpgrades, discUpgradeStats, calculateTotalMaterials } from '../../../data/stella-sora/disc-upgrades.js';
+
+// Get unique elements
+const elements = [...new Set(discUpgrades.map(d => d.element))].filter(e => e !== 'None').sort();
+
+// Page metadata with enhanced SEO
+const title = `Stella Sora Disc Upgrades Database - All ${discUpgrades.length} Disc Upgrade Materials`;
+const description = `Complete Stella Sora disc upgrades database with ${discUpgrades.length} discs. View all upgrade material requirements, Dorra costs, and total materials needed for ${discUpgradeStats.by5Star} 5-star, ${discUpgradeStats.by4Star} 4-star, and ${discUpgradeStats.by3Star} 3-star discs.`;
+const gameTitle = 'Disc Upgrades Database';
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Disc Upgrades Database',
+  description: description,
+  numberOfItems: discUpgrades.length,
+  itemListElement: discUpgrades.slice(0, 50).map((disc, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: disc.name,
+      description: `${disc.star}-Star ${disc.element !== 'None' ? disc.element + ' ' : ''}Disc Upgrade Requirements`
+    }
+  }))
+};
+
+// FAQ structured data for SEO
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What materials are needed to upgrade discs in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Disc upgrades in Stella Sora require specific materials like Eerie Breath, Duloos materials, Faint Light materials, and Dorra currency. Each disc has 8 upgrade levels with increasing material requirements.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How much Dorra does it cost to fully upgrade a disc in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The total Dorra cost varies by disc rarity. Higher rarity discs (5-star) require more Dorra and materials compared to lower rarity discs (3-star and 4-star).'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How many upgrade levels do Stella Sora discs have?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Discs in Stella Sora have 8 upgrade levels. Each level requires specific materials and Dorra to complete, with costs increasing at higher levels.'
+      }
+    }
+  ]
+};
+
+// Format number with commas
+function formatNumber(num: number): string {
+  return num.toLocaleString();
+}
+---
+
+<DiscUpgradesLayout title={title} description={description} gameTitle={gameTitle}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+
+  <div class="disc-upgrades-index">
+    <!-- Summary Section -->
+    <section class="disc-upgrades-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discUpgrades.length}</div>
+          <div class="summary-stat-label">Total Discs</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discUpgradeStats.by5Star}</div>
+          <div class="summary-stat-label">5-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discUpgradeStats.by4Star}</div>
+          <div class="summary-stat-label">4-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{discUpgradeStats.by3Star}</div>
+          <div class="summary-stat-label">3-Star</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="disc-upgrades-filters">
+      <h2>Filters</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name..." />
+        </div>
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter">
+            <option value="all">All Rarities</option>
+            <option value="5">5-Star</option>
+            <option value="4">4-Star</option>
+            <option value="3">3-Star</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="all">All Elements</option>
+            <option value="None">None</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disc Upgrades Grid -->
+    <div class="disc-upgrades-grid" id="disc-grid">
+      {discUpgrades.map((disc) => {
+        const totals = calculateTotalMaterials(disc.upgrades);
+        const totalItems = Object.values(totals.items);
+
+        return (
+          <article
+            class={`disc-upgrade-card rarity-${disc.star}`}
+            data-name={disc.name.toLowerCase()}
+            data-rarity={disc.star}
+            data-element={disc.element}
+          >
+            <div class="disc-card-header">
+              <div class="disc-icon-container">
+                <SSDiscIconImage discSlug={disc.slug} width={72} height={72} alt={disc.name} />
+              </div>
+              <div class="disc-card-info">
+                <h3 class="disc-card-name">{disc.name}</h3>
+                <div class="disc-card-meta">
+                  <SSRarityImage rarity={disc.star} width={56} height={14} />
+                  <span class="disc-meta-badge element">
+                      <SSElementImage elementName={disc.element} width={20} height={20} />
+                      <span>{disc.element === 'None' ? 'No Element' : disc.element}</span>
+                    </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Total Materials Required -->
+            <div class="disc-totals-section">
+              <div class="disc-totals-label">Total Materials Required</div>
+              <div class="disc-totals-grid">
+                {totalItems.map((item) => (
+                  <div class="disc-total-item">
+                    <SSUpgradeImage itemId={item.id} width={28} height={28} alt={item.name} />
+                    <span class="disc-total-qty">x{formatNumber(item.quantity)}</span>
+                  </div>
+                ))}
+                <div class="disc-total-dorra">
+                  <SSUpgradeImage itemId={1} width={24} height={24} alt="Dorra" />
+                  <span>{formatNumber(totals.dorra)}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upgrade Level Details (Collapsible) -->
+            <div class="disc-upgrades-section">
+              <button type="button" class="toggle-details-btn" data-target={`levels-${disc.id}`}>
+                <span>View Upgrade Details</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="disc-upgrade-levels collapsed" id={`levels-${disc.id}`}>
+                <div class="disc-upgrades-label">Upgrade Levels</div>
+                {disc.upgrades.map((upgrade: any, index: number) => (
+                  <div class="disc-upgrade-level">
+                    <span class="upgrade-level-num">Lv.{(index + 1) * 10}</span>
+                    <div class="upgrade-level-items">
+                      {upgrade.items?.map((item: any) => (
+                        <div class="upgrade-item">
+                          <SSUpgradeImage itemId={item.id} width={24} height={24} alt={item.name} />
+                          <span class="upgrade-item-qty">x{item.quantity}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {upgrade.currency?.dorra && (
+                      <div class="upgrade-level-cost">
+                        <SSUpgradeImage itemId={1} width={18} height={18} alt="Dorra" />
+                        <span>{formatNumber(upgrade.currency.dorra)}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No discs found matching your filters.
+    </div>
+  </div>
+</DiscUpgradesLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const discGrid = document.getElementById('disc-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    const cards = discGrid.querySelectorAll('.disc-upgrade-card');
+
+    // Toggle buttons for upgrade details
+    const toggleButtons = document.querySelectorAll('.toggle-details-btn');
+    toggleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const target = document.getElementById(targetId || '');
+        if (target) {
+          target.classList.toggle('collapsed');
+          btn.classList.toggle('expanded');
+          const span = btn.querySelector('span:first-child');
+          if (span) {
+            span.textContent = target.classList.contains('collapsed') ? 'View Upgrade Details' : 'Hide Upgrade Details';
+          }
+        }
+      });
+    });
+
+    // Filter discs
+    function filterDiscs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarityValue = rarityFilter.value;
+      const elementValue = elementFilter.value;
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const element = card.getAttribute('data-element') || '';
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRarity = rarityValue === 'all' || rarity === rarityValue;
+        const matchesElement = elementValue === 'all' || element === elementValue;
+
+        if (matchesSearch && matchesRarity && matchesElement) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Clear all filters
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    function clearFilters() {
+      searchInput.value = '';
+      rarityFilter.value = 'all';
+      elementFilter.value = 'all';
+      filterDiscs();
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', filterDiscs);
+    rarityFilter.addEventListener('change', filterDiscs);
+    elementFilter.addEventListener('change', filterDiscs);
+    clearBtn.addEventListener('click', clearFilters);
+  });
+</script>

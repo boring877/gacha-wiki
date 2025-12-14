@@ -1,0 +1,683 @@
+/* Stella Sora Disc Stats Page Styles
+ * Styles for the disc stats database page
+ */
+
+/* Main Container */
+.disc-stats-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Filter Section */
+.disc-stats-filters {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.disc-stats-filters h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  min-width: 150px;
+  min-height: 44px; /* Touch-friendly height */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter-group select {
+  cursor: pointer;
+}
+
+.filter-group input[type="text"] {
+  min-width: 200px;
+}
+
+.filter-group input[type="text"]::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Level Input */
+.filter-group input[type="number"] {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  min-height: 44px;
+  width: 100px;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.filter-group input[type="number"]::-webkit-outer-spin-button,
+.filter-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-group input[type="number"]:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Clear Filters Button */
+.clear-filters-btn {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Dupe Buttons */
+.dupe-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.dupe-btn {
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+  color: var(--ss-text-secondary);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+
+.dupe-btn:hover {
+  border-color: var(--ss-accent);
+  color: var(--ss-text-primary);
+}
+
+.dupe-btn.active {
+  background: var(--ss-accent);
+  border-color: var(--ss-accent);
+  color: white;
+}
+
+/* Disc Stats Grid */
+.disc-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--ss-spacing-lg);
+}
+
+/* Disc Stats Card */
+.disc-stats-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rarity border colors */
+.disc-stats-card.rarity-3 {
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.disc-stats-card.rarity-4 {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.disc-stats-card.rarity-5 {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Card Header */
+.disc-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--ss-radius-md);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--ss-bg-tertiary);
+}
+
+.disc-icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.disc-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.disc-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  margin: 0 0 var(--ss-spacing-xs) 0;
+  word-wrap: break-word;
+}
+
+.disc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  align-items: center;
+}
+
+.disc-meta-badge {
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.disc-meta-badge.element {
+  background: rgba(100, 100, 100, 0.2);
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.disc-meta-badge.element img {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.disc-meta-badge.element span {
+  line-height: 1;
+}
+
+/* Stats Section */
+.disc-stats-section {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-stats-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.disc-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+}
+
+.disc-stat-name {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+}
+
+.disc-stat-value {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+/* Stat type colors */
+.disc-stat-row[data-stat="atk"] .disc-stat-value {
+  color: #f87171;
+}
+
+.disc-stat-row[data-stat="hp"] .disc-stat-value {
+  color: #4ade80;
+}
+
+.disc-stat-row[data-stat="def"] .disc-stat-value {
+  color: #60a5fa;
+}
+
+.disc-stat-row[data-stat="crit"] .disc-stat-value,
+.disc-stat-row[data-stat="critRate"] .disc-stat-value {
+  color: #fbbf24;
+}
+
+.disc-stat-row[data-stat="critDamage"] .disc-stat-value {
+  color: #fb923c;
+}
+
+/* Element damage colors */
+.disc-stat-row[data-stat="luxDamage"] .disc-stat-value {
+  color: #fde047;
+}
+
+.disc-stat-row[data-stat="umbraDamage"] .disc-stat-value {
+  color: #a855f7;
+}
+
+.disc-stat-row[data-stat="aquaDamage"] .disc-stat-value {
+  color: #38bdf8;
+}
+
+.disc-stat-row[data-stat="ignisDamage"] .disc-stat-value {
+  color: #f87171;
+}
+
+.disc-stat-row[data-stat="terraDamage"] .disc-stat-value {
+  color: #a3e635;
+}
+
+.disc-stat-row[data-stat="ventusDamage"] .disc-stat-value {
+  color: #34d399;
+}
+
+/* Dupe Bonuses Section */
+.disc-dupe-section {
+  margin-top: var(--ss-spacing-md);
+  padding-top: var(--ss-spacing-sm);
+  border-top: 1px solid var(--ss-border);
+}
+
+.disc-dupe-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-dupe-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--ss-spacing-xs);
+}
+
+.disc-dupe-item {
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs);
+  text-align: center;
+}
+
+.disc-dupe-level {
+  font-size: 0.625rem;
+  color: var(--ss-text-muted);
+  margin-bottom: 2px;
+}
+
+.disc-dupe-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.dupe-stat-label {
+  font-size: 0.5rem;
+  font-weight: var(--ss-font-medium);
+  color: #f87171;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.dupe-stat-amount {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+}
+
+/* Dupe bonus indicator in stats */
+.dupe-bonus-indicator {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  color: #4ade80;
+  margin-left: 4px;
+}
+
+/* Active dupe highlight */
+.disc-dupe-item.dupe-active {
+  background: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.disc-dupe-item.dupe-active .dupe-stat-amount {
+  color: #4ade80;
+}
+
+/* Current dupe label in stats section */
+.current-dupe {
+  font-size: 0.75rem;
+  color: #4ade80;
+  font-weight: var(--ss-font-semibold);
+}
+
+/* Breakthrough Bonuses Section */
+.disc-breakthrough-section {
+  margin-top: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+  padding-top: var(--ss-spacing-sm);
+  border-top: 1px solid var(--ss-border);
+}
+
+.disc-breakthrough-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-breakthrough-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ss-spacing-xs);
+}
+
+.disc-breakthrough-item {
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs);
+  text-align: center;
+}
+
+.disc-breakthrough-level {
+  font-size: 0.625rem;
+  color: var(--ss-text-muted);
+  margin-bottom: 2px;
+}
+
+.disc-breakthrough-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.breakthrough-stat {
+  font-size: 0.625rem;
+  font-weight: var(--ss-font-semibold);
+}
+
+.breakthrough-stat.hp {
+  color: #4ade80;
+}
+
+.breakthrough-stat.atk {
+  color: #f87171;
+}
+
+/* Full Stats Section (Max Level + D5) */
+.disc-full-stats-section {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-top: var(--ss-spacing-lg);
+}
+
+.disc-full-stats-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+/* Summary Section */
+.disc-stats-summary {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.disc-stats-summary h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.summary-stat {
+  text-align: center;
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+}
+
+.summary-stat-value {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Dupe Info Note */
+.dupe-info-note {
+  margin-top: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--ss-radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ss-text-secondary);
+}
+
+.dupe-info-note strong {
+  color: var(--ss-text-primary);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: var(--ss-spacing-xl);
+  color: var(--ss-text-muted);
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .disc-stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .disc-stats-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-md);
+  }
+
+  .disc-stats-filters,
+  .disc-stats-summary {
+    padding: var(--ss-spacing-md);
+  }
+
+  .filter-row {
+    flex-direction: column;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group select,
+  .filter-group input[type="text"],
+  .filter-group input[type="number"] {
+    width: 100%;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  /* Dupe buttons wrap on mobile */
+  .dupe-buttons {
+    flex-wrap: wrap;
+  }
+
+  .dupe-btn {
+    min-width: 44px;
+    min-height: 44px; /* Touch-friendly size */
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-stats-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .disc-card-meta {
+    margin-top: var(--ss-spacing-xs);
+  }
+
+  .disc-dupe-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .disc-stat-row {
+    padding: var(--ss-spacing-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .disc-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .disc-stats-index {
+    padding: var(--ss-spacing-md) var(--ss-spacing-sm);
+  }
+
+  .disc-stats-filters,
+  .disc-stats-summary {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-stats-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-icon-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .disc-card-name {
+    font-size: 1rem;
+  }
+
+  .disc-dupe-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  .disc-dupe-item {
+    padding: 4px;
+  }
+
+  .disc-dupe-level {
+    font-size: 0.5rem;
+  }
+
+  .disc-dupe-value {
+    font-size: 0.625rem;
+  }
+}

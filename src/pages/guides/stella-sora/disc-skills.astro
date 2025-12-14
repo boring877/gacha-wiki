@@ -1,0 +1,470 @@
+---
+import DiscSkillsLayout from '../../../layouts/stella-sora/DiscSkillsLayout.astro';
+import SSDiscIconImage from '../../../components/stella-sora/SSDiscIconImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import SSDiscSkillImage from '../../../components/stella-sora/SSDiscSkillImage.astro';
+import SSNotesImage from '../../../components/stella-sora/SSNotesImage.astro';
+import { discSkills, uniqueTags, uniqueElements, skillStats } from '../../../data/stella-sora/disc-skills.js';
+
+// Get unique elements (excluding None for filter display order)
+const elements = uniqueElements.filter(e => e !== 'None').sort();
+
+// Page metadata with SEO optimization
+const title = `Stella Sora Disc Skills Database - All ${discSkills.length} Discs Melody & Harmony Skills`;
+const description = `Complete Stella Sora disc skills database with ${discSkills.length} discs. Find Melody Skills (dupe levels) and Harmony Skills (Melody Notes) for every disc. Filter by element, rarity, and tags. Updated skill stats and requirements.`;
+const gameTitle = 'Disc Skills Database';
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://gachawiki.info'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Guides',
+      item: 'https://gachawiki.info/guides/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Stella Sora',
+      item: 'https://gachawiki.info/guides/stella-sora/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Disc Skills',
+      item: 'https://gachawiki.info/guides/stella-sora/disc-skills/'
+    }
+  ]
+};
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Disc Skills Database',
+  description: description,
+  numberOfItems: discSkills.length,
+  itemListElement: discSkills.slice(0, 50).map((disc, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: disc.name,
+      description: `${disc.star}-Star ${disc.element !== 'None' ? disc.element + ' ' : ''}Disc - ${disc.melodySkill.name}`
+    }
+  }))
+};
+
+// FAQ structured data
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What are Melody Skills in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Melody Skills are the main skills of discs in Stella Sora. They level up when you obtain duplicate copies of the same disc. The skill level increases from Lv.1 to Lv.6 based on how many dupes you have.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What are Harmony Skills in Stella Sora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Harmony Skills are secondary skills that can be unlocked using Melody Notes. You can obtain Melody Notes from support discs or through Ascension. Each Harmony Skill has multiple levels that require different amounts of notes.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I upgrade Melody Skills?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Melody Skills upgrade automatically when you obtain duplicate copies of a disc. Each duplicate increases the skill level by 1, up to a maximum of Lv.6 (5 duplicates needed for max level).'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I unlock Harmony Skills?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Harmony Skills are unlocked by spending Melody Notes. You can earn Melody Notes from support discs at various levels or through character Ascension. Different Harmony Skills require different types and amounts of notes.'
+      }
+    }
+  ]
+};
+---
+
+<DiscSkillsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+  <div class="disc-skills-index">
+    <!-- Summary Section -->
+    <section class="disc-skills-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillStats.totalDiscs}</div>
+          <div class="summary-stat-label">Total Discs</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillStats.byRarity[5]}</div>
+          <div class="summary-stat-label">5-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillStats.byRarity[4]}</div>
+          <div class="summary-stat-label">4-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillStats.byRarity[3]}</div>
+          <div class="summary-stat-label">3-Star</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillStats.withHarmonySkills}</div>
+          <div class="summary-stat-label">With Harmony</div>
+        </div>
+      </div>
+      <div class="skills-info-note">
+        <div class="info-item"><strong>Melody Skill:</strong> The main disc skill. Levels up with duplicate copies (Lv.1-6).</div>
+        <div class="info-item"><strong>Harmony Skills:</strong> Secondary skills unlocked with Melody Notes from support discs or Ascension.</div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="disc-skills-filters">
+      <h2>Filters</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name or skill..." />
+        </div>
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter">
+            <option value="all">All Rarities</option>
+            <option value="5">5-Star</option>
+            <option value="4">4-Star</option>
+            <option value="3">3-Star</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="all">All Elements</option>
+            <option value="None">None</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="harmony-filter">Harmony Skills</label>
+          <select id="harmony-filter">
+            <option value="all">All Discs</option>
+            <option value="yes">Has Harmony Skills</option>
+            <option value="no">No Harmony Skills</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group filter-group-wide">
+          <label>Filter by Tags</label>
+          <div class="tag-checkboxes" id="tag-checkboxes">
+            {uniqueTags.map(tag => (
+              <label class="tag-checkbox">
+                <input type="checkbox" value={tag.toLowerCase()} />
+                <span>{tag}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Grid -->
+    <div class="disc-skills-grid" id="skills-grid">
+      {discSkills.map((disc) => {
+        // Create searchable text including skill names and descriptions
+        const searchableText = [
+          disc.name,
+          disc.melodySkill.name,
+          disc.melodySkill.formattedDescriptions[0],
+          ...disc.harmonySkills.map(h => h.name),
+          ...disc.harmonySkills.map(h => h.formattedDescriptions[0])
+        ].join(' ').toLowerCase();
+
+        return (
+          <article
+            class={`disc-skill-card rarity-${disc.star}`}
+            data-name={disc.name.toLowerCase()}
+            data-search={searchableText}
+            data-rarity={disc.star}
+            data-element={disc.element}
+            data-tags={disc.tag.join(',').toLowerCase()}
+            data-has-harmony={disc.harmonySkills.length > 0 ? 'yes' : 'no'}
+            data-slug={disc.slug}
+          >
+            <div class="skill-card-header">
+              <div class="skill-icon-container">
+                <SSDiscIconImage discSlug={disc.slug} width={72} height={72} alt={disc.name} />
+              </div>
+              <div class="skill-card-info">
+                <h3 class="skill-card-name">{disc.name}</h3>
+                <div class="skill-card-meta">
+                  <SSRarityImage rarity={disc.star} width={60} height={15} />
+                  <span class="skill-meta-badge element">
+                    <SSElementImage elementName={disc.element} width={20} height={20} />
+                    <span>{disc.element}</span>
+                  </span>
+                  {disc.tag.map(tag => (
+                    <span class="skill-meta-badge tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- Melody Skill Section -->
+            <div class="melody-skill-section">
+              <div class="skill-section-header">
+                <span class="skill-section-title">Melody Skill</span>
+                <span class="skill-section-subtitle">(Levels with Dupes)</span>
+              </div>
+              <div class="melody-skill-content">
+                <div class="melody-skill-header">
+                  <div class="melody-skill-icon">
+                    <SSDiscSkillImage iconName={disc.melodySkill.icon} iconBackground={disc.melodySkill.iconBackground} alt={disc.melodySkill.name} width={40} height={40} />
+                  </div>
+                  <span class="melody-skill-name">{disc.melodySkill.name}</span>
+                </div>
+                <p class="melody-skill-description" data-descriptions={JSON.stringify(disc.melodySkill.formattedDescriptions)}>
+                  {disc.melodySkill.formattedDescriptions[0]}
+                </p>
+                {disc.melodySkill.maxLevel > 1 && (
+                  <div class="melody-skill-levels">
+                    <div class="melody-level-buttons">
+                      {Array.from({ length: disc.melodySkill.maxLevel }, (_, i) => (
+                        <button type="button" class={`level-btn melody-level-btn ${i === 0 ? 'active' : ''}`} data-level={i}>
+                          {i + 1}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <!-- Harmony Skills Section -->
+            <div class="harmony-skills-section">
+              <div class="skill-section-header">
+                <span class="skill-section-title">Harmony Skills</span>
+                <span class="skill-section-subtitle">(Melody Notes)</span>
+              </div>
+              {disc.harmonySkills.length > 0 ? (
+                <div class="harmony-skills-list">
+                  {disc.harmonySkills.map((skill, skillIndex) => (
+                    <div class="harmony-skill-item">
+                      <div class="harmony-skill-header">
+                        <div class="harmony-skill-icon">
+                          <SSDiscSkillImage iconName={skill.icon} iconBackground={skill.iconBackground} alt={skill.name} width={32} height={32} />
+                        </div>
+                        <span class="harmony-skill-name">{skill.name}</span>
+                      </div>
+                      {skill.maxLevel > 1 && (
+                        <div class="harmony-level-buttons">
+                          {Array.from({ length: skill.maxLevel }, (_, i) => (
+                            <button type="button" class={`level-btn harmony-level-btn ${i === 0 ? 'active' : ''}`} data-level={i} data-skill-index={skillIndex}>
+                              {i + 1}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                      <p class="harmony-skill-description" data-descriptions={JSON.stringify(skill.formattedDescriptions)}>
+                        {skill.formattedDescriptions[0]}
+                      </p>
+                      {skill.requirements && skill.requirements.length > 0 && (
+                        <div class="harmony-skill-requirements-container">
+                          {skill.requirements.map((levelReqs, levelIndex) => (
+                            <div class={`harmony-skill-requirements ${levelIndex === 0 ? 'active' : ''}`} data-level={levelIndex}>
+                              {levelReqs.map(req => (
+                                <div class="harmony-requirement">
+                                  <SSNotesImage imageName={req.name} alt={req.name} width={16} height={16} />
+                                  <span class="harmony-requirement-qty">x{req.quantity}</span>
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="no-harmony-skills">No Harmony Skills available</div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No discs found matching your filters.
+    </div>
+  </div>
+</DiscSkillsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const harmonyFilter = document.getElementById('harmony-filter') as HTMLSelectElement;
+    const tagCheckboxes = document.getElementById('tag-checkboxes') as HTMLDivElement;
+    const skillsGrid = document.getElementById('skills-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    const cards = skillsGrid.querySelectorAll('.disc-skill-card');
+
+    // Get selected tags from checkboxes
+    function getSelectedTags(): string[] {
+      const checkboxes = tagCheckboxes.querySelectorAll('input[type="checkbox"]:checked');
+      return Array.from(checkboxes).map(cb => (cb as HTMLInputElement).value);
+    }
+
+    // Filter discs
+    function filterDiscs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarityValue = rarityFilter.value;
+      const elementValue = elementFilter.value;
+      const harmonyValue = harmonyFilter.value;
+      const selectedTags = getSelectedTags();
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const searchText = card.getAttribute('data-search') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const element = card.getAttribute('data-element') || '';
+        const tags = card.getAttribute('data-tags') || '';
+        const hasHarmony = card.getAttribute('data-has-harmony') || '';
+
+        const matchesSearch = searchText.includes(searchTerm);
+        const matchesRarity = rarityValue === 'all' || rarity === rarityValue;
+        const matchesElement = elementValue === 'all' || element === elementValue;
+        const matchesHarmony = harmonyValue === 'all' || hasHarmony === harmonyValue;
+
+        // Check if disc has ALL selected tags (AND logic)
+        const matchesTags = selectedTags.length === 0 ||
+          selectedTags.every(tag => tags.includes(tag));
+
+        if (matchesSearch && matchesRarity && matchesElement && matchesHarmony && matchesTags) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Clear all filters
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    function clearFilters() {
+      searchInput.value = '';
+      rarityFilter.value = 'all';
+      elementFilter.value = 'all';
+      harmonyFilter.value = 'all';
+      // Uncheck all tag checkboxes
+      tagCheckboxes.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        (cb as HTMLInputElement).checked = false;
+      });
+      filterDiscs();
+    }
+
+    // Handle Melody Skill level button clicks
+    skillsGrid.querySelectorAll('.melody-level-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const button = e.target as HTMLButtonElement;
+        const level = parseInt(button.dataset.level || '0');
+        const card = button.closest('.disc-skill-card');
+        const buttonsContainer = button.closest('.melody-level-buttons');
+        const descriptionEl = card?.querySelector('.melody-skill-description') as HTMLElement;
+
+        // Update active state
+        buttonsContainer?.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        if (descriptionEl) {
+          const descriptions = JSON.parse(descriptionEl.dataset.descriptions || '[]');
+          if (descriptions[level]) {
+            descriptionEl.textContent = descriptions[level];
+          }
+        }
+      });
+    });
+
+    // Handle Harmony Skill level button clicks
+    skillsGrid.querySelectorAll('.harmony-level-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const button = e.target as HTMLButtonElement;
+        const level = parseInt(button.dataset.level || '0');
+        const harmonyItem = button.closest('.harmony-skill-item');
+        const buttonsContainer = button.closest('.harmony-level-buttons');
+        const descriptionEl = harmonyItem?.querySelector('.harmony-skill-description') as HTMLElement;
+        const requirementsContainer = harmonyItem?.querySelector('.harmony-skill-requirements-container');
+
+        // Update active state for buttons
+        buttonsContainer?.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        // Update description
+        if (descriptionEl) {
+          const descriptions = JSON.parse(descriptionEl.dataset.descriptions || '[]');
+          if (descriptions[level]) {
+            descriptionEl.textContent = descriptions[level];
+          }
+        }
+
+        // Toggle requirements visibility
+        if (requirementsContainer) {
+          requirementsContainer.querySelectorAll('.harmony-skill-requirements').forEach(req => {
+            const reqLevel = parseInt((req as HTMLElement).dataset.level || '0');
+            if (reqLevel === level) {
+              req.classList.add('active');
+            } else {
+              req.classList.remove('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Event listeners
+    searchInput.addEventListener('input', filterDiscs);
+    rarityFilter.addEventListener('change', filterDiscs);
+    elementFilter.addEventListener('change', filterDiscs);
+    harmonyFilter.addEventListener('change', filterDiscs);
+    tagCheckboxes.addEventListener('change', filterDiscs);
+    clearBtn.addEventListener('click', clearFilters);
+  });
+</script>

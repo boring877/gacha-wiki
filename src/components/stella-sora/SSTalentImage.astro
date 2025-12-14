@@ -1,0 +1,34 @@
+---
+// Stella Sora Talent Image Component
+import { Image } from 'astro:assets';
+
+// Import talent image
+import talentIcon from '../../assets/images/games/stella-sora/Talent/talent.png';
+
+export interface Props {
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { alt = 'Talent', class: className = '', width = 48, height = 48 } = Astro.props;
+---
+
+<Image
+  src={talentIcon}
+  alt={alt}
+  width={width}
+  height={height}
+  class={`${className} talent-img`}
+  loading="lazy"
+  format="webp"
+  quality={95}
+/>
+
+<style>
+  .talent-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

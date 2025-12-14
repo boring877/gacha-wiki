@@ -3,17 +3,17 @@
 // Data structure matches character organization pattern for consistency
 
 // Import all individual disc data files
-import { swordAgainstStreamData } from './discs/sword-against-stream.js';
-import { mysticBrushstrokesData } from './discs/mystic-brushstrokes.js';
-import { sunlitBlossomData } from './discs/sunlit-blossom.js';
-import { witchsSwingData } from './discs/witchs-swing.js';
-import { clawTheClawData } from './discs/claw-the-claw.js';
-import { ripplesOfNostalgiaData } from './discs/ripples-of-nostalgia.js';
-import { daylightGardenData } from './discs/daylight-garden.js';
-import { theLostPilgrimData } from './discs/the-lost-pilgrim.js';
-import { goodNightData } from './discs/good-night.js';
-import { bamBamGirlData } from './discs/bam-bam-girl.js';
-import { midnightMayhemData } from './discs/midnight-mayhem.js';
+import { disc as swordAgainstStreamData } from './discs/sword-against-stream.js';
+import { disc as mysticBrushstrokesData } from './discs/mystic-brushstrokes.js';
+import { disc as sunlitBlossomData } from './discs/sunlit-blossom.js';
+import { disc as witchsSwingData } from './discs/witch-s-swing.js';
+import { disc as clawTheClawData } from './discs/claw-the-claw.js';
+import { disc as ripplesOfNostalgiaData } from './discs/ripples-of-nostalgia.js';
+import { disc as daylightGardenData } from './discs/daylight-garden.js';
+import { disc as theLostPilgrimData } from './discs/the-lost-pilgrim.js';
+import { disc as goodNightData } from './discs/good-night.js';
+import { disc as bamBamGirlData } from './discs/bam-bam-girl.js';
+import { disc as midnightMayhemData } from './discs/midnight-mayhem.js';
 
 // Centralized disc database array
 export const DISCS_DATA = [

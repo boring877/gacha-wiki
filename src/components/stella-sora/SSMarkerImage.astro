@@ -1,0 +1,54 @@
+---
+// Stella Sora Element Marker Image Component
+import { Image } from 'astro:assets';
+
+// Import marker images
+import ignisMarker from '../../assets/images/games/stella-sora/markers/ignis_mark.png';
+import aquaMarker from '../../assets/images/games/stella-sora/markers/aqua_mark.png';
+import terraMarker from '../../assets/images/games/stella-sora/markers/terra_mark.png';
+import ventusMarker from '../../assets/images/games/stella-sora/markers/ventus_mark.png';
+import luxMarker from '../../assets/images/games/stella-sora/markers/lux_mark.png';
+import umbraMarker from '../../assets/images/games/stella-sora/markers/umbra_mark.png';
+
+const markerImageMap: Record<string, ImageMetadata> = {
+  ignis: ignisMarker,
+  aqua: aquaMarker,
+  terra: terraMarker,
+  ventus: ventusMarker,
+  lux: luxMarker,
+  umbra: umbraMarker,
+};
+
+export interface Props {
+  element: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { element, alt, class: className = '', width = 18, height = 18 } = Astro.props;
+
+const elementKey = element.toLowerCase();
+const imageSrc = markerImageMap[elementKey];
+---
+
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt={alt || `${element} Mark`}
+    width={width}
+    height={height}
+    class={`ss-marker-img ${className}`}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+)}
+
+<style>
+  .ss-marker-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

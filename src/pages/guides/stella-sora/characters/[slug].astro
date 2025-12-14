@@ -3,12 +3,22 @@
 import CharacterIndividualLayout from '../../../../layouts/stella-sora/CharacterIndividualLayout.astro';
 import SSCharacterImage from '../../../../components/stella-sora/SSCharacterImage.astro';
 import SSElementImage from '../../../../components/stella-sora/SSElementImage.astro';
+import SSAttackTypeImage from '../../../../components/stella-sora/SSAttackTypeImage.astro';
+import SSRarityImage from '../../../../components/stella-sora/SSRarityImage.astro';
 import SSSkillImage from '../../../../components/stella-sora/SSSkillImage.astro';
-import PotentialImage from '../../../../components/stella-sora/PotentialImage.astro';
-import DiscImage from '../../../../components/stella-sora/DiscImage.astro';
+import SSMarkerImage from '../../../../components/stella-sora/SSMarkerImage.astro';
+import SSPotentialAllImage from '../../../../components/stella-sora/SSPotentialAllImage.astro';
+import SSDiscImage from '../../../../components/stella-sora/SSDiscImage.astro';
 import SSNotesImage from '../../../../components/stella-sora/SSNotesImage.astro';
+import SSCharacterStatImage from '../../../../components/stella-sora/SSCharacterStatImage.astro';
+import SSGiftImage from '../../../../components/stella-sora/SSGiftImage.astro';
+import SSCharacterSmallImage from '../../../../components/stella-sora/SSCharacterSmallImage.astro';
+import SSTalentImage from '../../../../components/stella-sora/SSTalentImage.astro';
+import SSShardImage from '../../../../components/stella-sora/SSShardImage.astro';
 import HighlightedText from '../../../../components/stella-sora/HighlightedText.astro';
 import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.js';
+import { getGiftByName } from '../../../../data/stella-sora/gifts.js';
+import { allPotentials } from '../../../../data/stella-sora/all-potentials.js';
 
 export async function getStaticPaths() {
   return STELLA_SORA_CHARACTERS.map(character => {
@@ -25,6 +35,77 @@ const { character } = Astro.props;
 if (!character) {
   return new Response('Character not found', { status: 404 });
 }
+
+// Get potentials data directly from allPotentials for this character
+const charPotentialsData = allPotentials[character.slug];
+const pots = charPotentialsData?.potentials || {};
+const buildOrder = charPotentialsData?.buildOrder || {};
+
+// Helper function to get potential by name from all potential arrays
+function getPotentialByName(pots: any, name: string): any {
+  const allPots = [
+    ...(pots.mainCore || []),
+    ...(pots.mainNormal || []),
+    ...(pots.supportCore || []),
+    ...(pots.supportNormal || []),
+    ...(pots.common || [])
+  ];
+  return allPots.find((p: any) => p.name === name);
+}
+
+// Helper to group normals by corner
+function groupByCorner(normals: any[]): Record<number, any[]> {
+  const groups: Record<number, any[]> = { 1: [], 2: [], 3: [] };
+  normals?.forEach(n => {
+    if (n.corner && groups[n.corner]) {
+      groups[n.corner].push(n);
+    }
+  });
+  return groups;
+}
+
+// Get data arrays
+const mainCore = pots.mainCore || [];
+const mainNormal = pots.mainNormal || [];
+const supportCore = pots.supportCore || [];
+const supportNormal = pots.supportNormal || [];
+const common = pots.common || [];
+
+// Group normals by corner for builds
+const mainNormalByCorner = groupByCorner(mainNormal);
+const supportNormalByCorner = groupByCorner(supportNormal);
+
+// Split cores into Build 1 (first 2) and Build 2 (next 2)
+const mainCoreBuild1 = mainCore.slice(0, 2);
+const mainCoreBuild2 = mainCore.slice(2, 4);
+const supportCoreBuild1 = supportCore.slice(0, 2);
+const supportCoreBuild2 = supportCore.slice(2, 4);
+
+// Get normals for a build, sorted by rarity (1 purple first, then 2 orange)
+const getBuildNormals = (normalByCorner: any, buildIndex: number) => {
+  const normals: any[] = [];
+  for (const corner of [1, 2, 3]) {
+    const pot = normalByCorner[corner]?.[buildIndex];
+    if (pot) normals.push(pot);
+  }
+  return normals.sort((a, b) => a.rarity - b.rarity);
+};
+const mainBuild1Normals = getBuildNormals(mainNormalByCorner, 0);
+const mainBuild2Normals = getBuildNormals(mainNormalByCorner, 1);
+const supportBuild1Normals = getBuildNormals(supportNormalByCorner, 0);
+const supportBuild2Normals = getBuildNormals(supportNormalByCorner, 1);
+
+// Collect remaining normals (index 2+) for Generic section
+const getRemaining = (normalByCorner: any) => {
+  const remaining: any[] = [];
+  for (const corner of [1, 2, 3]) {
+    const arr = normalByCorner[corner] || [];
+    remaining.push(...arr.slice(2));
+  }
+  return remaining;
+};
+const mainRemaining = getRemaining(mainNormalByCorner);
+const supportRemaining = getRemaining(supportNormalByCorner);
 
 // Function to count actual potential cards (excluding build headers)
 function countPotentialCards(potentials) {
@@ -78,6 +159,100 @@ const mainCardsCount = countPotentialCards(character.mainPotentials);
 const supportCardsCount = countPotentialCards(character.supportPotentials);
 const totalCardsCount = countTotalCards(character.mainPotentials, character.supportPotentials);
 const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.supportPotentials);
+
+// Format talent description with params replaced
+function formatTalentDescription(talent: { description: string; params?: string[] }) {
+  if (!talent || !talent.description) return '';
+  let desc = talent.description;
+
+  // Replace &Param1&, &Param2&, etc. with actual values
+  if (talent.params) {
+    talent.params.forEach((param, idx) => {
+      desc = desc.split(`&Param${idx + 1}&`).join(param);
+    });
+  }
+
+  // Convert color tags to markdown bold for HighlightedText
+  // Match <color=#hexcode>content</color> and convert to **content**
+  desc = desc.replace(/<color=#[a-fA-F0-9]+>(.+?)<\/color>/g, '**$1**');
+
+  // Clean up element mark references (##Ventus Mark#1017# -> Ventus Mark)
+  desc = desc.replace(/##([^#]+)#\d+#/g, '$1');
+
+  return desc;
+}
+
+// Summarize stat bonuses for a talent (keep flat and percent separate)
+function summarizeTalentStats(talents: Array<{ name: string; params?: string[] }>) {
+  const stats: Array<{ name: string; value: number; isPercent: boolean }> = [];
+  const tempStats: Record<string, { flat: number; percent: number }> = {};
+
+  // Skip first item (main effect), process remaining stat bonuses
+  talents.slice(1).forEach(bonus => {
+    if (!bonus.params || !bonus.params[0]) return;
+
+    const value = bonus.params[0];
+    const isPercent = value.includes('%');
+    const numValue = parseFloat(value.replace('%', ''));
+
+    // Categorize by stat type
+    let statType = bonus.name.replace(' Enhancement', '').replace(' Boost', '');
+    if (bonus.name.includes('DMG Boost')) {
+      statType = bonus.name.replace(' Boost', '');
+    }
+
+    if (!tempStats[statType]) {
+      tempStats[statType] = { flat: 0, percent: 0 };
+    }
+
+    if (isPercent) {
+      tempStats[statType].percent += numValue;
+    } else {
+      tempStats[statType].flat += numValue;
+    }
+  });
+
+  // Convert to array with separate entries for flat and percent
+  Object.entries(tempStats).forEach(([statType, values]) => {
+    if (values.flat > 0) {
+      stats.push({ name: statType, value: values.flat, isPercent: false });
+    }
+    if (values.percent > 0) {
+      stats.push({ name: `${statType} %`, value: values.percent, isPercent: true });
+    }
+  });
+
+  return stats;
+}
+
+// Talent shard requirements
+// Each talent requires 60 shards to fully upgrade (10 levels)
+// 5-Star: 1 dupe = 60 shards, so 5 dupes for all 5 talents (300 shards)
+// 4-Star: 1 dupe = 30 shards, so 10 dupes for all 5 talents (300 shards)
+const SHARDS_PER_TALENT = 60;
+const TOTAL_TALENTS = 5;
+const TOTAL_SHARDS_NEEDED = SHARDS_PER_TALENT * TOTAL_TALENTS; // 300 total
+
+// Shards per dupe based on rarity
+const SHARDS_PER_DUPE_5STAR = 60;
+const SHARDS_PER_DUPE_4STAR = 30;
+
+// Get shards needed for this individual talent
+function getShardCost(talentIndex: number): number {
+  return SHARDS_PER_TALENT;
+}
+
+// Get dupes needed for a talent based on character rarity
+function getDupesForTalent(rarity: string): number {
+  const is5Star = rarity === '5-Star';
+  return is5Star ? 1 : 2; // 5-star needs 1 dupe (60 shards), 4-star needs 2 dupes (30 each = 60)
+}
+
+// Get total dupes needed for all talents
+function getTotalDupes(rarity: string): number {
+  const is5Star = rarity === '5-Star';
+  return is5Star ? 5 : 10; // 5-star: 5 dupes, 4-star: 10 dupes
+}
 ---
 
 <CharacterIndividualLayout title={character.name} gameTitle={character.name} character={character}>
@@ -95,10 +270,14 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
         <div class="character-details">
           <h1>{character.name}</h1>
           <div class="character-meta">
-            <span
-              class={`rarity-badge ${(character.rarity || 'Unknown').toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
-              >{character.rarity || 'Unknown'}</span
-            >
+            <div class="rarity-badge-container">
+              <SSRarityImage
+                rarity={parseInt((character.rarity || '4-Star').replace('-Star', ''))}
+                alt={character.rarity}
+                width={80}
+                height={24}
+              />
+            </div>
             <div class="element-badge-container">
               <div class="element-icon-detail">
                 <SSElementImage elementName={character.element} alt={character.element} />
@@ -111,18 +290,119 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             <span class={`position-badge position-${(character.role || 'Unknown').toLowerCase()}`}
               >{character.role || 'Unknown'}</span
             >
+            {character.attackType && (
+              <div class="attack-type-badge-container">
+                <div class="attack-type-icon-detail">
+                  <SSAttackTypeImage attackType={character.attackType} alt={character.attackType} />
+                </div>
+                <span class={`attack-type-badge attack-type-${character.attackType.toLowerCase()}`}
+                  >{character.attackType}</span
+                >
+              </div>
+            )}
+            {character.style && (
+              <span class={`style-badge style-${character.style.toLowerCase()}`}
+                >{character.style}</span
+              >
+            )}
           </div>
           <div class="character-lore">
             <h3>Lore</h3>
             <p>{character.story}</p>
           </div>
+
+          <!-- Personal Info -->
+          <div class="character-personal-info">
+            <h3>Personal Info</h3>
+            <div class="personal-info-grid">
+              {character.faction && (
+                <div class="info-item">
+                  <span class="info-label">Faction</span>
+                  <span class="info-value">{character.faction}</span>
+                </div>
+              )}
+              {character.birthday && (
+                <div class="info-item">
+                  <span class="info-label">Birthday</span>
+                  <span class="info-value">{character.birthday}</span>
+                </div>
+              )}
+              {character.voiceActor && (
+                <>
+                  <div class="info-item">
+                    <span class="info-label">VA (JP)</span>
+                    <span class="info-value">
+                      {character.voiceActor.jp}
+                      {character.voiceActor.jpLocalized && (
+                        <span class="localized-name"> ({character.voiceActor.jpLocalized})</span>
+                      )}
+                    </span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">VA (CN)</span>
+                    <span class="info-value">
+                      {character.voiceActor.cn}
+                      {character.voiceActor.cnLocalized && (
+                        <span class="localized-name"> ({character.voiceActor.cnLocalized})</span>
+                      )}
+                    </span>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Character Portrait Section -->
+    <section class="character-portrait-section">
+      <SSCharacterStatImage
+        characterSlug={character.slug}
+        alt={`${character.name} portrait`}
+        width={400}
+        height={400}
+      />
+    </section>
+
     <!-- Character Statistics - Clean Table Layout -->
     <section class="character-stats-container">
-      <h2>Character Statistics (Level {character.level || 90})</h2>
+      <h2>Character Statistics</h2>
+      {character.levelStats && character.levelStats.length > 0 && (
+        <div class="stats-selectors-row">
+          <div class="stats-level-selector">
+            <label for="stats-level-input">Level:</label>
+            <input
+              type="number"
+              id="stats-level-input"
+              class="level-input"
+              value="90"
+              min="1"
+              max="90"
+              step="1"
+            />
+          </div>
+            <div class="stats-ascension-selector">
+              <label for="stats-ascension-select">Ascension:</label>
+              <select id="stats-ascension-select" class="level-select">
+                <option value="0">A0 (Lv 1-10)</option>
+                <option value="1">A1 (Lv 10-20)</option>
+                <option value="2">A2 (Lv 20-30)</option>
+                <option value="3">A3 (Lv 30-40)</option>
+                <option value="4">A4 (Lv 40-50)</option>
+                <option value="5">A5 (Lv 50-60)</option>
+                <option value="6">A6 (Lv 60-70)</option>
+                <option value="7">A7 (Lv 70-80)</option>
+                <option value="8" selected>A8 (Lv 80-90)</option>
+              </select>
+            </div>
+          <div class="ascension-bonus" id="ascension-bonus">
+            <span class="bonus-label">Ascension Bonus:</span>
+            <span class="bonus-value" id="ascension-hp-bonus">+0 HP</span>
+            <span class="bonus-value" id="ascension-atk-bonus">+0 ATK</span>
+          </div>
+        </div>
+      )}
 
       <div class="stats-list-layout">
         <div class="stat-section-group">
@@ -131,7 +411,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             <li class="stat-list-item">
               <div class="stat-item-content">
                 <span class="stat-item-label"><HighlightedText text="**HP**" /></span>
-                <span class="stat-item-value large"
+                <span class="stat-item-value large" id="stat-hp"
                   >{character.stats?.hp?.toLocaleString() || 'N/A'}</span
                 >
               </div>
@@ -139,7 +419,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             <li class="stat-list-item">
               <div class="stat-item-content">
                 <span class="stat-item-label"><HighlightedText text="**ATK**" /></span>
-                <span class="stat-item-value large"
+                <span class="stat-item-value large" id="stat-atk"
                   >{character.stats?.attack?.toLocaleString() || 'N/A'}</span
                 >
               </div>
@@ -154,6 +434,11 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             </li>
           </ul>
         </div>
+
+        {/* Hidden data for JavaScript */}
+        {character.levelStats && (
+          <div id="level-stats-data" data-stats={JSON.stringify(character.levelStats)} style="display:none;"></div>
+        )}
 
         <div class="stat-section-group">
           <h3 class="stats-section-title">Combat Stats</h3>
@@ -295,122 +580,307 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
       </div>
     </section>
 
+    <!-- Gift Preferences -->
+    {character.giftPreferences && character.giftPreferences.loves && character.giftPreferences.loves.length > 0 && (
+      <section class="character-gifts">
+        <h2>Gift Preferences</h2>
+
+        <!-- Point System Info -->
+        <div class="gifts-point-info">
+          <div class="point-legend">
+            <div class="point-item loved">
+              <span class="point-label">Loved</span>
+              <span class="point-value">+50% bonus</span>
+            </div>
+            <div class="point-item neutral">
+              <span class="point-label">Neutral</span>
+              <span class="point-value">Base points</span>
+            </div>
+            <div class="point-item hated">
+              <span class="point-label">Hated</span>
+              <span class="point-value">-20% penalty</span>
+            </div>
+          </div>
+          <div class="point-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rarity</th>
+                  <th>Loved</th>
+                  <th>Neutral</th>
+                  <th>Hated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3-Star</td>
+                  <td class="loved">225</td>
+                  <td>150</td>
+                  <td class="hated">120</td>
+                </tr>
+                <tr>
+                  <td>4-Star</td>
+                  <td class="loved">750</td>
+                  <td>500</td>
+                  <td class="hated">400</td>
+                </tr>
+                <tr>
+                  <td>5-Star</td>
+                  <td class="loved">3,000</td>
+                  <td>2,000</td>
+                  <td class="hated">1,600</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Lv. 30 Recommendation -->
+        <div class="gifts-recommendation">
+          <h4>Recommended Target: Lv. 30</h4>
+          <p>Reaching Lv. 30 affinity gives you all 6 ATK% milestone bonuses (24% total) plus +1,080 ATK and +10,020 HP. This is the most cost-efficient target before the point requirements increase significantly.</p>
+          <div class="lv30-stats">
+            <span class="stat">+1,080 ATK</span>
+            <span class="stat">+10,020 HP</span>
+            <span class="stat highlight">+24% ATK</span>
+          </div>
+          <p class="lv30-cost">Total points needed: <strong>316,900</strong></p>
+        </div>
+
+        <div class="gifts-container">
+          {character.giftPreferences.loves.length > 0 && (
+            <div class="gifts-category">
+              <h3 class="gifts-category-title loves">Favorite Gifts (+50% bonus)</h3>
+              <div class="gifts-grid">
+                {character.giftPreferences.loves.map((gift: { name: string; image: string }) => {
+                  const giftData = getGiftByName(gift.name);
+                  const lv30Points = 316900;
+                  const giftsNeeded = giftData ? Math.ceil(lv30Points / giftData.points.loved) : 0;
+                  return (
+                    <div class="gift-item">
+                      {giftData && (
+                        <span class={`gift-rarity rarity-${giftData.rarity}`}>{giftData.rarity}-Star</span>
+                      )}
+                      <div class="gift-image-wrapper">
+                        <SSGiftImage giftName={gift.name} alt={gift.name} width={64} height={64} />
+                      </div>
+                      <span class="gift-name">{gift.name}</span>
+                      {giftData && (
+                        <>
+                          <span class="gift-points loved">+{giftData.points.loved} pts</span>
+                          <span class="gift-needed">{giftsNeeded.toLocaleString()} for Lv.30</span>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          {character.giftPreferences.hates && character.giftPreferences.hates.length > 0 && (
+            <div class="gifts-category">
+              <h3 class="gifts-category-title hates">Disliked Gifts (-20% penalty)</h3>
+              <div class="gifts-grid">
+                {character.giftPreferences.hates.map((gift: { name: string; image: string }) => {
+                  const giftData = getGiftByName(gift.name);
+                  const lv30Points = 316900;
+                  const giftsNeeded = giftData ? Math.ceil(lv30Points / giftData.points.hated) : 0;
+                  return (
+                    <div class="gift-item disliked">
+                      {giftData && (
+                        <span class={`gift-rarity rarity-${giftData.rarity}`}>{giftData.rarity}-Star</span>
+                      )}
+                      <div class="gift-image-wrapper">
+                        <SSGiftImage giftName={gift.name} alt={gift.name} width={64} height={64} />
+                      </div>
+                      <span class="gift-name">{gift.name}</span>
+                      {giftData && (
+                        <>
+                          <span class="gift-points hated">{giftData.points.hated} pts</span>
+                          <span class="gift-needed">{giftsNeeded.toLocaleString()} for Lv.30</span>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Link to Full Gift Guide -->
+        <div class="gifts-link">
+          <a href="/guides/stella-sora/character-gifts" class="gift-guide-link">
+            View Full Gift Guide & All Character Preferences
+          </a>
+        </div>
+      </section>
+    )}
     <!-- Character Skills -->
     <section class="character-skills">
       <h2>Skills & Abilities</h2>
+
+      {/* Skill Level Selector - only show if skillsDetailed exists */}
+      {character.skillsDetailed && (
+        <div class="skill-level-selector">
+          <label for="skill-level-input">Skill Level:</label>
+          <div class="level-input-group">
+            <button type="button" class="level-btn level-btn-minus" id="skill-level-minus">-</button>
+            <input type="number" id="skill-level-input" class="level-input" min="1" max="13" value="13" />
+            <button type="button" class="level-btn level-btn-plus" id="skill-level-plus">+</button>
+          </div>
+        </div>
+      )}
+
       <div class="skills-list">
-        {
-          character.skills.map((skill, index) => (
-            <div class="skill-card">
-              <div class="skill-card-top">
-                <div class="skill-info-section">
+        {/* Character Skills */}
+        {character.skillsDetailed && (
+          <>
+            {/* Normal Attack */}
+            <div class="skill-card" data-skill-type="normalAttack">
+              <div class="skill-card-layout">
+                <div class="skill-content">
                   <div class="skill-header">
                     <div class="skill-title-row">
-                      <h3 class="skill-name">{skill.name}</h3>
-                      <span
-                        class={`skill-type skill-type-${skill.type.toLowerCase().replace(' ', '-')}`}
-                      >
-                        {skill.type}
-                      </span>
-                      {skill.level && <span class="skill-level">Lv. {skill.level}</span>}
+                      <h3 class="skill-name">{character.skillsDetailed.normalAttack.name}</h3>
+                      <span class="skill-type skill-type-attack">Attack</span>
                     </div>
-                    {(skill.cooldown !== undefined && skill.cooldown > 0) ||
-                    (skill.energyCost !== undefined && skill.energyCost > 0) ? (
-                      <div class="skill-meta">
-                        {skill.cooldown !== undefined && skill.cooldown > 0 && (
-                          <span class="skill-cooldown">CD: {skill.cooldown}s</span>
-                        )}
-                        {skill.energyCost !== undefined && skill.energyCost > 0 && (
-                          <span class="skill-energy">Energy: {skill.energyCost}</span>
-                        )}
-                      </div>
-                    ) : null}
+                  </div>
+                  <div class="skill-damage">
+                    <p class="skill-description" data-description={character.skillsDetailed.normalAttack.description} data-params={JSON.stringify(character.skillsDetailed.normalAttack.params)}>
+                      {/* Description will be populated by JS with param values */}
+                    </p>
                   </div>
                 </div>
-
-                <div class="skill-banner">
+                <div class="skill-icon-wrapper">
                   <SSSkillImage
                     characterName={character.name}
-                    skillName={skill.name}
-                    alt={`${skill.name} - ${skill.type}`}
+                    skillType="normal-attack"
+                    alt={`${character.skillsDetailed.normalAttack.name} - Attack`}
                   />
                 </div>
               </div>
+            </div>
 
-              <div class="skill-damage">
-                {skill.description && (
-                  <p>
-                    <HighlightedText text={skill.description} />
-                  </p>
-                )}
-                {skill.damage && (
-                  <div>
-                    {skill.damage.normalCast && (
-                      <>
-                        {skill.damage.castDescription ? (
-                          <div set:html={skill.damage.castDescription} />
-                        ) : (
-                          <p>
-                            Deals <HighlightedText text={skill.damage.normalCast || ''} />
-                          </p>
-                        )}
-                      </>
-                    )}
-                    {skill.damage.strikes && (
-                      <div class="damage-strikes">
-                        <h4>Strikes:</h4>
-                        <ul>
-                          {skill.damage.strikes.map((strike, strikeIndex) => (
-                            <li>
-                              <strong>Strike {strikeIndex + 1}:</strong>{' '}
-                              <HighlightedText text={strike || ''} />
-                            </li>
-                          ))}
-                        </ul>
+            {/* Main Skill */}
+            <div class="skill-card" data-skill-type="skill">
+              <div class="skill-card-layout">
+                <div class="skill-content">
+                  <div class="skill-header">
+                    <div class="skill-title-row">
+                      <h3 class="skill-name">{character.skillsDetailed.skill.name}</h3>
+                      <span class="skill-type skill-type-main-skill">Main Skill</span>
+                    </div>
+                    <div class="skill-meta">
+                      <span class="skill-cooldown">CD: {character.skillsDetailed.skill.cooldown}</span>
+                    </div>
+                  </div>
+                  <div class="skill-damage">
+                    <p class="skill-description" data-description={character.skillsDetailed.skill.description} data-params={JSON.stringify(character.skillsDetailed.skill.params)}>
+                      {/* Description will be populated by JS with param values */}
+                    </p>
+                    {character.skillsDetailed.skill.hints && Object.keys(character.skillsDetailed.skill.hints).length > 0 && (
+                      <div class="skill-hints">
+                        <h4>Status Effects:</h4>
+                        {Object.entries(character.skillsDetailed.skill.hints).map(([id, hint]: [string, any]) => (
+                          <div class="hint-item">
+                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                          </div>
+                        ))}
                       </div>
                     )}
-                    {skill.damage.scaleVariant && (
-                      <p>
-                        {skill.damage.scaleDescription || (
-                          <>
-                            After every{' '}
-                            {skill.damage.type && skill.damage.type.includes('AoE') ? '3' : '2'}{' '}
-                            casts, the next cast becomes enhanced, dealing{' '}
-                            <HighlightedText text={skill.damage.scaleVariant || ''} />
-                          </>
-                        )}
-                      </p>
-                    )}
-                    {skill.damage.initialAttack && (
-                      <p>
-                        Initial Attack: <HighlightedText text={skill.damage.initialAttack || ''} />
-                      </p>
-                    )}
-                    {skill.damage.additionalAttack && (
-                      <p>
-                        <HighlightedText text={skill.damage.additionalAttack || ''} />
-                      </p>
+                  </div>
+                </div>
+                <div class="skill-icon-wrapper">
+                  <SSSkillImage
+                    characterName={character.name}
+                    skillType="skill"
+                    alt={`${character.skillsDetailed.skill.name} - Main Skill`}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Support Skill */}
+            <div class="skill-card" data-skill-type="supportSkill">
+              <div class="skill-card-layout">
+                <div class="skill-content">
+                  <div class="skill-header">
+                    <div class="skill-title-row">
+                      <h3 class="skill-name">{character.skillsDetailed.supportSkill.name}</h3>
+                      <span class="skill-type skill-type-support-skill">Support Skill</span>
+                    </div>
+                    <div class="skill-meta">
+                      <span class="skill-cooldown">CD: {character.skillsDetailed.supportSkill.cooldown}</span>
+                    </div>
+                  </div>
+                  <div class="skill-damage">
+                    <p class="skill-description" data-description={character.skillsDetailed.supportSkill.description} data-params={JSON.stringify(character.skillsDetailed.supportSkill.params)}>
+                      {/* Description will be populated by JS with param values */}
+                    </p>
+                    {character.skillsDetailed.supportSkill.hints && Object.keys(character.skillsDetailed.supportSkill.hints).length > 0 && (
+                      <div class="skill-hints">
+                        <h4>Status Effects:</h4>
+                        {Object.entries(character.skillsDetailed.supportSkill.hints).map(([id, hint]: [string, any]) => (
+                          <div class="hint-item">
+                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
-
-              {/* Skill Effects */}
-              {skill.effects && skill.effects.length > 0 && (
-                <div class="skill-effects">
-                  <h4>Effects:</h4>
-                  <ul>
-                    {skill.effects.map(effect => (
-                      <li>
-                        <HighlightedText text={effect.description || ''} />
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              )}
+                <div class="skill-icon-wrapper">
+                  <SSSkillImage
+                    characterName={character.name}
+                    skillType="support-skill"
+                    alt={`${character.skillsDetailed.supportSkill.name} - Support Skill`}
+                  />
+                </div>
+              </div>
             </div>
-          ))
-        }
+
+            {/* Ultimate */}
+            <div class="skill-card" data-skill-type="ultimate">
+              <div class="skill-card-layout">
+                <div class="skill-content">
+                  <div class="skill-header">
+                    <div class="skill-title-row">
+                      <h3 class="skill-name">{character.skillsDetailed.ultimate.name}</h3>
+                      <span class="skill-type skill-type-ultimate">Ultimate</span>
+                    </div>
+                    <div class="skill-meta">
+                      <span class="skill-cooldown">CD: {character.skillsDetailed.ultimate.cooldown}</span>
+                      <span class="skill-energy">Energy: {character.skillsDetailed.ultimate.energy}</span>
+                    </div>
+                  </div>
+                  <div class="skill-damage">
+                    <p class="skill-description" data-description={character.skillsDetailed.ultimate.description} data-params={JSON.stringify(character.skillsDetailed.ultimate.params)}>
+                      {/* Description will be populated by JS with param values */}
+                    </p>
+                    {character.skillsDetailed.ultimate.hints && Object.keys(character.skillsDetailed.ultimate.hints).length > 0 && (
+                      <div class="skill-hints">
+                        <h4>Status Effects:</h4>
+                        {Object.entries(character.skillsDetailed.ultimate.hints).map(([id, hint]: [string, any]) => (
+                          <div class="hint-item">
+                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div class="skill-icon-wrapper">
+                  <SSSkillImage
+                    characterName={character.name}
+                    skillType="ultimate"
+                    alt={`${character.skillsDetailed.ultimate.name} - Ultimate`}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
 
         {/* Status Effects - only show if character has status effects */}
         {
@@ -438,18 +908,82 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
       character.talents && character.talents.length > 0 && (
         <section class="character-talents">
           <h2>Talents (Dupes)</h2>
+
+          {/* Total Shards Summary */}
+          <div class="talents-shard-summary">
+            <SSShardImage characterName={character.name} width={32} height={32} />
+            <span class="shard-total-label">Total Shards Needed:</span>
+            <span class="shard-total-value">{TOTAL_SHARDS_NEEDED}</span>
+            <span class="shard-dupe-info">({getTotalDupes(character.rarity)} Dupes)</span>
+          </div>
+
           <div class="talents-list">
-            {character.talents.map(talent => (
-              <div class="talent-item">
-                <div class="talent-header">
-                  <span class="talent-number">{talent.id}</span>
-                  <h3 class="talent-name">{talent.name}</h3>
+            {character.talents.map((talentGroup, index) => {
+              const mainEffect = talentGroup.talents?.[0];
+              const statBonuses = talentGroup.talents?.slice(1) || [];
+              const statSummary = summarizeTalentStats(talentGroup.talents || []);
+              const shardCost = getShardCost(index);
+
+              return (
+                <div class="talent-card">
+                  <div class="talent-card-header">
+                    <div class="talent-icon-wrapper">
+                      <SSTalentImage alt={talentGroup.name} width={40} height={40} />
+                    </div>
+                    <div class="talent-info">
+                      <span class="talent-number">Talent {index + 1}</span>
+                      <h3 class="talent-name">{talentGroup.name}</h3>
+                    </div>
+                    <div class="talent-shard">
+                      <SSShardImage characterName={character.name} width={48} height={48} />
+                      <span class="shard-cost">x{shardCost}</span>
+                      <span class="shard-dupe-cost">({getDupesForTalent(character.rarity)} {getDupesForTalent(character.rarity) === 1 ? 'Dupe' : 'Dupes'})</span>
+                    </div>
+                  </div>
+
+                  {/* Main Effect */}
+                  {mainEffect && (
+                    <div class="talent-main-effect">
+                      <h4>Main Effect</h4>
+                      <p class="talent-effect-text">
+                        <HighlightedText text={formatTalentDescription(mainEffect)} />
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Stat Bonuses Summary */}
+                  {statSummary.length > 0 && (
+                    <div class="talent-stat-summary">
+                      <h4>Total Stat Bonuses (Lv. 1-10)</h4>
+                      <div class="stat-summary-grid">
+                        {statSummary.map((stat) => (
+                          <div class="stat-summary-item">
+                            <span class="stat-type">{stat.name}</span>
+                            <span class={stat.isPercent ? 'percent-value' : 'flat-value'}>
+                              +{stat.value}{stat.isPercent ? '%' : ''}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Expandable Detail View */}
+                  <details class="talent-details">
+                    <summary>View Level-by-Level Breakdown</summary>
+                    <div class="stat-bonuses-grid">
+                      {statBonuses.map((bonus, idx) => (
+                        <div class="stat-bonus-item">
+                          <span class="bonus-level">Lv.{idx + 1}</span>
+                          <span class="bonus-name">{bonus.name}</span>
+                          <span class="bonus-value">{bonus.params?.[0] || '-'}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
                 </div>
-                <p class="talent-description">
-                  <HighlightedText text={talent.description} />
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )
@@ -536,83 +1070,264 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
       </div>
     </section>
 
-    <!-- Character Potentials - Main Position -->
+    <!-- Character Potentials Section -->
     {
-      character.mainPotentials && character.mainPotentials.length > 0 && (
-        <section class="character-potentials">
-          <h2>Potentials - Main</h2>
-          <div class="potentials-list">
-            {character.mainPotentials.map(potential => (
-              <>
-                {potential.isBuildHeader ? (
-                  <div class="potential-build-header">
-                    <h3 class="build-title">{potential.buildTitle}</h3>
-                    <h4 class="build-subtitle">{potential.buildSubtitle}</h4>
-                    <p class="build-description">{potential.buildDescription}</p>
-                  </div>
-                ) : (
-                  <div class="potential-item">
-                    <div class="potential-image-detail">
-                      <PotentialImage
-                        imageName={potential.image || ''}
-                        alt={`${potential.name} - ${potential.level || 'Potential'}`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="potential-content">
-                      <div class="potential-header">
-                        <h4 class="potential-name">{potential.name}</h4>
-                        {potential.level && <span class="potential-level">{potential.level}</span>}
-                      </div>
-                      <div class="potential-description">
-                        <HighlightedText text={potential.description || ''} />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </>
-            ))}
-          </div>
-        </section>
-      )
-    }
+      charPotentialsData && (
+        <section class="character-potentials-section">
+          <h2>Potentials</h2>
 
-    <!-- Character Potentials - Support Position -->
-    {
-      character.supportPotentials && character.supportPotentials.length > 0 && (
-        <section class="character-potentials">
-          <h2>Potentials - Support</h2>
-          <div class="potentials-list">
-            {character.supportPotentials.map(potential => (
-              <>
-                {potential.isBuildHeader ? (
-                  <div class="potential-build-header">
-                    <h3 class="build-title">{potential.buildTitle}</h3>
-                    <h4 class="build-subtitle">{potential.buildSubtitle}</h4>
-                    <p class="build-description">{potential.buildDescription}</p>
-                  </div>
+          <!-- Main/Support Tabs -->
+          <div class="potentials-tabs" role="tablist" aria-label="Potentials tabs">
+            <button class="potentials-tab active" data-tab="main" role="tab" aria-selected="true">Main</button>
+            <button class="potentials-tab" data-tab="support" role="tab" aria-selected="false">Support</button>
+          </div>
+
+          <!-- Main Tab Content -->
+          <div class="potentials-tab-content active" data-content="main">
+            <!-- Build 1 -->
+            <div class="build-section">
+              <div class="build-header">
+                <h3 class="build-title">Build 1</h3>
+                {buildOrder?.main?.build1?.description && <p class="build-description">{buildOrder.main.build1.description}</p>}
+              </div>
+              <div class="build-cards">
+                {buildOrder?.main?.build1 ? (
+                  buildOrder.main.build1.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })
                 ) : (
-                  <div class="potential-item">
-                    <div class="potential-image-detail">
-                      <PotentialImage
-                        imageName={potential.image || ''}
-                        alt={`${potential.name} - ${potential.level || 'Potential'}`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="potential-content">
-                      <div class="potential-header">
-                        <h4 class="potential-name">{potential.name}</h4>
-                        {potential.level && <span class="potential-level">{potential.level}</span>}
+                  <>
+                    {mainCoreBuild1.map((potential: any) => (
+                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
                       </div>
-                      <div class="potential-description">
-                        <HighlightedText text={potential.description || ''} />
+                    ))}
+                    {mainBuild1Normals.map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
                       </div>
-                    </div>
-                  </div>
+                    ))}
+                  </>
                 )}
-              </>
-            ))}
+              </div>
+            </div>
+
+            <!-- Build 2 -->
+            <div class="build-section">
+              <div class="build-header">
+                <h3 class="build-title">Build 2</h3>
+                {buildOrder?.main?.build2?.description && <p class="build-description">{buildOrder.main.build2.description}</p>}
+              </div>
+              <div class="build-cards">
+                {buildOrder?.main?.build2 ? (
+                  buildOrder.main.build2.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>
+                    {mainCoreBuild2.map((potential: any) => (
+                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                    {mainBuild2Normals.map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+            </div>
+
+            <!-- Generic (Main) -->
+            {(buildOrder?.mainGeneric || common.length > 0 || mainRemaining.length > 0) && (
+              <div class="build-section">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {buildOrder?.mainGeneric ? (
+                    buildOrder.mainGeneric.potentials.map((name: string) => {
+                      const potential = getPotentialByName(pots, name);
+                      if (!potential) return null;
+                      return (
+                        <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                          <div class="card-level">1</div>
+                          <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                          <span class="card-name">{potential.name}</span>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    [...common, ...mainRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Support Tab Content -->
+          <div class="potentials-tab-content" data-content="support">
+            <!-- Build 1 -->
+            <div class="build-section">
+              <div class="build-header">
+                <h3 class="build-title">Build 1</h3>
+                {buildOrder?.support?.build1?.description && <p class="build-description">{buildOrder.support.build1.description}</p>}
+              </div>
+              <div class="build-cards">
+                {buildOrder?.support?.build1 ? (
+                  buildOrder.support.build1.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>
+                    {supportCoreBuild1.map((potential: any) => (
+                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                    {supportBuild1Normals.map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+            </div>
+
+            <!-- Build 2 -->
+            <div class="build-section">
+              <div class="build-header">
+                <h3 class="build-title">Build 2</h3>
+                {buildOrder?.support?.build2?.description && <p class="build-description">{buildOrder.support.build2.description}</p>}
+              </div>
+              <div class="build-cards">
+                {buildOrder?.support?.build2 ? (
+                  buildOrder.support.build2.potentials.map((name: string) => {
+                    const potential = getPotentialByName(pots, name);
+                    if (!potential) return null;
+                    const isCore = potential.corner === null;
+                    return (
+                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        {!isCore && <div class="card-level">1</div>}
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>
+                    {supportCoreBuild2.map((potential: any) => (
+                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                    {supportBuild2Normals.map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+            </div>
+
+            <!-- Generic (Support) -->
+            {(buildOrder?.supportGeneric || common.length > 0 || supportRemaining.length > 0) && (
+              <div class="build-section">
+                <div class="build-header generic-header">
+                  <h3 class="build-title">Generic</h3>
+                </div>
+                <div class="build-cards generic-cards">
+                  {buildOrder?.supportGeneric ? (
+                    buildOrder.supportGeneric.potentials.map((name: string) => {
+                      const potential = getPotentialByName(pots, name);
+                      if (!potential) return null;
+                      return (
+                        <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                          <div class="card-level">1</div>
+                          <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                          <span class="card-name">{potential.name}</span>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    [...common, ...supportRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
+                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                        <div class="card-level">1</div>
+                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <span class="card-name">{potential.name}</span>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Detail Panel -->
+          <div id="potential-detail-panel" class="potential-detail-panel" role="region" aria-label="Potential details">
+            <div class="detail-header">
+              <div class="detail-icon" id="detail-icon"></div>
+              <div class="detail-info">
+                <h3 class="detail-name" id="detail-name"></h3>
+                <div class="detail-description" id="detail-description"></div>
+              </div>
+            </div>
+            <div class="level-selector" id="level-selector" style="display: none;">
+              <span class="level-label">Level:</span>
+              <button class="level-btn" id="level-minus" type="button">-</button>
+              <input type="number" class="level-input" id="level-input" min="1" value="1" />
+              <button class="level-btn" id="level-plus" type="button">+</button>
+              <span class="level-max" id="level-max"></span>
+            </div>
           </div>
         </section>
       )
@@ -626,12 +1341,11 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
 
           <div class="disc-hero">
             <div class="disc-image-large">
-              <DiscImage
-                imageName={character.disc.image}
+              <SSDiscImage
+                discSlug={character.disc.slug}
                 alt={`${character.disc.name} - ${character.disc.rarity} ${character.disc.element} Disc`}
                 width={500}
                 height={500}
-                loading="eager"
               />
             </div>
             <div class="disc-hero-info">
@@ -651,6 +1365,9 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                   <span class="tag">{tag}</span>
                 ))}
               </div>
+              <a href={`/guides/stella-sora/discs/${character.disc.slug}`} class="view-full-disc-link">
+                View Full Disc Details
+              </a>
             </div>
           </div>
 
@@ -841,7 +1558,7 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
             </div>
 
             <div class="disc-card disc-support-card">
-              <h4>Support Section (Max Level 99 Only)</h4>
+              <h4>Support Notes (Melody Notes Provided)</h4>
               <div class="disc-support-content">
                 <div class="musical-notes-source">
                   <h5>Musical Notes Source</h5>
@@ -868,10 +1585,10 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
                         </div>
                         <div class="melody-effects">
                           <p>
-                            <strong>Base Effect:</strong> {melodyData.baseEffect}
+                            <strong>Base (Lv.1):</strong> {melodyData.baseEffect}
                           </p>
                           <p>
-                            <strong>Max Level (Lv.99) Effect:</strong> {melodyData.maxEffect}
+                            <strong>Max (Lv.9):</strong> {melodyData.maxEffect}
                           </p>
                         </div>
                       </div>
@@ -886,3 +1603,561 @@ const uniqueCardsCount = countUniqueCards(character.mainPotentials, character.su
     }
   </div>
 </CharacterIndividualLayout>
+
+<!-- Hidden marker templates for JavaScript to clone -->
+<div id="marker-templates" style="display: none;">
+  <span data-element="ignis" class="marker-template"><SSMarkerImage element="ignis" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="aqua" class="marker-template"><SSMarkerImage element="aqua" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="terra" class="marker-template"><SSMarkerImage element="terra" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="ventus" class="marker-template"><SSMarkerImage element="ventus" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="lux" class="marker-template"><SSMarkerImage element="lux" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="umbra" class="marker-template"><SSMarkerImage element="umbra" width={14} height={14} class="inline-marker" /></span>
+</div>
+
+<script>
+  // Stats Level + Ascension Selector Logic
+  function initializeStatsLevelSelector() {
+    const levelInput = document.getElementById('stats-level-input') as HTMLInputElement;
+    const ascensionSelect = document.getElementById('stats-ascension-select') as HTMLSelectElement;
+    const levelStatsDataEl = document.getElementById('level-stats-data');
+
+    if (!levelInput || !ascensionSelect || !levelStatsDataEl) return;
+
+    let levelStats: Array<{hp: number, atk: number}>;
+    try {
+      levelStats = JSON.parse(levelStatsDataEl.getAttribute('data-stats') || '[]');
+    } catch (e) {
+      console.error('Error parsing level stats:', e);
+      return;
+    }
+
+    const hpEl = document.getElementById('stat-hp');
+    const atkEl = document.getElementById('stat-atk');
+    const hpBonusEl = document.getElementById('ascension-hp-bonus');
+    const atkBonusEl = document.getElementById('ascension-atk-bonus');
+
+    // Ascension breakpoints: index in array where each ascension starts
+    // A0: 0-9 (Lv 1-10), A1: 10-20 (Lv 10-20), A2: 21-31 (Lv 20-30), etc.
+    const ascensionStartIndex = [0, 10, 21, 32, 43, 54, 65, 76, 87];
+
+    // Level ranges for each ascension
+    const ascensionLevelRange = [
+      { min: 1, max: 10 },   // A0
+      { min: 10, max: 20 },  // A1
+      { min: 20, max: 30 },  // A2
+      { min: 30, max: 40 },  // A3
+      { min: 40, max: 50 },  // A4
+      { min: 50, max: 60 },  // A5
+      { min: 60, max: 70 },  // A6
+      { min: 70, max: 80 },  // A7
+      { min: 80, max: 90 },  // A8
+    ];
+
+    function getArrayIndex(level: number, ascension: number): number {
+      // Get the start index for this ascension
+      const startIdx = ascensionStartIndex[ascension];
+      const range = ascensionLevelRange[ascension];
+
+      // Calculate offset within this ascension's range
+      const levelOffset = level - range.min;
+
+      // Clamp to valid range
+      const maxOffset = (ascension < 8) ? (ascensionStartIndex[ascension + 1] - startIdx - 1) : (levelStats.length - 1 - startIdx);
+      const clampedOffset = Math.min(Math.max(0, levelOffset), maxOffset);
+
+      return startIdx + clampedOffset;
+    }
+
+    function getAscensionBonus(ascension: number): { hp: number, atk: number } {
+      if (ascension === 0) return { hp: 0, atk: 0 };
+
+      // Compare first stat of current ascension vs last stat of previous ascension
+      const prevLastIdx = ascensionStartIndex[ascension] - 1;
+      const currFirstIdx = ascensionStartIndex[ascension];
+
+      if (prevLastIdx < 0 || currFirstIdx >= levelStats.length) return { hp: 0, atk: 0 };
+
+      const prevStats = levelStats[prevLastIdx];
+      const currStats = levelStats[currFirstIdx];
+
+      return {
+        hp: currStats.hp - prevStats.hp,
+        atk: currStats.atk - prevStats.atk
+      };
+    }
+
+    function clampLevel(value: number): number {
+      return Math.min(90, Math.max(1, value));
+    }
+
+    function updateStats() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 90;
+      level = clampLevel(level);
+      levelInput.value = String(level);
+
+      const ascension = parseInt(ascensionSelect.value, 10);
+
+      const index = getArrayIndex(level, ascension);
+      const stats = levelStats[index];
+      const bonus = getAscensionBonus(ascension);
+
+      if (stats && hpEl && atkEl) {
+        // Add updating class for visual feedback
+        hpEl.classList.add('updating');
+        atkEl.classList.add('updating');
+
+        // Update values
+        hpEl.textContent = stats.hp.toLocaleString();
+        atkEl.textContent = stats.atk.toLocaleString();
+
+        // Remove updating class after animation
+        setTimeout(() => {
+          hpEl.classList.remove('updating');
+          atkEl.classList.remove('updating');
+        }, 200);
+      }
+
+      // Update ascension bonus display
+      if (hpBonusEl && atkBonusEl) {
+        hpBonusEl.textContent = `+${bonus.hp.toLocaleString()} HP`;
+        atkBonusEl.textContent = `+${bonus.atk.toLocaleString()} ATK`;
+      }
+    }
+
+    function syncAscensionToLevel() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 90;
+      level = clampLevel(level);
+
+      // Find the appropriate ascension for this level
+      let newAscension = 0;
+      for (let i = ascensionLevelRange.length - 1; i >= 0; i--) {
+        if (level >= ascensionLevelRange[i].min) {
+          newAscension = i;
+          break;
+        }
+      }
+      ascensionSelect.value = String(newAscension);
+    }
+
+    function syncLevelToAscension() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 90;
+
+      const ascension = parseInt(ascensionSelect.value, 10);
+      const range = ascensionLevelRange[ascension];
+
+      // Clamp level to ascension range
+      if (level < range.min) {
+        levelInput.value = String(range.min);
+      } else if (level > range.max) {
+        levelInput.value = String(range.max);
+      }
+    }
+
+    // Listen for level input changes
+    levelInput.addEventListener('input', function() {
+      syncAscensionToLevel();
+      updateStats();
+    });
+
+    // Also listen for blur to ensure valid value
+    levelInput.addEventListener('blur', function() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 90;
+      levelInput.value = String(clampLevel(level));
+      syncAscensionToLevel();
+      updateStats();
+    });
+
+    // Listen for ascension changes
+    ascensionSelect.addEventListener('change', function() {
+      syncLevelToAscension();
+      updateStats();
+    });
+
+    // Initial update
+    updateStats();
+  }
+
+  // Skill Level Selector Logic
+  function initializeSkillLevelSelector() {
+    const levelInput = document.getElementById('skill-level-input') as HTMLInputElement;
+    const minusBtn = document.getElementById('skill-level-minus') as HTMLButtonElement;
+    const plusBtn = document.getElementById('skill-level-plus') as HTMLButtonElement;
+    if (!levelInput) return;
+
+    const skillDescriptions = document.querySelectorAll('.skill-description[data-description]');
+
+    function clampSkillLevel(value: number): number {
+      return Math.min(13, Math.max(1, value));
+    }
+
+    function updateSkillDescriptions(level: number) {
+      const levelIndex = level - 1; // Convert 1-13 to 0-12 index
+      skillDescriptions.forEach(descEl => {
+        const descriptionTemplate = descEl.getAttribute('data-description');
+        const paramsData = descEl.getAttribute('data-params');
+
+        if (!descriptionTemplate) return;
+
+        let description = descriptionTemplate;
+
+        // Parse params and replace &ParamX& placeholders
+        if (paramsData) {
+          try {
+            const params = JSON.parse(paramsData);
+            params.forEach((paramStr: string, index: number) => {
+              let value = paramStr;
+              // Check if param has level scaling (contains /)
+              if (paramStr.includes('/')) {
+                const values = paramStr.split('/');
+                value = values[levelIndex] || values[values.length - 1];
+              }
+              // Replace &ParamX& with the value (1-indexed)
+              const placeholder = `&Param${index + 1}&`;
+              description = description.split(placeholder).join(value);
+            });
+          } catch (e) {
+            console.error('Error parsing skill params:', e);
+          }
+        }
+
+        // Convert color tags to HTML spans
+        // Format: <color=#fb8037>text</color> -> <span class="skill-value">text</span>
+        description = description.replace(/<color=[^>]+>([^<]+)<\/color>/g, '<span class="skill-value">$1</span>');
+
+        // Convert remaining markdown-style bold to HTML
+        description = description.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+        // Clean up weird formatting patterns like ##element or #numbers
+        description = description.replace(/##(\w+)/g, '');
+        description = description.replace(/#\d+#/g, '');
+
+        // Convert newline characters to <br/> tags (fixes box characters)
+        description = description.replace(/\\n/g, '<br/>');
+        description = description.replace(/\n/g, '<br/>');
+        // Convert vertical tab characters (\u000b) to <br/> tags
+        description = description.replace(/\u000b/g, '<br/>');
+
+        // Add line breaks for Strike patterns
+        description = description.replace(/(Strike \d+:)/g, '<br/>$1');
+        // Remove first <br/> if description starts with Strike
+        description = description.replace(/^<br\/>/, '');
+        // Clean up multiple consecutive <br/> tags
+        description = description.replace(/(<br\s*\/?>){2,}/g, '<br/>');
+
+        // Add element mark icons next to element mark text using pre-rendered Astro images
+        const markerTemplates = document.getElementById('marker-templates');
+        const elementMarks = ['Ignis', 'Aqua', 'Terra', 'Ventus', 'Lux', 'Umbra'];
+
+        elementMarks.forEach(element => {
+          const markRegex = new RegExp(`(${element} Mark)`, 'g');
+          const template = markerTemplates?.querySelector(`[data-element="${element.toLowerCase()}"]`);
+          if (template) {
+            const markerHtml = template.innerHTML;
+            description = description.replace(markRegex, `${markerHtml}$1`);
+          }
+        });
+
+        descEl.innerHTML = description;
+      });
+    }
+
+    // Initial update with default level 13
+    updateSkillDescriptions(13);
+
+    // Listen for input changes
+    levelInput.addEventListener('input', function() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 13;
+      level = clampSkillLevel(level);
+      updateSkillDescriptions(level);
+    });
+
+    // Ensure valid value on blur
+    levelInput.addEventListener('blur', function() {
+      let level = parseInt(levelInput.value, 10);
+      if (isNaN(level)) level = 13;
+      levelInput.value = String(clampSkillLevel(level));
+    });
+
+    // Minus button click handler
+    if (minusBtn) {
+      minusBtn.addEventListener('click', function() {
+        let level = parseInt(levelInput.value, 10);
+        if (isNaN(level)) level = 13;
+        level = clampSkillLevel(level - 1);
+        levelInput.value = String(level);
+        updateSkillDescriptions(level);
+      });
+    }
+
+    // Plus button click handler
+    if (plusBtn) {
+      plusBtn.addEventListener('click', function() {
+        let level = parseInt(levelInput.value, 10);
+        if (isNaN(level)) level = 13;
+        level = clampSkillLevel(level + 1);
+        levelInput.value = String(level);
+        updateSkillDescriptions(level);
+      });
+    }
+  }
+
+  // Initialize Potentials functionality
+  function initializePotentials() {
+    const detailPanel = document.getElementById('potential-detail-panel');
+    const detailName = document.getElementById('detail-name');
+    const detailDescription = document.getElementById('detail-description');
+    const detailIcon = document.getElementById('detail-icon');
+    const levelSelector = document.getElementById('level-selector');
+    const levelInput = document.getElementById('level-input') as HTMLInputElement;
+    const levelMinus = document.getElementById('level-minus');
+    const levelPlus = document.getElementById('level-plus');
+    const levelMax = document.getElementById('level-max');
+
+    let currentPotential: any = null;
+    let currentCard: HTMLElement | null = null;
+    let maxLevel = 1;
+    let rememberedLevel = 1; // Remember user's level preference across potentials
+
+    // Parse description with params and color tags
+    function parseDescription(desc: string, params: string[], level: number): string {
+      if (!desc) return '';
+
+      let parsed = desc;
+
+      // Replace &Param1&, &Param2&, etc. with actual values
+      params.forEach((param, index) => {
+        const placeholder = `&Param${index + 1}&`;
+        let value = param;
+
+        // Check if param has level scaling (contains "/")
+        if (typeof param === 'string' && param.includes('/')) {
+          const levels = param.split('/');
+          value = levels[Math.min(level - 1, levels.length - 1)] || levels[0];
+        }
+
+        parsed = parsed.split(placeholder).join(`<span class="color-cyan">${value}</span>`);
+      });
+
+      // Parse color tags
+      parsed = parsed
+        .replace(/<color=#0abec5>(.*?)<\/color>/gi, '<span class="color-cyan">$1</span>')
+        .replace(/<color=#ec6d21>(.*?)<\/color>/gi, '<span class="color-orange">$1</span>')
+        .replace(/<color=#fbbf24>(.*?)<\/color>/gi, '<span class="color-yellow">$1</span>')
+        .replace(/<color=#34d399>(.*?)<\/color>/gi, '<span class="color-green">$1</span>')
+        .replace(/<color=#a78bfa>(.*?)<\/color>/gi, '<span class="color-purple">$1</span>')
+        .replace(/<color=#60a5fa>(.*?)<\/color>/gi, '<span class="color-blue">$1</span>')
+        .replace(/<color=[^>]+>(.*?)<\/color>/gi, '<span class="color-cyan">$1</span>');
+
+      // Parse skill references
+      parsed = parsed.replace(/##([^#]+)#(\d+)#/g, '<span class="color-cyan">$1</span>');
+
+      // Replace vertical tab with line break
+      parsed = parsed.replace(/\u000b/g, '<br>');
+
+      return parsed;
+    }
+
+    // Get max level from params
+    function getMaxLevel(params: string[]): number {
+      let max = 1;
+      params.forEach(param => {
+        if (typeof param === 'string' && param.includes('/')) {
+          const levels = param.split('/').length;
+          if (levels > max) max = levels;
+        }
+      });
+      return max;
+    }
+
+    // Update description with current level
+    function updateDescription() {
+      if (!currentPotential || !detailDescription || !levelInput) return;
+      const level = parseInt(levelInput.value) || 1;
+      detailDescription.innerHTML = parseDescription(
+        currentPotential.description,
+        currentPotential.params || [],
+        level
+      );
+
+      // Update card level badge
+      if (currentCard) {
+        const levelBadge = currentCard.querySelector('.card-level');
+        if (levelBadge) {
+          levelBadge.textContent = level.toString();
+        }
+      }
+    }
+
+    // Show detail panel for a potential
+    function showDetail(card: HTMLElement, potential: any) {
+      if (!detailPanel || !detailName || !levelSelector || !levelInput || !levelMax) return;
+
+      currentPotential = potential;
+      currentCard = card;
+
+      // Set name
+      detailName.textContent = potential.name;
+
+      // Check if this is a Core potential (corner === null means Core)
+      const isCore = potential.corner === null;
+
+      // Get max level - Core potentials don't have levels
+      maxLevel = isCore ? 1 : getMaxLevel(potential.params || []);
+
+      // Show/hide level selector - never show for Core potentials
+      if (!isCore && maxLevel > 1) {
+        levelSelector.style.display = 'flex';
+        levelInput.max = maxLevel.toString();
+        levelMax.textContent = `/ ${maxLevel}`;
+
+        // Use remembered level, capped to this potential's max
+        levelInput.value = Math.min(rememberedLevel, maxLevel).toString();
+      } else {
+        levelSelector.style.display = 'none';
+        levelInput.value = '1';
+      }
+
+      // Update description
+      updateDescription();
+
+      // Copy icon from card
+      if (detailIcon) {
+        const cardIcon = card.querySelector('.potential-all-image-wrapper');
+        if (cardIcon) {
+          detailIcon.innerHTML = cardIcon.outerHTML;
+        }
+      }
+
+      // Position panel after the card's build-cards container
+      const buildCards = card.closest('.build-cards');
+      if (buildCards && buildCards.parentNode) {
+        // Remove from current position if exists
+        if (detailPanel.parentNode) {
+          detailPanel.classList.remove('active');
+        }
+
+        // Insert after build-cards
+        buildCards.parentNode.insertBefore(detailPanel, buildCards.nextSibling);
+        detailPanel.classList.add('active');
+      }
+    }
+
+    // Hide detail panel
+    function hideDetail() {
+      if (detailPanel) {
+        detailPanel.classList.remove('active');
+      }
+      currentPotential = null;
+      currentCard = null;
+    }
+
+    // Card click handler
+    document.querySelectorAll('.character-potentials-section .potential-card-mini').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const el = card as HTMLElement;
+        const potentialData = el.dataset.potential;
+
+        if (!potentialData) return;
+
+        try {
+          const potential = JSON.parse(potentialData);
+
+          // If clicking same card, toggle off
+          if (currentCard === el && detailPanel?.classList.contains('active')) {
+            hideDetail();
+          } else {
+            showDetail(el, potential);
+          }
+        } catch (err) {
+          console.error('Error parsing potential data:', err);
+        }
+      });
+    });
+
+    // Level controls
+    if (levelMinus) {
+      levelMinus.addEventListener('click', () => {
+        if (!levelInput) return;
+        const current = parseInt(levelInput.value) || 1;
+        if (current > 1) {
+          const newLevel = current - 1;
+          levelInput.value = newLevel.toString();
+          rememberedLevel = newLevel; // Remember the level
+          updateDescription();
+        }
+      });
+    }
+
+    if (levelPlus) {
+      levelPlus.addEventListener('click', () => {
+        if (!levelInput) return;
+        const current = parseInt(levelInput.value) || 1;
+        if (current < maxLevel) {
+          const newLevel = current + 1;
+          levelInput.value = newLevel.toString();
+          rememberedLevel = newLevel; // Remember the level
+          updateDescription();
+        }
+      });
+    }
+
+    if (levelInput) {
+      levelInput.addEventListener('change', () => {
+        let value = parseInt(levelInput.value) || 1;
+        value = Math.max(1, Math.min(value, maxLevel));
+        levelInput.value = value.toString();
+        rememberedLevel = value; // Remember the level
+        updateDescription();
+      });
+    }
+
+    // Tab switching
+    const potentialsTabs = document.querySelectorAll('.potentials-tab');
+    const potentialsContents = document.querySelectorAll('.potentials-tab-content');
+
+    potentialsTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetTab = (tab as HTMLElement).dataset.tab;
+
+        // Hide detail panel when switching tabs
+        hideDetail();
+
+        // Update tab styles
+        potentialsTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Update content visibility
+        potentialsContents.forEach(content => {
+          const el = content as HTMLElement;
+          if (el.dataset.content === targetTab) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // Initialize on DOM ready
+  function initializeAll() {
+    initializeStatsLevelSelector();
+    initializeSkillLevelSelector();
+    initializePotentials();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAll);
+  } else {
+    initializeAll();
+  }
+</script>

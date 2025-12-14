@@ -1,0 +1,265 @@
+---
+// Stella Sora Gift Database Page
+// Lists all gifts with point values and categories
+
+import GiftLayout from '../../../layouts/stella-sora/GiftLayout.astro';
+import SSGiftImage from '../../../components/stella-sora/SSGiftImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import { Image } from 'astro:assets';
+import { gifts, getGiftCategories, pointValues, craftingMaterial } from '../../../data/stella-sora/gifts.js';
+import artifactWishingEgg from '../../../assets/images/games/stella-sora/items/artifact-wishing-egg.png';
+
+const categories = getGiftCategories();
+
+// Group gifts by category
+const giftsByCategory = categories.map(category => ({
+  name: category,
+  gifts: gifts.filter(gift => gift.category === category)
+}));
+
+const title = 'Stella Sora Gift Database - All Gifts, Crafting & Affection Points';
+const description = 'Complete Stella Sora gift database with all 24 gifts across 8 categories. Learn gift crafting recipes, affection point values for loved/neutral/hated preferences, and how to maximize character bonding.';
+const gameTitle = 'Gift Database';
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Gift Database',
+  description: description,
+  numberOfItems: gifts.length,
+  itemListElement: gifts.map((gift, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: gift.name,
+      description: `${gift.rarity}-Star ${gift.category} gift. Affection points: Loved ${gift.points.loved}, Neutral ${gift.points.neutral}, Hated ${gift.points.hated}.`
+    }
+  }))
+};
+---
+
+<GiftLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+  <div class="gifts-index">
+    <!-- Point System Information -->
+    <div class="gift-points-info">
+      <h2>Gift Point System</h2>
+      <p>Gifts give affection points based on rarity and character preference. Loved gifts give +50% bonus, hated gifts give -20% penalty.</p>
+
+      <table class="points-table">
+        <thead>
+          <tr>
+            <th>Rarity</th>
+            <th>Loved (+50%)</th>
+            <th>Neutral</th>
+            <th>Hated (-20%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rarity-col">3-Star</td>
+            <td class="points-loved">{pointValues[3].loved}</td>
+            <td class="points-neutral">{pointValues[3].neutral}</td>
+            <td class="points-hated">{pointValues[3].hated}</td>
+          </tr>
+          <tr>
+            <td class="rarity-col">4-Star</td>
+            <td class="points-loved">{pointValues[4].loved}</td>
+            <td class="points-neutral">{pointValues[4].neutral}</td>
+            <td class="points-hated">{pointValues[4].hated}</td>
+          </tr>
+          <tr>
+            <td class="rarity-col">5-Star</td>
+            <td class="points-loved">{pointValues[5].loved}</td>
+            <td class="points-neutral">{pointValues[5].neutral}</td>
+            <td class="points-hated">{pointValues[5].hated}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Crafting System Information -->
+    <div class="gift-crafting-info">
+      <h2>Gift Crafting System</h2>
+      <p>You can craft gifts using <strong>{craftingMaterial.name}</strong> as the base material.</p>
+
+      <div class="crafting-material">
+        <div class="crafting-material-icon">
+          <SSRarityImage
+            grade={3}
+            type="item"
+            width={64}
+            height={64}
+            class="crafting-rarity-bg"
+          />
+          <Image
+            src={artifactWishingEgg}
+            alt={craftingMaterial.name}
+            width={48}
+            height={48}
+            class="crafting-material-image"
+          />
+        </div>
+        <div class="crafting-material-info">
+          <span class="crafting-material-name">{craftingMaterial.name}</span>
+          <span class="crafting-material-desc">Base crafting material for gifts</span>
+        </div>
+      </div>
+
+      <div class="crafting-recipes">
+        <div class="crafting-recipe">
+          <div class="recipe-input">
+            <span class="recipe-quantity">10x</span>
+            <div class="recipe-icon-container">
+              <SSRarityImage
+                grade={3}
+                type="item"
+                width={40}
+                height={40}
+                class="recipe-rarity-bg"
+              />
+              <Image
+                src={artifactWishingEgg}
+                alt={craftingMaterial.name}
+                width={32}
+                height={32}
+                class="recipe-icon"
+              />
+            </div>
+          </div>
+          <span class="recipe-arrow">→</span>
+          <div class="recipe-output">
+            <span class="recipe-quantity">1x</span>
+            <div class="recipe-icon-container">
+              <SSRarityImage
+                grade={3}
+                type="item"
+                width={40}
+                height={40}
+                class="recipe-rarity-bg"
+              />
+              <SSGiftImage
+                giftName="Love Candle"
+                width={32}
+                height={32}
+                class="recipe-icon"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="crafting-recipe">
+          <div class="recipe-input">
+            <span class="recipe-quantity">6x</span>
+            <div class="recipe-icon-container">
+              <SSRarityImage
+                grade={3}
+                type="item"
+                width={40}
+                height={40}
+                class="recipe-rarity-bg"
+              />
+              <SSGiftImage
+                giftName="Love Candle"
+                width={32}
+                height={32}
+                class="recipe-icon"
+              />
+            </div>
+          </div>
+          <span class="recipe-arrow">→</span>
+          <div class="recipe-output">
+            <span class="recipe-quantity">1x</span>
+            <div class="recipe-icon-container">
+              <SSRarityImage
+                grade={4}
+                type="item"
+                width={40}
+                height={40}
+                class="recipe-rarity-bg"
+              />
+              <SSGiftImage
+                giftName="Blazing Wings"
+                width={32}
+                height={32}
+                class="recipe-icon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="crafting-note">Note: When crafting 4-star gifts, you must use 6 gifts from the <strong>same category</strong> to get a 4-star gift of that category.</p>
+      <p class="crafting-note crafting-note-warning">Note: 5-star gifts have not been released in the game yet.</p>
+    </div>
+
+    <!-- Gift Categories -->
+    {giftsByCategory.map(category => (
+      <section class="gift-category">
+        <div class="gift-category-header">
+          <h2>{category.name}</h2>
+          <span class="gift-category-count">{category.gifts.length} gifts</span>
+        </div>
+
+        <div class="gifts-grid">
+          {category.gifts.map(gift => (
+            <div class="gift-card">
+              <!-- Gift Header with Rarity Background -->
+              <div class="gift-card-header">
+                <div class="gift-image-container">
+                  <SSRarityImage
+                    grade={gift.rarity}
+                    type="item"
+                    width={72}
+                    height={72}
+                    class="gift-rarity-bg"
+                  />
+                  <SSGiftImage
+                    giftName={gift.name}
+                    width={52}
+                    height={52}
+                    class="gift-card-image"
+                  />
+                </div>
+                <div class="gift-card-info">
+                  <h3 class="gift-card-name">{gift.name}</h3>
+                  <span class="gift-card-category">{gift.category}</span>
+                  <span class="gift-rarity-text" data-rarity={gift.rarity}>{gift.rarity}-Star</span>
+                </div>
+              </div>
+
+              <!-- Points Values -->
+              <div class="gift-points">
+                <span class="gift-points-title">Affection Points</span>
+                <div class="gift-points-values">
+                  <div class="gift-point-item loved">
+                    <span class="gift-point-label">Loved</span>
+                    <span class="gift-point-value">
+                      {gift.points.loved}
+                      <span class="gift-point-bonus">+50%</span>
+                    </span>
+                  </div>
+                  <div class="gift-point-item neutral">
+                    <span class="gift-point-label">Neutral</span>
+                    <span class="gift-point-value">{gift.points.neutral}</span>
+                  </div>
+                  <div class="gift-point-item hated">
+                    <span class="gift-point-label">Hated</span>
+                    <span class="gift-point-value">
+                      {gift.points.hated}
+                      <span class="gift-point-bonus">-20%</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</GiftLayout>

@@ -2,7 +2,7 @@
 // Full team compositions for optimal performance
 
 import { STELLA_SORA_CHARACTERS } from './characters.js';
-import { getPotentialByName } from './potentials.js';
+import { getPotentialByName } from './all-potentials.js';
 
 // Helper function to find character by name (case-insensitive)
 const findCharacter = name => {
@@ -28,7 +28,7 @@ const buildPotentialList = (characterName, potentialNames) => {
       const potential = getPotentialByName(characterName, name);
       return potential ? { ...potential } : null;
     })
-    .filter(potential => potential !== undefined); // Only include potentials that exist
+    .filter(potential => potential !== null && potential !== undefined); // Only include potentials that exist
 };
 
 // Team build definitions

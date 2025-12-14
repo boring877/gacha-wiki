@@ -1,0 +1,102 @@
+---
+// Stella Sora Character Small Image Component
+// Uses the s.png images from little-char-images folder
+import { Image } from 'astro:assets';
+
+// Import all small character images
+import amberImg from '../../assets/images/games/stella-sora/little-char-images/amber.png';
+import annImg from '../../assets/images/games/stella-sora/little-char-images/ann.png';
+import canaceImg from '../../assets/images/games/stella-sora/little-char-images/canace.png';
+import caramelImg from '../../assets/images/games/stella-sora/little-char-images/caramel.png';
+import chitoseImg from '../../assets/images/games/stella-sora/little-char-images/chitose.png';
+import chixiaImg from '../../assets/images/games/stella-sora/little-char-images/chixia.png';
+import coronisImg from '../../assets/images/games/stella-sora/little-char-images/coronis.png';
+import cosetteImg from '../../assets/images/games/stella-sora/little-char-images/cosette.png';
+import floraImg from '../../assets/images/games/stella-sora/little-char-images/flora.png';
+import freesiaImg from '../../assets/images/games/stella-sora/little-char-images/freesia.png';
+import fuyukaImg from '../../assets/images/games/stella-sora/little-char-images/fuyuka.png';
+import gerieImg from '../../assets/images/games/stella-sora/little-char-images/gerie.png';
+import irisImg from '../../assets/images/games/stella-sora/little-char-images/iris.png';
+import jinglinImg from '../../assets/images/games/stella-sora/little-char-images/jinglin.png';
+import kasimiraImg from '../../assets/images/games/stella-sora/little-char-images/kasimira.png';
+import laruImg from '../../assets/images/games/stella-sora/little-char-images/laru.png';
+import minovaImg from '../../assets/images/games/stella-sora/little-char-images/minova.png';
+import mistiqueImg from '../../assets/images/games/stella-sora/little-char-images/mistique.png';
+import nanohaImg from '../../assets/images/games/stella-sora/little-char-images/nanoha.png';
+import nazukaImg from '../../assets/images/games/stella-sora/little-char-images/nazuka.png';
+import nazunaImg from '../../assets/images/games/stella-sora/little-char-images/nazuna.png';
+import noyaImg from '../../assets/images/games/stella-sora/little-char-images/noya.png';
+import ridgeImg from '../../assets/images/games/stella-sora/little-char-images/ridge.png';
+import shiaImg from '../../assets/images/games/stella-sora/little-char-images/shia.png';
+import shimiaoImg from '../../assets/images/games/stella-sora/little-char-images/shimiao.png';
+import teresaImg from '../../assets/images/games/stella-sora/little-char-images/teresa.png';
+import tiliaImg from '../../assets/images/games/stella-sora/little-char-images/tilia.png';
+
+// Centralized small character image mapping
+const characterSmallImageMap: Record<string, ImageMetadata> = {
+  amber: amberImg,
+  ann: annImg,
+  canace: canaceImg,
+  caramel: caramelImg,
+  chitose: chitoseImg,
+  chixia: chixiaImg,
+  coronis: coronisImg,
+  cosette: cosetteImg,
+  flora: floraImg,
+  freesia: freesiaImg,
+  fuyuka: fuyukaImg,
+  gerie: gerieImg,
+  iris: irisImg,
+  jinglin: jinglinImg,
+  kasimira: kasimiraImg,
+  laru: laruImg,
+  minova: minovaImg,
+  mistique: mistiqueImg,
+  nanoha: nanohaImg,
+  nazuka: nazukaImg,
+  nazuna: nazunaImg,
+  noya: noyaImg,
+  ridge: ridgeImg,
+  shia: shiaImg,
+  shimiao: shimiaoImg,
+  teresa: teresaImg,
+  tilia: tiliaImg,
+};
+
+export interface Props {
+  characterName: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'png' | 'jpg' | 'avif';
+  quality?: number;
+}
+
+const {
+  characterName,
+  alt,
+  class: className = '',
+  width = 60,
+  height = 60,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Normalize character name to lowercase for mapping
+const normalizedName = characterName.toLowerCase().replace(/\s+/g, '');
+const imageSrc = characterSmallImageMap[normalizedName] || characterSmallImageMap['amber'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt || `${characterName}`}
+  width={width}
+  height={height}
+  class={`${className} character-small-img`}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

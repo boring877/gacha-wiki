@@ -1,141 +1,165 @@
 ---
 // Stella Sora Skill Image Component
-// Skill images are banner format (wide, not square)
+// Combines: element plate (background) + skill type icon + character skill icon (overlay)
 import { Image } from 'astro:assets';
+
+// Import element plate backgrounds
+import ignisPlate from '../../assets/images/games/stella-sora/skills/ignis_plate.png';
+import aquaPlate from '../../assets/images/games/stella-sora/skills/aqua_plate.png';
+import terraPlate from '../../assets/images/games/stella-sora/skills/terra_plate.png';
+import ventusPlate from '../../assets/images/games/stella-sora/skills/ventus_plate.png';
+import luxPlate from '../../assets/images/games/stella-sora/skills/lux_plate.png';
+import umbraPlate from '../../assets/images/games/stella-sora/skills/umbra_plate.png';
+
+// Element plate mapping
+const elementPlateMap: Record<string, ImageMetadata> = {
+  ignis: ignisPlate,
+  aqua: aquaPlate,
+  terra: terraPlate,
+  ventus: ventusPlate,
+  lux: luxPlate,
+  umbra: umbraPlate,
+};
+
+// Import skill type icons (small icons showing skill type)
+import normalIcon from '../../assets/images/games/stella-sora/skills/normal.png';
+import skillIcon from '../../assets/images/games/stella-sora/skills/skill.png';
+import supportIcon from '../../assets/images/games/stella-sora/skills/support.png';
+import ultimateIcon from '../../assets/images/games/stella-sora/skills/ultimate.png';
+
+// Skill type icon mapping
+const skillTypeIconMap: Record<string, ImageMetadata> = {
+  'normal-attack': normalIcon,
+  'skill': skillIcon,
+  'support-skill': supportIcon,
+  'ultimate': ultimateIcon,
+};
+
+// Dynamically import all character skill images
+const characterSkillImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/stella-sora/characters/*/skills/*.png',
+  { eager: true }
+);
+
+// Create a nested map: characterSlug -> skillType -> ImageMetadata
+const skillImageMap: Record<string, Record<string, ImageMetadata>> = {};
+for (const [path, module] of Object.entries(characterSkillImages)) {
+  // Extract character slug and skill type from path
+  // Path format: ../../assets/images/games/stella-sora/characters/[char]/skills/[skill-type].png
+  const match = path.match(/characters\/([^/]+)\/skills\/([^/]+)\.png$/);
+  if (match) {
+    const [, charSlug, skillType] = match;
+    if (!skillImageMap[charSlug]) {
+      skillImageMap[charSlug] = {};
+    }
+    skillImageMap[charSlug][skillType] = module.default;
+  }
+}
+
+// Character element mapping (all 27 characters)
+const characterElementMap: Record<string, string> = {
+  amber: 'ignis',
+  ann: 'terra',
+  canace: 'aqua',
+  caramel: 'ignis',
+  chitose: 'lux',
+  chixia: 'ignis',
+  coronis: 'umbra',
+  cosette: 'ventus',
+  flora: 'terra',
+  freesia: 'ventus',
+  fuyuka: 'aqua',
+  gerie: 'lux',
+  iris: 'lux',
+  jinglin: 'ignis',
+  kasimira: 'umbra',
+  laru: 'terra',
+  minova: 'aqua',
+  mistique: 'umbra',
+  nanoha: 'lux',
+  nazuka: 'umbra',
+  nazuna: 'ventus',
+  noya: 'ignis',
+  ridge: 'terra',
+  shia: 'aqua',
+  shimiao: 'aqua',
+  teresa: 'ventus',
+  tilia: 'terra',
+};
 
 export interface Props {
   characterName: string;
-  skillName: string;
+  skillType: 'normal-attack' | 'skill' | 'support-skill' | 'ultimate';
   alt: string;
   loading?: 'lazy' | 'eager';
   class?: string;
 }
 
-const { characterName, skillName, alt, loading = 'lazy', class: className } = Astro.props;
+const { characterName, skillType, alt, loading = 'lazy', class: className } = Astro.props;
 
-// Convert skill name to filename format
-// Remove special characters like colons, replace spaces with underscores
-const cleanSkillName = skillName
-  .replace(/:/g, '') // Remove colons
-  .replace(/ +/g, '_') // Replace spaces with underscores
-  .trim();
-const skillFileName = cleanSkillName + '.jpg';
+// Get character slug (lowercase)
+const characterSlug = characterName.toLowerCase();
 
-// Import all skill images using glob
-type ImageModule = { default: any } | undefined;
-const imageModules: Record<string, ImageModule> = import.meta.glob(
-  '/src/assets/images/games/stella-sora/SkillImg/**/*.{jpg,jpeg,png,webp}',
-  { eager: true }
-);
+// Get element plate for this character
+const element = characterElementMap[characterSlug] || 'ignis';
+const plateSrc = elementPlateMap[element];
 
-// Try to find the image by character name and skill name
-let imageModule: ImageModule = undefined;
-const imagePath = `/src/assets/images/games/stella-sora/SkillImg/${characterName}/${skillFileName}`;
-imageModule = imageModules[imagePath];
+// Get skill type icon
+const typeIconSrc = skillTypeIconMap[skillType];
 
-// If not found, try partial matching (skill name might be shortened in filename)
-if (!imageModule && skillFileName) {
-  // Get the first part of the skill name (before any colon or long description)
-  const skillNameParts = skillName.split(/[:\-]/)[0].trim().replace(/ +/g, '_');
+// Get character-specific skill image
+const characterSkills = skillImageMap[characterSlug];
+const skillSrc = characterSkills?.[skillType];
 
-  for (const [key, value] of Object.entries(imageModules)) {
-    // Check if path contains character name
-    if (!key.toLowerCase().includes(characterName.toLowerCase())) continue;
-
-    // Get filename from path
-    const fileName =
-      key.split('/').pop()?.replace('.jpg', '').replace('.png', '').replace('.webp', '') || '';
-
-    // Try exact match first
-    if (fileName.toLowerCase() === cleanSkillName.toLowerCase()) {
-      imageModule = value;
-      break;
-    }
-
-    // Try partial match (filename contains the first part of skill name)
-    if (
-      fileName.toLowerCase().includes(skillNameParts.toLowerCase()) ||
-      skillNameParts.toLowerCase().includes(fileName.toLowerCase())
-    ) {
-      imageModule = value;
-      break;
-    }
-  }
-}
-
-let imageSrc: any;
-let imageAlt = alt;
-if (imageModule?.default) {
-  imageSrc = imageModule.default;
-} else {
-  // Fallback if image not found
-  imageSrc = '';
-  imageAlt = `Image not found: ${alt}`;
-}
+const imageAlt = skillSrc ? alt : `Image not found: ${alt}`;
 ---
 
 <div class={`skill-image-container ${className || ''}`}>
-  {
-    imageSrc ? (
+  {plateSrc && skillSrc ? (
+    <div class="skill-image-layered">
+      {/* Background: Element plate */}
       <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={390}
-        height={110}
+        src={plateSrc}
+        alt=""
+        width={120}
+        height={120}
         loading={loading}
-        class="skill-image"
-        quality={100}
+        class="skill-bg-plate"
+        quality={90}
         format="webp"
       />
-    ) : (
-      <div class="skill-image-placeholder">
-        <span>No Image</span>
-      </div>
-    )
-  }
+      {/* Middle: Skill type icon */}
+      {typeIconSrc && (
+        <Image
+          src={typeIconSrc}
+          alt=""
+          width={40}
+          height={40}
+          loading={loading}
+          class="skill-type-icon"
+          quality={90}
+          format="webp"
+        />
+      )}
+      {/* Foreground: Character skill image */}
+      <Image
+        src={skillSrc}
+        alt={imageAlt}
+        width={80}
+        height={80}
+        loading={loading}
+        class="skill-char-icon"
+        quality={95}
+        format="webp"
+      />
+    </div>
+  ) : (
+    <div class="skill-image-placeholder">
+      <span>No Image</span>
+    </div>
+  )}
 </div>
 
 <style>
-  .skill-image-container {
-    width: 100%;
-    max-width: 390px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: linear-gradient(
-      135deg,
-      var(--ss-bg-tertiary, #1a1a2e) 0%,
-      var(--ss-bg-secondary, #252540) 100%
-    );
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--ss-border, #333);
-  }
-
-  .skill-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-  }
-
-  .skill-image-placeholder {
-    width: 100%;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--ss-bg-tertiary, #1a1a2e);
-    border: 1px dashed var(--ss-border, #333);
-    border-radius: 10px;
-  }
-
-  .skill-image-placeholder span {
-    font-size: 0.8rem;
-    color: var(--ss-text-muted, #666);
-  }
-
-  @media (max-width: 768px) {
-    .skill-image-container {
-      max-width: 100%;
-    }
-  }
+  /* Styles handled by global CSS in ss-character-individual.css */
 </style>

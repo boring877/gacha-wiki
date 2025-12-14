@@ -1,0 +1,406 @@
+---
+// Stella Sora Talents Database Page
+// Lists all character talents with effects and stat bonuses
+
+import TalentsLayout from '../../../layouts/stella-sora/TalentsLayout.astro';
+import SSTalentImage from '../../../components/stella-sora/SSTalentImage.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSShardImage from '../../../components/stella-sora/SSShardImage.astro';
+import {
+  talents,
+  getTalentsGroupedByCharacter,
+  getCharactersList,
+  getElements,
+  getPositions
+} from '../../../data/stella-sora/talents.js';
+
+const groupedTalents = getTalentsGroupedByCharacter();
+const charactersList = getCharactersList();
+const elements = getElements();
+const positions = getPositions();
+
+// Calculate summary stats
+const totalCharacters = charactersList.length;
+const totalTalents = talents.length;
+const avgTalentsPerChar = Math.round(totalTalents / totalCharacters);
+
+const title = 'Stella Sora Talents Database - All Character Talents & Stat Bonuses';
+const description = `Complete Stella Sora talents database with ${totalTalents} talents across ${totalCharacters} characters. View all talent effects, stat bonuses (ATK, HP, DEF, Crit DMG), and unlock progression for every Trekker.`;
+const gameTitle = 'Talents Database';
+
+// Helper function to determine stat type from bonus name
+function getStatType(bonusName) {
+  const name = bonusName.toLowerCase();
+  if (name.includes('atk')) return 'atk';
+  if (name.includes('hp')) return 'hp';
+  if (name.includes('def')) return 'def';
+  if (name.includes('crit')) return 'crit';
+  return 'other';
+}
+
+// Helper function to extract value from description
+function extractValue(description) {
+  if (!description) return '';
+  // Strip HTML tags first to get clean text
+  const cleanText = description.replace(/<[^>]+>/g, '');
+  const match = cleanText.match(/(\d+(?:\.\d+)?%?)/);
+  return match ? match[1] : '';
+}
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Talents Database',
+  description: description,
+  numberOfItems: totalTalents,
+  itemListElement: charactersList.map((char, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Thing',
+      name: `${char.name} Talents`,
+      description: `${char.name} - ${char.element} ${char.position} with ${char.talentCount} talents.`
+    }
+  }))
+};
+---
+
+<TalentsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+  <div class="talents-index">
+    <!-- Summary Stats -->
+    <div class="talent-summary">
+      <h2>Talents Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalTalents}</div>
+          <div class="summary-stat-label">Total Talents</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{avgTalentsPerChar}</div>
+          <div class="summary-stat-label">Avg per Character</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">10</div>
+          <div class="summary-stat-label">Stat Bonuses/Talent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shard Requirements Info -->
+    <div class="shard-requirements-info">
+      <h2>Talent Upgrade Requirements</h2>
+      <p class="shard-info-desc">Talents are upgraded using character shards obtained from duplicate pulls. You must complete each talent before moving to the next one.</p>
+
+      <div class="shard-requirements-grid">
+        <div class="shard-requirement-card rarity-4">
+          <div class="shard-card-header">
+            <SSRarityImage rarity={4} type="character" width={32} height={32} />
+            <span class="shard-rarity-label">4-Star Characters</span>
+          </div>
+          <div class="shard-card-content">
+            <div class="shard-row">
+              <span class="shard-label">Shards per Dupe</span>
+              <span class="shard-value">
+                <SSShardImage characterName="Flora" width={32} height={32} class="shard-icon" />
+                30 Shards
+              </span>
+            </div>
+            <div class="shard-row">
+              <span class="shard-label">Half Talent (5 levels)</span>
+              <span class="shard-value">30 Shards <span class="dupe-info">(1 Dupe)</span></span>
+            </div>
+            <div class="shard-row">
+              <span class="shard-label">Full Talent (10 levels)</span>
+              <span class="shard-value">60 Shards <span class="dupe-info">(2 Dupes)</span></span>
+            </div>
+            <div class="shard-row total-row">
+              <span class="shard-label">All 5 Talents</span>
+              <span class="shard-value">300 Shards <span class="dupe-info">(10 Dupes)</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="shard-requirement-card rarity-5">
+          <div class="shard-card-header">
+            <SSRarityImage rarity={5} type="character" width={32} height={32} />
+            <span class="shard-rarity-label">5-Star Characters</span>
+          </div>
+          <div class="shard-card-content">
+            <div class="shard-row">
+              <span class="shard-label">Shards per Dupe</span>
+              <span class="shard-value">
+                <SSShardImage characterName="Tilia" width={32} height={32} class="shard-icon" />
+                60 Shards
+              </span>
+            </div>
+            <div class="shard-row">
+              <span class="shard-label">Full Talent (10 levels)</span>
+              <span class="shard-value">60 Shards <span class="dupe-info">(1 Dupe)</span></span>
+            </div>
+            <div class="shard-row total-row">
+              <span class="shard-label">All 5 Talents</span>
+              <span class="shard-value">300 Shards <span class="dupe-info">(5 Dupes)</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="shard-note">Note: You cannot skip talents. Each talent must be fully upgraded (10 levels) before unlocking the next one.</p>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="talents-filters">
+      <h2>Filter Talents</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="character-filter">Character</label>
+          <input
+            type="text"
+            id="character-filter"
+            list="character-list"
+            placeholder="Search character..."
+            autocomplete="off"
+          />
+          <datalist id="character-list">
+            {charactersList.map(char => (
+              <option value={char.name} />
+            ))}
+          </datalist>
+        </div>
+        <div class="filter-group">
+          <label for="element-filter">Element</label>
+          <select id="element-filter">
+            <option value="">All Elements</option>
+            {elements.map(element => (
+              <option value={element}>{element}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="position-filter">Position</label>
+          <select id="position-filter">
+            <option value="">All Positions</option>
+            {positions.map(position => (
+              <option value={position}>{position}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Talents Sections -->
+    {Object.values(groupedTalents).map(character => (
+      <section
+        class="talent-character-section"
+        data-character={character.name}
+        data-element={character.element}
+        data-position={character.position}
+      >
+        <div class="talent-character-header">
+          <div class="character-icon-container">
+            <SSCharacterSmallImage
+              characterName={character.name}
+              alt={character.name}
+              width={64}
+              height={64}
+            />
+          </div>
+          <div class="talent-character-info">
+            <h2 class="talent-character-name">{character.name}</h2>
+            <div class="talent-character-meta">
+              <span class={`talent-meta-badge element-badge element-${character.element?.toLowerCase()}`}>
+                <SSElementImage
+                  elementName={character.element}
+                  width={20}
+                  height={20}
+                />
+                {character.element}
+              </span>
+              <span class="talent-meta-badge position-badge">
+                {character.position}
+              </span>
+              <span class="talent-meta-badge rarity-badge">
+                <SSRarityImage
+                  rarity={character.grade}
+                  type="character"
+                  width={48}
+                  height={48}
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="talents-grid">
+          {character.talents.map((talent) => (
+            <div class="talent-card">
+              <div class="talent-card-header">
+                <div class="talent-icon-container">
+                  <SSTalentImage
+                    alt={talent.name}
+                    width={48}
+                    height={48}
+                  />
+                </div>
+                <div class="talent-card-info">
+                  <span class="talent-card-number">Talent {talent.talentIndex}</span>
+                  <h3 class="talent-card-name">{talent.name}</h3>
+                </div>
+              </div>
+
+              <!-- Main Effect -->
+              <div class="talent-main-effect">
+                <span class="talent-effect-label">Main Effect</span>
+                <p class="talent-effect-description" set:html={talent.mainEffect.description}>
+                </p>
+              </div>
+
+              <!-- Stat Bonuses -->
+              <div class="talent-stat-bonuses">
+                <span class="talent-bonuses-label">Stat Bonuses ({character.grade === 5 ? '1 Dupe' : '2 Dupes'})</span>
+                <div class="talent-bonuses-grid">
+                  {talent.statBonuses.map((bonus) => (
+                    <div
+                      class="talent-bonus-item"
+                      data-stat={getStatType(bonus.name)}
+                    >
+                      <span class="talent-bonus-name">{bonus.name}</span>
+                      <span class="talent-bonus-value">{extractValue(bonus.description)}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Shard Requirements -->
+              <div class="talent-shard-requirements">
+                <div class="shard-req-header">
+                  <SSShardImage characterName={character.name} width={48} height={48} class="shard-req-icon" />
+                  <h4 class="shard-req-title">Upgrade Cost</h4>
+                </div>
+                <div class="shard-req-content">
+                  <div class="shard-req-item">
+                    <span class="shard-req-text">This Talent:</span>
+                    <span class="shard-req-value">
+                      {character.grade === 5 ? '1 Dupe' : '2 Dupes'}
+                      <span class="shard-req-shards">(60 Shards)</span>
+                    </span>
+                  </div>
+                  <div class="shard-req-item">
+                    <span class="shard-req-text">Total to unlock Talent {talent.talentIndex}:</span>
+                    <span class="shard-req-value">
+                      {character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2} {(character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2) === 1 ? 'Dupe' : 'Dupes'}
+                      <span class="shard-req-shards">({talent.talentIndex * 60} Shards)</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</TalentsLayout>
+
+<script>
+  // Client-side filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const characterFilter = document.getElementById('character-filter') as HTMLInputElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const positionFilter = document.getElementById('position-filter') as HTMLSelectElement;
+    const sections = document.querySelectorAll('.talent-character-section');
+
+    function applyFilters() {
+      const selectedCharacter = characterFilter?.value.trim().toLowerCase() || '';
+      const selectedElement = elementFilter?.value || '';
+      const selectedPosition = positionFilter?.value || '';
+
+      sections.forEach((section) => {
+        const el = section as HTMLElement;
+        const charName = el.dataset.character || '';
+        const charElement = el.dataset.element || '';
+        const charPosition = el.dataset.position || '';
+
+        // For character, do partial match (contains)
+        const matchesCharacter = !selectedCharacter || charName.toLowerCase().includes(selectedCharacter);
+        const matchesElement = !selectedElement || charElement === selectedElement;
+        const matchesPosition = !selectedPosition || charPosition === selectedPosition;
+
+        if (matchesCharacter && matchesElement && matchesPosition) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    // Use 'input' event for text input to filter as you type
+    characterFilter?.addEventListener('input', applyFilters);
+    elementFilter?.addEventListener('change', applyFilters);
+    positionFilter?.addEventListener('change', applyFilters);
+  });
+</script>
+
+<style>
+  /* Element badge colors */
+  .element-ignis {
+    background: rgba(251, 146, 60, 0.2);
+    color: #fb923c;
+  }
+
+  .element-aqua {
+    background: rgba(96, 165, 250, 0.2);
+    color: #60a5fa;
+  }
+
+  .element-terra {
+    background: rgba(167, 139, 250, 0.2);
+    color: #a78bfa;
+  }
+
+  .element-ventus {
+    background: rgba(52, 211, 153, 0.2);
+    color: #34d399;
+  }
+
+  .element-lux {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+  }
+
+  .element-umbra {
+    background: rgba(156, 163, 175, 0.2);
+    color: #9ca3af;
+  }
+
+  /* Element badge with icon */
+  .element-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Position badge */
+  .position-badge {
+    background: rgba(139, 92, 246, 0.2);
+    color: #8b5cf6;
+  }
+
+  /* Rarity badge */
+  .rarity-badge {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    background: transparent;
+  }
+</style>

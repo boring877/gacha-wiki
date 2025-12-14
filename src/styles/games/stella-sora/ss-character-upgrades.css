@@ -1,0 +1,550 @@
+/* Stella Sora Character Upgrades Page Styles
+ * Styles for the character upgrade materials page
+ */
+
+/* Main Container */
+.character-upgrades-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Introduction Section */
+.upgrades-intro {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+  text-align: center;
+}
+
+.upgrades-intro h2 {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.upgrades-intro p {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--ss-spacing-md);
+}
+
+/* Upgrade Type Legend */
+.upgrades-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--ss-spacing-lg);
+  flex-wrap: wrap;
+  margin-top: var(--ss-spacing-md);
+}
+
+.legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  border-radius: var(--ss-radius-md);
+  background: var(--ss-bg-tertiary);
+  min-width: 120px;
+}
+
+.legend-item.level-up {
+  border-left: 3px solid #60a5fa;
+}
+
+.legend-item.skill {
+  border-left: 3px solid #a78bfa;
+}
+
+.legend-label {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+.legend-item.level-up .legend-label {
+  color: #60a5fa;
+}
+
+.legend-item.skill .legend-label {
+  color: #a78bfa;
+}
+
+.legend-text {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+}
+
+/* Filter Section */
+.upgrades-filter {
+  display: flex;
+  gap: var(--ss-spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--ss-spacing-xl);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-lg);
+  border: 1px solid var(--ss-border);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  font-weight: var(--ss-font-medium);
+}
+
+.filter-select,
+.filter-input {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  min-width: 160px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Characters Grid */
+.characters-upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+@media (max-width: 480px) {
+  .characters-upgrades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Character Upgrade Card */
+.character-upgrade-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  overflow: hidden;
+}
+
+/* Character Header */
+.character-upgrade-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.character-link {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+
+.character-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  border: 2px solid var(--ss-border);
+  flex-shrink: 0;
+}
+
+.character-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.character-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.character-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  margin-top: 4px;
+}
+
+.element-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.element-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.element-text {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+}
+
+/* Upgrade Sections */
+.character-upgrade-content {
+  padding: var(--ss-spacing-md);
+}
+
+.upgrade-section {
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.upgrade-section:last-child {
+  margin-bottom: 0;
+}
+
+.upgrade-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-md);
+  margin-bottom: var(--ss-spacing-sm);
+  cursor: pointer;
+}
+
+
+.upgrade-section-header.level-up {
+  border-left: 3px solid #60a5fa;
+}
+
+.upgrade-section-header.skill {
+  border-left: 3px solid #a78bfa;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+.section-title.level-up {
+  color: #60a5fa;
+}
+
+.section-title.skill {
+  color: #a78bfa;
+}
+
+.toggle-icon {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+}
+
+/* Upgrade Levels Grid */
+.upgrade-levels {
+  display: none;
+  flex-direction: column;
+  gap: var(--ss-spacing-sm);
+}
+
+.upgrade-section.expanded .upgrade-levels {
+  display: flex;
+}
+
+/* Individual Level Row */
+.upgrade-level {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+}
+
+.level-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.level-number {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+  background: var(--ss-bg-tertiary);
+  padding: 2px 8px;
+  border-radius: var(--ss-radius-sm);
+}
+
+.level-cost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #fbbf24;
+  font-weight: var(--ss-font-medium);
+}
+
+.level-cost img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Materials Grid */
+.materials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+}
+
+.material-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-xs);
+  background: var(--ss-bg-tertiary);
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+  border: 1px solid var(--ss-border);
+}
+
+.material-image {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.material-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.material-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.material-name {
+  font-size: 0.7rem;
+  color: var(--ss-text-secondary);
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.material-quantity {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+}
+
+/* Empty State */
+.no-materials {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  font-style: italic;
+}
+
+/* Total Materials Summary */
+.total-materials-section {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.total-materials-section h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+  text-align: center;
+}
+
+.total-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.total-material-card {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+}
+
+.total-material-image {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.total-material-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.total-material-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.total-material-name {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-medium);
+  color: var(--ss-text-primary);
+  margin-bottom: 4px;
+}
+
+.total-material-quantity {
+  font-size: 1rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+}
+
+/* Materials Database Section */
+.materials-database {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.materials-database h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+  text-align: center;
+}
+
+.materials-category {
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.materials-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-title {
+  font-size: 1rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-secondary);
+  margin-bottom: var(--ss-spacing-sm);
+  padding-bottom: var(--ss-spacing-xs);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.materials-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--ss-spacing-sm);
+}
+
+.material-db-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-sm);
+}
+
+.material-db-image {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.material-db-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.material-db-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.material-db-name {
+  font-size: 0.8rem;
+  font-weight: var(--ss-font-medium);
+  color: var(--ss-text-primary);
+  line-height: 1.2;
+}
+
+
+/* View Profile Link */
+.view-profile-link {
+  display: block;
+  text-align: center;
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-medium);
+  border-top: 1px solid var(--ss-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upgrades-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select,
+  .filter-input {
+    width: 100%;
+  }
+
+  .character-upgrade-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .character-link {
+    flex-direction: column;
+  }
+
+  .material-name {
+    max-width: 80px;
+  }
+
+  .materials-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

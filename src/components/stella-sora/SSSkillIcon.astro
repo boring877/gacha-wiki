@@ -1,0 +1,105 @@
+---
+// Stella Sora Skill Icon Component
+import { Image } from 'astro:assets';
+
+// Import skill type icons
+import normalIcon from '../../assets/images/games/stella-sora/skills/normal.png';
+import skillIcon from '../../assets/images/games/stella-sora/skills/skill.png';
+import supportIcon from '../../assets/images/games/stella-sora/skills/support.png';
+import ultimateIcon from '../../assets/images/games/stella-sora/skills/ultimate.png';
+
+// Import element plates for colored backgrounds
+import ignisPlate from '../../assets/images/games/stella-sora/skills/ignis_plate.png';
+import aquaPlate from '../../assets/images/games/stella-sora/skills/aqua_plate.png';
+import ventusPlate from '../../assets/images/games/stella-sora/skills/ventus_plate.png';
+import terraPlate from '../../assets/images/games/stella-sora/skills/terra_plate.png';
+import luxPlate from '../../assets/images/games/stella-sora/skills/lux_plate.png';
+import umbraPlate from '../../assets/images/games/stella-sora/skills/umbra_plate.png';
+
+const skillTypeMap: Record<string, ImageMetadata> = {
+  'normal': normalIcon,
+  'skill': skillIcon,
+  'support': supportIcon,
+  'ultimate': ultimateIcon,
+};
+
+const elementPlateMap: Record<string, ImageMetadata> = {
+  'Ignis': ignisPlate,
+  'ignis': ignisPlate,
+  'Aqua': aquaPlate,
+  'aqua': aquaPlate,
+  'Ventus': ventusPlate,
+  'ventus': ventusPlate,
+  'Terra': terraPlate,
+  'terra': terraPlate,
+  'Lux': luxPlate,
+  'lux': luxPlate,
+  'Umbra': umbraPlate,
+  'umbra': umbraPlate,
+};
+
+export interface Props {
+  skillType: 'normal' | 'skill' | 'support' | 'ultimate';
+  element?: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { skillType, element, alt, class: className = '', width = 40, height = 40 } = Astro.props;
+
+const skillIconSrc = skillTypeMap[skillType] || skillTypeMap['skill'];
+const plateSrc = element ? elementPlateMap[element] : null;
+---
+
+<div class={`skill-icon-wrapper ${className}`}>
+  {plateSrc && (
+    <Image
+      src={plateSrc}
+      alt=""
+      width={width}
+      height={height}
+      class="skill-plate"
+      loading="lazy"
+      format="webp"
+      quality={95}
+    />
+  )}
+  <Image
+    src={skillIconSrc}
+    alt={alt || `${skillType} skill`}
+    width={width - 8}
+    height={height - 8}
+    class="skill-icon"
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+</div>
+
+<style>
+  .skill-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size, 40px);
+    height: var(--icon-size, 40px);
+  }
+
+  .skill-plate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .skill-icon {
+    position: relative;
+    z-index: 1;
+    object-fit: contain;
+  }
+</style>

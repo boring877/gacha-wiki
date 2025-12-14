@@ -1,0 +1,453 @@
+---
+// Stella Sora Materials Database Page
+// Lists all upgrade materials with details
+
+import MaterialsDatabaseLayout from '../../../layouts/stella-sora/MaterialsDatabaseLayout.astro';
+import SSUpgradeImage from '../../../components/stella-sora/SSUpgradeImage.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import { upgradeItems, allCharacterUpgrades } from '../../../data/stella-sora/upgrades.js';
+
+// Group materials by category
+const levelUpMaterials = Object.values(upgradeItems).filter(item => item.id >= 20071 && item.id <= 20093);
+const bossMaterials = Object.values(upgradeItems).filter(item => item.id >= 20003 && item.id <= 20063);
+const essenceMaterials = Object.values(upgradeItems).filter(item => item.id >= 21003 && item.id <= 21063);
+const skillMaterials = Object.values(upgradeItems).filter(item => item.id >= 32000 && item.id <= 32023);
+
+// Sub-group level-up materials by material series
+const ventusLevelUp = levelUpMaterials.filter(item => item.id >= 20071 && item.id <= 20073);
+const ignisLevelUp = levelUpMaterials.filter(item => item.id >= 20081 && item.id <= 20083);
+const umbraLevelUp = levelUpMaterials.filter(item => item.id >= 20091 && item.id <= 20093);
+
+// Find which characters use each level-up material set
+function getCharactersUsingLevelUpMaterial(materialIdStart: number): string[] {
+  const characters: string[] = [];
+  Object.entries(allCharacterUpgrades).forEach(([key, charData]) => {
+    const firstUpgradeItem = charData.upgrades?.[0]?.items?.[0];
+    if (firstUpgradeItem && firstUpgradeItem.id >= materialIdStart && firstUpgradeItem.id < materialIdStart + 10) {
+      characters.push(charData.name);
+    }
+  });
+  return characters.sort();
+}
+
+const ventusCharacters = getCharactersUsingLevelUpMaterial(20071);
+const ignisCharacters = getCharactersUsingLevelUpMaterial(20081);
+const umbraCharacters = getCharactersUsingLevelUpMaterial(20091);
+
+// Sub-group skill materials by cartridge type
+const universalSkill = skillMaterials.filter(item => item.id === 32000);
+const tappingSkill = skillMaterials.filter(item => item.id >= 32001 && item.id <= 32003);
+const shooterSkill = skillMaterials.filter(item => item.id >= 32011 && item.id <= 32013);
+const kungFuSkill = skillMaterials.filter(item => item.id >= 32021 && item.id <= 32023);
+
+// Find which characters use each skill cartridge type
+function getCharactersUsingCartridge(cartridgeIdStart: number): string[] {
+  const characters: string[] = [];
+  Object.entries(allCharacterUpgrades).forEach(([key, charData]) => {
+    const firstSkillItem = charData.skillUpgrades?.[0]?.items?.[0];
+    if (firstSkillItem && firstSkillItem.id >= cartridgeIdStart && firstSkillItem.id < cartridgeIdStart + 10) {
+      characters.push(charData.name);
+    }
+  });
+  return characters.sort();
+}
+
+const tappingCharacters = getCharactersUsingCartridge(32001);
+const shooterCharacters = getCharactersUsingCartridge(32011);
+const kungFuCharacters = getCharactersUsingCartridge(32021);
+
+const title = 'Stella Sora Materials Database';
+const description = 'Complete database of all upgrade materials in Stella Sora. Find level-up materials, boss drops, essences, and skill upgrade cartridges.';
+const gameTitle = 'Materials Database';
+---
+
+<MaterialsDatabaseLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebPage',
+          name: 'Stella Sora Materials Database',
+          description: 'Complete database of all upgrade materials in Stella Sora including level-up materials, boss drops, essences, and skill upgrade cartridges.',
+          url: 'https://gachawiki.info/guides/stella-sora/materials-database/',
+          isPartOf: {
+            '@type': 'WebSite',
+            name: 'GachaWiki',
+            url: 'https://gachawiki.info'
+          }
+        },
+        {
+          '@type': 'ItemList',
+          name: 'Stella Sora Upgrade Materials',
+          description: 'List of all upgrade materials for character ascension and skill upgrades in Stella Sora',
+          numberOfItems: Object.keys(upgradeItems).length,
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Level-Up Materials',
+              description: 'Materials for character ascension including Ventus, Ignis, and Umbra elements'
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Boss Materials',
+              description: 'Rare materials dropped by bosses for high-level skill upgrades'
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'Essence Materials',
+              description: 'Elemental essences used for skill upgrades'
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              name: 'Skill Materials',
+              description: 'Game cartridges used for character skill upgrades'
+            }
+          ]
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://gachawiki.info'
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Guides',
+              item: 'https://gachawiki.info/guides/'
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'Stella Sora',
+              item: 'https://gachawiki.info/guides/stella-sora/'
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              name: 'Materials Database',
+              item: 'https://gachawiki.info/guides/stella-sora/materials-database/'
+            }
+          ]
+        }
+      ]
+    })}
+  />
+
+  <div class="materials-database-index">
+    <!-- Introduction Section -->
+    <div class="materials-intro">
+      <h2>Upgrade Materials Database</h2>
+      <p>All materials used for character level-up ascension and skill upgrades in Stella Sora.</p>
+      <p>Click on a category below to jump to that section.</p>
+
+      <div class="quick-links">
+        <a href="#level-up" class="quick-link level-up">Level-Up Materials</a>
+        <a href="#boss" class="quick-link boss">Boss Materials</a>
+        <a href="#essence" class="quick-link essence">Essence Materials</a>
+        <a href="#skill" class="quick-link skill">Skill Materials</a>
+      </div>
+    </div>
+
+    <!-- Level-Up Materials Section -->
+    <section id="level-up" class="materials-category-section">
+      <div class="category-header">
+        <div class="category-info">
+          <h2 class="category-title level-up">Level-Up Materials</h2>
+          <p class="category-desc">Materials used for character ascension. Each series has 3 tiers of materials.</p>
+        </div>
+      </div>
+
+      <!-- Backstage/Spotlight/Exeunt Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Backstage/Spotlight/Exeunt Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {ventusCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {ventusLevelUp.map(item => (
+            <div class="material-card level-up">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Level-Up</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Count's Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Count's Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {ignisCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {ignisLevelUp.map(item => (
+            <div class="material-card level-up">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Level-Up</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Wick/Lumen/Gloom Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Wick/Lumen/Gloom Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {umbraCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {umbraLevelUp.map(item => (
+            <div class="material-card level-up">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Level-Up</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Boss Materials Section -->
+    <section id="boss" class="materials-category-section">
+      <div class="category-header">
+        <div class="category-info">
+          <h2 class="category-title boss">Boss Materials</h2>
+          <p class="category-desc">Rare materials dropped by bosses. Used for high-level skill upgrades.</p>
+        </div>
+      </div>
+
+      <div class="materials-grid">
+        {bossMaterials.map(item => (
+          <div class="material-card boss">
+            <div class="material-image">
+              <SSUpgradeImage itemId={item.id} width={48} height={48} />
+            </div>
+            <div class="material-info">
+              <div class="material-name">{item.name}</div>
+              <div class="material-details">
+                <span class="material-tag">Boss Drop</span>
+                <span class="material-tag">Skill Upgrade</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Essence Materials Section -->
+    <section id="essence" class="materials-category-section">
+      <div class="category-header">
+        <div class="category-info">
+          <h2 class="category-title essence">Essence Materials</h2>
+          <p class="category-desc">Elemental essences used for skill upgrades.</p>
+        </div>
+      </div>
+
+      <div class="materials-grid">
+        {essenceMaterials.map(item => (
+          <div class="material-card essence">
+            <div class="material-image">
+              <SSUpgradeImage itemId={item.id} width={48} height={48} />
+            </div>
+            <div class="material-info">
+              <div class="material-name">{item.name}</div>
+              <div class="material-details">
+                <span class="material-tag">Essence</span>
+                <span class="material-tag">Skill Upgrade</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skill Materials Section -->
+    <section id="skill" class="materials-category-section">
+      <div class="category-header">
+        <div class="category-info">
+          <h2 class="category-title skill">Skill Materials</h2>
+          <p class="category-desc">Game cartridges used for skill upgrades. Each type has 3 tiers.</p>
+        </div>
+      </div>
+
+      <!-- Universal -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Universal (All Characters)</span>
+        </h3>
+        <div class="materials-grid">
+          {universalSkill.map(item => (
+            <div class="material-card skill">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Universal</span>
+                  <span class="material-tag">Skill</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tapping/Rhythm/Magic Sound Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Tapping/Rhythm/Magic Sound Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {tappingCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {tappingSkill.map(item => (
+            <div class="material-card skill">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Skill</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Shooter/Barrage/Demon Bee Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Shooter/Barrage/Demon Bee Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {shooterCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {shooterSkill.map(item => (
+            <div class="material-card skill">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Skill</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Kung Fu/Fighting/Phantom Series -->
+      <div class="sub-category">
+        <h3 class="sub-category-title">
+          <span>Kung Fu/Fighting/Phantom Series</span>
+        </h3>
+        <div class="sub-category-chars-images">
+          <span class="chars-label">Used by:</span>
+          <div class="chars-list">
+            {kungFuCharacters.map(charName => (
+              <div class="char-icon" title={charName}>
+                <SSCharacterSmallImage characterName={charName} width={48} height={48} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="materials-grid">
+          {kungFuSkill.map(item => (
+            <div class="material-card skill">
+              <div class="material-image">
+                <SSUpgradeImage itemId={item.id} width={48} height={48} />
+              </div>
+              <div class="material-info">
+                <div class="material-name">{item.name}</div>
+                <div class="material-details">
+                  <span class="material-tag">Skill</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</MaterialsDatabaseLayout>

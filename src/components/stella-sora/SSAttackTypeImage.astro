@@ -1,0 +1,40 @@
+---
+// Stella Sora Attack Type Image Component
+import { Image } from 'astro:assets';
+
+// Import attack type images (using JPG format)
+import meleeImage from '../../assets/images/games/stella-sora/attacktype/melee.jpg';
+import rangedImage from '../../assets/images/games/stella-sora/attacktype/range.jpg';
+
+// Centralized attack type image mapping
+const attackTypeImageMap: Record<string, ImageMetadata> = {
+  Melee: meleeImage,
+  melee: meleeImage,
+  Ranged: rangedImage,
+  ranged: rangedImage,
+};
+
+export interface Props {
+  attackType: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { attackType, alt, class: className = '', width = 32, height = 32 } = Astro.props;
+
+// Get the imported image object from the map
+const imageSrc = attackTypeImageMap[attackType] || attackTypeImageMap['Melee'];
+---
+
+<Image
+  src={imageSrc}
+  alt={alt || attackType}
+  width={width}
+  height={height}
+  class={`${className} attack-type-img`}
+  loading="lazy"
+  format="webp"
+  quality={95}
+/>

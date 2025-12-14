@@ -1,0 +1,555 @@
+/* Stella Sora Materials Database Page Styles
+ * Styles for the upgrade materials database page
+ */
+
+/* Main Container */
+.materials-database-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Introduction Section */
+.materials-intro {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+  text-align: center;
+}
+
+.materials-intro h2 {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.materials-intro p {
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.materials-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Quick Links */
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--ss-spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--ss-spacing-md);
+}
+
+.quick-link {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-medium);
+}
+
+.quick-link.level-up {
+  border-left: 3px solid #60a5fa;
+}
+
+.quick-link.boss {
+  border-left: 3px solid #f472b6;
+}
+
+.quick-link.essence {
+  border-left: 3px solid #4ade80;
+}
+
+.quick-link.skill {
+  border-left: 3px solid #a78bfa;
+}
+
+/* Materials Category Section */
+.materials-category-section {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-lg);
+  padding-bottom: var(--ss-spacing-md);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.category-info {
+  flex: 1;
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.category-title.level-up {
+  color: #60a5fa;
+}
+
+.category-title.boss {
+  color: #f472b6;
+}
+
+.category-title.essence {
+  color: #4ade80;
+}
+
+.category-title.skill {
+  color: #a78bfa;
+}
+
+.category-desc {
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  margin: 0;
+}
+
+/* Materials Grid */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+@media (max-width: 640px) {
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Material Card */
+.material-card {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+}
+
+.material-card.level-up {
+  border-left: 3px solid #60a5fa;
+}
+
+.material-card.boss {
+  border-left: 3px solid #f472b6;
+}
+
+.material-card.essence {
+  border-left: 3px solid #4ade80;
+}
+
+.material-card.skill {
+  border-left: 3px solid #a78bfa;
+}
+
+.material-image {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-image img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.material-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.material-name {
+  font-size: 0.9rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  margin-bottom: 4px;
+}
+
+.material-rarity {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rarity-stars {
+  color: #fbbf24;
+}
+
+/* Material Details (for expanded view) */
+.material-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  margin-top: var(--ss-spacing-xs);
+}
+
+.material-tag {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-sm);
+  color: var(--ss-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.material-tag img {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Element-specific tag colors */
+.material-tag.element-ventus {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.material-tag.element-ignis {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+}
+
+.material-tag.element-umbra {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.material-tag.element-lux {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+}
+
+.material-tag.element-aqua {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.material-tag.element-terra {
+  background: rgba(180, 83, 9, 0.15);
+  color: #d97706;
+}
+
+/* Position-specific tag colors */
+.material-tag.position-support {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+}
+
+.material-tag.position-vanguard {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+}
+
+.material-tag.position-versatile {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+/* Sub-category grouping */
+.sub-category {
+  margin-bottom: var(--ss-spacing-lg);
+}
+
+.sub-category:last-child {
+  margin-bottom: 0;
+}
+
+.sub-category-title {
+  font-size: 1rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-secondary);
+  margin-bottom: var(--ss-spacing-sm);
+  padding-left: var(--ss-spacing-sm);
+  border-left: 2px solid var(--ss-border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sub-category-title img {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.sub-category-chars {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+  margin: 0 0 var(--ss-spacing-sm) var(--ss-spacing-sm);
+  padding-left: var(--ss-spacing-sm);
+  border-left: 2px solid var(--ss-border);
+}
+
+.sub-category-chars-images {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  margin: 0 0 var(--ss-spacing-md) var(--ss-spacing-sm);
+  padding-left: var(--ss-spacing-sm);
+  border-left: 2px solid var(--ss-border);
+  flex-wrap: wrap;
+}
+
+.sub-category-chars-images .chars-label {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+  flex-shrink: 0;
+}
+
+.sub-category-chars-images .chars-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.sub-category-chars-images .char-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  border: 2px solid var(--ss-border);
+  background: var(--ss-bg-tertiary);
+}
+
+.sub-category-chars-images .char-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Filter Section */
+.materials-filter {
+  display: flex;
+  gap: var(--ss-spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--ss-spacing-xl);
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-lg);
+  border: 1px solid var(--ss-border);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  font-weight: var(--ss-font-medium);
+}
+
+.filter-select,
+.filter-input {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  min-width: 160px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  outline: none;
+  border-color: var(--ss-accent);
+}
+
+/* Usage Info Section */
+.usage-info {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-top: var(--ss-spacing-lg);
+}
+
+.usage-title {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.usage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+}
+
+.usage-list li {
+  font-size: 0.8rem;
+  color: var(--ss-text-secondary);
+  background: var(--ss-bg-secondary);
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .materials-database-index {
+    padding: var(--ss-spacing-md) 0;
+  }
+
+  .materials-intro {
+    padding: var(--ss-spacing-md);
+    margin-bottom: var(--ss-spacing-lg);
+  }
+
+  .materials-intro h2 {
+    font-size: 1.25rem;
+  }
+
+  .materials-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select,
+  .filter-input {
+    width: 100%;
+  }
+
+  .category-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .quick-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-link {
+    text-align: center;
+  }
+
+  .materials-category-section {
+    padding: var(--ss-spacing-md);
+    margin-bottom: var(--ss-spacing-lg);
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .material-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .material-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .material-image img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .material-name {
+    font-size: 0.85rem;
+  }
+
+  .sub-category-title {
+    font-size: 0.9rem;
+  }
+
+  .sub-category-chars-images {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ss-spacing-xs);
+  }
+
+  .sub-category-chars-images .chars-list {
+    gap: 6px;
+  }
+
+  .sub-category-chars-images .char-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .materials-intro h2 {
+    font-size: 1.1rem;
+  }
+
+  .materials-intro p {
+    font-size: 0.85rem;
+  }
+
+  .quick-link {
+    padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+    font-size: 0.8rem;
+  }
+
+  .category-title {
+    font-size: 1rem;
+  }
+
+  .category-desc {
+    font-size: 0.8rem;
+  }
+
+  .material-card {
+    gap: var(--ss-spacing-sm);
+  }
+
+  .material-details {
+    gap: 2px;
+  }
+
+  .material-tag {
+    font-size: 0.65rem;
+    padding: 1px 4px;
+  }
+
+  .sub-category-chars-images .char-icon {
+    width: 36px;
+    height: 36px;
+  }
+}

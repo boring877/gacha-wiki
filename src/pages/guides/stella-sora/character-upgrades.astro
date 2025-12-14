@@ -1,0 +1,260 @@
+---
+// Stella Sora Character Upgrades Page
+// Lists all characters with their upgrade material requirements
+
+import CharacterUpgradesLayout from '../../../layouts/stella-sora/CharacterUpgradesLayout.astro';
+import SSUpgradeImage from '../../../components/stella-sora/SSUpgradeImage.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import { allCharacterUpgrades } from '../../../data/stella-sora/upgrades.js';
+import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
+
+// Build character data with their upgrades and character info
+const charactersWithUpgrades = Object.entries(allCharacterUpgrades).map(([key, charUpgrade]) => {
+  const characterData = STELLA_SORA_CHARACTERS.find(c => c.name.toLowerCase() === key);
+
+  // Calculate total materials needed for level-up
+  const levelUpTotals = {};
+  charUpgrade.upgrades.forEach(level => {
+    level.items.forEach(item => {
+      if (!levelUpTotals[item.id]) {
+        levelUpTotals[item.id] = { id: item.id, name: item.name, quantity: 0 };
+      }
+      levelUpTotals[item.id].quantity += item.quantity;
+    });
+  });
+
+  // Calculate total materials needed for skill upgrades
+  const skillTotals = {};
+  charUpgrade.skillUpgrades.forEach(level => {
+    level.items.forEach(item => {
+      if (!skillTotals[item.id]) {
+        skillTotals[item.id] = { id: item.id, name: item.name, quantity: 0 };
+      }
+      skillTotals[item.id].quantity += item.quantity;
+    });
+  });
+
+  // Calculate total dorra cost
+  const levelUpDorra = charUpgrade.upgrades.reduce((sum, level) => sum + (level.currency?.dorra || 0), 0);
+  const skillDorra = charUpgrade.skillUpgrades.reduce((sum, level) => sum + (level.currency?.dorra || 0), 0);
+
+  return {
+    key,
+    name: charUpgrade.name,
+    slug: characterData?.slug || key,
+    element: characterData?.element || 'Unknown',
+    rarity: characterData?.rarity || '4-Star',
+    image: characterData?.image || key,
+    upgrades: charUpgrade.upgrades,
+    skillUpgrades: charUpgrade.skillUpgrades,
+    levelUpTotals: Object.values(levelUpTotals),
+    skillTotals: Object.values(skillTotals),
+    levelUpDorra,
+    skillDorra,
+    totalDorra: levelUpDorra + skillDorra
+  };
+}).sort((a, b) => a.name.localeCompare(b.name));
+
+const title = 'Stella Sora Character Upgrades Guide';
+const description = 'Complete character upgrade materials guide for Stella Sora. Find which materials each character needs for level-up and skill upgrades.';
+const gameTitle = 'Character Upgrades Guide';
+---
+
+<CharacterUpgradesLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="character-upgrades-index">
+    <!-- Introduction Section -->
+    <div class="upgrades-intro">
+      <h2>Character Upgrade Materials</h2>
+      <p>Each character requires specific materials for level-up ascension and skill upgrades. Use this guide to plan your farming and resource management.</p>
+
+      <div class="upgrades-legend">
+        <div class="legend-item level-up">
+          <span class="legend-label">Level-Up</span>
+          <span class="legend-text">Ascension materials</span>
+        </div>
+        <div class="legend-item skill">
+          <span class="legend-label">Skill</span>
+          <span class="legend-text">Skill upgrade materials</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Filter -->
+    <div class="upgrades-filter">
+      <div class="filter-group">
+        <label for="element-filter">Filter by Element:</label>
+        <select id="element-filter" class="filter-select">
+          <option value="all">All Elements</option>
+          <option value="ignis">Ignis</option>
+          <option value="aqua">Aqua</option>
+          <option value="terra">Terra</option>
+          <option value="ventus">Ventus</option>
+          <option value="lux">Lux</option>
+          <option value="umbra">Umbra</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="search-filter">Search Character:</label>
+        <input type="text" id="search-filter" class="filter-input" placeholder="Type character name..." />
+      </div>
+    </div>
+
+    <!-- Characters Grid -->
+    <div class="characters-upgrades-grid">
+      {charactersWithUpgrades.map(character => (
+        <div class="character-upgrade-card" data-element={character.element.toLowerCase()} data-name={character.name.toLowerCase()}>
+          <!-- Character Header -->
+          <div class="character-upgrade-header">
+            <a href={`/guides/stella-sora/characters/${character.slug}`} class="character-link">
+              <div class="character-avatar">
+                <SSCharacterSmallImage
+                  characterName={character.name}
+                  alt={character.name}
+                  width={56}
+                  height={56}
+                  loading="lazy"
+                />
+              </div>
+              <div class="character-info">
+                <h3 class="character-name">{character.name}</h3>
+                <div class="character-meta">
+                  <div class="element-icon">
+                    <SSElementImage elementName={character.element} alt={character.element} width={20} height={20} />
+                  </div>
+                  <span class={`element-text element-${character.element.toLowerCase()}`}>{character.element}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Upgrade Content -->
+          <div class="character-upgrade-content">
+            <!-- Level-Up Section -->
+            <div class="upgrade-section" data-section="level-up">
+              <div class="upgrade-section-header level-up" onclick="this.parentElement.classList.toggle('expanded')">
+                <span class="section-title level-up">Level-Up Materials</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="upgrade-levels">
+                {character.upgrades.map((level, index) => (
+                  <div class="upgrade-level">
+                    <div class="level-header">
+                      <span class="level-number">Phase {index + 1}</span>
+                      {level.currency?.dorra && (
+                        <span class="level-cost">
+                          <SSUpgradeImage itemId={1} width={16} height={16} />
+                          {level.currency.dorra.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    <div class="materials-grid">
+                      {level.items.length > 0 ? (
+                        level.items.map(item => (
+                          <div class="material-item">
+                            <div class="material-image">
+                              <SSUpgradeImage itemId={item.id} width={32} height={32} />
+                            </div>
+                            <div class="material-info">
+                              <span class="material-name" title={item.name}>{item.name}</span>
+                              <span class="material-quantity">x{item.quantity}</span>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <span class="no-materials">No materials required</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Skill Upgrades Section -->
+            <div class="upgrade-section" data-section="skill">
+              <div class="upgrade-section-header skill" onclick="this.parentElement.classList.toggle('expanded')">
+                <span class="section-title skill">Skill Upgrade Materials</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="upgrade-levels">
+                {character.skillUpgrades.map((level, index) => (
+                  <div class="upgrade-level">
+                    <div class="level-header">
+                      <span class="level-number">Level {index + 2}</span>
+                      {level.currency?.dorra && (
+                        <span class="level-cost">
+                          <SSUpgradeImage itemId={1} width={16} height={16} />
+                          {level.currency.dorra.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    <div class="materials-grid">
+                      {level.items.length > 0 ? (
+                        level.items.map(item => (
+                          <div class="material-item">
+                            <div class="material-image">
+                              <SSUpgradeImage itemId={item.id} width={32} height={32} />
+                            </div>
+                            <div class="material-info">
+                              <span class="material-name" title={item.name}>{item.name}</span>
+                              <span class="material-quantity">x{item.quantity}</span>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <span class="no-materials">No materials required</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- View Full Profile Link -->
+          <a href={`/guides/stella-sora/characters/${character.slug}`} class="view-profile-link">
+            View Full Profile
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</CharacterUpgradesLayout>
+
+<script>
+  // Filter functionality
+  function initializeFilters() {
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const searchFilter = document.getElementById('search-filter') as HTMLInputElement;
+    const cards = document.querySelectorAll('.character-upgrade-card');
+
+    function filterCards() {
+      const elementValue = elementFilter?.value || 'all';
+      const searchValue = (searchFilter?.value || '').toLowerCase().trim();
+
+      cards.forEach(card => {
+        const cardElement = card.getAttribute('data-element') || '';
+        const cardName = card.getAttribute('data-name') || '';
+
+        const matchesElement = elementValue === 'all' || cardElement === elementValue;
+        const matchesSearch = searchValue === '' || cardName.includes(searchValue);
+
+        if (matchesElement && matchesSearch) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    elementFilter?.addEventListener('change', filterCards);
+    searchFilter?.addEventListener('input', filterCards);
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeFilters);
+  } else {
+    initializeFilters();
+  }
+</script>

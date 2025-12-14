@@ -1,0 +1,251 @@
+---
+// Stella Sora Upgrade Image Component
+import { Image } from 'astro:assets';
+
+// Import all Stella Sora upgrade material images
+
+// Level-up materials - Ventus
+import backstageRaggedHat from '../../assets/images/games/stella-sora/upgrades/backstage-ragged-hat.png';
+import spotlightBowler from '../../assets/images/games/stella-sora/upgrades/spotlight-bowler.png';
+import exeuntBowler from '../../assets/images/games/stella-sora/upgrades/exeunt-bowler.png';
+
+// Level-up materials - Ignis
+import countsRewards from '../../assets/images/games/stella-sora/upgrades/counts-rewards.png';
+import countsCellaring from '../../assets/images/games/stella-sora/upgrades/counts-cellaring.png';
+import countsGift from '../../assets/images/games/stella-sora/upgrades/counts-gift.png';
+
+// Level-up materials - Umbra
+import faintWick from '../../assets/images/games/stella-sora/upgrades/faint-wick.png';
+import lumenEssence from '../../assets/images/games/stella-sora/upgrades/lumen-essence.png';
+import eternalGloomCore from '../../assets/images/games/stella-sora/upgrades/eternal-gloom-core.png';
+
+// Boss materials
+import forestElfFang from '../../assets/images/games/stella-sora/upgrades/forest-elf-fang.png';
+import crimsonTempter from '../../assets/images/games/stella-sora/upgrades/crimson-tempter.png';
+import colossusCore from '../../assets/images/games/stella-sora/upgrades/colossus-core.png';
+import wrathBeauty from '../../assets/images/games/stella-sora/upgrades/wrath-beauty.png';
+import radiantFeatherCrown from '../../assets/images/games/stella-sora/upgrades/radiant-feather-crown.png';
+import nightlitHaven from '../../assets/images/games/stella-sora/upgrades/nightlit-haven.png';
+
+// Essence materials
+import forestElfEssence from '../../assets/images/games/stella-sora/upgrades/forest-elf-essence.png';
+import evilBloomEssence from '../../assets/images/games/stella-sora/upgrades/evil-bloom-essence.png';
+import colossusEssence from '../../assets/images/games/stella-sora/upgrades/colossus-essence.png';
+import windEssence from '../../assets/images/games/stella-sora/upgrades/wind-essence.png';
+import radiantCrownEssence from '../../assets/images/games/stella-sora/upgrades/radiant-crown-essence.png';
+import tidalEssence from '../../assets/images/games/stella-sora/upgrades/tidal-essence.png';
+
+// Skill materials - Universal
+import chessPieceOfSkill from '../../assets/images/games/stella-sora/upgrades/chess-piece-of-skill.png';
+
+// Skill materials - Lux
+import tappingGameCartridge from '../../assets/images/games/stella-sora/upgrades/tapping-game-cartridge.png';
+import rhythmGameCartridge from '../../assets/images/games/stella-sora/upgrades/rhythm-game-cartridge.png';
+import magicSoundGameCartridge from '../../assets/images/games/stella-sora/upgrades/magic-sound-game-cartridge.png';
+
+// Skill materials - Ignis
+import shooterGameCartridge from '../../assets/images/games/stella-sora/upgrades/shooter-game-cartridge.png';
+import barrageGameCartridge from '../../assets/images/games/stella-sora/upgrades/barrage-game-cartridge.png';
+import demonBeeGameCartridge from '../../assets/images/games/stella-sora/upgrades/demon-bee-game-cartridge.png';
+
+// Skill materials - Umbra
+import kungFuGameCartridge from '../../assets/images/games/stella-sora/upgrades/kung-fu-game-cartridge.png';
+import fightingGameCartridge from '../../assets/images/games/stella-sora/upgrades/fighting-game-cartridge.png';
+import phantomGameCartridge from '../../assets/images/games/stella-sora/upgrades/phantom-game-cartridge.png';
+
+// Disc upgrade materials - Type 1: Eerie
+import eerieBreath from '../../assets/images/games/stella-sora/upgrades/item_21071.png';
+import phantomStepRemnant from '../../assets/images/games/stella-sora/upgrades/item_21072.png';
+import frenziedWaltzEssence from '../../assets/images/games/stella-sora/upgrades/item_21073.png';
+
+// Disc upgrade materials - Type 2: Duloos
+import duloosBreath from '../../assets/images/games/stella-sora/upgrades/item_21081.png';
+import duloosSoulRemnant from '../../assets/images/games/stella-sora/upgrades/item_21082.png';
+import duloosEssence from '../../assets/images/games/stella-sora/upgrades/item_21083.png';
+
+// Disc upgrade materials - Type 3: Faint Light
+import faintLightBreath from '../../assets/images/games/stella-sora/upgrades/item_21091.png';
+import emberfliesSoul from '../../assets/images/games/stella-sora/upgrades/item_21092.png';
+import flameLightEssence from '../../assets/images/games/stella-sora/upgrades/item_21093.png';
+
+// Currency
+import dorra from '../../assets/images/games/stella-sora/upgrades/dorra.png';
+
+// Centralized upgrade image mapping by item ID
+const upgradeImageMapById: Record<number, ImageMetadata> = {
+  // Level-up materials - Ventus
+  20071: backstageRaggedHat,
+  20072: spotlightBowler,
+  20073: exeuntBowler,
+
+  // Level-up materials - Ignis
+  20081: countsRewards,
+  20082: countsCellaring,
+  20083: countsGift,
+
+  // Level-up materials - Umbra
+  20091: faintWick,
+  20092: lumenEssence,
+  20093: eternalGloomCore,
+
+  // Boss materials
+  20003: forestElfFang,
+  20013: crimsonTempter,
+  20023: colossusCore,
+  20043: wrathBeauty,
+  20053: radiantFeatherCrown,
+  20063: nightlitHaven,
+
+  // Essence materials
+  21003: forestElfEssence,
+  21013: evilBloomEssence,
+  21023: colossusEssence,
+  21043: windEssence,
+  21053: radiantCrownEssence,
+  21063: tidalEssence,
+
+  // Skill materials
+  32000: chessPieceOfSkill,
+  32001: tappingGameCartridge,
+  32002: rhythmGameCartridge,
+  32003: magicSoundGameCartridge,
+  32011: shooterGameCartridge,
+  32012: barrageGameCartridge,
+  32013: demonBeeGameCartridge,
+  32021: kungFuGameCartridge,
+  32022: fightingGameCartridge,
+  32023: phantomGameCartridge,
+
+  // Disc upgrade materials - Eerie
+  21071: eerieBreath,
+  21072: phantomStepRemnant,
+  21073: frenziedWaltzEssence,
+
+  // Disc upgrade materials - Duloos
+  21081: duloosBreath,
+  21082: duloosSoulRemnant,
+  21083: duloosEssence,
+
+  // Disc upgrade materials - Faint Light
+  21091: faintLightBreath,
+  21092: emberfliesSoul,
+  21093: flameLightEssence,
+
+  // Currency
+  1: dorra,
+};
+
+// Mapping by item name (for convenience)
+const upgradeImageMapByName: Record<string, ImageMetadata> = {
+  // Level-up materials - Ventus
+  'Backstage Ragged Hat': backstageRaggedHat,
+  'Spotlight Bowler': spotlightBowler,
+  'Exeunt Bowler': exeuntBowler,
+
+  // Level-up materials - Ignis
+  "Count's Rewards": countsRewards,
+  "Count's Cellaring": countsCellaring,
+  "Count's Gift": countsGift,
+
+  // Level-up materials - Umbra
+  'Faint Wick': faintWick,
+  'Lumen Essence': lumenEssence,
+  'Eternal Gloom Core': eternalGloomCore,
+
+  // Boss materials
+  'Forest Elf Fang': forestElfFang,
+  'Crimson Tempter': crimsonTempter,
+  'Colossus Core': colossusCore,
+  'Wrath Beauty': wrathBeauty,
+  'Radiant Feather Crown': radiantFeatherCrown,
+  'Nightlit Haven': nightlitHaven,
+
+  // Essence materials
+  'Forest Elf Essence': forestElfEssence,
+  'Evil Bloom Essence': evilBloomEssence,
+  'Colossus Essence': colossusEssence,
+  'Wind Essence': windEssence,
+  'Radiant Crown Essence': radiantCrownEssence,
+  'Tidal Essence': tidalEssence,
+
+  // Skill materials
+  'Chess Piece of Skill': chessPieceOfSkill,
+  'Tapping Game Cartridge': tappingGameCartridge,
+  'Rhythm Game Cartridge': rhythmGameCartridge,
+  'Magic Sound Game Cartridge': magicSoundGameCartridge,
+  'Shooter Game Cartridge': shooterGameCartridge,
+  'Barrage Game Cartridge': barrageGameCartridge,
+  'Demon Bee Game Cartridge': demonBeeGameCartridge,
+  'Kung Fu Game Cartridge': kungFuGameCartridge,
+  'Fighting Game Cartridge': fightingGameCartridge,
+  'Phantom Game Cartridge': phantomGameCartridge,
+
+  // Disc upgrade materials - Eerie
+  'Eerie Breath': eerieBreath,
+  'Phantom Step Remnant': phantomStepRemnant,
+  'Frenzied Waltz Essence': frenziedWaltzEssence,
+
+  // Disc upgrade materials - Duloos
+  'Duloos Breath': duloosBreath,
+  'Duloos Soul Remnant': duloosSoulRemnant,
+  'Duloos Essence': duloosEssence,
+
+  // Disc upgrade materials - Faint Light
+  'Faint Light Breath': faintLightBreath,
+  'Emberflies Soul': emberfliesSoul,
+  'Flame Light Essence': flameLightEssence,
+
+  // Currency
+  'Dorra': dorra,
+};
+
+export interface Props {
+  itemId?: number;
+  itemName?: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { itemId, itemName, alt, class: className = '', width = 48, height = 48 } = Astro.props;
+
+// Get the imported image object from the map (by ID or by name)
+let imageSrc: ImageMetadata | undefined;
+let displayName = '';
+
+if (itemId) {
+  imageSrc = upgradeImageMapById[itemId];
+  displayName = alt || `Item ${itemId}`;
+} else if (itemName) {
+  imageSrc = upgradeImageMapByName[itemName];
+  displayName = alt || itemName;
+}
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={displayName}
+    width={width}
+    height={height}
+    class={`${className} upgrade-img`}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+) : (
+  <span class={`${className} upgrade-placeholder`} title={displayName}>{displayName}</span>
+)}
+
+<style>
+  .upgrade-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .upgrade-placeholder {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #888;
+  }
+</style>

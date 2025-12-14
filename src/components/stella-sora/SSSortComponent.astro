@@ -7,6 +7,11 @@
   <div class="sort-section">
     <h3 class="sort-title">Sort By</h3>
     <div class="sort-controls">
+      <button class="sort-btn" data-sort="rarity">
+        Rarity
+        <span class="sort-arrow"></span>
+      </button>
+
       <button class="sort-btn" data-sort="name">
         Name
         <span class="sort-arrow"></span>
@@ -224,6 +229,15 @@
       let valueA, valueB;
 
       switch (sortKey) {
+        case 'rarity':
+          const rarityOrder = { '5-Star': 0, '4-Star': 1, '3-Star': 2 };
+          const rarityA = a.dataset.rarity || '';
+          const rarityB = b.dataset.rarity || '';
+          valueA = rarityOrder[rarityA] ?? 99;
+          valueB = rarityOrder[rarityB] ?? 99;
+          // For rarity: desc = highest first (5-Star), asc = lowest first (3-Star)
+          return currentSortDirection === 'asc' ? valueB - valueA : valueA - valueB;
+
         case 'name':
           const nameElementA = a.querySelector('.character-name');
           const nameElementB = b.querySelector('.character-name');
@@ -308,16 +322,15 @@
         originalRows[index].style.display !== 'none'
     );
 
-    // Sort alphabetically by name
+    // Sort by rarity (default order) - 5-Star first
+    const rarityOrder = { '5-Star': 0, '4-Star': 1, '3-Star': 2 };
     const sortedRows = visibleRows.sort((a, b) => {
       // Safety checks for elements
       if (!a || !b) return 0;
 
-      const nameElementA = a.querySelector('.character-name');
-      const nameElementB = b.querySelector('.character-name');
-      const nameA = nameElementA?.textContent || '';
-      const nameB = nameElementB?.textContent || '';
-      return nameA.localeCompare(nameB);
+      const rarityA = a.dataset.rarity || '';
+      const rarityB = b.dataset.rarity || '';
+      return (rarityOrder[rarityA] ?? 99) - (rarityOrder[rarityB] ?? 99);
     });
 
     const sortedCards = sortedRows
@@ -330,10 +343,11 @@
     // Re-append sorted content
     if (tableBody) {
       tableBody.innerHTML = '';
-      sortedRows.forEach(row => tableBody.appendChild(row));
-      if (typeof (window as any).renumberRows === 'function') {
-        (window as any).renumberRows();
-      }
+      sortedRows.forEach((row, index) => {
+        const numberCell = row.querySelector('td:first-child');
+        if (numberCell) numberCell.textContent = String(index + 1);
+        tableBody.appendChild(row);
+      });
     }
     if (mobileCardsContainer) {
       mobileCardsContainer.innerHTML = '';
@@ -360,16 +374,54 @@
 
     // Clear sort session storage
     try {
-      sessionStorage.removeItem('ss-character-sort');
+      sessionStorage.removeItem('ss-character-sort-v2');
     } catch (_error) {
       // Ignore storage errors
+    }
+
+    // Re-sort by rarity (default order) - 5-Star first
+    const rarityOrder = { '5-Star': 0, '4-Star': 1, '3-Star': 2 };
+
+    // Get all rows and cards
+    const allRows = [...originalRows];
+    const allCards = [...originalCards];
+
+    // Sort by rarity
+    const sortedIndices = allRows
+      .map((row, index) => ({ row, index, rarity: row?.dataset?.rarity || '' }))
+      .sort((a, b) => (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99))
+      .map(item => item.index);
+
+    // Re-append in sorted order
+    if (tableBody) {
+      tableBody.innerHTML = '';
+      sortedIndices.forEach((originalIndex, newIndex) => {
+        const row = allRows[originalIndex];
+        if (row) {
+          row.style.display = '';
+          const numberCell = row.querySelector('td:first-child');
+          if (numberCell) numberCell.textContent = String(newIndex + 1);
+          tableBody.appendChild(row);
+        }
+      });
+    }
+
+    if (mobileCardsContainer) {
+      mobileCardsContainer.innerHTML = '';
+      sortedIndices.forEach((originalIndex) => {
+        const card = allCards[originalIndex];
+        if (card) {
+          card.style.display = '';
+          mobileCardsContainer.appendChild(card);
+        }
+      });
     }
   }
 
   function saveSortState() {
     try {
       sessionStorage.setItem(
-        'ss-character-sort',
+        'ss-character-sort-v2',
         JSON.stringify({
           key: currentSortKey,
           direction: currentSortDirection,
@@ -383,7 +435,7 @@
   function restoreState() {
     // Restore sort state
     try {
-      const savedSort = sessionStorage.getItem('ss-character-sort');
+      const savedSort = sessionStorage.getItem('ss-character-sort-v2');
       if (savedSort) {
         const sortState = JSON.parse(savedSort);
         // Only restore if we have valid saved state
@@ -393,13 +445,13 @@
           applySort(currentSortKey);
         } else {
           // Clear invalid session storage
-          sessionStorage.removeItem('ss-character-sort');
+          sessionStorage.removeItem('ss-character-sort-v2');
         }
       }
     } catch (_error) {
       // Clear corrupted session storage
       try {
-        sessionStorage.removeItem('ss-character-sort');
+        sessionStorage.removeItem('ss-character-sort-v2');
       } catch (_cleanupError) {
         // Ignore cleanup errors
       }

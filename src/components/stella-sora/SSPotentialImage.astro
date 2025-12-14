@@ -1,0 +1,198 @@
+---
+// Stella Sora Potential Image Component
+// Dynamically loads potential images based on character name
+import { Image } from 'astro:assets';
+
+// Import potential background images for rarity display
+import bgRarity4 from '../../assets/images/games/stella-sora/potentials/bg-4.png';
+import bgRarity5 from '../../assets/images/games/stella-sora/potentials/bg-5.png';
+import bgRarity6 from '../../assets/images/games/stella-sora/potentials/bg-6.png';
+import bgRarity7 from '../../assets/images/games/stella-sora/potentials/bg-7.png';
+import bgRarity8 from '../../assets/images/games/stella-sora/potentials/bg-8.png';
+import bgRarity9 from '../../assets/images/games/stella-sora/potentials/bg-9.png';
+
+const bgMap: Record<number, ImageMetadata> = {
+  1: bgRarity5, // Core potentials
+  2: bgRarity6, // Enhanced potentials
+  3: bgRarity7,
+  4: bgRarity4,
+  5: bgRarity8,
+  6: bgRarity9,
+};
+
+export interface Props {
+  characterName: string;
+  potentialName: string;
+  icon?: string;
+  rarity?: number;
+  alt?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  characterName,
+  potentialName,
+  icon,
+  rarity = 1,
+  alt,
+  width = 80,
+  height = 80,
+  loading = 'lazy',
+  class: className,
+} = Astro.props;
+
+// Import all potential images dynamically
+type ImageModule = { default: any } | undefined;
+const imageModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/potential/**/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+// Helper to convert potential name to filename format (snake_case with lowercase)
+function nameToFilename(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/['']/g, "'") // Normalize apostrophes
+    .replace(/'/g, "'s") // Handle possessive
+    .replace(/\s+/g, '_') // Spaces to underscores
+    .replace(/[^a-z0-9_]/g, '') // Remove special chars except underscore
+    .replace(/_+/g, '_') // Remove double underscores
+    .replace(/^_|_$/g, ''); // Remove leading/trailing underscores
+}
+
+// Try to find the potential image
+let imageModule: ImageModule = undefined;
+
+// Build potential path
+const charFolder = characterName.charAt(0).toUpperCase() + characterName.slice(1);
+const potentialFilename = nameToFilename(potentialName);
+
+// Try different extensions
+const extensions = ['jpg', 'png', 'webp', 'jpeg'];
+
+for (const ext of extensions) {
+  const imagePath = `/src/assets/images/games/stella-sora/potential/${charFolder}/${potentialFilename}.${ext}`;
+  if (imageModules[imagePath]) {
+    imageModule = imageModules[imagePath];
+    break;
+  }
+}
+
+// If not found, try case-insensitive search
+if (!imageModule) {
+  const searchFilename = potentialFilename.toLowerCase();
+  for (const [key, value] of Object.entries(imageModules)) {
+    const keyParts = key.split('/');
+    const folder = keyParts[keyParts.length - 2];
+    const filename = keyParts[keyParts.length - 1].split('.')[0].toLowerCase();
+
+    if (folder.toLowerCase() === charFolder.toLowerCase() && filename === searchFilename) {
+      imageModule = value;
+      break;
+    }
+  }
+}
+
+// If still not found, try partial match
+if (!imageModule) {
+  const searchTerms = potentialFilename.split('_');
+  for (const [key, value] of Object.entries(imageModules)) {
+    const keyParts = key.split('/');
+    const folder = keyParts[keyParts.length - 2];
+    const filename = keyParts[keyParts.length - 1].split('.')[0].toLowerCase();
+
+    if (folder.toLowerCase() === charFolder.toLowerCase()) {
+      // Check if all search terms appear in the filename
+      const allTermsFound = searchTerms.every(term => filename.includes(term));
+      if (allTermsFound) {
+        imageModule = value;
+        break;
+      }
+    }
+  }
+}
+
+const bgSrc = bgMap[rarity] || bgMap[1];
+const imageSrc = imageModule?.default;
+const imageAlt = alt || `${potentialName} - ${characterName} potential`;
+---
+
+<div class={`potential-image-wrapper ${className || ''}`}>
+  <Image
+    src={bgSrc}
+    alt=""
+    width={width}
+    height={height}
+    class="potential-bg"
+    loading={loading}
+    format="webp"
+    quality={90}
+  />
+  {imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      width={width - 16}
+      height={height - 16}
+      loading={loading}
+      class="potential-icon"
+      quality={95}
+      format="webp"
+    />
+  ) : (
+    <div class="potential-placeholder">
+      <span class="placeholder-initial">{potentialName.charAt(0)}</span>
+    </div>
+  )}
+</div>
+
+<style>
+  .potential-image-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .potential-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .potential-icon {
+    position: relative;
+    z-index: 1;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .potential-placeholder {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .placeholder-initial {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+  }
+</style>

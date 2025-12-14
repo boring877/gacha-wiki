@@ -1,0 +1,177 @@
+---
+// Stella Sora Disc Skill Image Component
+// Displays disc skill icons from the disc-skills folder with optional background
+
+import { Image } from 'astro:assets';
+
+export interface Props {
+  iconName: string;
+  iconBackground?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  quality?: number;
+}
+
+const {
+  iconName,
+  iconBackground,
+  alt,
+  width = 48,
+  height = 48,
+  loading = 'lazy',
+  class: className,
+  quality = 95,
+} = Astro.props;
+
+// Import all disc skill images from src/assets
+type ImageModule = { default: any } | undefined;
+const imageModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/disc-skills/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
+// Build the icon image path
+let iconKey = iconName;
+if (!iconKey.includes('.')) {
+  iconKey = `${iconKey}.png`;
+}
+const iconPath = `/src/assets/images/games/stella-sora/disc-skills/${iconKey}`;
+const iconModule = imageModules[iconPath];
+
+let iconSrc: any;
+let imageAlt = alt || iconName;
+if (iconModule?.default) {
+  iconSrc = iconModule.default;
+} else {
+  iconSrc = '';
+  imageAlt = `Image not found: ${alt || iconName}`;
+}
+
+// Build the background image path if provided
+let bgSrc: any = null;
+if (iconBackground) {
+  let bgKey = iconBackground;
+  if (!bgKey.includes('.')) {
+    bgKey = `${bgKey}.png`;
+  }
+  const bgPath = `/src/assets/images/games/stella-sora/disc-skills/${bgKey}`;
+  const bgModule = imageModules[bgPath];
+  if (bgModule?.default) {
+    bgSrc = bgModule.default;
+  }
+}
+
+const hasBackground = bgSrc !== null;
+---
+
+{
+  hasBackground ? (
+    <div class={`disc-skill-with-bg ${className || ''}`} style={`width: ${width}px; height: ${height}px;`}>
+      <Image
+        src={bgSrc}
+        alt=""
+        width={width * 2}
+        height={height * 2}
+        loading={loading}
+        class="disc-skill-bg"
+        quality={quality}
+        format="webp"
+      />
+      {iconSrc ? (
+        <Image
+          src={iconSrc}
+          alt={imageAlt}
+          width={width * 2}
+          height={height * 2}
+          loading={loading}
+          class="disc-skill-icon"
+          quality={quality}
+          format="webp"
+        />
+      ) : (
+        <div class="disc-skill-icon-placeholder">
+          <span>?</span>
+        </div>
+      )}
+    </div>
+  ) : iconSrc ? (
+    <Image
+      src={iconSrc}
+      alt={imageAlt}
+      width={width * 2}
+      height={height * 2}
+      loading={loading}
+      class={`disc-skill-image ${className || ''}`}
+      style={`width: ${width}px; height: ${height}px;`}
+      quality={quality}
+      format="webp"
+    />
+  ) : (
+    <div
+      class={`disc-skill-image-placeholder ${className || ''}`}
+      style={`width: ${width}px; height: ${height}px;`}
+    >
+      <span>?</span>
+    </div>
+  )
+}
+
+<style>
+  .disc-skill-with-bg {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .disc-skill-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .disc-skill-icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  .disc-skill-icon-placeholder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ss-text-secondary, #888);
+    font-size: 0.75rem;
+    z-index: 1;
+  }
+
+  .disc-skill-image {
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
+  .disc-skill-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ss-bg-tertiary, #1a1a2e);
+    border: 1px solid var(--ss-border, #333);
+    border-radius: 6px;
+    color: var(--ss-text-secondary, #888);
+    font-size: 0.75rem;
+  }
+</style>

@@ -1,0 +1,634 @@
+/* Stella Sora Disc Upgrades Page Styles
+ * Styles for the disc upgrades database page
+ */
+
+/* Main Container */
+.disc-upgrades-index {
+  padding: var(--ss-spacing-xl) 0;
+}
+
+/* Summary Section */
+.disc-upgrades-summary {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.disc-upgrades-summary h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--ss-spacing-md);
+}
+
+.summary-stat {
+  text-align: center;
+  padding: var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+}
+
+.summary-stat-value {
+  font-size: 1.5rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Filter Section */
+.disc-upgrades-filters {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  margin-bottom: var(--ss-spacing-xl);
+}
+
+.disc-upgrades-filters h2 {
+  font-size: 1.25rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  min-width: 150px;
+  min-height: 44px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.filter-group select {
+  cursor: pointer;
+}
+
+.filter-group input[type="text"] {
+  min-width: 200px;
+}
+
+.filter-group input[type="text"]::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--ss-border);
+}
+
+.clear-filters-btn {
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Disc Upgrades Grid */
+.disc-upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--ss-spacing-lg);
+  align-items: start;
+}
+
+/* Disc Upgrade Card */
+.disc-upgrade-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: var(--ss-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Rarity border colors */
+.disc-upgrade-card.rarity-3 {
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.disc-upgrade-card.rarity-4 {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.disc-upgrade-card.rarity-5 {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Card Header */
+.disc-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--ss-radius-md);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--ss-bg-tertiary);
+}
+
+.disc-icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.disc-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.disc-card-name {
+  font-size: 1.125rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  margin: 0 0 var(--ss-spacing-xs) 0;
+  word-wrap: break-word;
+}
+
+.disc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  align-items: center;
+}
+
+.disc-meta-badge {
+  padding: 4px 8px;
+  border-radius: var(--ss-radius-sm);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-medium);
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.disc-meta-badge.element {
+  background: rgba(100, 100, 100, 0.2);
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.disc-meta-badge.element img {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.disc-meta-badge.element-none {
+  background: rgba(120, 120, 120, 0.2);
+  color: var(--ss-text-muted);
+}
+
+/* Total Materials Section */
+.disc-totals-section {
+  background: var(--ss-bg-tertiary);
+  border-radius: var(--ss-radius-md);
+  padding: var(--ss-spacing-md);
+  margin-bottom: var(--ss-spacing-md);
+}
+
+.disc-totals-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-totals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-sm);
+}
+
+.disc-total-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-xs);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+}
+
+.disc-total-item img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.disc-total-qty {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-primary);
+}
+
+.disc-total-dorra {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-xs);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+}
+
+.disc-total-dorra img {
+  width: 24px;
+  height: 24px;
+}
+
+.disc-total-dorra span {
+  font-size: 0.875rem;
+  font-weight: var(--ss-font-semibold);
+  color: #fbbf24;
+}
+
+/* Upgrade Levels Section */
+.disc-upgrades-section {
+  margin-top: auto;
+}
+
+.disc-upgrades-label {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  color: var(--ss-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--ss-spacing-sm);
+}
+
+.disc-upgrade-levels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-xs);
+}
+
+.disc-upgrade-level {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
+  background: var(--ss-bg-secondary);
+  border-radius: var(--ss-radius-sm);
+  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
+}
+
+.upgrade-level-num {
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-bold);
+  color: var(--ss-accent);
+  min-width: 24px;
+}
+
+.upgrade-level-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ss-spacing-xs);
+  flex: 1;
+}
+
+.upgrade-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+}
+
+.upgrade-item img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.upgrade-item-qty {
+  font-weight: var(--ss-font-medium);
+}
+
+.upgrade-level-cost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #fbbf24;
+  margin-left: auto;
+}
+
+.upgrade-level-cost img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Toggle Button */
+.toggle-details-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ss-spacing-xs);
+  width: 100%;
+  padding: var(--ss-spacing-sm);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  color: var(--ss-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-top: var(--ss-spacing-sm);
+}
+
+.toggle-details-btn.expanded .arrow {
+  transform: rotate(180deg);
+}
+
+.disc-upgrade-levels.collapsed {
+  display: none;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: var(--ss-spacing-xl);
+  color: var(--ss-text-muted);
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .disc-upgrades-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .disc-upgrades-index {
+    padding: var(--ss-spacing-lg) var(--ss-spacing-sm);
+  }
+
+  .disc-upgrades-filters,
+  .disc-upgrades-summary {
+    padding: var(--ss-spacing-md);
+  }
+
+  .filter-row {
+    flex-direction: column;
+    gap: var(--ss-spacing-sm);
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-group select,
+  .filter-group input[type="text"] {
+    width: 100%;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  .disc-upgrades-grid {
+    grid-template-columns: 1fr;
+    gap: var(--ss-spacing-md);
+  }
+
+  .disc-upgrade-card {
+    padding: var(--ss-spacing-md);
+  }
+
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .disc-totals-grid {
+    gap: var(--ss-spacing-xs);
+  }
+
+  .disc-total-item {
+    padding: 4px 6px;
+  }
+
+  .disc-total-item img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .disc-total-qty {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .disc-upgrades-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .disc-card-header {
+    gap: var(--ss-spacing-sm);
+  }
+
+  .disc-icon-container {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .disc-upgrades-index {
+    padding: var(--ss-spacing-sm) var(--ss-spacing-xs);
+  }
+
+  .disc-upgrades-filters,
+  .disc-upgrades-summary {
+    padding: var(--ss-spacing-sm);
+    margin-bottom: var(--ss-spacing-md);
+  }
+
+  .disc-upgrade-card {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-icon-container {
+    width: 52px;
+    height: 52px;
+  }
+
+  .disc-card-name {
+    font-size: 0.95rem;
+  }
+
+  .disc-card-meta {
+    gap: 4px;
+  }
+
+  .disc-meta-badge {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+
+  .disc-meta-badge.element img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .disc-totals-section {
+    padding: var(--ss-spacing-sm);
+  }
+
+  .disc-totals-label {
+    font-size: 0.7rem;
+  }
+
+  .disc-totals-grid {
+    gap: 4px;
+  }
+
+  .disc-total-item {
+    padding: 3px 5px;
+  }
+
+  .disc-total-item img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .disc-total-qty {
+    font-size: 0.7rem;
+  }
+
+  .disc-total-dorra {
+    padding: 3px 5px;
+  }
+
+  .disc-total-dorra img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .disc-total-dorra span {
+    font-size: 0.75rem;
+  }
+
+  .disc-upgrade-level {
+    flex-wrap: wrap;
+    padding: var(--ss-spacing-xs);
+  }
+
+  .upgrade-level-num {
+    font-size: 0.7rem;
+    min-width: 20px;
+  }
+
+  .upgrade-item img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .upgrade-item-qty {
+    font-size: 0.7rem;
+  }
+
+  .upgrade-level-cost {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: var(--ss-spacing-xs);
+    font-size: 0.7rem;
+  }
+
+  .upgrade-level-cost img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .toggle-details-btn {
+    padding: var(--ss-spacing-xs);
+    font-size: 0.8rem;
+  }
+
+  .summary-stat-value {
+    font-size: 1.25rem;
+  }
+
+  .summary-stat-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .toggle-details-btn {
+    min-height: 48px;
+  }
+
+  .clear-filters-btn {
+    min-height: 48px;
+  }
+
+  .filter-group select,
+  .filter-group input[type="text"] {
+    min-height: 48px;
+  }
+}

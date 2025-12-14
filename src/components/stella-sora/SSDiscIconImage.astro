@@ -1,0 +1,50 @@
+---
+// Stella Sora Disc Icon Image Component
+import { Image } from 'astro:assets';
+
+// Dynamically import all disc icon images
+const discIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/stella-sora/discs/*/icon.png',
+  { eager: true }
+);
+
+// Create a map from disc slug to icon image
+const discIconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(discIcons)) {
+  // Extract disc slug from path: ../../assets/images/games/stella-sora/discs/disc-name/icon.png
+  const match = path.match(/discs\/([^/]+)\/icon\.png$/);
+  if (match) {
+    discIconMap[match[1]] = module.default;
+  }
+}
+
+export interface Props {
+  discSlug: string;
+  alt?: string;
+  class?: string;
+  width?: number;
+  height?: number;
+}
+
+const { discSlug, alt, class: className = '', width = 48, height = 48 } = Astro.props;
+
+// Get the imported icon image from the map
+const imageSrc = discIconMap[discSlug];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt || `${discSlug} icon`}
+    width={width}
+    height={height}
+    class={className}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+) : (
+  <div class={`disc-icon-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    {discSlug}
+  </div>
+)}

@@ -1,0 +1,666 @@
+---
+// Stella Sora Character Gift Database Page
+// Lists all characters with their gift preferences
+
+import CharacterGiftLayout from '../../../layouts/stella-sora/CharacterGiftLayout.astro';
+import SSGiftImage from '../../../components/stella-sora/SSGiftImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
+import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
+import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import { giftPreferences, getAllCharacterNames } from '../../../data/stella-sora/gift-preferences.js';
+import { getGiftByName, pointValues } from '../../../data/stella-sora/gifts.js';
+import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
+
+// Get all character names from gift preferences
+const characterNames = getAllCharacterNames();
+
+// Build character data with their gift preferences and character info
+const charactersWithGifts = characterNames.map(name => {
+  const prefs = giftPreferences[name];
+  const characterData = STELLA_SORA_CHARACTERS.find(c => c.name === name);
+
+  // Get full gift data for loves, hates, and neutrals
+  const lovedGifts = prefs.loves.map(giftName => getGiftByName(giftName)).filter(Boolean);
+  const hatedGifts = prefs.hates.map(giftName => getGiftByName(giftName)).filter(Boolean);
+  const neutralGifts = prefs.neutral.map(giftName => getGiftByName(giftName)).filter(Boolean);
+
+  return {
+    name,
+    slug: characterData?.slug || name.toLowerCase().replace(/\s+/g, '-'),
+    element: characterData?.element || 'Unknown',
+    rarity: characterData?.rarity || '4-Star',
+    image: characterData?.image || name.toLowerCase(),
+    loves: lovedGifts,
+    hates: hatedGifts,
+    neutrals: neutralGifts,
+    lovesCount: lovedGifts.length,
+    hatesCount: hatedGifts.length,
+    neutralsCount: neutralGifts.length
+  };
+}).sort((a, b) => a.name.localeCompare(b.name));
+
+// Affinity level categories (grouped by points per level)
+const affinityCategories = [
+  { range: 'Lv. 1', pointsPerLevel: 200, levels: 1, totalAtEnd: 200 },
+  { range: 'Lv. 2', pointsPerLevel: 300, levels: 1, totalAtEnd: 500 },
+  { range: 'Lv. 3', pointsPerLevel: 500, levels: 1, totalAtEnd: 1000 },
+  { range: 'Lv. 4', pointsPerLevel: 900, levels: 1, totalAtEnd: 1900 },
+  { range: 'Lv. 5-9', pointsPerLevel: 1000, levels: 5, totalAtEnd: 6900 },
+  { range: 'Lv. 10-14', pointsPerLevel: 2000, levels: 5, totalAtEnd: 16900 },
+  { range: 'Lv. 15-19', pointsPerLevel: 4000, levels: 5, totalAtEnd: 36900 },
+  { range: 'Lv. 20-24', pointsPerLevel: 8000, levels: 5, totalAtEnd: 76900 },
+  { range: 'Lv. 25-29', pointsPerLevel: 16000, levels: 5, totalAtEnd: 156900 },
+  { range: 'Lv. 30-34', pointsPerLevel: 32000, levels: 5, totalAtEnd: 316900 },
+  { range: 'Lv. 35-39', pointsPerLevel: 64000, levels: 5, totalAtEnd: 636900 },
+  { range: 'Lv. 40-42', pointsPerLevel: 128000, levels: 3, totalAtEnd: 1020900 },
+];
+
+// Affinity stat bonuses
+const affinityStats = {
+  perLevel: { atk: 36, hp: 334 },
+  maxLevel: 42,
+  totalAtk: 36 * 42, // 1,512 ATK
+  totalHp: 334 * 42, // 14,028 HP
+  atkBonusLevels: [5, 10, 15, 20, 25, 30], // Levels that give 4% ATK bonus
+  atkBonusPercent: 4,
+  totalAtkBonus: 4 * 6, // 24% ATK total
+};
+
+// Level 30 stats
+const lv30Stats = {
+  level: 30,
+  atk: 36 * 30, // 1,080 ATK
+  hp: 334 * 30, // 10,020 HP
+  atkBonus: 4 * 6, // 24% ATK (all 6 milestones at 5, 10, 15, 20, 25, 30)
+};
+
+// Calculate gifts needed and days for each gift type
+const dailyGiftLimit = 10;
+
+// Helper to calculate gifts needed
+function calculateGiftsNeeded(totalPoints: number, pointsPerGift: number) {
+  return Math.ceil(totalPoints / pointsPerGift);
+}
+
+// Helper to calculate days needed
+function calculateDaysNeeded(giftsNeeded: number) {
+  return Math.ceil(giftsNeeded / dailyGiftLimit);
+}
+
+// Max level total points
+const maxLevelPoints = 1020900;
+
+// Level 30 total points (cost-efficient target)
+const level30Points = 316900;
+
+// Gift calculations for max level (42)
+const giftCalculations = {
+  '3star': {
+    loved: { gifts: calculateGiftsNeeded(maxLevelPoints, 225), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 225)) },
+    neutral: { gifts: calculateGiftsNeeded(maxLevelPoints, 150), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 150)) },
+    hated: { gifts: calculateGiftsNeeded(maxLevelPoints, 120), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 120)) },
+  },
+  '4star': {
+    loved: { gifts: calculateGiftsNeeded(maxLevelPoints, 750), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 750)) },
+    neutral: { gifts: calculateGiftsNeeded(maxLevelPoints, 500), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 500)) },
+    hated: { gifts: calculateGiftsNeeded(maxLevelPoints, 400), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 400)) },
+  },
+  '5star': {
+    loved: { gifts: calculateGiftsNeeded(maxLevelPoints, 3000), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 3000)) },
+    neutral: { gifts: calculateGiftsNeeded(maxLevelPoints, 2000), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 2000)) },
+    hated: { gifts: calculateGiftsNeeded(maxLevelPoints, 1600), days: calculateDaysNeeded(calculateGiftsNeeded(maxLevelPoints, 1600)) },
+  },
+};
+
+// Gift calculations for level 30 (cost-efficient target)
+const giftCalculationsLv30 = {
+  '3star': {
+    loved: { gifts: calculateGiftsNeeded(level30Points, 225), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 225)) },
+    neutral: { gifts: calculateGiftsNeeded(level30Points, 150), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 150)) },
+    hated: { gifts: calculateGiftsNeeded(level30Points, 120), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 120)) },
+  },
+  '4star': {
+    loved: { gifts: calculateGiftsNeeded(level30Points, 750), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 750)) },
+    neutral: { gifts: calculateGiftsNeeded(level30Points, 500), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 500)) },
+    hated: { gifts: calculateGiftsNeeded(level30Points, 400), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 400)) },
+  },
+  '5star': {
+    loved: { gifts: calculateGiftsNeeded(level30Points, 3000), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 3000)) },
+    neutral: { gifts: calculateGiftsNeeded(level30Points, 2000), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 2000)) },
+    hated: { gifts: calculateGiftsNeeded(level30Points, 1600), days: calculateDaysNeeded(calculateGiftsNeeded(level30Points, 1600)) },
+  },
+};
+
+const title = 'Stella Sora Character Gift Guide';
+const description = 'Complete character gift preference guide for Stella Sora. Find which gifts each character loves and hates to maximize affection points.';
+const gameTitle = 'Character Gift Guide';
+---
+
+<CharacterGiftLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="character-gifts-index">
+    <!-- Introduction Section -->
+    <div class="gifts-intro">
+      <h2>Character Gift Preferences</h2>
+      <p>Each character has unique gift preferences. Give them gifts they <span class="text-loved">love</span> for bonus affection points, and avoid gifts they <span class="text-hated">hate</span> to prevent point penalties.</p>
+
+      <div class="gifts-legend">
+        <div class="legend-item loved">
+          <span class="legend-label">Loved</span>
+          <span class="legend-text">+50% bonus</span>
+        </div>
+        <div class="legend-item neutral">
+          <span class="legend-label">Neutral</span>
+          <span class="legend-text">Base points</span>
+        </div>
+        <div class="legend-item hated">
+          <span class="legend-label">Hated</span>
+          <span class="legend-text">-20% penalty</span>
+        </div>
+      </div>
+
+      <div class="daily-limit-note">
+        <strong>Daily Limit:</strong> You can only give <span class="highlight">10 gifts per day</span> to each character.
+      </div>
+    </div>
+
+    <!-- Affinity Level Requirements -->
+    <div class="affinity-section">
+      <h2>Affinity Level Requirements</h2>
+      <p class="section-desc">Points required per level at each tier. Total: <strong>1,020,900</strong> points to max (Lv. 42).</p>
+
+      <table class="affinity-table">
+        <thead>
+          <tr>
+            <th>Level Range</th>
+            <th>Points/Level</th>
+            <th>Total at End</th>
+          </tr>
+        </thead>
+        <tbody>
+          {affinityCategories.map(cat => (
+            <tr>
+              <td class="level-col">{cat.range}</td>
+              <td class="points-col">{cat.pointsPerLevel.toLocaleString()}</td>
+              <td class="total-col">{cat.totalAtEnd.toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Affinity Stat Rewards -->
+    <div class="affinity-stats-section">
+      <h2>Affinity Stat Rewards</h2>
+      <p class="section-desc">Stats gained from raising affinity levels.</p>
+
+      <div class="cost-efficiency-note">
+        <strong>Tip:</strong> Level 30 is the most cost-efficient target. You get all 6 ATK% bonuses (+24%) while only needing <strong>316,900</strong> points instead of 1,020,900 for max level.
+      </div>
+
+      <div class="stats-rewards-grid">
+        <!-- Per Level Stats -->
+        <div class="stats-card">
+          <div class="stats-card-header">
+            <span class="stats-title">Per Level</span>
+          </div>
+          <div class="stats-card-body">
+            <div class="stat-row">
+              <span class="stat-label">ATK (Base)</span>
+              <span class="stat-value">+{affinityStats.perLevel.atk}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">HP (Base)</span>
+              <span class="stat-value">+{affinityStats.perLevel.hp}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone Bonuses -->
+        <div class="stats-card">
+          <div class="stats-card-header">
+            <span class="stats-title">ATK% Milestones</span>
+          </div>
+          <div class="stats-card-body">
+            <div class="stat-row milestone">
+              <span class="stat-label">Lv. 5, 10, 15, 20, 25, 30</span>
+              <span class="stat-value atk-bonus">+{affinityStats.atkBonusPercent}% ATK each</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Max Level Totals -->
+        <div class="stats-card totals">
+          <div class="stats-card-header">
+            <span class="stats-title">Max Level ({affinityStats.maxLevel}) Totals</span>
+          </div>
+          <div class="stats-card-body">
+            <div class="stat-row">
+              <span class="stat-label">Total ATK (Base)</span>
+              <span class="stat-value total">+{affinityStats.totalAtk.toLocaleString()}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Total HP (Base)</span>
+              <span class="stat-value total">+{affinityStats.totalHp.toLocaleString()}</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Total ATK%</span>
+              <span class="stat-value atk-bonus">+{affinityStats.totalAtkBonus}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Calculator Section -->
+    <div class="gift-calculator-section">
+      <h2>Gifts Needed to Max Affinity (Lv. 42)</h2>
+      <p class="section-desc">Total points needed: <strong>{maxLevelPoints.toLocaleString()}</strong>. Here's how many gifts you need for each type.</p>
+
+      <div class="calculator-grid">
+        <!-- 3-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-3">3-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (225 pts)</span>
+              <span class="calc-value">{giftCalculations['3star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['3star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (150 pts)</span>
+              <span class="calc-value">{giftCalculations['3star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['3star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (120 pts)</span>
+              <span class="calc-value">{giftCalculations['3star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['3star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-4">4-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (750 pts)</span>
+              <span class="calc-value">{giftCalculations['4star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['4star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (500 pts)</span>
+              <span class="calc-value">{giftCalculations['4star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['4star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (400 pts)</span>
+              <span class="calc-value">{giftCalculations['4star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['4star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-5">5-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (3,000 pts)</span>
+              <span class="calc-value">{giftCalculations['5star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['5star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (2,000 pts)</span>
+              <span class="calc-value">{giftCalculations['5star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['5star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (1,600 pts)</span>
+              <span class="calc-value">{giftCalculations['5star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculations['5star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="calc-note">Tip: Always use <span class="text-loved">Loved</span> gifts when possible to minimize days needed!</p>
+    </div>
+
+    <!-- Gift Calculator Section - Level 30 -->
+    <div class="gift-calculator-section lv30">
+      <h2>Gifts Needed for Lv. 30 (Recommended)</h2>
+      <p class="section-desc">Total points needed: <strong>{level30Points.toLocaleString()}</strong>. Get all ATK% bonuses at ~31% of the max level cost.</p>
+
+      <div class="calculator-grid">
+        <!-- 3-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-3">3-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (225 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['3star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['3star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (150 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['3star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['3star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (120 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['3star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['3star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-4">4-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (750 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['4star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['4star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (500 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['4star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['4star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (400 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['4star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['4star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Star Gifts -->
+        <div class="calc-card">
+          <div class="calc-header">
+            <span class="calc-rarity rarity-5">5-Star Gifts</span>
+          </div>
+          <div class="calc-body">
+            <div class="calc-row loved">
+              <span class="calc-label">Loved (3,000 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['5star'].loved.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['5star'].loved.days} days</span>
+            </div>
+            <div class="calc-row neutral">
+              <span class="calc-label">Neutral (2,000 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['5star'].neutral.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['5star'].neutral.days} days</span>
+            </div>
+            <div class="calc-row hated">
+              <span class="calc-label">Hated (1,600 pts)</span>
+              <span class="calc-value">{giftCalculationsLv30['5star'].hated.gifts.toLocaleString()} gifts</span>
+              <span class="calc-days">{giftCalculationsLv30['5star'].hated.days} days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lv.30 Stats Summary -->
+      <div class="lv30-stats-summary">
+        <span class="lv30-stats-title">Stats at Lv. 30:</span>
+        <div class="lv30-stats-row">
+          <span class="lv30-stat">+{lv30Stats.atk.toLocaleString()} ATK</span>
+          <span class="lv30-stat">+{lv30Stats.hp.toLocaleString()} HP</span>
+          <span class="lv30-stat atk-bonus">+{lv30Stats.atkBonus}% ATK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Filter -->
+    <div class="gifts-filter">
+      <div class="filter-group">
+        <label for="element-filter">Filter by Element:</label>
+        <select id="element-filter" class="filter-select">
+          <option value="all">All Elements</option>
+          <option value="ignis">Ignis</option>
+          <option value="aqua">Aqua</option>
+          <option value="terra">Terra</option>
+          <option value="ventus">Ventus</option>
+          <option value="lux">Lux</option>
+          <option value="umbra">Umbra</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="search-filter">Search Character:</label>
+        <input type="text" id="search-filter" class="filter-input" placeholder="Type character name..." />
+      </div>
+    </div>
+
+    <!-- Characters Grid -->
+    <div class="characters-gifts-grid">
+      {charactersWithGifts.map(character => (
+        <div class="character-gift-card" data-element={character.element.toLowerCase()} data-name={character.name.toLowerCase()}>
+          <!-- Character Header -->
+          <div class="character-gift-header">
+            <a href={`/guides/stella-sora/characters/${character.slug}`} class="character-link">
+              <div class="character-avatar">
+                <SSCharacterImage
+                  imageName={character.image}
+                  alt={character.name}
+                  loading="lazy"
+                />
+              </div>
+              <div class="character-info">
+                <h3 class="character-name">{character.name}</h3>
+                <div class="character-meta">
+                  <div class="element-icon">
+                    <SSElementImage elementName={character.element} alt={character.element} />
+                  </div>
+                  <span class={`element-text element-${character.element.toLowerCase()}`}>{character.element}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Gift Preferences -->
+          <div class="character-gift-prefs">
+            <!-- Loved Gifts -->
+            <div class="gift-pref-section loved">
+              <div class="gift-pref-header">
+                <span class="pref-label">Loves</span>
+                <span class="pref-count">{character.lovesCount}</span>
+              </div>
+              <div class="gift-pref-grid">
+                {character.loves.map(gift => (
+                  <div class="gift-item">
+                    <div class="gift-image">
+                      <SSRarityImage
+                        grade={gift.rarity}
+                        type="item"
+                        width={56}
+                        height={56}
+                        class="gift-rarity-bg"
+                      />
+                      <SSGiftImage
+                        giftName={gift.name}
+                        width={48}
+                        height={48}
+                        class="gift-icon"
+                      />
+                    </div>
+                    <div class="gift-details">
+                      <span class="gift-name">{gift.name}</span>
+                      <span class="gift-points loved">{gift.points.loved} pts</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Neutral Gifts -->
+            <div class="gift-pref-section neutral">
+              <div class="gift-pref-header">
+                <span class="pref-label">Neutral</span>
+                <span class="pref-count">{character.neutralsCount}</span>
+              </div>
+              <div class="gift-pref-grid">
+                {character.neutrals.map(gift => (
+                  <div class="gift-item">
+                    <div class="gift-image">
+                      <SSRarityImage
+                        grade={gift.rarity}
+                        type="item"
+                        width={56}
+                        height={56}
+                        class="gift-rarity-bg"
+                      />
+                      <SSGiftImage
+                        giftName={gift.name}
+                        width={48}
+                        height={48}
+                        class="gift-icon"
+                      />
+                    </div>
+                    <div class="gift-details">
+                      <span class="gift-name">{gift.name}</span>
+                      <span class="gift-points neutral">{gift.points.neutral} pts</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Hated Gifts -->
+            {character.hates.length > 0 && (
+              <div class="gift-pref-section hated">
+                <div class="gift-pref-header">
+                  <span class="pref-label">Hates</span>
+                  <span class="pref-count">{character.hatesCount}</span>
+                </div>
+                <div class="gift-pref-grid">
+                  {character.hates.map(gift => (
+                    <div class="gift-item">
+                      <div class="gift-image">
+                        <SSRarityImage
+                          grade={gift.rarity}
+                          type="item"
+                          width={56}
+                          height={56}
+                          class="gift-rarity-bg"
+                        />
+                        <SSGiftImage
+                          giftName={gift.name}
+                          width={48}
+                          height={48}
+                          class="gift-icon"
+                        />
+                      </div>
+                      <div class="gift-details">
+                        <span class="gift-name">{gift.name}</span>
+                        <span class="gift-points hated">{gift.points.hated} pts</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {character.hates.length === 0 && (
+              <div class="gift-pref-section no-hates">
+                <div class="gift-pref-header">
+                  <span class="pref-label">No Hated Gifts</span>
+                </div>
+                <p class="no-hates-text">This character has no disliked gifts.</p>
+              </div>
+            )}
+          </div>
+
+          <!-- View Full Profile Link -->
+          <a href={`/guides/stella-sora/characters/${character.slug}`} class="view-profile-link">
+            View Full Profile
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Points Reference Table -->
+    <div class="points-reference">
+      <h2>Gift Point Reference</h2>
+      <table class="points-ref-table">
+        <thead>
+          <tr>
+            <th>Rarity</th>
+            <th class="loved-col">Loved (+50%)</th>
+            <th class="neutral-col">Neutral</th>
+            <th class="hated-col">Hated (-20%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rarity-col">3-Star</td>
+            <td class="points-loved">{pointValues[3].loved}</td>
+            <td class="points-neutral">{pointValues[3].neutral}</td>
+            <td class="points-hated">{pointValues[3].hated}</td>
+          </tr>
+          <tr>
+            <td class="rarity-col">4-Star</td>
+            <td class="points-loved">{pointValues[4].loved}</td>
+            <td class="points-neutral">{pointValues[4].neutral}</td>
+            <td class="points-hated">{pointValues[4].hated}</td>
+          </tr>
+          <tr>
+            <td class="rarity-col">5-Star</td>
+            <td class="points-loved">{pointValues[5].loved}</td>
+            <td class="points-neutral">{pointValues[5].neutral}</td>
+            <td class="points-hated">{pointValues[5].hated}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</CharacterGiftLayout>
+
+<script>
+  // Filter functionality
+  function initializeFilters() {
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const searchFilter = document.getElementById('search-filter') as HTMLInputElement;
+    const cards = document.querySelectorAll('.character-gift-card');
+
+    function filterCards() {
+      const elementValue = elementFilter?.value || 'all';
+      const searchValue = (searchFilter?.value || '').toLowerCase().trim();
+
+      cards.forEach(card => {
+        const cardElement = card.getAttribute('data-element') || '';
+        const cardName = card.getAttribute('data-name') || '';
+
+        const matchesElement = elementValue === 'all' || cardElement === elementValue;
+        const matchesSearch = searchValue === '' || cardName.includes(searchValue);
+
+        if (matchesElement && matchesSearch) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    elementFilter?.addEventListener('change', filterCards);
+    searchFilter?.addEventListener('input', filterCards);
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeFilters);
+  } else {
+    initializeFilters();
+  }
+</script>
