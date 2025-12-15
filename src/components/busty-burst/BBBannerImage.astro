@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+
+// Import banner images
+import banner1Img from '../../assets/images/games/Busty_Burst/Banner_Img/1.jpg';
+import banner2Img from '../../assets/images/games/Busty_Burst/Banner_Img/2.jpg';
+import seasonChar1Img from '../../assets/images/games/Busty_Burst/Banner_Img/Season_Character_1.jpg';
+
+// Image mapping by banner ID
+const bannerImages: Record<string, ImageMetadata> = {
+  '1': banner1Img,
+  '2': banner2Img,
+  Season_Character_1: seasonChar1Img,
+};
+
+export interface Props {
+  bannerId: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+const { bannerId, alt, width = 400, height = 225 } = Astro.props;
+
+const imageSrc = bannerImages[bannerId];
+---
+
+{
+  imageSrc && (
+    <div class="bb-banner-image">
+      <Image
+        src={imageSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        class="bb-banner-image__img"
+        loading="lazy"
+      />
+    </div>
+  )
+}
+
+<style>
+  .bb-banner-image {
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid var(--bb-primary);
+  }
+
+  .bb-banner-image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: inherit;
+  }
+</style>

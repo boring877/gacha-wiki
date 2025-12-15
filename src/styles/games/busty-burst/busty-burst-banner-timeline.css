@@ -1,0 +1,556 @@
+/* ========================================
+   BUSTY BURST BANNER TIMELINE PAGE STYLES
+   ========================================
+   Clean, static styles for banner timeline page
+*/
+
+/* Banner Timeline Content Container */
+.banner-timeline-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.banner-timeline-content h1 {
+  text-align: center;
+  color: var(--bb-text-primary);
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.intro-text {
+  text-align: center;
+  color: var(--bb-text-secondary);
+  margin-bottom: 3rem;
+  font-size: 1.125rem;
+}
+
+/* Banner Section Styles */
+.banner-section {
+  margin-bottom: 3rem;
+  background: var(--bb-bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--bb-border);
+  overflow: hidden;
+}
+
+.banner-header {
+  background: linear-gradient(135deg, var(--bb-bg-secondary), var(--bb-bg-tertiary));
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--bb-border);
+  text-align: center;
+}
+
+.banner-header h2 {
+  color: var(--bb-text-primary);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.banner-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.banner-type-badge--event {
+  background: var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
+.banner-type-badge--new {
+  background: var(--bb-secondary);
+  color: var(--bb-text-primary);
+}
+
+.banner-type-badge--rerun {
+  background: var(--bb-bg-tertiary);
+  color: var(--bb-text-secondary);
+}
+
+.banner-content {
+  padding: 2rem;
+}
+
+/* Banner Info Styles */
+.banner-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.banner-info h3 {
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Featured Item Styles */
+.featured-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+}
+
+.featured-details {
+  flex: 1;
+}
+
+.featured-details p {
+  margin: 0.25rem 0;
+  color: var(--bb-text-secondary);
+}
+
+.featured-details strong {
+  color: var(--bb-text-primary);
+}
+
+/* Paladin List Styles */
+.paladin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.paladin-list li {
+  padding: 0.5rem 0;
+  color: var(--bb-text-secondary);
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.paladin-list li:last-child {
+  border-bottom: none;
+}
+
+.paladin-name {
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+.paladin-rarity {
+  color: var(--bb-legendary);
+  margin-right: 0.5rem;
+}
+
+.paladin-type {
+  color: var(--bb-text-tertiary);
+  font-size: 0.875rem;
+}
+
+/* Banner Details Styles */
+.banner-details {
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.banner-details p {
+  margin-bottom: 0.75rem;
+}
+
+.banner-details strong {
+  color: var(--bb-text-primary);
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge--current {
+  background: var(--bb-success);
+  color: white;
+}
+
+.status-badge--upcoming {
+  background: var(--bb-info);
+  color: white;
+}
+
+.status-badge--ended {
+  background: var(--bb-bg-tertiary);
+  color: var(--bb-text-muted);
+}
+
+/* ========================================
+   MOBILE RESPONSIVE OPTIMIZATION
+   ========================================
+*/
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) {
+  .banner-timeline-content {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .banner-section {
+    margin-bottom: 2rem;
+  }
+
+  .banner-header {
+    padding: 1.25rem;
+  }
+
+  .banner-header h2 {
+    font-size: 1.375rem;
+  }
+}
+
+/* Mobile Landscape (480px - 768px) */
+@media (max-width: 768px) {
+  .banner-timeline-content {
+    padding: 1rem;
+  }
+
+  .banner-timeline-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .banner-section {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+  }
+
+  .banner-header {
+    padding: 1rem;
+  }
+
+  .banner-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .banner-content {
+    padding: 1rem;
+  }
+
+  .banner-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .banner-info h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0.875rem;
+    border-radius: 6px;
+  }
+
+  .banner-details {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .banner-details p {
+    margin-bottom: 0.625rem;
+  }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+  .banner-timeline-content {
+    padding: 0.75rem;
+  }
+
+  .banner-timeline-content h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .intro-text {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-section {
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+  }
+
+  .banner-header {
+    padding: 0.875rem;
+  }
+
+  .banner-header h2 {
+    font-size: 1.125rem;
+    line-height: 1.3;
+  }
+
+  .banner-content {
+    padding: 0.875rem;
+  }
+
+  .banner-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+    line-height: 1.3;
+  }
+
+  .featured-item {
+    gap: 0.625rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+  }
+
+  .banner-details {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .banner-details p {
+    margin-bottom: 0.5rem;
+  }
+
+  .banner-details strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Extra Small Mobile (up to 320px) */
+@media (max-width: 320px) {
+  .banner-timeline-content {
+    padding: 0.625rem;
+  }
+
+  .banner-timeline-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .intro-text {
+    font-size: 0.875rem;
+  }
+
+  .banner-header {
+    padding: 0.75rem;
+  }
+
+  .banner-header h2 {
+    font-size: 1rem;
+  }
+
+  .banner-content {
+    padding: 0.75rem;
+  }
+
+  .banner-info h3 {
+    font-size: 0.9375rem;
+  }
+
+  .featured-item {
+    padding: 0.625rem;
+  }
+
+  .banner-details {
+    font-size: 0.75rem;
+  }
+}
+
+/* ========================================
+   MOBILE TOUCH & ACCESSIBILITY
+   ========================================
+*/
+
+@media (max-width: 768px) {
+  .featured-item {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .banner-details {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .featured-details strong {
+    font-size: 0.9375rem;
+  }
+
+  .featured-details p {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-details {
+    line-height: 1.6;
+  }
+
+  .banner-timeline-content {
+    overflow-x: hidden;
+  }
+
+  .featured-item {
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .featured-details {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Orientation changes */
+@media (max-width: 768px) and (orientation: landscape) {
+  .banner-timeline-content h1 {
+    font-size: 1.875rem;
+  }
+
+  .banner-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-header {
+    padding: 0.875rem;
+  }
+
+  .banner-content {
+    padding: 0.875rem;
+  }
+}
+
+/* High DPI displays optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .bb-banner-image__img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ========================================
+   TAB STYLES
+   ========================================
+*/
+
+.timeline-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--bb-border);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--bb-text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--bb-text-primary);
+  background: var(--bb-bg-secondary);
+}
+
+.tab-btn.active {
+  color: var(--bb-primary-light);
+  border-bottom-color: var(--bb-primary-light);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Seasonal Info */
+.seasonal-info {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.seasonal-description {
+  color: var(--bb-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.seasonal-character {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Tab Mobile Responsive */
+@media (max-width: 768px) {
+  .timeline-tabs {
+    flex-direction: column;
+    gap: 0;
+    border-bottom: none;
+    border-left: 2px solid var(--bb-border);
+  }
+
+  .tab-btn {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    text-align: left;
+    margin-bottom: 0;
+    margin-left: -2px;
+  }
+
+  .tab-btn.active {
+    border-left-color: var(--bb-primary-light);
+    border-bottom-color: transparent;
+  }
+
+  .seasonal-character {
+    flex-direction: column;
+  }
+
+  .seasonal-info {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .seasonal-info {
+    padding: 0.75rem;
+  }
+
+  .seasonal-description {
+    font-size: 0.875rem;
+  }
+}

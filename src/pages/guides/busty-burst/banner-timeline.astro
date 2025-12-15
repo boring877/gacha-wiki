@@ -1,0 +1,236 @@
+---
+import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
+import BBBannerImage from '../../../components/busty-burst/BBBannerImage.astro';
+import {
+  bannerTimelineData,
+  seasonalCharactersData,
+} from '../../../data/busty-burst/banner-timeline.js';
+
+// SEO metadata
+const pageTitle = 'Busty Burst Banner Timeline - Summon Events History';
+const pageDescription =
+  'Chronological timeline of all summon banners in Busty Burst Fantasy. View current and past paladin recruitment events organized by date from newest to oldest.';
+const gameTitle = 'Banner Timeline';
+
+// Helper function to format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+};
+
+// Get banner type label
+const getBannerTypeLabel = (type: string) => {
+  switch (type) {
+    case 'event':
+      return 'Event Banner';
+    case 'new':
+      return 'New Paladin';
+    case 'rerun':
+      return 'Rerun';
+    default:
+      return type;
+  }
+};
+
+// Get status label
+const getStatusLabel = (status: string) => {
+  switch (status) {
+    case 'current':
+      return 'Active';
+    case 'upcoming':
+      return 'Upcoming';
+    case 'ended':
+      return 'Ended';
+    default:
+      return status;
+  }
+};
+---
+
+<BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
+  <meta slot="head" />
+  <meta
+    name="keywords"
+    content="Busty Burst, Busty Burst Fantasy, banner timeline, summon events, paladin banners, gacha history, seasonal characters, SSR paladins, Ero Lab games"
+  />
+  <meta name="author" content="GachaWiki" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gacha.wiki/guides/busty-burst/banner-timeline" />
+  <meta
+    property="og:image"
+    content="https://gacha.wiki/images/games/Busty_Burst/BG/gameLogo.webp"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+  <meta
+    name="twitter:image"
+    content="https://gacha.wiki/images/games/Busty_Burst/BG/gameLogo.webp"
+  />
+
+  <main class="banner-timeline-content" role="main">
+    <p class="intro-text">Complete history of all summon banners and seasonal characters</p>
+
+    <!-- Tabs -->
+    <div class="timeline-tabs" role="tablist" aria-label="Banner timeline sections">
+      <button
+        class="tab-btn active"
+        data-tab="banners"
+        role="tab"
+        aria-selected="true"
+        aria-controls="banners">Summon Banners</button
+      >
+      <button
+        class="tab-btn"
+        data-tab="seasonal"
+        role="tab"
+        aria-selected="false"
+        aria-controls="seasonal">Seasonal Characters</button
+      >
+    </div>
+
+    <!-- Banners Tab Content -->
+    <div id="banners" class="tab-content active" role="tabpanel" aria-labelledby="banners-tab">
+      {
+        bannerTimelineData.map((banner, index) => (
+          <article class="banner-section">
+            <header class="banner-header">
+              <h2>
+                #{bannerTimelineData.length - index} {banner.title}
+              </h2>
+              <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
+                {getBannerTypeLabel(banner.bannerType)}
+              </span>
+              <span class={`status-badge status-badge--${banner.status}`}>
+                {getStatusLabel(banner.status)}
+              </span>
+            </header>
+
+            <section class="banner-content">
+              <div class="banner-info">
+                <BBBannerImage
+                  bannerId={banner.image}
+                  alt={banner.title}
+                  width={400}
+                  height={225}
+                />
+                <div class="featured-details">
+                  <h3>Featured Paladins</h3>
+                  <ul class="paladin-list">
+                    {banner.featuredPaladins.map(paladin => (
+                      <li>
+                        <span class="paladin-rarity">{paladin.rarity}</span>
+                        <span class="paladin-name">{paladin.name}</span>
+                        <span class="paladin-type"> - {paladin.type}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="banner-details">
+                    <p>
+                      <strong>Period:</strong> {formatDate(banner.startDate)} -{' '}
+                      {formatDate(banner.endDate)} (UTC)
+                    </p>
+                    <p>
+                      <strong>Details:</strong> {banner.description}
+                    </p>
+                    {banner.note && (
+                      <p>
+                        <strong>Note:</strong> {banner.note}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Seasonal Characters Tab Content -->
+    <div id="seasonal" class="tab-content" role="tabpanel" aria-labelledby="seasonal-tab">
+      <div class="seasonal-info">
+        <p class="seasonal-description">
+          Seasonal characters are special paladins available for a limited 3-month period. Once the
+          season ends, these characters will no longer be available until a potential rerun.
+        </p>
+      </div>
+      {
+        seasonalCharactersData.map(season => (
+          <article class="banner-section">
+            <header class="banner-header">
+              <h2>{season.name}</h2>
+              <span class={`status-badge status-badge--${season.status}`}>
+                {getStatusLabel(season.status)}
+              </span>
+            </header>
+
+            <section class="banner-content">
+              <div class="banner-info">
+                {season.characters.map(char => (
+                  <div class="seasonal-character">
+                    <BBBannerImage bannerId={char.image} alt={char.name} width={400} height={300} />
+                    <div class="featured-details">
+                      <h3>Seasonal Character</h3>
+                      <ul class="paladin-list">
+                        <li>
+                          <span class="paladin-rarity">{char.rarity}</span>
+                          <span class="paladin-name">{char.name}</span>
+                          <span class="paladin-type"> - {char.type}</span>
+                        </li>
+                      </ul>
+                      <div class="banner-details">
+                        <p>
+                          <strong>Season Period:</strong> {formatDate(season.startDate)} -{' '}
+                          {formatDate(season.endDate)} (UTC)
+                        </p>
+                        <p>
+                          <strong>Note:</strong> This character is only available during this season
+                          period.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</BannerTimelineLayout>
+
+<script>
+  // Tab functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+    const tabContents = document.querySelectorAll<HTMLElement>('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        if (!tabId) return;
+
+        // Remove active from all
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+          targetTab.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

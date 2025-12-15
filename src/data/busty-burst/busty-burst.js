@@ -62,6 +62,11 @@ export const bustyBurstConfig = {
           title: 'Tier List',
           url: '/guides/busty-burst/tier-list#tier-list',
         },
+        {
+          id: 'banner-timeline',
+          title: 'Banner Timeline',
+          url: '/guides/busty-burst/banner-timeline',
+        },
       ],
     },
   ],
@@ -75,6 +80,16 @@ export const bustyBurstConfig = {
       description:
         'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.',
       url: '/guides/busty-burst/tier-list#tier-list',
+      category: 'guides',
+      size: 'large',
+    },
+    {
+      id: 'banner-timeline',
+      title: 'Banner Timeline',
+      emoji: '',
+      description:
+        'Complete history of all summon banners in Busty Burst Fantasy. Track past and current events.',
+      url: '/guides/busty-burst/banner-timeline',
       category: 'guides',
       size: 'large',
     },
