@@ -14,6 +14,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slightly Fast',
     range: 360,
+    weaponType: 'Shoot',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Festival_Empress_Shamshel',
     profile: {
@@ -44,6 +45,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 520,
+    weaponType: 'Throw',
     skillTypes: ['Heal', 'Buff'],
     image: 'Festive_Attire_Estiriel',
     profile: {
@@ -74,6 +76,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slightly Fast',
     range: 240,
+    weaponType: 'Slash',
     skillTypes: ['Debuff'],
     image: 'Hisara',
     profile: {
@@ -104,6 +107,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 2 },
     actionSpeed: 'Fast',
     range: 360,
+    weaponType: 'Slash',
     skillTypes: ['Disrupt'],
     image: 'Bianca',
     profile: {
@@ -134,6 +138,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 520,
+    weaponType: 'Throw',
     skillTypes: ['Heal', 'Buff', 'Debuff', 'Cleanse'],
     image: 'Pious_Healer_Ishtovia',
     profile: {
@@ -164,6 +169,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Fast',
     range: 400,
+    weaponType: 'Pierce',
     skillTypes: ['Debuff'],
     image: 'Stenlina',
     profile: {
@@ -194,6 +200,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Slightly Slow',
     range: 400,
+    weaponType: 'Throw',
     skillTypes: ['Buff', 'Debuff'],
     image: 'Messenge_of_Stone_soldiers_Nerys',
     profile: {
@@ -224,6 +231,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slightly Fast',
     range: 480,
+    weaponType: 'Throw',
     skillTypes: ['Disrupt', 'Debuff'],
     image: 'Swift-Chant_Sorceress_Sobrina',
     profile: {
@@ -254,6 +262,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Slightly Fast',
     range: 360,
+    weaponType: 'Shoot',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Elegant_Portrait_Shamshel',
     profile: {
@@ -284,6 +293,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slow',
     range: 500,
+    weaponType: 'Shoot',
     skillTypes: ['Debuff'],
     image: 'Shaty',
     profile: {
@@ -314,6 +324,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 520,
+    weaponType: 'Strike',
     skillTypes: ['Heal', 'Buff', 'Cleanse'],
     image: 'Frey',
     profile: {
@@ -344,6 +355,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Normal',
     range: 240,
+    weaponType: 'Strike',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Mischievous_Mermaid_Princess_Lorelia',
     profile: {
@@ -374,6 +386,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slightly Fast',
     range: 240,
+    weaponType: 'Slash',
     skillTypes: ['Buff', 'Debuff'],
     image: 'Luca',
     profile: {
@@ -404,6 +417,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Normal',
     range: 360,
+    weaponType: 'Pierce',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Teresia',
     profile: {
@@ -434,6 +448,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 2 },
     actionSpeed: 'Slow',
     range: 360,
+    weaponType: 'Slash',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'The_Dark_Knight',
     profile: {
@@ -464,6 +479,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Slightly Fast',
     range: 400,
+    weaponType: 'Throw',
     skillTypes: ['Heal', 'Buff', 'Debuff'],
     image: 'Trance_Dancer_Messeria',
     profile: {
@@ -494,6 +510,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slightly Slow',
     range: 200,
+    weaponType: 'Slash',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Yu_Lima_Elka',
     profile: {
@@ -524,6 +541,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slightly Fast',
     range: 180,
+    weaponType: 'Pierce',
     skillTypes: ['Debuff', 'Disrupt', 'Taunt'],
     image: 'Natasha',
     profile: {
@@ -554,6 +572,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Fast',
     range: 190,
+    weaponType: 'Slash',
     skillTypes: ['Debuff'],
     image: 'Elegant_Portrait_Aysis',
     profile: {
@@ -584,6 +603,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 480,
+    weaponType: 'Shoot',
     skillTypes: ['Debuff', 'Sure-hit', 'Guaranteed Crit'],
     image: 'Artemis',
     profile: {
@@ -614,6 +634,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slightly Slow',
     range: 520,
+    weaponType: 'Throw',
     skillTypes: ['Buff'],
     image: 'Venus',
     profile: {
@@ -644,6 +665,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 520,
+    weaponType: 'Strike',
     skillTypes: ['Buff', 'MP Recovery'],
     image: 'Liesel',
     profile: {
@@ -674,6 +696,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Fast',
     range: 180,
+    weaponType: 'Pierce',
     skillTypes: ['Debuff', 'Taunt'],
     image: 'Festive_Costume_Natasha',
     profile: {
@@ -706,6 +729,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 2 },
     actionSpeed: 'Slightly Fast',
     range: 400,
+    weaponType: 'Slash',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'Soltina',
     profile: {
@@ -736,6 +760,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 1 },
     actionSpeed: 'Fast',
     range: 240,
+    weaponType: 'Pierce',
     skillTypes: ['Debuff'],
     image: 'Gemini',
     profile: {
@@ -766,6 +791,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Normal',
     range: 480,
+    weaponType: 'Shoot',
     skillTypes: ['Debuff'],
     image: 'Meinias',
     profile: {
@@ -796,6 +822,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slightly Slow',
     range: 200,
+    weaponType: 'Slash',
     skillTypes: ['Debuff', 'Disrupt', 'Taunt'],
     image: 'Artia',
     profile: {
@@ -826,6 +853,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Slow',
     range: 220,
+    weaponType: 'Strike',
     skillTypes: ['Buff', 'Debuff', 'Disrupt'],
     image: 'Nora',
     profile: {
@@ -856,6 +884,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slightly Fast',
     range: 520,
+    weaponType: 'Throw',
     skillTypes: ['Buff', 'Debuff'],
     image: 'Marina',
     profile: {
@@ -886,6 +915,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 1 },
     actionSpeed: 'Fast',
     range: 240,
+    weaponType: 'Strike',
     skillTypes: ['Buff', 'Debuff', 'Disrupt'],
     image: 'Hildis',
     profile: {
@@ -916,6 +946,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Normal',
     range: 480,
+    weaponType: 'Slash',
     skillTypes: ['Heal', 'Buff', 'Debuff'],
     image: 'Estiriel',
     profile: {
@@ -946,6 +977,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'II', number: 2 },
     actionSpeed: 'Normal',
     range: 360,
+    weaponType: 'Throw',
     skillTypes: ['Heal', 'Debuff', 'Disrupt'],
     image: 'Magical Princess Luceria',
     profile: {

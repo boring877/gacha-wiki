@@ -608,6 +608,24 @@
   border-color: var(--bb-primary);
 }
 
+.bb-character-info-clear-btn {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bb-character-info-clear-btn:hover {
+  background: var(--bb-bg-secondary);
+  border-color: var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
 /* Character Cards Grid */
 .bb-character-info-grid {
   display: grid;

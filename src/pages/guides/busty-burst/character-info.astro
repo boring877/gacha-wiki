@@ -79,6 +79,17 @@ const getImageFileName = (image: string) => {
           <option value="SSR">SSR</option>
           <option value="SR">SR</option>
         </select>
+        <select id="weapon-filter" class="bb-character-info-filter-select">
+          <option value="">All Weapons</option>
+          <option value="Slash">Slash</option>
+          <option value="Pierce">Pierce</option>
+          <option value="Strike">Strike</option>
+          <option value="Shoot">Shoot</option>
+          <option value="Throw">Throw</option>
+        </select>
+        <button type="button" id="clear-filters" class="bb-character-info-clear-btn">
+          Clear All
+        </button>
       </div>
     </div>
 
@@ -92,6 +103,7 @@ const getImageFileName = (image: string) => {
             data-element={char.element}
             data-role={char.role}
             data-rarity={char.rarity}
+            data-weapon={char.weaponType}
             data-illustrator={char.credits.illustration.romanized.toLowerCase()}
             data-voice={char.credits.voice.romanized.toLowerCase()}
           >
@@ -116,6 +128,9 @@ const getImageFileName = (image: string) => {
                   </span>
                   <span class="bb-badge" data-role={char.role}>
                     {char.role}
+                  </span>
+                  <span class="bb-badge" data-weapon={char.weaponType}>
+                    {char.weaponType}
                   </span>
                 </div>
               </div>
@@ -196,6 +211,8 @@ const getImageFileName = (image: string) => {
     const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
     const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
     const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const weaponFilter = document.getElementById('weapon-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
     const characterGrid = document.getElementById('character-grid');
     const noResults = document.getElementById('no-results');
 
@@ -208,6 +225,7 @@ const getImageFileName = (image: string) => {
       const elementValue = elementFilter?.value || '';
       const roleValue = roleFilter?.value || '';
       const rarityValue = rarityFilter?.value || '';
+      const weaponValue = weaponFilter?.value || '';
 
       let visibleCount = 0;
 
@@ -217,6 +235,7 @@ const getImageFileName = (image: string) => {
         const element = cardEl.dataset.element || '';
         const role = cardEl.dataset.role || '';
         const rarity = cardEl.dataset.rarity || '';
+        const weapon = cardEl.dataset.weapon || '';
         const illustrator = cardEl.dataset.illustrator || '';
         const voice = cardEl.dataset.voice || '';
 
@@ -231,8 +250,10 @@ const getImageFileName = (image: string) => {
         const matchesElement = !elementValue || element === elementValue;
         const matchesRole = !roleValue || role === roleValue;
         const matchesRarity = !rarityValue || rarity === rarityValue;
+        const matchesWeapon = !weaponValue || weapon === weaponValue;
 
-        const isVisible = matchesSearch && matchesElement && matchesRole && matchesRarity;
+        const isVisible =
+          matchesSearch && matchesElement && matchesRole && matchesRarity && matchesWeapon;
 
         cardEl.classList.toggle('hidden', !isVisible);
         if (isVisible) visibleCount++;
@@ -244,11 +265,23 @@ const getImageFileName = (image: string) => {
       }
     }
 
+    // Clear all filters
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (roleFilter) roleFilter.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      if (weaponFilter) weaponFilter.value = '';
+      filterCards();
+    }
+
     // Add event listeners
     searchInput?.addEventListener('input', filterCards);
     elementFilter?.addEventListener('change', filterCards);
     roleFilter?.addEventListener('change', filterCards);
     rarityFilter?.addEventListener('change', filterCards);
+    weaponFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
   }
 
   // Initialize on DOM ready
