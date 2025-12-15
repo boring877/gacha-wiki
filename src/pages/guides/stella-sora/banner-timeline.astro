@@ -15,11 +15,6 @@ const formatDate = (dateString: string) => {
   const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
   return date.toLocaleDateString('en-US', options);
 };
-
-// Helper function to get image key from character/disc name
-const getImageKey = (name: string) => {
-  return name.toLowerCase().replace(/\s+/g, '-');
-};
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
@@ -57,11 +52,11 @@ const getImageKey = (name: string) => {
                 <h3>Character Banner: {banner.characterBanner.title}</h3>
                 <div class="featured-item">
                   <SSBannerImage
-                    imageKey={getImageKey(banner.characterBanner.featuredCharacter.name)}
+                    name={banner.characterBanner.featuredCharacter.name}
                     alt={banner.characterBanner.featuredCharacter.name}
-                    width={200}
-                    height={200}
                     type="character"
+                    width={300}
+                    height={300}
                   />
                   <div class="featured-details">
                     <p>
@@ -98,11 +93,11 @@ const getImageKey = (name: string) => {
                 <h3>Disc Banner: {banner.discBanner.title}</h3>
                 <div class="featured-item">
                   <SSBannerImage
-                    imageKey={getImageKey(banner.discBanner.featuredDisc.name)}
+                    name={banner.discBanner.featuredDisc.name}
                     alt={banner.discBanner.featuredDisc.name}
-                    width={200}
-                    height={200}
                     type="disc"
+                    width={300}
+                    height={300}
                   />
                   <div class="featured-details">
                     <p>

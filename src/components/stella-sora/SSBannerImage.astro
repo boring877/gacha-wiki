@@ -2,104 +2,84 @@
 import { Image } from 'astro:assets';
 
 // Import character images
-import chitose from '../../assets/images/games/stella-sora/gameimg/characters/Chitose.jpg';
-import shia from '../../assets/images/games/stella-sora/gameimg/characters/Shia.jpg';
-import nanoha from '../../assets/images/games/stella-sora/gameimg/characters/Nanoha.jpg';
-import fuyuka from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka.jpg';
-import gerie from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie.jpg';
-import nazuka from '../../assets/images/games/stella-sora/Banner_timeline/6/1.png';
+import nazukaImg from '../../assets/images/games/stella-sora/Banner_timeline/6/1.png';
+import gerieImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie.jpg';
+import fuyukaImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka.jpg';
+import chitoseImg from '../../assets/images/games/stella-sora/Banner_timeline/1/Chitose.jpg';
+import shiaImg from '../../assets/images/games/stella-sora/Banner_timeline/2/Shia.jpg';
+import nanohaImg from '../../assets/images/games/stella-sora/Banner_timeline/3/Nanoha.jpg';
 
 // Import disc images
-import swordAgainstStream from '../../assets/images/games/stella-sora/disc/sword_against_stream.jpg';
-import ripplesOfNostalgia from '../../assets/images/games/stella-sora/disc/ripples_of_nostalgia.jpg';
-import daylightGarden from '../../assets/images/games/stella-sora/disc/daylight_garden.jpg';
-import fireworks from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka_disc.jpg';
-import theLostPilgrim from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie_disc.jpg';
-import deersSong from '../../assets/images/games/stella-sora/Banner_timeline/6/2.png';
+import nazukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/6/2.png';
+import gerieDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie_disc.jpg';
+import fuyukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka_disc.jpg';
+import chitoseDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/1/Chitose_disc.jpg';
+import shiaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/2/Shia_disc.jpg';
+import nanohaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/3/Nanoha_disc.jpg';
 
-// Image mapping for banner images
-const bannerImageMap = {
-  chitose: chitose,
-  shia: shia,
-  nanoha: nanoha,
-  fuyuka: fuyuka,
-  gerie: gerie,
-  nazuka: nazuka,
-  'sword-against-stream': swordAgainstStream,
-  'ripples-of-nostalgia': ripplesOfNostalgia,
-  'daylight-garden': daylightGarden,
-  fireworks: fireworks,
-  'the-lost-pilgrim': theLostPilgrim,
-  "deer's-song": deersSong,
+// Image mapping by character name
+const characterImages: Record<string, ImageMetadata> = {
+  Nazuka: nazukaImg,
+  Gerie: gerieImg,
+  Fuyuka: fuyukaImg,
+  Chitose: chitoseImg,
+  Shia: shiaImg,
+  Nanoha: nanohaImg,
+};
+
+// Disc image mapping by disc name
+const discImages: Record<string, ImageMetadata> = {
+  "Deer's Song": nazukaDiscImg,
+  'The Lost Pilgrim': gerieDiscImg,
+  Fireworks: fuyukaDiscImg,
+  'Sword Against Stream': chitoseDiscImg,
+  'Ripples of Nostalgia': shiaDiscImg,
+  'Daylight Garden': nanohaDiscImg,
 };
 
 export interface Props {
-  imageKey: string;
+  name: string;
   alt: string;
+  type: 'character' | 'disc';
   width?: number;
   height?: number;
-  type?: 'character' | 'disc' | 'banner';
 }
 
-const { imageKey, alt, width = 200, height = 200, type = 'character' } = Astro.props;
+const { name, alt, type, width = 300, height = 300 } = Astro.props;
 
-// Get image from mapping with fallback handling
-const getImage = (key: string) => {
-  const normalizedKey = key.toLowerCase().replace(/\s+/g, '-');
-
-  // Check if the image exists in the mapping
-  if (bannerImageMap[normalizedKey]) {
-    return bannerImageMap[normalizedKey];
-  }
-
-  // Log warning for missing image
-  console.warn(`SSBannerImage: No image found for key "${key}" (normalized: "${normalizedKey}")`);
-
-  // Return appropriate fallback based on type
-  if (type === 'disc') {
-    return swordAgainstStream; // Fallback disc
-  } else {
-    return chitose; // Fallback character
-  }
-};
-
-const imageModule = getImage(imageKey);
+// Get the appropriate image based on type
+const imageMap = type === 'character' ? characterImages : discImages;
+const imageSrc = imageMap[name];
 ---
 
-<div class={`ss-banner-image ss-banner-image--${type}`}>
-  <Image
-    src={imageModule}
-    alt={alt}
-    width={width}
-    height={height}
-    loading="lazy"
-    format="webp"
-    quality={95}
-    sizes="(max-width: 320px) 48px, (max-width: 480px) 56px, (max-width: 768px) 64px, 80px"
-    class="ss-banner-image__img"
-  />
-</div>
+{
+  imageSrc && (
+    <div class={`ss-banner-image ss-banner-image--${type}`}>
+      <Image
+        src={imageSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        class="ss-banner-image__img"
+        loading="lazy"
+      />
+    </div>
+  )
+}
 
 <style>
   .ss-banner-image {
     border-radius: 12px;
     overflow: hidden;
-    position: relative;
     flex-shrink: 0;
-    width: 80px;
-    height: 80px;
   }
 
   .ss-banner-image--character {
-    border: 2px solid var(--ss-primary);
+    border: 3px solid var(--ss-primary);
   }
 
   .ss-banner-image--disc {
-    border: 2px solid var(--ss-secondary);
-  }
-
-  .ss-banner-image--banner {
-    border: 2px solid var(--ss-accent);
+    border: 3px solid var(--ss-secondary);
   }
 
   .ss-banner-image__img {
@@ -107,44 +87,7 @@ const imageModule = getImage(imageKey);
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.2s ease;
     display: block;
     border-radius: inherit;
-  }
-
-  /* Mobile responsive image sizing */
-  @media (max-width: 768px) {
-    .ss-banner-image {
-      width: 64px;
-      height: 64px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .ss-banner-image {
-      width: 56px;
-      height: 56px;
-    }
-  }
-
-  @media (max-width: 320px) {
-    .ss-banner-image {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-    }
-
-    .ss-banner-image--character,
-    .ss-banner-image--disc {
-      border-width: 1px;
-    }
-  }
-
-  /* Ensure images don't cause layout issues */
-  @media (max-width: 480px) {
-    .featured-item {
-      align-items: center;
-      justify-content: center;
-    }
   }
 </style>

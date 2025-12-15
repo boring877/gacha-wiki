@@ -876,7 +876,10 @@ function getTotalDupes(rarity: string): number {
                               ([id, hint]: [string, any]) => (
                                 <div class="hint-item">
                                   <strong>{hint.name}:</strong>{' '}
-                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                  <span
+                                    data-hint-description={hint.description}
+                                    data-hint-params={JSON.stringify(hint.params || [])}
+                                  />
                                 </div>
                               )
                             )}
@@ -925,7 +928,10 @@ function getTotalDupes(rarity: string): number {
                               ([id, hint]: [string, any]) => (
                                 <div class="hint-item">
                                   <strong>{hint.name}:</strong>{' '}
-                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                  <span
+                                    data-hint-description={hint.description}
+                                    data-hint-params={JSON.stringify(hint.params || [])}
+                                  />
                                 </div>
                               )
                             )}
@@ -977,7 +983,10 @@ function getTotalDupes(rarity: string): number {
                               ([id, hint]: [string, any]) => (
                                 <div class="hint-item">
                                   <strong>{hint.name}:</strong>{' '}
-                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                  <span
+                                    data-hint-description={hint.description}
+                                    data-hint-params={JSON.stringify(hint.params || [])}
+                                  />
                                 </div>
                               )
                             )}
@@ -2205,8 +2214,41 @@ function getTotalDupes(rarity: string): number {
       });
     }
 
+    function updateHintDescriptions() {
+      const hintSpans = document.querySelectorAll('.hint-item span[data-hint-description]');
+      hintSpans.forEach(span => {
+        let description = span.getAttribute('data-hint-description') || '';
+        const paramsData = span.getAttribute('data-hint-params');
+
+        // Replace &ParamX& placeholders (hints don't have level scaling)
+        if (paramsData) {
+          try {
+            const params = JSON.parse(paramsData);
+            params.forEach((value: string, index: number) => {
+              const placeholder = `&Param${index + 1}&`;
+              description = description.split(placeholder).join(value);
+            });
+          } catch (e) {
+            console.error('Error parsing hint params:', e);
+          }
+        }
+
+        // Convert color tags to spans
+        description = description.replace(
+          /<color=[^>]+>([^<]+)<\/color>/g,
+          '<span class="skill-value">$1</span>'
+        );
+
+        // Convert vertical tabs to line breaks
+        description = description.replace(/\u000b/g, '<br/>');
+
+        span.innerHTML = description;
+      });
+    }
+
     // Initial update with default level 13
     updateSkillDescriptions(13);
+    updateHintDescriptions();
 
     // Listen for input changes
     levelInput.addEventListener('input', function () {

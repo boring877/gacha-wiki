@@ -1,0 +1,86 @@
+---
+import TierListLayout from '../../../layouts/stella-sora/TierListLayout.astro';
+import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
+import {
+  STELLA_SORA_TIER_LISTS,
+  TIER_DEFINITIONS,
+  GAME_MODES,
+} from '../../../data/stella-sora/tier-lists.js';
+
+// Get the overall tier list data
+const overallTierList = STELLA_SORA_TIER_LISTS[GAME_MODES.OVERALL.id];
+
+// Page metadata
+const pageTitle = 'Stella Sora Tier List - Character Rankings';
+const pageDescription =
+  'Complete Stella Sora tier list ranking all Trekkers from SSS to B tier. Updated December 2025 with best characters for overall performance.';
+
+// Generate structured data for tier list (ItemList schema)
+const tierListStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Stella Sora Character Tier List',
+  description: pageDescription,
+  itemListOrder: 'https://schema.org/ItemListOrderDescending',
+  numberOfItems: overallTierList.tiers.reduce((acc, tier) => acc + tier.characters.length, 0),
+  itemListElement: overallTierList.tiers.flatMap((tier, tierIndex) =>
+    tier.characters.map((char, charIndex) => ({
+      '@type': 'ListItem',
+      position: tierIndex * 100 + charIndex + 1,
+      name: `${char.name} (${tier.tier} Tier)`,
+      url: `https://gachawiki.info/guides/stella-sora/characters/${char.slug}/`,
+    }))
+  ),
+};
+---
+
+<TierListLayout title={pageTitle} description={pageDescription} gameTitle="Stella Sora Tier List">
+  <script
+    slot="head"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(tierListStructuredData)}
+  />
+
+  <div class="tier-list-container">
+    <div class="tier-list-info">
+      <p class="tier-list-description">{pageDescription}</p>
+      <p class="tier-list-updated">Last Updated: December 2025</p>
+    </div>
+
+    <div class="tier-list-grid">
+      {
+        overallTierList.tiers.map(tierData => (
+          <div class={`tier-row tier-${tierData.tier.toLowerCase()}`}>
+            <div class="tier-label" style={`background-color: ${tierData.definition.color}`}>
+              <span class="tier-name">{tierData.tier}</span>
+            </div>
+            <div class="tier-characters">
+              {tierData.characters.length > 0 ? (
+                tierData.characters.map(character => (
+                  <a
+                    href={`/guides/stella-sora/characters/${character.slug}/`}
+                    class="character-card"
+                  >
+                    <SSCharacterSmallImage
+                      characterName={character.name}
+                      alt={character.name}
+                      width={128}
+                      height={128}
+                      class="character-icon"
+                      loading="lazy"
+                      quality={100}
+                    />
+                    <span class="character-name">{character.name}</span>
+                  </a>
+                ))
+              ) : (
+                <span class="empty-tier">No characters</span>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</TierListLayout>

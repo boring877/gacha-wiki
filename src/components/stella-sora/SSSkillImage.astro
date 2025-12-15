@@ -30,9 +30,9 @@ import ultimateIcon from '../../assets/images/games/stella-sora/skills/ultimate.
 // Skill type icon mapping
 const skillTypeIconMap: Record<string, ImageMetadata> = {
   'normal-attack': normalIcon,
-  'skill': skillIcon,
+  skill: skillIcon,
   'support-skill': supportIcon,
-  'ultimate': ultimateIcon,
+  ultimate: ultimateIcon,
 };
 
 // Dynamically import all character skill images
@@ -59,32 +59,32 @@ for (const [path, module] of Object.entries(characterSkillImages)) {
 // Character element mapping (all 27 characters)
 const characterElementMap: Record<string, string> = {
   amber: 'ignis',
-  ann: 'terra',
-  canace: 'aqua',
-  caramel: 'ignis',
-  chitose: 'lux',
+  ann: 'ventus',
+  canace: 'ventus',
+  caramel: 'umbra',
+  chitose: 'aqua',
   chixia: 'ignis',
   coronis: 'umbra',
-  cosette: 'ventus',
-  flora: 'terra',
-  freesia: 'ventus',
-  fuyuka: 'aqua',
-  gerie: 'lux',
-  iris: 'lux',
-  jinglin: 'ignis',
-  kasimira: 'umbra',
-  laru: 'terra',
-  minova: 'aqua',
+  cosette: 'umbra',
+  flora: 'ignis',
+  freesia: 'aqua',
+  fuyuka: 'ignis',
+  gerie: 'terra',
+  iris: 'aqua',
+  jinglin: 'lux',
+  kasimira: 'ignis',
+  laru: 'lux',
+  minova: 'lux',
   mistique: 'umbra',
-  nanoha: 'lux',
-  nazuka: 'umbra',
-  nazuna: 'ventus',
-  noya: 'ignis',
+  nanoha: 'ventus',
+  nazuka: 'ventus',
+  nazuna: 'terra',
+  noya: 'ventus',
   ridge: 'terra',
-  shia: 'aqua',
+  shia: 'lux',
   shimiao: 'aqua',
-  teresa: 'ventus',
-  tilia: 'terra',
+  teresa: 'aqua',
+  tilia: 'lux',
 };
 
 export interface Props {
@@ -115,49 +115,51 @@ const imageAlt = skillSrc ? alt : `Image not found: ${alt}`;
 ---
 
 <div class={`skill-image-container ${className || ''}`}>
-  {plateSrc && skillSrc ? (
-    <div class="skill-image-layered">
-      {/* Background: Element plate */}
-      <Image
-        src={plateSrc}
-        alt=""
-        width={120}
-        height={120}
-        loading={loading}
-        class="skill-bg-plate"
-        quality={90}
-        format="webp"
-      />
-      {/* Middle: Skill type icon */}
-      {typeIconSrc && (
+  {
+    plateSrc && skillSrc ? (
+      <div class="skill-image-layered">
+        {/* Background: Element plate */}
         <Image
-          src={typeIconSrc}
+          src={plateSrc}
           alt=""
-          width={40}
-          height={40}
+          width={120}
+          height={120}
           loading={loading}
-          class="skill-type-icon"
+          class="skill-bg-plate"
           quality={90}
           format="webp"
         />
-      )}
-      {/* Foreground: Character skill image */}
-      <Image
-        src={skillSrc}
-        alt={imageAlt}
-        width={80}
-        height={80}
-        loading={loading}
-        class="skill-char-icon"
-        quality={95}
-        format="webp"
-      />
-    </div>
-  ) : (
-    <div class="skill-image-placeholder">
-      <span>No Image</span>
-    </div>
-  )}
+        {/* Middle: Skill type icon */}
+        {typeIconSrc && (
+          <Image
+            src={typeIconSrc}
+            alt=""
+            width={40}
+            height={40}
+            loading={loading}
+            class="skill-type-icon"
+            quality={90}
+            format="webp"
+          />
+        )}
+        {/* Foreground: Character skill image */}
+        <Image
+          src={skillSrc}
+          alt={imageAlt}
+          width={80}
+          height={80}
+          loading={loading}
+          class="skill-char-icon"
+          quality={95}
+          format="webp"
+        />
+      </div>
+    ) : (
+      <div class="skill-image-placeholder">
+        <span>No Image</span>
+      </div>
+    )
+  }
 </div>
 
 <style>

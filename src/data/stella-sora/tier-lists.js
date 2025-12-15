@@ -79,12 +79,26 @@ export const GAME_MODES = {
   },
 };
 
-// Character lists for tier rankings
+// Character lists for tier rankings (All 27 characters)
+// 5-Star: Nanoha, Freesia, Minova, Nazuka, Fuyuka, Mistique, Chixia, Chitose, Gerie, Shia, Nazuna
+// 4-Star: Amber, Tilia, Kasimira, Iris, Noya, Shimiao, Ridge, Jinglin, Coronis, Canace, Ann, Flora, Teresa, Cosette, Caramel, Laru
 const OVERALL_CHARACTERS = {
-  SSS: ['Nanoha'],
-  SS: ['Nazuna', 'Chixia', 'Shia'],
-  S: ['Chitose', 'Freesia', 'Gerie', 'Minova', 'Mistique'],
-  A: ['Tilia', 'Jinglin'],
+  SSS: ['Shia', 'Fuyuka'],
+  SS: ['Nazuna', 'Chitose', 'Nazuka', 'Flora', 'Teresa', 'Cosette'],
+  S: [
+    'Freesia',
+    'Gerie',
+    'Minova',
+    'Mistique',
+    'Chixia',
+    'Ann',
+    'Noya',
+    'Nanoha',
+    'Tilia',
+    'Coronis',
+    'Amber',
+  ],
+  A: ['Jinglin', 'Caramel', 'Laru', 'Kasimira', 'Iris', 'Shimiao', 'Ridge', 'Canace'],
   B: [],
 };
 

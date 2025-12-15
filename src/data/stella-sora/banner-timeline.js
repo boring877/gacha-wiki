@@ -1,4 +1,5 @@
 export const bannerTimelineData = [
+  // #6 - Nazuka (Dec 8 - Dec 29) - CURRENT
   {
     id: 'nazuka-a-breezy-romance',
     characterBanner: {
@@ -7,6 +8,7 @@ export const bannerTimelineData = [
         name: 'Nazuka',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/6/1.png',
       },
       boostedCharacters: [
         { name: 'Ann', rarity: '★★★★', type: 'Trekker' },
@@ -24,6 +26,7 @@ export const bannerTimelineData = [
         name: "Deer's Song",
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/6/2.png',
       },
       boostedDiscs: [
         { name: 'Emerald Dream', rarity: '★★★★', type: 'Runic Disc' },
@@ -38,6 +41,7 @@ export const bannerTimelineData = [
     status: 'current',
     image: 'nazuka-banner.png',
   },
+  // #5 - Gerie (Dec 1 - Dec 22) - CURRENT
   {
     id: 'gerie-a-fateful-encounter',
     characterBanner: {
@@ -46,6 +50,7 @@ export const bannerTimelineData = [
         name: 'Gerie',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/5/Gerie.jpg',
       },
       boostedCharacters: [
         { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
@@ -63,6 +68,7 @@ export const bannerTimelineData = [
         name: 'The Lost Pilgrim',
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/5/Gerie_disc.jpg',
       },
       boostedDiscs: [
         { name: 'The Shining', rarity: '★★★★', type: 'Runic Disc' },
@@ -77,6 +83,7 @@ export const bannerTimelineData = [
     status: 'current',
     image: 'gerie-banner.jpg',
   },
+  // #4 - Fuyuka (Nov 17 - Dec 8) - ENDED
   {
     id: 'fuyuka-fireworks-events',
     characterBanner: {
@@ -85,6 +92,7 @@ export const bannerTimelineData = [
         name: 'Fuyuka',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/4/Fuyuka.jpg',
       },
       boostedCharacters: [
         { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
@@ -102,6 +110,7 @@ export const bannerTimelineData = [
         name: 'Fireworks',
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/4/Fuyuka_disc.jpg',
       },
       boostedDiscs: [
         { name: 'Unknown Fragrance', rarity: '★★★★', type: 'Runic Disc' },
@@ -113,49 +122,52 @@ export const bannerTimelineData = [
         "Limited recruitment event: Disc Fireworks begins now! During the event period, there's a higher chance to get the new ★5 Runic Disc, Fireworks.",
       note: 'After this recruitment event ends, ★5 Disc Fireworks will not immediately enter the Permanent Disc Banner.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'fuyuka-banner.jpg',
   },
+  // #3 - Nanoha (Nov 10 - Dec 1) - ENDED
   {
-    id: 'blades-beneath-the-moon',
+    id: 'a-fateful-encounter',
     characterBanner: {
-      title: 'Blades Beneath the Moon',
+      title: 'A Fateful Encounter',
       featuredCharacter: {
-        name: 'Chitose',
+        name: 'Nanoha',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/3/Nanoha.jpg',
       },
       boostedCharacters: [
-        { name: 'Teresa', rarity: '★★★★', type: 'Trekker' },
-        { name: 'Jinglin', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Tilia', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Kasimira', rarity: '★★★★', type: 'Trekker' },
       ],
-      startDate: '2025-10-19T00:00:00-07:00',
-      endDate: '2025-11-10T12:59:59-07:00',
+      startDate: '2025-11-10T00:00:00-07:00',
+      endDate: '2025-12-01T12:59:59-07:00',
       description:
-        "Limited recruitment event: Blades Beneath the Moon begins now! During the event period, there's a higher chance to get the new ★5 Trekker, Chitose.",
-      bonusPity: 'The first 120 recruitments grant you Chitose×1. This bonus is limited to once.',
-      note: 'After this recruitment event ends, ★5 Trekker Chitose will not immediately enter the Permanent Trekker Banner.',
+        "Limited recruitment event: A Fateful Encounter will begin soon! During the event period, there's a higher chance to get the ★5 Trekker, Nanoha.",
+      note: 'Skip banner - Nanoha will be available in normal banner after this event.',
     },
     discBanner: {
-      title: 'Moon upon Still Waters',
+      title: 'A Heart-Tuned Melody',
       featuredDisc: {
-        name: 'Sword Against Stream',
+        name: 'Daylight Garden',
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/3/Nanoha_disc.jpg',
       },
       boostedDiscs: [
-        { name: 'Rainy Tune', rarity: '★★★★', type: 'Runic Disc' },
+        { name: 'Tranquil Retreat', rarity: '★★★★', type: 'Runic Disc' },
         { name: '★Bam Bam Girl★', rarity: '★★★★', type: 'Runic Disc' },
       ],
-      startDate: '2025-10-19T00:00:00-07:00',
-      endDate: '2025-11-10T12:59:59-07:00',
+      startDate: '2025-11-10T00:00:00-07:00',
+      endDate: '2025-12-01T12:59:59-07:00',
       description:
-        "Limited recruitment event: Moon upon Still Waters begins now! During the event period, there's a higher chance to get the new ★5 Runic Disc, Sword Against Stream.",
-      note: 'After this recruitment event ends, ★5 Disc Sword Against Stream will not immediately enter the Permanent Disc Banner.',
+        "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, Daylight Garden.",
+      note: 'Skip banner - Daylight Garden will be available in normal banner after this event.',
     },
-    status: 'current',
-    image: 'chitose-banner.jpg',
+    status: 'ended',
+    image: 'nanoha-banner.jpg',
   },
+  // #2 - Shia (Oct 27 - Nov 17) - ENDED
   {
     id: 'tide-to-the-full-moon',
     characterBanner: {
@@ -164,6 +176,7 @@ export const bannerTimelineData = [
         name: 'Shia',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/2/Shia.jpg',
       },
       boostedCharacters: [
         { name: 'Tilia', rarity: '★★★★', type: 'Trekker' },
@@ -182,6 +195,7 @@ export const bannerTimelineData = [
         name: 'Ripples of Nostalgia',
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/2/Shia_disc.jpg',
       },
       boostedDiscs: [
         { name: 'Good Night', rarity: '★★★★', type: 'Runic Disc' },
@@ -193,53 +207,57 @@ export const bannerTimelineData = [
         "Limited recruitment event: Ocean Meets the Sky begins now! During the event period, there's a higher chance to get the new ★5 Runic Disc, Ripples of Nostalgia.",
       note: 'After this recruitment event ends, ★5 Disc Ripples of Nostalgia will not immediately enter the Permanent Disc Banner.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'shia-banner.jpg',
   },
+  // #1 - Chitose (Oct 19 - Nov 10) - ENDED
   {
-    id: 'a-fateful-encounter',
+    id: 'blades-beneath-the-moon',
     characterBanner: {
-      title: 'A Fateful Encounter',
+      title: 'Blades Beneath the Moon',
       featuredCharacter: {
-        name: 'Nanoha',
+        name: 'Chitose',
         rarity: '★★★★★',
         type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/1/Chitose.jpg',
       },
       boostedCharacters: [
-        { name: 'Tilia', rarity: '★★★★', type: 'Trekker' },
-        { name: 'Kasimira', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Teresa', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Jinglin', rarity: '★★★★', type: 'Trekker' },
       ],
-      startDate: '2025-11-10T00:00:00-07:00',
-      endDate: '2025-12-01T12:59:59-07:00',
+      startDate: '2025-10-19T00:00:00-07:00',
+      endDate: '2025-11-10T12:59:59-07:00',
       description:
-        "Limited recruitment event: A Fateful Encounter will begin soon! During the event period, there's a higher chance to get the ★5 Trekker, Nanoha.",
-      note: 'Skip banner - Nanoha will be available in normal banner after this event.',
+        "Limited recruitment event: Blades Beneath the Moon begins now! During the event period, there's a higher chance to get the new ★5 Trekker, Chitose.",
+      bonusPity: 'The first 120 recruitments grant you Chitose×1. This bonus is limited to once.',
+      note: 'After this recruitment event ends, ★5 Trekker Chitose will not immediately enter the Permanent Trekker Banner.',
     },
     discBanner: {
-      title: 'A Heart-Tuned Melody',
+      title: 'Moon upon Still Waters',
       featuredDisc: {
-        name: 'Daylight Garden',
+        name: 'Sword Against Stream',
         rarity: '★★★★★',
         type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/1/Chitose_disc.jpg',
       },
       boostedDiscs: [
-        { name: 'Tranquil Retreat', rarity: '★★★★', type: 'Runic Disc' },
+        { name: 'Rainy Tune', rarity: '★★★★', type: 'Runic Disc' },
         { name: '★Bam Bam Girl★', rarity: '★★★★', type: 'Runic Disc' },
       ],
-      startDate: '2025-11-10T00:00:00-07:00',
-      endDate: '2025-12-01T12:59:59-07:00',
+      startDate: '2025-10-19T00:00:00-07:00',
+      endDate: '2025-11-10T12:59:59-07:00',
       description:
-        "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, Daylight Garden.",
-      note: 'Skip banner - Daylight Garden will be available in normal banner after this event.',
+        "Limited recruitment event: Moon upon Still Waters begins now! During the event period, there's a higher chance to get the new ★5 Runic Disc, Sword Against Stream.",
+      note: 'After this recruitment event ends, ★5 Disc Sword Against Stream will not immediately enter the Permanent Disc Banner.',
     },
-    status: 'upcoming',
-    image: 'nanoha-banner.jpg',
+    status: 'ended',
+    image: 'chitose-banner.jpg',
   },
 ];
 
 export function getAllBanners() {
   return bannerTimelineData.sort(
-    (a, b) => new Date(a.characterBanner.startDate) - new Date(b.characterBanner.startDate)
+    (a, b) => new Date(b.characterBanner.startDate) - new Date(a.characterBanner.startDate)
   );
 }
 

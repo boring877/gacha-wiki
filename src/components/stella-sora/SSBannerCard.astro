@@ -57,11 +57,11 @@ const formatDateWithTime = (dateString: string) => {
           <div class="ss-banner-card__banner-header">
             <div class="ss-banner-card__banner-image">
               <SSBannerImage
-                imageKey={banner.characterBanner.featuredCharacter.name.toLowerCase()}
+                name={banner.characterBanner.featuredCharacter.name}
                 alt={banner.characterBanner.featuredCharacter.name}
+                type="character"
                 width={80}
                 height={80}
-                type="character"
               />
             </div>
             <div class="ss-banner-card__banner-info">
@@ -123,11 +123,11 @@ const formatDateWithTime = (dateString: string) => {
           <div class="ss-banner-card__banner-header">
             <div class="ss-banner-card__banner-image">
               <SSBannerImage
-                imageKey={banner.discBanner.featuredDisc.name.toLowerCase().replace(/\s+/g, '-')}
+                name={banner.discBanner.featuredDisc.name}
                 alt={banner.discBanner.featuredDisc.name}
+                type="disc"
                 width={80}
                 height={80}
-                type="disc"
               />
             </div>
             <div class="ss-banner-card__banner-info">

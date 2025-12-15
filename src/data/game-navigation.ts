@@ -192,6 +192,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/stella-sora/characters/' },
+          { name: 'Tier List', href: '/guides/stella-sora/tier-list/' },
           { name: 'Skills', href: '/guides/stella-sora/character-skills/' },
           { name: 'Profiles & VAs', href: '/guides/stella-sora/character-info/' },
           { name: 'Talents', href: '/guides/stella-sora/talents/' },
