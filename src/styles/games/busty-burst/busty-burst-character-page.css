@@ -1,0 +1,877 @@
+/* BBB Character Personal Information Page Styles */
+
+/* ============================================
+   Section Container Base Styles
+   ============================================ */
+.bb-content-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 1.25rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bb-border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-section-title::before {
+  content: '';
+  width: 4px;
+  height: 1.25rem;
+  background: var(--bb-primary);
+  border-radius: 2px;
+}
+
+/* ============================================
+   Character Overview Section
+   ============================================ */
+.bb-character-overview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bb-character-overview-flex {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Character Hero Card (Left Side) */
+.bb-character-hero-card {
+  flex: 0 0 auto;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bb-character-portrait-container {
+  background: var(--bb-bg-secondary);
+  border: 2px solid var(--bb-border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.bb-character-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-character-name-container {
+  text-align: center;
+}
+
+.bb-character-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.bb-character-title {
+  font-size: 0.9rem;
+  color: var(--bb-text-tertiary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Character Badge Row */
+.bb-character-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Character Info Box (Right Side) */
+.bb-character-info-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.bb-character-info-box {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+/* Info Grid */
+.bb-character-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.bb-character-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bb-character-info-label {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.bb-character-info-value {
+  font-size: 1rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-character-info-value img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* ============================================
+   Combat Info Section
+   ============================================ */
+.bb-combat-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.bb-combat-info-item {
+  background: var(--bb-bg-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-combat-info-label {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-combat-info-value {
+  font-size: 1.1rem;
+  color: var(--bb-text-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Position Display */
+.bb-position-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-position-roman {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bb-primary-light);
+}
+
+.bb-position-number {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-position-name {
+  font-size: 0.85rem;
+  color: var(--bb-text-tertiary);
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--bb-border-light);
+}
+
+/* ============================================
+   Skill Types Section
+   ============================================ */
+.bb-skill-types-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bb-skill-type-badge {
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Skill Type Colors */
+.bb-skill-type-badge[data-type='Debuff'] {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.bb-skill-type-badge[data-type='Buff'] {
+  background: rgba(105, 219, 124, 0.15);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.3);
+}
+
+.bb-skill-type-badge[data-type='Heal'] {
+  background: rgba(77, 171, 247, 0.15);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.bb-skill-type-badge[data-type='Cleanse'] {
+  background: rgba(255, 212, 59, 0.15);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.3);
+}
+
+.bb-skill-type-badge[data-type='Disrupt'] {
+  background: rgba(151, 117, 250, 0.15);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.3);
+}
+
+/* ============================================
+   Profile Section (Body Measurements)
+   ============================================ */
+.bb-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.bb-profile-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-profile-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bb-profile-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.bb-profile-value {
+  font-size: 1.1rem;
+  color: var(--bb-text-primary);
+  font-weight: 600;
+}
+
+/* ============================================
+   Credits Section
+   ============================================ */
+.bb-credits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.bb-credit-item {
+  background: var(--bb-bg-secondary);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-credit-label {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-credit-label::before {
+  content: '';
+  width: 3px;
+  height: 0.9rem;
+  background: var(--bb-primary);
+  border-radius: 1px;
+}
+
+.bb-credit-japanese {
+  font-size: 1.1rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.bb-credit-romanized {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+}
+
+/* ============================================
+   Rarity, Element, Role Badges
+   ============================================ */
+.bb-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Rarity Badges */
+.bb-badge-ssr {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.bb-badge-sr {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(160, 160, 160, 0.2));
+  color: #c0c0c0;
+  border: 1px solid rgba(192, 192, 192, 0.4);
+}
+
+/* Element Badges */
+.bb-badge-fire {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.bb-badge-water {
+  background: rgba(77, 171, 247, 0.15);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.bb-badge-wind {
+  background: rgba(105, 219, 124, 0.15);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.3);
+}
+
+.bb-badge-light {
+  background: rgba(255, 236, 153, 0.15);
+  color: #ffec99;
+  border: 1px solid rgba(255, 236, 153, 0.3);
+}
+
+.bb-badge-dark {
+  background: rgba(151, 117, 250, 0.15);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.3);
+}
+
+/* Role Badges */
+.bb-badge-attacker {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff8787;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.bb-badge-support {
+  background: rgba(77, 171, 247, 0.15);
+  color: #74c0fc;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.bb-badge-tank {
+  background: rgba(255, 212, 59, 0.15);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.3);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .bb-character-overview-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bb-character-hero-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .bb-character-info-container {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .bb-character-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-credits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-combat-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-content-section {
+    padding: 1rem;
+  }
+
+  .bb-character-hero-card {
+    max-width: 280px;
+  }
+
+  .bb-character-name {
+    font-size: 1.25rem;
+  }
+
+  .bb-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .bb-profile-item {
+    padding: 0.75rem;
+  }
+
+  .bb-profile-value {
+    font-size: 1rem;
+  }
+
+  .bb-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* ============================================
+   Character Page Container
+   ============================================ */
+.bb-character-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ============================================
+   Element Icon Display
+   ============================================ */
+.bb-element-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.bb-position-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ============================================
+   Character Info Page (Single Page with Cards)
+   ============================================ */
+.bb-character-info-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Stats Overview */
+.bb-character-info-stats {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-character-info-stats h2 {
+  font-size: 1.25rem;
+  color: var(--bb-text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.bb-character-info-stats-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bb-character-info-stat-card {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 100px;
+}
+
+.bb-character-info-stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--bb-primary-light);
+}
+
+.bb-character-info-stat-label {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+}
+
+/* Filter Controls */
+.bb-character-info-controls {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-character-info-filter-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bb-character-info-search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.95rem;
+}
+
+.bb-character-info-search-input::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-character-info-search-input:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+.bb-character-info-filter-select {
+  padding: 0.75rem 1rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.bb-character-info-filter-select:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+/* Character Cards Grid */
+.bb-character-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Individual Character Card */
+.bb-character-info-card {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-character-info-card.hidden {
+  display: none;
+}
+
+/* Card Header */
+.bb-character-info-card-header {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-bottom: 1px solid var(--bb-border);
+  align-items: center;
+}
+
+.bb-character-info-avatar {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+}
+
+.bb-character-info-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-character-info-header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.bb-character-info-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.bb-character-info-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.bb-character-info-badges .bb-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  line-height: 1;
+}
+
+.bb-character-info-badges .bb-badge img {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+/* Card Body */
+.bb-character-info-card-body {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+/* Profile Section in Card */
+.bb-character-info-profile {
+  background: var(--bb-bg-secondary);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+}
+
+.bb-character-info-profile-title {
+  font-size: 0.7rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.bb-character-info-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem 1rem;
+}
+
+.bb-character-info-profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.15rem 0;
+}
+
+.bb-character-info-profile-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+}
+
+.bb-character-info-profile-value {
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+/* Credits Section in Card */
+.bb-character-info-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-character-info-credit-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.bb-character-info-credit-label {
+  font-size: 0.7rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.bb-character-info-credit-value {
+  font-size: 0.9rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+.bb-character-info-credit-romanized {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+  margin-left: 0.25rem;
+}
+
+/* Obtain Badge in Credits - smaller inline style */
+.bb-character-info-credit-value .bb-badge-obtain {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+/* No Results */
+.bb-character-info-no-results {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  display: none;
+}
+
+.bb-character-info-no-results.visible {
+  display: block;
+}
+
+.bb-character-info-no-results h3 {
+  color: var(--bb-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-character-info-no-results p {
+  color: var(--bb-text-secondary);
+  margin: 0;
+}
+
+/* Responsive for Character Info Page */
+@media (max-width: 768px) {
+  .bb-character-info-page {
+    padding: 0.75rem;
+  }
+
+  .bb-character-info-stats {
+    padding: 1.25rem;
+  }
+
+  .bb-character-info-stats h2 {
+    text-align: center;
+  }
+
+  .bb-character-info-stat-card {
+    padding: 0.875rem 1rem;
+  }
+
+  .bb-character-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-character-info-filter-row {
+    flex-direction: column;
+  }
+
+  .bb-character-info-search-input,
+  .bb-character-info-filter-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-character-info-stats {
+    padding: 1rem;
+  }
+
+  .bb-character-info-stats h2 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .bb-character-info-stats-grid {
+    gap: 0.5rem;
+  }
+
+  .bb-character-info-stat-card {
+    flex: 1;
+    min-width: 70px;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bb-character-info-stat-number {
+    font-size: 1.4rem;
+  }
+
+  .bb-character-info-stat-label {
+    font-size: 0.7rem;
+  }
+
+  .bb-character-info-controls {
+    padding: 0.75rem;
+  }
+
+  .bb-character-info-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}

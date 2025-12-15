@@ -56,7 +56,7 @@
 }
 
 /* Role Badge Colors */
-.bb-badge[data-role='DPS'] {
+.bb-badge[data-role='Attacker'] {
   background: rgba(255, 107, 107, 0.15);
   color: #ff8787;
   border: 1px solid rgba(255, 107, 107, 0.3);
@@ -68,16 +68,29 @@
   border: 1px solid rgba(77, 171, 247, 0.3);
 }
 
-.bb-badge[data-role='Healer'] {
-  background: rgba(105, 219, 124, 0.15);
-  color: #8ce99a;
-  border: 1px solid rgba(105, 219, 124, 0.3);
+.bb-badge[data-role='Tank'] {
+  background: rgba(255, 212, 59, 0.15);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.3);
 }
 
-.bb-badge[data-role='Summoner'] {
-  background: rgba(151, 117, 250, 0.15);
-  color: #b197fc;
-  border: 1px solid rgba(151, 117, 250, 0.3);
+/* Obtain Badge Colors */
+.bb-badge[data-obtain='permanent'] {
+  background: rgba(105, 219, 124, 0.2);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.4);
+}
+
+.bb-badge[data-obtain='limited'] {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.bb-badge[data-obtain='seasonal'] {
+  background: rgba(255, 212, 59, 0.2);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.4);
 }
 
 /* Mobile Responsive Badge Styles */

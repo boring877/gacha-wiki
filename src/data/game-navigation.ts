@@ -248,6 +248,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Characters',
         links: [
+          { name: 'Profiles & VAs', href: '/guides/busty-burst/character-info/' },
           { name: 'Tier List', href: '/guides/busty-burst/tier-list#tier-list' },
           { name: 'Build', href: '/guides/busty-burst/build' },
         ],

@@ -111,37 +111,48 @@ const getStatusLabel = (status: string) => {
 
             <section class="banner-content">
               <div class="banner-info">
-                <BBBannerImage
-                  bannerId={banner.image}
-                  alt={banner.title}
-                  width={400}
-                  height={225}
-                />
-                <div class="featured-details">
-                  <h3>Featured Paladins</h3>
-                  <ul class="paladin-list">
-                    {banner.featuredPaladins.map(paladin => (
-                      <li>
-                        <span class="paladin-rarity">{paladin.rarity}</span>
-                        <span class="paladin-name">{paladin.name}</span>
-                        <span class="paladin-type"> - {paladin.type}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div class="summon-banner-card">
+                  <BBBannerImage
+                    bannerId={banner.image}
+                    alt={banner.title}
+                    width={400}
+                    height={225}
+                  />
+                  <div class="featured-details">
+                    <h3>Featured Paladins</h3>
+                    <div class="summon-paladin-list">
+                      {banner.featuredPaladins.map(paladin => (
+                        <div class="summon-paladin-item">
+                          <span class="summon-paladin-name">{paladin.name}</span>
+                          <div class="summon-paladin-badges">
+                            <span class="bb-badge" data-rarity={paladin.rarity}>
+                              {paladin.rarity}
+                            </span>
+                            <span
+                              class="bb-badge"
+                              data-role={paladin.type === 'Attack' ? 'Attacker' : paladin.type}
+                            >
+                              {paladin.type}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
 
-                  <div class="banner-details">
-                    <p>
-                      <strong>Period:</strong> {formatDate(banner.startDate)} -{' '}
-                      {formatDate(banner.endDate)} (UTC)
-                    </p>
-                    <p>
-                      <strong>Details:</strong> {banner.description}
-                    </p>
-                    {banner.note && (
+                    <div class="banner-details">
                       <p>
-                        <strong>Note:</strong> {banner.note}
+                        <strong>Period:</strong> {formatDate(banner.startDate)} -{' '}
+                        {formatDate(banner.endDate)} (UTC)
                       </p>
-                    )}
+                      <p>
+                        <strong>Details:</strong> {banner.description}
+                      </p>
+                      {banner.note && (
+                        <p>
+                          <strong>Note:</strong> {banner.note}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -173,16 +184,23 @@ const getStatusLabel = (status: string) => {
               <div class="banner-info">
                 {season.characters.map(char => (
                   <div class="seasonal-character">
-                    <BBBannerImage bannerId={char.image} alt={char.name} width={400} height={300} />
+                    <BBBannerImage bannerId={char.image} alt={char.name} width={400} height={225} />
                     <div class="featured-details">
                       <h3>Seasonal Character</h3>
-                      <ul class="paladin-list">
-                        <li>
-                          <span class="paladin-rarity">{char.rarity}</span>
-                          <span class="paladin-name">{char.name}</span>
-                          <span class="paladin-type"> - {char.type}</span>
-                        </li>
-                      </ul>
+                      <div class="seasonal-char-info">
+                        <span class="seasonal-char-name">{char.name}</span>
+                        <div class="seasonal-char-badges">
+                          <span class="bb-badge" data-rarity={char.rarity}>
+                            {char.rarity}
+                          </span>
+                          <span
+                            class="bb-badge"
+                            data-role={char.type === 'Attack' ? 'Attacker' : char.type}
+                          >
+                            {char.type}
+                          </span>
+                        </div>
+                      </div>
                       <div class="banner-details">
                         <p>
                           <strong>Season Period:</strong> {formatDate(season.startDate)} -{' '}

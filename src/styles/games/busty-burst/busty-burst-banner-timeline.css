@@ -39,6 +39,10 @@
   padding: 1.5rem;
   border-bottom: 1px solid var(--bb-border);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .banner-header h2 {
@@ -54,7 +58,6 @@
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin-top: 0.5rem;
 }
 
 .banner-type-badge--event {
@@ -490,10 +493,11 @@
 
 /* Seasonal Info */
 .seasonal-info {
-  background: var(--bb-bg-secondary);
+  background: linear-gradient(135deg, var(--bb-bg-secondary), var(--bb-bg-tertiary));
   border: 1px solid var(--bb-border);
+  border-left: 4px solid var(--bb-primary);
   border-radius: 8px;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 2rem;
 }
 
@@ -501,42 +505,277 @@
   color: var(--bb-text-secondary);
   margin: 0;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
+/* Seasonal Character Card */
 .seasonal-character {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: flex-start;
+  background: var(--bb-bg-secondary);
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: 1px solid var(--bb-border);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.seasonal-character:hover {
+  border-color: var(--bb-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.seasonal-character .bb-banner-image {
+  flex-shrink: 0;
+  width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+}
+
+.seasonal-character .bb-banner-image img,
+.seasonal-character .bb-banner-image .bb-banner-image__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.seasonal-character .featured-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.seasonal-character .featured-details h3 {
+  color: var(--bb-primary-light);
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.seasonal-character .paladin-list {
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem 0;
+}
+
+.seasonal-character .paladin-list li {
+  border-bottom: none;
+  padding: 0.25rem 0;
+}
+
+.seasonal-character .paladin-rarity {
+  background: var(--bb-legendary);
+  color: #1a1a1a;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.seasonal-character .paladin-name {
+  font-size: 1.05rem;
+}
+
+.seasonal-character .banner-details {
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 0;
+}
+
+.seasonal-character .banner-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.seasonal-character .banner-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Seasonal Character Info Styles */
+.seasonal-char-info {
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.seasonal-char-badges {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.seasonal-char-badges .bb-badge {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.65rem;
+}
+
+.seasonal-char-name {
+  color: var(--bb-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ========================================
+   SUMMON BANNER CARD STYLES
+   ======================================== */
+
+.summon-banner-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background: var(--bb-bg-secondary);
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: 1px solid var(--bb-border);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.summon-banner-card:hover {
+  border-color: var(--bb-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.summon-banner-card .bb-banner-image {
+  flex-shrink: 0;
+  width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+}
+
+.summon-banner-card .bb-banner-image img,
+.summon-banner-card .bb-banner-image .bb-banner-image__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.summon-banner-card .featured-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.summon-banner-card .featured-details h3 {
+  color: var(--bb-primary-light);
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.summon-banner-card .banner-details {
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 0;
+}
+
+.summon-banner-card .banner-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.summon-banner-card .banner-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Summon Paladin List */
+.summon-paladin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.summon-paladin-item {
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.summon-paladin-badges {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.summon-paladin-badges .bb-badge {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.65rem;
+}
+
+.summon-paladin-name {
+  color: var(--bb-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 /* Tab Mobile Responsive */
 @media (max-width: 768px) {
   .timeline-tabs {
-    flex-direction: column;
-    gap: 0;
-    border-bottom: none;
-    border-left: 2px solid var(--bb-border);
+    gap: 0.25rem;
   }
 
   .tab-btn {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-    text-align: left;
-    margin-bottom: 0;
-    margin-left: -2px;
-  }
-
-  .tab-btn.active {
-    border-left-color: var(--bb-primary-light);
-    border-bottom-color: transparent;
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
   }
 
   .seasonal-character {
     flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
+  .seasonal-character .bb-banner-image {
+    width: 100%;
+    max-width: 100%;
   }
 
   .seasonal-info {
     padding: 0.875rem 1rem;
+  }
+
+  .summon-banner-card {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
+  .summon-banner-card .bb-banner-image {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -552,5 +791,88 @@
 
   .seasonal-description {
     font-size: 0.875rem;
+  }
+
+  .seasonal-character {
+    padding: 0.875rem;
+    gap: 1rem;
+  }
+
+  .seasonal-character .featured-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .seasonal-character .paladin-list {
+    padding: 0.625rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .seasonal-character .paladin-name {
+    font-size: 0.95rem;
+  }
+
+  .seasonal-character .banner-details {
+    padding: 0.75rem;
+  }
+
+  .seasonal-character .banner-details p {
+    font-size: 0.85rem;
+  }
+
+  .seasonal-char-info {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .seasonal-char-badges {
+    gap: 0.25rem;
+  }
+
+  .seasonal-char-badges .bb-badge {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.6rem;
+  }
+
+  .seasonal-char-name {
+    font-size: 0.9rem;
+  }
+
+  .summon-banner-card {
+    padding: 0.875rem;
+    gap: 1rem;
+  }
+
+  .summon-banner-card .featured-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .summon-paladin-item {
+    padding: 0.625rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .summon-paladin-badges {
+    gap: 0.25rem;
+  }
+
+  .summon-paladin-badges .bb-badge {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.6rem;
+  }
+
+  .summon-paladin-name {
+    font-size: 0.9rem;
+  }
+
+  .summon-banner-card .banner-details {
+    padding: 0.75rem;
+  }
+
+  .summon-banner-card .banner-details p {
+    font-size: 0.85rem;
   }
 }

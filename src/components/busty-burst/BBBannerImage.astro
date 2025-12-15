@@ -23,6 +23,10 @@ export interface Props {
 const { bannerId, alt, width = 400, height = 225 } = Astro.props;
 
 const imageSrc = bannerImages[bannerId];
+
+// Get original image dimensions
+const originalWidth = imageSrc?.width || width;
+const originalHeight = imageSrc?.height || height;
 ---
 
 {
@@ -31,8 +35,8 @@ const imageSrc = bannerImages[bannerId];
       <Image
         src={imageSrc}
         alt={alt}
-        width={width}
-        height={height}
+        width={originalWidth}
+        height={originalHeight}
         class="bb-banner-image__img"
         loading="lazy"
       />
@@ -50,9 +54,7 @@ const imageSrc = bannerImages[bannerId];
 
   .bb-banner-image__img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
     display: block;
     border-radius: inherit;
   }

@@ -1,0 +1,260 @@
+---
+// Busty Burst Character Profiles & Voice Actors Page
+// Lists all characters with their personal profiles, illustrators, and voice actors
+
+import CharacterInfoLayout from '../../../layouts/busty-burst/CharacterInfoLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import { getAllCharacters } from '../../../data/busty-burst/character-info.js';
+
+// Get all characters
+const characters = getAllCharacters();
+
+const title = 'Busty Burst Character Profiles & Voice Actors';
+const description = `Complete Busty Burst character profiles. View personal info, illustrators, and voice actors for all ${characters.length} characters.`;
+const gameTitle = 'Character Profiles & Voice Actors';
+
+// Get image file name helper
+const getImageFileName = (image: string) => {
+  return image.includes('Shaty') ? `${image}.png` : `${image}.jpg`;
+};
+---
+
+<CharacterInfoLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-character-info-page">
+    <!-- Stats Overview -->
+    <div class="bb-character-info-stats">
+      <h2>Overview</h2>
+      <div class="bb-character-info-stats-grid">
+        <div class="bb-character-info-stat-card">
+          <div class="bb-character-info-stat-number">{characters.length}</div>
+          <div class="bb-character-info-stat-label">Total Characters</div>
+        </div>
+        <div class="bb-character-info-stat-card">
+          <div class="bb-character-info-stat-number">
+            {characters.filter(c => c.role === 'Attacker').length}
+          </div>
+          <div class="bb-character-info-stat-label">Attackers</div>
+        </div>
+        <div class="bb-character-info-stat-card">
+          <div class="bb-character-info-stat-number">
+            {characters.filter(c => c.role === 'Support').length}
+          </div>
+          <div class="bb-character-info-stat-label">Supports</div>
+        </div>
+        <div class="bb-character-info-stat-card">
+          <div class="bb-character-info-stat-number">
+            {characters.filter(c => c.role === 'Tank').length}
+          </div>
+          <div class="bb-character-info-stat-label">Tanks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="bb-character-info-controls">
+      <div class="bb-character-info-filter-row">
+        <input
+          type="text"
+          id="character-search"
+          class="bb-character-info-search-input"
+          placeholder="Search by name, illustrator, or voice actor..."
+        />
+        <select id="element-filter" class="bb-character-info-filter-select">
+          <option value="">All Elements</option>
+          <option value="Fire">Fire</option>
+          <option value="Water">Water</option>
+          <option value="Wind">Wind</option>
+          <option value="Light">Light</option>
+          <option value="Dark">Dark</option>
+        </select>
+        <select id="role-filter" class="bb-character-info-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Support">Support</option>
+          <option value="Tank">Tank</option>
+        </select>
+        <select id="rarity-filter" class="bb-character-info-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Character Cards Grid -->
+    <div class="bb-character-info-grid" id="character-grid">
+      {
+        characters.map(char => (
+          <div
+            class="bb-character-info-card"
+            data-name={char.displayName.toLowerCase()}
+            data-element={char.element}
+            data-role={char.role}
+            data-rarity={char.rarity}
+            data-illustrator={char.credits.illustration.romanized.toLowerCase()}
+            data-voice={char.credits.voice.romanized.toLowerCase()}
+          >
+            <div class="bb-character-info-card-header">
+              <div class="bb-character-info-avatar">
+                <PaladinImage
+                  fileName={getImageFileName(char.image)}
+                  alt={char.displayName}
+                  width={140}
+                  height={140}
+                />
+              </div>
+              <div class="bb-character-info-header-text">
+                <h3 class="bb-character-info-name">{char.displayName}</h3>
+                <div class="bb-character-info-badges">
+                  <span class="bb-badge" data-rarity={char.rarity}>
+                    {char.rarity}
+                  </span>
+                  <span class="bb-badge" data-element={char.element}>
+                    <ElementImage element={char.element} width={16} height={16} />
+                    {char.element}
+                  </span>
+                  <span class="bb-badge" data-role={char.role}>
+                    {char.role}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="bb-character-info-card-body">
+              <div class="bb-character-info-profile">
+                <div class="bb-character-info-profile-title">Personal Profile</div>
+                <div class="bb-character-info-profile-grid">
+                  <div class="bb-character-info-profile-item">
+                    <span class="bb-character-info-profile-label">Height</span>
+                    <span class="bb-character-info-profile-value">{char.profile.height}</span>
+                  </div>
+                  <div class="bb-character-info-profile-item">
+                    <span class="bb-character-info-profile-label">Bust</span>
+                    <span class="bb-character-info-profile-value">{char.profile.bust}</span>
+                  </div>
+                  <div class="bb-character-info-profile-item">
+                    <span class="bb-character-info-profile-label">Waist</span>
+                    <span class="bb-character-info-profile-value">{char.profile.waist}</span>
+                  </div>
+                  <div class="bb-character-info-profile-item">
+                    <span class="bb-character-info-profile-label">Hips</span>
+                    <span class="bb-character-info-profile-value">{char.profile.hips}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bb-character-info-credits">
+                <div class="bb-character-info-credit-item">
+                  <span class="bb-character-info-credit-label">Illustrator</span>
+                  <span class="bb-character-info-credit-value">
+                    {char.credits.illustration.japanese}
+                    {char.credits.illustration.romanized !== char.credits.illustration.japanese && (
+                      <span class="bb-character-info-credit-romanized">
+                        ({char.credits.illustration.romanized})
+                      </span>
+                    )}
+                  </span>
+                </div>
+                <div class="bb-character-info-credit-item">
+                  <span class="bb-character-info-credit-label">Voice Actor</span>
+                  <span class="bb-character-info-credit-value">
+                    {char.credits.voice.japanese}
+                    {char.credits.voice.romanized !== char.credits.voice.japanese && (
+                      <span class="bb-character-info-credit-romanized">
+                        ({char.credits.voice.romanized})
+                      </span>
+                    )}
+                  </span>
+                </div>
+                <div class="bb-character-info-credit-item">
+                  <span class="bb-character-info-credit-label">Obtain</span>
+                  <span class="bb-character-info-credit-value">
+                    <span class="bb-badge bb-badge-obtain" data-obtain={char.obtain.type}>
+                      {char.obtain.type}
+                    </span>
+                    {char.obtain.source}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- No Results Message -->
+    <div class="bb-character-info-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</CharacterInfoLayout>
+
+<script>
+  // Filter functionality
+  function initFilters() {
+    const searchInput = document.getElementById('character-search') as HTMLInputElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const characterGrid = document.getElementById('character-grid');
+    const noResults = document.getElementById('no-results');
+
+    if (!characterGrid) return;
+
+    const cards = characterGrid.querySelectorAll('.bb-character-info-card');
+
+    function filterCards() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const elementValue = elementFilter?.value || '';
+      const roleValue = roleFilter?.value || '';
+      const rarityValue = rarityFilter?.value || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const name = cardEl.dataset.name || '';
+        const element = cardEl.dataset.element || '';
+        const role = cardEl.dataset.role || '';
+        const rarity = cardEl.dataset.rarity || '';
+        const illustrator = cardEl.dataset.illustrator || '';
+        const voice = cardEl.dataset.voice || '';
+
+        // Check search term
+        const matchesSearch =
+          !searchTerm ||
+          name.includes(searchTerm) ||
+          illustrator.includes(searchTerm) ||
+          voice.includes(searchTerm);
+
+        // Check filters
+        const matchesElement = !elementValue || element === elementValue;
+        const matchesRole = !roleValue || role === roleValue;
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+
+        const isVisible = matchesSearch && matchesElement && matchesRole && matchesRarity;
+
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+    }
+
+    // Add event listeners
+    searchInput?.addEventListener('input', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    roleFilter?.addEventListener('change', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilters);
+  } else {
+    initFilters();
+  }
+</script>
