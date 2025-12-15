@@ -48,7 +48,7 @@ function getPotentialByName(pots: any, name: string): any {
     ...(pots.mainNormal || []),
     ...(pots.supportCore || []),
     ...(pots.supportNormal || []),
-    ...(pots.common || [])
+    ...(pots.common || []),
   ];
   return allPots.find((p: any) => p.name === name);
 }
@@ -290,21 +290,30 @@ function getTotalDupes(rarity: string): number {
             <span class={`position-badge position-${(character.role || 'Unknown').toLowerCase()}`}
               >{character.role || 'Unknown'}</span
             >
-            {character.attackType && (
-              <div class="attack-type-badge-container">
-                <div class="attack-type-icon-detail">
-                  <SSAttackTypeImage attackType={character.attackType} alt={character.attackType} />
+            {
+              character.attackType && (
+                <div class="attack-type-badge-container">
+                  <div class="attack-type-icon-detail">
+                    <SSAttackTypeImage
+                      attackType={character.attackType}
+                      alt={character.attackType}
+                    />
+                  </div>
+                  <span
+                    class={`attack-type-badge attack-type-${character.attackType.toLowerCase()}`}
+                  >
+                    {character.attackType}
+                  </span>
                 </div>
-                <span class={`attack-type-badge attack-type-${character.attackType.toLowerCase()}`}
-                  >{character.attackType}</span
-                >
-              </div>
-            )}
-            {character.style && (
-              <span class={`style-badge style-${character.style.toLowerCase()}`}
-                >{character.style}</span
-              >
-            )}
+              )
+            }
+            {
+              character.style && (
+                <span class={`style-badge style-${character.style.toLowerCase()}`}>
+                  {character.style}
+                </span>
+              )
+            }
           </div>
           <div class="character-lore">
             <h3>Lore</h3>
@@ -315,40 +324,46 @@ function getTotalDupes(rarity: string): number {
           <div class="character-personal-info">
             <h3>Personal Info</h3>
             <div class="personal-info-grid">
-              {character.faction && (
-                <div class="info-item">
-                  <span class="info-label">Faction</span>
-                  <span class="info-value">{character.faction}</span>
-                </div>
-              )}
-              {character.birthday && (
-                <div class="info-item">
-                  <span class="info-label">Birthday</span>
-                  <span class="info-value">{character.birthday}</span>
-                </div>
-              )}
-              {character.voiceActor && (
-                <>
+              {
+                character.faction && (
                   <div class="info-item">
-                    <span class="info-label">VA (JP)</span>
-                    <span class="info-value">
-                      {character.voiceActor.jp}
-                      {character.voiceActor.jpLocalized && (
-                        <span class="localized-name"> ({character.voiceActor.jpLocalized})</span>
-                      )}
-                    </span>
+                    <span class="info-label">Faction</span>
+                    <span class="info-value">{character.faction}</span>
                   </div>
+                )
+              }
+              {
+                character.birthday && (
                   <div class="info-item">
-                    <span class="info-label">VA (CN)</span>
-                    <span class="info-value">
-                      {character.voiceActor.cn}
-                      {character.voiceActor.cnLocalized && (
-                        <span class="localized-name"> ({character.voiceActor.cnLocalized})</span>
-                      )}
-                    </span>
+                    <span class="info-label">Birthday</span>
+                    <span class="info-value">{character.birthday}</span>
                   </div>
-                </>
-              )}
+                )
+              }
+              {
+                character.voiceActor && (
+                  <>
+                    <div class="info-item">
+                      <span class="info-label">VA (JP)</span>
+                      <span class="info-value">
+                        {character.voiceActor.jp}
+                        {character.voiceActor.jpLocalized && (
+                          <span class="localized-name"> ({character.voiceActor.jpLocalized})</span>
+                        )}
+                      </span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">VA (CN)</span>
+                      <span class="info-value">
+                        {character.voiceActor.cn}
+                        {character.voiceActor.cnLocalized && (
+                          <span class="localized-name"> ({character.voiceActor.cnLocalized})</span>
+                        )}
+                      </span>
+                    </div>
+                  </>
+                )
+              }
             </div>
           </div>
         </div>
@@ -368,20 +383,21 @@ function getTotalDupes(rarity: string): number {
     <!-- Character Statistics - Clean Table Layout -->
     <section class="character-stats-container">
       <h2>Character Statistics</h2>
-      {character.levelStats && character.levelStats.length > 0 && (
-        <div class="stats-selectors-row">
-          <div class="stats-level-selector">
-            <label for="stats-level-input">Level:</label>
-            <input
-              type="number"
-              id="stats-level-input"
-              class="level-input"
-              value="90"
-              min="1"
-              max="90"
-              step="1"
-            />
-          </div>
+      {
+        character.levelStats && character.levelStats.length > 0 && (
+          <div class="stats-selectors-row">
+            <div class="stats-level-selector">
+              <label for="stats-level-input">Level:</label>
+              <input
+                type="number"
+                id="stats-level-input"
+                class="level-input"
+                value="90"
+                min="1"
+                max="90"
+                step="1"
+              />
+            </div>
             <div class="stats-ascension-selector">
               <label for="stats-ascension-select">Ascension:</label>
               <select id="stats-ascension-select" class="level-select">
@@ -393,16 +409,23 @@ function getTotalDupes(rarity: string): number {
                 <option value="5">A5 (Lv 50-60)</option>
                 <option value="6">A6 (Lv 60-70)</option>
                 <option value="7">A7 (Lv 70-80)</option>
-                <option value="8" selected>A8 (Lv 80-90)</option>
+                <option value="8" selected>
+                  A8 (Lv 80-90)
+                </option>
               </select>
             </div>
-          <div class="ascension-bonus" id="ascension-bonus">
-            <span class="bonus-label">Ascension Bonus:</span>
-            <span class="bonus-value" id="ascension-hp-bonus">+0 HP</span>
-            <span class="bonus-value" id="ascension-atk-bonus">+0 ATK</span>
+            <div class="ascension-bonus" id="ascension-bonus">
+              <span class="bonus-label">Ascension Bonus:</span>
+              <span class="bonus-value" id="ascension-hp-bonus">
+                +0 HP
+              </span>
+              <span class="bonus-value" id="ascension-atk-bonus">
+                +0 ATK
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <div class="stats-list-layout">
         <div class="stat-section-group">
@@ -436,9 +459,15 @@ function getTotalDupes(rarity: string): number {
         </div>
 
         {/* Hidden data for JavaScript */}
-        {character.levelStats && (
-          <div id="level-stats-data" data-stats={JSON.stringify(character.levelStats)} style="display:none;"></div>
-        )}
+        {
+          character.levelStats && (
+            <div
+              id="level-stats-data"
+              data-stats={JSON.stringify(character.levelStats)}
+              style="display:none;"
+            />
+          )
+        }
 
         <div class="stat-section-group">
           <h3 class="stats-section-title">Combat Stats</h3>
@@ -581,306 +610,393 @@ function getTotalDupes(rarity: string): number {
     </section>
 
     <!-- Gift Preferences -->
-    {character.giftPreferences && character.giftPreferences.loves && character.giftPreferences.loves.length > 0 && (
-      <section class="character-gifts">
-        <h2>Gift Preferences</h2>
+    {
+      character.giftPreferences &&
+        character.giftPreferences.loves &&
+        character.giftPreferences.loves.length > 0 && (
+          <section class="character-gifts">
+            <h2>Gift Preferences</h2>
 
-        <!-- Point System Info -->
-        <div class="gifts-point-info">
-          <div class="point-legend">
-            <div class="point-item loved">
-              <span class="point-label">Loved</span>
-              <span class="point-value">+50% bonus</span>
-            </div>
-            <div class="point-item neutral">
-              <span class="point-label">Neutral</span>
-              <span class="point-value">Base points</span>
-            </div>
-            <div class="point-item hated">
-              <span class="point-label">Hated</span>
-              <span class="point-value">-20% penalty</span>
-            </div>
-          </div>
-          <div class="point-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Rarity</th>
-                  <th>Loved</th>
-                  <th>Neutral</th>
-                  <th>Hated</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>3-Star</td>
-                  <td class="loved">225</td>
-                  <td>150</td>
-                  <td class="hated">120</td>
-                </tr>
-                <tr>
-                  <td>4-Star</td>
-                  <td class="loved">750</td>
-                  <td>500</td>
-                  <td class="hated">400</td>
-                </tr>
-                <tr>
-                  <td>5-Star</td>
-                  <td class="loved">3,000</td>
-                  <td>2,000</td>
-                  <td class="hated">1,600</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Lv. 30 Recommendation -->
-        <div class="gifts-recommendation">
-          <h4>Recommended Target: Lv. 30</h4>
-          <p>Reaching Lv. 30 affinity gives you all 6 ATK% milestone bonuses (24% total) plus +1,080 ATK and +10,020 HP. This is the most cost-efficient target before the point requirements increase significantly.</p>
-          <div class="lv30-stats">
-            <span class="stat">+1,080 ATK</span>
-            <span class="stat">+10,020 HP</span>
-            <span class="stat highlight">+24% ATK</span>
-          </div>
-          <p class="lv30-cost">Total points needed: <strong>316,900</strong></p>
-        </div>
-
-        <div class="gifts-container">
-          {character.giftPreferences.loves.length > 0 && (
-            <div class="gifts-category">
-              <h3 class="gifts-category-title loves">Favorite Gifts (+50% bonus)</h3>
-              <div class="gifts-grid">
-                {character.giftPreferences.loves.map((gift: { name: string; image: string }) => {
-                  const giftData = getGiftByName(gift.name);
-                  const lv30Points = 316900;
-                  const giftsNeeded = giftData ? Math.ceil(lv30Points / giftData.points.loved) : 0;
-                  return (
-                    <div class="gift-item">
-                      {giftData && (
-                        <span class={`gift-rarity rarity-${giftData.rarity}`}>{giftData.rarity}-Star</span>
-                      )}
-                      <div class="gift-image-wrapper">
-                        <SSGiftImage giftName={gift.name} alt={gift.name} width={64} height={64} />
-                      </div>
-                      <span class="gift-name">{gift.name}</span>
-                      {giftData && (
-                        <>
-                          <span class="gift-points loved">+{giftData.points.loved} pts</span>
-                          <span class="gift-needed">{giftsNeeded.toLocaleString()} for Lv.30</span>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
+            {/* Point System Info */}
+            <div class="gifts-point-info">
+              <div class="point-legend">
+                <div class="point-item loved">
+                  <span class="point-label">Loved</span>
+                  <span class="point-value">+50% bonus</span>
+                </div>
+                <div class="point-item neutral">
+                  <span class="point-label">Neutral</span>
+                  <span class="point-value">Base points</span>
+                </div>
+                <div class="point-item hated">
+                  <span class="point-label">Hated</span>
+                  <span class="point-value">-20% penalty</span>
+                </div>
+              </div>
+              <div class="point-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Rarity</th>
+                      <th>Loved</th>
+                      <th>Neutral</th>
+                      <th>Hated</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>3-Star</td>
+                      <td class="loved">225</td>
+                      <td>150</td>
+                      <td class="hated">120</td>
+                    </tr>
+                    <tr>
+                      <td>4-Star</td>
+                      <td class="loved">750</td>
+                      <td>500</td>
+                      <td class="hated">400</td>
+                    </tr>
+                    <tr>
+                      <td>5-Star</td>
+                      <td class="loved">3,000</td>
+                      <td>2,000</td>
+                      <td class="hated">1,600</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          )}
-          {character.giftPreferences.hates && character.giftPreferences.hates.length > 0 && (
-            <div class="gifts-category">
-              <h3 class="gifts-category-title hates">Disliked Gifts (-20% penalty)</h3>
-              <div class="gifts-grid">
-                {character.giftPreferences.hates.map((gift: { name: string; image: string }) => {
-                  const giftData = getGiftByName(gift.name);
-                  const lv30Points = 316900;
-                  const giftsNeeded = giftData ? Math.ceil(lv30Points / giftData.points.hated) : 0;
-                  return (
-                    <div class="gift-item disliked">
-                      {giftData && (
-                        <span class={`gift-rarity rarity-${giftData.rarity}`}>{giftData.rarity}-Star</span>
-                      )}
-                      <div class="gift-image-wrapper">
-                        <SSGiftImage giftName={gift.name} alt={gift.name} width={64} height={64} />
-                      </div>
-                      <span class="gift-name">{gift.name}</span>
-                      {giftData && (
-                        <>
-                          <span class="gift-points hated">{giftData.points.hated} pts</span>
-                          <span class="gift-needed">{giftsNeeded.toLocaleString()} for Lv.30</span>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
 
-        <!-- Link to Full Gift Guide -->
-        <div class="gifts-link">
-          <a href="/guides/stella-sora/character-gifts" class="gift-guide-link">
-            View Full Gift Guide & All Character Preferences
-          </a>
-        </div>
-      </section>
-    )}
+            {/* Lv. 30 Recommendation */}
+            <div class="gifts-recommendation">
+              <h4>Recommended Target: Lv. 30</h4>
+              <p>
+                Reaching Lv. 30 affinity gives you all 6 ATK% milestone bonuses (24% total) plus
+                +1,080 ATK and +10,020 HP. This is the most cost-efficient target before the point
+                requirements increase significantly.
+              </p>
+              <div class="lv30-stats">
+                <span class="stat">+1,080 ATK</span>
+                <span class="stat">+10,020 HP</span>
+                <span class="stat highlight">+24% ATK</span>
+              </div>
+              <p class="lv30-cost">
+                Total points needed: <strong>316,900</strong>
+              </p>
+            </div>
+
+            <div class="gifts-container">
+              {character.giftPreferences.loves.length > 0 && (
+                <div class="gifts-category">
+                  <h3 class="gifts-category-title loves">Favorite Gifts (+50% bonus)</h3>
+                  <div class="gifts-grid">
+                    {character.giftPreferences.loves.map(
+                      (gift: { name: string; image: string }) => {
+                        const giftData = getGiftByName(gift.name);
+                        const lv30Points = 316900;
+                        const giftsNeeded = giftData
+                          ? Math.ceil(lv30Points / giftData.points.loved)
+                          : 0;
+                        return (
+                          <div class="gift-item">
+                            {giftData && (
+                              <span class={`gift-rarity rarity-${giftData.rarity}`}>
+                                {giftData.rarity}-Star
+                              </span>
+                            )}
+                            <div class="gift-image-wrapper">
+                              <SSGiftImage
+                                giftName={gift.name}
+                                alt={gift.name}
+                                width={64}
+                                height={64}
+                              />
+                            </div>
+                            <span class="gift-name">{gift.name}</span>
+                            {giftData && (
+                              <>
+                                <span class="gift-points loved">+{giftData.points.loved} pts</span>
+                                <span class="gift-needed">
+                                  {giftsNeeded.toLocaleString()} for Lv.30
+                                </span>
+                              </>
+                            )}
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                </div>
+              )}
+              {character.giftPreferences.hates && character.giftPreferences.hates.length > 0 && (
+                <div class="gifts-category">
+                  <h3 class="gifts-category-title hates">Disliked Gifts (-20% penalty)</h3>
+                  <div class="gifts-grid">
+                    {character.giftPreferences.hates.map(
+                      (gift: { name: string; image: string }) => {
+                        const giftData = getGiftByName(gift.name);
+                        const lv30Points = 316900;
+                        const giftsNeeded = giftData
+                          ? Math.ceil(lv30Points / giftData.points.hated)
+                          : 0;
+                        return (
+                          <div class="gift-item disliked">
+                            {giftData && (
+                              <span class={`gift-rarity rarity-${giftData.rarity}`}>
+                                {giftData.rarity}-Star
+                              </span>
+                            )}
+                            <div class="gift-image-wrapper">
+                              <SSGiftImage
+                                giftName={gift.name}
+                                alt={gift.name}
+                                width={64}
+                                height={64}
+                              />
+                            </div>
+                            <span class="gift-name">{gift.name}</span>
+                            {giftData && (
+                              <>
+                                <span class="gift-points hated">{giftData.points.hated} pts</span>
+                                <span class="gift-needed">
+                                  {giftsNeeded.toLocaleString()} for Lv.30
+                                </span>
+                              </>
+                            )}
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Link to Full Gift Guide */}
+            <div class="gifts-link">
+              <a href="/guides/stella-sora/character-gifts" class="gift-guide-link">
+                View Full Gift Guide & All Character Preferences
+              </a>
+            </div>
+          </section>
+        )
+    }
     <!-- Character Skills -->
     <section class="character-skills">
       <h2>Skills & Abilities</h2>
 
       {/* Skill Level Selector - only show if skillsDetailed exists */}
-      {character.skillsDetailed && (
-        <div class="skill-level-selector">
-          <label for="skill-level-input">Skill Level:</label>
-          <div class="level-input-group">
-            <button type="button" class="level-btn level-btn-minus" id="skill-level-minus">-</button>
-            <input type="number" id="skill-level-input" class="level-input" min="1" max="13" value="13" />
-            <button type="button" class="level-btn level-btn-plus" id="skill-level-plus">+</button>
+      {
+        character.skillsDetailed && (
+          <div class="skill-level-selector">
+            <label for="skill-level-input">Skill Level:</label>
+            <div class="level-input-group">
+              <button type="button" class="level-btn level-btn-minus" id="skill-level-minus">
+                -
+              </button>
+              <input
+                type="number"
+                id="skill-level-input"
+                class="level-input"
+                min="1"
+                max="13"
+                value="13"
+              />
+              <button type="button" class="level-btn level-btn-plus" id="skill-level-plus">
+                +
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <div class="skills-list">
         {/* Character Skills */}
-        {character.skillsDetailed && (
-          <>
-            {/* Normal Attack */}
-            <div class="skill-card" data-skill-type="normalAttack">
-              <div class="skill-card-layout">
-                <div class="skill-content">
-                  <div class="skill-header">
-                    <div class="skill-title-row">
-                      <h3 class="skill-name">{character.skillsDetailed.normalAttack.name}</h3>
-                      <span class="skill-type skill-type-attack">Attack</span>
-                    </div>
-                  </div>
-                  <div class="skill-damage">
-                    <p class="skill-description" data-description={character.skillsDetailed.normalAttack.description} data-params={JSON.stringify(character.skillsDetailed.normalAttack.params)}>
-                      {/* Description will be populated by JS with param values */}
-                    </p>
-                  </div>
-                </div>
-                <div class="skill-icon-wrapper">
-                  <SSSkillImage
-                    characterName={character.name}
-                    skillType="normal-attack"
-                    alt={`${character.skillsDetailed.normalAttack.name} - Attack`}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Main Skill */}
-            <div class="skill-card" data-skill-type="skill">
-              <div class="skill-card-layout">
-                <div class="skill-content">
-                  <div class="skill-header">
-                    <div class="skill-title-row">
-                      <h3 class="skill-name">{character.skillsDetailed.skill.name}</h3>
-                      <span class="skill-type skill-type-main-skill">Main Skill</span>
-                    </div>
-                    <div class="skill-meta">
-                      <span class="skill-cooldown">CD: {character.skillsDetailed.skill.cooldown}</span>
-                    </div>
-                  </div>
-                  <div class="skill-damage">
-                    <p class="skill-description" data-description={character.skillsDetailed.skill.description} data-params={JSON.stringify(character.skillsDetailed.skill.params)}>
-                      {/* Description will be populated by JS with param values */}
-                    </p>
-                    {character.skillsDetailed.skill.hints && Object.keys(character.skillsDetailed.skill.hints).length > 0 && (
-                      <div class="skill-hints">
-                        <h4>Status Effects:</h4>
-                        {Object.entries(character.skillsDetailed.skill.hints).map(([id, hint]: [string, any]) => (
-                          <div class="hint-item">
-                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
-                          </div>
-                        ))}
+        {
+          character.skillsDetailed && (
+            <>
+              {/* Normal Attack */}
+              <div class="skill-card" data-skill-type="normalAttack">
+                <div class="skill-card-layout">
+                  <div class="skill-content">
+                    <div class="skill-header">
+                      <div class="skill-title-row">
+                        <h3 class="skill-name">{character.skillsDetailed.normalAttack.name}</h3>
+                        <span class="skill-type skill-type-attack">Attack</span>
                       </div>
-                    )}
+                    </div>
+                    <div class="skill-damage">
+                      <p
+                        class="skill-description"
+                        data-description={character.skillsDetailed.normalAttack.description}
+                        data-params={JSON.stringify(character.skillsDetailed.normalAttack.params)}
+                      >
+                        {/* Description will be populated by JS with param values */}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="skill-icon-wrapper">
+                    <SSSkillImage
+                      characterName={character.name}
+                      skillType="normal-attack"
+                      alt={`${character.skillsDetailed.normalAttack.name} - Attack`}
+                    />
                   </div>
                 </div>
-                <div class="skill-icon-wrapper">
-                  <SSSkillImage
-                    characterName={character.name}
-                    skillType="skill"
-                    alt={`${character.skillsDetailed.skill.name} - Main Skill`}
-                  />
-                </div>
               </div>
-            </div>
 
-            {/* Support Skill */}
-            <div class="skill-card" data-skill-type="supportSkill">
-              <div class="skill-card-layout">
-                <div class="skill-content">
-                  <div class="skill-header">
-                    <div class="skill-title-row">
-                      <h3 class="skill-name">{character.skillsDetailed.supportSkill.name}</h3>
-                      <span class="skill-type skill-type-support-skill">Support Skill</span>
-                    </div>
-                    <div class="skill-meta">
-                      <span class="skill-cooldown">CD: {character.skillsDetailed.supportSkill.cooldown}</span>
-                    </div>
-                  </div>
-                  <div class="skill-damage">
-                    <p class="skill-description" data-description={character.skillsDetailed.supportSkill.description} data-params={JSON.stringify(character.skillsDetailed.supportSkill.params)}>
-                      {/* Description will be populated by JS with param values */}
-                    </p>
-                    {character.skillsDetailed.supportSkill.hints && Object.keys(character.skillsDetailed.supportSkill.hints).length > 0 && (
-                      <div class="skill-hints">
-                        <h4>Status Effects:</h4>
-                        {Object.entries(character.skillsDetailed.supportSkill.hints).map(([id, hint]: [string, any]) => (
-                          <div class="hint-item">
-                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
-                          </div>
-                        ))}
+              {/* Main Skill */}
+              <div class="skill-card" data-skill-type="skill">
+                <div class="skill-card-layout">
+                  <div class="skill-content">
+                    <div class="skill-header">
+                      <div class="skill-title-row">
+                        <h3 class="skill-name">{character.skillsDetailed.skill.name}</h3>
+                        <span class="skill-type skill-type-main-skill">Main Skill</span>
                       </div>
-                    )}
+                      <div class="skill-meta">
+                        <span class="skill-cooldown">
+                          CD: {character.skillsDetailed.skill.cooldown}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="skill-damage">
+                      <p
+                        class="skill-description"
+                        data-description={character.skillsDetailed.skill.description}
+                        data-params={JSON.stringify(character.skillsDetailed.skill.params)}
+                      >
+                        {/* Description will be populated by JS with param values */}
+                      </p>
+                      {character.skillsDetailed.skill.hints &&
+                        Object.keys(character.skillsDetailed.skill.hints).length > 0 && (
+                          <div class="skill-hints">
+                            <h4>Status Effects:</h4>
+                            {Object.entries(character.skillsDetailed.skill.hints).map(
+                              ([id, hint]: [string, any]) => (
+                                <div class="hint-item">
+                                  <strong>{hint.name}:</strong>{' '}
+                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
+                    </div>
                   </div>
-                </div>
-                <div class="skill-icon-wrapper">
-                  <SSSkillImage
-                    characterName={character.name}
-                    skillType="support-skill"
-                    alt={`${character.skillsDetailed.supportSkill.name} - Support Skill`}
-                  />
+                  <div class="skill-icon-wrapper">
+                    <SSSkillImage
+                      characterName={character.name}
+                      skillType="skill"
+                      alt={`${character.skillsDetailed.skill.name} - Main Skill`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Ultimate */}
-            <div class="skill-card" data-skill-type="ultimate">
-              <div class="skill-card-layout">
-                <div class="skill-content">
-                  <div class="skill-header">
-                    <div class="skill-title-row">
-                      <h3 class="skill-name">{character.skillsDetailed.ultimate.name}</h3>
-                      <span class="skill-type skill-type-ultimate">Ultimate</span>
-                    </div>
-                    <div class="skill-meta">
-                      <span class="skill-cooldown">CD: {character.skillsDetailed.ultimate.cooldown}</span>
-                      <span class="skill-energy">Energy: {character.skillsDetailed.ultimate.energy}</span>
-                    </div>
-                  </div>
-                  <div class="skill-damage">
-                    <p class="skill-description" data-description={character.skillsDetailed.ultimate.description} data-params={JSON.stringify(character.skillsDetailed.ultimate.params)}>
-                      {/* Description will be populated by JS with param values */}
-                    </p>
-                    {character.skillsDetailed.ultimate.hints && Object.keys(character.skillsDetailed.ultimate.hints).length > 0 && (
-                      <div class="skill-hints">
-                        <h4>Status Effects:</h4>
-                        {Object.entries(character.skillsDetailed.ultimate.hints).map(([id, hint]: [string, any]) => (
-                          <div class="hint-item">
-                            <strong>{hint.name}:</strong> <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
-                          </div>
-                        ))}
+              {/* Support Skill */}
+              <div class="skill-card" data-skill-type="supportSkill">
+                <div class="skill-card-layout">
+                  <div class="skill-content">
+                    <div class="skill-header">
+                      <div class="skill-title-row">
+                        <h3 class="skill-name">{character.skillsDetailed.supportSkill.name}</h3>
+                        <span class="skill-type skill-type-support-skill">Support Skill</span>
                       </div>
-                    )}
+                      <div class="skill-meta">
+                        <span class="skill-cooldown">
+                          CD: {character.skillsDetailed.supportSkill.cooldown}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="skill-damage">
+                      <p
+                        class="skill-description"
+                        data-description={character.skillsDetailed.supportSkill.description}
+                        data-params={JSON.stringify(character.skillsDetailed.supportSkill.params)}
+                      >
+                        {/* Description will be populated by JS with param values */}
+                      </p>
+                      {character.skillsDetailed.supportSkill.hints &&
+                        Object.keys(character.skillsDetailed.supportSkill.hints).length > 0 && (
+                          <div class="skill-hints">
+                            <h4>Status Effects:</h4>
+                            {Object.entries(character.skillsDetailed.supportSkill.hints).map(
+                              ([id, hint]: [string, any]) => (
+                                <div class="hint-item">
+                                  <strong>{hint.name}:</strong>{' '}
+                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
+                    </div>
                   </div>
-                </div>
-                <div class="skill-icon-wrapper">
-                  <SSSkillImage
-                    characterName={character.name}
-                    skillType="ultimate"
-                    alt={`${character.skillsDetailed.ultimate.name} - Ultimate`}
-                  />
+                  <div class="skill-icon-wrapper">
+                    <SSSkillImage
+                      characterName={character.name}
+                      skillType="support-skill"
+                      alt={`${character.skillsDetailed.supportSkill.name} - Support Skill`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        )}
+
+              {/* Ultimate */}
+              <div class="skill-card" data-skill-type="ultimate">
+                <div class="skill-card-layout">
+                  <div class="skill-content">
+                    <div class="skill-header">
+                      <div class="skill-title-row">
+                        <h3 class="skill-name">{character.skillsDetailed.ultimate.name}</h3>
+                        <span class="skill-type skill-type-ultimate">Ultimate</span>
+                      </div>
+                      <div class="skill-meta">
+                        <span class="skill-cooldown">
+                          CD: {character.skillsDetailed.ultimate.cooldown}
+                        </span>
+                        <span class="skill-energy">
+                          Energy: {character.skillsDetailed.ultimate.energy}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="skill-damage">
+                      <p
+                        class="skill-description"
+                        data-description={character.skillsDetailed.ultimate.description}
+                        data-params={JSON.stringify(character.skillsDetailed.ultimate.params)}
+                      >
+                        {/* Description will be populated by JS with param values */}
+                      </p>
+                      {character.skillsDetailed.ultimate.hints &&
+                        Object.keys(character.skillsDetailed.ultimate.hints).length > 0 && (
+                          <div class="skill-hints">
+                            <h4>Status Effects:</h4>
+                            {Object.entries(character.skillsDetailed.ultimate.hints).map(
+                              ([id, hint]: [string, any]) => (
+                                <div class="hint-item">
+                                  <strong>{hint.name}:</strong>{' '}
+                                  <span>{hint.description?.replace(/\u000b/g, ' ')}</span>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
+                    </div>
+                  </div>
+                  <div class="skill-icon-wrapper">
+                    <SSSkillImage
+                      characterName={character.name}
+                      skillType="ultimate"
+                      alt={`${character.skillsDetailed.ultimate.name} - Ultimate`}
+                    />
+                  </div>
+                </div>
+              </div>
+            </>
+          )
+        }
 
         {/* Status Effects - only show if character has status effects */}
         {
@@ -937,7 +1053,10 @@ function getTotalDupes(rarity: string): number {
                     <div class="talent-shard">
                       <SSShardImage characterName={character.name} width={48} height={48} />
                       <span class="shard-cost">x{shardCost}</span>
-                      <span class="shard-dupe-cost">({getDupesForTalent(character.rarity)} {getDupesForTalent(character.rarity) === 1 ? 'Dupe' : 'Dupes'})</span>
+                      <span class="shard-dupe-cost">
+                        ({getDupesForTalent(character.rarity)}{' '}
+                        {getDupesForTalent(character.rarity) === 1 ? 'Dupe' : 'Dupes'})
+                      </span>
                     </div>
                   </div>
 
@@ -956,11 +1075,12 @@ function getTotalDupes(rarity: string): number {
                     <div class="talent-stat-summary">
                       <h4>Total Stat Bonuses (Lv. 1-10)</h4>
                       <div class="stat-summary-grid">
-                        {statSummary.map((stat) => (
+                        {statSummary.map(stat => (
                           <div class="stat-summary-item">
                             <span class="stat-type">{stat.name}</span>
                             <span class={stat.isPercent ? 'percent-value' : 'flat-value'}>
-                              +{stat.value}{stat.isPercent ? '%' : ''}
+                              +{stat.value}
+                              {stat.isPercent ? '%' : ''}
                             </span>
                           </div>
                         ))}
@@ -1076,19 +1196,25 @@ function getTotalDupes(rarity: string): number {
         <section class="character-potentials-section">
           <h2>Potentials</h2>
 
-          <!-- Main/Support Tabs -->
+          {/* Main/Support Tabs */}
           <div class="potentials-tabs" role="tablist" aria-label="Potentials tabs">
-            <button class="potentials-tab active" data-tab="main" role="tab" aria-selected="true">Main</button>
-            <button class="potentials-tab" data-tab="support" role="tab" aria-selected="false">Support</button>
+            <button class="potentials-tab active" data-tab="main" role="tab" aria-selected="true">
+              Main
+            </button>
+            <button class="potentials-tab" data-tab="support" role="tab" aria-selected="false">
+              Support
+            </button>
           </div>
 
-          <!-- Main Tab Content -->
+          {/* Main Tab Content */}
           <div class="potentials-tab-content active" data-content="main">
-            <!-- Build 1 -->
+            {/* Build 1 */}
             <div class="build-section">
               <div class="build-header">
                 <h3 class="build-title">Build 1</h3>
-                {buildOrder?.main?.build1?.description && <p class="build-description">{buildOrder.main.build1.description}</p>}
+                {buildOrder?.main?.build1?.description && (
+                  <p class="build-description">{buildOrder.main.build1.description}</p>
+                )}
               </div>
               <div class="build-cards">
                 {buildOrder?.main?.build1 ? (
@@ -1097,9 +1223,23 @@ function getTotalDupes(rarity: string): number {
                     if (!potential) return null;
                     const isCore = potential.corner === null;
                     return (
-                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={
+                          isCore
+                            ? 'potential-card-mini core'
+                            : `potential-card-mini normal rarity-${potential.rarity}`
+                        }
+                        data-potential={JSON.stringify(potential)}
+                      >
                         {!isCore && <div class="card-level">1</div>}
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     );
@@ -1107,15 +1247,35 @@ function getTotalDupes(rarity: string): number {
                 ) : (
                   <>
                     {mainCoreBuild1.map((potential: any) => (
-                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                      <div
+                        class="potential-card-mini core"
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
                     {mainBuild1Normals.map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
                         <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
@@ -1124,11 +1284,13 @@ function getTotalDupes(rarity: string): number {
               </div>
             </div>
 
-            <!-- Build 2 -->
+            {/* Build 2 */}
             <div class="build-section">
               <div class="build-header">
                 <h3 class="build-title">Build 2</h3>
-                {buildOrder?.main?.build2?.description && <p class="build-description">{buildOrder.main.build2.description}</p>}
+                {buildOrder?.main?.build2?.description && (
+                  <p class="build-description">{buildOrder.main.build2.description}</p>
+                )}
               </div>
               <div class="build-cards">
                 {buildOrder?.main?.build2 ? (
@@ -1137,9 +1299,23 @@ function getTotalDupes(rarity: string): number {
                     if (!potential) return null;
                     const isCore = potential.corner === null;
                     return (
-                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={
+                          isCore
+                            ? 'potential-card-mini core'
+                            : `potential-card-mini normal rarity-${potential.rarity}`
+                        }
+                        data-potential={JSON.stringify(potential)}
+                      >
                         {!isCore && <div class="card-level">1</div>}
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     );
@@ -1147,15 +1323,35 @@ function getTotalDupes(rarity: string): number {
                 ) : (
                   <>
                     {mainCoreBuild2.map((potential: any) => (
-                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                      <div
+                        class="potential-card-mini core"
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
                     {mainBuild2Normals.map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
                         <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
@@ -1164,46 +1360,68 @@ function getTotalDupes(rarity: string): number {
               </div>
             </div>
 
-            <!-- Generic (Main) -->
+            {/* Generic (Main) */}
             {(buildOrder?.mainGeneric || common.length > 0 || mainRemaining.length > 0) && (
               <div class="build-section">
                 <div class="build-header generic-header">
                   <h3 class="build-title">Generic</h3>
                 </div>
                 <div class="build-cards generic-cards">
-                  {buildOrder?.mainGeneric ? (
-                    buildOrder.mainGeneric.potentials.map((name: string) => {
-                      const potential = getPotentialByName(pots, name);
-                      if (!potential) return null;
-                      return (
-                        <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
-                          <div class="card-level">1</div>
-                          <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
-                          <span class="card-name">{potential.name}</span>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    [...common, ...mainRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
-                        <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
-                        <span class="card-name">{potential.name}</span>
-                      </div>
-                    ))
-                  )}
+                  {buildOrder?.mainGeneric
+                    ? buildOrder.mainGeneric.potentials.map((name: string) => {
+                        const potential = getPotentialByName(pots, name);
+                        if (!potential) return null;
+                        return (
+                          <div
+                            class={`potential-card-mini normal rarity-${potential.rarity}`}
+                            data-potential={JSON.stringify(potential)}
+                          >
+                            <div class="card-level">1</div>
+                            <SSPotentialAllImage
+                              icon={potential.icon}
+                              rarity={potential.rarity}
+                              stype={potential.stype}
+                              alt={potential.name}
+                              width={100}
+                              height={100}
+                            />
+                            <span class="card-name">{potential.name}</span>
+                          </div>
+                        );
+                      })
+                    : [...common, ...mainRemaining]
+                        .sort((a, b) => a.rarity - b.rarity)
+                        .map((potential: any) => (
+                          <div
+                            class={`potential-card-mini normal rarity-${potential.rarity}`}
+                            data-potential={JSON.stringify(potential)}
+                          >
+                            <div class="card-level">1</div>
+                            <SSPotentialAllImage
+                              icon={potential.icon}
+                              rarity={potential.rarity}
+                              stype={potential.stype}
+                              alt={potential.name}
+                              width={100}
+                              height={100}
+                            />
+                            <span class="card-name">{potential.name}</span>
+                          </div>
+                        ))}
                 </div>
               </div>
             )}
           </div>
 
-          <!-- Support Tab Content -->
+          {/* Support Tab Content */}
           <div class="potentials-tab-content" data-content="support">
-            <!-- Build 1 -->
+            {/* Build 1 */}
             <div class="build-section">
               <div class="build-header">
                 <h3 class="build-title">Build 1</h3>
-                {buildOrder?.support?.build1?.description && <p class="build-description">{buildOrder.support.build1.description}</p>}
+                {buildOrder?.support?.build1?.description && (
+                  <p class="build-description">{buildOrder.support.build1.description}</p>
+                )}
               </div>
               <div class="build-cards">
                 {buildOrder?.support?.build1 ? (
@@ -1212,9 +1430,23 @@ function getTotalDupes(rarity: string): number {
                     if (!potential) return null;
                     const isCore = potential.corner === null;
                     return (
-                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={
+                          isCore
+                            ? 'potential-card-mini core'
+                            : `potential-card-mini normal rarity-${potential.rarity}`
+                        }
+                        data-potential={JSON.stringify(potential)}
+                      >
                         {!isCore && <div class="card-level">1</div>}
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     );
@@ -1222,15 +1454,35 @@ function getTotalDupes(rarity: string): number {
                 ) : (
                   <>
                     {supportCoreBuild1.map((potential: any) => (
-                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                      <div
+                        class="potential-card-mini core"
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
                     {supportBuild1Normals.map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
                         <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
@@ -1239,11 +1491,13 @@ function getTotalDupes(rarity: string): number {
               </div>
             </div>
 
-            <!-- Build 2 -->
+            {/* Build 2 */}
             <div class="build-section">
               <div class="build-header">
                 <h3 class="build-title">Build 2</h3>
-                {buildOrder?.support?.build2?.description && <p class="build-description">{buildOrder.support.build2.description}</p>}
+                {buildOrder?.support?.build2?.description && (
+                  <p class="build-description">{buildOrder.support.build2.description}</p>
+                )}
               </div>
               <div class="build-cards">
                 {buildOrder?.support?.build2 ? (
@@ -1252,9 +1506,23 @@ function getTotalDupes(rarity: string): number {
                     if (!potential) return null;
                     const isCore = potential.corner === null;
                     return (
-                      <div class={isCore ? "potential-card-mini core" : `potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={
+                          isCore
+                            ? 'potential-card-mini core'
+                            : `potential-card-mini normal rarity-${potential.rarity}`
+                        }
+                        data-potential={JSON.stringify(potential)}
+                      >
                         {!isCore && <div class="card-level">1</div>}
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     );
@@ -1262,15 +1530,35 @@ function getTotalDupes(rarity: string): number {
                 ) : (
                   <>
                     {supportCoreBuild2.map((potential: any) => (
-                      <div class="potential-card-mini core" data-potential={JSON.stringify(potential)}>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                      <div
+                        class="potential-card-mini core"
+                        data-potential={JSON.stringify(potential)}
+                      >
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
                     {supportBuild2Normals.map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
+                      <div
+                        class={`potential-card-mini normal rarity-${potential.rarity}`}
+                        data-potential={JSON.stringify(potential)}
+                      >
                         <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
+                        <SSPotentialAllImage
+                          icon={potential.icon}
+                          rarity={potential.rarity}
+                          stype={potential.stype}
+                          alt={potential.name}
+                          width={100}
+                          height={100}
+                        />
                         <span class="card-name">{potential.name}</span>
                       </div>
                     ))}
@@ -1279,54 +1567,83 @@ function getTotalDupes(rarity: string): number {
               </div>
             </div>
 
-            <!-- Generic (Support) -->
+            {/* Generic (Support) */}
             {(buildOrder?.supportGeneric || common.length > 0 || supportRemaining.length > 0) && (
               <div class="build-section">
                 <div class="build-header generic-header">
                   <h3 class="build-title">Generic</h3>
                 </div>
                 <div class="build-cards generic-cards">
-                  {buildOrder?.supportGeneric ? (
-                    buildOrder.supportGeneric.potentials.map((name: string) => {
-                      const potential = getPotentialByName(pots, name);
-                      if (!potential) return null;
-                      return (
-                        <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
-                          <div class="card-level">1</div>
-                          <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
-                          <span class="card-name">{potential.name}</span>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    [...common, ...supportRemaining].sort((a, b) => a.rarity - b.rarity).map((potential: any) => (
-                      <div class={`potential-card-mini normal rarity-${potential.rarity}`} data-potential={JSON.stringify(potential)}>
-                        <div class="card-level">1</div>
-                        <SSPotentialAllImage icon={potential.icon} rarity={potential.rarity} stype={potential.stype} alt={potential.name} width={100} height={100} />
-                        <span class="card-name">{potential.name}</span>
-                      </div>
-                    ))
-                  )}
+                  {buildOrder?.supportGeneric
+                    ? buildOrder.supportGeneric.potentials.map((name: string) => {
+                        const potential = getPotentialByName(pots, name);
+                        if (!potential) return null;
+                        return (
+                          <div
+                            class={`potential-card-mini normal rarity-${potential.rarity}`}
+                            data-potential={JSON.stringify(potential)}
+                          >
+                            <div class="card-level">1</div>
+                            <SSPotentialAllImage
+                              icon={potential.icon}
+                              rarity={potential.rarity}
+                              stype={potential.stype}
+                              alt={potential.name}
+                              width={100}
+                              height={100}
+                            />
+                            <span class="card-name">{potential.name}</span>
+                          </div>
+                        );
+                      })
+                    : [...common, ...supportRemaining]
+                        .sort((a, b) => a.rarity - b.rarity)
+                        .map((potential: any) => (
+                          <div
+                            class={`potential-card-mini normal rarity-${potential.rarity}`}
+                            data-potential={JSON.stringify(potential)}
+                          >
+                            <div class="card-level">1</div>
+                            <SSPotentialAllImage
+                              icon={potential.icon}
+                              rarity={potential.rarity}
+                              stype={potential.stype}
+                              alt={potential.name}
+                              width={100}
+                              height={100}
+                            />
+                            <span class="card-name">{potential.name}</span>
+                          </div>
+                        ))}
                 </div>
               </div>
             )}
           </div>
 
-          <!-- Detail Panel -->
-          <div id="potential-detail-panel" class="potential-detail-panel" role="region" aria-label="Potential details">
+          {/* Detail Panel */}
+          <div
+            id="potential-detail-panel"
+            class="potential-detail-panel"
+            role="region"
+            aria-label="Potential details"
+          >
             <div class="detail-header">
-              <div class="detail-icon" id="detail-icon"></div>
+              <div class="detail-icon" id="detail-icon" />
               <div class="detail-info">
-                <h3 class="detail-name" id="detail-name"></h3>
-                <div class="detail-description" id="detail-description"></div>
+                <h3 class="detail-name" id="detail-name" />
+                <div class="detail-description" id="detail-description" />
               </div>
             </div>
             <div class="level-selector" id="level-selector" style="display: none;">
               <span class="level-label">Level:</span>
-              <button class="level-btn" id="level-minus" type="button">-</button>
+              <button class="level-btn" id="level-minus" type="button">
+                -
+              </button>
               <input type="number" class="level-input" id="level-input" min="1" value="1" />
-              <button class="level-btn" id="level-plus" type="button">+</button>
-              <span class="level-max" id="level-max"></span>
+              <button class="level-btn" id="level-plus" type="button">
+                +
+              </button>
+              <span class="level-max" id="level-max" />
             </div>
           </div>
         </section>
@@ -1365,7 +1682,10 @@ function getTotalDupes(rarity: string): number {
                   <span class="tag">{tag}</span>
                 ))}
               </div>
-              <a href={`/guides/stella-sora/discs/${character.disc.slug}`} class="view-full-disc-link">
+              <a
+                href={`/guides/stella-sora/discs/${character.disc.slug}`}
+                class="view-full-disc-link"
+              >
                 View Full Disc Details
               </a>
             </div>
@@ -1606,12 +1926,24 @@ function getTotalDupes(rarity: string): number {
 
 <!-- Hidden marker templates for JavaScript to clone -->
 <div id="marker-templates" style="display: none;">
-  <span data-element="ignis" class="marker-template"><SSMarkerImage element="ignis" width={14} height={14} class="inline-marker" /></span>
-  <span data-element="aqua" class="marker-template"><SSMarkerImage element="aqua" width={14} height={14} class="inline-marker" /></span>
-  <span data-element="terra" class="marker-template"><SSMarkerImage element="terra" width={14} height={14} class="inline-marker" /></span>
-  <span data-element="ventus" class="marker-template"><SSMarkerImage element="ventus" width={14} height={14} class="inline-marker" /></span>
-  <span data-element="lux" class="marker-template"><SSMarkerImage element="lux" width={14} height={14} class="inline-marker" /></span>
-  <span data-element="umbra" class="marker-template"><SSMarkerImage element="umbra" width={14} height={14} class="inline-marker" /></span>
+  <span data-element="ignis" class="marker-template"
+    ><SSMarkerImage element="ignis" width={14} height={14} class="inline-marker" /></span
+  >
+  <span data-element="aqua" class="marker-template"
+    ><SSMarkerImage element="aqua" width={14} height={14} class="inline-marker" /></span
+  >
+  <span data-element="terra" class="marker-template"
+    ><SSMarkerImage element="terra" width={14} height={14} class="inline-marker" /></span
+  >
+  <span data-element="ventus" class="marker-template"
+    ><SSMarkerImage element="ventus" width={14} height={14} class="inline-marker" /></span
+  >
+  <span data-element="lux" class="marker-template"
+    ><SSMarkerImage element="lux" width={14} height={14} class="inline-marker" /></span
+  >
+  <span data-element="umbra" class="marker-template"
+    ><SSMarkerImage element="umbra" width={14} height={14} class="inline-marker" /></span
+  >
 </div>
 
 <script>
@@ -1623,7 +1955,7 @@ function getTotalDupes(rarity: string): number {
 
     if (!levelInput || !ascensionSelect || !levelStatsDataEl) return;
 
-    let levelStats: Array<{hp: number, atk: number}>;
+    let levelStats: Array<{ hp: number; atk: number }>;
     try {
       levelStats = JSON.parse(levelStatsDataEl.getAttribute('data-stats') || '[]');
     } catch (e) {
@@ -1642,15 +1974,15 @@ function getTotalDupes(rarity: string): number {
 
     // Level ranges for each ascension
     const ascensionLevelRange = [
-      { min: 1, max: 10 },   // A0
-      { min: 10, max: 20 },  // A1
-      { min: 20, max: 30 },  // A2
-      { min: 30, max: 40 },  // A3
-      { min: 40, max: 50 },  // A4
-      { min: 50, max: 60 },  // A5
-      { min: 60, max: 70 },  // A6
-      { min: 70, max: 80 },  // A7
-      { min: 80, max: 90 },  // A8
+      { min: 1, max: 10 }, // A0
+      { min: 10, max: 20 }, // A1
+      { min: 20, max: 30 }, // A2
+      { min: 30, max: 40 }, // A3
+      { min: 40, max: 50 }, // A4
+      { min: 50, max: 60 }, // A5
+      { min: 60, max: 70 }, // A6
+      { min: 70, max: 80 }, // A7
+      { min: 80, max: 90 }, // A8
     ];
 
     function getArrayIndex(level: number, ascension: number): number {
@@ -1662,13 +1994,16 @@ function getTotalDupes(rarity: string): number {
       const levelOffset = level - range.min;
 
       // Clamp to valid range
-      const maxOffset = (ascension < 8) ? (ascensionStartIndex[ascension + 1] - startIdx - 1) : (levelStats.length - 1 - startIdx);
+      const maxOffset =
+        ascension < 8
+          ? ascensionStartIndex[ascension + 1] - startIdx - 1
+          : levelStats.length - 1 - startIdx;
       const clampedOffset = Math.min(Math.max(0, levelOffset), maxOffset);
 
       return startIdx + clampedOffset;
     }
 
-    function getAscensionBonus(ascension: number): { hp: number, atk: number } {
+    function getAscensionBonus(ascension: number): { hp: number; atk: number } {
       if (ascension === 0) return { hp: 0, atk: 0 };
 
       // Compare first stat of current ascension vs last stat of previous ascension
@@ -1682,7 +2017,7 @@ function getTotalDupes(rarity: string): number {
 
       return {
         hp: currStats.hp - prevStats.hp,
-        atk: currStats.atk - prevStats.atk
+        atk: currStats.atk - prevStats.atk,
       };
     }
 
@@ -1757,13 +2092,13 @@ function getTotalDupes(rarity: string): number {
     }
 
     // Listen for level input changes
-    levelInput.addEventListener('input', function() {
+    levelInput.addEventListener('input', function () {
       syncAscensionToLevel();
       updateStats();
     });
 
     // Also listen for blur to ensure valid value
-    levelInput.addEventListener('blur', function() {
+    levelInput.addEventListener('blur', function () {
       let level = parseInt(levelInput.value, 10);
       if (isNaN(level)) level = 90;
       levelInput.value = String(clampLevel(level));
@@ -1772,7 +2107,7 @@ function getTotalDupes(rarity: string): number {
     });
 
     // Listen for ascension changes
-    ascensionSelect.addEventListener('change', function() {
+    ascensionSelect.addEventListener('change', function () {
       syncLevelToAscension();
       updateStats();
     });
@@ -1826,7 +2161,10 @@ function getTotalDupes(rarity: string): number {
 
         // Convert color tags to HTML spans
         // Format: <color=#fb8037>text</color> -> <span class="skill-value">text</span>
-        description = description.replace(/<color=[^>]+>([^<]+)<\/color>/g, '<span class="skill-value">$1</span>');
+        description = description.replace(
+          /<color=[^>]+>([^<]+)<\/color>/g,
+          '<span class="skill-value">$1</span>'
+        );
 
         // Convert remaining markdown-style bold to HTML
         description = description.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -1854,7 +2192,9 @@ function getTotalDupes(rarity: string): number {
 
         elementMarks.forEach(element => {
           const markRegex = new RegExp(`(${element} Mark)`, 'g');
-          const template = markerTemplates?.querySelector(`[data-element="${element.toLowerCase()}"]`);
+          const template = markerTemplates?.querySelector(
+            `[data-element="${element.toLowerCase()}"]`
+          );
           if (template) {
             const markerHtml = template.innerHTML;
             description = description.replace(markRegex, `${markerHtml}$1`);
@@ -1869,7 +2209,7 @@ function getTotalDupes(rarity: string): number {
     updateSkillDescriptions(13);
 
     // Listen for input changes
-    levelInput.addEventListener('input', function() {
+    levelInput.addEventListener('input', function () {
       let level = parseInt(levelInput.value, 10);
       if (isNaN(level)) level = 13;
       level = clampSkillLevel(level);
@@ -1877,7 +2217,7 @@ function getTotalDupes(rarity: string): number {
     });
 
     // Ensure valid value on blur
-    levelInput.addEventListener('blur', function() {
+    levelInput.addEventListener('blur', function () {
       let level = parseInt(levelInput.value, 10);
       if (isNaN(level)) level = 13;
       levelInput.value = String(clampSkillLevel(level));
@@ -1885,7 +2225,7 @@ function getTotalDupes(rarity: string): number {
 
     // Minus button click handler
     if (minusBtn) {
-      minusBtn.addEventListener('click', function() {
+      minusBtn.addEventListener('click', function () {
         let level = parseInt(levelInput.value, 10);
         if (isNaN(level)) level = 13;
         level = clampSkillLevel(level - 1);
@@ -1896,7 +2236,7 @@ function getTotalDupes(rarity: string): number {
 
     // Plus button click handler
     if (plusBtn) {
-      plusBtn.addEventListener('click', function() {
+      plusBtn.addEventListener('click', function () {
         let level = parseInt(levelInput.value, 10);
         if (isNaN(level)) level = 13;
         level = clampSkillLevel(level + 1);
@@ -2057,27 +2397,29 @@ function getTotalDupes(rarity: string): number {
     }
 
     // Card click handler
-    document.querySelectorAll('.character-potentials-section .potential-card-mini').forEach(card => {
-      card.addEventListener('click', (e) => {
-        const el = card as HTMLElement;
-        const potentialData = el.dataset.potential;
+    document
+      .querySelectorAll('.character-potentials-section .potential-card-mini')
+      .forEach(card => {
+        card.addEventListener('click', e => {
+          const el = card as HTMLElement;
+          const potentialData = el.dataset.potential;
 
-        if (!potentialData) return;
+          if (!potentialData) return;
 
-        try {
-          const potential = JSON.parse(potentialData);
+          try {
+            const potential = JSON.parse(potentialData);
 
-          // If clicking same card, toggle off
-          if (currentCard === el && detailPanel?.classList.contains('active')) {
-            hideDetail();
-          } else {
-            showDetail(el, potential);
+            // If clicking same card, toggle off
+            if (currentCard === el && detailPanel?.classList.contains('active')) {
+              hideDetail();
+            } else {
+              showDetail(el, potential);
+            }
+          } catch (err) {
+            console.error('Error parsing potential data:', err);
           }
-        } catch (err) {
-          console.error('Error parsing potential data:', err);
-        }
+        });
       });
-    });
 
     // Level controls
     if (levelMinus) {
