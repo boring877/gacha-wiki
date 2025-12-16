@@ -17,6 +17,7 @@ import { freyaBuild } from './character-builds/freya.js';
 import { athenaBuild } from './character-builds/athena.js';
 import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
 import { sigurdBuild } from './character-builds/sigurd.js';
+import { ninaBuild } from './character-builds/nina.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -70,6 +71,9 @@ export const CHARACTER_BUILDS = {
 
   // Sigurd Build - SSR Fire Crit-based Enhanced Ultimate DPS
   sigurd: sigurdBuild,
+
+  // Nina Build - SSR Ice Frost Ash State DPS
+  nina: ninaBuild,
 };
 
 // Generate builds for available characters only
