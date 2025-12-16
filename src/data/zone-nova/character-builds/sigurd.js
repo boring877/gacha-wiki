@@ -217,7 +217,13 @@ export const sigurdBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Hela', 'Loki', 'Apollo', 'Naiya', 'Ibaraki-doji', 'Merlin', 'Lyra'],
-    note: 'Sigurd works well with other A.S.A faction members (Hela, Loki) for team skill activation. Fire supports like Apollo and Ibaraki-doji also synergize well. Naiya provides crit damage buffs that amplify her burst.',
+    goodWith: [
+      'Naiya',
+      'Zashiki-warashi',
+      'Apollo',
+      'Ibaraki-doji',
+      'She need buffer that increase crit rate and crit damage',
+    ],
+    note: 'She would be an SSS if she had 2000% + ultimate Damage, compared to other ultimates DPS her Mulltiplier is way lower. ',
   },
 };
