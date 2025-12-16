@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-12-10',
+  lastUpdated: '2025-12-16',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -62,6 +62,7 @@ export const PVE_TIER_LIST = {
       { name: 'Jeanne D Arc' },
       { name: 'Lily' },
       { name: 'Apep' },
+      { name: 'Sigurd' },
     ],
     S: [
       { name: 'Shu' },
@@ -97,7 +98,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-12-10',
+  lastUpdated: '2025-12-16',
   description: 'PvP character rankings.',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
@@ -119,6 +120,7 @@ export const PVP_TIER_LIST = {
       { name: 'Chiya' },
       { name: 'Lyra' },
       { name: 'Hela' },
+      { name: 'Sigurd' },
     ],
     S: [
       { name: 'Arthur' },
@@ -150,7 +152,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-12-10',
+  lastUpdated: '2025-12-16',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -166,6 +168,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Gaia' },
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
+      { name: 'Sigurd' },
     ],
     SS: [
       { name: 'Freye' },
@@ -214,7 +217,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-12-10',
+  lastUpdated: '2025-12-16',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -247,6 +250,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Merlin' },
       { name: 'Shanna' },
       { name: 'Lavinia' },
+      { name: 'Sigurd' },
     ],
     S: [
       { name: 'Tefnut' },
@@ -351,6 +355,14 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2025-12-16',
+    changes: [
+      'Sigurd added: SS in PvE, SS in PvP, SSS in Rift, SS in Guild Raid',
+      'New Fire Rogue DPS with Dragon Blood mechanic and Enhanced Ultimate',
+      'Excels in Rift content with high crit scaling and burst damage',
+    ],
+  },
   {
     date: '2025-11-25',
     changes: [

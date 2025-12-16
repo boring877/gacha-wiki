@@ -654,7 +654,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'shanna',
     detailUrl: '/guides/zone-nova/characters/shanna',
   },
-  // Sigurd (id: 45) - TBA, will be added when stats are available
+  {
+    id: 45,
+    name: 'Sigurd',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'DPS',
+    class: 'Rogue',
+    faction: getFactionByCharacter('Sigurd'),
+    tags: ['Melee', 'Crit Dmg', 'Enhanced Ultimate', 'Crit Rate', 'Fire Damage', 'Dragon Blood'],
+    stats: {
+      hp: 7308,
+      attack: 1305,
+      defense: 474,
+      energyRecovery: 0.25,
+      critRate: 16,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/Sigurd.jpg',
+    slug: 'sigurd',
+    detailUrl: '/guides/zone-nova/characters/sigurd',
+  },
   {
     id: 23,
     name: 'Shu',

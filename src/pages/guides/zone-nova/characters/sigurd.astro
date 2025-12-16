@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { sigurdData, sigurdSEO } from '../../../../data/zone-nova/characters/sigurd.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={sigurdSEO.title}
+  description={sigurdSEO.description}
+  gameTitle={sigurdData.name}
+  character={sigurdData}
+>
+  <CharacterPageTemplate characterData={sigurdData} />
+</CharacterIndividualLayout>

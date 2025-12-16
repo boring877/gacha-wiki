@@ -1071,6 +1071,26 @@ export const ZONE_NOVA_MEMORIES = [
       'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
     ],
   },
+  {
+    id: 'i-am-your-christmas-present',
+    slug: 'i-am-your-christmas-present',
+    name: 'I am your Christmas present.',
+    image: '/images/games/zone-nova/memories/Sigurdcard.jpg',
+    rarity: 'SSR',
+    element: 'Fire',
+    character: 'Sigurd',
+    class: 'Rogue',
+    detailUrl: '/guides/zone-nova/memories/i-am-your-christmas-present/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    },
+    effects: [
+      'Critical hit rate increased by 34%, ultimate skill damage increased by 40%.',
+      'When there is only 1 ATTACKER on the field, ultimate skill damage is increased by an additional 40%.',
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1115,6 +1135,7 @@ export const MEMORY_METADATA = {
     'Penny',
     'Rose',
     'Shanna',
+    'Sigurd',
     'Shu',
     'Snow Girl',
     'Tefnut',
