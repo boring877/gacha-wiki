@@ -16,6 +16,7 @@ import { freyeChaosBuild } from './character-builds/freye.js';
 import { freyaBuild } from './character-builds/freya.js';
 import { athenaBuild } from './character-builds/athena.js';
 import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
+import { sigurdBuild } from './character-builds/sigurd.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -66,6 +67,9 @@ export const CHARACTER_BUILDS = {
 
   // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Debuffer
   'ibaraki-doji': ibarakiDojiBuild,
+
+  // Sigurd Build - SSR Fire Crit-based Enhanced Ultimate DPS
+  sigurd: sigurdBuild,
 };
 
 // Generate builds for available characters only
