@@ -49,6 +49,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'natasha',
           'venus',
           'artemis',
+          'queen_of_pies_and_cookies_aphrodia',
         ],
       },
       {
@@ -66,6 +67,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'meinias',
           'yu_lima_elka',
           'festive_natasha',
+          'holy_night_succubus_yu_rima_elca',
+          'magical_holy_night_festival_kaguya',
         ],
       },
     ],
@@ -113,6 +116,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'luceria',
           'ishtovia',
           'nora',
+          'queen_of_pies_and_cookies_aphrodia',
         ],
       },
       {
@@ -130,6 +134,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'sobrina',
           'marina',
           'artemis',
+          'holy_night_succubus_yu_rima_elca',
+          'magical_holy_night_festival_kaguya',
         ],
       },
     ],

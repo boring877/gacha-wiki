@@ -299,6 +299,36 @@ export const BUSTY_BURST_PALADINS = [
     role: 'DPS',
     tier: 'SS',
   },
+  {
+    id: 'holy_night_succubus_yu_rima_elca',
+    name: 'Holy Night Succubus Yu Rima Elca',
+    fileName: 'Holy_Night_Succubus_Yu_Rima_Elca',
+    image: '/images/games/Busty_Burst/CharImg/Holy_Night_Succubus_Yu_Rima_Elca.jpg',
+    rarity: 'SR',
+    element: 'Mind',
+    role: 'DPS',
+    tier: 'A',
+  },
+  {
+    id: 'queen_of_pies_and_cookies_aphrodia',
+    name: 'Queen of Pies and Cookies Aphrodia',
+    fileName: 'Queen_of_Pies_and_Cookies_Aphrodia',
+    image: '/images/games/Busty_Burst/CharImg/Queen_of_Pies_and_Cookies_Aphrodia.jpg',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'DPS',
+    tier: 'S',
+  },
+  {
+    id: 'magical_holy_night_festival_kaguya',
+    name: 'Magical Holy Night Festival Kaguya',
+    fileName: 'Magical_Holy_Night_Festival_Kaguya',
+    image: '/images/games/Busty_Burst/CharImg/Magical_Holy_Night_Festival_Kaguya.jpg',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Tank',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

@@ -5,7 +5,37 @@
  */
 
 export const bannerTimelineData = [
-  // #2 - Shaty (Dec 9 - Dec 16) - CURRENT
+  // #3 - Offering Cookies for the Holy Night (Dec 16 - Dec 30) - CURRENT
+  {
+    id: 'offering-cookies-holy-night',
+    title: 'Offering Cookies for the Holy Night',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Queen of Pies and Cookies] Aphrodia',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: '[Magical Holy Night Festival] Kaguya',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Holy Night Succubus] Yu Rima Elca',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2025-12-16T03:00:00Z',
+    endDate: '2025-12-30T03:00:00Z',
+    description:
+      'Offering Cookies for the Holy Night Event Summon! Limited-Time Christmas Paladin Rate Up!',
+    note: 'Christmas event banner with limited-time holiday characters.',
+    status: 'current',
+    image: '3',
+  },
+  // #2 - Shaty (Dec 9 - Dec 16) - ENDED
   {
     id: 'main-story-chapter-6-shaty',
     title: 'Main Story Chapter 6 Open Pick Up Summon',
@@ -21,7 +51,7 @@ export const bannerTimelineData = [
     endDate: '2025-12-16T03:00:00Z',
     description: 'Main Story Chapter 6 Open Pick Up Summon! New Paladin Rate Up!',
     note: 'The featured Paladin will be added to the normal banner after the event in a later maintenance.',
-    status: 'current',
+    status: 'ended',
     image: '2',
   },
   // #1 - Vern Founding Festival (Dec 4 - Dec 18) - CURRENT
