@@ -84,44 +84,32 @@ export const sigurdBuild = {
     },
   ],
   runes: {
-    primary: 'c',
-    secondary: 'Crit Rate',
-    stats: ['ATK%', 'Crit Rate%', 'Crit DMG%', 'Fire DMG%'],
-    additionalStats: ['ATK', 'Penetration'],
+    primary: 'Critical Damage',
+    secondary: 'Critical Rate',
+    stats: ['Crit DMG%', 'Crit Rate%'],
+    additionalStats: ['ATK%', 'ATK', 'Penetration'],
     buildNote:
       'Sigurd benefits heavily from crit stats due to her passive triggering on crits. Prioritize Crit Rate until you reach 60-70%, then focus on Crit Damage and Attack%. Fire Damage is excellent on Position 5.',
     recommendedSets: [
       {
         name: 'Beth 4-piece + Alpha 2-piece',
-        englishName: 'Beth [Crit Rate] 4-piece + Alpha 2-piece',
+        englishName: 'Beth 4-piece + Alpha 2-piece',
         mainRune: 'Beth',
         secondaryRune: 'Alpha',
         mainRune2Piece: '2-piece: Critical Hit Rate +6%',
-        mainRune4Piece:
-          '4-piece: When critical hit is triggered, own attack power increases by 12% for 5 seconds',
+        mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
         secondaryRuneEffect: '2-piece: Attack Power +8%',
       },
     ],
     alternativeSets: [
       {
-        name: 'Gimel 4-piece + Beth 2-piece',
-        englishName: 'Gimel [Ultimate Damage] 4-piece + Beth 2-piece',
-        mainRune: 'Gimel-Ultimate',
-        secondaryRune: 'Beth',
-        mainRune2Piece: '2-piece: Ultimate skill damage increased by 20%',
-        mainRune4Piece:
-          '4-piece: After casting ultimate skill, own attack power increases by 20% for 8 seconds',
-        secondaryRuneEffect: '2-piece: Critical Hit Rate +6%',
-      },
-      {
-        name: 'Beth 4-piece + Daleth 2-piece',
-        englishName: 'Beth [Crit Rate] 4-piece + Daleth 2-piece',
+        name: 'Beth 4-piece + Epsilon 2-piece',
+        englishName: 'Beth 4-piece + Epsilon 2-piece',
         mainRune: 'Beth',
-        secondaryRune: 'Daleth',
+        secondaryRune: 'Epsilon',
         mainRune2Piece: '2-piece: Critical Hit Rate +6%',
-        mainRune4Piece:
-          '4-piece: When critical hit is triggered, own attack power increases by 12% for 5 seconds',
-        secondaryRuneEffect: '2-piece: Critical Damage +12%',
+        mainRune4Piece: '4-piece: When HP >80%: Critical Hit Damage +24%',
+        secondaryRuneEffect: '2-piece: Attack Power +8%',
       },
     ],
   },
