@@ -29,7 +29,7 @@ export const sigurdBuild = {
     {
       skill: 'Auto Skill: Flame Blade Thrust',
       priority: 3,
-      level: 'Level 7',
+      level: 'Level 10',
       reason:
         'Dragon Blood stack generator - essential for building stacks to enable Enhanced Ultimate, also provides solid sustained damage',
       description:
@@ -55,6 +55,18 @@ export const sigurdBuild = {
       slug: 'sigurd-memory',
       description:
         'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only 1 ATTACKER on the field, ultimate skill damage is increased by an additional 40%.',
+    },
+    {
+      name: 'Heroes, Never Stop',
+      effect:
+        "SSR memory card that provides attack boost and skill damage increase on crit - excellent synergy with Sigurd's crit-focused kit and Enhanced Ultimate burst playstyle.",
+      priority: 'Recommended',
+      characterSpecific: false,
+      memoryImage: 'Arthurcard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      slug: 'heroes-never-stop',
+      description:
+        'Attack +40%. When a critical hit is triggered, skill damage is increased by 40% for 5 seconds.',
     },
   ],
   alternativeMemoryCards: [
