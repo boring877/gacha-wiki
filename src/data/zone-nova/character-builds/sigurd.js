@@ -59,53 +59,32 @@ export const sigurdBuild = {
     {
       name: 'Heroes, Never Stop',
       effect:
-        "SSR memory card that provides attack boost and skill damage increase on crit - excellent synergy with Sigurd's crit-focused kit and Enhanced Ultimate burst playstyle.",
+        "SR memory card that provides massive Crit Damage boost when facing few enemies - excellent for boss fights and synergizes with Sigurd's crit-focused kit.",
       priority: 'Recommended',
       characterSpecific: false,
-      memoryImage: 'Arthurcard.jpg',
-      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      memoryImage: 'Shannacard.jpg',
+      memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       slug: 'heroes-never-stop',
       description:
-        'Attack +40%. When a critical hit is triggered, skill damage is increased by 40% for 5 seconds.',
+        'When the number of enemies on field is less than 2: Increase critical hit damage by 72%.',
+      note: 'Due to cost and benefit, this memory is better for most players since it has lower cost and the benefits are comparable. However, if you can get 5 dupes of "I am your Christmas present" that would be the better choice.',
     },
   ],
   alternativeMemoryCards: [
     {
-      name: 'Strange Gaze Full of Desire',
+      name: 'Lonely Dark Deep Night',
       effect:
-        "SSR memory card that provides substantial crit rate and damage bonuses from ally ultimates - excellent for boosting Sigurd's damage in team compositions.",
-      characterSpecific: false,
-      memoryImage: 'Helacard.jpg',
-      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'strange-gaze-full-of-desire',
-      description:
-        "Crit Rate increases by 34%. When other allies cast their ultimates, the wearer's damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
-    },
-    {
-      name: 'The Beauty of Heijing Castle',
-      effect:
-        "SSR memory card with crit rate and ultimate damage boost - strong alternative that enhances Sigurd's burst potential.",
+        "Chiya's exclusive SSR memory card - provides massive crit damage and stacking attack power on kills. Great for clearing content.",
       characterSpecific: false,
       memoryImage: 'Chiyacard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'the-beauty-of-heijing-castle',
+      slug: 'lonely-dark-deep-night',
       description:
-        'Crit Rate +34%, Ultimate Skill Damage +40%. Synergizes well with crit-focused DPS builds.',
-    },
-    {
-      name: 'Frost Dominion',
-      effect:
-        'SSR memory card with crit rate and attack boost - provides well-rounded offensive stats for consistent damage.',
-      characterSpecific: false,
-      memoryImage: 'Naiyacard.jpg',
-      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'frost-dominion',
-      description:
-        'Crit Rate +34%, Attack +40%. Solid choice for consistent damage output across all abilities.',
+        'Critical Damage increased by 60%. After equipped character kills an enemy, increase attack power by 10% for this battle (max 4 stacks, up to 40% attack power increase).',
     },
   ],
   runes: {
-    primary: 'Attack%',
+    primary: 'c',
     secondary: 'Crit Rate',
     stats: ['ATK%', 'Crit Rate%', 'Crit DMG%', 'Fire DMG%'],
     additionalStats: ['ATK', 'Penetration'],
