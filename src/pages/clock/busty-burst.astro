@@ -82,9 +82,9 @@ const games = [
   function updateClock() {
     const now = new Date();
 
-    // Calculate time until next daily reset (03:00 UTC)
+    // Calculate time until next daily reset (04:00 UTC)
     const resetTime = new Date();
-    resetTime.setUTCHours(3, 0, 0, 0);
+    resetTime.setUTCHours(4, 0, 0, 0);
 
     // If reset time has passed today, set for tomorrow
     if (resetTime <= now) {
@@ -142,8 +142,8 @@ const games = [
     const now = new Date();
     const resetTime = new Date();
 
-    // Set to next Monday at 03:00 UTC
-    resetTime.setUTCHours(3, 0, 0, 0);
+    // Set to next Monday at 04:00 UTC
+    resetTime.setUTCHours(4, 0, 0, 0);
     const daysUntilMonday = (1 + 7 - now.getUTCDay()) % 7 || 7; // Monday = 1
     resetTime.setUTCDate(now.getUTCDate() + daysUntilMonday);
 
@@ -171,8 +171,8 @@ const games = [
     const now = new Date();
     const resetTime = new Date();
 
-    // Set to 1st of next month at 03:00 UTC
-    resetTime.setUTCHours(3, 0, 0, 0);
+    // Set to 1st of next month at 04:00 UTC
+    resetTime.setUTCHours(4, 0, 0, 0);
     resetTime.setUTCDate(1);
     resetTime.setUTCMonth(now.getUTCMonth() + 1);
 

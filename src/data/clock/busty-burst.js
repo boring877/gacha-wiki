@@ -8,8 +8,8 @@
 // Game launches on Dec 4, 2025 at 00:00 UTC
 const BB_LAUNCH_DATE_UTC = '2025-12-04T00:00:00Z';
 
-// Daily reset time in UTC (03:00 UTC)
-const BB_RESET_HOUR_UTC = 3;
+// Daily reset time in UTC (04:00 UTC)
+const BB_RESET_HOUR_UTC = 4;
 const BB_RESET_MINUTE_UTC = 0;
 
 export const bustyBurstConfig = {
@@ -27,7 +27,7 @@ export const bustyBurstConfig = {
     timezone: 'UTC',
     resetHour: BB_RESET_HOUR_UTC,
     resetMinute: BB_RESET_MINUTE_UTC,
-    status: 'Server Resets at 03:00 UTC',
+    status: 'Server Resets at 04:00 UTC',
   },
 
   // Pre-launch configuration
