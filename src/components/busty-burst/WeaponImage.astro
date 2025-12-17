@@ -1,9 +1,57 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import weapon images
-import MagicGrenadeImg from '../../assets/images/games/Busty_Burst/WPImg/Magic_Grenade_of_annihilation.png';
-import CrowbowImg from '../../assets/images/games/Busty_Burst/WPImg/Crowwbow_of_annihilation.png';
+// Import all weapon images
+// Hero/Evil God Series
+import CursedDemonAxeImg from '../../assets/images/games/Busty_Burst/WPImg/Cursed_Demon_Axe.png';
+import SacredBanishmentSwordImg from '../../assets/images/games/Busty_Burst/WPImg/Sacred_Banishment_Sword.png';
+import HeroicHolyLanceImg from '../../assets/images/games/Busty_Burst/WPImg/Heroic_Holy_Lance.png';
+import MastersStaffImg from "../../assets/images/games/Busty_Burst/WPImg/Master's_Staff.png";
+import WarHammerImg from '../../assets/images/games/Busty_Burst/WPImg/War_Hammer.png';
+import SaintsStaffImg from "../../assets/images/games/Busty_Burst/WPImg/Saint's_Staff.png";
+import AzureSkyBowImg from '../../assets/images/games/Busty_Burst/WPImg/Azure_Sky_Bow.png';
+import ThunderArrowImg from '../../assets/images/games/Busty_Burst/WPImg/Thunder_Arrow.png';
+import TwinStarShurikenImg from '../../assets/images/games/Busty_Burst/WPImg/Twin_Star_Shuriken.png';
+import CosmicCrystalImg from '../../assets/images/games/Busty_Burst/WPImg/Cosmic_Crystal.png';
+
+// Annihilation Series
+import SwordOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Sword_of_annihilation.png';
+import RingbladeOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Ringblade_of_Annihilation.png';
+import SpearOfExterminationImg from '../../assets/images/games/Busty_Burst/WPImg/Spear_of_extermination.png';
+import WandOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Wand_of_annihilation.png';
+import GauntletOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Gauntlet_of_Annihilation.png';
+import StaffOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Staff_of_annihilation.png';
+import CrossbowOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Crowwbow_of_annihilation.png';
+import BulletOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Bullet_of_annihilation.png';
+import AxeOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Axe_of_annihilation.png';
+import MagicGrenadeOfAnnihilationImg from '../../assets/images/games/Busty_Burst/WPImg/Magic_Grenade_of_annihilation.png';
+
+// Dragon Series
+import DragoncleaverAxeImg from '../../assets/images/games/Busty_Burst/WPImg/Dragoncleaver_axe.png';
+import DragonflameSwordImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonflame_sword.png';
+import DragonclawSpearImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonclaw_spear.png';
+import DragontailStaffImg from '../../assets/images/games/Busty_Burst/WPImg/Dragontail_staff.png';
+import DragoneyeHammerImg from '../../assets/images/games/Busty_Burst/WPImg/Dragoneye_Hammer.png';
+import DragonmindGrimoireImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonmind_grimoire.png';
+import DragonwindBowImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonwind_bow.png';
+import DragonpierceArrowImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonpierce_arrow.png';
+import DragonfangDaggerImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonfang_dagger.png';
+import DragonburstGrenadeImg from '../../assets/images/games/Busty_Burst/WPImg/Dragonburst_grenade.png';
+
+// Golden Wyvern Series
+import GoldenWyvernGreatswordImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_greatsword.png';
+import GoldenWyvernChakramImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_Wyvern_Chakram.png';
+import GoldenWyvernLanceImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_lance.png';
+import GoldenWyvernStaffImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_staff.png';
+import GoldenWyvernGauntletsImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_gauntlets.png';
+import GoldenWyvernRodImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_rod.png';
+import GoldenWyvernLongbowImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_longbow.png';
+import GoldenWyvernArrowImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_arrow.png';
+import GoldenWyvernDaggerImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_dagger.png';
+import GoldenWyvernGrenadeImg from '../../assets/images/games/Busty_Burst/WPImg/Golden_wyvern_grenade.png';
+
+// Items
+import AncientArtifactImg from '../../assets/images/games/Busty_Burst/WPImg/Ancient_Artifact.jpg';
 
 export interface Props {
   fileName: string;
@@ -18,8 +66,52 @@ const { fileName, alt, width = 80, height = 80, class: className, loading = 'laz
 
 // Map file names to imported image modules
 const imageMap: Record<string, ImageMetadata> = {
-  'Magic_Grenade_of_annihilation.png': MagicGrenadeImg,
-  'Crowwbow_of_annihilation.png': CrowbowImg,
+  // Hero/Evil God Series
+  'Cursed_Demon_Axe.png': CursedDemonAxeImg,
+  'Sacred_Banishment_Sword.png': SacredBanishmentSwordImg,
+  'Heroic_Holy_Lance.png': HeroicHolyLanceImg,
+  "Master's_Staff.png": MastersStaffImg,
+  'War_Hammer.png': WarHammerImg,
+  "Saint's_Staff.png": SaintsStaffImg,
+  'Azure_Sky_Bow.png': AzureSkyBowImg,
+  'Thunder_Arrow.png': ThunderArrowImg,
+  'Twin_Star_Shuriken.png': TwinStarShurikenImg,
+  'Cosmic_Crystal.png': CosmicCrystalImg,
+  // Annihilation Series
+  'Sword_of_annihilation.png': SwordOfAnnihilationImg,
+  'Ringblade_of_Annihilation.png': RingbladeOfAnnihilationImg,
+  'Spear_of_extermination.png': SpearOfExterminationImg,
+  'Wand_of_annihilation.png': WandOfAnnihilationImg,
+  'Gauntlet_of_Annihilation.png': GauntletOfAnnihilationImg,
+  'Staff_of_annihilation.png': StaffOfAnnihilationImg,
+  'Crowwbow_of_annihilation.png': CrossbowOfAnnihilationImg,
+  'Bullet_of_annihilation.png': BulletOfAnnihilationImg,
+  'Axe_of_annihilation.png': AxeOfAnnihilationImg,
+  'Magic_Grenade_of_annihilation.png': MagicGrenadeOfAnnihilationImg,
+  // Dragon Series
+  'Dragoncleaver_axe.png': DragoncleaverAxeImg,
+  'Dragonflame_sword.png': DragonflameSwordImg,
+  'Dragonclaw_spear.png': DragonclawSpearImg,
+  'Dragontail_staff.png': DragontailStaffImg,
+  'Dragoneye_Hammer.png': DragoneyeHammerImg,
+  'Dragonmind_grimoire.png': DragonmindGrimoireImg,
+  'Dragonwind_bow.png': DragonwindBowImg,
+  'Dragonpierce_arrow.png': DragonpierceArrowImg,
+  'Dragonfang_dagger.png': DragonfangDaggerImg,
+  'Dragonburst_grenade.png': DragonburstGrenadeImg,
+  // Golden Wyvern Series
+  'Golden_wyvern_greatsword.png': GoldenWyvernGreatswordImg,
+  'Golden_Wyvern_Chakram.png': GoldenWyvernChakramImg,
+  'Golden_wyvern_lance.png': GoldenWyvernLanceImg,
+  'Golden_wyvern_staff.png': GoldenWyvernStaffImg,
+  'Golden_wyvern_gauntlets.png': GoldenWyvernGauntletsImg,
+  'Golden_wyvern_rod.png': GoldenWyvernRodImg,
+  'Golden_wyvern_longbow.png': GoldenWyvernLongbowImg,
+  'Golden_wyvern_arrow.png': GoldenWyvernArrowImg,
+  'Golden_wyvern_dagger.png': GoldenWyvernDaggerImg,
+  'Golden_wyvern_grenade.png': GoldenWyvernGrenadeImg,
+  // Items
+  'Ancient_Artifact.jpg': AncientArtifactImg,
 };
 
 // Get the image module based on the fileName

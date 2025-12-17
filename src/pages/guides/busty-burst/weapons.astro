@@ -1,0 +1,148 @@
+---
+import WeaponsLayout from '../../../layouts/busty-burst/WeaponsLayout.astro';
+import WeaponImage from '../../../components/busty-burst/WeaponImage.astro';
+import { weapons, weaponTypes, statLabels } from '../../../data/busty-burst/weapons.js';
+
+const title = 'Weapons Guide - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete weapons guide for Busty Burst Fantasy. View all weapons with stats (Lv 1 to Lv 90), abilities, and obtain methods. Includes Annihilation, Dragon, and Golden Wyvern series.';
+const gameTitle = 'Weapons';
+
+// Helper function to convert type name to safe HTML ID
+const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
+
+// Helper to check if weapon has stats
+const hasStats = (stats: Record<string, number>) => Object.keys(stats).length > 0;
+---
+
+<WeaponsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-weapons-container">
+    <!-- Weapon Info Box -->
+    <div class="bb-weapons-info-box">
+      <h3 class="bb-weapons-info-title">Weapon Rank Up System</h3>
+      <ul class="bb-weapons-info-list">
+        <li>
+          Weapons can be ranked up <strong>4 times</strong> using duplicates or <strong
+            >Ancient Artifact</strong>
+        </li>
+        <li>
+          Base max level is <strong>Lv 50</strong>, each rank up adds <strong>+10 levels</strong> (max
+          Lv 90)
+        </li>
+        <li>Only the first 2 stats scale with level - the 3rd stat usually stays fixed</li>
+        <li>Passive skills generally do not change with rank ups</li>
+        <li>
+          <strong>Exception:</strong> Golden Wyvern weapons improve their passive with dupes (10% → 20%
+          damage, 15s → 20s duration)
+        </li>
+      </ul>
+    </div>
+
+    <!-- Weapon Type Tabs -->
+    <div class="bb-weapons-tabs">
+      {
+        weaponTypes.map((type, index) => (
+          <button
+            class={`bb-weapons-tab ${index === 0 ? 'active' : ''}`}
+            data-type={type}
+            data-target={`${toSafeId(type)}-content`}
+          >
+            {type}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Weapon Content Sections -->
+    {
+      weaponTypes.map((type, index) => (
+        <div
+          id={`${toSafeId(type)}-content`}
+          class={`bb-weapons-content ${index === 0 ? 'active' : ''}`}
+        >
+          <h2 class="bb-weapons-section-title">{type} Weapons</h2>
+          <div class="bb-weapons-grid">
+            {weapons[type].map(weapon => (
+              <div class="bb-weapon-card" data-obtain={weapon.obtain}>
+                <div class="bb-weapon-image-container">
+                  <WeaponImage
+                    fileName={weapon.imageFile}
+                    alt={weapon.name}
+                    width={120}
+                    height={120}
+                  />
+                </div>
+                <div class="bb-weapon-info">
+                  <div class="bb-weapon-row">
+                    <span class="bb-weapon-label">Name:</span>
+                    <span class="bb-weapon-value bb-weapon-name">{weapon.name}</span>
+                  </div>
+                  <div class="bb-weapon-row">
+                    <span class="bb-weapon-label">Type:</span>
+                    <span class="bb-weapon-value">{weapon.atkType} Attack</span>
+                  </div>
+                  <div class="bb-weapon-row">
+                    <span class="bb-weapon-label">Obtain:</span>
+                    <span class="bb-weapon-obtain" data-obtain={weapon.obtain}>
+                      {weapon.obtain}
+                    </span>
+                  </div>
+                  {hasStats(weapon.stats) && (
+                    <div class="bb-weapon-stats">
+                      <span class="bb-weapon-label">Stats:</span>
+                      <div class="bb-weapon-stats-list">
+                        {Object.entries(weapon.stats).map(([key, value]) => (
+                          <span class="bb-weapon-stat">
+                            {statLabels[key]}: {value}
+                            {weapon.statsMax && weapon.statsMax[key] !== undefined
+                              ? ` → ${weapon.statsMax[key]}`
+                              : ''}
+                          </span>
+                        ))}
+                      </div>
+                      {weapon.statsMax && (
+                        <span class="bb-weapon-stats-note">Lv 1 → Lv 90 (Max)</span>
+                      )}
+                    </div>
+                  )}
+                  {weapon.ability && (
+                    <div class="bb-weapon-ability">
+                      <span class="bb-weapon-ability-name">{weapon.ability}</span>
+                      <span class="bb-weapon-ability-desc">{weapon.abilityDesc}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</WeaponsLayout>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.bb-weapons-tab');
+    const contents = document.querySelectorAll('.bb-weapons-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and target content
+        tab.classList.add('active');
+        const targetId = tab.getAttribute('data-target');
+        if (targetId) {
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        }
+      });
+    });
+  });
+</script>

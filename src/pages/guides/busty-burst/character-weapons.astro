@@ -1,0 +1,201 @@
+---
+import CharacterWeaponsLayout from '../../../layouts/busty-burst/CharacterWeaponsLayout.astro';
+import WeaponImage from '../../../components/busty-burst/WeaponImage.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import {
+  getCharacterWeaponData,
+  weaponTypes,
+} from '../../../data/busty-burst/character-weapons.js';
+import { statLabels } from '../../../data/busty-burst/weapons.js';
+
+const title = 'Character Weapons Guide - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete character weapons guide for Busty Burst Fantasy. Find which weapons each character can equip by type: Slash, Pierce, Strike/Blunt, Shoot/Ranged, and Throw. Includes all SSR and SR characters with their compatible weapons, stats, and abilities.';
+const gameTitle = 'Character Weapons';
+
+// Get all character-weapon data organized by type
+const characterWeaponData = getCharacterWeaponData();
+
+// Helper function to convert type name to safe HTML ID
+const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
+
+// Helper to check if weapon has stats
+const hasStats = (stats: Record<string, number>) => Object.keys(stats).length > 0;
+
+// Helper to get image filename with extension
+const getCharImageFile = (imageName: string) => {
+  // Check for png files
+  if (imageName === 'Shaty') {
+    return `${imageName}.png`;
+  }
+  return `${imageName}.jpg`;
+};
+---
+
+<CharacterWeaponsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-char-weapons-container">
+    <!-- Info Box -->
+    <div class="bb-char-weapons-info-box">
+      <h3 class="bb-char-weapons-info-title">Character Weapon Matching</h3>
+      <ul class="bb-char-weapons-info-list">
+        <li>Each character has a specific <strong>weapon type</strong> they can equip</li>
+        <li>
+          Weapons are divided into 5 types: <strong
+            >Slash, Pierce, Strike/Blunt, Shoot/Ranged, and Throw</strong
+          >
+        </li>
+        <li>
+          Choose weapons based on your character's <strong>attack type</strong> (Physical or Magic)
+        </li>
+        <li>
+          Physical attackers benefit from <strong>Physical Attack</strong> and <strong
+            >Physical Critical</strong
+          > stats
+        </li>
+        <li>
+          Magic attackers benefit from <strong>Magic Attack</strong> and <strong
+            >Magic Critical</strong
+          > stats
+        </li>
+      </ul>
+    </div>
+
+    <!-- Weapon Type Tabs -->
+    <div class="bb-char-weapons-tabs">
+      {
+        weaponTypes.map((type, index) => (
+          <button
+            class={`bb-char-weapons-tab ${index === 0 ? 'active' : ''}`}
+            data-type={type}
+            data-target={`${toSafeId(type)}-content`}
+          >
+            {type}
+            <span class="bb-char-weapons-tab-count">
+              ({characterWeaponData[type].characters.length})
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Content Sections by Weapon Type -->
+    {
+      weaponTypes.map((type, index) => {
+        const data = characterWeaponData[type];
+        return (
+          <div
+            id={`${toSafeId(type)}-content`}
+            class={`bb-char-weapons-content ${index === 0 ? 'active' : ''}`}
+          >
+            <div class="bb-char-weapons-section">
+              <h2 class="bb-char-weapons-section-title">{type} Type</h2>
+
+              <h3 class="bb-char-weapons-chars-title">Characters ({data.characters.length})</h3>
+              <div class="bb-char-weapons-chars-grid">
+                {data.characters.map(char => (
+                  <div class="bb-char-weapon-card">
+                    <div class="bb-char-weapon-avatar">
+                      <PaladinImage
+                        fileName={getCharImageFile(char.image)}
+                        alt={char.displayName}
+                        width={60}
+                        height={60}
+                      />
+                    </div>
+                    <div class="bb-char-weapon-info">
+                      <div class="bb-char-weapon-name">{char.displayName}</div>
+                      <div class="bb-char-weapon-badges">
+                        <span class={`bb-char-weapon-badge rarity-${char.rarity.toLowerCase()}`}>
+                          {char.rarity}
+                        </span>
+                        <span class={`bb-char-weapon-badge element-${char.element.toLowerCase()}`}>
+                          {char.element}
+                        </span>
+                        <span class={`bb-char-weapon-badge role-${char.role.toLowerCase()}`}>
+                          {char.role}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <h3 class="bb-char-weapons-wpns-title">Available Weapons ({data.weapons.length})</h3>
+              <div class="bb-char-weapons-wpns-grid">
+                {data.weapons.map(weapon => (
+                  <div class="bb-char-wpn-card">
+                    <div class="bb-char-wpn-image">
+                      <WeaponImage
+                        fileName={weapon.imageFile}
+                        alt={weapon.name}
+                        width={80}
+                        height={80}
+                      />
+                    </div>
+                    <div class="bb-char-wpn-info">
+                      <div class="bb-char-wpn-name">{weapon.name}</div>
+                      <div class="bb-char-wpn-row">
+                        <span class="bb-char-wpn-label">Attack Type:</span>
+                        <span class="bb-char-wpn-value">{weapon.atkType}</span>
+                      </div>
+                      <div class="bb-char-wpn-row">
+                        <span class="bb-char-wpn-label">Obtain:</span>
+                        <span class="bb-char-wpn-obtain" data-obtain={weapon.obtain}>
+                          {weapon.obtain}
+                        </span>
+                      </div>
+                      {hasStats(weapon.stats) && (
+                        <div class="bb-char-wpn-stats">
+                          {Object.entries(weapon.stats).map(([key, value]) => (
+                            <span class="bb-char-wpn-stat">
+                              {statLabels[key]}: {value}
+                              {weapon.statsMax && weapon.statsMax[key] !== undefined
+                                ? ` → ${weapon.statsMax[key]}`
+                                : ''}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {weapon.ability && (
+                        <div class="bb-char-wpn-ability">
+                          <div class="bb-char-wpn-ability-name">{weapon.ability}</div>
+                          <div class="bb-char-wpn-ability-desc">{weapon.abilityDesc}</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</CharacterWeaponsLayout>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.bb-char-weapons-tab');
+    const contents = document.querySelectorAll('.bb-char-weapons-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and target content
+        tab.classList.add('active');
+        const targetId = tab.getAttribute('data-target');
+        if (targetId) {
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        }
+      });
+    });
+  });
+</script>

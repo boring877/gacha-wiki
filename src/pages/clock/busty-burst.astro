@@ -60,6 +60,8 @@ const games = [
     updateMonthlyReset();
     updateLaunchInfo();
     updateHolidays();
+    updatePiBustyDay();
+    updateAnniversary();
     updateMaintenance();
 
     // Update every second
@@ -70,6 +72,8 @@ const games = [
       updateMonthlyReset();
       updateLaunchInfo();
       updateHolidays();
+      updatePiBustyDay();
+      updateAnniversary();
       updateMaintenance();
     }, 1000);
   }
@@ -250,6 +254,97 @@ const games = [
       const timeDiff = newYear.getTime() - now.getTime();
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       newyearEl.textContent = `${days} days`;
+    }
+  }
+
+  // Update PI Busty Day timer (8th, 18th, 28th of each month)
+  function updatePiBustyDay() {
+    const piBustyDayEl = document.getElementById('piBustyDayTime');
+    const piBustyDayDateEl = document.getElementById('piBustyDayDate');
+    if (!piBustyDayEl) return;
+
+    const now = new Date();
+    const currentDay = now.getUTCDate();
+    const currentMonth = now.getUTCMonth();
+    const currentYear = now.getUTCFullYear();
+
+    const piBustyDays = [8, 18, 28];
+    let nextPiDay;
+    let nextMonth = currentMonth;
+    let nextYear = currentYear;
+
+    // Find the next PI Busty Day
+    const upcomingThisMonth = piBustyDays.find(d => d > currentDay);
+    if (upcomingThisMonth) {
+      nextPiDay = upcomingThisMonth;
+    } else {
+      // Move to next month's 8th
+      nextPiDay = 8;
+      nextMonth = currentMonth + 1;
+      if (nextMonth > 11) {
+        nextMonth = 0;
+        nextYear++;
+      }
+    }
+
+    const nextPiBustyDate = new Date(Date.UTC(nextYear, nextMonth, nextPiDay, 0, 0, 0));
+    const timeDiff = nextPiBustyDate.getTime() - now.getTime();
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    piBustyDayEl.textContent = `${days}d ${hours}h`;
+
+    // Update the subtitle to show which date is next
+    if (piBustyDayDateEl) {
+      const monthNames = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      piBustyDayDateEl.textContent = `${monthNames[nextMonth]} ${nextPiDay}`;
+    }
+  }
+
+  // Update Anniversary timers (Anniversary: Dec 4, Half Anniversary: Jun 4)
+  function updateAnniversary() {
+    const now = new Date();
+    const currentYear = now.getUTCFullYear();
+
+    // Anniversary timer (December 4th)
+    const anniversaryEl = document.getElementById('anniversaryTime');
+    if (anniversaryEl) {
+      let anniversary = new Date(Date.UTC(currentYear, 11, 4, 0, 0, 0)); // Dec 4
+      if (anniversary <= now) {
+        anniversary = new Date(Date.UTC(currentYear + 1, 11, 4, 0, 0, 0));
+      }
+
+      const timeDiff = anniversary.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      anniversaryEl.textContent = `${days}d ${hours}h`;
+    }
+
+    // Half Anniversary timer (June 4th)
+    const halfAnniversaryEl = document.getElementById('halfAnniversaryTime');
+    if (halfAnniversaryEl) {
+      let halfAnniversary = new Date(Date.UTC(currentYear, 5, 4, 0, 0, 0)); // Jun 4
+      if (halfAnniversary <= now) {
+        halfAnniversary = new Date(Date.UTC(currentYear + 1, 5, 4, 0, 0, 0));
+      }
+
+      const timeDiff = halfAnniversary.getTime() - now.getTime();
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      halfAnniversaryEl.textContent = `${days}d ${hours}h`;
     }
   }
 
