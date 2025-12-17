@@ -287,7 +287,7 @@ const games = [
       }
     }
 
-    const nextPiBustyDate = new Date(Date.UTC(nextYear, nextMonth, nextPiDay, 0, 0, 0));
+    const nextPiBustyDate = new Date(Date.UTC(nextYear, nextMonth, nextPiDay, 4, 0, 0)); // 04:00 UTC
     const timeDiff = nextPiBustyDate.getTime() - now.getTime();
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -322,9 +322,9 @@ const games = [
     // Anniversary timer (December 4th)
     const anniversaryEl = document.getElementById('anniversaryTime');
     if (anniversaryEl) {
-      let anniversary = new Date(Date.UTC(currentYear, 11, 4, 0, 0, 0)); // Dec 4
+      let anniversary = new Date(Date.UTC(currentYear, 11, 4, 4, 0, 0)); // Dec 4 at 04:00 UTC
       if (anniversary <= now) {
-        anniversary = new Date(Date.UTC(currentYear + 1, 11, 4, 0, 0, 0));
+        anniversary = new Date(Date.UTC(currentYear + 1, 11, 4, 4, 0, 0));
       }
 
       const timeDiff = anniversary.getTime() - now.getTime();
@@ -336,9 +336,9 @@ const games = [
     // Half Anniversary timer (June 4th)
     const halfAnniversaryEl = document.getElementById('halfAnniversaryTime');
     if (halfAnniversaryEl) {
-      let halfAnniversary = new Date(Date.UTC(currentYear, 5, 4, 0, 0, 0)); // Jun 4
+      let halfAnniversary = new Date(Date.UTC(currentYear, 5, 4, 4, 0, 0)); // Jun 4 at 04:00 UTC
       if (halfAnniversary <= now) {
-        halfAnniversary = new Date(Date.UTC(currentYear + 1, 5, 4, 0, 0, 0));
+        halfAnniversary = new Date(Date.UTC(currentYear + 1, 5, 4, 4, 0, 0));
       }
 
       const timeDiff = halfAnniversary.getTime() - now.getTime();
