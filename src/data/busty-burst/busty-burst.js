@@ -51,17 +51,75 @@ export const bustyBurstConfig = {
   // Main Category Groups
   categoryGroups: [
     {
-      id: 'guides',
-      title: 'Guides',
+      id: 'characters',
+      title: 'Characters',
       emoji: '',
-      description: 'Game guides and character information',
+      description: 'Character guides and information',
       size: 'large',
       guides: [
+        {
+          id: 'character-info',
+          title: 'Profiles & VAs',
+          url: '/guides/busty-burst/character-info/',
+        },
         {
           id: 'paladin-tier-list',
           title: 'Tier List',
           url: '/guides/busty-burst/tier-list#tier-list',
         },
+        {
+          id: 'build',
+          title: 'Build',
+          url: '/guides/busty-burst/build',
+        },
+      ],
+    },
+    {
+      id: 'equipment',
+      title: 'Equipment',
+      emoji: '',
+      description: 'Weapons and accessories',
+      size: 'large',
+      guides: [
+        {
+          id: 'weapons',
+          title: 'Weapons',
+          url: '/guides/busty-burst/weapons',
+        },
+        {
+          id: 'character-weapons',
+          title: 'Char Weapons',
+          url: '/guides/busty-burst/character-weapons',
+        },
+        {
+          id: 'accessory-stats',
+          title: 'Accessory Stats',
+          url: '/guides/busty-burst/accessory-stats',
+        },
+        {
+          id: 'accessory-items',
+          title: 'Accessory Items',
+          url: '/guides/busty-burst/accessory-items',
+        },
+        {
+          id: 'accessory-guide',
+          title: 'Accessory Guide',
+          url: '/guides/busty-burst/accessory-guide',
+        },
+        {
+          id: 'raid-drops',
+          title: 'Raid Drops',
+          url: '/guides/busty-burst/raid-drops',
+        },
+      ],
+    },
+    {
+      id: 'events',
+      title: 'Events',
+      emoji: '',
+      description: 'Event information and banners',
+      size: 'large',
+      guides: [
         {
           id: 'banner-timeline',
           title: 'Banner Timeline',
@@ -69,29 +127,155 @@ export const bustyBurstConfig = {
         },
       ],
     },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Helpful resources and tools',
+      size: 'large',
+      guides: [
+        {
+          id: 'blog',
+          title: 'Blog',
+          url: '/guides/busty-burst/blog/',
+        },
+        {
+          id: 'clock',
+          title: 'Clock',
+          url: '/clock/busty-burst/',
+        },
+        {
+          id: 'redeem-codes',
+          title: 'Redeem Codes',
+          url: '/guides/busty-burst/redeem-codes',
+        },
+      ],
+    },
   ],
 
   // Original guides array (kept for backward compatibility)
   guides: [
+    // Characters
+    {
+      id: 'character-info',
+      title: 'Profiles & VAs',
+      emoji: '',
+      description: 'Character profiles and voice actor information.',
+      url: '/guides/busty-burst/character-info/',
+      category: 'characters',
+      size: 'regular',
+    },
     {
       id: 'paladin-tier-list',
-      title: 'Beginner Tier List',
+      title: 'Tier List',
       emoji: '',
       description:
         'Beginner tier list for BBB Busty game. Find the best paladins to pick early on in your journey.',
       url: '/guides/busty-burst/tier-list#tier-list',
-      category: 'guides',
-      size: 'large',
+      category: 'characters',
+      size: 'regular',
     },
+    {
+      id: 'build',
+      title: 'Build',
+      emoji: '',
+      description: 'Character build guides and recommendations.',
+      url: '/guides/busty-burst/build',
+      category: 'characters',
+      size: 'regular',
+    },
+    // Equipment
+    {
+      id: 'weapons',
+      title: 'Weapons',
+      emoji: '',
+      description: 'Complete weapon database and stats.',
+      url: '/guides/busty-burst/weapons',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'character-weapons',
+      title: 'Char Weapons',
+      emoji: '',
+      description: 'Character-specific weapon recommendations.',
+      url: '/guides/busty-burst/character-weapons',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'accessory-stats',
+      title: 'Accessory Stats',
+      emoji: '',
+      description: 'Accessory stats and bonuses.',
+      url: '/guides/busty-burst/accessory-stats',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'accessory-items',
+      title: 'Accessory Items',
+      emoji: '',
+      description: 'Complete list of accessory items.',
+      url: '/guides/busty-burst/accessory-items',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'accessory-guide',
+      title: 'Accessory Guide',
+      emoji: '',
+      description: 'Guide to accessories and best setups.',
+      url: '/guides/busty-burst/accessory-guide',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'raid-drops',
+      title: 'Raid Drops',
+      emoji: '',
+      description: 'Raid drop locations and rates.',
+      url: '/guides/busty-burst/raid-drops',
+      category: 'equipment',
+      size: 'regular',
+    },
+    // Events
     {
       id: 'banner-timeline',
       title: 'Banner Timeline',
       emoji: '',
-      description:
-        'Complete history of all summon banners in Busty Burst Fantasy. Track past and current events.',
+      description: 'Complete history of all summon banners in Busty Burst Fantasy.',
       url: '/guides/busty-burst/banner-timeline',
-      category: 'guides',
-      size: 'large',
+      category: 'events',
+      size: 'regular',
+    },
+    // Resources
+    {
+      id: 'blog',
+      title: 'Blog',
+      emoji: '',
+      description: 'Tips, thoughts, and strategy insights for Busty Burst Fantasy players.',
+      url: '/guides/busty-burst/blog/',
+      category: 'resources',
+      size: 'regular',
+    },
+    {
+      id: 'clock',
+      title: 'Clock',
+      emoji: '',
+      description: 'Server time and reset timers.',
+      url: '/clock/busty-burst/',
+      category: 'resources',
+      size: 'regular',
+    },
+    {
+      id: 'redeem-codes',
+      title: 'Redeem Codes',
+      emoji: '',
+      description: 'Active redeem codes for free rewards.',
+      url: '/guides/busty-burst/redeem-codes',
+      category: 'resources',
+      size: 'regular',
     },
   ],
 };

@@ -1,0 +1,52 @@
+---
+import BlogLandingLayout from '../../../../layouts/busty-burst/BlogLandingLayout.astro';
+import { blogConfig } from '../../../../data/busty-burst/blog.js';
+
+const { meta, posts } = blogConfig;
+
+// Format date helper
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<BlogLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  showTitle={true}
+>
+  <div class="bb-blog-page-container">
+    <section class="bb-blog-content-section">
+      <h2 class="bb-blog-section-title">Latest Posts</h2>
+
+      {
+        posts.length > 0 ? (
+          <div class="bb-blog-grid">
+            {posts.map(post => (
+              <a href={`/guides/busty-burst/blog/${post.slug}`} class="bb-blog-card">
+                <div class="bb-blog-card-meta">
+                  <span class="bb-blog-card-category">{post.category}</span>
+                  <span class="bb-blog-card-date">{formatDate(post.publishDate)}</span>
+                </div>
+                <h3 class="bb-blog-card-title">{post.title}</h3>
+                <p class="bb-blog-card-excerpt">{post.description}</p>
+                <div class="bb-blog-card-author">By {post.author}</div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="bb-blog-empty">
+            <h3>No posts yet</h3>
+            <p>Check back soon for tips, strategies, and insights!</p>
+          </div>
+        )
+      }
+    </section>
+  </div>
+</BlogLandingLayout>

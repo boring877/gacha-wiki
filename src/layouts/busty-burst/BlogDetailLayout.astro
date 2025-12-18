@@ -1,0 +1,118 @@
+---
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/games/busty-burst/busty-burst-blog-detail.css';
+
+export interface Props {
+  post: {
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publishDate: string;
+    category: string;
+    tags: string[];
+    content: string;
+  };
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | Busty Burst Fantasy Blog`;
+const description = post.description;
+
+// Format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description} />
+    <GameSEO
+      gameKey="busty-burst"
+      title={title}
+      description={description}
+      customImage="/images/games/Busty_Burst/BG/bg_02.webp"
+    />
+  </head>
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="busty-burst-container">
+        <main class="busty-burst-main">
+          <!-- Title Section -->
+          <section class="bb-title-only-section">
+            <h1 class="bb-title-only-heading">{post.title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <div class="content-area">
+            <article class="bb-blog-article">
+              <!-- Article Header -->
+              <header class="bb-blog-header">
+                <div class="bb-blog-meta">
+                  <span class="bb-blog-meta-category">{post.category}</span>
+                  <span class="bb-blog-meta-separator">•</span>
+                  <span class="bb-blog-meta-date">{formatDate(post.publishDate)}</span>
+                  <span class="bb-blog-meta-separator">•</span>
+                  <span class="bb-blog-meta-author">By {post.author}</span>
+                </div>
+              </header>
+
+              <!-- Article Content -->
+              <div class="bb-blog-content" set:html={post.content} />
+
+              <!-- Tags -->
+              {
+                post.tags && post.tags.length > 0 && (
+                  <div class="bb-blog-tags">
+                    <div class="bb-blog-tags-label">Tags</div>
+                    <div class="bb-blog-tags-list">
+                      {post.tags.map(tag => (
+                        <span class="bb-blog-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

@@ -271,6 +271,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Resources',
         links: [
+          { name: 'Blog', href: '/guides/busty-burst/blog/' },
           { name: 'Clock', href: '/clock/busty-burst/' },
           { name: 'Redeem Codes', href: '/guides/busty-burst/redeem-codes' },
         ],
