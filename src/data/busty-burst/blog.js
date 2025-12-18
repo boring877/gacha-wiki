@@ -89,6 +89,71 @@ export const blogConfig = {
         </ul>
       `,
     },
+    {
+      slug: 'busty-day-exchange-shop-what-to-buy',
+      title: 'Busty Day Exchange Shop - What to Buy',
+      description:
+        'Guide to the Busty Day exchange shop with spending priority and item recommendations.',
+      author: 'Boring877',
+      publishDate: '2025-12-18',
+      category: 'Event',
+      tags: ['event', 'busty-day', 'shop', 'guide'],
+      content: `
+        <p>During Busty Day, you earn Big Bust Emblems based on your stamina consumption. Each stamina spent gives you one emblem. On a typical day, you can expect to earn around 500 to 700 emblems depending on your playstyle.</p>
+        <p>If you're saving for Busty Day, you can stockpile stamina items in your mail and use them all during the event to maximize your emblem gains.</p>
+
+        <h2>Shop Items</h2>
+        <table class="bb-blog-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Limit</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>25% OFF Coupon</td><td>1</td><td>300</td></tr>
+            <tr><td>Memory Crystal</td><td>100</td><td>2</td></tr>
+            <tr><td>Ancient Artifact Coin</td><td>50</td><td>2</td></tr>
+            <tr><td>★5 Accessory Box</td><td>10</td><td>10</td></tr>
+            <tr><td>Summon Ticket</td><td>3</td><td>100</td></tr>
+            <tr><td>SSR Paladin's Bond</td><td>20</td><td>10</td></tr>
+            <tr><td>Extermination Spear</td><td>1</td><td>100</td></tr>
+            <tr><td>Extermination Spear Exclusive Limit Break Material</td><td>4</td><td>50</td></tr>
+            <tr><td>Extermination Staff</td><td>1</td><td>100</td></tr>
+            <tr><td>Extermination Staff Exclusive Limit Break Material</td><td>4</td><td>50</td></tr>
+            <tr><td>Transcendence Core</td><td>200</td><td>2</td></tr>
+            <tr><td>Regol Coin ×10000</td><td>1000</td><td>1</td></tr>
+            <tr><td>Raid Battle Ticket Box</td><td>1</td><td>100</td></tr>
+            <tr><td>Sweep Ticket</td><td>—</td><td>1</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Spending Priority</h2>
+
+        <h3>1. 25% OFF Coupon (Top Priority)</h3>
+        <p>Grab this first. The discount value is significant and you can only get one.</p>
+
+        <h3>2. Memory Crystal</h3>
+        <p>At only 2 emblems each with a limit of 100, this is excellent value. Prioritize these after the discount coupon.</p>
+
+        <h3>3. Ancient Artifact Coin or Regol Coin</h3>
+        <p>Both cost very little and provide solid value. Ancient Artifact Coins cost 2 emblems each, while Regol Coins give you 10,000 coins for just 1 emblem.</p>
+
+        <h3>4. ★5 Accessory Box, Summon Ticket, SSR Paladin's Bond</h3>
+        <p>These are fine to pick up if you have spare emblems.</p>
+
+        <h3>5. Too Expensive - Skip These</h3>
+        <p>The following items cost too much for what they offer:</p>
+        <ul>
+          <li>Extermination Spear</li>
+          <li>Extermination Spear Exclusive Limit Break Material</li>
+          <li>Extermination Staff</li>
+          <li>Extermination Staff Exclusive Limit Break Material</li>
+          <li>Raid Battle Ticket Box</li>
+        </ul>
+      `,
+    },
   ],
 };
 

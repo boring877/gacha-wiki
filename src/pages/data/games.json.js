@@ -207,6 +207,7 @@ export async function GET() {
         builds: true,
         equipment: true,
         redeemCodes: true,
+        blog: true,
       },
       apiEndpoints: [
         '/data/busty-burst/paladins.json',
@@ -214,6 +215,7 @@ export async function GET() {
         '/data/busty-burst/equipment.json',
         '/data/busty-burst/tier-lists.json',
         '/data/busty-burst/redeem-codes.json',
+        '/data/busty-burst/blog.json',
       ],
     },
 

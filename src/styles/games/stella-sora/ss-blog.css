@@ -1,0 +1,221 @@
+/* Stella Sora Blog Index Page Styles */
+
+/* Page Container */
+.ss-blog-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Introduction Section */
+.ss-blog-intro {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+}
+
+.ss-blog-intro-text {
+  color: var(--ss-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Section Styles */
+.ss-blog-content-section {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  background: transparent;
+}
+
+.ss-blog-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--ss-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Blog Posts Grid */
+.ss-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* Blog Card Styles */
+.ss-blog-card {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  height: 100%;
+  /* Touch-friendly minimum size */
+  min-height: 120px;
+}
+
+.ss-blog-card:hover {
+  border-color: var(--ss-primary);
+}
+
+/* Touch/mobile active state */
+.ss-blog-card:active {
+  transform: scale(0.98);
+}
+
+/* Card Meta (category, date) */
+.ss-blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ss-blog-card-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ss-primary);
+  background: rgba(125, 211, 252, 0.15);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+}
+
+.ss-blog-card-date {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+}
+
+/* Card Title */
+.ss-blog-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Card Excerpt */
+.ss-blog-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Author */
+.ss-blog-card-author {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ss-border);
+}
+
+/* Empty State */
+.ss-blog-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ss-text-secondary);
+}
+
+.ss-blog-empty h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.ss-blog-empty p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ss-blog-page-container {
+    padding: 0 0.75rem;
+  }
+
+  .ss-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ss-blog-card {
+    padding: 1rem;
+  }
+
+  .ss-blog-card-title {
+    font-size: 1rem;
+  }
+
+  .ss-blog-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-blog-page-container {
+    padding: 0 0.5rem;
+  }
+
+  .ss-blog-grid {
+    gap: 0.5rem;
+  }
+
+  .ss-blog-card {
+    padding: 0.875rem;
+    gap: 0.5rem;
+  }
+
+  .ss-blog-card-title {
+    font-size: 0.95rem;
+  }
+
+  .ss-blog-card-excerpt {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .ss-blog-card-category {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .ss-blog-card-date,
+  .ss-blog-card-author {
+    font-size: 0.75rem;
+  }
+
+  .ss-blog-intro {
+    padding: 0.75rem;
+  }
+
+  .ss-blog-intro-text {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,143 @@
+---
+import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/stella-sora/ss-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/stella-sora/ss-layout.css';
+import '../../styles/games/stella-sora/ss-blog-detail.css';
+
+export interface Props {
+  post: {
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publishDate: string;
+    category: string;
+    tags: string[];
+    content: string;
+  };
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | Stella Sora Blog`;
+const description = post.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+// Format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+// Article structured data for SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.description,
+  author: {
+    '@type': 'Person',
+    name: post.author,
+  },
+  datePublished: post.publishDate,
+  dateModified: post.publishDate,
+  publisher: {
+    '@type': 'Organization',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: post.tags.join(', '),
+  articleSection: post.category,
+  inLanguage: 'en',
+};
+---
+
+<html lang="en">
+  <head>
+    <SSBaseHead title={title} description={description} />
+    <GameSEO gameKey="stella-sora" title={title} description={description} />
+    <!-- Article Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </head>
+  <body class="stella-sora-body">
+    <CustomScrollbar />
+    <div class="bg-layer ss-bg-primary"></div>
+    <div class="bg-layer ss-bg-accent-1"></div>
+    <div class="bg-layer ss-bg-accent-2"></div>
+    <div class="bg-layer ss-bg-accent-3"></div>
+
+    <div class="stella-sora-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="stella-sora" />
+      <MobileMenu />
+
+      <div class="stella-sora-container">
+        <main class="stella-sora-main">
+          <!-- Title Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{post.title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={true} />
+
+          <div class="content-area">
+            <article class="ss-blog-article">
+              <!-- Article Header -->
+              <header class="ss-blog-header">
+                <div class="ss-blog-meta">
+                  <span class="ss-blog-meta-category">{post.category}</span>
+                  <span class="ss-blog-meta-separator">•</span>
+                  <span class="ss-blog-meta-date">{formatDate(post.publishDate)}</span>
+                  <span class="ss-blog-meta-separator">•</span>
+                  <span class="ss-blog-meta-author">By {post.author}</span>
+                </div>
+              </header>
+
+              <!-- Article Content -->
+              <div class="ss-blog-content" set:html={post.content} />
+
+              <!-- Tags -->
+              {
+                post.tags && post.tags.length > 0 && (
+                  <div class="ss-blog-tags">
+                    <div class="ss-blog-tags-label">Tags</div>
+                    <div class="ss-blog-tags-list">
+                      {post.tags.map(tag => (
+                        <span class="ss-blog-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

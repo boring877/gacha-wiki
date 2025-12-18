@@ -107,11 +107,13 @@ export async function GET() {
           equipment: '/data/busty-burst/equipment.json',
           tierLists: '/data/busty-burst/tier-lists.json',
           redeemCodes: '/data/busty-burst/redeem-codes.json',
+          blog: '/data/busty-burst/blog.json',
         },
         webPages: {
           home: '/guides/busty-burst/',
           tierLists: '/guides/busty-burst/tier-lists/',
           redeemCodes: '/guides/busty-burst/redeem-codes/',
+          blog: '/guides/busty-burst/blog/',
         },
       },
     ],
@@ -155,6 +157,7 @@ export async function GET() {
         'Emblem stat reference with all levels (70/80/90) and rarities (Green/Blue/Gold/Rainbow) (Stella Sora)',
       potentials:
         'Character potentials/ascension abilities that enhance Trekker skills (Stella Sora)',
+      blog: 'Strategy guides, tips, and event information blog posts (Busty Burst)',
     },
   };
 

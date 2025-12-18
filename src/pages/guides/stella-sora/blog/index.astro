@@ -1,0 +1,52 @@
+---
+import BlogLandingLayout from '../../../../layouts/stella-sora/BlogLandingLayout.astro';
+import { blogConfig } from '../../../../data/stella-sora/blog.js';
+
+const { meta, posts } = blogConfig;
+
+// Format date helper
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<BlogLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  showTitle={true}
+>
+  <div class="ss-blog-page-container">
+    <section class="ss-blog-content-section">
+      <h2 class="ss-blog-section-title">Latest Posts</h2>
+
+      {
+        posts.length > 0 ? (
+          <div class="ss-blog-grid">
+            {posts.map(post => (
+              <a href={`/guides/stella-sora/blog/${post.slug}`} class="ss-blog-card">
+                <div class="ss-blog-card-meta">
+                  <span class="ss-blog-card-category">{post.category}</span>
+                  <span class="ss-blog-card-date">{formatDate(post.publishDate)}</span>
+                </div>
+                <h3 class="ss-blog-card-title">{post.title}</h3>
+                <p class="ss-blog-card-excerpt">{post.description}</p>
+                <div class="ss-blog-card-author">By {post.author}</div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="ss-blog-empty">
+            <h3>No posts yet</h3>
+            <p>Check back soon for tips, strategies, and insights!</p>
+          </div>
+        )
+      }
+    </section>
+  </div>
+</BlogLandingLayout>
