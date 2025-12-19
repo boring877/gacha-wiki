@@ -191,7 +191,7 @@ export const additionalNotes = [
   'The Pink raid boss (Assassin) has very low magic defense, so 1-2 good magic defense debuffs are enough to maximize damage.',
   'The Yellow raid boss (Knight) has very high magic defense, so stacking as many magic debuffs as possible yields better results.',
   "Don't worry too much about overlapping buffs or debuffs if they have similar values.",
-  'Slower characters can share a category with a faster character who has a weaker buff. The faster character rotates skills more often, so their buff gets overwritten frequently anyway.',
+  'A slower character with a weaker buff can share a category with a faster character who has a stronger buff—the faster one will quickly overwrite the weaker buff anyway.',
   'The reverse can apply in some cases, but generally try to minimize conflicts where possible.',
 ];
 
@@ -226,7 +226,7 @@ export const sources = [
       'The FAQ page on Kyonyu Fantasy Burst Wikiru - an excellent resource for all things related to this game.',
   },
   {
-    name: 'Muscle Brain Fantasy (YouTube)',
+    name: '脳筋ファンタジー (YouTube)',
     url: 'https://youtu.be/sqrhrmSRi1U?si=ZZqSk9e3_QKFD0Vo',
     description:
       'A Kyonyuu Fantasy Burst YouTuber who produces extensive guides in Japanese. This video covers the buff/debuff system specifically.',
