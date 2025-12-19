@@ -266,6 +266,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         ],
       },
       {
+        title: 'Mechanics',
+        links: [{ name: 'Buff & Debuff System', href: '/guides/busty-burst/buff-debuff-guide' }],
+      },
+      {
         title: 'Events',
         links: [{ name: 'Banner Timeline', href: '/guides/busty-burst/banner-timeline' }],
       },

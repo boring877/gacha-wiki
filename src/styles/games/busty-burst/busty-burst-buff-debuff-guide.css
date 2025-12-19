@@ -1,0 +1,656 @@
+/**
+ * Busty Burst Fantasy - Buff/Debuff Guide Page Styles
+ */
+
+/* === PAGE CONTAINER === */
+.bb-buff-guide-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* === CREDIT TOP === */
+.bb-credit-top {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+}
+
+.bb-credit-top strong {
+  color: var(--bb-primary-light);
+}
+
+/* === SECTION === */
+.bb-guide-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-guide-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-guide-subtitle {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin: 1.5rem 0 1rem 0;
+}
+
+.bb-guide-subtitle:first-of-type {
+  margin-top: 0;
+}
+
+.bb-guide-intro {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.bb-guide-warning {
+  font-size: var(--text-sm);
+  color: var(--bb-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* === QUICK TIPS === */
+.bb-tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-tips-list li {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.bb-tips-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: var(--bb-primary-light);
+}
+
+/* === FRAME DEFINITIONS === */
+.bb-frames-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bb-frame-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+}
+
+.bb-frame-label {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  min-width: 80px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Frame colors - matching source document */
+.bb-frame-label.frame-a {
+  background: rgba(220, 53, 69, 0.25);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+}
+
+.bb-frame-label.frame-b {
+  background: rgba(13, 110, 253, 0.25);
+  color: #4dabf7;
+  border: 1px solid rgba(13, 110, 253, 0.5);
+}
+
+.bb-frame-label.frame-c {
+  background: rgba(40, 167, 69, 0.25);
+  color: #69db7c;
+  border: 1px solid rgba(40, 167, 69, 0.5);
+}
+
+.bb-frame-label.frame-d {
+  background: rgba(214, 51, 132, 0.25);
+  color: #e599f7;
+  border: 1px solid rgba(214, 51, 132, 0.5);
+}
+
+/* Debuff frame colors */
+.bb-frame-label.debuff-a {
+  background: rgba(220, 53, 69, 0.25);
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+}
+
+.bb-frame-label.debuff-b {
+  background: rgba(255, 193, 7, 0.25);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.bb-frame-label.debuff-c {
+  background: rgba(111, 66, 193, 0.25);
+  color: #b197fc;
+  border: 1px solid rgba(111, 66, 193, 0.5);
+}
+
+.bb-frame-info {
+  flex: 1;
+}
+
+.bb-frame-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.bb-frame-desc {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  line-height: 1.5;
+}
+
+/* === VISUAL CHART === */
+.bb-chart-wrapper {
+  margin: 1.5rem 0;
+}
+
+.bb-chart-container {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 2px;
+  background: var(--bb-border);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bb-chart-header {
+  background: var(--bb-bg-secondary);
+  padding: 0.75rem 1rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  text-align: center;
+}
+
+.bb-chart-row-header {
+  background: var(--bb-bg-secondary);
+  padding: 0.75rem 1rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-chart-cell {
+  background: var(--bb-bg-card);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.bb-chart-cell-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-align: center;
+}
+
+.bb-chart-cell-title.frame-a {
+  color: #dc3545;
+}
+.bb-chart-cell-title.frame-b {
+  color: #4dabf7;
+}
+.bb-chart-cell-title.frame-c {
+  color: #69db7c;
+}
+.bb-chart-cell-title.frame-d {
+  color: #e599f7;
+}
+.bb-chart-cell-title.debuff-a {
+  color: #dc3545;
+}
+.bb-chart-cell-title.debuff-b {
+  color: #ffc107;
+}
+.bb-chart-cell-title.debuff-c {
+  color: #b197fc;
+}
+
+.bb-chart-cell.span-two {
+  grid-column: span 2;
+}
+
+.bb-chart-characters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bb-chart-char {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border);
+}
+
+.bb-chart-char-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--bb-bg-secondary);
+  border: 2px solid var(--bb-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+  text-align: center;
+  padding: 2px;
+}
+
+/* === EXAMPLE SECTIONS === */
+.bb-example-card {
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.bb-example-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.bb-example-desc {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.bb-example-characters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bb-example-char {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--bb-bg-card);
+  border-radius: 6px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-example-char-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bb-example-char-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  background: var(--bb-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.bb-example-char-info {
+  flex: 1;
+}
+
+.bb-example-char-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.bb-example-char-skill {
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.bb-example-buffs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-example-buff {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bb-buff-frame {
+  font-weight: var(--font-bold);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+}
+
+.bb-buff-frame.frame-c {
+  background: rgba(40, 167, 69, 0.25);
+  color: #69db7c;
+}
+
+.bb-buff-frame.frame-d {
+  background: rgba(214, 51, 132, 0.25);
+  color: #e599f7;
+}
+
+.bb-example-explanation {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-example-explanation li {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.bb-example-explanation li::before {
+  content: '\2192';
+  position: absolute;
+  left: 0;
+  color: var(--bb-primary-light);
+}
+
+/* === EXCEPTION CARDS === */
+.bb-exceptions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bb-exception-card {
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 8px;
+}
+
+.bb-exception-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: #ffc107;
+  margin-bottom: 0.5rem;
+}
+
+.bb-exception-chars {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.bb-exception-char {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--bb-bg-card);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  color: var(--bb-text-primary);
+}
+
+.bb-exception-char-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bb-exception-desc {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.bb-exception-note {
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+  font-style: italic;
+}
+
+/* === DEBUFF EXAMPLE ROW === */
+.bb-debuff-example-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.bb-debuff-example-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.bb-debuff-example-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bb-debuff-example-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-debuff-example-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+}
+
+.bb-debuff-example-frame {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+/* === SOURCES SECTION === */
+.bb-sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bb-source-item {
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+}
+
+.bb-source-link {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.bb-source-link:hover {
+  text-decoration: underline;
+}
+
+.bb-source-desc {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+}
+
+.bb-credit-note {
+  font-size: var(--text-sm);
+  color: var(--bb-text-muted);
+  font-style: italic;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.1);
+  border-radius: 6px;
+}
+
+/* === PASSIVES NOTE === */
+.bb-passives-note {
+  padding: 1rem;
+  background: rgba(105, 219, 124, 0.1);
+  border: 1px solid rgba(105, 219, 124, 0.3);
+  border-radius: 8px;
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+}
+
+.bb-passives-note strong {
+  color: #69db7c;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .bb-buff-guide-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .bb-frame-card {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-frame-label {
+    min-width: unset;
+    align-self: flex-start;
+  }
+
+  .bb-chart-container {
+    font-size: var(--text-sm);
+  }
+
+  .bb-chart-header,
+  .bb-chart-row-header {
+    padding: 0.5rem;
+  }
+
+  .bb-chart-cell {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bb-chart-char,
+  .bb-chart-char-placeholder {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bb-example-char {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bb-debuff-example-row {
+    flex-direction: column;
+  }
+
+  .bb-debuff-example-item {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-guide-section {
+    padding: 1rem 0.75rem;
+  }
+
+  .bb-chart-container {
+    grid-template-columns: auto 1fr 1fr;
+  }
+
+  .bb-chart-header,
+  .bb-chart-row-header {
+    font-size: var(--text-xs);
+    padding: 0.4rem;
+  }
+
+  .bb-chart-cell-title {
+    font-size: var(--text-xs);
+  }
+
+  .bb-chart-char,
+  .bb-chart-char-placeholder {
+    width: 32px;
+    height: 32px;
+  }
+
+  .bb-exception-chars {
+    flex-direction: column;
+  }
+}

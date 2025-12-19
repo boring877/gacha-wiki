@@ -1,0 +1,452 @@
+---
+import BuffDebuffLayout from '../../../layouts/busty-burst/BuffDebuffLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import {
+  buffCategories,
+  debuffCategories,
+  buffExamples,
+  debuffExamples,
+  physicalTeamExample,
+  magicDebuffExample,
+  specialExceptions,
+  additionalNotes,
+  quickTips,
+  overview,
+  sources,
+  creditNote,
+} from '../../../data/busty-burst/buff-debuff-guide.js';
+
+const title = 'Buff & Debuff System Guide - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Complete guide to the Kyonyu Fantasy Burst buff and debuff category system. Learn how buffs stack, categories, and team building strategies.';
+const gameTitle = 'Buff & Debuff System';
+---
+
+<BuffDebuffLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-buff-guide-container">
+    <!-- Credit -->
+    <div class="bb-credit-top">
+      Guide by <strong>Aethersteel</strong>, edited by <strong>Ecchipen</strong>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Overview</h2>
+      <p class="bb-guide-intro">{overview.intro}</p>
+      <p class="bb-guide-warning">{overview.warning}</p>
+      <ul class="bb-tips-list">
+        {quickTips.map(tip => <li>{tip}</li>)}
+      </ul>
+    </section>
+
+    <!-- Buff Categories Section -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Buffs</h2>
+      <p class="bb-guide-intro">There are 4 buff categories:</p>
+      <div class="bb-frames-grid">
+        {
+          buffCategories.map(cat => (
+            <div class="bb-frame-card">
+              <span class={`bb-frame-label frame-${cat.category.toLowerCase()}`}>
+                Category {cat.category}
+              </span>
+              <div class="bb-frame-info">
+                <div class="bb-frame-name">{cat.name}</div>
+                <div class="bb-frame-desc">{cat.description}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="bb-guide-intro" style="margin-top: 1.5rem;">
+        For example: if you have 2 physical ATK UP buffs in Category B (first buff: +389 PATK,
+        second buff: +221 PATK), the one that activates last takes effect - not the stronger one.
+        This means you can actually reduce your damage output if you're not careful about buff
+        timing.
+      </p>
+
+      <!-- Buff Visual Chart -->
+      <h3 class="bb-guide-subtitle">Visual Chart</h3>
+      <div class="bb-chart-wrapper">
+        <div class="bb-chart-container">
+          <!-- Header row -->
+          <div class="bb-chart-header"></div>
+          <div class="bb-chart-header">Single Target</div>
+          <div class="bb-chart-header">Multiple Targets</div>
+
+          <!-- Ultimate row -->
+          <div class="bb-chart-row-header">Ultimate</div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title frame-a">Category A Buff</div>
+            <div class="bb-chart-characters">
+              {
+                buffExamples.A.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title frame-b">Category B Buff</div>
+            <div class="bb-chart-characters">
+              {
+                buffExamples.B.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Skill row -->
+          <div class="bb-chart-row-header">Skill</div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title frame-c">Category C Buff</div>
+            <div class="bb-chart-characters">
+              {
+                buffExamples.C.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title frame-d">Category D Buff</div>
+            <div class="bb-chart-characters">
+              {
+                buffExamples.D.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="bb-guide-intro">
+        <span style="color: #4dabf7;">Category B</span> and <span style="color: #e599f7;"
+          >Category D</span
+        >
+        are the most common conflict points since they contain team-wide buffs that can easily overlap.
+        Single target categories (A and C) rarely cause issues since they typically only affect the caster.
+      </p>
+    </section>
+
+    <!-- Debuff Categories Section -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Debuffs</h2>
+      <p class="bb-guide-intro">
+        Debuffs follow a similar system but with a slightly different category structure:
+      </p>
+      <div class="bb-frames-grid">
+        {
+          debuffCategories.map(cat => (
+            <div class="bb-frame-card">
+              <span class={`bb-frame-label debuff-${cat.category.toLowerCase()}`}>
+                Category {cat.category}
+              </span>
+              <div class="bb-frame-info">
+                <div class="bb-frame-name">{cat.name}</div>
+                <div class="bb-frame-desc">{cat.description}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="bb-guide-intro" style="margin-top: 1rem;">
+        Similar to buffs, Category B and C work the same way. The key difference is that all
+        Ultimate debuffs share Category A, regardless of whether they target single or multiple
+        enemies.
+      </p>
+
+      <!-- Debuff Visual Chart -->
+      <h3 class="bb-guide-subtitle">Visual Chart</h3>
+      <div class="bb-chart-wrapper">
+        <div class="bb-chart-container">
+          <!-- Header row -->
+          <div class="bb-chart-header"></div>
+          <div class="bb-chart-header">Single Target</div>
+          <div class="bb-chart-header">Multiple Targets</div>
+
+          <!-- Ultimate row (spans both columns) -->
+          <div class="bb-chart-row-header">Ultimate</div>
+          <div class="bb-chart-cell span-two">
+            <div class="bb-chart-cell-title debuff-a">Category A Debuff</div>
+            <div class="bb-chart-characters">
+              {
+                debuffExamples.A.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Skill row -->
+          <div class="bb-chart-row-header">Skill</div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title debuff-b">Category B Debuff</div>
+            <div class="bb-chart-characters">
+              {
+                debuffExamples.B.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+          <div class="bb-chart-cell">
+            <div class="bb-chart-cell-title debuff-c">Category C Debuff</div>
+            <div class="bb-chart-characters">
+              {
+                debuffExamples.C.map(char =>
+                  char.imageFile ? (
+                    <div class="bb-chart-char">
+                      <PaladinImage
+                        fileName={char.imageFile}
+                        alt={char.name}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ) : (
+                    <div class="bb-chart-char-placeholder">{char.name}</div>
+                  )
+                )
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passives Note -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Passives</h2>
+      <div class="bb-passives-note">
+        <strong>Good news:</strong> Passive abilities completely ignore these category rules and stack
+        freely. No need to worry about them conflicting.
+      </div>
+    </section>
+
+    <!-- Team Building Examples -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Examples</h2>
+
+      <!-- Physical Team Example -->
+      <div class="bb-example-card">
+        <div class="bb-example-title">{physicalTeamExample.title}</div>
+        <div class="bb-example-desc">{physicalTeamExample.description}</div>
+
+        <div class="bb-example-characters">
+          {
+            physicalTeamExample.characters.map(char => (
+              <div class="bb-example-char">
+                {char.imageFile ? (
+                  <div class="bb-example-char-img">
+                    <PaladinImage
+                      fileName={char.imageFile}
+                      alt={char.name}
+                      width={60}
+                      height={60}
+                    />
+                  </div>
+                ) : (
+                  <div class="bb-example-char-placeholder">{char.name}</div>
+                )}
+                <div class="bb-example-char-info">
+                  <div class="bb-example-char-name">{char.name}</div>
+                  <div class="bb-example-char-skill">{char.skill}</div>
+                  <div class="bb-example-buffs">
+                    {char.buffs.map(buff => (
+                      <div class="bb-example-buff">
+                        <span>
+                          {buff.stat} ({buff.target}) {buff.value}
+                        </span>
+                        <span class={`bb-buff-frame frame-${buff.frame.toLowerCase()}`}>
+                          {buff.frame}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <ul class="bb-example-explanation">
+          {physicalTeamExample.explanation.map(exp => <li>{exp}</li>)}
+        </ul>
+
+        <p class="bb-guide-intro" style="margin-top: 1rem;">
+          <strong>{physicalTeamExample.teamFormation.description}</strong>
+          {physicalTeamExample.teamFormation.note}
+        </p>
+      </div>
+
+      <!-- Magic Debuff Example -->
+      <div class="bb-example-card">
+        <div class="bb-example-title">{magicDebuffExample.title}</div>
+        <div class="bb-example-desc">{magicDebuffExample.description}</div>
+
+        <div class="bb-debuff-example-row">
+          {
+            magicDebuffExample.characters.map(char => (
+              <div class="bb-debuff-example-item">
+                {char.imageFile ? (
+                  <div class="bb-debuff-example-img">
+                    <PaladinImage
+                      fileName={char.imageFile}
+                      alt={char.name}
+                      width={48}
+                      height={48}
+                    />
+                  </div>
+                ) : (
+                  <div class="bb-chart-char-placeholder">{char.name}</div>
+                )}
+                <div class="bb-debuff-example-info">
+                  <span class="bb-debuff-example-name">{char.name}</span>
+                  <span class="bb-debuff-example-frame">
+                    Category {char.category}: {char.categoryType}
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="bb-guide-intro" style="margin-top: 1rem;">{magicDebuffExample.note}</p>
+      </div>
+    </section>
+
+    <!-- Additional Notes -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Additional Notes</h2>
+      <ul class="bb-tips-list">
+        {additionalNotes.map(note => <li>{note}</li>)}
+      </ul>
+    </section>
+
+    <!-- Special Exceptions -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Special Exceptions</h2>
+      <p class="bb-guide-intro">
+        There are some unusual edge cases where buffs don't behave as expected:
+      </p>
+
+      <div class="bb-exceptions-list">
+        {
+          specialExceptions.map(exception => (
+            <div class="bb-exception-card">
+              <div class="bb-exception-title">{exception.title}</div>
+              <div class="bb-exception-chars">
+                {exception.characters.map(char => (
+                  <div class="bb-exception-char">
+                    {char.imageFile && (
+                      <div class="bb-exception-char-img">
+                        <PaladinImage
+                          fileName={char.imageFile}
+                          alt={char.name}
+                          width={32}
+                          height={32}
+                        />
+                      </div>
+                    )}
+                    <span>{char.name}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="bb-exception-desc">{exception.description}</div>
+              <div class="bb-exception-note">{exception.note}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section class="bb-guide-section">
+      <h2 class="bb-guide-section-title">Sources</h2>
+      <div class="bb-sources-list">
+        {
+          sources.map(source => (
+            <div class="bb-source-item">
+              <a href={source.url} target="_blank" rel="noopener noreferrer" class="bb-source-link">
+                {source.name}
+              </a>
+              <div class="bb-source-desc">{source.description}</div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="bb-credit-note">{creditNote}</div>
+    </section>
+  </div>
+</BuffDebuffLayout>
