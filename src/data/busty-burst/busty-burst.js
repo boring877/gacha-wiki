@@ -87,6 +87,11 @@ export const bustyBurstConfig = {
           url: '/guides/busty-burst/weapons',
         },
         {
+          id: 'best-weapons',
+          title: 'Best Weapons',
+          url: '/guides/busty-burst/best-weapons',
+        },
+        {
           id: 'character-weapons',
           title: 'Char Weapons',
           url: '/guides/busty-burst/character-weapons',
@@ -191,6 +196,15 @@ export const bustyBurstConfig = {
       emoji: '',
       description: 'Complete weapon database and stats.',
       url: '/guides/busty-burst/weapons',
+      category: 'equipment',
+      size: 'regular',
+    },
+    {
+      id: 'best-weapons',
+      title: 'Best Weapons',
+      emoji: '',
+      description: 'Best weapon recommendations for each character with tier list.',
+      url: '/guides/busty-burst/best-weapons',
       category: 'equipment',
       size: 'regular',
     },

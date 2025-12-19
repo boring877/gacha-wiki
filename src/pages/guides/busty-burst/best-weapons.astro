@@ -1,0 +1,285 @@
+---
+import BestWeaponsLayout from '../../../layouts/busty-burst/BestWeaponsLayout.astro';
+import WeaponImage from '../../../components/busty-burst/WeaponImage.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import {
+  getAllCharacterBestWeapons,
+  getWeaponsByTier,
+  getWeaponsBySeries,
+  getCharacterCountByWeaponType,
+  weaponTypes,
+  WEAPON_TIERS,
+} from '../../../data/busty-burst/best-weapons.js';
+
+const title = 'Best Weapons Guide - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Best weapons for each character in Busty Burst Fantasy. Complete tier list: Annihilation (SS), Dragon (S), Golden Wyvern (A), Shop (B). Match weapons by attack type.';
+const gameTitle = 'Best Weapons Guide';
+
+// Get all data
+const characterBestWeapons = getAllCharacterBestWeapons();
+const weaponsByTier = getWeaponsByTier();
+const weaponsBySeries = getWeaponsBySeries();
+const charCounts = getCharacterCountByWeaponType();
+
+// Helper function to convert type name to safe HTML ID
+const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
+
+// Helper to get image filename with extension
+const getCharImageFile = (imageName: string) => {
+  if (imageName === 'Shaty') {
+    return `${imageName}.png`;
+  }
+  return `${imageName}.jpg`;
+};
+
+// Tier order for display
+const tierOrder = ['SSS', 'SS', 'S', 'A', 'B'];
+
+// Series order and tier mapping
+const seriesInfo = [
+  { name: 'Annihilation', tier: 'SS' },
+  { name: 'Dragon', tier: 'S' },
+  { name: 'Golden Wyvern', tier: 'A' },
+  { name: 'Labyrinth', tier: 'B' },
+  { name: 'Gold Shop', tier: 'B' },
+];
+---
+
+<BestWeaponsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-best-weapons-container">
+    <!-- Section 1: Best Weapons by Character -->
+    <section class="bb-best-weapons-section">
+      <div class="bb-best-weapons-section-header">
+        <h2 class="bb-best-weapons-section-title">Best Weapons by Character</h2>
+        <p class="bb-best-weapons-section-desc">Top weapon recommendations for each character</p>
+      </div>
+
+      <!-- Weapon Type Tabs -->
+      <div class="bb-best-weapons-tabs">
+        {
+          weaponTypes.map((type, index) => (
+            <button
+              class={`bb-best-weapons-tab ${index === 0 ? 'active' : ''}`}
+              data-target={`char-${toSafeId(type)}-content`}
+            >
+              {type}
+              <span class="bb-best-weapons-tab-count">({charCounts[type]})</span>
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Character Content by Weapon Type -->
+      {
+        weaponTypes.map((type, index) => {
+          const charData = characterBestWeapons[type] || [];
+          return (
+            <div
+              id={`char-${toSafeId(type)}-content`}
+              class={`bb-best-weapons-content ${index === 0 ? 'active' : ''}`}
+            >
+              <div class="bb-char-best-weapons-grid">
+                {charData.map(data => {
+                  if (!data) return null;
+                  const { character, attackType, bestWeapon } = data;
+                  return (
+                    <div class="bb-char-best-weapon-card">
+                      <div class="bb-char-best-weapon-header">
+                        <div class="bb-char-best-weapon-avatar">
+                          <PaladinImage
+                            fileName={getCharImageFile(character.image)}
+                            alt={character.displayName}
+                            width={140}
+                            height={140}
+                          />
+                        </div>
+                        <div class="bb-char-best-weapon-info">
+                          <div class="bb-char-best-weapon-name">{character.displayName}</div>
+                          <div class="bb-char-best-weapon-meta">
+                            <span class="bb-badge" data-rarity={character.rarity}>
+                              {character.rarity}
+                            </span>
+                            <span class="bb-badge" data-element={character.element}>
+                              {character.element}
+                            </span>
+                            <span class="bb-badge" data-attack={attackType}>
+                              {attackType}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bb-char-weapon-recommendations">
+                        {bestWeapon && (
+                          <div class="bb-weapon-rec-item">
+                            <div class="bb-weapon-rec-image">
+                              <WeaponImage
+                                fileName={bestWeapon.weapon.imageFile}
+                                alt={bestWeapon.weapon.name}
+                                width={100}
+                                height={100}
+                              />
+                            </div>
+                            <div class="bb-weapon-rec-details">
+                              <div class="bb-weapon-rec-name">
+                                <span class="bb-badge" data-recommended="true">
+                                  Recommended
+                                </span>
+                                {bestWeapon.weapon.name}
+                              </div>
+                              <div class="bb-weapon-rec-reason">{bestWeapon.reason}</div>
+                            </div>
+                          </div>
+                        )}
+                        {!bestWeapon && (
+                          <div class="bb-weapon-rec-item">
+                            <div class="bb-weapon-rec-details">
+                              <div class="bb-weapon-rec-name">No matching weapon found</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })
+      }
+    </section>
+
+    <!-- Section 2: Weapon Tier List -->
+    <section class="bb-weapon-tier-section">
+      <div class="bb-best-weapons-section-header">
+        <h2 class="bb-best-weapons-section-title">Weapon Tier List</h2>
+        <p class="bb-best-weapons-section-desc">All weapons ranked by tier and grouped by series</p>
+      </div>
+
+      <!-- View Toggle -->
+      <div class="bb-view-toggle">
+        <button class="bb-view-toggle-btn active" data-view="tier">By Tier</button>
+        <button class="bb-view-toggle-btn" data-view="series">By Series</button>
+      </div>
+
+      <!-- Tier View -->
+      <div id="tier-view" class="bb-best-weapons-content active">
+        {
+          tierOrder.map(tier => {
+            const tierWeapons = weaponsByTier[tier] || [];
+            const tierInfo = WEAPON_TIERS[tier];
+            return (
+              <div class="bb-weapon-tier-row">
+                <div class={`bb-weapon-tier-label tier-${tier.toLowerCase()}`}>{tier}</div>
+                <div class="bb-weapon-tier-items">
+                  {tierWeapons.map(weapon => (
+                    <div class="bb-weapon-tier-card">
+                      <div class="bb-weapon-tier-card-image">
+                        <WeaponImage
+                          fileName={weapon.imageFile}
+                          alt={weapon.name}
+                          width={140}
+                          height={140}
+                        />
+                      </div>
+                      <div class="bb-weapon-tier-card-name">{weapon.name}</div>
+                      <div class="bb-weapon-tier-card-type">{weapon.weaponType}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <!-- Series View -->
+      <div id="series-view" class="bb-best-weapons-content">
+        {
+          seriesInfo.map(({ name, tier }) => {
+            const seriesWeapons = weaponsBySeries[name] || [];
+            if (seriesWeapons.length === 0) return null;
+            return (
+              <div class="bb-weapon-series-section">
+                <div class="bb-weapon-series-header">
+                  <h3 class="bb-weapon-series-title">{name} Series</h3>
+                  <span class="bb-badge" data-tier={tier}>
+                    {tier}-Tier
+                  </span>
+                </div>
+                <div class="bb-weapon-series-grid">
+                  {seriesWeapons.map(weapon => (
+                    <div class="bb-weapon-tier-card">
+                      <div class="bb-weapon-tier-card-image">
+                        <WeaponImage
+                          fileName={weapon.imageFile}
+                          alt={weapon.name}
+                          width={140}
+                          height={140}
+                        />
+                      </div>
+                      <div class="bb-weapon-tier-card-name">{weapon.name}</div>
+                      <div class="bb-weapon-tier-card-type">{weapon.weaponType}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+  </div>
+</BestWeaponsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Character weapon type tabs
+    const charTabs = document.querySelectorAll('.bb-best-weapons-tab');
+    const charContents = document.querySelectorAll(
+      '.bb-best-weapons-content:not(#tier-view):not(#series-view)'
+    );
+
+    charTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        if (!targetId) return;
+
+        // Remove active from all character tabs
+        charTabs.forEach(t => t.classList.remove('active'));
+        charContents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab
+        tab.classList.add('active');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+
+    // Tier/Series view toggle
+    const viewToggleBtns = document.querySelectorAll('.bb-view-toggle-btn');
+    const tierView = document.getElementById('tier-view');
+    const seriesView = document.getElementById('series-view');
+
+    viewToggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.getAttribute('data-view');
+
+        // Toggle button states
+        viewToggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Toggle views
+        if (view === 'tier') {
+          tierView?.classList.add('active');
+          seriesView?.classList.remove('active');
+        } else {
+          tierView?.classList.remove('active');
+          seriesView?.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,590 @@
+/* Busty Burst Best Weapons Styles */
+/* Styles for character best weapons and weapon tier list pages */
+
+/* ===== Main Container ===== */
+.bb-best-weapons-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ===== Section Headers ===== */
+.bb-best-weapons-section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-best-weapons-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bb-primary);
+  margin-bottom: 0.5rem;
+}
+
+.bb-best-weapons-section-desc {
+  font-size: 1rem;
+  color: var(--bb-text-secondary);
+}
+
+/* ===== Info Box ===== */
+.bb-best-weapons-info-box {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bb-best-weapons-info-title {
+  color: var(--bb-primary);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.bb-best-weapons-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bb-best-weapons-info-list li {
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  padding: 0.25rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.bb-best-weapons-info-list li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--bb-primary);
+}
+
+/* ===== Tabs ===== */
+.bb-best-weapons-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.bb-best-weapons-tab {
+  padding: 0.75rem 1.25rem;
+  background: var(--bb-bg-secondary);
+  border: 2px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-best-weapons-tab:hover {
+  background: var(--bb-bg-hover);
+  color: var(--bb-text-primary);
+  border-color: var(--bb-primary);
+}
+
+.bb-best-weapons-tab.active {
+  background: var(--bb-primary);
+  color: white;
+  border-color: var(--bb-primary);
+}
+
+.bb-best-weapons-tab-count {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.bb-best-weapons-content {
+  display: none;
+}
+
+.bb-best-weapons-content.active {
+  display: block;
+}
+
+/* ===== View Toggle ===== */
+.bb-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.bb-view-toggle-btn {
+  padding: 0.5rem 1rem;
+  background: var(--bb-bg-secondary);
+  border: 2px solid var(--bb-border);
+  border-radius: 6px;
+  color: var(--bb-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bb-view-toggle-btn:hover {
+  background: var(--bb-bg-hover);
+  border-color: var(--bb-primary);
+}
+
+.bb-view-toggle-btn.active {
+  background: var(--bb-primary);
+  color: white;
+  border-color: var(--bb-primary);
+}
+
+/* ===== Character Best Weapons Grid ===== */
+.bb-char-best-weapons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== Character Best Weapon Card ===== */
+.bb-char-best-weapon-card {
+  background: var(--bb-bg-card);
+  border: 2px solid var(--bb-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bb-char-best-weapon-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bb-bg-secondary);
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-char-best-weapon-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+  flex-shrink: 0;
+}
+
+.bb-char-best-weapon-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-char-best-weapon-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-char-best-weapon-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bb-text-primary);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bb-char-best-weapon-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ===== Weapon Recommendations ===== */
+.bb-char-weapon-recommendations {
+  padding: 1rem;
+}
+
+.bb-weapon-rec-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+.bb-weapon-rec-item:last-child {
+  margin-bottom: 0;
+}
+
+.bb-weapon-rec-rank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.bb-weapon-rec-rank.rank-1 {
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #333;
+}
+
+.bb-weapon-rec-rank.rank-2 {
+  background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 100%);
+  color: #333;
+}
+
+.bb-weapon-rec-rank.rank-3 {
+  background: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+  color: white;
+}
+
+.bb-weapon-rec-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--bb-border-light);
+  flex-shrink: 0;
+}
+
+.bb-weapon-rec-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-weapon-rec-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-weapon-rec-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.bb-weapon-rec-name .bb-badge {
+  margin-right: 0.5rem;
+}
+
+.bb-weapon-rec-reason {
+  font-size: 0.8rem;
+  color: var(--bb-text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.3;
+}
+
+/* ===== Weapon Tier List ===== */
+.bb-weapon-tier-section {
+  margin-bottom: 2rem;
+}
+
+.bb-weapon-tier-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--bb-border-light);
+  align-items: stretch;
+}
+
+.bb-weapon-tier-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.bb-weapon-tier-label {
+  width: 80px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.bb-weapon-tier-label.tier-sss {
+  background: #ff6b6b;
+  color: white;
+}
+
+.bb-weapon-tier-label.tier-ss {
+  background: #feca57;
+  color: #333;
+}
+
+.bb-weapon-tier-label.tier-s {
+  background: #48dbfb;
+  color: white;
+}
+
+.bb-weapon-tier-label.tier-a {
+  background: #1dd1a1;
+  color: white;
+}
+
+.bb-weapon-tier-label.tier-b {
+  background: #576574;
+  color: white;
+}
+
+.bb-weapon-tier-items {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  min-height: 80px;
+  align-content: flex-start;
+}
+
+/* ===== Weapon Tier Card ===== */
+.bb-weapon-tier-card {
+  width: 100px;
+  background: var(--bb-bg-card);
+  border: 2px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.bb-weapon-tier-card-image {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 0.5rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--bb-border-light);
+}
+
+.bb-weapon-tier-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-weapon-tier-card-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  line-height: 1.2;
+  height: 2.4em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.bb-weapon-tier-card-type {
+  font-size: 0.65rem;
+  color: var(--bb-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ===== Series Section ===== */
+.bb-weapon-series-section {
+  margin-bottom: 2rem;
+}
+
+.bb-weapon-series-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--bb-primary);
+}
+
+.bb-weapon-series-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bb-text-primary);
+}
+
+.bb-weapon-series-tier {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.bb-weapon-series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .bb-best-weapons-container {
+    padding: 0.5rem;
+  }
+
+  .bb-best-weapons-section-title {
+    font-size: 1.5rem;
+  }
+
+  .bb-best-weapons-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bb-best-weapons-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .bb-char-best-weapons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-weapon-tier-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-weapon-tier-label {
+    width: 100%;
+    min-height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .bb-weapon-tier-card {
+    width: 85px;
+  }
+
+  .bb-weapon-tier-card-image {
+    width: 55px;
+    height: 55px;
+  }
+
+  .bb-weapon-series-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-best-weapons-section-header {
+    padding: 1rem;
+  }
+
+  .bb-best-weapons-section-title {
+    font-size: 1.25rem;
+  }
+
+  .bb-best-weapons-section-desc {
+    font-size: 0.85rem;
+  }
+
+  .bb-best-weapons-tab {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .bb-char-best-weapon-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .bb-char-best-weapon-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bb-char-best-weapon-name {
+    font-size: 0.9rem;
+  }
+
+  .bb-char-best-weapon-meta {
+    justify-content: center;
+  }
+
+  .bb-char-weapon-recommendations {
+    padding: 0.75rem;
+  }
+
+  .bb-weapon-rec-item {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  .bb-weapon-rec-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .bb-weapon-rec-name {
+    font-size: 0.8rem;
+  }
+
+  .bb-weapon-rec-reason {
+    font-size: 0.7rem;
+  }
+
+  .bb-weapon-tier-card {
+    width: 75px;
+    padding: 0.4rem;
+  }
+
+  .bb-weapon-tier-card-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-weapon-tier-card-name {
+    font-size: 0.65rem;
+  }
+
+  .bb-weapon-tier-card-type {
+    font-size: 0.55rem;
+  }
+
+  .bb-weapon-tier-items {
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .bb-weapon-series-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .bb-weapon-series-title {
+    font-size: 1rem;
+  }
+
+  .bb-weapon-series-grid {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .bb-view-toggle-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}

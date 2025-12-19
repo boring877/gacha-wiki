@@ -55,6 +55,12 @@
   border: 1px solid rgba(151, 117, 250, 0.4);
 }
 
+.bb-badge[data-element='Mind'] {
+  background: rgba(255, 154, 200, 0.2);
+  color: #ff9ac8;
+  border: 1px solid rgba(255, 154, 200, 0.4);
+}
+
 /* Role Badge Colors */
 .bb-badge[data-role='Attacker'] {
   background: rgba(255, 107, 107, 0.15);
@@ -122,6 +128,52 @@
   background: rgba(100, 220, 180, 0.2);
   color: #64dcb4;
   border: 1px solid rgba(100, 220, 180, 0.4);
+}
+
+/* Weapon Tier Badge Colors */
+.bb-badge[data-tier='SSS'] {
+  background: #ff6b6b;
+  color: #ffffff;
+}
+
+.bb-badge[data-tier='SS'] {
+  background: #feca57;
+  color: #1a1a1a;
+}
+
+.bb-badge[data-tier='S'] {
+  background: #48dbfb;
+  color: #ffffff;
+}
+
+.bb-badge[data-tier='A'] {
+  background: #1dd1a1;
+  color: #ffffff;
+}
+
+.bb-badge[data-tier='B'] {
+  background: #576574;
+  color: #ffffff;
+}
+
+/* Attack Type Badge Colors */
+.bb-badge[data-attack='Physical'] {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.bb-badge[data-attack='Magic'] {
+  background: rgba(151, 117, 250, 0.2);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.4);
+}
+
+/* Recommended Badge */
+.bb-badge[data-recommended='true'] {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.4);
 }
 
 /* Mobile Responsive Badge Styles */
