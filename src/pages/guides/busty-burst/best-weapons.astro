@@ -156,78 +156,34 @@ const seriesInfo = [
         <p class="bb-best-weapons-section-desc">All weapons ranked by tier and grouped by series</p>
       </div>
 
-      <!-- View Toggle -->
-      <div class="bb-view-toggle">
-        <button class="bb-view-toggle-btn active" data-view="tier">By Tier</button>
-        <button class="bb-view-toggle-btn" data-view="series">By Series</button>
-      </div>
-
       <!-- Tier View -->
-      <div id="tier-view" class="bb-best-weapons-content active">
-        {
-          tierOrder.map(tier => {
-            const tierWeapons = weaponsByTier[tier] || [];
-            const tierInfo = WEAPON_TIERS[tier];
-            return (
-              <div class="bb-weapon-tier-row">
-                <div class={`bb-weapon-tier-label tier-${tier.toLowerCase()}`}>{tier}</div>
-                <div class="bb-weapon-tier-items">
-                  {tierWeapons.map(weapon => (
-                    <div class="bb-weapon-tier-card">
-                      <div class="bb-weapon-tier-card-image">
-                        <WeaponImage
-                          fileName={weapon.imageFile}
-                          alt={weapon.name}
-                          width={140}
-                          height={140}
-                        />
-                      </div>
-                      <div class="bb-weapon-tier-card-name">{weapon.name}</div>
-                      <div class="bb-weapon-tier-card-type">{weapon.weaponType}</div>
+      {
+        tierOrder.map(tier => {
+          const tierWeapons = weaponsByTier[tier] || [];
+          const tierInfo = WEAPON_TIERS[tier];
+          return (
+            <div class="bb-weapon-tier-row">
+              <div class={`bb-weapon-tier-label tier-${tier.toLowerCase()}`}>{tier}</div>
+              <div class="bb-weapon-tier-items">
+                {tierWeapons.map(weapon => (
+                  <div class="bb-weapon-tier-card">
+                    <div class="bb-weapon-tier-card-image">
+                      <WeaponImage
+                        fileName={weapon.imageFile}
+                        alt={weapon.name}
+                        width={140}
+                        height={140}
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div class="bb-weapon-tier-card-name">{weapon.name}</div>
+                    <div class="bb-weapon-tier-card-type">{weapon.weaponType}</div>
+                  </div>
+                ))}
               </div>
-            );
-          })
-        }
-      </div>
-
-      <!-- Series View -->
-      <div id="series-view" class="bb-best-weapons-content">
-        {
-          seriesInfo.map(({ name, tier }) => {
-            const seriesWeapons = weaponsBySeries[name] || [];
-            if (seriesWeapons.length === 0) return null;
-            return (
-              <div class="bb-weapon-series-section">
-                <div class="bb-weapon-series-header">
-                  <h3 class="bb-weapon-series-title">{name} Series</h3>
-                  <span class="bb-badge" data-tier={tier}>
-                    {tier}-Tier
-                  </span>
-                </div>
-                <div class="bb-weapon-series-grid">
-                  {seriesWeapons.map(weapon => (
-                    <div class="bb-weapon-tier-card">
-                      <div class="bb-weapon-tier-card-image">
-                        <WeaponImage
-                          fileName={weapon.imageFile}
-                          alt={weapon.name}
-                          width={140}
-                          height={140}
-                        />
-                      </div>
-                      <div class="bb-weapon-tier-card-name">{weapon.name}</div>
-                      <div class="bb-weapon-tier-card-type">{weapon.weaponType}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })
-        }
-      </div>
+            </div>
+          );
+        })
+      }
     </section>
   </div>
 </BestWeaponsLayout>
@@ -254,30 +210,6 @@ const seriesInfo = [
         const targetContent = document.getElementById(targetId);
         if (targetContent) {
           targetContent.classList.add('active');
-        }
-      });
-    });
-
-    // Tier/Series view toggle
-    const viewToggleBtns = document.querySelectorAll('.bb-view-toggle-btn');
-    const tierView = document.getElementById('tier-view');
-    const seriesView = document.getElementById('series-view');
-
-    viewToggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const view = btn.getAttribute('data-view');
-
-        // Toggle button states
-        viewToggleBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Toggle views
-        if (view === 'tier') {
-          tierView?.classList.add('active');
-          seriesView?.classList.remove('active');
-        } else {
-          tierView?.classList.remove('active');
-          seriesView?.classList.add('active');
         }
       });
     });
