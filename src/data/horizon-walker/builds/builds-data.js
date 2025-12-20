@@ -36,6 +36,13 @@ const characterBuilds = [
     rarity: 'EX',
     available: true,
   },
+  {
+    id: 5,
+    buildSlug: 'kim-ga-young',
+    displayName: 'Kim Ga-young',
+    rarity: 'S',
+    available: true,
+  },
 ];
 
 // Helper function to get rarity badge class

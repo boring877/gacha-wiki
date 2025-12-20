@@ -316,158 +316,151 @@ if (isMixedStigma) {
               </div>
             </>
           ) : isObjectRecommendation ? (
-            // Object-based Stigma Recommendations (like Emilia)
+            // Object-based Stigma Recommendations - Each stigma in separate section
             <>
-              <div class="stigma-header">
-                <div class="stigma-title-section">
-                  <div class="stigma-recommendation-group">
-                    <div class="stigma-info-container">
-                      <div class="stigma-label">Zero Dupe / Low Investment:</div>
-                      <div class="stigma-image-container">
-                        <StigmaImage
-                          imageName={recommendedStigmaZeroDupe.name}
-                          alt={`${recommendedStigmaZeroDupe.name} stigma`}
-                          width={60}
-                          height={60}
-                          class="stigma-portrait-small"
-                          loading="eager"
-                        />
-                      </div>
-                      <div class="stigma-title-info">
-                        <h5 class="stigma-name">{recommendedStigmaZeroDupe.name}</h5>
-                        <span class="hw-badge" data-rarity="EX">
-                          EX
-                        </span>
-                      </div>
+              {/* First Stigma Option */}
+              <div class="stigma-option-section">
+                <div class="stigma-option-label">Option 1: Low Investment / Zero Dupe</div>
+                <div class="stigma-header">
+                  <div class="stigma-title-section">
+                    <div class="stigma-image-container">
+                      <StigmaImage
+                        imageName={recommendedStigmaZeroDupe.name}
+                        alt={`${recommendedStigmaZeroDupe.name} stigma`}
+                        width={60}
+                        height={60}
+                        class="stigma-portrait-small"
+                        loading="eager"
+                      />
+                    </div>
+                    <div class="stigma-title-info">
+                      <h4 class="stigma-name">{recommendedStigmaZeroDupe.name}</h4>
+                      <span class="hw-badge" data-rarity="EX">
+                        EX
+                      </span>
                     </div>
                   </div>
+                </div>
 
-                  <div class="stigma-recommendation-group">
-                    <div class="stigma-info-container">
-                      <div class="stigma-label">Full EX 5 Weapon:</div>
-                      <div class="stigma-image-container">
-                        <StigmaImage
-                          imageName={recommendedStigmaFullEx5.name}
-                          alt={`${recommendedStigmaFullEx5.name} stigma`}
-                          width={60}
-                          height={60}
-                          class="stigma-portrait-small"
-                          loading="eager"
-                        />
+                <div class="stigma-bonuses">
+                  <div class="stigma-set-bonus">
+                    <h5>2-Set Bonus</h5>
+                    <p>{recommendedStigmaZeroDupe.twoSet}</p>
+                  </div>
+                  {recommendedStigmaZeroDupe.fourSet && (
+                    <div class="stigma-set-bonus">
+                      <h5>4-Set Bonus</h5>
+                      <p>{recommendedStigmaZeroDupe.fourSet}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div class="stigma-pieces">
+                  <h5>Stigma Pieces</h5>
+                  <div class="stigma-grid">
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Top</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.top.name}</div>
+                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.top.stat}</div>
                       </div>
-                      <div class="stigma-title-info">
-                        <h5 class="stigma-name">{recommendedStigmaFullEx5.name}</h5>
-                        <span class="hw-badge" data-rarity="EX">
-                          EX
-                        </span>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Bottom</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.bottom.name}</div>
+                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.bottom.stat}</div>
+                      </div>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Left</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.left.name}</div>
+                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.left.stat}</div>
+                      </div>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Right</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.right.name}</div>
+                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.right.stat}</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="stigma-bonuses">
-                <div class="stigma-set-bonus">
-                  <h5>{recommendedStigmaZeroDupe.name} - 2-Set Bonus</h5>
-                  <p>{recommendedStigmaZeroDupe.twoSet}</p>
-                </div>
-                {recommendedStigmaZeroDupe.fourSet && (
-                  <div class="stigma-set-bonus">
-                    <h5>{recommendedStigmaZeroDupe.name} - 4-Set Bonus</h5>
-                    <p>{recommendedStigmaZeroDupe.fourSet}</p>
-                  </div>
-                )}
-                <div class="stigma-set-bonus">
-                  <h5>{recommendedStigmaFullEx5.name} - 2-Set Bonus</h5>
-                  <p>{recommendedStigmaFullEx5.twoSet}</p>
-                </div>
-                {recommendedStigmaFullEx5.fourSet && (
-                  <div class="stigma-set-bonus">
-                    <h5>{recommendedStigmaFullEx5.name} - 4-Set Bonus</h5>
-                    <p>{recommendedStigmaFullEx5.fourSet}</p>
-                  </div>
-                )}
+              {/* Divider between options */}
+              <div class="stigma-option-divider">
+                <span>OR</span>
               </div>
 
-              <div class="stigma-pieces">
-                <h5>Stigma Pieces</h5>
-                <div class="stigma-pieces-grid">
-                  <div class="stigma-piece-group">
-                    <h6>{recommendedStigmaZeroDupe.name}</h6>
-                    <div class="stigma-grid">
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Top</div>
-                        <div class="piece-info">
-                          <div class="piece-name">{recommendedStigmaZeroDupe.pieces.top.name}</div>
-                          <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.top.stat}</div>
-                        </div>
-                      </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Bottom</div>
-                        <div class="piece-info">
-                          <div class="piece-name">
-                            {recommendedStigmaZeroDupe.pieces.bottom.name}
-                          </div>
-                          <div class="piece-stat">
-                            {recommendedStigmaZeroDupe.pieces.bottom.stat}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Left</div>
-                        <div class="piece-info">
-                          <div class="piece-name">{recommendedStigmaZeroDupe.pieces.left.name}</div>
-                          <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.left.stat}</div>
-                        </div>
-                      </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Right</div>
-                        <div class="piece-info">
-                          <div class="piece-name">
-                            {recommendedStigmaZeroDupe.pieces.right.name}
-                          </div>
-                          <div class="piece-stat">
-                            {recommendedStigmaZeroDupe.pieces.right.stat}
-                          </div>
-                        </div>
-                      </div>
+              {/* Second Stigma Option */}
+              <div class="stigma-option-section">
+                <div class="stigma-option-label">Option 2: Full EX 5 Weapon</div>
+                <div class="stigma-header">
+                  <div class="stigma-title-section">
+                    <div class="stigma-image-container">
+                      <StigmaImage
+                        imageName={recommendedStigmaFullEx5.name}
+                        alt={`${recommendedStigmaFullEx5.name} stigma`}
+                        width={60}
+                        height={60}
+                        class="stigma-portrait-small"
+                        loading="eager"
+                      />
+                    </div>
+                    <div class="stigma-title-info">
+                      <h4 class="stigma-name">{recommendedStigmaFullEx5.name}</h4>
+                      <span class="hw-badge" data-rarity="EX">
+                        EX
+                      </span>
                     </div>
                   </div>
+                </div>
 
-                  <div class="stigma-piece-group">
-                    <h6>{recommendedStigmaFullEx5.name}</h6>
-                    <div class="stigma-grid">
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Top</div>
-                        <div class="piece-info">
-                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.top.name}</div>
-                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.top.stat}</div>
-                        </div>
+                <div class="stigma-bonuses">
+                  <div class="stigma-set-bonus">
+                    <h5>2-Set Bonus</h5>
+                    <p>{recommendedStigmaFullEx5.twoSet}</p>
+                  </div>
+                  {recommendedStigmaFullEx5.fourSet && (
+                    <div class="stigma-set-bonus">
+                      <h5>4-Set Bonus</h5>
+                      <p>{recommendedStigmaFullEx5.fourSet}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div class="stigma-pieces">
+                  <h5>Stigma Pieces</h5>
+                  <div class="stigma-grid">
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Top</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.top.name}</div>
+                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.top.stat}</div>
                       </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Bottom</div>
-                        <div class="piece-info">
-                          <div class="piece-name">
-                            {recommendedStigmaFullEx5.pieces.bottom.name}
-                          </div>
-                          <div class="piece-stat">
-                            {recommendedStigmaFullEx5.pieces.bottom.stat}
-                          </div>
-                        </div>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Bottom</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.bottom.name}</div>
+                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.bottom.stat}</div>
                       </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Left</div>
-                        <div class="piece-info">
-                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.left.name}</div>
-                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.left.stat}</div>
-                        </div>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Left</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.left.name}</div>
+                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.left.stat}</div>
                       </div>
-                      <div class="stigma-piece">
-                        <div class="piece-slot">Right</div>
-                        <div class="piece-info">
-                          <div class="piece-name">{recommendedStigmaFullEx5.pieces.right.name}</div>
-                          <div class="piece-stat">{recommendedStigmaFullEx5.pieces.right.stat}</div>
-                        </div>
+                    </div>
+                    <div class="stigma-piece">
+                      <div class="piece-slot">Right</div>
+                      <div class="piece-info">
+                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.right.name}</div>
+                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.right.stat}</div>
                       </div>
                     </div>
                   </div>

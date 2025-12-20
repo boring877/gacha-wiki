@@ -114,6 +114,32 @@ const rawKimGaYoungData = {
     },
   },
 
+  // Weapon Information
+  weapon: {
+    name: 'EX Rifle - SS4 Refitted Model',
+    type: 'EX Rifle',
+    rarity: 'EX',
+    image: 'kim_Ga_young_WP.jpg',
+    stats: {
+      weaponRangedAtk: '77.0',
+      rangedAtkBonus: '+49.0%',
+    },
+    uniqueSkills: {
+      calibrationOfSteelAndShot: {
+        name: 'Calibration of Steel and Shot',
+        type: 'Unique',
+        description:
+          "During battle, increases Ranged ATK by 40%. When it is not this unit's turn, increases Ranged ATK by 80%.",
+      },
+      upgrade: {
+        name: 'Kim Ga-young Signature: Upgrade!!!',
+        type: 'Signature',
+        description:
+          "During combat, Increases Ranged ATK by 20% and enhances the Drone Vision skill.\n\n[Drone Vision]: Uses a drone to scout the surroundings. Increases this unit's attack range by 3m during battle and increases all allies' Support ATK DMG by 15%. At the start of each round and at the start of this unit's turn, detects hidden enemies and has a 60% chance each time to apply [Drone Vision].\n\n[Drone Vision Effect]: When hit, reduces All DEF and Evasion by 100 until the end of that turn.\n\nWhen an ally attacks a target with [Drone Vision], this unit performs a Support ATK. Upon successfully hitting an enemy with [Drone Vision], deals Fixed DMG equal to 55% of this unit's Ranged ATK and enters Stealth for 3 rounds at the end of that turn. If the attack hits a Weak Point, the Fixed DMG is doubled. This Fixed DMG is affected by Support ATK DMG Boost bonuses.\n\nIf the user possesses the following General Traits, additional stats are gained:\n- Efficient: Gain 15 AP at the start of battle\n- Competent: Increases Ranged ATK by 10%\n- Methodical: Increases Support ATK DMG by 5%",
+      },
+    },
+  },
+
   // Skills and Passive
   skills: {
     sniping: {

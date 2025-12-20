@@ -349,6 +349,69 @@
     letter-spacing: 0.05em;
   }
 
+  /* Separate Stigma Option Sections */
+  .stigma-option-section {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .stigma-option-section .stigma-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .stigma-option-section .stigma-bonuses {
+    margin-bottom: 1rem;
+  }
+
+  .stigma-option-section .stigma-pieces {
+    margin-bottom: 0;
+  }
+
+  .stigma-option-label {
+    font-size: 1rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--hw-bg-dark);
+    border-radius: 6px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stigma-option-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+
+  .stigma-option-divider::before,
+  .stigma-option-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--hw-border-light);
+  }
+
+  .stigma-option-divider span {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-muted);
+    background: var(--hw-bg-dark);
+    border-radius: 20px;
+    border: 1px solid var(--hw-border-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
   /* Recommended Sub Stats */
   .recommended-substats {
     margin-top: 1.5rem;

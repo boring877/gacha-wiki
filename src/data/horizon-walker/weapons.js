@@ -14,6 +14,7 @@ import { headlessKnightData } from './characters/headless-knight.js';
 import { inesData } from './characters/ines.js';
 import { juhaData } from './characters/juha.js';
 import { kalinaData } from './characters/kalina.js';
+import { kimGaYoungData } from './characters/kim-ga-young.js';
 import { kaulData } from './characters/kaul.js';
 import { kalmaData } from './characters/kalma.js';
 import { kilonData } from './characters/kilon.js';
@@ -82,6 +83,7 @@ const CHARACTER_DATA = {
   ines: inesData,
   jua: juhaData, // Note: jua file exports as juhaData
   kalina: kalinaData,
+  'kim-ga-young': kimGaYoungData,
   kaul: kaulData,
   kalma: kalmaData,
   leah: leahData,
