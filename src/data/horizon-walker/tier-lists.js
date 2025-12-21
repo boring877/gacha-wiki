@@ -171,6 +171,7 @@ const MAP_CLEAR_CHARACTERS = {
     'Kobold mercenary',
     'Ines',
     'Fammene',
+    'Kim ga-young',
   ],
   A: [
     'Canisk',
@@ -178,7 +179,6 @@ const MAP_CLEAR_CHARACTERS = {
     'Red-De-Da',
     'Gulsni',
     'Platina',
-    'Kim ga-young',
     'Grrik Mercenary',
     'Swamp elf Vigilante',
     'war mercenary',
@@ -228,6 +228,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Kaul',
     'Puppy stepper',
     'Kobold mercenary',
+    'Kim ga-young',
   ],
   A: [
     'Min Eun-sol',
@@ -242,7 +243,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
   B: [
     'Canisk',
     'Gulsni',
-    'Kim ga-young',
     'Re-de-da',
     'Gulam',
     'Nonoha',
@@ -291,6 +291,7 @@ const DOPAMIN_CHARACTERS = {
     'Headless knight',
     'puppy stepper',
     'Emilia',
+    'Kim ga-young',
   ],
   S: [
     'Min un-sol',
@@ -308,16 +309,7 @@ const DOPAMIN_CHARACTERS = {
     'puppy shooter',
     'Koblod mercenary',
   ],
-  A: [
-    'Canisk',
-    'Gulsni',
-    'kim ga-young',
-    'Re-de-da',
-    'Gulam',
-    'Nonoha',
-    'Matrotho',
-    'Wizard legionnaire',
-  ],
+  A: ['Canisk', 'Gulsni', 'Re-de-da', 'Gulam', 'Nonoha', 'Matrotho', 'Wizard legionnaire'],
   B: [
     'Rhasadina',
     'imperial shieldbearer merceneary',

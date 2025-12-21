@@ -22,6 +22,14 @@ import MobileHeader from './MobileHeader.astro';
           <span class="youtube-icon">▶</span>
           <span class="youtube-text">Please help reach 1000 subscribers</span>
         </a>
+        <a
+          href="https://www.patreon.com/c/Gachawiki"
+          class="patreon-button"
+          title="Support us on Patreon!"
+        >
+          <span class="patreon-icon">P</span>
+          <span class="patreon-text">Patreon</span>
+        </a>
         <MobileHeader />
       </div>
     </div>
@@ -145,6 +153,33 @@ import MobileHeader from './MobileHeader.astro';
     font-weight: 500;
   }
 
+  .patreon-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 66, 77, 0.1);
+    border: 1px solid rgba(255, 66, 77, 0.3);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ff424d;
+    touch-action: manipulation;
+    white-space: nowrap;
+  }
+
+  .patreon-icon {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ff424d;
+  }
+
+  .patreon-text {
+    color: var(--amber-glow);
+    font-weight: 500;
+  }
+
   /* Touch Device & Mobile Responsive Design */
   @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
     /* Remove sticky positioning on touch devices for smoother scrolling */
@@ -202,7 +237,8 @@ import MobileHeader from './MobileHeader.astro';
       padding: 0.5rem 0.75rem !important;
     }
 
-    .youtube-button {
+    .youtube-button,
+    .patreon-button {
       display: none;
     }
   }

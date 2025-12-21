@@ -44,7 +44,7 @@ export const kimGaYoungBuildConfig = {
   recommendedTraits: [
     {
       name: 'Competent',
-      effects: ['Starting AP: -5', 'Accuracy: +5%', 'EX Weapon: +10% Ranged ATK'],
+      effects: ['AP Recovery: +2%', 'EX Weapon: +10% Ranged ATK'],
       priority: 'Best',
     },
     {

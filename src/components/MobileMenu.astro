@@ -68,6 +68,10 @@ const version = packageInfo.version;
             </svg>
             <span>Help us reach 1000 subscribers!</span>
           </a>
+          <a href="https://www.patreon.com/c/Gachawiki" class="mobile-support-link patreon-support">
+            <span class="patreon-icon-mobile">P</span>
+            <span>Support us on Patreon</span>
+          </a>
         </div>
       </div>
 
@@ -361,6 +365,26 @@ const version = packageInfo.version;
   }
 
   .youtube-support span {
+    color: var(--amber-glow);
+  }
+
+  .patreon-support {
+    background: rgba(255, 66, 77, 0.1);
+    border: 1px solid rgba(255, 66, 77, 0.3);
+  }
+
+  .patreon-icon-mobile {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #ff424d;
+  }
+
+  .patreon-support span:last-child {
     color: var(--amber-glow);
   }
 
