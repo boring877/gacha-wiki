@@ -1,0 +1,528 @@
+/* BBB Skill Formulas Page Styles */
+/* Font Scale: base 1rem, h2 1.35rem, h3 1.1rem, body 0.95rem, small 0.85rem */
+
+/* ============================================
+   Page Container
+   ============================================ */
+.bb-formulas-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ============================================
+   Page Header
+   ============================================ */
+.bb-formulas-header {
+  margin-bottom: 2.5rem;
+}
+
+.bb-formulas-intro {
+  font-size: 1rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0;
+}
+
+/* ============================================
+   Formula Sections
+   ============================================ */
+.bb-formulas-section {
+  margin-bottom: 2.5rem;
+}
+
+.bb-formulas-section-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--bb-primary);
+}
+
+/* ============================================
+   Formula Cards
+   ============================================ */
+.bb-formulas-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bb-formula-card {
+  background: var(--bb-bg-card);
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.bb-formula-card-header {
+  margin-bottom: 1.25rem;
+}
+
+.bb-formula-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bb-primary-light);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-formula-card-desc {
+  font-size: 0.95rem;
+  color: var(--bb-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Formula Display */
+.bb-formula-display {
+  background: var(--bb-bg-secondary);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.bb-formula-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.bb-formula-text {
+  font-size: 0.95rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.bb-formula-code {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  color: var(--bb-primary-light);
+  background: var(--bb-bg-primary);
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  display: block;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Example Box */
+.bb-formula-example {
+  background: var(--bb-bg-secondary);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-left: 4px solid var(--bb-primary);
+}
+
+.bb-formula-example-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.bb-formula-example-text {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.bb-formula-example-calc {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  color: var(--bb-text-primary);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Notes List */
+.bb-formula-notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bb-formula-notes li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+}
+
+.bb-formula-notes li:last-child {
+  margin-bottom: 0;
+}
+
+.bb-formula-notes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 5px;
+  height: 5px;
+  background: var(--bb-primary);
+  border-radius: 50%;
+}
+
+/* Buff Examples Table */
+.bb-buff-examples {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.bb-buff-examples th,
+.bb-buff-examples td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bb-border);
+  font-size: 0.9rem;
+}
+
+.bb-buff-examples th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--bb-bg-secondary);
+}
+
+.bb-buff-examples td {
+  color: var(--bb-text-secondary);
+}
+
+.bb-buff-examples td:first-child {
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+.bb-buff-examples td:last-child {
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: var(--bb-primary-light);
+}
+
+.bb-buff-examples tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   Stat Categories
+   ============================================ */
+.bb-stat-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bb-stat-category {
+  background: var(--bb-bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.bb-stat-category-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bb-primary-light);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bb-stat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+}
+
+.bb-stat-name {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  flex-shrink: 0;
+}
+
+.bb-stat-name-text {
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  word-wrap: break-word;
+}
+
+.bb-stat-name-note {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+  font-style: italic;
+}
+
+.bb-stat-desc {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.5;
+  padding-top: 0;
+}
+
+/* ============================================
+   Back Link
+   ============================================ */
+.bb-formulas-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--bb-primary-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-formulas-back::before {
+  content: '←';
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .bb-formulas-page {
+    padding: 1.25rem;
+  }
+
+  .bb-formulas-header {
+    margin-bottom: 2rem;
+  }
+
+  .bb-formulas-intro {
+    font-size: 0.95rem;
+  }
+
+  .bb-formulas-section {
+    margin-bottom: 2rem;
+  }
+
+  .bb-formulas-section-title {
+    font-size: 1.2rem;
+  }
+
+  .bb-formula-card {
+    padding: 1.25rem;
+  }
+
+  .bb-formula-card-title {
+    font-size: 1rem;
+  }
+
+  .bb-formula-card-desc {
+    font-size: 0.9rem;
+  }
+
+  .bb-formula-display {
+    padding: 1rem;
+  }
+
+  .bb-formula-text {
+    font-size: 0.9rem;
+  }
+
+  .bb-formula-code {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  .bb-formula-example {
+    padding: 1rem;
+  }
+
+  .bb-formula-example-text,
+  .bb-formula-example-calc {
+    font-size: 0.85rem;
+  }
+
+  .bb-formula-notes li {
+    font-size: 0.85rem;
+  }
+
+  .bb-stat-item {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .bb-stat-name {
+    width: auto;
+    min-width: unset;
+    max-width: none;
+  }
+
+  .bb-stat-name-text {
+    font-size: 0.9rem;
+  }
+
+  .bb-stat-desc {
+    font-size: 0.85rem;
+  }
+
+  .bb-stat-category {
+    padding: 1.25rem;
+  }
+
+  .bb-stat-category-title {
+    font-size: 0.95rem;
+  }
+
+  /* Table wrapper for horizontal scroll */
+  .bb-buff-examples-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem -0.5rem 0;
+    padding: 0 0.5rem;
+  }
+
+  .bb-buff-examples {
+    min-width: 400px;
+  }
+
+  .bb-buff-examples th,
+  .bb-buff-examples td {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .bb-buff-examples th {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-formulas-page {
+    padding: 1rem;
+  }
+
+  .bb-formulas-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .bb-formulas-intro {
+    font-size: 0.9rem;
+  }
+
+  .bb-formulas-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .bb-formulas-section-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .bb-formulas-cards {
+    gap: 1rem;
+  }
+
+  .bb-formula-card {
+    padding: 1rem;
+  }
+
+  .bb-formula-card-title {
+    font-size: 0.95rem;
+  }
+
+  .bb-formula-card-desc {
+    font-size: 0.85rem;
+  }
+
+  .bb-formula-display {
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .bb-formula-text {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bb-formula-code {
+    font-size: 0.8rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .bb-formula-example {
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .bb-formula-example-text,
+  .bb-formula-example-calc {
+    font-size: 0.8rem;
+  }
+
+  .bb-formula-notes li {
+    font-size: 0.8rem;
+    padding-left: 1rem;
+  }
+
+  .bb-formula-notes li::before {
+    width: 4px;
+    height: 4px;
+  }
+
+  .bb-stat-categories {
+    gap: 1rem;
+  }
+
+  .bb-stat-category {
+    padding: 1rem;
+  }
+
+  .bb-stat-category-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bb-stat-list {
+    gap: 0.5rem;
+  }
+
+  .bb-stat-item {
+    padding: 0.75rem;
+  }
+
+  .bb-stat-name-text {
+    font-size: 0.85rem;
+  }
+
+  .bb-stat-name-note {
+    font-size: 0.75rem;
+  }
+
+  .bb-stat-desc {
+    font-size: 0.8rem;
+  }
+
+  .bb-formulas-back {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,706 @@
+================================================================================
+BUSTY FANTASY BURST - SELECTED CHARACTER SKILLS (WITH ACTUAL VALUES)
+================================================================================
+
+BUFF REFERENCE:
+- Formula: Base + (Growth × Character Level)
+- Physical/Magic ATK: +X% +Y (grow: +Z)  →  +X% +(Y + Z×Lv)
+- Physical/Magic DEF: +X% +Y (grow: +Z)  →  +X% +(Y + Z×Lv)
+- Accuracy/Block: +Y (grow: +Z)  →  +(Y + Z×Lv)
+- Action Speed: +X% (no growth)
+- Crit Rate: +Y (grow: +Z)  →  +(Y + Z×Lv)  (buff text says "Crit Damage" but adds to rate)
+- [Lv100: ...] shows calculated values at max level (Base + Growth×100)
+
+HEALING FORMULA:
+- Heal = (Healing Power × Scale) + Base + (Growth × Level)
+- Format: (Healing Power × X) + Base (+Growth/lv)
+
+DAMAGE FORMULA:
+- Skill Raw Damage = (ATK × Scale%) + Base + (Growth × Level)
+- Format: [X% ATK + Base (+Growth/lv)]
+- Example: [350% ATK + 150 (+20/lv)] at Level 50 with 1000 ATK:
+  Raw Damage = (1000 × 3.5) + 150 + (20 × 50) = 3500 + 150 + 1000 = 4650
+- Final Damage = Raw Damage reduced by target's DEF (exact formula unknown - hardcoded in game)
+- Critical Hit = Final Damage × Crit Damage Multiplier (fixed value, hardcoded in game)
+- Physical damage uses ATK stat, reduced by Physical DEF
+- Magic damage uses MATK stat, reduced by Magic DEF
+
+STAT EXPLANATIONS:
+- Physical Crit: CRIT RATE for physical attacks (chance to crit, varies: 22-391)
+- Magic Crit: CRIT RATE for magic attacks (chance to crit, varies: 22-234)
+- Crit +X (from buffs): Adds +X to Physical/Magic Crit Rate
+  Note: Crit DAMAGE multiplier is a fixed value (hardcoded in game engine)
+- Accuracy: Increases chance to hit. Higher = more likely to hit enemies with high Block
+- Block: Reduces chance to be hit. Higher = more likely to dodge attacks
+- Action Speed +X%+Y: Increases attack/skill speed. +X% is percentage, +Y is flat bonus
+- Shield -X% (N hits): Reduces incoming damage by X% for N hits before breaking
+- Debuff Resistance +X%: Reduces chance to be affected by debuffs by X%
+- Healing Amount +X%: Increases healing output by X% (for healers)
+- Healing Received +X%: Increases healing received by X% (for targets)
+- Skill Damage +X%: Increases damage dealt by skills by X%
+- Ultimate Damage +X%: Increases damage dealt by ultimate skill by X%
+- Type ATK +X% (Fire/Wind/etc): Increases damage against that element type
+- Type DEF -X% (Fire/Wind/etc): Reduces target's resistance to that element
+
+================================================================================
+【Festive Attire】Estiriel
+Rarity: SSR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] Ripples of the Abyss
+  Restores HP by [(Healing Power × 20) + 370 (+40/lv)] to all allies and applies Physical DEF +15%+100 (+1/lv) and Magic DEF +15%+100 (+1/lv) for 8 seconds
+  [Lv100: Heal +4370, DEF +200]
+
+[Skill 3] Slumber of the Seashell
+  Applies Action Speed +14% and Accuracy +9 (+0.1/lv) to all allies for 6 seconds
+  [Lv100: Accuracy +19]
+
+[Ultimate] Spirits, sing—offer blessings for this new birth
+  Restores HP by [(Healing Power × 36.5) + 1900] to all allies and applies Debuff Resistance UP(Lv5: +60%) and Block UP(Lv5: +20) for 7 seconds
+  Rank Scaling: R1: HP×27+1200, Resist+30%, Block+10 | R2: HP×31+1400, +40%, +13 | R3: HP×32.5+1600, +50%, +16 | R4: HP×35+1750, +55%, +18 | R5: HP×36.5+1900, +60%, +20
+
+[Passive1] Grants: Action Speed 15%+15, Debuff Resistance +30%
+[Passive2] All allies receive Max HP +1447, Block +15
+
+================================================================================
+Liesel
+Rarity: SR | Element: Mind | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] We must make lots of delicious food!
+  Applies Physical ATK +10%+20 (+1/lv) and Magic ATK +10%+20 (+1/lv) to all allies for 9 seconds
+  [Lv100: ATK +120]
+
+[Skill 3] You must be thirsty, right?
+  Applies Physical DEF +15%+100 (+1/lv) and Magic DEF +15%+100 (+1/lv) to all allies for 9 seconds
+  [Lv100: DEF +200]
+
+[Ultimate] Delicious Praise Punch
+  Applies MP Regen(Lv5: +50) for 5 seconds and Action Speed UP(Lv5: +15%+15) for 8 seconds to all allies
+  Rank Scaling: R1: MP+25, Speed+8%+8 | R2: +31, +10%+10 | R3: +37, +12%+12 | R4: +43, +13%+13 | R5: +50, +15%+15
+
+[Passive1] Grants: Block +15
+[Passive2] Middle Row allies receive Physical Def +70, Magic Def +70
+
+================================================================================
+Frey
+Rarity: SSR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] Area Heal
+  Restores HP by [(Healing Power × 25) + 1000 (+40/lv)] to all allies and applies HP Regen +5%+150 for 3 seconds
+  [Lv100: Heal +5000]
+
+[Skill 3] Cam
+  Restores HP by [(Healing Power × 15) + 500 (+40/lv)] to all allies and removes all debuffs
+  [Lv100: Heal +4500]
+
+[Ultimate] Gentle White Lily's Embrace
+  Restores HP by [(Healing Power × 65) + 2500] to all allies and applies Physical Shield(Lv5: -50%, 5 hits) and Magic Shield(Lv5: -50%, 5 hits) for 20 seconds
+  Rank Scaling: R1: HP×40+1000, -30%(3 hits) | R2: HP×48+1500, -35%(3 hits) | R3: HP×55+2000, -40%(4 hits) | R4: HP×60+2300, -45%(4 hits) | R5: HP×65+2500, -50%(5 hits)
+
+[Passive1] Front Row allies receive Physical Def +141, Magic Def +141
+[Passive2] Middle Row allies receive Skill Damage +10%, Action Speed 10%+10
+
+================================================================================
+【Trance Dancer】Messeria
+Rarity: SSR | Element: Wind | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] Londo of Light
+  Deals [90% ATK + 50 (+6/lv)] physical damage to the 3 nearest enemies and inflicts Physical DEF -21%-40 (-2/lv) and Accuracy -11 (-0.13/lv) for 10 seconds
+  [Lv100: Dmg +650, DEF -240, Accuracy -24]
+
+[Skill 3] Dancing Performance
+  Applies Physical ATK +15%+30 (+5/lv) and Phys Crit Damage +40 (+5/lv) to all allies for 10 seconds
+  [Lv100: ATK +530, Crit Dmg +540]
+
+[Ultimate] Prayer in the Sea of Stars
+  Restores HP by [(Healing Power × 28) + 1563] to all allies and applies Action Speed UP(Lv5: +20%+20) and Block UP(Lv5: +20) for 12 seconds
+  Rank Scaling: R1: HP×20+1097, Speed+10%+10, Block+10 | R2: HP×23+1250, +13%+13, +13 | R3: HP×25+1394, +16%+16, +16 | R4: HP×27+1489, +18%+18, +18 | R5: HP×28+1563, +20%+20, +20
+
+[Passive1] All allies receive: Skill Damage +10%, Physical ATK +130
+[Passive2] All allies receive: Block +10, Action Speed 10%+10
+
+================================================================================
+Teresia
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Lightning Blade Strike
+  Deals [310% ATK + 160 (+20/lv)] magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic DEF -18%-30 (-2/lv) for 8 seconds
+  [Lv100: Dmg +2160, DEF -230]
+
+[Skill 3] Winged Lightning
+  Applies Magic ATK +18%+35 (+7/lv) and Magic Crit +50 (+7/lv) to self for 10 seconds
+  [Lv100: MATK +735, Crit +750]
+
+[Ultimate] Storm Claw
+  Deals [1500% ATK + 1461] magic damage to the nearest enemy and applies Mind Type ATK UP(Lv5: +20%) to self for 10 seconds
+  Rank Scaling: R1: 1000%+885, Mind+10% | R2: 1200%+1022, +12% | R3: 1350%+1153, +15% | R4: 1450%+1307, +18% | R5: 1500%+1461, +20%
+
+[Passive1] Grants: Action Speed 10%
+[Passive2] Grants: Mind Type ATK +10%
+
+================================================================================
+The Dark Knight
+Rarity: SSR | Element: Magic | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Dual Demon Swords
+  Deals [210% ATK + 160 (+20/lv)] magic damage to the nearest enemy and inflicts Magic DEF -21%-40 (-2/lv) for 10 seconds and Magic Type DEF -10% for 10 seconds
+  [Lv100: Dmg +2160, DEF -240]
+
+[Skill 3] Enchantment Blade
+  Deals [240% ATK + 160 (+20/lv)] magic damage to the nearest enemy and inflicts Physical ATK -12%-30 (-2/lv) and Magic ATK -12%-30 (-2/lv) for 10 seconds
+  [Lv100: Dmg +2160, ATK -230]
+
+[Ultimate] Taboo of the Calamity God of the Dead's Sin Mark
+  Deals [450% ATK + 611] magic damage to the 3 nearest enemies and inflicts Curse (no HP/MP regen) and Fear(Lv5: MP -100/s, Block 0) for 6 seconds
+  Rank Scaling: R1: 300%+402, Fear MP-50/s | R2: 360%+457, -62/s | R3: 405%+501, -75/s | R4: 434%+566, -87/s | R5: 450%+611, -100/s
+
+[Passive1] Grants: Magic Crit Damage +90
+[Passive2] Grants: Magic Type ATK +10%
+
+================================================================================
+Shaty
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Weakness Exploit
+  Deals [270% ATK + 150 (+25/lv)] physical damage to the farthest enemy and applies Wind Type ATK +20%+40 (+9/lv) to self for 6 seconds
+  [Lv100: Dmg +2650, Wind ATK +940]
+
+[Skill 3] Analysis
+  Applies Wind Type DEF -21%-40 (-2/lv) and Block -11 (-0.13/lv) to the farthest enemy for 8 seconds
+  [Lv100: DEF -240, Block -24]
+
+[Ultimate] Stardust Radiance of Seven Colors
+  Deals [535% ATK + 2500] physical damage to the farthest enemy and applies Wind Type ATK UP(Lv5: +50%) and Hit Damage UP(Lv5: +140%, 6 hits) to self for 10 seconds
+  Rank Scaling: R1: 400%+1200, Wind+25%, Hit+80%(4) | R2: 450%+1600, +31%, +95%(4) | R3: 480%+1900, +37%, +110%(5) | R4: 509%+2200, +43%, +125%(5) | R5: 535%+2500, +50%, +140%(6)
+
+[Passive1] Grants: Physical ATK +259, Accuracy +15
+[Passive2] Grants: Ultimate Damage +15%, Accuracy +15
+
+================================================================================
+Artia
+Rarity: SSR | Element: Fire | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Royal Knight's Teachings
+  Restores own HP by [(Healing Power × 25) + 416 (+50/lv)] and applies Block +15 (+0.18/lv) for 10 seconds
+  [Lv100: Heal +5416, Block +33]
+
+[Skill 3] Beorn Holy Sword Arts: Heroic Strike
+  Deals [300% ATK + 100 (+25/lv)] physical damage to the nearest enemy and inflicts Accuracy -15 (-0.18/lv) for 10 seconds
+  [Lv100: Dmg +2600, Accuracy -33]
+
+[Ultimate] Meteor Trestias
+  Deals [450% ATK + 512] physical damage to the nearest enemy and applies Shield(Lv5: -60%, unlimited hits) and Taunt to self for 12 seconds
+  Rank Scaling: R1: 300%+338, Shield-35% | R2: 360%+380, -41% | R3: 405%+425, -47% | R4: 434%+469, -53% | R5: 450%+512, -60%
+
+[Passive1] Grants: Physical ATK +159
+[Passive2] Grants: Physical Def +141
+
+================================================================================
+Gemini
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Don't underestimate a treasure hunter!
+  Deals [400% ATK + 160 (+30/lv)] physical damage to the nearest enemy
+  [Lv100: Dmg +3160]
+
+[Skill 3] This isn't something an idiot could pull off, you know?
+  Deals [120% ATK + 50 (+6/lv)] physical damage to the nearest enemy and inflicts Physical DEF -18%-30 (-2/lv) for 10 seconds
+  [Lv100: Dmg +650, DEF -230]
+
+[Ultimate] Cruel Destroyer
+  Deals [850% ATK + 850] physical damage to the nearest enemy with guaranteed critical hit (Pure Damage - ignores buffs)
+  Rank Scaling: R1: 500%+500 | R2: 600%+650 | R3: 750%+750 | R4: 800%+800 | R5: 850%+850
+
+[Passive1] Grants: Physical ATK +159
+[Passive2] Grants: Physical Crit Damage +90
+
+================================================================================
+Luca
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Goddess, grant me strength!
+  Applies Physical ATK +18%+35 (+7/lv) to self for 10 seconds
+  [Lv100: ATK +735]
+
+[Skill 3] Do as you please, roa!
+  Deals [360% ATK + 160 (+25/lv)] physical damage to the nearest enemy and inflicts Physical Crit Damage -60 (-9/lv) for 7 seconds
+  [Lv100: Dmg +2660, Crit Dmg -960]
+
+[Ultimate] Full-Power Strike!
+  Deals [700% ATK + 650] physical damage to the nearest enemy with guaranteed hit and inflicts Physical ATK DOWN(Lv5: -30%) and Accuracy DOWN(Lv5: -30) for 10 seconds
+  Rank Scaling: R1: 450%+400, ATK-15%, Acc-15 | R2: 540%+470, -18%, -18 | R3: 605%+540, -22%, -22 | R4: 660%+600, -26%, -26 | R5: 700%+650, -30%, -30
+
+[Passive1] Grants: Physical ATK +259, Physical Crit Damage +179
+[Passive2] Front Row allies receive Skill Damage +20%, Action Speed 10%+10
+
+================================================================================
+【Festival Empress】Shamshel
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Higher than usual
+  Applies Magic ATK +18%+35 (+7/lv) to self for 8 seconds
+  [Lv100: MATK +735]
+
+[Skill 3] Faster than usual
+  Deals [90% ATK + 50 (+8/lv)] magic damage to the nearest enemy and applies Action Speed +20% to self for 6 seconds
+  [Lv100: Dmg +850]
+
+[Ultimate] Dance with the princess in her gown
+  Deals [612% ATK + 565] magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(Lv5: -25%) for 10 seconds
+  Rank Scaling: R1: 360%+394, MagDef-15% | R2: 450%+445, -17% | R3: 522%+496, -20% | R4: 579%+532, -22% | R5: 612%+565, -25%
+
+[Passive1] Grants: Charm Resistance 100%, Magic ATK +259
+[Passive2] Grants: Skill Damage +30%, Accuracy +20
+
+================================================================================
+【Elegant Portrait】Shamshel
+Rarity: SSR | Element: Magic | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Juuump—up we go~
+  Deals [110% ATK + 50 (+10/lv)] magic damage to the nearest enemy
+  [Lv100: Dmg +1050]
+
+[Skill 3] The noble princess makes her entrance~
+  Deals [90% ATK + 35 (+6/lv)] magic damage to the nearest enemy and inflicts Charm for 3 seconds
+  [Lv100: Dmg +635]
+
+[Ultimate] I'll eat you up and bring peace to the world
+  Deals [612% ATK + 565] magic damage to the 3 nearest enemies and absorbs 6% of damage dealt as HP
+  Rank Scaling: R1: 360%+394 | R2: 450%+445 | R3: 522%+496 | R4: 579%+532 | R5: 612%+565
+
+[Passive1] Grants: Charm Resistance 100%
+[Passive2] Grants: Magic ATK +389
+
+================================================================================
+Nerys
+Rarity: SR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Shockwave
+  Deals [320% ATK + 120 (+25/lv)] magic damage to the farthest enemy
+  [Lv100: Dmg +2620]
+
+[Skill 3] Light Orb
+  Deals [280% ATK + 100 (+20/lv)] magic damage to the farthest enemy and inflicts Magic DEF -21%-40 (-2/lv) for 10 seconds
+  [Lv100: Dmg +2100, DEF -240]
+
+[Ultimate] Shining Spear
+  Deals [930% ATK + 707] magic damage to the 2 farthest enemies and inflicts Stun for 3 seconds
+  Rank Scaling: R1: 600%+500 | R2: 720%+524 | R3: 810%+599 | R4: 869%+653 | R5: 930%+707
+
+[Passive1] Grants: MP Recovery +21
+[Passive2] Grants: Magic ATK +259
+
+================================================================================
+Soltina
+Rarity: SSR | Element: Magic | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Shikomaru
+  Deals [350% ATK + 140 (+20/lv)] physical damage to the nearest enemy and inflicts Paralysis for 6 seconds
+  [Lv100: Dmg +2140]
+
+[Skill 3] Millionfold
+  Applies Physical DEF +30%+190 (+3/lv) to self for 10 seconds
+  [Lv100: DEF +490]
+
+[Ultimate] Iron Immortal Blossom
+  Deals [550% ATK + 501] physical damage to the nearest enemy with debuff effects
+  Rank Scaling: R1: 360%+338 | R2: 420%+379 | R3: 470%+421 | R4: 509%+465 | R5: 550%+501
+
+[Passive1] Grants: Physical ATK +159
+[Passive2] Grants: Physical Crit Damage +176
+
+================================================================================
+Estiriel
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Sylvesto
+  Deals [320% ATK + 150 (+25/lv)] magic damage to the farthest enemy and inflicts Physical DEF -18%-30 (-2/lv) and Magic DEF -18%-30 (-2/lv) for 5 seconds
+  [Lv100: Dmg +2650, DEF -230]
+
+[Skill 3] Guardian of the Little Dwarves
+  Applies HP Regen +3%+50 and Block +9 (+0.1/lv) to all allies for 10 seconds
+  [Lv100: Block +19]
+
+[Ultimate] O spirits, dance Become the guiding wisdom of all things
+  Deals [1100% ATK + 680] magic damage to all enemies and inflicts Block DOWN(Lv5: -20) and Action Speed DOWN(Lv5: -20%-20) for 10 seconds
+  Rank Scaling: R1: 550%+700, Block-10, Speed-10%-10 | R2: 750%+500, -12, -12%-12 | R3: 900%+550, -15, -15%-15 | R4: 1000%+600, -17, -17%-17 | R5: 1100%+680, -20, -20%-20
+
+[Passive1] Grants: Magic ATK +259, Action Speed 10%+10
+[Passive2] All allies receive Healing Received +20%, Block +10
+
+================================================================================
+Hildis
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Thunderfire
+  Deals [350% ATK + 150 (+20/lv)] physical damage to the nearest enemy and inflicts Physical DEF -30%+190 (-3/lv) for 5 seconds and Burn for 12 seconds
+  [Lv100: Dmg +2150, DEF -110]
+
+[Skill 3] Armor-Sleeve Touch
+  Applies Physical ATK +15%+30 (+5/lv) and Action Speed +14% to self for 10 seconds
+  [Lv100: ATK +530]
+
+[Ultimate] Heaven Sever
+  Deals [650% ATK + 610] physical damage to the 3 nearest enemies and inflicts Physical DEF DOWN(Lv5: -25%) and Block DOWN(Lv5: -25) for 8 seconds
+  Rank Scaling: R1: 420%+390, DEF-15%, Block-15 | R2: 505%+450, -17%, -17 | R3: 570%+515, -20%, -20 | R4: 610%+562, -22%, -22 | R5: 650%+610, -25%, -25
+
+[Passive1] Grants: Max HP +3444, Physical ATK +259
+[Passive2] Front Row allies receive Physical Crit Damage +90, Physical ATK +130
+
+================================================================================
+Marina
+Rarity: SSR | Element: Water | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] Star Procession
+  Deals [100% ATK + 50 (+6/lv)] physical damage to the nearest enemy and inflicts Action Speed -20% and Block -13 (-0.15/lv) for 6 seconds
+  [Lv100: Dmg +650, Block -28]
+
+[Skill 3] Future Sight
+  Applies Physical Crit Damage +40 (+5/lv) and Magic Crit +40 (+5/lv) to all allies for 6 seconds
+  [Lv100: Crit Dmg +540, Crit +540]
+
+[Ultimate] La Roue de Fortune
+  Applies Action Speed UP(Lv5: +20%+20) for 8 seconds and Shield(Lv5: -40%, unlimited hits, 6s) to all allies
+  Rank Scaling: R1: Speed+10%+10, Shield-30%(4s) | R2: +12%+12, -32%(4s) | R3: +15%+15, -35%(5s) | R4: +17%+17, -37%(5s) | R5: +20%+20, -40%(6s)
+
+[Passive1] Middle Row allies receive Physical Crit Damage +90, Magic Crit Damage +90
+[Passive2] Middle Row allies receive Skill Damage +20%, Action Speed 5%+5
+
+================================================================================
+Stenlina
+Rarity: SSR | Element: Holy | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Pillar of Sanctity
+  Deals [150% ATK + 70 (+10/lv)] magic damage to the 3 nearest enemies
+  [Lv100: Dmg +1070]
+
+[Skill 3] Feather Dance
+  Deals [130% ATK + 50 (+6/lv)] magic damage to the 3 nearest enemies and inflicts Physical ATK -9%-20 (-2/lv) and Magic ATK -9%-20 (-2/lv) for 10 seconds
+  [Lv100: Dmg +650, ATK -220]
+
+[Ultimate] Trail that Destroys Evil
+  Deals [600% ATK + 482] magic damage to the 3 nearest enemies and inflicts Physical Crit DOWN(Lv5: -20%) and Magic Crit DOWN(Lv5: -20%) for 10 seconds
+  Rank Scaling: R1: 430%+400, Crit-10% | R2: 480%+409, -12% | R3: 540%+453, -15% | R4: 580%+468, -17% | R5: 600%+482, -20%
+
+[Passive1] Grants: Magic ATK +259, Action Speed 10%+10
+[Passive2] Grants: Block +15, Skill Damage +30%
+
+================================================================================
+Hisara
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Spinning Blade
+  Deals [110% ATK + 50 (+8/lv)] physical damage to the 3 enemies with lowest HP and inflicts Action Speed -20% for 8 seconds
+  [Lv100: Dmg +850]
+
+[Skill 3] Ring Blade
+  Deals [130% ATK + 60 (+10/lv)] physical damage to the 3 enemies with lowest HP
+  [Lv100: Dmg +1060]
+
+[Ultimate] Eradicator
+  Deals [680% ATK + 640] physical damage to 3 enemies and applies Action Speed UP(Lv5: +30%+30) to self for 12 seconds
+  Rank Scaling: R1: 450%+400, Speed+20%+20 | R2: 550%+480, +22%+22 | R3: 600%+560, +25%+25 | R4: 650%+600, +27%+27 | R5: 680%+640, +30%+30
+
+[Passive1] Grants: MP Recovery +42 (on kill), Physical ATK +420 (on kill, 5s)
+[Passive2] Grants: Physical ATK +259, Physical Crit Damage +176
+
+================================================================================
+Bianca
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Cross Slash
+  Deals [145% ATK + 100 (+10/lv)] physical damage to the 3 nearest enemies
+  [Lv100: Dmg +1100]
+
+[Skill 3] Paladin's Awakening
+  Applies Physical ATK +20%+40 (+9/lv) and Mind Type ATK +10% to self for 10 seconds
+  [Lv100: ATK +940]
+
+[Ultimate] Oracle of the Demon-Slaying Goddess
+  Deals [1110% ATK + 680] physical damage to all enemies and inflicts Silence for 6 seconds and Curse for 3 seconds
+  Rank Scaling: R1: 560%+700 | R2: 760%+500 | R3: 930%+550 | R4: 1019%+600 | R5: 1110%+680
+
+[Passive1] Grants: Physical ATK +159, Action Speed 15%+15
+[Passive2] Grants: Mind Type ATK +10%, Block +20
+
+================================================================================
+Natasha
+Rarity: SSR | Element: Water | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Shield Bash
+  Deals [350% ATK + 130 (+20/lv)] physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed -17% for 10 seconds
+  [Lv100: Dmg +2130]
+
+[Skill 3] Solid Defense
+  Applies Physical DEF +40%+200 (+4/lv) and Taunt to self for 12 seconds
+  [Lv100: DEF +600]
+
+[Ultimate] Reflective Impact
+  Applies Physical Reflect Shield(Lv5: 500% +5000/lv, unlimited hits) to self for 15 seconds - reflects damage back to attackers
+  Rank Scaling: R1: 250%+2500/lv | R2: 312%+3125/lv | R3: 375%+3750/lv | R4: 437%+4375/lv | R5: 500%+5000/lv
+
+[Passive1] Grants: Physical Def +141, Max HP +3444
+[Passive2] Grants: Physical Def +211, Healing Received +30%
+
+================================================================================
+Venus
+Rarity: SR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] Charming Smile
+  Applies Physical Crit Damage +40 (+5/lv) to the frontmost ally for 8 seconds
+  [Lv100: Crit Dmg +540]
+
+[Skill 3] Blessing of the Love Goddess
+  Applies Physical DEF +20%+140 (+2/lv) to the frontmost ally for 8 seconds
+  [Lv100: DEF +340]
+
+[Ultimate] Grace Granted by the Love Goddess
+  Applies Physical ATK UP(Lv5: +35%) and Magic ATK UP(Lv5: +35%) to front row allies for 10 seconds
+  Rank Scaling: R1: ATK+20% | R2: +23% | R3: +27% | R4: +31% | R5: +35%
+
+[Passive1] Grants: Physical ATK +300
+[Passive2] Grants: Physical Crit Damage +120
+
+================================================================================
+Artemis
+Rarity: SR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Iokaela
+  Deals [170% ATK + 100 (+15/lv)] physical damage to the nearest enemy (guaranteed hit and crit)
+  [Lv100: Dmg +1600]
+
+[Skill 3] Aporosa
+  Applies Physical ATK +18%+35 (+7/lv) and Action Speed +14%+14 to self for 10 seconds
+  [Lv100: ATK +735]
+
+[Ultimate] The Maiden Goddess's Arrow that Purges Impurity
+  Deals [770% ATK + 1201] physical damage to the nearest enemy (guaranteed hit/crit) and inflicts Wind Type DEF DOWN(Lv5: -30%) for 8 seconds
+  Rank Scaling: R1: 600%+785, Wind-15% | R2: 660%+912, -18% | R3: 700%+1033, -22% | R4: 740%+1137, -26% | R5: 770%+1201, -30%
+
+[Passive1] Grants: Physical ATK +259
+[Passive2] Grants: Action Speed 10%+10, Skill Damage +10%
+
+================================================================================
+【Queen of Pies and Cookies】Aphrodia
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Won't you taste my sweets?
+  Deals [330% ATK + 150 (+20/lv)] physical damage to the nearest enemy and inflicts Poison for 8 seconds
+  [Lv100: Dmg +2150]
+
+[Skill 3] Come now, have some.
+  Applies Hit-Based Damage +18%+35 (+7/lv) to all allies for 15 seconds
+  [Lv100: Hit Dmg +735]
+
+[Ultimate] Accept it—this is your reward.
+  Deals [1730% ATK + 1300] physical damage to the nearest enemy and inflicts Action Speed DOWN(Lv5: -30%-30) and Block DOWN(Lv5: -30) for 10 seconds
+  Rank Scaling: R1: 1170%+800, Speed-15%-15, Block-15 | R2: 1400%+1000, -18%-18, -18 | R3: 1560%+1100, -22%-22, -22 | R4: 1670%+1200, -26%-26, -26 | R5: 1730%+1300, -30%-30, -30
+
+[Passive1] Grants: Physical ATK +389
+[Passive2] Grants: Skill Damage +30%
+
+================================================================================
+Luceria
+Rarity: R | Element: Mind | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Heart Racing
+  Applies Physical ATK +12%+25 (+3/lv) and Physical DEF +15%+100 (+1/lv) to the 3 nearest allies for 8 seconds
+  [Lv100: ATK +325, DEF +200]
+
+[Skill 3] Mm, good idea!
+  Restores HP by [(Healing Power × 8) + 500 (+12/lv)] to the 3 nearest allies and removes all debuffs
+  [Lv100: Heal +1700]
+
+[Ultimate] Super Breast Smothering
+  Restores HP by [(Healing Power × 21) + 1734] to the 3 nearest allies and applies Physical ATK UP and Block UP
+  Rank Scaling: R1: HP×13+1123 | R2: HP×16+1239 | R3: HP×18+1376 | R4: HP×20+1555 | R5: HP×21+1734
+
+[Passive1] Grants: Max HP +1447
+[Passive2] Grants: Healing Amount +10%
+
+================================================================================
+Ishtovia
+Rarity: SR | Element: Holy | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Receive the punishment of the gods
+  Deals [170% ATK + 100 (+13/lv)] magic damage to the enemy with the lowest HP (guaranteed hit and crit)
+  [Lv100: Dmg +1400]
+
+[Skill 3] Divine Love
+  Restores HP by [(Healing Power × 20) + 600 (+35/lv)] to the ally with the lowest HP
+  [Lv100: Heal +4100]
+
+[Ultimate] Radiance of the Gods
+  Deals [1255% ATK + 1209] magic damage to the nearest enemy (guaranteed hit/crit) and inflicts Magic DEF DOWN and Silence for 10 seconds
+  Rank Scaling: R1: 810%+783 | R2: 972%+920 | R3: 1090%+1022 | R4: 1175%+1115 | R5: 1255%+1209
+
+[Passive1] When enemy is defeated, gain MP Recovery +21
+[Passive2] Grants: Magic ATK +259, Magic Def +70
+
+================================================================================
+Nora
+Rarity: SSR | Element: Fire | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Rock Burst
+  Deals [105% ATK + 60 (+6/lv)] physical damage to the 3 nearest enemies and inflicts Physical Crit -50 (-7/lv) and Magic Crit -50 (-7/lv) for 11 seconds
+  [Lv100: Dmg +660, Crit -750]
+
+[Skill 3] Arm of Growth
+  Applies Physical Crit Damage +50 (+7/lv) and Shield to the 3 nearest allies for 10 seconds
+  [Lv100: Crit Dmg +750]
+
+[Ultimate] Gigant's Hammer
+  Deals [900% ATK + 1076] physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(Lv5: -20%-20) for 10 seconds
+  Rank Scaling: R1: 450%+630, Speed-10%-10 | R2: 630%+748, -12%-12 | R3: 765%+851, -15%-15 | R4: 855%+963, -17%-17 | R5: 900%+1076, -20%-20
+
+[Passive1] Grants: Max HP +3444, Block +15
+[Passive2] Front Row allies receive: Physical Def +141, Magic Def +141
+
+================================================================================
+Sobrina
+Rarity: SR | Element: Mind | Role: Support
+--------------------------------------------------------------------------------
+
+[Skill 2] This is an order from your superior
+  Restores HP by [(Healing Power × 33) + 834 (+60/lv)] to the ally with the lowest HP and applies Block +9 (+0.1/lv) for 8 seconds
+  [Lv100: Heal +6834, Block +19]
+
+[Skill 3] Lacking self-awareness
+  Applies Physical DEF +20%+140 (+2/lv) to the ally with the lowest HP for 8 seconds
+  [Lv100: DEF +340]
+
+[Ultimate] It's break time now
+  Restores HP by [(Healing Power × 32.2) + 908] to all allies and applies Debuff Resistance UP(Lv5: +30%) for 6 seconds
+  Rank Scaling: R1: HP×23+698 | R2: HP×26.45+752 | R3: HP×28.75+810 | R4: HP×31.05+862 | R5: HP×32.2+908
+
+[Passive1] Grants: Healing Amount +15%
+[Passive2] Grants: Physical Def +70
+
+================================================================================
+Meinias
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Oboro Night
+  Deals [100% ATK + 40 (+6/lv)] physical damage to the 3 nearest enemies and inflicts Accuracy -11 (-0.13/lv) and Block -11 (-0.13/lv) for 8 seconds
+  [Lv100: Dmg +640, Accuracy -24, Block -24]
+
+[Skill 3] Shadow Dance
+  Applies Physical ATK +18%+35 (+7/lv) and Block +11 (+0.13/lv) to self for 12 seconds
+  [Lv100: ATK +735, Block +24]
+
+[Ultimate] Limit Arrow
+  Deals [630% ATK + 3000] physical damage to the nearest enemy and applies Hit-Based Damage UP(Lv5: +200%, 5 hits, +2000/lv) to self for 10 seconds
+  Rank Scaling: R1: 500%+1400, Hit+100%(3)+600/lv | R2: 540%+2000, +125%(4)+950/lv | R3: 570%+2400, +150%(4)+1300/lv | R4: 600%+2700, +175%(5)+1650/lv | R5: 630%+3000, +200%(5)+2000/lv
+
+[Passive1] Grants: Accuracy +25, Action Speed 10%+10
+[Passive2] Grants: Physical ATK +259, Ultimate Damage +15%
+
+================================================================================
+Yu Lima Elka
+Rarity: SSR | Element: Magic | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Let Me Play With You
+  Deals [110% ATK + 60 (+6/lv)] physical damage to the 3 nearest enemies and inflicts Physical ATK -9%-20 (-2/lv) and Magic ATK -9%-20 (-2/lv) for 7 seconds
+  [Lv100: Dmg +660, ATK -220]
+
+[Skill 3] Become My Captive
+  Deals [300% ATK + 150 (+25/lv)] physical damage to the nearest enemy and inflicts Charm for 3 seconds
+  [Lv100: Dmg +2650]
+
+[Ultimate] Phantom Nail
+  Deals [1350% ATK + 1300] physical damage to the nearest enemy and inflicts Paralysis(Lv5: 8s) and Curse(Lv5: 8s, no HP/MP regen, Speed -50%)
+  Rank Scaling: R1: 900%+850, 6s | R2: 1080%+920, 6s | R3: 1170%+1010, 7s | R4: 1260%+1150, 7s | R5: 1350%+1300, 8s
+
+[Passive1] Grants: Max HP +3444, Block +15
+[Passive2] Grants: Skill Damage +20%, Action Speed 10%+10
+
+================================================================================
+【Festive Costume】Natasha
+Rarity: SR | Element: Holy | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] The gown feels so light!
+  Deals [240% ATK + 125 (+20/lv)] physical damage to the nearest enemy and inflicts Poison for 8 seconds
+  [Lv100: Dmg +2125]
+
+[Skill 3] I must keep it perfectly clean.
+  Applies Block +13 (+0.15/lv) and Taunt to self for 12 seconds
+  [Lv100: Block +28]
+
+[Ultimate] The princess stands for justice!
+  Deals [380% ATK + 602] physical damage to the 3 nearest enemies and inflicts Confusion and Fear for 10 seconds
+  Rank Scaling: R1: 225%+404 | R2: 280%+509 | R3: 325%+553 | R4: 358%+568 | R5: 380%+602
+
+[Passive1] Grants: Physical Def +141
+[Passive2] Grants: Max HP +2896, Healing Received +20%
+
+================================================================================
+【Holy Night Succubus】Yu Rima Elca
+Rarity: SR | Element: Magic | Role: Attacker
+--------------------------------------------------------------------------------
+
+[Skill 2] Alright, this is for you.
+  Deals [100% ATK + 50 (+6/lv)] magic damage to the 3 nearest enemies and inflicts Burn for 12 seconds
+  [Lv100: Dmg +650]
+
+[Skill 3] Even if Santa gets it, it's fine, right?
+  Inflicts Charm for 1 second and Magic DEF -18%-30 (-2/lv) for 8 seconds on the 3 nearest enemies (no damage)
+  [Lv100: DEF -230]
+
+[Ultimate] The gift... is... me.
+  Deals [1550% ATK + 800] magic damage to all enemies and absorbs 6% of damage as HP, removes enemy buffs (Dispel, Lv5: 3s)
+  Rank Scaling: R1: 1100%+500, Dispel 1s | R2: 1300%+600, 2s | R3: 1430%+700, 2s | R4: 1500%+750, 3s | R5: 1550%+800, 3s
+
+[Passive1] Grants: Magic ATK +259
+[Passive2] Grants: Skill Damage +20%, Max HP +2896
+
+================================================================================
+【Magical Holy Night Festival】Kaguya
+Rarity: SSR | Element: Mind | Role: Tank
+--------------------------------------------------------------------------------
+
+[Skill 2] Someone is waiting for me.
+  Deals [130% ATK + 100 (+7/lv)] magic damage to the nearest enemy and inflicts Poison and Block DOWN
+  [Lv100: Dmg +800]
+
+[Skill 3] Please... just for tonight.
+  Applies Hit-Based Healing Shield (-30%+90, heals 40% of absorbed, 9 hits) and Block +13 (+0.15/lv) to self for 15 seconds
+  [Lv100: Block +28]
+
+[Ultimate] I, too, can make someone happy.
+  Restores HP by [(Healing Power × 37) + 2200] to all allies and applies Physical DEF UP(Lv5: +40%+500) and Magic DEF UP(Lv5: +40%+500) for 10 seconds
+  Rank Scaling: R1: HP×26+1500, DEF+20%+250 | R2: HP×30+1800, +25%+312 | R3: HP×32.5+2000, +30%+375 | R4: HP×35+2100, +35%+437 | R5: HP×37+2200, +40%+500
+
+[Passive1] Grants: Healing Amount +15%, Max HP +3444
+[Passive2] All allies receive: Physical Def +141, Magic Def +141
+
+================================================================================
+

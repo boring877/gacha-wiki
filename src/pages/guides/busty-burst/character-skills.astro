@@ -1,0 +1,616 @@
+---
+// Busty Burst Character Skills Page
+// Displays all character skills with formulas, effects, and ultimate scaling
+
+import CharacterSkillsLayout from '../../../layouts/busty-burst/CharacterSkillsLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import { getAllCharacterSkills } from '../../../data/busty-burst/character-skills.js';
+import { getPaladinById } from '../../../data/busty-burst/paladins.js';
+
+// Get all character skills
+const characterSkills = getAllCharacterSkills();
+
+const title = 'Busty Burst Character Skills Guide';
+const description = `Complete skill guide for all ${characterSkills.length} Busty Burst characters. View skill formulas, damage calculations, healing values, buff/debuff effects, and ultimate scaling from R1 to R5.`;
+const gameTitle = 'Character Skills Guide';
+
+// Get image file name helper
+const getImageFileName = (id: string) => {
+  const paladin = getPaladinById(id);
+  if (!paladin) return '';
+  return paladin.image.split('/').pop() || '';
+};
+---
+
+<CharacterSkillsLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Busty Burst Character Skills Guide - Complete Skill Database",
+      "description": "Complete skill guide for all Busty Burst characters. View skill formulas, damage calculations, healing values, buff/debuff effects, ultimate scaling from R1 to R5, and passive abilities.",
+      "keywords": "Busty Burst, character skills, skill formulas, damage calculation, healing formula, buff formula, ultimate skills, passive abilities, R1-R5 scaling, ATK scaling",
+      "articleSection": "Game Guide",
+      "author": {
+        "@type": "Organization",
+        "name": "GachaWiki"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gachawiki.info/guides/busty-burst/character-skills/"
+      }
+    }
+  </script>
+
+  <div class="bb-skills-page">
+    <!-- Filter Controls -->
+    <div class="bb-skills-controls">
+      <div class="bb-skills-filter-row">
+        <input
+          type="text"
+          id="skills-search"
+          class="bb-skills-search-input"
+          placeholder="Search by character name or skill name..."
+        />
+        <select id="element-filter" class="bb-skills-filter-select">
+          <option value="">All Elements</option>
+          <option value="Holy">Holy</option>
+          <option value="Mind">Mind</option>
+          <option value="Fire">Fire</option>
+          <option value="Wind">Wind</option>
+          <option value="Water">Water</option>
+          <option value="Magic">Magic</option>
+        </select>
+        <select id="role-filter" class="bb-skills-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Support">Support</option>
+          <option value="Tank">Tank</option>
+        </select>
+        <select id="rarity-filter" class="bb-skills-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+        <button type="button" id="clear-filters" class="bb-skills-clear-btn"> Clear All </button>
+      </div>
+    </div>
+
+    <!-- Character Skills Grid -->
+    <div class="bb-skills-grid" id="skills-grid">
+      {
+        characterSkills.map(char => (
+          <div
+            class="bb-skills-card"
+            data-name={char.name.toLowerCase()}
+            data-element={char.element.toLowerCase()}
+            data-role={char.role.toLowerCase()}
+            data-rarity={char.rarity.toLowerCase()}
+            data-skill2={char.skill2.name.toLowerCase()}
+            data-skill3={char.skill3.name.toLowerCase()}
+            data-ultimate={char.ultimate.name.toLowerCase()}
+          >
+            <div class="bb-skills-card-header">
+              <div class="bb-skills-card-avatar">
+                <PaladinImage
+                  fileName={getImageFileName(char.id)}
+                  alt={char.name}
+                  width={120}
+                  height={120}
+                />
+              </div>
+              <div class="bb-skills-card-info">
+                <h3 class="bb-skills-card-name">{char.name}</h3>
+                <div class="bb-skills-card-badges">
+                  <span class="bb-badge" data-rarity={char.rarity}>
+                    {char.rarity}
+                  </span>
+                  <span class="bb-badge" data-element={char.element}>
+                    <ElementImage element={char.element} width={14} height={14} />
+                    {char.element}
+                  </span>
+                  <span class="bb-badge" data-role={char.role}>
+                    {char.role}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bb-skills-card-body">
+              {/* Action Skill 1 */}
+              <div class="bb-skill-section">
+                <div class="bb-skill-header">
+                  <span class="bb-badge bb-skill-label" data-skill="action1">
+                    Action Skill 1
+                  </span>
+                  <span class="bb-skill-name">{char.skill2.name}</span>
+                  <span class="bb-badge" data-type={char.skill2.type}>
+                    {char.skill2.type}
+                  </span>
+                </div>
+                <p class="bb-skill-description" data-formula={char.skill2.description}>
+                  {char.skill2.description}
+                </p>
+                <div class="bb-skill-target">Target: {char.skill2.target}</div>
+                <div class="bb-skill-calculator" data-skill-type={char.skill2.type}>
+                  <div class="bb-calc-inputs">
+                    <label class="bb-calc-label">
+                      Lv
+                      <input
+                        type="number"
+                        class="bb-calc-input bb-calc-input-small"
+                        min="1"
+                        max="100"
+                        value="1"
+                        data-calc-level
+                      />
+                    </label>
+                    {char.skill2.type === 'heal' && (
+                      <label class="bb-calc-label">
+                        Heal Power
+                        <input
+                          type="number"
+                          class="bb-calc-input"
+                          min="0"
+                          max="9999"
+                          value="100"
+                          data-calc-healpower
+                        />
+                      </label>
+                    )}
+                    {char.skill2.type === 'damage' && (
+                      <label class="bb-calc-label">
+                        ATK
+                        <input
+                          type="number"
+                          class="bb-calc-input"
+                          min="0"
+                          max="99999"
+                          value="1000"
+                          data-calc-atk
+                        />
+                      </label>
+                    )}
+                  </div>
+                  <div class="bb-calc-result" data-calc-result />
+                </div>
+              </div>
+
+              {/* Action Skill 2 */}
+              <div class="bb-skill-section">
+                <div class="bb-skill-header">
+                  <span class="bb-badge bb-skill-label" data-skill="action2">
+                    Action Skill 2
+                  </span>
+                  <span class="bb-skill-name">{char.skill3.name}</span>
+                  <span class="bb-badge" data-type={char.skill3.type}>
+                    {char.skill3.type}
+                  </span>
+                </div>
+                <p class="bb-skill-description" data-formula={char.skill3.description}>
+                  {char.skill3.description}
+                </p>
+                <div class="bb-skill-target">Target: {char.skill3.target}</div>
+                <div class="bb-skill-calculator" data-skill-type={char.skill3.type}>
+                  <div class="bb-calc-inputs">
+                    <label class="bb-calc-label">
+                      Lv
+                      <input
+                        type="number"
+                        class="bb-calc-input bb-calc-input-small"
+                        min="1"
+                        max="100"
+                        value="1"
+                        data-calc-level
+                      />
+                    </label>
+                    {char.skill3.type === 'heal' && (
+                      <label class="bb-calc-label">
+                        Heal Power
+                        <input
+                          type="number"
+                          class="bb-calc-input"
+                          min="0"
+                          max="9999"
+                          value="100"
+                          data-calc-healpower
+                        />
+                      </label>
+                    )}
+                    {char.skill3.type === 'damage' && (
+                      <label class="bb-calc-label">
+                        ATK
+                        <input
+                          type="number"
+                          class="bb-calc-input"
+                          min="0"
+                          max="99999"
+                          value="1000"
+                          data-calc-atk
+                        />
+                      </label>
+                    )}
+                  </div>
+                  <div class="bb-calc-result" data-calc-result />
+                </div>
+              </div>
+
+              {/* Ultimate */}
+              {(() => {
+                // Extract R1 effects for context display
+                const r1Data = char.ultimate.ranks.R1;
+                const r1Parts = r1Data.split(' | ');
+                const r1Effects = r1Parts.slice(1).join(', ');
+                return (
+                  <div class="bb-skill-section">
+                    <div class="bb-skill-header">
+                      <span class="bb-badge bb-skill-label" data-skill="ultimate">
+                        Ultimate
+                      </span>
+                      <span class="bb-skill-name">{char.ultimate.name}</span>
+                      <span class="bb-badge" data-type={char.ultimate.type}>
+                        {char.ultimate.type}
+                      </span>
+                    </div>
+                    <p class="bb-skill-description">{char.ultimate.description}</p>
+                    {r1Effects && (
+                      <div class="bb-ultimate-base-effects">
+                        <span class="bb-ultimate-base-label">Base (R1):</span>
+                        <span class="bb-ultimate-base-value">{r1Effects}</span>
+                      </div>
+                    )}
+                    <div class="bb-skill-target">Target: {char.ultimate.target}</div>
+
+                    {/* Ultimate Calculator */}
+                    <div class="bb-ultimate-calculator" data-ultimate-type={char.ultimate.type}>
+                      <div class="bb-calc-inputs">
+                        {char.ultimate.type === 'heal' && (
+                          <label class="bb-calc-label">
+                            Heal Power
+                            <input
+                              type="number"
+                              class="bb-calc-input"
+                              min="0"
+                              max="9999"
+                              value="100"
+                              data-ult-healpower
+                            />
+                          </label>
+                        )}
+                        {char.ultimate.type === 'damage' && (
+                          <label class="bb-calc-label">
+                            ATK
+                            <input
+                              type="number"
+                              class="bb-calc-input"
+                              min="0"
+                              max="99999"
+                              value="1000"
+                              data-ult-atk
+                            />
+                          </label>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Ultimate Ranks */}
+                    <div class="bb-ultimate-ranks">
+                      <div class="bb-ultimate-ranks-title">Rank Scaling</div>
+                      <div class="bb-ultimate-rank-list">
+                        {['R1', 'R2', 'R3', 'R4', 'R5'].map(rank => {
+                          const rankData =
+                            char.ultimate.ranks[rank as keyof typeof char.ultimate.ranks];
+                          const parts = rankData.split(' | ');
+                          const formula = parts[0];
+                          const effects = parts.slice(1).join(' | ');
+                          return (
+                            <div class="bb-ultimate-rank-item">
+                              <span class="bb-ultimate-rank-label">{rank}:</span>
+                              <div class="bb-ultimate-rank-content">
+                                <div class="bb-ultimate-rank-formula">
+                                  <span class="bb-ultimate-rank-value" data-rank-formula={formula}>
+                                    {formula}
+                                  </span>
+                                  <span class="bb-ultimate-rank-calc" data-rank-result={rank} />
+                                </div>
+                                {effects && <div class="bb-ultimate-rank-effects">{effects}</div>}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Passive Skills */}
+              <div class="bb-passives-container">
+                <div class="bb-passive-section">
+                  <div class="bb-passive-header">
+                    <span class="bb-badge bb-skill-label" data-skill="passive">
+                      Passive 1
+                    </span>
+                  </div>
+                  <p class="bb-passive-description">{char.passive1}</p>
+                </div>
+                <div class="bb-passive-section">
+                  <div class="bb-passive-header">
+                    <span class="bb-badge bb-skill-label" data-skill="passive">
+                      Passive 2
+                    </span>
+                  </div>
+                  <p class="bb-passive-description">{char.passive2}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- No Results Message -->
+    <div class="bb-skills-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</CharacterSkillsLayout>
+
+<script>
+  // Filter functionality
+  function initFilters() {
+    const searchInput = document.getElementById('skills-search') as HTMLInputElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const skillsGrid = document.getElementById('skills-grid');
+    const noResults = document.getElementById('no-results');
+
+    if (!skillsGrid) return;
+
+    const cards = skillsGrid.querySelectorAll('.bb-skills-card');
+
+    function filterCards() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const elementValue = elementFilter?.value.toLowerCase() || '';
+      const roleValue = roleFilter?.value.toLowerCase() || '';
+      const rarityValue = rarityFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const name = cardEl.dataset.name || '';
+        const element = cardEl.dataset.element || '';
+        const role = cardEl.dataset.role || '';
+        const rarity = cardEl.dataset.rarity || '';
+        const skill2 = cardEl.dataset.skill2 || '';
+        const skill3 = cardEl.dataset.skill3 || '';
+        const ultimate = cardEl.dataset.ultimate || '';
+
+        // Check search term (name or skill names)
+        const matchesSearch =
+          !searchTerm ||
+          name.includes(searchTerm) ||
+          skill2.includes(searchTerm) ||
+          skill3.includes(searchTerm) ||
+          ultimate.includes(searchTerm);
+
+        // Check filters
+        const matchesElement = !elementValue || element === elementValue;
+        const matchesRole = !roleValue || role === roleValue;
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+
+        const isVisible = matchesSearch && matchesElement && matchesRole && matchesRarity;
+
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+    }
+
+    // Clear all filters
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (roleFilter) roleFilter.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      filterCards();
+    }
+
+    // Add event listeners
+    searchInput?.addEventListener('input', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    roleFilter?.addEventListener('change', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  // Skill calculator functionality
+  function initCalculators() {
+    const calculators = document.querySelectorAll('.bb-skill-calculator');
+
+    calculators.forEach(calc => {
+      const calcEl = calc as HTMLElement;
+      const levelInput = calc.querySelector('[data-calc-level]') as HTMLInputElement;
+      const healPowerInput = calc.querySelector('[data-calc-healpower]') as HTMLInputElement;
+      const atkInput = calc.querySelector('[data-calc-atk]') as HTMLInputElement;
+      const resultDiv = calc.querySelector('[data-calc-result]') as HTMLElement;
+      const skillSection = calc.closest('.bb-skill-section');
+      const descEl = skillSection?.querySelector('.bb-skill-description') as HTMLElement;
+      const skillType = calcEl.dataset.skillType || '';
+
+      if (!levelInput || !resultDiv || !descEl) return;
+
+      const formula = descEl.dataset.formula || descEl.textContent || '';
+
+      function calculateValues() {
+        const level = parseInt(levelInput.value) || 1;
+        const healPower = healPowerInput ? parseInt(healPowerInput.value) || 100 : 100;
+        const atk = atkInput ? parseInt(atkInput.value) || 1000 : 1000;
+        const results: string[] = [];
+
+        // Parse healing formulas: [(Healing Power × X) + Base (+Growth/lv)]
+        const healMatch = formula.match(
+          /\[\(Healing Power × (\d+(?:\.\d+)?)\) \+ (\d+) \(\+(\d+)\/lv\)\]/
+        );
+        if (healMatch) {
+          const scale = parseFloat(healMatch[1]);
+          const base = parseInt(healMatch[2]);
+          const growth = parseInt(healMatch[3]);
+          const totalBase = base + growth * level;
+          const totalHeal = Math.floor(healPower * scale + totalBase);
+          results.push(
+            `<span class="calc-label">Heal:</span> <span class="calc-value">${totalHeal.toLocaleString()}</span>`
+          );
+        }
+
+        // Parse damage formulas: [X% ATK + Base (+Growth/lv)]
+        const dmgMatch = formula.match(/\[(\d+)% ATK \+ (\d+) \(\+(\d+)\/lv\)\]/);
+        if (dmgMatch) {
+          const scale = parseInt(dmgMatch[1]);
+          const base = parseInt(dmgMatch[2]);
+          const growth = parseInt(dmgMatch[3]);
+          const totalBase = base + growth * level;
+          const totalDmg = Math.floor((atk * scale) / 100 + totalBase);
+          results.push(
+            `<span class="calc-label">Damage:</span> <span class="calc-value">${totalDmg.toLocaleString()}</span>`
+          );
+        }
+
+        // Parse buff/debuff formulas with growth: +X%+Y (+Z/lv)
+        const buffMatches = formula.matchAll(
+          /(\w+(?:\s+\w+)*)\s+\+(\d+)%\+(\d+)\s+\(\+(\d+(?:\.\d+)?)\/lv\)/g
+        );
+        for (const match of buffMatches) {
+          const statName = match[1];
+          const percent = parseInt(match[2]);
+          const base = parseInt(match[3]);
+          const growth = parseFloat(match[4]);
+          const totalFlat = base + growth * level;
+          results.push(
+            `<span class="calc-label">${statName}:</span> <span class="calc-value">+${percent}% + ${totalFlat.toFixed(growth % 1 !== 0 ? 1 : 0)}</span>`
+          );
+        }
+
+        // Parse flat stat formulas: +Y (+Z/lv) for buffs without percent
+        const flatMatches = formula.matchAll(
+          /(\w+(?:\s+\w+)*)\s+\+(\d+)\s+\(\+(\d+(?:\.\d+)?)\/lv\)/g
+        );
+        for (const match of flatMatches) {
+          const statName = match[1];
+          const base = parseInt(match[2]);
+          const growth = parseFloat(match[3]);
+          // Skip if already captured by buff pattern
+          if (
+            !formula.includes(`${statName} +${base}%`) &&
+            formula.includes(`${statName} +${base} (`)
+          ) {
+            const total = base + growth * level;
+            results.push(
+              `<span class="calc-label">${statName}:</span> <span class="calc-value">+${total.toFixed(growth % 1 !== 0 ? 1 : 0)}</span>`
+            );
+          }
+        }
+
+        if (results.length > 0) {
+          resultDiv.innerHTML = `<span class="calc-level">Lv${level}:</span>${results.join('<span class="calc-separator">|</span>')}`;
+        } else {
+          resultDiv.innerHTML = '<span class="calc-level">No level scaling</span>';
+        }
+      }
+
+      // Initial calculation
+      calculateValues();
+
+      // Add event listeners to all inputs
+      levelInput.addEventListener('input', calculateValues);
+      healPowerInput?.addEventListener('input', calculateValues);
+      atkInput?.addEventListener('input', calculateValues);
+    });
+  }
+
+  // Ultimate calculator functionality
+  function initUltimateCalculators() {
+    const ultimateCalcs = document.querySelectorAll('.bb-ultimate-calculator');
+
+    ultimateCalcs.forEach(calc => {
+      const calcEl = calc as HTMLElement;
+      const healPowerInput = calc.querySelector('[data-ult-healpower]') as HTMLInputElement;
+      const atkInput = calc.querySelector('[data-ult-atk]') as HTMLInputElement;
+      const skillSection = calc.closest('.bb-skill-section');
+      const rankItems = skillSection?.querySelectorAll('.bb-ultimate-rank-item');
+      const ultType = calcEl.dataset.ultimateType || '';
+
+      if (!rankItems || rankItems.length === 0) return;
+
+      function calculateUltimateValues() {
+        const healPower = healPowerInput ? parseInt(healPowerInput.value) || 100 : 100;
+        const atk = atkInput ? parseInt(atkInput.value) || 1000 : 1000;
+
+        rankItems?.forEach(item => {
+          const formulaEl = item.querySelector('[data-rank-formula]') as HTMLElement;
+          const resultEl = item.querySelector('[data-rank-result]') as HTMLElement;
+          if (!formulaEl || !resultEl) return;
+
+          const formula = formulaEl.dataset.rankFormula || '';
+          let result = '';
+
+          // Parse damage formulas: [X% ATK + Base]
+          const dmgMatch = formula.match(/\[(\d+)% ATK \+ (\d+)\]/);
+          if (dmgMatch) {
+            const scale = parseInt(dmgMatch[1]);
+            const base = parseInt(dmgMatch[2]);
+            const totalDmg = Math.floor((atk * scale) / 100 + base);
+            result = `= ${totalDmg.toLocaleString()}`;
+          }
+
+          // Parse healing formulas: Heal [(Healing Power × X) + Base]
+          const healMatch = formula.match(/Heal \[\(Healing Power × (\d+(?:\.\d+)?)\) \+ (\d+)\]/);
+          if (healMatch) {
+            const scale = parseFloat(healMatch[1]);
+            const base = parseInt(healMatch[2]);
+            const totalHeal = Math.floor(healPower * scale + base);
+            result = `= ${totalHeal.toLocaleString()}`;
+          }
+
+          resultEl.textContent = result;
+        });
+      }
+
+      // Initial calculation
+      calculateUltimateValues();
+
+      // Add event listeners
+      healPowerInput?.addEventListener('input', calculateUltimateValues);
+      atkInput?.addEventListener('input', calculateUltimateValues);
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initFilters();
+      initCalculators();
+      initUltimateCalculators();
+    });
+  } else {
+    initFilters();
+    initCalculators();
+    initUltimateCalculators();
+  }
+</script>

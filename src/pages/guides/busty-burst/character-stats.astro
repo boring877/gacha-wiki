@@ -1,0 +1,782 @@
+---
+// Busty Burst Character Stats Page
+// Displays all character stats with interactive level calculator
+
+import CharacterStatsLayout from '../../../layouts/busty-burst/CharacterStatsLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import {
+  getAllCharacterStats,
+  STAT_DISPLAY_NAMES,
+  calculateStatAtLevel,
+  calculateCritRate,
+} from '../../../data/busty-burst/character-stats.js';
+import { getPaladinById } from '../../../data/busty-burst/paladins.js';
+
+// Get all character stats
+const characterStats = getAllCharacterStats();
+
+const title = 'Busty Burst Character Stats Guide';
+const description = `Complete stats guide for all ${characterStats.length} Busty Burst characters. View base stats, level scaling, awakening bonuses, GP abilities, bond progression, limit break, and ability grade bonuses with an interactive level calculator.`;
+const gameTitle = 'Character Stats Guide';
+
+// Get image file name helper
+const getImageFileName = (id: string) => {
+  const paladin = getPaladinById(id);
+  if (!paladin) return '';
+  return paladin.image.split('/').pop() || '';
+};
+
+// Format bonus object to display string
+const formatBonus = (bonus: Record<string, number>) => {
+  return Object.entries(bonus)
+    .map(([stat, value]) => {
+      const displayName = STAT_DISPLAY_NAMES[stat] || stat;
+      return `${displayName} +${value}`;
+    })
+    .join(', ');
+};
+---
+
+<CharacterStatsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-stats-page">
+    <!-- Info Notes -->
+    <div class="bb-stats-info-notes">
+      <div class="bb-stats-info-title">Stat Notes</div>
+      <ul class="bb-stats-info-list">
+        <li>Crit Rate = Crit Value / 20</li>
+        <li>MP Charge, HP Drain, MP Cost Down = Flat (no level growth)</li>
+        <li>Max MP = 1000 | Ultimate Cost = 500 MP</li>
+        <li>Awakening = Lv 110 bonus</li>
+        <li>GP Ability LV10 = Completing 5 shards in ability</li>
+        <li>Ability Grade 10 = 5 shards each (50 total)</li>
+        <li>Limit Break Max = Sum of all limit break levels (10, 20, 30, etc.)</li>
+        <li>Check boxes = Add bonus stats to total</li>
+      </ul>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="bb-stats-controls">
+      <div class="bb-stats-filter-row">
+        <input
+          type="text"
+          id="stats-search"
+          class="bb-stats-search-input"
+          placeholder="Search by character name..."
+        />
+        <select id="element-filter" class="bb-stats-filter-select">
+          <option value="">All Elements</option>
+          <option value="Holy">Holy</option>
+          <option value="Mind">Mind</option>
+          <option value="Fire">Fire</option>
+          <option value="Wind">Wind</option>
+          <option value="Water">Water</option>
+          <option value="Magic">Magic</option>
+        </select>
+        <select id="role-filter" class="bb-stats-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Support">Support</option>
+          <option value="Tank">Tank</option>
+        </select>
+        <select id="rarity-filter" class="bb-stats-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+        <button type="button" id="clear-filters" class="bb-stats-clear-btn"> Clear All </button>
+      </div>
+    </div>
+
+    <!-- Character Stats Grid -->
+    <div class="bb-stats-grid" id="stats-grid">
+      {
+        characterStats.map(char => (
+          <div
+            class="bb-stats-card"
+            data-name={char.name.toLowerCase()}
+            data-element={char.element.toLowerCase()}
+            data-role={char.role.toLowerCase()}
+            data-rarity={char.rarity.toLowerCase()}
+            data-stats={JSON.stringify(char.baseStats)}
+            data-awakening={char.awakening ? JSON.stringify(char.awakening) : ''}
+            data-gp-ability={JSON.stringify(char.gpAbility)}
+            data-limit-break={JSON.stringify(char.limitBreak)}
+            data-ability-grade={JSON.stringify(char.abilityGrade)}
+            data-bond-bonus={JSON.stringify(char.bondBonus)}
+          >
+            <div class="bb-stats-card-header">
+              <div class="bb-stats-card-avatar">
+                <PaladinImage
+                  fileName={getImageFileName(char.id)}
+                  alt={char.name}
+                  width={120}
+                  height={120}
+                />
+              </div>
+              <div class="bb-stats-card-info">
+                <h3 class="bb-stats-card-name">{char.name}</h3>
+                <div class="bb-stats-card-badges">
+                  <span class="bb-badge" data-rarity={char.rarity}>
+                    {char.rarity}
+                  </span>
+                  <span class="bb-badge" data-element={char.element}>
+                    <ElementImage element={char.element} width={14} height={14} />
+                    {char.element}
+                  </span>
+                  <span class="bb-badge" data-role={char.role}>
+                    {char.role}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bb-stats-card-body">
+              {/* Level Calculator */}
+              <div class="bb-stats-calculator">
+                <div class="bb-stats-calculator-header">
+                  <span class="bb-stats-calculator-title">Level</span>
+                  <div class="bb-stats-level-controls">
+                    <div class="bb-stats-level-input-wrapper">
+                      <button type="button" class="bb-stats-level-btn minus" data-level-minus>
+                        −
+                      </button>
+                      <input
+                        type="number"
+                        class="bb-stats-level-input"
+                        min="1"
+                        max="90"
+                        value="90"
+                        data-level-input
+                      />
+                      <button type="button" class="bb-stats-level-btn plus" data-level-plus>
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div class="bb-stats-quick-levels">
+                    <button type="button" class="bb-stats-quick-level-btn" data-level="1">
+                      1
+                    </button>
+                    <button type="button" class="bb-stats-quick-level-btn" data-level="50">
+                      50
+                    </button>
+                    <button type="button" class="bb-stats-quick-level-btn" data-level="70">
+                      70
+                    </button>
+                    <button type="button" class="bb-stats-quick-level-btn active" data-level="90">
+                      90
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Base Stats Table */}
+              <div class="bb-stats-table-section">
+                <div class="bb-stats-section-title">Combat Stats</div>
+                <div class="bb-stats-table" data-stats-table>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">HP</span>
+                    <span class="bb-stats-table-value" data-stat="hp">
+                      {char.baseStats.hp.lv90.toLocaleString()}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">ATK</span>
+                    <span class="bb-stats-table-value" data-stat="atk">
+                      {char.baseStats.atk.lv90.toLocaleString()}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">MATK</span>
+                    <span class="bb-stats-table-value" data-stat="matk">
+                      {char.baseStats.matk.lv90.toLocaleString()}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">DEF</span>
+                    <span class="bb-stats-table-value" data-stat="def">
+                      {char.baseStats.def.lv90.toLocaleString()}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">MDEF</span>
+                    <span class="bb-stats-table-value" data-stat="mdef">
+                      {char.baseStats.mdef.lv90.toLocaleString()}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">Accuracy</span>
+                    <span class="bb-stats-table-value" data-stat="accuracy">
+                      {char.baseStats.accuracy.lv90}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">Block</span>
+                    <span class="bb-stats-table-value" data-stat="block">
+                      {char.baseStats.block.lv90}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">P.Crit</span>
+                    <span class="bb-stats-table-value crit-value" data-stat="physCrit">
+                      {char.baseStats.physCrit.lv90}
+                      <span class="crit-rate">({char.baseStats.physCrit.lv90Rate}%)</span>
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">M.Crit</span>
+                    <span class="bb-stats-table-value crit-value" data-stat="magicCrit">
+                      {char.baseStats.magicCrit.lv90}
+                      <span class="crit-rate">({char.baseStats.magicCrit.lv90Rate}%)</span>
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">HP Regen</span>
+                    <span class="bb-stats-table-value" data-stat="hpRegen">
+                      {char.baseStats.hpRegen.lv90}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">MP Regen</span>
+                    <span class="bb-stats-table-value" data-stat="mpRegen">
+                      {char.baseStats.mpRegen.lv90}
+                    </span>
+                  </div>
+                  <div class="bb-stats-table-item">
+                    <span class="bb-stats-table-label">Heal Pwr</span>
+                    <span class="bb-stats-table-value" data-stat="healPwr">
+                      {char.baseStats.healPwr.lv90}
+                    </span>
+                  </div>
+                </div>
+                {/* Flat stats (no level scaling) */}
+                <div class="bb-stats-flat" data-flat-stats>
+                  <div class="bb-stats-flat-item">
+                    <span class="bb-stats-flat-label">MP Charge:</span>
+                    <span class="bb-stats-flat-value" data-flat="mpCharge">
+                      {char.baseStats.mpCharge}
+                    </span>
+                  </div>
+                  <div
+                    class="bb-stats-flat-item"
+                    style={char.baseStats.hpDrain > 0 ? '' : 'display:none'}
+                  >
+                    <span class="bb-stats-flat-label">HP Drain:</span>
+                    <span class="bb-stats-flat-value" data-flat="hpDrain">
+                      {char.baseStats.hpDrain}%
+                    </span>
+                  </div>
+                  <div
+                    class="bb-stats-flat-item"
+                    style={char.baseStats.mpCostReduction > 0 ? '' : 'display:none'}
+                  >
+                    <span class="bb-stats-flat-label">MP Cost Down:</span>
+                    <span class="bb-stats-flat-value" data-flat="mpCostReduction">
+                      {char.baseStats.mpCostReduction}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bonus Sections */}
+              <div class="bb-stats-bonus-grid">
+                {/* Awakening Bonus */}
+                <div class="bb-stats-bonus-section" data-bonus-type="awakening">
+                  <label class="bb-stats-bonus-toggle">
+                    <input
+                      type="checkbox"
+                      class="bb-stats-bonus-checkbox"
+                      data-bonus-checkbox="awakening"
+                      disabled={!char.awakening}
+                    />
+                    <span class="bb-stats-bonus-title">Awakening</span>
+                  </label>
+                  {char.awakening ? (
+                    <div class="bb-stats-bonus-list">
+                      {Object.entries(char.awakening).map(([stat, value]) => (
+                        <div class="bb-stats-bonus-item">
+                          <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
+                          <span class="stat-value">+{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div class="bb-stats-bonus-na">Not available</div>
+                  )}
+                </div>
+
+                {/* GP Ability LV10 */}
+                <div class="bb-stats-bonus-section" data-bonus-type="gpAbility">
+                  <label class="bb-stats-bonus-toggle">
+                    <input
+                      type="checkbox"
+                      class="bb-stats-bonus-checkbox"
+                      data-bonus-checkbox="gpAbility"
+                    />
+                    <span class="bb-stats-bonus-title">GP Ability LV10</span>
+                  </label>
+                  <div class="bb-stats-bonus-list">
+                    {Object.entries(char.gpAbility).map(([stat, value]) => (
+                      <div class="bb-stats-bonus-item">
+                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
+                        <span class="stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Limit Break Max */}
+                <div class="bb-stats-bonus-section" data-bonus-type="limitBreak">
+                  <label class="bb-stats-bonus-toggle">
+                    <input
+                      type="checkbox"
+                      class="bb-stats-bonus-checkbox"
+                      data-bonus-checkbox="limitBreak"
+                    />
+                    <span class="bb-stats-bonus-title">Limit Break Max</span>
+                  </label>
+                  <div class="bb-stats-bonus-list">
+                    {Object.entries(char.limitBreak).map(([stat, value]) => (
+                      <div class="bb-stats-bonus-item">
+                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
+                        <span class="stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Ability Grade 10 */}
+                <div class="bb-stats-bonus-section" data-bonus-type="abilityGrade">
+                  <label class="bb-stats-bonus-toggle">
+                    <input
+                      type="checkbox"
+                      class="bb-stats-bonus-checkbox"
+                      data-bonus-checkbox="abilityGrade"
+                    />
+                    <span class="bb-stats-bonus-title">Ability Grade 10</span>
+                  </label>
+                  <div class="bb-stats-bonus-list">
+                    {Object.entries(char.abilityGrade).map(([stat, value]) => (
+                      <div class="bb-stats-bonus-item">
+                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
+                        <span class="stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bond Bonus Progression */}
+                <div class="bb-stats-bonus-section bb-stats-bond-section" data-bonus-type="bond">
+                  <div class="bb-stats-bond-header">
+                    <label class="bb-stats-bonus-toggle">
+                      <input
+                        type="checkbox"
+                        class="bb-stats-bonus-checkbox"
+                        data-bonus-checkbox="bond"
+                      />
+                      <span class="bb-stats-bonus-title">Bond Bonus (Max)</span>
+                    </label>
+                    <div class="bb-stats-bond-toggle">
+                      <span class="toggle-icon">▼</span>
+                    </div>
+                  </div>
+                  <div class="bb-stats-bond-progression">
+                    {char.bondBonus.map(bond => (
+                      <div class="bb-stats-bond-level">
+                        <span class="bb-stats-bond-level-num">Lv{bond.level}:</span>
+                        <span class="bb-stats-bond-level-bonus">{formatBonus(bond.bonus)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- No Results Message -->
+    <div class="bb-stats-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</CharacterStatsLayout>
+
+<script>
+  // Calculate stat at any level
+  function calculateStatAtLevel(base: number, lv90: number, level: number): number {
+    if (level <= 1) return base;
+    if (level >= 90) return lv90;
+    const growth = lv90 - base;
+    const perLevel = growth / 89;
+    return Math.floor(base + perLevel * (level - 1));
+  }
+
+  // Calculate crit rate from raw value
+  function calculateCritRate(critValue: number): string {
+    return (critValue / 20).toFixed(2);
+  }
+
+  // Filter functionality
+  function initFilters() {
+    const searchInput = document.getElementById('stats-search') as HTMLInputElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const statsGrid = document.getElementById('stats-grid');
+    const noResults = document.getElementById('no-results');
+
+    if (!statsGrid) return;
+
+    const cards = statsGrid.querySelectorAll('.bb-stats-card');
+
+    function filterCards() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const elementValue = elementFilter?.value.toLowerCase() || '';
+      const roleValue = roleFilter?.value.toLowerCase() || '';
+      const rarityValue = rarityFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const name = cardEl.dataset.name || '';
+        const element = cardEl.dataset.element || '';
+        const role = cardEl.dataset.role || '';
+        const rarity = cardEl.dataset.rarity || '';
+
+        const matchesSearch = !searchTerm || name.includes(searchTerm);
+        const matchesElement = !elementValue || element === elementValue;
+        const matchesRole = !roleValue || role === roleValue;
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+
+        const isVisible = matchesSearch && matchesElement && matchesRole && matchesRarity;
+
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+    }
+
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (roleFilter) roleFilter.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      filterCards();
+    }
+
+    searchInput?.addEventListener('input', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    roleFilter?.addEventListener('change', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  // Level calculator functionality with bonus support
+  function initLevelCalculators() {
+    const cards = document.querySelectorAll('.bb-stats-card');
+
+    cards.forEach(card => {
+      const cardEl = card as HTMLElement;
+      const levelInput = card.querySelector('[data-level-input]') as HTMLInputElement;
+      const minusBtn = card.querySelector('[data-level-minus]') as HTMLButtonElement;
+      const plusBtn = card.querySelector('[data-level-plus]') as HTMLButtonElement;
+      const quickBtns = card.querySelectorAll('.bb-stats-quick-level-btn');
+      const statsTable = card.querySelector('[data-stats-table]');
+      const flatStats = card.querySelector('[data-flat-stats]');
+      const bonusCheckboxes = card.querySelectorAll('[data-bonus-checkbox]');
+
+      const statsData = JSON.parse(cardEl.dataset.stats || '{}');
+      const awakeningData = cardEl.dataset.awakening ? JSON.parse(cardEl.dataset.awakening) : null;
+      const gpAbilityData = JSON.parse(cardEl.dataset.gpAbility || '{}');
+      const limitBreakData = JSON.parse(cardEl.dataset.limitBreak || '{}');
+      const abilityGradeData = JSON.parse(cardEl.dataset.abilityGrade || '{}');
+      const bondBonusData = JSON.parse(cardEl.dataset.bondBonus || '[]');
+
+      if (!levelInput || !statsTable) return;
+
+      // Calculate total bond bonus
+      function getTotalBondBonus() {
+        const total: Record<string, number> = {};
+        bondBonusData.forEach((bond: { bonus: Record<string, number> }) => {
+          Object.entries(bond.bonus).forEach(([stat, value]) => {
+            total[stat] = (total[stat] || 0) + value;
+          });
+        });
+        return total;
+      }
+
+      // Get active bonuses
+      function getActiveBonuses(): Record<string, number> {
+        const bonuses: Record<string, number> = {};
+
+        bonusCheckboxes.forEach(checkbox => {
+          const cb = checkbox as HTMLInputElement;
+          if (!cb.checked || cb.disabled) return;
+
+          const bonusType = cb.dataset.bonusCheckbox;
+          let bonusData: Record<string, number> = {};
+
+          if (bonusType === 'awakening' && awakeningData) {
+            bonusData = awakeningData;
+          } else if (bonusType === 'gpAbility') {
+            bonusData = gpAbilityData;
+          } else if (bonusType === 'limitBreak') {
+            bonusData = limitBreakData;
+          } else if (bonusType === 'abilityGrade') {
+            bonusData = abilityGradeData;
+          } else if (bonusType === 'bond') {
+            bonusData = getTotalBondBonus();
+          }
+
+          Object.entries(bonusData).forEach(([stat, value]) => {
+            bonuses[stat] = (bonuses[stat] || 0) + value;
+          });
+        });
+
+        return bonuses;
+      }
+
+      function updateStats(level: number) {
+        const bonuses = getActiveBonuses();
+
+        // Helper to get stat with bonus
+        const getStatWithBonus = (statKey: string, baseValue: number) => {
+          return baseValue + (bonuses[statKey] || 0);
+        };
+
+        // Update HP
+        const hpEl = statsTable?.querySelector('[data-stat="hp"]');
+        if (hpEl && statsData.hp) {
+          const base = calculateStatAtLevel(statsData.hp.base, statsData.hp.lv90, level);
+          const value = getStatWithBonus('hp', base);
+          hpEl.textContent = value.toLocaleString();
+        }
+
+        // Update ATK
+        const atkEl = statsTable?.querySelector('[data-stat="atk"]');
+        if (atkEl && statsData.atk) {
+          const base = calculateStatAtLevel(statsData.atk.base, statsData.atk.lv90, level);
+          const value = getStatWithBonus('atk', base);
+          atkEl.textContent = value.toLocaleString();
+        }
+
+        // Update MATK
+        const matkEl = statsTable?.querySelector('[data-stat="matk"]');
+        if (matkEl && statsData.matk) {
+          const base = calculateStatAtLevel(statsData.matk.base, statsData.matk.lv90, level);
+          const value = getStatWithBonus('matk', base);
+          matkEl.textContent = value.toLocaleString();
+        }
+
+        // Update DEF
+        const defEl = statsTable?.querySelector('[data-stat="def"]');
+        if (defEl && statsData.def) {
+          const base = calculateStatAtLevel(statsData.def.base, statsData.def.lv90, level);
+          const value = getStatWithBonus('def', base);
+          defEl.textContent = value.toLocaleString();
+        }
+
+        // Update MDEF
+        const mdefEl = statsTable?.querySelector('[data-stat="mdef"]');
+        if (mdefEl && statsData.mdef) {
+          const base = calculateStatAtLevel(statsData.mdef.base, statsData.mdef.lv90, level);
+          const value = getStatWithBonus('mdef', base);
+          mdefEl.textContent = value.toLocaleString();
+        }
+
+        // Update Accuracy
+        const accEl = statsTable?.querySelector('[data-stat="accuracy"]');
+        if (accEl && statsData.accuracy) {
+          const base = calculateStatAtLevel(
+            statsData.accuracy.base,
+            statsData.accuracy.lv90,
+            level
+          );
+          const value = getStatWithBonus('accuracy', base);
+          accEl.textContent = value.toString();
+        }
+
+        // Update Block
+        const blockEl = statsTable?.querySelector('[data-stat="block"]');
+        if (blockEl && statsData.block) {
+          const base = calculateStatAtLevel(statsData.block.base, statsData.block.lv90, level);
+          const value = getStatWithBonus('block', base);
+          blockEl.textContent = value.toString();
+        }
+
+        // Update Phys Crit
+        const physCritEl = statsTable?.querySelector('[data-stat="physCrit"]');
+        if (physCritEl && statsData.physCrit) {
+          const base = calculateStatAtLevel(
+            statsData.physCrit.base,
+            statsData.physCrit.lv90,
+            level
+          );
+          const value = getStatWithBonus('physCrit', base);
+          const rate = calculateCritRate(value);
+          physCritEl.innerHTML = `${value}<span class="crit-rate">(${rate}%)</span>`;
+        }
+
+        // Update Magic Crit
+        const magicCritEl = statsTable?.querySelector('[data-stat="magicCrit"]');
+        if (magicCritEl && statsData.magicCrit) {
+          const base = calculateStatAtLevel(
+            statsData.magicCrit.base,
+            statsData.magicCrit.lv90,
+            level
+          );
+          const value = getStatWithBonus('magicCrit', base);
+          const rate = calculateCritRate(value);
+          magicCritEl.innerHTML = `${value}<span class="crit-rate">(${rate}%)</span>`;
+        }
+
+        // Update HP Regen
+        const hpRegenEl = statsTable?.querySelector('[data-stat="hpRegen"]');
+        if (hpRegenEl && statsData.hpRegen) {
+          const base = calculateStatAtLevel(statsData.hpRegen.base, statsData.hpRegen.lv90, level);
+          const value = getStatWithBonus('hpRegen', base);
+          hpRegenEl.textContent = value.toString();
+        }
+
+        // Update MP Regen
+        const mpRegenEl = statsTable?.querySelector('[data-stat="mpRegen"]');
+        if (mpRegenEl && statsData.mpRegen) {
+          const base = calculateStatAtLevel(statsData.mpRegen.base, statsData.mpRegen.lv90, level);
+          const value = getStatWithBonus('mpRegen', base);
+          mpRegenEl.textContent = value.toString();
+        }
+
+        // Update Heal Power
+        const healPwrEl = statsTable?.querySelector('[data-stat="healPwr"]');
+        if (healPwrEl && statsData.healPwr) {
+          const base = calculateStatAtLevel(statsData.healPwr.base, statsData.healPwr.lv90, level);
+          const value = getStatWithBonus('healPwr', base);
+          healPwrEl.textContent = value.toString();
+        }
+
+        // Update flat stats
+        if (flatStats) {
+          const mpChargeEl = flatStats.querySelector('[data-flat="mpCharge"]');
+          if (mpChargeEl) {
+            const value = (statsData.mpCharge || 0) + (bonuses.mpCharge || 0);
+            mpChargeEl.textContent = value.toString();
+          }
+
+          const hpDrainEl = flatStats.querySelector('[data-flat="hpDrain"]');
+          if (hpDrainEl) {
+            const value = (statsData.hpDrain || 0) + (bonuses.hpDrain || 0);
+            hpDrainEl.textContent = value + '%';
+            const parent = hpDrainEl.closest('.bb-stats-flat-item') as HTMLElement;
+            if (parent) parent.style.display = value > 0 ? '' : 'none';
+          }
+
+          const mpCostEl = flatStats.querySelector('[data-flat="mpCostReduction"]');
+          if (mpCostEl) {
+            const value = (statsData.mpCostReduction || 0) + (bonuses.mpCostReduction || 0);
+            mpCostEl.textContent = value.toString();
+            const parent = mpCostEl.closest('.bb-stats-flat-item') as HTMLElement;
+            if (parent) parent.style.display = value > 0 ? '' : 'none';
+          }
+        }
+
+        // Update quick button active state
+        quickBtns.forEach(btn => {
+          const btnEl = btn as HTMLButtonElement;
+          const btnLevel = parseInt(btnEl.dataset.level || '0');
+          btnEl.classList.toggle('active', btnLevel === level);
+        });
+
+        // Update bonus section styling
+        bonusCheckboxes.forEach(checkbox => {
+          const cb = checkbox as HTMLInputElement;
+          const section = cb.closest('.bb-stats-bonus-section');
+          if (section) {
+            section.classList.toggle('bonus-active', cb.checked && !cb.disabled);
+            section.classList.toggle('bonus-inactive', !cb.checked || cb.disabled);
+          }
+        });
+      }
+
+      function setLevel(level: number) {
+        level = Math.max(1, Math.min(90, level));
+        levelInput.value = level.toString();
+        updateStats(level);
+      }
+
+      // Input event listeners
+      levelInput.addEventListener('input', () => {
+        const level = parseInt(levelInput.value) || 1;
+        setLevel(level);
+      });
+
+      // Plus/minus button listeners
+      minusBtn?.addEventListener('click', () => {
+        const currentLevel = parseInt(levelInput.value) || 1;
+        setLevel(currentLevel - 1);
+      });
+
+      plusBtn?.addEventListener('click', () => {
+        const currentLevel = parseInt(levelInput.value) || 90;
+        setLevel(currentLevel + 1);
+      });
+
+      // Quick level button listeners
+      quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const level = parseInt((btn as HTMLButtonElement).dataset.level || '90');
+          setLevel(level);
+        });
+      });
+
+      // Bonus checkbox listeners
+      bonusCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          const level = parseInt(levelInput.value) || 90;
+          updateStats(level);
+        });
+      });
+
+      // Initial update
+      updateStats(90);
+    });
+  }
+
+  // Bond section toggle functionality
+  function initBondToggles() {
+    const bondSections = document.querySelectorAll('.bb-stats-bond-section');
+
+    bondSections.forEach(section => {
+      const toggleIcon = section.querySelector('.bb-stats-bond-toggle');
+      if (toggleIcon) {
+        toggleIcon.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          section.classList.toggle('collapsed');
+        });
+      }
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initFilters();
+      initLevelCalculators();
+      initBondToggles();
+    });
+  } else {
+    initFilters();
+    initLevelCalculators();
+    initBondToggles();
+  }
+</script>

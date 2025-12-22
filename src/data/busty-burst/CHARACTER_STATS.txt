@@ -1,0 +1,1453 @@
+================================================================================
+BUSTY FANTASY BURST - CHARACTER STATS (33 SELECTED CHARACTERS)
+================================================================================
+
+STAT NOTES:
+- Stats shown: Base (Lv1) -> Total at Level 90 (Base + Growth)
+- HP Regen: HP restored at end of each battle round
+- MP Regen: MP restored at end of each battle round
+- MP Charge: MP gained per turn (static, no level growth)
+- HP Drain: % of damage dealt converted to HP (static, no level growth)
+- Healing Power: Multiplier for healing skills
+- Accuracy vs Block: Hit chance = Accuracy - Target Block
+- Awakening: Extra stats when character is awakened (shown if available)
+- GP (Ability): Stat bonuses at max GP level 10 (Ability level system)
+- Bond Bonus: Incremental stat bonuses from bond levels 1-10 (heart levels)
+- Limit Break: Cumulative stat bonuses from all 5 tiers (limit_over.txt)
+- Ability Grade: Ability bonus grades 1-10 (unlocks at Lv31/41/51/61/71/81)
+
+CRITICAL SYSTEM:
+- Phys Crit / Magic Crit = CRIT RATE stat (affects critical hit chance)
+- Formula: Crit Rate % = Crit Value / 20
+- Example: 207 crit = 10.35% crit rate, 140 crit = 7%
+- Raw data fields: atk_crit_base, matk_crit_base
+- Values range: 17-416 (base), up to ~665 at level 90
+- Max crit rate at Lv90: ~33% (665/20)
+- Additional sources: Talents (+4 to +23), GP levels (+10 to +90)
+- Crit DAMAGE multiplier = Fixed value (hardcoded in game engine)
+- Note: Buff text says 'Critical Damage+' but actually adds to Crit Rate
+
+HIDDEN STATS (from skills, not base stats):
+- Crit +X: Skill buff that adds to Phys/Magic Crit Rate
+- Element Type ATK: Bonus damage vs element (from skill buffs)
+- Skill Damage +%: From passive skills
+- Ultimate Damage +%: From passive skills
+
+LEVEL GROWTH FORMULA:
+- Growth at Lv90 = Base x Multiplier (varies by stat type)
+- Lv 1-70: Normal growth rate
+- Lv 71-90: Accelerated rate (1.48x normal)
+
+Stat Multipliers (Growth@90 / Base):
+  HP/ATK/MATK:        4.0x  -> Total@90 = Base x 5.0
+  DEF/MDEF:           1.0x  -> Total@90 = Base x 2.0
+  Accuracy:           0.65x -> Total@90 = Base x 1.65
+  Block:              2.0x  -> Total@90 = Base x 3.0
+  Phys/Magic Crit:    0.6x  -> Total@90 = Base x 1.6
+  Healing Power:      1.5x  -> Total@90 = Base x 2.5
+
+Quick Reference (HP/ATK/MATK at level):
+  Lv10: Base x 1.4 | Lv30: Base x 2.2 | Lv50: Base x 3.0 | Lv70: Base x 3.8 | Lv90: Base x 5.0
+
+MP SYSTEM (Ultimate/UB Skills):
+  Max MP: 1000 (hardcoded constant: public const int MpMax = 1000 in BattleHero class)
+  Ultimate Cost: 500 MP per use
+    - Requires 500+ MP to activate Ultimate
+    - At full MP (1000), can use Ultimate twice in succession
+
+  MP Sources:
+    - MP Charge: Flat MP gained per action (44-102 range, no level scaling)
+    - MP Regen: MP restored at end of each round (scales with level)
+    - Accessories: "End Recovery MP" bonus
+    - Buffs: MP Recovery buffs from skills
+
+  MP Cost Reduction: FLAT value (not percentage)
+    - Typical values: 0-7 from equipment/abilities
+    - Sources: Awakening, GP Ability, Ability Grade, Equipment, Bond levels
+    - Effect: Reduces MP consumed per action by flat amount
+
+  Formula to reach Ultimate:
+    Actions needed = (500 - CurrentMP) / (MP_Charge + MP_Regen - MP_Cost_Reduction)
+
+================================================================================
+
+
+########################################
+# SSR CHARACTERS
+########################################
+
+--------------------------------------------------------------------------------
+Artia
+Rarity: SSR | Element: Fire | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              2369 -> 11845
+  ATK:              232 ->  1163
+  MATK:             139 ->   698
+  DEF:              226 ->   452
+  MDEF:              90 ->   180
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:         118 ->   414
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         79 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [AWAKENING BONUS]
+  HP +2221, ATK +99, DEF +32, MDEF +243, Accuracy +10, Block +10
+
+  [GP ABILITY LV10]
+  HP +2100, Block +16
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Block +3
+    Lv2: HP +300
+    Lv3: Block +4
+    Lv4: HP +450
+    Lv5: Block +3
+    Lv6: HP +450
+    Lv7: Block +3
+    Lv8: HP +450
+    Lv9: Block +3
+    Lv10: HP +450
+
+  [LIMIT BREAK MAX]
+  HP +5775, ATK +547, DEF +64, MDEF +18, Accuracy +30, Block +83, Heal Pwr +26, MP Charge +17
+
+  [ABILITY GRADE 10]
+  HP +2314, Block +42
+
+--------------------------------------------------------------------------------
+Bianca
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1819 ->  9095
+  ATK:              257 ->  1288
+  MATK:             154 ->   773
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:         53 (2.65%) ->    85 (4.25%)
+  Magic Crit:        32 (1.60%) ->    51 (2.55%)
+  HP Regen:          90 ->   317
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         44 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, Phys Crit +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Phys Crit +20
+    Lv2: ATK +40
+    Lv3: Phys Crit +30
+    Lv4: ATK +80
+    Lv5: Phys Crit +30
+    Lv6: ATK +80
+    Lv7: Phys Crit +30
+    Lv8: ATK +80
+    Lv9: Phys Crit +30
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4276, ATK +644, DEF +41, MDEF +11, Accuracy +30, Block +75, Heal Pwr +21, MP Charge +9
+
+  [ABILITY GRADE 10]
+  ATK +445
+
+--------------------------------------------------------------------------------
+Estiriel
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1457 ->  7288
+  ATK:              166 ->   830
+  MATK:             276 ->  1382
+  DEF:               90 ->   180
+  MDEF:             226 ->   452
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        182 (9.10%) ->   291 (14.55%)
+  Magic Crit:       303 (15.15%) ->   485 (24.25%)
+  HP Regen:          72 ->   254
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         82 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Block +16, MP Charge +13
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Block +3
+    Lv2: MP Charge +3
+    Lv3: Block +4
+    Lv4: MP Charge +4
+    Lv5: Block +3
+    Lv6: MP Charge +2
+    Lv7: Block +3
+    Lv8: MP Charge +2
+    Lv9: Block +3
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +3425, MATK +670, DEF +18, MDEF +64, Accuracy +30, Block +83, Heal Pwr +25, MP Charge +18
+
+  [ABILITY GRADE 10]
+  MATK +207, MP Cost Reduction +6
+
+--------------------------------------------------------------------------------
+Frey
+Rarity: SSR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+  HP:              2588 -> 12943
+  ATK:              253 ->  1265
+  MATK:             151 ->   758
+  DEF:               82 ->   164
+  MDEF:              32 ->    64
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:         129 ->   452
+  MP Regen:          62 ->   249
+  Heal Pwr:         135 ->   337
+  MP Charge:         82 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [AWAKENING BONUS]
+  HP +2395, DEF +23, MDEF +18, Accuracy +5, Block +15, Heal Pwr +40
+
+  [GP ABILITY LV10]
+  Heal Pwr +120, MP Charge +13
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Heal Pwr +20
+    Lv2: MP Charge +3
+    Lv3: Heal Pwr +25
+    Lv4: MP Charge +4
+    Lv5: Heal Pwr +25
+    Lv6: MP Charge +2
+    Lv7: Heal Pwr +25
+    Lv8: MP Charge +2
+    Lv9: Heal Pwr +25
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +6278, ATK +594, DEF +23, MDEF +6, Accuracy +30, Block +83, Heal Pwr +41, MP Charge +18
+
+  [ABILITY GRADE 10]
+  HP +2531, Heal Pwr +50
+
+--------------------------------------------------------------------------------
+Gemini
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1819 ->  9095
+  ATK:              190 ->   952
+  MATK:             114 ->   571
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:        416 (20.80%) ->   665 (33.25%)
+  Magic Crit:       249 (12.45%) ->   398 (19.90%)
+  HP Regen:          90 ->   317
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         58 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, Accuracy +16
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Accuracy +3
+    Lv2: ATK +40
+    Lv3: Accuracy +4
+    Lv4: ATK +80
+    Lv5: Accuracy +3
+    Lv6: ATK +80
+    Lv7: Accuracy +3
+    Lv8: ATK +80
+    Lv9: Accuracy +3
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4276, ATK +482, DEF +50, MDEF +11, Accuracy +30, Block +75, Heal Pwr +21, MP Charge +12
+
+  [ABILITY GRADE 10]
+  ATK +186, Phys Crit +125
+
+--------------------------------------------------------------------------------
+Hildis
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2259 -> 11296
+  ATK:              190 ->   952
+  MATK:             114 ->   571
+  DEF:               82 ->   164
+  MDEF:              32 ->    64
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:        416 (20.80%) ->   665 (33.25%)
+  Magic Crit:       249 (12.45%) ->   398 (19.90%)
+  HP Regen:         112 ->   394
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         45 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +2100, ATK +360
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP +300
+    Lv2: ATK +40
+    Lv3: HP +450
+    Lv4: ATK +80
+    Lv5: HP +450
+    Lv6: ATK +80
+    Lv7: HP +450
+    Lv8: ATK +80
+    Lv9: HP +450
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +5479, ATK +462, DEF +23, MDEF +6, Accuracy +30, Block +68, Heal Pwr +21, MP Charge +10
+
+  [ABILITY GRADE 10]
+  HP +1694, ATK +186
+
+--------------------------------------------------------------------------------
+Hisara
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1972 ->  9861
+  ATK:              300 ->  1503
+  MATK:             180 ->   902
+  DEF:               82 ->   164
+  MDEF:              32 ->    64
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:         53 (2.65%) ->    85 (4.25%)
+  Magic Crit:        32 (1.60%) ->    51 (2.55%)
+  HP Regen:          98 ->   344
+  MP Regen:          62 ->   249
+  Heal Pwr:          82 ->   206
+  MP Charge:         46 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, MP Charge +10
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Charge +2
+    Lv2: ATK +40
+    Lv3: MP Charge +2
+    Lv4: ATK +80
+    Lv5: MP Charge +2
+    Lv6: ATK +80
+    Lv7: MP Charge +2
+    Lv8: ATK +80
+    Lv9: MP Charge +2
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4636, ATK +707, DEF +23, MDEF +3, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +10
+
+  [ABILITY GRADE 10]
+  MP Charge +13, MP Regen +47
+
+--------------------------------------------------------------------------------
+Luca
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1819 ->  9095
+  ATK:              222 ->  1111
+  MATK:             133 ->   666
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:        416 (20.80%) ->   665 (33.25%)
+  Magic Crit:       249 (12.45%) ->   398 (19.90%)
+  HP Regen:          90 ->   317
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         58 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, Accuracy +16
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Accuracy +3
+    Lv2: ATK +40
+    Lv3: Accuracy +4
+    Lv4: ATK +80
+    Lv5: Accuracy +3
+    Lv6: ATK +80
+    Lv7: Accuracy +3
+    Lv8: ATK +80
+    Lv9: Accuracy +3
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4276, ATK +523, DEF +47, MDEF +11, Accuracy +30, Block +75, Heal Pwr +21, MP Charge +12
+
+  [ABILITY GRADE 10]
+  DEF +61, MP Charge +16
+
+--------------------------------------------------------------------------------
+Marina
+Rarity: SSR | Element: Water | Role: Support
+--------------------------------------------------------------------------------
+  HP:              2251 -> 11255
+  ATK:              221 ->  1106
+  MATK:             132 ->   663
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:         112 ->   393
+  MP Regen:          62 ->   249
+  Heal Pwr:          82 ->   206
+  MP Charge:         49 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MP Charge +13, MP Cost Reduction +7
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Cost Down +3
+    Lv2: MP Charge +3
+    Lv3: MP Cost Down +1
+    Lv4: MP Charge +4
+    Lv5: MP Cost Down +1
+    Lv6: MP Charge +2
+    Lv7: MP Cost Down +1
+    Lv8: MP Charge +2
+    Lv9: MP Cost Down +1
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +5291, ATK +520, DEF +41, MDEF +11, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +10
+
+  [ABILITY GRADE 10]
+  MP Charge +14, MP Regen +47
+
+--------------------------------------------------------------------------------
+Meinias
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2183 -> 10915
+  ATK:              343 ->  1718
+  MATK:             206 ->  1031
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             40 ->   120
+  Phys Crit:         53 (2.65%) ->    85 (4.25%)
+  Magic Crit:        32 (1.60%) ->    51 (2.55%)
+  HP Regen:         109 ->   381
+  MP Regen:          62 ->   249
+  Heal Pwr:          82 ->   206
+  MP Charge:         58 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MP Charge +13, MP Cost Reduction +7
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Cost Down +3
+    Lv2: MP Charge +3
+    Lv3: MP Cost Down +1
+    Lv4: MP Charge +4
+    Lv5: MP Cost Down +1
+    Lv6: MP Charge +2
+    Lv7: MP Cost Down +1
+    Lv8: MP Charge +2
+    Lv9: MP Cost Down +1
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +5130, ATK +808, DEF +41, MDEF +11, Accuracy +30, Block +60, Heal Pwr +21, MP Charge +12
+
+  [ABILITY GRADE 10]
+  MP Charge +27
+
+--------------------------------------------------------------------------------
+Natasha
+Rarity: SSR | Element: Water | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              1951 ->  9755
+  ATK:              181 ->   905
+  MATK:             108 ->   542
+  DEF:              343 ->   686
+  MDEF:             137 ->   274
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:          97 ->   340
+  MP Regen:          59 ->   237
+  Heal Pwr:         135 ->   337
+  MP Charge:         61 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +2100, DEF +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP +300
+    Lv2: DEF +20
+    Lv3: HP +450
+    Lv4: DEF +30
+    Lv5: HP +450
+    Lv6: DEF +30
+    Lv7: HP +450
+    Lv8: DEF +30
+    Lv9: HP +450
+    Lv10: DEF +30
+
+  [LIMIT BREAK MAX]
+  HP +4584, ATK +426, DEF +128, MDEF +27, Accuracy +30, Block +83, Heal Pwr +34, MP Charge +14
+
+  [ABILITY GRADE 10]
+  DEF +339
+
+--------------------------------------------------------------------------------
+Nora
+Rarity: SSR | Element: Fire | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              1951 ->  9755
+  ATK:              258 ->  1293
+  MATK:             155 ->   775
+  DEF:              343 ->   686
+  MDEF:             137 ->   274
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:          97 ->   340
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         79 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +2100, Block +16
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Block +3
+    Lv2: HP +300
+    Lv3: Block +4
+    Lv4: HP +450
+    Lv5: Block +3
+    Lv6: HP +450
+    Lv7: Block +3
+    Lv8: HP +450
+    Lv9: Block +3
+    Lv10: HP +450
+
+  [LIMIT BREAK MAX]
+  HP +4584, ATK +613, DEF +99, MDEF +28, Accuracy +30, Block +83, Heal Pwr +25, MP Charge +17
+
+  [ABILITY GRADE 10]
+  Accuracy +32, HP Regen +74
+
+--------------------------------------------------------------------------------
+Shaty
+Rarity: SSR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1964 ->  9822
+  ATK:              429 ->  2148
+  MATK:             257 ->  1288
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         53 (2.65%) ->    85 (4.25%)
+  Magic Crit:        32 (1.60%) ->    51 (2.55%)
+  HP Regen:          98 ->   343
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:        102 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, MP Charge +10
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Charge +2
+    Lv2: ATK +40
+    Lv3: MP Charge +2
+    Lv4: ATK +80
+    Lv5: MP Charge +2
+    Lv6: ATK +80
+    Lv7: MP Charge +2
+    Lv8: ATK +80
+    Lv9: MP Charge +2
+    Lv10: ATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4617, ATK +1041, DEF +41, MDEF +11, Accuracy +30, Block +68, Heal Pwr +21, MP Charge +22
+
+  [ABILITY GRADE 10]
+  ATK +322, Accuracy +32
+
+--------------------------------------------------------------------------------
+Soltina
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1200 ->  6002
+  ATK:              281 ->  1405
+  MATK:             168 ->   843
+  DEF:              343 ->   686
+  MDEF:             137 ->   274
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        125 (6.25%) ->   200 (10.00%)
+  Magic Crit:        75 (3.75%) ->   120 (6.00%)
+  HP Regen:          60 ->   210
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         61 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Block +16, Phys Crit +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Phys Crit +20
+    Lv2: Block +3
+    Lv3: Phys Crit +30
+    Lv4: Block +4
+    Lv5: Phys Crit +30
+    Lv6: Block +3
+    Lv7: Phys Crit +30
+    Lv8: Block +3
+    Lv9: Phys Crit +30
+    Lv10: Block +3
+
+  [LIMIT BREAK MAX]
+  HP +2820, ATK +682, DEF +38, MDEF +27, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +14
+
+  [ABILITY GRADE 10]
+  ATK +275, Phys Crit +39
+
+--------------------------------------------------------------------------------
+Stenlina
+Rarity: SSR | Element: Holy | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1819 ->  9095
+  ATK:              134 ->   672
+  MATK:             224 ->  1120
+  DEF:               57 ->   114
+  MDEF:             143 ->   286
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:        124 (6.20%) ->   198 (9.90%)
+  Magic Crit:       207 (10.35%) ->   331 (16.55%)
+  HP Regen:          90 ->   317
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         58 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MATK +360, MP Charge +9
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Charge +1
+    Lv2: MATK +40
+    Lv3: MP Charge +2
+    Lv4: MATK +80
+    Lv5: MP Charge +2
+    Lv6: MATK +80
+    Lv7: MP Charge +2
+    Lv8: MATK +80
+    Lv9: MP Charge +2
+    Lv10: MATK +80
+
+  [LIMIT BREAK MAX]
+  HP +5326, MATK +462, DEF +11, MDEF +41, Accuracy +30, Block +75, Heal Pwr +25, MP Charge +12
+
+  [ABILITY GRADE 10]
+  Magic Crit +61, MP Cost Reduction +6
+
+--------------------------------------------------------------------------------
+Teresia
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2092 -> 10460
+  ATK:              206 ->  1031
+  MATK:             343 ->  1718
+  DEF:               32 ->    64
+  MDEF:              82 ->   164
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:         32 (1.60%) ->    51 (2.55%)
+  Magic Crit:        53 (2.65%) ->    85 (4.25%)
+  HP Regen:         104 ->   365
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         70 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [AWAKENING BONUS]
+  HP +1778, MATK +344, DEF +18, MDEF +23, Accuracy +10, Block +10
+
+  [GP ABILITY LV10]
+  MATK +360, Magic Crit +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Magic Crit +20
+    Lv2: MATK +40
+    Lv3: Magic Crit +30
+    Lv4: MATK +80
+    Lv5: Magic Crit +30
+    Lv6: MATK +80
+    Lv7: Magic Crit +30
+    Lv8: MATK +80
+    Lv9: Magic Crit +30
+    Lv10: MATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4916, MATK +860, DEF +6, MDEF +23, Accuracy +30, Block +75, Heal Pwr +21, MP Charge +15
+
+  [ABILITY GRADE 10]
+  MATK +594
+
+--------------------------------------------------------------------------------
+The Dark Knight
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1819 ->  9095
+  ATK:              257 ->  1288
+  MATK:             429 ->  2148
+  DEF:               57 ->   114
+  MDEF:             143 ->   286
+  Accuracy:          60 ->    99
+  Block:             50 ->   150
+  Phys Crit:         32 (1.60%) ->    51 (2.55%)
+  Magic Crit:        53 (2.65%) ->    85 (4.25%)
+  HP Regen:          90 ->   317
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         67 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [AWAKENING BONUS]
+  HP +1546, MATK +397, DEF +33, MDEF +41, Accuracy +10, Block +10
+
+  [GP ABILITY LV10]
+  MATK +360, Magic Crit +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Magic Crit +20
+    Lv2: MATK +40
+    Lv3: Magic Crit +30
+    Lv4: MATK +80
+    Lv5: Magic Crit +30
+    Lv6: MATK +80
+    Lv7: Magic Crit +30
+    Lv8: MATK +80
+    Lv9: Magic Crit +30
+    Lv10: MATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4276, MATK +1041, DEF +11, MDEF +41, Accuracy +30, Block +75, Heal Pwr +21, MP Charge +14
+
+  [ABILITY GRADE 10]
+  MATK +322, Accuracy +32
+
+--------------------------------------------------------------------------------
+Yu Lima Elka
+Rarity: SSR | Element: Mind | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              4150 -> 20751
+  ATK:              267 ->  1338
+  MATK:             160 ->   802
+  DEF:               35 ->    70
+  MDEF:              14 ->    28
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         53 (2.65%) ->    85 (4.25%)
+  Magic Crit:        32 (1.60%) ->    51 (2.55%)
+  HP Regen:         207 ->   725
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         79 (flat)
+  HP Drain:          12 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +2100, HP Drain +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP Drain +2
+    Lv2: HP +300
+    Lv3: HP Drain +3
+    Lv4: HP +450
+    Lv5: HP Drain +2
+    Lv6: HP +450
+    Lv7: HP Drain +2
+    Lv8: HP +450
+    Lv9: HP Drain +2
+    Lv10: HP +450
+
+  [LIMIT BREAK MAX]
+  HP +10125, ATK +638, DEF +10, MDEF +3, Accuracy +30, Block +68, Heal Pwr +25, MP Charge +17
+
+  [ABILITY GRADE 10]
+  HP +4057, Accuracy +23
+
+--------------------------------------------------------------------------------
+【Elegant Portrait】Shamshel
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1715 ->  8575
+  ATK:              179 ->   896
+  MATK:             299 ->  1495
+  DEF:               57 ->   114
+  MDEF:             143 ->   286
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        124 (6.20%) ->   198 (9.90%)
+  Magic Crit:       207 (10.35%) ->   331 (16.55%)
+  HP Regen:          85 ->   299
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         53 (flat)
+  HP Drain:          10 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MATK +360, HP Drain +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP Drain +2
+    Lv2: MATK +40
+    Lv3: HP Drain +3
+    Lv4: MATK +80
+    Lv5: HP Drain +2
+    Lv6: MATK +80
+    Lv7: HP Drain +2
+    Lv8: MATK +80
+    Lv9: HP Drain +2
+    Lv10: MATK +80
+
+  [LIMIT BREAK MAX]
+  HP +4032, MATK +726, DEF +11, MDEF +41, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +12
+
+  [ABILITY GRADE 10]
+  MATK +293, HP Drain +5
+
+--------------------------------------------------------------------------------
+【Festival Empress】Shamshel
+Rarity: SSR | Element: Fire | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1715 ->  8575
+  ATK:              133 ->   666
+  MATK:             222 ->  1111
+  DEF:               57 ->   114
+  MDEF:             143 ->   286
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        249 (12.45%) ->   398 (19.90%)
+  Magic Crit:       416 (20.80%) ->   665 (33.25%)
+  HP Regen:          85 ->   299
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         56 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Magic Crit +140, HP Drain +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP Drain +2
+    Lv2: Magic Crit +20
+    Lv3: HP Drain +3
+    Lv4: Magic Crit +30
+    Lv5: HP Drain +2
+    Lv6: Magic Crit +30
+    Lv7: HP Drain +2
+    Lv8: Magic Crit +30
+    Lv9: HP Drain +2
+    Lv10: Magic Crit +30
+
+  [LIMIT BREAK MAX]
+  HP +4032, MATK +671, DEF +11, MDEF +41, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +12
+
+  [ABILITY GRADE 10]
+  MATK +217, Accuracy +23
+
+--------------------------------------------------------------------------------
+【Festive Attire】Estiriel
+Rarity: SSR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+  HP:              3352 -> 16760
+  ATK:              151 ->   758
+  MATK:             253 ->  1265
+  DEF:               14 ->    28
+  MDEF:              35 ->    70
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:        124 (6.20%) ->   198 (9.90%)
+  Magic Crit:       207 (10.35%) ->   331 (16.55%)
+  HP Regen:         167 ->   586
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         77 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Heal Pwr +120, MP Charge +13
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Heal Pwr +20
+    Lv2: MP Charge +3
+    Lv3: Heal Pwr +25
+    Lv4: MP Charge +4
+    Lv5: Heal Pwr +25
+    Lv6: MP Charge +2
+    Lv7: Heal Pwr +25
+    Lv8: MP Charge +2
+    Lv9: Heal Pwr +25
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +6695, MATK +605, DEF +6, MDEF +11, Accuracy +30, Block +83, Heal Pwr +33, MP Charge +18
+
+  [ABILITY GRADE 10]
+  Heal Pwr +50, MP Charge +17
+
+--------------------------------------------------------------------------------
+【Magical Holy Night Festival】Kaguya
+Rarity: SSR | Element: Mind | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              2369 -> 11845
+  ATK:              207 ->  1035
+  MATK:             124 ->   620
+  DEF:              226 ->   384
+  MDEF:              90 ->   248
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:         118 ->   414
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         53 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  DEF +140, MDEF +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: DEF +20
+    Lv2: MDEF +20
+    Lv3: DEF +30
+    Lv4: MDEF +30
+    Lv5: DEF +30
+    Lv6: MDEF +30
+    Lv7: DEF +30
+    Lv8: MDEF +30
+    Lv9: DEF +30
+    Lv10: MDEF +30
+
+  [LIMIT BREAK MAX]
+  HP +5745, ATK +486, DEF +58, MDEF +25, Accuracy +30, Block +83, Heal Pwr +25, MP Charge +12
+
+  [ABILITY GRADE 10]
+  HP +2314, Block +42
+
+--------------------------------------------------------------------------------
+【Queen of Pies and Cookies】Aphrodia
+Rarity: SSR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1715 ->  8575
+  ATK:              242 ->  1210
+  MATK:             145 ->   725
+  DEF:              143 ->   286
+  MDEF:              57 ->   114
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        303 (15.15%) ->   485 (24.25%)
+  Magic Crit:       182 (9.10%) ->   291 (14.55%)
+  HP Regen:          85 ->   299
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         46 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  ATK +360, Phys Crit +140
+
+  [BOND BONUS PROGRESSION]
+    Lv1: ATK +40
+    Lv2: Phys Crit +20
+    Lv3: ATK +80
+    Lv4: Phys Crit +30
+    Lv5: ATK +80
+    Lv6: Phys Crit +30
+    Lv7: ATK +80
+    Lv8: Phys Crit +30
+    Lv9: ATK +80
+    Lv10: Phys Crit +30
+
+  [LIMIT BREAK MAX]
+  HP +4032, ATK +587, DEF +41, MDEF +11, Accuracy +30, Block +83, Heal Pwr +21, MP Charge +10
+
+  [ABILITY GRADE 10]
+  ATK +235, Phys Crit +91
+
+--------------------------------------------------------------------------------
+【Trance Dancer】Messeria
+Rarity: SSR | Element: Wind | Role: Support
+--------------------------------------------------------------------------------
+  HP:              1913 ->  9566
+  ATK:              221 ->  1106
+  MATK:             132 ->   663
+  DEF:              226 ->   452
+  MDEF:              90 ->   180
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        207 (10.35%) ->   331 (16.55%)
+  Magic Crit:       124 (6.20%) ->   198 (9.90%)
+  HP Regen:          95 ->   334
+  MP Regen:          59 ->   237
+  Heal Pwr:         100 ->   250
+  MP Charge:         64 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Block +16, MP Charge +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Block +3
+    Lv2: MP Charge +2
+    Lv3: Block +4
+    Lv4: MP Charge +3
+    Lv5: Block +3
+    Lv6: MP Charge +2
+    Lv7: Block +3
+    Lv8: MP Charge +2
+    Lv9: Block +3
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +4496, ATK +520, DEF +34, MDEF +18, Accuracy +30, Block +83, Heal Pwr +29, MP Charge +14
+
+  [ABILITY GRADE 10]
+  Heal Pwr +39, MP Charge +18
+
+
+########################################
+# SR CHARACTERS
+########################################
+
+--------------------------------------------------------------------------------
+Artemis
+Rarity: SR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              1566 ->  7830
+  ATK:              293 ->  1466
+  MATK:             176 ->   880
+  DEF:              126 ->   252
+  MDEF:              50 ->   100
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        108 (5.40%) ->   173 (8.65%)
+  Magic Crit:        65 (3.25%) ->   104 (5.20%)
+  HP Regen:          78 ->   273
+  MP Regen:          59 ->   237
+  Heal Pwr:          82 ->   206
+  MP Charge:         58 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +1400, ATK +210
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP +200
+    Lv2: ATK +30
+    Lv3: HP +300
+    Lv4: ATK +60
+    Lv5: HP +300
+    Lv6: ATK +40
+    Lv7: HP +300
+    Lv8: ATK +40
+    Lv9: HP +300
+    Lv10: ATK +40
+
+  [LIMIT BREAK MAX]
+  HP +3586, ATK +582, DEF +34, MDEF +9, Accuracy +30, Block +83, Heal Pwr +19, MP Charge +12
+
+  [ABILITY GRADE 10]
+  ATK +236, Accuracy +54
+
+--------------------------------------------------------------------------------
+Ishtovia
+Rarity: SR | Element: Holy | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2062 -> 10313
+  ATK:              188 ->   941
+  MATK:             314 ->  1570
+  DEF:               25 ->    50
+  MDEF:              65 ->   130
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         22 (1.10%) ->    35 (1.75%)
+  Magic Crit:        37 (1.85%) ->    59 (2.95%)
+  HP Regen:         103 ->   360
+  MP Regen:          56 ->   225
+  Heal Pwr:         117 ->   293
+  MP Charge:         87 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MATK +210, Heal Pwr +70
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Heal Pwr +10
+    Lv2: MATK +30
+    Lv3: Heal Pwr +15
+    Lv4: MATK +60
+    Lv5: Heal Pwr +15
+    Lv6: MATK +40
+    Lv7: Heal Pwr +15
+    Lv8: MATK +40
+    Lv9: Heal Pwr +15
+    Lv10: MATK +40
+
+  [LIMIT BREAK MAX]
+  HP +4724, MATK +718, DEF +5, MDEF +18, Accuracy +30, Block +68, Heal Pwr +27, MP Charge +19
+
+  [ABILITY GRADE 10]
+  MP Cost Reduction +6, HP Regen +77
+
+--------------------------------------------------------------------------------
+Liesel
+Rarity: SR | Element: Mind | Role: Support
+--------------------------------------------------------------------------------
+  HP:              2707 -> 13537
+  ATK:              265 ->  1327
+  MATK:             159 ->   796
+  DEF:               65 ->   130
+  MDEF:              25 ->    50
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         37 (1.85%) ->    59 (2.95%)
+  Magic Crit:        22 (1.10%) ->    35 (1.75%)
+  HP Regen:         135 ->   473
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         77 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MP Charge +11, MP Cost Reduction +6
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Cost Down +2
+    Lv2: MP Charge +2
+    Lv3: MP Cost Down +1
+    Lv4: MP Charge +3
+    Lv5: MP Cost Down +1
+    Lv6: MP Charge +2
+    Lv7: MP Cost Down +1
+    Lv8: MP Charge +2
+    Lv9: MP Cost Down +1
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +6200, ATK +610, DEF +20, MDEF +5, Accuracy +30, Block +68, Heal Pwr +19, MP Charge +17
+
+  [ABILITY GRADE 10]
+  DEF +37, MP Charge +17
+
+--------------------------------------------------------------------------------
+Nerys
+Rarity: SR | Element: Wind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2062 -> 10313
+  ATK:              132 ->   662
+  MATK:             221 ->  1105
+  DEF:               25 ->    50
+  MDEF:              65 ->   130
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:        172 (8.60%) ->   275 (13.75%)
+  Magic Crit:       287 (14.35%) ->   459 (22.95%)
+  HP Regen:         103 ->   360
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         51 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MATK +210, Magic Crit +90
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Magic Crit +10
+    Lv2: MATK +30
+    Lv3: Magic Crit +20
+    Lv4: MATK +60
+    Lv5: Magic Crit +20
+    Lv6: MATK +40
+    Lv7: Magic Crit +20
+    Lv8: MATK +40
+    Lv9: Magic Crit +20
+    Lv10: MATK +40
+
+  [LIMIT BREAK MAX]
+  HP +4878, MATK +506, DEF +5, MDEF +18, Accuracy +30, Block +68, Heal Pwr +19, MP Charge +11
+
+  [ABILITY GRADE 10]
+  HP +2040, MP Cost Reduction +5
+
+--------------------------------------------------------------------------------
+Sobrina
+Rarity: SR | Element: Mind | Role: Support
+--------------------------------------------------------------------------------
+  HP:              2707 -> 13537
+  ATK:              167 ->   837
+  MATK:             279 ->  1396
+  DEF:               25 ->    50
+  MDEF:              65 ->   130
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         65 (3.25%) ->   104 (5.20%)
+  Magic Crit:       108 (5.40%) ->   173 (8.65%)
+  HP Regen:         135 ->   473
+  MP Regen:          56 ->   225
+  Heal Pwr:         117 ->   293
+  MP Charge:         82 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  Heal Pwr +70, MP Charge +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Charge +2
+    Lv2: Heal Pwr +10
+    Lv3: MP Charge +3
+    Lv4: Heal Pwr +15
+    Lv5: MP Charge +2
+    Lv6: Heal Pwr +15
+    Lv7: MP Charge +2
+    Lv8: Heal Pwr +15
+    Lv9: MP Charge +2
+    Lv10: Heal Pwr +15
+
+  [LIMIT BREAK MAX]
+  HP +6200, MATK +640, DEF +5, MDEF +18, Accuracy +30, Block +68, Heal Pwr +31, MP Charge +18
+
+  [ABILITY GRADE 10]
+  Heal Pwr +44, MP Charge +24
+
+--------------------------------------------------------------------------------
+Venus
+Rarity: SR | Element: Holy | Role: Support
+--------------------------------------------------------------------------------
+  HP:              2707 -> 13537
+  ATK:              156 ->   780
+  MATK:             259 ->  1298
+  DEF:               25 ->    50
+  MDEF:              65 ->   130
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:        114 (5.70%) ->   182 (9.10%)
+  Magic Crit:       191 (9.55%) ->   305 (15.25%)
+  HP Regen:         135 ->   473
+  MP Regen:          56 ->   225
+  Heal Pwr:         117 ->   293
+  MP Charge:         74 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  MP Charge +11, MP Cost Reduction +6
+
+  [BOND BONUS PROGRESSION]
+    Lv1: MP Cost Down +2
+    Lv2: MP Charge +2
+    Lv3: MP Cost Down +1
+    Lv4: MP Charge +3
+    Lv5: MP Cost Down +1
+    Lv6: MP Charge +2
+    Lv7: MP Cost Down +1
+    Lv8: MP Charge +2
+    Lv9: MP Cost Down +1
+    Lv10: MP Charge +2
+
+  [LIMIT BREAK MAX]
+  HP +6200, ATK +205, MATK +390, DEF +5, MDEF +18, Accuracy +30, Block +68, Heal Pwr +27, MP Charge +16
+
+  [ABILITY GRADE 10]
+  MP Cost Reduction +6, MP Charge +16
+
+--------------------------------------------------------------------------------
+【Festive Costume】Natasha
+Rarity: SR | Element: Holy | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              1781 ->  8906
+  ATK:              152 ->   761
+  MATK:              91 ->   456
+  DEF:              326 ->   652
+  MDEF:             130 ->   260
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        108 (5.40%) ->   173 (8.65%)
+  Magic Crit:        65 (3.25%) ->   104 (5.20%)
+  HP Regen:          89 ->   311
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         65 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +1400, Block +11
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Block +2
+    Lv2: HP +200
+    Lv3: Block +3
+    Lv4: HP +300
+    Lv5: Block +2
+    Lv6: HP +300
+    Lv7: Block +2
+    Lv8: HP +300
+    Lv9: Block +2
+    Lv10: HP +300
+
+  [LIMIT BREAK MAX]
+  HP +4779, ATK +365, DEF +90, MDEF +24, Accuracy +30, Block +83, Heal Pwr +19, MP Charge +12
+
+  [ABILITY GRADE 10]
+  ATK +150, DEF +140
+
+--------------------------------------------------------------------------------
+【Holy Night Succubus】Yu Rima Elca
+Rarity: SR | Element: Mind | Role: Attacker
+--------------------------------------------------------------------------------
+  HP:              2332 -> 11660
+  ATK:              188 ->   941
+  MATK:             314 ->  1570
+  DEF:                7 ->    14
+  MDEF:              18 ->    36
+  Accuracy:          60 ->    99
+  Block:             45 ->   135
+  Phys Crit:         22 (1.10%) ->    35 (1.75%)
+  Magic Crit:        37 (1.85%) ->    59 (2.95%)
+  HP Regen:         116 ->   407
+  MP Regen:          56 ->   225
+  Heal Pwr:          82 ->   206
+  MP Charge:         53 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +1400, MATK +270
+
+  [BOND BONUS PROGRESSION]
+    Lv1: HP +200
+    Lv2: MATK +30
+    Lv3: HP +300
+    Lv4: MATK +60
+    Lv5: HP +300
+    Lv6: MATK +60
+    Lv7: HP +300
+    Lv8: MATK +60
+    Lv9: HP +300
+    Lv10: MATK +60
+
+  [LIMIT BREAK MAX]
+  HP +5334, MATK +717, DEF +1, MDEF +4, Accuracy +30, Block +68, Heal Pwr +19, MP Charge +12
+
+  [ABILITY GRADE 10]
+  HP +1750, MATK +307
+
+
+########################################
+# R CHARACTERS
+########################################
+
+--------------------------------------------------------------------------------
+Luceria
+Rarity: R | Element: Mind | Role: Tank
+--------------------------------------------------------------------------------
+  HP:              2423 -> 12117
+  ATK:              193 ->   967
+  MATK:             116 ->   580
+  DEF:              117 ->   234
+  MDEF:              46 ->    92
+  Accuracy:          60 ->    99
+  Block:             55 ->   165
+  Phys Crit:        100 (5.00%) ->   160 (8.00%)
+  Magic Crit:        60 (3.00%) ->    96 (4.80%)
+  HP Regen:         121 ->   423
+  MP Regen:          50 ->   200
+  Heal Pwr:         100 ->   250
+  MP Charge:         87 (flat)
+  HP Drain:           0 (flat)
+  MP Cost Reduction:  0 (flat)
+
+  [GP ABILITY LV10]
+  HP +950, Heal Pwr +45
+
+  [BOND BONUS PROGRESSION]
+    Lv1: Heal Pwr +5
+    Lv2: HP +150
+    Lv3: Heal Pwr +10
+    Lv4: HP +200
+    Lv5: Heal Pwr +10
+    Lv6: HP +200
+    Lv7: Heal Pwr +10
+    Lv8: HP +200
+    Lv9: Heal Pwr +10
+    Lv10: HP +200
+
+  [LIMIT BREAK MAX]
+  HP +5405, ATK +431, DEF +30, MDEF +9, Accuracy +30, Block +83, Heal Pwr +25, MP Charge +19
+
+  [ABILITY GRADE 10]
+  HP +1818, Heal Pwr +51
+

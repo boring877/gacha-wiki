@@ -8,9 +8,16 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
   text-align: center;
   min-width: 40px;
+}
+
+.bb-badge img {
+  flex-shrink: 0;
 }
 
 /* Rarity Badge Colors */
@@ -21,6 +28,11 @@
 
 .bb-badge[data-rarity='SR'] {
   background: #9c27b0;
+  color: #ffffff;
+}
+
+.bb-badge[data-rarity='R'] {
+  background: #4a90d9;
   color: #ffffff;
 }
 
@@ -59,6 +71,18 @@
   background: rgba(255, 154, 200, 0.2);
   color: #ff9ac8;
   border: 1px solid rgba(255, 154, 200, 0.4);
+}
+
+.bb-badge[data-element='Holy'] {
+  background: rgba(255, 212, 59, 0.2);
+  color: #ffd43b;
+  border: 1px solid rgba(255, 212, 59, 0.4);
+}
+
+.bb-badge[data-element='Magic'] {
+  background: rgba(151, 117, 250, 0.2);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.4);
 }
 
 /* Role Badge Colors */
@@ -174,6 +198,56 @@
   background: rgba(255, 215, 0, 0.2);
   color: #ffd700;
   border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+/* Skill Label Badge Colors */
+.bb-badge[data-skill='action1'] {
+  background: rgba(77, 171, 247, 0.2);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.bb-badge[data-skill='action2'] {
+  background: rgba(151, 117, 250, 0.2);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.3);
+}
+
+.bb-badge[data-skill='ultimate'] {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.bb-badge[data-skill='passive'] {
+  background: rgba(105, 219, 124, 0.2);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.3);
+}
+
+/* Skill Type Badge Colors */
+.bb-badge[data-type='damage'] {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.bb-badge[data-type='heal'] {
+  background: rgba(105, 219, 124, 0.15);
+  color: #69db7c;
+  border: 1px solid rgba(105, 219, 124, 0.3);
+}
+
+.bb-badge[data-type='buff'] {
+  background: rgba(77, 171, 247, 0.15);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.3);
+}
+
+.bb-badge[data-type='debuff'] {
+  background: rgba(151, 117, 250, 0.15);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.3);
 }
 
 /* Mobile Responsive Badge Styles */

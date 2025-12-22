@@ -1,0 +1,174 @@
+---
+// Busty Burst Skill Formulas & Stat Guide
+// Reference page for understanding skill calculations and stat mechanics
+
+import SkillFormulasLayout from '../../../layouts/busty-burst/SkillFormulasLayout.astro';
+import { SKILL_FORMULAS, STAT_CATEGORIES } from '../../../data/busty-burst/skill-formulas.js';
+
+const title = 'Busty Burst Skill Formulas & Stat Guide';
+const description =
+  'Complete reference guide for Busty Burst skill formulas, damage calculations, healing mechanics, buff scaling, and stat explanations. Learn how to maximize your character builds.';
+const gameTitle = 'Skill Formulas & Stat Guide';
+
+// Generate stat names for structured data
+const allStatNames = STAT_CATEGORIES.flatMap(cat => cat.stats.map(s => s.name));
+---
+
+<SkillFormulasLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Busty Burst Skill Formulas & Stat Guide",
+      "description": "Complete reference guide for Busty Burst skill formulas, damage calculations, healing mechanics, buff scaling, and stat explanations.",
+      "keywords": "Busty Burst, skill formulas, damage calculation, healing formula, buff formula, stat guide, ATK, DEF, critical, accuracy, block",
+      "articleSection": "Game Guide",
+      "author": {
+        "@type": "Organization",
+        "name": "GachaWiki"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://gachawiki.info/guides/busty-burst/skill-formulas/"
+      }
+    }
+  </script>
+
+  <div class="bb-formulas-page">
+    <!-- Page Header -->
+    <header class="bb-formulas-header">
+      <p class="bb-formulas-intro">
+        This guide explains how skill damage, healing, and buffs are calculated in Busty Burst.
+        Understanding these formulas will help you build stronger teams and maximize your
+        characters' potential.
+      </p>
+    </header>
+
+    <!-- Damage Formula Section -->
+    <section class="bb-formulas-section">
+      <h2 class="bb-formulas-section-title">Combat Formulas</h2>
+
+      <div class="bb-formulas-cards">
+        <!-- Damage Formula -->
+        <div class="bb-formula-card">
+          <div class="bb-formula-card-header">
+            <h3 class="bb-formula-card-title">{SKILL_FORMULAS.damage.title}</h3>
+            <p class="bb-formula-card-desc">{SKILL_FORMULAS.damage.description}</p>
+          </div>
+
+          <div class="bb-formula-display">
+            <div class="bb-formula-label">Formula</div>
+            <p class="bb-formula-text">{SKILL_FORMULAS.damage.formula}</p>
+            <code class="bb-formula-code">{SKILL_FORMULAS.damage.code}</code>
+          </div>
+
+          <div class="bb-formula-example">
+            <div class="bb-formula-example-title">Example Calculation</div>
+            <p class="bb-formula-example-text">{SKILL_FORMULAS.damage.example.text}</p>
+            <p class="bb-formula-example-calc">{SKILL_FORMULAS.damage.example.calculation}</p>
+          </div>
+
+          <ul class="bb-formula-notes">
+            {SKILL_FORMULAS.damage.notes.map(note => <li>{note}</li>)}
+          </ul>
+        </div>
+
+        <!-- Healing Formula -->
+        <div class="bb-formula-card">
+          <div class="bb-formula-card-header">
+            <h3 class="bb-formula-card-title">{SKILL_FORMULAS.healing.title}</h3>
+            <p class="bb-formula-card-desc">{SKILL_FORMULAS.healing.description}</p>
+          </div>
+
+          <div class="bb-formula-display">
+            <div class="bb-formula-label">Formula</div>
+            <p class="bb-formula-text">{SKILL_FORMULAS.healing.formula}</p>
+            <code class="bb-formula-code">{SKILL_FORMULAS.healing.code}</code>
+          </div>
+
+          <div class="bb-formula-example">
+            <div class="bb-formula-example-title">Example Calculation</div>
+            <p class="bb-formula-example-text">{SKILL_FORMULAS.healing.example.text}</p>
+            <p class="bb-formula-example-calc">{SKILL_FORMULAS.healing.example.calculation}</p>
+          </div>
+
+          <ul class="bb-formula-notes">
+            {SKILL_FORMULAS.healing.notes.map(note => <li>{note}</li>)}
+          </ul>
+        </div>
+
+        <!-- Buff Formula -->
+        <div class="bb-formula-card">
+          <div class="bb-formula-card-header">
+            <h3 class="bb-formula-card-title">{SKILL_FORMULAS.buff.title}</h3>
+            <p class="bb-formula-card-desc">{SKILL_FORMULAS.buff.description}</p>
+          </div>
+
+          <div class="bb-formula-display">
+            <div class="bb-formula-label">Formula</div>
+            <p class="bb-formula-text">{SKILL_FORMULAS.buff.formula}</p>
+          </div>
+
+          <div class="bb-buff-examples-wrapper">
+            <table class="bb-buff-examples">
+              <thead>
+                <tr>
+                  <th>Stat Type</th>
+                  <th>Format</th>
+                  <th>Result at Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  SKILL_FORMULAS.buff.examples.map(ex => (
+                    <tr>
+                      <td>{ex.stat}</td>
+                      <td>{ex.format}</td>
+                      <td>{ex.result}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <ul class="bb-formula-notes" style="margin-top: 1.5rem;">
+            {SKILL_FORMULAS.buff.notes.map(note => <li>{note}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stat Explanations Section -->
+    <section class="bb-formulas-section">
+      <h2 class="bb-formulas-section-title">Stat Explanations</h2>
+
+      <div class="bb-stat-categories">
+        {
+          STAT_CATEGORIES.map(category => (
+            <div class="bb-stat-category">
+              <h3 class="bb-stat-category-title">{category.category}</h3>
+              <div class="bb-stat-list">
+                {category.stats.map(stat => (
+                  <div class="bb-stat-item">
+                    <div class="bb-stat-name">
+                      <div class="bb-stat-name-text">{stat.name}</div>
+                      {stat.note && <div class="bb-stat-name-note">{stat.note}</div>}
+                    </div>
+                    <div class="bb-stat-desc">{stat.description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</SkillFormulasLayout>
