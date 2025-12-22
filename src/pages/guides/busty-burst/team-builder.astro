@@ -1,0 +1,698 @@
+---
+import TeamBuilderLayout from '../../../layouts/busty-burst/TeamBuilderLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import {
+  getAllCharacters,
+  BUFF_CATEGORIES,
+  DEBUFF_CATEGORIES,
+  TEAM_BUILDER_CHARACTERS,
+} from '../../../data/busty-burst/team-builder-data.js';
+
+const characters = getAllCharacters();
+const title = 'Team Builder - Busty Burst Fantasy | GachaWiki';
+const description =
+  'Build your Busty Burst team and detect buff/debuff conflicts. Optimize your team composition with category conflict detection for up to 6 characters.';
+const gameTitle = 'Team Builder';
+
+// Serialize character data for client-side use
+const characterDataJSON = JSON.stringify(TEAM_BUILDER_CHARACTERS);
+const buffCategoriesJSON = JSON.stringify(BUFF_CATEGORIES);
+const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
+---
+
+<TeamBuilderLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for Team Builder -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Busty Burst Fantasy Team Builder",
+      "url": "https://gachawiki.info/guides/busty-burst/team-builder/",
+      "description": "Build your Busty Burst Fantasy team and detect buff/debuff conflicts. Optimize your team composition with category conflict detection for up to 6 characters.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+
+  <div class="bb-team-builder-container">
+    <!-- Instructions/Legend Section -->
+    <section class="bb-tb-section bb-tb-legend">
+      <h2 class="bb-tb-section-title">How It Works</h2>
+      <p class="bb-tb-intro">
+        Select up to 6 characters to build your team. The tool detects buff/debuff conflicts when
+        characters have the <strong>same category AND same stat type</strong>. When a conflict
+        occurs, the last applied effect overwrites previous ones.
+      </p>
+
+      <div class="bb-tb-legend-grid">
+        <div class="bb-tb-legend-col">
+          <h3>Buff Categories</h3>
+          <div class="bb-tb-legend-items">
+            {
+              Object.entries(BUFF_CATEGORIES).map(([key, cat]) => (
+                <div class="bb-tb-legend-item">
+                  <span class={`bb-tb-category-badge ${cat.cssClass}`}>{key}</span>
+                  <span>{cat.name}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="bb-tb-legend-col">
+          <h3>Debuff Categories</h3>
+          <div class="bb-tb-legend-items">
+            {
+              Object.entries(DEBUFF_CATEGORIES).map(([key, cat]) => (
+                <div class="bb-tb-legend-item">
+                  <span class={`bb-tb-category-badge ${cat.cssClass}`}>{key}</span>
+                  <span>{cat.name}</span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Slots Section (6 slots) -->
+    <section class="bb-tb-section bb-tb-team-slots">
+      <h2 class="bb-tb-section-title">Your Team (6 Characters)</h2>
+      <div class="bb-tb-slots-grid" id="team-slots">
+        {
+          [1, 2, 3, 4, 5, 6].map(slot => (
+            <div class="bb-tb-slot" data-slot={slot}>
+              <div class="bb-tb-slot-empty">
+                <span class="bb-tb-slot-number">Slot {slot}</span>
+                <span class="bb-tb-slot-hint">Click to select</span>
+              </div>
+              <div class="bb-tb-slot-filled hidden" />
+              <button class="bb-tb-slot-remove hidden" data-slot={slot}>
+                x
+              </button>
+            </div>
+          ))
+        }
+      </div>
+      <button class="bb-tb-clear-all" id="clear-team">Clear All</button>
+    </section>
+
+    <!-- Conflict Analysis Section -->
+    <section class="bb-tb-section bb-tb-conflicts" id="conflict-section">
+      <h2 class="bb-tb-section-title">Conflict Analysis</h2>
+      <div class="bb-tb-no-team" id="no-team-message">
+        <p>Select characters to see conflict analysis.</p>
+      </div>
+
+      <div class="bb-tb-conflict-results hidden" id="conflict-results">
+        <!-- Buff Conflicts -->
+        <div class="bb-tb-conflict-group" id="buff-conflicts">
+          <h3>Buff Conflicts</h3>
+          <div class="bb-tb-conflict-list"></div>
+        </div>
+
+        <!-- Debuff Conflicts -->
+        <div class="bb-tb-conflict-group" id="debuff-conflicts">
+          <h3>Debuff Conflicts</h3>
+          <div class="bb-tb-conflict-list"></div>
+        </div>
+
+        <!-- No Conflicts Message -->
+        <div class="bb-tb-no-conflicts hidden" id="no-conflicts">
+          <span class="bb-tb-success-icon">&#10003;</span>
+          <p>No category conflicts detected!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passives Display Section -->
+    <section class="bb-tb-section bb-tb-passives hidden" id="passives-section">
+      <h2 class="bb-tb-section-title">Team Passives</h2>
+      <p class="bb-tb-passive-note">Passives stack freely and never conflict.</p>
+      <div class="bb-tb-passives-list" id="passives-list"></div>
+    </section>
+
+    <!-- Character Selection Section -->
+    <section class="bb-tb-section bb-tb-character-picker">
+      <h2 class="bb-tb-section-title">Available Characters</h2>
+
+      <!-- Filters -->
+      <div class="bb-tb-filters">
+        <input type="text" id="char-search" placeholder="Search by name..." class="bb-tb-search" />
+        <select id="element-filter" class="bb-tb-filter-select">
+          <option value="">All Elements</option>
+          <option value="Fire">Fire</option>
+          <option value="Water">Water</option>
+          <option value="Wind">Wind</option>
+          <option value="Holy">Holy</option>
+          <option value="Magic">Magic</option>
+          <option value="Mind">Mind</option>
+        </select>
+        <select id="role-filter" class="bb-tb-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Support">Support</option>
+          <option value="Tank">Tank</option>
+        </select>
+        <select id="rarity-filter" class="bb-tb-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+      </div>
+
+      <!-- Character Grid -->
+      <div class="bb-tb-char-grid" id="character-grid">
+        {
+          characters.map(char => (
+            <div
+              class="bb-tb-char-card"
+              data-id={char.id}
+              data-name={char.name.toLowerCase()}
+              data-element={char.element}
+              data-role={char.role}
+              data-rarity={char.rarity}
+            >
+              <div class="bb-tb-char-img">
+                <PaladinImage fileName={char.image} alt={char.name} width={60} height={60} />
+              </div>
+              <div class="bb-tb-char-info">
+                <span class="bb-tb-char-name">{char.name}</span>
+                <div class="bb-tb-char-badges">
+                  <span class="bb-badge" data-rarity={char.rarity.toLowerCase()}>
+                    {char.rarity}
+                  </span>
+                  <ElementImage element={char.element} width={14} height={14} />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</TeamBuilderLayout>
+
+<script define:vars={{ characterDataJSON, buffCategoriesJSON, debuffCategoriesJSON }}>
+  // Parse serialized data
+  const CHARACTER_DATA = JSON.parse(characterDataJSON);
+  const BUFF_CATEGORIES = JSON.parse(buffCategoriesJSON);
+  const DEBUFF_CATEGORIES = JSON.parse(debuffCategoriesJSON);
+
+  // State management
+  let team = [null, null, null, null, null, null]; // 6 slots
+  let activeSlot = null;
+
+  // Initialize
+  function init() {
+    setupSlotListeners();
+    setupCharacterListeners();
+    setupFilters();
+    setupClearButton();
+  }
+
+  // Slot click handlers
+  function setupSlotListeners() {
+    document.querySelectorAll('.bb-tb-slot').forEach(slot => {
+      slot.addEventListener('click', e => {
+        if (e.target.classList.contains('bb-tb-slot-remove')) return;
+        const slotNum = parseInt(slot.dataset.slot) - 1;
+        setActiveSlot(slotNum);
+        scrollToCharacters();
+      });
+    });
+
+    document.querySelectorAll('.bb-tb-slot-remove').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const slotNum = parseInt(btn.dataset.slot) - 1;
+        removeCharacter(slotNum);
+      });
+    });
+  }
+
+  function setActiveSlot(slotNum) {
+    // Remove active from all slots
+    document.querySelectorAll('.bb-tb-slot').forEach(s => s.classList.remove('active'));
+    // Set active slot
+    activeSlot = slotNum;
+    const slotEl = document.querySelector(`.bb-tb-slot[data-slot="${slotNum + 1}"]`);
+    if (slotEl) slotEl.classList.add('active');
+  }
+
+  function scrollToCharacters() {
+    const picker = document.querySelector('.bb-tb-character-picker');
+    if (picker) {
+      picker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Character selection
+  function setupCharacterListeners() {
+    document.querySelectorAll('.bb-tb-char-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const charId = card.dataset.id;
+
+        // Check if already in team
+        if (team.includes(charId)) {
+          showToast('Character already in team!');
+          return;
+        }
+
+        if (activeSlot !== null && team[activeSlot] === null) {
+          addCharacter(charId, activeSlot);
+          // Move to next empty slot
+          const nextEmpty = getNextEmptySlot();
+          if (nextEmpty !== null) {
+            setActiveSlot(nextEmpty);
+          } else {
+            activeSlot = null;
+            document.querySelectorAll('.bb-tb-slot').forEach(s => s.classList.remove('active'));
+          }
+        } else {
+          // Auto-select first empty slot
+          const emptySlot = getNextEmptySlot();
+          if (emptySlot !== null) {
+            addCharacter(charId, emptySlot);
+            const nextEmpty = getNextEmptySlot();
+            if (nextEmpty !== null) {
+              setActiveSlot(nextEmpty);
+            }
+          } else {
+            showToast('Team is full!');
+          }
+        }
+      });
+    });
+  }
+
+  // Add character to team
+  function addCharacter(charId, slotIndex) {
+    team[slotIndex] = charId;
+    updateSlotUI(slotIndex, charId);
+    updateCharacterGridSelection();
+    analyzeConflicts();
+    updatePassives();
+  }
+
+  // Remove character from team
+  function removeCharacter(slotIndex) {
+    team[slotIndex] = null;
+    clearSlotUI(slotIndex);
+    updateCharacterGridSelection();
+    analyzeConflicts();
+    updatePassives();
+  }
+
+  // Update slot UI when character is added
+  function updateSlotUI(slotIndex, charId) {
+    const char = CHARACTER_DATA[charId];
+    if (!char) return;
+
+    const slotEl = document.querySelector(`.bb-tb-slot[data-slot="${slotIndex + 1}"]`);
+    if (!slotEl) return;
+
+    const emptyDiv = slotEl.querySelector('.bb-tb-slot-empty');
+    const filledDiv = slotEl.querySelector('.bb-tb-slot-filled');
+    const removeBtn = slotEl.querySelector('.bb-tb-slot-remove');
+
+    // Get the original image from character grid
+    const charCard = document.querySelector(`.bb-tb-char-card[data-id="${charId}"]`);
+    const imgEl = charCard?.querySelector('.bb-tb-char-img img');
+    const imgSrc = imgEl?.src || '';
+
+    filledDiv.innerHTML = `
+      <div class="bb-tb-slot-img">
+        <img src="${imgSrc}" alt="${char.name}" />
+      </div>
+      <span class="bb-tb-slot-name">${char.name}</span>
+      <div class="bb-tb-slot-badges">
+        <span class="bb-badge" data-rarity="${char.rarity.toLowerCase()}">${char.rarity}</span>
+      </div>
+    `;
+
+    emptyDiv.classList.add('hidden');
+    filledDiv.classList.remove('hidden');
+    removeBtn.classList.remove('hidden');
+    slotEl.classList.add('filled');
+  }
+
+  // Clear slot UI
+  function clearSlotUI(slotIndex) {
+    const slotEl = document.querySelector(`.bb-tb-slot[data-slot="${slotIndex + 1}"]`);
+    if (!slotEl) return;
+
+    const emptyDiv = slotEl.querySelector('.bb-tb-slot-empty');
+    const filledDiv = slotEl.querySelector('.bb-tb-slot-filled');
+    const removeBtn = slotEl.querySelector('.bb-tb-slot-remove');
+
+    filledDiv.innerHTML = '';
+    emptyDiv.classList.remove('hidden');
+    filledDiv.classList.add('hidden');
+    removeBtn.classList.add('hidden');
+    slotEl.classList.remove('filled');
+  }
+
+  // Update character grid selection indicators
+  function updateCharacterGridSelection() {
+    document.querySelectorAll('.bb-tb-char-card').forEach(card => {
+      const charId = card.dataset.id;
+      if (team.includes(charId)) {
+        card.classList.add('selected');
+      } else {
+        card.classList.remove('selected');
+      }
+    });
+  }
+
+  // CONFLICT DETECTION ALGORITHM
+  function analyzeConflicts() {
+    const activeCharIds = team.filter(id => id !== null);
+    const activeChars = activeCharIds.map(id => CHARACTER_DATA[id]).filter(c => c);
+
+    const noTeamMessage = document.getElementById('no-team-message');
+    const conflictResults = document.getElementById('conflict-results');
+
+    if (activeChars.length === 0) {
+      noTeamMessage.classList.remove('hidden');
+      conflictResults.classList.add('hidden');
+      return;
+    }
+
+    noTeamMessage.classList.add('hidden');
+    conflictResults.classList.remove('hidden');
+
+    const buffConflicts = detectBuffConflicts(activeChars);
+    const debuffConflicts = detectDebuffConflicts(activeChars);
+
+    renderConflicts(buffConflicts, debuffConflicts);
+  }
+
+  function detectBuffConflicts(chars) {
+    // Group all buffs by category AND stat type
+    // Key format: "category:statName" e.g., "D:Physical ATK"
+    const buffsByKey = {};
+
+    chars.forEach(char => {
+      if (char.buffs) {
+        char.buffs.forEach(buff => {
+          // Each buff can have multiple effects, check each one
+          if (buff.effects) {
+            buff.effects.forEach(effect => {
+              const key = `${buff.category}:${effect.stat}`;
+              if (!buffsByKey[key]) {
+                buffsByKey[key] = [];
+              }
+              buffsByKey[key].push({
+                charId: char.id,
+                charName: char.name,
+                category: buff.category,
+                statName: effect.stat,
+                statValue: effect.value,
+                skillType: buff.skillType,
+                skillName: buff.skillName,
+                description: buff.description,
+                target: buff.target,
+                duration: buff.duration,
+                effects: buff.effects,
+              });
+            });
+          }
+        });
+      }
+    });
+
+    // Find conflicts (2+ buffs with same category AND same stat type)
+    const conflicts = [];
+    Object.entries(buffsByKey).forEach(([key, buffs]) => {
+      if (buffs.length > 1) {
+        const [category, statName] = key.split(':');
+        conflicts.push({
+          category,
+          statName,
+          categoryName: BUFF_CATEGORIES[category]?.name || category,
+          cssClass: BUFF_CATEGORIES[category]?.cssClass || '',
+          conflictingItems: buffs,
+        });
+      }
+    });
+
+    return conflicts;
+  }
+
+  function detectDebuffConflicts(chars) {
+    // Group all debuffs by category AND stat type
+    const debuffsByKey = {};
+
+    chars.forEach(char => {
+      if (char.debuffs) {
+        char.debuffs.forEach(debuff => {
+          // Each debuff can have multiple effects, check each one
+          if (debuff.effects) {
+            debuff.effects.forEach(effect => {
+              const key = `${debuff.category}:${effect.stat}`;
+              if (!debuffsByKey[key]) {
+                debuffsByKey[key] = [];
+              }
+              debuffsByKey[key].push({
+                charId: char.id,
+                charName: char.name,
+                category: debuff.category,
+                statName: effect.stat,
+                statValue: effect.value,
+                skillType: debuff.skillType,
+                skillName: debuff.skillName,
+                description: debuff.description,
+                target: debuff.target,
+                duration: debuff.duration,
+                effects: debuff.effects,
+              });
+            });
+          }
+        });
+      }
+    });
+
+    // Find conflicts
+    const conflicts = [];
+    Object.entries(debuffsByKey).forEach(([key, debuffs]) => {
+      if (debuffs.length > 1) {
+        const [category, statName] = key.split(':');
+        conflicts.push({
+          category,
+          statName,
+          categoryName: DEBUFF_CATEGORIES[category]?.name || category,
+          cssClass: DEBUFF_CATEGORIES[category]?.cssClass || '',
+          conflictingItems: debuffs,
+        });
+      }
+    });
+
+    return conflicts;
+  }
+
+  function renderConflicts(buffConflicts, debuffConflicts) {
+    const buffContainer = document.querySelector('#buff-conflicts .bb-tb-conflict-list');
+    const debuffContainer = document.querySelector('#debuff-conflicts .bb-tb-conflict-list');
+    const buffGroup = document.getElementById('buff-conflicts');
+    const debuffGroup = document.getElementById('debuff-conflicts');
+    const noConflicts = document.getElementById('no-conflicts');
+
+    buffContainer.innerHTML = '';
+    debuffContainer.innerHTML = '';
+
+    if (buffConflicts.length === 0 && debuffConflicts.length === 0) {
+      buffGroup.classList.add('hidden');
+      debuffGroup.classList.add('hidden');
+      noConflicts.classList.remove('hidden');
+      return;
+    }
+
+    noConflicts.classList.add('hidden');
+
+    // Render buff conflicts
+    if (buffConflicts.length > 0) {
+      buffGroup.classList.remove('hidden');
+      buffConflicts.forEach(conflict => {
+        buffContainer.innerHTML += createConflictCard(conflict);
+      });
+    } else {
+      buffGroup.classList.add('hidden');
+    }
+
+    // Render debuff conflicts
+    if (debuffConflicts.length > 0) {
+      debuffGroup.classList.remove('hidden');
+      debuffConflicts.forEach(conflict => {
+        debuffContainer.innerHTML += createConflictCard(conflict);
+      });
+    } else {
+      debuffGroup.classList.add('hidden');
+    }
+  }
+
+  function createConflictCard(conflict) {
+    const items = conflict.conflictingItems;
+    const statName = conflict.statName || 'Unknown';
+
+    return `
+      <div class="bb-tb-conflict-card">
+        <div class="bb-tb-conflict-header">
+          <span class="bb-tb-category-badge ${conflict.cssClass}">
+            Category ${conflict.category}
+          </span>
+          <span class="bb-tb-conflict-title">${conflict.categoryName}</span>
+        </div>
+        <div class="bb-tb-conflict-stat">
+          Conflicting Stat: <strong>${statName}</strong>
+        </div>
+        <div class="bb-tb-conflict-items">
+          ${items
+            .map(
+              item => `
+            <div class="bb-tb-conflict-item">
+              <div class="bb-tb-conflict-item-header">
+                <strong>${item.charName}</strong>
+              </div>
+              <div class="bb-tb-conflict-item-skill">
+                <span class="bb-tb-skill-name">${item.skillName}</span>
+                <span class="bb-tb-skill-type">(${item.skillType})</span>
+              </div>
+              ${item.description ? `<div class="bb-tb-conflict-item-desc">${item.description}</div>` : ''}
+              <div class="bb-tb-conflict-item-effects">
+                <span class="bb-tb-effect bb-tb-effect-highlight">${item.statName}: ${item.statValue}</span>
+              </div>
+              <div class="bb-tb-conflict-item-meta">
+                <span class="bb-tb-target">Target: ${item.target || 'N/A'}</span>
+                <span class="bb-tb-duration">Duration: ${item.duration || 'N/A'}</span>
+              </div>
+            </div>
+          `
+            )
+            .join('')}
+        </div>
+        <div class="bb-tb-conflict-warning">
+          Only one "${statName}" buff/debuff can be active in Category ${conflict.category} - the last one applied overwrites others
+        </div>
+      </div>
+    `;
+  }
+
+  // Update passives display
+  function updatePassives() {
+    const activeCharIds = team.filter(id => id !== null);
+    const activeChars = activeCharIds.map(id => CHARACTER_DATA[id]).filter(c => c);
+    const passivesSection = document.getElementById('passives-section');
+    const passivesList = document.getElementById('passives-list');
+
+    if (activeChars.length === 0) {
+      passivesSection.classList.add('hidden');
+      return;
+    }
+
+    passivesSection.classList.remove('hidden');
+
+    passivesList.innerHTML = activeChars
+      .map(
+        char => `
+      <div class="bb-tb-passive-char">
+        <div class="bb-tb-passive-char-name">${char.name}</div>
+        <div class="bb-tb-passive-list">
+          ${
+            char.passives
+              ?.map(
+                p => `
+            <div class="bb-tb-passive-item">
+              <span class="bb-tb-passive-label">${p.name}:</span>
+              <span class="bb-tb-passive-value">${p.effects}</span>
+            </div>
+          `
+              )
+              .join('') || '<div class="bb-tb-passive-item">No passives</div>'
+          }
+        </div>
+      </div>
+    `
+      )
+      .join('');
+  }
+
+  // Filter functionality
+  function setupFilters() {
+    const searchInput = document.getElementById('char-search');
+    const elementFilter = document.getElementById('element-filter');
+    const roleFilter = document.getElementById('role-filter');
+    const rarityFilter = document.getElementById('rarity-filter');
+
+    const filterCards = () => {
+      const search = searchInput.value.toLowerCase();
+      const element = elementFilter.value;
+      const role = roleFilter.value;
+      const rarity = rarityFilter.value;
+
+      document.querySelectorAll('.bb-tb-char-card').forEach(card => {
+        const matchSearch = card.dataset.name.includes(search);
+        const matchElement = !element || card.dataset.element === element;
+        const matchRole = !role || card.dataset.role === role;
+        const matchRarity = !rarity || card.dataset.rarity === rarity;
+
+        if (matchSearch && matchElement && matchRole && matchRarity) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    };
+
+    searchInput.addEventListener('input', filterCards);
+    elementFilter.addEventListener('change', filterCards);
+    roleFilter.addEventListener('change', filterCards);
+    rarityFilter.addEventListener('change', filterCards);
+  }
+
+  // Clear team
+  function setupClearButton() {
+    document.getElementById('clear-team').addEventListener('click', () => {
+      team = [null, null, null, null, null, null];
+      for (let i = 0; i < 6; i++) {
+        clearSlotUI(i);
+      }
+      activeSlot = null;
+      document.querySelectorAll('.bb-tb-slot').forEach(s => s.classList.remove('active'));
+      updateCharacterGridSelection();
+      analyzeConflicts();
+      updatePassives();
+    });
+  }
+
+  // Helper functions
+  function getNextEmptySlot() {
+    for (let i = 0; i < 6; i++) {
+      if (team[i] === null) return i;
+    }
+    return null;
+  }
+
+  function showToast(message) {
+    // Simple alert for now - could be enhanced with a toast notification
+    console.log(message);
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

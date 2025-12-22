@@ -1,0 +1,640 @@
+/**
+ * Busty Burst Fantasy - Team Builder Styles
+ * NO SHADOW, NO ANIMATION - FLAT DESIGN
+ */
+
+/* === CONTAINER === */
+.bb-team-builder-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* === SECTIONS === */
+.bb-tb-section {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-tb-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-tb-intro {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* === LEGEND SECTION === */
+.bb-tb-legend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.bb-tb-legend-col h3 {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.bb-tb-legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-tb-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+}
+
+/* === CATEGORY BADGES === */
+.bb-tb-category-badge {
+  display: inline-block;
+  font-weight: var(--font-bold);
+  font-size: var(--text-sm);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  min-width: 28px;
+  text-align: center;
+  background: var(--bb-bg-secondary);
+  color: var(--bb-primary-light);
+  border: 1px solid var(--bb-border-light);
+}
+
+/* === TEAM SLOTS === */
+.bb-tb-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bb-tb-slot {
+  background: rgba(46, 82, 102, 0.15);
+  border: 2px dashed var(--bb-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.bb-tb-slot:hover {
+  border-color: var(--bb-primary-light);
+  background: rgba(46, 82, 102, 0.25);
+}
+
+.bb-tb-slot.active {
+  border-color: var(--bb-primary-light);
+  border-style: solid;
+  background: rgba(46, 82, 102, 0.3);
+}
+
+.bb-tb-slot.filled {
+  border-style: solid;
+  border-color: var(--bb-border-light);
+}
+
+.bb-tb-slot-empty {
+  text-align: center;
+}
+
+.bb-tb-slot-number {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.bb-tb-slot-hint {
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-slot-filled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bb-tb-slot-filled .bb-tb-slot-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.bb-tb-slot-filled .bb-tb-slot-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-tb-slot-filled .bb-tb-slot-name {
+  font-size: 10px;
+  color: var(--bb-text-primary);
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.bb-tb-slot-filled .bb-tb-slot-badges {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.bb-tb-slot-remove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--bb-bg-tertiary);
+  color: var(--bb-text-secondary);
+  border: 2px solid var(--bb-border-light);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.bb-tb-slot-remove:hover {
+  background: var(--bb-primary-light);
+  color: white;
+  border-color: var(--bb-primary-light);
+}
+
+.bb-tb-clear-all {
+  background: var(--bb-bg-secondary);
+  color: var(--bb-text-secondary);
+  border: 1px solid var(--bb-border);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.bb-tb-clear-all:hover {
+  background: var(--bb-bg-card);
+  color: var(--bb-text-primary);
+}
+
+/* === CONFLICT ANALYSIS === */
+.bb-tb-no-team,
+.bb-tb-no-conflicts {
+  text-align: center;
+  padding: 2rem;
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-success-icon {
+  display: block;
+  font-size: 2rem;
+  color: var(--bb-primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.bb-tb-conflict-group {
+  margin-bottom: 1rem;
+}
+
+.bb-tb-conflict-group h3 {
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.bb-tb-conflict-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bb-tb-conflict-card {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.bb-tb-conflict-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.bb-tb-conflict-title {
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+}
+
+.bb-tb-conflict-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.bb-tb-conflict-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  padding: 0.75rem;
+  background: var(--bb-bg-card);
+  border-radius: 4px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-tb-conflict-item-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-tb-conflict-item strong {
+  color: var(--bb-text-primary);
+}
+
+.bb-tb-conflict-item-skill {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-tb-skill-name {
+  color: var(--bb-text-primary);
+  font-weight: var(--font-bold);
+}
+
+.bb-tb-skill-type {
+  color: var(--bb-text-muted);
+  font-size: var(--text-xs);
+}
+
+.bb-tb-conflict-item-desc {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+  line-height: 1.5;
+  padding: 0.5rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 4px;
+}
+
+.bb-tb-conflict-item-effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bb-tb-effect {
+  background: rgba(46, 82, 102, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: var(--text-xs);
+  color: var(--bb-text-primary);
+}
+
+.bb-tb-conflict-item-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: var(--text-xs);
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-target,
+.bb-tb-duration {
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-conflict-stat {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(46, 82, 102, 0.2);
+  border-radius: 4px;
+}
+
+.bb-tb-conflict-stat strong {
+  color: var(--bb-primary-light);
+}
+
+.bb-tb-effect-highlight {
+  background: rgba(74, 131, 153, 0.25) !important;
+  border: 1px solid var(--bb-border-light);
+}
+
+.bb-tb-conflict-warning {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+  padding: 0.5rem;
+  background: rgba(46, 82, 102, 0.2);
+  border-radius: 4px;
+  border-left: 3px solid var(--bb-primary-light);
+}
+
+/* === PASSIVES SECTION === */
+.bb-tb-passive-note {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: rgba(46, 82, 102, 0.2);
+  border-radius: 4px;
+}
+
+.bb-tb-passives-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.bb-tb-passive-char {
+  padding: 0.75rem;
+  background: rgba(46, 82, 102, 0.15);
+  border-radius: 6px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-tb-passive-char-name {
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+}
+
+.bb-tb-passive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-tb-passive-item {
+  font-size: var(--text-xs);
+  color: var(--bb-text-secondary);
+  line-height: 1.4;
+}
+
+.bb-tb-passive-label {
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-passive-value {
+  color: var(--bb-text-secondary);
+}
+
+/* === CHARACTER PICKER === */
+.bb-tb-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bb-tb-search {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  color: var(--bb-text-primary);
+  font-size: var(--text-sm);
+}
+
+.bb-tb-search::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-tb-filter-select {
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  color: var(--bb-text-primary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.bb-tb-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+.bb-tb-char-card {
+  background: rgba(46, 82, 102, 0.15);
+  border: 2px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.bb-tb-char-card:hover {
+  border-color: var(--bb-primary-light);
+  background: rgba(46, 82, 102, 0.25);
+}
+
+.bb-tb-char-card.selected {
+  border-color: var(--bb-primary-light);
+  background: rgba(74, 131, 153, 0.2);
+}
+
+.bb-tb-char-card.selected::after {
+  content: '\2713';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--bb-primary-light);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-tb-char-card .bb-tb-char-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.bb-tb-char-card .bb-tb-char-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-tb-char-info {
+  text-align: center;
+  width: 100%;
+}
+
+.bb-tb-char-name {
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  color: var(--bb-text-primary);
+  display: block;
+  margin-bottom: 0.15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.bb-tb-char-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.bb-tb-char-badges .bb-badge {
+  font-size: 9px;
+  padding: 0.1rem 0.3rem;
+}
+
+/* === UTILITY CLASSES === */
+.hidden {
+  display: none !important;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+  .bb-tb-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bb-team-builder-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .bb-tb-legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-tb-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bb-tb-filters {
+    flex-direction: column;
+  }
+
+  .bb-tb-search,
+  .bb-tb-filter-select {
+    width: 100%;
+    min-height: 44px; /* Better touch target */
+  }
+
+  .bb-tb-char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .bb-tb-passives-list {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-tb-conflict-item-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .bb-tb-clear-all {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-tb-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-tb-char-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bb-tb-char-card .bb-tb-char-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-tb-slot {
+    min-height: 110px;
+  }
+
+  .bb-tb-slot-filled .bb-tb-slot-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-tb-slot-remove {
+    top: -4px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .bb-tb-section {
+    padding: 1rem;
+  }
+
+  .bb-tb-conflict-card {
+    padding: 0.75rem;
+  }
+
+  .bb-tb-conflict-item-desc {
+    font-size: 11px;
+  }
+}
