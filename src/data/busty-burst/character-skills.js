@@ -73,7 +73,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'festive_attire_estiriel',
     name: '【Festive Attire】Estiriel',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Support',
     skill2: {
       name: 'Ripples of the Abyss',
@@ -149,7 +149,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'frey',
     name: 'Frey',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Support',
     skill2: {
       name: 'Area Heal',
@@ -263,7 +263,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'dark_knight',
     name: 'The Dark Knight',
     rarity: 'SSR',
-    element: 'Magic',
+    element: 'Dark',
     role: 'Attacker',
     skill2: {
       name: 'Dual Demon Swords',
@@ -488,7 +488,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'elegant_shamshel',
     name: '【Elegant Portrait】Shamshel',
     rarity: 'SSR',
-    element: 'Magic',
+    element: 'Dark',
     role: 'Attacker',
     skill2: {
       name: 'Juuump—up we go~',
@@ -524,9 +524,9 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
   nerys: {
     id: 'nerys',
     name: 'Nerys',
-    rarity: 'SR',
-    element: 'Wind',
-    role: 'Attacker',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
     skill2: {
       name: 'Shockwave',
       description: 'Deals [320% ATK + 120 (+25/lv)] magic damage to the farthest enemy',
@@ -561,7 +561,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'soltina',
     name: 'Soltina',
     rarity: 'SSR',
-    element: 'Magic',
+    element: 'Dark',
     role: 'Attacker',
     skill2: {
       name: 'Shikomaru',
@@ -710,7 +710,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'stenlina',
     name: 'Stenlina',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Attacker',
     skill2: {
       name: 'Pillar of Sanctity',
@@ -858,7 +858,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'venus',
     name: 'Venus',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Support',
     skill2: {
       name: 'Charming Smile',
@@ -968,9 +968,9 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
   luceria: {
     id: 'luceria',
     name: 'Luceria',
-    rarity: 'R',
-    element: 'Mind',
-    role: 'Tank',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
     skill2: {
       name: 'Heart Racing',
       description:
@@ -1005,9 +1005,9 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
   ishtovia: {
     id: 'ishtovia',
     name: 'Ishtovia',
-    rarity: 'SR',
-    element: 'Holy',
-    role: 'Attacker',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Support',
     skill2: {
       name: 'Receive the punishment of the gods',
       description:
@@ -1081,9 +1081,9 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
   sobrina: {
     id: 'sobrina',
     name: 'Sobrina',
-    rarity: 'SR',
+    rarity: 'SSR',
     element: 'Mind',
-    role: 'Support',
+    role: 'Attacker',
     skill2: {
       name: 'This is an order from your superior',
       description:
@@ -1158,7 +1158,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'yu_lima_elka',
     name: 'Yu Lima Elka',
     rarity: 'SSR',
-    element: 'Magic',
+    element: 'Dark',
     role: 'Tank',
     skill2: {
       name: 'Let Me Play With You',
@@ -1196,7 +1196,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'festive_natasha',
     name: '【Festive Costume】Natasha',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Tank',
     skill2: {
       name: 'The gown feels so light!',
@@ -1233,7 +1233,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'holy_night_succubus_yu_rima_elca',
     name: '【Holy Night Succubus】Yu Rima Elca',
     rarity: 'SR',
-    element: 'Magic',
+    element: 'Mind',
     role: 'Attacker',
     skill2: {
       name: 'Alright, this is for you.',

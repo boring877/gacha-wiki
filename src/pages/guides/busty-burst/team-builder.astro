@@ -154,8 +154,8 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
           <option value="Fire">Fire</option>
           <option value="Water">Water</option>
           <option value="Wind">Wind</option>
-          <option value="Holy">Holy</option>
-          <option value="Magic">Magic</option>
+          <option value="Light">Light</option>
+          <option value="Dark">Dark</option>
           <option value="Mind">Mind</option>
         </select>
         <select id="role-filter" class="bb-tb-filter-select">
@@ -401,8 +401,12 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
 
   function detectBuffConflicts(chars) {
     // Group all buffs by category AND stat type
-    // Key format: "category:statName" e.g., "D:Physical ATK"
+    // For single-target categories (A, C): also group by target since they only conflict if hitting same target
+    // Key format: "category:statName" or "category:statName:target" for single-target
     const buffsByKey = {};
+
+    // Single-target categories need target matching to conflict
+    const singleTargetCategories = ['A', 'C'];
 
     chars.forEach(char => {
       if (char.buffs) {
@@ -410,7 +414,26 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
           // Each buff can have multiple effects, check each one
           if (buff.effects) {
             buff.effects.forEach(effect => {
-              const key = `${buff.category}:${effect.stat}`;
+              // For single-target buffs (A, C), include target in the key
+              // They only conflict if same category + same stat + same target
+              let key;
+              if (singleTargetCategories.includes(buff.category)) {
+                // Normalize target for comparison (lowercase, trim)
+                const normalizedTarget = (buff.target || 'unknown').toLowerCase().trim();
+
+                // IMPORTANT: "Self" buffs from different characters NEVER conflict
+                // because each character's self-buff only affects themselves (different units)
+                // Include charId in key for self buffs to prevent false conflicts
+                if (normalizedTarget === 'self') {
+                  key = `${buff.category}:${effect.stat}:self:${char.id}`;
+                } else {
+                  key = `${buff.category}:${effect.stat}:${normalizedTarget}`;
+                }
+              } else {
+                // Multi-target buffs (B, D) conflict if same category + same stat
+                key = `${buff.category}:${effect.stat}`;
+              }
+
               if (!buffsByKey[key]) {
                 buffsByKey[key] = [];
               }
@@ -433,14 +456,20 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
       }
     });
 
-    // Find conflicts (2+ buffs with same category AND same stat type)
+    // Find conflicts (2+ buffs with same key)
     const conflicts = [];
     Object.entries(buffsByKey).forEach(([key, buffs]) => {
       if (buffs.length > 1) {
-        const [category, statName] = key.split(':');
+        // Extract category and statName from key
+        const parts = key.split(':');
+        const category = parts[0];
+        const statName = parts[1];
+        const target = parts[2] || null; // Only present for single-target categories
+
         conflicts.push({
           category,
           statName,
+          target,
           categoryName: BUFF_CATEGORIES[category]?.name || category,
           cssClass: BUFF_CATEGORIES[category]?.cssClass || '',
           conflictingItems: buffs,
@@ -453,7 +482,11 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
 
   function detectDebuffConflicts(chars) {
     // Group all debuffs by category AND stat type
+    // For single-target category (B): also consider target since they only conflict on same enemy
     const debuffsByKey = {};
+
+    // Single-target debuff category
+    const singleTargetCategories = ['B'];
 
     chars.forEach(char => {
       if (char.debuffs) {
@@ -461,7 +494,16 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
           // Each debuff can have multiple effects, check each one
           if (debuff.effects) {
             debuff.effects.forEach(effect => {
-              const key = `${debuff.category}:${effect.stat}`;
+              let key;
+              if (singleTargetCategories.includes(debuff.category)) {
+                // Single-target debuffs only conflict if hitting same target
+                const normalizedTarget = (debuff.target || 'unknown').toLowerCase().trim();
+                key = `${debuff.category}:${effect.stat}:${normalizedTarget}`;
+              } else {
+                // Multi-target debuffs (A, C) conflict if same category + same stat
+                key = `${debuff.category}:${effect.stat}`;
+              }
+
               if (!debuffsByKey[key]) {
                 debuffsByKey[key] = [];
               }
@@ -545,6 +587,16 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
   function createConflictCard(conflict) {
     const items = conflict.conflictingItems;
     const statName = conflict.statName || 'Unknown';
+    const isSingleTarget = conflict.target !== null && conflict.target !== undefined;
+    const targetDisplay = isSingleTarget ? conflict.target : null;
+
+    // Build warning message based on whether it's single-target or multi-target
+    let warningMsg;
+    if (isSingleTarget) {
+      warningMsg = `These buffs target "${targetDisplay}" with the same stat "${statName}" in Category ${conflict.category} - the last one applied overwrites others`;
+    } else {
+      warningMsg = `Only one "${statName}" buff/debuff can be active in Category ${conflict.category} - the last one applied overwrites others`;
+    }
 
     return `
       <div class="bb-tb-conflict-card">
@@ -556,6 +608,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
         </div>
         <div class="bb-tb-conflict-stat">
           Conflicting Stat: <strong>${statName}</strong>
+          ${isSingleTarget ? `<span style="margin-left: 0.5rem;">(Target: <strong>${targetDisplay}</strong>)</span>` : ''}
         </div>
         <div class="bb-tb-conflict-items">
           ${items
@@ -583,7 +636,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
             .join('')}
         </div>
         <div class="bb-tb-conflict-warning">
-          Only one "${statName}" buff/debuff can be active in Category ${conflict.category} - the last one applied overwrites others
+          ${warningMsg}
         </div>
       </div>
     `;

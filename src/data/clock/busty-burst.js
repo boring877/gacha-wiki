@@ -39,10 +39,10 @@ export const bustyBurstConfig = {
 
   // Maintenance information
   maintenance: {
-    start: '2025-12-16T03:00:00Z',
-    end: '2025-12-16T06:00:00Z',
-    duration: 3, // hours
-    subtitle: 'Dec 16, 2025 (Tue) 03:00 – 06:00 UTC',
+    start: '2025-12-23T03:00:00Z',
+    end: '2025-12-23T07:00:00Z',
+    duration: 4, // hours
+    subtitle: 'Dec 23, 2025 (Tue) 03:00 – 07:00 UTC',
   },
 
   // Additional timers
