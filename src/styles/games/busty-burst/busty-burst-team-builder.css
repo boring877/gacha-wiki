@@ -578,7 +578,13 @@
   }
 
   .bb-tb-char-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .bb-tb-char-card {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .bb-tb-passives-list {
@@ -594,6 +600,11 @@
     width: 100%;
     min-height: 44px;
   }
+
+  .bb-tb-character-picker .bb-tb-section-title {
+    font-size: var(--text-base);
+    margin-bottom: 0.75rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -603,11 +614,22 @@
 
   .bb-tb-char-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .bb-tb-char-card {
+    padding: 0.4rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .bb-tb-char-card .bb-tb-char-img {
     width: 50px;
     height: 50px;
+  }
+
+  .bb-tb-char-name {
+    font-size: 9px;
   }
 
   .bb-tb-slot {
