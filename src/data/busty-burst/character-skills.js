@@ -1304,6 +1304,44 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     passive1: 'Grants: Healing Amount +15%, Max HP +3444',
     passive2: 'All allies receive: Physical Def +141, Magic Def +141',
   },
+
+  kaguya: {
+    id: 'kaguya',
+    name: 'Kaguya',
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'Attacker',
+    skill2: {
+      name: "Poison Princess's Embrace",
+      description:
+        'Deals [250% MATK + 150 (+20/lv)] magic damage to the nearest enemy and inflicts Poison LvMax (HP -300 -30/lv per sec) for 10s and Block DOWN Lv5 (-13 -0.15/lv) for 8s',
+      type: 'damage',
+      target: 'nearest enemy',
+    },
+    skill3: {
+      name: 'Calamity of Serpent Venom',
+      description:
+        'Deals [85% MATK + 70 (+6/lv)] magic damage to the 3 nearest enemies and inflicts Curse (No HP/MP recovery, Action Speed -50%, Crit Rate 0) for 5s and Accuracy DOWN Lv4 (-11 -0.13/lv) for 8s',
+      type: 'damage',
+      target: '3 nearest enemies',
+    },
+    ultimate: {
+      name: 'Endless Wailing Black Lotus',
+      description:
+        'Deals magic damage to all enemies and inflicts Confusion + Fear. Confusion: Attacks indiscriminately, cannot use Ultimates. Fear: MP drain per tick, Block = 0',
+      type: 'damage',
+      target: 'all enemies',
+      ranks: {
+        R1: '[450% ATK + 350] | Confusion 5s, Fear Lv1 (MP -30/tick)',
+        R2: '[550% ATK + 450] | Confusion 6s, Fear Lv2 (MP -40/tick)',
+        R3: '[630% ATK + 500] | Confusion 6s, Fear Lv3 (MP -50/tick)',
+        R4: '[700% ATK + 550] | Confusion 7s, Fear Lv4 (MP -60/tick)',
+        R5: '[750% ATK + 600] | Confusion 8s, Fear Lv5 (MP -70/tick)',
+      },
+    },
+    passive1: 'Grants: Action Speed +10%+10, Magic ATK +259',
+    passive2: 'Grants: Ultimate Damage +15%, Magic Crit +90 (+4.5% crit rate)',
+  },
 };
 
 // Helper functions

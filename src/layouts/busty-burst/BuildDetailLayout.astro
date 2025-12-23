@@ -57,6 +57,11 @@ export interface Props {
         tips?: string[];
       };
     };
+    alternativeAccessory?: {
+      name: string;
+      images?: string[];
+      setEffects: Array<{ pieces: number; effect: string }>;
+    };
   };
 }
 
@@ -209,6 +214,44 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                   </div>
                 </div>
               </section>
+
+              <!-- Alternative Accessory Section -->
+              {
+                build.alternativeAccessory && (
+                  <section class="bb-build-detail-section">
+                    <h2 class="bb-build-section-title">Alternative Accessory</h2>
+                    <div class="bb-build-detail-card">
+                      <h3 class="bb-build-item-name">{build.alternativeAccessory.name}</h3>
+
+                      {build.alternativeAccessory.images &&
+                        build.alternativeAccessory.images.length > 0 && (
+                          <div class="bb-build-accessory-images">
+                            {build.alternativeAccessory.images.map(img => (
+                              <div class="bb-build-accessory-item">
+                                <AccessoryImage
+                                  fileName={img}
+                                  alt={img.replace('.png', '').replace(/_/g, ' ')}
+                                  width={60}
+                                  height={60}
+                                  loading="eager"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                      <div class="bb-build-set-effects">
+                        {build.alternativeAccessory.setEffects.map(effect => (
+                          <div class="bb-build-set-effect-row">
+                            <span class="bb-build-set-pieces">{effect.pieces}-set effect</span>
+                            <span class="bb-build-set-value">{effect.effect}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                )
+              }
 
               <!-- Best Main Stats Section -->
               {

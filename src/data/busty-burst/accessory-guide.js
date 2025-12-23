@@ -4,7 +4,7 @@
 
 // Main stats by accessory slot - only showing the important ones
 export const mainStats = [
-  { slot: 'Crown', imageFile: 'Gold_Tiara.png', best: 'HP' },
+  { slot: 'Tiara', imageFile: 'Gold_Tiara.png', best: 'HP' },
   { slot: 'Earrings', imageFile: 'Gold_Earrings.png', best: 'Phys/Mag Crit' },
   { slot: 'Necklace', imageFile: 'Gold_Necklace.png', best: 'Ultimate DMG' },
   { slot: 'Bracelet', imageFile: 'Gold_Bracelet.png', best: 'Phys/Mag Atk' },

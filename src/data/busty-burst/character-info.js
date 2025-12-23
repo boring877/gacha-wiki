@@ -1125,6 +1125,38 @@ export const BUSTY_BURST_CHARACTER_INFO = {
       source: 'Offering Cookies for the Holy Night (Dec 16 - Dec 30)',
     },
   },
+
+  kaguya: {
+    slug: 'kaguya',
+    name: 'Kaguya',
+    displayName: 'Kaguya',
+    baseName: 'Kaguya',
+    title: null,
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'Attacker',
+    attackType: 'Magic',
+    position: { roman: 'III', number: 3 },
+    actionSpeed: 'Slightly Fast',
+    range: 360,
+    weaponType: 'Throw',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'kaguya',
+    profile: {
+      height: '165cm',
+      bust: '106cm (K Cup)',
+      waist: '60cm',
+      hips: '87cm',
+    },
+    credits: {
+      illustration: { japanese: 'ぴず', romanized: 'Pizu' },
+      voice: { japanese: '月夜見しじま', romanized: 'Tsukiyomi Shishima' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Limited Banner',
+    },
+  },
 };
 
 // Helper function to get character by slug

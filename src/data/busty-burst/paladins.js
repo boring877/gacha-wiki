@@ -329,6 +329,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Tank',
     tier: 'A',
   },
+  {
+    id: 'kaguya',
+    name: 'Kaguya',
+    fileName: 'kaguya',
+    image: '/images/games/Busty_Burst/CharImg/kaguya.jpg',
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'DPS',
+    tier: 'SS',
+  },
 ];
 
 export const getPaladinById = id => {

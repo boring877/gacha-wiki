@@ -32,5 +32,17 @@ export const buildConfig = {
       tier: 'SS',
       buildLink: '/guides/busty-burst/build/shaty',
     },
+    {
+      id: 'kaguya',
+      name: 'Kaguya',
+      fileName: 'kaguya',
+      rarity: 'SSR',
+      element: 'Dark',
+      role: 'DPS',
+      skills: ['Magic', 'Debuff'],
+      actionSpeed: 'Slightly Fast',
+      tier: 'SS',
+      buildLink: '/guides/busty-burst/build/kaguya',
+    },
   ],
 };
