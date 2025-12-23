@@ -149,8 +149,8 @@ export const characterBuilds = {
       image: 'Magic.png',
     },
     weapon: {
-      name: 'Annihilation Grenade',
-      image: 'Magic_Grenade_of_annihilation.png',
+      name: 'Annihilation Bullet',
+      image: 'Bullet_of_annihilation.png',
       effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
     },
     accessory: (() => {

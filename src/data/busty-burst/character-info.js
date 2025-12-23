@@ -1139,7 +1139,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     position: { roman: 'III', number: 3 },
     actionSpeed: 'Slightly Fast',
     range: 360,
-    weaponType: 'Throw',
+    weaponType: 'Shoot/Ranged',
     skillTypes: ['Debuff', 'Disrupt'],
     image: 'kaguya',
     profile: {

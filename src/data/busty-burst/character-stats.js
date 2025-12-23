@@ -1648,7 +1648,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
     element: 'Dark',
     role: 'Attacker',
     baseStats: {
-      hp: { base: 2578, lv90: 12890 },
+      hp: { base: 2578, lv90: 12892 },
       atk: { base: 204, lv90: 1020 },
       matk: { base: 340, lv90: 1700 },
       def: { base: 57, lv90: 114 },
@@ -1657,9 +1657,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       block: { base: 45, lv90: 135 },
       physCrit: { base: 75, lv90: 120, baseRate: 3.75, lv90Rate: 6.0 },
       magicCrit: { base: 125, lv90: 200, baseRate: 6.25, lv90Rate: 10.0 },
-      hpRegen: { base: 128, lv90: 448 },
-      mpRegen: { base: 62, lv90: 248 },
-      healPwr: { base: 82, lv90: 205 },
+      hpRegen: { base: 128, lv90: 450 },
+      mpRegen: { base: 62, lv90: 249 },
+      healPwr: { base: 82, lv90: 206 },
       mpCharge: 83,
       hpDrain: 0,
       mpCostReduction: 0,
@@ -1688,7 +1688,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       healPwr: 21,
       mpCharge: 18,
     },
-    abilityGrade: { hp: 1475, mpRegen: 18 },
+    abilityGrade: { hp: 1475, mpCharge: 18 },
   },
 
   // ========================================
