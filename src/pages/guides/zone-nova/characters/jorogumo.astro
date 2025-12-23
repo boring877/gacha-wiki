@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { jorogumoData, jorogumoSEO } from '../../../../data/zone-nova/characters/jorogumo.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={jorogumoSEO.title}
+  description={jorogumoSEO.description}
+  gameTitle={jorogumoData.name}
+  character={jorogumoData}
+>
+  <CharacterPageTemplate characterData={jorogumoData} />
+</CharacterIndividualLayout>

@@ -18,6 +18,7 @@ import { athenaBuild } from './character-builds/athena.js';
 import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
 import { sigurdBuild } from './character-builds/sigurd.js';
 import { ninaBuild } from './character-builds/nina.js';
+import { jorogumoBuild } from './character-builds/jorogumo.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -74,6 +75,9 @@ export const CHARACTER_BUILDS = {
 
   // Nina Build - SSR Ice Frost Ash State DPS
   nina: ninaBuild,
+
+  // Jorogumo Build - SSR Chaos AOE Healer
+  jorogumo: jorogumoBuild,
 };
 
 // Generate builds for available characters only

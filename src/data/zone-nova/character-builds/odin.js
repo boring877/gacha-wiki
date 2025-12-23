@@ -79,7 +79,7 @@ export const odinBuild = {
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       slug: 'black-face-ugly-person',
       description:
-        'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%. This provides massive damage amplification against targets with DOT effects.',
+        'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%.',
     },
     {
       name: 'Secret Room Reality',
@@ -89,8 +89,7 @@ export const odinBuild = {
       memoryImage: 'Tefnutcard.jpg',
       memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       slug: 'secret-room-reality',
-      description:
-        "Continuous Damage Penetration Rate +36%. This significantly enhances Odin's [Divine Flame] DOT effectiveness, allowing her fire damage to bypass more enemy resistance.",
+      description: 'Continuous Damage Penetration Rate +36%.',
     },
   ],
   runes: {

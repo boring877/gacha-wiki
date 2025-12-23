@@ -1091,6 +1091,27 @@ export const ZONE_NOVA_MEMORIES = [
       'When there is only 1 ATTACKER on the field, ultimate skill damage is increased by an additional 40%.',
     ],
   },
+  {
+    id: 'beautiful-moon',
+    slug: 'beautiful-moon',
+    name: 'Beautiful Moon',
+    image: '/images/games/zone-nova/memories/Jorogumocard.jpg',
+    rarity: 'SSR',
+    element: 'Chaos',
+    character: 'Jorogumo',
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/beautiful-moon/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    },
+    effects: [
+      'Healing increased by 35%.',
+      "When healing a target with 'Continuous Damage' status, healing is increased by an additional 25%.",
+      "If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1119,6 +1140,7 @@ export const MEMORY_METADATA = {
     'Hera',
     'Horus',
     'Jeanne D Arc',
+    'Jorogumo',
     'Kela',
     'Lancelot',
     'Lavinia',

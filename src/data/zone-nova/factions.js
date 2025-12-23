@@ -55,7 +55,7 @@ export const ZONE_NOVA_FACTIONS = {
   'Pingjing City': {
     name: 'Pingjing City',
     chineseName: '平京城',
-    characters: ['Ibaraki-doji', 'Zashiki-warashi', 'Snow Girl'],
+    characters: ['Ibaraki-doji', 'Zashiki-warashi', 'Snow Girl', 'Jorogumo'],
     color: '#00bcd4',
     description: 'The Pingjing City faction with Japanese influences',
   },

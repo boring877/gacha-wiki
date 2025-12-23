@@ -19,6 +19,7 @@ import { artemisData } from '../../../../data/zone-nova/characters/artemis.js';
 import { freyeData } from '../../../../data/zone-nova/characters/freye.js';
 import { ibarakiDojiData } from '../../../../data/zone-nova/characters/ibaraki-doji.js';
 import { sigurdData } from '../../../../data/zone-nova/characters/sigurd.js';
+import { jorogumoData } from '../../../../data/zone-nova/characters/jorogumo.js';
 
 export const prerender = true;
 
@@ -94,7 +95,9 @@ const characterData =
                         ? ibarakiDojiData
                         : finalCharacter.slug === 'sigurd'
                           ? sigurdData
-                          : null;
+                          : finalCharacter.slug === 'jorogumo'
+                            ? jorogumoData
+                            : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -147,6 +150,11 @@ const memoryCardUrls = {
   // Sigurd memory cards
   'I am your Christmas present.': '/guides/zone-nova/memories/i-am-your-christmas-present/',
   'Lonely Dark Deep Night': '/guides/zone-nova/memories/lonely-dark-deep-night/',
+
+  // Jorogumo memory cards
+  'Beautiful Moon': '/guides/zone-nova/memories/beautiful-moon/',
+  'The Most Real Her': '/guides/zone-nova/memories/the-most-real-her/',
+  'Midnight Work': '/guides/zone-nova/memories/midnight-work/',
 };
 
 // Helper function to get badge class names
@@ -625,6 +633,36 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       }
     </div>
   </section>
+
+  <!-- Awakening Priority Section -->
+  {
+    finalBuild.awakenings && (
+      <section class="build-section">
+        <h2>Awakening Priority</h2>
+        <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
+          {finalBuild.awakenings.priority}
+        </p>
+
+        {finalBuild.awakenings.keyMilestones && finalBuild.awakenings.keyMilestones.length > 0 && (
+          <div class="awakening-milestones">
+            {finalBuild.awakenings.keyMilestones.map(milestone => (
+              <div class="awakening-milestone-card">
+                <div class="awakening-milestone-header">
+                  <span class="awakening-level">A{milestone.level}</span>
+                  <span
+                    class={`awakening-importance ${milestone.importance?.toLowerCase() || 'good'}`}
+                  >
+                    {milestone.importance}
+                  </span>
+                </div>
+                <p class="awakening-effect">{milestone.effect}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    )
+  }
 
   <!-- Team Synergy Section -->
   <section class="build-section">

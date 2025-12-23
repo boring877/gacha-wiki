@@ -819,6 +819,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'hela',
     detailUrl: '/guides/zone-nova/characters/hela',
   },
+  {
+    id: 46,
+    name: 'Jorogumo',
+    rarity: 'SSR',
+    element: 'Chaos',
+    role: 'Healer',
+    class: 'Healer',
+    faction: getFactionByCharacter('Jorogumo'),
+    tags: ['Healing', 'Ranged', 'AOE Healing', 'Resistance', 'Shield'],
+    stats: {
+      hp: 9180,
+      attack: 1004,
+      defense: 728,
+      energyRecovery: 0.25,
+      critRate: 0,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/Jorogumo.jpg',
+    slug: 'jorogumo',
+    detailUrl: '/guides/zone-nova/characters/jorogumo',
+  },
 ];
 
 // Metadata (unique, sorted)

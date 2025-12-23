@@ -749,3 +749,81 @@
   margin-top: 0.75rem;
   margin-bottom: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         AWAKENING PRIORITY STYLES                        */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.awakening-milestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.awakening-milestone-card {
+  background-color: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.awakening-milestone-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.awakening-level {
+  background-color: var(--zn-primary);
+  color: #000000;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.awakening-importance {
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.awakening-importance.essential {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.awakening-importance.highly-recommended {
+  background-color: #f59e0b;
+  color: #000000;
+}
+
+.awakening-importance.good {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.awakening-importance.medium {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.awakening-importance.low {
+  background-color: var(--zn-bg-tertiary);
+  color: var(--zn-text-secondary);
+}
+
+.awakening-effect {
+  color: var(--zn-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .awakening-milestones {
+    grid-template-columns: 1fr;
+  }
+}

@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-12-16',
+  lastUpdated: '2025-12-23',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -63,6 +63,7 @@ export const PVE_TIER_LIST = {
       { name: 'Lily' },
       { name: 'Apep' },
       { name: 'Sigurd' },
+      { name: 'Jorogumo' },
     ],
     S: [
       { name: 'Shu' },
@@ -98,7 +99,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-12-16',
+  lastUpdated: '2025-12-23',
   description: 'PvP character rankings.',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
@@ -121,6 +122,7 @@ export const PVP_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Hela' },
       { name: 'Sigurd' },
+      { name: 'Jorogumo' },
     ],
     S: [
       { name: 'Arthur' },
@@ -152,7 +154,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-12-16',
+  lastUpdated: '2025-12-23',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -186,6 +188,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Anubis' },
       { name: 'Lily' },
       { name: 'Apep' },
+      { name: 'Jorogumo' },
     ],
     S: [
       { name: 'Shu' },
@@ -217,7 +220,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-12-16',
+  lastUpdated: '2025-12-23',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -251,6 +254,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Shanna' },
       { name: 'Lavinia' },
       { name: 'Sigurd' },
+      { name: 'Jorogumo' },
     ],
     S: [
       { name: 'Tefnut' },
@@ -355,6 +359,14 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2025-12-23',
+    changes: [
+      'Jorogumo added: SS in PvE, SS in PvP, SS in Rift, SS in Guild Raid',
+      'New Chaos Healer with low-cost Ultimate (2 energy) and emergency healing mechanics',
+      'A2 provides damage reduction and resistance buffs, A6 grants shields',
+    ],
+  },
   {
     date: '2025-12-16',
     changes: [
