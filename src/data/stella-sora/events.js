@@ -5,6 +5,227 @@
 
 export const stellaSoraEvents = [
   {
+    id: 'version-1-4-radiant-messenger-holy-night-spirit',
+    title: 'Version 1.4: Radiant Messenger, Holy Night Spirit',
+    date: '2025-12-22',
+    startDate: '2025-12-22',
+    endDate: '2026-01-12',
+    summary:
+      'Version 1.4 brings the Exclusive ★5 Ignis Trekker Snowish Laru, new ★5 Ignis Disc Snowy Night Surprise, Snowish Festival events, and Main Story Chapter 5: A Spark in the Dark!',
+    description:
+      'The Version 1.4 update introduces the Snowish Festival celebration with Exclusive ★5 Ignis Trekker Snowish Laru from the Holy Night Gift Rush! banner. Experience the festive Event Story: Radiant Messenger, Holy Night Spirit, participate in Summit Show (beta), Cookie Workshop, and earn amazing rewards including Stellanite Dust, Snowish Limited Tickets, and more! Main Story Chapter 5: A Spark in the Dark arrives after Jan. 05, 2026.',
+    url: '/guides/stella-sora/events/version-1-4-radiant-messenger-holy-night-spirit/',
+    image: '/images/games/stella-sora/events/8/1.png',
+    rewards: [
+      'Exclusive ★5 Ignis Trekker: Snowish Laru',
+      'New ★5 Ignis Disc: Snowy Night Surprise',
+      'Stellanite Dust',
+      'Snowish Limited Tickets',
+      'Cerulean Ticket',
+      'Starlit Colored Glass',
+      'Novice Disc Promotion Box',
+      'Novice Trekker Promotion Box',
+      'Snowish Gingerbread Man',
+      'Gold Disc',
+      'Bottled Vigor Soda',
+      'Sprout Ticket',
+      "Defender's Medal",
+    ],
+    featuredImage: '/images/games/stella-sora/events/8/1.png',
+    newContent: {
+      trekker: {
+        name: 'Snowish Laru',
+        rarity: '★5',
+        element: 'Ignis',
+        banner: 'Holy Night Gift Rush!',
+        note: 'Exclusive limited Trekker - Will NOT be added to Permanent Banner',
+      },
+      disc: {
+        name: 'Snowy Night Surprise',
+        rarity: '★5',
+        element: 'Ignis',
+        banner: 'Ode of the Kingdom of Fries',
+      },
+      story: {
+        title: 'Main Story Chapter 5: A Spark in the Dark',
+        description:
+          "To uncover the mastermind behind the orphanage's debt and the Three Grand Commissions, team Tyrant launches an investigation into United Harvest. Just as they begin, a woman claiming to be the Strategy Department Manager appears, bringing an unexpected commission...",
+        availability: 'Available after Jan. 05, 2026 Maintenance',
+      },
+      appearances: [
+        {
+          character: 'Freesia',
+          name: 'The Gift of Falling Snow',
+          type: '3D Appearance',
+        },
+        {
+          character: 'Iris',
+          name: 'The 1/365th of You',
+          type: 'Appearance',
+        },
+      ],
+    },
+    events: [
+      {
+        name: 'Event Story: Radiant Messenger, Holy Night Spirit',
+        period: 'Dec. 22, 2025 after Maintenance',
+        details:
+          "The annual Snowish Festival is just around the corner, and that usually lazy girl has slipped into a peculiar new outfit—and surprisingly, she's bursting with energy?!",
+      },
+      {
+        name: 'Summit Show (beta)',
+        period: 'Start from Dec. 22, 2025 after Maintenance',
+        details:
+          "Fill Lilibea's stream with love and hype! Face off against powerful Trekker illusions in the ultimate arena to earn Stellanite Dust, Starlit Colored Glass, Novice Disc Promotion Box, and more!",
+      },
+      {
+        name: 'Cookie Workshop',
+        period: 'Dec. 22, 2025 after Maintenance',
+        details:
+          'Match the shapes, pack the cookie boxes, and claim your rewards, including Stellanite Dust, Snowish Gingerbread Man, Novice Trekker Promotion Box, and more!',
+      },
+      {
+        name: 'A Finale Echoing',
+        period: 'Available after Jan. 05, 2026 Maintenance',
+        details:
+          'Opera Ghost: Rovina is a formidable presence entrenched within the Monolith. She is like a persistent nightmare, appearing silently in the shadows. No one knows her past, and no one has witnessed her end. Only that lingering fear descends upon the heart of every person who utters her name.',
+      },
+      {
+        name: 'Cataclysm Survivor',
+        period: 'Dec. 22, 2025 after Maintenance',
+        details:
+          "Join the defense battle and complete the missions to obtain Stellanite Dust and Defender's Medal. Clearing Catastrophe zones and reaching the designated score will grant additional Defender's Medal rewards.",
+      },
+      {
+        name: 'The Nova Times · Chapter 07 Wish in the Snow',
+        period: 'Available after Dec. 29, 2025 21:00 (UTC-7)',
+        details:
+          "O' Tyrant traveling towards Nova, may the tales of the Trekkers light your path like stars in the velvet night. Brand-new Trekker stories are now open in The Nova Times for you to explore!",
+      },
+      {
+        name: 'Boss Blitz',
+        period: 'Available after Dec. 31, 2025 13:00 (UTC-7)',
+        details:
+          'Complete missions, accumulate Stars, and climb the leaderboard to earn great rewards!',
+        enemyInfo: {
+          ladyDust: 'Enemy Vulnerability: Ignis, Umbra',
+          evernightEmberflies: 'Enemy Vulnerability: Ignis, Ventus',
+        },
+      },
+    ],
+    loginEvents: [
+      {
+        name: 'Snowish Gifts',
+        details:
+          'Special greetings from Laru! Participate in the log-in event to receive Snowish Festival gifts!',
+      },
+      {
+        name: 'Festival Gift Delivery',
+        details: 'Log in every day to claim Snowish Limited Tickets!',
+      },
+      {
+        name: 'A Chapter of Renewal',
+        period: 'Available after Dec. 29, 2025 21:00 (UTC-7)',
+        details:
+          'Morning bells ring as dawn breaks, and a new journey begins. Join the log-in event to claim Cerulean Ticket, Gold Disc, and more!',
+      },
+    ],
+    permanentUpdates: [
+      {
+        name: 'Everbright Wishes rewards increase',
+        details:
+          'Starting with Version 1.4, the daily reward amount for Stellanite Dust of Everbright Wishes will increase from 90 to 150, with an additional Bottled Vigor Soda ×1 granted daily.',
+        compensation: {
+          rewards: 'Stellanite Dust ×450, Bottled Vigor Soda ×1',
+          eligibility:
+            'Players who purchased Everbright Wishes and claimed rewards before the version update maintenance on Dec. 22, 2025',
+          note: 'Compensation will be issued via in-game mail based on the number of days you actually claimed rewards.',
+        },
+      },
+      {
+        name: 'Beginner Tyrant 101',
+        details:
+          'New squad-building tutorial quest series! Complete objectives to earn Stellanite Dust, Sprout Ticket, Trekker and Runic Disc progression rewards and more!',
+      },
+      {
+        name: 'Weekly Affairs',
+        details:
+          'Complete Weekly Affairs to get Stellanite Dust, Trekker Skill upgrade materials, and more!',
+      },
+    ],
+    upcomingContent: [
+      {
+        name: 'Chapter 5: A Spark in the Dark',
+        period: 'Available after Jan. 05, 2026 Maintenance',
+        details:
+          "To uncover the mastermind behind the orphanage's debt and the Three Grand Commissions, team Tyrant launches an investigation into United Harvest. Just as they begin, a woman claiming to be the Strategy Department Manager appears, bringing an unexpected commission...",
+      },
+      {
+        name: '★5 Trekker: Freesia Rerun',
+        period: 'Available after Dec. 29, 2025 21:00 (UTC-7)',
+        banner: 'A Fateful Encounter',
+        details:
+          "There's a higher chance to get the ★5 Trekker, Freesia from the event limited banner.",
+      },
+      {
+        name: '★5 Runic Disc: Sunlit Blossom',
+        period: 'Available after Dec. 29, 2025 21:00 (UTC-7)',
+        banner: 'A Heart-Tuned Melody',
+        details:
+          "There's a higher chance to get the ★5 Runic Disc, Sunlit Blossom from the event limited banner.",
+      },
+    ],
+    merchandise: {
+      name: "Trekker's Picks: Snowish Special",
+      period: 'Dec. 22, 2025 after Maintenance – Jan. 12, 2026 19:59:59 (UTC-7)',
+      items: [
+        'Holy Night Gift Rush!: Cerulean Ticket Set',
+        'Holy Night Gift Rush!: Gold Disc Set',
+        'Holy Night Gift Rush!: Heartfelt Bundle',
+        'Holy Night Gift Rush!: Trekker Boost Bundle',
+      ],
+    },
+    bannerInfo: {
+      characterBanner: {
+        name: 'Holy Night Gift Rush!',
+        featured: 'Snowish Laru (★5 Ignis)',
+        pity: 'First 120 recruitments grant Snowish Laru ×1',
+        ticketExpiry: 'Snowish Limited Tickets valid until Jan. 12, 2026 19:59:59 (UTC-7)',
+        note: 'Snowish Laru will NOT be added to Permanent Trekker Banner',
+      },
+      discBanner: {
+        name: 'Ode of the Kingdom of Fries',
+        featured: 'Snowy Night Surprise (★5 Ignis)',
+      },
+    },
+    requirements: {
+      authorizationLevel: 'Authorization Level ≥ 5',
+      team: 'Stella Sora Team',
+    },
+    images: [
+      '8/1',
+      '8/2',
+      '8/3',
+      '8/4',
+      '8/5',
+      '8/6',
+      '8/7',
+      '8/8',
+      '8/9',
+      '8/10',
+      '8/11',
+      '8/12',
+      '8/13',
+      '8/14',
+      '8/15',
+      '8/16',
+      '8/17',
+      '8/18',
+      '8/19',
+      '8/20',
+    ],
+  },
+  {
     id: 'beyond-the-dream-limited-event',
     title: 'Beyond the Dream Limited Event Overview',
     date: '2025-12-08',

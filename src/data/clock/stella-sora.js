@@ -12,10 +12,10 @@ const SS_RESET_HOUR_UTC_MINUS_7 = 13; // 13:00 UTC-7 (1 PM UTC-7)
 const SS_RESET_MINUTE_UTC_MINUS_7 = 0;
 
 // Maintenance period in UTC-7
-// Start: Oct 27, 2025 20:00 UTC-7 = Oct 28, 2025 03:00:00Z (UTC)
-// End: Oct 28, 2025 02:00 UTC-7 = Oct 28, 2025 09:00:00Z (UTC)
-const SS_MAINTENANCE_START_UTC_MINUS_7 = '2025-10-28T03:00:00Z';
-const SS_MAINTENANCE_END_UTC_MINUS_7 = '2025-10-28T09:00:00Z';
+// Start: Dec 22, 2025 20:00 UTC-7 = Dec 23, 2025 03:00:00Z (UTC)
+// End: Dec 23, 2025 02:00 UTC-7 = Dec 23, 2025 09:00:00Z (UTC)
+const SS_MAINTENANCE_START_UTC_MINUS_7 = '2025-12-23T03:00:00Z';
+const SS_MAINTENANCE_END_UTC_MINUS_7 = '2025-12-23T09:00:00Z';
 
 // Beyond the Dream Event periods in UTC-7
 // Event Duration: Dec 8, 2025 after maintenance – Dec 22, 2025 12:59 (UTC-7)
@@ -55,7 +55,7 @@ export const stellaSoraConfig = {
     start: SS_MAINTENANCE_START_UTC_MINUS_7,
     end: SS_MAINTENANCE_END_UTC_MINUS_7,
     duration: 6, // 6 hours maintenance
-    subtitle: 'Scheduled server maintenance',
+    subtitle: 'Dec 22, 2025 (Mon) 20:00 – Dec 23, 2025 02:00 (UTC-7)',
   },
 
   // Event information

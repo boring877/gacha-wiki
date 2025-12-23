@@ -9,10 +9,10 @@ export const stellaSoraConfig = {
 
   // Current game version info
   version: {
-    current: '1.3',
-    name: 'A Breezy Romance',
-    releaseDate: '2025-12-08',
-    eventPageUrl: '/guides/stella-sora/events/version-1-3-a-breezy-romance/',
+    current: '1.4',
+    name: 'Radiant Messenger, Holy Night Spirit',
+    releaseDate: '2025-12-22',
+    eventPageUrl: '/guides/stella-sora/events/version-1-4-radiant-messenger-holy-night-spirit/',
   },
 
   gameInfo: {

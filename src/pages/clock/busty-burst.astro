@@ -361,8 +361,8 @@ const games = [
     if (!serverStatusDot || !serverStatusText) return;
 
     const now = new Date();
-    const maintenanceStart = new Date('2025-12-09T03:00:00Z');
-    const maintenanceEnd = new Date('2025-12-09T06:00:00Z');
+    const maintenanceStart = new Date(config.maintenance.start);
+    const maintenanceEnd = new Date(config.maintenance.end);
 
     if (now < maintenanceStart) {
       // Before maintenance - show countdown to start

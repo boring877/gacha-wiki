@@ -1,5 +1,91 @@
 export const bannerTimelineData = [
-  // #6 - Nazuka (Dec 8 - Dec 29) - CURRENT
+  // #8 - Freesia Rerun (Dec 29 - Jan 19) - CURRENT
+  {
+    id: 'freesia-a-fateful-encounter-rerun',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'Freesia',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/8/Freesia.png',
+      },
+      boostedCharacters: [
+        { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Canace', rarity: '★★★★', type: 'Trekker' },
+      ],
+      startDate: '2025-12-29T21:00:00-07:00',
+      endDate: '2026-01-19T12:59:59-07:00',
+      description:
+        "Limited recruitment event: A Fateful Encounter will begin soon! During the event period, there's a higher chance to get the ★5 Trekker, Freesia.",
+      note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'Sunlit Blossom',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/8/Freesia_disc.png',
+      },
+      boostedDiscs: [
+        { name: 'The Shining', rarity: '★★★★', type: 'Runic Disc' },
+        { name: 'Twin Moon Mischief', rarity: '★★★★', type: 'Runic Disc' },
+      ],
+      startDate: '2025-12-29T21:00:00-07:00',
+      endDate: '2026-01-19T12:59:59-07:00',
+      description:
+        "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, Sunlit Blossom.",
+      note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
+    },
+    status: 'current',
+    image: 'freesia-rerun-banner.png',
+  },
+  // #7 - Snowish Laru (Dec 22 - Jan 12) - CURRENT
+  {
+    id: 'snowish-laru-holy-night-gift-rush',
+    characterBanner: {
+      title: 'Holy Night Gift Rush!',
+      featuredCharacter: {
+        name: 'Snowish Laru',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '/images/games/stella-sora/Banner_timeline/7/Snowish_Laru.jpg',
+      },
+      boostedCharacters: [
+        { name: 'Flora', rarity: '★★★★', type: 'Trekker' },
+        { name: 'Kasimira', rarity: '★★★★', type: 'Trekker' },
+      ],
+      startDate: '2025-12-22T00:00:00-07:00',
+      endDate: '2026-01-12T19:59:59-07:00',
+      description:
+        "Limited recruitment event: Holy Night Gift Rush! will begin soon! During the event period, there's a higher chance to get the Exclusive ★5 Trekker, Snowish Laru. You can use Snowish Limited Tickets and Cerulean Tickets for recruitment.",
+      bonusPity:
+        "The first 120 recruitments grant you Snowish Laru ×1. This bonus is limited to once and resets upon the banner's expiration.",
+      note: '*Snowish Limited Tickets are valid until Jan. 12, 2026 19:59:59 (UTC-7). After this recruitment event ends, Snowish Laru (★5) will not be added to the Permanent Trekker Banner.',
+    },
+    discBanner: {
+      title: 'Ode of the Kingdom of Fries',
+      featuredDisc: {
+        name: 'Snowy Night Surprise',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '/images/games/stella-sora/Banner_timeline/7/Snowish_Laru_disc.jpg',
+      },
+      boostedDiscs: [
+        { name: 'Emerald Dream', rarity: '★★★★', type: 'Runic Disc' },
+        { name: "Scorching Night's End", rarity: '★★★★', type: 'Runic Disc' },
+      ],
+      startDate: '2025-12-22T00:00:00-07:00',
+      endDate: '2026-01-12T19:59:59-07:00',
+      description:
+        "Limited recruitment event: Ode of the Kingdom of Fries will begin soon! During the event period, there's a higher chance to get the new ★5 Ignis Disc, Snowy Night Surprise.",
+      note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
+    },
+    status: 'current',
+    image: 'snowish-laru-banner.png',
+  },
+  // #6 - Nazuka (Dec 8 - Dec 29) - ENDED
   {
     id: 'nazuka-a-breezy-romance',
     characterBanner: {
@@ -38,10 +124,10 @@ export const bannerTimelineData = [
         "Limited recruitment event: Afternoon Glimmer into the Green will begin soon! During the event period, there's a higher chance to get the new ★5 Runic Disc, Deer's Song.",
       note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'nazuka-banner.png',
   },
-  // #5 - Gerie (Dec 1 - Dec 22) - CURRENT
+  // #5 - Gerie (Dec 1 - Dec 22) - ENDED
   {
     id: 'gerie-a-fateful-encounter',
     characterBanner: {
@@ -80,7 +166,7 @@ export const bannerTimelineData = [
         "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, The Lost Pilgrim.",
       note: '*For more recruitment information, please check the Details of the trekker recruitment in game.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'gerie-banner.jpg',
   },
   // #4 - Fuyuka (Nov 17 - Dec 8) - ENDED

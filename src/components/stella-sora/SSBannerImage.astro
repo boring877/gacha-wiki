@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 
 // Import character images
+import snowishLaruImg from '../../assets/images/games/stella-sora/Banner_timeline/7/Snowish_Laru.jpg';
+import freesiaImg from '../../assets/images/games/stella-sora/Banner_timeline/8/Freesia.png';
 import nazukaImg from '../../assets/images/games/stella-sora/Banner_timeline/6/1.png';
 import gerieImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie.jpg';
 import fuyukaImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka.jpg';
@@ -10,6 +12,8 @@ import shiaImg from '../../assets/images/games/stella-sora/Banner_timeline/2/Shi
 import nanohaImg from '../../assets/images/games/stella-sora/Banner_timeline/3/Nanoha.jpg';
 
 // Import disc images
+import snowishLaruDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/7/Snowish_Laru_disc.jpg';
+import freesiaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/8/Freesia_disc.png';
 import nazukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/6/2.png';
 import gerieDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie_disc.jpg';
 import fuyukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka_disc.jpg';
@@ -19,6 +23,8 @@ import nanohaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline
 
 // Image mapping by character name
 const characterImages: Record<string, ImageMetadata> = {
+  'Snowish Laru': snowishLaruImg,
+  Freesia: freesiaImg,
   Nazuka: nazukaImg,
   Gerie: gerieImg,
   Fuyuka: fuyukaImg,
@@ -29,6 +35,8 @@ const characterImages: Record<string, ImageMetadata> = {
 
 // Disc image mapping by disc name
 const discImages: Record<string, ImageMetadata> = {
+  'Snowy Night Surprise': snowishLaruDiscImg,
+  'Sunlit Blossom': freesiaDiscImg,
   "Deer's Song": nazukaDiscImg,
   'The Lost Pilgrim': gerieDiscImg,
   Fireworks: fuyukaDiscImg,
