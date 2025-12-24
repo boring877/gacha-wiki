@@ -3,13 +3,20 @@
 
 export const stellaSoraRedeemCodes = {
   meta: {
-    title: 'Stella Sora Redeem Codes (BOSSGIFT) - Free Rewards & Gift Codes | GachaWiki',
+    title: 'Stella Sora Redeem Codes (SNOWISHFES) - Free Rewards & Gift Codes | GachaWiki',
     description:
-      "Working Stella Sora redeem codes for free rewards, gems, and items. Updated BOSSGIFT code and step-by-step redemption guide for Yostar's fantasy RPG set in Nova Continent.",
-    lastUpdated: new Date('2025-10-27'),
+      "Working Stella Sora redeem codes for free rewards, gems, and items. Updated SNOWISHFES code and step-by-step redemption guide for Yostar's fantasy RPG set in Nova Continent.",
+    lastUpdated: new Date('2025-12-24'),
   },
 
   availableCodes: [
+    {
+      id: 'snowishfes',
+      code: 'SNOWISHFES',
+      status: 'working',
+      lastChecked: 'December 2025',
+      dateAdded: '2025-12-24',
+    },
     {
       id: 'bossgift',
       code: 'BOSSGIFT',
