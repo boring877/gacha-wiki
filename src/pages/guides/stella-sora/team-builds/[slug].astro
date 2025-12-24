@@ -1,16 +1,46 @@
 ---
 // Stella Sora Individual Team Build Page
-// Dynamic route for individual team build pages using slug
-
 import TeamBuildIndividualLayout from '../../../../layouts/stella-sora/TeamBuildIndividualLayout.astro';
-import { getTeamBuildBySlug, getAllTeamBuilds } from '../../../../data/stella-sora/team-builds.js';
-import PotentialImage from '../../../../components/stella-sora/PotentialImage.astro';
+import { getAllTeamBuilds } from '../../../../data/stella-sora/team-builds.js';
+import SSPotentialAllImage from '../../../../components/stella-sora/SSPotentialAllImage.astro';
 import SSCharacterImage from '../../../../components/stella-sora/SSCharacterImage.astro';
-import HighlightedText from '../../../../components/stella-sora/HighlightedText.astro';
+
+// Parse description with params at specific level
+const parseDescription = (desc: string, params: string[] = [], level: number = 1): string => {
+  if (!desc) return '';
+  let parsed = desc;
+
+  // Replace &Param1&, &Param2&, etc. with actual values
+  params.forEach((param, index) => {
+    const placeholder = `&Param${index + 1}&`;
+    let value = param;
+
+    // Check if param has level scaling (contains "/")
+    if (typeof param === 'string' && param.includes('/')) {
+      const levels = param.split('/');
+      value = levels[Math.min(level - 1, levels.length - 1)] || levels[0];
+    }
+
+    parsed = parsed.split(placeholder).join(`<strong>${value}</strong>`);
+  });
+
+  // Parse color tags
+  parsed = parsed
+    .replace(/<color=#0abec5>(.*?)<\/color>/gi, '<strong>$1</strong>')
+    .replace(/<color=#ec6d21>(.*?)<\/color>/gi, '<strong>$1</strong>')
+    .replace(/<color=[^>]+>(.*?)<\/color>/gi, '<strong>$1</strong>');
+
+  // Parse skill references ##Name#ID#
+  parsed = parsed.replace(/##([^#]+)#(\d+)#/g, '<strong>$1</strong>');
+
+  // Replace vertical tab with space
+  parsed = parsed.replace(/\u000b/g, ' ');
+
+  return parsed;
+};
 
 export async function getStaticPaths() {
   const teamBuilds = getAllTeamBuilds();
-
   return teamBuilds.map(teamBuild => ({
     params: { slug: teamBuild.slug },
     props: { teamBuild },
@@ -19,65 +49,35 @@ export async function getStaticPaths() {
 
 const { teamBuild } = Astro.props;
 
-// SEO and layout props
 const title = `${teamBuild.name} - Stella Sora Team Build`;
-const description = `${teamBuild.description}. Complete guide with character composition, strengths, weaknesses, and build notes for this Stella Sora team.`;
-const teamBuildName = teamBuild.name;
+const description = `${teamBuild.description}`;
+const hasBuildNotes = teamBuild.buildNotes && teamBuild.buildNotes.trim() !== '';
 ---
 
-<TeamBuildIndividualLayout title={title} description={description} teamBuildName={teamBuildName}>
+<TeamBuildIndividualLayout title={title} description={description} teamBuildName={teamBuild.name}>
   <div class="team-build-detail">
-    <!-- Important Note Section -->
-    <div class="important-note-section">
-      <div class="note-content">
-        <h3 class="note-title">Important: Monolith Research</h3>
-        <div class="note-text">
-          <HighlightedText
-            text="Monolith research should be completed to get the best outcome! It takes some time to get good RNG."
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Content -->
     <!-- Team Composition -->
-    <div>
+    <section>
       <h2 class="team-build-section-title">Team Composition</h2>
       <div class="team-build-characters-grid">
         {
           teamBuild.characters.map(character => (
-            <div
-              class={`team-character-card ${
-                character.name === teamBuild.mainDps
-                  ? 'main-dps'
-                  : character.name === teamBuild.support
-                    ? 'support'
-                    : ''
-              }`}
-            >
-              <div class="team-character-avatar" title={character.name}>
-                <div class="team-character-image-wrapper">
-                  <SSCharacterImage
-                    imageName={character.image}
-                    alt={character.name}
-                    width={300}
-                    height={300}
-                    class="team-character-image"
-                  />
-                </div>
-                <span class="team-character-initial">{character.name.charAt(0)}</span>
+            <div class="team-character-card">
+              <div class="team-character-avatar">
+                <SSCharacterImage
+                  imageName={character.image}
+                  alt={character.name}
+                  width={300}
+                  height={300}
+                  class="team-character-image"
+                />
               </div>
               <div class="team-character-name">{character.name}</div>
               <div class="team-character-badges">
-                <span class={`position-badge position-${character.role.toLowerCase()}`}>
-                  {character.role}
+                <span class={`rarity-badge rarity-${character.grade || 5}`}>
+                  {character.grade || 5}★
                 </span>
-                <span
-                  class={`rarity-badge ${character.rarity.toLowerCase().replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
-                >
-                  {character.rarity}
-                </span>
-                <span class={`element-badge element-${character.element.toLowerCase()}`}>
+                <span class={`element-badge element-${character.element?.toLowerCase()}`}>
                   {character.element}
                 </span>
               </div>
@@ -85,158 +85,79 @@ const teamBuildName = teamBuild.name;
           ))
         }
       </div>
-    </div>
+    </section>
 
-    <!-- Team Roles and Build Notes Side by Side -->
-    <div class="team-info-row">
-      <!-- Team Roles -->
-      <div class="team-roles-section">
-        <h2 class="team-build-section-title">Team Roles</h2>
-        <div class="team-roles">
-          <div class="role-card">
-            <h4>Main DPS: {teamBuild.mainDps}</h4>
-            <p>
-              Shia is a Vanguard. Vanguards usually take the main place in the team and they deal
-              the most damage.<br /><br />
-              They also trigger Lux Mark. Shia is going to be our main dealer and the most focused character
-              here.<br /><br />
-              Make sure you put all the resources on her!
-            </p>
+    <!-- Build Notes (only if has content) -->
+    {
+      hasBuildNotes && (
+        <section>
+          <h2 class="team-build-section-title">Build Notes</h2>
+          <div class="team-build-notes">
+            <div set:html={teamBuild.buildNotes} />
           </div>
-          {
-            teamBuild.support && (
-              <div class="role-card">
-                <h4>Support: {teamBuild.support}</h4>
-                <p>
-                  Tilia provides a lot of support by increasing the ATK or damage taken.
-                  <>
-                    <br />
-                    <br />
-                  </>
-                  She can also give shields. She is a really good 4-star character and very good in
-                  our team!
-                  <>
-                    <br />
-                    <br />
-                  </>
-                  She is our 2nd best character in the team.
-                </p>
-              </div>
-            )
-          }
-          {
-            teamBuild.flex &&
-              teamBuild.flex !== teamBuild.mainDps &&
-              teamBuild.flex !== teamBuild.support && (
-                <div class="role-card">
-                  <h4>Versatile: {teamBuild.flex}</h4>
-                  <p>
-                    Versatile kind of weird. They can trigger Lux Mark and also give Lux Mark.
-                    <>
-                      <br />
-                      <br />
-                    </>
-                    Minova is not that good here and sometimes people change her with Jinglin.
-                    <>
-                      <br />
-                      <br />
-                    </>
-                    One thing good about Minova is her shield is really powerful, and she gets it
-                    every time she uses her support skill.
-                  </p>
-                </div>
-              )
-          }
-        </div>
-      </div>
+        </section>
+      )
+    }
 
-      <!-- Build Notes -->
-      <div class="build-notes-section">
-        <h2 class="team-build-section-title">Build Notes</h2>
-        <div class="team-build-notes">
-          <div set:html={teamBuild.buildNotes} />
-        </div>
-      </div>
-    </div>
-
-    <!-- Potential Build -->
+    <!-- Potential Builds -->
     {
       teamBuild.characterBuilds && (
-        <div>
-          <h2 class="team-build-section-title">Potential Build</h2>
-          {Object.entries(teamBuild.characterBuilds).map(([characterKey, characterBuild]) => (
+        <section>
+          <h2 class="team-build-section-title">Potential Builds</h2>
+          {Object.entries(teamBuild.characterBuilds).map(([charKey, build]: [string, any]) => (
             <div class="character-potentials">
-              <h3 class="character-name">
-                {characterKey.charAt(0).toUpperCase() + characterKey.slice(1)} -{' '}
-                {characterBuild.buildName}
+              <h3 class="character-build-title">
+                {charKey
+                  .split(' ')
+                  .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                  .join(' ')}
+                {build.buildName && ` - ${build.buildName}`}
               </h3>
 
-              {characterBuild.potentialCategories
-                ? // New categorized structure
-                  Object.entries(characterBuild.potentialCategories).map(
-                    ([categoryKey, category]) => (
+              {build.potentialCategories &&
+                Object.entries(build.potentialCategories).map(
+                  ([_, category]: [string, any]) =>
+                    category.potentials &&
+                    category.potentials.length > 0 && (
                       <div class="potential-category">
                         <h4 class="category-title">{category.title}</h4>
                         <div class="potentials-list">
-                          {category.potentials.map(potential =>
-                            potential.isSubHeader ? (
-                              <div class="potential-subheader">
-                                <h5 class="subheader-title">{potential.name}</h5>
-                                <p class="subheader-description">{potential.description}</p>
-                              </div>
-                            ) : (
+                          {category.potentials.map((potential: any) => {
+                            const level = potential.recommendedLevel || 1;
+                            return (
                               <div class="potential-item">
-                                <PotentialImage
-                                  imageName={potential.image}
-                                  alt={potential.name}
-                                  width={150}
-                                  height={150}
-                                  class="potential-icon"
-                                />
+                                <div class="potential-icon-wrapper">
+                                  <SSPotentialAllImage
+                                    icon={potential.icon}
+                                    rarity={potential.rarity}
+                                    stype={potential.stype}
+                                    alt={potential.name}
+                                    width={60}
+                                    height={60}
+                                  />
+                                  <span class="potential-level">Lv {level}</span>
+                                </div>
                                 <div class="potential-content">
-                                  <div class="potential-header">
-                                    <h5 class="potential-name">{potential.name}</h5>
-                                    {potential.level && (
-                                      <span class="potential-level">{potential.level}</span>
+                                  <h5 class="potential-name">{potential.name}</h5>
+                                  <div
+                                    class="potential-description"
+                                    set:html={parseDescription(
+                                      potential.shortDescription || potential.description,
+                                      potential.params,
+                                      level
                                     )}
-                                  </div>
-                                  <div class="potential-description">
-                                    <HighlightedText text={potential.description} />
-                                  </div>
+                                  />
                                 </div>
                               </div>
-                            )
-                          )}
+                            );
+                          })}
                         </div>
                       </div>
                     )
-                  )
-                : // Old structure fallback
-                  characterBuild.potentials.map(potential => (
-                    <div class="potential-item">
-                      <PotentialImage
-                        imageName={potential.image}
-                        alt={potential.name}
-                        width={150}
-                        height={150}
-                        class="potential-icon"
-                      />
-                      <div class="potential-content">
-                        <div class="potential-header">
-                          <h5 class="potential-name">{potential.name}</h5>
-                          {potential.level && (
-                            <span class="potential-level">{potential.level}</span>
-                          )}
-                        </div>
-                        <div class="potential-description">
-                          <HighlightedText text={potential.description} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                )}
             </div>
           ))}
-        </div>
+        </section>
       )
     }
   </div>

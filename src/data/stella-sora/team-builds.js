@@ -5,11 +5,22 @@ import { STELLA_SORA_CHARACTERS } from './characters.js';
 import { getPotentialByName } from './all-potentials.js';
 
 // Helper function to find character by name (case-insensitive)
+// Prioritizes exact matches, then longer name matches to avoid "Laru" matching before "Snowish Laru"
 const findCharacter = name => {
-  return STELLA_SORA_CHARACTERS.find(
+  const searchName = name.toLowerCase().trim();
+
+  // First try exact match
+  const exactMatch = STELLA_SORA_CHARACTERS.find(char => char.name.toLowerCase() === searchName);
+  if (exactMatch) return exactMatch;
+
+  // Then try partial matches, preferring longer character names first
+  const sortedByNameLength = [...STELLA_SORA_CHARACTERS].sort(
+    (a, b) => b.name.length - a.name.length
+  );
+
+  return sortedByNameLength.find(
     char =>
-      char.name.toLowerCase().includes(name.toLowerCase().trim()) ||
-      name.toLowerCase().trim().includes(char.name.toLowerCase())
+      char.name.toLowerCase().includes(searchName) || searchName.includes(char.name.toLowerCase())
   );
 };
 
@@ -22,13 +33,16 @@ const processCharacterList = names => {
 };
 
 // Helper function to build potential list from names using centralized data
+// potentialNames can be either strings or objects { name: string, level: number }
 const buildPotentialList = (characterName, potentialNames) => {
   return potentialNames
-    .map(name => {
+    .map(item => {
+      const name = typeof item === 'string' ? item : item.name;
+      const level = typeof item === 'string' ? 1 : item.level || 1;
       const potential = getPotentialByName(characterName, name);
-      return potential ? { ...potential } : null;
+      return potential ? { ...potential, recommendedLevel: level } : null;
     })
-    .filter(potential => potential !== null && potential !== undefined); // Only include potentials that exist
+    .filter(potential => potential !== null && potential !== undefined);
 };
 
 // Team build definitions
@@ -133,6 +147,96 @@ If you have any problems, message me in Discord!`,
 
     createdAt: '2024-01-15',
     updatedAt: '2024-01-20',
+  },
+  {
+    id: 2,
+    slug: 'xmas-raid-fuyuka-ultimate',
+    name: 'Xmas Raid: Fuyuka Ultimate Build',
+    description:
+      'Team build for clearing the Maid for You Christmas raid with 100 points. Uses Fuyuka Ultimate build with Flora and Snowish Laru support.',
+    tags: ['raid', 'event', 'christmas', 'ignis'],
+    content: ['Raid Event', 'Maid for You', '100 Points Clear'],
+    characters: processCharacterList(['Fuyuka', 'Flora', 'Snowish Laru']),
+    mainDps: 'Fuyuka',
+    support: 'Flora',
+    flex: 'Snowish Laru',
+
+    buildNotes: '',
+
+    characterBuilds: {
+      fuyuka: {
+        buildName: 'Ultimate Build',
+        potentialCategories: {
+          core: {
+            title: 'Core Potentials',
+            potentials: buildPotentialList('Fuyuka', [
+              { name: 'Kitty Punch', level: 1 },
+              { name: 'Multi-Shot Blast', level: 1 },
+              { name: 'Combo Punch', level: 1 },
+              { name: 'Pyro Mark', level: 1 },
+            ]),
+          },
+          generic: {
+            title: 'Generic Potentials',
+            potentials: buildPotentialList('Fuyuka', [
+              { name: 'Finishing Blow', level: 6 },
+              { name: 'Blazing Heart', level: 6 },
+              { name: 'Ironfist Blow', level: 6 },
+              { name: 'Peak Performance', level: 6 },
+              { name: 'Swirling Counterattack', level: 6 },
+              { name: 'Bold Challenge', level: 6 },
+            ]),
+          },
+        },
+      },
+      flora: {
+        buildName: 'Crit Build',
+        potentialCategories: {
+          core: {
+            title: 'Core Potentials',
+            potentials: buildPotentialList('Flora', [
+              { name: 'Ashes of the Past', level: 1 },
+              { name: 'Ember of Tomorrow', level: 1 },
+            ]),
+          },
+          generic: {
+            title: 'Generic Potentials',
+            potentials: buildPotentialList('Flora', [
+              { name: 'Reinforced Impression', level: 6 },
+              { name: 'Visual Impact', level: 6 },
+              { name: 'Perfect Acting', level: 6 },
+              { name: 'Foreshadowing Verification', level: 6 },
+              { name: 'Guest Performer', level: 6 },
+              { name: 'Everlasting Show', level: 6 },
+            ]),
+          },
+        },
+      },
+      'snowish laru': {
+        buildName: 'Support Build',
+        potentialCategories: {
+          core: {
+            title: 'Core Potentials',
+            potentials: buildPotentialList('Snowish Laru', [
+              { name: 'Fire Downpour', level: 1 },
+              { name: 'Special Ammo', level: 1 },
+            ]),
+          },
+          generic: {
+            title: 'Generic Potentials',
+            potentials: buildPotentialList('Snowish Laru', [
+              { name: 'Two-Gun Salute', level: 6 },
+              { name: 'Uplifting Shot', level: 6 },
+              { name: 'Fairy Tale Rule', level: 6 },
+              { name: 'Celebration Resumed', level: 6 },
+            ]),
+          },
+        },
+      },
+    },
+
+    createdAt: '2025-12-24',
+    updatedAt: '2025-12-24',
   },
 ];
 

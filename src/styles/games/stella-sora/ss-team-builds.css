@@ -262,6 +262,24 @@
   flex-shrink: 0;
 }
 
+.potential-icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.potential-icon-wrapper .potential-level {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--ss-primary);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: var(--ss-font-bold);
+  padding: 2px 6px;
+  border-radius: var(--ss-radius-sm);
+  white-space: nowrap;
+}
+
 .potential-content {
   flex: 1;
 }

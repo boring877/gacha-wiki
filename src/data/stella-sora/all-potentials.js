@@ -14993,7 +14993,14 @@ export const getAllCharacterNames = () => Object.keys(allPotentials);
 
 // Get a specific potential by name for a character (searches all categories)
 export const getPotentialByName = (characterName, potentialName) => {
-  const charData = allPotentials[characterName.toLowerCase()];
+  // Convert character name to camelCase key (e.g., "Snowish Laru" -> "snowishLaru")
+  const charKey = characterName
+    .toLowerCase()
+    .split(' ')
+    .map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
+    .join('');
+
+  const charData = allPotentials[charKey];
   if (!charData || !charData.potentials) return null;
 
   const allCategories = [

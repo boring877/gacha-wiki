@@ -28,6 +28,12 @@ const imageModules: Record<string, ImageModule> = import.meta.glob(
   { eager: true }
 );
 
+// Also import from potentials-all folder for centralized potential icons
+const potentialsAllModules: Record<string, ImageModule> = import.meta.glob(
+  '/src/assets/images/games/stella-sora/potentials-all/*.{jpg,jpeg,png,webp}',
+  { eager: true }
+);
+
 // Try different path formats to find the image
 let imageModule: ImageModule = undefined;
 
@@ -113,7 +119,30 @@ if (!imageModule) {
   imageModule = imageModules[imagePath];
 }
 
-// If still not found, try just the filename (case-insensitive)
+// If still not found, try potentials-all folder (for icons like 15801_Potential_21)
+if (!imageModule && imageName) {
+  // Try with .png extension if not provided
+  const filenameWithExt = imageName.endsWith('.png') ? imageName : `${imageName}.png`;
+  imagePath = `/src/assets/images/games/stella-sora/potentials-all/${filenameWithExt}`;
+  imageModule = potentialsAllModules[imagePath];
+}
+
+// If still not found, try just the filename (case-insensitive) in potentials-all
+if (!imageModule && imageName) {
+  const filename = imageName.split('/').pop();
+  const filenameWithExt = filename?.endsWith('.png') ? filename : `${filename}.png`;
+  if (filenameWithExt) {
+    for (const [key, value] of Object.entries(potentialsAllModules)) {
+      const keyFilename = key.split('/').pop();
+      if (keyFilename && keyFilename.toLowerCase() === filenameWithExt.toLowerCase()) {
+        imageModule = value;
+        break;
+      }
+    }
+  }
+}
+
+// If still not found, try just the filename (case-insensitive) in potential folders
 if (!imageModule && imageName) {
   const filename = imageName.split('/').pop(); // Get just the filename
   if (filename) {

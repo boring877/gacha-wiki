@@ -476,6 +476,7 @@ function normalizeCharacter(info) {
     icon: `${info.name}.jpg`,
 
     // Mapped fields
+    grade: info.grade,
     rarity: `${info.grade}-Star`,
     role: info.position,
     element: info.element,

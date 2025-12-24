@@ -152,6 +152,21 @@ export const blogConfig = {
         <h2>Tip 3: Use Flora and Snowish Laru as Support</h2>
         <p>Flora provides buffs, damage increase, crit rate, and crit damage to help you deal more damage. Snowish Laru uses her minion to tank and deal damage. You can replace Snowish Laru, but she is really helpful here.</p>
 
+        <h2>My Build Setup</h2>
+        <p>Here are the potentials I used to clear this raid:</p>
+
+        <h3>Fuyuka - Ultimate Build</h3>
+        <p><strong>Core Potentials (Lv 1):</strong> Kitty Punch, Multi-Shot Blast, Combo Punch, Pyro Mark</p>
+        <p><strong>Generic Potentials (Lv 6):</strong> Finishing Blow, Blazing Heart, Ironfist Blow, Peak Performance, Swirling Counterattack, Bold Challenge</p>
+
+        <h3>Flora - Crit Build</h3>
+        <p><strong>Core Potentials:</strong> Ashes of the Past, Ember of Tomorrow</p>
+        <p><strong>Normal Potentials (Lv 6):</strong> Reinforced Impression, Visual Impact, Perfect Acting, Foreshadowing Verification, Guest Performer, Everlasting Show</p>
+
+        <h3>Snowish Laru - Support Build</h3>
+        <p><strong>Core Potentials:</strong> Fire Downpour, Special Ammo</p>
+        <p><strong>Normal Potentials (Lv 6):</strong> Two-Gun Salute, Uplifting Shot, Fairy Tale Rule, Celebration Resumed</p>
+
         <h2>Tip 4: Wait for Last Week Affixes</h2>
         <p>On the last week of the event, new affixes will open. These affixes give you buffs to deal more damage and have more HP. This is the game's way of helping you finish all the quests!</p>
 
