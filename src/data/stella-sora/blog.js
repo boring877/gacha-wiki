@@ -129,6 +129,58 @@ export const blogConfig = {
         <p>Focus on reaching level 30 affinity using 4 star loved gifts. This target provides excellent stat bonuses at a fraction of the total investment required for max level. Do not hoard your 4 star gifts waiting for 5 star crafting since the immediate power boost will serve you far better right now.</p>
       `,
     },
+    {
+      slug: 'xmas-raid-guide-maid-for-you',
+      title: 'Xmas Raid Guide: How to Clear 100 Points in Maid for You',
+      description:
+        'Complete guide to clearing the Christmas raid event with 100 points. Tips for team building, affix selection, and strategies for both F2P and spending players.',
+      author: 'Boring877',
+      publishDate: '2025-12-24',
+      category: 'Guide',
+      tags: ['raid', 'event', 'christmas', 'fuyuka', 'ignis', 'strategy'],
+      content: `
+        <h2>Xmas Raid Event Overview</h2>
+        <p>It's the end of the year and we have a Christmas event! This Xmas brings many cool things, including the new "Maid for You" Raid event type. In this raid, you choose Affixes to increase the boss difficulty or modify your skills. Some affixes can actually improve your damage output in certain ways.</p>
+        <p>The goal is to complete the Raid Quest by beating the boss with <strong>100 points</strong>. Adding affixes gives you points, and once you reach 100 points you can finish the quest. This is the most challenging quest of them all - the rest are fairly simple and don't require too much thought, unless you just started the game.</p>
+
+        <h2>Tip 1: Use an Ignis Team</h2>
+        <p>The first tip is to use an Ignis-type team. This allows you to break the boss's resilience much faster, enabling you to deal massive amounts of damage during the break window.</p>
+
+        <h2>Tip 2: Run Fuyuka Ultimate Build</h2>
+        <p>Without Fuyuka, you will really struggle to finish the 100-point challenge. It's possible but quite hard. Using the Ultimate build makes things much easier - just wait for your ultimate to charge, then one-shot the boss!</p>
+
+        <h2>Tip 3: Use Flora and Snowish Laru as Support</h2>
+        <p>Flora provides buffs, damage increase, crit rate, and crit damage to help you deal more damage. Snowish Laru uses her minion to tank and deal damage. You can replace Snowish Laru, but she is really helpful here.</p>
+
+        <h2>Tip 4: Wait for Last Week Affixes</h2>
+        <p>On the last week of the event, new affixes will open. These affixes give you buffs to deal more damage and have more HP. This is the game's way of helping you finish all the quests!</p>
+
+        <h2>Tip 5: Avoid DMG Increases Greater</h2>
+        <p>The boss deals a lot of damage, and dodging won't help you much. Do NOT take "DMG Increases Greater" which increases all enemy damage dealt by 40%. This will make survival nearly impossible.</p>
+
+        <h2>Tip 6: Good Offensive Affixes</h2>
+        <p><strong>Ultimate Degen Greater</strong> and <strong>Bloodthirst</strong> are both good affixes to take. They give you points without hurting you much. Bloodthirst also provides lifesteal which helps you survive!</p>
+
+        <h2>Tip 7: Safe Affixes to Take</h2>
+        <p>The following affixes are safe choices that won't affect you much:</p>
+        <ul>
+          <li><strong>Protection Wind</strong></li>
+          <li><strong>Dodge Debuff</strong></li>
+          <li><strong>Skill Vulnerability</strong></li>
+          <li><strong>Support Degen Greater</strong></li>
+          <li><strong>Battle Enraged</strong> - won't matter much unless your damage is really weak</li>
+        </ul>
+
+        <h2>Tip 8: Avoid Shadow Dance Dream Wanderer</h2>
+        <p>"Shadow Dance Dream Wanderer" summons more clones, making dodging skills super hard. I don't recommend taking this one!</p>
+
+        <h2>Tip 9: Crit Rate Adjustments Are Great</h2>
+        <p>Crit Rate adjustment affixes are great to get. They help increase your crit rate, even if you lose a little damage in exchange.</p>
+
+        <h2>Conclusion</h2>
+        <p>You should be able to finish this boss raid and clear everything without spending too much time, whether you're F2P or spending. Don't forget that on the last week of this raid, the game gives you new buffs that will help you clear 100 points!</p>
+      `,
+    },
   ],
 };
 
