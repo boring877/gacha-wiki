@@ -13,7 +13,7 @@ import {
   getTalentsGroupedByCharacter,
   getCharactersList,
   getElements,
-  getPositions
+  getPositions,
 } from '../../../data/stella-sora/talents.js';
 
 const groupedTalents = getTalentsGroupedByCharacter();
@@ -62,15 +62,20 @@ const structuredData = {
     item: {
       '@type': 'Thing',
       name: `${char.name} Talents`,
-      description: `${char.name} - ${char.element} ${char.position} with ${char.talentCount} talents.`
-    }
-  }))
+      description: `${char.name} - ${char.element} ${char.position} with ${char.talentCount} talents.`,
+    },
+  })),
 };
 ---
 
 <TalentsLayout title={title} description={description} gameTitle={gameTitle}>
   <!-- Structured Data for SEO -->
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+    slot="head"
+  />
 
   <div class="talents-index">
     <!-- Summary Stats -->
@@ -99,7 +104,10 @@ const structuredData = {
     <!-- Shard Requirements Info -->
     <div class="shard-requirements-info">
       <h2>Talent Upgrade Requirements</h2>
-      <p class="shard-info-desc">Talents are upgraded using character shards obtained from duplicate pulls. You must complete each talent before moving to the next one.</p>
+      <p class="shard-info-desc">
+        Talents are upgraded using character shards obtained from duplicate pulls. You must complete
+        each talent before moving to the next one.
+      </p>
 
       <div class="shard-requirements-grid">
         <div class="shard-requirement-card rarity-4">
@@ -155,7 +163,10 @@ const structuredData = {
         </div>
       </div>
 
-      <p class="shard-note">Note: You cannot skip talents. Each talent must be fully upgraded (10 levels) before unlocking the next one.</p>
+      <p class="shard-note">
+        Note: You cannot skip talents. Each talent must be fully upgraded (10 levels) before
+        unlocking the next one.
+      </p>
     </div>
 
     <!-- Filters Section -->
@@ -167,148 +178,132 @@ const structuredData = {
           <input
             type="text"
             id="character-filter"
-            list="character-list"
             placeholder="Search character..."
             autocomplete="off"
           />
-          <datalist id="character-list">
-            {charactersList.map(char => (
-              <option value={char.name} />
-            ))}
-          </datalist>
         </div>
         <div class="filter-group">
           <label for="element-filter">Element</label>
           <select id="element-filter">
             <option value="">All Elements</option>
-            {elements.map(element => (
-              <option value={element}>{element}</option>
-            ))}
+            {elements.map(element => <option value={element}>{element}</option>)}
           </select>
         </div>
         <div class="filter-group">
           <label for="position-filter">Position</label>
           <select id="position-filter">
             <option value="">All Positions</option>
-            {positions.map(position => (
-              <option value={position}>{position}</option>
-            ))}
+            {positions.map(position => <option value={position}>{position}</option>)}
           </select>
         </div>
       </div>
     </div>
 
     <!-- Character Talents Sections -->
-    {Object.values(groupedTalents).map(character => (
-      <section
-        class="talent-character-section"
-        data-character={character.name}
-        data-element={character.element}
-        data-position={character.position}
-      >
-        <div class="talent-character-header">
-          <div class="character-icon-container">
-            <SSCharacterSmallImage
-              characterName={character.name}
-              alt={character.name}
-              width={64}
-              height={64}
-            />
-          </div>
-          <div class="talent-character-info">
-            <h2 class="talent-character-name">{character.name}</h2>
-            <div class="talent-character-meta">
-              <span class={`talent-meta-badge element-badge element-${character.element?.toLowerCase()}`}>
-                <SSElementImage
-                  elementName={character.element}
-                  width={20}
-                  height={20}
-                />
-                {character.element}
-              </span>
-              <span class="talent-meta-badge position-badge">
-                {character.position}
-              </span>
-              <span class="talent-meta-badge rarity-badge">
-                <SSRarityImage
-                  rarity={character.grade}
-                  type="character"
-                  width={48}
-                  height={48}
-                />
-              </span>
+    {
+      Object.values(groupedTalents).map(character => (
+        <section
+          class="talent-character-section"
+          data-character={character.name}
+          data-element={character.element}
+          data-position={character.position}
+        >
+          <div class="talent-character-header">
+            <div class="character-icon-container">
+              <SSCharacterSmallImage
+                characterName={character.name}
+                alt={character.name}
+                width={64}
+                height={64}
+              />
+            </div>
+            <div class="talent-character-info">
+              <h2 class="talent-character-name">{character.name}</h2>
+              <div class="talent-character-meta">
+                <span
+                  class={`talent-meta-badge element-badge element-${character.element?.toLowerCase()}`}
+                >
+                  <SSElementImage elementName={character.element} width={20} height={20} />
+                  {character.element}
+                </span>
+                <span class="talent-meta-badge position-badge">{character.position}</span>
+                <span class="talent-meta-badge rarity-badge">
+                  <SSRarityImage rarity={character.grade} type="character" width={48} height={48} />
+                </span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="talents-grid">
-          {character.talents.map((talent) => (
-            <div class="talent-card">
-              <div class="talent-card-header">
-                <div class="talent-icon-container">
-                  <SSTalentImage
-                    alt={talent.name}
-                    width={48}
-                    height={48}
-                  />
+          <div class="talents-grid">
+            {character.talents.map(talent => (
+              <div class="talent-card">
+                <div class="talent-card-header">
+                  <div class="talent-icon-container">
+                    <SSTalentImage alt={talent.name} width={48} height={48} />
+                  </div>
+                  <div class="talent-card-info">
+                    <span class="talent-card-number">Talent {talent.talentIndex}</span>
+                    <h3 class="talent-card-name">{talent.name}</h3>
+                  </div>
                 </div>
-                <div class="talent-card-info">
-                  <span class="talent-card-number">Talent {talent.talentIndex}</span>
-                  <h3 class="talent-card-name">{talent.name}</h3>
+
+                <div class="talent-main-effect">
+                  <span class="talent-effect-label">Main Effect</span>
+                  <p class="talent-effect-description" set:html={talent.mainEffect.description} />
                 </div>
-              </div>
 
-              <!-- Main Effect -->
-              <div class="talent-main-effect">
-                <span class="talent-effect-label">Main Effect</span>
-                <p class="talent-effect-description" set:html={talent.mainEffect.description}>
-                </p>
-              </div>
+                <div class="talent-stat-bonuses">
+                  <span class="talent-bonuses-label">
+                    Stat Bonuses ({character.grade === 5 ? '1 Dupe' : '2 Dupes'})
+                  </span>
+                  <div class="talent-bonuses-grid">
+                    {talent.statBonuses.map(bonus => (
+                      <div class="talent-bonus-item" data-stat={getStatType(bonus.name)}>
+                        <span class="talent-bonus-name">{bonus.name}</span>
+                        <span class="talent-bonus-value">{extractValue(bonus.description)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-              <!-- Stat Bonuses -->
-              <div class="talent-stat-bonuses">
-                <span class="talent-bonuses-label">Stat Bonuses ({character.grade === 5 ? '1 Dupe' : '2 Dupes'})</span>
-                <div class="talent-bonuses-grid">
-                  {talent.statBonuses.map((bonus) => (
-                    <div
-                      class="talent-bonus-item"
-                      data-stat={getStatType(bonus.name)}
-                    >
-                      <span class="talent-bonus-name">{bonus.name}</span>
-                      <span class="talent-bonus-value">{extractValue(bonus.description)}</span>
+                <div class="talent-shard-requirements">
+                  <div class="shard-req-header">
+                    <SSShardImage
+                      characterName={character.name}
+                      width={48}
+                      height={48}
+                      class="shard-req-icon"
+                    />
+                    <h4 class="shard-req-title">Upgrade Cost</h4>
+                  </div>
+                  <div class="shard-req-content">
+                    <div class="shard-req-item">
+                      <span class="shard-req-text">This Talent:</span>
+                      <span class="shard-req-value">
+                        {character.grade === 5 ? '1 Dupe' : '2 Dupes'}
+                        <span class="shard-req-shards">(60 Shards)</span>
+                      </span>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Shard Requirements -->
-              <div class="talent-shard-requirements">
-                <div class="shard-req-header">
-                  <SSShardImage characterName={character.name} width={48} height={48} class="shard-req-icon" />
-                  <h4 class="shard-req-title">Upgrade Cost</h4>
-                </div>
-                <div class="shard-req-content">
-                  <div class="shard-req-item">
-                    <span class="shard-req-text">This Talent:</span>
-                    <span class="shard-req-value">
-                      {character.grade === 5 ? '1 Dupe' : '2 Dupes'}
-                      <span class="shard-req-shards">(60 Shards)</span>
-                    </span>
-                  </div>
-                  <div class="shard-req-item">
-                    <span class="shard-req-text">Total to unlock Talent {talent.talentIndex}:</span>
-                    <span class="shard-req-value">
-                      {character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2} {(character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2) === 1 ? 'Dupe' : 'Dupes'}
-                      <span class="shard-req-shards">({talent.talentIndex * 60} Shards)</span>
-                    </span>
+                    <div class="shard-req-item">
+                      <span class="shard-req-text">
+                        Total to unlock Talent {talent.talentIndex}:
+                      </span>
+                      <span class="shard-req-value">
+                        {character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2}{' '}
+                        {(character.grade === 5 ? talent.talentIndex : talent.talentIndex * 2) === 1
+                          ? 'Dupe'
+                          : 'Dupes'}
+                        <span class="shard-req-shards">({talent.talentIndex * 60} Shards)</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    ))}
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </div>
 </TalentsLayout>
 
@@ -325,14 +320,15 @@ const structuredData = {
       const selectedElement = elementFilter?.value || '';
       const selectedPosition = positionFilter?.value || '';
 
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const el = section as HTMLElement;
         const charName = el.dataset.character || '';
         const charElement = el.dataset.element || '';
         const charPosition = el.dataset.position || '';
 
         // For character, do partial match (contains)
-        const matchesCharacter = !selectedCharacter || charName.toLowerCase().includes(selectedCharacter);
+        const matchesCharacter =
+          !selectedCharacter || charName.toLowerCase().includes(selectedCharacter);
         const matchesElement = !selectedElement || charElement === selectedElement;
         const matchesPosition = !selectedPosition || charPosition === selectedPosition;
 

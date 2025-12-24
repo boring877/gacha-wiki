@@ -14,7 +14,7 @@ export const statDescriptions = {
   chargeEfficiencySupport: 'Energy charge rate when playing as Support Trekker',
   elementalDmg: 'Additional DMG multiplier when dealing elemental DMG',
   elementalPen: 'Target elemental RES reduction when dealing DMG',
-  elementalIgnoreRes: 'Percentage of target elemental RES ignored'
+  elementalIgnoreRes: 'Percentage of target elemental RES ignored',
 };
 
 export const characterBaseStats = {
@@ -32,7 +32,7 @@ export const characterBaseStats = {
     element: 'Ignis',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   ann: {
     def: 190,
@@ -47,7 +47,7 @@ export const characterBaseStats = {
     element: 'Ventus',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   canace: {
     def: 190,
@@ -62,7 +62,7 @@ export const characterBaseStats = {
     element: 'Ventus',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   chitose: {
     def: 190,
@@ -77,7 +77,7 @@ export const characterBaseStats = {
     element: 'Aqua',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   chixia: {
     def: 190,
@@ -92,7 +92,7 @@ export const characterBaseStats = {
     element: 'Ignis',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   flora: {
     def: 190,
@@ -107,7 +107,7 @@ export const characterBaseStats = {
     element: 'Ignis',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   freesia: {
     def: 190,
@@ -122,7 +122,7 @@ export const characterBaseStats = {
     element: 'Aqua',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   fuyuka: {
     def: 190,
@@ -137,7 +137,7 @@ export const characterBaseStats = {
     element: 'Ignis',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   gerie: {
     def: 190,
@@ -152,7 +152,7 @@ export const characterBaseStats = {
     element: 'Terra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   jinglin: {
     def: 190,
@@ -167,7 +167,7 @@ export const characterBaseStats = {
     element: 'Lux',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   kasimira: {
     def: 190,
@@ -182,7 +182,7 @@ export const characterBaseStats = {
     element: 'Ignis',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   minova: {
     def: 190,
@@ -197,7 +197,7 @@ export const characterBaseStats = {
     element: 'Lux',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   mistique: {
     def: 190,
@@ -212,7 +212,7 @@ export const characterBaseStats = {
     element: 'Umbra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   nanoha: {
     def: 190,
@@ -227,7 +227,7 @@ export const characterBaseStats = {
     element: 'Ventus',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   nazuka: {
     def: 190,
@@ -242,7 +242,7 @@ export const characterBaseStats = {
     element: 'Ventus',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   nazuna: {
     def: 190,
@@ -257,7 +257,7 @@ export const characterBaseStats = {
     element: 'Terra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   noya: {
     def: 190,
@@ -272,7 +272,7 @@ export const characterBaseStats = {
     element: 'Ventus',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   shia: {
     def: 190,
@@ -287,7 +287,7 @@ export const characterBaseStats = {
     element: 'Lux',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   tilia: {
     def: 190,
@@ -302,7 +302,7 @@ export const characterBaseStats = {
     element: 'Lux',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
 
   // 8 characters that need manual data entry (using defaults from ultimate.energy)
@@ -319,7 +319,7 @@ export const characterBaseStats = {
     element: 'Umbra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   coronis: {
     def: 190,
@@ -334,7 +334,7 @@ export const characterBaseStats = {
     element: 'Umbra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   cosette: {
     def: 190,
@@ -349,7 +349,7 @@ export const characterBaseStats = {
     element: 'Umbra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   iris: {
     def: 190,
@@ -364,7 +364,7 @@ export const characterBaseStats = {
     element: 'Aqua',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   laru: {
     def: 190,
@@ -379,7 +379,7 @@ export const characterBaseStats = {
     element: 'Lux',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   ridge: {
     def: 190,
@@ -394,7 +394,7 @@ export const characterBaseStats = {
     element: 'Terra',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   shimiao: {
     def: 190,
@@ -409,7 +409,7 @@ export const characterBaseStats = {
     element: 'Aqua',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
+    elementalIgnoreRes: 0.0,
   },
   teresa: {
     def: 190,
@@ -424,8 +424,23 @@ export const characterBaseStats = {
     element: 'Aqua',
     elementalDmg: 100.0,
     elementalPen: 0,
-    elementalIgnoreRes: 0.0
-  }
+    elementalIgnoreRes: 0.0,
+  },
+  snowishLaru: {
+    def: 190,
+    critRate: 5.0,
+    critDmg: 150.0,
+    maxEnergy: 240,
+    chargeEfficiencyMain: 100.0,
+    chargeEfficiencySupport: 75.0,
+    vulExploit: 0.0,
+    defPen: 0,
+    ignoreDef: 0.0,
+    element: 'Ignis',
+    elementalDmg: 100.0,
+    elementalPen: 0,
+    elementalIgnoreRes: 0.0,
+  },
 };
 
 export default characterBaseStats;

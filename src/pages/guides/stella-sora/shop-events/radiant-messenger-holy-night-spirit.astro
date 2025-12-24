@@ -1,0 +1,489 @@
+---
+import RadiantMessengerLayout from '../../../../layouts/stella-sora/RadiantMessengerLayout.astro';
+import { radiantMessengerHolyNightSpiritEvent } from '../../../../data/stella-sora/events/radiant-messenger-holy-night-spirit.js';
+import RadiantMessengerImages from '../../../../components/stella-sora/shop-events/RadiantMessengerImages.astro';
+
+const event = radiantMessengerHolyNightSpiritEvent;
+
+// Set metadata
+const title = `${event.title} - ${event.subtitle}`;
+const description = event.description;
+
+// Transform shop items
+const shopItems = event.shopItems.map(item => ({
+  name: item.name,
+  stockLeft: item.stock?.type === 'unlimited' ? 0 : item.stock?.quantity || 1,
+  cost: item.price || 0,
+  quantity: item.quantity || 1,
+  image: item.image,
+  rarity: item.rarity?.toLowerCase() || 'common',
+  stockType: item.stock?.type || 'limited',
+}));
+
+// Calculate total cost for all limited items
+const totalCost = event.shopItems.reduce((sum, item) => {
+  if (item.stock?.type === 'limited') {
+    return sum + item.price * (item.stock?.quantity || 1);
+  }
+  return sum;
+}, 0);
+
+// Calculate total cookies from quests
+const questCategories = Object.values(event.quests || {});
+const totalCookiesFromQuests = questCategories.reduce((total, category) => {
+  return (
+    total + category.quests.reduce((catTotal, quest) => catTotal + (quest.cookieReward || 0), 0)
+  );
+}, 0);
+---
+
+<RadiantMessengerLayout
+  title={title}
+  description={description}
+  gameTitle={event.title}
+  endDate={event.shopEndDate}
+  currency={event.currency}
+>
+  <!-- Limited Disc Notice -->
+  <section class="limited-disc-notice">
+    <div class="notice-content">
+      <h2 class="notice-title">Limited Disc - Must Buy!</h2>
+      <div class="notice-disc">
+        <RadiantMessengerImages
+          imageName="item_214041.png"
+          alt="A Gift for the Journey"
+          width={200}
+          height={200}
+        />
+        <div class="notice-disc-info">
+          <span class="disc-name">{event.limitedDisc.name}</span>
+          <span class="disc-note">{event.limitedDisc.note}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currency Info -->
+  <section class="currency-section">
+    <div class="currency-header">
+      <RadiantMessengerImages
+        imageName="item_73104.png"
+        alt={event.currency.name}
+        width={100}
+        height={100}
+      />
+      <h3 class="currency-name">{event.currency.name}</h3>
+    </div>
+    <div class="currency-sources">
+      <h4>How to Obtain:</h4>
+      <ul>
+        {event.currency.sources.map(source => <li>{source}</li>)}
+      </ul>
+    </div>
+    <div class="total-cost-section">
+      <span class="total-label">Total Cost (All Limited Items):</span>
+      <div class="total-value">
+        <RadiantMessengerImages
+          imageName="item_73104.png"
+          alt={event.currency.name}
+          width={50}
+          height={50}
+        />
+        <span class="total-amount">{totalCost.toLocaleString()}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Items -->
+  <section class="ss-shop-event-items">
+    <h2 class="ss-shop-items-title">Shop Items</h2>
+
+    <div class="shop-items-grid">
+      {
+        shopItems.map(item => (
+          <div class="shop-item-card" data-rarity={item.rarity}>
+            <div class="item-image-wrapper">
+              <RadiantMessengerImages
+                imageName={item.image}
+                alt={item.name}
+                className="item-image"
+                width={300}
+                height={300}
+              />
+            </div>
+
+            <div class="item-info">
+              <h3 class="item-title">{item.name}</h3>
+
+              <div class="item-stats">
+                <div class="stat-row">
+                  <span class="stat-label">Stock:</span>
+                  <span class="stat-value stock-amount">
+                    {item.stockType === 'unlimited' ? '∞' : item.stockLeft}
+                  </span>
+                </div>
+
+                <div class="stat-row">
+                  <span class="stat-label">Cost:</span>
+                  <div class="cost-display">
+                    <RadiantMessengerImages
+                      imageName="item_73104.png"
+                      alt={event.currency.name}
+                      className="price-icon"
+                      width={50}
+                      height={50}
+                    />
+                    <span class="stat-value item-cost">{item.cost}</span>
+                  </div>
+                </div>
+
+                <div class="stat-row">
+                  <span class="stat-label">Qty:</span>
+                  <span class="stat-value">x{item.quantity}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Quest Rewards Section -->
+  {
+    event.quests && (
+      <section class="quest-rewards-section">
+        <h2 class="ss-shop-items-title">Quest Rewards</h2>
+
+        <div class="quest-summary">
+          <span class="quest-summary-label">Total Cookies from All Quests:</span>
+          <div class="quest-summary-value">
+            <RadiantMessengerImages
+              imageName="item_73104.png"
+              alt={event.currency.name}
+              width={50}
+              height={50}
+            />
+            <span class="quest-summary-amount">{totalCookiesFromQuests.toLocaleString()}</span>
+          </div>
+        </div>
+
+        {Object.values(event.quests).map(category => (
+          <div class="quest-category">
+            <h3 class="quest-category-title">{category.title}</h3>
+
+            {category.completionRewards && (
+              <div class="quest-completion-rewards">
+                <p class="quest-completion-label">After finishing all quests you get:</p>
+                <p class="quest-rewards-text">{category.completionRewards.items.join(', ')}</p>
+              </div>
+            )}
+
+            <div class="quest-table-container">
+              <table class="quest-table">
+                <thead>
+                  <tr>
+                    <th>Quest Name</th>
+                    <th>{event.currency.name}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {category.quests.map(quest => (
+                    <tr>
+                      <td>{quest.name}</td>
+                      <td>x{quest.cookieReward}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div class="quest-category-total">
+              <span>Category Total:</span>
+              <strong>
+                x{category.quests.reduce((sum, q) => sum + q.cookieReward, 0).toLocaleString()}
+              </strong>
+            </div>
+          </div>
+        ))}
+      </section>
+    )
+  }
+</RadiantMessengerLayout>
+
+<style>
+  .limited-disc-notice {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+    border: 2px solid #ef4444;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .notice-content {
+    text-align: center;
+  }
+
+  .notice-title {
+    color: #ef4444;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+
+  .notice-disc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .notice-disc img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .currency-header img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .notice-disc-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .disc-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .disc-note {
+    font-size: 0.9rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .currency-section {
+    background: var(--ss-bg-card);
+    border: 1px solid var(--ss-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .currency-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .currency-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    margin: 0;
+  }
+
+  .currency-sources h4 {
+    font-size: 1rem;
+    color: var(--ss-text-secondary);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .currency-sources ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .currency-sources li {
+    margin-bottom: 0.25rem;
+  }
+
+  .total-cost-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ss-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .total-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .total-value {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ss-bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--ss-primary);
+  }
+
+  .total-value img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .total-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ss-primary);
+  }
+
+  /* Quest Rewards Section */
+  .quest-rewards-section {
+    margin-top: 2rem;
+  }
+
+  .quest-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: var(--ss-bg-card);
+    border: 1px solid var(--ss-primary);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .quest-summary-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+  }
+
+  .quest-summary-value {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .quest-summary-value img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .quest-summary-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ss-primary);
+  }
+
+  .quest-category {
+    background: var(--ss-bg-card);
+    border: 1px solid var(--ss-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quest-category-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    margin: 0 0 1rem 0;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--ss-primary);
+  }
+
+  .quest-completion-rewards {
+    background: var(--ss-bg-primary);
+    border: 1px solid var(--ss-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .quest-completion-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .quest-rewards-text {
+    font-size: 0.85rem;
+    color: var(--ss-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .quest-table-container {
+    overflow-x: auto;
+  }
+
+  .quest-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .quest-table th {
+    background: var(--ss-bg-primary);
+    color: var(--ss-text-primary);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--ss-border);
+  }
+
+  .quest-table td {
+    color: var(--ss-text-secondary);
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--ss-border);
+  }
+
+  .quest-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .quest-category-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--ss-border);
+    font-size: 0.95rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .quest-category-total strong {
+    color: var(--ss-primary);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .quest-summary {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .quest-table {
+      font-size: 0.8rem;
+    }
+
+    .quest-table th,
+    .quest-table td {
+      padding: 0.5rem;
+    }
+  }
+</style>

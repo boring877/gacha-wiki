@@ -1,0 +1,130 @@
+---
+/**
+ * Radiant Messenger, Holy Night Spirit Event Images Component
+ * Handles image imports and mapping for Christmas event
+ */
+
+import { Image } from 'astro:assets';
+
+// Import all images for Radiant Messenger event
+import currency from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_73104.png';
+import aGiftForTheJourney from '../../../assets/images/games/stella-sora/discs/a-gift-for-the-journey/icon.png';
+import aGiftForTheJourneyMelody from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_224041.png';
+import honorTitle from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_116004.png';
+import colossusEssence from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_21023.png';
+import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_502.png';
+import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_503.png';
+import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_35000.png';
+import exquisiteBlower from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_33032.png';
+import emergingTalent from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_33052.png';
+import fragrantIceDelight from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_33072.png';
+import exeuntBowler from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_20073.png';
+import magicSoundGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_32003.png';
+import evernightEssence from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_21093.png';
+import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_30004.png';
+import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_50004.png';
+import spotlightBowler from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_20072.png';
+import rhythmGameCartridge from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_32002.png';
+import emberfliesSoul from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_21092.png';
+import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_82001.png';
+import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_82007.png';
+import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_82004.png';
+import dorra from '../../../assets/images/games/stella-sora/EventShop/Radiant Messenger Holy Night Spirit/item_1.png';
+
+// Image mapping
+const imageMap = {
+  // By item ID
+  'item_73104.png': currency,
+  'item_214041.png': aGiftForTheJourney,
+  'item_224041.png': aGiftForTheJourneyMelody,
+  'item_116004.png': honorTitle,
+  'item_21023.png': colossusEssence,
+  'item_502.png': ceruleanTicket,
+  'item_503.png': sproutTicket,
+  'item_35000.png': starEmblemPolisher,
+  'item_33032.png': exquisiteBlower,
+  'item_33052.png': emergingTalent,
+  'item_33072.png': fragrantIceDelight,
+  'item_20073.png': exeuntBowler,
+  'item_32003.png': magicSoundGameCartridge,
+  'item_21093.png': evernightEssence,
+  'item_30004.png': trekkersHandwrittenEncyclopedia,
+  'item_50004.png': starlitColoredGlass,
+  'item_20072.png': spotlightBowler,
+  'item_32002.png': rhythmGameCartridge,
+  'item_21092.png': emberfliesSoul,
+  'item_82001.png': noviceTrekkerPromotionBox,
+  'item_82007.png': beginnerCartridgeBox,
+  'item_82004.png': noviceDiscPromotionBox,
+  'item_1.png': dorra,
+  'item_30.png': dorra, // Monolith Stairs Pass - using dorra as fallback
+
+  // By name
+  'Snowish Gingerbread Cookie': currency,
+  'A Gift for the Journey': aGiftForTheJourney,
+  'A Gift for the Journey Melody': aGiftForTheJourneyMelody,
+  'Radiant Messenger, Holy Night Spirit': honorTitle,
+  'Colossus Essence': colossusEssence,
+  'Cerulean Ticket': ceruleanTicket,
+  'Sprout Ticket': sproutTicket,
+  'Star Emblem Polisher': starEmblemPolisher,
+  'Exquisite Blower': exquisiteBlower,
+  'Emerging Talent': emergingTalent,
+  'Fragrant Ice Delight': fragrantIceDelight,
+  'Exeunt Bowler': exeuntBowler,
+  'Magic Sound Game Cartridge': magicSoundGameCartridge,
+  'Evernight Essence': evernightEssence,
+  "Trekker's Handwritten Encyclopedia": trekkersHandwrittenEncyclopedia,
+  'Starlit Colored Glass': starlitColoredGlass,
+  'Spotlight Bowler': spotlightBowler,
+  'Rhythm Game Cartridge': rhythmGameCartridge,
+  'Emberflies Soul': emberfliesSoul,
+  'Novice Trekker Promotion Box': noviceTrekkerPromotionBox,
+  'Beginner Cartridge Box': beginnerCartridgeBox,
+  'Novice Disc Promotion Box': noviceDiscPromotionBox,
+  'Monolith Stairs Pass': dorra,
+  Dorra: dorra,
+};
+
+// Props interface
+interface Props {
+  imageName: string;
+  alt?: string;
+  class?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+}
+
+const {
+  imageName,
+  alt = '',
+  class: classNameFromClass,
+  className,
+  width = 400,
+  height = 400,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Use either className or class
+const finalClassName = className || classNameFromClass || '';
+
+// Get the image module based on the imageName
+const imageModule = imageMap[imageName] || currency;
+---
+
+<Image
+  src={imageModule}
+  alt={alt || imageName.replace(/_/g, ' ').replace('.png', '').replace('.jpg', '')}
+  width={width}
+  height={height}
+  class={finalClassName}
+  loading={loading}
+  format={format}
+  quality={quality}
+/>

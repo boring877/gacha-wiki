@@ -93,6 +93,8 @@ import { disc as ripplesOfNostalgia } from './discs/ripples-of-nostalgia.js';
 import { disc as sunlitBlossom } from './discs/sunlit-blossom.js';
 import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
+import { disc as aGiftForTheJourney } from './discs/a-gift-for-the-journey.js';
+import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
 
 // Collect all discs
 const allDiscs = [
@@ -170,6 +172,8 @@ const allDiscs = [
   sunlitBlossom,
   swordAgainstStream,
   theLostPilgrim,
+  aGiftForTheJourney,
+  snowyNightSurprise,
 ];
 
 // Helper to format skill description by replacing placeholders with params

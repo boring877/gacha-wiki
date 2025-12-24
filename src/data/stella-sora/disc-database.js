@@ -108,6 +108,8 @@ import { disc as ripplesOfNostalgia } from './discs/ripples-of-nostalgia.js';
 import { disc as sunlitBlossom } from './discs/sunlit-blossom.js';
 import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
+import { disc as aGiftForTheJourney } from './discs/a-gift-for-the-journey.js';
+import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
 
 // Collect all raw discs
 const allRawDiscs = [
@@ -184,6 +186,8 @@ const allRawDiscs = [
   sunlitBlossom,
   swordAgainstStream,
   theLostPilgrim,
+  aGiftForTheJourney,
+  snowyNightSurprise,
 ];
 
 // Process discs with full data for database
@@ -193,17 +197,19 @@ export const discDatabase = allRawDiscs
     const slug = generateSlug(disc.name);
 
     // Process main skill (Melody)
-    const melodySkill = disc.mainSkill ? {
-      name: disc.mainSkill.name,
-      icon: disc.mainSkill.icon,
-      iconBackground: disc.mainSkill.iconBackground,
-      description: disc.mainSkill.description,
-      params: disc.mainSkill.params,
-      formattedDescriptions: disc.mainSkill.params.map(levelParams =>
-        formatDescription(disc.mainSkill.description, levelParams)
-      ),
-      maxLevel: disc.mainSkill.params.length,
-    } : null;
+    const melodySkill = disc.mainSkill
+      ? {
+          name: disc.mainSkill.name,
+          icon: disc.mainSkill.icon,
+          iconBackground: disc.mainSkill.iconBackground,
+          description: disc.mainSkill.description,
+          params: disc.mainSkill.params,
+          formattedDescriptions: disc.mainSkill.params.map(levelParams =>
+            formatDescription(disc.mainSkill.description, levelParams)
+          ),
+          maxLevel: disc.mainSkill.params.length,
+        }
+      : null;
 
     // Process secondary skills (Harmony)
     const harmonySkills = (disc.secondarySkills || []).map(skill => ({

@@ -4,11 +4,27 @@
 import { STELLA_SORA_CHARACTERS } from './characters.js';
 
 // Helper function to find character by name (case-insensitive)
+// Prefers exact matches, then partial matches
 const findCharacter = name => {
+  const normalizedName = name.toLowerCase().trim();
+
+  // First try exact match
+  const exactMatch = STELLA_SORA_CHARACTERS.find(
+    char => char.name.toLowerCase() === normalizedName
+  );
+  if (exactMatch) return exactMatch;
+
+  // Then try starts with (to handle "Snowish Laru" before "Laru")
+  const startsWithMatch = STELLA_SORA_CHARACTERS.find(char =>
+    char.name.toLowerCase().startsWith(normalizedName)
+  );
+  if (startsWithMatch) return startsWithMatch;
+
+  // Finally try contains
   return STELLA_SORA_CHARACTERS.find(
     char =>
-      char.name.toLowerCase().includes(name.toLowerCase().trim()) ||
-      name.toLowerCase().trim().includes(char.name.toLowerCase())
+      char.name.toLowerCase().includes(normalizedName) ||
+      normalizedName.includes(char.name.toLowerCase())
   );
 };
 
@@ -79,8 +95,8 @@ export const GAME_MODES = {
   },
 };
 
-// Character lists for tier rankings (All 27 characters)
-// 5-Star: Nanoha, Freesia, Minova, Nazuka, Fuyuka, Mistique, Chixia, Chitose, Gerie, Shia, Nazuna
+// Character lists for tier rankings (All 29 characters)
+// 5-Star: Nanoha, Freesia, Minova, Nazuka, Fuyuka, Mistique, Chixia, Chitose, Gerie, Shia, Nazuna, Snowish Laru
 // 4-Star: Amber, Tilia, Kasimira, Iris, Noya, Shimiao, Ridge, Jinglin, Coronis, Canace, Ann, Flora, Teresa, Cosette, Caramel, Laru
 const OVERALL_CHARACTERS = {
   SSS: ['Shia', 'Fuyuka'],
@@ -97,6 +113,7 @@ const OVERALL_CHARACTERS = {
     'Tilia',
     'Coronis',
     'Amber',
+    'Snowish Laru',
   ],
   A: ['Jinglin', 'Caramel', 'Laru', 'Kasimira', 'Iris', 'Shimiao', 'Ridge', 'Canace'],
   B: [],

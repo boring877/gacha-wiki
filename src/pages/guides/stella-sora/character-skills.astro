@@ -34,15 +34,16 @@ const characterElementMap: Record<string, string> = {
   shimiao: 'Aqua',
   teresa: 'Ventus',
   tilia: 'Terra',
+  snowishLaru: 'Ignis',
 };
 
 // Map skill type from data to image file type
 function mapSkillType(type: string): 'normal-attack' | 'skill' | 'support-skill' | 'ultimate' {
   const typeMap: Record<string, 'normal-attack' | 'skill' | 'support-skill' | 'ultimate'> = {
-    'Attack': 'normal-attack',
+    Attack: 'normal-attack',
     'Main Skill': 'skill',
     'Support Skill': 'support-skill',
-    'Ultimate': 'ultimate',
+    Ultimate: 'ultimate',
   };
   return typeMap[type] || 'normal-attack';
 }
@@ -50,10 +51,10 @@ function mapSkillType(type: string): 'normal-attack' | 'skill' | 'support-skill'
 // Get skill type CSS class
 function getSkillTypeClass(type: string): string {
   const classMap: Record<string, string> = {
-    'Attack': 'attack',
+    Attack: 'attack',
     'Main Skill': 'main-skill',
     'Support Skill': 'support-skill',
-    'Ultimate': 'ultimate',
+    Ultimate: 'ultimate',
   };
   return classMap[type] || 'attack';
 }
@@ -71,7 +72,8 @@ interface NormalizedSkill {
 // Helper function to convert character data to unified skills array format
 function normalizeSkills(charData: any): NormalizedSkill[] {
   // Check if raw data with params exists - prefer this for level scaling
-  const hasRawData = charData.normalAttack || charData.skill || charData.supportSkill || charData.ultimate;
+  const hasRawData =
+    charData.normalAttack || charData.skill || charData.supportSkill || charData.ultimate;
 
   // If only pre-formatted skills array exists (no raw data), use it
   if (!hasRawData && charData.skills && Array.isArray(charData.skills)) {
@@ -81,7 +83,7 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
       cooldown: skill.cooldown || 0,
       energyCost: skill.energyCost || 0,
       description: skill.description || '',
-      params: [] // Pre-formatted skills don't have params
+      params: [], // Pre-formatted skills don't have params
     }));
   }
 
@@ -95,7 +97,7 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
       cooldown: 0,
       energyCost: 0,
       description: charData.normalAttack.description || '',
-      params: charData.normalAttack.params || []
+      params: charData.normalAttack.params || [],
     });
   }
 
@@ -106,7 +108,7 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
       cooldown: parseInt(charData.skill.cooldown) || 0,
       energyCost: 0,
       description: charData.skill.description || '',
-      params: charData.skill.params || []
+      params: charData.skill.params || [],
     });
   }
 
@@ -117,7 +119,7 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
       cooldown: parseInt(charData.supportSkill.cooldown) || 0,
       energyCost: 0,
       description: charData.supportSkill.description || '',
-      params: charData.supportSkill.params || []
+      params: charData.supportSkill.params || [],
     });
   }
 
@@ -128,7 +130,7 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
       cooldown: parseInt(charData.ultimate.cooldown) || 0,
       energyCost: charData.ultimate.energy || 0,
       description: charData.ultimate.description || '',
-      params: charData.ultimate.params || []
+      params: charData.ultimate.params || [],
     });
   }
 
@@ -136,16 +138,18 @@ function normalizeSkills(charData: any): NormalizedSkill[] {
 }
 
 // Convert object to array for iteration
-const skillsArray = Object.entries(characterSkills).map(([slug, data]) => {
-  const charData = data as any;
-  return {
-    slug,
-    name: charData.name,
-    id: charData.id,
-    element: characterElementMap[slug] || 'Ignis',
-    skills: normalizeSkills(charData)
-  };
-}).sort((a, b) => a.name.localeCompare(b.name));
+const skillsArray = Object.entries(characterSkills)
+  .map(([slug, data]) => {
+    const charData = data as any;
+    return {
+      slug,
+      name: charData.name,
+      id: charData.id,
+      element: characterElementMap[slug] || 'Ignis',
+      skills: normalizeSkills(charData),
+    };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 // Calculate stats
 const totalCharacters = skillsArray.length;
@@ -168,27 +172,27 @@ const breadcrumbData = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://gachawiki.info'
+      item: 'https://gachawiki.info',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Guides',
-      item: 'https://gachawiki.info/guides/'
+      item: 'https://gachawiki.info/guides/',
     },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Stella Sora',
-      item: 'https://gachawiki.info/guides/stella-sora/'
+      item: 'https://gachawiki.info/guides/stella-sora/',
     },
     {
       '@type': 'ListItem',
       position: 4,
       name: 'Character Skills',
-      item: 'https://gachawiki.info/guides/stella-sora/character-skills/'
-    }
-  ]
+      item: 'https://gachawiki.info/guides/stella-sora/character-skills/',
+    },
+  ],
 };
 
 // Structured data for SEO
@@ -204,16 +208,26 @@ const structuredData = {
     item: {
       '@type': 'Thing',
       name: char.name,
-      description: `${char.element} character with ${char.skills?.length || 4} skills`
-    }
-  }))
+      description: `${char.element} character with ${char.skills?.length || 4} skills`,
+    },
+  })),
 };
 ---
 
 <CharacterSkillsLayout title={title} description={description} gameTitle={gameTitle}>
   <!-- Structured Data for SEO -->
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbData)}
+    slot="head"
+  />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+    slot="head"
+  />
 
   <div class="character-skills-index">
     <!-- Summary Section -->
@@ -256,9 +270,7 @@ const structuredData = {
           <label for="element-filter">Element</label>
           <select id="element-filter">
             <option value="">All Elements</option>
-            {elements.map(element => (
-              <option value={element}>{element}</option>
-            ))}
+            {elements.map(element => <option value={element}>{element}</option>)}
           </select>
         </div>
       </form>
@@ -270,92 +282,99 @@ const structuredData = {
     </div>
 
     <!-- Character Sections -->
-    {skillsArray.map(char => (
-      <section
-        class="skill-character-section"
-        id={`character-${char.slug}`}
-        data-name={char.name.toLowerCase()}
-        data-element={char.element}
-      >
-        <!-- Character Header -->
-        <div class="skill-character-header">
-          <div class="character-icon-container">
-            <SSCharacterSmallImage
-              characterName={char.slug}
-              alt={`${char.name} icon`}
-              width={64}
-              height={64}
-            />
-          </div>
-          <div class="skill-character-info">
-            <h2 class="skill-character-name">{char.name}</h2>
-            <div class="skill-character-meta">
-              <span class={`skill-meta-badge element-badge element-${char.element?.toLowerCase()}`}>
-                <SSElementImage
-                  elementName={char.element}
-                  alt={char.element}
-                  width={20}
-                  height={20}
-                />
-                {char.element}
-              </span>
+    {
+      skillsArray.map(char => (
+        <section
+          class="skill-character-section"
+          id={`character-${char.slug}`}
+          data-name={char.name.toLowerCase()}
+          data-element={char.element}
+        >
+          <div class="skill-character-header">
+            <div class="character-icon-container">
+              <SSCharacterSmallImage
+                characterName={char.slug}
+                alt={`${char.name} icon`}
+                width={64}
+                height={64}
+              />
             </div>
-          </div>
-        </div>
-
-        <!-- Skills Grid -->
-        <div class="skills-content">
-          <div class="skills-cards">
-            {char.skills?.map((skill: NormalizedSkill, index: number) => (
-              <div
-                class={`skill-card-mini ${getSkillTypeClass(skill.type)}`}
-                data-skill={JSON.stringify({
-                  name: skill.name,
-                  type: skill.type,
-                  cooldown: skill.cooldown,
-                  energyCost: skill.energyCost,
-                  description: skill.description,
-                  params: skill.params,
-                  charSlug: char.slug
-                })}
-                data-skill-id={`${char.slug}-${index}`}
-              >
-                <div class="skill-card-icon">
-                  <SSCharacterSkillIcon
-                    characterSlug={char.slug}
-                    skillType={mapSkillType(skill.type)}
-                    alt={`${skill.name} icon`}
-                    width={80}
-                    height={80}
+            <div class="skill-character-info">
+              <h2 class="skill-character-name">{char.name}</h2>
+              <div class="skill-character-meta">
+                <span
+                  class={`skill-meta-badge element-badge element-${char.element?.toLowerCase()}`}
+                >
+                  <SSElementImage
+                    elementName={char.element}
+                    alt={char.element}
+                    width={20}
+                    height={20}
                   />
-                </div>
-                <span class="skill-card-name">{skill.name}</span>
-                <span class={`skill-card-type ${getSkillTypeClass(skill.type)}`}>{skill.type}</span>
+                  {char.element}
+                </span>
               </div>
-            ))}
+            </div>
           </div>
 
-          <!-- Skill Detail Panel (per character) -->
-          <div class="skill-detail-panel" data-char={char.slug}>
-            <div class="detail-header">
-              <div class="detail-icon" id={`detail-icon-${char.slug}`}></div>
-              <div class="detail-info">
-                <h3 class="detail-name" id={`detail-name-${char.slug}`}></h3>
-                <div class="detail-meta" id={`detail-meta-${char.slug}`}></div>
+          <div class="skills-content">
+            <div class="skills-cards">
+              {char.skills?.map((skill: NormalizedSkill, index: number) => (
+                <div
+                  class={`skill-card-mini ${getSkillTypeClass(skill.type)}`}
+                  data-skill={JSON.stringify({
+                    name: skill.name,
+                    type: skill.type,
+                    cooldown: skill.cooldown,
+                    energyCost: skill.energyCost,
+                    description: skill.description,
+                    params: skill.params,
+                    charSlug: char.slug,
+                  })}
+                  data-skill-id={`${char.slug}-${index}`}
+                >
+                  <div class="skill-card-icon">
+                    <SSCharacterSkillIcon
+                      characterSlug={char.slug}
+                      skillType={mapSkillType(skill.type)}
+                      alt={`${skill.name} icon`}
+                      width={80}
+                      height={80}
+                    />
+                  </div>
+                  <span class="skill-card-name">{skill.name}</span>
+                  <span class={`skill-card-type ${getSkillTypeClass(skill.type)}`}>
+                    {skill.type}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div class="skill-detail-panel" data-char={char.slug}>
+              <div class="detail-header">
+                <div class="detail-icon" id={`detail-icon-${char.slug}`} />
+                <div class="detail-info">
+                  <h3 class="detail-name" id={`detail-name-${char.slug}`} />
+                  <div class="detail-meta" id={`detail-meta-${char.slug}`} />
+                </div>
+              </div>
+              <div class="detail-description" id={`detail-description-${char.slug}`} />
+              <div class="level-selector" id={`level-selector-${char.slug}`} style="display: none;">
+                <span class="level-label">Level:</span>
+                <button class="level-btn level-minus" type="button">
+                  -
+                </button>
+                <input type="number" class="level-input" min="1" value="1" />
+                <button class="level-btn level-plus" type="button">
+                  +
+                </button>
+                <span class="level-max" />
               </div>
             </div>
-            <div class="detail-description" id={`detail-description-${char.slug}`}></div>
-            <div class="level-selector" id={`level-selector-${char.slug}`} style="display: none;">
-              <span class="level-label">Level:</span>
-              <button class="level-btn level-minus" type="button">-</button>
-              <input type="number" class="level-input" min="1" value="1" />
-              <button class="level-btn level-plus" type="button">+</button>
-              <span class="level-max"></span>
-            </div>
           </div>
-        </div>
-      </section>
-    ))}
+        </section>
+      ))
+    }
   </div>
 
   <!-- Client-side filtering and skill detail script -->
@@ -413,7 +432,9 @@ const structuredData = {
             value = levels[Math.min(level - 1, levels.length - 1)] || levels[0];
           }
 
-          formatted = formatted.split(placeholder).join(`<span class="color-highlight">${value}</span>`);
+          formatted = formatted
+            .split(placeholder)
+            .join(`<span class="color-highlight">${value}</span>`);
         });
 
         // Parse color tags
@@ -424,13 +445,19 @@ const structuredData = {
           .replace(/<color=[^>]+>(.*?)<\/color>/gi, '<span class="color-highlight">$1</span>');
 
         // Parse skill references ##Name#ID#
-        formatted = formatted.replace(/##([^#]+)#(\d+)#/g, '<span class="color-highlight">$1</span>');
+        formatted = formatted.replace(
+          /##([^#]+)#(\d+)#/g,
+          '<span class="color-highlight">$1</span>'
+        );
 
         // Replace vertical tab with line break
         formatted = formatted.replace(/\u000b/g, '<br><br>');
 
         // Convert **text** to bold
-        formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<span class="color-highlight">$1</span>');
+        formatted = formatted.replace(
+          /\*\*([^*]+)\*\*/g,
+          '<span class="color-highlight">$1</span>'
+        );
 
         return formatted;
       }
@@ -459,7 +486,9 @@ const structuredData = {
         currentCard = card;
         currentCharSlug = charSlug;
 
-        const panel = document.querySelector(`.skill-detail-panel[data-char="${charSlug}"]`) as HTMLElement;
+        const panel = document.querySelector(
+          `.skill-detail-panel[data-char="${charSlug}"]`
+        ) as HTMLElement;
         const nameEl = document.getElementById(`detail-name-${charSlug}`);
         const metaEl = document.getElementById(`detail-meta-${charSlug}`);
         const descEl = document.getElementById(`detail-description-${charSlug}`);
@@ -530,7 +559,9 @@ const structuredData = {
       }
 
       function hideSkillDetail(charSlug: string) {
-        const panel = document.querySelector(`.skill-detail-panel[data-char="${charSlug}"]`) as HTMLElement;
+        const panel = document.querySelector(
+          `.skill-detail-panel[data-char="${charSlug}"]`
+        ) as HTMLElement;
         if (panel) {
           panel.classList.remove('active');
         }
@@ -571,14 +602,15 @@ const structuredData = {
       });
 
       // Level control handlers - use event delegation for dynamic content
-      document.addEventListener('click', (e) => {
+      document.addEventListener('click', e => {
         const target = e.target as HTMLElement;
 
         // Handle minus button
         if (target.classList.contains('level-minus')) {
           const selector = target.closest('.level-selector');
           const input = selector?.querySelector('.level-input') as HTMLInputElement;
-          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+          const charSlug =
+            (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
 
           if (input && currentSkill && currentCharSlug === charSlug) {
             const current = parseInt(input.value) || 1;
@@ -593,7 +625,8 @@ const structuredData = {
         if (target.classList.contains('level-plus')) {
           const selector = target.closest('.level-selector');
           const input = selector?.querySelector('.level-input') as HTMLInputElement;
-          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+          const charSlug =
+            (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
 
           if (input && currentSkill && currentCharSlug === charSlug) {
             const current = parseInt(input.value) || 1;
@@ -611,7 +644,8 @@ const structuredData = {
         input.addEventListener('change', () => {
           const inputEl = input as HTMLInputElement;
           const selector = inputEl.closest('.level-selector');
-          const charSlug = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+          const charSlug =
+            (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
 
           if (currentSkill && currentCharSlug === charSlug) {
             let value = parseInt(inputEl.value) || 1;

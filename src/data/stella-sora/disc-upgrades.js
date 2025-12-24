@@ -7,19 +7,19 @@
 
 export const discUpgradeItems = {
   // Type 1: Eerie materials
-  21071: { id: 21071, name: "Eerie Breath", rarity: 1, image: "item_21071" },
-  21072: { id: 21072, name: "Phantom Step Remnant", rarity: 2, image: "item_21072" },
-  21073: { id: 21073, name: "Frenzied Waltz Essence", rarity: 3, image: "item_21073" },
+  21071: { id: 21071, name: 'Eerie Breath', rarity: 1, image: 'item_21071' },
+  21072: { id: 21072, name: 'Phantom Step Remnant', rarity: 2, image: 'item_21072' },
+  21073: { id: 21073, name: 'Frenzied Waltz Essence', rarity: 3, image: 'item_21073' },
 
   // Type 2: Duloos materials
-  21081: { id: 21081, name: "Duloos Breath", rarity: 1, image: "item_21081" },
-  21082: { id: 21082, name: "Duloos Soul Remnant", rarity: 2, image: "item_21082" },
-  21083: { id: 21083, name: "Duloos Essence", rarity: 3, image: "item_21083" },
+  21081: { id: 21081, name: 'Duloos Breath', rarity: 1, image: 'item_21081' },
+  21082: { id: 21082, name: 'Duloos Soul Remnant', rarity: 2, image: 'item_21082' },
+  21083: { id: 21083, name: 'Duloos Essence', rarity: 3, image: 'item_21083' },
 
   // Type 3: Faint Light materials
-  21091: { id: 21091, name: "Faint Light Breath", rarity: 1, image: "item_21091" },
-  21092: { id: 21092, name: "Emberflies Soul", rarity: 2, image: "item_21092" },
-  21093: { id: 21093, name: "Flame Light Essence", rarity: 3, image: "item_21093" },
+  21091: { id: 21091, name: 'Faint Light Breath', rarity: 1, image: 'item_21091' },
+  21092: { id: 21092, name: 'Emberflies Soul', rarity: 2, image: 'item_21092' },
+  21093: { id: 21093, name: 'Flame Light Essence', rarity: 3, image: 'item_21093' },
 };
 
 // Helper to generate slug from disc name
@@ -27,7 +27,7 @@ function generateSlug(name) {
   return name
     .toLowerCase()
     .replace(/[★☆♥]/g, '')
-    .replace(/'/g, '-')  // Convert apostrophe to hyphen (e.g., "Witch's" -> "witch-s")
+    .replace(/'/g, '-') // Convert apostrophe to hyphen (e.g., "Witch's" -> "witch-s")
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
@@ -112,6 +112,8 @@ import { disc as ripplesOfNostalgia } from './discs/ripples-of-nostalgia.js';
 import { disc as sunlitBlossom } from './discs/sunlit-blossom.js';
 import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
+import { disc as aGiftForTheJourney } from './discs/a-gift-for-the-journey.js';
+import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
 
 // Collect all discs (only those that export 'disc' with upgrades data)
 const allDiscs = [
@@ -188,6 +190,8 @@ const allDiscs = [
   sunlitBlossom,
   swordAgainstStream,
   theLostPilgrim,
+  aGiftForTheJourney,
+  snowyNightSurprise,
 ];
 
 // Process and export disc upgrades data sorted by name
@@ -208,7 +212,7 @@ export const discUpgrades = allDiscs
 export function calculateTotalMaterials(upgrades) {
   const totals = {
     items: {},
-    dorra: 0
+    dorra: 0,
   };
 
   upgrades.forEach(upgrade => {
@@ -221,7 +225,7 @@ export function calculateTotalMaterials(upgrades) {
         totals.items[item.id] = {
           id: item.id,
           name: item.name,
-          quantity: 0
+          quantity: 0,
         };
       }
       totals.items[item.id].quantity += item.quantity;

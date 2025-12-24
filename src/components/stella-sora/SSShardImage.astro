@@ -30,6 +30,7 @@ import shiaShard from '../../assets/images/games/stella-sora/shards/shia.png';
 import shimiaoShard from '../../assets/images/games/stella-sora/shards/shimiao.png';
 import teresaShard from '../../assets/images/games/stella-sora/shards/teresa.png';
 import tiliaShard from '../../assets/images/games/stella-sora/shards/tilia.png';
+import snowishLaruShard from '../../assets/images/games/stella-sora/shards/snowish-laru.png';
 
 const shardImageMap: Record<string, ImageMetadata> = {
   amber: amberShard,
@@ -59,6 +60,7 @@ const shardImageMap: Record<string, ImageMetadata> = {
   shimiao: shimiaoShard,
   teresa: teresaShard,
   tilia: tiliaShard,
+  snowishlaru: snowishLaruShard,
 };
 
 export interface Props {
@@ -69,32 +71,28 @@ export interface Props {
   height?: number;
 }
 
-const {
-  characterName,
-  alt,
-  class: className = '',
-  width = 32,
-  height = 32,
-} = Astro.props;
+const { characterName, alt, class: className = '', width = 32, height = 32 } = Astro.props;
 
 const normalizedName = characterName.toLowerCase().replace(/\s+/g, '');
 const imageSrc = shardImageMap[normalizedName];
 ---
 
-{imageSrc ? (
-  <Image
-    src={imageSrc}
-    alt={alt || `${characterName} Shard`}
-    width={width}
-    height={height}
-    class={`${className} shard-img`}
-    loading="lazy"
-    format="webp"
-    quality={95}
-  />
-) : (
-  <span class={`${className} shard-placeholder`}>Shard</span>
-)}
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={alt || `${characterName} Shard`}
+      width={width}
+      height={height}
+      class={`${className} shard-img`}
+      loading="lazy"
+      format="webp"
+      quality={95}
+    />
+  ) : (
+    <span class={`${className} shard-placeholder`}>Shard</span>
+  )
+}
 
 <style>
   .shard-img {

@@ -6,7 +6,7 @@ function generateSlug(name) {
   return name
     .toLowerCase()
     .replace(/[★☆♥]/g, '')
-    .replace(/'/g, '-')  // Convert apostrophe to hyphen (e.g., "Witch's" -> "witch-s")
+    .replace(/'/g, '-') // Convert apostrophe to hyphen (e.g., "Witch's" -> "witch-s")
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
@@ -89,6 +89,8 @@ import { disc as ripplesOfNostalgia } from './discs/ripples-of-nostalgia.js';
 import { disc as sunlitBlossom } from './discs/sunlit-blossom.js';
 import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
+import { disc as aGiftForTheJourney } from './discs/a-gift-for-the-journey.js';
+import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
 
 // Collect all discs
 const allDiscs = [
@@ -166,6 +168,8 @@ const allDiscs = [
   sunlitBlossom,
   swordAgainstStream,
   theLostPilgrim,
+  aGiftForTheJourney,
+  snowyNightSurprise,
 ];
 
 // Process and export disc stats data sorted by name

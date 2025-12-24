@@ -56,7 +56,7 @@ for (const [path, module] of Object.entries(characterSkillImages)) {
   }
 }
 
-// Character element mapping (all 27 characters)
+// Character element mapping (all 29 characters)
 const characterElementMap: Record<string, string> = {
   amber: 'ignis',
   ann: 'ventus',
@@ -74,6 +74,7 @@ const characterElementMap: Record<string, string> = {
   jinglin: 'lux',
   kasimira: 'ignis',
   laru: 'lux',
+  'snowish-laru': 'ignis',
   minova: 'lux',
   mistique: 'umbra',
   nanoha: 'ventus',
@@ -97,8 +98,13 @@ export interface Props {
 
 const { characterName, skillType, alt, loading = 'lazy', class: className } = Astro.props;
 
-// Get character slug (lowercase)
-const characterSlug = characterName.toLowerCase();
+// Get character slug (lowercase, spaces to hyphens)
+// Special cases for characters with different folder names
+const characterSlugMap: Record<string, string> = {
+  'snowish laru': 'snowish-laru',
+};
+const normalizedName = characterName.toLowerCase().replace(/\s+/g, '-');
+const characterSlug = characterSlugMap[normalizedName] || normalizedName;
 
 // Get element plate for this character
 const element = characterElementMap[characterSlug] || 'ignis';

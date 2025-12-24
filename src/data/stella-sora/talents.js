@@ -28,12 +28,38 @@ import { Gerie } from './characters/characters/gerie.js';
 import { Laru } from './characters/characters/laru.js';
 import { Shia } from './characters/characters/shia.js';
 import { Nazuna } from './characters/characters/nazuna.js';
+import { SnowishLaru } from './characters/characters/snowish-laru.js';
 
 // All characters data
 const allCharacters = [
-  Amber, Tilia, Kasimira, Iris, Noya, Shimiao, Ridge, Jinglin, Coronis,
-  Nanoha, Canace, Ann, Freesia, Flora, Teresa, Minova, Nazuka, Fuyuka,
-  Mistique, Chixia, Cosette, Chitose, Caramel, Gerie, Laru, Shia, Nazuna
+  Amber,
+  Tilia,
+  Kasimira,
+  Iris,
+  Noya,
+  Shimiao,
+  Ridge,
+  Jinglin,
+  Coronis,
+  Nanoha,
+  Canace,
+  Ann,
+  Freesia,
+  Flora,
+  Teresa,
+  Minova,
+  Nazuka,
+  Fuyuka,
+  Mistique,
+  Chixia,
+  Cosette,
+  Chitose,
+  Caramel,
+  Gerie,
+  Laru,
+  Shia,
+  Nazuna,
+  SnowishLaru,
 ];
 
 // Helper function to parse description with params and convert to HTML
@@ -51,20 +77,23 @@ function parseDescription(description, params) {
   }
 
   // Convert <color=#hexcode>text</color> to styled span
-  parsed = parsed.replace(/<color=(#[a-fA-F0-9]+)>([^<]+)<\/color>/g,
-    '<span class="talent-highlight" style="color: $1">$2</span>');
+  parsed = parsed.replace(
+    /<color=(#[a-fA-F0-9]+)>([^<]+)<\/color>/g,
+    '<span class="talent-highlight" style="color: $1">$2</span>'
+  );
 
   // Convert ##text#id# to styled span with marker icon placeholder
   // Pattern: ##Ignis Mark: Sacred Flame#2013# or ##Ventus Mark#1017#
-  parsed = parsed.replace(/##(Ignis|Aqua|Terra|Ventus|Lux|Umbra)\s*Mark[^#]*#(\d+)#/gi,
+  parsed = parsed.replace(
+    /##(Ignis|Aqua|Terra|Ventus|Lux|Umbra)\s*Mark[^#]*#(\d+)#/gi,
     (match, element) => {
       const elementLower = element.toLowerCase();
       return `<span class="talent-skill-ref" data-element="${elementLower}"><img src="/images/games/stella-sora/markers/${elementLower}_mark.png" alt="${element} Mark" class="inline-marker-icon" width="18" height="18" />${match.replace(/##([^#]+)#\d+#/, '$1')}</span>`;
-    });
+    }
+  );
 
   // Convert remaining ##text#id# patterns without element marks
-  parsed = parsed.replace(/##([^#]+)#(\d+)#/g,
-    '<span class="talent-skill-ref">$1</span>');
+  parsed = parsed.replace(/##([^#]+)#(\d+)#/g, '<span class="talent-skill-ref">$1</span>');
 
   // Convert line breaks \u000b to <br>
   parsed = parsed.replace(/\u000b/g, '<br>');
@@ -95,14 +124,14 @@ function extractCharacterTalents(character) {
         name: mainTalent.name,
         description: parseDescription(mainTalent.description, mainTalent.params),
         rawDescription: mainTalent.description,
-        params: mainTalent.params
+        params: mainTalent.params,
       },
       statBonuses: statBonuses.map(bonus => ({
         name: bonus.name,
         description: parseDescription(bonus.description, bonus.params),
         rawDescription: bonus.description,
-        params: bonus.params
-      }))
+        params: bonus.params,
+      })),
     };
   });
 }
@@ -143,7 +172,7 @@ export function getTalentsGroupedByCharacter() {
         position: character.position,
         grade: character.grade,
         icon: character.icon,
-        talents: extractCharacterTalents(character)
+        talents: extractCharacterTalents(character),
       };
     }
   });
@@ -172,7 +201,7 @@ export function getCharactersList() {
       position: c.position,
       grade: c.grade,
       icon: c.icon,
-      talentCount: c.talents.length
+      talentCount: c.talents.length,
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -199,5 +228,5 @@ export default {
   getStatBonusTypes,
   getCharactersList,
   getElements,
-  getPositions
+  getPositions,
 };

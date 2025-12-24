@@ -1,0 +1,209 @@
+/* ==========================================
+ * RADIANT MESSENGER, HOLY NIGHT SPIRIT EVENT STYLES
+ * ==========================================
+ */
+
+/* ==========================================
+ * SECTION TITLES
+ * ==========================================
+ */
+
+.ss-shop-items-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  margin-bottom: 1.5rem;
+  color: var(--ss-text-primary);
+  background: var(--ss-gradient-star);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.ss-shop-items-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--ss-primary);
+  border-radius: 2px;
+}
+
+/* ==========================================
+ * SHOP ITEMS SECTION
+ * ==========================================
+ */
+
+.ss-shop-event-items {
+  margin-bottom: 2rem;
+}
+
+.shop-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.shop-item-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.item-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ss-bg-primary);
+  padding: 1rem;
+}
+
+.item-info {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.item-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.stat-label {
+  color: var(--ss-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  color: var(--ss-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.item-cost {
+  color: var(--ss-primary);
+  font-weight: 600;
+}
+
+.stock-amount {
+  color: var(--ss-warning);
+  font-weight: 600;
+}
+
+.cost-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ss-bg-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--ss-border-subtle);
+}
+
+/* Currency icons */
+.currency-icon,
+.price-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================================
+ * RESPONSIVE DESIGN
+ * ==========================================
+ */
+
+@media (max-width: 768px) {
+  .shop-items-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .item-image-wrapper {
+    height: 150px;
+  }
+
+  .item-info {
+    padding: 1rem;
+  }
+
+  .ss-shop-items-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-image-wrapper {
+    height: 120px;
+  }
+
+  .item-info {
+    padding: 0.75rem;
+  }
+
+  .stat-row {
+    font-size: 0.9rem;
+  }
+
+  .ss-shop-items-title {
+    font-size: 1.3rem;
+    padding-left: 0.75rem;
+  }
+
+  .ss-shop-items-title::before {
+    height: 20px;
+    width: 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ss-shop-items-title {
+    font-size: 1.2rem;
+  }
+
+  .item-image-wrapper {
+    height: 100px;
+  }
+
+  .item-info {
+    padding: 0.5rem;
+  }
+}

@@ -32,19 +32,21 @@ const { discSlug, alt, class: className = '', width = 128, height = 128 } = Astr
 const imageSrc = discImageMap[discSlug];
 ---
 
-{imageSrc ? (
-  <Image
-    src={imageSrc}
-    alt={alt || discSlug}
-    width={width}
-    height={height}
-    class={className}
-    loading="lazy"
-    format="webp"
-    quality={95}
-  />
-) : (
-  <div class={`disc-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
-    {discSlug}
-  </div>
-)}
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={alt || discSlug}
+      width={width}
+      height={height}
+      class={className}
+      loading="eager"
+      format="webp"
+      quality={100}
+    />
+  ) : (
+    <div class={`disc-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+      {discSlug}
+    </div>
+  )
+}

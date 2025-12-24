@@ -30,10 +30,25 @@ const breadcrumbData = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://gachawiki.info' },
     { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://gachawiki.info/guides/' },
-    { '@type': 'ListItem', position: 3, name: 'Stella Sora', item: 'https://gachawiki.info/guides/stella-sora/' },
-    { '@type': 'ListItem', position: 4, name: 'Discs', item: 'https://gachawiki.info/guides/stella-sora/discs/' },
-    { '@type': 'ListItem', position: 5, name: disc.name, item: `https://gachawiki.info/guides/stella-sora/discs/${disc.slug}/` }
-  ]
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Stella Sora',
+      item: 'https://gachawiki.info/guides/stella-sora/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: 'Discs',
+      item: 'https://gachawiki.info/guides/stella-sora/discs/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 5,
+      name: disc.name,
+      item: `https://gachawiki.info/guides/stella-sora/discs/${disc.slug}/`,
+    },
+  ],
 };
 
 // Product structured data for rich results
@@ -45,13 +60,13 @@ const productData = {
   category: 'Video Game Item',
   brand: {
     '@type': 'Brand',
-    name: 'Stella Sora'
+    name: 'Stella Sora',
   },
   additionalProperty: [
     { '@type': 'PropertyValue', name: 'Rarity', value: `${disc.star}-Star` },
     { '@type': 'PropertyValue', name: 'Element', value: disc.element },
-    ...(disc.tag ? disc.tag.map(t => ({ '@type': 'PropertyValue', name: 'Tag', value: t })) : [])
-  ]
+    ...(disc.tag ? disc.tag.map(t => ({ '@type': 'PropertyValue', name: 'Tag', value: t })) : []),
+  ],
 };
 
 // FAQ schema for disc-specific questions
@@ -64,18 +79,18 @@ const discFaqSchema = {
       name: `What is ${disc.name} in Stella Sora?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `${disc.name} is a ${disc.star}-star ${disc.element !== 'None' ? disc.element + ' element ' : ''}disc in Stella Sora. ${disc.melodySkill?.name ? `Its melody skill is "${disc.melodySkill.name}".` : ''}`
-      }
+        text: `${disc.name} is a ${disc.star}-star ${disc.element !== 'None' ? disc.element + ' element ' : ''}disc in Stella Sora. ${disc.melodySkill?.name ? `Its melody skill is "${disc.melodySkill.name}".` : ''}`,
+      },
     },
     {
       '@type': 'Question',
       name: `What is the max level for ${disc.name}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `${disc.name} can be leveled up to level 90 with 8 breakthrough stages at levels 10, 20, 30, 40, 50, 60, 70, and 80.`
-      }
-    }
-  ]
+        text: `${disc.name} can be leveled up to level 90 with 8 breakthrough stages at levels 10, 20, 30, 40, 50, 60, 70, and 80.`,
+      },
+    },
+  ],
 };
 
 // Max level is 90 for all discs
@@ -87,7 +102,7 @@ const defaultLevel = 90;
 // Breakthroughs happen AT levels 10, 20, 30, 40, 50, 60, 70, 80
 function levelToIndex(level: number): number {
   const breakthroughsPassed = Math.min(Math.floor(level / 10), 8);
-  return (level - 1) + breakthroughsPassed;
+  return level - 1 + breakthroughsPassed;
 }
 
 // Get level 90 stats (index 97)
@@ -100,15 +115,31 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
 
 <DiscIndividualLayout title={title} description={description} discName={disc.name}>
   <meta name="keywords" content={keywords} slot="head" />
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbData)}
+    slot="head"
+  />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(productData)} slot="head" />
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(discFaqSchema)} slot="head" />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(discFaqSchema)}
+    slot="head"
+  />
 
   <div class="disc-individual">
     <!-- Disc Art Showcase -->
     <section class="disc-art-showcase">
       <div class="disc-art-container">
-        <SSDiscImage discSlug={disc.slug} alt={disc.name} width={800} height={800} class="disc-art-image" />
+        <SSDiscImage
+          discSlug={disc.slug}
+          alt={disc.name}
+          width={1200}
+          height={1200}
+          class="disc-art-image"
+        />
       </div>
     </section>
 
@@ -125,273 +156,353 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
         </div>
       </div>
       <div class="disc-info-tags">
-        {disc.tag.map(tag => (
-          <span class="tag-badge">{tag}</span>
-        ))}
+        {disc.tag.map(tag => <span class="tag-badge">{tag}</span>)}
       </div>
     </section>
 
     <!-- Stats Section -->
-    {disc.stats && disc.stats.length > 0 && (
-      <section class="disc-section">
-        <h2 class="section-title">Stats</h2>
-        <div class="stats-controls">
-          <div class="level-selector">
-            <label for="stats-level">Level:</label>
-            <button type="button" class="level-btn-control" id="level-decrease" aria-label="Decrease level">−</button>
-            <input
-              type="number"
-              id="stats-level"
-              min="1"
-              max={maxLevel}
-              value={defaultLevel}
-              class="level-input"
-              inputmode="numeric"
-            />
-            <button type="button" class="level-btn-control" id="level-increase" aria-label="Increase level">+</button>
-            <span class="level-max">/ {maxLevel}</span>
-          </div>
-          <div class="dupe-selector">
-            <label>Dupe:</label>
-            <div class="dupe-buttons" id="dupe-buttons">
-              <button type="button" class="dupe-btn active" data-dupe="0">D0</button>
-              <button type="button" class="dupe-btn" data-dupe="1">D1</button>
-              <button type="button" class="dupe-btn" data-dupe="2">D2</button>
-              <button type="button" class="dupe-btn" data-dupe="3">D3</button>
-              <button type="button" class="dupe-btn" data-dupe="4">D4</button>
-              <button type="button" class="dupe-btn" data-dupe="5">D5</button>
+    {
+      disc.stats && disc.stats.length > 0 && (
+        <section class="disc-section">
+          <h2 class="section-title">Stats</h2>
+          <div class="stats-controls">
+            <div class="level-selector">
+              <label for="stats-level">Level:</label>
+              <button
+                type="button"
+                class="level-btn-control"
+                id="level-decrease"
+                aria-label="Decrease level"
+              >
+                −
+              </button>
+              <input
+                type="number"
+                id="stats-level"
+                min="1"
+                max={maxLevel}
+                value={defaultLevel}
+                class="level-input"
+                inputmode="numeric"
+              />
+              <button
+                type="button"
+                class="level-btn-control"
+                id="level-increase"
+                aria-label="Increase level"
+              >
+                +
+              </button>
+              <span class="level-max">/ {maxLevel}</span>
+            </div>
+            <div class="dupe-selector">
+              <label>Dupe:</label>
+              <div class="dupe-buttons" id="dupe-buttons">
+                <button type="button" class="dupe-btn active" data-dupe="0">
+                  D0
+                </button>
+                <button type="button" class="dupe-btn" data-dupe="1">
+                  D1
+                </button>
+                <button type="button" class="dupe-btn" data-dupe="2">
+                  D2
+                </button>
+                <button type="button" class="dupe-btn" data-dupe="3">
+                  D3
+                </button>
+                <button type="button" class="dupe-btn" data-dupe="4">
+                  D4
+                </button>
+                <button type="button" class="dupe-btn" data-dupe="5">
+                  D5
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="stats-display" id="stats-display" data-stats={JSON.stringify(disc.stats)} data-dupe={JSON.stringify(disc.dupe || [])}>
-          {maxLevelStats.map((stat: any) => (
-            <div class="stat-item" data-stat={stat.id}>
-              <span class="stat-label">{stat.label}</span>
-              <span class="stat-value">{stat.value}{stat.unit || ''}</span>
-            </div>
-          ))}
-        </div>
+          <div
+            class="stats-display"
+            id="stats-display"
+            data-stats={JSON.stringify(disc.stats)}
+            data-dupe={JSON.stringify(disc.dupe || [])}
+          >
+            {maxLevelStats.map((stat: any) => (
+              <div class="stat-item" data-stat={stat.id}>
+                <span class="stat-label">{stat.label}</span>
+                <span class="stat-value">
+                  {stat.value}
+                  {stat.unit || ''}
+                </span>
+              </div>
+            ))}
+          </div>
 
-        <!-- Breakthrough Bonuses -->
-        <div class="breakthrough-section">
-          <h3 class="subsection-title">Breakthrough Bonuses</h3>
-          <div class="breakthrough-grid">
-            {breakthroughIndices.map((idx, i) => {
-              const stats = disc.stats[idx];
-              const prevStats = disc.stats[idx - 1];
-              const hpBonus = (stats?.find((s: any) => s.id === 'hp')?.value || 0) - (prevStats?.find((s: any) => s.id === 'hp')?.value || 0);
-              const atkBonus = (stats?.find((s: any) => s.id === 'atk')?.value || 0) - (prevStats?.find((s: any) => s.id === 'atk')?.value || 0);
+          <div class="breakthrough-section">
+            <h3 class="subsection-title">Breakthrough Bonuses</h3>
+            <div class="breakthrough-grid">
+              {breakthroughIndices.map((idx, i) => {
+                const stats = disc.stats[idx];
+                const prevStats = disc.stats[idx - 1];
+                const hpBonus =
+                  (stats?.find((s: any) => s.id === 'hp')?.value || 0) -
+                  (prevStats?.find((s: any) => s.id === 'hp')?.value || 0);
+                const atkBonus =
+                  (stats?.find((s: any) => s.id === 'atk')?.value || 0) -
+                  (prevStats?.find((s: any) => s.id === 'atk')?.value || 0);
+                return (
+                  <div class="breakthrough-item">
+                    <div class="breakthrough-level">Lv.{breakthroughLevels[i]}</div>
+                    <div class="breakthrough-stats">
+                      <span class="breakthrough-hp">HP +{hpBonus}</span>
+                      <span class="breakthrough-atk">ATK +{atkBonus}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {disc.dupe && disc.dupe.length > 0 && (
+            <div class="dupe-section">
+              <h3 class="subsection-title">Duplicate Bonuses</h3>
+              <div class="dupe-grid" id="dupe-bonus-grid">
+                {disc.dupe.map((dupeStats: any[], index: number) => (
+                  <div class="dupe-item" data-dupe-level={index + 1}>
+                    <div class="dupe-label">D{index + 1}</div>
+                    {dupeStats.map((stat: any) => (
+                      <div class="dupe-stat">
+                        +{stat.value} {stat.label}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {disc.dupe &&
+            disc.dupe.length > 0 &&
+            (() => {
+              const d5Bonus = disc.dupe[4]?.[0]?.value || 0;
               return (
-                <div class="breakthrough-item">
-                  <div class="breakthrough-level">Lv.{breakthroughLevels[i]}</div>
-                  <div class="breakthrough-stats">
-                    <span class="breakthrough-hp">HP +{hpBonus}</span>
-                    <span class="breakthrough-atk">ATK +{atkBonus}</span>
+                <div class="max-stats-section">
+                  <h3 class="subsection-title">Max Stats (Lv.90 + D5)</h3>
+                  <div class="max-stats-display">
+                    {maxLevelStats.map((stat: any) => {
+                      const isAtk = stat.id === 'atk';
+                      const finalValue = isAtk ? stat.value + d5Bonus : stat.value;
+                      return (
+                        <div class="stat-item" data-stat={stat.id}>
+                          <span class="stat-label">{stat.label}</span>
+                          <span class="stat-value">
+                            {finalValue}
+                            {stat.unit || ''}
+                            {isAtk && <span class="dupe-bonus">(+{d5Bonus})</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               );
-            })}
-          </div>
-        </div>
-
-        <!-- Dupe Bonuses -->
-        {disc.dupe && disc.dupe.length > 0 && (
-          <div class="dupe-section">
-            <h3 class="subsection-title">Duplicate Bonuses</h3>
-            <div class="dupe-grid" id="dupe-bonus-grid">
-              {disc.dupe.map((dupeStats: any[], index: number) => (
-                <div class="dupe-item" data-dupe-level={index + 1}>
-                  <div class="dupe-label">D{index + 1}</div>
-                  {dupeStats.map((stat: any) => (
-                    <div class="dupe-stat">+{stat.value} {stat.label}</div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <!-- Max Stats (Lv.90 + D5) -->
-        {disc.dupe && disc.dupe.length > 0 && (() => {
-          const d5Bonus = disc.dupe[4]?.[0]?.value || 0;
-          return (
-            <div class="max-stats-section">
-              <h3 class="subsection-title">Max Stats (Lv.90 + D5)</h3>
-              <div class="max-stats-display">
-                {maxLevelStats.map((stat: any) => {
-                  const isAtk = stat.id === 'atk';
-                  const finalValue = isAtk ? (stat.value + d5Bonus) : stat.value;
-                  return (
-                    <div class="stat-item" data-stat={stat.id}>
-                      <span class="stat-label">{stat.label}</span>
-                      <span class="stat-value">
-                        {finalValue}{stat.unit || ''}
-                        {isAtk && <span class="dupe-bonus">(+{d5Bonus})</span>}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })()}
-      </section>
-    )}
+            })()}
+        </section>
+      )
+    }
 
     <!-- Melody Skill Section -->
-    {disc.melodySkill && (
-      <section class="disc-section">
-        <h2 class="section-title">Melody Skill</h2>
-        <div class="skill-card melody-skill">
-          <div class="skill-header">
-            <div class="skill-icon-container">
-              <SSDiscSkillImage iconName={disc.melodySkill.icon} iconBackground={disc.melodySkill.iconBackground} alt={disc.melodySkill.name} width={48} height={48} />
-            </div>
-            <div class="skill-info">
-              <h3 class="skill-name">{disc.melodySkill.name}</h3>
-              <span class="skill-type">Main Skill</span>
-            </div>
-          </div>
-          <div class="skill-levels">
-            {disc.melodySkill.params.map((_, index) => (
-              <button
-                class={`level-btn melody-level-btn ${index === 0 ? 'active' : ''}`}
-                data-level={index}
-              >
-                Lv.{index + 1}
-              </button>
-            ))}
-          </div>
-          <div
-            class="skill-description"
-            id="melody-description"
-            data-descriptions={JSON.stringify(disc.melodySkill.formattedDescriptions)}
-          >
-            {disc.melodySkill.formattedDescriptions[0]}
-          </div>
-        </div>
-      </section>
-    )}
-
-    <!-- Harmony Skills Section -->
-    {disc.harmonySkills && disc.harmonySkills.length > 0 && (
-      <section class="disc-section">
-        <h2 class="section-title">Harmony Skills</h2>
-        {disc.harmonySkills.map((skill, skillIndex) => (
-          <div class="skill-card harmony-skill" data-skill-index={skillIndex}>
+    {
+      disc.melodySkill && (
+        <section class="disc-section">
+          <h2 class="section-title">Melody Skill</h2>
+          <div class="skill-card melody-skill">
             <div class="skill-header">
               <div class="skill-icon-container">
-                <SSDiscSkillImage iconName={skill.icon} iconBackground={skill.iconBackground} alt={skill.name} width={48} height={48} />
+                <SSDiscSkillImage
+                  iconName={disc.melodySkill.icon}
+                  iconBackground={disc.melodySkill.iconBackground}
+                  alt={disc.melodySkill.name}
+                  width={48}
+                  height={48}
+                />
               </div>
               <div class="skill-info">
-                <h3 class="skill-name">{skill.name}</h3>
-                <span class="skill-type">Harmony Skill</span>
+                <h3 class="skill-name">{disc.melodySkill.name}</h3>
+                <span class="skill-type">Main Skill</span>
               </div>
             </div>
             <div class="skill-levels">
-              {skill.params.map((_, index) => (
+              {disc.melodySkill.params.map((_, index) => (
                 <button
-                  class={`level-btn harmony-level-btn ${index === 0 ? 'active' : ''}`}
+                  class={`level-btn melody-level-btn ${index === 0 ? 'active' : ''}`}
                   data-level={index}
-                  data-skill-index={skillIndex}
                 >
                   Lv.{index + 1}
                 </button>
               ))}
             </div>
             <div
-              class="skill-description harmony-description"
-              data-skill-index={skillIndex}
-              data-descriptions={JSON.stringify(skill.formattedDescriptions)}
+              class="skill-description"
+              id="melody-description"
+              data-descriptions={JSON.stringify(disc.melodySkill.formattedDescriptions)}
             >
-              {skill.formattedDescriptions[0]}
+              {disc.melodySkill.formattedDescriptions[0]}
             </div>
-            {skill.requirements && skill.requirements.length > 0 && (
-              <div class="skill-requirements" data-skill-index={skillIndex} data-requirements={JSON.stringify(skill.requirements)}>
-                <h4 class="requirements-title">Requirements (Lv.1):</h4>
-                <div class="requirements-list">
-                  {skill.requirements[0].map(req => (
-                    <div class="requirement-item">
-                      <SSNotesImage imageName={req.name} alt={req.name} width={24} height={24} />
-                      <span>{req.name}: {req.quantity}</span>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Harmony Skills Section -->
+    {
+      disc.harmonySkills && disc.harmonySkills.length > 0 && (
+        <section class="disc-section">
+          <h2 class="section-title">Harmony Skills</h2>
+          {disc.harmonySkills.map((skill, skillIndex) => (
+            <div class="skill-card harmony-skill" data-skill-index={skillIndex}>
+              <div class="skill-header">
+                <div class="skill-icon-container">
+                  <SSDiscSkillImage
+                    iconName={skill.icon}
+                    iconBackground={skill.iconBackground}
+                    alt={skill.name}
+                    width={48}
+                    height={48}
+                  />
+                </div>
+                <div class="skill-info">
+                  <h3 class="skill-name">{skill.name}</h3>
+                  <span class="skill-type">Harmony Skill</span>
+                </div>
+              </div>
+              <div class="skill-levels">
+                {skill.params.map((_, index) => (
+                  <button
+                    class={`level-btn harmony-level-btn ${index === 0 ? 'active' : ''}`}
+                    data-level={index}
+                    data-skill-index={skillIndex}
+                  >
+                    Lv.{index + 1}
+                  </button>
+                ))}
+              </div>
+              <div
+                class="skill-description harmony-description"
+                data-skill-index={skillIndex}
+                data-descriptions={JSON.stringify(skill.formattedDescriptions)}
+              >
+                {skill.formattedDescriptions[0]}
+              </div>
+              {skill.requirements && skill.requirements.length > 0 && (
+                <div
+                  class="skill-requirements"
+                  data-skill-index={skillIndex}
+                  data-requirements={JSON.stringify(skill.requirements)}
+                >
+                  <h4 class="requirements-title">Requirements (Lv.1):</h4>
+                  <div class="requirements-list">
+                    {skill.requirements[0].map(req => (
+                      <div class="requirement-item">
+                        <SSNotesImage imageName={req.name} alt={req.name} width={24} height={24} />
+                        <span>
+                          {req.name}: {req.quantity}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    <!-- Support Notes Section -->
+    {
+      disc.supportNote && disc.supportNote.length > 0 && (
+        <section class="disc-section">
+          <h2 class="section-title">Support Notes</h2>
+          <p class="section-description">
+            Melody notes provided when this disc is used as support.
+          </p>
+          <div class="support-notes-table-container">
+            <table class="support-notes-table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>Notes Provided</th>
+                </tr>
+              </thead>
+              <tbody>
+                {disc.supportNote.map((notes, index) => (
+                  <tr>
+                    <td class="level-cell">Lv.{index + 1}</td>
+                    <td class="notes-cell">
+                      <div class="notes-list">
+                        {notes.map(note => (
+                          <div class="note-item">
+                            <SSNotesImage
+                              imageName={note.name}
+                              alt={note.name}
+                              width={20}
+                              height={20}
+                            />
+                            <span>
+                              {note.name}: {note.quantity}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Upgrade Materials Section -->
+    {
+      disc.upgrades && disc.upgrades.length > 0 && (
+        <section class="disc-section">
+          <h2 class="section-title">Upgrade Materials</h2>
+          <div class="upgrades-grid">
+            {disc.upgrades.map((upgrade, index) => (
+              <div class="upgrade-card">
+                <div class="upgrade-header">
+                  <span class="upgrade-level">Stage {index + 1}</span>
+                  <span class="upgrade-cost">
+                    <SSUpgradeImage itemName="Dorra" width={20} height={20} />
+                    {upgrade.currency?.dorra?.toLocaleString() || 0}
+                  </span>
+                </div>
+                <div class="upgrade-materials">
+                  {upgrade.items.map(item => (
+                    <div class="material-item">
+                      <SSUpgradeImage
+                        itemId={item.id}
+                        itemName={item.name}
+                        width={32}
+                        height={32}
+                      />
+                      <span class="material-name">{item.name}</span>
+                      <span class="material-qty">x{item.quantity}</span>
                     </div>
                   ))}
                 </div>
               </div>
-            )}
+            ))}
           </div>
-        ))}
-      </section>
-    )}
-
-    <!-- Support Notes Section -->
-    {disc.supportNote && disc.supportNote.length > 0 && (
-      <section class="disc-section">
-        <h2 class="section-title">Support Notes</h2>
-        <p class="section-description">Melody notes provided when this disc is used as support.</p>
-        <div class="support-notes-table-container">
-          <table class="support-notes-table">
-            <thead>
-              <tr>
-                <th>Level</th>
-                <th>Notes Provided</th>
-              </tr>
-            </thead>
-            <tbody>
-              {disc.supportNote.map((notes, index) => (
-                <tr>
-                  <td class="level-cell">Lv.{index + 1}</td>
-                  <td class="notes-cell">
-                    <div class="notes-list">
-                      {notes.map(note => (
-                        <div class="note-item">
-                          <SSNotesImage imageName={note.name} alt={note.name} width={20} height={20} />
-                          <span>{note.name}: {note.quantity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )}
-
-    <!-- Upgrade Materials Section -->
-    {disc.upgrades && disc.upgrades.length > 0 && (
-      <section class="disc-section">
-        <h2 class="section-title">Upgrade Materials</h2>
-        <div class="upgrades-grid">
-          {disc.upgrades.map((upgrade, index) => (
-            <div class="upgrade-card">
-              <div class="upgrade-header">
-                <span class="upgrade-level">Stage {index + 1}</span>
-                <span class="upgrade-cost">
-                  <SSUpgradeImage itemName="Dorra" width={20} height={20} />
-                  {upgrade.currency?.dorra?.toLocaleString() || 0}
-                </span>
-              </div>
-              <div class="upgrade-materials">
-                {upgrade.items.map(item => (
-                  <div class="material-item">
-                    <SSUpgradeImage itemId={item.id} itemName={item.name} width={32} height={32} />
-                    <span class="material-name">{item.name}</span>
-                    <span class="material-qty">x{item.quantity}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
+        </section>
+      )
+    }
   </div>
 </DiscIndividualLayout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Stats level selector
     const statsLevelInput = document.getElementById('stats-level') as HTMLInputElement;
     const statsDisplay = document.getElementById('stats-display');
@@ -410,7 +521,7 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
       // Breakthroughs happen AT levels 10, 20, 30, 40, 50, 60, 70, 80
       function levelToIndex(level: number): number {
         const breakthroughsPassed = Math.min(Math.floor(level / 10), 8);
-        return (level - 1) + breakthroughsPassed;
+        return level - 1 + breakthroughsPassed;
       }
 
       // Function to update stats display
@@ -438,20 +549,25 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
         const levelStats = statsData[index];
 
         if (levelStats) {
-          statsDisplay.innerHTML = levelStats.map((stat: any) => {
-            const isAtk = stat.id === 'atk';
-            const displayValue = isAtk ? (stat.value + dupeAtkBonus) : stat.value;
-            const bonusHtml = isAtk && dupeAtkBonus > 0 ? `<span class="dupe-bonus-indicator">(+${dupeAtkBonus})</span>` : '';
-            return `<div class="stat-item" data-stat="${stat.id}">
+          statsDisplay.innerHTML = levelStats
+            .map((stat: any) => {
+              const isAtk = stat.id === 'atk';
+              const displayValue = isAtk ? stat.value + dupeAtkBonus : stat.value;
+              const bonusHtml =
+                isAtk && dupeAtkBonus > 0
+                  ? `<span class="dupe-bonus-indicator">(+${dupeAtkBonus})</span>`
+                  : '';
+              return `<div class="stat-item" data-stat="${stat.id}">
               <span class="stat-label">${stat.label}</span>
               <span class="stat-value">${displayValue}${stat.unit || ''}${bonusHtml}</span>
             </div>`;
-          }).join('');
+            })
+            .join('');
         }
 
         // Highlight dupe bonus items
         const dupeBonusItems = document.querySelectorAll('#dupe-bonus-grid .dupe-item');
-        dupeBonusItems.forEach((item) => {
+        dupeBonusItems.forEach(item => {
           const itemDupeLevel = parseInt(item.getAttribute('data-dupe-level') || '0');
           if (itemDupeLevel <= currentDupeLevel) {
             item.classList.add('dupe-active');
@@ -472,7 +588,7 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
 
       // Dupe button event listeners
       dupeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
           currentDupeLevel = parseInt(this.getAttribute('data-dupe') || '0');
           // Update active state
           dupeButtons.forEach(b => b.classList.remove('active'));
@@ -483,7 +599,7 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
 
       // +/- button event listeners
       if (levelDecrease) {
-        levelDecrease.addEventListener('click', function() {
+        levelDecrease.addEventListener('click', function () {
           let level = parseInt(statsLevelInput.value) - 1;
           if (level < 1) level = 1;
           statsLevelInput.value = level.toString();
@@ -492,7 +608,7 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
       }
 
       if (levelIncrease) {
-        levelIncrease.addEventListener('click', function() {
+        levelIncrease.addEventListener('click', function () {
           let level = parseInt(statsLevelInput.value) + 1;
           const max = parseInt(statsLevelInput.max);
           if (level > max) level = max;
@@ -510,7 +626,7 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
       const descriptions = JSON.parse(melodyDescription.getAttribute('data-descriptions') || '[]');
 
       melodyBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
           const level = parseInt(this.getAttribute('data-level') || '0');
 
           // Update active state
@@ -536,10 +652,12 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
 
       if (descriptionEl) {
         const descriptions = JSON.parse(descriptionEl.getAttribute('data-descriptions') || '[]');
-        const requirements = requirementsEl ? JSON.parse(requirementsEl.getAttribute('data-requirements') || '[]') : [];
+        const requirements = requirementsEl
+          ? JSON.parse(requirementsEl.getAttribute('data-requirements') || '[]')
+          : [];
 
         levelBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
+          btn.addEventListener('click', function () {
             const level = parseInt(this.getAttribute('data-level') || '0');
 
             // Update active state
@@ -558,11 +676,14 @@ const breakthroughLevels = [10, 20, 30, 40, 50, 60, 70, 80];
 
               if (reqTitle) reqTitle.textContent = `Requirements (Lv.${level + 1}):`;
               if (reqList) {
-                reqList.innerHTML = requirements[level].map((req: any) =>
-                  `<div class="requirement-item">
+                reqList.innerHTML = requirements[level]
+                  .map(
+                    (req: any) =>
+                      `<div class="requirement-item">
                     <span>${req.name}: ${req.quantity}</span>
                   </div>`
-                ).join('');
+                  )
+                  .join('');
               }
             }
           });

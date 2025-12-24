@@ -20,6 +20,7 @@ import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
 import { disc as ripplesOfNostalgia } from './discs/ripples-of-nostalgia.js';
 import { disc as clawTheClaw } from './discs/claw-the-claw.js';
+import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
 
 // Import full character data from new character files
 import { Amber } from './characters/characters/amber.js';
@@ -49,6 +50,7 @@ import { Gerie } from './characters/characters/gerie.js';
 import { Laru } from './characters/characters/laru.js';
 import { Shia } from './characters/characters/shia.js';
 import { Nazuna } from './characters/characters/nazuna.js';
+import { SnowishLaru } from './characters/characters/snowish-laru.js';
 
 // Map character data by slug for easy lookup
 const characterDataMap = {
@@ -79,6 +81,7 @@ const characterDataMap = {
   laru: Laru,
   shia: Shia,
   nazuna: Nazuna,
+  snowishLaru: SnowishLaru,
 };
 
 // Map 5-star characters to their signature discs
@@ -94,6 +97,7 @@ const characterDiscMap = {
   gerie: theLostPilgrim,
   shia: ripplesOfNostalgia,
   nazuna: clawTheClaw,
+  snowishLaru: snowyNightSurprise,
 };
 
 // Game Mechanics Reference
@@ -194,16 +198,11 @@ function extractStatusEffects(charData) {
   if (!charData) return [];
 
   const effects = new Map(); // Use Map to dedupe by id
-  const skills = [
-    charData.normalAttack,
-    charData.skill,
-    charData.supportSkill,
-    charData.ultimate,
-  ];
+  const skills = [charData.normalAttack, charData.skill, charData.supportSkill, charData.ultimate];
 
   skills.forEach(skill => {
     if (skill?.hints) {
-      Object.values(skill.hints).forEach((hint) => {
+      Object.values(skill.hints).forEach(hint => {
         if (hint && hint.id && hint.name && hint.description) {
           // Parse the description with params
           const parsedDesc = parseDescription(hint.description, hint.params);
@@ -224,7 +223,7 @@ function extractStatusEffects(charData) {
 function transformGiftPreferences(giftPreferences) {
   if (!giftPreferences) return { loves: [], hates: [] };
 
-  const transformGiftArray = (gifts) => {
+  const transformGiftArray = gifts => {
     if (!Array.isArray(gifts)) return [];
     return gifts.map(gift => {
       // If already an object, return as-is
@@ -238,7 +237,7 @@ function transformGiftPreferences(giftPreferences) {
 
   return {
     loves: transformGiftArray(giftPreferences.loves),
-    hates: transformGiftArray(giftPreferences.hates)
+    hates: transformGiftArray(giftPreferences.hates),
   };
 }
 
@@ -356,7 +355,7 @@ const discImageFilenames = {
   'Sunlit Blossom': 'Sunlit_blossom.jpg',
   'Midnight Mayhem': 'Midnight_mayhem.jpg',
   "Deer's Song": "Deer's_Song.jpg",
-  'Fireworks': 'Fireworks.jpg',
+  Fireworks: 'Fireworks.jpg',
   "Witch's Swing": "Witch's_swing.jpg",
   'Mystic Brushstrokes': 'Mystic_brushstrokes.jpg',
   'Sword Against Stream': 'sword_against_stream.jpg',
@@ -372,10 +371,12 @@ function generateDiscImageName(discName) {
     return discImageFilenames[discName];
   }
   // Fallback: convert to underscore format
-  return discName
-    .split(' ')
-    .map((word, index) => index === 0 ? word : word.toLowerCase())
-    .join('_') + '.jpg';
+  return (
+    discName
+      .split(' ')
+      .map((word, index) => (index === 0 ? word : word.toLowerCase()))
+      .join('_') + '.jpg'
+  );
 }
 
 // Transform disc data from new format to expected template format
@@ -418,7 +419,11 @@ function transformDiscData(disc) {
   return {
     name: disc.name,
     image: generateDiscImageName(disc.name),
-    slug: disc.name.toLowerCase().replace(/['']/g, '-').replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-'),
+    slug: disc.name
+      .toLowerCase()
+      .replace(/['']/g, '-')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-'),
     rarity: `${disc.star}-Star`,
     element: disc.element,
     tags: disc.tag,
@@ -431,7 +436,7 @@ function transformDiscData(disc) {
         name: disc.mainSkill.name,
         effect: formatDiscDescription(disc.mainSkill.description, maxMainParams),
       },
-      harmony: disc.secondarySkills.map((skill) => {
+      harmony: disc.secondarySkills.map(skill => {
         const maxParams = skill.params[skill.params.length - 1];
         const maxReqs = skill.requirements[skill.requirements.length - 1];
         return {
@@ -525,12 +530,14 @@ function normalizeCharacter(info) {
     },
 
     // Skills
-    skillsDetailed: skills ? {
-      normalAttack: skills.normalAttack,
-      skill: skills.skill,
-      supportSkill: skills.supportSkill,
-      ultimate: skills.ultimate,
-    } : null,
+    skillsDetailed: skills
+      ? {
+          normalAttack: skills.normalAttack,
+          skill: skills.skill,
+          supportSkill: skills.supportSkill,
+          ultimate: skills.ultimate,
+        }
+      : null,
 
     // Legacy skills array for fallback
     skills: [],
@@ -542,16 +549,12 @@ function normalizeCharacter(info) {
     talents: transformTalents(charData),
 
     // Potentials
-    mainPotentials: potentials ? transformPotentials(
-      potentials.potentials,
-      potentials.buildOrder?.main,
-      'main'
-    ) : [],
-    supportPotentials: potentials ? transformPotentials(
-      potentials.potentials,
-      potentials.buildOrder?.support,
-      'support'
-    ) : [],
+    mainPotentials: potentials
+      ? transformPotentials(potentials.potentials, potentials.buildOrder?.main, 'main')
+      : [],
+    supportPotentials: potentials
+      ? transformPotentials(potentials.potentials, potentials.buildOrder?.support, 'support')
+      : [],
 
     // Disc (5-star characters only)
     disc: characterDiscMap[slug] ? transformDiscData(characterDiscMap[slug]) : null,
