@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import gameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import stellaSoraIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import bustyBurstIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
+import taimaninSquadIcon from '../../assets/images/games/taimanin-squad/gameimg/heroimage.jpg';
 
 // Get all active games for the landing page
 let games = getActiveLandingGames();
@@ -28,6 +29,12 @@ games = games.map(game => {
     return {
       ...game,
       image: bustyBurstIcon,
+    };
+  }
+  if (game.id === 'taimanin-squad') {
+    return {
+      ...game,
+      image: taimaninSquadIcon,
     };
   }
   return game;

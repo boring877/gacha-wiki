@@ -1,0 +1,99 @@
+/* Taimanin Squad Clock Styles - Using TS Color System */
+
+/* Title styling */
+.ts-title-only-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--ts-font-bold);
+  text-align: center;
+  color: var(--ts-accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Game name styling */
+.ts-game-name {
+  color: var(--ts-accent);
+  font-size: 1.5rem;
+  font-weight: var(--ts-font-bold);
+  margin: 0;
+}
+
+/* Timer main label */
+.ts-timer-main-label {
+  font-size: 1.25rem;
+  font-weight: var(--ts-font-semibold);
+  color: var(--ts-accent);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Timer card title */
+.ts-timer-card-title {
+  font-size: 1rem;
+  font-weight: var(--ts-font-semibold);
+  color: var(--ts-primary-light);
+}
+
+/* Game image container background */
+.ts-game-image-container {
+  background: var(--ts-gradient-card);
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius-lg);
+}
+
+/* Master clock card styling */
+.ts-master-clock {
+  background: var(--ts-gradient-card);
+  border: 1px solid var(--ts-border);
+  box-shadow: var(--ts-shadow-lg);
+}
+
+/* Status dot colors */
+.ts-status-dot.status-coming-soon {
+  background: var(--ts-primary);
+}
+
+.ts-status-dot.status-active {
+  background: var(--ts-success);
+}
+
+/* Countdown value styling */
+.ts-countdown-value {
+  color: var(--ts-accent-light);
+  font-size: 2.5rem;
+  font-weight: var(--ts-font-bold);
+}
+
+/* Body background for Taimanin Squad */
+.taimanin-squad-body {
+  background: var(--ts-bg-gradient-primary);
+  min-height: 100vh;
+}
+
+/* Content wrapper */
+.taimanin-squad-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Background layers */
+.ts-bg-primary {
+  background: radial-gradient(ellipse at 30% 20%, rgba(107, 91, 122, 0.1) 0%, transparent 50%);
+}
+
+.ts-bg-accent-1 {
+  background: radial-gradient(ellipse at 70% 80%, rgba(154, 138, 170, 0.08) 0%, transparent 50%);
+}
+
+.ts-bg-accent-2 {
+  background: radial-gradient(ellipse at 50% 50%, rgba(92, 76, 107, 0.05) 0%, transparent 60%);
+}
+
+/* Region badge */
+.ts-region-badge {
+  background: var(--ts-primary-subtle);
+  border: 1px solid var(--ts-primary-border);
+  color: var(--ts-text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--ts-radius-sm);
+  font-size: 0.875rem;
+}

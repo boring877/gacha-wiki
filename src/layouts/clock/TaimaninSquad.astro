@@ -1,0 +1,188 @@
+---
+// Taimanin Squad Clock Layout - Simple Open Beta Countdown
+import TSBaseHead from '../../components/taimanin-squad/TSBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/taimanin-squad/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files - Using TS color system
+import '../../styles/games/taimanin-squad/ts-colors.css';
+import '../../styles/games/taimanin-squad/ts-layout.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/taimanin-squad.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0]; // Taimanin Squad config
+
+// Generate initial date server-side (JST)
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'Asia/Tokyo',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <TSBaseHead title={title} description={description} />
+
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Taimanin Squad clock',
+        'Taimanin Squad timer',
+        'Taimanin Squad open beta',
+        'Taimanin Squad countdown',
+        'Taimanin Squad launch',
+        'Taimanin Squad release date',
+      ]}
+      pageType="webapp"
+    />
+  </head>
+
+  <body class="taimanin-squad-body">
+    <CustomScrollbar />
+
+    <!-- Background layers -->
+    <div class="bg-layer ts-bg-primary"></div>
+    <div class="bg-layer ts-bg-accent-1"></div>
+    <div class="bg-layer ts-bg-accent-2"></div>
+
+    <div class="taimanin-squad-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="taimanin-squad" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <!-- Page Title -->
+            <section class="title-only-section">
+              <h1 class="ts-title-only-heading">Taimanin Squad Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <!-- Breadcrumb Navigation -->
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Taimanin Squad Clock' },
+              ]}
+              showBackButton={true}
+            />
+
+            <!-- First Hero Card - Open Beta Countdown Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <!-- Clock Background Animation -->
+                <div class="clock-bg-animation"></div>
+
+                <!-- Top Section: JST Note and Current Time -->
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">This is based on JST (UTC+9)</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentJST">JST --:--:--</div>
+                  </div>
+                </div>
+
+                <!-- Main Content Section: Game Info and Timer -->
+                <div class="hero-main-content">
+                  <!-- Left Side: Game Info -->
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            fetchpriority="high"
+                            width={200}
+                            height={200}
+                            format="webp"
+                            quality={90}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="ts-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status">{game.server.status}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right Side: Timer Display -->
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="ts-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownDays">--</span>
+                          <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <Analytics />
+  </body>
+</html>

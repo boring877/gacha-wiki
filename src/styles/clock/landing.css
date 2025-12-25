@@ -182,6 +182,14 @@
   object-fit: cover;
 }
 
+/* Taimanin Squad - Soft purple theme */
+.game-card[data-game-id='taimanin-squad'] .game-card-title {
+  background: linear-gradient(135deg, var(--ts-accent) 0%, var(--ts-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .game-card-description {
   font-family: var(--font-primary); /* Use primary font from typography system */
   font-size: var(--text-sm); /* Use size from typography system */

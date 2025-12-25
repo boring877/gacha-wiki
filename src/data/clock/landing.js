@@ -3,6 +3,22 @@
 
 export const clockLandingGames = [
   {
+    id: 'taimanin-squad',
+    name: 'Taimanin Squad',
+    description: 'Action RPG Open Beta',
+    image: '', // Image will be imported directly in the Astro page
+    url: '/clock/taimanin-squad',
+    themeColor: 'var(--ts-accent)',
+    active: true,
+    primaryTimer: {
+      name: 'Open Beta',
+      type: 'launch',
+      resetHour: 15, // UTC (00:00 JST)
+      resetMinute: 0,
+      icon: '',
+    },
+  },
+  {
     id: 'zone-nova',
     name: 'Zone Nova',
     description: 'Strategic RPG with Waifus',
