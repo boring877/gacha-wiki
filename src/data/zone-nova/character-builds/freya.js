@@ -161,41 +161,46 @@ export const freyaBuild = {
     },
   },
   awakenings: {
-    priority: 'Focus on Golden Desire state first, then damage amplification',
     keyMilestones: [
       {
         level: 1,
         effect: 'During [Golden Desire] state: Attack Power +30% and Damage Taken -30%',
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
           'Immediately enters [Golden Desire] state upon entering battle. Using [Ice Star] can refresh [Golden Desire] duration. [Golden Desire] AoE damage increases from 60% → 80%',
-        importance: 'Critical',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
         effect:
           '[Basic Attack], [Auto Skill], [Ultimate Skill], and [Passive] levels & max levels +2',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'All ice damage +30%',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 5,
         effect:
           '[Basic Attack], [Auto Skill], [Ultimate Skill], and [Passive] levels & max levels +2',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
           'Normal attacks penetrate 20% ice resistance. After 10 normal attacks/skills, automatically deal 100% attack power as ice damage to target and enemies within 3m range',
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -209,9 +214,9 @@ export const freyaBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Apollo, Athena, Zashiki-warashi, Morgan Le Fay,  Or any buffer that increase critical rate',
-      'She need some protaction so Gaia can be really good with Thor',
+      'Apollo, Athena, Zashiki-warashi, Morgan Le Fay, or any buffer that increases critical rate',
+      'She needs some protection so Gaia can be really good with Thor',
     ],
-    note: 'This unit deal insana amount of damage, its quite recommended to have buffer that increase critical rate.',
+    note: 'This unit deals an insane amount of damage. It is quite recommended to have a buffer that increases critical rate.',
   },
 };

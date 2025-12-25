@@ -6,7 +6,7 @@ export const gaiaBuild = {
   role: 'Healer',
   buildType: 'HP Scaling Healer',
   description:
-    'Gaia is a healer that scales with HP, She have AOE healing and can revive allies. She can also increase the max HP of her allies. Using Snow Girl memory can privde 24% total damage increase which is better then her memory !',
+    'Gaia is a healer that scales with HP. She has AOE healing and can revive allies. She can also increase the max HP of her allies. Using Snow Girl memory can provide 24% total damage increase which is better than her memory!',
 
   skillPriority: [
     {
@@ -172,41 +172,45 @@ export const gaiaBuild = {
     },
   },
   awakenings: {
-    priority:
-      'Focus on awakening levels that provide instant ultimate, healing amplification, and Motherly Love enhancements first, then skill levels.',
     keyMilestones: [
       {
         level: 1,
         effect:
           "Characters with [Motherly Love] gain +45% DEF. [Life Extension]'s HP loss duration capped at 10 seconds.",
-        importance: 'High',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
           "Upon entering battle: Instantly cast Ultimate Skill with no energy cost. Using [Emergency Treatment] refreshes the duration of Ultimate Skill's buff.",
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
         effect: 'Normal / Skill / Ultimate / Passive level cap +2',
-        importance: 'Critical',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: "Gaia's healing output +37.5%.",
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
         effect: 'Normal / Skill / Ultimate / Passive level cap +2',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
           'Upon entering battle: Two lowest-DEF allies gain [Motherly Love]. [Motherly Love] holders gain +50% additional Max HP.',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
     ],
   },
@@ -219,7 +223,7 @@ export const gaiaBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Anyteam she is good at, she is the best healer right now !'],
-    note: 'Gaia really strong healer if you put her in any team she going make sure they will not die, however her MAX HP increase does not scale with other character that use HP as DAMAGE like Mordred.',
+    goodWith: ['Any team - she is good at everything. She is the best healer right now!'],
+    note: 'Gaia is a really strong healer. If you put her in any team she is going to make sure they will not die. However, her max HP increase does not scale with other characters that use HP as damage like Mordred.',
   },
 };

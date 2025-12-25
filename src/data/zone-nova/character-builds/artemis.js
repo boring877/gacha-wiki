@@ -155,38 +155,42 @@ export const artemisBuild = {
     },
   },
   awakenings: {
-    priority:
-      'Level 6 is essential for elemental resistance penetration - core to her damage output',
     keyMilestones: [
       {
         level: 1,
         effect: 'Attack power increased by 20%',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 2,
         effect: 'When HP is below 50%: Damage taken reduced by 10%',
-        importance: 'Critical',
+        importance: 5,
+        importanceLabel: 'Bad',
       },
       {
         level: 3,
         effect: '[Skills] and [Normal Attack] level and level cap +4',
-        importance: 'High',
+        importance: 1,
+        importanceLabel: 'Very Good for PVP',
       },
       {
         level: 4,
         effect: 'Wind damage increased by 35%',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 5,
         effect: '[Ultimate] and [Passive] level and level cap +4',
-        importance: 'Critical',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect: 'When HP is below 50%: All damage ignores 20% elemental resistance',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
     ],
   },

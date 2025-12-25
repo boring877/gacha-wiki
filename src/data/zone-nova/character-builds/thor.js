@@ -182,37 +182,45 @@ export const thorBuild = {
     },
   },
   awakenings: {
-    priority: 'Enhanced Ultimate mechanics first, then defensive capabilities',
     keyMilestones: [
       {
         level: 1,
-        effect: 'Basic stat increases and skill enhancements',
-        importance: 'Essential',
+        effect:
+          'Immediately gain 10 stacks of [Lightning Extreme] at the start of battle. Connect to the two allies with the lowest defense.',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 2,
-        effect: 'Improved shield strength and damage reduction',
-        importance: 'Critical',
+        effect:
+          'Connected allies gain 30% increased attack. After casting enhanced ultimate, grant all allied characters a shield equal to 10% of Defense every 2 seconds for 10 seconds.',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
-        effect: 'Enhanced [Lightning Extreme] stack generation',
-        importance: 'Critical',
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
-        effect: 'Significant defense scaling improvements',
-        importance: 'High',
+        effect: 'Defense increased by 45%.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
-        effect: 'Ultimate damage and team protection enhancements',
-        importance: 'High',
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
-        effect: 'Maximum enhanced ultimate potential and team utility',
-        importance: 'Essential',
+        effect:
+          "All resistance increased by 15%, Holy resistance additionally increased by 15%. Targets hit by Thor's ultimate gain 1 additional stack of [Divine Judgment] per second for 5 seconds.",
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -225,7 +233,7 @@ export const thorBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Any team', 'Dot team like Odin that scale with dot damage'],
-    note: 'The problem with thor she is not providing alot of protection that make alot of different, her damage redaction is really good but not borken enough :))). she is overall can be anywhere !',
+    goodWith: ['Any team', 'DOT teams like Odin that scale with DOT damage'],
+    note: "The problem with Thor is she doesn't provide a lot of protection that makes a lot of difference. Her damage reduction is really good but not broken enough. She can be used anywhere!",
   },
 };

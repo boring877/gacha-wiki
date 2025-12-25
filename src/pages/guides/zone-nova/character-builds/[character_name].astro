@@ -121,6 +121,7 @@ const memoryCardUrls = {
   'Shared Bath Time': '/guides/zone-nova/memories/shared-bath-time/',
   'Simple Birdcage': '/guides/zone-nova/memories/simple-birdcage/',
   'In the Cafe, Sneaking a Bite': '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
+  'Secret Garden': '/guides/zone-nova/memories/secret-garden/',
 
   'Hera Memory': '/guides/zone-nova/memories/black-face-ugly-person/',
   'Secret Room Reality': '/guides/zone-nova/memories/secret-room-reality/',
@@ -133,6 +134,8 @@ const memoryCardUrls = {
   Mordred: '/guides/zone-nova/memories/mordred/',
   'Heroes, Never Stop': '/guides/zone-nova/memories/heroes-never-stop/',
   'Behind the Regret': '/guides/zone-nova/memories/behind-the-regret/',
+  'Swimsuit Sovereign Who Makes Hearts Flutter':
+    '/guides/zone-nova/memories/swimsuit-sovereign-who-makes-hearts-flutter/',
   'Morning Sunlight': '/guides/zone-nova/memories/morning-sunlight/',
   'During Military Academy Training':
     '/guides/zone-nova/memories/during-military-academy-training/',
@@ -659,9 +662,9 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                 <div class="awakening-milestone-header">
                   <span class="awakening-level">A{milestone.level}</span>
                   <span
-                    class={`awakening-importance ${milestone.importance?.toLowerCase() || 'good'}`}
+                    class={`awakening-importance awakening-importance-${milestone.importance || 3}`}
                   >
-                    {milestone.importance}
+                    {milestone.importanceLabel || milestone.importance}
                   </span>
                 </div>
                 <p class="awakening-effect">{milestone.effect}</p>

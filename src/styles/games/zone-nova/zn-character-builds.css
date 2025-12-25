@@ -284,8 +284,8 @@
 /* Memory cards section */
 .memory-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -293,7 +293,10 @@
   background-color: var(--zn-bg-secondary);
   border: 1px solid var(--zn-border);
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .memory-card-item.character-specific {
@@ -305,6 +308,7 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  flex: 1;
 }
 
 .memory-card-image-container {
@@ -319,32 +323,39 @@
 .memory-card-content {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .memory-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .memory-card-name {
   color: var(--zn-text-primary);
   font-weight: 600;
+  font-size: 1rem;
   margin: 0;
+  line-height: 1.3;
 }
 
 .memory-card-exclusive {
   color: var(--zn-primary);
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .memory-card-badge {
   flex-shrink: 0;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   white-space: nowrap;
 }
 
@@ -366,39 +377,35 @@
 
 .memory-card-effect {
   color: var(--zn-text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.5;
   margin-bottom: 0.75rem;
+  flex: 1;
 }
 
 .memory-card-stats {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--zn-text-secondary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--zn-border);
 }
 
 .memory-card-link-container {
+  margin-top: auto;
+  padding-top: 0.75rem;
   text-align: right;
 }
 
 .memory-card-link {
   color: var(--zn-primary);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
-.memory-card-name {
-  color: var(--zn-text-primary);
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-}
-
-.memory-card-effect {
-  color: var(--zn-text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0;
+.memory-card-link:hover {
+  text-decoration: underline;
 }
 
 /* Spending recommendation note - eye-catching but consistent with Zone Nova design */
@@ -807,29 +814,30 @@
   font-weight: 600;
 }
 
-.awakening-importance.essential {
-  background-color: #ef4444;
-  color: #ffffff;
-}
-
-.awakening-importance.highly-recommended {
-  background-color: #f59e0b;
-  color: #000000;
-}
-
-.awakening-importance.good {
+/* Awakening Importance Levels (1=Best/Must Have, 5=Skip/Bad) */
+.awakening-importance-1 {
   background-color: #10b981;
   color: #ffffff;
 }
 
-.awakening-importance.medium {
-  background-color: #3b82f6;
+.awakening-importance-2 {
+  background-color: #22c55e;
   color: #ffffff;
 }
 
-.awakening-importance.low {
-  background-color: var(--zn-bg-tertiary);
-  color: var(--zn-text-secondary);
+.awakening-importance-3 {
+  background-color: #f59e0b;
+  color: #000000;
+}
+
+.awakening-importance-4 {
+  background-color: #f97316;
+  color: #ffffff;
+}
+
+.awakening-importance-5 {
+  background-color: #ef4444;
+  color: #ffffff;
 }
 
 .awakening-effect {

@@ -170,29 +170,44 @@ export const helaBuild = {
     },
   },
   awakenings: {
-    priority: 'Level 6 is essential for maximizing damage output',
     keyMilestones: [
       {
         level: 1,
         effect:
           'After battle starts, ATK increases by 30%. When switching modes, damage taken is reduced by 50%',
-        importance: 'High',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
           '[Termination] Mode: Crit Damage increases by 30%. [Death Silence] Mode: Damage taken is reduced by 20%',
-        importance: 'Critical',
+        importance: 1,
+        importanceLabel: 'Very Good',
+      },
+      {
+        level: 3,
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Chaos damage increases by 30%',
-        importance: 'High',
+        importance: 2,
+        importanceLabel: 'Good',
+      },
+      {
+        level: 5,
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect: 'All damage dealt by Hela penetrates 20% of all resistances',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
     ],
   },

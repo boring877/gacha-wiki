@@ -182,36 +182,45 @@ export const lilyBuild = {
     },
   },
   awakenings: {
-    priority: 'Awakening 2 is the most important - it helps your team survive PvP.',
     keyMilestones: [
       {
         level: 1,
         effect:
-          '[Mitigation] After success, additionally increase own defense by 30% for 5 seconds; casting a normal ultimate skill grants 1 extra stack of [Battle Intention]; after casting an enhanced ultimate skill, immediately obtain 2 stacks of [Battle Intention].',
-        importance: 'Good',
+          '[Mitigation] After success, additionally increase own defense by 30% for 5 seconds. Casting a normal ultimate skill grants 1 extra stack of [Battle Intention]. After casting an enhanced ultimate skill, immediately obtain 2 stacks of [Battle Intention].',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
-          'After entering battle, all units on my side gain 20 layers of [Frost Armor]; each time taking damage, remove 1 layer of [Frost Armor], reducing that damage by 50%; [Frost Armor] expires after 20 seconds.',
-        importance: 'Essential',
+          'After entering battle, all allied units gain 20 layers of [Frost Armor]. Each time taking damage, remove 1 layer of [Frost Armor], reducing that damage by 50%. [Frost Armor] expires after 20 seconds.',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
         effect: '[Normal Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2',
-        importance: 'Low',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
-      { level: 4, effect: 'Defense increases by 45%', importance: 'Good' },
+      {
+        level: 4,
+        effect: 'Defense increases by 45%',
+        importance: 3,
+        importanceLabel: 'Mid',
+      },
       {
         level: 5,
         effect: '[Normal Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2',
-        importance: 'Low',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
           'All resistances increase by 15%, and ice resistance additionally increases by 15%.',
-        importance: 'Good',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },

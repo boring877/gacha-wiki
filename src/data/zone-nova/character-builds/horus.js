@@ -6,7 +6,7 @@ export const horusBuild = {
   role: 'Debuffer',
   buildType: 'Holy DOT Debuffer',
   description:
-    'Horus is a debuffer and DOT Damage Character, she scales with attack power. Her Ultimate can interrupt skill casting. She mainly focus on ATK and Penetration.',
+    'Horus is a debuffer and DOT damage character. She scales with attack power. Her Ultimate can interrupt skill casting. She mainly focuses on ATK and Penetration.',
   skillPriority: [
     {
       skill: 'Passive: Solar Divine Judgment',
@@ -95,7 +95,7 @@ export const horusBuild = {
     stats: ['ATK%', 'Penetration'],
     additionalStats: ['ATK', 'HP', 'DEF'],
     buildNote:
-      'Atk% and Penetration are good, but the damage still weak. Her DOT stacking and Damage taken is not bad too. Taking HP and DEF is not bad too, its better then crit rate and crit damage beucase you do not really benift much since you deal DOT damage.',
+      "ATK% and Penetration are good, but the damage is still weak. Her DOT stacking and damage taken debuff are not bad. Taking HP and DEF is not bad either - it's better than crit rate and crit damage because you don't really benefit much since you deal DOT damage.",
     recommendedSets: [
       {
         name: 'Giants 4-piece + Gimel 2-piece',
@@ -174,39 +174,44 @@ export const horusBuild = {
     },
   },
   awakenings: {
-    priority: 'DOT damage amplification first, then penetration and stat scaling',
     keyMilestones: [
       {
         level: 1,
         effect: 'Attack power increased by 20%',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 2,
         effect:
-          'When dealing continuous damage, make the targets received continuous damage increase by 20%, lasts 3 seconds, repeated triggers can refresh the duration',
-        importance: 'Critical',
+          'When dealing continuous damage, targets receive 20% increased continuous damage for 3 seconds. Repeated triggers can refresh the duration',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 3,
         effect: '[Skill] and [Normal Attack] level and level cap +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: '[Continuous Damage] effects deal +35% increased damage',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 5,
         effect: '[Ultimate] and [Passive] level and level cap +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
-          'When dealing damage to targets that have [Continuous damage] status, gain 20% holy resistance penetration',
-        importance: 'Essential',
+          'When dealing damage to targets that have [Continuous Damage] status, gain 20% holy resistance penetration',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
     ],
   },
@@ -220,6 +225,6 @@ export const horusBuild = {
   },
   teamSynergy: {
     goodWith: ['Odin', 'DOT characters'],
-    note: 'The Main Problem with horus is she does not provide any strong Debuff, her main thing is DOT damage and its not enough. the good thing about her, the base atk is really high !!',
+    note: "The main problem with Horus is she doesn't provide any strong debuff. Her main thing is DOT damage and it's not enough. The good thing about her is that her base ATK is really high!",
   },
 };

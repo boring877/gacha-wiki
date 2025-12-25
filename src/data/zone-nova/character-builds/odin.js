@@ -179,41 +179,45 @@ export const odinBuild = {
     },
   },
   awakenings: {
-    priority:
-      'DOT damage amplification and ultimate enhancement first, then fire damage and skill levels',
     keyMilestones: [
       {
         level: 1,
         effect:
-          'Targets without [Divine Flame] instantly receive 5 stacks; +20% DoT for 5s after ultimate; 50% damage reduction during ultimate',
-        importance: 'Essential',
+          'Targets without [Divine Flame] instantly receive 5 stacks. +20% DoT for 5 seconds after ultimate. 50% damage reduction during ultimate.',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
-          'Ultimate third-segment extra hits cap raised to 30; enemies with [Divine Flame] take +20% DoT from Odin',
-        importance: 'Critical',
+          'Ultimate third-segment extra hits cap raised to 30. Enemies with [Divine Flame] take +20% DoT from Odin.',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
         effect: 'Normal / Skill / Ultimate / Passive level cap +2',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Fire damage +30%',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 5,
         effect: 'Normal / Skill / Ultimate / Passive level cap +2',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
-          "Every 3 ultimates, next normal attack becomes a skill; Odin's DoT ignores 20% Fire resistance",
-        importance: 'Essential',
+          "Every 3 ultimates, next normal attack becomes a skill. Odin's DoT ignores 20% Fire resistance.",
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -224,6 +228,6 @@ export const odinBuild = {
   },
   teamSynergy: {
     goodWith: ['Shu', 'Thor', 'Horus', 'Anubis', 'Cleopatra', 'Tefnut'],
-    note: 'Odin needs 1 more teammates that deal DOT damage for her to have full 20 or 30 stacks of Divine Flame. The damage different is quit significant.',
+    note: 'Odin needs 1 more teammate that deals DOT damage for her to have full 20 or 30 stacks of Divine Flame. The damage difference is quite significant.',
   },
 };

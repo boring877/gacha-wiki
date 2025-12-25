@@ -167,39 +167,44 @@ export const freyeChaosBuild = {
     },
   },
   awakenings: {
-    priority: 'Enhanced Ultimate access first, then damage amplification, finally stat scaling',
     keyMilestones: [
       {
         level: 1,
         effect: 'After combat starts, can immediately cast 【Enhanced Ultimate】',
-        importance: 'Critical',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 2,
         effect:
           'Ultimate skill damage increased by 20%. 【Enhanced Ultimate】 energy cost reduced to 1. Enhanced Passive: When large black hole exists, all enemy units have energy gain reduced by 100% and total defense reduced by 20%',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 3,
         effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Attack power increased by 30%',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
         effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
           'Targets affected by ultimate skills additionally have all resistance reduced by 20%',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
     ],
   },
@@ -214,6 +219,6 @@ export const freyeChaosBuild = {
   },
   teamSynergy: {
     goodWith: ['DOT characters', 'High damage DPS characters', 'Chaos characters'],
-    note: 'She is strong PVE, she can help clear things up and increase damage taken. also she is strong in PVP to stop the enemy from using their ultimate skill. However she is not busted !.',
+    note: 'She is strong in PVE, she can help clear things up and increase damage taken. Also she is strong in PVP to stop the enemy from using their ultimate skill. However she is not busted!',
   },
 };

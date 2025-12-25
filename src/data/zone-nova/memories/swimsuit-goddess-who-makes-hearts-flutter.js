@@ -18,12 +18,7 @@ export const swimsuitSovereignWhoMakesHeartsFlutterData = {
   },
 
   // Memory Effects
-  effects: [
-    'Restriction: Only effective for enhancers',
-    'Cost: 5-price awakening',
-    'Attack increased by 20%',
-    'Defense increased by 20%',
-  ],
+  effects: ['Attack increased by 20%', 'Defense increased by 20%'],
 };
 
 // SEO Data

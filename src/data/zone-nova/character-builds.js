@@ -15,6 +15,7 @@ import { artemisBuild } from './character-builds/artemis.js';
 import { freyeChaosBuild } from './character-builds/freye.js';
 import { freyaBuild } from './character-builds/freya.js';
 import { athenaBuild } from './character-builds/athena.js';
+import { afroditeBuild } from './character-builds/afrodite.js';
 import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
 import { sigurdBuild } from './character-builds/sigurd.js';
 import { ninaBuild } from './character-builds/nina.js';
@@ -67,6 +68,9 @@ export const CHARACTER_BUILDS = {
 
   // Athena Build - SSR Wind Normal Attack Speed Buffer
   athena: athenaBuild,
+
+  // Afrodite Build - SSR Holy Crit Scaling Warrior DPS
+  afrodite: afroditeBuild,
 
   // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Debuffer
   'ibaraki-doji': ibarakiDojiBuild,

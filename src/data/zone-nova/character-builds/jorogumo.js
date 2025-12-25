@@ -6,7 +6,7 @@ export const jorogumoBuild = {
   role: 'Healer',
   buildType: 'AOE Healer with Emergency Healing',
   description:
-    "Jorogumo is a Chaos element healer, her ultimate cost only 2 energy. She provide Buff Umbrella Blossom to allies, once they drop below 30% HP, she will trigger the passive emergency healing. Also her awakening 6 provides a shield equal to 50% of Jorogumo's maximum HP and awakening 2 provides a 12.5% enemy damage reduction and resistance. Her energy recovery is also increased by 10% when you have team skill.",
+    "Jorogumo is a Chaos element healer. Her ultimate costs only 2 energy. She provides Umbrella Blossom buff to allies, and once they drop below 30% HP, she will trigger passive emergency healing. Her awakening 6 provides a shield equal to 50% of Jorogumo's maximum HP, and awakening 2 provides 12.5% enemy damage reduction and resistance. Her energy recovery is also increased by 10% with team skill.",
 
   skillPriority: [
     {
@@ -181,19 +181,44 @@ export const jorogumoBuild = {
     },
   },
   awakenings: {
-    priority: 'Good option: A2 and A6.',
     keyMilestones: [
+      {
+        level: 1,
+        effect: 'Healing output increased by 20%',
+        importance: 3,
+        importanceLabel: 'Mid',
+      },
       {
         level: 2,
         effect:
           "Immediately activates Ultimate without cost upon entering battle. After using Ultimate, gain [Umbrella Protection]: Allies' non-Dark resistance increased by 40%, enemy damage reduced by 12.5% (lasts 5 seconds).",
-        importance: 'Good',
+        importance: 1,
+        importanceLabel: 'Very Good',
+      },
+      {
+        level: 3,
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
+        importance: 3,
+        importanceLabel: 'Mid',
+      },
+      {
+        level: 4,
+        effect: 'Attack power increased by 30%',
+        importance: 3,
+        importanceLabel: 'Mid',
+      },
+      {
+        level: 5,
+        effect: '[Basic Attack], [Skill], [Ultimate], and [Passive] level and level cap +2',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
-          "[Umbrella Healing+] The passive effect is added once for the first two activations, and also grants a shield equal to 50% of Jorogumo's maximum HP.",
-        importance: 'Good',
+          "[Umbrella Healing+] The passive effect triggers twice for the first two activations, and also grants a shield equal to 50% of Jorogumo's maximum HP.",
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
     ],
   },
@@ -207,9 +232,9 @@ export const jorogumoBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Hela, they works will beucase hela has passive that increase crit damage when paried with chaos characters',
-      'she is 2nd best healer after gaia so any team with her is fine',
+      'Hela - they work well together because Hela has a passive that increases crit damage when paired with Chaos characters',
+      'She is the 2nd best healer after Gaia, so any team with her is fine',
     ],
-    note: 'Jorogumo need quite of investment to be SSS, she is quite good healer but if you have her at awaken 6 then she will be worken ! I wonder if going full hp on her on awaken 6 might better then ATK.',
+    note: 'Jorogumo needs quite a bit of investment to be SSS tier. She is a good healer, but if you have her at awakening 6 then she really shines! Going full HP on her at awakening 6 might be better than ATK for the shield scaling.',
   },
 };

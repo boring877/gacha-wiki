@@ -69,7 +69,7 @@ export const athenaBuild = {
       description:
         'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
       spendingNote:
-        'Its the free SSR memory card we get. its not good but better then any option as for now..',
+        "It's the free SSR memory card we get. It's not good but better than any option for now.",
     },
     {
       name: 'Sleep Treasure',
@@ -187,40 +187,45 @@ export const athenaBuild = {
     },
   },
   awakenings: {
-    priority: 'Level 2 is critical, followed by Level 4 for team defense, then Level 6 for damage',
     keyMilestones: [
       {
         level: 1,
         effect:
           'After any allies deal basic attack damage, Athena deals 50% ATK wind damage to that target (cannot crit, 1 trigger per character per second)',
-        importance: 'Medium',
+        importance: 1,
+        importanceLabel: 'Very good for PVP and PVE',
       },
       {
         level: 2,
         effect:
           'Using ultimate gains 6 layers [Aegis] instead of 3 (doubles enhanced bullet capacity)',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 3,
         effect: 'All skill level caps +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect:
           'While [Aegis] active: all allies take 10% reduced damage, Warriors/Rogues gain additional 10% damage reduction (total 20%)',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
         effect: 'All skill level caps +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect: 'Enhanced bullets deal double damage (120% attack power per bullet instead of 60%)',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -234,6 +239,6 @@ export const athenaBuild = {
   },
   teamSynergy: {
     goodWith: ['Freya', '2nd buffer to buff athena is not bad too', 'High CD characters'],
-    note: 'She really strong DPS character, she can be the main DPS the problem it take time before she can show her damage and need little bit of investment in runes.',
+    note: "She's a really strong DPS character, she can be the main DPS. The problem is it takes time before she can show her damage and needs a little bit of investment in runes.",
   },
 };

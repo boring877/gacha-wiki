@@ -6,7 +6,7 @@ export const guinevereBuild = {
   role: 'Tank',
   buildType: 'Fire Tank (Defense Scaling & Block)',
   description:
-    'Guinevere is a defense scaling Fire tank with block mechanics. She also have passive life recovery, and critical resistance 100% for 10 seconds, and ultimate that provides extra damage type.',
+    'Guinevere is a defense scaling Fire tank with block mechanics. She also has passive life recovery, critical resistance 100% for 10 seconds, and an ultimate that provides extra damage.',
   skillPriority: [
     {
       skill: 'Passive: Evil Star Explosion',
@@ -183,40 +183,45 @@ export const guinevereBuild = {
     },
   },
   awakenings: {
-    priority: 'Enhanced ultimate mechanics and stat scaling first, then resistance improvements',
     keyMilestones: [
       {
         level: 1,
         effect:
           'After [Block] is successful, additionally increase own defense by 30% for 5 seconds. Passive life recovery count can be accumulated up to 2 times (allows Enhanced Ultimate to restore a second charge)',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 2,
         effect:
           'Launching normal ultimate skill can additionally gain 1 layer of [Domination Authority]. After launching enhanced ultimate skill, immediately gains 2 layers of [Domination Authority]',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 3,
         effect: '[Skill] and [Normal Attack] level and level cap +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Defense increased by 45%',
-        importance: 'Critical',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
         effect: '[Ultimate] and [Passive] level and level cap +4',
-        importance: 'High',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
           'All resistance +15%, Fire resistance additional +15%. Starting passive life recovery count changes to 2 times',
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -229,7 +234,7 @@ export const guinevereBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Fire characters', 'Extra Damage Type characters', 'she good anywhere tbh'],
-    note: 'She need alot of HP in the sub stats to be broken, if you just stack def only you wont get the most out of her ! ',
+    goodWith: ['Fire characters', 'Extra Damage Type characters', 'She is good anywhere'],
+    note: "She needs a lot of HP in the sub stats to be broken. If you just stack DEF only, you won't get the most out of her!",
   },
 };

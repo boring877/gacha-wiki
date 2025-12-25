@@ -171,40 +171,44 @@ export const sigurdBuild = {
     },
   },
   awakenings: {
-    priority:
-      'Enhanced Ultimate access and crit rate first, then Dragon Blood generation and Fire damage',
     keyMilestones: [
       {
         level: 1,
         effect:
           'Gain one [Enhanced Ultimate Skill] at the start of battle. Increase critical hit rate by 10%.',
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
           'Gain 2 stacks of [Dragon Blood] each time a skill is used. Gain 1 stack of [Dragon Blood] after using an ultimate skill.',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 3,
-        effect: '[Basic Attack], [Skill], [Ultimate Skill] and [Passive] level and level cap +2.',
-        importance: 'High',
+        effect: '[Basic Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Fire damage increased by 30%.',
-        importance: 'Critical',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 5,
-        effect: '[Basic Attack], [Skill], [Ultimate Skill] and [Passive] level and level cap +2.',
-        importance: 'High',
+        effect: '[Basic Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect: "Ultimate skill damage ignores 20% of the target's elemental resistance.",
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
@@ -222,8 +226,8 @@ export const sigurdBuild = {
       'Zashiki-warashi',
       'Apollo',
       'Ibaraki-doji',
-      'She need buffer that increase crit rate and crit damage',
+      'She needs buffers that increase crit rate and crit damage',
     ],
-    note: 'She would be an SSS if she had 2000% + ultimate Damage, compared to other ultimates DPS her Mulltiplier is way lower. ',
+    note: 'She would be SSS tier if she had 2000%+ ultimate damage. Compared to other ultimate DPS characters, her multiplier is way lower.',
   },
 };

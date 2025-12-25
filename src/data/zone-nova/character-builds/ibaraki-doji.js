@@ -79,7 +79,7 @@ export const ibarakiDojiBuild = {
     stats: ['HP%', 'DEF%'],
     additionalStats: ['HP', 'DEF'],
     buildNote:
-      'Ibaraki-doji is primarily a debuffer, so her personal damage is not the main focus. But the main problem even going full Tank she wont survive in PVP that much.',
+      "Ibaraki-doji is primarily a debuffer, so her personal damage is not the main focus. But the main problem is that even going full tank, she won't survive in PVP that much.",
     recommendedSets: [
       {
         name: 'Giants 4-piece + Zahn 2-piece',
@@ -177,40 +177,45 @@ export const ibarakiDojiBuild = {
     },
   },
   awakenings: {
-    priority: 'Ultimate damage amplification and resistance reduction are key',
     keyMilestones: [
       {
         level: 1,
         effect:
-          'At the start of battle, the first use of a Ultimate Skill does not consume energy.',
-        importance: 'High',
+          'At the start of battle, the first use of an Ultimate Skill does not consume energy.',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 2,
         effect:
           "When your ultimate skill hits an enemy, it inflicts [Flame Pressure], reducing the enemy's attack power by 35% for 3 seconds.",
-        importance: 'High',
+        importance: 2,
+        importanceLabel: 'Good',
       },
       {
         level: 3,
-        effect: '[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2.',
-        importance: 'High',
+        effect: '[Normal Attack], [Skill], [Ultimate], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Attack power increased by 30%.',
-        importance: 'Medium',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 5,
-        effect: '[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2.',
-        importance: 'High',
+        effect: '[Normal Attack], [Skill], [Ultimate], and [Passive] level and level cap +2.',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect:
-          'Targets affected by ultimate skills have their all resistances reduced by an additional 20% for 5 sec.',
-        importance: 'Critical',
+          'Targets affected by ultimate skills have all resistances reduced by an additional 20% for 5 seconds.',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },

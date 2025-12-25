@@ -146,39 +146,44 @@ export const ninaBuild = {
     },
   },
   awakenings: {
-    priority: 'Focus on Frost Ash state enhancements and survivability first',
     keyMilestones: [
       {
         level: 1,
         effect:
           'After killing an enemy, immediately recovers 20% of max health. Enters [Frost Ash] state immediately upon entering battle. While in [Frost Ash] state, all damage is increased by 20%.',
-        importance: 'Essential',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 2,
         effect:
           'When health drops to 35% or below, immediately recovers 50% of max health (can trigger once per battle). While in [Frost Ash] state, critical rate is additionally increased by 15%.',
-        importance: 'Critical',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 3,
         effect: '[Basic Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2.',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 4,
         effect: 'Ice damage increased by 30%.',
-        importance: 'Critical',
+        importance: 1,
+        importanceLabel: 'Very Good',
       },
       {
         level: 5,
         effect: '[Basic Attack], [Skill], [Ultimate Skill], and [Passive] level and level cap +2.',
-        importance: 'Essential',
+        importance: 3,
+        importanceLabel: 'Mid',
       },
       {
         level: 6,
         effect: 'While in [Frost Ash] state, all damage penetrates 20% ice resistance.',
-        importance: 'Essential',
+        importance: 2,
+        importanceLabel: 'Good',
       },
     ],
   },
