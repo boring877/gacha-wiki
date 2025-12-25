@@ -120,6 +120,7 @@ const memoryCardUrls = {
   'True Order (真正的秩序)': '/guides/zone-nova/memories/true-order/',
   'Shared Bath Time': '/guides/zone-nova/memories/shared-bath-time/',
   'Simple Birdcage': '/guides/zone-nova/memories/simple-birdcage/',
+  'In the Cafe, Sneaking a Bite': '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
 
   'Hera Memory': '/guides/zone-nova/memories/black-face-ugly-person/',
   'Secret Room Reality': '/guides/zone-nova/memories/secret-room-reality/',
@@ -315,6 +316,14 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
               effects: card.effects || [],
             } as MemoryCardData;
           }
+
+          // Debug: Check if URL exists for this card
+          const hasUrl = memoryCardUrls[card.name];
+          console.log(`Memory Card: "${card.name}" - Has URL: ${hasUrl}`, {
+            cardName: card.name,
+            urlValue: hasUrl,
+            allUrls: Object.keys(memoryCardUrls),
+          });
 
           return (
             <div class={`memory-card-item ${card.characterSpecific ? 'character-specific' : ''}`}>

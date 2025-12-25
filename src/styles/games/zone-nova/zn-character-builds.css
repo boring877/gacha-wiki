@@ -61,6 +61,8 @@
   padding: 1.5rem;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Character card header */
@@ -69,6 +71,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .character-card-portrait {
@@ -177,10 +180,24 @@
   color: var(--zn-text-secondary);
   font-size: 0.85rem;
   line-height: 1.4;
+  flex: 1;
 }
 
 .character-card-preview strong {
   color: var(--zn-text-primary);
+}
+
+/* Character card action button */
+.character-card-action {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 4px;
+  color: var(--zn-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */

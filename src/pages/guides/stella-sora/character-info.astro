@@ -14,8 +14,8 @@ const allElements = ['Ignis', 'Aqua', 'Ventus', 'Terra', 'Lux', 'Umbra'];
 const allPositions = ['Vanguard', 'Versatile', 'Support'];
 
 // Count stats
-const total5Star = characterInfo.filter(c => c.grade === 5).length;
-const total4Star = characterInfo.filter(c => c.grade === 4).length;
+const total5Star = characterInfo.filter(c => c.rarity === 5).length;
+const total4Star = characterInfo.filter(c => c.rarity === 4).length;
 
 const title = 'Stella Sora Character Profiles & Voice Actors - Birthdays, Factions & Bios';
 const description = `Complete Stella Sora character profiles database. View voice actors (CN/JP), birthdays, factions, and background stories for all ${characterInfo.length} characters.`;
@@ -37,9 +37,9 @@ const structuredData = {
           '@type': 'Person',
           name: char.name,
           description: char.description,
-          birthDate: char.birthday
-        }
-      }))
+          birthDate: char.birthday,
+        },
+      })),
     },
     {
       '@type': 'BreadcrumbList',
@@ -48,27 +48,27 @@ const structuredData = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://gachawiki.info'
+          item: 'https://gachawiki.info',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Guides',
-          item: 'https://gachawiki.info/guides/'
+          item: 'https://gachawiki.info/guides/',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'Stella Sora',
-          item: 'https://gachawiki.info/guides/stella-sora/'
+          item: 'https://gachawiki.info/guides/stella-sora/',
         },
         {
           '@type': 'ListItem',
           position: 4,
           name: 'Character Profiles & Voice Actors',
-          item: 'https://gachawiki.info/guides/stella-sora/character-info/'
-        }
-      ]
+          item: 'https://gachawiki.info/guides/stella-sora/character-info/',
+        },
+      ],
     },
     {
       '@type': 'FAQPage',
@@ -78,37 +78,42 @@ const structuredData = {
           name: 'How many characters are in Stella Sora?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: `Stella Sora currently has ${characterInfo.length} playable characters, including ${total5Star} 5-star and ${total4Star} 4-star characters.`
-          }
+            text: `Stella Sora currently has ${characterInfo.length} playable characters, including ${total5Star} 5-star and ${total4Star} 4-star characters.`,
+          },
         },
         {
           '@type': 'Question',
           name: 'Who are the voice actors in Stella Sora?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Stella Sora features voice acting in Chinese (CN) and Japanese (JP). Each character has dedicated voice actors for both languages.'
-          }
+            text: 'Stella Sora features voice acting in Chinese (CN) and Japanese (JP). Each character has dedicated voice actors for both languages.',
+          },
         },
         {
           '@type': 'Question',
           name: 'What elements are in Stella Sora?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Stella Sora has 6 elements: Ignis (Fire), Aqua (Water), Ventus (Wind), Terra (Earth), Lux (Light), and Umbra (Dark).'
-          }
-        }
-      ]
-    }
-  ]
+            text: 'Stella Sora has 6 elements: Ignis (Fire), Aqua (Water), Ventus (Wind), Terra (Earth), Lux (Light), and Umbra (Dark).',
+          },
+        },
+      ],
+    },
+  ],
 };
 ---
 
 <CharacterInfoLayout title={title} description={description} gameTitle={gameTitle}>
-  <!-- Structured Data for SEO -->
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  {/* Structured Data for SEO */}
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+    slot="head"
+  />
 
   <div class="character-info-page">
-    <!-- Stats Overview -->
+    {/* Stats Overview */}
     <div class="character-info-stats">
       <h2>Overview</h2>
       <div class="character-info-stats-grid">
@@ -135,7 +140,7 @@ const structuredData = {
       </div>
     </div>
 
-    <!-- Filter Controls -->
+    {/* Filter Controls */}
     <div class="character-info-controls">
       <div class="character-info-filter-row">
         <div class="character-info-search-container">
@@ -147,126 +152,138 @@ const structuredData = {
             aria-label="Search characters by name, faction, or voice actor"
           />
         </div>
-        <select id="element-filter" class="character-info-filter-select" aria-label="Filter by element">
+        <select
+          id="element-filter"
+          class="character-info-filter-select"
+          aria-label="Filter by element"
+        >
           <option value="">All Elements</option>
-          {allElements.map(element => (
-            <option value={element}>{element}</option>
-          ))}
+          {allElements.map(element => <option value={element}>{element}</option>)}
         </select>
-        <select id="position-filter" class="character-info-filter-select" aria-label="Filter by position">
+        <select
+          id="position-filter"
+          class="character-info-filter-select"
+          aria-label="Filter by position"
+        >
           <option value="">All Positions</option>
-          {allPositions.map(position => (
-            <option value={position}>{position}</option>
-          ))}
+          {allPositions.map(position => <option value={position}>{position}</option>)}
         </select>
-        <select id="grade-filter" class="character-info-filter-select" aria-label="Filter by rarity">
+        <select
+          id="rarity-filter"
+          class="character-info-filter-select"
+          aria-label="Filter by rarity"
+        >
           <option value="">All Rarities</option>
           <option value="5">5-Star</option>
           <option value="4">4-Star</option>
         </select>
-        <select id="faction-filter" class="character-info-filter-select" aria-label="Filter by faction">
+        <select
+          id="faction-filter"
+          class="character-info-filter-select"
+          aria-label="Filter by faction"
+        >
           <option value="">All Factions</option>
-          {allFactions.map(faction => (
-            <option value={faction}>{faction}</option>
-          ))}
+          {allFactions.map(faction => <option value={faction}>{faction}</option>)}
         </select>
       </div>
     </div>
 
-    <!-- Character Cards Grid -->
+    {/* Character Cards Grid */}
     <div class="character-info-grid" id="character-grid">
-      {characterInfo.map(char => (
-        <div
-          class="character-info-card"
-          data-name={char.name.toLowerCase()}
-          data-element={char.element}
-          data-position={char.position}
-          data-grade={char.grade}
-          data-faction={char.faction}
-          data-va-cn={char.voiceActor.cn.toLowerCase()}
-          data-va-jp={char.voiceActor.jp.toLowerCase()}
-        >
-          <!-- Card Header -->
-          <div class="character-info-card-header">
-            <div class="character-info-avatar">
-              <SSCharacterSmallImage
-                characterName={char.name}
-                alt={char.name}
-                width={64}
-                height={64}
-              />
-            </div>
-            <div class="character-info-header-text">
-              <h3 class="character-info-name">{char.name}</h3>
-              <div class="character-info-badges">
-                <span class="character-info-badge-with-icon">
-                  <SSRarityImage grade={char.grade} width={60} height={14} />
-                </span>
-                <span class="character-info-badge-with-icon">
-                  <SSElementImage elementName={char.element} width={20} height={20} />
-                  {char.element}
-                </span>
-                <span class={`position-badge position-${char.position.toLowerCase()}`}>
-                  {char.position}
-                </span>
+      {
+        characterInfo.map(char => (
+          <div
+            class="character-info-card"
+            data-name={char.name.toLowerCase()}
+            data-element={char.element}
+            data-position={char.position}
+            data-rarity={char.rarity}
+            data-faction={char.faction}
+            data-va-cn={char.voiceActor.cn.toLowerCase()}
+            data-va-jp={char.voiceActor.jp.toLowerCase()}
+          >
+            {/* Card Header */}
+            <div class="character-info-card-header">
+              <div class="character-info-avatar">
+                <SSCharacterSmallImage
+                  characterName={char.name}
+                  alt={char.name}
+                  width={64}
+                  height={64}
+                />
               </div>
-            </div>
-          </div>
-
-          <!-- Card Body -->
-          <div class="character-info-card-body">
-            <!-- Description -->
-            <p class="character-info-description">{char.description}</p>
-
-            <!-- Personal Details Grid -->
-            <div class="character-info-details">
-              <div class="character-info-detail-item">
-                <span class="character-info-detail-label">Birthday</span>
-                <span class="character-info-detail-value">{char.birthday}</span>
-              </div>
-              <div class="character-info-detail-item">
-                <span class="character-info-detail-label">Faction</span>
-                <span class="character-info-detail-value">{char.faction}</span>
-              </div>
-              <div class="character-info-detail-item">
-                <span class="character-info-detail-label">Style</span>
-                <span class="character-info-detail-value">{char.style}</span>
-              </div>
-              <div class="character-info-detail-item">
-                <span class="character-info-detail-label">Attack Type</span>
-                <span class="character-info-detail-value">{char.attackType}</span>
-              </div>
-            </div>
-
-            <!-- Voice Actors -->
-            <div class="character-info-voice-actors">
-              <div class="character-info-va-title">Voice Actors</div>
-              <div class="character-info-va-grid">
-                <div class="character-info-va-item">
-                  <span class="character-info-va-lang">CN</span>
-                  <span class="character-info-va-name">{char.voiceActor.cn}</span>
-                  <span class="character-info-va-localized">{char.voiceActor.cnLocalized}</span>
-                </div>
-                <div class="character-info-va-item">
-                  <span class="character-info-va-lang">JP</span>
-                  <span class="character-info-va-name">{char.voiceActor.jp}</span>
-                  <span class="character-info-va-localized">{char.voiceActor.jpLocalized}</span>
+              <div class="character-info-header-text">
+                <h3 class="character-info-name">{char.name}</h3>
+                <div class="character-info-badges">
+                  <span class="character-info-badge-with-icon">
+                    <SSRarityImage rarity={char.rarity} width={60} height={14} />
+                  </span>
+                  <span class="character-info-badge-with-icon">
+                    <SSElementImage elementName={char.element} width={20} height={20} />
+                    {char.element}
+                  </span>
+                  <span class={`position-badge position-${char.position.toLowerCase()}`}>
+                    {char.position}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <!-- Tags -->
-            <div class="character-info-tags">
-              {char.tags.map(tag => (
-                <span class="character-info-tag">{tag}</span>
-              ))}
+            {/* Card Body */}
+            <div class="character-info-card-body">
+              {/* Description */}
+              <p class="character-info-description">{char.description}</p>
+
+              {/* Personal Details Grid */}
+              <div class="character-info-details">
+                <div class="character-info-detail-item">
+                  <span class="character-info-detail-label">Birthday</span>
+                  <span class="character-info-detail-value">{char.birthday}</span>
+                </div>
+                <div class="character-info-detail-item">
+                  <span class="character-info-detail-label">Faction</span>
+                  <span class="character-info-detail-value">{char.faction}</span>
+                </div>
+                <div class="character-info-detail-item">
+                  <span class="character-info-detail-label">Style</span>
+                  <span class="character-info-detail-value">{char.style}</span>
+                </div>
+                <div class="character-info-detail-item">
+                  <span class="character-info-detail-label">Attack Type</span>
+                  <span class="character-info-detail-value">{char.attackType}</span>
+                </div>
+              </div>
+
+              {/* Voice Actors */}
+              <div class="character-info-voice-actors">
+                <div class="character-info-va-title">Voice Actors</div>
+                <div class="character-info-va-grid">
+                  <div class="character-info-va-item">
+                    <span class="character-info-va-lang">CN</span>
+                    <span class="character-info-va-name">{char.voiceActor.cn}</span>
+                    <span class="character-info-va-localized">{char.voiceActor.cnLocalized}</span>
+                  </div>
+                  <div class="character-info-va-item">
+                    <span class="character-info-va-lang">JP</span>
+                    <span class="character-info-va-name">{char.voiceActor.jp}</span>
+                    <span class="character-info-va-localized">{char.voiceActor.jpLocalized}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div class="character-info-tags">
+                {char.tags.map(tag => (
+                  <span class="character-info-tag">{tag}</span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
-    <!-- No Results Message -->
+    {/* No Results Message */}
     <div class="character-info-no-results" id="no-results" style="display: none;">
       <h3>No characters found</h3>
       <p>Try adjusting your search or filter criteria.</p>
@@ -280,7 +297,7 @@ const structuredData = {
     const searchInput = document.getElementById('character-search') as HTMLInputElement;
     const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
     const positionFilter = document.getElementById('position-filter') as HTMLSelectElement;
-    const gradeFilter = document.getElementById('grade-filter') as HTMLSelectElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
     const factionFilter = document.getElementById('faction-filter') as HTMLSelectElement;
     const characterGrid = document.getElementById('character-grid');
     const noResults = document.getElementById('no-results');
@@ -293,7 +310,7 @@ const structuredData = {
       const searchTerm = searchInput?.value.toLowerCase() || '';
       const elementValue = elementFilter?.value || '';
       const positionValue = positionFilter?.value || '';
-      const gradeValue = gradeFilter?.value || '';
+      const rarityValue = rarityFilter?.value || '';
       const factionValue = factionFilter?.value || '';
 
       let visibleCount = 0;
@@ -303,13 +320,14 @@ const structuredData = {
         const name = cardEl.dataset.name || '';
         const element = cardEl.dataset.element || '';
         const position = cardEl.dataset.position || '';
-        const grade = cardEl.dataset.grade || '';
+        const rarity = cardEl.dataset.rarity || '';
         const faction = cardEl.dataset.faction || '';
         const vaCn = cardEl.dataset.vaCn || '';
         const vaJp = cardEl.dataset.vaJp || '';
 
         // Check search term
-        const matchesSearch = !searchTerm ||
+        const matchesSearch =
+          !searchTerm ||
           name.includes(searchTerm) ||
           faction.toLowerCase().includes(searchTerm) ||
           vaCn.includes(searchTerm) ||
@@ -318,10 +336,11 @@ const structuredData = {
         // Check filters
         const matchesElement = !elementValue || element === elementValue;
         const matchesPosition = !positionValue || position === positionValue;
-        const matchesGrade = !gradeValue || grade === gradeValue;
+        const matchesRarity = !rarityValue || rarity === rarityValue;
         const matchesFaction = !factionValue || faction === factionValue;
 
-        const isVisible = matchesSearch && matchesElement && matchesPosition && matchesGrade && matchesFaction;
+        const isVisible =
+          matchesSearch && matchesElement && matchesPosition && matchesRarity && matchesFaction;
 
         cardEl.style.display = isVisible ? '' : 'none';
         if (isVisible) visibleCount++;
@@ -337,7 +356,7 @@ const structuredData = {
     searchInput?.addEventListener('input', filterCards);
     elementFilter?.addEventListener('change', filterCards);
     positionFilter?.addEventListener('change', filterCards);
-    gradeFilter?.addEventListener('change', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
     factionFilter?.addEventListener('change', filterCards);
   }
 

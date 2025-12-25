@@ -19,6 +19,7 @@ import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
 import { sigurdBuild } from './character-builds/sigurd.js';
 import { ninaBuild } from './character-builds/nina.js';
 import { jorogumoBuild } from './character-builds/jorogumo.js';
+import { lilyBuild } from './character-builds/lily.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -78,6 +79,9 @@ export const CHARACTER_BUILDS = {
 
   // Jorogumo Build - SSR Chaos AOE Healer
   jorogumo: jorogumoBuild,
+
+  // Lily Build - SSR Ice Guardian Tank
+  lily: lilyBuild,
 };
 
 // Generate builds for available characters only
