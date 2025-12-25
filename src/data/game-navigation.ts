@@ -302,7 +302,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Resources',
-        links: [{ name: 'Official Site', href: 'https://taimaninsquad.com/' }],
+        links: [
+          { name: 'Blog', href: '/guides/taimanin-squad/blog/' },
+          { name: 'Official Site', href: 'https://taimaninsquad.com/' },
+        ],
       },
     ],
   },

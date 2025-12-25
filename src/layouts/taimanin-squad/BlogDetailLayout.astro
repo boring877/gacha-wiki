@@ -1,0 +1,143 @@
+---
+import TSBaseHead from '../../components/taimanin-squad/TSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/taimanin-squad/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/taimanin-squad/ts-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/taimanin-squad/ts-layout.css';
+import '../../styles/games/taimanin-squad/ts-blog-detail.css';
+
+export interface Props {
+  post: {
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publishDate: string;
+    category: string;
+    tags: string[];
+    content: string;
+  };
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | Taimanin Squad Blog`;
+const description = post.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+// Format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+// Article structured data for SEO
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.description,
+  author: {
+    '@type': 'Person',
+    name: post.author,
+  },
+  datePublished: post.publishDate,
+  dateModified: post.publishDate,
+  publisher: {
+    '@type': 'Organization',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: post.tags.join(', '),
+  articleSection: post.category,
+  inLanguage: 'en',
+};
+---
+
+<html lang="en">
+  <head>
+    <TSBaseHead title={title} description={description} />
+    <GameSEO gameKey="taimanin-squad" title={title} description={description} />
+    <!-- Article Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </head>
+  <body class="taimanin-squad-body ts-layout-override">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="taimanin-squad-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="taimanin-squad" />
+      <MobileMenu />
+
+      <div class="taimanin-squad-container">
+        <main class="taimanin-squad-main">
+          <!-- Title Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{post.title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="taimanin-squad" showBackButton={true} />
+
+          <div class="content-area">
+            <article class="ts-blog-article">
+              <!-- Article Header -->
+              <header class="ts-blog-header">
+                <div class="ts-blog-meta">
+                  <span class="ts-blog-meta-category">{post.category}</span>
+                  <span class="ts-blog-meta-separator">•</span>
+                  <span class="ts-blog-meta-date">{formatDate(post.publishDate)}</span>
+                  <span class="ts-blog-meta-separator">•</span>
+                  <span class="ts-blog-meta-author">By {post.author}</span>
+                </div>
+              </header>
+
+              <!-- Article Content -->
+              <div class="ts-blog-content" set:html={post.content} />
+
+              <!-- Tags -->
+              {
+                post.tags && post.tags.length > 0 && (
+                  <div class="ts-blog-tags">
+                    <div class="ts-blog-tags-label">Tags</div>
+                    <div class="ts-blog-tags-list">
+                      {post.tags.map(tag => (
+                        <span class="ts-blog-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

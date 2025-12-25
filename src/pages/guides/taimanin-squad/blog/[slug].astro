@@ -1,0 +1,15 @@
+---
+import BlogDetailLayout from '../../../../layouts/taimanin-squad/BlogDetailLayout.astro';
+import { blogConfig } from '../../../../data/taimanin-squad/blog.js';
+
+export function getStaticPaths() {
+  return blogConfig.posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<BlogDetailLayout post={post} />

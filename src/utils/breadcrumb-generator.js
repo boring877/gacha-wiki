@@ -96,6 +96,13 @@ const GAME_CONFIG = {
       build: 'Character Builds',
     },
   },
+  'taimanin-squad': {
+    name: 'Taimanin Squad',
+    basePath: '/guides/taimanin-squad',
+    patterns: {
+      blog: 'Blog',
+    },
+  },
 };
 
 /**

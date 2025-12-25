@@ -75,6 +75,12 @@ export const taimaninSquadConfig = {
       size: 'medium',
       guides: [
         {
+          id: 'blog',
+          title: 'Blog',
+          url: '/guides/taimanin-squad/blog/',
+          external: false,
+        },
+        {
           id: 'official-site',
           title: 'Official Website',
           url: 'https://taimaninsquad.com/',
@@ -96,6 +102,16 @@ export const taimaninSquadConfig = {
       category: 'info',
       size: 'large',
       external: true,
+    },
+    {
+      id: 'blog',
+      title: 'Blog',
+      emoji: '',
+      description: 'Tips, strategies, news, and insights for Taimanin Squad players.',
+      url: '/guides/taimanin-squad/blog/',
+      category: 'resources',
+      size: 'medium',
+      external: false,
     },
   ],
 

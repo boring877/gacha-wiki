@@ -1,0 +1,221 @@
+/* Taimanin Squad Blog Index Page Styles */
+
+/* Page Container */
+.ts-blog-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Introduction Section */
+.ts-blog-intro {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 6px;
+}
+
+.ts-blog-intro-text {
+  color: var(--ts-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Section Styles */
+.ts-blog-content-section {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  background: transparent;
+}
+
+.ts-blog-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--ts-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Blog Posts Grid */
+.ts-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* Blog Card Styles */
+.ts-blog-card {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  height: 100%;
+  /* Touch-friendly minimum size */
+  min-height: 120px;
+}
+
+.ts-blog-card:hover {
+  border-color: var(--ts-primary);
+}
+
+/* Touch/mobile active state */
+.ts-blog-card:active {
+  transform: scale(0.98);
+}
+
+/* Card Meta (category, date) */
+.ts-blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ts-blog-card-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ts-primary);
+  background: rgba(107, 91, 122, 0.15);
+  border: 1px solid rgba(107, 91, 122, 0.3);
+}
+
+.ts-blog-card-date {
+  font-size: 0.8rem;
+  color: var(--ts-text-muted);
+}
+
+/* Card Title */
+.ts-blog-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Card Excerpt */
+.ts-blog-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--ts-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Author */
+.ts-blog-card-author {
+  font-size: 0.8rem;
+  color: var(--ts-text-muted);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ts-border);
+}
+
+/* Empty State */
+.ts-blog-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ts-text-secondary);
+}
+
+.ts-blog-empty h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.ts-blog-empty p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ts-blog-page-container {
+    padding: 0 0.75rem;
+  }
+
+  .ts-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ts-blog-card {
+    padding: 1rem;
+  }
+
+  .ts-blog-card-title {
+    font-size: 1rem;
+  }
+
+  .ts-blog-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ts-blog-page-container {
+    padding: 0 0.5rem;
+  }
+
+  .ts-blog-grid {
+    gap: 0.5rem;
+  }
+
+  .ts-blog-card {
+    padding: 0.875rem;
+    gap: 0.5rem;
+  }
+
+  .ts-blog-card-title {
+    font-size: 0.95rem;
+  }
+
+  .ts-blog-card-excerpt {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .ts-blog-card-category {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .ts-blog-card-date,
+  .ts-blog-card-author {
+    font-size: 0.75rem;
+  }
+
+  .ts-blog-intro {
+    padding: 0.75rem;
+  }
+
+  .ts-blog-intro-text {
+    font-size: 0.85rem;
+  }
+}
