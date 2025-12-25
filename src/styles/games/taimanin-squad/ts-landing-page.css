@@ -1,0 +1,497 @@
+/* Taimanin Squad Landing Page Styles */
+/* Matching Stella Sora structure - simple, no flashy effects */
+
+/* Main Layout */
+.taimanin-squad-content {
+  min-height: 100vh;
+  background: var(--ts-bg-gradient-primary);
+  color: var(--ts-text-primary);
+}
+
+.taimanin-squad-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.taimanin-squad-main {
+  padding: 2rem 0;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-overlay {
+  display: none;
+}
+
+.hero-title {
+  font-size: var(--text-4xl);
+  font-family: var(--font-display);
+  font-weight: var(--ts-font-bold);
+  margin: 2rem 0;
+  line-height: var(--leading-normal);
+  color: var(--ts-primary);
+}
+
+/* Title Only Section */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title-only-heading {
+  font-size: var(--text-4xl);
+  font-family: var(--font-display);
+  font-weight: var(--ts-font-bold);
+  margin: 2.5rem 0;
+  line-height: var(--leading-normal);
+  color: var(--ts-primary);
+}
+
+/* Content Sections */
+.content-section {
+  background: var(--ts-bg-secondary);
+  border-radius: 15px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--ts-border);
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-family: var(--font-display);
+  font-weight: var(--ts-font-bold);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: var(--ts-accent);
+}
+
+.game-description {
+  font-size: var(--text-lg);
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  color: var(--ts-text-secondary);
+  text-align: center;
+}
+
+/* Pre-Registration Badge */
+.prereg-badge {
+  display: inline-block;
+  background: var(--ts-primary);
+  color: var(--ts-text-primary);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Play Buttons */
+.play-button-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ts-primary);
+  color: var(--ts-text-primary);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-weight: var(--ts-font-semibold);
+  font-size: var(--text-lg);
+  border: 1px solid var(--ts-border-light);
+}
+
+.play-arrow {
+  font-size: 1.2rem;
+}
+
+/* Social Links */
+.ts-social-links-container {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.ts-social-links-container h4 {
+  font-size: var(--text-lg);
+  font-family: var(--font-display);
+  font-weight: var(--font-semibold);
+  color: var(--ts-accent-light);
+  margin-bottom: 1rem;
+}
+
+.ts-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ts-social-link {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ts-accent-20);
+  color: var(--ts-text-primary);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border: 1px solid var(--ts-border);
+}
+
+/* Story Content */
+.story-content p {
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  font-weight: var(--ts-font-normal);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--ts-text-secondary);
+  text-align: left;
+}
+
+/* Last Updated */
+.last-updated {
+  text-align: center;
+  font-family: var(--font-primary);
+  color: var(--ts-text-muted);
+  font-size: var(--text-sm);
+  margin-top: 1rem;
+}
+
+/* Resources Styles - Matching Stella Sora */
+.ts-resources-title {
+  text-align: center;
+  font-size: var(--text-2xl);
+  font-weight: var(--ts-font-bold);
+  color: var(--ts-primary);
+  margin-bottom: var(--ts-spacing-lg);
+}
+
+.ts-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: var(--ts-spacing-lg);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ts-resource-category {
+  background: var(--ts-bg-card);
+  border: 1px solid var(--ts-border);
+  border-radius: var(--ts-radius-md);
+  padding: var(--ts-spacing-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.ts-resource-category h3 {
+  font-size: var(--text-base);
+  font-weight: var(--ts-font-semibold);
+  color: var(--ts-text-primary);
+  margin: 0 0 var(--ts-spacing-sm) 0;
+  text-align: left;
+}
+
+.ts-category-header {
+  margin-bottom: 1rem;
+}
+
+.ts-category-description {
+  color: var(--ts-text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.ts-category-emoji {
+  margin-right: 0.5rem;
+}
+
+.ts-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.ts-resource-button {
+  box-sizing: border-box;
+  color: var(--ts-text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--ts-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 52px;
+}
+
+/* Breadcrumb Styles */
+.ts-breadcrumb {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+.ts-breadcrumb-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.ts-breadcrumb-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ts-text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+}
+
+.ts-back-text {
+  font-size: var(--text-sm);
+}
+
+.ts-breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.ts-breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ts-breadcrumb-link {
+  color: var(--ts-text-secondary);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+}
+
+.ts-breadcrumb-separator {
+  color: var(--ts-text-muted);
+  font-size: var(--text-sm);
+  margin: 0 0.25rem;
+}
+
+.ts-breadcrumb-current {
+  color: var(--ts-primary);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  font-family: var(--font-primary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .taimanin-squad-container {
+    padding: 0 1rem;
+  }
+
+  .taimanin-squad-main {
+    padding: 1rem 0;
+  }
+
+  .hero-section {
+    margin-bottom: 2rem;
+  }
+
+  .hero-title,
+  .title-only-heading {
+    font-size: var(--text-3xl);
+    margin: 1.5rem 0;
+    line-height: 1.2;
+  }
+
+  .content-section {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .play-button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+
+  .play-button {
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    font-size: var(--text-base);
+    min-height: 48px;
+    justify-content: center;
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+
+  .ts-social-links-container {
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .ts-social-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ts-social-link {
+    width: 90%;
+    max-width: 320px;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    min-height: 44px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .ts-resources-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .ts-resource-category {
+    padding: var(--ts-spacing-sm);
+  }
+
+  .ts-resource-button {
+    box-sizing: border-box;
+    padding: 0.875rem 0.625rem;
+    font-size: 0.875rem;
+    min-height: 52px;
+    border-radius: 10px;
+  }
+
+  .ts-breadcrumb {
+    margin: 1rem 0;
+  }
+
+  .ts-breadcrumb-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .taimanin-squad-container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-title,
+  .title-only-heading {
+    font-size: var(--text-2xl);
+    margin: 1rem 0;
+    line-height: 1.2;
+  }
+
+  .content-section {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .section-title {
+    font-size: var(--text-xl);
+    margin-bottom: 1rem;
+  }
+
+  .play-button {
+    max-width: 260px;
+    padding: 1rem 1.5rem;
+    font-size: var(--text-sm);
+  }
+
+  .ts-social-link {
+    max-width: 280px;
+    padding: 0.875rem 1.25rem;
+    font-size: var(--text-sm);
+    width: 90%;
+  }
+
+  .ts-resources-title {
+    font-size: var(--text-xl);
+  }
+
+  .ts-resource-category {
+    padding: 0.75rem;
+  }
+
+  .ts-resource-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+    font-weight: 500;
+  }
+}

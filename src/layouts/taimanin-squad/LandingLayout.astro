@@ -1,0 +1,111 @@
+---
+import TSBaseHead from '../../components/taimanin-squad/TSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/taimanin-squad/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files
+import '../../styles/games/taimanin-squad/ts-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/taimanin-squad/ts-layout.css';
+import '../../styles/games/taimanin-squad/ts-landing-page.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+}
+
+const { title, description, gameTitle, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <TSBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="taimanin-squad"
+      title={title}
+      description={description}
+      customImage={heroImage || '/images/games/taimanin-squad/taimanin-squad.jpg'}
+    />
+    <slot name="head" />
+  </head>
+  <body class="taimanin-squad-body ts-layout-override">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="taimanin-squad-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="taimanin-squad" />
+      <MobileMenu />
+
+      <div class="taimanin-squad-container">
+        <main class="taimanin-squad-main">
+          <!-- Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="taimanin-squad" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

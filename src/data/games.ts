@@ -4,6 +4,7 @@ import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
+import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 
 export interface Game {
   id: string;
@@ -83,6 +84,17 @@ export const GAMES: Game[] = [
     url: '/guides/busty-burst/',
     status: 'active',
     sections: ['Beginner Guide', 'Tier List', 'Game Systems', 'Redeem Codes', 'Events'],
+    lastUpdated: new Date(),
+  },
+  {
+    id: 'taimanin-squad',
+    name: 'Taimanin Squad',
+    slug: 'taimanin-squad',
+    description: 'Collecting RPG • Taimanin Franchise • Pre-Registration • Character Collection',
+    image: TaimaninSquadIcon,
+    url: '/guides/taimanin-squad/',
+    status: 'active',
+    sections: ['Pre-Registration', 'Characters', 'Summoning', 'Equipment'],
     lastUpdated: new Date(),
   },
 ];

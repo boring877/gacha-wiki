@@ -419,3 +419,19 @@
   background: linear-gradient(135deg, #4a8399, #7dd3fc);
   color: white;
 }
+
+/* ============================================
+   TAIMANIN SQUAD SPECIFIC STYLING
+   ============================================ */
+.game-nav-desktop[data-game='taimanin-squad'] .game-title {
+  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.game-nav-desktop[data-game='taimanin-squad'] .dropdown-link.active {
+  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+  color: white;
+}

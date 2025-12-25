@@ -1,0 +1,151 @@
+/* Taimanin Squad Color System - Soft Dark Purple Theme */
+/* Calm, muted purple - no flashy effects */
+
+:root {
+  /* Primary - Muted dark purple (calm, not flashy) */
+  --ts-primary: #6b5b7a;
+  --ts-primary-hover: #7a6a89;
+  --ts-primary-light: #8a7a99;
+  --ts-primary-dark: #5c4c6b;
+
+  /* Secondary - Deep purple-gray */
+  --ts-secondary: #5c4c6b;
+  --ts-secondary-hover: #6b5b7a;
+  --ts-secondary-light: #7a6a89;
+
+  /* Accent - Soft lavender */
+  --ts-accent: #9a8aaa;
+  --ts-accent-hover: #a99ab9;
+  --ts-accent-light: #b8a9c8;
+  --ts-accent-20: rgba(154, 138, 170, 0.1);
+
+  /* Backgrounds - Very dark with subtle purple tint */
+  --ts-bg-primary: #0f0d12;
+  --ts-bg-secondary: #1a171f;
+  --ts-bg-tertiary: #242028;
+  --ts-bg-card: #1e1a23;
+  --ts-bg-hover: #2a2530;
+
+  /* Text colors - High contrast */
+  --ts-text-primary: #f5f5f5;
+  --ts-text-secondary: #d3d3d3;
+  --ts-text-tertiary: #a9a9a9;
+  --ts-text-muted: #696969;
+  --ts-text-light: #c0c0c0;
+
+  /* Border colors - Subtle purple-gray */
+  --ts-border: #2e2838;
+  --ts-border-light: #3a3345;
+  --ts-border-dark: #1a1520;
+  --ts-border-subtle: rgba(255, 255, 255, 0.05);
+  --ts-primary-subtle: rgba(107, 91, 122, 0.2);
+  --ts-primary-border: rgba(107, 91, 122, 0.3);
+
+  /* Status colors - Muted */
+  --ts-success: #2e7d32;
+  --ts-warning: #f57c00;
+  --ts-error: #c62828;
+  --ts-info: #1565c0;
+
+  /* Rarity colors - Muted */
+  --ts-legendary: #8a7a99;
+  --ts-epic: #5c4c6b;
+  --ts-rare: #2e7d32;
+  --ts-common: #757575;
+
+  /* Background Gradients - Subtle only */
+  --ts-bg-gradient-primary: linear-gradient(135deg, #0f0d12 0%, #1a171f 50%, #0f0d12 100%);
+
+  --ts-gradient-primary: linear-gradient(
+    135deg,
+    var(--ts-bg-secondary) 0%,
+    var(--ts-bg-tertiary) 100%
+  );
+  --ts-gradient-card: linear-gradient(135deg, var(--ts-bg-card) 0%, var(--ts-bg-secondary) 100%);
+
+  /* Shadows - Simple, no glow */
+  --ts-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --ts-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --ts-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --ts-transition: all 0.2s ease-in-out;
+  --ts-transition-slow: all 0.3s ease-in-out;
+
+  /* Dimensions */
+  --ts-radius-sm: 4px;
+  --ts-radius-md: 8px;
+  --ts-radius-lg: 12px;
+
+  /* Spacing */
+  --ts-spacing-xs: 0.25rem;
+  --ts-spacing-sm: 0.5rem;
+  --ts-spacing-md: 1rem;
+  --ts-spacing-lg: 1.5rem;
+  --ts-spacing-xl: 2rem;
+
+  /* Font weights */
+  --ts-font-normal: 400;
+  --ts-font-medium: 500;
+  --ts-font-semibold: 600;
+  --ts-font-bold: 700;
+}
+
+/* Taimanin Squad specific component classes */
+.ts-card {
+  background: var(--ts-gradient-card);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+}
+
+.ts-button {
+  background: var(--ts-primary);
+  color: var(--ts-text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Rarity indicators */
+.ts-rarity-legendary {
+  color: var(--ts-legendary);
+}
+.ts-rarity-epic {
+  color: var(--ts-epic);
+}
+.ts-rarity-rare {
+  color: var(--ts-rare);
+}
+.ts-rarity-common {
+  color: var(--ts-common);
+}
+
+/* Utility classes */
+.ts-bg-primary {
+  background-color: var(--ts-bg-primary);
+}
+.ts-bg-secondary {
+  background-color: var(--ts-bg-secondary);
+}
+.ts-bg-tertiary {
+  background-color: var(--ts-bg-tertiary);
+}
+
+.ts-text-primary {
+  color: var(--ts-text-primary);
+}
+.ts-text-secondary {
+  color: var(--ts-text-secondary);
+}
+.ts-text-muted {
+  color: var(--ts-text-muted);
+}
+
+.ts-border {
+  border-color: var(--ts-border);
+}
+.ts-border-light {
+  border-color: var(--ts-border-light);
+}

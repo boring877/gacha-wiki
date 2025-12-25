@@ -1,0 +1,172 @@
+/* Taimanin Squad Layout Styles */
+/* Soft dark purple theme - simple, no flashy effects */
+
+/* Body styling */
+.taimanin-squad-body {
+  background: var(--ts-bg-gradient-primary);
+  color: var(--ts-text-secondary);
+  min-height: 100vh;
+}
+
+.ts-layout-override {
+  --bg-primary: var(--ts-bg-primary);
+  --bg-secondary: var(--ts-bg-secondary);
+  --text-primary: var(--ts-text-primary);
+  --text-secondary: var(--ts-text-secondary);
+  --accent: var(--ts-primary);
+  --accent-hover: var(--ts-primary-hover);
+}
+
+/* Background layers */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.taimanin-squad-body .bg-primary {
+  background: var(--ts-bg-gradient-primary);
+}
+
+.taimanin-squad-body .bg-accent-1,
+.taimanin-squad-body .bg-accent-2,
+.taimanin-squad-body .bg-accent-3 {
+  background: transparent;
+}
+
+.taimanin-squad-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Container */
+.taimanin-squad-container {
+  position: relative;
+}
+
+.taimanin-squad-main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  min-height: 20rem;
+  max-height: 40rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-overlay {
+  display: none;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--ts-font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  color: var(--ts-primary);
+}
+
+/* Title only section */
+.title-only-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--ts-font-bold);
+  margin: 0;
+  line-height: var(--leading-normal);
+  color: var(--ts-primary);
+}
+
+/* Content area */
+.content-area {
+  position: relative;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .taimanin-squad-main {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image-container {
+    min-height: 15rem;
+    max-height: 25rem;
+    border-radius: 12px;
+    margin: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .title-only-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .taimanin-squad-main {
+    padding: 0.5rem;
+  }
+
+  .hero-image-container {
+    min-height: 12rem;
+    max-height: 20rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

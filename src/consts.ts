@@ -56,6 +56,13 @@ export const GAMES = {
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/busty-burst',
   },
+  TAIMANIN_SQUAD: {
+    KEY: 'taimanin-squad',
+    NAME: 'Taimanin Squad',
+    THEME_COLOR: '#6b5b7a',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/taimanin-squad',
+  },
 } as const;
 
 // URL patterns (centralized to prevent duplication)
@@ -125,6 +132,9 @@ export const URLS = {
     REDEEM_CODES: '/guides/busty-burst/redeem-codes',
     EVENTS: '/guides/busty-burst/events',
     CLOCK: '/clock/busty-burst',
+  },
+  TAIMANIN_SQUAD: {
+    BASE: '/guides/taimanin-squad',
   },
 } as const;
 

@@ -1,0 +1,161 @@
+---
+import TaimaninSquadLandingLayout from '../../layouts/taimanin-squad/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
+import heroImage from '../../assets/images/games/taimanin-squad/gameimg/hero_image.jpg';
+
+// Extract data for easier use in template
+const { meta, gameInfo, categoryGroups, story } = taimaninSquadConfig;
+
+// Breadcrumb data for SEO
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides' },
+  { name: 'Taimanin Squad', url: '/guides/taimanin-squad' },
+];
+---
+
+<TaimaninSquadLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={heroImage}
+>
+  <!-- Structured Data for Taimanin Squad -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Taimanin Squad Wiki - Pre-Registration Guide & Game Database",
+      "url": "https://gachawiki.info/guides/taimanin-squad/",
+      "description": "Pre-register for Taimanin Squad - Collecting RPG featuring legendary Taimanin characters. Complete character guides, tier lists & pre-registration rewards for Android, iOS & PC.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+
+  <!-- Game-specific structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Taimanin Squad",
+      "genre": ["Collecting RPG", "JRPG", "Character Collection", "Action RPG"],
+      "description": "Collecting RPG featuring characters from the legendary Taimanin franchise. Build your ultimate squad of Taimanin warriors and battle through challenging content.",
+      "keywords": "Taimanin Squad, Taimanin, gacha game, collecting RPG, pre-registration, Igawa Asagi, character collection, mobile RPG, Taimanin Squad download",
+      "applicationCategory": "Game",
+      "operatingSystem": "Android, iOS, PC",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder"
+      }
+    }
+  </script>
+
+  <!-- Game Introduction Section (matching Stella Sora structure) -->
+  <section class="content-section">
+    <h2 class="section-title">Game Introduction</h2>
+
+    <div class="prereg-badge">Pre-Registration Open</div>
+
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="game-info-box">
+      <p class="open-beta-notice">{gameInfo.openBeta}</p>
+      <p>{gameInfo.description}</p>
+      <p><strong>Developer:</strong> {gameInfo.developer}</p>
+      <p><strong>Platforms:</strong> {gameInfo.platforms.join(', ')}</p>
+    </div>
+
+    <!-- Play Game Button -->
+    <div class="play-button-container">
+      <a href={gameInfo.playUrl} target="_blank" rel="noopener noreferrer" class="play-button">
+        Pre-Register Now
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="ts-social-links-container">
+      <h4>Official Links:</h4>
+      <div class="ts-social-links">
+        <a
+          href={gameInfo.playUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ts-social-link"
+          aria-label="Visit Taimanin Squad official website"
+        >
+          Official Website
+        </a>
+      </div>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <!-- Resources Section (matching Stella Sora structure) -->
+  <section class="content-section">
+    <h2 class="ts-resources-title">Resources</h2>
+    <div class="ts-resources-grid">
+      {
+        categoryGroups.map(category => (
+          <div class="ts-resource-category">
+            <h3>{category.title}</h3>
+            <div class="ts-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="ts-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                  target={guide.external ? '_blank' : undefined}
+                  rel={guide.external ? 'noopener noreferrer' : undefined}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</TaimaninSquadLandingLayout>
+
+<style>
+  .game-info-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--ts-bg-tertiary, #242028);
+    border-radius: 12px;
+    border: 1px solid var(--ts-border, #2e2838);
+    text-align: center;
+  }
+
+  .game-info-box p {
+    color: var(--ts-text-secondary, #d3d3d3);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .game-info-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .open-beta-notice {
+    color: var(--ts-accent, #9a8aaa);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    background: var(--ts-bg-secondary, #1a171f);
+    border-radius: 8px;
+    border: 1px solid var(--ts-primary, #6b5b7a);
+  }
+</style>

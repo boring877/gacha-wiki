@@ -1,0 +1,23 @@
+---
+// Taimanin Squad BaseHead - Game-specific meta tags only
+// Standard SEO tags (og:*, twitter:*, canonical) are handled by GameSEO
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!-- Essential Metadata Only -->
+<meta charset="utf-8" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />

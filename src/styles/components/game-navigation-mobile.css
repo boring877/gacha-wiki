@@ -597,3 +597,45 @@
     background: rgba(46, 82, 102, 0.1);
   }
 }
+
+/* ============================================
+   TAIMANIN SQUAD MOBILE STYLING
+   ============================================ */
+.game-nav-mobile[data-game='taimanin-squad'] .game-title {
+  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* Taimanin Squad - Inside Menu */
+.mobile-links[data-game='taimanin-squad'] .mobile-game-name {
+  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.mobile-links[data-game='taimanin-squad'] .mobile-section-title {
+  color: #9a8aaa;
+}
+
+.mobile-links[data-game='taimanin-squad'] {
+  .mobile-link {
+    border-bottom: 1px solid rgba(107, 91, 122, 0.2);
+  }
+
+  .mobile-link.active {
+    background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+    color: white;
+    border-left: 3px solid #9a8aaa;
+  }
+
+  .mobile-link:hover {
+    background: rgba(107, 91, 122, 0.1);
+  }
+}

@@ -4,7 +4,8 @@ export type GameKey =
   | 'horizon-walker'
   | 'rebellion-gilgamesh'
   | 'stella-sora'
-  | 'busty-burst';
+  | 'busty-burst'
+  | 'taimanin-squad';
 
 export interface NavigationLink {
   name: string;
@@ -26,6 +27,7 @@ import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
+import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -287,6 +289,20 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Clock', href: '/clock/busty-burst/' },
           { name: 'Redeem Codes', href: '/guides/busty-burst/redeem-codes' },
         ],
+      },
+    ],
+  },
+  'taimanin-squad': {
+    name: 'Taimanin Squad',
+    image: TaimaninSquadIcon,
+    sections: [
+      {
+        title: 'Getting Started',
+        links: [{ name: 'Pre-Register', href: '/guides/taimanin-squad/' }],
+      },
+      {
+        title: 'Resources',
+        links: [{ name: 'Official Site', href: 'https://taimaninsquad.com/' }],
       },
     ],
   },

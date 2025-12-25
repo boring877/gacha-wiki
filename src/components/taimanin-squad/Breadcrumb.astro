@@ -1,0 +1,290 @@
+---
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
+export interface Props {
+  // Manual breadcrumb items (legacy support)
+  items?: Array<{
+    name: string;
+    href?: string;
+  }>;
+  // Auto-generation options
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
+}
+
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true,
+} = Astro.props;
+
+// Generate breadcrumbs automatically if requested, otherwise use provided items
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey,
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  // Generate back navigation from provided items
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name,
+    };
+  }
+}
+---
+
+<nav class="ts-breadcrumb" aria-label="Breadcrumb">
+  <div class="ts-breadcrumb-container">
+    {/* Back Button */}
+    {
+      backNavigation && (
+        <button
+          type="button"
+          class="ts-back-button"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+          title={backNavigation.text}
+        >
+          <svg
+            class="ts-back-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 18l-6-6 6-6"
+            />
+          </svg>
+          <span class="ts-back-text">Back</span>
+        </button>
+      )
+    }
+
+    {/* Breadcrumb Trail */}
+    <ol class="ts-breadcrumb-list">
+      {
+        breadcrumbItems.map((item, index) => (
+          <li class="ts-breadcrumb-item">
+            {item.href ? (
+              <a href={item.href} class="ts-breadcrumb-link">
+                {item.name}
+              </a>
+            ) : (
+              <span class="ts-breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+            {index < breadcrumbItems.length - 1 && (
+              <span class="ts-breadcrumb-separator" aria-hidden="true">
+                ›
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .ts-breadcrumb {
+    margin-bottom: 2rem;
+    /* Align with parent container */
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* Ensure breadcrumb appears above other elements */
+    position: relative;
+    z-index: 20;
+  }
+
+  .ts-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Back Button Styles - Taimanin Squad */
+  .ts-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: #2a2a2a;
+    border: none;
+    border-radius: 6px;
+    color: var(--ts-primary, #9c27b0);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    /* Touch-friendly sizing */
+    min-height: 48px;
+    /* Touch optimization */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ts-back-button:focus-visible {
+    outline: 2px solid var(--ts-primary-light, #ba68c8);
+    outline-offset: 2px;
+  }
+
+  .ts-back-arrow {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .ts-back-text {
+    font-size: 0.9rem;
+  }
+
+  /* Breadcrumb Trail Styles */
+  .ts-breadcrumb-list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+  }
+
+  .ts-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ts-breadcrumb-link {
+    color: var(--ts-primary, #9c27b0);
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: 6px;
+    /* Touch-friendly link area */
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .ts-breadcrumb-current {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem;
+  }
+
+  .ts-breadcrumb-separator {
+    color: rgba(255, 255, 255, 0.5);
+    user-select: none;
+    font-size: 1rem;
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    .ts-breadcrumb {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ts-breadcrumb-container {
+      gap: 1rem;
+    }
+
+    .ts-back-button {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      min-height: 48px;
+    }
+
+    .ts-breadcrumb-list {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ts-breadcrumb {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .ts-breadcrumb-container {
+      gap: 0.75rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ts-back-button {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      min-height: 48px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .ts-breadcrumb-list {
+      font-size: 0.85rem;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .ts-breadcrumb-item {
+      gap: 0.5rem;
+    }
+
+    .ts-breadcrumb-link,
+    .ts-breadcrumb-current {
+      padding: 0.75rem;
+      min-height: 48px;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .ts-back-button {
+      border-color: currentColor;
+    }
+
+    .ts-breadcrumb-link {
+      text-decoration: underline;
+    }
+  }
+</style>
