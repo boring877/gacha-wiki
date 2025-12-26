@@ -4,15 +4,46 @@ import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharact
 import { Image } from 'astro:assets';
 import charactersData from '../../../../data/silver-and-blood/characters_info.json';
 
-// Import rarity frame images
-import raritySSR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
-import raritySR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
-import rarityR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+// Import rarity frame images (UR=gold/ssr, SSR=purple/sr, SR=blue/r)
+import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+// Import moon phase icons
+import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+
+// Import damage type icons
+import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+
+// Import equipment type icons
+import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
 
 const rarityImages: Record<string, ImageMetadata> = {
-  'SSR': raritySSR,
-  'SR': raritySR,
-  'R': rarityR,
+  'UR': rarityGold,
+  'SSR': rarityPurple,
+  'SR': rarityBlue,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
 };
 
 export async function getStaticPaths() {
@@ -48,6 +79,16 @@ interface Props {
       text: string;
       unlockRank: string | null;
     }>;
+    moonPhase?: string;
+    damageType?: string;
+    equipmentType?: string;
+    tags?: string[];
+    moonPhaseIcon?: string;
+    damageTypeIcon?: string;
+    equipmentTypeIcon?: string;
+    moonPhaseDesc?: string;
+    damageTypeDesc?: string;
+    equipmentTypeDesc?: string;
   };
 }
 
@@ -156,7 +197,7 @@ const pageDescription = `Learn about ${character.fullName}, the ${character.titl
           />
         </div>
         <Image
-          src={rarityImages[character.rarity] || rarityR}
+          src={rarityImages[character.rarity] || rarityBlue}
           alt={character.rarity}
           class="rarity-badge-img"
           width={48}
@@ -201,6 +242,81 @@ const pageDescription = `Learn about ${character.fullName}, the ${character.titl
             </div>
           )}
         </div>
+
+        <!-- Combat Stats with Icons -->
+        {(character.moonPhase || character.damageType || character.equipmentType) && (
+          <div class="combat-stats-row">
+            {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
+              <div class="combat-stat-item">
+                <Image
+                  src={moonPhaseImages[character.moonPhaseIcon]}
+                  alt={character.moonPhase || 'Moon Phase'}
+                  class="combat-stat-icon"
+                  width={32}
+                  height={32}
+                />
+                <span class="combat-stat-value">{character.moonPhase}</span>
+              </div>
+            )}
+            {character.damageTypeIcon && damageTypeImages[character.damageTypeIcon] && (
+              <div class="combat-stat-item">
+                <Image
+                  src={damageTypeImages[character.damageTypeIcon]}
+                  alt={character.damageType || 'Damage Type'}
+                  class="combat-stat-icon"
+                  width={32}
+                  height={32}
+                />
+                <span class="combat-stat-value">{character.damageType}</span>
+              </div>
+            )}
+            {character.equipmentTypeIcon && equipmentTypeImages[character.equipmentTypeIcon] && (
+              <div class="combat-stat-item">
+                <Image
+                  src={equipmentTypeImages[character.equipmentTypeIcon]}
+                  alt={character.equipmentType || 'Equipment Type'}
+                  class="combat-stat-icon"
+                  width={32}
+                  height={32}
+                />
+                <span class="combat-stat-value">{character.equipmentType}</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        <!-- Combat Tags -->
+        {character.tags && character.tags.length > 0 && (
+          <div class="combat-tags">
+            {character.tags.map((tag) => (
+              <span class="combat-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <!-- Combat Descriptions -->
+        {(character.moonPhaseDesc || character.damageTypeDesc || character.equipmentTypeDesc) && (
+          <div class="combat-descriptions">
+            {character.moonPhaseDesc && (
+              <div class="combat-desc-item">
+                <span class="combat-desc-label">Moon Phase</span>
+                <p class="combat-desc-text">{character.moonPhaseDesc}</p>
+              </div>
+            )}
+            {character.damageTypeDesc && (
+              <div class="combat-desc-item">
+                <span class="combat-desc-label">Damage Type</span>
+                <p class="combat-desc-text">{character.damageTypeDesc}</p>
+              </div>
+            )}
+            {character.equipmentTypeDesc && (
+              <div class="combat-desc-item">
+                <span class="combat-desc-label">Equipment</span>
+                <p class="combat-desc-text">{character.equipmentTypeDesc}</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
 

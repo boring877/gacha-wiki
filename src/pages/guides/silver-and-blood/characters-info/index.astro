@@ -4,15 +4,46 @@ import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharact
 import { Image } from 'astro:assets';
 import charactersData from '../../../../data/silver-and-blood/characters_info.json';
 
-// Import rarity frame images
-import raritySSR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
-import raritySR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
-import rarityR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+// Import rarity frame images (UR=gold/ssr, SSR=purple/sr, SR=blue/r)
+import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+// Import moon phase icons
+import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+
+// Import damage type icons
+import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+
+// Import equipment type icons
+import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
 
 const rarityImages: Record<string, ImageMetadata> = {
-  'SSR': raritySSR,
-  'SR': raritySR,
-  'R': rarityR,
+  'UR': rarityGold,
+  'SSR': rarityPurple,
+  'SR': rarityBlue,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
 };
 
 // Filter out characters with null/undefined names and get unique characters
@@ -198,8 +229,8 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
                 loading="lazy"
               />
               <Image
-                src={rarityImages[character.rarity] || rarityR}
-                alt={character.rarity || 'R'}
+                src={rarityImages[character.rarity] || rarityBlue}
+                alt={character.rarity || 'SR'}
                 class="rarity-badge-img"
                 width={40}
                 height={40}
@@ -209,6 +240,35 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
             <div class="character-card-info">
               <h3 class="character-card-name">{character.name || 'Unknown'}</h3>
               <p class="character-card-title">{character.title || ''}</p>
+              <div class="character-card-icons">
+                {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
+                  <Image
+                    src={moonPhaseImages[character.moonPhaseIcon]}
+                    alt={character.moonPhase || 'Moon'}
+                    class="card-stat-icon"
+                    width={20}
+                    height={20}
+                  />
+                )}
+                {character.damageTypeIcon && damageTypeImages[character.damageTypeIcon] && (
+                  <Image
+                    src={damageTypeImages[character.damageTypeIcon]}
+                    alt={character.damageType || 'DMG'}
+                    class="card-stat-icon"
+                    width={20}
+                    height={20}
+                  />
+                )}
+                {character.equipmentTypeIcon && equipmentTypeImages[character.equipmentTypeIcon] && (
+                  <Image
+                    src={equipmentTypeImages[character.equipmentTypeIcon]}
+                    alt={character.equipmentType || 'Equip'}
+                    class="card-stat-icon"
+                    width={20}
+                    height={20}
+                  />
+                )}
+              </div>
             </div>
           </article>
         </a>

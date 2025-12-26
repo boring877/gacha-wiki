@@ -138,6 +138,89 @@
   color: var(--sab-blue-silver);
 }
 
+/* === COMBAT STATS === */
+.combat-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sab-spacing-md);
+  margin-top: var(--sab-spacing-md);
+  padding-top: var(--sab-spacing-md);
+  border-top: 1px solid var(--sab-border-light);
+}
+
+.combat-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(42, 42, 42, 0.5);
+  border: 1px solid var(--sab-border-light);
+  border-radius: var(--sab-radius-sm);
+  padding: 8px 12px;
+}
+
+.combat-stat-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.combat-stat-value {
+  font-size: 0.9rem;
+  color: var(--sab-text-light);
+  font-weight: 500;
+}
+
+.combat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--sab-spacing-sm);
+}
+
+.combat-tag {
+  display: inline-block;
+  background: rgba(194, 107, 107, 0.15);
+  border: 1px solid var(--sab-calm-red);
+  color: var(--sab-light-red);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Combat Descriptions */
+.combat-descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-sm);
+  margin-top: var(--sab-spacing-md);
+  padding-top: var(--sab-spacing-md);
+  border-top: 1px solid var(--sab-border-light);
+}
+
+.combat-desc-item {
+  background: rgba(26, 26, 26, 0.4);
+  border-radius: var(--sab-radius-sm);
+  padding: 10px 12px;
+}
+
+.combat-desc-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--sab-calm-red);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.combat-desc-text {
+  font-size: 0.85rem;
+  color: var(--sab-text-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* === VOICE ACTORS SECTION === */
 .voice-actors-section {
   background: var(--sab-bg-darker);
@@ -457,6 +540,20 @@
   overflow: hidden;
 }
 
+.character-card-icons {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.card-stat-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
   .character-info-header {
@@ -510,6 +607,46 @@
 
   .info-value {
     font-size: 0.95rem;
+  }
+
+  /* Combat stats mobile */
+  .combat-stats-row {
+    justify-content: center;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .combat-stat-item {
+    padding: 6px 10px;
+  }
+
+  .combat-stat-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .combat-stat-value {
+    font-size: 0.8rem;
+  }
+
+  .combat-tags {
+    justify-content: center;
+  }
+
+  .combat-tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .combat-desc-item {
+    padding: 8px 10px;
+  }
+
+  .combat-desc-label {
+    font-size: 0.7rem;
+  }
+
+  .combat-desc-text {
+    font-size: 0.8rem;
   }
 
   .characters-index-title {
