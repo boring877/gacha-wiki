@@ -38,6 +38,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/silver-and-blood/characters/' },
+          { name: 'Lore & Info', href: '/guides/silver-and-blood/characters-info/' },
           { name: 'Tier List', href: '/guides/silver-and-blood/tier-list/' },
           { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
           { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },

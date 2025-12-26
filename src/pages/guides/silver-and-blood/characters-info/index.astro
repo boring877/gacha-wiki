@@ -1,0 +1,279 @@
+---
+import CharacterInfoLayout from '../../../../layouts/silver-and-blood/CharacterInfoLayout.astro';
+import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { Image } from 'astro:assets';
+import charactersData from '../../../../data/silver-and-blood/characters_info.json';
+
+// Import rarity frame images
+import raritySSR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import raritySR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': raritySSR,
+  'SR': raritySR,
+  'R': rarityR,
+};
+
+// Filter out characters with null/undefined names and get unique characters
+const validCharacters = charactersData.characters.filter(char =>
+  char.name && char.fullName && char.title && char.rarity
+);
+
+// Get unique characters (filter out duplicates by name + title combination)
+const uniqueCharacters = validCharacters.reduce((acc, char) => {
+  const key = `${char.name}-${char.title}`;
+  if (!acc.has(key)) {
+    acc.set(key, char);
+  }
+  return acc;
+}, new Map());
+
+const characters = Array.from(uniqueCharacters.values());
+
+// Sort by rarity then name
+const rarityOrder: Record<string, number> = { 'UR': 0, 'SSR': 1, 'SR': 2, 'R': 3 };
+characters.sort((a, b) => {
+  const rarityDiff = (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
+  if (rarityDiff !== 0) return rarityDiff;
+  return (a.name || '').localeCompare(b.name || '');
+});
+
+// Get unique values for filters (filter out null/undefined)
+const camps = [...new Set(characters.map(c => c.camp).filter(Boolean))].sort();
+const careers = [...new Set(characters.map(c => c.career).filter(Boolean))].sort();
+const rarities = [...new Set(characters.map(c => c.rarity))].sort((a, b) =>
+  (rarityOrder[a] ?? 99) - (rarityOrder[b] ?? 99)
+);
+
+// Get icon name mapping
+function getIconName(name: string): string {
+  const nameMap: Record<string, string> = {
+    'Noah': 'Noah',
+    'Limine': 'Limine',
+    'Jestel': 'Jestel',
+    'Empousa': 'Empousa',
+    'Aiona': 'Aiona',
+    'Setti': 'Setti',
+    'Hati': 'Hati',
+    'Bella': 'Bella',
+    'Stella': 'Stella',
+    'Selena': 'Selena',
+    'Lamia': 'Lamia',
+    'Friedrich': 'Friedrich',
+    'Quinn': 'Quinn',
+    'Gilrain': 'Gilrain',
+    'Cecia': 'Cecia',
+    'Lorelei': 'Lorelei',
+    'Agares': 'Agares',
+    'Ami': 'Ami',
+    'Piera': 'Piera',
+    'Seth': 'Seth',
+    'Ressa': 'Ressa',
+    'Dalcarlo': 'Dalcarlo',
+    'Joan': 'Joan',
+    'Cain': 'Cain',
+    'Pavana': 'Pavana',
+    'Julius': 'Julius',
+    'Ottavia': 'Ottavia',
+    'Theophane': 'Theophane',
+    'Tris': 'Tris',
+    'Nicole': 'Nicole',
+    'Darcias': 'Darcias',
+    'Edina': 'Edina',
+    'Yggdrasill': 'Yggdrasill',
+    'Augustine': 'Augustine',
+    'Acappella': 'Acappella',
+    'Mass': 'Mass',
+    'Katherine': 'Katherine',
+    'Hippocratic': 'Hippocratic',
+    'Leo': 'Leo',
+    'VanHellsing': 'VanHellsing',
+    'Baphomet': 'Baphomet',
+    'Garlic': 'Garlic',
+    'William': 'William',
+    'Goldland': 'Goldland',
+    'Siegrune': 'Siegrune',
+    'Livia': 'Livia',
+    'Evna': 'Evna',
+    'Typhoeus': 'Typhoeus',
+    'Ezareth': 'Ezareth',
+    'Paimile': 'Paimile',
+    'Gini': 'Gini',
+    'Clive': 'Clive',
+    'Albert': 'Albert',
+    'Henry': 'Henry',
+    'James': 'James',
+    'Jenny': 'Jenny',
+    'Jones': 'Jones',
+    'Isabelle': 'Isabelle',
+    'Alene': 'Alene',
+    'Astel': 'Astel',
+    'Selenia': 'Selenia',
+    'Fanu': 'Fanu',
+  };
+  return nameMap[name] || name;
+}
+
+const pageTitle = 'Character Lore & Info - Silver and Blood';
+const pageDescription = 'Explore the complete lore, stories, and voice actors for all characters in Silver and Blood. Discover the rich backstories of your favorite Bloodborn.';
+---
+
+<CharacterInfoLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageTitle="Character Lore & Info"
+  hideBreadcrumbPage={true}
+>
+  <div class="characters-index-container">
+    <header class="characters-index-header">
+      <p class="characters-index-subtitle">
+        The stories and backgrounds of {characters.length} characters
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="characters-filters">
+      <div class="filter-group">
+        <label class="filter-label" for="search">Search</label>
+        <input
+          type="text"
+          id="search"
+          class="filter-search"
+          placeholder="Search by name..."
+        />
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="rarity-filter">Rarity</label>
+        <select id="rarity-filter" class="filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(rarity => (
+            <option value={rarity}>{rarity}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="camp-filter">Camp</label>
+        <select id="camp-filter" class="filter-select">
+          <option value="">All Camps</option>
+          {camps.map(camp => (
+            <option value={camp}>{camp}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" for="career-filter">Career</label>
+        <select id="career-filter" class="filter-select">
+          <option value="">All Careers</option>
+          {careers.map(career => (
+            <option value={career}>{career}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <!-- Characters Grid -->
+    <div class="characters-grid" id="characters-grid">
+      {characters.map(character => (
+        <a
+          href={`/guides/silver-and-blood/characters-info/${character.id}`}
+          class="character-card-link"
+          data-name={(character.name || '').toLowerCase()}
+          data-fullname={(character.fullName || '').toLowerCase()}
+          data-rarity={character.rarity || ''}
+          data-camp={character.camp || ''}
+          data-career={character.career || ''}
+        >
+          <article class="character-index-card">
+            <div class="character-card-image">
+              <SABCharacterIcon
+                name={getIconName(character.name || 'Unknown')}
+                variant="Base"
+                size="large"
+                width={280}
+                height={280}
+                loading="lazy"
+              />
+              <Image
+                src={rarityImages[character.rarity] || rarityR}
+                alt={character.rarity || 'R'}
+                class="rarity-badge-img"
+                width={40}
+                height={40}
+                loading="lazy"
+              />
+            </div>
+            <div class="character-card-info">
+              <h3 class="character-card-name">{character.name || 'Unknown'}</h3>
+              <p class="character-card-title">{character.title || ''}</p>
+              <div class="character-card-tags">
+                {character.camp && <span class="character-card-tag">{character.camp}</span>}
+                {character.career && <span class="character-card-tag">{character.career}</span>}
+              </div>
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+
+    <div id="no-results" style="display: none; text-align: center; padding: 3rem; color: var(--sab-text-muted);">
+      <p>No characters found matching your filters.</p>
+    </div>
+  </div>
+</CharacterInfoLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const campFilter = document.getElementById('camp-filter') as HTMLSelectElement;
+    const careerFilter = document.getElementById('career-filter') as HTMLSelectElement;
+    const grid = document.getElementById('characters-grid');
+    const noResults = document.getElementById('no-results');
+
+    function filterCharacters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarity = rarityFilter.value;
+      const camp = campFilter.value;
+      const career = careerFilter.value;
+
+      const cards = grid?.querySelectorAll('.character-card-link') || [];
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const el = card as HTMLElement;
+        const name = el.dataset.name || '';
+        const fullname = el.dataset.fullname || '';
+        const cardRarity = el.dataset.rarity || '';
+        const cardCamp = el.dataset.camp || '';
+        const cardCareer = el.dataset.career || '';
+
+        const matchesSearch = !searchTerm ||
+          name.includes(searchTerm) ||
+          fullname.includes(searchTerm);
+        const matchesRarity = !rarity || cardRarity === rarity;
+        const matchesCamp = !camp || cardCamp === camp;
+        const matchesCareer = !career || cardCareer === career;
+
+        if (matchesSearch && matchesRarity && matchesCamp && matchesCareer) {
+          el.style.display = '';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    searchInput?.addEventListener('input', filterCharacters);
+    rarityFilter?.addEventListener('change', filterCharacters);
+    campFilter?.addEventListener('change', filterCharacters);
+    careerFilter?.addEventListener('change', filterCharacters);
+  });
+</script>

@@ -1,0 +1,585 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    SILVER AND BLOOD - CHARACTER INFO PAGE                */
+/*                    Detailed character profile with lore & voice actors   */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* === MAIN CONTAINER === */
+.character-info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sab-spacing-lg);
+}
+
+/* === CHARACTER HEADER === */
+.character-info-header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sab-spacing-xl);
+  margin-bottom: var(--sab-spacing-xl);
+  background: var(--sab-bg-darker);
+  border-radius: var(--sab-radius-lg);
+  padding: var(--sab-spacing-xl);
+}
+
+/* Character Portrait */
+.character-portrait-wrapper {
+  position: relative;
+}
+
+.character-portrait {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--sab-radius-md);
+  overflow: hidden;
+  border: 2px solid var(--sab-border-gray);
+  background: var(--sab-bg-darker);
+}
+
+.character-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rarity badge image */
+.character-portrait-wrapper .rarity-badge-img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Character Details */
+.character-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-md);
+}
+
+.character-title-section {
+  margin-bottom: var(--sab-spacing-sm);
+}
+
+.character-full-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--sab-text-white);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.character-title-epithet {
+  font-size: 1.1rem;
+  color: var(--sab-calm-red);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Info Grid */
+.character-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sab-spacing-sm) var(--sab-spacing-lg);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  padding: var(--sab-spacing-sm) 0;
+  border-bottom: 1px solid var(--sab-border-light);
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: var(--sab-text-muted);
+  min-width: 80px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: var(--sab-text-light);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Camp/Career Badges */
+.camp-badge,
+.career-badge,
+.subfaction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.camp-badge {
+  background: rgba(194, 107, 107, 0.2);
+  border: 1px solid var(--sab-calm-red);
+  color: var(--sab-light-red);
+}
+
+.career-badge {
+  background: rgba(90, 123, 167, 0.2);
+  border: 1px solid var(--sab-calm-blue);
+  color: var(--sab-light-blue);
+}
+
+.subfaction-badge {
+  background: rgba(184, 197, 209, 0.15);
+  border: 1px solid var(--sab-silver-accent);
+  color: var(--sab-blue-silver);
+}
+
+/* === VOICE ACTORS SECTION === */
+.voice-actors-section {
+  background: var(--sab-bg-darker);
+  border-radius: var(--sab-radius-lg);
+  padding: var(--sab-spacing-lg);
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0 0 var(--sab-spacing-md) 0;
+  padding-bottom: var(--sab-spacing-sm);
+  border-bottom: 1px solid var(--sab-border-light);
+}
+
+.voice-actors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sab-spacing-md);
+}
+
+.voice-actor-card {
+  background: rgba(42, 42, 42, 0.5);
+  border: 1px solid var(--sab-border-light);
+  border-radius: var(--sab-radius-md);
+  padding: var(--sab-spacing-md);
+  text-align: center;
+}
+
+.voice-actor-language {
+  font-size: 0.8rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.voice-actor-name {
+  font-size: 1.1rem;
+  color: var(--sab-text-white);
+  font-weight: 500;
+}
+
+/* Language-specific styling */
+.voice-actor-card.chinese .voice-actor-language {
+  color: var(--sab-calm-red);
+}
+
+.voice-actor-card.japanese .voice-actor-language {
+  color: #e879f9;
+}
+
+.voice-actor-card.english .voice-actor-language {
+  color: var(--sab-calm-blue);
+}
+
+/* === STORIES SECTION === */
+.stories-section {
+  background: var(--sab-bg-darker);
+  border-radius: var(--sab-radius-lg);
+  padding: var(--sab-spacing-lg);
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.stories-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-lg);
+}
+
+.story-card {
+  background: rgba(26, 26, 26, 0.4);
+  border-radius: var(--sab-radius-md);
+  overflow: hidden;
+}
+
+.story-header-static {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sab-spacing-md);
+  background: rgba(42, 42, 42, 0.3);
+}
+
+.story-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-md);
+}
+
+.story-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--sab-calm-red);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.story-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0;
+}
+
+.story-unlock {
+  font-size: 0.8rem;
+  color: var(--sab-text-muted);
+  padding: 4px 10px;
+  background: rgba(100, 100, 100, 0.2);
+  border-radius: 4px;
+}
+
+.story-content {
+  padding: var(--sab-spacing-md) var(--sab-spacing-lg);
+}
+
+.story-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--sab-text-medium);
+  white-space: pre-wrap;
+}
+
+.story-text p {
+  margin: 0 0 1em 0;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* No stories message */
+.no-stories {
+  text-align: center;
+  padding: var(--sab-spacing-xl);
+  color: var(--sab-text-muted);
+  font-style: italic;
+}
+
+/* === CHARACTER INDEX PAGE === */
+.characters-index-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--sab-spacing-lg);
+}
+
+.characters-index-header {
+  text-align: center;
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.characters-index-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sab-text-white);
+  margin: 0 0 0.5rem 0;
+}
+
+.characters-index-subtitle {
+  font-size: 1.1rem;
+  color: var(--sab-text-muted);
+  margin: 0;
+}
+
+/* Filters */
+.characters-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sab-spacing-md);
+  margin-bottom: var(--sab-spacing-xl);
+  padding: var(--sab-spacing-md);
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  background: var(--sab-input-bg);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  color: var(--sab-input-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--sab-calm-blue);
+}
+
+.filter-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  background: var(--sab-input-bg);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  color: var(--sab-input-text);
+  font-size: 0.9rem;
+}
+
+.filter-search:focus {
+  outline: none;
+  border-color: var(--sab-calm-blue);
+}
+
+/* Characters Grid */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sab-spacing-lg);
+}
+
+.character-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.character-index-card {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.character-card-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--sab-bg-darker);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-card-image .rarity-badge-img {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.character-card-rarity {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.character-card-info {
+  padding: var(--sab-spacing-md);
+}
+
+.character-card-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0 0 0.25rem 0;
+}
+
+.character-card-title {
+  font-size: 0.9rem;
+  color: var(--sab-calm-red);
+  font-style: italic;
+  margin: 0 0 0.75rem 0;
+}
+
+.character-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.character-card-tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(90, 123, 167, 0.2);
+  color: var(--sab-light-blue);
+  border: 1px solid rgba(90, 123, 167, 0.3);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .character-info-header {
+    grid-template-columns: 1fr;
+    gap: var(--sab-spacing-lg);
+  }
+
+  .character-portrait-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .character-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .voice-actors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .character-info-container,
+  .characters-index-container {
+    padding: var(--sab-spacing-md);
+  }
+
+  .character-info-header {
+    padding: var(--sab-spacing-md);
+  }
+
+  .character-full-name {
+    font-size: 1.6rem;
+  }
+
+  .character-title-epithet {
+    font-size: 1rem;
+  }
+
+  /* Info items mobile - stack label and value */
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .info-label {
+    min-width: unset;
+    font-size: 0.75rem;
+  }
+
+  .info-value {
+    font-size: 0.95rem;
+  }
+
+  .characters-index-title {
+    font-size: 1.8rem;
+  }
+
+  .characters-filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-select,
+  .filter-search {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .characters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--sab-spacing-md);
+  }
+
+  .character-card-name {
+    font-size: 1rem;
+  }
+
+  .character-card-title {
+    font-size: 0.8rem;
+  }
+
+  /* Story section mobile */
+  .story-header-static {
+    padding: var(--sab-spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .story-title {
+    font-size: 1rem;
+  }
+
+  .story-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .story-unlock {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .voice-actors-section,
+  .stories-section {
+    padding: var(--sab-spacing-md);
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .story-content {
+    padding: var(--sab-spacing-sm) var(--sab-spacing-md);
+  }
+
+  .story-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}

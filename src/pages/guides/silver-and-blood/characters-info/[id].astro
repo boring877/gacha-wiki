@@ -1,0 +1,259 @@
+---
+import CharacterInfoLayout from '../../../../layouts/silver-and-blood/CharacterInfoLayout.astro';
+import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { Image } from 'astro:assets';
+import charactersData from '../../../../data/silver-and-blood/characters_info.json';
+
+// Import rarity frame images
+import raritySSR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import raritySR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityR from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': raritySSR,
+  'SR': raritySR,
+  'R': rarityR,
+};
+
+export async function getStaticPaths() {
+  const characters = charactersData.characters;
+
+  return characters.map((character) => ({
+    params: { id: character.id },
+    props: { character },
+  }));
+}
+
+interface Props {
+  character: {
+    id: string;
+    name: string;
+    fullName: string;
+    shortName: string;
+    title: string;
+    rarity: string;
+    camp: string;
+    career: string;
+    subFaction: string;
+    gender: string;
+    birthday: string | null;
+    voiceActors: {
+      chinese: string;
+      japanese: string;
+      english: string;
+    };
+    stories: Array<{
+      id: string;
+      title: string;
+      text: string;
+      unlockRank: string | null;
+    }>;
+  };
+}
+
+const { character } = Astro.props;
+
+// Format text with proper paragraphs
+function formatStoryText(text: string): string {
+  return text
+    .split('\n\n')
+    .map(p => `<p>${p.trim()}</p>`)
+    .join('');
+}
+
+// Get icon name from character name (convert to proper format)
+function getIconName(name: string): string {
+  // Map common character names to their icon names
+  const nameMap: Record<string, string> = {
+    'Noah': 'Noah',
+    'Limine': 'Limine',
+    'Jestel': 'Jestel',
+    'Empousa': 'Empousa',
+    'Aiona': 'Aiona',
+    'Setti': 'Setti',
+    'Hati': 'Hati',
+    'Bella': 'Bella',
+    'Stella': 'Stella',
+    'Selena': 'Selena',
+    'Lamia': 'Lamia',
+    'Friedrich': 'Friedrich',
+    'Quinn': 'Quinn',
+    'Gilrain': 'Gilrain',
+    'Cecia': 'Cecia',
+    'Lorelei': 'Lorelei',
+    'Agares': 'Agares',
+    'Ami': 'Ami',
+    'Piera': 'Piera',
+    'Seth': 'Seth',
+    'Ressa': 'Ressa',
+    'Dalcarlo': 'Dalcarlo',
+    'Joan': 'Joan',
+    'Cain': 'Cain',
+    'Pavana': 'Pavana',
+    'Julius': 'Julius',
+    'Ottavia': 'Ottavia',
+    'Theophane': 'Theophane',
+    'Tris': 'Tris',
+    'Nicole': 'Nicole',
+    'Darcias': 'Darcias',
+    'Edina': 'Edina',
+    'Yggdrasill': 'Yggdrasill',
+    'Augustine': 'Augustine',
+    'Acappella': 'Acappella',
+    'Mass': 'Mass',
+    'Katherine': 'Katherine',
+    'Hippocratic': 'Hippocratic',
+    'Leo': 'Leo',
+    'VanHellsing': 'VanHellsing',
+    'Baphomet': 'Baphomet',
+    'Garlic': 'Garlic',
+    'William': 'William',
+    'Goldland': 'Goldland',
+    'Siegrune': 'Siegrune',
+    'Livia': 'Livia',
+    'Evna': 'Evna',
+    'Typhoeus': 'Typhoeus',
+    'Ezareth': 'Ezareth',
+    'Paimile': 'Paimile',
+    'Gini': 'Gini',
+    'Clive': 'Clive',
+    'Albert': 'Albert',
+    'Henry': 'Henry',
+    'James': 'James',
+    'Jenny': 'Jenny',
+    'Jones': 'Jones',
+    'Isabelle': 'Isabelle',
+    'Alene': 'Alene',
+    'Astel': 'Astel',
+    'Selenia': 'Selenia',
+    'Fanu': 'Fanu',
+  };
+
+  return nameMap[name] || name;
+}
+
+const pageTitle = `${character.name} - Silver and Blood Character Info`;
+const pageDescription = `Learn about ${character.fullName}, the ${character.title}. Discover their lore, stories, voice actors, and more in Silver and Blood.`;
+---
+
+<CharacterInfoLayout
+  title={pageTitle}
+  description={pageDescription}
+  characterName={character.fullName}
+>
+  <div class="character-info-container">
+    <!-- Character Header -->
+    <div class="character-info-header">
+      <div class="character-portrait-wrapper">
+        <div class="character-portrait">
+          <SABCharacterIcon
+            name={getIconName(character.name)}
+            variant="Base"
+            size="large"
+            width={280}
+            height={280}
+            loading="eager"
+          />
+        </div>
+        <Image
+          src={rarityImages[character.rarity] || rarityR}
+          alt={character.rarity}
+          class="rarity-badge-img"
+          width={48}
+          height={48}
+          loading="eager"
+        />
+      </div>
+
+      <div class="character-details">
+        <div class="character-title-section">
+          <h2 class="character-full-name">{character.fullName}</h2>
+          <p class="character-title-epithet">"{character.title}"</p>
+        </div>
+
+        <div class="character-info-grid">
+          <div class="info-item">
+            <span class="info-label">Camp / Faction</span>
+            <span class="info-value">{character.camp}</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Career / Class</span>
+            <span class="info-value">{character.career}</span>
+          </div>
+
+          {character.subFaction && (
+            <div class="info-item">
+              <span class="info-label">Sub-Faction</span>
+              <span class="info-value">{character.subFaction}</span>
+            </div>
+          )}
+
+          <div class="info-item">
+            <span class="info-label">Gender</span>
+            <span class="info-value">{character.gender}</span>
+          </div>
+
+          {character.birthday && (
+            <div class="info-item" style="grid-column: span 2;">
+              <span class="info-label">Birthday</span>
+              <span class="info-value">{character.birthday}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice Actors Section -->
+    {(character.voiceActors.chinese || character.voiceActors.japanese || character.voiceActors.english) && (
+      <section class="voice-actors-section">
+        <h3 class="section-title">Voice Actors</h3>
+        <div class="voice-actors-grid">
+          {character.voiceActors.chinese && (
+            <div class="voice-actor-card chinese">
+              <div class="voice-actor-language">Chinese</div>
+              <div class="voice-actor-name">{character.voiceActors.chinese}</div>
+            </div>
+          )}
+          {character.voiceActors.japanese && (
+            <div class="voice-actor-card japanese">
+              <div class="voice-actor-language">Japanese</div>
+              <div class="voice-actor-name">{character.voiceActors.japanese}</div>
+            </div>
+          )}
+          {character.voiceActors.english && (
+            <div class="voice-actor-card english">
+              <div class="voice-actor-language">English</div>
+              <div class="voice-actor-name">{character.voiceActors.english}</div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Stories Section -->
+    {character.stories.length > 0 && (
+      <section class="stories-section">
+        <h3 class="section-title">Character Stories</h3>
+        <div class="stories-list">
+          {character.stories.map((story, index) => (
+            <div class="story-card expanded" data-story-id={story.id}>
+              <div class="story-header-static">
+                <div class="story-title-wrapper">
+                  <span class="story-number">{index + 1}</span>
+                  <h4 class="story-title">{story.title}</h4>
+                </div>
+                {story.unlockRank && (
+                  <span class="story-unlock">Rank {story.unlockRank}</span>
+                )}
+              </div>
+              <div class="story-content">
+                <div class="story-text" set:html={formatStoryText(story.text)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</CharacterInfoLayout>

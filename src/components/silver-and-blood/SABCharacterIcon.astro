@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all character icons dynamically
+const iconImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/silver-and-blood/character_icons/*.png',
+  { eager: true }
+);
+
+// Build a map from filename to image metadata
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(iconImages)) {
+  const filename = path.split('/').pop()?.replace('.png', '') || '';
+  iconMap[filename] = module.default;
+}
+
+// Define size presets based on the icon naming convention
+// 001 = medium portrait, 002 = small icon, 003 = large portrait
+type IconSize = '001' | '002' | '003' | 'small' | 'medium' | 'large';
+
+const sizeMap: Record<string, string> = {
+  small: '002',
+  medium: '001',
+  large: '003',
+};
+
+export interface Props {
+  /** Character name (e.g., "Agares", "Bella", "Hati") */
+  name: string;
+  /** Skin/variant (e.g., "Base", "Covenant", "Summer", "Lily") */
+  variant?: string;
+  /** Size: '001'/'medium', '002'/'small', '003'/'large' */
+  size?: IconSize;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'png';
+  quality?: number;
+}
+
+const {
+  name,
+  variant = 'Base',
+  size = 'large',
+  alt,
+  width = 120,
+  height = 120,
+  class: className = '',
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Resolve the size code
+const sizeCode = sizeMap[size] || size;
+
+// Normalize character name to match icon filename
+function normalizeIconName(charName: string): string {
+  // Map of JSON names to icon filenames
+  const nameMap: Record<string, string> = {
+    'Van Helsing': 'VanHellsing',
+    'Clive Jr.': 'CliveJR',
+    'Spectral Gilrain': 'Gilrain_Shadow',
+    'Starry-Eyed Aiona': 'Aiona_Lily',
+    'Incendiary Agares': 'Agares_Covenant',
+    'Transcendent Noah': 'Noah_Covenant',
+    'Transcendent Hati': 'Hati_Covenant',
+    'Transcendent Ami': 'Ami_Covenant',
+    'Timeless Aiona': 'Aiona_Covenant',
+    'Jinxed Selena': 'Selena_Summer',
+    'Fleeting Bella': 'Bella_Summer_Base',
+    'Ethereal Joan': 'Joan_Final',
+    'Jennie': 'Jenny',
+    'Fanny': 'Fanny_Red',
+    'Gadric': 'Garlic',
+    'Thibault': 'Hippocratic',
+        'Albrecht': 'Albert',
+    'Agnes': 'Agatha',
+    'Genevieve': 'Evna',
+    'Valora': 'Isabelle',
+    'Sirene': 'Siegrune',
+    'Seraphina': 'Selenia',
+    'Letitia': 'Typhoeus',
+    'Alexi': 'Astel',
+    'Mirage': 'Dalcarlo_Veil',
+    'Livian': 'Livia',
+    'WilliamGoldland': 'WilliamGoldland',
+  };
+
+  // Check for mapped name first
+  if (nameMap[charName]) {
+    const mapped = nameMap[charName];
+    // If the mapped value contains underscore, it already has variant
+    if (mapped.includes('_')) {
+      return mapped;
+    }
+    return mapped;
+  }
+
+  // Remove spaces and special characters
+  return charName.replace(/[\s\-\'\.]/g, '');
+}
+
+// Build the icon key
+const normalizedName = normalizeIconName(name);
+// Check if normalizedName already contains variant info
+const hasVariant = normalizedName.includes('_');
+const iconKey = hasVariant
+  ? `${normalizedName}${sizeCode}`
+  : `${normalizedName}_${variant}${sizeCode}`;
+const imageSrc = iconMap[iconKey];
+
+// Generate alt text
+const altText = alt || `${name} ${variant} icon`;
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={altText}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    format={format}
+    quality={quality}
+  />
+) : (
+  <div class={`sab-icon-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>{name}</span>
+  </div>
+)}
+
+<style>
+  .sab-icon-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a1a1a 0%, #1a0a0a 100%);
+    border: 1px solid #4a2a2a;
+    border-radius: 8px;
+    color: #8a6a6a;
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
