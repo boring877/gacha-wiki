@@ -424,36 +424,37 @@
 }
 
 .character-card-info {
-  padding: var(--sab-spacing-md);
+  padding: 12px 14px;
+  background: rgba(20, 20, 20, 0.6);
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .character-card-name {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--sab-text-white);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 5px 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .character-card-title {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--sab-calm-red);
   font-style: italic;
-  margin: 0 0 0.75rem 0;
-}
-
-.character-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.character-card-tag {
-  font-size: 0.75rem;
-  padding: 3px 8px;
-  border-radius: 3px;
-  background: rgba(90, 123, 167, 0.2);
-  color: var(--sab-light-blue);
-  border: 1px solid rgba(90, 123, 167, 0.3);
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* === RESPONSIVE === */
@@ -517,10 +518,19 @@
 
   .characters-filters {
     flex-direction: column;
+    gap: var(--sab-spacing-sm);
   }
 
   .filter-group {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .filter-label {
+    min-width: unset;
+    font-size: 0.75rem;
   }
 
   .filter-select,
@@ -531,16 +541,36 @@
   }
 
   .characters-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: var(--sab-spacing-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sab-spacing-sm);
+  }
+
+  .character-index-card {
+    border-radius: var(--sab-radius-md);
+  }
+
+  .character-card-info {
+    padding: 8px 10px;
+    text-align: center;
+    min-height: 48px;
   }
 
   .character-card-name {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    white-space: normal;
   }
 
   .character-card-title {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .character-card-image .rarity-badge-img {
+    width: 28px;
+    height: 28px;
+    top: 6px;
+    right: 6px;
   }
 
   /* Story section mobile */
