@@ -1,0 +1,190 @@
+---
+import GiftsLayout from '../../../layouts/silver-and-blood/GiftsLayout.astro';
+import { Image } from 'astro:assets';
+import { gifts, getCampClass, getGiftStats } from '../../../data/silver-and-blood/gifts.js';
+
+// Import all gift icons
+import universal1 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_1.png';
+import universal2 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_2.png';
+import universal3 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_3.png';
+import ancestral1 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_1.png';
+import ancestral2 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_2.png';
+import ancestral3 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_3.png';
+import church1 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_1.png';
+import church2 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_2.png';
+import church3 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_3.png';
+import bloodborn1 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_1.png';
+import bloodborn2 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_2.png';
+import bloodborn3 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_3.png';
+import kingdom1 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_1.png';
+import kingdom2 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_2.png';
+import kingdom3 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_3.png';
+import otherworldly1 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_1.png';
+import otherworldly2 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_2.png';
+import otherworldly3 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_3.png';
+
+// Map gift icons by camp and rarity
+const giftIconMap: Record<string, ImageMetadata> = {
+  'universal_1': universal1,
+  'universal_2': universal2,
+  'universal_3': universal3,
+  'ancestral_1': ancestral1,
+  'ancestral_2': ancestral2,
+  'ancestral_3': ancestral3,
+  'church_1': church1,
+  'church_2': church2,
+  'church_3': church3,
+  'bloodborn_1': bloodborn1,
+  'bloodborn_2': bloodborn2,
+  'bloodborn_3': bloodborn3,
+  'kingdom_1': kingdom1,
+  'kingdom_2': kingdom2,
+  'kingdom_3': kingdom3,
+  'otherworldly_1': otherworldly1,
+  'otherworldly_2': otherworldly2,
+  'otherworldly_3': otherworldly3,
+};
+
+// Get gift icon based on camp and rarity
+function getGiftIcon(camp: number, rarity: number): ImageMetadata | null {
+  const campClass = getCampClass(camp);
+  const suffix = rarity - 1;
+  const key = `${campClass}_${suffix}`;
+  return giftIconMap[key] || null;
+}
+
+// Get summary statistics
+const stats = getGiftStats();
+
+const pageTitle = 'Gift Database';
+const pageDescription = 'Complete gift database for Silver and Blood. View all gifts organized by camp with affinity EXP values and descriptions.';
+---
+
+<GiftsLayout title={`${pageTitle} | Silver and Blood`} description={pageDescription} pageTitle={pageTitle}>
+  <div class="gifts-container">
+    <!-- Summary Stats -->
+    <div class="gifts-summary">
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.total}</span>
+        <span class="summary-stat-label">Total Gifts</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.byRarity[4]}</span>
+        <span class="summary-stat-label">4-Star</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.byRarity[3]}</span>
+        <span class="summary-stat-label">3-Star</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.byRarity[2]}</span>
+        <span class="summary-stat-label">2-Star</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">6</span>
+        <span class="summary-stat-label">Camps</span>
+      </div>
+    </div>
+
+    <!-- Gift Database Section -->
+    <section class="gifts-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">All Gifts</h2>
+          <p class="section-subtitle">Filter by camp to find the perfect gift for your characters</p>
+        </div>
+      </div>
+
+      <!-- Camp Filters -->
+      <div class="camp-filters" role="group" aria-label="Filter gifts by camp">
+        <button class="camp-filter-btn active" data-camp="all" type="button" aria-pressed="true">All</button>
+        <button class="camp-filter-btn" data-camp="universal" type="button" aria-pressed="false">Universal</button>
+        <button class="camp-filter-btn" data-camp="ancestral" type="button" aria-pressed="false">Ancestral</button>
+        <button class="camp-filter-btn" data-camp="church" type="button" aria-pressed="false">Church</button>
+        <button class="camp-filter-btn" data-camp="bloodborn" type="button" aria-pressed="false">Bloodborn</button>
+        <button class="camp-filter-btn" data-camp="kingdom" type="button" aria-pressed="false">Kingdom</button>
+        <button class="camp-filter-btn" data-camp="otherworldly" type="button" aria-pressed="false">Otherworldly</button>
+      </div>
+
+      <!-- Gifts Grid -->
+      <div class="gifts-grid">
+        {gifts.map(gift => {
+          const giftIcon = getGiftIcon(gift.camp, gift.rarity);
+          const campClass = getCampClass(gift.camp);
+          return (
+            <div class="gift-card" data-camp={campClass}>
+              <div class="gift-card-header">
+                <div class="gift-icon-wrapper">
+                  {giftIcon && (
+                    <Image
+                      src={giftIcon}
+                      alt={gift.name}
+                      class="gift-icon"
+                      width={72}
+                      height={72}
+                    />
+                  )}
+                </div>
+                <div class="gift-info">
+                  <h3 class="gift-name">{gift.name}</h3>
+                  <div class="gift-meta">
+                    <div class="gift-rarity">
+                      {Array.from({ length: gift.rarity }, (_, i) => (
+                        <span class="gift-star">&#9733;</span>
+                      ))}
+                    </div>
+                    <span class={`gift-camp-badge ${campClass}`}>{gift.campName}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="gift-card-body">
+                <p class="gift-description">{gift.description}</p>
+                <div class="gift-exp-stats">
+                  <div class="gift-exp-stat">
+                    <span class="gift-exp-value">{gift.normalExp}</span>
+                    <span class="gift-exp-label">Normal EXP</span>
+                  </div>
+                  <div class="gift-exp-stat matching">
+                    <span class="gift-exp-value">{gift.matchingCampExp}</span>
+                    <span class="gift-exp-label">Matching Camp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</GiftsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.camp-filter-btn');
+    const giftCards = document.querySelectorAll('.gift-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active class and aria-pressed for all buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        });
+        // Add active class and aria-pressed to clicked button
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+
+        const selectedCamp = button.getAttribute('data-camp');
+
+        giftCards.forEach(card => {
+          const cardCamp = card.getAttribute('data-camp');
+          if (selectedCamp === 'all' || cardCamp === selectedCamp) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

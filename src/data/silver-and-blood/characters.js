@@ -1,6 +1,10 @@
 // Silver and Blood Characters Database
 // This file contains character data and metadata for the Silver and Blood wiki
 // All character stats are based on Level 200, which is the current maximum level
+// Data is now sourced from character-stats.json and characters_info.json
+
+import characterStatsData from './character-stats.json';
+import charactersInfoData from './characters_info.json';
 
 // Game Mechanics Reference
 export const gameInfo = {
@@ -100,121 +104,72 @@ export const gameInfo = {
   ],
 };
 
-// Import individual character files
-import { transcendentHati } from './characters/transcendent-hati.js';
-import { transcendentAmi } from './characters/transcendent-ami.js';
-import { limine } from './characters/limine.js';
-import { incendiaryAgares } from './characters/incendiary-agares.js';
-import { hati } from './characters/hati.js';
-import { vanHelsing } from './characters/van-helsing.js';
-import { transcendentNoah } from './characters/transcendent-noah.js';
-import { seth } from './characters/seth.js';
-import { acappella } from './characters/acappella.js';
-import { gilrain } from './characters/gilrain.js';
-import { joan } from './characters/joan.js';
-import { darcias } from './characters/darcias.js';
-import { ressa } from './characters/ressa.js';
-import { ottavia } from './characters/ottavia.js';
-import { pavana } from './characters/pavana.js';
-import { lamia } from './characters/lamia.js';
-import { cecia } from './characters/cecia.js';
-import { augustine } from './characters/augustine.js';
-import { starryEyedAiona } from './characters/starry-eyed-aiona.js';
-import { yggdrasill } from './characters/yggdrasill.js';
-import { friedrich } from './characters/friedrich.js';
-import { nicole } from './characters/nicole.js';
-import { edina } from './characters/edina.js';
-import { agares } from './characters/agares.js';
-import { bella } from './characters/bella.js';
-import { thibault } from './characters/thibault.js';
-import { theophane } from './characters/theophane.js';
-import { cain } from './characters/cain.js';
-import { selena } from './characters/selena.js';
-import { spectralGilrain } from './characters/spectral-gilrain.js';
-import { piera } from './characters/piera.js';
-import { ami } from './characters/ami.js';
-import { tris } from './characters/tris.js';
-import { mass } from './characters/mass.js';
-import { dalcarlo } from './characters/dalcarlo.js';
-import { sirene } from './characters/sirene.js';
-import { jinxedSelena } from './characters/jinxed-selena.js';
-import { lorelei } from './characters/lorelei.js';
-import { fleetingBella } from './characters/fleeting-bella.js';
-import { timelessAiona } from './characters/timeless-aiona.js';
-import { quinn } from './characters/quinn.js';
-import { agnes } from './characters/agnes.js';
-import { valora } from './characters/valora.js';
-import { julius } from './characters/julius.js';
-import { stella } from './characters/stella.js';
-import { regina } from './characters/regina.js';
-import { albrecht } from './characters/albrecht.js';
-import { fanny } from './characters/fanny.js';
-import { genevieve } from './characters/genevieve.js';
+// Generate slug from character name
+const generateSlug = (name) => {
+  return name.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+};
 
-// Characters array - Add new characters here
-const baseCharacters = [
-  transcendentHati,
-  transcendentAmi,
-  limine,
-  incendiaryAgares,
-  hati,
-  vanHelsing,
-  transcendentNoah,
-  seth,
-  acappella,
-  gilrain,
-  joan,
-  darcias,
-  ressa,
-  ottavia,
-  pavana,
-  lamia,
-  cecia,
-  augustine,
-  starryEyedAiona,
-  yggdrasill,
-  friedrich,
-  nicole,
-  edina,
-  agares,
-  bella,
-  thibault,
-  theophane,
-  cain,
-  selena,
-  spectralGilrain,
-  piera,
-  ami,
-  tris,
-  mass,
-  dalcarlo,
-  sirene,
-  jinxedSelena,
-  lorelei,
-  fleetingBella,
-  timelessAiona,
-  quinn,
-  agnes,
-  valora,
-  julius,
-  stella,
-  regina,
-  albrecht,
-  fanny,
-  genevieve,
-  // Add more characters as they are created
-];
+// Characters with available portrait images (for comparison tools)
+// TODO: Add more images as they become available
+const charactersWithImages = new Set([
+  'acappella', 'agares', 'agnes', 'albrecht', 'ami', 'augustine', 'bella', 'cain',
+  'cecia', 'dalcarlo', 'darcias', 'edina', 'fanny', 'fleeting-bella', 'friedrich',
+  'genevieve', 'gilrain', 'hati', 'incendiary-agares', 'jinxed-selena', 'joan',
+  'julius', 'lamia', 'limine', 'lorelei', 'mass', 'nicole', 'ottavia', 'pavana',
+  'piera', 'quinn', 'regina', 'ressa', 'selena', 'seth', 'sirene', 'spectral-gilrain',
+  'starry-eyed-aiona', 'stella', 'theophane', 'thibault', 'timeless-aiona',
+  'transcendent-ami', 'transcendent-hati', 'transcendent-noah', 'tris', 'valora',
+  'van-helsing', 'yggdrasill'
+]);
+
+// Create info map by ID for additional data
+const infoMap = new Map();
+charactersInfoData.characters.forEach((char) => {
+  infoMap.set(char.id, char);
+});
+
+// Filter to playable characters (SSR, SR, R) that have portrait images
+// This ensures the comparison tools work properly
+const baseCharacters = characterStatsData.characters
+  .filter((c) => ['SSR', 'SR', 'R'].includes(c.rarity))
+  .filter((c) => charactersWithImages.has(generateSlug(c.name)))
+  .map((statsChar) => {
+    const infoChar = infoMap.get(statsChar.id) || {};
+    const gallery = statsChar.gallery || {};
+    const slug = generateSlug(statsChar.name);
+
+    return {
+      id: slug,
+      numericId: statsChar.id,
+      name: statsChar.name,
+      title: infoChar.title || statsChar.title || '',
+      rarity: statsChar.rarity,
+      class: statsChar.class,
+      faction: infoChar.camp || '',
+      moonPhase: infoChar.moonPhase || '',
+      attackType: infoChar.damageType || '',
+      equipmentType: infoChar.equipmentType || '',
+      image: slug, // Used by SABCharacterImage component for lookup
+      stats: {
+        hp: gallery.MaxHp || 0,
+        atk: gallery.Attack || 0,
+        pDef: gallery.PhyDefence || 0,
+        mDef: gallery.MagDefence || 0,
+        bloodPower: gallery.bloodPower || 0,
+      },
+      slug: slug,
+      detailUrl: `/guides/silver-and-blood/characters/${slug}`,
+    };
+  });
 
 // Add slug and detailUrl to characters
-export const characters = baseCharacters.map(character => ({
-  ...character,
-  slug: character.id,
-  detailUrl: `/guides/silver-and-blood/characters/${character.id}`,
-}));
+export const characters = baseCharacters;
 
 // Utility functions for character management
 export function getCharacterById(id) {
-  return characters.find(character => character.id === id);
+  return characters.find(character => character.id === id || character.numericId === id);
 }
 
 export function getCharactersByRarity(rarity) {

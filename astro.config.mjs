@@ -5,13 +5,17 @@ import svelte from '@astrojs/svelte';
 import fs from 'fs';
 import path from 'path';
 
+// Check if we're in development mode
+const isDev = process.env.NODE_ENV !== 'production' && !process.argv.includes('build');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gachawiki.info',
   output: 'static',
   // Fix trailing slash to prevent 300 redirect issues in Google Search Console
   // 'always' ensures all URLs end with / and prevents duplicate crawling
-  trailingSlash: 'always',
+  // Use 'ignore' in dev mode so both /path and /path/ work locally
+  trailingSlash: isDev ? 'ignore' : 'always',
   integrations: [
     sitemap(),
     svelte()
@@ -107,6 +111,25 @@ export default defineConfig({
     },
     // Custom plugin to copy JavaScript files from src/scripts to public/scripts
     plugins: [
+      // Dev server middleware to auto-redirect URLs without trailing slash
+      {
+        name: 'trailing-slash-redirect',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            // Skip assets, API routes, and already-slashed URLs
+            if (req.url &&
+                !req.url.endsWith('/') &&
+                !req.url.includes('.') &&
+                !req.url.startsWith('/@') &&
+                !req.url.startsWith('/__')) {
+              res.writeHead(301, { Location: req.url + '/' });
+              res.end();
+              return;
+            }
+            next();
+          });
+        }
+      },
       {
         name: 'copy-scripts',
         writeBundle() {

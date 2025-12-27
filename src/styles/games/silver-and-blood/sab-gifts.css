@@ -1,0 +1,354 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    SILVER AND BLOOD GIFT DATABASE STYLES                */
+/*                    Gift database page with filtering                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* === CONTAINER === */
+.gifts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sab-spacing-lg);
+}
+
+/* === SECTION STYLING === */
+.gifts-section {
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sab-spacing-lg);
+  padding-bottom: var(--sab-spacing-md);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c0c0c0, #c26b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.section-subtitle {
+  color: var(--sab-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* === SUMMARY STATS === */
+.gifts-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--sab-spacing-md);
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.summary-stat {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+  padding: var(--sab-spacing-md);
+  text-align: center;
+}
+
+.summary-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--sab-text-light);
+  display: block;
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === CAMP FILTER BUTTONS === */
+.camp-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sab-spacing-sm);
+  margin-bottom: var(--sab-spacing-lg);
+  padding: var(--sab-spacing-md);
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+}
+
+.camp-filter-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--sab-radius-sm);
+  border: 1px solid var(--sab-border-gray);
+  background: var(--sab-bg-medium);
+  color: var(--sab-text-medium);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.camp-filter-btn.active {
+  border-color: var(--sab-calm-red);
+  color: var(--sab-text-white);
+}
+
+/* Camp-specific filter colors */
+.camp-filter-btn[data-camp="all"].active {
+  background: var(--sab-calm-red);
+  border-color: var(--sab-calm-red);
+}
+
+.camp-filter-btn[data-camp="universal"].active {
+  background: #6b7280;
+  border-color: #6b7280;
+}
+
+.camp-filter-btn[data-camp="ancestral"].active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.camp-filter-btn[data-camp="church"].active {
+  background: #eab308;
+  border-color: #eab308;
+  color: #1a1a1a;
+}
+
+.camp-filter-btn[data-camp="bloodborn"].active {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.camp-filter-btn[data-camp="kingdom"].active {
+  background: #059669;
+  border-color: #059669;
+}
+
+.camp-filter-btn[data-camp="otherworldly"].active {
+  background: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+/* === GIFTS GRID === */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--sab-spacing-lg);
+}
+
+/* === GIFT CARD === */
+.gift-card {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  overflow: hidden;
+}
+
+.gift-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-md);
+  padding: var(--sab-spacing-md);
+  background: rgba(42, 42, 42, 0.5);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.gift-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--sab-radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--sab-bg-darker);
+  border: 2px solid var(--sab-border-gray);
+}
+
+.gift-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gift-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gift-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.gift-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  flex-wrap: wrap;
+}
+
+.gift-rarity {
+  display: flex;
+  gap: 2px;
+}
+
+.gift-star {
+  color: #ffd700;
+  font-size: 0.875rem;
+}
+
+.gift-camp-badge {
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Camp badge colors */
+.gift-camp-badge.universal {
+  background: rgba(107, 114, 128, 0.3);
+  border: 1px solid #6b7280;
+  color: #9ca3af;
+}
+
+.gift-camp-badge.ancestral {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid #3b82f6;
+  color: #93c5fd;
+}
+
+.gift-camp-badge.church {
+  background: rgba(234, 179, 8, 0.2);
+  border: 1px solid #eab308;
+  color: #fde047;
+}
+
+.gift-camp-badge.bloodborn {
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid #dc2626;
+  color: #fca5a5;
+}
+
+.gift-camp-badge.kingdom {
+  background: rgba(5, 150, 105, 0.2);
+  border: 1px solid #059669;
+  color: #6ee7b7;
+}
+
+.gift-camp-badge.otherworldly {
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid #8b5cf6;
+  color: #c4b5fd;
+}
+
+.gift-card-body {
+  padding: var(--sab-spacing-md);
+}
+
+.gift-description {
+  font-size: 0.85rem;
+  color: var(--sab-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--sab-spacing-md);
+  min-height: 3rem;
+}
+
+.gift-exp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sab-spacing-sm);
+}
+
+.gift-exp-stat {
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm);
+  text-align: center;
+}
+
+.gift-exp-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sab-text-light);
+  display: block;
+}
+
+.gift-exp-label {
+  font-size: 0.65rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.gift-exp-stat.matching .gift-exp-value {
+  color: #4ade80;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .gifts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .gifts-container {
+    padding: var(--sab-spacing-md);
+  }
+
+  .gifts-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gifts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .camp-filters {
+    justify-content: center;
+  }
+
+  .camp-filter-btn {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gifts-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .summary-stat {
+    padding: var(--sab-spacing-sm);
+  }
+
+  .summary-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .gift-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .gift-name {
+    font-size: 1rem;
+  }
+}

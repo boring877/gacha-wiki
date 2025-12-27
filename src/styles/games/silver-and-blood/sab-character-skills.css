@@ -164,6 +164,29 @@
   font-size: 0.9rem;
   color: var(--sab-text-muted);
   margin-top: var(--sab-spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  flex-wrap: wrap;
+}
+
+.character-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: var(--sab-spacing-sm);
+}
+
+.char-info-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.char-info-icon.rarity-icon {
+  width: 28px;
+  height: 28px;
 }
 
 /* Skills Content */

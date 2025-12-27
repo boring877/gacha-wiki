@@ -40,6 +40,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Database', href: '/guides/silver-and-blood/characters/' },
           { name: 'Lore & Info', href: '/guides/silver-and-blood/characters-info/' },
           { name: 'Skills', href: '/guides/silver-and-blood/character-skills/' },
+          { name: 'Stats', href: '/guides/silver-and-blood/character-stats/' },
           { name: 'Tier List', href: '/guides/silver-and-blood/tier-list/' },
           { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
           { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },
@@ -72,6 +73,8 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Beginner Guide', href: '/guides/silver-and-blood/beginner-guide/' },
           { name: 'Rerolling Guide', href: '/guides/silver-and-blood/rerolling-guide/' },
+          { name: 'Gifts', href: '/guides/silver-and-blood/gifts/' },
+          { name: 'Character Gifts', href: '/guides/silver-and-blood/character-gifts/' },
           { name: 'Clock', href: '/clock/silver-and-blood/' },
           { name: 'Redeem Codes', href: '/guides/silver-and-blood/redeem-codes/' },
           { name: 'Bug Fixes', href: '/guides/silver-and-blood/bugs/' },

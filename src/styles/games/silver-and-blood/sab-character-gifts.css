@@ -1,0 +1,551 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    SILVER AND BLOOD CHARACTER GIFTS STYLES              */
+/*                    Character gift preferences by level group & faction  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* === CONTAINER === */
+.character-gifts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sab-spacing-lg);
+}
+
+/* === PAGE INTRO === */
+.page-intro {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  padding: var(--sab-spacing-lg);
+  margin-bottom: var(--sab-spacing-lg);
+}
+
+/* === RANK CALCULATOR SECTION === */
+.rank-calculator-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--sab-spacing-lg);
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.rank-calculator {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  overflow: hidden;
+}
+
+.rank-calculator.lv40 {
+  border-top: 3px solid var(--sab-calm-red);
+}
+
+.rank-calculator.lv30 {
+  border-top: 3px solid var(--sab-calm-blue);
+}
+
+.rank-calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sab-spacing-md) var(--sab-spacing-lg);
+  background: rgba(42, 42, 42, 0.4);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.rank-calc-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0;
+}
+
+.lv40 .rank-calc-title {
+  color: var(--sab-light-red);
+}
+
+.lv30 .rank-calc-title {
+  color: var(--sab-light-blue);
+}
+
+.rank-calc-subtitle {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+}
+
+.rank-calc-body {
+  padding: var(--sab-spacing-lg);
+}
+
+.rank-input-group {
+  margin-bottom: var(--sab-spacing-lg);
+}
+
+.rank-input-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--sab-text-muted);
+  margin-bottom: var(--sab-spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rank-input-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+}
+
+.rank-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--sab-border-gray);
+  background: rgba(42, 42, 42, 0.6);
+  color: var(--sab-text-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: var(--sab-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-input {
+  width: 70px;
+  height: 36px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+}
+
+.rank-input::-webkit-inner-spin-button,
+.rank-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rank-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.rank-stats-display {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-md);
+}
+
+.rank-stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sab-spacing-sm);
+}
+
+.rank-stats-row.stats-row {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.rank-stat-item {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm);
+  text-align: center;
+}
+
+.rank-stat-label {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.rank-stat-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sab-text-light);
+}
+
+.rank-gifts-display {
+  background: rgba(194, 107, 107, 0.1);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm) var(--sab-spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rank-gifts-label {
+  font-size: 0.8rem;
+  color: var(--sab-text-medium);
+}
+
+.rank-gifts-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sab-calm-red);
+}
+
+.rank-break-notice {
+  font-size: 0.75rem;
+  color: var(--sab-calm-red);
+  background: rgba(194, 107, 107, 0.15);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-xs) var(--sab-spacing-sm);
+  text-align: center;
+}
+
+.page-intro-text {
+  color: var(--sab-text-medium);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.page-intro-text strong {
+  color: var(--sab-text-white);
+}
+
+/* === TEMPLATE GROUPS === */
+.template-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-xl);
+}
+
+/* === LEVEL GROUP === */
+.level-group {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  overflow: hidden;
+}
+
+.level-group.lv40 {
+  border-top: 3px solid var(--sab-calm-red);
+}
+
+.level-group.lv30 {
+  border-top: 3px solid var(--sab-calm-blue);
+}
+
+/* === LEVEL GROUP HEADER === */
+.level-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sab-spacing-lg);
+  background: rgba(42, 42, 42, 0.6);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.level-group-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-md);
+}
+
+.level-group-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sab-text-white);
+  margin: 0;
+}
+
+.level-group.lv40 .level-group-title {
+  color: var(--sab-light-red);
+}
+
+.level-group.lv30 .level-group-title {
+  color: var(--sab-light-blue);
+}
+
+.level-group-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: rgba(194, 107, 107, 0.15);
+  color: var(--sab-text-light);
+  border: 1px solid var(--sab-border-gray);
+}
+
+.level-group-count {
+  font-size: 0.85rem;
+  color: var(--sab-text-muted);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* === LEVEL GROUP BODY === */
+.level-group-body {
+  padding: var(--sab-spacing-lg);
+}
+
+/* === FACTIONS GRID === */
+.factions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--sab-spacing-lg);
+}
+
+/* === FACTION SECTION === */
+.faction-section {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+  overflow: hidden;
+}
+
+/* === FACTION HEADER === */
+.faction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sab-spacing-md) var(--sab-spacing-lg);
+  background: rgba(42, 42, 42, 0.4);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.faction-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--sab-text-white);
+}
+
+.faction-count {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* === FACTION BODY === */
+.faction-body {
+  padding: var(--sab-spacing-md);
+}
+
+/* === CHARACTERS SECTION === */
+.characters-section {
+  margin-bottom: var(--sab-spacing-md);
+}
+
+.characters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sab-spacing-sm);
+}
+
+.character-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid var(--sab-border-gray);
+  padding: 6px 12px 6px 6px;
+  border-radius: var(--sab-radius-sm);
+  font-size: 0.85rem;
+  color: var(--sab-text-light);
+}
+
+/* Style the SABCharacterIcon wrapper inside chip */
+.character-chip .sab-character-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.character-chip .sab-character-icon-wrapper img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--sab-border-gray);
+}
+
+.character-chip-name {
+  font-weight: 500;
+}
+
+/* === GIFTS SECTION === */
+.gifts-section {
+  background: rgba(42, 42, 42, 0.3);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-md);
+}
+
+.gifts-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--sab-spacing-sm) 0;
+}
+
+.gifts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-xs);
+}
+
+.gift-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-xs) var(--sab-spacing-sm);
+}
+
+.gift-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sab-radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.gift-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gift-item-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sab-text-light);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gift-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+}
+
+.gift-item-rarity {
+  display: flex;
+  gap: 1px;
+}
+
+.gift-item-star {
+  color: var(--sab-muted-gold);
+  font-size: 0.65rem;
+}
+
+.gift-item-exp-per {
+  font-size: 0.7rem;
+  color: var(--sab-text-muted);
+}
+
+.gift-item-qty {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--sab-calm-red);
+  white-space: nowrap;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .factions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .character-gifts-container {
+    padding: var(--sab-spacing-md);
+  }
+
+  .level-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .level-group-title {
+    font-size: 1.25rem;
+  }
+
+  .faction-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-xs);
+  }
+
+  .character-chip {
+    font-size: 0.8rem;
+    padding: 4px 10px 4px 4px;
+  }
+
+  .character-chip .sab-character-icon-wrapper img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gift-item-exp {
+    margin-left: auto;
+  }
+
+  /* Rank calculator responsive */
+  .rank-calculator-section {
+    grid-template-columns: 1fr;
+  }
+
+  .rank-stats-row.stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rank-calc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .level-group-body {
+    padding: var(--sab-spacing-md);
+  }
+
+  .faction-body {
+    padding: var(--sab-spacing-sm);
+  }
+
+  .gifts-section {
+    padding: var(--sab-spacing-sm);
+  }
+
+  .gift-item-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .gift-item-name {
+    font-size: 0.8rem;
+  }
+
+  .character-chip {
+    font-size: 0.75rem;
+    padding: 3px 8px 3px 3px;
+  }
+
+  .character-chip .sab-character-icon-wrapper img {
+    width: 24px;
+    height: 24px;
+  }
+}

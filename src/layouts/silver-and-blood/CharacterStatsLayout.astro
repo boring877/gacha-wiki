@@ -1,0 +1,124 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+
+// Import Silver and Blood specific styles
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title || ''} description={description || ''} />
+
+    <!-- Mobile Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Silver and Blood, character stats, HP, ATK, DEF, base stats, stat calculator, vampire game, gacha" />
+    <meta name="author" content="GachaWiki" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description || 'Complete character stats database for Silver and Blood'} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:site_name" content="GachaWiki" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description || 'Complete character stats database for Silver and Blood'} />
+
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description || "Complete character stats database for Silver and Blood",
+      "author": {
+        "@type": "Organization",
+        "name": "GachaWiki"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.com"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": new URL(Astro.url.pathname, Astro.site)
+      },
+      "about": {
+        "@type": "VideoGame",
+        "name": "Silver and Blood"
+      }
+    })}>
+    </script>
+
+    <!-- SAB character stats styles -->
+    <style is:global>
+      @import '../../styles/games/silver-and-blood/sab-character-stats.css';
+    </style>
+
+    <slot name="head" />
+    <Analytics />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth similar to landing page -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Page Title Section -->
+          <section class="title-only-section">
+            <h1 class="title-only-heading">Character Stats Database</h1>
+
+            <DecorativeLines />
+          </section>
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="silver-and-blood" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <!-- Main content slot -->
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

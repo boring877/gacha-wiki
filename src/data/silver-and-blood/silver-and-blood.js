@@ -127,6 +127,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Skills',
           url: '/guides/silver-and-blood/character-skills/',
         },
+        {
+          id: 'character-stats',
+          title: 'Stats Database',
+          url: '/guides/silver-and-blood/character-stats/',
+        },
       ],
     },
     {
@@ -218,6 +223,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           id: 'rerolling-guide',
           title: 'Rerolling Guide',
           url: '/guides/silver-and-blood/rerolling-guide/',
+        },
+        {
+          id: 'gifts',
+          title: 'Gifts',
+          url: '/guides/silver-and-blood/gifts/',
+        },
+        {
+          id: 'character-gifts',
+          title: 'Character Gifts',
+          url: '/guides/silver-and-blood/character-gifts/',
         },
         {
           id: 'redeem-codes',
@@ -362,6 +377,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
+      id: 'character-stats',
+      title: 'Character Stats Database',
+      emoji: '',
+      description: 'Complete character stats database for all 71 characters. View stats at different levels and Spirit Siphon levels. Filter by rarity, class, and search by name.',
+      url: '/guides/silver-and-blood/character-stats/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
       id: 'damage-mechanics',
       title: 'Damage Mechanics Hub',
       emoji: '',
@@ -484,6 +508,26 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         'Interactive slot machine simulators for Recast and Refinement mechanics. Test your luck with realistic probability simulations based on gameplay observation!',
       url: '/guides/silver-and-blood/slot-machines/',
       category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'gifts',
+      title: 'Gift Database',
+      emoji: '',
+      description:
+        'Complete gift database for Silver and Blood. View all gifts organized by camp with affinity EXP values.',
+      url: '/guides/silver-and-blood/gifts/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'character-gifts',
+      title: 'Character Gifts',
+      emoji: '',
+      description:
+        'Find the best gifts for each character based on their camp affiliation. Maximize affinity EXP with matching camp gifts.',
+      url: '/guides/silver-and-blood/character-gifts/',
+      category: 'guides',
       status: 'active',
     },
   ],

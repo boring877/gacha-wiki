@@ -1,0 +1,1030 @@
+---
+import CharacterStatsLayout from '../../../layouts/silver-and-blood/CharacterStatsLayout.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
+import characterStatsData from '../../../data/silver-and-blood/character-stats.json';
+import charactersInfoData from '../../../data/silver-and-blood/characters_info.json';
+
+// Import rarity frame images (SSR=gold, SR=purple, R=blue)
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+// Import moon phase icons
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+
+// Import damage type icons
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+
+// Import equipment type icons
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Import role/career icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': rarityGold,
+  'SR': rarityPurple,
+  'R': rarityBlue,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+  'level_info_icon_attack_04.png': dmgPierce,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
+};
+
+const roleImages: Record<string, ImageMetadata> = {
+  'Assassin': roleAssassin,
+  'Defender': roleDefender,
+  'Enchanter': roleEnchanter,
+  'Marksman': roleMarksman,
+  'Sorcerer': roleSorcerer,
+  'Warrior': roleWarrior,
+};
+
+// Create a map of character info by name for icon lookup
+const characterInfoMap = new Map();
+charactersInfoData.characters.forEach((char: any) => {
+  if (char.name) {
+    characterInfoMap.set(char.name, char);
+  }
+});
+
+// Get icon name mapping for character portraits
+function getIconName(name: string): string {
+  const nameMap: Record<string, string> = {
+    'Noah': 'Noah',
+    'Limine': 'Limine',
+    'Jestel': 'Jestel',
+    'Empousa': 'Empousa',
+    'Aiona': 'Aiona',
+    'Setti': 'Setti',
+    'Hati': 'Hati',
+    'Bella': 'Bella',
+    'Stella': 'Stella',
+    'Selena': 'Selena',
+    'Lamia': 'Lamia',
+    'Friedrich': 'Friedrich',
+    'Quinn': 'Quinn',
+    'Gilrain': 'Gilrain',
+    'Cecia': 'Cecia',
+    'Lorelei': 'Lorelei',
+    'Agares': 'Agares',
+    'Ami': 'Ami',
+    'Piera': 'Piera',
+    'Seth': 'Seth',
+    'Ressa': 'Ressa',
+    'Dalcarlo': 'Dalcarlo',
+    'Joan': 'Joan',
+    'Cain': 'Cain',
+    'Pavana': 'Pavana',
+    'Julius': 'Julius',
+    'Ottavia': 'Ottavia',
+    'Theophane': 'Theophane',
+    'Tris': 'Tris',
+    'Nicole': 'Nicole',
+    'Darcias': 'Darcias',
+    'Edina': 'Edina',
+    'Yggdrasill': 'Yggdrasill',
+    'Augustine': 'Augustine',
+    'Acappella': 'Acappella',
+    'Mass': 'Mass',
+    'Katherine': 'Katherine',
+    'Hippocratic': 'Hippocratic',
+    'Leo': 'Leo',
+    'VanHellsing': 'VanHellsing',
+    'Baphomet': 'Baphomet',
+    'Garlic': 'Garlic',
+    'William': 'William',
+    'Goldland': 'Goldland',
+    'Siegrune': 'Siegrune',
+    'Livia': 'Livia',
+    'Evna': 'Evna',
+    'Typhoeus': 'Typhoeus',
+    'Ezareth': 'Ezareth',
+    'Paimile': 'Paimile',
+    'Gini': 'Gini',
+    'Clive': 'Clive',
+    'Albert': 'Albert',
+    'Henry': 'Henry',
+    'James': 'James',
+    'Jenny': 'Jenny',
+    'Jones': 'Jones',
+    'Isabelle': 'Isabelle',
+    'Alene': 'Alene',
+    'Astel': 'Astel',
+    'Selenia': 'Selenia',
+    'Fanu': 'Fanu',
+    'Sirene': 'Sirene',
+    'Arachne': 'Arachne',
+    'Desdemona': 'Desdemona',
+    'Drakul': 'Drakul',
+    'Flynn': 'Flynn',
+    'Garm': 'Garm',
+    'Gunther': 'Gunther',
+    'Helga': 'Helga',
+    'Igor': 'Igor',
+    'Ingrit': 'Ingrit',
+    'Lilith': 'Lilith',
+    'Lycaon': 'Lycaon',
+    'Odin': 'Odin',
+    'Tristan': 'Tristan',
+  };
+  return nameMap[name] || name;
+}
+
+// Extract data
+const { characters } = characterStatsData;
+
+// Sort characters alphabetically
+const sortedCharacters = [...characters].sort((a: any, b: any) => a.name.localeCompare(b.name));
+const totalCharacters = sortedCharacters.length;
+
+// Get unique classes and rarities for filters
+const classes = ['Warrior', 'Assassin', 'Defender', 'Marksman', 'Sorcerer', 'Enchanter'];
+const rarities = ['SSR', 'SR', 'R'];
+
+// Page metadata
+const title = `Silver and Blood Character Stats Database - All ${totalCharacters} Characters | Level 1-1000 Calculator`;
+const description = `Complete Silver and Blood character stats database with ${totalCharacters} characters. Calculate HP, ATK, P.DEF, M.DEF and Blood Power at any level (1-1000) with Spirit Siphon (SS0-SS10). Interactive stat calculator with formulas.`;
+
+// Structured data for SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Silver and Blood Character Stats Database',
+  description: description,
+  numberOfItems: totalCharacters,
+  itemListElement: sortedCharacters.map((char, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Person',
+      name: char.name,
+      description: `${char.rarity} ${char.class} - ${char.title}`
+    }
+  }))
+};
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://gachawiki.com'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Silver and Blood',
+      item: 'https://gachawiki.com/guides/silver-and-blood'
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Character Stats',
+      item: 'https://gachawiki.com/guides/silver-and-blood/character-stats'
+    }
+  ]
+};
+
+// FAQ structured data for SEO
+const faqData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How are Silver and Blood character stats calculated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Stats are calculated using the formula: Stat = Base + (GrowthRate / 10000) × LevelParam. LevelParam scales from 0 at level 1 to 127,120 at level 1000.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is Spirit Siphon in Silver and Blood?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Spirit Siphon (SS) provides stat multipliers. SSR characters can reach SS10 with a 1.2084x multiplier, SR characters max at SS2 with 1.040x, and R characters have no Spirit Siphon.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How is Blood Power calculated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Blood Power = floor(HP×0.024 + ATK×0.68 + P.DEF×0.2 + M.DEF×0.2). Skills can add additional Blood Power through flat and percentage bonuses.'
+      }
+    }
+  ]
+};
+---
+
+<CharacterStatsLayout title={title} description={description}>
+  <!-- Structured Data for SEO -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} slot="head" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqData)} slot="head" />
+
+  <div class="character-stats-index">
+    <!-- Summary Section -->
+    <section class="character-stats-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">1000</div>
+          <div class="summary-stat-label">Max Level</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">11</div>
+          <div class="summary-stat-label">Spirit Siphon</div>
+        </div>
+      </div>
+      <div class="spiritsiphon-info-note">
+        <strong>Spirit Siphon Stages:</strong> SS0 (Lv80), SS1 (Lv120), SS2 (Lv160), SS3-SS10 (Lv200). Higher SS levels provide stat multipliers and flat bonuses.
+      </div>
+    </section>
+
+    <!-- Formulas Section -->
+    <section class="formulas-section">
+      <h2>Stat Formulas</h2>
+      <div class="formulas-grid">
+        <div class="formula-card">
+          <div class="formula-title">Base Stat Calculation</div>
+          <div class="formula-code">Stat = Base + (GrowthRate / 10000) × LevelParam</div>
+          <div class="formula-note">LevelParam scales from 0 (Lv1) to 127,120 (Lv1000)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">Spirit Siphon Multiplier (SSR)</div>
+          <div class="formula-code">SSMult = 1.012^min(SS,5) × 1.028^max(0, SS-5)</div>
+          <div class="formula-note">SS1-5: +1.2% each | SS6-10: +2.8% each | SS10 total: ×1.2084</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">Spirit Siphon Multiplier (SR)</div>
+          <div class="formula-code">SS1: ×1.012 | SS2: ×1.012 × 1.028 = ×1.040</div>
+          <div class="formula-note">SR characters max at SS2</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-title">Blood Power</div>
+          <div class="formula-code">BP = floor(HP×0.024 + ATK×0.68 + P.DEF×0.2 + M.DEF×0.2)</div>
+          <div class="formula-note">With Skills: BP × (1 + Percent/10000) + Flat</div>
+        </div>
+      </div>
+      <div class="level-params-table">
+        <div class="params-title">Level Template Parameters</div>
+        <div class="params-grid">
+          <div class="param-item"><span class="param-level">Lv1</span><span class="param-value">0</span></div>
+          <div class="param-item"><span class="param-level">Lv80</span><span class="param-value">626</span></div>
+          <div class="param-item"><span class="param-level">Lv120</span><span class="param-value">1,284</span></div>
+          <div class="param-item"><span class="param-level">Lv160</span><span class="param-value">2,205</span></div>
+          <div class="param-item"><span class="param-level">Lv200</span><span class="param-value">3,415</span></div>
+          <div class="param-item"><span class="param-level">Lv300</span><span class="param-value">7,930</span></div>
+          <div class="param-item"><span class="param-level">Lv400</span><span class="param-value">14,953</span></div>
+          <div class="param-item"><span class="param-level">Lv500</span><span class="param-value">25,281</span></div>
+          <div class="param-item"><span class="param-level">Lv600</span><span class="param-value">39,721</span></div>
+          <div class="param-item"><span class="param-level">Lv700</span><span class="param-value">57,980</span></div>
+          <div class="param-item"><span class="param-level">Lv800</span><span class="param-value">78,620</span></div>
+          <div class="param-item"><span class="param-level">Lv900</span><span class="param-value">101,730</span></div>
+          <div class="param-item"><span class="param-level">Lv1000</span><span class="param-value">127,120</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Controls -->
+    <section class="global-level-control">
+      <h2>Filters & Sorting</h2>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="search-input">Search</label>
+          <input type="text" id="search-input" placeholder="Search by name..." aria-label="Search characters by name" />
+        </div>
+        <div class="filter-group">
+          <label for="rarity-filter">Rarity</label>
+          <select id="rarity-filter" aria-label="Filter by rarity">
+            <option value="">All Rarities</option>
+            {rarities.map(rarity => (
+              <option value={rarity}>{rarity}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="class-filter">Class</label>
+          <select id="class-filter" aria-label="Filter by class">
+            <option value="">All Classes</option>
+            {classes.map(cls => (
+              <option value={cls}>{cls}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="global-level">Sort Level</label>
+          <input type="number" id="global-level" min="1" max="1000" value="200" aria-label="Set level for all characters when sorting" />
+        </div>
+        <div class="filter-group">
+          <label for="sort-select">Sort By</label>
+          <select id="sort-select" aria-label="Sort characters by stat">
+            <option value="hp-desc">HP (Highest)</option>
+            <option value="hp-asc">HP (Lowest)</option>
+            <option value="atk-desc">ATK (Highest)</option>
+            <option value="atk-asc">ATK (Lowest)</option>
+            <option value="bp-desc">Blood Power (Highest)</option>
+            <option value="bp-asc">Blood Power (Lowest)</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button type="button" id="clear-filters" class="clear-filters-btn">Reset All</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Character Stats Grid -->
+    <div class="character-stats-grid" id="character-grid">
+      {sortedCharacters.map((char) => {
+        const maxStats = char.spiritSiphon?.ss10 || char.gallery || {};
+        const galleryStats = char.gallery || {};
+        const charInfo = characterInfoMap.get(char.name);
+
+        return (
+          <article
+            class="character-stat-card"
+            data-character={char.id}
+            data-name={char.name.toLowerCase()}
+            data-rarity={char.rarity}
+            data-class={char.class}
+            data-stats={JSON.stringify({
+              spiritSiphon: char.spiritSiphon,
+              gallery: char.gallery,
+              milestones: char.statMilestones,
+              levelProgression: char.levelProgression,
+              skillPotency: char.skillPotency,
+              growthRates: char.growthRates,
+              baseStats: char.baseStats
+            })}
+          >
+            <div class="character-card-header">
+              <div class="character-card-image">
+                <SABCharacterIcon
+                  name={getIconName(char.name)}
+                  variant="Base"
+                  size="large"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                />
+              </div>
+              <div class="character-card-info">
+                <h3 class="character-card-name">{char.name}</h3>
+                <div class="character-card-title">{char.title}</div>
+                <div class="character-card-icons">
+                  <Image
+                    src={rarityImages[char.rarity] || rarityBlue}
+                    alt={char.rarity}
+                    class="card-stat-icon"
+                    width={24}
+                    height={24}
+                    loading="lazy"
+                  />
+                  {charInfo?.career && roleImages[charInfo.career] && (
+                    <Image
+                      src={roleImages[charInfo.career]}
+                      alt={charInfo.career}
+                      class="card-stat-icon"
+                      width={24}
+                      height={24}
+                      loading="lazy"
+                      title={`Role: ${charInfo.career}`}
+                    />
+                  )}
+                  {charInfo?.camp && (
+                    <span title={`Faction: ${charInfo.camp}`}>
+                      <SABFactionIcon
+                        faction={charInfo.camp}
+                        width={24}
+                        height={24}
+                        class="card-stat-icon"
+                      />
+                    </span>
+                  )}
+                  {charInfo?.moonPhaseIcon && moonPhaseImages[charInfo.moonPhaseIcon] && (
+                    <Image
+                      src={moonPhaseImages[charInfo.moonPhaseIcon]}
+                      alt={charInfo.moonPhase || 'Moon'}
+                      class="card-stat-icon"
+                      width={24}
+                      height={24}
+                      loading="lazy"
+                    />
+                  )}
+                  {charInfo?.damageTypeIcon && damageTypeImages[charInfo.damageTypeIcon] && (
+                    <Image
+                      src={damageTypeImages[charInfo.damageTypeIcon]}
+                      alt={charInfo.damageType || 'DMG'}
+                      class="card-stat-icon"
+                      width={24}
+                      height={24}
+                      loading="lazy"
+                    />
+                  )}
+                  {charInfo?.equipmentTypeIcon && equipmentTypeImages[charInfo.equipmentTypeIcon] && (
+                    <Image
+                      src={equipmentTypeImages[charInfo.equipmentTypeIcon]}
+                      alt={charInfo.equipmentType || 'Equip'}
+                      class="card-stat-icon"
+                      width={24}
+                      height={24}
+                      loading="lazy"
+                    />
+                  )}
+                  <span class="class-badge">{char.class}</span>
+                </div>
+              </div>
+              <div class="character-level-control">
+                <div class="level-input-group">
+                  <label for={`lv-${char.id}`}>Lv</label>
+                  <input
+                    type="number"
+                    class="level-input"
+                    id={`lv-${char.id}`}
+                    min="1"
+                    max="1000"
+                    value="200"
+                    data-character={char.id}
+                    aria-label={`Set level for ${char.name}`}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats at current level/SS -->
+            <div class="character-stats-section">
+              <div class="character-stats-header">
+                <div class="character-stats-label">Stats at <span class="current-level">Lv200</span> <span class="current-ss">SS10</span></div>
+                <label class="skill-toggle">
+                  <input type="checkbox" class="skill-checkbox" data-character={char.id} />
+                  <span class="skill-toggle-label">Skills</span>
+                </label>
+              </div>
+              <div class="character-stats-list">
+                <div class="character-stat-row" data-stat="hp">
+                  <span class="character-stat-name">HP</span>
+                  <span class="character-stat-value hp">{maxStats.MaxHp?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row" data-stat="atk">
+                  <span class="character-stat-name">ATK</span>
+                  <span class="character-stat-value atk">{maxStats.Attack?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row" data-stat="pdef">
+                  <span class="character-stat-name">P. DEF</span>
+                  <span class="character-stat-value pdef">{maxStats.PhyDefence?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row" data-stat="mdef">
+                  <span class="character-stat-name">M. DEF</span>
+                  <span class="character-stat-value mdef">{maxStats.MagDefence?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row" data-stat="bp">
+                  <span class="character-stat-name">Blood Power</span>
+                  <span class="character-stat-value bp">{maxStats.bloodPower?.toLocaleString() || '-'}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spirit Siphon Quick Select -->
+            <div class="character-spiritsiphon-section">
+              <div class="character-spiritsiphon-header">
+                <div class="character-spiritsiphon-label">Spirit Siphon (Dupe)</div>
+                <div class="character-spiritsiphon-dupes">
+                  <span class="dupes-label">Next:</span>
+                  <span class="dupes-value" data-character={char.id}>MAX</span>
+                </div>
+              </div>
+              <div class="character-spiritsiphon-grid" data-rarity={char.rarity}>
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="0" data-dupes="0" data-character={char.id}><div class="character-spiritsiphon-level">SS0</div><div class="character-spiritsiphon-dupes-count">0</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="1" data-dupes="1" data-character={char.id}><div class="character-spiritsiphon-level">SS1</div><div class="character-spiritsiphon-dupes-count">1</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="2" data-dupes="2" data-character={char.id}><div class="character-spiritsiphon-level">SS2</div><div class="character-spiritsiphon-dupes-count">2</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="3" data-dupes="3" data-character={char.id}><div class="character-spiritsiphon-level">SS3</div><div class="character-spiritsiphon-dupes-count">3</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="4" data-dupes="4" data-character={char.id}><div class="character-spiritsiphon-level">SS4</div><div class="character-spiritsiphon-dupes-count">4</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="5" data-dupes="5" data-character={char.id}><div class="character-spiritsiphon-level">SS5</div><div class="character-spiritsiphon-dupes-count">5</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="6" data-dupes="6" data-character={char.id}><div class="character-spiritsiphon-level">SS6</div><div class="character-spiritsiphon-dupes-count">6</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="7" data-dupes="7" data-character={char.id}><div class="character-spiritsiphon-level">SS7</div><div class="character-spiritsiphon-dupes-count">7</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="8" data-dupes="8" data-character={char.id}><div class="character-spiritsiphon-level">SS8</div><div class="character-spiritsiphon-dupes-count">8</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item" data-ss="9" data-dupes="9" data-character={char.id}><div class="character-spiritsiphon-level">SS9</div><div class="character-spiritsiphon-dupes-count">9</div></div>
+                )}
+                {char.rarity === 'SSR' && (
+                  <div class="character-spiritsiphon-item active" data-ss="10" data-dupes="10" data-character={char.id}><div class="character-spiritsiphon-level">SS10</div><div class="character-spiritsiphon-dupes-count">10</div></div>
+                )}
+                {char.rarity === 'SR' && (
+                  <div class="character-spiritsiphon-item" data-ss="0" data-dupes="0" data-character={char.id}><div class="character-spiritsiphon-level">SS0</div><div class="character-spiritsiphon-dupes-count">0</div></div>
+                )}
+                {char.rarity === 'SR' && (
+                  <div class="character-spiritsiphon-item" data-ss="1" data-dupes="1" data-character={char.id}><div class="character-spiritsiphon-level">SS1</div><div class="character-spiritsiphon-dupes-count">1</div></div>
+                )}
+                {char.rarity === 'SR' && (
+                  <div class="character-spiritsiphon-item active" data-ss="2" data-dupes="2" data-character={char.id}><div class="character-spiritsiphon-level">SS2</div><div class="character-spiritsiphon-dupes-count">2</div></div>
+                )}
+                {char.rarity === 'R' && (
+                  <div class="character-spiritsiphon-item active" data-ss="0" data-dupes="0" data-character={char.id}><div class="character-spiritsiphon-level">SS0</div><div class="character-spiritsiphon-dupes-count">0</div></div>
+                )}
+              </div>
+            </div>
+
+            <!-- Gallery Stats (Max) -->
+            <div class="character-max-stats-section">
+              <div class="character-max-stats-label">Gallery Stats (SS10 + Skills)</div>
+              <div class="character-stats-list">
+                <div class="character-stat-row">
+                  <span class="character-stat-name">HP</span>
+                  <span class="character-stat-value hp">{galleryStats.MaxHp?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row">
+                  <span class="character-stat-name">ATK</span>
+                  <span class="character-stat-value atk">{galleryStats.Attack?.toLocaleString() || '-'}</span>
+                </div>
+                <div class="character-stat-row">
+                  <span class="character-stat-name">Blood Power</span>
+                  <span class="character-stat-value bp">{galleryStats.bloodPower?.toLocaleString() || '-'}</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display: none;">
+      No characters found matching your filters.
+    </div>
+
+    <!-- Results Count -->
+    <div class="results-count">
+      Showing <strong id="visible-count">{totalCharacters}</strong> of <strong>{totalCharacters}</strong> characters
+    </div>
+  </div>
+</CharacterStatsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const classFilter = document.getElementById('class-filter') as HTMLSelectElement;
+    const globalLevelInput = document.getElementById('global-level') as HTMLInputElement;
+    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const characterGrid = document.getElementById('character-grid') as HTMLDivElement;
+    const noResults = document.getElementById('no-results') as HTMLDivElement;
+    const visibleCount = document.getElementById('visible-count') as HTMLElement;
+    let cards = Array.from(characterGrid.querySelectorAll('.character-stat-card'));
+
+    // Level Template Parameters (m_MaxHpParam) for levels 1-1000
+    // These are the key values from the game's Lua data
+    const LEVEL_PARAMS: Record<number, number> = {
+      1: 0, 80: 626, 120: 1284, 160: 2205, 200: 3415,
+      300: 7930, 400: 14953, 500: 25281, 600: 39721,
+      700: 57980, 800: 78620, 900: 101730, 1000: 127120
+    };
+
+    // Get levelTemplateParam for any level using interpolation
+    function getLevelTemplateParam(level: number): number {
+      // Direct lookup for known values
+      if (LEVEL_PARAMS[level] !== undefined) return LEVEL_PARAMS[level];
+
+      // For levels 1-200, use the levelProgression data (already pre-calculated)
+      // For levels 201-1000, interpolate between known milestone values
+      const milestones = [200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+      // Find the two milestones to interpolate between
+      let lowerMilestone = 200;
+      let upperMilestone = 300;
+
+      for (let i = 0; i < milestones.length - 1; i++) {
+        if (level >= milestones[i] && level < milestones[i + 1]) {
+          lowerMilestone = milestones[i];
+          upperMilestone = milestones[i + 1];
+          break;
+        }
+      }
+
+      // Special case: Level 201 has a one-time jump of +176 from level 200
+      if (level === 201) {
+        return LEVEL_PARAMS[200] + 176;
+      }
+
+      // Linear interpolation between milestones
+      const lowerParam = LEVEL_PARAMS[lowerMilestone];
+      const upperParam = LEVEL_PARAMS[upperMilestone];
+      const progress = (level - lowerMilestone) / (upperMilestone - lowerMilestone);
+
+      return Math.floor(lowerParam + (upperParam - lowerParam) * progress);
+    }
+
+    // SS multipliers based on rarity and SS level
+    // SSR: Each SS level adds multipliers that compound
+    // SS1-5: 1.012 each, SS6-10: 1.028 each (approximately)
+    function getSSMultiplier(rarity: string, ssLevel: number): number {
+      if (rarity === 'SSR') {
+        // SS1-5 each add ~1.2%, SS6-10 each add ~2.8%
+        // At SS10: (1.012^5) * (1.028^5) ≈ 1.06 * 1.14 = 1.2084
+        const ss1to5Mult = Math.pow(1.012, Math.min(ssLevel, 5));
+        const ss6to10Mult = Math.pow(1.028, Math.max(0, ssLevel - 5));
+        return ss1to5Mult * ss6to10Mult;
+      } else if (rarity === 'SR') {
+        // SR max SS2: 1.012 * 1.028 ≈ 1.040336
+        const ss1Mult = ssLevel >= 1 ? 1.012 : 1;
+        const ss2Mult = ssLevel >= 2 ? 1.028 : 1;
+        return ss1Mult * ss2Mult;
+      }
+      // R has no SS
+      return 1.0;
+    }
+
+    // Calculate stats at any level using the proper levelTemplateParam formula
+    // stat = base + (growthRate / 10000) × levelTemplateParam
+    // Note: This simplified version is used for sorting and doesn't apply SS multipliers
+    function calculateStatsAtLevel(statsData: any, level: number): { hp: number; atk: number; pdef: number; mdef: number; bp: number } {
+      if (level <= 200) {
+        const levelData = statsData.levelProgression?.[level - 1] || {};
+        return {
+          hp: levelData.MaxHp || 0,
+          atk: levelData.Attack || 0,
+          pdef: levelData.PhyDefence || 0,
+          mdef: levelData.MagDefence || 0,
+          bp: levelData.bloodPower || 0
+        };
+      }
+
+      // For levels 201-1000, use the proper levelTemplateParam formula
+      const baseStats = statsData.baseStats || {};
+      const growthRates = statsData.growthRates || {};
+      const levelParam = getLevelTemplateParam(level);
+
+      // Calculate raw stats: base + (growthRate / 10000) × levelParam
+      const hp = Math.floor((baseStats.MaxHp || 0) + (growthRates.MaxHp || 0) / 10000 * levelParam);
+      const atk = Math.floor((baseStats.Attack || 0) + (growthRates.Attack || 0) / 10000 * levelParam);
+      const pdef = Math.floor((baseStats.PhyDefence || 0) + (growthRates.PhyDefence || 0) / 10000 * levelParam);
+      const mdef = Math.floor((baseStats.MagDefence || 0) + (growthRates.MagDefence || 0) / 10000 * levelParam);
+
+      // Blood Power formula: floor(hp*0.024 + atk*0.68 + pDef*0.2 + mDef*0.2)
+      const bp = Math.floor(hp * 0.024 + atk * 0.68 + pdef * 0.2 + mdef * 0.2);
+
+      return { hp, atk, pdef, mdef, bp };
+    }
+
+    // Get current stats for a card at given level
+    function getCardStatsAtLevel(card: Element, level: number): { hp: number; atk: number; pdef: number; mdef: number; bp: number } {
+      const statsData = JSON.parse(card.getAttribute('data-stats') || '{}');
+      return calculateStatsAtLevel(statsData, level);
+    }
+
+    // Get currently selected SS level from quick select items
+    function getSelectedSS(card: Element): number {
+      const activeItem = card.querySelector('.character-spiritsiphon-item.active');
+      return parseInt(activeItem?.getAttribute('data-ss') || '0');
+    }
+
+    // Calculate Blood Power with skill bonuses
+    // Formula: round(basePower * (1 + skillPercent/10000) + skillFlat)
+    // Using round instead of floor to minimize rounding discrepancy
+    function calculateBPWithSkills(baseBP: number, skillPotency: { flat?: number; percent?: number } | null): number {
+      if (!skillPotency) return baseBP;
+      const flat = skillPotency.flat || 0;
+      const percent = skillPotency.percent || 0;
+      return Math.round(baseBP * (1 + percent / 10000) + flat);
+    }
+
+    // Update stats for a single card based on level and SS
+    function updateCardStats(card: Element, level: number, ssLevel: number) {
+      const statsData = JSON.parse(card.getAttribute('data-stats') || '{}');
+      const rarity = card.getAttribute('data-rarity');
+
+      // Clamp level (now supports up to 1000)
+      level = Math.max(1, Math.min(1000, level));
+
+      // Clamp SS level based on rarity
+      const maxSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+      ssLevel = Math.min(ssLevel, maxSS);
+
+      const currentLevelLabel = card.querySelector('.current-level');
+      const currentSSLabel = card.querySelector('.current-ss');
+      const statsList = card.querySelector('.character-stats-section .character-stats-list');
+      const ssItems = card.querySelectorAll('.character-spiritsiphon-item');
+      const dupesValueEl = card.querySelector('.dupes-value');
+      const skillCheckbox = card.querySelector('.skill-checkbox') as HTMLInputElement;
+      const includeSkills = skillCheckbox?.checked || false;
+
+      // Update labels
+      if (currentLevelLabel) currentLevelLabel.textContent = `Lv${level}`;
+      if (currentSSLabel) currentSSLabel.textContent = `SS${ssLevel}`;
+
+      // Update "Next:" dupes value
+      if (dupesValueEl) {
+        if (ssLevel >= maxSS) {
+          dupesValueEl.textContent = 'MAX';
+        } else {
+          // Next SS level needs (ssLevel + 1) dupes
+          dupesValueEl.textContent = `${ssLevel + 1}`;
+        }
+      }
+
+      // Update quick select highlighting
+      ssItems.forEach(item => {
+        const itemSS = parseInt(item.getAttribute('data-ss') || '0');
+        item.classList.toggle('active', itemSS === ssLevel);
+      });
+
+      // Get stats based on level and Spirit Siphon level
+      const ssKey = `ss${ssLevel}`;
+      const ssData = statsData.spiritSiphon?.[ssKey];
+      const skillPotency = statsData.skillPotency;
+      const galleryData = statsData.gallery;
+
+      if (statsList) {
+        const hpEl = statsList.querySelector('[data-stat="hp"] .character-stat-value');
+        const atkEl = statsList.querySelector('[data-stat="atk"] .character-stat-value');
+        const pdefEl = statsList.querySelector('[data-stat="pdef"] .character-stat-value');
+        const mdefEl = statsList.querySelector('[data-stat="mdef"] .character-stat-value');
+        const bpEl = statsList.querySelector('[data-stat="bp"] .character-stat-value');
+
+        let hp: number, atk: number, pdef: number, mdef: number, bp: number;
+
+        if (level <= 200) {
+          // For levels 1-200, use the pre-calculated level progression data
+          const levelData = statsData.levelProgression?.[level - 1] || {};
+
+          // Get base stats from level progression
+          let baseHp = levelData.MaxHp || 0;
+          let baseAtk = levelData.Attack || 0;
+          let basePdef = levelData.PhyDefence || 0;
+          let baseMdef = levelData.MagDefence || 0;
+
+          // Apply SS multiplier if applicable
+          if (ssLevel > 0) {
+            const ssMultiplier = getSSMultiplier(rarity || 'R', ssLevel);
+            hp = Math.floor(baseHp * ssMultiplier);
+            atk = Math.floor(baseAtk * ssMultiplier);
+            pdef = Math.floor(basePdef * ssMultiplier);
+            mdef = Math.floor(baseMdef * ssMultiplier);
+          } else {
+            hp = baseHp;
+            atk = baseAtk;
+            pdef = basePdef;
+            mdef = baseMdef;
+          }
+
+          // Calculate Blood Power
+          bp = Math.floor(hp * 0.024 + atk * 0.68 + pdef * 0.2 + mdef * 0.2);
+        } else {
+          // For levels 201-1000, calculate stats using the proper levelTemplateParam formula
+          // stat = base + (growthRate / 10000) × levelTemplateParam, then apply SS multipliers
+          const baseStats = statsData.baseStats || {};
+          const growthRates = statsData.growthRates || {};
+          const levelParam = getLevelTemplateParam(level);
+
+          // SS multipliers for SSR at SS10: 1.06 × 1.14 = 1.2084
+          // For SR at SS2: 1.012 × 1.028 = 1.040336
+          // For R at SS0: 1.0
+          const ssMultiplier = getSSMultiplier(rarity || 'R', ssLevel);
+
+          // Calculate raw stats: base + (growthRate / 10000) × levelParam
+          const rawHp = (baseStats.MaxHp || 0) + (growthRates.MaxHp || 0) / 10000 * levelParam;
+          const rawAtk = (baseStats.Attack || 0) + (growthRates.Attack || 0) / 10000 * levelParam;
+          const rawPdef = (baseStats.PhyDefence || 0) + (growthRates.PhyDefence || 0) / 10000 * levelParam;
+          const rawMdef = (baseStats.MagDefence || 0) + (growthRates.MagDefence || 0) / 10000 * levelParam;
+
+          // Apply SS multipliers
+          hp = Math.floor(rawHp * ssMultiplier);
+          atk = Math.floor(rawAtk * ssMultiplier);
+          pdef = Math.floor(rawPdef * ssMultiplier);
+          mdef = Math.floor(rawMdef * ssMultiplier);
+
+          // Blood Power formula: floor(hp*0.024 + atk*0.68 + pDef*0.2 + mDef*0.2)
+          bp = Math.floor(hp * 0.024 + atk * 0.68 + pdef * 0.2 + mdef * 0.2);
+        }
+
+        if (hpEl) hpEl.textContent = hp.toLocaleString();
+        if (atkEl) atkEl.textContent = atk.toLocaleString();
+        if (pdefEl) pdefEl.textContent = pdef.toLocaleString();
+        if (mdefEl) mdefEl.textContent = mdef.toLocaleString();
+
+        // Calculate Blood Power with or without skills
+        if (bpEl) {
+          let finalBP: number;
+          if (includeSkills && level === 200 && ssLevel === maxSS && galleryData?.bloodPower) {
+            // Use pre-calculated gallery value for exact match at lv200 max SS
+            finalBP = galleryData.bloodPower;
+          } else if (includeSkills) {
+            finalBP = calculateBPWithSkills(bp, skillPotency);
+          } else {
+            finalBP = bp;
+          }
+          bpEl.textContent = finalBP.toLocaleString();
+        }
+      }
+    }
+
+    // Sort cards by stats - uses global level for all cards
+    function sortCards() {
+      const sortValue = sortSelect.value;
+      const [sortBy, sortOrder] = sortValue.split('-');
+
+      // Get global level from sort level input
+      let globalLevel = parseInt(globalLevelInput.value) || 200;
+      globalLevel = Math.max(1, Math.min(1000, globalLevel));
+
+      // Apply global level to all cards first
+      cards.forEach(card => {
+        const rarity = card.getAttribute('data-rarity');
+        const maxSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+        const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+        if (levelInput) levelInput.value = globalLevel.toString();
+        updateCardStats(card, globalLevel, maxSS);
+      });
+
+      cards.sort((a, b) => {
+        const statsA = getCardStatsAtLevel(a, globalLevel);
+        const statsB = getCardStatsAtLevel(b, globalLevel);
+
+        let valueA: number;
+        let valueB: number;
+
+        switch (sortBy) {
+          case 'hp': valueA = statsA.hp; valueB = statsB.hp; break;
+          case 'atk': valueA = statsA.atk; valueB = statsB.atk; break;
+          case 'bp': valueA = statsA.bp; valueB = statsB.bp; break;
+          default: valueA = 0; valueB = 0;
+        }
+        return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+      });
+
+      // Re-append cards in sorted order
+      cards.forEach(card => {
+        characterGrid.appendChild(card);
+      });
+    }
+
+    // Filter characters
+    function filterCharacters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const rarityValue = rarityFilter.value;
+      const classValue = classFilter.value;
+      let visible = 0;
+
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const rarity = card.getAttribute('data-rarity') || '';
+        const charClass = card.getAttribute('data-class') || '';
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRarity = !rarityValue || rarity === rarityValue;
+        const matchesClass = !classValue || charClass === classValue;
+
+        if (matchesSearch && matchesRarity && matchesClass) {
+          (card as HTMLElement).style.display = '';
+          visible++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+      visibleCount.textContent = visible.toString();
+    }
+
+    // Reset all
+    function resetAll() {
+      searchInput.value = '';
+      rarityFilter.value = '';
+      classFilter.value = '';
+      globalLevelInput.value = '200';
+      sortSelect.value = 'hp-desc';
+
+      cards.forEach(card => {
+        const rarity = card.getAttribute('data-rarity');
+        const maxSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+        // Reset skill checkbox
+        const skillCheckbox = card.querySelector('.skill-checkbox') as HTMLInputElement;
+        if (skillCheckbox) skillCheckbox.checked = false;
+        // Reset level input to 200
+        const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+        if (levelInput) levelInput.value = '200';
+        updateCardStats(card, 200, maxSS);
+      });
+
+      sortCards();
+      filterCharacters();
+    }
+
+    // Individual level and SS input listeners
+    cards.forEach(card => {
+      const levelInput = card.querySelector('.level-input') as HTMLInputElement;
+
+      if (levelInput) {
+        levelInput.addEventListener('input', () => {
+          let level = parseInt(levelInput.value) || 1;
+          level = Math.max(1, Math.min(1000, level));
+          const ss = getSelectedSS(card);
+          updateCardStats(card, level, ss);
+        });
+        levelInput.addEventListener('change', () => {
+          let level = parseInt(levelInput.value) || 1;
+          level = Math.max(1, Math.min(1000, level));
+          levelInput.value = level.toString();
+          const ss = getSelectedSS(card);
+          updateCardStats(card, level, ss);
+          // Don't auto-sort on level change - it causes DOM issues
+        });
+      }
+
+      // Quick select SS items
+      const ssItems = card.querySelectorAll('.character-spiritsiphon-item');
+      ssItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const ss = parseInt(item.getAttribute('data-ss') || '0');
+          const level = parseInt(levelInput?.value || '200');
+          updateCardStats(card, level, ss);
+        });
+      });
+
+      // Skill checkbox listener
+      const skillCheckbox = card.querySelector('.skill-checkbox') as HTMLInputElement;
+      if (skillCheckbox) {
+        skillCheckbox.addEventListener('change', () => {
+          const level = parseInt(levelInput?.value || '200');
+          const ss = getSelectedSS(card);
+          updateCardStats(card, level, ss);
+        });
+      }
+    });
+
+    // Event listeners
+    clearBtn.addEventListener('click', resetAll);
+    searchInput.addEventListener('input', filterCharacters);
+    rarityFilter.addEventListener('change', filterCharacters);
+    classFilter.addEventListener('change', filterCharacters);
+    sortSelect.addEventListener('change', sortCards);
+    globalLevelInput.addEventListener('change', sortCards);
+
+    // Initialize - set level 200 and max SS for each card based on rarity
+    cards.forEach(card => {
+      const rarity = card.getAttribute('data-rarity');
+      const maxSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+      updateCardStats(card, 200, maxSS);
+    });
+
+    // Apply initial sort based on default dropdown value (HP Highest)
+    sortCards();
+  });
+</script>

@@ -3,7 +3,104 @@ import CharacterSkillsLayout from '../../../layouts/silver-and-blood/CharacterSk
 import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
 import SABSkillIcon from '../../../components/silver-and-blood/SABSkillIcon.astro';
 import SABBuffIcon from '../../../components/silver-and-blood/SABBuffIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
 import { characterSkills, skillTypes } from '../../../data/silver-and-blood/character-skills.js';
+import charactersInfoData from '../../../data/silver-and-blood/characters_info.json';
+
+// Import rarity frame images
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+// Import moon phase icons
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+
+// Import damage type icons
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+
+// Import equipment type icons
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Import role/career icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'UR': rarityGold,
+  'SSR': rarityPurple,
+  'SR': rarityBlue,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+  'level_info_icon_attack_04.png': dmgPierce,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
+};
+
+const roleImages: Record<string, ImageMetadata> = {
+  'Assassin': roleAssassin,
+  'Defender': roleDefender,
+  'Enchanter': roleEnchanter,
+  'Marksman': roleMarksman,
+  'Sorcerer': roleSorcerer,
+  'Warrior': roleWarrior,
+};
+
+// Create a map of character info by name for icon lookup
+const characterInfoMap = new Map();
+charactersInfoData.characters.forEach((char: any) => {
+  if (char.name) {
+    // Use name + title as key to handle variants
+    const key = char.title ? `${char.name}-${char.title}` : char.name;
+    if (!characterInfoMap.has(char.name)) {
+      characterInfoMap.set(char.name, char);
+    }
+  }
+});
+
+// Helper to get character info
+function getCharacterInfo(name: string) {
+  return characterInfoMap.get(name) || null;
+}
+
+// Unplayable characters to exclude
+const excludedCharacters = ['Cannon', 'Mirage'];
+
+// Filter to unique characters only (remove duplicates/skins by name)
+// Also filter to only characters that exist in characters_info and are playable
+const uniqueCharacterSkills = characterSkills.reduce((acc, char) => {
+  if (!acc.has(char.characterName) &&
+      characterInfoMap.has(char.characterName) &&
+      !excludedCharacters.includes(char.characterName)) {
+    acc.set(char.characterName, char);
+  }
+  return acc;
+}, new Map());
+
+const filteredCharacterSkills = Array.from(uniqueCharacterSkills.values());
 
 const pageTitle = 'Character Skills';
 const pageDescription = 'Complete character skills database for Silver and Blood. View all skills with damage scaling, potency bonus, and detailed descriptions for every character.';
@@ -15,8 +112,8 @@ function getSkillTypeName(type: string): string {
 }
 
 // Calculate stats
-const totalCharacters = characterSkills.length;
-const totalSkills = characterSkills.reduce((acc, char) => acc + (char.skills?.length || 0), 0);
+const totalCharacters = filteredCharacterSkills.length;
+const totalSkills = filteredCharacterSkills.reduce((acc, char) => acc + (char.skills?.length || 0), 0);
 
 // Skill type counts
 const skillTypeCounts = {
@@ -26,7 +123,7 @@ const skillTypeCounts = {
   passive: 0
 };
 
-characterSkills.forEach(char => {
+filteredCharacterSkills.forEach(char => {
   char.skills?.forEach(skill => {
     if (skill.type in skillTypeCounts) {
       skillTypeCounts[skill.type as keyof typeof skillTypeCounts]++;
@@ -96,7 +193,9 @@ characterSkills.forEach(char => {
     </div>
 
     <!-- Character Sections -->
-    {characterSkills.map((character) => (
+    {filteredCharacterSkills.map((character) => {
+      const charInfo = getCharacterInfo(character.characterName);
+      return (
       <section
         class="skill-character-section"
         id={`character-${character.characterId}`}
@@ -115,7 +214,73 @@ characterSkills.forEach(char => {
           </div>
           <div class="skill-character-info">
             <h2 class="skill-character-name">{character.characterName}</h2>
-            <div class="skill-character-meta">{character.skills.length} Skills</div>
+            <div class="skill-character-meta">
+              {character.skills.length} Skills
+              {charInfo && (
+                <span class="character-icons">
+                  {charInfo.rarity && rarityImages[charInfo.rarity] && (
+                    <Image
+                      src={rarityImages[charInfo.rarity]}
+                      alt={charInfo.rarity}
+                      width={28}
+                      height={28}
+                      class="char-info-icon rarity-icon"
+                      title={`Rarity: ${charInfo.rarity}`}
+                    />
+                  )}
+                  {charInfo.career && roleImages[charInfo.career] && (
+                    <Image
+                      src={roleImages[charInfo.career]}
+                      alt={charInfo.career}
+                      width={20}
+                      height={20}
+                      class="char-info-icon"
+                      title={`Role: ${charInfo.career}`}
+                    />
+                  )}
+                  {charInfo.camp && (
+                    <span title={`Faction: ${charInfo.camp}`}>
+                      <SABFactionIcon
+                        faction={charInfo.camp}
+                        width={20}
+                        height={20}
+                        class="char-info-icon"
+                      />
+                    </span>
+                  )}
+                  {charInfo.damageTypeIcon && damageTypeImages[charInfo.damageTypeIcon] && (
+                    <Image
+                      src={damageTypeImages[charInfo.damageTypeIcon]}
+                      alt={charInfo.damageType || 'Damage Type'}
+                      width={20}
+                      height={20}
+                      class="char-info-icon"
+                      title={`Damage: ${charInfo.damageType || 'Unknown'}`}
+                    />
+                  )}
+                  {charInfo.equipmentTypeIcon && equipmentTypeImages[charInfo.equipmentTypeIcon] && (
+                    <Image
+                      src={equipmentTypeImages[charInfo.equipmentTypeIcon]}
+                      alt={charInfo.equipmentType || 'Equipment Type'}
+                      width={20}
+                      height={20}
+                      class="char-info-icon"
+                      title={`Equipment: ${charInfo.equipmentType || 'Unknown'}`}
+                    />
+                  )}
+                  {charInfo.moonPhaseIcon && moonPhaseImages[charInfo.moonPhaseIcon] && (
+                    <Image
+                      src={moonPhaseImages[charInfo.moonPhaseIcon]}
+                      alt={charInfo.moonPhase || 'Moon Phase'}
+                      width={20}
+                      height={20}
+                      class="char-info-icon"
+                      title={`Moon Phase: ${charInfo.moonPhase || 'Unknown'}`}
+                    />
+                  )}
+                </span>
+              )}
+            </div>
           </div>
         </div>
 
@@ -210,7 +375,8 @@ characterSkills.forEach(char => {
           </div>
         </div>
       </section>
-    ))}
+    );
+    })}
 
     <div class="no-results hidden" id="no-results">
       No characters found matching your criteria.

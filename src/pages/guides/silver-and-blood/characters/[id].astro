@@ -1,0 +1,1965 @@
+---
+import CharacterLayout from '../../../../layouts/silver-and-blood/CharacterLayout.astro';
+import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABSkillIcon from '../../../../components/silver-and-blood/SABSkillIcon.astro';
+import SABBuffIcon from '../../../../components/silver-and-blood/SABBuffIcon.astro';
+import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
+
+// Import data sources
+import characterStatsData from '../../../../data/silver-and-blood/character-stats.json';
+import charactersInfoData from '../../../../data/silver-and-blood/characters_info.json';
+import characterSkillsData from '../../../../data/silver-and-blood/character-skills.json';
+import { getCharacterAffinityData, getGiftIconKey } from '../../../../data/silver-and-blood/character-gifts.js';
+
+// Import gift icons for affinity section
+import universal1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/universal_1.png';
+import universal2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/universal_2.png';
+import universal3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/universal_3.png';
+import ancestral1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_1.png';
+import ancestral2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_2.png';
+import ancestral3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_3.png';
+import church1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/church_1.png';
+import church2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/church_2.png';
+import church3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/church_3.png';
+import bloodborn1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_1.png';
+import bloodborn2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_2.png';
+import bloodborn3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_3.png';
+import kingdom1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_1.png';
+import kingdom2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_2.png';
+import kingdom3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_3.png';
+import otherworldly1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_1.png';
+import otherworldly2 from '../../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_2.png';
+import otherworldly3 from '../../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_3.png';
+
+const giftIconMap: Record<string, ImageMetadata> = {
+  'universal_1': universal1,
+  'universal_2': universal2,
+  'universal_3': universal3,
+  'ancestral_1': ancestral1,
+  'ancestral_2': ancestral2,
+  'ancestral_3': ancestral3,
+  'church_1': church1,
+  'church_2': church2,
+  'church_3': church3,
+  'bloodborn_1': bloodborn1,
+  'bloodborn_2': bloodborn2,
+  'bloodborn_3': bloodborn3,
+  'kingdom_1': kingdom1,
+  'kingdom_2': kingdom2,
+  'kingdom_3': kingdom3,
+  'otherworldly_1': otherworldly1,
+  'otherworldly_2': otherworldly2,
+  'otherworldly_3': otherworldly3,
+};
+
+function getGiftIcon(camp: number, rarity: number): ImageMetadata | null {
+  const key = getGiftIconKey(camp, rarity);
+  return giftIconMap[key] || null;
+}
+
+// Import rarity frame images
+import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+// Import moon phase icons (moon1=full, moon2=crescent, moon3=new based on actual image content)
+import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+
+// Import damage type icons
+import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+
+// Import equipment type icons
+import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Import role/career icons
+import roleAssassin from '../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': rarityGold,
+  'SR': rarityPurple,
+  'R': rarityBlue,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+  'level_info_icon_attack_04.png': dmgPierce,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
+};
+
+const roleImages: Record<string, ImageMetadata> = {
+  'Assassin': roleAssassin,
+  'Defender': roleDefender,
+  'Enchanter': roleEnchanter,
+  'Marksman': roleMarksman,
+  'Sorcerer': roleSorcerer,
+  'Warrior': roleWarrior,
+};
+
+// Get icon name for character portrait
+function getIconName(name: string): string {
+  const nameMap: Record<string, string> = {
+    'Noah': 'Noah', 'Limine': 'Limine', 'Jestel': 'Jestel', 'Empousa': 'Empousa',
+    'Aiona': 'Aiona', 'Setti': 'Setti', 'Hati': 'Hati', 'Bella': 'Bella',
+    'Stella': 'Stella', 'Selena': 'Selena', 'Lamia': 'Lamia', 'Friedrich': 'Friedrich',
+    'Quinn': 'Quinn', 'Gilrain': 'Gilrain', 'Cecia': 'Cecia', 'Lorelei': 'Lorelei',
+    'Agares': 'Agares', 'Ami': 'Ami', 'Piera': 'Piera', 'Seth': 'Seth',
+    'Ressa': 'Ressa', 'Dalcarlo': 'Dalcarlo', 'Joan': 'Joan', 'Cain': 'Cain',
+    'Pavana': 'Pavana', 'Julius': 'Julius', 'Ottavia': 'Ottavia', 'Theophane': 'Theophane',
+    'Tris': 'Tris', 'Nicole': 'Nicole', 'Darcias': 'Darcias', 'Edina': 'Edina',
+    'Yggdrasill': 'Yggdrasill', 'Augustine': 'Augustine', 'Acappella': 'Acappella',
+    'Mass': 'Mass', 'Katherine': 'Katherine', 'Hippocratic': 'Hippocratic', 'Leo': 'Leo',
+    'VanHellsing': 'VanHellsing', 'Baphomet': 'Baphomet', 'Garlic': 'Garlic',
+    'William': 'William', 'Goldland': 'Goldland', 'Siegrune': 'Siegrune', 'Livia': 'Livia',
+    'Evna': 'Evna', 'Typhoeus': 'Typhoeus', 'Ezareth': 'Ezareth', 'Paimile': 'Paimile',
+    'Gini': 'Gini', 'Clive': 'Clive', 'Albert': 'Albert', 'Henry': 'Henry',
+    'James': 'James', 'Jenny': 'Jenny', 'Jones': 'Jones', 'Isabelle': 'Isabelle',
+    'Alene': 'Alene', 'Astel': 'Astel', 'Selenia': 'Selenia', 'Fanu': 'Fanu',
+    'Sirene': 'Sirene', 'Arachne': 'Arachne', 'Desdemona': 'Desdemona', 'Drakul': 'Drakul',
+    'Flynn': 'Flynn', 'Garm': 'Garm', 'Gunther': 'Gunther', 'Helga': 'Helga',
+    'Igor': 'Igor', 'Ingrit': 'Ingrit', 'Lilith': 'Lilith', 'Lycaon': 'Lycaon',
+    'Odin': 'Odin', 'Tristan': 'Tristan',
+  };
+  return nameMap[name] || name;
+}
+
+// Get skill type display name
+function getSkillTypeName(type: string): string {
+  const types: Record<string, string> = {
+    'basicAttack': 'Basic Attack',
+    'skill': 'Skill',
+    'ultimate': 'Ultimate',
+    'passive': 'Talent',
+  };
+  return types[type] || type;
+}
+
+// Format story text with paragraphs
+function formatStoryText(text: string): string {
+  return text
+    .split('\n\n')
+    .map(p => `<p>${p.trim()}</p>`)
+    .join('');
+}
+
+// Highlight skill values (percentages, durations, multipliers) in descriptions
+function highlightSkillValues(text: string): string {
+  if (!text) return '';
+
+  // Match patterns like: 150%, 2 sec, 1.5 times, +25%, -1, 60% of, etc.
+  return text
+    // Percentages (150%, +25%, 60%)
+    .replace(/(\+?-?\d+\.?\d*%)/g, '<span class="skill-value">$1</span>')
+    // Durations (2 sec, 18 sec)
+    .replace(/(\d+\.?\d*)\s*(sec|seconds?)/gi, '<span class="skill-value">$1</span> $2')
+    // Multipliers (1.5 times, 1.5x)
+    .replace(/(\d+\.?\d*)\s*(times?|x)\b/gi, '<span class="skill-value">$1</span> $2')
+    // Stack counts (5 stacks)
+    .replace(/(\d+)\s*(stacks?)/gi, '<span class="skill-value">$1</span> $2');
+}
+
+export async function getStaticPaths() {
+  // Generate slug from character name - defined inside getStaticPaths for proper SSR
+  const generateSlug = (name: string): string => {
+    return name.toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  };
+
+  const statsCharacters = characterStatsData.characters;
+  const infoCharacters = charactersInfoData.characters;
+  const skillsData = characterSkillsData as Record<string, any>;
+
+  // Filter to playable characters (SSR, SR, R)
+  const playableCharacters = statsCharacters.filter((c: any) =>
+    ['SSR', 'SR', 'R'].includes(c.rarity)
+  );
+
+  // Create info map by ID
+  const infoMap = new Map();
+  infoCharacters.forEach((char: any) => {
+    infoMap.set(char.id, char);
+  });
+
+  return playableCharacters.map((statsChar: any) => {
+    const slug = generateSlug(statsChar.name);
+    const infoChar = infoMap.get(statsChar.id) || {};
+    const skills = skillsData[statsChar.id]?.skills || [];
+
+    const character = {
+      id: statsChar.id,
+      slug,
+      name: statsChar.name,
+      fullName: infoChar.fullName || statsChar.fullName || statsChar.name,
+      title: infoChar.title || statsChar.title || '',
+      rarity: statsChar.rarity,
+      class: statsChar.class,
+      camp: infoChar.camp || '',
+      career: infoChar.career || statsChar.class,
+      subFaction: infoChar.subFaction || '',
+      gender: infoChar.gender || '',
+      birthday: infoChar.birthday || null,
+      // Stats data
+      baseStats: statsChar.baseStats,
+      growthRates: statsChar.growthRates,
+      statMilestones: statsChar.statMilestones,
+      spiritSiphon: statsChar.spiritSiphon,
+      gallery: statsChar.gallery,
+      skillPotency: statsChar.skillPotency,
+      levelProgression: statsChar.levelProgression,
+      // Info data
+      voiceActors: infoChar.voiceActors || { chinese: '', japanese: '', english: '' },
+      stories: infoChar.stories || [],
+      tags: infoChar.tags || [],
+      moonPhase: infoChar.moonPhase || '',
+      damageType: infoChar.damageType || '',
+      equipmentType: infoChar.equipmentType || '',
+      moonPhaseIcon: infoChar.moonPhaseIcon || '',
+      damageTypeIcon: infoChar.damageTypeIcon || '',
+      equipmentTypeIcon: infoChar.equipmentTypeIcon || '',
+      // Skills
+      skills,
+    };
+
+    return {
+      params: { id: slug },
+      props: { character },
+    };
+  });
+}
+
+interface Props {
+  character: any;
+}
+
+const { character } = Astro.props;
+
+// Get affinity data for this character
+const affinityData = getCharacterAffinityData(character.name);
+
+// Page SEO
+const pageTitle = `${character.name} - Silver and Blood Character Guide`;
+const pageDescription = `Complete ${character.name} guide for Silver and Blood. ${character.rarity} ${character.class} with stats, skills, voice actors, and lore.`;
+
+// Prepare stats data for client-side
+const statsDataForClient = {
+  spiritSiphon: character.spiritSiphon,
+  gallery: character.gallery,
+  milestones: character.statMilestones,
+  levelProgression: character.levelProgression,
+  skillPotency: character.skillPotency,
+  growthRates: character.growthRates,
+  baseStats: character.baseStats,
+};
+
+const maxSS = character.rarity === 'SSR' ? 10 : character.rarity === 'SR' ? 2 : 0;
+const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery || {};
+---
+
+<CharacterLayout
+  title={pageTitle}
+  description={pageDescription}
+  characterName={character.name}
+  character={character}
+>
+  <div class="character-page-container">
+    <!-- Character Header Section -->
+    <section class="character-header-section">
+      <div class="character-portrait-wrapper">
+        <div class="character-portrait">
+          <SABCharacterIcon
+            name={getIconName(character.name)}
+            variant="Base"
+            size="large"
+            width={200}
+            height={200}
+            loading="eager"
+          />
+        </div>
+        <Image
+          src={rarityImages[character.rarity] || rarityBlue}
+          alt={character.rarity}
+          class="rarity-badge-overlay"
+          width={48}
+          height={48}
+          loading="eager"
+        />
+      </div>
+
+      <div class="character-header-info">
+        <h2 class="character-full-name">{character.fullName}</h2>
+        {character.title && <p class="character-title-epithet">"{character.title}"</p>}
+
+        <!-- Combat Icons Row -->
+        <div class="combat-icons-row">
+          {character.career && roleImages[character.career] && (
+            <div class="combat-icon-item">
+              <Image
+                src={roleImages[character.career]}
+                alt={character.career}
+                width={24}
+                height={24}
+              />
+              <span>{character.career}</span>
+            </div>
+          )}
+          {character.camp && (
+            <div class="combat-icon-item">
+              <SABFactionIcon faction={character.camp} width={24} height={24} />
+              <span>{character.camp}</span>
+            </div>
+          )}
+          {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
+            <div class="combat-icon-item">
+              <Image
+                src={moonPhaseImages[character.moonPhaseIcon]}
+                alt={character.moonPhase || 'Moon Phase'}
+                width={24}
+                height={24}
+              />
+              <span>{character.moonPhase}</span>
+            </div>
+          )}
+          {character.damageTypeIcon && damageTypeImages[character.damageTypeIcon] && (
+            <div class="combat-icon-item">
+              <Image
+                src={damageTypeImages[character.damageTypeIcon]}
+                alt={character.damageType || 'Damage Type'}
+                width={24}
+                height={24}
+              />
+              <span>{character.damageType}</span>
+            </div>
+          )}
+          {character.equipmentTypeIcon && equipmentTypeImages[character.equipmentTypeIcon] && (
+            <div class="combat-icon-item">
+              <Image
+                src={equipmentTypeImages[character.equipmentTypeIcon]}
+                alt={character.equipmentType || 'Equipment'}
+                width={24}
+                height={24}
+              />
+              <span>{character.equipmentType}</span>
+            </div>
+          )}
+        </div>
+
+        <!-- Tags -->
+        {character.tags && character.tags.length > 0 && (
+          <div class="character-tags">
+            {character.tags.map((tag: string) => (
+              <span class="character-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Interactive Stats Section -->
+    <section class="stats-section">
+      <h2 class="section-title">Character Stats</h2>
+
+      <div class="stats-controls">
+        <div class="level-control">
+          <label for="char-level">Level</label>
+          <input type="number" id="char-level" min="1" max="1000" value="200" class="level-input" />
+        </div>
+
+        <div class="ss-control">
+          <label>Spirit Siphon</label>
+          <div class="ss-buttons" data-rarity={character.rarity}>
+            {character.rarity === 'SSR' && [...Array(11)].map((_, i) => (
+              <button
+                type="button"
+                class={`ss-btn ${i === 10 ? 'active' : ''}`}
+                data-ss={i}
+              >SS{i}</button>
+            ))}
+            {character.rarity === 'SR' && [...Array(3)].map((_, i) => (
+              <button
+                type="button"
+                class={`ss-btn ${i === 2 ? 'active' : ''}`}
+                data-ss={i}
+              >SS{i}</button>
+            ))}
+            {character.rarity === 'R' && (
+              <button type="button" class="ss-btn active" data-ss="0">SS0</button>
+            )}
+          </div>
+        </div>
+
+        <label class="skills-toggle">
+          <input type="checkbox" id="include-skills" />
+          <span>Include Skill into Blood Power</span>
+        </label>
+      </div>
+
+      <div class="stats-display">
+        <div class="stat-row">
+          <span class="stat-label">HP</span>
+          <span class="stat-value" id="stat-hp">{defaultStats.MaxHp?.toLocaleString() || '-'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ATK</span>
+          <span class="stat-value" id="stat-atk">{defaultStats.Attack?.toLocaleString() || '-'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">P. DEF</span>
+          <span class="stat-value" id="stat-pdef">{defaultStats.PhyDefence?.toLocaleString() || '-'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">M. DEF</span>
+          <span class="stat-value" id="stat-mdef">{defaultStats.MagDefence?.toLocaleString() || '-'}</span>
+        </div>
+        <div class="stat-row highlight">
+          <span class="stat-label">Blood Power</span>
+          <span class="stat-value" id="stat-bp">{defaultStats.bloodPower?.toLocaleString() || '-'}</span>
+        </div>
+      </div>
+
+      <div class="stats-info">
+        <p class="stats-note">Current: <span id="current-level-display">Lv200</span> <span id="current-ss-display">SS{maxSS}</span></p>
+        <p class="gallery-note">Gallery: Lv200 SS{maxSS} + Skills = {character.gallery?.bloodPower?.toLocaleString() || '-'} BP</p>
+      </div>
+    </section>
+
+    <!-- Affinity Section -->
+    {affinityData && (
+      <section class="affinity-section" aria-labelledby="affinity-title">
+        <h2 id="affinity-title" class="section-title">Affinity</h2>
+
+        <div class="affinity-info-row" role="list" aria-label="Affinity information">
+          <div class="affinity-info-item">
+            <span class="affinity-info-label">Level Group</span>
+            <span class={`affinity-info-value ${affinityData.levelGroup}`}>
+              {affinityData.levelGroupName}
+            </span>
+          </div>
+          <div class="affinity-info-item">
+            <span class="affinity-info-label">Max Rank</span>
+            <span class="affinity-info-value">{affinityData.maxRank}</span>
+          </div>
+          <div class="affinity-info-item">
+            <span class="affinity-info-label">Faction</span>
+            <span class="affinity-info-value">{affinityData.campName}</span>
+          </div>
+        </div>
+
+        <!-- Preferred Gifts -->
+        <div class="preferred-gifts-section" aria-labelledby="preferred-gifts-title">
+          <h3 id="preferred-gifts-title" class="subsection-title">Preferred Gifts</h3>
+          <div class="gifts-list" role="list" aria-label="Recommended gifts for this character">
+            {affinityData.gifts.slice(0, 4).map((gift: any) => {
+              const giftIcon = getGiftIcon(gift.camp, gift.rarity);
+              return (
+                <div class="gift-item" role="listitem">
+                  {giftIcon && (
+                    <Image
+                      src={giftIcon}
+                      alt={`${gift.name} gift icon`}
+                      class="gift-item-icon"
+                      width={40}
+                      height={40}
+                      loading="lazy"
+                    />
+                  )}
+                  <div class="gift-item-info">
+                    <p class="gift-item-name">{gift.name}</p>
+                    <div class="gift-item-meta">
+                      <div class="gift-item-rarity">
+                        {Array.from({ length: gift.rarity }, () => (
+                          <span class="gift-item-star">&#9733;</span>
+                        ))}
+                      </div>
+                      <span class="gift-item-exp">+{gift.matchingCampExp} EXP</span>
+                    </div>
+                  </div>
+                  <span class="gift-item-qty">x{gift.quantityNeeded}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p class="gifts-note">Quantities shown are for reaching max rank ({affinityData.maxRank})</p>
+        </div>
+
+        <!-- Affinity Rank Calculator -->
+        <div class="affinity-calculator" aria-labelledby="rank-calc-title">
+          <h3 id="rank-calc-title" class="subsection-title">Rank Stats Calculator</h3>
+          <div class="rank-input-group">
+            <label class="rank-input-label">Select Rank</label>
+            <div class="rank-input-controls">
+              <button type="button" class="rank-btn rank-btn-minus" aria-label="Decrease rank">-</button>
+              <input
+                type="number"
+                class="rank-input"
+                id="affinity-rank-input"
+                min="1"
+                max={affinityData.maxRank}
+                value={affinityData.maxRank}
+                data-ranks={JSON.stringify(affinityData.ranks)}
+                data-max-rank={affinityData.maxRank}
+              />
+              <button type="button" class="rank-btn rank-btn-plus" aria-label="Increase rank">+</button>
+            </div>
+          </div>
+
+          <div class="rank-stats-display">
+            <div class="rank-stats-row">
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">Total EXP</span>
+                <span class="rank-stat-value affinity-exp-required">-</span>
+              </div>
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">EXP to Next</span>
+                <span class="rank-stat-value affinity-exp-to-next">-</span>
+              </div>
+            </div>
+
+            <div class="rank-stats-row stats-row">
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">HP</span>
+                <span class="rank-stat-value affinity-stat-hp">-</span>
+              </div>
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">ATK</span>
+                <span class="rank-stat-value affinity-stat-atk">-</span>
+              </div>
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">PDEF</span>
+                <span class="rank-stat-value affinity-stat-pdef">-</span>
+              </div>
+              <div class="rank-stat-item">
+                <span class="rank-stat-label">MDEF</span>
+                <span class="rank-stat-value affinity-stat-mdef">-</span>
+              </div>
+            </div>
+
+            <div class="rank-gifts-display">
+              <span class="rank-gifts-label">Gifts needed (4-star camp gift):</span>
+              <span class="rank-gifts-value affinity-gifts-needed">-</span>
+            </div>
+
+            <div class="rank-break-notice" style="display: none;">
+              Break condition required at this rank
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Skills Section -->
+    {character.skills && character.skills.length > 0 && (
+      <section class="skills-section">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skill-level-control">
+          <label>Skill Level:</label>
+          <button type="button" class="skill-level-btn" data-action="minus">-</button>
+          <input type="number" id="skill-level" min="1" max="10" value="10" />
+          <button type="button" class="skill-level-btn" data-action="plus">+</button>
+          <span>/ 10</span>
+        </div>
+
+        <div class="skills-grid">
+          {character.skills.map((skill: any, index: number) => (
+            <div
+              class={`skill-card ${skill.type}`}
+              data-skill-index={index}
+              data-descriptions={JSON.stringify(skill.description || {})}
+            >
+              <div class="skill-header">
+                {skill.icon && (
+                  <div class="skill-icon">
+                    <SABSkillIcon
+                      icon={skill.icon}
+                      alt={skill.name}
+                      width={64}
+                      height={64}
+                    />
+                  </div>
+                )}
+                <div class="skill-info">
+                  <h3 class="skill-name">{skill.name}</h3>
+                  <div class="skill-meta">
+                    <span class={`skill-type-badge ${skill.type}`}>{getSkillTypeName(skill.type)}</span>
+                    {skill.cost && <span class="skill-cost">Cost: {skill.cost}</span>}
+                  </div>
+                </div>
+              </div>
+              <div class="skill-description" set:html={highlightSkillValues(skill.description?.lv10 || skill.description?.lv1 || '')} />
+              {skill.buffs && skill.buffs.length > 0 && (
+                <div class="skill-effects">
+                  <span class="effects-label">Effects:</span>
+                  <div class="effects-list">
+                    {skill.buffs.map((buff: any) => (
+                      <div class="effect-item">
+                        {buff.icon ? (
+                          <SABBuffIcon
+                            icon={buff.icon}
+                            alt={buff.name}
+                            width={24}
+                            height={24}
+                            class="effect-icon"
+                          />
+                        ) : (
+                          <div class="effect-icon-missing">?</div>
+                        )}
+                        <div class="effect-info">
+                          <span class="effect-name">{buff.name}</span>
+                          {buff.description && (
+                            <p class="effect-desc" set:html={highlightSkillValues(buff.description)} />
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Voice Actors Section -->
+    {(character.voiceActors?.chinese || character.voiceActors?.japanese || character.voiceActors?.english) && (
+      <section class="voice-actors-section">
+        <h2 class="section-title">Voice Actors</h2>
+        <div class="voice-actors-grid">
+          {character.voiceActors.chinese && (
+            <div class="voice-actor-card">
+              <div class="voice-actor-language">Chinese</div>
+              <div class="voice-actor-name">{character.voiceActors.chinese}</div>
+            </div>
+          )}
+          {character.voiceActors.japanese && (
+            <div class="voice-actor-card">
+              <div class="voice-actor-language">Japanese</div>
+              <div class="voice-actor-name">{character.voiceActors.japanese}</div>
+            </div>
+          )}
+          {character.voiceActors.english && (
+            <div class="voice-actor-card">
+              <div class="voice-actor-language">English</div>
+              <div class="voice-actor-name">{character.voiceActors.english}</div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Character Stories Section -->
+    {character.stories && character.stories.length > 0 && (
+      <section class="stories-section">
+        <h2 class="section-title">Character Stories</h2>
+        <div class="stories-list">
+          {character.stories.map((story: any, index: number) => (
+            <div class="story-card">
+              <div class="story-header">
+                <span class="story-number">{index + 1}</span>
+                <h3 class="story-title">{story.title}</h3>
+                {story.unlockRank && <span class="story-unlock">Rank {story.unlockRank}</span>}
+              </div>
+              <div class="story-content" set:html={formatStoryText(story.text)} />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Related Links -->
+    <section class="related-section">
+      <h2 class="section-title">Related</h2>
+      <div class="related-links">
+        <a href="/guides/silver-and-blood/characters/" class="related-link">All Characters</a>
+        <a href="/guides/silver-and-blood/character-stats/" class="related-link">Stats Calculator</a>
+        <a href="/guides/silver-and-blood/character-skills/" class="related-link">Skills Database</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Client-side stats calculation -->
+  <script define:vars={{ statsData: statsDataForClient, rarity: character.rarity, skillPotency: character.skillPotency }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const levelInput = document.getElementById('char-level');
+      const ssButtons = document.querySelectorAll('.ss-btn');
+      const skillsToggle = document.getElementById('include-skills');
+      const currentLevelDisplay = document.getElementById('current-level-display');
+      const currentSSDisplay = document.getElementById('current-ss-display');
+
+      let currentLevel = 200;
+      let currentSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+      const maxSS = rarity === 'SSR' ? 10 : rarity === 'SR' ? 2 : 0;
+
+      // Level Template Parameters
+      const LEVEL_PARAMS = {
+        1: 0, 80: 626, 120: 1284, 160: 2205, 200: 3415,
+        300: 7930, 400: 14953, 500: 25281, 600: 39721,
+        700: 57980, 800: 78620, 900: 101730, 1000: 127120
+      };
+
+      function getLevelTemplateParam(level) {
+        if (LEVEL_PARAMS[level] !== undefined) return LEVEL_PARAMS[level];
+
+        const milestones = [200, 300, 400, 500, 600, 700, 800, 900, 1000];
+        let lowerMilestone = 200;
+        let upperMilestone = 300;
+
+        for (let i = 0; i < milestones.length - 1; i++) {
+          if (level >= milestones[i] && level < milestones[i + 1]) {
+            lowerMilestone = milestones[i];
+            upperMilestone = milestones[i + 1];
+            break;
+          }
+        }
+
+        if (level === 201) return LEVEL_PARAMS[200] + 176;
+
+        const lowerParam = LEVEL_PARAMS[lowerMilestone];
+        const upperParam = LEVEL_PARAMS[upperMilestone];
+        const progress = (level - lowerMilestone) / (upperMilestone - lowerMilestone);
+        return Math.floor(lowerParam + (upperParam - lowerParam) * progress);
+      }
+
+      function getSSMultiplier(ssLevel) {
+        if (rarity === 'SSR') {
+          const ss1to5Mult = Math.pow(1.012, Math.min(ssLevel, 5));
+          const ss6to10Mult = Math.pow(1.028, Math.max(0, ssLevel - 5));
+          return ss1to5Mult * ss6to10Mult;
+        } else if (rarity === 'SR') {
+          const ss1Mult = ssLevel >= 1 ? 1.012 : 1;
+          const ss2Mult = ssLevel >= 2 ? 1.028 : 1;
+          return ss1Mult * ss2Mult;
+        }
+        return 1.0;
+      }
+
+      function updateStats() {
+        const level = Math.max(1, Math.min(1000, currentLevel));
+        const ss = Math.min(currentSS, maxSS);
+        const includeSkills = skillsToggle?.checked || false;
+
+        let hp, atk, pdef, mdef, bp;
+
+        if (level <= 200 && statsData.levelProgression) {
+          const levelData = statsData.levelProgression[level - 1] || {};
+          const ssMultiplier = ss > 0 ? getSSMultiplier(ss) : 1;
+
+          hp = Math.floor((levelData.MaxHp || 0) * ssMultiplier);
+          atk = Math.floor((levelData.Attack || 0) * ssMultiplier);
+          pdef = Math.floor((levelData.PhyDefence || 0) * ssMultiplier);
+          mdef = Math.floor((levelData.MagDefence || 0) * ssMultiplier);
+        } else {
+          const baseStats = statsData.baseStats || {};
+          const growthRates = statsData.growthRates || {};
+          const levelParam = getLevelTemplateParam(level);
+          const ssMultiplier = getSSMultiplier(ss);
+
+          const rawHp = (baseStats.MaxHp || 0) + (growthRates.MaxHp || 0) / 10000 * levelParam;
+          const rawAtk = (baseStats.Attack || 0) + (growthRates.Attack || 0) / 10000 * levelParam;
+          const rawPdef = (baseStats.PhyDefence || 0) + (growthRates.PhyDefence || 0) / 10000 * levelParam;
+          const rawMdef = (baseStats.MagDefence || 0) + (growthRates.MagDefence || 0) / 10000 * levelParam;
+
+          hp = Math.floor(rawHp * ssMultiplier);
+          atk = Math.floor(rawAtk * ssMultiplier);
+          pdef = Math.floor(rawPdef * ssMultiplier);
+          mdef = Math.floor(rawMdef * ssMultiplier);
+        }
+
+        bp = Math.floor(hp * 0.024 + atk * 0.68 + pdef * 0.2 + mdef * 0.2);
+
+        if (includeSkills && skillPotency) {
+          bp = Math.round(bp * (1 + (skillPotency.percent || 0) / 10000) + (skillPotency.flat || 0));
+        }
+
+        document.getElementById('stat-hp').textContent = hp.toLocaleString();
+        document.getElementById('stat-atk').textContent = atk.toLocaleString();
+        document.getElementById('stat-pdef').textContent = pdef.toLocaleString();
+        document.getElementById('stat-mdef').textContent = mdef.toLocaleString();
+        document.getElementById('stat-bp').textContent = bp.toLocaleString();
+
+        if (currentLevelDisplay) currentLevelDisplay.textContent = `Lv${level}`;
+        if (currentSSDisplay) currentSSDisplay.textContent = `SS${ss}`;
+      }
+
+      // Event listeners
+      levelInput?.addEventListener('input', () => {
+        currentLevel = parseInt(levelInput.value) || 1;
+        updateStats();
+      });
+
+      levelInput?.addEventListener('change', () => {
+        currentLevel = Math.max(1, Math.min(1000, parseInt(levelInput.value) || 1));
+        levelInput.value = currentLevel.toString();
+        updateStats();
+      });
+
+      ssButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentSS = parseInt(btn.dataset.ss) || 0;
+          ssButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          updateStats();
+        });
+      });
+
+      skillsToggle?.addEventListener('change', updateStats);
+
+      // Initialize
+      updateStats();
+    });
+  </script>
+
+  <!-- Skill level selector -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const skillLevelInput = document.getElementById('skill-level') as HTMLInputElement;
+      const skillCards = document.querySelectorAll<HTMLElement>('.skill-card');
+
+      // Client-side highlight function for skill values
+      function highlightValues(text) {
+        if (!text) return '';
+        return text
+          .replace(/(\+?-?\d+\.?\d*%)/g, '<span class="skill-value">$1</span>')
+          .replace(/(\d+\.?\d*)\s*(sec|seconds?)/gi, '<span class="skill-value">$1</span> $2')
+          .replace(/(\d+\.?\d*)\s*(times?|x)\b/gi, '<span class="skill-value">$1</span> $2')
+          .replace(/(\d+)\s*(stacks?)/gi, '<span class="skill-value">$1</span> $2');
+      }
+
+      function updateSkillDescriptions(level) {
+        const lvKey = `lv${level}`;
+        skillCards.forEach(card => {
+          const descriptions = JSON.parse(card.dataset.descriptions || '{}');
+          const descEl = card.querySelector('.skill-description');
+
+          if (descEl && descriptions[lvKey]) {
+            descEl.innerHTML = highlightValues(descriptions[lvKey]);
+          }
+        });
+      }
+
+      skillLevelInput?.addEventListener('change', () => {
+        let level = parseInt(skillLevelInput.value) || 1;
+        level = Math.max(1, Math.min(10, level));
+        skillLevelInput.value = level.toString();
+        updateSkillDescriptions(level);
+      });
+
+      document.querySelectorAll<HTMLButtonElement>('.skill-level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          let level = parseInt(skillLevelInput?.value) || 1;
+          if (btn.dataset.action === 'minus' && level > 1) level--;
+          if (btn.dataset.action === 'plus' && level < 10) level++;
+          if (skillLevelInput) skillLevelInput.value = level.toString();
+          updateSkillDescriptions(level);
+        });
+      });
+    });
+  </script>
+
+  <!-- Affinity Rank Calculator -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const affinityInput = document.getElementById('affinity-rank-input') as HTMLInputElement;
+      if (!affinityInput) return;
+
+      const ranks = JSON.parse(affinityInput.dataset.ranks || '[]');
+      const maxRank = parseInt(affinityInput.dataset.maxRank || '30');
+      const affinitySection = affinityInput.closest('.affinity-calculator');
+
+      function updateAffinityDisplay(rankNum: number) {
+        const rank = ranks.find((r: any) => r.rank === rankNum);
+        if (!rank || !affinitySection) return;
+
+        const expRequired = affinitySection.querySelector('.affinity-exp-required');
+        const expToNext = affinitySection.querySelector('.affinity-exp-to-next');
+        const statHp = affinitySection.querySelector('.affinity-stat-hp');
+        const statAtk = affinitySection.querySelector('.affinity-stat-atk');
+        const statPdef = affinitySection.querySelector('.affinity-stat-pdef');
+        const statMdef = affinitySection.querySelector('.affinity-stat-mdef');
+        const giftsNeeded = affinitySection.querySelector('.affinity-gifts-needed');
+        const breakNotice = affinitySection.querySelector('.rank-break-notice') as HTMLElement;
+
+        if (expRequired) expRequired.textContent = rank.expRequired.toLocaleString();
+        if (expToNext) expToNext.textContent = rank.expToNext > 0 ? rank.expToNext.toLocaleString() : '-';
+        if (statHp) statHp.textContent = '+' + rank.HP.toLocaleString();
+        if (statAtk) statAtk.textContent = '+' + rank.ATK;
+        if (statPdef) statPdef.textContent = '+' + rank.PDEF;
+        if (statMdef) statMdef.textContent = '+' + rank.MDEF;
+
+        // Calculate gifts needed (4-star camp gift = 500 EXP)
+        const gifts = Math.ceil(rank.expRequired / 500);
+        if (giftsNeeded) giftsNeeded.textContent = 'x' + gifts;
+
+        // Show break notice
+        if (breakNotice) {
+          breakNotice.style.display = rank.breakCondition ? 'block' : 'none';
+        }
+      }
+
+      // Initial display
+      updateAffinityDisplay(parseInt(affinityInput.value));
+
+      // Event listeners
+      affinityInput.addEventListener('change', () => {
+        let val = parseInt(affinityInput.value) || 1;
+        val = Math.max(1, Math.min(maxRank, val));
+        affinityInput.value = val.toString();
+        updateAffinityDisplay(val);
+      });
+
+      const minusBtn = affinitySection?.querySelector('.rank-btn-minus');
+      const plusBtn = affinitySection?.querySelector('.rank-btn-plus');
+
+      minusBtn?.addEventListener('click', () => {
+        let val = parseInt(affinityInput.value) - 1;
+        if (val >= 1) {
+          affinityInput.value = val.toString();
+          updateAffinityDisplay(val);
+        }
+      });
+
+      plusBtn?.addEventListener('click', () => {
+        let val = parseInt(affinityInput.value) + 1;
+        if (val <= maxRank) {
+          affinityInput.value = val.toString();
+          updateAffinityDisplay(val);
+        }
+      });
+    });
+  </script>
+</CharacterLayout>
+
+<style>
+  .character-page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .section-title {
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sab-calm-red, #8b0000);
+  }
+
+  /* Character Header */
+  .character-header-section {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .character-portrait-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .character-portrait {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--sab-border-light, #444);
+  }
+
+  .rarity-badge-overlay {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+  }
+
+  .character-header-info {
+    flex: 1;
+  }
+
+  .character-full-name {
+    font-size: 2rem;
+    color: var(--sab-text-light, #e0e0e0);
+    margin: 0 0 0.25rem;
+  }
+
+  .character-title-epithet {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-style: italic;
+    margin: 0 0 1rem;
+  }
+
+  .combat-icons-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .combat-icon-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 1px solid var(--sab-border-light, #444);
+  }
+
+  .combat-icon-item img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .character-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .character-tag {
+    background: var(--sab-bg-dark, #1a1a1a);
+    color: var(--sab-text-light, #e0e0e0);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+
+  /* Stats Section */
+  .stats-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stats-controls {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+
+  .level-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .level-control label {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .level-input {
+    width: 80px;
+    padding: 0.5rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 4px;
+    color: var(--sab-text-light, #e0e0e0);
+    text-align: center;
+    -moz-appearance: textfield;
+  }
+
+  .level-input::-webkit-outer-spin-button,
+  .level-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .ss-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ss-control label {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .ss-buttons {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .ss-btn {
+    padding: 0.35rem 0.5rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 4px;
+    color: var(--sab-text-medium, #a0a0a0);
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  .ss-btn.active {
+    background: var(--sab-calm-red, #8b0000);
+    color: white;
+    border-color: var(--sab-calm-red, #8b0000);
+  }
+
+  .skills-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--sab-text-light, #e0e0e0);
+    cursor: pointer;
+    align-self: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 6px;
+  }
+
+  .skills-toggle input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--sab-calm-red, #8b0000);
+    cursor: pointer;
+  }
+
+  .stats-display {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 8px;
+    border: 1px solid var(--sab-border-light, #444);
+    text-align: center;
+  }
+
+  .stat-row.highlight {
+    border-color: var(--sab-calm-red, #8b0000);
+    background: rgba(139, 0, 0, 0.1);
+  }
+
+  .stat-label {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-value {
+    color: var(--sab-calm-red, #8b0000);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .stats-info {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    border-left: 3px solid var(--sab-calm-red, #8b0000);
+  }
+
+  .stats-note {
+    margin: 0 0 0.5rem 0;
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 0.9rem;
+  }
+
+  .stats-note span {
+    color: var(--sab-calm-red, #8b0000);
+    font-weight: 600;
+  }
+
+  .gallery-note {
+    margin: 0;
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  /* Skills Section */
+  .skills-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .skill-level-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--sab-text-light, #e0e0e0);
+  }
+
+  .skill-level-btn {
+    width: 32px;
+    height: 32px;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 4px;
+    color: var(--sab-text-light, #e0e0e0);
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .skill-level-control input {
+    width: 50px;
+    text-align: center;
+    padding: 0.5rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 4px;
+    color: var(--sab-text-light, #e0e0e0);
+    -moz-appearance: textfield;
+  }
+
+  .skill-level-control input::-webkit-outer-spin-button,
+  .skill-level-control input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 8px;
+    padding: 1rem;
+    border-left: 4px solid #666;
+  }
+
+  .skill-card.basicAttack { border-left-color: #808080; }
+  .skill-card.skill { border-left-color: #ff8c00; }
+  .skill-card.ultimate { border-left-color: #dc3545; }
+  .skill-card.passive { border-left-color: #32cd32; }
+
+  .skill-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-icon {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .skill-info {
+    flex: 1;
+  }
+
+  .skill-name {
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .skill-type-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+
+  .skill-type-badge.basicAttack { background: #808080; color: white; }
+  .skill-type-badge.skill { background: #ff8c00; color: white; }
+  .skill-type-badge.ultimate { background: #dc3545; color: white; }
+  .skill-type-badge.passive { background: #32cd32; color: white; }
+
+  .skill-cost {
+    color: #dc3545;
+    font-size: 0.9rem;
+  }
+
+  .skill-description {
+    color: var(--sab-text-medium, #a0a0a0);
+    line-height: 1.6;
+  }
+
+  :global(.skill-value) {
+    color: #ffd700;
+    font-weight: 600;
+  }
+
+  .skill-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .skill-effects {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sab-border-light, #444);
+  }
+
+  .effects-label {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .effects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .effect-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+  }
+
+  .effect-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+
+  .effect-icon-missing {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--sab-bg-dark, #1a1a1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.8rem;
+  }
+
+  .effect-info {
+    flex: 1;
+  }
+
+  .effect-name {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .effect-desc {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.85rem;
+    margin: 0.25rem 0 0;
+    line-height: 1.4;
+  }
+
+  /* Voice Actors */
+  .voice-actors-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .voice-actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .voice-actor-card {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .voice-actor-language {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .voice-actor-name {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+  }
+
+  /* Stories */
+  .stories-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .story-card {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .story-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .story-number {
+    width: 28px;
+    height: 28px;
+    background: var(--sab-calm-red, #8b0000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .story-title {
+    color: var(--sab-text-light, #e0e0e0);
+    margin: 0;
+    flex: 1;
+  }
+
+  .story-unlock {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.85rem;
+  }
+
+  .story-content {
+    color: var(--sab-text-medium, #a0a0a0);
+    line-height: 1.7;
+  }
+
+  .story-content :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  .story-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Affinity Section */
+  .affinity-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .affinity-info-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .affinity-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 8px;
+    border: 1px solid var(--sab-border-light, #444);
+  }
+
+  .affinity-info-label {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .affinity-info-value {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .affinity-info-value.lv40 {
+    color: var(--sab-calm-red, #c26b6b);
+  }
+
+  .affinity-info-value.lv30 {
+    color: var(--sab-calm-blue, #5a7ba7);
+  }
+
+  .subsection-title {
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  /* Preferred Gifts */
+  .preferred-gifts-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .gifts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .gift-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .gift-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .gift-item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .gift-item-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sab-text-light, #e0e0e0);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .gift-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .gift-item-rarity {
+    display: flex;
+    gap: 1px;
+  }
+
+  .gift-item-star {
+    color: #d4af37;
+    font-size: 0.7rem;
+  }
+
+  .gift-item-exp {
+    font-size: 0.75rem;
+    color: var(--sab-text-medium, #a0a0a0);
+  }
+
+  .gift-item-qty {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sab-calm-red, #c26b6b);
+    white-space: nowrap;
+    min-width: 45px;
+    text-align: right;
+  }
+
+  .gifts-note {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    color: var(--sab-text-medium, #a0a0a0);
+    font-style: italic;
+  }
+
+  /* Affinity Calculator */
+  .affinity-calculator {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .rank-input-group {
+    margin-bottom: 1rem;
+  }
+
+  .rank-input-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--sab-text-medium, #a0a0a0);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .rank-input-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .rank-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--sab-border-light, #444);
+    background: var(--sab-bg-dark, #1a1a1a);
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rank-btn:hover {
+    background: var(--sab-bg-medium, #2a2a2a);
+  }
+
+  .rank-input {
+    width: 70px;
+    height: 36px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sab-text-light, #e0e0e0);
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 6px;
+  }
+
+  .rank-input::-webkit-inner-spin-button,
+  .rank-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .rank-input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .rank-stats-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rank-stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .rank-stats-row.stats-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .rank-stat-item {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .rank-stat-label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--sab-text-medium, #a0a0a0);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .rank-stat-value {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--sab-text-light, #e0e0e0);
+  }
+
+  .rank-gifts-display {
+    background: rgba(194, 107, 107, 0.1);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rank-gifts-label {
+    font-size: 0.8rem;
+    color: var(--sab-text-medium, #a0a0a0);
+  }
+
+  .rank-gifts-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sab-calm-red, #c26b6b);
+  }
+
+  .rank-break-notice {
+    font-size: 0.75rem;
+    color: var(--sab-calm-red, #c26b6b);
+    background: rgba(194, 107, 107, 0.15);
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  /* Related */
+  .related-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .related-link {
+    padding: 0.75rem 1.5rem;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 8px;
+    color: var(--sab-text-light, #e0e0e0);
+    text-decoration: none;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .character-header-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .character-badges,
+    .combat-icons-row,
+    .character-tags {
+      justify-content: center;
+    }
+
+    .stats-controls {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .level-control,
+    .ss-control {
+      align-items: center;
+    }
+
+    .ss-buttons {
+      justify-content: center;
+    }
+
+    .stats-display {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-row.highlight {
+      grid-column: span 2;
+    }
+
+    .skill-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Affinity responsive */
+    .affinity-info-row {
+      justify-content: center;
+    }
+
+    .rank-stats-row.stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-display {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-row {
+      padding: 0.75rem;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+    }
+
+    /* Affinity section mobile */
+    .affinity-section {
+      padding: 1rem;
+    }
+
+    .affinity-info-row {
+      gap: 0.5rem;
+    }
+
+    .affinity-info-item {
+      padding: 0.5rem 0.75rem;
+      flex: 1;
+      min-width: calc(50% - 0.5rem);
+    }
+
+    .affinity-info-label {
+      font-size: 0.7rem;
+    }
+
+    .affinity-info-value {
+      font-size: 0.95rem;
+    }
+
+    .subsection-title {
+      font-size: 1rem;
+    }
+
+    .preferred-gifts-section,
+    .affinity-calculator {
+      padding: 0.75rem;
+    }
+
+    .gift-item {
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .gift-item-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .gift-item-name {
+      font-size: 0.8rem;
+    }
+
+    .gift-item-star {
+      font-size: 0.6rem;
+    }
+
+    .gift-item-exp {
+      font-size: 0.7rem;
+    }
+
+    .gift-item-qty {
+      font-size: 0.9rem;
+      min-width: 38px;
+    }
+
+    .gifts-note {
+      font-size: 0.75rem;
+    }
+
+    /* Rank calculator mobile - ensure minimum touch target 44px */
+    .rank-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 1.4rem;
+    }
+
+    .rank-input {
+      width: 60px;
+      height: 44px;
+      font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+
+    .rank-stat-item {
+      padding: 0.4rem;
+    }
+
+    .rank-stat-label {
+      font-size: 0.6rem;
+    }
+
+    .rank-stat-value {
+      font-size: 0.85rem;
+    }
+
+    .rank-gifts-display {
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: center;
+    }
+
+    .rank-gifts-label {
+      font-size: 0.75rem;
+    }
+
+    .rank-gifts-value {
+      font-size: 1.1rem;
+    }
+  }
+</style>

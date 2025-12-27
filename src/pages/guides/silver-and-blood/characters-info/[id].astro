@@ -1,6 +1,7 @@
 ---
 import CharacterInfoLayout from '../../../../layouts/silver-and-blood/CharacterInfoLayout.astro';
 import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIcon.astro';
 import { Image } from 'astro:assets';
 import charactersData from '../../../../data/silver-and-blood/characters_info.json';
 
@@ -17,11 +18,20 @@ import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moo
 // Import damage type icons
 import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
 import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
 
 // Import equipment type icons
 import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
 import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
 import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Import role/career icons
+import roleAssassin from '../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
 
 const rarityImages: Record<string, ImageMetadata> = {
   'UR': rarityGold,
@@ -38,12 +48,22 @@ const moonPhaseImages: Record<string, ImageMetadata> = {
 const damageTypeImages: Record<string, ImageMetadata> = {
   'level_info_icon_attack_02.png': dmgMagical,
   'level_info_icon_attack_03.png': dmgPhysical,
+  'level_info_icon_attack_04.png': dmgPierce,
 };
 
 const equipmentTypeImages: Record<string, ImageMetadata> = {
   'EquipType_Light.png': equipLight,
   'EquipType_Medium.png': equipMedium,
   'EquipType_Heavy.png': equipHeavy,
+};
+
+const roleImages: Record<string, ImageMetadata> = {
+  'Assassin': roleAssassin,
+  'Defender': roleDefender,
+  'Enchanter': roleEnchanter,
+  'Marksman': roleMarksman,
+  'Sorcerer': roleSorcerer,
+  'Warrior': roleWarrior,
 };
 
 export async function getStaticPaths() {
@@ -246,6 +266,29 @@ const pageDescription = `Learn about ${character.fullName}, the ${character.titl
         <!-- Combat Stats with Icons -->
         {(character.moonPhase || character.damageType || character.equipmentType) && (
           <div class="combat-stats-row">
+            {character.career && roleImages[character.career] && (
+              <div class="combat-stat-item">
+                <Image
+                  src={roleImages[character.career]}
+                  alt={character.career}
+                  class="combat-stat-icon"
+                  width={32}
+                  height={32}
+                />
+                <span class="combat-stat-value">{character.career}</span>
+              </div>
+            )}
+            {character.camp && (
+              <div class="combat-stat-item">
+                <SABFactionIcon
+                  faction={character.camp}
+                  width={32}
+                  height={32}
+                  class="combat-stat-icon"
+                />
+                <span class="combat-stat-value">{character.camp}</span>
+              </div>
+            )}
             {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
               <div class="combat-stat-item">
                 <Image

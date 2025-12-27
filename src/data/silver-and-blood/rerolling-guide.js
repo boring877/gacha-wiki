@@ -2,7 +2,7 @@
 // This file contains comprehensive rerolling guide data focused on obtaining Timeless Aiona
 
 import { silverAndBloodRedeemCodes } from './redeem-codes.js';
-import { timelessAiona } from './characters/timeless-aiona.js';
+import { getCharacterById } from './characters.js';
 
 // Get the specific codes for rerolling
 const getRerollingCodes = () => {
@@ -82,8 +82,8 @@ export const rerollingGuideData = {
   expectedResources:
     'You should have 50 or higher scrolls (depends on codes) and at least 3000 gems - at least 60 pulls (6 x 10 pulls).',
 
-  // Import actual character data instead of making things up
-  timelessAiona: timelessAiona,
+  // Get character data from the characters database
+  timelessAiona: getCharacterById('timeless-aiona'),
 
   // Get codes dynamically from redeem codes page
   redeemCodes: getRerollingCodes(),

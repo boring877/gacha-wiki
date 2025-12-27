@@ -1,0 +1,287 @@
+---
+import CharacterGiftsLayout from '../../../layouts/silver-and-blood/CharacterGiftsLayout.astro';
+import { Image } from 'astro:assets';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { getCharacterGiftsDataByTemplate, getGiftIconKey } from '../../../data/silver-and-blood/character-gifts.js';
+
+// Import all gift icons
+import universal1 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_1.png';
+import universal2 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_2.png';
+import universal3 from '../../../assets/images/games/silver-and-blood/icons/gifts/universal_3.png';
+import ancestral1 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_1.png';
+import ancestral2 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_2.png';
+import ancestral3 from '../../../assets/images/games/silver-and-blood/icons/gifts/ancestral_3.png';
+import church1 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_1.png';
+import church2 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_2.png';
+import church3 from '../../../assets/images/games/silver-and-blood/icons/gifts/church_3.png';
+import bloodborn1 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_1.png';
+import bloodborn2 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_2.png';
+import bloodborn3 from '../../../assets/images/games/silver-and-blood/icons/gifts/bloodborn_3.png';
+import kingdom1 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_1.png';
+import kingdom2 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_2.png';
+import kingdom3 from '../../../assets/images/games/silver-and-blood/icons/gifts/kingdom_3.png';
+import otherworldly1 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_1.png';
+import otherworldly2 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_2.png';
+import otherworldly3 from '../../../assets/images/games/silver-and-blood/icons/gifts/otherworldly_3.png';
+
+// Map gift icons
+const giftIconMap: Record<string, ImageMetadata> = {
+  'universal_1': universal1,
+  'universal_2': universal2,
+  'universal_3': universal3,
+  'ancestral_1': ancestral1,
+  'ancestral_2': ancestral2,
+  'ancestral_3': ancestral3,
+  'church_1': church1,
+  'church_2': church2,
+  'church_3': church3,
+  'bloodborn_1': bloodborn1,
+  'bloodborn_2': bloodborn2,
+  'bloodborn_3': bloodborn3,
+  'kingdom_1': kingdom1,
+  'kingdom_2': kingdom2,
+  'kingdom_3': kingdom3,
+  'otherworldly_1': otherworldly1,
+  'otherworldly_2': otherworldly2,
+  'otherworldly_3': otherworldly3,
+};
+
+// Get gift icon
+function getGiftIcon(camp: number, rarity: number): ImageMetadata | null {
+  const key = getGiftIconKey(camp, rarity);
+  return giftIconMap[key] || null;
+}
+
+// Get character-gifts data organized by template
+const templateData = getCharacterGiftsDataByTemplate();
+
+const pageTitle = 'Character Gifts';
+const pageDescription = 'Find the best gifts for each Silver and Blood character. Characters are grouped by affinity level (Lv40/Lv30) and faction for maximum affinity EXP.';
+---
+
+<CharacterGiftsLayout title={`${pageTitle} | Silver and Blood`} description={pageDescription} pageTitle={pageTitle}>
+  <div class="character-gifts-container">
+    <!-- Page Introduction -->
+    <section class="page-intro" aria-label="Introduction">
+      <p class="page-intro-text">
+        Characters in Silver and Blood have different <strong>affinity level caps</strong>.
+        <strong>Lv40 characters</strong> can reach max rank 40 with higher stat bonuses,
+        while <strong>Lv30 characters</strong> cap at rank 30.
+        Give characters gifts from their matching <strong>faction</strong> for bonus affinity EXP.
+      </p>
+    </section>
+
+    <!-- Rank Calculator Section -->
+    <section class="rank-calculator-section" aria-label="Rank Calculators">
+      {templateData.map(template => (
+        <div class={`rank-calculator ${template.templateId}`} data-template={template.templateId} data-max-rank={template.maxRank}>
+          <div class="rank-calc-header">
+            <h3 class="rank-calc-title">{template.templateName} - Rank Calculator</h3>
+            <span class="rank-calc-subtitle">Max Rank {template.maxRank}</span>
+          </div>
+
+          <div class="rank-calc-body">
+            <div class="rank-input-group">
+              <label class="rank-input-label" for={`rank-input-${template.templateId}`}>Select Rank</label>
+              <div class="rank-input-controls">
+                <button type="button" class="rank-btn rank-btn-minus" aria-label="Decrease rank">-</button>
+                <input
+                  type="number"
+                  id={`rank-input-${template.templateId}`}
+                  class="rank-input"
+                  min="1"
+                  max={template.maxRank}
+                  value={template.maxRank}
+                  data-ranks={JSON.stringify(template.ranks)}
+                  aria-label={`Rank for ${template.templateName}`}
+                />
+                <button type="button" class="rank-btn rank-btn-plus" aria-label="Increase rank">+</button>
+              </div>
+            </div>
+
+            <div class="rank-stats-display">
+              <div class="rank-stats-row">
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">Total EXP</span>
+                  <span class="rank-stat-value exp-required">-</span>
+                </div>
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">EXP to Next</span>
+                  <span class="rank-stat-value exp-to-next">-</span>
+                </div>
+              </div>
+
+              <div class="rank-stats-row stats-row">
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">HP</span>
+                  <span class="rank-stat-value stat-hp">-</span>
+                </div>
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">ATK</span>
+                  <span class="rank-stat-value stat-atk">-</span>
+                </div>
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">PDEF</span>
+                  <span class="rank-stat-value stat-pdef">-</span>
+                </div>
+                <div class="rank-stat-item">
+                  <span class="rank-stat-label">MDEF</span>
+                  <span class="rank-stat-value stat-mdef">-</span>
+                </div>
+              </div>
+
+              <div class="rank-gifts-display">
+                <span class="rank-gifts-label">Gifts needed (4-star camp gift):</span>
+                <span class="rank-gifts-value">-</span>
+              </div>
+
+              <div class="rank-break-notice" style="display: none;">
+                Break condition required at this rank
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <script>
+      document.querySelectorAll<HTMLElement>('.rank-calculator').forEach(calc => {
+        const input = calc.querySelector('.rank-input') as HTMLInputElement;
+        const minusBtn = calc.querySelector('.rank-btn-minus');
+        const plusBtn = calc.querySelector('.rank-btn-plus');
+        const maxRank = parseInt(calc.dataset.maxRank || '30');
+        const ranks = JSON.parse(input.dataset.ranks || '[]');
+
+        function updateDisplay(rankNum: number) {
+          const rank = ranks.find((r: any) => r.rank === rankNum);
+          if (!rank) return;
+
+          calc.querySelector('.exp-required')!.textContent = rank.expRequired.toLocaleString();
+          calc.querySelector('.exp-to-next')!.textContent = rank.expToNext > 0 ? rank.expToNext.toLocaleString() : '-';
+          calc.querySelector('.stat-hp')!.textContent = '+' + rank.HP.toLocaleString();
+          calc.querySelector('.stat-atk')!.textContent = '+' + rank.ATK;
+          calc.querySelector('.stat-pdef')!.textContent = '+' + rank.PDEF;
+          calc.querySelector('.stat-mdef')!.textContent = '+' + rank.MDEF;
+
+          // Calculate gifts needed (4-star camp gift = 500 EXP)
+          const giftsNeeded = Math.ceil(rank.expRequired / 500);
+          calc.querySelector('.rank-gifts-value')!.textContent = 'x' + giftsNeeded;
+
+          // Show break notice
+          const breakNotice = calc.querySelector('.rank-break-notice') as HTMLElement;
+          if (rank.breakCondition) {
+            breakNotice.style.display = 'block';
+          } else {
+            breakNotice.style.display = 'none';
+          }
+        }
+
+        // Initial display
+        updateDisplay(parseInt(input.value));
+
+        // Event listeners
+        input.addEventListener('change', () => {
+          let val = parseInt(input.value) || 1;
+          val = Math.max(1, Math.min(maxRank, val));
+          input.value = val.toString();
+          updateDisplay(val);
+        });
+
+        minusBtn?.addEventListener('click', () => {
+          let val = parseInt(input.value) - 1;
+          if (val >= 1) {
+            input.value = val.toString();
+            updateDisplay(val);
+          }
+        });
+
+        plusBtn?.addEventListener('click', () => {
+          let val = parseInt(input.value) + 1;
+          if (val <= maxRank) {
+            input.value = val.toString();
+            updateDisplay(val);
+          }
+        });
+      });
+    </script>
+
+    <!-- Template Groups -->
+    <section class="template-groups" aria-label="Character Groups by Level">
+      {templateData.map(template => (
+        <article class={`level-group ${template.templateId}`} aria-labelledby={`group-title-${template.templateId}`}>
+          <!-- Level Group Header -->
+          <header class="level-group-header">
+            <div class="level-group-header-left">
+              <h2 id={`group-title-${template.templateId}`} class="level-group-title">{template.templateName}</h2>
+              <span class="level-group-badge">Max Rank {template.maxRank}</span>
+            </div>
+            <span class="level-group-count">{template.characterCount} characters</span>
+          </header>
+
+          <!-- Factions within this level group -->
+          <div class="level-group-body">
+            <div class="factions-grid" role="list">
+              {template.factions.map(faction => (
+                <div class={`faction-section ${faction.campClass}`}>
+                  <div class="faction-header">
+                    <h3 class="faction-name">{faction.campName}</h3>
+                    <span class="faction-count">{faction.characterCount} characters</span>
+                  </div>
+
+                  <div class="faction-body">
+                    <!-- Characters in this faction -->
+                    <div class="characters-section">
+                      <div class="characters-grid">
+                        {faction.characters.map(char => (
+                          <div class="character-chip">
+                            <SABCharacterIcon name={char.name} size="small" width={32} height={32} />
+                            <span class="character-chip-name">{char.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <!-- Best gifts for this faction -->
+                    <div class="gifts-section">
+                      <h4 class="gifts-label">Best Gifts (to max rank)</h4>
+                      <div class="gifts-list">
+                        {faction.gifts.slice(0, 4).map(gift => {
+                          const giftIcon = getGiftIcon(gift.camp, gift.rarity);
+                          return (
+                            <div class="gift-item">
+                              {giftIcon && (
+                                <Image
+                                  src={giftIcon}
+                                  alt={gift.name}
+                                  class="gift-item-icon"
+                                  width={36}
+                                  height={36}
+                                />
+                              )}
+                              <div class="gift-item-info">
+                                <p class="gift-item-name">{gift.name}</p>
+                                <div class="gift-item-meta">
+                                  <div class="gift-item-rarity">
+                                    {Array.from({ length: gift.rarity }, () => (
+                                      <span class="gift-item-star">&#9733;</span>
+                                    ))}
+                                  </div>
+                                  <span class="gift-item-exp-per">+{gift.matchingCampExp} EXP</span>
+                                </div>
+                              </div>
+                              <span class="gift-item-qty">x{gift.quantityNeeded}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+  </div>
+</CharacterGiftsLayout>

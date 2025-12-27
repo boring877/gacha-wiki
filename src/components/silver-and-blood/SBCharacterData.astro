@@ -1,10 +1,10 @@
 ---
 // Silver and Blood Centralized Data Component
 // This component imports all character data files and provides them in a single module
-// This is more efficient for SSG as it avoids importing individual files in every component
+// Data is now sourced from character-stats.json and characters_info.json
 
 // Import other Silver and Blood data
-import { characters } from '../../data/silver-and-blood/characters.js';
+import { characters, getCharacterById, CHARACTERS_BY_SLUG } from '../../data/silver-and-blood/characters.js';
 import {
   PVE_TIER_LIST,
   PVP_TIER_LIST,
@@ -13,57 +13,6 @@ import {
   NEW_PLAYER_TIER_LIST,
 } from '../../data/silver-and-blood/tier-lists.js';
 import { rankings } from '../../data/silver-and-blood/character-rankings.js';
-
-// Import all character data files for SSG
-import { fleetingBella } from '../../data/silver-and-blood/characters/fleeting-bella.js';
-import { timelessAiona } from '../../data/silver-and-blood/characters/timeless-aiona.js';
-import { transcendentHati } from '../../data/silver-and-blood/characters/transcendent-hati.js';
-import { transcendentAmi } from '../../data/silver-and-blood/characters/transcendent-ami.js';
-import { limine } from '../../data/silver-and-blood/characters/limine.js';
-import { incendiaryAgares } from '../../data/silver-and-blood/characters/incendiary-agares.js';
-import { hati } from '../../data/silver-and-blood/characters/hati.js';
-import { vanHelsing } from '../../data/silver-and-blood/characters/van-helsing.js';
-import { transcendentNoah } from '../../data/silver-and-blood/characters/transcendent-noah.js';
-import { seth } from '../../data/silver-and-blood/characters/seth.js';
-import { acappella } from '../../data/silver-and-blood/characters/acappella.js';
-import { gilrain } from '../../data/silver-and-blood/characters/gilrain.js';
-import { joan } from '../../data/silver-and-blood/characters/joan.js';
-import { darcias } from '../../data/silver-and-blood/characters/darcias.js';
-import { ressa } from '../../data/silver-and-blood/characters/ressa.js';
-import { ottavia } from '../../data/silver-and-blood/characters/ottavia.js';
-import { pavana } from '../../data/silver-and-blood/characters/pavana.js';
-import { lamia } from '../../data/silver-and-blood/characters/lamia.js';
-import { cecia } from '../../data/silver-and-blood/characters/cecia.js';
-import { augustine } from '../../data/silver-and-blood/characters/augustine.js';
-import { starryEyedAiona } from '../../data/silver-and-blood/characters/starry-eyed-aiona.js';
-import { yggdrasill } from '../../data/silver-and-blood/characters/yggdrasill.js';
-import { friedrich } from '../../data/silver-and-blood/characters/friedrich.js';
-import { nicole } from '../../data/silver-and-blood/characters/nicole.js';
-import { edina } from '../../data/silver-and-blood/characters/edina.js';
-import { agares } from '../../data/silver-and-blood/characters/agares.js';
-import { bella } from '../../data/silver-and-blood/characters/bella.js';
-import { thibault } from '../../data/silver-and-blood/characters/thibault.js';
-import { theophane } from '../../data/silver-and-blood/characters/theophane.js';
-import { cain } from '../../data/silver-and-blood/characters/cain.js';
-import { selena } from '../../data/silver-and-blood/characters/selena.js';
-import { spectralGilrain } from '../../data/silver-and-blood/characters/spectral-gilrain.js';
-import { piera } from '../../data/silver-and-blood/characters/piera.js';
-import { ami } from '../../data/silver-and-blood/characters/ami.js';
-import { tris } from '../../data/silver-and-blood/characters/tris.js';
-import { mass } from '../../data/silver-and-blood/characters/mass.js';
-import { dalcarlo } from '../../data/silver-and-blood/characters/dalcarlo.js';
-import { sirene } from '../../data/silver-and-blood/characters/sirene.js';
-import { jinxedSelena } from '../../data/silver-and-blood/characters/jinxed-selena.js';
-import { lorelei } from '../../data/silver-and-blood/characters/lorelei.js';
-import { quinn } from '../../data/silver-and-blood/characters/quinn.js';
-import { agnes } from '../../data/silver-and-blood/characters/agnes.js';
-import { valora } from '../../data/silver-and-blood/characters/valora.js';
-import { julius } from '../../data/silver-and-blood/characters/julius.js';
-import { stella } from '../../data/silver-and-blood/characters/stella.js';
-import { regina } from '../../data/silver-and-blood/characters/regina.js';
-import { albrecht } from '../../data/silver-and-blood/characters/albrecht.js';
-import { fanny } from '../../data/silver-and-blood/characters/fanny.js';
-import { genevieve } from '../../data/silver-and-blood/characters/genevieve.js';
 
 // Import all character images from assets
 import acappellaImg from '../../assets/images/games/silver-and-blood/characters/acappella.jpg';
@@ -169,58 +118,10 @@ export const CHARACTER_IMAGE_MAP = {
   yggdrasill: yggdrasillImg.src,
 };
 
-// Create a mapping of all character data
-export const CHARACTER_DATA_MAP = {
-  'fleeting-bella': fleetingBella,
-  'timeless-aiona': timelessAiona,
-  'transcendent-hati': transcendentHati,
-  'transcendent-ami': transcendentAmi,
-  limine: limine,
-  'incendiary-agares': incendiaryAgares,
-  hati: hati,
-  'van-helsing': vanHelsing,
-  'transcendent-noah': transcendentNoah,
-  seth: seth,
-  acappella: acappella,
-  gilrain: gilrain,
-  joan: joan,
-  darcias: darcias,
-  ressa: ressa,
-  ottavia: ottavia,
-  pavana: pavana,
-  lamia: lamia,
-  cecia: cecia,
-  augustine: augustine,
-  'starry-eyed-aiona': starryEyedAiona,
-  yggdrasill: yggdrasill,
-  friedrich: friedrich,
-  nicole: nicole,
-  edina: edina,
-  agares: agares,
-  bella: bella,
-  thibault: thibault,
-  theophane: theophane,
-  cain: cain,
-  selena: selena,
-  'spectral-gilrain': spectralGilrain,
-  piera: piera,
-  ami: ami,
-  tris: tris,
-  mass: mass,
-  dalcarlo: dalcarlo,
-  sirene: sirene,
-  'jinxed-selena': jinxedSelena,
-  lorelei: lorelei,
-  quinn: quinn,
-  agnes: agnes,
-  valora: valora,
-  julius: julius,
-  stella: stella,
-  regina: regina,
-  albrecht: albrecht,
-  fanny: fanny,
-  genevieve: genevieve,
-};
+// Create a mapping of character data by slug using the centralized characters data
+export const CHARACTER_DATA_MAP = Object.fromEntries(
+  characters.map(char => [char.id, char])
+);
 
 // Define the character interface based on actual data structure
 export interface SilverBloodCharacter {

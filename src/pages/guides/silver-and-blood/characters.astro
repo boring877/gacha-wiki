@@ -1,10 +1,87 @@
 ---
 import CharactersLayout from '../../../layouts/silver-and-blood/CharactersLayout.astro';
-import SABCharacterImage from '../../../components/silver-and-blood/SABCharacterImage.astro';
-import {
-  characters as SILVER_AND_BLOOD_CHARACTERS,
-  gameInfo,
-} from '../../../data/silver-and-blood/characters.js';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import characterStatsData from '../../../data/silver-and-blood/character-stats.json';
+import charactersInfoData from '../../../data/silver-and-blood/characters_info.json';
+
+// Generate slug from character name
+const generateSlug = (name: string): string => {
+  return name.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+};
+
+// Get icon name for character portrait
+const getIconName = (name: string): string => {
+  const nameMap: Record<string, string> = {
+    'Noah': 'Noah', 'Limine': 'Limine', 'Jestel': 'Jestel', 'Empousa': 'Empousa',
+    'Aiona': 'Aiona', 'Setti': 'Setti', 'Hati': 'Hati', 'Bella': 'Bella',
+    'Stella': 'Stella', 'Selena': 'Selena', 'Lamia': 'Lamia', 'Friedrich': 'Friedrich',
+    'Quinn': 'Quinn', 'Gilrain': 'Gilrain', 'Cecia': 'Cecia', 'Lorelei': 'Lorelei',
+    'Agares': 'Agares', 'Ami': 'Ami', 'Piera': 'Piera', 'Seth': 'Seth',
+    'Ressa': 'Ressa', 'Dalcarlo': 'Dalcarlo', 'Joan': 'Joan', 'Cain': 'Cain',
+    'Pavana': 'Pavana', 'Julius': 'Julius', 'Ottavia': 'Ottavia', 'Theophane': 'Theophane',
+    'Tris': 'Tris', 'Nicole': 'Nicole', 'Darcias': 'Darcias', 'Edina': 'Edina',
+    'Yggdrasill': 'Yggdrasill', 'Augustine': 'Augustine', 'Acappella': 'Acappella',
+    'Mass': 'Mass', 'Katherine': 'Katherine', 'Hippocratic': 'Hippocratic', 'Leo': 'Leo',
+    'VanHellsing': 'VanHellsing', 'Baphomet': 'Baphomet', 'Garlic': 'Garlic',
+    'William': 'William', 'Goldland': 'Goldland', 'Siegrune': 'Siegrune', 'Livia': 'Livia',
+    'Evna': 'Evna', 'Typhoeus': 'Typhoeus', 'Ezareth': 'Ezareth', 'Paimile': 'Paimile',
+    'Gini': 'Gini', 'Clive': 'Clive', 'Albert': 'Albert', 'Henry': 'Henry',
+    'James': 'James', 'Jenny': 'Jenny', 'Jones': 'Jones', 'Isabelle': 'Isabelle',
+    'Alene': 'Alene', 'Astel': 'Astel', 'Selenia': 'Selenia', 'Fanu': 'Fanu',
+    'Sirene': 'Sirene', 'Arachne': 'Arachne', 'Desdemona': 'Desdemona', 'Drakul': 'Drakul',
+    'Flynn': 'Flynn', 'Garm': 'Garm', 'Gunther': 'Gunther', 'Helga': 'Helga',
+    'Igor': 'Igor', 'Ingrit': 'Ingrit', 'Lilith': 'Lilith', 'Lycaon': 'Lycaon',
+    'Odin': 'Odin', 'Tristan': 'Tristan',
+  };
+  return nameMap[name] || name;
+};
+
+// Create info map by ID for additional data
+const infoMap = new Map();
+charactersInfoData.characters.forEach((char: any) => {
+  infoMap.set(char.id, char);
+});
+
+// Filter to playable characters (SSR, SR, R) and merge data
+const SILVER_AND_BLOOD_CHARACTERS = characterStatsData.characters
+  .filter((c: any) => ['SSR', 'SR', 'R'].includes(c.rarity))
+  .map((statsChar: any) => {
+    const infoChar = infoMap.get(statsChar.id) || {};
+    const gallery = statsChar.gallery || {};
+    return {
+      id: generateSlug(statsChar.name),
+      numericId: statsChar.id,
+      name: statsChar.name,
+      rarity: statsChar.rarity,
+      class: statsChar.class,
+      faction: infoChar.camp || '',
+      moonPhase: infoChar.moonPhase || '',
+      stats: {
+        hp: gallery.MaxHp || 0,
+        atk: gallery.Attack || 0,
+        pDef: gallery.PhyDefence || 0,
+        mDef: gallery.MagDefence || 0,
+        bloodPower: gallery.bloodPower || 0,
+      },
+    };
+  });
+
+// Game info for filters
+const gameInfo = {
+  classes: [
+    { name: 'Warrior' }, { name: 'Assassin' }, { name: 'Defender' },
+    { name: 'Marksman' }, { name: 'Sorcerer' }, { name: 'Enchanter' }
+  ],
+  rarities: ['SSR', 'SR', 'R'],
+  factions: [
+    { name: 'Kingdom' }, { name: 'Ancestors' }, { name: 'Church' }, { name: 'Bloodborn' }
+  ],
+  moonPhases: [
+    { name: 'New Moon' }, { name: 'Crescent Moon' }, { name: 'Full Moon' }
+  ],
+};
 ---
 
 <CharactersLayout
@@ -104,14 +181,12 @@ import {
                       <td>{idx + 1}</td>
                       <td>
                         <div style="width: 55px; height: 55px; border-radius: 8px; overflow: hidden;">
-                          <SABCharacterImage
-                            imageName={char.id}
-                            alt={char.name}
-                            class="character-img"
-                            width={220}
-                            height={220}
-                            format="jpg"
-                            quality={100}
+                          <SABCharacterIcon
+                            name={getIconName(char.name)}
+                            variant="Base"
+                            size="small"
+                            width={55}
+                            height={55}
                             loading="lazy"
                           />
                         </div>
@@ -173,14 +248,12 @@ import {
               >
                 <div class="mobile-card-header">
                   <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
-                    <SABCharacterImage
-                      imageName={char.id}
-                      alt={char.name}
-                      class="character-img"
+                    <SABCharacterIcon
+                      name={getIconName(char.name)}
+                      variant="Base"
+                      size="small"
                       width={80}
                       height={80}
-                      format="webp"
-                      quality={95}
                     />
                   </div>
                   <div class="mobile-card-title-group">

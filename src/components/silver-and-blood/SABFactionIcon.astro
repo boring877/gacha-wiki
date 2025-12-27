@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+
+// Import faction icons (small variants)
+import kingdomIcon from '../../assets/images/games/silver-and-blood/icons/factions/Kingdom_small.png';
+import bloodbornIcon from '../../assets/images/games/silver-and-blood/icons/factions/Bloodborn_small.png';
+import churchIcon from '../../assets/images/games/silver-and-blood/icons/factions/Church_small.png';
+import ancestryIcon from '../../assets/images/games/silver-and-blood/icons/factions/Ancestry_small.png';
+
+interface Props {
+  faction: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { faction, width = 24, height = 24, class: className } = Astro.props;
+
+// Map faction names to icons (handle "Ancestors" -> "Ancestry" mapping)
+const factionIcons: Record<string, ImageMetadata> = {
+  'kingdom': kingdomIcon,
+  'bloodborn': bloodbornIcon,
+  'church': churchIcon,
+  'ancestors': ancestryIcon,
+  'ancestry': ancestryIcon,
+};
+
+const normalizedFaction = faction?.toLowerCase() || '';
+const icon = factionIcons[normalizedFaction];
+---
+
+{icon ? (
+  <Image
+    src={icon}
+    alt={faction}
+    width={width}
+    height={height}
+    class={className}
+    loading="lazy"
+  />
+) : (
+  <span class="faction-icon-missing">?</span>
+)}
+
+<style>
+  .faction-icon-missing {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--sab-bg-dark, #1a1a1a);
+    border-radius: 4px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 0.7rem;
+    color: var(--sab-text-medium, #a0a0a0);
+  }
+</style>
