@@ -1,0 +1,76 @@
+---
+import SynergiesLayout from '../../../layouts/silver-and-blood/SynergiesLayout.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import synergies from '../../../data/silver-and-blood/synergies.js';
+---
+
+<SynergiesLayout
+  title="Silver and Blood Synergies - GachaWiki"
+  description="Complete guide to character synergies in Silver and Blood. Learn about synergy bonuses, leader effects, and team composition benefits."
+  gameTitle="Character Synergies"
+>
+  <div class="synergies-container">
+    <div class="synergies-intro">
+      <h2>Character Synergy System</h2>
+      <p>Synergies is a new system that was introduced recently, changing the way we build teams and think about characters.</p>
+    </div>
+
+    {synergies.map((synergy) => (
+      <section class="synergy-section">
+        <header class="synergy-header">
+          <h2 class="synergy-name">{synergy.name}</h2>
+        </header>
+
+        <div class="synergy-content">
+          <!-- Leader -->
+          <div class="leader-section">
+            <SABCharacterIcon
+              name={synergy.leader.name}
+              size="large"
+              class="leader-icon"
+              width={100}
+              height={100}
+            />
+            <div class="leader-info">
+              <span class="leader-badge">Leader</span>
+              <h3>{synergy.leader.name}</h3>
+              <p>Synergy Leader</p>
+            </div>
+          </div>
+
+          <!-- Members -->
+          <div class="members-section">
+            <h4>Synergy Members</h4>
+            <div class="members-grid">
+              {synergy.members.map((member) => (
+                <div class="member-card">
+                  <SABCharacterIcon
+                    name={member.name}
+                    size="large"
+                    class="member-icon"
+                    width={80}
+                    height={80}
+                  />
+                  <span class="member-name">{member.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tier Bonuses -->
+          <div class="tiers-section">
+            {synergy.tiers.map((tier) => (
+              <div class={`tier-box tier-${tier.tier}`}>
+                <div class="tier-header">
+                  <span class="tier-badge">Tier {tier.tier}</span>
+                  <span class="tier-req">{tier.requiredMembers} members required</span>
+                </div>
+                <p class="tier-desc">{tier.descriptionFormatted}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</SynergiesLayout>

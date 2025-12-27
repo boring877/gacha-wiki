@@ -157,6 +157,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/guides/silver-and-blood/clan-hunt/',
         },
         {
+          id: 'synergies',
+          title: 'Synergies',
+          url: '/guides/silver-and-blood/synergies/',
+        },
+        {
           id: 'team-synergy',
           title: 'Team Synergy',
           url: '/guides/silver-and-blood/team-synergy/',
@@ -428,6 +433,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Complete guide to Prophecy Unbound boss battles, including Normal Mode, Nightmare Mode, ranking system, and rewards.',
       url: '/guides/silver-and-blood/prophecy/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'synergies',
+      title: 'Character Synergies',
+      emoji: '',
+      description:
+        'Complete guide to character synergies in Silver and Blood. Learn about synergy bonuses, leader effects, and team composition benefits.',
+      url: '/guides/silver-and-blood/synergies/',
       category: 'guides',
       status: 'active',
     },

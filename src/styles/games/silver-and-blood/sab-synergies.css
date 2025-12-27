@@ -1,0 +1,270 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                   SILVER AND BLOOD SYNERGIES PAGE STYLES                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.synergies-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.synergies-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.synergies-intro h2 {
+  color: var(--sab-text-light);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.synergies-intro p {
+  color: var(--sab-text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           SYNERGY SECTIONS                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.synergy-section {
+  background: var(--sab-bg-dark);
+  border: 1px solid var(--sab-border-light);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.synergy-header {
+  background: var(--sab-bg-medium);
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--sab-border-light);
+}
+
+.synergy-name {
+  color: var(--sab-text-white);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.synergy-content {
+  padding: 1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           LEADER SECTION                                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.leader-section {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.leader-badge {
+  background: var(--sab-muted-gold);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.leader-icon {
+  border-radius: 8px;
+  border: 2px solid var(--sab-muted-gold);
+}
+
+.leader-info h3 {
+  color: var(--sab-text-light);
+  font-size: 1.1rem;
+  margin: 0.25rem 0 0.15rem 0;
+}
+
+.leader-info p {
+  color: var(--sab-text-muted);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          MEMBERS SECTION                                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.members-section {
+  margin-bottom: 1.5rem;
+}
+
+.members-section h4 {
+  color: var(--sab-text-medium);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.75rem 0;
+}
+
+.members-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.member-icon {
+  border-radius: 6px;
+}
+
+.member-name {
+  color: var(--sab-text-medium);
+  font-size: 0.75rem;
+  text-align: center;
+  max-width: 80px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          TIERS SECTION                                  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.tiers-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tier-box {
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  background: var(--sab-bg-medium);
+}
+
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tier-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.tier-2 .tier-badge {
+  background: var(--sab-calm-blue);
+  color: #fff;
+}
+
+.tier-3 .tier-badge {
+  background: var(--sab-calm-red);
+  color: #fff;
+}
+
+.tier-req {
+  color: var(--sab-text-muted);
+  font-size: 0.75rem;
+}
+
+.tier-desc {
+  color: var(--sab-text-medium);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          MOBILE RESPONSIVE                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .synergies-container {
+    padding: 0 0.75rem;
+  }
+
+  .synergies-intro h2 {
+    font-size: 1.1rem;
+  }
+
+  .synergies-intro p {
+    font-size: 0.9rem;
+  }
+
+  .synergy-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .synergy-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .synergy-name {
+    font-size: 1.15rem;
+  }
+
+  .synergy-content {
+    padding: 1rem;
+  }
+
+  .leader-section {
+    gap: 1rem;
+  }
+
+  .leader-info h3 {
+    font-size: 1rem;
+  }
+
+  .members-grid {
+    gap: 0.5rem;
+  }
+
+  .member-name {
+    font-size: 0.7rem;
+    max-width: 70px;
+  }
+
+  .tier-box {
+    padding: 0.75rem;
+  }
+
+  .tier-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .synergies-container {
+    padding: 0 0.5rem;
+  }
+
+  .leader-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .members-grid {
+    justify-content: flex-start;
+  }
+
+  .member-card {
+    min-width: 70px;
+  }
+}

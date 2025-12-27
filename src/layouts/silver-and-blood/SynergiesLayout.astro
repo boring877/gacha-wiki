@@ -1,0 +1,150 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+// Import CSS files properly
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-synergies.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead
+      title={title}
+      description={description || ''}
+      breadcrumbs={breadcrumbs}
+      shouldPreloadDefaultImage={false}
+    />
+    <GameSEO
+      gameKey="silver-and-blood"
+      title={title}
+      description={description}
+      additionalKeywords={[
+        'silver and blood synergies',
+        'silver and blood character synergy',
+        'silver and blood synergy system',
+        'silver and blood team bonuses',
+        'sab synergies',
+        'silver and blood synergy guide',
+        'silver and blood synergy effects',
+        'silver and blood collaboration',
+        'synergy bonuses',
+        'silver and blood synergy teams',
+        'silver and blood synergy buffs',
+        'silver and blood synergy database',
+      ]}
+    />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Silver and Blood Character Synergies Guide",
+        "description": "Complete guide to character synergies in Silver and Blood. Learn about synergy bonuses, leader effects, and team composition benefits.",
+        "url": "https://gachawiki.info/guides/silver-and-blood/synergies/",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "GachaWiki",
+          "url": "https://gachawiki.info"
+        },
+        "about": {
+          "@type": "VideoGame",
+          "name": "Silver and Blood"
+        }
+      }
+    </script>
+    <slot name="head" />
+    <Analytics />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Silver and Blood Hero Section -->
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                {/* Hero Image Container */}
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      loading="eager"
+                      decoding="async"
+                      width={1200}
+                      height={400}
+                    />
+                    {/* Overlay Gradient */}
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+
+                {/* Game Title */}
+                <h1 class="hero-title">{gameTitle}</h1>
+                {/* Decorative Elements */}
+                <DecorativeLines />
+              </section>
+            )
+          }
+          <!-- Title Only Section (when no hero image) -->
+          {
+            !heroImage && gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="silver-and-blood" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
