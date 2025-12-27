@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all buff icons dynamically
+const buffImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/silver-and-blood/buffs/*.png',
+  { eager: true }
+);
+
+// Build a map from filename to image metadata
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(buffImages)) {
+  const filename = path.split('/').pop() || '';
+  iconMap[filename] = module.default;
+}
+
+export interface Props {
+  /** Icon filename (e.g., "Buff_Aim.png") */
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt = 'Buff icon',
+  width = 32,
+  height = 32,
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+
+const imageSrc = iconMap[icon];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    format="webp"
+    quality={85}
+  />
+) : (
+  <div class={`buff-icon-missing ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .buff-icon-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    color: #6a6a6a;
+    font-size: 12px;
+    font-weight: bold;
+  }
+</style>

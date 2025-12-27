@@ -1,0 +1,490 @@
+---
+import CharacterSkillsLayout from '../../../layouts/silver-and-blood/CharacterSkillsLayout.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABSkillIcon from '../../../components/silver-and-blood/SABSkillIcon.astro';
+import SABBuffIcon from '../../../components/silver-and-blood/SABBuffIcon.astro';
+import { characterSkills, skillTypes } from '../../../data/silver-and-blood/character-skills.js';
+
+const pageTitle = 'Character Skills';
+const pageDescription = 'Complete character skills database for Silver and Blood. View all skills with damage scaling, potency bonus, and detailed descriptions for every character.';
+
+// Get skill type display name
+function getSkillTypeName(type: string): string {
+  const typeInfo = skillTypes[type as keyof typeof skillTypes];
+  return typeInfo?.name || type;
+}
+
+// Calculate stats
+const totalCharacters = characterSkills.length;
+const totalSkills = characterSkills.reduce((acc, char) => acc + (char.skills?.length || 0), 0);
+
+// Skill type counts
+const skillTypeCounts = {
+  basicAttack: 0,
+  skill: 0,
+  ultimate: 0,
+  passive: 0
+};
+
+characterSkills.forEach(char => {
+  char.skills?.forEach(skill => {
+    if (skill.type in skillTypeCounts) {
+      skillTypeCounts[skill.type as keyof typeof skillTypeCounts]++;
+    }
+  });
+});
+---
+
+<CharacterSkillsLayout
+  title={`${pageTitle} - Silver and Blood`}
+  description={pageDescription}
+  pageTitle={pageTitle}
+>
+  <div class="character-skills-index">
+    <!-- Summary Section -->
+    <section class="skills-summary">
+      <h2>Overview</h2>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalCharacters}</div>
+          <div class="summary-stat-label">Characters</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{totalSkills}</div>
+          <div class="summary-stat-label">Total Skills</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillTypeCounts.skill + skillTypeCounts.ultimate}</div>
+          <div class="summary-stat-label">Active Skills</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-value">{skillTypeCounts.passive}</div>
+          <div class="summary-stat-label">Talents</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="skills-filters">
+      <h2>Filter Skills</h2>
+      <form class="filter-row" onsubmit="return false;">
+        <div class="filter-group">
+          <label for="search-input">Search Character</label>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Enter character name..."
+            autocomplete="off"
+          />
+        </div>
+        <div class="filter-group">
+          <label for="type-filter">Skill Type</label>
+          <select id="type-filter">
+            <option value="">All Types</option>
+            <option value="basicAttack">Basic Attack</option>
+            <option value="skill">Skill</option>
+            <option value="ultimate">Ultimate</option>
+            <option value="passive">Talent</option>
+          </select>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results Count -->
+    <div class="results-count">
+      Showing <span id="visible-count">{totalCharacters}</span> of {totalCharacters} characters
+    </div>
+
+    <!-- Character Sections -->
+    {characterSkills.map((character) => (
+      <section
+        class="skill-character-section"
+        id={`character-${character.characterId}`}
+        data-name={character.characterName.toLowerCase()}
+      >
+        <div class="skill-character-header">
+          <div class="character-icon-container">
+            <SABCharacterIcon
+              name={character.characterName}
+              variant="Base"
+              size="small"
+              width={64}
+              height={64}
+              loading="lazy"
+            />
+          </div>
+          <div class="skill-character-info">
+            <h2 class="skill-character-name">{character.characterName}</h2>
+            <div class="skill-character-meta">{character.skills.length} Skills</div>
+          </div>
+        </div>
+
+        <div class="skills-content">
+          <div class="skills-cards">
+            {character.skills.map((skill, index) => (
+              <div
+                class={`skill-card-mini ${skill.type}`}
+                data-skill={JSON.stringify({
+                  name: skill.name,
+                  type: skill.type,
+                  typeName: getSkillTypeName(skill.type),
+                  icon: skill.icon,
+                  iconExists: skill.iconExists,
+                  descriptions: skill.descriptionByLevel || [],
+                  hint: skill.hint,
+                  charId: character.characterId,
+                  cost: skill.cost || null,
+                  hasBuffs: skill.buffs && skill.buffs.length > 0,
+                })}
+                data-skill-id={`${character.characterId}-${index}`}
+                data-skill-type={skill.type}
+              >
+                <div class="skill-card-icon">
+                  {skill.iconExists && skill.icon ? (
+                    <SABSkillIcon
+                      icon={skill.icon}
+                      alt={skill.name}
+                      width={80}
+                      height={80}
+                    />
+                  ) : (
+                    <div class="skill-icon-missing">?</div>
+                  )}
+                </div>
+                <span class="skill-card-name">{skill.name}</span>
+                <span class={`skill-card-type ${skill.type}`}>
+                  {getSkillTypeName(skill.type)}
+                </span>
+                {/* Pre-rendered buffs (hidden, copied to detail panel on click) */}
+                {skill.buffs && skill.buffs.length > 0 && (
+                  <div class="skill-buffs-prerender hidden">
+                    <div class="buffs-title">Effects</div>
+                    <div class="buffs-list">
+                      {skill.buffs.map((buff: any) => (
+                        <div class="buff-item">
+                          {buff.icon ? (
+                            <SABBuffIcon
+                              icon={buff.icon}
+                              alt={buff.name}
+                              width={32}
+                              height={32}
+                              class="buff-icon"
+                            />
+                          ) : (
+                            <div class="buff-icon-missing">?</div>
+                          )}
+                          <div class="buff-info">
+                            <span class="buff-name">{buff.name}</span>
+                            <p class="buff-desc">{buff.description || ''}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div class="skill-detail-panel" data-char={character.characterId}>
+            <div class="detail-header">
+              <div class="detail-icon" id={`detail-icon-${character.characterId}`}></div>
+              <div class="detail-info">
+                <h3 class="detail-name" id={`detail-name-${character.characterId}`}></h3>
+                <div class="detail-meta" id={`detail-meta-${character.characterId}`}></div>
+              </div>
+            </div>
+            <div class="detail-description" id={`detail-description-${character.characterId}`}></div>
+            <div class="detail-hint hidden" id={`detail-hint-${character.characterId}`}>
+              <span class="detail-hint-name"></span>
+              <p class="detail-hint-desc"></p>
+            </div>
+            <div class="detail-buffs hidden" id={`detail-buffs-${character.characterId}`}></div>
+            <div class="level-selector" id={`level-selector-${character.characterId}`}>
+              <span class="level-label">Level:</span>
+              <button class="level-btn level-minus" type="button">-</button>
+              <input type="number" class="level-input" min="1" max="10" value="10" />
+              <button class="level-btn level-plus" type="button">+</button>
+              <span class="level-max">/ 10</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <div class="no-results hidden" id="no-results">
+      No characters found matching your criteria.
+    </div>
+  </div>
+</CharacterSkillsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
+    const visibleCount = document.getElementById('visible-count');
+    const noResults = document.getElementById('no-results');
+    const sections = document.querySelectorAll('.skill-character-section');
+
+    // Current skill state per character
+    const currentSkills: Record<string, any> = {};
+    const currentCards: Record<string, HTMLElement | null> = {};
+
+    // Format description with highlights
+    function formatDescription(desc: string): string {
+      if (!desc) return '';
+      return desc
+        .replace(/<style=Highlight>([^<]*)<\/style>/g, '<span class="highlight">$1</span>')
+        .replace(/<style=Warning>([^<]*)<\/style>/g, '<span class="warning">$1</span>')
+        // Highlight percentage values (e.g., 65.0%, 100%)
+        .replace(/(\d+\.?\d*%)/g, '<span class="value-highlight">$1</span>')
+        // Highlight "X sec" durations
+        .replace(/(\d+\.?\d*)\s*(sec|seconds?)/gi, '<span class="value-highlight">$1</span> $2');
+    }
+
+    // Update skill detail panel based on level
+    function updateSkillDetail(charId: string, level: number) {
+      const skill = currentSkills[charId];
+      if (!skill) return;
+
+      const levelIndex = Math.max(0, Math.min(9, level - 1));
+      const descEl = document.getElementById(`detail-description-${charId}`);
+      // Update description
+      if (descEl) {
+        const description = skill.descriptions[levelIndex] || skill.descriptions[9] || '';
+        descEl.innerHTML = formatDescription(description);
+      }
+    }
+
+    // Show skill detail panel
+    function showSkillDetail(card: HTMLElement, skill: any) {
+      const charId = skill.charId;
+      currentSkills[charId] = skill;
+      currentCards[charId] = card;
+
+      const panel = document.querySelector(`.skill-detail-panel[data-char="${charId}"]`) as HTMLElement;
+      const nameEl = document.getElementById(`detail-name-${charId}`);
+      const metaEl = document.getElementById(`detail-meta-${charId}`);
+      const iconEl = document.getElementById(`detail-icon-${charId}`);
+      const hintEl = document.getElementById(`detail-hint-${charId}`);
+      const levelSelector = document.getElementById(`level-selector-${charId}`) as HTMLElement;
+
+      if (!panel || !nameEl || !metaEl || !iconEl) return;
+
+      // Set name
+      nameEl.textContent = skill.name;
+
+      // Set meta badge and cost
+      let metaHtml = `<span class="meta-badge ${skill.type}">${skill.typeName}</span>`;
+      if (skill.cost) {
+        metaHtml += `<span class="meta-cost">Cost: ${skill.cost}</span>`;
+      }
+      metaEl.innerHTML = metaHtml;
+
+      // Copy icon from card
+      const cardIcon = card.querySelector('.skill-card-icon');
+      if (cardIcon) {
+        iconEl.innerHTML = cardIcon.innerHTML;
+      }
+
+      // Show/hide hint
+      if (skill.hint && hintEl) {
+        hintEl.classList.remove('hidden');
+        const hintName = hintEl.querySelector('.detail-hint-name');
+        const hintDesc = hintEl.querySelector('.detail-hint-desc');
+        if (hintName) hintName.textContent = skill.hint.name || '';
+        if (hintDesc) hintDesc.textContent = skill.hint.desc || '';
+      } else if (hintEl) {
+        hintEl.classList.add('hidden');
+      }
+
+      // Show/hide buffs - copy pre-rendered HTML from card
+      const buffsEl = document.getElementById(`detail-buffs-${charId}`);
+      const prerenderedBuffs = card.querySelector('.skill-buffs-prerender');
+      if (skill.hasBuffs && prerenderedBuffs && buffsEl) {
+        buffsEl.classList.remove('hidden');
+        buffsEl.innerHTML = prerenderedBuffs.innerHTML;
+      } else if (buffsEl) {
+        buffsEl.classList.add('hidden');
+        buffsEl.innerHTML = '';
+      }
+
+      // Show/hide level selector (talents don't have levels)
+      if (levelSelector) {
+        if (skill.type === 'passive') {
+          levelSelector.style.display = 'none';
+        } else {
+          levelSelector.style.display = 'flex';
+          // Reset level input
+          const levelInput = levelSelector.querySelector('.level-input') as HTMLInputElement;
+          if (levelInput) {
+            levelInput.value = '10';
+          }
+        }
+      }
+
+      // Update description (use level 10 for skills, level 1 for talents)
+      const displayLevel = skill.type === 'passive' ? 1 : 10;
+      updateSkillDetail(charId, displayLevel);
+
+      // Show panel
+      panel.classList.add('active');
+
+      // Mark card as active
+      const allCards = card.closest('.skills-cards')?.querySelectorAll('.skill-card-mini');
+      allCards?.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    }
+
+    // Hide skill detail panel
+    function hideSkillDetail(charId: string) {
+      const panel = document.querySelector(`.skill-detail-panel[data-char="${charId}"]`) as HTMLElement;
+      if (panel) {
+        panel.classList.remove('active');
+      }
+
+      const section = document.getElementById(`character-${charId}`);
+      section?.querySelectorAll('.skill-card-mini').forEach(c => c.classList.remove('active'));
+
+      currentSkills[charId] = null;
+      currentCards[charId] = null;
+    }
+
+    // Card click handlers
+    document.querySelectorAll('.skill-card-mini').forEach(card => {
+      card.addEventListener('click', () => {
+        const el = card as HTMLElement;
+        const skillData = el.dataset.skill;
+
+        if (!skillData) return;
+
+        try {
+          const skill = JSON.parse(skillData);
+          const charId = skill.charId;
+
+          // If clicking same card, toggle off
+          if (currentCards[charId] === el) {
+            hideSkillDetail(charId);
+          } else {
+            showSkillDetail(el, skill);
+          }
+        } catch (err) {
+          console.error('Error parsing skill data:', err);
+        }
+      });
+    });
+
+    // Level control handlers
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+
+      // Handle minus button
+      if (target.classList.contains('level-minus')) {
+        const selector = target.closest('.level-selector');
+        const input = selector?.querySelector('.level-input') as HTMLInputElement;
+        const charId = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+        if (input && currentSkills[charId]) {
+          const current = parseInt(input.value) || 1;
+          if (current > 1) {
+            input.value = (current - 1).toString();
+            updateSkillDetail(charId, current - 1);
+          }
+        }
+      }
+
+      // Handle plus button
+      if (target.classList.contains('level-plus')) {
+        const selector = target.closest('.level-selector');
+        const input = selector?.querySelector('.level-input') as HTMLInputElement;
+        const charId = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+        if (input && currentSkills[charId]) {
+          const current = parseInt(input.value) || 1;
+          if (current < 10) {
+            input.value = (current + 1).toString();
+            updateSkillDetail(charId, current + 1);
+          }
+        }
+      }
+    });
+
+    // Handle level input change
+    document.querySelectorAll('.level-input').forEach(input => {
+      input.addEventListener('change', () => {
+        const inputEl = input as HTMLInputElement;
+        const selector = inputEl.closest('.level-selector');
+        const charId = (selector?.closest('.skill-detail-panel') as HTMLElement)?.dataset.char || '';
+
+        if (currentSkills[charId]) {
+          let value = parseInt(inputEl.value) || 1;
+          value = Math.max(1, Math.min(10, value));
+          inputEl.value = value.toString();
+          updateSkillDetail(charId, value);
+        }
+      });
+    });
+
+    // Filter functionality
+    function filterSections() {
+      const searchTerm = searchInput?.value.toLowerCase().trim() || '';
+      const selectedType = typeFilter?.value || '';
+
+      let visibleCountNum = 0;
+
+      sections.forEach(section => {
+        const el = section as HTMLElement;
+        const name = el.dataset.name || '';
+
+        // Check character name match
+        const matchesSearch = !searchTerm || name.includes(searchTerm);
+
+        // Check skill type match
+        let matchesType = !selectedType;
+        if (selectedType) {
+          const skillCards = el.querySelectorAll('.skill-card-mini');
+          skillCards.forEach(card => {
+            const cardEl = card as HTMLElement;
+            const cardType = cardEl.dataset.skillType || '';
+            if (cardType === selectedType) {
+              matchesType = true;
+              cardEl.style.display = '';
+            } else {
+              cardEl.style.display = 'none';
+            }
+          });
+
+          // If no type filter, show all cards
+          if (!selectedType) {
+            skillCards.forEach(card => {
+              (card as HTMLElement).style.display = '';
+            });
+          }
+        } else {
+          // Show all cards when no type filter
+          el.querySelectorAll('.skill-card-mini').forEach(card => {
+            (card as HTMLElement).style.display = '';
+          });
+        }
+
+        if (matchesSearch && matchesType) {
+          el.style.display = '';
+          visibleCountNum++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (visibleCount) {
+        visibleCount.textContent = visibleCountNum.toString();
+      }
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCountNum !== 0);
+      }
+    }
+
+    searchInput?.addEventListener('input', filterSections);
+    typeFilter?.addEventListener('change', filterSections);
+  });
+</script>

@@ -122,6 +122,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Tags',
           url: '/guides/silver-and-blood/character-tag-selection/',
         },
+        {
+          id: 'character-skills',
+          title: 'Skills',
+          url: '/guides/silver-and-blood/character-skills/',
+        },
       ],
     },
     {
@@ -339,6 +344,15 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       emoji: '',
       description: 'Explore character stories, voice actors, and backstories for all Silver and Blood characters.',
       url: '/guides/silver-and-blood/characters-info/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'character-skills',
+      title: 'Character Skills',
+      emoji: '',
+      description: 'Complete database of all character skills with damage scaling, potency bonus, and detailed descriptions.',
+      url: '/guides/silver-and-blood/character-skills/',
       category: 'guides',
       status: 'active',
     },

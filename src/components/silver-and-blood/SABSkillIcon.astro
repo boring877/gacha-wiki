@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all skill icons dynamically
+const skillImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/silver-and-blood/skill_icons/*.png',
+  { eager: true }
+);
+
+// Build a map from filename to image metadata
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(skillImages)) {
+  const filename = path.split('/').pop() || '';
+  iconMap[filename] = module.default;
+}
+
+export interface Props {
+  /** Icon filename (e.g., "C_Nevernight_Base_Attack.png") */
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt = 'Skill icon',
+  width = 64,
+  height = 64,
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+
+const imageSrc = iconMap[icon];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    format="webp"
+    quality={85}
+  />
+) : (
+  <div class={`skill-icon-missing ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .skill-icon-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    color: #6a6a6a;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
