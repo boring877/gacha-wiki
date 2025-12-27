@@ -10,6 +10,15 @@ Disallow: /private
 Disallow: /dist/
 Disallow: /node_modules/
 
+# Disallow non-content files
+Disallow: /LICENSE
+Disallow: /rss.xml
+Disallow: /torrents/
+
+# Disallow URLs with query parameters (search, etc.)
+Disallow: /*?search=
+Disallow: /*?*search_term_string*
+
 # Crawl delay (good for smaller sites)
 Crawl-delay: 1
 

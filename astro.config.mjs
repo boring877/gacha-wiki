@@ -9,8 +9,11 @@ import path from 'path';
 export default defineConfig({
   site: 'https://gachawiki.info',
   output: 'static',
+  // Fix trailing slash to prevent 300 redirect issues in Google Search Console
+  // 'always' ensures all URLs end with / and prevents duplicate crawling
+  trailingSlash: 'always',
   integrations: [
-    sitemap(), 
+    sitemap(),
     svelte()
   ],
   i18n: {

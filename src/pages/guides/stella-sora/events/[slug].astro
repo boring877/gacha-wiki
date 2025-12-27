@@ -40,6 +40,8 @@ const currentEvent = stellaSoraEvents.find(e => e.id === event.id) || event;
       endDate: event.endDate,
       url: `https://gachawiki.info/guides/stella-sora/events/${event.id}/`,
       image: event.featuredImage,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
       location: {
         '@type': 'VirtualLocation',
         url: 'https://stellasora.global/',

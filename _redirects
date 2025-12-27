@@ -3,3 +3,20 @@
 
 # Example redirect
 /http-version    /    301
+
+# Fix 404 errors from GSC - waifu-skins pages that don't exist
+# Redirect to main Silver and Blood characters page
+/guides/silver-and-blood/waifu-skins/*    /guides/silver-and-blood/characters/    301
+/guides/silver-and-blood/waifu-skins/    /guides/silver-and-blood/characters/    301
+
+# Fix waifu-gallery 404s - redirect to characters page
+/guides/silver-and-blood/waifu-gallery/*    /guides/silver-and-blood/characters/    301
+/guides/silver-and-blood/waifu-gallery/    /guides/silver-and-blood/characters/    301
+
+# Fix broken/incomplete URLs from GSC
+/guides/zone-    /guides/zone-nova/    301
+/guides/horizon-walker/weapons/undefined    /guides/horizon-walker/weapons/    301
+
+# Fix URLs missing trailing slash (redirect to proper version)
+/guides/zone-nova/characters/kela    /guides/zone-nova/characters/kela/    301
+/guides/zone-nova/characters/anubis    /guides/zone-nova/characters/anubis/    301

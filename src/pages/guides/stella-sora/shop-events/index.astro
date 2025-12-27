@@ -43,6 +43,17 @@ const allShopEvents = getAllShopEvents();
             endDate: event.endDate,
             url: `https://gachawiki.info${event.url}`,
             image: event.featuredImage,
+            eventStatus: 'https://schema.org/EventScheduled',
+            eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+            location: {
+              '@type': 'VirtualLocation',
+              url: 'https://stellasora.global/',
+            },
+            organizer: {
+              '@type': 'Organization',
+              name: 'Stella Sora',
+              url: 'https://stellasora.global/',
+            },
           },
         })),
       },
