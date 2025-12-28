@@ -75,6 +75,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Rerolling Guide', href: '/guides/silver-and-blood/rerolling-guide/' },
           { name: 'Gifts', href: '/guides/silver-and-blood/gifts/' },
           { name: 'Character Gifts', href: '/guides/silver-and-blood/character-gifts/' },
+          { name: 'Artifacts', href: '/guides/silver-and-blood/artifacts/' },
           { name: 'Clock', href: '/clock/silver-and-blood/' },
           { name: 'Redeem Codes', href: '/guides/silver-and-blood/redeem-codes/' },
           { name: 'Bug Fixes', href: '/guides/silver-and-blood/bugs/' },

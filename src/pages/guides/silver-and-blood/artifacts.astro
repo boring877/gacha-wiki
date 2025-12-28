@@ -1,0 +1,376 @@
+---
+import ArtifactsLayout from '../../../layouts/silver-and-blood/ArtifactsLayout.astro';
+import { Image } from 'astro:assets';
+import {
+  getArtifacts,
+  getArtifactStats,
+  formatSkillDescription,
+  getArtifactImagePrefix
+} from '../../../data/silver-and-blood/artifacts.js';
+
+// Import artifact skill icons
+import PhilosophersStone_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/PhilosophersStone_Skill1.png';
+import PhilosophersStone_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/PhilosophersStone_Skill2.png';
+import SilvershadowChronometer_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/SilvershadowChronometer_Skill1.png';
+import SilvershadowChronometer_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/SilvershadowChronometer_Skill2.png';
+import FruitOfImmortality_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/FruitOfImmortality_Skill1.png';
+import FruitOfImmortality_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/FruitOfImmortality_Skill2.png';
+import PoseidonsSkull_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/PoseidonsSkull_Skill1.png';
+import PoseidonsSkull_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/PoseidonsSkull_Skill2.png';
+import EyeOfTruth_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/EyeOfTruth_Skill1.png';
+import EyeOfTruth_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/EyeOfTruth_Skill2.png';
+import SoulBindingReliquary_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/SoulBindingReliquary_Skill1.png';
+import SoulBindingReliquary_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/SoulBindingReliquary_Skill2.png';
+import CageOfTheInvisibleNightingale_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/CageOfTheInvisibleNightingale_Skill1.png';
+import CageOfTheInvisibleNightingale_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/CageOfTheInvisibleNightingale_Skill2.png';
+import Peacemaker_Skill1 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Peacemaker_Skill1.png';
+import Peacemaker_Skill2 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Peacemaker_Skill2.png';
+
+// Import blueprint icons
+import Blueprint900001 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900001.png';
+import Blueprint900002 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900002.png';
+import Blueprint900003 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900003.png';
+import Blueprint900004 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900004.png';
+import Blueprint900005 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900005.png';
+import Blueprint900006 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900006.png';
+import Blueprint900007 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900007.png';
+import Blueprint900008 from '../../../assets/images/games/silver-and-blood/icons/artifacts/900008.png';
+
+// Import artifact main icons
+import Legacy900001 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900001.png';
+import Legacy900002 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900002.png';
+import Legacy900003 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900003.png';
+import Legacy900004 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900004.png';
+import Legacy900005 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900005.png';
+import Legacy900006 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900006.png';
+import Legacy900007 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900007.png';
+import Legacy900008 from '../../../assets/images/games/silver-and-blood/icons/artifacts/Legacy_900008.png';
+
+// Map blueprint icons by itemId
+const blueprintIconMap: Record<number, ImageMetadata> = {
+  900001: Blueprint900001,
+  900002: Blueprint900002,
+  900003: Blueprint900003,
+  900004: Blueprint900004,
+  900005: Blueprint900005,
+  900006: Blueprint900006,
+  900007: Blueprint900007,
+  900008: Blueprint900008,
+};
+
+// Map artifact main icons by id
+const artifactIconMap: Record<string, ImageMetadata> = {
+  '90001': Legacy900001,
+  '90002': Legacy900002,
+  '90003': Legacy900003,
+  '90004': Legacy900004,
+  '90005': Legacy900005,
+  '90006': Legacy900006,
+  '90007': Legacy900007,
+  '90008': Legacy900008,
+};
+
+// Map skill icons
+const skillIconMap: Record<string, ImageMetadata> = {
+  'PhilosophersStone_Skill1': PhilosophersStone_Skill1,
+  'PhilosophersStone_Skill2': PhilosophersStone_Skill2,
+  'SilvershadowChronometer_Skill1': SilvershadowChronometer_Skill1,
+  'SilvershadowChronometer_Skill2': SilvershadowChronometer_Skill2,
+  'FruitOfImmortality_Skill1': FruitOfImmortality_Skill1,
+  'FruitOfImmortality_Skill2': FruitOfImmortality_Skill2,
+  'PoseidonsSkull_Skill1': PoseidonsSkull_Skill1,
+  'PoseidonsSkull_Skill2': PoseidonsSkull_Skill2,
+  'EyeOfTruth_Skill1': EyeOfTruth_Skill1,
+  'EyeOfTruth_Skill2': EyeOfTruth_Skill2,
+  'SoulBindingReliquary_Skill1': SoulBindingReliquary_Skill1,
+  'SoulBindingReliquary_Skill2': SoulBindingReliquary_Skill2,
+  'CageOfTheInvisibleNightingale_Skill1': CageOfTheInvisibleNightingale_Skill1,
+  'CageOfTheInvisibleNightingale_Skill2': CageOfTheInvisibleNightingale_Skill2,
+  'Peacemaker_Skill1': Peacemaker_Skill1,
+  'Peacemaker_Skill2': Peacemaker_Skill2,
+};
+
+// Get skill icon for an artifact
+function getSkillIcon(artifactKey: string, skillIndex: number): ImageMetadata | null {
+  const prefix = getArtifactImagePrefix(artifactKey);
+  const key = `${prefix}_Skill${skillIndex + 1}`;
+  return skillIconMap[key] || null;
+}
+
+// Get data
+const artifacts = getArtifacts();
+const stats = getArtifactStats();
+
+const pageTitle = 'Artifact Database';
+const pageDescription = 'Complete artifact database for Silver and Blood. View all artifacts with stats, combat skills, and upgrade costs.';
+---
+
+<ArtifactsLayout title={`${pageTitle} | Silver and Blood`} description={pageDescription} pageTitle={pageTitle}>
+  <div class="artifacts-container">
+    <!-- Summary Stats -->
+    <div class="artifacts-summary">
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.total}</span>
+        <span class="summary-stat-label">Total Artifacts</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.totalSkills}</span>
+        <span class="summary-stat-label">Combat Skills</span>
+      </div>
+    </div>
+
+    <!-- Artifacts Section -->
+    <section class="artifacts-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">All Artifacts</h2>
+          <p class="section-subtitle">Complete list of artifacts with stats and combat skills</p>
+        </div>
+      </div>
+
+      <!-- Artifacts List -->
+      <div class="artifacts-list">
+        {artifacts.map(artifact => {
+          const artifactIcon = artifactIconMap[artifact.id];
+          return (
+          <article class="artifact-card" id={artifact.key}>
+            <!-- Header -->
+            <div class="artifact-card-header">
+              <div class="artifact-icon-wrapper">
+                {artifactIcon ? (
+                  <Image
+                    src={artifactIcon}
+                    alt={artifact.name}
+                    class="artifact-icon"
+                    width={100}
+                    height={100}
+                  />
+                ) : (
+                  <div class="artifact-icon-placeholder"></div>
+                )}
+              </div>
+              <div class="artifact-info">
+                <h3 class="artifact-name">{artifact.name}</h3>
+                <p class="artifact-description">{artifact.description}</p>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="artifact-card-body">
+              <!-- Stats with Level Selector -->
+              <div class="artifact-section">
+                <h4 class="artifact-section-title">Stats</h4>
+                <div class="stats-interactive" data-artifact-key={artifact.key}>
+                  <!-- Level Input -->
+                  <div class="level-input-wrapper">
+                    <label class="level-label" for={`level-${artifact.key}`}>Level</label>
+                    <input
+                      type="number"
+                      id={`level-${artifact.key}`}
+                      class="level-input"
+                      min="1"
+                      max="10"
+                      value="10"
+                      data-artifact={artifact.key}
+                    />
+                  </div>
+
+                  <!-- Stats Display -->
+                  <div class="stats-grid">
+                    <div class="stat-box">
+                      <span class="stat-label">HP</span>
+                      <span class="stat-value" data-stat-hp={artifact.key}>{artifact.levels[9].stats.hp.toLocaleString()}</span>
+                    </div>
+                    <div class="stat-box">
+                      <span class="stat-label">ATK</span>
+                      <span class="stat-value" data-stat-atk={artifact.key}>{artifact.levels[9].stats.atk.toLocaleString()}</span>
+                    </div>
+                    <div class="stat-box">
+                      <span class="stat-label">P.DEF</span>
+                      <span class="stat-value" data-stat-pdef={artifact.key}>{artifact.levels[9].stats.pDef.toLocaleString()}</span>
+                    </div>
+                    <div class="stat-box">
+                      <span class="stat-label">M.DEF</span>
+                      <span class="stat-value" data-stat-mdef={artifact.key}>{artifact.levels[9].stats.mDef.toLocaleString()}</span>
+                    </div>
+                    <div class="stat-box">
+                      <span class="stat-label">Slots</span>
+                      <span class="stat-value" data-stat-slots={artifact.key}>{artifact.levels[9].wearableSlots}</span>
+                    </div>
+                  </div>
+
+                  <!-- Upgrade Cost Display (show cost to reach level 10, which is stored at level 9) -->
+                  <div class="upgrade-cost-section">
+                    <h5 class="upgrade-cost-title">Upgrade Cost</h5>
+                    <div class="upgrade-cost-grid" data-upgrade-cost={artifact.key}>
+                      {artifact.levels[8].upgradeCost && artifact.levels[8].upgradeCost.map((cost: any) => {
+                        const blueprintIcon = blueprintIconMap[cost.itemId];
+                        return (
+                          <div class="cost-item">
+                            {blueprintIcon && (
+                              <Image
+                                src={blueprintIcon}
+                                alt={cost.name}
+                                class="cost-icon"
+                                width={32}
+                                height={32}
+                              />
+                            )}
+                            <span class="cost-name">{cost.name}</span>
+                            <span class="cost-amount" data-cost-item={`${artifact.key}-${cost.itemId}`}>{cost.amount.toLocaleString()}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <!-- Hidden data for JS -->
+                  <script is:inline type="application/json" data-levels={artifact.key} set:html={JSON.stringify(artifact.levels)}></script>
+                </div>
+              </div>
+
+              <!-- Skills -->
+              {artifact.skills && artifact.skills.length > 0 && (
+                <div class="artifact-section">
+                  <h4 class="artifact-section-title">Combat Skills</h4>
+                  <div class="skills-grid">
+                    {artifact.skills.map((skill: any, skillIdx: number) => {
+                      const skillIcon = getSkillIcon(artifact.key, skillIdx);
+                      return (
+                        <div class="skill-card">
+                          <div class="skill-header">
+                            {skillIcon && (
+                              <div class="skill-icon-wrapper">
+                                <Image
+                                  src={skillIcon}
+                                  alt={skill.name}
+                                  class="skill-icon"
+                                  width={48}
+                                  height={48}
+                                />
+                              </div>
+                            )}
+                            <h5 class="skill-name">{skill.name}</h5>
+                          </div>
+                          <p class="skill-description" data-skill-desc={`${artifact.key}-${skillIdx}`} set:html={formatSkillDescription(skill, 10)}></p>
+                          <script is:inline type="application/json" data-skill-data={`${artifact.key}-${skillIdx}`} set:html={JSON.stringify(skill)}></script>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </article>
+        );
+        })}
+      </div>
+    </section>
+  </div>
+</ArtifactsLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const artifactInputs = document.querySelectorAll('.level-input');
+
+    // Format skill description with values at a specific level (returns HTML with highlighted values)
+    function formatSkillDescHtml(skill: any, level: number): string {
+      if (!skill || !skill.description) return '';
+
+      let description = skill.description;
+
+      if (skill.valuesPerLevel) {
+        skill.valuesPerLevel.forEach((valueData: any, index: number) => {
+          const levelIndex = level - 1;
+          const rawValue = valueData.values[levelIndex] || valueData.values[0];
+
+          let formattedValue: string;
+          if (valueData.valueType === '2') {
+            formattedValue = (rawValue / 100).toFixed(0) + '%';
+          } else if (valueData.valueType === '3') {
+            formattedValue = (rawValue / 10000).toFixed(1);
+          } else {
+            formattedValue = rawValue.toString();
+          }
+
+          // Wrap value in highlight span
+          description = description.replace(`{${index}}`, `<span class="skill-highlight">${formattedValue}</span>`);
+        });
+      }
+
+      // Remove style tags but keep our highlights
+      description = description.replace(/<style=\w+>/g, '').replace(/<\/style>/g, '');
+
+      return description;
+    }
+
+    // Update artifact stats and skills
+    function updateArtifact(artifactKey: string, level: number) {
+      if (level < 1) level = 1;
+      if (level > 10) level = 10;
+      if (isNaN(level)) level = 1;
+
+      // Update stats
+      const dataScript = document.querySelector(`script[data-levels="${artifactKey}"]`);
+      if (!dataScript) return;
+
+      const levels = JSON.parse(dataScript.innerHTML || dataScript.textContent || '[]');
+      const levelData = levels[level - 1];
+      if (!levelData) return;
+
+      const hpEl = document.querySelector(`[data-stat-hp="${artifactKey}"]`);
+      const atkEl = document.querySelector(`[data-stat-atk="${artifactKey}"]`);
+      const pdefEl = document.querySelector(`[data-stat-pdef="${artifactKey}"]`);
+      const mdefEl = document.querySelector(`[data-stat-mdef="${artifactKey}"]`);
+      const slotsEl = document.querySelector(`[data-stat-slots="${artifactKey}"]`);
+
+      if (hpEl) hpEl.textContent = levelData.stats.hp.toLocaleString();
+      if (atkEl) atkEl.textContent = levelData.stats.atk.toLocaleString();
+      if (pdefEl) pdefEl.textContent = levelData.stats.pDef.toLocaleString();
+      if (mdefEl) mdefEl.textContent = levelData.stats.mDef.toLocaleString();
+      if (slotsEl) slotsEl.textContent = levelData.wearableSlots.toString();
+
+      // Update skill descriptions
+      const skillDataScripts = document.querySelectorAll(`script[data-skill-data^="${artifactKey}-"]`);
+      skillDataScripts.forEach((script) => {
+        const skillKey = script.getAttribute('data-skill-data');
+        if (!skillKey) return;
+
+        const skillData = script.innerHTML || script.textContent || '{}';
+        const skill = JSON.parse(skillData);
+        const descEl = document.querySelector(`[data-skill-desc="${skillKey}"]`);
+        if (descEl) {
+          descEl.innerHTML = formatSkillDescHtml(skill, level);
+        }
+      });
+
+      // Update upgrade costs (cost to reach current level is stored at level-1)
+      const costLevelIndex = level > 1 ? level - 2 : 0;
+      const costLevelData = levels[costLevelIndex];
+      if (costLevelData && costLevelData.upgradeCost) {
+        costLevelData.upgradeCost.forEach((cost: any) => {
+          const costEl = document.querySelector(`[data-cost-item="${artifactKey}-${cost.itemId}"]`);
+          if (costEl) {
+            costEl.textContent = cost.amount.toLocaleString();
+          }
+        });
+      }
+    }
+
+    // Artifact level input handlers
+    artifactInputs.forEach(input => {
+      const handler = (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        const artifactKey = target.dataset.artifact;
+        if (!artifactKey) return;
+
+        const level = parseInt(target.value);
+        updateArtifact(artifactKey, level);
+      };
+
+      input.addEventListener('input', handler);
+      input.addEventListener('change', handler);
+    });
+  });
+</script>

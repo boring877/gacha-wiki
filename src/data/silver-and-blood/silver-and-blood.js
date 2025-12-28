@@ -235,6 +235,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/guides/silver-and-blood/character-gifts/',
         },
         {
+          id: 'artifacts',
+          title: 'Artifacts',
+          url: '/guides/silver-and-blood/artifacts/',
+        },
+        {
           id: 'redeem-codes',
           title: 'Redeem Codes',
           url: '/guides/silver-and-blood/redeem-codes/',
@@ -527,6 +532,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Find the best gifts for each character based on their camp affiliation. Maximize affinity EXP with matching camp gifts.',
       url: '/guides/silver-and-blood/character-gifts/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'artifacts',
+      title: 'Artifact Database',
+      emoji: '',
+      description:
+        'Complete artifact database for Silver and Blood. View all artifacts with stats, combat skills, and upgrade costs.',
+      url: '/guides/silver-and-blood/artifacts/',
       category: 'guides',
       status: 'active',
     },
