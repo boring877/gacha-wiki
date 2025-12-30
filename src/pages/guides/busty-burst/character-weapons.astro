@@ -7,6 +7,7 @@ import {
   weaponTypes,
 } from '../../../data/busty-burst/character-weapons.js';
 import { statLabels } from '../../../data/busty-burst/weapons.js';
+import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
 
 const title = 'Character Weapons Guide - Busty Burst Fantasy | GachaWiki';
 const description =
@@ -22,13 +23,13 @@ const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
 // Helper to check if weapon has stats
 const hasStats = (stats: Record<string, number>) => Object.keys(stats).length > 0;
 
-// Helper to get image filename with extension
-const getCharImageFile = (imageName: string) => {
-  // Check for png files
-  if (imageName === 'Shaty') {
-    return `${imageName}.png`;
-  }
-  return `${imageName}.jpg`;
+// Helper to get characterId from image name
+const getCharacterId = (imageName: string) => {
+  const paladin = BUSTY_BURST_PALADINS.find(p =>
+    p.fileName === imageName ||
+    p.fileName.toLowerCase() === imageName.toLowerCase()
+  );
+  return paladin?.characterId || 2001;
 };
 ---
 
@@ -96,10 +97,11 @@ const getCharImageFile = (imageName: string) => {
                   <div class="bb-char-weapon-card">
                     <div class="bb-char-weapon-avatar">
                       <PaladinImage
-                        fileName={getCharImageFile(char.image)}
+                        characterId={getCharacterId(char.image)}
                         alt={char.displayName}
-                        width={60}
-                        height={60}
+                        width={80}
+                        height={80}
+                        quality={95}
                       />
                     </div>
                     <div class="bb-char-weapon-info">

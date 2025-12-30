@@ -1,0 +1,208 @@
+---
+import SupportBonusLayout from '../../../layouts/busty-burst/SupportBonusLayout.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import SupportBonusIcon from '../../../components/busty-burst/SupportBonusIcon.astro';
+import { getAllSupportData, getUniqueElements, getUniqueWeapons, getUniqueRarities } from '../../../data/busty-burst/support-data.js';
+
+const supportData = getAllSupportData();
+const elements = getUniqueElements();
+const weapons = getUniqueWeapons();
+const rarities = getUniqueRarities();
+
+const title = 'Busty Burst Support Bonus Guide';
+const description = `Complete support bonus guide for all ${supportData.length} Busty Burst characters. View Element Blessings and Weapon Inspirations with 2/4/6 member team bonuses.`;
+const gameTitle = 'Support Bonus Guide';
+---
+
+<SupportBonusLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-support-bonus-page">
+    <!-- Info Notes -->
+    <div class="bb-bonus-info-notes">
+      <div class="bb-bonus-info-title">Support Bonus Notes</div>
+      <ul class="bb-bonus-info-list">
+        <li>Blessings boost ATK for matching element types based on team composition</li>
+        <li>Inspirations provide stat bonuses based on the character's weapon type</li>
+        <li>Bonuses scale with team member count: 2, 4, or 6 members of the same element/weapon</li>
+        <li>Stack multiple characters to reach higher bonus tiers</li>
+      </ul>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="bb-bonus-controls">
+      <div class="bb-bonus-filter-row">
+        <input type="text" id="bonus-search" class="bb-bonus-search-input" placeholder="Search by character name..." />
+        <select id="rarity-filter" class="bb-bonus-filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(r => <option value={r}>{r}</option>)}
+        </select>
+        <select id="element-filter" class="bb-bonus-filter-select">
+          <option value="">All Elements</option>
+          {elements.map(el => <option value={el}>{el}</option>)}
+        </select>
+        <select id="weapon-filter" class="bb-bonus-filter-select">
+          <option value="">All Weapons</option>
+          {weapons.map(wp => <option value={wp}>{wp}</option>)}
+        </select>
+        <button type="button" id="clear-filters" class="bb-bonus-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="bb-bonus-results-count" id="results-count">
+      Showing <span>{supportData.length}</span> characters
+    </div>
+
+    <!-- Character Cards Grid -->
+    <div class="bb-support-bonus-grid" id="support-bonus-grid">
+      {supportData.map(char => (
+        <div class="bb-bonus-card"
+             data-name={char.name.toLowerCase()}
+             data-rarity={char.rarity.toLowerCase()}
+             data-element={char.element.toLowerCase()}
+             data-weapon={char.weapon.toLowerCase()}>
+
+          <div class="bb-bonus-card-header">
+            <div class="bb-bonus-card-avatar">
+              <PaladinImage characterId={char.id} alt={char.name} width={80} height={80} quality={95} />
+            </div>
+            <div class="bb-bonus-card-info">
+              <h3 class="bb-bonus-card-name">{char.name}</h3>
+              <div class="bb-bonus-card-badges">
+                <span class="bb-badge-rarity">
+                  <RarityImage rarity={char.rarity} width={36} height={36} />
+                </span>
+                <span class="bb-badge" data-element={char.element.toLowerCase()}>
+                  <ElementImage element={char.element} width={14} height={14} />
+                  {char.element}
+                </span>
+                <span class="bb-badge">{char.weapon}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bb-bonus-card-body">
+            <!-- Blessing Section -->
+            <div class="bb-bonus-section blessing">
+              <div class="bb-bonus-section-header">
+                <SupportBonusIcon type="blessing" element={char.element} width={28} height={28} class="bb-bonus-icon" />
+                <span class="bb-bonus-name">{char.supportBonus.blessing.name}</span>
+              </div>
+              <div class="bb-bonus-effect">{char.supportBonus.blessing.effect}</div>
+              <div class="bb-bonus-values">
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">2 Members</span>
+                  <span class="tier-value">{char.supportBonus.blessing.values.members2}</span>
+                </div>
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">4 Members</span>
+                  <span class="tier-value">{char.supportBonus.blessing.values.members4}</span>
+                </div>
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">6 Members</span>
+                  <span class="tier-value">{char.supportBonus.blessing.values.members6}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inspiration Section -->
+            <div class="bb-bonus-section inspiration">
+              <div class="bb-bonus-section-header">
+                <SupportBonusIcon type="inspiration" weapon={char.weapon} width={28} height={28} class="bb-bonus-icon" />
+                <span class="bb-bonus-name">{char.supportBonus.inspiration.name}</span>
+              </div>
+              <div class="bb-bonus-effect">{char.supportBonus.inspiration.effect}</div>
+              <div class="bb-bonus-values">
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">2 Members</span>
+                  <span class="tier-value">{char.supportBonus.inspiration.values.members2}</span>
+                </div>
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">4 Members</span>
+                  <span class="tier-value">{char.supportBonus.inspiration.values.members4}</span>
+                </div>
+                <div class="bb-bonus-tier">
+                  <span class="tier-label">6 Members</span>
+                  <span class="tier-value">{char.supportBonus.inspiration.values.members6}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="bb-bonus-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</SupportBonusLayout>
+
+<script>
+  function initFilters() {
+    const searchInput = document.getElementById('bonus-search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const weaponFilter = document.getElementById('weapon-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const grid = document.getElementById('support-bonus-grid');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.bb-bonus-card');
+
+    function filterCards() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+      const element = elementFilter?.value.toLowerCase() || '';
+      const weapon = weaponFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const matchName = !search || cardEl.dataset.name?.includes(search);
+        const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
+        const matchElement = !element || cardEl.dataset.element === element;
+        const matchWeapon = !weapon || cardEl.dataset.weapon === weapon;
+
+        const isVisible = matchName && matchRarity && matchElement && matchWeapon;
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      if (resultsCount) {
+        const span = resultsCount.querySelector('span');
+        if (span) span.textContent = visibleCount.toString();
+      }
+    }
+
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (weaponFilter) weaponFilter.value = '';
+      filterCards();
+    }
+
+    searchInput?.addEventListener('input', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    weaponFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilters);
+  } else {
+    initFilters();
+  }
+</script>

@@ -8,53 +8,36 @@ import ElementImage from '../../../components/busty-burst/ElementImage.astro';
 import {
   getAllCharacterStats,
   STAT_DISPLAY_NAMES,
-  calculateStatAtLevel,
-  calculateCritRate,
-} from '../../../data/busty-burst/character-stats.js';
-import { getPaladinById } from '../../../data/busty-burst/paladins.js';
+} from '../../../data/busty-burst/character-stats-full.js';
 
-// Get all character stats
-const characterStats = getAllCharacterStats();
+// Get all character stats and sort by rarity: SSR -> SR -> R
+const rarityOrder: Record<string, number> = { 'SSR': 0, 'SR': 1, 'R': 2 };
+const characterStats = getAllCharacterStats().sort((a, b) => {
+  return (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
+});
 
 const title = 'Busty Burst Character Stats Guide';
 const description = `Complete stats guide for all ${characterStats.length} Busty Burst characters. View base stats, level scaling, awakening bonuses, GP abilities, bond progression, limit break, and ability grade bonuses with an interactive level calculator.`;
 const gameTitle = 'Character Stats Guide';
 
-// Get image file name helper
-const getImageFileName = (id: string) => {
-  const paladin = getPaladinById(id);
-  if (!paladin) return '';
-  return paladin.image.split('/').pop() || '';
-};
-
-// Format bonus object to display string
-const formatBonus = (bonus: Record<string, number>) => {
-  return Object.entries(bonus)
-    .map(([stat, value]) => {
-      const displayName = STAT_DISPLAY_NAMES[stat] || stat;
-      return `${displayName} +${value}`;
-    })
-    .join(', ');
+// Calculate total from nested bonus object (lb1, lb2, etc. or lv1, lv2, etc.)
+const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) => {
+  const total: Record<string, number> = {};
+  Object.values(bonusObj).forEach(levelBonus => {
+    if (typeof levelBonus === 'object') {
+      Object.entries(levelBonus).forEach(([stat, value]) => {
+        if (typeof value === 'number') {
+          total[stat] = (total[stat] || 0) + value;
+        }
+      });
+    }
+  });
+  return total;
 };
 ---
 
 <CharacterStatsLayout title={title} description={description} gameTitle={gameTitle}>
   <div class="bb-stats-page">
-    <!-- Info Notes -->
-    <div class="bb-stats-info-notes">
-      <div class="bb-stats-info-title">Stat Notes</div>
-      <ul class="bb-stats-info-list">
-        <li>Crit Rate = Crit Value / 20</li>
-        <li>MP Charge, HP Drain, MP Cost Down = Flat (no level growth)</li>
-        <li>Max MP = 1000 | Ultimate Cost = 500 MP</li>
-        <li>Awakening = Lv 110 bonus</li>
-        <li>GP Ability LV10 = Completing 5 shards in ability</li>
-        <li>Ability Grade 10 = 5 shards each (50 total)</li>
-        <li>Limit Break Max = Sum of all limit break levels (10, 20, 30, etc.)</li>
-        <li>Check boxes = Add bonus stats to total</li>
-      </ul>
-    </div>
-
     <!-- Filter Controls -->
     <div class="bb-stats-controls">
       <div class="bb-stats-filter-row">
@@ -100,19 +83,19 @@ const formatBonus = (bonus: Record<string, number>) => {
             data-role={char.role.toLowerCase()}
             data-rarity={char.rarity.toLowerCase()}
             data-stats={JSON.stringify(char.baseStats)}
-            data-awakening={char.awakening ? JSON.stringify(char.awakening) : ''}
-            data-gp-ability={JSON.stringify(char.gpAbility)}
-            data-limit-break={JSON.stringify(char.limitBreak)}
-            data-ability-grade={JSON.stringify(char.abilityGrade)}
-            data-bond-bonus={JSON.stringify(char.bondBonus)}
+            data-gp-ability={JSON.stringify(char.gpAbility || {})}
+            data-limit-break={JSON.stringify(char.limitBreak || {})}
+            data-ability-grade={JSON.stringify(char.abilityGrade || {})}
+            data-passive-abilities={JSON.stringify(char.passiveAbilities || [])}
           >
             <div class="bb-stats-card-header">
               <div class="bb-stats-card-avatar">
                 <PaladinImage
-                  fileName={getImageFileName(char.id)}
+                  characterId={char.characterId}
                   alt={char.name}
-                  width={120}
-                  height={120}
+                  width={140}
+                  height={140}
+                  quality={95}
                 />
               </div>
               <div class="bb-stats-card-info">
@@ -222,14 +205,14 @@ const formatBonus = (bonus: Record<string, number>) => {
                     <span class="bb-stats-table-label">P.Crit</span>
                     <span class="bb-stats-table-value crit-value" data-stat="physCrit">
                       {char.baseStats.physCrit.lv90}
-                      <span class="crit-rate">({char.baseStats.physCrit.lv90Rate}%)</span>
+                      <span class="crit-rate">({(char.baseStats.physCrit.lv90 / 20).toFixed(1)}%)</span>
                     </span>
                   </div>
                   <div class="bb-stats-table-item">
                     <span class="bb-stats-table-label">M.Crit</span>
                     <span class="bb-stats-table-value crit-value" data-stat="magicCrit">
                       {char.baseStats.magicCrit.lv90}
-                      <span class="crit-rate">({char.baseStats.magicCrit.lv90Rate}%)</span>
+                      <span class="crit-rate">({(char.baseStats.magicCrit.lv90 / 20).toFixed(1)}%)</span>
                     </span>
                   </div>
                   <div class="bb-stats-table-item">
@@ -256,137 +239,107 @@ const formatBonus = (bonus: Record<string, number>) => {
                   <div class="bb-stats-flat-item">
                     <span class="bb-stats-flat-label">MP Charge:</span>
                     <span class="bb-stats-flat-value" data-flat="mpCharge">
-                      {char.baseStats.mpCharge}
+                      {char.baseStats.mpCharge?.lv90 || char.baseStats.mpCharge || 0}
                     </span>
                   </div>
                   <div
                     class="bb-stats-flat-item"
-                    style={char.baseStats.hpDrain > 0 ? '' : 'display:none'}
+                    style={(char.baseStats.hpDrain?.lv90 || 0) > 0 ? '' : 'display:none'}
                   >
                     <span class="bb-stats-flat-label">HP Drain:</span>
                     <span class="bb-stats-flat-value" data-flat="hpDrain">
-                      {char.baseStats.hpDrain}%
+                      {char.baseStats.hpDrain?.lv90 || 0}%
                     </span>
                   </div>
                   <div
                     class="bb-stats-flat-item"
-                    style={char.baseStats.mpCostReduction > 0 ? '' : 'display:none'}
+                    style={(char.baseStats.mpCostDown?.lv90 || 0) > 0 ? '' : 'display:none'}
                   >
                     <span class="bb-stats-flat-label">MP Cost Down:</span>
-                    <span class="bb-stats-flat-value" data-flat="mpCostReduction">
-                      {char.baseStats.mpCostReduction}
+                    <span class="bb-stats-flat-value" data-flat="mpCostDown">
+                      {char.baseStats.mpCostDown?.lv90 || 0}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Bonus Sections */}
-              <div class="bb-stats-bonus-grid">
-                {/* Awakening Bonus */}
-                <div class="bb-stats-bonus-section" data-bonus-type="awakening">
-                  <label class="bb-stats-bonus-toggle">
-                    <input
-                      type="checkbox"
-                      class="bb-stats-bonus-checkbox"
-                      data-bonus-checkbox="awakening"
-                      disabled={!char.awakening}
-                    />
-                    <span class="bb-stats-bonus-title">Awakening</span>
-                  </label>
-                  {char.awakening ? (
-                    <div class="bb-stats-bonus-list">
-                      {Object.entries(char.awakening).map(([stat, value]) => (
-                        <div class="bb-stats-bonus-item">
-                          <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
-                          <span class="stat-value">+{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div class="bb-stats-bonus-na">Not available</div>
-                  )}
-                </div>
-
-                {/* GP Ability LV10 */}
-                <div class="bb-stats-bonus-section" data-bonus-type="gpAbility">
-                  <label class="bb-stats-bonus-toggle">
-                    <input
-                      type="checkbox"
-                      class="bb-stats-bonus-checkbox"
-                      data-bonus-checkbox="gpAbility"
-                    />
-                    <span class="bb-stats-bonus-title">GP Ability LV10</span>
-                  </label>
-                  <div class="bb-stats-bonus-list">
-                    {Object.entries(char.gpAbility).map(([stat, value]) => (
-                      <div class="bb-stats-bonus-item">
-                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
-                        <span class="stat-value">+{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Limit Break Max */}
-                <div class="bb-stats-bonus-section" data-bonus-type="limitBreak">
-                  <label class="bb-stats-bonus-toggle">
-                    <input
-                      type="checkbox"
-                      class="bb-stats-bonus-checkbox"
-                      data-bonus-checkbox="limitBreak"
-                    />
-                    <span class="bb-stats-bonus-title">Limit Break Max</span>
-                  </label>
-                  <div class="bb-stats-bonus-list">
-                    {Object.entries(char.limitBreak).map(([stat, value]) => (
-                      <div class="bb-stats-bonus-item">
-                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
-                        <span class="stat-value">+{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Ability Grade 10 */}
-                <div class="bb-stats-bonus-section" data-bonus-type="abilityGrade">
-                  <label class="bb-stats-bonus-toggle">
-                    <input
-                      type="checkbox"
-                      class="bb-stats-bonus-checkbox"
-                      data-bonus-checkbox="abilityGrade"
-                    />
-                    <span class="bb-stats-bonus-title">Ability Grade 10</span>
-                  </label>
-                  <div class="bb-stats-bonus-list">
-                    {Object.entries(char.abilityGrade).map(([stat, value]) => (
-                      <div class="bb-stats-bonus-item">
-                        <span class="stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>{' '}
-                        <span class="stat-value">+{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bond Bonus Progression */}
-                <div class="bb-stats-bonus-section bb-stats-bond-section" data-bonus-type="bond">
-                  <div class="bb-stats-bond-header">
-                    <label class="bb-stats-bonus-toggle">
-                      <input
-                        type="checkbox"
-                        class="bb-stats-bonus-checkbox"
-                        data-bonus-checkbox="bond"
-                      />
-                      <span class="bb-stats-bonus-title">Bond Bonus (Max)</span>
-                    </label>
-                    <div class="bb-stats-bond-toggle">
-                      <span class="toggle-icon">▼</span>
+              {/* Bonus Stats - Hero Card Layout */}
+              <div class="bb-hero-cards">
+                {/* Limit Break Card */}
+                <div class="bb-hero-card bb-hero-lb">
+                  <div class="bb-hero-header">
+                    <input type="checkbox" class="bb-hero-checkbox" data-bonus-check="limitBreak" checked />
+                    <span class="bb-hero-title">Limit Break</span>
+                    <div class="bb-hero-input-group">
+                      <input type="number" class="bb-hero-input" data-bonus-input="limitBreak" min="0" max="5" value="5" />
+                      <span class="bb-hero-input-max">/ 5</span>
                     </div>
                   </div>
-                  <div class="bb-stats-bond-progression">
-                    {char.bondBonus.map(bond => (
-                      <div class="bb-stats-bond-level">
-                        <span class="bb-stats-bond-level-num">Lv{bond.level}:</span>
-                        <span class="bb-stats-bond-level-bonus">{formatBonus(bond.bonus)}</span>
+                  <div class="bb-hero-stats" data-bonus-display="limitBreak">
+                    {Object.entries(calculateBonusTotal(char.limitBreak || {})).map(([stat, value]) => (
+                      <div class="bb-hero-stat-row">
+                        <span class="bb-hero-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                        <span class="bb-hero-stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bond Level Card */}
+                <div class="bb-hero-card bb-hero-bond">
+                  <div class="bb-hero-header">
+                    <input type="checkbox" class="bb-hero-checkbox" data-bonus-check="gpAbility" checked />
+                    <span class="bb-hero-title">Bond Level</span>
+                    <div class="bb-hero-input-group">
+                      <input type="number" class="bb-hero-input" data-bonus-input="gpAbility" min="0" max="10" value="10" />
+                      <span class="bb-hero-input-max">/ 10</span>
+                    </div>
+                  </div>
+                  <div class="bb-hero-stats" data-bonus-display="gpAbility">
+                    {Object.entries(calculateBonusTotal(char.gpAbility || {})).map(([stat, value]) => (
+                      <div class="bb-hero-stat-row">
+                        <span class="bb-hero-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                        <span class="bb-hero-stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Ability Grade Card */}
+                <div class="bb-hero-card bb-hero-grade">
+                  <div class="bb-hero-header">
+                    <input type="checkbox" class="bb-hero-checkbox" data-bonus-check="abilityGrade" checked />
+                    <span class="bb-hero-title">Ability Grade</span>
+                    <div class="bb-hero-input-group">
+                      <input type="number" class="bb-hero-input" data-bonus-input="abilityGrade" min="0" max="10" value="10" />
+                      <span class="bb-hero-input-max">/ 10</span>
+                    </div>
+                  </div>
+                  <div class="bb-hero-stats" data-bonus-display="abilityGrade">
+                    {Object.entries(calculateBonusTotal(char.abilityGrade || {})).map(([stat, value]) => (
+                      <div class="bb-hero-stat-row">
+                        <span class="bb-hero-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                        <span class="bb-hero-stat-value">+{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Passive Abilities Card */}
+                <div class="bb-hero-card bb-hero-passive">
+                  <div class="bb-hero-header">
+                    <input type="checkbox" class="bb-hero-checkbox" data-bonus-check="passive" checked />
+                    <span class="bb-hero-title">Passives</span>
+                    <div class="bb-hero-input-group">
+                      <input type="number" class="bb-hero-input" data-bonus-input="passive" min="0" max="10" value="10" />
+                      <span class="bb-hero-input-max">/ 10</span>
+                    </div>
+                  </div>
+                  <div class="bb-hero-stats bb-hero-passive-list" data-passive-display>
+                    {(char.passiveAbilities || []).map((passive) => (
+                      <div class="bb-hero-stat-row" data-passive-slot={passive.slot}>
+                        <span class="bb-hero-stat-name">{passive.stat}</span>
+                        <span class="bb-hero-stat-value" data-passive-value={passive.slot}>+{passive.grades?.g10 || 0}</span>
                       </div>
                     ))}
                   </div>
@@ -493,62 +446,177 @@ const formatBonus = (bonus: Record<string, number>) => {
       const quickBtns = card.querySelectorAll('.bb-stats-quick-level-btn');
       const statsTable = card.querySelector('[data-stats-table]');
       const flatStats = card.querySelector('[data-flat-stats]');
-      const bonusCheckboxes = card.querySelectorAll('[data-bonus-checkbox]');
-
       const statsData = JSON.parse(cardEl.dataset.stats || '{}');
-      const awakeningData = cardEl.dataset.awakening ? JSON.parse(cardEl.dataset.awakening) : null;
       const gpAbilityData = JSON.parse(cardEl.dataset.gpAbility || '{}');
       const limitBreakData = JSON.parse(cardEl.dataset.limitBreak || '{}');
       const abilityGradeData = JSON.parse(cardEl.dataset.abilityGrade || '{}');
-      const bondBonusData = JSON.parse(cardEl.dataset.bondBonus || '[]');
+      const passiveAbilitiesData = JSON.parse(cardEl.dataset.passiveAbilities || '[]');
+
+      // Get bonus input elements
+      const limitBreakInput = card.querySelector('[data-bonus-input="limitBreak"]') as HTMLInputElement;
+      const gpAbilityInput = card.querySelector('[data-bonus-input="gpAbility"]') as HTMLInputElement;
+      const abilityGradeInput = card.querySelector('[data-bonus-input="abilityGrade"]') as HTMLInputElement;
+      const passiveInput = card.querySelector('[data-bonus-input="passive"]') as HTMLInputElement;
+
+      // Get bonus checkbox elements
+      const limitBreakCheck = card.querySelector('[data-bonus-check="limitBreak"]') as HTMLInputElement;
+      const gpAbilityCheck = card.querySelector('[data-bonus-check="gpAbility"]') as HTMLInputElement;
+      const abilityGradeCheck = card.querySelector('[data-bonus-check="abilityGrade"]') as HTMLInputElement;
+      const passiveCheck = card.querySelector('[data-bonus-check="passive"]') as HTMLInputElement;
+
+      // Get hero card bonus display elements
+      const limitBreakDisplay = card.querySelector('[data-bonus-display="limitBreak"]');
+      const gpAbilityDisplay = card.querySelector('[data-bonus-display="gpAbility"]');
+      const abilityGradeDisplay = card.querySelector('[data-bonus-display="abilityGrade"]');
+      const passiveGradeLabel = card.querySelector('[data-passive-grade]');
 
       if (!levelInput || !statsTable) return;
 
-      // Calculate total bond bonus
-      function getTotalBondBonus() {
-        const total: Record<string, number> = {};
-        bondBonusData.forEach((bond: { bonus: Record<string, number> }) => {
-          Object.entries(bond.bonus).forEach(([stat, value]) => {
-            total[stat] = (total[stat] || 0) + value;
-          });
-        });
-        return total;
+      // Calculate bonus up to a specific level for limit break (lb1-lb5)
+      function calculateLimitBreakBonus(level: number): Record<string, number> {
+        const bonuses: Record<string, number> = {};
+        for (let i = 1; i <= level; i++) {
+          const lbKey = `lb${i}`;
+          if (limitBreakData[lbKey]) {
+            Object.entries(limitBreakData[lbKey]).forEach(([stat, value]) => {
+              if (typeof value === 'number') {
+                bonuses[stat] = (bonuses[stat] || 0) + value;
+              }
+            });
+          }
+        }
+        return bonuses;
       }
 
-      // Get active bonuses
+      // Calculate bonus up to a specific level for GP ability (lv1-lv10)
+      function calculateGpAbilityBonus(level: number): Record<string, number> {
+        const bonuses: Record<string, number> = {};
+        for (let i = 1; i <= level; i++) {
+          const lvKey = `lv${i}`;
+          if (gpAbilityData[lvKey]) {
+            Object.entries(gpAbilityData[lvKey]).forEach(([stat, value]) => {
+              if (typeof value === 'number') {
+                bonuses[stat] = (bonuses[stat] || 0) + value;
+              }
+            });
+          }
+        }
+        return bonuses;
+      }
+
+      // Calculate bonus up to a specific grade for ability grade (g1-g10)
+      function calculateAbilityGradeBonus(grade: number): Record<string, number> {
+        const bonuses: Record<string, number> = {};
+        for (let i = 1; i <= grade; i++) {
+          const gKey = `g${i}`;
+          if (abilityGradeData[gKey]) {
+            Object.entries(abilityGradeData[gKey]).forEach(([stat, value]) => {
+              if (typeof value === 'number') {
+                bonuses[stat] = (bonuses[stat] || 0) + value;
+              }
+            });
+          }
+        }
+        return bonuses;
+      }
+
+      // Get passive abilities for a specific grade
+      function getPassiveAbilitiesAtGrade(grade: number): Array<{slot: number; stat: string; value: number}> {
+        return passiveAbilitiesData.map((passive: {slot: number; stat: string; grades: Record<string, number>}) => ({
+          slot: passive.slot,
+          stat: passive.stat,
+          value: grade > 0 ? (passive.grades?.[`g${grade}`] || 0) : 0
+        }));
+      }
+
+      // Update hero card bonus display
+      function updateHeroCardDisplay(displayEl: Element | null, bonuses: Record<string, number>, statNames: Record<string, string>) {
+        if (!displayEl) return;
+        const entries = Object.entries(bonuses);
+        if (entries.length === 0) {
+          displayEl.innerHTML = '<div class="bb-hero-stat-row bb-hero-empty">No bonuses</div>';
+        } else {
+          displayEl.innerHTML = entries.map(([stat, value]) => {
+            const displayName = statNames[stat] || stat;
+            return `<div class="bb-hero-stat-row">
+              <span class="bb-hero-stat-name">${displayName}</span>
+              <span class="bb-hero-stat-value">+${value}</span>
+            </div>`;
+          }).join('');
+        }
+      }
+
+      // Update passive abilities display
+      function updatePassiveDisplay(grade: number) {
+        const passives = getPassiveAbilitiesAtGrade(grade);
+        passives.forEach(p => {
+          const valueEl = card.querySelector(`[data-passive-value="${p.slot}"]`);
+          if (valueEl) {
+            valueEl.textContent = grade > 0 ? `+${p.value}` : '-';
+          }
+        });
+        if (passiveGradeLabel) {
+          passiveGradeLabel.textContent = grade.toString();
+        }
+      }
+
+      // Get active bonuses from inputs (only if checkbox is checked)
       function getActiveBonuses(): Record<string, number> {
         const bonuses: Record<string, number> = {};
 
-        bonusCheckboxes.forEach(checkbox => {
-          const cb = checkbox as HTMLInputElement;
-          if (!cb.checked || cb.disabled) return;
-
-          const bonusType = cb.dataset.bonusCheckbox;
-          let bonusData: Record<string, number> = {};
-
-          if (bonusType === 'awakening' && awakeningData) {
-            bonusData = awakeningData;
-          } else if (bonusType === 'gpAbility') {
-            bonusData = gpAbilityData;
-          } else if (bonusType === 'limitBreak') {
-            bonusData = limitBreakData;
-          } else if (bonusType === 'abilityGrade') {
-            bonusData = abilityGradeData;
-          } else if (bonusType === 'bond') {
-            bonusData = getTotalBondBonus();
-          }
-
-          Object.entries(bonusData).forEach(([stat, value]) => {
+        // Limit Break bonus (only if checked)
+        if (limitBreakCheck?.checked) {
+          const lbLevel = Math.min(5, Math.max(0, parseInt(limitBreakInput?.value || '5')));
+          const lbBonuses = calculateLimitBreakBonus(lbLevel);
+          Object.entries(lbBonuses).forEach(([stat, value]) => {
             bonuses[stat] = (bonuses[stat] || 0) + value;
           });
-        });
+        }
+
+        // GP Ability / Bond Level bonus (only if checked)
+        if (gpAbilityCheck?.checked) {
+          const gpLevel = Math.min(10, Math.max(0, parseInt(gpAbilityInput?.value || '10')));
+          const gpBonuses = calculateGpAbilityBonus(gpLevel);
+          Object.entries(gpBonuses).forEach(([stat, value]) => {
+            bonuses[stat] = (bonuses[stat] || 0) + value;
+          });
+        }
+
+        // Ability Grade bonus (only if checked)
+        if (abilityGradeCheck?.checked) {
+          const agGrade = Math.min(10, Math.max(0, parseInt(abilityGradeInput?.value || '10')));
+          const agBonuses = calculateAbilityGradeBonus(agGrade);
+          Object.entries(agBonuses).forEach(([stat, value]) => {
+            bonuses[stat] = (bonuses[stat] || 0) + value;
+          });
+        }
 
         return bonuses;
       }
 
+      // Stat display names
+      const STAT_NAMES: Record<string, string> = {
+        hp: 'HP', atk: 'ATK', matk: 'MATK', def: 'DEF', mdef: 'MDEF',
+        accuracy: 'Accuracy', block: 'Block', physCrit: 'P.Crit', magicCrit: 'M.Crit',
+        hpRegen: 'HP Regen', mpRegen: 'MP Regen', healPwr: 'Heal Pwr',
+        mpCharge: 'MP Charge', hpDrain: 'HP Drain', mpCostDown: 'MP Cost',
+        healingPower: 'Heal Pwr'
+      };
+
       function updateStats(level: number) {
         const bonuses = getActiveBonuses();
+        updateStatsWithBonuses(level, bonuses);
+      }
 
+      function setLevel(level: number) {
+        level = Math.max(1, Math.min(90, level));
+        levelInput.value = level.toString();
+        // Update stats with current bonus levels
+        const bonuses = getActiveBonuses();
+        updateStatsWithBonuses(level, bonuses);
+      }
+
+      function updateStatsWithBonuses(level: number, bonuses: Record<string, number>) {
         // Helper to get stat with bonus
         const getStatWithBonus = (statKey: string, baseValue: number) => {
           return baseValue + (bonuses[statKey] || 0);
@@ -597,11 +665,7 @@ const formatBonus = (bonus: Record<string, number>) => {
         // Update Accuracy
         const accEl = statsTable?.querySelector('[data-stat="accuracy"]');
         if (accEl && statsData.accuracy) {
-          const base = calculateStatAtLevel(
-            statsData.accuracy.base,
-            statsData.accuracy.lv90,
-            level
-          );
+          const base = calculateStatAtLevel(statsData.accuracy.base, statsData.accuracy.lv90, level);
           const value = getStatWithBonus('accuracy', base);
           accEl.textContent = value.toString();
         }
@@ -617,11 +681,7 @@ const formatBonus = (bonus: Record<string, number>) => {
         // Update Phys Crit
         const physCritEl = statsTable?.querySelector('[data-stat="physCrit"]');
         if (physCritEl && statsData.physCrit) {
-          const base = calculateStatAtLevel(
-            statsData.physCrit.base,
-            statsData.physCrit.lv90,
-            level
-          );
+          const base = calculateStatAtLevel(statsData.physCrit.base, statsData.physCrit.lv90, level);
           const value = getStatWithBonus('physCrit', base);
           const rate = calculateCritRate(value);
           physCritEl.innerHTML = `${value}<span class="crit-rate">(${rate}%)</span>`;
@@ -630,11 +690,7 @@ const formatBonus = (bonus: Record<string, number>) => {
         // Update Magic Crit
         const magicCritEl = statsTable?.querySelector('[data-stat="magicCrit"]');
         if (magicCritEl && statsData.magicCrit) {
-          const base = calculateStatAtLevel(
-            statsData.magicCrit.base,
-            statsData.magicCrit.lv90,
-            level
-          );
+          const base = calculateStatAtLevel(statsData.magicCrit.base, statsData.magicCrit.lv90, level);
           const value = getStatWithBonus('magicCrit', base);
           const rate = calculateCritRate(value);
           magicCritEl.innerHTML = `${value}<span class="crit-rate">(${rate}%)</span>`;
@@ -668,21 +724,24 @@ const formatBonus = (bonus: Record<string, number>) => {
         if (flatStats) {
           const mpChargeEl = flatStats.querySelector('[data-flat="mpCharge"]');
           if (mpChargeEl) {
-            const value = (statsData.mpCharge || 0) + (bonuses.mpCharge || 0);
+            const baseValue = statsData.mpCharge?.lv90 || statsData.mpCharge || 0;
+            const value = baseValue + (bonuses.mpCharge || 0);
             mpChargeEl.textContent = value.toString();
           }
 
           const hpDrainEl = flatStats.querySelector('[data-flat="hpDrain"]');
           if (hpDrainEl) {
-            const value = (statsData.hpDrain || 0) + (bonuses.hpDrain || 0);
+            const baseValue = statsData.hpDrain?.lv90 || statsData.hpDrain || 0;
+            const value = baseValue + (bonuses.hpDrain || 0);
             hpDrainEl.textContent = value + '%';
             const parent = hpDrainEl.closest('.bb-stats-flat-item') as HTMLElement;
             if (parent) parent.style.display = value > 0 ? '' : 'none';
           }
 
-          const mpCostEl = flatStats.querySelector('[data-flat="mpCostReduction"]');
+          const mpCostEl = flatStats.querySelector('[data-flat="mpCostDown"]');
           if (mpCostEl) {
-            const value = (statsData.mpCostReduction || 0) + (bonuses.mpCostReduction || 0);
+            const baseValue = statsData.mpCostDown?.lv90 || statsData.mpCostDown || 0;
+            const value = baseValue + (bonuses.mpCostDown || 0);
             mpCostEl.textContent = value.toString();
             const parent = mpCostEl.closest('.bb-stats-flat-item') as HTMLElement;
             if (parent) parent.style.display = value > 0 ? '' : 'none';
@@ -695,22 +754,6 @@ const formatBonus = (bonus: Record<string, number>) => {
           const btnLevel = parseInt(btnEl.dataset.level || '0');
           btnEl.classList.toggle('active', btnLevel === level);
         });
-
-        // Update bonus section styling
-        bonusCheckboxes.forEach(checkbox => {
-          const cb = checkbox as HTMLInputElement;
-          const section = cb.closest('.bb-stats-bonus-section');
-          if (section) {
-            section.classList.toggle('bonus-active', cb.checked && !cb.disabled);
-            section.classList.toggle('bonus-inactive', !cb.checked || cb.disabled);
-          }
-        });
-      }
-
-      function setLevel(level: number) {
-        level = Math.max(1, Math.min(90, level));
-        levelInput.value = level.toString();
-        updateStats(level);
       }
 
       // Input event listeners
@@ -738,32 +781,46 @@ const formatBonus = (bonus: Record<string, number>) => {
         });
       });
 
-      // Bonus checkbox listeners
-      bonusCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-          const level = parseInt(levelInput.value) || 90;
-          updateStats(level);
-        });
-      });
+      // Bonus input listeners
+      function updateAllBonusDisplays() {
+        const level = parseInt(levelInput.value) || 90;
+
+        // Calculate all bonuses with clamped values
+        const lbLevel = Math.min(5, Math.max(0, parseInt(limitBreakInput?.value || '5')));
+        const lbBonuses = calculateLimitBreakBonus(lbLevel);
+
+        const gpLevel = Math.min(10, Math.max(0, parseInt(gpAbilityInput?.value || '10')));
+        const bondBonuses = calculateGpAbilityBonus(gpLevel);
+
+        const agGrade = Math.min(10, Math.max(0, parseInt(abilityGradeInput?.value || '10')));
+        const gradeBonuses = calculateAbilityGradeBonus(agGrade);
+
+        // Update each hero card display
+        updateHeroCardDisplay(limitBreakDisplay, lbBonuses, STAT_NAMES);
+        updateHeroCardDisplay(gpAbilityDisplay, bondBonuses, STAT_NAMES);
+        updateHeroCardDisplay(abilityGradeDisplay, gradeBonuses, STAT_NAMES);
+
+        // Update passive abilities display (uses its own input)
+        const passiveGrade = Math.min(10, Math.max(0, parseInt(passiveInput?.value || '10')));
+        updatePassiveDisplay(passiveGrade);
+
+        // Update main stats
+        updateStats(level);
+      }
+
+      limitBreakInput?.addEventListener('input', updateAllBonusDisplays);
+      gpAbilityInput?.addEventListener('input', updateAllBonusDisplays);
+      abilityGradeInput?.addEventListener('input', updateAllBonusDisplays);
+      passiveInput?.addEventListener('input', updateAllBonusDisplays);
+
+      // Checkbox listeners - toggle bonus inclusion in combat stats
+      limitBreakCheck?.addEventListener('change', updateAllBonusDisplays);
+      gpAbilityCheck?.addEventListener('change', updateAllBonusDisplays);
+      abilityGradeCheck?.addEventListener('change', updateAllBonusDisplays);
+      passiveCheck?.addEventListener('change', updateAllBonusDisplays);
 
       // Initial update
-      updateStats(90);
-    });
-  }
-
-  // Bond section toggle functionality
-  function initBondToggles() {
-    const bondSections = document.querySelectorAll('.bb-stats-bond-section');
-
-    bondSections.forEach(section => {
-      const toggleIcon = section.querySelector('.bb-stats-bond-toggle');
-      if (toggleIcon) {
-        toggleIcon.addEventListener('click', e => {
-          e.preventDefault();
-          e.stopPropagation();
-          section.classList.toggle('collapsed');
-        });
-      }
+      updateAllBonusDisplays();
     });
   }
 
@@ -772,11 +829,9 @@ const formatBonus = (bonus: Record<string, number>) => {
     document.addEventListener('DOMContentLoaded', () => {
       initFilters();
       initLevelCalculators();
-      initBondToggles();
     });
   } else {
     initFilters();
     initLevelCalculators();
-    initBondToggles();
   }
 </script>

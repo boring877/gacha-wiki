@@ -1,0 +1,178 @@
+---
+import SupportStatsLayout from '../../../layouts/busty-burst/SupportStatsLayout.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import LimitBreakIcon from '../../../components/busty-burst/LimitBreakIcon.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import { getAllSupportData, getUniqueElements, getUniqueWeapons, getUniqueRarities } from '../../../data/busty-burst/support-data.js';
+
+const supportData = getAllSupportData();
+const elements = getUniqueElements();
+const weapons = getUniqueWeapons();
+const rarities = getUniqueRarities();
+
+const title = 'Busty Burst Support Stats Guide';
+const description = `Complete support stats guide for all ${supportData.length} Busty Burst characters. View Limit Break 0-5 support bonuses with filters for rarity, element, and weapon type.`;
+const gameTitle = 'Support Stats Guide';
+---
+
+<SupportStatsLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-support-stats-page">
+    <!-- Filter Controls -->
+    <div class="bb-support-controls">
+      <div class="bb-support-filter-row">
+        <input type="text" id="support-search" class="bb-support-search-input" placeholder="Search by character name..." />
+        <select id="rarity-filter" class="bb-support-filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(r => <option value={r}>{r}</option>)}
+        </select>
+        <select id="element-filter" class="bb-support-filter-select">
+          <option value="">All Elements</option>
+          {elements.map(el => <option value={el}>{el}</option>)}
+        </select>
+        <select id="weapon-filter" class="bb-support-filter-select">
+          <option value="">All Weapons</option>
+          {weapons.map(wp => <option value={wp}>{wp}</option>)}
+        </select>
+        <button type="button" id="clear-filters" class="bb-support-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="bb-support-results-count" id="results-count">
+      Showing <span>{supportData.length}</span> characters
+    </div>
+
+    <!-- Character Cards Grid -->
+    <div class="bb-support-stats-grid" id="support-stats-grid">
+      {supportData.map(char => (
+        <div class="bb-support-card"
+             data-name={char.name.toLowerCase()}
+             data-rarity={char.rarity.toLowerCase()}
+             data-element={char.element.toLowerCase()}
+             data-weapon={char.weapon.toLowerCase()}>
+
+          <div class="bb-support-card-header">
+            <div class="bb-support-card-avatar">
+              <PaladinImage characterId={char.id} alt={char.name} width={90} height={90} quality={95} />
+            </div>
+            <div class="bb-support-card-info">
+              <h3 class="bb-support-card-name">{char.name}</h3>
+              <div class="bb-support-card-badges">
+                <span class="bb-badge-rarity">
+                  <RarityImage rarity={char.rarity} width={36} height={36} />
+                </span>
+                <span class="bb-badge" data-element={char.element.toLowerCase()}>
+                  <ElementImage element={char.element} width={14} height={14} />
+                  {char.element}
+                </span>
+                <span class="bb-badge">{char.weapon}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bb-support-card-body">
+            <table class="bb-support-stats-table">
+              <thead>
+                <tr>
+                  <th>LB</th>
+                  <th>Stats</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(char.supportStats).map(([lb, stats], idx) => (
+                  <tr class={idx >= 3 ? 'max-lb' : ''}>
+                    <td class="lb-cell">
+                      <LimitBreakIcon level={parseInt(lb.replace('lb', ''))} size="small" />
+                    </td>
+                    <td class="stats-cell">
+                      {Object.entries(stats).map(([stat, value], i) => (
+                        <span class="stat-item">
+                          {i > 0 && ', '}
+                          <span class="stat-name">{stat}</span>{' '}
+                          <span class="stat-value">+{value}</span>
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="bb-support-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</SupportStatsLayout>
+
+<script>
+  function initFilters() {
+    const searchInput = document.getElementById('support-search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const weaponFilter = document.getElementById('weapon-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const grid = document.getElementById('support-stats-grid');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.bb-support-card');
+
+    function filterCards() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+      const element = elementFilter?.value.toLowerCase() || '';
+      const weapon = weaponFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const matchName = !search || cardEl.dataset.name?.includes(search);
+        const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
+        const matchElement = !element || cardEl.dataset.element === element;
+        const matchWeapon = !weapon || cardEl.dataset.weapon === weapon;
+
+        const isVisible = matchName && matchRarity && matchElement && matchWeapon;
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      if (resultsCount) {
+        const span = resultsCount.querySelector('span');
+        if (span) span.textContent = visibleCount.toString();
+      }
+    }
+
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (weaponFilter) weaponFilter.value = '';
+      filterCards();
+    }
+
+    searchInput?.addEventListener('input', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    weaponFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilters);
+  } else {
+    initFilters();
+  }
+</script>

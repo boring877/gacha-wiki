@@ -1,4 +1,4 @@
-// Silver and Blood Team Synergy Database Utilities
+// Silver and Blood Team Builds Database Utilities
 // Client-side logic for filtering, sorting, and displaying team data
 
 import {
@@ -12,6 +12,47 @@ import {
 
 import { characters } from './characters.js';
 
+// Character icon name mapping for special cases
+const characterIconMap = {
+  'timeless aiona': 'Timeless_Aiona',
+  'fleeting bella': 'Fleeting_Bella',
+  'transcendent ami': 'Transcendent_Ami',
+  'starry-eyed aiona': 'Starry_eyed_Aiona',
+  'jinxed selena': 'Jinxed_Selena',
+  'van helsing': 'VanHellsing',
+  'incendiary agares': 'Incendiary_Agares',
+  'transcendent hati': 'Transcendent_Hati',
+  'transcendent noah': 'Transcendent_Noah',
+  'spectral gilrain': 'Spectral_Gilrain',
+  // Add direct names
+  'acappella': 'Acappella',
+  'sirene': 'Sirene',
+  'ami': 'Ami',
+  'bella': 'Bella',
+  'seth': 'Seth',
+  'theophane': 'Theophane',
+  'friedrich': 'Friedrich',
+  'ottavia': 'Ottavia',
+  'thibault': 'Thibault',
+};
+
+// Helper function to get character icon URL
+function getCharacterIconUrl(characterName) {
+  const nameLower = characterName.toLowerCase();
+  const iconName = characterIconMap[nameLower] || characterName.split(' ')[0];
+  return `/images/games/silver-and-blood/character_icons/${iconName}_Base.png`;
+}
+
+// Helper function to get rarity frame URL
+function getRarityFrameUrl(rarity) {
+  const rarityMap = {
+    'SSR': '/images/games/silver-and-blood/character_icons/common_img_ssr.png',
+    'SR': '/images/games/silver-and-blood/character_icons/common_img_sr.png',
+    'R': '/images/games/silver-and-blood/character_icons/common_img_r.png',
+  };
+  return rarityMap[rarity] || rarityMap['SSR'];
+}
+
 // Helper function to get character faction, class, and moon phase
 function getCharacterDetails(characterName) {
   const character = characters.find(
@@ -23,9 +64,14 @@ function getCharacterDetails(characterName) {
         class: character.class,
         moonPhase: character.moonPhase,
         rarity: character.rarity,
-        image: character.image,
+        iconUrl: getCharacterIconUrl(characterName),
+        rarityFrameUrl: getRarityFrameUrl(character.rarity),
       }
-    : null;
+    : {
+        rarity: 'SSR',
+        iconUrl: getCharacterIconUrl(characterName),
+        rarityFrameUrl: getRarityFrameUrl('SSR'),
+      };
 }
 
 // Helper function to get shorter display names for long character names
@@ -232,7 +278,10 @@ function renderDesktopTable() {
           return `
           <td>
             <div class="character-cell">
-              ${details && details.image ? `<img src="${details.image}" alt="${char.name}" class="character-portrait" loading="lazy" />` : ''}
+              <div class="character-icon-wrapper">
+                <img src="${details.iconUrl}" alt="${char.name}" class="character-portrait" loading="lazy" />
+                <img src="${details.rarityFrameUrl}" alt="${details.rarity}" class="rarity-frame" loading="lazy" />
+              </div>
               <a href="${getCharacterUrl(char.name)}" class="character-name-link">
                 <span class="character-name">${getDisplayName(char.name)}</span>
               </a>
@@ -286,7 +335,10 @@ function renderMobileCards() {
             return `
             <div class="mobile-character-item">
               <div class="character-position">${index + 1}</div>
-              ${details && details.image ? `<img src="${details.image}" alt="${char.name}" class="mobile-character-portrait" loading="lazy" />` : ''}
+              <div class="character-icon-wrapper mobile">
+                <img src="${details.iconUrl}" alt="${char.name}" class="mobile-character-portrait" loading="lazy" />
+                <img src="${details.rarityFrameUrl}" alt="${details.rarity}" class="rarity-frame" loading="lazy" />
+              </div>
               <a href="${getCharacterUrl(char.name)}" class="mobile-character-name-link">
                 <span class="mobile-character-name">${getDisplayName(char.name)}</span>
               </a>

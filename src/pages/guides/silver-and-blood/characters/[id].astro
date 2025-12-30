@@ -11,6 +11,14 @@ import characterStatsData from '../../../../data/silver-and-blood/character-stat
 import charactersInfoData from '../../../../data/silver-and-blood/characters_info.json';
 import characterSkillsData from '../../../../data/silver-and-blood/character-skills.json';
 import { getCharacterAffinityData, getGiftIconKey } from '../../../../data/silver-and-blood/character-gifts.js';
+import {
+  getHeroMaxStatBonuses,
+  getResonantiaSkills,
+  hasResonantia,
+  formatResonantiaDescriptionAllLevels,
+  getResonantiaAllLevelRequirements,
+} from '../../../../data/silver-and-blood/heirloom-vault.js';
+import SABResonantiaIcon from '../../../../components/silver-and-blood/SABResonantiaIcon.astro';
 
 // Import gift icons for affinity section
 import universal1 from '../../../../assets/images/games/silver-and-blood/icons/gifts/universal_1.png';
@@ -260,9 +268,31 @@ const { character } = Astro.props;
 // Get affinity data for this character
 const affinityData = getCharacterAffinityData(character.name);
 
+// Get heirloom vault data for this character
+const heirloomStats = getHeroMaxStatBonuses(character.id);
+const resonantiaSkillsList = getResonantiaSkills(character.id);
+const hasResonantiaSkills = hasResonantia(character.id);
+
+// Format resonantia skills with their unlock requirements
+const formattedResonantiaSkills = resonantiaSkillsList.map((skill: any) => ({
+  ...skill,
+  formattedDescription: formatResonantiaDescriptionAllLevels(skill),
+  levelRequirements: getResonantiaAllLevelRequirements(skill, character.id),
+}));
+
 // Page SEO
 const pageTitle = `${character.name} - Silver and Blood Character Guide`;
 const pageDescription = `Complete ${character.name} guide for Silver and Blood. ${character.rarity} ${character.class} with stats, skills, voice actors, and lore.`;
+
+// Get max affinity rank stats if available
+const maxAffinityRank = affinityData?.ranks?.[affinityData?.ranks?.length - 1] || null;
+const affinityMaxStats = maxAffinityRank ? {
+  hp: maxAffinityRank.HP || 0,
+  atk: maxAffinityRank.ATK || 0,
+  pDef: maxAffinityRank.PDEF || 0,
+  mDef: maxAffinityRank.MDEF || 0,
+  maxRank: affinityData?.maxRank,
+} : null;
 
 // Prepare stats data for client-side
 const statsDataForClient = {
@@ -273,6 +303,8 @@ const statsDataForClient = {
   skillPotency: character.skillPotency,
   growthRates: character.growthRates,
   baseStats: character.baseStats,
+  affinityMaxStats,
+  heirloomMaxStats: heirloomStats,
 };
 
 const maxSS = character.rarity === 'SSR' ? 10 : character.rarity === 'SR' ? 2 : 0;
@@ -411,10 +443,20 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
           </div>
         </div>
 
-        <label class="skills-toggle">
-          <input type="checkbox" id="include-skills" />
-          <span>Include Skill into Blood Power</span>
-        </label>
+        <div class="bonus-toggles">
+          <label class="bonus-toggle">
+            <input type="checkbox" id="include-skills" />
+            <span>Skills (BP only)</span>
+          </label>
+          <label class="bonus-toggle">
+            <input type="checkbox" id="include-affinity" />
+            <span>Affinity (R{affinityData?.maxRank || 40})</span>
+          </label>
+          <label class="bonus-toggle">
+            <input type="checkbox" id="include-heirloom" />
+            <span>Heirloom (Lv70)</span>
+          </label>
+        </div>
       </div>
 
       <div class="stats-display">
@@ -570,6 +612,72 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
       </section>
     )}
 
+    <!-- Heirloom Vault Section -->
+    <section class="heirloom-section">
+      <h2 class="section-title">Heirloom Vault</h2>
+
+      <div class="heirloom-stats-card">
+        <h3 class="heirloom-subtitle">Stats at Level {heirloomStats.maxLevel}</h3>
+        <div class="heirloom-stats-grid">
+          <div class="heirloom-stat-item">
+            <span class="heirloom-stat-label">HP</span>
+            <span class="heirloom-stat-value">+{heirloomStats.hp.toLocaleString()}</span>
+          </div>
+          <div class="heirloom-stat-item">
+            <span class="heirloom-stat-label">ATK</span>
+            <span class="heirloom-stat-value">+{heirloomStats.atk.toLocaleString()}</span>
+          </div>
+          <div class="heirloom-stat-item">
+            <span class="heirloom-stat-label">P.DEF</span>
+            <span class="heirloom-stat-value">+{heirloomStats.pDef.toLocaleString()}</span>
+          </div>
+          <div class="heirloom-stat-item">
+            <span class="heirloom-stat-label">M.DEF</span>
+            <span class="heirloom-stat-value">+{heirloomStats.mDef.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      {hasResonantiaSkills && formattedResonantiaSkills.length > 0 && (
+        <div class="resonantia-section">
+          <h3 class="heirloom-subtitle">Resonantia Skills</h3>
+          <div class="resonantia-skills-list">
+            {formattedResonantiaSkills.map((skill: any) => (
+              <div class="resonantia-skill-card" data-level-reqs={JSON.stringify(skill.levelRequirements)}>
+                <div class="resonantia-skill-header">
+                  <SABResonantiaIcon rank={skill.rank} width={48} height={48} />
+                  <div class="resonantia-skill-info">
+                    <h4 class="resonantia-skill-name">{skill.name}</h4>
+                    <span class="resonantia-skill-rank">Rank {skill.rank}</span>
+                  </div>
+                </div>
+
+                <div class="resonantia-tabs">
+                  <button type="button" class="res-tab active" data-level="1">Lv. 1</button>
+                  <button type="button" class="res-tab" data-level="2">Lv. 2</button>
+                  <button type="button" class="res-tab" data-level="3">Lv. 3</button>
+                </div>
+
+                <div class="resonantia-skill-desc" set:html={skill.formattedDescription} />
+
+                <div class="resonantia-unlock-req">
+                  <span class="unlock-label">Upgrade Requirement:</span>
+                  <span class="unlock-value">Heirloom Lv. <span class="unlock-level">{skill.levelRequirements[0]}</span></span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="resonantia-legend">
+            <span class="legend-item"><span class="res-val res-val-1">Lv.1</span></span>
+            <span class="legend-item"><span class="res-val res-val-2">Lv.2</span></span>
+            <span class="legend-item"><span class="res-val res-val-3">Lv.3</span></span>
+          </div>
+        </div>
+      )}
+
+    </section>
+
     <!-- Skills Section -->
     {character.skills && character.skills.length > 0 && (
       <section class="skills-section">
@@ -690,15 +798,6 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
       </section>
     )}
 
-    <!-- Related Links -->
-    <section class="related-section">
-      <h2 class="section-title">Related</h2>
-      <div class="related-links">
-        <a href="/guides/silver-and-blood/characters/" class="related-link">All Characters</a>
-        <a href="/guides/silver-and-blood/character-stats/" class="related-link">Stats Calculator</a>
-        <a href="/guides/silver-and-blood/character-skills/" class="related-link">Skills Database</a>
-      </div>
-    </section>
   </div>
 
   <!-- Client-side stats calculation -->
@@ -707,6 +806,8 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
       const levelInput = document.getElementById('char-level');
       const ssButtons = document.querySelectorAll('.ss-btn');
       const skillsToggle = document.getElementById('include-skills');
+      const affinityToggle = document.getElementById('include-affinity');
+      const heirloomToggle = document.getElementById('include-heirloom');
       const currentLevelDisplay = document.getElementById('current-level-display');
       const currentSSDisplay = document.getElementById('current-ss-display');
 
@@ -761,6 +862,8 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
         const level = Math.max(1, Math.min(1000, currentLevel));
         const ss = Math.min(currentSS, maxSS);
         const includeSkills = skillsToggle?.checked || false;
+        const includeAffinity = affinityToggle?.checked || false;
+        const includeHeirloom = heirloomToggle?.checked || false;
 
         let hp, atk, pdef, mdef, bp;
 
@@ -787,6 +890,22 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
           atk = Math.floor(rawAtk * ssMultiplier);
           pdef = Math.floor(rawPdef * ssMultiplier);
           mdef = Math.floor(rawMdef * ssMultiplier);
+        }
+
+        // Add Affinity stats (max rank bonuses)
+        if (includeAffinity && statsData.affinityMaxStats) {
+          hp += statsData.affinityMaxStats.hp || 0;
+          atk += statsData.affinityMaxStats.atk || 0;
+          pdef += statsData.affinityMaxStats.pDef || 0;
+          mdef += statsData.affinityMaxStats.mDef || 0;
+        }
+
+        // Add Heirloom stats (level 70 bonuses)
+        if (includeHeirloom && statsData.heirloomMaxStats) {
+          hp += statsData.heirloomMaxStats.hp || 0;
+          atk += statsData.heirloomMaxStats.atk || 0;
+          pdef += statsData.heirloomMaxStats.pDef || 0;
+          mdef += statsData.heirloomMaxStats.mDef || 0;
         }
 
         bp = Math.floor(hp * 0.024 + atk * 0.68 + pdef * 0.2 + mdef * 0.2);
@@ -827,6 +946,8 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
       });
 
       skillsToggle?.addEventListener('change', updateStats);
+      affinityToggle?.addEventListener('change', updateStats);
+      heirloomToggle?.addEventListener('change', updateStats);
 
       // Initialize
       updateStats();
@@ -948,6 +1069,33 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
           affinityInput.value = val.toString();
           updateAffinityDisplay(val);
         }
+      });
+    });
+  </script>
+
+  <!-- Resonantia Tabs -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const skillCards = document.querySelectorAll<HTMLElement>('.resonantia-skill-card');
+
+      skillCards.forEach(card => {
+        const tabs = card.querySelectorAll<HTMLButtonElement>('.res-tab');
+        const unlockLevelEl = card.querySelector('.unlock-level');
+        const levelReqs = JSON.parse(card.dataset.levelReqs || '[10, 20, 50]');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update unlock requirement
+            const level = parseInt(tab.dataset.level || '1');
+            if (unlockLevelEl) {
+              unlockLevelEl.textContent = levelReqs[level - 1]?.toString() || '-';
+            }
+          });
+        });
       });
     });
   </script>
@@ -1137,22 +1285,29 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     border-color: var(--sab-calm-red, #8b0000);
   }
 
-  .skills-toggle {
+  .bonus-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-self: start;
+  }
+
+  .bonus-toggle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     color: var(--sab-text-light, #e0e0e0);
     cursor: pointer;
-    align-self: center;
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
     background: var(--sab-bg-dark, #1a1a1a);
     border: 1px solid var(--sab-border-light, #444);
     border-radius: 6px;
+    font-size: 0.85rem;
   }
 
-  .skills-toggle input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+  .bonus-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
     accent-color: var(--sab-calm-red, #8b0000);
     cursor: pointer;
   }
@@ -1271,13 +1426,8 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     background: var(--sab-bg-dark, #1a1a1a);
     border-radius: 8px;
     padding: 1rem;
-    border-left: 4px solid #666;
+    border: 1px solid var(--sab-border-light, #444);
   }
-
-  .skill-card.basicAttack { border-left-color: #808080; }
-  .skill-card.skill { border-left-color: #ff8c00; }
-  .skill-card.ultimate { border-left-color: #dc3545; }
-  .skill-card.passive { border-left-color: #32cd32; }
 
   .skill-header {
     display: flex;
@@ -1310,12 +1460,9 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     border-radius: 4px;
     font-size: 0.8rem;
     margin-right: 0.5rem;
+    background: var(--sab-calm-red, #8b0000);
+    color: white;
   }
-
-  .skill-type-badge.basicAttack { background: #808080; color: white; }
-  .skill-type-badge.skill { background: #ff8c00; color: white; }
-  .skill-type-badge.ultimate { background: #dc3545; color: white; }
-  .skill-type-badge.passive { background: #32cd32; color: white; }
 
   .skill-cost {
     color: #dc3545;
@@ -1773,28 +1920,6 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     text-align: center;
   }
 
-  /* Related */
-  .related-section {
-    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
-    border-radius: 12px;
-    padding: 1.5rem;
-  }
-
-  .related-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .related-link {
-    padding: 0.75rem 1.5rem;
-    background: var(--sab-bg-dark, #1a1a1a);
-    border: 1px solid var(--sab-border-light, #444);
-    border-radius: 8px;
-    color: var(--sab-text-light, #e0e0e0);
-    text-decoration: none;
-  }
-
   /* Mobile Responsive */
   @media (max-width: 768px) {
     .character-header-section {
@@ -1820,6 +1945,12 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     }
 
     .ss-buttons {
+      justify-content: center;
+    }
+
+    .bonus-toggles {
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
     }
 
@@ -1960,6 +2091,239 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
 
     .rank-gifts-value {
       font-size: 1.1rem;
+    }
+  }
+
+  /* Heirloom Vault Section */
+  .heirloom-section {
+    background: var(--sab-character-info-bg, rgba(30, 30, 30, 0.9));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .heirloom-subtitle {
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  .heirloom-stats-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .heirloom-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .heirloom-stat-item {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  .heirloom-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--sab-text-medium, #a0a0a0);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .heirloom-stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--sab-calm-red, #c26b6b);
+  }
+
+  /* Resonantia Skills */
+  .resonantia-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .resonantia-skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .resonantia-skill-card {
+    background: var(--sab-bg-dark, #1a1a1a);
+    border: 1px solid var(--sab-border-light, #444);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .resonantia-skill-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .resonantia-skill-info {
+    flex: 1;
+  }
+
+  .resonantia-skill-name {
+    color: var(--sab-text-light, #e0e0e0);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+
+  .resonantia-skill-rank {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.8rem;
+  }
+
+  .resonantia-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .res-tab {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--sab-border-light, #444);
+    background: transparent;
+    color: var(--sab-text-medium, #a0a0a0);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+
+  .res-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .res-tab.active {
+    background: var(--sab-calm-red, #8b0000);
+    border-color: var(--sab-calm-red, #8b0000);
+    color: white;
+  }
+
+  .resonantia-skill-desc {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Resonantia value colors */
+  :global(.res-val) {
+    font-weight: 600;
+    color: #ffd700;
+  }
+
+  :global(.res-val-1) {
+    color: #ffd700;
+  }
+
+  :global(.res-val-2) {
+    color: #ffd700;
+  }
+
+  :global(.res-val-3) {
+    color: #ffd700;
+  }
+
+  .resonantia-unlock-req {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(139, 0, 0, 0.15);
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+
+  .unlock-label {
+    color: var(--sab-text-medium, #a0a0a0);
+  }
+
+  .unlock-value {
+    color: var(--sab-text-light, #e0e0e0);
+    font-weight: 600;
+  }
+
+  .unlock-level {
+    color: var(--sab-calm-red, #c26b6b);
+  }
+
+  .resonantia-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sab-border-light, #444);
+  }
+
+  .legend-item {
+    font-size: 0.8rem;
+    color: var(--sab-text-medium, #a0a0a0);
+  }
+
+  /* Heirloom mobile responsive */
+  @media (max-width: 768px) {
+    .heirloom-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .heirloom-section {
+      padding: 1rem;
+    }
+
+    .heirloom-stats-card,
+    .resonantia-section {
+      padding: 0.75rem;
+    }
+
+    .heirloom-stat-item {
+      padding: 0.5rem;
+    }
+
+    .heirloom-stat-label {
+      font-size: 0.65rem;
+    }
+
+    .heirloom-stat-value {
+      font-size: 0.95rem;
+    }
+
+    .resonantia-skill-header {
+      flex-wrap: wrap;
+    }
+
+    .res-tab {
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .resonantia-skill-desc {
+      font-size: 0.85rem;
+    }
+
+    .resonantia-unlock-req {
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: center;
     }
   }
 </style>

@@ -4,6 +4,7 @@ import CharactersLayout from '../../../layouts/stella-sora/CharactersLayout.astr
 import CharacterFilterBar from '../../../components/stella-sora/CharacterFilterBar.astro';
 import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
 import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
+import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
 import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js';
 
 // Sort characters by Rarity initially (5-Star first, then 4-Star, then 3-Star)
@@ -206,11 +207,12 @@ const structuredData = {
                     </td>
                     <td class="character-name">{character.name}</td>
                     <td>
-                      <span
-                        class={`rarity-badge ${character.rarity.toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
-                      >
-                        {character.rarity}
-                      </span>
+                      <SSRarityImage
+                        rarity={character.grade || 4}
+                        alt={character.rarity}
+                        width={60}
+                        height={18}
+                      />
                     </td>
                     <td>
                       <span class={`element-badge element-${character.element.toLowerCase()}`}>
@@ -286,11 +288,12 @@ const structuredData = {
                   <div class="mobile-card-title-group">
                     <h3 class="character-name">{character.name}</h3>
                     <div class="character-rarity">
-                      <span
-                        class={`rarity-badge ${character.rarity.toLowerCase().replace('-star', '-star').replace('5-star', 'five-star').replace('4-star', 'four-star').replace('3-star', 'three-star')}`}
-                      >
-                        {character.rarity}
-                      </span>
+                      <SSRarityImage
+                        rarity={character.grade || 4}
+                        alt={character.rarity}
+                        width={60}
+                        height={18}
+                      />
                     </div>
                   </div>
                 </div>

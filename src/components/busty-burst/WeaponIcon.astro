@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all weapon inspiration icons
+import SlashIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/307_Slash_Inspiration.png';
+import PierceIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/308_Pierce_Inspiration.png';
+import StrikeIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/309_Strike_Inspiration.png';
+import ShotIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/310_Shot_Inspiration.png';
+import ThrowIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/311_Throw_Inspiration.png';
+
+const weaponMap: Record<string, ImageMetadata> = {
+  'Slash': SlashIcon,
+  'Pierce': PierceIcon,
+  'Strike': StrikeIcon,
+  'Shot': ShotIcon,
+  'Throw': ThrowIcon,
+};
+
+export interface Props {
+  weapon: string; // Slash, Pierce, Strike, Shot, Throw
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { weapon, width = 20, height = 20, class: className } = Astro.props;
+const imageSrc = weaponMap[weapon];
+---
+
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt={weapon}
+    width={width}
+    height={height}
+    class={className}
+  />
+)}

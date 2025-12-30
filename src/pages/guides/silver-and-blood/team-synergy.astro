@@ -1,12 +1,85 @@
 ---
 // Import the dedicated layout
 import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayout.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { Image } from 'astro:assets';
+import { SILVER_AND_BLOOD_TEAMS, getTeamTypeText, getTeamTierText } from '../../../data/silver-and-blood/team-synergy.js';
+import { characters } from '../../../data/silver-and-blood/characters.js';
+
+// Import rarity frame images
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': rarityGold,
+  'SR': rarityPurple,
+  'R': rarityBlue,
+};
+
+// Helper to get character rarity
+function getCharacterRarity(characterName: string): string {
+  const character = characters.find(
+    (char: any) => char.name.toLowerCase() === characterName.toLowerCase()
+  );
+  return character?.rarity || 'SSR';
+}
+
+// Helper to get icon name from character name
+function getIconName(name: string): string {
+  const nameMap: Record<string, string> = {
+    'Timeless Aiona': 'Aiona_Covenant',
+    'Fleeting Bella': 'Bella_Summer_Base',
+    'Transcendent Ami': 'Ami_Covenant',
+    'Starry-eyed Aiona': 'Aiona_Lily',
+    'Jinxed Selena': 'Selena_Summer',
+    'Van Helsing': 'VanHellsing',
+    'Incendiary Agares': 'Agares_Covenant',
+    'Transcendent Hati': 'Hati_Covenant',
+    'Transcendent Noah': 'Noah_Covenant',
+    'Spectral Gilrain': 'Gilrain_Shadow',
+    'Thibault': 'Hippocratic',
+    'Sirene': 'Siegrune',
+  };
+  return nameMap[name] || name.split(' ')[0];
+}
+
+// Helper to get character URL
+function getCharacterUrl(characterName: string): string {
+  const slug = characterName
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  return `/guides/silver-and-blood/characters/${slug}`;
+}
+
+// Helper for shorter display names
+function getDisplayName(characterName: string): string {
+  const shortNames: Record<string, string> = {
+    'Starry-eyed Aiona': 'S.Aiona',
+    'Transcendent Ami': 'T.Ami',
+    'Fleeting Bella': 'F.Bella',
+    'Jinxed Selena': 'J.Selena',
+    'Timeless Aiona': 'T.Aiona',
+    'Van Helsing': 'Van H.',
+    'Incendiary Agares': 'I.Agares',
+  };
+  return shortNames[characterName] || characterName;
+}
+
+// Sort teams by tier (SSS first)
+const tierOrder = { sss: 5, ss: 4, s: 3, a: 2, situational: 1 };
+const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
+  return (tierOrder[b.tier as keyof typeof tierOrder] || 0) - (tierOrder[a.tier as keyof typeof tierOrder] || 0);
+});
 ---
 
 <TeamSynergyLayout
-  title="Silver and Blood Team Synergy Database - GachaWiki"
-  description="Sortable and filterable team composition database for Silver and Blood - Clan Hunt teams, Boss teams, and faction synergies"
-  gameTitle="Team Synergy Database"
+  title="Silver and Blood Team Builds - GachaWiki"
+  description="Sortable and filterable team composition database for Silver and Blood - Clan Hunt teams, Boss teams, and recommended team compositions"
+  gameTitle="Team Builds"
 >
   <section class="page-flex">
     <div class="main-content-container">
@@ -15,42 +88,20 @@ import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayo
           style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--sab-input-bg); border-radius: 12px; border: 1px solid var(--sab-border-light);"
         >
           <p style="color: var(--sab-muted-gold); margin: 0; font-size: 1rem; font-weight: 600;">
-            Team Synergy Database
+            Team Builds
           </p>
           <p
             style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
           >
-            Effective team compositions for different content types and faction synergies
+            Effective team compositions for different content types
           </p>
           <p style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.85rem;">
             <strong>Tip:</strong> You can order the skills that show up first on your left side when
             you select the character for better rotation execution.
           </p>
-          <div
-            style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;"
-          >
-            <a
-              href="/guides/silver-and-blood/characters/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-muted-gold); color: #000; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
-            >
-              View Character Database
-            </a>
-            <a
-              href="/guides/silver-and-blood/clan-hunt/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-calm-red); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
-            >
-              Clan Hunt Guide
-            </a>
-            <a
-              href="/guides/silver-and-blood/boss-database/"
-              style="display: inline-block; padding: 0.75rem 1.5rem; background: var(--sab-calm-blue); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem;"
-            >
-              Boss Database
-            </a>
-          </div>
         </div>
 
-        <!-- Team Database Components -->
+        <!-- Team Database Filter Bar -->
         <div class="team-database-filter-bar">
           <div class="filter-controls">
             <select class="filter-select" id="teamTypeFilter">
@@ -74,7 +125,7 @@ import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayo
 
           <div class="sort-controls">
             <button class="sort-btn" data-sort="type">Type</button>
-            <button class="sort-btn" data-sort="tier">Tier</button>
+            <button class="sort-btn active" data-sort="tier">Tier ↓</button>
             <button class="reset-btn" id="resetFilters">Reset All</button>
           </div>
         </div>
@@ -96,41 +147,193 @@ import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayo
               </tr>
             </thead>
             <tbody id="teamTableBody">
-              <!-- Teams will be populated here by JavaScript -->
-              <tr class="no-teams-message">
-                <td
-                  colspan="9"
-                  style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
-                >
-                  Team database is currently being populated. Check back soon for comprehensive team
-                  compositions!
-                </td>
-              </tr>
+              {sortedTeams.map((team) => (
+                <tr data-type={team.type} data-tier={team.tier}>
+                  <td><strong>{team.name}</strong></td>
+                  <td><span class={`team-type-badge ${team.type}`}>{getTeamTypeText(team.type)}</span></td>
+                  <td><span class={`team-tier-badge ${team.tier}`}>{getTeamTierText(team.tier)}</span></td>
+                  {team.characters.map((char) => {
+                    const rarity = getCharacterRarity(char.name);
+                    return (
+                      <td>
+                        <div class="character-cell">
+                          <div class="character-icon-wrapper">
+                            <SABCharacterIcon
+                              name={getIconName(char.name)}
+                              size="large"
+                              class="character-portrait"
+                              width={50}
+                              height={50}
+                            />
+                            <Image
+                              src={rarityImages[rarity] || rarityGold}
+                              alt={rarity}
+                              class="rarity-frame"
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+                          <a href={getCharacterUrl(char.name)} class="character-name-link">
+                            <span class="character-name">{getDisplayName(char.name)}</span>
+                          </a>
+                        </div>
+                      </td>
+                    );
+                  })}
+                  {team.characters.length < 5 && Array(5 - team.characters.length).fill(null).map(() => <td>-</td>)}
+                  <td>{team.notes}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <!-- Mobile Cards -->
         <div class="mobile-card-view" id="teamMobileCards">
-          <!-- Mobile cards will be populated here by JavaScript -->
-          <div
-            class="no-teams-message-mobile"
-            style="text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic;"
-          >
-            Team database is currently being populated. Check back soon for comprehensive team
-            compositions!
-          </div>
+          {sortedTeams.map((team) => (
+            <div class="mobile-team-card" data-type={team.type} data-tier={team.tier}>
+              <div class="mobile-card-header">
+                <h3 class="mobile-card-title">{team.name}</h3>
+                <div class="mobile-card-badges">
+                  <span class={`team-type-badge ${team.type}`}>{getTeamTypeText(team.type)}</span>
+                  <span class={`team-tier-badge ${team.tier}`}>{getTeamTierText(team.tier)}</span>
+                </div>
+              </div>
+
+              <div class="mobile-card-characters">
+                {team.characters.map((char, index) => {
+                  const rarity = getCharacterRarity(char.name);
+                  return (
+                    <div class="mobile-character-item">
+                      <div class="character-position">{index + 1}</div>
+                      <div class="character-icon-wrapper mobile">
+                        <SABCharacterIcon
+                          name={getIconName(char.name)}
+                          size="large"
+                          class="mobile-character-portrait"
+                          width={45}
+                          height={45}
+                        />
+                        <Image
+                          src={rarityImages[rarity] || rarityGold}
+                          alt={rarity}
+                          class="rarity-frame"
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                      <a href={getCharacterUrl(char.name)} class="mobile-character-name-link">
+                        <span class="mobile-character-name">{getDisplayName(char.name)}</span>
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {team.notes && <div class="mobile-card-notes">{team.notes}</div>}
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Import the database utilities -->
+  <!-- Client-side filtering script -->
   <script>
-    import { initializeTeamDatabase } from '../../../data/silver-and-blood/team-synergy-utils.js';
+    document.addEventListener('DOMContentLoaded', function() {
+      const typeFilter = document.getElementById('teamTypeFilter') as HTMLSelectElement;
+      const tierFilter = document.getElementById('teamTierFilter') as HTMLSelectElement;
+      const resetBtn = document.getElementById('resetFilters');
+      const sortBtns = document.querySelectorAll('.sort-btn[data-sort]');
 
-    document.addEventListener('DOMContentLoaded', function () {
-      initializeTeamDatabase();
+      // Get all team rows and cards
+      const tableRows = document.querySelectorAll('#teamTableBody tr[data-type]');
+      const mobileCards = document.querySelectorAll('.mobile-team-card[data-type]');
+
+      function filterTeams() {
+        const typeValue = typeFilter?.value || '';
+        const tierValue = tierFilter?.value || '';
+
+        // Filter table rows
+        tableRows.forEach((row) => {
+          const type = row.getAttribute('data-type');
+          const tier = row.getAttribute('data-tier');
+          const matchesType = !typeValue || type === typeValue;
+          const matchesTier = !tierValue || tier === tierValue;
+          (row as HTMLElement).style.display = matchesType && matchesTier ? '' : 'none';
+        });
+
+        // Filter mobile cards
+        mobileCards.forEach((card) => {
+          const type = card.getAttribute('data-type');
+          const tier = card.getAttribute('data-tier');
+          const matchesType = !typeValue || type === typeValue;
+          const matchesTier = !tierValue || tier === tierValue;
+          (card as HTMLElement).style.display = matchesType && matchesTier ? '' : 'none';
+        });
+      }
+
+      // Set up event listeners
+      typeFilter?.addEventListener('change', filterTeams);
+      tierFilter?.addEventListener('change', filterTeams);
+
+      resetBtn?.addEventListener('click', () => {
+        if (typeFilter) typeFilter.value = '';
+        if (tierFilter) tierFilter.value = '';
+        filterTeams();
+      });
+
+      // Sort buttons (visual only - actual sorting done server-side)
+      sortBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          sortBtns.forEach(b => {
+            b.classList.remove('active');
+            b.textContent = b.textContent?.replace(' ↑', '').replace(' ↓', '') || '';
+          });
+          btn.classList.add('active');
+          btn.textContent = btn.textContent + ' ↓';
+        });
+      });
     });
   </script>
 </TeamSynergyLayout>
+
+<style>
+  /* Character icon wrapper with rarity frame */
+  .character-icon-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .character-icon-wrapper :global(.character-portrait) {
+    border-radius: 8px;
+    display: block;
+  }
+
+  .character-icon-wrapper :global(.mobile-character-portrait) {
+    border-radius: 6px;
+    display: block;
+  }
+
+  .character-icon-wrapper .rarity-frame {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    z-index: 1;
+  }
+
+  .character-icon-wrapper.mobile .rarity-frame {
+    top: -4px;
+    right: -4px;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 480px) {
+    .character-icon-wrapper .rarity-frame {
+      width: 20px;
+      height: 20px;
+      top: -4px;
+      right: -4px;
+    }
+  }
+</style>

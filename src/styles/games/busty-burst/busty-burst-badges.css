@@ -225,6 +225,30 @@
   border: 1px solid rgba(105, 219, 124, 0.3);
 }
 
+/* Position Badge Colors */
+.bb-badge[data-position='Front'] {
+  background: rgba(255, 140, 105, 0.2);
+  color: #ff8c69;
+  border: 1px solid rgba(255, 140, 105, 0.4);
+}
+
+.bb-badge[data-position='Mid'] {
+  background: rgba(77, 171, 247, 0.2);
+  color: #4dabf7;
+  border: 1px solid rgba(77, 171, 247, 0.4);
+}
+
+.bb-badge[data-position='Back'] {
+  background: rgba(151, 117, 250, 0.2);
+  color: #9775fa;
+  border: 1px solid rgba(151, 117, 250, 0.4);
+}
+
+.bb-badge-position .position-image-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
 /* Skill Type Badge Colors */
 .bb-badge[data-type='damage'] {
   background: rgba(255, 107, 107, 0.15);

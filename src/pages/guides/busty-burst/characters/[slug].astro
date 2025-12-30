@@ -1,0 +1,1162 @@
+---
+import CharacterDatabaseLayout from '../../../../layouts/busty-burst/CharacterDatabaseLayout.astro';
+import PaladinImage from '../../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../../components/busty-burst/RarityImage.astro';
+import PositionImage from '../../../../components/busty-burst/PositionImage.astro';
+import WeaponIcon from '../../../../components/busty-burst/WeaponIcon.astro';
+import TypeofATKImage from '../../../../components/busty-burst/TypeofATKImage.astro';
+import SkillIcon from '../../../../components/busty-burst/SkillIcon.astro';
+import LimitBreakIcon from '../../../../components/busty-burst/LimitBreakIcon.astro';
+import SupportBonusIcon from '../../../../components/busty-burst/SupportBonusIcon.astro';
+import WeaponImage from '../../../../components/busty-burst/WeaponImage.astro';
+import AccessoryImage from '../../../../components/busty-burst/AccessoryImage.astro';
+
+// Import data
+import {
+  getAllCharacterSlugs,
+  getCharacterDataBySlug,
+  calculateStatAtLevel,
+  STAT_DISPLAY_NAMES,
+} from '../../../../data/busty-burst/character-database.js';
+
+// Import CSS
+import '../../../../styles/games/busty-burst/busty-burst-character-individual.css';
+
+// Generate static paths for all characters
+export async function getStaticPaths() {
+  const slugs = getAllCharacterSlugs();
+
+  return slugs.map(slug => ({
+    params: { slug },
+    props: { character: getCharacterDataBySlug(slug) }
+  }));
+}
+
+const { slug } = Astro.params;
+const { character } = Astro.props;
+
+if (!character) {
+  return Astro.redirect('/guides/busty-burst/characters/');
+}
+
+// Map position roman to file name (with .png extension for PositionImage)
+const positionMap = {
+  'I': 'Front.png',
+  'II': 'Mid.png',
+  'III': 'Back.png',
+};
+
+// Map position roman to display name
+const positionNameMap = {
+  'I': 'Front',
+  'II': 'Mid',
+  'III': 'Back',
+};
+
+// Action Speed values (time in seconds)
+const ACTION_SPEED_VALUES = {
+  'Fast': '~0.36s',
+  'Slightly Fast': '~0.61s',
+  'Normal': '~0.87s',
+  'Slightly Slow': '~1.11s',
+  'Slow': '~1.33s'
+};
+
+// Action Speed descriptions
+const ACTION_SPEED_DESC = {
+  'Fast': 'Fastest action speed',
+  'Slightly Fast': 'Quicker than normal',
+  'Normal': 'Standard speed',
+  'Slightly Slow': 'Slower than normal',
+  'Slow': 'Slowest action speed'
+};
+
+// Normalize weapon type for icon
+function normalizeWeaponType(weaponType: string | undefined | null): string | null {
+  if (!weaponType) return null;
+  const normalized = weaponType.toLowerCase();
+  if (normalized.includes('slash')) return 'Slash';
+  if (normalized.includes('pierce')) return 'Pierce';
+  if (normalized.includes('strike') || normalized.includes('blunt')) return 'Strike';
+  if (normalized.includes('throw')) return 'Throw';
+  if (normalized.includes('shoot') || normalized.includes('ranged') || normalized.includes('shot')) return 'Shot';
+  return null;
+}
+
+// Get normalized weapon type once for reuse
+const normalizedWeaponType = normalizeWeaponType(character.weaponType);
+
+// Get stats
+const stats = character.stats;
+const skills = character.skills;
+const support = character.support;
+const build = character.build;
+
+// Type definitions for safe iteration
+type StatBonusType = Record<string, number>;
+type BonusLevelsType = Record<string, StatBonusType>;
+type SupportStatsType = Record<string, Record<string, string | number>>;
+
+// Type-safe versions for iteration
+const supportStatsTyped: SupportStatsType | null = support?.supportStats ? (support.supportStats as SupportStatsType) : null;
+const limitBreakTyped: BonusLevelsType | null = stats?.limitBreak ? (stats.limitBreak as BonusLevelsType) : null;
+const gpAbilityTyped: BonusLevelsType | null = stats?.gpAbility ? (stats.gpAbility as BonusLevelsType) : null;
+const abilityGradeTyped: BonusLevelsType | null = stats?.abilityGrade ? (stats.abilityGrade as BonusLevelsType) : null;
+
+// Helper to calculate total bonuses
+function calculateTotalBonuses(bonusData: BonusLevelsType): StatBonusType {
+  const totals: StatBonusType = {};
+  Object.values(bonusData).forEach(bonuses => {
+    Object.entries(bonuses).forEach(([stat, value]) => {
+      totals[stat] = (totals[stat] || 0) + value;
+    });
+  });
+  return totals;
+}
+
+// Create description
+const description = `${character.displayName || character.name} - ${character.rarity} ${character.element} ${character.role} character in Busty Burst Battle. View stats, skills, and support bonuses.`;
+---
+
+<CharacterDatabaseLayout
+  title={`${character.displayName || character.name} - Busty Burst Battle`}
+  description={description}
+  gameTitle={character.displayName || character.name}
+>
+  <!-- Character Header -->
+  <section class="bb-char-header">
+    <div class="bb-char-portrait-container">
+      <div class="bb-char-portrait-wrapper">
+        {character.characterId && (
+          <PaladinImage
+            characterId={character.characterId}
+            alt={character.displayName || character.name || 'Character'}
+            imageType="body"
+            width={400}
+            height={560}
+          />
+        )}
+      </div>
+    </div>
+
+    <div class="bb-char-header-info">
+      <h1 class="bb-char-name">{character.displayName || character.name}</h1>
+      {character.title && (
+        <p class="bb-char-title-label">{character.title}</p>
+      )}
+
+      <div class="bb-char-header-badges">
+        <div class="bb-char-header-badge rarity">
+          <RarityImage rarity={character.rarity} width={60} height={30} />
+        </div>
+        <div class="bb-char-header-badge">
+          <ElementImage element={character.element} width={24} height={24} />
+          <span class="bb-char-header-badge-text">{character.element}</span>
+        </div>
+        <div class="bb-char-header-badge">
+          <span class="bb-char-header-badge-text">{character.role}</span>
+        </div>
+        {character.position && (
+          <div class="bb-char-header-badge">
+            <PositionImage fileName={positionMap[character.position.roman] || 'Front.png'} alt={positionNameMap[character.position.roman] || 'Position'} width={24} height={24} />
+            <span class="bb-char-header-badge-text">{positionNameMap[character.position.roman]}</span>
+          </div>
+        )}
+        {normalizedWeaponType && (
+          <div class="bb-char-header-badge">
+            <WeaponIcon weapon={normalizedWeaponType} width={24} height={24} />
+            <span class="bb-char-header-badge-text">{character.weaponType}</span>
+          </div>
+        )}
+        <div class="bb-char-header-badge">
+          <span class="bb-char-header-badge-text">{character.attackType}</span>
+        </div>
+      </div>
+
+      <div class="bb-char-quick-stats">
+        {character.actionSpeed && (
+          <div class="bb-char-quick-stat action-speed" data-speed={character.actionSpeed}>
+            <span class="bb-char-quick-stat-label">Action Speed</span>
+            <span class="bb-char-action-speed-value">{character.actionSpeed}</span>
+            <span class="bb-char-action-speed-time">{ACTION_SPEED_VALUES[character.actionSpeed] || ''}</span>
+          </div>
+        )}
+        {character.range && (
+          <div class="bb-char-quick-stat">
+            <span class="bb-char-quick-stat-label">Range</span>
+            <span class="bb-char-quick-stat-value">{character.range}</span>
+          </div>
+        )}
+        {character.skillTypes && character.skillTypes.length > 0 && (
+          <div class="bb-char-quick-stat">
+            <span class="bb-char-quick-stat-label">Skill Types</span>
+            <span class="bb-char-quick-stat-value">{character.skillTypes.join(', ')}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Character Profile Section -->
+  <section class="bb-char-section">
+    <h2 class="bb-char-section-title">Character Info</h2>
+    <div class="bb-char-section-content">
+      <div class="bb-char-info-grid">
+        {character.profile && (
+          <div class="bb-char-info-card">
+            <div class="bb-char-info-card-title">Profile</div>
+            <div class="bb-char-info-card-content">
+              <div class="bb-char-profile-row">
+                <span class="bb-char-profile-label">Height</span>
+                <span class="bb-char-profile-value">{character.profile.height}</span>
+              </div>
+              <div class="bb-char-profile-row">
+                <span class="bb-char-profile-label">Bust</span>
+                <span class="bb-char-profile-value">{character.profile.bust}</span>
+              </div>
+              <div class="bb-char-profile-row">
+                <span class="bb-char-profile-label">Waist</span>
+                <span class="bb-char-profile-value">{character.profile.waist}</span>
+              </div>
+              <div class="bb-char-profile-row">
+                <span class="bb-char-profile-label">Hips</span>
+                <span class="bb-char-profile-value">{character.profile.hips}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {character.obtain && (
+          <div class="bb-char-info-card">
+            <div class="bb-char-info-card-title">How to Obtain</div>
+            <div class="bb-char-info-card-content">
+              <div class="bb-char-obtain-card">
+                <span class={`bb-char-obtain-type ${character.obtain.type}`}>
+                  {character.obtain.type}
+                </span>
+                <span class="bb-char-obtain-source">{character.obtain.source}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  {stats && stats.baseStats && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Character Stats</h2>
+      <div class="bb-char-section-content"
+        data-stats={JSON.stringify(stats.baseStats)}
+        data-gp-ability={JSON.stringify(stats.gpAbility || {})}
+        data-limit-break={JSON.stringify(stats.limitBreak || {})}
+        data-ability-grade={JSON.stringify(stats.abilityGrade || {})}
+        data-passive-abilities={JSON.stringify(stats.passiveAbilities || [])}
+      >
+        <!-- Level Calculator -->
+        <div class="bb-char-stats-calculator">
+          <div class="bb-char-stats-calc-header">
+            <span class="bb-char-stats-calc-title">Level</span>
+            <div class="bb-char-stats-level-controls">
+              <button type="button" class="bb-char-level-btn minus" id="level-minus">−</button>
+              <input type="number" class="bb-char-level-input" id="level-input" min="1" max="90" value="90" />
+              <button type="button" class="bb-char-level-btn plus" id="level-plus">+</button>
+            </div>
+            <div class="bb-char-quick-levels">
+              <button type="button" class="bb-char-quick-level-btn" data-level="1">1</button>
+              <button type="button" class="bb-char-quick-level-btn" data-level="50">50</button>
+              <button type="button" class="bb-char-quick-level-btn" data-level="70">70</button>
+              <button type="button" class="bb-char-quick-level-btn active" data-level="90">90</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combat Stats Table -->
+        <div class="bb-char-stats-table-section">
+          <div class="bb-char-stats-section-title">Combat Stats</div>
+          <div class="bb-char-stats-table" id="stats-display">
+            <div class="bb-char-stats-table-item primary">
+              <span class="bb-char-stats-table-label">HP</span>
+              <span class="bb-char-stats-table-value" data-stat="hp" data-base={stats.baseStats.hp?.base} data-lv90={stats.baseStats.hp?.lv90}>
+                {stats.baseStats.hp?.lv90?.toLocaleString() || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item primary">
+              <span class="bb-char-stats-table-label">ATK</span>
+              <span class="bb-char-stats-table-value" data-stat="atk" data-base={stats.baseStats.atk?.base} data-lv90={stats.baseStats.atk?.lv90}>
+                {stats.baseStats.atk?.lv90?.toLocaleString() || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item primary">
+              <span class="bb-char-stats-table-label">MATK</span>
+              <span class="bb-char-stats-table-value" data-stat="matk" data-base={stats.baseStats.matk?.base} data-lv90={stats.baseStats.matk?.lv90}>
+                {stats.baseStats.matk?.lv90?.toLocaleString() || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item primary">
+              <span class="bb-char-stats-table-label">DEF</span>
+              <span class="bb-char-stats-table-value" data-stat="def" data-base={stats.baseStats.def?.base} data-lv90={stats.baseStats.def?.lv90}>
+                {stats.baseStats.def?.lv90?.toLocaleString() || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item primary">
+              <span class="bb-char-stats-table-label">MDEF</span>
+              <span class="bb-char-stats-table-value" data-stat="mdef" data-base={stats.baseStats.mdef?.base} data-lv90={stats.baseStats.mdef?.lv90}>
+                {stats.baseStats.mdef?.lv90?.toLocaleString() || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">Accuracy</span>
+              <span class="bb-char-stats-table-value" data-stat="accuracy" data-base={stats.baseStats.accuracy?.base} data-lv90={stats.baseStats.accuracy?.lv90}>
+                {stats.baseStats.accuracy?.lv90 || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">Block</span>
+              <span class="bb-char-stats-table-value" data-stat="block" data-base={stats.baseStats.block?.base} data-lv90={stats.baseStats.block?.lv90}>
+                {stats.baseStats.block?.lv90 || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">P.Crit</span>
+              <span class="bb-char-stats-table-value crit-value" data-stat="physCrit" data-base={stats.baseStats.physCrit?.base} data-lv90={stats.baseStats.physCrit?.lv90}>
+                {stats.baseStats.physCrit?.lv90 || 0}
+                <span class="crit-rate">({((stats.baseStats.physCrit?.lv90 || 0) / 20).toFixed(1)}%)</span>
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">M.Crit</span>
+              <span class="bb-char-stats-table-value crit-value" data-stat="magicCrit" data-base={stats.baseStats.magicCrit?.base} data-lv90={stats.baseStats.magicCrit?.lv90}>
+                {stats.baseStats.magicCrit?.lv90 || 0}
+                <span class="crit-rate">({((stats.baseStats.magicCrit?.lv90 || 0) / 20).toFixed(1)}%)</span>
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">HP Regen</span>
+              <span class="bb-char-stats-table-value" data-stat="hpRegen" data-base={stats.baseStats.hpRegen?.base} data-lv90={stats.baseStats.hpRegen?.lv90}>
+                {stats.baseStats.hpRegen?.lv90 || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">MP Regen</span>
+              <span class="bb-char-stats-table-value" data-stat="mpRegen" data-base={stats.baseStats.mpRegen?.base} data-lv90={stats.baseStats.mpRegen?.lv90}>
+                {stats.baseStats.mpRegen?.lv90 || 0}
+              </span>
+            </div>
+            <div class="bb-char-stats-table-item">
+              <span class="bb-char-stats-table-label">Heal Pwr</span>
+              <span class="bb-char-stats-table-value" data-stat="healPwr" data-base={stats.baseStats.healPwr?.base} data-lv90={stats.baseStats.healPwr?.lv90}>
+                {stats.baseStats.healPwr?.lv90 || 0}
+              </span>
+            </div>
+          </div>
+
+          <!-- Flat Stats (no level scaling) -->
+          <div class="bb-char-flat-stats">
+            <div class="bb-char-flat-item">
+              <span class="bb-char-flat-label">MP Charge:</span>
+              <span class="bb-char-flat-value">{stats.baseStats.mpCharge?.lv90 || 0}</span>
+            </div>
+            {(stats.baseStats.hpDrain?.lv90 || 0) > 0 && (
+              <div class="bb-char-flat-item">
+                <span class="bb-char-flat-label">HP Drain:</span>
+                <span class="bb-char-flat-value">{stats.baseStats.hpDrain?.lv90 || 0}%</span>
+              </div>
+            )}
+            {(stats.baseStats.mpCostDown?.lv90 || 0) > 0 && (
+              <div class="bb-char-flat-item">
+                <span class="bb-char-flat-label">MP Cost Down:</span>
+                <span class="bb-char-flat-value">{stats.baseStats.mpCostDown?.lv90 || 0}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Bonus Cards Grid -->
+        <div class="bb-char-bonus-grid">
+          <!-- Limit Break Card -->
+          {limitBreakTyped && Object.keys(limitBreakTyped).length > 0 && (
+            <div class="bb-char-bonus-card">
+              <div class="bb-char-bonus-header">
+                <input type="checkbox" class="bb-char-bonus-check" id="lb-check" checked />
+                <span class="bb-char-bonus-title">Limit Break</span>
+                <div class="bb-char-bonus-input-group">
+                  <input type="number" class="bb-char-bonus-input" id="lb-input" min="0" max="5" value="5" />
+                  <span class="bb-char-bonus-max">/ 5</span>
+                </div>
+              </div>
+              <div class="bb-char-bonus-stats" id="lb-display">
+                {Object.entries(calculateTotalBonuses(limitBreakTyped)).map(([stat, value]) => (
+                  <div class="bb-char-bonus-stat-row">
+                    <span class="bb-char-bonus-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                    <span class="bb-char-bonus-stat-value">+{value?.toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Bond Level Card -->
+          {gpAbilityTyped && Object.keys(gpAbilityTyped).length > 0 && (
+            <div class="bb-char-bonus-card">
+              <div class="bb-char-bonus-header">
+                <input type="checkbox" class="bb-char-bonus-check" id="bond-check" checked />
+                <span class="bb-char-bonus-title">Bond Level</span>
+                <div class="bb-char-bonus-input-group">
+                  <input type="number" class="bb-char-bonus-input" id="bond-input" min="0" max="10" value="10" />
+                  <span class="bb-char-bonus-max">/ 10</span>
+                </div>
+              </div>
+              <div class="bb-char-bonus-stats" id="bond-display">
+                {Object.entries(calculateTotalBonuses(gpAbilityTyped)).map(([stat, value]) => (
+                  <div class="bb-char-bonus-stat-row">
+                    <span class="bb-char-bonus-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                    <span class="bb-char-bonus-stat-value">+{value?.toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Ability Grade Card -->
+          {abilityGradeTyped && Object.keys(abilityGradeTyped).length > 0 && (
+            <div class="bb-char-bonus-card">
+              <div class="bb-char-bonus-header">
+                <input type="checkbox" class="bb-char-bonus-check" id="grade-check" checked />
+                <span class="bb-char-bonus-title">Ability Grade</span>
+                <div class="bb-char-bonus-input-group">
+                  <input type="number" class="bb-char-bonus-input" id="grade-input" min="0" max="10" value="10" />
+                  <span class="bb-char-bonus-max">/ 10</span>
+                </div>
+              </div>
+              <div class="bb-char-bonus-stats" id="grade-display">
+                {Object.entries(calculateTotalBonuses(abilityGradeTyped)).map(([stat, value]) => (
+                  <div class="bb-char-bonus-stat-row">
+                    <span class="bb-char-bonus-stat-name">{STAT_DISPLAY_NAMES[stat] || stat}</span>
+                    <span class="bb-char-bonus-stat-value">+{value?.toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Passive Abilities Card -->
+          {stats.passiveAbilities && stats.passiveAbilities.length > 0 && (
+            <div class="bb-char-bonus-card">
+              <div class="bb-char-bonus-header">
+                <input type="checkbox" class="bb-char-bonus-check" id="passive-check" checked />
+                <span class="bb-char-bonus-title">Passives</span>
+                <div class="bb-char-bonus-input-group">
+                  <input type="number" class="bb-char-bonus-input" id="passive-input" min="0" max="10" value="10" />
+                  <span class="bb-char-bonus-max">/ 10</span>
+                </div>
+              </div>
+              <div class="bb-char-bonus-stats" id="passive-display">
+                {stats.passiveAbilities.map(passive => (
+                  <div class="bb-char-bonus-stat-row">
+                    <span class="bb-char-bonus-stat-name">{passive.stat}</span>
+                    <span class="bb-char-bonus-stat-value">+{passive.grades?.g10 || 0}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Skills Section -->
+  {skills && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Skills</h2>
+      <div class="bb-char-section-content" data-skills={JSON.stringify(skills)}>
+        <!-- Skill Level Calculator -->
+        <div class="bb-char-skill-level-calc">
+          <span class="bb-char-skill-level-label">Skill Level</span>
+          <div class="bb-char-skill-level-controls">
+            <button type="button" class="bb-char-level-btn" id="skill-level-minus">−</button>
+            <input type="number" class="bb-char-level-input" id="skill-level-input" min="1" max="90" value="90" />
+            <button type="button" class="bb-char-level-btn" id="skill-level-plus">+</button>
+          </div>
+          <div class="bb-char-quick-levels">
+            <button type="button" class="bb-char-quick-level-btn skill-quick-level" data-level="1">1</button>
+            <button type="button" class="bb-char-quick-level-btn skill-quick-level" data-level="50">50</button>
+            <button type="button" class="bb-char-quick-level-btn skill-quick-level" data-level="70">70</button>
+            <button type="button" class="bb-char-quick-level-btn skill-quick-level active" data-level="90">90</button>
+          </div>
+        </div>
+
+        <div class="bb-char-skills-grid">
+          <!-- Basic Attack -->
+          {skills.basicAttack && (
+            <div class="bb-char-skill-card">
+              <div class="bb-char-skill-icon-wrapper">
+                {skills.basicAttack.icon && (
+                  <SkillIcon skillId={skills.basicAttack.icon} width={64} height={64} />
+                )}
+              </div>
+              <div class="bb-char-skill-info">
+                <div class="bb-char-skill-header">
+                  <h3 class="bb-char-skill-name">Basic Attack</h3>
+                  <span class="bb-char-skill-slot">AUTO</span>
+                </div>
+                <p class="bb-char-skill-description">
+                  {skills.basicAttack.type} attack with {skills.basicAttack.scaling} scaling
+                </p>
+                <div class="bb-char-skill-meta">
+                  <span class="bb-char-skill-meta-item">Speed: {skills.basicAttack.speedLabel} ({skills.basicAttack.speedValue}s)</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <!-- Active Skills -->
+          {skills.skills && skills.skills.map((skill, index) => (
+            <div class="bb-char-skill-card" data-skill-index={index}>
+              <div class="bb-char-skill-icon-wrapper">
+                {skill.icon && (
+                  <SkillIcon skillId={skill.icon} width={64} height={64} />
+                )}
+              </div>
+              <div class="bb-char-skill-info">
+                <div class="bb-char-skill-header">
+                  <h3 class="bb-char-skill-name">{skill.name}</h3>
+                  <span class="bb-char-skill-slot">Skill {skill.slot}</span>
+                </div>
+                <p class="bb-char-skill-description">{skill.description}</p>
+                <div class="bb-char-skill-meta">
+                  {skill.castTime && (
+                    <span class="bb-char-skill-meta-item">Cast: {skill.castTime}</span>
+                  )}
+                  {skill.target && (
+                    <span class="bb-char-skill-meta-item">Target: {skill.target}</span>
+                  )}
+                </div>
+                {((skill.baseDamage || skill.lvl1) || skill.effect) && (
+                  <div class="bb-char-skill-details">
+                    {(skill.baseDamage || skill.lvl1) && (
+                      <div class="bb-char-skill-damage">
+                        <span class="bb-char-skill-damage-label">Damage at Lv <span class="skill-current-level">90</span></span>
+                        <span class="bb-char-skill-damage-value"
+                          data-scaling={skill.damageScaling || ''}
+                          data-base={parseInt(skill.baseDamage?.replace('+', '') || '0')}
+                          data-growth={parseInt(skill.levelGrowth?.replace('+', '') || '0')}>
+                          {skill.damageScaling || ''} + {(() => {
+                            const base = parseInt(skill.baseDamage?.replace('+', '') || '0');
+                            const growth = parseInt(skill.levelGrowth?.replace('+', '') || '0');
+                            return base + (growth * 89);
+                          })()}
+                        </span>
+                      </div>
+                    )}
+                    {skill.effect && (
+                      <div class="bb-char-skill-effect">
+                        <span class="bb-char-skill-effect-label">Effect</span>
+                        <span class="bb-char-skill-effect-value">{skill.effect}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+
+          <!-- Ultimate Skills -->
+          {skills.ultimate && skills.ultimate.length > 0 && (
+            <div class="bb-char-skill-card">
+              <div class="bb-char-skill-icon-wrapper">
+                {skills.ultimate[0].icon && (
+                  <SkillIcon skillId={skills.ultimate[0].icon} width={64} height={64} />
+                )}
+              </div>
+              <div class="bb-char-skill-info">
+                <div class="bb-char-skill-header">
+                  <h3 class="bb-char-skill-name">{skills.ultimate[0].name}</h3>
+                  <span class="bb-char-skill-slot">ULTIMATE</span>
+                </div>
+                <div class="bb-char-ultimate-section">
+                  <div class="bb-char-ultimate-ranks">
+                    {skills.ultimate.map((ult, idx) => (
+                      <button
+                        class={`bb-char-ultimate-rank-btn ${idx === 0 ? 'active' : ''}`}
+                        data-rank={ult.rank}
+                        data-description={ult.description}
+                        data-effect={ult.effect}
+                      >
+                        Rank {ult.rank}
+                      </button>
+                    ))}
+                  </div>
+                  <p class="bb-char-skill-description" id="ultimate-description">
+                    {skills.ultimate[0].description}
+                  </p>
+                  <div class="bb-char-skill-meta">
+                    <span class="bb-char-skill-meta-item" id="ultimate-effect">
+                      Effect: {skills.ultimate[0].effect}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Passives -->
+        {skills.passives && skills.passives.length > 0 && (
+          <div class="bb-char-passives-section">
+            <div class="bb-char-passives-title">Passive Abilities</div>
+            <div class="bb-char-passives-grid">
+              {skills.passives.map((passive, index) => (
+                <div class="bb-char-passive-card">
+                  <div class="bb-char-passive-header">
+                    <div class="bb-char-passive-icon-wrapper">
+                      {passive.icon && (
+                        <SkillIcon skillId={passive.icon} width={48} height={48} />
+                      )}
+                    </div>
+                    <div class="bb-char-passive-title-area">
+                      <h4 class="bb-char-passive-name">{passive.name}</h4>
+                    </div>
+                  </div>
+                  <div class="bb-char-passive-body">
+                    <p class="bb-char-passive-effect">{passive.effect}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Support Section -->
+  {support && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Support Stats & Bonus</h2>
+      <div class="bb-char-section-content">
+        <div class="bb-char-support-grid">
+          <!-- Support Stats -->
+          {supportStatsTyped && (
+            <div class="bb-char-support-card">
+              <div class="bb-char-support-card-title">Support Stats by Limit Break</div>
+              <table class="bb-char-support-stats-table">
+                <thead>
+                  <tr>
+                    <th>LB</th>
+                    {Object.keys(supportStatsTyped.lb5 || supportStatsTyped.lb0 || {}).map(stat => (
+                      <th>{stat}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(supportStatsTyped).map(([lb, statsData]) => {
+                    const lbLevel = parseInt(lb.replace('lb', '')) || 0;
+                    return (
+                      <tr>
+                        <td><LimitBreakIcon level={lbLevel} width={28} height={28} /></td>
+                        {Object.entries(statsData).map(([_, value]) => (
+                          <td>{value}</td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          <!-- Support Bonus -->
+          {support.supportBonus && (
+            <div class="bb-char-support-card">
+              <div class="bb-char-support-card-title">Support Bonus</div>
+              <div class="bb-char-support-bonus">
+                {support.supportBonus.blessing && (
+                  <div class="bb-char-support-bonus-item">
+                    <div class="bb-char-support-bonus-header">
+                      <SupportBonusIcon type="blessing" element={character.element} width={32} height={32} />
+                      <div class="bb-char-support-bonus-name">{support.supportBonus.blessing.name}</div>
+                    </div>
+                    <div class="bb-char-support-bonus-effect">{support.supportBonus.blessing.effect}</div>
+                    <div class="bb-char-support-bonus-values">
+                      <span class="bb-char-support-bonus-value">2 Members: {support.supportBonus.blessing.values.members2}</span>
+                      <span class="bb-char-support-bonus-value">4 Members: {support.supportBonus.blessing.values.members4}</span>
+                      <span class="bb-char-support-bonus-value">6 Members: {support.supportBonus.blessing.values.members6}</span>
+                    </div>
+                  </div>
+                )}
+                {support.supportBonus.inspiration && (
+                  <div class="bb-char-support-bonus-item">
+                    <div class="bb-char-support-bonus-header">
+                      <SupportBonusIcon type="inspiration" weapon={normalizedWeaponType || 'Slash'} width={32} height={32} />
+                      <div class="bb-char-support-bonus-name">{support.supportBonus.inspiration.name}</div>
+                    </div>
+                    <div class="bb-char-support-bonus-effect">{support.supportBonus.inspiration.effect}</div>
+                    <div class="bb-char-support-bonus-values">
+                      <span class="bb-char-support-bonus-value">2 Members: {support.supportBonus.inspiration.values.members2}</span>
+                      <span class="bb-char-support-bonus-value">4 Members: {support.supportBonus.inspiration.values.members4}</span>
+                      <span class="bb-char-support-bonus-value">6 Members: {support.supportBonus.inspiration.values.members6}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recommended Build Section -->
+  {build && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Recommended Build</h2>
+      <div class="bb-char-section-content">
+        <div class="bb-char-build-grid">
+          <!-- Weapon -->
+          {build.weapon && (
+            <div class="bb-char-build-card">
+              <div class="bb-char-build-card-title">Weapon</div>
+              <div class="bb-char-build-item-row">
+                <div class="bb-char-build-item-image">
+                  <WeaponImage
+                    fileName={build.weapon.image}
+                    alt={build.weapon.name}
+                    width={64}
+                    height={64}
+                  />
+                </div>
+                <div class="bb-char-build-item-info">
+                  <div class="bb-char-build-item-name">{build.weapon.name}</div>
+                  <div class="bb-char-build-item-effect">{build.weapon.effect}</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <!-- Accessory Set -->
+          {build.accessory && (
+            <div class="bb-char-build-card">
+              <div class="bb-char-build-card-title">Accessory Set</div>
+              <div class="bb-char-build-item-name">{build.accessory.name}</div>
+              {build.accessory.images && build.accessory.images.length > 0 && (
+                <div class="bb-char-build-accessory-images">
+                  {build.accessory.images.map(img => (
+                    <div class="bb-char-build-accessory-item">
+                      <AccessoryImage
+                        fileName={img}
+                        alt={img.replace('.png', '').replace(/_/g, ' ')}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div class="bb-char-build-set-effects">
+                {build.accessory.setEffects.map(effect => (
+                  <div class="bb-char-build-set-effect">
+                    <span class="bb-char-build-set-pieces">{effect.pieces}-set</span>
+                    <span class="bb-char-build-set-value">{effect.effect}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Main Stats -->
+          {build.accessory?.mainStats && build.accessory.mainStats.length > 0 && (
+            <div class="bb-char-build-card">
+              <div class="bb-char-build-card-title">Best Main Stats</div>
+              <div class="bb-char-build-main-stats">
+                {build.accessory.mainStats.map(stat => (
+                  <div class="bb-char-build-main-stat-row">
+                    <AccessoryImage
+                      fileName={stat.imageFile}
+                      alt={stat.slot}
+                      width={32}
+                      height={32}
+                    />
+                    <span class="bb-char-build-stat-slot">{stat.slot}</span>
+                    <span class="bb-char-build-stat-value">{stat.best}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Substat Priority -->
+          {build.accessory?.substatPriority && (
+            <div class="bb-char-build-card">
+              <div class="bb-char-build-card-title">Substat Priority</div>
+              <div class="bb-char-build-substat-priority">
+                <div class="bb-char-build-substat-row">
+                  <span class="bb-char-build-substat-label">Priority:</span>
+                  <span class="bb-char-build-substat-values">{build.accessory.substatPriority.priority.join(', ')}</span>
+                </div>
+                <div class="bb-char-build-substat-row">
+                  <span class="bb-char-build-substat-label">Secondary:</span>
+                  <span class="bb-char-build-substat-values">{build.accessory.substatPriority.secondary.join(', ')}</span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+      </div>
+    </section>
+  )}
+
+  <!-- Credits Section -->
+  {character.credits && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Credits</h2>
+      <div class="bb-char-section-content">
+        <div class="bb-char-credits-grid">
+          {character.credits.illustration && (
+            <div class="bb-char-credit-item">
+              <div class="bb-char-credit-label">Illustration</div>
+              <div class="bb-char-credit-value">
+                <div class="bb-char-credit-value-jp">{character.credits.illustration.japanese}</div>
+                <div class="bb-char-credit-value-rom">{character.credits.illustration.romanized}</div>
+              </div>
+            </div>
+          )}
+          {character.credits.voice && (
+            <div class="bb-char-credit-item">
+              <div class="bb-char-credit-label">Voice Actor</div>
+              <div class="bb-char-credit-value">
+                <div class="bb-char-credit-value-jp">{character.credits.voice.japanese}</div>
+                <div class="bb-char-credit-value-rom">{character.credits.voice.romanized}</div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  // Get data from section content
+  const sectionContent = document.querySelector('.bb-char-section-content[data-stats]');
+  if (!sectionContent) return;
+
+  const baseStats = JSON.parse(sectionContent.dataset.stats || '{}');
+  const limitBreakData = JSON.parse(sectionContent.dataset.limitBreak || '{}');
+  const gpAbilityData = JSON.parse(sectionContent.dataset.gpAbility || '{}');
+  const abilityGradeData = JSON.parse(sectionContent.dataset.abilityGrade || '{}');
+  const passiveAbilitiesData = JSON.parse(sectionContent.dataset.passiveAbilities || '[]');
+
+  // Level controls
+  const levelInput = document.getElementById('level-input');
+  const levelMinus = document.getElementById('level-minus');
+  const levelPlus = document.getElementById('level-plus');
+  const quickLevelBtns = document.querySelectorAll('.bb-char-quick-level-btn');
+
+  // Bonus controls
+  const lbCheck = document.getElementById('lb-check');
+  const lbInput = document.getElementById('lb-input');
+  const bondCheck = document.getElementById('bond-check');
+  const bondInput = document.getElementById('bond-input');
+  const gradeCheck = document.getElementById('grade-check');
+  const gradeInput = document.getElementById('grade-input');
+  const passiveCheck = document.getElementById('passive-check');
+  const passiveInput = document.getElementById('passive-input');
+
+  // Stat display elements
+  const statValues = document.querySelectorAll('.bb-char-stats-table-value[data-stat]');
+
+  // Calculate stat at any level
+  function calculateStatAtLevel(base, lv90, level) {
+    if (level <= 1) return base;
+    if (level >= 90) return lv90;
+    const growth = lv90 - base;
+    const perLevel = growth / 89;
+    return Math.floor(base + perLevel * (level - 1));
+  }
+
+  // Calculate bonus from limit break
+  function calculateLBBonus(stat, level) {
+    let total = 0;
+    for (let i = 1; i <= level; i++) {
+      const lbKey = `lb${i}`;
+      if (limitBreakData[lbKey] && limitBreakData[lbKey][stat]) {
+        total += limitBreakData[lbKey][stat];
+      }
+    }
+    return total;
+  }
+
+  // Calculate bonus from bond (GP Ability)
+  function calculateBondBonus(stat, level) {
+    let total = 0;
+    for (let i = 1; i <= level; i++) {
+      const lvKey = `lv${i}`;
+      if (gpAbilityData[lvKey] && gpAbilityData[lvKey][stat]) {
+        total += gpAbilityData[lvKey][stat];
+      }
+    }
+    return total;
+  }
+
+  // Calculate bonus from ability grade
+  function calculateGradeBonus(stat, level) {
+    let total = 0;
+    for (let i = 1; i <= level; i++) {
+      const gKey = `g${i}`;
+      if (abilityGradeData[gKey] && abilityGradeData[gKey][stat]) {
+        total += abilityGradeData[gKey][stat];
+      }
+    }
+    return total;
+  }
+
+  // Calculate bonus from passives
+  function calculatePassiveBonus(stat, level) {
+    let total = 0;
+    const gKey = `g${level}`;
+    passiveAbilitiesData.forEach(passive => {
+      // Map passive stat names to data keys
+      const statMap = {
+        'HP': 'hp',
+        'ATK': 'atk',
+        'MATK': 'matk',
+        'DEF': 'def',
+        'MDEF': 'mdef',
+        'Accuracy': 'accuracy',
+        'Block': 'block',
+        'Phys Crit': 'physCrit',
+        'Magic Crit': 'magicCrit',
+        'HP Regen': 'hpRegen',
+        'MP Regen': 'mpRegen',
+        'Heal Pwr': 'healPwr',
+        'MP Charge': 'mpCharge',
+        'HP Drain': 'hpDrain'
+      };
+      const mappedStat = statMap[passive.stat];
+      if (mappedStat === stat && passive.grades && passive.grades[gKey]) {
+        total += passive.grades[gKey];
+      }
+    });
+    return total;
+  }
+
+  // Update all stats
+  function updateAllStats() {
+    const level = parseInt(levelInput?.value) || 90;
+    const lbLevel = lbCheck?.checked ? (parseInt(lbInput?.value) || 0) : 0;
+    const bondLevel = bondCheck?.checked ? (parseInt(bondInput?.value) || 0) : 0;
+    const gradeLevel = gradeCheck?.checked ? (parseInt(gradeInput?.value) || 0) : 0;
+    const passiveLevel = passiveCheck?.checked ? (parseInt(passiveInput?.value) || 0) : 0;
+
+    statValues.forEach(el => {
+      const stat = el.dataset.stat;
+      const base = parseInt(el.dataset.base) || 0;
+      const lv90 = parseInt(el.dataset.lv90) || 0;
+
+      // Base stat at current level
+      let value = calculateStatAtLevel(base, lv90, level);
+
+      // Add bonuses
+      value += calculateLBBonus(stat, lbLevel);
+      value += calculateBondBonus(stat, bondLevel);
+      value += calculateGradeBonus(stat, gradeLevel);
+      value += calculatePassiveBonus(stat, passiveLevel);
+
+      // Update display
+      if (stat === 'physCrit' || stat === 'magicCrit') {
+        const critRate = (value / 20).toFixed(1);
+        el.innerHTML = `${value.toLocaleString()} <span class="crit-rate">(${critRate}%)</span>`;
+      } else {
+        el.textContent = value.toLocaleString();
+      }
+    });
+  }
+
+  // Level input handlers
+  if (levelInput) {
+    levelInput.addEventListener('input', () => {
+      let val = parseInt(levelInput.value);
+      if (isNaN(val)) val = 1;
+      if (val < 1) val = 1;
+      if (val > 90) val = 90;
+      levelInput.value = val;
+      updateQuickLevelButtons(val);
+      updateAllStats();
+    });
+  }
+
+  if (levelMinus) {
+    levelMinus.addEventListener('click', () => {
+      let val = parseInt(levelInput.value) || 1;
+      val = Math.max(1, val - 1);
+      levelInput.value = val;
+      updateQuickLevelButtons(val);
+      updateAllStats();
+    });
+  }
+
+  if (levelPlus) {
+    levelPlus.addEventListener('click', () => {
+      let val = parseInt(levelInput.value) || 1;
+      val = Math.min(90, val + 1);
+      levelInput.value = val;
+      updateQuickLevelButtons(val);
+      updateAllStats();
+    });
+  }
+
+  // Quick level buttons
+  function updateQuickLevelButtons(currentLevel) {
+    quickLevelBtns.forEach(btn => {
+      const btnLevel = parseInt(btn.dataset.level);
+      btn.classList.toggle('active', btnLevel === currentLevel);
+    });
+  }
+
+  quickLevelBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const level = parseInt(btn.dataset.level);
+      levelInput.value = level;
+      updateQuickLevelButtons(level);
+      updateAllStats();
+    });
+  });
+
+  // Bonus checkbox and input handlers
+  [lbCheck, bondCheck, gradeCheck, passiveCheck].forEach(check => {
+    if (check) {
+      check.addEventListener('change', updateAllStats);
+    }
+  });
+
+  [lbInput, bondInput, gradeInput, passiveInput].forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => {
+        let val = parseInt(input.value);
+        const max = parseInt(input.max) || 10;
+        if (isNaN(val)) val = 0;
+        if (val < 0) val = 0;
+        if (val > max) val = max;
+        input.value = val;
+        updateAllStats();
+      });
+    }
+  });
+
+  // Ultimate rank switching
+  const rankBtns = document.querySelectorAll('.bb-char-ultimate-rank-btn');
+  const ultDescription = document.getElementById('ultimate-description');
+  const ultEffect = document.getElementById('ultimate-effect');
+
+  rankBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      rankBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (ultDescription) {
+        ultDescription.textContent = btn.dataset.description || '';
+      }
+      if (ultEffect) {
+        ultEffect.textContent = `Effect: ${btn.dataset.effect || ''}`;
+      }
+    });
+  });
+
+  // Initial update
+  updateAllStats();
+
+  // ========================================
+  // SKILL LEVEL CALCULATOR
+  // ========================================
+  const skillLevelInput = document.getElementById('skill-level-input');
+  const skillLevelMinus = document.getElementById('skill-level-minus');
+  const skillLevelPlus = document.getElementById('skill-level-plus');
+  const skillQuickLevelBtns = document.querySelectorAll('.skill-quick-level');
+  const skillDamageValues = document.querySelectorAll('.bb-char-skill-damage-value');
+  const skillCurrentLevelLabels = document.querySelectorAll('.skill-current-level');
+
+  // Calculate skill damage at any level
+  function calculateSkillDamage(base, growth, level) {
+    return base + (growth * (level - 1));
+  }
+
+  // Update all skill damage values
+  function updateSkillDamage() {
+    const level = parseInt(skillLevelInput?.value) || 90;
+
+    // Update level labels
+    skillCurrentLevelLabels.forEach(label => {
+      label.textContent = level;
+    });
+
+    // Update damage values
+    skillDamageValues.forEach(el => {
+      const scaling = el.dataset.scaling || '';
+      const base = parseInt(el.dataset.base) || 0;
+      const growth = parseInt(el.dataset.growth) || 0;
+
+      const damage = calculateSkillDamage(base, growth, level);
+      el.textContent = scaling ? `${scaling} + ${damage}` : `${damage}`;
+    });
+  }
+
+  // Skill level input handlers
+  if (skillLevelInput) {
+    skillLevelInput.addEventListener('input', () => {
+      let val = parseInt(skillLevelInput.value);
+      if (isNaN(val)) val = 1;
+      if (val < 1) val = 1;
+      if (val > 90) val = 90;
+      skillLevelInput.value = val;
+      updateSkillQuickLevelButtons(val);
+      updateSkillDamage();
+    });
+  }
+
+  if (skillLevelMinus) {
+    skillLevelMinus.addEventListener('click', () => {
+      let val = parseInt(skillLevelInput.value) || 1;
+      val = Math.max(1, val - 1);
+      skillLevelInput.value = val;
+      updateSkillQuickLevelButtons(val);
+      updateSkillDamage();
+    });
+  }
+
+  if (skillLevelPlus) {
+    skillLevelPlus.addEventListener('click', () => {
+      let val = parseInt(skillLevelInput.value) || 1;
+      val = Math.min(90, val + 1);
+      skillLevelInput.value = val;
+      updateSkillQuickLevelButtons(val);
+      updateSkillDamage();
+    });
+  }
+
+  // Skill quick level buttons
+  function updateSkillQuickLevelButtons(currentLevel) {
+    skillQuickLevelBtns.forEach(btn => {
+      const btnLevel = parseInt(btn.dataset.level);
+      btn.classList.toggle('active', btnLevel === currentLevel);
+    });
+  }
+
+  skillQuickLevelBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const level = parseInt(btn.dataset.level);
+      if (skillLevelInput) skillLevelInput.value = level;
+      updateSkillQuickLevelButtons(level);
+      updateSkillDamage();
+    });
+  });
+
+  // Initial skill damage update
+  updateSkillDamage();
+});
+</script>

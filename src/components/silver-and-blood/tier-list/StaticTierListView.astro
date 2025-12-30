@@ -1,6 +1,21 @@
 ---
-import SABCharacterImage from '../SABCharacterImage.astro';
+import SABCharacterIcon from '../SABCharacterIcon.astro';
+import SABFactionIcon from '../SABFactionIcon.astro';
+import { Image } from 'astro:assets';
 import { TIER_DEFINITIONS } from '../../../data/silver-and-blood/tier-lists.js';
+
+// Import role icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+// Import rarity icons
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
 
 export interface Props {
   tierListData: any;
@@ -8,6 +23,13 @@ export interface Props {
 }
 
 const { tierListData, characterMap } = Astro.props;
+
+// Icon maps
+const roleImages: Record<string, ImageMetadata> = {
+  Assassin: roleAssassin, Defender: roleDefender, Enchanter: roleEnchanter,
+  Marksman: roleMarksman, Sorcerer: roleSorcerer, Warrior: roleWarrior,
+};
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
 
 // Helper function to get tier class name
 function getTierClassName(tier: string): string {
@@ -31,18 +53,15 @@ function getTierClassName(tier: string): string {
                 onclick={`window.location.href='${charData.detailUrl}'`}
               >
                 <div class="character-image-wrapper">
-                  <SABCharacterImage
-                    imageName={charData.image}
-                    alt={charData.name}
-                    size="card"
-                    class="character-img"
-                  />
+                  <SABCharacterIcon name={charData.name} variant="Base" size="large" width={180} height={180} loading="lazy" />
+                  {rarityImages[charData.rarity] && (
+                    <Image src={rarityImages[charData.rarity]} alt={charData.rarity} class="tier-rarity-frame" width={36} height={36} loading="lazy" />
+                  )}
                 </div>
                 <div class="character-name">{charData.name}</div>
-                <div class="character-badges">
-                  <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                    {charData.rarity}
-                  </span>
+                <div class="character-icons-row">
+                  {roleImages[charData.class] && <Image src={roleImages[charData.class]} alt={charData.class} width={16} height={16} class="tier-icon" title={charData.class} />}
+                  {charData.faction && <SABFactionIcon faction={charData.faction} width={16} height={16} class="tier-icon" />}
                 </div>
               </div>
             );

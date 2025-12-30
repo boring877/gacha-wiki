@@ -5,7 +5,11 @@
 import CharacterInfoLayout from '../../../layouts/busty-burst/CharacterInfoLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import PositionImage from '../../../components/busty-burst/PositionImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
 import { getAllCharacters } from '../../../data/busty-burst/character-info.js';
+import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
 
 // Get all characters
 const characters = getAllCharacters();
@@ -14,9 +18,33 @@ const title = 'Busty Burst Character Profiles & Voice Actors';
 const description = `Complete Busty Burst character profiles. View personal info, illustrators, and voice actors for all ${characters.length} characters.`;
 const gameTitle = 'Character Profiles & Voice Actors';
 
-// Get image file name helper
-const getImageFileName = (image: string) => {
-  return image.includes('Shaty') ? `${image}.png` : `${image}.jpg`;
+// Map image filename to characterId using paladins data
+const getCharacterId = (imageName: string) => {
+  const paladin = BUSTY_BURST_PALADINS.find(p =>
+    p.fileName === imageName ||
+    p.fileName.toLowerCase() === imageName.toLowerCase()
+  );
+  return paladin?.characterId || 2001;
+};
+
+// Map position roman numeral to position image filename
+const getPositionFileName = (roman: string) => {
+  const posMap: Record<string, string> = {
+    'I': 'Front.png',
+    'II': 'Mid.png',
+    'III': 'Back.png',
+  };
+  return posMap[roman] || 'Front.png';
+};
+
+// Map position roman numeral to position name
+const getPositionName = (roman: string) => {
+  const posMap: Record<string, string> = {
+    'I': 'Front',
+    'II': 'Mid',
+    'III': 'Back',
+  };
+  return posMap[roman] || 'Front';
 };
 ---
 
@@ -110,32 +138,81 @@ const getImageFileName = (image: string) => {
             <div class="bb-character-info-card-header">
               <div class="bb-character-info-avatar">
                 <PaladinImage
-                  fileName={getImageFileName(char.image)}
+                  characterId={getCharacterId(char.image)}
                   alt={char.displayName}
-                  width={140}
-                  height={140}
+                  width={160}
+                  height={160}
+                  quality={95}
                 />
               </div>
               <div class="bb-character-info-header-text">
                 <h3 class="bb-character-info-name">{char.displayName}</h3>
-                <div class="bb-character-info-badges">
-                  <span class="bb-badge" data-rarity={char.rarity}>
-                    {char.rarity}
-                  </span>
-                  <span class="bb-badge" data-element={char.element}>
-                    <ElementImage element={char.element} width={16} height={16} />
-                    {char.element}
-                  </span>
-                  <span class="bb-badge" data-role={char.role}>
-                    {char.role}
-                  </span>
-                  <span class="bb-badge" data-weapon={char.weaponType}>
-                    {char.weaponType}
-                  </span>
+                <div class="bb-character-info-rarity">
+                  <RarityImage rarity={char.rarity} width={56} height={56} />
                 </div>
               </div>
             </div>
             <div class="bb-character-info-card-body">
+              <!-- Combat Info Section -->
+              <div class="bb-character-info-combat">
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-icon">
+                    <ElementImage element={char.element} width={24} height={24} />
+                  </div>
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Element</span>
+                    <span class="bb-character-info-combat-value">{char.element}</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Role</span>
+                    <span class="bb-character-info-combat-value">{char.role}</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-icon">
+                    <PositionImage
+                      fileName={getPositionFileName(char.position.roman)}
+                      alt={getPositionName(char.position.roman)}
+                      width={28}
+                      height={28}
+                    />
+                  </div>
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Position</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Attack</span>
+                    <span class="bb-character-info-combat-value">{char.attackType}</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-icon">
+                    <WeaponIcon weapon={char.weaponType === 'Shoot' ? 'Shot' : char.weaponType} width={24} height={24} />
+                  </div>
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Weapon</span>
+                    <span class="bb-character-info-combat-value">{char.weaponType}</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Speed</span>
+                    <span class="bb-character-info-combat-value">{char.actionSpeed}</span>
+                  </div>
+                </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">Range</span>
+                    <span class="bb-character-info-combat-value">{char.range}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Personal Profile Section -->
               <div class="bb-character-info-profile">
                 <div class="bb-character-info-profile-title">Personal Profile</div>
                 <div class="bb-character-info-profile-grid">

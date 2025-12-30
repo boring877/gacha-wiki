@@ -1,0 +1,1030 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                    SILVER AND BLOOD HEIRLOOM VAULT STYLES               */
+/*                    Character upgrade costs and progression              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* === CONTAINER === */
+.heirloom-vault-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--sab-spacing-lg);
+}
+
+/* === SUMMARY STATS === */
+.heirloom-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--sab-spacing-md);
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.summary-stat {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+  padding: var(--sab-spacing-md);
+  text-align: center;
+}
+
+.summary-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--sab-text-light);
+  display: block;
+}
+
+.summary-stat-label {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === CAMP FILTER TABS === */
+.camp-filter-container {
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.camp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sab-spacing-sm);
+  padding: var(--sab-spacing-sm);
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-md);
+  border: 1px solid var(--sab-border-gray);
+}
+
+.camp-tab {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  background: rgba(42, 42, 42, 0.5);
+  color: var(--sab-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.camp-tab.active {
+  background: rgba(80, 80, 80, 0.6);
+  color: var(--sab-text-white);
+  border-color: var(--sab-calm-red);
+}
+
+.camp-tab-count {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--sab-radius-sm);
+}
+
+/* Camp-specific colors for active tabs */
+.camp-tab[data-camp="Ancestral"].active {
+  border-color: #8B4513;
+}
+
+.camp-tab[data-camp="Church"].active {
+  border-color: #9932CC;
+}
+
+.camp-tab[data-camp="Bloodborn"].active {
+  border-color: #FFD700;
+}
+
+.camp-tab[data-camp="Kingdom"].active {
+  border-color: #87CEEB;
+}
+
+/* === SECTION STYLING === */
+.heirloom-section {
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sab-spacing-lg);
+  padding-bottom: var(--sab-spacing-md);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c0c0c0, #c26b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.section-subtitle {
+  color: var(--sab-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* === COST CALCULATOR === */
+.cost-calculator-section {
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.calculator-container {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  padding: var(--sab-spacing-lg);
+}
+
+.calculator-inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sab-spacing-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--sab-spacing-lg);
+}
+
+.calc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.calc-input-group label {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.calc-input {
+  width: 80px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  text-align: center;
+}
+
+.calc-input:focus {
+  outline: none;
+  border-color: var(--sab-calm-red);
+}
+
+.calc-arrow {
+  font-size: 1.25rem;
+  color: var(--sab-text-muted);
+  padding-bottom: 0.5rem;
+}
+
+.calc-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  background: var(--sab-calm-red);
+  border: none;
+  border-radius: var(--sab-radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.calc-button:hover {
+  background: #d4898b;
+  transform: translateY(-1px);
+}
+
+.calculator-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sab-spacing-md);
+  margin-bottom: var(--sab-spacing-lg);
+  padding: var(--sab-spacing-md);
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-sm);
+  border: 1px solid var(--sab-border-gray);
+}
+
+.calc-result-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.calc-result-label {
+  font-size: 0.7rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.calc-result-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #90EE90;
+}
+
+.cost-breakdown-table {
+  overflow-x: auto;
+}
+
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.cost-table th,
+.cost-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.cost-table th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: rgba(26, 26, 26, 0.5);
+}
+
+.cost-table td {
+  color: var(--sab-text-light);
+}
+
+.cost-table tr:nth-child(even) td {
+  background: rgba(36, 36, 36, 0.3);
+}
+
+.cost-table tr:last-child td {
+  border-bottom: none;
+}
+
+.max-level-text {
+  color: #90EE90;
+  font-weight: 600;
+}
+
+/* === CHARACTER GRID === */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--sab-spacing-lg);
+}
+
+/* === CHARACTER CARD === */
+.character-card {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-lg);
+  overflow: hidden;
+}
+
+.character-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sab-spacing-md);
+  padding: var(--sab-spacing-md);
+  background: rgba(42, 42, 42, 0.5);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.character-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.character-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--sab-radius-sm);
+  border: 1px solid var(--sab-border-gray);
+  object-fit: cover;
+}
+
+.character-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.character-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sab-text-white);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.character-title {
+  font-size: 0.8rem;
+  color: var(--sab-text-muted);
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+}
+
+/* Character icons row (faction, role, equipment) */
+.character-icons-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.card-stat-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.resonantia-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: var(--sab-radius-sm);
+  background: rgba(194, 107, 107, 0.3);
+  color: var(--sab-calm-red);
+  border: 1px solid var(--sab-calm-red);
+}
+
+/* === CHARACTER CARD BODY === */
+.character-card-body {
+  padding: var(--sab-spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-sm);
+}
+
+/* === STAT BONUSES === */
+.stat-bonuses {
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm);
+  border: 1px solid var(--sab-border-gray);
+}
+
+.stat-bonuses-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: var(--sab-spacing-xs);
+}
+
+.stat-bonuses-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.level-input {
+  width: 50px;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  text-align: center;
+}
+
+.level-input:focus {
+  outline: none;
+  border-color: var(--sab-calm-red);
+}
+
+/* Hide number input spinners */
+.level-input::-webkit-outer-spin-button,
+.level-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.level-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.stat-bonuses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sab-spacing-xs);
+}
+
+.stat-bonus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-bonus-label {
+  font-size: 0.65rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+}
+
+.stat-bonus-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #90EE90;
+}
+
+.stat-per-level {
+  font-size: 0.6rem;
+  color: var(--sab-text-muted);
+  font-weight: 400;
+}
+
+/* === RESONANTIA SECTION === */
+.resonantia-section {
+  background: rgba(194, 107, 107, 0.1);
+  border: 1px solid rgba(194, 107, 107, 0.3);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm);
+}
+
+.resonantia-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sab-spacing-xs);
+}
+
+.resonantia-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sab-calm-red);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.resonantia-level-control {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.resonantia-level-label {
+  font-size: 0.7rem;
+  color: var(--sab-text-muted);
+}
+
+/* Level tabs for resonantia */
+.resonantia-level-tabs {
+  display: flex;
+  gap: 2px;
+  border: 1px solid rgba(194, 107, 107, 0.4);
+  border-radius: var(--sab-radius-sm);
+  overflow: hidden;
+}
+
+.res-level-tab {
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  background: rgba(26, 26, 26, 0.6);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.res-level-tab:hover {
+  background: rgba(194, 107, 107, 0.2);
+  color: var(--sab-text-light);
+}
+
+.res-level-tab.active {
+  background: rgba(194, 107, 107, 0.4);
+  color: var(--sab-text-white);
+}
+
+/* Colored values for all 3 levels - muted by default */
+.res-val {
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.res-val-1 {
+  color: #ffb347;
+}
+
+.res-val-2 {
+  color: #87ceeb;
+}
+
+.res-val-3 {
+  color: #90ee90;
+}
+
+/* Highlighted state - full opacity for selected level */
+.res-val.highlighted {
+  opacity: 1;
+}
+
+.resonantia-skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-xs);
+}
+
+.resonantia-skill {
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-xs) var(--sab-spacing-sm);
+}
+
+.resonantia-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 4px;
+}
+
+.resonantia-skill-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.resonantia-skill-rank {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--sab-calm-red);
+  background: rgba(194, 107, 107, 0.3);
+  padding: 1px 6px;
+  border-radius: var(--sab-radius-sm);
+}
+
+.resonantia-skill-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--sab-text-light);
+}
+
+.resonantia-skill-desc {
+  font-size: 0.75rem;
+  color: var(--sab-text-muted);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+/* Upgrade requirement section */
+.resonantia-upgrade-req {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(194, 107, 107, 0.2);
+}
+
+.upgrade-req-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sab-text-light);
+  margin-bottom: 0.25rem;
+}
+
+.upgrade-req-value {
+  font-size: 0.7rem;
+  color: var(--sab-text-muted);
+}
+
+.upgrade-req-level {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+}
+
+/* === TOTAL COSTS SECTION === */
+.total-costs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sab-spacing-sm);
+  padding: var(--sab-spacing-sm);
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: var(--sab-radius-sm);
+  border: 1px solid var(--sab-border-gray);
+}
+
+.cost-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.cost-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--sab-radius-sm);
+  object-fit: contain;
+}
+
+.cost-label {
+  font-size: 0.65rem;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cost-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--sab-text-white);
+}
+
+/* === LEVEL COSTS SECTION (in character card) === */
+.level-costs-section {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-sm);
+  padding: var(--sab-spacing-sm);
+}
+
+.level-costs-header {
+  margin-bottom: var(--sab-spacing-xs);
+}
+
+.level-costs-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.level-costs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.level-costs-table th,
+.level-costs-table td {
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+}
+
+.level-costs-table th {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--sab-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: rgba(26, 26, 26, 0.5);
+}
+
+.level-costs-table td {
+  color: var(--sab-text-light);
+}
+
+.level-costs-table td:first-child {
+  color: var(--sab-calm-red);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.level-costs-table tr:nth-child(even) td {
+  background: rgba(36, 36, 36, 0.3);
+}
+
+.level-costs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rank-costs {
+  display: flex;
+  gap: var(--sab-spacing-sm);
+  flex-wrap: wrap;
+}
+
+.rank-cost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+}
+
+.rank-cost-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
+.rank-cost-amount {
+  color: var(--sab-text-light);
+  font-weight: 600;
+}
+
+/* Cost type colors */
+.rank-cost.basic .rank-cost-amount {
+  color: #90EE90;
+}
+
+.rank-cost.advanced .rank-cost-amount {
+  color: #87CEEB;
+}
+
+.rank-cost.rare .rank-cost-amount {
+  color: #DDA0DD;
+}
+
+/* === MATERIALS INFO === */
+.materials-section {
+  margin-bottom: var(--sab-spacing-xl);
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sab-spacing-md);
+}
+
+.material-card {
+  background: var(--sab-card-bg-gradient);
+  border: 1px solid var(--sab-border-gray);
+  border-radius: var(--sab-radius-md);
+  padding: var(--sab-spacing-md);
+}
+
+.material-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-md);
+  margin-bottom: var(--sab-spacing-md);
+  padding-bottom: var(--sab-spacing-sm);
+  border-bottom: 1px solid var(--sab-border-gray);
+}
+
+.material-camp-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--sab-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.material-camp-icon.ancestral {
+  background: rgba(139, 69, 19, 0.4);
+  border: 2px solid #8B4513;
+  color: #D2691E;
+}
+
+.material-camp-icon.church {
+  background: rgba(153, 50, 204, 0.4);
+  border: 2px solid #9932CC;
+  color: #DA70D6;
+}
+
+.material-camp-icon.bloodborn {
+  background: rgba(255, 215, 0, 0.3);
+  border: 2px solid #DAA520;
+  color: #FFD700;
+}
+
+.material-camp-icon.kingdom {
+  background: rgba(135, 206, 235, 0.4);
+  border: 2px solid #4682B4;
+  color: #87CEEB;
+}
+
+.material-camp-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sab-text-white);
+  margin: 0;
+}
+
+.material-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sab-spacing-xs);
+}
+
+.material-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sab-spacing-sm);
+  padding: var(--sab-spacing-xs);
+  background: rgba(26, 26, 26, 0.4);
+  border-radius: var(--sab-radius-sm);
+}
+
+.material-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sab-radius-sm);
+  object-fit: contain;
+}
+
+.material-item-info {
+  flex: 1;
+}
+
+.material-item-name {
+  font-size: 0.85rem;
+  color: var(--sab-text-light);
+  font-weight: 500;
+}
+
+.material-item-rarity {
+  font-size: 0.7rem;
+  color: var(--sab-text-muted);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .characters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .camp-tabs {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .heirloom-vault-container {
+    padding: var(--sab-spacing-md);
+  }
+
+  .heirloom-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .characters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .camp-tabs {
+    flex-direction: column;
+  }
+
+  .camp-tab {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .total-costs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rank-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-xs);
+  }
+
+  .rank-costs {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heirloom-summary {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .summary-stat {
+    padding: var(--sab-spacing-sm);
+  }
+
+  .summary-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .character-name {
+    font-size: 1rem;
+  }
+
+  .cost-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cost-value {
+    font-size: 0.8rem;
+  }
+
+  /* Calculator mobile */
+  .calculator-container {
+    padding: var(--sab-spacing-md);
+  }
+
+  .calculator-inputs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sab-spacing-sm);
+  }
+
+  .calc-input-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .calc-input {
+    width: 100px;
+  }
+
+  .calc-arrow {
+    display: none;
+  }
+
+  .calc-button {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .calculator-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .calc-result-value {
+    font-size: 1rem;
+  }
+
+  .cost-table th,
+  .cost-table td {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* Stat bonuses grid - 2x2 on mobile */
+  .stat-bonuses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sab-spacing-xs);
+  }
+
+  .stat-bonus-value {
+    font-size: 0.75rem;
+  }
+
+  .stat-bonus-label {
+    font-size: 0.6rem;
+  }
+
+  /* Resonantia section mobile adjustments */
+  .resonantia-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sab-spacing-xs);
+  }
+
+  .resonantia-level-tabs {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .res-level-tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .resonantia-skill-header {
+    flex-wrap: wrap;
+  }
+
+  .resonantia-skill-desc {
+    font-size: 0.7rem;
+  }
+
+  /* Character card header mobile */
+  .character-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .character-header-info {
+    align-items: center;
+  }
+
+  .character-icons-row {
+    justify-content: center;
+  }
+}

@@ -56,7 +56,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Prophecy', href: '/guides/silver-and-blood/prophecy/' },
           { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
           { name: 'Synergies', href: '/guides/silver-and-blood/synergies/' },
-          { name: 'Team Synergy', href: '/guides/silver-and-blood/team-synergy/' },
+          { name: 'Team Builds', href: '/guides/silver-and-blood/team-synergy/' },
           { name: 'Gear Upgrades', href: '/guides/silver-and-blood/gear-upgrades/' },
         ],
       },
@@ -66,6 +66,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Events', href: '/guides/silver-and-blood/events/' },
           { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
           { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
+          { name: 'Heirloom Vault', href: '/guides/silver-and-blood/heirloom-vault/' },
         ],
       },
       {
@@ -258,11 +259,15 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Characters',
         links: [
+          { name: 'Database', href: '/guides/busty-burst/characters/' },
           { name: 'Profiles & VAs', href: '/guides/busty-burst/character-info/' },
           { name: 'Skills', href: '/guides/busty-burst/character-skills/' },
           { name: 'Stats', href: '/guides/busty-burst/character-stats/' },
           { name: 'Skill Formulas', href: '/guides/busty-burst/skill-formulas/' },
-          { name: 'Tier List', href: '/guides/busty-burst/tier-list#tier-list' },
+          { name: 'Support Stats', href: '/guides/busty-burst/support-stats/' },
+          { name: 'Support Bonus', href: '/guides/busty-burst/support-bonus/' },
+          { name: 'Support Tier List', href: '/guides/busty-burst/support-tier-list/' },
+          { name: 'Tier List', href: '/guides/busty-burst/tier-list/' },
           { name: 'Build', href: '/guides/busty-burst/build' },
         ],
       },

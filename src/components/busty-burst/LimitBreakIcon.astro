@@ -1,0 +1,70 @@
+---
+// LimitBreakIcon Component for Busty Burst
+// Displays limit break level icons (0-5)
+
+import { Image } from 'astro:assets';
+
+// Import limit break icons (normal size)
+import lb0 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_0.png';
+import lb1 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_1.png';
+import lb2 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_2.png';
+import lb3 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_3.png';
+import lb4 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_4.png';
+import lb5 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_5.png';
+
+// Large icons
+import lb0L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_0.png';
+import lb1L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_1.png';
+import lb2L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_2.png';
+import lb3L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_3.png';
+import lb4L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_4.png';
+import lb5L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_5.png';
+
+export interface Props {
+  level: number; // 0-5
+  size?: 'small' | 'medium' | 'large';
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { level, size = 'medium', width, height, class: className } = Astro.props;
+
+// Clamp level between 0 and 5
+const lbLevel = Math.max(0, Math.min(5, level));
+
+// Icon mappings by size - use normal icons for all sizes (better quality)
+const normalIcons = { 0: lb0, 1: lb1, 2: lb2, 3: lb3, 4: lb4, 5: lb5 };
+const largeIcons = { 0: lb0L, 1: lb1L, 2: lb2L, 3: lb3L, 4: lb4L, 5: lb5L };
+
+// Select icon based on size - use normal icons for small/medium, large icons for large
+const iconMap = size === 'large' ? largeIcons : normalIcons;
+const icon = iconMap[lbLevel as keyof typeof iconMap];
+
+// Default dimensions based on size
+const defaultSizes = {
+  small: { width: 16, height: 16 },
+  medium: { width: 24, height: 24 },
+  large: { width: 32, height: 32 }
+};
+
+const finalWidth = width || defaultSizes[size].width;
+const finalHeight = height || defaultSizes[size].height;
+---
+
+<Image
+  src={icon}
+  alt={`Limit Break ${lbLevel}`}
+  width={finalWidth}
+  height={finalHeight}
+  class:list={['bb-limit-break-icon', className]}
+  loading="lazy"
+/>
+
+<style>
+  .bb-limit-break-icon {
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+  }
+</style>

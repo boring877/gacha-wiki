@@ -185,7 +185,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
               data-rarity={char.rarity}
             >
               <div class="bb-tb-char-img">
-                <PaladinImage fileName={char.image} alt={char.name} width={60} height={60} />
+                <PaladinImage characterId={char.characterId || 2001} alt={char.name} width={80} height={80} quality={95} />
               </div>
               <div class="bb-tb-char-info">
                 <span class="bb-tb-char-name">{char.name}</span>

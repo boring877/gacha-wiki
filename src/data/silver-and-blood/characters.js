@@ -114,11 +114,11 @@ const generateSlug = (name) => {
 // Characters with available portrait images (for comparison tools)
 // TODO: Add more images as they become available
 const charactersWithImages = new Set([
-  'acappella', 'agares', 'agnes', 'albrecht', 'ami', 'augustine', 'bella', 'cain',
-  'cecia', 'dalcarlo', 'darcias', 'edina', 'fanny', 'fleeting-bella', 'friedrich',
+  'acappella', 'agares', 'agnes', 'albrecht', 'alene', 'alexi', 'ami', 'augustine', 'bella', 'cain',
+  'cecia', 'dalcarlo', 'darcias', 'edina', 'ethereal-joan', 'fanny', 'fleeting-bella', 'friedrich',
   'genevieve', 'gilrain', 'hati', 'incendiary-agares', 'jinxed-selena', 'joan',
-  'julius', 'lamia', 'limine', 'lorelei', 'mass', 'nicole', 'ottavia', 'pavana',
-  'piera', 'quinn', 'regina', 'ressa', 'selena', 'seth', 'sirene', 'spectral-gilrain',
+  'julius', 'lamia', 'letitia', 'limine', 'livian', 'lorelei', 'mass', 'nicole', 'ottavia', 'pavana',
+  'piera', 'quinn', 'regina', 'ressa', 'selena', 'seraphina', 'seth', 'sirene', 'spectral-gilrain',
   'starry-eyed-aiona', 'stella', 'theophane', 'thibault', 'timeless-aiona',
   'transcendent-ami', 'transcendent-hati', 'transcendent-noah', 'tris', 'valora',
   'van-helsing', 'yggdrasill'
@@ -152,6 +152,7 @@ const baseCharacters = characterStatsData.characters
       attackType: infoChar.damageType || '',
       equipmentType: infoChar.equipmentType || '',
       image: slug, // Used by SABCharacterImage component for lookup
+      tags: infoChar.tags || [],
       stats: {
         hp: gallery.MaxHp || 0,
         atk: gallery.Attack || 0,

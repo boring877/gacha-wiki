@@ -31,6 +31,7 @@ export interface Props {
       name: string;
       fileName: string;
       imageExt?: string;
+      characterId?: number;
     };
     position?: {
       name: string;
@@ -107,7 +108,7 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
               <div class="bb-build-detail-header">
                 <div class="bb-build-detail-char-image">
                   <PaladinImage
-                    fileName={`${build.character.fileName}.${build.character.imageExt || 'jpg'}`}
+                    characterId={build.character.characterId || 2001}
                     alt={build.character.name}
                     width={120}
                     height={120}

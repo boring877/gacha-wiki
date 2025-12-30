@@ -1,13 +1,56 @@
 ---
-import SABCharacterImage from '../../../components/silver-and-blood/SABCharacterImage.astro';
 import CharacterRankingsLayout from '../../../layouts/silver-and-blood/CharacterRankingsLayout.astro';
-import { characters } from '../../../data/silver-and-blood/characters.js';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
 import {
+  characters,
   rankings,
   overallAnalysis,
   totalCharacters,
   statNames,
 } from '../../../data/silver-and-blood/character-rankings.js';
+
+// Import icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Icon maps
+const roleImages: Record<string, ImageMetadata> = {
+  Assassin: roleAssassin, Defender: roleDefender, Enchanter: roleEnchanter,
+  Marksman: roleMarksman, Sorcerer: roleSorcerer, Warrior: roleWarrior,
+};
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonFull, 'filter_icon_moon2.png': moonCrescent, 'filter_icon_moon3.png': moonNew,
+};
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical, 'level_info_icon_attack_03.png': dmgPhysical, 'level_info_icon_attack_04.png': dmgPierce,
+};
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight, 'EquipType_Medium.png': equipMedium, 'EquipType_Heavy.png': equipHeavy,
+};
+
+// Sort characters by overall rank
+const sortedCharacters = [...characters].sort((a, b) =>
+  overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
+);
 ---
 
 <CharacterRankingsLayout
@@ -23,7 +66,7 @@ import {
         identical stat values receive the same rank number, and the overall ranking is calculated by
         combining individual stat ranks (lower total = better overall rank).
       </p>
-      <p class="level-note">All stats shown at Level 200 (current max level)</p>
+      <p class="level-note">All stats shown at Level 200 (current max level) - {totalCharacters} characters</p>
     </div>
 
     <!-- Character Selector -->
@@ -63,114 +106,86 @@ import {
           </select>
         </div>
         <div class="sort-controls">
-          <button class="sort-btn" data-sort="hp">HP</button>
-          <button class="sort-btn" data-sort="atk">ATK</button>
-          <button class="sort-btn" data-sort="pDef">P.DEF</button>
-          <button class="sort-btn" data-sort="mDef">M.DEF</button>
-          <button class="sort-btn" data-sort="bloodPower">Blood Power</button>
-          <button class="reset-btn" id="clear-filters">Reset</button>
+          <button class="sort-btn" data-sort="hp" type="button">HP</button>
+          <button class="sort-btn" data-sort="atk" type="button">ATK</button>
+          <button class="sort-btn" data-sort="pDef" type="button">P.DEF</button>
+          <button class="sort-btn" data-sort="mDef" type="button">M.DEF</button>
+          <button class="sort-btn" data-sort="bloodPower" type="button">Blood Power</button>
+          <button class="reset-btn" id="clear-filters" type="button">Reset</button>
         </div>
       </div>
 
       <!-- Character Grid -->
       <div class="character-grid" id="character-grid">
-        {
-          characters
-            .sort((a, b) => overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank)
-            .map(char => (
-              <article
-                class="character-select-card"
-                data-character-id={char.id}
-                role="button"
-                tabindex="0"
-                aria-label={`Select ${char.name}, ${char.rarity} ${char.class}, ranked #${overallAnalysis[char.id].overallRank}`}
-              >
-                <div
-                  class="character-rank-number"
-                  aria-label={`Rank ${overallAnalysis[char.id].overallRank}`}
-                >
-                  {overallAnalysis[char.id].overallRank}
-                </div>
-                <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
-                  <SABCharacterImage
-                    imageName={char.id}
-                    alt={`${char.name} portrait`}
-                    class="character-portrait"
-                    width={320}
-                    height={320}
-                    loading="lazy"
-                    format="jpg"
-                    quality={100}
-                  />
-                </div>
-                <div class="character-info">
-                  <h3>{char.name}</h3>
-                  <div class="character-badges">
-                    <span
-                      class={`rarity-badge ${char.rarity.toLowerCase()}`}
-                      aria-label={`${char.rarity} rarity`}
-                    >
-                      {char.rarity}
-                    </span>
-                    <span
-                      class={`class-badge ${char.class.toLowerCase().replace(' ', '-')}`}
-                      aria-label={`${char.class} class`}
-                    >
-                      {char.class}
-                    </span>
-                  </div>
-                  <div class="character-stats" aria-label="Character statistics">
-                    <div class="stat-item">
-                      <span class="stat-label">HP</span>
-                      <span class="stat-value">{char.stats.hp.toLocaleString()}</span>
-                    </div>
-                    <div class="stat-item">
-                      <span class="stat-label">ATK</span>
-                      <span class="stat-value">{char.stats.atk.toLocaleString()}</span>
-                    </div>
-                    <div class="stat-item">
-                      <span class="stat-label">P.DEF</span>
-                      <span class="stat-value">{char.stats.pDef.toLocaleString()}</span>
-                    </div>
-                    <div class="stat-item">
-                      <span class="stat-label">M.DEF</span>
-                      <span class="stat-value">{char.stats.mDef.toLocaleString()}</span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))
-        }
+        {sortedCharacters.map(char => (
+          <article
+            class="character-select-card"
+            data-character-id={char.id}
+            data-rarity={char.rarity}
+            data-class={char.class}
+            data-faction={char.faction}
+            data-moonphase={char.moonPhase}
+            data-hp={char.stats.hp}
+            data-atk={char.stats.atk}
+            data-pdef={char.stats.pDef}
+            data-mdef={char.stats.mDef}
+            data-bloodpower={char.stats.bloodPower}
+            role="button"
+            tabindex="0"
+          >
+            <div class="character-rank-number">
+              {overallAnalysis[char.id].overallRank}
+            </div>
+            <div class="character-portrait">
+              <SABCharacterIcon name={char.name} variant="Base" size="large" width={160} height={160} loading="lazy" />
+              <Image src={rarityImages[char.rarity]} alt={char.rarity} class="rarity-frame" width={48} height={48} loading="lazy" />
+            </div>
+            <div class="character-info">
+              <h3 class="character-name">{char.name}</h3>
+              {char.title && <p class="character-title">{char.title}</p>}
+              <div class="character-icons">
+                {roleImages[char.class] && <Image src={roleImages[char.class]} alt={char.class} width={18} height={18} class="char-icon" title={char.class} />}
+                {char.faction && <SABFactionIcon faction={char.faction} width={18} height={18} class="char-icon" />}
+                {moonPhaseImages[char.moonPhaseIcon] && <Image src={moonPhaseImages[char.moonPhaseIcon]} alt="Moon" width={18} height={18} class="char-icon" title={char.moonPhase} />}
+                {damageTypeImages[char.damageTypeIcon] && <Image src={damageTypeImages[char.damageTypeIcon]} alt="Damage" width={18} height={18} class="char-icon" title={char.attackType} />}
+                {equipmentTypeImages[char.equipmentTypeIcon] && <Image src={equipmentTypeImages[char.equipmentTypeIcon]} alt="Equipment" width={18} height={18} class="char-icon" title={char.equipmentType} />}
+              </div>
+              <div class="character-stats">
+                <div class="stat-item"><span class="stat-label">HP</span><span class="stat-value">{char.stats.hp.toLocaleString()}</span></div>
+                <div class="stat-item"><span class="stat-label">ATK</span><span class="stat-value">{char.stats.atk.toLocaleString()}</span></div>
+                <div class="stat-item"><span class="stat-label">P.DEF</span><span class="stat-value">{char.stats.pDef.toLocaleString()}</span></div>
+                <div class="stat-item"><span class="stat-label">M.DEF</span><span class="stat-value">{char.stats.mDef.toLocaleString()}</span></div>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
 
     <!-- Rankings Display -->
     <div id="rankings-display" class="rankings-display">
-      <div id="character-info" class="character-info">
-        <img id="character-image" class="character-image" />
-        <h3 id="character-name" class="character-name"></h3>
-        <p id="character-class" class="character-details"></p>
+      <div id="character-detail" class="character-detail">
+        <div id="detail-portrait" class="detail-portrait"></div>
+        <h3 id="detail-name" class="detail-name"></h3>
+        <p id="detail-class" class="detail-class"></p>
       </div>
 
       <div class="rankings-container">
         <h3 class="rankings-title">Stat Rankings</h3>
-
         <div id="rankings-grid" class="rankings-grid">
-          {
-            Object.keys(statNames).map(statKey => (
-              <div class="ranking-card">
-                <h4 class="ranking-card-title">{statNames[statKey]}</h4>
-                <div class={`rank-display rank-${statKey}`} />
-                <div class={`rank-total rank-${statKey}-total`} />
-                <div class={`stat-value stat-${statKey}`} />
-              </div>
-            ))
-          }
+          {Object.keys(statNames).map(statKey => (
+            <div class="ranking-card" data-stat={statKey}>
+              <h4 class="ranking-card-title">{statNames[statKey]}</h4>
+              <div class="rank-display"></div>
+              <div class="rank-total"></div>
+              <div class="stat-value-display"></div>
+            </div>
+          ))}
         </div>
       </div>
 
       <!-- Character Performance Analysis -->
-      <div id="character-analysis" class="character-analysis" style="display: none;">
+      <div id="character-analysis" class="character-analysis">
         <h4 class="character-analysis-title">Character Performance Breakdown</h4>
         <div class="performance-summary">
           <div class="summary-stats">
@@ -206,20 +221,189 @@ import {
     </div>
   </section>
 
-  <!-- Set data for external script -->
-  <script
-    is:inline
-    define:vars={{ characters, rankings, overallAnalysis, statNames, totalCharacters }}
-  >
-    window.silverBloodRankingsData = {
-      characters,
-      rankings,
-      overallAnalysis,
-      statNames,
-      totalCharacters,
-    };
-  </script>
+  <script define:vars={{ characters: sortedCharacters, rankings, overallAnalysis, statNames, totalCharacters }}>
+    const $ = (id) => document.getElementById(id);
+    const grid = $('character-grid');
+    const cards = Array.from(grid.querySelectorAll('.character-select-card'));
+    const rankingsDisplay = $('rankings-display');
 
-  <!-- Load external optimized script -->
-  <script is:inline src="/scripts/character-rankings/silver-and-blood-rankings.js"></script>
+    // Filter elements
+    const classFilter = $('class-filter');
+    const rarityFilter = $('rarity-filter');
+    const factionFilter = $('faction-filter');
+    const moonphaseFilter = $('moonphase-filter');
+    const resetBtn = $('clear-filters');
+    const sortBtns = document.querySelectorAll('.sort-btn');
+
+    // State
+    let sortState = { column: null, asc: false };
+
+    // Build character map for quick lookup
+    const charMap = new Map(characters.map(c => [c.id, c]));
+
+    function updateRankNumbers() {
+      let rank = 1;
+      cards.forEach(card => {
+        if (card.style.display !== 'none') {
+          const rankEl = card.querySelector('.character-rank-number');
+          if (rankEl) rankEl.textContent = rank++;
+        }
+      });
+    }
+
+    function filterCharacters() {
+      const filters = {
+        class: classFilter.value,
+        rarity: rarityFilter.value,
+        faction: factionFilter.value,
+        moonphase: moonphaseFilter.value,
+      };
+
+      cards.forEach(card => {
+        const matches = Object.entries(filters).every(([key, value]) => {
+          if (!value) return true;
+          return card.dataset[key] === value;
+        });
+        card.style.display = matches ? 'flex' : 'none';
+      });
+
+      updateRankNumbers();
+    }
+
+    function sortCharacters(column) {
+      const multiplier = sortState.asc ? 1 : -1;
+
+      cards.sort((a, b) => {
+        const aVal = parseFloat(a.dataset[column]) || 0;
+        const bVal = parseFloat(b.dataset[column]) || 0;
+        return (aVal - bVal) * multiplier;
+      });
+
+      const fragment = document.createDocumentFragment();
+      cards.forEach(card => fragment.appendChild(card));
+      grid.appendChild(fragment);
+
+      updateRankNumbers();
+    }
+
+    function resetFilters() {
+      classFilter.value = '';
+      rarityFilter.value = '';
+      factionFilter.value = '';
+      moonphaseFilter.value = '';
+
+      cards.forEach(card => card.style.display = 'flex');
+      sortBtns.forEach(btn => btn.classList.remove('active'));
+      sortState = { column: null, asc: false };
+
+      // Restore original order
+      cards.sort((a, b) => {
+        const aRank = overallAnalysis[a.dataset.characterId]?.overallRank || 999;
+        const bRank = overallAnalysis[b.dataset.characterId]?.overallRank || 999;
+        return aRank - bRank;
+      });
+
+      const fragment = document.createDocumentFragment();
+      cards.forEach(card => fragment.appendChild(card));
+      grid.appendChild(fragment);
+
+      updateRankNumbers();
+    }
+
+    function selectCharacter(card) {
+      const id = card.dataset.characterId;
+      const char = charMap.get(id);
+      if (!char) return;
+
+      // Update selection
+      cards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      // Update detail display
+      $('detail-name').textContent = char.name;
+      $('detail-class').textContent = `${char.rarity} ${char.class} • ${char.faction}`;
+
+      // Update stat rankings
+      Object.keys(statNames).forEach(statKey => {
+        const rankCard = document.querySelector(`.ranking-card[data-stat="${statKey}"]`);
+        if (!rankCard) return;
+
+        const rank = rankings[statKey][id];
+        const statValue = char.stats[statKey];
+
+        rankCard.querySelector('.rank-display').textContent = `#${rank}`;
+        rankCard.querySelector('.rank-total').textContent = `out of ${totalCharacters}`;
+        rankCard.querySelector('.stat-value-display').textContent = statValue.toLocaleString();
+
+        // Apply rank styling
+        const rankDisplay = rankCard.querySelector('.rank-display');
+        rankDisplay.classList.remove('rank-top3', 'rank-top10', 'rank-other');
+        if (rank <= 3) {
+          rankDisplay.classList.add('rank-top3');
+        } else if (rank <= 10) {
+          rankDisplay.classList.add('rank-top10');
+        } else {
+          rankDisplay.classList.add('rank-other');
+        }
+      });
+
+      // Update analysis
+      const analysis = overallAnalysis[id];
+      $('overall-rank').textContent = `#${analysis.overallRank}`;
+
+      const coreStats = ['hp', 'atk', 'pDef', 'mDef'];
+      const top3Stats = coreStats.filter(s => rankings[s][id] <= 3).map(s => statNames[s]);
+      const top10Stats = coreStats.filter(s => rankings[s][id] <= 10).map(s => statNames[s]);
+
+      $('top3-count').textContent = `${top3Stats.length}/4`;
+      $('top10-count').textContent = `${top10Stats.length}/4`;
+
+      const renderBadges = (container, stats, className) => {
+        container.innerHTML = stats.length > 0
+          ? stats.map(s => `<span class="stat-badge ${className}">${s}</span>`).join('')
+          : '<span class="no-stats">None</span>';
+      };
+
+      renderBadges($('top3-stats'), top3Stats, 'top3-badge');
+      renderBadges($('top10-stats'), top10Stats, 'top10-badge');
+
+      // Show rankings display
+      rankingsDisplay.classList.add('active');
+      $('character-analysis').style.display = 'block';
+
+      setTimeout(() => {
+        rankingsDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    // Event listeners
+    [classFilter, rarityFilter, factionFilter, moonphaseFilter].forEach(filter => {
+      filter.addEventListener('change', filterCharacters);
+    });
+
+    sortBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const col = btn.dataset.sort;
+        sortState.asc = sortState.column === col ? !sortState.asc : false;
+        sortState.column = col;
+
+        sortBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        sortCharacters(col);
+      });
+    });
+
+    resetBtn.addEventListener('click', resetFilters);
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => selectCharacter(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectCharacter(card);
+        }
+      });
+    });
+  </script>
 </CharacterRankingsLayout>

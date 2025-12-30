@@ -1,9 +1,54 @@
 /**
  * Silver and Blood Character Rankings Data
- * Calculates stat rankings and overall analysis for all characters
+ * Calculates stat rankings and overall analysis for ALL 71 playable characters
  */
 
-import { characters } from './characters.js';
+import characterStatsData from './character-stats.json';
+import charactersInfoData from './characters_info.json';
+
+// Generate slug from character name
+const generateSlug = (name) => {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+};
+
+// Create info map by ID for additional data
+const infoMap = new Map();
+charactersInfoData.characters.forEach((char) => {
+  infoMap.set(char.id, char);
+});
+
+// Build complete character list from JSON (all 71 playable characters)
+const characters = characterStatsData.characters
+  .filter((c) => ['SSR', 'SR', 'R'].includes(c.rarity))
+  .map((statsChar) => {
+    const infoChar = infoMap.get(statsChar.id) || {};
+    const gallery = statsChar.gallery || {};
+    const slug = generateSlug(statsChar.name);
+
+    return {
+      id: slug,
+      numericId: statsChar.id,
+      name: statsChar.name,
+      title: infoChar.title || statsChar.title || '',
+      rarity: statsChar.rarity,
+      class: statsChar.class,
+      faction: infoChar.camp || '',
+      moonPhase: infoChar.moonPhase || '',
+      moonPhaseIcon: infoChar.moonPhaseIcon || '',
+      attackType: infoChar.damageType || '',
+      damageTypeIcon: infoChar.damageTypeIcon || '',
+      equipmentType: infoChar.equipmentType || '',
+      equipmentTypeIcon: infoChar.equipmentTypeIcon || '',
+      tags: infoChar.tags || [],
+      stats: {
+        hp: gallery.MaxHp || 0,
+        atk: gallery.Attack || 0,
+        pDef: gallery.PhyDefence || 0,
+        mDef: gallery.MagDefence || 0,
+        bloodPower: gallery.bloodPower || 0,
+      },
+    };
+  });
 
 /**
  * Calculate rankings for key stats
@@ -29,7 +74,6 @@ function calculateRankings() {
         if (currValue !== prevValue) {
           currentRank++;
         }
-        // If values are the same, keep the same rank
       }
 
       rankings[statKey][char.id] = currentRank;
@@ -44,7 +88,7 @@ function calculateRankings() {
  * @returns {Object} Analysis object with overall rankings and performance metrics
  */
 function calculateOverallAnalysis() {
-  const coreStats = ['hp', 'atk', 'pDef', 'mDef']; // Removed bloodPower
+  const coreStats = ['hp', 'atk', 'pDef', 'mDef'];
   const rankings = calculateRankings();
   const analysis = {};
 
@@ -87,11 +131,9 @@ function calculateOverallAnalysis() {
       const prevScore = sortedCharacters[index - 1].totalRankScore;
       const currScore = entry.totalRankScore;
 
-      // If current score is different from previous, increment rank by 1
       if (currScore !== prevScore) {
         currentOverallRank++;
       }
-      // If scores are the same, keep the same rank
     }
 
     analysis[entry.character.id].overallRank = currentOverallRank;
@@ -114,4 +156,4 @@ const statNames = {
   bloodPower: 'Blood Power',
 };
 
-export { rankings, overallAnalysis, totalCharacters, statNames };
+export { characters, rankings, overallAnalysis, totalCharacters, statNames };

@@ -200,6 +200,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Ancestral Vault',
           url: '/guides/silver-and-blood/ancestral-vault/',
         },
+        {
+          id: 'heirloom-vault',
+          title: 'Heirloom Vault',
+          url: '/guides/silver-and-blood/heirloom-vault/',
+        },
       ],
     },
     {
@@ -433,6 +438,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Summon Ancient Vassals with Mead of Rebirth. Calculate progression requirements for Sirene and other Ancient Vassals.',
       url: '/guides/silver-and-blood/ancestral-vault/',
+      category: 'guides',
+      status: 'active',
+    },
+    {
+      id: 'heirloom-vault',
+      title: 'Heirloom Vault',
+      emoji: '',
+      description:
+        'Complete Heirloom Vault database with all character upgrade costs, materials needed by camp, and rank progression details.',
+      url: '/guides/silver-and-blood/heirloom-vault/',
       category: 'guides',
       status: 'active',
     },

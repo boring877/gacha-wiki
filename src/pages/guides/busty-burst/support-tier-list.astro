@@ -1,0 +1,175 @@
+---
+import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
+import {
+  getSupportBonusTierList,
+  formatLB5Stats
+} from '../../../data/busty-burst/support-tier-lists.js';
+
+// Import badge styles
+import '../../../styles/games/busty-burst/busty-burst-badges.css';
+
+// Get data
+const tierList = getSupportBonusTierList();
+
+// Page metadata
+const title = 'BBB Busty - Support Tier List';
+const description = 'Find the best support units for your team in BBB Busty. Ranked by weapon type and support stats at LB5.';
+const gameTitle = 'Support Tier List';
+---
+
+<TierListLayout title={title} description={description} gameTitle={gameTitle} showTitle={true}>
+  <section id="support-tier-list" class="bb-tier-list-section">
+    <div class="bb-tier-list-header">
+      <h2 class="bb-tier-list-title">{tierList.name}</h2>
+      <p class="bb-tier-list-description">{tierList.description}</p>
+      <p class="bb-tier-list-last-updated">Last updated: {tierList.lastUpdated}</p>
+    </div>
+
+    <div class="bb-tier-list-info">
+      <h3>Tier Criteria</h3>
+      <ul>
+        <li><strong>SSS:</strong> Pierce + ATK + Crit (best combo)</li>
+        <li><strong>SS:</strong> Throw + ATK/Crit OR Pierce + ATK or Crit</li>
+        <li><strong>S:</strong> Any weapon + ATK or Crit stats</li>
+        <li><strong>A:</strong> No offensive stats</li>
+      </ul>
+    </div>
+
+    <!-- Tier List Display -->
+    <div class="bb-tier-list-container">
+      {tierList.tiers.map(tier => (
+        <div class="bb-tier-row">
+          <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+            {tier.definition.label}
+          </div>
+          <div class="bb-tier-characters">
+            {tier.characters.map(character => (
+              <div class="bb-tier-character-card">
+                <div class="bb-character-image-wrapper">
+                  <PaladinImage
+                    characterId={character.id}
+                    alt={character.name}
+                    width={140}
+                    height={140}
+                    quality={90}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="bb-character-name">{character.name}</div>
+                <div class="bb-character-icons">
+                  <RarityImage rarity={character.rarity} width={36} height={36} />
+                  <ElementImage element={character.element} width={22} height={22} />
+                  <WeaponIcon weapon={character.weapon} width={22} height={22} />
+                </div>
+                <div class="bb-stats-preview">{formatLB5Stats(character.supportStats)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    /* Additional styles for support tier list */
+    .bb-character-icons {
+      display: flex;
+      gap: 0.35rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .bb-character-icons img {
+      flex-shrink: 0;
+    }
+
+    .bb-stats-preview {
+      font-size: 0.6rem;
+      color: var(--bb-text-muted, #9ca3af);
+      text-align: center;
+      margin-top: 0.25rem;
+      padding: 0 0.25rem;
+      line-height: 1.2;
+      max-height: 2.4em;
+      overflow: hidden;
+    }
+
+    .bb-tier-character-card {
+      height: auto;
+      min-height: 200px;
+    }
+
+    .bb-tier-list-info ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .bb-tier-list-info li {
+      margin-bottom: 0.25rem;
+      color: var(--bb-text-secondary);
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      .bb-character-icons {
+        gap: 0.25rem;
+      }
+
+      .bb-character-icons img:first-child {
+        width: 28px !important;
+        height: 28px !important;
+      }
+
+      .bb-character-icons img:not(:first-child) {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      .bb-stats-preview {
+        font-size: 0.55rem;
+      }
+
+      .bb-tier-list-info {
+        padding: 1rem;
+      }
+
+      .bb-tier-list-info h3 {
+        font-size: 1.1rem;
+      }
+
+      .bb-tier-list-info li {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bb-character-icons {
+        gap: 0.2rem;
+      }
+
+      .bb-character-icons img:first-child {
+        width: 24px !important;
+        height: 24px !important;
+      }
+
+      .bb-character-icons img:not(:first-child) {
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .bb-stats-preview {
+        font-size: 0.5rem;
+        max-height: 2em;
+      }
+
+      .bb-tier-character-card {
+        min-height: 160px;
+      }
+    }
+  </style>
+</TierListLayout>

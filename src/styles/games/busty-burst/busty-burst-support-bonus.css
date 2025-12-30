@@ -1,0 +1,426 @@
+/* BBB Support Bonus Page Styles */
+
+/* ============================================
+   Page Container
+   ============================================ */
+.bb-support-bonus-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ============================================
+   Info Notes Section
+   ============================================ */
+.bb-bonus-info-notes {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.bb-bonus-info-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.bb-bonus-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-bonus-info-list li {
+  font-size: 0.8125rem;
+  color: var(--bb-text-secondary);
+  padding: 0.25rem 0;
+  line-height: 1.4;
+}
+
+/* ============================================
+   Filter Controls
+   ============================================ */
+.bb-bonus-controls {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-bonus-filter-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-bonus-search-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.625rem 0.875rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+}
+
+.bb-bonus-search-input::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-bonus-search-input:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+.bb-bonus-filter-select {
+  padding: 0.625rem 0.875rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.bb-bonus-filter-select:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+.bb-bonus-clear-btn {
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bb-bonus-clear-btn:hover {
+  background: var(--bb-bg-secondary);
+  border-color: var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
+/* ============================================
+   Character Bonus Cards Grid
+   ============================================ */
+.bb-support-bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Individual Bonus Card
+   ============================================ */
+.bb-bonus-card {
+  background: var(--bb-bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-bonus-card.hidden {
+  display: none;
+}
+
+/* Card Header */
+.bb-bonus-card-header {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bb-bg-secondary);
+  align-items: center;
+}
+
+.bb-bonus-card-avatar {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+  background: var(--bb-bg-primary);
+}
+
+.bb-bonus-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-bonus-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-bonus-card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.375rem 0;
+  line-height: 1.3;
+}
+
+.bb-bonus-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.bb-bonus-card-badges .bb-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.bb-bonus-card-badges .bb-badge-rarity {
+  display: flex;
+  align-items: center;
+}
+
+.bb-bonus-card-badges .bb-badge-rarity img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Card Body */
+.bb-bonus-card-body {
+  padding: 0;
+}
+
+/* ============================================
+   Bonus Sections (Blessing & Inspiration)
+   ============================================ */
+.bb-bonus-section {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-bonus-section:last-child {
+  border-bottom: none;
+}
+
+.bb-bonus-section.blessing {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, transparent 100%);
+}
+
+.bb-bonus-section.inspiration {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, transparent 100%);
+}
+
+.bb-bonus-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bb-bonus-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.bb-bonus-name {
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  font-size: 0.9375rem;
+}
+
+.bb-bonus-effect {
+  font-size: 0.8125rem;
+  color: var(--bb-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================
+   2/4/6 Members Display
+   ============================================ */
+.bb-bonus-values {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bb-bonus-tier {
+  flex: 1;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  padding: 0.625rem 0.5rem;
+  text-align: center;
+  border: 1px solid var(--bb-border);
+}
+
+.tier-label {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.tier-value {
+  display: block;
+  font-weight: 700;
+  color: var(--bb-primary-light);
+  font-size: 1rem;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* Tier progression coloring */
+.bb-bonus-tier:nth-child(1) .tier-value {
+  color: var(--bb-text-secondary);
+}
+
+.bb-bonus-tier:nth-child(2) .tier-value {
+  color: var(--bb-primary-light);
+}
+
+.bb-bonus-tier:nth-child(3) .tier-value {
+  color: var(--bb-primary);
+}
+
+/* ============================================
+   No Results
+   ============================================ */
+.bb-bonus-no-results {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  display: none;
+}
+
+.bb-bonus-no-results.visible {
+  display: block;
+}
+
+.bb-bonus-no-results h3 {
+  color: var(--bb-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+}
+
+.bb-bonus-no-results p {
+  color: var(--bb-text-secondary);
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   Results Count
+   ============================================ */
+.bb-bonus-results-count {
+  font-size: 0.875rem;
+  color: var(--bb-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.bb-bonus-results-count span {
+  font-weight: 600;
+  color: var(--bb-primary-light);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .bb-support-bonus-page {
+    padding: 0.625rem;
+  }
+
+  .bb-bonus-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-bonus-search-input,
+  .bb-bonus-filter-select {
+    width: 100%;
+  }
+
+  .bb-support-bonus-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-bonus-card-header {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .bb-bonus-section {
+    padding: 0.875rem 1rem;
+  }
+
+  .bb-bonus-card-name {
+    font-size: 0.9375rem;
+  }
+
+  .bb-bonus-card-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-bonus-card-badges .bb-badge {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.6875rem;
+  }
+
+  .bb-bonus-card-badges .bb-badge-rarity img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bb-bonus-values {
+    gap: 0.375rem;
+  }
+
+  .bb-bonus-tier {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .tier-label {
+    font-size: 0.625rem;
+  }
+
+  .tier-value {
+    font-size: 0.875rem;
+  }
+
+  .bb-bonus-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bb-bonus-name {
+    font-size: 0.875rem;
+  }
+
+  .bb-bonus-effect {
+    font-size: 0.75rem;
+  }
+
+  .bb-bonus-info-list li {
+    font-size: 0.75rem;
+  }
+}

@@ -5,7 +5,7 @@ export const BUSTY_BURST_TIER_LISTS = {
     name: 'Beginner Tier List',
     description:
       'This tier list gives a general idea of what to pick early on. It is not the final tier list.',
-    lastUpdated: '2025-12-06',
+    lastUpdated: '2025-12-30',
     tiers: [
       {
         tier: 'SSS',
@@ -14,7 +14,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Must-have for beginners',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'frey'],
+        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa'],
       },
       {
         tier: 'SS',
@@ -69,6 +69,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'festive_natasha',
           'holy_night_succubus_yu_rima_elca',
           'magical_holy_night_festival_kaguya',
+          'new_years_calligraphy_pastel',
+          'overflowing_jubako_lynette',
         ],
       },
     ],
@@ -76,7 +78,7 @@ export const BUSTY_BURST_TIER_LISTS = {
   aethersteel: {
     name: "Aethersteel's Tier List",
     description: 'Tier list created by Aethersteel with different rankings',
-    lastUpdated: '2025-12-06',
+    lastUpdated: '2025-12-30',
     tiers: [
       {
         tier: 'SSS',
@@ -85,7 +87,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Top tier characters by Aethersteel',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'messeria'],
+        characters: ['festive_attire_estiriel', 'liesel', 'messeria', 'dragon_crusher_medusa'],
       },
       {
         tier: 'SS',
@@ -136,6 +138,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'artemis',
           'holy_night_succubus_yu_rima_elca',
           'magical_holy_night_festival_kaguya',
+          'new_years_calligraphy_pastel',
+          'overflowing_jubako_lynette',
         ],
       },
     ],

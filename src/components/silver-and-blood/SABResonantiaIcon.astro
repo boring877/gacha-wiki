@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all resonantia breakthrough icons
+import icon01 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_01.png';
+import icon02 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_02.png';
+import icon03 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_03.png';
+import icon04 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_04.png';
+import icon05 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_05.png';
+import icon06 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_06.png';
+import icon07 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_07.png';
+import icon08 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_08.png';
+import icon09 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_09.png';
+import icon10 from '../../assets/images/games/silver-and-blood/icons/resonantia_icons/herobreakthrough_icon_10.png';
+
+// Map rank to icon (ranks are 1, 3, 5, 7, 9 -> icons 01, 03, 05, 07, 09)
+const iconMap: Record<number, ImageMetadata> = {
+  1: icon01,
+  2: icon02,
+  3: icon03,
+  4: icon04,
+  5: icon05,
+  6: icon06,
+  7: icon07,
+  8: icon08,
+  9: icon09,
+  10: icon10,
+};
+
+interface Props {
+  rank: number;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { rank, width = 28, height = 28, class: className = '' } = Astro.props;
+
+// Get the icon for this rank
+const icon = iconMap[rank] || icon01;
+---
+
+<Image
+  src={icon}
+  alt={`Resonantia R${rank}`}
+  width={width}
+  height={height}
+  class={className}
+  loading="lazy"
+/>

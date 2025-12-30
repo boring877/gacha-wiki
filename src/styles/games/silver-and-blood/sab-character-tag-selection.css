@@ -42,12 +42,10 @@
 }
 
 /* ===== IMAGES ===== */
-.character-portrait img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+.character-portrait img:not(.rarity-frame) {
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-  border: 3px solid #c0c0c0;
   flex-shrink: 0;
   display: block;
   max-width: none;
@@ -126,7 +124,6 @@
   border-radius: var(--sab-radius-md);
   padding: var(--sab-spacing-lg);
   margin-top: var(--sab-spacing-lg);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .selected-tags-container h3 {
@@ -203,7 +200,6 @@
 .clear-tags-btn:hover {
   background: var(--sab-calm-red);
   border-color: var(--sab-calm-red);
-  transform: translateY(-1px);
 }
 
 /* ===== CHARACTER RESULTS ===== */
@@ -253,6 +249,8 @@
   border-radius: var(--sab-radius-lg);
   padding: var(--sab-spacing-lg);
   overflow: hidden;
+  text-decoration: none;
+  display: block;
 }
 
 .character-portrait {
@@ -260,19 +258,15 @@
   margin-bottom: var(--sab-spacing-md);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-/* Rarity badge positioning - using SAB badge system */
-.rarity-badge {
+.rarity-frame {
   position: absolute;
   top: -5px;
-  right: -5px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--sab-radius-md);
+  right: calc(50% - 55px);
+  width: 28px;
+  height: 28px;
 }
 
 /* Character Info */
@@ -296,13 +290,19 @@
   font-style: italic;
 }
 
-/* Character Details - Using SAB badge system */
-.character-details {
+/* Character Icons Row */
+.character-icons {
   display: flex;
   justify-content: center;
   gap: var(--sab-spacing-sm);
   margin-bottom: var(--sab-spacing-sm);
-  flex-wrap: wrap;
+  align-items: center;
+}
+
+.char-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* Character Tags - Using SAB badge system */
@@ -311,32 +311,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--sab-spacing-xs);
-  margin-bottom: var(--sab-spacing-md);
-}
-
-/* Character Actions */
-.character-actions {
-  text-align: center;
-}
-
-.view-character-btn {
-  background: var(--sab-blood-gradient);
-  color: var(--sab-white);
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--sab-radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-  font-family: 'Space Grotesk', sans-serif;
-  transition: all 0.2s ease;
-}
-
-.view-character-btn:hover {
-  background: var(--sab-dark-red);
-  transform: translateY(-1px);
 }
 
 /* ===== NO RESULTS ===== */
@@ -444,7 +418,7 @@
     padding: 1.2rem;
   }
 
-  .character-portrait img {
+  .character-portrait img:not(.rarity-frame) {
     width: 100px;
     height: 100px;
   }
@@ -513,7 +487,7 @@
     padding: 1rem;
   }
 
-  .character-portrait img {
+  .character-portrait img:not(.rarity-frame) {
     width: 80px;
     height: 80px;
   }

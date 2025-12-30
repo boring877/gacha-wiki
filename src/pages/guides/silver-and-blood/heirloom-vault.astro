@@ -1,0 +1,772 @@
+---
+import HeirloomVaultLayout from '../../../layouts/silver-and-blood/HeirloomVaultLayout.astro';
+import { Image } from 'astro:assets';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import SABResonantiaIcon from '../../../components/silver-and-blood/SABResonantiaIcon.astro';
+import {
+  getCharacters,
+  getCamps,
+  getMaterials,
+  getStats,
+  calculateTotalMaterials,
+  getHeroMaxStatBonuses,
+  getResonantiaSkills,
+  hasResonantia,
+  formatResonantiaDescriptionAllLevels,
+  getResonantiaAllLevelRequirements,
+  getCharacterInfo,
+} from '../../../data/silver-and-blood/heirloom-vault.js';
+
+// Import material icons - Ancestral (Origin)
+import BasicOrigin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2111.png';
+import AdvancedOrigin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2112.png';
+import RareOrigin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2113.png';
+
+// Import material icons - Church (Sanctity)
+import BasicSanctity from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2121.png';
+import AdvancedSanctity from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2122.png';
+import RareSanctity from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2123.png';
+
+// Import material icons - Bloodborn (Sin)
+import BasicSin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2131.png';
+import AdvancedSin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2132.png';
+import RareSin from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2133.png';
+
+// Import material icons - Kingdom (Vision)
+import BasicVision from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2141.png';
+import AdvancedVision from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2142.png';
+import RareVision from '../../../assets/images/games/silver-and-blood/icons/heirloom_vault/images/items/2143.png';
+
+// Import role/career icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+// Import equipment type icons
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Import moon phase icons
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+
+// Import damage type icons
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+
+
+const roleImages: Record<string, ImageMetadata> = {
+  'Assassin': roleAssassin,
+  'Defender': roleDefender,
+  'Enchanter': roleEnchanter,
+  'Marksman': roleMarksman,
+  'Sorcerer': roleSorcerer,
+  'Warrior': roleWarrior,
+};
+
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight,
+  'EquipType_Medium.png': equipMedium,
+  'EquipType_Heavy.png': equipHeavy,
+};
+
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonNew,
+  'filter_icon_moon2.png': moonCrescent,
+  'filter_icon_moon3.png': moonFull,
+};
+
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical,
+  'level_info_icon_attack_03.png': dmgPhysical,
+  'level_info_icon_attack_04.png': dmgPierce,
+};
+
+// Map material icons by item ID
+const materialIconMap: Record<number, ImageMetadata> = {
+  2111: BasicOrigin,
+  2112: AdvancedOrigin,
+  2113: RareOrigin,
+  2121: BasicSanctity,
+  2122: AdvancedSanctity,
+  2123: RareSanctity,
+  2131: BasicSin,
+  2132: AdvancedSin,
+  2133: RareSin,
+  2141: BasicVision,
+  2142: AdvancedVision,
+  2143: RareVision,
+};
+
+// Get material icon for a character based on their camp
+function getCampMaterialIcons(camp: string) {
+  const campMap: Record<string, { basic: number; advanced: number; rare: number }> = {
+    'Ancestral': { basic: 2111, advanced: 2112, rare: 2113 },
+    'Church': { basic: 2121, advanced: 2122, rare: 2123 },
+    'Bloodborn': { basic: 2131, advanced: 2132, rare: 2133 },
+    'Kingdom': { basic: 2141, advanced: 2142, rare: 2143 },
+  };
+  return campMap[camp] || campMap['Ancestral'];
+}
+
+// Get data
+const characters = getCharacters();
+const camps = getCamps();
+const materials = getMaterials();
+const stats = getStats();
+
+const pageTitle = 'Heirloom Vault';
+const pageDescription = 'Complete Heirloom Vault database for Silver and Blood. View all character upgrade costs, materials needed, stat bonuses, and Resonantia skills.';
+
+// Helper to map camp names for faction icon component
+function getFactionName(camp: string) {
+  const campToFaction: Record<string, string> = {
+    'Ancestral': 'Ancestors',
+    'Church': 'Church',
+    'Bloodborn': 'Bloodborn',
+    'Kingdom': 'Kingdom',
+  };
+  return campToFaction[camp] || camp;
+}
+
+// Helper to get camp class for material icons
+function getCampClass(camp: string) {
+  return camp.toLowerCase();
+}
+
+// Helper to get cost type
+function getCostType(itemName: string) {
+  if (itemName.includes('Basic')) return 'basic';
+  if (itemName.includes('Advanced')) return 'advanced';
+  if (itemName.includes('Rare')) return 'rare';
+  return 'basic';
+}
+---
+
+<HeirloomVaultLayout title={`${pageTitle} | Silver and Blood`} description={pageDescription} pageTitle={pageTitle}>
+  <div class="heirloom-vault-container">
+    <!-- Summary Stats -->
+    <div class="heirloom-summary">
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.totalCharacters}</span>
+        <span class="summary-stat-label">Total Characters</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.charactersWithResonantia}</span>
+        <span class="summary-stat-label">With Resonantia</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.maxRank}</span>
+        <span class="summary-stat-label">Max Rank</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{stats.maxLevel}</span>
+        <span class="summary-stat-label">Max Level</span>
+      </div>
+    </div>
+
+    <!-- Level Cost Calculator -->
+    <section class="cost-calculator-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Level Cost Calculator</h2>
+          <p class="section-subtitle">Calculate materials needed for any level range</p>
+        </div>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calculator-inputs">
+          <div class="calc-input-group">
+            <label for="calc-from-level">From Level</label>
+            <input type="number" id="calc-from-level" min="0" max="69" value="0" class="calc-input" />
+          </div>
+          <span class="calc-arrow">→</span>
+          <div class="calc-input-group">
+            <label for="calc-to-level">To Level</label>
+            <input type="number" id="calc-to-level" min="1" max="70" value="70" class="calc-input" />
+          </div>
+          <button id="calc-button" class="calc-button">Calculate</button>
+        </div>
+
+        <div class="calculator-results" id="calc-results">
+          <div class="calc-result-item">
+            <span class="calc-result-label">Basic Seed</span>
+            <span class="calc-result-value" id="calc-basic">0</span>
+          </div>
+          <div class="calc-result-item">
+            <span class="calc-result-label">Advanced Seed</span>
+            <span class="calc-result-value" id="calc-advanced">0</span>
+          </div>
+          <div class="calc-result-item">
+            <span class="calc-result-label">Rare Seed</span>
+            <span class="calc-result-value" id="calc-rare">0</span>
+          </div>
+          <div class="calc-result-item">
+            <span class="calc-result-label">Premium Seed</span>
+            <span class="calc-result-value" id="calc-premium">0</span>
+          </div>
+        </div>
+
+        <div class="cost-breakdown-table">
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Level Range</th>
+                <th>Cost per Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0 - 9</td>
+                <td>10x Basic Seed</td>
+              </tr>
+              <tr>
+                <td>10 - 19</td>
+                <td>20x Basic Seed</td>
+              </tr>
+              <tr>
+                <td>20 - 39</td>
+                <td>20x Basic + 20x Advanced</td>
+              </tr>
+              <tr>
+                <td>40 - 59</td>
+                <td>20x Basic + 30x Advanced + 20x Rare</td>
+              </tr>
+              <tr>
+                <td>60 - 69</td>
+                <td>30x Advanced + 20x Rare + 30x Premium</td>
+              </tr>
+              <tr>
+                <td>70</td>
+                <td class="max-level-text">Max Level</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Camp Filter Tabs -->
+    <div class="camp-filter-container">
+      <div class="camp-tabs">
+        {camps.map((camp, index) => (
+          <button
+            class={`camp-tab ${index === 0 ? 'active' : ''}`}
+            data-camp={camp}
+          >
+            {camp}
+            <span class="camp-tab-count">
+              {camp === 'All' ? characters.length : stats.campCounts[camp] || 0}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Materials Overview Section -->
+    <section class="materials-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Materials by Camp</h2>
+          <p class="section-subtitle">Each camp uses different fruits for upgrades</p>
+        </div>
+      </div>
+
+      <div class="materials-grid">
+        {Object.entries(materials).map(([campName, campMaterials]: [string, any]) => (
+          <div class="material-card">
+            <div class="material-card-header">
+              <div class={`material-camp-icon ${getCampClass(campName)}`}>
+                {campName.charAt(0)}
+              </div>
+              <h3 class="material-camp-name">{campName}</h3>
+            </div>
+            <div class="material-items">
+              <div class="material-item">
+                <Image
+                  src={materialIconMap[campMaterials.items.basicFruit.id]}
+                  alt={campMaterials.items.basicFruit.name}
+                  class="material-item-icon"
+                  width={36}
+                  height={36}
+                />
+                <div class="material-item-info">
+                  <span class="material-item-name">{campMaterials.items.basicFruit.name}</span>
+                  <span class="material-item-rarity">Common</span>
+                </div>
+              </div>
+              <div class="material-item">
+                <Image
+                  src={materialIconMap[campMaterials.items.advancedFruit.id]}
+                  alt={campMaterials.items.advancedFruit.name}
+                  class="material-item-icon"
+                  width={36}
+                  height={36}
+                />
+                <div class="material-item-info">
+                  <span class="material-item-name">{campMaterials.items.advancedFruit.name}</span>
+                  <span class="material-item-rarity">Uncommon</span>
+                </div>
+              </div>
+              <div class="material-item">
+                <Image
+                  src={materialIconMap[campMaterials.items.rareFruit.id]}
+                  alt={campMaterials.items.rareFruit.name}
+                  class="material-item-icon"
+                  width={36}
+                  height={36}
+                />
+                <div class="material-item-info">
+                  <span class="material-item-name">{campMaterials.items.rareFruit.name}</span>
+                  <span class="material-item-rarity">Rare</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section class="heirloom-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Characters</h2>
+          <p class="section-subtitle">Complete list with upgrade costs and stat bonuses</p>
+        </div>
+      </div>
+
+      <!-- Characters Grid -->
+      <div class="characters-grid">
+        {characters.map(character => {
+          const totalCosts = calculateTotalMaterials(character);
+          const campIcons = getCampMaterialIcons(character.camp);
+          const maxStats = getHeroMaxStatBonuses(character.heroId);
+          const heroHasResonantia = hasResonantia(character.heroId);
+          const resonantiaSkillsList = heroHasResonantia ? getResonantiaSkills(character.heroId) : [];
+          const charInfo = getCharacterInfo(character.name, character.title);
+
+          return (
+            <article class="character-card" data-camp={character.camp} data-hero-id={character.heroId}>
+              <!-- Header with Icon -->
+              <div class="character-card-header">
+                <div class="character-icon-wrapper">
+                  <SABCharacterIcon
+                    name={character.name}
+                    size="small"
+                    width={60}
+                    height={60}
+                    class="character-icon"
+                  />
+                </div>
+                <div class="character-info">
+                  <h3 class="character-name">{character.name}</h3>
+                  <p class="character-title">{character.title}</p>
+                  <div class="character-icons-row">
+                    <SABFactionIcon
+                      faction={getFactionName(character.camp)}
+                      width={20}
+                      height={20}
+                      class="card-stat-icon"
+                    />
+                    {charInfo?.career && roleImages[charInfo.career] && (
+                      <Image
+                        src={roleImages[charInfo.career]}
+                        alt={charInfo.career}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                        title={charInfo.career}
+                      />
+                    )}
+                    {charInfo?.equipmentTypeIcon && equipmentTypeImages[charInfo.equipmentTypeIcon] && (
+                      <Image
+                        src={equipmentTypeImages[charInfo.equipmentTypeIcon]}
+                        alt={charInfo.equipmentType || 'Equipment'}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                        title={charInfo.equipmentType}
+                      />
+                    )}
+                    {charInfo?.moonPhaseIcon && moonPhaseImages[charInfo.moonPhaseIcon] && (
+                      <Image
+                        src={moonPhaseImages[charInfo.moonPhaseIcon]}
+                        alt={charInfo.moonPhase || 'Moon'}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                        title={charInfo.moonPhase}
+                      />
+                    )}
+                    {charInfo?.damageTypeIcon && damageTypeImages[charInfo.damageTypeIcon] && (
+                      <Image
+                        src={damageTypeImages[charInfo.damageTypeIcon]}
+                        alt={charInfo.damageType || 'DMG'}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                        title={charInfo.damageType}
+                      />
+                    )}
+                    {character.hasResonantiaUpgrade && (
+                      <span class="resonantia-badge">Resonantia</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Body -->
+              <div class="character-card-body">
+                <!-- Stat Bonuses with Level Input -->
+                <div class="stat-bonuses">
+                  <div class="stat-bonuses-header">
+                    <span class="stat-bonuses-title">Total Stats (Lv.1 →</span>
+                    <input
+                      type="number"
+                      class="level-input"
+                      min="1"
+                      max="70"
+                      value="70"
+                      data-hero-id={character.heroId}
+                    />
+                    <span class="stat-bonuses-title">)</span>
+                  </div>
+                  <div class="stat-bonuses-grid">
+                    <div class="stat-bonus">
+                      <span class="stat-bonus-label">HP</span>
+                      <span class="stat-bonus-value stat-hp">+{maxStats.hp.toLocaleString()}</span>
+                      <span class="stat-per-level">(+360/lv)</span>
+                    </div>
+                    <div class="stat-bonus">
+                      <span class="stat-bonus-label">ATK</span>
+                      <span class="stat-bonus-value stat-atk">+{maxStats.atk.toLocaleString()}</span>
+                      <span class="stat-per-level">(+22/lv)</span>
+                    </div>
+                    <div class="stat-bonus">
+                      <span class="stat-bonus-label">P.DEF</span>
+                      <span class="stat-bonus-value stat-pdef">+{maxStats.pDef.toLocaleString()}</span>
+                      <span class="stat-per-level">(+9/lv)</span>
+                    </div>
+                    <div class="stat-bonus">
+                      <span class="stat-bonus-label">M.DEF</span>
+                      <span class="stat-bonus-value stat-mdef">+{maxStats.mDef.toLocaleString()}</span>
+                      <span class="stat-per-level">(+9/lv)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Total Costs -->
+                <div class="total-costs">
+                  <div class="cost-item">
+                    <Image
+                      src={materialIconMap[campIcons.basic]}
+                      alt="Basic Fruit"
+                      class="cost-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="cost-label">Basic</span>
+                    <span class="cost-value">{totalCosts.basic}</span>
+                  </div>
+                  <div class="cost-item">
+                    <Image
+                      src={materialIconMap[campIcons.advanced]}
+                      alt="Advanced Fruit"
+                      class="cost-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="cost-label">Advanced</span>
+                    <span class="cost-value">{totalCosts.advanced}</span>
+                  </div>
+                  <div class="cost-item">
+                    <Image
+                      src={materialIconMap[campIcons.rare]}
+                      alt="Rare Fruit"
+                      class="cost-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="cost-label">Rare</span>
+                    <span class="cost-value">{totalCosts.rare}</span>
+                  </div>
+                </div>
+
+                <!-- Resonantia Skills (if any) -->
+                {resonantiaSkillsList.length > 0 && (
+                  <div class="resonantia-section">
+                    <div class="resonantia-header">
+                      <span class="resonantia-title">Resonantia Skills</span>
+                      <div class="resonantia-level-tabs">
+                        <button class="res-level-tab" data-level="1">Lv. 1</button>
+                        <button class="res-level-tab active" data-level="2">Lv. 2</button>
+                        <button class="res-level-tab" data-level="3">Lv. 3</button>
+                      </div>
+                    </div>
+                    <div class="resonantia-skills">
+                      {resonantiaSkillsList.map((skill: any) => {
+                        const levelReqs = getResonantiaAllLevelRequirements(skill, character.heroId);
+                        return (
+                          <div class="resonantia-skill" data-level-reqs={JSON.stringify(levelReqs)}>
+                            <div class="resonantia-skill-header">
+                              <SABResonantiaIcon
+                                rank={skill.rank}
+                                width={28}
+                                height={28}
+                                class="resonantia-skill-icon"
+                              />
+                              <span class="resonantia-skill-rank">R{skill.rank}</span>
+                              <span class="resonantia-skill-name">{skill.skillName}</span>
+                            </div>
+                            <p class="resonantia-skill-desc" set:html={formatResonantiaDescriptionAllLevels(skill)}></p>
+                            <div class="resonantia-upgrade-req">
+                              <span class="upgrade-req-label">Upgrade Requirement</span>
+                              <span class="upgrade-req-value">
+                                Heirloom Vault Level Cap increased to <span class="upgrade-req-level">{levelReqs[1]}</span>.
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                <!-- Level Costs Table -->
+                <div class="level-costs-section">
+                  <div class="level-costs-header">
+                    <span class="level-costs-title">Level Costs</span>
+                  </div>
+                  <table class="level-costs-table">
+                    <thead>
+                      <tr>
+                        <th>Level</th>
+                        <th>Cost per Level</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>0 - 9</td>
+                        <td>10x Basic Seed</td>
+                      </tr>
+                      <tr>
+                        <td>10 - 19</td>
+                        <td>20x Basic Seed</td>
+                      </tr>
+                      <tr>
+                        <td>20 - 39</td>
+                        <td>20x Basic + 20x Advanced</td>
+                      </tr>
+                      <tr>
+                        <td>40 - 59</td>
+                        <td>20x Basic + 30x Advanced + 20x Rare</td>
+                      </tr>
+                      <tr>
+                        <td>60 - 69</td>
+                        <td>30x Advanced + 20x Rare + 30x Premium</td>
+                      </tr>
+                      <tr>
+                        <td>70</td>
+                        <td class="max-level-text">Max Level</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</HeirloomVaultLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Camp filter tabs
+    const campTabs = document.querySelectorAll('.camp-tab');
+    const characterCards = document.querySelectorAll('.character-card');
+
+    campTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        campTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const selectedCamp = tab.getAttribute('data-camp');
+
+        // Filter characters
+        characterCards.forEach(card => {
+          const cardCamp = card.getAttribute('data-camp');
+          if (selectedCamp === 'All' || cardCamp === selectedCamp) {
+            (card as HTMLElement).style.display = '';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Level input handling for stat calculation
+    const levelInputs = document.querySelectorAll('.level-input');
+    levelInputs.forEach(input => {
+      input.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        let level = parseInt(target.value) || 1;
+        level = Math.max(1, Math.min(70, level));
+
+        const card = target.closest('.character-card');
+        if (!card) return;
+
+        const hpEl = card.querySelector('.stat-hp') as HTMLElement;
+        const atkEl = card.querySelector('.stat-atk') as HTMLElement;
+        const pdefEl = card.querySelector('.stat-pdef') as HTMLElement;
+        const mdefEl = card.querySelector('.stat-mdef') as HTMLElement;
+
+        // Use default per-level gains
+        const hpPerLevel = 360;
+        const atkPerLevel = 22;
+        const pdefPerLevel = 9;
+        const mdefPerLevel = 9;
+
+        if (hpEl) hpEl.textContent = `+${(hpPerLevel * level).toLocaleString()}`;
+        if (atkEl) atkEl.textContent = `+${(atkPerLevel * level).toLocaleString()}`;
+        if (pdefEl) pdefEl.textContent = `+${(pdefPerLevel * level).toLocaleString()}`;
+        if (mdefEl) mdefEl.textContent = `+${(mdefPerLevel * level).toLocaleString()}`;
+      });
+    });
+
+    // Resonantia level tabs handling
+    const resonantiaSections = document.querySelectorAll('.resonantia-section');
+    resonantiaSections.forEach(section => {
+      const tabs = section.querySelectorAll('.res-level-tab');
+
+      // Initialize: highlight level 2 values (default active tab)
+      section.querySelectorAll('.res-val-2').forEach(val => {
+        (val as HTMLElement).classList.add('highlighted');
+      });
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Update active tab within this section
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          const level = tab.getAttribute('data-level');
+          const levelIndex = parseInt(level || '1') - 1;
+
+          // Update highlighted values in this section
+          const skills = section.querySelectorAll('.resonantia-skill');
+          skills.forEach(skillEl => {
+            const desc = skillEl.querySelector('.resonantia-skill-desc');
+            if (desc) {
+              // Remove highlight from all values
+              desc.querySelectorAll('.res-val').forEach(val => {
+                (val as HTMLElement).classList.remove('highlighted');
+              });
+              // Add highlight to selected level
+              desc.querySelectorAll(`.res-val-${level}`).forEach(val => {
+                (val as HTMLElement).classList.add('highlighted');
+              });
+            }
+
+            // Update upgrade requirement
+            const levelReqsData = skillEl.getAttribute('data-level-reqs');
+            if (levelReqsData) {
+              try {
+                const levelReqs = JSON.parse(levelReqsData);
+                const reqEl = skillEl.querySelector('.upgrade-req-level');
+                if (reqEl) {
+                  reqEl.textContent = levelReqs[levelIndex];
+                }
+              } catch (e) {
+                console.error('Error parsing level reqs:', e);
+              }
+            }
+          });
+        });
+      });
+    });
+
+    // Level Cost Calculator
+    const calcFromLevel = document.getElementById('calc-from-level') as HTMLInputElement;
+    const calcToLevel = document.getElementById('calc-to-level') as HTMLInputElement;
+    const calcButton = document.getElementById('calc-button');
+    const calcBasic = document.getElementById('calc-basic');
+    const calcAdvanced = document.getElementById('calc-advanced');
+    const calcRare = document.getElementById('calc-rare');
+    const calcPremium = document.getElementById('calc-premium');
+
+    function calculateLevelCosts(fromLevel: number, toLevel: number) {
+      let basic = 0;
+      let advanced = 0;
+      let rare = 0;
+      let premium = 0;
+
+      for (let level = fromLevel; level < toLevel; level++) {
+        if (level >= 0 && level <= 9) {
+          // 0-9: 10x Basic Seed per level
+          basic += 10;
+        } else if (level >= 10 && level <= 19) {
+          // 10-19: 20x Basic Seed per level
+          basic += 20;
+        } else if (level >= 20 && level <= 39) {
+          // 20-39: 20x Basic + 20x Advanced per level
+          basic += 20;
+          advanced += 20;
+        } else if (level >= 40 && level <= 59) {
+          // 40-59: 20x Basic + 30x Advanced + 20x Rare per level
+          basic += 20;
+          advanced += 30;
+          rare += 20;
+        } else if (level >= 60 && level <= 69) {
+          // 60-69: 30x Advanced + 20x Rare + 30x Premium per level
+          advanced += 30;
+          rare += 20;
+          premium += 30;
+        }
+        // level 70 is max, no cost
+      }
+
+      return { basic, advanced, rare, premium };
+    }
+
+    function updateCalculatorResults() {
+      const fromLevel = Math.max(0, Math.min(69, parseInt(calcFromLevel?.value || '0') || 0));
+      const toLevel = Math.max(1, Math.min(70, parseInt(calcToLevel?.value || '70') || 70));
+
+      if (fromLevel >= toLevel) {
+        if (calcBasic) calcBasic.textContent = '0';
+        if (calcAdvanced) calcAdvanced.textContent = '0';
+        if (calcRare) calcRare.textContent = '0';
+        if (calcPremium) calcPremium.textContent = '0';
+        return;
+      }
+
+      const costs = calculateLevelCosts(fromLevel, toLevel);
+
+      if (calcBasic) calcBasic.textContent = costs.basic.toLocaleString();
+      if (calcAdvanced) calcAdvanced.textContent = costs.advanced.toLocaleString();
+      if (calcRare) calcRare.textContent = costs.rare.toLocaleString();
+      if (calcPremium) calcPremium.textContent = costs.premium.toLocaleString();
+    }
+
+    // Calculate on button click
+    calcButton?.addEventListener('click', updateCalculatorResults);
+
+    // Also calculate on input change
+    calcFromLevel?.addEventListener('change', updateCalculatorResults);
+    calcToLevel?.addEventListener('change', updateCalculatorResults);
+
+    // Initial calculation
+    updateCalculatorResults();
+  });
+</script>

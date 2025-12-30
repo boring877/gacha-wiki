@@ -1,46 +1,20 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import all character images as assets for optimization
-import ArtemisImg from '../../assets/images/games/Busty_Burst/CharImg/Artemis.jpg';
-import ArtiaImg from '../../assets/images/games/Busty_Burst/CharImg/Artia.jpg';
-import BiancaImg from '../../assets/images/games/Busty_Burst/CharImg/Bianca.jpg';
-import Elegant_Portrait_ShamshelImg from '../../assets/images/games/Busty_Burst/CharImg/Elegant_Portrait_Shamshel.jpg';
-import EstirielImg from '../../assets/images/games/Busty_Burst/CharImg/Estiriel.jpg';
-import Festive_Attire_EstirielImg from '../../assets/images/games/Busty_Burst/CharImg/Festive_Attire_Estiriel.jpg';
-import Festival_Empress_ShamshelImg from '../../assets/images/games/Busty_Burst/CharImg/Festival_Empress_Shamshel.jpg';
-import Festive_Costume_NatashaImg from '../../assets/images/games/Busty_Burst/CharImg/Festive_Costume_Natasha.jpg';
-import FreyImg from '../../assets/images/games/Busty_Burst/CharImg/Frey.jpg';
-import GeminiImg from '../../assets/images/games/Busty_Burst/CharImg/Gemini.jpg';
-import HildisImg from '../../assets/images/games/Busty_Burst/CharImg/Hildis.jpg';
-import HisaraImg from '../../assets/images/games/Busty_Burst/CharImg/Hisara.jpg';
-import Lie_Img from '../../assets/images/games/Busty_Burst/CharImg/Liesel.jpg';
-import LucaImg from '../../assets/images/games/Busty_Burst/CharImg/Luca.jpg';
-import Magical_Princess_LuceriaImg from '../../assets/images/games/Busty_Burst/CharImg/Magical Princess Luceria.jpg';
-import MarinaImg from '../../assets/images/games/Busty_Burst/CharImg/Marina.jpg';
-import MeiniasImg from '../../assets/images/games/Busty_Burst/CharImg/Meinias.jpg';
-import Messenge_of_Stone_soldiers_NerysImg from '../../assets/images/games/Busty_Burst/CharImg/Messenge_of_Stone_soldiers_Nerys.jpg';
-import NoraImg from '../../assets/images/games/Busty_Burst/CharImg/Nora.jpg';
-import Pious_Healer_IshtoviaImg from '../../assets/images/games/Busty_Burst/CharImg/Pious_Healer_Ishtovia.jpg';
-import SoltinaImg from '../../assets/images/games/Busty_Burst/CharImg/Soltina.jpg';
-import StenlinaImg from '../../assets/images/games/Busty_Burst/CharImg/Stenlina.jpg';
-import Swift_Chant_Sorceress_SobrinaImg from '../../assets/images/games/Busty_Burst/CharImg/Swift-Chant_Sorceress_Sobrina.jpg';
-import TeresiaImg from '../../assets/images/games/Busty_Burst/CharImg/Teresia.jpg';
-import The_Dark_KnightImg from '../../assets/images/games/Busty_Burst/CharImg/The_Dark_Knight.jpg';
-import Trance_Dancer_MesseriaImg from '../../assets/images/games/Busty_Burst/CharImg/Trance_Dancer_Messeria.jpg';
-import VenusImg from '../../assets/images/games/Busty_Burst/CharImg/Venus.jpg';
-import Yu_Lima_ElkaImg from '../../assets/images/games/Busty_Burst/CharImg/Yu_Lima_Elka.jpg';
-import NatashaImg from '../../assets/images/games/Busty_Burst/CharImg/Natasha.jpg';
-import ShatyImg from '../../assets/images/games/Busty_Burst/CharImg/Shaty.png';
-import Mischievous_Mermaid_Princess_LoreliaImg from '../../assets/images/games/Busty_Burst/CharImg/Mischievous_Mermaid_Princess_Lorelia.jpg';
-import Elegant_Portrait_AysisImg from '../../assets/images/games/Busty_Burst/CharImg/Elegant_Portrait_Aysis.jpg';
-import Holy_Night_Succubus_Yu_Rima_ElcaImg from '../../assets/images/games/Busty_Burst/CharImg/Holy_Night_Succubus_Yu_Rima_Elca.jpg';
-import Queen_of_Pies_and_Cookies_AphrodiaImg from '../../assets/images/games/Busty_Burst/CharImg/Queen_of_Pies_and_Cookies_Aphrodia.jpg';
-import Magical_Holy_Night_Festival_KaguyaImg from '../../assets/images/games/Busty_Burst/CharImg/Magical_Holy_Night_Festival_Kaguya.jpg';
-import KaguyaImg from '../../assets/images/games/Busty_Burst/CharImg/kaguya.jpg';
+// Import all images using glob patterns
+// Using the longer filename format (6a0a8297...) which has better design
+const iconImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/Busty_Burst/character/icons/6a0a8297dea7cbe49e003c19a11234da_*_sprite.png',
+  { eager: true }
+);
+
+const bodyImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/Busty_Burst/character/full_body/No_*_body.png',
+  { eager: true }
+);
 
 export interface Props {
-  fileName: string;
+  characterId: number;
   alt: string;
   width?: number;
   height?: number;
@@ -48,91 +22,93 @@ export interface Props {
   loading?: 'lazy' | 'eager';
   format?: 'webp' | 'jpg' | 'png';
   quality?: number;
+  imageType?: 'icon' | 'body';
 }
 
 const {
-  fileName,
+  characterId,
   alt,
-  width = 140,
-  height = 140,
+  width = 180,
+  height = 180,
   class: className,
   loading = 'lazy',
-  format = 'jpg',
-  quality = 85,
+  format = 'webp',
+  quality = 95,
+  imageType = 'icon', // Default to icon for small displays
 } = Astro.props;
 
-// Map file names to imported image modules
-const imageMap = {
-  'Artemis.jpg': ArtemisImg,
-  'Artia.jpg': ArtiaImg,
-  'Bianca.jpg': BiancaImg,
-  'Elegant_Portrait_Shamshel.jpg': Elegant_Portrait_ShamshelImg,
-  'Estiriel.jpg': EstirielImg,
-  'Festive_Attire_Estiriel.jpg': Festive_Attire_EstirielImg,
-  'Festival_Empress_Shamshel.jpg': Festival_Empress_ShamshelImg,
-  'Festive_Costume_Natasha.jpg': Festive_Costume_NatashaImg,
-  'Frey.jpg': FreyImg,
-  'Gemini.jpg': GeminiImg,
-  'Hildis.jpg': HildisImg,
-  'Hisara.jpg': HisaraImg,
-  'Liesel.jpg': Lie_Img,
-  'Luca.jpg': LucaImg,
-  'Magical Princess Luceria.jpg': Magical_Princess_LuceriaImg,
-  'Marina.jpg': MarinaImg,
-  'Meinias.jpg': MeiniasImg,
-  'Messenge_of_Stone_soldiers_Nerys.jpg': Messenge_of_Stone_soldiers_NerysImg,
-  'Nora.jpg': NoraImg,
-  'Pious_Healer_Ishtovia.jpg': Pious_Healer_IshtoviaImg,
-  'Soltina.jpg': SoltinaImg,
-  'Stenlina.jpg': StenlinaImg,
-  'Swift-Chant_Sorceress_Sobrina.jpg': Swift_Chant_Sorceress_SobrinaImg,
-  'Teresia.jpg': TeresiaImg,
-  'The_Dark_Knight.jpg': The_Dark_KnightImg,
-  'Trance_Dancer_Messeria.jpg': Trance_Dancer_MesseriaImg,
-  'Venus.jpg': VenusImg,
-  'Yu_Lima_Elka.jpg': Yu_Lima_ElkaImg,
-  'Natasha.jpg': NatashaImg,
-  'Shaty.png': ShatyImg,
-  'Mischievous_Mermaid_Princess_Lorelia.jpg': Mischievous_Mermaid_Princess_LoreliaImg,
-  'Elegant_Portrait_Aysis.jpg': Elegant_Portrait_AysisImg,
-  'Holy_Night_Succubus_Yu_Rima_Elca.jpg': Holy_Night_Succubus_Yu_Rima_ElcaImg,
-  'Queen_of_Pies_and_Cookies_Aphrodia.jpg': Queen_of_Pies_and_Cookies_AphrodiaImg,
-  'Magical_Holy_Night_Festival_Kaguya.jpg': Magical_Holy_Night_Festival_KaguyaImg,
-  'kaguya.jpg': KaguyaImg,
-};
+// Find the matching image based on characterId and imageType
+let imageModule: ImageMetadata | null = null;
 
-// Get the image module based on the fileName
-const imageModule = imageMap[fileName] || EstirielImg; // Default to Estiriel if not found
+if (imageType === 'body') {
+  // Look for body image: No_{id}_{id}_body.png
+  const bodyKey = Object.keys(bodyImages).find(key =>
+    key.includes(`No_${characterId}_${characterId}_body.png`)
+  );
+  if (bodyKey) {
+    imageModule = bodyImages[bodyKey].default;
+  }
+}
+
+if (!imageModule) {
+  // Look for icon image: 6a0a8297dea7cbe49e003c19a11234da_{id}_sprite.png
+  const iconKey = Object.keys(iconImages).find(key =>
+    key.includes(`6a0a8297dea7cbe49e003c19a11234da_${characterId}_sprite.png`)
+  );
+  if (iconKey) {
+    imageModule = iconImages[iconKey].default;
+  }
+}
+
+// Fallback to character 2001 if not found
+if (!imageModule) {
+  const fallbackKey = Object.keys(iconImages).find(key =>
+    key.includes('6a0a8297dea7cbe49e003c19a11234da_2001_sprite.png')
+  );
+  if (fallbackKey) {
+    imageModule = iconImages[fallbackKey].default;
+  }
+}
 ---
 
-<!-- Character image wrapper with proper styling -->
-<div class={`paladin-image-wrapper ${className || ''}`}>
-  <Image
-    src={imageModule}
-    alt={alt}
-    width={width}
-    height={height}
-    loading={loading}
-    format={format}
-    quality={quality}
-    class="paladin-image"
-    style="object-fit: cover; border-radius: 6px; border: 2px solid var(--bb-border-light);"
-  />
-</div>
+{imageModule ? (
+  <div class={`paladin-image-wrapper ${className || ''}`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      format={format}
+      quality={quality}
+      class="paladin-image"
+    />
+  </div>
+) : (
+  <div class={`paladin-image-wrapper paladin-image-fallback ${className || ''}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>{alt.charAt(0)}</span>
+  </div>
+)}
 
 <style>
   .paladin-image-wrapper {
     display: inline-block;
     overflow: hidden;
+    border-radius: 6px;
   }
 
   .paladin-image {
-    transition: none; /* No animations as requested */
+    object-fit: cover;
+    border-radius: 6px;
   }
 
-  /* Ensure images maintain aspect ratio */
-  .paladin-image-wrapper {
-    width: 100%;
-    height: 100%;
+  .paladin-image-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bb-bg-secondary, #2a2a3e);
+    color: var(--bb-text-primary, #fff);
+    font-weight: 600;
+    font-size: 1.5rem;
   }
 </style>

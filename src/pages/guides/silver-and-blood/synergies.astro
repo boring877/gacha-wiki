@@ -1,7 +1,55 @@
 ---
 import SynergiesLayout from '../../../layouts/silver-and-blood/SynergiesLayout.astro';
 import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { Image } from 'astro:assets';
 import synergies from '../../../data/silver-and-blood/synergies.js';
+import charactersInfoData from '../../../data/silver-and-blood/characters_info.json';
+
+// Import rarity frame images
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+
+const rarityImages: Record<string, ImageMetadata> = {
+  'SSR': rarityGold,
+  'SR': rarityPurple,
+  'R': rarityBlue,
+};
+
+// Create a map to look up character info by heroId
+const characterInfoMap = new Map();
+charactersInfoData.characters.forEach((char: any) => {
+  characterInfoMap.set(char.id, char);
+});
+
+// Helper to get character rarity by heroId
+function getCharacterRarity(heroId: string): string {
+  const char = characterInfoMap.get(heroId);
+  return char?.rarity || 'SSR';
+}
+
+// Name mappings for both icons and display
+const nameMap: Record<string, string> = {
+  'Isaac Van Helsing': 'Van Helsing',
+  'Ressa Ambolia': 'Ressa',
+  'Tris Tepes': 'Tris',
+  'Alene Matz': 'Alene',
+  'Limine Bathory': 'Limine',
+  'Lamia Bathory': 'Lamia',
+  'Jacintha Dalcarlo': 'Dalcarlo',
+  'Joan Astolfo': 'Ethereal Joan',
+  'Albrecht Magnus': 'Albrecht',
+};
+
+// Helper to get icon name - pass through to SABCharacterIcon which handles mappings
+function getIconName(name: string): string {
+  return nameMap[name] || name;
+}
+
+// Helper to get display name
+function getDisplayName(name: string): string {
+  return nameMap[name] || name;
+}
 ---
 
 <SynergiesLayout
@@ -15,62 +63,164 @@ import synergies from '../../../data/silver-and-blood/synergies.js';
       <p>Synergies is a new system that was introduced recently, changing the way we build teams and think about characters.</p>
     </div>
 
-    {synergies.map((synergy) => (
-      <section class="synergy-section">
-        <header class="synergy-header">
-          <h2 class="synergy-name">{synergy.name}</h2>
-        </header>
+    {synergies.map((synergy) => {
+      const leaderRarity = getCharacterRarity(synergy.leader.heroId);
 
-        <div class="synergy-content">
-          <!-- Leader -->
-          <div class="leader-section">
-            <SABCharacterIcon
-              name={synergy.leader.name}
-              size="large"
-              class="leader-icon"
-              width={100}
-              height={100}
-            />
-            <div class="leader-info">
-              <span class="leader-badge">Leader</span>
-              <h3>{synergy.leader.name}</h3>
-              <p>Synergy Leader</p>
+      return (
+        <section class="synergy-section">
+          <header class="synergy-header">
+            <h2 class="synergy-name">{synergy.name}</h2>
+          </header>
+
+          <div class="synergy-content">
+            <!-- Leader -->
+            <div class="leader-section">
+              <div class="character-icon-wrapper leader">
+                <SABCharacterIcon
+                  name={getIconName(synergy.leader.name)}
+                  size="large"
+                  class="character-icon"
+                  width={80}
+                  height={80}
+                />
+                <Image
+                  src={rarityImages[leaderRarity] || rarityGold}
+                  alt={leaderRarity}
+                  class="rarity-frame"
+                  width={36}
+                  height={36}
+                />
+              </div>
+              <div class="leader-info">
+                <span class="leader-badge">Leader</span>
+                <h3>{getDisplayName(synergy.leader.name)}</h3>
+              </div>
             </div>
-          </div>
 
-          <!-- Members -->
-          <div class="members-section">
-            <h4>Synergy Members</h4>
-            <div class="members-grid">
-              {synergy.members.map((member) => (
-                <div class="member-card">
-                  <SABCharacterIcon
-                    name={member.name}
-                    size="large"
-                    class="member-icon"
-                    width={80}
-                    height={80}
-                  />
-                  <span class="member-name">{member.name}</span>
+            <!-- Members -->
+            <div class="members-section">
+              <h4>Synergy Members</h4>
+              <div class="members-grid">
+                {synergy.members.map((member) => {
+                  const memberRarity = getCharacterRarity(member.heroId);
+                  return (
+                    <div class="member-card">
+                      <div class="character-icon-wrapper">
+                        <SABCharacterIcon
+                          name={getIconName(member.name)}
+                          size="large"
+                          class="character-icon"
+                          width={64}
+                          height={64}
+                        />
+                        <Image
+                          src={rarityImages[memberRarity] || rarityGold}
+                          alt={memberRarity}
+                          class="rarity-frame"
+                          width={28}
+                          height={28}
+                        />
+                      </div>
+                      <span class="member-name">{getDisplayName(member.name)}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <!-- Tier Bonuses -->
+            <div class="tiers-section">
+              {synergy.tiers.map((tier) => (
+                <div class={`tier-box tier-${tier.tier}`}>
+                  <div class="tier-header">
+                    <span class="tier-badge">Tier {tier.tier}</span>
+                    <span class="tier-req">{tier.requiredMembers} members required</span>
+                  </div>
+                  <p class="tier-desc">{tier.descriptionFormatted}</p>
                 </div>
               ))}
             </div>
           </div>
-
-          <!-- Tier Bonuses -->
-          <div class="tiers-section">
-            {synergy.tiers.map((tier) => (
-              <div class={`tier-box tier-${tier.tier}`}>
-                <div class="tier-header">
-                  <span class="tier-badge">Tier {tier.tier}</span>
-                  <span class="tier-req">{tier.requiredMembers} members required</span>
-                </div>
-                <p class="tier-desc">{tier.descriptionFormatted}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    ))}
+        </section>
+      );
+    })}
   </div>
 </SynergiesLayout>
+
+<style>
+  /* Character icon with rarity frame */
+  .character-icon-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .character-icon-wrapper :global(.character-icon) {
+    border-radius: 8px;
+    display: block;
+  }
+
+  .character-icon-wrapper .rarity-frame {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    z-index: 1;
+  }
+
+  .character-icon-wrapper.leader .rarity-frame {
+    top: -8px;
+    right: -8px;
+  }
+
+  /* Leader section adjustments */
+  .leader-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .leader-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .leader-info h3 {
+    color: var(--sab-text-light);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  /* Member cards */
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .member-name {
+    color: var(--sab-text-medium);
+    font-size: 0.75rem;
+    text-align: center;
+    max-width: 80px;
+    line-height: 1.2;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 480px) {
+    .character-icon-wrapper .rarity-frame {
+      width: 24px;
+      height: 24px;
+      top: -4px;
+      right: -4px;
+    }
+
+    .character-icon-wrapper.leader .rarity-frame {
+      width: 28px;
+      height: 28px;
+      top: -6px;
+      right: -6px;
+    }
+  }
+</style>

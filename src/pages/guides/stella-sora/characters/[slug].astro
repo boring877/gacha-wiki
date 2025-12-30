@@ -272,7 +272,7 @@ function getTotalDupes(rarity: string): number {
           <div class="character-meta">
             <div class="rarity-badge-container">
               <SSRarityImage
-                rarity={parseInt((character.rarity || '4-Star').replace('-Star', ''))}
+                rarity={character.grade || 4}
                 alt={character.rarity}
                 width={80}
                 height={24}

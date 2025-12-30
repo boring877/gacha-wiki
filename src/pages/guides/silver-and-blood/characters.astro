@@ -97,26 +97,6 @@ const gameInfo = {
           <p class="character-database-subtitle">
             All stats shown at Level 200 (current max level)
           </p>
-          <div class="character-nav-buttons">
-            <a
-              href="/guides/silver-and-blood/character-comparison/"
-              class="character-nav-button comparison"
-            >
-              Compare Character Stats
-            </a>
-            <a
-              href="/guides/silver-and-blood/character-rankings/"
-              class="character-nav-button rankings"
-            >
-              Character Rankings
-            </a>
-            <a
-              href="/guides/silver-and-blood/character-tag-selection/"
-              class="character-nav-button tags"
-            >
-              Character Tag Selection
-            </a>
-          </div>
         </div>
         <div class="filter-bar">
           <div class="filter-controls">
@@ -301,15 +281,6 @@ const gameInfo = {
       </div>
     </div>
   </section>
-
-  <!-- Hide navigation buttons on touch devices to save space -->
-  <style>
-    @media (hover: none) and (pointer: coarse) {
-      .character-nav-buttons {
-        display: none !important;
-      }
-    }
-  </style>
 
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {

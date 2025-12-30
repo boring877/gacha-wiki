@@ -1,0 +1,701 @@
+---
+import CharacterDatabaseLayout from '../../../../layouts/busty-burst/CharacterDatabaseLayout.astro';
+import PaladinImage from '../../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../../components/busty-burst/RarityImage.astro';
+import PositionImage from '../../../../components/busty-burst/PositionImage.astro';
+import WeaponIcon from '../../../../components/busty-burst/WeaponIcon.astro';
+
+// Import data
+import {
+  getAllCharacterData,
+  getFilterOptions,
+  getCharacterCountByRarity,
+  sortCharacters,
+} from '../../../../data/busty-burst/character-database.js';
+
+// Import CSS
+import '../../../../styles/games/busty-burst/busty-burst-character-database.css';
+
+// Get all characters and sort by rarity then name
+const allCharacters = getAllCharacterData();
+const sortedCharacters = sortCharacters(
+  sortCharacters(allCharacters, 'name', 'asc'),
+  'rarity',
+  'asc'
+);
+
+// Get filter options
+const filterOptions = getFilterOptions();
+
+// Get character counts
+const charCounts = getCharacterCountByRarity();
+
+// Map position roman to file name (with .png extension for PositionImage component)
+const positionMap: Record<string, string> = {
+  'I': 'Front.png',
+  'II': 'Mid.png',
+  'III': 'Back.png',
+};
+
+// Map position roman to display name
+const positionNameMap: Record<string, string> = {
+  'I': 'Front',
+  'II': 'Mid',
+  'III': 'Back',
+};
+
+// Normalize weapon type for icon
+function normalizeWeaponType(weaponType) {
+  if (!weaponType) return null;
+  const normalized = weaponType.toLowerCase();
+  if (normalized.includes('slash')) return 'Slash';
+  if (normalized.includes('pierce')) return 'Pierce';
+  if (normalized.includes('strike') || normalized.includes('blunt')) return 'Strike';
+  if (normalized.includes('throw')) return 'Throw';
+  if (normalized.includes('shoot') || normalized.includes('ranged') || normalized.includes('shot')) return 'Shot';
+  return null;
+}
+
+// Calculate total bonus from limit break (all 5 levels)
+function calculateLBBonus(char, stat) {
+  let total = 0;
+  const lb = char.stats?.limitBreak || {};
+  for (let i = 1; i <= 5; i++) {
+    const lbKey = `lb${i}`;
+    if (lb[lbKey] && lb[lbKey][stat]) {
+      total += lb[lbKey][stat];
+    }
+  }
+  return total;
+}
+
+// Calculate total bonus from bond/GP ability (all 10 levels)
+function calculateBondBonus(char, stat) {
+  let total = 0;
+  const gp = char.stats?.gpAbility || {};
+  for (let i = 1; i <= 10; i++) {
+    const lvKey = `lv${i}`;
+    if (gp[lvKey] && gp[lvKey][stat]) {
+      total += gp[lvKey][stat];
+    }
+  }
+  return total;
+}
+
+// Calculate total bonus from ability grade (all 10 levels)
+function calculateGradeBonus(char, stat) {
+  let total = 0;
+  const ag = char.stats?.abilityGrade || {};
+  for (let i = 1; i <= 10; i++) {
+    const gKey = `g${i}`;
+    if (ag[gKey] && ag[gKey][stat]) {
+      total += ag[gKey][stat];
+    }
+  }
+  return total;
+}
+
+// Calculate bonus from passives at max grade (g10)
+function calculatePassiveBonus(char, stat) {
+  let total = 0;
+  const passives = char.stats?.passiveAbilities || [];
+  const statMap = {
+    'HP': 'hp',
+    'ATK': 'atk',
+    'MATK': 'matk',
+    'DEF': 'def',
+    'MDEF': 'mdef',
+    'Accuracy': 'accuracy',
+    'Block': 'block',
+    'Phys Crit': 'physCrit',
+    'Magic Crit': 'magicCrit',
+    'HP Regen': 'hpRegen',
+    'MP Regen': 'mpRegen',
+    'Heal Pwr': 'healPwr',
+    'MP Charge': 'mpCharge',
+    'HP Drain': 'hpDrain'
+  };
+  passives.forEach(passive => {
+    const mappedStat = statMap[passive.stat];
+    if (mappedStat === stat && passive.grades && passive.grades.g10) {
+      total += passive.grades.g10;
+    }
+  });
+  return total;
+}
+
+// Get total stat value including all bonuses at max
+function getTotalStat(char, stat) {
+  const baseStat = char.stats?.baseStats?.[stat]?.lv90 || 0;
+  const lbBonus = calculateLBBonus(char, stat);
+  const bondBonus = calculateBondBonus(char, stat);
+  const gradeBonus = calculateGradeBonus(char, stat);
+  const passiveBonus = calculatePassiveBonus(char, stat);
+  return baseStat + lbBonus + bondBonus + gradeBonus + passiveBonus;
+}
+
+// Calculate crit rate percentage (crit value / 20) with all bonuses
+function getCritRate(char) {
+  const physCritTotal = getTotalStat(char, 'physCrit');
+  const magicCritTotal = getTotalStat(char, 'magicCrit');
+  const critValue = Math.max(physCritTotal, magicCritTotal);
+  return (critValue / 20).toFixed(1);
+}
+---
+
+<CharacterDatabaseLayout
+  title="Character Database - Busty Burst Battle"
+  description="Complete character database for Busty Burst Battle. View all characters with stats, skills, and support bonuses."
+  gameTitle="Character Database"
+>
+  <!-- Statistics Overview -->
+  <div class="bb-char-stats-container">
+    <div class="bb-char-stat-item">
+      <div class="bb-char-stat-value">{charCounts.total}</div>
+      <div class="bb-char-stat-label">Total</div>
+    </div>
+    <div class="bb-char-stat-divider"></div>
+    <div class="bb-char-stat-item">
+      <div class="bb-char-stat-value">{charCounts.SSR}</div>
+      <div class="bb-char-stat-label">SSR</div>
+    </div>
+    <div class="bb-char-stat-divider"></div>
+    <div class="bb-char-stat-item">
+      <div class="bb-char-stat-value">{charCounts.SR}</div>
+      <div class="bb-char-stat-label">SR</div>
+    </div>
+    <div class="bb-char-stat-divider"></div>
+    <div class="bb-char-stat-item">
+      <div class="bb-char-stat-value">{charCounts.R}</div>
+      <div class="bb-char-stat-label">R</div>
+    </div>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="bb-char-filter-section">
+    <div class="bb-char-filter-row">
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Search</label>
+        <input
+          type="text"
+          id="char-search"
+          class="bb-char-filter-input"
+          placeholder="Search by name..."
+        />
+      </div>
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Rarity</label>
+        <select id="filter-rarity" class="bb-char-filter-select">
+          <option value="">All Rarities</option>
+          {filterOptions.rarities.map(r => (
+            <option value={r}>{r}</option>
+          ))}
+        </select>
+      </div>
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Element</label>
+        <select id="filter-element" class="bb-char-filter-select">
+          <option value="">All Elements</option>
+          {filterOptions.elements.map(e => (
+            <option value={e}>{e}</option>
+          ))}
+        </select>
+      </div>
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Role</label>
+        <select id="filter-role" class="bb-char-filter-select">
+          <option value="">All Roles</option>
+          {filterOptions.roles.map(r => (
+            <option value={r}>{r}</option>
+          ))}
+        </select>
+      </div>
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Weapon</label>
+        <select id="filter-weapon" class="bb-char-filter-select">
+          <option value="">All Weapons</option>
+          {filterOptions.weaponTypes.map(w => (
+            <option value={w}>{w}</option>
+          ))}
+        </select>
+      </div>
+      <div class="bb-char-filter-group">
+        <label class="bb-char-filter-label">Position</label>
+        <select id="filter-position" class="bb-char-filter-select">
+          <option value="">All Positions</option>
+          {filterOptions.positions.map(p => (
+            <option value={p}>{p} - {positionNameMap[p] || p}</option>
+          ))}
+        </select>
+      </div>
+      <div class="bb-char-filter-buttons">
+        <button id="clear-filters" class="bb-char-filter-btn clear">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sort Controls -->
+  <div class="bb-char-sort-section">
+    <span style="color: var(--bb-text-secondary); font-size: 0.75rem; margin-right: 0.5rem;">Sort by:</span>
+    <button class="bb-char-sort-btn active" data-sort="rarity" data-order="asc">
+      Rarity <span class="bb-char-sort-icon">▲</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="name" data-order="asc">
+      Name <span class="bb-char-sort-icon">▲</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="hp" data-order="desc">
+      HP <span class="bb-char-sort-icon">▼</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="atk" data-order="desc">
+      ATK <span class="bb-char-sort-icon">▼</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="matk" data-order="desc">
+      MATK <span class="bb-char-sort-icon">▼</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="def" data-order="desc">
+      DEF <span class="bb-char-sort-icon">▼</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="crit" data-order="desc">
+      Crit <span class="bb-char-sort-icon">▼</span>
+    </button>
+    <button class="bb-char-sort-btn" data-sort="mpcharge" data-order="desc">
+      MP <span class="bb-char-sort-icon">▼</span>
+    </button>
+  </div>
+
+  <!-- Table View -->
+  <div class="bb-char-table-wrapper" id="table-view">
+    <table class="bb-char-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Character</th>
+          <th>Rarity</th>
+          <th>Element</th>
+          <th>Role</th>
+          <th>Position</th>
+          <th>Weapon</th>
+          <th>HP</th>
+          <th>ATK</th>
+          <th>MATK</th>
+          <th>DEF</th>
+          <th>Crit%</th>
+          <th>MP</th>
+          <th>Speed</th>
+        </tr>
+      </thead>
+      <tbody id="char-table-body">
+        {sortedCharacters.map((char, index) => (
+          <tr
+            class="char-row"
+            data-slug={char.slug}
+            data-name={char.displayName?.toLowerCase() || char.name?.toLowerCase()}
+            data-rarity={char.rarity}
+            data-element={char.element}
+            data-role={char.role}
+            data-weapon={char.weaponType}
+            data-position={char.position?.roman}
+            data-hp={getTotalStat(char, 'hp')}
+            data-atk={getTotalStat(char, 'atk')}
+            data-matk={getTotalStat(char, 'matk')}
+            data-def={getTotalStat(char, 'def')}
+            data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
+            data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
+            data-speed={char.actionSpeed || ''}
+            onclick={`window.location.href='/guides/busty-burst/characters/${char.slug}/'`}
+          >
+            <td class="row-num">{index + 1}</td>
+            <td>
+              <div class="bb-char-table-char">
+                <div class="bb-char-table-portrait">
+                  {char.characterId && (
+                    <PaladinImage
+                      characterId={char.characterId}
+                      alt={char.displayName || char.name || 'Character'}
+                      imageType="icon"
+                      width={48}
+                      height={48}
+                    />
+                  )}
+                </div>
+                <div>
+                  <div class="bb-char-table-name">{char.displayName || char.name}</div>
+                  {char.title && <div class="bb-char-table-title">{char.title}</div>}
+                </div>
+              </div>
+            </td>
+            <td>
+              <RarityImage rarity={char.rarity} width={32} height={16} />
+            </td>
+            <td>
+              <ElementImage element={char.element} width={24} height={24} />
+            </td>
+            <td>{char.role}</td>
+            <td>
+              {char.position?.roman ? (
+                <PositionImage fileName={positionMap[char.position.roman] || 'Front.png'} alt={positionNameMap[char.position.roman] || 'Position'} width={28} height={28} />
+              ) : '-'}
+            </td>
+            <td>
+              <div class="bb-char-table-weapon">
+                {normalizeWeaponType(char.weaponType) && (
+                  <WeaponIcon weapon={normalizeWeaponType(char.weaponType) as string} width={24} height={24} />
+                )}
+                <span class="bb-char-table-weapon-text">{char.weaponType || '-'}</span>
+              </div>
+            </td>
+            <td>{getTotalStat(char, 'hp').toLocaleString() || '-'}</td>
+            <td>{getTotalStat(char, 'atk').toLocaleString() || '-'}</td>
+            <td>{getTotalStat(char, 'matk').toLocaleString() || '-'}</td>
+            <td>{getTotalStat(char, 'def').toLocaleString() || '-'}</td>
+            <td>{getCritRate(char)}%</td>
+            <td>{char.stats?.baseStats?.mpCharge?.lv90 || '-'}</td>
+            <td>{char.actionSpeed || '-'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Grid View (Mobile only) -->
+  <div class="bb-char-grid" id="grid-view">
+    {sortedCharacters.map((char) => (
+      <a
+        href={`/guides/busty-burst/characters/${char.slug}/`}
+        class="bb-char-card char-card"
+        data-slug={char.slug}
+        data-name={char.displayName?.toLowerCase() || char.name?.toLowerCase()}
+        data-rarity={char.rarity}
+        data-element={char.element}
+        data-role={char.role}
+        data-weapon={char.weaponType}
+        data-position={char.position?.roman}
+        data-hp={getTotalStat(char, 'hp')}
+        data-atk={getTotalStat(char, 'atk')}
+        data-matk={getTotalStat(char, 'matk')}
+        data-def={getTotalStat(char, 'def')}
+        data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
+        data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
+        data-speed={char.actionSpeed || ''}
+        style="text-decoration: none;"
+      >
+        <div class="bb-char-card-header">
+          <div class="bb-char-card-portrait">
+            {char.characterId && (
+              <PaladinImage
+                characterId={char.characterId}
+                alt={char.displayName || char.name || 'Character'}
+                imageType="icon"
+                width={80}
+                height={80}
+              />
+            )}
+            <div class="bb-char-card-rarity">
+              <RarityImage rarity={char.rarity} width={48} height={24} />
+            </div>
+          </div>
+          <div class="bb-char-card-info">
+            <h3 class="bb-char-card-name">{char.displayName || char.name}</h3>
+            {char.title && <p class="bb-char-card-title">{char.title}</p>}
+            <div class="bb-char-card-badges">
+              <div class="bb-char-card-badge-icon">
+                <ElementImage element={char.element} width={18} height={18} />
+                <span>{char.element}</span>
+              </div>
+              <span class="bb-char-card-badge role">{char.role}</span>
+              <div class="bb-char-card-badge-icon">
+                {char.position?.roman && (
+                  <PositionImage fileName={positionMap[char.position.roman] || 'Front.png'} alt={positionNameMap[char.position.roman] || 'Position'} width={18} height={18} />
+                )}
+              </div>
+              <div class="bb-char-card-badge-icon">
+                {normalizeWeaponType(char.weaponType) && (
+                  <WeaponIcon weapon={normalizeWeaponType(char.weaponType) as string} width={18} height={18} />
+                )}
+                <span>{char.weaponType || '-'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bb-char-card-stats">
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'hp').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-label">HP</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'atk').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-label">ATK</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'matk').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-label">MATK</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'def').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-label">DEF</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getCritRate(char)}%</div>
+            <div class="bb-char-card-stat-label">Crit</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{char.stats?.baseStats?.mpCharge?.lv90 || '-'}</div>
+            <div class="bb-char-card-stat-label">MP</div>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- No Results Message -->
+  <div class="bb-char-no-results" id="no-results" style="display: none;">
+    <div class="bb-char-no-results-icon">😕</div>
+    <div class="bb-char-no-results-text">No characters found</div>
+    <div class="bb-char-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  // Elements
+  const searchInput = document.getElementById('char-search');
+  const rarityFilter = document.getElementById('filter-rarity');
+  const elementFilter = document.getElementById('filter-element');
+  const roleFilter = document.getElementById('filter-role');
+  const weaponFilter = document.getElementById('filter-weapon');
+  const positionFilter = document.getElementById('filter-position');
+  const clearBtn = document.getElementById('clear-filters');
+  const sortBtns = document.querySelectorAll('.bb-char-sort-btn');
+  const viewBtns = document.querySelectorAll('.bb-char-view-btn');
+  const tableView = document.getElementById('table-view');
+  const gridView = document.getElementById('grid-view');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.char-row');
+  const gridCards = document.querySelectorAll('.char-card');
+
+  // Current state
+  let currentSort = 'rarity';
+  let currentOrder = 'asc';
+
+  // Filter function
+  function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const rarity = rarityFilter.value;
+    const element = elementFilter.value;
+    const role = roleFilter.value;
+    const weapon = weaponFilter.value;
+    const position = positionFilter.value;
+
+    let visibleCount = 0;
+
+    // Filter table rows
+    tableRows.forEach((row, index) => {
+      const name = row.dataset.name || '';
+      const charRarity = row.dataset.rarity || '';
+      const charElement = row.dataset.element || '';
+      const charRole = row.dataset.role || '';
+      const charWeapon = row.dataset.weapon || '';
+      const charPosition = row.dataset.position || '';
+
+      const matchesSearch = !searchTerm || name.includes(searchTerm);
+      const matchesRarity = !rarity || charRarity === rarity;
+      const matchesElement = !element || charElement === element;
+      const matchesRole = !role || charRole === role;
+      const matchesWeapon = !weapon || charWeapon.includes(weapon);
+      const matchesPosition = !position || charPosition === position;
+
+      const isVisible = matchesSearch && matchesRarity && matchesElement &&
+                       matchesRole && matchesWeapon && matchesPosition;
+
+      row.style.display = isVisible ? '' : 'none';
+      if (isVisible) {
+        visibleCount++;
+        row.querySelector('.row-num').textContent = visibleCount;
+      }
+    });
+
+    // Filter grid cards
+    gridCards.forEach(card => {
+      const name = card.dataset.name || '';
+      const charRarity = card.dataset.rarity || '';
+      const charElement = card.dataset.element || '';
+      const charRole = card.dataset.role || '';
+      const charWeapon = card.dataset.weapon || '';
+      const charPosition = card.dataset.position || '';
+
+      const matchesSearch = !searchTerm || name.includes(searchTerm);
+      const matchesRarity = !rarity || charRarity === rarity;
+      const matchesElement = !element || charElement === element;
+      const matchesRole = !role || charRole === role;
+      const matchesWeapon = !weapon || charWeapon.includes(weapon);
+      const matchesPosition = !position || charPosition === position;
+
+      const isVisible = matchesSearch && matchesRarity && matchesElement &&
+                       matchesRole && matchesWeapon && matchesPosition;
+
+      card.style.display = isVisible ? '' : 'none';
+    });
+
+    // Show/hide no results message
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+  }
+
+  // Sort function
+  function applySort(sortBy, order) {
+    const tbody = document.getElementById('char-table-body');
+    const rows = Array.from(tableRows);
+
+    rows.sort((a, b) => {
+      let valA, valB;
+
+      switch (sortBy) {
+        case 'name':
+          valA = a.dataset.name || '';
+          valB = b.dataset.name || '';
+          break;
+        case 'rarity':
+          const rarityOrder = { 'SSR': 0, 'SR': 1, 'R': 2 };
+          valA = rarityOrder[a.dataset.rarity] ?? 99;
+          valB = rarityOrder[b.dataset.rarity] ?? 99;
+          break;
+        case 'element':
+          valA = a.dataset.element || '';
+          valB = b.dataset.element || '';
+          break;
+        case 'role':
+          valA = a.dataset.role || '';
+          valB = b.dataset.role || '';
+          break;
+        case 'hp':
+          valA = parseInt(a.dataset.hp) || 0;
+          valB = parseInt(b.dataset.hp) || 0;
+          break;
+        case 'atk':
+          valA = parseInt(a.dataset.atk) || 0;
+          valB = parseInt(b.dataset.atk) || 0;
+          break;
+        case 'matk':
+          valA = parseInt(a.dataset.matk) || 0;
+          valB = parseInt(b.dataset.matk) || 0;
+          break;
+        case 'def':
+          valA = parseInt(a.dataset.def) || 0;
+          valB = parseInt(b.dataset.def) || 0;
+          break;
+        case 'crit':
+          valA = parseInt(a.dataset.crit) || 0;
+          valB = parseInt(b.dataset.crit) || 0;
+          break;
+        case 'mpcharge':
+          valA = parseInt(a.dataset.mpcharge) || 0;
+          valB = parseInt(b.dataset.mpcharge) || 0;
+          break;
+        case 'speed':
+          valA = a.dataset.speed || '';
+          valB = b.dataset.speed || '';
+          break;
+        default:
+          valA = a.dataset.name || '';
+          valB = b.dataset.name || '';
+      }
+
+      if (typeof valA === 'string' && typeof valB === 'string') {
+        return order === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      }
+      return order === 'asc' ? valA - valB : valB - valA;
+    });
+
+    // Reorder in DOM
+    rows.forEach((row, index) => {
+      tbody.appendChild(row);
+      if (row.style.display !== 'none') {
+        row.querySelector('.row-num').textContent = index + 1;
+      }
+    });
+
+    // Re-apply filters to update row numbers
+    applyFilters();
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', applyFilters);
+  rarityFilter.addEventListener('change', applyFilters);
+  elementFilter.addEventListener('change', applyFilters);
+  roleFilter.addEventListener('change', applyFilters);
+  weaponFilter.addEventListener('change', applyFilters);
+  positionFilter.addEventListener('change', applyFilters);
+
+  clearBtn.addEventListener('click', () => {
+    // Clear all filters
+    searchInput.value = '';
+    rarityFilter.value = '';
+    elementFilter.value = '';
+    roleFilter.value = '';
+    weaponFilter.value = '';
+    positionFilter.value = '';
+
+    // Reset sort to default (rarity ascending)
+    sortBtns.forEach(b => {
+      b.classList.remove('active');
+      // Reset all sort icons to their default order
+      if (b.dataset.sort === 'rarity') {
+        b.classList.add('active');
+        b.dataset.order = 'asc';
+        b.querySelector('.bb-char-sort-icon').textContent = '▲';
+      } else if (b.dataset.sort === 'name') {
+        b.dataset.order = 'asc';
+        b.querySelector('.bb-char-sort-icon').textContent = '▲';
+      } else {
+        b.dataset.order = 'desc';
+        b.querySelector('.bb-char-sort-icon').textContent = '▼';
+      }
+    });
+
+    currentSort = 'rarity';
+    currentOrder = 'asc';
+    applySort('rarity', 'asc');
+  });
+
+  sortBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sortBy = btn.dataset.sort;
+      let order = btn.dataset.order;
+
+      // Toggle order if clicking same button
+      if (sortBy === currentSort) {
+        order = currentOrder === 'asc' ? 'desc' : 'asc';
+        btn.dataset.order = order;
+        btn.querySelector('.bb-char-sort-icon').textContent = order === 'asc' ? '▲' : '▼';
+      }
+
+      // Update active state
+      sortBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      currentSort = sortBy;
+      currentOrder = order;
+      applySort(sortBy, order);
+    });
+  });
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const view = btn.dataset.view;
+
+      viewBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (view === 'table') {
+        tableView.classList.remove('hidden');
+        gridView.classList.remove('active');
+      } else {
+        tableView.classList.add('hidden');
+        gridView.classList.add('active');
+      }
+
+      currentView = view;
+    });
+  });
+});
+</script>

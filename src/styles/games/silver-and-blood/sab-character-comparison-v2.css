@@ -113,34 +113,6 @@
   pointer-events: none;
 }
 
-.character-icon-img {
-  width: 60px;
-  height: 80px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid var(--sab-border-light);
-  /* Enhanced image rendering for supersampling */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: auto;
-  image-rendering: -webkit-auto;
-  image-rendering: -moz-auto;
-  image-rendering: -o-auto;
-  image-rendering: smooth;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: -moz-crisp-edges;
-  /* Force GPU acceleration */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
-  will-change: transform;
-}
-
-.character-icon.selected .character-icon-img {
-  border-color: var(--sab-calm-red);
-}
-
 .character-icon-name {
   font-size: 0.7rem;
   font-weight: 600;
@@ -159,6 +131,139 @@
 .character-icon.selected .character-icon-name {
   color: var(--sab-calm-red);
   font-weight: 600;
+}
+
+/* Character Icon Portrait Container */
+.character-icon-portrait {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.character-icon-portrait img:not(.icon-rarity-frame) {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid var(--sab-border-light);
+  /* High quality downscaling */
+  image-rendering: auto;
+}
+
+.icon-rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  image-rendering: auto;
+}
+
+/* Modal Character Portrait Container */
+.modal-character-portrait {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.modal-character-portrait img:not(.modal-rarity-frame) {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid var(--sab-border-gray);
+  /* High quality downscaling */
+  image-rendering: auto;
+}
+
+.modal-rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  image-rendering: auto;
+}
+
+/* Modal Character Icons Row */
+.modal-character-icons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.modal-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Character count in header */
+.char-count {
+  color: var(--sab-text-muted);
+  font-size: 0.9rem;
+  margin-top: var(--sab-spacing-sm);
+}
+
+/* Comparison Card Title */
+.comparison-card-title {
+  color: var(--sab-text-medium);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Comparison Card Portrait (Pre-rendered with Astro components) */
+.comparison-card-portrait {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.comparison-card-portrait img:not(.card-rarity-frame) {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid var(--sab-border-light);
+  /* High quality downscaling */
+  image-rendering: auto;
+}
+
+.card-rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  image-rendering: auto;
+}
+
+/* Comparison Card Icons Row */
+.comparison-card-icons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Comparison Card Name */
+.comparison-card-name {
+  color: var(--sab-text-light);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
 }
 
 /* Compact Filters */
@@ -216,26 +321,6 @@
   text-align: center;
 }
 
-/* Deck Filters */
-.deck-filters {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.8rem;
-  margin: 1rem 0;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--sab-calm-red);
-}
-
-.filter-select {
-  background: var(--sab-input-bg);
-  color: var(--sab-input-text);
-  border: 2px solid var(--sab-border-gray);
-  border-radius: 6px;
-  padding: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
 .reset-filters-btn {
   background: var(--sab-calm-blue);
   color: white;
@@ -245,62 +330,6 @@
   font-weight: 600;
   cursor: pointer;
   font-size: 0.8rem;
-}
-
-/* Character Deck Grid - Header Layout */
-.character-deck-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.8rem;
-  padding: 1rem 0;
-  max-height: calc(60vh - 150px);
-  overflow-y: auto;
-}
-
-.deck-character-card {
-  background: var(--sab-card-bg-gradient);
-  border: 2px solid var(--sab-card-border);
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-}
-
-.deck-character-card.selected {
-  border-color: var(--sab-calm-red);
-  background: var(--sab-card-bg-gradient);
-}
-
-.deck-character-portrait {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--sab-gold);
-  flex-shrink: 0;
-}
-
-.deck-character-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.deck-character-name {
-  color: var(--sab-input-text);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.deck-character-badges {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
 }
 
 /* ===== COMPARISON CONTAINER FULL SPACE ===== */
@@ -356,15 +385,6 @@
 }
 
 /* ===== EMPTY STATE ===== */
-.selected-characters-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60px;
-  margin: 0;
-  padding: 0;
-}
-
 .empty-comparison-message {
   text-align: center;
   color: var(--sab-text-medium);
@@ -412,6 +432,8 @@
   max-width: 48%;
   min-width: 300px;
   scroll-margin-top: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .comparison-character-card.loading {
@@ -436,34 +458,27 @@
 /* ===== CARD HEADER ===== */
 .comparison-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--sab-silver);
+  border-bottom: 1px solid var(--sab-border-light);
 }
 
-.comparison-card-portrait {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--sab-gold);
-  flex-shrink: 0;
+/* Note: .comparison-card-portrait styles defined above in "Comparison Card Portrait" section */
+
+.comparison-card-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .comparison-card-info h3 {
-  color: var(--sab-input-text);
-  font-size: 1.2rem;
+  color: var(--sab-text-light);
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.8rem 0;
+  margin: 0 0 0.25rem 0;
 }
 
-.comparison-card-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
 
 /* ===== CARD CONTENT SECTIONS ===== */
 .comparison-card-stats {
@@ -552,80 +567,6 @@
 .comparison-stat-value.tier-unranked {
   color: var(--sab-text-medium);
   opacity: 0.7;
-}
-
-/* ===== CHARACTER SKILLS SECTION ===== */
-.comparison-skills-section {
-  background: var(--sab-input-bg);
-  border: 2px solid var(--sab-gold);
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.comparison-skills-section h4 {
-  color: var(--sab-calm-red);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0 0 1rem 0;
-}
-
-.comparison-skill-item {
-  background: var(--sab-card-bg);
-  border: 1px solid var(--sab-silver);
-  border-radius: 4px;
-  padding: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.comparison-skill-item:last-child {
-  margin-bottom: 0;
-}
-
-.comparison-skill-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  gap: 0.5rem;
-}
-
-.comparison-skill-name {
-  color: var(--sab-input-text);
-  font-weight: 600;
-  font-size: 0.9rem;
-  flex: 1;
-}
-
-.comparison-skill-desc {
-  color: var(--sab-text-medium);
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.comparison-skill-cost {
-  color: #dc3545;
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-left: auto;
-  white-space: nowrap;
-}
-
-/* ===== BADGE STYLES ===== */
-/* Note: All badge styles are imported from sab-badge-colours.css */
-/* No need to duplicate badge CSS here - they are already available */
-
-/* Character Tags Container */
-.comparison-character-tags {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: var(--sab-character-info-bg);
-  border-radius: 8px;
-  border: 1px solid var(--sab-border-light);
 }
 
 /* Error Message Styling */
@@ -904,6 +845,41 @@
     font-size: 0.8rem;
     max-width: 95px;
   }
+
+  /* Mobile portrait container adjustments */
+  .modal-character-portrait img:not(.modal-rarity-frame) {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modal-rarity-frame {
+    width: 16px;
+    height: 16px;
+    top: -3px;
+    right: -3px;
+  }
+
+  .modal-character-icons {
+    gap: 3px;
+  }
+
+  .modal-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Character icon portrait for desktop strip */
+  .character-icon-portrait img:not(.icon-rarity-frame) {
+    width: 50px;
+    height: 65px;
+  }
+
+  .icon-rarity-frame {
+    width: 14px;
+    height: 14px;
+    top: -3px;
+    right: -3px;
+  }
 }
 
 /* Stack Cards Vertically */
@@ -1001,31 +977,6 @@
 }
 
 /* ===== ACCESSIBILITY & PERFORMANCE IMPROVEMENTS ===== */
-
-/* Error message styling for better UX */
-.error-message {
-  background: var(--sab-dark-red, #a64d4d);
-  color: white;
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem;
-  text-align: center;
-  font-weight: 600;
-  border: 2px solid currentColor;
-}
-
-/* Notification styling */
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 1rem;
-  border-radius: 6px;
-  max-width: 300px;
-  z-index: var(--z-notification);
-  font-weight: 500;
-  border: 2px solid currentColor;
-}
 
 /* Accessibility: Focus management improvements */
 :focus {
@@ -1309,22 +1260,7 @@
   object-fit: cover;
   border: 2px solid var(--sab-border-gray);
   flex-shrink: 0;
-  /* Enhanced image rendering for supersampling */
-  image-rendering: -webkit-optimize-contrast;
   image-rendering: auto;
-  image-rendering: -webkit-auto;
-  image-rendering: -moz-auto;
-  image-rendering: -o-auto;
-  image-rendering: smooth;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: -moz-crisp-edges;
-  /* Force GPU acceleration */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
-  will-change: transform;
 }
 
 .modal-character-info {

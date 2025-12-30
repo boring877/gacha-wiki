@@ -1,0 +1,639 @@
+/* Busty Burst Character Database Styles */
+/* Index page styles for character list with filters */
+/* Uses BBB color system from busty-burst-colors.css */
+
+/* ============================================
+   STATISTICS SECTION
+   ============================================ */
+
+.bb-char-stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+}
+
+.bb-char-stat-item {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.bb-char-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--bb-border-light);
+}
+
+.bb-char-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--bb-primary-light);
+  line-height: 1;
+}
+
+.bb-char-stat-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   FILTER SECTION
+   ============================================ */
+
+.bb-char-filter-section {
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-char-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.bb-char-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.bb-char-filter-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bb-char-filter-select,
+.bb-char-filter-input {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.bb-char-filter-select:hover,
+.bb-char-filter-input:hover {
+  border-color: var(--bb-border-light);
+}
+
+.bb-char-filter-select:focus,
+.bb-char-filter-input:focus {
+  outline: none;
+  border-color: var(--bb-primary-light);
+}
+
+.bb-char-filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bb-char-filter-btn {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bb-char-filter-btn:hover {
+  background: var(--bb-bg-hover);
+  border-color: var(--bb-border-light);
+}
+
+.bb-char-filter-btn.clear {
+  background: rgba(198, 40, 40, 0.2);
+  border-color: var(--bb-error);
+  color: #ff6b6b;
+}
+
+.bb-char-filter-btn.clear:hover {
+  background: rgba(198, 40, 40, 0.3);
+}
+
+/* ============================================
+   SORT CONTROLS
+   ============================================ */
+
+.bb-char-sort-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bb-char-sort-btn {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  color: var(--bb-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bb-char-sort-btn:hover {
+  border-color: var(--bb-border-light);
+  color: var(--bb-text-primary);
+}
+
+.bb-char-sort-btn.active {
+  background: var(--bb-primary-dark);
+  border-color: var(--bb-primary-light);
+  color: var(--bb-primary-light);
+}
+
+.bb-char-sort-icon {
+  font-size: 0.625rem;
+}
+
+/* ============================================
+   CHARACTER GRID
+   ============================================ */
+
+.bb-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.bb-char-card {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.bb-char-card-header {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--bb-bg-secondary), transparent);
+}
+
+.bb-char-card-portrait {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.bb-char-card-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.bb-char-card-rarity {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bb-char-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-char-card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bb-char-card-title {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-char-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.bb-char-card-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.bb-char-card-badge.element {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+}
+
+.bb-char-card-badge.element.fire { background: rgba(255, 69, 0, 0.2); border-color: #ff4500; color: #ff6347; }
+.bb-char-card-badge.element.water { background: rgba(30, 144, 255, 0.2); border-color: #1e90ff; color: #87ceeb; }
+.bb-char-card-badge.element.wind { background: rgba(50, 205, 50, 0.2); border-color: #32cd32; color: #90ee90; }
+.bb-char-card-badge.element.light,
+.bb-char-card-badge.element.holy { background: rgba(255, 255, 0, 0.15); border-color: #e6e600; color: #ffff99; }
+.bb-char-card-badge.element.dark { background: rgba(138, 43, 226, 0.2); border-color: #8a2be2; color: #dda0dd; }
+.bb-char-card-badge.element.mind { background: rgba(255, 20, 147, 0.2); border-color: #ff1493; color: #ffb6c1; }
+
+.bb-char-card-badge.role {
+  background: var(--bb-primary-dark);
+  border: 1px solid var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
+.bb-char-card-badge-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 500;
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-secondary);
+}
+
+.bb-char-card-badge-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.bb-char-card-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-char-card-stat {
+  text-align: center;
+}
+
+.bb-char-card-stat-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+}
+
+.bb-char-card-stat-label {
+  font-size: 0.625rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   CHARACTER TABLE VIEW (Desktop)
+   ============================================ */
+
+.bb-char-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.bb-char-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.bb-char-table th {
+  background: var(--bb-bg-secondary);
+  padding: 0.75rem;
+  text-align: left;
+  color: var(--bb-primary-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--bb-border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.bb-char-table th:hover {
+  background: var(--bb-bg-tertiary);
+}
+
+.bb-char-table th.sorted {
+  color: var(--bb-text-primary);
+  background: var(--bb-primary-dark);
+}
+
+.bb-char-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--bb-border);
+  color: var(--bb-text-primary);
+}
+
+.bb-char-table tbody tr {
+  background: var(--bb-bg-card);
+  cursor: pointer;
+}
+
+.bb-char-table tbody tr:nth-child(even) {
+  background: var(--bb-bg-secondary);
+}
+
+.bb-char-table-char {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bb-char-table-portrait {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bb-char-table-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-char-table-name {
+  font-weight: 600;
+}
+
+.bb-char-table-title {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+}
+
+/* Position cell with image */
+.bb-char-table-position {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Weapon cell with icon and text */
+.bb-char-table-weapon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-char-table-weapon-text {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+}
+
+/* ============================================
+   VIEW TOGGLE
+   ============================================ */
+
+.bb-char-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bb-char-view-btn {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: var(--bb-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bb-char-view-btn:hover {
+  border-color: var(--bb-border-light);
+  color: var(--bb-text-primary);
+}
+
+.bb-char-view-btn.active {
+  background: var(--bb-primary-dark);
+  border-color: var(--bb-primary-light);
+  color: var(--bb-primary-light);
+}
+
+/* ============================================
+   NO RESULTS
+   ============================================ */
+
+.bb-char-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-char-no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.bb-char-no-results-text {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.bb-char-no-results-hint {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Desktop: Show table, hide grid and view toggle */
+@media (min-width: 769px) {
+  .bb-char-grid {
+    display: none !important;
+  }
+
+  .bb-char-table-wrapper {
+    display: block;
+  }
+
+  .bb-char-view-toggle {
+    display: none;
+  }
+}
+
+/* Mobile: Show grid, hide table and view toggle */
+@media (max-width: 768px) {
+  .bb-char-stats-container {
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bb-char-stat-item {
+    padding: 0 0.25rem;
+  }
+
+  .bb-char-stat-divider {
+    height: 24px;
+  }
+
+  .bb-char-stat-value {
+    font-size: 1.125rem;
+  }
+
+  .bb-char-stat-label {
+    font-size: 0.6rem;
+  }
+
+  .bb-char-filter-section {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .bb-char-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-char-filter-group {
+    width: 100%;
+  }
+
+  .bb-char-filter-label {
+    font-size: 0.625rem;
+  }
+
+  .bb-char-filter-select,
+  .bb-char-filter-input {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .bb-char-filter-actions {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .bb-char-filter-btn {
+    flex: 1;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .bb-char-sort-row {
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .bb-char-sort-btn {
+    font-size: 0.65rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  .bb-char-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .bb-char-table-wrapper {
+    display: none !important;
+  }
+
+  .bb-char-view-toggle {
+    display: none;
+  }
+
+  /* Card styles for mobile */
+  .bb-char-card {
+    border-radius: 6px;
+  }
+
+  .bb-char-card-header {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .bb-char-card-portrait {
+    width: 64px;
+    height: 64px;
+  }
+
+  .bb-char-card-name {
+    font-size: 0.875rem;
+  }
+
+  .bb-char-card-badges {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .bb-char-card-badge {
+    font-size: 0.55rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .bb-char-card-badge-icon {
+    font-size: 0.55rem;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .bb-char-card-badge-icon img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bb-char-card-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.125rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  .bb-char-card-stat-value {
+    font-size: 0.75rem;
+  }
+
+  .bb-char-card-stat-label {
+    font-size: 0.55rem;
+  }
+
+  /* No results mobile */
+  .bb-char-no-results-title {
+    font-size: 1rem;
+  }
+
+  .bb-char-no-results-hint {
+    font-size: 0.75rem;
+  }
+}

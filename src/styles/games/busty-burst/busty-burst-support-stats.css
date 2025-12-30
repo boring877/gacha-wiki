@@ -1,0 +1,386 @@
+/* BBB Support Stats Page Styles */
+
+/* ============================================
+   Page Container
+   ============================================ */
+.bb-support-stats-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ============================================
+   Info Notes Section
+   ============================================ */
+.bb-support-info-notes {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.bb-support-info-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.bb-support-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-support-info-list li {
+  font-size: 0.8125rem;
+  color: var(--bb-text-secondary);
+  padding: 0.25rem 0;
+  line-height: 1.4;
+}
+
+/* ============================================
+   Filter Controls
+   ============================================ */
+.bb-support-controls {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-support-filter-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-support-search-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.625rem 0.875rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+}
+
+.bb-support-search-input::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-support-search-input:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+.bb-support-filter-select {
+  padding: 0.625rem 0.875rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.bb-support-filter-select:focus {
+  outline: none;
+  border-color: var(--bb-primary);
+}
+
+.bb-support-clear-btn {
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bb-support-clear-btn:hover {
+  background: var(--bb-bg-secondary);
+  border-color: var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
+/* ============================================
+   Character Stats Cards Grid
+   ============================================ */
+.bb-support-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Individual Support Stats Card
+   ============================================ */
+.bb-support-card {
+  background: var(--bb-bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--bb-border);
+  transition: border-color 0.2s ease;
+}
+
+.bb-support-card:hover {
+  border-color: var(--bb-primary);
+}
+
+.bb-support-card.hidden {
+  display: none;
+}
+
+/* Card Header */
+.bb-support-card-header {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bb-bg-secondary);
+  align-items: center;
+}
+
+.bb-support-card-avatar {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light);
+  background: var(--bb-bg-primary);
+}
+
+.bb-support-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-support-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-support-card-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.375rem 0;
+  line-height: 1.3;
+}
+
+.bb-support-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.bb-support-card-badges .bb-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.bb-support-card-badges .bb-badge-rarity {
+  display: flex;
+  align-items: center;
+}
+
+.bb-support-card-badges .bb-badge-rarity img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Card Body */
+.bb-support-card-body {
+  padding: 1rem;
+}
+
+/* ============================================
+   LB Stats Table
+   ============================================ */
+.bb-support-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bb-support-stats-table th,
+.bb-support-stats-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-support-stats-table th {
+  background: var(--bb-bg-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--bb-text-tertiary);
+  letter-spacing: 0.5px;
+}
+
+.bb-support-stats-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bb-support-stats-table tbody tr:hover {
+  background: rgba(var(--bb-primary-rgb), 0.05);
+}
+
+.bb-support-stats-table .lb-cell {
+  width: 50px;
+  font-weight: 600;
+  color: var(--bb-primary-light);
+  font-size: 0.875rem;
+}
+
+.bb-support-stats-table .stats-cell {
+  font-size: 0.8125rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-support-stats-table .max-lb {
+  background: rgba(var(--bb-primary-rgb), 0.08);
+}
+
+.bb-support-stats-table .max-lb .lb-cell {
+  color: var(--bb-primary);
+}
+
+.bb-support-stats-table .stat-item {
+  display: inline;
+}
+
+.bb-support-stats-table .stat-name {
+  color: var(--bb-text-secondary);
+}
+
+.bb-support-stats-table .stat-value {
+  color: var(--bb-primary-light);
+  font-weight: 600;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* ============================================
+   No Results
+   ============================================ */
+.bb-support-no-results {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  display: none;
+}
+
+.bb-support-no-results.visible {
+  display: block;
+}
+
+.bb-support-no-results h3 {
+  color: var(--bb-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+}
+
+.bb-support-no-results p {
+  color: var(--bb-text-secondary);
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   Results Count
+   ============================================ */
+.bb-support-results-count {
+  font-size: 0.875rem;
+  color: var(--bb-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.bb-support-results-count span {
+  font-weight: 600;
+  color: var(--bb-primary-light);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .bb-support-stats-page {
+    padding: 0.625rem;
+  }
+
+  .bb-support-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-support-search-input,
+  .bb-support-filter-select {
+    width: 100%;
+  }
+
+  .bb-support-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-support-card-header {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .bb-support-card-body {
+    padding: 0.75rem;
+  }
+
+  .bb-support-card-name {
+    font-size: 1rem;
+  }
+
+  .bb-support-card-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .bb-support-card-badges .bb-badge {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.6875rem;
+  }
+
+  .bb-support-card-badges .bb-badge-rarity img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bb-support-stats-table th,
+  .bb-support-stats-table td {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .bb-support-stats-table .lb-cell {
+    font-size: 0.8125rem;
+  }
+
+  .bb-support-stats-table .stats-cell {
+    font-size: 0.75rem;
+  }
+
+  .bb-support-info-list li {
+    font-size: 0.75rem;
+  }
+}

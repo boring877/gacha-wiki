@@ -10,6 +10,7 @@ import {
   weaponTypes,
   WEAPON_TIERS,
 } from '../../../data/busty-burst/best-weapons.js';
+import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
 
 const title = 'Best Weapons Guide - Busty Burst Fantasy | GachaWiki';
 const description =
@@ -25,12 +26,13 @@ const charCounts = getCharacterCountByWeaponType();
 // Helper function to convert type name to safe HTML ID
 const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
 
-// Helper to get image filename with extension
-const getCharImageFile = (imageName: string) => {
-  if (imageName === 'Shaty') {
-    return `${imageName}.png`;
-  }
-  return `${imageName}.jpg`;
+// Helper to get characterId from image name
+const getCharacterId = (imageName: string) => {
+  const paladin = BUSTY_BURST_PALADINS.find(p =>
+    p.fileName === imageName ||
+    p.fileName.toLowerCase() === imageName.toLowerCase()
+  );
+  return paladin?.characterId || 2001;
 };
 
 // Tier order for display
@@ -88,10 +90,11 @@ const seriesInfo = [
                       <div class="bb-char-best-weapon-header">
                         <div class="bb-char-best-weapon-avatar">
                           <PaladinImage
-                            fileName={getCharImageFile(character.image)}
+                            characterId={getCharacterId(character.image)}
                             alt={character.displayName}
-                            width={140}
-                            height={140}
+                            width={160}
+                            height={160}
+                            quality={95}
                           />
                         </div>
                         <div class="bb-char-best-weapon-info">

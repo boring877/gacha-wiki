@@ -6,7 +6,7 @@ export const silverAndBloodRedeemCodes = {
     title: 'Silver and Blood Redeem Codes - Free Rewards & Gift Codes 2025 | GachaWiki',
     description:
       'Complete list of Silver and Blood redeem codes for free rewards, gems, and items. Updated regularly with working promo codes from Reddit and community sources for the mobile RPG game.',
-    lastUpdated: new Date('2025-10-19'),
+    lastUpdated: new Date('2025-12-29'),
   },
 
   availableCodes: [
@@ -14,16 +14,56 @@ export const silverAndBloodRedeemCodes = {
       id: 'sab0626',
       code: 'SAB0626',
       status: 'active',
-      lastChecked: 'October 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
     },
     {
+      id: 'sabartfest',
+      code: 'SABARTFEST',
+      status: 'active',
+      lastChecked: 'December 2025',
+      dateAdded: '2025-12-29',
+      rewards: 'Unknown rewards',
+      serverRestriction: 'ALL',
+    },
+    {
+      id: 'thankblood',
+      code: 'THANKBLOOD',
+      status: 'active',
+      lastChecked: 'December 2025',
+      dateAdded: '2025-12-29',
+      rewards: 'Unknown rewards',
+      serverRestriction: 'ALL',
+    },
+    {
+      id: 'sabhyevent',
+      code: 'SABHYEVENT',
+      status: 'active',
+      lastChecked: 'December 2025',
+      dateAdded: '2025-12-29',
+      rewards: 'Unknown rewards',
+      serverRestriction: 'ALL',
+    },
+    {
+      id: 'sabhysns',
+      code: 'SABHYSNS',
+      status: 'active',
+      lastChecked: 'December 2025',
+      dateAdded: '2025-12-29',
+      rewards: 'Unknown rewards',
+      serverRestriction: 'ALL',
+    },
+  ],
+
+  expiredCodes: [
+    {
       id: 'sab30days',
       code: 'SAB30DAYS',
-      status: 'active',
-      lastChecked: 'October 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
@@ -31,8 +71,9 @@ export const silverAndBloodRedeemCodes = {
     {
       id: 'silvergift',
       code: 'SILVERGIFT',
-      status: 'active',
-      lastChecked: 'October 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
@@ -40,8 +81,9 @@ export const silverAndBloodRedeemCodes = {
     {
       id: 'b9zv7f2222t',
       code: 'B9ZV7F2222T',
-      status: 'unknown',
-      lastChecked: 'September 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
@@ -49,8 +91,9 @@ export const silverAndBloodRedeemCodes = {
     {
       id: 'bloodmoon',
       code: 'BLOODMOON',
-      status: 'active',
-      lastChecked: 'October 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
@@ -58,8 +101,9 @@ export const silverAndBloodRedeemCodes = {
     {
       id: 'moongift',
       code: 'MOONGIFT',
-      status: 'active',
-      lastChecked: 'October 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-09-01',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
@@ -67,15 +111,13 @@ export const silverAndBloodRedeemCodes = {
     {
       id: 'silver100d',
       code: 'SILVER100D',
-      status: 'active',
-      lastChecked: 'October 2025',
+      status: 'expired',
+      expiryDate: 'December 2025',
+      lastChecked: 'December 2025',
       dateAdded: '2025-10-19',
       rewards: 'Unknown rewards',
       serverRestriction: 'ALL',
     },
-  ],
-
-  expiredCodes: [
     {
       id: '3d9epf2222p',
       code: '3D9EPF2222P',
@@ -287,12 +329,7 @@ export const silverAndBloodRedeemCodes = {
 
   warnings: {
     important:
-      "Important: These codes may or may not work! Games can disable codes anytime without notice. Try them but don't expect them to work.",
-    noGuarantees: {
-      title: 'No Guarantees',
-      message:
-        'Silver and Blood codes are community-sourced and may have limited availability or usage. These codes might not work when you try them - this is normal for mobile game gift codes!',
-    },
+      "Important: Codes may expire without notice. Check back regularly for new codes!",
   },
 };
 

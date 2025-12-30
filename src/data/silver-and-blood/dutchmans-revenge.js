@@ -102,6 +102,14 @@ export const dutchmansRevengeData = {
       name: 'Arsenal 1 | Stuck In Line',
       url: 'https://www.youtube.com/watch?v=vXAI5VFTJEc&feature=youtu.be',
     },
+    {
+      name: 'Arsenal II | Part 1 & 2',
+      url: 'https://youtu.be/jjv9ONFIvfE',
+    },
+    {
+      name: 'Arsenal II | Part 3',
+      url: 'https://youtu.be/HBSCABixII0',
+    },
   ],
 
   events: {

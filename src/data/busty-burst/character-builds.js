@@ -86,6 +86,7 @@ export const characterBuilds = {
     character: {
       name: 'Festive Attire Estiriel',
       fileName: 'Festive_Attire_Estiriel',
+      characterId: 2069,
     },
     weapon: {
       name: 'Annihilation Grenade',
@@ -109,6 +110,7 @@ export const characterBuilds = {
       name: 'Shaty',
       fileName: 'Shaty',
       imageExt: 'png',
+      characterId: 2072,
     },
     position: {
       name: 'Back',
@@ -139,6 +141,7 @@ export const characterBuilds = {
     character: {
       name: 'Kaguya',
       fileName: 'kaguya',
+      characterId: 2071,
     },
     position: {
       name: 'Back',
@@ -151,6 +154,54 @@ export const characterBuilds = {
     weapon: {
       name: 'Annihilation Bullet',
       image: 'Bullet_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      return {
+        name: 'Amethyst 4 Set + 1 Random SSR',
+        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(amethystSet.setEffects),
+        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
+        images: [
+          amethystSet.pieces[0].imageFile,
+          amethystSet.pieces[1].imageFile,
+          goldSet.pieces[0].imageFile,
+          goldSet.pieces[1].imageFile,
+        ],
+        setEffects: [
+          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
+          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+        ],
+      };
+    })(),
+  },
+  'dragon-crusher-medusa': {
+    slug: 'dragon-crusher-medusa',
+    character: {
+      name: 'Dragon Crusher Medusa',
+      fileName: 'Dragon_Crusher_Medusa',
+      characterId: 2099,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: {
+      name: 'Annihilation Wand',
+      image: 'Wand_of_annihilation.png',
       effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
     },
     accessory: (() => {

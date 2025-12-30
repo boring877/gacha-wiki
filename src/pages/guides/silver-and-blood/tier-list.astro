@@ -20,7 +20,7 @@ function getTierClassName(tier: string): string {
 
 <TierListLayout
   title="Silver and Blood Tier List 2025 - Complete Character Rankings SSS-S Tiers | GachaWiki"
-  description="Comprehensive Silver and Blood tier list featuring PvE, PvP Arena, Clan Hunt, Boss Raids, and F2P character rankings. Updated 2025 meta with Timeless Aiona, Van Helsing, Acappella, and all vampire characters rated SSS to Situational tiers. Interactive tier list maker with drag-and-drop functionality."
+  description="Comprehensive Silver and Blood tier list featuring PvE, PvP Arena, Clan Hunt, Boss Raids, and F2P character rankings. Updated December 2025 meta with Timeless Aiona, Seraphina, Letitia, Livian, Alexi, and all SSR characters rated SSS to Situational tiers. Interactive tier list maker included."
   gameTitle="Silver and Blood Tier List"
 >
   <div class="tier-list-container">
@@ -72,9 +72,21 @@ function getTierClassName(tier: string): string {
       </div>
     </div>
 
-    <!-- Regular Tier List Display (Static) -->
-    <div class="tier-list-display" id="tier-list-display">
+    <!-- Regular Tier List Display (Static) - Pre-render all tier lists -->
+    <div class="tier-list-display active" id="tier-list-pve" data-list-type="pve">
       <StaticTierListView tierListData={ALL_TIER_LISTS.pve} characterMap={characterMap} />
+    </div>
+    <div class="tier-list-display" id="tier-list-pvp" data-list-type="pvp" style="display: none;">
+      <StaticTierListView tierListData={ALL_TIER_LISTS.pvp} characterMap={characterMap} />
+    </div>
+    <div class="tier-list-display" id="tier-list-clan-hunt" data-list-type="clan-hunt" style="display: none;">
+      <StaticTierListView tierListData={ALL_TIER_LISTS['clan-hunt']} characterMap={characterMap} />
+    </div>
+    <div class="tier-list-display" id="tier-list-boss-raids" data-list-type="boss-raids" style="display: none;">
+      <StaticTierListView tierListData={ALL_TIER_LISTS['boss-raids']} characterMap={characterMap} />
+    </div>
+    <div class="tier-list-display" id="tier-list-new-player" data-list-type="new-player" style="display: none;">
+      <StaticTierListView tierListData={ALL_TIER_LISTS['new-player']} characterMap={characterMap} />
     </div>
 
     <!-- Tier Legend -->
@@ -130,14 +142,14 @@ function getTierClassName(tier: string): string {
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
       const tierLegend = document.getElementById('tier-legend');
-      const tierListDisplay = document.getElementById('tier-list-display');
+      const tierListDisplays = document.querySelectorAll('.tier-list-display[data-list-type]');
       const makerLayout = document.getElementById('maker-layout');
 
       // Current active tier list
       let currentListType = 'pve';
       let currentMode = 'view';
 
-      // Function to update tier list info
+      // Function to update tier list info and show correct tier list
       function updateTierListInfo(listType) {
         const tierList = ALL_TIER_LISTS[listType];
         if (!tierList) return;
@@ -146,6 +158,15 @@ function getTierClassName(tier: string): string {
         if (listTitle) listTitle.textContent = tierList.name;
         if (listDescription) listDescription.textContent = tierList.description;
         if (listUpdated) listUpdated.textContent = `Last updated: ${tierList.lastUpdated}`;
+
+        // Show/hide tier list displays
+        tierListDisplays.forEach(display => {
+          if (display.dataset.listType === listType) {
+            display.style.display = 'block';
+          } else {
+            display.style.display = 'none';
+          }
+        });
       }
 
       // Add event listeners to type buttons
@@ -161,7 +182,7 @@ function getTierClassName(tier: string): string {
           // Update current list type
           currentListType = listType;
 
-          // Update tier list info
+          // Update tier list info and display
           updateTierListInfo(listType);
         });
       });
@@ -174,10 +195,10 @@ function getTierClassName(tier: string): string {
         viewModeContent.style.display = 'block';
         makerModeContent.style.display = 'none';
         tierListInfo.style.display = 'block';
-        if (tierListDisplay) tierListDisplay.style.display = 'block';
+        // Show the current tier list
+        updateTierListInfo(currentListType);
         if (tierLegend) tierLegend.style.display = 'grid';
         if (makerLayout) makerLayout.style.display = 'none';
-        updateTierListInfo(currentListType);
       });
 
       // Initial population

@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all skill icons using glob pattern
+const skillIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/Busty_Burst/skill_icons_final/sprite_skill*.png',
+  { eager: true }
+);
+
+export interface Props {
+  skillId: string; // Format: "skill001/skill0004" or "skill0004" or "0004"
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'png';
+  quality?: number;
+}
+
+const {
+  skillId,
+  alt = 'Skill Icon',
+  width = 48,
+  height = 48,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 90,
+} = Astro.props;
+
+// Extract skill number from various formats
+// "skill001/skill0004" -> "0004"
+// "skill0004" -> "0004"
+// "0004" -> "0004"
+function extractSkillNumber(id: string): string {
+  // Remove "skill001/" prefix if present
+  let cleanId = id.replace(/^skill\d+\//, '');
+  // Remove "skill" prefix if present
+  cleanId = cleanId.replace(/^skill/, '');
+  return cleanId;
+}
+
+const skillNumber = extractSkillNumber(skillId);
+
+// Find matching icon
+// Icons are named: sprite_skill0004.png or sprite_skill0006_1.png (for ultimates)
+let imageModule: ImageMetadata | null = null;
+
+const iconKey = Object.keys(skillIcons).find(key =>
+  key.includes(`sprite_skill${skillNumber}.png`)
+);
+
+if (iconKey) {
+  imageModule = skillIcons[iconKey].default;
+}
+
+// Fallback to a default icon if not found
+if (!imageModule) {
+  const fallbackKey = Object.keys(skillIcons).find(key =>
+    key.includes('sprite_skill0001.png')
+  );
+  if (fallbackKey) {
+    imageModule = skillIcons[fallbackKey].default;
+  }
+}
+---
+
+{imageModule ? (
+  <div class={`skill-icon-wrapper ${className || ''}`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      format={format}
+      quality={quality}
+      class="skill-icon"
+    />
+  </div>
+) : (
+  <div class={`skill-icon-wrapper skill-icon-fallback ${className || ''}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .skill-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .skill-icon {
+    object-fit: contain;
+  }
+
+  .skill-icon-fallback {
+    background: var(--bb-bg-secondary, #2a2a3e);
+    color: var(--bb-text-secondary, #aaa);
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+</style>

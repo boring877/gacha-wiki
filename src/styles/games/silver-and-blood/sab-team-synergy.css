@@ -308,16 +308,59 @@ table.team-table td:nth-child(9) {
   position: relative;
 }
 
-.character-portrait {
-  width: 40px;
-  height: 40px;
+/* Character icon wrapper with rarity frame */
+.character-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.character-icon-wrapper .character-portrait {
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   object-fit: cover;
   object-position: center;
-  border: 1px solid var(--sab-text-light);
+  display: block;
+  border: none;
+  margin-top: 0;
+}
+
+.character-icon-wrapper .rarity-frame {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+/* Mobile character icon wrapper */
+.character-icon-wrapper.mobile .mobile-character-portrait {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+.character-icon-wrapper.mobile .rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+}
+
+.character-portrait {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
   display: block;
   flex-shrink: 0;
-  margin-top: 1.2rem;
 }
 
 .character-name {

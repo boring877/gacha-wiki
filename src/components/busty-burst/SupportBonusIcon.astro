@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all blessing icons
+import BlessingWind from '../../assets/images/games/Busty_Burst/support_bonus_named/301_Blessing_of_Wind.png';
+import BlessingWater from '../../assets/images/games/Busty_Burst/support_bonus_named/302_Blessing_of_Water.png';
+import BlessingFire from '../../assets/images/games/Busty_Burst/support_bonus_named/303_Blessing_of_Fire.png';
+import BlessingHoly from '../../assets/images/games/Busty_Burst/support_bonus_named/304_Blessing_of_Light.png';
+import BlessingDark from '../../assets/images/games/Busty_Burst/support_bonus_named/305_Blessing_of_Dark.png';
+import BlessingMind from '../../assets/images/games/Busty_Burst/support_bonus_named/306_Blessing_of_Mind.png';
+
+// Import all inspiration icons
+import InspirationSlash from '../../assets/images/games/Busty_Burst/support_bonus_named/307_Slash_Inspiration.png';
+import InspirationPierce from '../../assets/images/games/Busty_Burst/support_bonus_named/308_Pierce_Inspiration.png';
+import InspirationStrike from '../../assets/images/games/Busty_Burst/support_bonus_named/309_Strike_Inspiration.png';
+import InspirationShot from '../../assets/images/games/Busty_Burst/support_bonus_named/310_Shot_Inspiration.png';
+import InspirationThrow from '../../assets/images/games/Busty_Burst/support_bonus_named/311_Throw_Inspiration.png';
+
+const blessingMap: Record<string, ImageMetadata> = {
+  'Wind': BlessingWind,
+  'Water': BlessingWater,
+  'Fire': BlessingFire,
+  'Holy': BlessingHoly,
+  'Dark': BlessingDark,
+  'Mind': BlessingMind,
+};
+
+const inspirationMap: Record<string, ImageMetadata> = {
+  'Slash': InspirationSlash,
+  'Pierce': InspirationPierce,
+  'Strike': InspirationStrike,
+  'Shot': InspirationShot,
+  'Throw': InspirationThrow,
+};
+
+export interface Props {
+  type: 'blessing' | 'inspiration';
+  element?: string; // For blessing: Wind, Water, Fire, Holy, Dark, Mind
+  weapon?: string;  // For inspiration: Slash, Pierce, Strike, Shot, Throw
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { type, element, weapon, width = 28, height = 28, class: className } = Astro.props;
+
+let imageSrc: ImageMetadata | null = null;
+let altText = '';
+
+if (type === 'blessing' && element) {
+  imageSrc = blessingMap[element] || null;
+  altText = `Blessing of ${element}`;
+} else if (type === 'inspiration' && weapon) {
+  imageSrc = inspirationMap[weapon] || null;
+  altText = `${weapon} Inspiration`;
+}
+---
+
+{imageSrc && (
+  <Image
+    src={imageSrc}
+    alt={altText}
+    width={width}
+    height={height}
+    class={className}
+  />
+)}

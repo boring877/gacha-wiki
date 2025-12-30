@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+// Import all rarity images
+import R from '../../assets/images/games/Busty_Burst/rarity_icons/R.png';
+import SR from '../../assets/images/games/Busty_Burst/rarity_icons/SR.png';
+import SSR from '../../assets/images/games/Busty_Burst/rarity_icons/SSR.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  R: R,
+  SR: SR,
+  SSR: SSR,
+};
+
+interface Props {
+  rarity: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { rarity, width = 32, height = 32, class: className } = Astro.props;
+const imageSrc = imageMap[rarity];
+---
+
+{imageSrc && <Image src={imageSrc} alt={rarity} width={width} height={height} class={className} />}

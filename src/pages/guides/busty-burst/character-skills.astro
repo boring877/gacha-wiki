@@ -1,54 +1,101 @@
 ---
 // Busty Burst Character Skills Page
-// Displays all character skills with formulas, effects, and ultimate scaling
+// Displays all character skills with rotation, basic attack, skills, ultimate, and passives
 
 import CharacterSkillsLayout from '../../../layouts/busty-burst/CharacterSkillsLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
-import { getAllCharacterSkills } from '../../../data/busty-burst/character-skills.js';
-import { getPaladinById } from '../../../data/busty-burst/paladins.js';
+import PositionImage from '../../../components/busty-burst/PositionImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
+import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
+import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS } from '../../../data/busty-burst/character-skills-full.js';
+import { getSupportDataById } from '../../../data/busty-burst/support-data.js';
 
-// Get all character skills
-const characterSkills = getAllCharacterSkills();
+// Helper to get weapon type from support data
+const getWeaponType = (charId: number) => {
+  const supportData = getSupportDataById(charId);
+  return supportData?.weapon || null;
+};
+
+// Map position number to filename
+const getPositionFileName = (pos: number) => {
+  const posMap: Record<number, string> = {
+    1: 'Front.png',
+    2: 'Mid.png',
+    3: 'Back.png',
+  };
+  return posMap[pos] || 'Front.png';
+};
+
+const getPositionName = (pos: number) => {
+  const posMap: Record<number, string> = {
+    1: 'Front',
+    2: 'Mid',
+    3: 'Back',
+  };
+  return posMap[pos] || 'Front';
+};
+
+// Sort characters by rarity: SSR -> SR -> R
+const rarityOrder: Record<string, number> = { 'SSR': 0, 'SR': 1, 'R': 2 };
+const characterSkills = [...BUSTY_BURST_SKILLS_DATA].sort((a, b) => {
+  return (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
+});
+
+// Status effect descriptions for inline display
+const STATUS_EFFECT_INFO: Record<string, string> = {
+  'petrify': 'Cannot act, Block=0',
+  'stun': 'Cannot act',
+  'freeze': 'Cannot act + DoT',
+  'sleep': 'Cannot act, wakes on hit (CRIT)',
+  'silence': 'No skills/ult',
+  'confusion': 'Attacks random targets',
+  'charm': 'Attacks allies',
+  'taunt': 'Must attack taunter',
+  'poison': 'DoT',
+  'burn': 'DoT, stackable',
+  'bleed': 'DoT (-1% HP)',
+  'paralysis': 'Speed -50%, ATK -50%',
+  'curse': 'No recovery, Speed -50%, Crit=0',
+  'blind': 'Block=0, Acc -50%',
+  'fear': 'MP drain',
+};
+
+// Helper function to highlight values and add status effect explanations
+const highlightValues = (text: string) => {
+  if (!text) return '';
+
+  let result = text;
+
+  // Add inline explanations for status effects
+  // Match effect names that haven't been processed yet (not followed by a description in parentheses)
+  for (const [effect, desc] of Object.entries(STATUS_EFFECT_INFO)) {
+    // Match "Effect for Xs" or standalone "Effect" - but not if already has (desc) after it
+    const regex = new RegExp(`\\b(${effect})\\b(?!\\s*<span|\\s*\\(${desc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    result = result.replace(regex, `<span class="bb-status-effect">$1</span> <span class="bb-status-desc">(${desc})</span>`);
+  }
+
+  // Highlight percentages and numbers
+  result = result
+    .replace(/(\d+%)/g, '<span class="bb-value-highlight">$1</span>')
+    .replace(/(\+\s*)(\d+)(\s+(?:magic|physical|damage|HP))/gi, '$1<span class="bb-value-highlight">$2</span>$3')
+    .replace(/(ATK\s*\+\s*)(\d+)/gi, '$1<span class="bb-value-highlight">$2</span>');
+
+  return result;
+};
 
 const title = 'Busty Burst Character Skills Guide';
-const description = `Complete skill guide for all ${characterSkills.length} Busty Burst characters. View skill formulas, damage calculations, healing values, buff/debuff effects, and ultimate scaling from R1 to R5.`;
+const description = `Complete skill guide for all ${characterSkills.length} Busty Burst characters. View skill rotations, basic attacks, damage formulas, ultimate scaling (R1-R5), and passive abilities.`;
 const gameTitle = 'Character Skills Guide';
 
-// Get image file name helper
-const getImageFileName = (id: string) => {
-  const paladin = getPaladinById(id);
-  if (!paladin) return '';
-  return paladin.image.split('/').pop() || '';
-};
+// Get unique elements, roles, rarities for filters
+const elements = [...new Set(characterSkills.map(c => c.element))].sort();
+const roles = [...new Set(characterSkills.map(c => c.role))].sort();
+const rarities = ['SSR', 'SR', 'R'];
 ---
 
 <CharacterSkillsLayout title={title} description={description} gameTitle={gameTitle}>
-  <!-- Structured Data for SEO -->
-  <script is:inline type="application/ld+json" slot="head">
-    {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      "headline": "Busty Burst Character Skills Guide - Complete Skill Database",
-      "description": "Complete skill guide for all Busty Burst characters. View skill formulas, damage calculations, healing values, buff/debuff effects, ultimate scaling from R1 to R5, and passive abilities.",
-      "keywords": "Busty Burst, character skills, skill formulas, damage calculation, healing formula, buff formula, ultimate skills, passive abilities, R1-R5 scaling, ATK scaling",
-      "articleSection": "Game Guide",
-      "author": {
-        "@type": "Organization",
-        "name": "GachaWiki"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "GachaWiki",
-        "url": "https://gachawiki.info"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://gachawiki.info/guides/busty-burst/character-skills/"
-      }
-    }
-  </script>
-
   <div class="bb-skills-page">
     <!-- Filter Controls -->
     <div class="bb-skills-controls">
@@ -57,307 +104,233 @@ const getImageFileName = (id: string) => {
           type="text"
           id="skills-search"
           class="bb-skills-search-input"
-          placeholder="Search by character name or skill name..."
+          placeholder="Search by character or skill name..."
         />
+        <select id="rarity-filter" class="bb-skills-filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(r => <option value={r}>{r}</option>)}
+        </select>
         <select id="element-filter" class="bb-skills-filter-select">
           <option value="">All Elements</option>
-          <option value="Holy">Holy</option>
-          <option value="Mind">Mind</option>
-          <option value="Fire">Fire</option>
-          <option value="Wind">Wind</option>
-          <option value="Water">Water</option>
-          <option value="Magic">Magic</option>
+          {elements.map(el => <option value={el}>{el}</option>)}
         </select>
         <select id="role-filter" class="bb-skills-filter-select">
           <option value="">All Roles</option>
-          <option value="Attacker">Attacker</option>
-          <option value="Support">Support</option>
-          <option value="Tank">Tank</option>
+          {roles.map(role => <option value={role}>{role}</option>)}
         </select>
-        <select id="rarity-filter" class="bb-skills-filter-select">
-          <option value="">All Rarities</option>
-          <option value="SSR">SSR</option>
-          <option value="SR">SR</option>
-          <option value="R">R</option>
-        </select>
-        <button type="button" id="clear-filters" class="bb-skills-clear-btn"> Clear All </button>
+        <button type="button" id="clear-filters" class="bb-skills-clear-btn">Clear All</button>
       </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="bb-skills-results-count" id="results-count">
+      Showing <span>{characterSkills.length}</span> characters
     </div>
 
     <!-- Character Skills Grid -->
     <div class="bb-skills-grid" id="skills-grid">
-      {
-        characterSkills.map(char => (
-          <div
-            class="bb-skills-card"
-            data-name={char.name.toLowerCase()}
-            data-element={char.element.toLowerCase()}
-            data-role={char.role.toLowerCase()}
-            data-rarity={char.rarity.toLowerCase()}
-            data-skill2={char.skill2.name.toLowerCase()}
-            data-skill3={char.skill3.name.toLowerCase()}
-            data-ultimate={char.ultimate.name.toLowerCase()}
-          >
-            <div class="bb-skills-card-header">
-              <div class="bb-skills-card-avatar">
-                <PaladinImage
-                  fileName={getImageFileName(char.id)}
-                  alt={char.name}
-                  width={120}
-                  height={120}
-                />
-              </div>
-              <div class="bb-skills-card-info">
-                <h3 class="bb-skills-card-name">{char.name}</h3>
-                <div class="bb-skills-card-badges">
-                  <span class="bb-badge" data-rarity={char.rarity}>
-                    {char.rarity}
-                  </span>
-                  <span class="bb-badge" data-element={char.element}>
-                    <ElementImage element={char.element} width={14} height={14} />
-                    {char.element}
-                  </span>
-                  <span class="bb-badge" data-role={char.role}>
-                    {char.role}
-                  </span>
-                </div>
-              </div>
+      {characterSkills.map(char => (
+        <div
+          class="bb-skills-card"
+          data-name={char.name.toLowerCase()}
+          data-element={char.element.toLowerCase()}
+          data-role={char.role.toLowerCase()}
+          data-rarity={char.rarity.toLowerCase()}
+        >
+          <!-- Card Header -->
+          <div class="bb-skills-card-header">
+            <div class="bb-skills-card-avatar">
+              <PaladinImage
+                characterId={char.id}
+                alt={char.name}
+                width={100}
+                height={100}
+                quality={95}
+              />
             </div>
-
-            <div class="bb-skills-card-body">
-              {/* Action Skill 1 */}
-              <div class="bb-skill-section">
-                <div class="bb-skill-header">
-                  <span class="bb-badge bb-skill-label" data-skill="action1">
-                    Action Skill 1
-                  </span>
-                  <span class="bb-skill-name">{char.skill2.name}</span>
-                  <span class="bb-badge" data-type={char.skill2.type}>
-                    {char.skill2.type}
-                  </span>
+            <div class="bb-skills-card-info">
+              <h3 class="bb-skills-card-name">{char.name}</h3>
+              <div class="bb-skills-card-meta">
+                <div class="bb-skills-rarity">
+                  <RarityImage rarity={char.rarity} width={48} height={48} />
                 </div>
-                <p class="bb-skill-description" data-formula={char.skill2.description}>
-                  {char.skill2.description}
-                </p>
-                <div class="bb-skill-target">Target: {char.skill2.target}</div>
-                <div class="bb-skill-calculator" data-skill-type={char.skill2.type}>
-                  <div class="bb-calc-inputs">
-                    <label class="bb-calc-label">
-                      Lv
-                      <input
-                        type="number"
-                        class="bb-calc-input bb-calc-input-small"
-                        min="1"
-                        max="100"
-                        value="1"
-                        data-calc-level
-                      />
-                    </label>
-                    {char.skill2.type === 'heal' && (
-                      <label class="bb-calc-label">
-                        Heal Power
-                        <input
-                          type="number"
-                          class="bb-calc-input"
-                          min="0"
-                          max="9999"
-                          value="100"
-                          data-calc-healpower
-                        />
-                      </label>
-                    )}
-                    {char.skill2.type === 'damage' && (
-                      <label class="bb-calc-label">
-                        ATK
-                        <input
-                          type="number"
-                          class="bb-calc-input"
-                          min="0"
-                          max="99999"
-                          value="1000"
-                          data-calc-atk
-                        />
-                      </label>
-                    )}
+                <div class="bb-skills-info-row">
+                  <div class="bb-skills-info-item">
+                    <ElementImage element={char.element} width={20} height={20} />
+                    <span>{char.element}</span>
                   </div>
-                  <div class="bb-calc-result" data-calc-result />
+                  <div class="bb-skills-info-item">
+                    <span>{char.role}</span>
+                  </div>
+                  <div class="bb-skills-info-item">
+                    <PositionImage
+                      fileName={getPositionFileName(char.position)}
+                      alt={getPositionName(char.position)}
+                      width={22}
+                      height={22}
+                    />
+                  </div>
+                  {getWeaponType(char.id) && (
+                    <div class="bb-skills-info-item">
+                      <WeaponIcon weapon={getWeaponType(char.id)} width={20} height={20} />
+                      <span>{getWeaponType(char.id)}</span>
+                    </div>
+                  )}
                 </div>
               </div>
+              {char.tags && char.tags.length > 0 && (
+                <div class="bb-skills-card-tags">
+                  {char.tags.map(tag => <span class="bb-tag">{tag}</span>)}
+                </div>
+              )}
+            </div>
+          </div>
 
-              {/* Action Skill 2 */}
-              <div class="bb-skill-section">
-                <div class="bb-skill-header">
-                  <span class="bb-badge bb-skill-label" data-skill="action2">
-                    Action Skill 2
-                  </span>
-                  <span class="bb-skill-name">{char.skill3.name}</span>
-                  <span class="bb-badge" data-type={char.skill3.type}>
-                    {char.skill3.type}
-                  </span>
-                </div>
-                <p class="bb-skill-description" data-formula={char.skill3.description}>
-                  {char.skill3.description}
-                </p>
-                <div class="bb-skill-target">Target: {char.skill3.target}</div>
-                <div class="bb-skill-calculator" data-skill-type={char.skill3.type}>
-                  <div class="bb-calc-inputs">
-                    <label class="bb-calc-label">
-                      Lv
-                      <input
-                        type="number"
-                        class="bb-calc-input bb-calc-input-small"
-                        min="1"
-                        max="100"
-                        value="1"
-                        data-calc-level
-                      />
-                    </label>
-                    {char.skill3.type === 'heal' && (
-                      <label class="bb-calc-label">
-                        Heal Power
-                        <input
-                          type="number"
-                          class="bb-calc-input"
-                          min="0"
-                          max="9999"
-                          value="100"
-                          data-calc-healpower
-                        />
-                      </label>
-                    )}
-                    {char.skill3.type === 'damage' && (
-                      <label class="bb-calc-label">
-                        ATK
-                        <input
-                          type="number"
-                          class="bb-calc-input"
-                          min="0"
-                          max="99999"
-                          value="1000"
-                          data-calc-atk
-                        />
-                      </label>
-                    )}
-                  </div>
-                  <div class="bb-calc-result" data-calc-result />
-                </div>
+          <!-- Skill Rotation -->
+          <div class="bb-skills-rotation">
+            <div class="bb-rotation-title">Skill Rotation</div>
+            <div class="bb-rotation-content">
+              <div class="bb-rotation-row">
+                <span class="bb-rotation-label">Opening:</span>
+                <span class="bb-rotation-sequence">{char.skillRotation.opening}</span>
               </div>
-
-              {/* Ultimate */}
-              {(() => {
-                // Extract R1 effects for context display
-                const r1Data = char.ultimate.ranks.R1;
-                const r1Parts = r1Data.split(' | ');
-                const r1Effects = r1Parts.slice(1).join(', ');
-                return (
-                  <div class="bb-skill-section">
-                    <div class="bb-skill-header">
-                      <span class="bb-badge bb-skill-label" data-skill="ultimate">
-                        Ultimate
-                      </span>
-                      <span class="bb-skill-name">{char.ultimate.name}</span>
-                      <span class="bb-badge" data-type={char.ultimate.type}>
-                        {char.ultimate.type}
-                      </span>
-                    </div>
-                    <p class="bb-skill-description">{char.ultimate.description}</p>
-                    {r1Effects && (
-                      <div class="bb-ultimate-base-effects">
-                        <span class="bb-ultimate-base-label">Base (R1):</span>
-                        <span class="bb-ultimate-base-value">{r1Effects}</span>
-                      </div>
-                    )}
-                    <div class="bb-skill-target">Target: {char.ultimate.target}</div>
-
-                    {/* Ultimate Calculator */}
-                    <div class="bb-ultimate-calculator" data-ultimate-type={char.ultimate.type}>
-                      <div class="bb-calc-inputs">
-                        {char.ultimate.type === 'heal' && (
-                          <label class="bb-calc-label">
-                            Heal Power
-                            <input
-                              type="number"
-                              class="bb-calc-input"
-                              min="0"
-                              max="9999"
-                              value="100"
-                              data-ult-healpower
-                            />
-                          </label>
-                        )}
-                        {char.ultimate.type === 'damage' && (
-                          <label class="bb-calc-label">
-                            ATK
-                            <input
-                              type="number"
-                              class="bb-calc-input"
-                              min="0"
-                              max="99999"
-                              value="1000"
-                              data-ult-atk
-                            />
-                          </label>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Ultimate Ranks */}
-                    <div class="bb-ultimate-ranks">
-                      <div class="bb-ultimate-ranks-title">Rank Scaling</div>
-                      <div class="bb-ultimate-rank-list">
-                        {['R1', 'R2', 'R3', 'R4', 'R5'].map(rank => {
-                          const rankData =
-                            char.ultimate.ranks[rank as keyof typeof char.ultimate.ranks];
-                          const parts = rankData.split(' | ');
-                          const formula = parts[0];
-                          const effects = parts.slice(1).join(' | ');
-                          return (
-                            <div class="bb-ultimate-rank-item">
-                              <span class="bb-ultimate-rank-label">{rank}:</span>
-                              <div class="bb-ultimate-rank-content">
-                                <div class="bb-ultimate-rank-formula">
-                                  <span class="bb-ultimate-rank-value" data-rank-formula={formula}>
-                                    {formula}
-                                  </span>
-                                  <span class="bb-ultimate-rank-calc" data-rank-result={rank} />
-                                </div>
-                                {effects && <div class="bb-ultimate-rank-effects">{effects}</div>}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })()}
-
-              {/* Passive Skills */}
-              <div class="bb-passives-container">
-                <div class="bb-passive-section">
-                  <div class="bb-passive-header">
-                    <span class="bb-badge bb-skill-label" data-skill="passive">
-                      Passive 1
-                    </span>
-                  </div>
-                  <p class="bb-passive-description">{char.passive1}</p>
-                </div>
-                <div class="bb-passive-section">
-                  <div class="bb-passive-header">
-                    <span class="bb-badge bb-skill-label" data-skill="passive">
-                      Passive 2
-                    </span>
-                  </div>
-                  <p class="bb-passive-description">{char.passive2}</p>
-                </div>
+              <div class="bb-rotation-row">
+                <span class="bb-rotation-label">Loop:</span>
+                <span class="bb-rotation-sequence">{char.skillRotation.loop}</span>
               </div>
             </div>
           </div>
-        ))
-      }
+
+          <!-- Card Body -->
+          <div class="bb-skills-card-body">
+            <!-- Basic Attack -->
+            <div class="bb-skill-section basic-attack">
+              <div class="bb-skill-header">
+                <SkillIcon skillId={char.basicAttack.icon} alt="Basic Attack" width={40} height={40} />
+                <div class="bb-skill-header-info">
+                  <span class="bb-skill-label">Basic Attack</span>
+                  <span class="bb-skill-type" data-type={char.basicAttack.type.toLowerCase()}>{char.basicAttack.type}</span>
+                </div>
+              </div>
+              <div class="bb-skill-details">
+                <div class="bb-skill-stat"><span>Scaling:</span> {char.basicAttack.scaling}</div>
+                <div class="bb-skill-stat">
+                  <span>Speed:</span> {char.basicAttack.speedLabel}
+                  {SPEED_LABELS[char.basicAttack.speedLabel] && (
+                    <span class="speed-details">({SPEED_LABELS[char.basicAttack.speedLabel].freezeTime})</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Skills -->
+            {char.skills.map(skill => {
+              // Parse description to replace flat damage with dynamic span
+              const baseValue = parseInt((skill.baseDamage || skill.baseValue || '0').replace('+', ''), 10) || 0;
+              const growth = parseInt((skill.levelGrowth || '0').replace('+', ''), 10) || 0;
+              const lvl90Value = baseValue + (90 - 1) * growth;
+
+              // Replace the flat damage/heal number in description with dynamic span, then highlight other values
+              let descriptionHtml = skill.description || '';
+              if (skill.description) {
+                // First replace the dynamic damage/heal value (matches "ATK + 70" or "ATK + 652")
+                if (baseValue > 0) {
+                  descriptionHtml = descriptionHtml.replace(
+                    /(ATK\s*\+\s*)\d+/gi,
+                    `$1<span class="bb-desc-damage-value">${lvl90Value}</span>`
+                  );
+                }
+                // Then highlight percentages
+                descriptionHtml = descriptionHtml.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
+              }
+
+              return (
+                <div class="bb-skill-section action-skill"
+                  data-scaling={skill.damageScaling}
+                  data-base={skill.baseDamage || skill.baseValue || '0'}
+                  data-growth={skill.levelGrowth || '0'}
+                >
+                  <div class="bb-skill-header">
+                    <SkillIcon skillId={skill.icon} alt={skill.name} width={40} height={40} />
+                    <div class="bb-skill-header-info">
+                      <span class="bb-skill-label">Skill {skill.slot}</span>
+                      <span class="bb-skill-name">{skill.name}</span>
+                    </div>
+                  </div>
+                  <div class="bb-skill-details">
+                    {skill.description ? (
+                      <div class="bb-skill-description" set:html={descriptionHtml} />
+                    ) : null}
+                    {skill.target && <div class="bb-skill-stat"><span>Target:</span> {skill.target}</div>}
+                    {skill.castTime && <div class="bb-skill-stat"><span>Cast Time:</span> {skill.castTime}</div>}
+                    {skill.damageScaling && <div class="bb-skill-stat"><span>Damage:</span> {skill.damageScaling}</div>}
+                    {skill.effect && <div class="bb-skill-effect" set:html={highlightValues(skill.effect)} />}
+                  </div>
+                  {(skill.baseDamage || skill.baseValue || skill.levelGrowth) && (
+                    <div class="bb-skill-level-calc">
+                      <div class="bb-skill-level-input">
+                        <label>Lv</label>
+                        <input type="number" class="skill-level-input" min="1" max="90" value="90" />
+                      </div>
+                      <div class="bb-skill-level-result">
+                        <span class="bb-skill-scaling-text">{skill.damageScaling}</span>
+                        <span class="bb-skill-plus">+</span>
+                        <span class="bb-skill-calc-value">{lvl90Value}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <!-- Ultimate -->
+            {char.ultimate && char.ultimate.length > 0 && (
+              <div class="bb-skill-section ultimate-skill">
+                <div class="bb-skill-header">
+                  <SkillIcon skillId={char.ultimate[0].icon} alt={char.ultimate[0].name} width={40} height={40} />
+                  <div class="bb-skill-header-info">
+                    <span class="bb-skill-label">Ultimate</span>
+                    <span class="bb-skill-name">{char.ultimate[0].name}</span>
+                  </div>
+                </div>
+                {char.ultimate[0].description && (
+                  <div class="bb-skill-description" set:html={highlightValues(char.ultimate[0].description)} />
+                )}
+                <div class="bb-ultimate-ranks">
+                  {char.ultimate.map(ult => (
+                    <div class="bb-ultimate-rank">
+                      <span class="bb-ult-rank-label">R{ult.rank}:</span>
+                      <span class="bb-ult-rank-effect" set:html={highlightValues(ult.effect)} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <!-- Passives -->
+            {char.passives && char.passives.length > 0 && (
+              <div class="bb-passives-section">
+                <div class="bb-passives-title">Passive Skills</div>
+                <div class="bb-passives-list">
+                  {char.passives.map(passive => (
+                    <div class="bb-passive-item">
+                      <SkillIcon skillId={passive.icon} alt={passive.name} width={32} height={32} />
+                      <div class="bb-passive-info">
+                        <span class="bb-passive-name">{passive.name}</span>
+                        <span class="bb-passive-effect">{passive.effect}</span>
+                        {passive.effect2 && <span class="bb-passive-effect">{passive.effect2}</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
 
-    <!-- No Results Message -->
+    <!-- No Results -->
     <div class="bb-skills-no-results" id="no-results">
       <h3>No characters found</h3>
       <p>Try adjusting your search or filter criteria.</p>
@@ -366,251 +339,817 @@ const getImageFileName = (id: string) => {
 </CharacterSkillsLayout>
 
 <script>
-  // Filter functionality
   function initFilters() {
     const searchInput = document.getElementById('skills-search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
     const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
     const roleFilter = document.getElementById('role-filter') as HTMLSelectElement;
-    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
-    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
-    const skillsGrid = document.getElementById('skills-grid');
+    const clearBtn = document.getElementById('clear-filters');
+    const grid = document.getElementById('skills-grid');
     const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
 
-    if (!skillsGrid) return;
-
-    const cards = skillsGrid.querySelectorAll('.bb-skills-card');
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.bb-skills-card');
 
     function filterCards() {
-      const searchTerm = searchInput?.value.toLowerCase() || '';
-      const elementValue = elementFilter?.value.toLowerCase() || '';
-      const roleValue = roleFilter?.value.toLowerCase() || '';
-      const rarityValue = rarityFilter?.value.toLowerCase() || '';
+      const search = searchInput?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+      const element = elementFilter?.value.toLowerCase() || '';
+      const role = roleFilter?.value.toLowerCase() || '';
 
       let visibleCount = 0;
 
       cards.forEach(card => {
         const cardEl = card as HTMLElement;
-        const name = cardEl.dataset.name || '';
-        const element = cardEl.dataset.element || '';
-        const role = cardEl.dataset.role || '';
-        const rarity = cardEl.dataset.rarity || '';
-        const skill2 = cardEl.dataset.skill2 || '';
-        const skill3 = cardEl.dataset.skill3 || '';
-        const ultimate = cardEl.dataset.ultimate || '';
+        const matchName = !search || cardEl.dataset.name?.includes(search);
+        const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
+        const matchElement = !element || cardEl.dataset.element === element;
+        const matchRole = !role || cardEl.dataset.role === role;
 
-        // Check search term (name or skill names)
-        const matchesSearch =
-          !searchTerm ||
-          name.includes(searchTerm) ||
-          skill2.includes(searchTerm) ||
-          skill3.includes(searchTerm) ||
-          ultimate.includes(searchTerm);
-
-        // Check filters
-        const matchesElement = !elementValue || element === elementValue;
-        const matchesRole = !roleValue || role === roleValue;
-        const matchesRarity = !rarityValue || rarity === rarityValue;
-
-        const isVisible = matchesSearch && matchesElement && matchesRole && matchesRarity;
-
+        const isVisible = matchName && matchRarity && matchElement && matchRole;
         cardEl.classList.toggle('hidden', !isVisible);
         if (isVisible) visibleCount++;
       });
 
-      // Show/hide no results message
       if (noResults) {
         noResults.classList.toggle('visible', visibleCount === 0);
       }
+
+      if (resultsCount) {
+        const span = resultsCount.querySelector('span');
+        if (span) span.textContent = visibleCount.toString();
+      }
     }
 
-    // Clear all filters
     function clearFilters() {
       if (searchInput) searchInput.value = '';
+      if (rarityFilter) rarityFilter.value = '';
       if (elementFilter) elementFilter.value = '';
       if (roleFilter) roleFilter.value = '';
-      if (rarityFilter) rarityFilter.value = '';
       filterCards();
     }
 
-    // Add event listeners
     searchInput?.addEventListener('input', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
     elementFilter?.addEventListener('change', filterCards);
     roleFilter?.addEventListener('change', filterCards);
-    rarityFilter?.addEventListener('change', filterCards);
     clearBtn?.addEventListener('click', clearFilters);
   }
 
-  // Skill calculator functionality
-  function initCalculators() {
-    const calculators = document.querySelectorAll('.bb-skill-calculator');
+  // Skill level calculator
+  function initSkillLevelCalc() {
+    const skillSections = document.querySelectorAll('.bb-skill-section.action-skill');
 
-    calculators.forEach(calc => {
-      const calcEl = calc as HTMLElement;
-      const levelInput = calc.querySelector('[data-calc-level]') as HTMLInputElement;
-      const healPowerInput = calc.querySelector('[data-calc-healpower]') as HTMLInputElement;
-      const atkInput = calc.querySelector('[data-calc-atk]') as HTMLInputElement;
-      const resultDiv = calc.querySelector('[data-calc-result]') as HTMLElement;
-      const skillSection = calc.closest('.bb-skill-section');
-      const descEl = skillSection?.querySelector('.bb-skill-description') as HTMLElement;
-      const skillType = calcEl.dataset.skillType || '';
+    skillSections.forEach(section => {
+      const input = section.querySelector('.skill-level-input') as HTMLInputElement;
+      const resultEl = section.querySelector('.bb-skill-calc-value');
+      const descValueEl = section.querySelector('.bb-desc-damage-value');
+      const sectionEl = section as HTMLElement;
 
-      if (!levelInput || !resultDiv || !descEl) return;
+      if (!input || !resultEl) return;
 
-      const formula = descEl.dataset.formula || descEl.textContent || '';
+      const baseStr = sectionEl.dataset.base || '0';
+      const growthStr = sectionEl.dataset.growth || '0';
 
-      function calculateValues() {
-        const level = parseInt(levelInput.value) || 1;
-        const healPower = healPowerInput ? parseInt(healPowerInput.value) || 100 : 100;
-        const atk = atkInput ? parseInt(atkInput.value) || 1000 : 1000;
-        const results: string[] = [];
+      // Parse base value (remove + sign if present)
+      const base = parseInt(baseStr.replace('+', ''), 10) || 0;
+      // Parse growth value (remove + sign if present)
+      const growth = parseInt(growthStr.replace('+', ''), 10) || 0;
 
-        // Parse healing formulas: [(Healing Power × X) + Base (+Growth/lv)]
-        const healMatch = formula.match(
-          /\[\(Healing Power × (\d+(?:\.\d+)?)\) \+ (\d+) \(\+(\d+)\/lv\)\]/
-        );
-        if (healMatch) {
-          const scale = parseFloat(healMatch[1]);
-          const base = parseInt(healMatch[2]);
-          const growth = parseInt(healMatch[3]);
-          const totalBase = base + growth * level;
-          const totalHeal = Math.floor(healPower * scale + totalBase);
-          results.push(
-            `<span class="calc-label">Heal:</span> <span class="calc-value">${totalHeal.toLocaleString()}</span>`
-          );
-        }
+      function calculateValue(level: number) {
+        // Formula: base + (level - 1) * growth
+        return base + (level - 1) * growth;
+      }
 
-        // Parse damage formulas: [X% ATK + Base (+Growth/lv)]
-        const dmgMatch = formula.match(/\[(\d+)% ATK \+ (\d+) \(\+(\d+)\/lv\)\]/);
-        if (dmgMatch) {
-          const scale = parseInt(dmgMatch[1]);
-          const base = parseInt(dmgMatch[2]);
-          const growth = parseInt(dmgMatch[3]);
-          const totalBase = base + growth * level;
-          const totalDmg = Math.floor((atk * scale) / 100 + totalBase);
-          results.push(
-            `<span class="calc-label">Damage:</span> <span class="calc-value">${totalDmg.toLocaleString()}</span>`
-          );
-        }
+      function updateDisplay() {
+        let level = parseInt(input.value, 10) || 1;
+        // Clamp level between 1 and 90
+        level = Math.max(1, Math.min(90, level));
+        input.value = level.toString();
 
-        // Parse buff/debuff formulas with growth: +X%+Y (+Z/lv)
-        const buffMatches = formula.matchAll(
-          /(\w+(?:\s+\w+)*)\s+\+(\d+)%\+(\d+)\s+\(\+(\d+(?:\.\d+)?)\/lv\)/g
-        );
-        for (const match of buffMatches) {
-          const statName = match[1];
-          const percent = parseInt(match[2]);
-          const base = parseInt(match[3]);
-          const growth = parseFloat(match[4]);
-          const totalFlat = base + growth * level;
-          results.push(
-            `<span class="calc-label">${statName}:</span> <span class="calc-value">+${percent}% + ${totalFlat.toFixed(growth % 1 !== 0 ? 1 : 0)}</span>`
-          );
-        }
+        const value = calculateValue(level);
+        resultEl.textContent = value.toString();
 
-        // Parse flat stat formulas: +Y (+Z/lv) for buffs without percent
-        const flatMatches = formula.matchAll(
-          /(\w+(?:\s+\w+)*)\s+\+(\d+)\s+\(\+(\d+(?:\.\d+)?)\/lv\)/g
-        );
-        for (const match of flatMatches) {
-          const statName = match[1];
-          const base = parseInt(match[2]);
-          const growth = parseFloat(match[3]);
-          // Skip if already captured by buff pattern
-          if (
-            !formula.includes(`${statName} +${base}%`) &&
-            formula.includes(`${statName} +${base} (`)
-          ) {
-            const total = base + growth * level;
-            results.push(
-              `<span class="calc-label">${statName}:</span> <span class="calc-value">+${total.toFixed(growth % 1 !== 0 ? 1 : 0)}</span>`
-            );
-          }
-        }
-
-        if (results.length > 0) {
-          resultDiv.innerHTML = `<span class="calc-level">Lv${level}:</span>${results.join('<span class="calc-separator">|</span>')}`;
-        } else {
-          resultDiv.innerHTML = '<span class="calc-level">No level scaling</span>';
+        // Also update description damage value if exists
+        if (descValueEl) {
+          descValueEl.textContent = value.toString();
         }
       }
 
       // Initial calculation
-      calculateValues();
+      updateDisplay();
 
-      // Add event listeners to all inputs
-      levelInput.addEventListener('input', calculateValues);
-      healPowerInput?.addEventListener('input', calculateValues);
-      atkInput?.addEventListener('input', calculateValues);
+      // Listen for input changes
+      input.addEventListener('input', updateDisplay);
+      input.addEventListener('change', updateDisplay);
     });
   }
 
-  // Ultimate calculator functionality
-  function initUltimateCalculators() {
-    const ultimateCalcs = document.querySelectorAll('.bb-ultimate-calculator');
-
-    ultimateCalcs.forEach(calc => {
-      const calcEl = calc as HTMLElement;
-      const healPowerInput = calc.querySelector('[data-ult-healpower]') as HTMLInputElement;
-      const atkInput = calc.querySelector('[data-ult-atk]') as HTMLInputElement;
-      const skillSection = calc.closest('.bb-skill-section');
-      const rankItems = skillSection?.querySelectorAll('.bb-ultimate-rank-item');
-      const ultType = calcEl.dataset.ultimateType || '';
-
-      if (!rankItems || rankItems.length === 0) return;
-
-      function calculateUltimateValues() {
-        const healPower = healPowerInput ? parseInt(healPowerInput.value) || 100 : 100;
-        const atk = atkInput ? parseInt(atkInput.value) || 1000 : 1000;
-
-        rankItems?.forEach(item => {
-          const formulaEl = item.querySelector('[data-rank-formula]') as HTMLElement;
-          const resultEl = item.querySelector('[data-rank-result]') as HTMLElement;
-          if (!formulaEl || !resultEl) return;
-
-          const formula = formulaEl.dataset.rankFormula || '';
-          let result = '';
-
-          // Parse damage formulas: [X% ATK + Base]
-          const dmgMatch = formula.match(/\[(\d+)% ATK \+ (\d+)\]/);
-          if (dmgMatch) {
-            const scale = parseInt(dmgMatch[1]);
-            const base = parseInt(dmgMatch[2]);
-            const totalDmg = Math.floor((atk * scale) / 100 + base);
-            result = `= ${totalDmg.toLocaleString()}`;
-          }
-
-          // Parse healing formulas: Heal [(Healing Power × X) + Base]
-          const healMatch = formula.match(/Heal \[\(Healing Power × (\d+(?:\.\d+)?)\) \+ (\d+)\]/);
-          if (healMatch) {
-            const scale = parseFloat(healMatch[1]);
-            const base = parseInt(healMatch[2]);
-            const totalHeal = Math.floor(healPower * scale + base);
-            result = `= ${totalHeal.toLocaleString()}`;
-          }
-
-          resultEl.textContent = result;
-        });
-      }
-
-      // Initial calculation
-      calculateUltimateValues();
-
-      // Add event listeners
-      healPowerInput?.addEventListener('input', calculateUltimateValues);
-      atkInput?.addEventListener('input', calculateUltimateValues);
-    });
-  }
-
-  // Initialize on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initFilters();
-      initCalculators();
-      initUltimateCalculators();
+      initSkillLevelCalc();
     });
   } else {
     initFilters();
-    initCalculators();
-    initUltimateCalculators();
+    initSkillLevelCalc();
   }
 </script>
+
+<style>
+  /* Page Container */
+  .bb-skills-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* Filter Controls */
+  .bb-skills-controls {
+    background: var(--bb-bg-secondary, #1e1e2e);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .bb-skills-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .bb-skills-search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 1rem;
+    background: var(--bb-bg-primary, #16161e);
+    border: 1px solid var(--bb-border-light, #333);
+    border-radius: 8px;
+    color: var(--bb-text-primary, #fff);
+    font-size: 0.95rem;
+  }
+
+  .bb-skills-filter-select {
+    padding: 0.6rem 1rem;
+    background: var(--bb-bg-primary, #16161e);
+    border: 1px solid var(--bb-border-light, #333);
+    border-radius: 8px;
+    color: var(--bb-text-primary, #fff);
+    font-size: 0.9rem;
+    min-width: 130px;
+  }
+
+  .bb-skills-clear-btn {
+    padding: 0.6rem 1.25rem;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 8px;
+    color: #ef4444;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .bb-skills-clear-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+  }
+
+  /* Results Count */
+  .bb-skills-results-count {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--bb-text-secondary, #888);
+  }
+
+  .bb-skills-results-count span {
+    font-weight: 700;
+    color: var(--bb-accent, #a855f7);
+  }
+
+  /* Skills Grid */
+  .bb-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Character Card */
+  .bb-skills-card {
+    background: var(--bb-bg-secondary, #1e1e2e);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--bb-border-light, #333);
+  }
+
+  .bb-skills-card.hidden {
+    display: none;
+  }
+
+  /* Card Header */
+  .bb-skills-card-header {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));
+    border-bottom: 1px solid var(--bb-border-light, #333);
+  }
+
+  .bb-skills-card-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .bb-skills-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .bb-skills-card-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bb-text-primary, #fff);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .bb-skills-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .bb-skills-rarity {
+    display: flex;
+    align-items: center;
+  }
+
+  .bb-skills-rarity img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .bb-skills-info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .bb-skills-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--bb-text-secondary, #ccc);
+  }
+
+  .bb-skills-info-item img {
+    object-fit: contain;
+  }
+
+  .bb-skills-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .bb-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    color: var(--bb-text-tertiary, #888);
+  }
+
+  /* Base Stats */
+  .bb-skills-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--bb-border-light, #333);
+  }
+
+  .bb-stat {
+    text-align: center;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--bb-text-tertiary, #666);
+    text-transform: uppercase;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--bb-text-primary, #fff);
+  }
+
+  /* Skill Rotation */
+  .bb-skills-rotation {
+    padding: 0.75rem 1rem;
+    background: rgba(99, 102, 241, 0.05);
+    border-bottom: 1px solid var(--bb-border-light, #333);
+  }
+
+  .bb-rotation-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--bb-accent, #a855f7);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .bb-rotation-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .bb-rotation-label {
+    color: var(--bb-text-tertiary, #888);
+    min-width: 60px;
+  }
+
+  .bb-rotation-sequence {
+    color: var(--bb-text-secondary, #ccc);
+    word-break: break-word;
+  }
+
+  /* Card Body */
+  .bb-skills-card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Skill Sections */
+  .bb-skill-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 0.75rem;
+  }
+
+  .bb-skill-section.basic-attack {
+  }
+
+  .bb-skill-section.action-skill {
+  }
+
+  .bb-skill-section.ultimate-skill {
+  }
+
+  .bb-skill-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bb-skill-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .bb-skill-label {
+    font-size: 0.7rem;
+    color: var(--bb-text-tertiary, #666);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .bb-skill-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--bb-text-primary, #fff);
+  }
+
+  .bb-skill-type {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .bb-skill-type[data-type="physical"] { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+  .bb-skill-type[data-type="magic"] { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+
+  .bb-skill-details {
+    font-size: 0.85rem;
+    color: var(--bb-text-secondary, #bbb);
+  }
+
+  .bb-skill-stat {
+    margin-bottom: 0.2rem;
+  }
+
+  .bb-skill-stat span {
+    color: var(--bb-text-tertiary, #888);
+  }
+
+  .bb-skill-description {
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--bb-text-primary, #fff);
+    line-height: 1.4;
+  }
+
+  /* Highlighted values in descriptions - use :global for set:html content */
+  :global(.bb-value-highlight) {
+    color: #fbbf24;
+    font-weight: 600;
+  }
+
+  :global(.bb-desc-damage-value) {
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  /* Status effect inline styling */
+  :global(.bb-status-effect) {
+    color: #f472b6;
+    font-weight: 600;
+  }
+
+  :global(.bb-status-desc) {
+    color: #94a3b8;
+    font-size: 0.85em;
+    font-weight: 400;
+  }
+
+  .bb-skill-effect {
+    margin-top: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--bb-bg-secondary);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--bb-text-secondary);
+  }
+
+  /* Skill Level Calculator */
+  .bb-skill-level-calc {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--bb-bg-secondary);
+    border-radius: 4px;
+  }
+
+  .bb-skill-level-input {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .bb-skill-level-input label {
+    font-size: 0.8rem;
+    color: var(--bb-text-tertiary);
+  }
+
+  .bb-skill-level-input input {
+    width: 45px;
+    padding: 0.25rem 0.3rem;
+    background: var(--bb-bg-primary);
+    border: 1px solid var(--bb-border);
+    border-radius: 4px;
+    color: var(--bb-text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    -moz-appearance: textfield;
+  }
+
+  /* Hide number input arrows */
+  .bb-skill-level-input input::-webkit-outer-spin-button,
+  .bb-skill-level-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .bb-skill-level-input input:focus {
+    outline: none;
+    border-color: var(--bb-border-light);
+  }
+
+  .bb-skill-level-result {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--bb-text-primary);
+  }
+
+  .bb-skill-scaling-text {
+    color: var(--bb-text-secondary);
+  }
+
+  .bb-skill-plus {
+    color: var(--bb-text-tertiary);
+  }
+
+  .bb-skill-calc-value {
+    color: var(--bb-text-primary);
+    font-weight: 600;
+  }
+
+  /* Ultimate Ranks */
+  .bb-ultimate-ranks {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .bb-ultimate-rank {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+  }
+
+  .bb-ultimate-rank:last-child {
+    border-bottom: none;
+  }
+
+  .bb-ult-rank-label {
+    color: #f59e0b;
+    font-weight: 700;
+    min-width: 30px;
+  }
+
+  .bb-ult-rank-effect {
+    color: var(--bb-text-secondary, #ccc);
+  }
+
+  /* Passives */
+  .bb-passives-section {
+    border-top: 1px solid var(--bb-border-light, #333);
+    padding-top: 0.75rem;
+  }
+
+  .bb-passives-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--bb-text-tertiary, #888);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .bb-passives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-passive-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .bb-passive-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .bb-passive-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bb-text-primary, #fff);
+  }
+
+  .bb-passive-effect {
+    font-size: 0.75rem;
+    color: var(--bb-text-secondary, #aaa);
+  }
+
+  /* No Results */
+  .bb-skills-no-results {
+    display: none;
+    text-align: center;
+    padding: 3rem;
+    background: var(--bb-bg-secondary, #1e1e2e);
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+
+  .bb-skills-no-results.visible {
+    display: block;
+  }
+
+  .bb-skills-no-results h3 {
+    color: var(--bb-text-primary, #fff);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .bb-skills-no-results p {
+    color: var(--bb-text-tertiary, #888);
+    margin: 0;
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 900px) {
+    .bb-skills-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .bb-skills-page {
+      padding: 0.5rem;
+    }
+
+    .bb-skills-controls {
+      padding: 0.75rem;
+      border-radius: 10px;
+    }
+
+    .bb-skills-filter-row {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bb-skills-search-input,
+    .bb-skills-filter-select,
+    .bb-skills-clear-btn {
+      width: 100%;
+      min-width: unset;
+      font-size: 16px; /* Prevent iOS zoom on focus */
+    }
+
+    .bb-skills-card {
+      border-radius: 12px;
+    }
+
+    .bb-skills-card-header {
+      flex-direction: row;
+      gap: 0.75rem;
+      padding: 0.75rem;
+    }
+
+    .bb-skills-card-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+    }
+
+    .bb-skills-card-name {
+      font-size: 1rem;
+    }
+
+    .bb-skills-rarity img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .bb-skills-info-row {
+      gap: 0.5rem;
+    }
+
+    .bb-skills-info-item {
+      font-size: 0.8rem;
+    }
+
+    .bb-skills-rotation {
+      padding: 0.6rem 0.75rem;
+    }
+
+    .bb-rotation-title {
+      font-size: 0.75rem;
+    }
+
+    .bb-rotation-row {
+      font-size: 0.75rem;
+    }
+
+    .bb-skills-card-body {
+      padding: 0.75rem;
+      gap: 0.75rem;
+    }
+
+    .bb-skill-section {
+      padding: 0.6rem;
+      border-radius: 8px;
+    }
+
+    .bb-skill-header {
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .bb-skill-label {
+      font-size: 0.65rem;
+    }
+
+    .bb-skill-name {
+      font-size: 0.85rem;
+    }
+
+    .bb-skill-details {
+      font-size: 0.8rem;
+    }
+
+    .bb-skill-description {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.5rem;
+    }
+
+    .bb-skill-level-calc {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.35rem 0.5rem;
+    }
+
+    .bb-skill-level-input input {
+      width: 50px;
+      padding: 0.3rem 0.25rem;
+      font-size: 16px; /* Prevent iOS zoom */
+    }
+
+    .bb-skill-level-result {
+      font-size: 0.8rem;
+    }
+
+    .bb-ultimate-rank {
+      font-size: 0.75rem;
+      padding: 0.25rem 0;
+    }
+
+    .bb-passives-section {
+      padding-top: 0.6rem;
+    }
+
+    .bb-passives-title {
+      font-size: 0.75rem;
+    }
+
+    .bb-passive-item {
+      padding: 0.4rem;
+      border-radius: 6px;
+    }
+
+    .bb-passive-name {
+      font-size: 0.75rem;
+    }
+
+    .bb-passive-effect {
+      font-size: 0.7rem;
+    }
+
+    .bb-skills-no-results {
+      padding: 2rem 1rem;
+    }
+
+    /* Status effect inline descriptions on mobile */
+    :global(.bb-status-desc) {
+      font-size: 0.75em;
+      display: inline;
+    }
+  }
+
+  /* Small mobile */
+  @media (max-width: 400px) {
+    .bb-skills-card-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .bb-skills-card-avatar {
+      width: 80px;
+      height: 80px;
+    }
+
+    .bb-skills-info-row {
+      justify-content: center;
+    }
+  }
+</style>

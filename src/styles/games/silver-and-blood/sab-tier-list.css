@@ -38,11 +38,6 @@
   color: #ffffff;
 }
 
-.control-btn:hover:not(:disabled) {
-  background: var(--sab-calm-red);
-  border-color: var(--sab-calm-red);
-  color: #ffffff;
-}
 
 .control-btn:disabled {
   cursor: not-allowed;
@@ -300,11 +295,6 @@
   gap: 0.5rem;
 }
 
-.tier-character-card:hover {
-  border-color: var(--sab-calm-red);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(194, 107, 107, 0.2);
-}
 
 .tier-character-card.draggable {
   cursor: grab;
@@ -325,17 +315,44 @@
   height: 90px;
   margin: 0 auto 0.5rem;
   border-radius: 8px;
-  overflow: hidden;
-  border: 2px solid var(--sab-border-light);
+  overflow: visible;
   position: relative;
   background: var(--sab-card-bg);
   flex-shrink: 0;
 }
 
-.character-image-wrapper img {
-  width: 100%;
-  height: 100%;
+.character-image-wrapper img:not(.tier-rarity-frame):not(.tier-icon) {
+  width: 90px;
+  height: 90px;
   object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--sab-border-light);
+  image-rendering: auto;
+}
+
+.tier-rarity-frame {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  image-rendering: auto;
+  z-index: 2;
+}
+
+/* Character icons row */
+.character-icons-row {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.tier-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .character-name {
@@ -423,16 +440,10 @@
   flex-shrink: 0;
 }
 
-.pool-character-card:hover {
-  border-color: var(--sab-calm-red);
-  transform: scale(1.05);
-}
 
 .pool-character-card.selected {
   border-color: var(--sab-muted-gold);
-  background: rgba(212, 175, 55, 0.1);
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  background: rgba(212, 175, 55, 0.05);
 }
 
 .pool-character-card.dragging {
@@ -444,12 +455,45 @@
   transition: transform 0.1s ease;
 }
 
-.pool-character-card img {
+/* Pool image wrapper */
+.pool-image-wrapper {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+}
+
+.pool-image-wrapper img:not(.pool-rarity-frame):not(.pool-icon) {
   width: 75px;
   height: 75px;
   object-fit: cover;
   border-radius: 6px;
   border: 2px solid var(--sab-border-light);
+  image-rendering: auto;
+}
+
+.pool-rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  image-rendering: auto;
+  z-index: 2;
+}
+
+/* Pool character icons */
+.pool-character-icons {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.pool-icon {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
 }
 
 .pool-character-name {
@@ -512,10 +556,6 @@
   border-radius: 3px;
 }
 
-.pool-characters::-webkit-scrollbar-thumb:hover,
-.side-pool::-webkit-scrollbar-thumb:hover {
-  background: var(--sab-dark-red);
-}
 
 /* ============================================ */
 /* 11. TIER LEGEND */
@@ -653,11 +693,28 @@
     border-radius: 6px;
   }
 
-  .pool-character-card img {
+  .pool-image-wrapper {
+    width: 55px;
+    height: 55px;
+  }
+
+  .pool-image-wrapper img:not(.pool-rarity-frame):not(.pool-icon) {
     width: 55px;
     height: 55px;
     border: 1px solid var(--sab-border-light);
     border-radius: 4px;
+  }
+
+  .pool-rarity-frame {
+    width: 14px;
+    height: 14px;
+    top: -3px;
+    right: -3px;
+  }
+
+  .pool-icon {
+    width: 10px;
+    height: 10px;
   }
 
   .pool-character-name {
@@ -741,6 +798,28 @@
     border-radius: 4px;
   }
 
+  .tier-character-card .character-image-wrapper img:not(.tier-rarity-frame):not(.tier-icon) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tier-character-card .tier-rarity-frame {
+    width: 14px;
+    height: 14px;
+    top: -4px;
+    right: -4px;
+  }
+
+  .tier-character-card .tier-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .tier-character-card .character-icons-row {
+    gap: 0.15rem;
+    margin-top: 0.15rem;
+  }
+
   .tier-character-card .character-name {
     font-size: 0.55rem;
     font-weight: 700;
@@ -807,6 +886,28 @@
     border-radius: 3px;
   }
 
+  .tier-character-card .character-image-wrapper img:not(.tier-rarity-frame):not(.tier-icon) {
+    width: 35px;
+    height: 35px;
+  }
+
+  .tier-character-card .tier-rarity-frame {
+    width: 12px;
+    height: 12px;
+    top: -3px;
+    right: -3px;
+  }
+
+  .tier-character-card .tier-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .tier-character-card .character-icons-row {
+    gap: 0.1rem;
+    margin-top: 0.1rem;
+  }
+
   .tier-character-card .character-name {
     font-size: 0.5rem;
     max-width: 55px;
@@ -843,10 +944,27 @@
     border-radius: 4px;
   }
 
-  .pool-character-card img {
+  .pool-image-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .pool-image-wrapper img:not(.pool-rarity-frame):not(.pool-icon) {
     width: 45px;
     height: 45px;
     border-radius: 3px;
+  }
+
+  .pool-rarity-frame {
+    width: 12px;
+    height: 12px;
+    top: -2px;
+    right: -2px;
+  }
+
+  .pool-icon {
+    width: 8px;
+    height: 8px;
   }
 
   .pool-character-name {

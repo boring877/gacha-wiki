@@ -1,12 +1,34 @@
 ---
-import SABCharacterImage from '../SABCharacterImage.astro';
+import SABCharacterIcon from '../SABCharacterIcon.astro';
+import SABFactionIcon from '../SABFactionIcon.astro';
+import { Image } from 'astro:assets';
 import { characters } from '../../../data/silver-and-blood/characters.js';
+
+// Import role icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+
+// Import rarity icons
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
 
 export interface Props {
   showInMaker?: boolean;
 }
 
 const { showInMaker = false } = Astro.props;
+
+// Icon maps
+const roleImages: Record<string, ImageMetadata> = {
+  Assassin: roleAssassin, Defender: roleDefender, Enchanter: roleEnchanter,
+  Marksman: roleMarksman, Sorcerer: roleSorcerer, Warrior: roleWarrior,
+};
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
 ---
 
 <div class="pool-characters" id="character-pool">
@@ -17,10 +39,16 @@ const { showInMaker = false } = Astro.props;
         data-character={char.name}
         draggable={showInMaker}
       >
-        <SABCharacterImage imageName={char.image} alt={char.name} size="mobile" />
+        <div class="pool-image-wrapper">
+          <SABCharacterIcon name={char.name} variant="Base" size="large" width={150} height={150} loading="lazy" />
+          {rarityImages[char.rarity] && (
+            <Image src={rarityImages[char.rarity]} alt={char.rarity} class="pool-rarity-frame" width={24} height={24} loading="lazy" />
+          )}
+        </div>
         <div class="pool-character-name">{char.name}</div>
-        <div class="pool-character-badges">
-          <span class={`pool-mini-badge rarity-${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+        <div class="pool-character-icons">
+          {roleImages[char.class] && <Image src={roleImages[char.class]} alt={char.class} width={12} height={12} class="pool-icon" title={char.class} />}
+          {char.faction && <SABFactionIcon faction={char.faction} width={12} height={12} class="pool-icon" />}
         </div>
       </div>
     ))

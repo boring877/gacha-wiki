@@ -111,34 +111,49 @@
 }
 
 /* Character portraits styling */
-.sab-body .character-portrait {
+.character-portrait {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.character-portrait img:not(.rarity-frame) {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--sab-rank-silver);
-  flex-shrink: 0;
   display: block;
-  max-width: none;
-  max-height: none;
-  opacity: 1;
-  visibility: visible;
-  /* Enhanced image rendering for supersampling */
-  image-rendering: -webkit-optimize-contrast;
+  border-radius: 8px;
+  border: 2px solid var(--sab-blue-silver);
   image-rendering: auto;
-  image-rendering: -webkit-auto;
-  image-rendering: -moz-auto;
-  image-rendering: -o-auto;
-  image-rendering: smooth;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: -moz-crisp-edges;
-  /* Force GPU acceleration */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  -webkit-font-smoothing: antialiased;
-  will-change: transform;
+}
+
+.rarity-frame {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  image-rendering: auto;
+}
+
+/* Character Icons Row */
+.character-icons {
+  display: flex;
+  gap: var(--sab-spacing-xs);
+  align-items: center;
+}
+
+.char-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Character Title */
+.character-title {
+  color: var(--sab-text-medium);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
 }
 
 .character-select-card {
@@ -267,8 +282,8 @@
   display: block;
 }
 
-/* Character Info Card for Rankings Display */
-.rankings-display .character-info {
+/* Character Detail Card for Rankings Display */
+.character-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,6 +294,27 @@
   background: var(--sab-character-info-bg);
   border-radius: var(--sab-radius-lg);
   border: 1px solid var(--sab-card-border);
+}
+
+.detail-name {
+  color: var(--sab-text-light);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.detail-class {
+  color: var(--sab-text-medium);
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Stat value display in ranking cards */
+.stat-value-display {
+  color: var(--sab-text-white);
+  font-size: 1rem;
+  margin-top: var(--sab-spacing-sm);
+  font-weight: 600;
 }
 
 .character-image {
@@ -589,9 +625,19 @@
     min-width: 70px;
   }
 
-  .character-portrait {
+  .character-portrait img:not(.rarity-frame) {
     width: 70px;
     height: 70px;
+  }
+
+  .rarity-frame {
+    width: 20px;
+    height: 20px;
+  }
+
+  .char-icon {
+    width: 16px;
+    height: 16px;
   }
 
   .character-select-card .character-info {
@@ -612,9 +658,17 @@
     font-size: 0.85rem;
   }
 
-  .rankings-display .character-info {
+  .character-detail {
     padding: 1rem;
     margin-bottom: var(--sab-spacing-lg);
+  }
+
+  .detail-name {
+    font-size: 1.3rem;
+  }
+
+  .detail-class {
+    font-size: 0.9rem;
   }
 
   .character-image {
@@ -713,9 +767,25 @@
     min-width: 65px;
   }
 
-  .character-portrait {
+  .character-portrait img:not(.rarity-frame) {
     width: 60px;
     height: 60px;
+  }
+
+  .rarity-frame {
+    width: 18px;
+    height: 18px;
+    top: -3px;
+    right: -3px;
+  }
+
+  .char-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .character-icons {
+    gap: 4px;
   }
 
   .character-select-card .character-info {
@@ -737,8 +807,16 @@
     font-size: 0.8rem;
   }
 
-  .rankings-display .character-info {
+  .character-detail {
     padding: 0.75rem;
+  }
+
+  .detail-name {
+    font-size: 1.2rem;
+  }
+
+  .detail-class {
+    font-size: 0.85rem;
   }
 
   .character-image {

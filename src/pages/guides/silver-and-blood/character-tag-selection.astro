@@ -1,33 +1,196 @@
 ---
 import CharacterTagSelectionLayout from '../../../layouts/silver-and-blood/CharacterTagSelectionLayout.astro';
-import CharacterTagSelectionComponent from '../../../components/silver-and-blood/CharacterTagSelection.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
+import characterStatsData from '../../../data/silver-and-blood/character-stats.json';
+import charactersInfoData from '../../../data/silver-and-blood/characters_info.json';
 
+// Import icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Icon maps
+const roleImages: Record<string, ImageMetadata> = {
+  Assassin: roleAssassin, Defender: roleDefender, Enchanter: roleEnchanter,
+  Marksman: roleMarksman, Sorcerer: roleSorcerer, Warrior: roleWarrior,
+};
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonFull, 'filter_icon_moon2.png': moonCrescent, 'filter_icon_moon3.png': moonNew,
+};
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical, 'level_info_icon_attack_03.png': dmgPhysical, 'level_info_icon_attack_04.png': dmgPierce,
+};
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight, 'EquipType_Medium.png': equipMedium, 'EquipType_Heavy.png': equipHeavy,
+};
+
+// Build info map
+const infoMap = new Map(charactersInfoData.characters.map((c: any) => [c.id, c]));
+
+// Build characters list
+const characters = characterStatsData.characters
+  .filter((c: any) => ['SSR', 'SR', 'R'].includes(c.rarity))
+  .map((s: any) => {
+    const info = infoMap.get(s.id) || {};
+    return {
+      id: s.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+      name: s.name,
+      title: info.title || '',
+      rarity: s.rarity,
+      class: s.class,
+      faction: info.camp || '',
+      moonPhaseIcon: info.moonPhaseIcon || '',
+      damageTypeIcon: info.damageTypeIcon || '',
+      equipmentTypeIcon: info.equipmentTypeIcon || '',
+      tags: info.tags || [],
+    };
+  });
+
+const allTags = [...new Set(characters.flatMap((c: any) => c.tags))].sort();
 const title = 'Character Tag Selection - Silver and Blood';
-const description =
-  'Filter and discover Silver and Blood characters by their combat tags and abilities. Find characters with specific roles like Buff, Healing, AoE DMG, and more.';
+const description = 'Filter and discover Silver and Blood characters by their combat tags and abilities.';
 ---
 
-<CharacterTagSelectionLayout
-  title={title}
-  description={description}
-  gameTitle="Character Tag Selection"
->
+<CharacterTagSelectionLayout title={title} description={description} gameTitle="Character Tag Selection">
   <section class="content-section">
     <div class="tag-selection-intro">
-      <h2 class="section-title">Character Tag Selection</h2>
-      <p class="intro-text">
-        Filter characters by their combat roles and special abilities. Select tags to discover
-        characters that match your strategy.
-      </p>
+      <p class="intro-text">Filter characters by their combat roles and special abilities.</p>
     </div>
 
-    <CharacterTagSelectionComponent />
+    <div class="character-tag-selector">
+      <div class="tag-selector">
+        <div class="all-tags">
+          <h3 class="tags-title">Available Tags</h3>
+          <div class="tag-buttons" id="tag-buttons">
+            {allTags.map(tag => <button class="tag-btn" data-tag={tag} type="button">{tag}</button>)}
+          </div>
+        </div>
+        <div class="selected-tags-container" id="selected-tags-container" style="display:none">
+          <h3>Selected Tags:</h3>
+          <div class="selected-tags" id="selected-tags"></div>
+          <button class="clear-tags-btn" id="clear-tags-btn" type="button">Clear All</button>
+        </div>
+      </div>
 
-    <!-- Back to Database Link -->
+      <div class="character-results">
+        <div class="results-header">
+          <h2>Matching Characters</h2>
+          <span class="match-count" id="match-count">{characters.length} characters found</span>
+        </div>
+
+        <div class="character-grid" id="character-grid">
+          {characters.map(char => (
+            <a href={`/guides/silver-and-blood/characters/${char.id}/`} class="character-card" data-tags={JSON.stringify(char.tags)}>
+              <div class="character-portrait">
+                <SABCharacterIcon name={char.name} variant="Base" size="large" width={100} height={100} loading="lazy" />
+                <Image src={rarityImages[char.rarity]} alt={char.rarity} class="rarity-frame" width={32} height={32} loading="lazy" />
+              </div>
+              <div class="character-info">
+                <h3 class="character-name">{char.name}</h3>
+                {char.title && <p class="character-title">{char.title}</p>}
+                <div class="character-icons">
+                  {roleImages[char.class] && <Image src={roleImages[char.class]} alt={char.class} width={20} height={20} class="char-icon" />}
+                  {char.faction && <SABFactionIcon faction={char.faction} width={20} height={20} class="char-icon" />}
+                  {moonPhaseImages[char.moonPhaseIcon] && <Image src={moonPhaseImages[char.moonPhaseIcon]} alt="Moon" width={20} height={20} class="char-icon" />}
+                  {damageTypeImages[char.damageTypeIcon] && <Image src={damageTypeImages[char.damageTypeIcon]} alt="Damage" width={20} height={20} class="char-icon" />}
+                  {equipmentTypeImages[char.equipmentTypeIcon] && <Image src={equipmentTypeImages[char.equipmentTypeIcon]} alt="Equipment" width={20} height={20} class="char-icon" />}
+                </div>
+                {char.tags.length > 0 && (
+                  <div class="character-tags">
+                    {char.tags.map((tag: string) => <span class={`tag-badge ${tag.toLowerCase().replace(/\s+/g, '-')}`}>{tag}</span>)}
+                  </div>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+        <div class="no-results" id="no-results" style="display:none">
+          <p>No characters match the selected tags.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="back-button-container">
-      <a href="/guides/silver-and-blood/characters/" class="back-button">
-        ← Back to Character Database
-      </a>
+      <a href="/guides/silver-and-blood/characters/" class="back-button">← Back to Character Database</a>
     </div>
   </section>
 </CharacterTagSelectionLayout>
+
+<script>
+  const $ = (id: string) => document.getElementById(id)!;
+  const tagButtons = $('tag-buttons');
+  const selectedTagsContainer = $('selected-tags-container');
+  const selectedTagsDiv = $('selected-tags');
+  const characterGrid = $('character-grid');
+  const matchCount = $('match-count');
+  const noResults = $('no-results');
+
+  let selectedTags: string[] = [];
+  const toClass = (t: string) => t.toLowerCase().replace(/\s+/g, '-');
+
+  function updateUI() {
+    // Update selected tags display
+    if (selectedTags.length === 0) {
+      selectedTagsContainer.style.display = 'none';
+    } else {
+      selectedTagsContainer.style.display = 'block';
+      selectedTagsDiv.innerHTML = selectedTags.map(t =>
+        `<span class="selected-tag tag-badge ${toClass(t)}">${t}<button class="remove-tag" data-tag="${t}" type="button">×</button></span>`
+      ).join('');
+    }
+
+    // Update tag buttons
+    tagButtons.querySelectorAll('.tag-btn').forEach(btn => {
+      const tag = (btn as HTMLElement).dataset.tag!;
+      btn.className = selectedTags.includes(tag) ? `tag-btn tag-badge ${toClass(tag)}` : 'tag-btn';
+    });
+
+    // Filter characters
+    let count = 0;
+    characterGrid.querySelectorAll('.character-card').forEach(card => {
+      const tags: string[] = JSON.parse((card as HTMLElement).dataset.tags || '[]');
+      const match = selectedTags.length === 0 || selectedTags.every(t => tags.includes(t));
+      (card as HTMLElement).style.display = match ? '' : 'none';
+      if (match) count++;
+    });
+
+    matchCount.textContent = `${count} character${count !== 1 ? 's' : ''} found`;
+    noResults.style.display = count === 0 ? 'block' : 'none';
+  }
+
+  function toggle(tag: string) {
+    const i = selectedTags.indexOf(tag);
+    i > -1 ? selectedTags.splice(i, 1) : selectedTags.push(tag);
+    updateUI();
+  }
+
+  tagButtons.addEventListener('click', e => {
+    const btn = (e.target as HTMLElement).closest('.tag-btn');
+    if (btn) toggle((btn as HTMLElement).dataset.tag!);
+  });
+
+  selectedTagsDiv.addEventListener('click', e => {
+    const btn = (e.target as HTMLElement).closest('.remove-tag');
+    if (btn) { e.preventDefault(); toggle((btn as HTMLElement).dataset.tag!); }
+  });
+
+  $('clear-tags-btn').addEventListener('click', () => { selectedTags = []; updateUI(); });
+</script>

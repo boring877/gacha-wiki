@@ -688,26 +688,37 @@
   line-height: 1.25;
 }
 
-.bb-character-info-badges {
+.bb-character-info-rarity {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
   align-items: center;
 }
 
-.bb-character-info-badges .bb-badge {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
+.bb-character-info-rarity img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* Quick Stats (Element & Role) */
+.bb-character-info-quick-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.bb-character-info-quick-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  line-height: 1;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
 }
 
-.bb-character-info-badges .bb-badge img {
-  width: 14px;
-  height: 14px;
-  vertical-align: middle;
+.bb-character-info-quick-item img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 /* Card Body */
@@ -717,6 +728,54 @@
   flex-direction: column;
   gap: 0.75rem;
   flex: 1;
+}
+
+/* Combat Info Section in Card */
+.bb-character-info-combat {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+}
+
+.bb-character-info-combat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-character-info-combat-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-character-info-combat-icon .position-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-character-info-combat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.bb-character-info-combat-label {
+  font-size: 0.65rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.bb-character-info-combat-value {
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+  font-weight: 500;
 }
 
 /* Profile Section in Card */
@@ -891,5 +950,13 @@
 
   .bb-character-info-profile-grid {
     grid-template-columns: 1fr;
+  }
+
+  .bb-character-info-combat {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bb-character-info-combat-value {
+    font-size: 0.8rem;
   }
 }

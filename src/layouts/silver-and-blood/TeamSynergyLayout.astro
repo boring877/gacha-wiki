@@ -24,10 +24,9 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
-  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
-const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -35,29 +34,69 @@ const { title, description, gameTitle, heroImage, breadcrumbs } = Astro.props;
     <SABBaseHead
       title={title}
       description={description || ''}
-      breadcrumbs={breadcrumbs}
-      shouldPreloadDefaultImage={false}
     />
     <GameSEO
       gameKey="silver-and-blood"
       title={title}
       description={description}
       additionalKeywords={[
-        'silver and blood team synergy',
+        'silver and blood team builds',
         'silver and blood team building',
         'silver and blood team composition',
         'silver and blood team builder',
-        'sab team synergy',
+        'sab team builds',
         'silver and blood best teams',
         'silver and blood team guide',
         'silver and blood party composition',
-        'team synergy calculator',
+        'team build calculator',
         'silver and blood team formations',
         'silver and blood squad building',
         'silver and blood optimal teams',
+        'silver and blood meta teams',
+        'silver and blood clan hunt teams',
+        'silver and blood boss teams',
+        'sab best team composition',
       ]}
     />
 
+    <!-- Structured Data for Team Builds -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Silver and Blood Team Builds Guide",
+        "description": "Complete team build database for Silver and Blood. Find the best team compositions for Clan Hunt, Boss fights, and general content.",
+        "url": "https://gachawiki.info/guides/silver-and-blood/team-synergy/",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "GachaWiki",
+          "url": "https://gachawiki.info"
+        },
+        "about": {
+          "@type": "VideoGame",
+          "name": "Silver and Blood"
+        },
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Team Builds",
+          "description": "Recommended team compositions for Silver and Blood",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "SSS Tier Teams",
+              "description": "Top tier team compositions"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "SS Tier Teams",
+              "description": "Excellent team compositions"
+            }
+          ]
+        }
+      }
+    </script>
     <slot name="head" />
     <Analytics />
   </head>

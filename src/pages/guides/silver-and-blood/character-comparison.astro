@@ -1,26 +1,387 @@
 ---
 import CharacterComparisonLayout from '../../../layouts/silver-and-blood/CharacterComparisonLayout.astro';
-import CharacterGrid from '../../../components/silver-and-blood/CharacterGrid.astro';
-import { characters } from '../../../data/silver-and-blood/characters.js';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import SABFactionIcon from '../../../components/silver-and-blood/SABFactionIcon.astro';
+import { Image } from 'astro:assets';
+import { characters } from '../../../data/silver-and-blood/character-rankings.js';
+
+// Import icons
+import roleAssassin from '../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
+import roleDefender from '../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
+import roleEnchanter from '../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
+import roleMarksman from '../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
+import roleSorcerer from '../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
+import roleWarrior from '../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+import moonNew from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonCrescent from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
+import moonFull from '../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+import dmgMagical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
+import dmgPhysical from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
+import dmgPierce from '../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+import equipLight from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
+import equipMedium from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
+import equipHeavy from '../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+
+// Icon maps
+const roleImages: Record<string, ImageMetadata> = {
+  Assassin: roleAssassin, Defender: roleDefender, Enchanter: roleEnchanter,
+  Marksman: roleMarksman, Sorcerer: roleSorcerer, Warrior: roleWarrior,
+};
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
+const moonPhaseImages: Record<string, ImageMetadata> = {
+  'filter_icon_moon1.png': moonFull, 'filter_icon_moon2.png': moonCrescent, 'filter_icon_moon3.png': moonNew,
+};
+const damageTypeImages: Record<string, ImageMetadata> = {
+  'level_info_icon_attack_02.png': dmgMagical, 'level_info_icon_attack_03.png': dmgPhysical, 'level_info_icon_attack_04.png': dmgPierce,
+};
+const equipmentTypeImages: Record<string, ImageMetadata> = {
+  'EquipType_Light.png': equipLight, 'EquipType_Medium.png': equipMedium, 'EquipType_Heavy.png': equipHeavy,
+};
+
+// Sort characters alphabetically
+const sortedCharacters = [...characters].sort((a, b) => a.name.localeCompare(b.name));
 
 const title = 'Character Comparison Tool - Silver and Blood';
-const description =
-  'Compare multiple Silver and Blood characters side by side. Click characters to select them and view their basic information and stats.';
+const description = 'Compare multiple Silver and Blood characters side by side. Click characters to select them and view their stats.';
 ---
 
 <CharacterComparisonLayout title={title} description={description}>
   <div class="comparison-page-intro">
     <h3>Silver & Blood Character Comparison</h3>
     <p>
-      Click on any character to select them for comparison. You can select up to <strong
-        >4 characters</strong
-      >
-      to compare their <strong>stats</strong> and <strong>basic information</strong> side by side. Use
-      the filters to narrow down your search and click the sort buttons to order characters.
+      Click on any character to select them for comparison. You can select up to <strong>4 characters</strong>
+      to compare their <strong>stats</strong> and <strong>basic information</strong> side by side.
     </p>
+    <p class="char-count">{sortedCharacters.length} characters available</p>
   </div>
 
-  <div class="character-grid-container">
-    <CharacterGrid characters={characters} />
+  <div id="character-grid-container" class="character-grid-page">
+    <!-- Filter Controls -->
+    <div class="filters-section">
+      <div class="filter-controls">
+        <select class="filter-select" id="rarity-filter">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+        <select class="filter-select" id="class-filter">
+          <option value="">All Classes</option>
+          <option value="Warrior">Warrior</option>
+          <option value="Assassin">Assassin</option>
+          <option value="Defender">Defender</option>
+          <option value="Marksman">Marksman</option>
+          <option value="Sorcerer">Sorcerer</option>
+          <option value="Enchanter">Enchanter</option>
+        </select>
+        <select class="filter-select" id="faction-filter">
+          <option value="">All Factions</option>
+          <option value="Kingdom">Kingdom</option>
+          <option value="Ancestors">Ancestors</option>
+          <option value="Church">Church</option>
+          <option value="Bloodborn">Bloodborn</option>
+        </select>
+      </div>
+      <div class="sort-controls">
+        <button class="sort-btn" data-sort="hp" type="button">HP</button>
+        <button class="sort-btn" data-sort="atk" type="button">ATK</button>
+        <button class="sort-btn" data-sort="pdef" type="button">P.DEF</button>
+        <button class="sort-btn" data-sort="mdef" type="button">M.DEF</button>
+        <button class="reset-btn" id="clear-filters" type="button">Reset</button>
+      </div>
+    </div>
+
+    <!-- Character Grid -->
+    <div class="character-grid" id="character-grid">
+      {sortedCharacters.map(char => (
+        <button
+          type="button"
+          class="character-card"
+          data-character-id={char.id}
+          data-rarity={char.rarity}
+          data-class={char.class}
+          data-faction={char.faction}
+          data-hp={char.stats.hp}
+          data-atk={char.stats.atk}
+          data-pdef={char.stats.pDef}
+          data-mdef={char.stats.mDef}
+          aria-pressed="false"
+        >
+          <div class="character-card-portrait">
+            <SABCharacterIcon name={char.name} variant="Base" size="large" width={160} height={160} loading="lazy" />
+            <Image src={rarityImages[char.rarity]} alt={char.rarity} class="rarity-frame" width={48} height={48} loading="lazy" />
+          </div>
+          <div class="character-card-content">
+            <h3 class="character-card-name">{char.name}</h3>
+            {char.title && <p class="character-card-title">{char.title}</p>}
+            <div class="character-icons">
+              {roleImages[char.class] && <Image src={roleImages[char.class]} alt={char.class} width={18} height={18} class="char-icon" title={char.class} />}
+              {char.faction && <SABFactionIcon faction={char.faction} width={18} height={18} class="char-icon" />}
+              {moonPhaseImages[char.moonPhaseIcon] && <Image src={moonPhaseImages[char.moonPhaseIcon]} alt="Moon" width={18} height={18} class="char-icon" title={char.moonPhase} />}
+              {damageTypeImages[char.damageTypeIcon] && <Image src={damageTypeImages[char.damageTypeIcon]} alt="Damage" width={18} height={18} class="char-icon" title={char.attackType} />}
+              {equipmentTypeImages[char.equipmentTypeIcon] && <Image src={equipmentTypeImages[char.equipmentTypeIcon]} alt="Equipment" width={18} height={18} class="char-icon" title={char.equipmentType} />}
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
   </div>
+
+  <!-- Comparison Section -->
+  <div class="comparison-section" id="comparison-section" style="display: none;">
+    <div class="comparison-header">
+      <h2 id="comparison-title">Selected Characters (0/4)</h2>
+      <button class="clear-comparison-btn" id="clear-comparison" type="button">Clear All</button>
+    </div>
+
+    <!-- Desktop Table -->
+    <div class="comparison-table-wrapper">
+      <div class="comparison-table-container">
+        <div class="comparison-character-headers" id="comparison-headers">
+          {sortedCharacters.map(char => (
+            <div class="comparison-character-column" data-comparison-id={char.id} style="display: none;">
+              <div class="comparison-character-card">
+                <div class="character-portrait-container">
+                  <SABCharacterIcon name={char.name} variant="Base" size="large" width={200} height={200} loading="lazy" class="comparison-portrait" />
+                </div>
+                <h3 class="character-name">{char.name}</h3>
+                <div class="comparison-icons">
+                  {roleImages[char.class] && <Image src={roleImages[char.class]} alt={char.class} width={20} height={20} class="comp-icon" />}
+                  {char.faction && <SABFactionIcon faction={char.faction} width={20} height={20} class="comp-icon" />}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="comparison-stats-container">
+          <div class="comparison-section-block">
+            <div class="comparison-section-header"><h4>Basic Information</h4></div>
+            <div class="comparison-stat-row"><div class="stat-label">Rarity</div><div class="stat-values" id="stat-rarity"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">Class</div><div class="stat-values" id="stat-class"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">Faction</div><div class="stat-values" id="stat-faction"></div></div>
+          </div>
+          <div class="comparison-section-block">
+            <div class="comparison-section-header"><h4>Combat Stats</h4></div>
+            <div class="comparison-stat-row"><div class="stat-label">HP</div><div class="stat-values numeric" id="stat-hp"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">ATK</div><div class="stat-values numeric" id="stat-atk"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">P.DEF</div><div class="stat-values numeric" id="stat-pdef"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">M.DEF</div><div class="stat-values numeric" id="stat-mdef"></div></div>
+          </div>
+          <div class="comparison-section-block">
+            <div class="comparison-section-header"><h4>Character Details</h4></div>
+            <div class="comparison-stat-row"><div class="stat-label">Equipment</div><div class="stat-values" id="stat-equipment"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">Moon Phase</div><div class="stat-values" id="stat-moon"></div></div>
+            <div class="comparison-stat-row"><div class="stat-label">Attack Type</div><div class="stat-values" id="stat-attack"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile View -->
+    <div class="mobile-comparison-section" id="mobile-comparison">
+      {sortedCharacters.map(char => (
+        <div class="mobile-comparison-character" data-mobile-id={char.id} style="display: none;">
+          <div class="mobile-character-header">
+            <SABCharacterIcon name={char.name} variant="Base" size="medium" width={120} height={120} loading="lazy" class="mobile-comparison-portrait" />
+            <div class="mobile-character-info">
+              <h4 class="mobile-character-name">{char.name}</h4>
+              <div class="mobile-character-badges">
+                <span class={`rarity-badge ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+                <span class={`class-badge ${char.class.toLowerCase()}`}>{char.class}</span>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-character-stats">
+            <div class="mobile-stat-item"><span class="mobile-stat-label">Faction</span><span class="mobile-stat-value">{char.faction || 'N/A'}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">HP</span><span class="mobile-stat-value">{char.stats.hp.toLocaleString()}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">ATK</span><span class="mobile-stat-value">{char.stats.atk.toLocaleString()}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">P.DEF</span><span class="mobile-stat-value">{char.stats.pDef.toLocaleString()}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">M.DEF</span><span class="mobile-stat-value">{char.stats.mDef.toLocaleString()}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">Equipment</span><span class="mobile-stat-value">{char.equipmentType || 'N/A'}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">Moon Phase</span><span class="mobile-stat-value">{char.moonPhase || 'N/A'}</span></div>
+            <div class="mobile-stat-item"><span class="mobile-stat-label">Attack Type</span><span class="mobile-stat-value">{char.attackType || 'N/A'}</span></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script define:vars={{ characters: sortedCharacters }}>
+    const $ = (id) => document.getElementById(id);
+    const grid = $('character-grid');
+    const cards = Array.from(grid.querySelectorAll('.character-card'));
+    const comparisonSection = $('comparison-section');
+    const comparisonTitle = $('comparison-title');
+
+    // Filter elements
+    const rarityFilter = $('rarity-filter');
+    const classFilter = $('class-filter');
+    const factionFilter = $('faction-filter');
+    const sortBtns = document.querySelectorAll('.sort-btn');
+    const clearFiltersBtn = $('clear-filters');
+    const clearComparisonBtn = $('clear-comparison');
+
+    // State
+    let selectedIds = [];
+    const maxSelected = 4;
+    const charMap = new Map(characters.map(c => [c.id, c]));
+
+    function updateCardStates() {
+      cards.forEach(card => {
+        const id = card.dataset.characterId;
+        const isSelected = selectedIds.includes(id);
+        card.classList.toggle('selected', isSelected);
+        card.setAttribute('aria-pressed', isSelected.toString());
+      });
+    }
+
+    function updateComparisonDisplay() {
+      if (selectedIds.length === 0) {
+        comparisonSection.style.display = 'none';
+        return;
+      }
+
+      comparisonSection.style.display = 'block';
+      comparisonTitle.textContent = `Selected Characters (${selectedIds.length}/${maxSelected})`;
+
+      // Hide all columns first
+      document.querySelectorAll('.comparison-character-column').forEach(col => col.style.display = 'none');
+      document.querySelectorAll('.mobile-comparison-character').forEach(el => el.style.display = 'none');
+
+      // Show selected characters
+      selectedIds.forEach(id => {
+        const col = document.querySelector(`.comparison-character-column[data-comparison-id="${id}"]`);
+        if (col) col.style.display = 'flex';
+        const mobile = document.querySelector(`.mobile-comparison-character[data-mobile-id="${id}"]`);
+        if (mobile) mobile.style.display = 'block';
+      });
+
+      // Update stat values
+      const statRows = ['rarity', 'class', 'faction', 'hp', 'atk', 'pdef', 'mdef', 'equipment', 'moon', 'attack'];
+      statRows.forEach(stat => {
+        const container = $(`stat-${stat}`);
+        if (!container) return;
+
+        container.innerHTML = selectedIds.map(id => {
+          const char = charMap.get(id);
+          if (!char) return '<div class="stat-value">-</div>';
+
+          let value;
+          switch(stat) {
+            case 'rarity': value = char.rarity; break;
+            case 'class': value = char.class; break;
+            case 'faction': value = char.faction || 'N/A'; break;
+            case 'hp': value = char.stats.hp.toLocaleString(); break;
+            case 'atk': value = char.stats.atk.toLocaleString(); break;
+            case 'pdef': value = char.stats.pDef.toLocaleString(); break;
+            case 'mdef': value = char.stats.mDef.toLocaleString(); break;
+            case 'equipment': value = char.equipmentType || 'N/A'; break;
+            case 'moon': value = char.moonPhase || 'N/A'; break;
+            case 'attack': value = char.attackType || 'N/A'; break;
+            default: value = '-';
+          }
+          const isNumeric = ['hp', 'atk', 'pdef', 'mdef'].includes(stat);
+          return `<div class="stat-value${isNumeric ? ' numeric' : ''}">${value}</div>`;
+        }).join('');
+      });
+    }
+
+    function selectCharacter(id) {
+      const index = selectedIds.indexOf(id);
+      if (index > -1) {
+        selectedIds.splice(index, 1);
+      } else {
+        if (selectedIds.length >= maxSelected) {
+          selectedIds.shift(); // Remove oldest
+        }
+        selectedIds.push(id);
+      }
+      updateCardStates();
+      updateComparisonDisplay();
+
+      if (selectedIds.length === maxSelected) {
+        setTimeout(() => {
+          comparisonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+
+    function filterCharacters() {
+      const filters = {
+        rarity: rarityFilter.value,
+        class: classFilter.value,
+        faction: factionFilter.value,
+      };
+
+      cards.forEach(card => {
+        const matches = Object.entries(filters).every(([key, value]) => {
+          if (!value) return true;
+          return card.dataset[key] === value;
+        });
+        card.style.display = matches ? 'flex' : 'none';
+      });
+    }
+
+    function sortCharacters(column) {
+      cards.sort((a, b) => {
+        const aVal = parseFloat(a.dataset[column]) || 0;
+        const bVal = parseFloat(b.dataset[column]) || 0;
+        return bVal - aVal; // Descending
+      });
+
+      const fragment = document.createDocumentFragment();
+      cards.forEach(card => fragment.appendChild(card));
+      grid.appendChild(fragment);
+    }
+
+    function resetAll() {
+      rarityFilter.value = '';
+      classFilter.value = '';
+      factionFilter.value = '';
+      sortBtns.forEach(btn => btn.classList.remove('active'));
+
+      cards.forEach(card => card.style.display = 'flex');
+
+      // Restore alphabetical order
+      cards.sort((a, b) => {
+        const nameA = a.querySelector('.character-card-name')?.textContent || '';
+        const nameB = b.querySelector('.character-card-name')?.textContent || '';
+        return nameA.localeCompare(nameB);
+      });
+
+      const fragment = document.createDocumentFragment();
+      cards.forEach(card => fragment.appendChild(card));
+      grid.appendChild(fragment);
+    }
+
+    function clearComparison() {
+      selectedIds = [];
+      updateCardStates();
+      updateComparisonDisplay();
+    }
+
+    // Event listeners
+    cards.forEach(card => {
+      card.addEventListener('click', () => selectCharacter(card.dataset.characterId));
+    });
+
+    [rarityFilter, classFilter, factionFilter].forEach(filter => {
+      filter.addEventListener('change', filterCharacters);
+    });
+
+    sortBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sortBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sortCharacters(btn.dataset.sort);
+      });
+    });
+
+    clearFiltersBtn.addEventListener('click', resetAll);
+    clearComparisonBtn.addEventListener('click', clearComparison);
+  </script>
 </CharacterComparisonLayout>

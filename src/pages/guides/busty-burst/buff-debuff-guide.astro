@@ -15,11 +15,22 @@ import {
   sources,
   creditNote,
 } from '../../../data/busty-burst/buff-debuff-guide.js';
+import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
 
 const title = 'Buff & Debuff System Guide - Busty Burst Fantasy | GachaWiki';
 const description =
   'Complete guide to the Kyonyu Fantasy Burst buff and debuff category system. Learn how buffs stack, categories, and team building strategies.';
 const gameTitle = 'Buff & Debuff System';
+
+// Helper to get characterId from imageFile (e.g., "Teresia.jpg" -> "Teresia")
+const getCharacterId = (imageFile: string) => {
+  const fileName = imageFile?.replace(/\.(jpg|png|webp)$/i, '') || '';
+  const paladin = BUSTY_BURST_PALADINS.find(p =>
+    p.fileName === fileName ||
+    p.fileName.toLowerCase() === fileName.toLowerCase()
+  );
+  return paladin?.characterId || 2001;
+};
 ---
 
 <BuffDebuffLayout title={title} description={description} gameTitle={gameTitle}>
@@ -85,10 +96,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -106,10 +118,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -130,10 +143,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -151,10 +165,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -223,10 +238,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -247,10 +263,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -268,10 +285,11 @@ const gameTitle = 'Buff & Debuff System';
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
-                        fileName={char.imageFile}
+                        characterId={getCharacterId(char.imageFile)}
                         alt={char.name}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
+                        quality={95}
                       />
                     </div>
                   ) : (
@@ -310,10 +328,11 @@ const gameTitle = 'Buff & Debuff System';
                 {char.imageFile ? (
                   <div class="bb-example-char-img">
                     <PaladinImage
-                      fileName={char.imageFile}
+                      characterId={getCharacterId(char.imageFile)}
                       alt={char.name}
-                      width={60}
-                      height={60}
+                      width={80}
+                      height={80}
+                      quality={95}
                     />
                   </div>
                 ) : (
@@ -412,10 +431,11 @@ const gameTitle = 'Buff & Debuff System';
                     {char.imageFile && (
                       <div class="bb-exception-char-img">
                         <PaladinImage
-                          fileName={char.imageFile}
+                          characterId={getCharacterId(char.imageFile)}
                           alt={char.name}
-                          width={32}
-                          height={32}
+                          width={48}
+                          height={48}
+                          quality={95}
                         />
                       </div>
                     )}
