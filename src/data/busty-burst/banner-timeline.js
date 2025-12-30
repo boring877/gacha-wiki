@@ -5,7 +5,36 @@
  */
 
 export const bannerTimelineData = [
-  // #3 - Offering Cookies for the Holy Night (Dec 16 - Dec 30) - CURRENT
+  // #4 - New Year's Evil Dragons Event Summon (Dec 30 - Jan 13) - CURRENT
+  {
+    id: 'new-year-evil-dragons-2025',
+    title: "New Year's Evil Dragons Event Summon",
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Dragon Crusher] Medusa',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: "[New Year's Calligraphy] Pastel",
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Overflowing Jubako] Lynette',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2025-12-30T03:00:00Z',
+    endDate: '2026-01-13T03:00:00Z',
+    description: "New Year's Evil Dragons Event Summon! Limited-Time New Year Paladin Rate Up!",
+    note: 'New Year limited banner featuring Dragon Crusher Medusa and New Year themed characters.',
+    status: 'current',
+    image: 'activity-banner-2005_Summon3_newyear_804x434',
+  },
+  // #3 - Offering Cookies for the Holy Night (Dec 16 - Dec 30) - ENDED
   {
     id: 'offering-cookies-holy-night',
     title: 'Offering Cookies for the Holy Night',
@@ -32,7 +61,7 @@ export const bannerTimelineData = [
     description:
       'Offering Cookies for the Holy Night Event Summon! Limited-Time Christmas Paladin Rate Up!',
     note: 'Christmas event banner with limited-time holiday characters.',
-    status: 'current',
+    status: 'ended',
     image: '3',
   },
   // #2 - Shaty (Dec 9 - Dec 16) - ENDED

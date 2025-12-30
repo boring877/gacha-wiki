@@ -58,6 +58,18 @@ export const jorogumoBuild = {
       description:
         "Healing increased by 35%. When healing a target with 'Continuous Damage' status, healing is increased by an additional 25%. If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
     },
+    {
+      name: 'The Beauty of Heijing Castle',
+      effect:
+        "Snow Girl's SR memory card that provides healing amplification and damage buffs to fully healed allies. Good synergy with Jorogumo's sustained healing.",
+      priority: 'Recommended',
+      characterSpecific: false,
+      memoryImage: 'Snowcard',
+      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
+      slug: 'the-beauty-of-heijing-castle',
+      description:
+        "Healing amount +30%; when recovering targets' life value is full, target damage +24% for 10 seconds.",
+    },
   ],
   alternativeMemoryCards: [
     {
@@ -70,17 +82,6 @@ export const jorogumoBuild = {
       slug: 'the-most-real-her',
       description:
         'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%.',
-    },
-    {
-      name: 'The Beauty of Heijing Castle',
-      effect:
-        "Snow Girl's SR memory card that provides healing amplification and damage buffs to fully healed allies. Good synergy with Jorogumo's sustained healing.",
-      characterSpecific: false,
-      memoryImage: 'Snowcard',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      slug: 'the-beauty-of-heijing-castle',
-      description:
-        "Healing amount +30%; when recovering targets' life value is full, target damage +24% for 10 seconds.",
     },
     {
       name: 'Midnight Work',
