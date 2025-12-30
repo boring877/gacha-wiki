@@ -1180,6 +1180,38 @@
   color: var(--bb-primary-light);
 }
 
+/* Alternative Accessories */
+.bb-char-build-alternatives {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-char-build-alternatives-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bb-accent-light);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-char-build-alternatives-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: var(--bb-accent);
+  border-radius: 2px;
+}
+
+.bb-char-build-alternatives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */

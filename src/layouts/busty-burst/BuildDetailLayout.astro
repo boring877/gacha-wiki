@@ -63,10 +63,18 @@ export interface Props {
       images?: string[];
       setEffects: Array<{ pieces: number; effect: string }>;
     };
+    alternativeAccessories?: Array<{
+      name: string;
+      images?: string[];
+      setEffects: Array<{ pieces: number; effect: string }>;
+    }>;
   };
 }
 
 const { build } = Astro.props;
+
+// Normalize alternative accessories to array (supports both array and single object)
+const alternativeAccessories = build.alternativeAccessories || (build.alternativeAccessory ? [build.alternativeAccessory] : []);
 const title = `${build.character.name} Build - Busty Burst`;
 const description = `Build guide for ${build.character.name} in Busty Burst`;
 ---
@@ -216,18 +224,20 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                 </div>
               </section>
 
-              <!-- Alternative Accessory Section -->
+              <!-- Alternative Accessories Section -->
               {
-                build.alternativeAccessory && (
+                alternativeAccessories.length > 0 && (
                   <section class="bb-build-detail-section">
-                    <h2 class="bb-build-section-title">Alternative Accessory</h2>
-                    <div class="bb-build-detail-card">
-                      <h3 class="bb-build-item-name">{build.alternativeAccessory.name}</h3>
+                    <h2 class="bb-build-section-title">Alternative Accessories</h2>
+                    {alternativeAccessories.map((alt, index) => (
+                      <div class="bb-build-detail-card" style="margin-bottom: 1rem;">
+                        <h3 class="bb-build-item-name">
+                          {alternativeAccessories.length > 1 ? `Option ${index + 1}: ` : ''}{alt.name}
+                        </h3>
 
-                      {build.alternativeAccessory.images &&
-                        build.alternativeAccessory.images.length > 0 && (
+                        {alt.images && alt.images.length > 0 && (
                           <div class="bb-build-accessory-images">
-                            {build.alternativeAccessory.images.map(img => (
+                            {alt.images.map(img => (
                               <div class="bb-build-accessory-item">
                                 <AccessoryImage
                                   fileName={img}
@@ -241,15 +251,16 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                           </div>
                         )}
 
-                      <div class="bb-build-set-effects">
-                        {build.alternativeAccessory.setEffects.map(effect => (
-                          <div class="bb-build-set-effect-row">
-                            <span class="bb-build-set-pieces">{effect.pieces}-set effect</span>
-                            <span class="bb-build-set-value">{effect.effect}</span>
-                          </div>
-                        ))}
+                        <div class="bb-build-set-effects">
+                          {alt.setEffects.map(effect => (
+                            <div class="bb-build-set-effect-row">
+                              <span class="bb-build-set-pieces">{effect.pieces}-set effect</span>
+                              <span class="bb-build-set-value">{effect.effect}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </section>
                 )
               }

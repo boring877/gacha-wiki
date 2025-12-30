@@ -214,22 +214,41 @@ export const characterBuilds = {
         substatPriority: getSubstatPriority('Magic'),
       };
     })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
+    alternativeAccessories: [
+      (() => {
+        const amethystSet = getAccessorySet('amethyst');
+        const goldSet = getAccessorySet('gold');
+        return {
+          name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
+          images: [
+            amethystSet.pieces[0].imageFile,
+            amethystSet.pieces[1].imageFile,
+            goldSet.pieces[0].imageFile,
+            goldSet.pieces[1].imageFile,
+          ],
+          setEffects: [
+            { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
+            { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+          ],
+        };
+      })(),
+      (() => {
+        const goldSet = getAccessorySet('gold');
+        const sapphireSet = getAccessorySet('sapphire');
+        return {
+          name: 'Gold 2 Set + Sapphire 2 Set + 1 Random SSR',
+          images: [
+            goldSet.pieces[0].imageFile,
+            goldSet.pieces[1].imageFile,
+            sapphireSet.pieces[0].imageFile,
+            sapphireSet.pieces[1].imageFile,
+          ],
+          setEffects: [
+            { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+            { pieces: 2, effect: 'Magic Damage +10% (Sapphire)' },
+          ],
+        };
+      })(),
+    ],
   },
 };

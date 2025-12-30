@@ -93,6 +93,9 @@ const skills = character.skills;
 const support = character.support;
 const build = character.build;
 
+// Normalize alternative accessories to array (supports both array and single object)
+const alternativeAccessories = build?.alternativeAccessories || (build?.alternativeAccessory ? [build.alternativeAccessory] : []);
+
 // Type definitions for safe iteration
 type StatBonusType = Record<string, number>;
 type BonusLevelsType = Record<string, StatBonusType>;
@@ -805,6 +808,43 @@ const description = `${character.displayName || character.name} - ${character.ra
             </div>
           )}
         </div>
+
+        <!-- Alternative Accessories -->
+        {alternativeAccessories.length > 0 && (
+          <div class="bb-char-build-alternatives">
+            <div class="bb-char-build-alternatives-title">Alternative Accessory Sets</div>
+            <div class="bb-char-build-alternatives-grid">
+              {alternativeAccessories.map((alt, index) => (
+                <div class="bb-char-build-card">
+                  <div class="bb-char-build-card-title">Alternative {index + 1}</div>
+                  <div class="bb-char-build-item-name">{alt.name}</div>
+                  {alt.images && alt.images.length > 0 && (
+                    <div class="bb-char-build-accessory-images">
+                      {alt.images.map(img => (
+                        <div class="bb-char-build-accessory-item">
+                          <AccessoryImage
+                            fileName={img}
+                            alt={img.replace('.png', '').replace(/_/g, ' ')}
+                            width={40}
+                            height={40}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div class="bb-char-build-set-effects">
+                    {alt.setEffects.map(effect => (
+                      <div class="bb-char-build-set-effect">
+                        <span class="bb-char-build-set-pieces">{effect.pieces}-set</span>
+                        <span class="bb-char-build-set-value">{effect.effect}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       </div>
     </section>
