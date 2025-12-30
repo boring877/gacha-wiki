@@ -78,7 +78,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     role: 'Attacker',
     attackType: 'Magic',
     position: { roman: 'II', number: 2 },
-    actionSpeed: 'Normal',
+    actionSpeed: 'Slow',
     range: 385,
     weaponType: 'Pierce',
     skillTypes: ['Debuff', 'Disrupt'],
