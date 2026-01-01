@@ -34,6 +34,7 @@ export const stellaSoraRedeemCodes = {
     },
   ],
 
+  /** @type {Array<{id: string, code: string, status: string, expiryDate: string, lastChecked?: string, dateAdded?: string}>} */
   expiredCodes: [
     // Template for expired codes
     // {
@@ -150,12 +151,12 @@ export const generateRedeemCodesStructuredData = () => {
     '@type': 'WebPage',
     name: stellaSoraRedeemCodes.meta.title,
     description: stellaSoraRedeemCodes.meta.description,
-    url: 'https://gacha-wiki.vercel.app/guides/stella-sora/redeem-codes/',
+    url: 'https://gachawiki.info/guides/stella-sora/redeem-codes/',
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     about: {
       '@type': 'VideoGame',
@@ -191,7 +192,7 @@ export const generateRedeemCodesStructuredData = () => {
     publisher: {
       '@type': 'Organization',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -200,19 +201,19 @@ export const generateRedeemCodesStructuredData = () => {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://gacha-wiki.vercel.app',
+          item: 'https://gachawiki.info',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Stella Sora Guides',
-          item: 'https://gacha-wiki.vercel.app/guides/stella-sora/',
+          item: 'https://gachawiki.info/guides/stella-sora/',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'Redeem Codes',
-          item: 'https://gacha-wiki.vercel.app/guides/stella-sora/redeem-codes/',
+          item: 'https://gachawiki.info/guides/stella-sora/redeem-codes/',
         },
       ],
     },

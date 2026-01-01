@@ -1,0 +1,341 @@
+/* Horizon Walker Redeem Codes - Simple Styles */
+
+.hw-redeem-main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.hw-redeem-header-section {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hw-redeem-header-section .important-notice {
+  color: var(--hw-secondary-coral);
+  margin-bottom: 0.5rem;
+}
+
+.hw-redeem-header-section h3 {
+  color: var(--hw-text-light);
+  margin: 0.5rem 0;
+}
+
+.hw-redeem-header-section p {
+  color: var(--hw-text-muted);
+}
+
+.hw-redeem-header-section .last-updated {
+  color: var(--hw-text-very-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Section Titles */
+.hw-redeem-section-title {
+  font-size: 1.25rem;
+  color: var(--hw-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.hw-redeem-section-description {
+  color: var(--hw-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Codes Grid */
+.hw-redeem-codes-section {
+  margin-bottom: 1.5rem;
+}
+
+.hw-redeem-codes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* Code Card */
+.hw-redeem-code-card {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.hw-code-info {
+  margin-bottom: 0.5rem;
+}
+
+.hw-code-label {
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+}
+
+.hw-code-value {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hw-primary-warm);
+  background: var(--hw-bg-darker);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.hw-code-rewards {
+  font-size: 0.9rem;
+  color: var(--hw-text-medium);
+  margin: 0.5rem 0;
+}
+
+.hw-code-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--hw-text-muted);
+}
+
+.hw-code-status {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.hw-code-status.working {
+  background: var(--hw-accent-mint-20);
+  color: var(--hw-accent-mint);
+}
+
+.hw-code-status.unknown {
+  background: var(--hw-primary-warm-20);
+  color: var(--hw-primary-warm);
+}
+
+.hw-code-status.expired {
+  background: var(--hw-error-red-40);
+  color: var(--hw-error-red);
+}
+
+.hw-code-date,
+.hw-code-expiry {
+  font-size: 0.75rem;
+  color: var(--hw-text-very-muted);
+}
+
+/* Copy Button */
+.hw-copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.75rem;
+  background: var(--hw-primary-warm);
+  color: var(--hw-text-dark);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hw-copy-button:hover {
+  opacity: 0.9;
+}
+
+.hw-copy-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Instructions */
+.hw-redeem-instructions-section {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hw-redeem-instructions-section h3 {
+  color: var(--hw-text-light);
+  margin: 0.75rem 0 0.5rem;
+}
+
+.hw-instruction-step {
+  padding: 0.75rem;
+  padding-left: 2.5rem;
+  position: relative;
+  border-bottom: 1px solid var(--hw-border-light);
+}
+
+.hw-instruction-step:last-child {
+  border-bottom: none;
+}
+
+.hw-instruction-step::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0.5rem;
+  top: 0.75rem;
+  width: 24px;
+  height: 24px;
+  background: var(--hw-primary-warm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hw-text-dark);
+}
+
+.hw-instruction-step h4 {
+  color: var(--hw-text-light);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.hw-instruction-step p {
+  color: var(--hw-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Expired Section */
+.hw-redeem-expired-section {
+  margin-bottom: 1.5rem;
+}
+
+.hw-empty-section {
+  background: var(--hw-bg-dark);
+  border: 1px dashed var(--hw-border-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.hw-empty-message {
+  color: var(--hw-text-muted);
+}
+
+.hw-redeem-code-card.expired {
+  opacity: 0.6;
+}
+
+.hw-redeem-code-card.expired .hw-code-value {
+  text-decoration: line-through;
+  color: var(--hw-text-muted);
+}
+
+/* Community */
+.hw-redeem-community-section {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.hw-community-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.hw-community-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.hw-community-button.discord {
+  background: #5865f2;
+  color: white;
+}
+
+.hw-community-button.github {
+  background: var(--hw-bg-light);
+  color: var(--hw-text-light);
+  border: 1px solid var(--hw-border-light);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hw-redeem-main-container {
+    padding: 0.75rem;
+  }
+
+  .hw-redeem-header-section,
+  .hw-redeem-instructions-section,
+  .hw-redeem-community-section {
+    padding: 0.75rem;
+  }
+
+  .hw-redeem-codes-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .hw-redeem-code-card {
+    padding: 0.75rem;
+  }
+
+  .hw-code-value {
+    font-size: 1rem;
+    padding: 0.4rem;
+    word-break: break-all;
+  }
+
+  .hw-copy-button {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    min-height: 44px; /* Touch-friendly size */
+  }
+
+  .hw-instruction-step {
+    padding: 0.5rem;
+    padding-left: 2.25rem;
+  }
+
+  .hw-instruction-step::before {
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
+    left: 0.25rem;
+  }
+
+  .hw-instruction-step h4 {
+    font-size: 0.9rem;
+  }
+
+  .hw-instruction-step p {
+    font-size: 0.85rem;
+  }
+
+  .hw-redeem-section-title {
+    font-size: 1.1rem;
+  }
+
+  .hw-community-buttons {
+    flex-direction: column;
+  }
+
+  .hw-community-button {
+    width: 100%;
+    text-align: center;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

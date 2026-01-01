@@ -1,6 +1,17 @@
 // Zone Nova Redeem Codes Data
 // This file contains all redeem codes data for Zone Nova
 
+/**
+ * @typedef {Object} RedeemCode
+ * @property {string} id
+ * @property {string} code
+ * @property {string} status
+ * @property {string} lastChecked
+ * @property {string} dateAdded
+ * @property {string} [expiryDate]
+ */
+
+/** @type {{ meta: { title: string, description: string, lastUpdated: Date }, availableCodes: RedeemCode[], expiredCodes: RedeemCode[], redeemInstructions: any, communitySection: any, warnings: any }} */
 export const zoneNovaRedeemCodes = {
   meta: {
     title: 'Zone Nova Redeem Codes - Free Rewards & Gift Codes 2025 | GachaWiki',
@@ -159,12 +170,12 @@ export const generateRedeemCodesStructuredData = () => {
     '@type': 'WebPage',
     name: zoneNovaRedeemCodes.meta.title,
     description: zoneNovaRedeemCodes.meta.description,
-    url: 'https://gacha-wiki.vercel.app/guides/zone-nova/redeem-codes/',
+    url: 'https://gachawiki.info/guides/zone-nova/redeem-codes/',
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     about: {
       '@type': 'VideoGame',
@@ -199,7 +210,7 @@ export const generateRedeemCodesStructuredData = () => {
     publisher: {
       '@type': 'Organization',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -208,19 +219,19 @@ export const generateRedeemCodesStructuredData = () => {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://gacha-wiki.vercel.app',
+          item: 'https://gachawiki.info',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Zone Nova Guides',
-          item: 'https://gacha-wiki.vercel.app/guides/zone-nova/',
+          item: 'https://gachawiki.info/guides/zone-nova/',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'Redeem Codes',
-          item: 'https://gacha-wiki.vercel.app/guides/zone-nova/redeem-codes/',
+          item: 'https://gachawiki.info/guides/zone-nova/redeem-codes/',
         },
       ],
     },

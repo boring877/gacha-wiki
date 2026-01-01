@@ -168,6 +168,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Gifts', href: '/guides/horizon-walker/gifts/' },
           { name: 'Character Gifts', href: '/guides/horizon-walker/character-gifts/' },
           { name: 'Clock', href: '/clock/horizon-walker/' },
+          { name: 'Redeem Codes', href: '/guides/horizon-walker/redeem-codes/' },
         ],
       },
     ],

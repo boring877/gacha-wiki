@@ -1,49 +1,56 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import all weapon images once
-import Araha_WPImg from '../../assets/images/games/horizon-walker/weapons/Araha_WP.jpg';
-import Bella_WPImg from '../../assets/images/games/horizon-walker/weapons/Bella_WP.jpg';
-import Berga_WPImg from '../../assets/images/games/horizon-walker/weapons/Berga_WP.jpg';
-import Cora_WPImg from '../../assets/images/games/horizon-walker/weapons/Cora_WP.jpg';
-import Efreeti_WPImg from '../../assets/images/games/horizon-walker/weapons/Efreeti_WP.jpg';
-import Erneste_WPImg from '../../assets/images/games/horizon-walker/weapons/Erneste_WP.jpg';
-import Emilia_WPImg from '../../assets/images/games/horizon-walker/weapons/Emilia_WP.jpg';
-import Everette_WPImg from '../../assets/images/games/horizon-walker/weapons/Everette_WP.jpg';
-import Fammene_WPImg from '../../assets/images/games/horizon-walker/weapons/Fammene_WP.jpg';
-import Gridelda_WPImg from '../../assets/images/games/horizon-walker/weapons/Gridelda_WP.jpg';
-import Headless_Knight_WPImg from '../../assets/images/games/horizon-walker/weapons/Headless_Knight_WP.jpg';
-import Ines_WPImg from '../../assets/images/games/horizon-walker/weapons/Ines_WP.jpg';
-import Juha_WPImg from '../../assets/images/games/horizon-walker/weapons/Juha_WP.jpg';
-import Kalina_WPImg from '../../assets/images/games/horizon-walker/weapons/Kalina_WP.jpg';
-import Kalma_WPImg from '../../assets/images/games/horizon-walker/weapons/Kalma_WP.jpg';
-import Kaul_WPImg from '../../assets/images/games/horizon-walker/weapons/Kaul_WP.jpg';
-import Kilon_WPImg from '../../assets/images/games/horizon-walker/weapons/Kilon_WP.jpg';
-import Korabi_WPImg from '../../assets/images/games/horizon-walker/weapons/Korabi_WP.jpg';
-import Leah_WPImg from '../../assets/images/games/horizon-walker/weapons/Leah_WP.jpg';
-import Lisandria_WPImg from '../../assets/images/games/horizon-walker/weapons/Lisandria_WP.jpg';
-import Luise_WPImg from '../../assets/images/games/horizon-walker/weapons/Luise_WP.jpg';
-import Mahari_WPImg from '../../assets/images/games/horizon-walker/weapons/Mahari_WP.jpg';
-import Marhim_WPImg from '../../assets/images/games/horizon-walker/weapons/Marhim_WP.jpg';
-import Matrotho_WPImg from '../../assets/images/games/horizon-walker/weapons/Matrotho_WP.jpg';
-import Min_Eun_sol_WPImg from '../../assets/images/games/horizon-walker/weapons/Min_Eun_sol_WP.jpg';
-import Nari_WPImg from '../../assets/images/games/horizon-walker/weapons/Nari_WP.jpg';
-import Nika_WPImg from '../../assets/images/games/horizon-walker/weapons/Nika_WP.jpg';
-import Nymset_WPImg from '../../assets/images/games/horizon-walker/weapons/Nymset_WP.jpg';
-import Olivia_WPImg from '../../assets/images/games/horizon-walker/weapons/Olivia_WP.jpg';
-import Osla_WPImg from '../../assets/images/games/horizon-walker/weapons/Osla_WP.jpg';
-import Pantheri_WPImg from '../../assets/images/games/horizon-walker/weapons/Pantheri_WP.jpg';
-import Platina_WPImg from '../../assets/images/games/horizon-walker/weapons/Platina_WP.jpg';
-import Samarika_WPImg from '../../assets/images/games/horizon-walker/weapons/Samarika_WP.jpg';
-import So_Joo_hee_WPImg from '../../assets/images/games/horizon-walker/weapons/So_Joo_hee_WP.jpg';
-import TX_Manticore_WPImg from '../../assets/images/games/horizon-walker/weapons/TX_Manticore.jpg';
-import Valeta_WPImg from '../../assets/images/games/horizon-walker/weapons/Valeta_WP.jpg';
-import Vlissing_WPImg from '../../assets/images/games/horizon-walker/weapons/Vlissing_WP.jpg';
-import Yeon_Chae_Young_WPImg from '../../assets/images/games/horizon-walker/weapons/Yeon_Chae-Young_WP.jpg';
-import Yeonwoo_WPImg from '../../assets/images/games/horizon-walker/weapons/Yeonwoo_WP.jpg';
-import Yui_WPImg from '../../assets/images/games/horizon-walker/weapons/Yui_WP.jpg';
-import Yvonna_WPImg from '../../assets/images/games/horizon-walker/weapons/Yvonna_WP.jpg';
-import kim_Ga_young_WPImg from '../../assets/images/games/horizon-walker/weapons/kim_Ga_young_WP.jpg';
+// Import weapon images from ALL_Weapons folder (Weapon_FullIMG format)
+
+// Character-specific weapons (Weapon_FullIMG_*_For* format)
+import Bella_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForBella_MS.png';
+import Berga_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Torturas_ForBerga.png';
+import Cora_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForCora.png';
+import Efreeti_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEfreeti.png';
+import Emilia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForEmilia_MS.png';
+import Erneste_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForErneste.png';
+import Kalma_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForKalma.png';
+import Kaul_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForKaul_SS.png';
+import Kilon_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForKilon.png';
+import Korabi_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForKorabi.png';
+import Leah_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForLeah.png';
+import Lisandria_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OneHandSword_ForLisandria.png';
+import Luise_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForLuise.png';
+import Nari_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Rifle_ForNari.png';
+import Olivia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForOlivia.png';
+import Pantheri_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OneHandSword_ForPantheri.png';
+import Samarika_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualSword_ForSamarika.png';
+import Yeonwoo_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForYeonwoo.png';
+import kim_Ga_young_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Rifle_ForKimGaYeong.png';
+
+// Special character weapons
+import Headless_Knight_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_CutThroatKnight_Head.png';
+
+// Generic weapon images for characters without specific For* files
+import Araha_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_JK220_Artemis.png';
+import Kalina_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TyrantEdge.png';
+import Fammene_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RoseOfSorrow.png';
+import Gridelda_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_GoldenSphere.png';
+import Ines_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Great_Sword.png';
+import Juha_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ThousandMileVision.png';
+import Nymset_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_EyeOfTheWind.png';
+import Everette_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RapierOfBattle.png';
+import Mahari_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_CrimsonHarpe.png';
+import Marhim_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Damascus_Flacata.png';
+import Matrotho_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_StaffOfTheEnd.png';
+import Min_Eun_sol_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverAR.png';
+import Nika_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RhinoDoubleSword.png';
+import Osla_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Skathia.png';
+import Platina_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_StaffofWisdom.png';
+import So_Joo_hee_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_TD7_Rifle.png';
+import TX_Manticore_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverComputingDevice.png';
+import Valeta_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Dagger_LifeFinish.png';
+import Vlissing_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_WarriorDoubleSword.png';
+import Yeon_Chae_Young_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Titanium_Dual_Sword.png';
+import Yui_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_IceShotel.png';
+import Yvonna_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BloodFlowsLikeRiver.png';
+import Palekar_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualSword_ForPalekar.png';
 
 // Centralized weapon image mapping
 const weaponImageMap = {
@@ -89,6 +96,7 @@ const weaponImageMap = {
   'Yui_WP.jpg': Yui_WPImg,
   'Yvonna_WP.jpg': Yvonna_WPImg,
   'kim_Ga_young_WP.jpg': kim_Ga_young_WPImg,
+  'Palekar_WP.jpg': Palekar_WPImg,
 };
 
 export interface Props {

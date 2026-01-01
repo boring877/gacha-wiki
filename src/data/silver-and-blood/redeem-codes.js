@@ -357,12 +357,12 @@ export const generateRedeemCodesStructuredData = () => {
     '@type': 'WebPage',
     name: silverAndBloodRedeemCodes.meta.title,
     description: silverAndBloodRedeemCodes.meta.description,
-    url: 'https://gacha-wiki.vercel.app/guides/silver-and-blood/redeem-codes/',
+    url: 'https://gachawiki.info/guides/silver-and-blood/redeem-codes/',
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     about: {
       '@type': 'VideoGame',
@@ -397,7 +397,7 @@ export const generateRedeemCodesStructuredData = () => {
     publisher: {
       '@type': 'Organization',
       name: 'GachaWiki',
-      url: 'https://gacha-wiki.vercel.app',
+      url: 'https://gachawiki.info',
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -406,19 +406,19 @@ export const generateRedeemCodesStructuredData = () => {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://gacha-wiki.vercel.app',
+          item: 'https://gachawiki.info',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Silver and Blood Guides',
-          item: 'https://gacha-wiki.vercel.app/guides/silver-and-blood/',
+          item: 'https://gachawiki.info/guides/silver-and-blood/',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'Redeem Codes',
-          item: 'https://gacha-wiki.vercel.app/guides/silver-and-blood/redeem-codes/',
+          item: 'https://gachawiki.info/guides/silver-and-blood/redeem-codes/',
         },
       ],
     },

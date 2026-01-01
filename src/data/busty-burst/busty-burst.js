@@ -343,7 +343,7 @@ export const generateStructuredData = () => {
     '@type': 'WebPage',
     name: bustyBurstConfig.meta.title,
     description: bustyBurstConfig.meta.description,
-    url: 'https://gacha-wiki.vercel.app/guides/busty-burst/',
+    url: 'https://gachawiki.info/guides/busty-burst/',
     about: {
       '@type': 'Game',
       name: bustyBurstConfig.meta.gameTitle,
@@ -360,7 +360,7 @@ export const generateStructuredData = () => {
           '@type': 'WebPage',
           name: guide.title,
           description: guide.description,
-          url: `https://gacha-wiki.vercel.app${guide.url}`,
+          url: `https://gachawiki.info${guide.url}`,
         },
       })),
     },

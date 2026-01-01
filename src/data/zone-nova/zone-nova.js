@@ -424,7 +424,7 @@ export const generateStructuredData = () => {
     '@type': 'WebPage',
     name: zoneNovaConfig.meta.title,
     description: zoneNovaConfig.meta.description,
-    url: 'https://gacha-wiki.vercel.app/guides/zone-nova/',
+    url: 'https://gachawiki.info/guides/zone-nova/',
     about: {
       '@type': 'Game',
       name: zoneNovaConfig.meta.gameTitle,
@@ -441,7 +441,7 @@ export const generateStructuredData = () => {
           '@type': 'WebPage',
           name: guide.title,
           description: guide.description,
-          url: `https://gacha-wiki.vercel.app${guide.url}`,
+          url: `https://gachawiki.info${guide.url}`,
         },
       })),
     },

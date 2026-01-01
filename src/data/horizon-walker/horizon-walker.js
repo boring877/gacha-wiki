@@ -185,6 +185,11 @@ export const horizonWalkerConfig = {
           title: 'Clock',
           url: '/clock/horizon-walker/',
         },
+        {
+          id: 'redeem-codes',
+          title: 'Redeem Codes',
+          url: '/guides/horizon-walker/redeem-codes/',
+        },
       ],
     },
   ],

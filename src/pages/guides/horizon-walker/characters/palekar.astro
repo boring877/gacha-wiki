@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  palekarData,
+  palekarSEO,
+  palekarHighlighting,
+} from '../../../../data/horizon-walker/characters/palekar.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={palekarSEO.title}
+  description={palekarSEO.description}
+  gameTitle={palekarData.name}
+  character={palekarData}
+>
+  <CharacterPageTemplate characterData={{ ...palekarData, highlightPatterns: palekarHighlighting }} />
+</CharacterIndividualLayout>
