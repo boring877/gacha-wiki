@@ -1,21 +1,26 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import all mercenary images once
-import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/characters/Grrik_Mercenary.jpg';
-import GoliathImg from '../../assets/images/games/horizon-walker/characters/Goliath.jpg';
-import ImperialShieldbearerMercenaryImg from '../../assets/images/games/horizon-walker/characters/Imperial_Shieldbearer_Mercenary.jpg';
-import KoblodMercenaryImg from '../../assets/images/games/horizon-walker/characters/Koblod_Mercenary.jpg';
-import PuppyShooterImg from '../../assets/images/games/horizon-walker/characters/Puppy_Shooter.jpg';
-import PuppyStepperImg from '../../assets/images/games/horizon-walker/characters/Puppy_Stepper.jpg';
-import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/characters/Split_Twigs_Priest.jpg';
-import SwampElfVigilanteMemberImg from '../../assets/images/games/horizon-walker/characters/Swamp_Elf_Vigilante_member.jpg';
-import TortaWarriorImg from '../../assets/images/games/horizon-walker/characters/Torta_warrior.jpg';
-import WarMercenaryImg from '../../assets/images/games/horizon-walker/characters/War_Mercenary.jpg';
-import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/characters/Wizard_Legionnaire.jpg';
+// Import mercenary hero icon images (UI_Icon_Hero_*_N01.png format)
+import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_GreekMercenary_N01.png';
+import GoliathImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Goliath_N01.png';
+import KoblodMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png';
+import PuppyShooterImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyShooter_N01.png';
+import PuppyStepperImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyStepper_N01.png';
+import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png';
+import SwampElfVigilanteMemberImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png';
+import WarMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_VisomancerMercenary_N01.png';
+import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png';
+import CutThroatKnightImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_CutThroatKnight_N01.png';
+
+// Torta Warrior = ApprenticeDoppelsoldnerMercenary
+import TortaWarriorImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png';
+
+// Imperial Shieldbearer = HuscarlMercenary in hero names
+import ImperialShieldbearerMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_HuscarlMercenary_N01.png';
 
 // Default fallback image
-import defaultMercenaryImg from '../../assets/images/games/horizon-walker/characters/War_Mercenary.jpg';
+const defaultMercenaryImg = WarMercenaryImg;
 
 // Centralized mercenary image mapping
 const mercenaryImageMap = {
@@ -30,6 +35,7 @@ const mercenaryImageMap = {
   'Torta_warrior.jpg': TortaWarriorImg,
   'War_Mercenary.jpg': WarMercenaryImg,
   'Wizard_Legionnaire.jpg': WizardLegionnaireImg,
+  'Headless_Knight.jpg': CutThroatKnightImg,
 };
 
 export interface Props {
@@ -82,6 +88,7 @@ if (!imageKey.includes('.')) {
     'Puppy Shooter': 'Puppy_Shooter.jpg',
     'Puppy Stepper': 'Puppy_Stepper.jpg',
     'Split Twigs Priest': 'Split_Twigs_Priest.jpg',
+    'Headless Knight': 'Headless_Knight.jpg',
     Grrik: 'Grrik_Mercenary.jpg',
     Koblod: 'Koblod_Mercenary.jpg',
     Kobold: 'Koblod_Mercenary.jpg', // Handle both capitalizations

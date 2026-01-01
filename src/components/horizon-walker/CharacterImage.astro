@@ -1,56 +1,75 @@
 ---
 import { Image } from 'astro:assets';
 
-// Import all character images once
-import ArahaImg from '../../assets/images/games/horizon-walker/characters/Araha.jpg';
-import BellaImg from '../../assets/images/games/horizon-walker/characters/Bella.jpg';
-import BergaImg from '../../assets/images/games/horizon-walker/characters/Berga.jpg';
-import CaniskImg from '../../assets/images/games/horizon-walker/characters/Canisk.jpg';
-import CoraImg from '../../assets/images/games/horizon-walker/characters/Cora.jpg';
-import DeliaImg from '../../assets/images/games/horizon-walker/characters/Delia.jpg';
-import EfreetiImg from '../../assets/images/games/horizon-walker/characters/Efreeti.jpg';
-import ErnesteImg from '../../assets/images/games/horizon-walker/characters/Erneste.jpg';
-import EmiliaImg from '../../assets/images/games/horizon-walker/characters/Emilia.jpg';
-import EveretteImg from '../../assets/images/games/horizon-walker/characters/Everette.jpg';
-import FammeneImg from '../../assets/images/games/horizon-walker/characters/Fammene.jpg';
-import GrideldaImg from '../../assets/images/games/horizon-walker/characters/Gridelda.jpg';
-import GulamImg from '../../assets/images/games/horizon-walker/characters/Gulam.jpg';
-import GulsniImg from '../../assets/images/games/horizon-walker/characters/Gulsni.jpg';
-import HeadlessKnightImg from '../../assets/images/games/horizon-walker/characters/Headless_Knight.jpg';
-import InesImg from '../../assets/images/games/horizon-walker/characters/Ines.jpg';
-import JuhaImg from '../../assets/images/games/horizon-walker/characters/Juha.jpg';
-import KalinaImg from '../../assets/images/games/horizon-walker/characters/Kalina.jpg';
-import KalmaImg from '../../assets/images/games/horizon-walker/characters/Kalma.jpg';
-import KaulImg from '../../assets/images/games/horizon-walker/characters/Kaul.jpg';
-import KilonImg from '../../assets/images/games/horizon-walker/characters/Kilon.jpg';
-import KimGaYoungImg from '../../assets/images/games/horizon-walker/characters/kim_Ga_young.jpg';
-import KorabiImg from '../../assets/images/games/horizon-walker/characters/Korabi.jpg';
-import LeahImg from '../../assets/images/games/horizon-walker/characters/Leah.jpg';
-import LisandriaImg from '../../assets/images/games/horizon-walker/characters/Lisandria.jpg';
-import LuiseImg from '../../assets/images/games/horizon-walker/characters/Luise.jpg';
-import MahariImg from '../../assets/images/games/horizon-walker/characters/Mahari.jpg';
-import MarhimImg from '../../assets/images/games/horizon-walker/characters/Marhim.jpg';
-import MatrothoImg from '../../assets/images/games/horizon-walker/characters/Matrotho.jpg';
-import MinEunSolImg from '../../assets/images/games/horizon-walker/characters/Min_Eun_sol.jpg';
-import NariImg from '../../assets/images/games/horizon-walker/characters/Nari.jpg';
-import NikaImg from '../../assets/images/games/horizon-walker/characters/Nika.jpg';
-import NonohaImg from '../../assets/images/games/horizon-walker/characters/Nonoha.jpg';
-import NymsetImg from '../../assets/images/games/horizon-walker/characters/Nymset.jpg';
-import OliviaImg from '../../assets/images/games/horizon-walker/characters/Olivia.jpg';
-import OslaImg from '../../assets/images/games/horizon-walker/characters/Osla.jpg';
-import PantheriImg from '../../assets/images/games/horizon-walker/characters/Pantheri.jpg';
-import PlatinaImg from '../../assets/images/games/horizon-walker/characters/Platina.jpg';
-import ReDeDaImg from '../../assets/images/games/horizon-walker/characters/Re_De_Da.jpg';
-import RhasadinaImg from '../../assets/images/games/horizon-walker/characters/Rhasadina.jpg';
-import SamarikaImg from '../../assets/images/games/horizon-walker/characters/Samarika.jpg';
-import SoJooHeeImg from '../../assets/images/games/horizon-walker/characters/So_Joo_hee.jpg';
-import TxManticoreImg from '../../assets/images/games/horizon-walker/characters/TX_Manticore.jpg';
-import ValetaImg from '../../assets/images/games/horizon-walker/characters/Valeta.jpg';
-import VlissingImg from '../../assets/images/games/horizon-walker/characters/Vlissing.jpg';
-import YeonChaeYoungImg from '../../assets/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg';
-import YeonwooImg from '../../assets/images/games/horizon-walker/characters/Yeonwoo.jpg';
-import YuiImg from '../../assets/images/games/horizon-walker/characters/Yui.jpg';
-import YvonnaImg from '../../assets/images/games/horizon-walker/characters/Yvonna.jpg';
+// Import hero icon images from heroes folder (UI_Icon_Hero_*_N01.png format)
+import ArahaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Araha_N01.png';
+import BellaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Bella_N01.png';
+import BergaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Berga_N01.png';
+import CaniskImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Canisk_N01.png';
+import CoraImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Cora_N01.png';
+import DeliaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Delia_N01.png';
+import EfreetiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Efreeti_N01.png';
+import EmiliaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Emilia_N01.png';
+import ErnesteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Erneste_N01.png';
+import EveretteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Everette_N01.png';
+import FammeneImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Fammene_N01.png';
+import GoliathImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Goliath_N01.png';
+import GrideldaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Griselda_N01.png';
+import GulamImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Gulam_N01.png';
+import GulsniImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Gulsni_N01.png';
+import HeadlessKnightImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_CutThroatKnight_N01.png';
+import InesImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Ines_N01.png';
+import JuhaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Juha_N01.png';
+import KalinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kalina_N01.png';
+import KalmaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kalma_N01.png';
+import KaulImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kaul_N01.png';
+import KilonImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kilon_N01.png';
+import KimGaYoungImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KimGayeong_N01.png';
+import KorabiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Korabi_N01.png';
+import LeahImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Leah_N01.png';
+import LisandriaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Lisandria_N01.png';
+import LuiseImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Luise_N01.png';
+import MahariImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Mahari_N01.png';
+import MarhimImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Marhim_N01.png';
+import MatrothoImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Matrotho_N01.png';
+import MinEunSolImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_MinEunsol_N01.png';
+import NariImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nari_N01.png';
+import NikaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nika_N01.png';
+import NonohaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nonoha_N01.png';
+import NymsetImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nymset_N01.png';
+import OliviaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Olivia_N01.png';
+import OslaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Osla_N01.png';
+import PantheriImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Pantheri_N01.png';
+import PlatinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Platina_N01.png';
+import RhasadinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Rhasadina_N01.png';
+import SamarikaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Samarika_N01.png';
+import SoJooHeeImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SoJoohee_N01.png';
+import TxManticoreImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_TX_Manticore_N01.png';
+import ValetaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Valeta_N01.png';
+import VlissingImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Vlissing_N01.png';
+import YeonChaeYoungImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_YeonChaeyoung_N01.png';
+import YeonwooImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Yeonwoo_N01.png';
+import YuiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_MatsumotoYui_N01.png';
+import YvonnaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Yvonna_N01.png';
+
+// Mercenary characters with different hero names
+import KoboldMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png';
+import PuppyShooterImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyShooter_N01.png';
+import PuppyStepperImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyStepper_N01.png';
+import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png';
+import SwampElfVigilanteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png';
+import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_GreekMercenary_N01.png';
+import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png';
+import WarMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_VisomancerMercenary_N01.png';
+
+// Re De Da = Hongpamang in hero names
+import ReDeDaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Hongpamang_N01.png';
+
+// Torta Warrior = ApprenticeDoppelsoldnerMercenary in hero names
+import TortaWarriorImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png';
+
+// Imperial Shieldbearer = HuscarlMercenary in hero names
+import ImperialShieldbearerImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_HuscarlMercenary_N01.png';
 
 // Centralized character image mapping
 const characterImageMap = {
@@ -61,10 +80,11 @@ const characterImageMap = {
   'Cora.jpg': CoraImg,
   'Delia.jpg': DeliaImg,
   'Efreeti.jpg': EfreetiImg,
-  'Erneste.jpg': ErnesteImg,
   'Emilia.jpg': EmiliaImg,
+  'Erneste.jpg': ErnesteImg,
   'Everette.jpg': EveretteImg,
   'Fammene.jpg': FammeneImg,
+  'Goliath.jpg': GoliathImg,
   'Gridelda.jpg': GrideldaImg,
   'Gulam.jpg': GulamImg,
   'Gulsni.jpg': GulsniImg,
@@ -104,6 +124,17 @@ const characterImageMap = {
   'Yeonwoo.jpg': YeonwooImg,
   'Yui.jpg': YuiImg,
   'Yvonna.jpg': YvonnaImg,
+  // Mercenary characters
+  'Koblod_Mercenary.jpg': KoboldMercenaryImg,
+  'Puppy_Shooter.jpg': PuppyShooterImg,
+  'Puppy_Stepper.jpg': PuppyStepperImg,
+  'Split_Twigs_Priest.jpg': SplitTwigsPriestImg,
+  'Swamp_Elf_Vigilante_member.jpg': SwampElfVigilanteImg,
+  'Grrik_Mercenary.jpg': GrrikMercenaryImg,
+  'Wizard_Legionnaire.jpg': WizardLegionnaireImg,
+  'War_Mercenary.jpg': WarMercenaryImg,
+  'Imperial_Shieldbearer_Mercenary.jpg': ImperialShieldbearerImg,
+  'Torta_warrior.jpg': TortaWarriorImg,
 };
 
 export interface Props {

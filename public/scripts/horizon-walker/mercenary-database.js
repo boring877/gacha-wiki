@@ -363,6 +363,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('mercenary-grid')) {
     window.mercenaryDatabase = new MercenaryDatabase();
   }
+
+  // Mercenary card/row click navigation with touch optimization
+  // Use event delegation to handle both existing and future elements
+  document.addEventListener('click', e => {
+    const clickableElement = e.target?.closest('[data-url]');
+    if (clickableElement) {
+      e.preventDefault();
+      const url = clickableElement.dataset.url;
+      if (url) {
+        window.location.href = url;
+      }
+    }
+  });
+
+  // Also set styles for existing elements
+  const clickableElements = document.querySelectorAll('[data-url]');
+  clickableElements.forEach(element => {
+    element.style.cursor = 'pointer';
+    element.style.touchAction = 'manipulation';
+  });
 });
 
 // Handle browser back/forward navigation
