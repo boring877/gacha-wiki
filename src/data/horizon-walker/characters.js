@@ -858,6 +858,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     role: 'Assassin',
     tags: [
       'Assassin',
+      'Swamp Elf',
       'Melee Damage',
       'High Mobility',
       'Evasion Tank',
