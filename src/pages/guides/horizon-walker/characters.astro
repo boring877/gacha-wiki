@@ -17,6 +17,29 @@ import { CharacterImage } from '../../../components/horizon-walker/index.astro';
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
 
+// Define race tags for filtering
+const raceTags = [
+  'Human',
+  'Swamp Elf',
+  'Wood Elf',
+  'Catsidhe',
+  'Kobold',
+  'Orke',
+  'Torta',
+  'Lamora',
+  'Lamoran',
+  'Fairy',
+  'Machine',
+  'Demon',
+  'Elemental',
+  'Kesak',
+];
+
+// Extract unique races from character tags
+const availableRaces = raceTags.filter(race =>
+  HORIZON_WALKER_CHARACTERS.some(char => char.tags && char.tags.includes(race))
+);
+
 // Calculate enhanced stats for display
 const totalCharacters = HORIZON_WALKER_CHARACTERS.length;
 const exCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'EX').length;
@@ -76,6 +99,10 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
             <select class="filter-select" id="rarity-filter">
               <option value="">Rarity</option>
               {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+            <select class="filter-select" id="race-filter">
+              <option value="">Race</option>
+              {availableRaces.map(race => <option value={race}>{race}</option>)}
             </select>
           </div>
           <div class="sort-controls">

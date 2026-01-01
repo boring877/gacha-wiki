@@ -15,6 +15,7 @@ const initialize = () => {
   const tableBody = document.getElementById('character-table-body');
   const mobileCardsContainer = document.getElementById('mobile-cards-container');
   const rarityFilter = document.getElementById('rarity-filter');
+  const raceFilter = document.getElementById('race-filter');
   const sortButtons = document.querySelectorAll('.sort-btn');
   const resetButton = document.getElementById('reset-table');
 
@@ -166,19 +167,22 @@ const initialize = () => {
 
   /**
    * Applies current filter settings to both desktop and mobile views
-   * Filters by rarity and saves state to sessionStorage
+   * Filters by rarity and race, saves state to sessionStorage
    */
   function applyFilters() {
     const rarityValue = rarityFilter?.value || '';
+    const raceValue = raceFilter?.value || '';
 
     // Filter desktop table rows
     if (tableBody) {
       Array.from(tableBody.children).forEach(row => {
         const rarityCell = row.querySelector('.hw-badge[data-rarity]');
+        const tags = row.dataset.tags || '';
 
         const matchesRarity = !rarityValue || rarityCell?.textContent.trim() === rarityValue;
+        const matchesRace = !raceValue || tags.includes(raceValue);
 
-        const isVisible = matchesRarity;
+        const isVisible = matchesRarity && matchesRace;
         row.style.display = isVisible ? '' : 'none';
       });
 
@@ -189,10 +193,12 @@ const initialize = () => {
     if (mobileCardsContainer) {
       Array.from(mobileCardsContainer.children).forEach(card => {
         const rarityBadge = card.querySelector('.hw-badge[data-rarity]');
+        const tags = card.dataset.tags || '';
 
         const matchesRarity = !rarityValue || rarityBadge?.textContent.trim() === rarityValue;
+        const matchesRace = !raceValue || tags.includes(raceValue);
 
-        const isVisible = matchesRarity;
+        const isVisible = matchesRarity && matchesRace;
         card.style.display = isVisible ? '' : 'none';
       });
     }
@@ -200,6 +206,7 @@ const initialize = () => {
     // Save filter state to sessionStorage
     const filterState = {
       rarity: rarityValue || null,
+      race: raceValue || null,
     };
 
     const activeFilters = {};
@@ -227,6 +234,7 @@ const initialize = () => {
   function resetDatabase() {
     // Clear all filters
     if (rarityFilter) rarityFilter.value = '';
+    if (raceFilter) raceFilter.value = '';
 
     // Show all rows and cards
     if (tableBody) {
@@ -271,6 +279,7 @@ const initialize = () => {
       if (savedFilters) {
         const filters = JSON.parse(savedFilters);
         if (filters.rarity && rarityFilter) rarityFilter.value = filters.rarity;
+        if (filters.race && raceFilter) raceFilter.value = filters.race;
         applyFilters();
       }
     } catch (_error) {
@@ -355,6 +364,10 @@ const initialize = () => {
   // Filter event listeners (keep existing for compatibility)
   if (rarityFilter) {
     rarityFilter.addEventListener('change', applyFilters);
+  }
+
+  if (raceFilter) {
+    raceFilter.addEventListener('change', applyFilters);
   }
 
   // Three-state sort button event listeners

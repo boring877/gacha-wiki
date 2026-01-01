@@ -129,6 +129,7 @@ export const GAME_MODES = {
 const MAP_CLEAR_CHARACTERS = {
   SSS: ['Olivia', 'Yui', 'Vlissing'],
   SS: [
+    'Palekar',
     'Valeta',
     'Everette',
     'Yvonna',
@@ -191,7 +192,7 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah', 'Nymset'],
+  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah', 'Nymset', 'Palekar'],
   SS: [
     'Olivia',
     'So Joo-Hee',
@@ -274,6 +275,7 @@ const DOPAMIN_CHARACTERS = {
     'korabi',
     'Leah',
     'nymset',
+    'Palekar',
   ],
   SS: [
     'Kalina',
@@ -335,6 +337,7 @@ const PRIORITIES_CHARACTERS = [
   'Korabi',
   'Bella',
   'Nymset',
+  'Palekar',
 ];
 
 // Process all character lists to create tier lists with valid characters
