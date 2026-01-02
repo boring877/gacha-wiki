@@ -1,4 +1,73 @@
 {
+  "20000": {
+    "characterId": "20000",
+    "characterName": "Noah",
+    "skills": [
+      {
+        "skillId": "200001",
+        "name": "Swordsmanship",
+        "type": "basicAttack",
+        "typeName": "Basic Attack",
+        "icon": "C_Nevernight_Base_Attack.png",
+        "description": {
+          "lv1": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv2": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv3": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv4": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv5": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv6": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv7": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv8": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv9": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv10": "Deals 100.0% ATK (P. DMG) to enemies ahead in a cone."
+        },
+        "damageScaling": {
+          "lv1": "0%",
+          "lv2": "0%",
+          "lv3": "0%",
+          "lv4": "0%",
+          "lv5": "0%",
+          "lv6": "0%",
+          "lv7": "0%",
+          "lv8": "0%",
+          "lv9": "0%",
+          "lv10": "0%"
+        }
+      },
+      {
+        "skillId": "200002",
+        "name": "Destined Redemption",
+        "type": "ultimate",
+        "typeName": "Ultimate",
+        "icon": "C_Nevernight_Base_MaxSkill.png",
+        "cost": 3,
+        "description": {
+          "lv1": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv2": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv3": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv4": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv5": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv6": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv7": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv8": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv9": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone.",
+          "lv10": "Deals 500.0% ATK (P. DMG) to enemies ahead in a cone."
+        },
+        "damageScaling": {
+          "lv1": "0%",
+          "lv2": "0%",
+          "lv3": "0%",
+          "lv4": "0%",
+          "lv5": "0%",
+          "lv6": "0%",
+          "lv7": "0%",
+          "lv8": "0%",
+          "lv9": "0%",
+          "lv10": "0%"
+        }
+      }
+    ]
+  },
   "20010": {
     "characterId": "20010",
     "characterName": "Noah",
@@ -842,14 +911,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "All DMG Taken Down (Minor)",
-            "description": "All DMG Taken -15%. Does not stack with effects of the same type. Cannot be dispelled.",
-            "icon": "Buff_AllDmgReduceRateUp_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20060160",
@@ -989,13 +1051,6 @@
           "lv9": "0%",
           "lv10": "0%"
         },
-        "buffs": [
-          {
-            "name": "All DMG Up (Minor)",
-            "description": "All DMG Dealt +15%. Does not stack with effects of the same type. Cannot be dispelled.",
-            "icon": "Buff_AllDmgRateUp_01.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "3",
@@ -1109,6 +1164,37 @@
             "description": "A summon that performs Basic ATK. Only 3 can exist at the same time."
           }
         ]
+      },
+      {
+        "skillId": "20080130",
+        "name": "Muses' Masquerade",
+        "type": "unknown",
+        "typeName": "Unknown",
+        "icon": "C_Conifer_Base_Skill01.png",
+        "description": {
+          "lv1": "",
+          "lv2": "",
+          "lv3": "",
+          "lv4": "",
+          "lv5": "",
+          "lv6": "",
+          "lv7": "",
+          "lv8": "",
+          "lv9": "",
+          "lv10": ""
+        },
+        "damageScaling": {
+          "lv1": "0%",
+          "lv2": "0%",
+          "lv3": "0%",
+          "lv4": "0%",
+          "lv5": "0%",
+          "lv6": "0%",
+          "lv7": "0%",
+          "lv8": "0%",
+          "lv9": "0%",
+          "lv10": "0%"
+        }
       },
       {
         "skillId": "20080140",
@@ -1396,7 +1482,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Affliction)",
-            "description": "Takes M. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes M. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag.png"
           }
         ]
@@ -1434,7 +1520,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Affliction)",
-            "description": "Takes M. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes M. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag.png"
           }
         ]
@@ -1695,11 +1781,6 @@
             "name": "Stun",
             "description": "Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.",
             "icon": "Buff_Stun.png"
-          },
-          {
-            "name": "Horn Dance",
-            "description": "ATK SPD increases by 2%, then decreases by 50% every 1 sec. Cannot be dispelled.",
-            "icon": "Buff_Anger.png"
           }
         ],
         "tips": [
@@ -1771,13 +1852,6 @@
           "lv9": "19.0%",
           "lv10": "20.0%"
         },
-        "buffs": [
-          {
-            "name": "Horn Dance",
-            "description": "ATK SPD increases by 2%, then decreases by 50% every 1 sec. Cannot be dispelled.",
-            "icon": "Buff_Anger.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "6",
@@ -1907,7 +1981,7 @@
         "buffs": [
           {
             "name": "Bloodthirst",
-            "description": "Gains {0} Lifesteal. While Blood Moon is active, DMG dealt increases by {1}.",
+            "description": "Gains 30 Lifesteal. While Blood Moon is active, DMG dealt increases by 20.",
             "icon": "Buff_ShadowArrow.png"
           }
         ]
@@ -2244,13 +2318,6 @@
           "lv9": "19.0%",
           "lv10": "20.0%"
         },
-        "buffs": [
-          {
-            "name": "Spark",
-            "description": "Mass's Ultimate deals 50% increased DMG.",
-            "icon": "Buff_AllDmgReduceRateDown_03.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "2",
@@ -2506,7 +2573,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ]
@@ -2544,7 +2611,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ]
@@ -2768,11 +2835,6 @@
             "name": "Taunt",
             "description": "Control: Weak. The carrier stops casting all skills, sets the caster as target, and is unable to cast Ultimate or Special (Active) during the effect. When the effect ends, the carrier will resume attacking their prior target.",
             "icon": "Buff_Taunt.png"
-          },
-          {
-            "name": "P. DMG Taken Down (Moderate)",
-            "description": "P. DMG Taken -30%. Does not stack with effects of the same type.",
-            "icon": "Buff_PhyDmgReduceRateUp_02.png"
           }
         ],
         "tips": [
@@ -3374,7 +3436,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Affliction)",
-            "description": "Takes M. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes M. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag.png"
           }
         ]
@@ -3942,14 +4004,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "P. DMG Taken Down (Minor)",
-            "description": "P. DMG Taken -15%. Does not stack with effects of the same type.",
-            "icon": "Buff_PhyDmgReduceRateUp_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20260160",
@@ -4428,11 +4483,6 @@
             "name": "Shield",
             "description": "When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG or Piercing DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.",
             "icon": "Buff_Shield.png"
-          },
-          {
-            "name": "P. DMG Taken Down (Minor)",
-            "description": "P. DMG Taken -15%. Does not stack with effects of the same type.",
-            "icon": "Buff_PhyDmgReduceRateUp_01.png"
           }
         ]
       },
@@ -4465,14 +4515,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "Shield Received UP (Minor)",
-            "description": "Shield Strength Received +25%. Does not stack with effects of the same type.",
-            "icon": "Buff_BearCureRateUp_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20290140",
@@ -4610,14 +4653,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "All DMG Taken Down (Minor)",
-            "description": "All DMG Taken -15%. Does not stack with effects of the same type.",
-            "icon": "Buff_AllDmgReduceRateUp_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20300140",
@@ -4717,14 +4753,7 @@
           "lv8": "26.0%",
           "lv9": "28.0%",
           "lv10": "30.0%"
-        },
-        "buffs": [
-          {
-            "name": "Sleep",
-            "description": "Control: Strong. The carrier is unable to cast Ultimate, Special (Active), Basic ATK, or move during the effect. Effect is removed after Carrier takes DMG equal to 25% Max HP.",
-            "icon": "Buff_Sleep.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20310130",
@@ -4755,14 +4784,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "Sleep",
-            "description": "Control: Strong. The carrier is unable to cast Ultimate, Special (Active), Basic ATK, or move during the effect. Effect is removed after Carrier takes DMG equal to 25% Max HP.",
-            "icon": "Buff_Sleep.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20310140",
@@ -4793,14 +4815,7 @@
           "lv8": "18.0%",
           "lv9": "19.0%",
           "lv10": "20.0%"
-        },
-        "buffs": [
-          {
-            "name": "Sleep",
-            "description": "Control: Strong. The carrier is unable to cast Ultimate, Special (Active), Basic ATK, or move during the effect. Effect is removed after Carrier takes DMG equal to 25% Max HP.",
-            "icon": "Buff_Sleep.png"
-          }
-        ]
+        }
       }
     ]
   },
@@ -4870,13 +4885,6 @@
           "lv9": "28.0%",
           "lv10": "30.0%"
         },
-        "buffs": [
-          {
-            "name": "Continuous DMG (Blood Mark)",
-            "description": "Takes Piercing DMG equal to {1} of the caster's ATK once every 2 sec. Can stack up to {0} time(s).",
-            "icon": "Buff_Dot_2s_Penetration.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "11",
@@ -4945,14 +4953,7 @@
           "lv8": "18.0%",
           "lv9": "19.0%",
           "lv10": "20.0%"
-        },
-        "buffs": [
-          {
-            "name": "Continuous DMG (Blood Mark)",
-            "description": "Takes Piercing DMG equal to {1} of the caster's ATK once every 2 sec. Can stack up to {0} time(s).",
-            "icon": "Buff_Dot_2s_Penetration.png"
-          }
-        ]
+        }
       }
     ]
   },
@@ -5025,7 +5026,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ],
@@ -5101,7 +5102,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ],
@@ -5181,13 +5182,6 @@
           "lv9": "28.0%",
           "lv10": "30.0%"
         },
-        "buffs": [
-          {
-            "name": "CRIT Resist Rate Down (Moderate)",
-            "description": "Chance for DMG Taken to CRIT +40%. Does not stack with effects of the same type.",
-            "icon": "Buff_AntiCritRateDown_02.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "8",
@@ -5470,14 +5464,7 @@
           "lv8": "26.0%",
           "lv9": "28.0%",
           "lv10": "30.0%"
-        },
-        "buffs": [
-          {
-            "name": "Induction",
-            "description": "When applied, deals {1} ATK (P. DMG) to a random target within {0} meters. After reaching {2} stack(s), converts to a {3} sec Stun effect.",
-            "icon": "Buff_Electrified.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20370140",
@@ -5498,13 +5485,6 @@
           "lv9": "0%",
           "lv10": "0%"
         },
-        "buffs": [
-          {
-            "name": "Induction",
-            "description": "When applied, deals {1} ATK (P. DMG) to a random target within {0} meters. After reaching {2} stack(s), converts to a {3} sec Stun effect.",
-            "icon": "Buff_Electrified.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "10",
@@ -5617,11 +5597,6 @@
             "name": "Stun",
             "description": "Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.",
             "icon": "Buff_Stun.png"
-          },
-          {
-            "name": "Shadowmark Arrow",
-            "description": "Increases Selena's Ultimate DMG based on the number of Shadowmark Arrows, up to 10.",
-            "icon": "Buff_ShadowArrow.png"
           }
         ]
       },
@@ -5660,11 +5635,6 @@
             "name": "Stun",
             "description": "Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.",
             "icon": "Buff_Stun.png"
-          },
-          {
-            "name": "Shadowmark Arrow",
-            "description": "Increases Selena's Ultimate DMG based on the number of Shadowmark Arrows, up to 10.",
-            "icon": "Buff_ShadowArrow.png"
           }
         ],
         "tips": [
@@ -5814,14 +5784,14 @@
         },
         "tips": [
           {
-            "tipId": "20390",
-            "name": "Shade",
-            "description": "A summon that performs ranged Basic ATK in sync with Transcendent Noah. Only 5 can exist at the same time."
-          },
-          {
             "tipId": "10",
             "name": "Effective Range",
             "description": "DMG dealt by this Vassal varies with range. It increases by up to 50% at the farthest target while decreasing by up to 50% at the target nearby."
+          },
+          {
+            "tipId": "20390",
+            "name": "Shade",
+            "description": "A summon that performs ranged Basic ATK in sync with Transcendent Noah. Only 5 can exist at the same time."
           }
         ]
       },
@@ -5934,7 +5904,7 @@
         "buffs": [
           {
             "name": "Swift Hunt",
-            "description": "Increases ATK SPD by {0}. Stacks up to {1} times.",
+            "description": "Increases ATK SPD by 10. Stacks up to 5 times.",
             "icon": "Buff_20400_AttackSpeed.png"
           }
         ]
@@ -6052,16 +6022,16 @@
         "typeName": "Skill",
         "icon": "C_Alene_Skill.png",
         "description": {
-          "lv1": "After every 120.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv2": "After every 126.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv3": "After every 132.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv4": "After every 138.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv5": "After every 144.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv6": "After every 150.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv7": "After every 156.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv8": "After every 162.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv9": "After every 168.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec.",
-          "lv10": "After every 180.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to {1} of Alene's Max HP and a Shield equal to {2} of Alene's Max HP, lasting {3} sec."
+          "lv1": "After every 120.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 20.0% of Alene's Max HP and a Shield equal to 20.0% of Alene's Max HP, lasting 15 sec.",
+          "lv2": "After every 126.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 21.0% of Alene's Max HP and a Shield equal to 21.0% of Alene's Max HP, lasting 15 sec.",
+          "lv3": "After every 132.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 22.0% of Alene's Max HP and a Shield equal to 22.0% of Alene's Max HP, lasting 15 sec.",
+          "lv4": "After every 138.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 23.0% of Alene's Max HP and a Shield equal to 23.0% of Alene's Max HP, lasting 15 sec.",
+          "lv5": "After every 144.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 24.0% of Alene's Max HP and a Shield equal to 24.0% of Alene's Max HP, lasting 15 sec.",
+          "lv6": "After every 150.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 25.0% of Alene's Max HP and a Shield equal to 25.0% of Alene's Max HP, lasting 15 sec.",
+          "lv7": "After every 156.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 26.0% of Alene's Max HP and a Shield equal to 26.0% of Alene's Max HP, lasting 15 sec.",
+          "lv8": "After every 162.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 27.0% of Alene's Max HP and a Shield equal to 27.0% of Alene's Max HP, lasting 15 sec.",
+          "lv9": "After every 168.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 28.0% of Alene's Max HP and a Shield equal to 28.0% of Alene's Max HP, lasting 15 sec.",
+          "lv10": "After every 180.0% Basic ATK(s), grants all Dusk's Devotion allies Healing equal to 30.0% of Alene's Max HP and a Shield equal to 30.0% of Alene's Max HP, lasting 15 sec."
         },
         "damageScaling": {
           "lv1": "11.0%",
@@ -6104,11 +6074,6 @@
         },
         "buffs": [
           {
-            "name": "Sandlash",
-            "description": "M. DEF PEN +{0}, P. DEF PEN +{0}. Cannot be dispelled.",
-            "icon": "Buff_20410_Passiveskill.png"
-          },
-          {
             "name": "All DMG Up (Minor)",
             "description": "All DMG Dealt +15%. Does not stack with effects of the same type.",
             "icon": "Buff_AllDmgRateUp_01.png"
@@ -6123,16 +6088,16 @@
         "icon": "C_Alene_MaxSkill.png",
         "cost": 4,
         "description": {
-          "lv1": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv2": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv3": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv4": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv5": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv6": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv7": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv8": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv9": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
-          "lv10": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing {0} ATK (P. DMG) to all enemies in a circle and inflicting Stun for {1} sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target."
+          "lv1": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 500.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv2": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 525.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv3": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 550.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv4": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 575.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv5": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 600.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv6": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 625.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv7": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 650.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv8": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 675.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv9": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 700.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target.",
+          "lv10": "Alene swings her weapon, dealing 50.0% ATK (P. DMG) to nearby enemies, then jumps to a select location and bashes the ground, dealing 750.0% ATK (P. DMG) to all enemies in a circle and inflicting Stun for 4 sec. Then deals 5 ATK (P. DMG) to other enemies around each hit target."
         },
         "damageScaling": {
           "lv1": "12.0%",
@@ -6224,11 +6189,6 @@
         },
         "buffs": [
           {
-            "name": "Induction",
-            "description": "When applied, deals {1} ATK (P. DMG) to a random target within {0} meters. After reaching {2} stack(s), converts to a {3} sec Stun effect.",
-            "icon": "Buff_Electrified.png"
-          },
-          {
             "name": "Stun",
             "description": "Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.",
             "icon": "Buff_Stun.png"
@@ -6273,11 +6233,6 @@
           "lv10": "0%"
         },
         "buffs": [
-          {
-            "name": "Induction",
-            "description": "When applied, deals {1} ATK (P. DMG) to a random target within {0} meters. After reaching {2} stack(s), converts to a {3} sec Stun effect.",
-            "icon": "Buff_Electrified.png"
-          },
           {
             "name": "Stun",
             "description": "Control: Strong. The carrier stops and remains unable to cast Ultimate, Special (Active), Basic ATKs, or move during the effect.",
@@ -6577,7 +6532,7 @@
         "buffs": [
           {
             "name": "Pestilence",
-            "description": "Takes P. DMG equal to {0} of caster's ATK every 2 sec and gains ATK SPD Down by {1}, stacking up to 10 times. Once stacks exceed 7, deals AoE DMG to enemies within 2.5 meters.",
+            "description": "Takes P. DMG equal to 50 of caster's ATK every 2 sec and gains ATK SPD Down by 20, stacking up to 10 times. Once stacks exceed 7, deals AoE DMG to enemies within 2.5 meters.",
             "icon": "Buff_Plague.png"
           }
         ]
@@ -6615,7 +6570,7 @@
         "buffs": [
           {
             "name": "Pestilence",
-            "description": "Takes P. DMG equal to {0} of caster's ATK every 2 sec and gains ATK SPD Down by {1}, stacking up to 10 times. Once stacks exceed 7, deals AoE DMG to enemies within 2.5 meters.",
+            "description": "Takes P. DMG equal to 50 of caster's ATK every 2 sec and gains ATK SPD Down by 20, stacking up to 10 times. Once stacks exceed 7, deals AoE DMG to enemies within 2.5 meters.",
             "icon": "Buff_Plague.png"
           }
         ]
@@ -7008,7 +6963,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ]
@@ -7202,6 +7157,37 @@
     "characterId": "20510",
     "characterName": "Clive Jr.",
     "skills": [
+      {
+        "skillId": "5",
+        "name": "Relief",
+        "type": "unknown",
+        "typeName": "Unknown",
+        "icon": "Legacy_05_1.png",
+        "description": {
+          "lv1": "When HP percentage falls below 50.0% for the first time, restores 4.0% of Max HP every sec for 10 sec.",
+          "lv2": "When HP percentage falls below 50.0% for the first time, restores 5.0% of Max HP every sec for 10 sec.",
+          "lv3": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv4": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv5": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv6": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv7": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv8": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv9": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec.",
+          "lv10": "When HP percentage falls below 50.0% for the first time, restores 6.0% of Max HP every sec for 10 sec."
+        },
+        "damageScaling": {
+          "lv1": "1.0%",
+          "lv2": "2.0%",
+          "lv3": "3.0%",
+          "lv4": "3.0%",
+          "lv5": "3.0%",
+          "lv6": "3.0%",
+          "lv7": "3.0%",
+          "lv8": "3.0%",
+          "lv9": "3.0%",
+          "lv10": "3.0%"
+        }
+      },
       {
         "skillId": "20510110",
         "name": "Hidden Blade",
@@ -7457,7 +7443,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ],
@@ -7578,7 +7564,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Bleed)",
-            "description": "Takes P. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes P. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag_02.png"
           }
         ]
@@ -7613,13 +7599,6 @@
           "lv9": "0%",
           "lv10": "0%"
         },
-        "buffs": [
-          {
-            "name": "Fervor",
-            "description": "ATK SPD +{0}. Does not stack with effects of the same type.",
-            "icon": "Buff_AttackSpeedUp.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "10",
@@ -8030,7 +8009,7 @@
         "buffs": [
           {
             "name": "Blood Frenzy",
-            "description": "Increases Bloodsoul Recovery by {0} and M. DMG by {1}, stacking up to {2}. Cannot be dispelled.",
+            "description": "Increases Bloodsoul Recovery by 200 and M. DMG by 10, stacking up to 5. Cannot be dispelled.",
             "icon": "Buff_BloodBoiling.png"
           }
         ],
@@ -8185,14 +8164,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "Stasis",
-            "description": "This portion of HP is permanently frozen and cannot be recovered.",
-            "icon": "Buff_C_Stella_Base_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20580160",
@@ -8434,7 +8406,7 @@
         "buffs": [
           {
             "name": "Reinvigorate",
-            "description": "Receives Healing equal to {0} of Albrecht's Max HP once every {1} sec.",
+            "description": "Receives Healing equal to 5 of Albrecht's Max HP once every 2 sec.",
             "icon": "Buff_Hot_2s_Fusu.png"
           },
           {
@@ -8743,23 +8715,6 @@
           "lv9": "28.0%",
           "lv10": "30.0%"
         },
-        "buffs": [
-          {
-            "name": "All DMG Taken Down (Minor)",
-            "description": "All DMG Taken -15%. Does not stack with effects of the same type. Cannot be dispelled.",
-            "icon": "Buff_AllDmgReduceRateUp_01.png"
-          },
-          {
-            "name": "Scar of Crowley",
-            "description": "Mark effect. Cannot be dispelled.",
-            "icon": "Buff_C_Quinn_1.png"
-          },
-          {
-            "name": "All DMG Taken Down (Moderate)",
-            "description": "All DMG Received -30%. Does not stack with effects of the same type. Cannot be dispelled.",
-            "icon": "Buff_AllDmgReduceRateUp_02.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "8",
@@ -8797,14 +8752,7 @@
           "lv8": "0%",
           "lv9": "0%",
           "lv10": "0%"
-        },
-        "buffs": [
-          {
-            "name": "Scar of Crowley",
-            "description": "Mark effect. Cannot be dispelled.",
-            "icon": "Buff_C_Quinn_1.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20620160",
@@ -8835,14 +8783,7 @@
           "lv8": "18.0%",
           "lv9": "19.0%",
           "lv10": "20.0%"
-        },
-        "buffs": [
-          {
-            "name": "Parasol Shelter",
-            "description": "When taking fatal DMG, blocks that DMG and all subsequent DMG for 0.5 sec, then removes Parasol Shelter. Cannot be dispelled.",
-            "icon": "Buff_C_Quinn_2.png"
-          }
-        ]
+        }
       }
     ]
   },
@@ -8920,7 +8861,7 @@
           },
           {
             "name": "Movement Speed Down",
-            "description": "Reduces Movement Speed by {0}.",
+            "description": "Reduces Movement Speed by 90.",
             "icon": "Buff_MoveSpeedDown.png"
           },
           {
@@ -9005,6 +8946,26 @@
             "icon": "Buff_Shield.png"
           }
         ]
+      },
+      {
+        "skillId": "20630161",
+        "name": "",
+        "type": "unknown",
+        "typeName": "Unknown",
+        "icon": "C_Agatha_Base_MaxSkill.png",
+        "description": "",
+        "damageScaling": {
+          "lv1": "0%",
+          "lv2": "0%",
+          "lv3": "0%",
+          "lv4": "0%",
+          "lv5": "0%",
+          "lv6": "0%",
+          "lv7": "0%",
+          "lv8": "0%",
+          "lv9": "0%",
+          "lv10": "0%"
+        }
       }
     ]
   },
@@ -9041,19 +9002,7 @@
           "lv8": "18.0%",
           "lv9": "19.0%",
           "lv10": "20.0%"
-        },
-        "buffs": [
-          {
-            "name": "Siren's Song",
-            "description": "Cannot be purified. Permanent effect. When reaching {0} stacks, effect disappears, inflicting Sleep on the carrier for {1} sec.",
-            "icon": "Buff_Loreley.png"
-          },
-          {
-            "name": "Sleep",
-            "description": "Control: Strong. The carrier is unable to cast Ultimate, Special (Active), Basic ATK, or move during the effect. Effect is removed after Carrier takes DMG equal to 25% Max HP.",
-            "icon": "Buff_Sleep.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20640120",
@@ -9155,18 +9104,6 @@
           "lv9": "19.0%",
           "lv10": "20.0%"
         },
-        "buffs": [
-          {
-            "name": "Siren's Song",
-            "description": "Cannot be purified. Permanent effect. When reaching {0} stacks, effect disappears, inflicting Sleep on the carrier for {1} sec.",
-            "icon": "Buff_Loreley.png"
-          },
-          {
-            "name": "Sleep",
-            "description": "Control: Strong. The carrier is unable to cast Ultimate, Special (Active), Basic ATK, or move during the effect. Effect is removed after Carrier takes DMG equal to 25% Max HP.",
-            "icon": "Buff_Sleep.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "2",
@@ -9373,7 +9310,7 @@
         "buffs": [
           {
             "name": "Puppeteer",
-            "description": "Gains {0} of Fleeting Bella's Base ATK.",
+            "description": "Gains 25 of Fleeting Bella's Base ATK.",
             "icon": "Buff_Bella_Summer_01.png"
           },
           {
@@ -9691,14 +9628,14 @@
         ],
         "tips": [
           {
-            "tipId": "6",
-            "name": "Rush",
-            "description": "Quickly moves towards selected target or direction. Cannot be targeted during this effect."
-          },
-          {
             "tipId": "20690",
             "name": "Overdrive",
             "description": "Ultimates can be cast when current Bloodsoul exceeds 50% of their cost, even if insufficient. Overdrive is triggered when casting an Ultimate that creates a Bloodsoul deficit. During Overdrive, only Ultimates with 0 Bloodsoul cost can be used, but the Bloodsoul recovery rate increases by 20%. Overdrive ends when Bloodsoul restores to 0."
+          },
+          {
+            "tipId": "6",
+            "name": "Rush",
+            "description": "Quickly moves towards selected target or direction. Cannot be targeted during this effect."
           },
           {
             "tipId": "8",
@@ -9738,11 +9675,6 @@
           "lv10": "0%"
         },
         "buffs": [
-          {
-            "name": "Soul Burn",
-            "description": "CRIT DMG Taken +{0}, increasing by {1} every 3 sec, up to {2}.",
-            "icon": "Buff_C_Gerhilde_Base_01.png"
-          },
           {
             "name": "Shield",
             "description": "When receiving DMG, loses Shield Strength instead of HP. When receiving True DMG or Piercing DMG, loses Shield Strength equal to 200% of DMG taken. Shield cannot exceed 200% of Max HP.",
@@ -9855,24 +9787,7 @@
           "lv8": "26.0%",
           "lv9": "28.0%",
           "lv10": "30.0%"
-        },
-        "buffs": [
-          {
-            "name": "Dark Mark",
-            "description": "Prioritizes attacking targets with Dark Intentions.",
-            "icon": "Buff_Siegrune_Base_02.png"
-          },
-          {
-            "name": "Dark Intentions",
-            "description": "Sets targets with Dark Mark as priority targets. Basic ATK DMG +{0} and Basic ATK Range +{1}",
-            "icon": "Buff_Siegrune_Base_03.png"
-          },
-          {
-            "name": "Festering Desire",
-            "description": "ATK SPD UP by {0}",
-            "icon": "Buff_Siegrune_Base_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20700140",
@@ -9904,13 +9819,6 @@
           "lv9": "0%",
           "lv10": "0%"
         },
-        "buffs": [
-          {
-            "name": "Festering Desire",
-            "description": "ATK SPD UP by {0}",
-            "icon": "Buff_Siegrune_Base_01.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "10",
@@ -9948,14 +9856,7 @@
           "lv8": "18.0%",
           "lv9": "19.0%",
           "lv10": "20.0%"
-        },
-        "buffs": [
-          {
-            "name": "Festering Desire",
-            "description": "ATK SPD UP by {0}",
-            "icon": "Buff_Siegrune_Base_01.png"
-          }
-        ]
+        }
       }
     ]
   },
@@ -10024,14 +9925,7 @@
           "lv8": "26.0%",
           "lv9": "28.0%",
           "lv10": "30.0%"
-        },
-        "buffs": [
-          {
-            "name": "Phantasm",
-            "description": "Conjures flying blades. When Julius attacks, the blades automatically perform follow-up attacks, dealing P. DMG equal to {0} of the target's Max HP. Each instance cannot exceed {1} of Julius's ATK. Cannot be dispelled.",
-            "icon": "Buff_C_Julius_Base_01.png"
-          }
-        ]
+        }
       },
       {
         "skillId": "20710140",
@@ -10063,13 +9957,6 @@
           "lv9": "0%",
           "lv10": "0%"
         },
-        "buffs": [
-          {
-            "name": "Phantasm",
-            "description": "Conjures flying blades. When Julius attacks, the blades automatically perform follow-up attacks, dealing P. DMG equal to {0} of the target's Max HP. Each instance cannot exceed {1} of Julius's ATK. Cannot be dispelled.",
-            "icon": "Buff_C_Julius_Base_01.png"
-          }
-        ],
         "tips": [
           {
             "tipId": "7",
@@ -10192,7 +10079,7 @@
           },
           {
             "name": "Feathers of War",
-            "description": "CRIT Rate +{0}, CRIT DMG Up +{1}. Stacks up to {2} time(s).",
+            "description": "CRIT Rate +6, CRIT DMG Up +8. Stacks up to 20 time(s).",
             "icon": "Buff_20730_Selenia_01.png"
           }
         ]
@@ -10230,7 +10117,7 @@
         "buffs": [
           {
             "name": "Feathers of War",
-            "description": "CRIT Rate +{0}, CRIT DMG Up +{1}. Stacks up to {2} time(s).",
+            "description": "CRIT Rate +6, CRIT DMG Up +8. Stacks up to 20 time(s).",
             "icon": "Buff_20730_Selenia_01.png"
           }
         ],
@@ -10351,7 +10238,7 @@
         "buffs": [
           {
             "name": "Windwing",
-            "description": "CRIT Rate +{0}, Dodge +{1}. Stacks up to {2} time(s).",
+            "description": "CRIT Rate +5, Dodge +1. Stacks up to 40 time(s).",
             "icon": "Buff_Wind.png"
           }
         ]
@@ -10389,7 +10276,7 @@
         "buffs": [
           {
             "name": "Windwing",
-            "description": "CRIT Rate +{0}, Dodge +{1}. Stacks up to {2} time(s).",
+            "description": "CRIT Rate +5, Dodge +1. Stacks up to 40 time(s).",
             "icon": "Buff_Wind.png"
           }
         ],
@@ -10445,16 +10332,16 @@
         "typeName": "Basic Attack",
         "icon": "C_Astel_Base_Attack.png",
         "description": {
-          "lv1": "Deals {0} ATK (M. DMG) to the target.",
-          "lv2": "Deals {0} ATK (M. DMG) to the target.",
-          "lv3": "Deals {0} ATK (M. DMG) to the target.",
-          "lv4": "Deals {0} ATK (M. DMG) to the target.",
-          "lv5": "Deals {0} ATK (M. DMG) to the target.",
-          "lv6": "Deals {0} ATK (M. DMG) to the target.",
-          "lv7": "Deals {0} ATK (M. DMG) to the target.",
-          "lv8": "Deals {0} ATK (M. DMG) to the target.",
-          "lv9": "Deals {0} ATK (M. DMG) to the target.",
-          "lv10": "Deals {0} ATK (M. DMG) to the target."
+          "lv1": "Deals 125.0% ATK (M. DMG) to the target.",
+          "lv2": "Deals 131.0% ATK (M. DMG) to the target.",
+          "lv3": "Deals 137.0% ATK (M. DMG) to the target.",
+          "lv4": "Deals 143.0% ATK (M. DMG) to the target.",
+          "lv5": "Deals 150.0% ATK (M. DMG) to the target.",
+          "lv6": "Deals 156.0% ATK (M. DMG) to the target.",
+          "lv7": "Deals 162.0% ATK (M. DMG) to the target.",
+          "lv8": "Deals 168.0% ATK (M. DMG) to the target.",
+          "lv9": "Deals 175.0% ATK (M. DMG) to the target.",
+          "lv10": "Deals 187.0% ATK (M. DMG) to the target."
         },
         "damageScaling": {
           "lv1": "11.0%",
@@ -10477,16 +10364,16 @@
         "icon": "C_Astel_Base_MaxSkill.png",
         "cost": 5,
         "description": {
-          "lv1": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv2": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv3": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv4": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv5": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv6": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv7": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv8": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv9": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone.",
-          "lv10": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by {3} and gains {5} stacks of Scarlet Shade for {1} sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing {2} ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing {4} ATK (M. DMG) to all enemies in the cone."
+          "lv1": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1200.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1200.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv2": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1260.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1260.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv3": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1320.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1320.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv4": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1380.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1380.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv5": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1440.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1440.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv6": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1500.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1500.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv7": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1560.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1560.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv8": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1620.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1620.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv9": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1680.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1680.0% ATK (M. DMG) to all enemies in the cone.",
+          "lv10": "If Phantom Blood is at Full Capacity, increases this Ultimate's DMG by 80.0% and gains 5 stacks of Scarlet Shade for 10 sec, consuming all Phantom Blood when the Ultimate ends.\nThen releases Breath in the target direction, dealing 1800.0% ATK (M. DMG) to all enemies in a cone.\nWhen Livian is present as an ally, after the first Breath ends, releases another Breath in the target direction, dealing 1800.0% ATK (M. DMG) to all enemies in the cone."
         },
         "damageScaling": {
           "lv1": "12.0%",
@@ -10508,7 +10395,7 @@
           },
           {
             "name": "Scarlet Shade",
-            "description": "M. DEF PEN +{0}. Stacks up to {1} time(s).",
+            "description": "M. DEF PEN +5. Stacks up to 9 time(s).",
             "icon": "Buff_20740_MaxSkill.png"
           }
         ]
@@ -10520,16 +10407,16 @@
         "typeName": "Passive",
         "icon": "C_Astel_Base_PassiveSkill.png",
         "description": {
-          "lv1": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv2": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv3": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv4": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv5": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv6": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv7": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv8": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv9": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood.",
-          "lv10": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, {0} of the overflow is converted into Phantom Blood."
+          "lv1": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv2": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv3": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv4": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv5": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv6": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv7": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv8": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv9": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood.",
+          "lv10": "Synergy: Dusk's Devotion.\nWhen a Dusk's Devotion Vassal recovers HP exceeding their Max HP, 30.0% of the overflow is converted into Phantom Blood."
         },
         "damageScaling": {
           "lv1": "0%",
@@ -10565,16 +10452,16 @@
         "typeName": "Skill",
         "icon": "C_Astel_Base_Skill01.png",
         "description": {
-          "lv1": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv2": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv3": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv4": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv5": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv6": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv7": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv8": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv9": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target.",
-          "lv10": "After every {0} Basic ATK(s), deals {1} ATK (M. DMG) to all enemy units in a circle around the target."
+          "lv1": "After every 3 Basic ATK(s), deals 500.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv2": "After every 3 Basic ATK(s), deals 525.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv3": "After every 3 Basic ATK(s), deals 550.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv4": "After every 3 Basic ATK(s), deals 575.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv5": "After every 3 Basic ATK(s), deals 600.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv6": "After every 3 Basic ATK(s), deals 625.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv7": "After every 3 Basic ATK(s), deals 650.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv8": "After every 3 Basic ATK(s), deals 675.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv9": "After every 3 Basic ATK(s), deals 700.0% ATK (M. DMG) to all enemy units in a circle around the target.",
+          "lv10": "After every 3 Basic ATK(s), deals 750.0% ATK (M. DMG) to all enemy units in a circle around the target."
         },
         "damageScaling": {
           "lv1": "11.0%",
@@ -10602,16 +10489,16 @@
         "typeName": "Basic Attack",
         "icon": "C_Livia_Base_Attack.png",
         "description": {
-          "lv1": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv2": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv3": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv4": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv5": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv6": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv7": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv8": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv9": "Deals a total of {0} ATK (M. DMG) to the target.",
-          "lv10": "Deals a total of {0} ATK (M. DMG) to the target."
+          "lv1": "Deals a total of 100.0% ATK (M. DMG) to the target.",
+          "lv2": "Deals a total of 105.0% ATK (M. DMG) to the target.",
+          "lv3": "Deals a total of 110.0% ATK (M. DMG) to the target.",
+          "lv4": "Deals a total of 115.0% ATK (M. DMG) to the target.",
+          "lv5": "Deals a total of 120.0% ATK (M. DMG) to the target.",
+          "lv6": "Deals a total of 125.0% ATK (M. DMG) to the target.",
+          "lv7": "Deals a total of 130.0% ATK (M. DMG) to the target.",
+          "lv8": "Deals a total of 135.0% ATK (M. DMG) to the target.",
+          "lv9": "Deals a total of 140.0% ATK (M. DMG) to the target.",
+          "lv10": "Deals a total of 150.0% ATK (M. DMG) to the target."
         },
         "damageScaling": {
           "lv1": "11.0%",
@@ -10634,16 +10521,16 @@
         "icon": "C_Livia_Base_MaxSkill.png",
         "cost": 4,
         "description": {
-          "lv1": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv2": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv3": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv4": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv5": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv6": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv7": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv8": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv9": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec.",
-          "lv10": "Gains {0} stacks of Scarlet Shade, then begins Channeling for {1} sec. Every {6} sec, Livian deals {2} ATK (M. DMG) to a select enemy target while restoring HP equal to {5} of her ATK to allied Dusk's Devotion Vassals, additionally restoring {7} of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them {3} stacks of Scarlet Shade for {4} sec."
+          "lv1": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 100.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv2": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 105.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv3": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 110.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv4": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 115.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv5": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 120.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv6": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 125.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv7": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 130.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv8": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 135.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv9": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 140.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec.",
+          "lv10": "Gains 9 stacks of Scarlet Shade, then begins Channeling for 10 sec. Every 2000 sec, Livian deals 150.0% ATK (M. DMG) to a select enemy target while restoring HP equal to 80.0% of her ATK to allied Dusk's Devotion Vassals, additionally restoring 80.0% of her ATK to Alexi. If the current target cannot be selected, Livian automatically switches to the nearest enemy unit.\nWhile Livian is Channeling, if an allied Dusk's Devotion Vassal casts their Ultimate, she grants them 4 stacks of Scarlet Shade for 10 sec."
         },
         "damageScaling": {
           "lv1": "12.0%",
@@ -10660,7 +10547,7 @@
         "buffs": [
           {
             "name": "Scarlet Shade",
-            "description": "M. DEF PEN +{0}. Stacks up to {1} time(s).",
+            "description": "M. DEF PEN +5. Stacks up to 9 time(s).",
             "icon": "Buff_20740_MaxSkill.png"
           }
         ],
@@ -10679,16 +10566,16 @@
         "typeName": "Passive",
         "icon": "C_Livia_Base_PassiveSkill.png",
         "description": {
-          "lv1": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv2": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv3": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv4": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv5": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv6": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv7": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv8": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv9": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}.",
-          "lv10": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain {0} P. DMG Taken Down and {1} M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by {2}, down to a minimum of {3}."
+          "lv1": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv2": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv3": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv4": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv5": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv6": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv7": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv8": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv9": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%.",
+          "lv10": "Casting Ultimate while an allied Alexi is deployed immediately triggers a Blood Moon state.\nDuring this Blood Moon state, all allied Dusk's Devotion characters gain 80.0% P. DMG Taken Down and 80.0% M. DMG Taken Down. Each subsequent activation of this Blood Moon state reduces these DMG Down effects by 25.0%, down to a minimum of 30.0%."
         },
         "damageScaling": {
           "lv1": "0%",
@@ -10710,16 +10597,16 @@
         "typeName": "Skill",
         "icon": "C_Livia_Base_Skill01.png",
         "description": {
-          "lv1": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv2": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv3": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv4": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv5": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv6": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv7": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv8": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv9": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec.",
-          "lv10": "After every {1} Basic ATK, deals {0} ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for {2} sec."
+          "lv1": "After every 3 Basic ATK, deals 400.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv2": "After every 3 Basic ATK, deals 420.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv3": "After every 3 Basic ATK, deals 440.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv4": "After every 3 Basic ATK, deals 460.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv5": "After every 3 Basic ATK, deals 480.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv6": "After every 3 Basic ATK, deals 500.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv7": "After every 3 Basic ATK, deals 520.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv8": "After every 3 Basic ATK, deals 540.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv9": "After every 3 Basic ATK, deals 560.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec.",
+          "lv10": "After every 3 Basic ATK, deals 600.0% ATK (M. DMG) to the target and inflicts M. DMG Taken Up (Moderate) for 7 sec."
         },
         "damageScaling": {
           "lv1": "11.0%",
@@ -10752,30 +10639,29 @@
         "name": "Crescent Cleave",
         "type": "basicAttack",
         "typeName": "Basic Attack",
-        "icon": "C_Joan_Final_Attack.png",
         "description": {
-          "lv1": "Deals 150% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv2": "Deals 157% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv3": "Deals 165% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv4": "Deals 172% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv5": "Deals 180% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv6": "Deals 187% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv7": "Deals 195% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv8": "Deals 202% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv9": "Deals 210% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
-          "lv10": "Deals 225% ATK (Piercing DMG) to enemies in a cone in the target's direction."
+          "lv1": "Deals 150.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv2": "Deals 157.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv3": "Deals 165.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv4": "Deals 172.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv5": "Deals 180.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv6": "Deals 187.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv7": "Deals 195.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv8": "Deals 202.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv9": "Deals 210.0% ATK (Piercing DMG) to enemies in a cone in the target's direction.",
+          "lv10": "Deals 225.0% ATK (Piercing DMG) to enemies in a cone in the target's direction."
         },
         "damageScaling": {
-          "lv1": "150%",
-          "lv2": "157%",
-          "lv3": "165%",
-          "lv4": "172%",
-          "lv5": "180%",
-          "lv6": "187%",
-          "lv7": "195%",
-          "lv8": "202%",
-          "lv9": "210%",
-          "lv10": "225%"
+          "lv1": "11.0%",
+          "lv2": "12.0%",
+          "lv3": "13.0%",
+          "lv4": "14.0%",
+          "lv5": "15.0%",
+          "lv6": "16.0%",
+          "lv7": "17.0%",
+          "lv8": "18.0%",
+          "lv9": "19.0%",
+          "lv10": "20.0%"
         },
         "tips": [
           {
@@ -10790,31 +10676,30 @@
         "name": "Thunder Tempest",
         "type": "ultimate",
         "typeName": "Ultimate",
-        "icon": "C_Joan_Final_MaxSkill01.png",
         "cost": 4,
         "description": {
-          "lv1": "Deals 2000% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv2": "Deals 2100% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv3": "Deals 2200% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv4": "Deals 2300% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv5": "Deals 2400% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv6": "Deals 2500% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv7": "Deals 2600% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv8": "Deals 2700% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv9": "Deals 2800% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%.",
-          "lv10": "Deals 3000% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50%."
+          "lv1": "Deals 2000.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv2": "Deals 2100.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv3": "Deals 2200.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv4": "Deals 2300.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv5": "Deals 2400.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv6": "Deals 2500.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv7": "Deals 2600.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv8": "Deals 2700.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv9": "Deals 2800.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%.",
+          "lv10": "Deals 3000.0% ATK (Piercing DMG) to enemies in a cone in a select direction, inflicting Stun for 2 sec. This attack's CRIT DMG is increased by 50.0%."
         },
         "damageScaling": {
-          "lv1": "2000%",
-          "lv2": "2100%",
-          "lv3": "2200%",
-          "lv4": "2300%",
-          "lv5": "2400%",
-          "lv6": "2500%",
-          "lv7": "2600%",
-          "lv8": "2700%",
-          "lv9": "2800%",
-          "lv10": "3000%"
+          "lv1": "12.0%",
+          "lv2": "14.0%",
+          "lv3": "16.0%",
+          "lv4": "18.0%",
+          "lv5": "20.0%",
+          "lv6": "22.0%",
+          "lv7": "24.0%",
+          "lv8": "26.0%",
+          "lv9": "28.0%",
+          "lv10": "30.0%"
         },
         "buffs": [
           {
@@ -10836,18 +10721,17 @@
         "name": "Electro Surge",
         "type": "passive",
         "typeName": "Passive",
-        "icon": "C_Joan_Final_Passive.png",
         "description": {
-          "lv1": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv2": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv3": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv4": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv5": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv6": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv7": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv8": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv9": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts.",
-          "lv10": "Synergy: Lunar Vigil.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 60% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts."
+          "lv1": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv2": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv3": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv4": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv5": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv6": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv7": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv8": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv9": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again.",
+          "lv10": "Synergy: Lunar Vigil.\nTriggers when HP Percentage falls below 60.0%. Gains Thunderflow for 10 sec. Can trigger 1 time(s) per battle.\nEthereal Joan accumulates Electro Capacity by dealing DMG. Dealing DMG equal to 1000.0% of her Base Max HP fills the Electro Capacity, entering Overcharge state for 18 sec. During this state, DMG dealt increases by 50.0%, and Special and Basic ATK coefficients increase by 1.5 times. After Ethereal Joan casts any skill, deals additional Piercing DMG equal to 20.0% of that skill's DMG to all enemies and applies 1 stack of Thunderbrand.\nAfter Overcharge state ends, Electro Capacity accumulation restarts. There is a 6 sec cooldown before Overcharge state can be triggered again."
         },
         "damageScaling": {
           "lv1": "0%",
@@ -10862,11 +10746,6 @@
           "lv10": "0%"
         },
         "buffs": [
-          {
-            "name": "Thunderflow",
-            "description": "Gains immunity to any DMG, HP Loss, and Control effects. Increases CRIT Rate by 30%, and applies All DMG Taken Down (Moderate) to all allies for 10 sec.",
-            "icon": "Buff_20760_Guard.png"
-          },
           {
             "name": "Thunderbrand",
             "description": "Upon reaching 5 stacks, converts to Stun for 1 sec.",
@@ -10891,30 +10770,29 @@
         "name": "Thunder Clouds",
         "type": "skill",
         "typeName": "Skill",
-        "icon": "C_Joan_Final_Skill01.png",
         "description": {
-          "lv1": "Every 2 Basic ATK(s), deals 400% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv2": "Every 2 Basic ATK(s), deals 420% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv3": "Every 2 Basic ATK(s), deals 440% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv4": "Every 2 Basic ATK(s), deals 460% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv5": "Every 2 Basic ATK(s), deals 480% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv6": "Every 2 Basic ATK(s), deals 500% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv7": "Every 2 Basic ATK(s), deals 520% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv8": "Every 2 Basic ATK(s), deals 540% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv9": "Every 2 Basic ATK(s), deals 560% ATK (Piercing DMG) to enemies within a certain range around the target.",
-          "lv10": "Every 2 Basic ATK(s), deals 600% ATK (Piercing DMG) to enemies within a certain range around the target."
+          "lv1": "Every 2 Basic ATK(s), deals 400.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv2": "Every 2 Basic ATK(s), deals 420.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv3": "Every 2 Basic ATK(s), deals 440.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv4": "Every 2 Basic ATK(s), deals 460.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv5": "Every 2 Basic ATK(s), deals 480.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv6": "Every 2 Basic ATK(s), deals 500.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv7": "Every 2 Basic ATK(s), deals 520.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv8": "Every 2 Basic ATK(s), deals 540.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv9": "Every 2 Basic ATK(s), deals 560.0% ATK (Piercing DMG) to enemies within a certain range around the target.",
+          "lv10": "Every 2 Basic ATK(s), deals 600.0% ATK (Piercing DMG) to enemies within a certain range around the target."
         },
         "damageScaling": {
-          "lv1": "400%",
-          "lv2": "420%",
-          "lv3": "440%",
-          "lv4": "460%",
-          "lv5": "480%",
-          "lv6": "500%",
-          "lv7": "520%",
-          "lv8": "540%",
-          "lv9": "560%",
-          "lv10": "600%"
+          "lv1": "11.0%",
+          "lv2": "12.0%",
+          "lv3": "13.0%",
+          "lv4": "14.0%",
+          "lv5": "15.0%",
+          "lv6": "16.0%",
+          "lv7": "17.0%",
+          "lv8": "18.0%",
+          "lv9": "19.0%",
+          "lv10": "20.0%"
         },
         "tips": [
           {
@@ -11277,7 +11155,7 @@
         "buffs": [
           {
             "name": "Continuous DMG (Affliction)",
-            "description": "Takes M. DMG equal to {1} ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
+            "description": "Takes M. DMG equal to 30 ATK from the caster once every 2 sec. Stacks up to 5 time(s).",
             "icon": "Buff_Dot_2s_Mag.png"
           }
         ]

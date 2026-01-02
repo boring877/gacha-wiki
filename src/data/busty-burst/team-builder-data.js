@@ -15,6 +15,7 @@
  */
 
 import { BUSTY_BURST_CHARACTER_SKILLS } from './character-skills.js';
+import { BUSTY_BURST_CHARACTER_STATS } from './character-stats-full.js';
 
 // Buff category definitions (colors handled by CSS)
 export const BUFF_CATEGORIES = {
@@ -30,6 +31,111 @@ export const DEBUFF_CATEGORIES = {
   B: { name: 'Single Target Skill Debuff', cssClass: 'debuff-cat-b' },
   C: { name: 'Multiple Target Skill Debuff', cssClass: 'debuff-cat-c' },
 };
+
+// Direct mapping from character-skills.js IDs to numeric characterIds
+// Based on character-stats-full.js data
+const CHARACTER_ID_MAP = {
+  // SSR Characters
+  'festive_attire_estiriel': 2069,
+  'elegant_shamshel': 2040,
+  'luceria': 2041,
+  'nerys': 2042,
+  'sobrina': 2043,
+  'messeria': 2044,
+  'ishtovia': 2045,
+  'teresia': 2046,
+  'soltina': 2047,
+  'artia': 2048,
+  'dark_knight': 2049,
+  'frey': 2051,
+  'gemini': 2052,
+  'estiriel': 2053,
+  'hildis': 2054,
+  'luca': 2055,
+  'marina': 2056,
+  'nora': 2057,
+  'meinias': 2058,
+  'yu_lima_elka': 2060,
+  'stenlina': 2061,
+  'hisara': 2062,
+  'bianca': 2063,
+  'natasha': 2064,
+  'festival_empress_shamshel': 2068,
+  'kaguya': 2071,
+  'shaty': 2072,
+  'queen_of_pies_and_cookies_aphrodia': 2095,
+  'magical_holy_night_festival_kaguya': 2096,
+  'festive_natasha': 2070,
+  'holy_night_succubus_yu_rima_elca': 2097,
+  'dragon_crusher_medusa': 2099,
+  'new_years_calligraphy_pastel': 2100,
+  'overflowing_jubako_lynette': 2101,
+
+  // SR Characters
+  'gladys': 2005,
+  'emelaria': 2006,
+  'nerys_sr': 2008,
+  'irina': 2014,
+  'sobrina_sr': 2020,
+  'messeria_sr': 2021,
+  'paia': 2022,
+  'azura': 2023,
+  'zoe': 2024,
+  'constantia': 2025,
+  'farneria': 2026,
+  'artemis': 2029,
+  'athena_sr': 2030,
+  'medusa': 2031,
+  'venus': 2033,
+  'liesel': 2035,
+  'ishtovia_sr': 2036,
+  'veronica': 2037,
+  'celestia': 2038,
+  'guinevia': 2039,
+  'lucrezia': 2032,
+
+  // R Characters
+  'shamshel_r': 2001,
+  'aysis': 2002,
+  'roxanne': 2003,
+  'luceria_r': 2004,
+  'aphrodia_r': 2007,
+  'drowatt': 2009,
+  'aristera': 2010,
+  'rosalyn': 2011,
+  'estria': 2012,
+  'celebria': 2013,
+  'xevia': 2015,
+  'shahar': 2016,
+  'elythia': 2017,
+  'nadine': 2018,
+  'lorelia': 2019,
+  'destra': 2027,
+  'eskelda': 2028,
+
+  // Base versions (if different from special versions)
+  'estiriel_base': 2053,
+  'hildis_base': 2054,
+  'marina_base': 2056,
+};
+
+// Get characterId from underscore-based slug
+function getCharacterIdFromSlug(underscoreId) {
+  // Direct lookup first
+  if (CHARACTER_ID_MAP[underscoreId]) {
+    return CHARACTER_ID_MAP[underscoreId];
+  }
+
+  // Try converting underscore to dash and lookup in stats
+  const dashId = underscoreId.replace(/_/g, '-');
+  const stats = BUSTY_BURST_CHARACTER_STATS[dashId];
+  if (stats?.characterId) {
+    return stats.characterId;
+  }
+
+  // Default fallback
+  return 2001;
+}
 
 // Character image mapping (character ID -> image filename)
 const CHARACTER_IMAGES = {
@@ -671,6 +777,7 @@ function buildTeamBuilderCharacters() {
 
     characters[charId] = {
       id: charId,
+      characterId: getCharacterIdFromSlug(charId),
       name: charData.name,
       image: CHARACTER_IMAGES[charId] || `${charId}.jpg`,
       rarity: charData.rarity,

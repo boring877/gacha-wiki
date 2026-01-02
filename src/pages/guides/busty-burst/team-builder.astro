@@ -264,9 +264,10 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
       card.addEventListener('click', () => {
         const charId = card.dataset.id;
 
-        // Check if already in team
-        if (team.includes(charId)) {
-          showToast('Character already in team!');
+        // Check if already in team - if so, remove them (toggle behavior)
+        const existingSlot = team.indexOf(charId);
+        if (existingSlot !== -1) {
+          removeCharacter(existingSlot);
           return;
         }
 
