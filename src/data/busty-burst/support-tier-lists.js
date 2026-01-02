@@ -73,6 +73,10 @@ function isSSTier(character) {
   if (character.weapon === 'Pierce' && hasOffensiveStats(character)) {
     return true;
   }
+  // Any weapon with BOTH ATK and Crit
+  if (hasATK(character) && hasCrit(character)) {
+    return true;
+  }
   return false;
 }
 
