@@ -9,7 +9,7 @@ import PositionImage from '../../../components/busty-burst/PositionImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
 import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
-import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS } from '../../../data/busty-burst/character-skills-full.js';
+import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS, getCharacterPosition } from '../../../data/busty-burst/character-skills-full.js';
 import { getSupportDataById } from '../../../data/busty-burst/support-data.js';
 
 // Helper to get weapon type from support data
@@ -164,8 +164,8 @@ const rarities = ['SSR', 'SR', 'R'];
                   </div>
                   <div class="bb-skills-info-item">
                     <PositionImage
-                      fileName={getPositionFileName(char.position)}
-                      alt={getPositionName(char.position)}
+                      fileName={getPositionFileName(getCharacterPosition(char.id))}
+                      alt={getPositionName(getCharacterPosition(char.id))}
                       width={22}
                       height={22}
                     />

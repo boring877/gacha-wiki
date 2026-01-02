@@ -2,6 +2,230 @@
 // Auto-generated from ALL_CHAR_SKILLS.txt
 // Contains skills for 75 characters
 
+// Position map: 1 = Front, 2 = Mid, 3 = Back
+export const CHARACTER_POSITIONS = {
+  2001: 2, // Shamshel - Mid
+  2002: 1, // Aysis - Front
+  2003: 2, // Roxanne - Mid
+  2004: 1, // Luceria - Front
+  2005: 1, // Gladys - Front
+  2006: 2, // Emelaria - Mid
+  2007: 3, // Aphrodia - Back
+  2008: 2, // Nerys - Mid
+  2009: 1, // Drowatt - Front
+  2010: 1, // Aristera - Front
+  2011: 1, // Rosalyn - Front
+  2012: 1, // Estria - Front
+  2013: 1, // Celebria - Front
+  2014: 3, // Irina - Back
+  2015: 1, // Xevia - Front
+  2016: 2, // Shahar - Mid
+  2017: 1, // Elythia - Front
+  2018: 3, // Nadine - Back
+  2019: 1, // Lorelia - Front
+  2020: 3, // Sobrina - Back
+  2021: 2, // Messeria - Mid
+  2022: 3, // Paia - Back
+  2023: 1, // Azura - Front
+  2024: 1, // Zoe - Front
+  2025: 3, // Constantia - Back
+  2026: 2, // Farneria - Mid
+  2027: 1, // Destra - Front
+  2028: 1, // Eskelda - Front
+  2029: 3, // Artemis - Back
+  2030: 1, // Athena - Front
+  2031: 3, // Medusa - Back
+  2032: 1, // Lucrezia - Front
+  2033: 3, // Venus - Back
+  2035: 3, // Liesel - Back
+  2036: 3, // Ishtovia - Back
+  2037: 1, // Veronica - Front
+  2038: 2, // Celestia - Mid
+  2039: 1, // Guinevia - Front
+  2040: 2, // [The Noble Succubus Empress] Shamshel - Mid
+  2041: 2, // [Magical Princess] Luceria - Mid
+  2042: 2, // [Golem Summoner] Nerys - Mid
+  2043: 3, // [Mage of Bastinton] Sobrina - Back
+  2044: 2, // [Hypnotic Dancer] Messeria - Mid
+  2045: 3, // [Pious Cleric] Ishtovia - Back
+  2046: 2, // Theresia - Mid
+  2047: 2, // Soltina - Mid
+  2048: 1, // Artia - Front
+  2049: 2, // The Dark Knight - Mid
+  2050: 1, // Inrine - Front
+  2051: 3, // Frey - Back
+  2052: 1, // Gemini - Front
+  2053: 3, // Estiriel - Back
+  2054: 1, // Hildis - Front
+  2055: 1, // Luca - Front
+  2056: 3, // Marina - Back
+  2057: 1, // Nora - Front
+  2058: 3, // Meinias - Back
+  2059: 1, // Setsuka - Front
+  2060: 1, // Yu Lima Elka - Front
+  2061: 2, // Stenlina - Mid
+  2062: 1, // Hisara - Front
+  2063: 2, // Bianca - Mid
+  2064: 1, // Natasha - Front
+  2065: 2, // [Elegant Portrait] Shamshel - Mid
+  2066: 1, // [Elegant Portrait] Aysis - Front
+  2067: 1, // [Mischievous Mermaid Princess] Lorelia - Front
+  2068: 2, // [Festival Empress] Shamshel - Mid
+  2069: 3, // [Festival Attire] Estiriel - Back
+  2070: 1, // [Festival Dress-Up] Natasha - Front
+  2071: 3, // Kaguya - Back
+  2072: 3, // Shaty - Back
+  2073: 1, // Lucie - Front
+  2074: 1, // Rui - Front
+  2075: 2, // Nue - Mid
+  2076: 3, // Ophelio - Back
+  2077: 3, // [Seductive High-Cut Swimsuit] Nerys - Back
+  2078: 2, // [Killer Bikini] Theresia - Mid
+  2079: 2, // [Epic Fishing] Meinias - Mid
+  2080: 3, // Pastel - Back
+  2081: 2, // [The Strongest Witch] Shaharl - Mid
+  2082: 3, // [Seductive Vampire] Soltina - Back
+  2083: 1, // [Slightly Mischievous Devil] Luca - Front
+  2084: 1, // Lapis - Front
+  2085: 1, // Rosa - Front
+  2086: 1, // Gracie - Front
+  2087: 1, // Lynette - Front
+  2088: 2, // Giselle - Mid
+  2089: 2, // [Top Dancer] Messeria - Mid
+  2090: 1, // [Fruit Basket] Bianca - Front
+  2091: 2, // [Want some beer?] Stenrina - Mid
+  2092: 2, // Lust - Mid
+  2093: 1, // Raguen - Front
+  2094: 1, // [Samurai Cow Girl] Setsuka - Front
+  2095: 1, // [Queen of Pies and Cookies] Aphrodia - Front
+  2096: 1, // [Magical Holy Night Festival] Kaguya - Front
+  2097: 2, // [Holy Night Succubus] Yu Rima Elca - Mid
+  2098: 2, // Ruru - Mid
+  2099: 2, // [Dragon Crusher] Medusa - Mid
+  2100: 2, // [New Year's First Sketch] Pastel - Mid
+  2101: 2, // [New Year's Feast Box] Lynette - Mid
+  2102: 1, // Henrietti - Front
+  2103: 1, // Vanessa - Front
+  2104: 3, // Viatrice - Back
+  2105: 3, // Trish - Back
+  2106: 3, // Lycorys - Back
+  2107: 1, // Katisha - Front
+  2108: 1, // Magdalena - Front
+  2109: 2, // [Purehearted Patissiere] Frey - Mid
+  2110: 1, // [Chocolate Dragon Warrior] Hildis - Front
+  2111: 3, // [Warrior of Love and Chocolate] Shaty - Back
+  2112: 2, // Priscilla - Mid
+  2113: 1, // Lilith - Front
+  2114: 1, // Diana - Front
+  2115: 1, // Zilka - Front
+  2116: 1, // Sarka - Front
+  2117: 2, // [American Police] Lapis - Mid
+  2118: 1, // Lilirara - Front
+  2119: 2, // [Sweet Bunny] Artia - Mid
+  2120: 2, // Raoul - Mid
+  2121: 2, // Cluul - Mid
+  2122: 2, // Beautia - Mid
+  2123: 1, // Fionore - Front
+  2124: 1, // Yaksha - Front
+  2125: 2, // Nina - Mid
+  2126: 2, // Abigail - Mid
+  2127: 1, // [Underboob Cheerleader] Gemini - Front
+  2128: 2, // [Underboob Cheerleader] Vanessa - Mid
+  2129: 2, // [Underboob Cheerleader] Henrietti - Mid
+  2130: 2, // [Getting Out of the Pool] Artia - Mid
+  2131: 1, // Eva - Front
+  2132: 3, // Ines - Back
+  2133: 1, // Collie - Front
+  2134: 2, // [Tempting Naked Apron] Diana - Mid
+  2135: 2, // Gil - Mid
+  2136: 2, // Bonita - Mid
+  2137: 2, // Ashley - Mid
+  2138: 1, // [School bloomers] Black Knight - Front
+  2139: 1, // Sirius - Front
+  2140: 3, // [The Bride of Luck] Theresia - Back
+  2141: 2, // [The Bride of Purity] Giselle - Mid
+  2142: 3, // [The Bride of Seduction] Ophelio - Back
+  2143: 2, // [Alluring Naked Apron] Zilka - Mid
+  2144: 1, // Ilugio - Front
+  2145: 3, // Ange - Back
+  2146: 1, // Raffi - Front
+  2147: 2, // Raffine - Mid
+  2148: 1, // Elaine - Front
+  2149: 3, // [Aiming for Your Heart] Shati - Back
+  2150: 1, // [Big Wave surfing of Love] Priscilla - Front
+  2151: 2, // [Gorgeous & Noble Summer] Gracie - Mid
+  2152: 1, // [Skateboarder] Nue - Front
+  2153: 3, // Bernadette - Back
+  2154: 3, // Adrienne - Back
+  2155: 1, // Sharik - Front
+  2156: 1, // Lin - Front
+  2157: 3, // [Fireworks Master of the Sky Festival] Viatrice - Back
+  2158: 1, // [Swordsman of the Sky Festival] Raguen - Front
+  2159: 3, // [Songstress of the Sky Festival] Bernadette - Back
+  2160: 1, // [Steaming Dim Sum] Lilirara - Front
+  2161: 1, // [Maid Erotic Enchanter] Ilugio - Front
+  2162: 2, // [Possessed by the Power of High-Cut] Black Knight - Mid
+  2163: 1, // [Invincible Empress] Gladys - Front
+  2164: 1, // [Captain of the Vern Holy Knights Order] Frigis - Front
+  2165: 1, // [Festive China Dress] Diana - Front
+  2166: 1, // Shushu - Front
+  2167: 1, // [Kitty] Ruru - Front
+  2172: 1, // [Plump Succubus] Katisha - Front
+  2175: 1, // [My Little Sister Is a Sailor] Bonita - Front
+  2176: 1, // [Cow-Breasted Girl] Elaine - Front
+  2178: 1, // [Assassin Beer Girl] Rui - Front
+  2180: 1, // [Paladin of Elron] Luca - Front
+  2181: 1, // [Lone Biker] Inleen - Front
+  2182: 1, // [Seductive Sweater] Hildis - Front
+  2186: 1, // [Swift Blessing Hand] Lin - Front
+  2187: 1, // [Repressed Schoolgirl] Raffine - Front
+  2189: 1, // [Fat-Burning Kimono Girl] Beautia - Front
+  2190: 1, // [Red Umbrella Zodiac Girl] Lilirara - Front
+  2192: 1, // [Twin Shrine Maiden] Cluul - Front
+  2194: 1, // Louise - Front
+  2200: 1, // [Handmade Chocolate Maid] Sarka - Front
+  2203: 1, // [Artist on Ice] Ilugio - Front
+  2205: 1, // [Super Serious Nurse] Lapis - Front
+  2206: 1, // [Elegant Bunny Girl] Bernadette - Front
+  2207: 1, // [Goddess of Wisdom and Courage] Athena - Front
+  2209: 1, // [Boob-Shaking Cheerleader] Nora - Front
+  2211: 1, // [Boob-Shaking Cheerleader] Bonita - Front
+  2215: 1, // Sonia - Front
+  2171: 2, // [A Dreamlike Moment] Estiriel - Mid
+  2173: 2, // [Vampire of the Dark Night] Nue - Mid
+  2174: 2, // [Pumpkin Witch] Zilka - Mid
+  2179: 2, // [Super-Bust Dirndl] Adrienne - Mid
+  2184: 2, // [Holy Night Boob Demon] Lust - Mid
+  2185: 2, // [Breasty Blessing Hand] Shushu - Mid
+  2188: 2, // [Battledore Kimono Girl] Lilith - Mid
+  2191: 2, // [Twin Shrine Maiden] Raoul - Mid
+  2193: 2, // Noir - Mid
+  2195: 2, // Nerine - Mid
+  2196: 2, // [Erotic Nun] Soltina - Mid
+  2197: 2, // [Adventurer] Henrietti - Mid
+  2198: 2, // [First Chocolate Making] Kaguya - Mid
+  2202: 2, // Riki - Mid
+  2204: 2, // [American Exchange Student] Artia - Mid
+  2208: 2, // [Gothic Loli Breast Fiend] Juju - Mid
+  2210: 2, // [Boob-Shaking Cheerleader] Ashley - Mid
+  2212: 2, // [Valkyrie of the Pegasus] Giselle - Mid
+  2214: 2, // BeluBelu - Mid
+  2216: 2, // Aruxar - Mid
+  2217: 2, // Nephilia - Mid
+  2219: 2, // [Crimson Courtesan] Ange - Mid
+  2177: 3, // [Blessed Beer Girl] Destra & Esquelda - Back
+  2183: 3, // Begaria - Back
+  2199: 3, // [Chocolate Is Mine] Ange - Back
+  2201: 3, // [Little Devil Idol] Nina - Back
+  2213: 3, // [Agile Mercenary] Shaty - Back
+  2218: 3, // Lugisis - Back
+};
+
+// Helper to get position by character ID
+export function getCharacterPosition(charId) {
+  return CHARACTER_POSITIONS[charId] || 1; // Default to Front if not found
+}
+
 export const BUSTY_BURST_SKILLS_DATA = [
   {
     "skills": [
