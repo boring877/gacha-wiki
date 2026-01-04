@@ -20,15 +20,6 @@ export const horizonWalkerRedeemCodes = {
       expiryDate: 'January 31, 2026',
     },
     {
-      id: '25merrychrie',
-      code: '25merrychrie',
-      rewards: 'EX Character Selector ×1',
-      status: 'working',
-      lastChecked: 'January 2026',
-      dateAdded: '2026-01-01',
-      expiryDate: 'January 31, 2026',
-    },
-    {
       id: 'qnaspecou',
       code: 'qnaspecou',
       rewards: 'Special Search Ticket ×1 + Skill Upgrade Selection Box ×2',
@@ -37,18 +28,28 @@ export const horizonWalkerRedeemCodes = {
       dateAdded: '2026-01-01',
       expiryDate: 'January 31, 2026',
     },
+  ],
+
+  expiredCodes: [
+    {
+      id: '25merrychrie',
+      code: '25merrychrie',
+      rewards: 'EX Character Selector ×1',
+      status: 'expired',
+      lastChecked: 'January 2026',
+      dateAdded: '2026-01-01',
+      expiryDate: 'January 4, 2026',
+    },
     {
       id: 'qnaspecouer',
       code: 'qnaspecouer',
       rewards: 'Special Search Ticket ×1 + Skill Upgrade Selection Box ×2',
-      status: 'working',
+      status: 'expired',
       lastChecked: 'January 2026',
       dateAdded: '2026-01-01',
-      expiryDate: 'January 31, 2026',
+      expiryDate: 'January 4, 2026',
     },
   ],
-
-  expiredCodes: [],
 
   redeemInstructions: {
     title: 'How to Redeem Codes',

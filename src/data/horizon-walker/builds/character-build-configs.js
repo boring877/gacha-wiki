@@ -7,6 +7,7 @@ import {
   oliviaBuildConfig,
   emiliaBuildConfig,
   kimGaYoungBuildConfig,
+  palekarBuildConfig,
   defaultBuildConfig,
 } from './characters/index.js';
 
@@ -16,6 +17,7 @@ export const characterBuildConfigs = {
   olivia: oliviaBuildConfig,
   emilia: emiliaBuildConfig,
   'kim-ga-young': kimGaYoungBuildConfig,
+  palekar: palekarBuildConfig,
   default: defaultBuildConfig,
 };
 

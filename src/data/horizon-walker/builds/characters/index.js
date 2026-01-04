@@ -6,7 +6,8 @@ export { vlissingBuildConfig } from './vlissing.js';
 export { oliviaBuildConfig } from './olivia.js';
 export { emiliaBuildConfig } from './emilia.js';
 export { kimGaYoungBuildConfig } from './kim-ga-young.js';
+export { palekarBuildConfig } from './palekar.js';
 export { defaultBuildConfig } from './default.js';
 
 // List all available character builds
-export const availableCharacterBuilds = ['juha', 'vlissing', 'olivia', 'emilia', 'kim-ga-young'];
+export const availableCharacterBuilds = ['juha', 'vlissing', 'olivia', 'emilia', 'kim-ga-young', 'palekar'];

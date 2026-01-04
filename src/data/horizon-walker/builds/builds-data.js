@@ -43,6 +43,13 @@ const characterBuilds = [
     rarity: 'S',
     available: true,
   },
+  {
+    id: 6,
+    buildSlug: 'palekar',
+    displayName: 'Palekar',
+    rarity: 'EX',
+    available: true,
+  },
 ];
 
 // Helper function to get rarity badge class
