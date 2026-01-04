@@ -22,7 +22,7 @@ export const palekarBuildConfig = {
     {
       title: 'Reckoning of Sin Stigma synergy',
       description:
-        'AP Recovery +4% and +30 Starting AP helps Palekar cast "Verse of Ordeal" (75 AP) early. The [Price of Sin] effect adds Elemental DEF -200, stacking with her [Unstable] debuff for maximum defense shred and works with Cora Heat damage well.',
+        '2-Set: AP Recovery +4%. 4-Set: Gain 30 AP at battle start and inflict [Price of Sin] on enemies (Elemental DEF -200, ends after being struck). This stacks with her [Unstable] debuff for maximum defense shred and works with Cora Heat damage well.',
     },
   
   ],

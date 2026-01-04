@@ -499,6 +499,9 @@ if (isMixedStigma) {
                 <div class="stigma-set-bonus">
                   <h5>4-Set Bonus</h5>
                   <p>{recommendedStigma.fourSet}</p>
+                  {recommendedStigma.specialEffect && (
+                    <p class="stigma-special-effect"><strong>[{recommendedStigma.specialEffect.name}]:</strong> {recommendedStigma.specialEffect.description}</p>
+                  )}
                 </div>
               </div>
 
