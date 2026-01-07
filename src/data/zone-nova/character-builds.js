@@ -21,6 +21,7 @@ import { sigurdBuild } from './character-builds/sigurd.js';
 import { ninaBuild } from './character-builds/nina.js';
 import { jorogumoBuild } from './character-builds/jorogumo.js';
 import { lilyBuild } from './character-builds/lily.js';
+import { shutenDojiBuild } from './character-builds/shuten-doji.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -86,6 +87,9 @@ export const CHARACTER_BUILDS = {
 
   // Lily Build - SSR Ice Guardian Tank
   lily: lilyBuild,
+
+  // Shuten-doji Build - SSR Wind DOT DPS
+  'shuten-doji': shutenDojiBuild,
 };
 
 // Generate builds for available characters only

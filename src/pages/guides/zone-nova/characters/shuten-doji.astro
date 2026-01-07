@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import {
+  shutenDojiData,
+  shutenDojiSEO,
+} from '../../../../data/zone-nova/characters/shuten-doji.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={shutenDojiSEO.title}
+  description={shutenDojiSEO.description}
+  gameTitle={shutenDojiData.name}
+  character={shutenDojiData}
+>
+  <CharacterPageTemplate characterData={shutenDojiData} />
+</CharacterIndividualLayout>

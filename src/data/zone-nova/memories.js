@@ -1112,6 +1112,28 @@ export const ZONE_NOVA_MEMORIES = [
       "If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
     ],
   },
+  {
+    id: 'unreserved-love',
+    slug: 'unreserved-love',
+    name: 'Unreserved Love',
+    image: '/images/games/zone-nova/memories/Shuten-dojicard.jpg',
+    rarity: 'SSR',
+    element: 'Wind',
+    character: 'Shuten-doji',
+    class: 'Mage',
+    detailUrl: '/guides/zone-nova/memories/unreserved-love/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    },
+    effects: [
+      'Attack power increased by 40%',
+      'Damage over time increased by 40%',
+      'When dealing damage over time, the enemy takes 24% more damage for 3 seconds',
+      'Damage dealt to enemies with shields is increased by 35%',
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1157,6 +1179,7 @@ export const MEMORY_METADATA = {
     'Penny',
     'Rose',
     'Shanna',
+    'Shuten-doji',
     'Sigurd',
     'Shu',
     'Snow Girl',

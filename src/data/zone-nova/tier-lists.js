@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-12-23',
+  lastUpdated: '2026-01-07',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -64,6 +64,7 @@ export const PVE_TIER_LIST = {
       { name: 'Apep' },
       { name: 'Sigurd' },
       { name: 'Jorogumo' },
+      { name: 'Shuten-doji' },
     ],
     S: [
       { name: 'Shu' },
@@ -99,7 +100,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-12-23',
+  lastUpdated: '2026-01-07',
   description: 'PvP character rankings.',
   tiers: {
     SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
@@ -140,6 +141,7 @@ export const PVP_TIER_LIST = {
       { name: 'Zashiki-warashi' },
       { name: 'Lavinia' },
       { name: 'Apep' },
+      { name: 'Shuten-doji' },
     ],
     A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
     Situational: [
@@ -154,7 +156,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2025-12-23',
+  lastUpdated: '2026-01-07',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -199,6 +201,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Arthur' },
       { name: 'Cleopatra' },
       { name: 'Lavinia' },
+      { name: 'Shuten-doji' },
     ],
     A: [
       { name: 'Tefnut' },
@@ -220,7 +223,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2025-12-23',
+  lastUpdated: '2026-01-07',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -266,6 +269,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Anubis' },
       { name: 'Lily' },
       { name: 'Apep' },
+      { name: 'Shuten-doji' },
     ],
     A: [
       { name: 'Rose' },
@@ -359,6 +363,15 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-01-07',
+    changes: [
+      'Shuten-doji added: SS in PvE, S in PvP, S in Rift, S in Guild Raid',
+      'New Wind Mage DPS with Wind Evil DoT stacking mechanic',
+      'Strong damage amplification passive (+62.9% damage to debuffed enemies)',
+      'A6 grants 25% elemental resistance penetration',
+    ],
+  },
   {
     date: '2025-12-23',
     changes: [
