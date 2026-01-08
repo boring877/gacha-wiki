@@ -26,7 +26,7 @@ export const WEAPON_INSPIRATION_EFFECTS = {
   'Shot': { stat: 'Accuracy', values: [3, 6, 10] },
   'Slash': { stat: 'Accuracy', values: [3, 6, 10] },
   'Strike': { stat: 'Block', values: [3, 6, 10] },
-  'Throw': { stat: 'Accuracy', values: [3, 6, 10] },
+  'Throw': { stat: 'P.ATK/M.ATK', values: ['2%', '4%', '6%'] },
   'Pierce': { stat: 'Action Speed', values: ['2%', '4%', '6%'] }
 };
 
@@ -74,7 +74,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -93,7 +93,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -112,7 +112,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -131,7 +131,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -150,7 +150,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -340,7 +340,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -568,7 +568,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -759,7 +759,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -816,7 +816,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -835,7 +835,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -873,7 +873,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -892,7 +892,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -911,7 +911,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -987,7 +987,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1025,7 +1025,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1120,7 +1120,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1330,7 +1330,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1406,7 +1406,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1444,7 +1444,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {
@@ -1463,7 +1463,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Throw Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Throw Inspiration', effect: 'P.ATK/M.ATK', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
     }
   },
   {

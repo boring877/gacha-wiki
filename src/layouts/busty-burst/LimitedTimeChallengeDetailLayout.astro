@@ -12,6 +12,13 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
 import BossIcon from '../../components/busty-burst/BossIcon.astro';
 import BuffIcon from '../../components/busty-burst/BuffIcon.astro';
+import SkillIcon from '../../components/busty-burst/SkillIcon.astro';
+import PaladinImage from '../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../components/busty-burst/RarityImage.astro';
+import WeaponIcon from '../../components/busty-burst/WeaponIcon.astro';
+import { getCharacterDataBySlug } from '../../data/busty-burst/character-database.js';
+import { getSupportDataById } from '../../data/busty-burst/support-data.js';
 
 // Import CSS files
 import '../../styles/games/busty-burst/busty-burst-colors.css';
@@ -276,6 +283,31 @@ const bossKeywords = [
                       <br /><small>Boss Base ATK: {challenge.skills.bossBaseAtk?.toLocaleString()}</small>
                     </div>
                   )}
+
+                  {challenge.skills.passiveSkills && challenge.skills.passiveSkills.length > 0 && (
+                    <>
+                      <h3 style="font-size: 0.9rem; color: var(--bb-text-secondary); margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Passive Skills</h3>
+                      <div class="bb-ltc-skills-list" style="margin-bottom: 1.5rem;">
+                        {challenge.skills.passiveSkills.map(skill => (
+                          <div class="bb-ltc-skill-item bb-ltc-passive-skill">
+                            {skill.skillIcon && (
+                              <div class="bb-ltc-skill-icon">
+                                <SkillIcon skillId={skill.skillIcon} alt={skill.nameEn} width={40} height={40} />
+                              </div>
+                            )}
+                            <div class="bb-ltc-skill-info">
+                              <div class="bb-ltc-skill-name">
+                                {skill.name}
+                                <span class="bb-ltc-skill-name-en">({skill.nameEn})</span>
+                              </div>
+                              <div class="bb-ltc-passive-effect">{skill.effect}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
                   <h3 style="font-size: 0.9rem; color: var(--bb-text-secondary); margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Normal Attack</h3>
                   <div class="bb-ltc-skills-list" style="margin-bottom: 1.5rem;">
                     <div class="bb-ltc-skill-item">
@@ -465,6 +497,194 @@ const bossKeywords = [
                   </div>
                 </div>
               </section>
+
+              <!-- Recommended Characters -->
+              {challenge.recommendedCharacters && challenge.recommendedCharacters.length > 0 && (
+                <section class="bb-ltc-detail-section">
+                  <h2 class="bb-ltc-section-title">Recommended Characters</h2>
+                  <div class="bb-ltc-detail-card">
+                    <div class="bb-ltc-recommended-chars">
+                      {challenge.recommendedCharacters.map(slug => {
+                        const char = getCharacterDataBySlug(slug);
+                        if (!char) return null;
+                        return (
+                          <a href={`/guides/busty-burst/characters/${slug}`} class="bb-ltc-char-card">
+                            <div class="bb-ltc-char-image">
+                              <PaladinImage
+                                characterId={char.characterId}
+                                alt={char.displayName || char.name}
+                                width={60}
+                                height={60}
+                                imageType="icon"
+                              />
+                            </div>
+                            <div class="bb-ltc-char-info">
+                              <span class="bb-ltc-char-name">{char.displayName || char.name}</span>
+                              <div class="bb-ltc-char-badges">
+                                <ElementImage element={char.element} width={16} height={16} />
+                                <span class="bb-ltc-char-role">{char.role}</span>
+                              </div>
+                            </div>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              <!-- Team Composition -->
+              {challenge.teamComposition && (
+                <section class="bb-ltc-detail-section">
+                  <h2 class="bb-ltc-section-title">Team Composition</h2>
+                  <div class="bb-ltc-detail-card">
+                    {challenge.teamComposition.note && (
+                      <p class="bb-ltc-team-note">{challenge.teamComposition.note}</p>
+                    )}
+
+                    <!-- Main Team (6 Characters) -->
+                    <div class="bb-ltc-team-section">
+                      <h3 class="bb-ltc-team-section-title">Main Team (6)</h3>
+                      <div class="bb-ltc-team-grid">
+                        {challenge.teamComposition.mainTeam.map(member => {
+                          const char = getCharacterDataBySlug(member.slug);
+                          if (!char) return null;
+                          return (
+                            <a href={`/guides/busty-burst/characters/${member.slug}`} class="bb-ltc-char-card">
+                              <div class="bb-ltc-char-image">
+                                <PaladinImage
+                                  characterId={char.characterId}
+                                  alt={char.displayName || char.name}
+                                  width={60}
+                                  height={60}
+                                  imageType="icon"
+                                />
+                              </div>
+                              <div class="bb-ltc-char-info">
+                                <span class="bb-ltc-char-name">{char.displayName || char.name}</span>
+                                <div class="bb-ltc-char-badges">
+                                  <ElementImage element={char.element} width={16} height={16} />
+                                  <span class="bb-ltc-char-role">{char.role}</span>
+                                </div>
+                                {member.alternative && (
+                                  <span class="bb-ltc-char-alt">or {member.alternative}</span>
+                                )}
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <!-- Supports (10 Characters) -->
+                    <div class="bb-ltc-team-section">
+                      <h3 class="bb-ltc-team-section-title">Supports (10)</h3>
+                      <div class="bb-ltc-support-grid">
+                        {challenge.teamComposition.supports.map(support => {
+                          const supportData = getSupportDataById(support.id);
+                          if (!supportData) return null;
+                          const lb5Stats = supportData.supportStats?.lb5 || {};
+                          return (
+                            <div class="bb-ltc-support-card">
+                              <div class="bb-ltc-char-image">
+                                <PaladinImage
+                                  characterId={support.id}
+                                  alt={supportData.name}
+                                  width={50}
+                                  height={50}
+                                  imageType="icon"
+                                />
+                              </div>
+                              <div class="bb-ltc-char-info">
+                                <span class="bb-ltc-char-name">{supportData.name}</span>
+                                <div class="bb-ltc-char-badges">
+                                  <ElementImage element={supportData.element} width={14} height={14} />
+                                  <WeaponIcon weapon={supportData.weapon} width={14} height={14} />
+                                  <RarityImage rarity={supportData.rarity} width={72} height={36} />
+                                </div>
+                                <div class="bb-ltc-support-stats">
+                                  {Object.entries(lb5Stats).map(([stat, value]) => (
+                                    <span class="bb-ltc-support-stat">{stat}: {value}</span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <!-- Support Totals -->
+                      {(() => {
+                        const totals = {};
+                        const blessingCounts = {};
+                        const weaponCounts = {};
+                        const weaponInspirations = {
+                          'Shot': { stat: 'Accuracy', values: [3, 6, 10] },
+                          'Slash': { stat: 'Accuracy', values: [3, 6, 10] },
+                          'Strike': { stat: 'Block', values: [3, 6, 10] },
+                          'Throw': { stat: 'P.ATK/M.ATK', values: ['2%', '4%', '6%'] },
+                          'Pierce': { stat: 'Action Speed', values: ['2%', '4%', '6%'] }
+                        };
+                        challenge.teamComposition.supports.forEach(support => {
+                          const supportData = getSupportDataById(support.id);
+                          if (!supportData) return;
+                          const lb5Stats = supportData.supportStats?.lb5 || {};
+                          Object.entries(lb5Stats).forEach(([stat, value]) => {
+                            if (typeof value === 'number') {
+                              totals[stat] = (totals[stat] || 0) + value;
+                            }
+                          });
+                          if (supportData.supportBonus?.blessing?.effect) {
+                            const blessingType = supportData.element;
+                            blessingCounts[blessingType] = (blessingCounts[blessingType] || 0) + 1;
+                          }
+                          if (supportData.weapon) {
+                            weaponCounts[supportData.weapon] = (weaponCounts[supportData.weapon] || 0) + 1;
+                          }
+                        });
+                        return (
+                          <div class="bb-ltc-support-totals">
+                            <h4 class="bb-ltc-totals-title">Total Support Bonuses (LB5)</h4>
+                            <div class="bb-ltc-totals-grid">
+                              {Object.entries(totals).map(([stat, value]) => (
+                                <div class="bb-ltc-total-item">
+                                  <span class="bb-ltc-total-stat">{stat}</span>
+                                  <span class="bb-ltc-total-value">+{value}</span>
+                                </div>
+                              ))}
+                            </div>
+                            <div class="bb-ltc-blessings-summary">
+                              <h5 class="bb-ltc-blessings-title">Element Blessings (6 members = +15%)</h5>
+                              <div class="bb-ltc-blessings-list">
+                                {Object.entries(blessingCounts).map(([element, count]) => (
+                                  <span class="bb-ltc-blessing-item" data-element={element}>
+                                    <ElementImage element={element} width={16} height={16} />
+                                    {element}: {count}x
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                            <div class="bb-ltc-inspirations-summary">
+                              <h5 class="bb-ltc-blessings-title">Weapon Inspirations (6 members)</h5>
+                              <div class="bb-ltc-blessings-list">
+                                {Object.entries(weaponCounts).map(([weapon, count]) => {
+                                  const insp = weaponInspirations[weapon];
+                                  const bonus = count >= 6 ? insp.values[2] : count >= 4 ? insp.values[1] : count >= 2 ? insp.values[0] : 0;
+                                  return (
+                                    <span class="bb-ltc-blessing-item bb-ltc-weapon-item" data-weapon={weapon}>
+                                      {weapon}: {count}x → {insp.stat} +{bonus}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  </div>
+                </section>
+              )}
 
             </article>
           </div>

@@ -350,6 +350,94 @@
   margin-top: 0.35rem;
 }
 
+/* Passive Skills */
+.bb-ltc-passive-skill {
+  background: rgba(192, 132, 252, 0.08);
+  border-left: 3px solid #c084fc;
+}
+
+.bb-ltc-passive-effect {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+/* Recommended Characters */
+.bb-ltc-recommended-chars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.bb-ltc-char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--bb-bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.bb-ltc-char-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--bb-border-light, var(--bb-border));
+  background: var(--bb-bg-secondary);
+}
+
+.bb-ltc-char-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-ltc-char-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+  width: 100%;
+}
+
+.bb-ltc-char-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  line-height: 1.2;
+  min-height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-ltc-char-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 20px;
+}
+
+.bb-ltc-char-badges img {
+  width: 16px;
+  height: 16px;
+}
+
+.bb-ltc-char-role {
+  font-size: 0.7rem;
+  color: var(--bb-text-secondary);
+  text-transform: capitalize;
+}
+
 /* Time-triggered skill badge */
 .bb-ltc-skill-time {
   font-size: 0.75rem;
@@ -479,6 +567,10 @@
   .bb-ltc-strategy-grid {
     grid-template-columns: 1fr;
   }
+
+  .bb-ltc-recommended-chars {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
 }
 
 @media (max-width: 600px) {
@@ -566,6 +658,34 @@
   .bb-ltc-stats-table td {
     padding: 0.5rem;
     font-size: 0.85rem;
+  }
+
+  .bb-ltc-recommended-chars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .bb-ltc-char-card {
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .bb-ltc-char-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-ltc-char-name {
+    font-size: 0.75rem;
+  }
+
+  .bb-ltc-char-badges img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bb-ltc-char-role {
+    font-size: 0.65rem;
   }
 }
 
@@ -665,5 +785,390 @@
 
   .bb-ltc-watchout-desc {
     font-size: 0.85rem;
+  }
+
+  .bb-ltc-recommended-chars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .bb-ltc-char-card {
+    padding: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .bb-ltc-char-image {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bb-ltc-char-name {
+    font-size: 0.7rem;
+  }
+
+  .bb-ltc-char-badges img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bb-ltc-char-role {
+    font-size: 0.6rem;
+  }
+}
+
+/* Team Composition Section */
+.bb-ltc-team-note {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+  margin: 0 0 1.25rem 0;
+  padding: 0.75rem;
+  background: rgba(192, 132, 252, 0.08);
+  border-left: 3px solid #c084fc;
+  border-radius: 4px;
+}
+
+.bb-ltc-team-section {
+  margin-bottom: 1.5rem;
+}
+
+.bb-ltc-team-section:last-child {
+  margin-bottom: 0;
+}
+
+.bb-ltc-team-section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bb-text-secondary);
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-ltc-team-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+
+.bb-ltc-support-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.bb-ltc-support-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  background: var(--bb-bg-primary);
+  border-radius: 6px;
+  border: 1px solid var(--bb-border);
+  text-align: center;
+}
+
+.bb-ltc-support-card .bb-ltc-char-image {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.bb-ltc-support-card .bb-ltc-char-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.bb-ltc-support-card .bb-ltc-char-name {
+  font-size: 0.7rem;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-ltc-support-card .bb-ltc-char-badges {
+  min-height: 18px;
+}
+
+/* Rarity image in support cards - high quality source, displayed smaller */
+.bb-ltc-support-card .bb-ltc-char-badges img:last-child {
+  width: 36px;
+  height: 18px;
+}
+
+.bb-ltc-char-alt {
+  font-size: 0.65rem;
+  color: var(--bb-text-secondary);
+  font-style: italic;
+  margin-top: 0.15rem;
+}
+
+/* Support Stats Display */
+.bb-ltc-support-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem;
+  margin-top: 0.25rem;
+}
+
+.bb-ltc-support-stat {
+  font-size: 0.55rem;
+  color: var(--bb-text-secondary);
+  background: var(--bb-bg-secondary);
+  padding: 0.1rem 0.25rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* Support Totals */
+.bb-ltc-support-totals {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: var(--bb-bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-ltc-totals-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-ltc-totals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bb-ltc-total-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+}
+
+.bb-ltc-total-stat {
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary);
+  font-weight: 500;
+}
+
+.bb-ltc-total-value {
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+  font-weight: 700;
+}
+
+.bb-ltc-blessings-summary {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-ltc-blessings-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--bb-text-secondary);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-ltc-blessings-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bb-ltc-blessing-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--bb-text-primary);
+  padding: 0.3rem 0.5rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+}
+
+/* Element blessing items - clean uniform style, element icons provide color */
+
+.bb-ltc-inspirations-summary {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bb-border);
+  margin-top: 0.75rem;
+}
+
+/* Weapon inspiration items - clean uniform style */
+
+/* Team Composition Responsive */
+@media (max-width: 768px) {
+  .bb-ltc-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bb-ltc-support-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .bb-ltc-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .bb-ltc-support-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.35rem;
+  }
+
+  .bb-ltc-support-card {
+    padding: 0.4rem;
+    gap: 0.3rem;
+  }
+
+  .bb-ltc-support-card .bb-ltc-char-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bb-ltc-support-card .bb-ltc-char-name {
+    font-size: 0.6rem;
+  }
+
+  .bb-ltc-support-rarity {
+    font-size: 0.55rem;
+  }
+
+  .bb-ltc-support-stat {
+    font-size: 0.5rem;
+    padding: 0.05rem 0.2rem;
+  }
+
+  .bb-ltc-support-totals {
+    padding: 0.75rem;
+  }
+
+  .bb-ltc-totals-title {
+    font-size: 0.8rem;
+  }
+
+  .bb-ltc-total-item {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .bb-ltc-total-stat {
+    font-size: 0.7rem;
+  }
+
+  .bb-ltc-total-value {
+    font-size: 0.8rem;
+  }
+
+  .bb-ltc-blessings-title {
+    font-size: 0.75rem;
+  }
+
+  .bb-ltc-blessing-item {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bb-ltc-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+  }
+
+  .bb-ltc-support-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.25rem;
+  }
+
+  .bb-ltc-support-card {
+    padding: 0.35rem;
+  }
+
+  .bb-ltc-support-card .bb-ltc-char-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bb-ltc-support-card .bb-ltc-char-name {
+    font-size: 0.55rem;
+  }
+
+  .bb-ltc-team-note {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+
+  .bb-ltc-char-alt {
+    font-size: 0.55rem;
+  }
+
+  .bb-ltc-support-stats {
+    display: none;
+  }
+
+  .bb-ltc-support-totals {
+    padding: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .bb-ltc-totals-title {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bb-ltc-totals-grid {
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bb-ltc-total-item {
+    padding: 0.25rem 0.4rem;
+    gap: 0.25rem;
+  }
+
+  .bb-ltc-total-stat {
+    font-size: 0.65rem;
+  }
+
+  .bb-ltc-total-value {
+    font-size: 0.75rem;
+  }
+
+  .bb-ltc-blessings-title {
+    font-size: 0.7rem;
+  }
+
+  .bb-ltc-blessings-list {
+    gap: 0.35rem;
+  }
+
+  .bb-ltc-blessing-item {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.35rem;
+    gap: 0.2rem;
+  }
+
+  .bb-ltc-blessing-item img {
+    width: 14px;
+    height: 14px;
   }
 }

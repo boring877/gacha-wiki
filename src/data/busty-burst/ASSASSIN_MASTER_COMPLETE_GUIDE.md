@@ -48,6 +48,17 @@
 
 ---
 
+## BOSS PASSIVE SKILLS
+
+| Skill ID | Name | Icon | Effect |
+|----------|------|------|--------|
+| 4100181 | 大傷盾 (Major Damage Shield) | skill001/skill1002 | Triggers on first hit - When taking more than **1,000,000** damage in a single hit, excess damage is reduced (Buff ID: 11111111) |
+| 4100182 | 相克的調和 (Elemental Harmony) | skill001/skill1002 | **+50% damage** from advantaged attribute (Magic), **-50% damage** from non-advantaged attributes (Wind, Water, Fire, Holy, Mind) |
+
+> **Strategy Note:** The Elemental Harmony passive explains all the elemental damage modifiers! Magic is the "advantaged" element that deals bonus damage to this boss.
+
+---
+
 ## BOSS ICON
 Location: `extracted/icon-arrive-arrive-limit/limit-1.png`
 Mapped: `mapped_buffs/BOSS_ICON_limit-1.png`
@@ -95,6 +106,8 @@ Location: `extracted/background-eventbg-limitbg2/`
 | 4100101 | Poison Blade | skill001/skill0011 |
 | 4100102 | Silence, Mage | skill001/skill0011 |
 | 4100103 | Anesthetic | skill001/skill0011 |
+| 4100181 | Major Damage Shield (Passive) | skill001/skill1002 |
+| 4100182 | Elemental Harmony (Passive) | skill001/skill1002 |
 
 ---
 
@@ -191,6 +204,10 @@ Location: `extracted/background-eventbg-limitbg2/`
 1. **At 90 sec**: Boss targets your highest HP hero with Poison
 2. **At 60 sec**: Boss silences your highest MATK hero
 3. **At 30 sec**: Boss puts your highest MP hero to sleep
+
+### Passive Skills
+- **Major Damage Shield**: Hits over 1,000,000 damage have excess reduced - spread damage instead of big bursts!
+- **Elemental Harmony**: This passive is why Magic deals +50% and other elements deal -50%
 
 ---
 

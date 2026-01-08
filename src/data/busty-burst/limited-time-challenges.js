@@ -169,6 +169,22 @@ export const limitedTimeChallengesConfig = {
             debuffIcon: 'state0044.png',
           },
         ],
+        passiveSkills: [
+          {
+            id: 4100181,
+            name: '大傷盾',
+            nameEn: 'Major Damage Shield',
+            effect: 'When taking more than 1,000,000 damage in a single hit, excess damage is reduced',
+            skillIcon: 'skill001/skill1002',
+          },
+          {
+            id: 4100182,
+            name: '相克的調和',
+            nameEn: 'Elemental Harmony',
+            effect: '+50% damage from Magic element, -50% damage from non-advantaged elements (Wind, Water, Fire, Holy, Mind)',
+            skillIcon: 'skill001/skill1002',
+          },
+        ],
       },
 
       // Strategy summary
@@ -202,6 +218,44 @@ export const limitedTimeChallengesConfig = {
         totalPointReward: 4000101,
         maxDamageRankReward: 4001102,
         totalDamageRankReward: 4001103,
+      },
+
+      // Recommended characters for this boss
+      recommendedCharacters: [
+        'dragon-crusher-medusa',
+        'liesel',
+        'festival-attire-estiriel',
+        'the-dark-knight',
+        'kaguya',
+        'ophelio',
+        'frey',
+        'marina',
+        'theresia',
+      ],
+
+      // Team composition for optimal damage
+      teamComposition: {
+        mainTeam: [
+          { slug: 'liesel' },
+          { slug: 'festival-attire-estiriel' },
+          { slug: 'dragon-crusher-medusa' },
+          { slug: 'the-dark-knight' },
+          { slug: 'kaguya' },
+          { slug: 'theresia', alternative: 'marina' },
+        ],
+        supports: [
+          { id: 2061 },  // Stenlina - MATK 200, M.Crit 90
+          { id: 2040 },  // Elegant Portrait Shamshel - MATK 200
+          { id: 2047 },  // Soltina - Block 8, P.Crit DMG 90, Dark
+          { id: 2076 },  // Ophelio - MATK 200, M.Crit 90
+          { id: 2026 },  // SR Farneria - MATK 140
+          { id: 2043 },  // SSR Sobrina - MATK 200, M.Crit 90, Throw (P.ATK/M.ATK)
+          { id: 2097 },  // Holy Night Yu Rima Elca - MATK 140, Dark
+          { id: 2024 },  // SR Zoe - MATK 110, Dark
+          { id: 2065 },  // Graceful Portrait Shamshel - MATK 200, M.Crit 90, Dark
+          { id: 2031 },  // SR Medusa - MATK 110, Dark
+        ],
+        note: 'Supports optimized for Dark element blessing and Magic ATK stats',
       },
     },
   ],
