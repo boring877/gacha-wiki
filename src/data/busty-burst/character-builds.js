@@ -251,4 +251,52 @@ export const characterBuilds = {
       })(),
     ],
   },
+  ophelio: {
+    slug: 'ophelio',
+    character: {
+      name: 'Ophelio',
+      fileName: 'Ophelio',
+      characterId: 2076,
+    },
+    position: {
+      name: 'Back',
+      image: 'Back.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: {
+      name: 'Annihilation Staff',
+      image: 'Staff_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      return {
+        name: 'Amethyst 4 Set + 1 Random SSR',
+        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(amethystSet.setEffects),
+        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
+        images: [
+          amethystSet.pieces[0].imageFile,
+          amethystSet.pieces[1].imageFile,
+          goldSet.pieces[0].imageFile,
+          goldSet.pieces[1].imageFile,
+        ],
+        setEffects: [
+          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
+          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+        ],
+      };
+    })(),
+  },
 };

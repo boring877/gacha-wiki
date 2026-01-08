@@ -13,6 +13,12 @@ const toSafeId = (type: string) => type.toLowerCase().replace(/\//g, '-');
 
 // Helper to check if weapon has stats
 const hasStats = (stats: Record<string, number>) => Object.keys(stats).length > 0;
+
+// Stats that should display with % suffix
+const percentageStats = ['pCrit', 'mCrit', 'ultDmg', 'skillDmg', 'hpDrain', 'mpCostReduction'];
+const formatStat = (key: string, value: number) => {
+  return percentageStats.includes(key) ? `${value}%` : value;
+};
 ---
 
 <WeaponsLayout title={title} description={description} gameTitle={gameTitle}>
@@ -93,9 +99,9 @@ const hasStats = (stats: Record<string, number>) => Object.keys(stats).length > 
                       <div class="bb-weapon-stats-list">
                         {Object.entries(weapon.stats).map(([key, value]) => (
                           <span class="bb-weapon-stat">
-                            {statLabels[key]}: {value}
+                            {statLabels[key]}: {formatStat(key, value)}
                             {weapon.statsMax && weapon.statsMax[key] !== undefined
-                              ? ` → ${weapon.statsMax[key]}`
+                              ? ` → ${formatStat(key, weapon.statsMax[key])}`
                               : ''}
                           </span>
                         ))}

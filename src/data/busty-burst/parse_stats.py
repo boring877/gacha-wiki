@@ -87,6 +87,7 @@ ID_TO_SLUG = {
     2070: 'festival-dress-up-natasha',
     2071: 'kaguya',
     2072: 'shaty',
+    2076: 'ophelio',
 
     # Christmas & New Year Event Characters
     2095: 'queen-of-pies-and-cookies-aphrodia',
@@ -345,7 +346,7 @@ def parse_gp_ability(lines, start_idx):
                     stat_name_parts.append(p)
 
             stat_name = ' '.join(stat_name_parts)
-            stat_key = STAT_NAME_MAP.get(stat_name, stat_name.lower().replace(' ', ''))
+            stat_key = STAT_NAME_MAP.get(stat_name, stat_name.lower().replace(' ', '').replace('%', ''))
 
             if stat_key and len(values) >= 11:
                 for lv_idx in range(10):
@@ -401,7 +402,7 @@ def parse_ability_grade(lines, start_idx):
                     stat_name_parts.append(p)
 
             stat_name = ' '.join(stat_name_parts)
-            stat_key = STAT_NAME_MAP.get(stat_name, stat_name.lower().replace(' ', ''))
+            stat_key = STAT_NAME_MAP.get(stat_name, stat_name.lower().replace(' ', '').replace('%', ''))
 
             if stat_key and len(values) >= 11:
                 for g_idx in range(10):

@@ -1,0 +1,86 @@
+---
+// Layout for the Limited Time Challenges index page
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/games/busty-burst/busty-burst-limited-time-challenges.css';
+import '../../styles/games/busty-burst/busty-burst-badges.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  showTitle?: boolean;
+  keywords?: string[];
+}
+
+const { title, description, gameTitle, showTitle = false, keywords = [] } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="busty-burst"
+      title={title}
+      description={description}
+      customImage="/images/games/Busty_Burst/BG/bg_02.webp"
+      additionalKeywords={keywords}
+    />
+    <slot name="head" />
+  </head>
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="busty-burst-container">
+        <main class="busty-burst-main">
+          <!-- Title Section (only when showTitle is true) -->
+          {
+            showTitle && gameTitle && (
+              <section class="bb-title-only-section">
+                <h1 class="bb-title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <article itemscope itemtype="https://schema.org/ItemList">
+              <slot />
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

@@ -1,6 +1,7 @@
 ---
 import BustyBurstClockLayout from '../../layouts/clock/BustyBurst.astro';
 import { bustyBurstConfig } from '../../data/clock/busty-burst.js';
+import { getActiveChallenges } from '../../data/busty-burst/limited-time-challenges.js';
 import GameIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
 
 // Page metadata
@@ -8,11 +9,16 @@ const title = 'Busty Burst Clock - Server Reset Timer & Launch Countdown | Gacha
 const description =
   'Busty Burst Fantasy server reset timer and launch countdown - Track Busty Burst server resets and launch with real-time countdown timers. Never miss daily resets, weekly events with our precise UTC server time clock. Server resets at 03:00 UTC daily.';
 
-// Create a new config object with the imported image
+// Get active LTC challenge
+const activeChallenges = getActiveChallenges();
+const activeChallenge = activeChallenges.length > 0 ? activeChallenges[0] : null;
+
+// Create a new config object with the imported image and LTC data
 const games = [
   {
     ...bustyBurstConfig,
     image: GameIcon,
+    ltc: activeChallenge,
   },
 ];
 ---
@@ -63,6 +69,7 @@ const games = [
     updatePiBustyDay();
     updateAnniversary();
     updateMaintenance();
+    updateLTC();
 
     // Update every second
     clockInterval = setInterval(() => {
@@ -75,6 +82,7 @@ const games = [
       updatePiBustyDay();
       updateAnniversary();
       updateMaintenance();
+      updateLTC();
     }, 1000);
   }
 
@@ -407,6 +415,44 @@ const games = [
       if (maintenanceEndItem) maintenanceEndItem.style.display = 'none';
       if (noMaintenanceMessage) noMaintenanceMessage.style.display = 'block';
     }
+  }
+
+  // Update Limited Time Challenge timer
+  function updateLTC() {
+    const ltcCard = document.getElementById('ltcTimerCard');
+    if (!ltcCard) return;
+
+    const ltcTimeEl = document.getElementById('ltcTime');
+    const ltcStatusDot = document.getElementById('ltcStatusDot');
+    const ltcStatusText = document.getElementById('ltcStatusText');
+    if (!ltcTimeEl) return;
+
+    const endDateStr = ltcCard.dataset.end;
+    if (!endDateStr) return;
+
+    // Parse date format: '2026/01/20' -> Date object (03:00 UTC)
+    const [year, month, day] = endDateStr.split('/').map(Number);
+    const endDate = new Date(Date.UTC(year, month - 1, day, 3, 0, 0));
+
+    const now = new Date();
+    const timeDiff = endDate.getTime() - now.getTime();
+
+    if (timeDiff <= 0) {
+      ltcTimeEl.textContent = 'Ended';
+      if (ltcStatusDot) ltcStatusDot.className = 'status-dot status-offline';
+      if (ltcStatusText) ltcStatusText.textContent = 'Ended';
+      return;
+    }
+
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    let timeString = '';
+    if (days > 0) timeString += `${days}d `;
+    timeString += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    ltcTimeEl.textContent = timeString;
   }
 
   // Start clock when page is ready

@@ -21,9 +21,12 @@ const description = `Complete stats guide for all ${characterStats.length} Busty
 const gameTitle = 'Character Stats Guide';
 
 // Calculate total from nested bonus object (lb1, lb2, etc. or lv1, lv2, etc.)
+// Excludes the 'total' key to avoid double counting
 const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) => {
   const total: Record<string, number> = {};
-  Object.values(bonusObj).forEach(levelBonus => {
+  Object.entries(bonusObj).forEach(([key, levelBonus]) => {
+    // Skip the 'total' key - we calculate our own totals from individual levels
+    if (key === 'total') return;
     if (typeof levelBonus === 'object') {
       Object.entries(levelBonus).forEach(([stat, value]) => {
         if (typeof value === 'number') {
@@ -70,6 +73,9 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
         </select>
         <button type="button" id="clear-filters" class="bb-stats-clear-btn"> Clear All </button>
       </div>
+      <p class="bb-stats-note">
+        <strong>Note:</strong> The in-game stats display currently only includes Limit Break (up to LB4) and does not include Bond Level bonuses.
+      </p>
     </div>
 
     <!-- Character Stats Grid -->
@@ -520,13 +526,52 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
         return bonuses;
       }
 
-      // Get passive abilities for a specific grade
+      // Get passive abilities for a specific grade (with cumulative values)
       function getPassiveAbilitiesAtGrade(grade: number): Array<{slot: number; stat: string; value: number}> {
-        return passiveAbilitiesData.map((passive: {slot: number; stat: string; grades: Record<string, number>}) => ({
-          slot: passive.slot,
-          stat: passive.stat,
-          value: grade > 0 ? (passive.grades?.[`g${grade}`] || 0) : 0
-        }));
+        const results: Array<{slot: number; stat: string; value: number}> = [];
+
+        passiveAbilitiesData.forEach((passive: any) => {
+          // Handle new format: grades is an array with per-grade stat types (like Ophelio slot 5)
+          if (Array.isArray(passive.grades)) {
+            const displayGrade = grade === 0 ? 10 : grade;
+            const gradeData = passive.grades.find((g: any) => g.grade === displayGrade);
+
+            if (gradeData && gradeData.cumulative) {
+              // Has cumulative data - show all stats
+              Object.entries(gradeData.cumulative).forEach(([stat, value]: [string, any]) => {
+                if (value > 0 || displayGrade === 10) {
+                  results.push({
+                    slot: passive.slot,
+                    stat,
+                    value: grade > 0 ? value : 0
+                  });
+                }
+              });
+            } else {
+              // Fallback: calculate cumulative manually
+              const totals: Record<string, number> = {};
+              passive.grades.forEach((g: any) => {
+                if (g.grade <= displayGrade) {
+                  totals[g.stat] = (totals[g.stat] || 0) + g.value;
+                }
+              });
+              Object.entries(totals).forEach(([stat, value]) => {
+                results.push({
+                  slot: passive.slot,
+                  stat,
+                  value: grade > 0 ? value : 0
+                });
+              });
+            }
+          } else {
+            // Handle standard format: grades object now has cumulative values
+            const stat = passive.stat;
+            const value = grade > 0 ? (passive.grades?.[`g${grade}`] || 0) : 0;
+            results.push({ slot: passive.slot, stat, value });
+          }
+        });
+
+        return results;
       }
 
       // Update hero card bonus display
@@ -550,9 +595,12 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
       function updatePassiveDisplay(grade: number) {
         const passives = getPassiveAbilitiesAtGrade(grade);
         passives.forEach(p => {
-          const valueEl = card.querySelector(`[data-passive-value="${p.slot}"]`);
-          if (valueEl) {
-            valueEl.textContent = grade > 0 ? `+${p.value}` : '-';
+          const rowEl = card.querySelector(`[data-passive-slot="${p.slot}"]`);
+          if (rowEl) {
+            const nameEl = rowEl.querySelector('.bb-hero-stat-name');
+            const valueEl = rowEl.querySelector('.bb-hero-stat-value');
+            if (nameEl) nameEl.textContent = p.stat;
+            if (valueEl) valueEl.textContent = grade > 0 ? `+${p.value}` : '-';
           }
         });
         if (passiveGradeLabel) {
@@ -588,6 +636,25 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
           const agBonuses = calculateAbilityGradeBonus(agGrade);
           Object.entries(agBonuses).forEach(([stat, value]) => {
             bonuses[stat] = (bonuses[stat] || 0) + value;
+          });
+        }
+
+        // Passive abilities bonus (only if checked)
+        if (passiveCheck?.checked) {
+          const passiveGrade = Math.min(10, Math.max(0, parseInt(passiveInput?.value || '10')));
+          const passives = getPassiveAbilitiesAtGrade(passiveGrade);
+
+          // Map passive stat names to stat keys
+          const passiveStatMap: Record<string, string> = {
+            'HP': 'hp', 'ATK': 'atk', 'MATK': 'matk', 'DEF': 'def', 'MDEF': 'mdef',
+            'Accuracy': 'accuracy', 'Block': 'block', 'Phys Crit': 'physCrit', 'Magic Crit': 'magicCrit',
+            'HP Regen': 'hpRegen', 'MP Regen': 'mpRegen', 'Heal Pwr': 'healPwr',
+            'MP Charge': 'mpCharge', 'HP Drain': 'hpDrain'
+          };
+
+          passives.forEach(p => {
+            const statKey = passiveStatMap[p.stat] || p.stat.toLowerCase();
+            bonuses[statKey] = (bonuses[statKey] || 0) + p.value;
           });
         }
 

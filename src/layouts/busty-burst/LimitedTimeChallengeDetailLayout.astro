@@ -1,0 +1,479 @@
+---
+// Layout for individual Limited Time Challenge boss detail pages
+import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
+import BossIcon from '../../components/busty-burst/BossIcon.astro';
+import BuffIcon from '../../components/busty-burst/BuffIcon.astro';
+
+// Import CSS files
+import '../../styles/games/busty-burst/busty-burst-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/busty-burst/busty-burst-layout.css';
+import '../../styles/games/busty-burst/busty-burst-limited-time-challenges.css';
+import '../../styles/games/busty-burst/busty-burst-limited-time-challenges-detail.css';
+import '../../styles/games/busty-burst/busty-burst-badges.css';
+
+export interface Props {
+  challenge: {
+    slug: string;
+    name: string;
+    eventId: number;
+    eventName?: string;
+    bossIcon: string;
+    level: number;
+    timeLimit: number;
+    endDate: string;
+    status: 'active' | 'ended' | 'upcoming';
+    weakness: {
+      element: string;
+      description: string;
+      icon: string;
+    };
+    resistances: Array<{
+      element: string;
+      reduction: number;
+      icon: string;
+    }>;
+    statusResistances: Array<{
+      name: string;
+      chance: number;
+      level: string;
+      exploitable: boolean;
+      icon: string;
+      description?: string;
+    }>;
+    stats: {
+      hp: string;
+      hpNote?: string;
+      atk: number;
+      matk: number;
+      def: number;
+      mdef: number;
+      atkCrit: number;
+      matkCrit: number;
+      hit: number;
+      block: number;
+      mpRecovery: number;
+    };
+    skills: {
+      normalAttack: {
+        id: number;
+        name: string;
+        nameEn: string;
+        target: string;
+        damage: string;
+        type: string;
+      };
+      regularSkills: Array<{
+        id: number;
+        name: string;
+        nameEn: string;
+        target: string;
+        damage: string;
+        effect: string;
+        cooldown?: number;
+        debuffIcons?: string[];
+      }>;
+      timeTriggeredSkills: Array<{
+        timeLeft: number;
+        id: number;
+        name: string;
+        nameEn: string;
+        target: string;
+        effect: string;
+        debuffIcon?: string;
+      }>;
+    };
+    strategy: {
+      bestElement: string;
+      bestElementNote: string;
+      avoidElements: string[];
+      exploitableDebuffs: Array<{ name: string; resistChance: number }>;
+      avoidDebuffs: Array<{ name: string; reason: string }>;
+      watchOutFor: Array<{ time: number; description: string }>;
+    };
+    rewards?: {
+      totalPointReward: number;
+      maxDamageRankReward: number;
+      totalDamageRankReward: number;
+    };
+  };
+}
+
+const { challenge } = Astro.props;
+const title = `${challenge.name} - Limited Time Challenge | Busty Burst`;
+const description = `Complete boss guide for ${challenge.name} in Busty Burst. Level ${challenge.level}, ${challenge.timeLimit}s time limit. Weak to ${challenge.weakness.element} (+50% DMG). Stats, skills, debuffs & strategy tips.`;
+
+// SEO keywords for this boss
+const bossKeywords = [
+  challenge.name,
+  'limited time challenge',
+  'boss guide',
+  `${challenge.weakness.element} weakness`,
+  'busty burst boss',
+  'LTC guide',
+  ...challenge.strategy.exploitableDebuffs.slice(0, 3).map(d => d.name.toLowerCase()),
+];
+---
+
+<html lang="en">
+  <head>
+    <BBBaseHead title={title} description={description} />
+    <GameSEO
+      gameKey="busty-burst"
+      title={title}
+      description={description}
+      customImage="/images/games/Busty_Burst/BG/bg_02.webp"
+      additionalKeywords={bossKeywords}
+    />
+  </head>
+  <body class="busty-burst-body">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="busty-burst-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
+      <MobileMenu />
+
+      <div class="busty-burst-container">
+        <main class="busty-burst-main">
+          <!-- Title Section -->
+          <section class="bb-title-only-section">
+            <h2 class="bb-title-only-heading">Limited Time Challenge</h2>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
+
+          <div class="content-area">
+            <article class="bb-ltc-detail-container" itemscope itemtype="https://schema.org/Article">
+              <!-- Boss Header -->
+              <div class="bb-ltc-detail-header">
+                <div class="bb-ltc-detail-boss-image">
+                  <BossIcon fileName={challenge.bossIcon} alt={challenge.name} loading="eager" />
+                </div>
+                <div class="bb-ltc-detail-header-info">
+                  <h1 class="bb-ltc-detail-title">{challenge.name}</h1>
+                  <div class="bb-ltc-detail-meta">
+                    <span class="bb-ltc-detail-meta-item">
+                      <span class="bb-ltc-detail-meta-label">Level:</span>
+                      <span class="bb-ltc-detail-meta-value">{challenge.level}</span>
+                    </span>
+                    <span class="bb-ltc-detail-meta-item">
+                      <span class="bb-ltc-detail-meta-label">Time:</span>
+                      <span class="bb-ltc-detail-meta-value">{challenge.timeLimit}s</span>
+                    </span>
+                    <span class="bb-ltc-detail-meta-item">
+                      <span class="bb-ltc-detail-meta-label">Status:</span>
+                      <span class="bb-ltc-status-badge" data-status={challenge.status}>{challenge.status}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Boss Stats -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Boss Stats</h2>
+                <div class="bb-ltc-detail-card">
+                  <table class="bb-ltc-stats-table">
+                    <tr>
+                      <th>HP</th>
+                      <td>{challenge.stats.hp}{challenge.stats.hpNote && <span class="bb-ltc-stat-note">({challenge.stats.hpNote})</span>}</td>
+                    </tr>
+                    <tr>
+                      <th>ATK</th>
+                      <td>{challenge.stats.atk.toLocaleString()}</td>
+                    </tr>
+                    <tr>
+                      <th>MATK</th>
+                      <td>{challenge.stats.matk.toLocaleString()}</td>
+                    </tr>
+                    <tr>
+                      <th>DEF / MDEF</th>
+                      <td>{challenge.stats.def} / {challenge.stats.mdef}</td>
+                    </tr>
+                    <tr>
+                      <th>Crit (ATK / MATK)</th>
+                      <td>{challenge.stats.atkCrit} / {challenge.stats.matkCrit}</td>
+                    </tr>
+                    <tr>
+                      <th>HIT / BLOCK</th>
+                      <td>{challenge.stats.hit} / {challenge.stats.block}</td>
+                    </tr>
+                  </table>
+                </div>
+              </section>
+
+              <!-- Element Weakness & Resistances -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Element Weakness & Resistances</h2>
+                <div class="bb-ltc-detail-card">
+                  <div class="bb-ltc-resistances-grid">
+                    <!-- Weakness -->
+                    <div class="bb-ltc-resistance-item weakness">
+                      <BuffIcon fileName={challenge.weakness.icon} alt={challenge.weakness.element} width={28} height={28} />
+                      <div class="bb-ltc-resistance-info">
+                        <div class="bb-ltc-resistance-name">{challenge.weakness.element}</div>
+                        <div class="bb-ltc-resistance-value">+50% DMG (Weakness)</div>
+                      </div>
+                    </div>
+                    <!-- Resistances -->
+                    {challenge.resistances.map(res => (
+                      <div class="bb-ltc-resistance-item">
+                        <BuffIcon fileName={res.icon} alt={res.element} width={28} height={28} />
+                        <div class="bb-ltc-resistance-info">
+                          <div class="bb-ltc-resistance-name">{res.element}</div>
+                          <div class="bb-ltc-resistance-value">-{res.reduction}% DMG</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <!-- Status Effect Resistances -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Status Effect Resistances</h2>
+                <div class="bb-ltc-detail-card">
+                  <div class="bb-ltc-resistances-grid">
+                    {challenge.statusResistances.map(status => (
+                      <div class={`bb-ltc-resistance-item ${status.exploitable ? 'exploitable' : ''} ${status.chance === 100 ? 'immune' : ''}`}>
+                        <BuffIcon fileName={status.icon} alt={status.name} width={28} height={28} />
+                        <div class="bb-ltc-resistance-info">
+                          <div class="bb-ltc-resistance-name">{status.name}</div>
+                          <div class="bb-ltc-resistance-value">
+                            {status.chance}% ({status.level}){status.exploitable && ' - Exploitable!'}
+                          </div>
+                          {status.description && (
+                            <div class="bb-ltc-resistance-desc">{status.description}</div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <!-- Boss Skills -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Boss Skills</h2>
+                <div class="bb-ltc-detail-card">
+                  {challenge.skills.damageFormula && (
+                    <div class="bb-ltc-damage-formula">
+                      <strong>Damage Formula:</strong> {challenge.skills.damageFormula}
+                      <br /><small>Boss Base ATK: {challenge.skills.bossBaseAtk?.toLocaleString()}</small>
+                    </div>
+                  )}
+                  <h3 style="font-size: 0.9rem; color: var(--bb-text-secondary); margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Normal Attack</h3>
+                  <div class="bb-ltc-skills-list" style="margin-bottom: 1.5rem;">
+                    <div class="bb-ltc-skill-item">
+                      {challenge.skills.normalAttack.skillIcon && (
+                        <div class="bb-ltc-skill-icon">
+                          <BuffIcon fileName={challenge.skills.normalAttack.skillIcon} alt="Skill" width={40} height={40} />
+                        </div>
+                      )}
+                      <div class="bb-ltc-skill-info">
+                        <div class="bb-ltc-skill-name">
+                          {challenge.skills.normalAttack.name}
+                          <span class="bb-ltc-skill-name-en">({challenge.skills.normalAttack.nameEn})</span>
+                        </div>
+                        <div class="bb-ltc-skill-details">
+                          <span class="bb-ltc-skill-detail">
+                            <span class="bb-ltc-skill-detail-label">Target:</span>
+                            <span class="bb-ltc-skill-detail-value">{challenge.skills.normalAttack.target}</span>
+                          </span>
+                          <span class="bb-ltc-skill-detail">
+                            <span class="bb-ltc-skill-detail-label">DMG:</span>
+                            <span class="bb-ltc-skill-detail-value">{challenge.skills.normalAttack.damage}</span>
+                            {challenge.skills.normalAttack.baseDamage && (
+                              <span class="bb-ltc-base-damage">= {challenge.skills.normalAttack.baseDamage.toLocaleString()}</span>
+                            )}
+                          </span>
+                          <span class="bb-ltc-skill-detail">
+                            <span class="bb-ltc-skill-detail-label">Type:</span>
+                            <span class="bb-ltc-skill-detail-value">{challenge.skills.normalAttack.type}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 style="font-size: 0.9rem; color: var(--bb-text-secondary); margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Regular Skills</h3>
+                  <div class="bb-ltc-skills-list" style="margin-bottom: 1.5rem;">
+                    {challenge.skills.regularSkills.map(skill => (
+                      <div class="bb-ltc-skill-item">
+                        {skill.skillIcon && (
+                          <div class="bb-ltc-skill-icon">
+                            <BuffIcon fileName={skill.skillIcon} alt="Skill" width={40} height={40} />
+                          </div>
+                        )}
+                        <div class="bb-ltc-skill-info">
+                          <div class="bb-ltc-skill-name">
+                            {skill.name}
+                            <span class="bb-ltc-skill-name-en">({skill.nameEn})</span>
+                          </div>
+                          <div class="bb-ltc-skill-details">
+                            <span class="bb-ltc-skill-detail">
+                              <span class="bb-ltc-skill-detail-label">Target:</span>
+                              <span class="bb-ltc-skill-detail-value">{skill.target}</span>
+                            </span>
+                            <span class="bb-ltc-skill-detail">
+                              <span class="bb-ltc-skill-detail-label">DMG:</span>
+                              <span class="bb-ltc-skill-detail-value">{skill.damage}</span>
+                              {skill.baseDamage && (
+                                <span class="bb-ltc-base-damage">= {skill.baseDamage.toLocaleString()}</span>
+                              )}
+                            </span>
+                            {skill.cooldown && (
+                              <span class="bb-ltc-skill-detail">
+                                <span class="bb-ltc-skill-detail-label">CD:</span>
+                                <span class="bb-ltc-skill-detail-value">{skill.cooldown}s</span>
+                              </span>
+                            )}
+                          </div>
+                          <div class="bb-ltc-skill-effect">
+                            {skill.effect}
+                            {skill.debuffIcons && skill.debuffIcons.length > 0 && (
+                              <span class="bb-ltc-debuff-icons">
+                                {skill.debuffIcons.map(icon => (
+                                  <BuffIcon fileName={icon} alt="Debuff" width={20} height={20} />
+                                ))}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <h3 style="font-size: 0.9rem; color: var(--bb-text-secondary); margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Time-Triggered Skills</h3>
+                  <div class="bb-ltc-skills-list">
+                    {challenge.skills.timeTriggeredSkills.map(skill => (
+                      <div class="bb-ltc-skill-item">
+                        <span class="bb-ltc-skill-time">@{skill.timeLeft}s</span>
+                        {skill.skillIcon && (
+                          <div class="bb-ltc-skill-icon">
+                            <BuffIcon fileName={skill.skillIcon} alt="Skill" width={40} height={40} />
+                          </div>
+                        )}
+                        <div class="bb-ltc-skill-info">
+                          <div class="bb-ltc-skill-name">
+                            {skill.name}
+                            <span class="bb-ltc-skill-name-en">({skill.nameEn})</span>
+                          </div>
+                          <div class="bb-ltc-skill-details">
+                            <span class="bb-ltc-skill-detail">
+                              <span class="bb-ltc-skill-detail-label">Target:</span>
+                              <span class="bb-ltc-skill-detail-value">{skill.target}</span>
+                            </span>
+                            {skill.damage && (
+                              <span class="bb-ltc-skill-detail">
+                                <span class="bb-ltc-skill-detail-label">DMG:</span>
+                                <span class="bb-ltc-skill-detail-value">{skill.damage}</span>
+                                {skill.baseDamage && (
+                                  <span class="bb-ltc-base-damage">= {skill.baseDamage.toLocaleString()}</span>
+                                )}
+                              </span>
+                            )}
+                          </div>
+                          <div class="bb-ltc-skill-effect">
+                            {skill.effect}
+                            {skill.debuffIcon && (
+                              <span class="bb-ltc-debuff-icons">
+                                <BuffIcon fileName={skill.debuffIcon} alt="Debuff" width={20} height={20} />
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <!-- Strategy Summary -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Strategy Summary</h2>
+                <div class="bb-ltc-detail-card">
+                  <div class="bb-ltc-strategy-grid">
+                    <!-- Best Element -->
+                    <div class="bb-ltc-strategy-card">
+                      <h4 class="bb-ltc-strategy-title">Best Element</h4>
+                      <div class="bb-ltc-strategy-content">
+                        <span class="bb-ltc-strategy-highlight">{challenge.strategy.bestElement}</span>
+                        <br />
+                        <small>{challenge.strategy.bestElementNote}</small>
+                      </div>
+                    </div>
+
+                    <!-- Avoid Elements -->
+                    <div class="bb-ltc-strategy-card">
+                      <h4 class="bb-ltc-strategy-title">Avoid Elements</h4>
+                      <ul class="bb-ltc-strategy-list">
+                        {challenge.strategy.avoidElements.map(el => (
+                          <li><span class="bb-ltc-strategy-warning">{el}</span> (-50% DMG)</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Exploitable Debuffs -->
+                    <div class="bb-ltc-strategy-card">
+                      <h4 class="bb-ltc-strategy-title">Exploitable Debuffs</h4>
+                      <ul class="bb-ltc-strategy-list">
+                        {challenge.strategy.exploitableDebuffs.map(d => (
+                          <li><span class="bb-ltc-strategy-highlight">{d.name}</span> (only {d.resistChance}% resist)</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <!-- Avoid Debuffs -->
+                    <div class="bb-ltc-strategy-card">
+                      <h4 class="bb-ltc-strategy-title">Avoid These Debuffs</h4>
+                      <ul class="bb-ltc-strategy-list">
+                        {challenge.strategy.avoidDebuffs.map(d => (
+                          <li><span class="bb-ltc-strategy-warning">{d.name}</span> ({d.reason})</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Watch Out For -->
+              <section class="bb-ltc-detail-section">
+                <h2 class="bb-ltc-section-title">Watch Out For</h2>
+                <div class="bb-ltc-detail-card">
+                  <div class="bb-ltc-watchout-list">
+                    {challenge.strategy.watchOutFor.map(w => (
+                      <div class="bb-ltc-watchout-item">
+                        <span class="bb-ltc-watchout-time">At {w.time}s left:</span>
+                        <span class="bb-ltc-watchout-desc">{w.description}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

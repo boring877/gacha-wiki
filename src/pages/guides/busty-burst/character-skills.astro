@@ -9,13 +9,20 @@ import PositionImage from '../../../components/busty-burst/PositionImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
 import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
-import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS, getCharacterPosition } from '../../../data/busty-burst/character-skills-full.js';
+import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS } from '../../../data/busty-burst/character-skills-full.js';
 import { getSupportDataById } from '../../../data/busty-burst/support-data.js';
+import { getCharacterBySlug } from '../../../data/busty-burst/character-info.js';
 
 // Helper to get weapon type from support data
 const getWeaponType = (charId: number) => {
   const supportData = getSupportDataById(charId);
   return supportData?.weapon || null;
+};
+
+// Helper to get character position from character-info by slug
+const getCharacterPosition = (slug: string) => {
+  const charInfo = getCharacterBySlug(slug);
+  return charInfo?.position?.number || 1;
 };
 
 // Map position number to filename
@@ -164,8 +171,8 @@ const rarities = ['SSR', 'SR', 'R'];
                   </div>
                   <div class="bb-skills-info-item">
                     <PositionImage
-                      fileName={getPositionFileName(getCharacterPosition(char.id))}
-                      alt={getPositionName(getCharacterPosition(char.id))}
+                      fileName={getPositionFileName(getCharacterPosition(char.slug))}
+                      alt={getPositionName(getCharacterPosition(char.slug))}
                       width={22}
                       height={22}
                     />

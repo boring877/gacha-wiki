@@ -293,7 +293,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       },
       {
         title: 'Events',
-        links: [{ name: 'Banner Timeline', href: '/guides/busty-burst/banner-timeline' }],
+        links: [
+          { name: 'Banner Timeline', href: '/guides/busty-burst/banner-timeline' },
+          { name: 'Limited Time Challenges', href: '/guides/busty-burst/limited-time-challenges/' },
+        ],
       },
       {
         title: 'Resources',

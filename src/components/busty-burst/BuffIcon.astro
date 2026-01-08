@@ -1,0 +1,65 @@
+---
+// Displays buff/debuff icons from the icon-buff001 directory
+import { Image } from 'astro:assets';
+
+interface Props {
+  fileName: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+}
+
+const { fileName, alt, width = 32, height = 32, loading = 'lazy', class: className = '' } = Astro.props;
+
+// Import all buff icons from the Limited_Boss/icon-buff001 directory
+const buffImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/games/Busty_Burst/Limited_Boss/icon-buff001/*.png',
+  { eager: true }
+);
+
+// Find the matching image
+const imagePath = `/src/assets/images/games/Busty_Burst/Limited_Boss/icon-buff001/${fileName}`;
+const imageModule = buffImages[imagePath];
+const imageSrc = imageModule?.default;
+---
+
+{
+  imageSrc ? (
+    <Image
+      src={imageSrc}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      class={`buff-icon ${className}`.trim()}
+    />
+  ) : (
+    <div
+      class={`buff-icon-placeholder ${className}`.trim()}
+      style={`width: ${width}px; height: ${height}px;`}
+      title={alt}
+    >
+      ?
+    </div>
+  )
+}
+
+<style>
+  .buff-icon {
+    display: inline-block;
+    object-fit: contain;
+  }
+
+  .buff-icon-placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bb-bg-secondary, #2a2a3d);
+    border: 1px solid var(--bb-border, #3d3d5c);
+    border-radius: 4px;
+    color: var(--bb-text-secondary, #a0a0b0);
+    font-size: 0.75rem;
+  }
+</style>

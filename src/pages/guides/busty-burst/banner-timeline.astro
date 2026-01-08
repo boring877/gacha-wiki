@@ -1,6 +1,7 @@
 ---
 import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
 import BBBannerImage from '../../../components/busty-burst/BBBannerImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import {
   bannerTimelineData,
   seasonalCharactersData,
@@ -125,9 +126,7 @@ const getStatusLabel = (status: string) => {
                         <div class="summon-paladin-item">
                           <span class="summon-paladin-name">{paladin.name}</span>
                           <div class="summon-paladin-badges">
-                            <span class="bb-badge" data-rarity={paladin.rarity}>
-                              {paladin.rarity}
-                            </span>
+                            <RarityImage rarity={paladin.rarity} width={36} height={18} />
                             <span
                               class="bb-badge"
                               data-role={paladin.type === 'Attack' ? 'Attacker' : paladin.type}
@@ -190,9 +189,7 @@ const getStatusLabel = (status: string) => {
                       <div class="seasonal-char-info">
                         <span class="seasonal-char-name">{char.name}</span>
                         <div class="seasonal-char-badges">
-                          <span class="bb-badge" data-rarity={char.rarity}>
-                            {char.rarity}
-                          </span>
+                          <RarityImage rarity={char.rarity} width={36} height={18} />
                           <span
                             class="bb-badge"
                             data-role={char.type === 'Attack' ? 'Attacker' : char.type}

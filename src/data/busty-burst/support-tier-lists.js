@@ -28,8 +28,8 @@ function getOffensiveScore(character) {
 
   if (lb5['ATK']) score += lb5['ATK'];
   if (lb5['MATK']) score += lb5['MATK'];
-  if (lb5['P.Crit']) score += lb5['P.Crit'] * 2;
-  if (lb5['M.Crit']) score += lb5['M.Crit'] * 2;
+  if (lb5['P.Crit DMG']) score += lb5['P.Crit DMG'] * 2;
+  if (lb5['M.Crit DMG']) score += lb5['M.Crit DMG'] * 2;
   if (lb5['Accuracy']) score += lb5['Accuracy'] * 5;
 
   return score;
@@ -44,7 +44,7 @@ function hasATK(character) {
 // Check if character has Crit in LB5 stats
 function hasCrit(character) {
   const lb5 = character.supportStats.lb5;
-  return lb5['P.Crit'] || lb5['M.Crit'];
+  return lb5['P.Crit DMG'] || lb5['M.Crit DMG'];
 }
 
 // Check if character has ATK or Crit in LB5 stats

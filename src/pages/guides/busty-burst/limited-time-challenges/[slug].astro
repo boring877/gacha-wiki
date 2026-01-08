@@ -1,0 +1,17 @@
+---
+// Individual Limited Time Challenge boss detail page
+import LimitedTimeChallengeDetailLayout from '../../../../layouts/busty-burst/LimitedTimeChallengeDetailLayout.astro';
+import { getAllChallengeSlugs, getChallengeBySlug } from '../../../../data/busty-burst/limited-time-challenges.js';
+
+export function getStaticPaths() {
+  const slugs = getAllChallengeSlugs();
+  return slugs.map(slug => ({
+    params: { slug },
+    props: { challenge: getChallengeBySlug(slug) },
+  }));
+}
+
+const { challenge } = Astro.props;
+---
+
+<LimitedTimeChallengeDetailLayout challenge={challenge} />

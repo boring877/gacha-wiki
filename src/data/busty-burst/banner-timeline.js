@@ -5,6 +5,25 @@
  */
 
 export const bannerTimelineData = [
+  // #5 - Beauty Witch Party People Event Summon (Jan 6 - Jan 13) - CURRENT
+  {
+    id: 'beauty-witch-party-people-2026',
+    title: '"Beauty Witch Party People" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Ophelio',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-01-06T02:00:00Z',
+    endDate: '2026-01-13T02:00:00Z',
+    description: '"Beauty Witch Party People" Event Summon! Limited-Time Paladin Rate Up!',
+    note: 'Features Ophelio, a Fire Magic Attacker.',
+    status: 'current',
+    image: 'beauty-witch-party-people',
+  },
   // #4 - New Year's Evil Dragons Event Summon (Dec 30 - Jan 13) - CURRENT
   {
     id: 'new-year-evil-dragons-2025',
@@ -32,7 +51,7 @@ export const bannerTimelineData = [
     description: "New Year's Evil Dragons Event Summon! Limited-Time New Year Paladin Rate Up!",
     note: 'New Year limited banner featuring Dragon Crusher Medusa and New Year themed characters.',
     status: 'current',
-    image: 'activity-banner-2005_Summon3_newyear_804x434',
+    image: 'new-year-2025-3',
   },
   // #3 - Offering Cookies for the Holy Night (Dec 16 - Dec 30) - ENDED
   {
@@ -62,7 +81,7 @@ export const bannerTimelineData = [
       'Offering Cookies for the Holy Night Event Summon! Limited-Time Christmas Paladin Rate Up!',
     note: 'Christmas event banner with limited-time holiday characters.',
     status: 'ended',
-    image: '3',
+    image: 'holy-night-cookies',
   },
   // #2 - Shaty (Dec 9 - Dec 16) - ENDED
   {
@@ -81,7 +100,7 @@ export const bannerTimelineData = [
     description: 'Main Story Chapter 6 Open Pick Up Summon! New Paladin Rate Up!',
     note: 'The featured Paladin will be added to the normal banner after the event in a later maintenance.',
     status: 'ended',
-    image: '2',
+    image: 'shaty-chapter-6',
   },
   // #1 - Vern Founding Festival (Dec 4 - Dec 18) - CURRENT
   {
@@ -105,7 +124,7 @@ export const bannerTimelineData = [
     description: 'Vern Founding Festival Event Summon! Limited-Time Paladin Rate Up!',
     note: 'First banner when the game released in Ero Lab!',
     status: 'current',
-    image: '1',
+    image: 'vern-founding-festival',
   },
 ];
 
@@ -124,7 +143,7 @@ export const seasonalCharactersData = [
         name: '[Mischievous Mermaid Princess] Lorelia',
         rarity: 'SSR',
         type: 'Attack',
-        image: 'Season_Character_1',
+        image: 'season-1-lorelia',
       },
     ],
     status: 'current',

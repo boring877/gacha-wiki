@@ -90,6 +90,7 @@ ID_TO_SLUG = {
     2070: 'festival-dress-up-natasha',         # 【Festive Costume】Natasha
     2071: 'kaguya',
     2072: 'shaty',
+    2076: 'ophelio',
 
     # Christmas & New Year Event Characters (correct IDs from txt)
     2095: 'queen-of-pies-and-cookies-aphrodia', # 【Queen of Pies and Cookies】Aphrodia

@@ -107,10 +107,12 @@ const limitBreakTyped: BonusLevelsType | null = stats?.limitBreak ? (stats.limit
 const gpAbilityTyped: BonusLevelsType | null = stats?.gpAbility ? (stats.gpAbility as BonusLevelsType) : null;
 const abilityGradeTyped: BonusLevelsType | null = stats?.abilityGrade ? (stats.abilityGrade as BonusLevelsType) : null;
 
-// Helper to calculate total bonuses
+// Helper to calculate total bonuses (excludes the 'total' key to avoid double counting)
 function calculateTotalBonuses(bonusData: BonusLevelsType): StatBonusType {
   const totals: StatBonusType = {};
-  Object.values(bonusData).forEach(bonuses => {
+  Object.entries(bonusData).forEach(([key, bonuses]) => {
+    // Skip the 'total' key - we calculate our own totals from individual levels
+    if (key === 'total') return;
     Object.entries(bonuses).forEach(([stat, value]) => {
       totals[stat] = (totals[stat] || 0) + value;
     });
@@ -136,8 +138,8 @@ const description = `${character.displayName || character.name} - ${character.ra
             characterId={character.characterId}
             alt={character.displayName || character.name || 'Character'}
             imageType="body"
-            width={400}
-            height={560}
+            width={800}
+            height={1120}
           />
         )}
       </div>
@@ -251,6 +253,9 @@ const description = `${character.displayName || character.name} - ${character.ra
   {stats && stats.baseStats && (
     <section class="bb-char-section">
       <h2 class="bb-char-section-title">Character Stats</h2>
+      <p class="bb-char-stats-note">
+        <strong>Note:</strong> The in-game stats display currently only includes Limit Break (up to LB4) and does not include Bond Level bonuses.
+      </p>
       <div class="bb-char-section-content"
         data-stats={JSON.stringify(stats.baseStats)}
         data-gp-ability={JSON.stringify(stats.gpAbility || {})}
@@ -360,7 +365,7 @@ const description = `${character.displayName || character.name} - ${character.ra
           <div class="bb-char-flat-stats">
             <div class="bb-char-flat-item">
               <span class="bb-char-flat-label">MP Charge:</span>
-              <span class="bb-char-flat-value">{stats.baseStats.mpCharge?.lv90 || 0}</span>
+              <span class="bb-char-flat-value" data-stat="mpCharge" data-base={stats.baseStats.mpCharge?.base} data-lv90={stats.baseStats.mpCharge?.lv90}>{stats.baseStats.mpCharge?.lv90 || 0}</span>
             </div>
             {(stats.baseStats.hpDrain?.lv90 || 0) > 0 && (
               <div class="bb-char-flat-item">
@@ -457,12 +462,22 @@ const description = `${character.displayName || character.name} - ${character.ra
                 </div>
               </div>
               <div class="bb-char-bonus-stats" id="passive-display">
-                {stats.passiveAbilities.map(passive => (
-                  <div class="bb-char-bonus-stat-row">
-                    <span class="bb-char-bonus-stat-name">{passive.stat}</span>
-                    <span class="bb-char-bonus-stat-value">+{passive.grades?.g10 || 0}</span>
-                  </div>
-                ))}
+                {stats.passiveAbilities.map(passive => {
+                  // Handle new format (array of grades) and old format (single stat)
+                  const statName = Array.isArray(passive.grades)
+                    ? passive.grades.find(g => g.grade === 10)?.stat || 'Unknown'
+                    : passive.stat;
+                  const statValue = Array.isArray(passive.grades)
+                    ? passive.grades.find(g => g.grade === 10)?.value || 0
+                    : passive.grades?.g10 || 0;
+
+                  return (
+                    <div class="bb-char-bonus-stat-row">
+                      <span class="bb-char-bonus-stat-name">{statName}</span>
+                      <span class="bb-char-bonus-stat-value">+{statValue}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -908,8 +923,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const passiveCheck = document.getElementById('passive-check');
   const passiveInput = document.getElementById('passive-input');
 
-  // Stat display elements
-  const statValues = document.querySelectorAll('.bb-char-stats-table-value[data-stat]');
+  // Stat display elements (includes both table values and flat values)
+  const statValues = document.querySelectorAll('.bb-char-stats-table-value[data-stat], .bb-char-flat-value[data-stat]');
 
   // Calculate stat at any level
   function calculateStatAtLevel(base, lv90, level) {
@@ -978,12 +993,97 @@ document.addEventListener('DOMContentLoaded', () => {
         'MP Charge': 'mpCharge',
         'HP Drain': 'hpDrain'
       };
-      const mappedStat = statMap[passive.stat];
-      if (mappedStat === stat && passive.grades && passive.grades[gKey]) {
-        total += passive.grades[gKey];
+
+      // Handle new format: grades is an array with per-grade stat types
+      if (Array.isArray(passive.grades)) {
+        // Use cumulative totals if available
+        const gradeData = passive.grades.find(g => g.grade === level);
+        if (gradeData && gradeData.cumulative) {
+          // Find the stat in cumulative totals
+          Object.entries(gradeData.cumulative).forEach(([statName, value]) => {
+            const mappedStat = statMap[statName];
+            if (mappedStat === stat) {
+              total += value;
+            }
+          });
+        } else {
+          // Fallback: calculate cumulative manually
+          passive.grades.forEach(g => {
+            if (g.grade <= level) {
+              const mappedStat = statMap[g.stat];
+              if (mappedStat === stat) {
+                total += g.value;
+              }
+            }
+          });
+        }
+      } else {
+        // Handle old format: grades is an object with single stat type
+        const mappedStat = statMap[passive.stat];
+        if (mappedStat === stat && passive.grades && passive.grades[gKey]) {
+          total += passive.grades[gKey];
+        }
       }
     });
     return total;
+  }
+
+  // Update passive abilities display
+  function updatePassiveDisplay() {
+    const passiveLevel = passiveCheck?.checked ? (parseInt(passiveInput?.value) || 10) : 0;
+    const passiveDisplay = document.getElementById('passive-display');
+    if (!passiveDisplay) return;
+
+    let html = '';
+    passiveAbilitiesData.forEach(passive => {
+      // Handle new format: grades is an array with per-grade stat types
+      if (Array.isArray(passive.grades)) {
+        // Calculate cumulative totals for all stat types up to current grade
+        const displayLevel = passiveLevel === 0 ? 10 : passiveLevel;
+        const currentGrade = passive.grades.find(g => g.grade === displayLevel);
+
+        if (currentGrade && currentGrade.cumulative) {
+          // Show all stats with their cumulative values
+          Object.entries(currentGrade.cumulative).forEach(([stat, value]) => {
+            if (value > 0 || displayLevel === 10) {
+              html += `
+                <div class="bb-char-bonus-stat-row">
+                  <span class="bb-char-bonus-stat-name">${stat}</span>
+                  <span class="bb-char-bonus-stat-value">+${passiveLevel === 0 ? 0 : value}</span>
+                </div>
+              `;
+            }
+          });
+        } else {
+          // Fallback: calculate cumulative manually
+          const totals = {};
+          passive.grades.forEach(g => {
+            if (g.grade <= displayLevel) {
+              totals[g.stat] = (totals[g.stat] || 0) + g.value;
+            }
+          });
+          Object.entries(totals).forEach(([stat, value]) => {
+            html += `
+              <div class="bb-char-bonus-stat-row">
+                <span class="bb-char-bonus-stat-name">${stat}</span>
+                <span class="bb-char-bonus-stat-value">+${passiveLevel === 0 ? 0 : value}</span>
+              </div>
+            `;
+          });
+        }
+      } else {
+        // Handle old format: grades is an object with single stat type
+        const statValue = passiveLevel === 0 ? 0 : (passive.grades?.[`g${passiveLevel}`] || 0);
+        html += `
+          <div class="bb-char-bonus-stat-row">
+            <span class="bb-char-bonus-stat-name">${passive.stat}</span>
+            <span class="bb-char-bonus-stat-value">+${statValue}</span>
+          </div>
+        `;
+      }
+    });
+
+    passiveDisplay.innerHTML = html;
   }
 
   // Update all stats
@@ -992,7 +1092,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const lbLevel = lbCheck?.checked ? (parseInt(lbInput?.value) || 0) : 0;
     const bondLevel = bondCheck?.checked ? (parseInt(bondInput?.value) || 0) : 0;
     const gradeLevel = gradeCheck?.checked ? (parseInt(gradeInput?.value) || 0) : 0;
-    const passiveLevel = passiveCheck?.checked ? (parseInt(passiveInput?.value) || 0) : 0;
+    const passiveLevel = passiveCheck?.checked ? (parseInt(passiveInput?.value) || 10) : 0;
+
+    // Update passive display
+    updatePassiveDisplay();
 
     statValues.forEach(el => {
       const stat = el.dataset.stat;

@@ -1,0 +1,127 @@
+---
+// Limited Time Challenges index page - lists all boss challenges
+import LimitedTimeChallengesLandingLayout from '../../../../layouts/busty-burst/LimitedTimeChallengesLandingLayout.astro';
+import { limitedTimeChallengesConfig } from '../../../../data/busty-burst/limited-time-challenges.js';
+import BossIcon from '../../../../components/busty-burst/BossIcon.astro';
+
+const { meta, challenges } = limitedTimeChallengesConfig;
+
+// Sort challenges: active first, then upcoming, then ended (most recent first)
+const sortedChallenges = [...challenges].sort((a, b) => {
+  const statusOrder = { active: 0, upcoming: 1, ended: 2 };
+  return statusOrder[a.status] - statusOrder[b.status];
+});
+
+// Get active challenge for banner
+const activeChallenge = challenges.find(c => c.status === 'active');
+
+// Generate dynamic keywords from boss names
+const bossKeywords = challenges.map(c => c.name.split(' ')[0]).filter(Boolean);
+const allKeywords = [...(meta.keywords || []), ...bossKeywords];
+---
+
+<LimitedTimeChallengesLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  showTitle={true}
+  keywords={allKeywords}
+>
+  <div class="bb-ltc-page-container">
+    <!-- Introduction -->
+    <div class="bb-ltc-intro">
+      <p class="bb-ltc-intro-text">
+        Limited Time Challenges are time-limited boss events where you compete to deal as much damage as possible within the time limit.
+        Each boss has unique mechanics, weaknesses, and resistances. Use this guide to optimize your team composition and maximize your damage!
+      </p>
+    </div>
+
+    <!-- Active Challenges -->
+    {sortedChallenges.filter(c => c.status === 'active').length > 0 && (
+      <section class="bb-ltc-content-section">
+        <h2 class="bb-ltc-section-title">Active Challenges</h2>
+        <div class="bb-ltc-grid">
+          {sortedChallenges.filter(c => c.status === 'active').map(challenge => (
+            <a href={`/guides/busty-burst/limited-time-challenges/${challenge.slug}`} class="bb-ltc-card">
+              <div class="bb-ltc-card-image">
+                <BossIcon fileName={challenge.bannerImage || challenge.bossIcon} alt={challenge.name} loading="eager" />
+              </div>
+              <div class="bb-ltc-card-info">
+                <h3 class="bb-ltc-card-name">{challenge.name}</h3>
+                <div class="bb-ltc-card-meta">
+                  <span>Lv. {challenge.level}</span>
+                  <span>•</span>
+                  <span>{challenge.timeLimit}s</span>
+                </div>
+                <div class="bb-ltc-badges">
+                  <span class="bb-ltc-status-badge" data-status={challenge.status}>{challenge.status}</span>
+                  <span class="bb-ltc-weakness-badge">Weak: {challenge.weakness.element}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Upcoming Challenges -->
+    {sortedChallenges.filter(c => c.status === 'upcoming').length > 0 && (
+      <section class="bb-ltc-content-section">
+        <h2 class="bb-ltc-section-title">Upcoming Challenges</h2>
+        <div class="bb-ltc-grid">
+          {sortedChallenges.filter(c => c.status === 'upcoming').map(challenge => (
+            <a href={`/guides/busty-burst/limited-time-challenges/${challenge.slug}`} class="bb-ltc-card">
+              <div class="bb-ltc-card-image">
+                <BossIcon fileName={challenge.bannerImage || challenge.bossIcon} alt={challenge.name} loading="lazy" />
+              </div>
+              <div class="bb-ltc-card-info">
+                <h3 class="bb-ltc-card-name">{challenge.name}</h3>
+                <div class="bb-ltc-card-meta">
+                  <span>Lv. {challenge.level}</span>
+                  <span>•</span>
+                  <span>{challenge.timeLimit}s</span>
+                </div>
+                <div class="bb-ltc-badges">
+                  <span class="bb-ltc-status-badge" data-status={challenge.status}>{challenge.status}</span>
+                  <span class="bb-ltc-weakness-badge">Weak: {challenge.weakness.element}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Past Challenges -->
+    <section class="bb-ltc-content-section">
+      <h2 class="bb-ltc-section-title">Past Challenges</h2>
+      {sortedChallenges.filter(c => c.status === 'ended').length > 0 ? (
+        <div class="bb-ltc-grid">
+          {sortedChallenges.filter(c => c.status === 'ended').map(challenge => (
+            <a href={`/guides/busty-burst/limited-time-challenges/${challenge.slug}`} class="bb-ltc-card">
+              <div class="bb-ltc-card-image">
+                <BossIcon fileName={challenge.bannerImage || challenge.bossIcon} alt={challenge.name} loading="lazy" />
+              </div>
+              <div class="bb-ltc-card-info">
+                <h3 class="bb-ltc-card-name">{challenge.name}</h3>
+                <div class="bb-ltc-card-meta">
+                  <span>Lv. {challenge.level}</span>
+                  <span>•</span>
+                  <span>{challenge.timeLimit}s</span>
+                </div>
+                <div class="bb-ltc-badges">
+                  <span class="bb-ltc-status-badge" data-status={challenge.status}>{challenge.status}</span>
+                  <span class="bb-ltc-weakness-badge">Weak: {challenge.weakness.element}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="bb-ltc-empty">
+          <p class="bb-ltc-empty-text">No past challenges yet.</p>
+        </div>
+      )}
+    </section>
+  </div>
+</LimitedTimeChallengesLandingLayout>

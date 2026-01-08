@@ -343,6 +343,21 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                           </div>
                         </div>
                       </div>
+
+                      <!-- Limited Time Challenge Timer Card -->
+                      {game.ltc && (
+                        <div class="timer-card ltc-card" id="ltcTimerCard" data-end={game.ltc.endDate}>
+                          <div class="timer-card-header">
+                            <div class="bb-timer-card-title">Limited Time Challenge</div>
+                          </div>
+                          <div class="launch-card-content">
+                            <div class="launch-counter">
+                              <div class="launch-days" id="ltcTime">--:--:--</div>
+                              <div class="launch-date">{game.ltc.name}</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

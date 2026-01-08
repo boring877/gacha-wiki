@@ -339,6 +339,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'DPS',
     tier: 'SS',
   },
+  {
+    id: 'ophelio',
+    characterId: 2076,
+    name: 'Ophelio',
+    fileName: 'Ophelio',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'DPS',
+    tier: 'A',
+  },
   // ========================================
   // R CHARACTERS
   // ========================================

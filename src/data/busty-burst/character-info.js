@@ -1125,6 +1125,38 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     },
   },
 
+  ophelio: {
+    slug: 'ophelio',
+    name: 'Ophelio',
+    displayName: 'Ophelio',
+    baseName: 'Ophelio',
+    title: null,
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'Attacker',
+    attackType: 'Magic',
+    position: { roman: 'III', number: 3 },
+    actionSpeed: 'Normal',
+    range: 400,
+    weaponType: 'Strike',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'Ophelio',
+    profile: {
+      height: '159cm',
+      bust: '106cm (M Cup)',
+      waist: '58cm',
+      hips: '87cm',
+    },
+    credits: {
+      illustration: { japanese: 'こみちぽた', romanized: 'Komichipota' },
+      voice: { japanese: '花宮楓', romanized: 'Hanamiya Kaede' },
+    },
+    obtain: {
+      type: 'permanent',
+      source: 'Standard Banner',
+    },
+  },
+
   // CHRISTMAS EVENT - Offering Cookies for the Holy Night (Dec 16 - Dec 30)
 
   'holy-night-succubus-yu-rima-elca': {

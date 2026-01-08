@@ -1,6 +1,6 @@
 // Character Stats Data for Busty Burst
-// Auto-generated from ALL_CHARACTER_STATS.js - 75 characters total
-// Includes: Base stats, Level 90 stats, Limit Break, GP Ability, Ability Grade, Passive Abilities
+// Auto-generated from CHARACTER_STATS.txt - 74 characters total
+// Includes: Base stats, Level 90 stats, 5 Passive Abilities, Limit Break, GP Ability, Ability Grade, Max Stats
 
 // Calculate stat at any level (linear interpolation)
 export function calculateStatAtLevel(base, lv90, level) {
@@ -64,11 +64,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 38, g3: 44, g4: 50, g5: 57, g6: 63, g7: 69, g8: 76, g9: 82, g10: 88 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 5 },
@@ -76,31 +87,35 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, matk: 121, block: 22, mpCharge: 7 },
       lb4: { hp: 772, matk: 135, accuracy: 17, block: 25 },
       lb5: { hp: 1458, matk: 277, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 4032, matk: 726, def: 11, mdef: 41, accuracy: 30, block: 83, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
-      lv1: { hpDrain: 2 },
+      lv1: { hpdrain: 2 },
       lv2: { matk: 40 },
-      lv3: { hpDrain: 3 },
+      lv3: { hpdrain: 3 },
       lv4: { matk: 80 },
-      lv5: { hpDrain: 2 },
+      lv5: { hpdrain: 2 },
       lv6: { matk: 80 },
-      lv7: { hpDrain: 2 },
+      lv7: { hpdrain: 2 },
       lv8: { matk: 80 },
-      lv9: { hpDrain: 2 },
+      lv9: { hpdrain: 2 },
       lv10: { matk: 80 },
+      total: { matk: 360, hpdrain: 11 },
     },
     abilityGrade: {
       g1: { matk: 25 },
-      g2: { hpDrain: 1 },
+      g2: { hpdrain: 1 },
       g3: { matk: 35 },
-      g4: { hpDrain: 1 },
+      g4: { hpdrain: 1 },
       g5: { matk: 45 },
-      g6: { hpDrain: 1 },
+      g6: { hpdrain: 1 },
       g7: { matk: 55 },
-      g8: { hpDrain: 1 },
+      g8: { hpdrain: 1 },
       g9: { matk: 65 },
-      g10: { hpDrain: 1 },
+      g10: { hpdrain: 1 },
+      total: { matk: 225, hpdrain: 5 },
     },
+    maxStats: { hp: 12607, atk: 896, matk: 2806, def: 125, mdef: 327, accuracy: 129, block: 248, physCrit: 198, magicCrit: 331, hpRegen: 299, mpRegen: 225, healPwr: 227, hpDrain: 44, mpCharge: 65, mpCostDown: 0 },
   },
 
   'magical-princess-luceria': {
@@ -130,11 +145,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 34, g2: 41, g3: 47, g4: 54, g5: 61, g6: 68, g7: 74, g8: 81, g9: 88, g10: 95 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 34, g2: 75, g3: 122, g4: 176, g5: 237, g6: 305, g7: 379, g8: 460, g9: 548, g10: 643 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 96, block: 17, mpCharge: 5 },
@@ -142,6 +168,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, matk: 130, block: 22, mpCharge: 7 },
       lb4: { hp: 772, matk: 145, accuracy: 17, block: 25 },
       lb5: { hp: 1587, matk: 277, def: 11, mdef: 41, healPwr: 31 },
+      total: { hp: 4161, matk: 759, def: 11, mdef: 41, accuracy: 30, block: 83, healPwr: 31, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { healPwr: 20 },
@@ -154,6 +181,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { healPwr: 25 },
       lv10: { matk: 80 },
+      total: { matk: 360, healPwr: 120 },
     },
     abilityGrade: {
       g1: { hp: 143 },
@@ -166,7 +194,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 9 },
       g9: { hp: 372 },
       g10: { healPwr: 11 },
+      total: { hp: 1286, healPwr: 39 },
     },
+    maxStats: { hp: 14022, atk: 963, matk: 2725, def: 125, mdef: 327, accuracy: 129, block: 248, physCrit: 120, magicCrit: 200, hpRegen: 299, mpRegen: 225, healPwr: 440, hpDrain: 0, mpCharge: 68, mpCostDown: 0 },
   },
 
   'golem-summoner-nerys': {
@@ -196,11 +226,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 312, g2: 375, g3: 437, g4: 499, g5: 562, g6: 624, g7: 687, g8: 749, g9: 812, g10: 874 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 33, g3: 39, g4: 44, g5: 50, g6: 55, g7: 61, g8: 66, g9: 72, g10: 78 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 15, g9: 17, g10: 18 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 312, g2: 687, g3: 1124, g4: 1623, g5: 2185, g6: 2809, g7: 3496, g8: 4245, g9: 5057, g10: 5931 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 61, g3: 100, g4: 144, g5: 194, g6: 249, g7: 310, g8: 376, g9: 448, g10: 526 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 890, atk: 79, block: 14, mpCharge: 6 },
@@ -208,6 +249,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1201, atk: 107, block: 18, mpCharge: 7 },
       lb4: { hp: 1334, atk: 118, accuracy: 17, block: 20 },
       lb5: { hp: 2521, atk: 224, def: 23, mdef: 6, healPwr: 25 },
+      total: { hp: 6969, atk: 619, def: 23, mdef: 6, accuracy: 30, block: 68, healPwr: 25, mpCharge: 13 },
     },
     gpAbility: {
       lv1: { mpCharge: 3 },
@@ -220,6 +262,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 80 },
+      total: { atk: 360, mpCharge: 13 },
     },
     abilityGrade: {
       g1: { physCrit: 10 },
@@ -232,7 +275,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 3 },
       g9: { physCrit: 26 },
       g10: { mpCharge: 4 },
+      total: { physCrit: 90, mpCharge: 14 },
     },
+    maxStats: { hp: 21795, atk: 2294, matk: 790, def: 187, mdef: 70, accuracy: 129, block: 203, physCrit: 575, magicCrit: 291, hpRegen: 518, mpRegen: 237, healPwr: 275, hpDrain: 0, mpCharge: 100, mpCostDown: 0 },
   },
 
   'mage-of-bastinton-sobrina': {
@@ -262,11 +307,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 264, g3: 308, g4: 352, g5: 396, g6: 440, g7: 484, g8: 529, g9: 573, g10: 617 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 30, g2: 36, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 77, g10: 83 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 484, g3: 792, g4: 1144, g5: 1540, g6: 1980, g7: 2464, g8: 2993, g9: 3566, g10: 4183 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 30, g2: 66, g3: 107, g4: 154, g5: 207, g6: 266, g7: 331, g8: 402, g9: 479, g10: 562 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 628, matk: 84, block: 15, mpCharge: 5 },
@@ -274,6 +330,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 847, matk: 114, block: 20, mpCharge: 7 },
       lb4: { hp: 941, matk: 127, accuracy: 17, block: 23 },
       lb5: { hp: 1778, matk: 239, def: 6, mdef: 23, healPwr: 21 },
+      total: { hp: 4916, matk: 661, def: 6, mdef: 23, accuracy: 30, block: 75, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 3 },
@@ -286,6 +343,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 80 },
+      total: { matk: 360, mpCharge: 13 },
     },
     abilityGrade: {
       g1: { magicCrit: 4 },
@@ -298,7 +356,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCostDown: 1 },
       g9: { magicCrit: 11 },
       g10: { mpCostDown: 1 },
+      total: { magicCrit: 38, mpCostDown: 5 },
     },
+    maxStats: { hp: 15376, atk: 843, matk: 2426, def: 70, mdef: 187, accuracy: 129, block: 225, physCrit: 120, magicCrit: 238, hpRegen: 365, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 81, mpCostDown: 5 },
   },
 
   'hypnotic-dancer-messeria': {
@@ -328,11 +388,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 201, g2: 242, g3: 282, g4: 322, g5: 363, g6: 403, g7: 443, g8: 483, g9: 524, g10: 564 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 28, g3: 33, g4: 37, g5: 42, g6: 47, g7: 51, g8: 56, g9: 61, g10: 65 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 12, g3: 14, g4: 16, g5: 18, g6: 20, g7: 22, g8: 24, g9: 27, g10: 29 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 201, g2: 443, g3: 725, g4: 1047, g5: 1410, g6: 1813, g7: 2256, g8: 2739, g9: 3263, g10: 3827 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 378, g10: 443 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 574, atk: 66, block: 17, mpCharge: 6 },
@@ -340,6 +411,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 775, atk: 90, block: 22, mpCharge: 8 },
       lb4: { hp: 861, atk: 100, accuracy: 17, block: 25 },
       lb5: { hp: 1626, atk: 188, def: 34, mdef: 18, healPwr: 29 },
+      total: { hp: 4496, atk: 520, def: 34, mdef: 18, accuracy: 30, block: 83, healPwr: 29, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { block: 3 },
@@ -352,6 +424,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { block: 3 },
       lv10: { mpCharge: 2 },
+      total: { block: 16, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { mpCharge: 2 },
@@ -364,7 +437,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 9 },
       g9: { mpCharge: 4 },
       g10: { healPwr: 11 },
+      total: { healPwr: 39, mpCharge: 14 },
     },
+    maxStats: { hp: 14062, atk: 1626, matk: 663, def: 486, mdef: 198, accuracy: 129, block: 264, physCrit: 331, magicCrit: 198, hpRegen: 334, mpRegen: 237, healPwr: 318, hpDrain: 0, mpCharge: 103, mpCostDown: 0 },
   },
 
   'pious-cleric-ishtovia': {
@@ -394,11 +469,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 289, g2: 347, g3: 405, g4: 462, g5: 520, g6: 578, g7: 636, g8: 694, g9: 751, g10: 809 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 32, g3: 37, g4: 43, g5: 48, g6: 53, g7: 59, g8: 64, g9: 69, g10: 75 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 289, g2: 636, g3: 1041, g4: 1503, g5: 2023, g6: 2601, g7: 3237, g8: 3931, g9: 4682, g10: 5491 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 824, matk: 76, block: 15, mpCharge: 5 },
@@ -406,6 +492,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1112, matk: 102, block: 20, mpCharge: 7 },
       lb4: { hp: 1236, matk: 114, accuracy: 17, block: 23 },
       lb5: { hp: 2334, matk: 215, def: 6, mdef: 23, healPwr: 34 },
+      total: { hp: 6453, matk: 594, def: 6, mdef: 23, accuracy: 30, block: 75, healPwr: 34, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -418,6 +505,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { healPwr: 25 },
       lv9: { mpCharge: 2 },
       lv10: { healPwr: 25 },
+      total: { healPwr: 120, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -430,7 +518,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 11 },
       g9: { mpCostDown: 1 },
       g10: { healPwr: 12 },
+      total: { healPwr: 44, mpCostDown: 5 },
     },
+    maxStats: { hp: 20181, atk: 758, matk: 1859, def: 70, mdef: 187, accuracy: 129, block: 225, physCrit: 198, magicCrit: 331, hpRegen: 480, mpRegen: 237, healPwr: 491, hpDrain: 0, mpCharge: 81, mpCostDown: 5 },
   },
 
   'theresia': {
@@ -460,11 +550,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 264, g3: 308, g4: 352, g5: 396, g6: 440, g7: 484, g8: 529, g9: 573, g10: 617 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 43, g3: 51, g4: 58, g5: 65, g6: 72, g7: 80, g8: 87, g9: 94, g10: 101 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 6, g6: 18, g7: 29, g8: 21, g9: 34, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 484, g3: 792, g4: 1144, g5: 1540, g6: 1980, g7: 2464, g8: 2993, g9: 3566, g10: 4183 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 628, matk: 103, block: 15, mpCharge: 6 },
@@ -472,6 +573,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 847, matk: 139, block: 20, mpCharge: 9 },
       lb4: { hp: 941, matk: 155, accuracy: 17, block: 23 },
       lb5: { hp: 1778, matk: 344, def: 6, mdef: 23, healPwr: 21 },
+      total: { hp: 4916, matk: 860, def: 6, mdef: 23, accuracy: 30, block: 75, healPwr: 21, mpCharge: 15 },
     },
     gpAbility: {
       lv1: { magicCrit: 20 },
@@ -484,6 +586,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { magicCrit: 30 },
       lv10: { matk: 80 },
+      total: { matk: 360, magicCrit: 140 },
     },
     abilityGrade: {
       g1: { matk: 29 },
@@ -496,7 +599,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 62 },
       g9: { matk: 74 },
       g10: { matk: 72 },
+      total: { matk: 516 },
     },
+    maxStats: { hp: 15376, atk: 1031, matk: 3454, def: 70, mdef: 187, accuracy: 129, block: 225, physCrit: 51, magicCrit: 225, hpRegen: 365, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 85, mpCostDown: 0 },
   },
 
   'soltina': {
@@ -526,11 +631,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 126, g2: 152, g3: 177, g4: 202, g5: 227, g6: 253, g7: 278, g8: 303, g9: 329, g10: 354 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 30, g2: 36, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 77, g10: 83 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 19, g3: 22, g4: 25, g5: 28, g6: 31, g7: 34, g8: 37, g9: 40, g10: 43 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 126, g2: 278, g3: 455, g4: 657, g5: 884, g6: 1137, g7: 1415, g8: 1718, g9: 2047, g10: 2401 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 30, g2: 66, g3: 107, g4: 154, g5: 207, g6: 266, g7: 331, g8: 402, g9: 479, g10: 562 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 360, atk: 84, block: 17, mpCharge: 6 },
@@ -538,6 +654,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 486, atk: 114, block: 22, mpCharge: 8 },
       lb4: { hp: 540, atk: 127, accuracy: 17, block: 25 },
       lb5: { hp: 1020, atk: 260, def: 38, mdef: 27, healPwr: 21 },
+      total: { hp: 2820, atk: 682, def: 38, mdef: 27, accuracy: 30, block: 83, healPwr: 21, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { physCrit: 20 },
@@ -550,6 +667,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { block: 3 },
       lv9: { physCrit: 30 },
       lv10: { block: 3 },
+      total: { block: 16, physCrit: 140 },
     },
     abilityGrade: {
       g1: { atk: 23 },
@@ -562,7 +680,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 9 },
       g9: { atk: 61 },
       g10: { physCrit: 11 },
+      total: { atk: 211, physCrit: 39 },
     },
+    maxStats: { hp: 8822, atk: 2298, matk: 843, def: 724, mdef: 301, accuracy: 129, block: 264, physCrit: 379, magicCrit: 120, hpRegen: 210, mpRegen: 225, healPwr: 227, hpDrain: 0, mpCharge: 75, mpCostDown: 0 },
   },
 
   'artia': {
@@ -592,11 +712,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 249, g2: 299, g3: 349, g4: 399, g5: 449, g6: 499, g7: 549, g8: 599, g9: 648, g10: 698 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 29, g3: 34, g4: 39, g5: 44, g6: 49, g7: 54, g8: 59, g9: 64, g10: 69 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 12, g3: 14, g4: 16, g5: 18, g6: 20, g7: 22, g8: 24, g9: 27, g10: 29 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 249, g2: 548, g3: 897, g4: 1296, g5: 1745, g6: 2244, g7: 2793, g8: 3392, g9: 4040, g10: 4738 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 54, g3: 88, g4: 127, g5: 171, g6: 220, g7: 274, g8: 333, g9: 397, g10: 466 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 711, atk: 70, block: 17, mpCharge: 7 },
@@ -604,6 +735,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 960, atk: 94, block: 22, mpCharge: 10 },
       lb4: { hp: 1066, atk: 105, accuracy: 17, block: 25 },
       lb5: { hp: 2221, atk: 198, def: 64, mdef: 18, healPwr: 26 },
+      total: { hp: 5775, atk: 547, def: 64, mdef: 18, accuracy: 30, block: 83, healPwr: 26, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { block: 3 },
@@ -616,6 +748,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 450 },
       lv9: { block: 3 },
       lv10: { hp: 450 },
+      total: { hp: 2100, block: 16 },
     },
     abilityGrade: {
       g1: { hp: 197 },
@@ -628,7 +761,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { block: 10 },
       g9: { hp: 513 },
       g10: { block: 12 },
+      total: { hp: 1775, block: 42 },
     },
+    maxStats: { hp: 21495, atk: 1710, matk: 698, def: 516, mdef: 198, accuracy: 129, block: 306, physCrit: 331, magicCrit: 198, hpRegen: 414, mpRegen: 237, healPwr: 276, hpDrain: 0, mpCharge: 96, mpCostDown: 0 },
   },
 
   'the-dark-knight': {
@@ -658,11 +793,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 230, g3: 268, g4: 306, g5: 345, g6: 383, g7: 421, g8: 460, g9: 498, g10: 536 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 45, g2: 54, g3: 63, g4: 72, g5: 81, g6: 90, g7: 100, g8: 109, g9: 118, g10: 127 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 6, g6: 18, g7: 29, g8: 21, g9: 34, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 421, g3: 689, g4: 995, g5: 1340, g6: 1723, g7: 2144, g8: 2604, g9: 3102, g10: 3638 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 45, g2: 99, g3: 162, g4: 234, g5: 315, g6: 405, g7: 505, g8: 614, g9: 732, g10: 859 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 546, matk: 129, block: 15, mpCharge: 6 },
@@ -670,6 +816,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 737, matk: 174, block: 20, mpCharge: 8 },
       lb4: { hp: 819, matk: 193, accuracy: 17, block: 23 },
       lb5: { hp: 1546, matk: 397, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 4276, matk: 1041, def: 11, mdef: 41, accuracy: 30, block: 75, healPwr: 21, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { magicCrit: 20 },
@@ -682,6 +829,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { magicCrit: 30 },
       lv10: { matk: 80 },
+      total: { matk: 360, magicCrit: 140 },
     },
     abilityGrade: {
       g1: { accuracy: 3 },
@@ -694,7 +842,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 77 },
       g9: { accuracy: 7 },
       g10: { matk: 90 },
+      total: { matk: 322, accuracy: 25 },
     },
+    maxStats: { hp: 13371, atk: 1288, matk: 3871, def: 125, mdef: 327, accuracy: 154, block: 225, physCrit: 51, magicCrit: 225, hpRegen: 317, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 81, mpCostDown: 0 },
   },
 
   'frey': {
@@ -724,11 +874,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 273, g2: 327, g3: 382, g4: 436, g5: 491, g6: 545, g7: 600, g8: 654, g9: 709, g10: 763 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 32, g3: 37, g4: 43, g5: 48, g6: 53, g7: 59, g8: 64, g9: 69, g10: 75 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 273, g2: 600, g3: 982, g4: 1418, g5: 1909, g6: 2454, g7: 3054, g8: 3708, g9: 4417, g10: 5180 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 777, atk: 76, block: 17, mpCharge: 8 },
@@ -736,6 +897,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1048, atk: 102, block: 22, mpCharge: 10 },
       lb4: { hp: 1165, atk: 114, accuracy: 17, block: 25 },
       lb5: { hp: 2395, atk: 215, def: 23, mdef: 6, healPwr: 41 },
+      total: { hp: 6278, atk: 594, def: 23, mdef: 6, accuracy: 30, block: 83, healPwr: 41, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { healPwr: 20 },
@@ -748,6 +910,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { healPwr: 25 },
       lv10: { mpCharge: 2 },
+      total: { healPwr: 120, mpCharge: 13 },
     },
     abilityGrade: {
       g1: { hp: 216 },
@@ -760,7 +923,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 12 },
       g9: { hp: 561 },
       g10: { healPwr: 14 },
+      total: { hp: 1942, healPwr: 50 },
     },
+    maxStats: { hp: 21163, atk: 1859, matk: 758, def: 187, mdef: 70, accuracy: 129, block: 248, physCrit: 331, magicCrit: 198, hpRegen: 452, mpRegen: 249, healPwr: 548, hpDrain: 0, mpCharge: 113, mpCostDown: 0 },
   },
 
   'gemini': {
@@ -790,11 +955,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 230, g3: 268, g4: 306, g5: 345, g6: 383, g7: 421, g8: 460, g9: 498, g10: 536 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 24, g3: 28, g4: 32, g5: 36, g6: 40, g7: 44, g8: 48, g9: 52, g10: 56 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 11, g3: 12, g4: 14, g5: 16, g6: 18, g7: 19, g8: 21, g9: 23, g10: 25 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 421, g3: 689, g4: 995, g5: 1340, g6: 1723, g7: 2144, g8: 2604, g9: 3102, g10: 3638 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 57, block: 15, mpCharge: 5 },
@@ -802,6 +978,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 737, atk: 77, block: 20, mpCharge: 7 },
       lb4: { hp: 819, atk: 86, accuracy: 17, block: 23 },
       lb5: { hp: 1546, atk: 196, def: 50, mdef: 11, healPwr: 21 },
+      total: { hp: 4276, atk: 482, def: 50, mdef: 11, accuracy: 30, block: 75, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { accuracy: 3 },
@@ -814,6 +991,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { accuracy: 3 },
       lv10: { atk: 80 },
+      total: { atk: 360, accuracy: 16 },
     },
     abilityGrade: {
       g1: { atk: 16 },
@@ -826,7 +1004,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 30 },
       g9: { atk: 41 },
       g10: { physCrit: 35 },
+      total: { atk: 143, physCrit: 125 },
     },
+    maxStats: { hp: 13371, atk: 1937, matk: 571, def: 336, mdef: 125, accuracy: 145, block: 225, physCrit: 790, magicCrit: 398, hpRegen: 317, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 70, mpCostDown: 0 },
   },
 
   'estiriel': {
@@ -856,11 +1036,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 184, g3: 215, g4: 246, g5: 276, g6: 307, g7: 338, g8: 368, g9: 399, g10: 430 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 52, g6: 58, g7: 64, g8: 70, g9: 76, g10: 82 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 10, g2: 12, g3: 14, g4: 16, g5: 18, g6: 20, g7: 22, g8: 24, g9: 27, g10: 29 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 15, g9: 17, g10: 18 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 337, g3: 552, g4: 798, g5: 1074, g6: 1381, g7: 1719, g8: 2087, g9: 2486, g10: 2916 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 204, g6: 262, g7: 326, g8: 396, g9: 472, g10: 554 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 437, matk: 83, block: 17, mpCharge: 8 },
@@ -868,6 +1059,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 590, matk: 112, block: 22, mpCharge: 10 },
       lb4: { hp: 656, matk: 124, accuracy: 17, block: 25 },
       lb5: { hp: 1239, matk: 256, def: 18, mdef: 64, healPwr: 25 },
+      total: { hp: 3425, matk: 670, def: 18, mdef: 64, accuracy: 30, block: 83, healPwr: 25, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { block: 3 },
@@ -880,6 +1072,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { block: 3 },
       lv10: { mpCharge: 2 },
+      total: { block: 16, mpCharge: 13 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -892,7 +1085,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 50 },
       g9: { mpCostDown: 1 },
       g10: { matk: 58 },
+      total: { matk: 207, mpCostDown: 5 },
     },
+    maxStats: { hp: 10713, atk: 830, matk: 2259, def: 198, mdef: 516, accuracy: 129, block: 264, physCrit: 291, magicCrit: 485, hpRegen: 254, mpRegen: 237, healPwr: 275, hpDrain: 0, mpCharge: 113, mpCostDown: 5 },
   },
 
   'hildis': {
@@ -922,11 +1117,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 238, g2: 285, g3: 333, g4: 381, g5: 428, g6: 476, g7: 523, g8: 571, g9: 618, g10: 666 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 24, g3: 28, g4: 32, g5: 36, g6: 40, g7: 44, g8: 48, g9: 52, g10: 56 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 11, g3: 12, g4: 14, g5: 16, g6: 18, g7: 19, g8: 21, g9: 23, g10: 25 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 4, g6: 18, g7: 26, g8: 21, g9: 31, g10: 6 } },
+      { slot: 1, stat: 'HP', grades: { g1: 238, g2: 523, g3: 856, g4: 1237, g5: 1665, g6: 2141, g7: 2664, g8: 3235, g9: 3853, g10: 4519 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 10 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 678, atk: 57, block: 14, mpCharge: 4 },
@@ -934,6 +1140,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 915, atk: 77, block: 18, mpCharge: 6 },
       lb4: { hp: 1017, atk: 86, accuracy: 17, block: 20 },
       lb5: { hp: 2090, atk: 176, def: 23, mdef: 6, healPwr: 21 },
+      total: { hp: 5479, atk: 462, def: 23, mdef: 6, accuracy: 30, block: 68, healPwr: 21, mpCharge: 10 },
     },
     gpAbility: {
       lv1: { hp: 300 },
@@ -946,6 +1153,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { hp: 450 },
       lv10: { atk: 80 },
+      total: { hp: 2100, atk: 360 },
     },
     abilityGrade: {
       g1: { atk: 16 },
@@ -958,7 +1166,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 407 },
       g9: { atk: 41 },
       g10: { hp: 474 },
+      total: { hp: 1694, atk: 143 },
     },
+    maxStats: { hp: 20569, atk: 1917, matk: 571, def: 187, mdef: 70, accuracy: 129, block: 203, physCrit: 665, magicCrit: 398, hpRegen: 394, mpRegen: 225, healPwr: 227, hpDrain: 0, mpCharge: 55, mpCostDown: 0 },
   },
 
   'luca': {
@@ -988,11 +1198,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 230, g3: 268, g4: 306, g5: 345, g6: 383, g7: 421, g8: 460, g9: 498, g10: 536 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 28, g3: 33, g4: 37, g5: 42, g6: 47, g7: 52, g8: 56, g9: 61, g10: 66 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 11, g3: 12, g4: 14, g5: 16, g6: 18, g7: 19, g8: 21, g9: 23, g10: 25 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 421, g3: 689, g4: 995, g5: 1340, g6: 1723, g7: 2144, g8: 2604, g9: 3102, g10: 3638 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 262, g8: 318, g9: 379, g10: 445 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 67, block: 15, mpCharge: 5 },
@@ -1000,6 +1221,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 737, atk: 90, block: 20, mpCharge: 7 },
       lb4: { hp: 819, atk: 100, accuracy: 17, block: 23 },
       lb5: { hp: 1546, atk: 189, def: 47, mdef: 11, healPwr: 21 },
+      total: { hp: 4276, atk: 523, def: 47, mdef: 11, accuracy: 30, block: 75, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { accuracy: 3 },
@@ -1012,6 +1234,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { accuracy: 3 },
       lv10: { atk: 80 },
+      total: { atk: 360, accuracy: 16 },
     },
     abilityGrade: {
       g1: { mpCharge: 1 },
@@ -1024,7 +1247,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 15 },
       g9: { mpCharge: 4 },
       g10: { def: 17 },
+      total: { def: 61, mpCharge: 12 },
     },
+    maxStats: { hp: 13371, atk: 1994, matk: 666, def: 394, mdef: 125, accuracy: 145, block: 225, physCrit: 665, magicCrit: 398, hpRegen: 317, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 82, mpCostDown: 0 },
   },
 
   'marina': {
@@ -1054,11 +1279,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 237, g2: 284, g3: 332, g4: 379, g5: 427, g6: 474, g7: 521, g8: 569, g9: 616, g10: 664 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 28, g3: 33, g4: 37, g5: 42, g6: 47, g7: 51, g8: 56, g9: 61, g10: 65 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 4, g6: 18, g7: 32, g8: 21, g9: 38, g10: 6 } },
+      { slot: 1, stat: 'HP', grades: { g1: 237, g2: 521, g3: 853, g4: 1232, g5: 1659, g6: 2133, g7: 2654, g8: 3223, g9: 3839, g10: 4503 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 378, g10: 443 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 675, atk: 66, block: 17, mpCharge: 4 },
@@ -1066,6 +1302,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 912, atk: 90, block: 22, mpCharge: 6 },
       lb4: { hp: 1013, atk: 100, accuracy: 17, block: 25 },
       lb5: { hp: 1914, atk: 188, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 5291, atk: 520, def: 41, mdef: 11, accuracy: 30, block: 83, healPwr: 21, mpCharge: 10 },
     },
     gpAbility: {
       lv1: { mpCostDown: 3 },
@@ -1078,6 +1315,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { mpCostDown: 1 },
       lv10: { mpCharge: 2 },
+      total: { mpCharge: 13, mpCostDown: 7 },
     },
     abilityGrade: {
       g1: { mpCharge: 1 },
@@ -1090,7 +1328,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpRegen: 11 },
       g9: { mpCharge: 3 },
       g10: { mpRegen: 13 },
+      total: { mpRegen: 47, mpCharge: 11 },
     },
+    maxStats: { hp: 16546, atk: 1626, matk: 663, def: 327, mdef: 125, accuracy: 129, block: 248, physCrit: 331, magicCrit: 198, hpRegen: 393, mpRegen: 296, healPwr: 227, hpDrain: 0, mpCharge: 83, mpCostDown: 7 },
   },
 
   'nora': {
@@ -1120,11 +1360,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 205, g2: 246, g3: 288, g4: 329, g5: 370, g6: 411, g7: 452, g8: 493, g9: 534, g10: 575 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 54, g7: 60, g8: 65, g9: 71, g10: 76 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 19, g3: 22, g4: 25, g5: 28, g6: 31, g7: 34, g8: 37, g9: 40, g10: 43 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 205, g2: 451, g3: 739, g4: 1068, g5: 1438, g6: 1849, g7: 2301, g8: 2794, g9: 3328, g10: 3903 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 245, g7: 305, g8: 370, g9: 441, g10: 517 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 585, atk: 78, block: 17, mpCharge: 7 },
@@ -1132,6 +1383,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 790, atk: 105, block: 22, mpCharge: 10 },
       lb4: { hp: 878, atk: 116, accuracy: 17, block: 25 },
       lb5: { hp: 1658, atk: 225, def: 99, mdef: 28, healPwr: 25 },
+      total: { hp: 4584, atk: 613, def: 99, mdef: 28, accuracy: 30, block: 83, healPwr: 25, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { block: 3 },
@@ -1144,6 +1396,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 450 },
       lv9: { block: 3 },
       lv10: { hp: 450 },
+      total: { hp: 2100, block: 16 },
     },
     abilityGrade: {
       g1: { accuracy: 3 },
@@ -1156,7 +1409,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hpRegen: 18 },
       g9: { accuracy: 7 },
       g10: { hpRegen: 20 },
+      total: { accuracy: 25, hpRegen: 74 },
     },
+    maxStats: { hp: 16439, atk: 1906, matk: 775, def: 785, mdef: 302, accuracy: 154, block: 264, physCrit: 331, magicCrit: 198, hpRegen: 414, mpRegen: 237, healPwr: 275, hpDrain: 0, mpCharge: 96, mpCostDown: 0 },
   },
 
   'meinias': {
@@ -1186,11 +1441,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 230, g2: 276, g3: 322, g4: 368, g5: 414, g6: 460, g7: 506, g8: 551, g9: 597, g10: 643 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 36, g2: 43, g3: 51, g4: 58, g5: 65, g6: 72, g7: 80, g8: 87, g9: 94, g10: 101 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 5, g6: 18, g7: 23, g8: 21, g9: 27, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 230, g2: 506, g3: 828, g4: 1196, g5: 1610, g6: 2070, g7: 2576, g8: 3127, g9: 3724, g10: 4367 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 655, atk: 103, block: 12, mpCharge: 5 },
@@ -1198,6 +1464,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 884, atk: 139, block: 16, mpCharge: 7 },
       lb4: { hp: 982, atk: 155, accuracy: 17, block: 18 },
       lb5: { hp: 1856, atk: 292, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 5130, atk: 808, def: 41, mdef: 11, accuracy: 30, block: 60, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCostDown: 3 },
@@ -1210,6 +1477,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { mpCostDown: 1 },
       lv10: { mpCharge: 2 },
+      total: { mpCharge: 13, mpCostDown: 7 },
     },
     abilityGrade: {
       g1: { mpCharge: 1 },
@@ -1222,7 +1490,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 3 },
       g9: { mpCharge: 4 },
       g10: { mpCharge: 3 },
+      total: { mpCharge: 23 },
     },
+    maxStats: { hp: 16045, atk: 2526, matk: 1031, def: 327, mdef: 125, accuracy: 129, block: 180, physCrit: 85, magicCrit: 51, hpRegen: 381, mpRegen: 249, healPwr: 227, hpDrain: 0, mpCharge: 106, mpCostDown: 7 },
   },
 
   'yu-lima-elka': {
@@ -1252,11 +1522,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 437, g2: 524, g3: 612, g4: 699, g5: 786, g6: 874, g7: 961, g8: 1049, g9: 1136, g10: 1223 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 34, g3: 39, g4: 45, g5: 51, g6: 56, g7: 62, g8: 68, g9: 73, g10: 79 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 2, g2: 2, g3: 2, g4: 3, g5: 3, g6: 3, g7: 4, g8: 4, g9: 4, g10: 5 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 437, g2: 961, g3: 1573, g4: 2272, g5: 3058, g6: 3932, g7: 4893, g8: 5942, g9: 7078, g10: 8301 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 62, g3: 101, g4: 146, g5: 197, g6: 253, g7: 315, g8: 383, g9: 456, g10: 535 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 2, g2: 4, g3: 6, g4: 9, g5: 12, g6: 15, g7: 19, g8: 23, g9: 27, g10: 32 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 1245, atk: 80, block: 14, mpCharge: 7 },
@@ -1264,18 +1545,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1681, atk: 108, block: 18, mpCharge: 10 },
       lb4: { hp: 1868, atk: 121, accuracy: 17, block: 20 },
       lb5: { hp: 3899, atk: 237, def: 10, mdef: 3, healPwr: 25 },
+      total: { hp: 10125, atk: 638, def: 10, mdef: 3, accuracy: 30, block: 68, healPwr: 25, mpCharge: 17 },
     },
     gpAbility: {
-      lv1: { hpDrain: 2 },
+      lv1: { hpdrain: 2 },
       lv2: { hp: 300 },
-      lv3: { hpDrain: 3 },
+      lv3: { hpdrain: 3 },
       lv4: { hp: 450 },
-      lv5: { hpDrain: 2 },
+      lv5: { hpdrain: 2 },
       lv6: { hp: 450 },
-      lv7: { hpDrain: 2 },
+      lv7: { hpdrain: 2 },
       lv8: { hp: 450 },
-      lv9: { hpDrain: 2 },
+      lv9: { hpdrain: 2 },
       lv10: { hp: 450 },
+      total: { hp: 2100, hpdrain: 11 },
     },
     abilityGrade: {
       g1: { hp: 346 },
@@ -1288,7 +1571,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { accuracy: 5 },
       g9: { hp: 899 },
       g10: { accuracy: 6 },
+      total: { hp: 3113, accuracy: 23 },
     },
+    maxStats: { hp: 36089, atk: 1976, matk: 802, def: 80, mdef: 31, accuracy: 152, block: 203, physCrit: 85, magicCrit: 51, hpRegen: 725, mpRegen: 237, healPwr: 275, hpDrain: 41, mpCharge: 96, mpCostDown: 0 },
   },
 
   'stenlina': {
@@ -1318,11 +1603,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 251, g2: 302, g3: 352, g4: 402, g5: 452, g6: 503, g7: 553, g8: 603, g9: 653, g10: 704 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 20, g2: 24, g3: 28, g4: 32, g5: 36, g6: 40, g7: 44, g8: 48, g9: 52, g10: 56 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 251, g2: 553, g3: 905, g4: 1307, g5: 1759, g6: 2262, g7: 2815, g8: 3418, g9: 4071, g10: 4775 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 716, matk: 57, block: 15, mpCharge: 5 },
@@ -1330,6 +1626,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 967, matk: 77, block: 20, mpCharge: 7 },
       lb4: { hp: 1074, matk: 85, accuracy: 17, block: 23 },
       lb5: { hp: 1745, matk: 178, def: 11, mdef: 41, healPwr: 25 },
+      total: { hp: 5326, matk: 462, def: 11, mdef: 41, accuracy: 30, block: 75, healPwr: 25, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -1342,6 +1639,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 80 },
+      total: { matk: 360, mpCharge: 9 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -1354,7 +1652,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { magicCrit: 15 },
       g9: { mpCostDown: 1 },
       g10: { magicCrit: 17 },
+      total: { magicCrit: 61, mpCostDown: 5 },
     },
+    maxStats: { hp: 14421, atk: 672, matk: 1942, def: 125, mdef: 327, accuracy: 129, block: 225, physCrit: 198, magicCrit: 392, hpRegen: 317, mpRegen: 237, healPwr: 275, hpDrain: 0, mpCharge: 79, mpCostDown: 5 },
   },
 
   'hisara': {
@@ -1384,11 +1684,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 208, g2: 249, g3: 291, g4: 332, g5: 374, g6: 415, g7: 457, g8: 498, g9: 540, g10: 581 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 32, g2: 38, g3: 44, g4: 51, g5: 57, g6: 63, g7: 70, g8: 76, g9: 82, g10: 89 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 4, g6: 18, g7: 32, g8: 21, g9: 38, g10: 6 } },
+      { slot: 1, stat: 'HP', grades: { g1: 208, g2: 457, g3: 748, g4: 1080, g5: 1454, g6: 1869, g7: 2326, g8: 2824, g9: 3364, g10: 3945 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 32, g2: 70, g3: 114, g4: 165, g5: 222, g6: 285, g7: 355, g8: 431, g9: 513, g10: 602 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 592, atk: 90, block: 17, mpCharge: 4 },
@@ -1396,6 +1707,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 799, atk: 122, block: 22, mpCharge: 6 },
       lb4: { hp: 888, atk: 135, accuracy: 17, block: 25 },
       lb5: { hp: 1677, atk: 256, def: 23, mdef: 3, healPwr: 21 },
+      total: { hp: 4636, atk: 707, def: 23, mdef: 3, accuracy: 30, block: 83, healPwr: 21, mpCharge: 10 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -1408,6 +1720,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 80 },
+      total: { atk: 360, mpCharge: 10 },
     },
     abilityGrade: {
       g1: { mpCharge: 1 },
@@ -1420,7 +1733,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpRegen: 11 },
       g9: { mpCharge: 3 },
       g10: { mpRegen: 13 },
+      total: { mpRegen: 47, mpCharge: 10 },
     },
+    maxStats: { hp: 14497, atk: 2570, matk: 902, def: 187, mdef: 67, accuracy: 129, block: 248, physCrit: 85, magicCrit: 51, hpRegen: 344, mpRegen: 296, healPwr: 227, hpDrain: 0, mpCharge: 76, mpCostDown: 0 },
   },
 
   'bianca': {
@@ -1450,11 +1765,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 230, g3: 268, g4: 306, g5: 345, g6: 383, g7: 421, g8: 460, g9: 498, g10: 536 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 33, g3: 38, g4: 43, g5: 49, g6: 54, g7: 60, g8: 65, g9: 71, g10: 76 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 4, g6: 18, g7: 29, g8: 21, g9: 34, g10: 6 } },
+      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 421, g3: 689, g4: 995, g5: 1340, g6: 1723, g7: 2144, g8: 2604, g9: 3102, g10: 3638 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 141, g5: 190, g6: 244, g7: 304, g8: 369, g9: 440, g10: 516 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 10 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 77, block: 15, mpCharge: 4 },
@@ -1462,6 +1788,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 737, atk: 104, block: 20, mpCharge: 5 },
       lb4: { hp: 819, atk: 116, accuracy: 17, block: 23 },
       lb5: { hp: 1546, atk: 258, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 4276, atk: 644, def: 41, mdef: 11, accuracy: 30, block: 75, healPwr: 21, mpCharge: 9 },
     },
     gpAbility: {
       lv1: { physCrit: 20 },
@@ -1474,6 +1801,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { physCrit: 30 },
       lv10: { atk: 80 },
+      total: { atk: 360, physCrit: 140 },
     },
     abilityGrade: {
       g1: { atk: 21 },
@@ -1486,7 +1814,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { atk: 46 },
       g9: { atk: 56 },
       g10: { atk: 54 },
+      total: { atk: 386 },
     },
+    maxStats: { hp: 13371, atk: 2678, matk: 773, def: 327, mdef: 125, accuracy: 129, block: 225, physCrit: 225, magicCrit: 51, hpRegen: 317, mpRegen: 225, healPwr: 227, hpDrain: 0, mpCharge: 53, mpCostDown: 0 },
   },
 
   'natasha': {
@@ -1516,11 +1846,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 205, g2: 246, g3: 288, g4: 329, g5: 370, g6: 411, g7: 452, g8: 493, g9: 534, g10: 575 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 19, g2: 23, g3: 27, g4: 31, g5: 34, g6: 38, g7: 42, g8: 46, g9: 50, g10: 53 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 19, g3: 22, g4: 25, g5: 28, g6: 31, g7: 34, g8: 37, g9: 40, g10: 43 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 205, g2: 451, g3: 739, g4: 1068, g5: 1438, g6: 1849, g7: 2301, g8: 2794, g9: 3328, g10: 3903 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 19, g2: 42, g3: 69, g4: 100, g5: 134, g6: 172, g7: 214, g8: 260, g9: 310, g10: 363 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 585, atk: 54, block: 17, mpCharge: 6 },
@@ -1528,6 +1869,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 790, atk: 73, block: 22, mpCharge: 8 },
       lb4: { hp: 878, atk: 82, accuracy: 17, block: 25 },
       lb5: { hp: 1658, atk: 154, def: 128, mdef: 27, healPwr: 34 },
+      total: { hp: 4584, atk: 426, def: 128, mdef: 27, accuracy: 30, block: 83, healPwr: 34, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { hp: 300 },
@@ -1540,6 +1882,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { def: 30 },
       lv9: { hp: 450 },
       lv10: { def: 30 },
+      total: { hp: 2100, def: 140 },
     },
     abilityGrade: {
       g1: { def: 16 },
@@ -1552,7 +1895,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 35 },
       g9: { def: 43 },
       g10: { def: 41 },
+      total: { def: 294 },
     },
+    maxStats: { hp: 16439, atk: 1331, matk: 542, def: 1248, mdef: 301, accuracy: 129, block: 248, physCrit: 331, magicCrit: 198, hpRegen: 340, mpRegen: 237, healPwr: 371, hpDrain: 0, mpCharge: 75, mpCostDown: 0 },
   },
 
   'noble-succubus-empress-shamshel': {
@@ -1582,11 +1927,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 38, g3: 44, g4: 50, g5: 57, g6: 63, g7: 69, g8: 76, g9: 82, g10: 88 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 7 },
@@ -1594,18 +1950,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, matk: 121, block: 22, mpCharge: 10 },
       lb4: { hp: 772, matk: 135, accuracy: 17, block: 25 },
       lb5: { hp: 1458, matk: 277, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 4032, matk: 726, def: 11, mdef: 41, accuracy: 30, block: 83, healPwr: 21, mpCharge: 17 },
     },
     gpAbility: {
-      lv1: { hpDrain: 2 },
+      lv1: { hpdrain: 2 },
       lv2: { matk: 40 },
-      lv3: { hpDrain: 3 },
+      lv3: { hpdrain: 3 },
       lv4: { matk: 80 },
-      lv5: { hpDrain: 2 },
+      lv5: { hpdrain: 2 },
       lv6: { matk: 80 },
-      lv7: { hpDrain: 2 },
+      lv7: { hpdrain: 2 },
       lv8: { matk: 80 },
-      lv9: { hpDrain: 2 },
+      lv9: { hpdrain: 2 },
       lv10: { matk: 80 },
+      total: { matk: 360, hpdrain: 11 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -1618,7 +1976,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 54 },
       g9: { mpCostDown: 1 },
       g10: { matk: 63 },
+      total: { matk: 225, mpCostDown: 5 },
     },
+    maxStats: { hp: 12607, atk: 896, matk: 2806, def: 125, mdef: 327, accuracy: 129, block: 248, physCrit: 198, magicCrit: 331, hpRegen: 299, mpRegen: 225, healPwr: 227, hpDrain: 37, mpCharge: 94, mpCostDown: 5 },
   },
 
   'elegant-portrait-aysis': {
@@ -1648,11 +2008,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 280, g2: 336, g3: 392, g4: 448, g5: 504, g6: 560, g7: 616, g8: 672, g9: 728, g10: 784 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 17, g3: 19, g4: 22, g5: 25, g6: 28, g7: 31, g8: 33, g9: 36, g10: 39 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 11, g3: 12, g4: 14, g5: 16, g6: 18, g7: 19, g8: 21, g9: 23, g10: 25 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 19, g3: 12, g4: 25, g5: 6, g6: 18, g7: 35, g8: 21, g9: 41, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 280, g2: 616, g3: 1008, g4: 1456, g5: 1960, g6: 2520, g7: 3136, g8: 3808, g9: 4536, g10: 5320 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 31, g3: 50, g4: 72, g5: 97, g6: 125, g7: 156, g8: 189, g9: 225, g10: 264 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 798, atk: 40, block: 18, mpCharge: 6 },
@@ -1660,6 +2031,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1077, atk: 53, block: 24, mpCharge: 8 },
       lb4: { hp: 1197, atk: 59, accuracy: 17, block: 27 },
       lb5: { hp: 2261, atk: 112, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 6251, atk: 310, def: 41, mdef: 11, accuracy: 30, block: 90, healPwr: 21, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { block: 3 },
@@ -1672,6 +2044,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 450 },
       lv9: { block: 2 },
       lv10: { hp: 450 },
+      total: { hp: 2100, block: 13 },
     },
     abilityGrade: {
       g1: { block: 5 },
@@ -1684,7 +2057,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 30 },
       g9: { block: 13 },
       g10: { physCrit: 35 },
+      total: { block: 45, physCrit: 125 },
     },
+    maxStats: { hp: 21652, atk: 970, matk: 395, def: 327, mdef: 125, accuracy: 129, block: 328, physCrit: 790, magicCrit: 398, hpRegen: 465, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 79, mpCostDown: 0 },
   },
 
   'mischievous-mermaid-princess-lorelia': {
@@ -1714,11 +2089,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 264, g3: 308, g4: 352, g5: 396, g6: 440, g7: 484, g8: 529, g9: 573, g10: 617 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 31, g2: 38, g3: 44, g4: 50, g5: 57, g6: 63, g7: 69, g8: 76, g9: 82, g10: 88 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 7, g6: 18, g7: 29, g8: 21, g9: 34, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 220, g2: 484, g3: 792, g4: 1144, g5: 1540, g6: 1980, g7: 2464, g8: 2993, g9: 3566, g10: 4183 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 628, atk: 90, block: 15, mpCharge: 7 },
@@ -1726,6 +2112,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 847, atk: 121, block: 20, mpCharge: 10 },
       lb4: { hp: 941, atk: 135, accuracy: 17, block: 23 },
       lb5: { hp: 1778, atk: 254, def: 23, mdef: 6, healPwr: 21 },
+      total: { hp: 4916, atk: 703, def: 23, mdef: 6, accuracy: 30, block: 75, healPwr: 21, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { hp: 300 },
@@ -1738,6 +2125,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { physCrit: 30 },
       lv9: { hp: 450 },
       lv10: { physCrit: 30 },
+      total: { hp: 2100, physCrit: 140 },
     },
     abilityGrade: {
       g1: { physCrit: 7 },
@@ -1750,7 +2138,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { accuracy: 5 },
       g9: { physCrit: 18 },
       g10: { accuracy: 6 },
+      total: { accuracy: 23, physCrit: 62 },
     },
+    maxStats: { hp: 17476, atk: 2198, matk: 896, def: 187, mdef: 70, accuracy: 152, block: 225, physCrit: 533, magicCrit: 198, hpRegen: 365, mpRegen: 225, healPwr: 227, hpDrain: 0, mpCharge: 94, mpCostDown: 0 },
   },
 
   'festival-empress-shamshel': {
@@ -1780,11 +2170,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 28, g3: 33, g4: 37, g5: 42, g6: 47, g7: 52, g8: 56, g9: 61, g10: 66 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 9, g2: 11, g3: 12, g4: 14, g5: 16, g6: 18, g7: 19, g8: 21, g9: 23, g10: 25 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 262, g8: 318, g9: 379, g10: 445 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 5 },
@@ -1792,18 +2193,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, matk: 121, block: 22, mpCharge: 7 },
       lb4: { hp: 772, matk: 135, accuracy: 17, block: 25 },
       lb5: { hp: 1458, matk: 222, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 4032, matk: 671, def: 11, mdef: 41, accuracy: 30, block: 83, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
-      lv1: { hpDrain: 2 },
+      lv1: { hpdrain: 2 },
       lv2: { magicCrit: 20 },
-      lv3: { hpDrain: 3 },
+      lv3: { hpdrain: 3 },
       lv4: { magicCrit: 30 },
-      lv5: { hpDrain: 2 },
+      lv5: { hpdrain: 2 },
       lv6: { magicCrit: 30 },
-      lv7: { hpDrain: 2 },
+      lv7: { hpdrain: 2 },
       lv8: { magicCrit: 30 },
-      lv9: { hpDrain: 2 },
+      lv9: { hpdrain: 2 },
       lv10: { magicCrit: 30 },
+      total: { magicCrit: 140, hpdrain: 11 },
     },
     abilityGrade: {
       g1: { matk: 19 },
@@ -1816,7 +2219,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { accuracy: 5 },
       g9: { matk: 48 },
       g10: { accuracy: 6 },
+      total: { matk: 167, accuracy: 23 },
     },
+    maxStats: { hp: 12607, atk: 666, matk: 1949, def: 125, mdef: 327, accuracy: 152, block: 248, physCrit: 398, magicCrit: 805, hpRegen: 299, mpRegen: 225, healPwr: 227, hpDrain: 29, mpCharge: 68, mpCostDown: 0 },
   },
 
   'festival-attire-estiriel': {
@@ -1846,11 +2251,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 353, g2: 423, g3: 494, g4: 565, g5: 635, g6: 706, g7: 776, g8: 847, g9: 917, g10: 988 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 32, g3: 37, g4: 43, g5: 48, g6: 53, g7: 59, g8: 64, g9: 69, g10: 75 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 2, g2: 2, g3: 2, g4: 3, g5: 3, g6: 3, g7: 4, g8: 4, g9: 4, g10: 5 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 353, g2: 776, g3: 1270, g4: 1835, g5: 2470, g6: 3176, g7: 3952, g8: 4799, g9: 5716, g10: 6704 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 2, g2: 4, g3: 6, g4: 9, g5: 12, g6: 15, g7: 19, g8: 23, g9: 27, g10: 32 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 777, matk: 76, block: 17, mpCharge: 8 },
@@ -1858,6 +2274,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1048, matk: 102, block: 22, mpCharge: 10 },
       lb4: { hp: 1165, matk: 114, accuracy: 17, block: 25 },
       lb5: { hp: 2812, matk: 226, def: 6, mdef: 11, healPwr: 33 },
+      total: { hp: 6695, matk: 605, def: 6, mdef: 11, accuracy: 30, block: 83, healPwr: 33, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { healPwr: 20 },
@@ -1870,6 +2287,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { healPwr: 25 },
       lv10: { mpCharge: 2 },
+      total: { healPwr: 120, mpCharge: 13 },
     },
     abilityGrade: {
       g1: { healPwr: 4 },
@@ -1882,7 +2300,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 4 },
       g9: { healPwr: 11 },
       g10: { mpCharge: 5 },
+      total: { healPwr: 38, mpCharge: 17 },
     },
+    maxStats: { hp: 23455, atk: 758, matk: 1870, def: 34, mdef: 81, accuracy: 129, block: 218, physCrit: 198, magicCrit: 331, hpRegen: 586, mpRegen: 237, healPwr: 441, hpDrain: 0, mpCharge: 125, mpCostDown: 0 },
   },
 
   'kaguya': {
@@ -1912,11 +2332,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 271, g2: 326, g3: 380, g4: 434, g5: 489, g6: 543, g7: 597, g8: 651, g9: 706, g10: 760 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 43, g3: 50, g4: 57, g5: 64, g6: 72, g7: 79, g8: 86, g9: 93, g10: 100 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 271, g2: 597, g3: 977, g4: 1411, g5: 1900, g6: 2443, g7: 3040, g8: 3691, g9: 4397, g10: 5157 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 129, g4: 186, g5: 250, g6: 322, g7: 401, g8: 487, g9: 580, g10: 680 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 589, matk: 121, block: 14, mpCharge: 8 },
@@ -1924,6 +2355,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 796, matk: 163, block: 18, mpCharge: 10 },
       lb4: { hp: 884, matk: 181, accuracy: 17, block: 20 },
       lb5: { hp: 2247, matk: 298, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 5194, matk: 902, def: 11, mdef: 41, accuracy: 30, block: 68, healPwr: 21, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -1936,6 +2368,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 80 },
+      total: { matk: 360, mpCharge: 10 },
     },
     abilityGrade: {
       g1: { mpCharge: 2 },
@@ -1948,7 +2381,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 354 },
       g9: { mpCharge: 5 },
       g10: { hp: 413 },
+      total: { hp: 1475, mpCharge: 18 },
     },
+    maxStats: { hp: 19561, atk: 1020, matk: 2962, def: 125, mdef: 327, accuracy: 129, block: 203, physCrit: 120, magicCrit: 200, hpRegen: 450, mpRegen: 249, healPwr: 227, hpDrain: 0, mpCharge: 129, mpCostDown: 0 },
   },
 
   'shaty': {
@@ -1978,11 +2413,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 248, g3: 290, g4: 331, g5: 372, g6: 414, g7: 455, g8: 496, g9: 538, g10: 579 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 45, g2: 54, g3: 63, g4: 72, g5: 81, g6: 90, g7: 100, g8: 109, g9: 118, g10: 127 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 9, g6: 18, g7: 26, g8: 21, g9: 31, g10: 13 } },
+      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 455, g3: 745, g4: 1076, g5: 1448, g6: 1862, g7: 2317, g8: 2813, g9: 3351, g10: 3930 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 45, g2: 99, g3: 162, g4: 234, g5: 315, g6: 405, g7: 505, g8: 614, g9: 732, g10: 859 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 9 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 9 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 9 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 9 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 9 } },
+        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 22 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 589, atk: 129, block: 14, mpCharge: 9 },
@@ -1990,6 +2436,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 796, atk: 174, block: 18, mpCharge: 13 },
       lb4: { hp: 884, atk: 193, accuracy: 17, block: 20 },
       lb5: { hp: 1670, atk: 397, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 4617, atk: 1041, def: 41, mdef: 11, accuracy: 30, block: 68, healPwr: 21, mpCharge: 22 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -2002,6 +2449,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 80 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 80 },
+      total: { atk: 360, mpCharge: 10 },
     },
     abilityGrade: {
       g1: { accuracy: 3 },
@@ -2014,7 +2462,90 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { atk: 77 },
       g9: { accuracy: 7 },
       g10: { atk: 90 },
+      total: { atk: 322, accuracy: 25 },
     },
+    maxStats: { hp: 14439, atk: 3871, matk: 1288, def: 327, mdef: 125, accuracy: 154, block: 203, physCrit: 85, magicCrit: 51, hpRegen: 343, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 134, mpCostDown: 0 },
+  },
+
+  'ophelio': {
+    id: 'ophelio',
+    characterId: 2076,
+    name: 'Ophelio',
+    rarity: 'SSR',
+    element: 'Fire',
+    weapon: 'Strike',
+    role: 'Attacker',
+    tags: ['Debuff', 'Disrupt'],
+    baseStats: {
+      hp: { base: 1670, lv90: 8350 },
+      atk: { base: 206, lv90: 1031 },
+      matk: { base: 343, lv90: 1718 },
+      def: { base: 90, lv90: 180 },
+      mdef: { base: 226, lv90: 452 },
+      accuracy: { base: 60, lv90: 99 },
+      block: { base: 45, lv90: 135 },
+      physCrit: { base: 32, lv90: 51 },
+      magicCrit: { base: 53, lv90: 85 },
+      hpRegen: { base: 83, lv90: 291 },
+      mpRegen: { base: 59, lv90: 237 },
+      healPwr: { base: 82, lv90: 206 },
+      mpCharge: { base: 82, lv90: 82 },
+      hpDrain: { base: 0, lv90: 0, isPercent: true },
+      mpCostDown: { base: 0, lv90: 0 },
+    },
+    passiveAbilities: [
+      { slot: 1, stat: 'HP', grades: { g1: 176, g2: 387, g3: 633, g4: 914, g5: 1230, g6: 1582, g7: 1969, g8: 2391, g9: 2848, g10: 3340 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+      ] }
+    ],
+    limitBreak: {
+      lb1: { hp: 501, matk: 103, block: 14, mpCharge: 8 },
+      lb2: { hp: 576, matk: 119, accuracy: 13, block: 16 },
+      lb3: { hp: 676, matk: 139, block: 18, mpCharge: 10 },
+      lb4: { hp: 752, matk: 155, accuracy: 17, block: 20 },
+      lb5: { hp: 1545, matk: 318, def: 18, mdef: 64, healPwr: 21 },
+      total: { hp: 4050, matk: 834, def: 18, mdef: 64, accuracy: 30, block: 68, healPwr: 21, mpCharge: 18 },
+    },
+    gpAbility: {
+      lv1: { magicCrit: 20 },
+      lv2: { matk: 40 },
+      lv3: { magicCrit: 30 },
+      lv4: { matk: 80 },
+      lv5: { magicCrit: 30 },
+      lv6: { matk: 80 },
+      lv7: { magicCrit: 30 },
+      lv8: { matk: 80 },
+      lv9: { magicCrit: 30 },
+      lv10: { matk: 80 },
+      total: { matk: 360, magicCrit: 140 },
+    },
+    abilityGrade: {
+      g1: { matk: 29 },
+      g2: { hp: 150 },
+      g3: { matk: 40 },
+      g4: { hp: 200 },
+      g5: { matk: 52 },
+      g6: { hp: 251 },
+      g7: { matk: 63 },
+      g8: { hp: 301 },
+      g9: { matk: 74 },
+      g10: { hp: 351 },
+      total: { hp: 1253, matk: 258 },
+    },
+    maxStats: { hp: 13653, atk: 1031, matk: 3170, def: 198, mdef: 516, accuracy: 129, block: 203, physCrit: 51, magicCrit: 225, hpRegen: 291, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 100, mpCostDown: 0 },
   },
 
   'queen-of-pies-and-cookies-aphrodia': {
@@ -2044,11 +2575,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 31, g3: 36, g4: 41, g5: 46, g6: 51, g7: 56, g8: 61, g9: 66, g10: 71 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 15, g9: 17, g10: 18 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 4, g6: 18, g7: 32, g8: 21, g9: 38, g10: 6 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 56, g3: 92, g4: 133, g5: 179, g6: 230, g7: 286, g8: 347, g9: 413, g10: 484 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, atk: 73, block: 17, mpCharge: 4 },
@@ -2056,6 +2598,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, atk: 98, block: 22, mpCharge: 6 },
       lb4: { hp: 772, atk: 109, accuracy: 17, block: 25 },
       lb5: { hp: 1458, atk: 224, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 4032, atk: 587, def: 41, mdef: 11, accuracy: 30, block: 83, healPwr: 21, mpCharge: 10 },
     },
     gpAbility: {
       lv1: { atk: 40 },
@@ -2068,6 +2611,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { physCrit: 30 },
       lv9: { atk: 80 },
       lv10: { physCrit: 30 },
+      total: { atk: 360, physCrit: 140 },
     },
     abilityGrade: {
       g1: { atk: 20 },
@@ -2080,7 +2624,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 22 },
       g9: { atk: 52 },
       g10: { physCrit: 25 },
+      total: { atk: 180, physCrit: 91 },
     },
+    maxStats: { hp: 12607, atk: 2337, matk: 725, def: 327, mdef: 125, accuracy: 129, block: 248, physCrit: 716, magicCrit: 291, hpRegen: 299, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 56, mpCostDown: 0 },
   },
 
   'magical-holy-night-festival-kaguya': {
@@ -2110,11 +2656,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 249, g2: 299, g3: 349, g4: 399, g5: 449, g6: 499, g7: 549, g8: 599, g9: 648, g10: 698 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 26, g3: 31, g4: 35, g5: 39, g6: 44, g7: 48, g8: 52, g9: 57, g10: 61 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 12, g3: 14, g4: 16, g5: 18, g6: 20, g7: 22, g8: 24, g9: 27, g10: 29 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 249, g2: 548, g3: 897, g4: 1296, g5: 1745, g6: 2244, g7: 2793, g8: 3392, g9: 4040, g10: 4738 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 48, g3: 79, g4: 114, g5: 153, g6: 197, g7: 245, g8: 297, g9: 354, g10: 415 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 711, atk: 62, block: 17, mpCharge: 5 },
@@ -2122,6 +2679,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 960, atk: 84, block: 22, mpCharge: 7 },
       lb4: { hp: 1066, atk: 93, accuracy: 17, block: 25 },
       lb5: { hp: 2191, atk: 176, def: 58, mdef: 25, healPwr: 25 },
+      total: { hp: 5745, atk: 486, def: 58, mdef: 25, accuracy: 30, block: 83, healPwr: 25, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { def: 20 },
@@ -2134,6 +2692,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mdef: 30 },
       lv9: { def: 30 },
       lv10: { mdef: 30 },
+      total: { def: 140, mdef: 140 },
     },
     abilityGrade: {
       g1: { hp: 197 },
@@ -2146,7 +2705,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { block: 10 },
       g9: { hp: 513 },
       g10: { block: 12 },
+      total: { hp: 1775, block: 42 },
     },
+    maxStats: { hp: 19365, atk: 1521, matk: 620, def: 582, mdef: 413, accuracy: 129, block: 290, physCrit: 331, magicCrit: 198, hpRegen: 414, mpRegen: 237, healPwr: 275, hpDrain: 0, mpCharge: 65, mpCostDown: 0 },
   },
 
   'dragon-crusher-medusa': {
@@ -2176,11 +2737,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 217, g3: 253, g4: 289, g5: 325, g6: 361, g7: 397, g8: 433, g9: 469, g10: 506 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 44, g3: 51, g4: 58, g5: 66, g6: 73, g7: 80, g8: 87, g9: 95, g10: 102 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 15, g9: 17, g10: 18 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 181, g2: 398, g3: 651, g4: 940, g5: 1265, g6: 1626, g7: 2023, g8: 2456, g9: 2925, g10: 3431 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 80, g3: 131, g4: 189, g5: 255, g6: 328, g7: 408, g8: 495, g9: 590, g10: 692 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 104, block: 17, mpCharge: 6 },
@@ -2188,6 +2760,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 695, matk: 140, block: 22, mpCharge: 8 },
       lb4: { hp: 772, matk: 156, accuracy: 17, block: 25 },
       lb5: { hp: 1451, matk: 320, def: 11, mdef: 41, healPwr: 21 },
+      total: { hp: 4025, matk: 839, def: 11, mdef: 41, accuracy: 30, block: 83, healPwr: 21, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { matk: 40 },
@@ -2200,6 +2773,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { magicCrit: 30 },
       lv9: { matk: 80 },
       lv10: { magicCrit: 30 },
+      total: { matk: 360, magicCrit: 140 },
     },
     abilityGrade: {
       g1: { matk: 29 },
@@ -2212,73 +2786,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { accuracy: 5 },
       g9: { matk: 75 },
       g10: { accuracy: 6 },
+      total: { matk: 259, accuracy: 23 },
     },
-  },
-
-  'new-years-calligraphy-pastel': {
-    id: 'new-years-calligraphy-pastel',
-    characterId: 2100,
-    name: '[New Year\'s First Sketch] Pastel',
-    rarity: 'SSR',
-    element: 'Water',
-    weapon: 'Strike',
-    role: 'Support',
-    tags: ['Heal', 'Buff', 'Debuff', 'Disrupt'],
-    baseStats: {
-      hp: { base: 2745, lv90: 13728 },
-      atk: { base: 306, lv90: 1530 },
-      matk: { base: 183, lv90: 917 },
-      def: { base: 82, lv90: 164 },
-      mdef: { base: 32, lv90: 64 },
-      accuracy: { base: 60, lv90: 99 },
-      block: { base: 50, lv90: 150 },
-      physCrit: { base: 125, lv90: 200 },
-      magicCrit: { base: 75, lv90: 120 },
-      hpRegen: { base: 137, lv90: 480 },
-      mpRegen: { base: 62, lv90: 249 },
-      healPwr: { base: 117, lv90: 267 },
-      mpCharge: { base: 60, lv90: 60 },
-      hpDrain: { base: 0, lv90: 0, isPercent: true },
-      mpCostDown: { base: 0, lv90: 0 },
-    },
-    passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 289, g2: 347, g3: 405, g4: 462, g5: 520, g6: 578, g7: 636, g8: 694, g9: 751, g10: 809 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 32, g2: 39, g3: 45, g4: 52, g5: 58, g6: 64, g7: 71, g8: 77, g9: 84, g10: 90 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 16, g3: 12, g4: 21, g5: 5, g6: 18, g7: 29, g8: 21, g9: 34, g10: 8 } },
-    ],
-    limitBreak: {
-      lb1: { hp: 824, atk: 92, block: 15, mpCharge: 6 },
-      lb2: { hp: 947, atk: 106, accuracy: 13, block: 17 },
-      lb3: { hp: 1112, atk: 124, block: 20, mpCharge: 7 },
-      lb4: { hp: 1236, atk: 138, accuracy: 17, block: 23 },
-      lb5: { hp: 2540, atk: 260, def: 23, mdef: 6, healPwr: 27 },
-    },
-    gpAbility: {
-      lv1: { hp: 300 },
-      lv2: { block: 3 },
-      lv3: { hp: 450 },
-      lv4: { block: 4 },
-      lv5: { hp: 450 },
-      lv6: { block: 3 },
-      lv7: { hp: 450 },
-      lv8: { block: 3 },
-      lv9: { hp: 450 },
-      lv10: { block: 3 },
-    },
-    abilityGrade: {
-      g1: { hp: 229 },
-      g2: { mpCostDown: 1 },
-      g3: { hp: 320 },
-      g4: { mpCostDown: 1 },
-      g5: { hp: 412 },
-      g6: { mpCostDown: 1 },
-      g7: { hp: 503 },
-      g8: { mpCostDown: 1 },
-      g9: { hp: 595 },
-      g10: { mpCostDown: 1 },
-    },
+    maxStats: { hp: 12600, atk: 1036, matk: 3186, def: 125, mdef: 327, accuracy: 152, block: 248, physCrit: 291, magicCrit: 625, hpRegen: 299, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 81, mpCostDown: 0 },
   },
 
   'sr-gladys': {
@@ -2308,11 +2818,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 198, g3: 231, g4: 264, g5: 297, g6: 330, g7: 363, g8: 396, g9: 429, g10: 462 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 40, g4: 46, g5: 52, g6: 58, g7: 64, g8: 69, g9: 75, g10: 81 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 363, g3: 594, g4: 858, g5: 1155, g6: 1485, g7: 1848, g8: 2244, g9: 2673, g10: 3135 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 104, g4: 150, g5: 202, g6: 260, g7: 324, g8: 393, g9: 468, g10: 549 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 82, block: 17, mpCharge: 7 },
@@ -2320,6 +2841,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 634, atk: 111, block: 22, mpCharge: 9 },
       lb4: { hp: 705, atk: 124, accuracy: 17, block: 25 },
       lb5: { hp: 1237, atk: 217, def: 34, mdef: 9, healPwr: 22 },
+      total: { hp: 3586, atk: 629, def: 34, mdef: 9, accuracy: 30, block: 83, healPwr: 22, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -2332,6 +2854,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { hp: 300 },
       lv10: { atk: 40 },
+      total: { hp: 1400, atk: 210 },
     },
     abilityGrade: {
       g1: { atk: 23 },
@@ -2344,7 +2867,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 3 },
       g9: { atk: 60 },
       g10: { physCrit: 3 },
+      total: { atk: 206, physCrit: 11 },
     },
+    maxStats: { hp: 12816, atk: 2418, matk: 823, def: 286, mdef: 109, accuracy: 129, block: 248, physCrit: 70, magicCrit: 35, hpRegen: 273, mpRegen: 237, healPwr: 228, hpDrain: 0, mpCharge: 88, mpCostDown: 0 },
   },
 
   'sr-emelaria': {
@@ -2374,11 +2899,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 55, g7: 60, g8: 66, g9: 71, g10: 77 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 6, g5: 7, g6: 8, g7: 9, g8: 10, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 8, g6: 18, g7: 26, g8: 21, g9: 31, g10: 13 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 8 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 8 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 8 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 8 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 8 } },
+        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 21 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 78, block: 14, mpCharge: 9 },
@@ -2386,6 +2922,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, matk: 105, block: 18, mpCharge: 12 },
       lb4: { hp: 1218, matk: 117, accuracy: 17, block: 20 },
       lb5: { hp: 2392, matk: 209, def: 5, mdef: 18, healPwr: 19 },
+      total: { hp: 6453, matk: 599, def: 5, mdef: 18, accuracy: 30, block: 68, healPwr: 19, mpCharge: 21 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -2398,6 +2935,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 40 },
+      total: { matk: 210, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { mpCharge: 2 },
@@ -2410,7 +2948,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 487 },
       g9: { mpCharge: 6 },
       g10: { hp: 569 },
+      total: { hp: 2031, mpCharge: 20 },
     },
+    maxStats: { hp: 22021, atk: 780, matk: 2107, def: 55, mdef: 148, accuracy: 129, block: 203, physCrit: 182, magicCrit: 305, hpRegen: 473, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 150, mpCostDown: 0 },
   },
 
   'sr-nerys': {
@@ -2440,11 +2980,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 217, g2: 261, g3: 304, g4: 347, g5: 391, g6: 434, g7: 478, g8: 521, g9: 565, g10: 608 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 28, g3: 33, g4: 37, g5: 42, g6: 47, g7: 51, g8: 56, g9: 60, g10: 65 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 4, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 217, g2: 478, g3: 782, g4: 1129, g5: 1520, g6: 1954, g7: 2432, g8: 2953, g9: 3518, g10: 4126 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 377, g10: 442 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 619, matk: 66, block: 14, mpCharge: 5 },
@@ -2452,6 +3003,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 835, matk: 90, block: 18, mpCharge: 6 },
       lb4: { hp: 928, matk: 99, accuracy: 17, block: 20 },
       lb5: { hp: 1784, matk: 175, def: 5, mdef: 18, healPwr: 19 },
+      total: { hp: 4878, matk: 506, def: 5, mdef: 18, accuracy: 30, block: 68, healPwr: 19, mpCharge: 11 },
     },
     gpAbility: {
       lv1: { magicCrit: 10 },
@@ -2464,6 +3016,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { magicCrit: 20 },
       lv10: { matk: 40 },
+      total: { matk: 210, magicCrit: 90 },
     },
     abilityGrade: {
       g1: { hp: 172 },
@@ -2476,7 +3029,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCostDown: 1 },
       g9: { hp: 447 },
       g10: { mpCostDown: 1 },
+      total: { hp: 1547, mpCostDown: 5 },
     },
+    maxStats: { hp: 16738, atk: 662, matk: 1821, def: 55, mdef: 148, accuracy: 129, block: 203, physCrit: 275, magicCrit: 549, hpRegen: 360, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 62, mpCostDown: 5 },
   },
 
   'sr-irina': {
@@ -2506,11 +3061,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 211, g2: 253, g3: 295, g4: 337, g5: 379, g6: 421, g7: 463, g8: 506, g9: 548, g10: 590 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 55, g7: 60, g8: 66, g9: 71, g10: 77 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 11, g3: 13, g4: 15, g5: 17, g6: 19, g7: 21, g8: 23, g9: 24, g10: 26 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 6, g5: 7, g6: 8, g7: 9, g8: 10, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 211, g2: 464, g3: 759, g4: 1096, g5: 1475, g6: 1896, g7: 2359, g8: 2865, g9: 3413, g10: 4003 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 48, g5: 65, g6: 84, g7: 105, g8: 128, g9: 152, g10: 178 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 600, matk: 78, block: 14, mpCharge: 6 },
@@ -2518,6 +3084,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 810, matk: 105, block: 18, mpCharge: 8 },
       lb4: { hp: 901, matk: 117, accuracy: 17, block: 20 },
       lb5: { hp: 1581, matk: 225, def: 15, mdef: 56, healPwr: 27 },
+      total: { hp: 4582, matk: 615, def: 15, mdef: 56, accuracy: 30, block: 68, healPwr: 27, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -2530,6 +3097,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { healPwr: 15 },
       lv9: { mpCharge: 2 },
       lv10: { healPwr: 15 },
+      total: { healPwr: 70, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { matk: 22 },
@@ -2542,7 +3110,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpRegen: 10 },
       g9: { matk: 56 },
       g10: { mpRegen: 12 },
+      total: { matk: 195, mpRegen: 42 },
     },
+    maxStats: { hp: 14587, atk: 780, matk: 2108, def: 181, mdef: 472, accuracy: 129, block: 203, physCrit: 182, magicCrit: 305, hpRegen: 350, mpRegen: 267, healPwr: 390, hpDrain: 0, mpCharge: 88, mpCostDown: 0 },
   },
 
   'sr-sobrina': {
@@ -2572,11 +3142,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 76, g10: 82 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 4, g5: 4, g6: 5, g7: 5, g8: 5, g9: 6, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 84, block: 14, mpCharge: 8 },
@@ -2584,6 +3165,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, matk: 113, block: 18, mpCharge: 10 },
       lb4: { hp: 1218, matk: 126, accuracy: 17, block: 20 },
       lb5: { hp: 2139, matk: 221, def: 5, mdef: 18, healPwr: 31 },
+      total: { hp: 6200, matk: 640, def: 5, mdef: 18, accuracy: 30, block: 68, healPwr: 31, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -2596,6 +3178,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { healPwr: 15 },
       lv9: { mpCharge: 2 },
       lv10: { healPwr: 15 },
+      total: { healPwr: 70, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { mpCharge: 2 },
@@ -2608,7 +3191,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 11 },
       g9: { mpCharge: 5 },
       g10: { healPwr: 12 },
+      total: { healPwr: 44, mpCharge: 18 },
     },
+    maxStats: { hp: 19737, atk: 837, matk: 2036, def: 55, mdef: 148, accuracy: 129, block: 203, physCrit: 104, magicCrit: 173, hpRegen: 473, mpRegen: 225, healPwr: 438, hpDrain: 0, mpCharge: 129, mpCostDown: 0 },
   },
 
   'sr-messeria': {
@@ -2638,11 +3223,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 216, g2: 260, g3: 303, g4: 346, g5: 389, g6: 433, g7: 476, g8: 519, g9: 563, g10: 606 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 24, g3: 28, g4: 31, g5: 35, g6: 39, g7: 43, g8: 47, g9: 51, g10: 55 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 216, g2: 476, g3: 779, g4: 1125, g5: 1514, g6: 1947, g7: 2423, g8: 2942, g9: 3505, g10: 4111 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 103, g5: 138, g6: 177, g7: 220, g8: 267, g9: 318, g10: 373 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 617, atk: 56, block: 17, mpCharge: 5 },
@@ -2650,6 +3246,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 832, atk: 76, block: 22, mpCharge: 7 },
       lb4: { hp: 925, atk: 84, accuracy: 17, block: 25 },
       lb5: { hp: 1624, atk: 153, def: 34, mdef: 9, healPwr: 27 },
+      total: { hp: 4707, atk: 434, def: 34, mdef: 9, accuracy: 30, block: 83, healPwr: 27, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -2662,6 +3259,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { block: 2 },
       lv9: { mpCharge: 2 },
       lv10: { block: 2 },
+      total: { block: 10, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { block: 5 },
@@ -2674,7 +3272,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 3 },
       g9: { block: 12 },
       g10: { mpCharge: 3 },
+      total: { block: 41, mpCharge: 11 },
     },
+    maxStats: { hp: 14983, atk: 1369, matk: 560, def: 286, mdef: 109, accuracy: 129, block: 299, physCrit: 459, magicCrit: 275, hpRegen: 358, mpRegen: 237, healPwr: 320, hpDrain: 0, mpCharge: 90, mpCostDown: 0 },
   },
 
   'sr-paia': {
@@ -2704,11 +3304,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 76, g10: 82 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 4, g5: 4, g6: 5, g7: 5, g8: 5, g9: 6, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 84, block: 14, mpCharge: 8 },
@@ -2716,6 +3327,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, atk: 113, block: 18, mpCharge: 11 },
       lb4: { hp: 1218, atk: 126, accuracy: 17, block: 20 },
       lb5: { hp: 2139, atk: 221, def: 20, mdef: 4, healPwr: 27 },
+      total: { hp: 6200, atk: 640, def: 20, mdef: 4, accuracy: 30, block: 68, healPwr: 27, mpCharge: 19 },
     },
     gpAbility: {
       lv1: { mpCostDown: 2 },
@@ -2728,6 +3340,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 300 },
       lv9: { mpCostDown: 1 },
       lv10: { hp: 300 },
+      total: { hp: 1400, mpCostDown: 6 },
     },
     abilityGrade: {
       g1: { def: 3 },
@@ -2740,7 +3353,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCostDown: 1 },
       g9: { def: 8 },
       g10: { mpCostDown: 1 },
+      total: { def: 28, mpCostDown: 5 },
     },
+    maxStats: { hp: 21137, atk: 2036, matk: 837, def: 178, mdef: 54, accuracy: 129, block: 203, physCrit: 173, magicCrit: 104, hpRegen: 473, mpRegen: 225, healPwr: 320, hpDrain: 0, mpCharge: 106, mpCostDown: 11 },
   },
 
   'sr-azura': {
@@ -2770,11 +3385,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 256, g2: 307, g3: 358, g4: 409, g5: 460, g6: 511, g7: 563, g8: 614, g9: 665, g10: 716 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 18, g2: 22, g3: 26, g4: 29, g5: 33, g6: 37, g7: 40, g8: 44, g9: 48, g10: 52 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 19, g3: 12, g4: 25, g5: 7, g6: 18, g7: 35, g8: 21, g9: 41, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 256, g2: 563, g3: 921, g4: 1330, g5: 1790, g6: 2301, g7: 2864, g8: 3478, g9: 4143, g10: 4859 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 18, g2: 40, g3: 66, g4: 95, g5: 128, g6: 165, g7: 205, g8: 249, g9: 297, g10: 349 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 729, atk: 52, block: 18, mpCharge: 8 },
@@ -2782,6 +3408,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 984, atk: 71, block: 24, mpCharge: 10 },
       lb4: { hp: 1093, atk: 79, accuracy: 17, block: 27 },
       lb5: { hp: 1919, atk: 138, def: 40, mdef: 9, healPwr: 19 },
+      total: { hp: 5563, atk: 400, def: 40, mdef: 9, accuracy: 30, block: 90, healPwr: 19, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { atk: 30 },
@@ -2794,6 +3421,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 300 },
       lv9: { atk: 40 },
       lv10: { hp: 300 },
+      total: { hp: 1400, atk: 210 },
     },
     abilityGrade: {
       g1: { block: 5 },
@@ -2806,7 +3434,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 13 },
       g9: { block: 13 },
       g10: { def: 15 },
+      total: { def: 54, block: 45 },
     },
+    maxStats: { hp: 19108, atk: 1483, matk: 523, def: 346, mdef: 109, accuracy: 129, block: 315, physCrit: 459, magicCrit: 275, hpRegen: 424, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 100, mpCostDown: 0 },
   },
 
   'sr-zoe': {
@@ -2836,11 +3466,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 443, g2: 532, g3: 621, g4: 709, g5: 798, g6: 886, g7: 975, g8: 1064, g9: 1152, g10: 1241 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 34, g3: 40, g4: 46, g5: 51, g6: 57, g7: 63, g8: 69, g9: 74, g10: 80 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 7, g6: 18, g7: 23, g8: 21, g9: 27, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 443, g2: 975, g3: 1596, g4: 2305, g5: 3103, g6: 3989, g7: 4964, g8: 6028, g9: 7180, g10: 8421 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 63, g3: 103, g4: 149, g5: 200, g6: 257, g7: 320, g8: 389, g9: 463, g10: 543 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 1263, matk: 81, block: 12, mpCharge: 7 },
@@ -2848,6 +3489,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1705, matk: 110, block: 16, mpCharge: 10 },
       lb4: { hp: 1895, matk: 122, accuracy: 17, block: 18 },
       lb5: { hp: 3326, matk: 214, def: 1, mdef: 5, healPwr: 19 },
+      total: { hp: 9642, matk: 621, def: 1, mdef: 5, accuracy: 30, block: 60, healPwr: 19, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { block: 2 },
@@ -2860,6 +3502,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 300 },
       lv9: { block: 2 },
       lv10: { hp: 300 },
+      total: { hp: 1400, block: 11 },
     },
     abilityGrade: {
       g1: { hpRegen: 18 },
@@ -2872,7 +3515,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { magicCrit: 3 },
       g9: { hpRegen: 46 },
       g10: { magicCrit: 3 },
+      total: { magicCrit: 11, hpRegen: 160 },
     },
+    maxStats: { hp: 32094, atk: 815, matk: 1978, def: 15, mdef: 41, accuracy: 129, block: 191, physCrit: 35, magicCrit: 70, hpRegen: 896, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 96, mpCostDown: 0 },
   },
 
   'sr-constantia': {
@@ -2902,11 +3547,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 193, g2: 231, g3: 270, g4: 308, g5: 347, g6: 386, g7: 424, g8: 463, g9: 501, g10: 540 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 30, g3: 35, g4: 40, g5: 46, g6: 51, g7: 56, g8: 61, g9: 66, g10: 71 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 18, g3: 21, g4: 24, g5: 26, g6: 29, g7: 32, g8: 35, g9: 38, g10: 41 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 8, g6: 18, g7: 23, g8: 21, g9: 27, g10: 13 } },
+      { slot: 1, stat: 'HP', grades: { g1: 193, g2: 424, g3: 694, g4: 1002, g5: 1349, g6: 1735, g7: 2159, g8: 2622, g9: 3123, g10: 3663 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 55, g3: 90, g4: 130, g5: 176, g6: 227, g7: 283, g8: 344, g9: 410, g10: 481 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
+        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 21 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 549, atk: 72, block: 12, mpCharge: 9 },
@@ -2914,6 +3570,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 742, atk: 97, block: 16, mpCharge: 12 },
       lb4: { hp: 824, atk: 108, accuracy: 17, block: 18 },
       lb5: { hp: 1447, atk: 190, def: 102, mdef: 24, healPwr: 27 },
+      total: { hp: 4194, atk: 550, def: 102, mdef: 24, accuracy: 30, block: 60, healPwr: 27, mpCharge: 21 },
     },
     gpAbility: {
       lv1: { mpCostDown: 2 },
@@ -2926,6 +3583,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { mpCostDown: 2 },
       lv10: { mpCharge: 2 },
+      total: { mpCharge: 11, mpCostDown: 9 },
     },
     abilityGrade: {
       g1: { mpRegen: 5 },
@@ -2938,7 +3596,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 34 },
       g9: { mpRegen: 12 },
       g10: { def: 39 },
+      total: { def: 140, mpRegen: 42 },
     },
+    maxStats: { hp: 13349, atk: 1751, matk: 720, def: 894, mdef: 284, accuracy: 129, block: 180, physCrit: 459, magicCrit: 275, hpRegen: 319, mpRegen: 267, healPwr: 320, hpDrain: 0, mpCharge: 130, mpCostDown: 9 },
   },
 
   'sr-farneria': {
@@ -2968,11 +3628,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 161, g2: 193, g3: 225, g4: 257, g5: 289, g6: 321, g7: 353, g8: 385, g9: 417, g10: 449 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 40, g3: 46, g4: 53, g5: 59, g6: 66, g7: 73, g8: 79, g9: 86, g10: 93 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 11, g3: 13, g4: 15, g5: 17, g6: 19, g7: 21, g8: 23, g9: 24, g10: 26 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 161, g2: 354, g3: 579, g4: 836, g5: 1125, g6: 1446, g7: 1799, g8: 2184, g9: 2601, g10: 3050 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 48, g5: 65, g6: 84, g7: 105, g8: 128, g9: 152, g10: 178 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 457, matk: 94, block: 14, mpCharge: 7 },
@@ -2980,6 +3651,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 618, matk: 127, block: 18, mpCharge: 10 },
       lb4: { hp: 686, matk: 141, accuracy: 17, block: 20 },
       lb5: { hp: 1205, matk: 248, def: 15, mdef: 65, healPwr: 19 },
+      total: { hp: 3492, matk: 718, def: 15, mdef: 65, accuracy: 30, block: 68, healPwr: 19, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { magicCrit: 10 },
@@ -2992,6 +3664,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { magicCrit: 20 },
       lv10: { matk: 40 },
+      total: { matk: 210, magicCrit: 90 },
     },
     abilityGrade: {
       g1: { magicCrit: 1 },
@@ -3004,7 +3677,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mdef: 21 },
       g9: { magicCrit: 3 },
       g10: { mdef: 25 },
+      total: { mdef: 89, magicCrit: 11 },
     },
+    maxStats: { hp: 11115, atk: 941, matk: 2498, def: 181, mdef: 570, accuracy: 129, block: 203, physCrit: 35, magicCrit: 160, hpRegen: 266, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 94, mpCostDown: 0 },
   },
 
   'artemis': {
@@ -3034,11 +3709,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 198, g3: 231, g4: 264, g5: 297, g6: 330, g7: 363, g8: 396, g9: 429, g10: 462 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 24, g2: 29, g3: 34, g4: 39, g5: 44, g6: 49, g7: 54, g8: 59, g9: 63, g10: 68 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 10, g3: 12, g4: 13, g5: 15, g6: 17, g7: 19, g8: 20, g9: 22, g10: 24 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 363, g3: 594, g4: 858, g5: 1155, g6: 1485, g7: 1848, g8: 2244, g9: 2673, g10: 3135 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 24, g2: 53, g3: 87, g4: 126, g5: 170, g6: 219, g7: 273, g8: 332, g9: 395, g10: 463 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 75, g7: 94, g8: 114, g9: 136, g10: 160 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 70, block: 17, mpCharge: 5 },
@@ -3046,6 +3732,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 634, atk: 94, block: 22, mpCharge: 7 },
       lb4: { hp: 705, atk: 104, accuracy: 17, block: 25 },
       lb5: { hp: 1237, atk: 234, def: 34, mdef: 9, healPwr: 19 },
+      total: { hp: 3586, atk: 582, def: 34, mdef: 9, accuracy: 30, block: 83, healPwr: 19, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -3058,6 +3745,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { hp: 300 },
       lv10: { atk: 40 },
+      total: { hp: 1400, atk: 210 },
     },
     abilityGrade: {
       g1: { accuracy: 5 },
@@ -3070,7 +3758,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { atk: 57 },
       g9: { accuracy: 12 },
       g10: { atk: 66 },
+      total: { atk: 236, accuracy: 41 },
     },
+    maxStats: { hp: 12816, atk: 2494, matk: 880, def: 286, mdef: 109, accuracy: 170, block: 248, physCrit: 173, magicCrit: 104, hpRegen: 273, mpRegen: 237, healPwr: 225, hpDrain: 0, mpCharge: 70, mpCostDown: 0 },
   },
 
   'sr-athena': {
@@ -3100,11 +3790,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 239, g2: 286, g3: 334, g4: 382, g5: 430, g6: 477, g7: 525, g8: 573, g9: 620, g10: 668 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 17, g2: 21, g3: 24, g4: 27, g5: 31, g6: 34, g7: 38, g8: 41, g9: 45, g10: 48 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 18, g3: 21, g4: 24, g5: 26, g6: 29, g7: 32, g8: 35, g9: 38, g10: 41 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 5, g6: 18, g7: 23, g8: 21, g9: 27, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 239, g2: 525, g3: 859, g4: 1241, g5: 1671, g6: 2148, g7: 2673, g8: 3246, g9: 3866, g10: 4534 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 17, g2: 38, g3: 62, g4: 89, g5: 120, g6: 154, g7: 192, g8: 233, g9: 278, g10: 326 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 680, atk: 49, block: 12, mpCharge: 5 },
@@ -3112,6 +3813,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 918, atk: 66, block: 16, mpCharge: 7 },
       lb4: { hp: 1020, atk: 73, accuracy: 17, block: 18 },
       lb5: { hp: 1991, atk: 129, def: 88, mdef: 24, healPwr: 27 },
+      total: { hp: 5391, atk: 373, def: 88, mdef: 24, accuracy: 30, block: 60, healPwr: 27, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -3124,6 +3826,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mdef: 30 },
       lv9: { hp: 300 },
       lv10: { mdef: 30 },
+      total: { hp: 1400, mdef: 140 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -3136,7 +3839,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 408 },
       g9: { mpCostDown: 1 },
       g10: { hp: 476 },
+      total: { hp: 1700, mpCostDown: 5 },
     },
+    maxStats: { hp: 19826, atk: 1188, matk: 488, def: 740, mdef: 424, accuracy: 129, block: 180, physCrit: 59, magicCrit: 35, hpRegen: 396, mpRegen: 249, healPwr: 320, hpDrain: 0, mpCharge: 67, mpCostDown: 5 },
   },
 
   'sr-medusa': {
@@ -3166,11 +3871,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 198, g3: 231, g4: 264, g5: 297, g6: 330, g7: 363, g8: 396, g9: 429, g10: 462 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 32, g3: 37, g4: 43, g5: 48, g6: 53, g7: 58, g8: 64, g9: 69, g10: 74 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 363, g3: 594, g4: 858, g5: 1155, g6: 1485, g7: 1848, g8: 2244, g9: 2673, g10: 3135 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 298, g8: 362, g9: 431, g10: 505 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 470, matk: 76, block: 17, mpCharge: 6 },
@@ -3178,6 +3894,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 634, matk: 102, block: 22, mpCharge: 8 },
       lb4: { hp: 705, matk: 114, accuracy: 17, block: 25 },
       lb5: { hp: 1355, matk: 199, def: 9, mdef: 34, healPwr: 19 },
+      total: { hp: 3704, matk: 578, def: 9, mdef: 34, accuracy: 30, block: 83, healPwr: 19, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { mpCharge: 2 },
@@ -3190,6 +3907,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 40 },
+      total: { matk: 210, mpCharge: 11 },
     },
     abilityGrade: {
       g1: { hp: 131 },
@@ -3202,7 +3920,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCostDown: 1 },
       g9: { hp: 339 },
       g10: { mpCostDown: 1 },
+      total: { hp: 1175, mpCostDown: 5 },
     },
+    maxStats: { hp: 12709, atk: 757, matk: 2050, def: 109, mdef: 286, accuracy: 129, block: 248, physCrit: 275, magicCrit: 459, hpRegen: 273, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 91, mpCostDown: 5 },
   },
 
   'venus': {
@@ -3232,11 +3952,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 55, g7: 60, g8: 66, g9: 71, g10: 77 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 6, g5: 7, g6: 8, g7: 9, g8: 10, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 6, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 78, block: 14, mpCharge: 7 },
@@ -3244,6 +3975,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, matk: 105, block: 18, mpCharge: 9 },
       lb4: { hp: 1218, matk: 117, accuracy: 17, block: 20 },
       lb5: { hp: 2139, atk: 205, def: 5, mdef: 18, healPwr: 27 },
+      total: { hp: 6200, atk: 205, matk: 390, def: 5, mdef: 18, accuracy: 30, block: 68, healPwr: 27, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { mpCostDown: 2 },
@@ -3256,6 +3988,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { mpCostDown: 1 },
       lv10: { mpCharge: 2 },
+      total: { mpCharge: 11, mpCostDown: 6 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -3268,7 +4001,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 4 },
       g9: { mpCostDown: 1 },
       g10: { mpCharge: 4 },
+      total: { mpCharge: 16, mpCostDown: 5 },
     },
+    maxStats: { hp: 19737, atk: 985, matk: 1688, def: 55, mdef: 148, accuracy: 129, block: 203, physCrit: 182, magicCrit: 305, hpRegen: 473, mpRegen: 225, healPwr: 320, hpDrain: 0, mpCharge: 117, mpCostDown: 11 },
   },
 
   'liesel': {
@@ -3298,11 +4033,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 34, g3: 39, g4: 45, g5: 50, g6: 56, g7: 62, g8: 67, g9: 73, g10: 78 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 62, g3: 101, g4: 146, g5: 196, g6: 252, g7: 314, g8: 381, g9: 454, g10: 532 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 80, block: 14, mpCharge: 7 },
@@ -3310,6 +4056,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, atk: 108, block: 18, mpCharge: 10 },
       lb4: { hp: 1218, atk: 120, accuracy: 17, block: 20 },
       lb5: { hp: 2139, atk: 210, def: 20, mdef: 5, healPwr: 19 },
+      total: { hp: 6200, atk: 610, def: 20, mdef: 5, accuracy: 30, block: 68, healPwr: 19, mpCharge: 17 },
     },
     gpAbility: {
       lv1: { mpCostDown: 2 },
@@ -3322,6 +4069,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mpCharge: 2 },
       lv9: { mpCostDown: 1 },
       lv10: { mpCharge: 2 },
+      total: { mpCharge: 11, mpCostDown: 6 },
     },
     abilityGrade: {
       g1: { def: 3 },
@@ -3334,7 +4082,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 4 },
       g9: { def: 8 },
       g10: { mpCharge: 5 },
+      total: { def: 28, mpCharge: 17 },
     },
+    maxStats: { hp: 19737, atk: 1937, matk: 796, def: 178, mdef: 55, accuracy: 129, block: 203, physCrit: 59, magicCrit: 35, hpRegen: 473, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 122, mpCostDown: 6 },
   },
 
   'sr-ishtovia': {
@@ -3364,11 +4114,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 217, g2: 261, g3: 304, g4: 347, g5: 391, g6: 434, g7: 478, g8: 521, g9: 565, g10: 608 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 40, g3: 46, g4: 53, g5: 59, g6: 66, g7: 73, g8: 79, g9: 86, g10: 93 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 7, g6: 18, g7: 26, g8: 21, g9: 31, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 217, g2: 478, g3: 782, g4: 1129, g5: 1520, g6: 1954, g7: 2432, g8: 2953, g9: 3518, g10: 4126 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 619, matk: 94, block: 14, mpCharge: 8 },
@@ -3376,6 +4137,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 835, matk: 127, block: 18, mpCharge: 11 },
       lb4: { hp: 928, matk: 141, accuracy: 17, block: 20 },
       lb5: { hp: 1630, matk: 248, def: 5, mdef: 18, healPwr: 27 },
+      total: { hp: 4724, matk: 718, def: 5, mdef: 18, accuracy: 30, block: 68, healPwr: 27, mpCharge: 19 },
     },
     gpAbility: {
       lv1: { healPwr: 10 },
@@ -3388,6 +4150,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { healPwr: 15 },
       lv10: { matk: 40 },
+      total: { matk: 210, healPwr: 70 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -3400,7 +4163,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hpRegen: 19 },
       g9: { mpCostDown: 1 },
       g10: { hpRegen: 22 },
+      total: { hpRegen: 77, mpCostDown: 5 },
     },
+    maxStats: { hp: 15037, atk: 941, matk: 2498, def: 55, mdef: 148, accuracy: 129, block: 203, physCrit: 35, magicCrit: 59, hpRegen: 437, mpRegen: 225, healPwr: 390, hpDrain: 0, mpCharge: 106, mpCostDown: 5 },
   },
 
   'sr-veronica': {
@@ -3430,11 +4195,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 216, g2: 260, g3: 303, g4: 346, g5: 389, g6: 433, g7: 476, g8: 519, g9: 563, g10: 606 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 30, g3: 35, g4: 40, g5: 46, g6: 51, g7: 56, g8: 61, g9: 66, g10: 71 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 216, g2: 476, g3: 779, g4: 1125, g5: 1514, g6: 1947, g7: 2423, g8: 2942, g9: 3505, g10: 4111 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 55, g3: 90, g4: 130, g5: 176, g6: 227, g7: 283, g8: 344, g9: 410, g10: 481 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 617, atk: 72, block: 17, mpCharge: 8 },
@@ -3442,15 +4218,17 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 832, atk: 97, block: 22, mpCharge: 11 },
       lb4: { hp: 925, atk: 108, accuracy: 17, block: 25 },
       lb5: { hp: 1624, atk: 209, def: 43, mdef: 9, healPwr: 19 },
+      total: { hp: 4707, atk: 569, def: 43, mdef: 9, accuracy: 30, block: 83, healPwr: 19, mpCharge: 19 },
     },
     gpAbility: {
       lv1: { hp: 200 },
       lv2: { mpCharge: 2 },
       lv3: { hp: 300 },
       lv4: { mpCharge: 3 },
-      lv5: { hp: 300, mpCharge: -5 },
+      lv5: { hp: 300 },
       lv7: { hp: 300 },
       lv9: { hp: 300 },
+      total: { hp: 0, mpCharge: 0 },
     },
     abilityGrade: {
       g1: { hpRegen: 9 },
@@ -3463,7 +4241,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 5 },
       g9: { hpRegen: 22 },
       g10: { mpCharge: 5 },
+      total: { hpRegen: 77, mpCharge: 19 },
     },
+    maxStats: { hp: 14983, atk: 1770, matk: 720, def: 295, mdef: 109, accuracy: 129, block: 248, physCrit: 459, magicCrit: 275, hpRegen: 435, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 125, mpCostDown: 0 },
   },
 
   'sr-celestia': {
@@ -3493,11 +4273,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 342, g3: 399, g4: 456, g5: 513, g6: 570, g7: 627, g8: 684, g9: 741, g10: 798 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 76, g10: 82 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 4, g3: 4, g4: 5, g5: 5, g6: 6, g7: 6, g8: 7, g9: 8, g10: 8 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 4, g5: 4, g6: 5, g7: 5, g8: 5, g9: 6, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 285, g2: 627, g3: 1026, g4: 1482, g5: 1995, g6: 2565, g7: 3192, g8: 3876, g9: 4617, g10: 5415 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 84, block: 14, mpCharge: 6 },
@@ -3505,6 +4296,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1097, atk: 113, block: 18, mpCharge: 8 },
       lb4: { hp: 1218, atk: 126, accuracy: 17, block: 20 },
       lb5: { hp: 2139, atk: 221, def: 18, mdef: 5, healPwr: 31 },
+      total: { hp: 6200, atk: 640, def: 18, mdef: 5, accuracy: 30, block: 68, healPwr: 31, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { healPwr: 10 },
@@ -3517,6 +4309,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { healPwr: 15 },
       lv10: { atk: 40 },
+      total: { atk: 210, healPwr: 70 },
     },
     abilityGrade: {
       g1: { healPwr: 5 },
@@ -3529,7 +4322,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hpRegen: 24 },
       g9: { healPwr: 13 },
       g10: { hpRegen: 28 },
+      total: { hpRegen: 100, healPwr: 45 },
     },
+    maxStats: { hp: 19737, atk: 2246, matk: 837, def: 148, mdef: 55, accuracy: 129, block: 203, physCrit: 173, magicCrit: 104, hpRegen: 573, mpRegen: 225, healPwr: 439, hpDrain: 0, mpCharge: 77, mpCostDown: 0 },
   },
 
   'sr-guinevia': {
@@ -3559,11 +4354,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 198, g3: 231, g4: 264, g5: 297, g6: 330, g7: 363, g8: 396, g9: 429, g10: 462 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 40, g3: 46, g4: 53, g5: 59, g6: 66, g7: 73, g8: 79, g9: 86, g10: 93 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 10, g6: 11, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 165, g2: 363, g3: 594, g4: 858, g5: 1155, g6: 1485, g7: 1848, g8: 2244, g9: 2673, g10: 3135 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 94, block: 17, mpCharge: 5 },
@@ -3571,6 +4377,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 634, atk: 127, block: 22, mpCharge: 7 },
       lb4: { hp: 705, atk: 141, accuracy: 17, block: 25 },
       lb5: { hp: 1148, matk: 247, def: 31, mdef: 9, healPwr: 19 },
+      total: { hp: 3497, atk: 470, matk: 247, def: 31, mdef: 9, accuracy: 30, block: 83, healPwr: 19, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { physCrit: 10 },
@@ -3583,6 +4390,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { physCrit: 20 },
       lv10: { atk: 40 },
+      total: { atk: 210, physCrit: 90 },
     },
     abilityGrade: {
       g1: { physCrit: 1 },
@@ -3595,7 +4403,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { atk: 57 },
       g9: { physCrit: 3 },
       g10: { atk: 66 },
+      total: { atk: 236, physCrit: 11 },
     },
+    maxStats: { hp: 11327, atk: 2486, matk: 1188, def: 283, mdef: 109, accuracy: 129, block: 248, physCrit: 160, magicCrit: 35, hpRegen: 273, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 70, mpCostDown: 0 },
   },
 
   'festival-dress-up-natasha': {
@@ -3625,11 +4435,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 188, g2: 225, g3: 263, g4: 300, g5: 338, g6: 375, g7: 413, g8: 450, g9: 488, g10: 525 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 16, g2: 19, g3: 22, g4: 26, g5: 29, g6: 32, g7: 35, g8: 39, g9: 42, g10: 45 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 18, g3: 21, g4: 24, g5: 26, g6: 29, g7: 32, g8: 35, g9: 38, g10: 41 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 4, g5: 4, g6: 5, g7: 5, g8: 5, g9: 6, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 188, g2: 413, g3: 676, g4: 976, g5: 1314, g6: 1689, g7: 2102, g8: 2552, g9: 3040, g10: 3565 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 16, g2: 35, g3: 57, g4: 83, g5: 112, g6: 144, g7: 179, g8: 218, g9: 260, g10: 305 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 680, atk: 49, block: 17, mpCharge: 5 },
@@ -3637,6 +4458,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 918, atk: 66, block: 22, mpCharge: 7 },
       lb4: { hp: 1020, atk: 73, accuracy: 17, block: 25 },
       lb5: { hp: 1379, atk: 121, def: 90, mdef: 24, healPwr: 19 },
+      total: { hp: 4779, atk: 365, def: 90, mdef: 24, accuracy: 30, block: 83, healPwr: 19, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { block: 2 },
@@ -3649,6 +4471,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 300 },
       lv9: { block: 2 },
       lv10: { hp: 300 },
+      total: { hp: 1400, block: 11 },
     },
     abilityGrade: {
       g1: { atk: 13 },
@@ -3661,7 +4484,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 34 },
       g9: { atk: 33 },
       g10: { def: 39 },
+      total: { atk: 115, def: 140 },
     },
+    maxStats: { hp: 15085, atk: 1241, matk: 456, def: 882, mdef: 284, accuracy: 129, block: 259, physCrit: 173, magicCrit: 104, hpRegen: 311, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 77, mpCostDown: 0 },
   },
 
   'holy-night-succubus-yu-rima-elca': {
@@ -3691,11 +4516,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 245, g2: 295, g3: 344, g4: 393, g5: 442, g6: 491, g7: 540, g8: 589, g9: 638, g10: 687 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 40, g3: 46, g4: 53, g5: 59, g6: 66, g7: 73, g8: 79, g9: 86, g10: 93 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 245, g2: 540, g3: 884, g4: 1277, g5: 1719, g6: 2210, g7: 2750, g8: 3339, g9: 3977, g10: 4664 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 700, matk: 94, block: 14, mpCharge: 5 },
@@ -3703,6 +4539,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 944, matk: 127, block: 18, mpCharge: 7 },
       lb4: { hp: 1049, matk: 141, accuracy: 17, block: 20 },
       lb5: { hp: 1836, matk: 247, def: 1, mdef: 4, healPwr: 19 },
+      total: { hp: 5334, matk: 717, def: 1, mdef: 4, accuracy: 30, block: 68, healPwr: 19, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -3715,6 +4552,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 60 },
       lv9: { hp: 300 },
       lv10: { matk: 60 },
+      total: { hp: 1400, matk: 270 },
     },
     abilityGrade: {
       g1: { matk: 26 },
@@ -3727,73 +4565,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 420 },
       g9: { matk: 68 },
       g10: { hp: 490 },
+      total: { hp: 1750, matk: 236 },
     },
-  },
-
-  'overflowing-jubako-lynette': {
-    id: 'overflowing-jubako-lynette',
-    characterId: 2101,
-    name: '[New Year’s Feast Box] Lynette',
-    rarity: 'SR',
-    element: 'Mind',
-    weapon: 'Strike',
-    role: 'Support',
-    tags: ['Heal', 'Buff', 'Debuff'],
-    baseStats: {
-      hp: { base: 3060, lv90: 15303 },
-      atk: { base: 231, lv90: 1155 },
-      matk: { base: 138, lv90: 692 },
-      def: { base: 18, lv90: 36 },
-      mdef: { base: 7, lv90: 14 },
-      accuracy: { base: 60, lv90: 99 },
-      block: { base: 45, lv90: 135 },
-      physCrit: { base: 191, lv90: 305 },
-      magicCrit: { base: 114, lv90: 182 },
-      hpRegen: { base: 153, lv90: 535 },
-      mpRegen: { base: 59, lv90: 237 },
-      healPwr: { base: 100, lv90: 250 },
-      mpCharge: { base: 53, lv90: 53 },
-      hpDrain: { base: 0, lv90: 0, isPercent: true },
-      mpCostDown: { base: 0, lv90: 0 },
-    },
-    passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 322, g2: 387, g3: 451, g4: 516, g5: 580, g6: 644, g7: 709, g8: 773, g9: 838, g10: 902 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 24, g2: 29, g3: 34, g4: 39, g5: 44, g6: 49, g7: 53, g8: 58, g9: 63, g10: 68 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 2, g7: 2, g8: 2, g9: 2, g10: 2 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 6, g5: 7, g6: 8, g7: 9, g8: 10, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
-    ],
-    limitBreak: {
-      lb1: { hp: 918, atk: 69, block: 14, mpCharge: 5 },
-      lb2: { hp: 1056, atk: 80, accuracy: 13, block: 16 },
-      lb3: { hp: 1240, atk: 94, block: 18, mpCharge: 7 },
-      lb4: { hp: 1377, atk: 104, accuracy: 17, block: 20 },
-      lb5: { hp: 2244, atk: 169, def: 4, mdef: 1, healPwr: 23 },
-    },
-    gpAbility: {
-      lv1: { def: 20 },
-      lv2: { mdef: 20 },
-      lv3: { def: 30 },
-      lv4: { mdef: 30 },
-      lv5: { def: 30 },
-      lv6: { mdef: 30 },
-      lv7: { def: 30 },
-      lv8: { mdef: 30 },
-      lv9: { def: 30 },
-      lv10: { mdef: 30 },
-    },
-    abilityGrade: {
-      g1: { block: 4 },
-      g2: { healPwr: 4 },
-      g3: { block: 5 },
-      g4: { healPwr: 5 },
-      g5: { block: 7 },
-      g6: { healPwr: 6 },
-      g7: { block: 8 },
-      g8: { healPwr: 7 },
-      g9: { block: 10 },
-      g10: { healPwr: 9 },
-    },
+    maxStats: { hp: 20144, atk: 941, matk: 2793, def: 15, mdef: 40, accuracy: 129, block: 203, physCrit: 35, magicCrit: 59, hpRegen: 407, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 65, mpCostDown: 0 },
   },
 
   'r-shamshel': {
@@ -3823,11 +4597,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 188, g3: 220, g4: 251, g5: 283, g6: 314, g7: 345, g8: 377, g9: 408, g10: 440 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 55, g7: 60, g8: 66, g9: 71, g10: 77 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 5, g4: 6, g5: 7, g6: 8, g7: 8, g8: 9, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 5, g6: 18, g7: 32, g8: 21, g9: 38, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 345, g3: 565, g4: 816, g5: 1099, g6: 1413, g7: 1758, g8: 2135, g9: 2543, g10: 2983 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 447, matk: 78, block: 17, mpCharge: 6 },
@@ -3835,18 +4620,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 604, matk: 105, block: 22, mpCharge: 7 },
       lb4: { hp: 671, matk: 117, accuracy: 17, block: 25 },
       lb5: { hp: 1089, matk: 215, def: 8, mdef: 30, healPwr: 13 },
+      total: { hp: 3326, matk: 605, def: 8, mdef: 30, accuracy: 30, block: 83, healPwr: 13, mpCharge: 13 },
     },
     gpAbility: {
-      lv1: { hpDrain: 1 },
+      lv1: { hpdrain: 1 },
       lv2: { matk: 20 },
-      lv3: { hpDrain: 2 },
+      lv3: { hpdrain: 2 },
       lv4: { matk: 40 },
-      lv5: { hpDrain: 2 },
+      lv5: { hpdrain: 2 },
       lv6: { matk: 40 },
-      lv7: { hpDrain: 2 },
+      lv7: { hpdrain: 2 },
       lv8: { matk: 40 },
-      lv9: { hpDrain: 2 },
+      lv9: { hpdrain: 2 },
       lv10: { matk: 40 },
+      total: { matk: 180, hpdrain: 9 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -3859,7 +4646,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 47 },
       g9: { mpCostDown: 1 },
       g10: { matk: 55 },
+      total: { matk: 195, mpCostDown: 5 },
     },
+    maxStats: { hp: 10782, atk: 780, matk: 2280, def: 100, mdef: 264, accuracy: 129, block: 248, physCrit: 174, magicCrit: 291, hpRegen: 260, mpRegen: 200, healPwr: 175, hpDrain: 9, mpCharge: 73, mpCostDown: 5 },
   },
 
   'r-aysis': {
@@ -3889,11 +4678,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 244, g2: 292, g3: 341, g4: 390, g5: 438, g6: 487, g7: 536, g8: 584, g9: 633, g10: 682 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 12, g2: 15, g3: 17, g4: 19, g5: 22, g6: 24, g7: 27, g8: 29, g9: 31, g10: 34 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 10, g3: 12, g4: 13, g5: 15, g6: 16, g7: 18, g8: 20, g9: 21, g10: 23 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 19, g3: 12, g4: 25, g5: 3, g6: 18, g7: 35, g8: 21, g9: 41, g10: 5 } },
+      { slot: 1, stat: 'HP', grades: { g1: 244, g2: 536, g3: 877, g4: 1267, g5: 1705, g6: 2192, g7: 2728, g8: 3312, g9: 3945, g10: 4627 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 12, g2: 27, g3: 44, g4: 63, g5: 85, g6: 109, g7: 136, g8: 165, g9: 196, g10: 230 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 74, g7: 92, g8: 112, g9: 133, g10: 156 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 3, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 3 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 3 } },
+        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 3 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 3 } },
+        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 3 } },
+        { grade: 10, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 8 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 694, atk: 34, block: 18, mpCharge: 4 },
@@ -3901,6 +4701,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 937, atk: 46, block: 24, mpCharge: 5 },
       lb4: { hp: 1041, atk: 52, accuracy: 17, block: 27 },
       lb5: { hp: 1689, atk: 84, def: 30, mdef: 8, healPwr: 13 },
+      total: { hp: 5159, atk: 256, def: 30, mdef: 8, accuracy: 30, block: 90, healPwr: 13, mpCharge: 9 },
     },
     gpAbility: {
       lv1: { block: 1 },
@@ -3913,6 +4714,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 200 },
       lv9: { block: 2 },
       lv10: { hp: 200 },
+      total: { hp: 950, block: 9 },
     },
     abilityGrade: {
       g1: { block: 5 },
@@ -3925,7 +4727,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 28 },
       g9: { block: 13 },
       g10: { physCrit: 33 },
+      total: { block: 45, physCrit: 117 },
     },
+    maxStats: { hp: 17675, atk: 829, matk: 343, def: 264, mdef: 100, accuracy: 129, block: 324, physCrit: 742, magicCrit: 374, hpRegen: 404, mpRegen: 237, healPwr: 175, hpDrain: 0, mpCharge: 49, mpCostDown: 0 },
   },
 
   'r-roxanne': {
@@ -3955,11 +4759,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 271, g2: 326, g3: 380, g4: 434, g5: 489, g6: 543, g7: 597, g8: 651, g9: 706, g10: 760 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 21, g2: 26, g3: 30, g4: 34, g5: 39, g6: 43, g7: 47, g8: 51, g9: 56, g10: 60 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 6, g6: 18, g7: 26, g8: 21, g9: 31, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 271, g2: 597, g3: 977, g4: 1411, g5: 1900, g6: 2443, g7: 3040, g8: 3691, g9: 4397, g10: 5157 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 21, g2: 47, g3: 77, g4: 111, g5: 150, g6: 193, g7: 240, g8: 291, g9: 347, g10: 407 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 774, atk: 61, block: 14, mpCharge: 7 },
@@ -3967,6 +4782,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1044, atk: 82, block: 18, mpCharge: 9 },
       lb4: { hp: 1160, atk: 92, accuracy: 17, block: 20 },
       lb5: { hp: 1882, atk: 164, def: 17, mdef: 4, healPwr: 21 },
+      total: { hp: 5750, atk: 469, def: 17, mdef: 4, accuracy: 30, block: 68, healPwr: 21, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { hp: 150 },
@@ -3979,6 +4795,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { healPwr: 10 },
       lv9: { hp: 200 },
       lv10: { healPwr: 10 },
+      total: { hp: 950, healPwr: 45 },
     },
     abilityGrade: {
       g1: { healPwr: 4 },
@@ -3991,7 +4808,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { block: 8 },
       g9: { healPwr: 11 },
       g10: { block: 9 },
+      total: { block: 33, healPwr: 38 },
     },
+    maxStats: { hp: 19592, atk: 1486, matk: 610, def: 129, mdef: 48, accuracy: 129, block: 236, physCrit: 445, magicCrit: 267, hpRegen: 450, mpRegen: 200, healPwr: 354, hpDrain: 0, mpCharge: 89, mpCostDown: 0 },
   },
 
   'r-luceria': {
@@ -4021,11 +4840,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 255, g2: 306, g3: 357, g4: 408, g5: 459, g6: 510, g7: 561, g8: 612, g9: 663, g10: 714 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 24, g3: 29, g4: 33, g5: 37, g6: 41, g7: 45, g8: 49, g9: 53, g10: 57 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 255, g2: 561, g3: 918, g4: 1326, g5: 1785, g6: 2295, g7: 2856, g8: 3468, g9: 4131, g10: 4845 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 73, g4: 106, g5: 143, g6: 184, g7: 229, g8: 278, g9: 331, g10: 388 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 727, atk: 58, block: 17, mpCharge: 8 },
@@ -4033,6 +4863,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 982, atk: 78, block: 22, mpCharge: 11 },
       lb4: { hp: 1091, atk: 87, accuracy: 17, block: 25 },
       lb5: { hp: 1769, atk: 141, def: 30, mdef: 9, healPwr: 25 },
+      total: { hp: 5405, atk: 431, def: 30, mdef: 9, accuracy: 30, block: 83, healPwr: 25, mpCharge: 19 },
     },
     gpAbility: {
       lv1: { healPwr: 5 },
@@ -4045,6 +4876,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 200 },
       lv9: { healPwr: 10 },
       lv10: { hp: 200 },
+      total: { hp: 950, healPwr: 45 },
     },
     abilityGrade: {
       g1: { healPwr: 3 },
@@ -4057,7 +4889,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 436 },
       g9: { healPwr: 9 },
       g10: { hp: 509, healPwr: 11 },
+      total: { hp: 1818, healPwr: 42 },
     },
+    maxStats: { hp: 20290, atk: 1398, matk: 580, def: 264, mdef: 101, accuracy: 129, block: 248, physCrit: 160, magicCrit: 96, hpRegen: 423, mpRegen: 200, healPwr: 362, hpDrain: 0, mpCharge: 106, mpCostDown: 0 },
   },
 
   'r-aphrodia': {
@@ -4087,11 +4921,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 206, g2: 247, g3: 288, g4: 330, g5: 371, g6: 412, g7: 453, g8: 495, g9: 536, g10: 577 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 41, g4: 46, g5: 52, g6: 58, g7: 64, g8: 69, g9: 75, g10: 81 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 5, g4: 6, g5: 7, g6: 8, g7: 8, g8: 9, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 206, g2: 453, g3: 741, g4: 1071, g5: 1442, g6: 1854, g7: 2307, g8: 2802, g9: 3338, g10: 3915 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 151, g5: 203, g6: 261, g7: 325, g8: 394, g9: 469, g10: 550 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 587, atk: 83, block: 17, mpCharge: 7 },
@@ -4099,6 +4944,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 793, atk: 111, block: 22, mpCharge: 9 },
       lb4: { hp: 881, atk: 124, accuracy: 17, block: 25 },
       lb5: { hp: 1429, atk: 201, def: 35, mdef: 8, healPwr: 21 },
+      total: { hp: 4365, atk: 614, def: 35, mdef: 8, accuracy: 30, block: 83, healPwr: 21, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -4111,6 +4957,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { healPwr: 10 },
       lv9: { mpCharge: 2 },
       lv10: { healPwr: 10 },
+      total: { healPwr: 45, mpCharge: 9 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -4123,7 +4970,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 12 },
       g9: { mpCostDown: 1 },
       g10: { def: 14 },
+      total: { def: 50, mpCostDown: 5 },
     },
+    maxStats: { hp: 14152, atk: 1989, matk: 825, def: 319, mdef: 100, accuracy: 129, block: 248, physCrit: 291, magicCrit: 174, hpRegen: 341, mpRegen: 200, healPwr: 316, hpDrain: 0, mpCharge: 97, mpCostDown: 5 },
   },
 
   'r-drowatt': {
@@ -4153,11 +5002,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 188, g3: 220, g4: 251, g5: 283, g6: 314, g7: 345, g8: 377, g9: 408, g10: 440 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 40, g3: 46, g4: 53, g5: 60, g6: 66, g7: 73, g8: 79, g9: 86, g10: 93 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 7, g6: 18, g7: 32, g8: 21, g9: 38, g10: 11 } },
+      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 345, g3: 565, g4: 816, g5: 1099, g6: 1413, g7: 1758, g8: 2135, g9: 2543, g10: 2983 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 232, g6: 298, g7: 371, g8: 450, g9: 536, g10: 629 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 94, block: 17, mpCharge: 8 },
@@ -4165,6 +5025,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 604, atk: 127, block: 22, mpCharge: 10 },
       lb4: { hp: 671, atk: 141, accuracy: 17, block: 25 },
       lb5: { hp: 1089, atk: 229, def: 30, mdef: 8, healPwr: 13 },
+      total: { hp: 3326, atk: 699, def: 30, mdef: 8, accuracy: 30, block: 83, healPwr: 13, mpCharge: 18 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -4177,6 +5038,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 40 },
+      total: { atk: 180, mpCharge: 9 },
     },
     abilityGrade: {
       g1: { mpRegen: 4 },
@@ -4189,7 +5051,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { physCrit: 7 },
       g9: { mpRegen: 11 },
       g10: { physCrit: 8 },
+      total: { physCrit: 30, mpRegen: 38 },
     },
+    maxStats: { hp: 10782, atk: 2450, matk: 942, def: 264, mdef: 100, accuracy: 129, block: 248, physCrit: 190, magicCrit: 96, hpRegen: 260, mpRegen: 238, healPwr: 175, hpDrain: 0, mpCharge: 109, mpCostDown: 0 },
   },
 
   'r-aristera': {
@@ -4219,11 +5083,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 183, g3: 214, g4: 245, g5: 275, g6: 306, g7: 336, g8: 367, g9: 397, g10: 428 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 22, g2: 27, g3: 31, g4: 35, g5: 40, g6: 44, g7: 49, g8: 53, g9: 58, g10: 62 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 11, g3: 13, g4: 14, g5: 16, g6: 18, g7: 20, g8: 22, g9: 23, g10: 25 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 4, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 336, g3: 550, g4: 795, g5: 1070, g6: 1376, g7: 1712, g8: 2079, g9: 2476, g10: 2904 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 47, g5: 63, g6: 81, g7: 101, g8: 123, g9: 146, g10: 171 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 436, matk: 63, block: 14, mpCharge: 5 },
@@ -4231,6 +5106,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 588, matk: 85, block: 18, mpCharge: 7 },
       lb4: { hp: 653, matk: 95, accuracy: 17, block: 20 },
       lb5: { hp: 1060, matk: 154, def: 13, mdef: 60, healPwr: 13 },
+      total: { hp: 3238, matk: 470, def: 13, mdef: 60, accuracy: 30, block: 68, healPwr: 13, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { accuracy: 1 },
@@ -4243,6 +5119,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { accuracy: 2 },
       lv10: { matk: 40 },
+      total: { matk: 180, accuracy: 9 },
     },
     abilityGrade: {
       g1: { mdef: 10 },
@@ -4255,7 +5132,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { accuracy: 5 },
       g9: { mdef: 25 },
       g10: { accuracy: 6 },
+      total: { mdef: 86, accuracy: 23 },
     },
+    maxStats: { hp: 10498, atk: 630, matk: 1701, def: 171, mdef: 544, accuracy: 161, block: 203, physCrit: 267, magicCrit: 445, hpRegen: 253, mpRegen: 225, healPwr: 175, hpDrain: 0, mpCharge: 65, mpCostDown: 0 },
   },
 
   'r-rosalyn': {
@@ -4285,11 +5164,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 183, g3: 214, g4: 245, g5: 275, g6: 306, g7: 336, g8: 367, g9: 397, g10: 428 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 27, g3: 31, g4: 35, g5: 40, g6: 44, g7: 49, g8: 53, g9: 58, g10: 62 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 9, g2: 11, g3: 13, g4: 14, g5: 16, g6: 18, g7: 20, g8: 22, g9: 23, g10: 25 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 8 } },
+      { slot: 1, stat: 'HP', grades: { g1: 153, g2: 336, g3: 550, g4: 795, g5: 1070, g6: 1376, g7: 1712, g8: 2079, g9: 2476, g10: 2904 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 9, g2: 20, g3: 33, g4: 47, g5: 63, g6: 81, g7: 101, g8: 123, g9: 146, g10: 171 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 436, atk: 63, block: 14, mpCharge: 5 },
@@ -4297,6 +5187,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 588, atk: 85, block: 18, mpCharge: 7 },
       lb4: { hp: 653, atk: 95, accuracy: 17, block: 20 },
       lb5: { hp: 1060, atk: 170, def: 51, mdef: 13, healPwr: 13 },
+      total: { hp: 3238, atk: 486, def: 51, mdef: 13, accuracy: 30, block: 68, healPwr: 13, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -4309,6 +5200,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { hp: 300 },
       lv10: { atk: 40 },
+      total: { hp: 1400, atk: 180 },
     },
     abilityGrade: {
       g1: { atk: 18 },
@@ -4321,7 +5213,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { block: 8 },
       g9: { atk: 46 },
       g10: { block: 9 },
+      total: { atk: 160, block: 33 },
     },
+    maxStats: { hp: 11898, atk: 1877, matk: 630, def: 449, mdef: 171, accuracy: 129, block: 236, physCrit: 445, magicCrit: 267, hpRegen: 253, mpRegen: 225, healPwr: 175, hpDrain: 0, mpCharge: 70, mpCostDown: 0 },
   },
 
   'r-estria': {
@@ -4351,11 +5245,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 227, g2: 273, g3: 318, g4: 364, g5: 409, g6: 455, g7: 500, g8: 545, g9: 591, g10: 636 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 33, g3: 38, g4: 44, g5: 49, g6: 54, g7: 60, g8: 65, g9: 71, g10: 76 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 17, g3: 20, g4: 23, g5: 26, g6: 29, g7: 32, g8: 34, g9: 37, g10: 40 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 1, g4: 1, g5: 1, g6: 1, g7: 1, g8: 1, g9: 2, g10: 2 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 8, g6: 18, g7: 23, g8: 21, g9: 27, g10: 12 } },
+      { slot: 1, stat: 'HP', grades: { g1: 227, g2: 500, g3: 818, g4: 1182, g5: 1591, g6: 2046, g7: 2546, g8: 3091, g9: 3682, g10: 4318 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 245, g7: 305, g8: 370, g9: 441, g10: 517 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 100, g6: 129, g7: 161, g8: 195, g9: 232, g10: 272 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 6, g7: 7, g8: 8, g9: 10, g10: 12 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
+        { grade: 10, stat: 'MP Charge', value: 12, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 20 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 648, atk: 78, block: 12, mpCharge: 8 },
@@ -4363,6 +5268,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 874, atk: 105, block: 16, mpCharge: 11 },
       lb4: { hp: 972, atk: 116, accuracy: 17, block: 18 },
       lb5: { hp: 1738, atk: 208, def: 103, mdef: 21, healPwr: 13 },
+      total: { hp: 4977, atk: 596, def: 103, mdef: 21, accuracy: 30, block: 60, healPwr: 13, mpCharge: 19 },
     },
     gpAbility: {
       lv1: { hp: 200 },
@@ -4375,6 +5281,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { mdef: 20 },
       lv9: { hp: 300 },
       lv10: { mdef: 20 },
+      total: { hp: 1400, mdef: 90 },
     },
     abilityGrade: {
       g1: { hp: 180 },
@@ -4387,7 +5294,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { def: 33 },
       g9: { hp: 468 },
       g10: { def: 38 },
+      total: { hp: 1620, def: 136 },
     },
+    maxStats: { hp: 18792, atk: 1889, matk: 775, def: 873, mdef: 363, accuracy: 129, block: 180, physCrit: 45, magicCrit: 27, hpRegen: 376, mpRegen: 200, healPwr: 175, hpDrain: 0, mpCharge: 111, mpCostDown: 0 },
   },
 
   'r-celebria': {
@@ -4417,11 +5326,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 422, g2: 507, g3: 591, g4: 675, g5: 760, g6: 844, g7: 929, g8: 1013, g9: 1097, g10: 1182 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 24, g2: 28, g3: 33, g4: 38, g5: 43, g6: 47, g7: 52, g8: 57, g9: 62, g10: 66 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 0, g2: 1, g3: 1, g4: 1, g5: 1, g6: 1, g7: 1, g8: 1, g9: 1, g10: 1 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 5, g3: 5, g4: 6, g5: 7, g6: 8, g7: 8, g8: 9, g9: 10, g10: 11 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 6, g6: 18, g7: 23, g8: 21, g9: 27, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 422, g2: 929, g3: 1520, g4: 2195, g5: 2955, g6: 3799, g7: 4728, g8: 5741, g9: 6838, g10: 8020 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 24, g2: 52, g3: 85, g4: 123, g5: 166, g6: 213, g7: 265, g8: 322, g9: 384, g10: 450 } },
+      { slot: 3, stat: 'MDEF', grades: { g2: 1, g3: 2, g4: 3, g5: 4, g6: 5, g7: 6, g8: 7, g9: 8, g10: 9 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 16 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 1203, matk: 68, block: 12, mpCharge: 7 },
@@ -4429,6 +5349,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1624, matk: 91, block: 16, mpCharge: 9 },
       lb4: { hp: 1805, matk: 101, accuracy: 17, block: 18 },
       lb5: { hp: 2927, matk: 164, def: 1, mdef: 2, healPwr: 21 },
+      total: { hp: 8942, matk: 502, def: 1, mdef: 2, accuracy: 30, block: 60, healPwr: 21, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { healPwr: 5 },
@@ -4441,19 +5362,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 200 },
       lv9: { healPwr: 10 },
       lv10: { hp: 200 },
+      total: { hp: 950, healPwr: 45 },
     },
     abilityGrade: {
-      g1: { hpDrain: 1 },
+      g1: { hpdrain: 1 },
       g2: { mpCharge: 2 },
-      g3: { hpDrain: 1 },
+      g3: { hpdrain: 1 },
       g4: { mpCharge: 3 },
-      g5: { hpDrain: 1 },
+      g5: { hpdrain: 1 },
       g6: { mpCharge: 3 },
-      g7: { hpDrain: 1 },
+      g7: { hpdrain: 1 },
       g8: { mpCharge: 4 },
-      g9: { hpDrain: 1 },
+      g9: { hpdrain: 1 },
       g10: { mpCharge: 5 },
+      total: { hpdrain: 5, mpCharge: 17 },
     },
+    maxStats: { hp: 29942, atk: 675, matk: 1627, def: 7, mdef: 20, accuracy: 129, block: 180, physCrit: 174, magicCrit: 291, hpRegen: 701, mpRegen: 200, healPwr: 316, hpDrain: 5, mpCharge: 109, mpCostDown: 0 },
   },
 
   'r-xevia': {
@@ -4483,11 +5407,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 244, g2: 292, g3: 341, g4: 390, g5: 438, g6: 487, g7: 536, g8: 584, g9: 633, g10: 682 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 17, g3: 20, g4: 23, g5: 25, g6: 28, g7: 31, g8: 34, g9: 37, g10: 39 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 10, g3: 12, g4: 13, g5: 15, g6: 16, g7: 18, g8: 20, g9: 21, g10: 23 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 19, g3: 12, g4: 25, g5: 4, g6: 18, g7: 35, g8: 21, g9: 41, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 244, g2: 536, g3: 877, g4: 1267, g5: 1705, g6: 2192, g7: 2728, g8: 3312, g9: 3945, g10: 4627 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 99, g6: 127, g7: 158, g8: 192, g9: 229, g10: 268 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 74, g7: 92, g8: 112, g9: 133, g10: 156 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 4 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 4 } },
+        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 4 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 4 } },
+        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 4 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 11 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 694, atk: 40, block: 18, mpCharge: 5 },
@@ -4495,6 +5430,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 937, atk: 54, block: 24, mpCharge: 7 },
       lb4: { hp: 1041, atk: 60, accuracy: 17, block: 27 },
       lb5: { hp: 1862, atk: 116, def: 35, mdef: 8, healPwr: 21 },
+      total: { hp: 5332, atk: 316, def: 35, mdef: 8, accuracy: 30, block: 90, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { atk: 20 },
@@ -4507,6 +5443,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { block: 2 },
       lv9: { atk: 40 },
       lv10: { block: 2 },
+      total: { atk: 180, block: 9 },
     },
     abilityGrade: {
       g1: { def: 6 },
@@ -4519,7 +5456,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { hp: 416 },
       g9: { def: 15 },
       g10: { hp: 486 },
+      total: { hp: 1735, def: 51 },
     },
+    maxStats: { hp: 18633, atk: 1401, matk: 542, def: 320, mdef: 100, accuracy: 129, block: 279, physCrit: 45, magicCrit: 27, hpRegen: 404, mpRegen: 225, healPwr: 271, hpDrain: 0, mpCharge: 65, mpCostDown: 0 },
   },
 
   'r-shahar': {
@@ -4549,11 +5488,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 188, g3: 220, g4: 251, g5: 283, g6: 314, g7: 345, g8: 377, g9: 408, g10: 440 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 27, g3: 31, g4: 35, g5: 40, g6: 44, g7: 49, g8: 53, g9: 58, g10: 62 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 345, g3: 565, g4: 816, g5: 1099, g6: 1413, g7: 1758, g8: 2135, g9: 2543, g10: 2983 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 63, block: 17, mpCharge: 7 },
@@ -4561,6 +5511,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 604, atk: 85, block: 22, mpCharge: 9 },
       lb4: { hp: 671, atk: 95, accuracy: 17, block: 25 },
       lb5: { hp: 1200, atk: 169, def: 30, mdef: 5, healPwr: 13 },
+      total: { hp: 3437, atk: 485, def: 30, mdef: 5, accuracy: 30, block: 83, healPwr: 13, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { accuracy: 1 },
@@ -4573,6 +5524,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { accuracy: 2 },
       lv10: { atk: 40 },
+      total: { atk: 180, accuracy: 9 },
     },
     abilityGrade: {
       g1: { hp: 124 },
@@ -4585,7 +5537,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { atk: 38 },
       g9: { hp: 323 },
       g10: { atk: 44 },
+      total: { hp: 1118, atk: 158 },
     },
+    maxStats: { hp: 12011, atk: 1874, matk: 630, def: 264, mdef: 97, accuracy: 138, block: 248, physCrit: 445, magicCrit: 267, hpRegen: 260, mpRegen: 225, healPwr: 175, hpDrain: 0, mpCharge: 92, mpCostDown: 0 },
   },
 
   'r-elythia': {
@@ -4615,11 +5569,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 188, g3: 220, g4: 251, g5: 283, g6: 314, g7: 345, g8: 377, g9: 408, g10: 440 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 27, g3: 31, g4: 35, g5: 40, g6: 44, g7: 49, g8: 53, g9: 58, g10: 62 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 345, g3: 565, g4: 816, g5: 1099, g6: 1413, g7: 1758, g8: 2135, g9: 2543, g10: 2983 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 63, block: 17, mpCharge: 6 },
@@ -4627,6 +5592,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 604, atk: 85, block: 22, mpCharge: 8 },
       lb4: { hp: 671, atk: 95, accuracy: 17, block: 25 },
       lb5: { hp: 1089, atk: 154, def: 30, mdef: 8, healPwr: 16 },
+      total: { hp: 3326, atk: 470, def: 30, mdef: 8, accuracy: 30, block: 83, healPwr: 16, mpCharge: 14 },
     },
     gpAbility: {
       lv1: { mpCostDown: 1 },
@@ -4639,6 +5605,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { mpCostDown: 1 },
       lv10: { atk: 40 },
+      total: { atk: 180, mpCostDown: 5 },
     },
     abilityGrade: {
       g1: { def: 18 },
@@ -4651,7 +5618,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { magicCrit: 8 },
       g9: { def: 46 },
       g10: { magicCrit: 9 },
+      total: { def: 160, magicCrit: 33 },
     },
+    maxStats: { hp: 10782, atk: 1701, matk: 630, def: 424, mdef: 100, accuracy: 129, block: 248, physCrit: 445, magicCrit: 300, hpRegen: 260, mpRegen: 225, healPwr: 178, hpDrain: 0, mpCharge: 81, mpCostDown: 5 },
   },
 
   'r-nadine': {
@@ -4681,11 +5650,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 248, g3: 290, g4: 331, g5: 372, g6: 414, g7: 455, g8: 496, g9: 538, g10: 579 } },
-      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 77, g10: 82 } },
-      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 455, g3: 745, g4: 1076, g5: 1448, g6: 1862, g7: 2317, g8: 2813, g9: 3351, g10: 3930 } },
+      { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
+      { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 589, matk: 84, block: 14, mpCharge: 5 },
@@ -4693,6 +5673,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 796, matk: 113, block: 18, mpCharge: 7 },
       lb4: { hp: 884, matk: 126, accuracy: 17, block: 20 },
       lb5: { hp: 1434, matk: 225, def: 4, mdef: 15, healPwr: 13 },
+      total: { hp: 4381, matk: 644, def: 4, mdef: 15, accuracy: 30, block: 68, healPwr: 13, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -4705,6 +5686,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { matk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { matk: 40 },
+      total: { matk: 180, mpCharge: 9 },
     },
     abilityGrade: {
       g1: { block: 4 },
@@ -4717,7 +5699,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { matk: 50 },
       g9: { block: 10 },
       g10: { matk: 59 },
+      total: { matk: 210, block: 34 },
     },
+    maxStats: { hp: 14203, atk: 838, matk: 2431, def: 48, mdef: 127, accuracy: 129, block: 237, physCrit: 96, magicCrit: 160, hpRegen: 343, mpRegen: 200, healPwr: 175, hpDrain: 0, mpCharge: 77, mpCostDown: 0 },
   },
 
   'r-lorelia': {
@@ -4747,11 +5731,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 188, g3: 220, g4: 251, g5: 283, g6: 314, g7: 345, g8: 377, g9: 408, g10: 440 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 77, g10: 82 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 6, g3: 7, g4: 8, g5: 10, g6: 11, g7: 12, g8: 13, g9: 14, g10: 15 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 17, g3: 12, g4: 23, g5: 6, g6: 18, g7: 32, g8: 21, g9: 38, g10: 10 } },
+      { slot: 1, stat: 'HP', grades: { g1: 157, g2: 345, g3: 565, g4: 816, g5: 1099, g6: 1413, g7: 1758, g8: 2135, g9: 2543, g10: 2983 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 84, block: 17, mpCharge: 7 },
@@ -4759,6 +5754,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 604, atk: 113, block: 22, mpCharge: 9 },
       lb4: { hp: 671, atk: 126, accuracy: 17, block: 25 },
       lb5: { hp: 1089, atk: 204, def: 30, mdef: 8, healPwr: 13 },
+      total: { hp: 3326, atk: 623, def: 30, mdef: 8, accuracy: 30, block: 83, healPwr: 13, mpCharge: 16 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -4771,6 +5767,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 40 },
+      total: { atk: 180, mpCharge: 9 },
     },
     abilityGrade: {
       g1: { mpCostDown: 1 },
@@ -4783,7 +5780,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpRegen: 9 },
       g9: { mpCostDown: 1 },
       g10: { mpRegen: 11 },
+      total: { mpRegen: 39, mpCostDown: 5 },
     },
+    maxStats: { hp: 10782, atk: 2200, matk: 838, def: 264, mdef: 100, accuracy: 129, block: 248, physCrit: 160, magicCrit: 96, hpRegen: 260, mpRegen: 239, healPwr: 175, hpDrain: 0, mpCharge: 98, mpCostDown: 5 },
   },
 
   'r-destra': {
@@ -4813,11 +5812,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 422, g2: 507, g3: 591, g4: 675, g5: 760, g6: 844, g7: 929, g8: 1013, g9: 1097, g10: 1182 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 31, g3: 36, g4: 41, g5: 46, g6: 51, g7: 56, g8: 61, g9: 66, g10: 71 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 0, g2: 1, g3: 1, g4: 1, g5: 1, g6: 1, g7: 1, g8: 1, g9: 1, g10: 1 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 6, g6: 18, g7: 23, g8: 21, g9: 27, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 422, g2: 929, g3: 1520, g4: 2195, g5: 2955, g6: 3799, g7: 4728, g8: 5741, g9: 6838, g10: 8020 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 56, g3: 92, g4: 133, g5: 179, g6: 230, g7: 286, g8: 347, g9: 413, g10: 484 } },
+      { slot: 3, stat: 'DEF', grades: { g2: 1, g3: 2, g4: 3, g5: 4, g6: 5, g7: 6, g8: 7, g9: 8, g10: 9 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 1203, atk: 73, block: 12, mpCharge: 6 },
@@ -4825,6 +5835,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 1624, atk: 98, block: 16, mpCharge: 9 },
       lb4: { hp: 1805, atk: 109, accuracy: 17, block: 18 },
       lb5: { hp: 2927, atk: 177, def: 2, mdef: 1, healPwr: 24 },
+      total: { hp: 8942, atk: 540, def: 2, mdef: 1, accuracy: 30, block: 60, healPwr: 24, mpCharge: 15 },
     },
     gpAbility: {
       lv1: { block: 1 },
@@ -4837,6 +5848,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { hp: 200 },
       lv9: { block: 2 },
       lv10: { hp: 200 },
+      total: { hp: 950, block: 9 },
     },
     abilityGrade: {
       g1: { mpCharge: 2 },
@@ -4849,7 +5861,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { healPwr: 9 },
       g9: { mpCharge: 4 },
       g10: { healPwr: 11 },
+      total: { healPwr: 39, mpCharge: 15 },
     },
+    maxStats: { hp: 29942, atk: 1748, matk: 725, def: 20, mdef: 7, accuracy: 129, block: 189, physCrit: 160, magicCrit: 96, hpRegen: 701, mpRegen: 200, healPwr: 313, hpDrain: 0, mpCharge: 100, mpCostDown: 0 },
   },
 
   'r-eskelda': {
@@ -4879,11 +5893,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 227, g2: 273, g3: 318, g4: 364, g5: 409, g6: 455, g7: 500, g8: 545, g9: 591, g10: 636 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 26, g3: 31, g4: 35, g5: 39, g6: 44, g7: 48, g8: 53, g9: 57, g10: 61 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 17, g3: 20, g4: 23, g5: 26, g6: 29, g7: 32, g8: 34, g9: 37, g10: 40 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 9, g5: 11, g6: 12, g7: 13, g8: 14, g9: 15, g10: 16 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 13, g3: 12, g4: 17, g5: 6, g6: 18, g7: 23, g8: 21, g9: 27, g10: 9 } },
+      { slot: 1, stat: 'HP', grades: { g1: 227, g2: 500, g3: 818, g4: 1182, g5: 1591, g6: 2046, g7: 2546, g8: 3091, g9: 3682, g10: 4318 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 48, g3: 79, g4: 114, g5: 153, g6: 197, g7: 245, g8: 298, g9: 355, g10: 416 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 100, g6: 129, g7: 161, g8: 195, g9: 232, g10: 272 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 648, matk: 62, block: 12, mpCharge: 6 },
@@ -4891,6 +5916,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 874, matk: 84, block: 16, mpCharge: 9 },
       lb4: { hp: 972, matk: 94, accuracy: 17, block: 18 },
       lb5: { hp: 1503, atk: 121, def: 61, mdef: 13, healPwr: 13 },
+      total: { hp: 4742, atk: 121, matk: 312, def: 61, mdef: 13, accuracy: 30, block: 60, healPwr: 13, mpCharge: 15 },
     },
     gpAbility: {
       lv1: { hp: 150 },
@@ -4903,6 +5929,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { block: 2 },
       lv9: { hp: 200 },
       lv10: { block: 2 },
+      total: { hp: 950, block: 9 },
     },
     abilityGrade: {
       g1: { mpRegen: 4 },
@@ -4915,7 +5942,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       g8: { mpCharge: 4 },
       g9: { mpRegen: 11 },
       g10: { mpCharge: 4 },
+      total: { mpRegen: 38, mpCharge: 15 },
     },
+    maxStats: { hp: 15523, atk: 1161, matk: 935, def: 459, mdef: 171, accuracy: 129, block: 249, physCrit: 445, magicCrit: 267, hpRegen: 343, mpRegen: 238, healPwr: 175, hpDrain: 0, mpCharge: 100, mpCostDown: 0 },
   },
 
   'sr-lucrezia': {
@@ -4945,11 +5974,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       mpCostDown: { base: 0, lv90: 0 },
     },
     passiveAbilities: [
-      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 248, g3: 290, g4: 331, g5: 372, g6: 414, g7: 455, g8: 496, g9: 538, g10: 579 } },
-      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 35, g3: 41, g4: 47, g5: 53, g6: 59, g7: 65, g8: 71, g9: 77, g10: 82 } },
-      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 3, g3: 3, g4: 3, g5: 4, g6: 4, g7: 5, g8: 5, g9: 5, g10: 6 } },
-      { slot: 5, stat: 'MP Regen', grades: { g1: 9, g2: 14, g3: 12, g4: 19, g5: 5, g6: 18, g7: 26, g8: 21, g9: 31, g10: 7 } },
+      { slot: 1, stat: 'HP', grades: { g1: 207, g2: 455, g3: 745, g4: 1076, g5: 1448, g6: 1862, g7: 2317, g8: 2813, g9: 3351, g10: 3930 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
+      { slot: 5, grades: [
+        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+      ] }
     ],
     limitBreak: {
       lb1: { hp: 589, atk: 84, block: 14, mpCharge: 5 },
@@ -4957,6 +5997,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lb3: { hp: 796, atk: 113, block: 18, mpCharge: 7 },
       lb4: { hp: 884, atk: 126, accuracy: 17, block: 20 },
       lb5: { hp: 1434, atk: 204, def: 15, mdef: 4, healPwr: 21 },
+      total: { hp: 4381, atk: 623, def: 15, mdef: 4, accuracy: 30, block: 68, healPwr: 21, mpCharge: 12 },
     },
     gpAbility: {
       lv1: { mpCharge: 1 },
@@ -4969,19 +6010,22 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       lv8: { atk: 40 },
       lv9: { mpCharge: 2 },
       lv10: { atk: 40 },
+      total: { atk: 180, mpCharge: 9 },
     },
     abilityGrade: {
-      g1: { hpDrain: 1 },
+      g1: { hpdrain: 1 },
       g2: { physCrit: 4 },
-      g3: { hpDrain: 1 },
+      g3: { hpdrain: 1 },
       g4: { physCrit: 5 },
-      g5: { hpDrain: 1 },
+      g5: { hpdrain: 1 },
       g6: { physCrit: 6 },
-      g7: { hpDrain: 1 },
+      g7: { hpdrain: 1 },
       g8: { physCrit: 7 },
-      g9: { hpDrain: 1 },
+      g9: { hpdrain: 1 },
       g10: { physCrit: 8 },
+      total: { physCrit: 30, hpdrain: 5 },
     },
+    maxStats: { hp: 14203, atk: 2200, matk: 838, def: 127, mdef: 48, accuracy: 129, block: 203, physCrit: 190, magicCrit: 96, hpRegen: 343, mpRegen: 200, healPwr: 271, hpDrain: 5, mpCharge: 77, mpCostDown: 0 },
   },
 };
 
