@@ -6,7 +6,7 @@ export const silverAndBloodRedeemCodes = {
     title: 'Silver and Blood Redeem Codes - Free Rewards & Gift Codes 2025 | GachaWiki',
     description:
       'Complete list of Silver and Blood redeem codes for free rewards, gems, and items. Updated regularly with working promo codes from Reddit and community sources for the mobile RPG game.',
-    lastUpdated: new Date('2025-12-29'),
+    lastUpdated: new Date('2026-01-09'),
   },
 
   availableCodes: [
@@ -53,6 +53,15 @@ export const silverAndBloodRedeemCodes = {
       lastChecked: 'December 2025',
       dateAdded: '2025-12-29',
       rewards: 'Unknown rewards',
+      serverRestriction: 'ALL',
+    },
+    {
+      id: 'sabsns60',
+      code: 'SABSNS60',
+      status: 'active',
+      lastChecked: 'January 2026',
+      dateAdded: '2026-01-09',
+      rewards: 'Moon Tear x500',
       serverRestriction: 'ALL',
     },
   ],
