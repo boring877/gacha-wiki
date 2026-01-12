@@ -1088,7 +1088,7 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Critical hit rate increased by 34%, ultimate skill damage increased by 40%.',
-      'When there is only 1 ATTACKER on the field, ultimate skill damage is increased by an additional 40%.',
+      'When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
     ],
   },
   {

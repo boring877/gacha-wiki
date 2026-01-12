@@ -22,6 +22,7 @@ import { ninaBuild } from './character-builds/nina.js';
 import { jorogumoBuild } from './character-builds/jorogumo.js';
 import { lilyBuild } from './character-builds/lily.js';
 import { shutenDojiBuild } from './character-builds/shuten-doji.js';
+import { heraBuild } from './character-builds/hera.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -90,6 +91,9 @@ export const CHARACTER_BUILDS = {
 
   // Shuten-doji Build - SSR Wind DOT DPS
   'shuten-doji': shutenDojiBuild,
+
+  // Hera Build - SSR Chaos DOT DPS
+  hera: heraBuild,
 };
 
 // Generate builds for available characters only

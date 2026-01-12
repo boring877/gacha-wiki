@@ -54,7 +54,7 @@ export const sigurdBuild = {
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       slug: 'sigurd-memory',
       description:
-        'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only 1 ATTACKER on the field, ultimate skill damage is increased by an additional 40%.',
+        'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
     },
     {
       name: 'Heroes, Never Stop',
