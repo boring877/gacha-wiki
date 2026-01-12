@@ -405,6 +405,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
   </section>
 
   <!-- Alternative Memory Cards Section -->
+  {finalBuild.alternativeMemoryCards && finalBuild.alternativeMemoryCards.length > 0 && (
   <section class="build-section">
     <h2>Alternative Memory Cards</h2>
     <p style="color: var(--zn-text-secondary); margin-bottom: 1.5rem;">
@@ -494,6 +495,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
       }
     </div>
   </section>
+  )}
 
   <!-- Runes Section -->
   <section class="build-section">
