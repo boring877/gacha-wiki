@@ -2,9 +2,9 @@
 import { Image } from 'astro:assets';
 
 // Import all images using glob patterns
-// Using the longer filename format (6a0a8297...) which has better design
-const iconImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/Busty_Burst/character/icons/6a0a8297dea7cbe49e003c19a11234da_*_sprite.png',
+// Using sprites directory which has more character coverage (246 vs 106)
+const spriteImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/Busty_Burst/character/sprites/*.png',
   { eager: true }
 );
 
@@ -51,22 +51,22 @@ if (imageType === 'body') {
 }
 
 if (!imageModule) {
-  // Look for icon image: 6a0a8297dea7cbe49e003c19a11234da_{id}_sprite.png
-  const iconKey = Object.keys(iconImages).find(key =>
-    key.includes(`6a0a8297dea7cbe49e003c19a11234da_${characterId}_sprite.png`)
+  // Look for sprite image: {id}.png
+  const spriteKey = Object.keys(spriteImages).find(key =>
+    key.endsWith(`/${characterId}.png`)
   );
-  if (iconKey) {
-    imageModule = iconImages[iconKey].default;
+  if (spriteKey) {
+    imageModule = spriteImages[spriteKey].default;
   }
 }
 
 // Fallback to character 2001 if not found
 if (!imageModule) {
-  const fallbackKey = Object.keys(iconImages).find(key =>
-    key.includes('6a0a8297dea7cbe49e003c19a11234da_2001_sprite.png')
+  const fallbackKey = Object.keys(spriteImages).find(key =>
+    key.endsWith('/2001.png')
   );
   if (fallbackKey) {
-    imageModule = iconImages[fallbackKey].default;
+    imageModule = spriteImages[fallbackKey].default;
   }
 }
 ---

@@ -24,6 +24,7 @@ import { lilyBuild } from './character-builds/lily.js';
 import { shutenDojiBuild } from './character-builds/shuten-doji.js';
 import { heraBuild } from './character-builds/hera.js';
 import { chiyaBuild } from './character-builds/chiya.js';
+import { lokiBuild } from './character-builds/loki.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -98,6 +99,9 @@ export const CHARACTER_BUILDS = {
 
   // Chiya Build - SSR Ice Crit Enhanced Ultimate DPS
   chiya: chiyaBuild,
+
+  // Loki Build - SSR Chaos Debuffer
+  loki: lokiBuild,
 };
 
 // Generate builds for available characters only

@@ -1485,6 +1485,64 @@ export const BUSTY_BURST_SUPPORT_DATA = [
       inspiration: { name: 'Strike Inspiration', effect: 'Block', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
+  // 2025 Summer Swimsuit Characters
+  {
+    id: 2077,
+    name: '【Seductive High-Cut Swimsuit】Nerys',
+    rarity: 'SSR',
+    element: 'Holy',
+    weapon: 'Shot',
+    supportStats: {
+      lb0: { 'MATK': 80 },
+      lb1: { 'MATK': 120, 'Accuracy': 7 },
+      lb2: { 'MATK': 160, 'Accuracy': 8 },
+      lb3: { 'MATK': 200, 'Accuracy': 9 },
+      lb4: { 'MATK': 200, 'Accuracy': 10 },
+      lb5: { 'MATK': 200, 'Accuracy': 10 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Shot Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
+    id: 2078,
+    name: '【Killer☆Bikini】Theresia',
+    rarity: 'SSR',
+    element: 'Mind',
+    weapon: 'Pierce',
+    supportStats: {
+      lb0: { 'HP': 500 },
+      lb1: { 'HP': 1000, 'MATK': 80 },
+      lb2: { 'HP': 1500, 'MATK': 120 },
+      lb3: { 'HP': 2000, 'MATK': 160 },
+      lb4: { 'HP': 2000, 'MATK': 200 },
+      lb5: { 'HP': 2000, 'MATK': 200 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Pierce Inspiration', effect: 'Action Speed', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
+    }
+  },
+  {
+    id: 2079,
+    name: '【Epic Fishing】Meinias',
+    rarity: 'SR',
+    element: 'Water',
+    weapon: 'Pierce',
+    supportStats: {
+      lb0: { 'ATK': 50 },
+      lb1: { 'ATK': 80, 'HP': 300 },
+      lb2: { 'ATK': 110, 'HP': 700 },
+      lb3: { 'ATK': 140, 'HP': 1100 },
+      lb4: { 'ATK': 140, 'HP': 1500 },
+      lb5: { 'ATK': 140, 'HP': 1500 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Pierce Inspiration', effect: 'Action Speed', values: { members2: '+2%', members4: '+4%', members6: '+6%' } }
+    }
+  },
 ];
 
 // Helper functions

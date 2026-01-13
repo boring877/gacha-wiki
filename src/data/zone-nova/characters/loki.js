@@ -39,7 +39,7 @@ export const lokiData = {
     passive: {
       name: 'Art of Deception',
       description:
-        ' auto skills apply 36% vulnerability debuff  for 5 seconds. Refreshable Duration: New applications refresh the timer. Maximum Stacks: 2 layers (72% increased damage at full stacks).',
+        'Auto skills apply 36% vulnerability debuff for 5 seconds. Refreshable Duration: New applications refresh the timer. Maximum Stacks: 1 layer (36% increased damage). With A1, all attacks can trigger. With A6, can stack 2 layers (72%).',
     },
   },
 
@@ -73,7 +73,7 @@ export const lokiData = {
     { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
     {
       level: 6,
-      effect: 'The passives vulnerability effect can stack 2 additional layers',
+      effect: 'The passives vulnerability effect can stack 1 additional layer (2 layers total for 72% increased damage)',
     },
   ],
 
@@ -87,7 +87,7 @@ export const lokiData = {
       defense: '600',
     },
     effects: [
-      'Attack power increases by 40% The last target that took ultimate skill damage from the equipment wearer takes 24% increased damage',
+      'Attack increases by 40%, the last target hit by the wearer\'s ULT takes 24% increased damage',
     ],
   },
 

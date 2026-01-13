@@ -68,10 +68,24 @@ const version = packageInfo.version;
             </svg>
             <span>Help us reach 1000 subscribers!</span>
           </a>
-          <a href="https://www.patreon.com/c/Gachawiki" class="mobile-support-link patreon-support">
-            <span class="patreon-icon-mobile">P</span>
-            <span>Support us on Patreon</span>
-          </a>
+          <button
+            class="mobile-support-link btc-support"
+            data-address="bc1qdqzll9zp50jgs5kkrcfz9w2u60tk9q8ds05gx4"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.546zm-6.35-4.613c.24-1.59-.974-2.45-2.64-3.03l.54-2.153-1.315-.33-.52 2.1c-.347-.087-.7-.168-1.053-.25l.53-2.12-1.32-.33-.54 2.153c-.286-.065-.567-.13-.84-.2l-1.815-.45-.35 1.407s.974.224.954.238c.533.133.63.486.613.766l-.615 2.473c.037.01.085.024.137.047l-.14-.035-.86 3.46c-.065.16-.23.4-.6.31.013.02-.954-.24-.954-.24l-.65 1.51 1.71.426.93.24-.54 2.19 1.32.33.54-2.17c.36.1.71.19 1.05.273l-.54 2.14 1.32.33.54-2.18c2.24.42 3.93.25 4.64-1.77.57-1.63-.03-2.57-1.2-3.18.85-.2 1.5-.76 1.67-1.93zm-2.99 4.2c-.4 1.63-3.13.75-4.01.53l.72-2.87c.88.22 3.71.66 3.29 2.34zm.41-4.22c-.37 1.49-2.64.73-3.38.54l.65-2.6c.74.18 3.11.53 2.73 2.06z"/>
+            </svg>
+            <span>Donate BTC</span>
+          </button>
+          <button
+            class="mobile-support-link xmr-support"
+            data-address="4AopuCr53mbHWekXMcpVfoc5Wza6oYxbpPm4nC88EjCbcv3cyG9vAk5EgBi1Q17qVuEuWZzMwF8YC2aVnjkTWz7aF86s3jW"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.424 0 9.818 4.394 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818-5.424 0-9.818-4.394-9.818-9.818 0-5.424 4.394-9.818 9.818-9.818zM5.091 16.364V12l3.273 3.273V9.818L12 13.455l3.636-3.637v5.455L18.909 12v4.364h2.182v1.454H2.909v-1.454h2.182z"/>
+            </svg>
+            <span>Donate XMR</span>
+          </button>
         </div>
       </div>
 
@@ -368,24 +382,57 @@ const version = packageInfo.version;
     color: var(--amber-glow);
   }
 
-  .patreon-support {
-    background: rgba(255, 66, 77, 0.1);
-    border: 1px solid rgba(255, 66, 77, 0.3);
+  .btc-support {
+    background: rgba(247, 147, 26, 0.1);
+    border: 1px solid rgba(247, 147, 26, 0.3);
+    cursor: pointer;
+    position: relative;
   }
 
-  .patreon-icon-mobile {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 14px;
-    color: #ff424d;
+  .btc-support svg {
+    color: #f7931a;
   }
 
-  .patreon-support span:last-child {
+  .btc-support span {
     color: var(--amber-glow);
+  }
+
+  .xmr-support {
+    background: rgba(255, 102, 0, 0.1);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .xmr-support svg {
+    color: #ff6600;
+  }
+
+  .xmr-support span {
+    color: var(--amber-glow);
+  }
+
+  .btc-support::after,
+  .xmr-support::after {
+    content: 'Copied!';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: var(--bg-dark);
+    color: var(--amber-glow);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    border: 1px solid rgba(255, 183, 77, 0.3);
+  }
+
+  .btc-support.copied::after,
+  .xmr-support.copied::after {
+    opacity: 1;
   }
 
   .mobile-social-section {
@@ -658,3 +705,18 @@ const version = packageInfo.version;
     }
   }
 </style>
+
+<script>
+  // Crypto copy-to-clipboard functionality for mobile menu
+  document.querySelectorAll('.btc-support, .xmr-support').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.stopPropagation(); // Prevent menu from closing
+      const address = button.getAttribute('data-address');
+      if (address) {
+        await navigator.clipboard.writeText(address);
+        button.classList.add('copied');
+        setTimeout(() => button.classList.remove('copied'), 1500);
+      }
+    });
+  });
+</script>

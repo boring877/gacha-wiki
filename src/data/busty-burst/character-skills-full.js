@@ -8271,6 +8271,341 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "speedValue": "0.86"
     },
     "slug": "overflowing-jubako-lynette"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Sand Storm",
+        "icon": "skill001/skill0008",
+        "description": "Deals 140% ATK + 80 magic damage to the 3 farthest enemies and inflicts Accuracy DOWN for 8 seconds and Physical Critical Damage DOWN for 8 seconds",
+        "target": "3 Farthest Enemies",
+        "castTime": "0.71s",
+        "damageScaling": "140% ATK",
+        "baseDamage": "+80",
+        "levelGrowth": "+6",
+        "lvl1": "140% + 80",
+        "lvl90": "140% + 614",
+        "effect": "Accuracy DOWN, Physical Crit Rate DOWN for 8s"
+      },
+      {
+        "slot": 3,
+        "name": "Sand Vortex",
+        "icon": "skill001/skill0008",
+        "description": "Deals 120% ATK + 60 magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds and Block DOWN for 8 seconds",
+        "target": "3 Nearest Enemies",
+        "castTime": "0.71s",
+        "damageScaling": "120% ATK",
+        "baseDamage": "+60",
+        "levelGrowth": "+6",
+        "lvl1": "120% + 60",
+        "lvl90": "120% + 594",
+        "effect": "Action Speed DOWN, Block DOWN for 8s"
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Sunshine Shooter",
+        "icon": "skill001/skill0012_1",
+        "description": "Deals 1100% ATK + 800 magic damage to the nearest enemy and inflicts Cleanse for 4 seconds and Blind for 8 seconds",
+        "effect": "1100% + 800 | Cleanse (4s), Blind (8s)"
+      },
+      {
+        "rank": 2,
+        "name": "Sunshine Shooter",
+        "icon": "skill001/skill0012_2",
+        "description": "Deals 1300% ATK + 950 magic damage to the nearest enemy and inflicts Cleanse for 5 seconds and Blind for 8 seconds",
+        "effect": "1300% + 950 | Cleanse (5s), Blind (8s)"
+      },
+      {
+        "rank": 3,
+        "name": "Sunshine Shooter",
+        "icon": "skill001/skill0012_3",
+        "description": "Deals 1470% ATK + 1050 magic damage to the nearest enemy and inflicts Cleanse for 5 seconds and Blind for 9 seconds",
+        "effect": "1470% + 1050 | Cleanse (5s), Blind (9s)"
+      },
+      {
+        "rank": 4,
+        "name": "Sunshine Shooter",
+        "icon": "skill001/skill0012_4",
+        "description": "Deals 1530% ATK + 1130 magic damage to the nearest enemy and inflicts Cleanse for 6 seconds and Blind for 9 seconds",
+        "effect": "1530% + 1130 | Cleanse (6s), Blind (9s)"
+      },
+      {
+        "rank": 5,
+        "name": "Sunshine Shooter",
+        "icon": "skill001/skill0012_5",
+        "description": "Deals 1590% ATK + 1200 magic damage to the nearest enemy and inflicts Cleanse for 6 seconds and Blind for 10 seconds",
+        "effect": "1590% + 1200 | Cleanse (6s), Blind (10s)"
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Magic ATK UP, Magic CRIT UP",
+        "icon": "skill001/skill1001",
+        "effect": "Magic Attack + (+259)",
+        "effect2": "Magic Critical Damage + (+90)"
+      },
+      {
+        "slot": 2,
+        "name": "Self Skill Damage UP, Max HP UP",
+        "icon": "skill001/skill1001",
+        "effect": "Skill Damage + (+30%)",
+        "effect2": "Max HP + (+2896)"
+      }
+    ],
+    "name": "[Seductive High-Cut Swimsuit] Nerys",
+    "id": 2077,
+    "rarity": "SSR",
+    "element": "Light",
+    "role": "Attacker",
+    "tags": [
+      "Debuff",
+      "Disrupt"
+    ],
+    "baseStats": {
+      "HP": 2092,
+      "ATK": 145,
+      "MATK": 242,
+      "DEF": 32,
+      "MDEF": 82
+    },
+    "skillRotation": {
+      "opening": "Skill2 → Basic → Skill3 → Basic → Basic",
+      "loop": "Basic → Basic → Skill2 → Basic → Basic → Basic → Skill3 → Basic → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0004",
+      "type": "Magic",
+      "scaling": "120% ATK",
+      "speedLabel": "Slightly Fast",
+      "speedValue": "0.61"
+    },
+    "slug": "seductive-high-cut-swimsuit-nerys"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Gotta Avoid the Sunburn!",
+        "icon": "skill001/skill0011",
+        "description": "Deals 120% ATK + 80 magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds",
+        "target": "3 Nearest Enemies",
+        "castTime": "0.88s",
+        "damageScaling": "120% ATK",
+        "baseDamage": "+80",
+        "levelGrowth": "+8",
+        "lvl1": "120% + 80",
+        "lvl90": "120% + 792",
+        "effect": "Stun for 1.2s"
+      },
+      {
+        "slot": 3,
+        "name": "I'll Drive You Wild!",
+        "icon": "skill001/skill0019",
+        "description": "Applies Action Speed UP and Magic Critical Damage UP to all allies for 7 seconds",
+        "target": "All Allies",
+        "castTime": "0.88s",
+        "effect": "Action Speed +14%, Magic Crit Rate UP for 7s"
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Killer☆Bikini Attack!",
+        "icon": "skill001/skill0022_1",
+        "description": "Restores HP to all allies and applies Magic Attack UP for 8 seconds",
+        "effect": "Heal + Magic Attack UP (8s)"
+      },
+      {
+        "rank": 2,
+        "name": "Killer☆Bikini Attack!",
+        "icon": "skill001/skill0022_2",
+        "description": "Restores HP to all allies and applies Magic Attack UP for 8 seconds",
+        "effect": "Heal + Magic Attack UP (8s)"
+      },
+      {
+        "rank": 3,
+        "name": "Killer☆Bikini Attack!",
+        "icon": "skill001/skill0022_3",
+        "description": "Restores HP to all allies and applies Magic Attack UP for 9 seconds",
+        "effect": "Heal + Magic Attack UP (9s)"
+      },
+      {
+        "rank": 4,
+        "name": "Killer☆Bikini Attack!",
+        "icon": "skill001/skill0022_4",
+        "description": "Restores HP to all allies and applies Magic Attack UP for 9 seconds",
+        "effect": "Heal + Magic Attack UP (9s)"
+      },
+      {
+        "rank": 5,
+        "name": "Killer☆Bikini Attack!",
+        "icon": "skill001/skill0022_5",
+        "description": "Restores HP to all allies and applies Magic Attack UP for 10 seconds",
+        "effect": "Heal + Magic Attack UP (10s)"
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Healing Power UP, MP Charge UP",
+        "icon": "skill001/skill1004",
+        "effect": "Healing Power + (+30)",
+        "effect2": "MP Charge + (+18)"
+      },
+      {
+        "slot": 2,
+        "name": "All Allies Healing Received UP, HP UP",
+        "icon": "skill001/skill1008",
+        "effect": "Healing Received + (+25)",
+        "effect2": "Max HP + (+3000)"
+      }
+    ],
+    "name": "[Killer☆Bikini] Theresia",
+    "id": 2078,
+    "rarity": "SSR",
+    "element": "Mind",
+    "role": "Support",
+    "tags": [
+      "Buff",
+      "Debuff",
+      "Disrupt",
+      "Heal"
+    ],
+    "baseStats": {
+      "HP": 2588,
+      "ATK": 151,
+      "MATK": 253,
+      "DEF": 32,
+      "MDEF": 82
+    },
+    "skillRotation": {
+      "opening": "Skill3 → Basic → Skill2 → Basic → Basic",
+      "loop": "Basic → Basic → Skill3 → Basic → Basic → Basic → Skill2 → Basic → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0004",
+      "type": "Magic",
+      "scaling": "120% ATK",
+      "speedLabel": "Normal",
+      "speedValue": "0.88"
+    },
+    "slug": "killer-bikini-theresia"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Perfect Cast!",
+        "icon": "skill001/skill0002",
+        "description": "Deals 90% ATK + 60 physical damage to the 3 nearest enemies",
+        "target": "3 Nearest Enemies",
+        "castTime": "1.11s",
+        "damageScaling": "90% ATK",
+        "baseDamage": "+60",
+        "levelGrowth": "+8",
+        "lvl1": "90% + 60",
+        "lvl90": "90% + 772"
+      },
+      {
+        "slot": 3,
+        "name": "Reeling In the Big One!",
+        "icon": "skill001/skill0002",
+        "description": "Deals 130% ATK + 80 physical damage to the nearest enemy and inflicts Physical Defense DOWN for 8 seconds",
+        "target": "Nearest Enemy",
+        "castTime": "1.11s",
+        "damageScaling": "130% ATK",
+        "baseDamage": "+80",
+        "levelGrowth": "+10",
+        "lvl1": "130% + 80",
+        "lvl90": "130% + 970",
+        "effect": "Physical Defense DOWN for 8s"
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Angler's Ultimate Technique!",
+        "icon": "skill001/skill0003_1",
+        "description": "Deals 800% ATK + 500 physical damage to the 3 nearest enemies",
+        "effect": "800% + 500"
+      },
+      {
+        "rank": 2,
+        "name": "Angler's Ultimate Technique!",
+        "icon": "skill001/skill0003_2",
+        "description": "Deals 950% ATK + 600 physical damage to the 3 nearest enemies",
+        "effect": "950% + 600"
+      },
+      {
+        "rank": 3,
+        "name": "Angler's Ultimate Technique!",
+        "icon": "skill001/skill0003_3",
+        "description": "Deals 1050% ATK + 680 physical damage to the 3 nearest enemies",
+        "effect": "1050% + 680"
+      },
+      {
+        "rank": 4,
+        "name": "Angler's Ultimate Technique!",
+        "icon": "skill001/skill0003_4",
+        "description": "Deals 1130% ATK + 740 physical damage to the 3 nearest enemies",
+        "effect": "1130% + 740"
+      },
+      {
+        "rank": 5,
+        "name": "Angler's Ultimate Technique!",
+        "icon": "skill001/skill0003_5",
+        "description": "Deals 1200% ATK + 800 physical damage to the 3 nearest enemies",
+        "effect": "1200% + 800"
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Physical ATK UP, Physical CRIT UP",
+        "icon": "skill001/skill1002",
+        "effect": "Physical Attack + (+200)",
+        "effect2": "Physical Critical Damage + (+60)"
+      },
+      {
+        "slot": 2,
+        "name": "Self Skill Damage UP, Action Speed UP",
+        "icon": "skill001/skill1002",
+        "effect": "Skill Damage + (+20%)",
+        "effect2": "Action Speed + (+10%)"
+      }
+    ],
+    "name": "[Epic Fishing] Meinias",
+    "id": 2079,
+    "rarity": "SR",
+    "element": "Water",
+    "role": "Attacker",
+    "tags": [
+      "Debuff",
+      "Disrupt"
+    ],
+    "baseStats": {
+      "HP": 2159,
+      "ATK": 330,
+      "MATK": 198,
+      "DEF": 18,
+      "MDEF": 7
+    },
+    "skillRotation": {
+      "opening": "Skill2 → Basic → Skill3 → Basic",
+      "loop": "Basic → Basic → Skill2 → Basic → Basic → Skill3 → Basic → Skill2 → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0001",
+      "type": "Physical",
+      "scaling": "110% ATK",
+      "speedLabel": "Slightly Slow",
+      "speedValue": "1.11"
+    },
+    "slug": "epic-fishing-meinias"
   }
 ];
 

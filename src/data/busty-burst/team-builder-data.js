@@ -71,6 +71,11 @@ const CHARACTER_ID_MAP = {
   'new_years_calligraphy_pastel': 2100,
   'overflowing_jubako_lynette': 2101,
 
+  // 2025 Summer Swimsuit Characters
+  'seductive_high_cut_swimsuit_nerys': 2077,
+  'killer_bikini_theresia': 2078,
+  'epic_fishing_meinias': 2079,
+
   // SR Characters
   'gladys': 2005,
   'emelaria': 2006,
@@ -172,6 +177,12 @@ const CHARACTER_IMAGES = {
   festive_natasha: 'Festive_Costume_Natasha.jpg',
   holy_night_succubus_yu_rima_elca: 'Holy_Night_Succubus_Yu_Rima_Elca.jpg',
   magical_holy_night_festival_kaguya: 'Magical_Holy_Night_Festival_Kaguya.jpg',
+  dragon_crusher_medusa: '2099.png',
+  new_years_calligraphy_pastel: '2100.png',
+  overflowing_jubako_lynette: '2101.png',
+  seductive_high_cut_swimsuit_nerys: '2077.png',
+  killer_bikini_theresia: '2078.png',
+  epic_fishing_meinias: '2079.png',
 };
 
 // Skill buff/debuff category assignments
@@ -254,7 +265,7 @@ const SKILL_CATEGORIES = {
       category: 'D',
       effects: [
         { stat: 'Physical ATK', value: '+15%+530' },
-        { stat: 'Phys Crit Damage', value: '+540' },
+        { stat: 'Phys Crit Rate', value: '+540' },
       ],
     },
     ultimate: {
@@ -351,7 +362,7 @@ const SKILL_CATEGORIES = {
     skill3: {
       type: 'debuff',
       category: 'B',
-      effects: [{ stat: 'Physical Crit Damage', value: '-960' }],
+      effects: [{ stat: 'Physical Crit Rate', value: '-960' }],
     },
     ultimate: {
       type: 'debuff',
@@ -450,7 +461,7 @@ const SKILL_CATEGORIES = {
       type: 'buff',
       category: 'D',
       effects: [
-        { stat: 'Physical Crit Damage', value: '+540' },
+        { stat: 'Physical Crit Rate', value: '+540' },
         { stat: 'Magic Crit', value: '+540' },
       ],
     },
@@ -534,7 +545,7 @@ const SKILL_CATEGORIES = {
     skill2: {
       type: 'buff',
       category: 'C',
-      effects: [{ stat: 'Physical Crit Damage', value: '+540' }],
+      effects: [{ stat: 'Physical Crit Rate', value: '+540' }],
     },
     skill3: { type: 'buff', category: 'C', effects: [{ stat: 'Physical DEF', value: '+20%+340' }] },
     ultimate: {
@@ -618,7 +629,7 @@ const SKILL_CATEGORIES = {
       type: 'buff',
       category: 'D',
       effects: [
-        { stat: 'Physical Crit Damage', value: '+750' },
+        { stat: 'Physical Crit Rate', value: '+750' },
         { stat: 'Shield', value: 'active' },
       ],
     },
@@ -738,6 +749,109 @@ const SKILL_CATEGORIES = {
         { stat: 'Magic DEF', value: '+40%+500' },
       ],
     },
+  },
+  dragon_crusher_medusa: {
+    skill2: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Petrify', value: '2 seconds' },
+        { stat: 'Block', value: 'DOWN' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Hit-Based Magic Damage', value: '+60' },
+        { stat: 'Magic ATK', value: 'UP' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Magic Damage Taken', value: '+20%' },
+        { stat: 'Action Speed', value: '+20%+20 (self)' },
+      ],
+    },
+  },
+  new_years_calligraphy_pastel: {
+    skill2: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'Debuff Resistance', value: '+30%' },
+        { stat: 'Accuracy', value: 'UP' },
+      ],
+    },
+    skill3: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: 'DOWN' },
+        { stat: 'Magic ATK', value: 'DOWN' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Dispel', value: '5 seconds' },
+        { stat: 'Action Speed', value: '-20%' },
+      ],
+    },
+  },
+  overflowing_jubako_lynette: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: 'DOWN' },
+        { stat: 'Magic ATK', value: 'DOWN' },
+      ],
+    },
+    skill3: {
+      type: 'debuff',
+      category: 'B',
+      effects: [{ stat: 'Accuracy', value: 'DOWN' }],
+    },
+    ultimate: {
+      type: 'buff',
+      category: 'B',
+      effects: [{ stat: 'Block', value: '+20' }],
+    },
+  },
+  // 2025 Summer Swimsuit Characters
+  seductive_high_cut_swimsuit_nerys: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [{ stat: 'Stun', value: '1.2 seconds' }],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'Action Speed', value: '+14%' },
+        { stat: 'Magic Crit Rate', value: 'UP' },
+      ],
+    },
+    ultimate: {
+      type: 'buff',
+      category: 'B',
+      effects: [{ stat: 'Magic ATK', value: 'UP' }],
+    },
+  },
+  killer_bikini_theresia: {
+    skill3: {
+      type: 'debuff',
+      category: 'B',
+      effects: [{ stat: 'Physical DEF', value: 'DOWN' }],
+    },
+  },
+  epic_fishing_meinias: {
+    // No significant buffs/debuffs - primarily damage dealer
   },
 };
 

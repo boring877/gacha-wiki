@@ -50,6 +50,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'venus',
           'artemis',
           'queen_of_pies_and_cookies_aphrodia',
+          'killer_bikini_theresia',
         ],
       },
       {
@@ -71,6 +72,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'magical_holy_night_festival_kaguya',
           'new_years_calligraphy_pastel',
           'overflowing_jubako_lynette',
+          'seductive_high_cut_swimsuit_nerys',
+          'epic_fishing_meinias',
         ],
       },
     ],

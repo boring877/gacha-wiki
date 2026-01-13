@@ -5,6 +5,35 @@
  */
 
 export const bannerTimelineData = [
+  // #6 - Octo-Octo Beach Panic Event Summon (Jan 13 - Jan 27) - CURRENT
+  {
+    id: 'octo-octo-beach-panic-2026',
+    title: '"Octo-Octo Beach Panic!!" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Seductive High-Cut Swimsuit] Nerys',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: '[Killer☆Bikini] Theresia',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Epic Fishing] Meinias',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-01-13T03:00:00Z',
+    endDate: '2026-01-27T03:00:00Z',
+    description: 'Octo-Octo Beach Panic!! Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Summer beach banner featuring swimsuit characters.',
+    status: 'current',
+    image: 'octo-octo-beach-panic',
+  },
   // #5 - Beauty Witch Party People Event Summon (Jan 6 - Jan 13) - CURRENT
   {
     id: 'beauty-witch-party-people-2026',

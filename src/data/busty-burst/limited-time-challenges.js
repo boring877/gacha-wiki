@@ -53,7 +53,7 @@ export const limitedTimeChallengesConfig = {
         { name: 'Freeze', chance: 70, level: 'High', exploitable: false, icon: 'state0039.png', description: 'Unable to act + HP DoT' },
         { name: 'Petrify', chance: 70, level: 'High', exploitable: false, icon: 'state0041.png', description: 'Unable to act, Block set to 0' },
         { name: 'Stun', chance: 90, level: 'Very High', exploitable: false, icon: 'state0043.png', description: 'Unable to act' },
-        { name: 'Sleep', chance: 100, level: 'Immune', exploitable: false, icon: 'state0045.png', description: 'Unable to act (breaks on crit damage)' },
+        { name: 'Sleep', chance: 100, level: 'Immune', exploitable: false, icon: 'state0045.png', description: 'Unable to act (breaks on crit)' },
         { name: 'Silence', chance: 50, level: 'Medium', exploitable: false, icon: 'state0047.png', description: 'Only normal attacks, no skills' },
         { name: 'Confusion', chance: 0, level: 'No Resist', exploitable: true, icon: 'state0049.png', description: 'Attacks randomly, no ultimates' },
         { name: 'Charm', chance: 70, level: 'High', exploitable: false, icon: 'state0051.png', description: 'Attacks allies, no ultimates' },

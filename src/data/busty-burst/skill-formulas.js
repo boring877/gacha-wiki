@@ -42,7 +42,7 @@ export const SKILL_FORMULAS = {
       { stat: 'Physical/Magic DEF', format: '+X% +Y (grow: +Z)', result: '+X% + (Y + Z×Lv)' },
       { stat: 'Accuracy/Block', format: '+Y (grow: +Z)', result: '+(Y + Z×Lv)' },
       { stat: 'Action Speed', format: '+X%', result: '+X% (no level scaling)' },
-      { stat: 'Crit Damage', format: '+Y (grow: +Z)', result: '+(Y + Z×Lv)' },
+      { stat: 'Crit Rate', format: '+Y (grow: +Z)', result: '+(Y + Z×Lv)', note: 'Game incorrectly shows "Crit Damage"' },
     ],
     notes: [
       "Percentage buffs (+X%) are usually fixed and don't scale",
@@ -55,20 +55,21 @@ export const SKILL_FORMULAS = {
 export const STAT_CATEGORIES = [
   {
     category: 'Critical Stats',
+    translationNote: 'The game incorrectly displays "Crit Damage" - this actually affects Crit Rate (chance to crit). Formula: Crit Rate % = Value ÷ 20',
     stats: [
       {
         name: 'Physical Critical',
-        description: 'Base stat that affects critical physical damage chance and multiplier',
-        note: 'Varies per character: 22-391',
+        description: 'Base crit rate for physical attacks. Formula: Value ÷ 20 = Crit %',
+        note: 'Varies per character: 22-391 (1.1% - 19.55% crit rate)',
       },
       {
         name: 'Magic Critical',
-        description: 'Base stat that affects critical magical damage chance and multiplier',
-        note: 'Varies per character: 22-234',
+        description: 'Base crit rate for magic attacks. Formula: Value ÷ 20 = Crit %',
+        note: 'Varies per character: 22-234 (1.1% - 11.7% crit rate)',
       },
       {
-        name: 'Crit Damage +X',
-        description: 'Adds flat bonus to critical damage multiplier',
+        name: 'Crit Rate +X',
+        description: 'Adds flat bonus to crit rate (game shows as "Crit Damage")',
         note: 'Stacks with base Physical/Magic Critical',
       },
     ],

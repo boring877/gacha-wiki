@@ -9,7 +9,7 @@ export const SKILL_FORMULAS = {
       'Physical/Magic DEF: +X% +Y (grow: +Z) → +X% +(Y + Z×Lv)',
       'Accuracy/Block: +Y (grow: +Z) → +(Y + Z×Lv)',
       'Action Speed: +X% (no growth)',
-      'Crit Damage: +Y (grow: +Z) → +(Y + Z×Lv)',
+      'Crit Rate: +Y (grow: +Z) → +(Y + Z×Lv)',
     ],
   },
   healing: {
@@ -40,7 +40,7 @@ export const STAT_EXPLANATIONS = [
     description: 'Base stat that affects critical magical damage (varies per character: 22-234)',
   },
   {
-    stat: 'Crit Damage +X',
+    stat: 'Crit Rate +X',
     description: 'Adds +X to critical damage (stacks with base Physical/Magic Critical)',
   },
   {
@@ -199,7 +199,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     skill3: {
       name: 'Dancing Performance',
       description:
-        'Applies Physical ATK +15%+30 (+5/lv) and Phys Crit Damage +40 (+5/lv) to all allies for 10 seconds',
+        'Applies Physical ATK +15%+30 (+5/lv) and Phys Crit Rate +40 (+5/lv) to all allies for 10 seconds',
       type: 'buff',
       target: 'all allies',
     },
@@ -293,7 +293,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
         R5: '[450% ATK + 611] | Curse (no HP/MP regen), Fear (MP -100/s, Block 0)',
       },
     },
-    passive1: 'Grants: Magic Crit Damage +90',
+    passive1: 'Grants: Magic Crit Rate +90',
     passive2: 'Grants: Magic Type ATK +10%',
   },
 
@@ -407,7 +407,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Grants: Physical ATK +159',
-    passive2: 'Grants: Physical Crit Damage +90',
+    passive2: 'Grants: Physical Crit Rate +90',
   },
 
   luca: {
@@ -425,7 +425,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     skill3: {
       name: 'Do as you please, roa!',
       description:
-        'Deals [360% ATK + 160 (+25/lv)] physical damage to the nearest enemy and inflicts Physical Crit Damage -60 (-9/lv) for 7 seconds',
+        'Deals [360% ATK + 160 (+25/lv)] physical damage to the nearest enemy and inflicts Physical Crit Rate -60 (-9/lv) for 7 seconds',
       type: 'damage',
       target: 'nearest enemy',
     },
@@ -443,7 +443,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
         R5: '[700% ATK + 650] | Physical ATK -30%, Accuracy -30',
       },
     },
-    passive1: 'Grants: Physical ATK +259, Physical Crit Damage +179',
+    passive1: 'Grants: Physical ATK +259, Physical Crit Rate +179',
     passive2: 'Front Row allies receive Skill Damage +20%, Action Speed 10%+10',
   },
 
@@ -590,7 +590,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Grants: Physical ATK +159',
-    passive2: 'Grants: Physical Crit Damage +176',
+    passive2: 'Grants: Physical Crit Rate +176',
   },
 
   estiriel: {
@@ -665,7 +665,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Grants: Max HP +3444, Physical ATK +259',
-    passive2: 'Front Row allies receive Physical Crit Damage +90, Physical ATK +130',
+    passive2: 'Front Row allies receive Physical Crit Rate +90, Physical ATK +130',
   },
 
   marina: {
@@ -684,7 +684,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     skill3: {
       name: 'Future Sight',
       description:
-        'Applies Physical Crit Damage +40 (+5/lv) and Magic Crit +40 (+5/lv) to all allies for 6 seconds',
+        'Applies Physical Crit Rate +40 (+5/lv) and Magic Crit +40 (+5/lv) to all allies for 6 seconds',
       type: 'buff',
       target: 'all allies',
     },
@@ -702,7 +702,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
         R5: 'Action Speed +20%+20, Shield -40% (unlimited hits, 6s)',
       },
     },
-    passive1: 'Middle Row allies receive Physical Crit Damage +90, Magic Crit Damage +90',
+    passive1: 'Middle Row allies receive Physical Crit Rate +90, Magic Crit Rate +90',
     passive2: 'Middle Row allies receive Skill Damage +20%, Action Speed 5%+5',
   },
 
@@ -777,7 +777,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Grants: MP Recovery +42 (on kill), Physical ATK +420 (on kill, 5s)',
-    passive2: 'Grants: Physical ATK +259, Physical Crit Damage +176',
+    passive2: 'Grants: Physical ATK +259, Physical Crit Rate +176',
   },
 
   bianca: {
@@ -862,7 +862,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     role: 'Support',
     skill2: {
       name: 'Charming Smile',
-      description: 'Applies Physical Crit Damage +40 (+5/lv) to the frontmost ally for 8 seconds',
+      description: 'Applies Physical Crit Rate +40 (+5/lv) to the frontmost ally for 8 seconds',
       type: 'buff',
       target: 'frontmost ally',
     },
@@ -887,7 +887,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Grants: Physical ATK +300',
-    passive2: 'Grants: Physical Crit Damage +120',
+    passive2: 'Grants: Physical Crit Rate +120',
   },
 
   artemis: {
@@ -1056,7 +1056,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     skill3: {
       name: 'Arm of Growth',
       description:
-        'Applies Physical Crit Damage +50 (+7/lv) and Shield to the 3 nearest allies for 10 seconds',
+        'Applies Physical Crit Rate +50 (+7/lv) and Shield to the 3 nearest allies for 10 seconds',
       type: 'buff',
       target: '3 nearest allies',
     },
@@ -1417,7 +1417,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Physical DEF +70',
-    passive2: 'Physical Crit Damage +59',
+    passive2: 'Physical Crit Rate +59',
   },
 
   roxanne: {
@@ -1453,7 +1453,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
         R5: '[2750% ATK + 2134] | Physical ATK +30',
       },
     },
-    passive1: 'Physical Crit Damage +59',
+    passive1: 'Physical Crit Rate +59',
     passive2: 'Healing Amount +10%',
   },
 
@@ -1501,7 +1501,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     role: 'Support',
     skill2: {
       name: "Queen's Rejection",
-      description: 'Applies Physical Crit Damage +20 to all allies for 8s',
+      description: 'Applies Physical Crit Rate +20 to all allies for 8s',
       type: 'buff',
       target: 'all allies',
     },
@@ -1635,7 +1635,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Physical DEF +70',
-    passive2: 'Physical Crit Damage +59',
+    passive2: 'Physical Crit Rate +59',
   },
 
   estria: {
@@ -1778,7 +1778,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Charm Resistance +100%',
-    passive2: 'Physical Crit Damage +59',
+    passive2: 'Physical Crit Rate +59',
   },
 
   elythia: {
@@ -1814,7 +1814,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Block +10',
-    passive2: 'Physical Crit Damage +59',
+    passive2: 'Physical Crit Rate +59',
   },
 
   nadine: {
@@ -1850,7 +1850,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Max HP +1447',
-    passive2: 'Magic Crit Damage +59',
+    passive2: 'Magic Crit Rate +59',
   },
 
   lorelia: {
@@ -1867,7 +1867,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     },
     skill3: {
       name: 'It is my honor to be of assistance to you',
-      description: 'Applies Physical Crit Damage +30 to the nearest ally for 12s',
+      description: 'Applies Physical Crit Rate +30 to the nearest ally for 12s',
       type: 'buff',
       target: 'nearest ally',
     },
@@ -1885,7 +1885,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Physical DEF +70',
-    passive2: 'Physical Crit Damage +59',
+    passive2: 'Physical Crit Rate +59',
   },
 
   destra: {
@@ -2031,7 +2031,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Max HP +2896',
-    passive2: 'On enemy defeat: Physical ATK +389, Physical Crit Damage +176',
+    passive2: 'On enemy defeat: Physical ATK +389, Physical Crit Rate +176',
   },
 
   emelaria: {
@@ -2274,7 +2274,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     },
     ultimate: {
       name: 'Steelbreaker Twin Blades',
-      description: 'Deals physical damage and applies Physical Crit Damage UP to self for 12s',
+      description: 'Deals physical damage and applies Physical Crit Rate UP to self for 12s',
       type: 'damage',
       target: 'nearest enemy',
       ranks: {
@@ -2286,7 +2286,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Max HP +2896',
-    passive2: 'Physical ATK +259, Physical Crit Damage +90',
+    passive2: 'Physical ATK +259, Physical Crit Rate +90',
   },
 
   zoe: {
@@ -2393,7 +2393,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Freeze Resistance +100%',
-    passive2: 'Magic Crit Damage +118, Block +15',
+    passive2: 'Magic Crit Rate +118, Block +15',
   },
 
   athena_sr: {
@@ -2465,7 +2465,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Petrify Resistance +100%',
-    passive2: 'Magic Crit Damage +118, Magic DEF +141',
+    passive2: 'Magic Crit Rate +118, Magic DEF +141',
   },
 
   ishtovia_sr: {
@@ -2520,7 +2520,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     },
     skill3: {
       name: "I'm very fond of you",
-      description: 'Applies Physical Crit Damage +50 to the nearest ally for 12s',
+      description: 'Applies Physical Crit Rate +50 to the nearest ally for 12s',
       type: 'buff',
       target: 'nearest ally',
     },
@@ -2609,7 +2609,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Physical ATK +259',
-    passive2: 'Action Speed +10%+10, Physical Crit Damage +59',
+    passive2: 'Action Speed +10%+10, Physical Crit Rate +59',
   },
 
   // SSR Characters (Base versions of existing characters)
@@ -2684,7 +2684,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       },
     },
     passive1: 'Max HP +3444, Physical ATK +259',
-    passive2: 'Front Row allies: Physical Crit Damage +90, Physical ATK +130',
+    passive2: 'Front Row allies: Physical Crit Rate +90, Physical ATK +130',
   },
 
   marina_base: {
@@ -2702,7 +2702,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     },
     skill3: {
       name: 'Future Sight',
-      description: 'Applies Physical Crit Damage +40 to all allies for 6s',
+      description: 'Applies Physical Crit Rate +40 to all allies for 6s',
       type: 'buff',
       target: 'all allies',
     },
@@ -2719,7 +2719,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
         R5: 'Action Speed +20%+20',
       },
     },
-    passive1: 'Middle Row allies: Physical Crit Damage +90, Magic Crit Damage +90',
+    passive1: 'Middle Row allies: Physical Crit Rate +90, Magic Crit Rate +90',
     passive2: 'Middle Row allies: Skill Damage +20%, Action Speed +5%+5',
   },
 
@@ -2835,6 +2835,111 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     },
     passive1: 'Self: Healing Amount +15%',
     passive2: 'All Allies: Healing Received +20%, Block +10',
+  },
+
+  // 2025 Summer Swimsuit Characters
+  seductive_high_cut_swimsuit_nerys: {
+    id: 'seductive_high_cut_swimsuit_nerys',
+    name: '【Seductive High-Cut Swimsuit】Nerys',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    skill2: {
+      name: 'Gotta Avoid the Sunburn!',
+      description:
+        'Deals [120% ATK + 80 (+8/lv)] magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds',
+      type: 'damage',
+      target: '3 nearest enemies',
+    },
+    skill3: {
+      name: "I'll Drive You Wild!",
+      description:
+        'Applies Action Speed +14% and Magic Critical Damage UP to all allies for 7 seconds',
+      type: 'buff',
+      target: 'all allies',
+    },
+    ultimate: {
+      name: 'Killer☆Bikini Attack!',
+      description:
+        'Restores HP to all allies and applies Magic Attack UP for 8-10 seconds',
+      type: 'heal',
+      target: 'all allies',
+      ranks: {
+        R1: 'Heal + Magic Attack UP (8s)',
+        R2: 'Heal + Magic Attack UP (8s)',
+        R3: 'Heal + Magic Attack UP (9s)',
+        R4: 'Heal + Magic Attack UP (9s)',
+        R5: 'Heal + Magic Attack UP (10s)',
+      },
+    },
+    passive1: 'Self: Healing Power +30, MP Charge +18',
+    passive2: 'Self: Magic Attack +259, Ultimate Damage +15%',
+  },
+
+  killer_bikini_theresia: {
+    id: 'killer_bikini_theresia',
+    name: '【Killer☆Bikini】Theresia',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
+    skill2: {
+      name: 'Perfect Cast!',
+      description:
+        'Deals [90% ATK + 60 (+8/lv)] physical damage to the 3 nearest enemies',
+      type: 'damage',
+      target: '3 nearest enemies',
+    },
+    skill3: {
+      name: 'Reeling In the Big One!',
+      description:
+        'Deals [130% ATK + 80 (+10/lv)] physical damage to the nearest enemy and inflicts Physical Defense DOWN for 8 seconds',
+      type: 'damage',
+      target: 'nearest enemy',
+    },
+    ultimate: {
+      name: "Angler's Ultimate Technique!",
+      description:
+        'Deals physical damage to the 3 nearest enemies',
+      type: 'damage',
+      target: '3 nearest enemies',
+      ranks: {
+        R1: '[800% ATK + 500]',
+        R2: '[950% ATK + 600]',
+        R3: '[1050% ATK + 680]',
+        R4: '[1130% ATK + 740]',
+        R5: '[1200% ATK + 800]',
+      },
+    },
+    passive1: 'Self: Physical ATK UP, Physical CRIT UP',
+    passive2: 'Self: Ultimate Damage UP',
+  },
+
+  epic_fishing_meinias: {
+    id: 'epic_fishing_meinias',
+    name: '【Epic Fishing】Meinias',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    skill2: {
+      name: 'Skill 2',
+      description: 'Physical damage skill',
+      type: 'damage',
+      target: 'enemies',
+    },
+    skill3: {
+      name: 'Skill 3',
+      description: 'Physical damage skill',
+      type: 'damage',
+      target: 'enemies',
+    },
+    ultimate: {
+      name: 'Ultimate',
+      description: 'Physical damage ultimate',
+      type: 'damage',
+      target: 'enemies',
+    },
+    passive1: 'Self: Physical ATK UP',
+    passive2: 'Self: Ultimate Damage UP',
   },
 };
 

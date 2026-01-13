@@ -2447,6 +2447,103 @@ export const BUSTY_BURST_CHARACTER_INFO = {
       source: 'Standard Banner',
     },
   },
+
+  // 2025 Summer Swimsuit Characters
+  'seductive-high-cut-swimsuit-nerys': {
+    slug: 'seductive-high-cut-swimsuit-nerys',
+    name: '【Seductive High-Cut Swimsuit】Nerys',
+    displayName: 'Swimsuit Nerys',
+    baseName: 'Nerys',
+    title: 'Seductive High-Cut Swimsuit',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    attackType: 'Magic',
+    position: { roman: 'II', number: 2 },
+    actionSpeed: 'Normal',
+    range: 480,
+    weaponType: 'Shoot/Ranged',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'Seductive_High_Cut_Swimsuit_Nerys',
+    profile: {
+      height: '160cm',
+      bust: '98cm (H Cup)',
+      waist: '58cm',
+      hips: '88cm',
+    },
+    credits: {
+      illustration: { japanese: '深泥正', romanized: 'Fukadoro Tadashi' },
+      voice: { japanese: '御苑生メイ', romanized: 'Misonoo Mei' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Summer 2025 Banner',
+    },
+  },
+
+  'killer-bikini-theresia': {
+    slug: 'killer-bikini-theresia',
+    name: '【Killer☆Bikini】Theresia',
+    displayName: 'Bikini Theresia',
+    baseName: 'Theresia',
+    title: 'Killer☆Bikini',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
+    attackType: 'Magic',
+    position: { roman: 'II', number: 2 },
+    actionSpeed: 'Normal',
+    range: 400,
+    weaponType: 'Pierce',
+    skillTypes: ['Buff', 'Debuff', 'Disrupt'],
+    image: 'Killer_Bikini_Theresia',
+    profile: {
+      height: '166cm',
+      bust: '101cm (J Cup)',
+      waist: '60cm',
+      hips: '89cm',
+    },
+    credits: {
+      illustration: { japanese: '西條サトル', romanized: 'Saijo Satoru' },
+      voice: { japanese: '蒼乃むすび', romanized: 'Aono Musubi' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Summer 2025 Banner',
+    },
+  },
+
+  'epic-fishing-meinias': {
+    slug: 'epic-fishing-meinias',
+    name: '【Epic Fishing】Meinias',
+    displayName: 'Fishing Meinias',
+    baseName: 'Meinias',
+    title: 'Epic Fishing',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'III', number: 3 },
+    actionSpeed: 'Normal',
+    range: 370,
+    weaponType: 'Pierce',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'Epic_Fishing_Meinias',
+    profile: {
+      height: '160cm',
+      bust: '102cm (K Cup)',
+      waist: '66cm',
+      hips: '82cm',
+    },
+    credits: {
+      illustration: { japanese: '恋河ミノル', romanized: 'Koikawa Minoru' },
+      voice: { japanese: '相模恋', romanized: 'Sagami Koi' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Summer 2025 Banner',
+    },
+  },
 };
 
 // Helper function to get character by slug

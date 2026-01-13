@@ -115,7 +115,7 @@ export const accessoryItems = {
         { type: 'Ring', imageFile: 'Sapphire_Ring.png' },
       ],
       setEffects: [
-        { pieces: '2 Set', stat: 'Magic Damage', value: '+10%' },
+        { pieces: '2 Set', stat: 'Magic Attack', value: '+10%' },
         { pieces: '4 Set', stat: 'Magic Critical', value: '+10%' },
       ],
     },

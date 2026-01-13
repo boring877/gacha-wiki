@@ -245,7 +245,7 @@ export const characterBuilds = {
           ],
           setEffects: [
             { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-            { pieces: 2, effect: 'Magic Damage +10% (Sapphire)' },
+            { pieces: 2, effect: 'Magic Attack +10% (Sapphire)' },
           ],
         };
       })(),
@@ -269,6 +269,102 @@ export const characterBuilds = {
     weapon: {
       name: 'Annihilation Staff',
       image: 'Staff_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      return {
+        name: 'Amethyst 4 Set + 1 Random SSR',
+        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(amethystSet.setEffects),
+        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
+        images: [
+          amethystSet.pieces[0].imageFile,
+          amethystSet.pieces[1].imageFile,
+          goldSet.pieces[0].imageFile,
+          goldSet.pieces[1].imageFile,
+        ],
+        setEffects: [
+          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
+          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+        ],
+      };
+    })(),
+  },
+  'killer-bikini-theresia': {
+    slug: 'killer-bikini-theresia',
+    character: {
+      name: 'Killer Bikini Theresia',
+      fileName: 'Killer_Bikini_Theresia',
+      characterId: 2078,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: {
+      name: 'Annihilation Wand',
+      image: 'Wand_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      return {
+        name: 'Amethyst 4 Set + 1 Random SSR',
+        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(amethystSet.setEffects),
+        mainStats: getMainStats('Magic', 'Support', 'amethyst'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
+        images: [
+          amethystSet.pieces[0].imageFile,
+          amethystSet.pieces[1].imageFile,
+          goldSet.pieces[0].imageFile,
+          goldSet.pieces[1].imageFile,
+        ],
+        setEffects: [
+          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
+          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+        ],
+      };
+    })(),
+  },
+  'seductive-high-cut-swimsuit-nerys': {
+    slug: 'seductive-high-cut-swimsuit-nerys',
+    character: {
+      name: 'Seductive High-Cut Swimsuit Nerys',
+      fileName: 'Seductive_High_Cut_Swimsuit_Nerys',
+      characterId: 2077,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: {
+      name: 'Annihilation Bullet',
+      image: 'Bullet_of_annihilation.png',
       effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
     },
     accessory: (() => {

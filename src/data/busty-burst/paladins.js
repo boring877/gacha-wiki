@@ -757,6 +757,37 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Support',
     tier: 'A',
   },
+  // 2025 Summer Swimsuit Characters
+  {
+    id: 'killer_bikini_theresia',
+    characterId: 2078,
+    name: 'Killer Bikini Theresia',
+    fileName: 'Killer_Bikini_Theresia',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
+    tier: 'S',
+  },
+  {
+    id: 'seductive_high_cut_swimsuit_nerys',
+    characterId: 2077,
+    name: 'Seductive High-Cut Swimsuit Nerys',
+    fileName: 'Seductive_High_Cut_Swimsuit_Nerys',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'epic_fishing_meinias',
+    characterId: 2079,
+    name: 'Epic Fishing Meinias',
+    fileName: 'Epic_Fishing_Meinias',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {
