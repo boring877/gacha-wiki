@@ -1,0 +1,109 @@
+---
+// Taimanin Squad Character Lore Page
+// Displays all characters with their lore/story text
+
+import CharacterLoreLayout from '../../../../layouts/taimanin-squad/CharacterLoreLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import { getAllCharacters } from '../../../../data/taimanin-squad/characters.js';
+
+// Get all characters sorted by ID
+const allCharacters = getAllCharacters().sort((a, b) => a.id - b.id);
+
+// Filter to only show characters with lore text
+const charactersWithLore = allCharacters.filter(char => char.lore?.english);
+---
+
+<CharacterLoreLayout
+  title="Character Lore - Taimanin Squad Wiki | GachaWiki"
+  description="Read the lore and backstories of all Taimanin Squad characters. Complete character profiles with official story text."
+  gameTitle="Character Lore"
+>
+  <section class="content-section">
+    <p class="lore-intro">
+      Explore the stories and backgrounds of {charactersWithLore.length} characters from Taimanin Squad.
+      Click on a character card to read their full lore.
+    </p>
+
+    <!-- Search -->
+    <div class="lore-search-container">
+      <input
+        type="text"
+        id="char-search"
+        class="lore-search-input"
+        placeholder="Search characters by name..."
+      />
+    </div>
+
+    <!-- Character Grid -->
+    <div class="lore-grid" id="char-grid">
+      {charactersWithLore.map((char) => (
+        <div
+          class="lore-card"
+          data-name={char.names?.english?.toLowerCase() || ''}
+          data-japanese={char.names?.japanese || ''}
+        >
+          <div class="lore-card-header">
+            <TSCharacterImage
+              icon={char.icon}
+              alt={char.names?.english || 'Character'}
+              width={80}
+              height={80}
+            />
+            <div class="lore-card-info">
+              <h3 class="lore-card-name">{char.names?.english}</h3>
+              {char.names?.japanese && (
+                <p class="lore-card-jp">{char.names.japanese}</p>
+              )}
+              <div class="lore-card-badges">
+                <span class="lore-badge rarity">{char.rarity_stars}</span>
+                {char.element && <span class={`lore-badge element ${char.element?.toLowerCase()}`}>{char.element}</span>}
+                {char.class && <span class="lore-badge class">{char.class}</span>}
+              </div>
+            </div>
+          </div>
+          <div class="lore-card-content">
+            <p class="lore-text">{char.lore?.english}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="lore-no-results" id="no-results" style="display: none;">
+      No characters found matching your search.
+    </div>
+  </section>
+</CharacterLoreLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('char-search');
+  const noResults = document.getElementById('no-results');
+  const cards = document.querySelectorAll('.lore-card');
+
+  // Toggle card expansion on header click
+  cards.forEach(card => {
+    const header = card.querySelector('.lore-card-header');
+    header.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+    });
+  });
+
+  // Search functionality
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.dataset.name || '';
+      const japanese = card.dataset.japanese || '';
+
+      const matches = name.includes(query) || japanese.includes(query);
+      card.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+  });
+});
+</script>

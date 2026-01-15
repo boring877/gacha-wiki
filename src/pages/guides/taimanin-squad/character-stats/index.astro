@@ -1,0 +1,369 @@
+---
+// Taimanin Squad Character Stats Page
+// Displays character stats by level with card-based grid layout
+
+import CharacterStatsLayout from '../../../../layouts/taimanin-squad/CharacterStatsLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import { getAllCharacterStats, getStatGrowthFormula, getGameConfig } from '../../../../data/taimanin-squad/character-stats.js';
+
+// Get all characters with stats (filtered to only those with images)
+const allCharacters = getAllCharacterStats().sort((a, b) => a.id - b.id);
+
+const formula = getStatGrowthFormula();
+const gameConfig = getGameConfig();
+
+// Count by rarity
+const countByRarity = {
+  5: allCharacters.filter(c => c.rarity === 5).length,
+  4: allCharacters.filter(c => c.rarity === 4).length,
+  3: allCharacters.filter(c => c.rarity === 3).length,
+};
+
+// Grade to max level mapping
+const gradeMaxLevels = gameConfig.max_level_by_grade || [0, 10, 20, 30, 40, 50, 60];
+---
+
+<CharacterStatsLayout
+  title="Character Stats - Taimanin Squad Wiki | GachaWiki"
+  description="View all Taimanin Squad character stats by level. Compare HP, ATK, DEF, SPD, and more for all characters."
+  gameTitle="Character Stats"
+>
+  <div class="ts-stats-container">
+    <!-- Summary Section -->
+    <section class="ts-stats-summary">
+      <h2>Stats Overview</h2>
+      <div class="ts-summary-stats">
+        <div class="ts-summary-stat">
+          <div class="ts-summary-stat-value">{allCharacters.length}</div>
+          <div class="ts-summary-stat-label">Total</div>
+        </div>
+        <div class="ts-summary-stat">
+          <div class="ts-summary-stat-value">{countByRarity[5]}</div>
+          <div class="ts-summary-stat-label">5★</div>
+        </div>
+        <div class="ts-summary-stat">
+          <div class="ts-summary-stat-value">{countByRarity[4]}</div>
+          <div class="ts-summary-stat-label">4★</div>
+        </div>
+        <div class="ts-summary-stat">
+          <div class="ts-summary-stat-value">{countByRarity[3]}</div>
+          <div class="ts-summary-stat-label">3★</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Info -->
+    <div class="ts-formula-info">
+      <strong>Stat Formula:</strong> <code>{formula.description}</code>
+    </div>
+
+    <!-- Level & Grade Controls -->
+    <section class="ts-stats-controls">
+      <h3 class="ts-controls-title">Level & Grade Settings</h3>
+      <div class="ts-filter-row">
+        <div class="ts-filter-group">
+          <label for="ts-grade">Grade</label>
+          <select id="ts-grade">
+            <option value="1">Grade 1 (Max Lv 10)</option>
+            <option value="2">Grade 2 (Max Lv 20)</option>
+            <option value="3">Grade 3 (Max Lv 30)</option>
+            <option value="4">Grade 4 (Max Lv 40)</option>
+            <option value="5">Grade 5 (Max Lv 50)</option>
+            <option value="6" selected>Grade 6 (Max Lv 60)</option>
+          </select>
+        </div>
+        <div class="ts-filter-group">
+          <label for="ts-level">Level</label>
+          <input type="number" id="ts-level" min="1" max="60" value="60" />
+        </div>
+        <button type="button" class="ts-apply-btn" id="ts-apply-level">Apply to All</button>
+      </div>
+    </section>
+
+    <!-- Filter Controls -->
+    <section class="ts-stats-controls">
+      <h3 class="ts-controls-title">Filters</h3>
+      <div class="ts-filter-row">
+        <div class="ts-filter-group">
+          <label for="ts-search">Search</label>
+          <input type="text" id="ts-search" placeholder="Character name..." />
+        </div>
+        <div class="ts-filter-group">
+          <label for="ts-rarity">Rarity</label>
+          <select id="ts-rarity">
+            <option value="">All</option>
+            <option value="5">5★</option>
+            <option value="4">4★</option>
+            <option value="3">3★</option>
+          </select>
+        </div>
+        <div class="ts-filter-group">
+          <label for="ts-element">Element</label>
+          <select id="ts-element">
+            <option value="">All</option>
+            <option value="water">Water</option>
+            <option value="fire">Fire</option>
+            <option value="wind">Wind</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="ts-filter-group">
+          <label for="ts-class">Class</label>
+          <select id="ts-class">
+            <option value="">All</option>
+            <option value="attacker">Attacker</option>
+            <option value="supporter">Supporter</option>
+            <option value="defender">Defender</option>
+          </select>
+        </div>
+        <button type="button" class="ts-clear-btn" id="ts-clear-filters">Clear Filters</button>
+      </div>
+    </section>
+
+    <!-- Character Cards Grid -->
+    <div class="ts-stats-grid" id="ts-stats-grid">
+      {allCharacters.map((char) => (
+        <div
+          class="ts-stat-card"
+          data-id={char.id}
+          data-name={char.name?.toLowerCase() || ''}
+          data-rarity={char.rarity}
+          data-element={char.element?.toLowerCase() || ''}
+          data-class={char.class?.toLowerCase() || ''}
+          data-base-hp={char.base_stats?.HP || 0}
+          data-base-atk={char.base_stats?.ATK || 0}
+          data-base-def={char.base_stats?.DEF || 0}
+          data-base-spd={char.base_stats?.SPD || 0}
+          data-base-crate={char.base_stats?.CRATE || 0}
+          data-base-cdmg={char.base_stats?.CDMG || 0}
+          data-evol-per-grade={JSON.stringify(char.evolution_bonuses_per_grade || {})}
+          data-stats-by-grade={JSON.stringify(char.stats_by_grade || {})}
+        >
+          <div class="ts-card-header">
+            <div class="ts-card-icon">
+              <TSCharacterImage
+                icon={char.icon}
+                alt={char.name || 'Character'}
+                width={60}
+                height={60}
+              />
+            </div>
+            <div class="ts-card-info">
+              <h3 class="ts-card-name">{char.name}</h3>
+              <div class="ts-card-meta">
+                <span class="ts-card-rarity">{'★'.repeat(char.rarity)}</span>
+                {char.element && (
+                  <span class={`ts-card-element ${char.element.toLowerCase()}`}>{char.element}</span>
+                )}
+              </div>
+              <span class="ts-card-class">{char.class}</span>
+            </div>
+          </div>
+
+          <div class="ts-stats-section">
+            <div class="ts-stats-label">Stats at <span class="stat-level-label">Lv 60 / Grade 6</span></div>
+            <div class="ts-stats-list">
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">HP</span>
+                <span class="ts-stat-value hp" data-stat="hp">0</span>
+              </div>
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">ATK</span>
+                <span class="ts-stat-value atk" data-stat="atk">0</span>
+              </div>
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">DEF</span>
+                <span class="ts-stat-value def" data-stat="def">0</span>
+              </div>
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">SPD</span>
+                <span class="ts-stat-value spd" data-stat="spd">0</span>
+              </div>
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">CRIT Rate</span>
+                <span class="ts-stat-value" data-stat="crate">0%</span>
+              </div>
+              <div class="ts-stat-row">
+                <span class="ts-stat-name">CRIT DMG</span>
+                <span class="ts-stat-value" data-stat="cdmg">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Breakthrough Bonuses -->
+          <div class="ts-breakthrough-section">
+            <div class="ts-breakthrough-label">Total Grade Bonuses (cumulative)</div>
+            <div class="ts-breakthrough-stats">
+              <span class="ts-breakthrough-stat" data-bonus="hp">+0 HP</span>
+              <span class="ts-breakthrough-stat" data-bonus="atk">+0 ATK</span>
+              <span class="ts-breakthrough-stat" data-bonus="def">+0 DEF</span>
+              <span class="ts-breakthrough-stat" data-bonus="spd">+0 SPD</span>
+              <span class="ts-breakthrough-stat" data-bonus="crate">+0% CRATE</span>
+              <span class="ts-breakthrough-stat" data-bonus="cdmg">+0% CDMG</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="ts-no-results" id="ts-no-results" style="display: none;">
+      No characters found matching your filters.
+    </div>
+  </div>
+</CharacterStatsLayout>
+
+<script is:inline define:vars={{ gameConfig }}>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('ts-search');
+  const raritySelect = document.getElementById('ts-rarity');
+  const elementSelect = document.getElementById('ts-element');
+  const classSelect = document.getElementById('ts-class');
+  const gradeSelect = document.getElementById('ts-grade');
+  const levelInput = document.getElementById('ts-level');
+  const applyBtn = document.getElementById('ts-apply-level');
+  const clearBtn = document.getElementById('ts-clear-filters');
+  const noResults = document.getElementById('ts-no-results');
+  const cards = Array.from(document.querySelectorAll('.ts-stat-card'));
+
+  // Rarity rates for stat calculation
+  const rarityRates = gameConfig.status_rate_by_rarity || [2.0, 1.9, 1.8, 1.7, 1.7, 1.7];
+  const gradeMaxLevels = gameConfig.max_level_by_grade || [0, 10, 20, 30, 40, 50, 60];
+
+  // Calculate stats for a character at given level and grade
+  function calculateStats(card, level, grade) {
+    const rarity = parseInt(card.dataset.rarity) || 5;
+    const rarityIndex = Math.min(rarity - 1, rarityRates.length - 1);
+    const rarityRate = rarityRates[rarityIndex] || 1.7;
+
+    const baseHP = parseInt(card.dataset.baseHp) || 0;
+    const baseATK = parseInt(card.dataset.baseAtk) || 0;
+    const baseDEF = parseInt(card.dataset.baseDef) || 0;
+    const baseSPD = parseInt(card.dataset.baseSpd) || 0;
+    const baseCRATE = parseInt(card.dataset.baseCrate) || 0;
+    const baseCDMG = parseInt(card.dataset.baseCdmg) || 0;
+
+    // Get cumulative evolution bonuses from stats_by_grade
+    const statsByGrade = JSON.parse(card.dataset.statsByGrade || '{}');
+    const gradeData = statsByGrade[String(grade)] || {};
+    const evolBonusTotal = gradeData.evolution_bonus_total || {};
+
+    // Get per-grade bonus (what this specific grade adds)
+    const evolPerGrade = JSON.parse(card.dataset.evolPerGrade || '{}');
+    const thisGradeBonus = evolPerGrade[String(grade)] || {};
+
+    // Formula: Base * (1 + (L-1) * 0.018 * RarityRate) + EvolBonusTotal (cumulative)
+    const multiplier = 1 + (level - 1) * 0.018 * rarityRate;
+
+    return {
+      hp: Math.floor(baseHP * multiplier) + (evolBonusTotal.HP || 0),
+      atk: Math.floor(baseATK * multiplier) + (evolBonusTotal.ATK || 0),
+      def: Math.floor(baseDEF * multiplier) + (evolBonusTotal.DEF || 0),
+      spd: baseSPD + (evolBonusTotal.SPD || 0),
+      crate: baseCRATE + (evolBonusTotal.CRATE || 0),
+      cdmg: baseCDMG + (evolBonusTotal.CDMG || 0),
+      thisGradeBonus: thisGradeBonus,
+      evolBonusTotal: evolBonusTotal
+    };
+  }
+
+  // Update all cards with current level/grade
+  function updateAllStats() {
+    const level = parseInt(levelInput.value) || 60;
+    const grade = parseInt(gradeSelect.value) || 6;
+
+    cards.forEach(card => {
+      const stats = calculateStats(card, level, grade);
+
+      // Update stat values
+      card.querySelector('[data-stat="hp"]').textContent = stats.hp.toLocaleString();
+      card.querySelector('[data-stat="atk"]').textContent = stats.atk.toLocaleString();
+      card.querySelector('[data-stat="def"]').textContent = stats.def.toLocaleString();
+      card.querySelector('[data-stat="spd"]').textContent = stats.spd;
+      // Convert raw CRATE/CDMG to display % using 0.001 rate
+      card.querySelector('[data-stat="crate"]').textContent = (stats.crate * 0.001 * 100).toFixed(1) + '%';
+      // CDMG: 100% base + bonus% (raw * 0.001 * 100)
+      card.querySelector('[data-stat="cdmg"]').textContent = (100 + stats.cdmg * 0.001 * 100).toFixed(1) + '%';
+
+      // Update level label
+      card.querySelector('.stat-level-label').textContent = `Lv ${level} / Grade ${grade}`;
+
+      // Update breakthrough bonuses display (cumulative total at this grade)
+      const totalBonus = stats.evolBonusTotal;
+      card.querySelector('[data-bonus="hp"]').textContent = `+${totalBonus.HP || 0} HP`;
+      card.querySelector('[data-bonus="atk"]').textContent = `+${totalBonus.ATK || 0} ATK`;
+      card.querySelector('[data-bonus="def"]').textContent = `+${totalBonus.DEF || 0} DEF`;
+      card.querySelector('[data-bonus="spd"]').textContent = `+${totalBonus.SPD || 0} SPD`;
+      // Convert bonus CRATE/CDMG to display %
+      const bonusCratePercent = ((totalBonus.CRATE || 0) * 0.001 * 100).toFixed(1);
+      const bonusCdmgPercent = ((totalBonus.CDMG || 0) * 0.001 * 100).toFixed(1);
+      card.querySelector('[data-bonus="crate"]').textContent = `+${bonusCratePercent}% CRATE`;
+      card.querySelector('[data-bonus="cdmg"]').textContent = `+${bonusCdmgPercent}% CDMG`;
+    });
+  }
+
+  // Update level max when grade changes
+  gradeSelect.addEventListener('change', () => {
+    const grade = parseInt(gradeSelect.value) || 6;
+    const maxLevel = gradeMaxLevels[grade] || 60;
+    levelInput.max = maxLevel;
+    if (parseInt(levelInput.value) > maxLevel) {
+      levelInput.value = maxLevel;
+    }
+  });
+
+  // Apply level/grade to all
+  applyBtn.addEventListener('click', updateAllStats);
+
+  // Also update on enter key in level input
+  levelInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') updateAllStats();
+  });
+
+  // Filter cards
+  function filterCards() {
+    const searchQuery = searchInput.value.toLowerCase();
+    const rarityFilter = raritySelect.value;
+    const elementFilter = elementSelect.value;
+    const classFilter = classSelect.value;
+
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.dataset.name || '';
+      const rarity = card.dataset.rarity || '';
+      const element = card.dataset.element || '';
+      const charClass = card.dataset.class || '';
+
+      const matchesSearch = !searchQuery || name.includes(searchQuery);
+      const matchesRarity = !rarityFilter || rarity === rarityFilter;
+      const matchesElement = !elementFilter || element === elementFilter;
+      const matchesClass = !classFilter || charClass === classFilter;
+
+      const isVisible = matchesSearch && matchesRarity && matchesElement && matchesClass;
+      card.style.display = isVisible ? '' : 'none';
+      if (isVisible) visibleCount++;
+    });
+
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+  }
+
+  // Event listeners for filters
+  searchInput.addEventListener('input', filterCards);
+  raritySelect.addEventListener('change', filterCards);
+  elementSelect.addEventListener('change', filterCards);
+  classSelect.addEventListener('change', filterCards);
+
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    raritySelect.value = '';
+    elementSelect.value = '';
+    classSelect.value = '';
+    filterCards();
+  });
+
+  // Initial stats calculation
+  updateAllStats();
+});
+</script>

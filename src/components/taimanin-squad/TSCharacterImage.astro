@@ -1,0 +1,62 @@
+---
+// Taimanin Squad Character Image Component
+// Displays character icon images from the characters folder
+
+import { Image } from 'astro:assets';
+
+// Import all character images using glob
+const characterImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/characters/*_128x128.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { icon, alt = 'Character', width = 128, height = 128, class: className = '' } = Astro.props;
+
+// Find matching image - icon is like "1_Asagi", file is "1_Asagi_128x128.png"
+const imageKey = Object.keys(characterImages).find(key => key.includes(`/${icon}_128x128.png`));
+const imageModule = imageKey ? characterImages[imageKey].default : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    class:list={['ts-char-icon', className]}
+    loading="lazy"
+  />
+) : (
+  <div class:list={['ts-char-icon-fallback', className]} style={`width: ${width}px; height: ${height}px;`}>
+    <span>Not Released Yet</span>
+  </div>
+)}
+
+<style>
+  .ts-char-icon {
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .ts-char-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 500;
+    font-size: 0.65rem;
+    border-radius: 8px;
+    padding: 0.25rem;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

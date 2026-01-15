@@ -313,8 +313,11 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: TaimaninSquadIcon,
     sections: [
       {
-        title: 'Getting Started',
-        links: [{ name: 'Pre-Register', href: '/guides/taimanin-squad/' }],
+        title: 'Characters',
+        links: [
+          { name: 'Character Lore', href: '/guides/taimanin-squad/character-lore/' },
+          { name: 'Character Stats', href: '/guides/taimanin-squad/character-stats/' },
+        ],
       },
       {
         title: 'Resources',
