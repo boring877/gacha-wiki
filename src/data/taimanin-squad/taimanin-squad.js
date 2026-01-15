@@ -14,7 +14,7 @@ export const taimaninSquadConfig = {
     description:
       'Taimanin Squad is a turn-based RPG featuring 3D characters from the legendary Taimanin franchise.',
     playUrl: 'https://taimaninsquad.com/',
-    apkUrl: 'https://mega.nz/file/ca8BFSYJ#go1mLNZ92Gle9IYOM_tzNeThMjlps_ZAM_4RPI26hl4',
+    apkUrl: 'https://mega.nz/file/AXE1CTZT#CHSRZ5K6kFmP_nHoDuh2OK8eThKBCkBJcOeLPQEt6wg',
     lastUpdated: new Date(),
     status: 'pre-registration',
     openBeta: 'Open Beta is now available on the Galaxy Store! APK also available for download.',
