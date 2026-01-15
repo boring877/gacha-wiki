@@ -73,10 +73,13 @@ const breadcrumbs = [
       <p><strong>Platforms:</strong> {gameInfo.platforms.join(', ')}</p>
     </div>
 
-    <!-- Play Game Button -->
+    <!-- Play Game Buttons -->
     <div class="play-button-container">
       <a href={gameInfo.playUrl} target="_blank" rel="noopener noreferrer" class="play-button">
         Pre-Register Now
+      </a>
+      <a href={gameInfo.apkUrl} target="_blank" rel="noopener noreferrer" class="play-button secondary">
+        Download APK (Mega)
       </a>
     </div>
 
@@ -157,5 +160,11 @@ const breadcrumbs = [
     background: var(--ts-bg-secondary, #1a171f);
     border-radius: 8px;
     border: 1px solid var(--ts-primary, #6b5b7a);
+  }
+
+  .play-button.secondary {
+    background: var(--ts-bg-tertiary, #242028);
+    border: 1px solid var(--ts-accent, #9a8aaa);
+    color: var(--ts-accent, #9a8aaa);
   }
 </style>

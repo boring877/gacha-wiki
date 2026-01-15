@@ -18,6 +18,8 @@ Disallow: /torrents/
 # Disallow URLs with query parameters (search, etc.)
 Disallow: /*?search=
 Disallow: /*?*search_term_string*
+Disallow: /*?search={search_term_string}
+Disallow: /*?*
 
 # Crawl delay (good for smaller sites)
 Crawl-delay: 1
