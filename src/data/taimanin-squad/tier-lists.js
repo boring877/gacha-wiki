@@ -58,7 +58,6 @@ function processCharacterList(names) {
 const MOB_CLEAR_TIERS = {
   SSS: [
     'Mizuki Yukikaze',
-    'Fuuma Kotaro',
     'Kamimura Maika'
   ],
   SS: [
