@@ -27,13 +27,13 @@ const isActive = (href: string) => {
   );
 };
 
-if (!game) return;
 ---
 
 <style>
   @import '../styles/components/game-navigation-mobile.css';
 </style>
 
+{game && (
 <nav class="game-nav-mobile" data-game={validatedGameKey}>
   <div class="container">
     <div class="game-nav-header">
@@ -115,6 +115,7 @@ if (!game) return;
     </div>
   </div>
 </div>
+)}
 
 <script>
   // Mobile Navigation - Touch-optimized with proper error handling

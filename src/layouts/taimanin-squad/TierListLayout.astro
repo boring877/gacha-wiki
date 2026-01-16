@@ -1,0 +1,84 @@
+---
+// Taimanin Squad Tier List Layout
+// Layout for SSR character tier list page
+
+import TSBaseHead from '../../components/taimanin-squad/TSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/taimanin-squad/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/taimanin-squad/ts-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/taimanin-squad/ts-layout.css';
+import '../../styles/games/taimanin-squad/ts-landing-page.css';
+import '../../styles/games/taimanin-squad/ts-tier-list.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <TSBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="taimanin-squad"
+      title={title}
+      description={description}
+      customImage="/images/games/taimanin-squad/taimanin-squad.jpg"
+    />
+    <slot name="head" />
+  </head>
+  <body class="taimanin-squad-body ts-layout-override">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="taimanin-squad-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="taimanin-squad" />
+      <MobileMenu />
+
+      <div class="taimanin-squad-container">
+        <main class="taimanin-squad-main">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="taimanin-squad" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

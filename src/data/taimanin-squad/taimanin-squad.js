@@ -3,9 +3,9 @@
 
 export const taimaninSquadConfig = {
   meta: {
-    title: 'Taimanin Squad Wiki - Pre-Registration Guide & Game Database | GachaWiki',
+    title: 'Taimanin Squad Wiki - Character Guide & Game Database | GachaWiki',
     description:
-      'Complete Taimanin Squad wiki with pre-registration info, character guides, and game database. Latest Taimanin Squad news, collecting RPG gameplay details for Android, iOS & PC.',
+      'Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Google Play, App Store & Galaxy Store. Collecting RPG for Android, iOS & PC.',
     gameTitle: 'Taimanin Squad',
     heroImage: '/images/games/taimanin-squad/taimanin-squad.jpg',
   },
@@ -13,11 +13,13 @@ export const taimaninSquadConfig = {
   gameInfo: {
     description:
       'Taimanin Squad is a turn-based RPG featuring 3D characters from the legendary Taimanin franchise.',
-    playUrl: 'https://taimaninsquad.com/',
+    playUrl: 'https://play.google.com/store/apps/details?id=com.GREMORYGames.TaimaninSquad',
     apkUrl: 'https://mega.nz/file/AXE1CTZT#CHSRZ5K6kFmP_nHoDuh2OK8eThKBCkBJcOeLPQEt6wg',
+    appStoreUrl: 'https://apps.apple.com/us/app/taimanin-squad/id6755016024',
+    galaxyStoreUrl: 'https://galaxystore.samsung.com/detail/com.GREMORYGames.TaimaninSquad.Galaxy',
     lastUpdated: new Date(),
-    status: 'pre-registration',
-    openBeta: 'Open Beta is now available on the Galaxy Store! APK also available for download.',
+    status: 'released',
+    openBeta: 'Now available on Google Play, App Store, and Galaxy Store!',
     developer: 'Gremory Games Inc.',
     platforms: ['Android', 'iOS', 'PC'],
     socialLinks: {
@@ -61,12 +63,6 @@ export const taimaninSquadConfig = {
       size: 'large',
       guides: [
         {
-          id: 'pre-registration',
-          title: 'Pre-Register',
-          url: 'https://taimaninsquad.com/',
-          external: true,
-        },
-        {
           id: 'character-lore',
           title: 'Character Lore',
           url: '/guides/taimanin-squad/character-lore/',
@@ -76,6 +72,18 @@ export const taimaninSquadConfig = {
           id: 'character-stats',
           title: 'Character Stats',
           url: '/guides/taimanin-squad/character-stats/',
+          external: false,
+        },
+        {
+          id: 'buff-debuff',
+          title: 'Buffs & Debuffs',
+          url: '/guides/taimanin-squad/buff-debuff/',
+          external: false,
+        },
+        {
+          id: 'mechanics',
+          title: 'Game Mechanics',
+          url: '/guides/taimanin-squad/mechanics/',
           external: false,
         },
       ],
@@ -106,17 +114,6 @@ export const taimaninSquadConfig = {
   // Guides array for backward compatibility
   guides: [
     {
-      id: 'pre-registration',
-      title: 'Pre-Register',
-      emoji: '',
-      description:
-        'Pre-register for Taimanin Squad to receive exclusive rewards including legendary characters, summon tickets, and in-game currency.',
-      url: 'https://taimaninsquad.com/',
-      category: 'info',
-      size: 'large',
-      external: true,
-    },
-    {
       id: 'character-lore',
       title: 'Character Lore',
       emoji: '',
@@ -132,6 +129,26 @@ export const taimaninSquadConfig = {
       emoji: '',
       description: 'View character stats by level including HP, ATK, DEF, SPD, and more.',
       url: '/guides/taimanin-squad/character-stats/',
+      category: 'info',
+      size: 'medium',
+      external: false,
+    },
+    {
+      id: 'buff-debuff',
+      title: 'Buffs & Debuffs',
+      emoji: '',
+      description: 'Complete reference for all buff and debuff status effects in Taimanin Squad.',
+      url: '/guides/taimanin-squad/buff-debuff/',
+      category: 'info',
+      size: 'medium',
+      external: false,
+    },
+    {
+      id: 'mechanics',
+      title: 'Game Mechanics',
+      emoji: '',
+      description: 'Complete guide to damage formulas, elements, classes, personalities, and stat systems.',
+      url: '/guides/taimanin-squad/mechanics/',
       category: 'info',
       size: 'medium',
       external: false,

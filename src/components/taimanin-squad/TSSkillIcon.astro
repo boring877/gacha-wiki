@@ -1,0 +1,86 @@
+---
+// Taimanin Squad Skill Icon Component
+// Displays skill icons from Skill_icons folder and Aura icons from Aura folder
+// Handles both numeric icons (101.png) and named icons (leader_spd.png)
+
+import { Image } from 'astro:assets';
+
+// Import skill icons
+const skillIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/Skill_icons/*.png',
+  { eager: true }
+);
+
+// Import aura icons
+const auraIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/Aura/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt?: string;
+  size?: number;
+  class?: string;
+}
+
+const { icon, alt = 'Skill', size = 48, class: className = '' } = Astro.props;
+
+// Find the matching icon
+function findIcon() {
+  // First check if it's an aura icon (starts with "leader_")
+  if (icon.startsWith('leader_')) {
+    const auraKey = Object.keys(auraIcons).find(key =>
+      key.toLowerCase().includes(`/${icon.toLowerCase()}.png`)
+    );
+    if (auraKey) return auraIcons[auraKey].default;
+  }
+
+  // Check skill icons
+  const skillKey = Object.keys(skillIcons).find(key =>
+    key.includes(`/${icon}.png`)
+  );
+  if (skillKey) return skillIcons[skillKey].default;
+
+  return null;
+}
+
+const iconImage = findIcon();
+---
+
+{iconImage ? (
+  <Image
+    src={iconImage}
+    alt={alt}
+    width={size}
+    height={size}
+    class:list={['ts-skill-icon', className]}
+    loading="lazy"
+  />
+) : (
+  <div
+    class:list={['ts-skill-icon-fallback', className]}
+    style={`width: ${size}px; height: ${size}px;`}
+  >
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .ts-skill-icon {
+    object-fit: contain;
+    display: block;
+  }
+
+  .ts-skill-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+// Taimanin Squad SSR Tier List Page
+// Displays tier rankings for SSR characters by game mode (Mob Clear, Boss)
+
+import TierListLayout from '../../../../layouts/taimanin-squad/TierListLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import {
+  TIER_DEFINITIONS,
+  GAME_MODES,
+  getTierListByMode,
+  getAllSSRCharacters
+} from '../../../../data/taimanin-squad/tier-lists.js';
+
+// Get tier lists for each mode
+const mobClearList = getTierListByMode('mob-clear');
+const bossList = getTierListByMode('boss');
+
+// Count total SSR characters
+const totalSSR = getAllSSRCharacters().length;
+
+// Page metadata
+const pageTitle = 'SSR Tier List - Taimanin Squad Wiki | GachaWiki';
+const pageDescription = `Complete tier list for ${totalSSR} SSR (Legend) characters in Taimanin Squad. Rankings for Mob Clear and Boss content.`;
+---
+
+<TierListLayout
+  title={pageTitle}
+  description={pageDescription}
+  gameTitle="SSR Tier List"
+>
+  <div class="ts-tier-container">
+    <!-- Tab Navigation -->
+    <div class="ts-tier-tabs">
+      <button class="ts-tier-tab active" data-tab="mob-clear">
+        Mob Clear
+      </button>
+      <button class="ts-tier-tab" data-tab="boss">
+        Boss / Single Target
+      </button>
+    </div>
+
+    <!-- Mob Clear Tab Content -->
+    <div class="ts-tier-content active" id="mob-clear-content">
+      <p class="ts-tier-description">
+        {mobClearList?.description || 'Best units for clearing waves of enemies and map exploration'}
+      </p>
+
+      <div class="ts-tier-grid">
+        {mobClearList?.tiers.map(tierData => (
+          <div class="ts-tier-row">
+            <div class={`ts-tier-label ts-tier-${tierData.tier.toLowerCase()}`}>
+              {tierData.definition.label}
+            </div>
+            <div class="ts-tier-characters">
+              {tierData.characters.map(char => (
+                <div class="ts-tier-character" title={char.names?.english}>
+                  <div class="ts-tier-char-image">
+                    <TSCharacterImage
+                      icon={char.icon}
+                      alt={char.names?.english || 'Character'}
+                      width={64}
+                      height={64}
+                    />
+                  </div>
+                  <span class="ts-tier-char-name">{char.names?.english}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Boss Tab Content -->
+    <div class="ts-tier-content" id="boss-content">
+      <p class="ts-tier-description">
+        {bossList?.description || 'Best units for boss fights and single target damage'}
+      </p>
+
+      <div class="ts-tier-grid">
+        {bossList?.tiers.map(tierData => (
+          <div class="ts-tier-row">
+            <div class={`ts-tier-label ts-tier-${tierData.tier.toLowerCase()}`}>
+              {tierData.definition.label}
+            </div>
+            <div class="ts-tier-characters">
+              {tierData.characters.map(char => (
+                <div class="ts-tier-character" title={char.names?.english}>
+                  <div class="ts-tier-char-image">
+                    <TSCharacterImage
+                      icon={char.icon}
+                      alt={char.names?.english || 'Character'}
+                      width={64}
+                      height={64}
+                    />
+                  </div>
+                  <span class="ts-tier-char-name">{char.names?.english}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tier Legend -->
+    <div class="ts-tier-info">
+      <h3>Tier Definitions</h3>
+      <div class="ts-tier-legend">
+        {Object.entries(TIER_DEFINITIONS).map(([tier, def]) => (
+          <div class="ts-tier-legend-item">
+            <div
+              class={`ts-tier-legend-color ts-tier-${tier.toLowerCase()}`}
+            >
+              {def.label}
+            </div>
+            <span class="ts-tier-legend-text">{def.description}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Last Updated -->
+    <p class="ts-tier-updated">
+      This tier list is community-driven and subject to change based on game updates and meta shifts.
+    </p>
+  </div>
+</TierListLayout>
+
+<script>
+  // Tab switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.ts-tier-tab');
+    const contents = document.querySelectorAll('.ts-tier-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and corresponding content
+        tab.classList.add('active');
+        const tabId = tab.getAttribute('data-tab');
+        const content = document.getElementById(`${tabId}-content`);
+        if (content) {
+          content.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

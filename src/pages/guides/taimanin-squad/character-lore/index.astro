@@ -4,7 +4,21 @@
 
 import CharacterLoreLayout from '../../../../layouts/taimanin-squad/CharacterLoreLayout.astro';
 import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
 import { getAllCharacters } from '../../../../data/taimanin-squad/characters.js';
+
+// Convert rarity to star count
+const rarityToStars: Record<string, number> = {
+  'R': 1,
+  'R+': 2,
+  'SR': 3,
+  'SR+': 4,
+  'SSR': 5
+};
+
+const getStars = (rarity: string) => '★'.repeat(rarityToStars[rarity] || 0);
 
 // Get all characters sorted by ID
 const allCharacters = getAllCharacters().sort((a, b) => a.id - b.id);
@@ -24,14 +38,49 @@ const charactersWithLore = allCharacters.filter(char => char.lore?.english);
       Click on a character card to read their full lore.
     </p>
 
-    <!-- Search -->
-    <div class="lore-search-container">
-      <input
-        type="text"
-        id="char-search"
-        class="lore-search-input"
-        placeholder="Search characters by name..."
-      />
+    <!-- Search and Filters -->
+    <div class="lore-filters">
+      <div class="lore-search-container">
+        <input
+          type="text"
+          id="char-search"
+          class="lore-search-input"
+          placeholder="Search characters by name..."
+        />
+      </div>
+      <div class="lore-filter-row">
+        <select id="filter-rarity" class="lore-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR (★★★★★)</option>
+          <option value="SR+">SR+ (★★★★)</option>
+          <option value="SR">SR (★★★)</option>
+          <option value="R+">R+ (★★)</option>
+          <option value="R">R (★)</option>
+        </select>
+        <select id="filter-type" class="lore-filter-select">
+          <option value="">All Types</option>
+          <option value="Agility">Agility</option>
+          <option value="Technique">Technique</option>
+          <option value="Power">Power</option>
+          <option value="Balance">Balance</option>
+        </select>
+        <select id="filter-role" class="lore-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Defender">Defender</option>
+          <option value="Support">Support</option>
+        </select>
+        <select id="filter-trait" class="lore-filter-select">
+          <option value="">All Traits</option>
+          <option value="Mars">Mars</option>
+          <option value="Venus">Venus</option>
+          <option value="Mercury">Mercury</option>
+          <option value="Moon">Moon</option>
+          <option value="Sun">Sun</option>
+          <option value="Jupiter">Jupiter</option>
+          <option value="Saturn">Saturn</option>
+        </select>
+      </div>
     </div>
 
     <!-- Character Grid -->
@@ -41,6 +90,10 @@ const charactersWithLore = allCharacters.filter(char => char.lore?.english);
           class="lore-card"
           data-name={char.names?.english?.toLowerCase() || ''}
           data-japanese={char.names?.japanese || ''}
+          data-rarity={char.rarity || ''}
+          data-type={char.type || ''}
+          data-role={char.role || ''}
+          data-trait={char.trait || ''}
         >
           <div class="lore-card-header">
             <TSCharacterImage
@@ -55,9 +108,26 @@ const charactersWithLore = allCharacters.filter(char => char.lore?.english);
                 <p class="lore-card-jp">{char.names.japanese}</p>
               )}
               <div class="lore-card-badges">
-                <span class="lore-badge rarity">{char.rarity_stars}</span>
-                {char.element && <span class={`lore-badge element ${char.element?.toLowerCase()}`}>{char.element}</span>}
-                {char.class && <span class="lore-badge class">{char.class}</span>}
+                {char.rarity && <span class="lore-badge rarity-stars">{getStars(char.rarity)}</span>}
+                {char.rarity_name && <span class="lore-badge">{char.rarity_name}</span>}
+                {char.trait && (
+                  <span class="lore-badge">
+                    <TSTraitIcon trait={char.trait} size={16} />
+                    {char.trait}
+                  </span>
+                )}
+                {char.type && (
+                  <span class="lore-badge">
+                    <TSTypeIcon type={char.type} size={16} />
+                    {char.type}
+                  </span>
+                )}
+                {char.role && (
+                  <span class="lore-badge">
+                    <TSRoleIcon role={char.role} size={16} />
+                    {char.role}
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -78,6 +148,10 @@ const charactersWithLore = allCharacters.filter(char => char.lore?.english);
 <script is:inline>
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('char-search');
+  const filterRarity = document.getElementById('filter-rarity');
+  const filterType = document.getElementById('filter-type');
+  const filterRole = document.getElementById('filter-role');
+  const filterTrait = document.getElementById('filter-trait');
   const noResults = document.getElementById('no-results');
   const cards = document.querySelectorAll('.lore-card');
 
@@ -89,21 +163,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Search functionality
-  searchInput.addEventListener('input', () => {
+  // Filter function
+  function applyFilters() {
     const query = searchInput.value.toLowerCase();
+    const rarity = filterRarity.value;
+    const type = filterType.value;
+    const role = filterRole.value;
+    const trait = filterTrait.value;
     let visibleCount = 0;
 
     cards.forEach(card => {
       const name = card.dataset.name || '';
       const japanese = card.dataset.japanese || '';
+      const cardRarity = card.dataset.rarity || '';
+      const cardType = card.dataset.type || '';
+      const cardRole = card.dataset.role || '';
+      const cardTrait = card.dataset.trait || '';
 
-      const matches = name.includes(query) || japanese.includes(query);
+      const matchesSearch = name.includes(query) || japanese.includes(query);
+      const matchesRarity = !rarity || cardRarity === rarity;
+      const matchesType = !type || cardType === type;
+      const matchesRole = !role || cardRole === role;
+      const matchesTrait = !trait || cardTrait === trait;
+
+      const matches = matchesSearch && matchesRarity && matchesType && matchesRole && matchesTrait;
       card.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
     });
 
     noResults.style.display = visibleCount === 0 ? '' : 'none';
-  });
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', applyFilters);
+  filterRarity.addEventListener('change', applyFilters);
+  filterType.addEventListener('change', applyFilters);
+  filterRole.addEventListener('change', applyFilters);
+  filterTrait.addEventListener('change', applyFilters);
 });
 </script>

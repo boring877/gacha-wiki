@@ -1,0 +1,259 @@
+/* Taimanin Squad Tier List Page Styles */
+/* SSR character tier rankings with tab navigation */
+
+/* Tier List Container */
+.ts-tier-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tab Navigation */
+.ts-tier-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  padding: 0.25rem;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-tier-tab {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.ts-tier-tab:hover {
+  background: var(--ts-bg-tertiary, #242028);
+}
+
+.ts-tier-tab.active {
+  background: var(--ts-primary, #6b5b7a);
+  color: var(--ts-text-primary, #fff);
+}
+
+/* Tab Content */
+.ts-tier-content {
+  display: none;
+}
+
+.ts-tier-content.active {
+  display: block;
+}
+
+/* Mode Description */
+.ts-tier-description {
+  text-align: center;
+  color: var(--ts-text-secondary, #d3d3d3);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+/* Tier Grid */
+.ts-tier-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Tier Row */
+.ts-tier-row {
+  display: flex;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ts-border, #2e2838);
+  min-height: 100px;
+}
+
+/* Tier Label */
+.ts-tier-label {
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Tier Colors */
+.ts-tier-sss {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+}
+
+.ts-tier-ss {
+  background: linear-gradient(135deg, #9333EA 0%, #7C3AED 100%);
+}
+
+.ts-tier-s {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+}
+
+.ts-tier-a {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.ts-tier-b {
+  background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+}
+
+/* Character Container */
+.ts-tier-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  flex: 1;
+  align-items: center;
+  align-content: center;
+}
+
+/* Character Card */
+.ts-tier-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 72px;
+  text-decoration: none;
+}
+
+.ts-tier-char-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--ts-border, #2e2838);
+}
+
+.ts-tier-char-name {
+  font-size: 0.65rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+  text-align: center;
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* Info Section */
+.ts-tier-info {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-tier-info h3 {
+  color: var(--ts-text-primary, #fff);
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.ts-tier-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ts-tier-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ts-tier-legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.ts-tier-legend-text {
+  font-size: 0.85rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+/* Last Updated */
+.ts-tier-updated {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--ts-text-muted, #888);
+  font-size: 0.85rem;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .ts-tier-tabs {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ts-tier-tab {
+    padding: 0.75rem 1rem;
+  }
+
+  .ts-tier-row {
+    flex-direction: column;
+  }
+
+  .ts-tier-label {
+    min-width: unset;
+    width: 100%;
+    min-height: 50px;
+    border-radius: 0;
+  }
+
+  .ts-tier-characters {
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .ts-tier-legend {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .ts-tier-character {
+    width: 60px;
+  }
+
+  .ts-tier-char-image {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ts-tier-char-name {
+    font-size: 0.6rem;
+    max-width: 60px;
+  }
+
+  .ts-tier-characters {
+    gap: 0.5rem;
+  }
+}

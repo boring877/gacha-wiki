@@ -1,0 +1,473 @@
+/* Taimanin Squad Game Mechanics Page Styles */
+/* Full mechanics guide with damage formulas, roles, types, traits, personalities, and stats */
+
+/* Section Navigation */
+.ts-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--ts-bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--ts-border);
+}
+
+.ts-section-nav a {
+  padding: 0.5rem 1rem;
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border);
+  border-radius: 8px;
+  color: var(--ts-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.ts-section-nav a.active {
+  background: var(--ts-primary);
+  color: var(--ts-text-primary);
+  border-color: var(--ts-primary);
+}
+
+/* Section Container */
+.ts-mech-section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 2rem;
+}
+
+.ts-mech-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ts-text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ts-primary);
+}
+
+.ts-mech-section-desc {
+  color: var(--ts-text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Formula Box */
+.ts-formula-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-formula-box {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.ts-formula-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ts-accent);
+  margin: 0 0 0.75rem 0;
+}
+
+.ts-formula-code {
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border-light);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: var(--ts-text-primary);
+  overflow-x: auto;
+  margin-bottom: 0.75rem;
+}
+
+.ts-formula-desc {
+  font-size: 0.8125rem;
+  color: var(--ts-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Example Box */
+.ts-example-box {
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.ts-example-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ts-accent);
+  margin: 0 0 0.5rem 0;
+}
+
+.ts-example-calc {
+  font-family: monospace;
+  font-size: 0.8125rem;
+  color: var(--ts-text-primary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Element Cards */
+.ts-element-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-element-card {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.ts-element-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ts-element-water { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+.ts-element-wind { background: linear-gradient(135deg, #22c55e 0%, #15803d 100%); }
+.ts-element-fire { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
+.ts-element-dark { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
+
+.ts-element-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0;
+}
+
+/* Class Cards */
+.ts-class-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-class-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ts-class-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.ts-class-card {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.ts-class-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Role colors */
+.ts-role-attacker { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+.ts-role-defender { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+.ts-role-support { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+
+/* Legacy class colors (keep for backwards compatibility) */
+.ts-class-attacker { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+.ts-class-defender { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+.ts-class-supporter { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+
+/* Type colors */
+.ts-type-agility { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+.ts-type-power { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+.ts-type-technique { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+.ts-type-balance { background: linear-gradient(135deg, #64748b 0%, #475569 100%); }
+
+.ts-class-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.ts-class-desc {
+  font-size: 0.8125rem;
+  color: var(--ts-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Trait Grid */
+.ts-trait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-trait-card {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.ts-trait-symbol {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--ts-accent);
+}
+
+.ts-trait-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.ts-trait-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.ts-trait-desc {
+  font-size: 0.75rem;
+  color: var(--ts-text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Personality Grid */
+.ts-personality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-personality-card {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.ts-personality-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  margin: 0;
+}
+
+/* Stat Systems List */
+.ts-stat-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+}
+
+.ts-stat-num {
+  width: 28px;
+  height: 28px;
+  background: var(--ts-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ts-text-primary);
+  flex-shrink: 0;
+}
+
+.ts-stat-name {
+  font-size: 0.875rem;
+  color: var(--ts-text-primary);
+  margin: 0;
+}
+
+/* Info Box */
+.ts-info-box {
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-info-box p {
+  margin: 0;
+  color: var(--ts-text-secondary);
+  line-height: 1.6;
+}
+
+.ts-info-box p + p {
+  margin-top: 0.75rem;
+}
+
+/* Tips Box */
+.ts-tips-box {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-primary-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.ts-tips-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ts-accent);
+  margin: 0 0 0.75rem 0;
+}
+
+.ts-tips-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--ts-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.ts-tips-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* Base Stats Table */
+.ts-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background: var(--ts-bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ts-stats-table th,
+.ts-stats-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ts-border);
+}
+
+.ts-stats-table th {
+  background: var(--ts-bg-tertiary);
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  font-size: 0.875rem;
+}
+
+.ts-stats-table td {
+  color: var(--ts-text-secondary);
+  font-size: 0.875rem;
+}
+
+.ts-stats-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .ts-element-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ts-class-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ts-class-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ts-formula-container {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-section-nav {
+    gap: 0.375rem;
+  }
+
+  .ts-section-nav a {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .ts-mech-section-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .ts-element-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .ts-element-card {
+    padding: 1rem;
+  }
+
+  .ts-element-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .ts-personality-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ts-stat-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-stats-table th,
+  .ts-stats-table td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}

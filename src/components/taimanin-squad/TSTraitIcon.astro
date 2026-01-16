@@ -1,0 +1,50 @@
+---
+// Taimanin Squad Trait Icon Component
+// Displays planetary trait icons (Mars, Venus, Sun, Mercury, Saturn, Moon, Jupiter)
+
+import { Image } from 'astro:assets';
+
+const traitImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/disposition/*.png',
+  { eager: true }
+);
+
+const traitMapping: Record<string, number> = {
+  'Mars': 1,
+  'Venus': 2,
+  'Mercury': 3,
+  'Moon': 4,
+  'Sun': 5,
+  'Jupiter': 6,
+  'Saturn': 7
+};
+
+export interface Props {
+  trait: string;
+  size?: number;
+}
+
+const { trait, size = 24 } = Astro.props;
+const iconNumber = traitMapping[trait];
+const imageKey = Object.keys(traitImages).find(key =>
+  key.includes(`UnitDisPosition_${iconNumber}_Big.png`)
+);
+const imageModule = imageKey ? traitImages[imageKey].default : null;
+---
+
+{imageModule && (
+  <Image
+    src={imageModule}
+    alt={trait}
+    width={size}
+    height={size}
+    class="ts-trait-icon"
+    title={trait}
+  />
+)}
+
+<style>
+  .ts-trait-icon {
+    vertical-align: middle;
+  }
+</style>

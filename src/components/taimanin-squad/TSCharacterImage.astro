@@ -1,12 +1,15 @@
 ---
 // Taimanin Squad Character Image Component
-// Displays character icon images from the characters folder
+// Displays character images from the characterimage folder
+// Selects images by dimensions: 128x128 for icons (largest file), 256x512 for side images
 
 import { Image } from 'astro:assets';
+import fs from 'node:fs';
+import path from 'node:path';
 
-// Import all character images using glob
+// Import all character images from the new organized folder structure
 const characterImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/taimanin-squad/characters/*_128x128.png',
+  '../../assets/images/games/taimanin-squad/characterimage/**/*.png',
   { eager: true }
 );
 
@@ -16,12 +19,72 @@ export interface Props {
   width?: number;
   height?: number;
   class?: string;
+  variant?: 'icon' | 'side'; // 'icon' = 128x128 (largest), 'side' = 256x512
 }
 
-const { icon, alt = 'Character', width = 128, height = 128, class: className = '' } = Astro.props;
+const { icon, alt = 'Character', width = 128, height = 128, class: className = '', variant = 'icon' } = Astro.props;
 
-// Find matching image - icon is like "1_Asagi", file is "1_Asagi_128x128.png"
-const imageKey = Object.keys(characterImages).find(key => key.includes(`/${icon}_128x128.png`));
+// Parse the icon prop (e.g., "46_Aina" -> id: "46", name: "Aina")
+const iconParts = icon.split('_');
+const charId = iconParts[0];
+const charName = iconParts.slice(1).join('_'); // Handle names with underscores
+
+// Find matching image by dimensions, selecting largest file for icons
+// Image dimensions: 128x128 (icon), 256x512 (side), 256x128 (banner), 64x64 (thumb)
+function findCharacterImage() {
+  const allKeys = Object.keys(characterImages);
+
+  // Filter to images in this character's folder with matching ID
+  const charImages = allKeys.filter(key => {
+    const normalizedKey = key.replace(/\\/g, '/');
+    return normalizedKey.includes(`/characterimage/${charName}/`) &&
+           normalizedKey.includes(`/${charId}_${charName}`);
+  });
+
+  if (charImages.length === 0) return null;
+
+  // Target dimensions based on variant
+  const targetWidth = variant === 'icon' ? 128 : 256;
+  const targetHeight = variant === 'icon' ? 128 : 512;
+
+  // Find all images matching target dimensions
+  const matchingImages = charImages.filter(key => {
+    const imgMeta = characterImages[key].default;
+    return imgMeta.width === targetWidth && imgMeta.height === targetHeight;
+  });
+
+  if (matchingImages.length === 0) {
+    // Fallback: return any available image
+    return charImages[0];
+  }
+
+  if (matchingImages.length === 1) {
+    return matchingImages[0];
+  }
+
+  // Multiple matches: select the largest file (best quality)
+  let largestKey = matchingImages[0];
+  let largestSize = 0;
+
+  for (const key of matchingImages) {
+    try {
+      // Convert glob key to absolute file path
+      const relativePath = key.replace('../../assets/', 'src/assets/');
+      const absolutePath = path.resolve(process.cwd(), relativePath);
+      const stats = fs.statSync(absolutePath);
+      if (stats.size > largestSize) {
+        largestSize = stats.size;
+        largestKey = key;
+      }
+    } catch {
+      // If file stat fails, continue with current selection
+    }
+  }
+
+  return largestKey;
+}
+
+const imageKey = findCharacterImage();
 const imageModule = imageKey ? characterImages[imageKey].default : null;
 ---
 

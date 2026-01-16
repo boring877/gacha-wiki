@@ -1,0 +1,61 @@
+---
+// Taimanin Squad Type Icon Component
+// Displays type icons (Agility, Power, Technique, Balance) from game images
+
+import { Image } from 'astro:assets';
+
+const typeImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/Type/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  type: string;
+  size?: number;
+}
+
+const { type, size = 48 } = Astro.props;
+
+const imageKey = Object.keys(typeImages).find(key =>
+  key.includes(`/${type}.png`)
+);
+const imageModule = imageKey ? typeImages[imageKey].default : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={type}
+    width={size}
+    height={size}
+    class="ts-type-icon-img"
+    title={type}
+    quality="max"
+    format="png"
+  />
+) : (
+  <div class="ts-type-icon-fallback" style={`width: ${size}px; height: ${size}px;`}>
+    {type.substring(0, 3).toUpperCase()}
+  </div>
+)}
+
+<style>
+  .ts-type-icon-img {
+    vertical-align: middle;
+    border-radius: 8px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .ts-type-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

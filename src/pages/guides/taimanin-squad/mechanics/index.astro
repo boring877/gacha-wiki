@@ -1,0 +1,292 @@
+---
+// Taimanin Squad Game Mechanics Guide
+// Complete reference for damage formulas, roles, types, traits, personalities, and stat systems
+
+import MechanicsLayout from '../../../../layouts/taimanin-squad/MechanicsLayout.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
+
+// Roles data (combat function)
+const roles = [
+  {
+    name: 'Attacker',
+    class: 'ts-role-attacker',
+    icon: 'ATK',
+    desc: 'High damage output characters focused on dealing damage to enemies. Best for burst damage and clearing content quickly.',
+  },
+  {
+    name: 'Defender',
+    class: 'ts-role-defender',
+    icon: 'DEF',
+    desc: 'Tanky characters with high HP and DEF. They protect allies and absorb damage, essential for difficult content.',
+  },
+  {
+    name: 'Support',
+    class: 'ts-role-support',
+    icon: 'SUP',
+    desc: 'Utility characters that buff allies, debuff enemies, or provide healing. Key for team synergy and sustained fights.',
+  },
+];
+
+// Types data (combat style)
+const types = [
+  {
+    name: 'Agility',
+    class: 'ts-type-agility',
+    icon: 'AGI',
+    desc: 'High-speed characters with fast actions and high evasion. Excel at dodging attacks and acting first in battle.',
+  },
+  {
+    name: 'Power',
+    class: 'ts-type-power',
+    icon: 'PWR',
+    desc: 'Raw strength focused characters with high base ATK. Deal massive damage but may sacrifice speed or defense.',
+  },
+  {
+    name: 'Technique',
+    class: 'ts-type-technique',
+    icon: 'TEC',
+    desc: 'Skill-based characters with unique abilities. Often have special effects, debuffs, or utility in their kits.',
+  },
+  {
+    name: 'Balance',
+    class: 'ts-type-balance',
+    icon: 'BAL',
+    desc: 'Well-rounded characters with balanced stats. Versatile and reliable in various situations without major weaknesses.',
+  },
+];
+
+// Traits data (planetary affinity)
+const traits = [
+  { name: 'Mars', symbol: '♂', desc: 'Associated with combat and aggression' },
+  { name: 'Venus', symbol: '♀', desc: 'Associated with beauty and harmony' },
+  { name: 'Mercury', symbol: '☿', desc: 'Associated with speed and communication' },
+  { name: 'Jupiter', symbol: '♃', desc: 'Associated with expansion and luck' },
+  { name: 'Saturn', symbol: '♄', desc: 'Associated with discipline and endurance' },
+  { name: 'Sun', symbol: '☉', desc: 'Associated with vitality and leadership' },
+  { name: 'Moon', symbol: '☽', desc: 'Associated with intuition and adaptability' },
+];
+
+// 12 Stat Systems
+const statSystems = [
+  'Base Stats',
+  'Artifact Stats',
+  'Artifact Set Stats',
+  'Attribute Stats',
+  'Disposition Stats',
+  'Arena Stats',
+  'Book Stats',
+  'Relation Stats',
+  'Unique Weapon Stats',
+  'School Department Stats',
+  'Buffs',
+  'Battle Options',
+];
+
+// Base stats list
+const baseStats = [
+  { abbr: 'HP', name: 'Hit Points', desc: 'Total health pool' },
+  { abbr: 'ATK', name: 'Attack', desc: 'Base damage dealt' },
+  { abbr: 'DEF', name: 'Defense', desc: 'Damage reduction' },
+  { abbr: 'SPD', name: 'Speed', desc: 'Turn order priority' },
+  { abbr: 'CRATE', name: 'Crit Rate', desc: 'Chance to critical hit' },
+  { abbr: 'CDMG', name: 'Crit Damage', desc: 'Critical hit multiplier' },
+  { abbr: 'CRES', name: 'Crit Resistance', desc: 'Reduces enemy crit chance' },
+  { abbr: 'ACC', name: 'Accuracy', desc: 'Hit chance against evasion' },
+  { abbr: 'EVD', name: 'Evasion', desc: 'Chance to dodge attacks' },
+];
+---
+
+<MechanicsLayout
+  title="Game Mechanics - Taimanin Squad Wiki | GachaWiki"
+  description="Complete guide to Taimanin Squad game mechanics including damage formulas, roles, types, traits, and stat systems."
+  gameTitle="Game Mechanics"
+>
+  <!-- Section Navigation -->
+  <nav class="ts-section-nav">
+    <a href="#damage">Damage Calculation</a>
+    <a href="#roles">Roles</a>
+    <a href="#types">Types</a>
+    <a href="#traits">Traits</a>
+    <a href="#stats">Stat Systems</a>
+  </nav>
+
+  <!-- Damage Calculation Section -->
+  <section class="ts-mech-section" id="damage">
+    <h2 class="ts-mech-section-title">Damage Calculation</h2>
+    <p class="ts-mech-section-desc">
+      Taimanin Squad uses two different calculation modes for damage modifiers. Understanding these formulas is key to optimizing your team composition.
+    </p>
+
+    <div class="ts-formula-container">
+      <div class="ts-formula-box">
+        <h3 class="ts-formula-title">Multiplicative Mode (Default)</h3>
+        <div class="ts-formula-code">
+          (1 - m1) * (1 - t1) * (1 - m2) * (1 - t2) * ...
+        </div>
+        <p class="ts-formula-desc">
+          Used for damage reduction (DEF, resistance). Multiple reductions stack with diminishing returns - they don't simply add together.
+        </p>
+      </div>
+
+      <div class="ts-formula-box">
+        <h3 class="ts-formula-title">Additive Mode</h3>
+        <div class="ts-formula-code">
+          m1 + t1 + m2 + t2 + m3 + t3 + ...
+        </div>
+        <p class="ts-formula-desc">
+          Used for damage bonuses (ATK buffs, skill damage). All bonuses add together directly for a total multiplier.
+        </p>
+      </div>
+    </div>
+
+    <div class="ts-example-box">
+      <h4 class="ts-example-title">Multiplicative Example (Defense Stacking)</h4>
+      <p class="ts-example-calc">
+        20% DEF reduction + 30% skill reduction + 10% element resist<br>
+        = (1 - 0.20) * (1 - 0.30) * (1 - 0.10)<br>
+        = 0.80 * 0.70 * 0.90<br>
+        = 0.504 (49.6% total reduction, NOT 60%)
+      </p>
+    </div>
+
+    <div class="ts-example-box">
+      <h4 class="ts-example-title">Additive Example (Damage Bonuses)</h4>
+      <p class="ts-example-calc">
+        20% ATK buff + 30% skill damage + 10% crit bonus<br>
+        = 0.20 + 0.30 + 0.10<br>
+        = 0.60 (60% total bonus)
+      </p>
+    </div>
+
+    <div class="ts-tips-box">
+      <h4 class="ts-tips-title">Optimization Tips</h4>
+      <ul class="ts-tips-list">
+        <li><strong>For Damage Dealers:</strong> Focus on penetration and ignore defense effects to bypass multiplicative reduction.</li>
+        <li><strong>For Tanks:</strong> Stack different types of damage reduction for best results. Three 30% reductions = 65.7% total (not 90%).</li>
+        <li><strong>Buffs Stack Additively:</strong> Multiple ATK buffs from different sources add together directly.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Roles Section -->
+  <section class="ts-mech-section" id="roles">
+    <h2 class="ts-mech-section-title">Roles</h2>
+    <p class="ts-mech-section-desc">
+      Characters are divided into 3 roles based on their combat function.
+    </p>
+
+    <div class="ts-class-grid">
+      {roles.map(role => (
+        <div class="ts-class-card">
+          <div class="ts-class-icon-wrapper">
+            <TSRoleIcon role={role.name} size={56} />
+          </div>
+          <h3 class="ts-class-name">{role.name}</h3>
+          <p class="ts-class-desc">{role.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="ts-info-box">
+      <p>A balanced team typically includes at least one of each role: an Attacker for damage, a Defender to absorb hits, and a Support for utility.</p>
+    </div>
+  </section>
+
+  <!-- Types Section -->
+  <section class="ts-mech-section" id="types">
+    <h2 class="ts-mech-section-title">Types</h2>
+    <p class="ts-mech-section-desc">
+      Characters also have a combat type that affects their stat distribution and playstyle.
+    </p>
+
+    <div class="ts-class-grid ts-class-grid-4">
+      {types.map(type => (
+        <div class="ts-class-card">
+          <div class="ts-class-icon-wrapper">
+            <TSTypeIcon type={type.name} size={56} />
+          </div>
+          <h3 class="ts-class-name">{type.name}</h3>
+          <p class="ts-class-desc">{type.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="ts-info-box">
+      <p>Types determine a character's stat focus. Agility characters are fast, Power characters hit hard, Technique characters have unique effects, and Balance characters are versatile.</p>
+    </div>
+  </section>
+
+  <!-- Traits Section -->
+  <section class="ts-mech-section" id="traits">
+    <h2 class="ts-mech-section-title">Traits</h2>
+    <p class="ts-mech-section-desc">
+      Each character has a planetary trait that may affect team synergies and bonuses.
+    </p>
+
+    <div class="ts-trait-grid">
+      {traits.map(trait => (
+        <div class="ts-trait-card">
+          <div class="ts-trait-icon-wrapper">
+            <TSTraitIcon trait={trait.name} size={64} />
+          </div>
+          <h3 class="ts-trait-name">{trait.name}</h3>
+          <p class="ts-trait-desc">{trait.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="ts-info-box">
+      <p>Planetary traits are one of the character attributes that may influence team composition bonuses.</p>
+    </div>
+  </section>
+
+  <!-- Stat Systems Section -->
+  <section class="ts-mech-section" id="stats">
+    <h2 class="ts-mech-section-title">Stat Systems</h2>
+    <p class="ts-mech-section-desc">
+      A character's final stats are aggregated from 12 different sources.
+    </p>
+
+    <div class="ts-stat-list">
+      {statSystems.map((stat, i) => (
+        <div class="ts-stat-item">
+          <span class="ts-stat-num">{i + 1}</span>
+          <p class="ts-stat-name">{stat}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="ts-mech-section-title" style="font-size: 1.25rem; margin-top: 2rem;">Base Stats</h3>
+
+    <table class="ts-stats-table">
+      <thead>
+        <tr>
+          <th>Stat</th>
+          <th>Full Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {baseStats.map(stat => (
+          <tr>
+            <td><strong>{stat.abbr}</strong></td>
+            <td>{stat.name}</td>
+            <td>{stat.desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <div class="ts-formula-box" style="margin-top: 1.5rem;">
+      <h3 class="ts-formula-title">Stat Growth Formula</h3>
+      <div class="ts-formula-code">
+        Final Stat = Base * (1 + (Level - 1) * 0.018 * RarityRate) + EvolBonus
+      </div>
+      <p class="ts-formula-desc">
+        Rarity rates: 1-star = 2.0, 2-star = 1.9, 3-star = 1.8, 4-star = 1.7, 5-star = 1.7
+      </p>
+    </div>
+  </section>
+</MechanicsLayout>

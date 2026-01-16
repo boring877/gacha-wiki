@@ -25,9 +25,9 @@ const breadcrumbs = [
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Taimanin Squad Wiki - Pre-Registration Guide & Game Database",
+      "name": "Taimanin Squad Wiki - Game Guide & Database",
       "url": "https://gachawiki.info/guides/taimanin-squad/",
-      "description": "Pre-register for Taimanin Squad - Collecting RPG featuring legendary Taimanin characters. Complete character guides, tier lists & pre-registration rewards for Android, iOS & PC.",
+      "description": "Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Google Play, App Store, and Galaxy Store.",
       "publisher": {
         "@type": "Organization",
         "name": "GachaWiki",
@@ -44,14 +44,14 @@ const breadcrumbs = [
       "name": "Taimanin Squad",
       "genre": ["Collecting RPG", "JRPG", "Character Collection", "Action RPG"],
       "description": "Collecting RPG featuring characters from the legendary Taimanin franchise. Build your ultimate squad of Taimanin warriors and battle through challenging content.",
-      "keywords": "Taimanin Squad, Taimanin, gacha game, collecting RPG, pre-registration, Igawa Asagi, character collection, mobile RPG, Taimanin Squad download",
+      "keywords": "Taimanin Squad, Taimanin, gacha game, collecting RPG, Igawa Asagi, character collection, mobile RPG, Taimanin Squad download",
       "applicationCategory": "Game",
       "operatingSystem": "Android, iOS, PC",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/InStock"
       }
     }
   </script>
@@ -59,8 +59,6 @@ const breadcrumbs = [
   <!-- Game Introduction Section (matching Stella Sora structure) -->
   <section class="content-section">
     <h2 class="section-title">Game Introduction</h2>
-
-    <div class="prereg-badge">Pre-Registration Open</div>
 
     <div class="story-content">
       {story.content.map(paragraph => <p>{paragraph}</p>)}
@@ -76,10 +74,16 @@ const breadcrumbs = [
     <!-- Play Game Buttons -->
     <div class="play-button-container">
       <a href={gameInfo.playUrl} target="_blank" rel="noopener noreferrer" class="play-button">
-        Pre-Register Now
+        Google Play
+      </a>
+      <a href={gameInfo.appStoreUrl} target="_blank" rel="noopener noreferrer" class="play-button">
+        App Store
+      </a>
+      <a href={gameInfo.galaxyStoreUrl} target="_blank" rel="noopener noreferrer" class="play-button secondary">
+        Galaxy Store
       </a>
       <a href={gameInfo.apkUrl} target="_blank" rel="noopener noreferrer" class="play-button secondary">
-        Download APK (Mega)
+        APK (Mega)
       </a>
     </div>
 
@@ -88,7 +92,7 @@ const breadcrumbs = [
       <h4>Official Links:</h4>
       <div class="ts-social-links">
         <a
-          href={gameInfo.playUrl}
+          href="https://taimaninsquad.com/"
           target="_blank"
           rel="noopener noreferrer"
           class="ts-social-link"

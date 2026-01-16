@@ -1,0 +1,85 @@
+---
+// TSBuffIcon - Reusable component for displaying Taimanin Squad buff/debuff icons
+// Used on buff-debuff reference page and can be used on character skill pages
+
+import { Image } from 'astro:assets';
+
+// Import all buff icons dynamically from the buff_icons directory
+const buffImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/buff_icons/*.png',
+  { eager: true }
+);
+
+// Build a map from filename to image metadata
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(buffImages)) {
+  const filename = path.split('/').pop() || '';
+  iconMap[filename] = module.default;
+}
+
+// Icon aliases for effects that share the same icon
+const iconAliases: Record<string, string> = {
+  'ShieldDef': 'Shield',
+};
+
+export interface Props {
+  /** Icon type name (e.g., "AccUp" or "AccUp.png") */
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt = 'Effect icon',
+  width = 40,
+  height = 40,
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+
+// Handle both "AccUp" and "AccUp.png" formats, and check aliases
+const baseIcon = icon.endsWith('.png') ? icon.slice(0, -4) : icon;
+const resolvedIcon = iconAliases[baseIcon] || baseIcon;
+const iconFilename = `${resolvedIcon}.png`;
+const imageSrc = iconMap[iconFilename];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    class={`ts-buff-icon ${className}`}
+    loading={loading}
+    format="webp"
+    quality={85}
+  />
+) : (
+  <div class={`ts-buff-icon-missing ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .ts-buff-icon {
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  .ts-buff-icon-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    border: 1px solid var(--ts-border, #2e2838);
+    border-radius: 4px;
+    color: var(--ts-text-muted, #696969);
+    font-size: 12px;
+    font-weight: bold;
+  }
+</style>

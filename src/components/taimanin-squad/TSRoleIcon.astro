@@ -1,0 +1,61 @@
+---
+// Taimanin Squad Role Icon Component
+// Displays role icons (Attacker, Defender, Support) from game images
+
+import { Image } from 'astro:assets';
+
+const roleImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/Role/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  role: string;
+  size?: number;
+}
+
+const { role, size = 48 } = Astro.props;
+
+const imageKey = Object.keys(roleImages).find(key =>
+  key.includes(`/${role}.png`)
+);
+const imageModule = imageKey ? roleImages[imageKey].default : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={role}
+    width={size}
+    height={size}
+    class="ts-role-icon-img"
+    title={role}
+    quality="max"
+    format="png"
+  />
+) : (
+  <div class="ts-role-icon-fallback" style={`width: ${size}px; height: ${size}px;`}>
+    {role.substring(0, 3).toUpperCase()}
+  </div>
+)}
+
+<style>
+  .ts-role-icon-img {
+    vertical-align: middle;
+    border-radius: 8px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .ts-role-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

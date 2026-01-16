@@ -1,0 +1,483 @@
+---
+// Taimanin Squad Character Skills Page
+// Displays all character skills grouped by character
+
+import SkillsLayout from '../../../../layouts/taimanin-squad/SkillsLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSSkillIcon from '../../../../components/taimanin-squad/TSSkillIcon.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
+import { getAllCharacters } from '../../../../data/taimanin-squad/characters.js';
+import skillsData from '../../../../data/taimanin-squad/skills_complete.json';
+import { allDefinitions, searchTerms } from '../../../../data/taimanin-squad/buff-debuff-definitions';
+
+// Convert rarity to star count
+const rarityToStars: Record<string, number> = {
+  'R': 1,
+  'R+': 2,
+  'SR': 3,
+  'SR+': 4,
+  'SSR': 5
+};
+
+const getStars = (rarity: string) => '★'.repeat(rarityToStars[rarity] || 0);
+
+// Get skill type class for badge
+function getSkillTypeClass(typeDesc: string): string {
+  if (typeDesc.includes('Aura')) return 'aura';
+  if (typeDesc.includes('Normal')) return 'normal';
+  if (typeDesc.includes('Attack')) return 'attack';
+  if (typeDesc.includes('Ultimate')) return 'ultimate';
+  if (typeDesc.includes('Passive')) return 'passive';
+  if (typeDesc.includes('Support')) return 'support';
+  return 'normal';
+}
+
+// Get skill type display name
+function getSkillTypeName(typeDesc: string): string {
+  const match = typeDesc.match(/\[(.*?)\]/);
+  return match ? match[1] : typeDesc;
+}
+
+// Check if skill is a weapon skill (enhanced version with weapon)
+function isWeaponSkill(skill: any): boolean {
+  return skill.name.includes('Tbl_UnitWeapon_Name');
+}
+
+// Format skill description - replace game terms, highlight values, and add buff/debuff tooltips
+function formatDescription(desc: string): string {
+  if (!desc) return '';
+
+  let formatted = desc
+    .replace(/all quests/gi, 'all Battles')
+    .replace(/in quests/gi, 'in Battles')
+    .replace(/\bRestraint\b/gi, 'Restraint/Immobilize');
+
+  // Add buff/debuff tooltips FIRST - sort by length to match longer terms first
+  // This ensures "Buff Block" is matched before "Buff"
+  const sortedTerms = Object.keys(searchTerms).sort((a, b) => b.length - a.length);
+
+  for (const term of sortedTerms) {
+    const defKey = searchTerms[term];
+    const def = allDefinitions[defKey];
+    if (def) {
+      // Use word boundaries but check we're not inside an HTML tag
+      const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b(${escapedTerm})\\b`, 'gi');
+      formatted = formatted.replace(regex, (match, p1, offset) => {
+        // Check if we're inside an HTML tag by looking for < before and > after
+        const before = formatted.substring(0, offset);
+        const lastOpenTag = before.lastIndexOf('<');
+        const lastCloseTag = before.lastIndexOf('>');
+        // If there's an unclosed tag before this match, skip it
+        if (lastOpenTag > lastCloseTag) {
+          return match;
+        }
+        const typeClass = def.type === 'buff' ? 'buff-term' : 'debuff-term';
+        return `<span class="skill-effect ${typeClass}" data-tooltip="${def.description}">${match}</span>`;
+      });
+    }
+  }
+
+  // Highlight percentage values like (75%), (20%), etc. - AFTER buff/debuff processing
+  formatted = formatted.replace(/\((\d+(?:\.\d+)?%)\)/g, (match, p1, offset) => {
+    const before = formatted.substring(0, offset);
+    const lastOpenTag = before.lastIndexOf('<');
+    const lastCloseTag = before.lastIndexOf('>');
+    if (lastOpenTag > lastCloseTag) return match;
+    return `<span class="skill-value">${p1}</span>`;
+  });
+
+  // Highlight standalone percentage values (not already wrapped)
+  formatted = formatted.replace(/(\d+(?:\.\d+)?%)/g, (match, p1, offset) => {
+    // Skip if already inside a span
+    const before = formatted.substring(0, offset);
+    const lastOpenTag = before.lastIndexOf('<');
+    const lastCloseTag = before.lastIndexOf('>');
+    if (lastOpenTag > lastCloseTag) return match;
+    // Skip if this exact value is already wrapped
+    if (formatted.includes(`skill-value">${p1}<`)) return match;
+    return `<span class="skill-value">${p1}</span>`;
+  });
+
+  // Highlight turn counts like "2 turn(s)"
+  formatted = formatted.replace(/(\d+)\s*(turn\(s\)|turns?)/gi, (match, num, turnText, offset) => {
+    const before = formatted.substring(0, offset);
+    const lastOpenTag = before.lastIndexOf('<');
+    const lastCloseTag = before.lastIndexOf('>');
+    if (lastOpenTag > lastCloseTag) return match;
+    return `<span class="skill-value">${num}</span> ${turnText}`;
+  });
+
+  // Highlight hit counts
+  formatted = formatted.replace(/(\d+)\s*(times|hits?)/gi, (match, num, hitText, offset) => {
+    const before = formatted.substring(0, offset);
+    const lastOpenTag = before.lastIndexOf('<');
+    const lastCloseTag = before.lastIndexOf('>');
+    if (lastOpenTag > lastCloseTag) return match;
+    return `<span class="skill-value">${num}</span> ${hitText}`;
+  });
+
+  return formatted;
+}
+
+// Map skill ID to character ID
+// Pattern: character ID * 100 + skill index (e.g., skill 101-104 = character 1)
+function getCharacterIdFromSkillId(skillId: number): number {
+  // Handle skills with IDs like 1001001 (7-digit IDs)
+  if (skillId >= 1000000) {
+    return Math.floor(skillId / 10000);
+  }
+  // Handle standard IDs (100-999 = single digit char, 1000-9999 = 2-digit char, etc.)
+  return Math.floor(skillId / 100);
+}
+
+// Get all characters sorted by ID
+const allCharacters = getAllCharacters().sort((a, b) => a.id - b.id);
+const skills = skillsData.skills || [];
+
+// Group skills by character ID
+const skillsByCharacter = new Map<number, typeof skills>();
+skills.forEach(skill => {
+  const charId = getCharacterIdFromSkillId(skill.id);
+  if (!skillsByCharacter.has(charId)) {
+    skillsByCharacter.set(charId, []);
+  }
+  skillsByCharacter.get(charId)!.push(skill);
+});
+
+// Create character-skills pairs for display with separated regular/weapon skills
+interface CharacterWithSkills {
+  character: typeof allCharacters[0];
+  regularSkills: typeof skills;
+  weaponSkills: typeof skills;
+}
+
+// Sort skills by type order
+const skillTypeOrder = ['Aura', 'Normal', 'Attack', 'Support', 'Ultimate', 'Passive'];
+function sortSkillsByType(skillsArray: typeof skills) {
+  return [...skillsArray].sort((a, b) => {
+    const typeA = skillTypeOrder.findIndex(t => a.type_description_readable?.includes(t)) ?? 99;
+    const typeB = skillTypeOrder.findIndex(t => b.type_description_readable?.includes(t)) ?? 99;
+    return typeA - typeB;
+  });
+}
+
+const charactersWithSkills: CharacterWithSkills[] = allCharacters
+  .map(char => {
+    const charSkills = skillsByCharacter.get(char.id) || [];
+    const regular = charSkills.filter(s => !isWeaponSkill(s));
+    const weapon = charSkills.filter(s => isWeaponSkill(s));
+    return {
+      character: char,
+      regularSkills: sortSkillsByType(regular),
+      weaponSkills: sortSkillsByType(weapon)
+    };
+  })
+  .filter(item => item.regularSkills.length > 0 || item.weaponSkills.length > 0);
+
+const totalSkillCount = skills.length;
+const totalCharWithSkills = charactersWithSkills.length;
+---
+
+<SkillsLayout
+  title="Character Skills - Taimanin Squad Wiki | GachaWiki"
+  description="Browse all character skills in Taimanin Squad. Complete skill database with damage scaling, cooldowns, and effects."
+  gameTitle="Character Skills"
+>
+  <section class="content-section">
+    <p class="skills-intro">
+      Explore skills for {totalCharWithSkills} characters ({totalSkillCount} total skills).
+      Click on a character card to view their skills.
+    </p>
+
+    <!-- Search and Filters -->
+    <div class="skills-filters">
+      <div class="skills-search-container">
+        <input
+          type="text"
+          id="skills-search"
+          class="skills-search-input"
+          placeholder="Search characters or skills..."
+        />
+      </div>
+      <div class="skills-filter-row">
+        <select id="filter-rarity" class="skills-filter-select">
+          <option value="">All Rarities</option>
+          <option value="SSR">SSR (★★★★★)</option>
+          <option value="SR+">SR+ (★★★★)</option>
+          <option value="SR">SR (★★★)</option>
+          <option value="R+">R+ (★★)</option>
+          <option value="R">R (★)</option>
+        </select>
+        <select id="filter-type" class="skills-filter-select">
+          <option value="">All Types</option>
+          <option value="Agility">Agility</option>
+          <option value="Technique">Technique</option>
+          <option value="Power">Power</option>
+          <option value="Balance">Balance</option>
+        </select>
+        <select id="filter-role" class="skills-filter-select">
+          <option value="">All Roles</option>
+          <option value="Attacker">Attacker</option>
+          <option value="Defender">Defender</option>
+          <option value="Support">Support</option>
+        </select>
+        <select id="filter-trait" class="skills-filter-select">
+          <option value="">All Traits</option>
+          <option value="Mars">Mars</option>
+          <option value="Venus">Venus</option>
+          <option value="Mercury">Mercury</option>
+          <option value="Moon">Moon</option>
+          <option value="Sun">Sun</option>
+          <option value="Jupiter">Jupiter</option>
+          <option value="Saturn">Saturn</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="skills-results-count" id="results-count">
+      Showing {totalCharWithSkills} characters
+    </div>
+
+    <!-- Character Cards Grid -->
+    <div class="skills-grid" id="skills-grid">
+      {charactersWithSkills.map(({ character, regularSkills, weaponSkills }) => (
+        <div
+          class="skills-card"
+          data-name={character.names?.english?.toLowerCase() || ''}
+          data-japanese={character.names?.japanese || ''}
+          data-rarity={character.rarity || ''}
+          data-type={character.type || ''}
+          data-role={character.role || ''}
+          data-trait={character.trait || ''}
+          data-skills={[...regularSkills, ...weaponSkills].map(s => s.name_readable?.toLowerCase()).join(' ')}
+        >
+          <div class="skills-card-header">
+            <TSCharacterImage
+              icon={character.icon}
+              alt={character.names?.english || 'Character'}
+              width={80}
+              height={80}
+            />
+            <div class="skills-card-info">
+              <h3 class="skills-card-name">{character.names?.english}</h3>
+              {character.names?.japanese && (
+                <p class="skills-card-jp">{character.names.japanese}</p>
+              )}
+              <div class="skills-card-badges">
+                {character.rarity && <span class="skills-badge rarity-stars">{getStars(character.rarity)}</span>}
+                {character.rarity_name && <span class={`skills-badge rarity-name ${character.rarity_name?.toLowerCase()}`}>{character.rarity_name}</span>}
+                {character.trait && (
+                  <span class="skills-badge trait">
+                    <TSTraitIcon trait={character.trait} size={16} />
+                    {character.trait}
+                  </span>
+                )}
+                {character.type && (
+                  <span class={`skills-badge type ${character.type?.toLowerCase()}`}>
+                    <TSTypeIcon type={character.type} size={16} />
+                    {character.type}
+                  </span>
+                )}
+                {character.role && (
+                  <span class="skills-badge role">
+                    <TSRoleIcon role={character.role} size={16} />
+                    {character.role}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div class="skills-card-content">
+            {/* Base Skills Section */}
+            {regularSkills.length > 0 && (
+              <div class="base-skills-section">
+                <h4 class="skills-section-header">Base Skills</h4>
+                <div class="skill-list">
+                  {regularSkills.map(skill => (
+                    <div class="skill-item">
+                      <div class="skill-icon-wrapper">
+                        <TSSkillIcon
+                          icon={skill.icon}
+                          alt={skill.name_readable || 'Skill'}
+                          size={64}
+                        />
+                      </div>
+                      <div class="skill-info">
+                        <div class="skill-header">
+                          <h4 class="skill-name">{skill.name_readable || skill.name}</h4>
+                          <span class={`skill-type-badge ${getSkillTypeClass(skill.type_description_readable || '')}`}>
+                            {getSkillTypeName(skill.type_description_readable || '')}
+                          </span>
+                        </div>
+                        <div class="skill-meta">
+                          {skill.cooldown > 0 && (
+                            <span>CD: <span class="highlight">{skill.cooldown}</span></span>
+                          )}
+                          {skill.hit_count > 0 && (
+                            <span>Hits: <span class="highlight">{skill.hit_count}</span></span>
+                          )}
+                          {skill.evolution_level_required > 0 && (
+                            <span>Evo: <span class="highlight">{skill.evolution_level_required}</span></span>
+                          )}
+                        </div>
+                        <p class="skill-description" set:html={formatDescription(skill.description_readable)} />
+                        {(skill.damage_scaling_readable && skill.damage_scaling_readable !== 'None') && (
+                          <div class="skill-scaling">
+                            <span>{skill.damage_scaling_readable}</span>
+                            {skill.skill_level_scaling_readable && skill.skill_level_scaling_readable !== 'None' && (
+                              <> • {skill.skill_level_scaling_readable}</>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Weapon Skills Section */}
+            {weaponSkills.length > 0 && (
+              <div class="weapon-skills-section">
+                <h4 class="skills-section-header weapon">Weapon Skills</h4>
+                <div class="skill-list">
+                  {weaponSkills.map(skill => (
+                    <div class="skill-item weapon">
+                      <div class="skill-icon-wrapper">
+                        <TSSkillIcon
+                          icon={skill.icon}
+                          alt={skill.name_readable || 'Skill'}
+                          size={64}
+                        />
+                      </div>
+                      <div class="skill-info">
+                        <div class="skill-header">
+                          <h4 class="skill-name">{skill.name_readable || skill.name}</h4>
+                          <span class={`skill-type-badge ${getSkillTypeClass(skill.type_description_readable || '')}`}>
+                            {getSkillTypeName(skill.type_description_readable || '')}
+                          </span>
+                        </div>
+                        <div class="skill-meta">
+                          {skill.cooldown > 0 && (
+                            <span>CD: <span class="highlight">{skill.cooldown}</span></span>
+                          )}
+                          {skill.hit_count > 0 && (
+                            <span>Hits: <span class="highlight">{skill.hit_count}</span></span>
+                          )}
+                          {skill.evolution_level_required > 0 && (
+                            <span>Evo: <span class="highlight">{skill.evolution_level_required}</span></span>
+                          )}
+                        </div>
+                        <p class="skill-description" set:html={formatDescription(skill.description_readable)} />
+                        {(skill.damage_scaling_readable && skill.damage_scaling_readable !== 'None') && (
+                          <div class="skill-scaling">
+                            <span>{skill.damage_scaling_readable}</span>
+                            {skill.skill_level_scaling_readable && skill.skill_level_scaling_readable !== 'None' && (
+                              <> • {skill.skill_level_scaling_readable}</>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="skills-no-results" id="no-results" style="display: none;">
+      No characters found matching your search.
+    </div>
+  </section>
+</SkillsLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('skills-search');
+  const filterRarity = document.getElementById('filter-rarity');
+  const filterType = document.getElementById('filter-type');
+  const filterRole = document.getElementById('filter-role');
+  const filterTrait = document.getElementById('filter-trait');
+  const noResults = document.getElementById('no-results');
+  const resultsCount = document.getElementById('results-count');
+  const cards = document.querySelectorAll('.skills-card');
+
+  // Toggle card expansion on header click
+  cards.forEach(card => {
+    const header = card.querySelector('.skills-card-header');
+    header.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+    });
+  });
+
+  // Filter function
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase();
+    const rarity = filterRarity.value;
+    const type = filterType.value;
+    const role = filterRole.value;
+    const trait = filterTrait.value;
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.dataset.name || '';
+      const japanese = card.dataset.japanese || '';
+      const skillNames = card.dataset.skills || '';
+      const cardRarity = card.dataset.rarity || '';
+      const cardType = card.dataset.type || '';
+      const cardRole = card.dataset.role || '';
+      const cardTrait = card.dataset.trait || '';
+
+      const matchesSearch = !query ||
+        name.includes(query) ||
+        japanese.includes(query) ||
+        skillNames.includes(query);
+      const matchesRarity = !rarity || cardRarity === rarity;
+      const matchesType = !type || cardType === type;
+      const matchesRole = !role || cardRole === role;
+      const matchesTrait = !trait || cardTrait === trait;
+
+      const matches = matchesSearch && matchesRarity && matchesType && matchesRole && matchesTrait;
+      card.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+    resultsCount.textContent = `Showing ${visibleCount} character${visibleCount !== 1 ? 's' : ''}`;
+  }
+
+  // Event listeners
+  searchInput.addEventListener('input', applyFilters);
+  filterRarity.addEventListener('change', applyFilters);
+  filterType.addEventListener('change', applyFilters);
+  filterRole.addEventListener('change', applyFilters);
+  filterTrait.addEventListener('change', applyFilters);
+
+  // Mobile tooltip support - tap to show/hide
+  const skillEffects = document.querySelectorAll('.skill-effect');
+  skillEffects.forEach(effect => {
+    effect.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Close any other open tooltips
+      skillEffects.forEach(other => {
+        if (other !== effect) other.classList.remove('tooltip-active');
+      });
+      // Toggle this tooltip
+      effect.classList.toggle('tooltip-active');
+    });
+  });
+
+  // Close tooltips when clicking elsewhere
+  document.addEventListener('click', () => {
+    skillEffects.forEach(effect => effect.classList.remove('tooltip-active'));
+  });
+});
+</script>
