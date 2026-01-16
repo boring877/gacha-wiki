@@ -73,7 +73,8 @@ const MOB_CLEAR_TIERS = {
     'Kichi Azusa',
     'Ingrid',
     'Shinganji Kurenai',
-    'Oboro'
+    'Oboro',
+    'Kousaka Shizuru'
   ],
   A: [
     'Yatsu Murasaki',
@@ -92,7 +93,6 @@ const BOSS_TIERS = {
   ],
   SS: [
     'Mizuki Yukikaze',
-    'Fuuma Kotaro',
     'Mizuki Shiranui',
     'Akiyama Rinko',
     'Fuuma Tokiko'
@@ -103,7 +103,8 @@ const BOSS_TIERS = {
     'Fuuma Amane',
     'Oboro',
     'Yatsu Murasaki',
-    'Kamimura Maika'
+    'Kamimura Maika',
+    'Kousaka Shizuru'
   ],
   A: [
     'Kichi Azusa',
