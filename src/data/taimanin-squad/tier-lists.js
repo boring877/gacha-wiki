@@ -74,7 +74,8 @@ const MOB_CLEAR_TIERS = {
     'Ingrid',
     'Shinganji Kurenai',
     'Oboro',
-    'Kousaka Shizuru'
+    'Kousaka Shizuru',
+    'Fuuma Saika'
   ],
   A: [
     'Yatsu Murasaki',
@@ -95,7 +96,8 @@ const BOSS_TIERS = {
     'Mizuki Yukikaze',
     'Mizuki Shiranui',
     'Akiyama Rinko',
-    'Fuuma Tokiko'
+    'Fuuma Tokiko',
+    'Fuuma Saika'
   ],
   S: [
     'Su Jinglei',
