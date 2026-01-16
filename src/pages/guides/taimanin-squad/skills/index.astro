@@ -52,7 +52,8 @@ function formatDescription(desc: string): string {
   let formatted = desc
     .replace(/all quests/gi, 'all Battles')
     .replace(/in quests/gi, 'in Battles')
-    .replace(/\bRestraint\b/gi, 'Restraint/Immobilize');
+    .replace(/\bRestraint\b/gi, 'Restraint/Immobilize')
+    .replace(/\bDestruction\b/gi, 'Destruction/Power');
 
   // Add buff/debuff tooltips FIRST - sort by length to match longer terms first
   // This ensures "Buff Block" is matched before "Buff"
