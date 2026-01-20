@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2026-01-07',
+  lastUpdated: '2026-01-20',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -45,11 +45,12 @@ export const PVE_TIER_LIST = {
       { name: 'Gaia' },
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
+      { name: 'Odin' },
+      { name: 'Tamamo-no-Mae' },
     ],
     SS: [
       { name: 'Yuis' },
       { name: 'Thor' },
-      { name: 'Odin' },
       { name: 'Freye' },
       { name: 'Chiya' },
       { name: 'Apollo' },
@@ -100,12 +101,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2026-01-07',
+  lastUpdated: '2026-01-20',
   description: 'PvP character rankings.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }],
     SS: [
-      { name: 'Odin' },
       { name: 'Freye' },
       { name: 'Freya' },
       { name: 'Gaia' },
@@ -156,7 +156,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2026-01-07',
+  lastUpdated: '2026-01-20',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -173,6 +173,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
       { name: 'Sigurd' },
+      { name: 'Tamamo-no-Mae' },
     ],
     SS: [
       { name: 'Freye' },
@@ -223,7 +224,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2026-01-07',
+  lastUpdated: '2026-01-20',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -238,6 +239,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Hela' },
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
+      { name: 'Tamamo-no-Mae' },
     ],
     SS: [
       { name: 'Freye' },
@@ -363,6 +365,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-01-20',
+    changes: [
+      'Tamamo-no-Mae added: SSS in PvE, PvP, Rift, and Guild Raid',
+      'New Fire Buffer with Fox Flame stacking mechanic and massive Ultimate DMG buffs',
+      'A1 grants 9 Fox Flame stacks at battle start for instant burst potential',
+      'A6 provides DEF boost and extra Ten Ghost Marks on ally Ultimates',
+      'Odin promoted to SSS in PvE and PvP (already SSS in Rift and Guild Raid)',
+    ],
+  },
   {
     date: '2026-01-07',
     changes: [

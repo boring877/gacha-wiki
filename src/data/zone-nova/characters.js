@@ -827,6 +827,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'shuten-doji',
     detailUrl: '/guides/zone-nova/characters/shuten-doji',
   },
+  {
+    id: 48,
+    name: 'Tamamo-no-Mae',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Tamamo-no-Mae'),
+    tags: ['Ranged', 'Buff', 'Energy Recovery', 'Ultimate Damage Amp', 'Defense Penetration'],
+    stats: {
+      hp: 9180,
+      attack: 1004,
+      defense: 729,
+      energyRecovery: 0.25,
+      critRate: 0,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/Tamamo-no-mae.jpg',
+    slug: 'tamamo-no-mae',
+    detailUrl: '/guides/zone-nova/characters/tamamo-no-mae',
+  },
 ];
 
 // Metadata (unique, sorted)

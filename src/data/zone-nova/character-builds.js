@@ -25,6 +25,7 @@ import { shutenDojiBuild } from './character-builds/shuten-doji.js';
 import { heraBuild } from './character-builds/hera.js';
 import { chiyaBuild } from './character-builds/chiya.js';
 import { lokiBuild } from './character-builds/loki.js';
+import { tamamoNoMaeBuild } from './character-builds/tamamo-no-mae.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -102,6 +103,9 @@ export const CHARACTER_BUILDS = {
 
   // Loki Build - SSR Chaos Debuffer
   loki: lokiBuild,
+
+  // Tamamo-no-Mae Build - SSR Fire Ultimate Support Buffer
+  'tamamo-no-mae': tamamoNoMaeBuild,
 };
 
 // Generate builds for available characters only

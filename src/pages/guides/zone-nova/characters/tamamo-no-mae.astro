@@ -1,0 +1,19 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import {
+  tamamoNoMaeData,
+  tamamoNoMaeSEO,
+} from '../../../../data/zone-nova/characters/tamamo-no-mae.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={tamamoNoMaeSEO.title}
+  description={tamamoNoMaeSEO.description}
+  gameTitle={tamamoNoMaeData.name}
+  character={tamamoNoMaeData}
+>
+  <CharacterPageTemplate characterData={tamamoNoMaeData} />
+</CharacterIndividualLayout>
