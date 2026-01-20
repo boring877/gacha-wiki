@@ -774,7 +774,7 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
           hpRegenEl.textContent = value.toString();
         }
 
-        // Update MP Regen
+        // Update MP Charge
         const mpRegenEl = statsTable?.querySelector('[data-stat="mpRegen"]');
         if (mpRegenEl && statsData.mpRegen) {
           const base = calculateStatAtLevel(statsData.mpRegen.base, statsData.mpRegen.lv90, level);

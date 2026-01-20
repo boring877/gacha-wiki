@@ -395,4 +395,35 @@ export const characterBuilds = {
       };
     })(),
   },
+  pastel: {
+    slug: 'pastel',
+    character: {
+      name: 'Pastel',
+      fileName: 'Pastel',
+      characterId: 2080,
+    },
+    position: {
+      name: 'Back',
+      image: 'Back.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: {
+      name: 'Annihilation Gauntlet',
+      image: 'Gauntlet_of_Annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'Support', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

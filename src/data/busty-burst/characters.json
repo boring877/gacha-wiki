@@ -1,0 +1,2591 @@
+[
+  {
+    "id": "2080",
+    "name": "Pastel",
+    "shortName": "Pastel",
+    "baseCharacter": "Pastel",
+    "rarity": "SSR",
+    "element": "Mind",
+    "elementJP": "想",
+    "damageType": "Physical",
+    "weaponType": "Strike",
+    "weaponTypeJP": "打",
+    "role": "Support",
+    "roleJP": "支援",
+    "introduction": "Back Row、Physical、Support",
+    "description": "",
+    "position": "Back Row",
+    "stats": {
+      "hp": 2745,
+      "atk": 363,
+      "matk": 218,
+      "def": 82,
+      "mdef": 32,
+      "hit": 60,
+      "block": 50,
+      "physicalCrit": 53,
+      "magicCrit": 32,
+      "hpRecovery": 137,
+      "mpRecovery": 59,
+      "dmgSuckHp": 0,
+      "healingPower": 82,
+      "mpRegen": 67,
+      "mpCostDown": 0
+    },
+    "skills": {
+      "basicAttack": {
+        "id": "208061",
+        "name": "",
+        "icon": "skill001/skill0004",
+        "target": "Nearest Enemy",
+        "range": 500,
+        "damageType": "Physical",
+        "scale": 1.2,
+        "castTime": 1.11,
+        "descriptionLv1": "Deals 435 (ATK x 1.2) physical damage to nearest enemy",
+        "descriptionLv90": "Deals 2180 (ATK x 1.2) physical damage to nearest enemy",
+        "description": "Deals 2180 (ATK x 1.2) physical damage to nearest enemy",
+        "damageFormulaLv90": {
+          "total": 2180,
+          "formula": "ATK(1817) x 1.2",
+          "breakdown": {
+            "statUsed": "atk",
+            "statValue": 1817,
+            "scale": 1.2,
+            "scaledDamage": 2180
+          }
+        }
+      },
+      "skill1": {
+        "id": "208062",
+        "name": "抽像畫『無盡的慾望』",
+        "icon": "skill001/skill0011",
+        "target": "Nearest Enemy",
+        "range": 700,
+        "damageType": "Physical",
+        "scale": 0.8,
+        "base": 70,
+        "growth": 6,
+        "effects": [
+          "Burn Lv5",
+          "Accuracy - Lv5"
+        ],
+        "duration": 12.0,
+        "castTime": 1.58,
+        "valuesByLevel": {
+          "1": 70,
+          "2": 76,
+          "3": 82,
+          "4": 88,
+          "5": 94,
+          "6": 100,
+          "7": 106,
+          "8": 112,
+          "9": 118,
+          "10": 124,
+          "11": 130,
+          "12": 136,
+          "13": 142,
+          "14": 148,
+          "15": 154,
+          "16": 160,
+          "17": 166,
+          "18": 172,
+          "19": 178,
+          "20": 184,
+          "21": 190,
+          "22": 196,
+          "23": 202,
+          "24": 208,
+          "25": 214,
+          "26": 220,
+          "27": 226,
+          "28": 232,
+          "29": 238,
+          "30": 244,
+          "31": 250,
+          "32": 256,
+          "33": 262,
+          "34": 268,
+          "35": 274,
+          "36": 280,
+          "37": 286,
+          "38": 292,
+          "39": 298,
+          "40": 304,
+          "41": 310,
+          "42": 316,
+          "43": 322,
+          "44": 328,
+          "45": 334,
+          "46": 340,
+          "47": 346,
+          "48": 352,
+          "49": 358,
+          "50": 364,
+          "51": 370,
+          "52": 376,
+          "53": 382,
+          "54": 388,
+          "55": 394,
+          "56": 400,
+          "57": 406,
+          "58": 412,
+          "59": 418,
+          "60": 424,
+          "61": 430,
+          "62": 436,
+          "63": 442,
+          "64": 448,
+          "65": 454,
+          "66": 460,
+          "67": 466,
+          "68": 472,
+          "69": 478,
+          "70": 484,
+          "71": 490,
+          "72": 496,
+          "73": 502,
+          "74": 508,
+          "75": 514,
+          "76": 520,
+          "77": 526,
+          "78": 532,
+          "79": 538,
+          "80": 544,
+          "81": 550,
+          "82": 556,
+          "83": 562,
+          "84": 568,
+          "85": 574,
+          "86": 580,
+          "87": 586,
+          "88": 592,
+          "89": 598,
+          "90": 604
+        },
+        "buffEffects": [
+          {
+            "name": "Burn Lv5",
+            "value": -150.0,
+            "type": "flat",
+            "duration": 12.0
+          },
+          {
+            "name": "Accuracy - Lv5",
+            "value": -13.0,
+            "type": "flat",
+            "duration": 8.0
+          }
+        ],
+        "descriptionLv1": "Deals 360 (ATK x 0.8 + 70) physical damage to the 3 nearest enemies and inflicts Burn(HP --150 per second) for 12 seconds and Accuracy -13DOWN for 8 seconds",
+        "descriptionLv90": "Deals 2057 (ATK x 0.8 + 604) physical damage to the 3 nearest enemies and inflicts Burn(HP --1485 per second) for 12 seconds and Accuracy -26DOWN for 8 seconds",
+        "description": "Deals 2057 (ATK x 0.8 + 604) physical damage to the 3 nearest enemies and inflicts Burn(HP --1485 per second) for 12 seconds and Accuracy -26DOWN for 8 seconds",
+        "damageFormulaLv90": {
+          "total": 2057,
+          "formula": "ATK(1817) x 0.8 + base(604)",
+          "breakdown": {
+            "statUsed": "atk",
+            "statValue": 1817,
+            "scale": 0.8,
+            "scaledDamage": 1453,
+            "skillBase": 604
+          }
+        }
+      },
+      "skill2": {
+        "id": "208063",
+        "name": "冬日景觀畫『屹立的冰河』",
+        "icon": "skill001/skill0019",
+        "target": "All Allies",
+        "range": 700,
+        "effects": [
+          "Block+ Lv3",
+          "Healing Shield Lv4"
+        ],
+        "duration": 8.0,
+        "castTime": 1.58,
+        "buffEffects": [
+          {
+            "name": "Block+ Lv3",
+            "value": 9.0,
+            "type": "flat",
+            "duration": 8.0
+          },
+          {
+            "name": "Healing Shield Lv4",
+            "value": 270.0,
+            "type": "percent",
+            "duration": 15.0
+          }
+        ],
+        "descriptionLv1": "Applies Block9UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds",
+        "descriptionLv90": "Applies Block18UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds",
+        "description": "Applies Block18UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds"
+      },
+      "passive1": {
+        "id": "208081",
+        "name": "Passive 1",
+        "icon": "skill001/skill1003",
+        "target": "Self",
+        "effects": [
+          "Max HP +",
+          "Physical Attack +"
+        ],
+        "effectValues": [
+          {
+            "name": "Max HP +",
+            "value": 3444.0,
+            "type": "flat"
+          },
+          {
+            "name": "Physical Attack +",
+            "value": 259.0,
+            "type": "flat"
+          }
+        ],
+        "description": "Gain Max HP UP(Large)、Physical Attack UP(Medium)"
+      },
+      "passive2": {
+        "id": "208082",
+        "name": "Passive 2",
+        "icon": "skill001/skill1006",
+        "target": "All Allies",
+        "effects": [
+          "Debuff Resistance +",
+          "Block+"
+        ],
+        "effectValues": [
+          {
+            "name": "Debuff Resistance +",
+            "value": 0.15,
+            "type": "percent"
+          },
+          {
+            "name": "Block+",
+            "value": 10.0,
+            "type": "flat"
+          }
+        ],
+        "description": "All allies receive Debuff Resistance UP(Tiny)、BlockUP(Small)"
+      },
+      "ultimate": {
+        "id": "208064",
+        "name": "繪畫『春天』",
+        "icon": "skill001/skill0012_1",
+        "target": "All Enemies",
+        "range": 700,
+        "damageType": "Physical",
+        "scale": 2.5,
+        "base": 350,
+        "effects": [
+          "Silence",
+          "HP Regeneration+ Ultimate Lv1"
+        ],
+        "duration": 3.0,
+        "levels": {
+          "1": {
+            "scale": 2.5,
+            "value": 350,
+            "effectDurations": [
+              3.0,
+              8.0
+            ]
+          },
+          "2": {
+            "scale": 3.3,
+            "value": 450,
+            "effectDurations": [
+              4.0,
+              8.0
+            ]
+          },
+          "3": {
+            "scale": 4.0,
+            "value": 530,
+            "effectDurations": [
+              4.0,
+              8.0
+            ]
+          },
+          "4": {
+            "scale": 4.5,
+            "value": 600,
+            "effectDurations": [
+              5.0,
+              8.0
+            ]
+          },
+          "5": {
+            "scale": 5.0,
+            "value": 650,
+            "effectDurations": [
+              5.0,
+              8.0
+            ]
+          }
+        },
+        "buffEffects": [
+          {
+            "name": "Silence",
+            "value": 0,
+            "type": "unknown",
+            "duration": 3.0
+          },
+          {
+            "name": "HP Regeneration+ Ultimate Lv1",
+            "value": 6.0,
+            "type": "percent",
+            "duration": 8.0
+          }
+        ],
+        "descriptionByLevel": {
+          "1": "Deals 4892 (ATK x 2.5 + 350) physical damage to all enemies and inflicts Silence for 3 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV1)",
+          "2": "Deals 6446 (ATK x 3.3 + 450) physical damage to all enemies and inflicts Silence for 4 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV2)",
+          "3": "Deals 7798 (ATK x 4.0 + 530) physical damage to all enemies and inflicts Silence for 4 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV3)",
+          "4": "Deals 8776 (ATK x 4.5 + 600) physical damage to all enemies and inflicts Silence for 5 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV4)",
+          "5": "Deals 9735 (ATK x 5.0 + 650) physical damage to all enemies and inflicts Silence for 5 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV5)"
+        },
+        "damageFormulaLv5": {
+          "total": 9735,
+          "formula": "ATK(1817) x 5.0 + base(650)",
+          "breakdown": {
+            "statUsed": "atk",
+            "statValue": 1817,
+            "scale": 5.0,
+            "scaledDamage": 9085,
+            "skillBase": 650
+          }
+        },
+        "valuesByLevel": {
+          "1": 350,
+          "2": 350,
+          "3": 350,
+          "4": 350,
+          "5": 350,
+          "6": 350,
+          "7": 350,
+          "8": 350,
+          "9": 350,
+          "10": 350,
+          "11": 350,
+          "12": 350,
+          "13": 350,
+          "14": 350,
+          "15": 350,
+          "16": 350,
+          "17": 350,
+          "18": 350,
+          "19": 350,
+          "20": 350,
+          "21": 350,
+          "22": 350,
+          "23": 350,
+          "24": 350,
+          "25": 350,
+          "26": 350,
+          "27": 350,
+          "28": 350,
+          "29": 350,
+          "30": 350,
+          "31": 350,
+          "32": 350,
+          "33": 350,
+          "34": 350,
+          "35": 350,
+          "36": 350,
+          "37": 350,
+          "38": 350,
+          "39": 350,
+          "40": 350,
+          "41": 350,
+          "42": 350,
+          "43": 350,
+          "44": 350,
+          "45": 350,
+          "46": 350,
+          "47": 350,
+          "48": 350,
+          "49": 350,
+          "50": 350,
+          "51": 350,
+          "52": 350,
+          "53": 350,
+          "54": 350,
+          "55": 350,
+          "56": 350,
+          "57": 350,
+          "58": 350,
+          "59": 350,
+          "60": 350,
+          "61": 350,
+          "62": 350,
+          "63": 350,
+          "64": 350,
+          "65": 350,
+          "66": 350,
+          "67": 350,
+          "68": 350,
+          "69": 350,
+          "70": 350,
+          "71": 350,
+          "72": 350,
+          "73": 350,
+          "74": 350,
+          "75": 350,
+          "76": 350,
+          "77": 350,
+          "78": 350,
+          "79": 350,
+          "80": 350,
+          "81": 350,
+          "82": 350,
+          "83": 350,
+          "84": 350,
+          "85": 350,
+          "86": 350,
+          "87": 350,
+          "88": 350,
+          "89": 350,
+          "90": 350
+        }
+      }
+    },
+    "statsByLevel": {
+      "1": {
+        "hp": 2745,
+        "atk": 363,
+        "matk": 218,
+        "def": 82,
+        "mdef": 32,
+        "hit": 60,
+        "block": 50,
+        "physicalCrit": 53,
+        "magicCrit": 32,
+        "hpRecovery": 137,
+        "mpRecovery": 59,
+        "dmgSuckHp": 0,
+        "healingPower": 82,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "2": {
+        "hp": 2882,
+        "atk": 381,
+        "matk": 229,
+        "def": 83,
+        "mdef": 32,
+        "hit": 61,
+        "block": 51,
+        "physicalCrit": 53,
+        "magicCrit": 32,
+        "hpRecovery": 141,
+        "mpRecovery": 61,
+        "dmgSuckHp": 0,
+        "healingPower": 84,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "3": {
+        "hp": 3020,
+        "atk": 399,
+        "matk": 240,
+        "def": 84,
+        "mdef": 32,
+        "hit": 62,
+        "block": 52,
+        "physicalCrit": 54,
+        "magicCrit": 32,
+        "hpRecovery": 146,
+        "mpRecovery": 63,
+        "dmgSuckHp": 0,
+        "healingPower": 85,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "4": {
+        "hp": 3157,
+        "atk": 417,
+        "matk": 250,
+        "def": 85,
+        "mdef": 33,
+        "hit": 62,
+        "block": 54,
+        "physicalCrit": 54,
+        "magicCrit": 32,
+        "hpRecovery": 150,
+        "mpRecovery": 65,
+        "dmgSuckHp": 0,
+        "healingPower": 86,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "5": {
+        "hp": 3294,
+        "atk": 435,
+        "matk": 261,
+        "def": 86,
+        "mdef": 33,
+        "hit": 63,
+        "block": 55,
+        "physicalCrit": 54,
+        "magicCrit": 32,
+        "hpRecovery": 154,
+        "mpRecovery": 67,
+        "dmgSuckHp": 0,
+        "healingPower": 88,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "6": {
+        "hp": 3404,
+        "atk": 450,
+        "matk": 270,
+        "def": 87,
+        "mdef": 33,
+        "hit": 64,
+        "block": 56,
+        "physicalCrit": 54,
+        "magicCrit": 32,
+        "hpRecovery": 157,
+        "mpRecovery": 69,
+        "dmgSuckHp": 0,
+        "healingPower": 89,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "7": {
+        "hp": 3514,
+        "atk": 464,
+        "matk": 279,
+        "def": 88,
+        "mdef": 34,
+        "hit": 64,
+        "block": 57,
+        "physicalCrit": 55,
+        "magicCrit": 32,
+        "hpRecovery": 161,
+        "mpRecovery": 71,
+        "dmgSuckHp": 0,
+        "healingPower": 90,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "8": {
+        "hp": 3623,
+        "atk": 479,
+        "matk": 287,
+        "def": 88,
+        "mdef": 34,
+        "hit": 65,
+        "block": 58,
+        "physicalCrit": 55,
+        "magicCrit": 33,
+        "hpRecovery": 164,
+        "mpRecovery": 72,
+        "dmgSuckHp": 0,
+        "healingPower": 92,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "9": {
+        "hp": 3733,
+        "atk": 493,
+        "matk": 296,
+        "def": 89,
+        "mdef": 35,
+        "hit": 65,
+        "block": 59,
+        "physicalCrit": 56,
+        "magicCrit": 33,
+        "hpRecovery": 168,
+        "mpRecovery": 74,
+        "dmgSuckHp": 0,
+        "healingPower": 93,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "10": {
+        "hp": 3843,
+        "atk": 508,
+        "matk": 305,
+        "def": 90,
+        "mdef": 35,
+        "hit": 66,
+        "block": 60,
+        "physicalCrit": 56,
+        "magicCrit": 33,
+        "hpRecovery": 171,
+        "mpRecovery": 76,
+        "dmgSuckHp": 0,
+        "healingPower": 94,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "11": {
+        "hp": 3953,
+        "atk": 523,
+        "matk": 314,
+        "def": 91,
+        "mdef": 35,
+        "hit": 67,
+        "block": 61,
+        "physicalCrit": 56,
+        "magicCrit": 33,
+        "hpRecovery": 174,
+        "mpRecovery": 78,
+        "dmgSuckHp": 0,
+        "healingPower": 95,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "12": {
+        "hp": 4063,
+        "atk": 537,
+        "matk": 322,
+        "def": 92,
+        "mdef": 35,
+        "hit": 67,
+        "block": 62,
+        "physicalCrit": 56,
+        "magicCrit": 33,
+        "hpRecovery": 178,
+        "mpRecovery": 80,
+        "dmgSuckHp": 0,
+        "healingPower": 96,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "13": {
+        "hp": 4172,
+        "atk": 552,
+        "matk": 331,
+        "def": 92,
+        "mdef": 36,
+        "hit": 68,
+        "block": 63,
+        "physicalCrit": 57,
+        "magicCrit": 34,
+        "hpRecovery": 181,
+        "mpRecovery": 81,
+        "dmgSuckHp": 0,
+        "healingPower": 98,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "14": {
+        "hp": 4282,
+        "atk": 566,
+        "matk": 339,
+        "def": 93,
+        "mdef": 36,
+        "hit": 68,
+        "block": 64,
+        "physicalCrit": 57,
+        "magicCrit": 34,
+        "hpRecovery": 185,
+        "mpRecovery": 83,
+        "dmgSuckHp": 0,
+        "healingPower": 99,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "15": {
+        "hp": 4392,
+        "atk": 581,
+        "matk": 348,
+        "def": 94,
+        "mdef": 36,
+        "hit": 69,
+        "block": 65,
+        "physicalCrit": 57,
+        "magicCrit": 34,
+        "hpRecovery": 188,
+        "mpRecovery": 85,
+        "dmgSuckHp": 0,
+        "healingPower": 100,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "16": {
+        "hp": 4502,
+        "atk": 595,
+        "matk": 357,
+        "def": 95,
+        "mdef": 36,
+        "hit": 70,
+        "block": 66,
+        "physicalCrit": 57,
+        "magicCrit": 34,
+        "hpRecovery": 191,
+        "mpRecovery": 87,
+        "dmgSuckHp": 0,
+        "healingPower": 101,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "17": {
+        "hp": 4612,
+        "atk": 610,
+        "matk": 366,
+        "def": 96,
+        "mdef": 37,
+        "hit": 70,
+        "block": 67,
+        "physicalCrit": 58,
+        "magicCrit": 34,
+        "hpRecovery": 195,
+        "mpRecovery": 89,
+        "dmgSuckHp": 0,
+        "healingPower": 102,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "18": {
+        "hp": 4721,
+        "atk": 624,
+        "matk": 374,
+        "def": 96,
+        "mdef": 37,
+        "hit": 71,
+        "block": 68,
+        "physicalCrit": 58,
+        "magicCrit": 35,
+        "hpRecovery": 198,
+        "mpRecovery": 90,
+        "dmgSuckHp": 0,
+        "healingPower": 104,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "19": {
+        "hp": 4831,
+        "atk": 639,
+        "matk": 383,
+        "def": 97,
+        "mdef": 38,
+        "hit": 71,
+        "block": 69,
+        "physicalCrit": 59,
+        "magicCrit": 35,
+        "hpRecovery": 202,
+        "mpRecovery": 92,
+        "dmgSuckHp": 0,
+        "healingPower": 105,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "20": {
+        "hp": 4941,
+        "atk": 653,
+        "matk": 392,
+        "def": 98,
+        "mdef": 38,
+        "hit": 72,
+        "block": 70,
+        "physicalCrit": 59,
+        "magicCrit": 35,
+        "hpRecovery": 205,
+        "mpRecovery": 94,
+        "dmgSuckHp": 0,
+        "healingPower": 106,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "21": {
+        "hp": 5051,
+        "atk": 668,
+        "matk": 401,
+        "def": 99,
+        "mdef": 38,
+        "hit": 73,
+        "block": 71,
+        "physicalCrit": 59,
+        "magicCrit": 35,
+        "hpRecovery": 208,
+        "mpRecovery": 96,
+        "dmgSuckHp": 0,
+        "healingPower": 107,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "22": {
+        "hp": 5161,
+        "atk": 682,
+        "matk": 410,
+        "def": 100,
+        "mdef": 39,
+        "hit": 73,
+        "block": 72,
+        "physicalCrit": 60,
+        "magicCrit": 35,
+        "hpRecovery": 212,
+        "mpRecovery": 98,
+        "dmgSuckHp": 0,
+        "healingPower": 109,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "23": {
+        "hp": 5270,
+        "atk": 697,
+        "matk": 418,
+        "def": 100,
+        "mdef": 39,
+        "hit": 74,
+        "block": 73,
+        "physicalCrit": 60,
+        "magicCrit": 36,
+        "hpRecovery": 215,
+        "mpRecovery": 99,
+        "dmgSuckHp": 0,
+        "healingPower": 110,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "24": {
+        "hp": 5380,
+        "atk": 711,
+        "matk": 427,
+        "def": 101,
+        "mdef": 40,
+        "hit": 74,
+        "block": 74,
+        "physicalCrit": 61,
+        "magicCrit": 36,
+        "hpRecovery": 219,
+        "mpRecovery": 101,
+        "dmgSuckHp": 0,
+        "healingPower": 112,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "25": {
+        "hp": 5490,
+        "atk": 726,
+        "matk": 436,
+        "def": 102,
+        "mdef": 40,
+        "hit": 75,
+        "block": 75,
+        "physicalCrit": 61,
+        "magicCrit": 36,
+        "hpRecovery": 222,
+        "mpRecovery": 103,
+        "dmgSuckHp": 0,
+        "healingPower": 113,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "26": {
+        "hp": 5600,
+        "atk": 741,
+        "matk": 445,
+        "def": 103,
+        "mdef": 40,
+        "hit": 76,
+        "block": 76,
+        "physicalCrit": 61,
+        "magicCrit": 36,
+        "hpRecovery": 225,
+        "mpRecovery": 105,
+        "dmgSuckHp": 0,
+        "healingPower": 114,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "27": {
+        "hp": 5710,
+        "atk": 755,
+        "matk": 453,
+        "def": 104,
+        "mdef": 40,
+        "hit": 76,
+        "block": 77,
+        "physicalCrit": 61,
+        "magicCrit": 36,
+        "hpRecovery": 229,
+        "mpRecovery": 107,
+        "dmgSuckHp": 0,
+        "healingPower": 115,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "28": {
+        "hp": 5819,
+        "atk": 770,
+        "matk": 462,
+        "def": 104,
+        "mdef": 41,
+        "hit": 77,
+        "block": 78,
+        "physicalCrit": 62,
+        "magicCrit": 37,
+        "hpRecovery": 232,
+        "mpRecovery": 108,
+        "dmgSuckHp": 0,
+        "healingPower": 117,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "29": {
+        "hp": 5929,
+        "atk": 784,
+        "matk": 470,
+        "def": 105,
+        "mdef": 41,
+        "hit": 77,
+        "block": 79,
+        "physicalCrit": 62,
+        "magicCrit": 37,
+        "hpRecovery": 236,
+        "mpRecovery": 110,
+        "dmgSuckHp": 0,
+        "healingPower": 118,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "30": {
+        "hp": 6039,
+        "atk": 799,
+        "matk": 479,
+        "def": 106,
+        "mdef": 41,
+        "hit": 78,
+        "block": 80,
+        "physicalCrit": 62,
+        "magicCrit": 37,
+        "hpRecovery": 239,
+        "mpRecovery": 112,
+        "dmgSuckHp": 0,
+        "healingPower": 119,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "31": {
+        "hp": 6149,
+        "atk": 814,
+        "matk": 488,
+        "def": 107,
+        "mdef": 41,
+        "hit": 79,
+        "block": 81,
+        "physicalCrit": 62,
+        "magicCrit": 37,
+        "hpRecovery": 243,
+        "mpRecovery": 114,
+        "dmgSuckHp": 0,
+        "healingPower": 120,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "32": {
+        "hp": 6259,
+        "atk": 828,
+        "matk": 497,
+        "def": 108,
+        "mdef": 42,
+        "hit": 79,
+        "block": 82,
+        "physicalCrit": 63,
+        "magicCrit": 37,
+        "hpRecovery": 246,
+        "mpRecovery": 116,
+        "dmgSuckHp": 0,
+        "healingPower": 121,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "33": {
+        "hp": 6369,
+        "atk": 843,
+        "matk": 505,
+        "def": 108,
+        "mdef": 42,
+        "hit": 80,
+        "block": 83,
+        "physicalCrit": 63,
+        "magicCrit": 38,
+        "hpRecovery": 250,
+        "mpRecovery": 117,
+        "dmgSuckHp": 0,
+        "healingPower": 123,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "34": {
+        "hp": 6479,
+        "atk": 857,
+        "matk": 514,
+        "def": 109,
+        "mdef": 43,
+        "hit": 80,
+        "block": 84,
+        "physicalCrit": 64,
+        "magicCrit": 38,
+        "hpRecovery": 253,
+        "mpRecovery": 119,
+        "dmgSuckHp": 0,
+        "healingPower": 124,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "35": {
+        "hp": 6589,
+        "atk": 872,
+        "matk": 523,
+        "def": 110,
+        "mdef": 43,
+        "hit": 81,
+        "block": 85,
+        "physicalCrit": 64,
+        "magicCrit": 38,
+        "hpRecovery": 257,
+        "mpRecovery": 121,
+        "dmgSuckHp": 0,
+        "healingPower": 125,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "36": {
+        "hp": 6699,
+        "atk": 886,
+        "matk": 532,
+        "def": 111,
+        "mdef": 43,
+        "hit": 82,
+        "block": 86,
+        "physicalCrit": 64,
+        "magicCrit": 38,
+        "hpRecovery": 260,
+        "mpRecovery": 123,
+        "dmgSuckHp": 0,
+        "healingPower": 126,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "37": {
+        "hp": 6809,
+        "atk": 901,
+        "matk": 541,
+        "def": 112,
+        "mdef": 44,
+        "hit": 82,
+        "block": 87,
+        "physicalCrit": 64,
+        "magicCrit": 38,
+        "hpRecovery": 264,
+        "mpRecovery": 125,
+        "dmgSuckHp": 0,
+        "healingPower": 127,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "38": {
+        "hp": 6918,
+        "atk": 915,
+        "matk": 549,
+        "def": 113,
+        "mdef": 44,
+        "hit": 83,
+        "block": 88,
+        "physicalCrit": 65,
+        "magicCrit": 39,
+        "hpRecovery": 267,
+        "mpRecovery": 126,
+        "dmgSuckHp": 0,
+        "healingPower": 129,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "39": {
+        "hp": 7028,
+        "atk": 930,
+        "matk": 558,
+        "def": 114,
+        "mdef": 45,
+        "hit": 83,
+        "block": 89,
+        "physicalCrit": 65,
+        "magicCrit": 39,
+        "hpRecovery": 271,
+        "mpRecovery": 128,
+        "dmgSuckHp": 0,
+        "healingPower": 130,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "40": {
+        "hp": 7138,
+        "atk": 944,
+        "matk": 567,
+        "def": 115,
+        "mdef": 45,
+        "hit": 84,
+        "block": 90,
+        "physicalCrit": 65,
+        "magicCrit": 39,
+        "hpRecovery": 274,
+        "mpRecovery": 130,
+        "dmgSuckHp": 0,
+        "healingPower": 131,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "41": {
+        "hp": 7248,
+        "atk": 959,
+        "matk": 576,
+        "def": 116,
+        "mdef": 45,
+        "hit": 85,
+        "block": 91,
+        "physicalCrit": 65,
+        "magicCrit": 39,
+        "hpRecovery": 277,
+        "mpRecovery": 132,
+        "dmgSuckHp": 0,
+        "healingPower": 132,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "42": {
+        "hp": 7358,
+        "atk": 973,
+        "matk": 584,
+        "def": 117,
+        "mdef": 45,
+        "hit": 85,
+        "block": 92,
+        "physicalCrit": 66,
+        "magicCrit": 39,
+        "hpRecovery": 281,
+        "mpRecovery": 134,
+        "dmgSuckHp": 0,
+        "healingPower": 133,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "43": {
+        "hp": 7467,
+        "atk": 988,
+        "matk": 593,
+        "def": 117,
+        "mdef": 46,
+        "hit": 86,
+        "block": 93,
+        "physicalCrit": 66,
+        "magicCrit": 40,
+        "hpRecovery": 284,
+        "mpRecovery": 135,
+        "dmgSuckHp": 0,
+        "healingPower": 135,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "44": {
+        "hp": 7577,
+        "atk": 1002,
+        "matk": 601,
+        "def": 118,
+        "mdef": 46,
+        "hit": 86,
+        "block": 94,
+        "physicalCrit": 67,
+        "magicCrit": 40,
+        "hpRecovery": 288,
+        "mpRecovery": 137,
+        "dmgSuckHp": 0,
+        "healingPower": 136,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "45": {
+        "hp": 7687,
+        "atk": 1017,
+        "matk": 610,
+        "def": 119,
+        "mdef": 46,
+        "hit": 87,
+        "block": 95,
+        "physicalCrit": 67,
+        "magicCrit": 40,
+        "hpRecovery": 291,
+        "mpRecovery": 139,
+        "dmgSuckHp": 0,
+        "healingPower": 137,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "46": {
+        "hp": 7797,
+        "atk": 1032,
+        "matk": 619,
+        "def": 120,
+        "mdef": 46,
+        "hit": 88,
+        "block": 96,
+        "physicalCrit": 67,
+        "magicCrit": 40,
+        "hpRecovery": 294,
+        "mpRecovery": 141,
+        "dmgSuckHp": 0,
+        "healingPower": 138,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "47": {
+        "hp": 7907,
+        "atk": 1046,
+        "matk": 628,
+        "def": 121,
+        "mdef": 47,
+        "hit": 88,
+        "block": 97,
+        "physicalCrit": 68,
+        "magicCrit": 40,
+        "hpRecovery": 298,
+        "mpRecovery": 143,
+        "dmgSuckHp": 0,
+        "healingPower": 140,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "48": {
+        "hp": 8016,
+        "atk": 1061,
+        "matk": 636,
+        "def": 121,
+        "mdef": 47,
+        "hit": 89,
+        "block": 98,
+        "physicalCrit": 68,
+        "magicCrit": 41,
+        "hpRecovery": 301,
+        "mpRecovery": 144,
+        "dmgSuckHp": 0,
+        "healingPower": 141,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "49": {
+        "hp": 8126,
+        "atk": 1075,
+        "matk": 645,
+        "def": 122,
+        "mdef": 48,
+        "hit": 89,
+        "block": 99,
+        "physicalCrit": 69,
+        "magicCrit": 41,
+        "hpRecovery": 305,
+        "mpRecovery": 146,
+        "dmgSuckHp": 0,
+        "healingPower": 143,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "50": {
+        "hp": 8236,
+        "atk": 1090,
+        "matk": 654,
+        "def": 123,
+        "mdef": 48,
+        "hit": 90,
+        "block": 100,
+        "physicalCrit": 69,
+        "magicCrit": 41,
+        "hpRecovery": 308,
+        "mpRecovery": 148,
+        "dmgSuckHp": 0,
+        "healingPower": 144,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "51": {
+        "hp": 8346,
+        "atk": 1104,
+        "matk": 663,
+        "def": 124,
+        "mdef": 48,
+        "hit": 91,
+        "block": 101,
+        "physicalCrit": 69,
+        "magicCrit": 41,
+        "hpRecovery": 311,
+        "mpRecovery": 150,
+        "dmgSuckHp": 0,
+        "healingPower": 145,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "52": {
+        "hp": 8456,
+        "atk": 1119,
+        "matk": 672,
+        "def": 125,
+        "mdef": 49,
+        "hit": 91,
+        "block": 102,
+        "physicalCrit": 69,
+        "magicCrit": 41,
+        "hpRecovery": 315,
+        "mpRecovery": 152,
+        "dmgSuckHp": 0,
+        "healingPower": 146,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "53": {
+        "hp": 8565,
+        "atk": 1133,
+        "matk": 680,
+        "def": 125,
+        "mdef": 49,
+        "hit": 92,
+        "block": 103,
+        "physicalCrit": 70,
+        "magicCrit": 42,
+        "hpRecovery": 318,
+        "mpRecovery": 153,
+        "dmgSuckHp": 0,
+        "healingPower": 148,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "54": {
+        "hp": 8675,
+        "atk": 1148,
+        "matk": 689,
+        "def": 126,
+        "mdef": 50,
+        "hit": 92,
+        "block": 104,
+        "physicalCrit": 70,
+        "magicCrit": 42,
+        "hpRecovery": 322,
+        "mpRecovery": 155,
+        "dmgSuckHp": 0,
+        "healingPower": 149,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "55": {
+        "hp": 8785,
+        "atk": 1162,
+        "matk": 698,
+        "def": 127,
+        "mdef": 50,
+        "hit": 93,
+        "block": 105,
+        "physicalCrit": 70,
+        "magicCrit": 42,
+        "hpRecovery": 325,
+        "mpRecovery": 157,
+        "dmgSuckHp": 0,
+        "healingPower": 150,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "56": {
+        "hp": 8895,
+        "atk": 1177,
+        "matk": 707,
+        "def": 128,
+        "mdef": 50,
+        "hit": 94,
+        "block": 106,
+        "physicalCrit": 70,
+        "magicCrit": 42,
+        "hpRecovery": 328,
+        "mpRecovery": 159,
+        "dmgSuckHp": 0,
+        "healingPower": 151,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "57": {
+        "hp": 9005,
+        "atk": 1191,
+        "matk": 715,
+        "def": 129,
+        "mdef": 50,
+        "hit": 94,
+        "block": 107,
+        "physicalCrit": 71,
+        "magicCrit": 42,
+        "hpRecovery": 332,
+        "mpRecovery": 161,
+        "dmgSuckHp": 0,
+        "healingPower": 152,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "58": {
+        "hp": 9114,
+        "atk": 1206,
+        "matk": 724,
+        "def": 129,
+        "mdef": 51,
+        "hit": 95,
+        "block": 108,
+        "physicalCrit": 71,
+        "magicCrit": 43,
+        "hpRecovery": 335,
+        "mpRecovery": 162,
+        "dmgSuckHp": 0,
+        "healingPower": 154,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "59": {
+        "hp": 9224,
+        "atk": 1220,
+        "matk": 732,
+        "def": 130,
+        "mdef": 51,
+        "hit": 95,
+        "block": 109,
+        "physicalCrit": 72,
+        "magicCrit": 43,
+        "hpRecovery": 339,
+        "mpRecovery": 164,
+        "dmgSuckHp": 0,
+        "healingPower": 155,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "60": {
+        "hp": 9334,
+        "atk": 1235,
+        "matk": 741,
+        "def": 131,
+        "mdef": 51,
+        "hit": 96,
+        "block": 110,
+        "physicalCrit": 72,
+        "magicCrit": 43,
+        "hpRecovery": 342,
+        "mpRecovery": 166,
+        "dmgSuckHp": 0,
+        "healingPower": 156,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "61": {
+        "hp": 9444,
+        "atk": 1250,
+        "matk": 750,
+        "def": 132,
+        "mdef": 51,
+        "hit": 97,
+        "block": 111,
+        "physicalCrit": 72,
+        "magicCrit": 43,
+        "hpRecovery": 345,
+        "mpRecovery": 168,
+        "dmgSuckHp": 0,
+        "healingPower": 157,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "62": {
+        "hp": 9554,
+        "atk": 1264,
+        "matk": 759,
+        "def": 133,
+        "mdef": 52,
+        "hit": 97,
+        "block": 112,
+        "physicalCrit": 72,
+        "magicCrit": 43,
+        "hpRecovery": 349,
+        "mpRecovery": 170,
+        "dmgSuckHp": 0,
+        "healingPower": 158,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "63": {
+        "hp": 9664,
+        "atk": 1279,
+        "matk": 767,
+        "def": 133,
+        "mdef": 52,
+        "hit": 98,
+        "block": 113,
+        "physicalCrit": 73,
+        "magicCrit": 44,
+        "hpRecovery": 352,
+        "mpRecovery": 171,
+        "dmgSuckHp": 0,
+        "healingPower": 160,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "64": {
+        "hp": 9774,
+        "atk": 1293,
+        "matk": 776,
+        "def": 134,
+        "mdef": 53,
+        "hit": 98,
+        "block": 114,
+        "physicalCrit": 73,
+        "magicCrit": 44,
+        "hpRecovery": 356,
+        "mpRecovery": 173,
+        "dmgSuckHp": 0,
+        "healingPower": 161,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "65": {
+        "hp": 9884,
+        "atk": 1308,
+        "matk": 785,
+        "def": 135,
+        "mdef": 53,
+        "hit": 99,
+        "block": 115,
+        "physicalCrit": 73,
+        "magicCrit": 44,
+        "hpRecovery": 359,
+        "mpRecovery": 175,
+        "dmgSuckHp": 0,
+        "healingPower": 162,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "66": {
+        "hp": 9994,
+        "atk": 1323,
+        "matk": 794,
+        "def": 136,
+        "mdef": 53,
+        "hit": 100,
+        "block": 116,
+        "physicalCrit": 73,
+        "magicCrit": 44,
+        "hpRecovery": 363,
+        "mpRecovery": 177,
+        "dmgSuckHp": 0,
+        "healingPower": 163,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "67": {
+        "hp": 10104,
+        "atk": 1337,
+        "matk": 802,
+        "def": 137,
+        "mdef": 54,
+        "hit": 100,
+        "block": 117,
+        "physicalCrit": 74,
+        "magicCrit": 44,
+        "hpRecovery": 366,
+        "mpRecovery": 179,
+        "dmgSuckHp": 0,
+        "healingPower": 164,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "68": {
+        "hp": 10213,
+        "atk": 1352,
+        "matk": 811,
+        "def": 137,
+        "mdef": 54,
+        "hit": 101,
+        "block": 118,
+        "physicalCrit": 74,
+        "magicCrit": 45,
+        "hpRecovery": 370,
+        "mpRecovery": 180,
+        "dmgSuckHp": 0,
+        "healingPower": 166,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "69": {
+        "hp": 10323,
+        "atk": 1366,
+        "matk": 819,
+        "def": 138,
+        "mdef": 55,
+        "hit": 101,
+        "block": 119,
+        "physicalCrit": 75,
+        "magicCrit": 45,
+        "hpRecovery": 373,
+        "mpRecovery": 182,
+        "dmgSuckHp": 0,
+        "healingPower": 167,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "70": {
+        "hp": 10433,
+        "atk": 1381,
+        "matk": 828,
+        "def": 139,
+        "mdef": 55,
+        "hit": 102,
+        "block": 120,
+        "physicalCrit": 75,
+        "magicCrit": 45,
+        "hpRecovery": 377,
+        "mpRecovery": 184,
+        "dmgSuckHp": 0,
+        "healingPower": 168,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "71": {
+        "hp": 10598,
+        "atk": 1403,
+        "matk": 841,
+        "def": 140,
+        "mdef": 55,
+        "hit": 103,
+        "block": 121,
+        "physicalCrit": 75,
+        "magicCrit": 45,
+        "hpRecovery": 382,
+        "mpRecovery": 187,
+        "dmgSuckHp": 0,
+        "healingPower": 170,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "72": {
+        "hp": 10762,
+        "atk": 1425,
+        "matk": 854,
+        "def": 142,
+        "mdef": 56,
+        "hit": 104,
+        "block": 123,
+        "physicalCrit": 76,
+        "magicCrit": 45,
+        "hpRecovery": 387,
+        "mpRecovery": 189,
+        "dmgSuckHp": 0,
+        "healingPower": 172,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "73": {
+        "hp": 10927,
+        "atk": 1446,
+        "matk": 868,
+        "def": 143,
+        "mdef": 56,
+        "hit": 104,
+        "block": 124,
+        "physicalCrit": 76,
+        "magicCrit": 46,
+        "hpRecovery": 392,
+        "mpRecovery": 192,
+        "dmgSuckHp": 0,
+        "healingPower": 174,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "74": {
+        "hp": 11091,
+        "atk": 1468,
+        "matk": 881,
+        "def": 145,
+        "mdef": 57,
+        "hit": 105,
+        "block": 126,
+        "physicalCrit": 77,
+        "magicCrit": 46,
+        "hpRecovery": 397,
+        "mpRecovery": 194,
+        "dmgSuckHp": 0,
+        "healingPower": 176,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "75": {
+        "hp": 11256,
+        "atk": 1490,
+        "matk": 894,
+        "def": 146,
+        "mdef": 57,
+        "hit": 106,
+        "block": 127,
+        "physicalCrit": 77,
+        "magicCrit": 46,
+        "hpRecovery": 402,
+        "mpRecovery": 197,
+        "dmgSuckHp": 0,
+        "healingPower": 178,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "76": {
+        "hp": 11421,
+        "atk": 1512,
+        "matk": 907,
+        "def": 147,
+        "mdef": 57,
+        "hit": 107,
+        "block": 129,
+        "physicalCrit": 78,
+        "magicCrit": 46,
+        "hpRecovery": 407,
+        "mpRecovery": 200,
+        "dmgSuckHp": 0,
+        "healingPower": 180,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "77": {
+        "hp": 11586,
+        "atk": 1534,
+        "matk": 920,
+        "def": 148,
+        "mdef": 58,
+        "hit": 108,
+        "block": 130,
+        "physicalCrit": 78,
+        "magicCrit": 47,
+        "hpRecovery": 412,
+        "mpRecovery": 202,
+        "dmgSuckHp": 0,
+        "healingPower": 182,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "78": {
+        "hp": 11750,
+        "atk": 1555,
+        "matk": 933,
+        "def": 150,
+        "mdef": 58,
+        "hit": 109,
+        "block": 132,
+        "physicalCrit": 79,
+        "magicCrit": 47,
+        "hpRecovery": 418,
+        "mpRecovery": 205,
+        "dmgSuckHp": 0,
+        "healingPower": 183,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "79": {
+        "hp": 11915,
+        "atk": 1577,
+        "matk": 946,
+        "def": 151,
+        "mdef": 59,
+        "hit": 110,
+        "block": 133,
+        "physicalCrit": 79,
+        "magicCrit": 48,
+        "hpRecovery": 423,
+        "mpRecovery": 207,
+        "dmgSuckHp": 0,
+        "healingPower": 185,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "80": {
+        "hp": 12080,
+        "atk": 1599,
+        "matk": 959,
+        "def": 152,
+        "mdef": 59,
+        "hit": 111,
+        "block": 135,
+        "physicalCrit": 80,
+        "magicCrit": 48,
+        "hpRecovery": 428,
+        "mpRecovery": 210,
+        "dmgSuckHp": 0,
+        "healingPower": 187,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "81": {
+        "hp": 12245,
+        "atk": 1621,
+        "matk": 972,
+        "def": 153,
+        "mdef": 60,
+        "hit": 112,
+        "block": 136,
+        "physicalCrit": 80,
+        "magicCrit": 48,
+        "hpRecovery": 433,
+        "mpRecovery": 213,
+        "dmgSuckHp": 0,
+        "healingPower": 189,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "82": {
+        "hp": 12410,
+        "atk": 1643,
+        "matk": 985,
+        "def": 154,
+        "mdef": 60,
+        "hit": 113,
+        "block": 138,
+        "physicalCrit": 81,
+        "magicCrit": 48,
+        "hpRecovery": 438,
+        "mpRecovery": 216,
+        "dmgSuckHp": 0,
+        "healingPower": 191,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "83": {
+        "hp": 12574,
+        "atk": 1664,
+        "matk": 999,
+        "def": 156,
+        "mdef": 61,
+        "hit": 113,
+        "block": 139,
+        "physicalCrit": 81,
+        "magicCrit": 49,
+        "hpRecovery": 444,
+        "mpRecovery": 218,
+        "dmgSuckHp": 0,
+        "healingPower": 192,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "84": {
+        "hp": 12739,
+        "atk": 1686,
+        "matk": 1012,
+        "def": 157,
+        "mdef": 61,
+        "hit": 114,
+        "block": 141,
+        "physicalCrit": 82,
+        "magicCrit": 49,
+        "hpRecovery": 449,
+        "mpRecovery": 221,
+        "dmgSuckHp": 0,
+        "healingPower": 194,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "85": {
+        "hp": 12904,
+        "atk": 1708,
+        "matk": 1025,
+        "def": 158,
+        "mdef": 62,
+        "hit": 115,
+        "block": 142,
+        "physicalCrit": 82,
+        "magicCrit": 49,
+        "hpRecovery": 454,
+        "mpRecovery": 224,
+        "dmgSuckHp": 0,
+        "healingPower": 196,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "86": {
+        "hp": 13069,
+        "atk": 1730,
+        "matk": 1038,
+        "def": 159,
+        "mdef": 62,
+        "hit": 116,
+        "block": 144,
+        "physicalCrit": 83,
+        "magicCrit": 49,
+        "hpRecovery": 459,
+        "mpRecovery": 227,
+        "dmgSuckHp": 0,
+        "healingPower": 198,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "87": {
+        "hp": 13234,
+        "atk": 1752,
+        "matk": 1051,
+        "def": 160,
+        "mdef": 63,
+        "hit": 117,
+        "block": 145,
+        "physicalCrit": 83,
+        "magicCrit": 50,
+        "hpRecovery": 464,
+        "mpRecovery": 229,
+        "dmgSuckHp": 0,
+        "healingPower": 200,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "88": {
+        "hp": 13398,
+        "atk": 1773,
+        "matk": 1064,
+        "def": 162,
+        "mdef": 63,
+        "hit": 118,
+        "block": 147,
+        "physicalCrit": 84,
+        "magicCrit": 50,
+        "hpRecovery": 470,
+        "mpRecovery": 232,
+        "dmgSuckHp": 0,
+        "healingPower": 202,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "89": {
+        "hp": 13563,
+        "atk": 1795,
+        "matk": 1077,
+        "def": 163,
+        "mdef": 64,
+        "hit": 119,
+        "block": 148,
+        "physicalCrit": 84,
+        "magicCrit": 51,
+        "hpRecovery": 475,
+        "mpRecovery": 234,
+        "dmgSuckHp": 0,
+        "healingPower": 204,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      },
+      "90": {
+        "hp": 13728,
+        "atk": 1817,
+        "matk": 1090,
+        "def": 164,
+        "mdef": 64,
+        "hit": 120,
+        "block": 150,
+        "physicalCrit": 85,
+        "magicCrit": 51,
+        "hpRecovery": 480,
+        "mpRecovery": 237,
+        "dmgSuckHp": 0,
+        "healingPower": 206,
+        "mpRegen": 67,
+        "mpCostDown": 0
+      }
+    },
+    "bondLevels": [
+      {
+        "level": 0,
+        "bonuses": {},
+        "tokenId": null
+      },
+      {
+        "level": 1,
+        "bonuses": {
+          "mpRegen": 2
+        },
+        "tokenId": null
+      },
+      {
+        "level": 2,
+        "bonuses": {
+          "hp": 300,
+          "mpRegen": 2
+        },
+        "tokenId": null
+      },
+      {
+        "level": 3,
+        "bonuses": {
+          "hp": 300,
+          "mpRegen": 5
+        },
+        "tokenId": null
+      },
+      {
+        "level": 4,
+        "bonuses": {
+          "hp": 750,
+          "mpRegen": 5
+        },
+        "tokenId": null
+      },
+      {
+        "level": 5,
+        "bonuses": {
+          "hp": 750,
+          "mpRegen": 7
+        },
+        "tokenId": null
+      },
+      {
+        "level": 6,
+        "bonuses": {
+          "hp": 1200,
+          "mpRegen": 7
+        },
+        "tokenId": null
+      },
+      {
+        "level": 7,
+        "bonuses": {
+          "hp": 1200,
+          "mpRegen": 9
+        },
+        "tokenId": null
+      },
+      {
+        "level": 8,
+        "bonuses": {
+          "hp": 1650,
+          "mpRegen": 9
+        },
+        "tokenId": null
+      },
+      {
+        "level": 9,
+        "bonuses": {
+          "hp": 1650,
+          "mpRegen": 11
+        },
+        "tokenId": null
+      },
+      {
+        "level": 10,
+        "bonuses": {
+          "hp": 2100,
+          "mpRegen": 11
+        },
+        "tokenId": 3396
+      }
+    ],
+    "abilityGrades": [
+      {
+        "grade": 1,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 1,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +4",
+        "bonuses": {
+          "block": 4
+        },
+        "nodes": [
+          {
+            "id": "2080011",
+            "stat": "hp",
+            "value": 289
+          },
+          {
+            "id": "2080012",
+            "stat": "atk",
+            "value": 38
+          },
+          {
+            "id": "2080013",
+            "stat": "def",
+            "value": 4
+          },
+          {
+            "id": "2080014",
+            "stat": "physicalCrit",
+            "value": 1
+          },
+          {
+            "id": "2080015",
+            "stat": "accuracy",
+            "value": 9
+          }
+        ]
+      },
+      {
+        "grade": 2,
+        "name": "HP Bouns",
+        "requiredLevel": 31,
+        "description": "When Passive Ability 5 is unlocked,HP +247",
+        "bonuses": {
+          "hp": 247
+        },
+        "nodes": [
+          {
+            "id": "2080021",
+            "stat": "hp",
+            "value": 347
+          },
+          {
+            "id": "2080022",
+            "stat": "atk",
+            "value": 46
+          },
+          {
+            "id": "2080023",
+            "stat": "def",
+            "value": 4
+          },
+          {
+            "id": "2080024",
+            "stat": "physicalCrit",
+            "value": 1
+          },
+          {
+            "id": "2080025",
+            "stat": "block",
+            "value": 16
+          }
+        ]
+      },
+      {
+        "grade": 3,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 31,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +6",
+        "bonuses": {
+          "block": 6
+        },
+        "nodes": [
+          {
+            "id": "2080031",
+            "stat": "hp",
+            "value": 405
+          },
+          {
+            "id": "2080032",
+            "stat": "atk",
+            "value": 54
+          },
+          {
+            "id": "2080033",
+            "stat": "def",
+            "value": 5
+          },
+          {
+            "id": "2080034",
+            "stat": "physicalCrit",
+            "value": 2
+          },
+          {
+            "id": "2080035",
+            "stat": "accuracy",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "grade": 4,
+        "name": "HP Bouns",
+        "requiredLevel": 41,
+        "description": "When Passive Ability 5 is unlocked,HP +329",
+        "bonuses": {
+          "hp": 329
+        },
+        "nodes": [
+          {
+            "id": "2080041",
+            "stat": "hp",
+            "value": 462
+          },
+          {
+            "id": "2080042",
+            "stat": "atk",
+            "value": 61
+          },
+          {
+            "id": "2080043",
+            "stat": "def",
+            "value": 6
+          },
+          {
+            "id": "2080044",
+            "stat": "physicalCrit",
+            "value": 2
+          },
+          {
+            "id": "2080045",
+            "stat": "block",
+            "value": 21
+          }
+        ]
+      },
+      {
+        "grade": 5,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 41,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +8",
+        "bonuses": {
+          "block": 8
+        },
+        "nodes": [
+          {
+            "id": "2080051",
+            "stat": "hp",
+            "value": 520
+          },
+          {
+            "id": "2080052",
+            "stat": "atk",
+            "value": 69
+          },
+          {
+            "id": "2080053",
+            "stat": "def",
+            "value": 7
+          },
+          {
+            "id": "2080054",
+            "stat": "physicalCrit",
+            "value": 2
+          },
+          {
+            "id": "2080055",
+            "stat": "mpCharge",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "grade": 6,
+        "name": "HP Bouns",
+        "requiredLevel": 51,
+        "description": "When Passive Ability 5 is unlocked,HP +412",
+        "bonuses": {
+          "hp": 412
+        },
+        "nodes": [
+          {
+            "id": "2080061",
+            "stat": "hp",
+            "value": 578
+          },
+          {
+            "id": "2080062",
+            "stat": "atk",
+            "value": 77
+          },
+          {
+            "id": "2080063",
+            "stat": "def",
+            "value": 7
+          },
+          {
+            "id": "2080064",
+            "stat": "physicalCrit",
+            "value": 2
+          },
+          {
+            "id": "2080065",
+            "stat": "accuracy",
+            "value": 18
+          }
+        ]
+      },
+      {
+        "grade": 7,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 61,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +9",
+        "bonuses": {
+          "block": 9
+        },
+        "nodes": [
+          {
+            "id": "2080071",
+            "stat": "hp",
+            "value": 636
+          },
+          {
+            "id": "2080072",
+            "stat": "atk",
+            "value": 84
+          },
+          {
+            "id": "2080073",
+            "stat": "def",
+            "value": 8
+          },
+          {
+            "id": "2080074",
+            "stat": "physicalCrit",
+            "value": 2
+          },
+          {
+            "id": "2080075",
+            "stat": "block",
+            "value": 29
+          }
+        ]
+      },
+      {
+        "grade": 8,
+        "name": "HP Bouns",
+        "requiredLevel": 71,
+        "description": "When Passive Ability 5 is unlocked,HP +494",
+        "bonuses": {
+          "hp": 494
+        },
+        "nodes": [
+          {
+            "id": "2080081",
+            "stat": "hp",
+            "value": 694
+          },
+          {
+            "id": "2080082",
+            "stat": "atk",
+            "value": 92
+          },
+          {
+            "id": "2080083",
+            "stat": "def",
+            "value": 9
+          },
+          {
+            "id": "2080084",
+            "stat": "physicalCrit",
+            "value": 3
+          },
+          {
+            "id": "2080085",
+            "stat": "accuracy",
+            "value": 21
+          }
+        ]
+      },
+      {
+        "grade": 9,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 81,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +11",
+        "bonuses": {
+          "block": 11
+        },
+        "nodes": [
+          {
+            "id": "2080091",
+            "stat": "hp",
+            "value": 751
+          },
+          {
+            "id": "2080092",
+            "stat": "atk",
+            "value": 100
+          },
+          {
+            "id": "2080093",
+            "stat": "def",
+            "value": 10
+          },
+          {
+            "id": "2080094",
+            "stat": "physicalCrit",
+            "value": 3
+          },
+          {
+            "id": "2080095",
+            "stat": "block",
+            "value": 34
+          }
+        ]
+      },
+      {
+        "grade": 10,
+        "name": "HP Bouns",
+        "requiredLevel": 81,
+        "description": "When Passive Ability 5 is unlocked,HP +577",
+        "bonuses": {
+          "hp": 577
+        },
+        "nodes": [
+          {
+            "id": "2080101",
+            "stat": "hp",
+            "value": 809
+          },
+          {
+            "id": "2080102",
+            "stat": "atk",
+            "value": 107
+          },
+          {
+            "id": "2080103",
+            "stat": "def",
+            "value": 10
+          },
+          {
+            "id": "2080104",
+            "stat": "physicalCrit",
+            "value": 3
+          },
+          {
+            "id": "2080105",
+            "stat": "mpCharge",
+            "value": 9
+          }
+        ]
+      },
+      {
+        "grade": 11,
+        "name": "BLOCK Bouns",
+        "requiredLevel": 91,
+        "description": "When Passive Ability 5 is unlocked,BLOCK +12",
+        "bonuses": {
+          "block": 12
+        },
+        "nodes": [
+          {
+            "id": "2080111",
+            "stat": "hp",
+            "value": 890
+          },
+          {
+            "id": "2080112",
+            "stat": "atk",
+            "value": 118
+          },
+          {
+            "id": "2080113",
+            "stat": "def",
+            "value": 11
+          },
+          {
+            "id": "2080114",
+            "stat": "physicalCrit",
+            "value": 3
+          },
+          {
+            "id": "2080115",
+            "stat": "accuracy",
+            "value": 25
+          }
+        ]
+      }
+    ],
+    "profile": {
+      "artist": "Aotonbo",
+      "voiceActor": "小倉結衣",
+      "height": "160cm",
+      "heightCm": 160,
+      "measurements": "B99(J)/W59/86",
+      "bust": 99,
+      "cup": "J",
+      "waist": 59,
+      "hip": 86,
+      "threeSize": "99-59-86"
+    },
+    "freezeTime": 1.11,
+    "actionSpeed": "Slightly Slow",
+    "gpPassiveTotals": {
+      "hp": 6381,
+      "atk": 846,
+      "def": 81,
+      "physicalCrit": 24,
+      "accuracy": 85,
+      "block": 100,
+      "mpCharge": 15
+    },
+    "limitBreaks": [
+      {
+        "tier": 1,
+        "bonuses": {
+          "hp": 824,
+          "atk": 109,
+          "block": 15,
+          "mpCharge": 6
+        },
+        "cumulative": {
+          "hp": 824,
+          "atk": 109,
+          "block": 15,
+          "mpCharge": 6
+        }
+      },
+      {
+        "tier": 2,
+        "bonuses": {
+          "hp": 947,
+          "atk": 125,
+          "accuracy": 13,
+          "block": 17
+        },
+        "cumulative": {
+          "hp": 1771,
+          "atk": 234,
+          "block": 32,
+          "mpCharge": 6,
+          "accuracy": 13
+        }
+      },
+      {
+        "tier": 3,
+        "bonuses": {
+          "hp": 1112,
+          "atk": 147,
+          "block": 20,
+          "mpCharge": 8
+        },
+        "cumulative": {
+          "hp": 2883,
+          "atk": 381,
+          "block": 52,
+          "mpCharge": 14,
+          "accuracy": 13
+        }
+      },
+      {
+        "tier": 4,
+        "bonuses": {
+          "hp": 1236,
+          "atk": 164,
+          "accuracy": 17,
+          "block": 23
+        },
+        "cumulative": {
+          "hp": 4119,
+          "atk": 545,
+          "block": 75,
+          "mpCharge": 14,
+          "accuracy": 30
+        }
+      },
+      {
+        "tier": 5,
+        "bonuses": {
+          "hp": 2334,
+          "atk": 309,
+          "def": 6,
+          "mdef": 23,
+          "healingPower": 21
+        },
+        "cumulative": {
+          "hp": 6453,
+          "atk": 854,
+          "block": 75,
+          "mpCharge": 14,
+          "accuracy": 30,
+          "def": 6,
+          "mdef": 23,
+          "healingPower": 21
+        }
+      }
+    ],
+    "limitBreakTotals": {
+      "hp": 6453,
+      "atk": 854,
+      "block": 75,
+      "mpCharge": 14,
+      "accuracy": 30,
+      "def": 6,
+      "mdef": 23,
+      "healingPower": 21
+    },
+    "firstSkillOrder": "1/2/0/0/0",
+    "loopSkillOrder": "0/0/1/2/0/0/0/0"
+  }
+]

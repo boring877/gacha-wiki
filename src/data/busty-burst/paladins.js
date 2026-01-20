@@ -738,6 +738,16 @@ export const BUSTY_BURST_PALADINS = [
     tier: 'A',
   },
   {
+    id: 'pastel',
+    characterId: 2080,
+    name: 'Pastel',
+    fileName: 'Pastel',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
+    tier: 'A',
+  },
+  {
     id: 'new_years_calligraphy_pastel',
     characterId: 2100,
     name: "New Year's Calligraphy Pastel",

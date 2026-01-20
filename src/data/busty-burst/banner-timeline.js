@@ -5,6 +5,25 @@
  */
 
 export const bannerTimelineData = [
+  // #7 - Infinite Subjugation Battle - Pastel (Jan 20 - Jan 27) - CURRENT
+  {
+    id: 'infinite-subjugation-battle-pastel-2026',
+    title: '"Beat them down with fiery passion" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Pastel',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-01-20T03:00:00Z',
+    endDate: '2026-01-27T03:00:00Z',
+    description: 'Infinite Subjugation Battle Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'This Paladin will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'infinite-subjugation-pastel',
+  },
   // #6 - Octo-Octo Beach Panic Event Summon (Jan 13 - Jan 27) - CURRENT
   {
     id: 'octo-octo-beach-panic-2026',

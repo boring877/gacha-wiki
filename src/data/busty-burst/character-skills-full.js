@@ -16475,7 +16475,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "skills": [
       {
         "slot": 2,
-        "name": "抽像畫『無盡的慾望』",
+        "name": "Abstract Art: Endless Desire",
         "icon": "skill001/skill0011",
         "description": "Deals 2057 (ATK x 0.8 + 604) physical damage to the 3 nearest enemies and inflicts Burn(HP --1485 per second) for 12 seconds and Accuracy -26DOWN for 8 seconds",
         "descriptionLv1": "Deals 360 (ATK x 0.8 + 70) physical damage to the 3 nearest enemies and inflicts Burn(HP --150 per second) for 12 seconds and Accuracy -13DOWN for 8 seconds",
@@ -16509,18 +16509,18 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "slot": 3,
-        "name": "冬日景觀畫『屹立的冰河』",
+        "name": "Winterscape: Towering Glacier",
         "icon": "skill001/skill0019",
-        "description": "Applies Block18UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds",
-        "descriptionLv1": "Applies Block9UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds",
-        "descriptionLv90": "Applies Block18UP to all allies for 8 seconds and Healing Shield (270%) for 15 seconds",
+        "description": "Applies Block +9 (+0.1/lv) to all allies for 8 seconds and Healing Shield (295 +25/lv HP) for 15 seconds",
+        "descriptionLv1": "Applies Block +9 to all allies for 8 seconds and Healing Shield (295 HP) for 15 seconds",
+        "descriptionLv90": "Applies Block +18 to all allies for 8 seconds and Healing Shield (2520 HP) for 15 seconds",
         "target": "All Allies",
         "castTime": 1.58,
         "damageScaling": null,
-        "baseDamage": null,
-        "levelGrowth": null,
-        "lvl1": null,
-        "lvl90": null,
+        "baseValue": "+295",
+        "levelGrowth": "+25",
+        "lvl1": "295",
+        "lvl90": "2520",
         "effects": [
           "Block+ Lv3",
           "Healing Shield Lv4"
@@ -16534,8 +16534,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
           },
           {
             "name": "Healing Shield Lv4",
-            "value": 270,
-            "type": "percent",
+            "value": 2520,
+            "type": "flat",
             "duration": 15
           }
         ],
@@ -16545,9 +16545,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "ultimate": [
       {
         "rank": 1,
-        "name": "繪畫『春天』",
+        "name": "Painting: Primavera",
         "icon": "skill001/skill0012_1",
-        "description": "Deals 4892 (ATK x 2.5 + 350) physical damage to all enemies and inflicts Silence for 3 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV1)",
+        "description": "Deals 4892 (ATK x 2.5 + 350) physical damage to all enemies and inflicts Silence for 3 seconds, and inflicts HP RegenerationUP(LV1) to all allies for 8 seconds",
         "effect": "250% + 350",
         "buffEffects": [
           {
@@ -16566,9 +16566,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 2,
-        "name": "繪畫『春天』",
+        "name": "Painting: Primavera",
         "icon": "skill001/skill0012_2",
-        "description": "Deals 6446 (ATK x 3.3 + 450) physical damage to all enemies and inflicts Silence for 4 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV2)",
+        "description": "Deals 6446 (ATK x 3.3 + 450) physical damage to all enemies and inflicts Silence for 4 seconds, and inflicts HP RegenerationUP(LV2) to all allies for 8 seconds",
         "effect": "330% + 450",
         "buffEffects": [
           {
@@ -16587,9 +16587,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 3,
-        "name": "繪畫『春天』",
+        "name": "Painting: Primavera",
         "icon": "skill001/skill0012_3",
-        "description": "Deals 7798 (ATK x 4.0 + 530) physical damage to all enemies and inflicts Silence for 4 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV3)",
+        "description": "Deals 7798 (ATK x 4.0 + 530) physical damage to all enemies and inflicts Silence for 4 seconds, and inflicts HP RegenerationUP(LV3) to all allies for 8 seconds",
         "effect": "400% + 530",
         "buffEffects": [
           {
@@ -16608,9 +16608,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 4,
-        "name": "繪畫『春天』",
+        "name": "Painting: Primavera",
         "icon": "skill001/skill0012_4",
-        "description": "Deals 8776 (ATK x 4.5 + 600) physical damage to all enemies and inflicts Silence for 5 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV4)",
+        "description": "Deals 8776 (ATK x 4.5 + 600) physical damage to all enemies and inflicts Silence for 5 seconds, and inflicts HP RegenerationUP(LV4) to all allies for 8 seconds",
         "effect": "450% + 600",
         "buffEffects": [
           {
@@ -16629,9 +16629,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 5,
-        "name": "繪畫『春天』",
+        "name": "Painting: Primavera",
         "icon": "skill001/skill0012_5",
-        "description": "Deals 9735 (ATK x 5.0 + 650) physical damage to all enemies and inflicts Silence for 5 seconds異常狀態，另我方全體附加8秒的HP RegenerationUP(LV5)",
+        "description": "Deals 9735 (ATK x 5.0 + 650) physical damage to all enemies and inflicts Silence for 5 seconds, and inflicts HP RegenerationUP(LV5) to all allies for 8 seconds",
         "effect": "500% + 650",
         "buffEffects": [
           {
@@ -16690,9 +16690,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "name": "Pastel",
     "id": 2080,
     "rarity": "SSR",
-    "element": "Dark",
+    "element": "Mind",
     "role": "Support",
-    "tags": [],
+    "tags": ["Buff", "Heal", "Debuff", "Disrupt"],
     "baseStats": {
       "HP": 2745,
       "ATK": 363,
@@ -16701,8 +16701,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "MDEF": 32
     },
     "skillRotation": {
-      "opening": "",
-      "loop": ""
+      "opening": "Skill2 → Skill3 → Basic → Basic → Basic",
+      "loop": "Basic → Basic → Skill2 → Skill3 → Basic → Basic → Basic → Basic"
     },
     "basicAttack": {
       "icon": "skill001/skill0004",
@@ -16711,7 +16711,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "speedLabel": "Normal",
       "speedValue": "0.86"
     },
-    "slug": "ssr-pastel"
+    "slug": "pastel"
   },
   {
     "skills": [
@@ -21108,6 +21108,246 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "speedValue": "0.86"
     },
     "slug": "dragon-crusher-medusa"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Longevity",
+        "icon": "skill001/skill0019",
+        "description": "Restores HP by 2000% ATK + 4160 to all allies and inflicts Debuff Resistance Lv2 (+30%) for 10 seconds and Accuracy+ Lv3 (+9) for 10 seconds",
+        "descriptionLv1": "Restores HP by 2000% ATK + 600 to all allies and inflicts Debuff Resistance Lv2 (+30%) for 10 seconds and Accuracy+ Lv3 (+9) for 10 seconds",
+        "descriptionLv90": "Restores HP by 2000% ATK + 4160 to all allies and inflicts Debuff Resistance Lv2 (+30%) for 10 seconds and Accuracy+ Lv3 (+9) for 10 seconds",
+        "target": "All Allies",
+        "castTime": 1.58,
+        "damageScaling": "2000% ATK",
+        "baseDamage": "+600",
+        "levelGrowth": "+40",
+        "lvl1": "2000% + 600",
+        "lvl90": "2000% + 4160",
+        "effects": [
+          "Debuff Resistance Lv2",
+          "Accuracy+ Lv3"
+        ],
+        "buffEffects": [
+          {
+            "name": "Debuff Resistance Lv2",
+            "value": 30,
+            "type": "percent",
+            "duration": 10
+          },
+          {
+            "name": "Accuracy+ Lv3",
+            "value": 9,
+            "type": "flat",
+            "duration": 10
+          }
+        ],
+        "duration": 10
+      },
+      {
+        "slot": 3,
+        "name": "Crane and Turtle",
+        "icon": "skill001/skill0007",
+        "description": "Deals 110% ATK + 654 physical damage to the 3 nearest enemies and inflicts Physical Attack- Lv4 (-11%) for 7 seconds and Magic Attack- Lv4 (-11%) for 7 seconds",
+        "descriptionLv1": "Deals 110% ATK + 120 physical damage to the 3 nearest enemies and inflicts Physical Attack- Lv4 (-11%) for 7 seconds and Magic Attack- Lv4 (-11%) for 7 seconds",
+        "descriptionLv90": "Deals 110% ATK + 654 physical damage to the 3 nearest enemies and inflicts Physical Attack- Lv4 (-11%) for 7 seconds and Magic Attack- Lv4 (-11%) for 7 seconds",
+        "target": "Nearest Enemy",
+        "castTime": 1.58,
+        "damageScaling": "110% ATK",
+        "baseDamage": "+120",
+        "levelGrowth": "+6",
+        "lvl1": "110% + 120",
+        "lvl90": "110% + 654",
+        "effects": [
+          "Physical Attack- Lv4",
+          "Magic Attack- Lv4"
+        ],
+        "buffEffects": [
+          {
+            "name": "Physical Attack- Lv4",
+            "value": -11,
+            "type": "percent",
+            "duration": 7
+          },
+          {
+            "name": "Magic Attack- Lv4",
+            "value": -11,
+            "type": "percent",
+            "duration": 7
+          }
+        ],
+        "duration": 7
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Bird-and-Beast Caricatures",
+        "icon": "skill001/skill0012_1",
+        "description": "Deals 380% ATK + 600 physical damage to all enemies and inflicts Dispel for 3 seconds and Action Speed- Ultimate Lv1 (-8%) for 8 seconds",
+        "effect": "380% + 600",
+        "buffEffects": [
+          {
+            "name": "Dispel",
+            "value": 0,
+            "type": "unknown",
+            "duration": 3
+          },
+          {
+            "name": "Action Speed- Ultimate Lv1",
+            "value": -8,
+            "type": "percent",
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "name": "Bird-and-Beast Caricatures",
+        "icon": "skill001/skill0012_2",
+        "description": "Deals 450% ATK + 800 physical damage to all enemies and inflicts Dispel for 4 seconds and Action Speed- Ultimate Lv2 (-10%) for 8 seconds",
+        "effect": "450% + 800",
+        "buffEffects": [
+          {
+            "name": "Dispel",
+            "value": 0,
+            "type": "unknown",
+            "duration": 4
+          },
+          {
+            "name": "Action Speed- Ultimate Lv2",
+            "value": -10,
+            "type": "percent",
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "Bird-and-Beast Caricatures",
+        "icon": "skill001/skill0012_3",
+        "description": "Deals 509% ATK + 950 physical damage to all enemies and inflicts Dispel for 4 seconds and Action Speed- Ultimate Lv3 (-12%) for 8 seconds",
+        "effect": "509% + 950",
+        "buffEffects": [
+          {
+            "name": "Dispel",
+            "value": 0,
+            "type": "unknown",
+            "duration": 4
+          },
+          {
+            "name": "Action Speed- Ultimate Lv3",
+            "value": -12,
+            "type": "percent",
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "Bird-and-Beast Caricatures",
+        "icon": "skill001/skill0012_4",
+        "description": "Deals 550% ATK + 1100 physical damage to all enemies and inflicts Dispel for 5 seconds and Action Speed- Ultimate Lv4 (-14%) for 8 seconds",
+        "effect": "550% + 1100",
+        "buffEffects": [
+          {
+            "name": "Dispel",
+            "value": 0,
+            "type": "unknown",
+            "duration": 5
+          },
+          {
+            "name": "Action Speed- Ultimate Lv4",
+            "value": -14,
+            "type": "percent",
+            "duration": 8
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "name": "Bird-and-Beast Caricatures",
+        "icon": "skill001/skill0012_5",
+        "description": "Deals 580% ATK + 1200 physical damage to all enemies and inflicts Dispel for 5 seconds and Action Speed- Ultimate Lv5 (-15%) for 8 seconds",
+        "effect": "580% + 1200",
+        "buffEffects": [
+          {
+            "name": "Dispel",
+            "value": 0,
+            "type": "unknown",
+            "duration": 5
+          },
+          {
+            "name": "Action Speed- Ultimate Lv5",
+            "value": -15,
+            "type": "percent",
+            "duration": 8
+          }
+        ]
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Action Speed UP, Max HP UP",
+        "icon": "skill001/skill1003",
+        "effects": [
+          {
+            "name": "Action Speed+",
+            "value": 10,
+            "type": "flat"
+          },
+          {
+            "name": "Max HP+",
+            "value": 3444,
+            "type": "flat"
+          }
+        ]
+      },
+      {
+        "slot": 2,
+        "name": "All Allies Block UP, Max HP UP",
+        "icon": "skill001/skill1007",
+        "effects": [
+          {
+            "name": "Block+",
+            "value": 15,
+            "type": "flat"
+          },
+          {
+            "name": "Max HP+",
+            "value": 2896,
+            "type": "flat"
+          }
+        ]
+      }
+    ],
+    "name": "【New Year's Calligraphy】Pastel",
+    "id": 2100,
+    "rarity": "SSR",
+    "element": "Water",
+    "role": "Support",
+    "tags": ["Heal", "Buff", "Debuff", "Disrupt"],
+    "baseStats": {
+      "HP": 2745,
+      "ATK": 306,
+      "MATK": 183,
+      "DEF": 82,
+      "MDEF": 32
+    },
+    "skillRotation": {
+      "opening": "Skill3 → Skill2 → Basic → Basic",
+      "loop": "Basic → Basic → Skill2 → Skill3 → Basic → Basic → Basic → Skill2 → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0001",
+      "type": "Physical",
+      "scaling": "120% ATK",
+      "speedLabel": "Slightly Slow",
+      "speedValue": "1.00"
+    },
+    "slug": "new-years-calligraphy-pastel"
   }
 ];
 

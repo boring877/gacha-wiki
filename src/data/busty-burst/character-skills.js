@@ -2762,6 +2762,44 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     passive2: 'Self: Ultimate Damage +15%, Magic Attack +259',
   },
 
+  pastel: {
+    id: 'pastel',
+    name: 'Pastel',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Support',
+    skill2: {
+      name: 'Abstract Art: Endless Desire',
+      description:
+        'Deals [80% ATK + 70 (+6/lv)] physical damage to the 3 nearest enemies and inflicts Burn (HP -150/s) for 12s and Accuracy -13 for 8s',
+      type: 'damage',
+      target: '3 nearest enemies',
+    },
+    skill3: {
+      name: 'Winterscape: Towering Glacier',
+      description:
+        'Applies Block +9 (+0.1/lv) to all allies for 8s and Healing Shield (270 +25/lv HP) for 15s',
+      type: 'buff',
+      target: 'all allies',
+    },
+    ultimate: {
+      name: 'Painting: Primavera',
+      description:
+        'Deals physical damage to all enemies and inflicts Silence, also applies HP Regeneration to all allies for 8s',
+      type: 'damage',
+      target: 'all enemies',
+      ranks: {
+        R1: '[250% ATK + 350] | Silence (3s) | HP Regen Lv1',
+        R2: '[330% ATK + 450] | Silence (4s) | HP Regen Lv2',
+        R3: '[400% ATK + 530] | Silence (4s) | HP Regen Lv3',
+        R4: '[450% ATK + 600] | Silence (5s) | HP Regen Lv4',
+        R5: '[500% ATK + 650] | Silence (5s) | HP Regen Lv5',
+      },
+    },
+    passive1: 'Self: Max HP +3444, Physical Attack +259',
+    passive2: 'All Allies: Debuff Resistance +15%, Block +10',
+  },
+
   new_years_calligraphy_pastel: {
     id: 'new_years_calligraphy_pastel',
     name: "【New Year's Calligraphy】Pastel",

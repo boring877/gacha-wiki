@@ -247,17 +247,37 @@ const rarities = ['SSR', 'SR', 'R'];
               const growth = parseInt((skill.levelGrowth || '0').replace('+', ''), 10) || 0;
               const lvl90Value = baseValue + (90 - 1) * growth;
 
+              // Parse Block scaling if present (format: "+9 (+0.1/lv)")
+              // Block base: 9, Block growth: 0.1 per level
+              const blockBase = skill.buffEffects?.find(b => b.name?.includes('Block'))?.value || 0;
+              const blockGrowth = 0.1; // Standard block growth per level
+              const blockLv90 = Math.round(blockBase + (90 - 1) * blockGrowth);
+
               // Check if this is a buff skill (has descriptionLv1/Lv90 but no damage scaling)
               const isBuffSkill = skill.descriptionLv1 && skill.descriptionLv90 && !skill.damageScaling;
 
               // Replace the flat damage/heal number in description with dynamic span, then highlight other values
               let descriptionHtml = skill.descriptionLv90 || skill.description || '';
               if (descriptionHtml) {
-                // First replace the dynamic damage/heal value (matches "ATK + 70" or "ATK + 652")
-                if (baseValue > 0) {
+                // For damage skills: match "ATK x 0.8 + 604" or "ATK + 70" patterns
+                if (baseValue > 0 && skill.damageScaling) {
                   descriptionHtml = descriptionHtml.replace(
-                    /(ATK\s*\+\s*)\d+/gi,
+                    /(ATK\s*(?:x\s*[\d.]+\s*)?\+\s*)\d+/gi,
                     `$1<span class="bb-desc-damage-value">${lvl90Value}</span>`
+                  );
+                }
+                // For buff skills with HP values (like Healing Shield), make the HP value dynamic
+                if (baseValue > 0 && !skill.damageScaling) {
+                  descriptionHtml = descriptionHtml.replace(
+                    /(\d+)\s*HP/gi,
+                    `<span class="bb-desc-damage-value">${lvl90Value}</span> HP`
+                  );
+                }
+                // Make Block values dynamic too
+                if (blockBase > 0) {
+                  descriptionHtml = descriptionHtml.replace(
+                    /(Block\s*\+)(\d+)/gi,
+                    `$1<span class="bb-desc-block-value">${blockLv90}</span>`
                   );
                 }
                 // Then highlight percentages
@@ -269,6 +289,8 @@ const rarities = ['SSR', 'SR', 'R'];
                   data-scaling={skill.damageScaling}
                   data-base={skill.baseDamage || skill.baseValue || '0'}
                   data-growth={skill.levelGrowth || '0'}
+                  data-block-base={blockBase.toString()}
+                  data-block-growth={blockGrowth.toString()}
                   data-desc-lv1={skill.descriptionLv1 || ''}
                   data-desc-lv90={skill.descriptionLv90 || ''}
                   data-is-buff={isBuffSkill ? 'true' : 'false'}
@@ -302,7 +324,7 @@ const rarities = ['SSR', 'SR', 'R'];
                       </div>
                     )}
                   </div>
-                  {/* Level calc for damage skills */}
+                  {/* Level calc for skills with scaling values */}
                   {(skill.baseDamage || skill.baseValue || skill.levelGrowth) && (
                     <div class="bb-skill-level-calc">
                       <div class="bb-skill-level-input">
@@ -310,20 +332,11 @@ const rarities = ['SSR', 'SR', 'R'];
                         <input type="number" class="skill-level-input" min="1" max="90" value="90" />
                       </div>
                       <div class="bb-skill-level-result">
-                        <span class="bb-skill-scaling-text">{skill.damageScaling}</span>
-                        <span class="bb-skill-plus">+</span>
+                        {skill.damageScaling && <span class="bb-skill-scaling-text">{skill.damageScaling}</span>}
+                        {skill.damageScaling && <span class="bb-skill-plus">+</span>}
                         <span class="bb-skill-calc-value">{lvl90Value}</span>
+                        {!skill.damageScaling && <span class="bb-skill-unit"> HP</span>}
                       </div>
-                    </div>
-                  )}
-                  {/* Level selector for buff skills */}
-                  {isBuffSkill && skill.descriptionLv1 && (
-                    <div class="bb-skill-level-calc buff-skill-calc">
-                      <div class="bb-skill-level-input">
-                        <label>Lv</label>
-                        <input type="number" class="buff-level-input" min="1" max="90" value="90" />
-                      </div>
-                      <div class="bb-buff-level-note">Lv1: {skill.descriptionLv1.substring(0, 60)}...</div>
                     </div>
                   )}
                 </div>
@@ -450,25 +463,35 @@ const rarities = ['SSR', 'SR', 'R'];
 
     skillSections.forEach(section => {
       const sectionEl = section as HTMLElement;
-      const isBuffSkill = sectionEl.dataset.isBuff === 'true';
 
-      // Handle damage skills
+      // Handle damage/HP skills
       const damageInput = section.querySelector('.skill-level-input') as HTMLInputElement;
       const resultEl = section.querySelector('.bb-skill-calc-value');
       const descValueEl = section.querySelector('.bb-desc-damage-value');
+      const blockValueEl = section.querySelector('.bb-desc-block-value');
 
       if (damageInput && resultEl) {
         const baseStr = sectionEl.dataset.base || '0';
         const growthStr = sectionEl.dataset.growth || '0';
+        const blockBaseStr = sectionEl.dataset.blockBase || '0';
+        const blockGrowthStr = sectionEl.dataset.blockGrowth || '0';
 
         // Parse base value (remove + sign if present)
         const base = parseInt(baseStr.replace('+', ''), 10) || 0;
         // Parse growth value (remove + sign if present)
         const growth = parseInt(growthStr.replace('+', ''), 10) || 0;
+        // Parse block values
+        const blockBase = parseFloat(blockBaseStr) || 0;
+        const blockGrowth = parseFloat(blockGrowthStr) || 0;
 
         function calculateValue(level: number) {
           // Formula: base + (level - 1) * growth
           return base + (level - 1) * growth;
+        }
+
+        function calculateBlockValue(level: number) {
+          // Formula: base + (level - 1) * growth, rounded
+          return Math.round(blockBase + (level - 1) * blockGrowth);
         }
 
         function updateDamageDisplay() {
@@ -480,9 +503,15 @@ const rarities = ['SSR', 'SR', 'R'];
           const value = calculateValue(level);
           resultEl.textContent = value.toString();
 
-          // Also update description damage value if exists
+          // Also update description damage/HP value if exists
           if (descValueEl) {
             descValueEl.textContent = value.toString();
+          }
+
+          // Also update Block value if exists
+          if (blockValueEl && blockBase > 0) {
+            const blockValue = calculateBlockValue(level);
+            blockValueEl.textContent = blockValue.toString();
           }
         }
 
@@ -492,32 +521,6 @@ const rarities = ['SSR', 'SR', 'R'];
         // Listen for input changes
         damageInput.addEventListener('input', updateDamageDisplay);
         damageInput.addEventListener('change', updateDamageDisplay);
-      }
-
-      // Handle buff skills - update description based on level
-      const buffInput = section.querySelector('.buff-level-input') as HTMLInputElement;
-      const descEl = section.querySelector('.bb-skill-description');
-
-      if (buffInput && descEl && isBuffSkill) {
-        const descLv1 = sectionEl.dataset.descLv1 || '';
-        const descLv90 = sectionEl.dataset.descLv90 || '';
-
-        function updateBuffDisplay() {
-          let level = parseInt(buffInput.value, 10) || 1;
-          level = Math.max(1, Math.min(90, level));
-          buffInput.value = level.toString();
-
-          // Interpolate description based on level
-          // For simplicity, show Lv1 desc for level 1, Lv90 for others (or interpolate)
-          if (level === 1 && descLv1) {
-            descEl.innerHTML = descLv1.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
-          } else if (descLv90) {
-            descEl.innerHTML = descLv90.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
-          }
-        }
-
-        buffInput.addEventListener('input', updateBuffDisplay);
-        buffInput.addEventListener('change', updateBuffDisplay);
       }
     });
   }
@@ -860,6 +863,11 @@ const rarities = ['SSR', 'SR', 'R'];
     font-weight: 700;
   }
 
+  :global(.bb-desc-block-value) {
+    color: #60a5fa;
+    font-weight: 700;
+  }
+
   /* Status effect inline styling */
   :global(.bb-status-effect) {
     color: #f472b6;
@@ -947,6 +955,11 @@ const rarities = ['SSR', 'SR', 'R'];
   .bb-skill-calc-value {
     color: var(--bb-text-primary);
     font-weight: 600;
+  }
+
+  .bb-skill-unit {
+    color: var(--bb-text-secondary);
+    font-weight: 500;
   }
 
   /* Buff Effects */

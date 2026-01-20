@@ -667,8 +667,27 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     }
   },
   {
+    id: 2080,
+    name: 'Pastel',
+    rarity: 'SSR',
+    element: 'Mind',
+    weapon: 'Strike',
+    supportStats: {
+      lb0: { 'ATK': 80 },
+      lb1: { 'ATK': 120, 'Accuracy': 7 },
+      lb2: { 'ATK': 160, 'Accuracy': 8 },
+      lb3: { 'ATK': 200, 'Accuracy': 9 },
+      lb4: { 'ATK': 200, 'Accuracy': 10 },
+      lb5: { 'ATK': 200, 'Accuracy': 10 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Strike Inspiration', effect: 'Block', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
     id: 2100,
-    name: '【New Year’s Calligraphy】Pastel',
+    name: "【New Year's Calligraphy】Pastel",
     rarity: 'SSR',
     element: 'Water',
     weapon: 'Strike',
