@@ -815,6 +815,11 @@ const AFFINITY_DATA = {
           "campName": "Bloodborn"
         },
         {
+          "name": "Lucille",
+          "camp": 2,
+          "campName": "Tempus Church"
+        },
+        {
           "name": "Mass",
           "camp": 3,
           "campName": "Bloodborn"
@@ -856,6 +861,11 @@ const AFFINITY_DATA = {
         },
         {
           "name": "Ressa",
+          "camp": 4,
+          "campName": "Kingdom"
+        },
+        {
+          "name": "Resurgent Setti",
           "camp": 4,
           "campName": "Kingdom"
         },

@@ -867,7 +867,7 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
 
         let hp, atk, pdef, mdef, bp;
 
-        if (level <= 200 && statsData.levelProgression) {
+        if (level <= 200 && statsData.levelProgression && statsData.levelProgression.length > 0) {
           const levelData = statsData.levelProgression[level - 1] || {};
           const ssMultiplier = ss > 0 ? getSSMultiplier(ss) : 1;
 

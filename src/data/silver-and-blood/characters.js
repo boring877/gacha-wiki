@@ -117,8 +117,8 @@ const charactersWithImages = new Set([
   'acappella', 'agares', 'agnes', 'albrecht', 'alene', 'alexi', 'ami', 'augustine', 'bella', 'cain',
   'cecia', 'dalcarlo', 'darcias', 'edina', 'ethereal-joan', 'fanny', 'fleeting-bella', 'friedrich',
   'genevieve', 'gilrain', 'hati', 'incendiary-agares', 'jinxed-selena', 'joan',
-  'julius', 'lamia', 'letitia', 'limine', 'livian', 'lorelei', 'mass', 'nicole', 'ottavia', 'pavana',
-  'piera', 'quinn', 'regina', 'ressa', 'selena', 'seraphina', 'seth', 'sirene', 'spectral-gilrain',
+  'julius', 'lamia', 'letitia', 'limine', 'livian', 'lorelei', 'lucille', 'mass', 'nicole', 'ottavia', 'pavana',
+  'piera', 'quinn', 'regina', 'ressa', 'resurgent-setti', 'selena', 'seraphina', 'seth', 'sirene', 'spectral-gilrain',
   'starry-eyed-aiona', 'stella', 'theophane', 'thibault', 'timeless-aiona',
   'transcendent-ami', 'transcendent-hati', 'transcendent-noah', 'tris', 'valora',
   'van-helsing', 'yggdrasill'
