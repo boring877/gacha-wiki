@@ -33,6 +33,10 @@ const synergies = [
       {
         "heroId": "20370",
         "name": "Tris Tepes"
+      },
+      {
+        "heroId": "20790",
+        "name": "Resurgent Setti"
       }
     ],
     "tiers": [
@@ -131,6 +135,10 @@ const synergies = [
       {
         "heroId": "20600",
         "name": "Albrecht Magnus"
+      },
+      {
+        "heroId": "20780",
+        "name": "Lucille"
       }
     ],
     "tiers": [

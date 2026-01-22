@@ -34,11 +34,11 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2025-12-29',
+  lastUpdated: '2026-01-22',
   description:
     'Things can changes fast, with new character. but as today I feel this what stand out.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
     SS: [
       { name: 'Acappella' },
       { name: 'Van Helsing' },
@@ -50,6 +50,7 @@ export const PVE_TIER_LIST = {
       { name: 'Alene' },
       { name: 'Dalcarlo' },
       { name: 'Seth' },
+      { name: 'Lucille' },
     ],
     S: [
       { name: 'Lamia' },
@@ -102,11 +103,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2025-12-29',
+  lastUpdated: '2026-01-22',
   description:
     'it was quite hard to pick between S & A. choosing PVP unit quite hard because things change fast !.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Lucille' }, { name: 'Resurgent Setti' }],
     SS: [
       { name: 'Albrecht' },
       { name: 'Lorelei' },
@@ -170,11 +171,11 @@ export const PVP_TIER_LIST = {
 // Clan Hunt Tier List
 export const CLAN_HUNT_TIER_LIST = {
   name: 'Clan Hunt Tier List',
-  lastUpdated: '2025-12-29',
+  lastUpdated: '2026-01-22',
   description:
     'Its really hard to build this tier list, the clan hunt only we had 1 time and there is quite bit of opinions. I did my best !!!.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
     SS: [
       { name: 'Albrecht' },
       { name: 'Agnes' },
@@ -200,6 +201,7 @@ export const CLAN_HUNT_TIER_LIST = {
       { name: 'Alene' },
       { name: 'Thibault' },
       { name: 'Ressa' },
+      { name: 'Lucille' },
     ],
     S: [
       { name: 'Lamia' },
@@ -234,12 +236,13 @@ export const CLAN_HUNT_TIER_LIST = {
 // Boss Raids Tier List
 export const BOSS_RAIDS_TIER_LIST = {
   name: 'Boss Raids Tier List',
-  lastUpdated: '2025-12-29',
+  lastUpdated: '2026-01-22',
   description:
     'Some Boss has different machines, but overall this tier list should cover the majority of them.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
     SS: [
+      { name: 'Ethereal Joan' },
       { name: 'Albrecht' },
       { name: 'Starry-Eyed Aiona' },
       { name: 'Acappella' },
@@ -273,6 +276,7 @@ export const BOSS_RAIDS_TIER_LIST = {
       { name: 'Valora' },
       { name: 'Regina' },
       { name: 'Genevieve' },
+      { name: 'Lucille' },
     ],
     A: [
       { name: 'Agnes' },

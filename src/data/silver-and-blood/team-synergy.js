@@ -7,7 +7,8 @@ export const TEAM_TYPES = {
   BOSS: 'boss',
   MOON_PHASE: 'moon-phase',
   FACTION: 'faction',
-  GENERAL: 'general',
+  MAP_CLEAR: 'map-clear',
+  VOID_SHADOW: 'void-shadow',
   PVP: 'pvp',
 };
 
@@ -24,183 +25,95 @@ export const TEAM_TIERS = {
 export const SILVER_AND_BLOOD_TEAMS = [
   {
     id: '1',
-    name: 'Full DPS Marksman',
-    type: 'general',
-    tier: 'ss',
+    name: 'Windchaser Boss Team',
+    type: 'boss',
+    tier: 'sss',
     characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Sirene', position: 3 },
+      { name: 'Letitia', position: 1 },
+      { name: 'Seraphina', position: 2 },
+      { name: 'Ressa', position: 3 },
       { name: 'Fleeting Bella', position: 4 },
-      { name: 'Ami', position: 5 },
+      { name: 'Acappella', position: 5 },
     ],
-    notes:
-      'Buffing T.Aiona to Do most DMG. Rotation: Use ultimate - Acap at blood 6 - F.Bella at Blood 10 - Sirene at Blood 9 - then Ami  - T.Aiona - Acap again.',
+    notes: `Make sure you use F.Bella to buff Seraphina and make sure her ultimate is at Lv 10!
+
+Acappella is there to help with Blood Moon recovery!
+
+Ressa helps scale through your teammate's ultimates so you can get Seraphina again, and she increases CRIT DMG taken! She also deals quite a bit of damage.
+
+This build is mostly for Boss content.
+
+Rotation: Start with Acappella and make sure she's always in the first card slot. Wait until Blood Moon 7, then use F.Bella and Seraphina to deal the most damage. Then use Letitia and Ressa - you should be able to get one more Seraphina ultimate before the Blood Moon ends!`,
   },
   {
     id: '2',
-    name: 'T.Ami & T.Aiona',
-    type: 'general',
-    tier: 'ss',
+    name: 'Windchaser PvE Team',
+    type: 'map-clear',
+    tier: 'sss',
     characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Sirene', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Transcendent Ami', position: 5 },
+      { name: 'Letitia', position: 1 },
+      { name: 'Van Helsing', position: 2 },
+      { name: 'Seraphina', position: 3 },
+      { name: 'Fleeting Bella', position: 4, substitute: 'Seth' },
+      { name: 'Acappella', position: 5 },
     ],
-    notes:
-      'FYI, Tank T.AMI have Higher MAG DEF then PHY. Rotation: Acapp at Blood 6 - F.Bella at blood 6 - Siren at blood 6 then T.Aiona and acappella again.  ',
+    notes: `Van Helsing's ultimate clears really well in maps and grind content. He is easy to get and works well with Letitia. You should pair him with F.Bella, but she is limited - if you don't have her, replace her with Seth.
+
+Acappella is a must! Make sure her ultimate is Rank 10 so it's easier to get Blood Moon. Van Helsing needs Blood Moon 6 which is quite high, but once it's active you don't need to do it again!
+
+Rotation: Start with Acappella, wait until Blood Moon 7, then activate F.Bella - you should have enough for Van Helsing!`,
   },
   {
     id: '3',
-    name: 'Theophane T.Aiona',
-    type: 'general',
-    tier: 'ss',
+    name: "Dusk's Devotion Boss Team",
+    type: 'boss',
+    tier: 'sss',
     characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Sirene', position: 3 },
+      { name: 'Alexi', position: 1 },
+      { name: 'Livian', position: 2 },
+      { name: 'Dalcarlo', position: 3, substitute: 'Alene' },
       { name: 'Fleeting Bella', position: 4 },
-      { name: 'Theophane', position: 5 },
+      { name: 'Acappella', position: 5 },
     ],
-    notes:
-      'Theophane has one of Highest phy DEF, and Have Taunt, there is not many unit that that have taunt and insane amount of PHY DEF.',
+    notes: `You need to put Livian as the first card to show up when you start the map. Using Livian's ultimate will activate your Blood Moon, then use Acappella and wait until Blood Moon 7.
+
+Use F.Bella and match with Alexi, use Dalcarlo, then use Alexi's ultimate for massive damage!
+
+If you don't have Dalcarlo, Alene works as an alternative.`,
   },
   {
     id: '4',
-    name: 'Friedrich T.Aiona',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Ami', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Friedrich', position: 5 },
-    ],
-    notes:
-      ' Fried - Eye for an Eye can be scaled by abusing basic atk speed to be super tanky. Rotation: Acapp - Ami - F.bella - T.Aiona - acapp - Fried - Ami.',
-  },
-  {
-    id: '5',
-    name: 'Tanky T.AMi',
-    type: 'general',
+    name: 'Timeless Aiona Void Shadow Team',
+    type: 'map-clear',
     tier: 'sss',
     characters: [
       { name: 'Timeless Aiona', position: 1 },
       { name: 'Acappella', position: 2 },
-      { name: 'Starry-eyed Aiona', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Transcendent Ami', position: 5 },
-    ],
-    notes:
-      'very balanced team. R: Acapp - wait blood 6 , F.bella - T.Aiona - T.ami - acapp - wait blood end - S.Aiona -F.Bella - acapp - T.aiona - T.ami.  ',
-  },
-  {
-    id: '6',
-    name: 'Tanky T.Aiona',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Starry-eyed Aiona', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Sirene', position: 5 },
-    ],
-    notes:
-      'T.Aiona going be your DPS and Tank. R: asap Acapp - S.Aiona - T.Aiona - F.Bella & Sirene - wait blood end - Acapp - T.Aiona - F.bella.  ',
-  },
-  {
-    id: '7',
-    name: 'Healing for Days !',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Starry-eyed Aiona', position: 3 },
-      { name: 'Transcendent Ami', position: 4 },
-      { name: 'Seth', position: 5 },
-    ],
-    notes:
-      'Seth can help and remove debuff and insane healing. R: Acapp - Seth - T.Aiona - T.ami. Wait blood end - Acapp - S.aiona -T.Aiona - Seth.',
-  },
-  {
-    id: '8',
-    name: ' T.Aiona Ottavia',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Fleeting Bella', position: 3 },
-      { name: 'Jinxed Selena', position: 4 },
-      { name: 'Ottavia', position: 5 },
-    ],
-    notes:
-      'Otta & J-Sel has DMG Taken Inc. R: Acapp - Wait blood 10 - F.Bella - T.aiona then wait 2 sec then - Ottavia & J-sel together ! - acapp.',
-  },
-  {
-    id: '9',
-    name: 'Thibault T.Aiona',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Thibault', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Ami', position: 5 },
-    ],
-    notes:
-      ' Thibault crit down can help T-Aiona to deal most dmg. R: Acapp, Wait blood 10 - Thubault - F.Bella - Ami - T. Aiona - acapp .',
-  },
-  {
-    id: '10',
-    name: 'Double Bella',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Acappella', position: 2 },
-      { name: 'Sirene', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Bella', position: 5 },
-    ],
-    notes:
-      'People like Balla the tank, me personally think she is too high of cost and not doing much for T.Aiona .',
-  },
-  {
-    id: '11',
-    name: 'Van Helsing T.Aiona',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Timeless Aiona', position: 1 },
-      { name: 'Van Helsing', position: 2 },
-      { name: 'Sirene', position: 3 },
-      { name: 'Fleeting Bella', position: 4 },
-      { name: 'Ami', position: 5 },
-    ],
-    notes:
-      'T.Aiona and Van, going be the main dmg with sirene marksman buff and ami atk speed inc. R: wait Blood 10, F.Bella - ami & Sirene , Then T.aiona.  .',
-  },
-  {
-    id: '12',
-    name: 'Van Helsing DPS',
-    type: 'general',
-    tier: 'ss',
-    characters: [
-      { name: 'Van Helsing', position: 1 },
-      { name: 'Acappella', position: 2 },
       { name: 'Fleeting Bella', position: 3 },
       { name: 'Sirene', position: 4 },
-      { name: 'Ami', position: 5 },
+      { name: 'Albrecht', position: 5 },
     ],
-    notes:
-      'Most dmg as possible with Van. R: acapp - wait blood 10 - F.bella & Sirene - Ami then Van H - Acapp. ',
+    notes: `This team works well with Timeless Aiona for map clear content. Not very good for boss fights, but great for clearing maps!
+
+Rotation: Start with Acappella, wait until Blood Moon 9, then use F.Bella on Timeless Aiona. Activate Timeless Aiona's ultimate, then use Sirene and Albrecht for their buffs and debuffs.`,
+  },
+  {
+    id: '5',
+    name: 'Timeless Aiona + Dusk Team',
+    type: 'void-shadow',
+    tier: 'sss',
+    characters: [
+      { name: 'Timeless Aiona', position: 1 },
+      { name: 'Acappella', position: 2 },
+      { name: 'Fleeting Bella', position: 3, substitute: 'Dalcarlo' },
+      { name: 'Livian', position: 4 },
+      { name: 'Alexi', position: 5 },
+    ],
+    notes: `This team is great for Silver Doctrines in Void Shadow! Combines Timeless Aiona with Dusk's Devotion units. Not ideal for boss fights, but excellent for Void Shadow content.
+
+Rotation: Use Livian to activate Blood Moon, then use Acappella. Use F.Bella with Timeless Aiona, then activate Timeless Aiona's ultimate.
+
+If you don't have F.Bella, Dalcarlo works as an alternative.`,
   },
 ];
 
@@ -281,7 +194,8 @@ export function getTeamTypeText(type) {
     [TEAM_TYPES.BOSS]: 'Boss Fight',
     [TEAM_TYPES.MOON_PHASE]: 'Moon Phase',
     [TEAM_TYPES.FACTION]: 'Faction Synergy',
-    [TEAM_TYPES.GENERAL]: 'General',
+    [TEAM_TYPES.MAP_CLEAR]: 'Map Clear',
+    [TEAM_TYPES.VOID_SHADOW]: 'Void Shadow',
     [TEAM_TYPES.PVP]: 'PvP',
   };
   return typeTexts[type] || 'Unknown';

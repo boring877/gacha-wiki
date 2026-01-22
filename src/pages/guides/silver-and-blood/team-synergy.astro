@@ -3,7 +3,7 @@
 import TeamSynergyLayout from '../../../layouts/silver-and-blood/TeamSynergyLayout.astro';
 import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
 import { Image } from 'astro:assets';
-import { SILVER_AND_BLOOD_TEAMS, getTeamTypeText, getTeamTierText } from '../../../data/silver-and-blood/team-synergy.js';
+import { SILVER_AND_BLOOD_TEAMS, getTeamTypeText } from '../../../data/silver-and-blood/team-synergy.js';
 import { characters } from '../../../data/silver-and-blood/characters.js';
 
 // Import rarity frame images
@@ -69,11 +69,8 @@ function getDisplayName(characterName: string): string {
   return shortNames[characterName] || characterName;
 }
 
-// Sort teams by tier (SSS first)
-const tierOrder = { sss: 5, ss: 4, s: 3, a: 2, situational: 1 };
-const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
-  return (tierOrder[b.tier as keyof typeof tierOrder] || 0) - (tierOrder[a.tier as keyof typeof tierOrder] || 0);
-});
+// Use teams as-is (order defined in data file)
+const teams = SILVER_AND_BLOOD_TEAMS;
 ---
 
 <TeamSynergyLayout
@@ -93,11 +90,7 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
           <p
             style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.9rem; font-style: italic;"
           >
-            Effective team compositions for different content types
-          </p>
-          <p style="color: var(--sab-text-muted); margin: 0.5rem 0 0 0; font-size: 0.85rem;">
-            <strong>Tip:</strong> You can order the skills that show up first on your left side when
-            you select the character for better rotation execution.
+            Team building has changed quite a bit, now it's mostly about synergy units and there's little room to build anything outside of that!
           </p>
         </div>
 
@@ -108,62 +101,40 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
               <option value="">All Team Types</option>
               <option value="clan-hunt">Clan Hunt</option>
               <option value="boss">Boss Fight</option>
+              <option value="map-clear">Map Clear</option>
+              <option value="void-shadow">Void Shadow</option>
               <option value="moon-phase">Moon Phase</option>
-              <option value="general">General</option>
               <option value="pvp">PvP</option>
             </select>
-
-            <select class="filter-select" id="teamTierFilter">
-              <option value="">All Tiers</option>
-              <option value="sss">SSS</option>
-              <option value="ss">SS</option>
-              <option value="s">S</option>
-              <option value="a">A</option>
-              <option value="situational">Situational</option>
-            </select>
-          </div>
-
-          <div class="sort-controls">
-            <button class="sort-btn" data-sort="type">Type</button>
-            <button class="sort-btn active" data-sort="tier">Tier ↓</button>
-            <button class="reset-btn" id="resetFilters">Reset All</button>
+            <button class="reset-btn" id="resetFilters">Reset</button>
           </div>
         </div>
 
-        <!-- Desktop Table -->
-        <div class="team-table-container">
-          <table class="team-table">
-            <thead>
-              <tr>
-                <th>Team Name</th>
-                <th>Type</th>
-                <th>Tier</th>
-                <th>Character 1</th>
-                <th>Character 2</th>
-                <th>Character 3</th>
-                <th>Character 4</th>
-                <th>Character 5</th>
-                <th>Notes/Rotation</th>
-              </tr>
-            </thead>
-            <tbody id="teamTableBody">
-              {sortedTeams.map((team) => (
-                <tr data-type={team.type} data-tier={team.tier}>
-                  <td><strong>{team.name}</strong></td>
-                  <td><span class={`team-type-badge ${team.type}`}>{getTeamTypeText(team.type)}</span></td>
-                  <td><span class={`team-tier-badge ${team.tier}`}>{getTeamTierText(team.tier)}</span></td>
-                  {team.characters.map((char) => {
-                    const rarity = getCharacterRarity(char.name);
-                    return (
-                      <td>
-                        <div class="character-cell">
+        <!-- Team Cards (unified layout for desktop and mobile) -->
+        <div class="team-card-view" id="teamCards">
+          {teams.map((team) => (
+            <div class="team-card" data-type={team.type}>
+              <div class="team-card-header">
+                <h3 class="team-card-title">{team.name}</h3>
+                <span class={`team-type-badge ${team.type}`}>{getTeamTypeText(team.type)}</span>
+              </div>
+
+              <div class="team-card-characters">
+                {team.characters.map((char, index) => {
+                  const rarity = getCharacterRarity(char.name);
+                  const subRarity = char.substitute ? getCharacterRarity(char.substitute) : null;
+                  return (
+                    <div class="team-character-item">
+                      <div class="character-position">{index + 1}</div>
+                      <div class="character-with-substitute">
+                        <div class="character-single">
                           <div class="character-icon-wrapper">
                             <SABCharacterIcon
                               name={getIconName(char.name)}
                               size="large"
-                              class="character-portrait"
-                              width={50}
-                              height={50}
+                              class="team-character-portrait"
+                              width={60}
+                              height={60}
                             />
                             <Image
                               src={rarityImages[rarity] || rarityGold}
@@ -173,64 +144,45 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
                               height={24}
                             />
                           </div>
-                          <a href={getCharacterUrl(char.name)} class="character-name-link">
-                            <span class="character-name">{getDisplayName(char.name)}</span>
+                          <a href={getCharacterUrl(char.name)} class="team-character-name-link">
+                            <span class="team-character-name">{char.name}</span>
                           </a>
                         </div>
-                      </td>
-                    );
-                  })}
-                  {team.characters.length < 5 && Array(5 - team.characters.length).fill(null).map(() => <td>-</td>)}
-                  <td>{team.notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Mobile Cards -->
-        <div class="mobile-card-view" id="teamMobileCards">
-          {sortedTeams.map((team) => (
-            <div class="mobile-team-card" data-type={team.type} data-tier={team.tier}>
-              <div class="mobile-card-header">
-                <h3 class="mobile-card-title">{team.name}</h3>
-                <div class="mobile-card-badges">
-                  <span class={`team-type-badge ${team.type}`}>{getTeamTypeText(team.type)}</span>
-                  <span class={`team-tier-badge ${team.tier}`}>{getTeamTierText(team.tier)}</span>
-                </div>
-              </div>
-
-              <div class="mobile-card-characters">
-                {team.characters.map((char, index) => {
-                  const rarity = getCharacterRarity(char.name);
-                  return (
-                    <div class="mobile-character-item">
-                      <div class="character-position">{index + 1}</div>
-                      <div class="character-icon-wrapper mobile">
-                        <SABCharacterIcon
-                          name={getIconName(char.name)}
-                          size="large"
-                          class="mobile-character-portrait"
-                          width={45}
-                          height={45}
-                        />
-                        <Image
-                          src={rarityImages[rarity] || rarityGold}
-                          alt={rarity}
-                          class="rarity-frame"
-                          width={20}
-                          height={20}
-                        />
+                        {char.substitute && (
+                          <>
+                            <div class="substitute-divider">
+                              <span class="substitute-label">Alt</span>
+                            </div>
+                            <div class="character-single substitute-character">
+                              <div class="character-icon-wrapper substitute">
+                                <SABCharacterIcon
+                                  name={getIconName(char.substitute)}
+                                  size="large"
+                                  class="team-character-portrait"
+                                  width={60}
+                                  height={60}
+                                />
+                                <Image
+                                  src={rarityImages[subRarity || 'SSR'] || rarityGold}
+                                  alt={subRarity || 'SSR'}
+                                  class="rarity-frame"
+                                  width={24}
+                                  height={24}
+                                />
+                              </div>
+                              <a href={getCharacterUrl(char.substitute)} class="team-character-name-link">
+                                <span class="team-character-name">{char.substitute}</span>
+                              </a>
+                            </div>
+                          </>
+                        )}
                       </div>
-                      <a href={getCharacterUrl(char.name)} class="mobile-character-name-link">
-                        <span class="mobile-character-name">{getDisplayName(char.name)}</span>
-                      </a>
                     </div>
                   );
                 })}
               </div>
 
-              {team.notes && <div class="mobile-card-notes">{team.notes}</div>}
+              {team.notes && <div class="team-card-notes">{team.notes}</div>}
             </div>
           ))}
         </div>
@@ -242,57 +194,22 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const typeFilter = document.getElementById('teamTypeFilter') as HTMLSelectElement;
-      const tierFilter = document.getElementById('teamTierFilter') as HTMLSelectElement;
       const resetBtn = document.getElementById('resetFilters');
-      const sortBtns = document.querySelectorAll('.sort-btn[data-sort]');
-
-      // Get all team rows and cards
-      const tableRows = document.querySelectorAll('#teamTableBody tr[data-type]');
-      const mobileCards = document.querySelectorAll('.mobile-team-card[data-type]');
+      const teamCards = document.querySelectorAll('.team-card[data-type]');
 
       function filterTeams() {
         const typeValue = typeFilter?.value || '';
-        const tierValue = tierFilter?.value || '';
-
-        // Filter table rows
-        tableRows.forEach((row) => {
-          const type = row.getAttribute('data-type');
-          const tier = row.getAttribute('data-tier');
-          const matchesType = !typeValue || type === typeValue;
-          const matchesTier = !tierValue || tier === tierValue;
-          (row as HTMLElement).style.display = matchesType && matchesTier ? '' : 'none';
-        });
-
-        // Filter mobile cards
-        mobileCards.forEach((card) => {
+        teamCards.forEach((card) => {
           const type = card.getAttribute('data-type');
-          const tier = card.getAttribute('data-tier');
           const matchesType = !typeValue || type === typeValue;
-          const matchesTier = !tierValue || tier === tierValue;
-          (card as HTMLElement).style.display = matchesType && matchesTier ? '' : 'none';
+          (card as HTMLElement).style.display = matchesType ? '' : 'none';
         });
       }
 
-      // Set up event listeners
       typeFilter?.addEventListener('change', filterTeams);
-      tierFilter?.addEventListener('change', filterTeams);
-
       resetBtn?.addEventListener('click', () => {
         if (typeFilter) typeFilter.value = '';
-        if (tierFilter) tierFilter.value = '';
         filterTeams();
-      });
-
-      // Sort buttons (visual only - actual sorting done server-side)
-      sortBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          sortBtns.forEach(b => {
-            b.classList.remove('active');
-            b.textContent = b.textContent?.replace(' ↑', '').replace(' ↓', '') || '';
-          });
-          btn.classList.add('active');
-          btn.textContent = btn.textContent + ' ↓';
-        });
       });
     });
   </script>
@@ -305,13 +222,8 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
     display: inline-block;
   }
 
-  .character-icon-wrapper :global(.character-portrait) {
-    border-radius: 8px;
-    display: block;
-  }
-
-  .character-icon-wrapper :global(.mobile-character-portrait) {
-    border-radius: 6px;
+  .character-icon-wrapper :global(.team-character-portrait) {
+    border-radius: 10px;
     display: block;
   }
 
@@ -322,9 +234,42 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
     z-index: 1;
   }
 
-  .character-icon-wrapper.mobile .rarity-frame {
-    top: -4px;
-    right: -4px;
+  /* Substitute character styles */
+  .character-with-substitute {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .character-single {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .substitute-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.4rem;
+  }
+
+  .substitute-label {
+    color: var(--sab-muted-gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: var(--sab-bg-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--sab-muted-gold);
+  }
+
+  .substitute-character {
+    opacity: 0.85;
   }
 
   /* Mobile adjustments */
@@ -334,6 +279,11 @@ const sortedTeams = [...SILVER_AND_BLOOD_TEAMS].sort((a, b) => {
       height: 20px;
       top: -4px;
       right: -4px;
+    }
+
+    .substitute-label {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
     }
   }
 </style>
