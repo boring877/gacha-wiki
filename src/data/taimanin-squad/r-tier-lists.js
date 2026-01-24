@@ -76,7 +76,8 @@ function processCharacterWithAura(name, auraType) {
 // Format: { name: 'Character Name', aura: AURA_TYPES.CATEGORY }
 const R_TIER_DATA = {
   SSS: [
-    { name: 'Minasaki', aura: AURA_TYPES.EXTERMINATION }
+    { name: 'Minasaki', aura: AURA_TYPES.EXTERMINATION },
+    { name: 'Oomiya Mizuki', aura: AURA_TYPES.MAIN_STORE }
   ],
   SS: [
     // Tactical Training
@@ -86,7 +87,6 @@ const R_TIER_DATA = {
     { name: 'Aishu Hebiko', aura: AURA_TYPES.ALL_BATTLE },
     // Main Store
     { name: 'Fuuma Kotaro', aura: AURA_TYPES.MAIN_STORE },
-    { name: 'Oomiya Mizuki', aura: AURA_TYPES.MAIN_STORE },
     // Special Operation
     { name: 'Iska', aura: AURA_TYPES.SPECIAL_OPERATION },
     // Arena
