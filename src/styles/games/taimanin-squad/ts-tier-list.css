@@ -1,10 +1,109 @@
 /* Taimanin Squad Tier List Page Styles */
-/* SSR character tier rankings with tab navigation */
+/* SSR and SR character tier rankings with tab navigation */
 
 /* Tier List Container */
 .ts-tier-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Rarity Toggle */
+.ts-rarity-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  background: var(--ts-bg-tertiary, #242028);
+  border-radius: 12px;
+  padding: 0.25rem;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-rarity-btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.ts-rarity-btn.active {
+  background: var(--ts-primary, #6b5b7a);
+  color: var(--ts-text-primary, #fff);
+}
+
+/* Rarity Sections */
+.ts-rarity-section {
+  display: none;
+}
+
+.ts-rarity-section.active {
+  display: block;
+}
+
+/* SR Tabs with Aura Icons */
+.ts-sr-tabs {
+  flex-wrap: wrap;
+}
+
+.ts-sr-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+}
+
+.ts-tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.ts-tab-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ts-tab-name {
+  font-size: 0.85rem;
+}
+
+/* Category Header */
+.ts-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-category-header img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.ts-category-info h3 {
+  margin: 0 0 0.25rem 0;
+  color: var(--ts-text-primary, #fff);
+  font-size: 1.1rem;
+}
+
+.ts-category-info p {
+  margin: 0;
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 0.9rem;
 }
 
 /* Tab Navigation */
@@ -151,6 +250,29 @@
   line-height: 1.2;
 }
 
+/* Character Card with Aura (R units) */
+.ts-tier-character-with-aura {
+  width: 90px;
+}
+
+.ts-tier-character-with-aura .ts-tier-char-name {
+  max-width: 90px;
+}
+
+.ts-tier-char-aura {
+  font-size: 0.55rem;
+  color: var(--ts-text-muted, #888);
+  text-align: center;
+  margin-top: 0.125rem;
+  padding: 0.125rem 0.25rem;
+  background: var(--ts-bg-tertiary, #242028);
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85px;
+}
+
 /* Info Section */
 .ts-tier-info {
   margin-top: 2rem;
@@ -215,6 +337,20 @@
     padding: 0.75rem 1rem;
   }
 
+  .ts-sr-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .ts-sr-tab {
+    flex: 0 0 calc(50% - 0.125rem);
+    padding: 0.5rem;
+  }
+
+  .ts-tab-name {
+    font-size: 0.75rem;
+  }
+
   .ts-tier-row {
     flex-direction: column;
   }
@@ -233,6 +369,12 @@
 
   .ts-tier-legend {
     flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ts-category-header {
+    flex-direction: column;
+    text-align: center;
     gap: 0.75rem;
   }
 }
@@ -255,5 +397,18 @@
 
   .ts-tier-characters {
     gap: 0.5rem;
+  }
+
+  .ts-tier-character-with-aura {
+    width: 70px;
+  }
+
+  .ts-tier-character-with-aura .ts-tier-char-name {
+    max-width: 70px;
+  }
+
+  .ts-tier-char-aura {
+    font-size: 0.5rem;
+    max-width: 65px;
   }
 }
