@@ -58,6 +58,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Synergies', href: '/guides/silver-and-blood/synergies/' },
           { name: 'Team Builds', href: '/guides/silver-and-blood/team-synergy/' },
           { name: 'Gear Upgrades', href: '/guides/silver-and-blood/gear-upgrades/' },
+          { name: 'Escaping the Other Side', href: '/guides/silver-and-blood/escaping-other-side/' },
         ],
       },
       {

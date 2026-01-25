@@ -1,0 +1,70 @@
+---
+// Icon component for Escaping the Other Side items (Soulshards, consumables, equipment)
+import { Image } from 'astro:assets';
+
+// Import all escaping-other-side icons dynamically
+const escapingImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/silver-and-blood/escaping-other-side/*.png',
+  { eager: true }
+);
+
+// Build a map from icon ID to image metadata
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, module] of Object.entries(escapingImages)) {
+  // Extract the filename without extension (e.g., "70040" from "70040.png")
+  const filename = path.split('/').pop()?.replace('.png', '') || '';
+  iconMap[filename] = module.default;
+}
+
+export interface Props {
+  /** Icon ID (e.g., "70040") */
+  iconId: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  iconId,
+  alt = 'Item icon',
+  width = 64,
+  height = 64,
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+
+const imageSrc = iconMap[iconId];
+---
+
+{imageSrc ? (
+  <Image
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+    format="webp"
+    quality={85}
+  />
+) : (
+  <div class={`escaping-icon-missing ${className}`} style={`width: ${width}px; height: ${height}px;`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .escaping-icon-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    color: #6a6a6a;
+    font-size: 16px;
+    font-weight: bold;
+  }
+</style>

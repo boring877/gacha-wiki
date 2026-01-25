@@ -14,14 +14,6 @@ import MobileHeader from './MobileHeader.astro';
         <DesktopHeader />
       </div>
       <div class="right-elements">
-        <a
-          href="https://www.youtube.com/@GachaJunkie888"
-          class="youtube-button"
-          title="Please help reach 1000 subscribers on YouTube!"
-        >
-          <span class="youtube-icon">▶</span>
-          <span class="youtube-text">Please help reach 1000 subscribers</span>
-        </a>
         <button
           class="crypto-button btc-button"
           title="Copy BTC Address"
@@ -134,35 +126,6 @@ import MobileHeader from './MobileHeader.astro';
     height: fit-content;
   }
 
-  .youtube-button {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    background: rgba(255, 0, 0, 0.1);
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ff4444;
-    touch-action: manipulation;
-    white-space: normal;
-    max-width: 180px;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .youtube-icon {
-    font-size: 0.75rem;
-    color: #ff0000;
-  }
-
-  .youtube-text {
-    color: var(--amber-glow);
-    font-weight: 500;
-  }
-
   .crypto-button {
     display: flex;
     align-items: center;
@@ -257,7 +220,6 @@ import MobileHeader from './MobileHeader.astro';
 
   /* Hide support buttons on smaller screens to prevent overflow */
   @media (max-width: 900px) {
-    .youtube-button,
     .crypto-button {
       display: none;
     }
@@ -282,8 +244,7 @@ import MobileHeader from './MobileHeader.astro';
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     .simple-title,
-    .logo-title,
-    .youtube-button {
+    .logo-title {
       transition: none !important;
       animation: none !important;
     }

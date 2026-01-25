@@ -1,0 +1,387 @@
+---
+// Page for Escaping the Other Side - Roguelike exploration mode
+import EscapingOtherSideLayout from '../../../layouts/silver-and-blood/EscapingOtherSideLayout.astro';
+import SABEscapingIcon from '../../../components/silver-and-blood/SABEscapingIcon.astro';
+import {
+  escapingOtherSideInfo,
+  soulshards,
+  consumables,
+  equipment,
+  maps,
+  rankingRewards,
+  rarityConfig,
+  getSoulshardsGroupedByCharacter,
+  getConsumablesByCategory,
+  getEquipmentByCategory,
+  getBuyPrice,
+} from '../../../data/silver-and-blood/escaping-other-side.js';
+
+const title = 'Escaping the Other Side - Silver and Blood';
+const description =
+  'Complete guide to Escaping the Other Side roguelike mode in Silver and Blood. Browse all Soulshards, maps, consumables, and ranking rewards.';
+const gameTitle = 'Escaping the Other Side';
+
+// Group data
+const soulshardsGrouped = getSoulshardsGroupedByCharacter();
+const consumablesByCategory = getConsumablesByCategory();
+const equipmentByCategory = getEquipmentByCategory();
+
+// Get rarity class name
+function getRarityClass(rarity: number): string {
+  const names: Record<number, string> = { 1: 'flawed', 2: 'ordinary', 3: 'fine', 4: 'pristine' };
+  return names[rarity] || 'flawed';
+}
+
+// Get rarity display name
+function getRarityName(rarity: number): string {
+  return rarityConfig[rarity]?.name || 'Unknown';
+}
+---
+
+<EscapingOtherSideLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Overview Section -->
+  <section class="escaping-section">
+    <div class="section-header">
+      <h2>{escapingOtherSideInfo.overview.title}</h2>
+      <p class="section-description">
+        {escapingOtherSideInfo.overview.description}
+      </p>
+    </div>
+
+    <div class="mechanics-grid">
+      {
+        escapingOtherSideInfo.mechanics.map(mechanic => (
+          <div class="mechanic-card">
+            <div class="mechanic-header">
+              <h3 class="mechanic-title">{mechanic.title}</h3>
+            </div>
+            <p class="mechanic-description">{mechanic.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Tab Navigation -->
+  <section class="escaping-section">
+    <div class="tab-navigation">
+      <button class="tab-button active" data-tab="soulshards">Soulshards</button>
+      <button class="tab-button" data-tab="maps">Maps</button>
+      <button class="tab-button" data-tab="consumables">Consumables</button>
+      <button class="tab-button" data-tab="equipment">Equipment</button>
+      <button class="tab-button" data-tab="rankings">Rankings</button>
+    </div>
+
+    <!-- Soulshards Tab -->
+    <div class="tab-panel active" id="tab-soulshards">
+      <div class="section-header">
+        <h2>Soulshards Database</h2>
+        <p class="section-description">
+          Character-specific buffs that provide combat bonuses. Equip in Soulshard Slots to activate
+          effects.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label for="rarityFilter">Rarity</label>
+          <select id="rarityFilter" class="filter-select">
+            <option value="">All Rarities</option>
+            <option value="1">Flawed</option>
+            <option value="2">Ordinary</option>
+            <option value="3">Fine</option>
+            <option value="4">Pristine</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="searchFilter">Search</label>
+          <input
+            type="text"
+            id="searchFilter"
+            class="search-input"
+            placeholder="Search by name or effect..."
+          />
+        </div>
+      </div>
+
+      <!-- Soulshards Grid -->
+      <div class="soulshards-grid" id="soulshardsGrid">
+        {
+          soulshards.map(shard => (
+            <div
+              class={`soulshard-card rarity-${shard.rarity}`}
+              data-character={shard.character}
+              data-rarity={shard.rarity}
+              data-name={shard.name.toLowerCase()}
+              data-description={shard.description.toLowerCase()}
+            >
+              <SABEscapingIcon
+                iconId={shard.iconId}
+                alt={shard.name}
+                width={64}
+                height={64}
+                class="soulshard-icon"
+              />
+              <div class="soulshard-content">
+                <h4 class="soulshard-name" title={shard.name}>
+                  {shard.name}
+                </h4>
+                <div class="soulshard-character">{shard.character}</div>
+                <p class="soulshard-description">{shard.description}</p>
+                <div class="soulshard-price">
+                  <SABEscapingIcon iconId="1081" alt="Otherworldly Luminescence" width={16} height={16} class="currency-icon" />
+                  <span>{getBuyPrice(shard.shopPrice)}</span>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="no-results" id="noResults" style="display: none;">
+        <div class="no-results-icon">?</div>
+        <p class="no-results-text">No soulshards match your filters.</p>
+      </div>
+    </div>
+
+    <!-- Maps Tab -->
+    <div class="tab-panel" id="tab-maps">
+      <div class="section-header">
+        <h2>Exploration Maps</h2>
+        <p class="section-description">
+          Navigate through various maps with increasing difficulty and rewards.
+        </p>
+      </div>
+
+      <div class="maps-grid">
+        {
+          maps.map(map => (
+            <div class="map-card">
+              <h3 class="map-name">{map.name}</h3>
+              <span class="map-type-badge">
+                {map.mapType}
+              </span>
+              <div class="map-stats">
+                {map.steps && (
+                  <div class="map-stat">
+                    <span class="map-stat-label">Steps</span>
+                    <span class="map-stat-value">{map.steps}</span>
+                  </div>
+                )}
+                {map.minEquipScore && (
+                  <div class="map-stat">
+                    <span class="map-stat-label">Min Score</span>
+                    <span class="map-stat-value">{map.minEquipScore}</span>
+                  </div>
+                )}
+                <div class="map-stat">
+                  <span class="map-stat-label">Grid Size</span>
+                  <span class="map-stat-value">
+                    {map.gridSize.width}x{map.gridSize.height}
+                  </span>
+                </div>
+              </div>
+              <p class="map-description">{map.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Consumables Tab -->
+    <div class="tab-panel" id="tab-consumables">
+      <div class="section-header">
+        <h2>Consumables</h2>
+        <p class="section-description">
+          Items that can be used during exploration to restore stamina, revive vassals, and more.
+        </p>
+      </div>
+
+      {
+        Object.entries(consumablesByCategory).map(([category, items]) => (
+          <div class="category-section">
+            <div class="category-header">
+              <h3 class="category-title">{category}</h3>
+            </div>
+            <div class="items-grid">
+              {items.map(item => (
+                <div class={`item-card rarity-${item.rarity}`}>
+                  <SABEscapingIcon
+                    iconId={item.iconId}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    class="item-icon"
+                  />
+                  <div class="item-content">
+                    <h4 class="item-name">{item.name}</h4>
+                    <div class="item-category">{item.category}</div>
+                    <p class="item-description">{item.description}</p>
+                    <div class="item-price">Price: {item.shopPrice}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Equipment Tab -->
+    <div class="tab-panel" id="tab-equipment">
+      <div class="section-header">
+        <h2>Equipment</h2>
+        <p class="section-description">
+          Items that expand your inventory, cache, and lineup capacity during exploration.
+        </p>
+      </div>
+
+      {
+        Object.entries(equipmentByCategory).map(([category, items]) => (
+          <div class="category-section">
+            <div class="category-header">
+              <h3 class="category-title">{category}</h3>
+            </div>
+            <div class="items-grid">
+              {items.map(item => (
+                <div class={`item-card rarity-${item.rarity}`}>
+                  <SABEscapingIcon
+                    iconId={item.iconId}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    class="item-icon"
+                  />
+                  <div class="item-content">
+                    <h4 class="item-name">{item.name}</h4>
+                    <div class="item-category">{item.category}</div>
+                    <p class="item-description">{item.description}</p>
+                    <div class="item-price">Price: {item.shopPrice}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Rankings Tab -->
+    <div class="tab-panel" id="tab-rankings">
+      <div class="section-header">
+        <h2>Ranking Rewards</h2>
+        <p class="section-description">Compete for rankings to earn valuable rewards.</p>
+      </div>
+
+      <div class="ranking-table-container">
+        <h3>Season Rewards</h3>
+        <div class="ranking-table-wrapper">
+          <table class="ranking-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Primogems</th>
+                <th>Currency</th>
+                <th>Ticket</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                rankingRewards.map(reward => (
+                  <tr>
+                    <td class="rank-cell">{reward.rank}</td>
+                    <td class="number-cell">{reward.primogems.toLocaleString()}</td>
+                    <td class="number-cell">{reward.currency.toLocaleString()}</td>
+                    <td class="number-cell">{reward.ticket}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</EscapingOtherSideLayout>
+
+<script>
+  // Tab functionality
+  function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = (button as HTMLElement).dataset.tab;
+
+        // Remove active from all
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active to clicked
+        button.classList.add('active');
+        const targetPanel = document.getElementById(`tab-${targetTab}`);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // Filter functionality for soulshards
+  function initFilters() {
+    const rarityFilter = document.getElementById('rarityFilter') as HTMLSelectElement;
+    const searchFilter = document.getElementById('searchFilter') as HTMLInputElement;
+    const grid = document.getElementById('soulshardsGrid');
+    const noResults = document.getElementById('noResults');
+
+    if (!rarityFilter || !searchFilter || !grid) return;
+
+    function applyFilters() {
+      const rarity = rarityFilter.value;
+      const search = searchFilter.value.toLowerCase();
+
+      const cards = grid.querySelectorAll('.soulshard-card') as NodeListOf<HTMLElement>;
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardRarity = card.dataset.rarity || '';
+        const cardName = card.dataset.name || '';
+        const cardDescription = card.dataset.description || '';
+        const cardCharacter = card.dataset.character?.toLowerCase() || '';
+
+        const matchesRarity = !rarity || cardRarity === rarity;
+        const matchesSearch =
+          !search || cardName.includes(search) || cardDescription.includes(search) || cardCharacter.includes(search);
+
+        if (matchesRarity && matchesSearch) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    rarityFilter.addEventListener('change', applyFilters);
+    searchFilter.addEventListener('input', applyFilters);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    initTabs();
+    initFilters();
+  });
+
+  // Also init on astro page transitions
+  document.addEventListener('astro:page-load', () => {
+    initTabs();
+    initFilters();
+  });
+</script>

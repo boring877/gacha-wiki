@@ -1,0 +1,80 @@
+---
+// Layout for Escaping the Other Side - Roguelike exploration mode with Soulshards
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+
+// Import CSS files
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-badge-colours.css';
+import '../../styles/games/silver-and-blood/sab-escaping-other-side.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  heroVideo?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { title, description, gameTitle, heroImage, heroVideo, breadcrumbs } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description || ''} breadcrumbs={breadcrumbs} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+
+    <slot name="head" />
+    <Analytics />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <!-- Title Section -->
+          {
+            gameTitle && (
+              <section class="title-only-section">
+                <h1 class="title-only-heading">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
+
+          <!-- Breadcrumb Navigation -->
+          <Breadcrumb autoGenerate={true} gameKey="silver-and-blood" showBackButton={true} />
+
+          <!-- Content Area -->
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

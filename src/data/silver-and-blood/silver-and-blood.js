@@ -176,6 +176,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Gear Upgrades',
           url: '/guides/silver-and-blood/gear-upgrades/',
         },
+        {
+          id: 'escaping-other-side',
+          title: 'Escaping the Other Side',
+          url: '/guides/silver-and-blood/escaping-other-side/',
+        },
       ],
     },
     {

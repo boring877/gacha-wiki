@@ -1,0 +1,558 @@
+/* Silver and Blood - Escaping the Other Side Styles */
+
+.escaping-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--sab-primary-color);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--sab-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Mechanics Grid */
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mechanic-card {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.mechanic-card:hover {
+  border-color: var(--sab-primary-color);
+}
+
+.mechanic-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.mechanic-title {
+  font-size: 1.25rem;
+  color: var(--sab-primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.mechanic-description {
+  color: var(--sab-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-size: 0.875rem;
+  color: var(--sab-text-secondary);
+  font-weight: 500;
+}
+
+.filter-select {
+  background: rgba(28, 28, 28, 0.8);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: var(--sab-text-primary);
+  font-size: 0.95rem;
+  min-width: 180px;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--sab-light-blue);
+}
+
+.filter-select option {
+  background: #1c1c1c;
+  color: var(--sab-text-primary);
+}
+
+.search-input {
+  background: rgba(28, 28, 28, 0.8);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: var(--sab-text-primary);
+  font-size: 0.95rem;
+  min-width: 250px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--sab-light-blue);
+}
+
+.search-input::placeholder {
+  color: var(--sab-text-secondary);
+}
+
+/* Soulshards Grid */
+.soulshards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.soulshard-card {
+  background: var(--sab-card-bg);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.soulshard-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background: rgba(28, 28, 28, 0.5);
+  border: 1px solid var(--sab-border-color);
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.soulshard-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.soulshard-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sab-text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.soulshard-character {
+  font-size: 0.9rem;
+  color: var(--sab-light-blue);
+  margin-bottom: 0.5rem;
+}
+
+.soulshard-description {
+  font-size: 0.9rem;
+  color: var(--sab-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
+}
+
+.soulshard-price {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--sab-text-primary);
+}
+
+.soulshard-price .currency-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Character Group */
+.character-group {
+  margin-bottom: 2rem;
+}
+
+.character-group-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sab-border-color);
+}
+
+.character-group-name {
+  font-size: 1.5rem;
+  color: var(--sab-primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.character-group-count {
+  font-size: 0.875rem;
+  color: var(--sab-text-secondary);
+  background: rgba(166, 77, 77, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+/* Maps Section */
+.maps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.map-card {
+  background: var(--sab-card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.map-name {
+  font-size: 1.1rem;
+  color: var(--sab-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.map-type-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--sab-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.map-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.map-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-stat-label {
+  font-size: 0.75rem;
+  color: var(--sab-text-secondary);
+}
+
+.map-stat-value {
+  font-size: 1rem;
+  color: var(--sab-text-primary);
+  font-weight: 600;
+}
+
+.map-description {
+  font-size: 0.9rem;
+  color: var(--sab-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Items Grid */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.item-card {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.item-card.rarity-1 {
+  border-left: 4px solid #9e9e9e;
+}
+
+.item-card.rarity-2 {
+  border-left: 4px solid #4caf50;
+}
+
+.item-card.rarity-3 {
+  border-left: 4px solid #2196f3;
+}
+
+.item-card.rarity-4 {
+  border-left: 4px solid #9c27b0;
+}
+
+.item-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(28, 28, 28, 0.5);
+  border: 1px solid var(--sab-border-color);
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sab-text-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.item-category {
+  font-size: 0.75rem;
+  color: var(--sab-light-blue);
+  margin-bottom: 0.5rem;
+}
+
+.item-description {
+  font-size: 0.8rem;
+  color: var(--sab-text-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.item-price {
+  font-size: 0.8rem;
+  color: var(--sab-primary-color);
+  font-weight: 600;
+}
+
+/* Category Section */
+.category-section {
+  margin-bottom: 2.5rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sab-border-color);
+}
+
+.category-title {
+  font-size: 1.5rem;
+  color: var(--sab-primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Ranking Table */
+.ranking-table-container {
+  background: var(--sab-card-bg);
+  border: 2px solid var(--sab-border-color);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ranking-table-container h3 {
+  background: linear-gradient(135deg, rgba(166, 77, 77, 0.2), rgba(90, 123, 167, 0.2));
+  color: var(--sab-primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--sab-border-color);
+}
+
+.ranking-table-wrapper {
+  overflow-x: auto;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.ranking-table th {
+  background: rgba(166, 77, 77, 0.15);
+  color: var(--sab-primary-color);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--sab-border-color);
+  white-space: nowrap;
+}
+
+.ranking-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid rgba(166, 77, 77, 0.1);
+  color: var(--sab-text-secondary);
+}
+
+.ranking-table .rank-cell {
+  font-weight: 600;
+  color: var(--sab-primary-color);
+}
+
+.ranking-table .number-cell {
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background: rgba(28, 28, 28, 0.8);
+  border-radius: 12px;
+  padding: 0.5rem;
+  border: 2px solid var(--sab-border-color);
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: var(--sab-text-secondary);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background: rgba(166, 77, 77, 0.1);
+  color: var(--sab-text-primary);
+}
+
+.tab-button.active {
+  background: var(--sab-calm-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* No Results Message */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--sab-text-secondary);
+}
+
+.no-results-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-results-text {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .mechanics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soulshards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select,
+  .search-input {
+    min-width: 100%;
+  }
+
+  .tab-navigation {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .soulshard-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .soulshard-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .soulshard-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .soulshard-stats {
+    justify-content: center;
+  }
+
+  .item-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .item-icon {
+    margin: 0 auto;
+  }
+
+  .maps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+}
