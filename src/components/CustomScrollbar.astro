@@ -39,7 +39,8 @@
   body {
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overscroll-behavior: none; /* Prevent Android overscroll glow effect */
+    overscroll-behavior-x: none; /* Prevent horizontal overscroll only */
+    overscroll-behavior-y: auto; /* Allow pull-to-refresh on mobile */
     -webkit-overflow-scrolling: touch; /* Enable iOS momentum scrolling */
     transform: translateZ(0); /* Force hardware acceleration */
     will-change: scroll-position; /* Optimize for scrolling */
@@ -92,7 +93,8 @@
    * - webkit-overflow-scrolling: touch enables iOS momentum scrolling
    * - transform: translateZ(0) forces hardware acceleration
    * - will-change: scroll-position optimizes for scroll animations
-   * - overscroll-behavior: none prevents Android glow effect
+   * - overscroll-behavior-x: none prevents horizontal overscroll
+   * - overscroll-behavior-y: auto allows pull-to-refresh
    */
 
   /**
