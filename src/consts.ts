@@ -13,7 +13,6 @@ export const SITE = {
     YOUTUBE: 'https://www.youtube.com/@GachaJunkie888',
     DISCORD: 'https://discord.gg/JKCNtkSGNE',
     X: 'https://x.com/GachaJunkie888',
-    RUMBLE: 'https://rumble.com/user/EcchiPen',
   },
   // Webhooks are handled server-side only for security
   // See scripts/send-discord-update.js for webhook handling

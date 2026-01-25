@@ -1,15 +1,50 @@
 ---
-// Redirect /guides/ to /wikis since that's where the main content is
+// Game Wikis Library - Main listing of all game guides
+import GachaWikisLibraryLayout from '../../layouts/GachaWikisLibraryLayout.astro';
+import { Image } from 'astro:assets';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getAllGames } from '../../data/games';
+
+// Get all games from the centralized configuration
+const games = getAllGames();
 ---
 
-<script>
-  // Client-side redirect
-  window.location.replace('/wikis');
-</script>
-
-<meta http-equiv="refresh" content="0; url=/wikis" />
-
-<noscript>
-  <meta http-equiv="refresh" content="0; url=/wikis" />
-  <p>Redirecting to <a href="/wikis">Game Wikis</a>...</p>
-</noscript>
+<GachaWikisLibraryLayout title={`${SITE_TITLE} - Guides`} description={SITE_DESCRIPTION}>
+  <!-- Games Section - Dynamic Layout -->
+  <div class="games-section">
+    {
+      games.map(game => (
+        <a href={game.url} class="game-link">
+          <article
+            class={`game-card game-${game.slug} ${game.status === 'coming-soon' ? 'coming-soon' : ''}`}
+          >
+            <div class="game-header">
+              <div class="game-icon">
+                <Image
+                  src={game.image}
+                  alt={game.name}
+                  width={200}
+                  height={200}
+                  format="webp"
+                  quality={100}
+                  loading="lazy"
+                />
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.name}</h3>
+                <p class="game-description">{game.description}</p>
+                {game.sections && (
+                  <div class="game-sections">
+                    {game.sections.slice(0, 3).join(' • ')}
+                    {game.sections.length > 3 && ` • +${game.sections.length - 3} more`}
+                  </div>
+                )}
+              </div>
+              <div class="game-arrow">→</div>
+            </div>
+          </article>
+        </a>
+      ))
+    }
+  </div>
+</GachaWikisLibraryLayout>

@@ -9,7 +9,6 @@ export interface SocialLinks {
   readonly youtube: string;
   readonly discord: string;
   readonly x: string;
-  readonly rumble: string;
 }
 
 export interface GlobalSEOConfig {
@@ -76,7 +75,6 @@ export const GLOBAL_SEO: GlobalSEOConfig = {
     youtube: SITE.SOCIAL.YOUTUBE,
     discord: SITE.SOCIAL.DISCORD,
     x: SITE.SOCIAL.X,
-    rumble: SITE.SOCIAL.RUMBLE,
   },
 } as const;
 
@@ -713,7 +711,6 @@ export function generateGameStructuredData(
         GLOBAL_SEO.social.youtube,
         GLOBAL_SEO.social.discord,
         GLOBAL_SEO.social.x,
-        GLOBAL_SEO.social.rumble,
       ].filter(Boolean),
       additionalType: 'https://schema.org/OpenSourceProject',
     },
