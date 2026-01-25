@@ -45,8 +45,8 @@ export default defineConfig({
   },
   // Build optimizations
   build: {
-    // Inline stylesheets smaller than 4kb
-    inlineStylesheets: 'auto',
+    // Inline all stylesheets to prevent FOUC on mobile
+    inlineStylesheets: 'always',
     // Assets folder for better organization
     assets: 'assets/',
   },
