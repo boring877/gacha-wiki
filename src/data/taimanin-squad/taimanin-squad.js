@@ -63,6 +63,12 @@ export const taimaninSquadConfig = {
       size: 'large',
       guides: [
         {
+          id: 'tier-list',
+          title: 'Tier List',
+          url: '/guides/taimanin-squad/tier-list/',
+          external: false,
+        },
+        {
           id: 'character-lore',
           title: 'Character Lore',
           url: '/guides/taimanin-squad/character-lore/',
@@ -72,6 +78,12 @@ export const taimaninSquadConfig = {
           id: 'character-stats',
           title: 'Character Stats',
           url: '/guides/taimanin-squad/character-stats/',
+          external: false,
+        },
+        {
+          id: 'skills',
+          title: 'Skills',
+          url: '/guides/taimanin-squad/skills/',
           external: false,
         },
         {
@@ -114,6 +126,16 @@ export const taimaninSquadConfig = {
   // Guides array for backward compatibility
   guides: [
     {
+      id: 'tier-list',
+      title: 'Tier List',
+      emoji: '',
+      description: 'Character tier rankings for Taimanin Squad PvE and PvP content.',
+      url: '/guides/taimanin-squad/tier-list/',
+      category: 'info',
+      size: 'medium',
+      external: false,
+    },
+    {
       id: 'character-lore',
       title: 'Character Lore',
       emoji: '',
@@ -139,6 +161,16 @@ export const taimaninSquadConfig = {
       emoji: '',
       description: 'Complete reference for all buff and debuff status effects in Taimanin Squad.',
       url: '/guides/taimanin-squad/buff-debuff/',
+      category: 'info',
+      size: 'medium',
+      external: false,
+    },
+    {
+      id: 'skills',
+      title: 'Skills',
+      emoji: '',
+      description: 'Complete database of all character skills and abilities in Taimanin Squad.',
+      url: '/guides/taimanin-squad/skills/',
       category: 'info',
       size: 'medium',
       external: false,
