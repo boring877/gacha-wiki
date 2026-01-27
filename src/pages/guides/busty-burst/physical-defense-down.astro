@@ -1,0 +1,441 @@
+---
+// Busty Burst Physical Defense Down Database
+// Lists all characters with Physical Defense Down skills, organized by tier
+
+import DefenseDownLayout from '../../../layouts/busty-burst/DefenseDownLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
+import { getPhysicalDefenseDownSkills, DEFENSE_DOWN_TIERS } from '../../../data/busty-burst/defense-down-data.js';
+
+// Get all physical defense down skills
+const allSkills = getPhysicalDefenseDownSkills();
+
+// Only show skill-based defense downs (not ultimates - they don't have useful values)
+const skillBased = allSkills.filter(s => s.sourceType === 'skill');
+
+// Group skill-based by tier
+const tierS = skillBased.filter(s => s.tier === 'S').sort((a, b) => b.duration - a.duration);
+const tierA = skillBased.filter(s => s.tier === 'A').sort((a, b) => b.duration - a.duration);
+const tierB = skillBased.filter(s => s.tier === 'B').sort((a, b) => b.duration - a.duration);
+const tierC = skillBased.filter(s => s.tier === 'C').sort((a, b) => b.duration - a.duration);
+
+// Get unique elements and rarities for filters
+const elements = [...new Set(skillBased.map(s => s.element))].filter(Boolean).sort();
+const rarities = ['SSR', 'SR', 'R'];
+
+// Stats
+const totalSkills = skillBased.length;
+const uniqueChars = new Set(skillBased.map(s => s.characterId)).size;
+
+const title = 'Physical Defense Down Database (Lv90) - Busty Burst Fantasy';
+const description = `Complete database of all ${totalSkills} Physical Defense Down skills at Lv90 in Busty Burst Fantasy. Find the best defense shred characters organized by tier (S/A/B/C) with percentage reduction, flat values, and duration.`;
+const gameTitle = 'Physical Defense Down Database';
+---
+
+<DefenseDownLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Busty Burst Fantasy Physical Defense Down Skills (Lv90)",
+      "description": "Complete tier list of all Physical Defense Down skills at max level (Lv90) in Busty Burst Fantasy",
+      "numberOfItems": ${totalSkills},
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "S Tier - Best Physical DEF Down (-23% -317)",
+          "description": "Highest physical defense reduction skills at Lv90"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "A Tier - Strong Physical DEF Down (-21% -218)",
+          "description": "Strong physical defense reduction skills at Lv90"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "B Tier - Moderate Physical DEF Down (-18% -208)",
+          "description": "Moderate physical defense reduction skills at Lv90"
+        }
+      ]
+    }
+  </script>
+  <div class="bb-defdown-page">
+    <!-- Summary Stats -->
+    <div class="bb-defdown-summary">
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{totalSkills}</div>
+        <div class="bb-defdown-stat-label">Total Skills</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{uniqueChars}</div>
+        <div class="bb-defdown-stat-label">Characters</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{tierS.length}</div>
+        <div class="bb-defdown-stat-label">S Tier Skills</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{tierA.length}</div>
+        <div class="bb-defdown-stat-label">A Tier Skills</div>
+      </div>
+    </div>
+
+    <!-- Info Box -->
+    <div class="bb-defdown-info-box">
+      <h3 class="bb-defdown-info-title">How Physical Defense Down Works</h3>
+      <p class="bb-defdown-info-text">
+        Physical Defense Down reduces enemy defense in two ways: <strong>percentage reduction</strong> (e.g., -23%) and <strong>flat reduction</strong> (e.g., -317).
+        Higher values mean more damage to enemies. <strong>All values shown are at Skill Lv90 (max level)</strong>.
+      </p>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="bb-defdown-controls">
+      <div class="bb-defdown-filter-row">
+        <input
+          type="text"
+          id="defdown-search"
+          class="bb-defdown-search-input"
+          placeholder="Search by character or skill name..."
+        />
+        <select id="rarity-filter" class="bb-defdown-filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(r => <option value={r}>{r}</option>)}
+        </select>
+        <select id="element-filter" class="bb-defdown-filter-select">
+          <option value="">All Elements</option>
+          {elements.map(el => <option value={el}>{el}</option>)}
+        </select>
+        <select id="tier-filter" class="bb-defdown-filter-select">
+          <option value="">All Tiers</option>
+          <option value="S">S Tier (-23% -317)</option>
+          <option value="A">A Tier (-21% -218)</option>
+          <option value="B">B Tier (-18% -208)</option>
+          <option value="C">C Tier (Other)</option>
+        </select>
+        <button type="button" id="clear-filters" class="bb-defdown-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="bb-defdown-results-count" id="results-count">
+      Showing <span>{totalSkills}</span> skills
+    </div>
+
+    <!-- S Tier Section -->
+    {tierS.length > 0 && (
+      <div class="bb-defdown-tier-section" data-tier="S">
+        <div class="bb-defdown-tier-header">
+          <span class="bb-defdown-tier-badge">S</span>
+          <div class="bb-defdown-tier-info">
+            <h2 class="bb-defdown-tier-title">S Tier - Best Physical DEF Down</h2>
+            <p class="bb-defdown-tier-desc">-23% and -317 flat reduction (Lv90)</p>
+          </div>
+          <span class="bb-defdown-tier-count">{tierS.length} skills</span>
+        </div>
+        <div class="bb-defdown-grid">
+          {tierS.map(skill => (
+            <div
+              class="bb-defdown-card"
+              data-name={skill.characterName.toLowerCase()}
+              data-skill={skill.skillName.toLowerCase()}
+              data-element={skill.element?.toLowerCase()}
+              data-rarity={skill.rarity?.toLowerCase()}
+              data-tier="s"
+            >
+              <div class="bb-defdown-card-header">
+                <div class="bb-defdown-card-avatar">
+                  <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
+                </div>
+                <div class="bb-defdown-card-info">
+                  <h3 class="bb-defdown-card-name">{skill.characterName}</h3>
+                  <div class="bb-defdown-card-meta">
+                    {skill.rarity && (
+                      <span class="bb-defdown-meta-item bb-defdown-rarity">
+                        <RarityImage rarity={skill.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                      </span>
+                    )}
+                    {skill.element && (
+                      <span class="bb-defdown-meta-item">
+                        <ElementImage element={skill.element} width={16} height={16} />
+                        {skill.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="bb-defdown-card-body">
+                <div class="bb-defdown-skill-row">
+                  <div class="bb-defdown-skill-icon">
+                    <SkillIcon skillId={skill.skillIcon} alt={skill.skillName} width={36} height={36} />
+                  </div>
+                  <div class="bb-defdown-skill-info">
+                    <div class="bb-defdown-skill-name">{skill.skillName}</div>
+                    <div class="bb-defdown-skill-slot">Skill {skill.skillSlot}</div>
+                  </div>
+                </div>
+                <div class="bb-defdown-values">
+                  <span class="bb-defdown-lv-badge">Lv90</span>
+                  <div class="bb-defdown-value-main">
+                    <span class="bb-defdown-value-percent">-{skill.percent}%</span>
+                    <span class="bb-defdown-value-flat">-{skill.flat}</span>
+                  </div>
+                  <div class="bb-defdown-value-duration">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                    </svg>
+                    {skill.duration}s
+                  </div>
+                </div>
+                <div class="bb-defdown-target">Target: <span>{skill.target}</span></div>
+                {skill.description && (
+                  <div class="bb-defdown-description">{skill.description}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- A Tier Section -->
+    {tierA.length > 0 && (
+      <div class="bb-defdown-tier-section" data-tier="A">
+        <div class="bb-defdown-tier-header">
+          <span class="bb-defdown-tier-badge">A</span>
+          <div class="bb-defdown-tier-info">
+            <h2 class="bb-defdown-tier-title">A Tier - Strong Physical DEF Down</h2>
+            <p class="bb-defdown-tier-desc">-21% and -218 flat reduction (Lv90)</p>
+          </div>
+          <span class="bb-defdown-tier-count">{tierA.length} skills</span>
+        </div>
+        <div class="bb-defdown-grid">
+          {tierA.map(skill => (
+            <div
+              class="bb-defdown-card"
+              data-name={skill.characterName.toLowerCase()}
+              data-skill={skill.skillName.toLowerCase()}
+              data-element={skill.element?.toLowerCase()}
+              data-rarity={skill.rarity?.toLowerCase()}
+              data-tier="a"
+            >
+              <div class="bb-defdown-card-header">
+                <div class="bb-defdown-card-avatar">
+                  <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
+                </div>
+                <div class="bb-defdown-card-info">
+                  <h3 class="bb-defdown-card-name">{skill.characterName}</h3>
+                  <div class="bb-defdown-card-meta">
+                    {skill.rarity && (
+                      <span class="bb-defdown-meta-item bb-defdown-rarity">
+                        <RarityImage rarity={skill.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                      </span>
+                    )}
+                    {skill.element && (
+                      <span class="bb-defdown-meta-item">
+                        <ElementImage element={skill.element} width={16} height={16} />
+                        {skill.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="bb-defdown-card-body">
+                <div class="bb-defdown-skill-row">
+                  <div class="bb-defdown-skill-icon">
+                    <SkillIcon skillId={skill.skillIcon} alt={skill.skillName} width={36} height={36} />
+                  </div>
+                  <div class="bb-defdown-skill-info">
+                    <div class="bb-defdown-skill-name">{skill.skillName}</div>
+                    <div class="bb-defdown-skill-slot">Skill {skill.skillSlot}</div>
+                  </div>
+                </div>
+                <div class="bb-defdown-values">
+                  <span class="bb-defdown-lv-badge">Lv90</span>
+                  <div class="bb-defdown-value-main">
+                    <span class="bb-defdown-value-percent">-{skill.percent}%</span>
+                    <span class="bb-defdown-value-flat">-{skill.flat}</span>
+                  </div>
+                  <div class="bb-defdown-value-duration">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                    </svg>
+                    {skill.duration}s
+                  </div>
+                </div>
+                <div class="bb-defdown-target">Target: <span>{skill.target}</span></div>
+                {skill.description && (
+                  <div class="bb-defdown-description">{skill.description}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- B Tier Section -->
+    {tierB.length > 0 && (
+      <div class="bb-defdown-tier-section" data-tier="B">
+        <div class="bb-defdown-tier-header">
+          <span class="bb-defdown-tier-badge">B</span>
+          <div class="bb-defdown-tier-info">
+            <h2 class="bb-defdown-tier-title">B Tier - Moderate Physical DEF Down</h2>
+            <p class="bb-defdown-tier-desc">-18% and -208 flat reduction (Lv90)</p>
+          </div>
+          <span class="bb-defdown-tier-count">{tierB.length} skills</span>
+        </div>
+        <div class="bb-defdown-grid">
+          {tierB.map(skill => (
+            <div
+              class="bb-defdown-card"
+              data-name={skill.characterName.toLowerCase()}
+              data-skill={skill.skillName.toLowerCase()}
+              data-element={skill.element?.toLowerCase()}
+              data-rarity={skill.rarity?.toLowerCase()}
+              data-tier="b"
+            >
+              <div class="bb-defdown-card-header">
+                <div class="bb-defdown-card-avatar">
+                  <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
+                </div>
+                <div class="bb-defdown-card-info">
+                  <h3 class="bb-defdown-card-name">{skill.characterName}</h3>
+                  <div class="bb-defdown-card-meta">
+                    {skill.rarity && (
+                      <span class="bb-defdown-meta-item bb-defdown-rarity">
+                        <RarityImage rarity={skill.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                      </span>
+                    )}
+                    {skill.element && (
+                      <span class="bb-defdown-meta-item">
+                        <ElementImage element={skill.element} width={16} height={16} />
+                        {skill.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="bb-defdown-card-body">
+                <div class="bb-defdown-skill-row">
+                  <div class="bb-defdown-skill-icon">
+                    <SkillIcon skillId={skill.skillIcon} alt={skill.skillName} width={36} height={36} />
+                  </div>
+                  <div class="bb-defdown-skill-info">
+                    <div class="bb-defdown-skill-name">{skill.skillName}</div>
+                    <div class="bb-defdown-skill-slot">Skill {skill.skillSlot}</div>
+                  </div>
+                </div>
+                <div class="bb-defdown-values">
+                  <span class="bb-defdown-lv-badge">Lv90</span>
+                  <div class="bb-defdown-value-main">
+                    <span class="bb-defdown-value-percent">-{skill.percent}%</span>
+                    <span class="bb-defdown-value-flat">-{skill.flat}</span>
+                  </div>
+                  <div class="bb-defdown-value-duration">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                    </svg>
+                    {skill.duration}s
+                  </div>
+                </div>
+                <div class="bb-defdown-target">Target: <span>{skill.target}</span></div>
+                {skill.description && (
+                  <div class="bb-defdown-description">{skill.description}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- No Results -->
+    <div class="bb-defdown-no-results" id="no-results">
+      <h3>No skills found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</DefenseDownLayout>
+
+<script>
+  function initFilters() {
+    const searchInput = document.getElementById('defdown-search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('element-filter') as HTMLSelectElement;
+    const tierFilter = document.getElementById('tier-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+
+    const cards = document.querySelectorAll('.bb-defdown-card');
+    const tierSections = document.querySelectorAll('.bb-defdown-tier-section');
+
+    function filterCards() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+      const element = elementFilter?.value.toLowerCase() || '';
+      const tier = tierFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const matchName = !search ||
+          cardEl.dataset.name?.includes(search) ||
+          cardEl.dataset.skill?.includes(search);
+        const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
+        const matchElement = !element || cardEl.dataset.element === element;
+        const matchTier = !tier || cardEl.dataset.tier === tier;
+
+        const isVisible = matchName && matchRarity && matchElement && matchTier;
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      // Hide empty tier sections
+      tierSections.forEach(section => {
+        const sectionEl = section as HTMLElement;
+        const visibleCards = sectionEl.querySelectorAll('.bb-defdown-card:not(.hidden)');
+        sectionEl.style.display = visibleCards.length > 0 ? 'block' : 'none';
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      // Update results count
+      if (resultsCount) {
+        const span = resultsCount.querySelector('span');
+        if (span) span.textContent = visibleCount.toString();
+      }
+    }
+
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      if (elementFilter) elementFilter.value = '';
+      if (tierFilter) tierFilter.value = '';
+      filterCards();
+    }
+
+    searchInput?.addEventListener('input', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    tierFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilters);
+  } else {
+    initFilters();
+  }
+</script>

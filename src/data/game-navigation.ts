@@ -289,6 +289,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Mechanics',
         links: [
           { name: 'Buff & Debuff System', href: '/guides/busty-burst/buff-debuff-guide' },
+          { name: 'Physical DEF Down', href: '/guides/busty-burst/physical-defense-down' },
           { name: 'Team Builder', href: '/guides/busty-burst/team-builder' },
         ],
       },

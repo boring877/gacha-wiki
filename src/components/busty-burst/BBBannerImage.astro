@@ -12,6 +12,7 @@ import bannerSeason1Lorelia from '../../assets/images/games/Busty_Burst/Banner_I
 import bannerBeautyWitchPartyPeople from '../../assets/images/games/Busty_Burst/Banner_Img/banner-beauty-witch-party-people.png';
 import bannerOctoOctoBeachPanic from '../../assets/images/games/Busty_Burst/Banner_Img/banner-octo-octo-beach-panic.png';
 import bannerInfiniteSubjugationPastel from '../../assets/images/games/Busty_Burst/Banner_Img/Summon_musou_2_804x434.png';
+import bannerBladeOfJudgment from '../../assets/images/games/Busty_Burst/Banner_Img/Summon_event3_804x434.png';
 
 // Image mapping by banner ID
 const bannerImages: Record<string, ImageMetadata> = {
@@ -25,6 +26,7 @@ const bannerImages: Record<string, ImageMetadata> = {
   'beauty-witch-party-people': bannerBeautyWitchPartyPeople,
   'octo-octo-beach-panic': bannerOctoOctoBeachPanic,
   'infinite-subjugation-pastel': bannerInfiniteSubjugationPastel,
+  'blade-of-judgment': bannerBladeOfJudgment,
 };
 
 export interface Props {
@@ -51,6 +53,7 @@ const originalHeight = imageSrc?.height || height;
         alt={alt}
         width={originalWidth}
         height={originalHeight}
+        quality={90}
         class="bb-banner-image__img"
         loading="lazy"
       />

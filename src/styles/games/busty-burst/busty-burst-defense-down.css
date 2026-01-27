@@ -1,0 +1,623 @@
+/* Busty Burst Defense Down Database Styles */
+
+/* Page Container */
+.bb-defdown-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Summary Stats */
+.bb-defdown-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-defdown-stat-card {
+  background: var(--bb-bg-secondary, #1e1e2e);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--bb-border-light, #333);
+}
+
+.bb-defdown-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bb-accent, #a855f7);
+}
+
+.bb-defdown-stat-label {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #888);
+  margin-top: 0.25rem;
+}
+
+/* Filter Controls */
+.bb-defdown-controls {
+  background: var(--bb-bg-secondary, #1e1e2e);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bb-defdown-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.bb-defdown-search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 1rem;
+  background: var(--bb-bg-primary, #16161e);
+  border: 1px solid var(--bb-border-light, #333);
+  border-radius: 8px;
+  color: var(--bb-text-primary, #fff);
+  font-size: 0.95rem;
+}
+
+.bb-defdown-filter-select {
+  padding: 0.6rem 1rem;
+  background: var(--bb-bg-primary, #16161e);
+  border: 1px solid var(--bb-border-light, #333);
+  border-radius: 8px;
+  color: var(--bb-text-primary, #fff);
+  font-size: 0.9rem;
+  min-width: 130px;
+}
+
+.bb-defdown-clear-btn {
+  padding: 0.6rem 1.25rem;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 8px;
+  color: #ef4444;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bb-defdown-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* Results Count */
+.bb-defdown-results-count {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary, #888);
+}
+
+.bb-defdown-results-count span {
+  font-weight: 700;
+  color: var(--bb-accent, #a855f7);
+}
+
+/* Tier Section Headers */
+.bb-defdown-tier-section {
+  margin-bottom: 2rem;
+}
+
+.bb-defdown-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bb-bg-secondary, #1e1e2e);
+  border-radius: 10px;
+}
+
+.bb-defdown-tier-badge {
+  font-size: 1.5rem;
+  font-weight: 800;
+  min-width: 50px;
+  text-align: center;
+}
+
+.bb-defdown-tier-info {
+  flex: 1;
+}
+
+.bb-defdown-tier-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bb-text-primary, #fff);
+  margin: 0;
+}
+
+.bb-defdown-tier-desc {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #888);
+  margin: 0;
+}
+
+.bb-defdown-tier-count {
+  font-size: 0.9rem;
+  color: var(--bb-text-tertiary, #666);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Tier Colors */
+.bb-defdown-tier-section[data-tier="S"] {
+  --tier-color: #f59e0b;
+}
+
+.bb-defdown-tier-section[data-tier="S"] .bb-defdown-tier-badge {
+  color: #f59e0b;
+}
+
+.bb-defdown-tier-section[data-tier="A"] {
+  --tier-color: #a855f7;
+}
+
+.bb-defdown-tier-section[data-tier="A"] .bb-defdown-tier-badge {
+  color: #a855f7;
+}
+
+.bb-defdown-tier-section[data-tier="B"] {
+  --tier-color: #3b82f6;
+}
+
+.bb-defdown-tier-section[data-tier="B"] .bb-defdown-tier-badge {
+  color: #3b82f6;
+}
+
+.bb-defdown-tier-section[data-tier="C"] {
+  --tier-color: #6b7280;
+}
+
+.bb-defdown-tier-section[data-tier="C"] .bb-defdown-tier-badge {
+  color: #6b7280;
+}
+
+.bb-defdown-tier-section[data-tier="ULT"] {
+  --tier-color: #ec4899;
+}
+
+.bb-defdown-tier-section[data-tier="ULT"] .bb-defdown-tier-badge {
+  color: #ec4899;
+}
+
+/* Skills Grid */
+.bb-defdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+/* Skill Card */
+.bb-defdown-card {
+  background: var(--bb-bg-secondary, #1e1e2e);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--bb-border-light, #333);
+}
+
+.bb-defdown-card.hidden {
+  display: none;
+}
+
+/* Card Header */
+.bb-defdown-card-header {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));
+  border-bottom: 1px solid var(--bb-border-light, #333);
+}
+
+.bb-defdown-card-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bb-defdown-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-defdown-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-defdown-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bb-text-primary, #fff);
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bb-defdown-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bb-defdown-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary, #aaa);
+}
+
+.bb-defdown-meta-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Rarity image container - needs to be larger */
+.bb-defdown-meta-item.bb-defdown-rarity {
+  display: flex;
+  align-items: center;
+}
+
+.bb-defdown-meta-item.bb-defdown-rarity img,
+img.bb-defdown-rarity-img {
+  width: 80px !important;
+  height: 40px !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+/* Card Body */
+.bb-defdown-card-body {
+  padding: 0.75rem;
+}
+
+/* Skill Info */
+.bb-defdown-skill-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bb-defdown-skill-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bb-defdown-skill-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-defdown-skill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-defdown-skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bb-text-primary, #fff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bb-defdown-skill-slot {
+  font-size: 0.7rem;
+  color: var(--bb-text-tertiary, #666);
+  text-transform: uppercase;
+}
+
+/* Defense Down Values */
+.bb-defdown-values {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Lv90 Badge */
+.bb-defdown-lv-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.5rem;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.bb-defdown-value-main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.bb-defdown-value-percent {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.bb-defdown-value-flat {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fca5a5;
+}
+
+.bb-defdown-value-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: auto;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--bb-text-primary, #fff);
+}
+
+.bb-defdown-value-duration svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* Skill Target */
+.bb-defdown-target {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary, #666);
+  margin-bottom: 0.5rem;
+}
+
+.bb-defdown-target span {
+  color: var(--bb-text-secondary, #aaa);
+}
+
+/* Skill Description */
+.bb-defdown-description {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary, #aaa);
+  line-height: 1.5;
+}
+
+/* Extra Effects */
+.bb-defdown-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.bb-defdown-extra-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(168, 85, 247, 0.15);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.bb-defdown-extra-tag[data-type="Burn"] {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.bb-defdown-extra-tag[data-type="Lifesteal"] {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.bb-defdown-extra-tag[data-type="Dual Defense Down"] {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.bb-defdown-extra-tag[data-type="Accuracy Down"] {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fdba74;
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Ultimate Level Badge */
+.bb-defdown-ult-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(236, 72, 153, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f472b6;
+}
+
+/* No Results */
+.bb-defdown-no-results {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+  background: var(--bb-bg-secondary, #1e1e2e);
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.bb-defdown-no-results.visible {
+  display: block;
+}
+
+.bb-defdown-no-results h3 {
+  color: var(--bb-text-primary, #fff);
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-defdown-no-results p {
+  color: var(--bb-text-tertiary, #888);
+  margin: 0;
+}
+
+/* Info Box */
+.bb-defdown-info-box {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-defdown-info-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #60a5fa;
+  margin: 0 0 0.5rem 0;
+}
+
+.bb-defdown-info-text {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #bbb);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 900px) {
+  .bb-defdown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-defdown-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .bb-defdown-page {
+    padding: 0.5rem;
+  }
+
+  .bb-defdown-controls {
+    padding: 0.75rem;
+  }
+
+  .bb-defdown-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-defdown-search-input,
+  .bb-defdown-filter-select,
+  .bb-defdown-clear-btn {
+    width: 100%;
+    min-width: unset;
+    font-size: 16px;
+  }
+
+  .bb-defdown-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .bb-defdown-stat-card {
+    padding: 0.75rem;
+  }
+
+  .bb-defdown-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .bb-defdown-tier-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .bb-defdown-tier-badge {
+    font-size: 1.25rem;
+    min-width: 40px;
+  }
+
+  .bb-defdown-card-header {
+    padding: 0.6rem;
+  }
+
+  .bb-defdown-card-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bb-defdown-card-name {
+    font-size: 0.9rem;
+  }
+
+  .bb-defdown-card-body {
+    padding: 0.6rem;
+  }
+
+  .bb-defdown-value-percent {
+    font-size: 1.1rem;
+  }
+
+  .bb-defdown-values {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .bb-defdown-lv-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .bb-defdown-value-duration {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Rarity image smaller on mobile */
+  .bb-defdown-meta-item.bb-defdown-rarity img,
+  img.bb-defdown-rarity-img {
+    width: 60px !important;
+    height: 30px !important;
+  }
+
+  .bb-defdown-info-box {
+    padding: 0.75rem;
+  }
+
+  .bb-defdown-info-title {
+    font-size: 0.85rem;
+  }
+
+  .bb-defdown-info-text {
+    font-size: 0.8rem;
+  }
+}

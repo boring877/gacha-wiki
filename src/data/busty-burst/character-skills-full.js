@@ -14973,7 +14973,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "skills": [
       {
         "slot": 2,
-        "name": "大回旋斬",
+        "name": "Grand Whirlwind Slash",
         "icon": "skill001/skill0007",
         "description": "Deals 2531 (ATK x 0.9 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-317DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
         "descriptionLv1": "Deals 427 (ATK x 0.9 + 80) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-50DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
@@ -15000,7 +15000,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "slot": 3,
-        "name": "風之精靈啊，賜予我庇護",
+        "name": "Wind Spirit, Grant Me Protection",
         "icon": "skill001/skill0019",
         "description": "Applies Action Speed 17%UP to self for 10 seconds and Block23UP for 10 seconds",
         "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Block11UP for 10 seconds",
@@ -15012,6 +15012,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "levelGrowth": null,
         "lvl1": null,
         "lvl90": null,
+        "baseValue": 11,
+        "valueLv90": 23,
+        "valueType": "Block",
         "effects": [
           "Action Speed + Lv4",
           "Block+ Lv4"
@@ -15036,7 +15039,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "ultimate": [
       {
         "rank": 1,
-        "name": "罪人啊，戰慄吧。親身去聽終結之調吧",
+        "name": "Sinners, Tremble Before the Melody of Demise",
         "icon": "skill001/skill0003_1",
         "description": "Deals 4079 (ATK x 1.8 + 600) physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV1) for 8 seconds and inflicts Dispel for 3 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
         "effect": "180% + 600",
@@ -15057,7 +15060,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 2,
-        "name": "罪人啊，戰慄吧。親身去聽終結之調吧",
+        "name": "Sinners, Tremble Before the Melody of Demise",
         "icon": "skill001/skill0003_2",
         "description": "Deals 4566 (ATK x 2.0 + 700) physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV2) for 8 seconds and inflicts Dispel for 4 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
         "effect": "200% + 700",
@@ -15078,7 +15081,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 3,
-        "name": "罪人啊，戰慄吧。親身去聽終結之調吧",
+        "name": "Sinners, Tremble Before the Melody of Demise",
         "icon": "skill001/skill0003_3",
         "description": "Deals 5052 (ATK x 2.2 + 800) physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV3) for 8 seconds and inflicts Dispel for 4 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
         "effect": "220% + 800",
@@ -15099,7 +15102,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 4,
-        "name": "罪人啊，戰慄吧。親身去聽終結之調吧",
+        "name": "Sinners, Tremble Before the Melody of Demise",
         "icon": "skill001/skill0003_4",
         "description": "Deals 5489 (ATK x 2.4 + 850) physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV4) for 8 seconds and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
         "effect": "240% + 850",
@@ -15120,7 +15123,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 5,
-        "name": "罪人啊，戰慄吧。親身去聽終結之調吧",
+        "name": "Sinners, Tremble Before the Melody of Demise",
         "icon": "skill001/skill0003_5",
         "description": "Deals 5732 (ATK x 2.5 + 900) physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV5) for 8 seconds and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
         "effect": "250% + 900",
@@ -15181,7 +15184,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "name": "Lucie",
     "id": 2073,
     "rarity": "SSR",
-    "element": "Dark",
+    "element": "Wind",
     "role": "Attacker",
     "tags": [],
     "baseStats": {
@@ -15208,7 +15211,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "skills": [
       {
         "slot": 2,
-        "name": "圓斬",
+        "name": "Circular Slash",
         "icon": "skill001/skill0007",
         "description": "Deals 6115 (ATK x 3.5 + 1940) physical damage to the nearest enemy and inflicts Physical Defense -21%+-218DOWN for 4 seconds",
         "descriptionLv1": "Deals 993 (ATK x 3.5 + 160) physical damage to the nearest enemy and inflicts Physical Defense -21%+-40DOWN for 4 seconds",
@@ -15235,7 +15238,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "slot": 3,
-        "name": "內氣功",
+        "name": "Inner Energy",
         "icon": "skill001/skill0019",
         "description": "Applies Block18UP to self for 8 seconds and MP Regeneration 40 for 4 seconds",
         "descriptionLv1": "Applies Block9UP to self for 8 seconds and MP Regeneration 40 for 4 seconds",
@@ -15271,7 +15274,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "ultimate": [
       {
         "rank": 1,
-        "name": "羅爻空殺陣",
+        "name": "Void Killing Formation",
         "icon": "skill001/skill0003_1",
         "description": "Deals 16228 (ATK x 13.1 + 600) physical damage to the nearest enemy",
         "effect": "1310% + 600",
@@ -15279,7 +15282,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 2,
-        "name": "羅爻空殺陣",
+        "name": "Void Killing Formation",
         "icon": "skill001/skill0003_2",
         "description": "Deals 18117 (ATK x 14.6 + 700) physical damage to the nearest enemy",
         "effect": "1460% + 700",
@@ -15287,7 +15290,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 3,
-        "name": "羅爻空殺陣",
+        "name": "Void Killing Formation",
         "icon": "skill001/skill0003_3",
         "description": "Deals 19172 (ATK x 15.4 + 800) physical damage to the nearest enemy",
         "effect": "1540% + 800",
@@ -15295,7 +15298,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 4,
-        "name": "羅爻空殺陣",
+        "name": "Void Killing Formation",
         "icon": "skill001/skill0003_4",
         "description": "Deals 20057 (ATK x 16.1 + 850) physical damage to the nearest enemy",
         "effect": "1610% + 850",
@@ -15303,7 +15306,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 5,
-        "name": "羅爻空殺陣",
+        "name": "Void Killing Formation",
         "icon": "skill001/skill0003_5",
         "description": "Deals 20703 (ATK x 16.6 + 900) physical damage to the nearest enemy",
         "effect": "1660% + 900",
@@ -15346,7 +15349,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "name": "Rui",
     "id": 2074,
     "rarity": "SR",
-    "element": "Dark",
+    "element": "Fire",
     "role": "Attacker",
     "tags": [],
     "baseStats": {
@@ -15373,7 +15376,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "skills": [
       {
         "slot": 2,
-        "name": "縛技・蛇纏",
+        "name": "Binding Art: Serpent Coil",
         "icon": "skill001/skill0011",
         "description": "Deals 5309 (ATK x 2.7 + 1475) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-208DOWN for 8 seconds",
         "descriptionLv1": "Deals 906 (ATK x 2.7 + 140) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-30DOWN for 8 seconds",
@@ -15407,7 +15410,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "slot": 3,
-        "name": "內氣功",
+        "name": "Inner Energy",
         "icon": "skill001/skill0019",
         "description": "Applies Block18UP to self for 8 seconds and MP Regeneration 40 for 4 seconds",
         "descriptionLv1": "Applies Block9UP to self for 8 seconds and MP Regeneration 40 for 4 seconds",
@@ -15443,7 +15446,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "ultimate": [
       {
         "rank": 1,
-        "name": "奧傳・死化妝",
+        "name": "Secret Art: Death's Makeup",
         "icon": "skill001/skill0003_1",
         "description": "Deals 5028 (ATK x 3.4 + 200) physical damage to the 3 nearest enemies",
         "effect": "340% + 200",
@@ -15451,7 +15454,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 2,
-        "name": "奧傳・死化妝",
+        "name": "Secret Art: Death's Makeup",
         "icon": "skill001/skill0003_2",
         "description": "Deals 5636 (ATK x 3.8 + 240) physical damage to the 3 nearest enemies",
         "effect": "380% + 240",
@@ -15459,7 +15462,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 3,
-        "name": "奧傳・死化妝",
+        "name": "Secret Art: Death's Makeup",
         "icon": "skill001/skill0003_3",
         "description": "Deals 6234 (ATK x 4.2 + 270) physical damage to the 3 nearest enemies",
         "effect": "420% + 270",
@@ -15467,7 +15470,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 4,
-        "name": "奧傳・死化妝",
+        "name": "Secret Art: Death's Makeup",
         "icon": "skill001/skill0003_4",
         "description": "Deals 6690 (ATK x 4.5 + 300) physical damage to the 3 nearest enemies",
         "effect": "450% + 300",
@@ -15475,7 +15478,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 5,
-        "name": "奧傳・死化妝",
+        "name": "Secret Art: Death's Makeup",
         "icon": "skill001/skill0003_5",
         "description": "Deals 7166 (ATK x 4.8 + 350) physical damage to the 3 nearest enemies",
         "effect": "480% + 350",
@@ -15518,7 +15521,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "name": "Nue",
     "id": 2075,
     "rarity": "SR",
-    "element": "Dark",
+    "element": "Water",
     "role": "Attacker",
     "tags": [],
     "baseStats": {

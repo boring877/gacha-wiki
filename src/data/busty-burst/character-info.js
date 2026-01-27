@@ -2576,6 +2576,103 @@ export const BUSTY_BURST_CHARACTER_INFO = {
       source: 'Summer 2025 Banner',
     },
   },
+
+  // Blade of Judgment Banner Characters (Jan 2026)
+  'ssr-lucie': {
+    slug: 'ssr-lucie',
+    name: 'Lucie',
+    displayName: 'Lucie',
+    baseName: 'Lucie',
+    title: null,
+    rarity: 'SSR',
+    element: 'Wind',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'I', number: 1 },
+    actionSpeed: 'Slightly Slow',
+    range: 240,
+    weaponType: 'Slash',
+    skillTypes: ['Buff', 'Debuff', 'Disrupt'],
+    image: 'Lucie',
+    profile: {
+      height: '161cm',
+      bust: '98cm (J Cup)',
+      waist: '58cm',
+      hips: '85cm',
+    },
+    credits: {
+      illustration: { japanese: 'オギノ', romanized: 'Ogino' },
+      voice: { japanese: 'ひむろゆり', romanized: 'Himuro Yuri' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Blade of Judgment Banner',
+    },
+  },
+
+  'sr-rui': {
+    slug: 'sr-rui',
+    name: 'Rui',
+    displayName: 'Rui',
+    baseName: 'Rui',
+    title: null,
+    rarity: 'SR',
+    element: 'Fire',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'I', number: 1 },
+    actionSpeed: 'Slightly Fast',
+    range: 240,
+    weaponType: 'Slash',
+    skillTypes: ['Debuff'],
+    image: 'Rui',
+    profile: {
+      height: '167cm',
+      bust: '99cm (I Cup)',
+      waist: '60cm',
+      hips: '88cm',
+    },
+    credits: {
+      illustration: { japanese: 'brick', romanized: 'brick' },
+      voice: { japanese: '森乃なんな', romanized: 'Morino Nanna' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Blade of Judgment Banner',
+    },
+  },
+
+  'sr-nue': {
+    slug: 'sr-nue',
+    name: 'Nue',
+    displayName: 'Nue',
+    baseName: 'Nue',
+    title: null,
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'II', number: 2 },
+    actionSpeed: 'Slightly Slow',
+    range: 360,
+    weaponType: 'Strike/Blunt',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'Nue',
+    profile: {
+      height: '182cm',
+      bust: '111cm (L Cup)',
+      waist: '65cm',
+      hips: '96cm',
+    },
+    credits: {
+      illustration: { japanese: '山田ゴゴゴ', romanized: 'Yamada Gogogo' },
+      voice: { japanese: '有賀桃', romanized: 'Ariga Momo' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Blade of Judgment Banner',
+    },
+  },
 };
 
 // Helper function to get character by slug

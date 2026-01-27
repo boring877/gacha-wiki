@@ -363,6 +363,135 @@
   line-height: 1.4;
 }
 
+/* Combat Info */
+.bb-ltc-combat-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.bb-ltc-combat-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-ltc-combat-info-label {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-ltc-combat-info-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+}
+
+/* Skill Loop */
+.bb-ltc-skill-loop {
+  border-top: 1px solid var(--bb-border);
+  padding-top: 1rem;
+}
+
+.bb-ltc-skill-loop-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.bb-ltc-skill-loop-pattern {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-ltc-skill-loop-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-ltc-skill-loop-title {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+  min-width: 60px;
+}
+
+.bb-ltc-skill-loop-sequence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.bb-ltc-action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.bb-ltc-action-icon:hover {
+  transform: scale(1.1);
+}
+
+.bb-ltc-action-icon.action-0 {
+  border: 2px solid rgba(107, 114, 128, 0.5);
+}
+
+.bb-ltc-action-icon.action-1 {
+  border: 2px solid rgba(59, 130, 246, 0.6);
+}
+
+.bb-ltc-action-icon.action-2 {
+  border: 2px solid rgba(168, 85, 247, 0.6);
+}
+
+.bb-ltc-action-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 0.35rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(107, 114, 128, 0.3);
+  color: #9ca3af;
+}
+
+.bb-ltc-skill-loop-desc {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* Conditional Skills */
+.bb-ltc-skill-condition {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  white-space: nowrap;
+}
+
+.bb-ltc-skill-note {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+  margin-top: 0.35rem;
+  font-style: italic;
+}
+
 /* Recommended Characters */
 .bb-ltc-recommended-chars {
   display: grid;

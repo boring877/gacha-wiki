@@ -426,4 +426,105 @@ export const characterBuilds = {
       };
     })(),
   },
+  lucie: {
+    slug: 'lucie',
+    character: {
+      name: 'Lucie',
+      fileName: 'Lucie',
+      characterId: 2073,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: {
+      name: 'Annihilation Sword',
+      image: 'Sword_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const emeraldSet = getAccessorySet('emerald');
+      return {
+        name: 'Emerald 4 Set + 1 Random SSR',
+        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(emeraldSet.setEffects),
+        mainStats: getMainStats('Physical', 'Support', 'emerald'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+      };
+    })(),
+  },
+  rui: {
+    slug: 'rui',
+    character: {
+      name: 'Rui',
+      fileName: 'Rui',
+      characterId: 2074,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: {
+      name: 'Annihilation Sword',
+      image: 'Sword_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+  nue: {
+    slug: 'nue',
+    character: {
+      name: 'Nue',
+      fileName: 'Nue',
+      characterId: 2075,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: {
+      name: 'Annihilation Gauntlet',
+      image: 'Gauntlet_of_Annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

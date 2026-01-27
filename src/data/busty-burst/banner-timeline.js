@@ -5,7 +5,31 @@
  */
 
 export const bannerTimelineData = [
-  // #7 - Infinite Subjugation Battle - Pastel (Jan 20 - Jan 27) - CURRENT
+  // #8 - Blade of Judgment (Jan 27 - Feb 10) - CURRENT
+  {
+    id: 'blade-of-judgment-2026',
+    title: '"Blade of Judgment" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Lucie',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: 'Rui',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-01-27T03:00:00Z',
+    endDate: '2026-02-10T03:00:00Z',
+    description: '"Blade of Judgment" Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'blade-of-judgment',
+  },
+  // #7 - Infinite Subjugation Battle - Pastel (Jan 20 - Jan 27) - ENDED
   {
     id: 'infinite-subjugation-battle-pastel-2026',
     title: '"Beat them down with fiery passion" Event Summon',
@@ -21,10 +45,10 @@ export const bannerTimelineData = [
     endDate: '2026-01-27T03:00:00Z',
     description: 'Infinite Subjugation Battle Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'This Paladin will be added to the Standard Banner after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'infinite-subjugation-pastel',
   },
-  // #6 - Octo-Octo Beach Panic Event Summon (Jan 13 - Jan 27) - CURRENT
+  // #6 - Octo-Octo Beach Panic Event Summon (Jan 13 - Jan 27) - ENDED
   {
     id: 'octo-octo-beach-panic-2026',
     title: '"Octo-Octo Beach Panic!!" Event Summon',
@@ -50,7 +74,7 @@ export const bannerTimelineData = [
     endDate: '2026-01-27T03:00:00Z',
     description: 'Octo-Octo Beach Panic!! Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'Summer beach banner featuring swimsuit characters.',
-    status: 'current',
+    status: 'ended',
     image: 'octo-octo-beach-panic',
   },
   // #5 - Beauty Witch Party People Event Summon (Jan 6 - Jan 13) - CURRENT

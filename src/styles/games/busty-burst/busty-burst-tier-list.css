@@ -239,6 +239,20 @@
   hyphens: auto;
 }
 
+/* Rarity Image in Tier List */
+.bb-tier-rarity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.bb-tier-rarity img {
+  width: 64px !important;
+  height: 32px !important;
+  object-fit: contain;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .bb-tier-list-section {
@@ -282,6 +296,11 @@
 
   .bb-character-name {
     font-size: 0.8rem;
+  }
+
+  .bb-tier-rarity img {
+    width: 48px !important;
+    height: 24px !important;
   }
 }
 

@@ -798,6 +798,37 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Attacker',
     tier: 'A',
   },
+  // Blade of Judgment Banner (Jan 2026)
+  {
+    id: 'lucie',
+    characterId: 2073,
+    name: 'Lucie',
+    fileName: 'Lucie',
+    rarity: 'SSR',
+    element: 'Wind',
+    role: 'Attacker',
+    tier: 'SS',
+  },
+  {
+    id: 'rui',
+    characterId: 2074,
+    name: 'Rui',
+    fileName: 'Rui',
+    rarity: 'SR',
+    element: 'Fire',
+    role: 'Attacker',
+    tier: 'S',
+  },
+  {
+    id: 'nue',
+    characterId: 2075,
+    name: 'Nue',
+    fileName: 'Nue',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'S',
+  },
 ];
 
 export const getPaladinById = id => {

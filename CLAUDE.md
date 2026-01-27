@@ -7,9 +7,9 @@
 
 ## Build Rules
 
-- Do NOT run `bun run build` after every small change
-- Only run builds when explicitly asked or when all changes are complete
-- Batch multiple changes together before building
+- Do NOT run `bun run build` - the dev server is already running locally
+- Never run build tests unless explicitly asked by the user
+- The user will test changes themselves in the browser
 
 ## Data Entry Rules
 

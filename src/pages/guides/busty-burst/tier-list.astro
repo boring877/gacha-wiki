@@ -1,13 +1,15 @@
 ---
 import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
-import { getTierList } from '../../../data/busty-burst/tier-lists.js';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import { getTierList, getAllTierLists } from '../../../data/busty-burst/tier-lists.js';
 
 // Import badge styles directly to ensure they're loaded
 import '../../../styles/games/busty-burst/busty-burst-badges.css';
 
-// Get tier list
+// Get all tier lists
 const beginnerTierList = getTierList('beginner');
+const srTierList = getTierList('sr');
 
 // Page metadata
 const title = 'BBB Busty - Tier List';
@@ -17,8 +19,15 @@ const gameTitle = 'Tier List';
 ---
 
 <TierListLayout title={title} description={description} gameTitle={gameTitle} showTitle={true}>
-  <!-- Tier List Section -->
-  <section id="tier-list" class="bb-tier-list-section">
+  <!-- Tab Navigation -->
+  <div class="bb-tier-list-tabs">
+    <button class="bb-tab-button active" data-tab="beginner">Beginner Tier List</button>
+    <button class="bb-tab-button" data-tab="sr">SR Only Tier List</button>
+  </div>
+
+  <!-- Beginner Tier List Tab -->
+  <div id="beginner-tab" class="bb-tab-content active">
+    <section id="tier-list" class="bb-tier-list-section">
       <div class="bb-tier-list-header">
         <h2 class="bb-tier-list-title">EcchiPen Tier List</h2>
         <p class="bb-tier-list-description">
@@ -64,8 +73,8 @@ const gameTitle = 'Tier List';
                       />
                     </div>
                     <div class="bb-character-name">{character.name}</div>
-                    <div class="bb-badge" data-rarity={character.rarity || 'SR'}>
-                      {character.rarity || 'SR'}
+                    <div class="bb-tier-rarity">
+                      <RarityImage rarity={character.rarity || 'SR'} width={64} height={32} />
                     </div>
                   </div>
                 ))}
@@ -74,6 +83,90 @@ const gameTitle = 'Tier List';
           ))
         }
       </div>
-  </section>
+    </section>
+  </div>
 
+  <!-- SR Only Tier List Tab -->
+  <div id="sr-tab" class="bb-tab-content">
+    <section class="bb-tier-list-section">
+      <div class="bb-tier-list-header">
+        <h2 class="bb-tier-list-title">SR Only Tier List</h2>
+        <p class="bb-tier-list-description">
+          {
+            srTierList?.description ||
+              'Tier list for SR rarity characters only. Great for early game and budget builds.'
+          }
+        </p>
+        <p class="bb-tier-list-last-updated">
+          Last updated: {srTierList?.lastUpdated || '2025-12-30'}
+        </p>
+      </div>
+
+      <!-- Info Box -->
+      <div class="bb-tier-list-info">
+        <h3>About This Tier List</h3>
+        <p>
+          This tier list ranks SR characters for SR Raid mode, which limits you to only use SR units.
+        </p>
+      </div>
+
+      <!-- Tier List Display -->
+      <div class="bb-tier-list-container">
+        {
+          srTierList?.tiers.map(tier => (
+            <div class="bb-tier-row">
+              <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+                {tier.definition.label}
+              </div>
+              <div class="bb-tier-characters">
+                {tier.characters.map(character => (
+                  <div class="bb-tier-character-card">
+                    <div class="bb-character-image-wrapper">
+                      <PaladinImage
+                        characterId={character.characterId || 2001}
+                        alt={character.name}
+                        width={180}
+                        height={180}
+                        quality={95}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="bb-character-name">{character.name}</div>
+                    <div class="bb-tier-rarity">
+                      <RarityImage rarity={character.rarity || 'SR'} width={64} height={32} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabButtons = document.querySelectorAll('.bb-tab-button');
+      const tabContents = document.querySelectorAll('.bb-tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabName = button.getAttribute('data-tab');
+
+          // Remove active class from all buttons and contents
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
+
+          // Add active class to clicked button and corresponding content
+          button.classList.add('active');
+          const targetTab = document.getElementById(`${tabName}-tab`);
+          if (targetTab) {
+            targetTab.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 </TierListLayout>

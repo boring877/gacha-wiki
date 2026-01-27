@@ -46,7 +46,7 @@ const getCharacterId = (fileName: string) => {
               <div class="bb-build-card-info">
                 <h3 class="bb-build-card-name">{character.name}</h3>
                 <div class="bb-build-card-icons">
-                  <RarityImage rarity={character.rarity} width={32} height={32} />
+                  <RarityImage rarity={character.rarity} width={64} height={32} class="bb-build-rarity-img" />
                   <ElementImage element={character.element} width={24} height={24} />
                   <TypeofATKImage fileName={`${character.attackType}.png`} alt={character.attackType} width={24} height={24} />
                   <WeaponIcon weapon={character.weaponType || 'Slash'} width={24} height={24} />
@@ -123,6 +123,12 @@ const getCharacterId = (fileName: string) => {
     flex-shrink: 0;
   }
 
+  .bb-build-card-icons img.bb-build-rarity-img {
+    width: 64px !important;
+    height: 32px !important;
+    object-fit: contain;
+  }
+
   .bb-build-card-icons .typeofattk-image-wrapper {
     display: flex;
     align-items: center;
@@ -156,9 +162,9 @@ const getCharacterId = (fileName: string) => {
       height: 20px !important;
     }
 
-    .bb-build-card-icons img:first-child {
-      width: 26px !important;
-      height: 26px !important;
+    .bb-build-card-icons img.bb-build-rarity-img {
+      width: 48px !important;
+      height: 24px !important;
     }
   }
 </style>
