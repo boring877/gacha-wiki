@@ -15195,8 +15195,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "MDEF": 14
     },
     "skillRotation": {
-      "opening": "",
-      "loop": ""
+      "opening": "Skill2 → Skill1 → Basic → Basic → Basic → Basic",
+      "loop": "Basic → Skill1 → Basic → Basic → Basic → Basic → Skill2 → Skill1 → Basic → Basic → Basic → Basic → Basic"
     },
     "basicAttack": {
       "icon": "skill001/skill0001",
@@ -15360,8 +15360,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "MDEF": 83
     },
     "skillRotation": {
-      "opening": "",
-      "loop": ""
+      "opening": "Skill1 → Skill2 → Basic → Basic → Basic",
+      "loop": "Skill1 → Basic → Skill2 → Basic → Basic → Skill1 → Basic → Basic → Basic"
     },
     "basicAttack": {
       "icon": "skill001/skill0001",
@@ -15532,8 +15532,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "MDEF": 83
     },
     "skillRotation": {
-      "opening": "",
-      "loop": ""
+      "opening": "Skill2 → Skill1 → Basic → Basic → Basic",
+      "loop": "Basic → Basic → Skill2 → Basic → Skill1 → Basic → Basic → Basic"
     },
     "basicAttack": {
       "icon": "skill001/skill0001",
