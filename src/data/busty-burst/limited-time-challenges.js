@@ -530,6 +530,12 @@ export const limitedTimeChallengesConfig = {
           { slug: 'meinias', note: 'Wind DPS' },
           { slug: 'festival-attire-estiriel', note: 'Holy Support/Healer' },
         ],
+        alternativeTeam: [
+          // Lucie and Liesel are both viable alternatives
+          { slug: 'ssr-lucie', note: 'SSR Wind Support - can replace Pastel, Meinias, or Luca' },
+          { slug: 'liesel', note: 'SR Light Support - can replace Pastel, Meinias, or Luca' },
+        ],
+        alternativeNote: 'Lucie and Liesel are both good alternatives. They can be used in exchange for Pastel, Meinias, or even Luca. The best team composition is hard to determine - experiment with different combinations!',
         supports: [
           // Wind supports (for Wind blessing)
           { id: 2038 },  // Celestia (SR Wind) - ATK 140, Pierce (Action Speed +6%)

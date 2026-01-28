@@ -653,6 +653,45 @@ const bossKeywords = [
                       </div>
                     </div>
 
+                    <!-- Alternative Team Members -->
+                    {challenge.teamComposition.alternativeTeam && challenge.teamComposition.alternativeTeam.length > 0 && (
+                      <div class="bb-ltc-team-section bb-ltc-alternative-team">
+                        <h3 class="bb-ltc-team-section-title">Alternative Characters</h3>
+                        {challenge.teamComposition.alternativeNote && (
+                          <p class="bb-ltc-team-note">{challenge.teamComposition.alternativeNote}</p>
+                        )}
+                        <div class="bb-ltc-team-grid">
+                          {challenge.teamComposition.alternativeTeam.map(member => {
+                            const char = getCharacterDataBySlug(member.slug);
+                            if (!char) return null;
+                            return (
+                              <a href={`/guides/busty-burst/characters/${member.slug}`} class="bb-ltc-char-card bb-ltc-char-alt-card">
+                                <div class="bb-ltc-char-image">
+                                  <PaladinImage
+                                    characterId={char.characterId}
+                                    alt={char.displayName || char.name}
+                                    width={60}
+                                    height={60}
+                                    imageType="icon"
+                                  />
+                                </div>
+                                <div class="bb-ltc-char-info">
+                                  <span class="bb-ltc-char-name">{char.displayName || char.name}</span>
+                                  <div class="bb-ltc-char-badges">
+                                    <ElementImage element={char.element} width={16} height={16} />
+                                    <span class="bb-ltc-char-role">{char.role}</span>
+                                  </div>
+                                  {member.note && (
+                                    <span class="bb-ltc-char-note">{member.note}</span>
+                                  )}
+                                </div>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
                     <!-- Supports (10 Characters) -->
                     <div class="bb-ltc-team-section">
                       <h3 class="bb-ltc-team-section-title">Supports (10)</h3>
