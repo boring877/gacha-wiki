@@ -14,7 +14,7 @@ export const taimaninSquadConfig = {
     description:
       'Taimanin Squad is a turn-based RPG featuring 3D characters from the legendary Taimanin franchise.',
     playUrl: 'https://play.google.com/store/apps/details?id=com.GREMORYGames.TaimaninSquad',
-    apkUrl: 'https://mega.nz/file/AXcmmJba#iXciS8bmDb_boR2BkPxuoyx9TSTgFxG1dg6ntqK7EJw',
+    apkUrl: 'https://mega.nz/file/tX0mFIhb#aM_xCfLpPuMSp-WlQlBVy9Ds5xxrXHDvsYc43MGGHW8',
     appStoreUrl: 'https://apps.apple.com/us/app/taimanin-squad/id6755016024',
     galaxyStoreUrl: 'https://galaxystore.samsung.com/detail/com.GREMORYGames.TaimaninSquad.Galaxy',
     lastUpdated: new Date(),
