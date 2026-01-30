@@ -5,7 +5,7 @@ import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIc
 import { Image } from 'astro:assets';
 import charactersData from '../../../../data/silver-and-blood/characters_info.json';
 
-// Import rarity frame images (UR=gold/ssr, SSR=purple/sr, SR=blue/r)
+// Import rarity frame images (gold frame for UR/SSR, purple frame for SR, blue frame for R)
 import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
 import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
 import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
@@ -35,8 +35,9 @@ import roleWarrior from '../../../../assets/images/games/silver-and-blood/icons/
 
 const rarityImages: Record<string, ImageMetadata> = {
   'UR': rarityGold,
-  'SSR': rarityPurple,
-  'SR': rarityBlue,
+  'SSR': rarityGold,
+  'SR': rarityPurple,
+  'R': rarityBlue,
 };
 
 const moonPhaseImages: Record<string, ImageMetadata> = {

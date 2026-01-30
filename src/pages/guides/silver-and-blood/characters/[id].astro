@@ -248,6 +248,7 @@ export async function getStaticPaths() {
       moonPhaseIcon: infoChar.moonPhaseIcon || '',
       damageTypeIcon: infoChar.damageTypeIcon || '',
       equipmentTypeIcon: infoChar.equipmentTypeIcon || '',
+      effectiveRangeDesc: infoChar.effectiveRangeDesc || '',
       // Skills
       skills,
     };
@@ -740,6 +741,21 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
                           {buff.description && (
                             <p class="effect-desc" set:html={highlightSkillValues(buff.description)} />
                           )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {skill.tips && skill.tips.length > 0 && (
+                <div class="skill-tips">
+                  <span class="tips-label">Mechanic:</span>
+                  <div class="tips-list">
+                    {skill.tips.map((tip: any) => (
+                      <div class="tip-item">
+                        <div class="tip-info">
+                          <span class="tip-name">{tip.name}</span>
+                          <p class="tip-desc">{tip.description}</p>
                         </div>
                       </div>
                     ))}
@@ -1548,6 +1564,55 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
     color: var(--sab-text-medium, #a0a0a0);
     font-size: 0.85rem;
     margin: 0.25rem 0 0;
+    line-height: 1.4;
+  }
+
+  /* Skill Tips/Mechanics */
+  .skill-tips {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sab-border-light, #444);
+  }
+
+  .tips-label {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(194, 107, 107, 0.1);
+    border-left: 3px solid var(--sab-calm-red, #8b0000);
+    border-radius: 6px;
+  }
+
+  .tip-info {
+    flex: 1;
+  }
+
+  .tip-name {
+    color: var(--sab-calm-red, #c26b6b);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .tip-desc {
+    color: var(--sab-text-medium, #a0a0a0);
+    font-size: 0.85rem;
+    margin: 0;
     line-height: 1.4;
   }
 

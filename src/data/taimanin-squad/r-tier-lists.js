@@ -107,6 +107,7 @@ const R_TIER_DATA = {
     { name: 'Shishimura Koro', aura: AURA_TYPES.MAIN_STORE },
     { name: 'Nisha Gaiza', aura: AURA_TYPES.MAIN_STORE },
     // Special Operation
+    { name: 'Tina Worrell', aura: AURA_TYPES.SPECIAL_OPERATION },
     { name: 'Hiyama Kirin', aura: AURA_TYPES.SPECIAL_OPERATION },
     { name: 'Echizen Saya', aura: AURA_TYPES.SPECIAL_OPERATION },
     // Extermination
@@ -145,7 +146,6 @@ const R_TIER_DATA = {
     { name: 'Major', aura: AURA_TYPES.MAIN_STORE },
     { name: 'Fujibayashi Yuno', aura: AURA_TYPES.MAIN_STORE },
     // Special Operation
-    { name: 'Tina Worrell', aura: AURA_TYPES.SPECIAL_OPERATION },
     { name: 'Igawa Senshu', aura: AURA_TYPES.SPECIAL_OPERATION },
     { name: 'Kuroki Shizuku', aura: AURA_TYPES.SPECIAL_OPERATION },
     { name: 'Rene', aura: AURA_TYPES.SPECIAL_OPERATION },
