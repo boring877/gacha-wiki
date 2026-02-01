@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  echidnaData,
+  echidnaSEO,
+  echidnaHighlighting,
+} from '../../../../data/horizon-walker/characters/echidna.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={echidnaSEO.title}
+  description={echidnaSEO.description}
+  gameTitle={echidnaData.name}
+  character={echidnaData}
+>
+  <CharacterPageTemplate characterData={{ ...echidnaData, highlightPatterns: echidnaHighlighting }} />
+</CharacterIndividualLayout>
