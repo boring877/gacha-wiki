@@ -38,13 +38,20 @@ const characterBuilds = [
   },
   {
     id: 5,
+    buildSlug: 'echidna',
+    displayName: 'Echidna',
+    rarity: 'EX',
+    available: true,
+  },
+  {
+    id: 6,
     buildSlug: 'kim-ga-young',
     displayName: 'Kim Ga-young',
     rarity: 'S',
     available: true,
   },
   {
-    id: 6,
+    id: 7,
     buildSlug: 'palekar',
     displayName: 'Palekar',
     rarity: 'EX',
@@ -113,9 +120,9 @@ export { characterBuilds };
 
 // Export metadata for SEO
 export const buildsSEO = {
-  title: 'Horizon Walker Character Builds - Juha, Vlissing & Olivia Build Guides',
+  title: 'Horizon Walker Character Builds - Juha, Vlissing, Olivia & Echidna Build Guides',
   description:
-    'Complete build guides for Horizon Walker characters. Featuring Juha ranged DPS build, Vlissing magic healer/support build, and Olivia melee counterattack build with optimized equipment and strategies.',
+    'Complete build guides for Horizon Walker characters. Featuring Juha ranged DPS build, Vlissing magic healer/support build, Olivia melee counterattack build, and Echidna poison DoT mage build with optimized equipment and strategies.',
   keywords: [
     'Horizon Walker',
     'Juha build',
@@ -124,6 +131,8 @@ export const buildsSEO = {
     'Flow Guardian',
     'Olivia build',
     'Valiant Duke',
+    'Echidna build',
+    'Venombound Elemental',
     'character builds',
     'build guides',
     'ranged DPS',
@@ -131,6 +140,10 @@ export const buildsSEO = {
     'support build',
     'melee DPS',
     'counterattack build',
+    'poison damage',
+    'DoT mage',
+    'venombound',
+    'arcane elemental',
     'slash damage',
     'warrior build',
     'archer build',

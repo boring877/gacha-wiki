@@ -157,6 +157,7 @@ const MAP_CLEAR_CHARACTERS = {
     'Emilia',
   ],
   S: [
+    'Echidna',
     'Yeon Chae-young',
     'Min eun-sol',
     'Kalina',
@@ -212,6 +213,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Emilia',
   ],
   S: [
+    'Echidna',
     'Everette',
     'Kilon',
     'Osla',
@@ -296,6 +298,7 @@ const DOPAMIN_CHARACTERS = {
     'Kim ga-young',
   ],
   S: [
+    'Echidna',
     'Min un-sol',
     'Yeon chae-young',
     'Platina',

@@ -54,21 +54,42 @@ let recommendedStigmaFullEx5: any = null;
 let mixedStigmaPieces: any = null;
 
 if (isMixedStigma) {
-  // Handle mixed 2-set stigma builds (like Olivia)
-  // Reckoning of Sin pieces
-  const reckoningOfSin = stigmas.EX?.find(stigma => stigma.name === 'Reckoning of Sin');
-  // The Thousand Mile Weave pieces
-  const thousandMileWeave = stigmas.EX?.find(stigma => stigma.name === 'The Thousand Mile Weave');
+  // Handle mixed 2-set stigma builds
+  // Check which character this is and load appropriate stigmas
+  if (character.slug === 'echidna') {
+    // Echidna: The Eternal Battle + The Wind that Wanders the World
+    const eternalBattle = stigmas.EX?.find(stigma => stigma.name === 'The Eternal Battle');
+    const windWanders = stigmas.EX?.find(stigma => stigma.name === 'The Wind that Wanders the World');
 
-  if (reckoningOfSin && thousandMileWeave) {
-    mixedStigmaPieces = {
-      top: thousandMileWeave.pieces.top, // The Thousand Mile Weave
-      bottom: reckoningOfSin.pieces.bottom, // Reckoning of Sin
-      left: reckoningOfSin.pieces.left, // Reckoning of Sin
-      right: thousandMileWeave.pieces.right, // The Thousand Mile Weave
-      twoSetBonus1: reckoningOfSin.twoSet, // AP Recovery +4% during battle
-      twoSetBonus2: thousandMileWeave.twoSet, // Melee ATK +10% during battle
-    };
+    if (eternalBattle && windWanders) {
+      mixedStigmaPieces = {
+        stigma1Name: 'The Eternal Battle',
+        stigma2Name: 'The Wind that Wanders the World',
+        top: eternalBattle.pieces.top, // The Eternal Battle
+        bottom: windWanders.pieces.bottom, // The Wind that Wanders the World
+        left: eternalBattle.pieces.left, // The Eternal Battle
+        right: windWanders.pieces.right, // The Wind that Wanders the World
+        twoSetBonus1: eternalBattle.twoSet, // Magic ATK +10% during battle
+        twoSetBonus2: windWanders.twoSet, // SPD +10% during battle
+      };
+    }
+  } else {
+    // Default to Olivia's build: Reckoning of Sin + The Thousand Mile Weave
+    const reckoningOfSin = stigmas.EX?.find(stigma => stigma.name === 'Reckoning of Sin');
+    const thousandMileWeave = stigmas.EX?.find(stigma => stigma.name === 'The Thousand Mile Weave');
+
+    if (reckoningOfSin && thousandMileWeave) {
+      mixedStigmaPieces = {
+        stigma1Name: 'Reckoning of Sin',
+        stigma2Name: 'The Thousand Mile Weave',
+        top: thousandMileWeave.pieces.top, // The Thousand Mile Weave
+        bottom: reckoningOfSin.pieces.bottom, // Reckoning of Sin
+        left: reckoningOfSin.pieces.left, // Reckoning of Sin
+        right: thousandMileWeave.pieces.right, // The Thousand Mile Weave
+        twoSetBonus1: reckoningOfSin.twoSet, // AP Recovery +4% during battle
+        twoSetBonus2: thousandMileWeave.twoSet, // Melee ATK +10% during battle
+      };
+    }
   }
 } else if (isObjectRecommendation) {
   // Handle object-based recommendations (like Emilia)
@@ -224,15 +245,15 @@ if (isMixedStigma) {
         <h3 class="character-build-section-title">Recommended Stigma</h3>
         <div class="stigma-container">
           {isMixedStigma ? (
-            // Mixed 2-Set Stigma Display (like Olivia)
+            // Mixed 2-Set Stigma Display
             <>
               <div class="stigma-header">
                 <div class="stigma-title-section">
                   <div class="stigma-info-container">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName="Reckoning of Sin"
-                        alt="Reckoning of Sin stigma"
+                        imageName={mixedStigmaPieces.stigma1Name}
+                        alt={`${mixedStigmaPieces.stigma1Name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -240,7 +261,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-name-label">
-                      <h5>Reckoning of Sin</h5>
+                      <h5>{mixedStigmaPieces.stigma1Name}</h5>
                       <span class="hw-badge" data-rarity="EX">
                         EX
                       </span>
@@ -252,8 +273,8 @@ if (isMixedStigma) {
                   <div class="stigma-info-container">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName="The Thousand Mile Weave"
-                        alt="The Thousand Mile Weave stigma"
+                        imageName={mixedStigmaPieces.stigma2Name}
+                        alt={`${mixedStigmaPieces.stigma2Name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -261,7 +282,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-name-label">
-                      <h5>The Thousand Mile Weave</h5>
+                      <h5>{mixedStigmaPieces.stigma2Name}</h5>
                       <span class="hw-badge" data-rarity="EX">
                         EX
                       </span>
@@ -272,11 +293,11 @@ if (isMixedStigma) {
 
               <div class="stigma-bonuses">
                 <div class="stigma-set-bonus">
-                  <h5>Reckoning of Sin (2-Set Bonus)</h5>
+                  <h5>{mixedStigmaPieces.stigma1Name} (2-Set Bonus)</h5>
                   <p>{mixedStigmaPieces.twoSetBonus1}</p>
                 </div>
                 <div class="stigma-set-bonus">
-                  <h5>The Thousand Mile Weave (2-Set Bonus)</h5>
+                  <h5>{mixedStigmaPieces.stigma2Name} (2-Set Bonus)</h5>
                   <p>{mixedStigmaPieces.twoSetBonus2}</p>
                 </div>
               </div>
@@ -287,28 +308,28 @@ if (isMixedStigma) {
                   <div class="stigma-piece">
                     <div class="piece-slot">Top</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">The Thousand Mile Weave</div>
+                      <div class="piece-set-name">{mixedStigmaPieces.top.name}</div>
                       <div class="piece-stat-value">{mixedStigmaPieces.top.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Bottom</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">Reckoning of Sin</div>
+                      <div class="piece-set-name">{mixedStigmaPieces.bottom.name}</div>
                       <div class="piece-stat-value">{mixedStigmaPieces.bottom.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Left</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">Reckoning of Sin</div>
+                      <div class="piece-set-name">{mixedStigmaPieces.left.name}</div>
                       <div class="piece-stat-value">{mixedStigmaPieces.left.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Right</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">The Thousand Mile Weave</div>
+                      <div class="piece-set-name">{mixedStigmaPieces.right.name}</div>
                       <div class="piece-stat-value">{mixedStigmaPieces.right.stat}</div>
                     </div>
                   </div>

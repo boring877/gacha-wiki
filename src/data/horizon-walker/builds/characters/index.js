@@ -5,9 +5,10 @@ export { juhaBuildConfig } from './juha.js';
 export { vlissingBuildConfig } from './vlissing.js';
 export { oliviaBuildConfig } from './olivia.js';
 export { emiliaBuildConfig } from './emilia.js';
+export { echidnaBuildConfig } from './echidna.js';
 export { kimGaYoungBuildConfig } from './kim-ga-young.js';
 export { palekarBuildConfig } from './palekar.js';
 export { defaultBuildConfig } from './default.js';
 
 // List all available character builds
-export const availableCharacterBuilds = ['juha', 'vlissing', 'olivia', 'emilia', 'kim-ga-young', 'palekar'];
+export const availableCharacterBuilds = ['juha', 'vlissing', 'olivia', 'emilia', 'echidna', 'kim-ga-young', 'palekar'];
