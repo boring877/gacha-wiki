@@ -567,10 +567,13 @@ const calculateBonusTotal = (bonusObj: Record<string, Record<string, number>>) =
               });
             }
           } else {
-            // Handle standard format: grades object now has cumulative values
+            // Handle standard format: sum all grades up to selected grade
             const stat = passive.stat;
-            const value = grade > 0 ? (passive.grades?.[`g${grade}`] || 0) : 0;
-            results.push({ slot: passive.slot, stat, value });
+            let cumulative = 0;
+            for (let g = 1; g <= grade; g++) {
+              cumulative += passive.grades?.[`g${g}`] || 0;
+            }
+            results.push({ slot: passive.slot, stat, value: cumulative });
           }
         });
 

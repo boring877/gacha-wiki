@@ -527,4 +527,35 @@ export const characterBuilds = {
       };
     })(),
   },
+  rosa: {
+    slug: 'rosa',
+    character: {
+      name: 'Rosa',
+      fileName: 'Rosa',
+      characterId: 2085,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: {
+      name: 'Sword of Annihilation',
+      image: 'Sword_of_annihilation.png',
+      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    },
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

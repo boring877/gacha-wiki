@@ -829,6 +829,17 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Attacker',
     tier: 'S',
   },
+  // February 2025 Update
+  {
+    id: 'rosa',
+    characterId: 2085,
+    name: 'Rosa',
+    fileName: 'Rosa',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

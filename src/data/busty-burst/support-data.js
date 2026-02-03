@@ -1,6 +1,6 @@
 // Busty Burst Support Data
 // Auto-generated from WIKI_SUPPORT_DATA_v6.txt
-// Contains support stats for all 76 characters
+// Contains support stats for all 77 characters
 
 // Element mapping (Japanese to English)
 export const ELEMENT_MAP = {
@@ -24,7 +24,7 @@ export const WEAPON_MAP = {
 // Weapon inspiration effects by weapon type
 export const WEAPON_INSPIRATION_EFFECTS = {
   'Shot': { stat: 'Accuracy', values: [3, 6, 10] },
-  'Slash': { stat: 'Accuracy', values: [3, 6, 10] },
+  'Slash': { stat: 'DEF/M.DEF', values: [3, 6, 10] },
   'Strike': { stat: 'Block', values: [3, 6, 10] },
   'Throw': { stat: 'P.ATK/M.ATK', values: ['2%', '4%', '6%'] },
   'Pierce': { stat: 'Action Speed', values: ['2%', '4%', '6%'] }
@@ -188,7 +188,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -207,7 +207,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -226,7 +226,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -283,7 +283,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -321,7 +321,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -397,7 +397,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -435,7 +435,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -454,7 +454,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -511,7 +511,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -607,6 +607,25 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
       inspiration: { name: 'Shot Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
+    id: 2085,
+    name: 'Rosa',
+    rarity: 'SSR',
+    element: 'Holy',
+    weapon: 'Slash',
+    supportStats: {
+      lb0: { 'ATK': 80 },
+      lb1: { 'ATK': 120, 'Crit Rate': 45 },
+      lb2: { 'ATK': 160, 'Crit Rate': 60 },
+      lb3: { 'ATK': 200, 'Crit Rate': 75 },
+      lb4: { 'ATK': 200, 'Crit Rate': 90 },
+      lb5: { 'ATK': 200, 'Crit Rate': 90 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -740,7 +759,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -873,7 +892,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -968,7 +987,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Holy', effect: 'Holy Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1101,7 +1120,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1197,7 +1216,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1368,7 +1387,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1387,7 +1406,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Dark', effect: 'Dark Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1406,7 +1425,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1580,7 +1599,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Wind', effect: 'Wind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {
@@ -1599,7 +1618,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     },
     supportBonus: {
       blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
-      inspiration: { name: 'Slash Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
   {

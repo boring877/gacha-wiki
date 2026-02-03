@@ -254,6 +254,20 @@ const rarities = ['SSR', 'SR', 'R'];
               const buffGrowth = hasBuffScaling ? (buffLv90 - buffBase) / 89 : 0;
               const buffValueType = skill.valueType || 'Block';
 
+              // Check for buff skills with level scaling in buffEffects
+              const hasBuffEffectsScaling = skill.buffEffects?.some(b => typeof b.valueLv90 === 'number');
+              const firstScalingBuff = skill.buffEffects?.find(b => typeof b.valueLv90 === 'number');
+              const buffEffectsBase = firstScalingBuff?.value || 0;
+              const buffEffectsLv90 = firstScalingBuff?.valueLv90 || 0;
+
+              // For buff effects with level scaling, store all scaling buffs as JSON
+              const scalingBuffs = skill.buffEffects?.filter(b => typeof b.valueLv90 === 'number') || [];
+              const scalingBuffsJson = scalingBuffs.length > 0 ? JSON.stringify(scalingBuffs.map(b => ({
+                name: b.name,
+                value: b.value,
+                valueLv90: b.valueLv90
+              }))) : '';
+
               // Parse Block scaling if present (format: "+9 (+0.1/lv)")
               // Block base: 9, Block growth: 0.1 per level
               const blockBase = skill.buffEffects?.find(b => b.name?.includes('Block'))?.value || 0;
@@ -309,6 +323,10 @@ const rarities = ['SSR', 'SR', 'R'];
                   data-buff-lv90={buffLv90.toString()}
                   data-buff-type={buffValueType}
                   data-has-buff-scaling={hasBuffScaling ? 'true' : 'false'}
+                  data-has-buff-effects-scaling={hasBuffEffectsScaling ? 'true' : 'false'}
+                  data-buff-effects-base={buffEffectsBase.toString()}
+                  data-buff-effects-lv90={buffEffectsLv90.toString()}
+                  data-scaling-buffs={scalingBuffsJson}
                   data-desc-lv1={skill.descriptionLv1 || ''}
                   data-desc-lv90={skill.descriptionLv90 || ''}
                   data-is-buff={isBuffSkill ? 'true' : 'false'}
@@ -332,10 +350,12 @@ const rarities = ['SSR', 'SR', 'R'];
                     {/* Show buff effects if present */}
                     {skill.buffEffects && skill.buffEffects.length > 0 && (
                       <div class="bb-buff-effects">
-                        {skill.buffEffects.map(buff => (
+                        {skill.buffEffects.map((buff, idx) => (
                           <div class="bb-buff-effect-item">
                             <span class="bb-buff-name">{buff.name}</span>
-                            {buff.value > 0 && <span class="bb-buff-value">+{buff.value}{buff.type === 'percent' ? '%' : ''}</span>}
+                            {buff.value > 0 && (
+                              <span class="bb-buff-value" data-buff-idx={idx.toString()}>+{buff.value}{buff.type === 'percent' ? '%' : ''}</span>
+                            )}
                             {buff.duration && <span class="bb-buff-duration">({buff.duration}s)</span>}
                           </div>
                         ))}
@@ -343,7 +363,7 @@ const rarities = ['SSR', 'SR', 'R'];
                     )}
                   </div>
                   {/* Level calc for skills with scaling values (damage or buff) */}
-                  {(skill.baseDamage || skill.levelGrowth || hasBuffScaling) && (
+                  {(skill.baseDamage || skill.levelGrowth || hasBuffScaling || hasBuffEffectsScaling) && (
                     <div class="bb-skill-level-calc">
                       <div class="bb-skill-level-input">
                         <label>Lv</label>
@@ -357,6 +377,10 @@ const rarities = ['SSR', 'SR', 'R'];
                             <span class="bb-skill-buff-label">{buffValueType}</span>
                             <span class="bb-skill-plus">+</span>
                             <span class="bb-skill-calc-value bb-buff-calc-value">{buffLv90}</span>
+                          </>
+                        ) : hasBuffEffectsScaling ? (
+                          <>
+                            <span class="bb-skill-calc-value bb-buff-calc-value">{buffEffectsLv90}</span>
                           </>
                         ) : (
                           <>
@@ -404,9 +428,15 @@ const rarities = ['SSR', 'SR', 'R'];
                     <div class="bb-passive-item">
                       <SkillIcon skillId={passive.icon} alt={passive.name} width={32} height={32} />
                       <div class="bb-passive-info">
-                        <span class="bb-passive-name">{passive.name}</span>
-                        <span class="bb-passive-effect">{passive.effect}</span>
-                        {passive.effect2 && <span class="bb-passive-effect">{passive.effect2}</span>}
+                        {passive.effects && passive.effects.length > 0 ? (
+                          passive.effects.map((effect, idx) => (
+                            <span class="bb-passive-effect" key={idx}>
+                              {effect.name} +{effect.value}{effect.type === 'percent' ? '%' : ''}
+                            </span>
+                          ))
+                        ) : (
+                          <span class="bb-passive-name">{passive.name}</span>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -510,6 +540,23 @@ const rarities = ['SSR', 'SR', 'R'];
         const buffLv90 = parseFloat(sectionEl.dataset.buffLv90 || '0') || 0;
         const buffGrowth = hasBuffScaling ? (buffLv90 - buffBase) / 89 : 0;
 
+        // Check for buffEffects scaling (buff skills with level scaling in buffEffects)
+        const hasBuffEffectsScaling = sectionEl.dataset.hasBuffEffectsScaling === 'true';
+        const buffEffectsBase = parseFloat(sectionEl.dataset.buffEffectsBase || '0') || 0;
+        const buffEffectsLv90 = parseFloat(sectionEl.dataset.buffEffectsLv90 || '0') || 0;
+        const buffEffectsGrowth = hasBuffEffectsScaling ? (buffEffectsLv90 - buffEffectsBase) / 89 : 0;
+
+        // Parse scaling buffs JSON if present
+        let scalingBuffs: Array<{name: string, value: number, valueLv90: number}> = [];
+        const scalingBuffsStr = sectionEl.dataset.scalingBuffs || '';
+        if (scalingBuffsStr) {
+          try {
+            scalingBuffs = JSON.parse(scalingBuffsStr);
+          } catch (e) {
+            console.error('Failed to parse scalingBuffs:', e);
+          }
+        }
+
         // Parse base value (remove + sign if present)
         const base = parseInt(baseStr.replace('+', ''), 10) || 0;
         // Parse growth value (remove + sign if present)
@@ -533,13 +580,69 @@ const rarities = ['SSR', 'SR', 'R'];
           return Math.round(buffBase + (level - 1) * buffGrowth);
         }
 
+        function calculateBuffEffectsValue(level: number) {
+          // Formula: base + level * growth for buff effects (90 levels total from Lv1 to Lv90)
+          return Math.round(buffEffectsBase + level * buffEffectsGrowth);
+        }
+
         function updateDamageDisplay() {
           let level = parseInt(damageInput.value, 10) || 1;
           // Clamp level between 1 and 90
           level = Math.max(1, Math.min(90, level));
           damageInput.value = level.toString();
 
-          // Handle buff skill scaling
+          // Handle buffEffects scaling (buff skills with level scaling in buffEffects)
+          if (hasBuffEffectsScaling && scalingBuffs.length > 0) {
+            // Use the first scaling buff for the calculator display
+            const firstBuff = scalingBuffs[0];
+            const firstBuffGrowth = (firstBuff.valueLv90 - firstBuff.value) / 90;
+            const firstBuffValue = Math.round(firstBuff.value + level * firstBuffGrowth);
+            resultEl.textContent = firstBuffValue.toString();
+
+            // Update buff effect values in the UI
+            const buffValueElements = section.querySelectorAll('.bb-buff-value[data-buff-idx]');
+            buffValueElements.forEach((el) => {
+              const buffIdx = parseInt((el as HTMLElement).dataset.buffIdx || '0', 10);
+              if (scalingBuffs[buffIdx]) {
+                const buff = scalingBuffs[buffIdx];
+                const growth = (buff.valueLv90 - buff.value) / 90;
+                const value = Math.round(buff.value + level * growth);
+                (el as HTMLElement).textContent = `+${value}`;
+              }
+            });
+
+            // Update description with all buff values
+            const descLv90 = sectionEl.dataset.descLv90 || '';
+            if (descLv90) {
+              const descEl = section.querySelector('.bb-skill-description');
+              if (descEl) {
+                let newDesc = descLv90;
+
+                // Update each buff's value in the description
+                for (const buff of scalingBuffs) {
+                  const growth = (buff.valueLv90 - buff.value) / 90;
+                  const value = Math.round(buff.value + level * growth);
+
+                  // Get the Lv90 value to find and replace in description
+                  const lv90Value = buff.valueLv90;
+
+                  // Replace the Lv90 value with current level value
+                  // Look for: "(value)" where value matches the Lv90 value
+                  const regex = new RegExp(`\\(${lv90Value}\\)`, 'g');
+                  newDesc = newDesc.replace(regex, `(${value})`);
+                }
+
+                // Highlight percentages
+                newDesc = newDesc.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
+                // Highlight numbers in parentheses (buff values)
+                newDesc = newDesc.replace(/\((\d+)\)/g, '(<span class="bb-value-highlight">$1</span>)');
+                descEl.innerHTML = newDesc;
+              }
+            }
+            return;
+          }
+
+          // Handle buff skill scaling (like Block buffs)
           if (hasBuffScaling) {
             const buffValue = calculateBuffValue(level);
             resultEl.textContent = buffValue.toString();

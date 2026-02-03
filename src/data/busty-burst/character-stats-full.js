@@ -68,18 +68,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 5 },
@@ -149,18 +151,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 34, g2: 75, g3: 122, g4: 176, g5: 237, g6: 305, g7: 379, g8: 460, g9: 548, g10: 643 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 96, block: 17, mpCharge: 5 },
@@ -230,18 +234,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 61, g3: 100, g4: 144, g5: 194, g6: 249, g7: 310, g8: 376, g9: 448, g10: 526 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 890, atk: 79, block: 14, mpCharge: 6 },
@@ -311,18 +317,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 30, g2: 66, g3: 107, g4: 154, g5: 207, g6: 266, g7: 331, g8: 402, g9: 479, g10: 562 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 628, matk: 84, block: 15, mpCharge: 5 },
@@ -392,18 +400,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 378, g10: 443 } },
       { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 574, atk: 66, block: 17, mpCharge: 6 },
@@ -473,18 +483,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 824, matk: 76, block: 15, mpCharge: 5 },
@@ -554,18 +566,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 628, matk: 103, block: 15, mpCharge: 6 },
@@ -635,18 +649,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 30, g2: 66, g3: 107, g4: 154, g5: 207, g6: 266, g7: 331, g8: 402, g9: 479, g10: 562 } },
       { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 360, atk: 84, block: 17, mpCharge: 6 },
@@ -716,18 +732,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 54, g3: 88, g4: 127, g5: 171, g6: 220, g7: 274, g8: 333, g9: 397, g10: 466 } },
       { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 711, atk: 70, block: 17, mpCharge: 7 },
@@ -797,18 +815,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 45, g2: 99, g3: 162, g4: 234, g5: 315, g6: 405, g7: 505, g8: 614, g9: 732, g10: 859 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 546, matk: 129, block: 15, mpCharge: 6 },
@@ -878,18 +898,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 777, atk: 76, block: 17, mpCharge: 8 },
@@ -959,18 +981,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 57, block: 15, mpCharge: 5 },
@@ -1040,18 +1064,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 204, g6: 262, g7: 326, g8: 396, g9: 472, g10: 554 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 437, matk: 83, block: 17, mpCharge: 8 },
@@ -1121,18 +1147,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 10 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 10 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 678, atk: 57, block: 14, mpCharge: 4 },
@@ -1202,18 +1230,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 262, g8: 318, g9: 379, g10: 445 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 67, block: 15, mpCharge: 5 },
@@ -1283,18 +1313,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 378, g10: 443 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 675, atk: 66, block: 17, mpCharge: 4 },
@@ -1364,18 +1396,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 245, g7: 305, g8: 370, g9: 441, g10: 517 } },
       { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 585, atk: 78, block: 17, mpCharge: 7 },
@@ -1445,18 +1479,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 655, atk: 103, block: 12, mpCharge: 5 },
@@ -1526,18 +1562,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 62, g3: 101, g4: 146, g5: 197, g6: 253, g7: 315, g8: 383, g9: 456, g10: 535 } },
       { slot: 3, stat: 'DEF', grades: { g1: 2, g2: 4, g3: 6, g4: 9, g5: 12, g6: 15, g7: 19, g8: 23, g9: 27, g10: 32 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 1245, atk: 80, block: 14, mpCharge: 7 },
@@ -1607,18 +1645,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 20, g2: 44, g3: 72, g4: 104, g5: 140, g6: 180, g7: 224, g8: 272, g9: 324, g10: 380 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 716, matk: 57, block: 15, mpCharge: 5 },
@@ -1688,18 +1728,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 32, g2: 70, g3: 114, g4: 165, g5: 222, g6: 285, g7: 355, g8: 431, g9: 513, g10: 602 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 592, atk: 90, block: 17, mpCharge: 4 },
@@ -1769,18 +1811,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 141, g5: 190, g6: 244, g7: 304, g8: 369, g9: 440, g10: 516 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 10 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 10 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 546, atk: 77, block: 15, mpCharge: 4 },
@@ -1850,18 +1894,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 19, g2: 42, g3: 69, g4: 100, g5: 134, g6: 172, g7: 214, g8: 260, g9: 310, g10: 363 } },
       { slot: 3, stat: 'DEF', grades: { g1: 16, g2: 35, g3: 57, g4: 82, g5: 110, g6: 141, g7: 175, g8: 212, g9: 252, g10: 295 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 585, atk: 54, block: 17, mpCharge: 6 },
@@ -1931,18 +1977,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 7 },
@@ -2012,18 +2060,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 31, g3: 50, g4: 72, g5: 97, g6: 125, g7: 156, g8: 189, g9: 225, g10: 264 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 798, atk: 40, block: 18, mpCharge: 6 },
@@ -2093,18 +2143,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 31, g2: 69, g3: 113, g4: 163, g5: 220, g6: 283, g7: 352, g8: 428, g9: 510, g10: 598 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 8, g3: 13, g4: 19, g5: 26, g6: 33, g7: 41, g8: 50, g9: 60, g10: 70 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 628, atk: 90, block: 15, mpCharge: 7 },
@@ -2174,18 +2226,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 262, g8: 318, g9: 379, g10: 445 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 9, g2: 20, g3: 32, g4: 46, g5: 62, g6: 80, g7: 99, g8: 120, g9: 143, g10: 168 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 90, block: 17, mpCharge: 5 },
@@ -2255,18 +2309,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 299, g8: 363, g9: 432, g10: 507 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 2, g2: 4, g3: 6, g4: 9, g5: 12, g6: 15, g7: 19, g8: 23, g9: 27, g10: 32 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 777, matk: 76, block: 17, mpCharge: 8 },
@@ -2336,18 +2392,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 129, g4: 186, g5: 250, g6: 322, g7: 401, g8: 487, g9: 580, g10: 680 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 589, matk: 121, block: 14, mpCharge: 8 },
@@ -2417,18 +2475,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 45, g2: 99, g3: 162, g4: 234, g5: 315, g6: 405, g7: 505, g8: 614, g9: 732, g10: 859 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 9 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 9 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 9 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 9 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 9 } },
-        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 22 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 9 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 9 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 9 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 9 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 9 } },
+          { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 22 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 589, atk: 129, block: 14, mpCharge: 9 },
@@ -2498,18 +2558,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 79, g3: 130, g4: 188, g5: 253, g6: 325, g7: 405, g8: 492, g9: 586, g10: 687 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 4, g4: 6, g5: 8, g6: 10, g7: 12, g8: 15, g9: 18, g10: 21 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 501, matk: 103, block: 14, mpCharge: 8 },
@@ -2579,18 +2641,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 56, g3: 92, g4: 133, g5: 179, g6: 230, g7: 286, g8: 347, g9: 413, g10: 484 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 10 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, atk: 73, block: 17, mpCharge: 4 },
@@ -2660,18 +2724,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 48, g3: 79, g4: 114, g5: 153, g6: 197, g7: 245, g8: 297, g9: 354, g10: 415 } },
       { slot: 3, stat: 'DEF', grades: { g1: 10, g2: 22, g3: 36, g4: 52, g5: 70, g6: 90, g7: 112, g8: 136, g9: 163, g10: 192 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 59, g9: 70, g10: 82 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 711, atk: 62, block: 17, mpCharge: 5 },
@@ -2741,18 +2807,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 36, g2: 80, g3: 131, g4: 189, g5: 255, g6: 328, g7: 408, g8: 495, g9: 590, g10: 692 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 88, g9: 105, g10: 123 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 14, g3: 23, g4: 33, g5: 45, g6: 58, g7: 72, g8: 87, g9: 104, g10: 122 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 515, matk: 104, block: 17, mpCharge: 6 },
@@ -2822,18 +2890,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 104, g4: 150, g5: 202, g6: 260, g7: 324, g8: 393, g9: 468, g10: 549 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 82, block: 17, mpCharge: 7 },
@@ -2903,18 +2973,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 8 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 8 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 8 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 8 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 8 } },
-        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 21 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 8 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 8 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 8 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 8 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 8 } },
+          { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 21 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 78, block: 14, mpCharge: 9 },
@@ -2984,18 +3056,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 23, g2: 51, g3: 84, g4: 121, g5: 163, g6: 210, g7: 261, g8: 317, g9: 377, g10: 442 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 619, matk: 66, block: 14, mpCharge: 5 },
@@ -3065,18 +3139,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 48, g5: 65, g6: 84, g7: 105, g8: 128, g9: 152, g10: 178 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 600, matk: 78, block: 14, mpCharge: 6 },
@@ -3146,18 +3222,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 84, block: 14, mpCharge: 8 },
@@ -3227,18 +3305,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 72, g4: 103, g5: 138, g6: 177, g7: 220, g8: 267, g9: 318, g10: 373 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 617, atk: 56, block: 17, mpCharge: 5 },
@@ -3308,18 +3388,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
       { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 84, block: 14, mpCharge: 8 },
@@ -3389,18 +3471,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 18, g2: 40, g3: 66, g4: 95, g5: 128, g6: 165, g7: 205, g8: 249, g9: 297, g10: 349 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 729, atk: 52, block: 18, mpCharge: 8 },
@@ -3470,18 +3554,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 63, g3: 103, g4: 149, g5: 200, g6: 257, g7: 320, g8: 389, g9: 463, g10: 543 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 1263, matk: 81, block: 12, mpCharge: 7 },
@@ -3551,18 +3637,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 55, g3: 90, g4: 130, g5: 176, g6: 227, g7: 283, g8: 344, g9: 410, g10: 481 } },
       { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
-        { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 21 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
+          { grade: 10, stat: 'MP Charge', value: 13, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 21 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 549, atk: 72, block: 12, mpCharge: 9 },
@@ -3632,18 +3720,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 48, g5: 65, g6: 84, g7: 105, g8: 128, g9: 152, g10: 178 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 457, matk: 94, block: 14, mpCharge: 7 },
@@ -3713,18 +3803,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 24, g2: 53, g3: 87, g4: 126, g5: 170, g6: 219, g7: 273, g8: 332, g9: 395, g10: 463 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 75, g7: 94, g8: 114, g9: 136, g10: 160 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 70, block: 17, mpCharge: 5 },
@@ -3794,18 +3886,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 17, g2: 38, g3: 62, g4: 89, g5: 120, g6: 154, g7: 192, g8: 233, g9: 278, g10: 326 } },
       { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 680, atk: 49, block: 12, mpCharge: 5 },
@@ -3875,18 +3969,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 139, g5: 187, g6: 240, g7: 298, g8: 362, g9: 431, g10: 505 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 470, matk: 76, block: 17, mpCharge: 6 },
@@ -3956,18 +4052,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 21, g5: 28, g6: 36, g7: 45, g8: 55, g9: 65, g10: 76 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, matk: 78, block: 14, mpCharge: 7 },
@@ -4037,18 +4135,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 28, g2: 62, g3: 101, g4: 146, g5: 196, g6: 252, g7: 314, g8: 381, g9: 454, g10: 532 } },
       { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 17 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 80, block: 14, mpCharge: 7 },
@@ -4118,18 +4218,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 619, matk: 94, block: 14, mpCharge: 8 },
@@ -4199,18 +4301,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 55, g3: 90, g4: 130, g5: 176, g6: 227, g7: 283, g8: 344, g9: 410, g10: 481 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 31, g5: 42, g6: 54, g7: 67, g8: 82, g9: 98, g10: 115 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 617, atk: 72, block: 17, mpCharge: 8 },
@@ -4277,18 +4381,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 476, g10: 558 } },
       { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 7, g3: 11, g4: 16, g5: 21, g6: 27, g7: 33, g8: 40, g9: 48, g10: 56 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 812, atk: 84, block: 14, mpCharge: 6 },
@@ -4358,18 +4464,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
       { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 40, g6: 51, g7: 64, g8: 78, g9: 93, g10: 109 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 470, atk: 94, block: 17, mpCharge: 5 },
@@ -4439,18 +4547,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 16, g2: 35, g3: 57, g4: 83, g5: 112, g6: 144, g7: 179, g8: 218, g9: 260, g10: 305 } },
       { slot: 3, stat: 'DEF', grades: { g1: 15, g2: 33, g3: 54, g4: 78, g5: 104, g6: 133, g7: 165, g8: 200, g9: 238, g10: 279 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 16, g6: 21, g7: 26, g8: 31, g9: 37, g10: 43 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 680, atk: 49, block: 17, mpCharge: 5 },
@@ -4520,18 +4630,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 231, g6: 297, g7: 370, g8: 449, g9: 535, g10: 628 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 9, g8: 11, g9: 13, g10: 15 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 700, matk: 94, block: 14, mpCharge: 5 },
@@ -4601,18 +4713,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 246, g7: 306, g8: 372, g9: 443, g10: 520 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 447, matk: 78, block: 17, mpCharge: 6 },
@@ -4682,18 +4796,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 12, g2: 27, g3: 44, g4: 63, g5: 85, g6: 109, g7: 136, g8: 165, g9: 196, g10: 230 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 74, g7: 92, g8: 112, g9: 133, g10: 156 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 3, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 3 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 3 } },
-        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 3 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 3 } },
-        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 3 } },
-        { grade: 10, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 8 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 3, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 3 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 3 } },
+          { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 3 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 3 } },
+          { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 3 } },
+          { grade: 10, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 8 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 694, atk: 34, block: 18, mpCharge: 4 },
@@ -4763,18 +4879,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 21, g2: 47, g3: 77, g4: 111, g5: 150, g6: 193, g7: 240, g8: 291, g9: 347, g10: 407 } },
       { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 774, atk: 61, block: 14, mpCharge: 7 },
@@ -4844,18 +4962,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 20, g2: 44, g3: 73, g4: 106, g5: 143, g6: 184, g7: 229, g8: 278, g9: 331, g10: 388 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 727, atk: 58, block: 17, mpCharge: 8 },
@@ -4925,18 +5045,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 151, g5: 203, g6: 261, g7: 325, g8: 394, g9: 469, g10: 550 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 587, atk: 83, block: 17, mpCharge: 7 },
@@ -5006,18 +5128,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 33, g2: 73, g3: 119, g4: 172, g5: 232, g6: 298, g7: 371, g8: 450, g9: 536, g10: 629 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
-        { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 7 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 7 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 7 } },
+          { grade: 10, stat: 'MP Charge', value: 11, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 94, block: 17, mpCharge: 8 },
@@ -5087,18 +5211,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 9, g2: 20, g3: 33, g4: 47, g5: 63, g6: 81, g7: 101, g8: 123, g9: 146, g10: 171 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 11 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 436, matk: 63, block: 14, mpCharge: 5 },
@@ -5168,18 +5294,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
       { slot: 3, stat: 'DEF', grades: { g1: 9, g2: 20, g3: 33, g4: 47, g5: 63, g6: 81, g7: 101, g8: 123, g9: 146, g10: 171 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 436, atk: 63, block: 14, mpCharge: 5 },
@@ -5249,18 +5377,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 27, g2: 60, g3: 98, g4: 142, g5: 191, g6: 245, g7: 305, g8: 370, g9: 441, g10: 517 } },
       { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 100, g6: 129, g7: 161, g8: 195, g9: 232, g10: 272 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 6, g7: 7, g8: 8, g9: 10, g10: 12 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
-        { grade: 10, stat: 'MP Charge', value: 12, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 20 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 8 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 8 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 8 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 8 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 8 } },
+          { grade: 10, stat: 'MP Charge', value: 12, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 20 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 648, atk: 78, block: 12, mpCharge: 8 },
@@ -5330,18 +5460,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 24, g2: 52, g3: 85, g4: 123, g5: 166, g6: 213, g7: 265, g8: 322, g9: 384, g10: 450 } },
       { slot: 3, stat: 'MDEF', grades: { g2: 1, g3: 2, g4: 3, g5: 4, g6: 5, g7: 6, g8: 7, g9: 8, g10: 9 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 14, g4: 20, g5: 27, g6: 35, g7: 43, g8: 52, g9: 62, g10: 73 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 1203, matk: 68, block: 12, mpCharge: 7 },
@@ -5411,18 +5543,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 99, g6: 127, g7: 158, g8: 192, g9: 229, g10: 268 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 8, g2: 18, g3: 30, g4: 43, g5: 58, g6: 74, g7: 92, g8: 112, g9: 133, g10: 156 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 4 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 4 } },
-        { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 4 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 4 } },
-        { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 4 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 11 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 19, cumulative: { 'Accuracy': 9, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 19, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 25, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 4, cumulative: { 'Accuracy': 21, 'Block': 44, 'MP Charge': 4 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 44, 'MP Charge': 4 } },
+          { grade: 7, stat: 'Block', value: 35, cumulative: { 'Accuracy': 39, 'Block': 79, 'MP Charge': 4 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 79, 'MP Charge': 4 } },
+          { grade: 9, stat: 'Block', value: 41, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 4 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 120, 'MP Charge': 11 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 694, atk: 40, block: 18, mpCharge: 5 },
@@ -5492,18 +5626,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 63, block: 17, mpCharge: 7 },
@@ -5573,18 +5709,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 49, g3: 80, g4: 115, g5: 155, g6: 199, g7: 248, g8: 301, g9: 359, g10: 421 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 63, block: 17, mpCharge: 6 },
@@ -5654,18 +5792,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 589, matk: 84, block: 14, mpCharge: 5 },
@@ -5735,18 +5875,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
       { slot: 3, stat: 'DEF', grades: { g1: 5, g2: 11, g3: 18, g4: 26, g5: 36, g6: 47, g7: 59, g8: 72, g9: 86, g10: 101 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 23, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 40, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 32, cumulative: { 'Accuracy': 39, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 72, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 38, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 110, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 447, atk: 84, block: 17, mpCharge: 7 },
@@ -5816,18 +5958,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 56, g3: 92, g4: 133, g5: 179, g6: 230, g7: 286, g8: 347, g9: 413, g10: 484 } },
       { slot: 3, stat: 'DEF', grades: { g2: 1, g3: 2, g4: 3, g5: 4, g6: 5, g7: 6, g8: 7, g9: 8, g10: 9 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 1203, atk: 73, block: 12, mpCharge: 6 },
@@ -5897,18 +6041,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 22, g2: 48, g3: 79, g4: 114, g5: 153, g6: 197, g7: 245, g8: 298, g9: 355, g10: 416 } },
       { slot: 3, stat: 'DEF', grades: { g1: 14, g2: 31, g3: 51, g4: 74, g5: 100, g6: 129, g7: 161, g8: 195, g9: 232, g10: 272 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 13, g3: 21, g4: 30, g5: 41, g6: 53, g7: 66, g8: 80, g9: 95, g10: 111 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 648, matk: 62, block: 12, mpCharge: 6 },
@@ -5978,18 +6124,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 29, g2: 64, g3: 105, g4: 152, g5: 205, g6: 264, g7: 329, g8: 400, g9: 477, g10: 559 } },
       { slot: 3, stat: 'DEF', grades: { g1: 3, g2: 6, g3: 10, g4: 14, g5: 19, g6: 24, g7: 30, g8: 36, g9: 43, g10: 50 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 11, g5: 15, g6: 19, g7: 24, g8: 29, g9: 34, g10: 40 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 12 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 589, atk: 84, block: 14, mpCharge: 5 },
@@ -6060,18 +6208,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 25, g2: 56, g3: 92, g4: 134, g5: 182, g6: 236, g7: 296, g8: 362, g9: 434, g10: 512 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 18, g5: 24, g6: 30, g7: 37, g8: 45, g9: 53, g10: 62 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 6, g2: 14, g3: 24, g4: 36, g5: 50, g6: 66, g7: 84, g8: 104, g9: 126, g10: 150 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 20, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 36, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 24, cumulative: { 'Accuracy': 39, 'Block': 60, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 60, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 28, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 20, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 36, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 24, cumulative: { 'Accuracy': 39, 'Block': 60, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 60, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 28, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 628, matk: 73, block: 15, mpCharge: 6 },
@@ -6141,18 +6291,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'MATK', grades: { g1: 27, g2: 59, g3: 96, g4: 138, g5: 185, g6: 237, g7: 294, g8: 356, g9: 423, g10: 495 } },
       { slot: 3, stat: 'MDEF', grades: { g1: 4, g2: 8, g3: 13, g4: 18, g5: 24, g6: 30, g7: 37, g8: 45, g9: 53, g10: 62 } },
       { slot: 4, stat: 'Magic Crit', grades: { g1: 4, g2: 9, g3: 15, g4: 22, g5: 30, g6: 39, g7: 49, g8: 60, g9: 72, g10: 85 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 22, cumulative: { 'Accuracy': 21, 'Block': 39, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 39, 'MP Charge': 8 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 39, 'MP Charge': 8 } },
-        { grade: 7, stat: 'Block', value: 27, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 8 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 8 } },
-        { grade: 9, stat: 'Block', value: 32, cumulative: { 'Accuracy': 60, 'Block': 98, 'MP Charge': 8 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 98, 'MP Charge': 18 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 17, cumulative: { 'Accuracy': 9, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 17, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 22, cumulative: { 'Accuracy': 21, 'Block': 39, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 21, 'Block': 39, 'MP Charge': 8 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 39, 'MP Charge': 8 } },
+          { grade: 7, stat: 'Block', value: 27, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 8 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 8 } },
+          { grade: 9, stat: 'Block', value: 32, cumulative: { 'Accuracy': 60, 'Block': 98, 'MP Charge': 8 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 98, 'MP Charge': 18 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 777, matk: 76, block: 17, mpCharge: 8 },
@@ -6222,18 +6374,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 35, g2: 77, g3: 126, g4: 182, g5: 245, g6: 315, g7: 392, g8: 476, g9: 567, g10: 665 } },
       { slot: 3, stat: 'DEF', grades: { g1: 1, g2: 2, g3: 3, g4: 4, g5: 5, g6: 7, g7: 8, g8: 10, g9: 12, g10: 14 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 2, g2: 5, g3: 8, g4: 12, g5: 17, g6: 23, g7: 30, g8: 38, g9: 47, g10: 57 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 20, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 36, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 24, cumulative: { 'Accuracy': 39, 'Block': 60, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 60, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 28, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 20, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 36, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 36, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 24, cumulative: { 'Accuracy': 39, 'Block': 60, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 60, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 28, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 7, cumulative: { 'Accuracy': 60, 'Block': 88, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 648, atk: 99, block: 15, mpCharge: 6 },
@@ -6303,18 +6457,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 38, g2: 46, g3: 54, g4: 61, g5: 69, g6: 77, g7: 84, g8: 92, g9: 100, g10: 107 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 824, atk: 109, block: 15, mpCharge: 6 },
@@ -6384,18 +6540,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 32, g2: 39, g3: 45, g4: 52, g5: 58, g6: 64, g7: 71, g8: 77, g9: 84, g10: 90 } },
       { slot: 3, stat: 'DEF', grades: { g1: 4, g2: 4, g3: 5, g4: 6, g5: 7, g6: 7, g7: 8, g8: 9, g9: 10, g10: 10 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 3, g2: 3, g3: 4, g4: 4, g5: 5, g6: 5, g7: 6, g8: 6, g9: 7, g10: 7 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 824, atk: 92, block: 15, mpCharge: 6 },
@@ -6466,18 +6624,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 41, g2: 49, g3: 57, g4: 65, g5: 73, g6: 81, g7: 90, g8: 98, g9: 106, g10: 114 } },
       { slot: 3, stat: 'DEF', grades: { g1: 2, g2: 2, g3: 2, g4: 3, g5: 3, g6: 3, g7: 4, g8: 4, g9: 4, g10: 5 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 1, g2: 1, g3: 2, g4: 2, g5: 2, g6: 2, g7: 2, g8: 3, g9: 3, g10: 3 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
-        { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
-        { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
-        { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 13 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 13, cumulative: { 'Accuracy': 9, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 13, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 17, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 30, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 23, cumulative: { 'Accuracy': 39, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 53, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 27, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 80, 'MP Charge': 13 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 851, atk: 116, block: 12, mpCharge: 7 },
@@ -6547,18 +6707,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 25, g2: 30, g3: 35, g4: 40, g5: 45, g6: 50, g7: 55, g8: 60, g9: 65, g10: 70 } },
       { slot: 3, stat: 'DEF', grades: { g1: 9, g2: 11, g3: 13, g4: 15, g5: 17, g6: 19, g7: 21, g8: 23, g9: 24, g10: 26 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 6, g5: 7, g6: 8, g7: 9, g8: 10, g9: 10, g10: 11 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 16 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 10, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 16 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 424, atk: 72, block: 15, mpCharge: 7 },
@@ -6628,18 +6790,20 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       { slot: 2, stat: 'ATK', grades: { g1: 30, g2: 36, g3: 42, g4: 48, g5: 54, g6: 60, g7: 66, g8: 72, g9: 78, g10: 84 } },
       { slot: 3, stat: 'DEF', grades: { g1: 9, g2: 11, g3: 13, g4: 15, g5: 17, g6: 19, g7: 21, g8: 23, g9: 24, g10: 26 } },
       { slot: 4, stat: 'Phys Crit', grades: { g1: 6, g2: 7, g3: 8, g4: 10, g5: 11, g6: 12, g7: 13, g8: 15, g9: 16, g10: 17 } },
-      { slot: 5, grades: [
-        { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
-        { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
-        { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
-        { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
-        { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
-        { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
-        { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 15 } }
-      ] }
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 14, cumulative: { 'Accuracy': 9, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 14, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 19, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 6, cumulative: { 'Accuracy': 21, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 33, 'MP Charge': 6 } },
+          { grade: 7, stat: 'Block', value: 26, cumulative: { 'Accuracy': 39, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 59, 'MP Charge': 6 } },
+          { grade: 9, stat: 'Block', value: 31, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 6 } },
+          { grade: 10, stat: 'MP Charge', value: 9, cumulative: { 'Accuracy': 60, 'Block': 90, 'MP Charge': 15 } }
+        ]
+      }
     ],
     limitBreak: {
       lb1: { hp: 457, atk: 85, block: 14, mpCharge: 7 },
@@ -6676,6 +6840,88 @@ export const BUSTY_BURST_CHARACTER_STATS = {
       total: { atk: 214, accuracy: 23 },
     },
     maxStats: { hp: 11028, atk: 2554, matk: 851, def: 467, mdef: 181, accuracy: 152, block: 203, physCrit: 459, magicCrit: 275, hpRegen: 266, mpRegen: 225, healPwr: 225, hpDrain: 0, mpCharge: 87, mpCostDown: 6 },
+  },
+  'rosa': {
+    id: 'rosa',
+    characterId: 2085,
+    name: 'Rosa',
+    rarity: 'SSR',
+    element: 'Holy',
+    weapon: 'Slash',
+    role: 'Attacker',
+    tags: ['Buff', 'Debuff'],
+    baseStats: {
+      hp: { base: 1819, lv90: 9095 },
+      atk: { base: 336, lv90: 1681 },
+      matk: { base: 201, lv90: 1008 },
+      def: { base: 143, lv90: 286 },
+      mdef: { base: 57, lv90: 114 },
+      accuracy: { base: 60, lv90: 120 },
+      block: { base: 50, lv90: 150 },
+      physCrit: { base: 207, lv90: 331 },
+      magicCrit: { base: 124, lv90: 198 },
+      hpRegen: { base: 90, lv90: 317 },
+      mpRegen: { base: 59, lv90: 237 },
+      healPwr: { base: 82, lv90: 206 },
+      mpCharge: { base: 79, lv90: 79 },
+      hpDrain: { base: 0, lv90: 0, isPercent: true },
+      mpCostDown: { base: 0, lv90: 0 },
+    },
+    passiveAbilities: [
+      { slot: 1, stat: 'HP', grades: { g1: 191, g2: 230, g3: 268, g4: 306, g5: 345, g6: 383, g7: 421, g8: 460, g9: 498, g10: 536 } },
+      { slot: 2, stat: 'ATK', grades: { g1: 35, g2: 42, g3: 50, g4: 57, g5: 64, g6: 71, g7: 78, g8: 85, g9: 92, g10: 99 } },
+      { slot: 3, stat: 'DEF', grades: { g1: 6, g2: 8, g3: 9, g4: 10, g5: 12, g6: 13, g7: 14, g8: 16, g9: 17, g10: 18 } },
+      { slot: 4, stat: 'Phys Crit', grades: { g1: 4, g2: 5, g3: 6, g4: 7, g5: 8, g6: 9, g7: 10, g8: 10, g9: 11, g10: 12 } },
+      {
+        slot: 5, grades: [
+          { grade: 1, stat: 'Accuracy', value: 9, cumulative: { 'Accuracy': 9, 'Block': 0, 'MP Charge': 0 } },
+          { grade: 2, stat: 'Block', value: 16, cumulative: { 'Accuracy': 9, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 3, stat: 'Accuracy', value: 12, cumulative: { 'Accuracy': 21, 'Block': 16, 'MP Charge': 0 } },
+          { grade: 4, stat: 'Block', value: 21, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 0 } },
+          { grade: 5, stat: 'MP Charge', value: 5, cumulative: { 'Accuracy': 21, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 6, stat: 'Accuracy', value: 18, cumulative: { 'Accuracy': 39, 'Block': 37, 'MP Charge': 5 } },
+          { grade: 7, stat: 'Block', value: 29, cumulative: { 'Accuracy': 39, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 8, stat: 'Accuracy', value: 21, cumulative: { 'Accuracy': 60, 'Block': 66, 'MP Charge': 5 } },
+          { grade: 9, stat: 'Block', value: 34, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 5 } },
+          { grade: 10, stat: 'MP Charge', value: 8, cumulative: { 'Accuracy': 60, 'Block': 100, 'MP Charge': 13 } }
+        ]
+      }
+    ],
+    limitBreak: {
+      lb1: { hp: 546, atk: 101, block: 15, mpCharge: 6 },
+      lb2: { hp: 628, atk: 116, accuracy: 13, block: 17 },
+      lb3: { hp: 737, atk: 136, block: 20, mpCharge: 7 },
+      lb4: { hp: 819, atk: 151, accuracy: 17, block: 23 },
+      lb5: { hp: 1546, atk: 311, def: 41, mdef: 11, healPwr: 21 },
+      total: { hp: 4276, atk: 815, def: 41, mdef: 11, accuracy: 30, block: 75, healPwr: 21, mpCharge: 13 },
+    },
+    gpAbility: {
+      lv1: { atk: 40 },
+      lv2: { physCrit: 20 },
+      lv3: { atk: 80 },
+      lv4: { physCrit: 30 },
+      lv5: { atk: 80 },
+      lv6: { physCrit: 30 },
+      lv7: { atk: 80 },
+      lv8: { physCrit: 30 },
+      lv9: { atk: 80 },
+      lv10: { physCrit: 30 },
+      total: { atk: 360, physCrit: 140 },
+    },
+    abilityGrade: {
+      g1: { atk: 28 },
+      g2: { physCrit: 7 },
+      g3: { atk: 39 },
+      g4: { physCrit: 10 },
+      g5: { atk: 50 },
+      g6: { physCrit: 12 },
+      g7: { atk: 62 },
+      g8: { physCrit: 15 },
+      g9: { atk: 73 },
+      g10: { physCrit: 17 },
+      total: { atk: 252, physCrit: 61 },
+    },
+    maxStats: { hp: 13908, atk: 3207, matk: 1008, def: 346, mdef: 125, accuracy: 210, block: 325, physCrit: 544, magicCrit: 198, hpRegen: 317, mpRegen: 237, healPwr: 227, hpDrain: 0, mpCharge: 99, mpCostDown: 0 },
   },
 };
 

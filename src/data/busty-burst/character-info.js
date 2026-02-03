@@ -2673,6 +2673,38 @@ export const BUSTY_BURST_CHARACTER_INFO = {
       source: 'Blade of Judgment Banner',
     },
   },
+
+  'rosa': {
+    slug: 'rosa',
+    name: 'Rosa',
+    displayName: 'Rosa',
+    baseName: 'Rosa',
+    title: null,
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'I', number: 1 },
+    actionSpeed: 'Slightly Slow',
+    range: 440,
+    weaponType: 'Slash',
+    skillTypes: ['Buff', 'Debuff'],
+    image: 'Rosa',
+    profile: {
+      height: '166cm',
+      bust: '110cm (M Cup)',
+      waist: '61cm',
+      hips: '95cm',
+    },
+    credits: {
+      illustration: { japanese: 'アマミヤ', romanized: 'Amamiya' },
+      voice: { japanese: '榛名れん', romanized: 'Haruna Ren' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'February 2025 Update',
+    },
+  },
 };
 
 // Helper function to get character by slug
