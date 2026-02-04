@@ -5,7 +5,7 @@
 export const prideLuciferData = {
   // Basic Character Information
   name: 'Pride-Lucifer',
-  image: 'lucifer', // Image identifier
+  image: 'Lucifer', // Image identifier
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

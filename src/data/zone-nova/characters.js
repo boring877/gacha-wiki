@@ -865,7 +865,7 @@ export const ZONE_NOVA_CHARACTERS = [
       critRate: 0,
       critDmg: 50,
     },
-    image: '/images/games/zone-nova/characters/lucifer.jpg',
+    image: '/images/games/zone-nova/characters/Lucifer.jpg',
     slug: 'pride-lucifer',
     detailUrl: '/guides/zone-nova/characters/pride-lucifer',
   },
