@@ -848,6 +848,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'tamamo-no-mae',
     detailUrl: '/guides/zone-nova/characters/tamamo-no-mae',
   },
+  {
+    id: 49,
+    name: 'Pride-Lucifer',
+    rarity: 'SSR',
+    element: 'Chaos',
+    role: 'DPS',
+    class: 'Warrior',
+    faction: getFactionByCharacter('Pride-Lucifer'),
+    tags: ['Shield', 'Defense Scaling', 'Team Buff', 'Enhanced Ultimate', 'Chaos', 'Warrior', 'SSR'],
+    stats: {
+      hp: 11048,
+      attack: 696,
+      defense: 1117,
+      energyRecovery: 0.25,
+      critRate: 0,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/lucifer.jpg',
+    slug: 'pride-lucifer',
+    detailUrl: '/guides/zone-nova/characters/pride-lucifer',
+  },
 ];
 
 // Metadata (unique, sorted)

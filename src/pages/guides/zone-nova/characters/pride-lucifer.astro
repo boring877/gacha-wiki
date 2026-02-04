@@ -1,0 +1,17 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import { prideLuciferData, prideLuciferSEO } from '../../../../data/zone-nova/characters/pride-lucifer.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={prideLuciferSEO.title}
+  description={prideLuciferSEO.description}
+  gameTitle={prideLuciferData.name}
+  character={prideLuciferData}
+>
+  <CharacterPageTemplate characterData={prideLuciferData} />
+</CharacterIndividualLayout>

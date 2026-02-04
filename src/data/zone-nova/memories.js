@@ -1134,6 +1134,27 @@ export const ZONE_NOVA_MEMORIES = [
       'Damage dealt to enemies with shields is increased by 35%',
     ],
   },
+  {
+    id: 'pride-or-tsundere',
+    slug: 'pride-or-tsundere',
+    name: 'Pride or Tsundere?',
+    image: '/images/games/zone-nova/memories/lucifercard.jpg',
+    rarity: 'SSR',
+    element: 'Chaos',
+    character: 'Pride-Lucifer',
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/pride-or-tsundere/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    },
+    effects: [
+      'HP increased by 32%',
+      'Defense increased by 60%',
+      'When attacked by a normal attack, damage taken is reduced by 30%',
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1176,6 +1197,7 @@ export const MEMORY_METADATA = {
     'Nina',
     'Nini',
     'Odin',
+    'Pride-Lucifer',
     'Penny',
     'Rose',
     'Shanna',
