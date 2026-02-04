@@ -20,6 +20,7 @@ import { freyeData } from '../../../../data/zone-nova/characters/freye.js';
 import { ibarakiDojiData } from '../../../../data/zone-nova/characters/ibaraki-doji.js';
 import { sigurdData } from '../../../../data/zone-nova/characters/sigurd.js';
 import { jorogumoData } from '../../../../data/zone-nova/characters/jorogumo.js';
+import { prideLuciferData } from '../../../../data/zone-nova/characters/pride-lucifer.js';
 
 export const prerender = true;
 
@@ -97,7 +98,9 @@ const characterData =
                           ? sigurdData
                           : finalCharacter.slug === 'jorogumo'
                             ? jorogumoData
-                            : null;
+                            : finalCharacter.slug === 'pride-lucifer'
+                              ? prideLuciferData
+                              : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -163,6 +166,9 @@ const memoryCardUrls = {
   // Shuten-doji memory cards
   'Unreserved Love': '/guides/zone-nova/memories/unreserved-love/',
   'Revolutionary Restructuring': '/guides/zone-nova/memories/revolutionary-restructuring/',
+
+  // Pride-Lucifer memory cards
+  'Pride or Tsundere?': '/guides/zone-nova/memories/pride-or-tsundere/',
 };
 
 // Helper function to get badge class names

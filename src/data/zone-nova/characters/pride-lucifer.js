@@ -41,7 +41,7 @@ export const prideLuciferData = {
       cooldown: '1.0s',
       energyCost: '3',
       description:
-        'All allied characters gain [Armour of Pride]: Grants a shield equal to Lucifer\'s defense 388.6% and reduces damage taken by 48.6% for 10 seconds. While Lucifer possesses [Armour of Pride], his ultimate skill becomes an enhanced ultimate skill.\n\nEnhanced Ultimate Skill: Consumes 2 energy. Grants all allied characters a shield equal to 510.1% of their defense and reduces damage taken by 58.6% for 5 seconds. Unleashes a dimensional slash at the target location, dealing chaos damage equal to the user\'s defense 832.9% to all enemy units.\n\nNote: The damage reduction effects of the ultimate skill and the enhanced ultimate skill do not stack.',
+        'All allied characters gain [Armour of Pride]: Grants a shield equal to Lucifer\'s defense 388.6% and reduces damage taken by 48.6% for 10 seconds. While Lucifer possesses [Armour of Pride], her ultimate skill becomes an enhanced ultimate skill.\n\nEnhanced Ultimate Skill: Consumes 2 energy. Grants all allied characters a shield equal to 510.1% of their defense and reduces damage taken by 58.6% for 5 seconds. Unleashes a dimensional slash at the target location, dealing chaos damage equal to the user\'s defense 832.9% to all enemy units.\n\nNote: The damage reduction effects of the ultimate skill and the enhanced ultimate skill do not stack.',
       enhancedUltimate: {
         description: 'Consumes 2 energy. Grants all allied characters a shield equal to 510.1% of their defense and reduces damage taken by 58.6% for 5 seconds. Unleashes a dimensional slash at the target location, dealing chaos damage equal to the user\'s defense 832.9% to all enemy units.',
       },
@@ -49,7 +49,7 @@ export const prideLuciferData = {
     passive: {
       name: 'No need to say more',
       description:
-        'Each time Lucifer uses a skill, he gains 1 stack of [Pride], increasing his defense by 11.5%, up to a maximum of 8 stacks, lasting until the end of the battle.',
+        'Each time Lucifer uses a skill, she gains 1 stack of [Pride], increasing her defense by 11.5%, up to a maximum of 8 stacks, lasting until the end of the battle.',
     },
   },
 
@@ -75,7 +75,7 @@ export const prideLuciferData = {
     {
       level: 2,
       effect:
-        'After Pride-Lucifer uses his ultimate skill, all allies gain the Blessing of Pride, which restores all allies\' maximum HP equal to 1% of their maximum HP + 150 HP per second for 5 seconds after they take damage. The Blessing of Pride will be consumed upon activation.',
+        'After Pride-Lucifer uses her ultimate skill, all allies gain the Blessing of Pride, which restores all allies\' maximum HP equal to 1% of their maximum HP + 150 HP per second for 5 seconds after they take damage. The Blessing of Pride will be consumed upon activation.',
     },
     {
       level: 3,

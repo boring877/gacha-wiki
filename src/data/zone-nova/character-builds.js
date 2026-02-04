@@ -26,6 +26,7 @@ import { heraBuild } from './character-builds/hera.js';
 import { chiyaBuild } from './character-builds/chiya.js';
 import { lokiBuild } from './character-builds/loki.js';
 import { tamamoNoMaeBuild } from './character-builds/tamamo-no-mae.js';
+import { prideLuciferBuild } from './character-builds/pride-lucifer.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -106,6 +107,9 @@ export const CHARACTER_BUILDS = {
 
   // Tamamo-no-Mae Build - SSR Fire Ultimate Support Buffer
   'tamamo-no-mae': tamamoNoMaeBuild,
+
+  // Pride-Lucifer Build - SSR Chaos Defense Scaling Tank
+  'pride-lucifer': prideLuciferBuild,
 };
 
 // Generate builds for available characters only

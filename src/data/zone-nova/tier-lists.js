@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2026-01-20',
+  lastUpdated: '2026-02-04',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -66,6 +66,7 @@ export const PVE_TIER_LIST = {
       { name: 'Sigurd' },
       { name: 'Jorogumo' },
       { name: 'Shuten-doji' },
+      { name: 'Pride-Lucifer' },
     ],
     S: [
       { name: 'Shu' },
@@ -101,10 +102,10 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2026-01-20',
+  lastUpdated: '2026-02-04',
   description: 'PvP character rankings.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Pride-Lucifer' }],
     SS: [
       { name: 'Freye' },
       { name: 'Freya' },
@@ -156,7 +157,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2026-01-20',
+  lastUpdated: '2026-02-04',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -174,6 +175,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Morgan Le Fay' },
       { name: 'Sigurd' },
       { name: 'Tamamo-no-Mae' },
+      { name: 'Pride-Lucifer' },
     ],
     SS: [
       { name: 'Freye' },
@@ -224,7 +226,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2026-01-20',
+  lastUpdated: '2026-02-04',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -240,6 +242,7 @@ export const GUILD_RAID_TIER_LIST = {
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
       { name: 'Tamamo-no-Mae' },
+      { name: 'Pride-Lucifer' },
     ],
     SS: [
       { name: 'Freye' },
@@ -365,6 +368,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-02-04',
+    changes: [
+      'Pride-Lucifer added: SS in PvE, SSS in PvP, Rift, and Guild Raid',
+      'New Chaos Warrior with Defense-scaling shields and Pride stack mechanic',
+      'Enhanced Ultimate provides massive AOE damage (832.9% DEF) and team buffs',
+      'A2 grants team HP regeneration after taking damage',
+      'A6 provides 4 Pride stacks at battle start and 20% resistance bonus',
+    ],
+  },
   {
     date: '2026-01-20',
     changes: [
