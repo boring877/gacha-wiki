@@ -58,13 +58,13 @@ export const prideLuciferBuild = {
     {
       name: 'Wrong Appearance Timing',
       effect:
-        "SSR memory card that provides massive Defense increase, HP recovery, and damage boost when HP is above 50% - perfect synergy for Pride-Lucifer's defense-scaling tank playstyle.",
+        "SSR memory card that provides massive Defense increase, HP recovery when below 50%, and damage boost when above 50% - perfect synergy for Pride-Lucifer's defense-scaling tank playstyle.",
       characterSpecific: false,
       memoryImage: 'Apepcard.jpg',
       memoryStats: { hp: '8,800', attack: '480', defense: '690' },
       slug: 'wrong-appearance-timing',
       description:
-        'Defense increased by 64%, When HP is above 50%, after the wearer attacks, recover 2% max HP, When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
+        'Defense increased by 64%, When HP is below 50%, after the wearer attacks, recover 2% max HP, When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
     },
   ],
   runes: {
@@ -81,7 +81,7 @@ export const prideLuciferBuild = {
         mainRune: 'Shattered-Foundation',
         secondaryRune: 'Tide',
         mainRune2Piece: '2-piece: Defense +12%',
-        mainRune4Piece: '4-piece: When attacked, deal damage back to attacker equal to 20% of own defense',
+        mainRune4Piece: '4-piece: Shield Effectiveness +20%',
         secondaryRuneEffect: '2-piece: Defense increased by 12%',
       },
     ],
@@ -109,7 +109,7 @@ export const prideLuciferBuild = {
           effect: 'HP +8%',
         },
         epsilon: {
-          effect: 'Defense +8%',
+          effect: 'Attack Power +8%',
         },
       },
       {

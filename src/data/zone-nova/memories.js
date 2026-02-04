@@ -1067,7 +1067,7 @@ export const ZONE_NOVA_MEMORIES = [
     },
     effects: [
       'Defense increased by 64%',
-      'When HP is above 50%, after the wearer attacks, recover 2% max HP',
+      'When HP is below 50%, after the wearer attacks, recover 2% max HP',
       'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
     ],
   },
