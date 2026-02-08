@@ -2489,4 +2489,188 @@ export const characterSkills = {
       energy: 240,
     },
   },
+  firenze: {
+    name: 'Firenze',
+    id: 110,
+    normalAttack: {
+      name: 'Solo Grace',
+      icon: 'Icon/Skill/11001_Normal',
+      description:
+        'Swings the staff continuously to attack.\u000bStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Umbra DMG.\u000bStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Umbra DMG.\u000bStrike 3: <color=#ec6d21>&Param3&x5</color> of ATK as Umbra DMG.\u000bStrike 4: <color=#ec6d21>&Param4&</color> and <color=#ec6d21>&Param5&</color> of ATK as Umbra DMG.\u000bWhen no ##Shadow Clone#4002# is present, Strike 2 summons 1 ##Shadow Clone#4002#.\u000bAt Strike 4, commands all ##Shadow Clones#4002# to dash, dealing <color=#ec6d21>&Param6&</color> of ATK as Umbra Minion DMG.',
+      shortDescription:
+        'Swings the staff continuously to attack, can summon Shadow Clones to assist.',
+      params: [
+        '32%/36%/41%/55%/60%/64%/73%/77%/80%/88%/94%/101%/107%',
+        '16.6%/19.1%/21.6%/29.1%/31.4%/33.8%/38.4%/40.4%/42.4%/46.4%/49.7%/53.1%/56.4%',
+        '7%/8.1%/9.1%/12.3%/13.2%/14.2%/16.2%/17%/17.9%/19.5%/20.9%/22.3%/23.7%',
+        '37%/42%/48%/64%/69%/75%/85%/89%/94%/103%/110%/117%/125%',
+        '39%/44%/50%/67%/73%/78%/89%/94%/98%/107%/115%/123%/131%',
+        '60%/69%/78%/105%/113%/121%/137%/144%/151%/165%/176%/187%/198%',
+      ],
+      hints: {
+        4002: {
+          id: 4002,
+          name: 'Shadow Clone',
+          description:
+            'Summoned by Firenze to fight alongside her. Inherits a portion of Firenze\'s stats and can trigger marks.',
+          params: [],
+        },
+      },
+    },
+    skill: {
+      name: 'Shadow Dance',
+      icon: 'Icon/Skill/11001_Skill_Main',
+      description:
+        'Delivers consecutive slashes with the sword in the staff, dealing <color=#ec6d21>&Param1&x3</color> of ATK as Umbra Skill DMG. When casting the Main Skill, summons 1 ##Shadow Clone#4002# and commands all ##Shadow Clones#4002# to launch consecutive slashes, dealing <color=#ec6d21>&Param2&x3</color> of ATK as Umbra Minion DMG.\u000bShadow Dance (Main Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting \"Dark Burn\": deals damage every 0.5s for &Param5&s, totaling &Param4& of ATK as Umbra Mark DMG.',
+      shortDescription:
+        'Delivers consecutive sword slashes with the staff. Can summon Shadow Clones when using Main Skill.',
+      params: [
+        '109%/125%/142%/191%/206%/221%/252%/265%/278%/304%/326%/348%/370%',
+        '40.5%/46.6%/52.7%/70.9%/76.6%/82.3%/93.7%/98.5%/103.4%/113.1%/121.2%/129.3%/137.4%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%',
+        '4.1%/5.3%/6.6%/7.8%/9%/10.3%/11.5%/12.7%/14%',
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description:
+            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage and applies Dark Burn.',
+          params: [],
+        },
+        4002: {
+          id: 4002,
+          name: 'Shadow Clone',
+          description: 'Summoned by Firenze to fight alongside her.',
+          params: [],
+        },
+      },
+      cooldown: '60s',
+    },
+    supportSkill: {
+      name: 'Nightly Dominance',
+      icon: 'Icon/Skill/11001_Skill_Support',
+      description:
+        'Slams the ground to deal <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra DMG and summons multiple ##Shadow Clones#4002#. When the Main Character deals DMG, ##Shadow Clones#4002# launch attacks on the target, dealing <color=#ec6d21>&Param2&</color> of ATK as Umbra Minion DMG.\u000bNightly Dominance (Support Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG.',
+      shortDescription:
+        'Slams the ground dealing AoE damage and summons Shadow Clones that attack when Main Character deals damage.',
+      params: [
+        '108%/124%/141%/189%/204%/220%/250%/263%/276%/302%/323%/345%/367%',
+        '32%/37%/41%/56%/60%/65%/73%/77%/81%/89%/95%/101%/108%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%',
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description:
+            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage.',
+          params: [],
+        },
+        4002: {
+          id: 4002,
+          name: 'Shadow Clone',
+          description: 'Summoned by Firenze to fight alongside her.',
+          params: [],
+        },
+      },
+      cooldown: '120s',
+    },
+    ultimate: {
+      name: 'Personal Guidance',
+      icon: 'Icon/Skill/11001_Ultra',
+      description:
+        'Unfolds a dark formation, dealing <color=#ec6d21>&Param1&x5</color> of ATK as Umbra Ultimate DMG in a large area, followed by <color=#ec6d21>&Param2&</color> of ATK as Umbra Ultimate DMG.\u000bPersonal Guidance (Ultimate) can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting \"Dark Burn\": deals damage every 0.5s for &Param5&s, totaling &Param4& of ATK as Umbra Mark DMG.',
+      shortDescription:
+        'Unfolds a dark formation dealing multiple instances of damage. Can trigger Umbra Mark.',
+      params: [
+        '176%/203%/229%/309%/333%/358%/408%/429%/450%/492%/528%/563%/598%',
+        '396%/455%/515%/693%/748%/804%/914%/962%/1009%/1104%/1184%/1263%/1342%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%',
+        '4.1%/5.3%/6.6%/7.8%/9%/10.3%/11.5%/12.7%/14%',
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description:
+            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage and applies Dark Burn.',
+          params: [],
+        },
+      },
+      cooldown: '25s',
+      energy: 218,
+    },
+  },
+  springseekCoronis: {
+    name: 'Springseek Coronis',
+    id: 159,
+    normalAttack: {
+      name: 'Peaceful Needles',
+      icon: 'Icon/Skill/15901_Normal',
+      description:
+        'Fires liquid potions continuously, dealing <color=#fb8037>&Param1&</color> of ATK as Terra DMG. Magazine capacity: 15.',
+      shortDescription: 'Fires liquid potions continuously, dealing Terra damage.',
+      params: [
+        '11.4%/13.1%/14.8%/20%/21.6%/23.2%/26.4%/27.7%/29.1%/31.8%/34.1%/36.4%/38.7%',
+      ],
+      hints: {},
+    },
+    skill: {
+      name: 'Jade Blooms in Spring',
+      icon: 'Icon/Skill/15901_Skill_Main',
+      description:
+        'Shoots forward, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra DMG, then scatters 1 \"Omen\": continuously fires beams, dealing <color=#fb8037>&Param2&</color> of ATK as Terra DMG every 0.6s for 8s.\u000bWhen casting Main Skill, enters \"Crystalline State\": Movement SPD +15% for 8s.\u000bJade Blooms in Spring (Main Skill) and \"Omen\" can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.',
+      shortDescription:
+        'Shoots forward dealing damage, then creates an Omen that fires beams continuously. Enters Crystalline State when casting.',
+      params: [
+        '258%/297%/336%/452%/488%/524%/596%/627%/658%/720%/772%/823%/875%',
+        '17.2%/19.8%/22.4%/30.1%/32.5%/34.9%/39.8%/41.8%/43.9%/48%/51.5%/54.9%/58.3%',
+        '17.8%/23.2%/28.5%/33.8%/39.2%/44.5%/49.8%/55.1%/60.5%',
+      ],
+      hints: {
+        1020: {
+          id: 1020,
+          name: 'Terra Mark',
+          description:
+            'A special status applied to the target by some Terra Trekkers. When triggered, deals additional Terra damage.',
+          params: [],
+        },
+      },
+      cooldown: '14s',
+    },
+    supportSkill: {
+      name: 'Blossoming Impact',
+      icon: 'Icon/Skill/15901_Skill_Support',
+      description:
+        'Throws 6 \"Rose Potions\" and 1 \"Withered Potion\". \"Rose Potion\": Deals continuous damage. \"Withered Potion\": Deals continuous damage and applies \"Wither Effect\": when fully stacked, deals damage and clears stacks.\u000bRose Potion deals <color=#fb8037>&Param1&</color> of ATK as Terra DMG every 1s to enemies within range for 6s.\u000bWithered Potion deals <color=#fb8037>&Param2&</color> of ATK as Terra DMG every 1s and applies 1 stack of \"Wither Effect\". At 5 stacks, deals <color=#fb8037>&Param3&</color> of ATK as Terra DMG and clears stacks.',
+      shortDescription:
+        'Throws multiple Rose Potions and one Withered Potion that deal continuous damage and apply Wither Effect.',
+      params: [
+        '24.8%/28.5%/32.2%/43.4%/46.8%/50.3%/57.2%/60.2%/63.2%/69.1%/74.1%/79%/84%',
+        '67%/77%/87%/117%/126%/136%/154%/162%/170%/186%/200%/213%/226%',
+        '114%/131%/148%/199%/215%/230%/262%/276%/289%/317%/339%/362%/385%',
+      ],
+      hints: {},
+      cooldown: '12s',
+    },
+    ultimate: {
+      name: 'Welcoming Spring · Fireworks Display',
+      icon: 'Icon/Skill/15901_Ultra',
+      description:
+        'Detonates the potion bottles in the air, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra DMG, followed by scattered crystals dealing <color=#fb8037>&Param2&x8</color> of ATK as AoE Terra DMG.',
+      shortDescription:
+        'Detonates airborne potions dealing damage, followed by scattered crystals dealing additional damage.',
+      params: [
+        '497%/571%/646%/869%/939%/1009%/1148%/1207%/1267%/1386%/1485%/1585%/1684%',
+        '62%/71%/81%/109%/117%/126%/143%/151%/158%/173%/186%/198%/211%',
+      ],
+      hints: {},
+      cooldown: '30s',
+      energy: 275,
+    },
+  },
 };
+
+// Add aliases for kebab-case slugs
+characterSkills['springseek-coronis'] = characterSkills.springseekCoronis;

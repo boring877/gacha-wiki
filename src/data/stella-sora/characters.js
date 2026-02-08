@@ -51,11 +51,14 @@ import { Laru } from './characters/characters/laru.js';
 import { Shia } from './characters/characters/shia.js';
 import { Nazuna } from './characters/characters/nazuna.js';
 import { SnowishLaru } from './characters/characters/snowish-laru.js';
+import { Firenze } from './characters/characters/firenze.js';
+import { SpringseekCoronis } from './characters/characters/springseek-coronis.js';
 
 // Map character data by slug for easy lookup
 const characterDataMap = {
   amber: Amber,
   tilia: Tilia,
+  firenze: Firenze,
   kasimira: Kasimira,
   iris: Iris,
   noya: Noya,
@@ -63,6 +66,7 @@ const characterDataMap = {
   ridge: Ridge,
   jinglin: Jinglin,
   coronis: Coronis,
+  springseekCoronis: SpringseekCoronis,
   nanoha: Nanoha,
   canace: Canace,
   ann: Ann,

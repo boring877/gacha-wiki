@@ -66,6 +66,27 @@ export const characterInfo = [
     tags: ['Versatile', 'Adventurous', 'White Cat Troupe'],
   },
   {
+    id: 110,
+    slug: 'firenze',
+    name: 'Firenze',
+    description:
+      'Firenze can summon doppelgangers to fight for her on the battlefield. Rumor has it that she does the same in her office, which is how she always manages to stay so graceful.',
+    voiceActor: {
+      cn: 'Zi Yin',
+      cnLocalized: '子音',
+      jp: 'Chiwa Saito',
+      jpLocalized: '斎藤千和',
+    },
+    birthday: '11.16',
+    rarity: 5,
+    element: 'Umbra',
+    position: 'Vanguard',
+    attackType: 'Melee',
+    style: 'Steady',
+    faction: 'United Harvest',
+    tags: ['Vanguard', 'Steady', 'United Harvest'],
+  },
+  {
     id: 111,
     slug: 'iris',
     name: 'Iris',
@@ -589,6 +610,27 @@ export const characterInfo = [
     style: 'Creative',
     faction: 'Grace Imperium',
     tags: ['Versatile', 'Creative', 'Grace Imperium'],
+  },
+  {
+    id: 159,
+    slug: 'springseek-coronis',
+    name: 'Springseek Coronis',
+    description:
+      'Clad in traditional Loong attire, Coronis is enjoying her vacation in Cangwu. Her carefully brewed potions are a testament to her intense "affection."',
+    voiceActor: {
+      cn: 'Zhou Yuhan',
+      cnLocalized: '周语晗',
+      jp: 'Yuka Saito',
+      jpLocalized: '斉藤佑圭',
+    },
+    birthday: '10.15',
+    rarity: 5,
+    element: 'Terra',
+    position: 'Versatile',
+    attackType: 'Ranged',
+    style: 'Collector',
+    faction: 'Freelance Trekker',
+    tags: ['Versatile', 'Collector', 'Freelance Trekker'],
   },
 ];
 

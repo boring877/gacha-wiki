@@ -4701,6 +4701,32 @@ export const allPotentials = {
       ],
     },
   },
+  firenze: {
+    id: 110,
+    name: 'Firenze',
+    element: 'Umbra',
+    buildOrder: {
+      main: {
+        build1: {
+          description: 'Potentials data for Firenze - Main Build 1',
+          potentials: [],
+        },
+      },
+      support: {
+        build1: {
+          description: 'Potentials data for Firenze - Support Build 1',
+          potentials: [],
+        },
+      },
+    },
+    potentials: {
+      mainCore: [],
+      mainNormal: [],
+      supportCore: [],
+      supportNormal: [],
+      common: [],
+    },
+  },
   freesia: {
     id: 125,
     name: 'Freesia',
@@ -14985,6 +15011,32 @@ export const allPotentials = {
       ],
     },
   },
+  springseekCoronis: {
+    id: 159,
+    name: 'Springseek Coronis',
+    element: 'Terra',
+    buildOrder: {
+      main: {
+        build1: {
+          description: 'Potentials data for Springseek Coronis - Main Build 1',
+          potentials: [],
+        },
+      },
+      support: {
+        build1: {
+          description: 'Potentials data for Springseek Coronis - Support Build 1',
+          potentials: [],
+        },
+      },
+    },
+    potentials: {
+      mainCore: [],
+      mainNormal: [],
+      supportCore: [],
+      supportNormal: [],
+      common: [],
+    },
+  },
 };
 
 // Helper functions
@@ -15013,5 +15065,8 @@ export const getPotentialByName = (characterName, potentialName) => {
 
   return allCategories.find(p => p.name.toLowerCase() === potentialName.toLowerCase()) || null;
 };
+
+// Add aliases for kebab-case slugs
+allPotentials['springseek-coronis'] = allPotentials.springseekCoronis;
 
 export default allPotentials;

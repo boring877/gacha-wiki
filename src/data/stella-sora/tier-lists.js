@@ -224,4 +224,7 @@ export const getTopTierCharacters = () => {
     .flatMap(tier => tier.characters);
 };
 
+// Tier list changelog
+export const TIER_LIST_CHANGELOG = [];
+
 export default STELLA_SORA_TIER_LISTS;

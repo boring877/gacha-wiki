@@ -15,6 +15,11 @@ export const characters = [
     file: './characters/kasimira.js',
   },
   {
+    id: 110,
+    name: 'Firenze',
+    file: './characters/firenze.js',
+  },
+  {
     id: 111,
     name: 'Iris',
     file: './characters/iris.js',
@@ -138,5 +143,10 @@ export const characters = [
     id: 158,
     name: 'Snowish Laru',
     file: './characters/snowish-laru.js',
+  },
+  {
+    id: 159,
+    name: 'Springseek Coronis',
+    file: './characters/springseek-coronis.js',
   },
 ];

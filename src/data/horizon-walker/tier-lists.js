@@ -127,8 +127,9 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  SSS: ['Olivia', 'Yui', 'Vlissing'],
+  SSS: ['Olivia', 'Vlissing'],
   SS: [
+    'Yui',
     'Palekar',
     'Valeta',
     'Everette',
@@ -427,5 +428,8 @@ export const getCharactersWithEXWeapons = () => {
     .map(name => findCharacter(name))
     .filter(Boolean);
 };
+
+// Tier list changelog
+export const TIER_LIST_CHANGELOG = [];
 
 export default HORIZON_WALKER_TIER_LISTS;

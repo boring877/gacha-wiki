@@ -366,3 +366,9 @@ export const ALL_TIER_LISTS = {
   'boss-raids': BOSS_RAIDS_TIER_LIST,
   'new-player': NEW_PLAYER_TIER_LIST,
 };
+
+// Alias for boss tier list (used by API)
+export const BOSS_TIER_LIST = BOSS_RAIDS_TIER_LIST;
+
+// Tier list changelog
+export const TIER_LIST_CHANGELOG = [];
