@@ -456,7 +456,7 @@ export const characterBaseStats = {
     elementalPen: 0,
     elementalIgnoreRes: 0.0,
   },
-  springseekCoronis: {
+  'springseek-coronis': {
     def: 190,
     critRate: 5.0,
     critDmg: 150.0,

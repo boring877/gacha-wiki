@@ -4,9 +4,9 @@ import { taimaninSquadConfig } from '../../data/clock/taimanin-squad.js';
 import GameIcon from '../../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 
 // Page metadata
-const title = 'Taimanin Squad Clock - Open Beta Countdown Timer | GachaWiki';
+const title = 'Taimanin Squad Clock - Game Launch Countdown Timer | GachaWiki';
 const description =
-  'Taimanin Squad open beta countdown timer - Track the Taimanin Squad open beta launch with a real-time countdown. Never miss the open beta start with our precise JST server time clock. Open Beta starts January 15, 2026.';
+  'Taimanin Squad game launch countdown timer - Track the official launch with a real-time countdown. Game Launch & Open Beta Ends March 1, 2026 13:00 UTC.';
 
 // Create config with imported image
 const games = [
@@ -23,13 +23,13 @@ const games = [
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Taimanin Squad Open Beta Countdown",
-      "description": "Real-time countdown timer for Taimanin Squad open beta launch. Open Beta starts January 15, 2026 JST.",
+      "name": "Taimanin Squad Game Launch Countdown",
+      "description": "Real-time countdown timer for Taimanin Squad official launch. Game Launch March 1, 2026 13:00 UTC.",
       "url": "https://gachawiki.info/clock/taimanin-squad",
       "mainEntity": {
         "@type": "WebApplication",
-        "name": "Taimanin Squad Open Beta Timer",
-        "description": "Track Taimanin Squad open beta launch countdown. Open Beta starts January 15, 2026 in Japan.",
+        "name": "Taimanin Squad Game Launch Timer",
+        "description": "Track Taimanin Squad game launch countdown. Launch March 1, 2026 13:00 UTC.",
         "applicationCategory": "GameApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -47,26 +47,28 @@ const games = [
   </script>
 </TaimaninSquadClockLayout>
 
-<!-- Simple countdown script -->
+<!-- Countdown scripts -->
 <script define:vars={{ config: taimaninSquadConfig }}>
   let clockInterval;
 
   function initClock() {
     updateCountdown();
+    updateDaysSinceOpenBeta();
     updateCurrentTime();
 
     // Update every second
     clockInterval = setInterval(() => {
       updateCountdown();
+      updateDaysSinceOpenBeta();
       updateCurrentTime();
     }, 1000);
   }
 
-  // Update Open Beta countdown
+  // Update Game Launch countdown
   function updateCountdown() {
     const now = new Date();
-    const openBetaDate = new Date(config.openBetaDate);
-    const timeDiff = openBetaDate.getTime() - now.getTime();
+    const launchDate = new Date(config.openBetaDate);
+    const timeDiff = launchDate.getTime() - now.getTime();
 
     const daysEl = document.getElementById('countdownDays');
     const hoursEl = document.getElementById('countdownHours');
@@ -76,7 +78,7 @@ const games = [
     if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
     if (timeDiff <= 0) {
-      // Open Beta has started
+      // Game has launched
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
       minutesEl.textContent = '00';
@@ -92,6 +94,31 @@ const games = [
       hoursEl.textContent = hours.toString().padStart(2, '0');
       minutesEl.textContent = minutes.toString().padStart(2, '0');
       secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+  }
+
+  // Update Days Since Open Beta
+  function updateDaysSinceOpenBeta() {
+    const now = new Date();
+    const openBetaStart = new Date(config.openBetaStart.date);
+    const timeDiff = now.getTime() - openBetaStart.getTime();
+
+    const daysEl = document.getElementById('daysSinceOpenBeta');
+    const hoursEl = document.getElementById('hoursSinceOpenBeta');
+    if (!daysEl || !hoursEl) return;
+
+    if (timeDiff <= 0) {
+      // Open Beta hasn't started yet
+      const daysUntil = Math.ceil(Math.abs(timeDiff) / (1000 * 60 * 60 * 24));
+      daysEl.textContent = daysUntil;
+      hoursEl.textContent = 'days until Open Beta';
+    } else {
+      // Open Beta has started
+      const daysSince = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hoursSince = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutesSince = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      daysEl.textContent = daysSince;
+      hoursEl.textContent = `${daysSince} days, ${hoursSince} hours, ${minutesSince} minutes`;
     }
   }
 

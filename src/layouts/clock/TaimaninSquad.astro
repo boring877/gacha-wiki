@@ -1,5 +1,5 @@
 ---
-// Taimanin Squad Clock Layout - Simple Open Beta Countdown
+// Taimanin Squad Clock Layout - Game Launch Countdown
 import TSBaseHead from '../../components/taimanin-squad/TSBaseHead.astro';
 import Header from '../../components/Header.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
@@ -52,10 +52,10 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
       keywords={[
         'Taimanin Squad clock',
         'Taimanin Squad timer',
-        'Taimanin Squad open beta',
-        'Taimanin Squad countdown',
         'Taimanin Squad launch',
+        'Taimanin Squad countdown',
         'Taimanin Squad release date',
+        'Taimanin Squad game launch',
       ]}
       pageType="webapp"
     />
@@ -93,7 +93,7 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
               showBackButton={true}
             />
 
-            <!-- First Hero Card - Open Beta Countdown Timer -->
+            <!-- First Hero Card - Game Launch Countdown Timer -->
             <div class="master-clock-container">
               <div class="master-clock server-reset-card" id="masterClock">
                 <!-- Clock Background Animation -->
@@ -170,6 +170,50 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                           <span class="time-value" id="countdownSeconds">--</span>
                           <span class="time-label">Seconds</span>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Card - Open Beta Info & Days Counter -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock server-reset-card" id="openBetaCard">
+                <div class="clock-bg-animation"></div>
+
+                <div class="timers-grid-wrapper">
+                  <div class="timers-row">
+                    <!-- Open Beta Period Card -->
+                    <div class="timer-card ts-beta-period-card">
+                      <div class="timer-card-header">
+                        <div class="ts-timer-card-title">Open Beta Period</div>
+                      </div>
+                      <div class="timer-card-content">
+                        <div class="ts-beta-dates">
+                          <div class="ts-beta-date-row">
+                            <span class="ts-beta-label">Started:</span>
+                            <span class="ts-beta-value">Jan 15, 2026 02:00 UTC</span>
+                          </div>
+                          <div class="ts-beta-date-row">
+                            <span class="ts-beta-label">Ends:</span>
+                            <span class="ts-beta-value">Mar 1, 2026 13:00 UTC</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Days Since Open Beta Card -->
+                    <div class="timer-card ts-days-counter-card">
+                      <div class="timer-card-header">
+                        <div class="ts-timer-card-title">Open Beta Day Counter</div>
+                      </div>
+                      <div class="timer-card-content">
+                        <div class="ts-days-big-display">
+                          <span class="ts-days-big-value" id="daysSinceOpenBeta">--</span>
+                        </div>
+                        <div class="ts-days-big-label">Days Since Open Beta</div>
+                        <div class="ts-time-elapsed" id="hoursSinceOpenBeta">--</div>
                       </div>
                     </div>
                   </div>

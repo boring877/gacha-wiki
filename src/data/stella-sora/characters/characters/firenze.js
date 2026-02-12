@@ -113,7 +113,108 @@ export const Firenze = {
     "cooldown": "25s",
     "energy": 218
   },
-  "talents": [],
+  "talents": [
+    {
+      "name": "Bleak Ruination",
+      "talents": [
+        {
+          "name": "Bleak Ruination",
+          "description": "When Firenze triggers an ##Umbra Mark#1019#, increases the Umbra DMG of Firenze and ##Shadow Clones#4002# on the field by <color=#0abec5>&Param1&</color> for &Param2&s, up to &Param3& stacks.",
+          "params": ["7%", "5", "3"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Sorrowful Strength",
+      "talents": [
+        {
+          "name": "Sorrowful Strength",
+          "description": "When Firenze summons a ##Shadow Clone#4002#, increases Firenze's ATK by <color=#0abec5>&Param1&</color> and the Minion DMG of ##Shadow Clones#4002# on the field by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "params": ["20%", "5"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Tender Adamantine Heart",
+      "talents": [
+        {
+          "name": "Tender Adamantine Heart",
+          "description": "When Firenze casts a skill, increases Firenze's ATK by <color=#0abec5>&Param1&</color> and the Minion DMG of ##Shadow Clones#4002# on the field by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "params": ["20%", "8"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Tough Rose",
+      "talents": [
+        {
+          "name": "Tough Rose",
+          "description": "When any Trekker applies an ##Umbra Mark#1019# to a target, increases Firenze's Ultimate DMG by <color=#0abec5>&Param1&</color> for &Param2&s, up to &Param3& stacks.",
+          "params": ["4%", "10", "20"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Unique Individuals",
+      "talents": [
+        {
+          "name": "Unique Individuals",
+          "description": "An all-Umbra squad increases Firenze's Umbra DMG by <color=#0abec5>&Param1&</color>.",
+          "params": ["20%"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["60"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["690"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Umbra DMG Boost", "description": "Increases Umbra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    }
+  ],
   "stats": [
     { "hp": 1325, "atk": 115 },
     { "hp": 1727, "atk": 150 },

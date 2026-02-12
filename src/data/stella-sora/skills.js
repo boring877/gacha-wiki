@@ -2602,7 +2602,7 @@ export const characterSkills = {
       energy: 218,
     },
   },
-  springseekCoronis: {
+  'springseek-coronis': {
     name: 'Springseek Coronis',
     id: 159,
     normalAttack: {
@@ -2671,6 +2671,3 @@ export const characterSkills = {
     },
   },
 };
-
-// Add aliases for kebab-case slugs
-characterSkills['springseek-coronis'] = characterSkills.springseekCoronis;

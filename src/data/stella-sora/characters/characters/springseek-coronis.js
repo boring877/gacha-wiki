@@ -87,7 +87,108 @@ export const SpringseekCoronis = {
     "cooldown": "30s",
     "energy": 275
   },
-  "talents": [],
+  "talents": [
+    {
+      "name": "Guiding Lanterns",
+      "talents": [
+        {
+          "name": "Guiding Lanterns",
+          "description": "When Springseek Coronis deals Skill DMG, increases the target's Terra DMG Taken by <color=#0abec5>&Param1&</color> for &Param2&s, stacking up to &Param3& times.",
+          "params": ["4.7%", "12", "3"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "talents": [
+        {
+          "name": "Eternal Flame",
+          "description": "When any Trekker inflicts ##Terra Mark#1020# on a target, increases Springseek Coronis's Skill DMG by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "params": ["28.5%", "6"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Magical Touch",
+      "talents": [
+        {
+          "name": "Magical Touch",
+          "description": "When Springseek Coronis deals Ultimate DMG, increases the target's Terra DMG Taken by <color=#0abec5>&Param1&</color> for &Param2&s, stacking up to &Param3& times.",
+          "params": ["3.5%", "20", "6"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Healing Auspice",
+      "talents": [
+        {
+          "name": "Healing Auspice",
+          "description": "When Springseek Coronis casts a skill, increases Skill DMG by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "params": ["34%", "10"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    },
+    {
+      "name": "Fresh Start",
+      "talents": [
+        {
+          "name": "Fresh Start",
+          "description": "Increases Springseek Coronis's Terra DMG to elite or higher-tier targets by <color=#0abec5>&Param1&</color>.",
+          "params": ["24%"]
+        },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "ATK Enhancement", "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.", "params": ["50"] },
+        { "name": "DEF Enhancement", "description": "Increases Base DEF by <color=#0abec5>&Param1&</color>.", "params": ["10"] },
+        { "name": "HP Enhancement", "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.", "params": ["575"] },
+        { "name": "ATK Enhancement", "description": "Increases ATK by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] },
+        { "name": "Terra DMG Boost", "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.", "params": ["1.5%"] }
+      ]
+    }
+  ],
   "stats": [
     { "hp": 788, "atk": 114 },
     { "hp": 1025, "atk": 148 },

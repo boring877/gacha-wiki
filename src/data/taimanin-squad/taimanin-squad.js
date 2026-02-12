@@ -19,7 +19,7 @@ export const taimaninSquadConfig = {
     galaxyStoreUrl: 'https://galaxystore.samsung.com/detail/com.GREMORYGames.TaimaninSquad.Galaxy',
     lastUpdated: new Date(),
     status: 'released',
-    openBeta: 'Now available on Google Play, App Store, and Galaxy Store!',
+    launch: 'Official Launch: March 1, 2026 13:00 UTC - Open Beta Ends!',
     developer: 'Gremory Games Inc.',
     platforms: ['Android', 'iOS', 'PC'],
     socialLinks: {

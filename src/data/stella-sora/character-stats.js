@@ -10927,7 +10927,7 @@ export const characterStats = {
     { hp: 88236, atk: 7542 },
     { hp: 88236, atk: 7542 },
   ],
-  springseekCoronis: [
+  'springseek-coronis': [
     { hp: 788, atk: 114 },
     { hp: 1025, atk: 148 },
     { hp: 1262, atk: 182 },
@@ -11004,8 +11004,5 @@ export const characterStats = {
     { hp: 44618, atk: 6073 },
   ],
 };
-
-// Add aliases for kebab-case slugs
-characterStats['springseek-coronis'] = characterStats.springseekCoronis;
 
 export default characterStats;

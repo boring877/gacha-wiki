@@ -30,7 +30,7 @@
 .ts-timer-card-title {
   font-size: 1rem;
   font-weight: var(--ts-font-semibold);
-  color: var(--ts-primary-light);
+  color: var(--ts-accent);
 }
 
 /* Game image container background */
@@ -96,4 +96,93 @@
   padding: 0.25rem 0.75rem;
   border-radius: var(--ts-radius-sm);
   font-size: 0.875rem;
+}
+
+/* Open Beta Period Card */
+.ts-beta-period-card {
+  background: linear-gradient(135deg, rgba(107, 91, 122, 0.15) 0%, rgba(154, 138, 170, 0.1) 100%);
+  border: 1px solid rgba(154, 138, 170, 0.3);
+}
+
+.ts-beta-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ts-beta-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ts-beta-date-row:last-child {
+  border-bottom: none;
+}
+
+.ts-beta-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.ts-beta-value {
+  color: var(--ts-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Days Since Open Beta Card */
+.ts-days-counter-card {
+  background: linear-gradient(135deg, rgba(154, 138, 170, 0.2) 0%, rgba(107, 91, 122, 0.15) 100%);
+  border: 1px solid rgba(154, 138, 170, 0.4);
+}
+
+.ts-days-big-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.ts-days-big-value {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: var(--ts-accent);
+  line-height: 1;
+}
+
+.ts-days-big-label {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.ts-time-elapsed {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+/* Responsive for Open Beta Cards */
+@media (max-width: 768px) {
+  .ts-beta-date-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .ts-days-big-value {
+    font-size: 3.5rem;
+  }
+
+  .ts-days-big-label {
+    font-size: 0.9rem;
+  }
 }

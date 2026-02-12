@@ -29,6 +29,8 @@ import { Laru } from './characters/characters/laru.js';
 import { Shia } from './characters/characters/shia.js';
 import { Nazuna } from './characters/characters/nazuna.js';
 import { SnowishLaru } from './characters/characters/snowish-laru.js';
+import { Firenze } from './characters/characters/firenze.js';
+import { SpringseekCoronis } from './characters/characters/springseek-coronis.js';
 
 // All characters data
 const allCharacters = [
@@ -60,6 +62,8 @@ const allCharacters = [
   Shia,
   Nazuna,
   SnowishLaru,
+  Firenze,
+  SpringseekCoronis,
 ];
 
 // Helper function to parse description with params and convert to HTML

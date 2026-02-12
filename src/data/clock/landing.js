@@ -5,16 +5,17 @@ export const clockLandingGames = [
   {
     id: 'taimanin-squad',
     name: 'Taimanin Squad',
-    description: 'Action RPG Open Beta',
+    description: 'Action RPG - Game Launch',
     image: '', // Image will be imported directly in the Astro page
     url: '/clock/taimanin-squad',
     themeColor: 'var(--ts-accent)',
     active: true,
     primaryTimer: {
-      name: 'Open Beta',
+      name: 'Game Launch',
       type: 'launch',
-      resetHour: 15, // UTC (00:00 JST)
+      resetHour: 13, // UTC (13:00 UTC = 22:00 JST)
       resetMinute: 0,
+      launchDate: '2026-03-01', // March 1, 2026
       icon: '',
     },
   },
@@ -127,8 +128,14 @@ export function calculatePreviewTime(timer) {
       targetTime.setUTCDate(targetTime.getUTCDate() + 1);
     }
   } else if (timer.type === 'launch') {
-    // For launch timer, use the specific launch date (Oct 20, 2025 at 02:00 UTC)
-    targetTime.setUTCFullYear(2025, 9, 20); // October 20, 2025
+    // For launch timer, use the specific launch date
+    if (timer.launchDate) {
+      const [year, month, day] = timer.launchDate.split('-').map(Number);
+      targetTime.setUTCFullYear(year, month - 1, day);
+    } else {
+      // Fallback for Stella Sora (Oct 20, 2025)
+      targetTime.setUTCFullYear(2025, 9, 20);
+    }
     targetTime.setUTCHours(timer.resetHour, timer.resetMinute || 0, 0, 0);
   }
 
