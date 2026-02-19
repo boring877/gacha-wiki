@@ -869,6 +869,27 @@ export const ZONE_NOVA_CHARACTERS = [
     slug: 'pride-lucifer',
     detailUrl: '/guides/zone-nova/characters/pride-lucifer',
   },
+  {
+    id: 50,
+    name: 'Wrath-Samael',
+    rarity: 'SSR',
+    element: 'Chaos',
+    role: 'Tank',
+    class: 'Guardian',
+    faction: getFactionByCharacter('Wrath-Samael'),
+    tags: ['Shield', 'Defense Scaling', 'Team Buff', 'Neutralize', 'Chaos', 'Guardian', 'SSR', 'Damage Reduction', 'Taunt'],
+    stats: {
+      hp: 11576,
+      attack: 480,
+      defense: 1549,
+      energyRecovery: 0.25,
+      critRate: 0,
+      critDmg: 50,
+    },
+    image: '/images/games/zone-nova/characters/Wrath_Samael.jpg',
+    slug: 'wrath-samael',
+    detailUrl: '/guides/zone-nova/characters/wrath-samael',
+  },
 ];
 
 // Metadata (unique, sorted)

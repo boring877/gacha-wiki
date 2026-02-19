@@ -21,6 +21,7 @@ import { ibarakiDojiData } from '../../../../data/zone-nova/characters/ibaraki-d
 import { sigurdData } from '../../../../data/zone-nova/characters/sigurd.js';
 import { jorogumoData } from '../../../../data/zone-nova/characters/jorogumo.js';
 import { prideLuciferData } from '../../../../data/zone-nova/characters/pride-lucifer.js';
+import { wrathSamaelData } from '../../../../data/zone-nova/characters/wrath-samael.js';
 
 export const prerender = true;
 
@@ -100,7 +101,9 @@ const characterData =
                             ? jorogumoData
                             : finalCharacter.slug === 'pride-lucifer'
                               ? prideLuciferData
-                              : null;
+                              : finalCharacter.slug === 'wrath-samael'
+                                ? wrathSamaelData
+                                : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -169,6 +172,9 @@ const memoryCardUrls = {
 
   // Pride-Lucifer memory cards
   'Pride or Tsundere?': '/guides/zone-nova/memories/pride-or-tsundere/',
+
+  // Wrath-Samael memory cards
+  'Suffocating Grace': '/guides/zone-nova/memories/suffocating-grace/',
 };
 
 // Helper function to get badge class names

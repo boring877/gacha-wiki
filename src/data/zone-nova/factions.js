@@ -69,7 +69,7 @@ export const ZONE_NOVA_FACTIONS = {
   'Bicta Tower': {
     name: 'Bicta Tower',
     chineseName: '毕刻客',
-    characters: ['Leviathan', 'Greed Mammon', 'Belphegar', 'Pride-Lucifer'],
+    characters: ['Leviathan', 'Greed Mammon', 'Belphegar', 'Pride-Lucifer', 'Wrath-Samael'],
     color: '#673ab7',
     description: 'The Bicta Tower faction with demonic influences',
   },

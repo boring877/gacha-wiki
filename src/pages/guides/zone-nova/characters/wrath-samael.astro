@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { wrathSamaelData, wrathSamaelSEO } from '../../../../data/zone-nova/characters/wrath-samael.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={wrathSamaelSEO.title}
+  description={wrathSamaelSEO.description}
+  gameTitle={wrathSamaelData.name}
+  character={wrathSamaelData}
+>
+  <CharacterPageTemplate characterData={wrathSamaelData} />
+</CharacterIndividualLayout>

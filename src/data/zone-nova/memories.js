@@ -1155,6 +1155,28 @@ export const ZONE_NOVA_MEMORIES = [
       'When attacked by a normal attack, damage taken is reduced by 30%',
     ],
   },
+  {
+    id: 'suffocating-grace',
+    slug: 'suffocating-grace',
+    name: 'Suffocating Grace',
+    image: '/images/games/zone-nova/memories/Wrath_Samaelcard.jpg',
+    rarity: 'SSR',
+    element: 'Chaos',
+    character: 'Wrath-Samael',
+    class: 'Guardian',
+    detailUrl: '/guides/zone-nova/memories/suffocating-grace/',
+    stats: {
+      hp: 6800,
+      attack: 480,
+      defense: 890,
+    },
+    effects: [
+      'Defense +64%',
+      'After successfully parry, Damage Taken is reduced by 10% for 5 seconds',
+      'The wearer gains [Stigma] (max 400 stacks), lasting 3 seconds',
+      'Every 40 stacks of [Stigma] increases All Resistances by 5%',
+    ],
+  },
 ];
 
 // Memory metadata for filters
@@ -1209,6 +1231,7 @@ export const MEMORY_METADATA = {
     'Thor',
     'Yuis',
     'Zashiki-warashi',
+    'Wrath-Samael',
   ],
 };
 
