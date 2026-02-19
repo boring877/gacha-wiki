@@ -34,7 +34,7 @@ export const TIER_DEFINITIONS = {
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'Overall PvE Tier List',
-  lastUpdated: '2026-02-04',
+  lastUpdated: '2026-02-19',
   description: 'Character rankings for PvE (story, events).',
   tiers: {
     SSS: [
@@ -67,6 +67,7 @@ export const PVE_TIER_LIST = {
       { name: 'Jorogumo' },
       { name: 'Shuten-doji' },
       { name: 'Pride-Lucifer' },
+      { name: 'Wrath-Samael' },
     ],
     S: [
       { name: 'Shu' },
@@ -102,10 +103,10 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'PvP Arena Tier List',
-  lastUpdated: '2026-02-04',
+  lastUpdated: '2026-02-19',
   description: 'PvP character rankings.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Pride-Lucifer' }],
+    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Pride-Lucifer' }, { name: 'Wrath-Samael' }],
     SS: [
       { name: 'Freye' },
       { name: 'Freya' },
@@ -157,7 +158,7 @@ export const PVP_TIER_LIST = {
 // Rift Content Tier List
 export const RIFT_TIER_LIST = {
   name: 'Space-Time Rift Tier List',
-  lastUpdated: '2026-02-04',
+  lastUpdated: '2026-02-19',
   description:
     'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
   tiers: {
@@ -194,6 +195,7 @@ export const RIFT_TIER_LIST = {
       { name: 'Lily' },
       { name: 'Apep' },
       { name: 'Jorogumo' },
+      { name: 'Wrath-Samael' },
     ],
     S: [
       { name: 'Shu' },
@@ -226,7 +228,7 @@ export const RIFT_TIER_LIST = {
 // Guild Raid Tier List
 export const GUILD_RAID_TIER_LIST = {
   name: 'Guild Raid Tier List',
-  lastUpdated: '2026-02-04',
+  lastUpdated: '2026-02-19',
   description:
     'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
   tiers: {
@@ -368,6 +370,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-02-19',
+    changes: [
+      'Wrath-Samael added: SS in PvE, SSS in PvP, SS in Rift',
+      'New Chaos Guardian Tank with Neutralize mechanics and Wrath stack system',
+      'Mainly a PVP unit - excels at controlling enemy aggression with taunt mechanic',
+      'Team skill provides 15% Defense and Neutralize DMG Reduction based on Defense',
+      'High ultimate cost limits PVE effectiveness but dominates PVP meta',
+    ],
+  },
   {
     date: '2026-02-04',
     changes: [
