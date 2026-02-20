@@ -29,6 +29,26 @@ const gameTitle = 'Support Tier List';
       <p class="bb-tier-list-last-updated">Last updated: {tierList.lastUpdated}</p>
     </div>
 
+    <!-- Search and Filter Controls -->
+    <div class="bb-tier-list-controls">
+      <input
+        type="text"
+        id="character-search"
+        class="bb-tier-search-input"
+        placeholder="Search by name, element, or weapon..."
+      />
+      <select id="tier-filter" class="bb-tier-filter-select">
+        <option value="">All Tiers</option>
+        <option value="SSS">SSS Tier</option>
+        <option value="SS">SS Tier</option>
+        <option value="S">S Tier</option>
+        <option value="A">A Tier</option>
+      </select>
+      <button type="button" id="clear-filters" class="bb-tier-clear-btn">
+        Clear
+      </button>
+    </div>
+
     <div class="bb-tier-list-info">
       <h3>Tier Criteria</h3>
       <ul>
@@ -40,15 +60,21 @@ const gameTitle = 'Support Tier List';
     </div>
 
     <!-- Tier List Display -->
-    <div class="bb-tier-list-container">
+    <div class="bb-tier-list-container" id="tier-list-container">
       {tierList.tiers.map(tier => (
-        <div class="bb-tier-row">
+        <div class="bb-tier-row" data-tier={tier.tier}>
           <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
             {tier.definition.label}
           </div>
           <div class="bb-tier-characters">
             {tier.characters.map(character => (
-              <div class="bb-tier-character-card">
+              <div
+                class="bb-tier-character-card"
+                data-name={character.name.toLowerCase()}
+                data-element={character.element}
+                data-weapon={character.weapon}
+                data-rarity={character.rarity}
+              >
                 <div class="bb-character-image-wrapper">
                   <PaladinImage
                     characterId={character.id}
@@ -72,9 +98,99 @@ const gameTitle = 'Support Tier List';
         </div>
       ))}
     </div>
+
+    <!-- No Results Message -->
+    <div class="bb-tier-no-results" id="no-results">
+      <h3>No characters found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
   </section>
 
   <style>
+    /* Search and Filter Controls */
+    .bb-tier-list-controls {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .bb-tier-search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--bb-border, #374151);
+      border-radius: 0.5rem;
+      background: var(--bb-bg-secondary, #1f2937);
+      color: var(--bb-text-primary, #fff);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .bb-tier-search-input:focus {
+      border-color: var(--bb-accent, #3b82f6);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    .bb-tier-search-input::placeholder {
+      color: var(--bb-text-muted, #6b7280);
+    }
+
+    .bb-tier-filter-select {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--bb-border, #374151);
+      border-radius: 0.5rem;
+      background: var(--bb-bg-secondary, #1f2937);
+      color: var(--bb-text-primary, #fff);
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+      min-width: 120px;
+    }
+
+    .bb-tier-filter-select:focus {
+      border-color: var(--bb-accent, #3b82f6);
+    }
+
+    .bb-tier-clear-btn {
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--bb-border, #374151);
+      border-radius: 0.5rem;
+      background: var(--bb-bg-secondary, #1f2937);
+      color: var(--bb-text-primary, #fff);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .bb-tier-clear-btn:hover {
+      background: var(--bb-bg-tertiary, #374151);
+    }
+
+    /* No Results Message */
+    .bb-tier-no-results {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--bb-text-muted, #9ca3af);
+    }
+
+    .bb-tier-no-results.visible {
+      display: block;
+    }
+
+    .bb-tier-no-results h3 {
+      margin-bottom: 0.5rem;
+      color: var(--bb-text-secondary, #d1d5db);
+    }
+
+    /* Hidden state for cards */
+    .bb-tier-character-card.hidden {
+      display: none;
+    }
+
     /* Additional styles for support tier list */
     .bb-character-icons {
       display: flex;
@@ -116,6 +232,20 @@ const gameTitle = 'Support Tier List';
 
     /* Mobile optimization */
     @media (max-width: 768px) {
+      .bb-tier-list-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .bb-tier-search-input {
+        min-width: 100%;
+      }
+
+      .bb-tier-filter-select,
+      .bb-tier-clear-btn {
+        width: 100%;
+      }
+
       .bb-character-icons {
         gap: 0.25rem;
       }
@@ -173,3 +303,78 @@ const gameTitle = 'Support Tier List';
     }
   </style>
 </TierListLayout>
+
+<script>
+  // Search and filter functionality
+  function initSearch() {
+    const searchInput = document.getElementById('character-search') as HTMLInputElement;
+    const tierFilter = document.getElementById('tier-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement;
+    const noResults = document.getElementById('no-results');
+    const tierRows = document.querySelectorAll('.bb-tier-row');
+
+    if (!searchInput || !tierFilter) return;
+
+    function filterCharacters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const tierValue = tierFilter.value;
+      let visibleCount = 0;
+
+      tierRows.forEach(row => {
+        const rowTier = row.getAttribute('data-tier') || '';
+        const cards = row.querySelectorAll('.bb-tier-character-card');
+        let rowVisibleCount = 0;
+
+        // Check if tier row should be visible
+        const tierMatches = !tierValue || rowTier === tierValue;
+
+        cards.forEach(card => {
+          const cardEl = card as HTMLElement;
+          const name = cardEl.dataset.name || '';
+          const element = cardEl.dataset.element || '';
+          const weapon = cardEl.dataset.weapon || '';
+
+          // Check search term
+          const matchesSearch = !searchTerm ||
+            name.includes(searchTerm) ||
+            element.toLowerCase().includes(searchTerm) ||
+            weapon.toLowerCase().includes(searchTerm);
+
+          // Check tier filter
+          const matchesTier = tierMatches;
+
+          const isVisible = matchesSearch && matchesTier;
+          cardEl.classList.toggle('hidden', !isVisible);
+          if (isVisible) rowVisibleCount++;
+        });
+
+        // Hide tier row if no cards visible
+        (row as HTMLElement).style.display = rowVisibleCount > 0 ? '' : 'none';
+        visibleCount += rowVisibleCount;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+    }
+
+    function clearFilters() {
+      searchInput.value = '';
+      tierFilter.value = '';
+      filterCharacters();
+    }
+
+    // Add event listeners
+    searchInput.addEventListener('input', filterCharacters);
+    tierFilter.addEventListener('change', filterCharacters);
+    clearBtn.addEventListener('click', clearFilters);
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+</script>

@@ -610,6 +610,25 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     }
   },
   {
+    id: 2084,
+    name: 'Lapis',
+    rarity: 'SSR',
+    element: 'Water',
+    weapon: 'Slash',
+    supportStats: {
+      lb0: { 'M.Crit Rate': 45 },
+      lb1: { 'M.Crit Rate': 60, 'MATK': 80 },
+      lb2: { 'M.Crit Rate': 75, 'MATK': 120 },
+      lb3: { 'M.Crit Rate': 90, 'MATK': 160 },
+      lb4: { 'M.Crit Rate': 90, 'MATK': 200 },
+      lb5: { 'M.Crit Rate': 90, 'MATK': 200 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Slash Inspiration', effect: 'DEF/M.DEF', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
     id: 2085,
     name: 'Rosa',
     rarity: 'SSR',

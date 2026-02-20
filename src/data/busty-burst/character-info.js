@@ -2674,6 +2674,38 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     },
   },
 
+  'lapis': {
+    slug: 'lapis',
+    name: 'Lapis',
+    displayName: 'Lapis',
+    baseName: 'Lapis',
+    title: null,
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    attackType: 'Magic',
+    position: { roman: 'I', number: 1 },
+    actionSpeed: 'Fast',
+    range: 240,
+    weaponType: 'Slash',
+    skillTypes: ['Debuff'],
+    image: 'Lapis',
+    profile: {
+      height: '163cm',
+      bust: '92cm (F Cup)',
+      waist: '59cm',
+      hips: '90cm',
+    },
+    credits: {
+      illustration: { japanese: '馬肉太郎', romanized: 'Baniku Tarou' },
+      voice: { japanese: '春山色葉', romanized: 'Haruyama Shikiha' },
+    },
+    obtain: {
+      type: 'permanent',
+      source: 'Standard Banner',
+    },
+  },
+
   'rosa': {
     slug: 'rosa',
     name: 'Rosa',

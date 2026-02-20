@@ -696,6 +696,45 @@
   color: var(--bb-primary-light);
 }
 
+/* Skill Buff Display */
+.bb-char-skill-buffs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-char-skill-buffs-label {
+  font-size: 0.7rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bb-char-skill-buffs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-char-skill-buff-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-char-skill-buff-name {
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+  font-weight: 500;
+}
+
+.bb-char-skill-buff-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bb-accent-light);
+  font-family: monospace;
+}
+
 /* Skill Effect Display */
 .bb-char-skill-effect {
   display: flex;

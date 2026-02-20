@@ -554,9 +554,9 @@ const description = `${character.displayName || character.name} - ${character.ra
                     <span class="bb-char-skill-meta-item">Target: {skill.target}</span>
                   )}
                 </div>
-                {((skill.baseDamage || skill.lvl1) || skill.effect) && (
+                {(skill.baseDamage || skill.buffEffects || skill.effect) && (
                   <div class="bb-char-skill-details">
-                    {(skill.baseDamage || skill.lvl1) && (
+                    {skill.baseDamage && (
                       <div class="bb-char-skill-damage">
                         <span class="bb-char-skill-damage-label">Damage at Lv <span class="skill-current-level">90</span></span>
                         <span class="bb-char-skill-damage-value"
@@ -571,7 +571,30 @@ const description = `${character.displayName || character.name} - ${character.ra
                         </span>
                       </div>
                     )}
-                    {skill.effect && (
+                    {skill.buffEffects && skill.buffEffects.length > 0 && (
+                      <div class="bb-char-skill-buffs">
+                        <span class="bb-char-skill-buffs-label">Buff at Lv <span class="skill-current-level">90</span></span>
+                        <div class="bb-char-skill-buffs-list">
+                          {skill.buffEffects.map(buff => (
+                            <div class="bb-char-skill-buff-item"
+                              data-flat-base={buff.flatBonusLv1 || buff.flatBonus || 0}
+                              data-flat-lv90={buff.flatBonusLv90 || buff.flatBonus || 0}>
+                              <span class="bb-char-skill-buff-name">{buff.name}</span>
+                              <span class="bb-char-skill-buff-value"
+                                data-buff-base={buff.valueLv1 || buff.value || 0}
+                                data-buff-lv90={buff.valueLv90 || buff.value || 0}>
+                                {buff.displayFormat === '% + flat'
+                                  ? `${buff.valueLv90 || buff.value}% (+${buff.flatBonusLv90 || buff.flatBonus} MATK)`
+                                  : typeof buff.valueLv90 === 'number'
+                                    ? `${buff.valueLv90}%`
+                                    : buff.valueLv90 || buff.value}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {skill.effect && !skill.buffEffects && (
                       <div class="bb-char-skill-effect">
                         <span class="bb-char-skill-effect-label">Effect</span>
                         <span class="bb-char-skill-effect-value">{skill.effect}</span>
@@ -1223,11 +1246,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillLevelPlus = document.getElementById('skill-level-plus');
   const skillQuickLevelBtns = document.querySelectorAll('.skill-quick-level');
   const skillDamageValues = document.querySelectorAll('.bb-char-skill-damage-value');
+  const skillBuffValues = document.querySelectorAll('.bb-char-skill-buff-value');
   const skillCurrentLevelLabels = document.querySelectorAll('.skill-current-level');
 
   // Calculate skill damage at any level
   function calculateSkillDamage(base, growth, level) {
     return base + (growth * (level - 1));
+  }
+
+  // Calculate buff value at any level (linear interpolation)
+  function calculateBuffValue(base, lv90, level) {
+    if (level <= 1) return base;
+    if (level >= 90) return lv90;
+    const growth = lv90 - base;
+    const perLevel = growth / 89;
+    return Math.round(base + perLevel * (level - 1));
   }
 
   // Update all skill damage values
@@ -1247,6 +1280,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const damage = calculateSkillDamage(base, growth, level);
       el.textContent = scaling ? `${scaling} + ${damage}` : `${damage}`;
+    });
+
+    // Update buff values
+    skillBuffValues.forEach(el => {
+      const buffBase = parseInt(el.dataset.buffBase) || 0;
+      const buffLv90 = parseInt(el.dataset.buffLv90) || buffBase;
+      const buffValue = calculateBuffValue(buffBase, buffLv90, level);
+
+      // Check if this is a compound buff (with flat bonus)
+      const parentItem = el.closest('.bb-char-skill-buff-item');
+      if (parentItem && parentItem.dataset.flatBase) {
+        const flatBase = parseInt(parentItem.dataset.flatBase) || 0;
+        const flatLv90 = parseInt(parentItem.dataset.flatLv90) || flatBase;
+        const flatValue = calculateBuffValue(flatBase, flatLv90, level);
+        el.textContent = `${buffValue}% (+${flatValue} MATK)`;
+      } else {
+        el.textContent = `${buffValue}%`;
+      }
     });
   }
 

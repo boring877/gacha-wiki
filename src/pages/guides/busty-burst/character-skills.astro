@@ -409,12 +409,21 @@ const rarities = ['SSR', 'SR', 'R'];
                   <div class="bb-skill-description" set:html={highlightValues(char.ultimate[0].description)} />
                 )}
                 <div class="bb-ultimate-ranks">
-                  {char.ultimate.map(ult => (
-                    <div class="bb-ultimate-rank">
-                      <span class="bb-ult-rank-label">R{ult.rank}:</span>
-                      <span class="bb-ult-rank-effect" set:html={highlightValues(ult.effect)} />
-                    </div>
-                  ))}
+                  {char.ultimate.map(ult => {
+                    const buffInfo = ult.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown')
+                      .map(b => {
+                        const val = typeof b.value === 'number' ? (b.value > 0 ? `+${b.value}` : `${b.value}`) : b.value;
+                        const suffix = b.type === 'percent' ? '%' : (typeof b.value === 'string' && String(b.value).includes('%') ? '' : '');
+                        return `${b.name} ${val}${suffix}`;
+                      }).join(', ') || '';
+                    return (
+                      <div class="bb-ultimate-rank">
+                        <span class="bb-ult-rank-label">R{ult.rank}:</span>
+                        <span class="bb-ult-rank-effect" set:html={highlightValues(ult.effect)} />
+                        {buffInfo && <span class="bb-ult-rank-buffs" set:html={highlightValues(buffInfo)} />}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -1459,5 +1468,16 @@ const rarities = ['SSR', 'SR', 'R'];
     .bb-skills-info-row {
       justify-content: center;
     }
+  }
+
+  /* Ultimate rank buff/debuff display */
+  .bb-ult-rank-buffs {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--bb-text-tertiary, #999);
+    padding: 0.1rem 0.4rem;
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 4px;
   }
 </style>

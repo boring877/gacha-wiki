@@ -840,6 +840,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Attacker',
     tier: 'A',
   },
+  {
+    id: 'lapis',
+    characterId: 2084,
+    name: 'Lapis',
+    fileName: 'Lapis',
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

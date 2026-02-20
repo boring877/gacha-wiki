@@ -52,8 +52,9 @@ if (imageType === 'body') {
 
 if (!imageModule) {
   // Look for sprite image: {id}.png
+  // Use includes() for cross-platform path compatibility
   const spriteKey = Object.keys(spriteImages).find(key =>
-    key.endsWith(`/${characterId}.png`)
+    key.includes(`/${characterId}.png`) || key.includes(`\\${characterId}.png`)
   );
   if (spriteKey) {
     imageModule = spriteImages[spriteKey].default;
@@ -63,7 +64,7 @@ if (!imageModule) {
 // Fallback to character 2001 if not found
 if (!imageModule) {
   const fallbackKey = Object.keys(spriteImages).find(key =>
-    key.endsWith('/2001.png')
+    key.includes('/2001.png') || key.includes('\\2001.png')
   );
   if (fallbackKey) {
     imageModule = spriteImages[fallbackKey].default;
