@@ -21785,7 +21785,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "rarity": "SSR",
     "element": "Water",
     "role": "Attacker",
-    "tags": ["Debuff"],
+    "tags": ["Buff", "Debuff", "Disrupt"],
     "baseStats": {
       "HP": 2092,
       "ATK": 157,

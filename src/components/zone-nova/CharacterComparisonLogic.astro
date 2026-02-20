@@ -469,17 +469,13 @@ import { CHARACTER_DATA_MAP } from './ZNCharacterData.astro';
       const mobileCardsContainer = document.getElementById('mobile-comparison-cards');
       if (!mobileCardsContainer) return;
 
-      console.log('Generating mobile cards for', this.selectedCharacters.length, 'characters');
       mobileCardsContainer.innerHTML = '';
 
       this.selectedCharacters.forEach((characterSlug, index) => {
         const characterCard = document.querySelector(`[data-character-slug="${characterSlug}"]`);
         if (characterCard) {
-          console.log('Creating mobile card for:', characterSlug);
           const mobileCard = this.createMobileCard(characterCard, index + 1);
           mobileCardsContainer.appendChild(mobileCard);
-        } else {
-          console.log('Character card not found for:', characterSlug);
         }
       });
     }
@@ -513,13 +509,6 @@ import { CHARACTER_DATA_MAP } from './ZNCharacterData.astro';
         characterCard.dataset.characterSlug || this.selectedCharacters[columnIndex - 1];
       const characterDataFull = this.loadCharacterData(characterSlug);
       const teamSkill = characterDataFull?.teamSkill;
-
-      // Debug logging
-      console.log('Mobile card debug:', {
-        characterSlug,
-        characterDataFull: characterDataFull ? 'found' : 'not found',
-        teamSkill: teamSkill ? 'found' : 'not found',
-      });
 
       card.innerHTML = `
         <div class="card-header">

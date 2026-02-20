@@ -51,11 +51,9 @@ if (currentIndex !== -1) {
       return;
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      console.log(`Navigating to previous character: ${prevCharacterName}`);
       window.location.href = prevUrl;
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      console.log(`Navigating to next character: ${nextCharacterName}`);
       window.location.href = nextUrl;
     }
   });

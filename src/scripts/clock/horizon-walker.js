@@ -13,10 +13,12 @@ const MS_PER_MINUTE = 1000 * 60;
 class HorizonWalkerClockTimer {
   constructor() {
     this.animationFrame = null;
+    this.clockInterval = null;
     this.holidayInterval = null;
     this.config = null;
     this.elements = {}; // Store all DOM elements in one object
     this.cleanupHandler = null; // Store cleanup handler reference
+    this.visibilityHandler = null; // Store visibility change handler reference
 
     // Performance monitoring
     this.performanceStats = {
@@ -68,13 +70,14 @@ class HorizonWalkerClockTimer {
       window.addEventListener('beforeunload', this.cleanupHandler);
 
       // Also cleanup on page visibility change
-      document.addEventListener('visibilitychange', () => {
+      this.visibilityHandler = () => {
         if (document.hidden) {
           this.pauseClockLoop();
         } else {
           this.resumeClockLoop();
         }
-      });
+      };
+      document.addEventListener('visibilitychange', this.visibilityHandler);
     } catch (error) {
       console.error('Failed to setup Horizon Walker clock:', error);
       this.cleanup();
@@ -502,15 +505,23 @@ class HorizonWalkerClockTimer {
       cancelAnimationFrame(this.animationFrame);
       this.animationFrame = null;
     }
+    if (this.clockInterval) {
+      clearInterval(this.clockInterval);
+      this.clockInterval = null;
+    }
     if (this.holidayInterval) {
       clearInterval(this.holidayInterval);
       this.holidayInterval = null;
     }
 
-    // Remove event listener properly
+    // Remove event listeners properly
     if (this.cleanupHandler) {
       window.removeEventListener('beforeunload', this.cleanupHandler);
       this.cleanupHandler = null;
+    }
+    if (this.visibilityHandler) {
+      document.removeEventListener('visibilitychange', this.visibilityHandler);
+      this.visibilityHandler = null;
     }
 
     // Clear DOM references to prevent memory leaks

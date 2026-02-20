@@ -45,8 +45,9 @@ export default defineConfig({
   },
   // Build optimizations
   build: {
-    // Inline all stylesheets to prevent FOUC on mobile
-    inlineStylesheets: 'always',
+    // Auto-inline small stylesheets, keep larger ones as cacheable external files
+    // 'auto' inlines stylesheets <4kb for performance, externalizes larger ones
+    inlineStylesheets: 'auto',
     // Assets folder for better organization
     assets: 'assets/',
   },
@@ -63,48 +64,47 @@ export default defineConfig({
       cssCodeSplit: true,
       // Minify for smaller bundles
       minify: 'esbuild',
+      // Warn about large chunks (>500KB)
+      chunkSizeWarningLimit: 500,
       // Tree shaking
       rollupOptions: {
         output: {
           // Better chunk naming for caching
           chunkFileNames: 'assets/[name]-[hash].js',
           assetFileNames: 'assets/[name]-[hash][extname]',
-          // Advanced manual chunks for better caching
-          manualChunks: {
-            // Game-specific data chunks
-            'zone-nova-data': [
-              '../src/data/zone-nova/characters.js',
-              '../src/data/zone-nova/memories.js',
-              '../src/data/zone-nova/updates.js',
-              '../src/data/zone-nova/rifts.js',
-            ],
-            'silver-blood-data': [
-              '../src/data/silver-and-blood/characters.js',
-              '../src/data/silver-and-blood/events.js',
-              '../src/data/silver-and-blood/damage-mechanics.js',
-            ],
-            'stella-sora-data': [
-              '../src/data/stella-sora/characters.js',
-              '../src/data/stella-sora/skills.js',
-              '../src/data/stella-sora/talents.js',
-              '../src/data/stella-sora/potentials.js',
-              '../src/data/stella-sora/discs.js',
-            ],
-
+          // Advanced manual chunks for better caching using function for proper module resolution
+          manualChunks(id) {
+            // Game-specific data chunks - split by game for better caching
+            if (id.includes('/data/zone-nova/')) {
+              return 'zn-data';
+            }
+            if (id.includes('/data/silver-and-blood/')) {
+              return 'sab-data';
+            }
+            if (id.includes('/data/stella-sora/')) {
+              return 'ss-data';
+            }
+            if (id.includes('/data/horizon-walker/')) {
+              return 'hw-data';
+            }
+            if (id.includes('/data/busty-burst/')) {
+              return 'bb-data';
+            }
+            if (id.includes('/data/taimanin-squad/')) {
+              return 'ts-data';
+            }
+            // Vendor chunks for third-party libraries
+            if (id.includes('node_modules')) {
+              if (id.includes('chart.js') || id.includes('chartjs')) {
+                return 'vendor-chart';
+              }
+              // Split other node_modules
+              return 'vendor';
+            }
             // Utility chunks
-            utils: [
-              '../src/utils/seo.ts',
-              '../src/utils/timing-constants.ts',
-              '../src/utils/ancestral-vault-calculator.js',
-            ],
-
-            // Component chunks for lazy loading
-            'character-components': [
-              '../src/components/zone-nova/CharacterComparison.astro',
-              '../src/components/silver-and-blood/CharacterComparison.astro',
-              '../src/components/stella-sora/SSSortComponent.astro',
-              '../src/layouts/stella-sora/CharacterIndividualLayout.astro',
-            ],
+            if (id.includes('/utils/')) {
+              return 'utils';
+            }
           },
         },
       },

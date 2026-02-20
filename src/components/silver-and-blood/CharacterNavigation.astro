@@ -70,7 +70,6 @@ if (currentIndex !== -1) {
 
       if (e.key === 'ArrowLeft' && prevUrl && prevUrl !== '/guides/silver-and-blood/characters') {
         e.preventDefault();
-        console.log(`Navigating to previous character: ${prevName}`);
         window.location.href = prevUrl;
       } else if (
         e.key === 'ArrowRight' &&
@@ -78,7 +77,6 @@ if (currentIndex !== -1) {
         nextUrl !== '/guides/silver-and-blood/characters'
       ) {
         e.preventDefault();
-        console.log(`Navigating to next character: ${nextName}`);
         window.location.href = nextUrl;
       }
     });

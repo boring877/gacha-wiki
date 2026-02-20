@@ -6849,7 +6849,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
     element: 'Water',
     weapon: 'Slash',
     role: 'Attacker',
-    tags: ['Debuff'],
+    tags: ['Buff', 'Debuff', 'Disrupt'],
     baseStats: {
       hp: { base: 2092, lv90: 10460 },
       atk: { base: 157, lv90: 785 },

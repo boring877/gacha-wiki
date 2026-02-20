@@ -2688,7 +2688,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
     actionSpeed: 'Fast',
     range: 240,
     weaponType: 'Slash',
-    skillTypes: ['Debuff'],
+    skillTypes: ['Buff', 'Debuff', 'Disrupt'],
     image: 'Lapis',
     profile: {
       height: '163cm',

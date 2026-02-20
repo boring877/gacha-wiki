@@ -14,7 +14,6 @@
   
   // Function to update state from calculator
   function updateState(newState) {
-    console.log('State update:', newState); // Debug log
     state = { ...state, ...newState };
   }
   

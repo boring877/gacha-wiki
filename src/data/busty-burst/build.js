@@ -184,7 +184,7 @@ export const buildConfig = {
       element: 'Water',
       role: 'Attacker',
       attackType: 'Magic',
-      weaponType: 'Pierce',
+      weaponType: 'Slash',
       skills: ['Magic', 'Buff'],
       actionSpeed: 'Fast',
       tier: 'SS',

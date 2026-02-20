@@ -13,11 +13,13 @@ const MS_PER_MINUTE = 1000 * 60;
 class SilverAndBloodClockTimer {
   constructor() {
     this.animationFrame = null;
+    this.clockInterval = null;
     this.holidayInterval = null;
     this.currentRegion = 'us'; // default region
     this.config = null;
     this.elements = {}; // Store all DOM elements in one object for better performance
     this.cleanupHandler = null; // Store cleanup handler reference
+    this.visibilityHandler = null; // Store visibility change handler reference
 
     // Performance monitoring
     this.performanceStats = {
@@ -74,13 +76,14 @@ class SilverAndBloodClockTimer {
       window.addEventListener('beforeunload', this.cleanupHandler);
 
       // Also cleanup on page visibility change for better performance
-      document.addEventListener('visibilitychange', () => {
+      this.visibilityHandler = () => {
         if (document.hidden) {
           this.pauseClockLoop();
         } else {
           this.resumeClockLoop();
         }
-      });
+      };
+      document.addEventListener('visibilitychange', this.visibilityHandler);
     } catch (error) {
       console.error('Failed to setup Silver and Blood clock:', error);
       this.cleanup();
@@ -561,15 +564,23 @@ class SilverAndBloodClockTimer {
       cancelAnimationFrame(this.animationFrame);
       this.animationFrame = null;
     }
+    if (this.clockInterval) {
+      clearInterval(this.clockInterval);
+      this.clockInterval = null;
+    }
     if (this.holidayInterval) {
       clearInterval(this.holidayInterval);
       this.holidayInterval = null;
     }
 
-    // Remove event listener properly
+    // Remove event listeners properly
     if (this.cleanupHandler) {
       window.removeEventListener('beforeunload', this.cleanupHandler);
       this.cleanupHandler = null;
+    }
+    if (this.visibilityHandler) {
+      document.removeEventListener('visibilitychange', this.visibilityHandler);
+      this.visibilityHandler = null;
     }
 
     // Clear DOM references to prevent memory leaks

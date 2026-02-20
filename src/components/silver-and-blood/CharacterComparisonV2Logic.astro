@@ -253,8 +253,6 @@ import {
 
       // Preload popular character data for better performance
       preloadPopularCharacters();
-
-      console.log('Silver & Blood Comparison V2: Initialized successfully');
     } catch (error) {
       ErrorLogger.log('initialization', error, {
         hasCharacterData: !!window.SAB_COMPARISON_V2_DATA?.characters,
@@ -287,9 +285,6 @@ import {
         // Don't fail entire preload if one character fails
       }
     });
-
-    // No need to wait since loadCharacterData is now synchronous
-    console.log(`Preloaded ${availableCharacters.length} popular characters`);
   }
 
   /**

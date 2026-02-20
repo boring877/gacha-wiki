@@ -543,8 +543,8 @@ export const characterBuilds = {
       image: 'Magic.png',
     },
     weapon: {
-      name: 'Annihilation Wand',
-      image: 'Wand_of_annihilation.png',
+      name: 'Ringblade of Annihilation',
+      image: 'Ringblade_of_Annihilation.png',
       effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
     },
     accessory: (() => {
