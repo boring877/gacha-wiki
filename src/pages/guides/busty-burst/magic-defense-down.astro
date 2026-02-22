@@ -18,10 +18,10 @@ const skillBased = allSkills.filter(s => s.sourceType === 'skill');
 const ultimates = allSkills.filter(s => s.sourceType === 'ultimate');
 
 // Group skill-based by tier
-const tierS = skillBased.filter(s => s.tier === 'S').sort((a, b) => b.duration - a.duration);
-const tierA = skillBased.filter(s => s.tier === 'A').sort((a, b) => b.duration - a.duration);
-const tierB = skillBased.filter(s => s.tier === 'B').sort((a, b) => b.duration - a.duration);
-const tierC = skillBased.filter(s => s.tier === 'C').sort((a, b) => b.duration - a.duration);
+const tierS = skillBased.filter(s => s.tier === 'S').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
+const tierA = skillBased.filter(s => s.tier === 'A').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
+const tierB = skillBased.filter(s => s.tier === 'B').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
+const tierC = skillBased.filter(s => s.tier === 'C').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
 
 // Sort ultimates by defense down value (highest first)
 // Sort by percent first, then by flat value
@@ -83,19 +83,19 @@ const gameTitle = 'Magic Defense Down Database';
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "S Tier - Best Magic DEF Down (-23% -317)",
+          "name": "S Tier - Best Magic DEF Down (-23% -320)",
           "description": "Highest magic defense reduction skills at Lv90"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "A Tier - Strong Magic DEF Down (-21% -218)",
+          "name": "A Tier - Strong Magic DEF Down (-21% -220)",
           "description": "Strong magic defense reduction skills at Lv90"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "B Tier - Moderate Magic DEF Down (-18% -208)",
+          "name": "B Tier - Moderate Magic DEF Down (-18% -210)",
           "description": "Moderate magic defense reduction skills at Lv90"
         }
       ]
@@ -125,15 +125,17 @@ const gameTitle = 'Magic Defense Down Database';
     <!-- Info Box -->
     <div class="bb-defdown-info-box">
       <h3 class="bb-defdown-info-title">How Magic Defense Down Works</h3>
-      <p class="bb-defdown-info-text">
-        Magic Defense Down reduces enemy magic defense in two ways: <strong>percentage reduction</strong> (e.g., -23%) and <strong>flat reduction</strong> (e.g., -317).
-        Higher values mean more magic damage to enemies. <strong>All values shown are at Skill Lv90 (max level)</strong>.
-      </p>
-      <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
-        <strong>Stacking Rules:</strong> Debuffs use a category system. Skills are Category B (single-target) or C (multi-target).
-        Same-category debuffs don't stack (last one wins), but <strong>different categories CAN stack</strong>.
-        Combine Skill + Ultimate debuffs for maximum effect. See <a href="/guides/busty-burst/buff-debuff-guide" style="color: #60a5fa;">Buff & Debuff Guide</a> for details.
-      </p>
+      <div class="bb-defdown-info-content">
+        <p class="bb-defdown-info-text">
+          Magic Defense Down reduces enemy magic defense in two ways: percentage reduction (e.g., -23%) and flat reduction (e.g., -320).
+          Higher values mean more magic damage to enemies. All values shown are at Skill Lv90 (max level).
+        </p>
+        <p class="bb-defdown-info-text">
+          Stacking Rules: Debuffs use a category system. Skills are Category B (single-target) or C (multi-target).
+          Same-category debuffs don't stack, but different categories CAN stack.
+          Combine Skill + Ultimate debuffs for maximum effect. See <a href="/guides/busty-burst/buff-debuff-guide">Buff & Debuff Guide</a> for details.
+        </p>
+      </div>
     </div>
 
     <!-- Tab Navigation -->
@@ -163,9 +165,9 @@ const gameTitle = 'Magic Defense Down Database';
           </select>
           <select id="tier-filter" class="bb-defdown-filter-select">
             <option value="">All Tiers</option>
-            <option value="S">S Tier (-23% -317)</option>
-            <option value="A">A Tier (-21% -218)</option>
-            <option value="B">B Tier (-18% -208)</option>
+            <option value="S">S Tier (-23% -320)</option>
+            <option value="A">A Tier (-21% -220)</option>
+            <option value="B">B Tier (-18% -210)</option>
             <option value="C">C Tier (Other)</option>
           </select>
           <select id="target-filter" class="bb-defdown-filter-select">
@@ -189,7 +191,7 @@ const gameTitle = 'Magic Defense Down Database';
             <span class="bb-defdown-tier-badge">S</span>
             <div class="bb-defdown-tier-info">
               <h2 class="bb-defdown-tier-title">S Tier - Best Magic DEF Down</h2>
-              <p class="bb-defdown-tier-desc">-23% and -317 flat reduction (Lv90)</p>
+              <p class="bb-defdown-tier-desc">-23% and -320 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierS.length} skills</span>
           </div>
@@ -269,7 +271,7 @@ const gameTitle = 'Magic Defense Down Database';
             <span class="bb-defdown-tier-badge">A</span>
             <div class="bb-defdown-tier-info">
               <h2 class="bb-defdown-tier-title">A Tier - Strong Magic DEF Down</h2>
-              <p class="bb-defdown-tier-desc">-21% and -218 flat reduction (Lv90)</p>
+              <p class="bb-defdown-tier-desc">-21% and -220 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierA.length} skills</span>
           </div>
@@ -349,7 +351,7 @@ const gameTitle = 'Magic Defense Down Database';
             <span class="bb-defdown-tier-badge">B</span>
             <div class="bb-defdown-tier-info">
               <h2 class="bb-defdown-tier-title">B Tier - Moderate Magic DEF Down</h2>
-              <p class="bb-defdown-tier-desc">-18% and -208 flat reduction (Lv90)</p>
+              <p class="bb-defdown-tier-desc">-18% and -210 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierB.length} skills</span>
           </div>
@@ -557,7 +559,7 @@ const gameTitle = 'Magic Defense Down Database';
                   </div>
                   <div class="bb-defdown-skill-info">
                     <div class="bb-defdown-skill-name">{ult.skillName}</div>
-                    <div class="bb-defdown-skill-slot">Ultimate LV5</div>
+                    <div class="bb-defdown-skill-slot">Ultimate LV{ult.level}</div>
                   </div>
                 </div>
                 <div class="bb-defdown-values">
@@ -566,12 +568,14 @@ const gameTitle = 'Magic Defense Down Database';
                     {ult.percent && ult.percent > 0 ? <span class="bb-defdown-value-percent">-{ult.percent}%</span> : <span class="bb-defdown-value-percent">DOWN</span>}
                     {ult.flat && ult.flat > 0 ? <span class="bb-defdown-value-flat">-{ult.flat}</span> : null}
                   </div>
-                  <div class="bb-defdown-value-duration">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
-                    </svg>
-                    {ult.duration}s
-                  </div>
+                  {ult.duration && (
+                    <div class="bb-defdown-value-duration">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                      </svg>
+                      {ult.duration}s
+                    </div>
+                  )}
                 </div>
                 {ult.description && <div class="bb-defdown-description">{ult.description}</div>}
               </div>

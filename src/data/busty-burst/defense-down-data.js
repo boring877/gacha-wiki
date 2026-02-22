@@ -148,33 +148,19 @@ function extractDefenseDownSkills() {
       const maxUlt = char.ultimate.find(u => u.rank === 5) || char.ultimate[char.ultimate.length - 1];
       if (maxUlt) {
         const desc = maxUlt.description || '';
-        const defDowns = parseDefenseDown(desc);
-
-        // Also check buffEffects for defense down values (ultimates often store values there)
         const buffEffects = maxUlt.buffEffects || [];
-        const physicalDefDownBuff = buffEffects.find(b => b.name && b.name.toLowerCase().includes('physical defense'));
-        const magicDefDownBuff = buffEffects.find(b => b.name && b.name.toLowerCase().includes('magic defense'));
 
-        for (const defDown of defDowns) {
-          // Get values from buffEffects if not in description
-          let percent = defDown.percent || 0;
-          let flat = defDown.flat || 0;
-          let duration = defDown.duration;
+        // Find Physical and Magic Defense DOWN buffs from buffEffects
+        // Note: Defense DOWN has "-" in name (e.g., "Physical Defense - Ultimate Lv5")
+        const physicalDefDownBuff = buffEffects.find(b =>
+          b.name && b.name.toLowerCase().includes('physical defense') && b.name.includes('-')
+        );
+        const magicDefDownBuff = buffEffects.find(b =>
+          b.name && b.name.toLowerCase().includes('magic defense') && b.name.includes('-')
+        );
 
-          // Match buffEffects to the defense down type
-          const buffMatch = defDown.type === 'physical' ? physicalDefDownBuff : magicDefDownBuff;
-          if (buffMatch && !percent && !flat) {
-            if (buffMatch.type === 'percent') {
-              percent = Math.abs(buffMatch.value);
-            } else if (buffMatch.type === 'flat') {
-              flat = Math.abs(buffMatch.value);
-            }
-            if (buffMatch.duration) {
-              duration = buffMatch.duration;
-            }
-          }
-
-          const level = defDown.level || maxUlt.rank;
+        // Process Physical Defense DOWN
+        if (physicalDefDownBuff) {
           defenseDownSkills.push({
             characterId: char.id,
             characterName: char.name,
@@ -187,15 +173,69 @@ function extractDefenseDownSkills() {
             skillIcon: maxUlt.icon,
             target: 'Varies',
             description: desc,
-            type: defDown.type,
+            type: 'physical',
             sourceType: 'ultimate',
-            percent,
-            flat,
-            duration,
-            level: level,
-            tier: `ULT_LV${level}`,
+            percent: physicalDefDownBuff.type === 'percent' ? Math.abs(physicalDefDownBuff.value) : 0,
+            flat: physicalDefDownBuff.type === 'flat' ? Math.abs(physicalDefDownBuff.value) : 0,
+            duration: physicalDefDownBuff.duration || null,
+            level: maxUlt.rank,
+            tier: `ULT_LV${maxUlt.rank}`,
             extraEffects: parseExtraEffects(desc),
           });
+        }
+
+        // Process Magic Defense DOWN
+        if (magicDefDownBuff) {
+          defenseDownSkills.push({
+            characterId: char.id,
+            characterName: char.name,
+            characterSlug: char.slug,
+            rarity: char.rarity,
+            element: char.element,
+            role: char.role,
+            skillName: maxUlt.name,
+            skillSlot: 'Ultimate',
+            skillIcon: maxUlt.icon,
+            target: 'Varies',
+            description: desc,
+            type: 'magic',
+            sourceType: 'ultimate',
+            percent: magicDefDownBuff.type === 'percent' ? Math.abs(magicDefDownBuff.value) : 0,
+            flat: magicDefDownBuff.type === 'flat' ? Math.abs(magicDefDownBuff.value) : 0,
+            duration: magicDefDownBuff.duration || null,
+            level: maxUlt.rank,
+            tier: `ULT_LV${maxUlt.rank}`,
+            extraEffects: parseExtraEffects(desc),
+          });
+        }
+
+        // Fallback: If no buffEffects found, try parsing description
+        if (!physicalDefDownBuff && !magicDefDownBuff) {
+          const defDowns = parseDefenseDown(desc);
+          for (const defDown of defDowns) {
+            const level = defDown.level || maxUlt.rank;
+            defenseDownSkills.push({
+              characterId: char.id,
+              characterName: char.name,
+              characterSlug: char.slug,
+              rarity: char.rarity,
+              element: char.element,
+              role: char.role,
+              skillName: maxUlt.name,
+              skillSlot: 'Ultimate',
+              skillIcon: maxUlt.icon,
+              target: 'Varies',
+              description: desc,
+              type: defDown.type,
+              sourceType: 'ultimate',
+              percent: defDown.percent || 0,
+              flat: defDown.flat || 0,
+              duration: defDown.duration,
+              level: level,
+              tier: `ULT_LV${level}`,
+              extraEffects: parseExtraEffects(desc),
+            });
+          }
         }
       }
     }

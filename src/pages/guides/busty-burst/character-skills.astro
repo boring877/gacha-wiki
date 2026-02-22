@@ -417,7 +417,8 @@ const rarities = ['SSR', 'SR', 'R'];
                       .map(b => {
                         const val = typeof b.value === 'number' ? (b.value > 0 ? `+${b.value}` : `${b.value}`) : b.value;
                         const suffix = b.type === 'percent' ? '%' : (typeof b.value === 'string' && String(b.value).includes('%') ? '' : '');
-                        return `${b.name} ${val}${suffix}`;
+                        const flatStr = b.flatValue ? `+${b.flatValue}` : '';
+                        return `${b.name} ${val}${suffix}${flatStr}`;
                       }).join(', ') || '';
                     return (
                       <div class="bb-ultimate-rank">

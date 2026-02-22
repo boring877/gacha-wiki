@@ -6314,13 +6314,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Attack + Ultimate Lv2",
-            "value": 20,
+            "value": 25,
             "type": "percent",
             "duration": 10
           },
           {
             "name": "Magic Attack + Ultimate Lv2",
-            "value": 20,
+            "value": 25,
             "type": "percent",
             "duration": 10
           }
@@ -6335,13 +6335,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Attack + Ultimate Lv3",
-            "value": 24,
+            "value": 29,
             "type": "percent",
             "duration": 10
           },
           {
             "name": "Magic Attack + Ultimate Lv3",
-            "value": 24,
+            "value": 29,
             "type": "percent",
             "duration": 10
           }
@@ -6356,13 +6356,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Attack + Ultimate Lv4",
-            "value": 27,
+            "value": 32,
             "type": "percent",
             "duration": 10
           },
           {
             "name": "Magic Attack + Ultimate Lv4",
-            "value": 27,
+            "value": 32,
             "type": "percent",
             "duration": 10
           }
@@ -6377,13 +6377,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Attack + Ultimate Lv5",
-            "value": 30,
+            "value": 35,
             "type": "percent",
             "duration": 10
           },
           {
             "name": "Magic Attack + Ultimate Lv5",
-            "value": 30,
+            "value": 35,
             "type": "percent",
             "duration": 10
           }
@@ -6479,13 +6479,15 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Attack + Lv1",
-            "value": 10,
+            "value": 20,
+            "valueLv90": 109,
             "type": "percent",
             "duration": 9
           },
           {
             "name": "Magic Attack + Lv1",
-            "value": 10,
+            "value": 20,
+            "valueLv90": 109,
             "type": "percent",
             "duration": 9
           }
@@ -6513,13 +6515,15 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "buffEffects": [
           {
             "name": "Physical Defense + Lv2",
-            "value": 15,
+            "value": 100,
+            "valueLv90": 189,
             "type": "percent",
             "duration": 9
           },
           {
             "name": "Magic Defense+ Lv2",
-            "value": 15,
+            "value": 100,
+            "valueLv90": 189,
             "type": "percent",
             "duration": 9
           }
@@ -6967,7 +6971,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 1,
         "name": "Financial Support!",
         "icon": "skill001/skill0020_1",
-        "description": "Applies Magic Attack UP(LV1) to all allies for 12 seconds and Physical Defense UP(LV1) for 12 seconds",
+        "description": "Applies Physical Attack 15%UP to all allies for 12 seconds and Physical Defense 15%+50UP for 12 seconds",
         "effect": "0% + 0",
         "buffEffects": [
           {
@@ -6979,6 +6983,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense + Ultimate Lv1",
             "value": 15,
+            "flatValue": 50,
             "type": "percent",
             "duration": 12
           }
@@ -6988,7 +6993,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 2,
         "name": "Financial Support!",
         "icon": "skill001/skill0020_2",
-        "description": "Applies Magic Attack UP(LV2) to all allies for 12 seconds and Physical Defense UP(LV2) for 12 seconds",
+        "description": "Applies Physical Attack 20%UP to all allies for 12 seconds and Physical Defense 20%+150UP for 12 seconds",
         "effect": "0% + 0",
         "buffEffects": [
           {
@@ -7000,6 +7005,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense + Ultimate Lv2",
             "value": 20,
+            "flatValue": 150,
             "type": "percent",
             "duration": 12
           }
@@ -7009,7 +7015,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 3,
         "name": "Financial Support!",
         "icon": "skill001/skill0020_3",
-        "description": "Applies Magic Attack UP(LV3) to all allies for 12 seconds and Physical Defense UP(LV3) for 12 seconds",
+        "description": "Applies Physical Attack 24%UP to all allies for 12 seconds and Physical Defense 24%+200UP for 12 seconds",
         "effect": "0% + 0",
         "buffEffects": [
           {
@@ -7021,6 +7027,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense + Ultimate Lv3",
             "value": 24,
+            "flatValue": 200,
             "type": "percent",
             "duration": 12
           }
@@ -7030,7 +7037,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 4,
         "name": "Financial Support!",
         "icon": "skill001/skill0020_4",
-        "description": "Applies Magic Attack UP(LV4) to all allies for 12 seconds and Physical Defense UP(LV4) for 12 seconds",
+        "description": "Applies Physical Attack 27%UP to all allies for 12 seconds and Physical Defense 27%+250UP for 12 seconds",
         "effect": "0% + 0",
         "buffEffects": [
           {
@@ -7042,6 +7049,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense + Ultimate Lv4",
             "value": 27,
+            "flatValue": 250,
             "type": "percent",
             "duration": 12
           }
@@ -7051,7 +7059,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 5,
         "name": "Financial Support!",
         "icon": "skill001/skill0020_5",
-        "description": "Applies Magic Attack UP(LV5) to all allies for 12 seconds and Physical Defense UP(LV5) for 12 seconds",
+        "description": "Applies Physical Attack 30%UP to all allies for 12 seconds and Physical Defense 30%+300UP for 12 seconds",
         "effect": "0% + 0",
         "buffEffects": [
           {
@@ -7063,6 +7071,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense + Ultimate Lv5",
             "value": 30,
+            "flatValue": 300,
             "type": "percent",
             "duration": 12
           }

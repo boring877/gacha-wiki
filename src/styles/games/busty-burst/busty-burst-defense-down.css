@@ -396,6 +396,10 @@ img.bb-defdown-rarity-img {
   flex-shrink: 0;
 }
 
+.bb-defdown-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+}
+
 .bb-defdown-value-main {
   display: flex;
   align-items: baseline;
@@ -565,25 +569,39 @@ img.bb-defdown-rarity-img {
 
 /* Info Box */
 .bb-defdown-info-box {
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 10px;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 .bb-defdown-info-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #60a5fa;
-  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #d1d5db;
+  margin: 0 0 0.75rem 0;
+}
+
+.bb-defdown-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .bb-defdown-info-text {
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #bbb);
+  font-size: 0.875rem;
+  color: #9ca3af;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.bb-defdown-info-text a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.bb-defdown-info-text a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive - Tablet */
@@ -658,6 +676,90 @@ img.bb-defdown-rarity-img {
   color: var(--element-color);
   text-transform: uppercase;
   letter-spacing: 0.3px;
+}
+
+/* Attack UP Card Styles (Green theme for buffs) */
+.bb-card-attack .bb-defdown-values {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.bb-attack-percent {
+  color: #22c55e !important;
+}
+
+.bb-attack-flat {
+  color: #86efac !important;
+}
+
+.bb-attack-badge {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+}
+
+.bb-defdown-value-slot {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #888);
+}
+
+/* Magic Attack UP specific (Purple theme) */
+.bb-card-magic .bb-defdown-values {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.bb-magic-percent {
+  color: #a855f7 !important;
+}
+
+.bb-magic-flat {
+  color: #d8b4fe !important;
+}
+
+.bb-magic-badge {
+  background: linear-gradient(135deg, #a855f7, #9333ea) !important;
+}
+
+/* Target Type Badge for Attack UP (Self vs Team) */
+.bb-defdown-target-badge.self {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.bb-defdown-target-badge.team {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* D Tier styling */
+.bb-defdown-tier-section[data-tier="D"] {
+  --tier-color: #4b5563;
+}
+
+.bb-defdown-tier-section[data-tier="D"] .bb-defdown-tier-badge {
+  color: #4b5563;
+}
+
+/* Individual tier badge colors */
+.bb-tier-s {
+  color: #f59e0b !important;
+}
+
+.bb-tier-a {
+  color: #a855f7 !important;
+}
+
+.bb-tier-b {
+  color: #3b82f6 !important;
+}
+
+.bb-tier-c {
+  color: #6b7280 !important;
+}
+
+.bb-tier-d {
+  color: #4b5563 !important;
 }
 
 /* Responsive - Mobile */
