@@ -292,7 +292,7 @@
 
 .bb-char-card-stats {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 0.25rem;
   padding: 0.5rem 0.75rem;
   background: var(--bb-bg-secondary);
@@ -304,7 +304,7 @@
 }
 
 .bb-char-card-stat-value {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--bb-text-primary);
 }
@@ -615,17 +615,17 @@
   }
 
   .bb-char-card-stats {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.125rem;
     padding: 0.375rem 0.5rem;
   }
 
   .bb-char-card-stat-value {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .bb-char-card-stat-label {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
   }
 
   /* No results mobile */

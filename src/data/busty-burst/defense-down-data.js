@@ -34,9 +34,10 @@ export const DEFENSE_DOWN_TIERS = {
 function parseDefenseDown(description) {
   const results = [];
 
-  // Pattern 1: "Physical Defense -23%+-317DOWN for 7 seconds"
+  // Pattern 1: "Physical Defense -23%+-317DOWN for 7 seconds" or "Magic Defense-21%+-218DOWN for 10 seconds"
   // Format: "Defense -XX%+-YYYDOWN for Z seconds" where XX is percent, YYY is flat value
-  const skillPattern = /(Physical|Magic) Defense (-?\d+)%\+(-?\d+)DOWN for (\d+) seconds/gi;
+  // Note: Some entries have no space before the percentage (Magic Defense-21%), so space is optional
+  const skillPattern = /(Physical|Magic) Defense ?(-?\d+)%\+(-?\d+)DOWN for (\d+) seconds/gi;
   let match;
   while ((match = skillPattern.exec(description)) !== null) {
     results.push({
@@ -57,6 +58,38 @@ function parseDefenseDown(description) {
       level: parseInt(match[2]),
       duration: parseInt(match[3]),
     });
+  }
+
+  // Pattern 3: "Magic Defense -23% (-50) for 6 seconds" (newer format with flat in parentheses)
+  const newPatternWithFlat = /(Physical|Magic) Defense (-?\d+)% \((-?\d+)\) for (\d+) seconds/gi;
+  while ((match = newPatternWithFlat.exec(description)) !== null) {
+    results.push({
+      type: match[1].toLowerCase(),
+      sourceType: 'skill',
+      percent: Math.abs(parseInt(match[2])),
+      flat: Math.abs(parseInt(match[3])),
+      duration: parseInt(match[4]),
+    });
+  }
+
+  // Pattern 4: "Magic Defense -20% for 10 seconds" (newer format with only percent)
+  const newPatternPercentOnly = /(Physical|Magic) Defense (-?\d+)% for (\d+) seconds/gi;
+  while ((match = newPatternPercentOnly.exec(description)) !== null) {
+    // Skip if already matched by pattern 3 (which is more specific)
+    const alreadyMatched = results.some(r =>
+      r.type === match[1].toLowerCase() &&
+      description.indexOf(`${match[1]} Defense ${match[2]}%`) >= 0 &&
+      description.includes(`(${match[3]})`)
+    );
+    if (!alreadyMatched) {
+      results.push({
+        type: match[1].toLowerCase(),
+        sourceType: 'skill',
+        percent: Math.abs(parseInt(match[2])),
+        flat: 0, // No flat value in this format
+        duration: parseInt(match[3]),
+      });
+    }
   }
 
   return results;
@@ -109,14 +142,39 @@ function extractDefenseDownSkills() {
       }
     }
 
-    // Check ultimate skills (only check rank 5 for max values)
+    // Check ultimate skills (only rank 5 for highest values)
+    // IMPORTANT: Always set sourceType to 'ultimate' for skills from char.ultimate array
     if (char.ultimate) {
       const maxUlt = char.ultimate.find(u => u.rank === 5) || char.ultimate[char.ultimate.length - 1];
       if (maxUlt) {
         const desc = maxUlt.description || '';
         const defDowns = parseDefenseDown(desc);
 
+        // Also check buffEffects for defense down values (ultimates often store values there)
+        const buffEffects = maxUlt.buffEffects || [];
+        const physicalDefDownBuff = buffEffects.find(b => b.name && b.name.toLowerCase().includes('physical defense'));
+        const magicDefDownBuff = buffEffects.find(b => b.name && b.name.toLowerCase().includes('magic defense'));
+
         for (const defDown of defDowns) {
+          // Get values from buffEffects if not in description
+          let percent = defDown.percent || 0;
+          let flat = defDown.flat || 0;
+          let duration = defDown.duration;
+
+          // Match buffEffects to the defense down type
+          const buffMatch = defDown.type === 'physical' ? physicalDefDownBuff : magicDefDownBuff;
+          if (buffMatch && !percent && !flat) {
+            if (buffMatch.type === 'percent') {
+              percent = Math.abs(buffMatch.value);
+            } else if (buffMatch.type === 'flat') {
+              flat = Math.abs(buffMatch.value);
+            }
+            if (buffMatch.duration) {
+              duration = buffMatch.duration;
+            }
+          }
+
+          const level = defDown.level || maxUlt.rank;
           defenseDownSkills.push({
             characterId: char.id,
             characterName: char.name,
@@ -129,8 +187,13 @@ function extractDefenseDownSkills() {
             skillIcon: maxUlt.icon,
             target: 'Varies',
             description: desc,
-            ...defDown,
-            tier: defDown.sourceType === 'ultimate' ? `ULT_LV${defDown.level}` : getTier(defDown),
+            type: defDown.type,
+            sourceType: 'ultimate',
+            percent,
+            flat,
+            duration,
+            level: level,
+            tier: `ULT_LV${level}`,
             extraEffects: parseExtraEffects(desc),
           });
         }

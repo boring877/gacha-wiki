@@ -15,6 +15,7 @@ import {
   getElements,
   getPositions,
 } from '../../../data/stella-sora/talents.js';
+import '../../../styles/games/stella-sora/ss-talents.css';
 
 const groupedTalents = getTalentsGroupedByCharacter();
 const charactersList = getCharactersList();
@@ -346,57 +347,3 @@ const structuredData = {
     positionFilter?.addEventListener('change', applyFilters);
   });
 </script>
-
-<style>
-  /* Element badge colors */
-  .element-ignis {
-    background: rgba(251, 146, 60, 0.2);
-    color: #fb923c;
-  }
-
-  .element-aqua {
-    background: rgba(96, 165, 250, 0.2);
-    color: #60a5fa;
-  }
-
-  .element-terra {
-    background: rgba(167, 139, 250, 0.2);
-    color: #a78bfa;
-  }
-
-  .element-ventus {
-    background: rgba(52, 211, 153, 0.2);
-    color: #34d399;
-  }
-
-  .element-lux {
-    background: rgba(251, 191, 36, 0.2);
-    color: #fbbf24;
-  }
-
-  .element-umbra {
-    background: rgba(156, 163, 175, 0.2);
-    color: #9ca3af;
-  }
-
-  /* Element badge with icon */
-  .element-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  /* Position badge */
-  .position-badge {
-    background: rgba(139, 92, 246, 0.2);
-    color: #8b5cf6;
-  }
-
-  /* Rarity badge */
-  .rarity-badge {
-    display: flex;
-    align-items: center;
-    padding: 2px 4px;
-    background: transparent;
-  }
-</style>

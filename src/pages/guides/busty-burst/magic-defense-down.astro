@@ -1,6 +1,6 @@
 ---
-// Busty Burst Physical Defense Down Database
-// Lists all characters with Physical Defense Down skills, organized by tier
+// Busty Burst Magic Defense Down Database
+// Lists all characters with Magic Defense Down skills, organized by tier
 // Separated into Skills (with % + flat values) and Ultimates (LV1-5 scaling)
 
 import DefenseDownLayout from '../../../layouts/busty-burst/DefenseDownLayout.astro';
@@ -8,10 +8,10 @@ import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
-import { getPhysicalDefenseDownSkills, DEFENSE_DOWN_TIERS } from '../../../data/busty-burst/defense-down-data.js';
+import { getMagicDefenseDownSkills, DEFENSE_DOWN_TIERS } from '../../../data/busty-burst/defense-down-data.js';
 
-// Get all physical defense down skills
-const allSkills = getPhysicalDefenseDownSkills();
+// Get all magic defense down skills
+const allSkills = getMagicDefenseDownSkills();
 
 // Separate into skills and ultimates
 const skillBased = allSkills.filter(s => s.sourceType === 'skill');
@@ -24,6 +24,7 @@ const tierB = skillBased.filter(s => s.tier === 'B').sort((a, b) => b.duration -
 const tierC = skillBased.filter(s => s.tier === 'C').sort((a, b) => b.duration - a.duration);
 
 // Sort ultimates by defense down value (highest first)
+// Sort by percent first, then by flat value
 const sortedUltimates = [...ultimates].sort((a, b) => {
   const aPercent = (a as any).percent ?? 0;
   const bPercent = (b as any).percent ?? 0;
@@ -64,9 +65,9 @@ const totalSkills = skillBased.length;
 const totalUltimates = sortedUltimates.length;
 const uniqueChars = new Set(skillBased.map(s => s.characterId)).size;
 
-const title = 'Physical Defense Down Database (Lv90) - Busty Burst Fantasy';
-const description = `Complete database of all ${totalSkills} Physical Defense Down skills at Lv90 in Busty Burst Fantasy. Find the best defense shred characters organized by tier (S/A/B/C) with percentage reduction, flat values, and duration.`;
-const gameTitle = 'Physical Defense Down Database';
+const title = 'Magic Defense Down Database (Lv90) - Busty Burst Fantasy';
+const description = `Complete database of all ${totalSkills} Magic Defense Down skills at Lv90 in Busty Burst Fantasy. Find the best magic defense shred characters organized by tier (S/A/B/C) with percentage reduction, flat values, and duration.`;
+const gameTitle = 'Magic Defense Down Database';
 ---
 
 <DefenseDownLayout title={title} description={description} gameTitle={gameTitle}>
@@ -75,27 +76,27 @@ const gameTitle = 'Physical Defense Down Database';
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Busty Burst Fantasy Physical Defense Down Skills (Lv90)",
-      "description": "Complete tier list of all Physical Defense Down skills at max level (Lv90) in Busty Burst Fantasy",
+      "name": "Busty Burst Fantasy Magic Defense Down Skills (Lv90)",
+      "description": "Complete tier list of all Magic Defense Down skills at max level (Lv90) in Busty Burst Fantasy",
       "numberOfItems": {totalSkills},
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "S Tier - Best Physical DEF Down (-23% -317)",
-          "description": "Highest physical defense reduction skills at Lv90"
+          "name": "S Tier - Best Magic DEF Down (-23% -317)",
+          "description": "Highest magic defense reduction skills at Lv90"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "A Tier - Strong Physical DEF Down (-21% -218)",
-          "description": "Strong physical defense reduction skills at Lv90"
+          "name": "A Tier - Strong Magic DEF Down (-21% -218)",
+          "description": "Strong magic defense reduction skills at Lv90"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "B Tier - Moderate Physical DEF Down (-18% -208)",
-          "description": "Moderate physical defense reduction skills at Lv90"
+          "name": "B Tier - Moderate Magic DEF Down (-18% -208)",
+          "description": "Moderate magic defense reduction skills at Lv90"
         }
       ]
     }
@@ -123,10 +124,10 @@ const gameTitle = 'Physical Defense Down Database';
 
     <!-- Info Box -->
     <div class="bb-defdown-info-box">
-      <h3 class="bb-defdown-info-title">How Physical Defense Down Works</h3>
+      <h3 class="bb-defdown-info-title">How Magic Defense Down Works</h3>
       <p class="bb-defdown-info-text">
-        Physical Defense Down reduces enemy defense in two ways: <strong>percentage reduction</strong> (e.g., -23%) and <strong>flat reduction</strong> (e.g., -317).
-        Higher values mean more damage to enemies. <strong>All values shown are at Skill Lv90 (max level)</strong>.
+        Magic Defense Down reduces enemy magic defense in two ways: <strong>percentage reduction</strong> (e.g., -23%) and <strong>flat reduction</strong> (e.g., -317).
+        Higher values mean more magic damage to enemies. <strong>All values shown are at Skill Lv90 (max level)</strong>.
       </p>
       <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
         <strong>Stacking Rules:</strong> Debuffs use a category system. Skills are Category B (single-target) or C (multi-target).
@@ -187,7 +188,7 @@ const gameTitle = 'Physical Defense Down Database';
           <div class="bb-defdown-tier-header">
             <span class="bb-defdown-tier-badge">S</span>
             <div class="bb-defdown-tier-info">
-              <h2 class="bb-defdown-tier-title">S Tier - Best Physical DEF Down</h2>
+              <h2 class="bb-defdown-tier-title">S Tier - Best Magic DEF Down</h2>
               <p class="bb-defdown-tier-desc">-23% and -317 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierS.length} skills</span>
@@ -267,7 +268,7 @@ const gameTitle = 'Physical Defense Down Database';
           <div class="bb-defdown-tier-header">
             <span class="bb-defdown-tier-badge">A</span>
             <div class="bb-defdown-tier-info">
-              <h2 class="bb-defdown-tier-title">A Tier - Strong Physical DEF Down</h2>
+              <h2 class="bb-defdown-tier-title">A Tier - Strong Magic DEF Down</h2>
               <p class="bb-defdown-tier-desc">-21% and -218 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierA.length} skills</span>
@@ -347,7 +348,7 @@ const gameTitle = 'Physical Defense Down Database';
           <div class="bb-defdown-tier-header">
             <span class="bb-defdown-tier-badge">B</span>
             <div class="bb-defdown-tier-info">
-              <h2 class="bb-defdown-tier-title">B Tier - Moderate Physical DEF Down</h2>
+              <h2 class="bb-defdown-tier-title">B Tier - Moderate Magic DEF Down</h2>
               <p class="bb-defdown-tier-desc">-18% and -208 flat reduction (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierB.length} skills</span>
@@ -425,9 +426,9 @@ const gameTitle = 'Physical Defense Down Database';
       {tierC.length > 0 && (
         <div class="bb-defdown-tier-section" data-tier="C">
           <div class="bb-defdown-tier-header">
-            <span class="bb-defdown-tier-badge">C</span>
+            <span class="bb-defdown-tier-badge bb-defdown-tier-badge-c">C</span>
             <div class="bb-defdown-tier-info">
-              <h2 class="bb-defdown-tier-title">C Tier - Lower Physical DEF Down</h2>
+              <h2 class="bb-defdown-tier-title">C Tier - Lower Magic DEF Down</h2>
               <p class="bb-defdown-tier-desc">Lower reduction values (Lv90)</p>
             </div>
             <span class="bb-defdown-tier-count">{tierC.length} skills</span>
@@ -511,7 +512,7 @@ const gameTitle = 'Physical Defense Down Database';
     <!-- ULTIMATES SECTION -->
     <div class="bb-defdown-tab-content" id="ultimates-content">
       <div class="bb-defdown-info-box" style="margin-bottom: 1.5rem;">
-        <h3 class="bb-defdown-info-title">Ultimate Physical Defense Down</h3>
+        <h3 class="bb-defdown-info-title">Ultimate Magic Defense Down</h3>
         <p class="bb-defdown-info-text">
           Ultimate skills have Defense Down that scales with Ultimate Level. Values shown are at max level (LV5).
         </p>
@@ -580,7 +581,7 @@ const gameTitle = 'Physical Defense Down Database';
       ) : (
         <div class="bb-defdown-no-results visible">
           <h3>No ultimates found</h3>
-          <p>No characters with Physical Defense Down on their ultimate.</p>
+          <p>No characters with Magic Defense Down on their ultimate.</p>
         </div>
       )}
     </div>

@@ -1659,6 +1659,64 @@ export const BUSTY_BURST_SUPPORT_DATA = [
       inspiration: { name: 'Strike Inspiration', effect: 'Block', values: { members2: '+3', members4: '+6', members6: '+10' } }
     }
   },
+  // Valentine's 2025 Chocolate Event
+  {
+    id: 2109,
+    name: '【Purehearted Pâtissière】Frey',
+    rarity: 'SSR',
+    element: 'Fire',
+    weapon: 'Strike',
+    supportStats: {
+      lb0: { 'HP': 500 },
+      lb1: { 'HP': 1000, 'Accuracy': 7 },
+      lb2: { 'HP': 1500, 'Accuracy': 8 },
+      lb3: { 'HP': 2000, 'Accuracy': 9 },
+      lb4: { 'HP': 2000, 'Accuracy': 10 },
+      lb5: { 'HP': 2000, 'Accuracy': 10 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Fire', effect: 'Fire Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Strike Inspiration', effect: 'Block', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
+    id: 2110,
+    name: '【Chocolate Dragon Warrior】Hildis',
+    rarity: 'SSR',
+    element: 'Water',
+    weapon: 'Strike',
+    supportStats: {
+      lb0: { 'MATK': 80 },
+      lb1: { 'MATK': 120, 'M.Crit': 45 },
+      lb2: { 'MATK': 160, 'M.Crit': 60 },
+      lb3: { 'MATK': 200, 'M.Crit': 75 },
+      lb4: { 'MATK': 200, 'M.Crit': 90 },
+      lb5: { 'MATK': 200, 'M.Crit': 90 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Water', effect: 'Water Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Strike Inspiration', effect: 'Block', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
+  {
+    id: 2111,
+    name: '【Warrior of Love and Chocolate】Shaty',
+    rarity: 'SR',
+    element: 'Mind',
+    weapon: 'Shot',
+    supportStats: {
+      lb0: { 'Accuracy': 5 },
+      lb1: { 'Accuracy': 6, 'ATK': 50 },
+      lb2: { 'Accuracy': 7, 'ATK': 80 },
+      lb3: { 'Accuracy': 8, 'ATK': 110 },
+      lb4: { 'Accuracy': 8, 'ATK': 110 },
+      lb5: { 'Accuracy': 8, 'ATK': 110 },
+    },
+    supportBonus: {
+      blessing: { name: 'Blessing of Mind', effect: 'Mind Type ATK', values: { members2: '+5%', members4: '+10%', members6: '+15%' } },
+      inspiration: { name: 'Shot Inspiration', effect: 'Accuracy', values: { members2: '+3', members4: '+6', members6: '+10' } }
+    }
+  },
 ];
 
 // Helper functions

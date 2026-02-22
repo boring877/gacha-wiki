@@ -3,15 +3,7 @@
 
 import { BUSTY_BURST_SUPPORT_DATA } from './support-data.js';
 
-// Element colors for display badges
-export const ELEMENT_COLORS = {
-  Dark: '#8b5cf6',    // Purple
-  Fire: '#ef4444',    // Red
-  Wind: '#22c55e',    // Green
-  Water: '#3b82f6',   // Blue
-  Holy: '#eab308',    // Yellow
-  Mind: '#ec4899'     // Pink
-};
+
 
 // Tier definitions - matches busty-burst-tier-list.css
 export const SUPPORT_TIER_DEFINITIONS = {
@@ -85,6 +77,18 @@ function isSTier(character) {
   return hasOffensiveStats(character);
 }
 
+/**
+ * @typedef {Object} SupportTierCharacter
+ * @property {number} id
+ * @property {string} name
+ * @property {string} rarity
+ * @property {string} element
+ * @property {string} weapon
+ * @property {Object} supportStats
+ * @property {Object} [supportBonus]
+ * @property {number} [offensiveScore]
+ */
+
 // Get Support Bonus tier list
 export function getSupportBonusTierList() {
   const allChars = BUSTY_BURST_SUPPORT_DATA.map(c => ({
@@ -98,6 +102,7 @@ export function getSupportBonusTierList() {
     offensiveScore: getOffensiveScore(c)
   }));
 
+  /** @type {{ SSS: SupportTierCharacter[], SS: SupportTierCharacter[], S: SupportTierCharacter[], A: SupportTierCharacter[] }} */
   const tiers = {
     SSS: [],
     SS: [],
@@ -152,6 +157,7 @@ export function getSupportStatsTierList() {
   allChars.sort((a, b) => b.offensiveScore - a.offensiveScore);
 
   // Assign tiers based on rarity and stats
+  /** @type {{ SSS: SupportTierCharacter[], SS: SupportTierCharacter[], S: SupportTierCharacter[], A: SupportTierCharacter[] }} */
   const tiers = {
     SSS: [],
     SS: [],
@@ -188,10 +194,7 @@ export function getSupportStatsTierList() {
   };
 }
 
-// Get element color for badge
-export function getElementColor(element) {
-  return ELEMENT_COLORS[element] || '#6b7280';
-}
+
 
 // Format LB5 stats for display
 export function formatLB5Stats(supportStats) {

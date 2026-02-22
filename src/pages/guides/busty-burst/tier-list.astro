@@ -1,27 +1,38 @@
 ---
-import TierListLayout from '../../../layouts/busty-burst/TierListLayout.astro';
-import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
-import RarityImage from '../../../components/busty-burst/RarityImage.astro';
-import { getTierList, getAllTierLists } from '../../../data/busty-burst/tier-lists.js';
+import TierListLayout from "../../../layouts/busty-burst/TierListLayout.astro";
+import PaladinImage from "../../../components/busty-burst/PaladinImage.astro";
+import RarityImage from "../../../components/busty-burst/RarityImage.astro";
+import {
+  getTierList,
+  getAllTierLists,
+} from "../../../data/busty-burst/tier-lists.js";
 
 // Import badge styles directly to ensure they're loaded
-import '../../../styles/games/busty-burst/busty-burst-badges.css';
+import "../../../styles/games/busty-burst/busty-burst-badges.css";
+import "../../../styles/games/busty-burst/busty-burst-tier-list.css";
 
 // Get all tier lists
-const beginnerTierList = getTierList('beginner');
-const srTierList = getTierList('sr');
+const beginnerTierList = getTierList("beginner");
+const srTierList = getTierList("sr");
 
 // Page metadata
-const title = 'BBB Busty - Tier List';
+const title = "BBB Busty - Tier List";
 const description =
-  'Tier list for BBB Busty game. Find the best paladins for beginners and early game progression.';
-const gameTitle = 'Tier List';
+  "Tier list for BBB Busty game. Find the best paladins for beginners and early game progression.";
+const gameTitle = "Tier List";
 ---
 
-<TierListLayout title={title} description={description} gameTitle={gameTitle} showTitle={true}>
+<TierListLayout
+  title={title}
+  description={description}
+  gameTitle={gameTitle}
+  showTitle={true}
+>
   <!-- Tab Navigation -->
   <div class="bb-tier-list-tabs">
-    <button class="bb-tab-button active" data-tab="beginner">Beginner Tier List</button>
+    <button class="bb-tab-button active" data-tab="beginner"
+      >Beginner Tier List</button
+    >
     <button class="bb-tab-button" data-tab="sr">SR Only Tier List</button>
   </div>
 
@@ -33,11 +44,11 @@ const gameTitle = 'Tier List';
         <p class="bb-tier-list-description">
           {
             beginnerTierList?.description ||
-              'This tier list gives a general idea of what to pick early on.'
+              "This tier list gives a general idea of what to pick early on."
           }
         </p>
         <p class="bb-tier-list-last-updated">
-          Last updated: {beginnerTierList?.lastUpdated || '2025-12-06'}
+          Last updated: {beginnerTierList?.lastUpdated || "2025-12-06"}
         </p>
       </div>
 
@@ -65,25 +76,26 @@ const gameTitle = 'Tier List';
       <div class="bb-tier-list-info">
         <h3>About This Tier List</h3>
         <p>
-          This tier list is a work in progress and is subject to change. It is not a final tier list
-          and is not intended to be a guide for optimal play. It is simply a guide to help players
-          make informed decisions about which characters to pick.
+          This tier list is a work in progress and is subject to change. It is
+          not a final tier list and is not intended to be a guide for optimal
+          play. It is simply a guide to help players make informed decisions
+          about which characters to pick.
         </p>
       </div>
 
       <!-- Tier List Display -->
       <div class="bb-tier-list-container" id="beginner-tier-container">
         {
-          beginnerTierList?.tiers.map(tier => (
+          beginnerTierList?.tiers.map((tier) => (
             <div class="bb-tier-row" data-tier={tier.tier}>
               <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
                 {tier.definition.label}
               </div>
               <div class="bb-tier-characters">
-                {tier.characters.map(character => (
+                {tier.characters.map((character) => (
                   <div
                     class="bb-tier-character-card"
-                    data-name={character.name?.toLowerCase() || ''}
+                    data-name={character.name?.toLowerCase() || ""}
                   >
                     <div class="bb-character-image-wrapper">
                       <PaladinImage
@@ -97,7 +109,11 @@ const gameTitle = 'Tier List';
                     </div>
                     <div class="bb-character-name">{character.name}</div>
                     <div class="bb-tier-rarity">
-                      <RarityImage rarity={character.rarity || 'SR'} width={64} height={32} />
+                      <RarityImage
+                        rarity={character.rarity || "SR"}
+                        width={64}
+                        height={32}
+                      />
                     </div>
                   </div>
                 ))}
@@ -123,11 +139,11 @@ const gameTitle = 'Tier List';
         <p class="bb-tier-list-description">
           {
             srTierList?.description ||
-              'Tier list for SR rarity characters only. Great for early game and budget builds.'
+              "Tier list for SR rarity characters only. Great for early game and budget builds."
           }
         </p>
         <p class="bb-tier-list-last-updated">
-          Last updated: {srTierList?.lastUpdated || '2025-12-30'}
+          Last updated: {srTierList?.lastUpdated || "2025-12-30"}
         </p>
       </div>
 
@@ -155,23 +171,24 @@ const gameTitle = 'Tier List';
       <div class="bb-tier-list-info">
         <h3>About This Tier List</h3>
         <p>
-          This tier list ranks SR characters for SR Raid mode, which limits you to only use SR units.
+          This tier list ranks SR characters for SR Raid mode, which limits you
+          to only use SR units.
         </p>
       </div>
 
       <!-- Tier List Display -->
       <div class="bb-tier-list-container" id="sr-tier-container">
         {
-          srTierList?.tiers.map(tier => (
+          srTierList?.tiers.map((tier) => (
             <div class="bb-tier-row" data-tier={tier.tier}>
               <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
                 {tier.definition.label}
               </div>
               <div class="bb-tier-characters">
-                {tier.characters.map(character => (
+                {tier.characters.map((character) => (
                   <div
                     class="bb-tier-character-card"
-                    data-name={character.name?.toLowerCase() || ''}
+                    data-name={character.name?.toLowerCase() || ""}
                   >
                     <div class="bb-character-image-wrapper">
                       <PaladinImage
@@ -185,7 +202,11 @@ const gameTitle = 'Tier List';
                     </div>
                     <div class="bb-character-name">{character.name}</div>
                     <div class="bb-tier-rarity">
-                      <RarityImage rarity={character.rarity || 'SR'} width={64} height={32} />
+                      <RarityImage
+                        rarity={character.rarity || "SR"}
+                        width={64}
+                        height={32}
+                      />
                     </div>
                   </div>
                 ))}
@@ -203,128 +224,25 @@ const gameTitle = 'Tier List';
     </section>
   </div>
 
-  <style>
-    /* Search and Filter Controls */
-    .bb-tier-list-controls {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .bb-tier-search-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 0.6rem 1rem;
-      border: 1px solid var(--bb-border, #374151);
-      border-radius: 0.5rem;
-      background: var(--bb-bg-secondary, #1f2937);
-      color: var(--bb-text-primary, #fff);
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .bb-tier-search-input:focus {
-      border-color: var(--bb-accent, #3b82f6);
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-    }
-
-    .bb-tier-search-input::placeholder {
-      color: var(--bb-text-muted, #6b7280);
-    }
-
-    .bb-tier-filter-select {
-      padding: 0.6rem 1rem;
-      border: 1px solid var(--bb-border, #374151);
-      border-radius: 0.5rem;
-      background: var(--bb-bg-secondary, #1f2937);
-      color: var(--bb-text-primary, #fff);
-      font-size: 0.9rem;
-      cursor: pointer;
-      outline: none;
-      min-width: 120px;
-    }
-
-    .bb-tier-filter-select:focus {
-      border-color: var(--bb-accent, #3b82f6);
-    }
-
-    .bb-tier-clear-btn {
-      padding: 0.6rem 1.25rem;
-      border: 1px solid var(--bb-border, #374151);
-      border-radius: 0.5rem;
-      background: var(--bb-bg-secondary, #1f2937);
-      color: var(--bb-text-primary, #fff);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .bb-tier-clear-btn:hover {
-      background: var(--bb-bg-tertiary, #374151);
-    }
-
-    /* No Results Message */
-    .bb-tier-no-results {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--bb-text-muted, #9ca3af);
-    }
-
-    .bb-tier-no-results.visible {
-      display: block;
-    }
-
-    .bb-tier-no-results h3 {
-      margin-bottom: 0.5rem;
-      color: var(--bb-text-secondary, #d1d5db);
-    }
-
-    /* Hidden state for cards */
-    .bb-tier-character-card.hidden {
-      display: none;
-    }
-
-    /* Mobile optimization for controls */
-    @media (max-width: 768px) {
-      .bb-tier-list-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .bb-tier-search-input {
-        min-width: 100%;
-      }
-
-      .bb-tier-filter-select,
-      .bb-tier-clear-btn {
-        width: 100%;
-      }
-    }
-  </style>
-
   <script>
     // Tab switching functionality
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabButtons = document.querySelectorAll('.bb-tab-button');
-      const tabContents = document.querySelectorAll('.bb-tab-content');
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".bb-tab-button");
+      const tabContents = document.querySelectorAll(".bb-tab-content");
 
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const tabName = button.getAttribute('data-tab');
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabName = button.getAttribute("data-tab");
 
           // Remove active class from all buttons and contents
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
+          tabButtons.forEach((btn) => btn.classList.remove("active"));
+          tabContents.forEach((content) => content.classList.remove("active"));
 
           // Add active class to clicked button and corresponding content
-          button.classList.add('active');
+          button.classList.add("active");
           const targetTab = document.getElementById(`${tabName}-tab`);
           if (targetTab) {
-            targetTab.classList.add('active');
+            targetTab.classList.add("active");
           }
         });
       });
@@ -336,13 +254,13 @@ const gameTitle = 'Tier List';
       filterId: string,
       clearId: string,
       containerId: string,
-      noResultsId: string
+      noResultsId: string,
     ) {
       const searchInput = document.getElementById(searchId) as HTMLInputElement;
       const tierFilter = document.getElementById(filterId) as HTMLSelectElement;
       const clearBtn = document.getElementById(clearId) as HTMLButtonElement;
-      const container = document.getElementById(containerId);
-      const noResults = document.getElementById(noResultsId);
+      const container = document.getElementById(containerId) as HTMLElement;
+      const noResults = document.getElementById(noResultsId) as HTMLElement;
 
       if (!searchInput || !tierFilter || !container) return;
 
@@ -351,19 +269,19 @@ const gameTitle = 'Tier List';
         const tierValue = tierFilter.value;
         let visibleCount = 0;
 
-        const tierRows = container.querySelectorAll('.bb-tier-row');
+        const tierRows = container.querySelectorAll(".bb-tier-row");
 
-        tierRows.forEach(row => {
-          const rowTier = row.getAttribute('data-tier') || '';
-          const cards = row.querySelectorAll('.bb-tier-character-card');
+        tierRows.forEach((row) => {
+          const rowTier = row.getAttribute("data-tier") || "";
+          const cards = row.querySelectorAll(".bb-tier-character-card");
           let rowVisibleCount = 0;
 
           // Check if tier row should be visible
           const tierMatches = !tierValue || rowTier === tierValue;
 
-          cards.forEach(card => {
+          cards.forEach((card) => {
             const cardEl = card as HTMLElement;
-            const name = cardEl.dataset.name || '';
+            const name = cardEl.dataset.name || "";
 
             // Check search term
             const matchesSearch = !searchTerm || name.includes(searchTerm);
@@ -372,42 +290,67 @@ const gameTitle = 'Tier List';
             const matchesTier = tierMatches;
 
             const isVisible = matchesSearch && matchesTier;
-            cardEl.classList.toggle('hidden', !isVisible);
+            cardEl.classList.toggle("hidden", !isVisible);
             if (isVisible) rowVisibleCount++;
           });
 
           // Hide tier row if no cards visible
-          (row as HTMLElement).style.display = rowVisibleCount > 0 ? '' : 'none';
+          (row as HTMLElement).style.display =
+            rowVisibleCount > 0 ? "" : "none";
           visibleCount += rowVisibleCount;
         });
 
         // Show/hide no results message
         if (noResults) {
-          noResults.classList.toggle('visible', visibleCount === 0);
+          noResults.classList.toggle("visible", visibleCount === 0);
         }
       }
 
       function clearFilters() {
-        searchInput.value = '';
-        tierFilter.value = '';
+        searchInput.value = "";
+        tierFilter.value = "";
         filterCharacters();
       }
 
       // Add event listeners
-      searchInput.addEventListener('input', filterCharacters);
-      tierFilter.addEventListener('change', filterCharacters);
-      clearBtn.addEventListener('click', clearFilters);
+      searchInput.addEventListener("input", filterCharacters);
+      tierFilter.addEventListener("change", filterCharacters);
+      clearBtn.addEventListener("click", clearFilters);
     }
 
     // Initialize search for both tabs
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        initTierListSearch('beginner-search', 'beginner-tier-filter', 'beginner-clear-btn', 'beginner-tier-container', 'beginner-no-results');
-        initTierListSearch('sr-search', 'sr-tier-filter', 'sr-clear-btn', 'sr-tier-container', 'sr-no-results');
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        initTierListSearch(
+          "beginner-search",
+          "beginner-tier-filter",
+          "beginner-clear-btn",
+          "beginner-tier-container",
+          "beginner-no-results",
+        );
+        initTierListSearch(
+          "sr-search",
+          "sr-tier-filter",
+          "sr-clear-btn",
+          "sr-tier-container",
+          "sr-no-results",
+        );
       });
     } else {
-      initTierListSearch('beginner-search', 'beginner-tier-filter', 'beginner-clear-btn', 'beginner-tier-container', 'beginner-no-results');
-      initTierListSearch('sr-search', 'sr-tier-filter', 'sr-clear-btn', 'sr-tier-container', 'sr-no-results');
+      initTierListSearch(
+        "beginner-search",
+        "beginner-tier-filter",
+        "beginner-clear-btn",
+        "beginner-tier-container",
+        "beginner-no-results",
+      );
+      initTierListSearch(
+        "sr-search",
+        "sr-tier-filter",
+        "sr-clear-btn",
+        "sr-tier-container",
+        "sr-no-results",
+      );
     }
   </script>
 </TierListLayout>

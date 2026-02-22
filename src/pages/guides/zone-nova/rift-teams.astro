@@ -2,6 +2,7 @@
 // Import the dedicated rift teams layout
 import RiftTeamsLayout from '../../../layouts/zone-nova/RiftTeamsLayout.astro';
 import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
+import '../../../styles/games/zone-nova/zn-rift-teams.css';
 ---
 
 <RiftTeamsLayout
@@ -156,9 +157,4 @@ import Breadcrumb from '../../../components/zone-nova/Breadcrumb.astro';
       initializeRiftTeamDatabase();
     });
   </script>
-
-  <!-- Import the rift teams CSS -->
-  <style>
-    @import '../../../styles/games/zone-nova/zn-rift-teams.css';
-  </style>
 </RiftTeamsLayout>

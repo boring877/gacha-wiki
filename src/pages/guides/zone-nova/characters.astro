@@ -6,6 +6,7 @@ import CharacterLayout from '../../../layouts/zone-nova/CharacterLayout.astro';
 import CharacterDatabaseFilterBar from '../../../components/zone-nova/CharacterDatabaseFilterBar.astro';
 import CharacterDatabaseTable from '../../../components/zone-nova/CharacterDatabaseTable.astro';
 import CharacterDatabaseMobileCards from '../../../components/zone-nova/CharacterDatabaseMobileCards.astro';
+import '../../../styles/games/zone-nova/zn-character.css';
 ---
 
 <CharacterLayout
@@ -72,15 +73,6 @@ import CharacterDatabaseMobileCards from '../../../components/zone-nova/Characte
       </div>
     </div>
   </section>
-
-  <!-- Hide navigation buttons on touch devices to save space -->
-  <style>
-    @media (hover: none) and (pointer: coarse) {
-      .character-nav-buttons {
-        display: none !important;
-      }
-    }
-  </style>
 
   <!-- Import the database utilities -->
   <script>

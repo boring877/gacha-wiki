@@ -1,19 +1,19 @@
 ---
 // Limited Time Challenges index page - lists all boss challenges
 import LimitedTimeChallengesLandingLayout from '../../../../layouts/busty-burst/LimitedTimeChallengesLandingLayout.astro';
-import { limitedTimeChallengesConfig } from '../../../../data/busty-burst/limited-time-challenges.js';
+import { limitedTimeChallengesConfig, getAllChallengesWithStatus } from '../../../../data/busty-burst/limited-time-challenges.js';
 import BossIcon from '../../../../components/busty-burst/BossIcon.astro';
 
-const { meta, challenges } = limitedTimeChallengesConfig;
+const { meta } = limitedTimeChallengesConfig;
+
+// Get challenges with dynamic status based on current date
+const challenges = getAllChallengesWithStatus();
 
 // Sort challenges: active first, then upcoming, then ended (most recent first)
 const sortedChallenges = [...challenges].sort((a, b) => {
   const statusOrder = { active: 0, upcoming: 1, ended: 2 };
   return statusOrder[a.status] - statusOrder[b.status];
 });
-
-// Get active challenge for banner
-const activeChallenge = challenges.find(c => c.status === 'active');
 
 // Generate dynamic keywords from boss names
 const bossKeywords = challenges.map(c => c.name.split(' ')[0]).filter(Boolean);

@@ -850,6 +850,37 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Attacker',
     tier: 'A',
   },
+  // Valentine's 2025 Chocolate Event
+  {
+    id: 'chocolate-frey',
+    characterId: 2109,
+    name: '【Purehearted Pâtissière】Frey',
+    fileName: 'Chocolate_Frey',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'Support',
+    tier: 'A',
+  },
+  {
+    id: 'chocolate-hildis',
+    characterId: 2110,
+    name: '【Chocolate Dragon Warrior】Hildis',
+    fileName: 'Chocolate_Hildis',
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'chocolate-shaty',
+    characterId: 2111,
+    name: '【Warrior of Love and Chocolate】Shaty',
+    fileName: 'Chocolate_Shaty',
+    rarity: 'SR',
+    element: 'Mind',
+    role: 'Attacker',
+    tier: 'B',
+  },
 ];
 
 export const getPaladinById = id => {

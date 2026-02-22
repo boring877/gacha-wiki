@@ -116,6 +116,72 @@
   margin: 0;
 }
 
+/* Weapon Ability */
+.bb-build-weapon-ability {
+  font-size: 0.9rem;
+  color: #feca57;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+}
+
+/* Weapon Stats */
+.bb-build-weapon-stats {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-build-stats-title {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-build-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.bb-build-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-primary);
+  border-radius: 4px;
+  border: 1px solid var(--bb-border);
+}
+
+.bb-build-stat-name {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+  font-weight: 500;
+}
+
+.bb-build-stat-value {
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+  font-weight: 600;
+}
+
+/* Alternative Weapons */
+.bb-build-alt-weapons {
+  margin-top: 1rem;
+}
+
+.bb-build-alt-title {
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 /* Accessory Images Grid */
 .bb-build-accessory-images {
   display: flex;

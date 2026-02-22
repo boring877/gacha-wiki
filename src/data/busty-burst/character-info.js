@@ -2737,6 +2737,103 @@ export const BUSTY_BURST_CHARACTER_INFO = {
       source: 'February 2025 Update',
     },
   },
+
+  // Valentine's 2025 Chocolate Event Characters
+  'chocolate-frey': {
+    slug: 'chocolate-frey',
+    name: '【Purehearted Pâtissière】Frey',
+    displayName: 'Chocolate Frey',
+    baseName: 'Frey',
+    title: 'Purehearted Pâtissière',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'Support',
+    attackType: 'Physical',
+    position: { roman: 'II', number: 2 },
+    actionSpeed: 'Slightly Fast', // freeze_time: 0.82s
+    range: 390,
+    weaponType: 'Strike',
+    skillTypes: ['Heal', 'Buff', 'Debuff'],
+    image: 'Chocolate_Frey',
+    profile: {
+      height: '156cm',
+      bust: '95cm (H Cup)',
+      waist: '56cm',
+      hips: '84cm',
+    },
+    credits: {
+      illustration: { japanese: 'ウニトシキ', romanized: 'Unitoshiki' },
+      voice: { japanese: 'こはる凪', romanized: 'Koharu Nagi' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Valentine\'s 2026 Banner',
+    },
+  },
+
+  'chocolate-hildis': {
+    slug: 'chocolate-hildis',
+    name: '【Chocolate Dragon Warrior】Hildis',
+    displayName: 'Chocolate Hildis',
+    baseName: 'Hildis',
+    title: 'Chocolate Dragon Warrior',
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    attackType: 'Magic',
+    position: { roman: 'I', number: 1 },
+    actionSpeed: 'Very Fast', // freeze_time: 0.36s
+    range: 240,
+    weaponType: 'Strike',
+    skillTypes: ['Debuff', 'Disrupt'],
+    image: 'Chocolate_Hildis',
+    profile: {
+      height: '169cm',
+      bust: '98cm (H Cup)',
+      waist: '64cm',
+      hips: '89cm',
+    },
+    credits: {
+      illustration: { japanese: 'London犬', romanized: 'London Inu' },
+      voice: { japanese: '野々村紗夜', romanized: 'Nonomura Sayo' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Valentine\'s 2026 Banner',
+    },
+  },
+
+  'chocolate-shaty': {
+    slug: 'chocolate-shaty',
+    name: '【Warrior of Love and Chocolate】Shaty',
+    displayName: 'Chocolate Shaty',
+    baseName: 'Shaty',
+    title: 'Warrior of Love and Chocolate',
+    rarity: 'SR',
+    element: 'Mind',
+    role: 'Attacker',
+    attackType: 'Physical',
+    position: { roman: 'III', number: 3 },
+    actionSpeed: 'Slow', // freeze_time: 1.36s
+    range: 500,
+    weaponType: 'Ranged',
+    skillTypes: ['Debuff'],
+    image: 'Chocolate_Shaty',
+    profile: {
+      height: '167cm',
+      bust: '102cm (J Cup)',
+      waist: '61cm',
+      hips: '92cm',
+    },
+    credits: {
+      illustration: { japanese: '??', romanized: '??' },
+      voice: { japanese: '南十字いっせい', romanized: 'Minamijuji Issei' },
+    },
+    obtain: {
+      type: 'limited',
+      source: 'Valentine\'s 2026 Banner',
+    },
+  },
 };
 
 // Helper function to get character by slug

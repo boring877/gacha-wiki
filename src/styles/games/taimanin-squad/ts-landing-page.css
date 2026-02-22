@@ -495,3 +495,39 @@
     font-weight: 500;
   }
 }
+
+/* Game Info Box Styles */
+.game-info-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--ts-bg-tertiary, #242028);
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+  text-align: center;
+}
+
+.game-info-box p {
+  color: var(--ts-text-secondary, #d3d3d3);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.game-info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.open-beta-notice {
+  color: var(--ts-accent, #9a8aaa);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  border: 1px solid var(--ts-primary, #6b5b7a);
+}
+
+.play-button.secondary {
+  background: var(--ts-bg-tertiary, #242028);
+  border: 1px solid var(--ts-accent, #9a8aaa);
+  color: var(--ts-accent, #9a8aaa);
+}

@@ -4,6 +4,7 @@ import DatingLayout from '../../../layouts/stella-sora/DatingLayout.astro';
 import SSDatingImage from '../../../components/stella-sora/SSDatingImage.astro';
 import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
 import { datingEvents, datingLocations } from '../../../data/stella-sora/dating.js';
+import '../../../styles/games/stella-sora/ss-dating.css';
 
 // Calculate statistics
 const totalCharacters = datingEvents.length;
@@ -257,21 +258,6 @@ const faqStructuredData = {
     </div>
   </section>
 </DatingLayout>
-
-<style>
-  /* Visually hidden but accessible */
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-</style>
 
 <script>
   // Dating Events Filter Script

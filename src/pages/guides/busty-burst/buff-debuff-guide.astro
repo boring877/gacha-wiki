@@ -1,6 +1,6 @@
 ---
-import BuffDebuffLayout from '../../../layouts/busty-burst/BuffDebuffLayout.astro';
-import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import BuffDebuffLayout from "../../../layouts/busty-burst/BuffDebuffLayout.astro";
+import PaladinImage from "../../../components/busty-burst/PaladinImage.astro";
 import {
   buffCategories,
   debuffCategories,
@@ -14,20 +14,21 @@ import {
   overview,
   sources,
   creditNote,
-} from '../../../data/busty-burst/buff-debuff-guide.js';
-import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
+} from "../../../data/busty-burst/buff-debuff-guide.js";
+import { BUSTY_BURST_PALADINS } from "../../../data/busty-burst/paladins.js";
 
-const title = 'Buff & Debuff System Guide - Busty Burst Fantasy | GachaWiki';
+const title = "Buff & Debuff System Guide - Busty Burst Fantasy | GachaWiki";
 const description =
-  'Complete guide to the Kyonyu Fantasy Burst buff and debuff category system. Learn how buffs stack, categories, and team building strategies.';
-const gameTitle = 'Buff & Debuff System';
+  "Complete guide to the Kyonyu Fantasy Burst buff and debuff category system. Learn how buffs stack, categories, and team building strategies.";
+const gameTitle = "Buff & Debuff System";
 
 // Helper to get characterId from imageFile (e.g., "Teresia.jpg" -> "Teresia")
 const getCharacterId = (imageFile: string) => {
-  const fileName = imageFile?.replace(/\.(jpg|png|webp)$/i, '') || '';
-  const paladin = BUSTY_BURST_PALADINS.find(p =>
-    p.fileName === fileName ||
-    p.fileName.toLowerCase() === fileName.toLowerCase()
+  const fileName = imageFile?.replace(/\.(jpg|png|webp)$/i, "") || "";
+  const paladin = BUSTY_BURST_PALADINS.find(
+    (p) =>
+      p.fileName === fileName ||
+      p.fileName.toLowerCase() === fileName.toLowerCase(),
   );
   return paladin?.characterId || 2001;
 };
@@ -46,7 +47,7 @@ const getCharacterId = (imageFile: string) => {
       <p class="bb-guide-intro">{overview.intro}</p>
       <p class="bb-guide-warning">{overview.warning}</p>
       <ul class="bb-tips-list">
-        {quickTips.map(tip => <li>{tip}</li>)}
+        {quickTips.map((tip) => <li>{tip}</li>)}
       </ul>
     </section>
 
@@ -56,9 +57,11 @@ const getCharacterId = (imageFile: string) => {
       <p class="bb-guide-intro">There are 4 buff categories:</p>
       <div class="bb-frames-grid">
         {
-          buffCategories.map(cat => (
+          buffCategories.map((cat) => (
             <div class="bb-frame-card">
-              <span class={`bb-frame-label frame-${cat.category.toLowerCase()}`}>
+              <span
+                class={`bb-frame-label frame-${cat.category.toLowerCase()}`}
+              >
                 Category {cat.category}
               </span>
               <div class="bb-frame-info">
@@ -71,10 +74,10 @@ const getCharacterId = (imageFile: string) => {
       </div>
 
       <p class="bb-guide-intro" style="margin-top: 1.5rem;">
-        For example: if you have 2 physical ATK UP buffs in Category B (first buff: +389 PATK,
-        second buff: +221 PATK), the one that activates last takes effect - not the stronger one.
-        This means you can actually reduce your damage output if you're not careful about buff
-        timing.
+        For example: if you have 2 physical ATK UP buffs in Category B (first
+        buff: +389 PATK, second buff: +221 PATK), the one that activates last
+        takes effect - not the stronger one. This means you can actually reduce
+        your damage output if you're not careful about buff timing.
       </p>
 
       <!-- Buff Visual Chart -->
@@ -92,7 +95,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title frame-a">Category A Buff</div>
             <div class="bb-chart-characters">
               {
-                buffExamples.A.map(char =>
+                buffExamples.A.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -105,7 +108,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -114,7 +117,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title frame-b">Category B Buff</div>
             <div class="bb-chart-characters">
               {
-                buffExamples.B.map(char =>
+                buffExamples.B.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -127,7 +130,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -139,7 +142,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title frame-c">Category C Buff</div>
             <div class="bb-chart-characters">
               {
-                buffExamples.C.map(char =>
+                buffExamples.C.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -152,7 +155,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -161,7 +164,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title frame-d">Category D Buff</div>
             <div class="bb-chart-characters">
               {
-                buffExamples.D.map(char =>
+                buffExamples.D.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -174,7 +177,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -183,11 +186,12 @@ const getCharacterId = (imageFile: string) => {
       </div>
 
       <p class="bb-guide-intro">
-        <span style="color: #4dabf7;">Category B</span> and <span style="color: #e599f7;"
-          >Category D</span
+        <span style="color: #4dabf7;">Category B</span> and <span
+          style="color: #e599f7;">Category D</span
         >
-        are the most common conflict points since they contain team-wide buffs that can easily overlap.
-        Single target categories (A and C) rarely cause issues since they typically only affect the caster.
+        are the most common conflict points since they contain team-wide buffs that
+        can easily overlap. Single target categories (A and C) rarely cause issues
+        since they typically only affect the caster.
       </p>
     </section>
 
@@ -195,13 +199,16 @@ const getCharacterId = (imageFile: string) => {
     <section class="bb-guide-section">
       <h2 class="bb-guide-section-title">Debuffs</h2>
       <p class="bb-guide-intro">
-        Debuffs follow a similar system but with a slightly different category structure:
+        Debuffs follow a similar system but with a slightly different category
+        structure:
       </p>
       <div class="bb-frames-grid">
         {
-          debuffCategories.map(cat => (
+          debuffCategories.map((cat) => (
             <div class="bb-frame-card">
-              <span class={`bb-frame-label debuff-${cat.category.toLowerCase()}`}>
+              <span
+                class={`bb-frame-label debuff-${cat.category.toLowerCase()}`}
+              >
                 Category {cat.category}
               </span>
               <div class="bb-frame-info">
@@ -214,9 +221,9 @@ const getCharacterId = (imageFile: string) => {
       </div>
 
       <p class="bb-guide-intro" style="margin-top: 1rem;">
-        Similar to buffs, Category B and C work the same way. The key difference is that all
-        Ultimate debuffs share Category A, regardless of whether they target single or multiple
-        enemies.
+        Similar to buffs, Category B and C work the same way. The key difference
+        is that all Ultimate debuffs share Category A, regardless of whether
+        they target single or multiple enemies.
       </p>
 
       <!-- Debuff Visual Chart -->
@@ -234,7 +241,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title debuff-a">Category A Debuff</div>
             <div class="bb-chart-characters">
               {
-                debuffExamples.A.map(char =>
+                debuffExamples.A.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -247,7 +254,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -259,7 +266,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title debuff-b">Category B Debuff</div>
             <div class="bb-chart-characters">
               {
-                debuffExamples.B.map(char =>
+                debuffExamples.B.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -272,7 +279,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -281,7 +288,7 @@ const getCharacterId = (imageFile: string) => {
             <div class="bb-chart-cell-title debuff-c">Category C Debuff</div>
             <div class="bb-chart-characters">
               {
-                debuffExamples.C.map(char =>
+                debuffExamples.C.map((char) =>
                   char.imageFile ? (
                     <div class="bb-chart-char">
                       <PaladinImage
@@ -294,7 +301,7 @@ const getCharacterId = (imageFile: string) => {
                     </div>
                   ) : (
                     <div class="bb-chart-char-placeholder">{char.name}</div>
-                  )
+                  ),
                 )
               }
             </div>
@@ -307,8 +314,8 @@ const getCharacterId = (imageFile: string) => {
     <section class="bb-guide-section">
       <h2 class="bb-guide-section-title">Passives</h2>
       <div class="bb-passives-note">
-        <strong>Good news:</strong> Passive abilities completely ignore these category rules and stack
-        freely. No need to worry about them conflicting.
+        <strong>Good news:</strong> Passive abilities completely ignore these category
+        rules and stack freely. No need to worry about them conflicting.
       </div>
     </section>
 
@@ -323,7 +330,7 @@ const getCharacterId = (imageFile: string) => {
 
         <div class="bb-example-characters">
           {
-            physicalTeamExample.characters.map(char => (
+            physicalTeamExample.characters.map((char) => (
               <div class="bb-example-char">
                 {char.imageFile ? (
                   <div class="bb-example-char-img">
@@ -342,12 +349,14 @@ const getCharacterId = (imageFile: string) => {
                   <div class="bb-example-char-name">{char.name}</div>
                   <div class="bb-example-char-skill">{char.skill}</div>
                   <div class="bb-example-buffs">
-                    {char.buffs.map(buff => (
+                    {char.buffs.map((buff) => (
                       <div class="bb-example-buff">
                         <span>
                           {buff.stat} ({buff.target}) {buff.value}
                         </span>
-                        <span class={`bb-buff-frame frame-${buff.frame.toLowerCase()}`}>
+                        <span
+                          class={`bb-buff-frame frame-${buff.frame.toLowerCase()}`}
+                        >
                           {buff.frame}
                         </span>
                       </div>
@@ -360,7 +369,7 @@ const getCharacterId = (imageFile: string) => {
         </div>
 
         <ul class="bb-example-explanation">
-          {physicalTeamExample.explanation.map(exp => <li>{exp}</li>)}
+          {physicalTeamExample.explanation.map((exp) => <li>{exp}</li>)}
         </ul>
 
         <p class="bb-guide-intro" style="margin-top: 1rem;">
@@ -376,12 +385,12 @@ const getCharacterId = (imageFile: string) => {
 
         <div class="bb-debuff-example-row">
           {
-            magicDebuffExample.characters.map(char => (
+            magicDebuffExample.characters.map((char) => (
               <div class="bb-debuff-example-item">
                 {char.imageFile ? (
                   <div class="bb-debuff-example-img">
                     <PaladinImage
-                      fileName={char.imageFile}
+                      characterId={getCharacterId(char.imageFile)}
                       alt={char.name}
                       width={48}
                       height={48}
@@ -401,7 +410,9 @@ const getCharacterId = (imageFile: string) => {
           }
         </div>
 
-        <p class="bb-guide-intro" style="margin-top: 1rem;">{magicDebuffExample.note}</p>
+        <p class="bb-guide-intro" style="margin-top: 1rem;">
+          {magicDebuffExample.note}
+        </p>
       </div>
     </section>
 
@@ -409,7 +420,7 @@ const getCharacterId = (imageFile: string) => {
     <section class="bb-guide-section">
       <h2 class="bb-guide-section-title">Additional Notes</h2>
       <ul class="bb-tips-list">
-        {additionalNotes.map(note => <li>{note}</li>)}
+        {additionalNotes.map((note) => <li>{note}</li>)}
       </ul>
     </section>
 
@@ -422,11 +433,11 @@ const getCharacterId = (imageFile: string) => {
 
       <div class="bb-exceptions-list">
         {
-          specialExceptions.map(exception => (
+          specialExceptions.map((exception) => (
             <div class="bb-exception-card">
               <div class="bb-exception-title">{exception.title}</div>
               <div class="bb-exception-chars">
-                {exception.characters.map(char => (
+                {exception.characters.map((char) => (
                   <div class="bb-exception-char">
                     {char.imageFile && (
                       <div class="bb-exception-char-img">
@@ -456,9 +467,14 @@ const getCharacterId = (imageFile: string) => {
       <h2 class="bb-guide-section-title">Sources</h2>
       <div class="bb-sources-list">
         {
-          sources.map(source => (
+          sources.map((source) => (
             <div class="bb-source-item">
-              <a href={source.url} target="_blank" rel="noopener noreferrer" class="bb-source-link">
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bb-source-link"
+              >
                 {source.name}
               </a>
               <div class="bb-source-desc">{source.description}</div>

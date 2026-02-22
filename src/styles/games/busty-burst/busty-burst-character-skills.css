@@ -670,3 +670,547 @@
     justify-content: center;
   }
 }
+
+/* ============================================
+   Additional Styles from Skills Page
+   ============================================ */
+
+/* Results Count */
+.bb-skills-results-count {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary, #888);
+}
+
+.bb-skills-results-count span {
+  font-weight: 700;
+  color: var(--bb-accent, #a855f7);
+}
+
+/* Skills Grid - Multi-column Layout */
+.bb-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card Meta */
+.bb-skills-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bb-skills-rarity {
+  display: flex;
+  align-items: center;
+}
+
+.bb-skills-rarity img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.bb-skills-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-skills-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #ccc);
+}
+
+.bb-skills-info-item img {
+  object-fit: contain;
+}
+
+.bb-skills-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.bb-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  color: var(--bb-text-tertiary, #888);
+}
+
+/* Skill Rotation */
+.bb-skills-rotation {
+  padding: 0.75rem 1rem;
+  background: rgba(99, 102, 241, 0.05);
+  border-bottom: 1px solid var(--bb-border-light, #333);
+}
+
+.bb-rotation-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bb-accent, #a855f7);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.bb-rotation-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.bb-rotation-label {
+  color: var(--bb-text-tertiary, #888);
+  min-width: 60px;
+}
+
+.bb-rotation-sequence {
+  color: var(--bb-text-secondary, #ccc);
+  word-break: break-word;
+}
+
+/* Skill Type */
+.bb-skill-type {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+  display: inline-block;
+  width: fit-content;
+}
+
+.bb-skill-type[data-type="physical"] { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.bb-skill-type[data-type="magic"] { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+
+/* Skill Details */
+.bb-skill-details {
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary, #bbb);
+}
+
+.bb-skill-stat {
+  margin-bottom: 0.2rem;
+}
+
+.bb-skill-stat span {
+  color: var(--bb-text-tertiary, #888);
+}
+
+/* Highlighted values in descriptions */
+.bb-value-highlight {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.bb-desc-damage-value {
+  color: #fbbf24;
+  font-weight: 700;
+}
+
+.bb-desc-block-value {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+/* Status effect inline styling */
+.bb-status-effect {
+  color: #f472b6;
+  font-weight: 600;
+}
+
+.bb-status-desc {
+  color: #94a3b8;
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+.bb-skill-effect {
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--bb-text-secondary);
+}
+
+/* Skill Level Calculator */
+.bb-skill-level-calc {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 4px;
+}
+
+.bb-skill-level-input {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.bb-skill-level-input label {
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary);
+}
+
+.bb-skill-level-input input {
+  width: 45px;
+  padding: 0.25rem 0.3rem;
+  background: var(--bb-bg-primary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  color: var(--bb-text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.bb-skill-level-input input::-webkit-outer-spin-button,
+.bb-skill-level-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bb-skill-level-input input:focus {
+  outline: none;
+  border-color: var(--bb-border-light);
+}
+
+.bb-skill-level-result {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--bb-text-primary);
+}
+
+.bb-skill-scaling-text {
+  color: var(--bb-text-secondary);
+}
+
+.bb-skill-plus {
+  color: var(--bb-text-tertiary);
+}
+
+.bb-skill-calc-value {
+  color: var(--bb-text-primary);
+  font-weight: 600;
+}
+
+.bb-skill-unit {
+  color: var(--bb-text-secondary);
+  font-weight: 500;
+}
+
+.bb-skill-buff-label {
+  color: #60a5fa;
+  font-weight: 500;
+}
+
+.bb-buff-calc-value {
+  color: #60a5fa;
+}
+
+/* Buff Effects */
+.bb-buff-effects {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bb-buff-effect-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(168, 85, 247, 0.15);
+  border-radius: 4px;
+  border-left: 2px solid rgba(168, 85, 247, 0.5);
+}
+
+.bb-buff-name {
+  color: var(--bb-text-primary);
+  font-weight: 500;
+}
+
+.bb-buff-value {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.bb-buff-duration {
+  color: var(--bb-text-tertiary);
+  font-size: 0.75rem;
+}
+
+.buff-skill-calc {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bb-buff-level-note {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  font-style: italic;
+  word-break: break-word;
+}
+
+/* Ultimate Rank Display */
+.bb-ultimate-rank {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+}
+
+.bb-ultimate-rank:last-child {
+  border-bottom: none;
+}
+
+.bb-ult-rank-label {
+  color: #f59e0b;
+  font-weight: 700;
+  min-width: 30px;
+}
+
+.bb-ult-rank-effect {
+  color: var(--bb-text-secondary, #ccc);
+}
+
+.bb-ult-rank-buffs {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--bb-text-tertiary, #999);
+  padding: 0.1rem 0.4rem;
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 4px;
+}
+
+/* Passives Section */
+.bb-passives-section {
+  border-top: 1px solid var(--bb-border-light, #333);
+  padding-top: 0.75rem;
+}
+
+.bb-passives-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--bb-text-tertiary, #888);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.bb-passives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bb-passive-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.bb-passive-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.bb-passive-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--bb-text-primary, #fff);
+}
+
+.bb-passive-effect {
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary, #aaa);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 900px) {
+  .bb-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .bb-skills-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-skills-search-input,
+  .bb-skills-filter-select,
+  .bb-skills-clear-btn {
+    width: 100%;
+    min-width: unset;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  .bb-skills-card-header {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .bb-skills-card-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+  }
+
+  .bb-skills-card-name {
+    font-size: 1rem;
+  }
+
+  .bb-skills-rarity img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bb-skills-info-row {
+    gap: 0.5rem;
+  }
+
+  .bb-skills-info-item {
+    font-size: 0.8rem;
+  }
+
+  .bb-skills-rotation {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .bb-rotation-title {
+    font-size: 0.75rem;
+  }
+
+  .bb-rotation-row {
+    font-size: 0.75rem;
+  }
+
+  .bb-skills-card-body {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .bb-skill-section {
+    padding: 0.6rem;
+    border-radius: 8px;
+  }
+
+  .bb-skill-header {
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .bb-skill-label {
+    font-size: 0.65rem;
+  }
+
+  .bb-skill-name {
+    font-size: 0.85rem;
+  }
+
+  .bb-skill-details {
+    font-size: 0.8rem;
+  }
+
+  .bb-skill-description {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .bb-skill-level-calc {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .bb-skill-level-input input {
+    width: 50px;
+    padding: 0.3rem 0.25rem;
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+
+  .bb-skill-level-result {
+    font-size: 0.8rem;
+  }
+
+  .bb-ultimate-rank {
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  .bb-passives-section {
+    padding-top: 0.6rem;
+  }
+
+  .bb-passives-title {
+    font-size: 0.75rem;
+  }
+
+  .bb-passive-item {
+    padding: 0.4rem;
+    border-radius: 6px;
+  }
+
+  .bb-passive-name {
+    font-size: 0.75rem;
+  }
+
+  .bb-passive-effect {
+    font-size: 0.7rem;
+  }
+
+  .bb-skills-no-results {
+    padding: 2rem 1rem;
+  }
+
+  /* Status effect inline descriptions on mobile */
+  .bb-status-desc {
+    font-size: 0.75em;
+    display: inline;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .bb-skills-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .bb-skills-card-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bb-skills-info-row {
+    justify-content: center;
+  }
+}

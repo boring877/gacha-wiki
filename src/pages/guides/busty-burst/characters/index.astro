@@ -256,6 +256,9 @@ function getCritRate(char) {
     <button class="bb-char-sort-btn" data-sort="def" data-order="desc">
       DEF <span class="bb-char-sort-icon">▼</span>
     </button>
+    <button class="bb-char-sort-btn" data-sort="mdef" data-order="desc">
+      MDEF <span class="bb-char-sort-icon">▼</span>
+    </button>
     <button class="bb-char-sort-btn" data-sort="crit" data-order="desc">
       Crit <span class="bb-char-sort-icon">▼</span>
     </button>
@@ -280,6 +283,7 @@ function getCritRate(char) {
           <th>ATK</th>
           <th>MATK</th>
           <th>DEF</th>
+          <th>MDEF</th>
           <th>Crit%</th>
           <th>MP</th>
           <th>Speed</th>
@@ -300,6 +304,7 @@ function getCritRate(char) {
             data-atk={getTotalStat(char, 'atk')}
             data-matk={getTotalStat(char, 'matk')}
             data-def={getTotalStat(char, 'def')}
+            data-mdef={getTotalStat(char, 'mdef')}
             data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
             data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
             data-speed={char.actionSpeed || ''}
@@ -349,6 +354,7 @@ function getCritRate(char) {
             <td>{getTotalStat(char, 'atk').toLocaleString() || '-'}</td>
             <td>{getTotalStat(char, 'matk').toLocaleString() || '-'}</td>
             <td>{getTotalStat(char, 'def').toLocaleString() || '-'}</td>
+            <td>{getTotalStat(char, 'mdef').toLocaleString() || '-'}</td>
             <td>{getCritRate(char)}%</td>
             <td>{char.stats?.baseStats?.mpCharge?.lv90 || '-'}</td>
             <td>{char.actionSpeed || '-'}</td>
@@ -375,6 +381,7 @@ function getCritRate(char) {
         data-atk={getTotalStat(char, 'atk')}
         data-matk={getTotalStat(char, 'matk')}
         data-def={getTotalStat(char, 'def')}
+        data-mdef={getTotalStat(char, 'mdef')}
         data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
         data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
         data-speed={char.actionSpeed || ''}
@@ -434,6 +441,10 @@ function getCritRate(char) {
           <div class="bb-char-card-stat">
             <div class="bb-char-card-stat-value">{getTotalStat(char, 'def').toLocaleString() || '-'}</div>
             <div class="bb-char-card-stat-label">DEF</div>
+          </div>
+          <div class="bb-char-card-stat">
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'mdef').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-label">MDEF</div>
           </div>
           <div class="bb-char-card-stat">
             <div class="bb-char-card-stat-value">{getCritRate(char)}%</div>
@@ -582,6 +593,10 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'def':
           valA = parseInt(a.dataset.def) || 0;
           valB = parseInt(b.dataset.def) || 0;
+          break;
+        case 'mdef':
+          valA = parseInt(a.dataset.mdef) || 0;
+          valB = parseInt(b.dataset.mdef) || 0;
           break;
         case 'crit':
           valA = parseInt(a.dataset.crit) || 0;

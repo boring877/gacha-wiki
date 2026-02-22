@@ -576,3 +576,14 @@ table.character-table tr {
     border: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                     CHARACTER NAV BUTTONS (TOUCH DEVICES)                */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Hide navigation buttons on touch devices to save space */
+@media (hover: none) and (pointer: coarse) {
+  .character-nav-buttons {
+    display: none !important;
+  }
+}

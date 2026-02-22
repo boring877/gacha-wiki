@@ -1,10 +1,40 @@
 import { accessoryItems } from './accessory-items.js';
 import { mainStats, subStats, subStatTips } from './accessory-guide.js';
+import { weapons, statLabels, percentStats } from './weapons.js';
 
 // Helper function to get accessory set by id
 const getAccessorySet = id => {
   const allSets = [...accessoryItems.SSR, ...accessoryItems.SR];
   return allSets.find(set => set.id === id);
+};
+
+// Helper function to format weapon stats for display
+const formatWeaponStats = (stats, statsMax) => {
+  if (!stats) return [];
+  return Object.entries(stats).map(([key, value]) => ({
+    name: statLabels[key] || key,
+    value: percentStats.includes(key) ? `${value}%` : value,
+    max: percentStats.includes(key) ? `${statsMax?.[key] || value}%` : (statsMax?.[key] || value),
+  }));
+};
+
+// Helper function to get weapon data by image file name
+const getWeaponData = imageFile => {
+  for (const type of Object.values(weapons)) {
+    const weapon = type.find(w => w.imageFile === imageFile);
+    if (weapon) {
+      return {
+        name: weapon.name,
+        image: weapon.imageFile,
+        ability: weapon.ability,
+        effect: weapon.abilityDesc,
+        stats: formatWeaponStats(weapon.stats, weapon.statsMax),
+        atkType: weapon.atkType,
+        obtain: weapon.obtain,
+      };
+    }
+  }
+  return null;
 };
 
 // Helper function to format set effects for build display
@@ -88,19 +118,30 @@ export const characterBuilds = {
       fileName: 'Festive_Attire_Estiriel',
       characterId: 2069,
     },
-    weapon: {
-      name: 'Annihilation Grenade',
-      image: 'Magic_Grenade_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Magic_Grenade_of_annihilation.png'),
     accessory: (() => {
       const emeraldSet = getAccessorySet('emerald');
+      const getImageForSlot = slot => {
+        const piece = emeraldSet.pieces.find(p => p.type === slot);
+        return piece ? piece.imageFile : `Gold_${slot}.png`;
+      };
       return {
         name: 'Emerald 4 Set + 1 Random Rainbow',
         images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
         setEffects: formatSetEffects(emeraldSet.setEffects),
-        mainStats: getMainStats('Magic', 'Support', 'emerald'),
-        substatPriority: getSubstatPriority('Magic'),
+        mainStats: [
+          { slot: 'Tiara', imageFile: getImageForSlot('Tiara'), best: 'HP', substat: 'Mag Def' },
+          { slot: 'Earrings', imageFile: getImageForSlot('Earrings'), best: 'Mag Def', substat: 'Phys Def' },
+          { slot: 'Necklace', imageFile: getImageForSlot('Necklace'), best: 'HP', substat: 'Mag Def' },
+          { slot: 'Bracelet', imageFile: getImageForSlot('Bracelet'), best: 'HP', substat: 'Phys Def' },
+          { slot: 'Ring', imageFile: getImageForSlot('Ring'), best: 'Healing', substat: 'HP' },
+        ],
+        substatPriority: {
+          priority: ['HP'],
+          secondary: ['Mag Def', 'Phys Def'],
+          other: ['Healing'],
+          tips: ['As a support, Festive Attire Estiriel prioritizes survivability. You don\'t need perfect substats - decent HP and DEF rolls are enough since her main role is providing support.'],
+        },
       };
     })(),
   },
@@ -120,11 +161,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Crowbow of Annihilation',
-      image: 'Crowwbow_of_annihilation.png',
-      effect: 'Physical damage boost for ranged attacks',
-    },
+    weapon: getWeaponData('Crowwbow_of_annihilation.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {
@@ -151,11 +188,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Annihilation Bullet',
-      image: 'Bullet_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Bullet_of_annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -199,11 +232,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Annihilation Wand',
-      image: 'Wand_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Wand_of_annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -266,11 +295,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Annihilation Staff',
-      image: 'Staff_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Staff_of_annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -314,11 +339,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Annihilation Wand',
-      image: 'Wand_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Wand_of_annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -362,11 +383,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Annihilation Bullet',
-      image: 'Bullet_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Bullet_of_annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -410,11 +427,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Annihilation Gauntlet',
-      image: 'Gauntlet_of_Annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {
@@ -441,11 +454,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Annihilation Sword',
-      image: 'Sword_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Sword_of_annihilation.png'),
     accessory: (() => {
       const emeraldSet = getAccessorySet('emerald');
       return {
@@ -480,11 +489,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Annihilation Sword',
-      image: 'Sword_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Sword_of_annihilation.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {
@@ -511,11 +516,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Annihilation Gauntlet',
-      image: 'Gauntlet_of_Annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {
@@ -542,11 +543,7 @@ export const characterBuilds = {
       name: 'Magic',
       image: 'Magic.png',
     },
-    weapon: {
-      name: 'Ringblade of Annihilation',
-      image: 'Ringblade_of_Annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
-    },
+    weapon: getWeaponData('Ringblade_of_Annihilation.png'),
     accessory: (() => {
       const amethystSet = getAccessorySet('amethyst');
       return {
@@ -590,11 +587,120 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: {
-      name: 'Sword of Annihilation',
-      image: 'Sword_of_annihilation.png',
-      effect: 'MP Regeneration+ Self gains MP Regeneration 200 for 3 seconds',
+    weapon: getWeaponData('Sword_of_annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  // Valentine's 2026 Chocolate Event Characters
+  'chocolate-frey': {
+    slug: 'chocolate-frey',
+    character: {
+      name: 'Chocolate Frey',
+      fileName: 'Chocolate_Frey',
+      characterId: 2109,
     },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Staff_of_annihilation.png'),
+    accessory: (() => {
+      const emeraldSet = getAccessorySet('emerald');
+      const getImageForSlot = slot => {
+        const piece = emeraldSet.pieces.find(p => p.type === slot);
+        return piece ? piece.imageFile : `Gold_${slot}.png`;
+      };
+      return {
+        name: 'Emerald 4 Set + 1 Random SSR',
+        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(emeraldSet.setEffects),
+        mainStats: [
+          { slot: 'Tiara', imageFile: getImageForSlot('Tiara'), best: 'HP', substat: 'Phys Def' },
+          { slot: 'Earrings', imageFile: getImageForSlot('Earrings'), best: 'Phys Def', substat: 'Mag Def' },
+          { slot: 'Necklace', imageFile: getImageForSlot('Necklace'), best: 'HP', substat: 'Phys Def' },
+          { slot: 'Bracelet', imageFile: getImageForSlot('Bracelet'), best: 'HP', substat: 'Mag Def' },
+          { slot: 'Ring', imageFile: getImageForSlot('Ring'), best: 'Healing', substat: 'HP' },
+        ],
+        substatPriority: {
+          priority: ['HP'],
+          secondary: ['Phys Def', 'Mag Def'],
+          other: ['Healing'],
+          tips: ['As a support healer, Chocolate Frey prioritizes survivability over damage stats. You don\'t need perfect substats - decent HP and DEF rolls are enough since her main role is providing buffs and healing.'],
+        },
+      };
+    })(),
+  },
+
+  'chocolate-hildis': {
+    slug: 'chocolate-hildis',
+    character: {
+      name: 'Chocolate Hildis',
+      fileName: 'Chocolate_Hildis',
+      characterId: 2110,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: getWeaponData('Staff_of_annihilation.png'),
+    alternativeWeapons: [
+      getWeaponData('Dragonmind_grimoire.png'),
+    ],
+    accessory: (() => {
+      const amethystSet = getAccessorySet('amethyst');
+      return {
+        name: 'Amethyst 4 Set + 1 Random SSR',
+        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(amethystSet.setEffects),
+        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: (() => {
+      const emeraldSet = getAccessorySet('emerald');
+      return {
+        name: 'Emerald 4 Set + 1 Random SSR (Action Speed for Debuff)',
+        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(emeraldSet.setEffects),
+        mainStats: getMainStats('Magic', 'DPS', 'emerald'),
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+  },
+
+  'chocolate-shaty': {
+    slug: 'chocolate-shaty',
+    character: {
+      name: 'Chocolate Shaty',
+      fileName: 'Chocolate_Shaty',
+      characterId: 2111,
+    },
+    position: {
+      name: 'Back',
+      image: 'Back.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Crowwbow_of_annihilation.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {

@@ -45,7 +45,16 @@ export interface Props {
       name: string;
       image: string;
       effect: string;
+      ability?: string;
+      stats?: Array<{ name: string; value: number; max: number }>;
     };
+    alternativeWeapons?: Array<{
+      name: string;
+      image: string;
+      effect: string;
+      ability?: string;
+      stats?: Array<{ name: string; value: number; max: number }>;
+    }>;
     accessory: {
       name: string;
       images?: string[];
@@ -181,10 +190,68 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                     </div>
                     <div class="bb-build-item-info">
                       <h3 class="bb-build-item-name">{build.weapon.name}</h3>
+                      {build.weapon.ability && (
+                        <p class="bb-build-weapon-ability">{build.weapon.ability}</p>
+                      )}
                       <p class="bb-build-item-effect">{build.weapon.effect}</p>
                     </div>
                   </div>
+                  {build.weapon.stats && build.weapon.stats.length > 0 && (
+                    <div class="bb-build-weapon-stats">
+                      <h4 class="bb-build-stats-title">Stats</h4>
+                      <div class="bb-build-stats-grid">
+                        {build.weapon.stats.map(stat => (
+                          <div class="bb-build-stat-item">
+                            <span class="bb-build-stat-name">{stat.name}</span>
+                            <span class="bb-build-stat-value">{stat.value} → {stat.max}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
+
+                <!-- Alternative Weapons -->
+                {build.alternativeWeapons && build.alternativeWeapons.length > 0 && (
+                  <div class="bb-build-alt-weapons">
+                    <h4 class="bb-build-alt-title">Alternative Weapons</h4>
+                    {build.alternativeWeapons.map((altWeapon, index) => (
+                      <div class="bb-build-detail-card" style="margin-top: 0.75rem;">
+                        <div class="bb-build-item-row">
+                          <div class="bb-build-item-image">
+                            <WeaponImage
+                              fileName={altWeapon.image}
+                              alt={altWeapon.name}
+                              width={80}
+                              height={80}
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="bb-build-item-info">
+                            <h3 class="bb-build-item-name">{altWeapon.name}</h3>
+                            {altWeapon.ability && (
+                              <p class="bb-build-weapon-ability">{altWeapon.ability}</p>
+                            )}
+                            <p class="bb-build-item-effect">{altWeapon.effect}</p>
+                          </div>
+                        </div>
+                        {altWeapon.stats && altWeapon.stats.length > 0 && (
+                          <div class="bb-build-weapon-stats">
+                            <h4 class="bb-build-stats-title">Stats</h4>
+                            <div class="bb-build-stats-grid">
+                              {altWeapon.stats.map(stat => (
+                                <div class="bb-build-stat-item">
+                                  <span class="bb-build-stat-name">{stat.name}</span>
+                                  <span class="bb-build-stat-value">{stat.value} → {stat.max}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </section>
 
               <!-- Accessory Section -->

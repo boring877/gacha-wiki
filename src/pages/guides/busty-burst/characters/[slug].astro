@@ -467,20 +467,42 @@ const description = `${character.displayName || character.name} - ${character.ra
                 </div>
               </div>
               <div class="bb-char-bonus-stats" id="passive-display">
-                {stats.passiveAbilities.map(passive => {
+                {stats.passiveAbilities.map((passive: any) => {
                   // Handle new format (array of grades) and old format (single stat)
-                  const statName = Array.isArray(passive.grades)
-                    ? passive.grades.find(g => g.grade === 10)?.stat || 'Unknown'
-                    : passive.stat;
-                  const statValue = Array.isArray(passive.grades)
-                    ? passive.grades.find(g => g.grade === 10)?.value || 0
-                    : passive.grades?.g10 || 0;
+                  let statNames: string[] = [];
+                  let statValues: number[] = [];
+
+                  if (Array.isArray(passive.grades)) {
+                    const displayGrade = passive.grades.find((g: any) => g.grade === 10);
+                    if (displayGrade && displayGrade.cumulative) {
+                      Object.entries(displayGrade.cumulative).forEach(([k, v]) => {
+                        statNames.push(k as string);
+                        statValues.push(v as number);
+                      });
+                    } else if (displayGrade) {
+                      statNames.push(displayGrade.stat as string);
+                      statValues.push(displayGrade.value as number);
+                    }
+                  } else {
+                    statNames.push(passive.stat as string);
+                    let sum = 0;
+                    if (passive.grades) {
+                      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(i => {
+                        sum += (passive.grades[`g${i}`] as number) || 0;
+                      });
+                    }
+                    statValues.push(sum);
+                  }
 
                   return (
-                    <div class="bb-char-bonus-stat-row">
-                      <span class="bb-char-bonus-stat-name">{statName}</span>
-                      <span class="bb-char-bonus-stat-value">+{statValue}</span>
-                    </div>
+                    <Fragment>
+                      {statNames.map((name, i) => (
+                        <div class="bb-char-bonus-stat-row">
+                          <span class="bb-char-bonus-stat-name">{name}</span>
+                          <span class="bb-char-bonus-stat-value">+{statValues[i]}</span>
+                        </div>
+                      ))}
+                    </Fragment>
                   );
                 })}
               </div>
@@ -586,12 +608,15 @@ const description = `${character.displayName || character.name} - ${character.ra
                               <span class="bb-char-skill-buff-name">{buff.name}</span>
                               <span class="bb-char-skill-buff-value"
                                 data-buff-base={buff.valueLv1 || buff.value || 0}
-                                data-buff-lv90={buff.valueLv90 || buff.value || 0}>
+                                data-buff-lv90={buff.valueLv90 || buff.value || 0}
+                                data-display-format={buff.displayFormat || ''}>
                                 {buff.displayFormat === '% + flat'
                                   ? `${buff.valueLv90 || buff.value}% (+${buff.flatBonusLv90 || buff.flatBonus} MATK)`
-                                  : typeof buff.valueLv90 === 'number'
-                                    ? `${buff.valueLv90}%`
-                                    : buff.valueLv90 || buff.value}
+                                  : buff.displayFormat === 'flat'
+                                    ? `${buff.valueLv90 || buff.value}`
+                                    : typeof buff.valueLv90 === 'number'
+                                      ? `${buff.valueLv90}%`
+                                      : buff.valueLv90 || buff.value}
                               </span>
                             </div>
                           ))}
@@ -655,23 +680,40 @@ const description = `${character.displayName || character.name} - ${character.ra
           <div class="bb-char-passives-section">
             <div class="bb-char-passives-title">Passive Abilities</div>
             <div class="bb-char-passives-grid">
-              {skills.passives.map((passive, index) => (
-                <div class="bb-char-passive-card">
-                  <div class="bb-char-passive-header">
-                    <div class="bb-char-passive-icon-wrapper">
-                      {passive.icon && (
-                        <SkillIcon skillId={passive.icon} width={48} height={48} />
+              {skills.passives.map((passive, index) => {
+                // Get effects from either 'effects' or 'effectValues' array
+                const effectList = passive.effects || passive.effectValues || [];
+                return (
+                  <div class="bb-char-passive-card">
+                    <div class="bb-char-passive-header">
+                      <div class="bb-char-passive-icon-wrapper">
+                        {passive.icon && (
+                          <SkillIcon skillId={passive.icon} width={48} height={48} />
+                        )}
+                      </div>
+                      <div class="bb-char-passive-title-area">
+                        <h4 class="bb-char-passive-name">{passive.name}</h4>
+                      </div>
+                    </div>
+                    <div class="bb-char-passive-body">
+                      {effectList.length > 0 ? (
+                        <div class="bb-char-passive-effects">
+                          {effectList.map((eff: any) => (
+                            <div class="bb-char-passive-effect-item">
+                              <span class="bb-char-passive-effect-name">{eff.name}</span>
+                              <span class="bb-char-passive-effect-value">
+                                {eff.type === 'percent' ? `+${eff.value}%` : `+${eff.value}`}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p class="bb-char-passive-effect">{passive.effect}</p>
                       )}
                     </div>
-                    <div class="bb-char-passive-title-area">
-                      <h4 class="bb-char-passive-name">{passive.name}</h4>
-                    </div>
                   </div>
-                  <div class="bb-char-passive-body">
-                    <p class="bb-char-passive-effect">{passive.effect}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -1048,8 +1090,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Handle old format: grades is an object with single stat type
         const mappedStat = statMap[passive.stat];
-        if (mappedStat === stat && passive.grades && passive.grades[gKey]) {
-          total += passive.grades[gKey];
+        if (mappedStat === stat && passive.grades) {
+          for (let i = 1; i <= level; i++) {
+            total += passive.grades[`g${i}`] || 0;
+          }
         }
       }
     });
@@ -1101,7 +1145,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else {
         // Handle old format: grades is an object with single stat type
-        const statValue = passiveLevel === 0 ? 0 : (passive.grades?.[`g${passiveLevel}`] || 0);
+        let statValue = 0;
+        if (passiveLevel > 0 && passive.grades) {
+          for (let i = 1; i <= passiveLevel; i++) {
+            statValue += passive.grades[`g${i}`] || 0;
+          }
+        }
         html += `
           <div class="bb-char-bonus-stat-row">
             <span class="bb-char-bonus-stat-name">${passive.stat}</span>
@@ -1291,16 +1340,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const buffBase = parseInt(el.dataset.buffBase) || 0;
       const buffLv90 = parseInt(el.dataset.buffLv90) || buffBase;
       const buffValue = calculateBuffValue(buffBase, buffLv90, level);
+      const displayFormat = el.dataset.displayFormat || '';
 
       // Check if this is a compound buff (with flat bonus)
       const parentItem = el.closest('.bb-char-skill-buff-item');
-      if (parentItem && parentItem.dataset.flatBase) {
+      if (parentItem && displayFormat === '% + flat') {
         const flatBase = parseInt(parentItem.dataset.flatBase) || 0;
         const flatLv90 = parseInt(parentItem.dataset.flatLv90) || flatBase;
         const flatValue = calculateBuffValue(flatBase, flatLv90, level);
         el.textContent = `${buffValue}% (+${flatValue} MATK)`;
       } else {
-        el.textContent = `${buffValue}%`;
+        el.textContent = displayFormat === 'flat' ? `${buffValue}` : `${buffValue}%`;
       }
     });
   }

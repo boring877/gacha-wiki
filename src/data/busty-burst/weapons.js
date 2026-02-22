@@ -237,8 +237,8 @@ export const weapons = {
       imageFile: 'Staff_of_annihilation.png',
       obtain: OBTAIN_BANNER,
       atkType: ATK_MAGIC,
-      stats: { mCrit: 1.5, ultDmg: 10, mpRecovery: 3 },
-      statsMax: { mCrit: 10.4, ultDmg: 10, mpRecovery: 29.7 },
+      stats: { mCrit: 1.5, ultDmg: 10, mpCharge: 3 },
+      statsMax: { mCrit: 10.4, ultDmg: 10, mpCharge: 29.7 },
       ability: 'MP Regeneration+',
       abilityDesc: 'For the first 3 sec of battle, regen +200 MP per sec.',
     },
@@ -259,8 +259,8 @@ export const weapons = {
       imageFile: 'Dragonmind_grimoire.png',
       obtain: OBTAIN_BANNER,
       atkType: ATK_MAGIC,
-      stats: { mAtk: 50, mpRecovery: 3, skillDmg: 20 },
-      statsMax: { mAtk: 495, mpRecovery: 29.7, skillDmg: 20 },
+      stats: { mAtk: 50, mpCharge: 3, skillDmg: 20 },
+      statsMax: { mAtk: 495, mpCharge: 29.7, skillDmg: 20 },
       ability: 'Action Speed+',
       abilityDesc: 'For the first 15 sec of battle, Action Speed +30%.',
     },
@@ -421,8 +421,8 @@ export const weapons = {
       imageFile: 'Magic_Grenade_of_annihilation.png',
       obtain: OBTAIN_BANNER,
       atkType: ATK_MAGIC,
-      stats: { mCrit: 1.5, ultDmg: 10, mpRecovery: 3 },
-      statsMax: { mCrit: 10.4, ultDmg: 10, mpRecovery: 20.8 },
+      stats: { mCrit: 1.5, ultDmg: 10, mpCharge: 3 },
+      statsMax: { mCrit: 10.4, ultDmg: 10, mpCharge: 20.8 },
       ability: 'MP Regeneration+',
       abilityDesc: 'For the first 3 sec of battle, regen +200 MP per sec.',
     },
@@ -432,8 +432,8 @@ export const weapons = {
       imageFile: 'Dragonfang_dagger.png',
       obtain: OBTAIN_BANNER,
       atkType: ATK_PHYSICAL,
-      stats: { pAtk: 50, mpRecovery: 3, skillDmg: 20 },
-      statsMax: { pAtk: 495, mpRecovery: 29.7, skillDmg: 20 },
+      stats: { pAtk: 50, mpCharge: 3, skillDmg: 20 },
+      statsMax: { pAtk: 495, mpCharge: 29.7, skillDmg: 20 },
       ability: 'Action Speed+',
       abilityDesc: 'For the first 15 sec of battle, Action Speed +30%.',
     },
@@ -494,6 +494,9 @@ export const statLabels = {
   skillDmg: 'Skill Damage',
   ultDmg: 'Ultimate Damage',
 };
+
+// Stats that should display with % suffix
+export const percentStats = ['pCrit', 'mCrit', 'skillDmg', 'ultDmg'];
 
 export const weaponTypes = ['Slash', 'Pierce', 'Strike/Blunt', 'Shoot/Ranged', 'Throw'];
 

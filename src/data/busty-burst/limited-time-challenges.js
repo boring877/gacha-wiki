@@ -1,6 +1,22 @@
 // Limited Time Challenge boss data for Busty Burst
 // Each challenge represents a time-limited boss fight event
 
+// Helper function to calculate status based on dates
+/**
+ * @param {string} startDate
+ * @param {string} endDate
+ * @returns {'upcoming' | 'ended' | 'active'}
+ */
+function calculateStatus(startDate, endDate) {
+  const now = new Date();
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  if (now < start) return 'upcoming';
+  if (now > end) return 'ended';
+  return 'active';
+}
+
 export const limitedTimeChallengesConfig = {
   meta: {
     title: 'Limited Time Challenges | Busty Burst',
@@ -29,7 +45,7 @@ export const limitedTimeChallengesConfig = {
       timeLimit: 120,
       startDate: '2026/01/06',
       endDate: '2026/01/20',
-      status: 'ended', // 'active' | 'ended' | 'upcoming'
+      // status is calculated dynamically
 
       // Element weakness/resistance info
       weakness: {
@@ -270,7 +286,7 @@ export const limitedTimeChallengesConfig = {
       timeLimit: 120,
       startDate: '2026/01/27',
       endDate: '2026/02/10',
-      status: 'active',
+      // status is calculated dynamically
 
       // Boss combat info (from hero_2.xml id=40077)
       damageType: 'Physical', // atk_attr="物理"
@@ -564,13 +580,38 @@ export function getAllChallengeSlugs() {
 }
 
 export function getChallengeBySlug(slug) {
-  return limitedTimeChallengesConfig.challenges.find(c => c.slug === slug);
+  const challenge = limitedTimeChallengesConfig.challenges.find(c => c.slug === slug);
+  if (challenge) {
+    return {
+      ...challenge,
+      status: calculateStatus(challenge.startDate, challenge.endDate)
+    };
+  }
+  return challenge;
 }
 
 export function getActiveChallenges() {
-  return limitedTimeChallengesConfig.challenges.filter(c => c.status === 'active');
+  return limitedTimeChallengesConfig.challenges
+    .map(c => ({ ...c, status: calculateStatus(c.startDate, c.endDate) }))
+    .filter(c => c.status === 'active');
 }
 
 export function getEndedChallenges() {
-  return limitedTimeChallengesConfig.challenges.filter(c => c.status === 'ended');
+  return limitedTimeChallengesConfig.challenges
+    .map(c => ({ ...c, status: calculateStatus(c.startDate, c.endDate) }))
+    .filter(c => c.status === 'ended');
+}
+
+export function getUpcomingChallenges() {
+  return limitedTimeChallengesConfig.challenges
+    .map(c => ({ ...c, status: calculateStatus(c.startDate, c.endDate) }))
+    .filter(c => c.status === 'upcoming');
+}
+
+// Get all challenges with dynamic status
+export function getAllChallengesWithStatus() {
+  return limitedTimeChallengesConfig.challenges.map(c => ({
+    ...c,
+    status: calculateStatus(c.startDate, c.endDate)
+  }));
 }

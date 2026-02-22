@@ -5,7 +5,74 @@
  */
 
 export const bannerTimelineData = [
-  // #8 - Blade of Judgment (Jan 27 - Feb 10) - CURRENT
+  // #11 - Lapis - The Vengeful Dual Swordswoman (Feb 17 - Feb 24) - CURRENT
+  {
+    id: 'lapis-main7-2026',
+    title: 'New Paladin - Rate Up!',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Lapis',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-02-17T03:00:00Z',
+    endDate: '2026-02-24T03:00:00Z',
+    description: 'New Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'This Paladin will be added to the "Otherworldly Summon" after the event ends.',
+    status: 'current',
+    image: 'banner-lapis',
+  },
+  // #10 - Valentine's Event (Feb 10 - Feb 24) - CURRENT
+  {
+    id: 'valentine-event13-2026',
+    title: 'Valentine Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '【Innocent Confectioner】Frey',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: '【Chocolate Dragon Knight】Hildis',
+        rarity: 'SSR',
+        type: 'Defense',
+      },
+      {
+        name: '【Champion of Love and Chocolate】Shaty',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-02-10T03:00:00Z',
+    endDate: '2026-02-24T03:00:00Z',
+    description: 'Valentine Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Valentine themed banner featuring chocolate and love themed characters.',
+    status: 'current',
+    image: 'banner-valentine',
+  },
+  // #9 - Tower of Trials - Rosa (Feb 3 - Feb 10) - ENDED
+  {
+    id: 'tower-of-trials-rosa-2026',
+    title: 'Tower of Trials Limited-timed Paladin - Rate Up!',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Rosa',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-02-03T03:00:00Z',
+    endDate: '2026-02-10T03:00:00Z',
+    description: 'Tower of Trials Limited-timed Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'This Paladin will be added to the "Tower of Trials Summon" after the event ends.',
+    status: 'ended',
+    image: 'banner-rosa',
+  },
+  // #8 - Blade of Judgment (Jan 27 - Feb 10) - ENDED
   {
     id: 'blade-of-judgment-2026',
     title: '"Blade of Judgment" Event Summon',
@@ -26,7 +93,7 @@ export const bannerTimelineData = [
     endDate: '2026-02-10T03:00:00Z',
     description: '"Blade of Judgment" Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'New Paladins will be added to the Standard Banner after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'blade-of-judgment',
   },
   // #7 - Infinite Subjugation Battle - Pastel (Jan 20 - Jan 27) - ENDED

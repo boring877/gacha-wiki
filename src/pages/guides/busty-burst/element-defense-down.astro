@@ -1,0 +1,313 @@
+---
+// Busty Burst Element Defense Down Database
+// Lists all characters with Element-Type Defense Down skills (Fire, Water, Wind, Light, Dark, Mind)
+// These reduce enemy defense against specific element types
+
+import DefenseDownLayout from '../../../layouts/busty-burst/DefenseDownLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
+import { getElementDefenseDownSkills, groupByElementType, getElementDefenseDownStats } from '../../../data/busty-burst/element-defense-down-data.js';
+
+// Import CSS
+import '../../../styles/games/busty-burst/busty-burst-defense-down.css';
+
+// Get all element defense down skills
+const allSkills = getElementDefenseDownSkills();
+const groupedByElement = groupByElementType(allSkills);
+const stats = getElementDefenseDownStats();
+
+// Define element order for display (game elements only)
+const elementOrder = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
+
+// Get elements that actually have skills
+const activeElements = elementOrder.filter(el => groupedByElement[el] && groupedByElement[el].length > 0);
+
+// Helper to determine target type (single vs multi) from description
+function getTargetTypeFromDesc(description: string): 'single' | 'multi' {
+  if (!description) return 'single';
+  const d = description.toLowerCase();
+  if (
+    d.includes('3 nearest') ||
+    d.includes('3 closest') ||
+    d.includes('all enemies') ||
+    d.includes('all enemy') ||
+    d.includes('multiple enemies') ||
+    d.includes('2 nearest') ||
+    d.includes('2 closest') ||
+    d.includes('enemies within') ||
+    d.includes('enemies in range')
+  ) {
+    return 'multi';
+  }
+  return 'single';
+}
+
+// Helper to get element color
+function getElementColor(element: string): string {
+  const colors: Record<string, string> = {
+    'Fire': '#ef4444',
+    'Water': '#3b82f6',
+    'Wind': '#22c55e',
+    'Light': '#fbbf24',
+    'Dark': '#a855f7',
+    'Mind': '#ec4899',
+  };
+  return colors[element] || '#6b7280';
+}
+
+const title = 'Element Defense Down Database - Busty Burst Fantasy';
+const description = `Complete database of Element Type Defense Down skills in Busty Burst Fantasy. Find characters with Fire, Water, Wind, Light, Dark, Mind type defense reduction for elemental team optimization.`;
+const gameTitle = 'Element Defense Down Database';
+---
+
+<DefenseDownLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="bb-defdown-page">
+    <!-- Summary Stats -->
+    <div class="bb-defdown-summary">
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{stats.uniqueChars}</div>
+        <div class="bb-defdown-stat-label">Characters</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{stats.totalSkills}</div>
+        <div class="bb-defdown-stat-label">Skills</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{stats.totalUltimates}</div>
+        <div class="bb-defdown-stat-label">Ultimates</div>
+      </div>
+      <div class="bb-defdown-stat-card">
+        <div class="bb-defdown-stat-value">{activeElements.length}</div>
+        <div class="bb-defdown-stat-label">Element Types</div>
+      </div>
+    </div>
+
+    <!-- Info Box -->
+    <div class="bb-defdown-info-box">
+      <h3 class="bb-defdown-info-title">What is Element Defense Down?</h3>
+      <p class="bb-defdown-info-text">
+        <strong>Element Type Defense Down</strong> reduces enemy defense against a specific element (Fire, Water, Wind, etc.).
+        This is different from Physical/Magic Defense Down - it specifically increases damage dealt by attacks of that element type.
+      </p>
+      <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
+        <strong>Best Use:</strong> Pair these characters with DPS of the matching element for maximum damage boost.
+        For example, use a Fire Type Defense Down character with Fire DPS characters.
+      </p>
+      <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
+        <strong>Note:</strong> These are rare skills - only a few characters have them. They follow the same category rules as other debuffs.
+        See <a href="/guides/busty-burst/buff-debuff-guide" style="color: #60a5fa;">Buff & Debuff Guide</a> for stacking rules.
+      </p>
+    </div>
+
+    <!-- Element Filter Tabs -->
+    <div class="bb-element-tabs">
+      <button type="button" class="bb-element-tab active" data-element="all">All ({allSkills.length})</button>
+      {activeElements.map(el => (
+        <button
+          type="button"
+          class="bb-element-tab"
+          data-element={el.toLowerCase()}
+          style={`--element-color: ${getElementColor(el)}`}
+        >
+          {el} ({groupedByElement[el]?.length || 0})
+        </button>
+      ))}
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="bb-defdown-controls">
+      <div class="bb-defdown-filter-row">
+        <input
+          type="text"
+          id="defdown-search"
+          class="bb-defdown-search-input"
+          placeholder="Search by character or skill name..."
+        />
+        <select id="source-filter" class="bb-defdown-filter-select">
+          <option value="">All Sources</option>
+          <option value="skill">Skills Only</option>
+          <option value="ultimate">Ultimates Only</option>
+        </select>
+        <select id="rarity-filter" class="bb-defdown-filter-select">
+          <option value="">All Rarities</option>
+          <option value="ssr">SSR</option>
+          <option value="sr">SR</option>
+          <option value="r">R</option>
+        </select>
+        <button type="button" id="clear-filters" class="bb-defdown-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="bb-defdown-results-count" id="results-count">
+      Showing <span>{allSkills.length}</span> skills
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="bb-defdown-grid" id="skills-grid">
+      {allSkills.map(skill => (
+        <div
+          class="bb-defdown-card"
+          data-name={skill.characterName.toLowerCase()}
+          data-skill={skill.skillName.toLowerCase()}
+          data-element-type={skill.elementType.toLowerCase()}
+          data-source={skill.sourceType}
+          data-rarity={skill.rarity?.toLowerCase()}
+        >
+          <div class="bb-defdown-card-header">
+            <div class="bb-defdown-card-avatar">
+              <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
+            </div>
+            <div class="bb-defdown-card-info">
+              <h3 class="bb-defdown-card-name">{skill.characterName}</h3>
+              <div class="bb-defdown-card-meta">
+                {skill.rarity && (
+                  <span class="bb-defdown-meta-item bb-defdown-rarity">
+                    <RarityImage rarity={skill.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                  </span>
+                )}
+                {skill.element && (
+                  <span class="bb-defdown-meta-item">
+                    <ElementImage element={skill.element} width={16} height={16} />
+                    {skill.element}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div class="bb-defdown-card-body">
+            <!-- Element Type Badge -->
+            <div class="bb-element-badge" style={`--element-color: ${getElementColor(skill.elementType)}`}>
+              <span class="bb-element-badge-icon">
+                <ElementImage element={skill.elementType} width={20} height={20} />
+              </span>
+              <span class="bb-element-badge-text">{skill.elementType} Type DEF DOWN</span>
+            </div>
+
+            <div class="bb-defdown-skill-row">
+              <div class="bb-defdown-skill-icon">
+                <SkillIcon skillId={skill.skillIcon} alt={skill.skillName} width={36} height={36} />
+              </div>
+              <div class="bb-defdown-skill-info">
+                <div class="bb-defdown-skill-name">{skill.skillName}</div>
+                <div class="bb-defdown-skill-slot">
+                  {skill.sourceType === 'ultimate' ? 'Ultimate LV5' : `Skill ${skill.skillSlot}`}
+                </div>
+              </div>
+            </div>
+            <div class="bb-defdown-values" style={`border-color: ${getElementColor(skill.elementType)}40; background: ${getElementColor(skill.elementType)}15;`}>
+              <span class="bb-defdown-lv-badge" style={skill.sourceType === 'ultimate' ? 'background: linear-gradient(135deg, #ec4899, #db2777);' : ''}>
+                {skill.sourceType === 'ultimate' ? 'LV5' : 'Lv90'}
+              </span>
+              <div class="bb-defdown-value-main">
+                <span class="bb-defdown-value-percent" style={`color: ${getElementColor(skill.elementType)}`}>-{skill.percent}%</span>
+              </div>
+              <div class="bb-defdown-value-duration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                </svg>
+                {skill.duration}s
+              </div>
+            </div>
+            {skill.sourceType === 'skill' && (
+              <div class="bb-defdown-target">
+                Target: <span>{skill.target}</span>
+                <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
+                  {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                </span>
+              </div>
+            )}
+            {skill.description && <div class="bb-defdown-description">{skill.description}</div>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results -->
+    <div class="bb-defdown-no-results" id="no-results">
+      <h3>No skills found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</DefenseDownLayout>
+
+<script>
+  function initPage() {
+    const searchInput = document.getElementById('defdown-search') as HTMLInputElement;
+    const sourceFilter = document.getElementById('source-filter') as HTMLSelectElement;
+    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+    const elementTabs = document.querySelectorAll('.bb-element-tab');
+    const cards = document.querySelectorAll('#skills-grid .bb-defdown-card');
+
+    let currentElement = 'all';
+
+    function filterCards() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const source = sourceFilter?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardEl = card as HTMLElement;
+        const matchName = !search ||
+          cardEl.dataset.name?.includes(search) ||
+          cardEl.dataset.skill?.includes(search);
+        const matchSource = !source || cardEl.dataset.source === source;
+        const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
+        const matchElement = currentElement === 'all' || cardEl.dataset.elementType === currentElement;
+
+        const isVisible = matchName && matchSource && matchRarity && matchElement;
+        cardEl.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount++;
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      // Update results count
+      if (resultsCount) {
+        const span = resultsCount.querySelector('span');
+        if (span) span.textContent = visibleCount.toString();
+      }
+    }
+
+    function clearFilters() {
+      if (searchInput) searchInput.value = '';
+      if (sourceFilter) sourceFilter.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      currentElement = 'all';
+      elementTabs.forEach(t => t.classList.remove('active'));
+      elementTabs[0]?.classList.add('active');
+      filterCards();
+    }
+
+    // Element tab clicks
+    elementTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        elementTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentElement = tab.getAttribute('data-element') || 'all';
+        filterCards();
+      });
+    });
+
+    searchInput?.addEventListener('input', filterCards);
+    sourceFilter?.addEventListener('change', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', clearFilters);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage);
+  } else {
+    initPage();
+  }
+</script>

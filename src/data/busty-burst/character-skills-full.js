@@ -228,8 +228,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 706",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           }
@@ -243,8 +243,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1570% + 818",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           }
@@ -258,8 +258,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1690% + 951",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           }
@@ -273,8 +273,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1750% + 1064",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -409,8 +409,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2150% + 1833",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 10
           }
@@ -424,8 +424,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2400% + 1945",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           }
@@ -439,8 +439,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2600% + 2056",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           }
@@ -454,8 +454,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2750% + 2134",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           }
@@ -607,8 +607,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1600% + 1239",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv2",
+            "value": 13,
             "type": "flat",
             "duration": 10
           }
@@ -622,8 +622,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1800% + 1376",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv3",
+            "value": 16,
             "type": "flat",
             "duration": 10
           }
@@ -637,8 +637,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2000% + 1555",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv4",
+            "value": 18,
             "type": "flat",
             "duration": 10
           }
@@ -652,8 +652,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2100% + 1734",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv5",
+            "value": 20,
             "type": "flat",
             "duration": 10
           }
@@ -751,9 +751,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Charging Slash",
         "icon": "skill001/skill0009",
-        "description": "Deals 4883 (ATK x 2.2 + 1863) physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%+-218DOWN for 10 seconds",
+        "description": "Deals 4883 (ATK x 2.2 + 1863) physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%+-220DOWN for 10 seconds",
         "descriptionLv1": "Deals 685 (ATK x 2.2 + 83) physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%+-40DOWN for 10 seconds",
-        "descriptionLv90": "Deals 4883 (ATK x 2.2 + 1863) physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%+-218DOWN for 10 seconds",
+        "descriptionLv90": "Deals 4883 (ATK x 2.2 + 1863) physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%+-220DOWN for 10 seconds",
         "target": "Enemy with Lowest HP",
         "castTime": 1.08,
         "damageScaling": "220% ATK",
@@ -959,8 +959,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "574% + 365",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv2",
+            "value": -25,
             "type": "flat",
             "duration": 4
           }
@@ -974,8 +974,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "697% + 493",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv3",
+            "value": -30,
             "type": "flat",
             "duration": 4
           }
@@ -989,8 +989,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "779% + 532",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv4",
+            "value": -35,
             "type": "flat",
             "duration": 4
           }
@@ -1004,8 +1004,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "820% + 602",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv5",
+            "value": -40,
             "type": "flat",
             "duration": 4
           }
@@ -1159,8 +1159,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2760% + 339",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Shield Ultimate Lv2",
+            "value": 35,
             "type": "percent",
             "duration": 10
           }
@@ -1174,8 +1174,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3000% + 380",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Shield Ultimate Lv3",
+            "value": 40,
             "type": "percent",
             "duration": 10
           }
@@ -1189,8 +1189,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3240% + 414",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Shield Ultimate Lv4",
+            "value": 45,
             "type": "percent",
             "duration": 10
           }
@@ -1204,8 +1204,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3360% + 498",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Shield Ultimate Lv5",
+            "value": 50,
             "type": "percent",
             "duration": 10
           }
@@ -1293,9 +1293,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Light Orb",
         "icon": "skill001/skill0010",
-        "description": "Deals 4974 (MATK x 2.8 + 1880) magic damage to the nearest enemy and inflicts Magic Defense-21%+-218DOWN for 10 seconds",
+        "description": "Deals 4974 (MATK x 2.8 + 1880) magic damage to the nearest enemy and inflicts Magic Defense-21%+-220DOWN for 10 seconds",
         "descriptionLv1": "Deals 718 (MATK x 2.8 + 100) magic damage to the nearest enemy and inflicts Magic Defense-21%+-40DOWN for 10 seconds",
-        "descriptionLv90": "Deals 4974 (MATK x 2.8 + 1880) magic damage to the nearest enemy and inflicts Magic Defense-21%+-218DOWN for 10 seconds",
+        "descriptionLv90": "Deals 4974 (MATK x 2.8 + 1880) magic damage to the nearest enemy and inflicts Magic Defense-21%+-220DOWN for 10 seconds",
         "target": "Farthest Enemy",
         "castTime": 1.08,
         "damageScaling": "280% ATK",
@@ -1523,8 +1523,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "900% + 730",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -5,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           }
@@ -1538,8 +1538,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1050% + 790",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -5,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           }
@@ -1553,8 +1553,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1150% + 850",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -5,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           }
@@ -1568,8 +1568,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1200% + 900",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -5,
+            "name": "Physical Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -1820,9 +1820,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Princess Pirate’s Strike",
         "icon": "skill001/skill0007",
-        "description": "Deals 4289 (ATK x 2.65 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 8 seconds",
+        "description": "Deals 4289 (ATK x 2.65 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 8 seconds",
         "descriptionLv1": "Deals 636 (ATK x 2.65 + 80) physical damage to the nearest enemy and inflicts Physical Defense -18%+-30DOWN for 8 seconds",
-        "descriptionLv90": "Deals 4289 (ATK x 2.65 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 8 seconds",
+        "descriptionLv90": "Deals 4289 (ATK x 2.65 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.08,
         "damageScaling": "265% ATK",
@@ -2108,8 +2108,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "840% + 709",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 10,
+            "name": "HP Regeneration+ Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 3
           }
@@ -2123,8 +2123,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "955% + 787",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 10,
+            "name": "HP Regeneration+ Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 3
           }
@@ -2138,8 +2138,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1025% + 863",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 10,
+            "name": "HP Regeneration+ Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 3
           }
@@ -2153,8 +2153,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1100% + 939",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 10,
+            "name": "HP Regeneration+ Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 3
           }
@@ -2224,9 +2224,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Curient Kon Lemolinos",
         "icon": "skill001/skill0008",
-        "description": "Deals 3999 (MATK x 2.2 + 1524) magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%+-198DOWN for 8 seconds",
+        "description": "Deals 3999 (MATK x 2.2 + 1524) magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%+-200DOWN for 8 seconds",
         "descriptionLv1": "Deals 595 (MATK x 2.2 + 100) magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%+-20DOWN for 8 seconds",
-        "descriptionLv90": "Deals 3999 (MATK x 2.2 + 1524) magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%+-198DOWN for 8 seconds",
+        "descriptionLv90": "Deals 3999 (MATK x 2.2 + 1524) magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%+-200DOWN for 8 seconds",
         "target": "Enemy with Highest Magic ATK",
         "castTime": 1.78,
         "damageScaling": "220% ATK",
@@ -2299,8 +2299,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "300% + 381",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -8,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 8
           }
@@ -2314,8 +2314,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "350% + 428",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -8,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 8
           }
@@ -2329,8 +2329,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "385% + 465",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -8,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 8
           }
@@ -2344,8 +2344,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "470% + 501",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -8,
+            "name": "Action Speed - Ultimate Lv5",
+            "value": -15,
             "type": "percent",
             "duration": 8
           }
@@ -3189,8 +3189,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "630% + 401",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -800,
+            "name": "Burn Ultimate Lv2",
+            "value": -2000,
             "type": "flat",
             "duration": 12
           }
@@ -3204,8 +3204,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "765% + 485",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -800,
+            "name": "Burn Ultimate Lv3",
+            "value": -2400,
             "type": "flat",
             "duration": 12
           }
@@ -3219,8 +3219,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "855% + 576",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -800,
+            "name": "Burn Ultimate Lv4",
+            "value": -2700,
             "type": "flat",
             "duration": 12
           }
@@ -3234,8 +3234,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "900% + 655",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -800,
+            "name": "Burn Ultimate Lv5",
+            "value": -3000,
             "type": "flat",
             "duration": 12
           }
@@ -3772,8 +3772,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "540% + 472",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1000,
+            "name": "Burn Ultimate Lv2",
+            "value": -2000,
             "type": "flat",
             "duration": 15
           }
@@ -3787,8 +3787,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "620% + 554",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1000,
+            "name": "Burn Ultimate Lv3",
+            "value": -2400,
             "type": "flat",
             "duration": 15
           }
@@ -3802,8 +3802,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "700% + 625",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1000,
+            "name": "Burn Ultimate Lv4",
+            "value": -2700,
             "type": "flat",
             "duration": 15
           }
@@ -3817,8 +3817,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "750% + 714",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1000,
+            "name": "Burn Ultimate Lv5",
+            "value": -3000,
             "type": "flat",
             "duration": 15
           }
@@ -3972,8 +3972,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2818% + 822",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv2",
+            "value": 13,
             "type": "flat",
             "duration": 11
           }
@@ -3987,8 +3987,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3063% + 923",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv3",
+            "value": 16,
             "type": "flat",
             "duration": 11
           }
@@ -4002,8 +4002,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3310% + 1027",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv4",
+            "value": 18,
             "type": "flat",
             "duration": 11
           }
@@ -4017,8 +4017,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3430% + 1091",
         "buffEffects": [
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv5",
+            "value": 20,
             "type": "flat",
             "duration": 11
           }
@@ -4094,9 +4094,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Great Cleave",
         "icon": "skill001/skill0007",
-        "description": "Deals 3812 (ATK x 2.7 + 1455) physical damage to the nearest enemy and inflicts Physical Attack -9%+-198DOWN for 8 seconds and Physical Defense -18%+-208DOWN for 8 seconds",
+        "description": "Deals 3812 (ATK x 2.7 + 1455) physical damage to the nearest enemy and inflicts Physical Attack -9%+-200DOWN for 8 seconds and Physical Defense -18%+-210DOWN for 8 seconds",
         "descriptionLv1": "Deals 589 (ATK x 2.7 + 120) physical damage to the nearest enemy and inflicts Physical Attack -9%+-20DOWN for 8 seconds and Physical Defense -18%+-30DOWN for 8 seconds",
-        "descriptionLv90": "Deals 3812 (ATK x 2.7 + 1455) physical damage to the nearest enemy and inflicts Physical Attack -9%+-198DOWN for 8 seconds and Physical Defense -18%+-208DOWN for 8 seconds",
+        "descriptionLv90": "Deals 3812 (ATK x 2.7 + 1455) physical damage to the nearest enemy and inflicts Physical Attack -9%+-200DOWN for 8 seconds and Physical Defense -18%+-210DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "270% ATK",
@@ -4183,8 +4183,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1260% + 1166",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage+ Ultimate Lv1",
-            "value": 300,
+            "name": "Physical Critical Damage+ Ultimate Lv2",
+            "value": 350,
             "type": "flat",
             "duration": 12
           }
@@ -4198,8 +4198,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1418% + 1253",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage+ Ultimate Lv1",
-            "value": 300,
+            "name": "Physical Critical Damage+ Ultimate Lv3",
+            "value": 400,
             "type": "flat",
             "duration": 12
           }
@@ -4213,8 +4213,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1522% + 1342",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage+ Ultimate Lv1",
-            "value": 300,
+            "name": "Physical Critical Damage+ Ultimate Lv4",
+            "value": 450,
             "type": "flat",
             "duration": 12
           }
@@ -4228,8 +4228,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1628% + 1456",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage+ Ultimate Lv1",
-            "value": 300,
+            "name": "Physical Critical Damage+ Ultimate Lv5",
+            "value": 500,
             "type": "flat",
             "duration": 12
           }
@@ -4304,9 +4304,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Dark vortex!",
         "icon": "skill001/skill0008",
-        "description": "Deals 2263 (MATK x 1.15 + 703) magic damage to the 2 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 10 seconds and Magic Attack -9%+-198DOWN for 10 seconds",
+        "description": "Deals 2263 (MATK x 1.15 + 703) magic damage to the 2 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 10 seconds and Magic Attack -9%+-200DOWN for 10 seconds",
         "descriptionLv1": "Deals 391 (MATK x 1.15 + 80) magic damage to the 2 nearest enemies and inflicts Physical Attack -9%+-20DOWN for 10 seconds and Magic Attack -9%+-20DOWN for 10 seconds",
-        "descriptionLv90": "Deals 2263 (MATK x 1.15 + 703) magic damage to the 2 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 10 seconds and Magic Attack -9%+-198DOWN for 10 seconds",
+        "descriptionLv90": "Deals 2263 (MATK x 1.15 + 703) magic damage to the 2 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 10 seconds and Magic Attack -9%+-200DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.78,
         "damageScaling": "115% ATK",
@@ -4399,8 +4399,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "840% + 952",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv2",
+            "value": -25,
             "type": "flat",
             "duration": 3
           },
@@ -4420,8 +4420,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "945% + 1045",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv3",
+            "value": -30,
             "type": "flat",
             "duration": 3
           },
@@ -4441,8 +4441,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1015% + 1121",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv4",
+            "value": -35,
             "type": "flat",
             "duration": 3
           },
@@ -4462,8 +4462,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1085% + 1237",
         "buffEffects": [
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -20,
+            "name": "Fear Ultimate Lv5",
+            "value": -40,
             "type": "flat",
             "duration": 3
           },
@@ -4644,13 +4644,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv2",
+            "value": 25,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
+            "name": "Physical Defense + Ultimate Lv2",
             "value": 20,
             "type": "percent",
             "duration": 10
@@ -4665,14 +4665,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv3",
+            "value": 30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           }
@@ -4686,14 +4686,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv4",
+            "value": 35,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           }
@@ -4707,14 +4707,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv5",
+            "value": 40,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           }
@@ -4881,14 +4881,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1200% + 1020",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv2",
+            "value": -3500,
             "type": "flat",
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 12
           }
@@ -4902,14 +4902,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 1082",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv3",
+            "value": -4000,
             "type": "flat",
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 12
           }
@@ -4923,14 +4923,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1155",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv4",
+            "value": -4500,
             "type": "flat",
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 12
           }
@@ -4944,14 +4944,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1550% + 1249",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv5",
+            "value": -5000,
             "type": "flat",
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 12
           }
@@ -5071,13 +5071,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
     "ultimate": [
       {
         "rank": 1,
-        "name": "Now, let us head to Hades’s realm♪",
+        "name": "Now, let us head to Hades's realm♪",
         "icon": "skill001/skill0003_1",
         "description": "Deals 2961 (ATK x 2.2 + 304) physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV1) for 10 seconds",
         "effect": "220% + 304",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
+            "name": "Magic Defense - Ultimate Lv1",
             "value": -10,
             "type": "percent",
             "duration": 10
@@ -5086,14 +5086,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 2,
-        "name": "Now, let us head to Hades’s realm♪",
+        "name": "Now, let us head to Hades's realm♪",
         "icon": "skill001/skill0003_2",
         "description": "Deals 3731 (ATK x 2.75 + 409) physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV2) for 10 seconds",
         "effect": "275% + 409",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Defense- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           }
@@ -5101,14 +5101,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 3,
-        "name": "Now, let us head to Hades’s realm♪",
+        "name": "Now, let us head to Hades's realm♪",
         "icon": "skill001/skill0003_3",
         "description": "Deals 4318 (ATK x 3.2 + 453) physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV3) for 10 seconds",
         "effect": "320% + 453",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Defense- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           }
@@ -5116,14 +5116,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 4,
-        "name": "Now, let us head to Hades’s realm♪",
+        "name": "Now, let us head to Hades's realm♪",
         "icon": "skill001/skill0003_4",
         "description": "Deals 4740 (ATK x 3.52 + 488) physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV4) for 10 seconds",
         "effect": "352% + 488",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Defense- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           }
@@ -5131,14 +5131,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
       },
       {
         "rank": 5,
-        "name": "Now, let us head to Hades’s realm♪",
+        "name": "Now, let us head to Hades's realm♪",
         "icon": "skill001/skill0003_5",
         "description": "Deals 5029 (ATK x 3.74 + 512) physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV5) for 10 seconds",
         "effect": "374% + 512",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Defense- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           }
@@ -5243,6 +5243,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Block+ Lv4",
             "value": 11,
+            "valueLv1": 11,
+            "valueLv90": 23,
             "type": "flat",
             "duration": 10
           }
@@ -5274,8 +5276,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "280% + 509",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv2",
+            "value": -8,
             "type": "flat",
             "duration": 10
           }
@@ -5289,7 +5291,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "325% + 553",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
+            "name": "Accuracy - Ultimate Lv3",
             "value": -10,
             "type": "flat",
             "duration": 10
@@ -5304,8 +5306,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "358% + 568",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv4",
+            "value": -12,
             "type": "flat",
             "duration": 10
           }
@@ -5319,8 +5321,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "380% + 602",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv5",
+            "value": -14,
             "type": "flat",
             "duration": 10
           }
@@ -5462,8 +5464,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "660% + 912",
         "buffEffects": [
           {
-            "name": "Wind Type Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Wind Type Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 8
           }
@@ -5477,8 +5479,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "700% + 1033",
         "buffEffects": [
           {
-            "name": "Wind Type Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Wind Type Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 8
           }
@@ -5492,8 +5494,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "740% + 1137",
         "buffEffects": [
           {
-            "name": "Wind Type Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Wind Type Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 8
           }
@@ -5507,8 +5509,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "770% + 1201",
         "buffEffects": [
           {
-            "name": "Wind Type Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Wind Type Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 8
           }
@@ -5584,9 +5586,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Poliucos",
         "icon": "skill001/skill0007",
-        "description": "Deals 3707 (ATK x 2.8 + 1425) physical damage to the nearest enemy and inflicts Physical Attack -9%+-198DOWN for 5 seconds and Magic Attack -9%+-198DOWN for 5 seconds",
+        "description": "Deals 3707 (ATK x 2.8 + 1425) physical damage to the nearest enemy and inflicts Physical Attack -9%+-200DOWN for 5 seconds and Magic Attack -9%+-200DOWN for 5 seconds",
         "descriptionLv1": "Deals 546 (ATK x 2.8 + 90) physical damage to the nearest enemy and inflicts Physical Attack -9%+-20DOWN for 5 seconds and Magic Attack -9%+-20DOWN for 5 seconds",
-        "descriptionLv90": "Deals 3707 (ATK x 2.8 + 1425) physical damage to the nearest enemy and inflicts Physical Attack -9%+-198DOWN for 5 seconds and Magic Attack -9%+-198DOWN for 5 seconds",
+        "descriptionLv90": "Deals 3707 (ATK x 2.8 + 1425) physical damage to the nearest enemy and inflicts Physical Attack -9%+-200DOWN for 5 seconds and Magic Attack -9%+-200DOWN for 5 seconds",
         "target": "Nearest Enemy",
         "castTime": 0.88,
         "damageScaling": "280% ATK",
@@ -6025,9 +6027,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Hypnotic Embrace",
         "icon": "skill001/skill0007",
-        "description": "Deals 4437 (ATK x 2.1 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -21%+-218DOWN for 15 seconds",
+        "description": "Deals 4437 (ATK x 2.1 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -21%+-220DOWN for 15 seconds",
         "descriptionLv1": "Deals 665 (ATK x 2.1 + 80) physical damage to the nearest enemy and inflicts Physical Defense -21%+-40DOWN for 15 seconds",
-        "descriptionLv90": "Deals 4437 (ATK x 2.1 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -21%+-218DOWN for 15 seconds",
+        "descriptionLv90": "Deals 4437 (ATK x 2.1 + 1504) physical damage to the nearest enemy and inflicts Physical Defense -21%+-220DOWN for 15 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "210% ATK",
@@ -6311,13 +6313,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
+            "name": "Physical Attack + Ultimate Lv2",
             "value": 20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
+            "name": "Magic Attack + Ultimate Lv2",
             "value": 20,
             "type": "percent",
             "duration": 10
@@ -6332,14 +6334,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           }
@@ -6353,14 +6355,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           }
@@ -6374,14 +6376,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           }
@@ -6555,14 +6557,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "MP Regeneration + Ultimate Lv1",
-            "value": 25,
+            "name": "MP Regeneration + Ultimate Lv2",
+            "value": 40,
             "type": "flat",
             "duration": 5
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 8,
+            "name": "Action Speed + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           }
@@ -6576,14 +6578,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "MP Regeneration + Ultimate Lv1",
-            "value": 25,
+            "name": "MP Regeneration + Ultimate Lv3",
+            "value": 45,
             "type": "flat",
             "duration": 5
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 8,
+            "name": "Action Speed + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           }
@@ -6597,14 +6599,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "MP Regeneration + Ultimate Lv1",
-            "value": 25,
+            "name": "MP Regeneration + Ultimate Lv4",
+            "value": 50,
             "type": "flat",
             "duration": 5
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 8,
+            "name": "Action Speed + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           }
@@ -6618,14 +6620,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "MP Regeneration + Ultimate Lv1",
-            "value": 25,
+            "name": "MP Regeneration + Ultimate Lv5",
+            "value": 55,
             "type": "flat",
             "duration": 5
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 8,
+            "name": "Action Speed + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -6763,8 +6765,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "972% + 920",
         "buffEffects": [
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           },
@@ -6784,8 +6786,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1090% + 1022",
         "buffEffects": [
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           },
@@ -6805,8 +6807,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1175% + 1115",
         "buffEffects": [
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           },
@@ -6826,8 +6828,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1255% + 1209",
         "buffEffects": [
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           },
@@ -6909,9 +6911,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "This costs quite a bit, you know ",
         "icon": "skill001/skill0007",
-        "description": "Deals 4772 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 12 seconds",
+        "description": "Deals 4772 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 12 seconds",
         "descriptionLv1": "Deals 686 (ATK x 2.4 + 110) physical damage to the nearest enemy and inflicts Physical Defense -18%+-30DOWN for 12 seconds",
-        "descriptionLv90": "Deals 4772 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 12 seconds",
+        "descriptionLv90": "Deals 4772 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 12 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "240% ATK",
@@ -6990,14 +6992,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Defense + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 12
           }
@@ -7011,14 +7013,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Defense + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 12
           }
@@ -7032,14 +7034,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Defense + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 12
           }
@@ -7053,14 +7055,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Defense + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 12
           }
@@ -7140,9 +7142,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Protected by “Thorns”",
         "icon": "skill001/skill0009",
-        "description": "Deals 5240 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds",
+        "description": "Deals 5240 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds",
         "descriptionLv1": "Deals 779 (ATK x 2.4 + 110) physical damage to the nearest enemy and inflicts Physical Defense -18%+-30DOWN for 5 seconds",
-        "descriptionLv90": "Deals 5240 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds",
+        "descriptionLv90": "Deals 5240 (ATK x 2.4 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "240% ATK",
@@ -7401,7 +7403,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "960% + 842",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv2",
             "value": -10,
             "type": "percent",
             "duration": 10
@@ -7416,8 +7418,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1080% + 933",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           }
@@ -7431,8 +7433,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1160% + 1027",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           }
@@ -7446,8 +7448,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1240% + 1091",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv5",
+            "value": -15,
             "type": "percent",
             "duration": 10
           }
@@ -7594,7 +7596,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "450% + 445",
         "buffEffects": [
           {
-            "name": "Magic Attack + Ultimate Lv1",
+            "name": "Magic Attack + Ultimate Lv2",
             "value": 20,
             "type": "percent",
             "duration": 10
@@ -7609,8 +7611,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "522% + 496",
         "buffEffects": [
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           }
@@ -7624,8 +7626,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "579% + 532",
         "buffEffects": [
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           }
@@ -7639,8 +7641,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "612% + 565",
         "buffEffects": [
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           }
@@ -7738,12 +7740,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Burn LvMax",
             "value": -200,
+            "valueLv1": -200,
+            "valueLv90": -1980,
             "type": "flat",
             "duration": 10
           },
           {
             "name": "Block- Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 5
           }
@@ -7805,8 +7811,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv2",
+            "value": -2000,
             "type": "flat",
             "duration": 15
           }
@@ -7826,8 +7832,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv3",
+            "value": -2400,
             "type": "flat",
             "duration": 15
           }
@@ -7847,8 +7853,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv4",
+            "value": -2700,
             "type": "flat",
             "duration": 15
           }
@@ -7868,8 +7874,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv5",
+            "value": -3000,
             "type": "flat",
             "duration": 15
           }
@@ -8038,14 +8044,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1080% + 950",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           }
@@ -8059,14 +8065,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1210% + 1200",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           }
@@ -8080,14 +8086,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1300% + 1300",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           }
@@ -8101,14 +8107,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1390% + 1400",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -8276,8 +8282,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "700% + 470",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv2",
+            "value": -3500,
             "type": "flat",
             "duration": 3
           },
@@ -8297,8 +8303,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "850% + 522",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv3",
+            "value": -4000,
             "type": "flat",
             "duration": 3
           },
@@ -8318,8 +8324,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "950% + 580",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv4",
+            "value": -4500,
             "type": "flat",
             "duration": 3
           },
@@ -8339,8 +8345,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1000% + 645",
         "buffEffects": [
           {
-            "name": "Freeze Ultimate Lv1",
-            "value": -2500,
+            "name": "Freeze Ultimate Lv5",
+            "value": -5000,
             "type": "flat",
             "duration": 3
           },
@@ -8426,9 +8432,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Londo of Light",
         "icon": "skill001/skill0007",
-        "description": "Deals 1579 (ATK x 0.9 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-218DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
+        "description": "Deals 1579 (ATK x 0.9 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-220DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
         "descriptionLv1": "Deals 248 (ATK x 0.9 + 50) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-40DOWN for 10 seconds and Accuracy -11DOWN for 10 seconds",
-        "descriptionLv90": "Deals 1579 (ATK x 0.9 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-218DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
+        "descriptionLv90": "Deals 1579 (ATK x 0.9 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-220DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.08,
         "damageScaling": "90% ATK",
@@ -8521,14 +8527,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2300% + 1250",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv2",
+            "value": 13,
             "type": "flat",
             "duration": 12
           }
@@ -8542,14 +8548,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2500% + 1394",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv3",
+            "value": 16,
             "type": "flat",
             "duration": 12
           }
@@ -8563,14 +8569,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2700% + 1489",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv4",
+            "value": 18,
             "type": "flat",
             "duration": 12
           }
@@ -8584,14 +8590,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "2800% + 1563",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv5",
+            "value": 20,
             "type": "flat",
             "duration": 12
           }
@@ -8672,9 +8678,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "O God, drive away evil with Your pure light ",
         "icon": "skill001/skill0010",
-        "description": "Deals 1839 (MATK x 1.0 + 574) magic damage to the 3 nearest enemies and inflicts Magic Attack -9%+-198DOWN for 12 seconds and Magic Defense-18%+-208DOWN for 12 seconds",
+        "description": "Deals 1839 (MATK x 1.0 + 574) magic damage to the 3 nearest enemies and inflicts Magic Attack -9%+-200DOWN for 12 seconds and Magic Defense-18%+-210DOWN for 12 seconds",
         "descriptionLv1": "Deals 293 (MATK x 1.0 + 40) magic damage to the 3 nearest enemies and inflicts Magic Attack -9%+-20DOWN for 12 seconds and Magic Defense-18%+-30DOWN for 12 seconds",
-        "descriptionLv90": "Deals 1839 (MATK x 1.0 + 574) magic damage to the 3 nearest enemies and inflicts Magic Attack -9%+-198DOWN for 12 seconds and Magic Defense-18%+-208DOWN for 12 seconds",
+        "descriptionLv90": "Deals 1839 (MATK x 1.0 + 574) magic damage to the 3 nearest enemies and inflicts Magic Attack -9%+-200DOWN for 12 seconds and Magic Defense-18%+-210DOWN for 12 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "100% ATK",
@@ -8724,12 +8730,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Block+ Lv4",
             "value": 11,
+            "valueLv1": 11,
+            "valueLv90": 23,
             "type": "flat",
             "duration": 10
           },
           {
             "name": "Debuff Resistance LvMax",
             "value": 1,
+            "valueLv1": 1,
+            "valueLv90": 1,
             "type": "percent"
           }
         ],
@@ -8766,14 +8776,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3105% + 1476",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv2",
+            "value": 25,
             "type": "percent",
             "duration": 20
           }
@@ -8787,14 +8797,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3375% + 1606",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv3",
+            "value": 30,
             "type": "percent",
             "duration": 20
           }
@@ -8808,14 +8818,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3645% + 1783",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv4",
+            "value": 35,
             "type": "percent",
             "duration": 20
           }
@@ -8829,14 +8839,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3780% + 1960",
         "buffEffects": [
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 20,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv5",
+            "value": 40,
             "type": "percent",
             "duration": 20
           }
@@ -8918,9 +8928,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Lightning Blade Strike",
         "icon": "skill001/skill0011",
-        "description": "Deals 7265 (MATK x 3.1 + 1940) magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%+-218DOWN for 8 seconds",
+        "description": "Deals 7265 (MATK x 3.1 + 1940) magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%+-220DOWN for 8 seconds",
         "descriptionLv1": "Deals 1223 (MATK x 3.1 + 160) magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%+-40DOWN for 8 seconds",
-        "descriptionLv90": "Deals 7265 (MATK x 3.1 + 1940) magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%+-218DOWN for 8 seconds",
+        "descriptionLv90": "Deals 7265 (MATK x 3.1 + 1940) magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%+-220DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "310% ATK",
@@ -9007,8 +9017,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1200% + 1022",
         "buffEffects": [
           {
-            "name": "Mind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Mind Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           }
@@ -9022,8 +9032,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 1153",
         "buffEffects": [
           {
-            "name": "Mind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Mind Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           }
@@ -9037,8 +9047,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1307",
         "buffEffects": [
           {
-            "name": "Mind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Mind Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           }
@@ -9052,8 +9062,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1500% + 1461",
         "buffEffects": [
           {
-            "name": "Mind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Mind Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -9228,14 +9238,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "420% + 379",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 10
           }
@@ -9249,14 +9259,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "470% + 421",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           }
@@ -9270,14 +9280,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "510% + 465",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           }
@@ -9291,13 +9301,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "550% + 501",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv5",
             "value": -15,
             "type": "percent",
             "duration": 10
@@ -9466,7 +9476,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "360% + 380",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
+            "name": "Hit-Based Shield Ultimate Lv2",
             "value": 35,
             "type": "percent",
             "duration": 8
@@ -9487,8 +9497,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "405% + 425",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 35,
+            "name": "Hit-Based Shield Ultimate Lv3",
+            "value": 40,
             "type": "percent",
             "duration": 8
           },
@@ -9508,8 +9518,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "435% + 469",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 35,
+            "name": "Hit-Based Shield Ultimate Lv4",
+            "value": 45,
             "type": "percent",
             "duration": 8
           },
@@ -9529,8 +9539,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "450% + 512",
         "buffEffects": [
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 35,
+            "name": "Hit-Based Shield Ultimate Lv5",
+            "value": 50,
             "type": "percent",
             "duration": 8
           },
@@ -9617,9 +9627,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Dual Demon Swords",
         "icon": "skill001/skill0010",
-        "description": "Deals 6450 (MATK x 2.1 + 1940) magic damage to the nearest enemy and inflicts Magic Defense-21%+-218DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
+        "description": "Deals 6450 (MATK x 2.1 + 1940) magic damage to the nearest enemy and inflicts Magic Defense-21%+-220DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
         "descriptionLv1": "Deals 1060 (MATK x 2.1 + 160) magic damage to the nearest enemy and inflicts Magic Defense-21%+-40DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
-        "descriptionLv90": "Deals 6450 (MATK x 2.1 + 1940) magic damage to the nearest enemy and inflicts Magic Defense-21%+-218DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
+        "descriptionLv90": "Deals 6450 (MATK x 2.1 + 1940) magic damage to the nearest enemy and inflicts Magic Defense-21%+-220DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.78,
         "damageScaling": "210% ATK",
@@ -9718,8 +9728,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 10
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -50,
+            "name": "Fear Ultimate Lv2",
+            "value": -25,
             "type": "flat",
             "duration": 3
           }
@@ -9739,8 +9749,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 10
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -50,
+            "name": "Fear Ultimate Lv3",
+            "value": -30,
             "type": "flat",
             "duration": 3
           }
@@ -9760,8 +9770,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 10
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -50,
+            "name": "Fear Ultimate Lv4",
+            "value": -35,
             "type": "flat",
             "duration": 3
           }
@@ -9781,8 +9791,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 10
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -50,
+            "name": "Fear Ultimate Lv5",
+            "value": -40,
             "type": "flat",
             "duration": 3
           }
@@ -9941,14 +9951,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "330% + 400",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 10
           }
@@ -9962,14 +9972,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "370% + 500",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 10
           }
@@ -9983,14 +9993,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "400% + 550",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 10
           }
@@ -10004,14 +10014,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "420% + 600",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 10
           }
@@ -10168,14 +10178,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "4800% + 1500",
         "buffEffects": [
           {
-            "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Physical Healing Shield Ultimate Lv2",
+            "value": 25,
             "type": "percent",
             "duration": 20
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv2",
+            "value": 25,
             "type": "percent",
             "duration": 20
           }
@@ -10189,13 +10199,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "5500% + 2000",
         "buffEffects": [
           {
-            "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
+            "name": "Hit-Based Physical Healing Shield Ultimate Lv3",
             "value": 30,
             "type": "percent",
             "duration": 20
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv3",
             "value": 30,
             "type": "percent",
             "duration": 20
@@ -10210,14 +10220,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "6000% + 2300",
         "buffEffects": [
           {
-            "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Physical Healing Shield Ultimate Lv4",
+            "value": 35,
             "type": "percent",
             "duration": 20
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv4",
+            "value": 35,
             "type": "percent",
             "duration": 20
           }
@@ -10231,14 +10241,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "6500% + 2500",
         "buffEffects": [
           {
-            "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Physical Healing Shield Ultimate Lv5",
+            "value": 40,
             "type": "percent",
             "duration": 20
           },
           {
-            "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Magic Healing Shield Ultimate Lv5",
+            "value": 40,
             "type": "percent",
             "duration": 20
           }
@@ -10337,9 +10347,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "This isn’t something an idiot could pull off, you know?",
         "icon": "skill001/skill0009",
-        "description": "Deals 1726 (ATK x 1.2 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -18%+-208DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
+        "description": "Deals 1726 (ATK x 1.2 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -18%+-210DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
         "descriptionLv1": "Deals 278 (ATK x 1.2 + 50) physical damage to the 3 nearest enemies and inflicts Physical Defense -18%+-30DOWN for 10 seconds and Accuracy -11DOWN for 10 seconds",
-        "descriptionLv90": "Deals 1726 (ATK x 1.2 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -18%+-208DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
+        "descriptionLv90": "Deals 1726 (ATK x 1.2 + 584) physical damage to the 3 nearest enemies and inflicts Physical Defense -18%+-210DOWN for 10 seconds and Accuracy -23DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 0.66,
         "damageScaling": "120% ATK",
@@ -10482,9 +10492,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Sylvesto",
         "icon": "skill001/skill0008",
-        "description": "Deals 6797 (MATK x 3.2 + 2375) magic damage to the farthest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds and Magic Defense-18%+-208DOWN for 5 seconds",
+        "description": "Deals 6797 (MATK x 3.2 + 2375) magic damage to the farthest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds and Magic Defense-18%+-210DOWN for 5 seconds",
         "descriptionLv1": "Deals 1033 (MATK x 3.2 + 150) magic damage to the farthest enemy and inflicts Physical Defense -18%+-30DOWN for 5 seconds and Magic Defense-18%+-30DOWN for 5 seconds",
-        "descriptionLv90": "Deals 6797 (MATK x 3.2 + 2375) magic damage to the farthest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds and Magic Defense-18%+-208DOWN for 5 seconds",
+        "descriptionLv90": "Deals 6797 (MATK x 3.2 + 2375) magic damage to the farthest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds and Magic Defense-18%+-210DOWN for 5 seconds",
         "target": "Farthest Enemy",
         "castTime": 1.38,
         "damageScaling": "320% ATK",
@@ -10577,14 +10587,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "750% + 500",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv2",
             "value": -10,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 10
           }
@@ -10598,14 +10608,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "900% + 550",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 10
           }
@@ -10619,14 +10629,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1000% + 600",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 10
           }
@@ -10640,14 +10650,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1100% + 680",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv5",
+            "value": -15,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 10
           }
@@ -10728,9 +10738,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Thunderfire",
         "icon": "skill001/skill0009",
-        "description": "Deals 5262 (ATK x 3.5 + 1930) physical damage to the nearest enemy and inflicts Physical Defense -23%+-317DOWN for 5 seconds and Burn(HP --1485 per second) for 12 seconds",
+        "description": "Deals 5262 (ATK x 3.5 + 1930) physical damage to the nearest enemy and inflicts Physical Defense -23%+-320DOWN for 5 seconds and Burn(HP --1485 per second) for 12 seconds",
         "descriptionLv1": "Deals 815 (ATK x 3.5 + 150) physical damage to the nearest enemy and inflicts Physical Defense -23%+-50DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
-        "descriptionLv90": "Deals 5262 (ATK x 3.5 + 1930) physical damage to the nearest enemy and inflicts Physical Defense -23%+-317DOWN for 5 seconds and Burn(HP --1485 per second) for 12 seconds",
+        "descriptionLv90": "Deals 5262 (ATK x 3.5 + 1930) physical damage to the nearest enemy and inflicts Physical Defense -23%+-320DOWN for 5 seconds and Burn(HP --1485 per second) for 12 seconds",
         "target": "Nearest Enemy",
         "castTime": 0.66,
         "damageScaling": "350% ATK",
@@ -10823,14 +10833,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "505% + 450",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 8
           }
@@ -10844,14 +10854,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "570% + 515",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 8
           }
@@ -10865,14 +10875,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "610% + 562",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 8
           }
@@ -10886,14 +10896,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "650% + 610",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 8
           }
@@ -11062,14 +11072,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "540% + 470",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv2",
+            "value": -8,
             "type": "flat",
             "duration": 10
           }
@@ -11083,14 +11093,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "605% + 540",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv3",
+            "value": -10,
             "type": "flat",
             "duration": 10
           }
@@ -11104,14 +11114,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "660% + 600",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv4",
+            "value": -12,
             "type": "flat",
             "duration": 10
           }
@@ -11125,14 +11135,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "700% + 650",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv5",
+            "value": -14,
             "type": "flat",
             "duration": 10
           }
@@ -11307,14 +11317,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Shield Ultimate Lv2",
+            "value": 35,
             "type": "percent",
             "duration": 4
           }
@@ -11328,14 +11338,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Shield Ultimate Lv3",
+            "value": 40,
             "type": "percent",
             "duration": 4
           }
@@ -11349,14 +11359,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Shield Ultimate Lv4",
+            "value": 45,
             "type": "percent",
             "duration": 4
           }
@@ -11370,14 +11380,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 10,
+            "name": "Action Speed + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Hit-Based Shield Ultimate Lv1",
-            "value": 30,
+            "name": "Hit-Based Shield Ultimate Lv5",
+            "value": 50,
             "type": "percent",
             "duration": 4
           }
@@ -11558,7 +11568,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv2",
             "value": -10,
             "type": "percent",
             "duration": 10
@@ -11579,8 +11589,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           }
@@ -11600,8 +11610,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           }
@@ -11621,8 +11631,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv5",
+            "value": -15,
             "type": "percent",
             "duration": 10
           }
@@ -11721,12 +11731,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Accuracy - Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 8
           },
           {
             "name": "Block- Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 8
           }
@@ -11755,12 +11769,19 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Attack + Lv4",
             "value": 18,
+            "valueLv1": 18,
+            "valueLv90": 18,
+            "flatBonus": 35,
+            "flatBonusLv1": 35,
+            "flatBonusLv90": 658,
             "type": "percent",
             "duration": 12
           },
           {
             "name": "Block+ Lv4",
             "value": 11,
+            "valueLv1": 11,
+            "valueLv90": 23,
             "type": "flat",
             "duration": 12
           }
@@ -11792,8 +11813,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "540% + 2000",
         "buffEffects": [
           {
-            "name": "Damage + Ultimate Lv1",
-            "value": 100,
+            "name": "Damage + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 10
           }
@@ -11807,8 +11828,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "570% + 2400",
         "buffEffects": [
           {
-            "name": "Damage + Ultimate Lv1",
-            "value": 100,
+            "name": "Damage + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 10
           }
@@ -11822,8 +11843,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "600% + 2700",
         "buffEffects": [
           {
-            "name": "Damage + Ultimate Lv1",
-            "value": 100,
+            "name": "Damage + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 10
           }
@@ -11837,8 +11858,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "630% + 3000",
         "buffEffects": [
           {
-            "name": "Damage + Ultimate Lv1",
-            "value": 100,
+            "name": "Damage + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 10
           }
@@ -11990,8 +12011,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1320% + 1400",
         "buffEffects": [
           {
-            "name": "Fire Type ATK + Ultimate Lv1",
-            "value": 15,
+            "name": "Fire Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           }
@@ -12005,8 +12026,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1490% + 1550",
         "buffEffects": [
           {
-            "name": "Fire Type ATK + Ultimate Lv1",
-            "value": 15,
+            "name": "Fire Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           }
@@ -12020,8 +12041,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1600% + 1650",
         "buffEffects": [
           {
-            "name": "Fire Type ATK + Ultimate Lv1",
-            "value": 15,
+            "name": "Fire Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           }
@@ -12035,8 +12056,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1660% + 1700",
         "buffEffects": [
           {
-            "name": "Fire Type ATK + Ultimate Lv1",
-            "value": 15,
+            "name": "Fire Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -12113,9 +12134,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Let Me Play With You♪",
         "icon": "skill001/skill0008",
-        "description": "Deals 2065 (ATK x 1.1 + 594) physical damage to the 3 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 7 seconds and Magic Attack -9%+-198DOWN for 7 seconds",
+        "description": "Deals 2065 (ATK x 1.1 + 594) physical damage to the 3 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 7 seconds and Magic Attack -9%+-200DOWN for 7 seconds",
         "descriptionLv1": "Deals 353 (ATK x 1.1 + 60) physical damage to the 3 nearest enemies and inflicts Physical Attack -9%+-20DOWN for 7 seconds and Magic Attack -9%+-20DOWN for 7 seconds",
-        "descriptionLv90": "Deals 2065 (ATK x 1.1 + 594) physical damage to the 3 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 7 seconds and Magic Attack -9%+-198DOWN for 7 seconds",
+        "descriptionLv90": "Deals 2065 (ATK x 1.1 + 594) physical damage to the 3 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 7 seconds and Magic Attack -9%+-200DOWN for 7 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "110% ATK",
@@ -12369,9 +12390,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Feather Dance",
         "icon": "skill001/skill0008",
-        "description": "Deals 2040 (MATK x 1.3 + 584) magic damage to the 3 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 10 seconds and Magic Attack -9%+-198DOWN for 10 seconds",
+        "description": "Deals 2040 (MATK x 1.3 + 584) magic damage to the 3 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 10 seconds and Magic Attack -9%+-200DOWN for 10 seconds",
         "descriptionLv1": "Deals 341 (MATK x 1.3 + 50) magic damage to the 3 nearest enemies and inflicts Physical Attack -9%+-20DOWN for 10 seconds and Magic Attack -9%+-20DOWN for 10 seconds",
-        "descriptionLv90": "Deals 2040 (MATK x 1.3 + 584) magic damage to the 3 nearest enemies and inflicts Physical Attack -9%+-198DOWN for 10 seconds and Magic Attack -9%+-198DOWN for 10 seconds",
+        "descriptionLv90": "Deals 2040 (MATK x 1.3 + 584) magic damage to the 3 nearest enemies and inflicts Physical Attack -9%+-200DOWN for 10 seconds and Magic Attack -9%+-200DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 0.66,
         "damageScaling": "130% ATK",
@@ -12430,14 +12451,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "480% + 409",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Critical Damage- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Critical Damage- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           }
@@ -12451,14 +12472,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "540% + 453",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Critical Damage- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Critical Damage- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           }
@@ -12472,14 +12493,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "580% + 468",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Critical Damage- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Critical Damage- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           }
@@ -12493,14 +12514,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "600% + 482",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Critical Damage- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -10,
+            "name": "Magic Critical Damage- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           }
@@ -12645,8 +12666,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "550% + 480",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 20,
+            "name": "Action Speed + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 12
           }
@@ -12660,8 +12681,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "600% + 560",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 20,
+            "name": "Action Speed + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 12
           }
@@ -12675,8 +12696,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "650% + 600",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 20,
+            "name": "Action Speed + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 12
           }
@@ -12690,7 +12711,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "680% + 640",
         "buffEffects": [
           {
-            "name": "Action Speed + Ultimate Lv1",
+            "name": "Action Speed + Ultimate Lv5",
             "value": 20,
             "type": "percent",
             "duration": 12
@@ -13093,8 +13114,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Reflect Shield Ultimate Lv1",
-            "value": 250,
+            "name": "Physical Reflect Shield Ultimate Lv2",
+            "value": 350,
             "type": "percent",
             "duration": 15
           },
@@ -13114,8 +13135,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Reflect Shield Ultimate Lv1",
-            "value": 250,
+            "name": "Physical Reflect Shield Ultimate Lv3",
+            "value": 400,
             "type": "percent",
             "duration": 15
           },
@@ -13135,8 +13156,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Reflect Shield Ultimate Lv1",
-            "value": 250,
+            "name": "Physical Reflect Shield Ultimate Lv4",
+            "value": 450,
             "type": "percent",
             "duration": 15
           },
@@ -13156,8 +13177,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Reflect Shield Ultimate Lv1",
-            "value": 250,
+            "name": "Physical Reflect Shield Ultimate Lv5",
+            "value": 500,
             "type": "percent",
             "duration": 15
           },
@@ -13463,8 +13484,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1500% + 600",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 10
           }
@@ -13478,8 +13499,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1700% + 680",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 10
           }
@@ -13493,8 +13514,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1800% + 750",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 10
           }
@@ -13508,8 +13529,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1900% + 800",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Attack - Ultimate Lv5",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -13663,8 +13684,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 10
           }
@@ -13684,8 +13705,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           }
@@ -13705,8 +13726,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           }
@@ -13726,7 +13747,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv5",
             "value": -15,
             "type": "percent",
             "duration": 10
@@ -13901,8 +13922,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           }
@@ -13922,8 +13943,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           }
@@ -13943,8 +13964,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           }
@@ -13964,8 +13985,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "Magic Defense- Ultimate Lv1",
-            "value": -15,
+            "name": "Magic Defense- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           }
@@ -14140,14 +14161,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3100% + 1400",
         "buffEffects": [
           {
-            "name": "Debuff Resistance + Ultimate Lv1",
-            "value": 0.3,
+            "name": "Debuff Resistance + Ultimate Lv2",
+            "value": 0.4,
             "type": "percent",
             "duration": 7
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv2",
+            "value": 13,
             "type": "flat",
             "duration": 7
           }
@@ -14161,14 +14182,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3250% + 1600",
         "buffEffects": [
           {
-            "name": "Debuff Resistance + Ultimate Lv1",
-            "value": 0.3,
+            "name": "Debuff Resistance + Ultimate Lv3",
+            "value": 0.5,
             "type": "percent",
             "duration": 7
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv3",
+            "value": 16,
             "type": "flat",
             "duration": 7
           }
@@ -14182,14 +14203,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3500% + 1750",
         "buffEffects": [
           {
-            "name": "Debuff Resistance + Ultimate Lv1",
-            "value": 0.3,
+            "name": "Debuff Resistance + Ultimate Lv4",
+            "value": 0.55,
             "type": "percent",
             "duration": 7
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv4",
+            "value": 18,
             "type": "flat",
             "duration": 7
           }
@@ -14203,14 +14224,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3650% + 1900",
         "buffEffects": [
           {
-            "name": "Debuff Resistance + Ultimate Lv1",
-            "value": 0.3,
+            "name": "Debuff Resistance + Ultimate Lv5",
+            "value": 0.6,
             "type": "percent",
             "duration": 7
           },
           {
-            "name": "Block+ Ultimate Lv1",
-            "value": 10,
+            "name": "Block+ Ultimate Lv5",
+            "value": 20,
             "type": "flat",
             "duration": 7
           }
@@ -14372,8 +14393,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "280% + 509",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv2",
+            "value": -8,
             "type": "flat",
             "duration": 10
           }
@@ -14387,7 +14408,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "325% + 553",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
+            "name": "Accuracy - Ultimate Lv3",
             "value": -10,
             "type": "flat",
             "duration": 10
@@ -14402,8 +14423,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "358% + 568",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv4",
+            "value": -12,
             "type": "flat",
             "duration": 10
           }
@@ -14417,8 +14438,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "380% + 602",
         "buffEffects": [
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -10,
+            "name": "Accuracy - Ultimate Lv5",
+            "value": -14,
             "type": "flat",
             "duration": 10
           }
@@ -14594,8 +14615,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -30,
+            "name": "Fear Ultimate Lv2",
+            "value": -25,
             "type": "flat",
             "duration": 3
           }
@@ -14615,7 +14636,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Fear Ultimate Lv1",
+            "name": "Fear Ultimate Lv3",
             "value": -30,
             "type": "flat",
             "duration": 3
@@ -14636,8 +14657,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -30,
+            "name": "Fear Ultimate Lv4",
+            "value": -35,
             "type": "flat",
             "duration": 3
           }
@@ -14657,8 +14678,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -30,
+            "name": "Fear Ultimate Lv5",
+            "value": -40,
             "type": "flat",
             "duration": 3
           }
@@ -14783,12 +14804,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Wind Type Defense - Lv4",
             "value": -18,
+            "valueLv1": -18,
+            "valueLv90": -18,
             "type": "percent",
             "duration": 8
           },
           {
             "name": "Block- Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 8
           }
@@ -14826,14 +14851,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "450% + 1600",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 25,
+            "name": "Wind Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Damage + Ultimate Lv1",
-            "value": 80,
+            "name": "Hit-Based Damage + Ultimate Lv2",
+            "value": 45,
             "type": "percent",
             "duration": 10
           }
@@ -14847,14 +14872,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "480% + 1900",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 25,
+            "name": "Wind Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Damage + Ultimate Lv1",
-            "value": 80,
+            "name": "Hit-Based Damage + Ultimate Lv3",
+            "value": 50,
             "type": "percent",
             "duration": 10
           }
@@ -14868,14 +14893,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "510% + 2200",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 25,
+            "name": "Wind Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Damage + Ultimate Lv1",
-            "value": 80,
+            "name": "Hit-Based Damage + Ultimate Lv4",
+            "value": 55,
             "type": "percent",
             "duration": 10
           }
@@ -14889,14 +14914,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "535% + 2500",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 25,
+            "name": "Wind Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 6
           },
           {
-            "name": "Hit-Based Damage + Ultimate Lv1",
-            "value": 80,
+            "name": "Hit-Based Damage + Ultimate Lv5",
+            "value": 60,
             "type": "percent",
             "duration": 10
           }
@@ -14975,9 +15000,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Grand Whirlwind Slash",
         "icon": "skill001/skill0007",
-        "description": "Deals 2531 (ATK x 0.9 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-317DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
+        "description": "Deals 2531 (ATK x 0.9 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-320DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
         "descriptionLv1": "Deals 427 (ATK x 0.9 + 80) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-50DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
-        "descriptionLv90": "Deals 2531 (ATK x 0.9 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-317DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
+        "descriptionLv90": "Deals 2531 (ATK x 0.9 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -23%+-320DOWN for 7 seconds and absorbs  of the damage dealt to restore own HP",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "90% ATK",
@@ -14992,8 +15017,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Physical Defense - Lv5",
             "value": -23,
-            "type": "percent",
-            "duration": 7
+            "valueLv1": -23,
+            "valueLv90": -23,
+            "flatBonus": -50,
+            "flatBonusLv1": -50,
+            "flatBonusLv90": -320,
+            "type": "debuff",
+            "duration": 7,
+            "displayFormat": "% + flat"
           }
         ],
         "duration": 7
@@ -15002,9 +15033,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Wind Spirit, Grant Me Protection",
         "icon": "skill001/skill0019",
-        "description": "Applies Action Speed 17%UP to self for 10 seconds and Block23UP for 10 seconds",
-        "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Block11UP for 10 seconds",
-        "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Block23UP for 10 seconds",
+        "description": "Applies Action Speed 17%UP to self for 10 seconds and Block+11 for 10 seconds",
+        "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Block+11 for 10 seconds",
+        "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Block+22.7 for 10 seconds",
         "target": "Self",
         "castTime": 1.58,
         "damageScaling": null,
@@ -15013,7 +15044,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "lvl1": null,
         "lvl90": null,
         "baseValue": 11,
-        "valueLv90": 23,
+        "valueLv90": 22.7,
         "valueType": "Block",
         "effects": [
           "Action Speed + Lv4",
@@ -15029,6 +15060,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Block+ Lv4",
             "value": 11,
+            "valueLv1": 11,
+            "valueLv90": 22.7,
             "type": "flat",
             "duration": 10
           }
@@ -15066,8 +15099,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "200% + 700",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 8
           },
@@ -15087,8 +15120,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "220% + 800",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 8
           },
@@ -15108,8 +15141,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "240% + 850",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 8
           },
@@ -15129,7 +15162,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "250% + 900",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv5",
             "value": -15,
             "type": "percent",
             "duration": 8
@@ -15213,9 +15246,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Circular Slash",
         "icon": "skill001/skill0007",
-        "description": "Deals 6115 (ATK x 3.5 + 1940) physical damage to the nearest enemy and inflicts Physical Defense -21%+-218DOWN for 4 seconds",
+        "description": "Deals 6115 (ATK x 3.5 + 1940) physical damage to the nearest enemy and inflicts Physical Defense -21%+-220DOWN for 4 seconds",
         "descriptionLv1": "Deals 993 (ATK x 3.5 + 160) physical damage to the nearest enemy and inflicts Physical Defense -21%+-40DOWN for 4 seconds",
-        "descriptionLv90": "Deals 6115 (ATK x 3.5 + 1940) physical damage to the nearest enemy and inflicts Physical Defense -21%+-218DOWN for 4 seconds",
+        "descriptionLv90": "Deals 6115 (ATK x 3.5 + 1940) physical damage to the nearest enemy and inflicts Physical Defense -21%+-220DOWN for 4 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.08,
         "damageScaling": "350% ATK",
@@ -15378,9 +15411,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Binding Art: Serpent Coil",
         "icon": "skill001/skill0011",
-        "description": "Deals 5309 (ATK x 2.7 + 1475) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-208DOWN for 8 seconds",
+        "description": "Deals 5309 (ATK x 2.7 + 1475) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-210DOWN for 8 seconds",
         "descriptionLv1": "Deals 906 (ATK x 2.7 + 140) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-30DOWN for 8 seconds",
-        "descriptionLv90": "Deals 5309 (ATK x 2.7 + 1475) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-208DOWN for 8 seconds",
+        "descriptionLv90": "Deals 5309 (ATK x 2.7 + 1475) physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%+-210DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "270% ATK",
@@ -15584,9 +15617,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Earth Grave",
         "icon": "skill001/skill0011",
-        "description": "Deals 6790 (MATK x 2.8 + 1980) magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%+-317DOWN for 5 seconds",
+        "description": "Deals 6790 (MATK x 2.8 + 1980) magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%+-320DOWN for 5 seconds",
         "descriptionLv1": "Deals 1160 (MATK x 2.8 + 200) magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%+-50DOWN for 5 seconds",
-        "descriptionLv90": "Deals 6790 (MATK x 2.8 + 1980) magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%+-317DOWN for 5 seconds",
+        "descriptionLv90": "Deals 6790 (MATK x 2.8 + 1980) magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%+-320DOWN for 5 seconds",
         "target": "Farthest Enemy",
         "castTime": 1.38,
         "damageScaling": "280% ATK",
@@ -15645,14 +15678,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "480% + 400",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv2",
             "value": -10,
             "type": "percent",
             "duration": 9
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 9
           }
@@ -15666,14 +15699,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "560% + 480",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 9
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 9
           }
@@ -15687,14 +15720,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "600% + 550",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 9
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 9
           }
@@ -15708,14 +15741,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "630% + 600",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -10,
+            "name": "Action Speed - Ultimate Lv5",
+            "value": -15,
             "type": "percent",
             "duration": 9
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 9
           }
@@ -15795,9 +15828,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Sand Storm",
         "icon": "skill001/skill0008",
-        "description": "Deals 2308 (MATK x 1.4 + 614)magic damage to the 3 farthest enemies and inflicts Accuracy -18DOWN for 8 seconds and Physical Critical Damage-11%+-208DOWN for 8 seconds",
+        "description": "Deals 2308 (MATK x 1.4 + 614)magic damage to the 3 farthest enemies and inflicts Accuracy -18DOWN for 8 seconds and Physical Critical Damage-11%+-210DOWN for 8 seconds",
         "descriptionLv1": "Deals 418 (MATK x 1.4 + 80)magic damage to the 3 farthest enemies and inflicts Accuracy -9DOWN for 8 seconds and Physical Critical Damage-11%+-30DOWN for 8 seconds",
-        "descriptionLv90": "Deals 2308 (MATK x 1.4 + 614)magic damage to the 3 farthest enemies and inflicts Accuracy -18DOWN for 8 seconds and Physical Critical Damage-11%+-208DOWN for 8 seconds",
+        "descriptionLv90": "Deals 2308 (MATK x 1.4 + 614)magic damage to the 3 farthest enemies and inflicts Accuracy -18DOWN for 8 seconds and Physical Critical Damage-11%+-210DOWN for 8 seconds",
         "target": "Farthest Enemy",
         "castTime": 1.08,
         "damageScaling": "140% ATK",
@@ -16141,8 +16174,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv2",
+            "value": -8,
             "type": "flat",
             "duration": 8
           }
@@ -16162,8 +16195,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv3",
+            "value": -10,
             "type": "flat",
             "duration": 8
           }
@@ -16183,8 +16216,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv4",
+            "value": -12,
             "type": "flat",
             "duration": 8
           }
@@ -16204,8 +16237,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 5
           },
           {
-            "name": "Accuracy - Ultimate Lv1",
-            "value": -15,
+            "name": "Accuracy - Ultimate Lv5",
+            "value": -14,
             "type": "flat",
             "duration": 8
           }
@@ -16359,8 +16392,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "360% + 330",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -16374,8 +16407,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "405% + 350",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           }
@@ -16389,8 +16422,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "440% + 380",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           }
@@ -16404,8 +16437,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "470% + 400",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -10,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           }
@@ -16581,8 +16614,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           }
@@ -16602,8 +16635,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           }
@@ -16623,8 +16656,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           }
@@ -16644,8 +16677,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 3
           },
           {
-            "name": "HP Regeneration+ Ultimate Lv1",
-            "value": 6,
+            "name": "HP Regeneration+ Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -16722,9 +16755,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "我的詛咒有效嗎？",
         "icon": "skill001/skill0008",
-        "description": "Deals 1969 (MATK x 0.9 + 624) magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds 異常狀態 and Magic Defense-23%+-317DOWN for 6 seconds",
+        "description": "Deals 1969 (MATK x 0.9 + 624) magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds 異常狀態 and Magic Defense-23%+-320DOWN for 6 seconds",
         "descriptionLv1": "Deals 359 (MATK x 0.9 + 90) magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds 異常狀態 and Magic Defense-23%+-50DOWN for 6 seconds",
-        "descriptionLv90": "Deals 1969 (MATK x 0.9 + 624) magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds 異常狀態 and Magic Defense-23%+-317DOWN for 6 seconds",
+        "descriptionLv90": "Deals 1969 (MATK x 0.9 + 624) magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds 異常狀態 and Magic Defense-23%+-320DOWN for 6 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "90% ATK",
@@ -16817,14 +16850,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "400% + 400",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Critical Damage- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Critical Damage- Ultimate Lv2",
+            "value": -25,
             "type": "percent",
             "duration": 10
           }
@@ -16838,14 +16871,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "480% + 450",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Critical Damage- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Critical Damage- Ultimate Lv3",
+            "value": -29,
             "type": "percent",
             "duration": 10
           }
@@ -16859,14 +16892,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "550% + 500",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Critical Damage- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Critical Damage- Ultimate Lv4",
+            "value": -32,
             "type": "percent",
             "duration": 10
           }
@@ -16880,14 +16913,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "600% + 550",
         "buffEffects": [
           {
-            "name": "Physical Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Critical Damage- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Critical Damage- Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Critical Damage- Ultimate Lv5",
+            "value": -35,
             "type": "percent",
             "duration": 10
           }
@@ -17217,9 +17250,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "啪一聲！",
         "icon": "skill001/skill0011",
-        "description": "最近3名敵人附加1秒的魅惑異常狀態 and Physical Critical Damage-11%+-208DOWN for 10 seconds",
+        "description": "最近3名敵人附加1秒的魅惑異常狀態 and Physical Critical Damage-11%+-210DOWN for 10 seconds",
         "descriptionLv1": "最近3名敵人附加1秒的魅惑異常狀態 and Physical Critical Damage-11%+-30DOWN for 10 seconds",
-        "descriptionLv90": "最近3名敵人附加1秒的魅惑異常狀態 and Physical Critical Damage-11%+-208DOWN for 10 seconds",
+        "descriptionLv90": "最近3名敵人附加1秒的魅惑異常狀態 and Physical Critical Damage-11%+-210DOWN for 10 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": null,
@@ -17721,14 +17754,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1200% + 1000",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           }
@@ -17742,14 +17775,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 1150",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           }
@@ -17763,14 +17796,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1250",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           }
@@ -17784,14 +17817,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1500% + 1300",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -17868,9 +17901,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "有機會的哦！",
         "icon": "skill001/skill0007",
-        "description": "Deals 3969 (ATK x 2.2 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds",
+        "description": "Deals 3969 (ATK x 2.2 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds",
         "descriptionLv1": "Deals 525 (ATK x 2.2 + 110) physical damage to the nearest enemy and inflicts Physical Defense -18%+-30DOWN for 5 seconds",
-        "descriptionLv90": "Deals 3969 (ATK x 2.2 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-208DOWN for 5 seconds",
+        "descriptionLv90": "Deals 3969 (ATK x 2.2 + 1890) physical damage to the nearest enemy and inflicts Physical Defense -18%+-210DOWN for 5 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": "220% ATK",
@@ -17950,8 +17983,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1160% + 950",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 10
           }
@@ -17965,8 +17998,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1300% + 1050",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           }
@@ -17980,8 +18013,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1400% + 1150",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           }
@@ -17995,8 +18028,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1200",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -15,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           }
@@ -18150,8 +18183,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1260% + 1050",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv2",
+            "value": -2000,
             "type": "flat",
             "duration": 15
           }
@@ -18165,8 +18198,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1420% + 1150",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv3",
+            "value": -2400,
             "type": "flat",
             "duration": 15
           }
@@ -18180,8 +18213,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1530% + 1250",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv4",
+            "value": -2700,
             "type": "flat",
             "duration": 15
           }
@@ -18195,8 +18228,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1620% + 1300",
         "buffEffects": [
           {
-            "name": "Burn Ultimate Lv1",
-            "value": -1500,
+            "name": "Burn Ultimate Lv5",
+            "value": -3000,
             "type": "flat",
             "duration": 15
           }
@@ -18268,9 +18301,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "Piercing Strike",
         "icon": "skill001/skill0009",
-        "description": "Deals 2940 (ATK x 1.0 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-218DOWN for 8 seconds",
+        "description": "Deals 2940 (ATK x 1.0 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-220DOWN for 8 seconds",
         "descriptionLv1": "Deals 509 (ATK x 1.0 + 80) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-40DOWN for 8 seconds",
-        "descriptionLv90": "Deals 2940 (ATK x 1.0 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-218DOWN for 8 seconds",
+        "descriptionLv90": "Deals 2940 (ATK x 1.0 + 792) physical damage to the 3 nearest enemies and inflicts Physical Defense -21%+-220DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.58,
         "damageScaling": "100% ATK",
@@ -18356,14 +18389,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "320% + 400",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 8
           },
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 8
           }
@@ -18377,14 +18410,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "350% + 450",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 8
           },
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 8
           }
@@ -18398,14 +18431,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "380% + 500",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 8
           },
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 8
           }
@@ -18419,14 +18452,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "400% + 550",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -10,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 8
           },
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 15,
+            "name": "Physical Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 8
           }
@@ -18598,14 +18631,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Critical Damage+ Ultimate Lv1",
-            "value": 400,
+            "name": "Magic Critical Damage+ Ultimate Lv2",
+            "value": 325,
             "type": "flat",
             "duration": 12
           },
           {
-            "name": "Accuracy + Ultimate Lv1",
-            "value": 10,
+            "name": "Accuracy + Ultimate Lv2",
+            "value": 13,
             "type": "flat",
             "duration": 12
           }
@@ -18619,14 +18652,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Critical Damage+ Ultimate Lv1",
+            "name": "Magic Critical Damage+ Ultimate Lv3",
             "value": 400,
             "type": "flat",
             "duration": 12
           },
           {
-            "name": "Accuracy + Ultimate Lv1",
-            "value": 10,
+            "name": "Accuracy + Ultimate Lv3",
+            "value": 16,
             "type": "flat",
             "duration": 12
           }
@@ -18640,14 +18673,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Critical Damage+ Ultimate Lv1",
-            "value": 400,
+            "name": "Magic Critical Damage+ Ultimate Lv4",
+            "value": 450,
             "type": "flat",
             "duration": 12
           },
           {
-            "name": "Accuracy + Ultimate Lv1",
-            "value": 10,
+            "name": "Accuracy + Ultimate Lv4",
+            "value": 18,
             "type": "flat",
             "duration": 12
           }
@@ -18661,14 +18694,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Magic Critical Damage+ Ultimate Lv1",
-            "value": 400,
+            "name": "Magic Critical Damage+ Ultimate Lv5",
+            "value": 500,
             "type": "flat",
             "duration": 12
           },
           {
-            "name": "Accuracy + Ultimate Lv1",
-            "value": 10,
+            "name": "Accuracy + Ultimate Lv5",
+            "value": 20,
             "type": "flat",
             "duration": 12
           }
@@ -18745,9 +18778,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 2,
         "name": "我會好好收穫的",
         "icon": "skill001/skill0009",
-        "description": "Deals 7455 (ATK x 3.4 + 2345) physical damage to the nearest enemy and inflicts Physical Defense -23%+-317DOWN for 6 seconds",
+        "description": "Deals 7455 (ATK x 3.4 + 2345) physical damage to the nearest enemy and inflicts Physical Defense -23%+-320DOWN for 6 seconds",
         "descriptionLv1": "Deals 1140 (ATK x 3.4 + 120) physical damage to the nearest enemy and inflicts Physical Defense -23%+-50DOWN for 6 seconds",
-        "descriptionLv90": "Deals 7455 (ATK x 3.4 + 2345) physical damage to the nearest enemy and inflicts Physical Defense -23%+-317DOWN for 6 seconds",
+        "descriptionLv90": "Deals 7455 (ATK x 3.4 + 2345) physical damage to the nearest enemy and inflicts Physical Defense -23%+-320DOWN for 6 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.08,
         "damageScaling": "340% ATK",
@@ -18832,8 +18865,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 4
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 10
           }
@@ -18853,8 +18886,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 4
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           }
@@ -18874,8 +18907,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 4
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           }
@@ -18895,7 +18928,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 4
           },
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv5",
             "value": -15,
             "type": "percent",
             "duration": 10
@@ -19061,14 +19094,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Physical Attack + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Attack + Ultimate Lv2",
+            "value": 20,
             "type": "percent",
             "duration": 12
           }
@@ -19082,14 +19115,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Physical Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Attack + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 12
           }
@@ -19103,14 +19136,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Physical Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Attack + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 12
           }
@@ -19124,14 +19157,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "0% + 0",
         "buffEffects": [
           {
-            "name": "Physical Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Physical Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 12
           },
           {
-            "name": "Magic Attack + Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Attack + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 12
           }
@@ -19311,8 +19344,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -70,
+            "name": "Fear Ultimate Lv2",
+            "value": -25,
             "type": "flat",
             "duration": 4
           }
@@ -19332,8 +19365,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -70,
+            "name": "Fear Ultimate Lv3",
+            "value": -30,
             "type": "flat",
             "duration": 4
           }
@@ -19353,8 +19386,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -70,
+            "name": "Fear Ultimate Lv4",
+            "value": -35,
             "type": "flat",
             "duration": 4
           }
@@ -19374,8 +19407,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
             "duration": 2
           },
           {
-            "name": "Fear Ultimate Lv1",
-            "value": -70,
+            "name": "Fear Ultimate Lv5",
+            "value": -40,
             "type": "flat",
             "duration": 4
           }
@@ -19560,14 +19593,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1200% + 800",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Attack - Ultimate Lv2",
+            "value": -13,
             "type": "percent",
             "duration": 8
           },
@@ -19587,14 +19620,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 950",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Attack - Ultimate Lv3",
+            "value": -16,
             "type": "percent",
             "duration": 8
           },
@@ -19614,14 +19647,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1050",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
-            "value": -20,
+            "name": "Magic Attack - Ultimate Lv4",
+            "value": -18,
             "type": "percent",
             "duration": 8
           },
@@ -19641,13 +19674,13 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1500% + 1100",
         "buffEffects": [
           {
-            "name": "Physical Attack - Ultimate Lv1",
+            "name": "Physical Attack - Ultimate Lv5",
             "value": -20,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Magic Attack - Ultimate Lv1",
+            "name": "Magic Attack - Ultimate Lv5",
             "value": -20,
             "type": "percent",
             "duration": 8
@@ -19813,7 +19846,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 600",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
+            "name": "Physical Defense - Ultimate Lv2",
             "value": -20,
             "type": "percent",
             "duration": 10
@@ -19828,8 +19861,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1500% + 700",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Defense - Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           }
@@ -19843,8 +19876,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1600% + 800",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Defense - Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           }
@@ -19858,8 +19891,8 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1650% + 900",
         "buffEffects": [
           {
-            "name": "Physical Defense - Ultimate Lv1",
-            "value": -20,
+            "name": "Physical Defense - Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           }
@@ -19954,12 +19987,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Poison Lv5",
             "value": -200,
+            "valueLv1": -200,
+            "valueLv90": -2425,
             "type": "flat",
             "duration": 8
           },
           {
             "name": "Block- Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 6
           }
@@ -20031,14 +20068,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1400% + 1000",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv2",
+            "value": -10,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "flat",
             "duration": 10
           }
@@ -20052,14 +20089,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1560% + 1100",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv3",
+            "value": -12,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "flat",
             "duration": 10
           }
@@ -20073,14 +20110,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1670% + 1200",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
-            "value": -15,
+            "name": "Action Speed - Ultimate Lv4",
+            "value": -14,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "flat",
             "duration": 10
           }
@@ -20094,14 +20131,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1730% + 1300",
         "buffEffects": [
           {
-            "name": "Action Speed - Ultimate Lv1",
+            "name": "Action Speed - Ultimate Lv5",
             "value": -15,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "flat",
             "duration": 10
           }
@@ -20277,14 +20314,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3000% + 1800",
         "buffEffects": [
           {
-            "name": "Physical Defense + Ultimate Lv1",
+            "name": "Physical Defense + Ultimate Lv2",
             "value": 20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv2",
+            "value": 25,
             "type": "percent",
             "duration": 10
           }
@@ -20298,14 +20335,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3250% + 2000",
         "buffEffects": [
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv3",
+            "value": 24,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv3",
+            "value": 30,
             "type": "percent",
             "duration": 10
           }
@@ -20319,14 +20356,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3500% + 2100",
         "buffEffects": [
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv4",
+            "value": 27,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv4",
+            "value": 35,
             "type": "percent",
             "duration": 10
           }
@@ -20340,14 +20377,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "3700% + 2200",
         "buffEffects": [
           {
-            "name": "Physical Defense + Ultimate Lv1",
-            "value": 20,
+            "name": "Physical Defense + Ultimate Lv5",
+            "value": 30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Magic Defense+ Ultimate Lv1",
-            "value": 20,
+            "name": "Magic Defense+ Ultimate Lv5",
+            "value": 40,
             "type": "percent",
             "duration": 10
           }
@@ -20455,9 +20492,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "slot": 3,
         "name": "Even if Santa gets it, it’s fine, right?",
         "icon": "skill001/skill0011",
-        "description": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%+-208DOWN for 8 seconds",
+        "description": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%+-210DOWN for 8 seconds",
         "descriptionLv1": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%+-30DOWN for 8 seconds",
-        "descriptionLv90": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%+-208DOWN for 8 seconds",
+        "descriptionLv90": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%+-210DOWN for 8 seconds",
         "target": "Nearest Enemy",
         "castTime": 1.38,
         "damageScaling": null,
@@ -20649,12 +20686,16 @@ export const BUSTY_BURST_SKILLS_DATA = [
           {
             "name": "Block- Lv4",
             "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -23,
             "type": "flat",
             "duration": 8
           },
           {
             "name": "MP Recovery",
             "value": 30,
+            "valueLv1": 30,
+            "valueLv90": 30,
             "type": "flat"
           }
         ],
@@ -20724,14 +20765,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "700% + 800",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Wind Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 5
           },
           {
-            "name": "MP Recovery Ultimate Lv1",
-            "value": 40,
+            "name": "MP Recovery Ultimate Lv2",
+            "value": 50,
             "type": "flat"
           }
         ]
@@ -20744,14 +20785,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "850% + 900",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Wind Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 5
           },
           {
-            "name": "MP Recovery Ultimate Lv1",
-            "value": 40,
+            "name": "MP Recovery Ultimate Lv3",
+            "value": 60,
             "type": "flat"
           }
         ]
@@ -20764,14 +20805,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "950% + 1000",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Wind Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 5
           },
           {
-            "name": "MP Recovery Ultimate Lv1",
-            "value": 40,
+            "name": "MP Recovery Ultimate Lv4",
+            "value": 70,
             "type": "flat"
           }
         ]
@@ -20784,14 +20825,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1000% + 1100",
         "buffEffects": [
           {
-            "name": "Wind Type ATK + Ultimate Lv1",
-            "value": 10,
+            "name": "Wind Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 5
           },
           {
-            "name": "MP Recovery Ultimate Lv1",
-            "value": 40,
+            "name": "MP Recovery Ultimate Lv5",
+            "value": 80,
             "type": "flat"
           }
         ]
@@ -20969,14 +21010,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1130% + 1000",
         "buffEffects": [
           {
-            "name": "Magic Type Damage Taken+ Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Type Damage Taken+ Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 25,
+            "name": "Action Speed + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 10
           }
@@ -20990,14 +21031,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1270% + 1150",
         "buffEffects": [
           {
-            "name": "Magic Type Damage Taken+ Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Type Damage Taken+ Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 25,
+            "name": "Action Speed + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 10
           }
@@ -21011,14 +21052,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1350% + 1250",
         "buffEffects": [
           {
-            "name": "Magic Type Damage Taken+ Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Type Damage Taken+ Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 25,
+            "name": "Action Speed + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 10
           }
@@ -21032,14 +21073,14 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "effect": "1450% + 1300",
         "buffEffects": [
           {
-            "name": "Magic Type Damage Taken+ Ultimate Lv1",
-            "value": 10,
+            "name": "Magic Type Damage Taken+ Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 8
           },
           {
-            "name": "Action Speed + Ultimate Lv1",
-            "value": 25,
+            "name": "Action Speed + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 10
           }
@@ -21439,18 +21480,18 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 2,
         "name": "Mutih Zeib",
         "icon": "skill001/skill0003_2",
-        "description": "Deals 1200% ATK + 1000 physical damage to the nearest enemy and inflicts Block- Ultimate Lv1 (-15%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv1 (+10%) to self for 9 seconds",
+        "description": "Deals 1200% ATK + 1000 physical damage to the nearest enemy and inflicts Block- Ultimate Lv2 (-20%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv2 (+13%) to self for 9 seconds",
         "effect": "1200% + 1000",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv2",
+            "value": -20,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK+ Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv2",
+            "value": 13,
             "type": "percent",
             "duration": 9
           }
@@ -21460,18 +21501,18 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 3,
         "name": "Mutih Zeib",
         "icon": "skill001/skill0003_3",
-        "description": "Deals 1350% ATK + 1150 physical damage to the nearest enemy and inflicts Block- Ultimate Lv1 (-15%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv1 (+10%) to self for 9 seconds",
+        "description": "Deals 1350% ATK + 1150 physical damage to the nearest enemy and inflicts Block- Ultimate Lv3 (-24%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv3 (+16%) to self for 9 seconds",
         "effect": "1350% + 1150",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv3",
+            "value": -24,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK+ Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv3",
+            "value": 16,
             "type": "percent",
             "duration": 9
           }
@@ -21481,18 +21522,18 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 4,
         "name": "Mutih Zeib",
         "icon": "skill001/skill0003_4",
-        "description": "Deals 1450% ATK + 1250 physical damage to the nearest enemy and inflicts Block- Ultimate Lv1 (-15%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv1 (+10%) to self for 10 seconds",
+        "description": "Deals 1450% ATK + 1250 physical damage to the nearest enemy and inflicts Block- Ultimate Lv4 (-27%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv4 (+18%) to self for 10 seconds",
         "effect": "1450% + 1250",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv4",
+            "value": -27,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK+ Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv4",
+            "value": 18,
             "type": "percent",
             "duration": 10
           }
@@ -21502,18 +21543,18 @@ export const BUSTY_BURST_SKILLS_DATA = [
         "rank": 5,
         "name": "Mutih Zeib",
         "icon": "skill001/skill0003_5",
-        "description": "Deals 1500% ATK + 1300 physical damage to the nearest enemy and inflicts Block- Ultimate Lv1 (-15%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv1 (+10%) to self for 10 seconds",
+        "description": "Deals 1500% ATK + 1300 physical damage to the nearest enemy and inflicts Block- Ultimate Lv5 (-30%) for 10 seconds and applies Holy Type ATK+ Ultimate Lv5 (+20%) to self for 10 seconds",
         "effect": "1500% + 1300",
         "buffEffects": [
           {
-            "name": "Block- Ultimate Lv1",
-            "value": -15,
+            "name": "Block- Ultimate Lv5",
+            "value": -30,
             "type": "percent",
             "duration": 10
           },
           {
-            "name": "Holy Type ATK+ Ultimate Lv1",
-            "value": 10,
+            "name": "Holy Type ATK + Ultimate Lv5",
+            "value": 20,
             "type": "percent",
             "duration": 10
           }
@@ -21805,6 +21846,506 @@ export const BUSTY_BURST_SKILLS_DATA = [
       "speedValue": "0.61"
     },
     "slug": "lapis"
+  },
+  // Valentine's 2025 Chocolate Event
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Please accept this!",
+        "icon": "skill001/skill0007",
+        "description": "Deals 300% ATK + 120 physical damage to the nearest enemy and inflicts Action Speed -17% for 7 seconds and Accuracy -11 for 7 seconds",
+        "descriptionLv90": "Deals 300% ATK + 1900 physical damage to the nearest enemy and inflicts Action Speed -17% for 7 seconds and Accuracy -22.7 for 7 seconds",
+        "target": "Nearest Enemy",
+        "castTime": 1.22,
+        "damageScaling": "300% ATK",
+        "baseDamage": "+120",
+        "levelGrowth": "+20",
+        "lvl1": "300% + 120",
+        "lvl90": "300% + 1900",
+        "effects": ["Action Speed DOWN", "Accuracy DOWN"],
+        "buffEffects": [
+          {
+            "name": "Action Speed DOWN",
+            "value": -17,
+            "valueLv1": -17,
+            "valueLv90": -17,
+            "type": "debuff",
+            "duration": 7
+          },
+          {
+            "name": "Accuracy DOWN",
+            "value": -11,
+            "valueLv1": -11,
+            "valueLv90": -22.7,
+            "type": "debuff",
+            "duration": 7,
+            "displayFormat": "flat"
+          }
+        ],
+        "duration": 7
+      },
+      {
+        "slot": 3,
+        "name": "Yeah, That Feels Right!",
+        "icon": "skill001/skill0014",
+        "description": "Applies Magic Critical Damage +40 to all allies for 9 seconds and Accuracy +9 for 9 seconds",
+        "descriptionLv90": "Applies Magic Critical Damage +490 to all allies for 9 seconds and Accuracy +18 for 9 seconds",
+        "target": "All Allies",
+        "castTime": 1.22,
+        "effects": ["Magic Critical Damage UP", "Accuracy UP"],
+        "buffEffects": [
+          {
+            "name": "Magic Critical Damage UP",
+            "value": 40,
+            "valueLv1": 40,
+            "valueLv90": 490,
+            "type": "buff",
+            "duration": 9,
+            "displayFormat": "flat"
+          },
+          {
+            "name": "Accuracy UP",
+            "value": 9,
+            "valueLv1": 9,
+            "valueLv90": 18,
+            "type": "buff",
+            "duration": 9,
+            "displayFormat": "flat"
+          }
+        ],
+        "duration": 9
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "I hope my feelings reach you",
+        "icon": "skill001/skill0022_1",
+        "description": "Restores HP by 3000% ATK + 1000 to all allies and applies 40% Count-Based Recovery Shield (3 hits) for 20 seconds and Block +10 for 10 seconds",
+        "effect": "3000% + 1000 Heal",
+        "buffEffects": [
+          { "name": "Recovery Shield", "value": "40%", "hits": 3, "type": "buff", "duration": 20 },
+          { "name": "Block UP", "value": "+10", "type": "buff", "duration": 10 }
+        ]
+      },
+      {
+        "rank": 2,
+        "name": "I hope my feelings reach you",
+        "icon": "skill001/skill0022_2",
+        "description": "Restores HP by 3400% ATK + 1300 to all allies and applies 45% Count-Based Recovery Shield (3 hits) for 20 seconds and Block +13 for 10 seconds",
+        "effect": "3400% + 1300 Heal",
+        "buffEffects": [
+          { "name": "Recovery Shield", "value": "45%", "hits": 3, "type": "buff", "duration": 20 },
+          { "name": "Block UP", "value": "+13", "type": "buff", "duration": 10 }
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "I hope my feelings reach you",
+        "icon": "skill001/skill0022_3",
+        "description": "Restores HP by 3700% ATK + 1500 to all allies and applies 50% Count-Based Recovery Shield (4 hits) for 20 seconds and Block +16 for 10 seconds",
+        "effect": "3700% + 1500 Heal",
+        "buffEffects": [
+          { "name": "Recovery Shield", "value": "50%", "hits": 4, "type": "buff", "duration": 20 },
+          { "name": "Block UP", "value": "+16", "type": "buff", "duration": 10 }
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "I hope my feelings reach you",
+        "icon": "skill001/skill0022_4",
+        "description": "Restores HP by 4000% ATK + 1600 to all allies and applies 55% Count-Based Recovery Shield (4 hits) for 20 seconds and Block +18 for 10 seconds",
+        "effect": "4000% + 1600 Heal",
+        "buffEffects": [
+          { "name": "Recovery Shield", "value": "55%", "hits": 4, "type": "buff", "duration": 20 },
+          { "name": "Block UP", "value": "+18", "type": "buff", "duration": 10 }
+        ]
+      },
+      {
+        "rank": 5,
+        "name": "I hope my feelings reach you",
+        "icon": "skill001/skill0022_5",
+        "description": "Restores HP by 4200% ATK + 1700 to all allies and applies 60% Count-Based Recovery Shield (5 hits) for 20 seconds and Block +20 for 10 seconds",
+        "effect": "4200% + 1700 Heal",
+        "buffEffects": [
+          { "name": "Recovery Shield", "value": "60%", "hits": 5, "type": "buff", "duration": 20 },
+          { "name": "Block UP", "value": "+20", "type": "buff", "duration": 10 }
+        ]
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Mid Row Allies Max HP UP, Accuracy UP",
+        "icon": "skill001/skill1007",
+        "effect": "Max HP + (+1447), Accuracy + (+15)",
+        "effects": [
+          { "name": "Max HP +", "value": 1447, "type": "flat" },
+          { "name": "Accuracy +", "value": 15, "type": "flat" }
+        ]
+      },
+      {
+        "slot": 2,
+        "name": "Mid Row Allies Skill DMG UP, Speed UP",
+        "icon": "skill001/skill1005",
+        "effect": "Skill Damage + (+20), Action Speed + (+10)",
+        "effects": [
+          { "name": "Skill Damage +", "value": 20, "type": "percent" },
+          { "name": "Action Speed +", "value": 10, "type": "flat" }
+        ]
+      }
+    ],
+    "name": "【Purehearted Pâtissière】Frey",
+    "id": 2109,
+    "rarity": "SSR",
+    "element": "Fire",
+    "role": "Support",
+    "tags": ["Heal", "Buff", "Debuff"],
+    "baseStats": {
+      "HP": 2926,
+      "ATK": 291,
+      "MATK": 174,
+      "DEF": 35,
+      "MDEF": 14
+    },
+    "skillRotation": {
+      "opening": "Skill3 → Basic → Skill2 → Basic",
+      "loop": "Basic → Basic → Skill2 → Basic → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0001",
+      "type": "Physical",
+      "scaling": "120% ATK",
+      "speedLabel": "Normal",
+      "speedValue": "0.86"
+    },
+    "slug": "chocolate-frey"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Take it, you want it too!",
+        "icon": "skill001/skill0010",
+        "description": "Deals 330% ATK + 150 magic damage to the nearest enemy and inflicts Magic Defense -23% (-50) for 6 seconds",
+        "descriptionLv90": "Deals 330% ATK + 2375 magic damage to the nearest enemy and inflicts Magic Defense -23% (-320) for 6 seconds",
+        "target": "Nearest Enemy",
+        "castTime": 0.55,
+        "damageScaling": "330% ATK",
+        "baseDamage": "+150",
+        "levelGrowth": "+25",
+        "lvl1": "330% + 150",
+        "lvl90": "330% + 2375",
+        "effects": ["Magic Defense DOWN"],
+        "buffEffects": [
+          {
+            "name": "Magic Defense DOWN",
+            "value": -23,
+            "valueLv1": -23,
+            "valueLv90": -23,
+            "flatBonus": -50,
+            "flatBonusLv1": -50,
+            "flatBonusLv90": -320,
+            "type": "debuff",
+            "duration": 6,
+            "displayFormat": "% + flat"
+          }
+        ],
+        "duration": 6
+      },
+      {
+        "slot": 3,
+        "name": "Ugh... is this the way of the strong...?",
+        "icon": "skill001/skill0019",
+        "description": "Applies Magic Critical Damage +50 to self for 10 seconds and MP Regeneration 40 to self for 4 seconds",
+        "target": "Self",
+        "castTime": 0.55,
+        "effects": ["Magic Critical Damage UP", "MP Regeneration"],
+        "buffEffects": [
+          {
+            "name": "Magic Critical Damage UP",
+            "value": 50,
+            "valueLv1": 50,
+            "valueLv90": 680,
+            "type": "buff",
+            "duration": 10
+          },
+          {
+            "name": "MP Regeneration",
+            "value": 40,
+            "valueLv1": 40,
+            "valueLv90": 40,
+            "type": "buff",
+            "duration": 4
+          }
+        ],
+        "duration": 10
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Shameful Sweet Cannon",
+        "icon": "skill001/skill0012_1",
+        "description": "Deals 1400% MATK + 700 magic damage to the nearest enemy and inflicts Block -15 and Magic Defense -20% for 10 seconds and Charm for 2 seconds",
+        "effect": "1400% + 700",
+        "buffEffects": [
+          { "name": "Block DOWN", "value": "-15", "type": "debuff", "duration": 10 },
+          { "name": "Magic Defense DOWN", "value": "-20%", "type": "debuff", "duration": 10 },
+          { "name": "Charm", "value": "2s", "type": "debuff", "duration": 2 }
+        ]
+      },
+      {
+        "rank": 2,
+        "name": "Shameful Sweet Cannon",
+        "icon": "skill001/skill0012_2",
+        "description": "Deals 1650% MATK + 900 magic damage to the nearest enemy and inflicts Block -18 and Magic Defense -25% for 10 seconds and Charm for 3 seconds",
+        "effect": "1650% + 900",
+        "buffEffects": [
+          { "name": "Block DOWN", "value": "-18", "type": "debuff", "duration": 10 },
+          { "name": "Magic Defense DOWN", "value": "-25%", "type": "debuff", "duration": 10 },
+          { "name": "Charm", "value": "3s", "type": "debuff", "duration": 3 }
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "Shameful Sweet Cannon",
+        "icon": "skill001/skill0012_3",
+        "description": "Deals 1950% MATK + 1050 magic damage to the nearest enemy and inflicts Block -21 and Magic Defense -29% for 10 seconds and Charm for 3 seconds",
+        "effect": "1950% + 1050",
+        "buffEffects": [
+          { "name": "Block DOWN", "value": "-21", "type": "debuff", "duration": 10 },
+          { "name": "Magic Defense DOWN", "value": "-29%", "type": "debuff", "duration": 10 },
+          { "name": "Charm", "value": "3s", "type": "debuff", "duration": 3 }
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "Shameful Sweet Cannon",
+        "icon": "skill001/skill0012_4",
+        "description": "Deals 2050% MATK + 1200 magic damage to the nearest enemy and inflicts Block -23 and Magic Defense -32% for 10 seconds and Charm for 4 seconds",
+        "effect": "2050% + 1200",
+        "buffEffects": [
+          { "name": "Block DOWN", "value": "-23", "type": "debuff", "duration": 10 },
+          { "name": "Magic Defense DOWN", "value": "-32%", "type": "debuff", "duration": 10 },
+          { "name": "Charm", "value": "4s", "type": "debuff", "duration": 4 }
+        ]
+      },
+      {
+        "rank": 5,
+        "name": "Shameful Sweet Cannon",
+        "icon": "skill001/skill0012_5",
+        "description": "Deals 2100% MATK + 1300 magic damage to the nearest enemy and inflicts Block -25 and Magic Defense -35% for 10 seconds and Charm for 4 seconds",
+        "effect": "2100% + 1300",
+        "buffEffects": [
+          { "name": "Block DOWN", "value": "-25", "type": "debuff", "duration": 10 },
+          { "name": "Magic Defense DOWN", "value": "-35%", "type": "debuff", "duration": 10 },
+          { "name": "Charm", "value": "4s", "type": "debuff", "duration": 4 }
+        ]
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Magic Attack UP, Magic Critical Damage UP",
+        "icon": "skill001/skill1001",
+        "effect": "Magic Attack + (+389), Magic Critical Damage + (+90)",
+        "effects": [
+          { "name": "Magic Attack +", "value": 389, "type": "flat" },
+          { "name": "Magic Critical Damage +", "value": 90, "type": "flat" }
+        ]
+      },
+      {
+        "slot": 2,
+        "name": "Self Ultimate Damage UP, Max HP UP",
+        "icon": "skill001/skill1001",
+        "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
+        "effects": [
+          { "name": "Ultimate Damage +", "value": 15, "type": "percent" },
+          { "name": "Max HP +", "value": 2896, "type": "flat" }
+        ]
+      }
+    ],
+    "name": "【Chocolate Dragon Warrior】Hildis",
+    "id": 2110,
+    "rarity": "SSR",
+    "element": "Water",
+    "role": "Attacker",
+    "tags": ["Debuff", "Disrupt"],
+    "baseStats": {
+      "HP": 2259,
+      "ATK": 134,
+      "MATK": 224,
+      "DEF": 32,
+      "MDEF": 82
+    },
+    "skillRotation": {
+      "opening": "Skill3 → Skill2 → Basic",
+      "loop": "Basic → Basic → Basic → Skill2 → Basic → Basic → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0004",
+      "type": "Magic",
+      "scaling": "120% MATK",
+      "speedLabel": "Normal",
+      "speedValue": "0.86"
+    },
+    "slug": "chocolate-hildis"
+  },
+  {
+    "skills": [
+      {
+        "slot": 2,
+        "name": "Want to do adult things together?",
+        "icon": "skill001/skill0002",
+        "description": "Deals 100% ATK + 50 physical damage to the 3 nearest enemies and applies Mind Type ATK +15% to self for 6 seconds",
+        "descriptionLv90": "Deals 100% ATK + 584 physical damage to the 3 nearest enemies and applies Mind Type ATK +15% to self for 6 seconds",
+        "target": "Nearest Enemy",
+        "castTime": 1.78,
+        "damageScaling": "100% ATK",
+        "baseDamage": "+50",
+        "levelGrowth": "+6",
+        "lvl1": "100% + 50",
+        "lvl90": "100% + 584",
+        "effects": ["Mind Type ATK UP"],
+        "buffEffects": [
+          {
+            "name": "Mind Type ATK UP",
+            "value": 15,
+            "valueLv1": 15,
+            "valueLv90": 15,
+            "type": "buff",
+            "duration": 6
+          }
+        ],
+        "duration": 6
+      },
+      {
+        "slot": 3,
+        "name": "Do you want it too?",
+        "icon": "skill001/skill0011",
+        "description": "Inflicts Block -9 on the 3 nearest enemies for 8 seconds",
+        "descriptionLv90": "Inflicts Block -18 on the 3 nearest enemies for 8 seconds",
+        "target": "Nearest Enemy",
+        "castTime": 1.78,
+        "effects": ["Block DOWN"],
+        "buffEffects": [
+          {
+            "name": "Block DOWN",
+            "value": -9,
+            "valueLv1": -9,
+            "valueLv90": -18,
+            "type": "debuff",
+            "duration": 8
+          }
+        ],
+        "duration": 8
+      }
+    ],
+    "ultimate": [
+      {
+        "rank": 1,
+        "name": "Captivating Trick Shot",
+        "icon": "skill001/skill0003_1",
+        "description": "Deals 400% ATK + 600 physical damage to the nearest enemy. Before Ultimate: Applies Hit-Based Damage +70 (2 hits) and Mind Type ATK +15% to self for 6 seconds",
+        "effect": "400% + 600",
+        "buffEffects": [
+          { "name": "Hit-Based Damage UP", "value": "+70", "hits": 2, "type": "buff", "duration": 6 },
+          { "name": "Mind Type ATK UP", "value": "+15%", "type": "buff", "duration": 6 }
+        ]
+      },
+      {
+        "rank": 2,
+        "name": "Captivating Trick Shot",
+        "icon": "skill001/skill0003_2",
+        "description": "Deals 450% ATK + 900 physical damage to the nearest enemy. Before Ultimate: Applies Hit-Based Damage +90 (3 hits) and Mind Type ATK +20% to self for 6 seconds",
+        "effect": "450% + 900",
+        "buffEffects": [
+          { "name": "Hit-Based Damage UP", "value": "+90", "hits": 3, "type": "buff", "duration": 6 },
+          { "name": "Mind Type ATK UP", "value": "+20%", "type": "buff", "duration": 6 }
+        ]
+      },
+      {
+        "rank": 3,
+        "name": "Captivating Trick Shot",
+        "icon": "skill001/skill0003_3",
+        "description": "Deals 480% ATK + 1100 physical damage to the nearest enemy. Before Ultimate: Applies Hit-Based Damage +110 (3 hits) and Mind Type ATK +24% to self for 6 seconds",
+        "effect": "480% + 1100",
+        "buffEffects": [
+          { "name": "Hit-Based Damage UP", "value": "+110", "hits": 3, "type": "buff", "duration": 6 },
+          { "name": "Mind Type ATK UP", "value": "+24%", "type": "buff", "duration": 6 }
+        ]
+      },
+      {
+        "rank": 4,
+        "name": "Captivating Trick Shot",
+        "icon": "skill001/skill0003_4",
+        "description": "Deals 510% ATK + 1300 physical damage to the nearest enemy. Before Ultimate: Applies Hit-Based Damage +120 (4 hits) and Mind Type ATK +27% to self for 6 seconds",
+        "effect": "510% + 1300",
+        "buffEffects": [
+          { "name": "Hit-Based Damage UP", "value": "+120", "hits": 4, "type": "buff", "duration": 6 },
+          { "name": "Mind Type ATK UP", "value": "+27%", "type": "buff", "duration": 6 }
+        ]
+      },
+      {
+        "rank": 5,
+        "name": "Captivating Trick Shot",
+        "icon": "skill001/skill0003_5",
+        "description": "Deals 535% ATK + 1500 physical damage to the nearest enemy. Before Ultimate: Applies Hit-Based Damage +130 (4 hits) and Mind Type ATK +30% to self for 6 seconds",
+        "effect": "535% + 1500",
+        "buffEffects": [
+          { "name": "Hit-Based Damage UP", "value": "+130", "hits": 4, "type": "buff", "duration": 6 },
+          { "name": "Mind Type ATK UP", "value": "+30%", "type": "buff", "duration": 6 }
+        ]
+      }
+    ],
+    "passives": [
+      {
+        "slot": 1,
+        "name": "Self Physical Attack UP",
+        "icon": "skill001/skill1001",
+        "effect": "Physical Attack + (+259)",
+        "effects": [
+          { "name": "Physical Attack +", "value": 259, "type": "flat" }
+        ]
+      },
+      {
+        "slot": 2,
+        "name": "Self Ultimate Damage UP, Accuracy UP",
+        "icon": "skill001/skill1001",
+        "effect": "Ultimate Damage + (+10%), Accuracy + (+15)",
+        "effects": [
+          { "name": "Ultimate Damage +", "value": 10, "type": "percent" },
+          { "name": "Accuracy +", "value": 15, "type": "flat" }
+        ]
+      }
+    ],
+    "name": "【Warrior of Love and Chocolate】Shaty",
+    "id": 2111,
+    "rarity": "SR",
+    "element": "Mind",
+    "role": "Attacker",
+    "tags": ["Debuff"],
+    "baseStats": {
+      "HP": 1793,
+      "ATK": 392,
+      "MATK": 235,
+      "DEF": 126,
+      "MDEF": 50
+    },
+    "skillRotation": {
+      "opening": "Skill3 → Skill2 → Basic → Basic",
+      "loop": "Basic → Skill2 → Basic → Basic → Skill3 → Skill2 → Basic → Basic → Basic"
+    },
+    "basicAttack": {
+      "icon": "skill001/skill0001",
+      "type": "Physical",
+      "scaling": "110% ATK",
+      "speedLabel": "Normal",
+      "speedValue": "0.86"
+    },
+    "slug": "chocolate-shaty"
   }
 ];
 

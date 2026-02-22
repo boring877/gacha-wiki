@@ -23,7 +23,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['messeria', 'teresia', 'dark_knight', 'shaty', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa'],
+        characters: ['messeria', 'teresia', 'dark_knight', 'shaty', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis'],
       },
       {
         tier: 'S',
@@ -75,6 +75,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'overflowing_jubako_lynette',
           'seductive_high_cut_swimsuit_nerys',
           'epic_fishing_meinias',
+          'chocolate-frey',
         ],
       },
     ],
@@ -101,7 +102,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent SR choices',
           color: '#feca57',
         },
-        characters: ['venus', 'artemis', 'rui'],
+        characters: ['venus', 'artemis', 'rui', 'chocolate-shaty'],
       },
       {
         tier: 'S',

@@ -536,6 +536,76 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════ */
+/*                      CHARACTER ICON WITH RARITY FRAME                    */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Character icon wrapper with rarity frame */
+.character-icon-wrapper :global(.team-character-portrait) {
+  border-radius: 10px;
+  display: block;
+}
+
+.character-icon-wrapper .rarity-frame {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 1;
+}
+
+/* Substitute character styles */
+.character-with-substitute {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.character-single {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.substitute-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.4rem;
+}
+
+.substitute-label {
+  color: var(--sab-muted-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--sab-bg-dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--sab-muted-gold);
+}
+
+.substitute-character {
+  opacity: 0.85;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .character-icon-wrapper .rarity-frame {
+    width: 20px;
+    height: 20px;
+    top: -4px;
+    right: -4px;
+  }
+
+  .substitute-label {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
 /*                        ACCESSIBILITY & PERFORMANCE                      */
 /* ═══════════════════════════════════════════════════════════════════════ */
 
