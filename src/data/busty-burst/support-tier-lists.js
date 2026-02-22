@@ -22,6 +22,8 @@ function getOffensiveScore(character) {
   if (lb5['MATK']) score += lb5['MATK'];
   if (lb5['Crit Rate']) score += lb5['Crit Rate'] * 2;
   if (lb5['M.Crit Rate']) score += lb5['M.Crit Rate'] * 2;
+  if (lb5['Crit']) score += lb5['Crit'] * 2;
+  if (lb5['M.Crit']) score += lb5['M.Crit'] * 2;
   if (lb5['Accuracy']) score += lb5['Accuracy'] * 5;
 
   return score;
@@ -36,7 +38,7 @@ function hasATK(character) {
 // Check if character has Crit in LB5 stats
 function hasCrit(character) {
   const lb5 = character.supportStats.lb5;
-  return lb5['Crit Rate'] || lb5['M.Crit Rate'];
+  return lb5['Crit Rate'] || lb5['M.Crit Rate'] || lb5['Crit'] || lb5['M.Crit'];
 }
 
 // Check if character has ATK or Crit in LB5 stats
@@ -168,7 +170,7 @@ export function getSupportStatsTierList() {
   allChars.forEach(char => {
     const lb5 = char.supportStats.lb5;
     const hasMaxOffensive = (lb5['ATK'] >= 200 || lb5['MATK'] >= 200);
-    const hasMaxCrit = (lb5['Crit Rate'] >= 90 || lb5['M.Crit Rate'] >= 90);
+    const hasMaxCrit = (lb5['Crit Rate'] >= 90 || lb5['M.Crit Rate'] >= 90 || lb5['Crit'] >= 90 || lb5['M.Crit'] >= 90);
 
     if (char.rarity === 'SSR' && (hasMaxOffensive || hasMaxCrit)) {
       tiers.SSS.push(char);

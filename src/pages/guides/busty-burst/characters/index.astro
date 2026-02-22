@@ -116,10 +116,27 @@ function calculatePassiveBonus(char, stat) {
     'MP Charge': 'mpCharge',
     'HP Drain': 'hpDrain'
   };
+  // Reverse map: stat key -> display name
+  const statReverseMap = {};
+  Object.entries(statMap).forEach(([k, v]) => statReverseMap[v] = k);
+
   passives.forEach(passive => {
-    const mappedStat = statMap[passive.stat];
-    if (mappedStat === stat && passive.grades && passive.grades.g10) {
-      total += passive.grades.g10;
+    // Handle array format (slot 5 with cumulative)
+    if (Array.isArray(passive.grades)) {
+      const g10 = passive.grades.find(g => g.grade === 10);
+      if (g10 && g10.cumulative) {
+        const statName = statReverseMap[stat];
+        if (g10.cumulative[statName]) {
+          total += g10.cumulative[statName];
+        }
+      }
+    }
+    // Handle object format (slots 1-4)
+    else {
+      const mappedStat = statMap[passive.stat];
+      if (mappedStat === stat && passive.grades && passive.grades.g10) {
+        total += passive.grades.g10;
+      }
     }
   });
   return total;
@@ -127,6 +144,7 @@ function calculatePassiveBonus(char, stat) {
 
 // Get total stat value including all bonuses at max
 function getTotalStat(char, stat) {
+  // Calculate from all sources manually (maxStats in data may be incorrect)
   const baseStat = char.stats?.baseStats?.[stat]?.lv90 || 0;
   const lbBonus = calculateLBBonus(char, stat);
   const bondBonus = calculateBondBonus(char, stat);
@@ -306,7 +324,7 @@ function getCritRate(char) {
             data-def={getTotalStat(char, 'def')}
             data-mdef={getTotalStat(char, 'mdef')}
             data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
-            data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
+            data-mpcharge={getTotalStat(char, 'mpCharge')}
             data-speed={char.actionSpeed || ''}
             onclick={`window.location.href='/guides/busty-burst/characters/${char.slug}/'`}
           >
@@ -356,7 +374,7 @@ function getCritRate(char) {
             <td>{getTotalStat(char, 'def').toLocaleString() || '-'}</td>
             <td>{getTotalStat(char, 'mdef').toLocaleString() || '-'}</td>
             <td>{getCritRate(char)}%</td>
-            <td>{char.stats?.baseStats?.mpCharge?.lv90 || '-'}</td>
+            <td>{getTotalStat(char, 'mpCharge') || '-'}</td>
             <td>{char.actionSpeed || '-'}</td>
           </tr>
         ))}
@@ -383,7 +401,7 @@ function getCritRate(char) {
         data-def={getTotalStat(char, 'def')}
         data-mdef={getTotalStat(char, 'mdef')}
         data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
-        data-mpcharge={char.stats?.baseStats?.mpCharge?.lv90 || 0}
+        data-mpcharge={getTotalStat(char, 'mpCharge')}
         data-speed={char.actionSpeed || ''}
         style="text-decoration: none;"
       >
@@ -451,7 +469,7 @@ function getCritRate(char) {
             <div class="bb-char-card-stat-label">Crit</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{char.stats?.baseStats?.mpCharge?.lv90 || '-'}</div>
+            <div class="bb-char-card-stat-value">{getTotalStat(char, 'mpCharge') || '-'}</div>
             <div class="bb-char-card-stat-label">MP</div>
           </div>
         </div>
