@@ -15,6 +15,9 @@ bun run dev
 
 - **Silver and Blood** - Character guides, calculators, events
 - **Zone Nova** - Character builds, memories, rifts
+- **Busty Burst** - Weapons, accessories, characters
+- **Horizon Walker** - Characters, weapons, mercenaries
+- **Rebellion Gilgamesh** - Coming soon
 
 ## Commands
 
@@ -23,12 +26,12 @@ bun run dev
 | `bun run dev`     | Start development    |
 | `bun run build`   | Build for production |
 | `bun run preview` | Preview build        |
-| `bun run lint`    | Lint code            |
 
 ## Tech
 
 - Astro
 - TypeScript
+- Svelte
 - Bun
 
 ## License
