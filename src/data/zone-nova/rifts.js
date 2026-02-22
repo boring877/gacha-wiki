@@ -18,6 +18,8 @@ import { rift16Data } from './rifts/rift-16.js';
 import { riftSurge17Data } from './rifts/rift-surge-17.js';
 import { riftSurge18Data } from './rifts/rift-surge-18.js';
 import { riftSurge19Data } from './rifts/rift-surge-19.js';
+import { riftSurge21Data } from './rifts/rift-surge-21.js';
+import { riftSurge22Data } from './rifts/rift-surge-22.js';
 
 // Rift status constants
 export const RIFT_STATUS = {
@@ -29,6 +31,8 @@ export const RIFT_STATUS = {
 
 // Main rifts data array - imported from individual files
 export const zoneNovaRifts = [
+  riftSurge22Data,
+  riftSurge21Data,
   riftSurge19Data,
   riftSurge18Data,
   riftSurge17Data,
