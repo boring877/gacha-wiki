@@ -45,9 +45,9 @@ export default defineConfig({
   },
   // Build optimizations
   build: {
-    // Auto-inline small stylesheets, keep larger ones as cacheable external files
-    // 'auto' inlines stylesheets <4kb for performance, externalizes larger ones
-    inlineStylesheets: 'auto',
+    // Always inline stylesheets to prevent CSS loading issues on mobile
+    // This prevents FOUC (Flash of Unstyled Content) and caching problems
+    inlineStylesheets: 'always',
     // Assets folder for better organization
     assets: 'assets/',
   },
