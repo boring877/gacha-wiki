@@ -1,0 +1,52 @@
+<!-- Apps landing page that highlights downloadable tools built alongside the wiki. -->
+---
+import HomeLayout from '../layouts/HomeLayout.astro';
+import DecorativeLines from '../components/DecorativeLines.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<HomeLayout
+  title={`${SITE_TITLE} - Apps`}
+  description="Download community tools built for the GachaWiki ecosystem, including Voice Type.">
+  <div class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">Apps</h1>
+      <DecorativeLines />
+    </header>
+
+    <section class="apps-grid" aria-label="Available apps">
+      <article class="app-card">
+        <div class="app-card-header">
+          <div class="app-title-stack">
+            <span class="app-kicker">Desktop utility</span>
+            <h2 class="app-title">Voice Type</h2>
+          </div>
+          <span class="app-version">v0.2.0</span>
+        </div>
+
+        <p class="app-description">Speech to text.</p>
+
+        <div class="app-actions">
+          <a
+            href="https://github.com/boring877/voice_type_rust/releases/download/v0.2.0/Voice.Type_0.2.0_x64-setup.exe"
+            class="app-button app-button-primary"
+            target="_blank"
+            rel="noopener noreferrer">
+            Download
+          </a>
+          <a
+            href="https://github.com/boring877/voice_type_rust"
+            class="app-button app-button-secondary"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Source
+          </a>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <style>
+    @import '../styles/pages/apps.css';
+  </style>
+</HomeLayout>
