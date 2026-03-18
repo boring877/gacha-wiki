@@ -107,16 +107,8 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Rankings',
           url: '/guides/silver-and-blood/character-rankings/',
         },
-        {
-          id: 'character-comparison',
-          title: 'Comparison',
-          url: '/guides/silver-and-blood/character-comparison/',
-        },
-        {
-          id: 'character-comparison-v2',
-          title: 'Comparison V2',
-          url: '/guides/silver-and-blood/character-comparison-v2/',
-        },
+
+
         {
           id: 'character-tag-selection',
           title: 'Tags',
@@ -142,26 +134,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       size: 'large',
       guides: [
         {
-          id: 'damage-mechanics',
-          title: 'Damage Hub',
-          url: '/guides/silver-and-blood/damage-mechanics/',
-        },
-        {
-          id: 'boss-database',
-          title: 'Boss Database',
-          url: '/guides/silver-and-blood/boss-database/',
-        },
-        {
-          id: 'prophecy',
-          title: 'Prophecy',
-          url: '/guides/silver-and-blood/prophecy/',
-        },
-        {
-          id: 'clan-hunt',
-          title: 'Clan Hunt',
-          url: '/guides/silver-and-blood/clan-hunt/',
-        },
-        {
           id: 'synergies',
           title: 'Synergies',
           url: '/guides/silver-and-blood/synergies/',
@@ -170,16 +142,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           id: 'team-synergy',
           title: 'Team Synergy',
           url: '/guides/silver-and-blood/team-synergy/',
-        },
-        {
-          id: 'gear-upgrades',
-          title: 'Gear Upgrades',
-          url: '/guides/silver-and-blood/gear-upgrades/',
-        },
-        {
-          id: 'escaping-other-side',
-          title: 'Escaping the Other Side',
-          url: '/guides/silver-and-blood/escaping-other-side/',
         },
       ],
     },
@@ -191,19 +153,9 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       size: 'medium',
       guides: [
         {
-          id: 'events',
-          title: 'Events',
-          url: '/guides/silver-and-blood/events/',
-        },
-        {
           id: 'dutchmans-revenge',
           title: "Dutchman's Revenge",
           url: '/guides/silver-and-blood/dutchmans-revenge/',
-        },
-        {
-          id: 'ancestral-vault',
-          title: 'Ancestral Vault',
-          url: '/guides/silver-and-blood/ancestral-vault/',
         },
         {
           id: 'heirloom-vault',
@@ -224,21 +176,21 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Clock',
           url: '/clock/silver-and-blood/',
         },
-        {
-          id: 'beginner-guide',
-          title: 'Beginner Guide',
-          url: '/guides/silver-and-blood/beginner-guide/',
-        },
-        {
-          id: 'rerolling-guide',
-          title: 'Rerolling Guide',
-          url: '/guides/silver-and-blood/rerolling-guide/',
-        },
-        {
-          id: 'gifts',
-          title: 'Gifts',
-          url: '/guides/silver-and-blood/gifts/',
-        },
+    {
+      id: 'blog',
+      title: 'Blog',
+      emoji: '',
+      description:
+        'Tips, strategies, and insights for Silver and Blood players.',
+      url: '/guides/silver-and-blood/blog/',
+      category: 'tools',
+      status: 'active',
+    },
+    {
+      id: 'gifts',
+      title: 'Gifts',
+      url: '/guides/silver-and-blood/gifts/',
+    },
         {
           id: 'character-gifts',
           title: 'Character Gifts',
@@ -255,19 +207,9 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           url: '/guides/silver-and-blood/redeem-codes/',
         },
         {
-          id: 'bug-fixes',
-          title: 'Bug Fixes',
-          url: '/guides/silver-and-blood/bugs/',
-        },
-        {
-          id: 'summon-faq',
-          title: 'Summon FAQ',
-          url: '/guides/silver-and-blood/summon-faq/',
-        },
-        {
-          id: 'slot-machines',
-          title: 'Slot Machines',
-          url: '/guides/silver-and-blood/slot-machines/',
+          id: 'blog',
+          title: 'Blog',
+          url: '/guides/silver-and-blood/blog/',
         },
       ],
     },
@@ -285,26 +227,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
-      id: 'beginner-guide',
-      title: 'Beginner Guide',
-      emoji: '',
-      description:
-        'Complete beginner guide for Silver and Blood. Learn the basics, character progression, team building, and essential tips for new players starting their adventure.',
-      url: '/guides/silver-and-blood/beginner-guide/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'rerolling-guide',
-      title: 'Rerolling Guide',
-      emoji: '',
-      description:
-        'Complete rerolling guide focused on getting Timeless Aiona. Step-by-step process with redeem codes, optimal strategy, and fast rerolling tips for new players.',
-      url: '/guides/silver-and-blood/rerolling-guide/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
       id: 'redeem-codes',
       title: 'Redeem Codes',
       emoji: '',
@@ -314,36 +236,8 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       category: 'tools',
       status: 'active',
     },
-    {
-      id: 'bug-fixes',
-      title: 'Bug Fixes',
-      emoji: '',
-      description:
-        'Known bugs and their solutions for Silver and Blood. Track resolved issues, current problems, and community-reported workarounds with screenshots and solutions.',
-      url: '/guides/silver-and-blood/bugs/',
-      category: 'tools',
-      status: 'active',
-    },
-    {
-      id: 'character-comparison',
-      title: 'Character Comparison',
-      emoji: '',
-      description:
-        'Compare up to 4 characters side by side to analyze their stats and abilities for optimal team building.',
-      url: '/guides/silver-and-blood/character-comparison/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'character-comparison-v2',
-      title: 'Character Comparison V2',
-      emoji: '',
-      description:
-        'Advanced character comparison tool with modern card-based interface. Compare 2 heroes with detailed tier rankings, stat analysis, and skills breakdown.',
-      url: '/guides/silver-and-blood/character-comparison-v2/',
-      category: 'guides',
-      status: 'active',
-    },
+
+
     {
       id: 'character-rankings',
       title: 'Character Rankings',
@@ -401,48 +295,11 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       status: 'active',
     },
     {
-      id: 'damage-mechanics',
-      title: 'Damage Mechanics Hub',
-      emoji: '',
-      description: 'formulas and calculation for damage output .',
-      url: '/guides/silver-and-blood/damage-mechanics/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
       id: 'dutchmans-revenge',
       title: "Dutchman's Revenge",
       emoji: '',
       description: 'Helping with little puzzle thingy :D',
       url: '/guides/silver-and-blood/dutchmans-revenge/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'events',
-      title: 'Events',
-      emoji: '',
-      description: 'Events and Related things to Events !',
-      url: '/guides/silver-and-blood/events/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'summon-faq',
-      title: 'Summon FAQ',
-      emoji: '',
-      description: 'General knowledge about summoning and FAQ.',
-      url: '/guides/silver-and-blood/summon-faq/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'ancestral-vault',
-      title: 'Ancestral Vault',
-      emoji: '',
-      description:
-        'Summon Ancient Vassals with Mead of Rebirth. Calculate progression requirements for Sirene and other Ancient Vassals.',
-      url: '/guides/silver-and-blood/ancestral-vault/',
       category: 'guides',
       status: 'active',
     },
@@ -453,35 +310,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
       description:
         'Complete Heirloom Vault database with all character upgrade costs, materials needed by camp, and rank progression details.',
       url: '/guides/silver-and-blood/heirloom-vault/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'clan-hunt',
-      title: 'Clan Hunt',
-      emoji: '',
-      description: 'General knowledge and calculator .',
-      url: '/guides/silver-and-blood/clan-hunt/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'boss-database',
-      title: 'Clan Hunt Boss Database',
-      emoji: '',
-      description:
-        'Complete database of all Clan Hunt bosses with mechanics, strategies, and optimal team compositions.',
-      url: '/guides/silver-and-blood/boss-database/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'prophecy',
-      title: 'Prophecy Unbound',
-      emoji: '',
-      description:
-        'Complete guide to Prophecy Unbound boss battles, including Normal Mode, Nightmare Mode, ranking system, and rewards.',
-      url: '/guides/silver-and-blood/prophecy/',
       category: 'guides',
       status: 'active',
     },
@@ -513,26 +341,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
         'Comprehensive character tier lists for PvP Arena, PvE, Clan Hunt, Boss Raids, and F2P players. Interactive tier list maker with drag-and-drop functionality.',
       url: '/guides/silver-and-blood/tier-list/',
       category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'gear-upgrades',
-      title: 'End Game Gear Upgrades',
-      emoji: '',
-      description:
-        'Complete guide to Tier 9 gear upgrades, Echo blessings, sub-stats, and SoulsStrike hammer mechanics. Learn about blessing priorities, recast strategies, and refinement optimization.',
-      url: '/guides/silver-and-blood/gear-upgrades/',
-      category: 'guides',
-      status: 'active',
-    },
-    {
-      id: 'slot-machines',
-      title: 'Slot Machine Simulators',
-      emoji: '',
-      description:
-        'Interactive slot machine simulators for Recast and Refinement mechanics. Test your luck with realistic probability simulations based on gameplay observation!',
-      url: '/guides/silver-and-blood/slot-machines/',
-      category: 'tools',
       status: 'active',
     },
     {

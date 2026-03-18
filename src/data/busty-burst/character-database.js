@@ -2,9 +2,9 @@
 // Unified data combining character info, stats, skills, and support data
 // All data is imported from individual source files for easy updates
 
-import { BUSTY_BURST_CHARACTER_INFO, getAllCharacters, getCharacterBySlug } from './character-info.js';
-import { BUSTY_BURST_CHARACTER_STATS, calculateStatAtLevel, calculateCritRate, STAT_DISPLAY_NAMES } from './character-stats-full.js';
-import { BUSTY_BURST_SKILLS_DATA } from './character-skills-full.js';
+import { BUSTY_BURST_CHARACTER_INFO, getAllCharacters, getCharacterBySlug } from './characters/info/index.js';
+import { BUSTY_BURST_CHARACTER_STATS, calculateStatAtLevel, calculateCritRate, STAT_DISPLAY_NAMES } from './characters/stats/index.js';
+import { BUSTY_BURST_SKILLS_DATA } from './characters/skills/index.js';
 import { BUSTY_BURST_SUPPORT_DATA, getSupportDataById, ELEMENT_MAP, WEAPON_MAP, WEAPON_INSPIRATION_EFFECTS } from './support-data.js';
 import { characterBuilds } from './character-builds.js';
 

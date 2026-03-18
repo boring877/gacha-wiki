@@ -572,6 +572,270 @@
 }
 
 /* ============================================ */
+/* 16. MAKER MODE - CHARACTER POOL GRID */
+/* ============================================ */
+
+.maker-pool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--hw-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-accent);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================ */
+/* 17. MAKER MODE - TIER LIST CONTAINER */
+/* ============================================ */
+
+#maker-tier-list {
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--hw-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-accent);
+  padding: 1rem;
+}
+
+#maker-tier-list .tier-row {
+  display: flex;
+  background: var(--hw-bg-dark);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-muted);
+  min-height: 100px;
+  overflow: visible;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+#maker-tier-list .tier-characters.droppable {
+  border: 2px dashed transparent;
+  transition: all 0.2s;
+  padding: 0.5rem;
+}
+
+#maker-tier-list .tier-characters.drag-over {
+  border-color: var(--hw-primary-warm);
+  background: rgba(232, 165, 71, 0.1);
+}
+
+#maker-tier-list .tier-characters.awaiting-placement {
+  border-color: var(--hw-primary-warm);
+  background: rgba(232, 165, 71, 0.05);
+}
+
+/* ============================================ */
+/* 18. MAKER MODE - COMPACT CHARACTER CARDS */
+/* ============================================ */
+
+/* Maker mode uses smaller cards than view mode */
+#maker-tier-list .tier-character-card.in-tier {
+  width: 80px;
+  min-width: 80px;
+  height: 110px;
+  padding: 0.4rem;
+  cursor: grab;
+  position: relative;
+}
+
+#maker-tier-list .tier-character-card.in-tier .character-image-wrapper {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border: 1px solid var(--hw-border-light);
+}
+
+#maker-tier-list .tier-character-card.in-tier .character-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: none;
+}
+
+#maker-tier-list .tier-character-card.in-tier .character-name {
+  font-size: 0.65rem;
+  height: 24px;
+  line-height: 1.1;
+}
+
+/* ============================================ */
+/* 19. MAKER MODE - REMOVE BUTTON */
+/* ============================================ */
+
+#maker-tier-list .remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  border: none;
+  border-radius: 6px 6px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#maker-tier-list .tier-character-card:hover .remove-btn {
+  opacity: 1;
+}
+
+#maker-tier-list .remove-btn:hover {
+  background: linear-gradient(to bottom, rgba(220, 38, 38, 0.85), rgba(220, 38, 38, 0.3));
+  color: white;
+}
+
+/* ============================================ */
+/* 19b. MAKER MODE - RARITY BADGE (uses hw-badge) */
+/* ============================================ */
+
+/* Compact badge for maker mode cards */
+.pool-character-card .hw-badge,
+#maker-tier-list .tier-character-card.in-tier .hw-badge {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 6px;
+  font-size: 0.6rem;
+  min-height: auto;
+  min-width: auto;
+  z-index: 5;
+}
+
+/* ============================================ */
+/* 20. MAKER MODE - TIER LEGEND */
+/* ============================================ */
+
+.tier-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--hw-bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--hw-border-accent);
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.legend-tier {
+  width: 60px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--hw-primary-warm);
+  flex-shrink: 0;
+  background: var(--hw-bg-medium);
+  border-radius: 6px;
+}
+
+.legend-description {
+  flex: 1;
+  min-width: 0;
+}
+
+.legend-label {
+  display: block;
+  font-weight: 600;
+  color: var(--hw-text-light);
+  margin-bottom: 0.25rem;
+}
+
+.legend-text {
+  font-size: 0.85rem;
+  color: var(--hw-text-muted);
+  line-height: 1.3;
+}
+
+/* ============================================ */
+/* 22. MAKER MODE - UTILITY CLASSES */
+/* ============================================ */
+
+/* Hidden states for maker mode */
+.maker-mode-content {
+  display: none;
+}
+
+.maker-mode-content.active {
+  display: block;
+}
+
+.maker-pool-hidden {
+  display: none;
+}
+
+#maker-pool:not(.maker-pool-hidden) {
+  display: block;
+}
+
+.maker-tier-list-hidden {
+  display: none;
+}
+
+#maker-tier-list:not(.maker-tier-list-hidden) {
+  display: flex;
+}
+
+.tier-list-hidden {
+  display: none;
+}
+
+.pool-card-hidden {
+  display: none;
+}
+
+.hint-hidden {
+  display: none;
+}
+
+/* Maker description */
+.maker-description {
+  text-align: center;
+  color: var(--hw-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ============================================ */
+/* 21. MAKER MODE - RESPONSIVE */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .maker-pool-grid {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 0.5rem;
+  }
+
+  #maker-tier-list .tier-row {
+    flex-direction: column;
+  }
+
+  #maker-tier-list .tier-label {
+    width: 100%;
+    height: 50px;
+  }
+}
+
+/* ============================================ */
 /* 15. ACCESSIBILITY & INTERACTION */
 /* ============================================ */
 

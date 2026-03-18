@@ -141,7 +141,8 @@ export const damageMechanicsIndex = {
     ],
     relatedPages: [
       { name: 'Character Database', href: '/guides/zone-nova/characters/' },
-      { name: 'Character Comparison', href: '/guides/zone-nova/character-comparison/' },
+
+
       { name: 'Memory Cards', href: '/guides/zone-nova/memories/' },
     ],
   },

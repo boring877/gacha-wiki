@@ -283,6 +283,11 @@ const AFFINITY_DATA = {
           "campName": "Ancestral"
         },
         {
+          "name": "Transcendent Jestel",
+          "camp": 3,
+          "campName": "Bloodborn"
+        },
+        {
           "name": "Valora",
           "camp": 1,
           "campName": "Ancestral"

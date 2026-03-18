@@ -501,3 +501,361 @@
     min-height: 160px;
   }
 }
+
+/* ============================================ */
+/* MAKER MODE STYLES */
+/* ============================================ */
+
+/* Mode Toggle */
+.bb-mode-toggle {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--bb-bg-secondary, #2a2a3e);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border, rgba(255, 255, 255, 0.1));
+}
+
+.bb-mode-btn {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: 2px solid var(--bb-border, rgba(255, 255, 255, 0.2));
+  border-radius: 6px;
+  color: var(--bb-text-secondary, #a0a0a0);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bb-mode-btn.active {
+  background: var(--bb-primary, #ff6b9d);
+  border-color: var(--bb-primary, #ff6b9d);
+  color: white;
+}
+
+/* Maker Controls */
+.bb-maker-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.bb-control-btn {
+  padding: 0.5rem 1.5rem;
+  background: rgba(220, 38, 38, 0.8);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bb-control-btn:hover {
+  background: rgba(220, 38, 38, 1);
+}
+
+.bb-maker-description {
+  text-align: center;
+  color: var(--bb-text-secondary, #a0a0a0);
+  margin-bottom: 1rem;
+}
+
+/* Maker Mode Hidden States */
+.bb-maker-hidden {
+  display: none !important;
+}
+
+/* Maker Pool Container */
+#maker-pool {
+  margin-bottom: 1.5rem;
+}
+
+/* Maker Pool Grid */
+.bb-maker-pool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bb-bg-secondary, #2a2a3e);
+  border-radius: 8px;
+  border: 1px solid var(--bb-border, rgba(255, 255, 255, 0.1));
+}
+
+.bb-pool-character-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem;
+  background: var(--bb-bg-tertiary, #1a1a2e);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.bb-pool-character-card.selected {
+  border-color: var(--bb-primary, #ff6b9d);
+  transform: scale(1.05);
+}
+
+.bb-pool-character-card.dragging {
+  opacity: 0.5;
+}
+
+.bb-pool-image-wrapper {
+  width: 55px;
+  height: 55px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bb-pool-image-wrapper .paladin-image-wrapper,
+.bb-pool-image-wrapper .paladin-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.bb-pool-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.bb-pool-character-name {
+  font-size: 0.65rem;
+  color: var(--bb-text-primary, #fff);
+  text-align: center;
+  margin-top: 0.25rem;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Maker Tier List */
+#maker-tier-list {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--bb-bg-primary);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--bb-border, rgba(255, 255, 255, 0.1));
+}
+
+#maker-tier-list.active {
+  display: flex;
+}
+
+/* Maker mode tier rows - match view mode styling */
+#maker-tier-list .bb-tier-row {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  background: var(--bb-bg-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#maker-tier-list .bb-tier-row:last-child {
+  margin-bottom: 0;
+}
+
+#maker-tier-list .bb-tier-label {
+  min-height: 80px;
+  width: 80px;
+  font-size: 1.5rem;
+  border-radius: 8px 0 0 8px;
+}
+
+#maker-tier-list .bb-tier-characters {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80px;
+  padding: 0.5rem;
+  gap: 0.4rem;
+  background: transparent;
+  border-radius: 0;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+#maker-tier-list .bb-tier-characters.droppable {
+  border: 2px dashed transparent;
+  transition: all 0.2s;
+}
+
+#maker-tier-list .bb-tier-characters.drag-over {
+  border-color: var(--bb-primary, #ff6b9d);
+  background: rgba(255, 107, 157, 0.1);
+}
+
+#maker-tier-list .bb-tier-characters.awaiting-placement {
+  border: 2px solid var(--bb-accent, #c44569);
+  background: rgba(196, 69, 105, 0.05);
+}
+
+.bb-drop-zone-hint {
+  color: var(--bb-text-muted, #666);
+  font-style: italic;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.bb-drop-zone-hint.hidden {
+  display: none;
+}
+
+/* Tier character card in maker mode - override ALL base styles */
+.bb-tier-character-card.in-tier {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  padding: 0.4rem !important;
+  border-radius: 8px !important;
+  background: var(--bb-bg-tertiary, #1a1a2e) !important;
+  position: relative !important;
+  cursor: grab !important;
+  width: 75px !important;
+  min-width: 75px !important;
+  max-width: 75px !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  border: 2px solid var(--bb-border, rgba(255, 255, 255, 0.1)) !important;
+}
+
+.bb-tier-character-card.in-tier .bb-character-image-wrapper {
+  width: 55px !important;
+  height: 55px !important;
+  min-width: 55px !important;
+  min-height: 55px !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.bb-tier-character-card.in-tier .bb-character-image-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 6px !important;
+  object-fit: cover !important;
+}
+
+.bb-tier-character-card.in-tier .bb-character-name {
+  font-size: 0.65rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  color: var(--bb-text-primary, #fff) !important;
+  width: 100% !important;
+  max-width: 70px !important;
+  max-height: 2.4em !important;
+  overflow: hidden !important;
+  display: block !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Hide rarity and icons in maker mode tier cards */
+.bb-tier-character-card.in-tier .bb-tier-rarity,
+.bb-tier-character-card.in-tier .bb-character-icons,
+.bb-tier-character-card.in-tier .bb-stats-preview {
+  display: none !important;
+}
+
+/* Remove button - subtle overlay on hover */
+.bb-remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  border: none;
+  border-radius: 6px 6px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bb-tier-character-card:hover .bb-remove-btn,
+.bb-tier-character-card.in-tier:hover .bb-remove-btn {
+  opacity: 1;
+}
+
+.bb-remove-btn:hover {
+  background: linear-gradient(to bottom, rgba(220, 38, 38, 0.85), rgba(220, 38, 38, 0.3));
+  color: white;
+}
+
+/* Maker Mode Responsive */
+@media (max-width: 768px) {
+  .bb-mode-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-maker-pool-grid {
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    gap: 0.5rem;
+  }
+
+  #maker-tier-list .bb-tier-row {
+    flex-direction: column;
+  }
+
+  #maker-tier-list .bb-tier-label {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  #maker-tier-list .bb-tier-characters {
+    min-height: 60px;
+  }
+
+  .bb-tier-character-card.in-tier {
+    width: 65px !important;
+    min-width: 65px !important;
+    max-width: 65px !important;
+  }
+
+  .bb-tier-character-card.in-tier .bb-character-image-wrapper {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  .bb-tier-character-card.in-tier .bb-character-name {
+    font-size: 0.6rem !important;
+    max-width: 60px !important;
+  }
+
+  .bb-pool-image-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .bb-pool-character-name {
+    font-size: 0.6rem;
+    max-width: 60px;
+  }
+}

@@ -446,6 +446,30 @@ h3 {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+/* Search input styling */
+.search-input {
+  padding: 0.5rem 1rem;
+  background: var(--sab-input-bg);
+  color: var(--sab-input-text);
+  border-radius: 8px;
+  border: 1px solid var(--sab-border-gray);
+  font-size: 0.85rem;
+  font-family: 'Space Grotesk', sans-serif;
+  min-width: 180px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: var(--sab-text-muted);
+  opacity: 0.7;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--sab-calm-red);
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+}
+
 .sort-btn.active {
   background: var(--sab-calm-red);
   color: white;
@@ -645,6 +669,15 @@ table.character-table th {
     padding: 0.8rem 1rem; /* Larger touch targets */
     min-height: 44px; /* Minimum touch target size */
     font-size: 0.9rem; /* Larger text for readability */
+  }
+
+  .search-input {
+    padding: 0.8rem 1rem;
+    min-height: 44px;
+    font-size: 0.9rem;
+    min-width: 150px;
+    width: 100%;
+    max-width: 300px;
   }
 
   .reset-btn {

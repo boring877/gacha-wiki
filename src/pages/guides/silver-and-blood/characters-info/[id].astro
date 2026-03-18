@@ -1,70 +1,70 @@
 ---
-import CharacterInfoLayout from '../../../../layouts/silver-and-blood/CharacterInfoLayout.astro';
-import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
-import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIcon.astro';
-import { Image } from 'astro:assets';
-import charactersData from '../../../../data/silver-and-blood/characters_info.json';
+import CharacterInfoLayout from "../../../../layouts/silver-and-blood/CharacterInfoLayout.astro";
+import SABCharacterIcon from "../../../../components/silver-and-blood/SABCharacterIcon.astro";
+import SABFactionIcon from "../../../../components/silver-and-blood/SABFactionIcon.astro";
+import { Image } from "astro:assets";
+import { charactersInfoData as charactersData } from "../../../../data/silver-and-blood/characters.js";
 
 // Import rarity frame images (gold frame for UR/SSR, purple frame for SR, blue frame for R)
-import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
-import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
-import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+import rarityGold from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png";
+import rarityPurple from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png";
+import rarityBlue from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png";
 
 // Import moon phase icons
-import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
-import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
-import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonFull from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-full.png";
+import moonHalf from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-half.png";
+import moonNew from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-new.png";
 
 // Import damage type icons
-import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
-import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
-import dmgPierce from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+import dmgMagical from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png";
+import dmgPhysical from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png";
+import dmgPierce from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png";
 
 // Import equipment type icons
-import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
-import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
-import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+import equipLight from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png";
+import equipMedium from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png";
+import equipHeavy from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png";
 
 // Import role/career icons
-import roleAssassin from '../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
-import roleDefender from '../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
-import roleEnchanter from '../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
-import roleMarksman from '../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
-import roleSorcerer from '../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
-import roleWarrior from '../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+import roleAssassin from "../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png";
+import roleDefender from "../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png";
+import roleEnchanter from "../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png";
+import roleMarksman from "../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png";
+import roleSorcerer from "../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png";
+import roleWarrior from "../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png";
 
 const rarityImages: Record<string, ImageMetadata> = {
-  'UR': rarityGold,
-  'SSR': rarityGold,
-  'SR': rarityPurple,
-  'R': rarityBlue,
+  UR: rarityGold,
+  SSR: rarityGold,
+  SR: rarityPurple,
+  R: rarityBlue,
 };
 
 const moonPhaseImages: Record<string, ImageMetadata> = {
-  'filter_icon_moon1.png': moonNew,
-  'filter_icon_moon2.png': moonCrescent,
-  'filter_icon_moon3.png': moonFull,
+  "moon-full.png": moonFull,
+  "moon-half.png": moonHalf,
+  "moon-new.png": moonNew,
 };
 
 const damageTypeImages: Record<string, ImageMetadata> = {
-  'level_info_icon_attack_02.png': dmgMagical,
-  'level_info_icon_attack_03.png': dmgPhysical,
-  'level_info_icon_attack_04.png': dmgPierce,
+  "level_info_icon_attack_02.png": dmgMagical,
+  "level_info_icon_attack_03.png": dmgPhysical,
+  "level_info_icon_attack_04.png": dmgPierce,
 };
 
 const equipmentTypeImages: Record<string, ImageMetadata> = {
-  'EquipType_Light.png': equipLight,
-  'EquipType_Medium.png': equipMedium,
-  'EquipType_Heavy.png': equipHeavy,
+  "EquipType_Light.png": equipLight,
+  "EquipType_Medium.png": equipMedium,
+  "EquipType_Heavy.png": equipHeavy,
 };
 
 const roleImages: Record<string, ImageMetadata> = {
-  'Assassin': roleAssassin,
-  'Defender': roleDefender,
-  'Enchanter': roleEnchanter,
-  'Marksman': roleMarksman,
-  'Sorcerer': roleSorcerer,
-  'Warrior': roleWarrior,
+  Assassin: roleAssassin,
+  Defender: roleDefender,
+  Enchanter: roleEnchanter,
+  Marksman: roleMarksman,
+  Sorcerer: roleSorcerer,
+  Warrior: roleWarrior,
 };
 
 export async function getStaticPaths() {
@@ -118,77 +118,78 @@ const { character } = Astro.props;
 // Format text with proper paragraphs
 function formatStoryText(text: string): string {
   return text
-    .split('\n\n')
-    .map(p => `<p>${p.trim()}</p>`)
-    .join('');
+    .split("\n\n")
+    .map((p) => `<p>${p.trim()}</p>`)
+    .join("");
 }
 
 // Get icon name from character name (convert to proper format)
 function getIconName(name: string): string {
   // Map common character names to their icon names
   const nameMap: Record<string, string> = {
-    'Noah': 'Noah',
-    'Limine': 'Limine',
-    'Jestel': 'Jestel',
-    'Empousa': 'Empousa',
-    'Aiona': 'Aiona',
-    'Setti': 'Setti',
-    'Hati': 'Hati',
-    'Bella': 'Bella',
-    'Stella': 'Stella',
-    'Selena': 'Selena',
-    'Lamia': 'Lamia',
-    'Friedrich': 'Friedrich',
-    'Quinn': 'Quinn',
-    'Gilrain': 'Gilrain',
-    'Cecia': 'Cecia',
-    'Lorelei': 'Lorelei',
-    'Agares': 'Agares',
-    'Ami': 'Ami',
-    'Piera': 'Piera',
-    'Seth': 'Seth',
-    'Ressa': 'Ressa',
-    'Dalcarlo': 'Dalcarlo',
-    'Joan': 'Joan',
-    'Cain': 'Cain',
-    'Pavana': 'Pavana',
-    'Julius': 'Julius',
-    'Ottavia': 'Ottavia',
-    'Theophane': 'Theophane',
-    'Tris': 'Tris',
-    'Nicole': 'Nicole',
-    'Darcias': 'Darcias',
-    'Edina': 'Edina',
-    'Yggdrasill': 'Yggdrasill',
-    'Augustine': 'Augustine',
-    'Acappella': 'Acappella',
-    'Mass': 'Mass',
-    'Katherine': 'Katherine',
-    'Hippocratic': 'Hippocratic',
-    'Leo': 'Leo',
-    'VanHellsing': 'VanHellsing',
-    'Baphomet': 'Baphomet',
-    'Garlic': 'Garlic',
-    'William': 'William',
-    'Goldland': 'Goldland',
-    'Siegrune': 'Siegrune',
-    'Livia': 'Livia',
-    'Evna': 'Evna',
-    'Typhoeus': 'Typhoeus',
-    'Ezareth': 'Ezareth',
-    'Paimile': 'Paimile',
-    'Gini': 'Gini',
-    'Clive': 'Clive',
-    'Albert': 'Albert',
-    'Henry': 'Henry',
-    'James': 'James',
-    'Jenny': 'Jenny',
-    'Jones': 'Jones',
-    'Isabelle': 'Isabelle',
-    'Alene': 'Alene',
-    'Astel': 'Astel',
-    'Selenia': 'Selenia',
-    'Fanu': 'Fanu',
+    Noah: "Noah",
+    Limine: "Limine",
+    Jestel: "Jestel",
+    Empousa: "Empousa",
+    Aiona: "Aiona",
+    Setti: "Setti",
+    Hati: "Hati",
+    Bella: "Bella",
+    Stella: "Stella",
+    Selena: "Selena",
+    Lamia: "Lamia",
+    Friedrich: "Friedrich",
+    Quinn: "Quinn",
+    Gilrain: "Gilrain",
+    Cecia: "Cecia",
+    Lorelei: "Lorelei",
+    Agares: "Agares",
+    Ami: "Ami",
+    Piera: "Piera",
+    Seth: "Seth",
+    Ressa: "Ressa",
+    Dalcarlo: "Dalcarlo",
+    Joan: "Joan",
+    Cain: "Cain",
+    Pavana: "Pavana",
+    Julius: "Julius",
+    Ottavia: "Ottavia",
+    Theophane: "Theophane",
+    Tris: "Tris",
+    Nicole: "Nicole",
+    Darcias: "Darcias",
+    Edina: "Edina",
+    Yggdrasill: "Yggdrasill",
+    Augustine: "Augustine",
+    Acappella: "Acappella",
+    Mass: "Mass",
+    Katherine: "Katherine",
+    Hippocratic: "Hippocratic",
+    Leo: "Leo",
+    VanHellsing: "VanHellsing",
+    Baphomet: "Baphomet",
+    Garlic: "Garlic",
+    William: "William",
+    Goldland: "Goldland",
+    Siegrune: "Siegrune",
+    Livia: "Livia",
+    Evna: "Evna",
+    Typhoeus: "Typhoeus",
+    Ezareth: "Ezareth",
+    Paimile: "Paimile",
+    Gini: "Gini",
+    Clive: "Clive",
+    Albert: "Albert",
+    Henry: "Henry",
+    James: "James",
+    Jenny: "Jenny",
+    Jones: "Jones",
+    Isabelle: "Isabelle",
+    Alene: "Alene",
+    Astel: "Astel",
+    Selenia: "Selenia",
+    Fanu: "Fanu",
+    "Blooming Empousa": "Blooming Empousa",
   };
 
   return nameMap[name] || name;
@@ -244,176 +245,212 @@ const pageDescription = `Learn about ${character.fullName}, the ${character.titl
             <span class="info-value">{character.career}</span>
           </div>
 
-          {character.subFaction && (
-            <div class="info-item">
-              <span class="info-label">Sub-Faction</span>
-              <span class="info-value">{character.subFaction}</span>
-            </div>
-          )}
+          {
+            character.subFaction && (
+              <div class="info-item">
+                <span class="info-label">Sub-Faction</span>
+                <span class="info-value">{character.subFaction}</span>
+              </div>
+            )
+          }
 
           <div class="info-item">
             <span class="info-label">Gender</span>
             <span class="info-value">{character.gender}</span>
           </div>
 
-          {character.birthday && (
-            <div class="info-item" style="grid-column: span 2;">
-              <span class="info-label">Birthday</span>
-              <span class="info-value">{character.birthday}</span>
-            </div>
-          )}
+          {
+            character.birthday && (
+              <div class="info-item" style="grid-column: span 2;">
+                <span class="info-label">Birthday</span>
+                <span class="info-value">{character.birthday}</span>
+              </div>
+            )
+          }
         </div>
 
         <!-- Combat Stats with Icons -->
-        {(character.moonPhase || character.damageType || character.equipmentType) && (
-          <div class="combat-stats-row">
-            {character.career && roleImages[character.career] && (
-              <div class="combat-stat-item">
-                <Image
-                  src={roleImages[character.career]}
-                  alt={character.career}
-                  class="combat-stat-icon"
-                  width={32}
-                  height={32}
-                />
-                <span class="combat-stat-value">{character.career}</span>
-              </div>
-            )}
-            {character.camp && (
-              <div class="combat-stat-item">
-                <SABFactionIcon
-                  faction={character.camp}
-                  width={32}
-                  height={32}
-                  class="combat-stat-icon"
-                />
-                <span class="combat-stat-value">{character.camp}</span>
-              </div>
-            )}
-            {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
-              <div class="combat-stat-item">
-                <Image
-                  src={moonPhaseImages[character.moonPhaseIcon]}
-                  alt={character.moonPhase || 'Moon Phase'}
-                  class="combat-stat-icon"
-                  width={32}
-                  height={32}
-                />
-                <span class="combat-stat-value">{character.moonPhase}</span>
-              </div>
-            )}
-            {character.damageTypeIcon && damageTypeImages[character.damageTypeIcon] && (
-              <div class="combat-stat-item">
-                <Image
-                  src={damageTypeImages[character.damageTypeIcon]}
-                  alt={character.damageType || 'Damage Type'}
-                  class="combat-stat-icon"
-                  width={32}
-                  height={32}
-                />
-                <span class="combat-stat-value">{character.damageType}</span>
-              </div>
-            )}
-            {character.equipmentTypeIcon && equipmentTypeImages[character.equipmentTypeIcon] && (
-              <div class="combat-stat-item">
-                <Image
-                  src={equipmentTypeImages[character.equipmentTypeIcon]}
-                  alt={character.equipmentType || 'Equipment Type'}
-                  class="combat-stat-icon"
-                  width={32}
-                  height={32}
-                />
-                <span class="combat-stat-value">{character.equipmentType}</span>
-              </div>
-            )}
-          </div>
-        )}
+        {
+          (character.moonPhase ||
+            character.damageType ||
+            character.equipmentType) && (
+            <div class="combat-stats-row">
+              {character.career && roleImages[character.career] && (
+                <div class="combat-stat-item">
+                  <Image
+                    src={roleImages[character.career]}
+                    alt={character.career}
+                    class="combat-stat-icon"
+                    width={32}
+                    height={32}
+                  />
+                  <span class="combat-stat-value">{character.career}</span>
+                </div>
+              )}
+              {character.camp && (
+                <div class="combat-stat-item">
+                  <SABFactionIcon
+                    faction={character.camp}
+                    width={32}
+                    height={32}
+                    class="combat-stat-icon"
+                  />
+                  <span class="combat-stat-value">{character.camp}</span>
+                </div>
+              )}
+              {character.moonPhaseIcon &&
+                moonPhaseImages[character.moonPhaseIcon] && (
+                  <div class="combat-stat-item">
+                    <Image
+                      src={moonPhaseImages[character.moonPhaseIcon]}
+                      alt={character.moonPhase || "Moon Phase"}
+                      class="combat-stat-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="combat-stat-value">{character.moonPhase}</span>
+                  </div>
+                )}
+              {character.damageTypeIcon &&
+                damageTypeImages[character.damageTypeIcon] && (
+                  <div class="combat-stat-item">
+                    <Image
+                      src={damageTypeImages[character.damageTypeIcon]}
+                      alt={character.damageType || "Damage Type"}
+                      class="combat-stat-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="combat-stat-value">
+                      {character.damageType}
+                    </span>
+                  </div>
+                )}
+              {character.equipmentTypeIcon &&
+                equipmentTypeImages[character.equipmentTypeIcon] && (
+                  <div class="combat-stat-item">
+                    <Image
+                      src={equipmentTypeImages[character.equipmentTypeIcon]}
+                      alt={character.equipmentType || "Equipment Type"}
+                      class="combat-stat-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <span class="combat-stat-value">
+                      {character.equipmentType}
+                    </span>
+                  </div>
+                )}
+            </div>
+          )
+        }
 
         <!-- Combat Tags -->
-        {character.tags && character.tags.length > 0 && (
-          <div class="combat-tags">
-            {character.tags.map((tag) => (
-              <span class="combat-tag">{tag}</span>
-            ))}
-          </div>
-        )}
+        {
+          character.tags && character.tags.length > 0 && (
+            <div class="combat-tags">
+              {character.tags.map((tag) => (
+                <span class="combat-tag">{tag}</span>
+              ))}
+            </div>
+          )
+        }
 
         <!-- Combat Descriptions -->
-        {(character.moonPhaseDesc || character.damageTypeDesc || character.equipmentTypeDesc) && (
-          <div class="combat-descriptions">
-            {character.moonPhaseDesc && (
-              <div class="combat-desc-item">
-                <span class="combat-desc-label">Moon Phase</span>
-                <p class="combat-desc-text">{character.moonPhaseDesc}</p>
-              </div>
-            )}
-            {character.damageTypeDesc && (
-              <div class="combat-desc-item">
-                <span class="combat-desc-label">Damage Type</span>
-                <p class="combat-desc-text">{character.damageTypeDesc}</p>
-              </div>
-            )}
-            {character.equipmentTypeDesc && (
-              <div class="combat-desc-item">
-                <span class="combat-desc-label">Equipment</span>
-                <p class="combat-desc-text">{character.equipmentTypeDesc}</p>
-              </div>
-            )}
-          </div>
-        )}
+        {
+          (character.moonPhaseDesc ||
+            character.damageTypeDesc ||
+            character.equipmentTypeDesc) && (
+            <div class="combat-descriptions">
+              {character.moonPhaseDesc && (
+                <div class="combat-desc-item">
+                  <span class="combat-desc-label">Moon Phase</span>
+                  <p class="combat-desc-text">{character.moonPhaseDesc}</p>
+                </div>
+              )}
+              {character.damageTypeDesc && (
+                <div class="combat-desc-item">
+                  <span class="combat-desc-label">Damage Type</span>
+                  <p class="combat-desc-text">{character.damageTypeDesc}</p>
+                </div>
+              )}
+              {character.equipmentTypeDesc && (
+                <div class="combat-desc-item">
+                  <span class="combat-desc-label">Equipment</span>
+                  <p class="combat-desc-text">{character.equipmentTypeDesc}</p>
+                </div>
+              )}
+            </div>
+          )
+        }
       </div>
     </div>
 
     <!-- Voice Actors Section -->
-    {(character.voiceActors.chinese || character.voiceActors.japanese || character.voiceActors.english) && (
-      <section class="voice-actors-section">
-        <h3 class="section-title">Voice Actors</h3>
-        <div class="voice-actors-grid">
-          {character.voiceActors.chinese && (
-            <div class="voice-actor-card chinese">
-              <div class="voice-actor-language">Chinese</div>
-              <div class="voice-actor-name">{character.voiceActors.chinese}</div>
-            </div>
-          )}
-          {character.voiceActors.japanese && (
-            <div class="voice-actor-card japanese">
-              <div class="voice-actor-language">Japanese</div>
-              <div class="voice-actor-name">{character.voiceActors.japanese}</div>
-            </div>
-          )}
-          {character.voiceActors.english && (
-            <div class="voice-actor-card english">
-              <div class="voice-actor-language">English</div>
-              <div class="voice-actor-name">{character.voiceActors.english}</div>
-            </div>
-          )}
-        </div>
-      </section>
-    )}
+    {
+      (character.voiceActors.chinese ||
+        character.voiceActors.japanese ||
+        character.voiceActors.english) && (
+        <section class="voice-actors-section">
+          <h3 class="section-title">Voice Actors</h3>
+          <div class="voice-actors-grid">
+            {character.voiceActors.chinese && (
+              <div class="voice-actor-card chinese">
+                <div class="voice-actor-language">Chinese</div>
+                <div class="voice-actor-name">
+                  {character.voiceActors.chinese}
+                </div>
+              </div>
+            )}
+            {character.voiceActors.japanese && (
+              <div class="voice-actor-card japanese">
+                <div class="voice-actor-language">Japanese</div>
+                <div class="voice-actor-name">
+                  {character.voiceActors.japanese}
+                </div>
+              </div>
+            )}
+            {character.voiceActors.english && (
+              <div class="voice-actor-card english">
+                <div class="voice-actor-language">English</div>
+                <div class="voice-actor-name">
+                  {character.voiceActors.english}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )
+    }
 
     <!-- Stories Section -->
-    {character.stories.length > 0 && (
-      <section class="stories-section">
-        <h3 class="section-title">Character Stories</h3>
-        <div class="stories-list">
-          {character.stories.map((story, index) => (
-            <div class="story-card expanded" data-story-id={story.id}>
-              <div class="story-header-static">
-                <div class="story-title-wrapper">
-                  <span class="story-number">{index + 1}</span>
-                  <h4 class="story-title">{story.title}</h4>
+    {
+      character.stories.length > 0 && (
+        <section class="stories-section">
+          <h3 class="section-title">Character Stories</h3>
+          <div class="stories-list">
+            {character.stories.map((story, index) => (
+              <div class="story-card expanded" data-story-id={story.id}>
+                <div class="story-header-static">
+                  <div class="story-title-wrapper">
+                    <span class="story-number">{index + 1}</span>
+                    <h4 class="story-title">{story.title}</h4>
+                  </div>
+                  {story.unlockRank && (
+                    <span class="story-unlock">Rank {story.unlockRank}</span>
+                  )}
                 </div>
-                {story.unlockRank && (
-                  <span class="story-unlock">Rank {story.unlockRank}</span>
-                )}
+                <div class="story-content">
+                  <div
+                    class="story-text"
+                    set:html={formatStoryText(story.text)}
+                  />
+                </div>
               </div>
-              <div class="story-content">
-                <div class="story-text" set:html={formatStoryText(story.text)} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
+            ))}
+          </div>
+        </section>
+      )
+    }
   </div>
 </CharacterInfoLayout>

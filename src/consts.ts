@@ -69,7 +69,8 @@ export const URLS = {
   ZONE_NOVA: {
     BASE: '/guides/zone-nova',
     CHARACTERS: '/guides/zone-nova/characters',
-    CHARACTER_COMPARISON: '/guides/zone-nova/character-comparison',
+
+
     CHARACTER_RANKINGS: '/guides/zone-nova/character-rankings',
     MEMORIES: '/guides/zone-nova/memories',
     RIFTS: '/guides/zone-nova/rifts',
@@ -85,17 +86,16 @@ export const URLS = {
   SILVER_AND_BLOOD: {
     BASE: '/guides/silver-and-blood',
     CHARACTERS: '/guides/silver-and-blood/characters',
-    CHARACTER_COMPARISON: '/guides/silver-and-blood/character-comparison',
+
+
     CHARACTER_RANKINGS: '/guides/silver-and-blood/character-rankings',
-    DAMAGE_MECHANICS: '/guides/silver-and-blood/damage-mechanics',
-    EVENTS: '/guides/silver-and-blood/events',
-    SUMMON_FAQ: '/guides/silver-and-blood/summon-faq',
     DUTCHMANS_REVENGE: '/guides/silver-and-blood/dutchmans-revenge',
   },
   HORIZON_WALKER: {
     BASE: '/guides/horizon-walker',
     CHARACTERS: '/guides/horizon-walker/characters',
-    CHARACTER_COMPARISON: '/guides/horizon-walker/character-comparison',
+
+
     CHARACTER_RANKINGS: '/guides/horizon-walker/character-rankings',
     DAMAGE_MECHANICS: '/guides/horizon-walker/damage-mechanics',
     DUNGEONS: '/guides/horizon-walker/dungeons',
@@ -111,7 +111,8 @@ export const URLS = {
   STELLA_SORA: {
     BASE: '/guides/stella-sora',
     CHARACTERS: '/guides/stella-sora/characters',
-    CHARACTER_COMPARISON: '/guides/stella-sora/character-comparison',
+
+
     CHARACTER_RANKINGS: '/guides/stella-sora/character-rankings',
     DISCS: '/guides/stella-sora/discs',
     EVENTS: '/guides/stella-sora/events',

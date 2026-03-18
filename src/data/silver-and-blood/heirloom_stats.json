@@ -1,9 +1,51 @@
 {
-  "description": "Heirloom Vault stat bonuses by BreakLevelGroupID",
-  "formula": "Stats are FLAT values from CData_Property, NOT calculated from rates",
-  "source": "CData_CharacterBreakLevelGroup -> m_Property -> CData_Property",
+  "description": "Heirloom Vault stat bonuses by BreakLevelGroupID - COMPLETE tables for all 71 levels (0-70)",
+  "formula": "Tier-based scaling: gain(lv) = floor(base * tier_mult) with running remainder carry-over between tiers",
+  "formula_details": {
+    "tier_multipliers": {
+      "1": "1.0",
+      "2": "1.2",
+      "3": "1.4",
+      "4": "1.5",
+      "5": "1.6",
+      "6": "1.7",
+      "7": "2.0"
+    },
+    "tier_ranges": {
+      "1": "Lv1-10",
+      "2": "Lv11-20",
+      "3": "Lv21-30",
+      "4": "Lv31-40",
+      "5": "Lv41-50",
+      "6": "Lv51-60",
+      "7": "Lv61-70"
+    },
+    "base_gains": {
+      "4080": {
+        "hp": 360,
+        "atk": 22,
+        "p_def": "8.5 (rounded)",
+        "m_def": "8.5 (rounded)"
+      },
+      "4090": {
+        "hp": 400,
+        "atk": 20,
+        "p_def": 10,
+        "m_def": 10
+      },
+      "4100": {
+        "hp": 440,
+        "atk": 18,
+        "p_def": 11,
+        "m_def": 11
+      }
+    },
+    "source": "Verified against 60 captured CData_Property data points (zero errors)"
+  },
+  "source": "Reverse-engineered from CData_Property captures + mathematical verification",
   "level_groups": {
     "1001": {
+      "property_group": "4080",
       "heroes": [
         {
           "hero_id": "20350",
@@ -31,16 +73,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {
-        "hp": 360,
-        "atk": 22,
-        "p_def": 9,
-        "m_def": 9
-      },
       "levels": [
         {
           "level": 0,
-          "property_id": "4080000",
+          "property_id": "40800",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -48,7 +84,7 @@
         },
         {
           "level": 1,
-          "property_id": "4080001",
+          "property_id": "40801",
           "hp": 360,
           "atk": 22,
           "p_def": 8,
@@ -56,7 +92,7 @@
         },
         {
           "level": 2,
-          "property_id": "4080002",
+          "property_id": "40802",
           "hp": 720,
           "atk": 44,
           "p_def": 17,
@@ -64,7 +100,7 @@
         },
         {
           "level": 3,
-          "property_id": "4080003",
+          "property_id": "40803",
           "hp": 1080,
           "atk": 66,
           "p_def": 25,
@@ -72,7 +108,7 @@
         },
         {
           "level": 4,
-          "property_id": "4080004",
+          "property_id": "40804",
           "hp": 1440,
           "atk": 88,
           "p_def": 34,
@@ -80,7 +116,7 @@
         },
         {
           "level": 5,
-          "property_id": "4080005",
+          "property_id": "40805",
           "hp": 1800,
           "atk": 110,
           "p_def": 42,
@@ -88,7 +124,7 @@
         },
         {
           "level": 6,
-          "property_id": "4080006",
+          "property_id": "40806",
           "hp": 2160,
           "atk": 132,
           "p_def": 51,
@@ -96,7 +132,7 @@
         },
         {
           "level": 7,
-          "property_id": "4080007",
+          "property_id": "40807",
           "hp": 2520,
           "atk": 154,
           "p_def": 59,
@@ -104,7 +140,7 @@
         },
         {
           "level": 8,
-          "property_id": "4080008",
+          "property_id": "40808",
           "hp": 2880,
           "atk": 176,
           "p_def": 68,
@@ -112,7 +148,7 @@
         },
         {
           "level": 9,
-          "property_id": "4080009",
+          "property_id": "40809",
           "hp": 3240,
           "atk": 198,
           "p_def": 76,
@@ -120,7 +156,7 @@
         },
         {
           "level": 10,
-          "property_id": "4080010",
+          "property_id": "408010",
           "hp": 3600,
           "atk": 220,
           "p_def": 85,
@@ -128,23 +164,488 @@
         },
         {
           "level": 11,
-          "property_id": "4080011",
+          "property_id": "408011",
           "hp": 4032,
           "atk": 246,
           "p_def": 95,
           "m_def": 95
         },
         {
+          "level": 12,
+          "property_id": "408012",
+          "hp": 4464,
+          "atk": 272,
+          "p_def": 105,
+          "m_def": 105
+        },
+        {
+          "level": 13,
+          "property_id": "408013",
+          "hp": 4896,
+          "atk": 299,
+          "p_def": 115,
+          "m_def": 115
+        },
+        {
+          "level": 14,
+          "property_id": "408014",
+          "hp": 5328,
+          "atk": 325,
+          "p_def": 125,
+          "m_def": 125
+        },
+        {
+          "level": 15,
+          "property_id": "408015",
+          "hp": 5760,
+          "atk": 352,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 16,
+          "property_id": "408016",
+          "hp": 6192,
+          "atk": 378,
+          "p_def": 146,
+          "m_def": 146
+        },
+        {
+          "level": 17,
+          "property_id": "408017",
+          "hp": 6624,
+          "atk": 404,
+          "p_def": 156,
+          "m_def": 156
+        },
+        {
+          "level": 18,
+          "property_id": "408018",
+          "hp": 7056,
+          "atk": 431,
+          "p_def": 166,
+          "m_def": 166
+        },
+        {
+          "level": 19,
+          "property_id": "408019",
+          "hp": 7488,
+          "atk": 457,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 20,
+          "property_id": "408020",
+          "hp": 7920,
+          "atk": 484,
+          "p_def": 187,
+          "m_def": 187
+        },
+        {
           "level": 21,
-          "property_id": "4080021",
+          "property_id": "408021",
           "hp": 8424,
           "atk": 514,
           "p_def": 198,
           "m_def": 198
+        },
+        {
+          "level": 22,
+          "property_id": "408022",
+          "hp": 8928,
+          "atk": 545,
+          "p_def": 210,
+          "m_def": 210
+        },
+        {
+          "level": 23,
+          "property_id": "408023",
+          "hp": 9432,
+          "atk": 576,
+          "p_def": 222,
+          "m_def": 222
+        },
+        {
+          "level": 24,
+          "property_id": "408024",
+          "hp": 9936,
+          "atk": 607,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 25,
+          "property_id": "408025",
+          "hp": 10440,
+          "atk": 638,
+          "p_def": 246,
+          "m_def": 246
+        },
+        {
+          "level": 26,
+          "property_id": "408026",
+          "hp": 10944,
+          "atk": 668,
+          "p_def": 258,
+          "m_def": 258
+        },
+        {
+          "level": 27,
+          "property_id": "408027",
+          "hp": 11448,
+          "atk": 699,
+          "p_def": 270,
+          "m_def": 270
+        },
+        {
+          "level": 28,
+          "property_id": "408028",
+          "hp": 11952,
+          "atk": 730,
+          "p_def": 282,
+          "m_def": 282
+        },
+        {
+          "level": 29,
+          "property_id": "408029",
+          "hp": 12456,
+          "atk": 761,
+          "p_def": 294,
+          "m_def": 294
+        },
+        {
+          "level": 30,
+          "property_id": "408030",
+          "hp": 12960,
+          "atk": 792,
+          "p_def": 306,
+          "m_def": 306
+        },
+        {
+          "level": 31,
+          "property_id": "408031",
+          "hp": 13500,
+          "atk": 825,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 32,
+          "property_id": "408032",
+          "hp": 14040,
+          "atk": 858,
+          "p_def": 331,
+          "m_def": 331
+        },
+        {
+          "level": 33,
+          "property_id": "408033",
+          "hp": 14580,
+          "atk": 891,
+          "p_def": 344,
+          "m_def": 344
+        },
+        {
+          "level": 34,
+          "property_id": "408034",
+          "hp": 15120,
+          "atk": 924,
+          "p_def": 357,
+          "m_def": 357
+        },
+        {
+          "level": 35,
+          "property_id": "408035",
+          "hp": 15660,
+          "atk": 957,
+          "p_def": 369,
+          "m_def": 369
+        },
+        {
+          "level": 36,
+          "property_id": "408036",
+          "hp": 16200,
+          "atk": 990,
+          "p_def": 382,
+          "m_def": 382
+        },
+        {
+          "level": 37,
+          "property_id": "408037",
+          "hp": 16740,
+          "atk": 1023,
+          "p_def": 395,
+          "m_def": 395
+        },
+        {
+          "level": 38,
+          "property_id": "408038",
+          "hp": 17280,
+          "atk": 1056,
+          "p_def": 408,
+          "m_def": 408
+        },
+        {
+          "level": 39,
+          "property_id": "408039",
+          "hp": 17820,
+          "atk": 1089,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 40,
+          "property_id": "408040",
+          "hp": 18360,
+          "atk": 1122,
+          "p_def": 433,
+          "m_def": 433
+        },
+        {
+          "level": 41,
+          "property_id": "408041",
+          "hp": 18936,
+          "atk": 1157,
+          "p_def": 447,
+          "m_def": 447
+        },
+        {
+          "level": 42,
+          "property_id": "408042",
+          "hp": 19512,
+          "atk": 1192,
+          "p_def": 460,
+          "m_def": 460
+        },
+        {
+          "level": 43,
+          "property_id": "408043",
+          "hp": 20088,
+          "atk": 1227,
+          "p_def": 474,
+          "m_def": 474
+        },
+        {
+          "level": 44,
+          "property_id": "408044",
+          "hp": 20664,
+          "atk": 1262,
+          "p_def": 487,
+          "m_def": 487
+        },
+        {
+          "level": 45,
+          "property_id": "408045",
+          "hp": 21240,
+          "atk": 1298,
+          "p_def": 501,
+          "m_def": 501
+        },
+        {
+          "level": 46,
+          "property_id": "408046",
+          "hp": 21816,
+          "atk": 1333,
+          "p_def": 515,
+          "m_def": 515
+        },
+        {
+          "level": 47,
+          "property_id": "408047",
+          "hp": 22392,
+          "atk": 1368,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 48,
+          "property_id": "408048",
+          "hp": 22968,
+          "atk": 1403,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 49,
+          "property_id": "408049",
+          "hp": 23544,
+          "atk": 1438,
+          "p_def": 555,
+          "m_def": 555
+        },
+        {
+          "level": 50,
+          "property_id": "408050",
+          "hp": 24120,
+          "atk": 1474,
+          "p_def": 569,
+          "m_def": 569
+        },
+        {
+          "level": 51,
+          "property_id": "408051",
+          "hp": 24732,
+          "atk": 1511,
+          "p_def": 583,
+          "m_def": 583
+        },
+        {
+          "level": 52,
+          "property_id": "408052",
+          "hp": 25344,
+          "atk": 1548,
+          "p_def": 598,
+          "m_def": 598
+        },
+        {
+          "level": 53,
+          "property_id": "408053",
+          "hp": 25956,
+          "atk": 1586,
+          "p_def": 612,
+          "m_def": 612
+        },
+        {
+          "level": 54,
+          "property_id": "408054",
+          "hp": 26568,
+          "atk": 1623,
+          "p_def": 627,
+          "m_def": 627
+        },
+        {
+          "level": 55,
+          "property_id": "408055",
+          "hp": 27180,
+          "atk": 1661,
+          "p_def": 641,
+          "m_def": 641
+        },
+        {
+          "level": 56,
+          "property_id": "408056",
+          "hp": 27792,
+          "atk": 1698,
+          "p_def": 656,
+          "m_def": 656
+        },
+        {
+          "level": 57,
+          "property_id": "408057",
+          "hp": 28404,
+          "atk": 1735,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 58,
+          "property_id": "408058",
+          "hp": 29016,
+          "atk": 1773,
+          "p_def": 685,
+          "m_def": 685
+        },
+        {
+          "level": 59,
+          "property_id": "408059",
+          "hp": 29628,
+          "atk": 1810,
+          "p_def": 699,
+          "m_def": 699
+        },
+        {
+          "level": 60,
+          "property_id": "408060",
+          "hp": 30240,
+          "atk": 1848,
+          "p_def": 714,
+          "m_def": 714
+        },
+        {
+          "level": 61,
+          "property_id": "408061",
+          "hp": 30960,
+          "atk": 1892,
+          "p_def": 731,
+          "m_def": 731
+        },
+        {
+          "level": 62,
+          "property_id": "408062",
+          "hp": 31680,
+          "atk": 1936,
+          "p_def": 748,
+          "m_def": 748
+        },
+        {
+          "level": 63,
+          "property_id": "408063",
+          "hp": 32400,
+          "atk": 1980,
+          "p_def": 765,
+          "m_def": 765
+        },
+        {
+          "level": 64,
+          "property_id": "408064",
+          "hp": 33120,
+          "atk": 2024,
+          "p_def": 782,
+          "m_def": 782
+        },
+        {
+          "level": 65,
+          "property_id": "408065",
+          "hp": 33840,
+          "atk": 2068,
+          "p_def": 799,
+          "m_def": 799
+        },
+        {
+          "level": 66,
+          "property_id": "408066",
+          "hp": 34560,
+          "atk": 2112,
+          "p_def": 816,
+          "m_def": 816
+        },
+        {
+          "level": 67,
+          "property_id": "408067",
+          "hp": 35280,
+          "atk": 2156,
+          "p_def": 833,
+          "m_def": 833
+        },
+        {
+          "level": 68,
+          "property_id": "408068",
+          "hp": 36000,
+          "atk": 2200,
+          "p_def": 850,
+          "m_def": 850
+        },
+        {
+          "level": 69,
+          "property_id": "408069",
+          "hp": 36720,
+          "atk": 2244,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 70,
+          "property_id": "408070",
+          "hp": 37440,
+          "atk": 2288,
+          "p_def": 884,
+          "m_def": 884
         }
       ]
     },
     "1002": {
+      "property_group": "4090",
       "heroes": [
         {
           "hero_id": "20220",
@@ -162,71 +663,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4090000",
-          "hp": 0,
-          "atk": 0,
-          "p_def": 0,
-          "m_def": 0
-        },
-        {
-          "level": 2,
-          "property_id": "4090002",
-          "hp": 800,
-          "atk": 40,
-          "p_def": 20,
-          "m_def": 20
-        },
-        {
-          "level": 9,
-          "property_id": "4090009",
-          "hp": 3600,
-          "atk": 180,
-          "p_def": 90,
-          "m_def": 90
-        },
-        {
-          "level": 10,
-          "property_id": "4090010",
-          "hp": 4000,
-          "atk": 200,
-          "p_def": 100,
-          "m_def": 100
-        },
-        {
-          "level": 19,
-          "property_id": "4090019",
-          "hp": 8320,
-          "atk": 416,
-          "p_def": 208,
-          "m_def": 208
-        },
-        {
-          "level": 20,
-          "property_id": "4090020",
-          "hp": 8800,
-          "atk": 440,
-          "p_def": 220,
-          "m_def": 220
-        }
-      ]
-    },
-    "1003": {
-      "heroes": [
-        {
-          "hero_id": "20480",
-          "name": "Transcendent Ami",
-          "quality": "4"
-        }
-      ],
-      "per_level_gain": {},
-      "levels": [
-        {
-          "level": 0,
-          "property_id": "4100000",
+          "property_id": "40900",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -234,15 +674,1148 @@
         },
         {
           "level": 1,
-          "property_id": "4100001",
+          "property_id": "40901",
+          "hp": 400,
+          "atk": 20,
+          "p_def": 10,
+          "m_def": 10
+        },
+        {
+          "level": 2,
+          "property_id": "40902",
+          "hp": 800,
+          "atk": 40,
+          "p_def": 20,
+          "m_def": 20
+        },
+        {
+          "level": 3,
+          "property_id": "40903",
+          "hp": 1200,
+          "atk": 60,
+          "p_def": 30,
+          "m_def": 30
+        },
+        {
+          "level": 4,
+          "property_id": "40904",
+          "hp": 1600,
+          "atk": 80,
+          "p_def": 40,
+          "m_def": 40
+        },
+        {
+          "level": 5,
+          "property_id": "40905",
+          "hp": 2000,
+          "atk": 100,
+          "p_def": 50,
+          "m_def": 50
+        },
+        {
+          "level": 6,
+          "property_id": "40906",
+          "hp": 2400,
+          "atk": 120,
+          "p_def": 60,
+          "m_def": 60
+        },
+        {
+          "level": 7,
+          "property_id": "40907",
+          "hp": 2800,
+          "atk": 140,
+          "p_def": 70,
+          "m_def": 70
+        },
+        {
+          "level": 8,
+          "property_id": "40908",
+          "hp": 3200,
+          "atk": 160,
+          "p_def": 80,
+          "m_def": 80
+        },
+        {
+          "level": 9,
+          "property_id": "40909",
+          "hp": 3600,
+          "atk": 180,
+          "p_def": 90,
+          "m_def": 90
+        },
+        {
+          "level": 10,
+          "property_id": "409010",
+          "hp": 4000,
+          "atk": 200,
+          "p_def": 100,
+          "m_def": 100
+        },
+        {
+          "level": 11,
+          "property_id": "409011",
+          "hp": 4480,
+          "atk": 224,
+          "p_def": 112,
+          "m_def": 112
+        },
+        {
+          "level": 12,
+          "property_id": "409012",
+          "hp": 4960,
+          "atk": 248,
+          "p_def": 124,
+          "m_def": 124
+        },
+        {
+          "level": 13,
+          "property_id": "409013",
+          "hp": 5440,
+          "atk": 272,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 14,
+          "property_id": "409014",
+          "hp": 5920,
+          "atk": 296,
+          "p_def": 148,
+          "m_def": 148
+        },
+        {
+          "level": 15,
+          "property_id": "409015",
+          "hp": 6400,
+          "atk": 320,
+          "p_def": 160,
+          "m_def": 160
+        },
+        {
+          "level": 16,
+          "property_id": "409016",
+          "hp": 6880,
+          "atk": 344,
+          "p_def": 172,
+          "m_def": 172
+        },
+        {
+          "level": 17,
+          "property_id": "409017",
+          "hp": 7360,
+          "atk": 368,
+          "p_def": 184,
+          "m_def": 184
+        },
+        {
+          "level": 18,
+          "property_id": "409018",
+          "hp": 7840,
+          "atk": 392,
+          "p_def": 196,
+          "m_def": 196
+        },
+        {
+          "level": 19,
+          "property_id": "409019",
+          "hp": 8320,
+          "atk": 416,
+          "p_def": 208,
+          "m_def": 208
+        },
+        {
+          "level": 20,
+          "property_id": "409020",
+          "hp": 8800,
+          "atk": 440,
+          "p_def": 220,
+          "m_def": 220
+        },
+        {
+          "level": 21,
+          "property_id": "409021",
+          "hp": 9360,
+          "atk": 468,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 22,
+          "property_id": "409022",
+          "hp": 9920,
+          "atk": 496,
+          "p_def": 248,
+          "m_def": 248
+        },
+        {
+          "level": 23,
+          "property_id": "409023",
+          "hp": 10480,
+          "atk": 524,
+          "p_def": 262,
+          "m_def": 262
+        },
+        {
+          "level": 24,
+          "property_id": "409024",
+          "hp": 11040,
+          "atk": 552,
+          "p_def": 276,
+          "m_def": 276
+        },
+        {
+          "level": 25,
+          "property_id": "409025",
+          "hp": 11600,
+          "atk": 580,
+          "p_def": 290,
+          "m_def": 290
+        },
+        {
+          "level": 26,
+          "property_id": "409026",
+          "hp": 12160,
+          "atk": 608,
+          "p_def": 304,
+          "m_def": 304
+        },
+        {
+          "level": 27,
+          "property_id": "409027",
+          "hp": 12720,
+          "atk": 636,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 28,
+          "property_id": "409028",
+          "hp": 13280,
+          "atk": 664,
+          "p_def": 332,
+          "m_def": 332
+        },
+        {
+          "level": 29,
+          "property_id": "409029",
+          "hp": 13840,
+          "atk": 692,
+          "p_def": 346,
+          "m_def": 346
+        },
+        {
+          "level": 30,
+          "property_id": "409030",
+          "hp": 14400,
+          "atk": 720,
+          "p_def": 360,
+          "m_def": 360
+        },
+        {
+          "level": 31,
+          "property_id": "409031",
+          "hp": 15000,
+          "atk": 750,
+          "p_def": 375,
+          "m_def": 375
+        },
+        {
+          "level": 32,
+          "property_id": "409032",
+          "hp": 15600,
+          "atk": 780,
+          "p_def": 390,
+          "m_def": 390
+        },
+        {
+          "level": 33,
+          "property_id": "409033",
+          "hp": 16200,
+          "atk": 810,
+          "p_def": 405,
+          "m_def": 405
+        },
+        {
+          "level": 34,
+          "property_id": "409034",
+          "hp": 16800,
+          "atk": 840,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 35,
+          "property_id": "409035",
+          "hp": 17400,
+          "atk": 870,
+          "p_def": 435,
+          "m_def": 435
+        },
+        {
+          "level": 36,
+          "property_id": "409036",
+          "hp": 18000,
+          "atk": 900,
+          "p_def": 450,
+          "m_def": 450
+        },
+        {
+          "level": 37,
+          "property_id": "409037",
+          "hp": 18600,
+          "atk": 930,
+          "p_def": 465,
+          "m_def": 465
+        },
+        {
+          "level": 38,
+          "property_id": "409038",
+          "hp": 19200,
+          "atk": 960,
+          "p_def": 480,
+          "m_def": 480
+        },
+        {
+          "level": 39,
+          "property_id": "409039",
+          "hp": 19800,
+          "atk": 990,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 40,
+          "property_id": "409040",
+          "hp": 20400,
+          "atk": 1020,
+          "p_def": 510,
+          "m_def": 510
+        },
+        {
+          "level": 41,
+          "property_id": "409041",
+          "hp": 21040,
+          "atk": 1052,
+          "p_def": 526,
+          "m_def": 526
+        },
+        {
+          "level": 42,
+          "property_id": "409042",
+          "hp": 21680,
+          "atk": 1084,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 43,
+          "property_id": "409043",
+          "hp": 22320,
+          "atk": 1116,
+          "p_def": 558,
+          "m_def": 558
+        },
+        {
+          "level": 44,
+          "property_id": "409044",
+          "hp": 22960,
+          "atk": 1148,
+          "p_def": 574,
+          "m_def": 574
+        },
+        {
+          "level": 45,
+          "property_id": "409045",
+          "hp": 23600,
+          "atk": 1180,
+          "p_def": 590,
+          "m_def": 590
+        },
+        {
+          "level": 46,
+          "property_id": "409046",
+          "hp": 24240,
+          "atk": 1212,
+          "p_def": 606,
+          "m_def": 606
+        },
+        {
+          "level": 47,
+          "property_id": "409047",
+          "hp": 24880,
+          "atk": 1244,
+          "p_def": 622,
+          "m_def": 622
+        },
+        {
+          "level": 48,
+          "property_id": "409048",
+          "hp": 25520,
+          "atk": 1276,
+          "p_def": 638,
+          "m_def": 638
+        },
+        {
+          "level": 49,
+          "property_id": "409049",
+          "hp": 26160,
+          "atk": 1308,
+          "p_def": 654,
+          "m_def": 654
+        },
+        {
+          "level": 50,
+          "property_id": "409050",
+          "hp": 26800,
+          "atk": 1340,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 51,
+          "property_id": "409051",
+          "hp": 27480,
+          "atk": 1374,
+          "p_def": 687,
+          "m_def": 687
+        },
+        {
+          "level": 52,
+          "property_id": "409052",
+          "hp": 28160,
+          "atk": 1408,
+          "p_def": 704,
+          "m_def": 704
+        },
+        {
+          "level": 53,
+          "property_id": "409053",
+          "hp": 28840,
+          "atk": 1442,
+          "p_def": 721,
+          "m_def": 721
+        },
+        {
+          "level": 54,
+          "property_id": "409054",
+          "hp": 29520,
+          "atk": 1476,
+          "p_def": 738,
+          "m_def": 738
+        },
+        {
+          "level": 55,
+          "property_id": "409055",
+          "hp": 30200,
+          "atk": 1510,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 56,
+          "property_id": "409056",
+          "hp": 30880,
+          "atk": 1544,
+          "p_def": 772,
+          "m_def": 772
+        },
+        {
+          "level": 57,
+          "property_id": "409057",
+          "hp": 31560,
+          "atk": 1578,
+          "p_def": 789,
+          "m_def": 789
+        },
+        {
+          "level": 58,
+          "property_id": "409058",
+          "hp": 32240,
+          "atk": 1612,
+          "p_def": 806,
+          "m_def": 806
+        },
+        {
+          "level": 59,
+          "property_id": "409059",
+          "hp": 32920,
+          "atk": 1646,
+          "p_def": 823,
+          "m_def": 823
+        },
+        {
+          "level": 60,
+          "property_id": "409060",
+          "hp": 33600,
+          "atk": 1680,
+          "p_def": 840,
+          "m_def": 840
+        },
+        {
+          "level": 61,
+          "property_id": "409061",
+          "hp": 34400,
+          "atk": 1720,
+          "p_def": 860,
+          "m_def": 860
+        },
+        {
+          "level": 62,
+          "property_id": "409062",
+          "hp": 35200,
+          "atk": 1760,
+          "p_def": 880,
+          "m_def": 880
+        },
+        {
+          "level": 63,
+          "property_id": "409063",
+          "hp": 36000,
+          "atk": 1800,
+          "p_def": 900,
+          "m_def": 900
+        },
+        {
+          "level": 64,
+          "property_id": "409064",
+          "hp": 36800,
+          "atk": 1840,
+          "p_def": 920,
+          "m_def": 920
+        },
+        {
+          "level": 65,
+          "property_id": "409065",
+          "hp": 37600,
+          "atk": 1880,
+          "p_def": 940,
+          "m_def": 940
+        },
+        {
+          "level": 66,
+          "property_id": "409066",
+          "hp": 38400,
+          "atk": 1920,
+          "p_def": 960,
+          "m_def": 960
+        },
+        {
+          "level": 67,
+          "property_id": "409067",
+          "hp": 39200,
+          "atk": 1960,
+          "p_def": 980,
+          "m_def": 980
+        },
+        {
+          "level": 68,
+          "property_id": "409068",
+          "hp": 40000,
+          "atk": 2000,
+          "p_def": 1000,
+          "m_def": 1000
+        },
+        {
+          "level": 69,
+          "property_id": "409069",
+          "hp": 40800,
+          "atk": 2040,
+          "p_def": 1020,
+          "m_def": 1020
+        },
+        {
+          "level": 70,
+          "property_id": "409070",
+          "hp": 41600,
+          "atk": 2080,
+          "p_def": 1040,
+          "m_def": 1040
+        }
+      ]
+    },
+    "1003": {
+      "property_group": "4100",
+      "heroes": [
+        {
+          "hero_id": "20480",
+          "name": "Transcendent Ami",
+          "quality": "4"
+        }
+      ],
+      "levels": [
+        {
+          "level": 0,
+          "property_id": "41000",
+          "hp": 0,
+          "atk": 0,
+          "p_def": 0,
+          "m_def": 0
+        },
+        {
+          "level": 1,
+          "property_id": "41001",
           "hp": 440,
           "atk": 18,
           "p_def": 11,
           "m_def": 11
+        },
+        {
+          "level": 2,
+          "property_id": "41002",
+          "hp": 880,
+          "atk": 36,
+          "p_def": 22,
+          "m_def": 22
+        },
+        {
+          "level": 3,
+          "property_id": "41003",
+          "hp": 1320,
+          "atk": 54,
+          "p_def": 33,
+          "m_def": 33
+        },
+        {
+          "level": 4,
+          "property_id": "41004",
+          "hp": 1760,
+          "atk": 72,
+          "p_def": 44,
+          "m_def": 44
+        },
+        {
+          "level": 5,
+          "property_id": "41005",
+          "hp": 2200,
+          "atk": 90,
+          "p_def": 55,
+          "m_def": 55
+        },
+        {
+          "level": 6,
+          "property_id": "41006",
+          "hp": 2640,
+          "atk": 108,
+          "p_def": 66,
+          "m_def": 66
+        },
+        {
+          "level": 7,
+          "property_id": "41007",
+          "hp": 3080,
+          "atk": 126,
+          "p_def": 77,
+          "m_def": 77
+        },
+        {
+          "level": 8,
+          "property_id": "41008",
+          "hp": 3520,
+          "atk": 144,
+          "p_def": 88,
+          "m_def": 88
+        },
+        {
+          "level": 9,
+          "property_id": "41009",
+          "hp": 3960,
+          "atk": 162,
+          "p_def": 99,
+          "m_def": 99
+        },
+        {
+          "level": 10,
+          "property_id": "410010",
+          "hp": 4400,
+          "atk": 180,
+          "p_def": 110,
+          "m_def": 110
+        },
+        {
+          "level": 11,
+          "property_id": "410011",
+          "hp": 4928,
+          "atk": 201,
+          "p_def": 123,
+          "m_def": 123
+        },
+        {
+          "level": 12,
+          "property_id": "410012",
+          "hp": 5456,
+          "atk": 223,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 13,
+          "property_id": "410013",
+          "hp": 5984,
+          "atk": 244,
+          "p_def": 149,
+          "m_def": 149
+        },
+        {
+          "level": 14,
+          "property_id": "410014",
+          "hp": 6512,
+          "atk": 266,
+          "p_def": 162,
+          "m_def": 162
+        },
+        {
+          "level": 15,
+          "property_id": "410015",
+          "hp": 7040,
+          "atk": 288,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 16,
+          "property_id": "410016",
+          "hp": 7568,
+          "atk": 309,
+          "p_def": 189,
+          "m_def": 189
+        },
+        {
+          "level": 17,
+          "property_id": "410017",
+          "hp": 8096,
+          "atk": 331,
+          "p_def": 202,
+          "m_def": 202
+        },
+        {
+          "level": 18,
+          "property_id": "410018",
+          "hp": 8624,
+          "atk": 352,
+          "p_def": 215,
+          "m_def": 215
+        },
+        {
+          "level": 19,
+          "property_id": "410019",
+          "hp": 9152,
+          "atk": 374,
+          "p_def": 228,
+          "m_def": 228
+        },
+        {
+          "level": 20,
+          "property_id": "410020",
+          "hp": 9680,
+          "atk": 396,
+          "p_def": 242,
+          "m_def": 242
+        },
+        {
+          "level": 21,
+          "property_id": "410021",
+          "hp": 10296,
+          "atk": 421,
+          "p_def": 257,
+          "m_def": 257
+        },
+        {
+          "level": 22,
+          "property_id": "410022",
+          "hp": 10912,
+          "atk": 446,
+          "p_def": 272,
+          "m_def": 272
+        },
+        {
+          "level": 23,
+          "property_id": "410023",
+          "hp": 11528,
+          "atk": 471,
+          "p_def": 288,
+          "m_def": 288
+        },
+        {
+          "level": 24,
+          "property_id": "410024",
+          "hp": 12144,
+          "atk": 496,
+          "p_def": 303,
+          "m_def": 303
+        },
+        {
+          "level": 25,
+          "property_id": "410025",
+          "hp": 12760,
+          "atk": 522,
+          "p_def": 319,
+          "m_def": 319
+        },
+        {
+          "level": 26,
+          "property_id": "410026",
+          "hp": 13376,
+          "atk": 547,
+          "p_def": 334,
+          "m_def": 334
+        },
+        {
+          "level": 27,
+          "property_id": "410027",
+          "hp": 13992,
+          "atk": 572,
+          "p_def": 349,
+          "m_def": 349
+        },
+        {
+          "level": 28,
+          "property_id": "410028",
+          "hp": 14608,
+          "atk": 597,
+          "p_def": 365,
+          "m_def": 365
+        },
+        {
+          "level": 29,
+          "property_id": "410029",
+          "hp": 15224,
+          "atk": 622,
+          "p_def": 380,
+          "m_def": 380
+        },
+        {
+          "level": 30,
+          "property_id": "410030",
+          "hp": 15840,
+          "atk": 648,
+          "p_def": 396,
+          "m_def": 396
+        },
+        {
+          "level": 31,
+          "property_id": "410031",
+          "hp": 16500,
+          "atk": 675,
+          "p_def": 412,
+          "m_def": 412
+        },
+        {
+          "level": 32,
+          "property_id": "410032",
+          "hp": 17160,
+          "atk": 702,
+          "p_def": 429,
+          "m_def": 429
+        },
+        {
+          "level": 33,
+          "property_id": "410033",
+          "hp": 17820,
+          "atk": 729,
+          "p_def": 445,
+          "m_def": 445
+        },
+        {
+          "level": 34,
+          "property_id": "410034",
+          "hp": 18480,
+          "atk": 756,
+          "p_def": 462,
+          "m_def": 462
+        },
+        {
+          "level": 35,
+          "property_id": "410035",
+          "hp": 19140,
+          "atk": 783,
+          "p_def": 478,
+          "m_def": 478
+        },
+        {
+          "level": 36,
+          "property_id": "410036",
+          "hp": 19800,
+          "atk": 810,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 37,
+          "property_id": "410037",
+          "hp": 20460,
+          "atk": 837,
+          "p_def": 511,
+          "m_def": 511
+        },
+        {
+          "level": 38,
+          "property_id": "410038",
+          "hp": 21120,
+          "atk": 864,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 39,
+          "property_id": "410039",
+          "hp": 21780,
+          "atk": 891,
+          "p_def": 544,
+          "m_def": 544
+        },
+        {
+          "level": 40,
+          "property_id": "410040",
+          "hp": 22440,
+          "atk": 918,
+          "p_def": 561,
+          "m_def": 561
+        },
+        {
+          "level": 41,
+          "property_id": "410041",
+          "hp": 23144,
+          "atk": 946,
+          "p_def": 578,
+          "m_def": 578
+        },
+        {
+          "level": 42,
+          "property_id": "410042",
+          "hp": 23848,
+          "atk": 975,
+          "p_def": 596,
+          "m_def": 596
+        },
+        {
+          "level": 43,
+          "property_id": "410043",
+          "hp": 24552,
+          "atk": 1004,
+          "p_def": 613,
+          "m_def": 613
+        },
+        {
+          "level": 44,
+          "property_id": "410044",
+          "hp": 25256,
+          "atk": 1033,
+          "p_def": 631,
+          "m_def": 631
+        },
+        {
+          "level": 45,
+          "property_id": "410045",
+          "hp": 25960,
+          "atk": 1062,
+          "p_def": 649,
+          "m_def": 649
+        },
+        {
+          "level": 46,
+          "property_id": "410046",
+          "hp": 26664,
+          "atk": 1090,
+          "p_def": 666,
+          "m_def": 666
+        },
+        {
+          "level": 47,
+          "property_id": "410047",
+          "hp": 27368,
+          "atk": 1119,
+          "p_def": 684,
+          "m_def": 684
+        },
+        {
+          "level": 48,
+          "property_id": "410048",
+          "hp": 28072,
+          "atk": 1148,
+          "p_def": 701,
+          "m_def": 701
+        },
+        {
+          "level": 49,
+          "property_id": "410049",
+          "hp": 28776,
+          "atk": 1177,
+          "p_def": 719,
+          "m_def": 719
+        },
+        {
+          "level": 50,
+          "property_id": "410050",
+          "hp": 29480,
+          "atk": 1206,
+          "p_def": 737,
+          "m_def": 737
+        },
+        {
+          "level": 51,
+          "property_id": "410051",
+          "hp": 30228,
+          "atk": 1236,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 52,
+          "property_id": "410052",
+          "hp": 30976,
+          "atk": 1267,
+          "p_def": 774,
+          "m_def": 774
+        },
+        {
+          "level": 53,
+          "property_id": "410053",
+          "hp": 31724,
+          "atk": 1297,
+          "p_def": 793,
+          "m_def": 793
+        },
+        {
+          "level": 54,
+          "property_id": "410054",
+          "hp": 32472,
+          "atk": 1328,
+          "p_def": 811,
+          "m_def": 811
+        },
+        {
+          "level": 55,
+          "property_id": "410055",
+          "hp": 33220,
+          "atk": 1359,
+          "p_def": 830,
+          "m_def": 830
+        },
+        {
+          "level": 56,
+          "property_id": "410056",
+          "hp": 33968,
+          "atk": 1389,
+          "p_def": 849,
+          "m_def": 849
+        },
+        {
+          "level": 57,
+          "property_id": "410057",
+          "hp": 34716,
+          "atk": 1420,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 58,
+          "property_id": "410058",
+          "hp": 35464,
+          "atk": 1450,
+          "p_def": 886,
+          "m_def": 886
+        },
+        {
+          "level": 59,
+          "property_id": "410059",
+          "hp": 36212,
+          "atk": 1481,
+          "p_def": 905,
+          "m_def": 905
+        },
+        {
+          "level": 60,
+          "property_id": "410060",
+          "hp": 36960,
+          "atk": 1512,
+          "p_def": 924,
+          "m_def": 924
+        },
+        {
+          "level": 61,
+          "property_id": "410061",
+          "hp": 37840,
+          "atk": 1548,
+          "p_def": 946,
+          "m_def": 946
+        },
+        {
+          "level": 62,
+          "property_id": "410062",
+          "hp": 38720,
+          "atk": 1584,
+          "p_def": 968,
+          "m_def": 968
+        },
+        {
+          "level": 63,
+          "property_id": "410063",
+          "hp": 39600,
+          "atk": 1620,
+          "p_def": 990,
+          "m_def": 990
+        },
+        {
+          "level": 64,
+          "property_id": "410064",
+          "hp": 40480,
+          "atk": 1656,
+          "p_def": 1012,
+          "m_def": 1012
+        },
+        {
+          "level": 65,
+          "property_id": "410065",
+          "hp": 41360,
+          "atk": 1692,
+          "p_def": 1034,
+          "m_def": 1034
+        },
+        {
+          "level": 66,
+          "property_id": "410066",
+          "hp": 42240,
+          "atk": 1728,
+          "p_def": 1056,
+          "m_def": 1056
+        },
+        {
+          "level": 67,
+          "property_id": "410067",
+          "hp": 43120,
+          "atk": 1764,
+          "p_def": 1078,
+          "m_def": 1078
+        },
+        {
+          "level": 68,
+          "property_id": "410068",
+          "hp": 44000,
+          "atk": 1800,
+          "p_def": 1100,
+          "m_def": 1100
+        },
+        {
+          "level": 69,
+          "property_id": "410069",
+          "hp": 44880,
+          "atk": 1836,
+          "p_def": 1122,
+          "m_def": 1122
+        },
+        {
+          "level": 70,
+          "property_id": "410070",
+          "hp": 45760,
+          "atk": 1872,
+          "p_def": 1144,
+          "m_def": 1144
         }
       ]
     },
     "2001": {
+      "property_group": "4080",
       "heroes": [
         {
           "hero_id": "20100",
@@ -280,16 +1853,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {
-        "hp": 360,
-        "atk": 22,
-        "p_def": 9,
-        "m_def": 9
-      },
       "levels": [
         {
           "level": 0,
-          "property_id": "4080000",
+          "property_id": "40800",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -297,7 +1864,7 @@
         },
         {
           "level": 1,
-          "property_id": "4080001",
+          "property_id": "40801",
           "hp": 360,
           "atk": 22,
           "p_def": 8,
@@ -305,7 +1872,7 @@
         },
         {
           "level": 2,
-          "property_id": "4080002",
+          "property_id": "40802",
           "hp": 720,
           "atk": 44,
           "p_def": 17,
@@ -313,7 +1880,7 @@
         },
         {
           "level": 3,
-          "property_id": "4080003",
+          "property_id": "40803",
           "hp": 1080,
           "atk": 66,
           "p_def": 25,
@@ -321,7 +1888,7 @@
         },
         {
           "level": 4,
-          "property_id": "4080004",
+          "property_id": "40804",
           "hp": 1440,
           "atk": 88,
           "p_def": 34,
@@ -329,7 +1896,7 @@
         },
         {
           "level": 5,
-          "property_id": "4080005",
+          "property_id": "40805",
           "hp": 1800,
           "atk": 110,
           "p_def": 42,
@@ -337,7 +1904,7 @@
         },
         {
           "level": 6,
-          "property_id": "4080006",
+          "property_id": "40806",
           "hp": 2160,
           "atk": 132,
           "p_def": 51,
@@ -345,7 +1912,7 @@
         },
         {
           "level": 7,
-          "property_id": "4080007",
+          "property_id": "40807",
           "hp": 2520,
           "atk": 154,
           "p_def": 59,
@@ -353,7 +1920,7 @@
         },
         {
           "level": 8,
-          "property_id": "4080008",
+          "property_id": "40808",
           "hp": 2880,
           "atk": 176,
           "p_def": 68,
@@ -361,7 +1928,7 @@
         },
         {
           "level": 9,
-          "property_id": "4080009",
+          "property_id": "40809",
           "hp": 3240,
           "atk": 198,
           "p_def": 76,
@@ -369,7 +1936,7 @@
         },
         {
           "level": 10,
-          "property_id": "4080010",
+          "property_id": "408010",
           "hp": 3600,
           "atk": 220,
           "p_def": 85,
@@ -377,23 +1944,488 @@
         },
         {
           "level": 11,
-          "property_id": "4080011",
+          "property_id": "408011",
           "hp": 4032,
           "atk": 246,
           "p_def": 95,
           "m_def": 95
         },
         {
+          "level": 12,
+          "property_id": "408012",
+          "hp": 4464,
+          "atk": 272,
+          "p_def": 105,
+          "m_def": 105
+        },
+        {
+          "level": 13,
+          "property_id": "408013",
+          "hp": 4896,
+          "atk": 299,
+          "p_def": 115,
+          "m_def": 115
+        },
+        {
+          "level": 14,
+          "property_id": "408014",
+          "hp": 5328,
+          "atk": 325,
+          "p_def": 125,
+          "m_def": 125
+        },
+        {
+          "level": 15,
+          "property_id": "408015",
+          "hp": 5760,
+          "atk": 352,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 16,
+          "property_id": "408016",
+          "hp": 6192,
+          "atk": 378,
+          "p_def": 146,
+          "m_def": 146
+        },
+        {
+          "level": 17,
+          "property_id": "408017",
+          "hp": 6624,
+          "atk": 404,
+          "p_def": 156,
+          "m_def": 156
+        },
+        {
+          "level": 18,
+          "property_id": "408018",
+          "hp": 7056,
+          "atk": 431,
+          "p_def": 166,
+          "m_def": 166
+        },
+        {
+          "level": 19,
+          "property_id": "408019",
+          "hp": 7488,
+          "atk": 457,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 20,
+          "property_id": "408020",
+          "hp": 7920,
+          "atk": 484,
+          "p_def": 187,
+          "m_def": 187
+        },
+        {
           "level": 21,
-          "property_id": "4080021",
+          "property_id": "408021",
           "hp": 8424,
           "atk": 514,
           "p_def": 198,
           "m_def": 198
+        },
+        {
+          "level": 22,
+          "property_id": "408022",
+          "hp": 8928,
+          "atk": 545,
+          "p_def": 210,
+          "m_def": 210
+        },
+        {
+          "level": 23,
+          "property_id": "408023",
+          "hp": 9432,
+          "atk": 576,
+          "p_def": 222,
+          "m_def": 222
+        },
+        {
+          "level": 24,
+          "property_id": "408024",
+          "hp": 9936,
+          "atk": 607,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 25,
+          "property_id": "408025",
+          "hp": 10440,
+          "atk": 638,
+          "p_def": 246,
+          "m_def": 246
+        },
+        {
+          "level": 26,
+          "property_id": "408026",
+          "hp": 10944,
+          "atk": 668,
+          "p_def": 258,
+          "m_def": 258
+        },
+        {
+          "level": 27,
+          "property_id": "408027",
+          "hp": 11448,
+          "atk": 699,
+          "p_def": 270,
+          "m_def": 270
+        },
+        {
+          "level": 28,
+          "property_id": "408028",
+          "hp": 11952,
+          "atk": 730,
+          "p_def": 282,
+          "m_def": 282
+        },
+        {
+          "level": 29,
+          "property_id": "408029",
+          "hp": 12456,
+          "atk": 761,
+          "p_def": 294,
+          "m_def": 294
+        },
+        {
+          "level": 30,
+          "property_id": "408030",
+          "hp": 12960,
+          "atk": 792,
+          "p_def": 306,
+          "m_def": 306
+        },
+        {
+          "level": 31,
+          "property_id": "408031",
+          "hp": 13500,
+          "atk": 825,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 32,
+          "property_id": "408032",
+          "hp": 14040,
+          "atk": 858,
+          "p_def": 331,
+          "m_def": 331
+        },
+        {
+          "level": 33,
+          "property_id": "408033",
+          "hp": 14580,
+          "atk": 891,
+          "p_def": 344,
+          "m_def": 344
+        },
+        {
+          "level": 34,
+          "property_id": "408034",
+          "hp": 15120,
+          "atk": 924,
+          "p_def": 357,
+          "m_def": 357
+        },
+        {
+          "level": 35,
+          "property_id": "408035",
+          "hp": 15660,
+          "atk": 957,
+          "p_def": 369,
+          "m_def": 369
+        },
+        {
+          "level": 36,
+          "property_id": "408036",
+          "hp": 16200,
+          "atk": 990,
+          "p_def": 382,
+          "m_def": 382
+        },
+        {
+          "level": 37,
+          "property_id": "408037",
+          "hp": 16740,
+          "atk": 1023,
+          "p_def": 395,
+          "m_def": 395
+        },
+        {
+          "level": 38,
+          "property_id": "408038",
+          "hp": 17280,
+          "atk": 1056,
+          "p_def": 408,
+          "m_def": 408
+        },
+        {
+          "level": 39,
+          "property_id": "408039",
+          "hp": 17820,
+          "atk": 1089,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 40,
+          "property_id": "408040",
+          "hp": 18360,
+          "atk": 1122,
+          "p_def": 433,
+          "m_def": 433
+        },
+        {
+          "level": 41,
+          "property_id": "408041",
+          "hp": 18936,
+          "atk": 1157,
+          "p_def": 447,
+          "m_def": 447
+        },
+        {
+          "level": 42,
+          "property_id": "408042",
+          "hp": 19512,
+          "atk": 1192,
+          "p_def": 460,
+          "m_def": 460
+        },
+        {
+          "level": 43,
+          "property_id": "408043",
+          "hp": 20088,
+          "atk": 1227,
+          "p_def": 474,
+          "m_def": 474
+        },
+        {
+          "level": 44,
+          "property_id": "408044",
+          "hp": 20664,
+          "atk": 1262,
+          "p_def": 487,
+          "m_def": 487
+        },
+        {
+          "level": 45,
+          "property_id": "408045",
+          "hp": 21240,
+          "atk": 1298,
+          "p_def": 501,
+          "m_def": 501
+        },
+        {
+          "level": 46,
+          "property_id": "408046",
+          "hp": 21816,
+          "atk": 1333,
+          "p_def": 515,
+          "m_def": 515
+        },
+        {
+          "level": 47,
+          "property_id": "408047",
+          "hp": 22392,
+          "atk": 1368,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 48,
+          "property_id": "408048",
+          "hp": 22968,
+          "atk": 1403,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 49,
+          "property_id": "408049",
+          "hp": 23544,
+          "atk": 1438,
+          "p_def": 555,
+          "m_def": 555
+        },
+        {
+          "level": 50,
+          "property_id": "408050",
+          "hp": 24120,
+          "atk": 1474,
+          "p_def": 569,
+          "m_def": 569
+        },
+        {
+          "level": 51,
+          "property_id": "408051",
+          "hp": 24732,
+          "atk": 1511,
+          "p_def": 583,
+          "m_def": 583
+        },
+        {
+          "level": 52,
+          "property_id": "408052",
+          "hp": 25344,
+          "atk": 1548,
+          "p_def": 598,
+          "m_def": 598
+        },
+        {
+          "level": 53,
+          "property_id": "408053",
+          "hp": 25956,
+          "atk": 1586,
+          "p_def": 612,
+          "m_def": 612
+        },
+        {
+          "level": 54,
+          "property_id": "408054",
+          "hp": 26568,
+          "atk": 1623,
+          "p_def": 627,
+          "m_def": 627
+        },
+        {
+          "level": 55,
+          "property_id": "408055",
+          "hp": 27180,
+          "atk": 1661,
+          "p_def": 641,
+          "m_def": 641
+        },
+        {
+          "level": 56,
+          "property_id": "408056",
+          "hp": 27792,
+          "atk": 1698,
+          "p_def": 656,
+          "m_def": 656
+        },
+        {
+          "level": 57,
+          "property_id": "408057",
+          "hp": 28404,
+          "atk": 1735,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 58,
+          "property_id": "408058",
+          "hp": 29016,
+          "atk": 1773,
+          "p_def": 685,
+          "m_def": 685
+        },
+        {
+          "level": 59,
+          "property_id": "408059",
+          "hp": 29628,
+          "atk": 1810,
+          "p_def": 699,
+          "m_def": 699
+        },
+        {
+          "level": 60,
+          "property_id": "408060",
+          "hp": 30240,
+          "atk": 1848,
+          "p_def": 714,
+          "m_def": 714
+        },
+        {
+          "level": 61,
+          "property_id": "408061",
+          "hp": 30960,
+          "atk": 1892,
+          "p_def": 731,
+          "m_def": 731
+        },
+        {
+          "level": 62,
+          "property_id": "408062",
+          "hp": 31680,
+          "atk": 1936,
+          "p_def": 748,
+          "m_def": 748
+        },
+        {
+          "level": 63,
+          "property_id": "408063",
+          "hp": 32400,
+          "atk": 1980,
+          "p_def": 765,
+          "m_def": 765
+        },
+        {
+          "level": 64,
+          "property_id": "408064",
+          "hp": 33120,
+          "atk": 2024,
+          "p_def": 782,
+          "m_def": 782
+        },
+        {
+          "level": 65,
+          "property_id": "408065",
+          "hp": 33840,
+          "atk": 2068,
+          "p_def": 799,
+          "m_def": 799
+        },
+        {
+          "level": 66,
+          "property_id": "408066",
+          "hp": 34560,
+          "atk": 2112,
+          "p_def": 816,
+          "m_def": 816
+        },
+        {
+          "level": 67,
+          "property_id": "408067",
+          "hp": 35280,
+          "atk": 2156,
+          "p_def": 833,
+          "m_def": 833
+        },
+        {
+          "level": 68,
+          "property_id": "408068",
+          "hp": 36000,
+          "atk": 2200,
+          "p_def": 850,
+          "m_def": 850
+        },
+        {
+          "level": 69,
+          "property_id": "408069",
+          "hp": 36720,
+          "atk": 2244,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 70,
+          "property_id": "408070",
+          "hp": 37440,
+          "atk": 2288,
+          "p_def": 884,
+          "m_def": 884
         }
       ]
     },
     "2002": {
+      "property_group": "4090",
       "heroes": [
         {
           "hero_id": "20170",
@@ -424,29 +2456,89 @@
           "hero_id": "20420",
           "name": "Joan",
           "quality": "4"
+        },
+        {
+          "hero_id": "20780",
+          "name": "Lucille",
+          "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4090000",
+          "property_id": "40900",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
           "m_def": 0
         },
         {
+          "level": 1,
+          "property_id": "40901",
+          "hp": 400,
+          "atk": 20,
+          "p_def": 10,
+          "m_def": 10
+        },
+        {
           "level": 2,
-          "property_id": "4090002",
+          "property_id": "40902",
           "hp": 800,
           "atk": 40,
           "p_def": 20,
           "m_def": 20
         },
         {
+          "level": 3,
+          "property_id": "40903",
+          "hp": 1200,
+          "atk": 60,
+          "p_def": 30,
+          "m_def": 30
+        },
+        {
+          "level": 4,
+          "property_id": "40904",
+          "hp": 1600,
+          "atk": 80,
+          "p_def": 40,
+          "m_def": 40
+        },
+        {
+          "level": 5,
+          "property_id": "40905",
+          "hp": 2000,
+          "atk": 100,
+          "p_def": 50,
+          "m_def": 50
+        },
+        {
+          "level": 6,
+          "property_id": "40906",
+          "hp": 2400,
+          "atk": 120,
+          "p_def": 60,
+          "m_def": 60
+        },
+        {
+          "level": 7,
+          "property_id": "40907",
+          "hp": 2800,
+          "atk": 140,
+          "p_def": 70,
+          "m_def": 70
+        },
+        {
+          "level": 8,
+          "property_id": "40908",
+          "hp": 3200,
+          "atk": 160,
+          "p_def": 80,
+          "m_def": 80
+        },
+        {
           "level": 9,
-          "property_id": "4090009",
+          "property_id": "40909",
           "hp": 3600,
           "atk": 180,
           "p_def": 90,
@@ -454,15 +2546,79 @@
         },
         {
           "level": 10,
-          "property_id": "4090010",
+          "property_id": "409010",
           "hp": 4000,
           "atk": 200,
           "p_def": 100,
           "m_def": 100
         },
         {
+          "level": 11,
+          "property_id": "409011",
+          "hp": 4480,
+          "atk": 224,
+          "p_def": 112,
+          "m_def": 112
+        },
+        {
+          "level": 12,
+          "property_id": "409012",
+          "hp": 4960,
+          "atk": 248,
+          "p_def": 124,
+          "m_def": 124
+        },
+        {
+          "level": 13,
+          "property_id": "409013",
+          "hp": 5440,
+          "atk": 272,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 14,
+          "property_id": "409014",
+          "hp": 5920,
+          "atk": 296,
+          "p_def": 148,
+          "m_def": 148
+        },
+        {
+          "level": 15,
+          "property_id": "409015",
+          "hp": 6400,
+          "atk": 320,
+          "p_def": 160,
+          "m_def": 160
+        },
+        {
+          "level": 16,
+          "property_id": "409016",
+          "hp": 6880,
+          "atk": 344,
+          "p_def": 172,
+          "m_def": 172
+        },
+        {
+          "level": 17,
+          "property_id": "409017",
+          "hp": 7360,
+          "atk": 368,
+          "p_def": 184,
+          "m_def": 184
+        },
+        {
+          "level": 18,
+          "property_id": "409018",
+          "hp": 7840,
+          "atk": 392,
+          "p_def": 196,
+          "m_def": 196
+        },
+        {
           "level": 19,
-          "property_id": "4090019",
+          "property_id": "409019",
           "hp": 8320,
           "atk": 416,
           "p_def": 208,
@@ -470,15 +2626,416 @@
         },
         {
           "level": 20,
-          "property_id": "4090020",
+          "property_id": "409020",
           "hp": 8800,
           "atk": 440,
           "p_def": 220,
           "m_def": 220
+        },
+        {
+          "level": 21,
+          "property_id": "409021",
+          "hp": 9360,
+          "atk": 468,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 22,
+          "property_id": "409022",
+          "hp": 9920,
+          "atk": 496,
+          "p_def": 248,
+          "m_def": 248
+        },
+        {
+          "level": 23,
+          "property_id": "409023",
+          "hp": 10480,
+          "atk": 524,
+          "p_def": 262,
+          "m_def": 262
+        },
+        {
+          "level": 24,
+          "property_id": "409024",
+          "hp": 11040,
+          "atk": 552,
+          "p_def": 276,
+          "m_def": 276
+        },
+        {
+          "level": 25,
+          "property_id": "409025",
+          "hp": 11600,
+          "atk": 580,
+          "p_def": 290,
+          "m_def": 290
+        },
+        {
+          "level": 26,
+          "property_id": "409026",
+          "hp": 12160,
+          "atk": 608,
+          "p_def": 304,
+          "m_def": 304
+        },
+        {
+          "level": 27,
+          "property_id": "409027",
+          "hp": 12720,
+          "atk": 636,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 28,
+          "property_id": "409028",
+          "hp": 13280,
+          "atk": 664,
+          "p_def": 332,
+          "m_def": 332
+        },
+        {
+          "level": 29,
+          "property_id": "409029",
+          "hp": 13840,
+          "atk": 692,
+          "p_def": 346,
+          "m_def": 346
+        },
+        {
+          "level": 30,
+          "property_id": "409030",
+          "hp": 14400,
+          "atk": 720,
+          "p_def": 360,
+          "m_def": 360
+        },
+        {
+          "level": 31,
+          "property_id": "409031",
+          "hp": 15000,
+          "atk": 750,
+          "p_def": 375,
+          "m_def": 375
+        },
+        {
+          "level": 32,
+          "property_id": "409032",
+          "hp": 15600,
+          "atk": 780,
+          "p_def": 390,
+          "m_def": 390
+        },
+        {
+          "level": 33,
+          "property_id": "409033",
+          "hp": 16200,
+          "atk": 810,
+          "p_def": 405,
+          "m_def": 405
+        },
+        {
+          "level": 34,
+          "property_id": "409034",
+          "hp": 16800,
+          "atk": 840,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 35,
+          "property_id": "409035",
+          "hp": 17400,
+          "atk": 870,
+          "p_def": 435,
+          "m_def": 435
+        },
+        {
+          "level": 36,
+          "property_id": "409036",
+          "hp": 18000,
+          "atk": 900,
+          "p_def": 450,
+          "m_def": 450
+        },
+        {
+          "level": 37,
+          "property_id": "409037",
+          "hp": 18600,
+          "atk": 930,
+          "p_def": 465,
+          "m_def": 465
+        },
+        {
+          "level": 38,
+          "property_id": "409038",
+          "hp": 19200,
+          "atk": 960,
+          "p_def": 480,
+          "m_def": 480
+        },
+        {
+          "level": 39,
+          "property_id": "409039",
+          "hp": 19800,
+          "atk": 990,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 40,
+          "property_id": "409040",
+          "hp": 20400,
+          "atk": 1020,
+          "p_def": 510,
+          "m_def": 510
+        },
+        {
+          "level": 41,
+          "property_id": "409041",
+          "hp": 21040,
+          "atk": 1052,
+          "p_def": 526,
+          "m_def": 526
+        },
+        {
+          "level": 42,
+          "property_id": "409042",
+          "hp": 21680,
+          "atk": 1084,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 43,
+          "property_id": "409043",
+          "hp": 22320,
+          "atk": 1116,
+          "p_def": 558,
+          "m_def": 558
+        },
+        {
+          "level": 44,
+          "property_id": "409044",
+          "hp": 22960,
+          "atk": 1148,
+          "p_def": 574,
+          "m_def": 574
+        },
+        {
+          "level": 45,
+          "property_id": "409045",
+          "hp": 23600,
+          "atk": 1180,
+          "p_def": 590,
+          "m_def": 590
+        },
+        {
+          "level": 46,
+          "property_id": "409046",
+          "hp": 24240,
+          "atk": 1212,
+          "p_def": 606,
+          "m_def": 606
+        },
+        {
+          "level": 47,
+          "property_id": "409047",
+          "hp": 24880,
+          "atk": 1244,
+          "p_def": 622,
+          "m_def": 622
+        },
+        {
+          "level": 48,
+          "property_id": "409048",
+          "hp": 25520,
+          "atk": 1276,
+          "p_def": 638,
+          "m_def": 638
+        },
+        {
+          "level": 49,
+          "property_id": "409049",
+          "hp": 26160,
+          "atk": 1308,
+          "p_def": 654,
+          "m_def": 654
+        },
+        {
+          "level": 50,
+          "property_id": "409050",
+          "hp": 26800,
+          "atk": 1340,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 51,
+          "property_id": "409051",
+          "hp": 27480,
+          "atk": 1374,
+          "p_def": 687,
+          "m_def": 687
+        },
+        {
+          "level": 52,
+          "property_id": "409052",
+          "hp": 28160,
+          "atk": 1408,
+          "p_def": 704,
+          "m_def": 704
+        },
+        {
+          "level": 53,
+          "property_id": "409053",
+          "hp": 28840,
+          "atk": 1442,
+          "p_def": 721,
+          "m_def": 721
+        },
+        {
+          "level": 54,
+          "property_id": "409054",
+          "hp": 29520,
+          "atk": 1476,
+          "p_def": 738,
+          "m_def": 738
+        },
+        {
+          "level": 55,
+          "property_id": "409055",
+          "hp": 30200,
+          "atk": 1510,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 56,
+          "property_id": "409056",
+          "hp": 30880,
+          "atk": 1544,
+          "p_def": 772,
+          "m_def": 772
+        },
+        {
+          "level": 57,
+          "property_id": "409057",
+          "hp": 31560,
+          "atk": 1578,
+          "p_def": 789,
+          "m_def": 789
+        },
+        {
+          "level": 58,
+          "property_id": "409058",
+          "hp": 32240,
+          "atk": 1612,
+          "p_def": 806,
+          "m_def": 806
+        },
+        {
+          "level": 59,
+          "property_id": "409059",
+          "hp": 32920,
+          "atk": 1646,
+          "p_def": 823,
+          "m_def": 823
+        },
+        {
+          "level": 60,
+          "property_id": "409060",
+          "hp": 33600,
+          "atk": 1680,
+          "p_def": 840,
+          "m_def": 840
+        },
+        {
+          "level": 61,
+          "property_id": "409061",
+          "hp": 34400,
+          "atk": 1720,
+          "p_def": 860,
+          "m_def": 860
+        },
+        {
+          "level": 62,
+          "property_id": "409062",
+          "hp": 35200,
+          "atk": 1760,
+          "p_def": 880,
+          "m_def": 880
+        },
+        {
+          "level": 63,
+          "property_id": "409063",
+          "hp": 36000,
+          "atk": 1800,
+          "p_def": 900,
+          "m_def": 900
+        },
+        {
+          "level": 64,
+          "property_id": "409064",
+          "hp": 36800,
+          "atk": 1840,
+          "p_def": 920,
+          "m_def": 920
+        },
+        {
+          "level": 65,
+          "property_id": "409065",
+          "hp": 37600,
+          "atk": 1880,
+          "p_def": 940,
+          "m_def": 940
+        },
+        {
+          "level": 66,
+          "property_id": "409066",
+          "hp": 38400,
+          "atk": 1920,
+          "p_def": 960,
+          "m_def": 960
+        },
+        {
+          "level": 67,
+          "property_id": "409067",
+          "hp": 39200,
+          "atk": 1960,
+          "p_def": 980,
+          "m_def": 980
+        },
+        {
+          "level": 68,
+          "property_id": "409068",
+          "hp": 40000,
+          "atk": 2000,
+          "p_def": 1000,
+          "m_def": 1000
+        },
+        {
+          "level": 69,
+          "property_id": "409069",
+          "hp": 40800,
+          "atk": 2040,
+          "p_def": 1020,
+          "m_def": 1020
+        },
+        {
+          "level": 70,
+          "property_id": "409070",
+          "hp": 41600,
+          "atk": 2080,
+          "p_def": 1040,
+          "m_def": 1040
         }
       ]
     },
     "2003": {
+      "property_group": "4100",
       "heroes": [
         {
           "hero_id": "20190",
@@ -496,11 +3053,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4100000",
+          "property_id": "41000",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -508,15 +3064,568 @@
         },
         {
           "level": 1,
-          "property_id": "4100001",
+          "property_id": "41001",
           "hp": 440,
           "atk": 18,
           "p_def": 11,
           "m_def": 11
+        },
+        {
+          "level": 2,
+          "property_id": "41002",
+          "hp": 880,
+          "atk": 36,
+          "p_def": 22,
+          "m_def": 22
+        },
+        {
+          "level": 3,
+          "property_id": "41003",
+          "hp": 1320,
+          "atk": 54,
+          "p_def": 33,
+          "m_def": 33
+        },
+        {
+          "level": 4,
+          "property_id": "41004",
+          "hp": 1760,
+          "atk": 72,
+          "p_def": 44,
+          "m_def": 44
+        },
+        {
+          "level": 5,
+          "property_id": "41005",
+          "hp": 2200,
+          "atk": 90,
+          "p_def": 55,
+          "m_def": 55
+        },
+        {
+          "level": 6,
+          "property_id": "41006",
+          "hp": 2640,
+          "atk": 108,
+          "p_def": 66,
+          "m_def": 66
+        },
+        {
+          "level": 7,
+          "property_id": "41007",
+          "hp": 3080,
+          "atk": 126,
+          "p_def": 77,
+          "m_def": 77
+        },
+        {
+          "level": 8,
+          "property_id": "41008",
+          "hp": 3520,
+          "atk": 144,
+          "p_def": 88,
+          "m_def": 88
+        },
+        {
+          "level": 9,
+          "property_id": "41009",
+          "hp": 3960,
+          "atk": 162,
+          "p_def": 99,
+          "m_def": 99
+        },
+        {
+          "level": 10,
+          "property_id": "410010",
+          "hp": 4400,
+          "atk": 180,
+          "p_def": 110,
+          "m_def": 110
+        },
+        {
+          "level": 11,
+          "property_id": "410011",
+          "hp": 4928,
+          "atk": 201,
+          "p_def": 123,
+          "m_def": 123
+        },
+        {
+          "level": 12,
+          "property_id": "410012",
+          "hp": 5456,
+          "atk": 223,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 13,
+          "property_id": "410013",
+          "hp": 5984,
+          "atk": 244,
+          "p_def": 149,
+          "m_def": 149
+        },
+        {
+          "level": 14,
+          "property_id": "410014",
+          "hp": 6512,
+          "atk": 266,
+          "p_def": 162,
+          "m_def": 162
+        },
+        {
+          "level": 15,
+          "property_id": "410015",
+          "hp": 7040,
+          "atk": 288,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 16,
+          "property_id": "410016",
+          "hp": 7568,
+          "atk": 309,
+          "p_def": 189,
+          "m_def": 189
+        },
+        {
+          "level": 17,
+          "property_id": "410017",
+          "hp": 8096,
+          "atk": 331,
+          "p_def": 202,
+          "m_def": 202
+        },
+        {
+          "level": 18,
+          "property_id": "410018",
+          "hp": 8624,
+          "atk": 352,
+          "p_def": 215,
+          "m_def": 215
+        },
+        {
+          "level": 19,
+          "property_id": "410019",
+          "hp": 9152,
+          "atk": 374,
+          "p_def": 228,
+          "m_def": 228
+        },
+        {
+          "level": 20,
+          "property_id": "410020",
+          "hp": 9680,
+          "atk": 396,
+          "p_def": 242,
+          "m_def": 242
+        },
+        {
+          "level": 21,
+          "property_id": "410021",
+          "hp": 10296,
+          "atk": 421,
+          "p_def": 257,
+          "m_def": 257
+        },
+        {
+          "level": 22,
+          "property_id": "410022",
+          "hp": 10912,
+          "atk": 446,
+          "p_def": 272,
+          "m_def": 272
+        },
+        {
+          "level": 23,
+          "property_id": "410023",
+          "hp": 11528,
+          "atk": 471,
+          "p_def": 288,
+          "m_def": 288
+        },
+        {
+          "level": 24,
+          "property_id": "410024",
+          "hp": 12144,
+          "atk": 496,
+          "p_def": 303,
+          "m_def": 303
+        },
+        {
+          "level": 25,
+          "property_id": "410025",
+          "hp": 12760,
+          "atk": 522,
+          "p_def": 319,
+          "m_def": 319
+        },
+        {
+          "level": 26,
+          "property_id": "410026",
+          "hp": 13376,
+          "atk": 547,
+          "p_def": 334,
+          "m_def": 334
+        },
+        {
+          "level": 27,
+          "property_id": "410027",
+          "hp": 13992,
+          "atk": 572,
+          "p_def": 349,
+          "m_def": 349
+        },
+        {
+          "level": 28,
+          "property_id": "410028",
+          "hp": 14608,
+          "atk": 597,
+          "p_def": 365,
+          "m_def": 365
+        },
+        {
+          "level": 29,
+          "property_id": "410029",
+          "hp": 15224,
+          "atk": 622,
+          "p_def": 380,
+          "m_def": 380
+        },
+        {
+          "level": 30,
+          "property_id": "410030",
+          "hp": 15840,
+          "atk": 648,
+          "p_def": 396,
+          "m_def": 396
+        },
+        {
+          "level": 31,
+          "property_id": "410031",
+          "hp": 16500,
+          "atk": 675,
+          "p_def": 412,
+          "m_def": 412
+        },
+        {
+          "level": 32,
+          "property_id": "410032",
+          "hp": 17160,
+          "atk": 702,
+          "p_def": 429,
+          "m_def": 429
+        },
+        {
+          "level": 33,
+          "property_id": "410033",
+          "hp": 17820,
+          "atk": 729,
+          "p_def": 445,
+          "m_def": 445
+        },
+        {
+          "level": 34,
+          "property_id": "410034",
+          "hp": 18480,
+          "atk": 756,
+          "p_def": 462,
+          "m_def": 462
+        },
+        {
+          "level": 35,
+          "property_id": "410035",
+          "hp": 19140,
+          "atk": 783,
+          "p_def": 478,
+          "m_def": 478
+        },
+        {
+          "level": 36,
+          "property_id": "410036",
+          "hp": 19800,
+          "atk": 810,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 37,
+          "property_id": "410037",
+          "hp": 20460,
+          "atk": 837,
+          "p_def": 511,
+          "m_def": 511
+        },
+        {
+          "level": 38,
+          "property_id": "410038",
+          "hp": 21120,
+          "atk": 864,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 39,
+          "property_id": "410039",
+          "hp": 21780,
+          "atk": 891,
+          "p_def": 544,
+          "m_def": 544
+        },
+        {
+          "level": 40,
+          "property_id": "410040",
+          "hp": 22440,
+          "atk": 918,
+          "p_def": 561,
+          "m_def": 561
+        },
+        {
+          "level": 41,
+          "property_id": "410041",
+          "hp": 23144,
+          "atk": 946,
+          "p_def": 578,
+          "m_def": 578
+        },
+        {
+          "level": 42,
+          "property_id": "410042",
+          "hp": 23848,
+          "atk": 975,
+          "p_def": 596,
+          "m_def": 596
+        },
+        {
+          "level": 43,
+          "property_id": "410043",
+          "hp": 24552,
+          "atk": 1004,
+          "p_def": 613,
+          "m_def": 613
+        },
+        {
+          "level": 44,
+          "property_id": "410044",
+          "hp": 25256,
+          "atk": 1033,
+          "p_def": 631,
+          "m_def": 631
+        },
+        {
+          "level": 45,
+          "property_id": "410045",
+          "hp": 25960,
+          "atk": 1062,
+          "p_def": 649,
+          "m_def": 649
+        },
+        {
+          "level": 46,
+          "property_id": "410046",
+          "hp": 26664,
+          "atk": 1090,
+          "p_def": 666,
+          "m_def": 666
+        },
+        {
+          "level": 47,
+          "property_id": "410047",
+          "hp": 27368,
+          "atk": 1119,
+          "p_def": 684,
+          "m_def": 684
+        },
+        {
+          "level": 48,
+          "property_id": "410048",
+          "hp": 28072,
+          "atk": 1148,
+          "p_def": 701,
+          "m_def": 701
+        },
+        {
+          "level": 49,
+          "property_id": "410049",
+          "hp": 28776,
+          "atk": 1177,
+          "p_def": 719,
+          "m_def": 719
+        },
+        {
+          "level": 50,
+          "property_id": "410050",
+          "hp": 29480,
+          "atk": 1206,
+          "p_def": 737,
+          "m_def": 737
+        },
+        {
+          "level": 51,
+          "property_id": "410051",
+          "hp": 30228,
+          "atk": 1236,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 52,
+          "property_id": "410052",
+          "hp": 30976,
+          "atk": 1267,
+          "p_def": 774,
+          "m_def": 774
+        },
+        {
+          "level": 53,
+          "property_id": "410053",
+          "hp": 31724,
+          "atk": 1297,
+          "p_def": 793,
+          "m_def": 793
+        },
+        {
+          "level": 54,
+          "property_id": "410054",
+          "hp": 32472,
+          "atk": 1328,
+          "p_def": 811,
+          "m_def": 811
+        },
+        {
+          "level": 55,
+          "property_id": "410055",
+          "hp": 33220,
+          "atk": 1359,
+          "p_def": 830,
+          "m_def": 830
+        },
+        {
+          "level": 56,
+          "property_id": "410056",
+          "hp": 33968,
+          "atk": 1389,
+          "p_def": 849,
+          "m_def": 849
+        },
+        {
+          "level": 57,
+          "property_id": "410057",
+          "hp": 34716,
+          "atk": 1420,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 58,
+          "property_id": "410058",
+          "hp": 35464,
+          "atk": 1450,
+          "p_def": 886,
+          "m_def": 886
+        },
+        {
+          "level": 59,
+          "property_id": "410059",
+          "hp": 36212,
+          "atk": 1481,
+          "p_def": 905,
+          "m_def": 905
+        },
+        {
+          "level": 60,
+          "property_id": "410060",
+          "hp": 36960,
+          "atk": 1512,
+          "p_def": 924,
+          "m_def": 924
+        },
+        {
+          "level": 61,
+          "property_id": "410061",
+          "hp": 37840,
+          "atk": 1548,
+          "p_def": 946,
+          "m_def": 946
+        },
+        {
+          "level": 62,
+          "property_id": "410062",
+          "hp": 38720,
+          "atk": 1584,
+          "p_def": 968,
+          "m_def": 968
+        },
+        {
+          "level": 63,
+          "property_id": "410063",
+          "hp": 39600,
+          "atk": 1620,
+          "p_def": 990,
+          "m_def": 990
+        },
+        {
+          "level": 64,
+          "property_id": "410064",
+          "hp": 40480,
+          "atk": 1656,
+          "p_def": 1012,
+          "m_def": 1012
+        },
+        {
+          "level": 65,
+          "property_id": "410065",
+          "hp": 41360,
+          "atk": 1692,
+          "p_def": 1034,
+          "m_def": 1034
+        },
+        {
+          "level": 66,
+          "property_id": "410066",
+          "hp": 42240,
+          "atk": 1728,
+          "p_def": 1056,
+          "m_def": 1056
+        },
+        {
+          "level": 67,
+          "property_id": "410067",
+          "hp": 43120,
+          "atk": 1764,
+          "p_def": 1078,
+          "m_def": 1078
+        },
+        {
+          "level": 68,
+          "property_id": "410068",
+          "hp": 44000,
+          "atk": 1800,
+          "p_def": 1100,
+          "m_def": 1100
+        },
+        {
+          "level": 69,
+          "property_id": "410069",
+          "hp": 44880,
+          "atk": 1836,
+          "p_def": 1122,
+          "m_def": 1122
+        },
+        {
+          "level": 70,
+          "property_id": "410070",
+          "hp": 45760,
+          "atk": 1872,
+          "p_def": 1144,
+          "m_def": 1144
         }
       ]
     },
     "3001": {
+      "property_group": "4080",
       "heroes": [
         {
           "hero_id": "20090",
@@ -554,16 +3663,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {
-        "hp": 360,
-        "atk": 22,
-        "p_def": 9,
-        "m_def": 9
-      },
       "levels": [
         {
           "level": 0,
-          "property_id": "4080000",
+          "property_id": "40800",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -571,7 +3674,7 @@
         },
         {
           "level": 1,
-          "property_id": "4080001",
+          "property_id": "40801",
           "hp": 360,
           "atk": 22,
           "p_def": 8,
@@ -579,7 +3682,7 @@
         },
         {
           "level": 2,
-          "property_id": "4080002",
+          "property_id": "40802",
           "hp": 720,
           "atk": 44,
           "p_def": 17,
@@ -587,7 +3690,7 @@
         },
         {
           "level": 3,
-          "property_id": "4080003",
+          "property_id": "40803",
           "hp": 1080,
           "atk": 66,
           "p_def": 25,
@@ -595,7 +3698,7 @@
         },
         {
           "level": 4,
-          "property_id": "4080004",
+          "property_id": "40804",
           "hp": 1440,
           "atk": 88,
           "p_def": 34,
@@ -603,7 +3706,7 @@
         },
         {
           "level": 5,
-          "property_id": "4080005",
+          "property_id": "40805",
           "hp": 1800,
           "atk": 110,
           "p_def": 42,
@@ -611,7 +3714,7 @@
         },
         {
           "level": 6,
-          "property_id": "4080006",
+          "property_id": "40806",
           "hp": 2160,
           "atk": 132,
           "p_def": 51,
@@ -619,7 +3722,7 @@
         },
         {
           "level": 7,
-          "property_id": "4080007",
+          "property_id": "40807",
           "hp": 2520,
           "atk": 154,
           "p_def": 59,
@@ -627,7 +3730,7 @@
         },
         {
           "level": 8,
-          "property_id": "4080008",
+          "property_id": "40808",
           "hp": 2880,
           "atk": 176,
           "p_def": 68,
@@ -635,7 +3738,7 @@
         },
         {
           "level": 9,
-          "property_id": "4080009",
+          "property_id": "40809",
           "hp": 3240,
           "atk": 198,
           "p_def": 76,
@@ -643,7 +3746,7 @@
         },
         {
           "level": 10,
-          "property_id": "4080010",
+          "property_id": "408010",
           "hp": 3600,
           "atk": 220,
           "p_def": 85,
@@ -651,23 +3754,488 @@
         },
         {
           "level": 11,
-          "property_id": "4080011",
+          "property_id": "408011",
           "hp": 4032,
           "atk": 246,
           "p_def": 95,
           "m_def": 95
         },
         {
+          "level": 12,
+          "property_id": "408012",
+          "hp": 4464,
+          "atk": 272,
+          "p_def": 105,
+          "m_def": 105
+        },
+        {
+          "level": 13,
+          "property_id": "408013",
+          "hp": 4896,
+          "atk": 299,
+          "p_def": 115,
+          "m_def": 115
+        },
+        {
+          "level": 14,
+          "property_id": "408014",
+          "hp": 5328,
+          "atk": 325,
+          "p_def": 125,
+          "m_def": 125
+        },
+        {
+          "level": 15,
+          "property_id": "408015",
+          "hp": 5760,
+          "atk": 352,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 16,
+          "property_id": "408016",
+          "hp": 6192,
+          "atk": 378,
+          "p_def": 146,
+          "m_def": 146
+        },
+        {
+          "level": 17,
+          "property_id": "408017",
+          "hp": 6624,
+          "atk": 404,
+          "p_def": 156,
+          "m_def": 156
+        },
+        {
+          "level": 18,
+          "property_id": "408018",
+          "hp": 7056,
+          "atk": 431,
+          "p_def": 166,
+          "m_def": 166
+        },
+        {
+          "level": 19,
+          "property_id": "408019",
+          "hp": 7488,
+          "atk": 457,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 20,
+          "property_id": "408020",
+          "hp": 7920,
+          "atk": 484,
+          "p_def": 187,
+          "m_def": 187
+        },
+        {
           "level": 21,
-          "property_id": "4080021",
+          "property_id": "408021",
           "hp": 8424,
           "atk": 514,
           "p_def": 198,
           "m_def": 198
+        },
+        {
+          "level": 22,
+          "property_id": "408022",
+          "hp": 8928,
+          "atk": 545,
+          "p_def": 210,
+          "m_def": 210
+        },
+        {
+          "level": 23,
+          "property_id": "408023",
+          "hp": 9432,
+          "atk": 576,
+          "p_def": 222,
+          "m_def": 222
+        },
+        {
+          "level": 24,
+          "property_id": "408024",
+          "hp": 9936,
+          "atk": 607,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 25,
+          "property_id": "408025",
+          "hp": 10440,
+          "atk": 638,
+          "p_def": 246,
+          "m_def": 246
+        },
+        {
+          "level": 26,
+          "property_id": "408026",
+          "hp": 10944,
+          "atk": 668,
+          "p_def": 258,
+          "m_def": 258
+        },
+        {
+          "level": 27,
+          "property_id": "408027",
+          "hp": 11448,
+          "atk": 699,
+          "p_def": 270,
+          "m_def": 270
+        },
+        {
+          "level": 28,
+          "property_id": "408028",
+          "hp": 11952,
+          "atk": 730,
+          "p_def": 282,
+          "m_def": 282
+        },
+        {
+          "level": 29,
+          "property_id": "408029",
+          "hp": 12456,
+          "atk": 761,
+          "p_def": 294,
+          "m_def": 294
+        },
+        {
+          "level": 30,
+          "property_id": "408030",
+          "hp": 12960,
+          "atk": 792,
+          "p_def": 306,
+          "m_def": 306
+        },
+        {
+          "level": 31,
+          "property_id": "408031",
+          "hp": 13500,
+          "atk": 825,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 32,
+          "property_id": "408032",
+          "hp": 14040,
+          "atk": 858,
+          "p_def": 331,
+          "m_def": 331
+        },
+        {
+          "level": 33,
+          "property_id": "408033",
+          "hp": 14580,
+          "atk": 891,
+          "p_def": 344,
+          "m_def": 344
+        },
+        {
+          "level": 34,
+          "property_id": "408034",
+          "hp": 15120,
+          "atk": 924,
+          "p_def": 357,
+          "m_def": 357
+        },
+        {
+          "level": 35,
+          "property_id": "408035",
+          "hp": 15660,
+          "atk": 957,
+          "p_def": 369,
+          "m_def": 369
+        },
+        {
+          "level": 36,
+          "property_id": "408036",
+          "hp": 16200,
+          "atk": 990,
+          "p_def": 382,
+          "m_def": 382
+        },
+        {
+          "level": 37,
+          "property_id": "408037",
+          "hp": 16740,
+          "atk": 1023,
+          "p_def": 395,
+          "m_def": 395
+        },
+        {
+          "level": 38,
+          "property_id": "408038",
+          "hp": 17280,
+          "atk": 1056,
+          "p_def": 408,
+          "m_def": 408
+        },
+        {
+          "level": 39,
+          "property_id": "408039",
+          "hp": 17820,
+          "atk": 1089,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 40,
+          "property_id": "408040",
+          "hp": 18360,
+          "atk": 1122,
+          "p_def": 433,
+          "m_def": 433
+        },
+        {
+          "level": 41,
+          "property_id": "408041",
+          "hp": 18936,
+          "atk": 1157,
+          "p_def": 447,
+          "m_def": 447
+        },
+        {
+          "level": 42,
+          "property_id": "408042",
+          "hp": 19512,
+          "atk": 1192,
+          "p_def": 460,
+          "m_def": 460
+        },
+        {
+          "level": 43,
+          "property_id": "408043",
+          "hp": 20088,
+          "atk": 1227,
+          "p_def": 474,
+          "m_def": 474
+        },
+        {
+          "level": 44,
+          "property_id": "408044",
+          "hp": 20664,
+          "atk": 1262,
+          "p_def": 487,
+          "m_def": 487
+        },
+        {
+          "level": 45,
+          "property_id": "408045",
+          "hp": 21240,
+          "atk": 1298,
+          "p_def": 501,
+          "m_def": 501
+        },
+        {
+          "level": 46,
+          "property_id": "408046",
+          "hp": 21816,
+          "atk": 1333,
+          "p_def": 515,
+          "m_def": 515
+        },
+        {
+          "level": 47,
+          "property_id": "408047",
+          "hp": 22392,
+          "atk": 1368,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 48,
+          "property_id": "408048",
+          "hp": 22968,
+          "atk": 1403,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 49,
+          "property_id": "408049",
+          "hp": 23544,
+          "atk": 1438,
+          "p_def": 555,
+          "m_def": 555
+        },
+        {
+          "level": 50,
+          "property_id": "408050",
+          "hp": 24120,
+          "atk": 1474,
+          "p_def": 569,
+          "m_def": 569
+        },
+        {
+          "level": 51,
+          "property_id": "408051",
+          "hp": 24732,
+          "atk": 1511,
+          "p_def": 583,
+          "m_def": 583
+        },
+        {
+          "level": 52,
+          "property_id": "408052",
+          "hp": 25344,
+          "atk": 1548,
+          "p_def": 598,
+          "m_def": 598
+        },
+        {
+          "level": 53,
+          "property_id": "408053",
+          "hp": 25956,
+          "atk": 1586,
+          "p_def": 612,
+          "m_def": 612
+        },
+        {
+          "level": 54,
+          "property_id": "408054",
+          "hp": 26568,
+          "atk": 1623,
+          "p_def": 627,
+          "m_def": 627
+        },
+        {
+          "level": 55,
+          "property_id": "408055",
+          "hp": 27180,
+          "atk": 1661,
+          "p_def": 641,
+          "m_def": 641
+        },
+        {
+          "level": 56,
+          "property_id": "408056",
+          "hp": 27792,
+          "atk": 1698,
+          "p_def": 656,
+          "m_def": 656
+        },
+        {
+          "level": 57,
+          "property_id": "408057",
+          "hp": 28404,
+          "atk": 1735,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 58,
+          "property_id": "408058",
+          "hp": 29016,
+          "atk": 1773,
+          "p_def": 685,
+          "m_def": 685
+        },
+        {
+          "level": 59,
+          "property_id": "408059",
+          "hp": 29628,
+          "atk": 1810,
+          "p_def": 699,
+          "m_def": 699
+        },
+        {
+          "level": 60,
+          "property_id": "408060",
+          "hp": 30240,
+          "atk": 1848,
+          "p_def": 714,
+          "m_def": 714
+        },
+        {
+          "level": 61,
+          "property_id": "408061",
+          "hp": 30960,
+          "atk": 1892,
+          "p_def": 731,
+          "m_def": 731
+        },
+        {
+          "level": 62,
+          "property_id": "408062",
+          "hp": 31680,
+          "atk": 1936,
+          "p_def": 748,
+          "m_def": 748
+        },
+        {
+          "level": 63,
+          "property_id": "408063",
+          "hp": 32400,
+          "atk": 1980,
+          "p_def": 765,
+          "m_def": 765
+        },
+        {
+          "level": 64,
+          "property_id": "408064",
+          "hp": 33120,
+          "atk": 2024,
+          "p_def": 782,
+          "m_def": 782
+        },
+        {
+          "level": 65,
+          "property_id": "408065",
+          "hp": 33840,
+          "atk": 2068,
+          "p_def": 799,
+          "m_def": 799
+        },
+        {
+          "level": 66,
+          "property_id": "408066",
+          "hp": 34560,
+          "atk": 2112,
+          "p_def": 816,
+          "m_def": 816
+        },
+        {
+          "level": 67,
+          "property_id": "408067",
+          "hp": 35280,
+          "atk": 2156,
+          "p_def": 833,
+          "m_def": 833
+        },
+        {
+          "level": 68,
+          "property_id": "408068",
+          "hp": 36000,
+          "atk": 2200,
+          "p_def": 850,
+          "m_def": 850
+        },
+        {
+          "level": 69,
+          "property_id": "408069",
+          "hp": 36720,
+          "atk": 2244,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 70,
+          "property_id": "408070",
+          "hp": 37440,
+          "atk": 2288,
+          "p_def": 884,
+          "m_def": 884
         }
       ]
     },
     "3002": {
+      "property_group": "4090",
       "heroes": [
         {
           "hero_id": "20080",
@@ -705,27 +4273,82 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4090000",
+          "property_id": "40900",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
           "m_def": 0
         },
         {
+          "level": 1,
+          "property_id": "40901",
+          "hp": 400,
+          "atk": 20,
+          "p_def": 10,
+          "m_def": 10
+        },
+        {
           "level": 2,
-          "property_id": "4090002",
+          "property_id": "40902",
           "hp": 800,
           "atk": 40,
           "p_def": 20,
           "m_def": 20
         },
         {
+          "level": 3,
+          "property_id": "40903",
+          "hp": 1200,
+          "atk": 60,
+          "p_def": 30,
+          "m_def": 30
+        },
+        {
+          "level": 4,
+          "property_id": "40904",
+          "hp": 1600,
+          "atk": 80,
+          "p_def": 40,
+          "m_def": 40
+        },
+        {
+          "level": 5,
+          "property_id": "40905",
+          "hp": 2000,
+          "atk": 100,
+          "p_def": 50,
+          "m_def": 50
+        },
+        {
+          "level": 6,
+          "property_id": "40906",
+          "hp": 2400,
+          "atk": 120,
+          "p_def": 60,
+          "m_def": 60
+        },
+        {
+          "level": 7,
+          "property_id": "40907",
+          "hp": 2800,
+          "atk": 140,
+          "p_def": 70,
+          "m_def": 70
+        },
+        {
+          "level": 8,
+          "property_id": "40908",
+          "hp": 3200,
+          "atk": 160,
+          "p_def": 80,
+          "m_def": 80
+        },
+        {
           "level": 9,
-          "property_id": "4090009",
+          "property_id": "40909",
           "hp": 3600,
           "atk": 180,
           "p_def": 90,
@@ -733,15 +4356,79 @@
         },
         {
           "level": 10,
-          "property_id": "4090010",
+          "property_id": "409010",
           "hp": 4000,
           "atk": 200,
           "p_def": 100,
           "m_def": 100
         },
         {
+          "level": 11,
+          "property_id": "409011",
+          "hp": 4480,
+          "atk": 224,
+          "p_def": 112,
+          "m_def": 112
+        },
+        {
+          "level": 12,
+          "property_id": "409012",
+          "hp": 4960,
+          "atk": 248,
+          "p_def": 124,
+          "m_def": 124
+        },
+        {
+          "level": 13,
+          "property_id": "409013",
+          "hp": 5440,
+          "atk": 272,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 14,
+          "property_id": "409014",
+          "hp": 5920,
+          "atk": 296,
+          "p_def": 148,
+          "m_def": 148
+        },
+        {
+          "level": 15,
+          "property_id": "409015",
+          "hp": 6400,
+          "atk": 320,
+          "p_def": 160,
+          "m_def": 160
+        },
+        {
+          "level": 16,
+          "property_id": "409016",
+          "hp": 6880,
+          "atk": 344,
+          "p_def": 172,
+          "m_def": 172
+        },
+        {
+          "level": 17,
+          "property_id": "409017",
+          "hp": 7360,
+          "atk": 368,
+          "p_def": 184,
+          "m_def": 184
+        },
+        {
+          "level": 18,
+          "property_id": "409018",
+          "hp": 7840,
+          "atk": 392,
+          "p_def": 196,
+          "m_def": 196
+        },
+        {
           "level": 19,
-          "property_id": "4090019",
+          "property_id": "409019",
           "hp": 8320,
           "atk": 416,
           "p_def": 208,
@@ -749,15 +4436,416 @@
         },
         {
           "level": 20,
-          "property_id": "4090020",
+          "property_id": "409020",
           "hp": 8800,
           "atk": 440,
           "p_def": 220,
           "m_def": 220
+        },
+        {
+          "level": 21,
+          "property_id": "409021",
+          "hp": 9360,
+          "atk": 468,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 22,
+          "property_id": "409022",
+          "hp": 9920,
+          "atk": 496,
+          "p_def": 248,
+          "m_def": 248
+        },
+        {
+          "level": 23,
+          "property_id": "409023",
+          "hp": 10480,
+          "atk": 524,
+          "p_def": 262,
+          "m_def": 262
+        },
+        {
+          "level": 24,
+          "property_id": "409024",
+          "hp": 11040,
+          "atk": 552,
+          "p_def": 276,
+          "m_def": 276
+        },
+        {
+          "level": 25,
+          "property_id": "409025",
+          "hp": 11600,
+          "atk": 580,
+          "p_def": 290,
+          "m_def": 290
+        },
+        {
+          "level": 26,
+          "property_id": "409026",
+          "hp": 12160,
+          "atk": 608,
+          "p_def": 304,
+          "m_def": 304
+        },
+        {
+          "level": 27,
+          "property_id": "409027",
+          "hp": 12720,
+          "atk": 636,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 28,
+          "property_id": "409028",
+          "hp": 13280,
+          "atk": 664,
+          "p_def": 332,
+          "m_def": 332
+        },
+        {
+          "level": 29,
+          "property_id": "409029",
+          "hp": 13840,
+          "atk": 692,
+          "p_def": 346,
+          "m_def": 346
+        },
+        {
+          "level": 30,
+          "property_id": "409030",
+          "hp": 14400,
+          "atk": 720,
+          "p_def": 360,
+          "m_def": 360
+        },
+        {
+          "level": 31,
+          "property_id": "409031",
+          "hp": 15000,
+          "atk": 750,
+          "p_def": 375,
+          "m_def": 375
+        },
+        {
+          "level": 32,
+          "property_id": "409032",
+          "hp": 15600,
+          "atk": 780,
+          "p_def": 390,
+          "m_def": 390
+        },
+        {
+          "level": 33,
+          "property_id": "409033",
+          "hp": 16200,
+          "atk": 810,
+          "p_def": 405,
+          "m_def": 405
+        },
+        {
+          "level": 34,
+          "property_id": "409034",
+          "hp": 16800,
+          "atk": 840,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 35,
+          "property_id": "409035",
+          "hp": 17400,
+          "atk": 870,
+          "p_def": 435,
+          "m_def": 435
+        },
+        {
+          "level": 36,
+          "property_id": "409036",
+          "hp": 18000,
+          "atk": 900,
+          "p_def": 450,
+          "m_def": 450
+        },
+        {
+          "level": 37,
+          "property_id": "409037",
+          "hp": 18600,
+          "atk": 930,
+          "p_def": 465,
+          "m_def": 465
+        },
+        {
+          "level": 38,
+          "property_id": "409038",
+          "hp": 19200,
+          "atk": 960,
+          "p_def": 480,
+          "m_def": 480
+        },
+        {
+          "level": 39,
+          "property_id": "409039",
+          "hp": 19800,
+          "atk": 990,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 40,
+          "property_id": "409040",
+          "hp": 20400,
+          "atk": 1020,
+          "p_def": 510,
+          "m_def": 510
+        },
+        {
+          "level": 41,
+          "property_id": "409041",
+          "hp": 21040,
+          "atk": 1052,
+          "p_def": 526,
+          "m_def": 526
+        },
+        {
+          "level": 42,
+          "property_id": "409042",
+          "hp": 21680,
+          "atk": 1084,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 43,
+          "property_id": "409043",
+          "hp": 22320,
+          "atk": 1116,
+          "p_def": 558,
+          "m_def": 558
+        },
+        {
+          "level": 44,
+          "property_id": "409044",
+          "hp": 22960,
+          "atk": 1148,
+          "p_def": 574,
+          "m_def": 574
+        },
+        {
+          "level": 45,
+          "property_id": "409045",
+          "hp": 23600,
+          "atk": 1180,
+          "p_def": 590,
+          "m_def": 590
+        },
+        {
+          "level": 46,
+          "property_id": "409046",
+          "hp": 24240,
+          "atk": 1212,
+          "p_def": 606,
+          "m_def": 606
+        },
+        {
+          "level": 47,
+          "property_id": "409047",
+          "hp": 24880,
+          "atk": 1244,
+          "p_def": 622,
+          "m_def": 622
+        },
+        {
+          "level": 48,
+          "property_id": "409048",
+          "hp": 25520,
+          "atk": 1276,
+          "p_def": 638,
+          "m_def": 638
+        },
+        {
+          "level": 49,
+          "property_id": "409049",
+          "hp": 26160,
+          "atk": 1308,
+          "p_def": 654,
+          "m_def": 654
+        },
+        {
+          "level": 50,
+          "property_id": "409050",
+          "hp": 26800,
+          "atk": 1340,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 51,
+          "property_id": "409051",
+          "hp": 27480,
+          "atk": 1374,
+          "p_def": 687,
+          "m_def": 687
+        },
+        {
+          "level": 52,
+          "property_id": "409052",
+          "hp": 28160,
+          "atk": 1408,
+          "p_def": 704,
+          "m_def": 704
+        },
+        {
+          "level": 53,
+          "property_id": "409053",
+          "hp": 28840,
+          "atk": 1442,
+          "p_def": 721,
+          "m_def": 721
+        },
+        {
+          "level": 54,
+          "property_id": "409054",
+          "hp": 29520,
+          "atk": 1476,
+          "p_def": 738,
+          "m_def": 738
+        },
+        {
+          "level": 55,
+          "property_id": "409055",
+          "hp": 30200,
+          "atk": 1510,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 56,
+          "property_id": "409056",
+          "hp": 30880,
+          "atk": 1544,
+          "p_def": 772,
+          "m_def": 772
+        },
+        {
+          "level": 57,
+          "property_id": "409057",
+          "hp": 31560,
+          "atk": 1578,
+          "p_def": 789,
+          "m_def": 789
+        },
+        {
+          "level": 58,
+          "property_id": "409058",
+          "hp": 32240,
+          "atk": 1612,
+          "p_def": 806,
+          "m_def": 806
+        },
+        {
+          "level": 59,
+          "property_id": "409059",
+          "hp": 32920,
+          "atk": 1646,
+          "p_def": 823,
+          "m_def": 823
+        },
+        {
+          "level": 60,
+          "property_id": "409060",
+          "hp": 33600,
+          "atk": 1680,
+          "p_def": 840,
+          "m_def": 840
+        },
+        {
+          "level": 61,
+          "property_id": "409061",
+          "hp": 34400,
+          "atk": 1720,
+          "p_def": 860,
+          "m_def": 860
+        },
+        {
+          "level": 62,
+          "property_id": "409062",
+          "hp": 35200,
+          "atk": 1760,
+          "p_def": 880,
+          "m_def": 880
+        },
+        {
+          "level": 63,
+          "property_id": "409063",
+          "hp": 36000,
+          "atk": 1800,
+          "p_def": 900,
+          "m_def": 900
+        },
+        {
+          "level": 64,
+          "property_id": "409064",
+          "hp": 36800,
+          "atk": 1840,
+          "p_def": 920,
+          "m_def": 920
+        },
+        {
+          "level": 65,
+          "property_id": "409065",
+          "hp": 37600,
+          "atk": 1880,
+          "p_def": 940,
+          "m_def": 940
+        },
+        {
+          "level": 66,
+          "property_id": "409066",
+          "hp": 38400,
+          "atk": 1920,
+          "p_def": 960,
+          "m_def": 960
+        },
+        {
+          "level": 67,
+          "property_id": "409067",
+          "hp": 39200,
+          "atk": 1960,
+          "p_def": 980,
+          "m_def": 980
+        },
+        {
+          "level": 68,
+          "property_id": "409068",
+          "hp": 40000,
+          "atk": 2000,
+          "p_def": 1000,
+          "m_def": 1000
+        },
+        {
+          "level": 69,
+          "property_id": "409069",
+          "hp": 40800,
+          "atk": 2040,
+          "p_def": 1020,
+          "m_def": 1020
+        },
+        {
+          "level": 70,
+          "property_id": "409070",
+          "hp": 41600,
+          "atk": 2080,
+          "p_def": 1040,
+          "m_def": 1040
         }
       ]
     },
     "3003": {
+      "property_group": "4100",
       "heroes": [
         {
           "hero_id": "20410",
@@ -768,13 +4856,17 @@
           "hero_id": "20620",
           "name": "Quinn",
           "quality": "4"
+        },
+        {
+          "hero_id": "20810",
+          "name": "Transcendent Jestel",
+          "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4100000",
+          "property_id": "41000",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -782,15 +4874,568 @@
         },
         {
           "level": 1,
-          "property_id": "4100001",
+          "property_id": "41001",
           "hp": 440,
           "atk": 18,
           "p_def": 11,
           "m_def": 11
+        },
+        {
+          "level": 2,
+          "property_id": "41002",
+          "hp": 880,
+          "atk": 36,
+          "p_def": 22,
+          "m_def": 22
+        },
+        {
+          "level": 3,
+          "property_id": "41003",
+          "hp": 1320,
+          "atk": 54,
+          "p_def": 33,
+          "m_def": 33
+        },
+        {
+          "level": 4,
+          "property_id": "41004",
+          "hp": 1760,
+          "atk": 72,
+          "p_def": 44,
+          "m_def": 44
+        },
+        {
+          "level": 5,
+          "property_id": "41005",
+          "hp": 2200,
+          "atk": 90,
+          "p_def": 55,
+          "m_def": 55
+        },
+        {
+          "level": 6,
+          "property_id": "41006",
+          "hp": 2640,
+          "atk": 108,
+          "p_def": 66,
+          "m_def": 66
+        },
+        {
+          "level": 7,
+          "property_id": "41007",
+          "hp": 3080,
+          "atk": 126,
+          "p_def": 77,
+          "m_def": 77
+        },
+        {
+          "level": 8,
+          "property_id": "41008",
+          "hp": 3520,
+          "atk": 144,
+          "p_def": 88,
+          "m_def": 88
+        },
+        {
+          "level": 9,
+          "property_id": "41009",
+          "hp": 3960,
+          "atk": 162,
+          "p_def": 99,
+          "m_def": 99
+        },
+        {
+          "level": 10,
+          "property_id": "410010",
+          "hp": 4400,
+          "atk": 180,
+          "p_def": 110,
+          "m_def": 110
+        },
+        {
+          "level": 11,
+          "property_id": "410011",
+          "hp": 4928,
+          "atk": 201,
+          "p_def": 123,
+          "m_def": 123
+        },
+        {
+          "level": 12,
+          "property_id": "410012",
+          "hp": 5456,
+          "atk": 223,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 13,
+          "property_id": "410013",
+          "hp": 5984,
+          "atk": 244,
+          "p_def": 149,
+          "m_def": 149
+        },
+        {
+          "level": 14,
+          "property_id": "410014",
+          "hp": 6512,
+          "atk": 266,
+          "p_def": 162,
+          "m_def": 162
+        },
+        {
+          "level": 15,
+          "property_id": "410015",
+          "hp": 7040,
+          "atk": 288,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 16,
+          "property_id": "410016",
+          "hp": 7568,
+          "atk": 309,
+          "p_def": 189,
+          "m_def": 189
+        },
+        {
+          "level": 17,
+          "property_id": "410017",
+          "hp": 8096,
+          "atk": 331,
+          "p_def": 202,
+          "m_def": 202
+        },
+        {
+          "level": 18,
+          "property_id": "410018",
+          "hp": 8624,
+          "atk": 352,
+          "p_def": 215,
+          "m_def": 215
+        },
+        {
+          "level": 19,
+          "property_id": "410019",
+          "hp": 9152,
+          "atk": 374,
+          "p_def": 228,
+          "m_def": 228
+        },
+        {
+          "level": 20,
+          "property_id": "410020",
+          "hp": 9680,
+          "atk": 396,
+          "p_def": 242,
+          "m_def": 242
+        },
+        {
+          "level": 21,
+          "property_id": "410021",
+          "hp": 10296,
+          "atk": 421,
+          "p_def": 257,
+          "m_def": 257
+        },
+        {
+          "level": 22,
+          "property_id": "410022",
+          "hp": 10912,
+          "atk": 446,
+          "p_def": 272,
+          "m_def": 272
+        },
+        {
+          "level": 23,
+          "property_id": "410023",
+          "hp": 11528,
+          "atk": 471,
+          "p_def": 288,
+          "m_def": 288
+        },
+        {
+          "level": 24,
+          "property_id": "410024",
+          "hp": 12144,
+          "atk": 496,
+          "p_def": 303,
+          "m_def": 303
+        },
+        {
+          "level": 25,
+          "property_id": "410025",
+          "hp": 12760,
+          "atk": 522,
+          "p_def": 319,
+          "m_def": 319
+        },
+        {
+          "level": 26,
+          "property_id": "410026",
+          "hp": 13376,
+          "atk": 547,
+          "p_def": 334,
+          "m_def": 334
+        },
+        {
+          "level": 27,
+          "property_id": "410027",
+          "hp": 13992,
+          "atk": 572,
+          "p_def": 349,
+          "m_def": 349
+        },
+        {
+          "level": 28,
+          "property_id": "410028",
+          "hp": 14608,
+          "atk": 597,
+          "p_def": 365,
+          "m_def": 365
+        },
+        {
+          "level": 29,
+          "property_id": "410029",
+          "hp": 15224,
+          "atk": 622,
+          "p_def": 380,
+          "m_def": 380
+        },
+        {
+          "level": 30,
+          "property_id": "410030",
+          "hp": 15840,
+          "atk": 648,
+          "p_def": 396,
+          "m_def": 396
+        },
+        {
+          "level": 31,
+          "property_id": "410031",
+          "hp": 16500,
+          "atk": 675,
+          "p_def": 412,
+          "m_def": 412
+        },
+        {
+          "level": 32,
+          "property_id": "410032",
+          "hp": 17160,
+          "atk": 702,
+          "p_def": 429,
+          "m_def": 429
+        },
+        {
+          "level": 33,
+          "property_id": "410033",
+          "hp": 17820,
+          "atk": 729,
+          "p_def": 445,
+          "m_def": 445
+        },
+        {
+          "level": 34,
+          "property_id": "410034",
+          "hp": 18480,
+          "atk": 756,
+          "p_def": 462,
+          "m_def": 462
+        },
+        {
+          "level": 35,
+          "property_id": "410035",
+          "hp": 19140,
+          "atk": 783,
+          "p_def": 478,
+          "m_def": 478
+        },
+        {
+          "level": 36,
+          "property_id": "410036",
+          "hp": 19800,
+          "atk": 810,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 37,
+          "property_id": "410037",
+          "hp": 20460,
+          "atk": 837,
+          "p_def": 511,
+          "m_def": 511
+        },
+        {
+          "level": 38,
+          "property_id": "410038",
+          "hp": 21120,
+          "atk": 864,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 39,
+          "property_id": "410039",
+          "hp": 21780,
+          "atk": 891,
+          "p_def": 544,
+          "m_def": 544
+        },
+        {
+          "level": 40,
+          "property_id": "410040",
+          "hp": 22440,
+          "atk": 918,
+          "p_def": 561,
+          "m_def": 561
+        },
+        {
+          "level": 41,
+          "property_id": "410041",
+          "hp": 23144,
+          "atk": 946,
+          "p_def": 578,
+          "m_def": 578
+        },
+        {
+          "level": 42,
+          "property_id": "410042",
+          "hp": 23848,
+          "atk": 975,
+          "p_def": 596,
+          "m_def": 596
+        },
+        {
+          "level": 43,
+          "property_id": "410043",
+          "hp": 24552,
+          "atk": 1004,
+          "p_def": 613,
+          "m_def": 613
+        },
+        {
+          "level": 44,
+          "property_id": "410044",
+          "hp": 25256,
+          "atk": 1033,
+          "p_def": 631,
+          "m_def": 631
+        },
+        {
+          "level": 45,
+          "property_id": "410045",
+          "hp": 25960,
+          "atk": 1062,
+          "p_def": 649,
+          "m_def": 649
+        },
+        {
+          "level": 46,
+          "property_id": "410046",
+          "hp": 26664,
+          "atk": 1090,
+          "p_def": 666,
+          "m_def": 666
+        },
+        {
+          "level": 47,
+          "property_id": "410047",
+          "hp": 27368,
+          "atk": 1119,
+          "p_def": 684,
+          "m_def": 684
+        },
+        {
+          "level": 48,
+          "property_id": "410048",
+          "hp": 28072,
+          "atk": 1148,
+          "p_def": 701,
+          "m_def": 701
+        },
+        {
+          "level": 49,
+          "property_id": "410049",
+          "hp": 28776,
+          "atk": 1177,
+          "p_def": 719,
+          "m_def": 719
+        },
+        {
+          "level": 50,
+          "property_id": "410050",
+          "hp": 29480,
+          "atk": 1206,
+          "p_def": 737,
+          "m_def": 737
+        },
+        {
+          "level": 51,
+          "property_id": "410051",
+          "hp": 30228,
+          "atk": 1236,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 52,
+          "property_id": "410052",
+          "hp": 30976,
+          "atk": 1267,
+          "p_def": 774,
+          "m_def": 774
+        },
+        {
+          "level": 53,
+          "property_id": "410053",
+          "hp": 31724,
+          "atk": 1297,
+          "p_def": 793,
+          "m_def": 793
+        },
+        {
+          "level": 54,
+          "property_id": "410054",
+          "hp": 32472,
+          "atk": 1328,
+          "p_def": 811,
+          "m_def": 811
+        },
+        {
+          "level": 55,
+          "property_id": "410055",
+          "hp": 33220,
+          "atk": 1359,
+          "p_def": 830,
+          "m_def": 830
+        },
+        {
+          "level": 56,
+          "property_id": "410056",
+          "hp": 33968,
+          "atk": 1389,
+          "p_def": 849,
+          "m_def": 849
+        },
+        {
+          "level": 57,
+          "property_id": "410057",
+          "hp": 34716,
+          "atk": 1420,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 58,
+          "property_id": "410058",
+          "hp": 35464,
+          "atk": 1450,
+          "p_def": 886,
+          "m_def": 886
+        },
+        {
+          "level": 59,
+          "property_id": "410059",
+          "hp": 36212,
+          "atk": 1481,
+          "p_def": 905,
+          "m_def": 905
+        },
+        {
+          "level": 60,
+          "property_id": "410060",
+          "hp": 36960,
+          "atk": 1512,
+          "p_def": 924,
+          "m_def": 924
+        },
+        {
+          "level": 61,
+          "property_id": "410061",
+          "hp": 37840,
+          "atk": 1548,
+          "p_def": 946,
+          "m_def": 946
+        },
+        {
+          "level": 62,
+          "property_id": "410062",
+          "hp": 38720,
+          "atk": 1584,
+          "p_def": 968,
+          "m_def": 968
+        },
+        {
+          "level": 63,
+          "property_id": "410063",
+          "hp": 39600,
+          "atk": 1620,
+          "p_def": 990,
+          "m_def": 990
+        },
+        {
+          "level": 64,
+          "property_id": "410064",
+          "hp": 40480,
+          "atk": 1656,
+          "p_def": 1012,
+          "m_def": 1012
+        },
+        {
+          "level": 65,
+          "property_id": "410065",
+          "hp": 41360,
+          "atk": 1692,
+          "p_def": 1034,
+          "m_def": 1034
+        },
+        {
+          "level": 66,
+          "property_id": "410066",
+          "hp": 42240,
+          "atk": 1728,
+          "p_def": 1056,
+          "m_def": 1056
+        },
+        {
+          "level": 67,
+          "property_id": "410067",
+          "hp": 43120,
+          "atk": 1764,
+          "p_def": 1078,
+          "m_def": 1078
+        },
+        {
+          "level": 68,
+          "property_id": "410068",
+          "hp": 44000,
+          "atk": 1800,
+          "p_def": 1100,
+          "m_def": 1100
+        },
+        {
+          "level": 69,
+          "property_id": "410069",
+          "hp": 44880,
+          "atk": 1836,
+          "p_def": 1122,
+          "m_def": 1122
+        },
+        {
+          "level": 70,
+          "property_id": "410070",
+          "hp": 45760,
+          "atk": 1872,
+          "p_def": 1144,
+          "m_def": 1144
         }
       ]
     },
     "4001": {
+      "property_group": "4080",
       "heroes": [
         {
           "hero_id": "20070",
@@ -816,18 +5461,17 @@
           "hero_id": "20660",
           "name": "Fleeting Bella",
           "quality": "4"
+        },
+        {
+          "hero_id": "20790",
+          "name": "Resurgent Setti",
+          "quality": "4"
         }
       ],
-      "per_level_gain": {
-        "hp": 360,
-        "atk": 22,
-        "p_def": 9,
-        "m_def": 9
-      },
       "levels": [
         {
           "level": 0,
-          "property_id": "4080000",
+          "property_id": "40800",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -835,7 +5479,7 @@
         },
         {
           "level": 1,
-          "property_id": "4080001",
+          "property_id": "40801",
           "hp": 360,
           "atk": 22,
           "p_def": 8,
@@ -843,7 +5487,7 @@
         },
         {
           "level": 2,
-          "property_id": "4080002",
+          "property_id": "40802",
           "hp": 720,
           "atk": 44,
           "p_def": 17,
@@ -851,7 +5495,7 @@
         },
         {
           "level": 3,
-          "property_id": "4080003",
+          "property_id": "40803",
           "hp": 1080,
           "atk": 66,
           "p_def": 25,
@@ -859,7 +5503,7 @@
         },
         {
           "level": 4,
-          "property_id": "4080004",
+          "property_id": "40804",
           "hp": 1440,
           "atk": 88,
           "p_def": 34,
@@ -867,7 +5511,7 @@
         },
         {
           "level": 5,
-          "property_id": "4080005",
+          "property_id": "40805",
           "hp": 1800,
           "atk": 110,
           "p_def": 42,
@@ -875,7 +5519,7 @@
         },
         {
           "level": 6,
-          "property_id": "4080006",
+          "property_id": "40806",
           "hp": 2160,
           "atk": 132,
           "p_def": 51,
@@ -883,7 +5527,7 @@
         },
         {
           "level": 7,
-          "property_id": "4080007",
+          "property_id": "40807",
           "hp": 2520,
           "atk": 154,
           "p_def": 59,
@@ -891,7 +5535,7 @@
         },
         {
           "level": 8,
-          "property_id": "4080008",
+          "property_id": "40808",
           "hp": 2880,
           "atk": 176,
           "p_def": 68,
@@ -899,7 +5543,7 @@
         },
         {
           "level": 9,
-          "property_id": "4080009",
+          "property_id": "40809",
           "hp": 3240,
           "atk": 198,
           "p_def": 76,
@@ -907,7 +5551,7 @@
         },
         {
           "level": 10,
-          "property_id": "4080010",
+          "property_id": "408010",
           "hp": 3600,
           "atk": 220,
           "p_def": 85,
@@ -915,23 +5559,488 @@
         },
         {
           "level": 11,
-          "property_id": "4080011",
+          "property_id": "408011",
           "hp": 4032,
           "atk": 246,
           "p_def": 95,
           "m_def": 95
         },
         {
+          "level": 12,
+          "property_id": "408012",
+          "hp": 4464,
+          "atk": 272,
+          "p_def": 105,
+          "m_def": 105
+        },
+        {
+          "level": 13,
+          "property_id": "408013",
+          "hp": 4896,
+          "atk": 299,
+          "p_def": 115,
+          "m_def": 115
+        },
+        {
+          "level": 14,
+          "property_id": "408014",
+          "hp": 5328,
+          "atk": 325,
+          "p_def": 125,
+          "m_def": 125
+        },
+        {
+          "level": 15,
+          "property_id": "408015",
+          "hp": 5760,
+          "atk": 352,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 16,
+          "property_id": "408016",
+          "hp": 6192,
+          "atk": 378,
+          "p_def": 146,
+          "m_def": 146
+        },
+        {
+          "level": 17,
+          "property_id": "408017",
+          "hp": 6624,
+          "atk": 404,
+          "p_def": 156,
+          "m_def": 156
+        },
+        {
+          "level": 18,
+          "property_id": "408018",
+          "hp": 7056,
+          "atk": 431,
+          "p_def": 166,
+          "m_def": 166
+        },
+        {
+          "level": 19,
+          "property_id": "408019",
+          "hp": 7488,
+          "atk": 457,
+          "p_def": 176,
+          "m_def": 176
+        },
+        {
+          "level": 20,
+          "property_id": "408020",
+          "hp": 7920,
+          "atk": 484,
+          "p_def": 187,
+          "m_def": 187
+        },
+        {
           "level": 21,
-          "property_id": "4080021",
+          "property_id": "408021",
           "hp": 8424,
           "atk": 514,
           "p_def": 198,
           "m_def": 198
+        },
+        {
+          "level": 22,
+          "property_id": "408022",
+          "hp": 8928,
+          "atk": 545,
+          "p_def": 210,
+          "m_def": 210
+        },
+        {
+          "level": 23,
+          "property_id": "408023",
+          "hp": 9432,
+          "atk": 576,
+          "p_def": 222,
+          "m_def": 222
+        },
+        {
+          "level": 24,
+          "property_id": "408024",
+          "hp": 9936,
+          "atk": 607,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 25,
+          "property_id": "408025",
+          "hp": 10440,
+          "atk": 638,
+          "p_def": 246,
+          "m_def": 246
+        },
+        {
+          "level": 26,
+          "property_id": "408026",
+          "hp": 10944,
+          "atk": 668,
+          "p_def": 258,
+          "m_def": 258
+        },
+        {
+          "level": 27,
+          "property_id": "408027",
+          "hp": 11448,
+          "atk": 699,
+          "p_def": 270,
+          "m_def": 270
+        },
+        {
+          "level": 28,
+          "property_id": "408028",
+          "hp": 11952,
+          "atk": 730,
+          "p_def": 282,
+          "m_def": 282
+        },
+        {
+          "level": 29,
+          "property_id": "408029",
+          "hp": 12456,
+          "atk": 761,
+          "p_def": 294,
+          "m_def": 294
+        },
+        {
+          "level": 30,
+          "property_id": "408030",
+          "hp": 12960,
+          "atk": 792,
+          "p_def": 306,
+          "m_def": 306
+        },
+        {
+          "level": 31,
+          "property_id": "408031",
+          "hp": 13500,
+          "atk": 825,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 32,
+          "property_id": "408032",
+          "hp": 14040,
+          "atk": 858,
+          "p_def": 331,
+          "m_def": 331
+        },
+        {
+          "level": 33,
+          "property_id": "408033",
+          "hp": 14580,
+          "atk": 891,
+          "p_def": 344,
+          "m_def": 344
+        },
+        {
+          "level": 34,
+          "property_id": "408034",
+          "hp": 15120,
+          "atk": 924,
+          "p_def": 357,
+          "m_def": 357
+        },
+        {
+          "level": 35,
+          "property_id": "408035",
+          "hp": 15660,
+          "atk": 957,
+          "p_def": 369,
+          "m_def": 369
+        },
+        {
+          "level": 36,
+          "property_id": "408036",
+          "hp": 16200,
+          "atk": 990,
+          "p_def": 382,
+          "m_def": 382
+        },
+        {
+          "level": 37,
+          "property_id": "408037",
+          "hp": 16740,
+          "atk": 1023,
+          "p_def": 395,
+          "m_def": 395
+        },
+        {
+          "level": 38,
+          "property_id": "408038",
+          "hp": 17280,
+          "atk": 1056,
+          "p_def": 408,
+          "m_def": 408
+        },
+        {
+          "level": 39,
+          "property_id": "408039",
+          "hp": 17820,
+          "atk": 1089,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 40,
+          "property_id": "408040",
+          "hp": 18360,
+          "atk": 1122,
+          "p_def": 433,
+          "m_def": 433
+        },
+        {
+          "level": 41,
+          "property_id": "408041",
+          "hp": 18936,
+          "atk": 1157,
+          "p_def": 447,
+          "m_def": 447
+        },
+        {
+          "level": 42,
+          "property_id": "408042",
+          "hp": 19512,
+          "atk": 1192,
+          "p_def": 460,
+          "m_def": 460
+        },
+        {
+          "level": 43,
+          "property_id": "408043",
+          "hp": 20088,
+          "atk": 1227,
+          "p_def": 474,
+          "m_def": 474
+        },
+        {
+          "level": 44,
+          "property_id": "408044",
+          "hp": 20664,
+          "atk": 1262,
+          "p_def": 487,
+          "m_def": 487
+        },
+        {
+          "level": 45,
+          "property_id": "408045",
+          "hp": 21240,
+          "atk": 1298,
+          "p_def": 501,
+          "m_def": 501
+        },
+        {
+          "level": 46,
+          "property_id": "408046",
+          "hp": 21816,
+          "atk": 1333,
+          "p_def": 515,
+          "m_def": 515
+        },
+        {
+          "level": 47,
+          "property_id": "408047",
+          "hp": 22392,
+          "atk": 1368,
+          "p_def": 528,
+          "m_def": 528
+        },
+        {
+          "level": 48,
+          "property_id": "408048",
+          "hp": 22968,
+          "atk": 1403,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 49,
+          "property_id": "408049",
+          "hp": 23544,
+          "atk": 1438,
+          "p_def": 555,
+          "m_def": 555
+        },
+        {
+          "level": 50,
+          "property_id": "408050",
+          "hp": 24120,
+          "atk": 1474,
+          "p_def": 569,
+          "m_def": 569
+        },
+        {
+          "level": 51,
+          "property_id": "408051",
+          "hp": 24732,
+          "atk": 1511,
+          "p_def": 583,
+          "m_def": 583
+        },
+        {
+          "level": 52,
+          "property_id": "408052",
+          "hp": 25344,
+          "atk": 1548,
+          "p_def": 598,
+          "m_def": 598
+        },
+        {
+          "level": 53,
+          "property_id": "408053",
+          "hp": 25956,
+          "atk": 1586,
+          "p_def": 612,
+          "m_def": 612
+        },
+        {
+          "level": 54,
+          "property_id": "408054",
+          "hp": 26568,
+          "atk": 1623,
+          "p_def": 627,
+          "m_def": 627
+        },
+        {
+          "level": 55,
+          "property_id": "408055",
+          "hp": 27180,
+          "atk": 1661,
+          "p_def": 641,
+          "m_def": 641
+        },
+        {
+          "level": 56,
+          "property_id": "408056",
+          "hp": 27792,
+          "atk": 1698,
+          "p_def": 656,
+          "m_def": 656
+        },
+        {
+          "level": 57,
+          "property_id": "408057",
+          "hp": 28404,
+          "atk": 1735,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 58,
+          "property_id": "408058",
+          "hp": 29016,
+          "atk": 1773,
+          "p_def": 685,
+          "m_def": 685
+        },
+        {
+          "level": 59,
+          "property_id": "408059",
+          "hp": 29628,
+          "atk": 1810,
+          "p_def": 699,
+          "m_def": 699
+        },
+        {
+          "level": 60,
+          "property_id": "408060",
+          "hp": 30240,
+          "atk": 1848,
+          "p_def": 714,
+          "m_def": 714
+        },
+        {
+          "level": 61,
+          "property_id": "408061",
+          "hp": 30960,
+          "atk": 1892,
+          "p_def": 731,
+          "m_def": 731
+        },
+        {
+          "level": 62,
+          "property_id": "408062",
+          "hp": 31680,
+          "atk": 1936,
+          "p_def": 748,
+          "m_def": 748
+        },
+        {
+          "level": 63,
+          "property_id": "408063",
+          "hp": 32400,
+          "atk": 1980,
+          "p_def": 765,
+          "m_def": 765
+        },
+        {
+          "level": 64,
+          "property_id": "408064",
+          "hp": 33120,
+          "atk": 2024,
+          "p_def": 782,
+          "m_def": 782
+        },
+        {
+          "level": 65,
+          "property_id": "408065",
+          "hp": 33840,
+          "atk": 2068,
+          "p_def": 799,
+          "m_def": 799
+        },
+        {
+          "level": 66,
+          "property_id": "408066",
+          "hp": 34560,
+          "atk": 2112,
+          "p_def": 816,
+          "m_def": 816
+        },
+        {
+          "level": 67,
+          "property_id": "408067",
+          "hp": 35280,
+          "atk": 2156,
+          "p_def": 833,
+          "m_def": 833
+        },
+        {
+          "level": 68,
+          "property_id": "408068",
+          "hp": 36000,
+          "atk": 2200,
+          "p_def": 850,
+          "m_def": 850
+        },
+        {
+          "level": 69,
+          "property_id": "408069",
+          "hp": 36720,
+          "atk": 2244,
+          "p_def": 867,
+          "m_def": 867
+        },
+        {
+          "level": 70,
+          "property_id": "408070",
+          "hp": 37440,
+          "atk": 2288,
+          "p_def": 884,
+          "m_def": 884
         }
       ]
     },
     "4002": {
+      "property_group": "4090",
       "heroes": [
         {
           "hero_id": "20060",
@@ -964,71 +6073,10 @@
           "quality": "4"
         }
       ],
-      "per_level_gain": {},
       "levels": [
         {
           "level": 0,
-          "property_id": "4090000",
-          "hp": 0,
-          "atk": 0,
-          "p_def": 0,
-          "m_def": 0
-        },
-        {
-          "level": 2,
-          "property_id": "4090002",
-          "hp": 800,
-          "atk": 40,
-          "p_def": 20,
-          "m_def": 20
-        },
-        {
-          "level": 9,
-          "property_id": "4090009",
-          "hp": 3600,
-          "atk": 180,
-          "p_def": 90,
-          "m_def": 90
-        },
-        {
-          "level": 10,
-          "property_id": "4090010",
-          "hp": 4000,
-          "atk": 200,
-          "p_def": 100,
-          "m_def": 100
-        },
-        {
-          "level": 19,
-          "property_id": "4090019",
-          "hp": 8320,
-          "atk": 416,
-          "p_def": 208,
-          "m_def": 208
-        },
-        {
-          "level": 20,
-          "property_id": "4090020",
-          "hp": 8800,
-          "atk": 440,
-          "p_def": 220,
-          "m_def": 220
-        }
-      ]
-    },
-    "4003": {
-      "heroes": [
-        {
-          "hero_id": "20180",
-          "name": "Friedrich",
-          "quality": "4"
-        }
-      ],
-      "per_level_gain": {},
-      "levels": [
-        {
-          "level": 0,
-          "property_id": "4100000",
+          "property_id": "40900",
           "hp": 0,
           "atk": 0,
           "p_def": 0,
@@ -1036,13 +6084,634 @@
         },
         {
           "level": 1,
-          "property_id": "4100001",
-          "hp": 440,
-          "atk": 18,
-          "p_def": 11,
-          "m_def": 11
+          "property_id": "40901",
+          "hp": 400,
+          "atk": 20,
+          "p_def": 10,
+          "m_def": 10
+        },
+        {
+          "level": 2,
+          "property_id": "40902",
+          "hp": 800,
+          "atk": 40,
+          "p_def": 20,
+          "m_def": 20
+        },
+        {
+          "level": 3,
+          "property_id": "40903",
+          "hp": 1200,
+          "atk": 60,
+          "p_def": 30,
+          "m_def": 30
+        },
+        {
+          "level": 4,
+          "property_id": "40904",
+          "hp": 1600,
+          "atk": 80,
+          "p_def": 40,
+          "m_def": 40
+        },
+        {
+          "level": 5,
+          "property_id": "40905",
+          "hp": 2000,
+          "atk": 100,
+          "p_def": 50,
+          "m_def": 50
+        },
+        {
+          "level": 6,
+          "property_id": "40906",
+          "hp": 2400,
+          "atk": 120,
+          "p_def": 60,
+          "m_def": 60
+        },
+        {
+          "level": 7,
+          "property_id": "40907",
+          "hp": 2800,
+          "atk": 140,
+          "p_def": 70,
+          "m_def": 70
+        },
+        {
+          "level": 8,
+          "property_id": "40908",
+          "hp": 3200,
+          "atk": 160,
+          "p_def": 80,
+          "m_def": 80
+        },
+        {
+          "level": 9,
+          "property_id": "40909",
+          "hp": 3600,
+          "atk": 180,
+          "p_def": 90,
+          "m_def": 90
+        },
+        {
+          "level": 10,
+          "property_id": "409010",
+          "hp": 4000,
+          "atk": 200,
+          "p_def": 100,
+          "m_def": 100
+        },
+        {
+          "level": 11,
+          "property_id": "409011",
+          "hp": 4480,
+          "atk": 224,
+          "p_def": 112,
+          "m_def": 112
+        },
+        {
+          "level": 12,
+          "property_id": "409012",
+          "hp": 4960,
+          "atk": 248,
+          "p_def": 124,
+          "m_def": 124
+        },
+        {
+          "level": 13,
+          "property_id": "409013",
+          "hp": 5440,
+          "atk": 272,
+          "p_def": 136,
+          "m_def": 136
+        },
+        {
+          "level": 14,
+          "property_id": "409014",
+          "hp": 5920,
+          "atk": 296,
+          "p_def": 148,
+          "m_def": 148
+        },
+        {
+          "level": 15,
+          "property_id": "409015",
+          "hp": 6400,
+          "atk": 320,
+          "p_def": 160,
+          "m_def": 160
+        },
+        {
+          "level": 16,
+          "property_id": "409016",
+          "hp": 6880,
+          "atk": 344,
+          "p_def": 172,
+          "m_def": 172
+        },
+        {
+          "level": 17,
+          "property_id": "409017",
+          "hp": 7360,
+          "atk": 368,
+          "p_def": 184,
+          "m_def": 184
+        },
+        {
+          "level": 18,
+          "property_id": "409018",
+          "hp": 7840,
+          "atk": 392,
+          "p_def": 196,
+          "m_def": 196
+        },
+        {
+          "level": 19,
+          "property_id": "409019",
+          "hp": 8320,
+          "atk": 416,
+          "p_def": 208,
+          "m_def": 208
+        },
+        {
+          "level": 20,
+          "property_id": "409020",
+          "hp": 8800,
+          "atk": 440,
+          "p_def": 220,
+          "m_def": 220
+        },
+        {
+          "level": 21,
+          "property_id": "409021",
+          "hp": 9360,
+          "atk": 468,
+          "p_def": 234,
+          "m_def": 234
+        },
+        {
+          "level": 22,
+          "property_id": "409022",
+          "hp": 9920,
+          "atk": 496,
+          "p_def": 248,
+          "m_def": 248
+        },
+        {
+          "level": 23,
+          "property_id": "409023",
+          "hp": 10480,
+          "atk": 524,
+          "p_def": 262,
+          "m_def": 262
+        },
+        {
+          "level": 24,
+          "property_id": "409024",
+          "hp": 11040,
+          "atk": 552,
+          "p_def": 276,
+          "m_def": 276
+        },
+        {
+          "level": 25,
+          "property_id": "409025",
+          "hp": 11600,
+          "atk": 580,
+          "p_def": 290,
+          "m_def": 290
+        },
+        {
+          "level": 26,
+          "property_id": "409026",
+          "hp": 12160,
+          "atk": 608,
+          "p_def": 304,
+          "m_def": 304
+        },
+        {
+          "level": 27,
+          "property_id": "409027",
+          "hp": 12720,
+          "atk": 636,
+          "p_def": 318,
+          "m_def": 318
+        },
+        {
+          "level": 28,
+          "property_id": "409028",
+          "hp": 13280,
+          "atk": 664,
+          "p_def": 332,
+          "m_def": 332
+        },
+        {
+          "level": 29,
+          "property_id": "409029",
+          "hp": 13840,
+          "atk": 692,
+          "p_def": 346,
+          "m_def": 346
+        },
+        {
+          "level": 30,
+          "property_id": "409030",
+          "hp": 14400,
+          "atk": 720,
+          "p_def": 360,
+          "m_def": 360
+        },
+        {
+          "level": 31,
+          "property_id": "409031",
+          "hp": 15000,
+          "atk": 750,
+          "p_def": 375,
+          "m_def": 375
+        },
+        {
+          "level": 32,
+          "property_id": "409032",
+          "hp": 15600,
+          "atk": 780,
+          "p_def": 390,
+          "m_def": 390
+        },
+        {
+          "level": 33,
+          "property_id": "409033",
+          "hp": 16200,
+          "atk": 810,
+          "p_def": 405,
+          "m_def": 405
+        },
+        {
+          "level": 34,
+          "property_id": "409034",
+          "hp": 16800,
+          "atk": 840,
+          "p_def": 420,
+          "m_def": 420
+        },
+        {
+          "level": 35,
+          "property_id": "409035",
+          "hp": 17400,
+          "atk": 870,
+          "p_def": 435,
+          "m_def": 435
+        },
+        {
+          "level": 36,
+          "property_id": "409036",
+          "hp": 18000,
+          "atk": 900,
+          "p_def": 450,
+          "m_def": 450
+        },
+        {
+          "level": 37,
+          "property_id": "409037",
+          "hp": 18600,
+          "atk": 930,
+          "p_def": 465,
+          "m_def": 465
+        },
+        {
+          "level": 38,
+          "property_id": "409038",
+          "hp": 19200,
+          "atk": 960,
+          "p_def": 480,
+          "m_def": 480
+        },
+        {
+          "level": 39,
+          "property_id": "409039",
+          "hp": 19800,
+          "atk": 990,
+          "p_def": 495,
+          "m_def": 495
+        },
+        {
+          "level": 40,
+          "property_id": "409040",
+          "hp": 20400,
+          "atk": 1020,
+          "p_def": 510,
+          "m_def": 510
+        },
+        {
+          "level": 41,
+          "property_id": "409041",
+          "hp": 21040,
+          "atk": 1052,
+          "p_def": 526,
+          "m_def": 526
+        },
+        {
+          "level": 42,
+          "property_id": "409042",
+          "hp": 21680,
+          "atk": 1084,
+          "p_def": 542,
+          "m_def": 542
+        },
+        {
+          "level": 43,
+          "property_id": "409043",
+          "hp": 22320,
+          "atk": 1116,
+          "p_def": 558,
+          "m_def": 558
+        },
+        {
+          "level": 44,
+          "property_id": "409044",
+          "hp": 22960,
+          "atk": 1148,
+          "p_def": 574,
+          "m_def": 574
+        },
+        {
+          "level": 45,
+          "property_id": "409045",
+          "hp": 23600,
+          "atk": 1180,
+          "p_def": 590,
+          "m_def": 590
+        },
+        {
+          "level": 46,
+          "property_id": "409046",
+          "hp": 24240,
+          "atk": 1212,
+          "p_def": 606,
+          "m_def": 606
+        },
+        {
+          "level": 47,
+          "property_id": "409047",
+          "hp": 24880,
+          "atk": 1244,
+          "p_def": 622,
+          "m_def": 622
+        },
+        {
+          "level": 48,
+          "property_id": "409048",
+          "hp": 25520,
+          "atk": 1276,
+          "p_def": 638,
+          "m_def": 638
+        },
+        {
+          "level": 49,
+          "property_id": "409049",
+          "hp": 26160,
+          "atk": 1308,
+          "p_def": 654,
+          "m_def": 654
+        },
+        {
+          "level": 50,
+          "property_id": "409050",
+          "hp": 26800,
+          "atk": 1340,
+          "p_def": 670,
+          "m_def": 670
+        },
+        {
+          "level": 51,
+          "property_id": "409051",
+          "hp": 27480,
+          "atk": 1374,
+          "p_def": 687,
+          "m_def": 687
+        },
+        {
+          "level": 52,
+          "property_id": "409052",
+          "hp": 28160,
+          "atk": 1408,
+          "p_def": 704,
+          "m_def": 704
+        },
+        {
+          "level": 53,
+          "property_id": "409053",
+          "hp": 28840,
+          "atk": 1442,
+          "p_def": 721,
+          "m_def": 721
+        },
+        {
+          "level": 54,
+          "property_id": "409054",
+          "hp": 29520,
+          "atk": 1476,
+          "p_def": 738,
+          "m_def": 738
+        },
+        {
+          "level": 55,
+          "property_id": "409055",
+          "hp": 30200,
+          "atk": 1510,
+          "p_def": 755,
+          "m_def": 755
+        },
+        {
+          "level": 56,
+          "property_id": "409056",
+          "hp": 30880,
+          "atk": 1544,
+          "p_def": 772,
+          "m_def": 772
+        },
+        {
+          "level": 57,
+          "property_id": "409057",
+          "hp": 31560,
+          "atk": 1578,
+          "p_def": 789,
+          "m_def": 789
+        },
+        {
+          "level": 58,
+          "property_id": "409058",
+          "hp": 32240,
+          "atk": 1612,
+          "p_def": 806,
+          "m_def": 806
+        },
+        {
+          "level": 59,
+          "property_id": "409059",
+          "hp": 32920,
+          "atk": 1646,
+          "p_def": 823,
+          "m_def": 823
+        },
+        {
+          "level": 60,
+          "property_id": "409060",
+          "hp": 33600,
+          "atk": 1680,
+          "p_def": 840,
+          "m_def": 840
+        },
+        {
+          "level": 61,
+          "property_id": "409061",
+          "hp": 34400,
+          "atk": 1720,
+          "p_def": 860,
+          "m_def": 860
+        },
+        {
+          "level": 62,
+          "property_id": "409062",
+          "hp": 35200,
+          "atk": 1760,
+          "p_def": 880,
+          "m_def": 880
+        },
+        {
+          "level": 63,
+          "property_id": "409063",
+          "hp": 36000,
+          "atk": 1800,
+          "p_def": 900,
+          "m_def": 900
+        },
+        {
+          "level": 64,
+          "property_id": "409064",
+          "hp": 36800,
+          "atk": 1840,
+          "p_def": 920,
+          "m_def": 920
+        },
+        {
+          "level": 65,
+          "property_id": "409065",
+          "hp": 37600,
+          "atk": 1880,
+          "p_def": 940,
+          "m_def": 940
+        },
+        {
+          "level": 66,
+          "property_id": "409066",
+          "hp": 38400,
+          "atk": 1920,
+          "p_def": 960,
+          "m_def": 960
+        },
+        {
+          "level": 67,
+          "property_id": "409067",
+          "hp": 39200,
+          "atk": 1960,
+          "p_def": 980,
+          "m_def": 980
+        },
+        {
+          "level": 68,
+          "property_id": "409068",
+          "hp": 40000,
+          "atk": 2000,
+          "p_def": 1000,
+          "m_def": 1000
+        },
+        {
+          "level": 69,
+          "property_id": "409069",
+          "hp": 40800,
+          "atk": 2040,
+          "p_def": 1020,
+          "m_def": 1020
+        },
+        {
+          "level": 70,
+          "property_id": "409070",
+          "hp": 41600,
+          "atk": 2080,
+          "p_def": 1040,
+          "m_def": 1040
         }
       ]
+    },
+    "4003": {
+      "property_group": "4110",
+      "heroes": [
+        {
+          "hero_id": "20180",
+          "name": "Friedrich",
+          "quality": "4"
+        }
+      ],
+      "levels": [
+        {
+          "level": 0,
+          "property_id": "4110000",
+          "hp": 0,
+          "atk": 0,
+          "p_def": 0,
+          "m_def": 0
+        },
+        {
+          "level": 1,
+          "property_id": "4110001",
+          "hp": 1200,
+          "atk": 60,
+          "p_def": 30,
+          "m_def": 30
+        },
+        {
+          "level": 2,
+          "property_id": "4110002",
+          "hp": 2400,
+          "atk": 120,
+          "p_def": 60,
+          "m_def": 60
+        },
+        {
+          "level": 3,
+          "property_id": "4110003",
+          "hp": 3800,
+          "atk": 190,
+          "p_def": 95,
+          "m_def": 95
+        },
+        {
+          "level": 4,
+          "property_id": "4110004",
+          "hp": 5200,
+          "atk": 260,
+          "p_def": 130,
+          "m_def": 130
+        },
+        {
+          "level": 5,
+          "property_id": "4110005",
+          "hp": 6800,
+          "atk": 340,
+          "p_def": 170,
+          "m_def": 170
+        },
+        {
+          "level": 6,
+          "property_id": "4110006",
+          "hp": 8800,
+          "atk": 440,
+          "p_def": 220,
+          "m_def": 220
+        }
+      ],
+      "note": "Friedrich uses a different scaling system (property group 4110). Only captured up to Lv6. Lv6 is the max heirloom level for this character."
     }
   }
 }

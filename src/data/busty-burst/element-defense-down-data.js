@@ -3,8 +3,8 @@
 // These are different from Physical/Magic Defense - they reduce defense against specific element types
 // Updated: Element types are Fire, Water, Wind, Light, Dark, Mind (no Magic, no Earth)
 
-import { BUSTY_BURST_SKILLS_DATA } from './character-skills-full.js';
-import { getAllCharacterSlugs } from './character-info.js';
+import { BUSTY_BURST_SKILLS_DATA } from './characters/skills/index.js';
+import { getAllCharacterSlugs } from './characters/info/index.js';
 
 // Get valid character slugs (only released characters in character-info.js)
 const validCharacterSlugs = new Set(getAllCharacterSlugs());

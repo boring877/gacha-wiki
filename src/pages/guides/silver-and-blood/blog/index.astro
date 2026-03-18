@@ -1,0 +1,55 @@
+---
+import BlogLandingLayout from '../../../../layouts/silver-and-blood/BlogLandingLayout.astro';
+import { blogConfig } from '../../../../data/silver-and-blood/blog.js';
+
+const { meta, posts } = blogConfig;
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+---
+
+<BlogLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  showTitle={true}
+>
+  <div class="sab-blog-page-container">
+    <section class="sab-blog-content-section">
+      <h2 class="sab-blog-section-title">Latest Posts</h2>
+
+      {
+        sortedPosts.length > 0 ? (
+          <div class="sab-blog-grid">
+            {sortedPosts.map(post => (
+              <a href={`/guides/silver-and-blood/blog/${post.slug}`} class="sab-blog-card">
+                <div class="sab-blog-card-meta">
+                  <span class="sab-blog-card-category">{post.category}</span>
+                  <span class="sab-blog-card-date">{formatDate(post.publishDate)}</span>
+                </div>
+                <h3 class="sab-blog-card-title">{post.title}</h3>
+                <p class="sab-blog-card-excerpt">{post.description}</p>
+                <div class="sab-blog-card-author">By {post.author}</div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="sab-blog-empty">
+            <h3>No posts yet</h3>
+            <p>Check back soon for tips, strategies, and insights!</p>
+          </div>
+        )
+      }
+    </section>
+  </div>
+</BlogLandingLayout>

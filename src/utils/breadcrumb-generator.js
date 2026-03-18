@@ -13,8 +13,6 @@ const GAME_CONFIG = {
     basePath: '/guides/zone-nova',
     patterns: {
       characters: 'Characters',
-      'character-comparison': 'Character Comparison',
-      'character-comparison-v2': 'Character Comparison',
       'character-rankings': 'Character Rankings',
       'damage-mechanics': 'Damage Mechanics',
       'team-synergy': 'Team Synergy',
@@ -29,18 +27,11 @@ const GAME_CONFIG = {
     basePath: '/guides/silver-and-blood',
     patterns: {
       characters: 'Characters',
-      'character-comparison': 'Character Comparison',
-      'character-comparison-v2': 'Character Comparison',
       'character-rankings': 'Character Rankings',
-      'damage-mechanics': 'Damage Mechanics',
       'team-synergy': 'Team Synergy',
       'tier-list': 'Tier List',
-      'beginner-guide': 'Beginner Guide',
-      'rerolling-guide': 'Rerolling Guide',
-      'ancestral-vault': 'Ancestral Vault',
+      blog: 'Blog',
       events: 'Events',
-      bosses: 'Bosses',
-      bugs: 'Bug Reports',
     },
   },
   'horizon-walker': {

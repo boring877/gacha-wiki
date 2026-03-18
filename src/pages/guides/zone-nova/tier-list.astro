@@ -41,8 +41,11 @@ function getTierClassName(tier: string): string {
 
     <!-- Maker Mode Content -->
     <div id="maker-mode-content" style="display: none;">
+      <p class="maker-description" style="text-align: center; color: var(--zn-text-secondary); margin-bottom: 1rem;">
+        Click a character to select, then click a tier to place it. Or drag and drop.
+      </p>
       <div class="maker-controls">
-        <button class="control-btn" id="reset-tier-list">Reset</button>
+        <button class="control-btn" id="reset-tier-list">Reset Tier List</button>
       </div>
     </div>
 
@@ -55,291 +58,302 @@ function getTierClassName(tier: string): string {
       <p class="tier-list-updated" id="list-updated">Last updated: 2025-09-19</p>
     </div>
 
-    <!-- Maker Mode Layout -->
-    <div class="maker-layout" id="maker-layout" style="display: none;">
-      <!-- Desktop: Side Pool -->
-      <div class="side-pool" id="side-pool">
-        <h3>Character Pool</h3>
-        <div class="pool-characters" id="character-pool">
-          {/* Characters will be populated here */}
-        </div>
+    <!-- Maker Mode: Character Pool (Grid Layout) -->
+    <div id="maker-pool" style="display: none;">
+      <div class="maker-pool-grid">
+        {ZONE_NOVA_CHARACTERS.map(char => (
+          <div
+            class="pool-character-card draggable"
+            data-character={char.name}
+            data-rarity={char.rarity}
+            data-element={char.element}
+            draggable="true"
+          >
+            <div class="pool-image-wrapper">
+              <ZNCharacterImage
+                imageName={char.image}
+                alt={char.name}
+                width={75}
+                height={75}
+                loading="lazy"
+                quality={90}
+                format="webp"
+              />
+            </div>
+            <div class="pool-character-name">{char.name}</div>
+            <div class="pool-character-badges">
+              <span class={`pool-mini-badge rarity-${char.rarity.toLowerCase()}`}>
+                {char.rarity}
+              </span>
+              {char.element && (
+                <span class={`pool-mini-badge element-${char.element.toLowerCase()}`}>
+                  {char.element}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
 
-      <!-- Tier List -->
-      <div class="maker-tier-list">
-        <div class="tier-list-display" id="maker-tier-display">
-          {
-            Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-              <div class="tier-row">
-                <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
-                <div class="tier-characters droppable" data-tier={tier}>
-                  {/* Characters will be populated by JavaScript */}
-                </div>
-              </div>
-            ))
-          }
+    <!-- Maker Mode: Tier List -->
+    <div id="maker-tier-list" style="display: none;">
+      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+        <div class="tier-row">
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+          <div class="tier-characters droppable" data-tier={tier}>
+            <div class="drop-zone-hint">Drop characters here</div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
 
     <!-- PvE Tier List Display (Visible by default) -->
     <div class="tier-list-display" id="pve-tier-display">
-      {
-        Object.entries(ALL_TIER_LISTS['pve'].tiers).map(([tier, characters]) => (
-          <div class="tier-row" data-tier={tier}>
-            <div class={`tier-label tier-${getTierClassName(tier)}`}>
-              {TIER_DEFINITIONS[tier].label}
-            </div>
-            <div class="tier-characters">
-              {characters.map(charInfo => {
-                const charData = characterMap[charInfo.name];
-                if (!charData) return null;
-
-                return (
-                  <div
-                    class="tier-character-card"
-                    onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                  >
-                    <div class="character-image-wrapper">
-                      <ZNCharacterImage
-                        imageName={charData.image}
-                        alt={charData.name}
-                        width={160}
-                        height={160}
-                        loading="lazy"
-                        quality={100}
-                        format="jpg"
-                      />
-                    </div>
-                    <div class="character-name">{charData.name}</div>
-                    <div class="character-badges">
-                      <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                        {charData.rarity}
-                      </span>
-                      {charData.element && (
-                        <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                          {charData.element}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      {Object.entries(ALL_TIER_LISTS['pve'].tiers).map(([tier, characters]) => (
+        <div class="tier-row" data-tier={tier}>
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>
+            {TIER_DEFINITIONS[tier].label}
           </div>
-        ))
-      }
+          <div class="tier-characters">
+            {characters.map(charInfo => {
+              const charData = characterMap[charInfo.name];
+              if (!charData) return null;
+
+              return (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                >
+                  <div class="character-image-wrapper">
+                    <ZNCharacterImage
+                      imageName={charData.image}
+                      alt={charData.name}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      quality={100}
+                      format="jpg"
+                    />
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                  <div class="character-badges">
+                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                      {charData.rarity}
+                    </span>
+                    {charData.element && (
+                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
+                        {charData.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- PvP Tier List Display (Hidden by default) -->
     <div class="tier-list-display" id="pvp-tier-display" style="display: none;">
-      {
-        Object.entries(ALL_TIER_LISTS['pvp'].tiers).map(([tier, characters]) => (
-          <div class="tier-row" data-tier={tier}>
-            <div class={`tier-label tier-${getTierClassName(tier)}`}>
-              {TIER_DEFINITIONS[tier].label}
-            </div>
-            <div class="tier-characters">
-              {characters.map(charInfo => {
-                const charData = characterMap[charInfo.name];
-                if (!charData) return null;
-
-                return (
-                  <div
-                    class="tier-character-card"
-                    onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                  >
-                    <div class="character-image-wrapper">
-                      <ZNCharacterImage
-                        imageName={charData.image}
-                        alt={charData.name}
-                        width={160}
-                        height={160}
-                        loading="lazy"
-                        quality={100}
-                        format="jpg"
-                      />
-                    </div>
-                    <div class="character-name">{charData.name}</div>
-                    <div class="character-badges">
-                      <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                        {charData.rarity}
-                      </span>
-                      {charData.element && (
-                        <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                          {charData.element}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      {Object.entries(ALL_TIER_LISTS['pvp'].tiers).map(([tier, characters]) => (
+        <div class="tier-row" data-tier={tier}>
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>
+            {TIER_DEFINITIONS[tier].label}
           </div>
-        ))
-      }
+          <div class="tier-characters">
+            {characters.map(charInfo => {
+              const charData = characterMap[charInfo.name];
+              if (!charData) return null;
+
+              return (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                >
+                  <div class="character-image-wrapper">
+                    <ZNCharacterImage
+                      imageName={charData.image}
+                      alt={charData.name}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      quality={100}
+                      format="jpg"
+                    />
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                  <div class="character-badges">
+                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                      {charData.rarity}
+                    </span>
+                    {charData.element && (
+                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
+                        {charData.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- Rift Tier List Display (Hidden by default) -->
     <div class="tier-list-display" id="rift-tier-display" style="display: none;">
-      {
-        Object.entries(ALL_TIER_LISTS['rift'].tiers).map(([tier, characters]) => (
-          <div class="tier-row" data-tier={tier}>
-            <div class={`tier-label tier-${getTierClassName(tier)}`}>
-              {TIER_DEFINITIONS[tier].label}
-            </div>
-            <div class="tier-characters">
-              {characters.map(charInfo => {
-                const charData = characterMap[charInfo.name];
-                if (!charData) return null;
-
-                return (
-                  <div
-                    class="tier-character-card"
-                    onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                  >
-                    <div class="character-image-wrapper">
-                      <ZNCharacterImage
-                        imageName={charData.image}
-                        alt={charData.name}
-                        width={160}
-                        height={160}
-                        loading="lazy"
-                        quality={100}
-                        format="jpg"
-                      />
-                    </div>
-                    <div class="character-name">{charData.name}</div>
-                    <div class="character-badges">
-                      <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                        {charData.rarity}
-                      </span>
-                      {charData.element && (
-                        <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                          {charData.element}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      {Object.entries(ALL_TIER_LISTS['rift'].tiers).map(([tier, characters]) => (
+        <div class="tier-row" data-tier={tier}>
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>
+            {TIER_DEFINITIONS[tier].label}
           </div>
-        ))
-      }
+          <div class="tier-characters">
+            {characters.map(charInfo => {
+              const charData = characterMap[charInfo.name];
+              if (!charData) return null;
+
+              return (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                >
+                  <div class="character-image-wrapper">
+                    <ZNCharacterImage
+                      imageName={charData.image}
+                      alt={charData.name}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      quality={100}
+                      format="jpg"
+                    />
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                  <div class="character-badges">
+                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                      {charData.rarity}
+                    </span>
+                    {charData.element && (
+                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
+                        {charData.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- Guild Raid Tier List Display (Hidden by default) -->
     <div class="tier-list-display" id="guild-raid-tier-display" style="display: none;">
-      {
-        Object.entries(ALL_TIER_LISTS['guild-raid'].tiers).map(([tier, characters]) => (
-          <div class="tier-row" data-tier={tier}>
-            <div class={`tier-label tier-${getTierClassName(tier)}`}>
-              {TIER_DEFINITIONS[tier].label}
-            </div>
-            <div class="tier-characters">
-              {characters.map(charInfo => {
-                const charData = characterMap[charInfo.name];
-                if (!charData) return null;
-
-                return (
-                  <div
-                    class="tier-character-card"
-                    onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                  >
-                    <div class="character-image-wrapper">
-                      <ZNCharacterImage
-                        imageName={charData.image}
-                        alt={charData.name}
-                        width={160}
-                        height={160}
-                        loading="lazy"
-                        quality={100}
-                        format="jpg"
-                      />
-                    </div>
-                    <div class="character-name">{charData.name}</div>
-                    <div class="character-badges">
-                      <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                        {charData.rarity}
-                      </span>
-                      {charData.element && (
-                        <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                          {charData.element}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      {Object.entries(ALL_TIER_LISTS['guild-raid'].tiers).map(([tier, characters]) => (
+        <div class="tier-row" data-tier={tier}>
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>
+            {TIER_DEFINITIONS[tier].label}
           </div>
-        ))
-      }
+          <div class="tier-characters">
+            {characters.map(charInfo => {
+              const charData = characterMap[charInfo.name];
+              if (!charData) return null;
+
+              return (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                >
+                  <div class="character-image-wrapper">
+                    <ZNCharacterImage
+                      imageName={charData.image}
+                      alt={charData.name}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      quality={100}
+                      format="jpg"
+                    />
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                  <div class="character-badges">
+                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                      {charData.rarity}
+                    </span>
+                    {charData.element && (
+                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
+                        {charData.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- New Player Tier List Display (Hidden by default) -->
     <div class="tier-list-display" id="new-player-tier-display" style="display: none;">
-      {
-        Object.entries(ALL_TIER_LISTS['new-player'].tiers).map(([tier, characters]) => (
-          <div class="tier-row" data-tier={tier}>
-            <div class={`tier-label tier-${getTierClassName(tier)}`}>
-              {TIER_DEFINITIONS[tier].label}
-            </div>
-            <div class="tier-characters">
-              {characters.map(charInfo => {
-                const charData = characterMap[charInfo.name];
-                if (!charData) return null;
-
-                return (
-                  <div
-                    class="tier-character-card"
-                    onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                  >
-                    <div class="character-image-wrapper">
-                      <ZNCharacterImage
-                        imageName={charData.image}
-                        alt={charData.name}
-                        width={160}
-                        height={160}
-                        loading="lazy"
-                        quality={100}
-                        format="jpg"
-                      />
-                    </div>
-                    <div class="character-name">{charData.name}</div>
-                    <div class="character-badges">
-                      <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                        {charData.rarity}
-                      </span>
-                      {charData.element && (
-                        <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                          {charData.element}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      {Object.entries(ALL_TIER_LISTS['new-player'].tiers).map(([tier, characters]) => (
+        <div class="tier-row" data-tier={tier}>
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>
+            {TIER_DEFINITIONS[tier].label}
           </div>
-        ))
-      }
+          <div class="tier-characters">
+            {characters.map(charInfo => {
+              const charData = characterMap[charInfo.name];
+              if (!charData) return null;
+
+              return (
+                <div
+                  class="tier-character-card"
+                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                >
+                  <div class="character-image-wrapper">
+                    <ZNCharacterImage
+                      imageName={charData.image}
+                      alt={charData.name}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      quality={100}
+                      format="jpg"
+                    />
+                  </div>
+                  <div class="character-name">{charData.name}</div>
+                  <div class="character-badges">
+                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
+                      {charData.rarity}
+                    </span>
+                    {charData.element && (
+                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
+                        {charData.element}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- Tier Legend -->
     <div class="tier-legend" id="tier-legend">
-      {
-        Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-          <div class="legend-item">
-            <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
-            <div class="legend-description">
-              <span class="legend-label">{definition.label} Tier</span>
-              <span class="legend-text">{definition.description}</span>
-            </div>
+      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+        <div class="legend-item">
+          <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
+          <div class="legend-description">
+            <span class="legend-label">{definition.label} Tier</span>
+            <span class="legend-text">{definition.description}</span>
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
 
     <!-- Quick Links -->
@@ -367,24 +381,10 @@ function getTierClassName(tier: string): string {
     </div>
   </div>
 
-  <script
-    define:vars={{
-      ALL_TIER_LISTS,
-      characterMap,
-      TIER_DEFINITIONS,
-      optimizedImagePaths: (() => {
-        // Use the original character image paths directly
-        const paths = {};
-        ZONE_NOVA_CHARACTERS.forEach(char => {
-          // Use the exact path from character data
-          paths[char.name] = char.image;
-        });
-        return paths;
-      })(),
-    }}
-  >
+  <!-- Tier List Maker Script -->
+  <script define:vars={{ characterMap, ALL_TIER_LISTS }}>
     document.addEventListener('DOMContentLoaded', () => {
-      // Cache DOM elements
+      // View mode elements
       const listTitle = document.getElementById('list-title');
       const listDescription = document.getElementById('list-description');
       const listUpdated = document.getElementById('list-updated');
@@ -395,59 +395,46 @@ function getTierClassName(tier: string): string {
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
       const tierLegend = document.getElementById('tier-legend');
-      const characterPool = document.getElementById('character-pool');
-      const makerLayout = document.getElementById('maker-layout');
+      const tierListDisplays = document.querySelectorAll('.tier-list-display[id$="-tier-display"]');
+
+      // Maker mode elements
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
       const resetBtn = document.getElementById('reset-tier-list');
 
-      // Current active tier list
       let currentListType = 'pve';
       let currentMode = 'view';
-      let selectedCharacter = null; // For mobile tap selection
+      let selectedCharacter = null;
+      const tierAssignments = {};
+      const STORAGE_KEY = 'zn-custom-tier-list';
+      let makerInitialized = false;
 
-      // Function to switch tier list display
-      function switchTierList(listType) {
+      // Update tier list info
+      function updateTierListInfo(listType) {
         const tierList = ALL_TIER_LISTS[listType];
         if (!tierList) return;
-
-        // Update info
         if (listTitle) listTitle.textContent = tierList.name;
         if (listDescription) listDescription.textContent = tierList.description;
         if (listUpdated) listUpdated.textContent = `Last updated: ${tierList.lastUpdated}`;
 
-        // Hide all tier list displays
-        const allDisplays = document.querySelectorAll('.tier-list-display');
-        allDisplays.forEach(display => {
-          if (display.id && display.id.includes('-tier-display')) {
-            display.style.display = 'none';
-          }
+        tierListDisplays.forEach(display => {
+          display.style.display = display.id === `${listType}-tier-display` ? 'block' : 'none';
         });
-
-        // Show selected tier list display
-        const selectedDisplay = document.getElementById(`${listType}-tier-display`);
-        if (selectedDisplay) {
-          selectedDisplay.style.display = 'block';
-        }
       }
 
-      // Add event listeners to type buttons
+      // Type button listeners
       typeButtons.forEach(button => {
         button.addEventListener('click', () => {
           const listType = button.dataset.listType;
           if (!listType || listType === currentListType) return;
-
-          // Update active button
           typeButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-
-          // Update current list type
           currentListType = listType;
-
-          // Switch tier list display
-          switchTierList(listType);
+          updateTierListInfo(listType);
         });
       });
 
-      // Mode switching
+      // View mode button
       viewModeBtn.addEventListener('click', () => {
         currentMode = 'view';
         viewModeBtn.classList.add('active');
@@ -456,12 +443,12 @@ function getTierClassName(tier: string): string {
         makerModeContent.style.display = 'none';
         tierListInfo.style.display = 'block';
         if (tierLegend) tierLegend.style.display = 'grid';
-        if (makerLayout) makerLayout.style.display = 'none';
-
-        // Show current tier list display
-        switchTierList(currentListType);
+        if (makerPool) makerPool.style.display = 'none';
+        if (makerTierList) makerTierList.style.display = 'none';
+        updateTierListInfo(currentListType);
       });
 
+      // Maker mode button
       makerModeBtn.addEventListener('click', () => {
         currentMode = 'maker';
         makerModeBtn.classList.add('active');
@@ -470,134 +457,30 @@ function getTierClassName(tier: string): string {
         makerModeContent.style.display = 'block';
         tierListInfo.style.display = 'none';
         if (tierLegend) tierLegend.style.display = 'none';
-        if (makerLayout) makerLayout.style.display = 'flex';
-
-        // Hide only view mode tier list displays, keep maker tier display visible
-        const viewModeDisplays = [
-          'pve-tier-display',
-          'pvp-tier-display',
-          'rift-tier-display',
-          'guild-raid-tier-display',
-          'new-player-tier-display',
-        ];
-        viewModeDisplays.forEach(displayId => {
-          const display = document.getElementById(displayId);
-          if (display) {
-            display.style.display = 'none';
-          }
-        });
-
-        initializeMakerMode();
+        if (makerPool) makerPool.style.display = 'block';
+        if (makerTierList) makerTierList.style.display = 'flex';
+        tierListDisplays.forEach(d => d.style.display = 'none');
+        if (!makerInitialized) {
+          initializeMaker();
+          makerInitialized = true;
+        }
       });
 
       // Initialize maker mode
-      function initializeMakerMode() {
-        // Update title
-        if (listTitle) {
-          listTitle.textContent = 'Create Your Own Tier List';
-        }
-        if (listDescription) {
-          const isMobile = window.innerWidth <= 768;
-          listDescription.textContent = isMobile
-            ? 'Tap a character, then tap a tier to place it'
-            : 'Drag characters from the pool to create your custom tier list';
-        }
-        if (listUpdated) {
-          listUpdated.textContent = '';
-        }
-
-        // Ensure maker tier display is visible
-        const makerTierDisplay = document.querySelector('#maker-tier-display');
-        if (makerTierDisplay) {
-          makerTierDisplay.style.display = 'block';
-
-          // Clear and setup tier rows for maker mode
-          makerTierDisplay.querySelectorAll('.tier-characters').forEach(tierContainer => {
-            tierContainer.innerHTML = '<div class="drop-zone-hint">Drop characters here</div>';
-            const isMobile = window.innerWidth <= 768;
-            if (isMobile) {
-              setupMobileTierZone(tierContainer);
-            } else {
-              setupDropZone(tierContainer);
-            }
-          });
-        }
-
-        // Populate character pool
-        populateCharacterPool();
-
-        // Setup pool as drop zone (desktop only)
-        if (window.innerWidth > 768) {
-          setupPoolDropZone();
-        }
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        loadFromStorage();
       }
 
-      // Populate character pool with all characters
-      function populateCharacterPool() {
-        if (!characterPool) return;
-        characterPool.innerHTML = '';
+      // Setup pool card drag events
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .pool-character-card').forEach(card => {
+          const characterName = card.dataset.character;
 
-        // Get all unique characters
-        const allCharacters = Object.values(characterMap);
-
-        allCharacters.forEach(charData => {
-          const card = createPoolCard(charData);
-          characterPool.appendChild(card);
-        });
-      }
-
-      // Create small pool card
-      function createPoolCard(charData) {
-        const card = document.createElement('div');
-        card.className = 'pool-character-card draggable';
-        card.draggable = true;
-        card.dataset.character = charData.name;
-
-        const elementClass = charData.element ? charData.element.toLowerCase() : '';
-        const elementName = charData.element
-          ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
-          : '';
-
-        // Use optimized image path for pool card with higher quality
-        const optimizedImagePath = optimizedImagePaths[charData.name] || charData.image;
-        // Add quality parameter to the image URL
-        const highQualityImagePath = optimizedImagePath.includes('?')
-          ? `${optimizedImagePath}&quality=100&w=80&h=80`
-          : `${optimizedImagePath}?quality=100&w=80&h=80`;
-
-        card.innerHTML = `
-          <img src="${highQualityImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy" width="60" height="60">
-          <div class="pool-character-name">${charData.name.replace(/</g, '<').replace(/>/g, '>')}</div>
-          <div class="pool-character-badges">
-            <span class="pool-mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '<').replace(/>/g, '>')}</span>
-            ${charData.element ? `<span class="pool-mini-badge element-${elementClass}">${elementName.replace(/</g, '<').replace(/>/g, '>')}</span>` : ''}
-          </div>
-        `;
-
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-          // Mobile: Tap to select
-          card.addEventListener('click', () => {
-            // Clear previous selection
-            document.querySelectorAll('.pool-character-card').forEach(c => {
-              c.classList.remove('selected');
-            });
-
-            // Select this card
-            card.classList.add('selected');
-            selectedCharacter = charData;
-
-            // Highlight tier zones
-            document.querySelectorAll('.tier-characters').forEach(zone => {
-              zone.classList.add('awaiting-placement');
-            });
-          });
-        } else {
-          // Desktop: Drag and drop
           card.addEventListener('dragstart', e => {
             e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('character', charData.name);
+            e.dataTransfer.setData('character', characterName);
             e.dataTransfer.setData('source', 'pool');
             card.classList.add('dragging');
           });
@@ -605,92 +488,121 @@ function getTierClassName(tier: string): string {
           card.addEventListener('dragend', () => {
             card.classList.remove('dragging');
           });
-        }
 
-        return card;
-      }
-
-      // Setup mobile tier zone (tap to place)
-      function setupMobileTierZone(zone) {
-        zone.addEventListener('click', () => {
-          if (selectedCharacter) {
-            // Remove hint if present
-            const hint = zone.querySelector('.drop-zone-hint');
-            if (hint) hint.remove();
-
-            // Check if character already exists and remove it
-            const existingCard = document.querySelector(
-              `[data-character="${selectedCharacter.name}"]`
-            );
-            if (existingCard) {
-              existingCard.remove();
+          // Click to select (works on all devices now)
+          card.addEventListener('click', () => {
+            // If clicking same card, deselect
+            if (selectedCharacter === characterName) {
+              card.classList.remove('selected');
+              selectedCharacter = null;
+              document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
             }
 
-            // Add character to tier
-            const card = createDraggableCard(selectedCharacter);
-            zone.appendChild(card);
-
-            // Clear selection
-            document.querySelectorAll('.pool-character-card').forEach(c => {
-              c.classList.remove('selected');
-            });
-            document.querySelectorAll('.tier-characters').forEach(z => {
-              z.classList.remove('awaiting-placement');
-            });
-            selectedCharacter = null;
-          }
+            // Select this card
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedCharacter = characterName;
+            document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
         });
       }
 
-      // Create draggable character card
-      function createDraggableCard(charData) {
-        const card = document.createElement('div');
-        card.className = 'tier-character-card draggable';
-        card.draggable = true;
-        card.dataset.character = charData.name;
+      // Setup drop zones
+      function setupDropZones() {
+        document.querySelectorAll('.tier-characters.droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
 
-        const elementClass = charData.element ? charData.element.toLowerCase() : '';
-        const elementName = charData.element
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            zone.classList.add('drag-over');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('drag-over');
+          });
+
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const characterName = e.dataTransfer.getData('character');
+            const source = e.dataTransfer.getData('source');
+
+            if (characterName) {
+              if (source === 'tier' && tierAssignments[characterName]) {
+                moveCardBetweenTiers(characterName, tierName);
+              } else {
+                moveCardToTier(characterName, tierName);
+              }
+            }
+          });
+
+          // Click to place (works on all devices now)
+          zone.addEventListener('click', () => {
+            if (!selectedCharacter) return;
+            moveCardToTier(selectedCharacter, tierName);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      // Move card to tier
+      function moveCardToTier(characterName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+
+        if (!poolCard || !targetZone) return;
+
+        // Hide pool card
+        poolCard.style.display = 'none';
+
+        // Create tier card
+        const charData = characterMap[characterName];
+        const tierCard = document.createElement('div');
+        tierCard.className = 'tier-character-card draggable in-tier';
+        tierCard.dataset.character = characterName;
+        tierCard.draggable = true;
+
+        const elementClass = charData?.element ? charData.element.toLowerCase() : '';
+        const elementName = charData?.element
           ? charData.element.charAt(0).toUpperCase() + charData.element.slice(1).toLowerCase()
           : '';
 
-        // Use optimized image path for draggable card with higher quality
-        const optimizedImagePath = optimizedImagePaths[charData.name] || charData.image;
-        // Add quality parameter to the image URL
-        const highQualityImagePath = optimizedImagePath.includes('?')
-          ? `${optimizedImagePath}&quality=100&w=80&h=80`
-          : `${optimizedImagePath}?quality=100&w=80&h=80`;
-
-        card.innerHTML = `
+        tierCard.innerHTML = `
           <div class="character-image-wrapper">
-            <img src="${highQualityImagePath.replace(/"/g, '"')}" alt="${charData.name.replace(/"/g, '"')}" loading="lazy" width="60" height="60">
+            <img src="${poolCard.querySelector('img').src}" alt="${characterName}" loading="lazy" />
           </div>
-          <div class="character-name">${charData.name.replace(/</g, '<').replace(/>/g, '>')}</div>
+          <div class="character-name">${characterName}</div>
           <div class="character-badges">
-            <span class="mini-badge rarity-${charData.rarity.toLowerCase()}">${charData.rarity.replace(/</g, '<').replace(/>/g, '>')}</span>
-            ${charData.element ? `<span class="mini-badge element-${elementClass}">${elementName.replace(/</g, '<').replace(/>/g, '>')}</span>` : ''}
+            <span class="mini-badge rarity-${charData?.rarity?.toLowerCase() || 'sr'}">${charData?.rarity || 'SR'}</span>
+            ${charData?.element ? `<span class="mini-badge element-${elementClass}">${elementName}</span>` : ''}
           </div>
           <button class="remove-btn" title="Remove from tier">×</button>
         `;
 
-        // Remove button handler
-        const removeBtn = card.querySelector('.remove-btn');
-        removeBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          // Move back to pool as SMALL card
-          const charData = characterMap[card.dataset.character];
-          if (charData) {
-            const poolCard = createPoolCard(charData);
-            characterPool.appendChild(poolCard);
-          }
-          card.remove();
-        });
+        // Setup tier card events
+        setupTierCardEvents(tierCard, characterName);
 
-        // Drag events
+        // Hide hint
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = tierName;
+        saveToStorage();
+      }
+
+      // Setup tier card events
+      function setupTierCardEvents(card, characterName) {
         card.addEventListener('dragstart', e => {
           e.dataTransfer.effectAllowed = 'move';
-          e.dataTransfer.setData('character', charData.name);
-          e.dataTransfer.setData('source', card.parentElement.id || 'pool');
+          e.dataTransfer.setData('character', characterName);
+          e.dataTransfer.setData('source', 'tier');
           card.classList.add('dragging');
         });
 
@@ -698,91 +610,195 @@ function getTierClassName(tier: string): string {
           card.classList.remove('dragging');
         });
 
-        return card;
-      }
-
-      // Setup drop zone
-      function setupDropZone(zone) {
-        zone.addEventListener('dragover', e => {
-          e.preventDefault();
-          e.dataTransfer.dropEffect = 'move';
-          zone.classList.add('drag-over');
-        });
-
-        zone.addEventListener('dragleave', () => {
-          zone.classList.remove('drag-over');
-        });
-
-        zone.addEventListener('drop', e => {
-          e.preventDefault();
-          zone.classList.remove('drag-over');
-
-          const characterName = e.dataTransfer.getData('character');
-          const sourceId = e.dataTransfer.getData('source');
-          const charData = characterMap[characterName];
-
-          if (charData) {
-            // Check if character already exists anywhere and remove it
-            const existingCard = document.querySelector(`[data-character="${characterName}"]`);
-            if (existingCard) {
-              existingCard.remove();
-            }
-
-            // Remove hint if present
-            const hint = zone.querySelector('.drop-zone-hint');
-            if (hint) hint.remove();
-
-            // Add character to tier
-            const card = createDraggableCard(charData);
-            zone.appendChild(card);
-          }
+        card.querySelector('.remove-btn').addEventListener('click', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
         });
       }
 
-      // Setup pool drop zone
-      function setupPoolDropZone() {
-        if (!characterPool) return;
+      // Move card between tiers
+      function moveCardBetweenTiers(characterName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
 
-        characterPool.addEventListener('dragover', e => {
-          e.preventDefault();
-          e.dataTransfer.dropEffect = 'move';
-          characterPool.classList.add('drag-over');
-        });
+        if (!tierCard || !targetZone) return;
 
-        characterPool.addEventListener('dragleave', () => {
-          characterPool.classList.remove('drag-over');
-        });
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = newTierName;
 
-        characterPool.addEventListener('drop', e => {
-          e.preventDefault();
-          characterPool.classList.remove('drag-over');
-
-          const characterName = e.dataTransfer.getData('character');
-          const charData = characterMap[characterName];
-
-          if (charData) {
-            // Check if character already exists and remove it
-            const existingCard = document.querySelector(`[data-character="${characterName}"]`);
-            if (existingCard) {
-              existingCard.remove();
-            }
-
-            // Add SMALL card back to pool
-            const card = createPoolCard(charData);
-            characterPool.appendChild(card);
-          }
-        });
-      }
-
-      // Reset tier list
-      resetBtn?.addEventListener('click', () => {
-        if (confirm('Reset tier list? This will move all characters back to the pool.')) {
-          initializeMakerMode();
+        // Show hint if old tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.style.display = 'block';
         }
+
+        // Hide hint in new tier
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+
+        saveToStorage();
+      }
+
+      // Return card to pool
+      function returnCardToPool(characterName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+
+        if (!poolCard || !tierCard) return;
+
+        const oldZone = tierCard.parentElement;
+        poolCard.style.display = '';
+        tierCard.remove();
+        delete tierAssignments[characterName];
+
+        // Show hint if tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.style.display = 'block';
+        }
+
+        saveToStorage();
+      }
+
+      // Reset
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
       });
 
-      // Initial population - show PvE tier list by default
-      switchTierList('pve');
+      // Storage
+      function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
+      }
+
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => {
+            if (characterMap[name]) {
+              moveCardToTier(name, tier);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load tier list:', e);
+        }
+      }
+
+      // Initial
+      updateTierListInfo('pve');
     });
   </script>
 </TierListLayout>
+
+<style>
+  /* Maker Pool Grid - better layout than sidebar */
+  .maker-pool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--zn-bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--zn-border-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  #maker-tier-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #maker-tier-list .tier-row {
+    display: flex;
+    background: var(--zn-bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--zn-border-primary);
+    min-height: 100px;
+    overflow: hidden;
+  }
+
+  #maker-tier-list .tier-characters.droppable {
+    border: 2px dashed transparent;
+    transition: all 0.2s;
+  }
+
+  #maker-tier-list .tier-characters.drag-over {
+    border-color: var(--zn-primary-amber);
+    background: rgba(255, 183, 77, 0.05);
+  }
+
+  #maker-tier-list .tier-characters.awaiting-placement {
+    border-color: var(--zn-primary-amber);
+    background: rgba(255, 183, 77, 0.1);
+  }
+
+  #maker-tier-list .tier-character-card.in-tier {
+    width: 80px;
+    min-width: 80px;
+    padding: 0.4rem;
+  }
+
+  #maker-tier-list .character-image-wrapper {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+
+  #maker-tier-list .character-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  #maker-tier-list .character-name {
+    font-size: 0.7rem;
+  }
+
+  /* Remove button styling */
+  .remove-btn {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--zn-badge-red);
+    color: white;
+    border: 2px solid var(--zn-bg-primary);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .tier-character-card:hover .remove-btn {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .maker-pool-grid {
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 0.5rem;
+    }
+
+    #maker-tier-list .tier-row {
+      flex-direction: column;
+    }
+
+    #maker-tier-list .tier-label {
+      width: 100%;
+      height: 50px;
+    }
+  }
+</style>

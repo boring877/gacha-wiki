@@ -8,9 +8,6 @@ import { characters, getCharacterById, CHARACTERS_BY_SLUG } from '../../data/sil
 import {
   PVE_TIER_LIST,
   PVP_TIER_LIST,
-  CLAN_HUNT_TIER_LIST,
-  BOSS_RAIDS_TIER_LIST,
-  NEW_PLAYER_TIER_LIST,
 } from '../../data/silver-and-blood/tier-lists.js';
 import { rankings } from '../../data/silver-and-blood/character-rankings.js';
 
@@ -24,6 +21,7 @@ import genevieveImg from '../../assets/images/games/silver-and-blood/characters/
 import amiImg from '../../assets/images/games/silver-and-blood/characters/ami.jpg';
 import augustineImg from '../../assets/images/games/silver-and-blood/characters/augustine.jpg';
 import bellaImg from '../../assets/images/games/silver-and-blood/characters/bella.jpg';
+import bloomingEmpousaImg from '../../assets/images/games/silver-and-blood/characters/blooming-empousa.png';
 import cainImg from '../../assets/images/games/silver-and-blood/characters/cain.jpg';
 import ceciaImg from '../../assets/images/games/silver-and-blood/characters/cecia.jpg';
 import dalcarloImg from '../../assets/images/games/silver-and-blood/characters/dalcarlo.jpg';
@@ -40,6 +38,7 @@ import juliusImg from '../../assets/images/games/silver-and-blood/characters/jul
 import lamiaImg from '../../assets/images/games/silver-and-blood/characters/lamia.jpg';
 import limineImg from '../../assets/images/games/silver-and-blood/characters/limine.jpg';
 import loreleiImg from '../../assets/images/games/silver-and-blood/characters/lorelei.jpg';
+import lucilleImg from '../../assets/images/games/silver-and-blood/characters/lucille.png';
 import massImg from '../../assets/images/games/silver-and-blood/characters/mass.jpg';
 import nicoleImg from '../../assets/images/games/silver-and-blood/characters/nicole.jpg';
 import ottaviaImg from '../../assets/images/games/silver-and-blood/characters/ottavia.jpg';
@@ -48,6 +47,7 @@ import pieraImg from '../../assets/images/games/silver-and-blood/characters/pier
 import quinnImg from '../../assets/images/games/silver-and-blood/characters/quinn.jpg';
 import reginaImg from '../../assets/images/games/silver-and-blood/characters/regina.jpg';
 import ressaImg from '../../assets/images/games/silver-and-blood/characters/ressa.jpg';
+import resurgentSettiImg from '../../assets/images/games/silver-and-blood/characters/resurgent-setti.png';
 import selenaImg from '../../assets/images/games/silver-and-blood/characters/selena.jpg';
 import sethImg from '../../assets/images/games/silver-and-blood/characters/seth.jpg';
 import sireneImg from '../../assets/images/games/silver-and-blood/characters/sirene.jpg';
@@ -76,6 +76,7 @@ export const CHARACTER_IMAGE_MAP = {
   ami: amiImg.src,
   augustine: augustineImg.src,
   bella: bellaImg.src,
+  'blooming-empousa': bloomingEmpousaImg.src,
   cain: cainImg.src,
   cecia: ceciaImg.src,
   dalcarlo: dalcarloImg.src,
@@ -92,6 +93,7 @@ export const CHARACTER_IMAGE_MAP = {
   lamia: lamiaImg.src,
   limine: limineImg.src,
   lorelei: loreleiImg.src,
+  lucille: lucilleImg.src,
   mass: massImg.src,
   nicole: nicoleImg.src,
   ottavia: ottaviaImg.src,
@@ -100,6 +102,7 @@ export const CHARACTER_IMAGE_MAP = {
   quinn: quinnImg.src,
   regina: reginaImg.src,
   ressa: ressaImg.src,
+  'resurgent-setti': resurgentSettiImg.src,
   selena: selenaImg.src,
   seth: sethImg.src,
   sirene: sireneImg.src,
@@ -220,9 +223,6 @@ export { characters };
 export {
   PVE_TIER_LIST,
   PVP_TIER_LIST,
-  CLAN_HUNT_TIER_LIST,
-  BOSS_RAIDS_TIER_LIST,
-  NEW_PLAYER_TIER_LIST,
 };
 
 // Re-export rankings
@@ -236,9 +236,6 @@ export const SB_DATA = {
   tierLists: {
     pve: PVE_TIER_LIST,
     pvp: PVP_TIER_LIST,
-    clanHunt: CLAN_HUNT_TIER_LIST,
-    bossRaids: BOSS_RAIDS_TIER_LIST,
-    newPlayer: NEW_PLAYER_TIER_LIST,
   },
   rankings,
   filterOptions: {

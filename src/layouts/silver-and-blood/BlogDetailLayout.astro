@@ -1,0 +1,134 @@
+---
+import SABBaseHead from '../../components/silver-and-blood/SABBaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import Breadcrumb from '../../components/silver-and-blood/Breadcrumb.astro';
+
+import '../../styles/games/silver-and-blood/sab-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/silver-and-blood/sab-layout.css';
+import '../../styles/games/silver-and-blood/sab-blog-detail.css';
+
+export interface Props {
+  post: {
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publishDate: string;
+    category: string;
+    tags: string[];
+    content: string;
+  };
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | Silver and Blood Blog`;
+const description = post.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.description,
+  author: {
+    '@type': 'Person',
+    name: post.author,
+  },
+  datePublished: post.publishDate,
+  dateModified: post.publishDate,
+  publisher: {
+    '@type': 'Organization',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: post.tags.join(', '),
+  articleSection: post.category,
+  inLanguage: 'en',
+};
+---
+
+<html lang="en">
+  <head>
+    <SABBaseHead title={title} description={description} />
+    <GameSEO gameKey="silver-and-blood" title={title} description={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <Analytics />
+  </head>
+  <body class="sab-body">
+    <CustomScrollbar />
+    <div class="bg-layer sab-bg-primary"></div>
+    <div class="bg-layer sab-bg-accent-1"></div>
+    <div class="bg-layer sab-bg-accent-2"></div>
+    <div class="bg-layer sab-bg-accent-3"></div>
+
+    <div class="sab-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="silver-and-blood" />
+      <MobileMenu />
+
+      <div class="sab-container">
+        <main class="silver-and-blood-main" id="main-content">
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{post.title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="silver-and-blood" showBackButton={true} />
+
+          <div class="content-area">
+            <article class="sab-blog-article">
+              <header class="sab-blog-header">
+                <div class="sab-blog-meta">
+                  <span class="sab-blog-meta-category">{post.category}</span>
+                  <span class="sab-blog-meta-separator">•</span>
+                  <span class="sab-blog-meta-date">{formatDate(post.publishDate)}</span>
+                  <span class="sab-blog-meta-separator">•</span>
+                  <span class="sab-blog-meta-author">By {post.author}</span>
+                </div>
+              </header>
+
+              <div class="sab-blog-content" set:html={post.content} />
+
+              {
+                post.tags && post.tags.length > 0 && (
+                  <div class="sab-blog-tags">
+                    <div class="sab-blog-tags-label">Tags</div>
+                    <div class="sab-blog-tags-list">
+                      {post.tags.map(tag => (
+                        <span class="sab-blog-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

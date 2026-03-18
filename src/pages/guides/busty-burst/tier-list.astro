@@ -6,6 +6,7 @@ import {
   getTierList,
   getAllTierLists,
 } from "../../../data/busty-burst/tier-lists.js";
+import { BUSTY_BURST_PALADINS } from "../../../data/busty-burst/paladins.js";
 
 // Import badge styles directly to ensure they're loaded
 import "../../../styles/games/busty-burst/busty-burst-badges.css";
@@ -14,6 +15,20 @@ import "../../../styles/games/busty-burst/busty-burst-tier-list.css";
 // Get all tier lists
 const beginnerTierList = getTierList("beginner");
 const srTierList = getTierList("sr");
+
+// Create a map of paladin data for quick lookup
+const paladinMap = {};
+BUSTY_BURST_PALADINS.forEach(paladin => {
+  paladinMap[paladin.name] = paladin;
+});
+
+// Tier definitions for maker mode
+const TIER_DEFINITIONS = {
+  SSS: { label: 'SSS', description: 'Must-have characters', color: '#ff6b6b' },
+  SS: { label: 'SS', description: 'Excellent choices', color: '#feca57' },
+  S: { label: 'S', description: 'Strong characters', color: '#48dbfb' },
+  A: { label: 'A', description: 'Good options', color: '#1dd1a1' },
+};
 
 // Page metadata
 const title = "BBB Busty - Tier List";
@@ -28,202 +43,263 @@ const gameTitle = "Tier List";
   gameTitle={gameTitle}
   showTitle={true}
 >
-  <!-- Tab Navigation -->
-  <div class="bb-tier-list-tabs">
-    <button class="bb-tab-button active" data-tab="beginner"
-      >Beginner Tier List</button
-    >
-    <button class="bb-tab-button" data-tab="sr">SR Only Tier List</button>
+  <!-- Mode Toggle -->
+  <div class="bb-mode-toggle">
+    <button class="bb-mode-btn active" id="view-mode-btn"> View Tier Lists </button>
+    <button class="bb-mode-btn" id="maker-mode-btn"> Create Your Own </button>
   </div>
 
-  <!-- Beginner Tier List Tab -->
-  <div id="beginner-tab" class="bb-tab-content active">
-    <section id="tier-list" class="bb-tier-list-section">
-      <div class="bb-tier-list-header">
-        <h2 class="bb-tier-list-title">EcchiPen Tier List</h2>
-        <p class="bb-tier-list-description">
+  <!-- Maker Mode Content -->
+  <div id="maker-mode-content" class="bb-maker-hidden">
+    <p class="bb-maker-description">
+      Click a character to select, then click a tier to place it. Or drag and drop.
+    </p>
+    <div class="bb-maker-controls">
+      <button class="bb-control-btn" id="reset-tier-list">Reset Tier List</button>
+    </div>
+  </div>
+
+  <!-- Maker Mode: Character Pool (Grid Layout) -->
+  <div id="maker-pool" class="bb-maker-hidden">
+    <div class="bb-maker-pool-grid">
+      {BUSTY_BURST_PALADINS.map(paladin => (
+        <div
+          class="bb-pool-character-card draggable"
+          data-character={paladin.name}
+          data-character-id={paladin.characterId}
+          data-rarity={paladin.rarity}
+          draggable="true"
+        >
+          <div class="bb-pool-image-wrapper">
+            <PaladinImage
+              characterId={paladin.characterId}
+              alt={paladin.name}
+              width={60}
+              height={60}
+              quality={90}
+              loading="lazy"
+            />
+          </div>
+          <div class="bb-pool-character-name">{paladin.name}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Maker Mode: Tier List -->
+  <div id="maker-tier-list" class="bb-maker-hidden">
+    {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+      <div class="bb-tier-row" data-tier={tier}>
+        <div class={`bb-tier-label bb-tier-${tier.toLowerCase()}`}>
+          {definition.label}
+        </div>
+        <div class="bb-tier-characters droppable" data-tier={tier}>
+          <div class="bb-drop-zone-hint">Drop characters here</div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- View Mode Content -->
+  <div id="view-mode-content">
+    <!-- Tab Navigation -->
+    <div class="bb-tier-list-tabs">
+      <button class="bb-tab-button active" data-tab="beginner"
+        >Beginner Tier List</button
+      >
+      <button class="bb-tab-button" data-tab="sr">SR Only Tier List</button>
+    </div>
+
+    <!-- Beginner Tier List Tab -->
+    <div id="beginner-tab" class="bb-tab-content active">
+      <section id="tier-list" class="bb-tier-list-section">
+        <div class="bb-tier-list-header">
+          <h2 class="bb-tier-list-title">EcchiPen Tier List</h2>
+          <p class="bb-tier-list-description">
+            {
+              beginnerTierList?.description ||
+                "This tier list gives a general idea of what to pick early on."
+            }
+          </p>
+          <p class="bb-tier-list-last-updated">
+            Last updated: {beginnerTierList?.lastUpdated || "2025-12-06"}
+          </p>
+        </div>
+
+        <!-- Search Controls -->
+        <div class="bb-tier-list-controls">
+          <input
+            type="text"
+            id="beginner-search"
+            class="bb-tier-search-input"
+            placeholder="Search by name..."
+          />
+          <select id="beginner-tier-filter" class="bb-tier-filter-select">
+            <option value="">All Tiers</option>
+            <option value="SSS">SSS Tier</option>
+            <option value="SS">SS Tier</option>
+            <option value="S">S Tier</option>
+            <option value="A">A Tier</option>
+          </select>
+          <button type="button" id="beginner-clear-btn" class="bb-tier-clear-btn">
+            Clear
+          </button>
+        </div>
+
+        <!-- Info Box -->
+        <div class="bb-tier-list-info">
+          <h3>About This Tier List</h3>
+          <p>
+            This tier list is a work in progress and is subject to change. It is
+            not a final tier list and is not intended to be a guide for optimal
+            play. It is simply a guide to help players make informed decisions
+            about which characters to pick.
+          </p>
+        </div>
+
+        <!-- Tier List Display -->
+        <div class="bb-tier-list-container" id="beginner-tier-container">
           {
-            beginnerTierList?.description ||
-              "This tier list gives a general idea of what to pick early on."
+            beginnerTierList?.tiers.map((tier) => (
+              <div class="bb-tier-row" data-tier={tier.tier}>
+                <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+                  {tier.definition.label}
+                </div>
+                <div class="bb-tier-characters">
+                  {tier.characters.map((character) => (
+                    <div
+                      class="bb-tier-character-card"
+                      data-name={character.name?.toLowerCase() || ""}
+                    >
+                      <div class="bb-character-image-wrapper">
+                        <PaladinImage
+                          characterId={character.characterId || 2001}
+                          alt={character.name}
+                          width={180}
+                          height={180}
+                          quality={95}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="bb-character-name">{character.name}</div>
+                      <div class="bb-tier-rarity">
+                        <RarityImage
+                          rarity={character.rarity || "SR"}
+                          width={64}
+                          height={32}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
           }
-        </p>
-        <p class="bb-tier-list-last-updated">
-          Last updated: {beginnerTierList?.lastUpdated || "2025-12-06"}
-        </p>
-      </div>
+        </div>
 
-      <!-- Search Controls -->
-      <div class="bb-tier-list-controls">
-        <input
-          type="text"
-          id="beginner-search"
-          class="bb-tier-search-input"
-          placeholder="Search by name..."
-        />
-        <select id="beginner-tier-filter" class="bb-tier-filter-select">
-          <option value="">All Tiers</option>
-          <option value="SSS">SSS Tier</option>
-          <option value="SS">SS Tier</option>
-          <option value="S">S Tier</option>
-          <option value="A">A Tier</option>
-        </select>
-        <button type="button" id="beginner-clear-btn" class="bb-tier-clear-btn">
-          Clear
-        </button>
-      </div>
+        <!-- No Results Message -->
+        <div class="bb-tier-no-results" id="beginner-no-results">
+          <h3>No characters found</h3>
+          <p>Try adjusting your search or filter criteria.</p>
+        </div>
+      </section>
+    </div>
 
-      <!-- Info Box -->
-      <div class="bb-tier-list-info">
-        <h3>About This Tier List</h3>
-        <p>
-          This tier list is a work in progress and is subject to change. It is
-          not a final tier list and is not intended to be a guide for optimal
-          play. It is simply a guide to help players make informed decisions
-          about which characters to pick.
-        </p>
-      </div>
+    <!-- SR Only Tier List Tab -->
+    <div id="sr-tab" class="bb-tab-content">
+      <section class="bb-tier-list-section">
+        <div class="bb-tier-list-header">
+          <h2 class="bb-tier-list-title">SR Only Tier List</h2>
+          <p class="bb-tier-list-description">
+            {
+              srTierList?.description ||
+                "Tier list for SR rarity characters only. Great for early game and budget builds."
+            }
+          </p>
+          <p class="bb-tier-list-last-updated">
+            Last updated: {srTierList?.lastUpdated || "2025-12-30"}
+          </p>
+        </div>
 
-      <!-- Tier List Display -->
-      <div class="bb-tier-list-container" id="beginner-tier-container">
-        {
-          beginnerTierList?.tiers.map((tier) => (
-            <div class="bb-tier-row" data-tier={tier.tier}>
-              <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
-                {tier.definition.label}
-              </div>
-              <div class="bb-tier-characters">
-                {tier.characters.map((character) => (
-                  <div
-                    class="bb-tier-character-card"
-                    data-name={character.name?.toLowerCase() || ""}
-                  >
-                    <div class="bb-character-image-wrapper">
-                      <PaladinImage
-                        characterId={character.characterId || 2001}
-                        alt={character.name}
-                        width={180}
-                        height={180}
-                        quality={95}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="bb-character-name">{character.name}</div>
-                    <div class="bb-tier-rarity">
-                      <RarityImage
-                        rarity={character.rarity || "SR"}
-                        width={64}
-                        height={32}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))
-        }
-      </div>
+        <!-- Search Controls -->
+        <div class="bb-tier-list-controls">
+          <input
+            type="text"
+            id="sr-search"
+            class="bb-tier-search-input"
+            placeholder="Search by name..."
+          />
+          <select id="sr-tier-filter" class="bb-tier-filter-select">
+            <option value="">All Tiers</option>
+            <option value="SSS">SSS Tier</option>
+            <option value="SS">SS Tier</option>
+            <option value="S">S Tier</option>
+            <option value="A">A Tier</option>
+          </select>
+          <button type="button" id="sr-clear-btn" class="bb-tier-clear-btn">
+            Clear
+          </button>
+        </div>
 
-      <!-- No Results Message -->
-      <div class="bb-tier-no-results" id="beginner-no-results">
-        <h3>No characters found</h3>
-        <p>Try adjusting your search or filter criteria.</p>
-      </div>
-    </section>
-  </div>
+        <!-- Info Box -->
+        <div class="bb-tier-list-info">
+          <h3>About This Tier List</h3>
+          <p>
+            This tier list ranks SR characters for SR Raid mode, which limits you
+            to only use SR units.
+          </p>
+        </div>
 
-  <!-- SR Only Tier List Tab -->
-  <div id="sr-tab" class="bb-tab-content">
-    <section class="bb-tier-list-section">
-      <div class="bb-tier-list-header">
-        <h2 class="bb-tier-list-title">SR Only Tier List</h2>
-        <p class="bb-tier-list-description">
+        <!-- Tier List Display -->
+        <div class="bb-tier-list-container" id="sr-tier-container">
           {
-            srTierList?.description ||
-              "Tier list for SR rarity characters only. Great for early game and budget builds."
+            srTierList?.tiers.map((tier) => (
+              <div class="bb-tier-row" data-tier={tier.tier}>
+                <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
+                  {tier.definition.label}
+                </div>
+                <div class="bb-tier-characters">
+                  {tier.characters.map((character) => (
+                    <div
+                      class="bb-tier-character-card"
+                      data-name={character.name?.toLowerCase() || ""}
+                    >
+                      <div class="bb-character-image-wrapper">
+                        <PaladinImage
+                          characterId={character.characterId || 2001}
+                          alt={character.name}
+                          width={180}
+                          height={180}
+                          quality={95}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="bb-character-name">{character.name}</div>
+                      <div class="bb-tier-rarity">
+                        <RarityImage
+                          rarity={character.rarity || "SR"}
+                          width={64}
+                          height={32}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
           }
-        </p>
-        <p class="bb-tier-list-last-updated">
-          Last updated: {srTierList?.lastUpdated || "2025-12-30"}
-        </p>
-      </div>
+        </div>
 
-      <!-- Search Controls -->
-      <div class="bb-tier-list-controls">
-        <input
-          type="text"
-          id="sr-search"
-          class="bb-tier-search-input"
-          placeholder="Search by name..."
-        />
-        <select id="sr-tier-filter" class="bb-tier-filter-select">
-          <option value="">All Tiers</option>
-          <option value="SSS">SSS Tier</option>
-          <option value="SS">SS Tier</option>
-          <option value="S">S Tier</option>
-          <option value="A">A Tier</option>
-        </select>
-        <button type="button" id="sr-clear-btn" class="bb-tier-clear-btn">
-          Clear
-        </button>
-      </div>
-
-      <!-- Info Box -->
-      <div class="bb-tier-list-info">
-        <h3>About This Tier List</h3>
-        <p>
-          This tier list ranks SR characters for SR Raid mode, which limits you
-          to only use SR units.
-        </p>
-      </div>
-
-      <!-- Tier List Display -->
-      <div class="bb-tier-list-container" id="sr-tier-container">
-        {
-          srTierList?.tiers.map((tier) => (
-            <div class="bb-tier-row" data-tier={tier.tier}>
-              <div class={`bb-tier-label bb-tier-${tier.tier.toLowerCase()}`}>
-                {tier.definition.label}
-              </div>
-              <div class="bb-tier-characters">
-                {tier.characters.map((character) => (
-                  <div
-                    class="bb-tier-character-card"
-                    data-name={character.name?.toLowerCase() || ""}
-                  >
-                    <div class="bb-character-image-wrapper">
-                      <PaladinImage
-                        characterId={character.characterId || 2001}
-                        alt={character.name}
-                        width={180}
-                        height={180}
-                        quality={95}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="bb-character-name">{character.name}</div>
-                    <div class="bb-tier-rarity">
-                      <RarityImage
-                        rarity={character.rarity || "SR"}
-                        width={64}
-                        height={32}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-
-      <!-- No Results Message -->
-      <div class="bb-tier-no-results" id="sr-no-results">
-        <h3>No characters found</h3>
-        <p>Try adjusting your search or filter criteria.</p>
-      </div>
-    </section>
+        <!-- No Results Message -->
+        <div class="bb-tier-no-results" id="sr-no-results">
+          <h3>No characters found</h3>
+          <p>Try adjusting your search or filter criteria.</p>
+        </div>
+      </section>
+    </div>
   </div>
 
+  <!-- View Mode Script -->
   <script>
     // Tab switching functionality
     document.addEventListener("DOMContentLoaded", () => {
@@ -352,5 +428,268 @@ const gameTitle = "Tier List";
         "sr-no-results",
       );
     }
+  </script>
+
+  <!-- Tier List Maker Script -->
+  <script define:vars={{ paladinMap, TIER_DEFINITIONS }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewModeBtn = document.getElementById('view-mode-btn');
+      const makerModeBtn = document.getElementById('maker-mode-btn');
+      const viewModeContent = document.getElementById('view-mode-content');
+      const makerModeContent = document.getElementById('maker-mode-content');
+
+      // Maker mode elements
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
+      const resetBtn = document.getElementById('reset-tier-list');
+
+      let currentMode = 'view';
+      let selectedCharacter = null;
+      const tierAssignments = {};
+      const STORAGE_KEY = 'bb-custom-tier-list';
+      let makerInitialized = false;
+
+      // View mode button
+      viewModeBtn.addEventListener('click', () => {
+        currentMode = 'view';
+        viewModeBtn.classList.add('active');
+        makerModeBtn.classList.remove('active');
+        viewModeContent.classList.remove('bb-maker-hidden');
+        makerModeContent.classList.add('bb-maker-hidden');
+        if (makerPool) makerPool.classList.add('bb-maker-hidden');
+        if (makerTierList) makerTierList.classList.add('bb-maker-hidden');
+      });
+
+      // Maker mode button
+      makerModeBtn.addEventListener('click', () => {
+        currentMode = 'maker';
+        makerModeBtn.classList.add('active');
+        viewModeBtn.classList.remove('active');
+        viewModeContent.classList.add('bb-maker-hidden');
+        makerModeContent.classList.remove('bb-maker-hidden');
+        if (makerPool) makerPool.classList.remove('bb-maker-hidden');
+        if (makerTierList) {
+          makerTierList.classList.remove('bb-maker-hidden');
+          makerTierList.classList.add('active');
+        }
+        if (!makerInitialized) {
+          initializeMaker();
+          makerInitialized = true;
+        }
+      });
+
+      // Initialize maker mode
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        loadFromStorage();
+      }
+
+      // Setup pool card drag events
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .bb-pool-character-card').forEach(card => {
+          const characterName = card.dataset.character;
+
+          card.addEventListener('dragstart', e => {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('character', characterName);
+            e.dataTransfer.setData('source', 'pool');
+            card.classList.add('dragging');
+          });
+
+          card.addEventListener('dragend', () => {
+            card.classList.remove('dragging');
+          });
+
+          // Click to select (works on all devices now)
+          card.addEventListener('click', () => {
+            // If clicking same card, deselect
+            if (selectedCharacter === characterName) {
+              card.classList.remove('selected');
+              selectedCharacter = null;
+              document.querySelectorAll('.bb-tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
+            }
+
+            // Select this card
+            document.querySelectorAll('.bb-pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.bb-tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedCharacter = characterName;
+            document.querySelectorAll('.bb-tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
+        });
+      }
+
+      // Setup drop zones
+      function setupDropZones() {
+        document.querySelectorAll('.bb-tier-characters.droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
+
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            zone.classList.add('drag-over');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('drag-over');
+          });
+
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const characterName = e.dataTransfer.getData('character');
+            const source = e.dataTransfer.getData('source');
+
+            if (characterName) {
+              if (source === 'tier' && tierAssignments[characterName]) {
+                moveCardBetweenTiers(characterName, tierName);
+              } else {
+                moveCardToTier(characterName, tierName);
+              }
+            }
+          });
+
+          // Click to place (works on all devices now)
+          zone.addEventListener('click', () => {
+            if (!selectedCharacter) return;
+            moveCardToTier(selectedCharacter, tierName);
+            document.querySelectorAll('.bb-pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.bb-tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.bb-tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      // Move card to tier
+      function moveCardToTier(characterName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+
+        if (!poolCard || !targetZone) return;
+
+        // Hide pool card
+        poolCard.classList.add('bb-maker-hidden');
+
+        // Create tier card
+        const tierCard = document.createElement('div');
+        tierCard.className = 'bb-tier-character-card in-tier';
+        tierCard.dataset.character = characterName;
+        tierCard.draggable = true;
+
+        tierCard.innerHTML = `
+          <div class="bb-character-image-wrapper">
+            <img src="${poolCard.querySelector('img')?.src || ''}" alt="${characterName}" loading="lazy" />
+          </div>
+          <div class="bb-character-name">${characterName}</div>
+          <button class="bb-remove-btn" title="Remove from tier">×</button>
+        `;
+
+        // Setup tier card events
+        setupTierCardEvents(tierCard, characterName);
+
+        // Hide hint
+        const hint = targetZone.querySelector('.bb-drop-zone-hint');
+        if (hint) hint.classList.add('hidden');
+
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = tierName;
+        saveToStorage();
+      }
+
+      // Setup tier card events
+      function setupTierCardEvents(card, characterName) {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('character', characterName);
+          e.dataTransfer.setData('source', 'tier');
+          card.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+        });
+
+        card.querySelector('.bb-remove-btn').addEventListener('click', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
+        });
+      }
+
+      // Move card between tiers
+      function moveCardBetweenTiers(characterName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
+
+        if (!tierCard || !targetZone) return;
+
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = newTierName;
+
+        // Show hint if old tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.bb-drop-zone-hint');
+          if (hint) hint.classList.remove('hidden');
+        }
+
+        // Hide hint in new tier
+        const hint = targetZone.querySelector('.bb-drop-zone-hint');
+        if (hint) hint.classList.add('hidden');
+
+        saveToStorage();
+      }
+
+      // Return card to pool
+      function returnCardToPool(characterName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+
+        if (!poolCard || !tierCard) return;
+
+        const oldZone = tierCard.parentElement;
+        poolCard.classList.remove('bb-maker-hidden');
+        tierCard.remove();
+        delete tierAssignments[characterName];
+
+        // Show hint if tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.bb-drop-zone-hint');
+          if (hint) hint.classList.remove('hidden');
+        }
+
+        saveToStorage();
+      }
+
+      // Reset
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
+      });
+
+      // Storage
+      function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
+      }
+
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => {
+            if (paladinMap[name]) {
+              moveCardToTier(name, tier);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load tier list:', e);
+        }
+      }
+    });
   </script>
 </TierListLayout>

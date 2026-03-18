@@ -7,9 +7,8 @@ import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIc
 import { Image } from 'astro:assets';
 
 // Import data sources
-import characterStatsData from '../../../../data/silver-and-blood/character-stats.json';
-import charactersInfoData from '../../../../data/silver-and-blood/characters_info.json';
-import characterSkillsData from '../../../../data/silver-and-blood/character-skills.json';
+import { characterStatsData, charactersInfoData } from '../../../../data/silver-and-blood/characters.js';
+import characterSkillsData from '../../../../data/silver-and-blood/character-skills.js';
 import { getCharacterAffinityData, getGiftIconKey } from '../../../../data/silver-and-blood/character-gifts.js';
 import {
   getHeroMaxStatBonuses,
@@ -72,10 +71,10 @@ import rarityGold from '../../../../assets/images/games/silver-and-blood/charact
 import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
 import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
 
-// Import moon phase icons (moon1=full, moon2=crescent, moon3=new based on actual image content)
-import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
-import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
-import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
+// Import moon phase icons
+import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-full.png';
+import moonHalf from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-half.png';
+import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-new.png';
 
 // Import damage type icons
 import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
@@ -102,9 +101,9 @@ const rarityImages: Record<string, ImageMetadata> = {
 };
 
 const moonPhaseImages: Record<string, ImageMetadata> = {
-  'filter_icon_moon1.png': moonNew,
-  'filter_icon_moon2.png': moonCrescent,
-  'filter_icon_moon3.png': moonFull,
+  'moon-full.png': moonFull,
+  'moon-half.png': moonHalf,
+  'moon-new.png': moonNew,
 };
 
 const damageTypeImages: Record<string, ImageMetadata> = {
@@ -150,7 +149,8 @@ function getIconName(name: string): string {
     'Sirene': 'Sirene', 'Arachne': 'Arachne', 'Desdemona': 'Desdemona', 'Drakul': 'Drakul',
     'Flynn': 'Flynn', 'Garm': 'Garm', 'Gunther': 'Gunther', 'Helga': 'Helga',
     'Igor': 'Igor', 'Ingrit': 'Ingrit', 'Lilith': 'Lilith', 'Lycaon': 'Lycaon',
-    'Odin': 'Odin', 'Tristan': 'Tristan',
+    'Odin': 'Odin', 'Tristan': 'Tristan', 'Blooming Empousa': 'Empousa_Covenant',
+    'Transcendent Jestel': 'Jestel_Covenant',
   };
   return nameMap[name] || name;
 }
@@ -649,7 +649,7 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
                 <div class="resonantia-skill-header">
                   <SABResonantiaIcon rank={skill.rank} width={48} height={48} />
                   <div class="resonantia-skill-info">
-                    <h4 class="resonantia-skill-name">{skill.name}</h4>
+                    <h4 class="resonantia-skill-name">{skill.skillName}</h4>
                     <span class="resonantia-skill-rank">Rank {skill.rank}</span>
                   </div>
                 </div>
@@ -668,14 +668,8 @@ const defaultStats = character.spiritSiphon?.[`ss${maxSS}`] || character.gallery
                 </div>
               </div>
             ))}
-          </div>
-
-          <div class="resonantia-legend">
-            <span class="legend-item"><span class="res-val res-val-1">Lv.1</span></span>
-            <span class="legend-item"><span class="res-val res-val-2">Lv.2</span></span>
-            <span class="legend-item"><span class="res-val res-val-3">Lv.3</span></span>
-          </div>
         </div>
+      </div>
       )}
 
     </section>

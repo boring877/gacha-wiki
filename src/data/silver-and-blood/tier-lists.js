@@ -38,7 +38,7 @@ export const PVE_TIER_LIST = {
   description:
     'Things can changes fast, with new character. but as today I feel this what stand out.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }, { name: 'Transcendent Jestel' }, { name: 'Blooming Empousa' }],
     SS: [
       { name: 'Acappella' },
       { name: 'Van Helsing' },
@@ -51,6 +51,10 @@ export const PVE_TIER_LIST = {
       { name: 'Dalcarlo' },
       { name: 'Seth' },
       { name: 'Lucille' },
+      { name: 'Transcendent Hati' },
+      { name: 'Agares' },
+      { name: 'Ressa' },
+      { name: 'Quinn' },
     ],
     S: [
       { name: 'Lamia' },
@@ -59,19 +63,17 @@ export const PVE_TIER_LIST = {
       { name: 'Bella' },
       { name: 'Theophane' },
       { name: 'Ami' },
-      { name: 'Transcendent Hati' },
       { name: 'Transcendent Ami' },
       { name: 'Limine' },
       { name: 'Incendiary Agares' },
       { name: 'Transcendent Noah' },
-      { name: 'Quinn' },
       { name: 'Regina' },
       { name: 'Genevieve' },
       { name: 'Agnes' },
       { name: 'Ressa' },
-      { name: 'Agares' },
       { name: 'Julius' },
       { name: 'Stella' },
+      { name: 'Darcias' },
     ],
     A: [
       { name: 'Tris' },
@@ -79,7 +81,6 @@ export const PVE_TIER_LIST = {
       { name: 'Joan' },
       { name: 'Nicole' },
       { name: 'Augustine' },
-      { name: 'Darcias' },
       { name: 'Edina' },
       { name: 'Spectral Gilrain' },
       { name: 'Gilrain' },
@@ -107,7 +108,7 @@ export const PVP_TIER_LIST = {
   description:
     'it was quite hard to pick between S & A. choosing PVP unit quite hard because things change fast !.',
   tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Lucille' }, { name: 'Resurgent Setti' }],
+    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Lucille' }, { name: 'Resurgent Setti' }, { name: 'Transcendent Jestel' }, { name: 'Blooming Empousa' }],
     SS: [
       { name: 'Albrecht' },
       { name: 'Lorelei' },
@@ -126,6 +127,7 @@ export const PVP_TIER_LIST = {
       { name: 'Dalcarlo' },
       { name: 'Seth' },
       { name: 'Van Helsing' },
+      { name: 'Transcendent Hati' },
     ],
     S: [
       { name: 'Hati' },
@@ -153,7 +155,6 @@ export const PVP_TIER_LIST = {
       { name: 'Agares' },
       { name: 'Edina' },
       { name: 'Ressa' },
-      { name: 'Transcendent Hati' },
       { name: 'Joan' },
       { name: 'Darcias' },
       { name: 'Cecia' },
@@ -168,207 +169,9 @@ export const PVP_TIER_LIST = {
   },
 };
 
-// Clan Hunt Tier List
-export const CLAN_HUNT_TIER_LIST = {
-  name: 'Clan Hunt Tier List',
-  lastUpdated: '2026-01-22',
-  description:
-    'Its really hard to build this tier list, the clan hunt only we had 1 time and there is quite bit of opinions. I did my best !!!.',
-  tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Ethereal Joan' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
-    SS: [
-      { name: 'Albrecht' },
-      { name: 'Agnes' },
-      { name: 'Acappella' },
-      { name: 'Transcendent Ami' },
-      { name: 'Joan' },
-      { name: 'Lorelei' },
-      { name: 'Pavana' },
-      { name: 'Theophane' },
-      { name: 'Darcias' },
-      { name: 'Transcendent Hati' },
-      { name: 'Transcendent Noah' },
-      { name: 'Agares' },
-      { name: 'Seth' },
-      { name: 'Starry-Eyed Aiona' },
-      { name: 'Dalcarlo' },
-      { name: 'Fleeting Bella' },
-      { name: 'Van Helsing' },
-      { name: 'Sirene' },
-      { name: 'Quinn' },
-      { name: 'Valora' },
-      { name: 'Fanny' },
-      { name: 'Alene' },
-      { name: 'Thibault' },
-      { name: 'Ressa' },
-      { name: 'Lucille' },
-    ],
-    S: [
-      { name: 'Lamia' },
-      { name: 'Cecia' },
-      { name: 'Edina' },
-      { name: 'Augustine' },
-      { name: 'Limine' },
-      { name: 'Hati' },
-      { name: 'Gilrain' },
-      { name: 'Yggdrasill' },
-      { name: 'Tris' },
-      { name: 'Selena' },
-      { name: 'Nicole' },
-      { name: 'Julius' },
-      { name: 'Stella' },
-      { name: 'Genevieve' },
-    ],
-    A: [
-      { name: 'Bella' },
-      { name: 'Cain' },
-      { name: 'Spectral Gilrain' },
-      { name: 'Piera' },
-      { name: 'Ami' },
-      { name: 'Incendiary Agares' },
-      { name: 'Friedrich' },
-      { name: 'Regina' },
-    ],
-    Situational: [{ name: 'Jinxed Selena' }, { name: 'Ottavia' }, { name: 'Mass' }],
-  },
-};
-
-// Boss Raids Tier List
-export const BOSS_RAIDS_TIER_LIST = {
-  name: 'Boss Raids Tier List',
-  lastUpdated: '2026-01-22',
-  description:
-    'Some Boss has different machines, but overall this tier list should cover the majority of them.',
-  tiers: {
-    SSS: [{ name: 'Timeless Aiona' }, { name: 'Letitia' }, { name: 'Livian' }, { name: 'Alexi' }, { name: 'Seraphina' }, { name: 'Resurgent Setti' }],
-    SS: [
-      { name: 'Ethereal Joan' },
-      { name: 'Albrecht' },
-      { name: 'Starry-Eyed Aiona' },
-      { name: 'Acappella' },
-      { name: 'Fleeting Bella' },
-      { name: 'Sirene' },
-      { name: 'Van Helsing' },
-      { name: 'Transcendent Hati' },
-      { name: 'Fanny' },
-      { name: 'Alene' },
-      { name: 'Dalcarlo' },
-      { name: 'Ressa' },
-    ],
-    S: [
-      { name: 'Lamia' },
-      { name: 'Agares' },
-      { name: 'Bella' },
-      { name: 'Thibault' },
-      { name: 'Theophane' },
-      { name: 'Ami' },
-      { name: 'Seth' },
-      { name: 'Transcendent Ami' },
-      { name: 'Transcendent Noah' },
-      { name: 'Darcias' },
-      { name: 'Yggdrasill' },
-      { name: 'Incendiary Agares' },
-      { name: 'Spectral Gilrain' },
-      { name: 'Friedrich' },
-      { name: 'Gilrain' },
-      { name: 'Quinn' },
-      { name: 'Julius' },
-      { name: 'Valora' },
-      { name: 'Regina' },
-      { name: 'Genevieve' },
-      { name: 'Lucille' },
-    ],
-    A: [
-      { name: 'Agnes' },
-      { name: 'Cain' },
-      { name: 'Selena' },
-      { name: 'Piera' },
-      { name: 'Tris' },
-      { name: 'Limine' },
-      { name: 'Hati' },
-      { name: 'Augustine' },
-      { name: 'Nicole' },
-      { name: 'Edina' },
-      { name: 'Cecia' },
-      { name: 'Joan' },
-      { name: 'Stella' },
-    ],
-    Situational: [
-      { name: 'Jinxed Selena' },
-      { name: 'Lorelei' },
-      { name: 'Ottavia' },
-      { name: 'Mass' },
-      { name: 'Pavana' },
-    ],
-  },
-};
-
-// New Player Tier List (F2P Friendly)
-export const NEW_PLAYER_TIER_LIST = {
-  name: 'New Player / F2P Tier List',
-  lastUpdated: '2025-12-29',
-  description:
-    'Focus on getting Timeless Aiona! These are the best characters available on the free banner.',
-  tiers: {
-    SSS: [
-      { name: 'Timeless Aiona' },
-      { name: 'Letitia' },
-      { name: 'Seraphina' },
-      { name: 'Acappella' },
-      { name: 'Starry-Eyed Aiona' },
-      { name: 'Bella' },
-      { name: 'Van Helsing' },
-      { name: 'Fanny' },
-    ],
-    SS: [
-      { name: 'Sirene' },
-      { name: 'Seth' },
-      { name: 'Transcendent Hati' },
-      { name: 'Transcendent Ami' },
-      { name: 'Quinn' },
-      { name: 'Valora' },
-      { name: 'Dalcarlo' },
-      { name: 'Agnes' },
-      { name: 'Ressa' },
-      { name: 'Agares' },
-      { name: 'Lamia' },
-    ],
-    S: [
-      { name: 'Darcias' },
-      { name: 'Yggdrasill' },
-      { name: 'Julius' },
-      { name: 'Genevieve' },
-      { name: 'Ami' },
-    ],
-    A: [
-      { name: 'Theophane' },
-      { name: 'Thibault' },
-      { name: 'Friedrich' },
-      { name: 'Spectral Gilrain' },
-      { name: 'Gilrain' },
-      { name: 'Augustine' },
-    ],
-    Situational: [
-      { name: 'Jinxed Selena' },
-      { name: 'Lorelei' },
-      { name: 'Mass' },
-      { name: 'Pavana' },
-      { name: 'Ottavia' },
-    ],
-  },
-};
 
 // Export all tier lists
 export const ALL_TIER_LISTS = {
   pve: PVE_TIER_LIST,
   pvp: PVP_TIER_LIST,
-  'clan-hunt': CLAN_HUNT_TIER_LIST,
-  'boss-raids': BOSS_RAIDS_TIER_LIST,
-  'new-player': NEW_PLAYER_TIER_LIST,
 };
-
-// Alias for boss tier list (used by API)
-export const BOSS_TIER_LIST = BOSS_RAIDS_TIER_LIST;
-
-// Tier list changelog
-export const TIER_LIST_CHANGELOG = [];

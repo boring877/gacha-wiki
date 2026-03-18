@@ -398,21 +398,33 @@
 
 .remove-btn {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--sab-calm-red);
-  color: white;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
   border: none;
+  border-radius: 6px 6px 0 0;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: bold;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 2px;
   z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tier-character-card:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  background: linear-gradient(to bottom, rgba(180, 50, 50, 0.85), rgba(180, 50, 50, 0.3));
+  color: white;
 }
 
 /* ============================================ */
@@ -850,15 +862,6 @@
     border-radius: 2px;
   }
 
-  .tier-character-card .remove-btn {
-    width: 24px;
-    height: 24px;
-    top: -8px;
-    right: -8px;
-    font-size: 1rem;
-    touch-action: manipulation;
-  }
-
   .legend-item {
     flex-direction: column;
     text-align: center;
@@ -989,13 +992,5 @@
 
   .tier-list-selector {
     grid-template-columns: 1fr;
-  }
-
-  .tier-character-card .remove-btn {
-    width: 20px;
-    height: 20px;
-    top: -5px;
-    right: -5px;
-    font-size: 0.8rem;
   }
 }

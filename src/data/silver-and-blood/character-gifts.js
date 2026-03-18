@@ -3,7 +3,7 @@
 // Uses affinity_data.js templates which define Lv40 and Lv30 character groups
 
 import AFFINITY_DATA from './affinity_data.js';
-import charactersInfoData from './characters_info.json';
+import { charactersInfoData } from './characters.js';
 import { CAMP_INFO, getCampClass, getGiftIconKey } from './gifts.js';
 
 // Build a set of valid character names from characters_info.json

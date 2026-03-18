@@ -3,8 +3,13 @@ import TierListLayout from '../../../layouts/silver-and-blood/TierListLayout.ast
 import { characters } from '../../../data/silver-and-blood/characters.js';
 import { ALL_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/silver-and-blood/tier-lists.js';
 import StaticTierListView from '../../../components/silver-and-blood/tier-list/StaticTierListView.astro';
-import StaticCharacterPool from '../../../components/silver-and-blood/tier-list/StaticCharacterPool.astro';
-import StaticMakerTierList from '../../../components/silver-and-blood/tier-list/StaticMakerTierList.astro';
+import SABCharacterIcon from '../../../components/silver-and-blood/SABCharacterIcon.astro';
+import { Image } from 'astro:assets';
+
+// Import rarity icons
+import rarityGold from '../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
+import rarityPurple from '../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
+import rarityBlue from '../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
 
 // Create a map of character data for quick lookup
 const characterMap = {};
@@ -16,11 +21,21 @@ characters.forEach(char => {
 function getTierClassName(tier: string): string {
   return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
 }
+
+// Rarity images map
+const rarityImages: Record<string, ImageMetadata> = { SSR: rarityGold, SR: rarityPurple, R: rarityBlue };
+
+// Rarity image URLs for JavaScript
+const rarityImageUrls = {
+  SSR: rarityGold.src,
+  SR: rarityPurple.src,
+  R: rarityBlue.src
+};
 ---
 
 <TierListLayout
   title="Silver and Blood Tier List 2025 - Complete Character Rankings SSS-S Tiers | GachaWiki"
-  description="Comprehensive Silver and Blood tier list featuring PvE, PvP Arena, Clan Hunt, Boss Raids, and F2P character rankings. Updated December 2025 meta with Timeless Aiona, Seraphina, Letitia, Livian, Alexi, and all SSR characters rated SSS to Situational tiers. Interactive tier list maker included."
+  description="Comprehensive Silver and Blood tier list featuring PvE and PvP Arena character rankings. Updated meta with Timeless Aiona, Seraphina, Letitia, Livian, Alexi, and all SSR characters rated SSS to Situational tiers. Interactive tier list maker included."
   gameTitle="Silver and Blood Tier List"
 >
   <div class="tier-list-container">
@@ -32,20 +47,19 @@ function getTierClassName(tier: string): string {
 
     <!-- View Mode Content -->
     <div id="view-mode-content">
-      <!-- Tier List Type Selector -->
       <div class="tier-list-selector">
         <button class="tier-type-btn active" data-list-type="pve"> Overall PvE </button>
         <button class="tier-type-btn" data-list-type="pvp"> PvP Arena </button>
-        <button class="tier-type-btn" data-list-type="clan-hunt"> Clan Hunt </button>
-        <button class="tier-type-btn" data-list-type="boss-raids"> Boss Raids </button>
-        <button class="tier-type-btn" data-list-type="new-player"> New Player / F2P </button>
       </div>
     </div>
 
     <!-- Maker Mode Content -->
     <div id="maker-mode-content" style="display: none;">
+      <p class="maker-description" style="text-align: center; color: var(--sab-text-white); margin-bottom: 1rem;">
+        Drag characters from the pool below to the tier list. Changes are saved automatically.
+      </p>
       <div class="maker-controls">
-        <button class="control-btn" id="reset-tier-list">Reset</button>
+        <button class="control-btn" id="reset-tier-list">Reset Tier List</button>
       </div>
     </div>
 
@@ -58,80 +72,53 @@ function getTierClassName(tier: string): string {
       <p class="tier-list-updated" id="list-updated">Last updated: 2025-09-19</p>
     </div>
 
-    <!-- Maker Mode Layout -->
-    <div class="maker-layout" id="maker-layout" style="display: none;">
-      <!-- Desktop: Side Pool -->
-      <div class="side-pool" id="side-pool">
-        <h3>Character Pool</h3>
-        <StaticCharacterPool showInMaker={true} />
-      </div>
-
-      <!-- Tier List -->
-      <div class="maker-tier-list">
-        <StaticMakerTierList characterMap={characterMap} />
+    <!-- Maker Mode: Character Pool (Grid Layout) -->
+    <div id="maker-pool" style="display: none;">
+      <div class="maker-pool-grid">
+        {characters.map(char => (
+          <div
+            class="pool-character-card draggable"
+            data-character={char.name}
+            data-rarity={char.rarity}
+            draggable="true"
+          >
+            <div class="pool-image-wrapper">
+              <SABCharacterIcon name={char.name} variant="Base" size="medium" width={75} height={75} loading="lazy" />
+              {char.rarity && rarityImages[char.rarity] && (
+                <Image src={rarityImages[char.rarity]} alt={char.rarity} class="pool-rarity-frame" width={18} height={18} loading="lazy" />
+              )}
+            </div>
+            <div class="pool-character-name">{char.name}</div>
+          </div>
+        ))}
       </div>
     </div>
 
-    <!-- Regular Tier List Display (Static) - Pre-render all tier lists -->
+    <!-- Maker Mode: Tier List -->
+    <div id="maker-tier-list" style="display: none;">
+      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+        <div class="tier-row">
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+          <div class="tier-characters droppable" data-tier={tier}>
+            <div class="drop-zone-hint">Drop characters here</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Regular Tier List Display (Static) -->
     <div class="tier-list-display active" id="tier-list-pve" data-list-type="pve">
       <StaticTierListView tierListData={ALL_TIER_LISTS.pve} characterMap={characterMap} />
     </div>
     <div class="tier-list-display" id="tier-list-pvp" data-list-type="pvp" style="display: none;">
       <StaticTierListView tierListData={ALL_TIER_LISTS.pvp} characterMap={characterMap} />
     </div>
-    <div class="tier-list-display" id="tier-list-clan-hunt" data-list-type="clan-hunt" style="display: none;">
-      <StaticTierListView tierListData={ALL_TIER_LISTS['clan-hunt']} characterMap={characterMap} />
-    </div>
-    <div class="tier-list-display" id="tier-list-boss-raids" data-list-type="boss-raids" style="display: none;">
-      <StaticTierListView tierListData={ALL_TIER_LISTS['boss-raids']} characterMap={characterMap} />
-    </div>
-    <div class="tier-list-display" id="tier-list-new-player" data-list-type="new-player" style="display: none;">
-      <StaticTierListView tierListData={ALL_TIER_LISTS['new-player']} characterMap={characterMap} />
-    </div>
-
-    <!-- Tier Legend -->
-    <div class="tier-legend" id="tier-legend">
-      {
-        Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-          <div class="legend-item">
-            <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
-            <div class="legend-description">
-              <span class="legend-label">{definition.label} Tier</span>
-              <span class="legend-text">{definition.description}</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- Quick Links -->
-    <div
-      style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;"
-    >
-      <a
-        href="/guides/silver-and-blood/characters/"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--sab-calm-red), var(--sab-dark-red)); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Character Database
-      </a>
-      <a
-        href="/guides/silver-and-blood/team-synergy"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Team Synergy
-      </a>
-      <a
-        href="/guides/silver-and-blood/character-rankings"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #66bb6a, #4caf50); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Character Rankings
-      </a>
-    </div>
   </div>
 
-  <script define:vars={{ ALL_TIER_LISTS }}>
+  <!-- Tier List Maker Script -->
+  <script define:vars={{ characterMap, rarityImageUrls, ALL_TIER_LISTS }}>
     document.addEventListener('DOMContentLoaded', () => {
-      // Cache DOM elements
+      // View mode elements
       const listTitle = document.getElementById('list-title');
       const listDescription = document.getElementById('list-description');
       const listUpdated = document.getElementById('list-updated');
@@ -141,53 +128,47 @@ function getTierClassName(tier: string): string {
       const viewModeContent = document.getElementById('view-mode-content');
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
-      const tierLegend = document.getElementById('tier-legend');
       const tierListDisplays = document.querySelectorAll('.tier-list-display[data-list-type]');
-      const makerLayout = document.getElementById('maker-layout');
 
-      // Current active tier list
+      // Maker mode elements
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
+      const resetBtn = document.getElementById('reset-tier-list');
+
       let currentListType = 'pve';
       let currentMode = 'view';
+      let selectedCharacter = null;
+      let isMobile = window.innerWidth <= 768;
+      const tierAssignments = {};
+      const STORAGE_KEY = 'sab-custom-tier-list';
+      let makerInitialized = false;
 
-      // Function to update tier list info and show correct tier list
+      // Update tier list info
       function updateTierListInfo(listType) {
         const tierList = ALL_TIER_LISTS[listType];
         if (!tierList) return;
-
-        // Update info
         if (listTitle) listTitle.textContent = tierList.name;
         if (listDescription) listDescription.textContent = tierList.description;
         if (listUpdated) listUpdated.textContent = `Last updated: ${tierList.lastUpdated}`;
 
-        // Show/hide tier list displays
         tierListDisplays.forEach(display => {
-          if (display.dataset.listType === listType) {
-            display.style.display = 'block';
-          } else {
-            display.style.display = 'none';
-          }
+          display.style.display = display.dataset.listType === listType ? 'block' : 'none';
         });
       }
 
-      // Add event listeners to type buttons
+      // Type button listeners
       typeButtons.forEach(button => {
         button.addEventListener('click', () => {
           const listType = button.dataset.listType;
           if (!listType || listType === currentListType) return;
-
-          // Update active button
           typeButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-
-          // Update current list type
           currentListType = listType;
-
-          // Update tier list info and display
           updateTierListInfo(listType);
         });
       });
 
-      // Mode switching
+      // View mode button
       viewModeBtn.addEventListener('click', () => {
         currentMode = 'view';
         viewModeBtn.classList.add('active');
@@ -195,14 +176,332 @@ function getTierClassName(tier: string): string {
         viewModeContent.style.display = 'block';
         makerModeContent.style.display = 'none';
         tierListInfo.style.display = 'block';
-        // Show the current tier list
+        if (makerPool) makerPool.style.display = 'none';
+        if (makerTierList) makerTierList.style.display = 'none';
         updateTierListInfo(currentListType);
-        if (tierLegend) tierLegend.style.display = 'grid';
-        if (makerLayout) makerLayout.style.display = 'none';
       });
 
-      // Initial population
+      // Maker mode button
+      makerModeBtn.addEventListener('click', () => {
+        currentMode = 'maker';
+        makerModeBtn.classList.add('active');
+        viewModeBtn.classList.remove('active');
+        viewModeContent.style.display = 'none';
+        makerModeContent.style.display = 'block';
+        tierListInfo.style.display = 'none';
+        if (makerPool) makerPool.style.display = 'block';
+        if (makerTierList) makerTierList.style.display = 'flex';
+        tierListDisplays.forEach(d => d.style.display = 'none');
+        if (!makerInitialized) {
+          initializeMaker();
+          makerInitialized = true;
+        }
+      });
+
+      // Initialize maker mode
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        loadFromStorage();
+      }
+
+      // Setup pool card drag events
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .pool-character-card').forEach(card => {
+          const characterName = card.dataset.character;
+
+          card.addEventListener('dragstart', e => {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('character', characterName);
+            e.dataTransfer.setData('source', 'pool');
+            card.classList.add('dragging');
+          });
+
+          card.addEventListener('dragend', () => {
+            card.classList.remove('dragging');
+          });
+
+          // Click to select (works on all devices now)
+          card.addEventListener('click', () => {
+            // If clicking same card, deselect
+            if (selectedCharacter === characterName) {
+              card.classList.remove('selected');
+              selectedCharacter = null;
+              document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
+            }
+
+            // Select this card
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedCharacter = characterName;
+            document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
+        });
+      }
+
+      // Setup drop zones
+      function setupDropZones() {
+        document.querySelectorAll('.tier-characters.droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
+
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            zone.classList.add('drag-over');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('drag-over');
+          });
+
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const characterName = e.dataTransfer.getData('character');
+            const source = e.dataTransfer.getData('source');
+
+            if (characterName) {
+              if (source === 'tier' && tierAssignments[characterName]) {
+                moveCardBetweenTiers(characterName, tierName);
+              } else {
+                moveCardToTier(characterName, tierName);
+              }
+            }
+          });
+
+          // Click to place (works on all devices now)
+          zone.addEventListener('click', () => {
+            if (!selectedCharacter) return;
+            moveCardToTier(selectedCharacter, tierName);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      // Move card to tier
+      function moveCardToTier(characterName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+
+        if (!poolCard || !targetZone) return;
+
+        // Hide pool card
+        poolCard.style.display = 'none';
+
+        // Create tier card
+        const charData = characterMap[characterName];
+        const tierCard = document.createElement('div');
+        tierCard.className = 'tier-character-card draggable in-tier';
+        tierCard.dataset.character = characterName;
+        tierCard.draggable = true;
+
+        tierCard.innerHTML = `
+          <div class="character-image-wrapper">
+            <img src="${poolCard.querySelector('img').src}" alt="${characterName}" loading="lazy" />
+            <img src="${rarityImageUrls[charData?.rarity] || rarityImageUrls.SR}" alt="${charData?.rarity || 'SR'}" class="tier-rarity-frame" width="20" height="20" />
+          </div>
+          <div class="character-name">${characterName}</div>
+          <button class="remove-btn" title="Remove from tier">×</button>
+        `;
+
+        // Setup tier card events
+        setupTierCardEvents(tierCard, characterName);
+
+        // Hide hint
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = tierName;
+        saveToStorage();
+      }
+
+      // Setup tier card events
+      function setupTierCardEvents(card, characterName) {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('character', characterName);
+          e.dataTransfer.setData('source', 'tier');
+          card.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+        });
+
+        card.querySelector('.remove-btn').addEventListener('click', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
+        });
+      }
+
+      // Move card between tiers
+      function moveCardBetweenTiers(characterName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
+
+        if (!tierCard || !targetZone) return;
+
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = newTierName;
+
+        // Show hint if old tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.style.display = 'block';
+        }
+
+        // Hide hint in new tier
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+
+        saveToStorage();
+      }
+
+      // Return card to pool
+      function returnCardToPool(characterName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+
+        if (!poolCard || !tierCard) return;
+
+        const oldZone = tierCard.parentElement;
+        poolCard.style.display = '';
+        tierCard.remove();
+        delete tierAssignments[characterName];
+
+        // Show hint if tier is empty
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.style.display = 'block';
+        }
+
+        saveToStorage();
+      }
+
+      // Reset
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
+      });
+
+      // Storage
+      function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
+      }
+
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => {
+            if (characterMap[name]) {
+              moveCardToTier(name, tier);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load tier list:', e);
+        }
+      }
+
+      // Resize handler
+      window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 768;
+      });
+
+      // Initial
       updateTierListInfo('pve');
     });
   </script>
 </TierListLayout>
+
+<style>
+  /* Maker Pool Grid - better layout than sidebar */
+  .maker-pool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--sab-bg-dark);
+    border-radius: 8px;
+    border: 1px solid var(--sab-border-gray);
+    margin-bottom: 1.5rem;
+  }
+
+  #maker-tier-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #maker-tier-list .tier-row {
+    display: flex;
+    background: var(--sab-bg-dark);
+    border-radius: 8px;
+    border: 1px solid var(--sab-border-gray);
+    min-height: 100px;
+    overflow: hidden;
+  }
+
+  #maker-tier-list .tier-characters.droppable {
+    border: 2px dashed transparent;
+    transition: all 0.2s;
+  }
+
+  #maker-tier-list .tier-characters.drag-over {
+    border-color: var(--sab-calm-red);
+    background: rgba(194, 30, 58, 0.05);
+  }
+
+  #maker-tier-list .tier-characters.awaiting-placement {
+    border-color: var(--sab-muted-gold);
+    background: rgba(212, 175, 55, 0.05);
+  }
+
+  #maker-tier-list .tier-character-card.in-tier {
+    width: 80px;
+    min-width: 80px;
+    padding: 0.4rem;
+  }
+
+  #maker-tier-list .character-image-wrapper {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+
+  #maker-tier-list .character-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  #maker-tier-list .character-name {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 768px) {
+    .maker-pool-grid {
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 0.5rem;
+    }
+
+    #maker-tier-list .tier-row {
+      flex-direction: column;
+    }
+
+    #maker-tier-list .tier-label {
+      width: 100%;
+      height: 50px;
+    }
+  }
+</style>

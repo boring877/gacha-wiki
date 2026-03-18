@@ -43,46 +43,35 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Stats', href: '/guides/silver-and-blood/character-stats/' },
           { name: 'Tier List', href: '/guides/silver-and-blood/tier-list/' },
           { name: 'Rankings', href: '/guides/silver-and-blood/character-rankings/' },
-          { name: 'Comparison', href: '/guides/silver-and-blood/character-comparison/' },
-          { name: 'Comparison V2', href: '/guides/silver-and-blood/character-comparison-v2/' },
+
+
           { name: 'Tags', href: '/guides/silver-and-blood/character-tag-selection/' },
         ],
       },
       {
         title: 'Combat',
         links: [
-          { name: 'Damage Hub', href: '/guides/silver-and-blood/damage-mechanics/' },
-          { name: 'Boss Database', href: '/guides/silver-and-blood/boss-database/' },
-          { name: 'Prophecy', href: '/guides/silver-and-blood/prophecy/' },
-          { name: 'Clan Hunt', href: '/guides/silver-and-blood/clan-hunt/' },
           { name: 'Synergies', href: '/guides/silver-and-blood/synergies/' },
           { name: 'Team Builds', href: '/guides/silver-and-blood/team-synergy/' },
-          { name: 'Gear Upgrades', href: '/guides/silver-and-blood/gear-upgrades/' },
-          { name: 'Escaping the Other Side', href: '/guides/silver-and-blood/escaping-other-side/' },
         ],
       },
       {
         title: 'Events',
         links: [
-          { name: 'Events', href: '/guides/silver-and-blood/events/' },
           { name: "Dutchman's Revenge", href: '/guides/silver-and-blood/dutchmans-revenge/' },
-          { name: 'Ancestral Vault', href: '/guides/silver-and-blood/ancestral-vault/' },
           { name: 'Heirloom Vault', href: '/guides/silver-and-blood/heirloom-vault/' },
         ],
       },
       {
         title: 'Resources',
         links: [
-          { name: 'Beginner Guide', href: '/guides/silver-and-blood/beginner-guide/' },
-          { name: 'Rerolling Guide', href: '/guides/silver-and-blood/rerolling-guide/' },
           { name: 'Gifts', href: '/guides/silver-and-blood/gifts/' },
           { name: 'Character Gifts', href: '/guides/silver-and-blood/character-gifts/' },
           { name: 'Artifacts', href: '/guides/silver-and-blood/artifacts/' },
           { name: 'Clock', href: '/clock/silver-and-blood/' },
           { name: 'Redeem Codes', href: '/guides/silver-and-blood/redeem-codes/' },
-          { name: 'Bug Fixes', href: '/guides/silver-and-blood/bugs/' },
-          { name: 'Summon FAQ', href: '/guides/silver-and-blood/summon-faq/' },
-          { name: 'Slot Machines', href: '/guides/silver-and-blood/slot-machines/' },
+          { name: 'Blog', href: '/guides/silver-and-blood/blog/' },
+
         ],
       },
     ],
@@ -97,8 +86,8 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Database', href: '/guides/zone-nova/characters/' },
           { name: 'Tier List', href: '/guides/zone-nova/tier-list/' },
           { name: 'Rankings', href: '/guides/zone-nova/character-rankings/' },
-          { name: 'Comparison', href: '/guides/zone-nova/character-comparison/' },
-          { name: 'Comparison V2', href: '/guides/zone-nova/character-comparison-v2/' },
+
+
           { name: 'Character Builds', href: '/guides/zone-nova/character-builds/' },
           { name: 'Tags', href: '/guides/zone-nova/character-tags/' },
         ],

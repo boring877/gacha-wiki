@@ -296,25 +296,36 @@
   opacity: 0.5;
 }
 
-/* Remove button for draggable cards */
+/* Remove button for draggable cards - subtle overlay on hover */
 .remove-btn {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 20px;
-  height: 20px;
-  background: var(--zn-badge-red);
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
   border: none;
-  border-radius: 50%;
-  color: var(--zn-badge-white);
+  border-radius: 6px 6px 0 0;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  z-index: 10;
-  display: none;
-  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
-  transition: all 0.2s ease;
+  padding-top: 2px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tier-character-card:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  background: linear-gradient(to bottom, rgba(180, 50, 50, 0.85), rgba(180, 50, 50, 0.3));
+  color: white;
 }
 
 /* Drop zones */

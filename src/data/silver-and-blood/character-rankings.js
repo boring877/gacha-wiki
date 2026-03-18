@@ -3,8 +3,7 @@
  * Calculates stat rankings and overall analysis for ALL 71 playable characters
  */
 
-import characterStatsData from './character-stats.json';
-import charactersInfoData from './characters_info.json';
+import { characterStatsData, charactersInfoData } from './characters.js';
 
 // Generate slug from character name
 const generateSlug = (name) => {
@@ -19,7 +18,7 @@ charactersInfoData.characters.forEach((char) => {
 
 // Build complete character list from JSON (all 71 playable characters)
 const characters = characterStatsData.characters
-  .filter((c) => ['SSR', 'SR', 'R'].includes(c.rarity))
+  .filter((c) => c && c.gallery && ['SSR', 'SR', 'R'].includes(c.rarity))
   .map((statsChar) => {
     const infoChar = infoMap.get(statsChar.id) || {};
     const gallery = statsChar.gallery || {};

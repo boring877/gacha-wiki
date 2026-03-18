@@ -98,15 +98,6 @@
   color: var(--rg-accent);
 }
 
-.game-description p {
-  font-size: var(--text-lg);
-  font-family: var(--font-primary);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  color: var(--rg-text-secondary);
-  text-align: center;
-}
-
 /* Play Buttons */
 .play-button-container {
   display: flex;
@@ -133,16 +124,6 @@
     background-color 0.2s ease-in-out,
     color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
-}
-
-.play-arrow {
-  font-size: 1.2rem;
-}
-
-/* Social Links */
-.social-links-container {
-  text-align: center;
-  margin: 3rem 0;
 }
 
 /* Social Links */
@@ -190,55 +171,6 @@
   margin-bottom: 1.5rem;
   color: var(--rg-text-secondary);
   text-align: left;
-}
-
-.story-heading {
-  font-size: var(--text-xl);
-  font-family: var(--font-display);
-  font-weight: var(--rg-font-bold);
-  margin: 1.5rem 0 0.75rem 0;
-  text-align: left;
-  /* Use solid color instead of gradient for better hierarchy */
-  color: var(--rg-accent);
-  border-left: 3px solid var(--rg-accent);
-  padding-left: 0.75rem;
-}
-
-/* Features Grid */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.feature-item {
-  background: var(--rg-bg-secondary);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--rg-border);
-}
-
-.feature-item {
-  background: var(--rg-bg-secondary);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--rg-border);
-}
-
-.feature-item h3 {
-  font-size: var(--text-xl);
-  font-family: var(--font-display);
-  font-weight: var(--font-semibold);
-  color: var(--rg-accent-light);
-  margin-bottom: 0.8rem;
-}
-
-.feature-item p {
-  font-size: var(--text-base);
-  font-family: var(--font-primary);
-  color: var(--rg-text-secondary);
-  line-height: 1.5;
 }
 
 /* Coming Soon Notice */
@@ -436,16 +368,6 @@
     line-height: 1.7;
     margin-bottom: 1.25rem;
     text-align: left;
-  }
-
-  /* Features Grid - Single Column */
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .feature-item {
-    padding: 1.25rem;
   }
 
   /* Breadcrumb - Mobile Optimized */

@@ -3,8 +3,8 @@
 // Types: Skill (regular skills with % + flat), Ultimate (LV1-5 scaling)
 // Only includes characters that exist in character-info.js (shown on Character Skills page)
 
-import { BUSTY_BURST_SKILLS_DATA } from './character-skills-full.js';
-import { getAllCharacterSlugs } from './character-info.js';
+import { BUSTY_BURST_SKILLS_DATA } from './characters/skills/index.js';
+import { getAllCharacterSlugs } from './characters/info/index.js';
 
 // Get valid character slugs (only characters shown on Character Skills page)
 const validCharacterSlugs = new Set(getAllCharacterSlugs());

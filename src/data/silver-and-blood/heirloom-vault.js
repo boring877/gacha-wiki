@@ -4,7 +4,7 @@
 import heirloomData from './heirloom_vault_data.json';
 import heirloomStats from './heirloom_stats.json';
 import resonantiaSkills from './resonantia_skills.json';
-import charactersInfo from './characters_info.json';
+import { charactersInfoData as charactersInfo } from './characters.js';
 
 // Build a lookup map from character name to info
 const characterInfoMap = new Map();
@@ -172,19 +172,28 @@ const DEFAULT_PER_LEVEL_GAIN = {
   m_def: 9
 };
 
-// Get max level stat bonuses for a hero (Level 70 stats)
+// Get max level stat bonuses for a hero (Level 70 stats) - uses pre-computed tier-based level tables
 export function getHeroMaxStatBonuses(heroId) {
   const levelGroups = getHeirloomStats();
-  const targetLevel = 70; // Max heirloom level is 70
+  const targetLevel = 70;
 
   for (const [groupId, groupData] of Object.entries(levelGroups)) {
     const heroInGroup = groupData.heroes?.find(h => h.hero_id === heroId);
     if (heroInGroup) {
-      // Use per_level_gain if available, otherwise use default
+      if (groupData.levels && groupData.levels.length > 0) {
+        const maxData = groupData.levels.reduce((max, l) => l.level > max.level ? l : max, { level: 0 });
+        return {
+          hp: maxData.hp || 0,
+          atk: maxData.atk || 0,
+          pDef: maxData.p_def || 0,
+          mDef: maxData.m_def || 0,
+          maxLevel: targetLevel,
+        };
+      }
+      // Fallback to linear for groups without level tables
       const gain = (groupData.per_level_gain && Object.keys(groupData.per_level_gain).length > 0)
         ? groupData.per_level_gain
         : DEFAULT_PER_LEVEL_GAIN;
-
       return {
         hp: Math.round((gain.hp || DEFAULT_PER_LEVEL_GAIN.hp) * targetLevel),
         atk: Math.round((gain.atk || DEFAULT_PER_LEVEL_GAIN.atk) * targetLevel),
@@ -318,18 +327,38 @@ export function getResonantiaAllLevelRequirements(skill, heroId) {
   return [baseReq, baseReq + 10, baseReq + 30];
 }
 
-// Calculate stats at any level (not just max)
+// Look up stats from the pre-computed level table (tier-based scaling)
+function lookupStatsFromLevels(levels, targetLevel) {
+  const sorted = [...levels].sort((a, b) => a.level - b.level);
+  const exact = sorted.find(l => l.level === targetLevel);
+  if (exact) return exact;
+  const below = sorted.filter(l => l.level <= targetLevel).pop();
+  if (below) return below;
+  return sorted[0] || { hp: 0, atk: 0, p_def: 0, m_def: 0 };
+}
+
+// Calculate stats at any level (not just max) - uses pre-computed tier-based level tables
 export function getStatsAtLevel(heroId, level) {
   const levelGroups = getHeirloomStats();
-  const targetLevel = Math.max(1, Math.min(70, level));
+  const targetLevel = Math.max(0, Math.min(70, level));
 
   for (const [groupId, groupData] of Object.entries(levelGroups)) {
     const heroInGroup = groupData.heroes?.find(h => h.hero_id === heroId);
     if (heroInGroup) {
+      if (groupData.levels && groupData.levels.length > 0) {
+        const data = lookupStatsFromLevels(groupData.levels, targetLevel);
+        return {
+          hp: data.hp || 0,
+          atk: data.atk || 0,
+          pDef: data.p_def || 0,
+          mDef: data.m_def || 0,
+          level: targetLevel,
+        };
+      }
+      // Fallback to linear for groups without level tables
       const gain = (groupData.per_level_gain && Object.keys(groupData.per_level_gain).length > 0)
         ? groupData.per_level_gain
         : DEFAULT_PER_LEVEL_GAIN;
-
       return {
         hp: Math.round((gain.hp || DEFAULT_PER_LEVEL_GAIN.hp) * targetLevel),
         atk: Math.round((gain.atk || DEFAULT_PER_LEVEL_GAIN.atk) * targetLevel),

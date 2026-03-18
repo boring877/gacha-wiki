@@ -4,7 +4,7 @@
  * Includes weapon tier rankings and series groupings
  */
 
-import { BUSTY_BURST_CHARACTER_INFO, getAllCharacters } from './character-info.js';
+import { BUSTY_BURST_CHARACTER_INFO, getAllCharacters } from './characters/info/index.js';
 import { weapons, weaponTypes } from './weapons.js';
 
 /**

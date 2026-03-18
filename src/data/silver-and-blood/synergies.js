@@ -162,6 +162,57 @@ const synergies = [
       "card": "collaboration_icon_role_03",
       "popup": "collaboration_icon_03"
     }
+  },
+  {
+    "id": "4",
+    "name": "Silvermoon Fantasy",
+    "leader": {
+      "heroId": "20800",
+      "name": "Blooming Empousa"
+    },
+    "members": [
+      {
+        "heroId": "20450",
+        "name": "Transcendent Hati"
+      },
+      {
+        "heroId": "20320",
+        "name": "Fanny"
+      },
+      {
+        "heroId": "20100",
+        "name": "Agares"
+      },
+      {
+        "heroId": "20330",
+        "name": "Nicole"
+      },
+      {
+        "heroId": "20170",
+        "name": "Darcias"
+      }
+    ],
+    "tiers": [
+      {
+        "tier": 2,
+        "requiredMembers": 2,
+        "description": "All members of this Synergy gain Synergy DMG Increase +{0} and Synergy DMG Reduction +{1}. DMG Dealt +{2} (Max +{3}) for every stack of Continuous DMG on the target. Blooming Empousa gains {4} extra stack(s) of Rose Crimson Brand.",
+        "descriptionFormatted": "All members of this Synergy gain Synergy DMG Increase +25% and Synergy DMG Reduction +15%. DMG Dealt +1% (Max +20%) for every stack of Continuous DMG on the target. Blooming Empousa gains 1 extra stack of Rose Crimson Brand."
+      },
+      {
+        "tier": 3,
+        "requiredMembers": 3,
+        "description": "All members of this Synergy gain Synergy DMG Increase +{5} and Synergy DMG Reduction +{6}. DMG Dealt +{7} (Max +{8}) for every stack of Continuous DMG on the target. Blooming Empousa gains {9} extra stack(s) of Rose Crimson Brand.",
+        "descriptionFormatted": "All members of this Synergy gain Synergy DMG Increase +50% and Synergy DMG Reduction +35%. DMG Dealt +2% (Max +40%) for every stack of Continuous DMG on the target. Blooming Empousa gains 2 extra stacks of Rose Crimson Brand."
+      }
+    ],
+    "icons": {
+      "inactive": "collaboration_icon_buff_04_grey",
+      "tier2": "collaboration_icon_buff_04_yellow",
+      "tier3": "collaboration_icon_buff_04_red",
+      "card": "collaboration_icon_role_04",
+      "popup": "collaboration_icon_04"
+    }
   }
 ];
 

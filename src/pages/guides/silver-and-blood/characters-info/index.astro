@@ -1,74 +1,74 @@
 ---
-import CharacterInfoLayout from '../../../../layouts/silver-and-blood/CharacterInfoLayout.astro';
-import SABCharacterIcon from '../../../../components/silver-and-blood/SABCharacterIcon.astro';
-import SABFactionIcon from '../../../../components/silver-and-blood/SABFactionIcon.astro';
-import { Image } from 'astro:assets';
-import charactersData from '../../../../data/silver-and-blood/characters_info.json';
+import CharacterInfoLayout from "../../../../layouts/silver-and-blood/CharacterInfoLayout.astro";
+import SABCharacterIcon from "../../../../components/silver-and-blood/SABCharacterIcon.astro";
+import SABFactionIcon from "../../../../components/silver-and-blood/SABFactionIcon.astro";
+import { Image } from "astro:assets";
+import { charactersInfoData as charactersData } from "../../../../data/silver-and-blood/characters.js";
 
 // Import rarity frame images (UR=gold/ssr, SSR=purple/sr, SR=blue/r)
-import rarityGold from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png';
-import rarityPurple from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png';
-import rarityBlue from '../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png';
+import rarityGold from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_ssr.png";
+import rarityPurple from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_sr.png";
+import rarityBlue from "../../../../assets/images/games/silver-and-blood/character_icons/common_img_r.png";
 
 // Import moon phase icons
-import moonNew from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon1.png';
-import moonCrescent from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon2.png';
-import moonFull from '../../../../assets/images/games/silver-and-blood/icons/moon_phase/filter_icon_moon3.png';
+import moonFull from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-full.png";
+import moonHalf from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-half.png";
+import moonNew from "../../../../assets/images/games/silver-and-blood/icons/moon_phase/moon-new.png";
 
 // Import damage type icons
-import dmgMagical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png';
-import dmgPhysical from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png';
-import dmgPierce from '../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png';
+import dmgMagical from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_02.png";
+import dmgPhysical from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_03.png";
+import dmgPierce from "../../../../assets/images/games/silver-and-blood/icons/damage_type/level_info_icon_attack_04.png";
 
 // Import equipment type icons
-import equipLight from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png';
-import equipMedium from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png';
-import equipHeavy from '../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png';
+import equipLight from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Light.png";
+import equipMedium from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Medium.png";
+import equipHeavy from "../../../../assets/images/games/silver-and-blood/icons/equipment_type/EquipType_Heavy.png";
 
 // Import role/career icons
-import roleAssassin from '../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png';
-import roleDefender from '../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png';
-import roleEnchanter from '../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png';
-import roleMarksman from '../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png';
-import roleSorcerer from '../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png';
-import roleWarrior from '../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png';
+import roleAssassin from "../../../../assets/images/games/silver-and-blood/icons/role/role_assassin.png";
+import roleDefender from "../../../../assets/images/games/silver-and-blood/icons/role/role_defender.png";
+import roleEnchanter from "../../../../assets/images/games/silver-and-blood/icons/role/role_enchanter.png";
+import roleMarksman from "../../../../assets/images/games/silver-and-blood/icons/role/role_marksman.png";
+import roleSorcerer from "../../../../assets/images/games/silver-and-blood/icons/role/role_sorcerer.png";
+import roleWarrior from "../../../../assets/images/games/silver-and-blood/icons/role/role_warrior.png";
 
 const rarityImages: Record<string, ImageMetadata> = {
-  'UR': rarityGold,
-  'SSR': rarityPurple,
-  'SR': rarityBlue,
+  UR: rarityGold,
+  SSR: rarityPurple,
+  SR: rarityBlue,
 };
 
 const moonPhaseImages: Record<string, ImageMetadata> = {
-  'filter_icon_moon1.png': moonNew,
-  'filter_icon_moon2.png': moonCrescent,
-  'filter_icon_moon3.png': moonFull,
+  "moon-full.png": moonFull,
+  "moon-half.png": moonHalf,
+  "moon-new.png": moonNew,
 };
 
 const damageTypeImages: Record<string, ImageMetadata> = {
-  'level_info_icon_attack_02.png': dmgMagical,
-  'level_info_icon_attack_03.png': dmgPhysical,
-  'level_info_icon_attack_04.png': dmgPierce,
+  "level_info_icon_attack_02.png": dmgMagical,
+  "level_info_icon_attack_03.png": dmgPhysical,
+  "level_info_icon_attack_04.png": dmgPierce,
 };
 
 const equipmentTypeImages: Record<string, ImageMetadata> = {
-  'EquipType_Light.png': equipLight,
-  'EquipType_Medium.png': equipMedium,
-  'EquipType_Heavy.png': equipHeavy,
+  "EquipType_Light.png": equipLight,
+  "EquipType_Medium.png": equipMedium,
+  "EquipType_Heavy.png": equipHeavy,
 };
 
 const roleImages: Record<string, ImageMetadata> = {
-  'Assassin': roleAssassin,
-  'Defender': roleDefender,
-  'Enchanter': roleEnchanter,
-  'Marksman': roleMarksman,
-  'Sorcerer': roleSorcerer,
-  'Warrior': roleWarrior,
+  Assassin: roleAssassin,
+  Defender: roleDefender,
+  Enchanter: roleEnchanter,
+  Marksman: roleMarksman,
+  Sorcerer: roleSorcerer,
+  Warrior: roleWarrior,
 };
 
 // Filter out characters with null/undefined names and get unique characters
-const validCharacters = charactersData.characters.filter(char =>
-  char.name && char.fullName && char.title && char.rarity
+const validCharacters = charactersData.characters.filter(
+  (char) => char.name && char.fullName && char.title && char.rarity,
 );
 
 // Get unique characters (filter out duplicates by name + title combination)
@@ -83,91 +83,97 @@ const uniqueCharacters = validCharacters.reduce((acc, char) => {
 const characters = Array.from(uniqueCharacters.values());
 
 // Sort by rarity then name
-const rarityOrder: Record<string, number> = { 'UR': 0, 'SSR': 1, 'SR': 2, 'R': 3 };
+const rarityOrder: Record<string, number> = { UR: 0, SSR: 1, SR: 2, R: 3 };
 characters.sort((a, b) => {
-  const rarityDiff = (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
+  const rarityDiff =
+    (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
   if (rarityDiff !== 0) return rarityDiff;
-  return (a.name || '').localeCompare(b.name || '');
+  return (a.name || "").localeCompare(b.name || "");
 });
 
 // Get unique values for filters (filter out null/undefined)
-const camps = [...new Set(characters.map(c => c.camp).filter(Boolean))].sort();
-const careers = [...new Set(characters.map(c => c.career).filter(Boolean))].sort();
-const rarities = [...new Set(characters.map(c => c.rarity))].sort((a, b) =>
-  (rarityOrder[a] ?? 99) - (rarityOrder[b] ?? 99)
+const camps = [
+  ...new Set(characters.map((c) => c.camp).filter(Boolean)),
+].sort();
+const careers = [
+  ...new Set(characters.map((c) => c.career).filter(Boolean)),
+].sort();
+const rarities = [...new Set(characters.map((c) => c.rarity))].sort(
+  (a, b) => (rarityOrder[a] ?? 99) - (rarityOrder[b] ?? 99),
 );
 
 // Get icon name mapping
 function getIconName(name: string): string {
   const nameMap: Record<string, string> = {
-    'Noah': 'Noah',
-    'Limine': 'Limine',
-    'Jestel': 'Jestel',
-    'Empousa': 'Empousa',
-    'Aiona': 'Aiona',
-    'Setti': 'Setti',
-    'Hati': 'Hati',
-    'Bella': 'Bella',
-    'Stella': 'Stella',
-    'Selena': 'Selena',
-    'Lamia': 'Lamia',
-    'Friedrich': 'Friedrich',
-    'Quinn': 'Quinn',
-    'Gilrain': 'Gilrain',
-    'Cecia': 'Cecia',
-    'Lorelei': 'Lorelei',
-    'Agares': 'Agares',
-    'Ami': 'Ami',
-    'Piera': 'Piera',
-    'Seth': 'Seth',
-    'Ressa': 'Ressa',
-    'Dalcarlo': 'Dalcarlo',
-    'Joan': 'Joan',
-    'Cain': 'Cain',
-    'Pavana': 'Pavana',
-    'Julius': 'Julius',
-    'Ottavia': 'Ottavia',
-    'Theophane': 'Theophane',
-    'Tris': 'Tris',
-    'Nicole': 'Nicole',
-    'Darcias': 'Darcias',
-    'Edina': 'Edina',
-    'Yggdrasill': 'Yggdrasill',
-    'Augustine': 'Augustine',
-    'Acappella': 'Acappella',
-    'Mass': 'Mass',
-    'Katherine': 'Katherine',
-    'Hippocratic': 'Hippocratic',
-    'Leo': 'Leo',
-    'VanHellsing': 'VanHellsing',
-    'Baphomet': 'Baphomet',
-    'Garlic': 'Garlic',
-    'William': 'William',
-    'Goldland': 'Goldland',
-    'Siegrune': 'Siegrune',
-    'Livia': 'Livia',
-    'Evna': 'Evna',
-    'Typhoeus': 'Typhoeus',
-    'Ezareth': 'Ezareth',
-    'Paimile': 'Paimile',
-    'Gini': 'Gini',
-    'Clive': 'Clive',
-    'Albert': 'Albert',
-    'Henry': 'Henry',
-    'James': 'James',
-    'Jenny': 'Jenny',
-    'Jones': 'Jones',
-    'Isabelle': 'Isabelle',
-    'Alene': 'Alene',
-    'Astel': 'Astel',
-    'Selenia': 'Selenia',
-    'Fanu': 'Fanu',
+    Noah: "Noah",
+    Limine: "Limine",
+    Jestel: "Jestel",
+    Empousa: "Empousa",
+    Aiona: "Aiona",
+    Setti: "Setti",
+    Hati: "Hati",
+    Bella: "Bella",
+    Stella: "Stella",
+    Selena: "Selena",
+    Lamia: "Lamia",
+    Friedrich: "Friedrich",
+    Quinn: "Quinn",
+    Gilrain: "Gilrain",
+    Cecia: "Cecia",
+    Lorelei: "Lorelei",
+    Agares: "Agares",
+    Ami: "Ami",
+    Piera: "Piera",
+    Seth: "Seth",
+    Ressa: "Ressa",
+    Dalcarlo: "Dalcarlo",
+    Joan: "Joan",
+    Cain: "Cain",
+    Pavana: "Pavana",
+    Julius: "Julius",
+    Ottavia: "Ottavia",
+    Theophane: "Theophane",
+    Tris: "Tris",
+    Nicole: "Nicole",
+    Darcias: "Darcias",
+    Edina: "Edina",
+    Yggdrasill: "Yggdrasill",
+    Augustine: "Augustine",
+    Acappella: "Acappella",
+    Mass: "Mass",
+    Katherine: "Katherine",
+    Hippocratic: "Hippocratic",
+    Leo: "Leo",
+    VanHellsing: "VanHellsing",
+    Baphomet: "Baphomet",
+    Garlic: "Garlic",
+    William: "William",
+    Goldland: "Goldland",
+    Siegrune: "Siegrune",
+    Livia: "Livia",
+    Evna: "Evna",
+    Typhoeus: "Typhoeus",
+    Ezareth: "Ezareth",
+    Paimile: "Paimile",
+    Gini: "Gini",
+    Clive: "Clive",
+    Albert: "Albert",
+    Henry: "Henry",
+    James: "James",
+    Jenny: "Jenny",
+    Jones: "Jones",
+    Isabelle: "Isabelle",
+    Alene: "Alene",
+    Astel: "Astel",
+    Selenia: "Selenia",
+    Fanu: "Fanu",
   };
   return nameMap[name] || name;
 }
 
-const pageTitle = 'Character Lore & Info - Silver and Blood';
-const pageDescription = 'Explore the complete lore, stories, and voice actors for all characters in Silver and Blood. Discover the rich backstories of your favorite Bloodborn.';
+const pageTitle = "Character Lore & Info - Silver and Blood";
+const pageDescription =
+  "Explore the complete lore, stories, and voice actors for all characters in Silver and Blood. Discover the rich backstories of your favorite Bloodborn.";
 ---
 
 <CharacterInfoLayout
@@ -184,7 +190,11 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
     </header>
 
     <!-- Filters -->
-    <nav class="characters-filters" role="search" aria-label="Character filters">
+    <nav
+      class="characters-filters"
+      role="search"
+      aria-label="Character filters"
+    >
       <div class="filter-group">
         <label class="filter-label" for="search">Search</label>
         <input
@@ -200,9 +210,7 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
         <label class="filter-label" for="rarity-filter">Rarity</label>
         <select id="rarity-filter" class="filter-select">
           <option value="">All Rarities</option>
-          {rarities.map(rarity => (
-            <option value={rarity}>{rarity}</option>
-          ))}
+          {rarities.map((rarity) => <option value={rarity}>{rarity}</option>)}
         </select>
       </div>
 
@@ -210,9 +218,7 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
         <label class="filter-label" for="camp-filter">Camp</label>
         <select id="camp-filter" class="filter-select">
           <option value="">All Camps</option>
-          {camps.map(camp => (
-            <option value={camp}>{camp}</option>
-          ))}
+          {camps.map((camp) => <option value={camp}>{camp}</option>)}
         </select>
       </div>
 
@@ -220,117 +226,136 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
         <label class="filter-label" for="career-filter">Career</label>
         <select id="career-filter" class="filter-select">
           <option value="">All Careers</option>
-          {careers.map(career => (
-            <option value={career}>{career}</option>
-          ))}
+          {careers.map((career) => <option value={career}>{career}</option>)}
         </select>
       </div>
     </nav>
 
     <!-- Characters Grid -->
-    <div class="characters-grid" id="characters-grid" role="list" aria-label="Character list">
-      {characters.map(character => (
-        <a
-          href={`/guides/silver-and-blood/characters-info/${character.id}`}
-          class="character-card-link"
-          data-name={(character.name || '').toLowerCase()}
-          data-fullname={(character.fullName || '').toLowerCase()}
-          data-rarity={character.rarity || ''}
-          data-camp={character.camp || ''}
-          data-career={character.career || ''}
-          aria-label={`View ${character.name} - ${character.rarity} ${character.career || 'character'}`}
-        >
-          <article class="character-index-card" role="listitem">
-            <div class="character-card-image">
-              <SABCharacterIcon
-                name={getIconName(character.name || 'Unknown')}
-                variant="Base"
-                size="large"
-                width={280}
-                height={280}
-                loading="lazy"
-              />
-              <Image
-                src={rarityImages[character.rarity] || rarityBlue}
-                alt={character.rarity || 'SR'}
-                class="rarity-badge-img"
-                width={40}
-                height={40}
-                loading="lazy"
-              />
-            </div>
-            <div class="character-card-info">
-              <h3 class="character-card-name">{character.name || 'Unknown'}</h3>
-              <p class="character-card-title">{character.title || ''}</p>
-              <div class="character-card-icons">
-                {character.career && roleImages[character.career] && (
-                  <Image
-                    src={roleImages[character.career]}
-                    alt={character.career}
-                    class="card-stat-icon"
-                    width={20}
-                    height={20}
-                    title={`Role: ${character.career}`}
-                  />
-                )}
-                {character.camp && (
-                  <span title={`Faction: ${character.camp}`}>
-                    <SABFactionIcon
-                      faction={character.camp}
+    <div
+      class="characters-grid"
+      id="characters-grid"
+      role="list"
+      aria-label="Character list"
+    >
+      {
+        characters.map((character) => (
+          <a
+            href={`/guides/silver-and-blood/characters-info/${character.id}`}
+            class="character-card-link"
+            data-name={(character.name || "").toLowerCase()}
+            data-fullname={(character.fullName || "").toLowerCase()}
+            data-rarity={character.rarity || ""}
+            data-camp={character.camp || ""}
+            data-career={character.career || ""}
+            aria-label={`View ${character.name} - ${character.rarity} ${character.career || "character"}`}
+          >
+            <article class="character-index-card" role="listitem">
+              <div class="character-card-image">
+                <SABCharacterIcon
+                  name={getIconName(character.name || "Unknown")}
+                  variant="Base"
+                  size="large"
+                  width={280}
+                  height={280}
+                  loading="lazy"
+                />
+                <Image
+                  src={rarityImages[character.rarity] || rarityBlue}
+                  alt={character.rarity || "SR"}
+                  class="rarity-badge-img"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                />
+              </div>
+              <div class="character-card-info">
+                <h3 class="character-card-name">
+                  {character.name || "Unknown"}
+                </h3>
+                <p class="character-card-title">{character.title || ""}</p>
+                <div class="character-card-icons">
+                  {character.career && roleImages[character.career] && (
+                    <Image
+                      src={roleImages[character.career]}
+                      alt={character.career}
+                      class="card-stat-icon"
                       width={20}
                       height={20}
-                      class="card-stat-icon"
+                      title={`Role: ${character.career}`}
                     />
-                  </span>
-                )}
-                {character.moonPhaseIcon && moonPhaseImages[character.moonPhaseIcon] && (
-                  <Image
-                    src={moonPhaseImages[character.moonPhaseIcon]}
-                    alt={character.moonPhase || 'Moon'}
-                    class="card-stat-icon"
-                    width={20}
-                    height={20}
-                  />
-                )}
-                {character.damageTypeIcon && damageTypeImages[character.damageTypeIcon] && (
-                  <Image
-                    src={damageTypeImages[character.damageTypeIcon]}
-                    alt={character.damageType || 'DMG'}
-                    class="card-stat-icon"
-                    width={20}
-                    height={20}
-                  />
-                )}
-                {character.equipmentTypeIcon && equipmentTypeImages[character.equipmentTypeIcon] && (
-                  <Image
-                    src={equipmentTypeImages[character.equipmentTypeIcon]}
-                    alt={character.equipmentType || 'Equip'}
-                    class="card-stat-icon"
-                    width={20}
-                    height={20}
-                  />
-                )}
+                  )}
+                  {character.camp && (
+                    <span title={`Faction: ${character.camp}`}>
+                      <SABFactionIcon
+                        faction={character.camp}
+                        width={20}
+                        height={20}
+                        class="card-stat-icon"
+                      />
+                    </span>
+                  )}
+                  {character.moonPhaseIcon &&
+                    moonPhaseImages[character.moonPhaseIcon] && (
+                      <Image
+                        src={moonPhaseImages[character.moonPhaseIcon]}
+                        alt={character.moonPhase || "Moon"}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                      />
+                    )}
+                  {character.damageTypeIcon &&
+                    damageTypeImages[character.damageTypeIcon] && (
+                      <Image
+                        src={damageTypeImages[character.damageTypeIcon]}
+                        alt={character.damageType || "DMG"}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                      />
+                    )}
+                  {character.equipmentTypeIcon &&
+                    equipmentTypeImages[character.equipmentTypeIcon] && (
+                      <Image
+                        src={equipmentTypeImages[character.equipmentTypeIcon]}
+                        alt={character.equipmentType || "Equip"}
+                        class="card-stat-icon"
+                        width={20}
+                        height={20}
+                      />
+                    )}
+                </div>
               </div>
-            </div>
-          </article>
-        </a>
-      ))}
+            </article>
+          </a>
+        ))
+      }
     </div>
 
-    <div id="no-results" style="display: none; text-align: center; padding: 3rem; color: var(--sab-text-muted);">
+    <div
+      id="no-results"
+      style="display: none; text-align: center; padding: 3rem; color: var(--sab-text-muted);"
+    >
       <p>No characters found matching your filters.</p>
     </div>
   </div>
 </CharacterInfoLayout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search') as HTMLInputElement;
-    const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
-    const campFilter = document.getElementById('camp-filter') as HTMLSelectElement;
-    const careerFilter = document.getElementById('career-filter') as HTMLSelectElement;
-    const grid = document.getElementById('characters-grid');
-    const noResults = document.getElementById('no-results');
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search") as HTMLInputElement;
+    const rarityFilter = document.getElementById(
+      "rarity-filter",
+    ) as HTMLSelectElement;
+    const campFilter = document.getElementById(
+      "camp-filter",
+    ) as HTMLSelectElement;
+    const careerFilter = document.getElementById(
+      "career-filter",
+    ) as HTMLSelectElement;
+    const grid = document.getElementById("characters-grid");
+    const noResults = document.getElementById("no-results");
 
     function filterCharacters() {
       const searchTerm = searchInput.value.toLowerCase();
@@ -338,18 +363,19 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
       const camp = campFilter.value;
       const career = careerFilter.value;
 
-      const cards = grid?.querySelectorAll('.character-card-link') || [];
+      const cards = grid?.querySelectorAll(".character-card-link") || [];
       let visibleCount = 0;
 
       cards.forEach((card) => {
         const el = card as HTMLElement;
-        const name = el.dataset.name || '';
-        const fullname = el.dataset.fullname || '';
-        const cardRarity = el.dataset.rarity || '';
-        const cardCamp = el.dataset.camp || '';
-        const cardCareer = el.dataset.career || '';
+        const name = el.dataset.name || "";
+        const fullname = el.dataset.fullname || "";
+        const cardRarity = el.dataset.rarity || "";
+        const cardCamp = el.dataset.camp || "";
+        const cardCareer = el.dataset.career || "";
 
-        const matchesSearch = !searchTerm ||
+        const matchesSearch =
+          !searchTerm ||
           name.includes(searchTerm) ||
           fullname.includes(searchTerm);
         const matchesRarity = !rarity || cardRarity === rarity;
@@ -357,21 +383,21 @@ const pageDescription = 'Explore the complete lore, stories, and voice actors fo
         const matchesCareer = !career || cardCareer === career;
 
         if (matchesSearch && matchesRarity && matchesCamp && matchesCareer) {
-          el.style.display = '';
+          el.style.display = "";
           visibleCount++;
         } else {
-          el.style.display = 'none';
+          el.style.display = "none";
         }
       });
 
       if (noResults) {
-        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        noResults.style.display = visibleCount === 0 ? "block" : "none";
       }
     }
 
-    searchInput?.addEventListener('input', filterCharacters);
-    rarityFilter?.addEventListener('change', filterCharacters);
-    campFilter?.addEventListener('change', filterCharacters);
-    careerFilter?.addEventListener('change', filterCharacters);
+    searchInput?.addEventListener("input", filterCharacters);
+    rarityFilter?.addEventListener("change", filterCharacters);
+    campFilter?.addEventListener("change", filterCharacters);
+    careerFilter?.addEventListener("change", filterCharacters);
   });
 </script>

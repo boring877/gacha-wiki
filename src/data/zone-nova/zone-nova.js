@@ -54,16 +54,8 @@ export const zoneNovaConfig = {
           title: 'Rankings',
           url: '/guides/zone-nova/character-rankings/',
         },
-        {
-          id: 'character-comparison',
-          title: 'Comparison',
-          url: '/guides/zone-nova/character-comparison/',
-        },
-        {
-          id: 'character-comparison-v2',
-          title: 'Comparison V2',
-          url: '/guides/zone-nova/character-comparison-v2/',
-        },
+
+
         {
           id: 'character-builds',
           title: 'Character Builds',
@@ -230,26 +222,8 @@ export const zoneNovaConfig = {
       category: 'guides',
       size: 'large',
     },
-    {
-      id: 'character-comparison',
-      title: 'Character Comparison',
-      emoji: '',
-      description:
-        'Compare up to 4 characters side by side to analyze their stats and roles for optimal team building.',
-      url: '/guides/zone-nova/character-comparison/',
-      category: 'guides',
-      size: 'medium',
-    },
-    {
-      id: 'character-comparison-v2',
-      title: 'Character Comparison V2',
-      emoji: '',
-      description:
-        'Enhanced card-based comparison tool! Compare 2 characters with detailed stats, skills, team abilities, and streamlined design.',
-      url: '/guides/zone-nova/character-comparison-v2/',
-      category: 'guides',
-      size: 'medium',
-    },
+
+
     {
       id: 'character-rankings',
       title: 'Character Rankings',
