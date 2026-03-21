@@ -4,7 +4,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
 
 // Extract data for easier use in template
-const { meta, gameInfo, categoryGroups, gameNotes } = bustyBurstConfig;
+const { meta, gameInfo, gameNotes } = bustyBurstConfig;
 ---
 
 <BustyBurstLandingLayout
@@ -28,7 +28,7 @@ const { meta, gameInfo, categoryGroups, gameNotes } = bustyBurstConfig;
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://gachawiki.info/guides/busty-burst/paladins?search={search_term_string}",
+        "target": "https://gachawiki.info/guides/busty-burst/characters/?search={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }

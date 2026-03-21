@@ -10,9 +10,6 @@ import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
 import { getElementDefenseDownSkills, groupByElementType, getElementDefenseDownStats } from '../../../data/busty-burst/element-defense-down-data.js';
 
-// Import CSS
-import '../../../styles/games/busty-burst/busty-burst-defense-down.css';
-
 // Get all element defense down skills
 const allSkills = getElementDefenseDownSkills();
 const groupedByElement = groupByElementType(allSkills);

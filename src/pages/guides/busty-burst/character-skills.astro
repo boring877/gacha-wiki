@@ -1,64 +1,48 @@
 ---
-// Busty Burst Character Skills Page
-// Displays all character skills with rotation, basic attack, skills, ultimate, and passives
-
 import CharacterSkillsLayout from '../../../layouts/busty-burst/CharacterSkillsLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
 import PositionImage from '../../../components/busty-burst/PositionImage.astro';
+import TypeofATKImage from '../../../components/busty-burst/TypeofATKImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
 import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
-import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, STATUS_EFFECTS, BUFF_LEVELS } from '../../../data/busty-burst/characters/skills/index.js';
+import { BUSTY_BURST_SKILLS_DATA, SPEED_LABELS, getCharacterBySlug, getAllCharacterSlugs } from '../../../data/busty-burst/characters/index.js';
 import { getSupportDataById } from '../../../data/busty-burst/support-data.js';
-import { getCharacterBySlug, getAllCharacterSlugs } from '../../../data/busty-burst/characters/info/index.js';
 
-// Import CSS
-import '../../../styles/games/busty-burst/busty-burst-character-skills.css';
-
-// Helper to get weapon type from support data
 const getWeaponType = (charId: number) => {
   const supportData = getSupportDataById(charId);
   return supportData?.weapon || null;
 };
 
-// Helper to get character position from character-info by slug
 const getCharacterPosition = (slug: string) => {
   const charInfo = getCharacterBySlug(slug);
   return charInfo?.position?.number || 1;
 };
 
-// Map position number to filename
 const getPositionFileName = (pos: number) => {
-  const posMap: Record<number, string> = {
-    1: 'Front.png',
-    2: 'Mid.png',
-    3: 'Back.png',
-  };
+  const posMap: Record<number, string> = { 1: 'Front.png', 2: 'Mid.png', 3: 'Back.png' };
   return posMap[pos] || 'Front.png';
 };
 
-const getPositionName = (pos: number) => {
-  const posMap: Record<number, string> = {
-    1: 'Front',
-    2: 'Mid',
-    3: 'Back',
-  };
+const getPositionLabel = (pos: number) => {
+  const posMap: Record<number, string> = { 1: 'Front', 2: 'Mid', 3: 'Back' };
   return posMap[pos] || 'Front';
 };
 
-// Get valid character slugs from character-info (source of truth for which characters exist in game)
 const validCharacterSlugs = new Set(getAllCharacterSlugs());
-
-// Sort characters by rarity: SSR -> SR -> R, and filter out characters not in character-info
 const rarityOrder: Record<string, number> = { 'SSR': 0, 'SR': 1, 'R': 2 };
 const characterSkills = [...BUSTY_BURST_SKILLS_DATA]
   .filter(c => validCharacterSlugs.has(c.slug))
-  .sort((a, b) => {
-    return (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99);
-  });
+  .sort((a, b) => (rarityOrder[a.rarity] ?? 99) - (rarityOrder[b.rarity] ?? 99) || a.name.localeCompare(b.name));
 
-// Status effect descriptions for inline display
+const charCounts = {
+  total: characterSkills.length,
+  SSR: characterSkills.filter(c => c.rarity === 'SSR').length,
+  SR: characterSkills.filter(c => c.rarity === 'SR').length,
+  R: characterSkills.filter(c => c.rarity === 'R').length,
+};
+
 const STATUS_EFFECT_INFO: Record<string, string> = {
   'petrify': 'Cannot act, Block=0',
   'stun': 'Cannot act',
@@ -77,34 +61,47 @@ const STATUS_EFFECT_INFO: Record<string, string> = {
   'fear': 'MP drain',
 };
 
-// Helper function to highlight values and add status effect explanations
 const highlightValues = (text: string) => {
   if (!text) return '';
-
   let result = text;
 
-  // Add inline explanations for status effects
-  // Match effect names that haven't been processed yet (not followed by a description in parentheses)
+  result = result.replace(/for (\d+\.?\d*) seconds?/gi, 'for <span class="bb-kw-duration">$1s</span>');
+
   for (const [effect, desc] of Object.entries(STATUS_EFFECT_INFO)) {
-    // Match "Effect for Xs" or standalone "Effect" - but not if already has (desc) after it
-    const regex = new RegExp(`\\b(${effect})\\b(?!\\s*<span|\\s*\\(${desc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    result = result.replace(regex, `<span class="bb-status-effect">$1</span> <span class="bb-status-desc">(${desc})</span>`);
+    const regex = new RegExp(`\\b(${effect})\\b(?!\\s*<span)`, 'gi');
+    result = result.replace(regex, `<span class="bb-kw-status">$1</span> <span class="bb-kw-hint">(${desc})</span>`);
   }
 
-  // Highlight percentages and numbers
   result = result
-    .replace(/(\d+%)/g, '<span class="bb-value-highlight">$1</span>')
-    .replace(/(\+\s*)(\d+)(\s+(?:magic|physical|damage|HP))/gi, '$1<span class="bb-value-highlight">$2</span>$3')
-    .replace(/(ATK\s*\+\s*)(\d+)/gi, '$1<span class="bb-value-highlight">$2</span>');
+    .replace(/\b(heal(?:s|ing)?)\b/gi, '<span class="bb-kw-heal">$1</span>')
+    .replace(/\b(restores?)\s*(hp)\b/gi, '<span class="bb-kw-heal">$1 $2</span>')
+    .replace(/\b(applies?)\b/gi, '<span class="bb-kw-apply">$1</span>')
+    .replace(/\b(inflicts?)\b/gi, '<span class="bb-kw-inflict">$1</span>')
+    .replace(/\b(deals?)\b/gi, '<span class="bb-kw-damage">$1</span>')
+    .replace(/\b(absorbs?)\b/gi, '<span class="bb-kw-absorb">$1</span>')
+    .replace(/\b(removes?)\s*(debuff|all debuff)/gi, '<span class="bb-kw-cleanse">$1 $2</span>')
+    .replace(/\b(dispel)\b/gi, '<span class="bb-kw-cleanse">$1</span>');
+
+  result = result
+    .replace(/(\d+(?:\.\d+)?)%/g, '<span class="bb-kw-num">$1</span>%')
+    .replace(/(\+\d+(?:\.\d+)?)(?!\s*%)/g, '<span class="bb-kw-num">$1</span>');
 
   return result;
 };
 
+const formatBuffEffect = (b: any) => {
+  if (!b || (b.value === 0 && b.type === 'unknown')) return '';
+  const sign = b.value > 0 ? '+' : '';
+  const val = typeof b.value === 'number' ? `${sign}${b.value}` : '';
+  const suffix = b.type === 'percent' ? '%' : '';
+  const needsSpace = !b.name.endsWith('+') && !b.name.endsWith('-') && val ? ' ' : '';
+  return `${b.name}${needsSpace}${val}${suffix}`;
+};
+
 const title = 'Busty Burst Character Skills Guide';
-const description = `Complete skill guide for all ${characterSkills.length} Busty Burst characters. View skill rotations, basic attacks, damage formulas, ultimate scaling (R1-R5), and passive abilities.`;
+const description = `Complete skill guide for all ${characterSkills.length} Busty Burst characters.`;
 const gameTitle = 'Character Skills Guide';
 
-// Get unique elements, roles, rarities for filters
 const elements = [...new Set(characterSkills.map(c => c.element))].sort();
 const roles = [...new Set(characterSkills.map(c => c.role))].sort();
 const rarities = ['SSR', 'SR', 'R'];
@@ -112,42 +109,67 @@ const rarities = ['SSR', 'SR', 'R'];
 
 <CharacterSkillsLayout title={title} description={description} gameTitle={gameTitle}>
   <div class="bb-skills-page">
-    <!-- Filter Controls -->
-    <div class="bb-skills-controls">
-      <div class="bb-skills-filter-row">
-        <input
-          type="text"
-          id="skills-search"
-          class="bb-skills-search-input"
-          placeholder="Search by character or skill name..."
-        />
-        <select id="rarity-filter" class="bb-skills-filter-select">
-          <option value="">All Rarities</option>
-          {rarities.map(r => <option value={r}>{r}</option>)}
-        </select>
-        <select id="element-filter" class="bb-skills-filter-select">
-          <option value="">All Elements</option>
-          {elements.map(el => <option value={el}>{el}</option>)}
-        </select>
-        <select id="role-filter" class="bb-skills-filter-select">
-          <option value="">All Roles</option>
-          {roles.map(role => <option value={role}>{role}</option>)}
-        </select>
-        <button type="button" id="clear-filters" class="bb-skills-clear-btn">Clear All</button>
+    <!-- Statistics Overview -->
+    <div class="bb-skills-stats-container">
+      <div class="bb-skills-stat-item">
+        <div class="bb-skills-stat-value">{charCounts.total}</div>
+        <div class="bb-skills-stat-label">Total</div>
+      </div>
+      <div class="bb-skills-stat-divider"></div>
+      <div class="bb-skills-stat-item">
+        <div class="bb-skills-stat-value">{charCounts.SSR}</div>
+        <div class="bb-skills-stat-label">SSR</div>
+      </div>
+      <div class="bb-skills-stat-divider"></div>
+      <div class="bb-skills-stat-item">
+        <div class="bb-skills-stat-value">{charCounts.SR}</div>
+        <div class="bb-skills-stat-label">SR</div>
+      </div>
+      <div class="bb-skills-stat-divider"></div>
+      <div class="bb-skills-stat-item">
+        <div class="bb-skills-stat-value">{charCounts.R}</div>
+        <div class="bb-skills-stat-label">R</div>
       </div>
     </div>
 
-    <!-- Translation Note -->
-    <div class="bb-crit-note">
-      <strong>Note:</strong> The game incorrectly displays "Crit Damage" in skill descriptions - this actually affects <strong>Crit Rate</strong> (chance to crit). Formula: Value ÷ 20 = Crit %
+    <!-- Filter Section -->
+    <div class="bb-skills-filter-section">
+      <div class="bb-skills-filter-row">
+        <div class="bb-skills-filter-group">
+          <label class="bb-skills-filter-label" for="skills-search">Search</label>
+          <input type="text" id="skills-search" class="bb-skills-search-input" placeholder="Search character or skill..." />
+        </div>
+        <div class="bb-skills-filter-group">
+          <label class="bb-skills-filter-label" for="rarity-filter">Rarity</label>
+          <select id="rarity-filter" class="bb-skills-filter-select">
+            <option value="">All Rarities</option>
+            {rarities.map(r => <option value={r}>{r}</option>)}
+          </select>
+        </div>
+        <div class="bb-skills-filter-group">
+          <label class="bb-skills-filter-label" for="element-filter">Element</label>
+          <select id="element-filter" class="bb-skills-filter-select">
+            <option value="">All Elements</option>
+            {elements.map(el => <option value={el}>{el}</option>)}
+          </select>
+        </div>
+        <div class="bb-skills-filter-group">
+          <label class="bb-skills-filter-label" for="role-filter">Role</label>
+          <select id="role-filter" class="bb-skills-filter-select">
+            <option value="">All Roles</option>
+            {roles.map(role => <option value={role}>{role}</option>)}
+          </select>
+        </div>
+        <div class="bb-skills-filter-buttons">
+          <button type="button" id="clear-filters" class="bb-skills-clear-btn">Clear</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Results Count -->
     <div class="bb-skills-results-count" id="results-count">
-      Showing <span>{characterSkills.length}</span> characters
+      <span>{characterSkills.length}</span> characters
     </div>
 
-    <!-- Character Skills Grid -->
     <div class="bb-skills-grid" id="skills-grid">
       {characterSkills.map(char => (
         <div
@@ -157,307 +179,183 @@ const rarities = ['SSR', 'SR', 'R'];
           data-role={char.role.toLowerCase()}
           data-rarity={char.rarity.toLowerCase()}
         >
-          <!-- Card Header -->
-          <div class="bb-skills-card-header">
-            <div class="bb-skills-card-avatar">
-              <PaladinImage
-                characterId={char.id}
-                alt={char.name}
-                width={100}
-                height={100}
-                quality={95}
-              />
+          <div class="bb-card-header" data-toggle="card">
+            <div class="bb-skills-portrait">
+              <PaladinImage characterId={char.id} alt={char.name} width={512} height={512} format="png" />
+              <div class="bb-skills-rarity"><RarityImage rarity={char.rarity} width={56} height={28} /></div>
             </div>
-            <div class="bb-skills-card-info">
-              <h3 class="bb-skills-card-name">{char.name}</h3>
-              <div class="bb-skills-card-meta">
-                <div class="bb-skills-rarity">
-                  <RarityImage rarity={char.rarity} width={48} height={48} />
-                </div>
-                <div class="bb-skills-info-row">
-                  <div class="bb-skills-info-item">
-                    <ElementImage element={char.element} width={20} height={20} />
-                    <span>{char.element}</span>
-                  </div>
-                  <div class="bb-skills-info-item">
-                    <span>{char.role}</span>
-                  </div>
-                  <div class="bb-skills-info-item">
-                    <PositionImage
-                      fileName={getPositionFileName(getCharacterPosition(char.slug))}
-                      alt={getPositionName(getCharacterPosition(char.slug))}
-                      width={22}
-                      height={22}
-                    />
-                  </div>
-                  {getWeaponType(char.id) && (
-                    <div class="bb-skills-info-item">
-                      <WeaponIcon weapon={getWeaponType(char.id) as string} width={20} height={20} />
-                      <span>{getWeaponType(char.id)}</span>
-                    </div>
-                  )}
-                </div>
+            <div class="bb-skills-info">
+              <h2 class="bb-skills-name">{char.name}</h2>
+              <div class="bb-skills-details">
+                <div class="bb-skills-detail element-badge"><ElementImage element={char.element} width={18} height={18} /><span>{char.element}</span></div>
+                <div class="bb-skills-detail role-badge" data-role={char.role.toLowerCase()}>{char.role}</div>
+                <div class="bb-skills-detail"><PositionImage fileName={getPositionFileName(getCharacterPosition(char.slug))} alt={getPositionLabel(getCharacterPosition(char.slug))} width={18} height={18} /><span>{getPositionLabel(getCharacterPosition(char.slug))}</span></div>
+                <div class="bb-skills-detail"><TypeofATKImage fileName={`${char.basicAttack.type}.png`} alt={char.basicAttack.type} width={18} height={18} /><span>{char.basicAttack.type}</span></div>
+                {char.basicAttack.speedLabel && (() => {
+                  const speedInfo = SPEED_LABELS[char.basicAttack.speedLabel as keyof typeof SPEED_LABELS];
+                  const title = speedInfo ? `Attack freeze time: ${speedInfo.freezeTime}` : '';
+                  return <div class="bb-skills-detail speed-badge" title={title}><span class="bb-speed-label">Speed</span><span>{char.basicAttack.speedLabel}</span></div>;
+                })()}
+                {getWeaponType(char.id) && <div class="bb-skills-detail"><WeaponIcon weapon={getWeaponType(char.id) as string} width={18} height={18} /><span>{getWeaponType(char.id)}</span></div>}
               </div>
-              {char.tags && char.tags.length > 0 && (
-                <div class="bb-skills-card-tags">
-                  {char.tags.map(tag => <span class="bb-tag">{tag}</span>)}
-                </div>
-              )}
             </div>
+            <div class="bb-skills-toggle">&#9660;</div>
           </div>
 
-          <!-- Skill Rotation -->
-          <div class="bb-skills-rotation">
-            <div class="bb-rotation-title">Skill Rotation</div>
-            <div class="bb-rotation-content">
+          <div class="bb-card-body">
+            <div class="bb-rotation-block">
               <div class="bb-rotation-row">
-                <span class="bb-rotation-label">Opening:</span>
-                <span class="bb-rotation-sequence">{char.skillRotation.opening}</span>
+                <span class="bb-rotation-key">Opening</span>
+                <span class="bb-rotation-value">{char.skillRotation.opening || '\u2014'}</span>
               </div>
               <div class="bb-rotation-row">
-                <span class="bb-rotation-label">Loop:</span>
-                <span class="bb-rotation-sequence">{char.skillRotation.loop}</span>
+                <span class="bb-rotation-key">Loop</span>
+                <span class="bb-rotation-value">{char.skillRotation.loop}</span>
               </div>
             </div>
-          </div>
 
-          <!-- Card Body -->
-          <div class="bb-skills-card-body">
-            <!-- Basic Attack -->
-            <div class="bb-skill-section basic-attack">
+            <div class="bb-skill-block">
               <div class="bb-skill-header">
-                <SkillIcon skillId={char.basicAttack.icon} alt="Basic Attack" width={40} height={40} />
-                <div class="bb-skill-header-info">
-                  <span class="bb-skill-label">Basic Attack</span>
-                  <span class="bb-skill-type" data-type={char.basicAttack.type.toLowerCase()}>{char.basicAttack.type}</span>
-                </div>
-              </div>
-              <div class="bb-skill-details">
-                <div class="bb-skill-stat"><span>Scaling:</span> {char.basicAttack.scaling}</div>
-                <div class="bb-skill-stat">
-                  <span>Speed:</span> {char.basicAttack.speedLabel}
-                  {SPEED_LABELS[char.basicAttack.speedLabel] && (
-                    <span class="speed-details">({SPEED_LABELS[char.basicAttack.speedLabel].freezeTime})</span>
-                  )}
+                <SkillIcon skillId={char.basicAttack.icon} alt="Basic" width={40} height={40} />
+                <div class="bb-skill-info">
+                  <div class="bb-skill-name">Basic Attack</div>
+                  <div class="bb-skill-combat-info">
+                    <span class="bb-skill-meta-item">{char.basicAttack.scaling}</span>
+                    <span class="bb-skill-meta-item">{char.basicAttack.type}</span>
+                    {char.basicAttack.speedLabel && <span class="bb-skill-meta-item">{char.basicAttack.speedLabel}{(() => { const si = SPEED_LABELS[char.basicAttack.speedLabel as keyof typeof SPEED_LABELS]; return si ? ` (${si.freezeTime})` : ''; })()}</span>}
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Action Skills -->
             {char.skills.map(skill => {
-              // Parse description to replace flat damage with dynamic span
-              const baseValue = parseInt(String(skill.baseDamage || skill.baseValue || '0').replace('+', ''), 10) || 0;
+              const hasDamage = skill.damageScaling && skill.baseDamage != null;
+              const baseValue = parseInt(String(skill.baseDamage || '0').replace('+', ''), 10) || 0;
               const growth = parseInt(String(skill.levelGrowth || '0').replace('+', ''), 10) || 0;
               const lvl90Value = baseValue + (90 - 1) * growth;
 
-              // Check for buff skills with baseValue/valueLv90 (non-damage scaling skills like Block buffs)
-              const hasBuffScaling = typeof skill.baseValue === 'number' && typeof skill.valueLv90 === 'number';
-              const buffBase = hasBuffScaling ? skill.baseValue : 0;
-              const buffLv90 = hasBuffScaling ? skill.valueLv90 : 0;
-              const buffGrowth = hasBuffScaling ? (buffLv90 - buffBase) / 89 : 0;
-              const buffValueType = skill.valueType || 'Block';
+              const meaningfulBuffs = skill.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown') || [];
+              const hasBuffGrowth = meaningfulBuffs.some(b => typeof b.levelGrowth === 'number' && b.levelGrowth !== 0);
+              const buffGrowthBuffs = meaningfulBuffs.filter(b => typeof b.levelGrowth === 'number' && b.levelGrowth !== 0);
+              const buffGrowthJson = buffGrowthBuffs.length > 0 ? JSON.stringify(buffGrowthBuffs.map(b => ({ name: b.name, value: b.value, growth: b.levelGrowth, type: b.type, valueLv1: b.valueLv1 ?? null, valueLv90: b.valueLv90 ?? null }))) : '';
 
-              // Check for buff skills with level scaling in buffEffects
-              const hasBuffEffectsScaling = skill.buffEffects?.some(b => typeof b.valueLv90 === 'number');
-              const firstScalingBuff = skill.buffEffects?.find(b => typeof b.valueLv90 === 'number');
-              const buffEffectsBase = firstScalingBuff?.value || 0;
-              const buffEffectsLv90 = firstScalingBuff?.valueLv90 || 0;
-
-              // For buff effects with level scaling, store all scaling buffs as JSON
-              const scalingBuffs = skill.buffEffects?.filter(b => typeof b.valueLv90 === 'number') || [];
-              const scalingBuffsJson = scalingBuffs.length > 0 ? JSON.stringify(scalingBuffs.map(b => ({
-                name: b.name,
-                value: b.value,
-                valueLv90: b.valueLv90
-              }))) : '';
-
-              // Parse Block scaling if present (format: "+9 (+0.1/lv)")
-              // Block base: 9, Block growth: 0.1 per level
-              const blockBase = skill.buffEffects?.find(b => b.name?.includes('Block'))?.value || 0;
-              const blockGrowth = 0.1; // Standard block growth per level
-              const blockLv90 = Math.round(blockBase + (90 - 1) * blockGrowth);
-
-              // Check if this is a buff skill (has descriptionLv1/Lv90 but no damage scaling)
-              const isBuffSkill = skill.descriptionLv1 && skill.descriptionLv90 && !skill.damageScaling;
-
-              // Replace the flat damage/heal number in description with dynamic span, then highlight other values
-              let descriptionHtml = skill.descriptionLv90 || skill.description || '';
+              let descriptionHtml = skill.description || '';
               if (descriptionHtml) {
-                // For damage skills: match "ATK x 0.8 + 604" or "ATK + 70" patterns
-                if (baseValue > 0 && skill.damageScaling) {
-                  descriptionHtml = descriptionHtml.replace(
-                    /(ATK\s*(?:x\s*[\d.]+\s*)?\+\s*)\d+/gi,
-                    `$1<span class="bb-desc-damage-value">${lvl90Value}</span>`
-                  );
-                }
-                // For buff skills with HP values (like Healing Shield), make the HP value dynamic
-                if (baseValue > 0 && !skill.damageScaling) {
-                  descriptionHtml = descriptionHtml.replace(
-                    /(\d+)\s*HP/gi,
-                    `<span class="bb-desc-damage-value">${lvl90Value}</span> HP`
-                  );
-                }
-                // Make Block values dynamic for buff skills (e.g., Block23UP format)
-                if (hasBuffScaling && buffValueType === 'Block') {
-                  descriptionHtml = descriptionHtml.replace(
-                    /(Block)(\d+)(UP)/gi,
-                    `$1<span class="bb-desc-block-value">${buffLv90}</span>$3`
-                  );
-                }
-                // Make Block values dynamic too (Block+N format)
-                if (blockBase > 0) {
-                  descriptionHtml = descriptionHtml.replace(
-                    /(Block\s*\+)(\d+)/gi,
-                    `$1<span class="bb-desc-block-value">${blockLv90}</span>`
-                  );
-                }
-                // Then highlight percentages
-                descriptionHtml = descriptionHtml.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
+                descriptionHtml = highlightValues(descriptionHtml);
               }
 
               return (
-                <div class="bb-skill-section action-skill"
-                  data-scaling={skill.damageScaling}
-                  data-base={skill.baseDamage || (typeof skill.baseValue === 'number' ? '0' : skill.baseValue) || '0'}
-                  data-growth={skill.levelGrowth || '0'}
-                  data-block-base={blockBase.toString()}
-                  data-block-growth={blockGrowth.toString()}
-                  data-buff-base={buffBase.toString()}
-                  data-buff-lv90={buffLv90.toString()}
-                  data-buff-type={buffValueType}
-                  data-has-buff-scaling={hasBuffScaling ? 'true' : 'false'}
-                  data-has-buff-effects-scaling={hasBuffEffectsScaling ? 'true' : 'false'}
-                  data-buff-effects-base={buffEffectsBase.toString()}
-                  data-buff-effects-lv90={buffEffectsLv90.toString()}
-                  data-scaling-buffs={scalingBuffsJson}
-                  data-desc-lv1={skill.descriptionLv1 || ''}
-                  data-desc-lv90={skill.descriptionLv90 || ''}
-                  data-is-buff={isBuffSkill ? 'true' : 'false'}
+                <div class="bb-skill-block action-skill"
+                  data-scaling={skill.damageScaling || ''}
+                  data-base={(skill.baseDamage || '0').toString()}
+                  data-growth={(skill.levelGrowth || '0').toString()}
+                  data-buff-growth={buffGrowthJson}
+                  data-has-buff-growth={buffGrowthBuffs.length > 0 ? 'true' : ''}
                 >
                   <div class="bb-skill-header">
                     <SkillIcon skillId={skill.icon} alt={skill.name} width={40} height={40} />
-                    <div class="bb-skill-header-info">
-                      <span class="bb-skill-label">Skill {skill.slot}</span>
-                      <span class="bb-skill-name">{skill.name}</span>
+                    <div class="bb-skill-info">
+                      <div class="bb-skill-name">{skill.name}</div>
+                      <div class="bb-skill-combat-info">
+                        <span class="bb-skill-meta-item">Skill {skill.slot}</span>
+                        {skill.castTime > 0 && <span class="bb-skill-meta-item">Cast {skill.castTime}s</span>}
+                        {skill.target && <span class="bb-skill-meta-item">{skill.target}</span>}
+                      </div>
                     </div>
                   </div>
-                  <div class="bb-skill-details">
-                    {descriptionHtml ? (
-                      <div class="bb-skill-description" set:html={descriptionHtml} />
-                    ) : null}
-                    {skill.target && <div class="bb-skill-stat"><span>Target:</span> {skill.target}</div>}
-                    {skill.castTime && <div class="bb-skill-stat"><span>Cast Time:</span> {skill.castTime}</div>}
-                    {skill.duration && <div class="bb-skill-stat"><span>Duration:</span> {skill.duration}s</div>}
-                    {skill.damageScaling && <div class="bb-skill-stat"><span>Damage:</span> {skill.damageScaling}</div>}
-                    {skill.effect && <div class="bb-skill-effect" set:html={highlightValues(skill.effect)} />}
-                    {/* Show buff effects if present */}
-                    {skill.buffEffects && skill.buffEffects.length > 0 && (
-                      <div class="bb-buff-effects">
-                        {skill.buffEffects.map((buff, idx) => (
-                          <div class="bb-buff-effect-item">
-                            <span class="bb-buff-name">{buff.name}</span>
-                            {buff.value > 0 && (
-                              <span class="bb-buff-value" data-buff-idx={idx.toString()}>+{buff.value}{buff.type === 'percent' ? '%' : ''}</span>
-                            )}
-                            {buff.duration && <span class="bb-buff-duration">({buff.duration}s)</span>}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  {/* Level calc for skills with scaling values (damage or buff) */}
-                  {(skill.baseDamage || skill.levelGrowth || hasBuffScaling || hasBuffEffectsScaling) && (
-                    <div class="bb-skill-level-calc">
-                      <div class="bb-skill-level-input">
-                        <label>Lv</label>
-                        <input type="number" class="skill-level-input" min="1" max="90" value="90" />
-                      </div>
-                      <div class="bb-skill-level-result">
-                        {skill.damageScaling && <span class="bb-skill-scaling-text">{skill.damageScaling}</span>}
-                        {skill.damageScaling && <span class="bb-skill-plus">+</span>}
-                        {hasBuffScaling ? (
-                          <>
-                            <span class="bb-skill-buff-label">{buffValueType}</span>
-                            <span class="bb-skill-plus">+</span>
-                            <span class="bb-skill-calc-value bb-buff-calc-value">{buffLv90}</span>
-                          </>
-                        ) : hasBuffEffectsScaling ? (
-                          <>
-                            <span class="bb-skill-calc-value bb-buff-calc-value">{buffEffectsLv90}</span>
-                          </>
-                        ) : (
-                          <>
-                            <span class="bb-skill-calc-value">{lvl90Value}</span>
-                            {!skill.damageScaling && <span class="bb-skill-unit"> HP</span>}
-                          </>
-                        )}
-                      </div>
+                  {descriptionHtml && <div class="bb-skill-desc" set:html={descriptionHtml} />}
+                  {hasDamage ? (
+                    <div class="bb-skill-calc">
+                      <span class="bb-calc-lbl">Lv</span>
+                      <input type="number" class="skill-level-input" min="1" max="90" value="90" />
+                      <span class="bb-calc-eq">=</span>
+                      <span class="bb-calc-formula">{skill.damageScaling}</span>
+                      <span class="bb-calc-eq">+</span>
+                      <span class="bb-calc-formula">{baseValue}{growth > 0 ? ` + (${89} \u00d7 ${growth})` : ''}</span>
+                      <span class="bb-calc-eq">=</span>
+                      <span class="bb-calc-value">{lvl90Value}</span>
+                     </div>
+                   ) : null}
+                  {hasBuffGrowth ? (
+                    <div class="bb-skill-calc bb-buff-growth-calc">
+                      <span class="bb-calc-lbl">Lv</span>
+                      <input type="number" class="skill-level-input" min="1" max="90" value="90" />
+                      <span class="bb-calc-eq">=</span>
+                      <span class="bb-calc-values">
+                        {buffGrowthBuffs.map(b => {
+                          const base = b.type === 'percent' ? 0 : b.value;
+                          const lvl90 = base + 90 * b.growth;
+                          return <span class="bb-calc-value">{b.name}: <span class="bb-buff-calc-val">{lvl90}</span></span>;
+                        })}
+                      </span>
+                    </div>
+                  ) : null}
+                  {meaningfulBuffs.length > 0 && (
+                    <div class="bb-skill-buffs">
+                      {meaningfulBuffs.map(b => (
+                        <span class="bb-skill-buff-tag">{formatBuffEffect(b)}</span>
+                      ))}
                     </div>
                   )}
                 </div>
               );
             })}
 
-            <!-- Ultimate -->
-            {char.ultimate && char.ultimate.length > 0 && (
-              <div class="bb-skill-section ultimate-skill">
-                <div class="bb-skill-header">
-                  <SkillIcon skillId={char.ultimate[0].icon} alt={char.ultimate[0].name} width={40} height={40} />
-                  <div class="bb-skill-header-info">
-                    <span class="bb-skill-label">Ultimate</span>
-                    <span class="bb-skill-name">{char.ultimate[0].name}</span>
+            <div class="bb-skill-block bb-ult-block" data-ult-ranks={JSON.stringify(char.ultimate.map(ult => ({
+              rank: ult.rank,
+              name: ult.name,
+              description: ult.description || '',
+              effect: ult.effect || '',
+              buffEffects: ult.buffEffects || [],
+            })))}>
+              <div class="bb-skill-header">
+                <SkillIcon skillId={char.ultimate[0].icon} alt="Ult" width={40} height={40} />
+                <div class="bb-skill-info">
+                  <div class="bb-skill-name">{char.ultimate[0].name}</div>
+                  <div class="bb-skill-combat-info">
+                    <span class="bb-skill-meta-item">Ultimate</span>
                   </div>
                 </div>
-                {char.ultimate[0].description && (
-                  <div class="bb-skill-description" set:html={highlightValues(char.ultimate[0].description)} />
-                )}
-                <div class="bb-ultimate-ranks">
-                  {char.ultimate.map(ult => {
-                    const buffInfo = ult.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown')
-                      .map(b => {
-                        const val = typeof b.value === 'number' ? (b.value > 0 ? `+${b.value}` : `${b.value}`) : b.value;
-                        const suffix = b.type === 'percent' ? '%' : (typeof b.value === 'string' && String(b.value).includes('%') ? '' : '');
-                        const flatStr = b.flatValue ? `+${b.flatValue}` : '';
-                        return `${b.name} ${val}${suffix}${flatStr}`;
-                      }).join(', ') || '';
-                    return (
-                      <div class="bb-ultimate-rank">
-                        <span class="bb-ult-rank-label">R{ult.rank}:</span>
-                        <span class="bb-ult-rank-effect" set:html={highlightValues(ult.effect)} />
-                        {buffInfo && <span class="bb-ult-rank-buffs" set:html={highlightValues(buffInfo)} />}
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
-            )}
+              <div class="bb-ult-desc" set:html={highlightValues(char.ultimate[0].description || '')} />
+              <div class="bb-ult-rank-tabs">
+                {char.ultimate.map(ult => (
+                  <button type="button" class="bb-ult-tab" data-rank={ult.rank} data-name={ult.name} data-desc={ult.description || ''} data-effect={ult.effect || ''} data-buffs={JSON.stringify(ult.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown').map(b => formatBuffEffect(b)) || [])}>
+                    R{ult.rank}
+                  </button>
+                ))}
+              </div>
+              <div class="bb-ult-selected">
+                <div class="bb-ult-selected-effect" set:html={highlightValues(char.ultimate[0].effect || '')} />
+                {(() => {
+                  const r0 = char.ultimate[0];
+                  const buffList = r0.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown')
+                    .map(b => formatBuffEffect(b)) || [];
+                  return buffList.length > 0 ? <div class="bb-ult-selected-buffs">{buffList.map(b => <span class="bb-ult-buff-tag">{b}</span>)}</div> : null;
+                })()}
+              </div>
+            </div>
 
-            <!-- Passives -->
             {char.passives && char.passives.length > 0 && (
               <div class="bb-passives-section">
-                <div class="bb-passives-title">Passive Skills</div>
-                <div class="bb-passives-list">
-                  {char.passives.map(passive => {
-                    // Get effects from either 'effects' or 'effectValues' array
-                    const effectList = passive.effects || passive.effectValues || [];
-                    return (
-                      <div class="bb-passive-item">
-                        <SkillIcon skillId={passive.icon} alt={passive.name} width={32} height={32} />
-                        <div class="bb-passive-info">
-                          {effectList.length > 0 ? (
-                            effectList.map((effect, idx) => (
-                              <span class="bb-passive-effect">
-                                {effect.name} +{effect.value}{effect.type === 'percent' ? '%' : ''}
-                              </span>
-                            ))
-                          ) : (
-                            <span class="bb-passive-name">{passive.name}</span>
-                          )}
+                {char.passives.map(passive => {
+                  const effectList = passive.effects || passive.effectValues || [];
+                  return (
+                    <div class="bb-skill-block bb-passive-block">
+                      <div class="bb-skill-header">
+                        <SkillIcon skillId={passive.icon} alt="Passive" width={40} height={40} />
+                        <div class="bb-skill-info">
+                          <div class="bb-skill-name">{passive.name || 'Passive'}</div>
+                          <div class="bb-passive-effects">
+                            {effectList.map(e => (
+                              <span class="bb-passive-badge">{e.name.replace(/\s*[+]\s*$/, '')} <span class="bb-passive-val">+{e.value}{e.type === 'percent' ? '%' : ''}</span></span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -465,15 +363,48 @@ const rarities = ['SSR', 'SR', 'R'];
       ))}
     </div>
 
-    <!-- No Results -->
     <div class="bb-skills-no-results" id="no-results">
       <h3>No characters found</h3>
-      <p>Try adjusting your search or filter criteria.</p>
+      <p>Try adjusting your search or filter.</p>
     </div>
   </div>
 </CharacterSkillsLayout>
 
 <script>
+  function initCardToggles() {
+    const grid = document.getElementById('skills-grid');
+    if (!grid) return;
+
+    grid.addEventListener('click', (e) => {
+      const toggle = (e.target as HTMLElement).closest('[data-toggle="card"]');
+      if (toggle) {
+        const card = toggle.closest('.bb-skills-card') as HTMLElement;
+        if (!card) return;
+        const body = card.querySelector('.bb-card-body') as HTMLElement;
+        if (!body) return;
+
+        if (card.classList.contains('expanded')) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              body.style.maxHeight = '0px';
+              card.classList.remove('expanded');
+            });
+          });
+        } else {
+          card.classList.add('expanded');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.addEventListener('transitionend', function handler() {
+            if (card.classList.contains('expanded')) {
+              body.style.maxHeight = '';
+            }
+            body.removeEventListener('transitionend', handler);
+          });
+        }
+      }
+    });
+  }
+
   function initFilters() {
     const searchInput = document.getElementById('skills-search') as HTMLInputElement;
     const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
@@ -494,23 +425,18 @@ const rarities = ['SSR', 'SR', 'R'];
       const role = roleFilter?.value.toLowerCase() || '';
 
       let visibleCount = 0;
-
       cards.forEach(card => {
         const cardEl = card as HTMLElement;
         const matchName = !search || cardEl.dataset.name?.includes(search);
         const matchRarity = !rarity || cardEl.dataset.rarity === rarity;
         const matchElement = !element || cardEl.dataset.element === element;
         const matchRole = !role || cardEl.dataset.role === role;
-
         const isVisible = matchName && matchRarity && matchElement && matchRole;
         cardEl.classList.toggle('hidden', !isVisible);
         if (isVisible) visibleCount++;
       });
 
-      if (noResults) {
-        noResults.classList.toggle('visible', visibleCount === 0);
-      }
-
+      if (noResults) noResults.classList.toggle('visible', visibleCount === 0);
       if (resultsCount) {
         const span = resultsCount.querySelector('span');
         if (span) span.textContent = visibleCount.toString();
@@ -532,186 +458,111 @@ const rarities = ['SSR', 'SR', 'R'];
     clearBtn?.addEventListener('click', clearFilters);
   }
 
-  // Skill level calculator
   function initSkillLevelCalc() {
-    const skillSections = document.querySelectorAll('.bb-skill-section.action-skill');
+    const globalLevelInput = document.getElementById('global-level') as HTMLInputElement;
+    const skillSections = document.querySelectorAll('.bb-skill-block.action-skill');
 
     skillSections.forEach(section => {
       const sectionEl = section as HTMLElement;
-
-      // Handle damage/HP skills
       const damageInput = section.querySelector('.skill-level-input') as HTMLInputElement;
-      const resultEl = section.querySelector('.bb-skill-calc-value') as HTMLElement;
-      const descValueEl = section.querySelector('.bb-desc-damage-value');
-      const blockValueEl = section.querySelector('.bb-desc-block-value');
+      const resultEl = section.querySelector('.bb-calc-value') as HTMLElement;
+      const hasBuffGrowth = sectionEl.dataset.hasBuffGrowth === 'true';
 
       if (damageInput && resultEl) {
-        const baseStr = sectionEl.dataset.base || '0';
-        const growthStr = sectionEl.dataset.growth || '0';
-        const blockBaseStr = sectionEl.dataset.blockBase || '0';
-        const blockGrowthStr = sectionEl.dataset.blockGrowth || '0';
+        const base = parseInt((sectionEl.dataset.base || '0').replace('+', ''), 10) || 0;
+        const growth = parseInt((sectionEl.dataset.growth || '0').replace('+', ''), 10) || 0;
+        const isDamageCalc = sectionEl.closest('.bb-skill-calc') && !sectionEl.closest('.bb-buff-growth-calc');
 
-        // Check for buff skill scaling (like Block buffs)
-        const hasBuffScaling = sectionEl.dataset.hasBuffScaling === 'true';
-        const buffBase = parseFloat(sectionEl.dataset.buffBase || '0') || 0;
-        const buffLv90 = parseFloat(sectionEl.dataset.buffLv90 || '0') || 0;
-        const buffGrowth = hasBuffScaling ? (buffLv90 - buffBase) / 89 : 0;
-
-        // Check for buffEffects scaling (buff skills with level scaling in buffEffects)
-        const hasBuffEffectsScaling = sectionEl.dataset.hasBuffEffectsScaling === 'true';
-        const buffEffectsBase = parseFloat(sectionEl.dataset.buffEffectsBase || '0') || 0;
-        const buffEffectsLv90 = parseFloat(sectionEl.dataset.buffEffectsLv90 || '0') || 0;
-        const buffEffectsGrowth = hasBuffEffectsScaling ? (buffEffectsLv90 - buffEffectsBase) / 89 : 0;
-
-        // Parse scaling buffs JSON if present
-        let scalingBuffs: Array<{name: string, value: number, valueLv90: number}> = [];
-        const scalingBuffsStr = sectionEl.dataset.scalingBuffs || '';
-        if (scalingBuffsStr) {
-          try {
-            scalingBuffs = JSON.parse(scalingBuffsStr);
-          } catch (e) {
-            console.error('Failed to parse scalingBuffs:', e);
-          }
-        }
-
-        // Parse base value (remove + sign if present)
-        const base = parseInt(baseStr.replace('+', ''), 10) || 0;
-        // Parse growth value (remove + sign if present)
-        const growth = parseInt(growthStr.replace('+', ''), 10) || 0;
-        // Parse block values
-        const blockBase = parseFloat(blockBaseStr) || 0;
-        const blockGrowth = parseFloat(blockGrowthStr) || 0;
-
-        function calculateValue(level: number) {
-          // Formula: base + (level - 1) * growth
-          return base + (level - 1) * growth;
-        }
-
-        function calculateBlockValue(level: number) {
-          // Formula: base + (level - 1) * growth, rounded
-          return Math.round(blockBase + (level - 1) * blockGrowth);
-        }
-
-        function calculateBuffValue(level: number) {
-          // Formula: base + (level - 1) * growth, rounded
-          return Math.round(buffBase + (level - 1) * buffGrowth);
-        }
-
-        function calculateBuffEffectsValue(level: number) {
-          // Formula: base + level * growth for buff effects (90 levels total from Lv1 to Lv90)
-          return Math.round(buffEffectsBase + level * buffEffectsGrowth);
-        }
-
-        function updateDamageDisplay() {
+        function update() {
           let level = parseInt(damageInput.value, 10) || 1;
-          // Clamp level between 1 and 90
           level = Math.max(1, Math.min(90, level));
           damageInput.value = level.toString();
 
-          // Handle buffEffects scaling (buff skills with level scaling in buffEffects)
-          if (hasBuffEffectsScaling && scalingBuffs.length > 0) {
-            // Use the first scaling buff for the calculator display
-            const firstBuff = scalingBuffs[0];
-            const firstBuffGrowth = (firstBuff.valueLv90 - firstBuff.value) / 90;
-            const firstBuffValue = Math.round(firstBuff.value + level * firstBuffGrowth);
-            resultEl.textContent = firstBuffValue.toString();
-
-            // Update buff effect values in the UI
-            const buffValueElements = section.querySelectorAll('.bb-buff-value[data-buff-idx]');
-            buffValueElements.forEach((el) => {
-              const buffIdx = parseInt((el as HTMLElement).dataset.buffIdx || '0', 10);
-              if (scalingBuffs[buffIdx]) {
-                const buff = scalingBuffs[buffIdx];
-                const growth = (buff.valueLv90 - buff.value) / 90;
-                const value = Math.round(buff.value + level * growth);
-                (el as HTMLElement).textContent = `+${value}`;
-              }
-            });
-
-            // Update description with all buff values
-            const descLv90 = sectionEl.dataset.descLv90 || '';
-            if (descLv90) {
-              const descEl = section.querySelector('.bb-skill-description');
-              if (descEl) {
-                let newDesc = descLv90;
-
-                // Update each buff's value in the description
-                for (const buff of scalingBuffs) {
-                  const growth = (buff.valueLv90 - buff.value) / 90;
-                  const value = Math.round(buff.value + level * growth);
-
-                  // Get the Lv90 value to find and replace in description
-                  const lv90Value = buff.valueLv90;
-
-                  // Replace the Lv90 value with current level value
-                  // Look for: "(value)" where value matches the Lv90 value
-                  const regex = new RegExp(`\\(${lv90Value}\\)`, 'g');
-                  newDesc = newDesc.replace(regex, `(${value})`);
-                }
-
-                // Highlight percentages
-                newDesc = newDesc.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
-                // Highlight numbers in parentheses (buff values)
-                newDesc = newDesc.replace(/\((\d+)\)/g, '(<span class="bb-value-highlight">$1</span>)');
-                descEl.innerHTML = newDesc;
-              }
-            }
-            return;
-          }
-
-          // Handle buff skill scaling (like Block buffs)
-          if (hasBuffScaling) {
-            const buffValue = calculateBuffValue(level);
-            resultEl.textContent = buffValue.toString();
-
-            // Update description with interpolated Lv1/Lv90 text based on buff value
-            const descLv1 = sectionEl.dataset.descLv1 || '';
-            const descLv90 = sectionEl.dataset.descLv90 || '';
-            if (descLv1 && descLv90) {
-              const descEl = section.querySelector('.bb-skill-description');
-              if (descEl) {
-                // Replace the buff value in description (e.g., Block11UP -> Block{value}UP)
-                let newDesc = descLv90.replace(/Block(\d+)/gi, `Block${buffValue}`);
-                // Highlight percentages
-                newDesc = newDesc.replace(/(\d+)%/g, '<span class="bb-value-highlight">$1%</span>');
-                descEl.innerHTML = newDesc;
-              }
-            }
-            return;
-          }
-
-          const value = calculateValue(level);
-          resultEl.textContent = value.toString();
-
-          // Also update description damage/HP value if exists
-          if (descValueEl) {
-            descValueEl.textContent = value.toString();
-          }
-
-          // Also update Block value if exists
-          if (blockValueEl && blockBase > 0) {
-            const blockValue = calculateBlockValue(level);
-            blockValueEl.textContent = blockValue.toString();
+          if (isDamageCalc) {
+            resultEl.textContent = (base + (level - 1) * growth).toString();
+          } else {
+            try {
+              const buffs: Array<{name: string; value: number; growth: number; type: string}> = JSON.parse(sectionEl.dataset.buffGrowth || '[]');
+              const vals = buffs.map(b => {
+                const base = b.type === 'percent' ? 0 : b.value;
+                return `${b.name}: ${Math.round(base + level * b.growth)}`;
+              });
+              resultEl.textContent = vals.join(' | ');
+            } catch {}
           }
         }
 
-        // Initial calculation
-        updateDamageDisplay();
+        update();
+        damageInput.addEventListener('input', update);
+        damageInput.addEventListener('change', update);
+      }
+    });
 
-        // Listen for input changes
-        damageInput.addEventListener('input', updateDamageDisplay);
-        damageInput.addEventListener('change', updateDamageDisplay);
+    if (globalLevelInput) {
+      globalLevelInput.addEventListener('input', () => {
+        const level = globalLevelInput.value;
+        skillSections.forEach(section => {
+          const input = section.querySelector('.skill-level-input') as HTMLInputElement;
+          if (input) {
+            input.value = level;
+            input.dispatchEvent(new Event('input'));
+          }
+        });
+      });
+    }
+  }
+
+  function initUltRankTabs() {
+    document.addEventListener('click', (e) => {
+      const tab = (e.target as HTMLElement).closest('.bb-ult-tab') as HTMLElement;
+      if (!tab) return;
+      const ultBlock = tab.closest('.bb-ult-block') as HTMLElement;
+      if (!ultBlock) return;
+
+      ultBlock.querySelectorAll('.bb-ult-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const descEl = ultBlock.querySelector('.bb-ult-desc') as HTMLElement;
+      const effectEl = ultBlock.querySelector('.bb-ult-selected-effect') as HTMLElement;
+      const buffsEl = ultBlock.querySelector('.bb-ult-selected-buffs') as HTMLElement;
+
+      const hl = (text: string) => {
+        if (!text) return '';
+        let r = text;
+        r = r.replace(/for (\d+\.?\d*) seconds?/gi, 'for <span class="bb-kw-duration">$1s</span>');
+        const effects: Record<string, string> = {
+          'petrify': 'Cannot act, Block=0', 'stun': 'Cannot act', 'freeze': 'Cannot act + DoT',
+          'sleep': 'Cannot act, wakes on hit (CRIT)', 'silence': 'No skills/ult',
+          'confusion': 'Attacks random targets', 'charm': 'Attacks allies', 'taunt': 'Must attack taunter',
+          'poison': 'DoT', 'burn': 'DoT, stackable', 'bleed': 'DoT (-1% HP)',
+          'paralysis': 'Speed -50%, ATK -50%', 'curse': 'No recovery, Speed -50%, Crit=0',
+          'blind': 'Block=0, Acc -50%', 'fear': 'MP drain',
+        };
+        for (const [ef, d] of Object.entries(effects)) {
+          r = r.replace(new RegExp(`\\b(${ef})\\b(?!\\s*<span)`, 'gi'), `<span class="bb-kw-status">$1</span> <span class="bb-kw-hint">(${d})</span>`);
+        }
+        r = r.replace(/(\d+(?:\.\d+)?)%/g, '<span class="bb-kw-num">$1</span>%');
+        return r;
+      };
+
+      if (descEl) descEl.innerHTML = hl(tab.dataset.desc || '');
+      if (effectEl) effectEl.innerHTML = hl(tab.dataset.effect || '');
+      if (buffsEl) {
+        try {
+          const buffs: string[] = JSON.parse(tab.dataset.buffs || '[]');
+          buffsEl.innerHTML = buffs.map(b => `<span class="bb-ult-buff-tag">${b}</span>`).join('');
+          buffsEl.style.display = buffs.length ? 'flex' : 'none';
+        } catch { buffsEl.style.display = 'none'; }
       }
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initFilters();
-      initSkillLevelCalc();
-    });
+    document.addEventListener('DOMContentLoaded', () => { initCardToggles(); initFilters(); initSkillLevelCalc(); initUltRankTabs(); });
   } else {
+    initCardToggles();
     initFilters();
     initSkillLevelCalc();
+    initUltRankTabs();
   }
 </script>

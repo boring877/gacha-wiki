@@ -61,15 +61,7 @@ if (!imageModule) {
   }
 }
 
-// Fallback to character 2001 if not found
-if (!imageModule) {
-  const fallbackKey = Object.keys(spriteImages).find(key =>
-    key.includes('/2001.png') || key.includes('\\2001.png')
-  );
-  if (fallbackKey) {
-    imageModule = spriteImages[fallbackKey].default;
-  }
-}
+// No fallback — show "Unreleased" placeholder if sprite not found
 ---
 
 {imageModule ? (
@@ -86,30 +78,10 @@ if (!imageModule) {
     />
   </div>
 ) : (
-  <div class={`paladin-image-wrapper paladin-image-fallback ${className || ''}`} style={`width: ${width}px; height: ${height}px;`}>
-    <span>{alt.charAt(0)}</span>
+  <div class="paladin-image-fallback">
+    <div class="paladin-image-fallback-content">
+      <span class="paladin-image-fallback-id">{characterId ?? '?'}</span>
+      <span class="paladin-image-fallback-hint">Not in APK yet</span>
+    </div>
   </div>
 )}
-
-<style>
-  .paladin-image-wrapper {
-    display: inline-block;
-    overflow: hidden;
-    border-radius: 6px;
-  }
-
-  .paladin-image {
-    object-fit: cover;
-    border-radius: 6px;
-  }
-
-  .paladin-image-fallback {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bb-bg-secondary, #2a2a3e);
-    color: var(--bb-text-primary, #fff);
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-</style>

@@ -1,528 +1,150 @@
-/* BBB Character Skills Page Styles */
+/* Busty Burst Character Skills Guide - Redesigned */
 
 /* ============================================
-   Page Container
+   STATISTICS SECTION
    ============================================ */
-.bb-skills-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem;
-}
 
-/* Crit Rate Translation Note */
-.bb-skills-page .bb-crit-note {
-  margin: 0 0 1rem 0;
-  padding: 0.75rem 1rem;
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
-  border-left: 3px solid #ffc107;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  color: var(--bb-text-secondary);
-}
-
-.bb-skills-page .bb-crit-note strong {
-  color: #ffc107;
-}
-
-/* ============================================
-   Formula Link Section
-   ============================================ */
-.bb-skills-formula-link {
-  margin-bottom: 1.5rem;
-}
-
-.bb-skills-formula-link-btn {
-  display: inline-flex;
+.bb-skills-stats-container {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.5rem;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 2rem;
   background: var(--bb-bg-card);
   border: 1px solid var(--bb-border);
   border-radius: 8px;
+}
+
+.bb-skills-stat-item {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.bb-skills-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--bb-border-light);
+}
+
+.bb-skills-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
   color: var(--bb-primary-light);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  line-height: 1;
+}
+
+.bb-skills-stat-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-secondary);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* ============================================
-   Filter Controls
+   FILTER SECTION
    ============================================ */
-.bb-skills-controls {
-  background: var(--bb-bg-card);
+
+.bb-skills-filter-section {
+  background: var(--bb-bg-secondary);
   border: 1px solid var(--bb-border);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bb-skills-filter-row {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
 }
 
-.bb-skills-search-input {
+.bb-skills-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   flex: 1;
-  min-width: 200px;
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-secondary);
+  min-width: 150px;
+}
+
+.bb-skills-filter-label {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bb-skills-search-input,
+.bb-skills-filter-select {
+  background: var(--bb-bg-tertiary);
   border: 1px solid var(--bb-border);
-  border-radius: 8px;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
   color: var(--bb-text-primary);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  cursor: pointer;
 }
 
 .bb-skills-search-input::placeholder {
   color: var(--bb-text-muted);
 }
 
-.bb-skills-search-input:focus {
-  outline: none;
-  border-color: var(--bb-primary);
+.bb-skills-search-input:hover,
+.bb-skills-filter-select:hover {
+  border-color: var(--bb-border-light);
 }
 
-.bb-skills-filter-select {
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 8px;
-  color: var(--bb-text-primary);
-  font-size: 0.95rem;
-  cursor: pointer;
-  min-width: 130px;
-}
-
+.bb-skills-search-input:focus,
 .bb-skills-filter-select:focus {
   outline: none;
-  border-color: var(--bb-primary);
+  border-color: var(--bb-primary-light);
+}
+
+.bb-skills-filter-buttons {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .bb-skills-clear-btn {
-  padding: 0.75rem 1.25rem;
-  background: transparent;
-  border: 1px solid var(--bb-border);
-  border-radius: 8px;
-  color: var(--bb-text-secondary);
-  font-size: 0.95rem;
+  background: rgba(198, 40, 40, 0.2);
+  border: 1px solid var(--bb-error);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: #ff6b6b;
+  font-size: 0.875rem;
   cursor: pointer;
-  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.bb-skills-clear-btn:hover {
+  background: rgba(198, 40, 40, 0.3);
 }
 
 /* ============================================
-   Character Skills Cards Grid
+   RESULTS COUNT
    ============================================ */
-.bb-skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
 
-/* ============================================
-   Individual Character Skill Card
-   ============================================ */
-.bb-skills-card {
-  background: var(--bb-bg-card);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.bb-skills-card.hidden {
-  display: none;
-}
-
-/* Card Header */
-.bb-skills-card-header {
-  display: flex;
-  gap: 1.25rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--bb-bg-secondary);
-  align-items: center;
-}
-
-.bb-skills-card-avatar {
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid var(--bb-border-light);
-}
-
-.bb-skills-card-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.bb-skills-card-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.bb-skills-card-name {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--bb-text-primary);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.3;
-}
-
-.bb-skills-card-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.bb-skills-card-badges .bb-badge {
-  padding: 0.3rem 0.6rem;
-  font-size: 0.8rem;
-}
-
-/* Card Body */
-.bb-skills-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-/* ============================================
-   Skill Section
-   ============================================ */
-.bb-skill-section {
-  background: var(--bb-bg-secondary);
-  border-radius: 10px;
-  padding: 1.25rem;
-}
-
-.bb-skill-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  flex-wrap: wrap;
-}
-
-/* Skill labels use .bb-badge styles from busty-burst-badges.css */
-.bb-skill-label {
-  white-space: nowrap;
-}
-
-.bb-skill-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--bb-text-primary);
-  flex: 1;
-}
-
-/* Skill type badges use .bb-badge styles from busty-burst-badges.css */
-
-.bb-skill-description {
-  font-size: 0.95rem;
-  color: var(--bb-text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.bb-skill-target {
-  font-size: 0.85rem;
-  color: var(--bb-text-tertiary);
-  margin-top: 0.5rem;
-  font-style: italic;
-}
-
-/* ============================================
-   Skill Level Calculator
-   ============================================ */
-.bb-skill-calculator {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: var(--bb-bg-primary);
-  border-radius: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-}
-
-.bb-calc-inputs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.bb-calc-input-small {
-  width: 55px;
-}
-
-.bb-calc-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.bb-skills-results-count {
+  margin-bottom: 1rem;
   font-size: 0.85rem;
   color: var(--bb-text-secondary);
-  font-weight: 500;
 }
 
-.bb-calc-input {
-  width: 70px;
-  padding: 0.4rem 0.6rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 6px;
-  color: var(--bb-text-primary);
-  font-size: 0.9rem;
-  text-align: center;
-  -moz-appearance: textfield;
-}
-
-.bb-calc-input::-webkit-outer-spin-button,
-.bb-calc-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.bb-calc-input:focus {
-  outline: none;
-  border-color: var(--bb-primary);
-}
-
-/* Custom arrow buttons container */
-.bb-calc-input-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.bb-calc-input-wrapper .bb-calc-input {
-  padding-right: 1.5rem;
-}
-
-.bb-calc-arrows {
-  position: absolute;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.bb-calc-arrow {
-  width: 16px;
-  height: 12px;
-  background: var(--bb-bg-primary);
-  border: 1px solid var(--bb-border);
-  color: var(--bb-text-secondary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  line-height: 1;
-  padding: 0;
-}
-
-.bb-calc-arrow:first-child {
-  border-radius: 3px 3px 0 0;
-}
-
-.bb-calc-arrow:last-child {
-  border-radius: 0 0 3px 3px;
-}
-
-.bb-calc-result {
-  flex: 1;
-  font-size: 0.8rem;
-  color: var(--bb-text-secondary);
-  line-height: 1.6;
-  font-family: 'Consolas', 'Monaco', monospace;
-}
-
-.bb-calc-result .calc-level {
-  color: var(--bb-text-tertiary);
-  font-weight: 500;
-  font-size: 0.75rem;
-  margin-right: 0.5rem;
-}
-
-.bb-calc-result .calc-value {
-  color: var(--bb-primary-light);
-  font-weight: 600;
-}
-
-.bb-calc-result .calc-label {
-  color: var(--bb-text-tertiary);
-  font-weight: 400;
-}
-
-.bb-calc-result .calc-separator {
-  color: var(--bb-border);
-  margin: 0 0.5rem;
-}
-
-/* ============================================
-   Ultimate Base Effects
-   ============================================ */
-.bb-ultimate-base-effects {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 6px;
-  border-left: 3px solid var(--bb-primary);
-}
-
-.bb-ultimate-base-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--bb-text-tertiary);
-  white-space: nowrap;
-}
-
-.bb-ultimate-base-value {
-  font-size: 0.85rem;
-  color: var(--bb-text-primary);
-  font-family: 'Consolas', 'Monaco', monospace;
-  line-height: 1.5;
-}
-
-/* ============================================
-   Ultimate Ranks Display
-   ============================================ */
-.bb-ultimate-ranks {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--bb-border);
-}
-
-.bb-ultimate-ranks-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--bb-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.75rem;
-}
-
-.bb-ultimate-rank-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.bb-ultimate-rank-item {
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-primary);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  align-items: flex-start;
-}
-
-.bb-ultimate-rank-label {
+.bb-skills-results-count span {
   font-weight: 700;
-  color: var(--bb-primary-light);
-  min-width: 32px;
-  flex-shrink: 0;
-}
-
-.bb-ultimate-rank-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.bb-ultimate-rank-formula {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.bb-ultimate-rank-value {
-  color: var(--bb-text-secondary);
-  font-family: 'Consolas', 'Monaco', monospace;
-  line-height: 1.5;
-  font-size: 0.85rem;
-}
-
-.bb-ultimate-rank-calc {
-  font-weight: 600;
-  color: var(--bb-primary-light);
-  font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-.bb-ultimate-rank-effects {
-  font-size: 0.85rem;
-  color: var(--bb-text-tertiary);
-  line-height: 1.5;
-  padding-left: 0.5rem;
-  border-left: 2px solid var(--bb-border);
-}
-
-/* Ultimate Calculator */
-.bb-ultimate-calculator {
-  margin-top: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 8px;
-  border-left: 3px solid var(--bb-primary);
-}
-
-.bb-ultimate-calculator .bb-calc-inputs {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  color: var(--bb-text-primary);
 }
 
 /* ============================================
-   Passive Skills Section
+   NO RESULTS
    ============================================ */
-.bb-passives-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
 
-.bb-passive-section {
-  background: var(--bb-bg-secondary);
-  border-radius: 10px;
-  padding: 1rem;
-}
-
-.bb-passive-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.bb-passive-description {
-  font-size: 0.9rem;
-  color: var(--bb-text-secondary);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ============================================
-   No Results
-   ============================================ */
 .bb-skills-no-results {
   text-align: center;
   padding: 3rem;
-  background: var(--bb-bg-card);
-  border: 1px solid var(--bb-border);
-  border-radius: 12px;
+  color: var(--bb-text-secondary);
   display: none;
 }
 
@@ -532,7 +154,7 @@
 
 .bb-skills-no-results h3 {
   color: var(--bb-text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.375rem 0;
 }
 
 .bb-skills-no-results p {
@@ -541,676 +163,788 @@
 }
 
 /* ============================================
-   Responsive Design
+   SKILLS GRID
    ============================================ */
-@media (max-width: 768px) {
-  .bb-skills-page {
-    padding: 0.75rem;
-  }
 
-  .bb-skills-filter-row {
-    flex-direction: column;
-  }
-
-  .bb-skills-search-input,
-  .bb-skills-filter-select {
-    width: 100%;
-  }
-
-  .bb-passives-container {
-    grid-template-columns: 1fr;
-  }
-
-  .bb-skills-formula-link-btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .bb-skills-card-header {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .bb-skills-card-body {
-    padding: 1rem;
-  }
-
-  .bb-skill-section {
-    padding: 1rem;
-  }
-
-  .bb-skills-card-name {
-    font-size: 1.15rem;
-  }
-
-  .bb-skill-name {
-    font-size: 1rem;
-  }
-
-  .bb-skill-description {
-    font-size: 0.9rem;
-  }
-
-  .bb-skill-header {
-    gap: 0.5rem;
-  }
-
-  .bb-skill-calculator {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .bb-calc-result {
-    width: 100%;
-  }
-
-  .bb-ultimate-rank-item {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.625rem 0.875rem;
-  }
-
-  .bb-ultimate-rank-label {
-    min-width: unset;
-  }
-
-  .bb-ultimate-rank-content {
-    gap: 0.35rem;
-  }
-
-  .bb-ultimate-rank-formula {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  .bb-ultimate-rank-effects {
-    font-size: 0.8rem;
-    padding-left: 0.4rem;
-  }
-
-  .bb-ultimate-calculator {
-    padding: 0.625rem 0.875rem;
-  }
-
-  .bb-ultimate-base-effects {
-    flex-direction: column;
-    gap: 0.25rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .bb-ultimate-base-value {
-    font-size: 0.8rem;
-  }
-
-  .bb-skills-card-avatar {
-    width: 65px;
-    height: 65px;
-  }
-
-  .bb-passive-section {
-    padding: 0.875rem;
-  }
-
-  .bb-passive-description {
-    font-size: 0.85rem;
-  }
-
-  .bb-skills-controls {
-    padding: 0.75rem;
-  }
-
-  .bb-skills-clear-btn {
-    width: 100%;
-    justify-content: center;
-  }
+.bb-skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* ============================================
-   Additional Styles from Skills Page
+   CHARACTER CARD
    ============================================ */
 
-/* Results Count */
-.bb-skills-results-count {
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--bb-text-secondary, #888);
+.bb-skills-card {
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
 }
 
-.bb-skills-results-count span {
-  font-weight: 700;
-  color: var(--bb-accent, #a855f7);
+.bb-skills-card:hover {
+  border-color: var(--bb-border-light);
 }
 
-/* Skills Grid - Multi-column Layout */
-.bb-skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 1.5rem;
+.bb-skills-card.hidden {
+  display: none;
 }
 
-/* Card Meta */
-.bb-skills-card-meta {
+/* ============================================
+   CARD HEADER
+   ============================================ */
+
+.bb-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, var(--bb-bg-secondary), transparent);
+  border-bottom: 1px solid var(--bb-border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.bb-card-header:hover {
+  background: linear-gradient(135deg, var(--bb-bg-tertiary), transparent);
+}
+
+.bb-skills-portrait {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.bb-skills-portrait .paladin-image-wrapper,
+.bb-skills-portrait .paladin-image-wrapper img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  max-width: none;
+}
+
+.bb-skills-portrait .paladin-image-fallback {
+  width: 80px;
+  height: 80px;
 }
 
 .bb-skills-rarity {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.bb-skills-rarity img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+.bb-skills-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.bb-skills-info-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.bb-skills-info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #ccc);
-}
-
-.bb-skills-info-item img {
-  object-fit: contain;
-}
-
-.bb-skills-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.bb-tag {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.4rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 3px;
-  color: var(--bb-text-tertiary, #888);
-}
-
-/* Skill Rotation */
-.bb-skills-rotation {
-  padding: 0.75rem 1rem;
-  background: rgba(99, 102, 241, 0.05);
-  border-bottom: 1px solid var(--bb-border-light, #333);
-}
-
-.bb-rotation-title {
-  font-size: 0.8rem;
+.bb-skills-name {
+  font-size: 1.125rem;
   font-weight: 700;
-  color: var(--bb-accent, #a855f7);
-  margin-bottom: 0.5rem;
+  color: var(--bb-text-primary);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.bb-skills-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.bb-skills-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.2rem 0.625rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-secondary);
+}
+
+.bb-skills-detail img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.bb-skills-detail.role-badge {
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.75rem;
+}
+
+.bb-skills-detail.speed-badge {
+  cursor: help;
+}
+
+.bb-speed-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bb-text-muted);
+  margin-right: 0.125rem;
+}
+
+.bb-skills-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: center;
+  color: var(--bb-text-tertiary);
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.bb-skills-card.expanded .bb-skills-toggle {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   CARD BODY (collapsible)
+   ============================================ */
+
+.bb-card-body {
+  padding: 0 1.25rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bb-skills-card.expanded .bb-card-body {
+  max-height: var(--card-body-height, 9999px);
+  padding: 1rem 1.25rem;
+}
+
+/* ============================================
+   SKILL ROTATION
+   ============================================ */
+
+.bb-rotation-block {
+  display: flex;
+  gap: 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
 }
 
 .bb-rotation-row {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 0.8rem;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
-.bb-rotation-label {
-  color: var(--bb-text-tertiary, #888);
-  min-width: 60px;
-}
-
-.bb-rotation-sequence {
-  color: var(--bb-text-secondary, #ccc);
-  word-break: break-word;
-}
-
-/* Skill Type */
-.bb-skill-type {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-weight: 600;
-  display: inline-block;
-  width: fit-content;
-}
-
-.bb-skill-type[data-type="physical"] { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
-.bb-skill-type[data-type="magic"] { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
-
-/* Skill Details */
-.bb-skill-details {
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #bbb);
-}
-
-.bb-skill-stat {
-  margin-bottom: 0.2rem;
-}
-
-.bb-skill-stat span {
-  color: var(--bb-text-tertiary, #888);
-}
-
-/* Highlighted values in descriptions */
-.bb-value-highlight {
-  color: #fbbf24;
-  font-weight: 600;
-}
-
-.bb-desc-damage-value {
-  color: #fbbf24;
+.bb-rotation-key {
+  font-size: 0.65rem;
   font-weight: 700;
+  color: var(--bb-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.bb-desc-block-value {
-  color: #60a5fa;
+.bb-rotation-value {
+  font-size: 1rem;
   font-weight: 700;
+  color: var(--bb-text-primary);
+  font-family: 'Consolas', 'Monaco', monospace;
 }
 
-/* Status effect inline styling */
-.bb-status-effect {
-  color: #f472b6;
-  font-weight: 600;
+/* ============================================
+   SKILL BLOCKS
+   ============================================ */
+
+.bb-skill-block {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--bb-border);
 }
 
-.bb-status-desc {
-  color: #94a3b8;
-  font-size: 0.85em;
-  font-weight: 400;
+.bb-skill-block:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
-.bb-skill-effect {
-  margin-top: 0.4rem;
-  padding: 0.4rem 0.6rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: var(--bb-text-secondary);
-}
-
-/* Skill Level Calculator */
-.bb-skill-level-calc {
+/* Skill header */
+.bb-skill-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.6rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 4px;
 }
 
-.bb-skill-level-input {
+.bb-skill-header .skill-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.bb-skill-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+/* Title */
+.bb-skill-name {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  line-height: 1.4;
+}
+
+/* Combat info */
+.bb-skill-combat-info {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.125rem 0;
+  font-size: 0.75rem;
+  color: var(--bb-text-muted);
 }
 
-.bb-skill-level-input label {
-  font-size: 0.8rem;
-  color: var(--bb-text-tertiary);
+.bb-skill-combat-info .bb-skill-meta-item::before {
+  content: '\00b7';
+  margin-right: 0.5rem;
+  color: var(--bb-border-light);
 }
 
-.bb-skill-level-input input {
-  width: 45px;
-  padding: 0.25rem 0.3rem;
-  background: var(--bb-bg-primary);
+.bb-skill-combat-info .bb-skill-meta-item:first-child::before {
+  display: none;
+}
+
+.bb-meta-label {
+  color: var(--bb-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 0.25rem;
+}
+
+/* Skill description */
+.bb-skill-desc {
+  font-size: 0.825rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 6px;
+}
+
+/* Level calculator */
+.bb-skill-calc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.bb-calc-lbl {
+  font-size: 0.7rem;
+  color: var(--bb-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bb-skill-calc .skill-level-input {
+  width: 42px;
+  padding: 0.15rem 0.25rem;
+  background: var(--bb-bg-card);
   border: 1px solid var(--bb-border);
   border-radius: 4px;
   color: var(--bb-text-primary);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   -moz-appearance: textfield;
 }
 
-.bb-skill-level-input input::-webkit-outer-spin-button,
-.bb-skill-level-input input::-webkit-inner-spin-button {
+.bb-skill-calc .skill-level-input::-webkit-outer-spin-button,
+.bb-skill-calc .skill-level-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.bb-skill-level-input input:focus {
+.bb-skill-calc .skill-level-input:focus {
   outline: none;
-  border-color: var(--bb-border-light);
+  border-color: var(--bb-primary-light);
 }
 
-.bb-skill-level-result {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.85rem;
-  color: var(--bb-text-primary);
-}
-
-.bb-skill-scaling-text {
-  color: var(--bb-text-secondary);
-}
-
-.bb-skill-plus {
-  color: var(--bb-text-tertiary);
-}
-
-.bb-skill-calc-value {
-  color: var(--bb-text-primary);
-  font-weight: 600;
-}
-
-.bb-skill-unit {
-  color: var(--bb-text-secondary);
+.bb-calc-eq {
+  color: var(--bb-text-muted);
   font-weight: 500;
 }
 
-.bb-skill-buff-label {
-  color: #60a5fa;
-  font-weight: 500;
+.bb-calc-formula {
+  color: var(--bb-text-secondary);
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.8rem;
+}
+
+.bb-calc-value {
+  color: var(--bb-text-primary);
+  font-weight: 700;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.95rem;
 }
 
 .bb-buff-calc-value {
   color: #60a5fa;
 }
 
-/* Buff Effects */
-.bb-buff-effects {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.bb-buff-effect-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  padding: 0.25rem 0.5rem;
-  background: rgba(168, 85, 247, 0.15);
-  border-radius: 4px;
-  border-left: 2px solid rgba(168, 85, 247, 0.5);
-}
-
-.bb-buff-name {
-  color: var(--bb-text-primary);
-  font-weight: 500;
-}
-
-.bb-buff-value {
-  color: #22c55e;
-  font-weight: 600;
-}
-
-.bb-buff-duration {
-  color: var(--bb-text-tertiary);
-  font-size: 0.75rem;
-}
-
-.buff-skill-calc {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.bb-buff-level-note {
-  font-size: 0.75rem;
-  color: var(--bb-text-tertiary);
-  font-style: italic;
-  word-break: break-word;
-}
-
-/* Ultimate Rank Display */
-.bb-ultimate-rank {
-  display: flex;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  padding: 0.3rem 0;
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
-}
-
-.bb-ultimate-rank:last-child {
-  border-bottom: none;
-}
-
-.bb-ult-rank-label {
-  color: #f59e0b;
-  font-weight: 700;
-  min-width: 30px;
-}
-
-.bb-ult-rank-effect {
-  color: var(--bb-text-secondary, #ccc);
-}
-
-.bb-ult-rank-buffs {
-  display: inline-block;
-  margin-left: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--bb-text-tertiary, #999);
-  padding: 0.1rem 0.4rem;
-  background: rgba(168, 85, 247, 0.1);
-  border-radius: 4px;
-}
-
-/* Passives Section */
-.bb-passives-section {
-  border-top: 1px solid var(--bb-border-light, #333);
+/* Ultimate block */
+.bb-ult-block {
+  border-top: 1px solid var(--bb-border);
   padding-top: 0.75rem;
 }
 
-.bb-passives-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--bb-text-tertiary, #888);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
+/* Ultimate description */
+.bb-ult-desc {
+  font-size: 0.825rem;
+  color: var(--bb-text-secondary);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border-radius: 6px;
 }
 
-.bb-passives-list {
+/* Ultimate rank tabs */
+.bb-ult-rank-tabs {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
 }
 
-.bb-passive-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
-}
-
-.bb-passive-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.bb-passive-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--bb-text-primary, #fff);
-}
-
-.bb-passive-effect {
+.bb-ult-tab {
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  color: var(--bb-text-secondary);
   font-size: 0.75rem;
-  color: var(--bb-text-secondary, #aaa);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-/* Responsive - Tablet */
-@media (max-width: 900px) {
-  .bb-skills-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+.bb-ult-tab:hover {
+  border-color: var(--bb-border-light);
+  color: var(--bb-text-primary);
 }
 
-/* Responsive - Mobile */
+.bb-ult-tab.active {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+/* Ultimate selected rank display */
+.bb-ult-selected {
+  margin-top: 0.5rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bb-ult-selected-effect {
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: var(--bb-text-primary);
+  padding: 0.625rem 0.875rem;
+  background: var(--bb-bg-tertiary);
+  border-bottom: 1px solid var(--bb-border);
+  letter-spacing: 0.02em;
+}
+
+.bb-ult-selected-buffs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+}
+
+.bb-ult-buff-tag {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--bb-bg-tertiary);
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-secondary);
+  white-space: nowrap;
+}
+
+/* ============================================
+   KEYWORD HIGHLIGHTING
+   ============================================ */
+
+.bb-kw-num {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.bb-kw-status {
+  color: #f472b6;
+  font-weight: 600;
+}
+
+.bb-kw-hint {
+  color: #94a3b8;
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+.bb-kw-duration {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.bb-kw-damage {
+  color: #f87171;
+  font-weight: 600;
+}
+
+.bb-kw-heal {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.bb-kw-apply {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.bb-kw-inflict {
+  color: #fb923c;
+  font-weight: 600;
+}
+
+.bb-kw-absorb {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.bb-kw-cleanse {
+  color: #2dd4bf;
+  font-weight: 600;
+}
+
+/* ============================================
+   SKILL BUFF TAGS
+   ============================================ */
+
+.bb-skill-buffs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.bb-skill-buff-tag {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-secondary);
+}
+
+/* ============================================
+   PASSIVES
+   ============================================ */
+
+.bb-passives-section {
+  border-top: 1px solid var(--bb-border);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.bb-passive-block {
+  border-top: 1px solid var(--bb-border);
+}
+
+.bb-passive-effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.bb-passive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.775rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text-secondary);
+}
+
+.bb-passive-val {
+  font-weight: 700;
+  color: var(--bb-text-primary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
+  .bb-skills-stats-container {
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .bb-skills-stat-item {
+    padding: 0 0.25rem;
+  }
+
+  .bb-skills-stat-divider {
+    height: 24px;
+  }
+
+  .bb-skills-stat-value {
+    font-size: 1.125rem;
+  }
+
+  .bb-skills-stat-label {
+    font-size: 0.6rem;
+  }
+
+  .bb-skills-filter-section {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
   .bb-skills-filter-row {
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .bb-skills-search-input,
-  .bb-skills-filter-select,
-  .bb-skills-clear-btn {
+  .bb-skills-filter-group {
     width: 100%;
     min-width: unset;
-    font-size: 16px; /* Prevent iOS zoom on focus */
   }
 
-  .bb-skills-card-header {
-    flex-direction: row;
+  .bb-skills-filter-label {
+    font-size: 0.625rem;
+  }
+
+  .bb-skills-search-input,
+  .bb-skills-filter-select {
+    width: 100%;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .bb-skills-clear-btn {
+    width: 100%;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+
+  .bb-card-header {
     gap: 0.75rem;
     padding: 0.75rem;
   }
 
-  .bb-skills-card-avatar {
-    width: 70px;
-    height: 70px;
-    border-radius: 10px;
+  .bb-skills-portrait,
+  .bb-skills-portrait .paladin-image-wrapper,
+  .bb-skills-portrait .paladin-image-wrapper img,
+  .bb-skills-portrait .paladin-image-fallback {
+    width: 64px;
+    height: 64px;
   }
 
-  .bb-skills-card-name {
+  .bb-skills-name {
     font-size: 1rem;
   }
 
-  .bb-skills-rarity img {
-    width: 40px;
-    height: 40px;
+  .bb-skills-detail {
+    font-size: 0.65rem;
+    padding: 0.125rem 0.375rem;
+    gap: 0.25rem;
   }
 
-  .bb-skills-info-row {
-    gap: 0.5rem;
+  .bb-skills-detail img {
+    width: 12px;
+    height: 12px;
   }
 
-  .bb-skills-info-item {
-    font-size: 0.8rem;
+  .bb-skills-detail.role-badge {
+    font-size: 0.6rem;
   }
 
-  .bb-skills-rotation {
-    padding: 0.6rem 0.75rem;
+  .bb-speed-label {
+    font-size: 0.5rem;
   }
 
-  .bb-rotation-title {
-    font-size: 0.75rem;
+  .bb-skills-detail img {
+    width: 14px;
+    height: 14px;
   }
 
-  .bb-rotation-row {
-    font-size: 0.75rem;
-  }
-
-  .bb-skills-card-body {
-    padding: 0.75rem;
-    gap: 0.75rem;
-  }
-
-  .bb-skill-section {
-    padding: 0.6rem;
-    border-radius: 8px;
-  }
-
-  .bb-skill-header {
-    gap: 0.5rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .bb-skill-label {
+  .bb-skills-detail.role-badge {
     font-size: 0.65rem;
   }
 
+  .bb-speed-label {
+    font-size: 0.55rem;
+  }
+
+  .bb-rotation-block {
+    gap: 1.25rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .bb-rotation-value {
+    font-size: 0.875rem;
+  }
+
+  .bb-skills-card.expanded .bb-card-body {
+    padding: 0.75rem;
+  }
+
   .bb-skill-name {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
   }
 
-  .bb-skill-details {
-    font-size: 0.8rem;
+  .bb-skill-desc {
+    font-size: 0.775rem;
   }
 
-  .bb-skill-description {
-    font-size: 0.8rem;
-    padding: 0.35rem 0.5rem;
+  .bb-ult-tab {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
   }
 
-  .bb-skill-level-calc {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.35rem 0.5rem;
+  .bb-ult-selected-effect {
+    font-size: 0.775rem;
+    padding: 0.5rem 0.625rem;
   }
 
-  .bb-skill-level-input input {
-    width: 50px;
-    padding: 0.3rem 0.25rem;
-    font-size: 16px; /* Prevent iOS zoom */
+  .bb-ult-selected-buffs {
+    padding: 0.375rem 0.625rem;
   }
 
-  .bb-skill-level-result {
-    font-size: 0.8rem;
+  .bb-ult-buff-tag {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.375rem;
   }
 
-  .bb-ultimate-rank {
-    font-size: 0.75rem;
-    padding: 0.25rem 0;
+  .bb-ult-desc {
+    font-size: 0.775rem;
   }
 
-  .bb-passives-section {
-    padding-top: 0.6rem;
-  }
+.bb-skill-buff-tag {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.375rem;
+}
 
-  .bb-passives-title {
-    font-size: 0.75rem;
-  }
+.bb-buff-growth-calc .bb-calc-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
 
-  .bb-passive-item {
-    padding: 0.4rem;
-    border-radius: 6px;
-  }
+.bb-buff-calc-val {
+  font-weight: 700;
+  color: var(--bb-text-primary);
+}
 
-  .bb-passive-name {
-    font-size: 0.75rem;
-  }
+.bb-skill-buff-tag {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.375rem;
+}
 
-  .bb-passive-effect {
-    font-size: 0.7rem;
-  }
-
-  .bb-skills-no-results {
-    padding: 2rem 1rem;
-  }
-
-  /* Status effect inline descriptions on mobile */
-  .bb-status-desc {
-    font-size: 0.75em;
-    display: inline;
+  .bb-passive-badge {
+    font-size: 0.675rem;
+    padding: 0.1rem 0.375rem;
   }
 }
 
-/* Small mobile */
-@media (max-width: 400px) {
-  .bb-skills-card-header {
+@media (max-width: 480px) {
+  .bb-card-header {
+    gap: 0.625rem;
+    padding: 0.625rem;
+  }
+
+  .bb-skills-portrait,
+  .bb-skills-portrait .paladin-image-wrapper,
+  .bb-skills-portrait .paladin-image-wrapper img,
+  .bb-skills-portrait .paladin-image-fallback {
+    width: 56px;
+    height: 56px;
+  }
+
+  .bb-skills-name {
+    font-size: 0.9rem;
+  }
+
+  .bb-rotation-block {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 0.5rem;
   }
 
-  .bb-skills-card-avatar {
-    width: 80px;
-    height: 80px;
+  .bb-rotation-value {
+    font-size: 0.8rem;
   }
 
-  .bb-skills-info-row {
-    justify-content: center;
+  .bb-skill-desc {
+    font-size: 0.75rem;
+  }
+
+  .bb-ult-tab {
+    font-size: 0.6rem;
+    padding: 0.175rem 0.375rem;
+  }
+
+  .bb-ult-desc {
+    font-size: 0.75rem;
+  }
+
+  .bb-ult-selected-effect {
+    font-size: 0.725rem;
+    padding: 0.375rem 0.5rem;
+  }
+
+  .bb-ult-buff-tag {
+    font-size: 0.6rem;
+  }
+
+  .bb-passive-badge {
+    font-size: 0.625rem;
   }
 }

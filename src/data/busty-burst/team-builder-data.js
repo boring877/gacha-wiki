@@ -15,7 +15,7 @@
  */
 
 import { BUSTY_BURST_CHARACTER_SKILLS } from './character-skills.js';
-import { BUSTY_BURST_CHARACTER_STATS } from './characters/stats/index.js';
+import { BUSTY_BURST_CHARACTER_STATS } from './characters/index.js';
 
 // Buff category definitions (colors handled by CSS)
 export const BUFF_CATEGORIES = {

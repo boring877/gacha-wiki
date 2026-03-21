@@ -7,10 +7,10 @@ import { BUSTY_BURST_SUPPORT_DATA } from './support-data.js';
 
 // Tier definitions - matches busty-burst-tier-list.css
 export const SUPPORT_TIER_DEFINITIONS = {
-  SSS: { label: 'SSS', description: 'Best SSR supports with top offensive stats' },
-  SS: { label: 'SS', description: 'Other SSR supports' },
-  S: { label: 'S', description: 'SR supports' },
-  A: { label: 'A', description: 'R supports' }
+  SSS: { label: 'SSS', description: 'Throw/Pierce + ATK + Crit (best combo)' },
+  SS: { label: 'SS', description: 'Max ATK/MATK/Crit or Throw/Pierce + any ATK/Crit' },
+  S: { label: 'S', description: 'Any weapon + ATK or Crit (below max values)' },
+  A: { label: 'A', description: 'No offensive stats' }
 };
 
 // Helper to get LB5 offensive stat total
@@ -46,36 +46,31 @@ function hasOffensiveStats(character) {
   return hasATK(character) || hasCrit(character);
 }
 
-// Tier criteria:
-// SSS: Pierce + ATK + Crit (best combo like Stenlina)
-// SS: Throw + ATK/Crit OR Pierce + ATK/anything OR Pierce + Crit/anything
-// S: Any weapon + ATK or Crit stats
-// A: Everything else
+function isMaxATK(character) {
+  const lb5 = character.supportStats.lb5;
+  return (lb5['ATK'] && lb5['ATK'] >= 200) || (lb5['MATK'] && lb5['MATK'] >= 200);
+}
+
+function isMaxCrit(character) {
+  const lb5 = character.supportStats.lb5;
+  return (lb5['Crit Rate'] && lb5['Crit Rate'] >= 90) || (lb5['M.Crit Rate'] && lb5['M.Crit Rate'] >= 90);
+}
 
 function isSSSTier(character) {
-  // Pierce weapon with BOTH ATK and Crit
-  return character.weapon === 'Pierce' && hasATK(character) && hasCrit(character);
+  return character.rarity === 'SSR' && (character.weapon === 'Pierce' || character.weapon === 'Throw') && hasATK(character) && hasCrit(character);
 }
 
 function isSSTier(character) {
-  // Throw + ATK/Crit
-  if (character.weapon === 'Throw' && hasOffensiveStats(character)) {
+  if ((character.weapon === 'Throw' || character.weapon === 'Pierce') && hasOffensiveStats(character)) {
     return true;
   }
-  // Pierce + ATK (any secondary) or Pierce + Crit (any secondary)
-  // But not SSS (which has both ATK and Crit)
-  if (character.weapon === 'Pierce' && hasOffensiveStats(character)) {
-    return true;
-  }
-  // Any weapon with BOTH ATK and Crit
-  if (hasATK(character) && hasCrit(character)) {
+  if (isMaxATK(character) || isMaxCrit(character)) {
     return true;
   }
   return false;
 }
 
 function isSTier(character) {
-  // Any weapon with ATK or Crit stats
   return hasOffensiveStats(character);
 }
 

@@ -8,23 +8,29 @@ import ElementImage from '../../../components/busty-burst/ElementImage.astro';
 import PositionImage from '../../../components/busty-burst/PositionImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import WeaponIcon from '../../../components/busty-burst/WeaponIcon.astro';
-import { getAllCharacters } from '../../../data/busty-burst/characters/info/index.js';
+import { getAllCharacters, BUSTY_BURST_CHARACTER_STATS } from '../../../data/busty-burst/characters/index.js';
 import { BUSTY_BURST_PALADINS } from '../../../data/busty-burst/paladins.js';
 
-// Get all characters
-const characters = getAllCharacters();
+// Get all characters with characterId from stats if not in info
+const characters = getAllCharacters().map(char => {
+  if (!char.characterId) {
+    const statsEntry = BUSTY_BURST_CHARACTER_STATS[char.slug];
+    return { ...char, characterId: statsEntry?.characterId || null };
+  }
+  return char;
+}).filter(c => c.displayName || c.rarity);
 
 const title = 'Busty Burst Character Profiles & Voice Actors';
 const description = `Complete Busty Burst character profiles. View personal info, illustrators, and voice actors for all ${characters.length} characters.`;
 const gameTitle = 'Character Profiles & Voice Actors';
 
 // Map image filename to characterId using paladins data
-const getCharacterId = (imageName: string) => {
+const getCharacterId = (imageName: string, fallbackId?: number) => {
   const paladin = BUSTY_BURST_PALADINS.find(p =>
     p.fileName === imageName ||
     p.fileName.toLowerCase() === imageName.toLowerCase()
   );
-  return paladin?.characterId || 2001;
+  return paladin?.characterId || fallbackId || 2001;
 };
 
 // Map position roman numeral to position image filename
@@ -127,18 +133,18 @@ const getPositionName = (roman: string) => {
         characters.map(char => (
           <div
             class="bb-character-info-card"
-            data-name={char.displayName.toLowerCase()}
+            data-name={(char.displayName || char.name || '').toLowerCase()}
             data-element={char.element}
             data-role={char.role}
             data-rarity={char.rarity}
             data-weapon={char.weaponType}
-            data-illustrator={char.credits.illustration.romanized.toLowerCase()}
-            data-voice={char.credits.voice.romanized.toLowerCase()}
+            data-illustrator={char.credits?.illustration?.romanized?.toLowerCase() || ''}
+            data-voice={char.credits?.voice?.romanized?.toLowerCase() || ''}
           >
             <div class="bb-character-info-card-header">
               <div class="bb-character-info-avatar">
                 <PaladinImage
-                  characterId={getCharacterId(char.image)}
+                  characterId={char.characterId}
                   alt={char.displayName}
                   width={160}
                   height={160}
@@ -172,9 +178,9 @@ const getPositionName = (roman: string) => {
                 </div>
                 <div class="bb-character-info-combat-item">
                   <div class="bb-character-info-combat-icon">
-                    <PositionImage
-                      fileName={getPositionFileName(char.position.roman)}
-                      alt={getPositionName(char.position.roman)}
+                  <PositionImage
+                      fileName={getPositionFileName(char.position?.roman || 'II')}
+                      alt={getPositionName(char.position?.roman || 'II')}
                       width={28}
                       height={28}
                     />
@@ -210,9 +216,16 @@ const getPositionName = (roman: string) => {
                     <span class="bb-character-info-combat-value">{char.range}</span>
                   </div>
                 </div>
+                <div class="bb-character-info-combat-item">
+                  <div class="bb-character-info-combat-text">
+                    <span class="bb-character-info-combat-label">ID</span>
+                    <span class="bb-character-info-combat-value">{char.characterId ?? '—'}</span>
+                  </div>
+                </div>
               </div>
 
               <!-- Personal Profile Section -->
+              {char.profile && (
               <div class="bb-character-info-profile">
                 <div class="bb-character-info-profile-title">Personal Profile</div>
                 <div class="bb-character-info-profile-grid">
@@ -234,6 +247,8 @@ const getPositionName = (roman: string) => {
                   </div>
                 </div>
               </div>
+              )}
+              {char.credits && (
               <div class="bb-character-info-credits">
                 <div class="bb-character-info-credit-item">
                   <span class="bb-character-info-credit-label">Illustrator</span>
@@ -257,6 +272,7 @@ const getPositionName = (roman: string) => {
                     )}
                   </span>
                 </div>
+                {char.obtain && (
                 <div class="bb-character-info-credit-item">
                   <span class="bb-character-info-credit-label">Obtain</span>
                   <span class="bb-character-info-credit-value">
@@ -266,7 +282,9 @@ const getPositionName = (roman: string) => {
                     {char.obtain.source}
                   </span>
                 </div>
+                )}
               </div>
+              )}
             </div>
           </div>
         ))

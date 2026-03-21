@@ -2,9 +2,7 @@
 // Unified data combining character info, stats, skills, and support data
 // All data is imported from individual source files for easy updates
 
-import { BUSTY_BURST_CHARACTER_INFO, getAllCharacters, getCharacterBySlug } from './characters/info/index.js';
-import { BUSTY_BURST_CHARACTER_STATS, calculateStatAtLevel, calculateCritRate, STAT_DISPLAY_NAMES } from './characters/stats/index.js';
-import { BUSTY_BURST_SKILLS_DATA } from './characters/skills/index.js';
+import { BUSTY_BURST_CHARACTER_INFO, BUSTY_BURST_CHARACTER_STATS, BUSTY_BURST_SKILLS_DATA, getAllCharacters, getCharacterBySlug, calculateStatAtLevel, calculateCritRate, STAT_DISPLAY_NAMES } from './characters/index.js';
 import { BUSTY_BURST_SUPPORT_DATA, getSupportDataById, ELEMENT_MAP, WEAPON_MAP, WEAPON_INSPIRATION_EFFECTS } from './support-data.js';
 import { characterBuilds } from './character-builds.js';
 
@@ -84,21 +82,20 @@ export function getCharacterDataBySlug(slug) {
   // Find build data by slug
   const build = characterBuilds[slug] || null;
 
-  return {
-    // Character info (profile, credits, obtain)
-    ...info,
+  const rarity = info.rarity || stats?.rarity || skills?.rarity || null;
+  const element = info.element || stats?.element || skills?.element || null;
+  const role = info.role || stats?.role || skills?.role || null;
 
-    // Character stats (base stats, limit break, GP ability, ability grade, passive abilities)
+  return {
+    ...info,
+    rarity,
+    element,
+    role,
+
     stats: stats || null,
     characterId: characterId || null,
-
-    // Character skills
     skills: skills || null,
-
-    // Support data (support stats and bonuses)
     support: support || null,
-
-    // Build recommendation (if available)
     build: build || null,
   };
 }

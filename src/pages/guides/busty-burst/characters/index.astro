@@ -57,86 +57,54 @@ function normalizeWeaponType(weaponType) {
   return null;
 }
 
-// Calculate total bonus from limit break (all 5 levels)
+const CAMEL_TO_TITLE = {
+  hp: 'HP', atk: 'ATK', matk: 'MATK', def: 'DEF', mdef: 'MDEF',
+  physCrit: 'Phys Crit', magicCrit: 'Magic Crit',
+  accuracy: 'Accuracy', block: 'Block',
+  mpCharge: 'MP Charge', hpRegen: 'HP Regen', mpRegen: 'MP Regen',
+  healPwr: 'Heal Pwr', hpDrain: 'HP Drain', mpCostDown: 'MP Cost Down',
+};
+
 function calculateLBBonus(char, stat) {
   let total = 0;
   const lb = char.stats?.limitBreak || {};
+  const titleStat = CAMEL_TO_TITLE[stat] || stat;
   for (let i = 1; i <= 5; i++) {
     const lbKey = `lb${i}`;
-    if (lb[lbKey] && lb[lbKey][stat]) {
-      total += lb[lbKey][stat];
+    if (lb[lbKey] && lb[lbKey][titleStat]) {
+      total += lb[lbKey][titleStat];
     }
   }
   return total;
 }
 
-// Calculate total bonus from bond/GP ability (all 10 levels)
 function calculateBondBonus(char, stat) {
-  let total = 0;
   const gp = char.stats?.gpAbility || {};
-  for (let i = 1; i <= 10; i++) {
-    const lvKey = `lv${i}`;
-    if (gp[lvKey] && gp[lvKey][stat]) {
-      total += gp[lvKey][stat];
-    }
-  }
-  return total;
+  const titleStat = CAMEL_TO_TITLE[stat] || stat;
+  return gp[`gp10`]?.[titleStat] || 0;
 }
 
-// Calculate total bonus from ability grade (all 10 levels)
 function calculateGradeBonus(char, stat) {
   let total = 0;
   const ag = char.stats?.abilityGrade || {};
+  const titleStat = CAMEL_TO_TITLE[stat] || stat;
   for (let i = 1; i <= 10; i++) {
     const gKey = `g${i}`;
-    if (ag[gKey] && ag[gKey][stat]) {
-      total += ag[gKey][stat];
+    if (ag[gKey] && ag[gKey][titleStat]) {
+      total += ag[gKey][titleStat];
     }
   }
   return total;
 }
 
-// Calculate bonus from passives at max grade (g10)
 function calculatePassiveBonus(char, stat) {
   let total = 0;
   const passives = char.stats?.passiveAbilities || [];
-  const statMap = {
-    'HP': 'hp',
-    'ATK': 'atk',
-    'MATK': 'matk',
-    'DEF': 'def',
-    'MDEF': 'mdef',
-    'Accuracy': 'accuracy',
-    'Block': 'block',
-    'Phys Crit': 'physCrit',
-    'Magic Crit': 'magicCrit',
-    'HP Regen': 'hpRegen',
-    'MP Regen': 'mpRegen',
-    'Heal Pwr': 'healPwr',
-    'MP Charge': 'mpCharge',
-    'HP Drain': 'hpDrain'
-  };
-  // Reverse map: stat key -> display name
-  const statReverseMap = {};
-  Object.entries(statMap).forEach(([k, v]) => statReverseMap[v] = k);
-
-  passives.forEach(passive => {
-    // Handle array format (slot 5 with cumulative)
-    if (Array.isArray(passive.grades)) {
-      const g10 = passive.grades.find(g => g.grade === 10);
-      if (g10 && g10.cumulative) {
-        const statName = statReverseMap[stat];
-        if (g10.cumulative[statName]) {
-          total += g10.cumulative[statName];
-        }
-      }
-    }
-    // Handle object format (slots 1-4)
-    else {
-      const mappedStat = statMap[passive.stat];
-      if (mappedStat === stat && passive.grades && passive.grades.g10) {
-        total += passive.grades.g10;
-      }
+  if (!Array.isArray(passives)) return 0;
+  const titleStat = CAMEL_TO_TITLE[stat] || stat;
+  passives.forEach(entry => {
+    if (typeof entry[titleStat] === 'number') {
+      total += entry[titleStat];
     }
   });
   return total;
@@ -144,8 +112,8 @@ function calculatePassiveBonus(char, stat) {
 
 // Get total stat value including all bonuses at max
 function getTotalStat(char, stat) {
-  // Calculate from all sources manually (maxStats in data may be incorrect)
-  const baseStat = char.stats?.baseStats?.[stat]?.lv90 || 0;
+  if (!char.stats?.baseStats) return null;
+  const baseStat = char.stats.baseStats[stat]?.lv90 || 0;
   const lbBonus = calculateLBBonus(char, stat);
   const bondBonus = calculateBondBonus(char, stat);
   const gradeBonus = calculateGradeBonus(char, stat);
@@ -153,8 +121,12 @@ function getTotalStat(char, stat) {
   return baseStat + lbBonus + bondBonus + gradeBonus + passiveBonus;
 }
 
-// Calculate crit rate percentage (crit value / 20) with all bonuses
+function fmtStat(val) {
+  return val === null ? '-' : val.toLocaleString();
+}
+
 function getCritRate(char) {
+  if (!char.stats?.baseStats) return null;
   const physCritTotal = getTotalStat(char, 'physCrit');
   const magicCritTotal = getTotalStat(char, 'magicCrit');
   const critValue = Math.max(physCritTotal, magicCritTotal);
@@ -255,7 +227,7 @@ function getCritRate(char) {
 
   <!-- Sort Controls -->
   <div class="bb-char-sort-section">
-    <span style="color: var(--bb-text-secondary); font-size: 0.75rem; margin-right: 0.5rem;">Sort by:</span>
+    <span class="bb-char-sort-label">Sort by:</span>
     <button class="bb-char-sort-btn active" data-sort="rarity" data-order="asc">
       Rarity <span class="bb-char-sort-icon">▲</span>
     </button>
@@ -368,13 +340,13 @@ function getCritRate(char) {
                 <span class="bb-char-table-weapon-text">{char.weaponType || '-'}</span>
               </div>
             </td>
-            <td>{getTotalStat(char, 'hp').toLocaleString() || '-'}</td>
-            <td>{getTotalStat(char, 'atk').toLocaleString() || '-'}</td>
-            <td>{getTotalStat(char, 'matk').toLocaleString() || '-'}</td>
-            <td>{getTotalStat(char, 'def').toLocaleString() || '-'}</td>
-            <td>{getTotalStat(char, 'mdef').toLocaleString() || '-'}</td>
-            <td>{getCritRate(char)}%</td>
-            <td>{getTotalStat(char, 'mpCharge') || '-'}</td>
+            <td>{fmtStat(getTotalStat(char, 'hp'))}</td>
+            <td>{fmtStat(getTotalStat(char, 'atk'))}</td>
+            <td>{fmtStat(getTotalStat(char, 'matk'))}</td>
+            <td>{fmtStat(getTotalStat(char, 'def'))}</td>
+            <td>{fmtStat(getTotalStat(char, 'mdef'))}</td>
+            <td>{getCritRate(char) === null ? '-' : `${getCritRate(char)}%`}</td>
+            <td>{fmtStat(getTotalStat(char, 'mpCharge'))}</td>
             <td>{char.actionSpeed || '-'}</td>
           </tr>
         ))}
@@ -403,7 +375,6 @@ function getCritRate(char) {
         data-crit={Math.max(getTotalStat(char, 'physCrit'), getTotalStat(char, 'magicCrit'))}
         data-mpcharge={getTotalStat(char, 'mpCharge')}
         data-speed={char.actionSpeed || ''}
-        style="text-decoration: none;"
       >
         <div class="bb-char-card-header">
           <div class="bb-char-card-portrait">
@@ -445,31 +416,31 @@ function getCritRate(char) {
         </div>
         <div class="bb-char-card-stats">
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'hp').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'hp'))}</div>
             <div class="bb-char-card-stat-label">HP</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'atk').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'atk'))}</div>
             <div class="bb-char-card-stat-label">ATK</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'matk').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'matk'))}</div>
             <div class="bb-char-card-stat-label">MATK</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'def').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'def'))}</div>
             <div class="bb-char-card-stat-label">DEF</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'mdef').toLocaleString() || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'mdef'))}</div>
             <div class="bb-char-card-stat-label">MDEF</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getCritRate(char)}%</div>
+            <div class="bb-char-card-stat-value">{getCritRate(char) === null ? '-' : `${getCritRate(char)}%`}</div>
             <div class="bb-char-card-stat-label">Crit</div>
           </div>
           <div class="bb-char-card-stat">
-            <div class="bb-char-card-stat-value">{getTotalStat(char, 'mpCharge') || '-'}</div>
+            <div class="bb-char-card-stat-value">{fmtStat(getTotalStat(char, 'mpCharge'))}</div>
             <div class="bb-char-card-stat-label">MP</div>
           </div>
         </div>
@@ -478,7 +449,7 @@ function getCritRate(char) {
   </div>
 
   <!-- No Results Message -->
-  <div class="bb-char-no-results" id="no-results" style="display: none;">
+  <div class="bb-char-no-results" id="no-results">
     <div class="bb-char-no-results-icon">😕</div>
     <div class="bb-char-no-results-text">No characters found</div>
     <div class="bb-char-no-results-hint">Try adjusting your filters</div>
@@ -487,7 +458,6 @@ function getCritRate(char) {
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
   const searchInput = document.getElementById('char-search');
   const rarityFilter = document.getElementById('filter-rarity');
   const elementFilter = document.getElementById('filter-element');
@@ -496,18 +466,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const positionFilter = document.getElementById('filter-position');
   const clearBtn = document.getElementById('clear-filters');
   const sortBtns = document.querySelectorAll('.bb-char-sort-btn');
-  const viewBtns = document.querySelectorAll('.bb-char-view-btn');
   const tableView = document.getElementById('table-view');
   const gridView = document.getElementById('grid-view');
   const noResults = document.getElementById('no-results');
   const tableRows = document.querySelectorAll('.char-row');
   const gridCards = document.querySelectorAll('.char-card');
 
-  // Current state
   let currentSort = 'rarity';
   let currentOrder = 'asc';
 
-  // Filter function
   function applyFilters() {
     const searchTerm = searchInput.value.toLowerCase();
     const rarity = rarityFilter.value;
@@ -518,140 +485,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let visibleCount = 0;
 
-    // Filter table rows
-    tableRows.forEach((row, index) => {
-      const name = row.dataset.name || '';
-      const charRarity = row.dataset.rarity || '';
-      const charElement = row.dataset.element || '';
-      const charRole = row.dataset.role || '';
-      const charWeapon = row.dataset.weapon || '';
-      const charPosition = row.dataset.position || '';
-
-      const matchesSearch = !searchTerm || name.includes(searchTerm);
-      const matchesRarity = !rarity || charRarity === rarity;
-      const matchesElement = !element || charElement === element;
-      const matchesRole = !role || charRole === role;
-      const matchesWeapon = !weapon || charWeapon.includes(weapon);
-      const matchesPosition = !position || charPosition === position;
-
-      const isVisible = matchesSearch && matchesRarity && matchesElement &&
-                       matchesRole && matchesWeapon && matchesPosition;
-
-      row.style.display = isVisible ? '' : 'none';
-      if (isVisible) {
+    tableRows.forEach((row) => {
+      const match = matchesFilter(row, searchTerm, rarity, element, role, weapon, position);
+      row.style.display = match ? '' : 'none';
+      if (match) {
         visibleCount++;
         row.querySelector('.row-num').textContent = visibleCount;
       }
     });
 
-    // Filter grid cards
     gridCards.forEach(card => {
-      const name = card.dataset.name || '';
-      const charRarity = card.dataset.rarity || '';
-      const charElement = card.dataset.element || '';
-      const charRole = card.dataset.role || '';
-      const charWeapon = card.dataset.weapon || '';
-      const charPosition = card.dataset.position || '';
-
-      const matchesSearch = !searchTerm || name.includes(searchTerm);
-      const matchesRarity = !rarity || charRarity === rarity;
-      const matchesElement = !element || charElement === element;
-      const matchesRole = !role || charRole === role;
-      const matchesWeapon = !weapon || charWeapon.includes(weapon);
-      const matchesPosition = !position || charPosition === position;
-
-      const isVisible = matchesSearch && matchesRarity && matchesElement &&
-                       matchesRole && matchesWeapon && matchesPosition;
-
-      card.style.display = isVisible ? '' : 'none';
+      const match = matchesFilter(card, searchTerm, rarity, element, role, weapon, position);
+      card.style.display = match ? '' : 'none';
     });
 
-    // Show/hide no results message
     noResults.style.display = visibleCount === 0 ? '' : 'none';
   }
 
-  // Sort function
+  function matchesFilter(el, search, rarity, element, role, weapon, position) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!rarity || el.dataset.rarity === rarity)
+      && (!element || el.dataset.element === element)
+      && (!role || el.dataset.role === role)
+      && (!weapon || (el.dataset.weapon || '').includes(weapon))
+      && (!position || el.dataset.position === position);
+  }
+
   function applySort(sortBy, order) {
     const tbody = document.getElementById('char-table-body');
     const rows = Array.from(tableRows);
+    const cards = Array.from(gridCards);
 
-    rows.sort((a, b) => {
-      let valA, valB;
-
-      switch (sortBy) {
-        case 'name':
-          valA = a.dataset.name || '';
-          valB = b.dataset.name || '';
-          break;
-        case 'rarity':
-          const rarityOrder = { 'SSR': 0, 'SR': 1, 'R': 2 };
-          valA = rarityOrder[a.dataset.rarity] ?? 99;
-          valB = rarityOrder[b.dataset.rarity] ?? 99;
-          break;
-        case 'element':
-          valA = a.dataset.element || '';
-          valB = b.dataset.element || '';
-          break;
-        case 'role':
-          valA = a.dataset.role || '';
-          valB = b.dataset.role || '';
-          break;
-        case 'hp':
-          valA = parseInt(a.dataset.hp) || 0;
-          valB = parseInt(b.dataset.hp) || 0;
-          break;
-        case 'atk':
-          valA = parseInt(a.dataset.atk) || 0;
-          valB = parseInt(b.dataset.atk) || 0;
-          break;
-        case 'matk':
-          valA = parseInt(a.dataset.matk) || 0;
-          valB = parseInt(b.dataset.matk) || 0;
-          break;
-        case 'def':
-          valA = parseInt(a.dataset.def) || 0;
-          valB = parseInt(b.dataset.def) || 0;
-          break;
-        case 'mdef':
-          valA = parseInt(a.dataset.mdef) || 0;
-          valB = parseInt(b.dataset.mdef) || 0;
-          break;
-        case 'crit':
-          valA = parseInt(a.dataset.crit) || 0;
-          valB = parseInt(b.dataset.crit) || 0;
-          break;
-        case 'mpcharge':
-          valA = parseInt(a.dataset.mpcharge) || 0;
-          valB = parseInt(b.dataset.mpcharge) || 0;
-          break;
-        case 'speed':
-          valA = a.dataset.speed || '';
-          valB = b.dataset.speed || '';
-          break;
-        default:
-          valA = a.dataset.name || '';
-          valB = b.dataset.name || '';
-      }
-
-      if (typeof valA === 'string' && typeof valB === 'string') {
-        return order === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-      }
-      return order === 'asc' ? valA - valB : valB - valA;
-    });
-
-    // Reorder in DOM
-    rows.forEach((row, index) => {
+    rows.sort((a, b) => compareValues(a, b, sortBy, order));
+    rows.forEach((row, i) => {
       tbody.appendChild(row);
-      if (row.style.display !== 'none') {
-        row.querySelector('.row-num').textContent = index + 1;
-      }
+      row.querySelector('.row-num').textContent = i + 1;
     });
 
-    // Re-apply filters to update row numbers
+    cards.sort((a, b) => compareValues(a, b, sortBy, order));
+    const gridEl = document.getElementById('grid-view');
+    cards.forEach(card => gridEl.appendChild(card));
+
     applyFilters();
   }
 
-  // Event listeners
+  function compareValues(a, b, sortBy, order) {
+    let valA, valB;
+    switch (sortBy) {
+      case 'rarity':
+        const ro = { 'SSR': 0, 'SR': 1, 'R': 2 };
+        valA = ro[a.dataset.rarity] ?? 99;
+        valB = ro[b.dataset.rarity] ?? 99;
+        break;
+      case 'speed':
+        valA = a.dataset.speed || '';
+        valB = b.dataset.speed || '';
+        break;
+      default:
+        const field = a.dataset[sortBy];
+        valA = isNaN(field) ? (field || '') : parseInt(field) || 0;
+        valB = isNaN(b.dataset[sortBy]) ? (b.dataset[sortBy] || '') : parseInt(b.dataset[sortBy]) || 0;
+    }
+    if (typeof valA === 'string' && typeof valB === 'string') {
+      return order === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+    }
+    return order === 'asc' ? valA - valB : valB - valA;
+  }
+
   searchInput.addEventListener('input', applyFilters);
   rarityFilter.addEventListener('change', applyFilters);
   elementFilter.addEventListener('change', applyFilters);
@@ -660,7 +560,6 @@ document.addEventListener('DOMContentLoaded', () => {
   positionFilter.addEventListener('change', applyFilters);
 
   clearBtn.addEventListener('click', () => {
-    // Clear all filters
     searchInput.value = '';
     rarityFilter.value = '';
     elementFilter.value = '';
@@ -668,10 +567,8 @@ document.addEventListener('DOMContentLoaded', () => {
     weaponFilter.value = '';
     positionFilter.value = '';
 
-    // Reset sort to default (rarity ascending)
     sortBtns.forEach(b => {
       b.classList.remove('active');
-      // Reset all sort icons to their default order
       if (b.dataset.sort === 'rarity') {
         b.classList.add('active');
         b.dataset.order = 'asc';
@@ -695,39 +592,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const sortBy = btn.dataset.sort;
       let order = btn.dataset.order;
 
-      // Toggle order if clicking same button
       if (sortBy === currentSort) {
         order = currentOrder === 'asc' ? 'desc' : 'asc';
         btn.dataset.order = order;
         btn.querySelector('.bb-char-sort-icon').textContent = order === 'asc' ? '▲' : '▼';
       }
 
-      // Update active state
       sortBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       currentSort = sortBy;
       currentOrder = order;
       applySort(sortBy, order);
-    });
-  });
-
-  viewBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const view = btn.dataset.view;
-
-      viewBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (view === 'table') {
-        tableView.classList.remove('hidden');
-        gridView.classList.remove('active');
-      } else {
-        tableView.classList.add('hidden');
-        gridView.classList.add('active');
-      }
-
-      currentView = view;
     });
   });
 });
