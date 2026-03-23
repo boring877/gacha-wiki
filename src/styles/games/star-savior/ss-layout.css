@@ -1,0 +1,224 @@
+/* Star Savior Layout Styles */
+/* Base layout, hero sections, and shared elements for space theme */
+
+.ss-title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+}
+
+.ss-title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--ss-primary);
+  margin: 0 0 2rem 0;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.ss-body {
+  background: var(--ss-bg-primary);
+  color: var(--ss-text-primary);
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-primary {
+  background: linear-gradient(
+    135deg,
+    var(--ss-bg-primary) 0%,
+    var(--ss-bg-secondary) 50%,
+    var(--ss-bg-primary) 100%
+  );
+}
+
+.bg-accent-1 {
+  background: radial-gradient(circle at 20% 80%, rgba(91, 74, 158, 0.08), transparent);
+  pointer-events: none;
+}
+
+.bg-accent-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(42, 58, 110, 0.06), transparent);
+  pointer-events: none;
+}
+
+.ss-content {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ss-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  padding-bottom: 2rem;
+  flex: 1 0 auto;
+}
+
+.ss-content > footer {
+  flex-shrink: 0;
+}
+
+.ss-main {
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--ss-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.content-area {
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.content-section {
+  margin-bottom: 3rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-display);
+  color: var(--ss-primary-light);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-normal);
+}
+
+.game-description {
+  font-size: var(--text-lg);
+  font-family: var(--font-primary);
+  line-height: var(--leading-relaxed);
+  color: var(--ss-text-secondary);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.play-button-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ss-gradient-primary);
+  color: var(--ss-text-primary);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+  font-size: var(--text-lg);
+  border: none;
+  cursor: pointer;
+}
+
+.play-arrow {
+  font-size: 1.2rem;
+}
+
+.last-updated {
+  text-align: center;
+  color: var(--ss-text-muted);
+  font-size: var(--text-sm);
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .ss-container {
+    padding: 0 15px;
+  }
+
+  .hero-section {
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+
+  .ss-title-only-heading {
+    font-size: var(--text-3xl);
+  }
+
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
+  }
+
+  .game-description {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-title-only-heading {
+    font-size: var(--text-2xl);
+  }
+
+  .content-section {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}

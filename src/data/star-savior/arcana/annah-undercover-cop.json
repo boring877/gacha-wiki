@@ -1,0 +1,145 @@
+{
+  "id": 7150201,
+  "character": "Annah",
+  "name": "Undercover Cop",
+  "slug": "annah-undercover-cop",
+  "grade": "SSR",
+  "specialTag": "Toughness",
+  "classSynergy": "All Classes",
+  "statTag": "Endurance",
+  "image": "ARCANA_OFFICER_POLICE_SSR_01.png",
+  "imageSmall": "ARCANA_OFFICER_POLICE_SSR_01_S.png",
+  "characterId": 1502,
+  "episode": "Her steps grow light on their own at the familiar sweet scent.\nFrom afar, the shoulders of rookie members who recognize her tense up.\n\nTheir hands move quickly, ready to snap into a hurried salute at their superior officer.\nBut Annah's index finger moves even faster, touching her lips as she hushes them.\n\n\"Shh. Right now, I'm just Officer Annah!\"\n\nShe finds it a bit embarrassing, but that's just a part of being trained for field work.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 10,
+      "type": "Request",
+      "valueType": "REQUEST_SUCCESS_RATE_UP",
+      "valueRate": 300,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 175,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 350,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 30,
+      "perLevel": 20,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    },
+    {
+      "unlockLevel": 40,
+      "perLevel": 1,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 500
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_REQUEST.png",
+      "title": "Routine Patrol",
+      "iconType": "Training",
+      "effectType": "Request Coin Bonus",
+      "valueRate": 500
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5150201,
+      "title": "Blue and Biker",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5150202,
+      "title": "Blue and Boutique",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 15
+        },
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "Potential Points",
+          "value": 20
+        }
+      ],
+      "reqEventClear": 715020101
+    },
+    {
+      "cutsceneId": 5150203,
+      "title": "Blue Versus Bunny",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 15
+        },
+        {
+          "type": "Potential Points",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 715020102
+    }
+  ]
+}

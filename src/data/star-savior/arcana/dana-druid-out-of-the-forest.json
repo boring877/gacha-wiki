@@ -1,0 +1,69 @@
+{
+  "id": 5999903,
+  "character": "Dana",
+  "name": "Druid Out of the Forest",
+  "slug": "dana-druid-out-of-the-forest",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Power",
+  "image": "ARCANA_MAGICIAN_DRUID_R_01.png",
+  "imageSmall": "ARCANA_MAGICIAN_DRUID_R_01_S.png",
+  "characterId": 1021,
+  "episode": "Oh, young sage who walks in harmony with nature, whose innocent soul shall not be tainted by the stains of the mundane world.\nThe green shade of the forest has fallen, so now you need only walk your path.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5002001,
+      "title": "Judgment",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

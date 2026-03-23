@@ -1,0 +1,388 @@
+/* Star Savior Character Database Styles */
+
+.ss-role-text {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  margin-left: 0.25rem;
+  vertical-align: middle;
+}
+
+.ss-char-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 2rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+}
+
+.ss-char-stats-item {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.ss-char-stats-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--ss-border-light);
+}
+
+.ss-char-stats-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ss-primary);
+  line-height: 1;
+}
+
+.ss-char-stats-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ss-char-filter-section {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ss-char-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.ss-char-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.ss-char-filter-label {
+  font-size: 0.75rem;
+  color: var(--ss-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ss-char-filter-input {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.ss-char-filter-input:focus {
+  border-color: var(--ss-primary);
+}
+
+.ss-char-sort-section {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ss-char-sort-label {
+  color: var(--ss-text-secondary);
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+.ss-char-sort-btn {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  color: var(--ss-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ss-char-sort-btn.active {
+  background: var(--ss-secondary);
+  border-color: var(--ss-primary);
+  color: var(--ss-primary);
+}
+
+.ss-char-sort-icon {
+  font-size: 0.625rem;
+}
+
+.ss-char-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.ss-char-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ss-char-table th {
+  background: var(--ss-bg-secondary);
+  padding: 0.75rem;
+  text-align: left;
+  color: var(--ss-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--ss-border);
+  white-space: nowrap;
+}
+
+.ss-char-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--ss-border);
+  color: var(--ss-text-primary);
+}
+
+.ss-char-table tbody tr {
+  background: var(--ss-bg-card);
+  cursor: pointer;
+}
+
+.ss-char-table tbody tr:nth-child(even) {
+  background: var(--ss-bg-secondary);
+}
+
+.ss-char-table-char {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ss-char-table-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--ss-bg-tertiary);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ss-char-table-avatar > :global(*) {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-char-table-avatar :global(img) {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ss-char-table-avatar :global(.ss-char-image-fallback) {
+  width: 100%;
+  height: 100%;
+  font-size: 0.5rem;
+  color: var(--ss-text-muted);
+}
+
+.ss-char-table-name {
+  font-weight: 600;
+}
+
+.ss-char-stat-col {
+  text-align: right;
+  font-size: 0.6875rem;
+  padding: 0.75rem 0.5rem;
+}
+
+.ss-char-stat-cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ss-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.ss-char-table-title {
+  font-size: 0.75rem;
+  color: var(--ss-text-tertiary);
+}
+
+.ss-badge-ssr-table {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  background: rgba(255, 213, 79, 0.15);
+  color: var(--ss-ssr);
+}
+
+.ss-badge-sr-table {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  background: rgba(144, 202, 249, 0.15);
+  color: var(--ss-sr);
+}
+
+/* Grid view for mobile */
+.ss-char-grid {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.ss-char-card {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ss-char-card-header {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--ss-bg-secondary), transparent);
+}
+
+.ss-char-card-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  background: var(--ss-bg-tertiary);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-char-card-avatar > :global(*) {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-char-card-avatar :global(img) {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ss-char-card-avatar :global(.ss-char-image-fallback) {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  color: var(--ss-text-muted);
+}
+
+.ss-char-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ss-char-card-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0 0 0.125rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ss-char-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.ss-element-inline {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.ss-char-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--ss-text-secondary);
+  display: none;
+}
+
+.ss-char-no-results.visible {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .ss-char-grid {
+    display: none !important;
+  }
+  .ss-char-table-wrapper {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .ss-char-stats-bar {
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .ss-char-stats-item {
+    padding: 0 0.25rem;
+  }
+
+  .ss-char-stats-value {
+    font-size: 1.125rem;
+  }
+
+  .ss-char-filter-section {
+    padding: 0.75rem;
+  }
+
+  .ss-char-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ss-char-filter-group {
+    width: 100%;
+  }
+
+  .ss-char-table-wrapper {
+    display: none !important;
+  }
+
+  .ss-char-grid {
+    display: grid !important;
+  }
+}

@@ -1,0 +1,37 @@
+---
+// Equipment set bonus icon component for Star Savior
+// Maps set bonus icon filename (e.g. ICON_SET_4P_TURN_SPD.png) to image
+import { Image } from 'astro:assets';
+
+const setImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/equip-sets/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  size?: number;
+  class?: string;
+}
+
+const { icon, size = 24, class: className } = Astro.props;
+
+function findImage(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(setImages).find(k => k.endsWith('/' + filename));
+  return key ? setImages[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule && (
+  <Image
+    src={imageModule}
+    alt="Set Bonus"
+    width={size}
+    height={size}
+    class={`ss-equip-set-icon ${className || ''}`}
+    loading="lazy"
+  />
+)}

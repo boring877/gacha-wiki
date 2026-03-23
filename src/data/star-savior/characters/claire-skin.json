@@ -1,0 +1,1326 @@
+{
+  "id": 1509,
+  "name": "Claire",
+  "title": "Candle Square",
+  "slug": "claire-skin",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_MOON",
+  "class": "NKM_UNIT_S_MAID_SPEAR",
+  "role": "Assassin",
+  "rarity": "SR",
+  "description": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+  "stats": {
+    "HP": 1040,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 240,
+    "DEF": 5,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 10592,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 1832,
+    "DEF": 801,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 21787,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 3878,
+    "DEF": 1721,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 6800,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 1200,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 48,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 8,
+    "DEF": 4,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 6500,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "special": {
+      "atkFactor": 9000,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 11500,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_2_SPECIAL",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "specialDesc": "Temporarily deals 1 more Toughness Fixed Damage on attack and grants self <b>ATK Up</b> for 1 turn after attacking.",
+    "hyperDesc": "SI_SUPER_ARMOR_DAMAGE@@1"
+  },
+  "skills": [
+    {
+      "id": 15091,
+      "strId": "NKM_UNIT_S_MAID_SPEAR_ATTACK",
+      "name": "Perfect Strike",
+      "icon": "SKILL_MAID_SPEAR_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Swings her spear wide to strike the enemy. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 15092,
+      "strId": "NKM_UNIT_S_MAID_SPEAR_SPECIAL",
+      "name": "Menacing Blue Thorn",
+      "icon": "SKILL_MAID_SPEAR_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_INCREASE",
+              "buffName": "SPD Up",
+              "buffDesc": "SPD increases by 20%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Pierces the enemy multiple times with a spear wreathed in razor-sharp energy. Grants self <b>SPD Up</b> for 1 turn.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed Damage on attack and grants self <b>ATK Up</b> for 1 turn after attacking.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 15093,
+      "strId": "NKM_UNIT_S_MAID_SPEAR_HYPER",
+      "name": "Final Service",
+      "icon": "SKILL_MAID_SPEAR_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>10%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Teaches a rude intruder a lesson by showing off her true skill. Increases self Action Gauge by <b>20%</b>. Increases self Action Gauge by an additional 10% if she has a buff.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 15094,
+      "strId": "NKM_UNIT_S_MAID_SPEAR_UNIQUE_PASSIVE",
+      "name": "Punctuality",
+      "icon": "SKILL_MAID_SPEAR_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Claire's ATK by <b>3%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Claire's ATK by <b>3%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 300
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Claire's ATK by <b>6%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 600
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Claire's ATK by <b>9%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 900
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 4,
+          "description": "Increases Claire's ATK by <b>12%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1200
+            }
+          ],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_MAID_SPEAR_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_MAID_SPEAR_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 200,
+          "display": "ATK% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 50,
+          "display": "DEF +50"
+        }
+      ],
+      "potential": "Sense of Attack",
+      "potentialDesc": "Slightly increases self ATK by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 400,
+          "display": "Effect Evasion +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 400,
+          "display": "ATK% +4%"
+        }
+      ],
+      "potential": "Sense of Protection",
+      "potentialDesc": "Slightly increases self Effect RES by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 175,
+          "display": "ATK +175"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 800,
+          "display": "Effect Evasion +8%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 200,
+          "display": "ATK +200"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 70,
+          "display": "DEF +70"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL_DAMAGE",
+          "stat": "Crit Damage",
+          "value": 1800,
+          "display": "Crit Damage +18%"
+        }
+      ],
+      "potential": "Skill of Destruction",
+      "potentialDesc": "Increases CRIT DMG by 4%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 30,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 150,
+      "health": 0,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 120
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "power",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "protect",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "protect",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 180,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 130,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "D+",
+      "health": "G",
+      "endurance": "G",
+      "focus": "G",
+      "protect": "E+"
+    }
+  },
+  "uniquePotentials": [
+    {
+      "id": 11044,
+      "name": "Claire's Unique Potential",
+      "description": "Grants self <b>Immunity</b> for a certain number of turns at the start of the first battle.",
+      "icon": "POTEN_UTILITY_BUFF.png",
+      "maxLevel": 1
+    }
+  ],
+  "profile": {
+    "birthday": "1 / 30",
+    "height": "162 cm",
+    "hometown": "NOA",
+    "team": "Candle Square",
+    "vaKR": "Oh Ro-ah",
+    "vaJP": "Hikari Sonoyama"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_MAID_SPEAR.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_MAID_SPEAR.png",
+    "illust": "sprites/f439bde88562c382049863062cfccc8b7d6a5ffa/NKM_UNIT_S_MAID_SPEAR_ILLUST.png",
+    "illustUI": "sprites/f439bde88562c382049863062cfccc8b7d6a5ffa/NKM_UNIT_S_MAID_SPEAR_ILLUST_UI.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_MAID_SPEAR.png"
+  }
+}

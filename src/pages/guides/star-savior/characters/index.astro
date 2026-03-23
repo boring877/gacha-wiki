@@ -1,0 +1,271 @@
+---
+// Star Savior Character Database Page
+import CharacterDatabaseLayout from '../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { STAR_SAVIOR_CHARACTERS } from '../../../../data/star-savior/characters.js';
+
+import '../../../../styles/games/star-savior/ss-character-database.css';
+import SSCharacterImage from '../../../../components/star-savior/SSCharacterImage.astro';
+import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
+import SSRoleImage from '../../../../components/star-savior/SSRoleImage.astro';
+import SSElementImage from '../../../../components/star-savior/SSElementImage.astro';
+
+const ADJUST_TYPE_MAP: Record<string, string> = {
+  NUAT_SUN: 'Sun',
+  NUAT_MOON: 'Moon',
+  NUAT_STAR: 'Star',
+  NUAT_CHAOS: 'Chaos',
+  NUAT_ORDER: 'Order',
+};
+
+const elements = [...new Set(STAR_SAVIOR_CHARACTERS.map(c => ADJUST_TYPE_MAP[c.adjustType] || '').filter(Boolean))];
+
+const roles = [...new Set(STAR_SAVIOR_CHARACTERS.map(c => c.role))];
+const ssrCount = STAR_SAVIOR_CHARACTERS.filter(c => c.rarity === 'SSR').length;
+const srCount = STAR_SAVIOR_CHARACTERS.filter(c => c.rarity === 'SR').length;
+const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
+  const r = { SSR: 0, SR: 1 };
+  if (r[a.rarity] !== r[b.rarity]) return r[a.rarity] - r[b.rarity];
+  return a.name.localeCompare(b.name);
+});
+---
+
+<CharacterDatabaseLayout
+  title="Character Database - Star Savior"
+  description="Complete character database for Star Savior. View all 43 characters with stats, skills, and Nova Burst info."
+  gameTitle="Character Database"
+>
+  <div class="ss-char-stats-bar">
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{STAR_SAVIOR_CHARACTERS.length}</div>
+      <div class="ss-char-stats-label">Total</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{ssrCount}</div>
+      <div class="ss-char-stats-label">SSR</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{srCount}</div>
+      <div class="ss-char-stats-label">SR</div>
+    </div>
+  </div>
+
+  <div class="ss-char-filter-section">
+    <div class="ss-char-filter-row">
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Search</label>
+        <input type="text" id="char-search" class="ss-char-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Role</label>
+        <select id="filter-role" class="ss-char-filter-input">
+          <option value="">All Roles</option>
+          {roles.map(r => <option value={r}>{r}</option>)}
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Rarity</label>
+        <select id="filter-rarity" class="ss-char-filter-input">
+          <option value="">All</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Element</label>
+        <select id="filter-element" class="ss-char-filter-input">
+          <option value="">All</option>
+          {elements.map(e => <option value={e}>{e}</option>)}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="ss-char-sort-section">
+    <span class="ss-char-sort-label">Sort by:</span>
+    <button class="ss-char-sort-btn active" data-sort="name">Name <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="role">Role <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="atk">ATK <span class="ss-char-sort-icon">▲</span></button>
+  </div>
+
+  <div class="ss-char-table-wrapper" id="table-view">
+    <table class="ss-char-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Character</th>
+          <th>Rarity</th>
+          <th>Role</th>
+          <th>Element</th>
+          <th class="ss-char-stat-col">ATK</th>
+          <th class="ss-char-stat-col">HP</th>
+          <th class="ss-char-stat-col">DEF</th>
+          <th class="ss-char-stat-col">CRIT</th>
+          <th class="ss-char-stat-col">CDMG</th>
+        </tr>
+      </thead>
+      <tbody id="char-table-body">
+        {sorted.map((char, i) => (
+          <tr
+            class="char-row"
+            data-slug={char.slug}
+            data-name={char.name.toLowerCase()}
+            data-rarity={char.rarity}
+            data-role={char.role}
+            data-element={ADJUST_TYPE_MAP[char.adjustType] || ''}
+            data-atk={char.statsMax?.ATK ?? 0}
+            onclick={`window.location.href='/guides/star-savior/characters/${char.slug}/'`}
+          >
+            <td class="row-num">{i + 1}</td>
+            <td>
+              <div class="ss-char-table-char">
+                <SSCharacterImage slug={char.slug} alt={char.name} imageType="icon" width={96} height={96} class="ss-char-table-avatar" />
+                <div>
+                  <div class="ss-char-table-name">{char.name}</div>
+                </div>
+              </div>
+            </td>
+            <td><SSRarityImage rarity={char.rarity} width={32} height={16} /></td>
+            <td><SSRoleImage role={char.role} width={24} height={24} /> <span class="ss-role-text">{char.role}</span></td>
+            <td>{char.adjustType && ADJUST_TYPE_MAP[char.adjustType] && <SSElementImage adjustType={char.adjustType} width={20} height={20} class="ss-element-inline" />}</td>
+            <td class="ss-char-stat-cell">{(char.statsMax?.ATK ?? 0).toLocaleString()}</td>
+            <td class="ss-char-stat-cell">{(char.statsMax?.HP ?? 0).toLocaleString()}</td>
+            <td class="ss-char-stat-cell">{(char.statsMax?.DEF ?? 0).toLocaleString()}</td>
+            <td class="ss-char-stat-cell">{((char.statsMax?.['Crit Rate'] ?? 0) / 100).toFixed(0)}%</td>
+            <td class="ss-char-stat-cell">{((char.statsMax?.['Crit Damage'] ?? 0) / 100).toFixed(0)}%</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ss-char-grid" id="grid-view">
+    {sorted.map((char) => (
+      <a
+        href={`/guides/star-savior/characters/${char.slug}/`}
+        class="ss-char-card char-card"
+        data-slug={char.slug}
+        data-name={char.name.toLowerCase()}
+        data-rarity={char.rarity}
+        data-role={char.role}
+        data-element={ADJUST_TYPE_MAP[char.adjustType] || ''}
+      >
+        <div class="ss-char-card-header">
+          <SSCharacterImage slug={char.slug} alt={char.name} imageType="icon" width={160} height={160} class="ss-char-card-avatar" />
+          <div class="ss-char-card-info">
+            <div class="ss-char-card-name">{char.name}</div>
+            <div class="ss-char-card-badges">
+              <SSRarityImage rarity={char.rarity} width={48} height={24} />
+              <SSRoleImage role={char.role} width={24} height={24} /> <span class="ss-role-text">{char.role}</span>
+              {char.adjustType && ADJUST_TYPE_MAP[char.adjustType] && <SSElementImage adjustType={char.adjustType} width={20} height={20} class="ss-element-inline" />}
+            </div>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="ss-char-no-results" id="no-results">
+    <div class="ss-char-stats-value">?</div>
+    <div>No characters found</div>
+    <div style="font-size:0.875rem;opacity:0.7;margin-top:0.25rem">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('char-search');
+  const roleFilter = document.getElementById('filter-role');
+  const rarityFilter = document.getElementById('filter-rarity');
+  const elementFilter = document.getElementById('filter-element');
+  const sortBtns = document.querySelectorAll('.ss-char-sort-btn');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.char-row');
+  const gridCards = document.querySelectorAll('.char-card');
+
+  let currentSort = 'name';
+  let currentOrder = 'asc';
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const role = roleFilter.value;
+    const rarity = rarityFilter.value;
+    const element = elementFilter.value;
+    let visible = 0;
+
+    tableRows.forEach(row => {
+      const match = matchesFilter(row, search, role, rarity, element);
+      row.style.display = match ? '' : 'none';
+      if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
+    });
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, role, rarity, element);
+      card.style.display = match ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function matchesFilter(el, search, role, rarity, element) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!role || el.dataset.role === role)
+      && (!rarity || el.dataset.rarity === rarity)
+      && (!element || el.dataset.element === element);
+  }
+
+  function applySort(sortBy, order) {
+    const tbody = document.getElementById('char-table-body');
+    const rows = Array.from(tableRows);
+    const cards = Array.from(gridCards);
+
+    rows.sort((a, b) => compareValues(a, b, sortBy, order));
+    rows.forEach((row, i) => { tbody.appendChild(row); row.querySelector('.row-num').textContent = i + 1; });
+
+    cards.sort((a, b) => compareValues(a, b, sortBy, order));
+    const gridEl = document.getElementById('grid-view');
+    cards.forEach(card => gridEl.appendChild(card));
+  }
+
+  function compareValues(a, b, sortBy, order) {
+    let valA, valB;
+    if (sortBy === 'rarity') {
+      const ro = { SSR: 0, SR: 1 };
+      valA = ro[a.dataset.rarity] ?? 99;
+      valB = ro[b.dataset.rarity] ?? 99;
+    } else if (sortBy === 'atk') {
+      valA = parseInt(a.dataset.atk) || 0;
+      valB = parseInt(b.dataset.atk) || 0;
+      if (order === 'asc') return valA - valB;
+      return valB - valA;
+    } else {
+      valA = a.dataset[sortBy] || '';
+      valB = b.dataset[sortBy] || '';
+    }
+    if (order === 'asc') return valA.localeCompare(valB);
+    return valB.localeCompare(valA);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  roleFilter.addEventListener('change', applyFilters);
+  rarityFilter.addEventListener('change', applyFilters);
+  elementFilter.addEventListener('change', applyFilters);
+
+  sortBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sortBy = btn.dataset.sort;
+      let order = currentSort === sortBy && currentOrder === 'asc' ? 'desc' : 'asc';
+
+      sortBtns.forEach(b => { b.classList.remove('active'); b.querySelector('.ss-char-sort-icon').textContent = '▲'; });
+      btn.classList.add('active');
+      btn.querySelector('.ss-char-sort-icon').textContent = order === 'asc' ? '▲' : '▼';
+
+      currentSort = sortBy;
+      currentOrder = order;
+      applySort(sortBy, order);
+      applyFilters();
+    });
+  });
+});
+</script>

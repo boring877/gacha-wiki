@@ -1,0 +1,117 @@
+---
+import { SITE_TITLE } from '../../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = 'Star Savior Wiki - Character Database, Stats & Guides',
+} = Astro.props;
+
+const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Star Savior Wiki`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta name="application-category" content="game" />
+<meta name="application-subcategory" content="rpg" />
+
+<meta property="og:locale:alternate" content="ko_KR" />
+<meta name="alternate-name" content="스타 세이버" />
+<meta name="alternate-name" content="star savior" />
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+
+<style is:inline>
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/inter-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/inter-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('/fonts/space-grotesk-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('/fonts/space-grotesk-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<meta name="game:title" content="Star Savior" />
+<meta name="game:genre" content="Turn-Based RPG, Gacha, Strategy" />
+<meta name="game:platform" content="Android, iOS, PC" />
+<meta name="game:developer" content="StudioBside" />
+<meta name="game:publisher" content="StudioBside" />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Star Savior',
+    alternateName: '스타 세이버',
+    description: 'Turn-based RPG by StudioBside. Build your team of unique Saviors, master Nova Burst abilities, and journey through diverse regions.',
+    genre: ['Turn-Based RPG', 'Gacha', 'Strategy'],
+    applicationCategory: 'Game',
+    operatingSystem: 'Android, iOS, PC',
+    playMode: 'SinglePlayer',
+    publisher: {
+      '@type': 'Organization',
+      name: 'StudioBside',
+    },
+    url: canonicalURL,
+  })}
+/>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Star Savior Wiki",
+    "description": "Complete guide for Star Savior. Character database, stats, skills, and Nova Burst guides.",
+    "url": "https://gachawiki.info/guides/star-savior/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://gachawiki.info/guides/star-savior/characters/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GachaWiki",
+      "url": "https://gachawiki.info"
+    }
+  }
+</script>

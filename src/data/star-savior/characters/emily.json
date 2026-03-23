@@ -1,0 +1,1572 @@
+{
+  "id": 1009,
+  "name": "Emily",
+  "title": "Candle Square",
+  "slug": "emily",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_MOON",
+  "class": "NKM_UNIT_S_MAID_TWOHANDER",
+  "role": "Defender",
+  "rarity": "SSR",
+  "description": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+  "stats": {
+    "HP": 1860,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 150,
+    "DEF": 20,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13800,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 2140,
+    "DEF": 1015,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 25444,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 4058,
+    "DEF": 2016,
+    "Hit Rate": 10000,
+    "Crit Rate": 1400,
+    "Crit Damage": 6800,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 5000,
+      "defFactor": null,
+      "hpFactor": 350
+    },
+    "hyper": {
+      "atkFactor": 17000,
+      "defFactor": null,
+      "hpFactor": 1000
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Barrier</b> for 1 turn after attacking. Barrier is proportional to self Max HP.",
+    "specialDesc": "SI_SUPER_ARMOR_UP@@1",
+    "hyperDesc": "SI_SUPER_ARMOR_DAMAGE@@1"
+  },
+  "skills": [
+    {
+      "id": 10091,
+      "strId": "NKM_UNIT_S_MAID_TWOHANDER_ATTACK",
+      "name": "Commence Combat Cleanup",
+      "icon": "SKILL_MAID_TWOHANDER_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Swings a massive broom to attack the enemy. Grants self 1 stack of <b>Chill</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Barrier</b> for 1 turn after attacking. Barrier is proportional to self Max HP.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10092,
+      "strId": "NKM_UNIT_S_MAID_TWOHANDER_SPECIAL",
+      "name": "Cleaning Service",
+      "icon": "SKILL_MAID_TWOHANDER_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "Single Ally",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_ATTACK_INCREASE",
+              "buffName": "ATK Up",
+              "buffDesc": "Increases ATK by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_EXTRA_TURN",
+              "buffName": "Extra Turn",
+              "buffDesc": "Gains an extra turn.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Cleanses allies with the pride of a cleanup maid. Grants an ally <b>ATK Up</b> and <b>Barrier</b> for 3 turns, and grants self 3 stacks of <b>Chill</b>, then grants self an extra turn. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 10093,
+      "strId": "NKM_UNIT_S_MAID_TWOHANDER_HYPER",
+      "name": "Turn-Down Service",
+      "icon": "SKILL_MAID_TWOHANDER_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 8,
+      "novaForce": 1,
+      "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_DEFENSE_INCREASE",
+              "buffName": "DEF Up",
+              "buffDesc": "Increases DEF by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_MAID_TWOHANDER_1",
+              "buffName": "Awakened Memory (Undispellable)",
+              "buffDesc": "Deals 50% increased Ultimate Skill DMG. Stacks up to 3 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_SKILL_HYPER",
+                  "NKM_STAT_TYPE_RATE": 5000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_HYPER_COOL_TURN_DOWN",
+              "buffName": "Ultimate Skill Cooldown Reduction",
+              "buffDesc": "Reduces the remaining Cooldown of Ultimate Skills.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Attacks all enemies with the resolve of a veteran mercenary. Grants all allies <b>DEF Up</b> for 2 turns, and grants self 1 stack of <b>Awakened Memory (Undispellable)</b>. Removes all stacks of <b>Chill</b> and reduces the cooldown of <b>Turn-Down Service</b> by 2 turns if <b>Chill</b> is at max stacks after attacking. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10094,
+      "strId": "NKM_UNIT_S_MAID_TWOHANDER_UNIQUE_PASSIVE",
+      "name": "Ready Maid",
+      "icon": "SKILL_MAID_TWOHANDER_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Grants Emily <b>Barrier</b> for 1 turn at the start of the first battle. Reduces the cooldown of <b>Turn-Down Service</b> by 1 turn after being attacked. Reduces the cooldown of <b>Turn-Down Service</b> by 1 additional turn, then grants self 1 stack of <b>Chill</b> with a <b>50%</b> chance after being attacked by an attack that targets all. Barrier is proportional to self Max HP.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Grants Emily <b>Barrier</b> for 1 turn at the start of the first battle. Reduces the cooldown of <b>Turn-Down Service</b> by 1 turn after being attacked. Reduces the cooldown of <b>Turn-Down Service</b> by 1 additional turn, then grants self 1 stack of <b>Chill</b> with a <b>50%</b> chance after being attacked by an attack that targets all. Barrier is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_HYPER_COOL_TURN_DOWN",
+              "buffName": "Ultimate Skill Cooldown Reduction",
+              "buffDesc": "Reduces the remaining Cooldown of Ultimate Skills.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_HYPER_COOL_TURN_DOWN",
+              "buffName": "Ultimate Skill Cooldown Reduction",
+              "buffDesc": "Reduces the remaining Cooldown of Ultimate Skills.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 5000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Increases Emily's Max HP by <b>5%</b>. Grants Emily <b>Barrier</b> for 1 turn at the start of the first battle. Reduces the cooldown of <b>Turn-Down Service</b> by 1 turn after being attacked. Reduces the cooldown of <b>Turn-Down Service</b> by 1 additional turn, then grants self 1 stack of <b>Chill</b> with a <b>50%</b> chance after being attacked by an attack that targets all. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Emily's Max HP by <b>10%</b>. Grants Emily <b>Barrier</b> for 1 turn at the start of the first battle. Reduces the cooldown of <b>Turn-Down Service</b> by 1 turn after being attacked. Reduces the cooldown of <b>Turn-Down Service</b> by 1 additional turn, then grants self 1 stack of <b>Chill</b> with a <b>75%</b> chance after being attacked by an attack that targets all. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Emily's Max HP by <b>15%</b>. Grants Emily <b>Barrier</b> for 1 turn at the start of the first battle. Reduces the cooldown of <b>Turn-Down Service</b> by 1 turn after being attacked. Reduces the cooldown of <b>Turn-Down Service</b> by 1 additional turn, then grants self 1 stack of <b>Chill</b> with a <b>100%</b> chance after being attacked by an attack that targets all. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_MAID_TWOHANDER_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_MAID_TWOHANDER_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 300,
+          "display": "Crit Rate +3%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 400,
+          "display": "HP% +4%"
+        }
+      ],
+      "potential": "Sense of Insight",
+      "potentialDesc": "Slightly increases self CRIT Rate by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 600,
+          "display": "Crit Rate +6%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL_DAMAGE",
+          "stat": "Crit Damage",
+          "value": 1800,
+          "display": "Crit Damage +18%"
+        }
+      ],
+      "potential": "Skill of Destruction",
+      "potentialDesc": "Increases CRIT DMG by 4%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 150,
+      "endurance": 120,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "endurance",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "endurance",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "endurance",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 180,
+      "endurance": 150,
+      "focus": 10,
+      "protect": 10,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D+",
+      "endurance": "D",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "6 / 8",
+    "height": "167 cm",
+    "hometown": "Western Disaster Zone",
+    "team": "Candle Square",
+    "vaKR": "Kim Do-hee",
+    "vaJP": "Shiori Sugiura"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_MAID_TWOHANDER.png",
+    "illust": "sprites/62835c5e26790e35fe7050c08481107b43db3c51/NKM_UNIT_S_MAID_TWOHANDER_ILLUST.png",
+    "illustUI": "sprites/62835c5e26790e35fe7050c08481107b43db3c51/NKM_UNIT_S_MAID_TWOHANDER_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_MAID_TWOHANDER.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_MAID_TWOHANDER.png"
+  }
+}

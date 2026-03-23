@@ -1,0 +1,278 @@
+---
+// Star Savior Gear/Equipment Database Page
+// Displays all 108 base equipment items with filters (set, type, tier, grade, main stat) and sort
+import CharacterDatabaseLayout from '../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { STAR_SAVIOR_GEAR } from '../../../../data/star-savior/gear.js';
+
+import '../../../../styles/games/star-savior/ss-character-database.css';
+import '../../../../styles/games/star-savior/ss-gear-database.css';
+import SSEquipImage from '../../../../components/star-savior/SSEquipImage.astro';
+import SSEquipSlotImage from '../../../../components/star-savior/SSEquipSlotImage.astro';
+import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
+
+const STAT_DISPLAY_MAP: Record<string, string> = {
+  ATK: 'ATK',
+  DEF: 'DEF',
+  'Flat HP': 'HP',
+  SPD: 'SPD',
+  'CRIT Rate': 'CRIT Rate',
+  'CRIT Damage': 'CRIT DMG',
+  'Effect Hit': 'Effect Hit',
+  Evasion: 'Effect RES',
+  'ATK %': 'ATK %',
+  'DEF %': 'DEF %',
+  'HP %': 'HP %',
+};
+
+const sets = [...new Set(STAR_SAVIOR_GEAR.map(g => g.set))].sort();
+const types = ['Weapon', 'Gloves', 'Armor', 'Boots', 'Necklace', 'Ring'];
+const grades = ['Uncommon', 'Rare', 'Unique', 'Legendary'];
+const mainStats = [...new Set(STAR_SAVIOR_GEAR.map(g => g.mainStat).filter(Boolean))].sort();
+
+const uncommonCount = STAR_SAVIOR_GEAR.filter(g => g.grade === 'Uncommon').length;
+const rareCount = STAR_SAVIOR_GEAR.filter(g => g.grade === 'Rare').length;
+const uniqueCount = STAR_SAVIOR_GEAR.filter(g => g.grade === 'Unique').length;
+const legendaryCount = STAR_SAVIOR_GEAR.filter(g => g.grade === 'Legendary').length;
+
+const GRADE_ORDER: Record<string, number> = { Uncommon: 0, Rare: 1, Unique: 2, Legendary: 3 };
+const TYPE_ORDER: Record<string, number> = { Weapon: 0, Gloves: 1, Armor: 2, Boots: 3, Necklace: 4, Ring: 5 };
+
+const sorted = [...STAR_SAVIOR_GEAR].sort((a, b) => {
+  if (GRADE_ORDER[a.grade] !== GRADE_ORDER[b.grade]) return GRADE_ORDER[a.grade] - GRADE_ORDER[b.grade];
+  if (a.set !== b.set) return a.set.localeCompare(b.set);
+  if (TYPE_ORDER[a.type] !== TYPE_ORDER[b.type]) return TYPE_ORDER[a.type] - TYPE_ORDER[b.type];
+  return a.tier - b.tier;
+});
+---
+
+<CharacterDatabaseLayout
+  title="Equipment Database - Star Savior"
+  description="Complete equipment database for Star Savior. View all 108 base equipment items across 3 sets, 6 slots, and 4 grades."
+  gameTitle="Equipment Database"
+>
+  <div class="ss-char-stats-bar">
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{STAR_SAVIOR_GEAR.length}</div>
+      <div class="ss-char-stats-label">Total</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{uncommonCount}</div>
+      <div class="ss-char-stats-label">Uncommon</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{rareCount}</div>
+      <div class="ss-char-stats-label">Rare</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{uniqueCount}</div>
+      <div class="ss-char-stats-label">Unique</div>
+    </div>
+    <div class="ss-char-stats-divider"></div>
+    <div class="ss-char-stats-item">
+      <div class="ss-char-stats-value">{legendaryCount}</div>
+      <div class="ss-char-stats-label">Legendary</div>
+    </div>
+  </div>
+
+  <div class="ss-char-filter-section">
+    <div class="ss-char-filter-row">
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Search</label>
+        <input type="text" id="gear-search" class="ss-char-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Set</label>
+        <select id="filter-set" class="ss-char-filter-input">
+          <option value="">All</option>
+          {sets.map(s => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Type</label>
+        <select id="filter-type" class="ss-char-filter-input">
+          <option value="">All</option>
+          {types.map(t => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Tier</label>
+        <select id="filter-tier" class="ss-char-filter-input">
+          <option value="">All</option>
+          <option value="1">Tier 1</option>
+          <option value="2">Tier 2</option>
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Grade</label>
+        <select id="filter-grade" class="ss-char-filter-input">
+          <option value="">All</option>
+          {grades.map(g => <option value={g}>{g}</option>)}
+        </select>
+      </div>
+      <div class="ss-char-filter-group">
+        <label class="ss-char-filter-label">Main Stat</label>
+        <select id="filter-stat" class="ss-char-filter-input">
+          <option value="">All</option>
+          {mainStats.map(s => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ss-char-table-wrapper" id="table-view">
+    <table class="ss-char-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Equipment</th>
+          <th>Set</th>
+          <th>Type</th>
+          <th>Tier</th>
+          <th>Grade</th>
+          <th>Main Stat</th>
+          <th>Value</th>
+          <th>+15 Bonus</th>
+        </tr>
+      </thead>
+      <tbody id="gear-table-body">
+        {sorted.map((gear, i) => (
+          <tr
+            class="gear-row"
+            data-name={gear.name.toLowerCase()}
+            data-set={gear.set}
+            data-type={gear.type}
+            data-tier={String(gear.tier)}
+            data-grade={gear.grade}
+            data-stat={gear.mainStat}
+            data-slug={gear.slug}
+            onclick={`window.location.href='/guides/star-savior/gear/${gear.slug}/'`}
+          >
+            <td class="row-num">{i + 1}</td>
+            <td>
+              <div class="ss-char-table-char">
+                <SSEquipImage icon={gear.icon} alt={gear.name} width={48} class="ss-char-table-avatar" />
+                <div>
+                  <div class="ss-char-table-name">{gear.name}</div>
+                </div>
+              </div>
+            </td>
+            <td>{gear.set}</td>
+            <td>
+              <div class="ss-table-icon-cell">
+                <SSEquipSlotImage slot={gear.type} size={18} />
+                <span>{gear.type}</span>
+              </div>
+            </td>
+            <td>T{gear.tier}</td>
+            <td><span class={`ss-grade-badge ss-grade-${gear.grade.toLowerCase()}`}>{gear.grade}</span></td>
+            <td>
+              <div class="ss-table-icon-cell">
+                <SSStatIcon stat={STAT_DISPLAY_MAP[gear.mainStat] || gear.mainStat} size={18} />
+                <span>{gear.mainStat}</span>
+              </div>
+            </td>
+            <td class="ss-gear-stat-value">{gear.mainStatDisplay}</td>
+            <td class="ss-gear-stat-value">+{gear.enchantPerStat * gear.maxEnchantLevel}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ss-char-grid" id="grid-view">
+    {sorted.map((gear) => (
+      <div
+        class="ss-char-card gear-card"
+        data-name={gear.name.toLowerCase()}
+        data-set={gear.set}
+        data-type={gear.type}
+        data-tier={String(gear.tier)}
+        data-grade={gear.grade}
+        data-stat={gear.mainStat}
+        data-slug={gear.slug}
+        onclick={`window.location.href='/guides/star-savior/gear/${gear.slug}/'`}
+      >
+        <div class="ss-char-card-header ss-gear-card-layout">
+          <SSEquipImage icon={gear.icon} alt={gear.name} width={80} class="ss-gear-card-icon" />
+          <div class="ss-char-card-info">
+            <div class="ss-char-card-name">{gear.name}</div>
+            <div class="ss-gear-card-meta">
+              <span class="ss-grade-badge ss-grade-{gear.grade.toLowerCase()}">{gear.grade}</span>
+              <span class="ss-gear-card-tier">T{gear.tier}</span>
+            </div>
+            <div class="ss-gear-card-set">{gear.set}</div>
+            <div class="ss-char-card-badges">
+              <SSEquipSlotImage slot={gear.type} size={16} class="ss-element-inline" />
+              <SSStatIcon stat={STAT_DISPLAY_MAP[gear.mainStat] || gear.mainStat} size={16} class="ss-element-inline" />
+              <span class="ss-gear-card-stat-text">{gear.mainStat} {gear.mainStatDisplay}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="ss-char-no-results" id="no-results">
+    <div class="ss-char-stats-value">?</div>
+    <div>No equipment found</div>
+    <div style="font-size:0.875rem;opacity:0.7;margin-top:0.25rem">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('gear-search');
+  const setFilter = document.getElementById('filter-set');
+  const typeFilter = document.getElementById('filter-type');
+  const tierFilter = document.getElementById('filter-tier');
+  const gradeFilter = document.getElementById('filter-grade');
+  const statFilter = document.getElementById('filter-stat');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.gear-row');
+  const gridCards = document.querySelectorAll('.gear-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const set = setFilter.value;
+    const type = typeFilter.value;
+    const tier = tierFilter.value;
+    const grade = gradeFilter.value;
+    const stat = statFilter.value;
+    let visible = 0;
+
+    tableRows.forEach(row => {
+      const match = matchesFilter(row, search, set, type, tier, grade, stat);
+      row.style.display = match ? '' : 'none';
+      if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
+    });
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, set, type, tier, grade, stat);
+      card.style.display = match ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function matchesFilter(el, search, set, type, tier, grade, stat) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!set || el.dataset.set === set)
+      && (!type || el.dataset.type === type)
+      && (!tier || el.dataset.tier === tier)
+      && (!grade || el.dataset.grade === grade)
+      && (!stat || el.dataset.stat === stat);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  setFilter.addEventListener('change', applyFilters);
+  typeFilter.addEventListener('change', applyFilters);
+  tierFilter.addEventListener('change', applyFilters);
+  gradeFilter.addEventListener('change', applyFilters);
+  statFilter.addEventListener('change', applyFilters);
+});
+</script>

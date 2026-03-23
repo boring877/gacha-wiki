@@ -639,3 +639,30 @@
     background: rgba(107, 91, 122, 0.1);
   }
 }
+
+/* ============================================
+   STAR SAVIOR SPECIFIC STYLING
+   ============================================ */
+.mobile-links[data-game='star-savior'] .game-title {
+  background: linear-gradient(135deg, #c9a84c, #e8d48b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.mobile-links[data-game='star-savior'] .mobile-section-title {
+  color: #c9a84c;
+}
+
+.mobile-links[data-game='star-savior'] {
+  .mobile-link {
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+
+  .mobile-link.active {
+    background: linear-gradient(135deg, #c9a84c, #e8d48b);
+    color: #0a0e1a;
+    border-left: 3px solid #c9a84c;
+  }
+}

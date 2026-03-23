@@ -1,0 +1,1280 @@
+{
+  "id": 1507,
+  "name": "Vera",
+  "title": "Courier Guild",
+  "slug": "vera",
+  "attackTagType": "UAT_ELEMENT",
+  "adjustType": "NUAT_MOON",
+  "class": "NKM_UNIT_S_LPU_POST",
+  "role": "Supporter",
+  "rarity": "SR",
+  "description": "Restore 1 of self Toughness and temporarily increases Outcoming Healing by 15% after using the Skill.",
+  "stats": {
+    "HP": 1580,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 110,
+    "DEF": 15,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 11132,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 1702,
+    "DEF": 811,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 22403,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 3559,
+    "DEF": 1784,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 1600,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 48,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 8,
+    "DEF": 4,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 4000,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_3_HYPER",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "specialDesc": "SI_SUPER_ARMOR_UP@@1",
+    "hyperDesc": "Restore 1 of self Toughness and temporarily increases Outcoming Healing by 15% after using the Skill."
+  },
+  "skills": [
+    {
+      "id": 15071,
+      "strId": "NKM_UNIT_S_LPU_POST_ATTACK",
+      "name": "Proper Response",
+      "icon": "SKILL_LPU_POST_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Attacks the enemy with determination to protect the parcel. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 15072,
+      "strId": "NKM_UNIT_S_LPU_POST_SPECIAL",
+      "name": "Swift and Safe Delivery",
+      "icon": "SKILL_LPU_POST_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "Single Ally",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_DELETEDEBUFF",
+              "buffName": "Dispel Debuff",
+              "buffDesc": "Removes debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Vera brings good tidings. Restores an ally's HP and removes 1 debuff from the ally. Recovery is proportional to her Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 15073,
+      "strId": "NKM_UNIT_S_LPU_POST_HYPER",
+      "name": "One Step Toward My Dream",
+      "icon": "SKILL_LPU_POST_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "All Allies",
+      "cooldown": 6,
+      "novaForce": 1,
+      "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "",
+              "buffName": "",
+              "buffDesc": "",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Vera completes a special delivery. Restores all allies' HP. Grants self <b>Express Delivery</b> for 1 turn if the target has a buff. Recovery is proportional to Muriel's Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "Restore 1 of self Toughness and temporarily increases Outcoming Healing by 15% after using the Skill.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 15074,
+      "strId": "NKM_UNIT_S_LPU_POST_UNIQUE_PASSIVE",
+      "name": "Veteran Courier",
+      "icon": "SKILL_LPU_POST_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Vera's Max HP by <b>3%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Vera's Max HP by <b>3%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 300
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Vera's Max HP by <b>6%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 600
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Vera's Max HP by <b>9%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 900
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 4,
+          "description": "Increases Vera's Max HP by <b>12%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1200
+            }
+          ],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_LPU_POST_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_LPU_POST_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 400,
+          "display": "Effect Evasion +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Protection",
+      "potentialDesc": "Slightly increases self Effect RES by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 400,
+          "display": "DEF% +4%"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 400,
+          "display": "HP% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 1200,
+          "display": "Effect Evasion +12%"
+        }
+      ],
+      "potential": "Skill of Protection",
+      "potentialDesc": "Increases Effect RES by 4%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 120,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 150
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "protect",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "health",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 150,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 160,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D",
+      "endurance": "G+",
+      "focus": "G",
+      "protect": "D"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "2 / 26",
+    "height": "157 cm",
+    "hometown": "NOA",
+    "team": "Courier Guild",
+    "vaKR": "Kim Ga-ryeong",
+    "vaJP": "Yukina Shuto"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_LPU_POST.png",
+    "illust": "sprites/ba9ca0d416503d553b4ae82813c270d0895ea731/NKM_UNIT_S_LPU_POST_ILLUST.png",
+    "illustUI": "sprites/ba9ca0d416503d553b4ae82813c270d0895ea731/NKM_UNIT_S_LPU_POST_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_LPU_POST.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_LPU_POST.png"
+  }
+}

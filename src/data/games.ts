@@ -97,6 +97,17 @@ export const GAMES: Game[] = [
     sections: ['Pre-Registration', 'Characters', 'Summoning', 'Equipment'],
     lastUpdated: new Date(),
   },
+  {
+    id: 'star-savior',
+    name: 'Star Savior',
+    slug: 'star-savior',
+    description: 'Turn-Based RPG • 43 Characters • Nova Burst • Limit Break',
+    image: '/images/games/star-savior/icon.png',
+    url: '/guides/star-savior/',
+    status: 'active',
+    sections: ['Characters', 'Nova Burst', 'Limit Break', 'Star Grades'],
+    lastUpdated: new Date(),
+  },
 ];
 
 export function getGameById(id: string): Game | undefined {

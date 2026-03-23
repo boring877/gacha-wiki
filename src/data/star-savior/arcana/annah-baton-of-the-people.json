@@ -1,0 +1,68 @@
+{
+  "id": 5999920,
+  "character": "Annah",
+  "name": "Baton of the People",
+  "slug": "annah-baton-of-the-people",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Endurance",
+  "image": "ARCANA_OFFICER_POLICE_R_01.png",
+  "imageSmall": "ARCANA_OFFICER_POLICE_R_01_S.png",
+  "characterId": 1502,
+  "episode": "A gentle hand that enforces order.\nWithin it, even justice as cold and sharp as a blade may come to carry compassion.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000901,
+      "title": "Hermit",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

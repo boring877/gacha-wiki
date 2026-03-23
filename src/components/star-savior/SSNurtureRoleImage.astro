@@ -1,0 +1,36 @@
+---
+// Nurture role icon component for Star Savior (arcana class synergy)
+import { Image } from 'astro:assets';
+
+import Assassin from '../../assets/images/games/star-savior/nurture-roles/Assassin.png';
+import Caster from '../../assets/images/games/star-savior/nurture-roles/Caster.png';
+import Defender from '../../assets/images/games/star-savior/nurture-roles/Defender.png';
+import Ranger from '../../assets/images/games/star-savior/nurture-roles/Ranger.png';
+import Striker from '../../assets/images/games/star-savior/nurture-roles/Striker.png';
+import Supporter from '../../assets/images/games/star-savior/nurture-roles/Supporter.png';
+import AllClasses from '../../assets/images/games/star-savior/arcana-tags/All_Classes.png';
+import Savior from '../../assets/images/games/star-savior/arcana-tags/Savior.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  Assassin: Assassin,
+  Caster: Caster,
+  Defender: Defender,
+  Ranger: Ranger,
+  Striker: Striker,
+  Supporter: Supporter,
+  'All Classes': AllClasses,
+  Savior: Savior,
+};
+
+interface Props {
+  role: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { role, width = 24, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[role];
+---
+
+{imageSrc && <Image src={imageSrc} alt={role} width={width} height={height} class={className} />}

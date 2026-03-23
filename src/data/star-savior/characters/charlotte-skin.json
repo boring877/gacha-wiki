@@ -1,0 +1,1920 @@
+{
+  "id": 1032,
+  "name": "Charlotte",
+  "title": "Heart of Monastir",
+  "slug": "charlotte-skin",
+  "attackTagType": "UAT_SPIRIT",
+  "adjustType": "NUAT_SUN",
+  "class": "NKM_UNIT_S_BUNNY_KNIGHT",
+  "role": "Assassin",
+  "rarity": "SSR",
+  "description": "Temporarily deals 1 more Toughness Fixed DMG and restores 30% of damage as HP on attack.",
+  "stats": {
+    "HP": 1220,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 280,
+    "DEF": 10,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13160,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 2270,
+    "DEF": 1005,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 24715,
+    "Turn Speed": 90,
+    "Super Armor": 3,
+    "ATK": 4377,
+    "DEF": 1953,
+    "Hit Rate": 10000,
+    "Crit Rate": 1700,
+    "Crit Damage": 6200,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 4000,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 9000,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_3_HYPER",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "specialDesc": "SI_SUPER_ARMOR_UP@@1",
+    "hyperDesc": "Temporarily deals 1 more Toughness Fixed DMG and restores 30% of damage as HP on attack."
+  },
+  "skills": [
+    {
+      "id": 10321,
+      "strId": "NKM_UNIT_S_BUNNY_KNIGHT_ATTACK",
+      "name": "Bunny Step",
+      "icon": "SKILL_BUNNY_KNIGHT_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Charlotte swiftly attacks the enemy. Grants self 1 stack of <b>Ignition</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10322,
+      "strId": "NKM_UNIT_S_BUNNY_KNIGHT_SPECIAL",
+      "name": "Song of the Toast",
+      "icon": "SKILL_BUNNY_KNIGHT_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "All Allies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>75%</b> chance, 3 times total. Grants self an extra turn.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>75%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_ATTACK_INCREASE",
+              "buffName": "ATK Up",
+              "buffDesc": "Increases ATK by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_BUNNY_KNIGHT_1",
+              "buffName": "Lucky Token (Undispellable)",
+              "buffDesc": "Penetrates 20% of DEF.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_PENETRATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_EXTRA_TURN",
+              "buffName": "Extra Turn",
+              "buffDesc": "Gains an extra turn.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>77%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7700,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7700,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7700,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>79%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7900,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7900,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7900,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with an <b>81%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8100,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8100,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8100,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with an <b>84%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8400,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8400,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8400,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with an <b>84%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with an <b>87%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8700,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8700,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 8700,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>90%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>95%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 9500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Charlotte casually raises a glass to rally all allies. Grants all allies <b>ATK Up</b> for 2 turns, then grants self <b>Lucky Token (Undispellable)</b> for 3 turns and a stack of <b>Ignition</b> with a <b>100%</b> chance, 3 times total. Grants self an extra turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 10323,
+      "strId": "NKM_UNIT_S_BUNNY_KNIGHT_HYPER",
+      "name": "Cornered Rabbit",
+      "icon": "SKILL_BUNNY_KNIGHT_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 6,
+      "novaForce": 1,
+      "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 2500
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_HYPER_COOL_TURN_DOWN_ALL",
+              "buffName": "Ultimate Skill Cooldown Reset",
+              "buffDesc": "Resets the remaining Cooldown of Ultimate Skills.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Having lost all her chips, Charlotte flips the table and attacks the enemy. Deals 5% increased damage for each <b>Ignition</b> stack, up to 5 stacks, on attack, then removes all <b>Ignition</b> stacks after attacking. Resets the cooldown of <b>Cornered Rabbit</b> if <b>Ignition</b> is at max stacks after attacking.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG and restores 30% of damage as HP on attack.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10324,
+      "strId": "NKM_UNIT_S_BUNNY_KNIGHT_UNIQUE_PASSIVE",
+      "name": "Rabbit's Luck",
+      "icon": "SKILL_BUNNY_KNIGHT_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Charlotte grants herself 1 stack of <b>Ignition</b> at the start of the turn of a Sun Attribute ally (excluding self). Increases self Action Gauge by <b>6%</b> after using <b>Bunny Step</b>. Triggers <b>Bunny Step</b> an additional time after using <b>Bunny Step</b> on self turn if self has <b>Lucky Token (Undispellable)</b>. Additional trigger occurs once per turn.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charlotte grants herself 1 stack of <b>Ignition</b> at the start of the turn of a Sun Attribute ally (excluding self). Increases self Action Gauge by <b>6%</b> after using <b>Bunny Step</b>. Triggers <b>Bunny Step</b> an additional time after using <b>Bunny Step</b> on self turn if self has <b>Lucky Token (Undispellable)</b>. Additional trigger occurs once per turn.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ENFORCE",
+              "buffName": "Extra Action",
+              "buffDesc": "Activates a specific skill.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Increases Charlotte's ATK by <b>5%</b>. Charlotte grants herself 1 stack of <b>Ignition</b> at the start of the turn of a Sun Attribute ally (excluding self). Increases self Action Gauge by <b>6%</b> after using <b>Bunny Step</b>. Triggers <b>Bunny Step</b> an additional time after using <b>Bunny Step</b> on self turn if self has <b>Lucky Token (Undispellable)</b>. Additional trigger occurs once per turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Charlotte's ATK by <b>10%</b>. Charlotte grants herself 1 stack of <b>Ignition</b> at the start of the turn of a Sun Attribute ally (excluding self). Increases self Action Gauge by <b>8%</b> after using <b>Bunny Step</b>. Triggers <b>Bunny Step</b> an additional time after using <b>Bunny Step</b> on self turn if self has <b>Lucky Token (Undispellable)</b>. Additional trigger occurs once per turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Charlotte's ATK by <b>15%</b>. Charlotte grants herself 1 stack of <b>Ignition</b> at the start of the turn of a Sun Attribute ally (excluding self). Increases self Action Gauge by <b>10%</b> after using <b>Bunny Step</b>. Triggers <b>Bunny Step</b> an additional time after using <b>Bunny Step</b> on self turn if self has <b>Lucky Token (Undispellable)</b>. Additional trigger occurs once per turn.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_BUNNY_KNIGHT_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_BUNNY_KNIGHT_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 300,
+          "display": "Crit Rate +3%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 50,
+          "display": "DEF +50"
+        }
+      ],
+      "potential": "Sense of Insight",
+      "potentialDesc": "Slightly increases self CRIT Rate by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 200,
+          "display": "ATK% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL_DAMAGE",
+          "stat": "Crit Damage",
+          "value": 1200,
+          "display": "Crit Damage +12%"
+        }
+      ],
+      "potential": "Sense of Attack",
+      "potentialDesc": "Slightly increases self ATK by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 175,
+          "display": "ATK +175"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 400,
+          "display": "ATK% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 200,
+          "display": "ATK +200"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 70,
+          "display": "DEF +70"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 900,
+          "display": "Crit Rate +9%"
+        }
+      ],
+      "potential": "Skill of Insight",
+      "potentialDesc": "Increases CRIT Rate by 3%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 30,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 150,
+      "health": 0,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 120
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "power",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "protect",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "protect",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 180,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 130,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "D+",
+      "health": "G",
+      "endurance": "G",
+      "focus": "G",
+      "protect": "E+"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "10 / 20",
+    "height": "166 cm",
+    "hometown": "Duchy of Monastir",
+    "team": "Monastir Knights",
+    "vaKR": "Chae Rim",
+    "vaJP": "Saeko Ooki"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_BUNNY_KNIGHT.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_BUNNY_KNIGHT.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_BUNNY_KNIGHT.png",
+    "illust": "sprites/f6f31637b4583a60efccb242c74b5a9a2b48dbe9/NKM_UNIT_S_BUNNY_KNIGHT_ILLUST.png",
+    "illustUI": "sprites/f6f31637b4583a60efccb242c74b5a9a2b48dbe9/NKM_UNIT_S_BUNNY_KNIGHT_ILLUST_UI.png"
+  }
+}

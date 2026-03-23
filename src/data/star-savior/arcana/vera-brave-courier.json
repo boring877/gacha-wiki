@@ -1,0 +1,68 @@
+{
+  "id": 5999916,
+  "character": "Vera",
+  "name": "Brave Courier",
+  "slug": "vera-brave-courier",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Protect",
+  "image": "ARCANA_LPU_POST_R_01.png",
+  "imageSmall": "ARCANA_LPU_POST_R_01_S.png",
+  "characterId": 1507,
+  "episode": "Oh, wind that runs bearing expectations.\nEven if at times you must push through thorn-covered paths, may happiness at least be delivered to the places you reach.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Protect"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 3,
+      "addPerValue": 1
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001601,
+      "title": "The Tower",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        },
+        {
+          "type": "Potential Points",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<!-- Element/adjust type icon component for Star Savior (Sun/Moon/Star/Chaos/Order) -->
+---
+import { Image } from 'astro:assets';
+
+import Sun from '../../assets/images/games/star-savior/elements/Sun.png';
+import Moon from '../../assets/images/games/star-savior/elements/Moon.png';
+import Star from '../../assets/images/games/star-savior/elements/Star.png';
+import Chaos from '../../assets/images/games/star-savior/elements/Chaos.png';
+import Order from '../../assets/images/games/star-savior/elements/Order.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  NUAT_SUN: Sun,
+  NUAT_MOON: Moon,
+  NUAT_STAR: Star,
+  NUAT_CHAOS: Chaos,
+  NUAT_ORDER: Order,
+};
+
+const labelMap: Record<string, string> = {
+  NUAT_SUN: 'Sun',
+  NUAT_MOON: 'Moon',
+  NUAT_STAR: 'Star',
+  NUAT_CHAOS: 'Chaos',
+  NUAT_ORDER: 'Order',
+};
+
+interface Props {
+  adjustType: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { adjustType, width = 24, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[adjustType];
+const label = labelMap[adjustType] || adjustType;
+---
+
+{imageSrc && <Image src={imageSrc} alt={label} width={width} height={height} class={className} />}

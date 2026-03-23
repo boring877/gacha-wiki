@@ -1,0 +1,1333 @@
+{
+  "id": 1508,
+  "name": "Naru",
+  "title": "Orbital Search Team",
+  "slug": "naru",
+  "attackTagType": "UAT_ELEMENT",
+  "adjustType": "NUAT_STAR",
+  "class": "NKM_UNIT_S_NOA_OBSERVER",
+  "role": "Ranger",
+  "rarity": "SR",
+  "description": "Temporarily deals 1 more Toughness Fixed DMG on attack and inflicts the enemy with <b>Effect RES Down</b> for 2 turns with a 100% chance after attacking.",
+  "stats": {
+    "HP": 1175,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 205,
+    "DEF": 10,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 10727,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 1797,
+    "DEF": 806,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 21941,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 3838,
+    "DEF": 1727,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 11200,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 48,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 8,
+    "DEF": 4,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 6500,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "special": {
+      "atkFactor": 9000,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 11500,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_3_HYPER",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "specialDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "hyperDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and inflicts the enemy with <b>Effect RES Down</b> for 2 turns with a 100% chance after attacking."
+  },
+  "skills": [
+    {
+      "id": 15081,
+      "strId": "NKM_UNIT_S_NOA_OBSERVER_ATTACK",
+      "name": "Eyes on Me!",
+      "icon": "SKILL_NOA_OBSERVER_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "Damage dealt to Moon Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_MOON",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Channels the power of the stars into her sextant and fires at the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 15082,
+      "strId": "NKM_UNIT_S_NOA_OBSERVER_SPECIAL",
+      "name": "Behold My Skill!",
+      "icon": "SKILL_NOA_OBSERVER_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ATTACK_INCREASE",
+              "buffName": "ATK Up",
+              "buffDesc": "Increases ATK by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Calculates possibility of falling trajectories on the enemy. Grants self <b>ATK Up</b> for 1 turn. Deals 10% increased damage if the enemy has a debuff on attack.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 15083,
+      "strId": "NKM_UNIT_S_NOA_OBSERVER_HYPER",
+      "name": "Beyond Expectations!",
+      "icon": "SKILL_NOA_OBSERVER_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 6,
+      "novaForce": 1,
+      "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>75%</b> chance.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>75%</b> chance.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_SPEED_DECREASE",
+              "buffName": "SPD Down",
+              "buffDesc": "SPD decreases by 20%.",
+              "buffIsPositive": false,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": -2000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 7500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>75%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>75%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with an <b>85%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_SPEED_DECREASE",
+              "buffName": "SPD Down",
+              "buffDesc": "SPD decreases by 20%.",
+              "buffIsPositive": false,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": -2000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 8500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with an <b>85%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with an <b>85%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with an <b>85%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>100%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_SPEED_DECREASE",
+              "buffName": "SPD Down",
+              "buffDesc": "SPD decreases by 20%.",
+              "buffIsPositive": false,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": -2000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>100%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Performs an unstable energy-release equation with overflowing confidence. Inflicts the enemy with <b>SPD Down</b> for 2 turns with a <b>100%</b> chance.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and inflicts the enemy with <b>Effect RES Down</b> for 2 turns with a 100% chance after attacking.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 15084,
+      "strId": "NKM_UNIT_S_NOA_OBSERVER_UNIQUE_PASSIVE",
+      "name": "Career Ambitions",
+      "icon": "SKILL_NOA_OBSERVER_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Naru's ATK by <b>3%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Naru's ATK by <b>3%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 300
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Naru's ATK by <b>6%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 600
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Naru's ATK by <b>9%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 900
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 4,
+          "description": "Increases Naru's ATK by <b>12%</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1200
+            }
+          ],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_NOA_OBSERVER_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_NOA_OBSERVER_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 160,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 200,
+          "display": "ATK% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 50,
+          "display": "DEF +50"
+        }
+      ],
+      "potential": "Sense of Attack",
+      "potentialDesc": "Slightly increases self ATK by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 400,
+          "display": "ATK% +4%"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 175,
+          "display": "ATK +175"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 400,
+          "display": "HP% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 200,
+          "display": "ATK +200"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 70,
+          "display": "DEF +70"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_HIT",
+          "stat": "Effect Hit Rate",
+          "value": 1200,
+          "display": "Effect Hit Rate +12%"
+        }
+      ],
+      "potential": "Skill of Focus",
+      "potentialDesc": "Increases Effect Hit by 4%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 30,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 150,
+      "health": 120,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "power",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "health",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 180,
+      "health": 140,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "D+",
+      "health": "E+",
+      "endurance": "G",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "3 / 3",
+    "height": "158 cm",
+    "hometown": "NOA",
+    "team": "Orbital Search Team",
+    "vaKR": "Lee Ju-eun",
+    "vaJP": "Haruna Fukushima"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_NOA_OBSERVER.png",
+    "illust": "sprites/ae6fa901c6b904d877c4c06d6d7573cb7d8367a9/NKM_UNIT_S_NOA_OBSERVER_ILLUST.png",
+    "illustUI": "sprites/ae6fa901c6b904d877c4c06d6d7573cb7d8367a9/NKM_UNIT_S_NOA_OBSERVER_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_NOA_OBSERVER.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_NOA_OBSERVER.png"
+  }
+}

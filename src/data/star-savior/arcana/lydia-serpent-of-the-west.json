@@ -1,0 +1,67 @@
+{
+  "id": 5999914,
+  "character": "Lydia",
+  "name": "Serpent of the West",
+  "slug": "lydia-serpent-of-the-west",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Protect",
+  "image": "ARCANA_WEST_ROD_R_01.png",
+  "imageSmall": "ARCANA_WEST_ROD_R_01_S.png",
+  "characterId": 1034,
+  "episode": "A sneer hidden behind a brightly smiling mask is a secret silhouette shown to no one.\nThe true heart concealed behind the curtain reaches toward an unfathomable power.\nAt the end of the forbidden path, will one be met by friend or by foe?",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 5,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 250,
+      "addPerValueRate": 6
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000601,
+      "title": "The Lovers",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

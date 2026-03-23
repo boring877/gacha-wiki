@@ -1,0 +1,157 @@
+{
+  "id": 7102401,
+  "character": "Elisa",
+  "name": "Divine Trial",
+  "slug": "elisa-divine-trial",
+  "grade": "SSR",
+  "specialTag": "DEF",
+  "classSynergy": "All Classes",
+  "statTag": "Endurance",
+  "image": "ARCANA_SAINTESS_ELF_SSR_01.png",
+  "imageSmall": "ARCANA_SAINTESS_ELF_SSR_01_S.png",
+  "characterId": 1024,
+  "episode": "Amid solemn silence, a scent lingers at the tip of the nose, the fragrance of knowledge held within old books.\n\nA pitiful cry echoes through the library as a new morning begins.\n\n\"I-is anyone there...? Someone, please help me...!\"\n\nHow much time remains until the source of the voice is found and rescued by a kind believer?\nNone can say.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1200,
+      "addPerValueRate": 22
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 9,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 6,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 225,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 300
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_BONUS_PP",
+      "value": 1,
+      "addPerValue": 1
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 60,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Gullible",
+      "iconType": "Training",
+      "effectType": "Training Condition Efficiency",
+      "valueRate": 300
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5102401,
+      "title": "Tell Us About Your First Love",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 15
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        },
+        {
+          "type": "Stamina",
+          "value": 25
+        },
+        {
+          "type": "Journey Buff",
+          "value": 5
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5102402,
+      "title": "Do You Know the Way?",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 710240101
+    },
+    {
+      "cutsceneId": 5102403,
+      "title": "Vault Hunter",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710240102
+    }
+  ]
+}

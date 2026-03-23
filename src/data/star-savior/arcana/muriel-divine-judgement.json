@@ -1,0 +1,140 @@
+{
+  "id": 7102301,
+  "character": "Muriel",
+  "name": "Divine Judgement",
+  "slug": "muriel-divine-judgement",
+  "grade": "SSR",
+  "specialTag": "Crit Damage",
+  "classSynergy": "Caster",
+  "statTag": "Power",
+  "image": "ARCANA_SAINTESS_DEMON_SSR_01.png",
+  "imageSmall": "ARCANA_SAINTESS_DEMON_SSR_01_S.png",
+  "characterId": 1023,
+  "episode": "Since before history was recorded, lightning was regarded as punishment delivered by an enraged god.\n\nOf course, such stories mean nothing to a saintess who serves her god with utmost devotion and composure.\n\n\"Aaaaaaaaghh! I'm so sorry, Lord Gaaaaph!\"\n\"I won't take incentives from the offerings anymore!\"\n\nUnfortunately, such saintesses are nowhere to be found here.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1200,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 200,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_SUPPORT_RATE_UP",
+      "valueRate": 200,
+      "addPerValueRate": 50
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 900
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 3,
+      "addPerValue": 3,
+      "statTag": "Power"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 40,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Devilish Talent",
+      "iconType": "Training",
+      "effectType": "Training Efficiency",
+      "valueRate": 900
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5102301,
+      "title": "The Price of Indulgence",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5102302,
+      "title": "Sabotage",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 710230101
+    },
+    {
+      "cutsceneId": 5102303,
+      "title": "Follower Recruitment",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710230102
+    }
+  ]
+}

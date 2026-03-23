@@ -1,0 +1,112 @@
+{
+  "id": 6100101,
+  "character": "Asherah",
+  "name": "The Beginning of the Journey",
+  "slug": "asherah-the-beginning-of-the-journey",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Health",
+  "image": "ARCANA_VOYAGER_STRANIS_SR_01.png",
+  "imageSmall": "ARCANA_VOYAGER_STRANIS_SR_01_S.png",
+  "characterId": 1001,
+  "episode": "With one small bag and a little travel money, she quietly leaves her home on a morning when everyone is still asleep.\n\nShe knows better than anyone that the passion burning in her chest cannot be cooled.\n\n\"I promise I'll come back once I become a great Savior.\"\n\nEven now, Asherah still remembers the warm and bright sunlight that shone at that very moment as if blessing her pledge.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1000,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 150,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 150,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Request",
+      "valueType": "REQUEST_SUCCESS_RATE_UP",
+      "valueRate": 250,
+      "addPerValueRate": 20
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000701,
+      "title": "The Chariot",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5100101,
+      "title": "Watching the Play",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Potential Points",
+          "value": 20
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5100102,
+      "title": "Cooking Class",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Potential Points",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 610010101
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+---
+const STAT_ICONS: Record<string, string> = {
+  HP: 'ICON_NST_HP',
+  ATK: 'ICON_NST_ATK',
+  DEF: 'ICON_NST_DEF',
+  SPD: 'ICON_NST_TURN_SPEED',
+  Toughness: 'ICON_NST_SUPER_ARMOR_SLOT',
+  'Hit Rate': 'ICON_NST_RATE_HIT',
+  'Crit Rate': 'ICON_NST_RATE_CRITICAL',
+  'Crit DMG': 'ICON_NST_RATE_CRITICAL_DAMAGE',
+  'Effect Hit': 'ICON_NST_RATE_EFFECT_HIT',
+  'Effect RES': 'ICON_NST_RATE_EFFECT_EVADE',
+  'Cross Attack': 'ICON_NST_RATE_CROSS_ATTACK',
+  'Revenge Attack': 'ICON_NST_RATE_REVENGE_ATTACK',
+};
+
+const icons = import.meta.glob('/src/assets/images/games/star-savior/stats/*.png', { eager: true, query: '?url', import: 'default' });
+
+const { stat, size = 16 } = Astro.props;
+const iconName = STAT_ICONS[stat] || '';
+
+let src = '';
+for (const [path, url] of Object.entries(icons)) {
+  if (path.endsWith(iconName + '.png')) {
+    src = url as string;
+    break;
+  }
+}
+---
+
+{src && (
+  <img src={src} alt={stat} width={size} height={size} class="ss-stat-icon" loading="lazy" />
+)}

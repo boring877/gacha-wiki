@@ -1,0 +1,26 @@
+---
+// Arcana grade badge image component for Star Savior
+import { Image } from 'astro:assets';
+
+import SSR from '../../assets/images/games/star-savior/arcana-grade/SSR.png';
+import SR from '../../assets/images/games/star-savior/arcana-grade/SR.png';
+import R from '../../assets/images/games/star-savior/arcana-grade/R.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  SSR: SSR,
+  SR: SR,
+  R: R,
+};
+
+interface Props {
+  grade: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { grade, width = 48, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[grade];
+---
+
+{imageSrc && <Image src={imageSrc} alt={grade} width={width} height={height} class={className} />}

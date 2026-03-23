@@ -1,0 +1,1763 @@
+{
+  "id": 1011,
+  "name": "Carmen",
+  "title": "Monastir Knights",
+  "slug": "carmen",
+  "attackTagType": "UAT_IMPACT",
+  "adjustType": "NUAT_MOON",
+  "class": "NKM_UNIT_S_KINGDOM_SHIELDER",
+  "role": "Defender",
+  "rarity": "SSR",
+  "description": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+  "stats": {
+    "HP": 1860,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 150,
+    "DEF": 20,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13800,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 2140,
+    "DEF": 1015,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 25444,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 4058,
+    "DEF": 2016,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 800,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 4000,
+      "defFactor": null,
+      "hpFactor": 250
+    },
+    "special": {
+      "atkFactor": 4500,
+      "defFactor": null,
+      "hpFactor": 250
+    },
+    "hyper": {
+      "atkFactor": 5500,
+      "defFactor": null,
+      "hpFactor": 350
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Rule of Monastir</b> for 1 turn after attacking.",
+    "specialDesc": "SI_SUPER_ARMOR_UP@@1",
+    "hyperDesc": "SI_SUPER_ARMOR_DAMAGE@@1"
+  },
+  "skills": [
+    {
+      "id": 10111,
+      "strId": "NKM_UNIT_S_KINGDOM_SHIELDER_ATTACK",
+      "name": "Knights Standard Swordsmanship",
+      "icon": "SKILL_KINGDOM_SHIELDER_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Attacks the enemy with a heavy spinning slash. Grants self 1 stack of <b>Chill</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Rule of Monastir</b> for 1 turn after attacking.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10112,
+      "strId": "NKM_UNIT_S_KINGDOM_SHIELDER_SPECIAL",
+      "name": "Shock Therapy",
+      "icon": "SKILL_KINGDOM_SHIELDER_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_KINGDOM_SHIELDER_1",
+              "buffName": "Rule of Monastir",
+              "buffDesc": "Increases DEF and self Effect Hit by 15%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 1500
+                },
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_EFFECT_HIT",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 8500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Charges forward with a strengthened shield to strike the enemy. Grants self <b>Rule of Monastir</b> for 2 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 10113,
+      "strId": "NKM_UNIT_S_KINGDOM_SHIELDER_HYPER",
+      "name": "Monastir Mobile Bulwark",
+      "icon": "SKILL_KINGDOM_SHIELDER_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            },
+            {
+              "target": "unknown",
+              "buff": "BI_DEFENSE_INCREASE",
+              "buffName": "DEF Up",
+              "buffDesc": "Increases DEF by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 8500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "target",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Carmen manifests her resolve to protect everyone as a bulwark. Grants all allies <b>DEF Up</b> for 3 turns, and inflicts the enemy with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10114,
+      "strId": "NKM_UNIT_S_KINGDOM_SHIELDER_UNIQUE_PASSIVE",
+      "name": "Knights' Shield",
+      "icon": "SKILL_KINGDOM_SHIELDER_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Carmen's Max HP by <b>5%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Carmen's Max HP by <b>5%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Carmen's Max HP by <b>5%</b>. Increases Carmen's DEF by <b>2%</b> for each stack of <b>Chill</b>, up to 5 stacks, when attacked.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Increases Carmen's Max HP by <b>10%</b>. Increases Carmen's DEF by <b>3%</b> for each stack of <b>Chill</b>, up to 5 stacks, when attacked.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Carmen's Max HP by <b>15%</b>. Increases Carmen's DEF by <b>4%</b> for each stack of <b>Chill</b>, up to 5 stacks, when attacked.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1600
+                }
+              ]
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_DEF",
+              "buffName": "Stat: DEF Ratio",
+              "buffDesc": "This stat displays DEF ratio.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_KINGDOM_SHIELDER_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_KINGDOM_SHIELDER_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 200,
+          "display": "DEF% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 800,
+          "display": "Effect Evasion +8%"
+        }
+      ],
+      "potential": "Sense of Defense",
+      "potentialDesc": "Slightly increases self DEF by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 400,
+          "display": "DEF% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 600,
+          "display": "HP% +6%"
+        }
+      ],
+      "potential": "Skill of Life",
+      "potentialDesc": "Increases Max HP by 2%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 150,
+      "endurance": 120,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "endurance",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "endurance",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "endurance",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 180,
+      "endurance": 150,
+      "focus": 10,
+      "protect": 10,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D+",
+      "endurance": "D",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [
+    {
+      "id": 11011,
+      "name": "Composed Response",
+      "description": "Counterattacks with a 25% chance when attacked by an enemy if self has <b>Rule of Monastir</b>, and counterattacks with a 100% chance when attacked by an enemy affected by <b>Taunt</b>.",
+      "icon": "POTEN_ATTACK_BUFF.png",
+      "maxLevel": 1
+    }
+  ],
+  "profile": {
+    "birthday": "8 / 11",
+    "height": "168 cm",
+    "hometown": "Duchy of Monastir",
+    "team": "Monastir Knights",
+    "vaKR": "Son Jeong-min",
+    "vaJP": "Lynn"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_KINGDOM_SHIELDER.png",
+    "illust": "sprites/8f94fcbe647864391bdba733962a6e72f20fdb39/NKM_UNIT_S_KINGDOM_SHIELDER_ILLUST.png",
+    "illustUI": "sprites/8f94fcbe647864391bdba733962a6e72f20fdb39/NKM_UNIT_S_KINGDOM_SHIELDER_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_KINGDOM_SHIELDER.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_KINGDOM_SHIELDER.png"
+  }
+}

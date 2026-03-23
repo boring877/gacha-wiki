@@ -1,0 +1,134 @@
+{
+  "id": 7150701,
+  "character": "Vera",
+  "name": "More Than Professional",
+  "slug": "vera-more-than-professional",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Supporter",
+  "statTag": "Health",
+  "image": "ARCANA_LPU_POST_SSR_01.png",
+  "imageSmall": "ARCANA_LPU_POST_SSR_01_S.png",
+  "characterId": 1507,
+  "episode": "Notice.\nIf a two-legged pile of parcels suddenly speaks to you, please wait calmly.\nSoon, a courier will peek her head out and smile brightly.\n\nDo not approach hastily, even if you intend to help.\nThe startled courier will run off along the wall.\n\nIf you wish to express friendliness, please say, \"Working hard today too, Vera?\"\nThen, the girl will shout back in return...\n\n\"Thank you! Courier Vera here!\"",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1000,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 30,
+      "perLevel": 20,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Health"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 300,
+      "addPerValueRate": 300
+    },
+    {
+      "unlockLevel": 40,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 130
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 60,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING_TAG.png",
+      "title": "Experienced Courier",
+      "iconType": "Training",
+      "effectType": "Class Training Bonus",
+      "value": 130
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5150701,
+      "title": "Fire and the Moth",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5150702,
+      "title": "Verashield 21",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 715070101
+    },
+    {
+      "cutsceneId": 5150703,
+      "title": "These Are All Based on Real Experiences",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 715070102
+    }
+  ]
+}

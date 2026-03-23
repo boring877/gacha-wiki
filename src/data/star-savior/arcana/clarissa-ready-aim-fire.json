@@ -1,0 +1,114 @@
+{
+  "id": 6102201,
+  "character": "Clarissa",
+  "name": "Ready, Aim, Fire",
+  "slug": "clarissa-ready-aim-fire",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Power",
+  "image": "ARCANA_MAGICIAN_SNIPER_SR_01.png",
+  "imageSmall": "ARCANA_MAGICIAN_SNIPER_SR_01_S.png",
+  "characterId": 1511,
+  "episode": "Today, she aims for prey even farther away than yesterday.\nAfter confirming her line of sight is clear and steady, she lets out a quiet breath.\n\n\"...Set aside the stray thoughts, Clarissa.\"\n\nShe focuses, exhales, and holds still.\nThe trigger is pulled so slowly and deeply that it is almost imperceptible.\n\nA single gunshot echoes through the forest.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 600,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 175,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 150,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Power"
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001501,
+      "title": "The Devil",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5151101,
+      "title": "Pride of the Hunter",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 8
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5151102,
+      "title": "Honey Trap",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -15
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 2
+        }
+      ],
+      "reqEventClear": 610220101
+    }
+  ]
+}

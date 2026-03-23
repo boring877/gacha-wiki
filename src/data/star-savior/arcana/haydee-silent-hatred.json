@@ -1,0 +1,111 @@
+{
+  "id": 6101801,
+  "character": "Haydee",
+  "name": "Silent Hatred",
+  "slug": "haydee-silent-hatred",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Endurance",
+  "image": "ARCANA_INCOGNITA_FLOWER_SR_01.png",
+  "imageSmall": "ARCANA_INCOGNITA_FLOWER_SR_01_S.png",
+  "characterId": 1018,
+  "episode": "No matter how much she struggles and pulls, the threads binding her flesh remain as they were from the beginning.\n\nNow a puppet that neither cries nor trembles, she can only accept her inevitable fate.\n\nA soul hardened within stagnant time calmly reflects on her hatred for the one who captured her.\nThis passion for revenge that will not fade, even through eternity.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 600,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 175,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 150,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 3,
+      "addPerValue": 1
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000501,
+      "title": "The Hierophant",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 3
+        },
+        {
+          "type": "Potential Points",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101801,
+      "title": "Forget it!",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 12
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101802,
+      "title": "Here's Your Reward",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -15
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 18
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 610180101
+    }
+  ]
+}

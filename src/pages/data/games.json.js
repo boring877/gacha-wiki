@@ -8,6 +8,7 @@ import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js
 import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
 import { rebellionGilgameshConfig } from '../../data/rebellion-gilgamesh/rebellion-gilgamesh.js';
+import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
 
 export const prerender = true;
 
@@ -241,6 +242,36 @@ export async function GET() {
       },
       apiEndpoints: [],
       note: 'Wiki content coming soon - game recently added',
+    },
+
+    // Star Savior
+    {
+      id: 'star-savior',
+      name: 'Star Savior',
+      japaneseName: '스타 세이버',
+      slug: 'star-savior',
+      status: 'active',
+      genre: 'Turn-Based RPG',
+      description: starSaviorConfig.gameInfo.description,
+      heroImage: starSaviorConfig.meta.heroImage,
+      wikiUrl: '/guides/star-savior/',
+      features: [
+        'Turn-based tactical combat',
+        'Nova Burst ultimate abilities',
+        'Limit Break progression system',
+        '43 playable characters across 6 roles',
+        'Star Grade stat enhancement',
+      ],
+      contentAvailable: {
+        characters: true,
+        guides: true,
+      },
+      apiEndpoints: [],
+      guides: starSaviorConfig.guides.map(g => ({
+        category: 'database',
+        description: g.description,
+        pages: [{ title: g.title, url: g.url }],
+      })),
     },
   ];
 

@@ -1,0 +1,39 @@
+<!-- Attack tag type icon component for Star Savior -->
+---
+import { Image } from 'astro:assets';
+
+import Slash from '../../assets/images/games/star-savior/attack-tags/Slash.png';
+import Impact from '../../assets/images/games/star-savior/attack-tags/Impact.png';
+import Elemental from '../../assets/images/games/star-savior/attack-tags/Elemental.png';
+import Psychic from '../../assets/images/games/star-savior/attack-tags/Psychic.png';
+import Void from '../../assets/images/games/star-savior/attack-tags/Void.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  UAT_SLASH: Slash,
+  UAT_IMPACT: Impact,
+  UAT_ELEMENT: Elemental,
+  UAT_SPIRIT: Psychic,
+  UAT_VOID: Void,
+};
+
+const labelMap: Record<string, string> = {
+  UAT_SLASH: 'Slash',
+  UAT_IMPACT: 'Impact',
+  UAT_ELEMENT: 'Elemental',
+  UAT_SPIRIT: 'Psychic',
+  UAT_VOID: 'Void',
+};
+
+interface Props {
+  attackTagType: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { attackTagType, width = 20, height = 20, class: className } = Astro.props;
+const imageSrc = imageMap[attackTagType];
+const label = labelMap[attackTagType] || attackTagType;
+---
+
+{imageSrc && <Image src={imageSrc} alt={label} width={width} height={height} class={className} />}

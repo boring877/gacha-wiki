@@ -1,0 +1,182 @@
+---
+// Star Savior Individual Equipment Detail Page
+// Shows equip info, stats, enchant scaling, and set bonuses
+import CharacterDetailLayout from '../../../../layouts/star-savior/CharacterDetailLayout.astro';
+import { STAR_SAVIOR_GEAR, STAR_SAVIOR_SET_BONUSES } from '../../../../data/star-savior/gear.js';
+
+import '../../../../styles/games/star-savior/ss-character-detail.css';
+import '../../../../styles/games/star-savior/ss-gear-database.css';
+import '../../../../styles/games/star-savior/ss-gear-detail.css';
+import SSEquipImage from '../../../../components/star-savior/SSEquipImage.astro';
+import SSEquipSlotImage from '../../../../components/star-savior/SSEquipSlotImage.astro';
+import SSEquipSetImage from '../../../../components/star-savior/SSEquipSetImage.astro';
+import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
+
+export function getStaticPaths() {
+  return STAR_SAVIOR_GEAR.map((g) => ({
+    params: { slug: g.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const gear = STAR_SAVIOR_GEAR.find(g => g.slug === slug);
+
+if (!gear) {
+  return Astro.redirect('/guides/star-savior/gear/');
+}
+
+const STAT_DISPLAY_MAP: Record<string, string> = {
+  ATK: 'ATK',
+  DEF: 'DEF',
+  'Flat HP': 'HP',
+  SPD: 'SPD',
+  'CRIT Rate': 'CRIT Rate',
+  'CRIT Damage': 'CRIT DMG',
+  'Effect Hit': 'Effect Hit',
+  Evasion: 'Effect RES',
+  'ATK %': 'ATK %',
+  'DEF %': 'DEF %',
+  'HP %': 'HP %',
+};
+
+const maxBonus = gear.enchantPerStat * gear.maxEnchantLevel;
+const totalMax = gear.mainStatValue + maxBonus;
+---
+
+<CharacterDetailLayout title={gear.name} description={`${gear.name} - ${gear.grade} ${gear.type} from the ${gear.set} set in Star Savior.`} gameTitle={gear.name}>
+  <div class="ss-gear-detail-header">
+    <SSEquipImage icon={gear.icon} alt={gear.name} width={128} class="ss-gear-detail-icon" />
+    <div class="ss-gear-detail-info">
+      <h2 class="ss-detail-name">{gear.name}</h2>
+      <div class="ss-gear-detail-badges">
+        <span class={`ss-grade-badge ss-grade-${gear.grade.toLowerCase()}`}>{gear.grade}</span>
+        <span class="ss-gear-detail-set-label">{gear.set} Set</span>
+        <span class="ss-gear-detail-tier">Tier {gear.tier}</span>
+      </div>
+      <div class="ss-gear-detail-tags">
+        <div class="ss-detail-tag">
+          <SSEquipSlotImage slot={gear.type} size={20} />
+          <span>{gear.type}</span>
+        </div>
+        <div class="ss-detail-tag">
+          <SSStatIcon stat={STAT_DISPLAY_MAP[gear.mainStat] || gear.mainStat} size={20} />
+          <span>{gear.mainStat} {gear.mainStatDisplay}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {gear.desc && (
+    <section class="content-section">
+      <h2 class="section-title">Description</h2>
+      <p>{gear.desc}</p>
+    </section>
+  )}
+
+  <section class="content-section">
+    <h2 class="section-title">Stats</h2>
+    <div class="ss-gear-stats-grid">
+      <div class="ss-gear-stat-item">
+        <div class="ss-gear-stat-label">Main Stat</div>
+        <div class="ss-gear-stat-row">
+          <SSStatIcon stat={STAT_DISPLAY_MAP[gear.mainStat] || gear.mainStat} size={20} />
+          <span class="ss-gear-stat-name">{gear.mainStat}</span>
+        </div>
+        <div class="ss-gear-stat-values">
+          <span class="ss-gear-stat-base">{gear.mainStatDisplay}</span>
+          <span class="ss-gear-stat-arrow">--></span>
+          <span class="ss-gear-stat-max">{gear.mainStatValue + maxBonus}{gear.mainStatDisplay.includes('%') ? '%' : ''}</span>
+        </div>
+      </div>
+      <div class="ss-gear-stat-item">
+        <div class="ss-gear-stat-label">Enchant Bonus</div>
+        <div class="ss-gear-stat-value-lg">+{gear.enchantPerStat} per level</div>
+      </div>
+      <div class="ss-gear-stat-item">
+        <div class="ss-gear-stat-label">Max Enchant Level</div>
+        <div class="ss-gear-stat-value-lg">{gear.maxEnchantLevel}</div>
+      </div>
+      <div class="ss-gear-stat-item">
+        <div class="ss-gear-stat-label">Max Total Bonus</div>
+        <div class="ss-gear-stat-value-lg">+{maxBonus}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-title">Enchant Scaling</h2>
+    <div class="ss-gear-enchant-table-wrapper">
+      <table class="ss-gear-enchant-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>{gear.mainStat}</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[0, 1, 3, 5, 7, 9, 10, 12, 15].map(lvl => (
+            <tr>
+              <td>+{lvl}</td>
+              <td>+{gear.enchantPerStat * lvl}</td>
+              <td>{gear.mainStatValue + gear.enchantPerStat * lvl}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-title">Substats</h2>
+    <div class="ss-gear-substats-info">
+      <p>Each equipment has up to <strong>4 substats</strong> randomly rolled from 11 possible stat types. The number of starting substats depends on the item's grade -- higher grades start with more and unlock additional slots through enchanting.</p>
+      <div class="ss-gear-substats-grid">
+        <div class="ss-gear-substat-item">
+          <div class="ss-gear-substat-label">Max Substats</div>
+          <div class="ss-gear-substat-value">4</div>
+        </div>
+        <div class="ss-gear-substat-item">
+          <div class="ss-gear-substat-label">Engrave Bonus</div>
+          <div class="ss-gear-substat-value">+3 main stat levels</div>
+        </div>
+      </div>
+      <div class="ss-gear-substats-types">
+        <div class="ss-gear-substats-types-title">Possible Substats</div>
+        <div class="ss-gear-substats-types-list">
+          <div class="ss-gear-substat-type"><SSStatIcon stat="ATK" size={18} /><span>ATK</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="HP" size={18} /><span>Flat HP</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="DEF" size={18} /><span>DEF</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="SPD" size={18} /><span>SPD</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="ATK %" size={18} /><span>ATK %</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="HP %" size={18} /><span>HP %</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="DEF %" size={18} /><span>DEF %</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="CRIT Rate" size={18} /><span>CRIT Rate</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="CRIT DMG" size={18} /><span>CRIT Damage</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="Effect Hit" size={18} /><span>Effect Hit</span></div>
+          <div class="ss-gear-substat-type"><SSStatIcon stat="Effect RES" size={18} /><span>Evasion</span></div>
+        </div>
+      </div>
+      <p class="ss-gear-substats-note">Substats are randomly rolled per item. Once all substat slots are unlocked, further enchanting increases existing substat values instead of adding new ones.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="section-title">Set Bonuses</h2>
+    <div class="ss-gear-sets-grid">
+      {STAR_SAVIOR_SET_BONUSES.map(set => (
+        <div class={`ss-gear-set-card ${set.name === gear.set + ' Set' ? 'ss-gear-set-active' : ''}`}>
+          <div class="ss-gear-set-header">
+            <SSEquipSetImage icon={set.icon} size={32} />
+            <div>
+              <div class="ss-gear-set-name">{set.name}</div>
+              <div class="ss-gear-set-parts">{set.needParts} pieces</div>
+            </div>
+          </div>
+          <div class="ss-gear-set-stats">{set.statsDisplay}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+</CharacterDetailLayout>

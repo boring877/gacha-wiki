@@ -1,0 +1,69 @@
+{
+  "id": 5999919,
+  "character": "Besta",
+  "name": "Shield of the West",
+  "slug": "besta-shield-of-the-west",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Endurance",
+  "image": "ARCANA_WEST_LANCER_R_01.png",
+  "imageSmall": "ARCANA_WEST_LANCER_R_01_S.png",
+  "characterId": 1501,
+  "episode": "Even the most knightly of knights harbors a wild beast within.\nIf guarded and trained, it shall grant valor and wisdom, but if hesitated over and shunned, it shall bestow ruin.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001201,
+      "title": "The Hanged Man",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

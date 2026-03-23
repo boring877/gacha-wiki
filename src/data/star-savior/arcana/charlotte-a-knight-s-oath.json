@@ -1,0 +1,144 @@
+{
+  "id": 7101001,
+  "character": "Charlotte",
+  "name": "A Knight's Oath",
+  "slug": "charlotte-a-knight-s-oath",
+  "grade": "SSR",
+  "specialTag": "Turn Speed",
+  "classSynergy": "All Classes",
+  "statTag": "Health",
+  "image": "ARCANA_KINGDOM_KNIGHT_SSR_01.png",
+  "imageSmall": "ARCANA_KINGDOM_KNIGHT_SSR_01_S.png",
+  "characterId": 1010,
+  "episode": "She tidies her hair and uniform, carefully checking to make sure she's wearing her armor and sword properly.\n\nHer personal reputation does not matter, for she knows that her conduct alone represents the authority of the Monastir Knights.\n\n\"All right! Let's give it our all today too, Charlotte!\"\n\nAfter cheering herself on, she strides proudly toward the training grounds where the others await her.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1100,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_SUPPORT_RATE_UP",
+      "valueRate": 250,
+      "addPerValueRate": 50
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 250,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 6,
+      "addPerValue": 1,
+      "statTag": "Health"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 180
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 30,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING_TAG.png",
+      "title": "The Grand Master's Prestige",
+      "iconType": "Training",
+      "effectType": "Class Training Bonus",
+      "value": 180
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5101001,
+      "title": "Blink and You Are Done For",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Stamina",
+          "value": 15
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 15
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101002,
+      "title": "The Sword of Monastir",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        }
+      ],
+      "reqEventClear": 710100101
+    },
+    {
+      "cutsceneId": 5101003,
+      "title": "Challenge Bravely",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710100102
+    }
+  ]
+}

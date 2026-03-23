@@ -1,0 +1,120 @@
+{
+  "id": 6103001,
+  "character": "Epindel",
+  "name": "Foundation of Elegance",
+  "slug": "epindel-foundation-of-elegance",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Protect",
+  "image": "ARCANA_GRACE_DUALSWORD_SR_01.png",
+  "imageSmall": "ARCANA_GRACE_DUALSWORD_SR_01_S.png",
+  "characterId": 1030,
+  "episode": "Head high and back straight.\nA hawk walks proudly, layered in dignity and elegance.\n\nA noble's social gathering is a battlefield of wit and cultivated grace.\nAnd Orlan always wins, no matter the field.\n\nBut... why is it, I wonder?\n\nYou, who have no sense of dignity and greet everyone with a simple smile...\nWhy do you seem to shine just a little more than I do?",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1000,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 600,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_SUPPORT_RATE_UP",
+      "valueRate": 150,
+      "addPerValueRate": 50
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 150,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000401,
+      "title": "The Emperor",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5103001,
+      "title": "Proof of Refinement",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5103002,
+      "title": "The Correlation Between Dogs and Hawks",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": 5
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 610300101
+    }
+  ]
+}

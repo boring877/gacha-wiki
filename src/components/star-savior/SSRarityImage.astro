@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+
+import SSR from '../../assets/images/games/star-savior/rarity/SSR.png';
+import SR from '../../assets/images/games/star-savior/rarity/SR.png';
+import R from '../../assets/images/games/star-savior/rarity/R.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  SSR: SSR,
+  SR: SR,
+  R: R,
+};
+
+interface Props {
+  rarity: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { rarity, width = 48, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[rarity];
+---
+
+{imageSrc && <Image src={imageSrc} alt={rarity} width={width} height={height} class={className} />}

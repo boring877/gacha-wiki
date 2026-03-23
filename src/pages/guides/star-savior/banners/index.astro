@@ -1,0 +1,58 @@
+---
+// Star Savior Banner History Page
+import BannerLayout from '../../../../layouts/star-savior/BannerLayout.astro';
+import { banners } from '../../../../data/star-savior/banners.js';
+
+const bannerImages = import.meta.glob('/src/assets/images/games/star-savior/banners/*.png', { eager: true, query: '?url', import: 'default' });
+
+function getImageUrl(filename) {
+  for (const [path, url] of Object.entries(bannerImages)) {
+    if (path.endsWith('/' + filename)) return url as string;
+  }
+  return '';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+const sortedBanners = [...banners].sort((a, b) => {
+  if (a.startDate && b.startDate) return b.startDate.localeCompare(a.startDate);
+  if (a.startDate) return -1;
+  if (b.startDate) return 1;
+  return 0;
+});
+---
+
+<BannerLayout title="Banner History" description="Star Savior gacha banner history." gameTitle="Banners">
+  <section class="content-section">
+    <h2 class="section-title">Gacha Banners</h2>
+    <div class="ss-banner-grid">
+      {sortedBanners.map((banner) => {
+        const imgUrl = getImageUrl(banner.image);
+        const typeClass = banner.type === 'NEW' ? 'ss-banner-type-new'
+          : banner.type === 'RERUN' ? 'ss-banner-type-rerun'
+          : 'ss-banner-type-special';
+        const dateStr = banner.startDate
+          ? `${formatDate(banner.startDate)}${banner.endDate ? ' – ' + formatDate(banner.endDate) : ''}`
+          : '';
+        return (
+          <div class="ss-banner-card">
+            {imgUrl && <img src={imgUrl} alt={banner.character} class="ss-banner-image" loading="lazy" />}
+            <div class="ss-banner-info">
+              <div class="ss-banner-header">
+                <span class="ss-banner-character">{banner.character}</span>
+                <span class={`ss-banner-type ${typeClass}`}>{banner.type}</span>
+              </div>
+              {banner.arcana && <span class="ss-banner-arcana">Arcana: {banner.arcana}</span>}
+              {dateStr && <span class="ss-banner-date">{dateStr}</span>}
+              <span class="ss-banner-region">{banner.region}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</BannerLayout>

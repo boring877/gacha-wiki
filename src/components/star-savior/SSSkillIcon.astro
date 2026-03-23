@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+
+const skillImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/skills/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const {
+  icon,
+  alt,
+  width = 40,
+  height = 40,
+  class: className,
+} = Astro.props;
+
+function findImage(iconFilename: string): ImageMetadata | null {
+  const key = Object.keys(skillImages).find(k =>
+    k.endsWith(`/${iconFilename}`)
+  );
+  return key ? skillImages[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+  />
+) : (
+  <div class={`ss-skill-icon-fallback ${className || ''}`}>?</div>
+)}

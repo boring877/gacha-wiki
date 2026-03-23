@@ -1,0 +1,153 @@
+{
+  "id": 7102601,
+  "character": "Roberta",
+  "name": "Responsibility Atop a Pile of Paperwork",
+  "slug": "roberta-responsibility-atop-a-pile-of-paperwork",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Savior",
+  "statTag": "Health",
+  "image": "ARCANA_RECON_KNUCKLE_SSR_01.png",
+  "imageSmall": "ARCANA_RECON_KNUCKLE_SSR_01_S.png",
+  "characterId": 1026,
+  "episode": "The quiet scratch of a pen echoes through the office after everyone has gone home.\n\nSlowly, and in silence.\nBattles against towering stacks of paperwork are always fought this way.\n\nIt is not a task taken up with joy.\nYet the name of responsibility is heavy, and it always rests wordlessly upon one's shoulders.\n\n\"Haaah... I'm finally done!\nMaybe I'll treat myself to just one drink on the way home?\"\n\nToday, as always, she yearns for the small taste of freedom found in just one drink.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1200,
+      "addPerValueRate": 22
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 300,
+      "addPerValueRate": 14
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_SUPPORT_RATE_UP",
+      "valueRate": 300,
+      "addPerValueRate": 50
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 250,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 5,
+      "addPerValue": 1,
+      "statTag": "Health"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 500
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 2,
+      "addPerValue": 1,
+      "statTag": "Health"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 40,
+      "icon": "ICON_ARCANA_UNIQUE_REQUEST.png",
+      "title": "Veteran Observer",
+      "iconType": "Training",
+      "effectType": "Request Coin Bonus",
+      "valueRate": 500
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5102601,
+      "title": "The Story Behind That Incident",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5102602,
+      "title": "The Legendary Sword",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 20
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 2
+        }
+      ],
+      "reqEventClear": 710260101
+    },
+    {
+      "cutsceneId": 5102603,
+      "title": "Ride Safe!",
+      "rewards": [
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        },
+        {
+          "type": "Stamina",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710260102
+    }
+  ]
+}

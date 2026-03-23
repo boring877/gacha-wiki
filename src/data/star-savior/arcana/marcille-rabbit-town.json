@@ -1,0 +1,116 @@
+{
+  "id": 6150601,
+  "character": "Marcille",
+  "name": "Rabbit Town",
+  "slug": "marcille-rabbit-town",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Endurance",
+  "image": "ARCANA_CONSTRUCT_WRENCH_SR_01.png",
+  "imageSmall": "ARCANA_CONSTRUCT_WRENCH_SR_01_S.png",
+  "characterId": 1506,
+  "episode": "A home returned to after a long time away.\nThe moment the door opens, a group of little ears comes pouring out.\n\nSeven lovely younger siblings welcome the return of their eldest sister.\n\nForgetting the hardships of the day, she gathers them into the warmest embrace in the world, feeling happier than anyone else in this moment.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "TRAINING_VALUE_RATE_UP_TAG",
+      "valueRate": 250,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 2,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 200,
+      "addPerValueRate": 10
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001401,
+      "title": "Temperance",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5150601,
+      "title": "Mutant Rabbit Trap",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5150602,
+      "title": "The Voidborn That Ruins You",
+      "rewards": [
+        {
+          "type": "SE Potential",
+          "value": 2
+        },
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 615060101
+    }
+  ]
+}

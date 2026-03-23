@@ -1,0 +1,1483 @@
+{
+  "id": 1001,
+  "name": "Asherah",
+  "title": "Voyager Savior Party",
+  "slug": "asherah",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_MOON",
+  "class": "NKM_UNIT_S_VOYAGER_STRANIS",
+  "role": "Striker",
+  "rarity": "SSR",
+  "description": "Temporarily deals 1 more Toughness Fixed DMG and increases CRIT Rate by 30% on attack.",
+  "stats": {
+    "HP": 1380,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 240,
+    "DEF": 15,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13320,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 2230,
+    "DEF": 1010,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 24897,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 4332,
+    "DEF": 1959,
+    "Hit Rate": 10000,
+    "Crit Rate": 1400,
+    "Crit Damage": 6800,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 6500,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "special": {
+      "atkFactor": 20000,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 21000,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_3_HYPER",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "specialDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "hyperDesc": "Temporarily deals 1 more Toughness Fixed DMG and increases CRIT Rate by 30% on attack."
+  },
+  "skills": [
+    {
+      "id": 10011,
+      "strId": "NKM_UNIT_S_VOYAGER_STRANIS_ATTACK",
+      "name": "Stranis Style Slash",
+      "icon": "SKILL_VOYAGER_STRANIS_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_MOON",
+              "buffName": "Chill",
+              "buffDesc": "Damage dealt to Sun Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_SUN",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Charges toward the enemy and delivers an upward slash. Grants self 1 stack of <b>Chill</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10012,
+      "strId": "NKM_UNIT_S_VOYAGER_STRANIS_SPECIAL",
+      "name": "Veil Cleave",
+      "icon": "SKILL_VOYAGER_STRANIS_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_SPEED_INCREASE",
+              "buffName": "SPD Up",
+              "buffDesc": "SPD increases by 20%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Partially unleashes her magic blade's power to slash all enemies. Grants self <b>SPD Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10013,
+      "strId": "NKM_UNIT_S_VOYAGER_STRANIS_HYPER",
+      "name": "Dawn of Night",
+      "icon": "SKILL_VOYAGER_STRANIS_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 6,
+      "novaForce": 1,
+      "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_CRITICAL_CHANCE_INCREASE",
+              "buffName": "CRIT Rate Up",
+              "buffDesc": "Increases CRIT Rate by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Temporarily lifts the magic blade's seal to deal devastating damage to all enemies. Grants self <b>CRIT Rate Up</b> for 2 turns.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG and increases CRIT Rate by 30% on attack.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10014,
+      "strId": "NKM_UNIT_S_VOYAGER_STRANIS_UNIQUE_PASSIVE",
+      "name": "Stranis Style Breathing",
+      "icon": "SKILL_VOYAGER_STRANIS_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Asherah's ATK by <b>5%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Asherah's ATK by <b>5%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Asherah's ATK by <b>5%</b>. Increases self CRIT DMG by <b>4%</b> after using <b>Veil Cleave</b>. Stacks up to 5 times.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_VOYAGER_STRANIS_1",
+              "buffName": "Stranis Style Breathing",
+              "buffDesc": "CRIT DMG increases by 4.0% after using Veil Cleave. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL_DAMAGE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Increases Asherah's ATK by <b>10%</b>. Increases self CRIT DMG by <b>5%</b> after using <b>Veil Cleave</b>. Stacks up to 5 times.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_VOYAGER_STRANIS_1",
+              "buffName": "Stranis Style Breathing",
+              "buffDesc": "CRIT DMG increases by 5.0% after using Veil Cleave. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL_DAMAGE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Asherah's ATK by <b>15%</b>. Increases self CRIT DMG by <b>6%</b> after using <b>Veil Cleave</b>. Stacks up to 5 times.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_VOYAGER_STRANIS_1",
+              "buffName": "Stranis Style Breathing",
+              "buffDesc": "CRIT DMG increases by 6.0% after using Veil Cleave. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL_DAMAGE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_VOYAGER_STRANIS_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_VOYAGER_STRANIS_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 200,
+          "display": "ATK% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 50,
+          "display": "DEF +50"
+        }
+      ],
+      "potential": "Sense of Attack",
+      "potentialDesc": "Slightly increases self ATK by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 300,
+          "display": "Crit Rate +3%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_ATK",
+          "stat": "ATK%",
+          "value": 400,
+          "display": "ATK% +4%"
+        }
+      ],
+      "potential": "Sense of Insight",
+      "potentialDesc": "Slightly increases self CRIT Rate by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 175,
+          "display": "ATK +175"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL",
+          "stat": "Crit Rate",
+          "value": 600,
+          "display": "Crit Rate +6%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 200,
+          "display": "ATK +200"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 70,
+          "display": "DEF +70"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_RATE_CRITICAL_DAMAGE",
+          "stat": "Crit Damage",
+          "value": 1800,
+          "display": "Crit Damage +18%"
+        }
+      ],
+      "potential": "Skill of Destruction",
+      "potentialDesc": "Increases CRIT DMG by 4%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 30,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 150,
+      "health": 0,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 120
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "power",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "protect",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "power",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "protect",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 180,
+      "health": 20,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 130,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "D+",
+      "health": "G",
+      "endurance": "G",
+      "focus": "G",
+      "protect": "E+"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "4 / 22",
+    "height": "166 cm",
+    "hometown": "NOA",
+    "team": "Voyager Savior Party",
+    "vaKR": "Kim Chae-rin",
+    "vaJP": "Natsumi Takamori"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_VOYAGER_STRANIS.png",
+    "illust": "sprites/b2aba20801f6140653be6964e1afab76b7aa9f6e/NKM_UNIT_S_VOYAGER_STRANIS_ILLUST.png",
+    "illustUI": "sprites/b2aba20801f6140653be6964e1afab76b7aa9f6e/NKM_UNIT_S_VOYAGER_STRANIS_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_VOYAGER_STRANIS.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_VOYAGER_STRANIS.png"
+  }
+}

@@ -1,0 +1,77 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+
+import '../../styles/games/star-savior/ss-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/star-savior/ss-layout.css';
+import '../../styles/games/star-savior/ss-landing.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  heroSlot?: string;
+}
+
+const { title, description, gameTitle, heroImage, heroSlot } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <slot name="head" />
+  </head>
+  <body class="ss-body">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="ss-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="star-savior" />
+      <MobileMenu />
+
+      <div class="ss-container">
+        <main class="ss-main">
+          {(heroImage || heroSlot) && (
+            <section class="hero-section">
+              {heroSlot ? (
+                <slot name="hero" />
+              ) : (
+                <img
+                  src={heroImage}
+                  alt={gameTitle || 'Game'}
+                  class="hero-image"
+                  loading="eager"
+                />
+              )}
+            </section>
+          )}
+
+          {!heroImage && gameTitle && (
+            <section class="ss-title-only-section">
+              <h1 class="ss-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

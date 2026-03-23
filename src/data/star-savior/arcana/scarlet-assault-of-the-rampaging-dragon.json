@@ -1,0 +1,133 @@
+{
+  "id": 6100701,
+  "character": "Scarlet",
+  "name": "Assault of the Rampaging Dragon",
+  "slug": "scarlet-assault-of-the-rampaging-dragon",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Health",
+  "image": "ARCANA_MAID_SCISSORS_SR_01.png",
+  "imageSmall": "ARCANA_MAID_SCISSORS_SR_01_S.png",
+  "characterId": 1510,
+  "episode": "A very large dragon with bright red horns was chasing the children.\n\n\"Krrraaah! This is an attack by the Rampaging Dragon Kelberon, you human brats!\"\n\nWith the children's boisterous laughter, sand and dust rise across the playground.\nThe adults watch the ferocious dragon's attack with quiet smiles, because they know that dragon will not harm the children.\n\nA young dragon who loves humans lives alongside them.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 800,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 150,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 250,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001001,
+      "title": "Fate",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Potential Points",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5151001,
+      "title": "Spreading Her Wings",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        },
+        {
+          "type": "Potential Points",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5151002,
+      "title": "A Refined Palate",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Condition",
+          "value": -1
+        },
+        {
+          "type": "Journey Buff",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 610070101
+    }
+  ]
+}

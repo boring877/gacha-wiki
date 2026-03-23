@@ -1,0 +1,150 @@
+{
+  "id": 7103201,
+  "character": "Charlotte",
+  "name": "A Clumsy Way to Relieve Desire",
+  "slug": "charlotte-a-clumsy-way-to-relieve-desire",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Assassin",
+  "statTag": "Power",
+  "image": "ARCANA_BUNNY_KNIGHT_SSR_01.png",
+  "imageSmall": "ARCANA_BUNNY_KNIGHT_SSR_01_S.png",
+  "characterId": 1010,
+  "episode": "Desires never truly end, even when fulfilled.\n\nThe wish to be acknowledged, the urge to do well... a young girl's desires are no different.\n\nHaving yet to learn how to untangle her wants, she first soothes the hunger right in front of her.\n\nBelieving, like a naive little rabbit, that a full belly will calm the heart as well, that a single carrot can make the world feel all right.\n\nStill, if this can make her even a little happier, then so be it.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 800,
+      "addPerValueRate": 12
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 200,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 6,
+      "addPerValue": 1,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 2,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 2,
+      "addPerValue": 1,
+      "statTag": "Health"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Carrot Over the Stick",
+      "iconType": "Training",
+      "effectType": "Stat Gain",
+      "statTag": "Power",
+      "value": 2
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5101001,
+      "title": "Blink and You Are Done For",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "Potential Points",
+          "value": 30
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101002,
+      "title": "The Sword of Monastir",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 710320101
+    },
+    {
+      "cutsceneId": 5103201,
+      "title": "Run Like A Knight, Hop Like a Bunny",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 20
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 20
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710320102
+    }
+  ]
+}

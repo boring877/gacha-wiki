@@ -1,0 +1,64 @@
+{
+  "id": 5999918,
+  "character": "Harley",
+  "name": "Galloping Spirit of the Plains",
+  "slug": "harley-galloping-spirit-of-the-plains",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Endurance",
+  "image": "ARCANA_WILD_HOG_R_01.png",
+  "imageSmall": "ARCANA_WILD_HOG_R_01_S.png",
+  "characterId": 1041,
+  "episode": "Strength is meaningful only when it is used to protect.\nTrue, the unyielding spirit that drives you to roam the wilds is admirable.\nYet, without someone to stand beside you, you will fade away in loneliness.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Coins",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Endurance"
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001401,
+      "title": "Temperance",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

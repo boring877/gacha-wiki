@@ -1,0 +1,44 @@
+---
+// Arcana special tag icon component for Star Savior
+// Maps special tag names to their game icons (arcana tags + stat icons)
+import { Image } from 'astro:assets';
+
+import SuperEffect from '../../assets/images/games/star-savior/arcana-tags/Super_Effect.png';
+import Toughness from '../../assets/images/games/star-savior/arcana-tags/Toughness.png';
+import AllClasses from '../../assets/images/games/star-savior/arcana-tags/All_Classes.png';
+import Savior from '../../assets/images/games/star-savior/arcana-tags/Savior.png';
+
+import ATK from '../../assets/images/games/star-savior/stats/ICON_NST_ATK.png';
+import DEF from '../../assets/images/games/star-savior/stats/ICON_NST_DEF.png';
+import HP from '../../assets/images/games/star-savior/stats/ICON_NST_HP.png';
+import CritRate from '../../assets/images/games/star-savior/stats/ICON_NST_RATE_CRITICAL.png';
+import CritDamage from '../../assets/images/games/star-savior/stats/ICON_NST_RATE_CRITICAL_DAMAGE.png';
+import EffectHit from '../../assets/images/games/star-savior/stats/ICON_NST_RATE_EFFECT_HIT.png';
+import TurnSpeed from '../../assets/images/games/star-savior/stats/ICON_NST_TURN_SPEED.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  'Super Effect': SuperEffect,
+  'Toughness': Toughness,
+  'All Classes': AllClasses,
+  'Savior': Savior,
+  'ATK': ATK,
+  'DEF': DEF,
+  'HP': HP,
+  'Crit Rate': CritRate,
+  'Crit Damage': CritDamage,
+  'Effect Hit': EffectHit,
+  'Turn Speed': TurnSpeed,
+};
+
+interface Props {
+  tag: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { tag, width = 20, height = 20, class: className } = Astro.props;
+const imageSrc = imageMap[tag];
+---
+
+{imageSrc && <Image src={imageSrc} alt={tag} width={width} height={height} class={className} />}

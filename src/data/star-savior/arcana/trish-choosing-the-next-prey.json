@@ -1,0 +1,118 @@
+{
+  "id": 6101501,
+  "character": "Trish",
+  "name": "Choosing the Next Prey",
+  "slug": "trish-choosing-the-next-prey",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Power",
+  "image": "ARCANA_STELLAR_THIEF_SR_01.png",
+  "imageSmall": "ARCANA_STELLAR_THIEF_SR_01_S.png",
+  "characterId": 1015,
+  "episode": "The morning of a first-rate Hunter begins with a dull stack of wanted posters.\nFrom Raiders who looted merchant caravans to ferocious giant slimes...\n\nTo ordinary people, they may be terrifying creatures, but to a first-rate Hunter, they're nothing more than prey that will let her skills shine.\n\n\"Now then, which one should I pick this time?\"",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1000,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 150,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 5,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Power"
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5002001,
+      "title": "Judgment",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101501,
+      "title": "Not Here to Save You",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101502,
+      "title": "Frish Express Errand Agency",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 18
+        },
+        {
+          "type": "Potential Points",
+          "value": 20
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 610150101
+    }
+  ]
+}

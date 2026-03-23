@@ -1,0 +1,58 @@
+---
+import StarSaviorLayout from '../../layouts/star-savior/LandingLayout.astro';
+import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/games/star-savior/hero.png';
+
+const { meta, guides, gameInfo } = starSaviorConfig;
+---
+
+<StarSaviorLayout title={meta.title} description={meta.description} gameTitle={meta.gameTitle} heroSlot="hero">
+  <Fragment slot="head">
+    <SSBaseHead title={meta.title} description={meta.description} />
+  </Fragment>
+  <Image slot="hero" src={heroImg} alt={meta.gameTitle} class="hero-image" loading="eager" />
+
+  <section class="content-section">
+    <div class="game-description">
+      <p>{gameInfo.description}</p>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <section class="content-section">
+    <h2 class="ss-resources-title">Guides & Resources</h2>
+
+      <div class="ss-resources-grid">
+        <div class="ss-resource-category">
+          <h3>Characters</h3>
+          <div class="ss-buttons-grid">
+            <a href="/guides/star-savior/characters/" class="ss-resource-button">Database</a>
+          </div>
+        </div>
+        <div class="ss-resource-category">
+          <h3>Arcana</h3>
+          <div class="ss-buttons-grid">
+            <a href="/guides/star-savior/arcana/" class="ss-resource-button">Database</a>
+          </div>
+        </div>
+        <div class="ss-resource-category">
+          <h3>Equipment</h3>
+          <div class="ss-buttons-grid">
+            <a href="/guides/star-savior/gear/" class="ss-resource-button">Database</a>
+          </div>
+        </div>
+        <div class="ss-resource-category">
+          <h3>Resources</h3>
+          <div class="ss-buttons-grid">
+            <a href="/guides/star-savior/blog/" class="ss-resource-button">Blog</a>
+          </div>
+        </div>
+      </div>
+  </section>
+</StarSaviorLayout>

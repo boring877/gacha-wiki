@@ -1,0 +1,144 @@
+{
+  "id": 7100901,
+  "character": "Emily",
+  "name": "A Quiet Moment of Rest",
+  "slug": "emily-a-quiet-moment-of-rest",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Defender",
+  "statTag": "Health",
+  "image": "ARCANA_MAID_TWOHANDER_SSR_01.png",
+  "imageSmall": "ARCANA_MAID_TWOHANDER_SSR_01_S.png",
+  "characterId": 1009,
+  "episode": "When the clamor of the morning's work finally settles, even the endlessly busy maids of Candle Square are granted a brief moment of rest.\n\nLeaning against the old tree in the garden, resting side by side with a coworker, their hair pleasantly drifting in the gentle breeze.\n\n\"Senior Maid Emily. Combat break preparation... complete!\"\n\nBefore another fierce battle against countless dust particles, Emily once again makes the most of her precious rest time today.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 9,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 200,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_BONUS_PP",
+      "value": 1,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 300,
+      "addPerValueRate": 300
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 70,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Battle Readiness",
+      "iconType": "Training",
+      "effectType": "Training Efficiency",
+      "valueRate": 700
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5100901,
+      "title": "Emergency?!",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        },
+        {
+          "type": "Potential Points",
+          "value": 5
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5100902,
+      "title": "In Secret...?",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 15
+        },
+        {
+          "type": "Potential Points",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 710090101
+    },
+    {
+      "cutsceneId": 5100903,
+      "title": "Coded Message",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 15
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710090102
+    }
+  ]
+}

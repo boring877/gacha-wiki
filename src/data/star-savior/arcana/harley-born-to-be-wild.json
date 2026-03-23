@@ -1,0 +1,142 @@
+{
+  "id": 7104101,
+  "character": "Harley",
+  "name": "Born to Be Wild",
+  "slug": "harley-born-to-be-wild",
+  "grade": "SSR",
+  "specialTag": "Toughness",
+  "classSynergy": "All Classes",
+  "statTag": "Endurance",
+  "image": "ARCANA_WILD_HOG_SSR_01.png",
+  "imageSmall": "ARCANA_WILD_HOG_SSR_01_S.png",
+  "characterId": 1041,
+  "episode": "Facing the crimson sunset, rough hooves thunder across the land once more.\n\nEyes that delight in speed and roaring sounds look toward the finish line she will one day reach with her partner.\n\n\"All right, Dave! Final sprint!\"\n\nOutrunning tyrants, laws, and even fate, the girl freely races through her one and only run.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1800,
+      "addPerValueRate": 28
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 5,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 250,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "TRAINING_VALUE_RATE_UP_TAG",
+      "valueRate": 350,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "statTag": "Endurance"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 40,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "A Real Man's Spirit",
+      "iconType": "Training",
+      "effectType": "Stat Gain",
+      "statTag": "Endurance",
+      "value": 1
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5104101,
+      "title": "A Real Man's Showdown!",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5104102,
+      "title": "A Real Man's Resolve?",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 10
+        },
+        {
+          "type": "Potential Points",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 710410101
+    },
+    {
+      "cutsceneId": 5104103,
+      "title": "A Real Man's Eye for Talent",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 10
+        },
+        {
+          "type": "Potential Points",
+          "value": 20
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710410102
+    }
+  ]
+}

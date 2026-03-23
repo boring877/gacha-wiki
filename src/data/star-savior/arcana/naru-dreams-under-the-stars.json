@@ -1,0 +1,134 @@
+{
+  "id": 7150801,
+  "character": "Naru",
+  "name": "Dreams Under the Stars",
+  "slug": "naru-dreams-under-the-stars",
+  "grade": "SSR",
+  "specialTag": "Crit Rate",
+  "classSynergy": "All Classes",
+  "statTag": "Focus",
+  "image": "ARCANA_NOA_OBSERVER_SSR_01.png",
+  "imageSmall": "ARCANA_NOA_OBSERVER_SSR_01_S.png",
+  "characterId": 1508,
+  "episode": "Late at night, when the city is asleep, Naru's telescope unfailingly turns toward the window.\n\nOn the face of a girl who has finally found a formula she can call her own within the orbits of the stars, a smile bright enough to light up the pitch-black night sky blooms.\n\nCome tomorrow morning, her purehearted desire to do good will surely cause another small catastrophe.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1000,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "TRAINING_SUPPORT_RATE_UP",
+      "valueRate": 400,
+      "addPerValueRate": 50
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 175,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 9,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 350,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 40,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "statTag": "Focus"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 60,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Total Immersion",
+      "iconType": "Training",
+      "effectType": "Stat Gain",
+      "statTag": "Focus",
+      "value": 1
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5150801,
+      "title": "But It Was Fast!",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5150802,
+      "title": "It's Elite Face!",
+      "rewards": [
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 715080101
+    },
+    {
+      "cutsceneId": 5150803,
+      "title": "I’ll Show You a Thing or Two!",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": -10
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 715080102
+    }
+  ]
+}

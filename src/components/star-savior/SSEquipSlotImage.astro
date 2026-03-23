@@ -1,0 +1,47 @@
+---
+// Equipment slot type icon component for Star Savior
+// Maps slot type name (Weapon, Gloves, Armor, Boots, Necklace, Ring) to slot icon images
+import { Image } from 'astro:assets';
+
+const SLOT_FILE_MAP: Record<string, string> = {
+  Weapon: 'WEAPON.png',
+  Gloves: 'GLOVES.png',
+  Armor: 'ARMOR.png',
+  Boots: 'SHOES.png',
+  Necklace: 'NECKLACE.png',
+  Ring: 'RING.png',
+};
+
+const slotImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/equip-slots/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  slot: string;
+  size?: number;
+  class?: string;
+}
+
+const { slot, size = 20, class: className } = Astro.props;
+const filename = SLOT_FILE_MAP[slot] || '';
+
+function findImage(fn: string): ImageMetadata | null {
+  if (!fn) return null;
+  const key = Object.keys(slotImages).find(k => k.endsWith('/' + fn));
+  return key ? slotImages[key].default : null;
+}
+
+const imageModule = findImage(filename);
+---
+
+{imageModule && (
+  <Image
+    src={imageModule}
+    alt={slot}
+    width={size}
+    height={size}
+    class={`ss-equip-slot-icon ${className || ''}`}
+    loading="lazy"
+  />
+)}

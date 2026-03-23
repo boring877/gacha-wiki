@@ -1,0 +1,1527 @@
+{
+  "id": 3001,
+  "name": "Hilde",
+  "title": "Fenrir Squad",
+  "slug": "hilde",
+  "attackTagType": "UAT_IMPACT",
+  "adjustType": "NUAT_SUN",
+  "class": "NKM_UNIT_S_COUNTERSIDE_HILDE",
+  "role": "Defender",
+  "rarity": "SSR",
+  "description": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+  "stats": {
+    "HP": 1860,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 150,
+    "DEF": 20,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13800,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 2140,
+    "DEF": 1015,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 25444,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 4058,
+    "DEF": 2016,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 800,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 4000,
+      "defFactor": null,
+      "hpFactor": 250
+    },
+    "special": {
+      "atkFactor": 5500,
+      "defFactor": null,
+      "hpFactor": 360
+    },
+    "hyper": {
+      "atkFactor": 17000,
+      "defFactor": null,
+      "hpFactor": 1000
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self Barrier for 1 turn after attacking. Barrier is proportional to self Max HP.",
+    "specialDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "hyperDesc": "SI_SUPER_ARMOR_DAMAGE@@1"
+  },
+  "skills": [
+    {
+      "id": 30011,
+      "strId": "NKM_UNIT_S_COUNTERSIDE_HILDE_ATTACK",
+      "name": "Twin Blade",
+      "icon": "SKILL_COUNTERSIDE_HILDE_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Quickly closes in on the enemy and slashes with two swords. Grants self 1 stack of <b>Ignition</b>. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self Barrier for 1 turn after attacking. Barrier is proportional to self Max HP.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 30012,
+      "strId": "NKM_UNIT_S_COUNTERSIDE_HILDE_SPECIAL",
+      "name": "Dragon Buster",
+      "icon": "SKILL_COUNTERSIDE_HILDE_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 4,
+      "novaForce": 1,
+      "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_DEBUFFBAN",
+              "buffName": "Immunity",
+              "buffDesc": "All debuffs and some reduction, extension, and shortening effects do not apply. Can be removed by buff removal.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DEFENSE_INCREASE",
+              "buffName": "DEF Up",
+              "buffDesc": "Increases DEF by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_SPECIAL_COOL_TURN_DOWN",
+              "buffName": "Special Skill Cooldown Reduction",
+              "buffDesc": "Reduces the remaining Cooldown of Special Skills.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Pierces through the enemy, then leaps and strikes down. Grants self <b>Immunity</b> and <b>DEF Up</b> for 2 turns. Removes all <b>Ignition</b> stacks and reduces the cooldown of <b>Dragon Buster</b> by 1 turn if <b>Ignition</b> is at max stacks after attacking. Damage is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 30013,
+      "strId": "NKM_UNIT_S_COUNTERSIDE_HILDE_HYPER",
+      "name": "Buster Overdrive",
+      "icon": "SKILL_COUNTERSIDE_HILDE_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_FAFNIR_DESCENT_1",
+              "buffName": "Fafnir's Descent (Undispellable)",
+              "buffDesc": "Increases DEF by 20% and absorbs a fixed amount of damage instead of losing HP when taking damage. Affected by Barrier-related effects.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "unknown",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 0,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_SUN",
+              "buffName": "Ignition",
+              "buffDesc": "Damage dealt to Star Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_STAR",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>75%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 0,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with an <b>85%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_AGGRO",
+              "buffName": "Taunt",
+              "buffDesc": "Forcibly uses a Basic Skill on the unit that inflicted Taunt at the start of the turn.",
+              "buffIsPositive": false,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 0,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Charges forward and bombards all enemies. Grants self <b>Fafnir's Descent (Undispellable)</b> for 3 turns and inflicts the enemy with the highest Action Gauge with <b>Taunt</b> for 1 turn with a <b>100%</b> chance. Grants self 1 stack of <b>Ignition</b>. Barrier and damage are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 30014,
+      "strId": "NKM_UNIT_S_COUNTERSIDE_HILDE_UNIQUE_PASSIVE",
+      "name": "Valkyrie's Will",
+      "icon": "SKILL_COUNTERSIDE_HILDE_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Hilde's Preemptive Guard Chance by <b>10%</b> and grants all allies (excluding self) <b>Barrier</b> for 1 turn at the start of the first battle. Barrier is proportional to self Max HP.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Hilde's Preemptive Guard Chance by <b>10%</b> and grants all allies (excluding self) <b>Barrier</b> for 1 turn at the start of the first battle. Barrier is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_RATE_PREEMPTIVE_DEFEND",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Increases Hilde's Max HP by <b>5%</b>. Increases Hilde's Preemptive Guard Chance by <b>10%</b> and grants all allies (excluding self) <b>Barrier</b> for 1 turn at the start of the first battle. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            },
+            {
+              "type": "NST_RATE_PREEMPTIVE_DEFEND",
+              "rate": 1000
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Increases Hilde's Max HP by <b>10%</b>. Increases Hilde's Preemptive Guard Chance by <b>20%</b> and grants all allies (excluding self) <b>Barrier</b> for 1 turn at the start of the first battle. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1000
+            },
+            {
+              "type": "NST_RATE_PREEMPTIVE_DEFEND",
+              "rate": 2000
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 4,
+          "description": "Increases Hilde's Max HP by <b>15%</b>. Increases Hilde's Preemptive Guard Chance by <b>30%</b> and grants all allies (excluding self) <b>Barrier</b> for 1 turn at the start of the first battle. Barrier is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1500
+            },
+            {
+              "type": "NST_RATE_PREEMPTIVE_DEFEND",
+              "rate": 3000
+            }
+          ],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_COUNTERSIDE_HILDE_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_COUNTERSIDE_HILDE_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 200,
+          "display": "DEF% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 800,
+          "display": "Effect Evasion +8%"
+        }
+      ],
+      "potential": "Sense of Defense",
+      "potentialDesc": "Slightly increases self DEF by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 400,
+          "display": "DEF% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 600,
+          "display": "HP% +6%"
+        }
+      ],
+      "potential": "Skill of Life",
+      "potentialDesc": "Increases Max HP by 2%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 150,
+      "endurance": 120,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "endurance",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "endurance",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "endurance",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 180,
+      "endurance": 150,
+      "focus": 10,
+      "protect": 10,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D+",
+      "endurance": "D",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "height": "150 cm",
+    "hometown": "CounterSide",
+    "team": "Fenrir Squad",
+    "vaKR": "Moon Sun-hee",
+    "vaJP": "Yoko Hikasa"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_COUNTERSIDE_HILDE.png",
+    "illust": "sprites/9660faed7c346b6d8d2e13b095c9ceae69443f83/NKM_UNIT_S_COUNTERSIDE_HILDE_ILLUST.png",
+    "illustUI": "sprites/9660faed7c346b6d8d2e13b095c9ceae69443f83/NKM_UNIT_S_COUNTERSIDE_HILDE_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_COUNTERSIDE_HILDE.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_COUNTERSIDE_HILDE.png"
+  }
+}

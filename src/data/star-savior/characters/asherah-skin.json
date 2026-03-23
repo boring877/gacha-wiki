@@ -1,0 +1,1840 @@
+{
+  "id": 1054,
+  "name": "Asherah",
+  "title": "Waltz of Starlight",
+  "slug": "asherah-skin",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_ORDER",
+  "class": "NKM_UNIT_S_DRESS_STRANIS",
+  "role": "Supporter",
+  "rarity": "SSR",
+  "description": "Restores 1 Toughness to self after using a Skill.",
+  "stats": {
+    "HP": 2045,
+    "Turn Speed": 98,
+    "Super Armor": 5,
+    "ATK": 165,
+    "DEF": 22,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13985,
+    "Turn Speed": 98,
+    "Super Armor": 5,
+    "ATK": 2155,
+    "DEF": 1017,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 25655,
+    "Turn Speed": 98,
+    "Super Armor": 5,
+    "ATK": 4075,
+    "DEF": 2018,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 5000,
+      "defFactor": null,
+      "hpFactor": 350
+    },
+    "special": {
+      "atkFactor": 5500,
+      "defFactor": null,
+      "hpFactor": 360
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and removes 1 debuff from all allies after attacking.",
+    "specialDesc": "SI_SUPER_ARMOR_DAMAGE@@1",
+    "hyperDesc": "SI_SUPER_ARMOR_UP@@1"
+  },
+  "skills": [
+    {
+      "id": 10541,
+      "strId": "NKM_UNIT_S_DRESS_STRANIS_ATTACK",
+      "name": "Belle Lame",
+      "icon": "SKILL_DRESS_STRANIS_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_ORDER",
+              "buffName": "Insight",
+              "buffDesc": "Damage dealt to Chaos Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_CHAOS",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Rushes the enemy and delivers a powerful upward slash. Grants self 1 stack of <b>Insight</b>. DMG is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and removes 1 debuff from all allies after attacking.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10542,
+      "strId": "NKM_UNIT_S_DRESS_STRANIS_SPECIAL",
+      "name": "Bal Doré",
+      "icon": "SKILL_DRESS_STRANIS_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 3,
+      "novaForce": 1,
+      "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_1",
+              "buffName": "Starlight Wish (Undispellable)",
+              "buffDesc": "Increases SPD by 10% and self Effect RES by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": 1000
+                },
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_EFFECT_EVADE",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_ORDER",
+              "buffName": "Insight",
+              "buffDesc": "Damage dealt to Chaos Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_CHAOS",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Emits radiant light and unleashes a blade aura to attack the enemy. Restores all allies' HP. Grants self <b>Starlight Wish (Undispellable)</b> for 2 turns and 1 stack of <b>Insight</b>. DMG and Recovery are proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10543,
+      "strId": "NKM_UNIT_S_DRESS_STRANIS_HYPER",
+      "name": "Lumière Sonnet",
+      "icon": "SKILL_DRESS_STRANIS_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "All Allies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_DELETEDEBUFF",
+              "buffName": "Dispel Debuff",
+              "buffDesc": "Removes debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "unknown",
+              "buff": "BI_SPEED_GAUGE_UP",
+              "buffName": "Action Gauge Up",
+              "buffDesc": "Increases Action Gauge.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_ORDER",
+              "buffName": "Insight",
+              "buffDesc": "Damage dealt to Chaos Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_CHAOS",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Walks out on a red carpet to welcome allies. Restores all allies' HP and removes 2 debuffs from them, then increases all allies' (excluding self) Action Gauge by 15%. Grants self 1 stack of <b>Insight</b>. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_HEAL_GIVE",
+              "buffName": "Stat: Increased Healing Given",
+              "buffDesc": "This stat displays increase in Healing Given.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HEAL_GIVE",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 10544,
+      "strId": "NKM_UNIT_S_DRESS_STRANIS_UNIQUE_PASSIVE",
+      "name": "L'unisson",
+      "icon": "SKILL_DRESS_STRANIS_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Asherah's Max HP by <b>5%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Asherah's Max HP by <b>5%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Asherah's Max HP by <b>5%</b>. Asherah restores the HP of the ally with the current lowest HP ratio after using <b>Belle Lame</b>. Increases self Dual Attack Chance by <b>10%</b> for each stack of <b>Insight</b> on self, up to 5 stacks. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "unknown",
+              "buff": "BI_HEAL",
+              "buffName": "Restore",
+              "buffDesc": "Recovers HP.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_2",
+              "buffName": "Increases Dual Attack Chance by 10% (A)",
+              "buffDesc": "Increases Dual Attack Chance by 10%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_2",
+              "buffName": "Increases Dual Attack Chance by 10% (A)",
+              "buffDesc": "Increases Dual Attack Chance by 10%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_2",
+              "buffName": "Increases Dual Attack Chance by 10% (A)",
+              "buffDesc": "Increases Dual Attack Chance by 10%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_2",
+              "buffName": "Increases Dual Attack Chance by 10% (A)",
+              "buffDesc": "Increases Dual Attack Chance by 10%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_2",
+              "buffName": "Increases Dual Attack Chance by 10% (A)",
+              "buffDesc": "Increases Dual Attack Chance by 10%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Increases Asherah's Max HP by <b>10%</b>. Asherah restores the HP of the ally with the current lowest HP ratio after using <b>Belle Lame</b>. Increases self Dual Attack Chance by <b>15%</b> for each stack of <b>Insight</b> on self, up to 5 stacks. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_3",
+              "buffName": "Increases Dual Attack Chance by 15% (B)",
+              "buffDesc": "Increases Dual Attack Chance by 15%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_3",
+              "buffName": "Increases Dual Attack Chance by 15% (B)",
+              "buffDesc": "Increases Dual Attack Chance by 15%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_3",
+              "buffName": "Increases Dual Attack Chance by 15% (B)",
+              "buffDesc": "Increases Dual Attack Chance by 15%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_3",
+              "buffName": "Increases Dual Attack Chance by 15% (B)",
+              "buffDesc": "Increases Dual Attack Chance by 15%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_3",
+              "buffName": "Increases Dual Attack Chance by 15% (B)",
+              "buffDesc": "Increases Dual Attack Chance by 15%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Asherah's Max HP by <b>15%</b>. Asherah restores the HP of the ally with the current lowest HP ratio after using <b>Belle Lame</b>. Increases self Dual Attack Chance by <b>20%</b> for each stack of <b>Insight</b> on self, up to 5 stacks. Recovery is proportional to self Max HP.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_HP",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_4",
+              "buffName": "Increases Dual Attack Chance by 20% (C)",
+              "buffDesc": "Increases Dual Attack Chance by 20%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_4",
+              "buffName": "Increases Dual Attack Chance by 20% (C)",
+              "buffDesc": "Increases Dual Attack Chance by 20%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_4",
+              "buffName": "Increases Dual Attack Chance by 20% (C)",
+              "buffDesc": "Increases Dual Attack Chance by 20%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_4",
+              "buffName": "Increases Dual Attack Chance by 20% (C)",
+              "buffDesc": "Increases Dual Attack Chance by 20%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DRESS_STRANIS_4",
+              "buffName": "Increases Dual Attack Chance by 20% (C)",
+              "buffDesc": "Increases Dual Attack Chance by 20%. Stacks up to 5 times.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CROSS_ATTACK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_DRESS_STRANIS_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_DRESS_STRANIS_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 200,
+          "display": "DEF% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 400,
+          "display": "HP% +4%"
+        }
+      ],
+      "potential": "Sense of Defense",
+      "potentialDesc": "Slightly increases self DEF by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 400,
+          "display": "DEF% +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_TURN_SPEED",
+          "stat": "Turn Speed",
+          "value": 6,
+          "display": "Turn Speed +6"
+        }
+      ],
+      "potential": "Skill of Speed",
+      "potentialDesc": "Increases SPD by 2.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 150,
+      "endurance": 120,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "endurance",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "endurance",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "endurance",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 180,
+      "endurance": 150,
+      "focus": 10,
+      "protect": 10,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D+",
+      "endurance": "D",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "4 / 22",
+    "height": "166 cm",
+    "hometown": "NOA",
+    "team": "Voyager Savior Party",
+    "vaKR": "Kim Chae-rin",
+    "vaJP": "Natsumi Takamori"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_DRESS_STRANIS.png",
+    "illust": "sprites/73cbac085211a6a01ec9ded46cceda58ec9f1c7c/NKM_UNIT_S_DRESS_STRANIS_ILLUST.png",
+    "illustUI": "sprites/73cbac085211a6a01ec9ded46cceda58ec9f1c7c/NKM_UNIT_S_DRESS_STRANIS_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_DRESS_STRANIS.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_DRESS_STRANIS.png"
+  }
+}

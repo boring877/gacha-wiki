@@ -1,0 +1,105 @@
+{
+  "id": 6101401,
+  "character": "Seira",
+  "name": "Butterfly of Phantasm",
+  "slug": "seira-butterfly-of-phantasm",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Health",
+  "image": "ARCANA_NIGHTMARE_REAPER_SR_01.png",
+  "imageSmall": "ARCANA_NIGHTMARE_REAPER_SR_01_S.png",
+  "characterId": 1014,
+  "episode": "Was I a butterfly in a dream?\n\nOr was I, a butterfly, dreaming that I lived a human life?\n\n\n\nSeira knew the answer.\n\nIn truth, dreams are the other side of reality.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 600,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 250,
+      "addPerValueRate": 12
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 5,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000301,
+      "title": "The Empress",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 3
+        },
+        {
+          "type": "Potential Points",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101401,
+      "title": "Sleep Paralysis",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101402,
+      "title": "A Dream Is What You Make of It",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 2
+        }
+      ],
+      "reqEventClear": 610140101
+    }
+  ]
+}

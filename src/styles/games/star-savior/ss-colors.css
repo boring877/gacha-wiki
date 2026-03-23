@@ -1,0 +1,63 @@
+/* Star Savior Color System - Deep navy with warm gold starlight accents */
+
+:root {
+  --ss-primary: #c9a84c;
+  --ss-primary-hover: #d4b85a;
+  --ss-primary-light: #e0ca7a;
+  --ss-primary-dark: #a88b3a;
+
+  --ss-secondary: #1a2744;
+  --ss-secondary-hover: #243458;
+  --ss-secondary-light: #2e426c;
+
+  --ss-accent: #5b8dd9;
+  --ss-accent-hover: #6fa0e6;
+  --ss-accent-light: #8ab3ee;
+
+  --ss-bg-primary: #0a0e1a;
+  --ss-bg-secondary: #111827;
+  --ss-bg-tertiary: #1a2332;
+  --ss-bg-card: #141c2e;
+  --ss-bg-hover: #1e2a42;
+
+  --ss-text-primary: #f0ece4;
+  --ss-text-secondary: #b8b4ac;
+  --ss-text-tertiary: #807c74;
+  --ss-text-muted: #504c44;
+
+  --ss-border: #1e2a3e;
+  --ss-border-light: #2a3a52;
+  --ss-border-dark: #141c2e;
+
+  --ss-success: #4caf50;
+  --ss-warning: #ff9800;
+  --ss-error: #ef5350;
+  --ss-info: #42a5f5;
+
+  --ss-ssr: #ffd54f;
+  --ss-sr: #90caf9;
+
+  --ss-gradient-primary: linear-gradient(
+    135deg,
+    var(--ss-primary) 0%,
+    var(--ss-primary-dark) 100%
+  );
+  --ss-gradient-secondary: linear-gradient(135deg, var(--ss-secondary) 0%, var(--ss-secondary-light) 100%);
+  --ss-gradient-card: linear-gradient(135deg, var(--ss-bg-card) 0%, var(--ss-bg-secondary) 100%);
+}
+
+.ss-card {
+  background: var(--ss-gradient-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+}
+
+.ss-button {
+  background: var(--ss-gradient-primary);
+  color: var(--ss-bg-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}

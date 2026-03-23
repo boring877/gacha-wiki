@@ -1,0 +1,135 @@
+{
+  "id": 7103301,
+  "character": "Ceres",
+  "name": "An Unseen Place",
+  "slug": "ceres-an-unseen-place",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "All Classes",
+  "statTag": "Focus",
+  "image": "ARCANA_WEST_BEAMSWORD_SSR_01.png",
+  "imageSmall": "ARCANA_WEST_BEAMSWORD_SSR_01_S.png",
+  "characterId": 1033,
+  "episode": "As dawn sweeps away the night's darkness from the modest room, Ceres is already in uniform, fastening her sword belt.\n\nCallused hands slip into white gloves, while a scarred body is wrapped in a navy-blue uniform.\n\nSteel becomes a blade only after being hammered a thousand times.\nSo, she allows her flesh to be tenderized and her bones battered.\n\nToday again, the captain of the Western Liberators tempers herself.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1400,
+      "addPerValueRate": 24
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 600,
+      "addPerValueRate": 8
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 7,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Coins",
+      "value": 13,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Training",
+      "valueType": "TRAINING_BONUS_PP",
+      "value": 1,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 225,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "statTag": "Focus"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Poison Against Poison",
+      "iconType": "Training",
+      "effectType": "Stat Gain",
+      "statTag": "Focus",
+      "value": 1
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5103301,
+      "title": "힘을 원하는가",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 15
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5103302,
+      "title": "기준의 차이",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 15
+        },
+        {
+          "type": "SE Potential",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 710330101
+    },
+    {
+      "cutsceneId": 5103303,
+      "title": "심각한 훈련 중독입니다",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 20
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710330102
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+---
+const JOURNEY_ICONS: Record<string, string> = {
+  Power: 'POTEN_STAT_POWER_ICON',
+  Health: 'POTEN_STAT_HEALTH_ICON',
+  Endurance: 'POTEN_STAT_ENDURANCE_ICON',
+  Focus: 'POTEN_STAT_FOCUS_ICON',
+  Protect: 'POTEN_STAT_PROTECT_ICON',
+};
+
+const icons = import.meta.glob('/src/assets/images/games/star-savior/journey/*.png', { eager: true, query: '?url', import: 'default' });
+
+const { stat, size = 20 } = Astro.props;
+const iconName = JOURNEY_ICONS[stat] || '';
+
+let src = '';
+for (const [path, url] of Object.entries(icons)) {
+  if (path.endsWith(iconName + '.png')) {
+    src = url as string;
+    break;
+  }
+}
+---
+
+{src && (
+  <img src={src} alt={stat} width={size} height={size} class="ss-journey-stat-icon" loading="lazy" />
+)}

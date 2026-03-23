@@ -1,0 +1,68 @@
+---
+// Journey stat grade icon component for Star Savior
+// Looks up grade icon by grade string (e.g. "D+", "G", "SSS")
+const icons = import.meta.glob('/src/assets/images/games/star-savior/grades/*.png', { eager: true, query: '?url', import: 'default' });
+
+const GRADE_FILE_MAP: Record<string, string> = {
+  'G': 'UI_JOURNEY_END_ICON_GRADE_G.png',
+  'G+': 'UI_JOURNEY_END_ICON_GRADE_G_PLUS.png',
+  'F': 'UI_JOURNEY_END_ICON_GRADE_F.png',
+  'F+': 'UI_JOURNEY_END_ICON_GRADE_F_PLUS.png',
+  'E': 'UI_JOURNEY_END_ICON_GRADE_E.png',
+  'E+': 'UI_JOURNEY_END_ICON_GRADE_E_PLUS.png',
+  'D': 'UI_JOURNEY_END_ICON_GRADE_D.png',
+  'D+': 'UI_JOURNEY_END_ICON_GRADE_D_PLUS.png',
+  'C': 'UI_JOURNEY_END_ICON_GRADE_C.png',
+  'C+': 'UI_JOURNEY_END_ICON_GRADE_C_PLUS.png',
+  'B': 'UI_JOURNEY_END_ICON_GRADE_B.png',
+  'B+': 'UI_JOURNEY_END_ICON_GRADE_B_PLUS.png',
+  'A': 'UI_JOURNEY_END_ICON_GRADE_A.png',
+  'A+': 'UI_JOURNEY_END_ICON_GRADE_A_PLUS.png',
+  'S': 'UI_JOURNEY_END_ICON_GRADE_S.png',
+  'SG': 'UI_JOURNEY_END_ICON_GRADE_SG.png',
+  'SG+': 'UI_JOURNEY_END_ICON_GRADE_SG_PLUS.png',
+  'SF': 'UI_JOURNEY_END_ICON_GRADE_SF.png',
+  'SF+': 'UI_JOURNEY_END_ICON_GRADE_SF_PLUS.png',
+  'SE': 'UI_JOURNEY_END_ICON_GRADE_SE.png',
+  'SE+': 'UI_JOURNEY_END_ICON_GRADE_SE_PLUS.png',
+  'SD': 'UI_JOURNEY_END_ICON_GRADE_SD.png',
+  'SD+': 'UI_JOURNEY_END_ICON_GRADE_SD_PLUS.png',
+  'SC': 'UI_JOURNEY_END_ICON_GRADE_SC.png',
+  'SC+': 'UI_JOURNEY_END_ICON_GRADE_SC_PLUS.png',
+  'SB': 'UI_JOURNEY_END_ICON_GRADE_SB.png',
+  'SB+': 'UI_JOURNEY_END_ICON_GRADE_SB_PLUS.png',
+  'SA': 'UI_JOURNEY_END_ICON_GRADE_SA.png',
+  'SA+': 'UI_JOURNEY_END_ICON_GRADE_SA_PLUS.png',
+  'SS': 'UI_JOURNEY_END_ICON_GRADE_SS.png',
+  'SSG': 'UI_JOURNEY_END_ICON_GRADE_SSG.png',
+  'SSG+': 'UI_JOURNEY_END_ICON_GRADE_SSG_PLUS.png',
+  'SSF': 'UI_JOURNEY_END_ICON_GRADE_SSF.png',
+  'SSF+': 'UI_JOURNEY_END_ICON_GRADE_SSF_PLUS.png',
+  'SSE': 'UI_JOURNEY_END_ICON_GRADE_SSE.png',
+  'SSE+': 'UI_JOURNEY_END_ICON_GRADE_SSE_PLUS.png',
+  'SSD': 'UI_JOURNEY_END_ICON_GRADE_SSD.png',
+  'SSD+': 'UI_JOURNEY_END_ICON_GRADE_SSD_PLUS.png',
+  'SSC': 'UI_JOURNEY_END_ICON_GRADE_SSC.png',
+  'SSC+': 'UI_JOURNEY_END_ICON_GRADE_SSC_PLUS.png',
+  'SSB': 'UI_JOURNEY_END_ICON_GRADE_SSB.png',
+  'SSB+': 'UI_JOURNEY_END_ICON_GRADE_SSB_PLUS.png',
+  'SSA': 'UI_JOURNEY_END_ICON_GRADE_SSA.png',
+  'SSA+': 'UI_JOURNEY_END_ICON_GRADE_SSA_PLUS.png',
+  'SSS': 'UI_JOURNEY_END_ICON_GRADE_SSS.png',
+};
+
+const { grade, size = 20 } = Astro.props;
+const filename = GRADE_FILE_MAP[grade] || '';
+
+let src = '';
+if (filename) {
+  for (const [path, url] of Object.entries(icons)) {
+    if (path.endsWith('/' + filename)) {
+      src = url as string;
+      break;
+    }
+  }
+}
+---
+
+{src && <img src={src} alt={grade} width={size} height={size} class="ss-grade-icon" style={`width:${size}px;height:${size}px;object-fit:contain;`} loading="lazy" />}

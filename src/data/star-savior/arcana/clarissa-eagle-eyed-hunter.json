@@ -1,0 +1,69 @@
+{
+  "id": 5999912,
+  "character": "Clarissa",
+  "name": "Eagle-Eyed Hunter",
+  "slug": "clarissa-eagle-eyed-hunter",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Focus",
+  "image": "ARCANA_MAGICIAN_SNIPER_R_01.png",
+  "imageSmall": "ARCANA_MAGICIAN_SNIPER_R_01_S.png",
+  "characterId": 1511,
+  "episode": "A gaze aimed beyond the sights may call forth inevitability.\nHowever, young marksman, do not disregard the hand that reaches toward you from your blind spot.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Focus"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 250,
+      "addPerValueRate": 6
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5001701,
+      "title": "Star",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 3
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

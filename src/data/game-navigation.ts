@@ -5,7 +5,8 @@ export type GameKey =
   | 'rebellion-gilgamesh'
   | 'stella-sora'
   | 'busty-burst'
-  | 'taimanin-squad';
+  | 'taimanin-squad'
+  | 'star-savior';
 
 export interface NavigationLink {
   name: string;
@@ -168,8 +169,10 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: RGIcon,
     sections: [
       {
-        title: 'Characters',
-        links: [],
+        title: 'Resources',
+        links: [
+          { name: 'Blog', href: '/guides/star-savior/blog/' },
+        ],
       },
       {
         title: 'Club Management',
@@ -325,6 +328,37 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Resources',
         links: [
           { name: 'Blog', href: '/guides/taimanin-squad/blog/' },
+        ],
+      },
+    ],
+  },
+  'star-savior': {
+    name: 'Star Savior',
+    image: '/images/games/star-savior/icon.png',
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/star-savior/characters/' },
+          { name: 'Banners', href: '/guides/star-savior/banners/' },
+        ],
+      },
+      {
+        title: 'Arcana',
+        links: [
+          { name: 'Database', href: '/guides/star-savior/arcana/' },
+        ],
+      },
+      {
+        title: 'Equipment',
+        links: [
+          { name: 'Database', href: '/guides/star-savior/gear/' },
+        ],
+      },
+      {
+        title: 'Resources',
+        links: [
+          { name: 'Blog', href: '/guides/star-savior/blog/' },
         ],
       },
     ],

@@ -1,0 +1,97 @@
+---
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+
+import '../../styles/games/star-savior/ss-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/star-savior/ss-layout.css';
+import '../../styles/games/star-savior/ss-blog-detail.css';
+
+export interface Props {
+  post: {
+    slug: string;
+    title: string;
+    description: string;
+    author: string;
+    publishDate: string;
+    category: string;
+    tags: string[];
+    content: string;
+  };
+}
+
+const { post } = Astro.props;
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<html lang="en">
+  <head>
+    <slot name="head" />
+  </head>
+  <body class="ss-body">
+    <CustomScrollbar />
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+
+    <div class="ss-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="star-savior" />
+      <MobileMenu />
+
+      <div class="ss-container">
+        <main class="ss-main">
+          <section class="ss-title-only-section">
+            <h1 class="ss-title-only-heading">{post.title}</h1>
+            <DecorativeLines />
+          </section>
+
+          <div class="content-area">
+            <article class="ss-blog-article">
+              <header class="ss-blog-header">
+                <div class="ss-blog-meta">
+                  <span class="ss-blog-meta-category">{post.category}</span>
+                  <span class="ss-blog-meta-separator">•</span>
+                  <span class="ss-blog-meta-date">{formatDate(post.publishDate)}</span>
+                  <span class="ss-blog-meta-separator">•</span>
+                  <span class="ss-blog-meta-author">By {post.author}</span>
+                </div>
+              </header>
+
+              <div class="ss-blog-content" set:html={post.content} />
+
+              {post.tags && post.tags.length > 0 && (
+                <div class="ss-blog-tags">
+                  <div class="ss-blog-tags-label">Tags</div>
+                  <div class="ss-blog-tags-list">
+                    {post.tags.map(tag => (
+                      <span class="ss-blog-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+
+    <Analytics />
+  </body>
+</html>

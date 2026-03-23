@@ -1,0 +1,178 @@
+{
+  "id": 7101101,
+  "character": "Carmen",
+  "name": "Night View Beyond the Window",
+  "slug": "carmen-night-view-beyond-the-window",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Savior",
+  "statTag": "Protect",
+  "image": "ARCANA_KINGDOM_SHIELDER_SSR_01.png",
+  "imageSmall": "ARCANA_KINGDOM_SHIELDER_SSR_01_S.png",
+  "characterId": 1011,
+  "episode": "A mouthwatering scent tickles the nose.\nThe rich aroma of grains simmering in hot broth.\n\nAfter finishing her duty of helping prepare meals for the other knights, Carmen sits by the window and enjoys a brief rest.\n\nTo win people's hearts, you must start with their stomachs.\nSuch conduct has earned Carmen the respect of her fellow Monastir Knights.\nIf only she'd stop making that strange soup of hers every now and then...",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1400,
+      "addPerValueRate": 24
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 800,
+      "addPerValueRate": 12
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Coins",
+      "value": 10,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 7,
+      "addPerValue": 1,
+      "statTag": "Protect"
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "TRAINING_VALUE_RATE_UP_TAG",
+      "valueRate": 400,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 6,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 500
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 200,
+      "addPerValueRate": 200
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 60,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Secret Recipe Soup",
+      "iconType": "Training",
+      "effectType": "Training Condition Efficiency",
+      "valueRate": 500
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5101101,
+      "title": "For Whom the Soup Boils",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 5
+        },
+        {
+          "type": "Journey Buff",
+          "value": 2
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101102,
+      "title": "The Art of Shrimp Survival",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 10
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 710110101
+    },
+    {
+      "cutsceneId": 5101103,
+      "title": "Traces of a Companion",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 12
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710110102
+    }
+  ]
+}

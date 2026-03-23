@@ -1,0 +1,118 @@
+{
+  "id": 6100201,
+  "character": "Smile",
+  "name": "Cats Do Not Smile",
+  "slug": "smile-cats-do-not-smile",
+  "grade": "SR",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Focus",
+  "image": "ARCANA_VOYAGER_SMILE_SR_01.png",
+  "imageSmall": "ARCANA_VOYAGER_SMILE_SR_01_S.png",
+  "characterId": 1002,
+  "episode": "Perhaps cats were born to make people smile.\nEven their cries as they plead for food are considered lovable by the masses.\nSeeing people smile at cats, Smile imitated cats.\n\nBut soon, she realized the issue with her approach.\n\nPeople smile when they look at cats, but that does not mean cats smile when they look at people.\nLike cats, Smile could make others smile, but no smile had ever graced her lips.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 700,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 800,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 200,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Focus"
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 125,
+      "addPerValue": 5
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000101,
+      "title": "Magician",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5100201,
+      "title": "Evolution of a Species",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 8
+        },
+        {
+          "type": "Stat",
+          "stat": "Protect",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 8
+        },
+        {
+          "type": "Stamina",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5100202,
+      "title": "Smile Investigation",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 12
+        },
+        {
+          "type": "Stamina",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 610020101
+    }
+  ]
+}

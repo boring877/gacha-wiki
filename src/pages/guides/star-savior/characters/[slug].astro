@@ -1,0 +1,1186 @@
+---
+// Star Savior Individual Character Page
+import CharacterDetailLayout from '../../../../layouts/star-savior/CharacterDetailLayout.astro';
+import { STAR_SAVIOR_CHARACTERS } from '../../../../data/star-savior/characters.js';
+
+import '../../../../styles/games/star-savior/ss-character-detail.css';
+import SSCharacterImage from '../../../../components/star-savior/SSCharacterImage.astro';
+import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
+import SSRoleImage from '../../../../components/star-savior/SSRoleImage.astro';
+import SSSkillIcon from '../../../../components/star-savior/SSSkillIcon.astro';
+import SSAttackTagImage from '../../../../components/star-savior/SSAttackTagImage.astro';
+import SSElementImage from '../../../../components/star-savior/SSElementImage.astro';
+import SSJourneyStatIcon from '../../../../components/star-savior/SSJourneyStatIcon.astro';
+import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
+import SSGradeIcon from '../../../../components/star-savior/SSGradeIcon.astro';
+
+export function getStaticPaths() {
+  return STAR_SAVIOR_CHARACTERS.map((c) => ({
+    params: { slug: c.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+let data: any = null;
+try {
+  const mod = await import(`../../../../data/star-savior/characters/${slug}.json`);
+  data = mod.default || mod;
+} catch {
+  return Astro.redirect('/guides/star-savior/characters/');
+}
+
+const STAT_LABELS: Record<string, string> = {
+  HP: 'HP',
+  'Turn Speed': 'SPD',
+  'Super Armor': 'Toughness',
+  ATK: 'ATK',
+  DEF: 'DEF',
+  'Hit Rate': 'Hit Rate',
+  'Crit Rate': 'Crit Rate',
+  'Crit Damage': 'Crit DMG',
+  'Effect Hit Rate': 'Effect Hit',
+  'Effect Evasion': 'Effect RES',
+  'Definite Effect Hit': 'Def. Effect Hit',
+  'Definite Effect Evasion': 'Def. Effect RES',
+  'Adj. Def. Effect Eva.': 'Adj. Def. Effect RES',
+  NST_RATE_CROSS_ATTACK: 'Cross Attack',
+  NST_RATE_REVENGE_ATTACK: 'Revenge Attack',
+};
+
+const PROFILE_LABELS: Record<string, string> = {
+  birthday: 'Birthday',
+  height: 'Height',
+  hometown: 'Hometown',
+  team: 'Team',
+  vaKR: 'VA (KR)',
+  vaJP: 'VA (JP)',
+};
+
+function formatStat(key: string, value: number): string {
+  if (['Hit Rate', 'Crit Rate', 'Crit Damage', 'Effect Hit Rate', 'Effect Evasion', 'Definite Effect Hit', 'Definite Effect Evasion'].includes(key)) {
+    return (value / 100).toFixed(0) + '%';
+  }
+  return value.toLocaleString();
+}
+
+function formatDamageFactor(value: number | null): string {
+  if (value === null || value === undefined) return '-';
+  return (value / 100).toFixed(0) + '%';
+}
+
+function stripHtml(text: string): string {
+  return text.replace(/<[^>]+>/g, '');
+}
+
+function getVisibleEffects(seEffects: any[]): any[] {
+  if (!seEffects || seEffects.length === 0) return [];
+  const seen = new Set<string>();
+  return seEffects.filter((e: any) => {
+    const buff = e.buff || '';
+    if (buff.startsWith('BI_STAT_')) return false;
+    if (!e.buffName) return false;
+    if (seen.has(buff)) return false;
+    seen.add(buff);
+    return true;
+  });
+}
+
+function formatEffectLine(e: any): string {
+  const name = e.buffName || '';
+  const desc = e.buffDesc || '';
+  const turns = e.turns;
+  const rate = e.activationRate || 0;
+  const target = e.target || '';
+  let line = name;
+  if (turns > 0) line += ` (${turns} turn${turns > 1 ? 's' : ''})`;
+  if (rate > 0 && rate < 10000) line += ` ${rate / 100}% chance`;
+  if (desc) line += ` — ${desc}`;
+  return line;
+}
+
+function getSkillPhase(strId: string): string {
+  if (strId.includes('_ATTACK')) return 'Attack';
+  if (strId.includes('_SPECIAL')) return 'Special';
+  if (strId.includes('_HYPER')) return 'Hyper';
+  if (strId.includes('_UNIQUE_PASSIVE')) return 'Unique Passive';
+  return strId.split('_').pop() || '';
+}
+
+function getSkillDamageLabel(skill: any, data: any, attackTag: string): string[] {
+  const phase = getSkillPhase(skill.strId);
+  const key = phase.toLowerCase() as keyof typeof data.damage;
+  if (!data.damage || !data.damage[key]) return [];
+  const dt = data.damage[key];
+  const parts: string[] = [];
+  if (dt.atkFactor) parts.push((dt.atkFactor / 100).toFixed(0) + '% ATK');
+  if (dt.defFactor) parts.push((dt.defFactor / 100).toFixed(0) + '% DEF');
+  if (dt.hpFactor) parts.push((dt.hpFactor / 100).toFixed(0) + '% HP');
+  const tag = ATTACK_TAG_MAP[attackTag];
+  if (tag) parts.push(tag + ' DMG');
+  return parts;
+}
+
+function formatStatBonusType(type: string): string {
+  const map: Record<string, string> = {
+    'NST_NV_RATE_DEF': 'DEF',
+    'NST_RATE_EFFECT_EVADE': 'Effect RES',
+    'NST_NV_RATE_HP': 'HP',
+    'NST_NV_RATE_ATK': 'ATK',
+    'NST_NV_RATE_CRI': 'Crit Rate',
+    'NST_NV_RATE_CRI_DMG': 'Crit DMG',
+    'NST_NV_RATE_SPD': 'SPD',
+  };
+  return map[type] || type.replace('NST_NV_RATE_', '').replace('NST_RATE_', '');
+}
+
+function diffDescriptions(prevDesc: string, currDesc: string): string[] {
+  const prev = prevDesc.replace(/<[^>]*>/g, '');
+  const curr = currDesc.replace(/<[^>]*>/g, '');
+  if (prev === curr) return [];
+  const prevWords = prev.split(/\s+/);
+  const currWords = curr.split(/\s+/);
+  const minLen = Math.min(prevWords.length, currWords.length);
+  const groups: { from: string[]; to: string[] }[] = [];
+  let current: { from: string[]; to: string[] } | null = null;
+  for (let i = 0; i < minLen; i++) {
+    if (prevWords[i] !== currWords[i]) {
+      if (!current) current = { from: [], to: [] };
+      current.from.push(prevWords[i]);
+      current.to.push(currWords[i]);
+    } else {
+      if (current) { groups.push(current); current = null; }
+    }
+  }
+  if (current) groups.push(current);
+  return groups.map((g) => {
+    let from = g.from.join(' ').replace(/^\W+/, '');
+    let to = g.to.join(' ').replace(/^\W+/, '');
+    if (from === to) return to;
+    return from + ' → ' + to;
+  });
+}
+
+function seToSummary(effects: any[]): string {
+  if (!effects || effects.length === 0) return '';
+  const parts: string[] = [];
+  for (const eff of effects) {
+    const buff = eff.buff || '';
+    const stats = eff.stats || [];
+    const rate = eff.activationRate || 0;
+    if (buff.includes('DAMAGE_UP') && stats.length > 0) {
+      const r = stats[0]['NKM_STAT_TYPE_RATE'];
+      if (r !== undefined) parts.push('DMG +' + (r / 100).toFixed(0) + '%');
+    } else if (buff.includes('CRITICAL_DAMAGE') && stats.length > 0 && stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
+      parts.push('Crit DMG +' + (stats[0]['NKM_STAT_TYPE_RATE'] / 100).toFixed(0) + '%');
+    } else if (buff.includes('CRITICAL') && stats.length > 0 && stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
+      parts.push('Crit +' + (stats[0]['NKM_STAT_TYPE_RATE'] / 100).toFixed(0) + '%');
+    } else if (buff.includes('DEFENSE_DECREASE')) {
+      parts.push('DEF Down ' + (rate / 100).toFixed(0) + '%');
+    } else if (buff.includes('DEFENSE_INCREASE')) {
+      parts.push('DEF Up ' + (rate / 100).toFixed(0) + '%');
+    } else if (buff.includes('SPEED_INCREASE')) {
+      parts.push('SPD Up');
+    } else if (buff.includes('HEAL') && stats.length > 0) {
+      const r = stats[0]['NKM_STAT_TYPE_RATE'];
+      if (r !== undefined) parts.push('Heal +' + (r / 100).toFixed(0) + '%');
+    } else if (buff.includes('SUPER_ARMOR_DAMAGE') && stats.length > 0) {
+      const r = stats[0]['NKM_STAT_TYPE_RATE'];
+      if (r !== undefined) parts.push('SA DMG +' + (r / 100).toFixed(0) + '%');
+    } else if (buff.includes('BURN') || buff.includes('BLEED') || buff.includes('FREEZE')) {
+      parts.push(buff.replace('BI_', '').replace(/_/g, ' '));
+    } else if (buff.includes('RESOURCE_SUN')) parts.push('Sun +1');
+    else if (buff.includes('RESOURCE_MOON')) parts.push('Moon +1');
+    else if (buff.includes('RESOURCE_STAR')) parts.push('Star +1');
+    else if (buff.includes('RESOURCE_CHAOS')) parts.push('Chaos +1');
+    else if (buff.includes('RESOURCE_ORDER')) parts.push('Order +1');
+    else if (buff.includes('BARRIER')) parts.push('Barrier');
+    else if (buff.includes('EXTRA_TURN')) parts.push('Extra Turn');
+    else if (buff.includes('SILENCE')) parts.push('Silence');
+    else if (buff.includes('SPEED_GAUGE_UP')) parts.push('Action Gauge Up');
+    else if (buff.includes('SPEED_GAUGE_DOWN')) parts.push('Action Gauge Down');
+    else if (buff.includes('DEBUFFBAN')) parts.push('Debuff Immune');
+    else if (buff.includes('GUARD')) parts.push('Guard');
+    else if (buff.includes('HYPER_COOL_TURN_DOWN') && !buff.includes('UP')) parts.push('Hyper CD -1');
+    else if (buff.includes('SPECIAL_COOL_TURN_DOWN')) parts.push('Special CD -1');
+  }
+  return parts.join(', ');
+}
+
+function seAccumDmgBonus(levels: any[], upToIdx: number): number | null {
+  let best: number | null = null;
+  for (let i = 0; i <= upToIdx; i++) {
+    const effects = levels[i]?.seEffects || [];
+    for (const eff of effects) {
+      if ((eff.buff || '').includes('DAMAGE_UP') && eff.stats && eff.stats.length > 0 && eff.stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
+        best = eff.stats[0]['NKM_STAT_TYPE_RATE'];
+      }
+    }
+  }
+  return best;
+}
+
+function buildLevelChanges(levels: any[], targetIdx: number): { text: string; type: string }[] {
+  if (targetIdx <= 0) return [{ text: 'Base skill', type: 'base' }];
+  const curr = levels[targetIdx];
+  const base = levels[0];
+  const isPassive = (curr.statBonuses && curr.statBonuses.length > 0) && !curr.seEffects?.some((e: any) => (e.buff || '').includes('DAMAGE_UP'));
+  if (isPassive) {
+    const changes: { text: string; type: string }[] = [];
+    const baseMap = new Map<string, number>();
+    for (const b of (base.statBonuses || [])) baseMap.set(b.type, b.rate);
+    for (const b of (curr.statBonuses || [])) {
+      const label = formatStatBonusType(b.type);
+      changes.push({ text: label + ' +' + (b.rate / 100).toFixed(0) + '%', type: 'stat' });
+    }
+    const baseDesc = (base.description || '').replace(/<[^>]*>/g, '');
+    const currDesc = (curr.description || '').replace(/<[^>]*>/g, '');
+    if (currDesc.length > baseDesc.length + 10) {
+      const added = currDesc.slice(baseDesc.length).trim();
+      if (added.length > 3) changes.push({ text: added, type: 'desc' });
+    }
+    return changes;
+  }
+  const changes: { text: string; type: string }[] = [];
+  let totalCd = 0;
+  let lastDmgRate: number | null = null;
+  for (let i = 0; i <= targetIdx; i++) {
+    const lv = levels[i];
+    totalCd += lv.cdReduce || 0;
+    const effects = lv.seEffects || [];
+    for (const eff of effects) {
+      if ((eff.buff || '').includes('DAMAGE_UP') && eff.stats && eff.stats.length > 0 && eff.stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
+        lastDmgRate = eff.stats[0]['NKM_STAT_TYPE_RATE'];
+      }
+    }
+  }
+  if (lastDmgRate !== null) {
+    changes.push({ text: 'DMG +' + (lastDmgRate / 100).toFixed(0) + '%', type: 'se' });
+  }
+  if (totalCd > 0) {
+    changes.push({ text: 'CD -' + totalCd + ' turn' + (totalCd > 1 ? 's' : ''), type: 'cd' });
+  }
+  const descDiff = diffDescriptions(base.description || '', curr.description || '');
+  for (const d of descDiff) {
+    changes.push({ text: d, type: 'desc' });
+  }
+  if (changes.length === 0) {
+    changes.push({ text: 'No changes at this level', type: 'none' });
+  }
+  return changes;
+}
+
+const ATTACK_TAG_MAP: Record<string, string> = {
+  'UAT_SLASH': 'Slash',
+  'UAT_IMPACT': 'Impact',
+  'UAT_ELEMENT': 'Elemental',
+  'UAT_SPIRIT': 'Psychic',
+  'UAT_VOID': 'Void',
+};
+
+const ADJUST_TYPE_MAP: Record<string, string> = {
+  'NUAT_SUN': 'Sun',
+  'NUAT_MOON': 'Moon',
+  'NUAT_STAR': 'Star',
+  'NUAT_CHAOS': 'Chaos',
+  'NUAT_ORDER': 'Order',
+};
+
+const elementLabel = data.adjustType ? (ADJUST_TYPE_MAP[data.adjustType] || data.adjustType) : '';
+
+const NB_HIGHLIGHT_MAP: Record<string, string> = {
+  'NSI_SKILL_1_ATTACK': 'Attack',
+  'NSI_SKILL_2_SPECIAL': 'Special',
+  'NSI_SKILL_3_HYPER': 'Hyper',
+};
+
+const COUNTER_CHAIN: Record<string, { counters: string; counteredBy: string }> = {
+  'NUAT_SUN': { counters: 'Star', counteredBy: 'Moon' },
+  'NUAT_MOON': { counters: 'Sun', counteredBy: 'Star' },
+  'NUAT_STAR': { counters: 'Moon', counteredBy: 'Sun' },
+  'NUAT_CHAOS': { counters: 'Order', counteredBy: 'Order' },
+  'NUAT_ORDER': { counters: 'Chaos', counteredBy: 'Chaos' },
+};
+
+const counterInfo = data.adjustType ? COUNTER_CHAIN[data.adjustType] : null;
+
+const LABEL_TO_TYPE: Record<string, string> = {
+  'Sun': 'NUAT_SUN',
+  'Moon': 'NUAT_MOON',
+  'Star': 'NUAT_STAR',
+  'Chaos': 'NUAT_CHAOS',
+  'Order': 'NUAT_ORDER',
+};
+
+const description = `${data.name} - ${data.rarity} ${data.role} in Star Savior. View stats, skills, Nova Burst, and profile.`;
+
+function calcMaxBattlePower(d: any): number {
+  if (!d.stats) return 0;
+  const growth = d.statGrowth || {};
+  const resonance = d.resonance || [];
+  const BP_ATK_S = 10, BP_HP_S = 55, BP_DEF_S = 5, BP_SPD_S = 5, BP_SCALE = 12;
+  const TACTICS_TIERS = [
+    { min: 2, max: 10, a: 10, h: 60, d: 5 },
+    { min: 11, max: 30, a: 8, h: 48, d: 4 },
+    { min: 31, max: 50, a: 6, h: 36, d: 3 },
+    { min: 51, max: 100, a: 4, h: 24, d: 2 },
+  ];
+  const AFF_TIERS = [
+    { min: 2, max: 10, a: 10, h: 60, d: 6 },
+    { min: 11, max: 30, a: 8, h: 48, d: 5 },
+    { min: 31, max: 60, a: 5, h: 30, d: 3 },
+  ];
+  let tacAtk = 0, tacHp = 0, tacDef = 0;
+  for (const t of TACTICS_TIERS) { const lv = Math.min(100, t.max) - t.min + 1; if (lv <= 0) continue; tacAtk += t.a * lv; tacHp += t.h * lv; tacDef += t.d * lv; }
+  let affAtk = 0, affHp = 0, affDef = 0;
+  for (const t of AFF_TIERS) { const lv = Math.min(60, t.max) - t.min + 1; if (lv <= 0) continue; affAtk += t.a * lv; affHp += t.h * lv; affDef += t.d * lv; }
+  const sgPct = 7 * 200;
+  let resAtkFlat = 0, resAtkPct = 0, resHpFlat = 0, resHpPct = 0, resDefFlat = 0, resDefPct = 0;
+  let resCritRate = 0, resCritDmg = 0, resEffHit = 0, resEffEva = 0;
+  for (const r of resonance) {
+    for (const s of r.stats) {
+      const map: Record<string, { flat: string; pct: string }> = {
+        'ATK': { flat: 'resAtkFlat', pct: 'resAtkPct' }, 'HP': { flat: 'resHpFlat', pct: 'resHpPct' }, 'DEF': { flat: 'resDefFlat', pct: 'resDefPct' },
+      };
+      if (s.type === 'NST_ATK') resAtkFlat += s.value;
+      else if (s.type === 'NST_NV_RATE_ATK') resAtkPct += s.value;
+      else if (s.type === 'NST_HP') resHpFlat += s.value;
+      else if (s.type === 'NST_NV_RATE_HP') resHpPct += s.value;
+      else if (s.type === 'NST_DEF') resDefFlat += s.value;
+      else if (s.type === 'NST_NV_RATE_DEF') resDefPct += s.value;
+      else if (s.type === 'NST_RATE_CRITICAL') resCritRate += s.value;
+      else if (s.type === 'NST_RATE_CRITICAL_DAMAGE') resCritDmg += s.value;
+      else if (s.type === 'NST_RATE_EFFECT_HIT') resEffHit += s.value;
+      else if (s.type === 'NST_RATE_EFFECT_EVADE') resEffEva += s.value;
+    }
+  }
+  const baseAtk = (d.stats['ATK'] || 0) + (growth['ATK'] || 0) * 199;
+  const baseHp = (d.stats['HP'] || 0) + (growth['HP'] || 0) * 199;
+  const baseDef = (d.stats['DEF'] || 0) + (growth['DEF'] || 0) * 199;
+  const fullAtk = baseAtk + resAtkFlat + affAtk + tacAtk;
+  const fullHp = baseHp + resHpFlat + affHp + tacHp;
+  const fullDef = baseDef + resDefFlat + affDef + tacDef;
+  const atkPct = sgPct + resAtkPct;
+  const hpPct = sgPct + resHpPct;
+  const defPct = sgPct + resDefPct;
+  const finalAtk = fullAtk + Math.floor(fullAtk * atkPct / 10000);
+  const finalHp = fullHp + Math.floor(fullHp * hpPct / 10000);
+  const finalDef = fullDef + Math.floor(fullDef * defPct / 10000);
+  const critRate = (d.stats['Crit Rate'] || 0) + resCritRate;
+  const critDmg = (d.stats['Crit Damage'] || 0) + resCritDmg;
+  const spd = (d.stats['Turn Speed'] || 0) + (growth['Turn Speed'] || 0) * 199;
+  const effHit = (d.stats['Effect Hit Rate'] || 0) + resEffHit;
+  const effEva = (d.stats['Effect Evasion'] || 0) + resEffEva;
+  const cr = critRate / 10000;
+  const cd = critDmg / 10000;
+  const atkFactor = (finalAtk / BP_ATK_S) * BP_SCALE * ((1 - cr) + cr * (1 + cd));
+  const hpFactor = (finalHp / BP_HP_S) * BP_SCALE;
+  const defFactor = (finalDef / BP_DEF_S) * BP_SCALE;
+  const spdFactor = (100 + (spd - 100) / BP_SPD_S) / 100;
+  const hitEvFactor = Math.max(1.0, 1 + (effHit - 10000 + effEva) / 10);
+  const baseScore = (atkFactor + hpFactor + defFactor) * spdFactor * hitEvFactor;
+  const totalSkillLevel = (d.skills || []).reduce((sum: number, s: any) => sum + (s.maxLevel || 1), 0);
+  const classMult = 1 + 3 * 0.02 + totalSkillLevel * 0.01;
+  return Math.floor(baseScore * classMult);
+}
+
+const maxBattlePower = calcMaxBattlePower(data);
+---
+
+<CharacterDetailLayout title={data.name} description={description} gameTitle={data.name}>
+  <div class="ss-detail-header">
+    <div class="ss-detail-portrait-container">
+      <SSCharacterImage slug={slug} alt={data.name} imageType="portrait" width={800} height={1120} format="png" quality={100} class="ss-detail-portrait-wrapper" />
+    </div>
+    <div class="ss-detail-info">
+      <h2 class="ss-detail-name">{data.name}</h2>
+      <div class="ss-detail-meta">
+        <SSRarityImage rarity={data.rarity} width={60} height={30} />
+        <div class="ss-detail-role-badge">
+          <SSRoleImage role={data.role} width={24} height={24} />
+          <span>{data.role}</span>
+        </div>
+        {data.adjustType && ADJUST_TYPE_MAP[data.adjustType] && (
+          <div class="ss-detail-element-badge">
+            <SSElementImage adjustType={data.adjustType} width={24} height={24} />
+            <span>{elementLabel}</span>
+          </div>
+        )}
+        {data.stats && data.stats['Super Armor'] && (
+          <div class="ss-detail-toughness-badge">
+            <SSStatIcon stat="Toughness" size={20} />
+            <span>Toughness {data.stats['Super Armor']}</span>
+          </div>
+        )}
+      </div>
+      {counterInfo && (
+        <div class="ss-detail-counter-row">
+          <div class="ss-counter-card ss-counter-strong">
+            <div class="ss-counter-header">
+              <span class="ss-counter-title">Strong vs <SSElementImage adjustType={LABEL_TO_TYPE[counterInfo.counters] || ''} width={16} height={16} /> {counterInfo.counters}</span>
+            </div>
+            <div class="ss-counter-stats">
+              <span>DMG +5%</span>
+              <span>Effect Hit +30%</span>
+              <span>Toughness +1</span>
+            </div>
+          </div>
+          <div class="ss-counter-card ss-counter-weak">
+            <div class="ss-counter-header">
+              <span class="ss-counter-title">Weak vs <SSElementImage adjustType={LABEL_TO_TYPE[counterInfo.counteredBy] || ''} width={16} height={16} /> {counterInfo.counteredBy}</span>
+            </div>
+            <div class="ss-counter-stats">
+              <span>DMG -5%</span>
+              <span>Effect Hit -30%</span>
+              <span>No Toughness DMG</span>
+            </div>
+          </div>
+        </div>
+      )}
+      {data.title && <div class="ss-detail-title">{data.title}</div>}
+      {data.description && <div class="ss-detail-desc">{data.description}</div>}
+      {data.profile && Object.keys(data.profile).length > 0 && (
+        <div class="ss-detail-profile">
+          {Object.entries(data.profile).map(([key, value]) => (
+            <span class="ss-detail-profile-item"><strong>{PROFILE_LABELS[key] || key}:</strong> {String(value)}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+
+  {data.skills && data.skills.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Skills</h2>
+      <div class="ss-skills-list" id="ss-skills-list">
+        {data.skills.map((skill: any, idx: number) => {
+          const phase = getSkillPhase(skill.strId);
+          const displayName = skill.name && skill.name !== phase ? skill.name : phase;
+          const levels = skill.levels || [];
+          const hasMultiLevel = levels.length > 1;
+          const currentLv = 1;
+          const lvIdx = levels.findIndex((l: any) => l.level === currentLv);
+          const lv = lvIdx >= 0 ? levels[lvIdx] : levels[0];
+          const desc = lv ? (lv.description || '') : '';
+          const dmgLabels = getSkillDamageLabel(skill, data, data.attackTagType || '');
+          const initDmgBonus = seAccumDmgBonus(levels, lvIdx);
+          const lvChanges = lvIdx > 0 ? buildLevelChanges(levels, lvIdx) : [{ text: 'Base skill', type: 'base' }];
+          return (
+            <div class="ss-skill-item" data-skill-idx={idx} data-max-lv={skill.maxLevel}>
+              <SSSkillIcon icon={skill.icon} alt={displayName} width={72} height={72} />
+              <div class="ss-skill-info">
+                <div class="ss-skill-name">{displayName}</div>
+                <div class="ss-skill-meta">
+                  <span class="ss-skill-type">{phase}</span>
+                  {skill.target && skill.target !== '-' && <span class="ss-skill-target">{skill.target}</span>}
+                  {skill.cooldown > 0 && <span class="ss-skill-cd">CD: {skill.cooldown} turns</span>}
+                  {dmgLabels.length > 0 && (
+                    <span class="ss-skill-dmg">
+                      {dmgLabels.filter((l: string) => !l.includes('DMG')).join(' / ')}
+                      {dmgLabels.filter((l: string) => l.includes('DMG')).map((l: string) => (
+                        <Fragment>
+                          {dmgLabels.filter((d: string) => !d.includes('DMG')).length > 0 && ' / '}
+                          <SSAttackTagImage attackTagType={data.attackTagType || ''} width={16} height={16} class="ss-attack-tag-icon" />
+                          {' ' + l}
+                        </Fragment>
+                      ))}
+                      {initDmgBonus !== null && <span class="ss-skill-dmg-bonus" data-skill-dmg-bonus={idx}> (+{(initDmgBonus / 100).toFixed(0)}%)</span>}
+                    </span>
+                  )}
+                  {skill.novaForce > 0 && <span class="ss-skill-nf">Nova Force +{skill.novaForce}</span>}
+                </div>
+                {desc && <div class="ss-skill-desc" data-skill-desc={idx} set:html={desc}></div>}
+                {(() => {
+                  const visibleEffects = getVisibleEffects(lv.seEffects || []);
+                  if (visibleEffects.length === 0) return null;
+                  return (
+                    <div class="ss-skill-effects" data-skill-effects={idx}>
+                      {visibleEffects.map((eff: any) => (
+                        <div class={`ss-skill-effect${eff.buffIsPositive ? '' : ' ss-effect-negative'}`}>
+                          <span class="ss-effect-name">{eff.buffName}</span>
+                          {eff.turns > 0 && <span class="ss-effect-turns">{eff.turns} turn{eff.turns > 1 ? 's' : ''}</span>}
+                          {eff.activationRate > 0 && eff.activationRate < 10000 && <span class="ss-effect-rate">{eff.activationRate / 100}%</span>}
+                          {eff.buffDesc && <span class="ss-effect-desc">{eff.buffDesc}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })()}
+                {skill.novaBurst && (
+                  <div class="ss-skill-nova-burst">
+                    <div class="ss-nb-header">
+                      <span class="ss-nb-label">Nova Burst</span>
+                      {skill.novaBurst.isHighlight && <span class="ss-nb-highlight">Unique</span>}
+                      <span class="ss-nb-cost">4 NF</span>
+                      <span class="ss-nb-common">{skill.novaBurst.commonType === 'toughness_damage' ? '-1 BP Enemy Toughness' : '+1 Toughness (self)'}</span>
+                    </div>
+                    {skill.novaBurst.uniqueDesc && (
+                      <div class="ss-nb-unique" set:html={skill.novaBurst.uniqueDesc}></div>
+                    )}
+                    {!skill.novaBurst.uniqueDesc && skill.novaBurst.commonDesc && (
+                      <div class="ss-nb-common-desc" set:html={skill.novaBurst.commonDesc}></div>
+                    )}
+                  </div>
+                )}
+                {hasMultiLevel && (
+                  <div class="ss-skill-levels">
+                    <div class="ss-skill-level-changes" data-skill-changes={idx}>
+                      {lvChanges.map((c: any) => <span class={`ss-skill-change-tag type-${c.type}`}>{c.text}</span>)}
+                    </div>
+                    <div class="ss-skill-level-btns">
+                      {levels.map((l: any) => (
+                        <button
+                          class={`ss-skill-lv-btn${l.level === 1 ? ' active' : ''}`}
+                          data-lv={l.level}
+                          data-skill-idx={idx}
+                        >
+                          {l.level}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <script is:inline set:html={`
+        var SS_SKILL_LEVELS = ${JSON.stringify(data.skills.map((s: any) => s.levels || []))};
+        function ssDiffDesc(prevDesc, currDesc) {
+          var prev = prevDesc.replace(/<[^>]*>/g, '');
+          var curr = currDesc.replace(/<[^>]*>/g, '');
+          if (prev === curr) return [];
+          var pw = prev.split(/\\s+/), cw = curr.split(/\\s+/);
+          var min = Math.min(pw.length, cw.length);
+          var groups = [], cur = null;
+          for (var i = 0; i < min; i++) {
+            if (pw[i] !== cw[i]) {
+              if (!cur) cur = { from: [], to: [] };
+              cur.from.push(pw[i]); cur.to.push(cw[i]);
+            } else { if (cur) { groups.push(cur); cur = null; } }
+          }
+          if (cur) groups.push(cur);
+          return groups.map(function(g) {
+            var from = g.from.join(' ').replace(/^\\W+/, '');
+            var to = g.to.join(' ').replace(/^\\W+/, '');
+            if (from === to) return to;
+            return from + ' \\u2192 ' + to;
+          });
+        }
+        function ssSeSummary(effects) {
+          if (!effects || effects.length === 0) return '';
+          var parts = [];
+          for (var i = 0; i < effects.length; i++) {
+            var e = effects[i], buff = e.buff || '', stats = e.stats || [], rate = e.activationRate || 0;
+            if (buff.indexOf('DAMAGE_UP') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
+              parts.push('DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
+            else if (buff.indexOf('CRITICAL_DAMAGE') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
+              parts.push('Crit DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
+            else if (buff.indexOf('CRITICAL') !== -1 && buff.indexOf('DAMAGE') === -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
+              parts.push('Crit +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
+            else if (buff.indexOf('DEFENSE_DECREASE') !== -1)
+              parts.push('DEF Down ' + (rate / 100).toFixed(0) + '%');
+            else if (buff.indexOf('DEFENSE_INCREASE') !== -1)
+              parts.push('DEF Up ' + (rate / 100).toFixed(0) + '%');
+            else if (buff.indexOf('SPEED_INCREASE') !== -1)
+              parts.push('SPD Up');
+            else if (buff.indexOf('HEAL') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
+              parts.push('Heal +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
+            else if (buff.indexOf('SUPER_ARMOR_DAMAGE') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
+              parts.push('SA DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
+            else if (buff.indexOf('BURN') !== -1) parts.push('Burn');
+            else if (buff.indexOf('BLEED') !== -1) parts.push('Bleed');
+            else if (buff.indexOf('FREEZE') !== -1) parts.push('Freeze');
+            else if (buff.indexOf('RESOURCE_SUN') !== -1) parts.push('Sun +1');
+            else if (buff.indexOf('RESOURCE_MOON') !== -1) parts.push('Moon +1');
+            else if (buff.indexOf('RESOURCE_STAR') !== -1) parts.push('Star +1');
+            else if (buff.indexOf('RESOURCE_CHAOS') !== -1) parts.push('Chaos +1');
+            else if (buff.indexOf('RESOURCE_ORDER') !== -1) parts.push('Order +1');
+            else if (buff.indexOf('BARRIER') !== -1) parts.push('Barrier');
+            else if (buff.indexOf('EXTRA_TURN') !== -1) parts.push('Extra Turn');
+            else if (buff.indexOf('SILENCE') !== -1) parts.push('Silence');
+            else if (buff.indexOf('SPEED_GAUGE_UP') !== -1) parts.push('Action Gauge Up');
+            else if (buff.indexOf('SPEED_GAUGE_DOWN') !== -1) parts.push('Action Gauge Down');
+            else if (buff.indexOf('DEBUFFBAN') !== -1) parts.push('Debuff Immune');
+            else if (buff.indexOf('GUARD') !== -1) parts.push('Guard');
+            else if (buff.indexOf('HYPER_COOL_TURN_DOWN') !== -1 && buff.indexOf('UP') === -1) parts.push('Hyper CD -1');
+            else if (buff.indexOf('SPECIAL_COOL_TURN_DOWN') !== -1) parts.push('Special CD -1');
+          }
+          return parts.join(', ');
+        }
+        function ssBuildChanges(levels, idx) {
+          if (idx <= 0) return [{ text: 'Base skill', type: 'base' }];
+          var curr = levels[idx], base = levels[0];
+          var hasPassiveStats = curr.statBonuses && curr.statBonuses.length > 0;
+          var hasDmgSe = false;
+          for (var p = 0; p < (curr.seEffects || []).length; p++) {
+            if ((curr.seEffects[p].buff || '').indexOf('DAMAGE_UP') !== -1) hasDmgSe = true;
+          }
+          if (hasPassiveStats && !hasDmgSe) {
+            var changes = [];
+            for (var i = 0; i < curr.statBonuses.length; i++) {
+              var b = curr.statBonuses[i];
+              var label = b.type.replace('NST_NV_RATE_', '').replace('NST_RATE_', '');
+              changes.push({ text: label + ' +' + (b.rate / 100).toFixed(0) + '%', type: 'stat' });
+            }
+            var baseDesc = (base.description || '').replace(/<[^>]*>/g, '');
+            var currDesc = (curr.description || '').replace(/<[^>]*>/g, '');
+            if (currDesc.length > baseDesc.length + 10) {
+              var added = currDesc.slice(baseDesc.length).trim();
+              if (added.length > 3) changes.push({ text: added, type: 'desc' });
+            }
+            return changes;
+          }
+          var changes = [];
+          var totalCd = 0, lastDmgRate = null;
+          for (var i = 0; i <= idx; i++) {
+            totalCd += (levels[i].cdReduce || 0);
+            var effs = levels[i].seEffects || [];
+            for (var j = 0; j < effs.length; j++) {
+              if (effs[j].buff && effs[j].buff.indexOf('DAMAGE_UP') !== -1 && effs[j].stats && effs[j].stats.length > 0 && effs[j].stats[0].NKM_STAT_TYPE_RATE !== undefined)
+                lastDmgRate = effs[j].stats[0].NKM_STAT_TYPE_RATE;
+            }
+          }
+          if (lastDmgRate !== null) changes.push({ text: 'DMG +' + (lastDmgRate / 100).toFixed(0) + '%', type: 'se' });
+          if (totalCd > 0) changes.push({ text: 'CD -' + totalCd + ' turn' + (totalCd > 1 ? 's' : ''), type: 'cd' });
+          ssDiffDesc(base.description || '', curr.description || '').forEach(function(d) { changes.push({ text: d, type: 'desc' }); });
+          if (changes.length === 0) changes.push({ text: 'No changes at this level', type: 'none' });
+          return changes;
+        }
+        function ssRenderChanges(container, changes) {
+          container.innerHTML = '';
+          changes.forEach(function(c) {
+            var tag = document.createElement('span');
+            tag.className = 'ss-skill-change-tag type-' + c.type;
+            tag.textContent = c.text;
+            container.appendChild(tag);
+          });
+        }
+        function ssGetVisibleEffects(seEffects) {
+          if (!seEffects || seEffects.length === 0) return [];
+          var seen = {};
+          return seEffects.filter(function(e) {
+            var buff = e.buff || '';
+            if (buff.indexOf('BI_STAT_') === 0) return false;
+            if (!e.buffName) return false;
+            if (seen[buff]) return false;
+            seen[buff] = true;
+            return true;
+          });
+        }
+        function ssRenderEffects(container, seEffects) {
+          container.innerHTML = '';
+          var visible = ssGetVisibleEffects(seEffects);
+          visible.forEach(function(e) {
+            var div = document.createElement('div');
+            div.className = 'ss-skill-effect' + (e.buffIsPositive ? '' : ' ss-effect-negative');
+            var name = document.createElement('span');
+            name.className = 'ss-effect-name';
+            name.textContent = e.buffName;
+            div.appendChild(name);
+            if (e.turns > 0) {
+              var turns = document.createElement('span');
+              turns.className = 'ss-effect-turns';
+              turns.textContent = e.turns + ' turn' + (e.turns > 1 ? 's' : '');
+              div.appendChild(turns);
+            }
+            var rate = e.activationRate || 0;
+            if (rate > 0 && rate < 10000) {
+              var rateEl = document.createElement('span');
+              rateEl.className = 'ss-effect-rate';
+              rateEl.textContent = (rate / 100) + '%';
+              div.appendChild(rateEl);
+            }
+            if (e.buffDesc) {
+              var desc = document.createElement('span');
+              desc.className = 'ss-effect-desc';
+              desc.textContent = e.buffDesc;
+              div.appendChild(desc);
+            }
+            container.appendChild(div);
+          });
+        }
+        document.getElementById('ss-skills-list').addEventListener('click', function(e) {
+          var btn = e.target.closest('.ss-skill-lv-btn');
+          if (!btn) return;
+          var idx = btn.dataset.skillIdx;
+          var level = parseInt(btn.dataset.lv);
+          var item = document.querySelector('.ss-skill-item[data-skill-idx="' + idx + '"]');
+          if (!item || !SS_SKILL_LEVELS[idx]) return;
+          var levels = SS_SKILL_LEVELS[idx];
+          var lvIdx = levels.findIndex(function(l) { return l.level === level; });
+          if (lvIdx < 0) return;
+          var lv = levels[lvIdx];
+          var descEl = item.querySelector('[data-skill-desc="' + idx + '"]');
+          if (descEl) descEl.innerHTML = (lv.description || '');
+          var dmgEl = item.querySelector('[data-skill-dmg-bonus="' + idx + '"]');
+          if (dmgEl) {
+            var bonus = null;
+            for (var k = 0; k <= lvIdx; k++) {
+              var es = levels[k].seEffects || [];
+              for (var m = 0; m < es.length; m++) {
+                if (es[m].buff && es[m].buff.indexOf('DAMAGE_UP') !== -1 && es[m].stats && es[m].stats.length > 0 && es[m].stats[0].NKM_STAT_TYPE_RATE !== undefined)
+                  bonus = es[m].stats[0].NKM_STAT_TYPE_RATE;
+              }
+            }
+            dmgEl.textContent = bonus !== null ? ' (+' + (bonus / 100).toFixed(0) + '%)' : '';
+            dmgEl.style.display = bonus !== null ? '' : 'none';
+          }
+          var changesEl = item.querySelector('[data-skill-changes="' + idx + '"]');
+          if (changesEl) ssRenderChanges(changesEl, ssBuildChanges(levels, lvIdx));
+          var effectsEl = item.querySelector('[data-skill-effects="' + idx + '"]');
+          if (effectsEl) ssRenderEffects(effectsEl, lv.seEffects || []);
+          item.querySelectorAll('.ss-skill-lv-btn').forEach(function(b) {
+            b.classList.toggle('active', parseInt(b.dataset.lv) === level);
+          });
+        });
+      `} />
+    </section>
+  )}
+
+  {data.stats && (
+    <section class="content-section">
+      <h2 class="section-title">Stats</h2>
+      <div class="ss-bp-card">
+        <span class="ss-bp-label">Battle Power</span>
+        <span class="ss-bp-value" id="ss-bp-value">{maxBattlePower.toLocaleString()}</span>
+        <span class="ss-bp-note" id="ss-bp-note">Lv.200, 7★, Affection 60, Tactics 100, Resonance 10, LB3</span>
+      </div>
+      <div id="ss-stat-icons" style="display:none" aria-hidden="true">
+        {['HP', 'ATK', 'DEF', 'SPD', 'Toughness', 'Hit Rate', 'Crit Rate', 'Crit DMG', 'Effect Hit', 'Effect RES', 'Cross Attack', 'Revenge Attack'].map((s) => (
+          <span data-stat-icon={s}><SSStatIcon stat={s} size={16} /></span>
+        ))}
+      </div>
+      <div class="ss-stats-calc">
+        <div class="ss-stats-level">
+          <label for="ss-level-input">Level</label>
+          <input type="number" id="ss-level-input" min="1" max="200" value="1" class="ss-level-num" />
+          <label for="ss-star-input" class="ss-star-label">Stars</label>
+          <input type="number" id="ss-star-input" min="0" max="7" value="0" class="ss-level-num ss-star-num" />
+          <label for="ss-affection-input" class="ss-affection-label">Affection</label>
+          <input type="number" id="ss-affection-input" min="0" max="60" value="0" class="ss-level-num ss-affection-num" />
+          <label for="ss-tactics-input" class="ss-tactics-label">Tactics</label>
+          <input type="number" id="ss-tactics-input" min="0" max="100" value="0" class="ss-level-num ss-tactics-num" />
+          <button id="ss-max-btn" class="ss-max-btn" type="button">Max</button>
+        </div>
+        <table class="ss-damage-table ss-stats-table" id="ss-stats-table">
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Total</th>
+              <th>Lv. Stats</th>
+              <th>Stars</th>
+              <th>Affection</th>
+              <th>Tactics</th>
+              <th>Resonance</th>
+            </tr>
+          </thead>
+          <tbody id="ss-stats-tbody"></tbody>
+        </table>
+        <div class="ss-resonance-active" id="ss-resonance-active"></div>
+      </div>
+      <script is:inline set:html={`
+        (function() {
+          var base = ${JSON.stringify(data.stats)};
+          var growth = ${JSON.stringify(data.statGrowth || {})};
+          var resonance = ${JSON.stringify(data.resonance || [])};
+          var numInput = document.getElementById('ss-level-input');
+          var starInput = document.getElementById('ss-star-input');
+          var affectionInput = document.getElementById('ss-affection-input');
+          var tacticsInput = document.getElementById('ss-tactics-input');
+          var tbody = document.getElementById('ss-stats-tbody');
+          var resDiv = document.getElementById('ss-resonance-active');
+
+          var LB_LEVELS = [160, 180, 200];
+
+          var TOTAL_SKILL_LEVEL = ${(data.skills || []).reduce((sum: any, s: any) => sum + (s.maxLevel || 1), 0)};
+
+          function getAffectionBonuses(favorLv) {
+            if (favorLv < 2) return { ATK: 0, HP: 0, DEF: 0 };
+            var atk = 0, hp = 0, def = 0;
+            var tiers = [
+              { min: 2, max: 10, a: 10, h: 60, d: 6 },
+              { min: 11, max: 30, a: 8, h: 48, d: 5 },
+              { min: 31, max: 60, a: 5, h: 30, d: 3 },
+            ];
+            for (var i = 0; i < tiers.length; i++) {
+              var t = tiers[i];
+              var levels = Math.min(favorLv, t.max) - t.min + 1;
+              if (levels <= 0) continue;
+              atk += t.a * levels;
+              hp += t.h * levels;
+              def += t.d * levels;
+            }
+            return { ATK: atk, HP: hp, DEF: def };
+          }
+
+          function getTacticsBonuses(tacLv) {
+            if (tacLv < 2) return { ATK: 0, HP: 0, DEF: 0 };
+            var atk = 0, hp = 0, def = 0;
+            var tiers = [
+              { min: 2, max: 10, a: 10, h: 60, d: 5 },
+              { min: 11, max: 30, a: 8, h: 48, d: 4 },
+              { min: 31, max: 50, a: 6, h: 36, d: 3 },
+              { min: 51, max: 100, a: 4, h: 24, d: 2 },
+            ];
+            for (var i = 0; i < tiers.length; i++) {
+              var t = tiers[i];
+              var levels = Math.min(tacLv, t.max) - t.min + 1;
+              if (levels <= 0) continue;
+              atk += t.a * levels;
+              hp += t.h * levels;
+              def += t.d * levels;
+            }
+            return { ATK: atk, HP: hp, DEF: def };
+          }
+
+          var STAT_LABELS = ${JSON.stringify(STAT_LABELS)};
+
+          var statIconMap = {};
+          var iconsContainer = document.getElementById('ss-stat-icons');
+          if (iconsContainer) {
+            iconsContainer.querySelectorAll('span[data-stat-icon]').forEach(function(el) {
+              var label = el.dataset.statIcon;
+              var img = el.querySelector('img');
+              if (img && label) statIconMap[label] = img.src;
+            });
+          }
+
+          var STAT_DESC = {
+            'HP': 'Total health points',
+            'ATK': 'Increases skill damage',
+            'DEF': 'Reduces damage taken',
+            'SPD': 'Determines turn order',
+            'Toughness': 'Break bar hits before Break State',
+            'Hit Rate': 'Chance to hit with attacks',
+            'Crit Rate': 'Chance to deal critical hits',
+            'Crit DMG': 'Bonus damage on critical hits',
+            'Effect Hit': 'Debuff application chance',
+            'Effect RES': 'Chance to resist debuffs',
+            'Def. Effect Hit': 'Cannot miss debuffs (ignores evasion)',
+            'Def. Effect RES': 'Cannot be hit by debuffs (ignores hit)',
+            'Adj. Def. Effect RES': 'Resistance to definite effect hits',
+            'Cross Attack': 'Chance to counter-attack allies' + String.fromCharCode(39) + ' targets',
+            'Revenge Attack': 'Chance to counter-attack when hit',
+          };
+
+          var PCT_STATS = ['Hit Rate', 'Crit Rate', 'Crit Damage', 'Effect Hit Rate', 'Effect Evasion', 'Definite Effect Hit', 'Definite Effect Evasion', 'Adj. Def. Effect Eva.', 'NST_RATE_CROSS_ATTACK', 'NST_RATE_REVENGE_ATTACK'];
+
+          var RES_TYPE_MAP = {
+            'NST_ATK': 'ATK', 'NST_HP': 'HP', 'NST_DEF': 'DEF',
+            'NST_RATE_CRITICAL': 'Crit Rate', 'NST_RATE_CRITICAL_DAMAGE': 'Crit Damage',
+            'NST_RATE_EFFECT_HIT': 'Effect Hit Rate', 'NST_RATE_EFFECT_EVADE': 'Effect Evasion',
+            'NST_NV_RATE_ATK': 'ATK', 'NST_NV_RATE_HP': 'HP', 'NST_NV_RATE_DEF': 'DEF',
+          };
+
+          var RES_PCT_TYPES = ['NST_RATE_CRITICAL', 'NST_RATE_CRITICAL_DAMAGE', 'NST_RATE_EFFECT_HIT', 'NST_RATE_EFFECT_EVADE', 'NST_NV_RATE_ATK', 'NST_NV_RATE_HP', 'NST_NV_RATE_DEF'];
+
+          function fmtPct(val) { return (val / 100).toFixed(0) + '%'; }
+          function fmtNum(val) { return val.toLocaleString(); }
+
+          function getResBonuses(level) {
+            var acc = {};
+            var activeGrades = [];
+            resonance.forEach(function(r) {
+              if (r.unlockLevel <= level) {
+                activeGrades.push(r.grade);
+                r.stats.forEach(function(s) {
+                  var label = RES_TYPE_MAP[s.type];
+                  if (!label) return;
+                  if (!acc[label]) acc[label] = { flat: 0, pct: 0 };
+                  if (RES_PCT_TYPES.indexOf(s.type) !== -1) acc[label].pct += s.value;
+                  else acc[label].flat += s.value;
+                });
+              }
+            });
+            return { acc: acc, grades: activeGrades };
+          }
+
+          function calc() {
+            var lv = parseInt(numInput.value) || 1;
+            if (lv < 1) lv = 1;
+            if (lv > 200) lv = 200;
+            numInput.value = lv;
+
+            var stars = parseInt(starInput.value) || 0;
+            if (stars < 0) stars = 0;
+            if (stars > 7) stars = 7;
+            starInput.value = stars;
+
+            var sgPct = stars * 200;
+
+            var affLv = parseInt(affectionInput.value) || 0;
+            if (affLv < 0) affLv = 0;
+            if (affLv > 60) affLv = 60;
+            affectionInput.value = affLv;
+
+            var affBonuses = getAffectionBonuses(affLv);
+
+            var tacLv = parseInt(tacticsInput.value) || 0;
+            if (tacLv < 0) tacLv = 0;
+            if (tacLv > 100) tacLv = 100;
+            tacticsInput.value = tacLv;
+
+            var tacBonuses = getTacticsBonuses(tacLv);
+
+            var lbStage = 0;
+            for (var i = 0; i < LB_LEVELS.length; i++) {
+              if (lv >= LB_LEVELS[i]) lbStage = i + 1;
+            }
+
+            var res = getResBonuses(lv);
+            var resBon = res.acc;
+            var resGrades = res.grades;
+            var html = '';
+
+            Object.keys(base).forEach(function(key) {
+              var baseVal = base[key];
+              var gr = growth[key] || 0;
+              var scaledVal = baseVal + gr * (lv - 1);
+
+              var resB = resBon[key];
+              var affFlat = affBonuses[key] || 0;
+              var tacFlat = tacBonuses[key] || 0;
+
+              var starStr = '-';
+              var affStr = '-';
+              if (affFlat > 0) affStr = '+' + affFlat.toLocaleString();
+              var tacStr = '-';
+              if (tacFlat > 0) tacStr = '+' + tacFlat.toLocaleString();
+
+              var resStr = '-';
+              var resParts = [];
+              if (resB) {
+                if (resB.flat > 0) resParts.push('+' + resB.flat.toLocaleString());
+                if (resB.pct > 0) resParts.push('+' + (resB.pct / 100).toFixed(0) + '%');
+              }
+              if (resParts.length > 0) resStr = resParts.join(', ');
+
+              var total;
+              if (key === 'ATK' || key === 'HP' || key === 'DEF') {
+                var resFlat = resB ? resB.flat : 0;
+                var resPct = resB ? resB.pct : 0;
+                var fullFlat = scaledVal + resFlat + affFlat + tacFlat;
+                var combinedPct = sgPct + resPct;
+                var pctBonus = combinedPct > 0 ? Math.floor(fullFlat * combinedPct / 10000) : 0;
+                total = fullFlat + pctBonus;
+                if (sgPct > 0) {
+                  var starPctBonus = Math.floor(fullFlat * sgPct / 10000);
+                  starStr = '+' + starPctBonus.toLocaleString() + ' (' + (sgPct / 100).toFixed(0) + '%)';
+                }
+                if (resPct > 0) {
+                  var resPctBonus = Math.floor(fullFlat * resPct / 10000);
+                  if (resB && resB.flat > 0) {
+                    resStr = '+' + resB.flat.toLocaleString() + ', +' + resPctBonus.toLocaleString() + ' (' + (resPct / 100).toFixed(0) + '%)';
+                  } else {
+                    resStr = '+' + resPctBonus.toLocaleString() + ' (' + (resPct / 100).toFixed(0) + '%)';
+                  }
+                }
+              } else if (PCT_STATS.indexOf(key) !== -1) {
+                total = scaledVal + (resB ? resB.pct + resB.flat : 0);
+              } else {
+                total = scaledVal;
+              }
+
+              var label = STAT_LABELS[key] || key;
+              var desc = STAT_DESC[label];
+              var isPct = PCT_STATS.indexOf(key) !== -1;
+              var totalStr = isPct ? fmtPct(total) : fmtNum(total);
+              var baseStr = isPct ? fmtPct(scaledVal) : fmtNum(scaledVal);
+              var descHtml = desc ? '<div class="ss-stat-desc-text">' + desc + '</div>' : '';
+              var iconHtml = statIconMap[label] ? '<img src="' + statIconMap[label] + '" width="16" height="16" class="ss-stat-icon" alt="' + label + '" /> ' : '';
+              html += '<tr><td><div class="ss-stat-label-cell">' + iconHtml + label + descHtml + '</div></td><td class="ss-stat-total">' + totalStr + '</td><td class="ss-stat-lv">' + baseStr + '</td><td class="ss-stat-bonus">' + starStr + '</td><td class="ss-stat-bonus ss-stat-affection">' + affStr + '</td><td class="ss-stat-bonus ss-stat-tactics">' + tacStr + '</td><td class="ss-stat-bonus ss-stat-resonance">' + resStr + '</td></tr>';
+            });
+
+            tbody.innerHTML = html;
+
+            var notes = [];
+            if (resGrades.length > 0) {
+              var first = resGrades[0];
+              var last = resGrades[resGrades.length - 1];
+              var gradeLabel = first === last ? 'Grade ' + first : 'Grades ' + first + '-' + last;
+              notes.push(gradeLabel + ' Resonance active');
+            }
+            if (lbStage > 0) notes.push('Limit Break Stage ' + lbStage + ' (Lv.' + LB_LEVELS[lbStage - 1] + ' cap)');
+            if (stars > 0) notes.push('Star Grade ' + stars + ' (+2% ATK/HP/DEF per star)');
+            if (affLv > 0) notes.push('Affection Lv.' + affLv + ' (flat ATK/HP/DEF)');
+            if (tacLv > 0) notes.push('Tactical Analysis Lv.' + tacLv + ' (universal)');
+            resDiv.innerHTML = notes.length > 0 ? '<div class="ss-res-source">' + notes.join(' &middot; ') + '</div>' : '';
+
+            var bpEl = document.getElementById('ss-bp-value');
+            var bpNoteEl = document.getElementById('ss-bp-note');
+            if (bpEl) {
+              var fAtk = 0, fHp = 0, fDef = 0, fCr = 0, fCd = 0, fSpd = 0, fEffHit = 0, fEffEva = 0;
+              var statKeys = Object.keys(base);
+              for (var si = 0; si < statKeys.length; si++) {
+                var sk = statKeys[si];
+                var bv = base[sk];
+                var gr2 = growth[sk] || 0;
+                var sv = bv + gr2 * (lv - 1);
+                var rb2 = resBon[sk];
+                var af2 = affBonuses[sk] || 0;
+                var tc2 = tacBonuses[sk] || 0;
+                var tot2;
+                if (sk === 'ATK' || sk === 'HP' || sk === 'DEF') {
+                  var rf2 = rb2 ? rb2.flat : 0;
+                  var rp2 = rb2 ? rb2.pct : 0;
+                  var ff2 = sv + rf2 + af2 + tc2;
+                  var cp2 = sgPct + rp2;
+                  var pb2 = cp2 > 0 ? Math.floor(ff2 * cp2 / 10000) : 0;
+                  tot2 = ff2 + pb2;
+                } else if (PCT_STATS.indexOf(sk) !== -1) {
+                  tot2 = sv + (rb2 ? rb2.pct + rb2.flat : 0);
+                } else {
+                  tot2 = sv;
+                }
+                if (sk === 'ATK') fAtk = tot2;
+                else if (sk === 'HP') fHp = tot2;
+                else if (sk === 'DEF') fDef = tot2;
+                else if (sk === 'Crit Rate') fCr = tot2;
+                else if (sk === 'Crit Damage') fCd = tot2;
+                else if (sk === 'Turn Speed') fSpd = tot2;
+                else if (sk === 'Effect Hit Rate') fEffHit = tot2;
+                else if (sk === 'Effect Evasion') fEffEva = tot2;
+              }
+              var cr2 = fCr / 10000;
+              var cd2 = fCd / 10000;
+              var atkF = (fAtk / 10) * 12 * ((1 - cr2) + cr2 * (1 + cd2));
+              var hpF = (fHp / 55) * 12;
+              var defF = (fDef / 5) * 12;
+              var spdF = (100 + (fSpd - 100) / 5) / 100;
+              var heF = 1 + (fEffHit - 10000 + fEffEva) / 10;
+              if (heF <= 0) heF = 1;
+              var bs2 = (atkF + hpF + defF) * spdF * heF;
+              var cm2 = 1 + lbStage * 0.02 + TOTAL_SKILL_LEVEL * 0.01;
+              bpEl.textContent = Math.floor(bs2 * cm2).toLocaleString();
+              if (bpNoteEl) {
+                var parts2 = [];
+                parts2.push('Lv.' + lv);
+                if (stars > 0) parts2.push(stars + '\u2605');
+                if (affLv > 0) parts2.push('Aff ' + affLv);
+                if (tacLv > 0) parts2.push('Tac ' + tacLv);
+                if (resGrades.length > 0) parts2.push('Res ' + resGrades[resGrades.length - 1]);
+                if (lbStage > 0) parts2.push('LB' + lbStage);
+                bpNoteEl.textContent = parts2.join(', ');
+              }
+            }
+          }
+
+          numInput.addEventListener('input', calc);
+          starInput.addEventListener('input', calc);
+          affectionInput.addEventListener('input', calc);
+          tacticsInput.addEventListener('input', calc);
+          numInput.addEventListener('change', function() {
+            var v = parseInt(numInput.value);
+            if (isNaN(v)) v = 1;
+            numInput.value = Math.max(1, Math.min(200, v));
+            calc();
+          });
+          starInput.addEventListener('change', function() {
+            var v = parseInt(starInput.value);
+            if (isNaN(v)) v = 0;
+            starInput.value = Math.max(0, Math.min(7, v));
+            calc();
+          });
+          affectionInput.addEventListener('change', function() {
+            var v = parseInt(affectionInput.value);
+            if (isNaN(v)) v = 0;
+            affectionInput.value = Math.max(0, Math.min(60, v));
+            calc();
+          });
+          tacticsInput.addEventListener('change', function() {
+            var v = parseInt(tacticsInput.value);
+            if (isNaN(v)) v = 0;
+            tacticsInput.value = Math.max(0, Math.min(100, v));
+            calc();
+          });
+          document.getElementById('ss-max-btn').addEventListener('click', function() {
+            numInput.value = 200;
+            starInput.value = 7;
+            affectionInput.value = 60;
+            tacticsInput.value = 100;
+            calc();
+          });
+          calc();
+        })();
+      `} />
+    </section>
+  )}
+
+  {data.journeyStartInfo && (
+    <section class="content-section">
+      <h2 class="section-title">Journey Start Info</h2>
+      <div class="ss-jsi-container">
+        <div class="ss-jsi-header">
+          <SSGradeIcon grade={data.journeyStartInfo.grade} size={28} />
+          <span class="ss-jsi-total">Total {data.journeyStartInfo.total.all}</span>
+        </div>
+        <div class="ss-jsi-stats">
+          {[
+            { key: 'power', label: 'Power', icon: 'Power' },
+            { key: 'health', label: 'Vitality', icon: 'Health' },
+            { key: 'endurance', label: 'Endurance', icon: 'Endurance' },
+            { key: 'focus', label: 'Focus', icon: 'Focus' },
+            { key: 'protect', label: 'Protection', icon: 'Protect' },
+          ].map((s: any) => (
+            <div class="ss-jsi-stat">
+              <SSJourneyStatIcon stat={s.icon} size={18} />
+              <span class="ss-jsi-stat-label">{s.label}</span>
+              <span class="ss-jsi-stat-value">{data.journeyStartInfo.total[s.key]}</span>
+              <SSGradeIcon grade={data.journeyStartInfo.statGrades[s.key]} size={18} />
+            </div>
+          ))}
+        </div>
+        {data.journeyStartInfo.resonancePerGrade.length > 0 && (
+          <div class="ss-jsi-bonuses">
+            <div class="ss-jsi-bonuses-title">Resonance Bonuses</div>
+            <div class="ss-jsi-bonuses-list">
+              {data.journeyStartInfo.resonancePerGrade.map((rb: any) => (
+                <div class="ss-jsi-bonus-row">
+                  <span class="ss-jsi-bonus-grade">Gr.{rb.grade}</span>
+                  <span class="ss-jsi-bonus-stat">{rb.stat.charAt(0).toUpperCase() + rb.stat.slice(1)}</span>
+                  <span class="ss-jsi-bonus-value">+{rb.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {data.resonance && data.resonance.filter((r: any) => r.potential).length > 0 && (
+          <div class="ss-jsi-skills">
+            <div class="ss-jsi-skills-title">Journey Skills</div>
+            <div class="ss-jsi-skills-list">
+              {data.resonance.filter((r: any) => r.potential).map((r: any) => (
+                <div class="ss-jsi-skill">
+                  <div class="ss-jsi-skill-header">
+                    <span class="ss-jsi-skill-name">{r.potential}</span>
+                    <span class="ss-jsi-skill-grade">Gr.{r.grade}</span>
+                    {r.potentialMaxLevel > 1 && <span class="ss-jsi-skill-lv">Lv.{r.potentialMaxLevel}</span>}
+                  </div>
+                  {r.potentialDesc && <div class="ss-jsi-skill-desc">{r.potentialDesc}</div>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {data.uniquePotentials && data.uniquePotentials.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Unique Potential</h2>
+      <div class="ss-unique-potentials">
+        {data.uniquePotentials.map((p: any) => (
+          <div class="ss-potential-card">
+            <div class="ss-potential-header">
+              <span class="ss-potential-name">{p.name}</span>
+              {p.maxLevel > 1 && <span class="ss-potential-level">Lv.{p.maxLevel}</span>}
+            </div>
+            {p.description && <div class="ss-potential-desc" set:html={p.description}></div>}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+</CharacterDetailLayout>

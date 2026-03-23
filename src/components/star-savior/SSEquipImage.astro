@@ -1,0 +1,55 @@
+---
+// Equipment item icon component for Star Savior
+// Looks up equip icon by filename (e.g. EQUIP_MOTIVATOR_TIER_1_WEAPON.png)
+import { Image } from 'astro:assets';
+
+const equipImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/equipment/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt,
+  width = 48,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+function findImage(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(equipImages).find(k =>
+    k.endsWith('/' + filename)
+  );
+  return key ? equipImages[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule ? (
+  <div class={`ss-equip-image-wrapper ${className || ''}`} style={`--equip-img-size: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={95}
+      class="ss-equip-image"
+    />
+  </div>
+) : (
+  <div class={`ss-equip-image-fallback ${className || ''}`} style={`--equip-img-size: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}

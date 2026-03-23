@@ -1,0 +1,67 @@
+{
+  "id": 5999902,
+  "character": "Claire",
+  "name": "Master Maid",
+  "slug": "claire-master-maid",
+  "grade": "R",
+  "specialTag": null,
+  "classSynergy": null,
+  "statTag": "Power",
+  "image": "ARCANA_MAID_SPEAR_R_01.png",
+  "imageSmall": "ARCANA_MAID_SPEAR_R_01_S.png",
+  "characterId": 1509,
+  "episode": "One who tends the candle, swearing to devote herself to the Journey of salvation.\nEven if the entwining blue thorns steal away warmth, the light she kindles with her devotion shall illuminate everyone's night.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 500,
+      "addPerValueRate": 6
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 600,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 2,
+      "type": "Class Training",
+      "valueType": "TRAINING_VALUE_RATE_UP_TAG",
+      "valueRate": 150,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Bond Points",
+      "value": 3,
+      "addPerValue": 1
+    }
+  ],
+  "uniqueEffects": [],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5000801,
+      "title": "Strength",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 3
+        },
+        {
+          "type": "Stamina",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 0
+    }
+  ]
+}

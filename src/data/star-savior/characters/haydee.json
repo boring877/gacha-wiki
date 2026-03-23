@@ -1,0 +1,1516 @@
+{
+  "id": 1018,
+  "name": "Haydee",
+  "title": "Morrel Ocean Traders",
+  "slug": "haydee",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_STAR",
+  "class": "NKM_UNIT_S_INCOGNITA_FLOWER",
+  "role": "Defender",
+  "rarity": "SSR",
+  "description": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+  "stats": {
+    "HP": 1860,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 150,
+    "DEF": 20,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13800,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 2140,
+    "DEF": 1015,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 25444,
+    "Turn Speed": 95,
+    "Super Armor": 3,
+    "ATK": 4058,
+    "DEF": 2016,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 1200,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 6500,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 9500,
+      "defFactor": 6000,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Barrier</b> for 1 turn after attacking. Barrier is proportional to self DEF.",
+    "specialDesc": "SI_SUPER_ARMOR_UP@@1",
+    "hyperDesc": "SI_SUPER_ARMOR_DAMAGE@@1"
+  },
+  "skills": [
+    {
+      "id": 10181,
+      "strId": "NKM_UNIT_S_INCOGNITA_FLOWER_ATTACK",
+      "name": "Steel Hail",
+      "icon": "SKILL_INCOGNITA_FLOWER_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "Damage dealt to Moon Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_MOON",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Fires Void Force condensed in Haydee's flower to attack the enemy. Grants self 1 stack of <b>Leap</b>.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self <b>Barrier</b> for 1 turn after attacking. Barrier is proportional to self DEF.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10182,
+      "strId": "NKM_UNIT_S_INCOGNITA_FLOWER_SPECIAL",
+      "name": "Spiked Armor",
+      "icon": "SKILL_INCOGNITA_FLOWER_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_NONATTACK",
+      "target": "Self",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DEFENSE_INCREASE",
+              "buffName": "DEF Up",
+              "buffDesc": "Increases DEF by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_DEF",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_EXTRA_TURN",
+              "buffName": "Extra Turn",
+              "buffDesc": "Gains an extra turn.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_DELETE_SPECIFIC_BUFF",
+              "buffName": "Dispel Specific Buff",
+              "buffDesc": "Removes a specific buff.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Haydee wraps herself in Void Force as a defensive measure. Grants self <b>Barrier</b> and <b>DEF Up</b> for 3 turns. Removes all <b>Leap</b> stacks and grants self an extra turn if <b>Leap</b> is at max stacks. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_recovery",
+        "uniqueDesc": "",
+        "commonDesc": "Restores 1 Toughness to self after using a Skill."
+      }
+    },
+    {
+      "id": 10183,
+      "strId": "NKM_UNIT_S_INCOGNITA_FLOWER_HYPER",
+      "name": "Thorned Grave",
+      "icon": "SKILL_INCOGNITA_FLOWER_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "Single Enemy",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_GUARD",
+              "buffName": "Guard",
+              "buffDesc": "Takes 30% of damage received by allies in their place. Only the highest damage-sharing effect applies.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_SHARE",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "target",
+              "buff": "BI_RATE_HIT_DECREASE",
+              "buffName": "ACC Down",
+              "buffDesc": "Decreases ACC by 30%.",
+              "buffIsPositive": false,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_HIT",
+                  "NKM_STAT_TYPE_RATE": -3000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 1,
+          "statBonuses": [],
+          "seEffects": []
+        },
+        {
+          "level": 7,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>2 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Haydee gathers as much Void Force as she can handle, then unleashes it on the enemy. Grants self <b>Guard</b> for <b>3 turns</b>, and inflicts the enemy with <b>ACC Down</b> for 2 turns with a 100% chance. Deals 20% increased damage on attack if self has <b>Barrier</b>. DMG is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_GUARD",
+              "buffName": "Guard",
+              "buffDesc": "Takes 30% of damage received by allies in their place. Only the highest damage-sharing effect applies.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_SHARE",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10184,
+      "strId": "NKM_UNIT_S_INCOGNITA_FLOWER_UNIQUE_PASSIVE",
+      "name": "Eroded Emotions",
+      "icon": "SKILL_INCOGNITA_FLOWER_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Haydee's DEF by <b>5%</b>.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Haydee's DEF by <b>5%</b>.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_DEF",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 2,
+          "description": "Increases Haydee's DEF by <b>5%</b>. Grants self <b>Guard</b> and <b>Barrier</b> for 1 turn at the start of the first battle. Grants self 1 stack of <b>Leap</b> with a <b>50%</b> chance after being attacked. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_DEF",
+              "rate": 500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_GUARD",
+              "buffName": "Guard",
+              "buffDesc": "Takes 30% of damage received by allies in their place. Only the highest damage-sharing effect applies.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_SHARE",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_BARRIER",
+              "buffName": "Barrier",
+              "buffDesc": "Absorbs a fixed amount of damage instead of losing HP when taking damage.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "Damage dealt to Moon Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_MOON",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 5000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Increases Haydee's DEF by <b>10%</b>. Grants self <b>Guard</b> and <b>Barrier</b> for 1 turn at the start of the first battle. Grants self 1 stack of <b>Leap</b> with a <b>75%</b> chance after being attacked. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_DEF",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "Damage dealt to Moon Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_MOON",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 7500,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Increases Haydee's DEF by <b>15%</b>. Grants self <b>Guard</b> and <b>Barrier</b> for 1 turn at the start of the first battle. Grants self 1 stack of <b>Leap</b> with a <b>100%</b> chance after being attacked. Barrier is proportional to self DEF.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_DEF",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "Damage dealt to Moon Attribute units increases by 1%. Applies up to 5 stacks. This boost applies independently of buffs and debuffs.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP_ADJUST_MOON",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_INCOGNITA_FLOWER_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_INCOGNITA_FLOWER_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    {
+      "star": 1,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 2,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 3,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 4,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 5,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 6,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "star": 7,
+      "bonuses": [
+        {
+          "stat": "ATK%",
+          "value": 200
+        },
+        {
+          "stat": "HP%",
+          "value": 200
+        },
+        {
+          "stat": "DEF%",
+          "value": 200
+        }
+      ]
+    }
+  ],
+  "resonance": [
+    {
+      "grade": 1,
+      "unlockLevel": 20,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 75,
+          "display": "ATK +75"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 720,
+          "display": "HP +720"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 2,
+      "unlockLevel": 40,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 200,
+          "display": "HP% +2%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 3,
+      "unlockLevel": 60,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 100,
+          "display": "ATK +100"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 60,
+          "display": "DEF +60"
+        }
+      ],
+      "potential": "Sense of Life",
+      "potentialDesc": "Slightly increases self Max HP by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 4,
+      "unlockLevel": 80,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 400,
+          "display": "Effect Evasion +4%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 5,
+      "unlockLevel": 100,
+      "stats": [
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 900,
+          "display": "HP +900"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 75,
+          "display": "DEF +75"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 6,
+      "unlockLevel": 120,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_HP",
+          "stat": "HP%",
+          "value": 400,
+          "display": "HP% +4%"
+        }
+      ],
+      "potential": "Sense of Protection",
+      "potentialDesc": "Slightly increases self Effect RES by a certain percentage.",
+      "potentialMaxLevel": 5
+    },
+    {
+      "grade": 7,
+      "unlockLevel": 140,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 125,
+          "display": "ATK +125"
+        },
+        {
+          "type": "NST_HP",
+          "stat": "HP",
+          "value": 1080,
+          "display": "HP +1080"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 8,
+      "unlockLevel": 160,
+      "stats": [
+        {
+          "type": "NST_RATE_EFFECT_EVADE",
+          "stat": "Effect Evasion",
+          "value": 800,
+          "display": "Effect Evasion +8%"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 9,
+      "unlockLevel": 180,
+      "stats": [
+        {
+          "type": "NST_ATK",
+          "stat": "ATK",
+          "value": 150,
+          "display": "ATK +150"
+        },
+        {
+          "type": "NST_DEF",
+          "stat": "DEF",
+          "value": 90,
+          "display": "DEF +90"
+        }
+      ],
+      "potential": "",
+      "potentialDesc": "",
+      "potentialMaxLevel": 1
+    },
+    {
+      "grade": 10,
+      "unlockLevel": 200,
+      "stats": [
+        {
+          "type": "NST_NV_RATE_DEF",
+          "stat": "DEF%",
+          "value": 600,
+          "display": "DEF% +6%"
+        }
+      ],
+      "potential": "Skill of Defense",
+      "potentialDesc": "Increases DEF by 2%.",
+      "potentialMaxLevel": 1
+    }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 10,
+      "health": 30,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 0,
+      "health": 150,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 120
+    },
+    "resonancePerGrade": [
+      {
+        "grade": 1,
+        "stat": "health",
+        "value": 30
+      },
+      {
+        "grade": 2,
+        "stat": "protect",
+        "value": 30
+      },
+      {
+        "grade": 4,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 5,
+        "stat": "protect",
+        "value": 40
+      },
+      {
+        "grade": 7,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 8,
+        "stat": "health",
+        "value": 40
+      },
+      {
+        "grade": 9,
+        "stat": "protect",
+        "value": 50
+      }
+    ],
+    "total": {
+      "power": 10,
+      "health": 180,
+      "endurance": 30,
+      "focus": 10,
+      "protect": 130,
+      "all": 360
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "G",
+      "health": "D+",
+      "endurance": "G+",
+      "focus": "G",
+      "protect": "E+"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {
+    "birthday": "1 / 20",
+    "height": "153 cm",
+    "hometown": "Faren",
+    "team": "Morrel Ocean Traders",
+    "vaKR": "Bang Yeon-ji",
+    "vaJP": "Rio Tsuchiya"
+  },
+  "images": {
+    "faceSmall": "sprites/4ec6e0c4946cfae31f28eaa8663f636444f623af/UFS_NKM_UNIT_S_INCOGNITA_FLOWER.png",
+    "illust": "sprites/ac1965fb1f5f0a83345d58ad33c64eb93e7e8c5d/NKM_UNIT_S_INCOGNITA_FLOWER_ILLUST.png",
+    "illustUI": "sprites/ac1965fb1f5f0a83345d58ad33c64eb93e7e8c5d/NKM_UNIT_S_INCOGNITA_FLOWER_ILLUST_UI.png",
+    "faceMedium": "sprites/e25e3824b508553dd45d5b949b14cba9fd5cb989/UFM_NKM_UNIT_S_INCOGNITA_FLOWER.png",
+    "faceFull": "sprites/f5a591d37898b1591644e4b8d9d91ceb94422212/UF_NKM_UNIT_S_INCOGNITA_FLOWER.png"
+  }
+}

@@ -1,0 +1,116 @@
+/* Star Savior Blog Index Page Styles */
+
+.ss-blog-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ss-blog-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--ss-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ss-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.ss-blog-card {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.ss-blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ss-blog-card-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ss-primary);
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.ss-blog-card-date {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+}
+
+.ss-blog-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ss-blog-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ss-blog-card-author {
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ss-border);
+}
+
+.ss-blog-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ss-text-secondary);
+}
+
+.ss-blog-empty h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.ss-blog-empty p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ss-blog-grid {
+    grid-template-columns: 1fr;
+  }
+}

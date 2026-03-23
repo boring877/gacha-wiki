@@ -1,0 +1,136 @@
+{
+  "id": 7102101,
+  "character": "Dana",
+  "name": "A Stroll with Friends",
+  "slug": "dana-a-stroll-with-friends",
+  "grade": "SSR",
+  "specialTag": "Crit Rate",
+  "classSynergy": "Caster",
+  "statTag": "Power",
+  "image": "ARCANA_MAGICIAN_DRUID_SSR_01.png",
+  "imageSmall": "ARCANA_MAGICIAN_DRUID_SSR_01_S.png",
+  "characterId": 1021,
+  "episode": "Are those light footsteps a signal of the morning?\nAs the girl walks the woodland path, the forest's residents peek out from their homes one by one.\n\nThe lark spreads news of a welcome guest, and the fox complains about a run-in with a ruthless hunter, turning the once-quiet green forest into a lively bustling square.\n\nWith each step she takes, the forest awakens.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1000,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 800,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 7,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 7,
+      "addPerValue": 1,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "TRAINING_EXP_RATE_UP",
+      "valueRate": 900,
+      "addPerValueRate": 20,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 150
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Class Training",
+      "valueType": "TRAINING_VALUE_RATE_UP_TAG",
+      "valueRate": 200,
+      "addPerValueRate": 200
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING_TAG.png",
+      "title": "Roroca",
+      "iconType": "Training",
+      "effectType": "Class Training Bonus",
+      "value": 150
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5102101,
+      "title": "The Druid's Financial Strategy",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5102102,
+      "title": "Dana's Private Farm",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        }
+      ],
+      "reqEventClear": 710210101
+    },
+    {
+      "cutsceneId": 5102103,
+      "title": "Tapapa",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710210102
+    }
+  ]
+}

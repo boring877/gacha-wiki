@@ -1,0 +1,145 @@
+{
+  "id": 7101301,
+  "character": "Frey",
+  "name": "The Princess Ascends the Throne",
+  "slug": "frey-the-princess-ascends-the-throne",
+  "grade": "SSR",
+  "specialTag": "Super Effect",
+  "classSynergy": "Supporter",
+  "statTag": "Health",
+  "image": "ARCANA_KINGDOM_PRAY_SSR_01.png",
+  "imageSmall": "ARCANA_KINGDOM_PRAY_SSR_01_S.png",
+  "characterId": 1013,
+  "episode": "Wherever there is talk of money and business opportunities, she is sure to appear.\n\n\"Sorry, the 30% discount just ended. If you want to buy it now, you'll need to pay full price!\"\n\nThe wealth she stubbornly earns, ignoring complaints, once again becomes relief supplies bound for Monastir today.\n\nIf anyone were to speak of the qualifications of an heir to the throne, there would be none more suited to that seat than her.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1100,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1600,
+      "addPerValueRate": 26
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 20,
+      "type": "Journey Start",
+      "valueType": "Stat Bonus",
+      "value": 4,
+      "addPerValue": 1,
+      "statTag": "Health"
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 2,
+      "type": "Training",
+      "valueType": "TRAINING_FAIL_DOWN",
+      "valueRate": 400,
+      "addPerValueRate": 18
+    },
+    {
+      "unlockLevel": 15,
+      "perLevel": 2,
+      "type": "Request",
+      "valueType": "Request Coin Bonus",
+      "valueRate": 250,
+      "addPerValueRate": 10
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 300
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 4,
+      "addPerValue": 4
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Reliable Supplies",
+      "iconType": "Training",
+      "effectType": "Training Condition Efficiency",
+      "valueRate": 300
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5101301,
+      "title": "Head Hunting",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101302,
+      "title": "Fresma",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Focus",
+          "value": 5
+        }
+      ],
+      "reqEventClear": 710130101
+    },
+    {
+      "cutsceneId": 5101303,
+      "title": "That Water Is Good Water",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710130102
+    }
+  ]
+}

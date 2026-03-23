@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+
+const faceSmallImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/characters/*/faceSmall.png',
+  { eager: true }
+);
+
+const faceFullImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/characters/*/faceFull.png',
+  { eager: true }
+);
+
+const illustUIImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/characters/*/illustUI.png',
+  { eager: true }
+);
+
+const illustImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/characters/*/illust.png',
+  { eager: true }
+);
+
+export interface Props {
+  slug: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+  imageType?: 'icon' | 'portrait' | 'illust';
+}
+
+const {
+  slug,
+  alt,
+  width = 180,
+  height = 180,
+  class: className,
+  loading = 'lazy',
+  format = 'webp',
+  quality = 95,
+  imageType = 'icon',
+} = Astro.props;
+
+function findImage(map: Record<string, { default: ImageMetadata }>, slug: string, filename: string): ImageMetadata | null {
+  const key = Object.keys(map).find(k =>
+    k.includes(`/${slug}/${filename}`)
+  );
+  return key ? map[key].default : null;
+}
+
+let imageModule: ImageMetadata | null = null;
+
+if (imageType === 'portrait') {
+  imageModule = findImage(faceFullImages, slug, 'faceFull.png')
+    || findImage(illustUIImages, slug, 'illustUI.png')
+    || findImage(illustImages, slug, 'illust.png');
+} else if (imageType === 'illust') {
+  imageModule = findImage(illustUIImages, slug, 'illustUI.png')
+    || findImage(illustImages, slug, 'illust.png')
+    || findImage(faceFullImages, slug, 'faceFull.png');
+} else {
+  imageModule = findImage(faceSmallImages, slug, 'faceSmall.png');
+}
+---
+
+{imageModule ? (
+  <div class={`ss-char-image-wrapper ${className || ''}`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      format={format}
+      quality={quality}
+      class="ss-char-image"
+    />
+  </div>
+) : (
+  <div class={`ss-char-image-fallback ${className || ''}`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}

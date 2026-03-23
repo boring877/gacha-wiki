@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+
+import Assassin from '../../assets/images/games/star-savior/roles/Assassin.png';
+import Caster from '../../assets/images/games/star-savior/roles/Caster.png';
+import Defender from '../../assets/images/games/star-savior/roles/Defender.png';
+import Ranger from '../../assets/images/games/star-savior/roles/Ranger.png';
+import Striker from '../../assets/images/games/star-savior/roles/Striker.png';
+import Supporter from '../../assets/images/games/star-savior/roles/Supporter.png';
+
+const imageMap: Record<string, ImageMetadata> = {
+  Assassin: Assassin,
+  Caster: Caster,
+  Defender: Defender,
+  Ranger: Ranger,
+  Striker: Striker,
+  Supporter: Supporter,
+};
+
+interface Props {
+  role: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { role, width = 24, height = 24, class: className } = Astro.props;
+const imageSrc = imageMap[role];
+---
+
+{imageSrc && <Image src={imageSrc} alt={role} width={width} height={height} class={className} />}
