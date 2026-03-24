@@ -5,6 +5,155 @@
  */
 
 export const bannerTimelineData = [
+  // #13 - Villain Halloween (Mar 24 - TBD) - CURRENT
+  {
+    id: 'villain-halloween-2026',
+    title: '"Villain Halloween" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[The Strongest Witch] Shaharl',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Seductive Vampire] Soltina',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: '[Slightly Mischievous Devil] Luca',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-03-24T03:00:00Z',
+    endDate: '2026-04-07T03:00:00Z',
+    description: 'Villain Halloween Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Halloween themed event featuring witch, vampire, and devil themed characters.',
+    status: 'current',
+    image: 'banner-villain-halloween',
+  },
+  // #12 - Infinite Subjugation Battle - Ruru (Mar 17 - Mar 24) - ENDED
+  {
+    id: 'infinite-subjugation-battle-ruru-2026',
+    title: '"Infinite Subjugation Battle" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Ruru',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-03-17T03:00:00Z',
+    endDate: '2026-03-24T03:00:00Z',
+    description: 'Infinite Subjugation Battle Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Infinite Subjugation Battle event featuring Ruru.',
+    status: 'ended',
+    image: 'banner-infinite-subjugation-ruru',
+  },
+  // #11 - Smile to the Goddess of Dance (Mar 10 - Mar 24) - ENDED
+  {
+    id: 'smile-goddess-dance-2026',
+    title: '"Smile to the Goddess of Dance" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Top Dancer] Messeria',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Fruit Basket] Bianca',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: '[How About a Beer?] Stenrina',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-03-10T03:00:00Z',
+    endDate: '2026-03-24T03:00:00Z',
+    description: 'Smile to the Goddess of Dance Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Harvest festival dance event featuring Messeria, Bianca, and Stenrina.',
+    status: 'ended',
+    image: 'banner-smile-goddess-dance',
+  },
+  // #10 - Battle Season - Setsuka (Feb 24 - Mar 10) - ENDED
+  {
+    id: 'battle-season-setsuka-2026',
+    title: '"Battle Season" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Samurai Cowgirl] Setsuka',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-02-24T03:00:00Z',
+    endDate: '2026-03-10T03:00:00Z',
+    description: 'Battle Season Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Battle Season event featuring Setsuka.',
+    status: 'ended',
+    image: 'banner-battle-season-setsuka',
+  },
+  // #9 - Lust & Raguen (Feb 24 - Mar 10) - ENDED
+  {
+    id: 'lust-raguen-2026',
+    title: '"Lust & Raguen" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Lust',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: 'Raguen',
+        rarity: 'SSR',
+        type: 'Defense',
+      },
+    ],
+    startDate: '2026-02-24T03:00:00Z',
+    endDate: '2026-03-10T03:00:00Z',
+    description: 'Lust & Raguen Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Event featuring Lust and Raguen.',
+    status: 'ended',
+    image: 'banner-lust-raguen',
+  },
+  // #8 - Bloodstained Blade (Feb 24 - Mar 10) - ENDED
+  {
+    id: 'bloodstained-blade-2026',
+    title: '"Bloodstained Blade" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Setsuka',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: 'Gracie',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: 'Lynette',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-02-24T03:00:00Z',
+    endDate: '2026-03-10T03:00:00Z',
+    description: 'Bloodstained Blade Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
+    note: 'Event featuring Setsuka, Gracie, and Lynette.',
+    status: 'ended',
+    image: 'banner-bloodstained-blade',
+  },
   // #11 - Lapis - The Vengeful Dual Swordswoman (Feb 17 - Feb 24) - CURRENT
   {
     id: 'lapis-main7-2026',
@@ -21,7 +170,7 @@ export const bannerTimelineData = [
     endDate: '2026-02-24T03:00:00Z',
     description: 'New Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'This Paladin will be added to the "Otherworldly Summon" after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-lapis',
   },
   // #10 - Valentine's Event (Feb 10 - Feb 24) - CURRENT
@@ -31,17 +180,17 @@ export const bannerTimelineData = [
     bannerType: 'event',
     featuredPaladins: [
       {
-        name: '【Innocent Confectioner】Frey',
+        name: '[Innocent Confectioner] Frey',
         rarity: 'SSR',
         type: 'Attack',
       },
       {
-        name: '【Chocolate Dragon Knight】Hildis',
+        name: '[Chocolate Dragon Knight] Hildis',
         rarity: 'SSR',
         type: 'Defense',
       },
       {
-        name: '【Champion of Love and Chocolate】Shaty',
+        name: '[Champion of Love and Chocolate] Shaty',
         rarity: 'SR',
         type: 'Attack',
       },
@@ -50,7 +199,7 @@ export const bannerTimelineData = [
     endDate: '2026-02-24T03:00:00Z',
     description: 'Valentine Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'Valentine themed banner featuring chocolate and love themed characters.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-valentine',
   },
   // #9 - Tower of Trials - Rosa (Feb 3 - Feb 10) - ENDED

@@ -8,9 +8,15 @@ import {
   getSupportBonusTierList,
   formatLB5Stats,
 } from "../../../data/busty-burst/support-tier-lists.js";
+import {
+  getUniqueElements,
+  getUniqueWeapons,
+} from "../../../data/busty-burst/support-data.js";
 
 // Get data
 const tierList = getSupportBonusTierList();
+const elements = getUniqueElements();
+const weapons = getUniqueWeapons();
 
 // Page metadata
 const title = "BBB Busty - Support Tier List";
@@ -48,6 +54,18 @@ const gameTitle = "Support Tier List";
         <option value="SS">SS Tier</option>
         <option value="S">S Tier</option>
         <option value="A">A Tier</option>
+      </select>
+      <select id="element-filter" class="bb-tier-filter-select">
+        <option value="">All Elements</option>
+        {elements.map((el) => (
+          <option value={el}>{el}</option>
+        ))}
+      </select>
+      <select id="weapon-filter" class="bb-tier-filter-select">
+        <option value="">All Weapons</option>
+        {weapons.map((w) => (
+          <option value={w}>{w}</option>
+        ))}
       </select>
       <button type="button" id="clear-filters" class="bb-tier-clear-btn">
         Clear
@@ -137,17 +155,25 @@ const gameTitle = "Support Tier List";
     const tierFilter = document.getElementById(
       "tier-filter",
     ) as HTMLSelectElement;
+    const elementFilter = document.getElementById(
+      "element-filter",
+    ) as HTMLSelectElement;
+    const weaponFilter = document.getElementById(
+      "weapon-filter",
+    ) as HTMLSelectElement;
     const clearBtn = document.getElementById(
       "clear-filters",
     ) as HTMLButtonElement;
     const noResults = document.getElementById("no-results");
     const tierRows = document.querySelectorAll(".bb-tier-row");
 
-    if (!searchInput || !tierFilter) return;
+    if (!searchInput || !tierFilter || !elementFilter || !weaponFilter) return;
 
     function filterCharacters() {
       const searchTerm = searchInput.value.toLowerCase().trim();
       const tierValue = tierFilter.value;
+      const elementValue = elementFilter.value;
+      const weaponValue = weaponFilter.value;
       let visibleCount = 0;
 
       tierRows.forEach((row) => {
@@ -174,7 +200,13 @@ const gameTitle = "Support Tier List";
           // Check tier filter
           const matchesTier = tierMatches;
 
-          const isVisible = matchesSearch && matchesTier;
+          // Check element filter
+          const matchesElement = !elementValue || element === elementValue;
+
+          // Check weapon filter
+          const matchesWeapon = !weaponValue || weapon === weaponValue;
+
+          const isVisible = matchesSearch && matchesTier && matchesElement && matchesWeapon;
           cardEl.classList.toggle("hidden", !isVisible);
           if (isVisible) rowVisibleCount++;
         });
@@ -193,12 +225,16 @@ const gameTitle = "Support Tier List";
     function clearFilters() {
       searchInput.value = "";
       tierFilter.value = "";
+      elementFilter.value = "";
+      weaponFilter.value = "";
       filterCharacters();
     }
 
     // Add event listeners
     searchInput.addEventListener("input", filterCharacters);
     tierFilter.addEventListener("change", filterCharacters);
+    elementFilter.addEventListener("change", filterCharacters);
+    weaponFilter.addEventListener("change", filterCharacters);
     clearBtn.addEventListener("click", clearFilters);
   }
 

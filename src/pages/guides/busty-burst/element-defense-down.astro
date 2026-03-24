@@ -21,25 +21,7 @@ const elementOrder = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
 // Get elements that actually have skills
 const activeElements = elementOrder.filter(el => groupedByElement[el] && groupedByElement[el].length > 0);
 
-// Helper to determine target type (single vs multi) from description
-function getTargetTypeFromDesc(description: string): 'single' | 'multi' {
-  if (!description) return 'single';
-  const d = description.toLowerCase();
-  if (
-    d.includes('3 nearest') ||
-    d.includes('3 closest') ||
-    d.includes('all enemies') ||
-    d.includes('all enemy') ||
-    d.includes('multiple enemies') ||
-    d.includes('2 nearest') ||
-    d.includes('2 closest') ||
-    d.includes('enemies within') ||
-    d.includes('enemies in range')
-  ) {
-    return 'multi';
-  }
-  return 'single';
-}
+
 
 // Helper to get element color
 function getElementColor(element: string): string {
@@ -211,8 +193,8 @@ const gameTitle = 'Element Defense Down Database';
             {skill.sourceType === 'skill' && (
               <div class="bb-defdown-target">
                 Target: <span>{skill.target}</span>
-                <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
-                  {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                <span class={`bb-defdown-target-badge ${skill.targetType}`}>
+                  {skill.targetType === 'single' ? 'Single (B)' : 'Multi (C)'}
                 </span>
               </div>
             )}

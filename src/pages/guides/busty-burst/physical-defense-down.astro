@@ -18,10 +18,14 @@ const skillBased = allSkills.filter(s => s.sourceType === 'skill');
 const ultimates = allSkills.filter(s => s.sourceType === 'ultimate');
 
 // Group skill-based by tier
-const tierS = skillBased.filter(s => s.tier === 'S').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
-const tierA = skillBased.filter(s => s.tier === 'A').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
-const tierB = skillBased.filter(s => s.tier === 'B').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
-const tierC = skillBased.filter(s => s.tier === 'C').sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0));
+const sortByValue = (a, b) => {
+  if (b.percent !== a.percent) return b.percent - a.percent;
+  return (b.flat || 0) - (a.flat || 0);
+};
+const tierS = skillBased.filter(s => s.tier === 'S').sort(sortByValue);
+const tierA = skillBased.filter(s => s.tier === 'A').sort(sortByValue);
+const tierB = skillBased.filter(s => s.tier === 'B').sort(sortByValue);
+const tierC = skillBased.filter(s => s.tier === 'C').sort(sortByValue);
 
 // Sort ultimates by defense down value (highest first)
 const sortedUltimates = [...ultimates].sort((a, b) => {
@@ -35,29 +39,7 @@ const sortedUltimates = [...ultimates].sort((a, b) => {
 const elements = [...new Set(skillBased.map(s => s.element))].filter(Boolean).sort();
 const rarities = ['SSR', 'SR', 'R'];
 
-// Helper to determine target type (single vs multi) from description
-function getTargetTypeFromDesc(description: string): 'single' | 'multi' {
-  if (!description) return 'single'; // Default to single (B) if no description
-  const d = description.toLowerCase();
-  // Multi-target indicators (Category C) - check description for multi-target keywords
-  if (
-    d.includes('3 nearest') ||
-    d.includes('3 closest') ||
-    d.includes('all enemies') ||
-    d.includes('all enemy') ||
-    d.includes('multiple enemies') ||
-    d.includes('2 nearest') ||
-    d.includes('2 closest') ||
-    d.includes('enemies within') ||
-    d.includes('enemies in range') ||
-    /deals.*to \d+ enemies/.test(d) ||
-    /damage to \d+/.test(d)
-  ) {
-    return 'multi';
-  }
-  // Single target (Category B) - default
-  return 'single';
-}
+
 
 // Stats
 const totalSkills = skillBased.length;
@@ -203,7 +185,7 @@ const gameTitle = 'Physical Defense Down Database';
                 data-element={skill.element?.toLowerCase()}
                 data-rarity={skill.rarity?.toLowerCase()}
                 data-tier="s"
-                data-target={getTargetTypeFromDesc(skill.description)}
+                data-target={skill.targetType}
               >
                 <div class="bb-defdown-card-header">
                   <div class="bb-defdown-card-avatar">
@@ -251,8 +233,8 @@ const gameTitle = 'Physical Defense Down Database';
                   </div>
                   <div class="bb-defdown-target">
                     Target: <span>{skill.target}</span>
-                    <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
-                      {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                    <span class={`bb-defdown-target-badge ${skill.targetType}`}>
+                      {skill.targetType === 'single' ? 'Single (B)' : 'Multi (C)'}
                     </span>
                   </div>
                   {skill.description && <div class="bb-defdown-description">{skill.description}</div>}
@@ -283,7 +265,7 @@ const gameTitle = 'Physical Defense Down Database';
                 data-element={skill.element?.toLowerCase()}
                 data-rarity={skill.rarity?.toLowerCase()}
                 data-tier="a"
-                data-target={getTargetTypeFromDesc(skill.description)}
+                data-target={skill.targetType}
               >
                 <div class="bb-defdown-card-header">
                   <div class="bb-defdown-card-avatar">
@@ -331,8 +313,8 @@ const gameTitle = 'Physical Defense Down Database';
                   </div>
                   <div class="bb-defdown-target">
                     Target: <span>{skill.target}</span>
-                    <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
-                      {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                    <span class={`bb-defdown-target-badge ${skill.targetType}`}>
+                      {skill.targetType === 'single' ? 'Single (B)' : 'Multi (C)'}
                     </span>
                   </div>
                   {skill.description && <div class="bb-defdown-description">{skill.description}</div>}
@@ -363,7 +345,7 @@ const gameTitle = 'Physical Defense Down Database';
                 data-element={skill.element?.toLowerCase()}
                 data-rarity={skill.rarity?.toLowerCase()}
                 data-tier="b"
-                data-target={getTargetTypeFromDesc(skill.description)}
+                data-target={skill.targetType}
               >
                 <div class="bb-defdown-card-header">
                   <div class="bb-defdown-card-avatar">
@@ -411,8 +393,8 @@ const gameTitle = 'Physical Defense Down Database';
                   </div>
                   <div class="bb-defdown-target">
                     Target: <span>{skill.target}</span>
-                    <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
-                      {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                    <span class={`bb-defdown-target-badge ${skill.targetType}`}>
+                      {skill.targetType === 'single' ? 'Single (B)' : 'Multi (C)'}
                     </span>
                   </div>
                   {skill.description && <div class="bb-defdown-description">{skill.description}</div>}
@@ -443,7 +425,7 @@ const gameTitle = 'Physical Defense Down Database';
                 data-element={skill.element?.toLowerCase()}
                 data-rarity={skill.rarity?.toLowerCase()}
                 data-tier="c"
-                data-target={getTargetTypeFromDesc(skill.description)}
+                data-target={skill.targetType}
               >
                 <div class="bb-defdown-card-header">
                   <div class="bb-defdown-card-avatar">
@@ -491,8 +473,8 @@ const gameTitle = 'Physical Defense Down Database';
                   </div>
                   <div class="bb-defdown-target">
                     Target: <span>{skill.target}</span>
-                    <span class={`bb-defdown-target-badge ${getTargetTypeFromDesc(skill.description)}`}>
-                      {getTargetTypeFromDesc(skill.description) === 'single' ? 'Single (B)' : 'Multi (C)'}
+                    <span class={`bb-defdown-target-badge ${skill.targetType}`}>
+                      {skill.targetType === 'single' ? 'Single (B)' : 'Multi (C)'}
                     </span>
                   </div>
                   {skill.description && <div class="bb-defdown-description">{skill.description}</div>}

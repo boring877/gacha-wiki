@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Shaharl",
-  "introduction": "Middle Row、Magical、Support",
+  "introduction": "Middle Row, Magical, Support",
   "profile": {
     "height": "162cm",
     "bust": "104cm (J Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "event",
+    "source": "Villain Halloween"
   },
   "characterId": 2081
 };
@@ -88,14 +88,14 @@ export const skills = {
       "icon": "skill001/skill0008",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-50 DOWN for 6 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-50 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-320 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-23%-317 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "90% ATK",
       "baseDamage": "+90",
       "levelGrowth": "+6",
       "lvl1": "90% + 90",
-      "lvl90": "90% + -177",
+      "lvl90": "90% + 624",
       "effects": [
         "Curse",
         "Magic Defense- Lv5"
@@ -109,10 +109,11 @@ export const skills = {
         },
         {
           "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6,
-          "levelGrowth": -3.0
+          "value": -23,
+          "type": "percent",
+          "flatValue": -50,
+          "flatGrowth": -3,
+          "duration": 6
         }
       ],
       "duration": 6
@@ -121,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Want to come with me?",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type DefenseDOWN for 9 seconds , 9",
-      "descriptionLv1": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type DefenseDOWN for 9 seconds , 9",
-      "descriptionLv90": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type DefenseDOWN for 9 seconds , 9",
+      "description": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense DOWN for 9 seconds and Accuracy DOWN for 9 seconds",
+      "descriptionLv1": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense DOWN for 9 seconds and Accuracy DOWN for 9 seconds",
+      "descriptionLv90": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense DOWN for 9 seconds and Accuracy DOWN for 9 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -133,7 +134,8 @@ export const skills = {
       "lvl90": null,
       "effects": [
         "Fire Type ATK - Lv5",
-        "Fire Type Defense- Lv5"
+        "Fire Type Defense- Lv5",
+        "Accuracy - Lv5"
       ],
       "buffEffects": [
         {
@@ -149,9 +151,10 @@ export const skills = {
           "duration": 9
         },
         {
-          "name": "Unknown Buff  6055",
-          "value": 0,
-          "type": "unknown",
+          "name": "Accuracy - Lv5",
+          "value": -13,
+          "type": "flat",
+          "flatGrowth": -0.15,
           "duration": 9
         }
       ],
@@ -163,7 +166,7 @@ export const skills = {
       "rank": 1,
       "name": "A witch's hospitality!",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 1) for 10 seconds and Magic Critical DamageDOWN(LV 1) for 10 seconds",
+      "description": "Deals magic damage to all enemies and inflicts Physical Critical Damage DOWN(LV 1) for 10 seconds and Magic Critical Damage DOWN(LV 1) for 10 seconds",
       "effect": "300% + 300",
       "buffEffects": [
         {
@@ -182,72 +185,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Is my curse working?",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-50 DOWN for 6 seconds",
-      "effect": "90% + 90",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Want to come with me?",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Fire Type ATK DOWN on the 3 nearest enemies for 9 seconds and Fire Type DefenseDOWN for 9 seconds , 9",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Fire Type ATK - Lv5",
-          "value": -20,
-          "type": "percent",
-          "duration": 9
-        },
-        {
-          "name": "Fire Type Defense- Lv5",
-          "value": -20,
-          "type": "percent",
-          "duration": 9
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "A witch's hospitality!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 1) for 10 seconds and Magic Critical DamageDOWN(LV 1) for 10 seconds",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage- Ultimate Lv1",
-          "value": -20,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage- Ultimate Lv1",
-          "value": -20,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "A witch's hospitality!",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 2) for 10 seconds and Magic Critical DamageDOWN(LV 2) for 10 seconds",
+      "description": "Deals magic damage to all enemies and inflicts Physical Critical Damage DOWN(LV 2) for 10 seconds and Magic Critical Damage DOWN(LV 2) for 10 seconds",
       "effect": "400% + 400",
       "buffEffects": [
         {
@@ -261,6 +201,69 @@ export const skills = {
           "value": -25,
           "type": "percent",
           "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "A witch's hospitality!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Physical Critical Damage DOWN(LV 3) for 11 seconds and Magic Critical Damage DOWN(LV 3) for 11 seconds",
+      "effect": "480% + 450",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 11
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "A witch's hospitality!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to all enemies and inflicts Physical Critical Damage DOWN(LV 4) for 11 seconds and Magic Critical Damage DOWN(LV 4) for 11 seconds",
+      "effect": "550% + 500",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 11
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "A witch's hospitality!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to all enemies and inflicts Physical Critical Damage DOWN(LV 5) for 12 seconds and Magic Critical Damage DOWN(LV 5) for 12 seconds",
+      "effect": "600% + 550",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 12
         }
       ]
     }
@@ -320,8 +323,8 @@ export const skills = {
     "MDEF": 35
   },
   "skillRotation": {
-    "opening": "Skill3 → Skill2 → Basic → Basic",
-    "loop": "Basic → Basic → Skill2 → Basic → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
+    "opening": "Skill3 > Skill2 > Basic > Basic",
+    "loop": "Basic > Basic > Skill2 > Basic > Basic > Basic > Skill3 > Skill2 > Basic > Basic"
   },
   "basicAttack": {
     "icon": "skill001/skill0001",
@@ -336,9 +339,9 @@ export const skills = {
 export const stats = {
   "id": "the-strongest-witch-shaharl",
   "characterId": 2081,
-  "name": "【The Strongest Witch】Shaharl",
+  "name": "[The Strongest Witch] Shaharl",
   "rarity": "SSR",
-  "element": "火",
+  "element": "Fire",
   "weapon": "",
   "role": "Support",
   "tags": [

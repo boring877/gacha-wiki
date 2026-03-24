@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Soltina",
-  "introduction": "Back Row、Physical、Attacker",
+  "introduction": "Back Row, Physical, Attacker",
   "profile": {
     "height": "162cm",
     "bust": "100cm (J Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "event",
+    "source": "Villain Halloween"
   },
   "characterId": 2082
 };
@@ -86,9 +86,9 @@ export const skills = {
       "slot": 2,
       "name": "I'll come give you a kiss!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "130% ATK",
@@ -114,9 +114,9 @@ export const skills = {
       "slot": 3,
       "name": "Pet me, pet me",
       "icon": "skill001/skill0013",
-      "description": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds",
-      "descriptionLv1": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds",
-      "descriptionLv90": "Applies Accuracy 23 UP to self for 10 seconds and Physical Attack +850 UP for 10 seconds",
+      "description": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
+      "descriptionLv1": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
+      "descriptionLv90": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -171,63 +171,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I'll come give you a kiss!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "effect": "130% + 100",
-      "buffEffects": [
-        {
-          "name": "HP Absorb+ Lv5",
-          "value": 19,
-          "type": "percent",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Pet me, pet me",
-      "icon": "skill001/skill0013",
-      "description": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Love-struck vampire maid racing through the night",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 3 seconds and Action Speed DOWN(LV 4) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1150% + 1000",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Action Speed - Ultimate Lv4",
-          "value": -28,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Love-struck vampire maid racing through the night",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
@@ -238,6 +181,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Love-struck vampire maid racing through the night",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1540% + 1300",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Love-struck vampire maid racing through the night",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 5 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1650% + 1350",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Love-struck vampire maid racing through the night",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 5 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
         },
         {
           "name": "Action Speed - Ultimate Lv5",
@@ -303,8 +309,8 @@ export const skills = {
     "MDEF": 90
   },
   "skillRotation": {
-    "opening": "Skill3 → Skill2 → Basic → Basic",
-    "loop": "Basic → Skill2 → Basic → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
+    "opening": "Skill3 > Skill2 > Basic > Basic",
+    "loop": "Basic > Skill2 > Basic > Basic > Basic > Skill3 > Skill2 > Basic > Basic"
   },
   "basicAttack": {
     "icon": "skill001/skill0004",
@@ -319,9 +325,9 @@ export const skills = {
 export const stats = {
   "id": "seductive-vampire-soltina",
   "characterId": 2082,
-  "name": "【Seductive Vampire】Soltina",
+  "name": "[Seductive Vampire] Soltina",
   "rarity": "SSR",
-  "element": "魔",
+  "element": "Dark",
   "weapon": "",
   "role": "Attacker",
   "tags": [

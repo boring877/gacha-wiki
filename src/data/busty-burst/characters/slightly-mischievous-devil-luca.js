@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Luca",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "Front Row, Physical, Attacker",
   "profile": {
     "height": "156cm",
     "bust": "94cm (H Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "event",
+    "source": "Villain Halloween"
   },
   "characterId": 2083
 };
@@ -103,9 +103,9 @@ export const skills = {
       "slot": 3,
       "name": "Smack!",
       "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-30 DOWN for 10 seconds",
-      "descriptionLv1": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-30 DOWN for 10 seconds",
-      "descriptionLv90": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-30 DOWN for 10 seconds",
+      "description": "Inflicts Charm for 1 second on the 3 nearest enemies and Physical Critical Damage DOWN for 10 seconds",
+      "descriptionLv1": "Inflicts Charm for 1 second on the 3 nearest enemies and Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts Charm for 1 second on the 3 nearest enemies and Physical Critical Damage-11%-208 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -128,8 +128,9 @@ export const skills = {
           "name": "Physical Critical Damage- Lv3",
           "value": -11,
           "type": "percent",
-          "duration": 10,
-          "levelGrowth": -2.0
+          "flatValue": -30,
+          "flatGrowth": -2,
+          "duration": 10
         }
       ],
       "duration": 10
@@ -140,7 +141,7 @@ export const skills = {
       "rank": 1,
       "name": "It'll suddenly get ugly!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2 seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1100% + 900",
       "buffEffects": [
         {
@@ -153,53 +154,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I'll just prick a little, okay?",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the farthest enemy",
-      "effect": "280% + 180",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Smack!",
-      "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-30 DOWN for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Physical Critical Damage- Lv3",
-          "value": -11,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "It'll suddenly get ugly!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1100% + 900",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "It'll suddenly get ugly!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2.5 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2.5 seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1320% + 1000",
       "buffEffects": [
         {
@@ -207,6 +164,51 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "It'll suddenly get ugly!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2.5 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1490% + 1100",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "It'll suddenly get ugly!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1600% + 1200",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "It'll suddenly get ugly!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1650% + 1250",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     }
@@ -261,8 +263,8 @@ export const skills = {
     "MDEF": 50
   },
   "skillRotation": {
-    "opening": "Skill3 → Skill2 → Basic → Basic",
-    "loop": "Basic → Skill2 → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
+    "opening": "Skill3 > Skill2 > Basic > Basic",
+    "loop": "Basic > Skill2 > Basic > Basic > Skill3 > Skill2 > Basic > Basic"
   },
   "basicAttack": {
     "icon": "skill001/skill0001",
@@ -277,9 +279,9 @@ export const skills = {
 export const stats = {
   "id": "slightly-mischievous-devil-luca",
   "characterId": 2083,
-  "name": "【Slightly Mischievous Devil】Luca",
+  "name": "[Slightly Mischievous Devil] Luca",
   "rarity": "SR",
-  "element": "火",
+  "element": "Fire",
   "weapon": "",
   "role": "Attacker",
   "tags": [

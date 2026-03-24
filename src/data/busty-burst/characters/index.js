@@ -183,12 +183,6 @@ import { info as sobrina_info, skills as sobrina_skills, stats as sobrina_stats 
 import { info as soltina_info, skills as soltina_skills, stats as soltina_stats } from "./soltina.js";
 import { info as songstress_of_the_sky_festival_bernadette_info, skills as songstress_of_the_sky_festival_bernadette_skills, stats as songstress_of_the_sky_festival_bernadette_stats } from "./songstress-of-the-sky-festival-bernadette.js";
 import { info as sonia_info, skills as sonia_skills, stats as sonia_stats } from "./sonia.js";
-import { skills as sr_how_about_a_beer_stenlina_skills } from "./sr-how-about-a-beer-stenlina.js";
-import { skills as sr_little_devil_luca_skills } from "./sr-little-devil-luca.js";
-import { skills as ssr_ran_skills } from "./ssr-ran.js";
-import { skills as ssr_ruse_skills } from "./ssr-ruse.js";
-import { skills as ssr_strongest_witch_shahar_skills } from "./ssr-strongest-witch-shahar.js";
-import { skills as ssr_tempting_vampire_soltina_skills } from "./ssr-tempting-vampire-soltina.js";
 import { info as steaming_dim_sum_lilirara_info, skills as steaming_dim_sum_lilirara_skills, stats as steaming_dim_sum_lilirara_stats } from "./steaming-dim-sum-lilirara.js";
 import { info as stenlina_info, skills as stenlina_skills, stats as stenlina_stats } from "./stenlina.js";
 import { info as super_bust_dirndl_adrienne_info, skills as super_bust_dirndl_adrienne_skills, stats as super_bust_dirndl_adrienne_stats } from "./super-bust-dirndl-adrienne.js";
@@ -846,12 +840,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   soltina_skills,
   songstress_of_the_sky_festival_bernadette_skills,
   sonia_skills,
-  sr_how_about_a_beer_stenlina_skills,
-  sr_little_devil_luca_skills,
-  ssr_ran_skills,
-  ssr_ruse_skills,
-  ssr_strongest_witch_shahar_skills,
-  ssr_tempting_vampire_soltina_skills,
   steaming_dim_sum_lilirara_skills,
   stenlina_skills,
   super_bust_dirndl_adrienne_skills,

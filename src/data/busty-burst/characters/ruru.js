@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "event",
+    "source": "Infinite Subjugation Battle"
   },
   "characterId": 2098
 };

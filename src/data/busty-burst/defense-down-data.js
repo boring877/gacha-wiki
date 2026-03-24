@@ -1,331 +1,177 @@
 // Busty Burst Defense Down Database
-// Extracted from character-skills-full.js - contains all Physical and Magic Defense Down effects
-// Types: Skill (regular skills with % + flat), Ultimate (LV1-5 scaling)
-// Only includes characters that exist in character-info.js (shown on Character Skills page)
+// Self-contained system for Physical and Magic Defense Down data
+// Uses buffEffects from character skill data (not regex on descriptions)
+// Only includes characters that exist in character-info.js
 
 import { BUSTY_BURST_SKILLS_DATA, getAllCharacterSlugs } from './characters/index.js';
 
-// Get valid character slugs (only characters shown on Character Skills page)
 const validCharacterSlugs = new Set(getAllCharacterSlugs());
 
-// Defense down tier definitions based on game data
-export const DEFENSE_DOWN_TIERS = {
-  physical: {
-    S: { percent: 23, flat: 317, label: 'S Tier (-23% -317)' },
-    A: { percent: 21, flat: 218, label: 'A Tier (-21% -218)' },
-    B: { percent: 18, flat: 208, label: 'B Tier (-18% -208)' },
-  },
-  magic: {
-    S: { percent: 23, flat: 317, label: 'S Tier (-23% -317)' },
-    A: { percent: 21, flat: 218, label: 'A Tier (-21% -218)' },
-    B: { percent: 18, flat: 208, label: 'B Tier (-18% -208)' },
-  },
-  ultimate: {
-    LV5: { label: 'Ultimate LV5' },
-    LV4: { label: 'Ultimate LV4' },
-    LV3: { label: 'Ultimate LV3' },
-    LV2: { label: 'Ultimate LV2' },
-    LV1: { label: 'Ultimate LV1' },
-  },
-};
-
-// Parse defense down value from description string
-function parseDefenseDown(description) {
-  const results = [];
-
-  // Pattern 1: "Physical Defense -23%+-317DOWN for 7 seconds" or "Magic Defense-21%+-218DOWN for 10 seconds"
-  // Format: "Defense -XX%+-YYYDOWN for Z seconds" where XX is percent, YYY is flat value
-  // Note: Some entries have no space before the percentage (Magic Defense-21%), so space is optional
-  const skillPattern = /(Physical|Magic) Defense ?(-?\d+)%\+(-?\d+)DOWN for (\d+) seconds/gi;
-  let match;
-  while ((match = skillPattern.exec(description)) !== null) {
-    results.push({
-      type: match[1].toLowerCase(),
-      sourceType: 'skill',
-      percent: Math.abs(parseInt(match[2])),
-      flat: Math.abs(parseInt(match[3])),
-      duration: parseInt(match[4]),
-    });
-  }
-
-  // Pattern 2: "Physical Defense DOWN(LV5) for 10 seconds" (ultimate skills)
-  const ultPattern = /(Physical|Magic) Defense DOWN\(LV(\d)\) for (\d+) seconds/gi;
-  while ((match = ultPattern.exec(description)) !== null) {
-    results.push({
-      type: match[1].toLowerCase(),
-      sourceType: 'ultimate',
-      level: parseInt(match[2]),
-      duration: parseInt(match[3]),
-    });
-  }
-
-  // Pattern 3: "Magic Defense -23% (-50) for 6 seconds" (newer format with flat in parentheses)
-  const newPatternWithFlat = /(Physical|Magic) Defense (-?\d+)% \((-?\d+)\) for (\d+) seconds/gi;
-  while ((match = newPatternWithFlat.exec(description)) !== null) {
-    results.push({
-      type: match[1].toLowerCase(),
-      sourceType: 'skill',
-      percent: Math.abs(parseInt(match[2])),
-      flat: Math.abs(parseInt(match[3])),
-      duration: parseInt(match[4]),
-    });
-  }
-
-  // Pattern 4: "Magic Defense -20% for 10 seconds" (newer format with only percent)
-  const newPatternPercentOnly = /(Physical|Magic) Defense (-?\d+)% for (\d+) seconds/gi;
-  while ((match = newPatternPercentOnly.exec(description)) !== null) {
-    // Skip if already matched by pattern 3 (which is more specific)
-    const alreadyMatched = results.some(r =>
-      r.type === match[1].toLowerCase() &&
-      description.indexOf(`${match[1]} Defense ${match[2]}%`) >= 0 &&
-      description.includes(`(${match[3]})`)
-    );
-    if (!alreadyMatched) {
-      results.push({
-        type: match[1].toLowerCase(),
-        sourceType: 'skill',
-        percent: Math.abs(parseInt(match[2])),
-        flat: 0, // No flat value in this format
-        duration: parseInt(match[3]),
-      });
-    }
-  }
-
-  return results;
+function isDefenseDownBuff(buff) {
+  if (!buff || !buff.name) return false;
+  const name = buff.name.toLowerCase();
+  return name.includes('defense') && name.includes('-') && !name.includes('+');
 }
 
-// Extract all defense down skills from character data
-function extractDefenseDownSkills() {
-  const defenseDownSkills = [];
+function isPhysicalDefenseDownBuff(buff) {
+  if (!isDefenseDownBuff(buff)) return false;
+  const name = buff.name.toLowerCase();
+  return name.includes('physical defense') && !name.includes('type defense');
+}
+
+function isMagicDefenseDownBuff(buff) {
+  if (!isDefenseDownBuff(buff)) return false;
+  const name = buff.name.toLowerCase();
+  return name.includes('magic defense') && !name.includes('type defense');
+}
+
+function isUltimateBuff(buff) {
+  return buff.name && buff.name.toLowerCase().includes('ultimate');
+}
+
+function calcFlatLv90(buff) {
+  const base = Math.abs(buff.value || 0);
+  const growth = Math.abs(buff.levelGrowth || 0);
+  return Math.round(base + 89 * growth);
+}
+
+function calcFlatLv1(buff) {
+  return Math.abs(buff.value || 0);
+}
+
+function getSkillTier(percent, flat) {
+  if (percent >= 23 && flat >= 300) return 'S';
+  if (percent >= 21 && flat >= 200) return 'A';
+  if (percent >= 18 && flat >= 200) return 'B';
+  if (flat >= 200) return 'B';
+  return 'C';
+}
+
+function getTargetType(description) {
+  if (!description) return 'single';
+  const d = description.toLowerCase();
+  if (
+    d.includes('3 nearest') || d.includes('3 closest') ||
+    d.includes('all enemies') || d.includes('all enemy') ||
+    d.includes('multiple enemies') ||
+    d.includes('2 nearest') || d.includes('2 closest') ||
+    d.includes('enemies within') || d.includes('enemies in range')
+  ) {
+    return 'multi';
+  }
+  return 'single';
+}
+
+function extractAllDefenseDownSkills() {
+  const results = [];
 
   for (const char of BUSTY_BURST_SKILLS_DATA) {
-    // Skip characters not in character-info.js (not shown on Character Skills page)
-    if (!validCharacterSlugs.has(char.slug)) {
-      continue;
-    }
+    if (!validCharacterSlugs.has(char.slug)) continue;
 
-    // Check regular skills
+    const charBase = {
+      characterId: char.id,
+      characterName: char.name,
+      characterSlug: char.slug,
+      rarity: char.rarity,
+      element: char.element,
+      role: char.role,
+    };
+
     if (char.skills) {
       for (const skill of char.skills) {
-        const desc = skill.descriptionLv90 || skill.description || '';
-        const defDowns = parseDefenseDown(desc);
+        const buffs = skill.buffEffects || [];
 
-        for (const defDown of defDowns) {
-          // Also parse Lv1 values for comparison
-          const descLv1 = skill.descriptionLv1 || '';
-          const defDownsLv1 = parseDefenseDown(descLv1);
-          const lv1Match = defDownsLv1.find(d => d.type === defDown.type);
+        for (const buff of buffs) {
+          const physDown = isPhysicalDefenseDownBuff(buff);
+          const magDown = isMagicDefenseDownBuff(buff);
 
-          defenseDownSkills.push({
-            characterId: char.id,
-            characterName: char.name,
-            characterSlug: char.slug,
-            rarity: char.rarity,
-            element: char.element,
-            role: char.role,
+          if (!physDown && !magDown) continue;
+
+          const defType = physDown ? 'physical' : 'magic';
+          const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
+          const flatBase = buff.type === 'flat' ? Math.abs(buff.value || 0) : (buff.flatValue != null ? Math.abs(buff.flatValue) : 0);
+          const flatGrowth = buff.type === 'flat' ? Math.abs(buff.levelGrowth || 0) : (buff.flatGrowth != null ? Math.abs(buff.flatGrowth) : 0);
+          const flatLv90 = flatBase + 89 * flatGrowth;
+          const flatLv1 = flatBase;
+          const duration = buff.duration || null;
+          const desc = skill.descriptionLv90 || skill.description || '';
+
+          const tier = getSkillTier(percent, flatLv90);
+
+          results.push({
+            ...charBase,
             skillName: skill.name,
             skillSlot: skill.slot,
             skillIcon: skill.icon,
             target: skill.target || 'Unknown',
             castTime: skill.castTime,
             description: desc,
-            descriptionLv1: descLv1,
-            ...defDown,
-            flatLv1: lv1Match?.flat || defDown.flat,
-            // Calculate tier
-            tier: getTier(defDown),
-            // Extra effects parsing
-            extraEffects: parseExtraEffects(desc),
+            type: defType,
+            sourceType: 'skill',
+            percent,
+            flat: Math.round(flatLv90),
+            flatLv1: Math.round(flatLv1),
+            duration,
+            tier,
+            targetType: getTargetType(desc),
           });
         }
       }
     }
 
-    // Check ultimate skills (only rank 5 for highest values)
-    // IMPORTANT: Always set sourceType to 'ultimate' for skills from char.ultimate array
     if (char.ultimate) {
       const maxUlt = char.ultimate.find(u => u.rank === 5) || char.ultimate[char.ultimate.length - 1];
       if (maxUlt) {
-        const desc = maxUlt.description || '';
-        const buffEffects = maxUlt.buffEffects || [];
+        const buffs = maxUlt.buffEffects || [];
 
-        // Find Physical and Magic Defense DOWN buffs from buffEffects
-        // Note: Defense DOWN has "-" in name (e.g., "Physical Defense - Ultimate Lv5")
-        const physicalDefDownBuff = buffEffects.find(b =>
-          b.name && b.name.toLowerCase().includes('physical defense') && b.name.includes('-')
-        );
-        const magicDefDownBuff = buffEffects.find(b =>
-          b.name && b.name.toLowerCase().includes('magic defense') && b.name.includes('-')
-        );
+        for (const buff of buffs) {
+          if (!isUltimateBuff(buff)) continue;
 
-        // Process Physical Defense DOWN
-        if (physicalDefDownBuff) {
-          defenseDownSkills.push({
-            characterId: char.id,
-            characterName: char.name,
-            characterSlug: char.slug,
-            rarity: char.rarity,
-            element: char.element,
-            role: char.role,
+          const physDown = isPhysicalDefenseDownBuff(buff);
+          const magDown = isMagicDefenseDownBuff(buff);
+
+          if (!physDown && !magDown) continue;
+
+          const defType = physDown ? 'physical' : 'magic';
+          const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
+          const flat = buff.type === 'flat' ? Math.abs(buff.value || 0) : 0;
+          const duration = buff.duration || null;
+          const desc = maxUlt.description || '';
+
+          results.push({
+            ...charBase,
             skillName: maxUlt.name,
             skillSlot: 'Ultimate',
             skillIcon: maxUlt.icon,
             target: 'Varies',
             description: desc,
-            type: 'physical',
+            type: defType,
             sourceType: 'ultimate',
-            percent: physicalDefDownBuff.type === 'percent' ? Math.abs(physicalDefDownBuff.value) : 0,
-            flat: physicalDefDownBuff.type === 'flat' ? Math.abs(physicalDefDownBuff.value) : 0,
-            duration: physicalDefDownBuff.duration || null,
+            percent,
+            flat,
+            duration,
             level: maxUlt.rank,
             tier: `ULT_LV${maxUlt.rank}`,
-            extraEffects: parseExtraEffects(desc),
+            targetType: 'single',
           });
-        }
-
-        // Process Magic Defense DOWN
-        if (magicDefDownBuff) {
-          defenseDownSkills.push({
-            characterId: char.id,
-            characterName: char.name,
-            characterSlug: char.slug,
-            rarity: char.rarity,
-            element: char.element,
-            role: char.role,
-            skillName: maxUlt.name,
-            skillSlot: 'Ultimate',
-            skillIcon: maxUlt.icon,
-            target: 'Varies',
-            description: desc,
-            type: 'magic',
-            sourceType: 'ultimate',
-            percent: magicDefDownBuff.type === 'percent' ? Math.abs(magicDefDownBuff.value) : 0,
-            flat: magicDefDownBuff.type === 'flat' ? Math.abs(magicDefDownBuff.value) : 0,
-            duration: magicDefDownBuff.duration || null,
-            level: maxUlt.rank,
-            tier: `ULT_LV${maxUlt.rank}`,
-            extraEffects: parseExtraEffects(desc),
-          });
-        }
-
-        // Fallback: If no buffEffects found, try parsing description
-        if (!physicalDefDownBuff && !magicDefDownBuff) {
-          const defDowns = parseDefenseDown(desc);
-          for (const defDown of defDowns) {
-            const level = defDown.level || maxUlt.rank;
-            defenseDownSkills.push({
-              characterId: char.id,
-              characterName: char.name,
-              characterSlug: char.slug,
-              rarity: char.rarity,
-              element: char.element,
-              role: char.role,
-              skillName: maxUlt.name,
-              skillSlot: 'Ultimate',
-              skillIcon: maxUlt.icon,
-              target: 'Varies',
-              description: desc,
-              type: defDown.type,
-              sourceType: 'ultimate',
-              percent: defDown.percent || 0,
-              flat: defDown.flat || 0,
-              duration: defDown.duration,
-              level: level,
-              tier: `ULT_LV${level}`,
-              extraEffects: parseExtraEffects(desc),
-            });
-          }
         }
       }
     }
   }
 
-  return defenseDownSkills;
+  return results;
 }
 
-// Get tier based on percent and flat values
-function getTier(defDown) {
-  if (defDown.sourceType === 'ultimate') {
-    return `ULT_LV${defDown.level}`;
-  }
+export const DEFENSE_DOWN_SKILLS = extractAllDefenseDownSkills();
 
-  const { percent, flat } = defDown;
-  if (percent >= 23 && flat >= 300) return 'S';
-  if (percent >= 21 && flat >= 200) return 'A';
-  if (percent >= 18 && flat >= 200) return 'B';
-  return 'C';
-}
-
-// Parse extra effects from description
-function parseExtraEffects(description) {
-  const effects = [];
-
-  // Burn
-  if (/Burn/i.test(description)) {
-    const burnMatch = description.match(/Burn\(HP --?(\d+) per second\) for (\d+) seconds/i);
-    if (burnMatch) {
-      effects.push({ type: 'Burn', value: parseInt(burnMatch[1]), duration: parseInt(burnMatch[2]) });
-    }
-  }
-
-  // Accuracy down
-  if (/Accuracy.*DOWN/i.test(description)) {
-    const accMatch = description.match(/Accuracy -(\d+)DOWN for (\d+) seconds/i);
-    if (accMatch) {
-      effects.push({ type: 'Accuracy Down', value: parseInt(accMatch[1]), duration: parseInt(accMatch[2]) });
-    }
-  }
-
-  // Lifesteal
-  if (/absorbs.*damage dealt to restore/i.test(description)) {
-    effects.push({ type: 'Lifesteal' });
-  }
-
-  // Dual defense down (both phys and magic)
-  if (/Physical Defense.*Magic Defense/i.test(description) || /Magic Defense.*Physical Defense/i.test(description)) {
-    effects.push({ type: 'Dual Defense Down' });
-  }
-
-  return effects;
-}
-
-// Export extracted data
-export const DEFENSE_DOWN_SKILLS = extractDefenseDownSkills();
-
-// Get only physical defense down skills
 export function getPhysicalDefenseDownSkills() {
-  return DEFENSE_DOWN_SKILLS.filter(skill => skill.type === 'physical');
+  return DEFENSE_DOWN_SKILLS.filter(s => s.type === 'physical');
 }
 
-// Get only magic defense down skills
 export function getMagicDefenseDownSkills() {
-  return DEFENSE_DOWN_SKILLS.filter(skill => skill.type === 'magic');
+  return DEFENSE_DOWN_SKILLS.filter(s => s.type === 'magic');
 }
 
-// Get skills by tier
 export function getSkillsByTier(tier, type = 'physical') {
-  return DEFENSE_DOWN_SKILLS.filter(skill => skill.tier === tier && skill.type === type);
-}
-
-// Get unique characters with defense down
-export function getUniqueCharactersWithDefenseDown(type = 'physical') {
-  const skills = type === 'all' ? DEFENSE_DOWN_SKILLS : DEFENSE_DOWN_SKILLS.filter(s => s.type === type);
-  const charMap = new Map();
-
-  for (const skill of skills) {
-    if (!charMap.has(skill.characterId)) {
-      charMap.set(skill.characterId, {
-        id: skill.characterId,
-        name: skill.characterName,
-        slug: skill.characterSlug,
-        rarity: skill.rarity,
-        element: skill.element,
-        role: skill.role,
-        skills: [],
-      });
-    }
-    charMap.get(skill.characterId).skills.push(skill);
-  }
-
-  return Array.from(charMap.values());
+  return DEFENSE_DOWN_SKILLS.filter(s => s.tier === tier && s.type === type);
 }

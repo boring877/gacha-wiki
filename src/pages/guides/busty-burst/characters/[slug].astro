@@ -186,7 +186,17 @@ const formatBuffEffect = (b: any) => {
   const val = typeof b.value === 'number' ? `${sign}${b.value}` : '';
   const suffix = b.type === 'percent' ? '%' : '';
   const needsSpace = !b.name.endsWith('+') && !b.name.endsWith('-') && val ? ' ' : '';
-  return `${b.name}${needsSpace}${val}${suffix}`;
+  let result = `${b.name}${needsSpace}${val}${suffix}`;
+
+  if (b.flatValue != null && typeof b.flatValue === 'number') {
+    const flatSign = b.flatValue > 0 ? '+' : '';
+    result += ` ${flatSign}${b.flatValue}`;
+    if (b.flatGrowth) {
+      result += ` (${b.flatGrowth >= 0 ? '+' : ''}${b.flatGrowth}/lv)`;
+    }
+  }
+
+  return result;
 };
 
 // Create description
@@ -597,9 +607,18 @@ const description = `${character.displayName || character.name} - ${character.ra
           const lvl90Value = baseValue + (90 - 1) * growth;
 
           const meaningfulBuffs = skill.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown') || [];
-          const hasBuffGrowth = meaningfulBuffs.some(b => typeof b.levelGrowth === 'number' && b.levelGrowth !== 0);
-          const buffGrowthBuffs = meaningfulBuffs.filter(b => typeof b.levelGrowth === 'number' && b.levelGrowth !== 0);
-          const buffGrowthJson = buffGrowthBuffs.length > 0 ? JSON.stringify(buffGrowthBuffs.map(b => ({ name: b.name, value: b.value, growth: b.levelGrowth, type: b.type, valueLv1: b.valueLv1 ?? null, valueLv90: b.valueLv90 ?? null }))) : '';
+          const hasBuffGrowth = meaningfulBuffs.some(b => (typeof b.levelGrowth === 'number' && b.levelGrowth !== 0) || (typeof b.flatGrowth === 'number' && b.flatGrowth !== 0));
+          const buffGrowthBuffs = meaningfulBuffs.filter(b => (typeof b.levelGrowth === 'number' && b.levelGrowth !== 0) || (typeof b.flatGrowth === 'number' && b.flatGrowth !== 0));
+          const buffGrowthJson = buffGrowthBuffs.length > 0 ? JSON.stringify(buffGrowthBuffs.map(b => ({
+            name: b.name,
+            value: b.value,
+            growth: b.levelGrowth ?? 0,
+            type: b.type,
+            flatValue: b.flatValue ?? null,
+            flatGrowth: b.flatGrowth ?? null,
+            valueLv1: b.valueLv1 ?? null,
+            valueLv90: b.valueLv90 ?? null,
+          }))) : '';
 
           let descriptionHtml = skill.descriptionLv90 || skill.description || '';
           if (descriptionHtml) {
@@ -641,13 +660,24 @@ const description = `${character.displayName || character.name} - ${character.ra
               {hasBuffGrowth ? (
                 <div class="bb-skill-calc bb-buff-growth-calc">
                   <span class="bb-calc-lbl">Lv</span>
-                  <input type="number" class="skill-level-input" min="1" max="90" value="90" />
+                  <input type="number" class="bb-buff-level-input" min="1" max="90" value="90" />
                   <span class="bb-calc-eq">=</span>
                   <span class="bb-calc-values">
                     {buffGrowthBuffs.map(b => {
-                      const base = b.type === 'percent' ? 0 : b.value;
-                      const lvl90 = base + 90 * b.growth;
-                      return <span class="bb-calc-value">{b.name}: <span class="bb-buff-calc-val">{lvl90}</span></span>;
+                      const parts = [];
+                      if (b.type === 'percent') {
+                        parts.push(`${b.value}%`);
+                      }
+                      if (b.flatValue != null && typeof b.flatValue === 'number') {
+                        const flatLv90 = b.flatValue + 89 * (b.flatGrowth || 0);
+                        parts.push(`${flatLv90}`);
+                      }
+                      if (b.levelGrowth && b.type !== 'percent') {
+                        const base = b.value;
+                        const lvl90 = base + 90 * b.levelGrowth;
+                        parts.push(`${Math.round(lvl90)}`);
+                      }
+                      return <span class="bb-buff-calc-item" data-buff-name={b.name} data-buff-type={b.type} data-buff-value={b.value} data-buff-growth={b.levelGrowth ?? 0} data-flat-value={b.flatValue ?? ''} data-flat-growth={b.flatGrowth ?? ''}>{b.name}: <span class="bb-buff-calc-val">{parts.join(' + ')}</span></span>;
                     })}
                   </span>
                 </div>
@@ -1302,34 +1332,59 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionEl = section;
       const damageInput = section.querySelector('.skill-level-input');
       const resultEl = section.querySelector('.bb-calc-value');
-      const hasBuffGrowth = sectionEl.dataset.hasBuffGrowth === 'true';
 
       if (damageInput && resultEl) {
         const base = parseInt((sectionEl.dataset.base || '0').replace('+', ''), 10) || 0;
         const growth = parseInt((sectionEl.dataset.growth || '0').replace('+', ''), 10) || 0;
 
-        function update() {
+        function updateDamage() {
           let level = parseInt(damageInput.value, 10) || 1;
           level = Math.max(1, Math.min(90, level));
           damageInput.value = level.toString();
-
-          if (!hasBuffGrowth) {
-            resultEl.textContent = (base + (level - 1) * growth).toString();
-          } else {
-            try {
-              const buffs = JSON.parse(sectionEl.dataset.buffGrowth || '[]');
-              const vals = buffs.map(b => {
-                const buffBase = b.type === 'percent' ? 0 : b.value;
-                return `${b.name}: ${Math.round(buffBase + level * b.growth)}`;
-              });
-              resultEl.textContent = vals.join(' | ');
-            } catch {}
-          }
+          resultEl.textContent = (base + (level - 1) * growth).toString();
         }
 
-        update();
-        damageInput.addEventListener('input', update);
-        damageInput.addEventListener('change', update);
+        updateDamage();
+        damageInput.addEventListener('input', updateDamage);
+        damageInput.addEventListener('change', updateDamage);
+      }
+
+      const buffInput = sectionEl.querySelector('.bb-buff-level-input');
+      const buffItems = sectionEl.querySelectorAll('.bb-buff-calc-item');
+
+      if (buffInput && buffItems.length > 0) {
+        function updateBuffs() {
+          let level = parseInt(buffInput.value, 10) || 1;
+          level = Math.max(1, Math.min(90, level));
+          buffInput.value = level.toString();
+
+          buffItems.forEach(item => {
+            const valEl = item.querySelector('.bb-buff-calc-val');
+            if (!valEl) return;
+            const type = item.dataset.buffType;
+            const value = parseFloat(item.dataset.buffValue) || 0;
+            const growth = parseFloat(item.dataset.buffGrowth) || 0;
+            const flatValue = item.dataset.flatValue !== '' ? parseFloat(item.dataset.flatValue) : null;
+            const flatGrowth = item.dataset.flatGrowth !== '' ? parseFloat(item.dataset.flatGrowth) : null;
+
+            const parts = [];
+            if (type === 'percent') {
+              parts.push(`${value}%`);
+            }
+            if (flatValue != null) {
+              const flatVal = flatValue + (level - 1) * (flatGrowth || 0);
+              parts.push(`${Math.round(flatVal)}`);
+            }
+            if (growth && type !== 'percent') {
+              parts.push(`${Math.round(value + level * growth)}`);
+            }
+            valEl.textContent = parts.join(' + ');
+          });
+        }
+
+        updateBuffs();
+        buffInput.addEventListener('input', updateBuffs);
+        buffInput.addEventListener('change', updateBuffs);
       }
     });
   }
