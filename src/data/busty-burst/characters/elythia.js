@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -62,9 +72,9 @@ export const skills = {
       "slot": 3,
       "name": "Lionheart",
       "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 5 UP to all allies for 10 seconds and Physical Attack +20 UP for 10 seconds",
-      "descriptionLv1": "Applies Accuracy 5 UP to all allies for 10 seconds and Physical Attack +20 UP for 10 seconds",
-      "descriptionLv90": "Applies Accuracy 10 UP to all allies for 10 seconds and Physical Attack +110 UP for 10 seconds",
+      "description": "Applies Accuracy 5 UP to all allies for 10 seconds and Physical Attack 10%+20 UP for 10 seconds",
+      "descriptionLv1": "Applies Accuracy 5 UP to all allies for 10 seconds and Physical Attack 10%+20 UP for 10 seconds",
+      "descriptionLv90": "Applies Accuracy 10 UP to all allies for 10 seconds and Physical Attack 10%+110 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -113,39 +123,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Thrust",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the enemy with the highest Physical ATK",
-      "effect": "260% + 100",
-      "buffEffects": []
+      "name": "Proud Maiden’s Strike",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Blind for 7 seconds",
+      "effect": "1140% + 1092",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        }
+      ]
     },
     {
       "rank": 3,
-      "name": "Lionheart",
-      "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 5 UP to all allies for 10 seconds and Physical Attack +20 UP for 10 seconds",
-      "effect": "300% + 0",
+      "name": "Proud Maiden’s Strike",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Blind for 7 seconds",
+      "effect": "1280% + 1212",
       "buffEffects": [
         {
-          "name": "Accuracy + Lv1",
-          "value": 5,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
         }
       ]
     },
     {
       "rank": 4,
       "name": "Proud Maiden’s Strike",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the enemy with the lowest HP and inflicts Blind for 7 seconds",
-      "effect": "950% + 811",
+      "effect": "1380% + 1252",
       "buffEffects": [
         {
           "name": "Blind",
@@ -158,9 +169,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Proud Maiden’s Strike",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the enemy with the lowest HP and inflicts Blind for 7 seconds",
-      "effect": "1140% + 1092",
+      "effect": "1470% + 1292",
       "buffEffects": [
         {
           "name": "Blind",

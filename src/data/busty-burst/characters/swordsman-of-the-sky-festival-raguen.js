@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Bern Sacred Sword Art - Courage Slash Vestment ver ",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds, 3s Silence for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds, 3s Silence for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -320 DOWN for 6 seconds, 3s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s Silence for",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s Silence for",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-320 DOWN for 6 seconds, 3s Silence for",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": "350% ATK",
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Bern Sacred Sword Art - Courage Slash Vestment ver ",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds, 3s Silence for",
-      "effect": "350% + 300",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "So hot...",
-      "icon": "skill001/skill0011",
-      "description": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds , 1 enemies4s Charm for",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Caeroclal Fladius!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 8 seconds and BlockDOWN(LV 1) for 10 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Holy Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Caeroclal Fladius!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 8 seconds and BlockDOWN(LV 2) for 10 seconds",
@@ -268,6 +209,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Caeroclal Fladius!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 8 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "effect": "1470% + 1150",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Caeroclal Fladius!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 8 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Caeroclal Fladius!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 8 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

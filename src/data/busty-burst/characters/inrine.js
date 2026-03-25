@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,9 +112,9 @@ export const skills = {
       "slot": 3,
       "name": "Single-Minded Strike",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Physical Damage UP(+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance UP for 4 seconds",
-      "descriptionLv1": "Applies Hit-Based Physical Damage UP(+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance UP for 4 seconds",
-      "descriptionLv90": "Applies Hit-Based Physical Damage UP(+500, 45001 hit(s)) to self for 4 secondsand Debuff Resistance UP for 4 seconds",
+      "description": "Applies Hit-Based Physical Damage UP(150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
+      "descriptionLv1": "Applies Hit-Based Physical Damage UP(150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
+      "descriptionLv90": "Applies Hit-Based Physical Damage UP(4500150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
       "target": "Self",
       "castTime": 1.6,
       "damageScaling": null,
@@ -145,7 +155,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -10,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -158,56 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Steel Sever",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "350% + 500",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Single-Minded Strike",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Physical Damage UP(+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance UP for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage +",
-          "value": 1,
-          "type": "flat",
-          "duration": 4
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ten-Thousand Blade Flash",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 secondsand BlockDOWN(LV 1) for 10 seconds",
-      "effect": "280% + 300",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ten-Thousand Blade Flash",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 secondsand BlockDOWN(LV 2) for 10 seconds",
@@ -216,12 +176,75 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Block- Ultimate Lv2",
           "value": -15,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ten-Thousand Blade Flash",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 secondsand BlockDOWN(LV 3) for 10 seconds",
+      "effect": "370% + 500",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -19,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -19,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ten-Thousand Blade Flash",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 secondsand BlockDOWN(LV 4) for 10 seconds",
+      "effect": "400% + 550",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -22,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -22,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ten-Thousand Blade Flash",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 secondsand BlockDOWN(LV 5) for 10 seconds",
+      "effect": "420% + 600",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

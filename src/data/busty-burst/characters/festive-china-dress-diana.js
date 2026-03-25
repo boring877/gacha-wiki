@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Rathbrink Style - Circle",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +30 UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +30 UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +480 UP to self for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 15%+30 UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 15%+30 UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 15%+480 UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "350% ATK",
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Rathbrink Style Body Art - Inverted Scale",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 12 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "300% ATK",
@@ -156,51 +166,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rathbrink Style - Circle",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +30 UP to self for 6 seconds",
-      "effect": "350% + 250",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Rathbrink Style Body Art - Inverted Scale",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "effect": "300% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rathbrink Style Ultimate - Flying Hawk Cyclone Blade",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds",
-      "effect": "1200% + 700",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rathbrink Style Ultimate - Flying Hawk Cyclone Blade",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds",
@@ -209,6 +174,51 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rathbrink Style Ultimate - Flying Hawk Cyclone Blade",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds",
+      "effect": "1620% + 1050",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rathbrink Style Ultimate - Flying Hawk Cyclone Blade",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds",
+      "effect": "1739% + 1200",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rathbrink Style Ultimate - Flying Hawk Cyclone Blade",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds",
+      "effect": "1800% + 1300",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

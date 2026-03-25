@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Royal Knight’s Teachings",
       "icon": "skill001/skill0019",
-      "description": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 100%) for 10 seconds",
-      "descriptionLv1": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 100%) for 10 seconds",
-      "descriptionLv90": "Restores own HP by and inflicts Block 33 UP for 10 seconds and Healing Shield (300, restores 100%) for 10 seconds",
+      "description": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
+      "descriptionLv1": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
+      "descriptionLv90": "Restores own HP by and inflicts Block 33 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
       "target": "Self",
       "castTime": 1.58,
       "damageScaling": "2500% ATK",
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Royal Knight’s Teachings",
-      "icon": "skill001/skill0019",
-      "description": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 100%) for 10 seconds",
-      "effect": "2500% + 416",
-      "buffEffects": [
-        {
-          "name": "Block+ LvMax",
-          "value": 15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Beorn Holy Sword Arts: Heroic Strike",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -15 DOWN for 10 seconds",
-      "effect": "300% + 100",
-      "buffEffects": [
-        {
-          "name": "Accuracy - LvMax",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Meteor Trestias",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and applies Hit-Based Shield(LV 1) to self for 8 seconds and Taunt for 8 seconds",
-      "effect": "300% + 338",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield Ultimate Lv1",
-          "value": 35,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Meteor Trestias",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and applies Hit-Based Shield(LV 2) to self for 10 seconds and Taunt for 10 seconds",
@@ -244,6 +197,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Meteor Trestias",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and applies Hit-Based Shield(LV 3) to self for 11 seconds and Taunt for 11 seconds",
+      "effect": "405% + 425",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv3",
+          "value": 50,
+          "type": "percent",
+          "duration": 11
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Meteor Trestias",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and applies Hit-Based Shield(LV 4) to self for 12 seconds and Taunt for 12 seconds",
+      "effect": "434% + 469",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv4",
+          "value": 55,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Meteor Trestias",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and applies Hit-Based Shield(LV 5) to self for 13 seconds and Taunt for 13 seconds",
+      "effect": "450% + 512",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv5",
+          "value": 60,
+          "type": "percent",
+          "duration": 13
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 13
         }
       ]
     }

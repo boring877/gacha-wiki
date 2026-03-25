@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Aporosa",
       "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 10 seconds and Action Speed UP for 10 seconds",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -153,50 +163,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Iokaela",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and guaranteed to hit and guaranteed to crit",
-      "effect": "170% + 100",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Aporosa",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The Maiden Goddess’s Arrow that Purges Impurity",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy with guaranteed hit and guaranteed crit, and when activating the Ultimate, applies Wind Type Defense DOWN(LV 1) for 8 seconds",
-      "effect": "600% + 785",
-      "buffEffects": [
-        {
-          "name": "Wind Type Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The Maiden Goddess’s Arrow that Purges Impurity",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy with guaranteed hit and guaranteed crit, and when activating the Ultimate, applies Wind Type Defense DOWN(LV 2) for 8 seconds",
@@ -205,6 +171,51 @@ export const skills = {
         {
           "name": "Wind Type Defense - Ultimate Lv2",
           "value": -20,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The Maiden Goddess’s Arrow that Purges Impurity",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy with guaranteed hit and guaranteed crit, and when activating the Ultimate, applies Wind Type Defense DOWN(LV 3) for 8 seconds",
+      "effect": "700% + 1033",
+      "buffEffects": [
+        {
+          "name": "Wind Type Defense - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The Maiden Goddess’s Arrow that Purges Impurity",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy with guaranteed hit and guaranteed crit, and when activating the Ultimate, applies Wind Type Defense DOWN(LV 4) for 8 seconds",
+      "effect": "740% + 1137",
+      "buffEffects": [
+        {
+          "name": "Wind Type Defense - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The Maiden Goddess’s Arrow that Purges Impurity",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy with guaranteed hit and guaranteed crit, and when activating the Ultimate, applies Wind Type Defense DOWN(LV 5) for 8 seconds",
+      "effect": "770% + 1201",
+      "buffEffects": [
+        {
+          "name": "Wind Type Defense - Ultimate Lv5",
+          "value": -30,
           "type": "percent",
           "duration": 8
         }

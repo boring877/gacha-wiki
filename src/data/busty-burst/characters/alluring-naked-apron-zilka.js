@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Delicious Magic♪",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack +35 UP",
-      "descriptionLv1": "Applies Action Speed UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack +35 UP",
-      "descriptionLv90": "Applies Action Speed UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack +665 UP",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+35 UP",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+35 UP",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+665 UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -129,9 +139,9 @@ export const skills = {
       "slot": 3,
       "name": "How is it...? Does it suit me...?",
       "icon": "skill001/skill0011",
-      "description": "2 enemies8s Blind for and Physical Attack -40 DOWN for 10 seconds , 10 Magic Attack -40 DOWN",
-      "descriptionLv1": "2 enemies8s Blind for and Physical Attack -40 DOWN for 10 seconds , 10 Magic Attack -40 DOWN",
-      "descriptionLv90": "2 enemies8s Blind for and Physical Attack -4000 DOWN for 10 seconds , 10 Magic Attack -40 DOWN",
+      "description": "2 enemies8s Blind for and Physical Attack -15%-40 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
+      "descriptionLv1": "2 enemies8s Blind for and Physical Attack -15%-40 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
+      "descriptionLv90": "2 enemies8s Blind for and Physical Attack -15%-4000 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
       "target": "Farthest Enemy",
       "castTime": 1.1,
       "damageScaling": null,
@@ -180,7 +190,7 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
@@ -193,80 +203,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Delicious Magic♪",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack +35 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "MP Recovery",
-          "value": 200,
-          "type": "percent"
-        },
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "How is it...? Does it suit me...?",
-      "icon": "skill001/skill0011",
-      "description": "2 enemies8s Blind for and Physical Attack -40 DOWN for 10 seconds , 10 Magic Attack -40 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        },
-        {
-          "name": "Physical Attack - LvMax",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - LvMax",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Cute Heart Shot!",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 1) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 1)",
-      "effect": "1000% + 1200",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 2) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 2)",
@@ -275,12 +211,75 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
           "name": "Mind Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Cute Heart Shot!",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 3) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 3)",
+      "effect": "1350% + 1550",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Cute Heart Shot!",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 4) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 4)",
+      "effect": "1450% + 1700",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Cute Heart Shot!",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 5) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 5)",
+      "effect": "1500% + 1800",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

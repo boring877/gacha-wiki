@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Annihilation Lance",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack +40 UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack +40 UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack +850 UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack 20%+40 UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack 20%+40 UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack 20%+850 UP",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "350% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Interception Stance",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Hit-Based Magic Hit-Based Shield(+5 hit(s)) and Magic Defense+170 UP for 10 seconds , 10 Magic Reflect Shield(+300, 999 hit(s))",
-      "descriptionLv1": "all allies10 Hit-Based Magic Hit-Based Shield(+5 hit(s)) and Magic Defense+170 UP for 10 seconds , 10 Magic Reflect Shield(+300, 999 hit(s))",
-      "descriptionLv90": "all allies10 Hit-Based Magic Hit-Based Shield(+5 hit(s)) and Magic Defense+350 UP for 10 seconds , 10 Magic Reflect Shield(+300, 27999 hit(s))",
+      "description": "all allies10 Hit-Based Magic Hit-Based Shield(35%+5 hit(s)) and Magic Defense 25%+170 UP for 10 seconds , 10 Magic Reflect Shield(120%+300, 999 hit(s))",
+      "descriptionLv1": "all allies10 Hit-Based Magic Hit-Based Shield(35%+5 hit(s)) and Magic Defense 25%+170 UP for 10 seconds , 10 Magic Reflect Shield(120%+300, 999 hit(s))",
+      "descriptionLv90": "all allies10 Hit-Based Magic Hit-Based Shield(35%+5 hit(s)) and Magic Defense 25%+350 UP for 10 seconds , 10 Magic Reflect Shield(120%+300, 27999 hit(s))",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -171,7 +181,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -184,75 +194,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Annihilation Lance",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds , on activation,self6 Physical Attack +40 UP",
-      "effect": "350% + 300",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Interception Stance",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Hit-Based Magic Hit-Based Shield(+5 hit(s)) and Magic Defense+170 UP for 10 seconds , 10 Magic Reflect Shield(+300, 999 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Magic Hit-Based Shield Lv5",
-          "value": 35,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense+ Lv4",
-          "value": 170,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Reflect Shield Lv4",
-          "value": 999,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "<ruby=></ruby>",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds, on Ultimate activation,self10 Physical Critical DamageUP(LV 1)",
-      "effect": "1100% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds, on Ultimate activation,self10 Physical Critical DamageUP(LV 2)",
@@ -261,12 +202,75 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Physical Critical Damage+ Ultimate Lv2",
           "value": 350,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds, on Ultimate activation,self10 Physical Critical DamageUP(LV 3)",
+      "effect": "1470% + 1600",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds, on Ultimate activation,self10 Physical Critical DamageUP(LV 4)",
+      "effect": "1590% + 1800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds, on Ultimate activation,self10 Physical Critical DamageUP(LV 5)",
+      "effect": "1700% + 2000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 500,
           "type": "percent",
           "duration": 10
         }

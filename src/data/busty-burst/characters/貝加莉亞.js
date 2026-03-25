@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Augusta",
       "icon": "skill001/skill0011",
-      "description": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -25 DOWN for 10 seconds , 10 Magic Attack -25 DOWN",
-      "descriptionLv1": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -25 DOWN for 10 seconds , 10 Magic Attack -25 DOWN",
-      "descriptionLv90": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -205 DOWN for 10 seconds , 10 Magic Attack -205 DOWN",
+      "description": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -11%-25 DOWN for 10 seconds , 10 Magic Attack -11%-25 DOWN",
+      "descriptionLv1": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -11%-25 DOWN for 10 seconds , 10 Magic Attack -11%-25 DOWN",
+      "descriptionLv90": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -11%-205 DOWN for 10 seconds , 10 Magic Attack -11%-205 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": "60% ATK",
@@ -88,9 +98,9 @@ export const skills = {
       "slot": 3,
       "name": "Alma",
       "icon": "skill001/skill0011",
-      "description": "6 nearest enemies dealmagic damage and inflicts Physical Defense -40 DOWN for 10 seconds and Magic Defense-40 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
-      "descriptionLv1": "6 nearest enemies dealmagic damage and inflicts Physical Defense -40 DOWN for 10 seconds and Magic Defense-40 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
-      "descriptionLv90": "6 nearest enemies dealmagic damage and inflicts Physical Defense -220 DOWN for 10 seconds and Magic Defense-220 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
+      "description": "6 nearest enemies dealmagic damage and inflicts Physical Defense -21%-40 DOWN for 10 seconds and Magic Defense-21%-40 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
+      "descriptionLv1": "6 nearest enemies dealmagic damage and inflicts Physical Defense -21%-40 DOWN for 10 seconds and Magic Defense-21%-40 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
+      "descriptionLv90": "6 nearest enemies dealmagic damage and inflicts Physical Defense -21%-220 DOWN for 10 seconds and Magic Defense-21%-220 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": "75% ATK",
@@ -158,87 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Augusta",
-      "icon": "skill001/skill0011",
-      "description": "6 nearest enemies dealmagic damage, inflict 3s and Physical Attack -25 DOWN for 10 seconds , 10 Magic Attack -25 DOWN",
-      "effect": "60% + 150",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Alma",
-      "icon": "skill001/skill0011",
-      "description": "6 nearest enemies dealmagic damage and inflicts Physical Defense -40 DOWN for 10 seconds and Magic Defense-40 DOWN for 10 seconds , 1[]([]1Speed-10%, max3, (cannot be removed))",
-      "effect": "75% + 250",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Entangle",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rampaging souls, calm down. Now, the earth is filled with love.",
-      "icon": "skill001/skill0012_1",
-      "description": "6 nearest enemies dealmagic damage, inflict 4s (LV 1), 4s Blind for, 10 Action Speed DOWN(LV 1)",
-      "effect": "229% + 500",
-      "buffEffects": [
-        {
-          "name": "Fear Ultimate Lv1",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rampaging souls, calm down. Now, the earth is filled with love.",
       "icon": "skill001/skill0012_2",
       "description": "6 nearest enemies dealmagic damage, inflict 4s (LV 2), 5s Blind for, 10 Action Speed DOWN(LV 2)",
@@ -259,6 +188,87 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rampaging souls, calm down. Now, the earth is filled with love.",
+      "icon": "skill001/skill0012_3",
+      "description": "6 nearest enemies dealmagic damage, inflict 4s (LV 3), 5s Blind for, 10 Action Speed DOWN(LV 3)",
+      "effect": "310% + 800",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv3",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rampaging souls, calm down. Now, the earth is filled with love.",
+      "icon": "skill001/skill0012_4",
+      "description": "6 nearest enemies dealmagic damage, inflict 4s (LV 4), 6s Blind for, 10 Action Speed DOWN(LV 4)",
+      "effect": "345% + 900",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv4",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rampaging souls, calm down. Now, the earth is filled with love.",
+      "icon": "skill001/skill0012_5",
+      "description": "6 nearest enemies dealmagic damage, inflict 4s (LV 5), 6s Blind for, 10 Action Speed DOWN(LV 5)",
+      "effect": "370% + 1000",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv5",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

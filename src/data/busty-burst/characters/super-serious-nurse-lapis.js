@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -182,75 +192,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "It's time for your shot♪",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 15 seconds, 3s Paralysis for",
-      "effect": "380% + 600",
-      "buffEffects": [
-        {
-          "name": "Bleed",
-          "value": -800,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Emergency transport!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 5",
-      "effect": "320% + 300",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Florence Recuperation",
-      "icon": "skill001/skill0022_1",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 1) for 10 seconds and BlockUP(LV 1) for 10 seconds , 20 Hit-Based Healing Shield (LV 1)",
-      "effect": "2500% + 1000",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Healing Shield Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_2",
       "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 2) for 10 seconds and BlockUP(LV 2) for 10 seconds , 20 Hit-Based Healing Shield (LV 2)",
@@ -271,6 +212,87 @@ export const skills = {
         {
           "name": "Hit-Based Healing Shield Lv2",
           "value": 35,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Florence Recuperation",
+      "icon": "skill001/skill0022_3",
+      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 3) for 10 seconds and BlockUP(LV 3) for 10 seconds , 20 Hit-Based Healing Shield (LV 3)",
+      "effect": "3125% + 1500",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Healing Shield Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Florence Recuperation",
+      "icon": "skill001/skill0022_4",
+      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 4) for 10 seconds and BlockUP(LV 4) for 10 seconds , 20 Hit-Based Healing Shield (LV 4)",
+      "effect": "3375% + 1650",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Healing Shield Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Florence Recuperation",
+      "icon": "skill001/skill0022_5",
+      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 5) for 10 seconds and BlockUP(LV 5) for 10 seconds , 20 Hit-Based Healing Shield (LV 5)",
+      "effect": "3500% + 1800",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 50,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Healing Shield Lv5",
+          "value": 50,
           "type": "percent",
           "duration": 20
         }

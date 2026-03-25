@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Avalanche",
       "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Physical Defense +170 UP for 10 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 10 seconds and Physical Defense +170 UP for 10 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 10 seconds and Physical Defense +350 UP for 10 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Physical Defense 25%+170 UP for 10 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Physical Defense 25%+170 UP for 10 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds and Physical Defense 25%+350 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -164,70 +174,13 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Blizzard",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(Unable to act;HP --650 per second) for 2 seconds",
-      "effect": "270% + 120",
-      "buffEffects": [
-        {
-          "name": "Freeze Lv5",
-          "value": -650,
-          "type": "flat",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Avalanche",
-      "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Physical Defense +170 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Defense + Lv4",
-          "value": 170,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "A Prison of Lament for the Loveless",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(LV 1) for 3 seconds and Magic Defense DOWN(LV 1) for 12 seconds",
-      "effect": "1000% + 943",
-      "buffEffects": [
-        {
-          "name": "Freeze Ultimate Lv1",
-          "value": -2500,
-          "type": "flat",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "A Prison of Lament for the Loveless",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(LV 2) for 3 seconds and Magic Defense DOWN(LV 2) for 9 seconds",
@@ -242,7 +195,70 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -20,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "A Prison of Lament for the Loveless",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(LV 3) for 3 seconds and Magic Defense DOWN(LV 3) for 9 seconds",
+      "effect": "1350% + 1082",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv3",
+          "value": -4000,
           "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "A Prison of Lament for the Loveless",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(LV 4) for 3 seconds and Magic Defense DOWN(LV 4) for 9 seconds",
+      "effect": "1450% + 1155",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv4",
+          "value": -4500,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "A Prison of Lament for the Loveless",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Freeze(LV 5) for 3 seconds and Magic Defense DOWN(LV 5) for 9 seconds",
+      "effect": "1550% + 1249",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv5",
+          "value": -5000,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 9
         }
       ]

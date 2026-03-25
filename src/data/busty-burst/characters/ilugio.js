@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "Freisetzung,Sanctum",
       "icon": "skill001/skill0019",
-      "description": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken DOWN",
-      "descriptionLv1": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken DOWN",
-      "descriptionLv90": "Applies Healing Shield (400) to all allies for 15 seconds and Block 18 UP for 15 seconds , 15 Fire Type Damage Taken DOWN",
+      "description": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
+      "descriptionLv1": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
+      "descriptionLv90": "Applies Healing Shield (400) to all allies for 15 seconds and Block 18 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
       "target": "All Allies",
       "castTime": 1.19,
       "damageScaling": null,
@@ -173,88 +183,19 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Freisetzung,Gerda",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Freeze(Unable to act;HP --700 per second) for 2 seconds and Block-13 DOWN for 6 seconds",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Freeze LvMax",
-          "value": -700,
-          "type": "flat",
-          "duration": 2
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Freisetzung,Sanctum",
-      "icon": "skill001/skill0019",
-      "description": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Healing Shield LvMax",
-          "value": 400,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Fire Type Damage Taken Reduction Lv3",
-          "value": -30,
-          "type": "percent",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Song of triumph, resound through the heavens. Until it devours all the land",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 1)",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 2)",
@@ -263,13 +204,76 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Song of triumph, resound through the heavens. Until it devours all the land",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 3)",
+      "effect": "1620% + 1400",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Song of triumph, resound through the heavens. Until it devours all the land",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 4)",
+      "effect": "1739% + 1650",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Song of triumph, resound through the heavens. Until it devours all the land",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 5)",
+      "effect": "1800% + 1800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

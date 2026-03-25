@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Look, the bride is here!",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
-      "descriptionLv1": "Applies Magic Attack +30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
-      "descriptionLv90": "Applies Magic Attack +480 UP to all allies for 10 seconds and Magic Critical Damage 490 UP for 10 seconds",
+      "description": "Applies Magic Attack 15%+30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
+      "descriptionLv1": "Applies Magic Attack 15%+30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
+      "descriptionLv90": "Applies Magic Attack 15%+480 UP to all allies for 10 seconds and Magic Critical Damage 490 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Please make me happy",
       "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to all allies for 10 seconds and Healing Shield (400, restores 100%) for 10 seconds",
-      "descriptionLv1": "Applies Debuff Resistance UP to all allies for 10 seconds and Healing Shield (400, restores 100%) for 10 seconds",
-      "descriptionLv90": "Applies Debuff Resistance UP to all allies for 10 seconds and Healing Shield (400, restores 100%) for 10 seconds",
+      "description": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
+      "descriptionLv1": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Look, the bride is here!",
-      "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Lv3",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Please make me happy",
-      "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to all allies for 10 seconds and Healing Shield (400, restores 100%) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield LvMax",
-          "value": 400,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Beloved Kiss - Happy Bouquet",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 1) for 10 seconds and Action Speed UP(LV 1) for 10 seconds",
-      "effect": "2000% + 1200",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Beloved Kiss - Happy Bouquet",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 2) for 10 seconds and Action Speed UP(LV 2) for 10 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Beloved Kiss - Happy Bouquet",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 3) for 10 seconds and Action Speed UP(LV 3) for 10 seconds",
+      "effect": "2500% + 1550",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Beloved Kiss - Happy Bouquet",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 4) for 10 seconds and Action Speed UP(LV 4) for 10 seconds",
+      "effect": "2700% + 1700",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Beloved Kiss - Happy Bouquet",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 5) for 10 seconds and Action Speed UP(LV 5) for 10 seconds",
+      "effect": "2800% + 1800",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

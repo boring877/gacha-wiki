@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -97,51 +107,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -10,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Just a little…",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, and applies Taunt to self for 8 seconds",
-      "effect": "240% + 90",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Please come with me～♪",
-      "icon": "skill001/skill0021",
-      "description": "Restores own HP by",
-      "effect": "2500% + 950",
-      "buffEffects": []
-    },
-    {
-      "rank": 4,
-      "name": "Now, let us head to Hades’s realm♪",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds",
-      "effect": "220% + 304",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Now, let us head to Hades’s realm♪",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds",
@@ -150,7 +122,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -13,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Now, let us head to Hades’s realm♪",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds",
+      "effect": "320% + 453",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Now, let us head to Hades’s realm♪",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds",
+      "effect": "352% + 488",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Now, let us head to Hades’s realm♪",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds",
+      "effect": "374% + 512",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -20,
+          "type": "percent",
           "duration": 10
         }
       ]

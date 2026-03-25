@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Dignity",
       "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "descriptionLv1": "Applies Magic Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "descriptionLv90": "Applies Magic Attack +850 UP to self for 12 seconds and Action Speed UP for 12 seconds",
+      "description": "Applies Magic Attack 20%+40 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
+      "descriptionLv1": "Applies Magic Attack 20%+40 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
+      "descriptionLv90": "Applies Magic Attack 20%+850 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sapphire",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 10 seconds and Freeze(Unable to act;HP --650 per second) for 1.5 seconds",
-      "effect": "320% + 180",
-      "buffEffects": [
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Freeze Lv5",
-          "value": -650,
-          "type": "flat",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Dignity",
-      "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Arabian Night Sky",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 1) for 10 seconds and Fire Type Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Water Type Defense - Ultimate Lv1",
-          "value": -25,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Fire Type Defense- Ultimate Lv1",
-          "value": -25,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Arabian Night Sky",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 2) for 10 seconds and Fire Type Defense DOWN(LV 2) for 10 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Fire Type Defense- Ultimate Lv2",
           "value": -30,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Arabian Night Sky",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 3) for 10 seconds and Fire Type Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1500% + 1150",
+      "buffEffects": [
+        {
+          "name": "Water Type Defense - Ultimate Lv3",
+          "value": -34,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type Defense- Ultimate Lv3",
+          "value": -34,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Arabian Night Sky",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 4) for 10 seconds and Fire Type Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1610% + 1250",
+      "buffEffects": [
+        {
+          "name": "Water Type Defense - Ultimate Lv4",
+          "value": -37,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type Defense- Ultimate Lv4",
+          "value": -37,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Arabian Night Sky",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 5) for 10 seconds and Fire Type Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1670% + 1300",
+      "buffEffects": [
+        {
+          "name": "Water Type Defense - Ultimate Lv5",
+          "value": -40,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type Defense- Ultimate Lv5",
+          "value": -40,
           "type": "percent",
           "duration": 10
         }

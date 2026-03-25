@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import {
+  lustAsmodeusData,
+  lustAsmodeusSEO,
+} from '../../../../data/zone-nova/characters/lust-asmodeus.js';
+
+export const prerender = true;
+---
+
+<!-- Renders the Zone Nova individual guide page for Lust - Asmodeus. -->
+<CharacterIndividualLayout
+  title={lustAsmodeusSEO.title}
+  description={lustAsmodeusSEO.description}
+  gameTitle={lustAsmodeusData.name}
+  character={lustAsmodeusData}
+>
+  <CharacterPageTemplate characterData={lustAsmodeusData} />
+</CharacterIndividualLayout>

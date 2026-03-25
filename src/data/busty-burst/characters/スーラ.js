@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "アントゥ・カブ",
       "icon": "skill001/skill0005",
-      "description": "1 nearest enemymagic damage and inflicts Magic Defense-50 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-50 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-320 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
+      "description": "1 nearest enemymagic damage and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Action Speed -17%DOWN for 6 seconds",
+      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Action Speed -17%DOWN for 6 seconds",
+      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-23%-320 DOWN for 6 seconds and Action Speed -17%DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.65,
       "damageScaling": "380% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "キ・エ",
       "icon": "skill001/skill0019",
-      "description": "Applies Wind Type ATK UP to self for 12 seconds, all allies12 Magic Attack +35 UP, 20 Hit-Based Magic Damage UP(+450, 3 hit(s))",
-      "descriptionLv1": "Applies Wind Type ATK UP to self for 12 seconds, all allies12 Magic Attack +35 UP, 20 Hit-Based Magic Damage UP(+450, 3 hit(s))",
-      "descriptionLv90": "Applies Wind Type ATK UP to self for 12 seconds, all allies12 Magic Attack +665 UP, 20 Hit-Based Magic Damage UP(+450, 40503 hit(s))",
+      "description": "Applies Wind Type ATK 20%UP to self for 12 seconds, all allies12 Magic Attack 18%+35 UP, 20 Hit-Based Magic Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv1": "Applies Wind Type ATK 20%UP to self for 12 seconds, all allies12 Magic Attack 18%+35 UP, 20 Hit-Based Magic Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv90": "Applies Wind Type ATK 20%UP to self for 12 seconds, all allies12 Magic Attack 18%+665 UP, 20 Hit-Based Magic Damage UP(40%+450, 40503 hit(s))",
       "target": "All Allies",
       "castTime": 0.75,
       "damageScaling": null,
@@ -171,88 +181,19 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "アントゥ・カブ",
-      "icon": "skill001/skill0005",
-      "description": "1 nearest enemymagic damage and inflicts Magic Defense-50 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "effect": "380% + 500",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "キ・エ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Wind Type ATK UP to self for 12 seconds, all allies12 Magic Attack +35 UP, 20 Hit-Based Magic Damage UP(+450, 3 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Wind Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Hit-Based Magic Damage + Lv3",
-          "value": 3,
-          "type": "flat",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ea Frusag Gibe Karl",
-      "icon": "skill001/skill0006_1",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 1) for 10 seconds , on Ultimate activation,apply to self10 Magic Attack UP(LV 1)",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_2",
       "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 2) for 10 seconds , on Ultimate activation,apply to self10 Magic Attack UP(LV 2)",
@@ -261,13 +202,76 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ea Frusag Gibe Karl",
+      "icon": "skill001/skill0006_3",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 3) for 10 seconds , on Ultimate activation,apply to self10 Magic Attack UP(LV 3)",
+      "effect": "1620% + 1750",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ea Frusag Gibe Karl",
+      "icon": "skill001/skill0006_4",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 4) for 10 seconds , on Ultimate activation,apply to self10 Magic Attack UP(LV 4)",
+      "effect": "1739% + 1900",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ea Frusag Gibe Karl",
+      "icon": "skill001/skill0006_5",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 5) for 10 seconds , on Ultimate activation,apply to self10 Magic Attack UP(LV 5)",
+      "effect": "1800% + 2000",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

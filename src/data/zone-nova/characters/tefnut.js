@@ -5,7 +5,7 @@
 export const tefnutData = {
   // Basic Character Information
   name: 'Tefnut',
-  image: 'Tefnut', // Use format: charactername (e.g., 'Tefnut')
+  image: 'Tefnut.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

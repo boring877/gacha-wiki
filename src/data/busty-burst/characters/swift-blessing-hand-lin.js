@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Wind Snow Vehicle",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-18 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds and Action Speed -14%DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds and Action Speed -14%DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-18 DOWN for 6 seconds and Action Speed -14%DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.4,
       "damageScaling": "250% ATK",
@@ -173,63 +183,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Wind Snow Vehicle",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds and Action Speed DOWN for 6 seconds",
-      "effect": "250% + 200",
-      "buffEffects": [
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Look, a present.",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv2",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Lv2",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Wind, bring good fortune!!",
-      "icon": "skill001/skill0020_1",
-      "description": "all enemies3s Blind for orRestores HP by to all allies/",
-      "effect": "2000% + 800",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_2",
       "description": "all enemies4s Blind for orRestores HP by to all allies/",
@@ -240,6 +193,51 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Wind, bring good fortune!!",
+      "icon": "skill001/skill0020_3",
+      "description": "all enemies4s Blind for orRestores HP by to all allies/",
+      "effect": "2500% + 1150",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Wind, bring good fortune!!",
+      "icon": "skill001/skill0020_4",
+      "description": "all enemies5s Blind for orRestores HP by to all allies/",
+      "effect": "2700% + 1300",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Wind, bring good fortune!!",
+      "icon": "skill001/skill0020_5",
+      "description": "all enemies5s Blind for orRestores HP by to all allies/",
+      "effect": "2800% + 1500",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
         }
       ]
     }

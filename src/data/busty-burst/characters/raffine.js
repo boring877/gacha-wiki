@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Merciful Rain",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance UP for 15 seconds , DEBUFF",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance UP for 15 seconds , DEBUFF",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 26 UP for 15 seconds and Debuff Resistance UP for 15 seconds , DEBUFF",
+      "description": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
+      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
+      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 26 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": "2500% ATK",
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "Arrow of Blessing",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Physical Damage UP(+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv1": "Applies Hit-Based Physical Damage UP(+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv90": "Applies Hit-Based Physical Damage UP(+450, 405040503 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
+      "description": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv1": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv90": "Applies Hit-Based Physical Damage UP(40%+450, 405040503 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": null,
@@ -172,65 +182,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Merciful Rain",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance UP for 15 seconds , DEBUFF",
-      "effect": "2500% + 500",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent"
-        }
-      ]
+      "name": "Offer holy salvation to the sinful",
+      "icon": "skill001/skill0006_2",
+      "description": "Deals magic damage to the nearest enemy, inflict 5s , 5",
+      "effect": "1080% + 1000",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Arrow of Blessing",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Physical Damage UP(+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage + Lv3",
-          "value": 3,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Hit-Based Magic Damage + Lv3",
-          "value": 3,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
+      "name": "Offer holy salvation to the sinful",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy, inflict 5s , 5",
+      "effect": "1120% + 1200",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Offer holy salvation to the sinful",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, inflict 4s , 4",
-      "effect": "900% + 800",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy, inflict6s Silence for, 6",
+      "effect": "1210% + 1350",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Offer holy salvation to the sinful",
-      "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s , 5",
-      "effect": "1080% + 1000",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy, inflict6s Silence for, 6",
+      "effect": "1300% + 1500",
       "buffEffects": []
     }
   ],

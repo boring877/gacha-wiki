@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "New outfit for the new year",
       "icon": "skill001/skill0007",
-      "description": "Inflicts Physical Attack -20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -20 DOWN for 8 seconds",
-      "descriptionLv1": "Inflicts Physical Attack -20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -20 DOWN for 8 seconds",
-      "descriptionLv90": "Inflicts Physical Attack -2000 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -20 DOWN for 8 seconds",
+      "description": "Inflicts Physical Attack -9%-20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
+      "descriptionLv1": "Inflicts Physical Attack -9%-20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
+      "descriptionLv90": "Inflicts Physical Attack -9%-2000 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -166,57 +176,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "New outfit for the new year",
-      "icon": "skill001/skill0007",
-      "description": "Inflicts Physical Attack -20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -20 DOWN for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Beauty is a deadly weapon",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 7 seconds",
-      "effect": "250% + 120",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Come, everyone — enjoy this New Year’s feast!",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts BlockUP(LV 1) for 8 seconds",
-      "effect": "2200% + 1400",
-      "buffEffects": [
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Come, everyone — enjoy this New Year’s feast!",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts BlockUP(LV 2) for 8 seconds",
@@ -225,6 +184,51 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Come, everyone — enjoy this New Year’s feast!",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 3) for 8 seconds",
+      "effect": "3000% + 1800",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Come, everyone — enjoy this New Year’s feast!",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 4) for 8 seconds",
+      "effect": "3200% + 1900",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Come, everyone — enjoy this New Year’s feast!",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 5) for 8 seconds",
+      "effect": "3400% + 2000",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 8
         }

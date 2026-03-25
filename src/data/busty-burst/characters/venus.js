@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Blessing of the Love Goddess",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to Front Row allies for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "descriptionLv1": "Applies Physical Defense +140 UP to Front Row allies for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Defense +320 UP to Front Row allies for 8 seconds and Magic Defense+320 UP for 8 seconds",
+      "description": "Applies Physical Defense 20%+140 UP to Front Row allies for 8 seconds and Magic Defense 20%+140 UP for 8 seconds",
+      "descriptionLv1": "Applies Physical Defense 20%+140 UP to Front Row allies for 8 seconds and Magic Defense 20%+140 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Defense 20%+320 UP to Front Row allies for 8 seconds and Magic Defense 20%+320 UP for 8 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.58,
       "damageScaling": null,
@@ -164,82 +174,19 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Charming Smile",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 40 UP to Front Row allies for 8 seconds and Magic Critical Damage 40 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv3",
-          "value": 40,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Magic Critical Damage+ Lv3",
-          "value": 40,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Blessing of the Love Goddess",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to Front Row allies for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Defense+ Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Grace Granted by the Love Goddess",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Physical Attack UP(LV 1) to Front Row allies for 10 seconds and Magic Attack UP(LV 1) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Grace Granted by the Love Goddess",
       "icon": "skill001/skill0020_2",
       "description": "Applies Physical Attack UP(LV 2) to Front Row allies for 10 seconds and Magic Attack UP(LV 2) for 10 seconds",
@@ -248,13 +195,76 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Grace Granted by the Love Goddess",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Physical Attack UP(LV 3) to Front Row allies for 10 seconds and Magic Attack UP(LV 3) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Grace Granted by the Love Goddess",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Physical Attack UP(LV 4) to Front Row allies for 10 seconds and Magic Attack UP(LV 4) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Grace Granted by the Love Goddess",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Physical Attack UP(LV 5) to Front Row allies for 10 seconds and Magic Attack UP(LV 5) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

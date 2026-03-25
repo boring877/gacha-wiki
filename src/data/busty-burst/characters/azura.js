@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Great Cleave",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 8 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 8 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -200 DOWN for 8 seconds and Physical Defense -210 DOWN for 8 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 8 seconds and Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 8 seconds and Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-200 DOWN for 8 seconds and Physical Defense -18%-210 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "270% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "You can at least do something, right?",
       "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+50 to self for 10 seconds and Taunt for 10 seconds",
-      "descriptionLv1": "Applies HP Regeneration+50 to self for 10 seconds and Taunt for 10 seconds",
-      "descriptionLv90": "Applies HP Regeneration+50 to self for 10 seconds and Taunt for 10 seconds",
+      "description": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
+      "descriptionLv1": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -172,63 +182,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Great Cleave",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 8 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "effect": "270% + 120",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You can at least do something, right?",
-      "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+50 to self for 10 seconds and Taunt for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv1",
-          "value": 3,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Steelbreaker Twin Blades",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and applies Physical Critical DamageUP(LV 1) to self for 12 seconds",
-      "effect": "1050% + 1010",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Steelbreaker Twin Blades",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and applies Physical Critical DamageUP(LV 2) to self for 12 seconds",
@@ -237,6 +190,51 @@ export const skills = {
         {
           "name": "Physical Critical Damage+ Ultimate Lv2",
           "value": 400,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Steelbreaker Twin Blades",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and applies Physical Critical DamageUP(LV 3) to self for 12 seconds",
+      "effect": "1418% + 1253",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 450,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Steelbreaker Twin Blades",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and applies Physical Critical DamageUP(LV 4) to self for 12 seconds",
+      "effect": "1522% + 1342",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 500,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Steelbreaker Twin Blades",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and applies Physical Critical DamageUP(LV 5) to self for 12 seconds",
+      "effect": "1628% + 1456",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 550,
           "type": "percent",
           "duration": 12
         }

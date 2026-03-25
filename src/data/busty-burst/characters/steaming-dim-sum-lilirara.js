@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Lucky Kick",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds and Block-18 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Block-18 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": "330% ATK",
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "Eat lots, meow~♪",
       "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv1": "Applies HP Regeneration+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv90": "Applies HP Regeneration+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(+450, 40503 hit(s)) for 15 seconds",
+      "description": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv1": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv90": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 40503 hit(s)) for 15 seconds",
       "target": "All Allies",
       "castTime": 0.95,
       "damageScaling": null,
@@ -180,69 +190,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lucky Kick",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Eat lots, meow~♪",
-      "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv2",
-          "value": 4,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Physical Damage +",
-          "value": 3,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Lucky Fortune Feast Kick",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 15 seconds and Fire Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1100% + 900",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1500,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Fire Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lucky Fortune Feast Kick",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 15 seconds and Fire Type Damage Taken UP(LV 2) for 8 seconds",
@@ -257,6 +204,69 @@ export const skills = {
         {
           "name": "Fire Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lucky Fortune Feast Kick",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 15 seconds and Fire Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1470% + 1200",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -2400,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lucky Fortune Feast Kick",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 15 seconds and Fire Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -2700,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lucky Fortune Feast Kick",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 15 seconds and Fire Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -3000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

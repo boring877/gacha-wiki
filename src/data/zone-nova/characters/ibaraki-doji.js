@@ -4,7 +4,7 @@
 export const ibarakiDojiData = {
   // Basic Character Information
   name: 'Ibaraki-doji',
-  image: 'Ibaraki-doji',
+  image: 'Ibaraki-doji.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

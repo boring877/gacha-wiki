@@ -78,15 +78,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Spinning Blade",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 0.88,
       "damageScaling": "110.00000000000001% ATK",
@@ -143,44 +153,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Spinning Blade",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "effect": "110% + 50",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ring Blade",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "130% + 60",
-      "buffEffects": []
-    },
-    {
-      "rank": 4,
-      "name": "Eradicator",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and applies Action Speed UP(LV 1) to self for 12 seconds",
-      "effect": "450% + 400",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Eradicator",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and applies Action Speed UP(LV 2) to self for 12 seconds",
@@ -189,6 +161,51 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv1",
           "value": 23,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Eradicator",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and applies Action Speed UP(LV 3) to self for 12 seconds",
+      "effect": "600% + 560",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv1",
+          "value": 26,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Eradicator",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and applies Action Speed UP(LV 4) to self for 12 seconds",
+      "effect": "650% + 600",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv1",
+          "value": 28,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Eradicator",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies Applies Action Speed UP(LV 5) to self for 12 seconds",
+      "effect": "680% + 640",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv1",
+          "value": 30,
           "type": "flat",
           "duration": 12
         }

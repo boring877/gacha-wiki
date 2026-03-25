@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Wind Fire Wheel",
       "icon": "skill001/skill0002",
-      "description": "MP 1 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Bleed (HP −-500 after acting) for 15 seconds",
-      "descriptionLv1": "MP 1 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Bleed (HP −-500 after acting) for 15 seconds",
-      "descriptionLv90": "MP 1 to enemiesphysical damage and inflicts Physical Defense -220 DOWN for 6 seconds and Bleed (HP −-5000 after acting) for 15 seconds",
+      "description": "MP 1 to enemiesphysical damage and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Bleed (HP −-500 after acting) for 15 seconds",
+      "descriptionLv1": "MP 1 to enemiesphysical damage and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Bleed (HP −-500 after acting) for 15 seconds",
+      "descriptionLv90": "MP 1 to enemiesphysical damage and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Bleed (HP −-5000 after acting) for 15 seconds",
       "target": "Highest MP Enemy",
       "castTime": 0.75,
       "damageScaling": "350% ATK",
@@ -179,82 +189,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Wind Fire Wheel",
-      "icon": "skill001/skill0002",
-      "description": "MP 1 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Bleed (HP −-500 after acting) for 15 seconds",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Bleed",
-          "value": -500,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You can eat it all!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 11 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , 4 MP Regeneration 50",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + LvMax",
-          "value": 50,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Nato Fire Wheel",
-      "icon": "skill001/skill0003_1",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 4 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 1)",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_2",
       "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 2)",
@@ -269,7 +210,70 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Nato Fire Wheel",
+      "icon": "skill001/skill0003_3",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 3)",
+      "effect": "1620% + 1550",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Nato Fire Wheel",
+      "icon": "skill001/skill0003_4",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 4)",
+      "effect": "1739% + 1700",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Nato Fire Wheel",
+      "icon": "skill001/skill0003_5",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 5)",
+      "effect": "1800% + 1800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

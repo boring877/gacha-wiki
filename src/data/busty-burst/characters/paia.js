@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Lady Medusa’s Mushroom!",
       "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to all allies for 8 seconds and Accuracy 7 UP for 8 seconds",
-      "descriptionLv1": "Applies Debuff Resistance UP to all allies for 8 seconds and Accuracy 7 UP for 8 seconds",
-      "descriptionLv90": "Applies Debuff Resistance UP to all allies for 8 seconds and Accuracy 14 UP for 8 seconds",
+      "description": "Applies Debuff Resistance 15%UP to all allies for 8 seconds and Accuracy 7 UP for 8 seconds",
+      "descriptionLv1": "Applies Debuff Resistance 15%UP to all allies for 8 seconds and Accuracy 7 UP for 8 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 15%UP to all allies for 8 seconds and Accuracy 14 UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -165,57 +175,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Poison Mushroom!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Poison (HP --200 per second) for 10 seconds",
-      "effect": "267% + 110",
-      "buffEffects": [
-        {
-          "name": "Poison Lv5",
-          "value": -200,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Lady Medusa’s Mushroom!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to all allies for 8 seconds and Accuracy 7 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance Lv1",
-          "value": 0,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Accuracy + Lv2",
-          "value": 7,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Battle Mushroom!",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts BlockUP(LV 1) for 11 seconds",
-      "effect": "2450% + 785",
-      "buffEffects": [
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 11
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Battle Mushroom!",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts BlockUP(LV 2) for 11 seconds",
@@ -224,6 +183,51 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Battle Mushroom!",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 3) for 11 seconds",
+      "effect": "3062% + 923",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Battle Mushroom!",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 4) for 11 seconds",
+      "effect": "3310% + 1027",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Battle Mushroom!",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts BlockUP(LV 5) for 11 seconds",
+      "effect": "3429% + 1091",
+      "buffEffects": [
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 11
         }

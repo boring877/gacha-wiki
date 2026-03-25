@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Nal",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed DOWN for 7 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed DOWN for 7 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --2000 per second) for 12 seconds and Action Speed DOWN for 7 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed -14%DOWN for 7 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed -14%DOWN for 7 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --2000 per second) for 12 seconds and Action Speed -14%DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "330% ATK",
@@ -165,82 +175,19 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Nal",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed DOWN for 7 seconds",
-      "effect": "330% + 300",
-      "buffEffects": [
-        {
-          "name": "Burn LvMax",
-          "value": -200,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Krislid",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Freeze(Unable to act;HP --700 per second) for 2 seconds and Block-11 DOWN for 10 seconds",
-      "effect": "285% + 150",
-      "buffEffects": [
-        {
-          "name": "Freeze LvMax",
-          "value": -700,
-          "type": "flat",
-          "duration": 2
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Maradalmatar",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 1)",
-      "effect": "370% + 350",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Maradalmatar",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 2)",
@@ -249,13 +196,76 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Maradalmatar",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 3)",
+      "effect": "490% + 550",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Maradalmatar",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 4)",
+      "effect": "530% + 650",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Maradalmatar",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 5)",
+      "effect": "550% + 700",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 12
         }
       ]

@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Raging Assault",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.9,
       "damageScaling": "380% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Full power release!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
       "target": "Self",
       "castTime": 1.0,
       "damageScaling": null,
@@ -178,82 +188,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Raging Assault",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "effect": "380% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Full power release!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK UP for 10 seconds , 4 MP Regeneration 50",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv5",
-          "value": 60,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Water Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + LvMax",
-          "value": 50,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Fierce Star Heaven Pierce",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s and Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1200% + 1100",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 2) for 10 seconds",
@@ -268,7 +209,70 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Fierce Star Heaven Pierce",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1620% + 1450",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Fierce Star Heaven Pierce",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1739% + 1600",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Fierce Star Heaven Pierce",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1800% + 1700",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

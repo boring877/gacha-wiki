@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Lacking self-awareness ",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to the ally with the lowest HP for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "descriptionLv1": "Applies Physical Defense +140 UP to the ally with the lowest HP for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Defense +320 UP to the ally with the lowest HP for 8 seconds and Magic Defense+320 UP for 8 seconds",
+      "description": "Applies Physical Defense 20%+140 UP to the ally with the lowest HP for 8 seconds and Magic Defense 20%+140 UP for 8 seconds",
+      "descriptionLv1": "Applies Physical Defense 20%+140 UP to the ally with the lowest HP for 8 seconds and Magic Defense 20%+140 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Defense 20%+320 UP to the ally with the lowest HP for 8 seconds and Magic Defense 20%+320 UP for 8 seconds",
       "target": "Lowest HP Ally",
       "castTime": 1.58,
       "damageScaling": null,
@@ -153,7 +163,7 @@ export const skills = {
       "rank": 1,
       "name": "It’s break time now ",
       "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
       "effect": "2300% + 698",
       "buffEffects": [
         {
@@ -166,46 +176,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "This is an order from your superior ",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP and inflicts Block 9 UP for 8 seconds",
-      "effect": "3300% + 834",
+      "name": "It’s break time now ",
+      "icon": "skill001/skill0022_2",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "2645% + 752",
       "buffEffects": [
         {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 8
+          "name": "Debuff Resistance Lv2",
+          "value": 0,
+          "type": "percent",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Lacking self-awareness ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to the ally with the lowest HP for 8 seconds and Magic Defense+140 UP for 8 seconds",
-      "effect": "300% + 0",
+      "name": "It’s break time now ",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "2875% + 810",
       "buffEffects": [
         {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Defense+ Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 8
+          "name": "Debuff Resistance Lv2",
+          "value": 0,
+          "type": "percent",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 4,
       "name": "It’s break time now ",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
-      "effect": "2300% + 698",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3105% + 862",
       "buffEffects": [
         {
           "name": "Debuff Resistance Lv2",
@@ -218,9 +222,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "It’s break time now ",
-      "icon": "skill001/skill0022_2",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
-      "effect": "2645% + 752",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3220% + 908",
       "buffEffects": [
         {
           "name": "Debuff Resistance Lv2",

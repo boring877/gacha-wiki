@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import {
+  gluttonyBeelzebubData,
+  gluttonyBeelzebubSEO,
+} from '../../../../data/zone-nova/characters/gluttony-beelzebub.js';
+
+export const prerender = true;
+---
+
+<!-- Renders the Zone Nova individual guide page for Gluttony - Beelzebub. -->
+<CharacterIndividualLayout
+  title={gluttonyBeelzebubSEO.title}
+  description={gluttonyBeelzebubSEO.description}
+  gameTitle={gluttonyBeelzebubData.name}
+  character={gluttonyBeelzebubData}
+>
+  <CharacterPageTemplate characterData={gluttonyBeelzebubData} />
+</CharacterIndividualLayout>

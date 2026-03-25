@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Hehehe... this is my greatest masterpiece",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the farthest enemy and inflicts Action Speed DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Action Speed DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the farthest enemy and inflicts Action Speed DOWN for 12 seconds and Accuracy -23 DOWN for 12 seconds",
+      "description": "Deals physical damage to the farthest enemy and inflicts Action Speed -20%DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Action Speed -20%DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the farthest enemy and inflicts Action Speed -20%DOWN for 12 seconds and Accuracy -23 DOWN for 12 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.22,
       "damageScaling": "300% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Hehehe... this is my greatest masterpiece",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the farthest enemy and inflicts Action Speed DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
-      "effect": "300% + 250",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I wonder if it'll work... hehehe",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the farthest enemy and inflicts Dispel for 1 seconds and Deadly Poison(HP --600 per second, stackable) for 6 seconds",
-      "effect": "260% + 150",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Deadly Poison LvMax",
-          "value": -600,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Hehehe... my greatest masterpiece ever!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the farthest enemy, inflict 4s and Deadly Poison(LV 1) for 8 seconds",
-      "effect": "900% + 1000",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Deadly Poison Ultimate Lv1",
-          "value": -6000,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Hehehe... my greatest masterpiece ever!",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the farthest enemy, inflict 5s and Deadly Poison(LV 2) for 8 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Deadly Poison Ultimate Lv2",
           "value": -7000,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Hehehe... my greatest masterpiece ever!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the farthest enemy, inflict 5s and Deadly Poison(LV 3) for 8 seconds",
+      "effect": "1210% + 1300",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Deadly Poison Ultimate Lv3",
+          "value": -8000,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Hehehe... my greatest masterpiece ever!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the farthest enemy, inflict6s Paralysis for and Deadly Poison(LV 4) for 8 seconds",
+      "effect": "1300% + 1400",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Deadly Poison Ultimate Lv4",
+          "value": -9000,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Hehehe... my greatest masterpiece ever!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the farthest enemy, inflict6s Paralysis for and Deadly Poison(LV 5) for 8 seconds",
+      "effect": "1350% + 1500",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Deadly Poison Ultimate Lv5",
+          "value": -10000,
           "type": "flat",
           "duration": 8
         }

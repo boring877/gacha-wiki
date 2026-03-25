@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Someone is waiting for me.",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 7 seconds and Accuracy -23 DOWN for 7 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 7 seconds and Accuracy -23 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "130% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Please… just for tonight.",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Healing Shield (+40, restores 200%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
-      "descriptionLv1": "Applies Hit-Based Healing Shield (+40, restores 200%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (+40, restores 200%, 9 hit(s)) to self for 15 seconds and Block 26 UP for 15 seconds",
+      "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
+      "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 26 UP for 15 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Someone is waiting for me.",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
-      "effect": "130% + 100",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Please… just for tonight.",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Healing Shield (+40, restores 200%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Healing Shield Lv5",
-          "value": 30,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I, too, can make someone happy.",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Physical Defense UP(LV 1) for 10 seconds and Magic DefenseUP(LV 1) for 10 seconds",
-      "effect": "2600% + 1500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Ultimate Lv1",
-          "value": 250,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense+ Ultimate Lv1",
-          "value": 250,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I, too, can make someone happy.",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Physical Defense UP(LV 2) for 10 seconds and Magic DefenseUP(LV 2) for 10 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Magic Defense+ Ultimate Lv2",
           "value": 350,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I, too, can make someone happy.",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Physical Defense UP(LV 3) for 10 seconds and Magic DefenseUP(LV 3) for 10 seconds",
+      "effect": "3250% + 2000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv3",
+          "value": 400,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv3",
+          "value": 400,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I, too, can make someone happy.",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Physical Defense UP(LV 4) for 10 seconds and Magic DefenseUP(LV 4) for 10 seconds",
+      "effect": "3500% + 2100",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv4",
+          "value": 450,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv4",
+          "value": 450,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I, too, can make someone happy.",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Physical Defense UP(LV 5) for 10 seconds and Magic DefenseUP(LV 5) for 10 seconds",
+      "effect": "3700% + 2200",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv5",
+          "value": 500,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv5",
+          "value": 500,
           "type": "flat",
           "duration": 10
         }

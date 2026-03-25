@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Snake Whip Training",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -220 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -21%-40 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -21%-40 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -21%-220 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.05,
       "damageScaling": "350% ATK",
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Weight Loss - Spin",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 10 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 10 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Block-23 DOWN for 10 seconds and Action Speed DOWN for 10 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 10 seconds and Action Speed -11%DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 10 seconds and Action Speed -11%DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Block-23 DOWN for 10 seconds and Action Speed -11%DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "110.00000000000001% ATK",
@@ -158,7 +168,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Snake Whip Training",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Weight Loss - Spin",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 10 seconds and Action Speed DOWN for 10 seconds",
-      "effect": "110% + 150",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Lv2",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Spiral - Snake - Cutter",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds , 4s Paralysis for",
-      "effect": "390% + 350",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds , 5s Paralysis for",
@@ -248,7 +195,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -262,6 +209,87 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Spiral - Snake - Cutter",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds , 5s Paralysis for",
+      "effect": "509% + 700",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Spiral - Snake - Cutter",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds , 6s Paralysis for",
+      "effect": "550% + 850",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Spiral - Snake - Cutter",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds , 6s Paralysis for",
+      "effect": "570% + 950",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     }

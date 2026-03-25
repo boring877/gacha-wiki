@@ -16,6 +16,13 @@ export const CHARACTER_CLASSES = {
     memoryCompatibility: 'This unit only can equip Warrior memories',
   },
 
+  Attacker: {
+    name: 'Attacker',
+    role: 'DPS',
+    icon: '/images/games/zone-nova/classes/Warrior.jpg',
+    memoryCompatibility: 'This unit only can equip Attacker memories',
+  },
+
   Rogue: {
     name: 'Rogue',
     role: 'DPS',
@@ -44,6 +51,13 @@ export const CHARACTER_CLASSES = {
     memoryCompatibility: 'This unit only can equip Debuffer memories',
   },
 
+  Disruptor: {
+    name: 'Disruptor',
+    role: 'Debuffer',
+    icon: '/images/games/zone-nova/classes/Debuffer.jpg',
+    memoryCompatibility: 'This unit only can equip Disruptor memories',
+  },
+
   Healer: {
     name: 'Healer',
     role: 'Healer',
@@ -64,7 +78,7 @@ export const CHARACTER_ROLES = {
     name: 'DPS',
     description: 'Deals damage to eliminate enemies',
     primaryFunction: 'Damage output',
-    typicalClasses: ['Warrior', 'Rogue', 'Mage'],
+    typicalClasses: ['Warrior', 'Attacker', 'Rogue', 'Mage'],
   },
 
   Buffer: {
@@ -78,7 +92,7 @@ export const CHARACTER_ROLES = {
     name: 'Debuffer',
     description: 'Weakens enemies with negative effects',
     primaryFunction: 'Enemy disruption',
-    typicalClasses: ['Debuffer'],
+    typicalClasses: ['Debuffer', 'Disruptor'],
   },
 
   Healer: {
@@ -107,10 +121,12 @@ export function getClassesByRole(roleName) {
 export const MEMORY_COMPATIBILITY = {
   Guardian: 'This unit only can equip Guardian memories',
   Warrior: 'This unit only can equip Warrior memories',
+  Attacker: 'This unit only can equip Attacker memories',
   Rogue: 'This unit only can equip Rogue memories',
   Mage: 'This unit only can equip Mage memories',
   Buffer: 'This unit only can equip Buffer memories',
   Debuffer: 'This unit only can equip Debuffer memories',
+  Disruptor: 'This unit only can equip Disruptor memories',
   Healer: 'This unit only can equip Healer memories',
 };
 

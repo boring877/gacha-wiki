@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Cleaning Machine",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 6 seconds, 1.5",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 6 seconds, 1.5",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -210 DOWN for 6 seconds, 1.5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 6 seconds, 1.5",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "105% ATK",
@@ -170,76 +180,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Cleaning Machine",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 6 seconds, 1.5",
-      "effect": "105% + 200",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Freisetzung,Bumerang",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 10 seconds, 2s Stun for",
-      "effect": "340% + 600",
-      "buffEffects": [
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I, the sweeping that devours all",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 1)",
-      "effect": "240% + 200",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 2)",
@@ -254,7 +201,70 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I, the sweeping that devours all",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 3)",
+      "effect": "325% + 300",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
           "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I, the sweeping that devours all",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 4)",
+      "effect": "350% + 350",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I, the sweeping that devours all",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 5)",
+      "effect": "365% + 400",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

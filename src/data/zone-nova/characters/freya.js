@@ -4,7 +4,7 @@
 export const freyaData = {
   // Basic Character Information
   name: 'Freya',
-  image: 'Freya',
+  image: 'Freya.png',
   rarity: 'SSR',
   element: 'Ice',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

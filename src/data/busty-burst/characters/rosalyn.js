@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Princess Pirate’s Strike",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 8 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "265% ATK",
@@ -73,9 +83,9 @@ export const skills = {
       "slot": 3,
       "name": "Women are full of love and mystery, you know ",
       "icon": "skill001/skill0019",
-      "description": "Applies Block 5 UP to all allies for 10 seconds and Physical Defense +50 UP for 10 seconds",
-      "descriptionLv1": "Applies Block 5 UP to all allies for 10 seconds and Physical Defense +50 UP for 10 seconds",
-      "descriptionLv90": "Applies Block 10 UP to all allies for 10 seconds and Physical Defense +140 UP for 10 seconds",
+      "description": "Applies Block 5 UP to all allies for 10 seconds and Physical Defense 10%+50 UP for 10 seconds",
+      "descriptionLv1": "Applies Block 5 UP to all allies for 10 seconds and Physical Defense 10%+50 UP for 10 seconds",
+      "descriptionLv90": "Applies Block 10 UP to all allies for 10 seconds and Physical Defense 10%+140 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -124,46 +134,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Princess Pirate’s Strike",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 8 seconds",
-      "effect": "265% + 80",
+      "name": "Let me punish you ",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds",
+      "effect": "370% + 307",
       "buffEffects": [
         {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Women are full of love and mystery, you know ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 5 UP to all allies for 10 seconds and Physical Defense +50 UP for 10 seconds",
-      "effect": "300% + 0",
+      "name": "Let me punish you ",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds",
+      "effect": "416% + 346",
       "buffEffects": [
         {
-          "name": "Block+ Lv1",
-          "value": 5,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Defense + Lv1",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     },
     {
       "rank": 4,
       "name": "Let me punish you ",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds",
-      "effect": "310% + 266",
+      "effect": "447% + 379",
       "buffEffects": [
         {
           "name": "Stun",
@@ -176,9 +180,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Let me punish you ",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds",
-      "effect": "370% + 307",
+      "effect": "478% + 402",
       "buffEffects": [
         {
           "name": "Stun",

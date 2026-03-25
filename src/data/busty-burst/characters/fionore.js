@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Slender Moon",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-35 DOWN for 6 seconds and Magic Critical Damage-35 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-35 DOWN for 6 seconds and Magic Critical Damage-35 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-215 DOWN for 6 seconds and Magic Critical Damage-35 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-13%-35 DOWN for 6 seconds and Magic Critical Damage-13%-35 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-13%-35 DOWN for 6 seconds and Magic Critical Damage-13%-35 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-13%-215 DOWN for 6 seconds and Magic Critical Damage-13%-35 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": "270% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Ah, my armor...",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed DOWN",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed DOWN",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and inflicts Accuracy -23 DOWN on all enemies for 12 seconds, 12 Action Speed DOWN",
+      "description": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and inflicts Accuracy -23 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
       "target": "All Enemies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Slender Moon",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-35 DOWN for 6 seconds and Magic Critical Damage-35 DOWN for 6 seconds",
-      "effect": "270% + 250",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage- Lv4",
-          "value": -13,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Magic Critical Damage- Lv4",
-          "value": -35,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ah, my armor...",
-      "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Tiger Roar Heaven Returning Strike",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 1)",
-      "effect": "1000% + 600",
-      "buffEffects": [
-        {
-          "name": "Holy Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Holy Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Tiger Roar Heaven Returning Strike",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 2)",
@@ -268,6 +209,69 @@ export const skills = {
         {
           "name": "Holy Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Tiger Roar Heaven Returning Strike",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 3)",
+      "effect": "1350% + 950",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Tiger Roar Heaven Returning Strike",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 4)",
+      "effect": "1450% + 1050",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Tiger Roar Heaven Returning Strike",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 5)",
+      "effect": "1500% + 1100",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 6
         }

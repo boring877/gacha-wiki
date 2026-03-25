@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Great Serpent Slash",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, apply to selfRecovers HP by +300",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, apply to selfRecovers HP by +300",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds, apply to selfRecovers HP by +300",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
       "target": "Nearest Enemy",
       "castTime": 0.9,
       "damageScaling": "350% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "You think you can beat me?",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 Debuff Resistance UP",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 Debuff Resistance UP",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack +850 UP for 12 seconds , 12 Debuff Resistance UP",
+      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 Debuff Resistance 50%UP",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 Debuff Resistance 50%UP",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds , 12 Debuff Resistance 50%UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Great Serpent Slash",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, apply to selfRecovers HP by +300",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "HP Recovery",
-          "value": 10,
-          "type": "percent",
-          "duration": 0
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You think you can beat me?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 Debuff Resistance UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Debuff Resistance Lv3",
-          "value": 0,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Varkenheim Style Ultimate - Demon Blade Extermination",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyApplies Physical Critical DamageUP(LV 1) to self for 10 seconds and Hit-Based Shield(LV 1) for 10 seconds",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Shield Ultimate Lv1",
-          "value": 25,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Varkenheim Style Ultimate - Demon Blade Extermination",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemyApplies Physical Critical DamageUP(LV 2) to self for 10 seconds and Hit-Based Shield(LV 2) for 10 seconds",
@@ -268,6 +209,69 @@ export const skills = {
         {
           "name": "Hit-Based Shield Ultimate Lv2",
           "value": 35,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Varkenheim Style Ultimate - Demon Blade Extermination",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemyApplies Physical Critical DamageUP(LV 3) to self for 10 seconds and Hit-Based Shield(LV 3) for 10 seconds",
+      "effect": "1620% + 1380",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Varkenheim Style Ultimate - Demon Blade Extermination",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemyApplies Physical Critical DamageUP(LV 4) to self for 10 seconds and Hit-Based Shield(LV 4) for 10 seconds",
+      "effect": "1739% + 1500",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Varkenheim Style Ultimate - Demon Blade Extermination",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemyApplies Physical Critical DamageUP(LV 5) to self for 10 seconds and Hit-Based Shield(LV 5) for 10 seconds",
+      "effect": "1800% + 1600",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 500,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv5",
+          "value": 50,
           "type": "percent",
           "duration": 10
         }

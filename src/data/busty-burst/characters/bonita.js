@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Lucky Roulette!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-30 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-30 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -18 DOWN, 50%% chance to10 Block-18 DOWN, 50%% chance to10 Physical Critical Damage-30 DOWN",
+      "description": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -18 DOWN, 50%% chance to10 Block-18 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": "170% ATK",
@@ -132,9 +142,9 @@ export const skills = {
       "slot": 3,
       "name": "My luck is here~~~!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +170 UP to all allies for 15 seconds and HP Regeneration+200 for 10 seconds",
-      "descriptionLv1": "Applies Physical Defense +170 UP to all allies for 15 seconds and HP Regeneration+200 for 10 seconds",
-      "descriptionLv90": "Applies Physical Defense +350 UP to all allies for 15 seconds and HP Regeneration+200 for 10 seconds",
+      "description": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
+      "descriptionLv1": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
+      "descriptionLv90": "Applies Physical Defense 25%+350 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": null,
@@ -183,69 +193,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lucky Roulette!",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-30 DOWN",
-      "effect": "170% + 700",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage- Lv3",
-          "value": -11,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "My luck is here~~~!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +170 UP to all allies for 15 seconds and HP Regeneration+200 for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv4",
-          "value": 170,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "HP Regeneration+ Lv4",
-          "value": 6,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ace In The Hole !",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 1) 2: 3: 4: 5: 6",
-      "effect": "390% + 300",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 2) 2: 3: 4: 5: 6",
@@ -254,6 +201,51 @@ export const skills = {
         {
           "name": "Accuracy + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ace In The Hole !",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 3) 2: 3: 4: 5: 6",
+      "effect": "509% + 450",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ace In The Hole !",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 4) 2: 3: 4: 5: 6",
+      "effect": "550% + 500",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ace In The Hole !",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 5) 2: 3: 4: 5: 6",
+      "effect": "570% + 550",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

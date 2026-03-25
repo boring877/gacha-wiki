@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Goddess, grant me strength!",
       "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Do as you please, roa!",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-50 DOWN for 7 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-50 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-50 DOWN for 7 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "360% ATK",
@@ -157,7 +167,7 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -170,63 +180,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Goddess, grant me strength!",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Do as you please, roa!",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-50 DOWN for 7 seconds",
-      "effect": "360% + 160",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage- LvMax",
-          "value": -20,
-          "type": "percent",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Full-Power Strike!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds",
-      "effect": "450% + 400",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Full-Power Strike!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds",
@@ -235,12 +188,75 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Full-Power Strike!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds",
+      "effect": "605% + 540",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Full-Power Strike!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds",
+      "effect": "660% + 600",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Full-Power Strike!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds",
+      "effect": "700% + 650",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Roaring Fury",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "110.00000000000001% ATK",
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Depletion Mystery",
       "icon": "skill001/skill0011",
-      "description": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-30 DOWN",
-      "descriptionLv1": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-30 DOWN",
-      "descriptionLv90": "inflict8 Accuracy -18 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -210 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-210 DOWN",
+      "description": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-30 DOWN",
+      "descriptionLv1": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-30 DOWN",
+      "descriptionLv90": "inflict8 Accuracy -18 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-210 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-210 DOWN",
       "target": "All Enemies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -183,75 +193,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Roaring Fury",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds",
-      "effect": "110% + 100",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Depletion Mystery",
-      "icon": "skill001/skill0011",
-      "description": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-30 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Sweet Dream Trick",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 1)",
-      "effect": "370% + 500",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 2)",
@@ -272,6 +213,87 @@ export const skills = {
         {
           "name": "Water Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Sweet Dream Trick",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 3)",
+      "effect": "490% + 680",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Sweet Dream Trick",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 4)",
+      "effect": "530% + 750",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Sweet Dream Trick",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 5)",
+      "effect": "550% + 800",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

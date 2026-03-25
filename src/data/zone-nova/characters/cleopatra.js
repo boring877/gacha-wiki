@@ -4,7 +4,7 @@
 export const cleopatraData = {
   // Basic Character Information
   name: 'Cleopatra',
-  image: 'Cleopatra', // Character image identifier
+  image: 'Cleopatra.png', // Character image identifier
   rarity: 'SSR',
   element: 'Chaos',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Hypnotic Embrace",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 15 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 15 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 15 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 15 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 15 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 15 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "210% ATK",
@@ -156,40 +166,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Hypnotic Embrace",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 15 seconds",
-      "effect": "210% + 80",
+      "name": "Divine Enchanting Embrace",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds",
+      "effect": "960% + 922",
       "buffEffects": [
         {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 15
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Trance Embrace",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and absorbs 6% of the damage dealt to restore own HP and inflicts Charm for 3 seconds",
-      "effect": "170% + 60",
+      "name": "Divine Enchanting Embrace",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds",
+      "effect": "1080% + 1023",
       "buffEffects": [
         {
-          "name": "Charm",
+          "name": "Paralysis",
           "value": 0,
           "type": "unknown",
-          "duration": 3
+          "duration": 6
         }
       ]
     },
     {
       "rank": 4,
       "name": "Divine Enchanting Embrace",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds",
-      "effect": "800% + 685",
+      "effect": "1160% + 1057",
       "buffEffects": [
         {
           "name": "Paralysis",
@@ -202,9 +212,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Divine Enchanting Embrace",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds",
-      "effect": "960% + 922",
+      "effect": "1240% + 1091",
       "buffEffects": [
         {
           "name": "Paralysis",

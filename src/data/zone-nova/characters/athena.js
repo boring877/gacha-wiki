@@ -5,7 +5,7 @@
 export const athenaData = {
   // Basic Character Information
   name: 'Athena',
-  image: 'Athena', // Use format: charactername (e.g., 'penny')
+  image: 'Athena.png', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Polycos",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 6 seconds and Magic Attack -25 DOWN for 6 seconds , 6 Block-13 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 6 seconds and Magic Attack -25 DOWN for 6 seconds , 6 Block-13 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -205 DOWN for 6 seconds and Magic Attack -205 DOWN for 6 seconds , 6 Block-26 DOWN",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds , 6 Block-13 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds , 6 Block-13 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 6 seconds and Magic Attack -11%-205 DOWN for 6 seconds , 6 Block-26 DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.88,
       "damageScaling": "380% ATK",
@@ -131,9 +141,9 @@ export const skills = {
       "slot": 3,
       "name": "Paladion",
       "icon": "skill001/skill0025",
-      "description": "Restores own HP by and inflicts Physical Defense +190 UP for 12 seconds and Magic Defense+190 UP for 12 seconds , all allies12 Hit-Based Shield (+4 hit(s))",
-      "descriptionLv1": "Restores own HP by and inflicts Physical Defense +190 UP for 12 seconds and Magic Defense+190 UP for 12 seconds , all allies12 Hit-Based Shield (+4 hit(s))",
-      "descriptionLv90": "Restores own HP by and inflicts Physical Defense +460 UP for 12 seconds and Magic Defense+460 UP for 12 seconds , all allies12 Hit-Based Shield (+4 hit(s))",
+      "description": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
+      "descriptionLv1": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
+      "descriptionLv90": "Restores own HP by and inflicts Physical Defense 30%+460 UP for 12 seconds and Magic Defense 30%+460 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
       "target": "Self",
       "castTime": 0.88,
       "damageScaling": "2000% ATK",
@@ -194,94 +204,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Polycos",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 6 seconds and Magic Attack -25 DOWN for 6 seconds , 6 Block-13 DOWN",
-      "effect": "380% + 350",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Paladion",
-      "icon": "skill001/skill0025",
-      "description": "Restores own HP by and inflicts Physical Defense +190 UP for 12 seconds and Magic Defense+190 UP for 12 seconds , all allies12 Hit-Based Shield (+4 hit(s))",
-      "effect": "2000% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv5",
-          "value": 190,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Magic Defense+ Lv5",
-          "value": 190,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Hit-Based Shield",
-          "value": 40,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Bringing regret to the foolish with knowledge.",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 3s , 5 , 10 Physical Defense DOWN(LV 1)",
-      "effect": "1400% + 800",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 4s , 6 , 10 Physical Defense DOWN(LV 2)",
@@ -302,7 +231,88 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Bringing regret to the foolish with knowledge.",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 4s , 6 , 10 Physical Defense DOWN(LV 3)",
+      "effect": "1889% + 1200",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Bringing regret to the foolish with knowledge.",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 5s , 7 , 10 Physical Defense DOWN(LV 4)",
+      "effect": "2030% + 1350",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Bringing regret to the foolish with knowledge.",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 5s , 7 , 10 Physical Defense DOWN(LV 5)",
+      "effect": "2100% + 1500",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

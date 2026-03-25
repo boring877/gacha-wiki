@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Swift Arrow",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -220 DOWN for 6 seconds , [Erosion]5 when damage +50%",
+      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-220 DOWN for 6 seconds , [Erosion]5 when damage +50%",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "300% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Firing Preparation",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 12 seconds and Accuracy 26 UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 26 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.3,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Swift Arrow",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
-      "effect": "300% + 500",
-      "buffEffects": [
-        {
-          "name": "Erosion",
-          "value": 0,
-          "type": "flat",
-          "duration": 999
-        },
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Firing Preparation",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Soul Strike",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 1) for 12 seconds dealdamage 6%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 1)",
-      "effect": "1000% + 800",
-      "buffEffects": [
-        {
-          "name": "Erosion",
-          "value": 0,
-          "type": "flat",
-          "duration": 999
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Soul Strike",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 2) for 12 seconds dealdamage 7%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 2)",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Soul Strike",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 3) for 12 seconds dealdamage 8%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 3)",
+      "effect": "1350% + 1200",
+      "buffEffects": [
+        {
+          "name": "Erosion",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Soul Strike",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 4) for 12 seconds dealdamage 9%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 4)",
+      "effect": "1450% + 1300",
+      "buffEffects": [
+        {
+          "name": "Erosion",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Soul Strike",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 5) for 12 seconds dealdamage 10%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 5)",
+      "effect": "1550% + 1400",
+      "buffEffects": [
+        {
+          "name": "Erosion",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 12
         }

@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Don't you want to play with me?",
       "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +40 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +40 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +850 UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv1": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv90": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+850 UP for 10 seconds , 4 MP Regeneration 50",
       "target": "Self",
       "castTime": 1.2,
       "damageScaling": null,
@@ -129,9 +139,9 @@ export const skills = {
       "slot": 3,
       "name": "It'd be bad if it hurts...?",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken UP for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken UP for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken UP for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "120% ATK",
@@ -177,7 +187,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -190,81 +200,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Don't you want to play with me?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +40 UP for 10 seconds , 4 MP Regeneration 50",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Fire Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + LvMax",
-          "value": 50,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "It'd be bad if it hurts...?",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken UP for 6 seconds",
-      "effect": "120% + 250",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Fire Type Damage Taken + Lv3",
-          "value": 16,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Flame of Desirous Remnant",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds , 10 Accuracy DOWN(LV 1)",
-      "effect": "400% + 400",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 2) for 10 seconds , 10 Accuracy DOWN(LV 2)",
@@ -279,12 +214,93 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Flame of Desirous Remnant",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 3) for 10 seconds , 10 Accuracy DOWN(LV 3)",
+      "effect": "520% + 700",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Flame of Desirous Remnant",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 4) for 10 seconds , 10 Accuracy DOWN(LV 4)",
+      "effect": "560% + 800",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Flame of Desirous Remnant",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 5) for 10 seconds , 10 Accuracy DOWN(LV 5)",
+      "effect": "580% + 900",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

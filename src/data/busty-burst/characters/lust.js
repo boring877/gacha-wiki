@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Thorns. All who touch shall suffer devastating pain",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-60 DOWN",
-      "descriptionLv1": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-60 DOWN",
-      "descriptionLv90": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-420 DOWN",
+      "description": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-60 DOWN",
+      "descriptionLv1": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-60 DOWN",
+      "descriptionLv90": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-420 DOWN",
       "target": "Highest MP Enemy",
       "castTime": 1.22,
       "damageScaling": "330% ATK",
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "Mist. The one who never returns, lured into the abyss",
       "icon": "skill001/skill0011",
-      "description": "8 Action Speed DOWNapply to self8 Block-9 DOWN",
-      "descriptionLv1": "8 Action Speed DOWNapply to self8 Block-9 DOWN",
-      "descriptionLv90": "8 Action Speed DOWNapply to self8 Block-18 DOWN",
+      "description": "8 Action Speed -14%DOWNapply to self8 Block-9 DOWN",
+      "descriptionLv1": "8 Action Speed -14%DOWNapply to self8 Block-9 DOWN",
+      "descriptionLv90": "8 Action Speed -14%DOWNapply to self8 Block-18 DOWN",
       "target": "All Enemies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -184,75 +194,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Thorns. All who touch shall suffer devastating pain",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-60 DOWN",
-      "effect": "330% + 250",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- LvMax",
-          "value": -60,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Mist. The one who never returns, lured into the abyss",
-      "icon": "skill001/skill0011",
-      "description": "8 Action Speed DOWNapply to self8 Block-9 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 2 seconds and Fear Lv 1 for 4 seconds",
-      "effect": "1100% + 1000",
-      "buffEffects": [
-        {
-          "name": "Confusion",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Fear Ultimate Lv1",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Night. Glorious radiance that devours all and nurtures all",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 3 seconds and Fear Lv 2 for 4 seconds",
@@ -266,6 +207,69 @@ export const skills = {
         },
         {
           "name": "Fear Ultimate Lv2",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 3 seconds and Fear Lv 3 for 4 seconds",
+      "effect": "1500% + 1500",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Fear Ultimate Lv3",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 4 seconds and Fear Lv 4 for 4 seconds",
+      "effect": "1610% + 1600",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Fear Ultimate Lv4",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 4 seconds and Fear Lv 5 for 4 seconds",
+      "effect": "1680% + 1700",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Fear Ultimate Lv5",
           "value": 0,
           "type": "unknown",
           "duration": 4

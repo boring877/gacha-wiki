@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Rock Burst",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-35 DOWN for 11 seconds and Magic Critical Damage-35 DOWN for 11 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-35 DOWN for 11 seconds and Magic Critical Damage-35 DOWN for 11 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-215 DOWN for 11 seconds and Magic Critical Damage-35 DOWN for 11 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-35 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-35 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-215 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "105% ATK",
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rock Burst",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-35 DOWN for 11 seconds and Magic Critical Damage-35 DOWN for 11 seconds",
-      "effect": "105% + 60",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage- Lv4",
-          "value": -13,
-          "type": "percent",
-          "duration": 11
-        },
-        {
-          "name": "Magic Critical Damage- Lv4",
-          "value": -35,
-          "type": "flat",
-          "duration": 11
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Arm of Growth",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 10 seconds and Healing Shield (300) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Gigant’s Hammer",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "450% + 630",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Gigant’s Hammer",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Gigant’s Hammer",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "765% + 851",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Gigant’s Hammer",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "855% + 963",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Gigant’s Hammer",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "900% + 1076",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

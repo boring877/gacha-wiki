@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Curient Kon Lemolinos",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -20 DOWN for 8 seconds",
-      "descriptionLv1": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -20 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -200 DOWN for 8 seconds",
+      "description": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%-20 DOWN for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%-20 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%-200 DOWN for 8 seconds",
       "target": "Highest Mag ATK Enemy",
       "castTime": 1.78,
       "damageScaling": "220.00000000000003% ATK",
@@ -116,51 +126,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Curient Kon Lemolinos",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -20 DOWN for 8 seconds",
-      "effect": "220% + 100",
-      "buffEffects": [
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Abresa El Agua",
-      "icon": "skill001/skill0021",
-      "description": "Restores own HP by and inflicts Block 9 UP for 8 seconds",
-      "effect": "2203% + 1010",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Sea’s Love that Leads to Calamity",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 8 seconds",
-      "effect": "240% + 329",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -8,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Sea’s Love that Leads to Calamity",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 8 seconds",
@@ -169,6 +134,51 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -10,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Sea’s Love that Leads to Calamity",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 8 seconds",
+      "effect": "350% + 428",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -12,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Sea’s Love that Leads to Calamity",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 8 seconds",
+      "effect": "385% + 465",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -14,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Sea’s Love that Leads to Calamity",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 8 seconds",
+      "effect": "470% + 501",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -15,
           "type": "flat",
           "duration": 8
         }

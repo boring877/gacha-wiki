@@ -4,7 +4,7 @@
 export const apepData = {
   // Basic Character Information
   name: 'Apep',
-  image: 'Apep',
+  image: 'Apep.png',
   rarity: 'SSR',
   element: 'Wind',
   class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

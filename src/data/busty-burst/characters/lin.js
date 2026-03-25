@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Swift Wind Assault",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "300% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Wind Wrap",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK UP",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK UP",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK UP",
+      "description": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": null,
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Swift Wind Assault",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Wind Wrap",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Wind Type ATK + Lv4",
-          "value": 15,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Crouching Dragon Flying Spiral",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds, apply to self10 [Swift Wind](Speed10%UP)",
-      "effect": "1000% + 800",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Swift Wind",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds, apply to self11 [Swift Wind](Speed10%UP)",
@@ -256,6 +203,69 @@ export const skills = {
           "value": 10,
           "type": "flat",
           "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Crouching Dragon Flying Spiral",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds, apply to self12 [Swift Wind](Speed10%UP)",
+      "effect": "1350% + 1100",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -26,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Swift Wind",
+          "value": 10,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Crouching Dragon Flying Spiral",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds, apply to self13 [Swift Wind](Speed10%UP)",
+      "effect": "1450% + 1200",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -28,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Swift Wind",
+          "value": 10,
+          "type": "flat",
+          "duration": 13
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Crouching Dragon Flying Spiral",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds, apply to self14 [Swift Wind](Speed10%UP)",
+      "effect": "1500% + 1300",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Swift Wind",
+          "value": 10,
+          "type": "flat",
+          "duration": 14
         }
       ]
     }

@@ -1,11 +1,33 @@
 // Busty Burst Defense Down Database
 // Self-contained system for Physical and Magic Defense Down data
-// Uses buffEffects from character skill data (not regex on descriptions)
+// Uses buffEffects from character skill data + buff level scaling table from buff_1.xml
 // Only includes characters that exist in character-info.js
 
 import { BUSTY_BURST_SKILLS_DATA, getAllCharacterSlugs } from './characters/index.js';
 
 const validCharacterSlugs = new Set(getAllCharacterSlugs());
+
+// Buff level -> percent mapping from buff_1.xml (effect_val1)
+// Both Physical Defense - and Magic Defense- share the same scaling
+const BUFF_LEVEL_PERCENT = {
+  1: 10,
+  2: 14,
+  3: 18,
+  4: 21,
+  5: 23,
+  'Max': 25,
+};
+
+function parseBuffLevel(buffName) {
+  const match = buffName.match(/Lv(\d+|Max)/i);
+  return match ? match[1] : null;
+}
+
+function getPercentFromBuffLevel(buffName) {
+  const level = parseBuffLevel(buffName);
+  if (level && BUFF_LEVEL_PERCENT[level] != null) return BUFF_LEVEL_PERCENT[level];
+  return 0;
+}
 
 function isDefenseDownBuff(buff) {
   if (!buff || !buff.name) return false;
@@ -27,16 +49,6 @@ function isMagicDefenseDownBuff(buff) {
 
 function isUltimateBuff(buff) {
   return buff.name && buff.name.toLowerCase().includes('ultimate');
-}
-
-function calcFlatLv90(buff) {
-  const base = Math.abs(buff.value || 0);
-  const growth = Math.abs(buff.levelGrowth || 0);
-  return Math.round(base + 89 * growth);
-}
-
-function calcFlatLv1(buff) {
-  return Math.abs(buff.value || 0);
 }
 
 function getSkillTier(percent, flat) {
@@ -88,13 +100,19 @@ function extractAllDefenseDownSkills() {
           if (!physDown && !magDown) continue;
 
           const defType = physDown ? 'physical' : 'magic';
-          const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
-          const flatBase = buff.type === 'flat' ? Math.abs(buff.value || 0) : (buff.flatValue != null ? Math.abs(buff.flatValue) : 0);
-          const flatGrowth = buff.type === 'flat' ? Math.abs(buff.levelGrowth || 0) : (buff.flatGrowth != null ? Math.abs(buff.flatGrowth) : 0);
-          const flatLv90 = flatBase + 89 * flatGrowth;
-          const flatLv1 = flatBase;
+
+          // Percent comes from buff level scaling table, not from buff.value
+          const percent = getPercentFromBuffLevel(buff.name);
+
+          // Flat comes from buff.value (base) + levelGrowth (per level)
+          const flatBase = Math.abs(buff.value || 0);
+          const flatGrowth = Math.abs(buff.levelGrowth || 0);
+          const flatLv90 = Math.round(flatBase + 90 * flatGrowth);
+          const flatLv1 = Math.round(flatBase);
+
           const duration = buff.duration || null;
           const desc = skill.descriptionLv90 || skill.description || '';
+          const buffLevel = parseBuffLevel(buff.name);
 
           const tier = getSkillTier(percent, flatLv90);
 
@@ -109,11 +127,12 @@ function extractAllDefenseDownSkills() {
             type: defType,
             sourceType: 'skill',
             percent,
-            flat: Math.round(flatLv90),
-            flatLv1: Math.round(flatLv1),
+            flat: flatLv90,
+            flatLv1,
             duration,
             tier,
             targetType: getTargetType(desc),
+            buffLevel,
           });
         }
       }
@@ -133,7 +152,9 @@ function extractAllDefenseDownSkills() {
           if (!physDown && !magDown) continue;
 
           const defType = physDown ? 'physical' : 'magic';
-          const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
+
+          // Ultimate percent comes directly from buff.value (effect_val1 in buff_1.xml)
+          const percent = Math.abs(buff.value || 0);
           const flat = buff.type === 'flat' ? Math.abs(buff.value || 0) : 0;
           const duration = buff.duration || null;
           const desc = maxUlt.description || '';

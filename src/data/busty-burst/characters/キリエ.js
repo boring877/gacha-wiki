@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,9 +112,9 @@ export const skills = {
       "slot": 3,
       "name": "Burn!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(HP --150 per second) for 20 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Burn(HP --150 per second) for 20 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 20 seconds and Fire Type Damage Taken UP for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(HP --150 per second) for 20 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Burn(HP --150 per second) for 20 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 20 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": "280% ATK",
@@ -158,56 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Won't let you escape",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "330% + 350",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Burn!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(HP --150 per second) for 20 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "effect": "280% + 200",
-      "buffEffects": [
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Fire Type Damage Taken + Lv3",
-          "value": 16,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ir Kabab",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 20 seconds , on Ultimate activation,apply to self10 Fire Type ATK UP(LV 1)",
-      "effect": "1000% + 700",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1500,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Fire Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 20 seconds , on Ultimate activation,apply to self10 Fire Type ATK UP(LV 2)",
@@ -222,6 +182,69 @@ export const skills = {
         {
           "name": "Fire Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ir Kabab",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 20 seconds , on Ultimate activation,apply to self10 Fire Type ATK UP(LV 3)",
+      "effect": "1350% + 1050",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -2400,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ir Kabab",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 20 seconds , on Ultimate activation,apply to self10 Fire Type ATK UP(LV 4)",
+      "effect": "1450% + 1200",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -2700,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ir Kabab",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 20 seconds , on Ultimate activation,apply to self10 Fire Type ATK UP(LV 5)",
+      "effect": "1500% + 1300",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -3000,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

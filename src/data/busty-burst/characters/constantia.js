@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Sestertius’s Weight",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +25 UP to all allies for 8 seconds and Magic Attack +25 UP for 8 seconds",
-      "descriptionLv1": "Applies Physical Attack +25 UP to all allies for 8 seconds and Magic Attack +25 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Attack +295 UP to all allies for 8 seconds and Magic Attack +295 UP for 8 seconds",
+      "description": "Applies Physical Attack 12%+25 UP to all allies for 8 seconds and Magic Attack 12%+25 UP for 8 seconds",
+      "descriptionLv1": "Applies Physical Attack 12%+25 UP to all allies for 8 seconds and Magic Attack 12%+25 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Attack 12%+295 UP to all allies for 8 seconds and Magic Attack 12%+295 UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": null,
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Denarius’s Stride",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 7 UP for 10 seconds",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 7 UP for 10 seconds",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 14 UP for 10 seconds",
+      "description": "Applies Action Speed 11%UP to all allies for 10 seconds and Accuracy 7 UP for 10 seconds",
+      "descriptionLv1": "Applies Action Speed 11%UP to all allies for 10 seconds and Accuracy 7 UP for 10 seconds",
+      "descriptionLv90": "Applies Action Speed 11%UP to all allies for 10 seconds and Accuracy 14 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": null,
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sestertius’s Weight",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +25 UP to all allies for 8 seconds and Magic Attack +25 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv2",
-          "value": 25,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack + Lv2",
-          "value": 25,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Denarius’s Stride",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 10 seconds and Accuracy 7 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv2",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv2",
-          "value": 7,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Aureus’s Radiance",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Magic DefenseUP(LV 1) to all allies for 10 seconds and Physical Defense UP(LV 1) for 10 seconds",
-      "effect": "0% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Defense+ Ultimate Lv1",
-          "value": 150,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Defense + Ultimate Lv1",
-          "value": 150,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Aureus’s Radiance",
       "icon": "skill001/skill0020_2",
       "description": "Applies Magic DefenseUP(LV 2) to all allies for 10 seconds and Physical Defense UP(LV 2) for 10 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Physical Defense + Ultimate Lv2",
           "value": 250,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Aureus’s Radiance",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Magic DefenseUP(LV 3) to all allies for 10 seconds and Physical Defense UP(LV 3) for 10 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Defense+ Ultimate Lv3",
+          "value": 300,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv3",
+          "value": 300,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Aureus’s Radiance",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Magic DefenseUP(LV 4) to all allies for 10 seconds and Physical Defense UP(LV 4) for 10 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Defense+ Ultimate Lv4",
+          "value": 350,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv4",
+          "value": 350,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Aureus’s Radiance",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Magic DefenseUP(LV 5) to all allies for 10 seconds and Physical Defense UP(LV 5) for 10 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Defense+ Ultimate Lv5",
+          "value": 400,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv5",
+          "value": 400,
           "type": "flat",
           "duration": 10
         }

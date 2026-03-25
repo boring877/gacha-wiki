@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Heal Wounds",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed UP for 10 seconds , DEBUFF",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed UP for 10 seconds , DEBUFF",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 23 UP for 10 seconds and Action Speed UP for 10 seconds , DEBUFF",
+      "description": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
+      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
+      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 23 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": "1500% ATK",
@@ -199,87 +209,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Heal Wounds",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed UP for 10 seconds , DEBUFF",
-      "effect": "1500% + 800",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent",
-          "duration": 0
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Radiance",
-      "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , 10 Magic Critical Damage 50 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Holy Breeze",
-      "icon": "skill001/skill0020_1",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 1) for 8 seconds and Magic DefenseUP(LV 1) for 8 seconds , 8 Debuff ResistanceUP(LV 1)",
-      "effect": "2500% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Ultimate Lv1",
-          "value": 250,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Defense+ Ultimate Lv1",
-          "value": 350,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Debuff Resistance+ Ultimate Lv1",
-          "value": 0,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_2",
       "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 2) for 8 seconds and Magic DefenseUP(LV 2) for 8 seconds , 8 Debuff ResistanceUP(LV 2)",
@@ -299,6 +228,87 @@ export const skills = {
         },
         {
           "name": "Debuff Resistance+ Ultimate Lv2",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Holy Breeze",
+      "icon": "skill001/skill0020_3",
+      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 3) for 8 seconds and Magic DefenseUP(LV 3) for 8 seconds , 8 Debuff ResistanceUP(LV 3)",
+      "effect": "3100% + 1550",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv3",
+          "value": 400,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv3",
+          "value": 500,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv3",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Holy Breeze",
+      "icon": "skill001/skill0020_4",
+      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 4) for 8 seconds and Magic DefenseUP(LV 4) for 8 seconds , 8 Debuff ResistanceUP(LV 4)",
+      "effect": "3300% + 1800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv4",
+          "value": 450,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv4",
+          "value": 550,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv4",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Holy Breeze",
+      "icon": "skill001/skill0020_5",
+      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 5) for 8 seconds and Magic DefenseUP(LV 5) for 8 seconds , 8 Debuff ResistanceUP(LV 5)",
+      "effect": "3500% + 2000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense + Ultimate Lv5",
+          "value": 500,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Magic Defense+ Ultimate Lv5",
+          "value": 600,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv5",
           "value": 0,
           "type": "percent",
           "duration": 8

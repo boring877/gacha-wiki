@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Full Tummy Pose!",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
-      "descriptionLv1": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
-      "descriptionLv90": "Applies Action Speed UP to self for 12 seconds and Physical Attack +665 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
+      "description": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
+      "descriptionLv1": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
+      "descriptionLv90": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
       "target": "Self",
       "castTime": 0.7,
       "damageScaling": null,
@@ -177,82 +187,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "ミラクルツインアタック",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 20 seconds and Block-13 DOWN for 6 seconds",
-      "effect": "400% + 300",
-      "buffEffects": [
-        {
-          "name": "Bleed",
-          "value": -800,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Full Tummy Pose!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000damageUP(max100000 (max stacking: )",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Damage UP",
-          "value": 9999,
-          "type": "percent",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "ミラクルドリーム・シューティングスター☆ミ",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1300% + 700",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "ミラクルドリーム・シューティングスター☆ミ",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Physical Defense DOWN(LV 2) for 10 seconds",
@@ -267,7 +208,70 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "ミラクルドリーム・シューティングスター☆ミ",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1760% + 1050",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "ミラクルドリーム・シューティングスター☆ミ",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds and Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1900% + 1100",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "ミラクルドリーム・シューティングスター☆ミ",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds and Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "2039% + 1200",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

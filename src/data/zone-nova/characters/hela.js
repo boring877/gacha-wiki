@@ -7,7 +7,7 @@ export const helaData = {
   chineseName: '海拉',
   title: 'Underworld Lord',
   chineseTitle: '冥界主宰',
-  image: 'Hela', // Use format: charactername (e.g., 'Hela')
+  image: 'Hela.png', // Use format: charactername (e.g., 'Hela')
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -171,7 +171,7 @@ export const hela = {
   },
 
   images: {
-    portrait: '/images/games/zone-nova/characters/Hela.jpg',
+    portrait: '/images/games/zone-nova/characters/Hela.png',
     card: '/images/games/zone-nova/memories/Helacard.jpg',
   },
 

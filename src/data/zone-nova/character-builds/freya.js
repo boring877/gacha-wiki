@@ -62,7 +62,7 @@ export const freyaBuild = {
       effect:
         "SR memory card that provides post-ultimate damage amplification, good for Freya's burst damage during Golden Desire state",
       characterSpecific: false,
-      memoryImage: 'Rosecard.jpg',
+      memoryImage: 'DuringMilitaryAcademyTraining.png',
       memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       description:
         'After using ultimate skill, normal attack and skill damage increased by 60% for 10 seconds',

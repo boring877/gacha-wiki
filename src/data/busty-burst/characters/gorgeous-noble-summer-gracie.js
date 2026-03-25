@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,9 +112,9 @@ export const skills = {
       "slot": 3,
       "name": "Here I come!",
       "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to self for 4 seconds and Hit-Based Physical Damage UP(+300, 1 hit(s)) for 4 seconds",
-      "descriptionLv1": "Applies Debuff Resistance UP to self for 4 seconds and Hit-Based Physical Damage UP(+300, 1 hit(s)) for 4 seconds",
-      "descriptionLv90": "Applies Debuff Resistance UP to self for 4 seconds and Hit-Based Physical Damage UP(+300, 27001 hit(s)) for 4 seconds",
+      "description": "Applies Debuff Resistance 1%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
+      "descriptionLv1": "Applies Debuff Resistance 1%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 27001%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
       "target": "Self",
       "castTime": 1.5,
       "damageScaling": null,
@@ -145,57 +155,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Oh! One point!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "400% + 600",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Here I come!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to self for 4 seconds and Hit-Based Physical Damage UP(+300, 1 hit(s)) for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent",
-          "duration": 4
-        },
-        {
-          "name": "Hit-Based Physical Damage +",
-          "value": 1,
-          "type": "flat",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Super Ultimate Gorgeous Noble Kill Shot!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1100% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Super Ultimate Gorgeous Noble Kill Shot!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
@@ -204,7 +170,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Super Ultimate Gorgeous Noble Kill Shot!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1470% + 800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Super Ultimate Gorgeous Noble Kill Shot!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1590% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Super Ultimate Gorgeous Noble Kill Shot!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1700% + 1000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         }
       ]

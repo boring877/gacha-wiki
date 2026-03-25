@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Milk Twin Attack",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , 15 Bleed (HP −-800 after acting, cannot be removed)",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , 15 Bleed (HP −-800 after acting, cannot be removed)",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds and Block-23 DOWN for 6 seconds , 15 Bleed (HP −-8000 after acting, cannot be removed)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , 15 Bleed (HP −-800 after acting, cannot be removed)",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , 15 Bleed (HP −-800 after acting, cannot be removed)",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Block-23 DOWN for 6 seconds , 15 Bleed (HP −-8000 after acting, cannot be removed)",
       "target": "Nearest Enemy",
       "castTime": 0.5,
       "damageScaling": "360% ATK",
@@ -129,9 +139,9 @@ export const skills = {
       "slot": 3,
       "name": "Now I can squeeze all I want♪",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Attack +35 UP and Action Speed UP for 10 seconds , 3 nearest enemies3s Charm for",
-      "descriptionLv1": "all allies10 Physical Attack +35 UP and Action Speed UP for 10 seconds , 3 nearest enemies3s Charm for",
-      "descriptionLv90": "all allies10 Physical Attack +665 UP and Action Speed UP for 10 seconds , 3 nearest enemies3s Charm for",
+      "description": "all allies10 Physical Attack 18%+35 UP and Action Speed 17%UP for 10 seconds , 3 nearest enemies3s Charm for",
+      "descriptionLv1": "all allies10 Physical Attack 18%+35 UP and Action Speed 17%UP for 10 seconds , 3 nearest enemies3s Charm for",
+      "descriptionLv90": "all allies10 Physical Attack 18%+665 UP and Action Speed 17%UP for 10 seconds , 3 nearest enemies3s Charm for",
       "target": "Nearest Enemy",
       "castTime": 0.55,
       "damageScaling": null,
@@ -198,87 +208,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Milk Twin Attack",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , 15 Bleed (HP −-800 after acting, cannot be removed)",
-      "effect": "360% + 600",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Bleed",
-          "value": -800,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Now I can squeeze all I want♪",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Attack +35 UP and Action Speed UP for 10 seconds , 3 nearest enemies3s Charm for",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Milk Cross Strike",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Magic Type Damage Taken UP(LV 1) for 8 seconds , 10 BlockDOWN(LV 1)",
-      "effect": "1200% + 800",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Milk Cross Strike",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Magic Type Damage Taken UP(LV 2) for 8 seconds , 10 BlockDOWN(LV 2)",
@@ -299,6 +228,87 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Milk Cross Strike",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Magic Type Damage Taken UP(LV 3) for 8 seconds , 10 BlockDOWN(LV 3)",
+      "effect": "1620% + 1200",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Milk Cross Strike",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds and Magic Type Damage Taken UP(LV 4) for 8 seconds , 10 BlockDOWN(LV 4)",
+      "effect": "1739% + 1350",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Milk Cross Strike",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds and Magic Type Damage Taken UP(LV 5) for 8 seconds , 10 BlockDOWN(LV 5)",
+      "effect": "1800% + 1500",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

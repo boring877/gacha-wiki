@@ -4,7 +4,7 @@
 export const merlinData = {
   // Basic Character Information
   name: 'Merlin',
-  image: 'Merlin', // Character image identifier
+  image: 'Merlin.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

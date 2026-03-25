@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "I can't stop!",
       "icon": "skill001/skill0019",
-      "description": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv1": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration+150 for 12 seconds and Taunt for 12 seconds",
+      "description": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv1": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Moo Moo UP",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -13 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I can't stop!",
-      "icon": "skill001/skill0019",
-      "description": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration+150 for 12 seconds and Taunt for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        },
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Moo moo Fighting!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 1) for 10 seconds and applies Debuff ResistanceUP(LV 1) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance+ Ultimate Lv1",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 2) for 10 seconds and applies Debuff ResistanceUP(LV 2) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
@@ -272,12 +213,75 @@ export const skills = {
           "duration": 10
         }
       ]
+    },
+    {
+      "rank": 3,
+      "name": "Moo moo Fighting!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 3) for 10 seconds and applies Debuff ResistanceUP(LV 3) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "effect": "1620% + 1550",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv3",
+          "value": 0,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Moo moo Fighting!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 4) for 10 seconds and applies Debuff ResistanceUP(LV 4) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "effect": "1739% + 1700",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv4",
+          "value": 0,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Moo moo Fighting!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 5) for 10 seconds and applies Debuff ResistanceUP(LV 5) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "effect": "1800% + 1800",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv5",
+          "value": 0,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
     }
   ],
   "passives": [
     {
       "slot": 1,
-      "name": "Healing Received +, Max HP +, Max HP +",
+      "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
       "effect": "Healing Received + (+30%)",
       "effectValues": [

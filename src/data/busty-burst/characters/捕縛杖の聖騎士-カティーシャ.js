@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Stop your futile resistance!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK UP, state, +30%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK UP, state, +30%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK UP, state, +30%",
+      "description": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK 30%UP, state, +30%",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK 30%UP, state, +30%",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK 30%UP, state, +30%",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "300% ATK",
@@ -72,9 +82,9 @@ export const skills = {
       "slot": 3,
       "name": "I am not sweet",
       "icon": "skill001/skill0019",
-      "description": "3 nearest enemies10 Block-11 DOWN and Accuracy -11 DOWN for 10 seconds , self10 Physical Attack +40 UP",
-      "descriptionLv1": "3 nearest enemies10 Block-11 DOWN and Accuracy -11 DOWN for 10 seconds , self10 Physical Attack +40 UP",
-      "descriptionLv90": "3 nearest enemies10 Block-23 DOWN and Accuracy -23 DOWN for 10 seconds , self10 Physical Attack +850 UP",
+      "description": "3 nearest enemies10 Block-11 DOWN and Accuracy -11 DOWN for 10 seconds , self10 Physical Attack 20%+40 UP",
+      "descriptionLv1": "3 nearest enemies10 Block-11 DOWN and Accuracy -11 DOWN for 10 seconds , self10 Physical Attack 20%+40 UP",
+      "descriptionLv90": "3 nearest enemies10 Block-23 DOWN and Accuracy -23 DOWN for 10 seconds , self10 Physical Attack 20%+850 UP",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": null,
@@ -130,7 +140,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -143,75 +153,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Stop your futile resistance!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, on activation,self6 Holy Type ATK UP, state, +30%",
-      "effect": "300% + 400",
-      "buffEffects": [
-        {
-          "name": "Holy Type ATK + LvMax",
-          "value": 30,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I am not sweet",
-      "icon": "skill001/skill0019",
-      "description": "3 nearest enemies10 Block-11 DOWN and Accuracy -11 DOWN for 10 seconds , self10 Physical Attack +40 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Vern Sacred Binding - Immobilize Chain",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 3s and Physical Defense DOWN(LV 1) for 10 seconds , 10 [](Speed15%DOWN, (cannot be removed))",
-      "effect": "1100% + 600",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Restraint",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Vern Sacred Binding - Immobilize Chain",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, inflict 4s and Physical Defense DOWN(LV 2) for 10 seconds , 10 [](Speed15%DOWN, (cannot be removed))",
@@ -226,7 +167,88 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Restraint",
+          "value": -15,
           "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Vern Sacred Binding - Immobilize Chain",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, inflict 4s and Physical Defense DOWN(LV 3) for 10 seconds , 10 [](Speed15%DOWN, (cannot be removed))",
+      "effect": "1470% + 1000",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Restraint",
+          "value": -15,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Vern Sacred Binding - Immobilize Chain",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 4) for 10 seconds , 10 [](Speed15%DOWN, (cannot be removed))",
+      "effect": "1590% + 1100",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Restraint",
+          "value": -15,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Vern Sacred Binding - Immobilize Chain",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 5) for 10 seconds , 10 [](Speed15%DOWN, (cannot be removed))",
+      "effect": "1700% + 1200",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         },
         {

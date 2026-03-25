@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "SweetSweetSmile",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to all allies for 10 seconds and Magic Defense+140 UP for 10 seconds , 10 Healing Shield (300)",
-      "descriptionLv1": "Applies Physical Defense +140 UP to all allies for 10 seconds and Magic Defense+140 UP for 10 seconds , 10 Healing Shield (300)",
-      "descriptionLv90": "Applies Physical Defense +320 UP to all allies for 10 seconds and Magic Defense+320 UP for 10 seconds , 10 Healing Shield (300)",
+      "description": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds , 10 Healing Shield (300)",
+      "descriptionLv1": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds , 10 Healing Shield (300)",
+      "descriptionLv90": "Applies Physical Defense 20%+320 UP to all allies for 10 seconds and Magic Defense 20%+320 UP for 10 seconds , 10 Healing Shield (300)",
       "target": "All Allies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -130,9 +140,9 @@ export const skills = {
       "slot": 3,
       "name": "Advance Notice",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 8 seconds and Physical Attack +25 UP for 8 seconds , 8 Magic Attack +25 UP",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 8 seconds and Physical Attack +25 UP for 8 seconds , 8 Magic Attack +25 UP",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 8 seconds and Physical Attack +295 UP for 8 seconds , 8 Magic Attack +295 UP",
+      "description": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds , 8 Magic Attack 12%+25 UP",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds , 8 Magic Attack 12%+25 UP",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+295 UP for 8 seconds , 8 Magic Attack 12%+295 UP",
       "target": "All Allies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -200,87 +210,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "SweetSweetSmile",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to all allies for 10 seconds and Magic Defense+140 UP for 10 seconds , 10 Healing Shield (300)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense+ Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Advance Notice",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 8 seconds and Physical Attack +25 UP for 8 seconds , 8 Magic Attack +25 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Attack + Lv2",
-          "value": 25,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack + Lv2",
-          "value": 25,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Kiss in the Galaxy",
-      "icon": "skill001/skill0020_1",
-      "description": "to all enemiesmagic damage, inflict 3s , all allies5 MP Regeneration UP(LV 1), 10 Damage UP(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "MP Regeneration + Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Damage + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_2",
       "description": "to all enemiesmagic damage, inflict 4s , all allies5 MP Regeneration UP(LV 2), 10 Damage UP(LV 2)",
@@ -301,6 +230,87 @@ export const skills = {
         {
           "name": "Damage + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Kiss in the Galaxy",
+      "icon": "skill001/skill0020_3",
+      "description": "to all enemiesmagic damage, inflict 4s , all allies5 MP Regeneration UP(LV 3), 10 Damage UP(LV 3)",
+      "effect": "600% + 700",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "MP Regeneration + Ultimate Lv3",
+          "value": 45,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Damage + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Kiss in the Galaxy",
+      "icon": "skill001/skill0020_4",
+      "description": "to all enemiesmagic damage, inflict 5s , all allies5 MP Regeneration UP(LV 4), 10 Damage UP(LV 4)",
+      "effect": "660% + 750",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "MP Regeneration + Ultimate Lv4",
+          "value": 50,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Damage + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Kiss in the Galaxy",
+      "icon": "skill001/skill0020_5",
+      "description": "to all enemiesmagic damage, inflict 5s , all allies5 MP Regeneration UP(LV 5), 10 Damage UP(LV 5)",
+      "effect": "700% + 800",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "MP Regeneration + Ultimate Lv5",
+          "value": 55,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Damage + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "ディアネモ",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Defense +140 UP and Magic Defense+140 UP for 10 seconds , 10 Magic Attack +35 UP",
-      "descriptionLv1": "all allies10 Physical Defense +140 UP and Magic Defense+140 UP for 10 seconds , 10 Magic Attack +35 UP",
-      "descriptionLv90": "all allies10 Physical Defense +320 UP and Magic Defense+320 UP for 10 seconds , 10 Magic Attack +665 UP",
+      "description": "all allies10 Physical Defense 20%+140 UP and Magic Defense 20%+140 UP for 10 seconds , 10 Magic Attack 18%+35 UP",
+      "descriptionLv1": "all allies10 Physical Defense 20%+140 UP and Magic Defense 20%+140 UP for 10 seconds , 10 Magic Attack 18%+35 UP",
+      "descriptionLv90": "all allies10 Physical Defense 20%+320 UP and Magic Defense 20%+320 UP for 10 seconds , 10 Magic Attack 18%+665 UP",
       "target": "All Allies",
       "castTime": 1.1,
       "damageScaling": null,
@@ -132,7 +142,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -151,81 +161,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "ディアネモ",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Defense +140 UP and Magic Defense+140 UP for 10 seconds , 10 Magic Attack +35 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense+ Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "エヴィロイーア",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies, MP Recovery 110, Debuff",
-      "effect": "1800% + 800",
-      "buffEffects": [
-        {
-          "name": "MP Recovery",
-          "value": 110,
-          "type": "percent",
-          "duration": 0
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent",
-          "duration": 0
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "<ruby=></ruby>",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds , all allies8 Healing Shield (LV 1), 20 Hit-Based Magic Damage (LV 1)",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Hit-Based Magic Damage + Ultimate Lv1",
-          "value": 4,
-          "type": "flat",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds , all allies8 Healing Shield (LV 2), 20 Hit-Based Magic Damage (LV 2)",
@@ -234,7 +169,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -245,6 +180,87 @@ export const skills = {
         },
         {
           "name": "Hit-Based Magic Damage + Ultimate Lv2",
+          "value": 4,
+          "type": "flat",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds , all allies8 Healing Shield (LV 3), 20 Hit-Based Magic Damage (LV 3)",
+      "effect": "390% + 600",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Healing Shield Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv3",
+          "value": 4,
+          "type": "flat",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds , all allies8 Healing Shield (LV 4), 20 Hit-Based Magic Damage (LV 4)",
+      "effect": "420% + 700",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Healing Shield Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv4",
+          "value": 4,
+          "type": "flat",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds , all allies8 Healing Shield (LV 5), 20 Hit-Based Magic Damage (LV 5)",
+      "effect": "434% + 800",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Healing Shield Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv5",
           "value": 4,
           "type": "flat",
           "duration": 20

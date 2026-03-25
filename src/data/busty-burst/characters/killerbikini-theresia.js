@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Gotta Avoid the Sunburn!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(+550, 4 hit(s)) to self for 5 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(+550, 4 hit(s)) to self for 5 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(+550, 49504 hit(s)) to self for 5 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(50%+550, 4 hit(s)) to self for 5 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(50%+550, 4 hit(s)) to self for 5 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(50%+550, 49504 hit(s)) to self for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "120% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "I’ll Drive You Wild!",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 7 seconds and Magic Critical Damage 40 UP for 7 seconds",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 7 seconds and Magic Critical Damage 40 UP for 7 seconds",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 7 seconds and Magic Critical Damage 490 UP for 7 seconds",
+      "description": "Applies Action Speed 14%UP to all allies for 7 seconds and Magic Critical Damage 40 UP for 7 seconds",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 7 seconds and Magic Critical Damage 40 UP for 7 seconds",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 7 seconds and Magic Critical Damage 490 UP for 7 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Gotta Avoid the Sunburn!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.2 seconds and when the skill activates, applies Hit-Based Magic Damage UP(+550, 4 hit(s)) to self for 5 seconds",
-      "effect": "120% + 80",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Hit-Based Magic Damage + Lv5",
-          "value": 4,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I’ll Drive You Wild!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 7 seconds and Magic Critical Damage 40 UP for 7 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Magic Critical Damage+ Lv3",
-          "value": 40,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Luftmine Ring Silm",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Paralysis for 5 seconds and Accuracy DOWN(LV 1) for 8 seconds",
-      "effect": "550% + 400",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Luftmine Ring Silm",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to all enemies and inflicts Paralysis for 6 seconds and Accuracy DOWN(LV 2) for 8 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Luftmine Ring Silm",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Paralysis for 6 seconds and Accuracy DOWN(LV 3) for 8 seconds",
+      "effect": "900% + 550",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Luftmine Ring Silm",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to all enemies and inflicts Paralysis for 7 seconds and Accuracy DOWN(LV 4) for 8 seconds",
+      "effect": "1000% + 600",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Luftmine Ring Silm",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to all enemies and inflicts Paralysis for 7 seconds and Accuracy DOWN(LV 5) for 8 seconds",
+      "effect": "1100% + 650",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 8
         }

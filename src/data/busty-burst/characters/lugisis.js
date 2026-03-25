@@ -83,6 +83,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -131,9 +141,9 @@ export const skills = {
       "slot": 3,
       "name": "Please use this",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Shield (+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Hit-Based Shield (+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Hit-Based Shield (+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 26 UP",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 26 UP",
       "target": "All Allies",
       "castTime": 0.2,
       "damageScaling": "1500% ATK",
@@ -200,87 +210,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I'm getting mad",
-      "icon": "skill001/skill0011",
-      "description": "3 enemies3 and Fear(MP --100 per second) for 3 seconds , 10 Accuracy -13 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Fear LvMax",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Please use this",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Shield (+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
-      "effect": "1500% + 500",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Shield",
-          "value": 1000,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I absolutely won't get married!",
-      "icon": "skill001/skill0012_1",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 1) for 2 seconds and Physical Attack DOWN(LV 1) for 10 seconds , 10 Magic Attack DOWN(LV 1)",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Freeze Ultimate Lv1",
-          "value": -2500,
-          "type": "flat",
-          "duration": 2
-        },
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -100,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Ultimate Lv1",
-          "value": -100,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_2",
       "description": "3 to enemiesmagic damage and inflicts Freeze(LV 2) for 2.5 seconds and Physical Attack DOWN(LV 2) for 10 seconds , 10 Magic Attack DOWN(LV 2)",
@@ -301,6 +230,87 @@ export const skills = {
         {
           "name": "Magic Attack - Ultimate Lv2",
           "value": -150,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I absolutely won't get married!",
+      "icon": "skill001/skill0012_3",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 3) for 2.5 seconds and Physical Attack DOWN(LV 3) for 10 seconds , 10 Magic Attack DOWN(LV 3)",
+      "effect": "455% + 800",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv3",
+          "value": -4000,
+          "type": "flat",
+          "duration": 2
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -200,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv3",
+          "value": -200,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I absolutely won't get married!",
+      "icon": "skill001/skill0012_4",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 4) for 3 seconds and Physical Attack DOWN(LV 4) for 10 seconds , 10 Magic Attack DOWN(LV 4)",
+      "effect": "490% + 900",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv4",
+          "value": -4500,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -250,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv4",
+          "value": -250,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I absolutely won't get married!",
+      "icon": "skill001/skill0012_5",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 5) for 3 seconds and Physical Attack DOWN(LV 5) for 10 seconds , 10 Magic Attack DOWN(LV 5)",
+      "effect": "509% + 1000",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv5",
+          "value": -5000,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -300,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv5",
+          "value": -300,
           "type": "flat",
           "duration": 10
         }

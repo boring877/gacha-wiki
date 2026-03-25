@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,9 +112,9 @@ export const skills = {
       "slot": 3,
       "name": "Oni Stance",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
       "target": "Self",
       "castTime": 0.98,
       "damageScaling": null,
@@ -153,50 +163,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Swift as the Wind",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit",
-      "effect": "320% + 100",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Oni Stance",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Blade Dance: Plum Blossom Banquet",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 1) to self for 8 seconds",
-      "effect": "1100% + 1200",
-      "buffEffects": [
-        {
-          "name": "Fire Type ATK + Ultimate Lv1",
-          "value": 15,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 2) to self for 8 seconds",
@@ -205,6 +171,51 @@ export const skills = {
         {
           "name": "Fire Type ATK + Ultimate Lv2",
           "value": 20,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Blade Dance: Plum Blossom Banquet",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 3) to self for 8 seconds",
+      "effect": "1490% + 1550",
+      "buffEffects": [
+        {
+          "name": "Fire Type ATK + Ultimate Lv3",
+          "value": 24,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Blade Dance: Plum Blossom Banquet",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 4) to self for 8 seconds",
+      "effect": "1600% + 1650",
+      "buffEffects": [
+        {
+          "name": "Fire Type ATK + Ultimate Lv4",
+          "value": 27,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Blade Dance: Plum Blossom Banquet",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 5) to self for 8 seconds",
+      "effect": "1660% + 1700",
+      "buffEffects": [
+        {
+          "name": "Fire Type ATK + Ultimate Lv5",
+          "value": 30,
           "type": "percent",
           "duration": 8
         }

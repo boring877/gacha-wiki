@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Evil Spirit's Comfort",
       "icon": "skill001/skill0019",
-      "description": "Applies +Damage Reduction to all allies for 8 seconds and Reflect Shield(+500) for 8 seconds , 8 Action Speed UP",
-      "descriptionLv1": "Applies +Damage Reduction to all allies for 8 seconds and Reflect Shield(+500) for 8 seconds , 8 Action Speed UP",
-      "descriptionLv90": "Applies +Damage Reduction to all allies for 8 seconds and Reflect Shield(+500) for 8 seconds , 8 Action Speed UP",
+      "description": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
+      "descriptionLv1": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
+      "descriptionLv90": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": null,
@@ -127,9 +137,9 @@ export const skills = {
       "slot": 3,
       "name": "Oni Fire Flame",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-220 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "120% ATK",
@@ -196,43 +206,43 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Evil Spirit's Comfort",
-      "icon": "skill001/skill0019",
-      "description": "Applies +Damage Reduction to all allies for 8 seconds and Reflect Shield(+500) for 8 seconds , 8 Action Speed UP",
-      "effect": "300% + 0",
+      "name": "Night Star - Golden God's Seven Kill Calamity",
+      "icon": "skill001/skill0006_2",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5, ), [Ghost Fire]5 when damage +30%, 5s Curse for, self10 SpeedUP(LV 2)",
+      "effect": "1320% + 950",
       "buffEffects": [
         {
-          "name": "Shield",
-          "value": 15,
+          "name": "Fire Type Damage Taken+ Ultimate Lv2",
+          "value": 13,
           "type": "percent",
           "duration": 8
         },
         {
-          "name": "Reflect Shield",
-          "value": 999,
-          "type": "flat",
-          "duration": 8
+          "name": "Oni Fire",
+          "value": 0,
+          "type": "percent",
+          "duration": 9999
         },
         {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 8
+          "name": "Oni Fire",
+          "value": 2,
+          "type": "percent",
+          "duration": 9999
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Oni Fire Flame",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
-      "effect": "120% + 300",
+      "name": "Night Star - Golden God's Seven Kill Calamity",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 3) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 5s Curse for, self10 SpeedUP(LV 3)",
+      "effect": "1470% + 1100",
       "buffEffects": [
         {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
+          "name": "Fire Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
         },
         {
           "name": "Oni Fire",
@@ -251,13 +261,13 @@ export const skills = {
     {
       "rank": 4,
       "name": "Night Star - Golden God's Seven Kill Calamity",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 1) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 4s Curse for, self10 SpeedUP(LV 1)",
-      "effect": "1100% + 800",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 4) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 6s Curse for, self10 SpeedUP(LV 4)",
+      "effect": "1590% + 1200",
       "buffEffects": [
         {
-          "name": "Fire Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
+          "name": "Fire Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
           "type": "percent",
           "duration": 8
         },
@@ -278,13 +288,13 @@ export const skills = {
     {
       "rank": 5,
       "name": "Night Star - Golden God's Seven Kill Calamity",
-      "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5, ), [Ghost Fire]5 when damage +30%, 5s Curse for, self10 SpeedUP(LV 2)",
-      "effect": "1320% + 950",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 5) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 6s Curse for, self10 SpeedUP(LV 5)",
+      "effect": "1700% + 1300",
       "buffEffects": [
         {
-          "name": "Fire Type Damage Taken+ Ultimate Lv2",
-          "value": 13,
+          "name": "Fire Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         },

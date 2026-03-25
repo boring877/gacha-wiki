@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -157,76 +167,19 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 10,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         },
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 10,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         }
       ]
     },
     {
       "rank": 2,
-      "name": "A bit drunk ",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 1 seconds",
-      "effect": "220% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Come, let's drink together!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 9 UP to the 3 nearest allies for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Cheers!",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Physical Attack UP(LV 1) to all allies for 12 seconds and Magic Attack UP(LV 1) for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Cheers!",
       "icon": "skill001/skill0020_2",
       "description": "Applies Physical Attack UP(LV 2) to all allies for 12 seconds and Magic Attack UP(LV 2) for 12 seconds",
@@ -235,13 +188,76 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 13,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         },
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 13,
-          "type": "flat",
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Cheers!",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Physical Attack UP(LV 3) to all allies for 12 seconds and Magic Attack UP(LV 3) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Cheers!",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Physical Attack UP(LV 4) to all allies for 12 seconds and Magic Attack UP(LV 4) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Cheers!",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Physical Attack UP(LV 5) to all allies for 12 seconds and Magic Attack UP(LV 5) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
           "duration": 12
         }
       ]

@@ -52,7 +52,7 @@ export const lilyBuild = {
         "Lily's exclusive memory card. Provides massive defense increase and additional damage reduction after mitigation and while shielded - perfect synergy with Lily's kit",
       priority: 'Highly Recommended',
       characterSpecific: true,
-      memoryImage: 'Lilycard',
+      memoryImage: 'InTheCafeSneakingABite.png',
       memoryStats: { hp: '6,600', attack: '480', defense: '690' },
       slug: 'in-the-cafe-sneaking-a-bite',
       description:

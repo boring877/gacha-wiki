@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Eliminate enemies. Execute thoroughly.",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -210 DOWN for 5 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": "110.00000000000001% ATK",
@@ -156,54 +166,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Eliminate enemies. Execute thoroughly.",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "effect": "110% + 80",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
+      "name": "Protect the target. That's my job.",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "effect": "1320% + 650",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Instant incapacitation. That's the best.",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 2",
-      "effect": "250% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
+      "name": "Protect the target. That's my job.",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "effect": "1470% + 800",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Protect the target. That's my job.",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "1100% + 500",
+      "effect": "1590% + 900",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Protect the target. That's my job.",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "1320% + 650",
+      "effect": "1700% + 1000",
       "buffEffects": []
     }
   ],

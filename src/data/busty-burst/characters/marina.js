@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Star Procession",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds and Block-13 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds and Block-13 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds and Block-26 DOWN for 6 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds and Block-13 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds and Block-13 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds and Block-26 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "100% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Star Procession",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 6 seconds and Block-13 DOWN for 6 seconds",
-      "effect": "100% + 50",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Future Sight",
-      "icon": "skill001/skill0019",
-      "description": "all allies6 Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv3",
-          "value": 40,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Magic Critical Damage+ Lv3",
-          "value": 40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "La Roue de Fortune",
-      "icon": "skill001/skill0020_1",
-      "description": "all allies8 Action Speed UP(LV 1) and Hit-Based Shield(LV 1) for 4 seconds",
-      "effect": "0% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Hit-Based Shield Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_2",
       "description": "all allies8 Action Speed UP(LV 2) and Hit-Based Shield(LV 2) for 4 seconds",
@@ -256,6 +203,69 @@ export const skills = {
           "value": 35,
           "type": "percent",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "La Roue de Fortune",
+      "icon": "skill001/skill0020_3",
+      "description": "all allies8 Action Speed UP(LV 3) and Hit-Based Shield(LV 3) for 5 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv3",
+          "value": 35,
+          "type": "percent",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "La Roue de Fortune",
+      "icon": "skill001/skill0020_4",
+      "description": "all allies8 Action Speed UP(LV 4) and Hit-Based Shield(LV 4) for 5 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv4",
+          "value": 40,
+          "type": "percent",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "La Roue de Fortune",
+      "icon": "skill001/skill0020_5",
+      "description": "all allies8 Action Speed UP(LV 5) and Hit-Based Shield(LV 5) for 6 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv5",
+          "value": 40,
+          "type": "percent",
+          "duration": 6
         }
       ]
     }

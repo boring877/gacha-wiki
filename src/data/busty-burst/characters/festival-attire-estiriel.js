@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Ripples of the Abyss",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Physical Defense +100 UP for 8 seconds and Magic Defense+100 UP for 8 seconds",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Physical Defense +100 UP for 8 seconds and Magic Defense+100 UP for 8 seconds",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Physical Defense +190 UP for 8 seconds and Magic Defense+190 UP for 8 seconds",
+      "description": "Restores HP by to all allies and inflicts Physical Defense 15%+100 UP for 8 seconds and Magic Defense 15%+100 UP for 8 seconds",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Physical Defense 15%+100 UP for 8 seconds and Magic Defense 15%+100 UP for 8 seconds",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Physical Defense 15%+190 UP for 8 seconds and Magic Defense 15%+190 UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": "2000% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Slumber of the Seashell",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 6 seconds and Accuracy 9 UP for 6 seconds",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 6 seconds and Accuracy 9 UP for 6 seconds",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 6 seconds and Accuracy 18 UP for 6 seconds",
+      "description": "Applies Action Speed 14%UP to all allies for 6 seconds and Accuracy 9 UP for 6 seconds",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 6 seconds and Accuracy 9 UP for 6 seconds",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 6 seconds and Accuracy 18 UP for 6 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Ripples of the Abyss",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Physical Defense +100 UP for 8 seconds and Magic Defense+100 UP for 8 seconds",
-      "effect": "2000% + 370",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv2",
-          "value": 100,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Defense+ Lv2",
-          "value": 100,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Slumber of the Seashell",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 6 seconds and Accuracy 9 UP for 6 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Spirits, sing—offer blessings for this new birth",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP(LV 1) for 7 seconds and BlockUP(LV 1) for 7 seconds",
-      "effect": "2700% + 1200",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance + Ultimate Lv1",
-          "value": 0,
-          "type": "percent",
-          "duration": 7
-        },
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Spirits, sing—offer blessings for this new birth",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Debuff Resistance UP(LV 2) for 7 seconds and BlockUP(LV 2) for 7 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Spirits, sing—offer blessings for this new birth",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP(LV 3) for 7 seconds and BlockUP(LV 3) for 7 seconds",
+      "effect": "3250% + 1600",
+      "buffEffects": [
+        {
+          "name": "Debuff Resistance + Ultimate Lv3",
+          "value": 0,
+          "type": "percent",
+          "duration": 7
+        },
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Spirits, sing—offer blessings for this new birth",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP(LV 4) for 7 seconds and BlockUP(LV 4) for 7 seconds",
+      "effect": "3500% + 1750",
+      "buffEffects": [
+        {
+          "name": "Debuff Resistance + Ultimate Lv4",
+          "value": 0,
+          "type": "percent",
+          "duration": 7
+        },
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Spirits, sing—offer blessings for this new birth",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP(LV 5) for 7 seconds and BlockUP(LV 5) for 7 seconds",
+      "effect": "3650% + 1900",
+      "buffEffects": [
+        {
+          "name": "Debuff Resistance + Ultimate Lv5",
+          "value": 0,
+          "type": "percent",
+          "duration": 7
+        },
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 7
         }

@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Let's eat~!",
       "icon": "skill001/skill0021",
-      "description": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "descriptionLv1": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "descriptionLv90": "Restores HP to 45003 nearest allies and inflicts Hit-Based Physical Damage UP(+500, 3 hit(s)) for 10 seconds and Accuracy 18 UP for 10 seconds",
+      "description": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
+      "descriptionLv1": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
+      "descriptionLv90": "Restores HP to 45003 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 18 UP for 10 seconds",
       "target": "Nearest Ally",
       "castTime": 1.25,
       "damageScaling": "1000% ATK",
@@ -157,64 +167,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Don't interfere with cooking!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(HP --100 per second) for 20 seconds",
-      "effect": "310% + 150",
-      "buffEffects": [
-        {
-          "name": "Burn Lv4",
-          "value": -100,
-          "type": "flat",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Let's eat~!",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "effect": "1000% + 250",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage + Lv4",
-          "value": 3,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Margaret's Special - Big Bang Serve!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1100% + 600",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Margaret's Special - Big Bang Serve!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
@@ -223,7 +182,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Margaret's Special - Big Bang Serve!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1470% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Margaret's Special - Big Bang Serve!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1590% + 1000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Margaret's Special - Big Bang Serve!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1700% + 1100",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         }
       ]

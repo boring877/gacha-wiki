@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "You can't even do this?",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -20 DOWN, 12 Magic Attack -20 DOWN",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -20 DOWN, 12 Magic Attack -20 DOWN",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -2000 DOWN, 12 Magic Attack -20 DOWN",
+      "description": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-20 DOWN, 12 Magic Attack -9%-20 DOWN",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-20 DOWN, 12 Magic Attack -9%-20 DOWN",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-2000 DOWN, 12 Magic Attack -9%-20 DOWN",
       "target": "All Enemies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -192,81 +202,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "FS MelonGrab",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and applies Unable to act to self for 2 seconds",
-      "effect": "340% + 300",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Healing Shield LvMax",
-          "value": 400,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You can't even do this?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -20 DOWN, 12 Magic Attack -20 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        },
-        {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "BigAir1080 Moondrop Nue Special",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 3 , self10 Hit-Based Shield(LV 1)",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Hit-Based Shield Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , 4 , self10 Hit-Based Shield(LV 2)",
@@ -287,6 +222,87 @@ export const skills = {
         {
           "name": "Hit-Based Shield Ultimate Lv2",
           "value": 35,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "BigAir1080 Moondrop Nue Special",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , 4 , self10 Hit-Based Shield(LV 3)",
+      "effect": "1620% + 1380",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "BigAir1080 Moondrop Nue Special",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , 5 , self10 Hit-Based Shield(LV 4)",
+      "effect": "1739% + 1500",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "BigAir1080 Moondrop Nue Special",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , 5 , self10 Hit-Based Shield(LV 5)",
+      "effect": "1800% + 1600",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Hit-Based Shield Ultimate Lv5",
+          "value": 50,
           "type": "percent",
           "duration": 10
         }

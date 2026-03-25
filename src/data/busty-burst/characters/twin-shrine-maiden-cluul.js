@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Spinning Slash Destroyer",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
+      "description": "Deals magic damage to the nearest enemyApplies Action Speed 20%UP to self for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Action Speed 20%UP to self for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Action Speed 20%UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.65,
       "damageScaling": "330% ATK",
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Falling Flower Spiral",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 10 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 10 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-320 DOWN for 10 seconds and Fire Type Damage Taken UP for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 10 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 10 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 10 seconds and Fire Type Damage Taken 16%UP for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "300% ATK",
@@ -164,70 +174,13 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 2,
-      "name": "Spinning Slash Destroyer",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Falling Flower Spiral",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 10 seconds and Fire Type Damage Taken UP for 10 seconds",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Fire Type Damage Taken + Lv3",
-          "value": 16,
           "type": "percent",
           "duration": 10
         }
       ]
     },
     {
-      "rank": 4,
-      "name": "Ten Thousand Demon Annihilation Greatsword",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,4 and Magic Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
+      "rank": 2,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5 and Magic Defense DOWN(LV 2) for 10 seconds",
@@ -242,7 +195,70 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ten Thousand Demon Annihilation Greatsword",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5 and Magic Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1620% + 1600",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ten Thousand Demon Annihilation Greatsword",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6 and Magic Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1739% + 1800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ten Thousand Demon Annihilation Greatsword",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6 and Magic Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1800% + 2000",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

@@ -5,7 +5,7 @@
 export const apolloData = {
   // Basic Character Information
   name: 'Apollo',
-  image: 'Apollo', // Use format: charactername (e.g., 'penny')
+  image: 'Apollo.png', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -80,7 +80,7 @@ export const apolloData = {
   // Memory Card
   memoryCard: {
     name: 'The Loneliest Moment',
-    image: 'Apollocard', // Use format: characternamecard (e.g., 'pennycard')
+    image: 'Apollocard.png', // Use format: characternamecard (e.g., 'pennycard')
     stats: {
       hp: '6,000', // e.g., '8,600'
       attack: '600', // e.g., '480'

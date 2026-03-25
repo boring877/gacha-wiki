@@ -5,7 +5,7 @@
 export const wrathSamaelData = {
   // Basic Character Information
   name: 'Wrath-Samael',
-  image: 'Wrath_Samael', // Image identifier
+  image: 'Wrath_Samael.png', // Image identifier
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -96,7 +96,7 @@ export const wrathSamaelData = {
   // Memory Card
   memoryCard: {
     name: 'Suffocating Grace',
-    image: 'Wrath_Samaelcard', // Memory card image
+    image: 'Wrath_Samaelcard.png', // Memory card image
     title: 'Suffocating Grace',
     level: '80/80',
     rarity: '6-star (SSR)',

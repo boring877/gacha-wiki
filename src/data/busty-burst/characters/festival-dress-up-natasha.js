@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "The gown feels so light!",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 8 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed -17%DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed -17%DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed -17%DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.88,
       "damageScaling": "240% ATK",
@@ -162,57 +172,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "The gown feels so light!",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 8 seconds",
-      "effect": "240% + 125",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I must keep it perfectly clean.",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 13 UP to self for 12 seconds and Taunt for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The princess stands for justice!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy DOWN(LV 1) for 10 seconds",
-      "effect": "225% + 404",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The princess stands for justice!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy DOWN(LV 2) for 10 seconds",
@@ -221,6 +180,51 @@ export const skills = {
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -12,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The princess stands for justice!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy DOWN(LV 3) for 10 seconds",
+      "effect": "325% + 553",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The princess stands for justice!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy DOWN(LV 4) for 10 seconds",
+      "effect": "358% + 568",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -14,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The princess stands for justice!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy DOWN(LV 5) for 10 seconds",
+      "effect": "380% + 602",
+      "buffEffects": [
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -15,
           "type": "flat",
           "duration": 10
         }

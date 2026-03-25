@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "I give up meow~!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": "330% ATK",
@@ -164,57 +174,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I give up meow~!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "effect": "330% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Spin meow~!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to self for 10 seconds and MP Regeneration 40 for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + Lv5",
-          "value": 40,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Lilirara Super Ultimate Grand Slam!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1300% + 500",
-      "buffEffects": [
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lilirara Super Ultimate Grand Slam!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 2) for 8 seconds",
@@ -223,6 +182,51 @@ export const skills = {
         {
           "name": "Water Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lilirara Super Ultimate Grand Slam!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1530% + 700",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lilirara Super Ultimate Grand Slam!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1600% + 750",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lilirara Super Ultimate Grand Slam!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1650% + 800",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

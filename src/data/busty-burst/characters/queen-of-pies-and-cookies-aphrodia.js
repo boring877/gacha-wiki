@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Come now, have some.",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance UP for 8 seconds",
-      "descriptionLv1": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance UP for 8 seconds",
-      "descriptionLv90": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance UP for 8 seconds",
+      "description": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
+      "descriptionLv1": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
+      "descriptionLv90": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Won’t you taste my sweets?",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Poison (HP --200 per second) for 8 seconds and Block-11 DOWN for 6 seconds",
-      "effect": "330% + 150",
-      "buffEffects": [
-        {
-          "name": "Poison Lv5",
-          "value": -200,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Come now, have some.",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Damage + Lv4",
-          "value": 35,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Accept it—this is your reward.",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds",
-      "effect": "1170% + 800",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Accept it—this is your reward.",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Accept it—this is your reward.",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "effect": "1560% + 1100",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Accept it—this is your reward.",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "effect": "1670% + 1200",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Accept it—this is your reward.",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "effect": "1730% + 1300",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

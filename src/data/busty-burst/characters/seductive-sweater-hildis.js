@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "You lot are useless!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.55,
       "damageScaling": "360% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "My body is so hot... is this the power of the sweater?",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Debuff Resistance UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 10 seconds and Debuff Resistance UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 10 seconds and Debuff Resistance UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
       "target": "Self",
       "castTime": 0.55,
       "damageScaling": null,
@@ -191,81 +201,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "You lot are useless!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "effect": "360% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "My body is so hot... is this the power of the sweater?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Debuff Resistance UP for 10 seconds , 4 MP Regeneration 50",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + LvMax",
-          "value": 50,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "D-Don't look at me~~~~!!",
-      "icon": "skill001/skill0003_1",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , self10 Action Speed UP(LV 1)",
-      "effect": "250% + 250",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_2",
       "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , self10 Action Speed UP(LV 2)",
@@ -286,6 +221,87 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "D-Don't look at me~~~~!!",
+      "icon": "skill001/skill0003_3",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , self10 Action Speed UP(LV 3)",
+      "effect": "340% + 600",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "D-Don't look at me~~~~!!",
+      "icon": "skill001/skill0003_4",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , self10 Action Speed UP(LV 4)",
+      "effect": "375% + 700",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "D-Don't look at me~~~~!!",
+      "icon": "skill001/skill0003_5",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , self10 Action Speed UP(LV 5)",
+      "effect": "400% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

@@ -217,7 +217,7 @@ export const zoneNovaConfig = {
       title: 'Tier List',
       emoji: '',
       description:
-        'Comprehensive tier lists for PvE, PvP, Rifts, and Guild Raids with meta analysis.',
+        'Role and class-based rankings for PvE, Arena PvP, and new player progression with meta analysis.',
       url: '/guides/zone-nova/tier-list/',
       category: 'guides',
       size: 'large',

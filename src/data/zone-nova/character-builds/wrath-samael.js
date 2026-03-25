@@ -69,7 +69,7 @@ export const wrathSamaelBuild = {
       effect:
         "Lily's memory card - strong defense scaling with mitigation bonuses, great for pure tank builds",
       characterSpecific: false,
-      memoryImage: 'Lilycard.jpg',
+      memoryImage: 'InTheCafeSneakingABite.png',
       memoryStats: { hp: '6,600', attack: '480', defense: '690' },
       description:
         'Defense +64%, After successful mitigation: Damage Taken -10% for 5 seconds, When has shield: Damage Taken -18%',

@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Swoosh~ Boom boom~",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Shield(1 hit(s)) to self for 25 seconds and Magic Attack +40 UP for 12 seconds",
-      "descriptionLv1": "Applies Hit-Based Shield(1 hit(s)) to self for 25 seconds and Magic Attack +40 UP for 12 seconds",
-      "descriptionLv90": "Applies Hit-Based Shield(1 hit(s)) to self for 25 seconds and Magic Attack +850 UP for 12 seconds",
+      "description": "Applies Hit-Based Shield(100%1 hit(s)) to self for 25 seconds and Magic Attack 20%+40 UP for 12 seconds",
+      "descriptionLv1": "Applies Hit-Based Shield(100%1 hit(s)) to self for 25 seconds and Magic Attack 20%+40 UP for 12 seconds",
+      "descriptionLv90": "Applies Hit-Based Shield(100%1 hit(s)) to self for 25 seconds and Magic Attack 20%+850 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.28,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Want to try a grown-up fire game?",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --200 per second) for 15 seconds and Block-11 DOWN for 8 seconds",
-      "effect": "105% + 70",
-      "buffEffects": [
-        {
-          "name": "Burn LvMax",
-          "value": -200,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Swoosh~ Boom boom~",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Shield(1 hit(s)) to self for 25 seconds and Magic Attack +40 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield",
-          "value": 100,
-          "type": "percent",
-          "duration": 25
-        },
-        {
-          "name": "Magic Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "It doesn't count unless it burns",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 1) for 15 seconds and Fire Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "900% + 900",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -2000,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Fire Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "It doesn't count unless it burns",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 2) for 15 seconds and Fire Type Damage Taken UP(LV 2) for 8 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Fire Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "It doesn't count unless it burns",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 3) for 15 seconds and Fire Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1210% + 1250",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -3000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "It doesn't count unless it burns",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 4) for 15 seconds and Fire Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1300% + 1350",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -3500,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "It doesn't count unless it burns",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 5) for 15 seconds and Fire Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1350% + 1400",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -4000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

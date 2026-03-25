@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -145,47 +155,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Hold still. I'll make a clean cut.",
-      "icon": "skill001/skill0002",
+      "name": "I know how to deal with you now!",
+      "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "210% + 150",
+      "effect": "1080% + 600",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "I'll peel it clean.~",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Critical Damage 30 UP to self for 12 seconds, [Sharpness]([Sharpness]1Physical Attack10%UP, max2), [Sharpness]2 whenapply to self20 Hit-Based physical damageUP(20%, 6)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv2",
-          "value": 30,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Sharpness",
-          "value": 0,
-          "type": "flat",
-          "duration": 999
-        }
-      ]
+      "name": "I know how to deal with you now!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "effect": "1120% + 750",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "I know how to deal with you now!",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "900% + 400",
+      "effect": "1210% + 900",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "I know how to deal with you now!",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "1080% + 600",
+      "effect": "1300% + 1000",
       "buffEffects": []
     }
   ],

@@ -4,7 +4,7 @@
 export const roseData = {
   // Basic Character Information
   name: 'Rose',
-  image: 'Rose', // Character image identifier
+  image: 'Rose.png',
   rarity: 'SR',
   element: 'Ice',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -85,7 +85,7 @@ export const roseData = {
   // Memory Card
   memoryCard: {
     name: 'During Military Academy Training',
-    image: 'Rosecard', // Memory card image identifier
+    image: 'DuringMilitaryAcademyTraining.png',
     stats: {
       hp: '4,200',
       attack: '650',

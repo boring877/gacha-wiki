@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Sand Storm",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-30 DOWN for 8 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-30 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -18 DOWN for 8 seconds and Physical Critical Damage-30 DOWN for 8 seconds",
+      "description": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -18 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
       "target": "Back Enemy",
       "castTime": 1.08,
       "damageScaling": "140% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Sand Vortex",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds and Block-9 DOWN for 8 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds and Block-9 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds and Block-18 DOWN for 8 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 8 seconds and Block-9 DOWN for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 8 seconds and Block-9 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -14%DOWN for 8 seconds and Block-18 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "120% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sand Storm",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-30 DOWN for 8 seconds",
-      "effect": "140% + 80",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Critical Damage- Lv3",
-          "value": -11,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Sand Vortex",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds and Block-9 DOWN for 8 seconds",
-      "effect": "120% + 60",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Sunshine Shooter",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 4 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Blind for 8 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Sunshine Shooter",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Blind for 8 seconds",
@@ -256,6 +203,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Sunshine Shooter",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Blind for 9 seconds",
+      "effect": "1470% + 1050",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Sunshine Shooter",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 6 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Blind for 9 seconds",
+      "effect": "1530% + 1130",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Sunshine Shooter",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 6 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Blind for 10 seconds",
+      "effect": "1590% + 1200",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 10
         }
       ]
     }

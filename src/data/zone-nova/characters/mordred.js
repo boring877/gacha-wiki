@@ -4,7 +4,7 @@
 export const mordredData = {
   // Basic Character Information
   name: 'Mordred',
-  image: 'Mordred', // Character image identifier
+  image: 'Mordred.png',
   rarity: 'SR',
   element: 'Fire',
   class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

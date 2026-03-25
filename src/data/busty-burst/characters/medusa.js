@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Aauyaaahhh!",
       "icon": "skill001/skill0018",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 10 seconds and Action Speed UP for 10 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -162,46 +172,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I’m going to curse you～!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Paralysis for 6 seconds",
-      "effect": "90% + 50",
+      "name": "All of you, turn to stone～～～!",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals magic damage to all enemies and inflicts Petrify for 3 seconds",
+      "effect": "630% + 499",
       "buffEffects": [
         {
-          "name": "Paralysis",
+          "name": "Petrify",
           "value": 0,
           "type": "unknown",
-          "duration": 6
+          "duration": 3
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Aauyaaahhh!",
-      "icon": "skill001/skill0018",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "effect": "300% + 0",
+      "name": "All of you, turn to stone～～～!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Petrify for 3 seconds",
+      "effect": "765% + 583",
       "buffEffects": [
         {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
+          "name": "Petrify",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     },
     {
       "rank": 4,
       "name": "All of you, turn to stone～～～!",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals magic damage to all enemies and inflicts Petrify for 3 seconds",
-      "effect": "450% + 398",
+      "effect": "855% + 677",
       "buffEffects": [
         {
           "name": "Petrify",
@@ -214,9 +218,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "All of you, turn to stone～～～!",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals magic damage to all enemies and inflicts Petrify for 3 seconds",
-      "effect": "630% + 499",
+      "effect": "900% + 752",
       "buffEffects": [
         {
           "name": "Petrify",

@@ -17,9 +17,11 @@ import { morganLeFayData } from '../../../../data/zone-nova/characters/morgan-le
 import { guinevereData } from '../../../../data/zone-nova/characters/guinevere.js';
 import { artemisData } from '../../../../data/zone-nova/characters/artemis.js';
 import { freyeData } from '../../../../data/zone-nova/characters/freye.js';
+import gluttonyBeelzebubData from '../../../../data/zone-nova/characters/gluttony-beelzebub.js';
 import { ibarakiDojiData } from '../../../../data/zone-nova/characters/ibaraki-doji.js';
 import { sigurdData } from '../../../../data/zone-nova/characters/sigurd.js';
 import { jorogumoData } from '../../../../data/zone-nova/characters/jorogumo.js';
+import lustAsmodeusData from '../../../../data/zone-nova/characters/lust-asmodeus.js';
 import { prideLuciferData } from '../../../../data/zone-nova/characters/pride-lucifer.js';
 import { wrathSamaelData } from '../../../../data/zone-nova/characters/wrath-samael.js';
 
@@ -93,12 +95,16 @@ const characterData =
                     ? artemisData
                     : finalCharacter.slug === 'freye'
                       ? freyeData
+                      : finalCharacter.slug === 'gluttony-beelzebub'
+                        ? gluttonyBeelzebubData
                       : finalCharacter.slug === 'ibaraki-doji'
                         ? ibarakiDojiData
                         : finalCharacter.slug === 'sigurd'
                           ? sigurdData
                           : finalCharacter.slug === 'jorogumo'
                             ? jorogumoData
+                            : finalCharacter.slug === 'lust-asmodeus'
+                              ? lustAsmodeusData
                             : finalCharacter.slug === 'pride-lucifer'
                               ? prideLuciferData
                               : finalCharacter.slug === 'wrath-samael'
@@ -127,6 +133,8 @@ const memoryCardUrls = {
   'Shared Bath Time': '/guides/zone-nova/memories/shared-bath-time/',
   'Simple Birdcage': '/guides/zone-nova/memories/simple-birdcage/',
   'In the Cafe, Sneaking a Bite': '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
+  'King of Lust': '/guides/zone-nova/memories/king-of-lust/',
+  'Nutrition Studies': '/guides/zone-nova/memories/nutrition-studies/',
   'Secret Garden': '/guides/zone-nova/memories/secret-garden/',
 
   'Hera Memory': '/guides/zone-nova/memories/black-face-ugly-person/',

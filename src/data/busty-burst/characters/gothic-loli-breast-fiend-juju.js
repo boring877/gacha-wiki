@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Oh no, not like this...!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -220 DOWN for 12 seconds and Block-23 DOWN for 12 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 12 seconds and Block-23 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "125% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Excuse me♪",
-      "icon": "skill001/skill0013",
-      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Critical Damage 60 UP to self for 6 seconds",
-      "effect": "320% + 350",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv5",
-          "value": 60,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Oh no, not like this...!",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
-      "effect": "125% + 200",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "A world shining with love",
-      "icon": "skill001/skill0020_1",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds , all allies10 Accuracy UP(LV 1), 10 Damage UP(LV 1)",
-      "effect": "500% + 800",
-      "buffEffects": [
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Damage + Ultimate Lv1",
-          "value": 5,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_2",
       "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds , all allies10 Accuracy UP(LV 2), 10 Damage UP(LV 2)",
@@ -260,6 +207,87 @@ export const skills = {
         {
           "name": "Damage + Ultimate Lv2",
           "value": 8,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "A world shining with love",
+      "icon": "skill001/skill0020_3",
+      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds , all allies10 Accuracy UP(LV 3), 10 Damage UP(LV 3)",
+      "effect": "850% + 1350",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv3",
+          "value": 11,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "A world shining with love",
+      "icon": "skill001/skill0020_4",
+      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds , all allies10 Accuracy UP(LV 4), 10 Damage UP(LV 4)",
+      "effect": "950% + 1600",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv4",
+          "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "A world shining with love",
+      "icon": "skill001/skill0020_5",
+      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds , all allies10 Accuracy UP(LV 5), 10 Damage UP(LV 5)",
+      "effect": "1000% + 1800",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv5",
+          "value": 15,
           "type": "percent",
           "duration": 10
         }

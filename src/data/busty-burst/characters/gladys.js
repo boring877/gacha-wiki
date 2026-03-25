@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Armor-Breaker Slash",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack +35 UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack +35 UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack +665 UP to self for 6 seconds",
+      "description": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack 18%+35 UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack 18%+35 UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack 18%+665 UP to self for 6 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 1.08,
       "damageScaling": "276% ATK",
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Charging Slash",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -40 DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -40 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -220 DOWN for 10 seconds",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%-40 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%-40 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%-220 DOWN for 10 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 1.08,
       "damageScaling": "220.00000000000003% ATK",
@@ -149,48 +159,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Armor-Breaker Slash",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the enemy with the lowest HP and applies Physical Attack +35 UP to self for 6 seconds",
-      "effect": "276% + 105",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
+      "name": "Valkenheim-Style Ultimate: Samidare Thrust",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the enemy with the lowest HP and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1270% + 934",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Charging Slash",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -40 DOWN for 10 seconds",
-      "effect": "220% + 83",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
+      "name": "Valkenheim-Style Ultimate: Samidare Thrust",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the enemy with the lowest HP and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1430% + 1026",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Valkenheim-Style Ultimate: Samidare Thrust",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the enemy with the lowest HP and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1060% + 820",
+      "effect": "1537% + 1187",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Valkenheim-Style Ultimate: Samidare Thrust",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the enemy with the lowest HP and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1270% + 934",
+      "effect": "1643% + 1267",
       "buffEffects": []
     }
   ],

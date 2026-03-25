@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Mmh~ haa~",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Magic Damage UP(+600, 4 hit(s)) to self for 15 seconds and Magic Attack +40 UP for 12 seconds and silences all enemies for 1.5 seconds",
-      "descriptionLv1": "Applies Hit-Based Magic Damage UP(+600, 4 hit(s)) to self for 15 seconds and Magic Attack +40 UP for 12 seconds and silences all enemies for 1.5 seconds",
-      "descriptionLv90": "Applies Hit-Based Magic Damage UP(+600, 585004 hit(s)) to self for 15 seconds and Magic Attack +40 UP for 12 seconds and silences all enemies for 1.5 seconds",
+      "description": "Applies Hit-Based Magic Damage UP(60%+600, 4 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
+      "descriptionLv1": "Applies Hit-Based Magic Damage UP(60%+600, 4 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
+      "descriptionLv90": "Applies Hit-Based Magic Damage UP(60%+600, 585004 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
       "target": "Self",
       "castTime": 0.8,
       "damageScaling": null,
@@ -184,75 +194,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "You’re so shameless",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Petrify for 2 seconds and Block-13 DOWN for 12 seconds",
-      "effect": "120% + 100",
-      "buffEffects": [
-        {
-          "name": "Petrify",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Mmh~ haa~",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Magic Damage UP(+600, 4 hit(s)) to self for 15 seconds and Magic Attack +40 UP for 12 seconds and silences all enemies for 1.5 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Magic Damage + LvMax",
-          "value": 4,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "You all should try it too!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 1) for 8 seconds and applies Action Speed UP(LV 1) to self for 10 seconds",
-      "effect": "950% + 800",
-      "buffEffects": [
-        {
-          "name": "Magic Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 25,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "You all should try it too!",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 2) for 8 seconds and applies Action Speed UP(LV 2) to self for 10 seconds",
@@ -267,6 +208,69 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 28,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "You all should try it too!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 3) for 8 seconds and applies Action Speed UP(LV 3) to self for 10 seconds",
+      "effect": "1270% + 1150",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 31,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "You all should try it too!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 4) for 8 seconds and applies Action Speed UP(LV 4) to self for 10 seconds",
+      "effect": "1350% + 1250",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 33,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "You all should try it too!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 5) for 8 seconds and applies Action Speed UP(LV 5) to self for 10 seconds",
+      "effect": "1450% + 1300",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 35,
           "type": "flat",
           "duration": 10
         }

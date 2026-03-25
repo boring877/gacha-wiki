@@ -78,15 +78,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Weakness Exploit",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK UP to self for 6 seconds",
+      "description": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.78,
       "damageScaling": "270% ATK",
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Analysis",
       "icon": "skill001/skill0011",
-      "description": "Applies Wind Type Defense DOWN to the farthest enemy for 8 seconds and Block-11 DOWN for 8 seconds",
-      "descriptionLv1": "Applies Wind Type Defense DOWN to the farthest enemy for 8 seconds and Block-11 DOWN for 8 seconds",
-      "descriptionLv90": "Applies Wind Type Defense DOWN to the farthest enemy for 8 seconds and Block-23 DOWN for 8 seconds",
+      "description": "Applies Wind Type Defense -18%DOWN to the farthest enemy for 8 seconds and Block-11 DOWN for 8 seconds",
+      "descriptionLv1": "Applies Wind Type Defense -18%DOWN to the farthest enemy for 8 seconds and Block-11 DOWN for 8 seconds",
+      "descriptionLv90": "Applies Wind Type Defense -18%DOWN to the farthest enemy for 8 seconds and Block-23 DOWN for 8 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.78,
       "damageScaling": null,
@@ -168,63 +178,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Weakness Exploit",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK UP to self for 6 seconds",
-      "effect": "270% + 150",
-      "buffEffects": [
-        {
-          "name": "Wind Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Analysis",
-      "icon": "skill001/skill0011",
-      "description": "Applies Wind Type Defense DOWN to the farthest enemy for 8 seconds and Block-11 DOWN for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Wind Type Defense - Lv4",
-          "value": -18,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Stardust Radiance of Seven Colors",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the farthest enemy and applies Wind Type ATK UP(LV 1) to self for 6 seconds and Hit-Based Damage UP(LV 1) for 10 seconds when the ultimate is activated",
-      "effect": "400% + 1200",
-      "buffEffects": [
-        {
-          "name": "Wind Type ATK + Ultimate Lv1",
-          "value": 25,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 80,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Stardust Radiance of Seven Colors",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the farthest enemy and applies Wind Type ATK UP(LV 2) to self for 6 seconds and Hit-Based Damage UP(LV 2) for 10 seconds when the ultimate is activated",
@@ -239,6 +192,69 @@ export const skills = {
         {
           "name": "Hit-Based Damage + Ultimate Lv2",
           "value": 100,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Stardust Radiance of Seven Colors",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the farthest enemy and applies Wind Type ATK UP(LV 3) to self for 6 seconds and Hit-Based Damage UP(LV 3) for 10 seconds when the ultimate is activated",
+      "effect": "480% + 1900",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 120,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Stardust Radiance of Seven Colors",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the farthest enemy and applies Wind Type ATK UP(LV 4) to self for 6 seconds and Hit-Based Damage UP(LV 4) for 10 seconds when the ultimate is activated",
+      "effect": "509% + 2200",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 130,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Stardust Radiance of Seven Colors",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the farthest enemy and applies Wind Type ATK UP(LV 5) to self for 6 seconds and Hit-Based Damage UP(LV 5) for 10 seconds when the ultimate is activated",
+      "effect": "535% + 2500",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv5",
+          "value": 50,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 140,
           "type": "percent",
           "duration": 10
         }

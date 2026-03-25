@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Sword Aura Release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.81,
       "damageScaling": null,
@@ -153,63 +163,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Rathbrink Style - Flourishing Sun",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "390% + 200",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Sword Aura Release",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1300% + 700",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy, inflict6s Silence for and Physical Defense DOWN(LV 2) for 10 seconds",
@@ -224,7 +184,70 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Silence for and Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1760% + 1050",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy, inflict7s Silence for and Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1900% + 1100",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy, inflict7s Silence for and Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "2039% + 1200",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

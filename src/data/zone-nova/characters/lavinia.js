@@ -4,7 +4,7 @@
 export const laviniaData = {
   // Basic Character Information
   name: 'Lavinia',
-  image: 'Lavinia',
+  image: 'Lavinia.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

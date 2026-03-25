@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -62,9 +72,9 @@ export const skills = {
       "slot": 3,
       "name": "Instinct",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +30 UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +480 UP to self for 12 seconds and Block 18 UP for 12 seconds",
+      "description": "Applies Physical Attack 15%+30 UP to self for 12 seconds and Block 9 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 15%+30 UP to self for 12 seconds and Block 9 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to self for 12 seconds and Block 18 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -106,47 +116,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Double Strike",
-      "icon": "skill001/skill0002",
+      "name": "Sword Slash",
+      "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, guaranteed to hit and guaranteed to crit",
-      "effect": "180% + 150",
+      "effect": "840% + 500",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Instinct",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
+      "name": "Sword Slash",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed to hit and guaranteed to crit",
+      "effect": "950% + 550",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Sword Slash",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy, guaranteed to hit and guaranteed to crit",
-      "effect": "700% + 400",
+      "effect": "1030% + 580",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Sword Slash",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy, guaranteed to hit and guaranteed to crit",
-      "effect": "840% + 500",
+      "effect": "1100% + 600",
       "buffEffects": []
     }
   ],

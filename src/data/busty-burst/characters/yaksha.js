@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Oni Heart Drain",
       "icon": "skill001/skill0019",
-      "description": "apply to self20 HP - per second (Cannot be Cleansed) and inflicts Physical Attack +50 UP for 20 seconds and Action Speed UP for 20 seconds",
-      "descriptionLv1": "apply to self20 HP - per second (Cannot be Cleansed) and inflicts Physical Attack +50 UP for 20 seconds and Action Speed UP for 20 seconds",
-      "descriptionLv90": "apply to self20 HP - per second (Cannot be Cleansed) and inflicts Physical Attack +950 UP for 20 seconds and Action Speed UP for 20 seconds",
+      "description": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
+      "descriptionLv1": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
+      "descriptionLv90": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+950 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
       "target": "Self",
       "castTime": 1.45,
       "damageScaling": null,
@@ -162,7 +172,7 @@ export const skills = {
         {
           "name": "Physical Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -175,69 +185,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Fly Buzz",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Hit-Based Shield(200) for 10 seconds",
-      "effect": "320% + 500",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield",
-          "value": 200,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Oni Heart Drain",
-      "icon": "skill001/skill0019",
-      "description": "apply to self20 HP - per second (Cannot be Cleansed) and inflicts Physical Attack +50 UP for 20 seconds and Action Speed UP for 20 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + LvMax",
-          "value": 50,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "HP Degeneration",
-          "value": -5,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Night after Night Falling Cherry Blossoms",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , deal 6%damagerestore own HPHP",
-      "effect": "900% + 800",
-      "buffEffects": [
-        {
-          "name": "Physical Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Night after Night Falling Cherry Blossoms",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , deal 6%damagerestore own HPHP",
@@ -246,12 +193,75 @@ export const skills = {
         {
           "name": "Physical Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Block- Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Night after Night Falling Cherry Blossoms",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , deal 6%damagerestore own HPHP",
+      "effect": "1215% + 1150",
+      "buffEffects": [
+        {
+          "name": "Physical Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Night after Night Falling Cherry Blossoms",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , deal 6%damagerestore own HPHP",
+      "effect": "1310% + 1300",
+      "buffEffects": [
+        {
+          "name": "Physical Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Night after Night Falling Cherry Blossoms",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , deal 6%damagerestore own HPHP",
+      "effect": "1400% + 1400",
+      "buffEffects": [
+        {
+          "name": "Physical Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

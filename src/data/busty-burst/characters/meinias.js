@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Shadow Dance",
       "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 12 seconds and Block 11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 12 seconds and Block 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 12 seconds and Block 23 UP for 12 seconds",
+      "description": "Applies Physical Attack 18%+35 UP to self for 12 seconds and Block 11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 12 seconds and Block 11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 12 seconds and Block 23 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Oboro Night",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Accuracy -11 DOWN for 8 seconds and Block-11 DOWN for 8 seconds",
-      "effect": "100% + 40",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Shadow Dance",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +35 UP to self for 12 seconds and Block 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Limit Arrow",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and when activating the Ultimate, applies Hit-Based Damage UP(LV 1) to self for 10 seconds",
-      "effect": "500% + 1400",
-      "buffEffects": [
-        {
-          "name": "Damage + Ultimate Lv1",
-          "value": 100,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Limit Arrow",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and when activating the Ultimate, applies Hit-Based Damage UP(LV 2) to self for 10 seconds",
@@ -236,6 +189,51 @@ export const skills = {
         {
           "name": "Damage + Ultimate Lv2",
           "value": 130,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Limit Arrow",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and when activating the Ultimate, applies Hit-Based Damage UP(LV 3) to self for 10 seconds",
+      "effect": "570% + 2400",
+      "buffEffects": [
+        {
+          "name": "Damage + Ultimate Lv3",
+          "value": 160,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Limit Arrow",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and when activating the Ultimate, applies Hit-Based Damage UP(LV 4) to self for 10 seconds",
+      "effect": "600% + 2700",
+      "buffEffects": [
+        {
+          "name": "Damage + Ultimate Lv4",
+          "value": 180,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Limit Arrow",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and when activating the Ultimate, applies Hit-Based Damage UP(LV 5) to self for 10 seconds",
+      "effect": "630% + 3000",
+      "buffEffects": [
+        {
+          "name": "Damage + Ultimate Lv5",
+          "value": 200,
           "type": "percent",
           "duration": 10
         }

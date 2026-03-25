@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Rocket Jump!",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Magic Attack +35 UP for 10 seconds , 10 Action Speed UP",
-      "descriptionLv1": "Gain MP Recovery 100 and Magic Attack +35 UP for 10 seconds , 10 Action Speed UP",
-      "descriptionLv90": "Gain MP Recovery 100 and Magic Attack +665 UP for 10 seconds , 10 Action Speed UP",
+      "description": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds , 10 Action Speed 20%UP",
+      "descriptionLv1": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds , 10 Action Speed 20%UP",
+      "descriptionLv90": "Gain MP Recovery 100 and Magic Attack 18%+665 UP for 10 seconds , 10 Action Speed 20%UP",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -178,82 +188,13 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Spin around!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds , 1.5s Stun for",
-      "effect": "110% + 200",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Rocket Jump!",
-      "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Magic Attack +35 UP for 10 seconds , 10 Action Speed UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Recovery",
-          "value": 100,
-          "type": "percent",
-          "duration": 0
-        },
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Dolphin - Formation Attack!",
-      "icon": "skill001/skill0006_1",
-      "description": "6 nearest enemies dealmagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Magic Defense DOWN(LV 1) for 10 seconds",
-      "effect": "250% + 450",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Dolphin - Formation Attack!",
       "icon": "skill001/skill0006_2",
       "description": "6 nearest enemies dealmagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Magic Defense DOWN(LV 2) for 10 seconds",
@@ -268,7 +209,70 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -20,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Dolphin - Formation Attack!",
+      "icon": "skill001/skill0006_3",
+      "description": "6 nearest enemies dealmagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Magic Defense DOWN(LV 3) for 10 seconds",
+      "effect": "340% + 700",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
           "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Dolphin - Formation Attack!",
+      "icon": "skill001/skill0006_4",
+      "description": "6 nearest enemies dealmagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Magic Defense DOWN(LV 4) for 10 seconds",
+      "effect": "375% + 800",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -28,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Dolphin - Formation Attack!",
+      "icon": "skill001/skill0006_5",
+      "description": "6 nearest enemies dealmagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Magic Defense DOWN(LV 5) for 10 seconds",
+      "effect": "400% + 900",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         }
       ]

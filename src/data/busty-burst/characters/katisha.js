@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -160,56 +170,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Don't bother resisting!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "100% + 100",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "I'm not naive",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Block-9 DOWN on the 3 nearest enemies for 7 seconds and Accuracy -9 DOWN for 7 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Virne Sacred Binding - Chain Shackles",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 1) for 10 seconds, 3s Silence for",
-      "effect": "1019% + 800",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Virne Sacred Binding - Chain Shackles",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 2) for 10 seconds, 4s Silence for",
@@ -226,6 +186,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Virne Sacred Binding - Chain Shackles",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 3) for 10 seconds, 4s Silence for",
+      "effect": "1380% + 1100",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Virne Sacred Binding - Chain Shackles",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 4) for 10 seconds, 5s Silence for",
+      "effect": "1470% + 1200",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Virne Sacred Binding - Chain Shackles",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 5) for 10 seconds, 5s Silence for",
+      "effect": "1530% + 1300",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
         }
       ]
     }

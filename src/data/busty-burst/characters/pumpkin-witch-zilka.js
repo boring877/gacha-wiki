@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Burn!",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --80 per second) for 15 seconds and Magic Defense-30 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --80 per second) for 15 seconds and Magic Defense-30 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1070 per second) for 15 seconds and Magic Defense-210 DOWN for 6 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --80 per second) for 15 seconds and Magic Defense-18%-30 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --80 per second) for 15 seconds and Magic Defense-18%-30 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1070 per second) for 15 seconds and Magic Defense-18%-210 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.4,
       "damageScaling": "350% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Gao~... is that okay?",
       "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +30 UP for 10 seconds",
-      "descriptionLv1": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +30 UP for 10 seconds",
-      "descriptionLv90": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +480 UP for 10 seconds",
+      "description": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 15%+30 UP for 10 seconds",
+      "descriptionLv1": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 15%+30 UP for 10 seconds",
+      "descriptionLv90": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 15%+480 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.45,
       "damageScaling": null,
@@ -172,63 +182,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Burn!",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --80 per second) for 15 seconds and Magic Defense-30 DOWN for 6 seconds",
-      "effect": "350% + 300",
-      "buffEffects": [
-        {
-          "name": "Burn Lv3",
-          "value": -80,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Gao~... is that okay?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to self for 10 seconds and Magic Attack +30 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Fire Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The big one is coming!!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1200% + 700",
-      "buffEffects": [
-        {
-          "name": "Fire Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The big one is coming!!",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds",
@@ -237,6 +190,51 @@ export const skills = {
         {
           "name": "Fire Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The big one is coming!!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1620% + 950",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The big one is coming!!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1739% + 1100",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The big one is coming!!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1800% + 1200",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

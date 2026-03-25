@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Damn, this power...",
       "icon": "skill001/skill0019",
-      "description": "self dealHP 50% damage and inflicts Physical Attack +40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "self dealHP 50% damage and inflicts Physical Attack +40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "self dealHP 50% damage and inflicts Physical Attack +850 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
+      "description": "self dealHP 50% damage and inflicts Physical Attack 20%+40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
+      "descriptionLv1": "self dealHP 50% damage and inflicts Physical Attack 20%+40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
+      "descriptionLv90": "self dealHP 50% damage and inflicts Physical Attack 20%+850 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -154,7 +164,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -173,68 +183,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Blade Storm",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "350% + 300",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Damn, this power...",
-      "icon": "skill001/skill0019",
-      "description": "self dealHP 50% damage and inflicts Physical Attack +40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds , 4 MP Regeneration 50",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "MP Regeneration + LvMax",
-          "value": 50,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Stay away from me!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds , Ultimate activation beforeapply to self10 Magic Type ATK UP(LV 1)",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Stay away from me!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds , Ultimate activation beforeapply to self10 Magic Type ATK UP(LV 2)",
@@ -243,7 +191,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -255,6 +203,87 @@ export const skills = {
         {
           "name": "Magic Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Stay away from me!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds , Ultimate activation beforeapply to self10 Magic Type ATK UP(LV 3)",
+      "effect": "1620% + 1500",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Stay away from me!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds , Ultimate activation beforeapply to self10 Magic Type ATK UP(LV 4)",
+      "effect": "1739% + 1600",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Stay away from me!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds , Ultimate activation beforeapply to self10 Magic Type ATK UP(LV 5)",
+      "effect": "1800% + 1700",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

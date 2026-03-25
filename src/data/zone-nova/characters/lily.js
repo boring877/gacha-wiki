@@ -4,7 +4,7 @@
 export const lilyData = {
   // Basic Character Information
   name: 'Lily',
-  image: 'Lily', // Character image identifier
+  image: 'Lily.png',
   rarity: 'SSR',
   element: 'Ice', // Water element maps to Ice in Zone Nova
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -86,7 +86,7 @@ export const lilyData = {
   // Memory Card
   memoryCard: {
     name: 'In the Cafe, Sneaking a Bite',
-    image: 'Lilycard',
+    image: 'InTheCafeSneakingABite.png',
     stats: {
       hp: '6,600',
       attack: '480',

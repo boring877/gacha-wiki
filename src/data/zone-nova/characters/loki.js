@@ -4,7 +4,7 @@
 export const lokiData = {
   // Basic Character Information
   name: 'Loki',
-  image: 'Loki', // Character image identifier
+  image: 'Loki.png', // Character image identifier
   rarity: 'SSR',
   element: 'Chaos',
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Almandine of Refining Fire",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -156,7 +166,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -169,63 +179,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Radiant Pyrope",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
-      "effect": "105% + 200",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Almandine of Refining Fire",
-      "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Mark of Fire",
-          "value": 3,
-          "type": "percent",
-          "duration": 999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
-      "icon": "skill001/skill0006_1",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
-      "effect": "229% + 300",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_2",
       "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
@@ -234,12 +187,75 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "icon": "skill001/skill0006_3",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "effect": "300% + 500",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "icon": "skill001/skill0006_4",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "effect": "320% + 550",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "icon": "skill001/skill0006_5",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "effect": "340% + 600",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

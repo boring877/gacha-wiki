@@ -73,7 +73,7 @@ export const heraBuild = {
       effect:
         "Sigurd's exclusive memory card. Provides crit rate and massive ultimate damage boost, great for Hera's Enhanced Ultimate burst.",
       characterSpecific: false,
-      memoryImage: 'Sigurdcard.jpg',
+      memoryImage: 'IAmYourChristmasPresent.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
         'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',

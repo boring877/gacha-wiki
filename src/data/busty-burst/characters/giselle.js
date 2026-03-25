@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Piercing Strike",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -220 DOWN for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "100% ATK",
@@ -164,70 +174,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 15,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Piercing Strike",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 8 seconds",
-      "effect": "100% + 80",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Knight’s Pride",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -9 DOWN on all enemies for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Hurricane Charge",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 8 seconds and applies Physical Attack UP(LV 1) to self for 8 seconds",
-      "effect": "280% + 300",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 15,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 8 seconds and applies Physical Attack UP(LV 2) to self for 8 seconds",
@@ -242,7 +195,70 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 20,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Hurricane Charge",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 8 seconds and applies Physical Attack UP(LV 3) to self for 8 seconds",
+      "effect": "350% + 450",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -19,
           "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 24,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Hurricane Charge",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 8 seconds and applies Physical Attack UP(LV 4) to self for 8 seconds",
+      "effect": "380% + 500",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -22,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 27,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Hurricane Charge",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 8 seconds and applies Physical Attack UP(LV 5) to self for 8 seconds",
+      "effect": "400% + 550",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 30,
+          "type": "percent",
           "duration": 8
         }
       ]

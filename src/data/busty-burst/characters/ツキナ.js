@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Do your best!",
       "icon": "skill001/skill0019",
-      "description": "frontmost allies310 Action Speed UP and Hit-Based Damage UP(+350, 3 hit(s)) for 10 seconds",
-      "descriptionLv1": "frontmost allies310 Action Speed UP and Hit-Based Damage UP(+350, 3 hit(s)) for 10 seconds",
-      "descriptionLv90": "frontmost allies310 Action Speed UP and Hit-Based Damage UP(+350, 3 hit(s)) for 10 seconds",
+      "description": "frontmost allies310 Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
+      "descriptionLv1": "frontmost allies310 Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
+      "descriptionLv90": "frontmost allies310 Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "I'll heal you!",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance UP for 5 seconds",
-      "descriptionLv1": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance UP for 5 seconds",
-      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance UP for 5 seconds",
+      "description": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance 30%UP for 5 seconds",
+      "descriptionLv1": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance 30%UP for 5 seconds",
+      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance 30%UP for 5 seconds",
       "target": "Lowest HP Ally",
       "castTime": 1.3,
       "damageScaling": "3000% ATK",
@@ -168,63 +178,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Do your best!",
-      "icon": "skill001/skill0019",
-      "description": "frontmost allies310 Action Speed UP and Hit-Based Damage UP(+350, 3 hit(s)) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Damage + Lv3",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I'll heal you!",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP and inflicts Debuff Resistance UP for 5 seconds",
-      "effect": "3000% + 1000",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "<ruby=></ruby>",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Magic Healing Shield (LV 1) for 10 seconds and Hit-Based Physical Healing Shield (LV 1) for 10 seconds",
-      "effect": "2000% + 1000",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Hit-Based Magic Healing Shield (LV 2) for 10 seconds and Hit-Based Physical Healing Shield (LV 2) for 10 seconds",
@@ -239,6 +192,69 @@ export const skills = {
         {
           "name": "Hit-Based Physical Healing Shield Ultimate Lv2",
           "value": 25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Magic Healing Shield (LV 3) for 10 seconds and Hit-Based Physical Healing Shield (LV 3) for 10 seconds",
+      "effect": "2500% + 1300",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv3",
+          "value": 30,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv3",
+          "value": 30,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Magic Healing Shield (LV 4) for 10 seconds and Hit-Based Physical Healing Shield (LV 4) for 10 seconds",
+      "effect": "2700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv4",
+          "value": 35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv4",
+          "value": 35,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Magic Healing Shield (LV 5) for 10 seconds and Hit-Based Physical Healing Shield (LV 5) for 10 seconds",
+      "effect": "2800% + 1500",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv5",
+          "value": 40,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv5",
+          "value": 40,
           "type": "percent",
           "duration": 10
         }

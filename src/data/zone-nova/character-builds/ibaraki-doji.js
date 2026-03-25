@@ -67,7 +67,7 @@ export const ibarakiDojiBuild = {
       effect:
         'SR memory card that reduces target energy regen, synergizing with her energy drain from Arrow of the Curse',
       characterSpecific: false,
-      memoryImage: 'Belphegarcard.jpg',
+      memoryImage: 'SleepyGuardian.png',
       memoryStats: { hp: '5,200', attack: '420', defense: '380' },
       description: 'Ultimate skill can reduce targets energy regen by 18%.',
       note: 'Stacks with her Skill energy drain (-35.8%) for strong energy denial.',

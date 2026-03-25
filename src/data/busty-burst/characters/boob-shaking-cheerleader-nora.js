@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Spinning Attack",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "110.00000000000001% ATK",
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "Hurdle Kick",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-35 DOWN for 8 seconds , 8 Magic Critical Damage-35 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-35 DOWN for 8 seconds , 8 Magic Critical Damage-35 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-215 DOWN for 8 seconds , 8 Magic Critical Damage-35 DOWN",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-215 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": "350% ATK",
@@ -193,81 +203,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Spinning Attack",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "effect": "110% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Hurdle Kick",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-35 DOWN for 8 seconds , 8 Magic Critical Damage-35 DOWN",
-      "effect": "350% + 300",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Physical Critical Damage- Lv4",
-          "value": -13,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Magic Critical Damage- Lv4",
-          "value": -35,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "All in．layout drop",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds , all allies10 Mind Type ATK UP(LV 1), 10 Accuracy UP(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds , all allies10 Mind Type ATK UP(LV 2), 10 Accuracy UP(LV 2)",
@@ -288,6 +223,87 @@ export const skills = {
         {
           "name": "Accuracy + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "All in．layout drop",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds , all allies10 Mind Type ATK UP(LV 3), 10 Accuracy UP(LV 3)",
+      "effect": "520% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "All in．layout drop",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds , all allies10 Mind Type ATK UP(LV 4), 10 Accuracy UP(LV 4)",
+      "effect": "560% + 1050",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "All in．layout drop",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds , all allies10 Mind Type ATK UP(LV 5), 10 Accuracy UP(LV 5)",
+      "effect": "580% + 1200",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

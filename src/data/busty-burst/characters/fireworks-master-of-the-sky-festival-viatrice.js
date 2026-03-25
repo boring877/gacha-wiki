@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Snap snap snap~!!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds, 1.5s Stun for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds, 1.5s Stun for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-210 DOWN for 6 seconds, 1.5s Stun for",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s Stun for",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s Stun for",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds, 1.5s Stun for",
       "target": "Nearest Enemy",
       "castTime": 1.32,
       "damageScaling": "80% ATK",
@@ -159,56 +169,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Pop it out!",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit",
-      "effect": "300% + 250",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Snap snap snap~!!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds, 1.5s Stun for",
-      "effect": "80% + 80",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Fabulous Bang! Bang! Bang~!!",
-      "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "500% + 500",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_2",
       "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds",
@@ -223,6 +183,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Fabulous Bang! Bang! Bang~!!",
+      "icon": "skill001/skill0006_3",
+      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "850% + 900",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Fabulous Bang! Bang! Bang~!!",
+      "icon": "skill001/skill0006_4",
+      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "950% + 1000",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Fabulous Bang! Bang! Bang~!!",
+      "icon": "skill001/skill0006_5",
+      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "1000% + 1100",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

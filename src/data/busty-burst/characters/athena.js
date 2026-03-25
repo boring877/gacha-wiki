@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Poliucos",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 5 seconds and Magic Attack -20 DOWN for 5 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 5 seconds and Magic Attack -20 DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -2000 DOWN for 5 seconds and Magic Attack -20 DOWN for 5 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-2000 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.88,
       "damageScaling": "280% ATK",
@@ -172,46 +182,52 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Poliucos",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -20 DOWN for 5 seconds and Magic Attack -20 DOWN for 5 seconds",
-      "effect": "280% + 90",
+      "name": "Knowledge That Brings Regret to Fools",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals physical damage to the nearest enemy and inflicts Silence for 5 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
+      "effect": "1440% + 1146",
       "buffEffects": [
         {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
           "duration": 5
         },
         {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 5
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Palladion",
-      "icon": "skill001/skill0021",
-      "description": "Restores own HP by and inflicts Block 13 UP for 10 seconds",
-      "effect": "2000% + 416",
+      "name": "Knowledge That Brings Regret to Fools",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Silence for 5 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
+      "effect": "1520% + 1296",
       "buffEffects": [
         {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 10
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
         }
       ]
     },
     {
       "rank": 4,
       "name": "Knowledge That Brings Regret to Fools",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Silence for 5 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
-      "effect": "1200% + 1000",
+      "effect": "1639% + 1385",
       "buffEffects": [
         {
           "name": "Silence",
@@ -230,9 +246,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Knowledge That Brings Regret to Fools",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Silence for 5 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
-      "effect": "1440% + 1146",
+      "effect": "1760% + 1515",
       "buffEffects": [
         {
           "name": "Silence",

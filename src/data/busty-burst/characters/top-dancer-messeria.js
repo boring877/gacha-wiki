@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Tropical Almena",
       "icon": "skill001/skill0018",
-      "description": "Applies Magic Attack +35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to all allies for 10 seconds and Block 18 UP for 10 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to all allies for 10 seconds and Block 18 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -179,69 +189,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Petal Blooming Spin",
-      "icon": "skill001/skill0007",
-      "description": "HP 1 to enemiesphysical damage and inflicts Block-13 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "effect": "300% + 150",
-      "buffEffects": [
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Tropical Almena",
-      "icon": "skill001/skill0018",
-      "description": "Applies Magic Attack +35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Charming Dance",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Magic Critical DamageUP(LV 1) to all allies for 12 seconds and Accuracy UP(LV 1) for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Critical Damage+ Ultimate Lv1",
-          "value": 400,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Charming Dance",
       "icon": "skill001/skill0020_2",
       "description": "Applies Magic Critical DamageUP(LV 2) to all allies for 12 seconds and Accuracy UP(LV 2) for 12 seconds",
@@ -256,6 +203,69 @@ export const skills = {
         {
           "name": "Accuracy + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Charming Dance",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Magic Critical DamageUP(LV 3) to all allies for 12 seconds and Accuracy UP(LV 3) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv3",
+          "value": 580,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Charming Dance",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Magic Critical DamageUP(LV 4) to all allies for 12 seconds and Accuracy UP(LV 4) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv4",
+          "value": 640,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Charming Dance",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Magic Critical DamageUP(LV 5) to all allies for 12 seconds and Accuracy UP(LV 5) for 12 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv5",
+          "value": 700,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 12
         }

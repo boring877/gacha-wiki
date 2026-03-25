@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -153,50 +163,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Be quiet",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "380% + 500",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Don't run...",
-      "icon": "skill001/skill0017",
-      "description": "Applies Accuracy 11 UP to self for 11 seconds and Physical Critical Damage 40 UP for 11 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 11
-        },
-        {
-          "name": "Physical Critical Damage+ Lv3",
-          "value": 40,
-          "type": "percent",
-          "duration": 11
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Are you going to behave now?",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 12 seconds",
-      "effect": "1500% + 600",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Are you going to behave now?",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 12 seconds",
@@ -205,6 +171,51 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -15,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Are you going to behave now?",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 12 seconds",
+      "effect": "1850% + 950",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -19,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Are you going to behave now?",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 12 seconds",
+      "effect": "2000% + 1100",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -22,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Are you going to behave now?",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 12 seconds",
+      "effect": "2100% + 1200",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 12
         }

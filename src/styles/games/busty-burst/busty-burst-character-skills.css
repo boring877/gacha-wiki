@@ -469,7 +469,8 @@
   letter-spacing: 0.05em;
 }
 
-.bb-skill-calc .skill-level-input {
+.bb-skill-calc .skill-level-input,
+.bb-skill-calc .bb-buff-level-input {
   width: 42px;
   padding: 0.15rem 0.25rem;
   background: var(--bb-bg-card);
@@ -483,12 +484,15 @@
 }
 
 .bb-skill-calc .skill-level-input::-webkit-outer-spin-button,
-.bb-skill-calc .skill-level-input::-webkit-inner-spin-button {
+.bb-skill-calc .skill-level-input::-webkit-inner-spin-button,
+.bb-skill-calc .bb-buff-level-input::-webkit-outer-spin-button,
+.bb-skill-calc .bb-buff-level-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.bb-skill-calc .skill-level-input:focus {
+.bb-skill-calc .skill-level-input:focus,
+.bb-skill-calc .bb-buff-level-input:focus {
   outline: none;
   border-color: var(--bb-primary-light);
 }

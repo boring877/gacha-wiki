@@ -5,7 +5,7 @@ export const jorogumoData = {
   // Basic Character Information
   name: 'Jorogumo',
   chineseName: '絡新婦',
-  image: 'Jorogumo', // Use format: charactername (e.g., 'Jorogumo')
+  image: 'Jorogumo.png', // Use format: charactername (e.g., 'Jorogumo')
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

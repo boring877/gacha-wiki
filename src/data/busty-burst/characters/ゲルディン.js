@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "シャルル・イタシュ",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken 20%UP for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken 20%UP for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken 20%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.05,
       "damageScaling": "350% ATK",
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "イル・エ",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Physical Attack +30 UP",
-      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Physical Attack +30 UP",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Physical Attack +480 UP",
+      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds , all allies10 Physical Attack 15%+30 UP",
+      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds , all allies10 Physical Attack 15%+30 UP",
+      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds , all allies10 Physical Attack 15%+480 UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -169,7 +179,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -182,75 +192,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "シャルル・イタシュ",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP for 6 seconds",
-      "effect": "350% + 400",
-      "buffEffects": [
-        {
-          "name": "Wind Type Damage Taken + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "イル・エ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Physical Attack +30 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "An Hadad Ki Ada",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s and Physical Defense DOWN(LV 1) for 10 seconds , on Ultimate activation,self10 Wind Type ATK UP(LV 1)",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Wind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 2) for 10 seconds , on Ultimate activation,self10 Wind Type ATK UP(LV 2)",
@@ -265,12 +206,93 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Wind Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "An Hadad Ki Ada",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 3) for 10 seconds , on Ultimate activation,self10 Wind Type ATK UP(LV 3)",
+      "effect": "1470% + 1150",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "An Hadad Ki Ada",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 4) for 10 seconds , on Ultimate activation,self10 Wind Type ATK UP(LV 4)",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "An Hadad Ki Ada",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 5) for 10 seconds , on Ultimate activation,self10 Wind Type ATK UP(LV 5)",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

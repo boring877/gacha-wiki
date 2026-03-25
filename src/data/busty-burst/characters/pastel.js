@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -179,69 +189,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Abstract Art: Endless Desire",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Burn(HP --150 per second) for 12 seconds and Accuracy -13 DOWN for 8 seconds",
-      "effect": "80% + 70",
-      "buffEffects": [
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Winterscape: Towering Glacier",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 9 UP to all allies for 8 seconds and Healing Shield (270) for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Healing Shield Lv4",
-          "value": 270,
-          "type": "percent",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Painting: Primavera",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Silence for 3 seconds, and inflicts HP RegenerationUP(LV 1) to all allies for 8 seconds",
-      "effect": "250% + 350",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 6,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Painting: Primavera",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to all enemies and inflicts Silence for 4 seconds, and inflicts HP RegenerationUP(LV 2) to all allies for 8 seconds",
@@ -256,6 +203,69 @@ export const skills = {
         {
           "name": "HP Regeneration+ Ultimate Lv2",
           "value": 7,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Painting: Primavera",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to all enemies and inflicts Silence for 4 seconds, and inflicts HP RegenerationUP(LV 3) to all allies for 8 seconds",
+      "effect": "400% + 530",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 8,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Painting: Primavera",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to all enemies and inflicts Silence for 5 seconds, and inflicts HP RegenerationUP(LV 4) to all allies for 8 seconds",
+      "effect": "450% + 600",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 9,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Painting: Primavera",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to all enemies and inflicts Silence for 5 seconds, and inflicts HP RegenerationUP(LV 5) to all allies for 8 seconds",
+      "effect": "500% + 650",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 10,
           "type": "percent",
           "duration": 8
         }

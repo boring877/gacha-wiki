@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "We must make lots of delicious food!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +20 UP to all allies for 9 seconds and Magic Attack +20 UP for 9 seconds",
-      "descriptionLv1": "Applies Physical Attack +20 UP to all allies for 9 seconds and Magic Attack +20 UP for 9 seconds",
-      "descriptionLv90": "Applies Physical Attack +110 UP to all allies for 9 seconds and Magic Attack +110 UP for 9 seconds",
+      "description": "Applies Physical Attack 10%+20 UP to all allies for 9 seconds and Magic Attack 10%+20 UP for 9 seconds",
+      "descriptionLv1": "Applies Physical Attack 10%+20 UP to all allies for 9 seconds and Magic Attack 10%+20 UP for 9 seconds",
+      "descriptionLv90": "Applies Physical Attack 10%+110 UP to all allies for 9 seconds and Magic Attack 10%+110 UP for 9 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "You must be thirsty, right?",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +100 UP to all allies for 9 seconds and Magic Defense+100 UP for 9 seconds",
-      "descriptionLv1": "Applies Physical Defense +100 UP to all allies for 9 seconds and Magic Defense+100 UP for 9 seconds",
-      "descriptionLv90": "Applies Physical Defense +190 UP to all allies for 9 seconds and Magic Defense+190 UP for 9 seconds",
+      "description": "Applies Physical Defense 15%+100 UP to all allies for 9 seconds and Magic Defense 15%+100 UP for 9 seconds",
+      "descriptionLv1": "Applies Physical Defense 15%+100 UP to all allies for 9 seconds and Magic Defense 15%+100 UP for 9 seconds",
+      "descriptionLv90": "Applies Physical Defense 15%+190 UP to all allies for 9 seconds and Magic Defense 15%+190 UP for 9 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "We must make lots of delicious food!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +20 UP to all allies for 9 seconds and Magic Attack +20 UP for 9 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 9
-        },
-        {
-          "name": "Magic Attack + Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 9
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You must be thirsty, right?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +100 UP to all allies for 9 seconds and Magic Defense+100 UP for 9 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv2",
-          "value": 100,
-          "type": "flat",
-          "duration": 9
-        },
-        {
-          "name": "Magic Defense+ Lv2",
-          "value": 100,
-          "type": "flat",
-          "duration": 9
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Delicious Praise Punch",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies MP Regeneration UP(LV 1) to all allies for 5 seconds and Action Speed UP(LV 1) for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Regeneration + Ultimate Lv1",
-          "value": 25,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 8,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Delicious Praise Punch",
       "icon": "skill001/skill0020_2",
       "description": "Applies MP Regeneration UP(LV 2) to all allies for 5 seconds and Action Speed UP(LV 2) for 8 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 10,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Delicious Praise Punch",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies MP Regeneration UP(LV 3) to all allies for 5 seconds and Action Speed UP(LV 3) for 8 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "MP Regeneration + Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 12,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Delicious Praise Punch",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies MP Regeneration UP(LV 4) to all allies for 5 seconds and Action Speed UP(LV 4) for 8 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "MP Regeneration + Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 14,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Delicious Praise Punch",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies MP Regeneration UP(LV 5) to all allies for 5 seconds and Action Speed UP(LV 5) for 8 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "MP Regeneration + Ultimate Lv5",
+          "value": 50,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 15,
           "type": "flat",
           "duration": 8
         }

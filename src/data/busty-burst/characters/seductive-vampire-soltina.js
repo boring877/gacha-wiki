@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "I'll come give you a kiss!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies, applies HP Absorb UP to self for 5 seconds, and absorbs 3% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "130% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Pet me, pet me",
       "icon": "skill001/skill0013",
-      "description": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
-      "descriptionLv1": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
-      "descriptionLv90": "Applies Accuracy UP and Physical Attack UP to self for 10 seconds",
+      "description": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds",
+      "descriptionLv1": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds",
+      "descriptionLv90": "Applies Accuracy 23 UP to self for 10 seconds and Physical Attack 20%+850 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -309,8 +319,8 @@ export const skills = {
     "MDEF": 90
   },
   "skillRotation": {
-    "opening": "Skill3 > Skill2 > Basic > Basic",
-    "loop": "Basic > Skill2 > Basic > Basic > Basic > Skill3 > Skill2 > Basic > Basic"
+    "opening": "Skill3 → Skill2 → Basic → Basic",
+    "loop": "Basic → Skill2 → Basic → Basic → Basic → Skill3 → Skill2 → Basic → Basic"
   },
   "basicAttack": {
     "icon": "skill001/skill0004",

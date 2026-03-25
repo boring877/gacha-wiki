@@ -50,7 +50,7 @@ export const sigurdBuild = {
         "Sigurd's exclusive memory card. Provides massive crit rate and ultimate damage boost, perfectly synergizing with her Enhanced Ultimate burst playstyle. The solo attacker bonus makes her excel as a main DPS.",
       priority: 'Highly Recommended',
       characterSpecific: true,
-      memoryImage: 'Sigurdcard',
+      memoryImage: 'IAmYourChristmasPresent.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       slug: 'sigurd-memory',
       description:
@@ -76,7 +76,7 @@ export const sigurdBuild = {
       effect:
         "Chiya's exclusive SSR memory card - provides massive crit damage and stacking attack power on kills. Great for clearing content.",
       characterSpecific: false,
-      memoryImage: 'Chiyacard.jpg',
+      memoryImage: 'LonelyDarkDeepNight.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       slug: 'lonely-dark-deep-night',
       description:

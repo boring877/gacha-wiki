@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "O God, drive away evil with Your pure light ",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -20 DOWN for 12 seconds and Magic Defense-30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -20 DOWN for 12 seconds and Magic Defense-30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -200 DOWN for 12 seconds and Magic Defense-210 DOWN for 12 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -9%-20 DOWN for 12 seconds and Magic Defense-18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -9%-20 DOWN for 12 seconds and Magic Defense-18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -9%-200 DOWN for 12 seconds and Magic Defense-18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "100% ATK",
@@ -178,68 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "O God, drive away evil with Your pure light ",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Attack -20 DOWN for 12 seconds and Magic Defense-30 DOWN for 12 seconds",
-      "effect": "100% + 40",
-      "buffEffects": [
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "O God, save those possessed by darkness ",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all alliesand removes debuffs and inflicts Block 11 UP for 10 seconds",
-      "effect": "1700% + 370",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent"
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "O God, please guide us with Your light ",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts HP RegenerationUP(LV 1) for 6 seconds and Hit-Based Magic Healing Shield (LV 1) for 20 seconds",
-      "effect": "2700% + 1239",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 6,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "O God, please guide us with Your light ",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts HP RegenerationUP(LV 2) for 6 seconds and Hit-Based Magic Healing Shield (LV 2) for 20 seconds",
@@ -254,6 +202,69 @@ export const skills = {
         {
           "name": "Hit-Based Magic Healing Shield Ultimate Lv2",
           "value": 26,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "O God, please guide us with Your light ",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts HP RegenerationUP(LV 3) for 6 seconds and Hit-Based Magic Healing Shield (LV 3) for 20 seconds",
+      "effect": "3375% + 1606",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 8,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv3",
+          "value": 32,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "O God, please guide us with Your light ",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts HP RegenerationUP(LV 4) for 6 seconds and Hit-Based Magic Healing Shield (LV 4) for 20 seconds",
+      "effect": "3645% + 1783",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 9,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv4",
+          "value": 36,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "O God, please guide us with Your light ",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts HP RegenerationUP(LV 5) for 6 seconds and Hit-Based Magic Healing Shield (LV 5) for 20 seconds",
+      "effect": "3779% + 1960",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 10,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv5",
+          "value": 40,
           "type": "percent",
           "duration": 20
         }

@@ -82,6 +82,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -130,9 +140,9 @@ export const skills = {
       "slot": 3,
       "name": "Adrenaline 1mg",
       "icon": "skill001/skill0021",
-      "description": "restore HP to frontmost allyHP and inflicts HP Regeneration+150 for 8 seconds and Debuff Resistance UP for 8 seconds , 8 Damage Reduction",
-      "descriptionLv1": "restore HP to frontmost allyHP and inflicts HP Regeneration+150 for 8 seconds and Debuff Resistance UP for 8 seconds , 8 Damage Reduction",
-      "descriptionLv90": "restore HP to frontmost allyHP and inflicts HP Regeneration+150 for 8 seconds and Debuff Resistance UP for 8 seconds , 8 Damage Reduction",
+      "description": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
+      "descriptionLv1": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
+      "descriptionLv90": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
       "target": "Frontmost Ally",
       "castTime": 1.58,
       "damageScaling": "3500% ATK",
@@ -193,81 +203,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Ether 125mg",
-      "icon": "skill001/skill0011",
-      "description": "MP dealphysical damageand inflicts Dispel for 2 seconds , 6s Paralysis for, 8 Accuracy -15 DOWN",
-      "effect": "300% + 200",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - LvMax",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Adrenaline 1mg",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to frontmost allyHP and inflicts HP Regeneration+150 for 8 seconds and Debuff Resistance UP for 8 seconds , 8 Damage Reduction",
-      "effect": "3500% + 500",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Debuff Resistance Lv3",
-          "value": 0,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Shield",
-          "value": 25,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Lethal Drug",
-      "icon": "skill001/skill0012_1",
-      "description": "MP dealphysical damage, inflict 5s , 5s Blind for",
-      "effect": "800% + 400",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lethal Drug",
       "icon": "skill001/skill0012_2",
       "description": "MP dealphysical damage, inflict 5s , 6s Blind for",
@@ -284,6 +219,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lethal Drug",
+      "icon": "skill001/skill0012_3",
+      "description": "MP dealphysical damage, inflict6s Silence for, 6s Blind for",
+      "effect": "1080% + 600",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lethal Drug",
+      "icon": "skill001/skill0012_4",
+      "description": "MP dealphysical damage, inflict6s Silence for, 7s Blind for",
+      "effect": "1170% + 650",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lethal Drug",
+      "icon": "skill001/skill0012_5",
+      "description": "MP dealphysical damage, inflict7s Silence for, 7s Blind for",
+      "effect": "1250% + 700",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
         }
       ]
     }

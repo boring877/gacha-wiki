@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Man-Sword Resonance",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK UP",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK UP",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK UP",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
       "target": "Self",
       "castTime": 1.37,
       "damageScaling": null,
@@ -169,76 +179,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Thunder Rush",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage +",
-          "value": 4,
-          "type": "flat",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Man-Sword Resonance",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Holy Type ATK + Lv4",
-          "value": 15,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Heroic Storm",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 1)",
-      "effect": "240% + 300",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 2)",
@@ -253,7 +200,70 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Heroic Storm",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 3)",
+      "effect": "320% + 390",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
           "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Heroic Storm",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 4)",
+      "effect": "350% + 420",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Heroic Storm",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 5)",
+      "effect": "370% + 450",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

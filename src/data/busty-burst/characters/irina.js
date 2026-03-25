@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Punishment for the servants of the demon",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -205 DOWN for 10 seconds",
+      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -11%-205 DOWN for 10 seconds",
       "target": "Highest Phys ATK Enemy",
       "castTime": 1.58,
       "damageScaling": "210% ATK",
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Blessing to the brave",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration+150 for 3 seconds",
-      "descriptionLv1": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration+150 for 3 seconds",
-      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration+150 for 3 seconds",
+      "description": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv1": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
       "target": "Lowest HP Ally",
       "castTime": 1.58,
       "damageScaling": "3000% ATK",
@@ -145,7 +155,7 @@ export const skills = {
       "rank": 1,
       "name": "A helping hand to the devout",
       "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
       "effect": "2600% + 788",
       "buffEffects": [
         {
@@ -158,40 +168,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Punishment for the servants of the demon",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the enemy with the highest Physical ATK and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "effect": "210% + 110",
+      "name": "A helping hand to the devout",
+      "icon": "skill001/skill0022_2",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3000% + 842",
       "buffEffects": [
         {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
+          "name": "Debuff Resistance Lv2",
+          "value": 0,
+          "type": "percent",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Blessing to the brave",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration+150 for 3 seconds",
-      "effect": "3000% + 852",
+      "name": "A helping hand to the devout",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3250% + 910",
       "buffEffects": [
         {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
+          "name": "Debuff Resistance Lv2",
+          "value": 0,
           "type": "percent",
-          "duration": 3
+          "duration": 6
         }
       ]
     },
     {
       "rank": 4,
       "name": "A helping hand to the devout",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
-      "effect": "2600% + 788",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3500% + 962",
       "buffEffects": [
         {
           "name": "Debuff Resistance Lv2",
@@ -204,9 +214,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "A helping hand to the devout",
-      "icon": "skill001/skill0022_2",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 6 seconds",
-      "effect": "3000% + 842",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 6 seconds",
+      "effect": "3640% + 1008",
       "buffEffects": [
         {
           "name": "Debuff Resistance Lv2",

@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Torlild Schuthein",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -15 DOWN for 8 seconds and Magic Attack -15 DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -15 DOWN for 8 seconds and Magic Attack -15 DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -105 DOWN for 8 seconds and Magic Attack -105 DOWN for 8 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -7%-15 DOWN for 8 seconds and Magic Attack -7%-15 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -7%-15 DOWN for 8 seconds and Magic Attack -7%-15 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -7%-105 DOWN for 8 seconds and Magic Attack -7%-105 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "180% ATK",
@@ -81,9 +91,9 @@ export const skills = {
       "slot": 3,
       "name": "Will of the Queen of Nordrant",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 10 seconds and Physical Defense +140 UP for 10 seconds",
-      "descriptionLv1": "Applies Taunt to self for 10 seconds and Physical Defense +140 UP for 10 seconds",
-      "descriptionLv90": "Applies Taunt to self for 10 seconds and Physical Defense +320 UP for 10 seconds",
+      "description": "Applies Taunt to self for 10 seconds and Physical Defense 20%+140 UP for 10 seconds",
+      "descriptionLv1": "Applies Taunt to self for 10 seconds and Physical Defense 20%+140 UP for 10 seconds",
+      "descriptionLv90": "Applies Taunt to self for 10 seconds and Physical Defense 20%+320 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.78,
       "damageScaling": null,
@@ -131,63 +141,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Torlild Schuthein",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -15 DOWN for 8 seconds and Magic Attack -15 DOWN for 8 seconds",
-      "effect": "180% + 90",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv2",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack - Lv2",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Will of the Queen of Nordrant",
-      "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 10 seconds and Physical Defense +140 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 10
-        },
-        {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Supreme Orb that Resonates Across the World",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and applies HP RegenerationUP(LV 1) to self for 3 seconds",
-      "effect": "700% + 527",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Supreme Orb that Resonates Across the World",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and applies HP RegenerationUP(LV 2) to self for 3 seconds",
@@ -196,6 +149,51 @@ export const skills = {
         {
           "name": "HP Regeneration+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Supreme Orb that Resonates Across the World",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and applies HP RegenerationUP(LV 3) to self for 3 seconds",
+      "effect": "955% + 787",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Supreme Orb that Resonates Across the World",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and applies HP RegenerationUP(LV 4) to self for 3 seconds",
+      "effect": "1025% + 863",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Supreme Orb that Resonates Across the World",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and applies HP RegenerationUP(LV 5) to self for 3 seconds",
+      "effect": "1100% + 939",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 3
         }

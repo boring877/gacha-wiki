@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Dark vortex!",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -2000 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
+      "description": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "114.99999999999999% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Grant me an unbreakable soul!",
       "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "descriptionLv1": "Applies Debuff Resistance UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "descriptionLv90": "Applies Debuff Resistance UP to self for 12 seconds and Block 18 UP for 12 seconds",
+      "description": "Applies Debuff Resistance 70%UP to self for 12 seconds and Block 9 UP for 12 seconds",
+      "descriptionLv1": "Applies Debuff Resistance 70%UP to self for 12 seconds and Block 9 UP for 12 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 70%UP to self for 12 seconds and Block 18 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.78,
       "damageScaling": null,
@@ -178,55 +188,55 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Dark vortex!",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "effect": "114% + 80",
+      "name": "Fall into Tartarus!",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 2 for 3 seconds and Confusion for 6 seconds",
+      "effect": "840% + 952",
       "buffEffects": [
         {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
+          "name": "Fear Ultimate Lv2",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         },
         {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Grant me an unbreakable soul!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Debuff Resistance UP to self for 12 seconds and Block 9 UP for 12 seconds",
-      "effect": "300% + 0",
+      "name": "Fall into Tartarus!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 3 for 3 seconds and Confusion for 6 seconds",
+      "effect": "944% + 1045",
       "buffEffects": [
         {
-          "name": "Debuff Resistance Lv4",
+          "name": "Fear Ultimate Lv3",
           "value": 0,
-          "type": "percent",
-          "duration": 12
+          "type": "unknown",
+          "duration": 3
         },
         {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 12
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     },
     {
       "rank": 4,
       "name": "Fall into Tartarus!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 1 for 3 seconds and Confusion for 6 seconds",
-      "effect": "700% + 826",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 4 for 3 seconds and Confusion for 6 seconds",
+      "effect": "1015% + 1121",
       "buffEffects": [
         {
-          "name": "Fear Ultimate Lv1",
+          "name": "Fear Ultimate Lv4",
           "value": 0,
           "type": "unknown",
           "duration": 3
@@ -242,12 +252,12 @@ export const skills = {
     {
       "rank": 5,
       "name": "Fall into Tartarus!",
-      "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 2 for 3 seconds and Confusion for 6 seconds",
-      "effect": "840% + 952",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fear Lv 5 for 3 seconds and Confusion for 6 seconds",
+      "effect": "1085% + 1237",
       "buffEffects": [
         {
-          "name": "Fear Ultimate Lv2",
+          "name": "Fear Ultimate Lv5",
           "value": 0,
           "type": "unknown",
           "duration": 3

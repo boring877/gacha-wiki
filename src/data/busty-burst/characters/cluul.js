@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -156,7 +166,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
@@ -169,51 +179,57 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sweet Engraving",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds",
-      "effect": "260% + 250",
+      "name": "Sweet Meteor☆",
+      "icon": "skill001/skill0006_2",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "effect": "1080% + 800",
       "buffEffects": [
         {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
+          "name": "Magic Defense- Ultimate Lv2",
+          "value": -25,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "lovely",
+          "value": 5,
+          "type": "percent",
+          "duration": 999
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Sweet Shine",
-      "icon": "skill001/skill0018",
-      "description": "Applies Magic Critical Damage 50 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "effect": "300% + 0",
+      "name": "Sweet Meteor☆",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "effect": "1215% + 1000",
       "buffEffects": [
         {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 12
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 8
         },
         {
-          "name": "Accuracy + Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 12
+          "name": "lovely",
+          "value": 5,
+          "type": "percent",
+          "duration": 999
         }
       ]
     },
     {
       "rank": 4,
       "name": "Sweet Meteor☆",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
-      "effect": "900% + 600",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "effect": "1310% + 1150",
       "buffEffects": [
         {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
           "duration": 8
         },
         {
@@ -227,14 +243,14 @@ export const skills = {
     {
       "rank": 5,
       "name": "Sweet Meteor☆",
-      "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
-      "effect": "1080% + 800",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "effect": "1400% + 1250",
       "buffEffects": [
         {
-          "name": "Magic Defense- Ultimate Lv2",
-          "value": -25,
-          "type": "flat",
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 8
         },
         {

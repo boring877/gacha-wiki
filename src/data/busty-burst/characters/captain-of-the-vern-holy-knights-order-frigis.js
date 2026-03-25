@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -62,9 +72,9 @@ export const skills = {
       "slot": 3,
       "name": "Are we continuing?",
       "icon": "skill001/skill0011",
-      "description": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-40 DOWN, 15 Magic Critical Damage-40 DOWN",
-      "descriptionLv1": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-40 DOWN, 15 Magic Critical Damage-40 DOWN",
-      "descriptionLv90": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-310 DOWN, 15 Magic Critical Damage-40 DOWN",
+      "description": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-15%-40 DOWN, 15 Magic Critical Damage-15%-40 DOWN",
+      "descriptionLv1": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-15%-40 DOWN, 15 Magic Critical Damage-15%-40 DOWN",
+      "descriptionLv90": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-15%-310 DOWN, 15 Magic Critical Damage-15%-40 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": null,
@@ -126,62 +136,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Should I be gentler?",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, guaranteed crit",
-      "effect": "300% + 300",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Are we continuing?",
-      "icon": "skill001/skill0011",
-      "description": "1 enemies15 [Intimidation](treated as, Block-20%, -20%), 15 Physical Critical Damage-40 DOWN, 15 Magic Critical Damage-40 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Intimidation",
-          "value": 0,
-          "type": "unknown",
-          "duration": 15
-        },
-        {
-          "name": "Physical Critical Damage- Lv5",
-          "value": -15,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Magic Critical Damage- Lv5",
-          "value": -40,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Bern Sacred Spear Art - Phantom Godspeed",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 5s , apply to self10 [Haste](Speed10%UP), enemies haveIntimidation,, Ultimate activation beforeapply to self10 damageUP(LV 1)",
-      "effect": "1000% + 1000",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Haste Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict6s Silence for, apply to self10 [Haste](Speed13%UP), enemies haveIntimidation, Ultimate activation beforeapply to self10 damageUP(LV 2)",
@@ -196,6 +150,69 @@ export const skills = {
         {
           "name": "Haste Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Bern Sacred Spear Art - Phantom Godspeed",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict6s Silence for, apply to self10 [Haste](Speed16%UP), enemies haveIntimidation, Ultimate activation beforeapply to self10 damageUP(LV 3)",
+      "effect": "1350% + 1380",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Haste Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Bern Sacred Spear Art - Phantom Godspeed",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict7s Silence for, apply to self10 [Haste](Speed18%UP), enemies haveIntimidation, Ultimate activation beforeapply to self10 damageUP(LV 4)",
+      "effect": "1450% + 1500",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Haste Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Bern Sacred Spear Art - Phantom Godspeed",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict7s Silence for, apply to self10 [Haste](Speed20%UP), enemies haveIntimidation, Ultimate activation beforeapply to self10 damageUP(LV 5)",
+      "effect": "1500% + 1600",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Haste Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

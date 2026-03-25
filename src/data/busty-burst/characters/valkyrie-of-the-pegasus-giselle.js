@@ -83,6 +83,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -124,9 +134,9 @@ export const skills = {
       "slot": 3,
       "name": "Heruwal",
       "icon": "skill001/skill0019",
-      "description": "Restores HP by to all allies and inflicts Action Speed UP for 10 seconds , Debuff",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed UP for 10 seconds , Debuff",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed UP for 10 seconds , Debuff",
+      "description": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": "1500% ATK",
@@ -179,69 +189,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Glahoz",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds and applies Block-11 DOWN to self for 6 seconds",
-      "effect": "350% + 400",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Heruwal",
-      "icon": "skill001/skill0019",
-      "description": "Restores HP by to all allies and inflicts Action Speed UP for 10 seconds , Debuff",
-      "effect": "1500% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent",
-          "duration": 0
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Gerolondur Gelvig",
-      "icon": "skill001/skill0003_1",
-      "description": "to all enemiesphysical damage, inflict 3s , ,selfMP Recovery 40",
-      "effect": "550% + 900",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "MP Recovery Ultimate Lv1",
-          "value": 40,
-          "type": "percent",
-          "duration": 0
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_2",
       "description": "to all enemiesphysical damage, inflict 4s , ,selfMP Recovery 50",
@@ -256,6 +203,69 @@ export const skills = {
         {
           "name": "MP Recovery Ultimate Lv2",
           "value": 50,
+          "type": "percent",
+          "duration": 0
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Gerolondur Gelvig",
+      "icon": "skill001/skill0003_3",
+      "description": "to all enemiesphysical damage, inflict 4s , ,selfMP Recovery 60",
+      "effect": "935% + 1550",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "MP Recovery Ultimate Lv3",
+          "value": 60,
+          "type": "percent",
+          "duration": 0
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Gerolondur Gelvig",
+      "icon": "skill001/skill0003_4",
+      "description": "to all enemiesphysical damage, inflict 5s , ,selfMP Recovery 70",
+      "effect": "1050% + 1800",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "MP Recovery Ultimate Lv4",
+          "value": 70,
+          "type": "percent",
+          "duration": 0
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Gerolondur Gelvig",
+      "icon": "skill001/skill0003_5",
+      "description": "to all enemiesphysical damage, inflict 5s , ,selfMP Recovery 80",
+      "effect": "1100% + 2000",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "MP Recovery Ultimate Lv5",
+          "value": 80,
           "type": "percent",
           "duration": 0
         }

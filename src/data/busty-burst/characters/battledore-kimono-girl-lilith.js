@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "You lose...",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Mind Type Damage Taken UP on the 3 nearest enemies for 10 seconds and Magic Defense-30 DOWN for 10 seconds , 4s Blind for",
-      "descriptionLv1": "Inflicts Mind Type Damage Taken UP on the 3 nearest enemies for 10 seconds and Magic Defense-30 DOWN for 10 seconds , 4s Blind for",
-      "descriptionLv90": "Inflicts Mind Type Damage Taken UP on the 3 nearest enemies for 10 seconds and Magic Defense-210 DOWN for 10 seconds , 4s Blind for",
+      "description": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds , 4s Blind for",
+      "descriptionLv1": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds , 4s Blind for",
+      "descriptionLv90": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-210 DOWN for 10 seconds , 4s Blind for",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": null,
@@ -172,7 +182,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -184,88 +194,13 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Take this...",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "effect": "350% + 350",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You lose...",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Mind Type Damage Taken UP on the 3 nearest enemies for 10 seconds and Magic Defense-30 DOWN for 10 seconds , 4s Blind for",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Mind Type Damage Taken + Lv3",
-          "value": 16,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Dawn Sky Burst",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 1), 10 Magic Attack UP(LV 1)",
-      "effect": "400% + 400",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 2), 10 Magic Attack UP(LV 2)",
@@ -274,7 +209,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -286,7 +221,88 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Dawn Sky Burst",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 3), 10 Magic Attack UP(LV 3)",
+      "effect": "520% + 750",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 21,
           "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Dawn Sky Burst",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 4), 10 Magic Attack UP(LV 4)",
+      "effect": "560% + 900",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Dawn Sky Burst",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 5), 10 Magic Attack UP(LV 5)",
+      "effect": "580% + 1000",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

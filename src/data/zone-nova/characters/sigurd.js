@@ -4,7 +4,7 @@
 export const sigurdData = {
   // Basic Character Information
   name: 'Sigurd',
-  image: 'Sigurd',
+  image: 'Sigurd.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Rogue',
@@ -94,7 +94,7 @@ export const sigurdData = {
   // Memory Card
   memoryCard: {
     name: 'I am your Christmas present.',
-    image: 'Sigurdcard',
+    image: 'IAmYourChristmasPresent.png',
     stats: {
       hp: '5,040',
       attack: '780',

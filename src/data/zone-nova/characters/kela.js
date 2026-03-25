@@ -4,7 +4,7 @@
 export const kelaData = {
   // Basic Character Information
   name: 'Kela',
-  image: 'kela', // Character image identifier
+  image: 'kela.png', // Character image identifier
   rarity: 'SR',
   element: 'Holy',
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

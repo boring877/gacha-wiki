@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "St and up yell！",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
-      "descriptionLv1": "all allies10 Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
-      "descriptionLv90": "all allies10 Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) and Block 23 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
+      "description": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
+      "descriptionLv1": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
+      "descriptionLv90": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 23 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -129,9 +139,9 @@ export const skills = {
       "slot": 3,
       "name": "Go for it！",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Action Speed UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
-      "descriptionLv1": "all allies10 Action Speed UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
-      "descriptionLv90": "all allies10 Action Speed UP and Accuracy 23 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
+      "description": "all allies10 Action Speed 17%UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
+      "descriptionLv1": "all allies10 Action Speed 17%UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
+      "descriptionLv90": "all allies10 Action Speed 17%UP and Accuracy 23 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -198,87 +208,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "St and up yell！",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Healing Shield Lv5",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Damage UP",
-          "value": 9999,
-          "type": "percent",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Go for it！",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Action Speed UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Shield",
-          "value": 9999,
-          "type": "percent",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ardent．The．Victory",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 1) and Magic Critical DamageUP(LV 1) for 10 seconds , 10 Damage UP(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 250,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Ultimate Lv1",
-          "value": 250,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Damage + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
       "description": "all allies10 Physical Critical DamageUP(LV 2) and Magic Critical DamageUP(LV 2) for 10 seconds , 10 Damage UP(LV 2)",
@@ -299,6 +228,87 @@ export const skills = {
         {
           "name": "Damage + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ardent．The．Victory",
+      "icon": "skill001/skill0019",
+      "description": "all allies10 Physical Critical DamageUP(LV 3) and Magic Critical DamageUP(LV 3) for 10 seconds , 10 Damage UP(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ardent．The．Victory",
+      "icon": "skill001/skill0019",
+      "description": "all allies10 Physical Critical DamageUP(LV 4) and Magic Critical DamageUP(LV 4) for 10 seconds , 10 Damage UP(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ardent．The．Victory",
+      "icon": "skill001/skill0019",
+      "description": "all allies10 Physical Critical DamageUP(LV 5) and Magic Critical DamageUP(LV 5) for 10 seconds , 10 Damage UP(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 500,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv5",
+          "value": 500,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Damage + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

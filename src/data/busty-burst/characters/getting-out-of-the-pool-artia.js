@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Beat In Small Shield",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-220 DOWN for 6 seconds and Block-23 DOWN for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds and Block-23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": "110.00000000000001% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "SB (SwimmingBoards) Boomerang",
       "icon": "skill001/skill0011",
-      "description": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv1": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv90": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN for 10 seconds",
+      "description": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
+      "descriptionLv1": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
+      "descriptionLv90": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
       "target": "Back Enemy",
       "castTime": 1.0,
       "damageScaling": "90% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Beat In Small Shield",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
-      "effect": "110% + 150",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "SB (SwimmingBoards) Boomerang",
-      "icon": "skill001/skill0011",
-      "description": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN for 10 seconds",
-      "effect": "90% + 80",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Lethal - Board Blade",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 3 seconds and Accuracy DOWN(LV 1) for 10 seconds",
-      "effect": "390% + 500",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lethal - Board Blade",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Accuracy DOWN(LV 2) for 10 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lethal - Board Blade",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Accuracy DOWN(LV 3) for 10 seconds",
+      "effect": "509% + 700",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lethal - Board Blade",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Accuracy DOWN(LV 4) for 10 seconds",
+      "effect": "550% + 800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lethal - Board Blade",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Accuracy DOWN(LV 5) for 10 seconds",
+      "effect": "570% + 900",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

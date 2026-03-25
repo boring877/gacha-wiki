@@ -51,7 +51,7 @@ export const chiyaBuild = {
         "Chiya's signature memory is essential for her kit. The 60% crit damage boost amplifies her Enhanced Ultimate's guaranteed crits, and the kill-stacking ATK buff (up to 40%) perfectly synergizes with her mob slayer playstyle. Other memories don't work well with her unique kill-based mechanic.",
       priority: 'Highly Recommended',
       characterSpecific: true,
-      memoryImage: 'Chiyacard.jpg',
+      memoryImage: 'LonelyDarkDeepNight.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
         'Critical damage increases by 60%. Attack power increases by 10% after the equipped character kills an enemy, stacking up to 4 times (up to 40% attack power increase), stays until the end of battle',

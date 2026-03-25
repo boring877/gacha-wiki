@@ -6,7 +6,7 @@ export const absolutelyPerfectArmsData = {
   id: 'absolutely-perfect-arms',
   slug: 'absolutely-perfect-arms',
   name: 'Absolutely Perfect Arms',
-  image: 'Morgancard',
+  image: '/images/games/zone-nova/memories/AbsolutelyPerfectArms.png',
   rarity: 'SSR',
   element: 'Holy',
   character: 'Morgan Le Fay',

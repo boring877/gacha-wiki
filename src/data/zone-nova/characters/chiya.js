@@ -5,7 +5,7 @@
 export const chiyaData = {
   // Basic Character Information
   name: 'Chiya',
-  image: 'Chiya', // Use format: charactername (e.g., 'penny')
+  image: 'Chiya.png', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Ice', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -71,7 +71,7 @@ export const chiyaData = {
   // Memory Card
   memoryCard: {
     name: 'Lonely Dark Deep Night',
-    image: 'Chiyacard', // Use format: characternamecard (e.g., 'pennycard')
+    image: 'LonelyDarkDeepNight.png',
     stats: {
       hp: '5,040', // e.g., '8,600'
       attack: '780', // e.g., '480'

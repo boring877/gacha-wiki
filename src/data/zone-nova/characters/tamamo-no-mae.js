@@ -4,7 +4,7 @@
 export const tamamoNoMaeData = {
   // Basic Character Information
   name: 'Tamamo-no-Mae',
-  image: 'Tamamo-no-mae',
+  image: 'Tamamo-no-mae.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Pheasant",
       "icon": "skill001/skill0011",
-      "description": "all enemies12 Magic Defense-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
-      "descriptionLv1": "all enemies12 Magic Defense-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
-      "descriptionLv90": "all enemies12 Magic Defense-210 DOWN and Accuracy -18 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
+      "description": "all enemies12 Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
+      "descriptionLv1": "all enemies12 Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
+      "descriptionLv90": "all enemies12 Magic Defense-18%-210 DOWN and Accuracy -18 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
       "target": "All Enemies",
       "castTime": 1.6,
       "damageScaling": null,
@@ -191,81 +201,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Animat",
-      "icon": "skill001/skill0018",
-      "description": "Applies Magic Critical Damage 50 UP to all allies for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Pheasant",
-      "icon": "skill001/skill0011",
-      "description": "all enemies12 Magic Defense-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Sleep",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "My special place to belong",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Hit-Based Magic Damage (LV 1) to all allies for 20 seconds and Accuracy UP(LV 1) for 10 seconds , 10 BlockUP(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Magic Damage + Ultimate Lv1",
-          "value": 5,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_2",
       "description": "Applies Hit-Based Magic Damage (LV 2) to all allies for 20 seconds and Accuracy UP(LV 2) for 10 seconds , 10 BlockUP(LV 2)",
@@ -286,6 +221,87 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "My special place to belong",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Hit-Based Magic Damage (LV 3) to all allies for 20 seconds and Accuracy UP(LV 3) for 10 seconds , 10 BlockUP(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv3",
+          "value": 5,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "My special place to belong",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Hit-Based Magic Damage (LV 4) to all allies for 20 seconds and Accuracy UP(LV 4) for 10 seconds , 10 BlockUP(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv4",
+          "value": 5,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "My special place to belong",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Hit-Based Magic Damage (LV 5) to all allies for 20 seconds and Accuracy UP(LV 5) for 10 seconds , 10 BlockUP(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Magic Damage + Ultimate Lv5",
+          "value": 5,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

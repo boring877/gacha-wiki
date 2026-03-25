@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Clair Storia",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-320 DOWN for 6 seconds and Burn(HP --1500 per second) for 15 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 6 seconds and Burn(HP --1500 per second) for 15 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "370% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Does it suit me?",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv1": "Applies Action Speed UP to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv90": "Applies Action Speed UP to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 40503 hit(s)) for 15 seconds",
+      "description": "Applies Action Speed 14%UP to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 40503 hit(s)) for 15 seconds",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Clair Storia",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
-      "effect": "370% + 500",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Does it suit me?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to all allies for 15 seconds and Hit-Based Magic Damage UP(+450, 3 hit(s)) for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Hit-Based Magic Damage +",
-          "value": 3,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Tobt Love Song",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 1) for 15 secondsand applies Burn(LV 1) to self for 15 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -2000,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Fire Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Tobt Love Song",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 2) for 15 secondsand applies Burn(LV 2) to self for 15 seconds",
@@ -257,6 +204,69 @@ export const skills = {
           "value": 13,
           "type": "percent",
           "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Tobt Love Song",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 3) for 15 secondsand applies Burn(LV 3) to self for 15 seconds",
+      "effect": "1470% + 1150",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -3000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Tobt Love Song",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 4) for 15 secondsand applies Burn(LV 4) to self for 15 seconds",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -3500,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Tobt Love Song",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 5) for 15 secondsand applies Burn(LV 5) to self for 15 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -4000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
         }
       ]
     }

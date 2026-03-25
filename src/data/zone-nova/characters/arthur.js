@@ -5,7 +5,7 @@
 export const arthurData = {
   // Basic Character Information
   name: 'Arthur',
-  image: 'Arthur', // Use format: charactername (e.g., 'penny')
+  image: 'Arthur.png', // Use explicit PNG filename
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

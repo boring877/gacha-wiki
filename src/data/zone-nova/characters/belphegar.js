@@ -5,7 +5,7 @@
 export const belphegarData = {
   // Basic Character Information
   name: 'Belphegar',
-  image: 'belphegar', // Use format: charactername (e.g., 'penny')
+  image: 'belphegar.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -75,7 +75,7 @@ export const belphegarData = {
   // Memory Card
   memoryCard: {
     name: 'Sleepy Guardian',
-    image: 'Belphegarcard', // Use format: characternamecard (e.g., 'pennycard')
+    image: 'SleepyGuardian.png',
     stats: {
       hp: '5,200', // e.g., '8,600'
       attack: '420', // e.g., '480'

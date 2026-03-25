@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Protected by “Thorns”",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 5 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "240% ATK",
@@ -147,33 +157,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Protected by “Thorns”",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "effect": "240% + 110",
+      "name": "For the prosperity of the Sun and Moon",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds",
+      "effect": "960% + 754",
       "buffEffects": [
         {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 5
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Blessing to the brave",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to the 2 nearest allies",
-      "effect": "1500% + 310",
-      "buffEffects": []
+      "name": "For the prosperity of the Sun and Moon",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds",
+      "effect": "1080% + 881",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
+        }
+      ]
     },
     {
       "rank": 4,
       "name": "For the prosperity of the Sun and Moon",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds",
-      "effect": "800% + 590",
+      "effect": "1160% + 991",
       "buffEffects": [
         {
           "name": "Paralysis",
@@ -186,9 +203,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "For the prosperity of the Sun and Moon",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds",
-      "effect": "960% + 754",
+      "effect": "1240% + 1085",
       "buffEffects": [
         {
           "name": "Paralysis",

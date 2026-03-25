@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Bouquet Throw",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-220 DOWN for 6 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": "300% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Drop the Veil",
       "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies1s Charm for and Action Speed DOWN for 8 seconds , 8 Accuracy -9 DOWN",
-      "descriptionLv1": "to 3 nearest enemies1s Charm for and Action Speed DOWN for 8 seconds , 8 Accuracy -9 DOWN",
-      "descriptionLv90": "to 3 nearest enemies1s Charm for and Action Speed DOWN for 8 seconds , 8 Accuracy -18 DOWN",
+      "description": "to 3 nearest enemies1s Charm for and Action Speed -14%DOWN for 8 seconds , 8 Accuracy -9 DOWN",
+      "descriptionLv1": "to 3 nearest enemies1s Charm for and Action Speed -14%DOWN for 8 seconds , 8 Accuracy -9 DOWN",
+      "descriptionLv90": "to 3 nearest enemies1s Charm for and Action Speed -14%DOWN for 8 seconds , 8 Accuracy -18 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": null,
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Bouquet Throw",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Drop the Veil",
-      "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies1s Charm for and Action Speed DOWN for 8 seconds , 8 Accuracy -9 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Liberal - Lily Marriage",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 1) for 15 seconds and Freeze(LV 1) for 2 seconds",
-      "effect": "350% + 400",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1000,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Freeze Ultimate Lv1",
-          "value": -2500,
-          "type": "flat",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Liberal - Lily Marriage",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 2) for 15 seconds and Freeze(LV 2) for 2 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Freeze Ultimate Lv2",
           "value": -3500,
+          "type": "flat",
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Liberal - Lily Marriage",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 3) for 15 seconds and Freeze(LV 3) for 2 seconds",
+      "effect": "500% + 500",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -1600,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Freeze Ultimate Lv3",
+          "value": -4000,
+          "type": "flat",
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Liberal - Lily Marriage",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 4) for 15 seconds and Freeze(LV 4) for 2 seconds",
+      "effect": "530% + 550",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -1800,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Freeze Ultimate Lv4",
+          "value": -4500,
+          "type": "flat",
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Liberal - Lily Marriage",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 5) for 15 seconds and Freeze(LV 5) for 2 seconds",
+      "effect": "550% + 600",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -2000,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Freeze Ultimate Lv5",
+          "value": -5000,
           "type": "flat",
           "duration": 2
         }

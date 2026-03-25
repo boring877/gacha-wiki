@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Binding Art: Serpent Coil",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -210 DOWN for 8 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -18%-210 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "270% ATK",
@@ -164,60 +174,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Binding Art: Serpent Coil",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 4 seconds and Physical Defense -30 DOWN for 8 seconds",
-      "effect": "270% + 140",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
+      "name": "Esoteric Art: Death Makeup",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the 3 nearest enemies",
+      "effect": "380% + 240",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Circular Slash",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 9 UP to self for 8 seconds and MP Regeneration 40 for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "MP Regeneration + Lv5",
-          "value": 40,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
+      "name": "Esoteric Art: Death Makeup",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies",
+      "effect": "420% + 270",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Esoteric Art: Death Makeup",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "340% + 200",
+      "effect": "450% + 300",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Esoteric Art: Death Makeup",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "380% + 240",
+      "effect": "480% + 350",
       "buffEffects": []
     }
   ],

@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -151,50 +161,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Butterfly Cut",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "320% + 600",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Please don't use violence",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds",
-      "effect": "210% + 300",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Hot Streak",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Physical Critical DamageUP(LV 1) to all allies for 10 seconds and Action Speed UP(LV 1) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 8,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Hot Streak",
       "icon": "skill001/skill0020_2",
       "description": "Applies Physical Critical DamageUP(LV 2) to all allies for 11 seconds and Action Speed UP(LV 2) for 11 seconds",
@@ -211,6 +177,69 @@ export const skills = {
           "value": 10,
           "type": "flat",
           "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Hot Streak",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Physical Critical DamageUP(LV 3) to all allies for 13 seconds and Action Speed UP(LV 3) for 13 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 450,
+          "type": "percent",
+          "duration": 13
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 12,
+          "type": "flat",
+          "duration": 13
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Hot Streak",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Physical Critical DamageUP(LV 4) to all allies for 14 seconds and Action Speed UP(LV 4) for 14 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 500,
+          "type": "percent",
+          "duration": 14
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 14,
+          "type": "flat",
+          "duration": 14
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Hot Streak",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Physical Critical DamageUP(LV 5) to all allies for 15 seconds and Action Speed UP(LV 5) for 15 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 550,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 15,
+          "type": "flat",
+          "duration": 15
         }
       ]
     }

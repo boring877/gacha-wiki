@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -162,57 +172,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Troublesome!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 1.5 seconds",
-      "effect": "300% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Super troublesome!",
-      "icon": "skill001/skill0019",
-      "description": "all enemies10 Accuracy -7 DOWNapply to self10",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv2",
-          "value": -7,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Don't come back~!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 15 seconds",
-      "effect": "1050% + 900",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1500,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Don't come back~!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 15 seconds",
@@ -221,6 +180,51 @@ export const skills = {
         {
           "name": "Burn Ultimate Lv2",
           "value": -2000,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Don't come back~!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 15 seconds",
+      "effect": "1420% + 1150",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -2400,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Don't come back~!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 15 seconds",
+      "effect": "1530% + 1250",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -2700,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Don't come back~!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 15 seconds",
+      "effect": "1620% + 1300",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -3000,
           "type": "flat",
           "duration": 15
         }

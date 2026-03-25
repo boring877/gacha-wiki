@@ -4,7 +4,7 @@
 export const horusData = {
   // Basic Character Information
   name: 'Horus',
-  image: 'Horus', // Character image identifier
+  image: 'Horus.png', // Character image identifier
   rarity: 'SSR',
   element: 'Holy',
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -81,7 +81,7 @@ export const horusData = {
   // Memory Card
   memoryCard: {
     name: 'Cute Little Thing',
-    image: 'Horuscard',
+    image: 'CuteLittleThing.png',
     stats: {
       hp: '5,040',
       attack: '780',

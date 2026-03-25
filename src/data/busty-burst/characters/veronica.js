@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "This costs quite a bit, you know ",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 12 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "240% ATK",
@@ -150,7 +160,7 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 15,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         },
         {
@@ -163,57 +173,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "This costs quite a bit, you know ",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "effect": "240% + 110",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I’m very fond of you ",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Financial Support!",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Magic Attack UP(LV 1) to all allies for 12 seconds and Physical Defense UP(LV 1) for 12 seconds",
-      "effect": "0% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 15,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Physical Defense + Ultimate Lv1",
-          "value": 50,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Financial Support!",
       "icon": "skill001/skill0020_2",
       "description": "Applies Magic Attack UP(LV 2) to all allies for 12 seconds and Physical Defense UP(LV 2) for 12 seconds",
@@ -222,12 +181,75 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         },
         {
           "name": "Physical Defense + Ultimate Lv2",
           "value": 150,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Financial Support!",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Magic Attack UP(LV 3) to all allies for 12 seconds and Physical Defense UP(LV 3) for 12 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 24,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv3",
+          "value": 200,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Financial Support!",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Magic Attack UP(LV 4) to all allies for 12 seconds and Physical Defense UP(LV 4) for 12 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 27,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv4",
+          "value": 250,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Financial Support!",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Magic Attack UP(LV 5) to all allies for 12 seconds and Physical Defense UP(LV 5) for 12 seconds",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 30,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Physical Defense + Ultimate Lv5",
+          "value": 300,
           "type": "flat",
           "duration": 12
         }

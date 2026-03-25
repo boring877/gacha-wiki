@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -170,76 +180,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Hey... yah...",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
-      "effect": "100% + 150",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ubi, defeat it...",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 5s Curse for",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The surging current that fills my world",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 1) for 8 seconds and Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Wind Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The surging current that fills my world",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 2) for 8 seconds and Physical Defense DOWN(LV 2) for 10 seconds",
@@ -254,7 +201,70 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The surging current that fills my world",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 3) for 8 seconds and Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1620% + 1750",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The surging current that fills my world",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 4) for 8 seconds and Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1739% + 2000",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The surging current that fills my world",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 5) for 8 seconds and Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1800% + 2200",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

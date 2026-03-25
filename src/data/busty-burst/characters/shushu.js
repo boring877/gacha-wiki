@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Y-You're in the way!",
       "icon": "skill001/skill0002",
-      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
+      "description": "Deals magic damage to the nearest enemyApplies Action Speed 25%UP to self for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Action Speed 25%UP to self for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Action Speed 25%UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "340% ATK",
@@ -156,7 +166,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -169,63 +179,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Y-You're in the way!",
-      "icon": "skill001/skill0002",
-      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP to self for 6 seconds",
-      "effect": "340% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed + LvMax",
-          "value": 25,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Your life is mine to take",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 4s , self[Spirit](MP Regen15, max3), restore 6% of damage dealt as own HP5%HP",
-      "effect": "105% + 100",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Spirit Energy",
-          "value": 15,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Foolish one, offer your head to your beloved",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds , [Spirit]3 when[Spirit]Ultimate activation afterrecover own MP100",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds , [Spirit]3 when[Spirit]Ultimate activation afterrecover own MP100",
@@ -234,7 +187,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -244,12 +197,75 @@ export const skills = {
           "duration": 10
         }
       ]
+    },
+    {
+      "rank": 3,
+      "name": "Foolish one, offer your head to your beloved",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds , [Spirit]3 when[Spirit]Ultimate activation afterrecover own MP100",
+      "effect": "1620% + 1600",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Foolish one, offer your head to your beloved",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds , [Spirit]3 when[Spirit]Ultimate activation afterrecover own MP100",
+      "effect": "1739% + 1800",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Foolish one, offer your head to your beloved",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds , [Spirit]3 when[Spirit]Ultimate activation afterrecover own MP100",
+      "effect": "1800% + 2000",
+      "buffEffects": [
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
     }
   ],
   "passives": [
     {
       "slot": 1,
-      "name": "Skill Damage +, MP Recovery, MP Recovery",
+      "name": "Skill Damage +, MP Recovery",
       "icon": "skill001/skill1001",
       "effect": "Skill Damage + (+10%), MP Recovery (+30%), MP Recovery (+30%)",
       "effectValues": [

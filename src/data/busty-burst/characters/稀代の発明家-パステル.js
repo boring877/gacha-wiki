@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -73,9 +83,9 @@ export const skills = {
       "slot": 3,
       "name": "Limiter Release",
       "icon": "skill001/skill0019",
-      "description": "self12'sPhysical Attack +40 UP, 12'sAction Speed UP, 12'sMP Regeneration 40, 12 after3's",
-      "descriptionLv1": "self12'sPhysical Attack +40 UP, 12'sAction Speed UP, 12'sMP Regeneration 40, 12 after3's",
-      "descriptionLv90": "self12'sPhysical Attack +850 UP, 12'sAction Speed UP, 12'sMP Regeneration 40, 12 after3's",
+      "description": "self12'sPhysical Attack 20%+40 UP, 12'sAction Speed 25%UP, 12'sMP Regeneration 40, 12 after3's",
+      "descriptionLv1": "self12'sPhysical Attack 20%+40 UP, 12'sAction Speed 25%UP, 12'sMP Regeneration 40, 12 after3's",
+      "descriptionLv90": "self12'sPhysical Attack 20%+850 UP, 12'sAction Speed 25%UP, 12'sMP Regeneration 40, 12 after3's",
       "target": "Self",
       "castTime": 1.25,
       "damageScaling": null,
@@ -123,7 +133,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -136,69 +146,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "ギガドリルアトミックパンチ",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to 1 nearest enemy, 6'sBlock-15 DOWN",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Block- LvMax",
-          "value": -15,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Limiter Release",
-      "icon": "skill001/skill0019",
-      "description": "self12'sPhysical Attack +40 UP, 12'sAction Speed UP, 12'sMP Regeneration 40, 12 after3's",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed + LvMax",
-          "value": 25,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "MP Regeneration + Lv5",
-          "value": 40,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "ハイパーギガマギノランチャー",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to 6 nearest enemies, 10'sPhysical Defense DOWN(LV 1), self10'sPhysical Critical DamageUP(LV 1)",
-      "effect": "229% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to 6 nearest enemies, 10'sPhysical Defense DOWN(LV 2), self10'sPhysical Critical DamageUP(LV 2)",
@@ -207,12 +154,75 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Physical Critical Damage+ Ultimate Lv2",
           "value": 350,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "ハイパーギガマギノランチャー",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to 6 nearest enemies, 10'sPhysical Defense DOWN(LV 3), self10'sPhysical Critical DamageUP(LV 3)",
+      "effect": "310% + 800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "ハイパーギガマギノランチャー",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to 6 nearest enemies, 10'sPhysical Defense DOWN(LV 4), self10'sPhysical Critical DamageUP(LV 4)",
+      "effect": "345% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "ハイパーギガマギノランチャー",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to 6 nearest enemies, 10'sPhysical Defense DOWN(LV 5), self10'sPhysical Critical DamageUP(LV 5)",
+      "effect": "370% + 1000",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 500,
           "type": "percent",
           "duration": 10
         }

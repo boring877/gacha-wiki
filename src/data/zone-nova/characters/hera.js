@@ -5,7 +5,7 @@ export const heraData = {
   // Basic Character Information
   name: 'Hera',
   chineseName: '赫拉',
-  image: 'Hera', // Use format: charactername (e.g., 'Hera')
+  image: 'Hera.png', // Use explicit PNG filename
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

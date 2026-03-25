@@ -51,7 +51,7 @@ export const horusBuild = {
         "Horus's exclusive memory card. Provides massive attack increase and DOT damage amplification, perfectly synergizing with [Piercing] mechanics and attack scaling.",
       priority: 'Highly Recommended',
       characterSpecific: true,
-      memoryImage: 'Horuscard',
+      memoryImage: 'CuteLittleThing.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       slug: 'cute-little-thing',
       description:

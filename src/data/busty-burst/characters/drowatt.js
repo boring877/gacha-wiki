@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -97,51 +107,13 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -5,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Even though you want to get so close…",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the enemy with the highest Physical ATK",
-      "effect": "225% + 100",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Drowatt just doesn’t knooow♪",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Charm for 3 seconds",
-      "effect": "178% + 90",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Alluring Bounce♪",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Physical Attack DOWN(LV 1) for 10 seconds",
-      "effect": "750% + 650",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -5,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Alluring Bounce♪",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Physical Attack DOWN(LV 2) for 10 seconds",
@@ -150,7 +122,52 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -8,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Alluring Bounce♪",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Physical Attack DOWN(LV 3) for 10 seconds",
+      "effect": "1050% + 790",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -11,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Alluring Bounce♪",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Physical Attack DOWN(LV 4) for 10 seconds",
+      "effect": "1150% + 850",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -14,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Alluring Bounce♪",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the enemy with the highest Physical ATK and inflicts Physical Attack DOWN(LV 5) for 10 seconds",
+      "effect": "1200% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -15,
+          "type": "percent",
           "duration": 10
         }
       ]

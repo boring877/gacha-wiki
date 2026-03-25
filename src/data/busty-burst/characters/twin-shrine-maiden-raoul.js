@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -126,9 +136,9 @@ export const skills = {
       "slot": 3,
       "name": "Burubu Yurayura",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 100%) for 20 seconds and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 100%) for 20 seconds and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 100%) for 20 seconds and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds",
+      "description": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "descriptionLv1": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "descriptionLv90": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.35,
       "damageScaling": "1000% ATK",
@@ -189,75 +199,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Purify, cleanse",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP , inflict 2s , 2 and Taunt for 2 seconds.()",
-      "effect": "300% + 200",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Burubu Yurayura",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 100%) for 20 seconds and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds",
-      "effect": "1000% + 500",
-      "buffEffects": [
-        {
-          "name": "Healing Shield LvMax",
-          "value": 400,
-          "type": "percent",
-          "duration": 20
-        },
-        {
-          "name": "Hit-Based Damage + Lv4",
-          "value": 35,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Evil Star Banishment Ritual",
-      "icon": "skill001/skill0022_1",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 1) for 8 seconds and Action Speed UP(LV 1) for 8 seconds , 3s Curse for",
-      "effect": "2000% + 800",
-      "buffEffects": [
-        {
-          "name": "Shield Ultimate Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_2",
       "description": "restore HP to all alliesHP and inflicts Shield (LV 2) for 8 seconds and Action Speed UP(LV 2) for 8 seconds , 4s Curse for",
@@ -280,6 +221,87 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Evil Star Banishment Ritual",
+      "icon": "skill001/skill0022_3",
+      "description": "restore HP to all alliesHP and inflicts Shield (LV 3) for 8 seconds and Action Speed UP(LV 3) for 8 seconds , 4s Curse for",
+      "effect": "2500% + 1350",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv3",
+          "value": 26,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Evil Star Banishment Ritual",
+      "icon": "skill001/skill0022_4",
+      "description": "restore HP to all alliesHP and inflicts Shield (LV 4) for 8 seconds and Action Speed UP(LV 4) for 8 seconds , 5s Curse for",
+      "effect": "2700% + 1550",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv4",
+          "value": 28,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Evil Star Banishment Ritual",
+      "icon": "skill001/skill0022_5",
+      "description": "restore HP to all alliesHP and inflicts Shield (LV 5) for 8 seconds and Action Speed UP(LV 5) for 8 seconds , 5s Curse for",
+      "effect": "2800% + 1700",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv5",
+          "value": 30,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
         }
       ]
     }

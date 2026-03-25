@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Thunderfire",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -320 DOWN for 5 seconds and Burn(HP --1500 per second) for 12 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-320 DOWN for 5 seconds and Burn(HP --1500 per second) for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "350% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Armor-Sleeve Touch",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +480 UP to self for 10 seconds and Action Speed UP for 10 seconds",
+      "description": "Applies Physical Attack 15%+30 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 15%+30 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds",
       "target": "Self",
       "castTime": 0.66,
       "damageScaling": null,
@@ -165,7 +175,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Thunderfire",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 5 seconds and Burn(HP --150 per second) for 12 seconds",
-      "effect": "350% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 5
-        },
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Armor-Sleeve Touch",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Heaven Sever",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 8 seconds and BlockDOWN(LV 1) for 8 seconds",
-      "effect": "420% + 390",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Heaven Sever",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 8 seconds and BlockDOWN(LV 2) for 8 seconds",
@@ -249,12 +196,75 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -19,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
           "name": "Block- Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Heaven Sever",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 8 seconds and BlockDOWN(LV 3) for 8 seconds",
+      "effect": "570% + 515",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -22,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Heaven Sever",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 8 seconds and BlockDOWN(LV 4) for 8 seconds",
+      "effect": "610% + 562",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -24,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Heaven Sever",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 8 seconds and BlockDOWN(LV 5) for 8 seconds",
+      "effect": "650% + 610",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 8
         }

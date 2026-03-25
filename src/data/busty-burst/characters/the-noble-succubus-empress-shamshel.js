@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -146,57 +156,13 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Juuump—up we go～♪",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies",
-      "effect": "110% + 50",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "The noble princess makes her entrance～♪",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Accuracy -9 DOWN for 10 seconds",
-      "effect": "90% + 35",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I’ll eat you up and bring peace to the world♪",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and applies Magic Attack UP(LV 1) to self for 10 seconds",
-      "effect": "360% + 394",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I’ll eat you up and bring peace to the world♪",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and applies Magic Attack UP(LV 2) to self for 10 seconds",
@@ -205,7 +171,52 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I’ll eat you up and bring peace to the world♪",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and applies Magic Attack UP(LV 3) to self for 10 seconds",
+      "effect": "522% + 496",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I’ll eat you up and bring peace to the world♪",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and applies Magic Attack UP(LV 4) to self for 10 seconds",
+      "effect": "579% + 532",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I’ll eat you up and bring peace to the world♪",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and applies Magic Attack UP(LV 5) to self for 10 seconds",
+      "effect": "612% + 565",
+      "buffEffects": [
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

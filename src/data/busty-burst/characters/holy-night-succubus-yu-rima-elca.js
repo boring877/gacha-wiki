@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Even if Santa gets it, it’s fine, right?",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-30 DOWN for 8 seconds",
-      "descriptionLv1": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-30 DOWN for 8 seconds",
-      "descriptionLv90": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-210 DOWN for 8 seconds",
+      "description": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%-30 DOWN for 8 seconds",
+      "descriptionLv1": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-18%-210 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -163,57 +173,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Alright, this is for you.",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --80 per second) for 12 seconds",
-      "effect": "100% + 50",
-      "buffEffects": [
-        {
-          "name": "Burn Lv3",
-          "value": -80,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Even if Santa gets it, it’s fine, right?",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Charm on the 3 nearest enemies for 1 seconds and Magic Defense-30 DOWN for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The gift… is… me.",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 1 seconds (Dispel effect: removes all active buffs and prevents gaining buffs for the duration) and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1100% + 500",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The gift… is… me.",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 2 seconds (Dispel effect: removes all active buffs and prevents gaining buffs for the duration) and absorbs 6% of the damage dealt to restore own HP",
@@ -224,6 +183,51 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The gift… is… me.",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 2 seconds (Dispel effect: removes all active buffs and prevents gaining buffs for the duration) and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1430% + 700",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The gift… is… me.",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 3 seconds (Dispel effect: removes all active buffs and prevents gaining buffs for the duration) and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1500% + 750",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The gift… is… me.",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Dispel for 3 seconds (Dispel effect: removes all active buffs and prevents gaining buffs for the duration) and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1550% + 800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     }

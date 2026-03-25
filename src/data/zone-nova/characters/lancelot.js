@@ -4,7 +4,7 @@
 export const lancelotData = {
   // Basic Character Information
   name: 'Lancelot',
-  image: 'Lancelot', // Character image identifier
+  image: 'Lancelot.png', // Character image identifier
   rarity: 'SR',
   element: 'Holy',
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

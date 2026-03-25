@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,9 +111,9 @@ export const skills = {
       "slot": 3,
       "name": "Feather Dance",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -2000 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "130% ATK",
@@ -158,56 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Pillar of Sanctity",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies",
-      "effect": "150% + 70",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Feather Dance",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 10 seconds and Magic Attack -20 DOWN for 10 seconds",
-      "effect": "130% + 50",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Trail that Destroys Evil",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Critical DamageDOWN(LV 1) for 10 seconds and Magic Critical DamageDOWN(LV 1) for 10 seconds",
-      "effect": "430% + 400",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage- Ultimate Lv1",
-          "value": -10,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage- Ultimate Lv1",
-          "value": -10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Trail that Destroys Evil",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Critical DamageDOWN(LV 2) for 10 seconds and Magic Critical DamageDOWN(LV 2) for 10 seconds",
@@ -222,6 +182,69 @@ export const skills = {
         {
           "name": "Magic Critical Damage- Ultimate Lv2",
           "value": -13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Trail that Destroys Evil",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Critical DamageDOWN(LV 3) for 10 seconds and Magic Critical DamageDOWN(LV 3) for 10 seconds",
+      "effect": "540% + 453",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv3",
+          "value": -16,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv3",
+          "value": -16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Trail that Destroys Evil",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Critical DamageDOWN(LV 4) for 10 seconds and Magic Critical DamageDOWN(LV 4) for 10 seconds",
+      "effect": "580% + 468",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv4",
+          "value": -18,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv4",
+          "value": -18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Trail that Destroys Evil",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Critical DamageDOWN(LV 5) for 10 seconds and Magic Critical DamageDOWN(LV 5) for 10 seconds",
+      "effect": "600% + 482",
+      "buffEffects": [
+        {
+          "name": "Physical Critical Damage- Ultimate Lv5",
+          "value": -20,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage- Ultimate Lv5",
+          "value": -20,
           "type": "percent",
           "duration": 10
         }

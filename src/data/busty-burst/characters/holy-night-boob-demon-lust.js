@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Radiating charm. Magic that captivates all who see it, known to all",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-210 DOWN for 6 seconds and Accuracy -18 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds and Accuracy -18 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": "130% ATK",
@@ -191,81 +201,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Radiating charm. Magic that captivates all who see it, known to all",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
-      "effect": "130% + 200",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Frost",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Moving Vehicle. Unparalleled. Sin-Hiding Demon",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Block-11 DOWN for 10 seconds",
-      "effect": "110% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
-      "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds and BlockDOWN(LV 1) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 2s Silence for",
-      "effect": "500% + 500",
-      "buffEffects": [
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Frost",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_2",
       "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds and BlockDOWN(LV 2) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 3s Silence for",
@@ -280,6 +215,87 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Frost",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
+      "icon": "skill001/skill0006_3",
+      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds and BlockDOWN(LV 3) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 3s Silence for",
+      "effect": "850% + 900",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Frost",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
+      "icon": "skill001/skill0006_4",
+      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds and BlockDOWN(LV 4) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 4s Silence for",
+      "effect": "950% + 1000",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Frost",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
+      "icon": "skill001/skill0006_5",
+      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds and BlockDOWN(LV 5) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 4s Silence for",
+      "effect": "1000% + 1100",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         },

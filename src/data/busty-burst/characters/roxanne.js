@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -97,51 +107,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Skillet Smash",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds",
-      "effect": "233% + 70",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Come Drink Some Milk",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to the ally with the lowest HP",
-      "effect": "3100% + 652",
-      "buffEffects": []
-    },
-    {
-      "rank": 4,
-      "name": "Roxanne’s Special Thick Soup",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to the 3 nearest allies and inflicts Physical Attack UP(LV 1) for 10 seconds",
-      "effect": "1800% + 1712",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Roxanne’s Special Thick Soup",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to the 3 nearest allies and inflicts Physical Attack UP(LV 2) for 10 seconds",
@@ -150,7 +122,52 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Roxanne’s Special Thick Soup",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to the 3 nearest allies and inflicts Physical Attack UP(LV 3) for 10 seconds",
+      "effect": "2400% + 1945",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Roxanne’s Special Thick Soup",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to the 3 nearest allies and inflicts Physical Attack UP(LV 4) for 10 seconds",
+      "effect": "2600% + 2056",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 27,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Roxanne’s Special Thick Soup",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to the 3 nearest allies and inflicts Physical Attack UP(LV 5) for 10 seconds",
+      "effect": "2750% + 2134",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 30,
+          "type": "percent",
           "duration": 10
         }
       ]

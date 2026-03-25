@@ -82,6 +82,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -158,7 +168,7 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Idiot idiot idiot! Get away!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 6 seconds",
-      "effect": "350% + 400",
-      "buffEffects": [
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Delusion Rampage Storm",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds , 4s Blind for",
-      "effect": "310% + 150",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I can't stop fantasizing~~!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies, and before activating the Ultimate, applies Physical Attack UP(LV 1) to self for 10 seconds and Mind Type ATK UP(LV 1) for 10 seconds",
-      "effect": "400% + 550",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I can't stop fantasizing~~!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies, and before activating the Ultimate, applies Physical Attack UP(LV 2) to self for 10 seconds and Mind Type ATK UP(LV 2) for 10 seconds",
@@ -236,12 +189,75 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Mind Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I can't stop fantasizing~~!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies, and before activating the Ultimate, applies Physical Attack UP(LV 3) to self for 10 seconds and Mind Type ATK UP(LV 3) for 10 seconds",
+      "effect": "520% + 850",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I can't stop fantasizing~~!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies, and before activating the Ultimate, applies Physical Attack UP(LV 4) to self for 10 seconds and Mind Type ATK UP(LV 4) for 10 seconds",
+      "effect": "560% + 950",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I can't stop fantasizing~~!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies, and before activating the Ultimate, applies Physical Attack UP(LV 5) to self for 10 seconds and Mind Type ATK UP(LV 5) for 10 seconds",
+      "effect": "580% + 1050",
+      "buffEffects": [
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

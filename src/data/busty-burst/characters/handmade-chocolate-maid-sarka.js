@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Mmm~! So sweet!!",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +480 UP to self for 10 seconds and Action Speed UP for 10 seconds",
+      "description": "Applies Physical Attack 15%+30 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 15%+30 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to self for 10 seconds and Action Speed 14%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.3,
       "damageScaling": null,
@@ -165,57 +175,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Snacking is strictly forbidden!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-9 DOWN for 6 seconds",
-      "effect": "370% + 600",
-      "buffEffects": [
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Mmm~! So sweet!!",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and Action Speed UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Thousand Piercings",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1100% + 500",
-      "buffEffects": [
-        {
-          "name": "Magic Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Thousand Piercings",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 2) for 8 seconds",
@@ -224,6 +183,51 @@ export const skills = {
         {
           "name": "Magic Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Thousand Piercings",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1470% + 800",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Thousand Piercings",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1590% + 900",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Thousand Piercings",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Magic Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1700% + 1000",
+      "buffEffects": [
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

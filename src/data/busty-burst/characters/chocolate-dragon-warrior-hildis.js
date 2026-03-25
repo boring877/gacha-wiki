@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Take it, you want it too right!",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-320 DOWN for 6 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.55,
       "damageScaling": "330% ATK",
@@ -163,7 +173,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -176,69 +186,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Take it, you want it too right!",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 6 seconds",
-      "effect": "330% + 150",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ugh... is this the way of the strong...?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Magic Critical Damage 50 UP to self for 10 seconds and MP Regeneration 40 for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + Lv5",
-          "value": 40,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Shameful Burst Sweet Cannon",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds and Magic Defense DOWN(LV 1) for 10 seconds , 2s Charm for",
-      "effect": "1400% + 700",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Shameful Burst Sweet Cannon",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds and Magic Defense DOWN(LV 2) for 10 seconds , 3s Charm for",
@@ -253,7 +200,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -261,6 +208,87 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Shameful Burst Sweet Cannon",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds and Magic Defense DOWN(LV 3) for 10 seconds , 3s Charm for",
+      "effect": "1950% + 1050",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Shameful Burst Sweet Cannon",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds and Magic Defense DOWN(LV 4) for 10 seconds , 4s Charm for",
+      "effect": "2050% + 1200",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Shameful Burst Sweet Cannon",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds and Magic Defense DOWN(LV 5) for 10 seconds , 4s Charm for",
+      "effect": "2100% + 1300",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
         }
       ]
     }

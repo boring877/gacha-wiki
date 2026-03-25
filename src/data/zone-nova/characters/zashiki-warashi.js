@@ -5,7 +5,7 @@
 export const zashikiWarashiData = {
   // Basic Character Information
   name: 'Zashiki-warashi',
-  image: 'Zashiki-warashi', // Use format: charactername (e.g., 'Zashiki-warashi')
+  image: 'Zashiki-warashi.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

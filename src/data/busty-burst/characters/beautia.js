@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Let's train our bodies!",
       "icon": "skill001/skill0019",
-      "description": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 20 seconds",
-      "descriptionLv1": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 20 seconds",
-      "descriptionLv90": "Applies Block 18 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 20 seconds",
+      "description": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
+      "descriptionLv1": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
+      "descriptionLv90": "Applies Block 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.1,
       "damageScaling": null,
@@ -165,57 +175,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Beautiful Hula Hoop",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 5 seconds",
-      "effect": "270% + 200",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Let's train our bodies!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 20 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Damage + Lv3",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Perfect Fat Burning Exercise",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyApplies Action Speed UP(LV 1) to self for 10 seconds",
-      "effect": "800% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Perfect Fat Burning Exercise",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemyApplies Action Speed UP(LV 2) to self for 10 seconds",
@@ -224,6 +183,51 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Perfect Fat Burning Exercise",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemyApplies Action Speed UP(LV 3) to self for 10 seconds",
+      "effect": "1080% + 800",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Perfect Fat Burning Exercise",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemyApplies Action Speed UP(LV 4) to self for 10 seconds",
+      "effect": "1170% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Perfect Fat Burning Exercise",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemyApplies Action Speed UP(LV 5) to self for 10 seconds",
+      "effect": "1250% + 1000",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

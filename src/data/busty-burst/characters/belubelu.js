@@ -82,6 +82,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -130,9 +140,9 @@ export const skills = {
       "slot": 3,
       "name": "Let's relax for a bit!",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Damage +2000 UP and +Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
-      "descriptionLv1": "all allies10 Damage +2000 UP and +Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
-      "descriptionLv90": "all allies10 Damage +2000 UP and +Damage Reduction for 10 seconds , 10 Accuracy 23 UP",
+      "description": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
+      "descriptionLv1": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
+      "descriptionLv90": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 23 UP",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": null,
@@ -200,87 +210,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Touching is forbidden~!!",
-      "icon": "skill001/skill0011",
-      "description": "3 nearest enemies3s Charm for and Block-13 DOWN for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Spirit Energy",
-          "value": 5,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Let's relax for a bit!",
-      "icon": "skill001/skill0019",
-      "description": "all allies10 Damage +2000 UP and +Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Damage UP",
-          "value": 15,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Shield",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Die Die Dance!",
-      "icon": "skill001/skill0012_1",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen150",
-      "effect": "400% + 400",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Spirit Energy",
-          "value": 5,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_2",
       "description": "magic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen165",
@@ -295,6 +224,87 @@ export const skills = {
         {
           "name": "Accuracy - Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Spirit Energy",
+          "value": 5,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Die Die Dance!",
+      "icon": "skill001/skill0012_3",
+      "description": "magic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen180",
+      "effect": "600% + 600",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Spirit Energy",
+          "value": 5,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Die Die Dance!",
+      "icon": "skill001/skill0012_4",
+      "description": "magic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen190",
+      "effect": "660% + 650",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Spirit Energy",
+          "value": 5,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Die Die Dance!",
+      "icon": "skill001/skill0012_5",
+      "description": "magic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen200",
+      "effect": "700% + 700",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy - Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         },

@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Even better with makeup on♪",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Attack +40 UP for 15 seconds , 15 Action Speed UP",
-      "descriptionLv1": "Gain MP Recovery 100 and Physical Attack +40 UP for 15 seconds , 15 Action Speed UP",
-      "descriptionLv90": "Gain MP Recovery 100 and Physical Attack +850 UP for 15 seconds , 15 Action Speed UP",
+      "description": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds , 15 Action Speed 17%UP",
+      "descriptionLv1": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds , 15 Action Speed 17%UP",
+      "descriptionLv90": "Gain MP Recovery 100 and Physical Attack 20%+850 UP for 15 seconds , 15 Action Speed 17%UP",
       "target": "Self",
       "castTime": 1.15,
       "damageScaling": null,
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "Am I cute enough?",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(+550, 4 hit(s))",
-      "descriptionLv1": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(+550, 4 hit(s))",
-      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(+550, 49504 hit(s))",
+      "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
+      "descriptionLv1": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
+      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 49504 hit(s))",
       "target": "Self",
       "castTime": 1.15,
       "damageScaling": null,
@@ -192,81 +202,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Even better with makeup on♪",
-      "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Attack +40 UP for 15 seconds , 15 Action Speed UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Recovery",
-          "value": 100,
-          "type": "percent",
-          "duration": 0
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Am I cute enough?",
-      "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(+550, 4 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Recovery",
-          "value": 100,
-          "type": "percent",
-          "duration": 0
-        },
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Hit-Based Physical Damage + Lv5",
-          "value": 4,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Excited Vivid Beam",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 1) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 1)",
-      "effect": "450% + 600",
-      "buffEffects": [
-        {
-          "name": "Wind Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Wind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 2) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 2)",
@@ -281,6 +216,69 @@ export const skills = {
         {
           "name": "Wind Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Excited Vivid Beam",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 3) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 3)",
+      "effect": "585% + 900",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Excited Vivid Beam",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 4) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 4)",
+      "effect": "630% + 1000",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Excited Vivid Beam",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 5) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 5)",
+      "effect": "660% + 1100",
+      "buffEffects": [
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Wind Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

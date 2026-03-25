@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shatter & Slash",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -60 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -60 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -420 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -25%-60 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -25%-60 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -25%-420 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.85,
       "damageScaling": "350% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Everything becomes my power!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack +35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(+500, 3 hit(s))",
-      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack +35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(+500, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack +665 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(+500, 45003 hit(s))",
+      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
+      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+665 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 45003 hit(s))",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -186,88 +196,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Shatter & Slash",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -60 DOWN for 6 seconds",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Physical Defense - LvMax",
-          "value": -60,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Everything becomes my power!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack +35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(+500, 3 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv4",
-          "value": 50,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Physical Damage + Lv4",
-          "value": 3,
-          "type": "flat",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Lion Tail Gale",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and Wind Type Damage Taken UP(LV 1) for 8 seconds , 10 Physical Defense DOWN(LV 1)",
-      "effect": "1200% + 1200",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Wind Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 2) for 8 seconds , 10 Physical Defense DOWN(LV 2)",
@@ -288,7 +223,88 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lion Tail Gale",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 3) for 8 seconds , 10 Physical Defense DOWN(LV 3)",
+      "effect": "1620% + 1550",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lion Tail Gale",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 4) for 8 seconds , 10 Physical Defense DOWN(LV 4)",
+      "effect": "1739% + 1700",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lion Tail Gale",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 5) for 8 seconds , 10 Physical Defense DOWN(LV 5)",
+      "effect": "1800% + 1800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Wind Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

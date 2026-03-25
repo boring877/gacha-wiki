@@ -4,7 +4,7 @@
 export const naiyaData = {
   // Basic Character Information
   name: 'Naiya',
-  image: 'Naiya', // Character image identifier
+  image: 'Naiya.png', // Character image identifier
   rarity: 'SSR',
   element: 'Ice',
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

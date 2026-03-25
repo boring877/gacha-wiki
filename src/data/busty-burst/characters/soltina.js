@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -119,9 +129,9 @@ export const skills = {
       "slot": 3,
       "name": "Millionfold",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +190 UP to self for 10 seconds and Block 13 UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Defense +190 UP to self for 10 seconds and Block 13 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Defense +460 UP to self for 10 seconds and Block 26 UP for 10 seconds",
+      "description": "Applies Physical Defense 30%+190 UP to self for 10 seconds and Block 13 UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Defense 30%+190 UP to self for 10 seconds and Block 13 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Defense 30%+460 UP to self for 10 seconds and Block 26 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -176,69 +186,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Shikomaru",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds and inflicts Silence for 6 seconds",
-      "effect": "350% + 140",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 6
-        },
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Millionfold",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +190 UP to self for 10 seconds and Block 13 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv5",
-          "value": 190,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Iron Immortal Blossom",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "360% + 338",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -250,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Iron Immortal Blossom",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds",
@@ -253,6 +200,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Iron Immortal Blossom",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "470% + 421",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -340,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Iron Immortal Blossom",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "509% + 465",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -370,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Iron Immortal Blossom",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "550% + 501",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -400,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

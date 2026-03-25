@@ -4,7 +4,7 @@
 export const morganLeFayData = {
   // Basic Character Information
   name: 'Morgan Le Fay',
-  image: 'Morgan', // Use format: charactername (e.g., 'penny')
+  image: 'Morgan.png',
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Buffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -84,7 +84,7 @@ export const morganLeFayData = {
   // Memory Card
   memoryCard: {
     name: 'Absolutely Perfect Arms',
-    image: 'Morgancard', // Use format: characternamecard (e.g., 'pennycard')
+    image: 'AbsolutelyPerfectArms.png',
     stats: {
       hp: '7,800', // Base 6000 + 30% increase
       attack: '780', // Base 600 + 30% increase

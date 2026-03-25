@@ -48,7 +48,7 @@ export const morganLeFayBuild = {
         "Morgan Le Fay's exclusive memory card. Provides massive stat increases and energy gain efficiency for Holy teams.",
       priority: 'Exclusive - Highly Recommended',
       characterSpecific: true,
-      memoryImage: 'Morgancard',
+      memoryImage: 'AbsolutelyPerfectArms.png',
       memoryStats: { hp: '7,800', attack: '780', defense: '780' },
       description:
         "ATK increased by 30%, DEF increased by 30%, HP increased by 30%. When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s",

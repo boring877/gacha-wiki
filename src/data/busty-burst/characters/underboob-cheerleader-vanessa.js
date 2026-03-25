@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "To the G, to the O",
       "icon": "skill001/skill0014",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack +50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
-      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack +50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
-      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack +950 UP, 15 Magic Critical Damage 980 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
+      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
+      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
+      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+950 UP, 15 Magic Critical Damage 980 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
       "target": "Highest Mag ATK Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "My finest performance!",
       "icon": "skill001/skill0019",
-      "description": "highest Mag ATK ally 1inflict15 Hit-Based Shield(+9 hit(s)) and Block 13 UP for 15 seconds",
-      "descriptionLv1": "highest Mag ATK ally 1inflict15 Hit-Based Shield(+9 hit(s)) and Block 13 UP for 15 seconds",
-      "descriptionLv90": "highest Mag ATK ally 1inflict15 Hit-Based Shield(+9 hit(s)) and Block 26 UP for 15 seconds",
+      "description": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 13 UP for 15 seconds",
+      "descriptionLv1": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 13 UP for 15 seconds",
+      "descriptionLv90": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 26 UP for 15 seconds",
       "target": "Highest Mag ATK Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -184,75 +194,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "To the G, to the O",
-      "icon": "skill001/skill0014",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack +50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Cheer Up",
-          "value": 10,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Magic Attack + LvMax",
-          "value": 50,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Critical Damage+ LvMax",
-          "value": 80,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "My finest performance!",
-      "icon": "skill001/skill0019",
-      "description": "highest Mag ATK ally 1inflict15 Hit-Based Shield(+9 hit(s)) and Block 13 UP for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield Lv5",
-          "value": 30,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Block+ Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Let's GO！　Let's FIGHT",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Action Speed UP(LV 1) to all allies for 10 seconds and Accuracy UP(LV 1) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Let's GO！　Let's FIGHT",
       "icon": "skill001/skill0020_2",
       "description": "Applies Action Speed UP(LV 2) to all allies for 10 seconds and Accuracy UP(LV 2) for 10 seconds",
@@ -267,6 +208,69 @@ export const skills = {
         {
           "name": "Accuracy + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Let's GO！　Let's FIGHT",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Action Speed UP(LV 3) to all allies for 10 seconds and Accuracy UP(LV 3) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Let's GO！　Let's FIGHT",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Action Speed UP(LV 4) to all allies for 10 seconds and Accuracy UP(LV 4) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Let's GO！　Let's FIGHT",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Action Speed UP(LV 5) to all allies for 10 seconds and Accuracy UP(LV 5) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

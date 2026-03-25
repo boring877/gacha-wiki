@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Great Whirling Slash",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -50 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -50 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -320 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -23%-50 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -23%-50 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -23%-320 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "90% ATK",
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "O Spirit of Wind, Grant Me Protection",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 10 seconds and Block 11 UP for 10 seconds",
-      "descriptionLv1": "Applies Action Speed UP to self for 10 seconds and Block 11 UP for 10 seconds",
-      "descriptionLv90": "Applies Action Speed UP to self for 10 seconds and Block 23 UP for 10 seconds",
+      "description": "Applies Action Speed 17%UP to self for 10 seconds and Block 11 UP for 10 seconds",
+      "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Block 11 UP for 10 seconds",
+      "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Block 23 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.58,
       "damageScaling": null,
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Great Whirling Slash",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -50 DOWN for 7 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "effect": "90% + 80",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "O Spirit of Wind, Grant Me Protection",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 10 seconds and Block 11 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Tremble, Sinner. Hear the Final Tune in Your Flesh",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 8 seconds and inflicts Dispel for 3 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
-      "effect": "180% + 600",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Tremble, Sinner. Hear the Final Tune in Your Flesh",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 8 seconds and inflicts Dispel for 4 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
@@ -244,6 +197,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Tremble, Sinner. Hear the Final Tune in Your Flesh",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 8 seconds and inflicts Dispel for 4 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
+      "effect": "220% + 800",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Tremble, Sinner. Hear the Final Tune in Your Flesh",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 8 seconds and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
+      "effect": "240% + 850",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Tremble, Sinner. Hear the Final Tune in Your Flesh",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 8 seconds and inflicts Dispel for 5 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
+      "effect": "250% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
         }
       ]
     }

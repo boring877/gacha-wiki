@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Can you stay away from me?",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds",
-      "effect": "280% + 150",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I look elegant in anything!",
-      "icon": "skill001/skill0019",
-      "description": "Applies MP Regeneration 30 to self for 10 seconds and Block 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Regeneration + Lv4",
-          "value": 30,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "My Radiant Flower Shining in the Night Sky",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Accuracy UP(LV 1) to all allies for 10 seconds and Physical Critical DamageUP(LV 1) for 10 seconds , 10 Magic Critical DamageUP(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 200,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Ultimate Lv1",
-          "value": 200,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_2",
       "description": "Applies Accuracy UP(LV 2) to all allies for 10 seconds and Physical Critical DamageUP(LV 2) for 10 seconds , 10 Magic Critical DamageUP(LV 2)",
@@ -260,6 +207,87 @@ export const skills = {
         {
           "name": "Magic Critical Damage+ Ultimate Lv2",
           "value": 250,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "My Radiant Flower Shining in the Night Sky",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Accuracy UP(LV 3) to all allies for 10 seconds and Physical Critical DamageUP(LV 3) for 10 seconds , 10 Magic Critical DamageUP(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 300,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv3",
+          "value": 300,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "My Radiant Flower Shining in the Night Sky",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Accuracy UP(LV 4) to all allies for 10 seconds and Physical Critical DamageUP(LV 4) for 10 seconds , 10 Magic Critical DamageUP(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 350,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv4",
+          "value": 350,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "My Radiant Flower Shining in the Night Sky",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Accuracy UP(LV 5) to all allies for 10 seconds and Physical Critical DamageUP(LV 5) for 10 seconds , 10 Magic Critical DamageUP(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv5",
+          "value": 400,
           "type": "flat",
           "duration": 10
         }

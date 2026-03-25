@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "I'll kill you!",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 HP Regeneration+150",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 HP Regeneration+150",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack +850 UP for 12 seconds , 12 HP Regeneration+150",
+      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 HP Regeneration 5%+150",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 HP Regeneration 5%+150",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds , 12 HP Regeneration 5%+150",
       "target": "Self",
       "castTime": 1.44,
       "damageScaling": null,
@@ -165,7 +175,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Dragon Halberd Flash",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -15 DOWN for 7 seconds",
-      "effect": "320% + 200",
-      "buffEffects": [
-        {
-          "name": "Accuracy - LvMax",
-          "value": -15,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I'll kill you!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack +40 UP for 12 seconds , 12 HP Regeneration+150",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Dragon Tyrant Slash Charge Blade",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds, 4s Blind for",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Dragon Tyrant Slash Charge Blade",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds, 5s Blind for",
@@ -249,7 +196,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -259,12 +206,75 @@ export const skills = {
           "duration": 5
         }
       ]
+    },
+    {
+      "rank": 3,
+      "name": "Dragon Tyrant Slash Charge Blade",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds, 5s Blind for",
+      "effect": "1620% + 1380",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Dragon Tyrant Slash Charge Blade",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds, 6s Blind for",
+      "effect": "1739% + 1500",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Dragon Tyrant Slash Charge Blade",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds, 6s Blind for",
+      "effect": "1800% + 1600",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        }
+      ]
     }
   ],
   "passives": [
     {
       "slot": 1,
-      "name": "Max HP +, Shield, Shield",
+      "name": "Max HP +, Shield",
       "icon": "skill001/skill1001",
       "effect": "Max HP + (+3444), Shield (+9999%), Shield (+9999%)",
       "effectValues": [

@@ -5,7 +5,7 @@
 export const prideLuciferData = {
   // Basic Character Information
   name: 'Pride-Lucifer',
-  image: 'Lucifer', // Image identifier
+  image: 'Lucifer.png', // Image identifier
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -99,7 +99,7 @@ export const prideLuciferData = {
   // Memory Card
   memoryCard: {
     name: 'Pride or Tsundere?',
-    image: 'lucifercard', // Memory card image
+    image: 'Lucifercard.png', // Memory card image
     title: 'Pride or Tsundere?',
     level: '80/80',
     rarity: '6-star (SSR)',

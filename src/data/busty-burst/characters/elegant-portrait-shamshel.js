@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -137,41 +147,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Annoying!",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemy",
-      "effect": "229% + 80",
+      "name": "I’ll eat you up!",
+      "icon": "skill001/skill0006_2",
+      "description": "Deals magic damage to the 3 nearest enemies and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "380% + 380",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Mm-hmm, I’m the First Queen♪",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Charm for 3 seconds",
-      "effect": "180% + 110",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
+      "name": "I’ll eat you up!",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "420% + 450",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "I’ll eat you up!",
-      "icon": "skill001/skill0006_1",
+      "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the 3 nearest enemies and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "330% + 300",
+      "effect": "450% + 490",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "I’ll eat you up!",
-      "icon": "skill001/skill0006_2",
+      "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the 3 nearest enemies and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "380% + 380",
+      "effect": "480% + 520",
       "buffEffects": []
     }
   ],

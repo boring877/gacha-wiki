@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Goddess, please help everyone!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Healing Shield (300, restores 100%) to all allies for 15 seconds and Physical Healing Shield (300, restores 100%) for 15 seconds",
-      "descriptionLv1": "Applies Physical Healing Shield (300, restores 100%) to all allies for 15 seconds and Physical Healing Shield (300, restores 100%) for 15 seconds",
-      "descriptionLv90": "Applies Physical Healing Shield (300, restores 100%) to all allies for 15 seconds and Physical Healing Shield (300, restores 100%) for 15 seconds",
+      "description": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
+      "descriptionLv1": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
+      "descriptionLv90": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "I can't do this!",
       "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts HP Regeneration+150 for 5 seconds",
-      "descriptionLv1": "nearest ally3restore HP and inflicts HP Regeneration+150 for 5 seconds",
-      "descriptionLv90": "nearest ally3restore HP and inflicts HP Regeneration+150 for 5 seconds",
+      "description": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "descriptionLv1": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "descriptionLv90": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
       "target": "Nearest Ally",
       "castTime": 1.22,
       "damageScaling": "800% ATK",
@@ -172,63 +182,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Goddess, please help everyone!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Healing Shield (300, restores 100%) to all allies for 15 seconds and Physical Healing Shield (300, restores 100%) for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Healing Shield Lv3",
-          "value": 300,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Magic Healing Shield Lv3",
-          "value": 300,
-          "type": "percent",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "I can't do this!",
-      "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts HP Regeneration+150 for 5 seconds",
-      "effect": "800% + 200",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Galc Special - Explosive Potion Shell!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 1 seconds , 4s Blind for",
-      "effect": "300% + 300",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Galc Special - Explosive Potion Shell!",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to all enemies and inflicts Stun for 1.5 seconds , 4.5s Blind for",
@@ -245,6 +198,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Galc Special - Explosive Potion Shell!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 1.5 seconds , 5s Blind for",
+      "effect": "409% + 550",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 1
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Galc Special - Explosive Potion Shell!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds , 5.5s Blind for",
+      "effect": "440% + 650",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Galc Special - Explosive Potion Shell!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds , 6s Blind for",
+      "effect": "470% + 700",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     }

@@ -5,7 +5,7 @@
 export const yuisData = {
   // Basic Character Information
   name: 'Yuis',
-  image: 'Yuis', // Use format: charactername (e.g., 'Yuis')
+  image: 'Yuis.png',
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

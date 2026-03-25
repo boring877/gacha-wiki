@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Higher than usual♪",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 8 seconds and Accuracy 11 UP for 8 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 8 seconds and Accuracy 11 UP for 8 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 8 seconds and Accuracy 23 UP for 8 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to self for 8 seconds and Accuracy 11 UP for 8 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 8 seconds and Accuracy 11 UP for 8 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 8 seconds and Accuracy 23 UP for 8 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Faster than usual♪",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed UP for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed UP for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed UP for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed 20%UP for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed 20%UP for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed 20%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "90% ATK",
@@ -162,70 +172,13 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Higher than usual♪",
-      "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 8 seconds and Accuracy 11 UP for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Faster than usual♪",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed UP for 6 seconds",
-      "effect": "90% + 50",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Dance with the princess in her gown♪",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds",
-      "effect": "360% + 394",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Dance with the princess in her gown♪",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(LV 2) for 10 seconds",
@@ -240,7 +193,70 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -19,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Dance with the princess in her gown♪",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(LV 3) for 10 seconds",
+      "effect": "522% + 496",
+      "buffEffects": [
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -22,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Dance with the princess in her gown♪",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(LV 4) for 10 seconds",
+      "effect": "579% + 532",
+      "buffEffects": [
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Dance with the princess in her gown♪",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Charm for 3 seconds and Magic Defense DOWN(LV 5) for 10 seconds",
+      "effect": "612% + 565",
+      "buffEffects": [
+        {
+          "name": "Charm",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
           "duration": 10
         }
       ]

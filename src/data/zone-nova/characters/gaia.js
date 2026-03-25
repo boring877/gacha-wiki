@@ -4,7 +4,7 @@
 export const gaiaData = {
   // Basic Character Information
   name: 'Gaia',
-  image: 'Gaia',
+  image: 'Gaia.png',
   rarity: 'SSR',
   element: 'Holy',
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

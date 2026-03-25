@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Graceful Bunny, Showdown!!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -420 DOWN for 6 seconds and Block-23 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-420 DOWN for 6 seconds and Block-23 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
       "target": "Back Enemy",
       "castTime": 1.05,
       "damageScaling": "360% ATK",
@@ -130,9 +140,9 @@ export const skills = {
       "slot": 3,
       "name": "GoGo,Bunny's！",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
+      "description": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed -20%DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed -20%DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed -20%DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "300% ATK",
@@ -198,87 +208,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Graceful Bunny, Showdown!!",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%6 Water Type damage taken by damage20%UP",
-      "effect": "360% + 600",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - LvMax",
-          "value": -60,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Rabbit",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "GoGo,Bunny's！",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy, inflict 3s and Action Speed DOWN for 10 seconds , self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +50%3",
-      "effect": "300% + 400",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Rabbit",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rabit Rave Recital",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds , all allies15 Hit-Based Damage UP(LV 1), self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +30%all allies10 Water Type ATKUP(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 40,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Rabbit",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds , all allies15 Hit-Based Damage UP(LV 2), self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +30%all allies10 Water Type ATKUP(LV 2)",
@@ -293,6 +222,87 @@ export const skills = {
         {
           "name": "Hit-Based Damage + Ultimate Lv2",
           "value": 45,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rabit Rave Recital",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds , all allies15 Hit-Based Damage UP(LV 3), self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +30%all allies10 Water Type ATKUP(LV 3)",
+      "effect": "600% + 700",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 50,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rabit Rave Recital",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds , all allies15 Hit-Based Damage UP(LV 4), self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +30%all allies10 Water Type ATKUP(LV 4)",
+      "effect": "660% + 800",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 55,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rabit Rave Recital",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds , all allies15 Hit-Based Damage UP(LV 5), self[Bunny]1([Bunny]1Speed2%UP, max10), [Bunny]10 when damage +30%all allies10 Water Type ATKUP(LV 5)",
+      "effect": "700% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 60,
           "type": "percent",
           "duration": 15
         },

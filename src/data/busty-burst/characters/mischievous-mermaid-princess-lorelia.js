@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -158,56 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Turn and—bam!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Block-13 DOWN for 10 seconds",
-      "effect": "280% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Bam-bam!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "110% + 70",
-      "buffEffects": []
-    },
-    {
-      "rank": 4,
-      "name": "Lorelia Attack!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "400% + 390",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Lorelia Attack!",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Action Speed DOWN(LV 1) for 10 seconds",
@@ -222,6 +182,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Lorelia Attack!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "550% + 530",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Lorelia Attack!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "610% + 560",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Lorelia Attack!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "650% + 610",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

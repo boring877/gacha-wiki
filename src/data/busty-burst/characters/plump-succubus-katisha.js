@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "The weight of justice!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Accuracy -23 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Accuracy -23 DOWN for 6 seconds and applies Action Speed 14%UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": "360% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Mm, mmhmm~ mm...!",
       "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies2s Charm for and Physical Defense -30 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "descriptionLv1": "to 3 nearest enemies2s Charm for and Physical Defense -30 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "descriptionLv90": "to 3 nearest enemies2s Charm for and Physical Defense -210 DOWN for 10 seconds , 10 Action Speed DOWN",
+      "description": "to 3 nearest enemies2s Charm for and Physical Defense -18%-30 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
+      "descriptionLv1": "to 3 nearest enemies2s Charm for and Physical Defense -18%-30 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
+      "descriptionLv90": "to 3 nearest enemies2s Charm for and Physical Defense -18%-210 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": null,
@@ -177,82 +187,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "The weight of justice!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 6 seconds and applies Action Speed UP to self for 6 seconds",
-      "effect": "360% + 300",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Mm, mmhmm~ mm...!",
-      "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies2s Charm for and Physical Defense -30 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Lv2",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Ah wah wah, I'm falling!?",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 1)",
-      "effect": "1100% + 1000",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 2)",
@@ -267,7 +208,70 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Ah wah wah, I'm falling!?",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 3)",
+      "effect": "1470% + 1350",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Ah wah wah, I'm falling!?",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 4)",
+      "effect": "1590% + 1500",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Ah wah wah, I'm falling!?",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 5)",
+      "effect": "1700% + 1600",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

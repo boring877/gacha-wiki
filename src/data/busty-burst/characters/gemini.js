@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,9 +111,9 @@ export const skills = {
       "slot": 3,
       "name": "This isn’t something an idiot could pull off, you know?",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -210 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "120% ATK",
@@ -145,47 +155,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Don’t underestimate a treasure hunter!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "400% + 160",
+      "name": "Cruel Destroyer",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the 3 nearest enemies",
+      "effect": "600% + 650",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "This isn’t something an idiot could pull off, you know?",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -30 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "effect": "120% + 50",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
+      "name": "Cruel Destroyer",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies",
+      "effect": "750% + 750",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Cruel Destroyer",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "500% + 500",
+      "effect": "800% + 800",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Cruel Destroyer",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "600% + 650",
+      "effect": "850% + 850",
       "buffEffects": []
     }
   ],

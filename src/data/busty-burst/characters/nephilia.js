@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Denaria!",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken UP for 6 seconds and Block-13 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken UP for 6 seconds and Block-13 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken UP for 6 seconds and Block-26 DOWN for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken 20%UP for 6 seconds and Block-13 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken 20%UP for 6 seconds and Block-13 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken 20%UP for 6 seconds and Block-26 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.65,
       "damageScaling": "380% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Water Basin Punishment!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -23 DOWN for 10 seconds , 10 Action Speed DOWN",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -23 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "120% ATK",
@@ -177,7 +187,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -190,81 +200,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Denaria!",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Water Type Damage Taken UP for 6 seconds and Block-13 DOWN for 6 seconds",
-      "effect": "380% + 500",
-      "buffEffects": [
-        {
-          "name": "Water Type Damage Taken + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Water Basin Punishment!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed DOWN",
-      "effect": "120% + 200",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Water Goddess Denaria! Bring divine punishment upon them!",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 2)",
@@ -279,12 +214,93 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Critical Damage+ Ultimate Lv2",
           "value": 350,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Water Goddess Denaria! Bring divine punishment upon them!",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 3)",
+      "effect": "520% + 900",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Water Goddess Denaria! Bring divine punishment upon them!",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 4)",
+      "effect": "560% + 1050",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Water Goddess Denaria! Bring divine punishment upon them!",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 5)",
+      "effect": "580% + 1200",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Critical Damage+ Ultimate Lv5",
+          "value": 500,
           "type": "flat",
           "duration": 10
         }

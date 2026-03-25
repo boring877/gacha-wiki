@@ -5,7 +5,7 @@
 export const bastetData = {
   // Basic Character Information
   name: 'Bastet',
-  image: 'Bastet', // Use format: charactername (e.g., 'penny')
+  image: 'Bastet.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -71,7 +71,7 @@ export const bastetData = {
   // Memory Card
   memoryCard: {
     name: 'Annoying Classroom',
-    image: 'Bastetcard', // Use format: characternamecard (e.g., 'pennycard')
+    image: 'AnnoyingClassroom.png',
     stats: {
       hp: '4,200', // e.g., '8,600'
       attack: '650', // e.g., '480'

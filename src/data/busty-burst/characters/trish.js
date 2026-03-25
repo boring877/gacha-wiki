@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Tracy Special - Power Drink",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
-      "descriptionLv1": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
-      "descriptionLv90": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 23 UP for 10 seconds",
+      "description": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
+      "descriptionLv1": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
+      "descriptionLv90": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 23 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "Tracy Special - Stamina Drink",
       "icon": "skill001/skill0021",
-      "description": "Applies HP Regeneration+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
-      "descriptionLv1": "Applies HP Regeneration+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
-      "descriptionLv90": "Applies HP Regeneration+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
+      "description": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
+      "descriptionLv1": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
+      "descriptionLv90": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -178,93 +188,19 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Tracy Special - Power Drink",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Damage UP(+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Damage + Lv4",
-          "value": 35,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Tracy Special - Stamina Drink",
-      "icon": "skill001/skill0021",
-      "description": "Applies HP Regeneration+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv4",
-          "value": 6,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent"
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Tracy Special - Ultra Drink!!",
-      "icon": "skill001/skill0022_1",
-      "description": "Applies HP RegenerationUP(LV 1) to all allies for 5 seconds and Physical Attack UP(LV 1) for 10 seconds , 10 Magic Attack UP(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 11,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Tracy Special - Ultra Drink!!",
       "icon": "skill001/skill0022_2",
       "description": "Applies HP RegenerationUP(LV 2) to all allies for 5 seconds and Physical Attack UP(LV 2) for 10 seconds , 10 Magic Attack UP(LV 2)",
@@ -279,13 +215,94 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Tracy Special - Ultra Drink!!",
+      "icon": "skill001/skill0022_3",
+      "description": "Applies HP RegenerationUP(LV 3) to all allies for 5 seconds and Physical Attack UP(LV 3) for 10 seconds , 10 Magic Attack UP(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 13,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Tracy Special - Ultra Drink!!",
+      "icon": "skill001/skill0022_4",
+      "description": "Applies HP RegenerationUP(LV 4) to all allies for 5 seconds and Physical Attack UP(LV 4) for 10 seconds , 10 Magic Attack UP(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 14,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Tracy Special - Ultra Drink!!",
+      "icon": "skill001/skill0022_5",
+      "description": "Applies HP RegenerationUP(LV 5) to all allies for 5 seconds and Physical Attack UP(LV 5) for 10 seconds , 10 Magic Attack UP(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 15,
+          "type": "percent",
+          "duration": 5
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

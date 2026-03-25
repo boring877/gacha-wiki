@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "I'll harvest properly",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -320 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-320 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "340% ATK",
@@ -116,9 +126,9 @@ export const skills = {
       "slot": 3,
       "name": "Wanna give it a try?",
       "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts Debuff Resistance UP for 10 seconds",
-      "descriptionLv1": "nearest ally3restore HP and inflicts Debuff Resistance UP for 10 seconds",
-      "descriptionLv90": "nearest ally3restore HP and inflicts Debuff Resistance UP for 10 seconds",
+      "description": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
+      "descriptionLv1": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
+      "descriptionLv90": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
       "target": "Nearest Ally",
       "castTime": 1.08,
       "damageScaling": "850% ATK",
@@ -164,57 +174,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I'll harvest properly",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -50 DOWN for 6 seconds",
-      "effect": "340% + 120",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Wanna give it a try?",
-      "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts Debuff Resistance UP for 10 seconds",
-      "effect": "850% + 150",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance Lv3",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Now is the time to harvest!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Blind for 4 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "1150% + 900",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Now is the time to harvest!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 5 seconds and Action Speed DOWN(LV 2) for 10 seconds",
@@ -229,6 +188,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Now is the time to harvest!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Blind for 5 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "1540% + 1200",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Now is the time to harvest!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Blind for 6 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "1650% + 1350",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Now is the time to harvest!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Blind for 6 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -30,
           "type": "flat",
           "duration": 10
         }

@@ -4,7 +4,7 @@
 export const odinData = {
   // Basic Character Information
   name: 'Odin',
-  image: 'Odin', // charactername
+  image: 'Odin.png', // charactername
   rarity: 'SSR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

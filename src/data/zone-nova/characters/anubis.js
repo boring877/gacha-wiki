@@ -5,7 +5,7 @@ export const anubisData = {
   // Basic Character Information
   name: 'Anubis',
   chineseName: '阿努比斯',
-  image: 'Anubis', // Use format: charactername (e.g., 'Anubis')
+  image: 'Anubis.png', // Use format: charactername (e.g., 'Anubis')
   rarity: 'SSR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

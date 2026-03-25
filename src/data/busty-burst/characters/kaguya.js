@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Poison Princess’s Embrace",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Poison for 10 seconds and Block-13 DOWN for 8 seconds",
-      "effect": "250% + 150",
-      "buffEffects": [
-        {
-          "name": "Poison LvMax",
-          "value": -300,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Calamity of Serpent Venom",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 5 seconds and Accuracy -11 DOWN for 8 seconds",
-      "effect": "85% + 70",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Endless Wailing Black Lotus",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Confusion for 5 seconds and Fear Lv 1 for 3 seconds",
-      "effect": "450% + 350",
-      "buffEffects": [
-        {
-          "name": "Confusion",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Fear Ultimate Lv1",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Endless Wailing Black Lotus",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to all enemies and inflicts Confusion for 6 seconds and Fear Lv 2 for 3 seconds",
@@ -253,6 +200,69 @@ export const skills = {
         },
         {
           "name": "Fear Ultimate Lv2",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Endless Wailing Black Lotus",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Confusion for 6 seconds and Fear Lv 3 for 3 seconds",
+      "effect": "630% + 500",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Fear Ultimate Lv3",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Endless Wailing Black Lotus",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to all enemies and inflicts Confusion for 7 seconds and Fear Lv 4 for 3 seconds",
+      "effect": "700% + 550",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Fear Ultimate Lv4",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Endless Wailing Black Lotus",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to all enemies and inflicts Confusion for 8 seconds and Fear Lv 5 for 3 seconds",
+      "effect": "750% + 600",
+      "buffEffects": [
+        {
+          "name": "Confusion",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
+        },
+        {
+          "name": "Fear Ultimate Lv5",
           "value": 0,
           "type": "unknown",
           "duration": 3

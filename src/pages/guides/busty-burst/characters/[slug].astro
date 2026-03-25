@@ -180,6 +180,8 @@ const highlightValues = (text: string) => {
   return result;
 };
 
+const BUFF_LEVEL_PERCENT: Record<string, number> = { '1': 10, '2': 14, '3': 18, '4': 21, '5': 23, 'Max': 25 };
+
 const formatBuffEffect = (b: any) => {
   if (!b || (b.value === 0 && b.type === 'unknown')) return '';
   const sign = b.value > 0 ? '+' : '';
@@ -193,6 +195,14 @@ const formatBuffEffect = (b: any) => {
     result += ` ${flatSign}${b.flatValue}`;
     if (b.flatGrowth) {
       result += ` (${b.flatGrowth >= 0 ? '+' : ''}${b.flatGrowth}/lv)`;
+    }
+  }
+
+  const lvMatch = b.name?.match(/Lv(\d+|Max)/i);
+  if (lvMatch && b.type === 'flat' && (b.name?.toLowerCase().includes('defense') || false)) {
+    const pct = BUFF_LEVEL_PERCENT[lvMatch[1]];
+    if (pct) {
+      result = `${b.name} ${pct}%${result.includes(val) ? '' : ` ${val}`}`;
     }
   }
 

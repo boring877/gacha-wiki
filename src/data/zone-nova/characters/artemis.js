@@ -5,7 +5,7 @@
 export const artemisData = {
   // Basic Character Information
   name: 'Artemis',
-  image: 'Artemis', // Use format: charactername (e.g., 'penny')
+  image: 'Artemis.png', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Warrior', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

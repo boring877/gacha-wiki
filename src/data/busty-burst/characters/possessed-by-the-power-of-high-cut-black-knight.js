@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shikime Purification",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken UP for 8 seconds and Block-11 DOWN for 8 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken UP for 8 seconds and Block-11 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken UP for 8 seconds and Block-23 DOWN for 8 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken 16%UP for 8 seconds and Block-11 DOWN for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken 16%UP for 8 seconds and Block-11 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken 16%UP for 8 seconds and Block-23 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "100% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Water Gate Blessing",
       "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK UP",
-      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK UP",
-      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK UP",
+      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
+      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
+      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -191,81 +201,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Shikime Purification",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Type Damage Taken UP for 8 seconds and Block-11 DOWN for 8 seconds",
-      "effect": "100% + 100",
-      "buffEffects": [
-        {
-          "name": "Magic Type Damage Taken + Lv3",
-          "value": 16,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Water Gate Blessing",
-      "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Damage + Lv3",
-          "value": 30,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Magic Type ATK + Lv5",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Divine Festival Purification",
-      "icon": "skill001/skill0022_1",
-      "description": "Applies HP RegenerationUP(LV 1) to all allies for 8 seconds and Debuff ResistanceUP(LV 1) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 6,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Debuff Resistance+ Ultimate Lv1",
-          "value": 0,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Mind Type Damage Taken Reduction Ultimate Lv1",
-          "value": -20,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_2",
       "description": "Applies HP RegenerationUP(LV 2) to all allies for 8 seconds and Debuff ResistanceUP(LV 2) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 2)",
@@ -286,6 +221,87 @@ export const skills = {
         {
           "name": "Mind Type Damage Taken Reduction Ultimate Lv2",
           "value": -25,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Divine Festival Purification",
+      "icon": "skill001/skill0022_3",
+      "description": "Applies HP RegenerationUP(LV 3) to all allies for 8 seconds and Debuff ResistanceUP(LV 3) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 8,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv3",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type Damage Taken Reduction Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Divine Festival Purification",
+      "icon": "skill001/skill0022_4",
+      "description": "Applies HP RegenerationUP(LV 4) to all allies for 8 seconds and Debuff ResistanceUP(LV 4) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 9,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv4",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type Damage Taken Reduction Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Divine Festival Purification",
+      "icon": "skill001/skill0022_5",
+      "description": "Applies HP RegenerationUP(LV 5) to all allies for 8 seconds and Debuff ResistanceUP(LV 5) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 10,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Debuff Resistance+ Ultimate Lv5",
+          "value": 0,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type Damage Taken Reduction Ultimate Lv5",
+          "value": -35,
           "type": "percent",
           "duration": 8
         }

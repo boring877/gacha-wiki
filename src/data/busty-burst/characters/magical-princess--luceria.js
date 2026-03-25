@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -161,56 +171,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Magic: Explosion",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --200 per second) for 10 seconds and Block-11 DOWN for 5 seconds",
-      "effect": "110% + 50",
-      "buffEffects": [
-        {
-          "name": "Burn LvMax",
-          "value": -200,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Magic: Healing",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies",
-      "effect": "1550% + 300",
-      "buffEffects": []
-    },
-    {
-      "rank": 4,
-      "name": "Magic: Shining Starlight",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 2 seconds and Burn(LV 1) for 15 seconds",
-      "effect": "370% + 410",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1500,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Magic: Shining Starlight",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds and Burn(LV 2) for 15 seconds",
@@ -225,6 +185,69 @@ export const skills = {
         {
           "name": "Burn Ultimate Lv2",
           "value": -2500,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Magic: Shining Starlight",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds and Burn(LV 3) for 15 seconds",
+      "effect": "530% + 510",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        },
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -3000,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Magic: Shining Starlight",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Burn(LV 4) for 15 seconds",
+      "effect": "590% + 550",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -3500,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Magic: Shining Starlight",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Burn(LV 5) for 15 seconds",
+      "effect": "620% + 590",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -4000,
           "type": "flat",
           "duration": 15
         }

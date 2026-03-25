@@ -5,7 +5,7 @@
 export const shuData = {
   // Basic Character Information
   name: 'Shu',
-  image: 'Shu', // Use format: charactername (e.g., 'shu')
+  image: 'Shu.png', // Use format: charactername (e.g., 'shu')
   rarity: 'SR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -71,7 +71,7 @@ export const shuData = {
   // Memory Card
   memoryCard: {
     name: 'Busy Officer (忙里偷闲)',
-    image: 'shucard', // Use format: characternamecard (e.g., 'shucard')
+    image: 'BusyOfficer.png',
     stats: {
       hp: '5,000', // e.g., '8,600'
       attack: '500', // e.g., '480'

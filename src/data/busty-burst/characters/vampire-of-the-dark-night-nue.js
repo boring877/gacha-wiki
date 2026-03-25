@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Jaw Gate - Bloodstained Fang",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack +30 UP, restore 6% of damage dealt as own HP5%HP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack +30 UP, restore 6% of damage dealt as own HP5%HP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-5000 after acting) for 15 seconds , activation beforeself6 Physical Attack +480 UP, restore 6% of damage dealt as own HP5%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP5%HP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP5%HP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-5000 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+480 UP, restore 6% of damage dealt as own HP5%HP",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "400% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Demon Eye Release",
       "icon": "skill001/skill0011",
-      "description": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -50 DOWN",
-      "descriptionLv1": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -50 DOWN",
-      "descriptionLv90": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -320 DOWN",
+      "description": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-50 DOWN",
+      "descriptionLv1": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-50 DOWN",
+      "descriptionLv90": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-320 DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": null,
@@ -172,7 +182,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Jaw Gate - Bloodstained Fang",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack +30 UP, restore 6% of damage dealt as own HP5%HP",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Bleed",
-          "value": -500,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Demon Eye Release",
-      "icon": "skill001/skill0011",
-      "description": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -50 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Confusion",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Physical Defense - Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Strange Tale - Mountain of Corpses River of Blood",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Mind Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Mind Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Strange Tale - Mountain of Corpses River of Blood",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Mind Type Damage Taken UP(LV 2) for 8 seconds",
@@ -262,12 +203,75 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Mind Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Strange Tale - Mountain of Corpses River of Blood",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Mind Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1470% + 1200",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Strange Tale - Mountain of Corpses River of Blood",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Mind Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Strange Tale - Mountain of Corpses River of Blood",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Mind Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

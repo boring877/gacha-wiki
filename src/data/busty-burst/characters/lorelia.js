@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -62,9 +72,9 @@ export const skills = {
       "slot": 3,
       "name": "It is my honor to be of assistance to you ",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense +100 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense +100 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense +190 UP for 12 seconds",
+      "description": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+100 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+100 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+190 UP for 12 seconds",
       "target": "Nearest Ally",
       "castTime": 1.38,
       "damageScaling": null,
@@ -113,39 +123,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Gentle Slap",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "240% + 120",
-      "buffEffects": []
+      "name": "Angering a merfolk is a frightening thing, you know!",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds",
+      "effect": "380% + 327",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
+        }
+      ]
     },
     {
       "rank": 3,
-      "name": "It is my honor to be of assistance to you ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense +100 UP for 12 seconds",
-      "effect": "300% + 0",
+      "name": "Angering a merfolk is a frightening thing, you know!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds",
+      "effect": "426% + 366",
       "buffEffects": [
         {
-          "name": "Physical Critical Damage+ Lv2",
-          "value": 30,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Physical Defense + Lv2",
-          "value": 100,
-          "type": "flat",
-          "duration": 12
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 2
         }
       ]
     },
     {
       "rank": 4,
       "name": "Angering a merfolk is a frightening thing, you know!",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds",
-      "effect": "320% + 286",
+      "effect": "458% + 399",
       "buffEffects": [
         {
           "name": "Stun",
@@ -158,9 +169,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Angering a merfolk is a frightening thing, you know!",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 2.5 seconds",
-      "effect": "380% + 327",
+      "effect": "488% + 422",
       "buffEffects": [
         {
           "name": "Stun",

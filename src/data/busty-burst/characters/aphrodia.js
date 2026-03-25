@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -73,9 +83,9 @@ export const skills = {
       "slot": 3,
       "name": "Queen’s Reward",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +20 UP to all allies for 8 seconds",
-      "descriptionLv1": "Applies Physical Attack +20 UP to all allies for 8 seconds",
-      "descriptionLv90": "Applies Physical Attack +110 UP to all allies for 8 seconds",
+      "description": "Applies Physical Attack 10%+20 UP to all allies for 8 seconds",
+      "descriptionLv1": "Applies Physical Attack 10%+20 UP to all allies for 8 seconds",
+      "descriptionLv90": "Applies Physical Attack 10%+110 UP to all allies for 8 seconds",
       "target": "All Allies",
       "castTime": 1.78,
       "damageScaling": null,
@@ -116,51 +126,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Queen’s Rejection",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 20 UP to all allies for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Queen’s Reward",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +20 UP to all allies for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "The Continent’s Shining Treasure",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Shield(LV 1) for 10 seconds",
-      "effect": "2400% + 309",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield Ultimate Lv1",
-          "value": 20,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "The Continent’s Shining Treasure",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Hit-Based Shield(LV 2) for 10 seconds",
@@ -169,6 +134,51 @@ export const skills = {
         {
           "name": "Hit-Based Shield Ultimate Lv2",
           "value": 25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "The Continent’s Shining Treasure",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Shield(LV 3) for 10 seconds",
+      "effect": "3000% + 380",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv3",
+          "value": 25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "The Continent’s Shining Treasure",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Shield(LV 4) for 10 seconds",
+      "effect": "3240% + 414",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv4",
+          "value": 30,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "The Continent’s Shining Treasure",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Shield(LV 5) for 10 seconds",
+      "effect": "3360% + 498",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Shield Ultimate Lv5",
+          "value": 30,
           "type": "percent",
           "duration": 10
         }

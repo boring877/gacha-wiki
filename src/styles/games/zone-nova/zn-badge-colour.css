@@ -30,11 +30,13 @@
   /* Class Badge Colors */
   --zn-badge-guardian: #8e24aa; /* Guardian class - purple */
   --zn-badge-warrior: #d32f2f; /* Warrior class - red */
+  --zn-badge-attacker: #d32f2f; /* Attacker class - uses warrior styling */
   --zn-badge-rogue: #388e3c; /* Rogue class - green */
   --zn-badge-mage: #1976d2; /* Mage class - blue */
   --zn-badge-healer: #00796b; /* Healer class - teal */
   --zn-badge-buffer: #f57c00; /* Buffer class - orange */
   --zn-badge-debuffer: #5d4037; /* Debuffer class - brown */
+  --zn-badge-disruptor: #5d4037; /* Disruptor class - uses debuffer styling */
   --zn-badge-unknown: #757575; /* Unknown class - gray */
 
   /* Additional Badge Colors for all elements */
@@ -95,6 +97,9 @@
 .class-name.warrior {
   color: var(--zn-badge-orange);
 }
+.class-name.attacker {
+  color: var(--zn-badge-orange);
+}
 .class-name.rogue {
   color: var(--zn-badge-purple);
 }
@@ -105,6 +110,9 @@
   color: var(--zn-badge-green);
 }
 .class-name.debuffer {
+  color: var(--zn-badge-red);
+}
+.class-name.disruptor {
   color: var(--zn-badge-red);
 }
 .class-name.healer {
@@ -287,6 +295,10 @@
   background: var(--zn-badge-warrior);
   color: var(--zn-badge-white);
 }
+.tag-class.attacker {
+  background: var(--zn-badge-attacker);
+  color: var(--zn-badge-white);
+}
 .tag-class.rogue {
   background: var(--zn-badge-rogue);
   color: var(--zn-badge-white);
@@ -301,6 +313,10 @@
 }
 .tag-class.debuffer {
   background: var(--zn-badge-debuffer);
+  color: var(--zn-badge-white);
+}
+.tag-class.disruptor {
+  background: var(--zn-badge-disruptor);
   color: var(--zn-badge-white);
 }
 .tag-class.healer {
@@ -588,6 +604,10 @@
   background: var(--zn-badge-warrior);
   color: var(--zn-badge-white);
 }
+.class-badge.attacker {
+  background: var(--zn-badge-attacker);
+  color: var(--zn-badge-white);
+}
 .class-badge.rogue {
   background: var(--zn-badge-rogue);
   color: var(--zn-badge-white);
@@ -606,6 +626,10 @@
 }
 .class-badge.debuffer {
   background: var(--zn-badge-debuffer);
+  color: var(--zn-badge-white);
+}
+.class-badge.disruptor {
+  background: var(--zn-badge-disruptor);
   color: var(--zn-badge-white);
 }
 .class-badge.unknown {

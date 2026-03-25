@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -176,69 +186,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Double Bullet - Splash",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds, [Water Pressure] Lv whendamage+20%",
-      "effect": "350% + 600",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Temptation Halo",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Critical Damage 60 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv5",
-          "value": 60,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Summer Sparkle - Water Stream Cannon",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 1) for 8 seconds, Ultimate activation beforeapply to self15 Hit-Based Damage UP(LV 1), 10 [Water Pressure](Water Type ATK10%UP)",
-      "effect": "600% + 1000",
-      "buffEffects": [
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 50,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Water Pressure",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Summer Sparkle - Water Stream Cannon",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 2) for 8 seconds, Ultimate activation beforeapply to self15 Hit-Based Damage UP(LV 2), 10 [Water Pressure](Water Type ATK10%UP)",
@@ -253,6 +200,87 @@ export const skills = {
         {
           "name": "Hit-Based Damage + Ultimate Lv2",
           "value": 60,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Water Pressure",
+          "value": 10,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Summer Sparkle - Water Stream Cannon",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 3) for 8 seconds, Ultimate activation beforeapply to self15 Hit-Based Damage UP(LV 3), 10 [Water Pressure](Water Type ATK10%UP)",
+      "effect": "690% + 1600",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 70,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Water Pressure",
+          "value": 10,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Summer Sparkle - Water Stream Cannon",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 4) for 8 seconds, Ultimate activation beforeapply to self15 Hit-Based Damage UP(LV 4), 10 [Water Pressure](Water Type ATK10%UP)",
+      "effect": "720% + 1800",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 80,
+          "type": "percent",
+          "duration": 15
+        },
+        {
+          "name": "Water Pressure",
+          "value": 10,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Summer Sparkle - Water Stream Cannon",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 5) for 8 seconds, Ultimate activation beforeapply to self15 Hit-Based Damage UP(LV 5), 10 [Water Pressure](Water Type ATK10%UP)",
+      "effect": "750% + 2000",
+      "buffEffects": [
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 90,
           "type": "percent",
           "duration": 15
         },

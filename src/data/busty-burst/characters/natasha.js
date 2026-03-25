@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shield Bash",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed DOWN for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed -17%DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed -17%DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed -17%DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "350% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Solid Defense",
       "icon": "skill001/skill0015",
-      "description": "Applies Physical Defense +200 UP to self for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv1": "Applies Physical Defense +200 UP to self for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "Applies Physical Defense +560 UP to self for 12 seconds and Taunt for 12 seconds",
+      "description": "Applies Physical Defense 40%+200 UP to self for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv1": "Applies Physical Defense 40%+200 UP to self for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "Applies Physical Defense 40%+560 UP to self for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -176,69 +186,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Shield Bash",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2.5 seconds and Action Speed DOWN for 10 seconds",
-      "effect": "350% + 130",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Solid Defense",
-      "icon": "skill001/skill0015",
-      "description": "Applies Physical Defense +200 UP to self for 12 seconds and Taunt for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + LvMax",
-          "value": 200,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Reflective Impact",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Physical Reflect Shield(LV 1) to self for 15 secondsPhysical Shield(LV 1)",
-      "effect": "0% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Reflect Shield Ultimate Lv1",
-          "value": 999,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Physical Shield Lv1",
-          "value": 50,
-          "type": "percent",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Reflective Impact",
       "icon": "skill001/skill0020_1",
       "description": "Applies Physical Reflect Shield(LV 2) to self for 15 secondsPhysical Shield(LV 2)",
@@ -253,6 +200,69 @@ export const skills = {
         {
           "name": "Physical Shield Lv1",
           "value": 60,
+          "type": "percent",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Reflective Impact",
+      "icon": "skill001/skill0020_1",
+      "description": "Applies Physical Reflect Shield(LV 3) to self for 15 secondsPhysical Shield(LV 3)",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Reflect Shield Ultimate Lv3",
+          "value": 999,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Physical Shield Lv1",
+          "value": 70,
+          "type": "percent",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Reflective Impact",
+      "icon": "skill001/skill0020_1",
+      "description": "Applies Physical Reflect Shield(LV 4) to self for 15 secondsPhysical Shield(LV 4)",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Reflect Shield Ultimate Lv4",
+          "value": 999,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Physical Shield Lv1",
+          "value": 75,
+          "type": "percent",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Reflective Impact",
+      "icon": "skill001/skill0020_1",
+      "description": "Applies Physical Reflect Shield(LV 5) to self for 15 secondsPhysical Shield(LV 5)",
+      "effect": "0% + 0",
+      "buffEffects": [
+        {
+          "name": "Physical Reflect Shield Ultimate Lv5",
+          "value": 999,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Physical Shield Lv1",
+          "value": 80,
           "type": "percent",
           "duration": 15
         }

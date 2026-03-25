@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "There's a chance!",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 5 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "220.00000000000003% ATK",
@@ -113,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Defense is absolute!",
       "icon": "skill001/skill0019",
-      "description": "Applies Healing Shield (270, restores 100%) to self for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv1": "Applies Healing Shield (270, restores 100%) to self for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "Applies Healing Shield (270, restores 100%) to self for 12 seconds and Taunt for 12 seconds",
+      "description": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv1": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -156,64 +166,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "There's a chance!",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 5 seconds",
-      "effect": "220% + 110",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Defense is absolute!",
-      "icon": "skill001/skill0019",
-      "description": "Applies Healing Shield (270, restores 100%) to self for 12 seconds and Taunt for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Healing Shield Lv4",
-          "value": 270,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "A full-power strike!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "950% + 800",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "A full-power strike!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
@@ -222,7 +181,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -18,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "A full-power strike!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1300% + 1050",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -21,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "A full-power strike!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1400% + 1150",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -23,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "A full-power strike!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1450% + 1200",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
           "duration": 10
         }
       ]

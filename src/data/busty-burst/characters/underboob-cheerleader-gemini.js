@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Get on your feet Yell",
       "icon": "skill001/skill0013",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack +50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
-      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack +50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
-      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack +950 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
+      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
+      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
+      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+950 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
       "target": "Highest Phys ATK Ally",
       "castTime": 1.3,
       "damageScaling": null,
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "A gorgeous opening!",
       "icon": "skill001/skill0019",
-      "description": "highest Phys ATK ally 1inflict15 Physical Defense +190 UP and Magic Defense+190 UP for 15 seconds",
-      "descriptionLv1": "highest Phys ATK ally 1inflict15 Physical Defense +190 UP and Magic Defense+190 UP for 15 seconds",
-      "descriptionLv90": "highest Phys ATK ally 1inflict15 Physical Defense +460 UP and Magic Defense+460 UP for 15 seconds",
+      "description": "highest Phys ATK ally 1inflict15 Physical Defense 30%+190 UP and Magic Defense 30%+190 UP for 15 seconds",
+      "descriptionLv1": "highest Phys ATK ally 1inflict15 Physical Defense 30%+190 UP and Magic Defense 30%+190 UP for 15 seconds",
+      "descriptionLv90": "highest Phys ATK ally 1inflict15 Physical Defense 30%+460 UP and Magic Defense 30%+460 UP for 15 seconds",
       "target": "Highest Phys ATK Ally",
       "castTime": 1.3,
       "damageScaling": null,
@@ -185,75 +195,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Get on your feet Yell",
-      "icon": "skill001/skill0013",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack +50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Cheer Up",
-          "value": 10,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Physical Attack + LvMax",
-          "value": 50,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Physical Critical Damage+ LvMax",
-          "value": 80,
-          "type": "percent",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "A gorgeous opening!",
-      "icon": "skill001/skill0019",
-      "description": "highest Phys ATK ally 1inflict15 Physical Defense +190 UP and Magic Defense+190 UP for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv5",
-          "value": 190,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Defense+ Lv5",
-          "value": 190,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "GO　FIGHT　WIN！！",
-      "icon": "skill001/skill0020_1",
-      "description": "Applies Action Speed UP(LV 1) to all allies for 10 seconds and Accuracy UP(LV 1) for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "GO　FIGHT　WIN！！",
       "icon": "skill001/skill0020_2",
       "description": "Applies Action Speed UP(LV 2) to all allies for 10 seconds and Accuracy UP(LV 2) for 10 seconds",
@@ -268,6 +209,69 @@ export const skills = {
         {
           "name": "Accuracy + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "GO　FIGHT　WIN！！",
+      "icon": "skill001/skill0020_3",
+      "description": "Applies Action Speed UP(LV 3) to all allies for 10 seconds and Accuracy UP(LV 3) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "GO　FIGHT　WIN！！",
+      "icon": "skill001/skill0020_4",
+      "description": "Applies Action Speed UP(LV 4) to all allies for 10 seconds and Accuracy UP(LV 4) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "GO　FIGHT　WIN！！",
+      "icon": "skill001/skill0020_5",
+      "description": "Applies Action Speed UP(LV 5) to all allies for 10 seconds and Accuracy UP(LV 5) for 10 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Accuracy + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -169,63 +179,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Light Beam by Instinct!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Freeze(Unable to act;HP --650 per second) for 3 seconds",
-      "effect": "85% + 60",
-      "buffEffects": [
-        {
-          "name": "Freeze Lv5",
-          "value": -650,
-          "type": "flat",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Book Attack!",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Paralysis for 5 seconds and Accuracy -11 DOWN for 8 seconds",
-      "effect": "100% + 90",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Eliminate you all ",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Freeze(LV 1) for 3 seconds and inflicts Paralysis for 7 seconds",
-      "effect": "500% + 350",
-      "buffEffects": [
-        {
-          "name": "Freeze Ultimate Lv1",
-          "value": -2500,
-          "type": "flat",
-          "duration": 3
-        },
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Eliminate you all ",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to all enemies and inflicts Freeze(LV 2) for 3 seconds and inflicts Paralysis for 8 seconds",
@@ -242,6 +195,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Eliminate you all ",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Freeze(LV 3) for 3 seconds and inflicts Paralysis for 8 seconds",
+      "effect": "850% + 522",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv3",
+          "value": -4000,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Eliminate you all ",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to all enemies and inflicts Freeze(LV 4) for 3 seconds and inflicts Paralysis for 9 seconds",
+      "effect": "950% + 580",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv4",
+          "value": -4500,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Eliminate you all ",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to all enemies and inflicts Freeze(LV 5) for 3 seconds and inflicts Paralysis for 9 seconds",
+      "effect": "1000% + 645",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv5",
+          "value": -5000,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 9
         }
       ]
     }

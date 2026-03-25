@@ -4,7 +4,7 @@
 export const thorData = {
   // Basic Character Information
   name: 'Thor',
-  image: 'Thor', // Use format: charactername (e.g., 'penny')
+  image: 'Thor.png', // Use format: charactername (e.g., 'penny')
   rarity: 'SSR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

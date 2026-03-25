@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Slash!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 12 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "270% ATK",
@@ -138,41 +148,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Slash!",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 12 seconds",
-      "effect": "270% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
+      "name": "Sky Fall",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the nearest enemy",
+      "effect": "1200% + 800",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Pierce through!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "effect": "220% + 70",
+      "name": "Sky Fall",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy",
+      "effect": "1350% + 950",
       "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Sky Fall",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy",
-      "effect": "1000% + 600",
+      "effect": "1450% + 1100",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Sky Fall",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy",
-      "effect": "1200% + 800",
+      "effect": "1550% + 1200",
       "buffEffects": []
     }
   ],

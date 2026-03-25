@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Bitter Grossular",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-40 DOWN",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-40 DOWN",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 15 seconds and Block-23 DOWN for 6 seconds , 6 Magic Defense-220 DOWN",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-21%-40 DOWN",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-21%-40 DOWN",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 15 seconds and Block-23 DOWN for 6 seconds , 6 Magic Defense-21%-220 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": "370% ATK",
@@ -131,9 +141,9 @@ export const skills = {
       "slot": 3,
       "name": "Sweet Ring",
       "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to all allies for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "descriptionLv1": "Applies Fire Type ATK UP to all allies for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "descriptionLv90": "Applies Fire Type ATK UP to all allies for 10 seconds and Magic Critical Damage 680 UP for 10 seconds",
+      "description": "Applies Fire Type ATK 15%UP to all allies for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
+      "descriptionLv1": "Applies Fire Type ATK 15%UP to all allies for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
+      "descriptionLv90": "Applies Fire Type ATK 15%UP to all allies for 10 seconds and Magic Critical Damage 680 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -186,88 +196,13 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Bitter Grossular",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-40 DOWN",
-      "effect": "370% + 500",
-      "buffEffects": [
-        {
-          "name": "Burn Lv5",
-          "value": -150,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Sweet Ring",
-      "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK UP to all allies for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Fire Type ATK + Lv4",
-          "value": 15,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I offer the supreme light. Ignite myself, unto eternity",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 1) for 15 seconds, 3s Stun for, 10 Magic Defense DOWN(LV 1)",
-      "effect": "390% + 400",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1000,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 2) for 15 seconds, 4s Stun for, 10 Magic Defense DOWN(LV 2)",
@@ -288,7 +223,88 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -25,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I offer the supreme light. Ignite myself, unto eternity",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 3) for 15 seconds, 4s Stun for, 10 Magic Defense DOWN(LV 3)",
+      "effect": "509% + 750",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -1900,
           "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I offer the supreme light. Ignite myself, unto eternity",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 4) for 15 seconds, 5s Stun for, 10 Magic Defense DOWN(LV 4)",
+      "effect": "550% + 900",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -2200,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I offer the supreme light. Ignite myself, unto eternity",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 5) for 15 seconds, 5s Stun for, 10 Magic Defense DOWN(LV 5)",
+      "effect": "570% + 1000",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -2500,
+          "type": "flat",
+          "duration": 15
+        },
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

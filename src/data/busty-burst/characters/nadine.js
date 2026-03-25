@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -73,9 +83,9 @@ export const skills = {
       "slot": 3,
       "name": "Flame Lightning",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +50 UP to all allies for 10 seconds and Magic Defense+50 UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Defense +50 UP to all allies for 10 seconds and Magic Defense+50 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Defense +140 UP to all allies for 10 seconds and Magic Defense+140 UP for 10 seconds",
+      "description": "Applies Physical Defense 10%+50 UP to all allies for 10 seconds and Magic Defense 10%+50 UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Defense 10%+50 UP to all allies for 10 seconds and Magic Defense 10%+50 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Defense 10%+140 UP to all allies for 10 seconds and Magic Defense 10%+140 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -124,57 +134,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lightning",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Burn(HP --80 per second) for 10 seconds",
-      "effect": "240% + 110",
-      "buffEffects": [
-        {
-          "name": "Burn Lv3",
-          "value": -80,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Flame Lightning",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +50 UP to all allies for 10 seconds and Magic Defense+50 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv1",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Defense+ Lv1",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Behold the Radiance of Nobility",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to all enemies and inflicts Burn(LV 1) for 12 seconds",
-      "effect": "450% + 300",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -800,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Behold the Radiance of Nobility",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to all enemies and inflicts Burn(LV 2) for 12 seconds",
@@ -183,6 +142,51 @@ export const skills = {
         {
           "name": "Burn Ultimate Lv2",
           "value": -1000,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Behold the Radiance of Nobility",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to all enemies and inflicts Burn(LV 3) for 12 seconds",
+      "effect": "765% + 485",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -1200,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Behold the Radiance of Nobility",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to all enemies and inflicts Burn(LV 4) for 12 seconds",
+      "effect": "855% + 576",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -1400,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Behold the Radiance of Nobility",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to all enemies and inflicts Burn(LV 5) for 12 seconds",
+      "effect": "900% + 655",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -1500,
           "type": "flat",
           "duration": 12
         }

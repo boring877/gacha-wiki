@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Let’s go STARS!",
       "icon": "skill001/skill0021",
-      "description": "lowest HP allyrestore HP and inflicts Action Speed UP for 10 seconds",
-      "descriptionLv1": "lowest HP allyrestore HP and inflicts Action Speed UP for 10 seconds",
-      "descriptionLv90": "lowest HP allyrestore HP and inflicts Action Speed UP for 10 seconds",
+      "description": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
+      "descriptionLv1": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
+      "descriptionLv90": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
       "target": "Lowest HP Ally",
       "castTime": 1.3,
       "damageScaling": "2500% ATK",
@@ -161,57 +171,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Let’s go STARS!",
-      "icon": "skill001/skill0021",
-      "description": "lowest HP allyrestore HP and inflicts Action Speed UP for 10 seconds",
-      "effect": "2500% + 700",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Everyone, do your best~!",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to frontmost allyHP and inflicts Healing Shield (300) for 20 seconds",
-      "effect": "3000% + 500",
-      "buffEffects": [
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "You’ve got this!",
-      "icon": "skill001/skill0022_1",
-      "description": "Applies HP RegenerationUP(LV 1) to all allies for 10 seconds and Hit-Based Damage UP(LV 1) for 20 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 5,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "You’ve got this!",
       "icon": "skill001/skill0022_2",
       "description": "Applies HP RegenerationUP(LV 2) to all allies for 10 seconds and Hit-Based Damage UP(LV 2) for 20 seconds",
@@ -226,6 +185,69 @@ export const skills = {
         {
           "name": "Hit-Based Damage + Ultimate Lv2",
           "value": 35,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "You’ve got this!",
+      "icon": "skill001/skill0022_3",
+      "description": "Applies HP RegenerationUP(LV 3) to all allies for 10 seconds and Hit-Based Damage UP(LV 3) for 20 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 7,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 40,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "You’ve got this!",
+      "icon": "skill001/skill0022_4",
+      "description": "Applies HP RegenerationUP(LV 4) to all allies for 10 seconds and Hit-Based Damage UP(LV 4) for 20 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 8,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 45,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "You’ve got this!",
+      "icon": "skill001/skill0022_5",
+      "description": "Applies HP RegenerationUP(LV 5) to all allies for 10 seconds and Hit-Based Damage UP(LV 5) for 20 seconds",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 9,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 50,
           "type": "percent",
           "duration": 20
         }

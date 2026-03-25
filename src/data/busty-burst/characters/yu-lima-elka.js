@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Let Me Play With You♪",
       "icon": "skill001/skill0008",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 7 seconds and Magic Attack -20 DOWN for 7 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 7 seconds and Magic Attack -20 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -2000 DOWN for 7 seconds and Magic Attack -20 DOWN for 7 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "110.00000000000001% ATK",
@@ -169,63 +179,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Let Me Play With You♪",
-      "icon": "skill001/skill0008",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -20 DOWN for 7 seconds and Magic Attack -20 DOWN for 7 seconds",
-      "effect": "110% + 60",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Magic Attack - Lv3",
-          "value": -20,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Become My Captive♪",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Charm for 3 seconds",
-      "effect": "300% + 150",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Phantom Nail",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds , 6s Curse for state",
-      "effect": "900% + 850",
-      "buffEffects": [
-        {
-          "name": "Paralysis",
-          "value": 0,
-          "type": "unknown",
-          "duration": 6
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds , 6s Curse for state",
@@ -242,6 +195,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Phantom Nail",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds , 7s Curse for state",
+      "effect": "1170% + 1010",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Phantom Nail",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds , 7s Curse for state",
+      "effect": "1260% + 1150",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Phantom Nail",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds , 8s Curse for state",
+      "effect": "1350% + 1300",
+      "buffEffects": [
+        {
+          "name": "Paralysis",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 8
         }
       ]
     }

@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Earth Grave",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-50 DOWN for 5 seconds",
-      "descriptionLv1": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-50 DOWN for 5 seconds",
-      "descriptionLv90": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-320 DOWN for 5 seconds",
+      "description": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%-50 DOWN for 5 seconds",
+      "descriptionLv1": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%-50 DOWN for 5 seconds",
+      "descriptionLv90": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-23%-320 DOWN for 5 seconds",
       "target": "Back Enemy",
       "castTime": 1.38,
       "damageScaling": "280% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Deep Freeze",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Freeze(Unable to act;HP --650 per second) for 1.5 seconds and Accuracy -11 DOWN for 9 seconds",
-      "effect": "85% + 70",
-      "buffEffects": [
-        {
-          "name": "Freeze Lv5",
-          "value": -650,
-          "type": "flat",
-          "duration": 1
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 9
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Earth Grave",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the farthest enemy and inflicts Stun for 1 seconds and Magic Defense-50 DOWN for 5 seconds",
-      "effect": "280% + 200",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Elemental Blast",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 1) for 9 seconds and BlockDOWN(LV 1) for 9 seconds",
-      "effect": "370% + 300",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 9
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 9
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Elemental Blast",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 2) for 9 seconds and BlockDOWN(LV 2) for 9 seconds",
@@ -254,6 +201,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Elemental Blast",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 3) for 9 seconds and BlockDOWN(LV 3) for 9 seconds",
+      "effect": "560% + 480",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 9
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Elemental Blast",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 4) for 9 seconds and BlockDOWN(LV 4) for 9 seconds",
+      "effect": "600% + 550",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 9
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Elemental Blast",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 5) for 9 seconds and BlockDOWN(LV 5) for 9 seconds",
+      "effect": "630% + 600",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 9
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 9
         }

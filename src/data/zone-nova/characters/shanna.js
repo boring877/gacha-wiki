@@ -5,7 +5,7 @@
 export const shannaData = {
   // Basic Character Information
   name: 'Shanna',
-  image: 'Shanna', // Use format: charactername (e.g., 'Shanna')
+  image: 'Shanna.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Fire', // Fire, Ice, Wind, Holy, Chaos
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

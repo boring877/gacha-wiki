@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Blow away...",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -40 DOWN for 12 seconds , 12 Block-11 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -40 DOWN for 12 seconds , 12 Block-11 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -220 DOWN for 12 seconds , 12 Block-23 DOWN",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-40 DOWN for 12 seconds , 12 Block-11 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-40 DOWN for 12 seconds , 12 Block-11 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-220 DOWN for 12 seconds , 12 Block-23 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.22,
       "damageScaling": "330% ATK",
@@ -192,81 +202,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Agony Torment",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Deadly Poison(HP --500 per second, stackable) for 4 seconds and Accuracy -13 DOWN for 6 seconds",
-      "effect": "280% + 300",
-      "buffEffects": [
-        {
-          "name": "Deadly Poison Lv5",
-          "value": -500,
-          "type": "flat",
-          "duration": 4
-        },
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Blow away...",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -40 DOWN for 12 seconds , 12 Block-11 DOWN",
-      "effect": "330% + 500",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Soul Shatter - Beast's Lament",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 3s , 5s Curse for, self10 Physical Critical DamageUP(LV 1)",
-      "effect": "1100% + 1000",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Physical Critical Damage+ Ultimate Lv1",
-          "value": 300,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Soul Shatter - Beast's Lament",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy, inflict 4s , 6s Curse for, self10 Physical Critical DamageUP(LV 2)",
@@ -287,6 +222,87 @@ export const skills = {
         {
           "name": "Physical Critical Damage+ Ultimate Lv2",
           "value": 350,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Soul Shatter - Beast's Lament",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy, inflict 4s , 6s Curse for, self10 Physical Critical DamageUP(LV 3)",
+      "effect": "1500% + 1500",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv3",
+          "value": 400,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Soul Shatter - Beast's Lament",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s , 7s Curse for, self10 Physical Critical DamageUP(LV 4)",
+      "effect": "1610% + 1600",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv4",
+          "value": 450,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Soul Shatter - Beast's Lament",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s , 7s Curse for, self10 Physical Critical DamageUP(LV 5)",
+      "effect": "1680% + 1700",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 7
+        },
+        {
+          "name": "Physical Critical Damage+ Ultimate Lv5",
+          "value": 500,
           "type": "percent",
           "duration": 10
         }

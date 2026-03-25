@@ -81,15 +81,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Cross Flash",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -205 DOWN for 7 seconds and Magic Attack -205 DOWN for 7 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -11%-205 DOWN for 7 seconds and Magic Attack -11%-205 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.28,
       "damageScaling": "120% ATK",
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "Holy Baptism",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack +30 UP",
-      "descriptionLv1": "Applies Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack +30 UP",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) to all allies for 15 seconds and Block 18 UP for 8 seconds , 8 Magic Attack +480 UP",
+      "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
+      "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 18 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
       "target": "All Allies",
       "castTime": 1.28,
       "damageScaling": null,
@@ -181,7 +191,7 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -194,81 +204,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Cross Flash",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "effect": "120% + 100",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Holy Baptism",
-      "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Healing Shield (+40, restores 200%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack +30 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Healing Shield Lv5",
-          "value": 30,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Block+ Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds , self10 HP RegenerationUP(LV 1)",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Magic Defense- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "HP Regeneration+ Ultimate Lv1",
-          "value": 5,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Sacred Tree. Hang, curse, and bring salvation",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds , self10 HP RegenerationUP(LV 2)",
@@ -283,12 +218,93 @@ export const skills = {
         {
           "name": "Magic Defense- Ultimate Lv2",
           "value": -18,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "HP Regeneration+ Ultimate Lv2",
           "value": 6,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds , self10 HP RegenerationUP(LV 3)",
+      "effect": "480% + 700",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv3",
+          "value": -21,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv3",
+          "value": 7,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds , self10 HP RegenerationUP(LV 4)",
+      "effect": "520% + 800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv4",
+          "value": -23,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv4",
+          "value": 8,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds , self10 HP RegenerationUP(LV 5)",
+      "effect": "540% + 900",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Defense- Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "HP Regeneration+ Ultimate Lv5",
+          "value": 9,
           "type": "percent",
           "duration": 10
         }

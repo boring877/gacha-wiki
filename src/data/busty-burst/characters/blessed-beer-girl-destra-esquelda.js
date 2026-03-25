@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Wake up!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed DOWN for 6 seconds or",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed DOWN for 6 seconds or",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed DOWN for 6 seconds or",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed -17%DOWN for 6 seconds or",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed -17%DOWN for 6 seconds or",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed -17%DOWN for 6 seconds or",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "100% ATK",
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Wake up!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Action Speed DOWN for 6 seconds or",
-      "effect": "100% + 150",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Action Speed - Lv4",
-          "value": -17,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Hey, blessing of Uranus!",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Accuracy -13 DOWN on the 3 nearest enemies for 10 seconds , 3s Charm for or",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Everyone, drink up!",
-      "icon": "skill001/skill0011",
-      "description": "all enemies2s Blind for and Action Speed DOWN(LV 1) for 10 seconds , Restores HP by to all allies or",
-      "effect": "1500% + 600",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
       "description": "all enemies3s Blind for and Action Speed DOWN(LV 2) for 10 seconds , Restores HP by to all allies or",
@@ -259,6 +206,69 @@ export const skills = {
           "duration": 10
         }
       ]
+    },
+    {
+      "rank": 3,
+      "name": "Everyone, drink up!",
+      "icon": "skill001/skill0011",
+      "description": "all enemies3s Blind for and Action Speed DOWN(LV 3) for 10 seconds , Restores HP by to all allies or",
+      "effect": "2000% + 1050",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Everyone, drink up!",
+      "icon": "skill001/skill0011",
+      "description": "all enemies4s Blind for and Action Speed DOWN(LV 4) for 10 seconds , Restores HP by to all allies or",
+      "effect": "2200% + 1200",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Everyone, drink up!",
+      "icon": "skill001/skill0011",
+      "description": "all enemies4s Blind for and Action Speed DOWN(LV 5) for 10 seconds , Restores HP by to all allies or",
+      "effect": "2300% + 1300",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
     }
   ],
   "passives": [
@@ -271,7 +281,7 @@ export const skills = {
     },
     {
       "slot": 2,
-      "name": "Max HP +, Banquet, Banquet",
+      "name": "Max HP +, Banquet",
       "icon": "skill001/skill1003",
       "effect": "Max HP + (+3444)",
       "effectValues": [

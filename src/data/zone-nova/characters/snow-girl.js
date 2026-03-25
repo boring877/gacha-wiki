@@ -5,7 +5,7 @@ export const snowGirlData = {
   // Basic Character Information
   name: 'Snow Girl',
   chineseName: '雪女',
-  image: 'Snow', // Use format: charactername (e.g., 'Snow')
+  image: 'Snow.png', // Use format: charactername (e.g., 'Snow')
   rarity: 'SR', // SSR, SR, R
   element: 'Ice', // Fire, Ice, Wind, Holy, Chaos
   class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

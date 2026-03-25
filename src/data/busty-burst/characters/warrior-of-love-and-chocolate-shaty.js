@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Want to do grown-up things together?",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK UP to self for 6 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK 15%UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK 15%UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK 15%UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "100% ATK",
@@ -161,57 +171,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Want to do grown-up things together?",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies , activation beforeApplies Mind Type ATK UP to self for 6 seconds",
-      "effect": "100% + 50",
-      "buffEffects": [
-        {
-          "name": "Mind Type ATK + Lv4",
-          "value": 15,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "You want some too?",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Block-9 DOWN on the 3 nearest enemies for 8 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Fascinating Trick Shot",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Hit-Based Damage UP(LV 1) to self for 6 seconds and Mind Type ATK UP(LV 1) for 6 seconds",
-      "effect": "400% + 600",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Damage + Ultimate Lv1",
-          "value": 70,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 15,
-          "type": "percent",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Fascinating Trick Shot",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Hit-Based Damage UP(LV 2) to self for 6 seconds and Mind Type ATK UP(LV 2) for 6 seconds",
@@ -226,6 +185,69 @@ export const skills = {
         {
           "name": "Mind Type ATK + Ultimate Lv2",
           "value": 20,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Fascinating Trick Shot",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Hit-Based Damage UP(LV 3) to self for 6 seconds and Mind Type ATK UP(LV 3) for 6 seconds",
+      "effect": "480% + 1100",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv3",
+          "value": 110,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 24,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Fascinating Trick Shot",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Hit-Based Damage UP(LV 4) to self for 6 seconds and Mind Type ATK UP(LV 4) for 6 seconds",
+      "effect": "509% + 1300",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv4",
+          "value": 120,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 27,
+          "type": "percent",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Fascinating Trick Shot",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Hit-Based Damage UP(LV 5) to self for 6 seconds and Mind Type ATK UP(LV 5) for 6 seconds",
+      "effect": "535% + 1500",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Damage + Ultimate Lv5",
+          "value": 130,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 30,
           "type": "percent",
           "duration": 6
         }

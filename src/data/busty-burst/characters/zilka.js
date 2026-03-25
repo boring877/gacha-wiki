@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Sword Aura Release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.66,
       "damageScaling": null,
@@ -160,56 +170,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rathbrink Style - Flourishing Moon",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "405% + 300",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Sword Aura Release",
-      "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 3 seconds and BlockDOWN(LV 1) for 10 seconds",
-      "effect": "1400% + 500",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and BlockDOWN(LV 2) for 10 seconds",
@@ -224,6 +184,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "effect": "1889% + 800",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "effect": "2030% + 900",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "effect": "2170% + 1000",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
           "type": "flat",
           "duration": 10
         }

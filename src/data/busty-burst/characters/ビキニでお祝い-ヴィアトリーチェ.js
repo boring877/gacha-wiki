@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "おしゃれしてみたら？",
       "icon": "skill001/skill0005",
-      "description": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 50 UP and Action Speed UP for 6 seconds",
-      "descriptionLv1": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 50 UP and Action Speed UP for 6 seconds",
-      "descriptionLv90": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 680 UP and Action Speed UP for 6 seconds",
+      "description": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
+      "descriptionLv1": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
+      "descriptionLv90": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 680 UP and Action Speed 17%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.6,
       "damageScaling": "130% ATK",
@@ -80,9 +90,9 @@ export const skills = {
       "slot": 3,
       "name": "Don't stare at me~!",
       "icon": "skill001/skill0010",
-      "description": "3 nearest enemiesmagic damage and inflicts Magic Defense-40 DOWN for 10 seconds and Block-11 DOWN for 10 seconds",
-      "descriptionLv1": "3 nearest enemiesmagic damage and inflicts Magic Defense-40 DOWN for 10 seconds and Block-11 DOWN for 10 seconds",
-      "descriptionLv90": "3 nearest enemiesmagic damage and inflicts Magic Defense-220 DOWN for 10 seconds and Block-23 DOWN for 10 seconds",
+      "description": "3 nearest enemiesmagic damage and inflicts Magic Defense-21%-40 DOWN for 10 seconds and Block-11 DOWN for 10 seconds",
+      "descriptionLv1": "3 nearest enemiesmagic damage and inflicts Magic Defense-21%-40 DOWN for 10 seconds and Block-11 DOWN for 10 seconds",
+      "descriptionLv90": "3 nearest enemiesmagic damage and inflicts Magic Defense-21%-220 DOWN for 10 seconds and Block-23 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.65,
       "damageScaling": "120% ATK",
@@ -143,75 +153,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "おしゃれしてみたら？",
-      "icon": "skill001/skill0005",
-      "description": "3 nearest enemiesmagic damage, on activation,self6 Magic Critical Damage 50 UP and Action Speed UP for 6 seconds",
-      "effect": "130% + 150",
-      "buffEffects": [
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Don't stare at me~!",
-      "icon": "skill001/skill0010",
-      "description": "3 nearest enemiesmagic damage and inflicts Magic Defense-40 DOWN for 10 seconds and Block-11 DOWN for 10 seconds",
-      "effect": "120% + 200",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Summer sun, feels so nice~~!!",
-      "icon": "skill001/skill0006_1",
-      "description": "3 nearest enemiesmagic damage and inflicts Fire Type Damage Taken UP(LV 1) for 8 seconds and Action Speed DOWN(LV 1) for 10 seconds , self10 Fire Type ATK UP(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Fire Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Fire Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Summer sun, feels so nice~~!!",
       "icon": "skill001/skill0006_2",
       "description": "3 nearest enemiesmagic damage and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds and Action Speed DOWN(LV 2) for 10 seconds , self10 Fire Type ATK UP(LV 2)",
@@ -232,6 +173,87 @@ export const skills = {
         {
           "name": "Fire Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Summer sun, feels so nice~~!!",
+      "icon": "skill001/skill0006_3",
+      "description": "3 nearest enemiesmagic damage and inflicts Fire Type Damage Taken UP(LV 3) for 8 seconds and Action Speed DOWN(LV 3) for 10 seconds , self10 Fire Type ATK UP(LV 3)",
+      "effect": "520% + 900",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Summer sun, feels so nice~~!!",
+      "icon": "skill001/skill0006_4",
+      "description": "3 nearest enemiesmagic damage and inflicts Fire Type Damage Taken UP(LV 4) for 8 seconds and Action Speed DOWN(LV 4) for 10 seconds , self10 Fire Type ATK UP(LV 4)",
+      "effect": "560% + 1050",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Summer sun, feels so nice~~!!",
+      "icon": "skill001/skill0006_5",
+      "description": "3 nearest enemiesmagic damage and inflicts Fire Type Damage Taken UP(LV 5) for 8 seconds and Action Speed DOWN(LV 5) for 10 seconds , self10 Fire Type ATK UP(LV 5)",
+      "effect": "580% + 1200",
+      "buffEffects": [
+        {
+          "name": "Fire Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Fire Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 10
         }

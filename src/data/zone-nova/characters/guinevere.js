@@ -4,7 +4,7 @@
 export const guinevereData = {
   // Basic Character Information
   name: 'Guinevere',
-  image: 'Guinevere', // Character image identifier
+  image: 'Guinevere.png', // Character image identifier
   rarity: 'SSR',
   element: 'Fire',
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
@@ -79,7 +79,7 @@ export const guinevereData = {
   // Memory Card
   memoryCard: {
     name: 'Simple Birdcage',
-    image: 'Guinevere-card',
+    image: 'Guinevere-card.png',
     stats: {
       hp: '6,600',
       attack: '480',

@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Pride - Rainbow Light",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +40 UP to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +40 UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +850 UP to self for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 20%+40 UP to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 20%+40 UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack 20%+850 UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.85,
       "damageScaling": "330% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Oath to Lord Ded",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(+450, 3 hit(s))",
-      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(+450, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(+450, 40503 hit(s))",
+      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 40503 hit(s))",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -171,76 +181,13 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Pride - Rainbow Light",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Attack +40 UP to self for 6 seconds",
-      "effect": "330% + 600",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Oath to Lord Ded",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(+450, 3 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv5",
-          "value": 60,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Hit-Based Physical Damage + Lv3",
-          "value": 3,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Regis Regalia",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 1)",
-      "effect": "1000% + 1200",
-      "buffEffects": [
-        {
-          "name": "Holy Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 2)",
@@ -255,7 +202,70 @@ export const skills = {
         {
           "name": "Physical Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Regis Regalia",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 3)",
+      "effect": "1250% + 1750",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Regis Regalia",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 4)",
+      "effect": "1350% + 2000",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Regis Regalia",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 5)",
+      "effect": "1450% + 2200",
+      "buffEffects": [
+        {
+          "name": "Holy Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 10
         }
       ]

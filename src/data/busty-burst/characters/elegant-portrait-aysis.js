@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,9 +111,9 @@ export const skills = {
       "slot": 3,
       "name": "Pride of the Royal Guards",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to self for 7 seconds and Magic Defense+140 UP for 7 seconds",
-      "descriptionLv1": "Applies Physical Defense +140 UP to self for 7 seconds and Magic Defense+140 UP for 7 seconds",
-      "descriptionLv90": "Applies Physical Defense +320 UP to self for 7 seconds and Magic Defense+320 UP for 7 seconds",
+      "description": "Applies Physical Defense 20%+140 UP to self for 7 seconds and Magic Defense 20%+140 UP for 7 seconds",
+      "descriptionLv1": "Applies Physical Defense 20%+140 UP to self for 7 seconds and Magic Defense 20%+140 UP for 7 seconds",
+      "descriptionLv90": "Applies Physical Defense 20%+320 UP to self for 7 seconds and Magic Defense 20%+320 UP for 7 seconds",
       "target": "Self",
       "castTime": 0.88,
       "damageScaling": null,
@@ -145,57 +155,13 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Edelrant-Style Swordsmanship: Earthstride",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 2 nearest enemies",
-      "effect": "170% + 120",
-      "buffEffects": []
-    },
-    {
-      "rank": 3,
-      "name": "Pride of the Royal Guards",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense +140 UP to self for 7 seconds and Magic Defense+140 UP for 7 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Magic Defense+ Lv3",
-          "value": 140,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Edelrant-Style Swordsmanship Ultimate: Aurora Blade",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 1) for 10 seconds",
-      "effect": "1300% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Edelrant-Style Swordsmanship Ultimate: Aurora Blade",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 2) for 10 seconds",
@@ -204,7 +170,52 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Edelrant-Style Swordsmanship Ultimate: Aurora Blade",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 3) for 10 seconds",
+      "effect": "1700% + 680",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Edelrant-Style Swordsmanship Ultimate: Aurora Blade",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 4) for 10 seconds",
+      "effect": "1800% + 750",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Edelrant-Style Swordsmanship Ultimate: Aurora Blade",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 5) for 10 seconds",
+      "effect": "1900% + 800",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         }
       ]

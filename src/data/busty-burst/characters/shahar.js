@@ -39,6 +39,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -62,9 +72,9 @@ export const skills = {
       "slot": 3,
       "name": "Temptation",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -15 DOWN for 10 seconds and Magic Attack -15 DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -15 DOWN for 10 seconds and Magic Attack -15 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -105 DOWN for 10 seconds and Magic Attack -105 DOWN for 10 seconds",
+      "description": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -7%-15 DOWN for 10 seconds and Magic Attack -7%-15 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -7%-15 DOWN for 10 seconds and Magic Attack -7%-15 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -7%-105 DOWN for 10 seconds and Magic Attack -7%-105 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "125% ATK",
@@ -106,47 +116,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Scattering Claws",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "effect": "270% + 80",
+      "name": "Temptation Leading to Glory and Pleasure",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the nearest enemy and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1236% + 785",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Temptation",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 2 nearest enemies and inflicts Physical Attack -15 DOWN for 10 seconds and Magic Attack -15 DOWN for 10 seconds",
-      "effect": "125% + 60",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv2",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Lv2",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
+      "name": "Temptation Leading to Glory and Pleasure",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and absorbs 6% of the damage dealt to restore own HP",
+      "effect": "1390% + 864",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Temptation Leading to Glory and Pleasure",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1030% + 692",
+      "effect": "1490% + 923",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Temptation Leading to Glory and Pleasure",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and absorbs 6% of the damage dealt to restore own HP",
-      "effect": "1236% + 785",
+      "effect": "1600% + 1005",
       "buffEffects": []
     }
   ],

@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Fragrance drifting in the air!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(+550, 4 hit(s)) to self for 15 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(+550, 4 hit(s)) to self for 15 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(+550, 49504 hit(s)) to self for 15 seconds",
+      "description": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(50%+550, 4 hit(s)) to self for 15 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(50%+550, 4 hit(s)) to self for 15 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(50%+550, 49504 hit(s)) to self for 15 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "310% ATK",
@@ -157,64 +167,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Fragrance drifting in the air!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(+550, 4 hit(s)) to self for 15 seconds",
-      "effect": "310% + 150",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage + Lv5",
-          "value": 4,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ah, bound and swinging!",
-      "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Block-13 DOWN for 10 seconds",
-      "effect": "270% + 100",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Swift Storm Cowgirl Style",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
-      "effect": "1120% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Swift Storm Cowgirl Style",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
@@ -223,7 +182,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Swift Storm Cowgirl Style",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
+      "effect": "1500% + 700",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Swift Storm Cowgirl Style",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
+      "effect": "1600% + 800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Swift Storm Cowgirl Style",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
+      "effect": "1650% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

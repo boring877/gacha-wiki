@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Onehole Rapidfire",
       "icon": "skill001/skill0009",
-      "description": "3 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "descriptionLv1": "3 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "descriptionLv90": "3 to enemiesphysical damage and inflicts Physical Defense -220 DOWN for 6 seconds and Block-18 DOWN for 6 seconds",
+      "description": "3 to enemiesphysical damage and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
+      "descriptionLv1": "3 to enemiesphysical damage and inflicts Physical Defense -21%-40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
+      "descriptionLv90": "3 to enemiesphysical damage and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Block-18 DOWN for 6 seconds",
       "target": "Back Enemy",
       "castTime": 1.7,
       "damageScaling": "100% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Strongbullet 12 7×99",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(+500, 3 hit(s)) to self for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(+500, 3 hit(s)) to self for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(+500, 45003 hit(s)) to self for 10 seconds",
+      "description": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(50%+500, 3 hit(s)) to self for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(50%+500, 3 hit(s)) to self for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(50%+500, 45003 hit(s)) to self for 10 seconds",
       "target": "Back Enemy",
       "castTime": 2.0,
       "damageScaling": "310% ATK",
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Onehole Rapidfire",
-      "icon": "skill001/skill0009",
-      "description": "3 to enemiesphysical damage and inflicts Physical Defense -40 DOWN for 6 seconds and Block-9 DOWN for 6 seconds",
-      "effect": "100% + 100",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block- Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Strongbullet 12 7×99",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the farthest enemy, guaranteed hit, guaranteed crit, activation beforeApplies Hit-Based Physical Damage UP(+500, 3 hit(s)) to self for 10 seconds",
-      "effect": "310% + 300",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Damage +",
-          "value": 3,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Invisible of Death",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the farthest enemy, inflict 4s and Magic Type Damage Taken UP(LV 1) for 8 seconds",
-      "effect": "1000% + 800",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Magic Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the farthest enemy, inflict 5s and Magic Type Damage Taken UP(LV 2) for 8 seconds",
@@ -242,6 +195,69 @@ export const skills = {
         {
           "name": "Magic Type Damage Taken+ Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Invisible of Death",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the farthest enemy, inflict 5s and Magic Type Damage Taken UP(LV 3) for 8 seconds",
+      "effect": "1250% + 1150",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Invisible of Death",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the farthest enemy, inflict6s Blind for and Magic Type Damage Taken UP(LV 4) for 8 seconds",
+      "effect": "1350% + 1300",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Invisible of Death",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the farthest enemy, inflict6s Blind for and Magic Type Damage Taken UP(LV 5) for 8 seconds",
+      "effect": "1450% + 1400",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Magic Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

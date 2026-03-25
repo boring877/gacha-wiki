@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Ubi, please...",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(+700, 3 hit(s)) to self for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(+700, 3 hit(s)) to self for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(+700, 63003 hit(s)) to self for 10 seconds",
+      "description": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(75%+700, 3 hit(s)) to self for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(75%+700, 3 hit(s)) to self for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(75%+700, 63003 hit(s)) to self for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": "370% ATK",
@@ -178,69 +188,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Ubi, please...",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(+700, 3 hit(s)) to self for 10 seconds",
-      "effect": "370% + 300",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Magic Damage +",
-          "value": 3,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Ubi, haa...",
-      "icon": "skill001/skill0011",
-      "description": "15s Curse for and Block-11 DOWN for 10 seconds , 10 Accuracy -11 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "My Beloved World Protector",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 1) for 8 seconds and applies Mind Type ATK UP(LV 1) to self for 8 seconds",
-      "effect": "1100% + 700",
-      "buffEffects": [
-        {
-          "name": "Mind Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        },
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "My Beloved World Protector",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 2) for 8 seconds and applies Mind Type ATK UP(LV 2) to self for 8 seconds",
@@ -255,6 +202,69 @@ export const skills = {
         {
           "name": "Mind Type ATK + Ultimate Lv2",
           "value": 13,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "My Beloved World Protector",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 3) for 8 seconds and applies Mind Type ATK UP(LV 3) to self for 8 seconds",
+      "effect": "1500% + 1000",
+      "buffEffects": [
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "My Beloved World Protector",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 4) for 8 seconds and applies Mind Type ATK UP(LV 4) to self for 8 seconds",
+      "effect": "1610% + 1100",
+      "buffEffects": [
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "My Beloved World Protector",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 5) for 8 seconds and applies Mind Type ATK UP(LV 5) to self for 8 seconds",
+      "effect": "1670% + 1200",
+      "buffEffects": [
+        {
+          "name": "Mind Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 8
+        },
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 20,
           "type": "percent",
           "duration": 8
         }

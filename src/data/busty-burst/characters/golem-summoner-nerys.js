@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Rage of the Giant Rock Soldier",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "110.00000000000001% ATK",
@@ -112,9 +122,9 @@ export const skills = {
       "slot": 3,
       "name": "Guardian of the Giant Rock Soldier",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Healing Shield (350, restores 100%) to all allies for 12 seconds and Physical Healing Shield (350, restores 100%) for 12 seconds",
-      "descriptionLv1": "Applies Physical Healing Shield (350, restores 100%) to all allies for 12 seconds and Physical Healing Shield (350, restores 100%) for 12 seconds",
-      "descriptionLv90": "Applies Physical Healing Shield (350, restores 100%) to all allies for 12 seconds and Physical Healing Shield (350, restores 100%) for 12 seconds",
+      "description": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
+      "descriptionLv1": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
+      "descriptionLv90": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": null,
@@ -156,76 +166,19 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Rage of the Giant Rock Soldier",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN for 8 seconds",
-      "effect": "110% + 40",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Guardian of the Giant Rock Soldier",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Healing Shield (350, restores 100%) to all allies for 12 seconds and Physical Healing Shield (350, restores 100%) for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Healing Shield Lv4",
-          "value": 350,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Magic Healing Shield Lv4",
-          "value": 350,
-          "type": "percent",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rampage of the Giant Rock Soldier",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 1) for 10 seconds and Magic Attack DOWN(LV 1) for 10 seconds",
-      "effect": "900% + 920",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rampage of the Giant Rock Soldier",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 2) for 10 seconds and Magic Attack DOWN(LV 2) for 10 seconds",
@@ -234,13 +187,76 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack - Ultimate Lv2",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rampage of the Giant Rock Soldier",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 3) for 10 seconds and Magic Attack DOWN(LV 3) for 10 seconds",
+      "effect": "1210% + 1200",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv3",
+          "value": -24,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rampage of the Giant Rock Soldier",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 4) for 10 seconds and Magic Attack DOWN(LV 4) for 10 seconds",
+      "effect": "1300% + 1300",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv4",
+          "value": -27,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rampage of the Giant Rock Soldier",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 5) for 10 seconds and Magic Attack DOWN(LV 5) for 10 seconds",
+      "effect": "1390% + 1400",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         }
       ]

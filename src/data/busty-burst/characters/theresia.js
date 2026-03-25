@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Lightning Blade Strike",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-40 DOWN for 8 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-40 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-220 DOWN for 8 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%-40 DOWN for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%-40 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-21%-220 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "310% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Winged Lightning",
       "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 10 seconds and Magic Critical Damage 680 UP for 10 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds and Magic Critical Damage 680 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lightning Blade Strike",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds and Magic Defense-40 DOWN for 8 seconds",
-      "effect": "310% + 160",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 1
-        },
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Winged Lightning",
-      "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack +35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Critical Damage+ Lv4",
-          "value": 50,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Storm Claw",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and applies Mind Type ATK UP(LV 1) to self for 8 seconds",
-      "effect": "1000% + 885",
-      "buffEffects": [
-        {
-          "name": "Mind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Storm Claw",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and applies Mind Type ATK UP(LV 2) to self for 8 seconds",
@@ -238,6 +191,51 @@ export const skills = {
           "value": 13,
           "type": "percent",
           "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Storm Claw",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemy and applies Mind Type ATK UP(LV 3) to self for 9 seconds",
+      "effect": "1350% + 1153",
+      "buffEffects": [
+        {
+          "name": "Mind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Storm Claw",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemy and applies Mind Type ATK UP(LV 4) to self for 9 seconds",
+      "effect": "1450% + 1307",
+      "buffEffects": [
+        {
+          "name": "Mind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Storm Claw",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemy and applies Mind Type ATK UP(LV 5) to self for 10 seconds",
+      "effect": "1500% + 1461",
+      "buffEffects": [
+        {
+          "name": "Mind Type ATK + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
         }
       ]
     }

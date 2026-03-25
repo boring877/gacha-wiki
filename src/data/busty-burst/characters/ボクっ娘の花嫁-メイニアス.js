@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "ぐるぐる～！",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds and applies Physical Defense -30 DOWN to self for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds and applies Physical Defense -30 DOWN to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 6 seconds and applies Physical Defense -30 DOWN to self for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds and applies Physical Defense -18%-30 DOWN to self for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds and applies Physical Defense -18%-30 DOWN to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 6 seconds and applies Physical Defense -18%-30 DOWN to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.7,
       "damageScaling": "330% ATK",
@@ -80,9 +90,9 @@ export const skills = {
       "slot": 3,
       "name": "Hey hey, does it suit me?",
       "icon": "skill001/skill0019",
-      "description": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -20 DOWN",
-      "descriptionLv1": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -20 DOWN",
-      "descriptionLv90": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -110 DOWN",
+      "description": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -14%-20 DOWN",
+      "descriptionLv1": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -14%-20 DOWN",
+      "descriptionLv90": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -14%-110 DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": null,
@@ -136,69 +146,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "ぐるぐる～！",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds and applies Physical Defense -30 DOWN to self for 6 seconds",
-      "effect": "330% + 200",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Hey hey, does it suit me?",
-      "icon": "skill001/skill0019",
-      "description": "Applies MP Regeneration 40 to self for 4 seconds, 3 nearest enemies10 Physical Defense -20 DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Regeneration + Lv5",
-          "value": 40,
-          "type": "percent",
-          "duration": 4
-        },
-        {
-          "name": "Physical Defense - Lv2",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "すかーとぐるんぐるん!!",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed(LV 1) for 20 seconds and BlockDOWN(LV 1) for 10 seconds",
-      "effect": "1200% + 500",
-      "buffEffects": [
-        {
-          "name": "Bleed Ultimate Lv1",
-          "value": -1500,
-          "type": "flat",
-          "duration": 20
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "すかーとぐるんぐるん!!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Bleed(LV 2) for 20 seconds and BlockDOWN(LV 2) for 10 seconds",
@@ -213,6 +160,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "すかーとぐるんぐるん!!",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed(LV 3) for 20 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "effect": "1620% + 700",
+      "buffEffects": [
+        {
+          "name": "Bleed Ultimate Lv3",
+          "value": -2400,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "すかーとぐるんぐるん!!",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed(LV 4) for 20 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "effect": "1739% + 750",
+      "buffEffects": [
+        {
+          "name": "Bleed Ultimate Lv4",
+          "value": -2700,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "すかーとぐるんぐるん!!",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed(LV 5) for 20 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "effect": "1800% + 800",
+      "buffEffects": [
+        {
+          "name": "Bleed Ultimate Lv5",
+          "value": -3000,
+          "type": "flat",
+          "duration": 20
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

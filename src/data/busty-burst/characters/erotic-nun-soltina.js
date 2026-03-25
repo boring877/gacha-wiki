@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "My beloved you...",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds , 10 Debuff Resistance UP, [], SpeedUPselfall allies",
-      "descriptionLv1": "Applies Action Speed UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds , 10 Debuff Resistance UP, [], SpeedUPselfall allies",
-      "descriptionLv90": "Applies Action Speed UP to self for 10 seconds and Physical Attack +850 UP for 10 seconds , 10 Debuff Resistance UP, [], SpeedUPselfall allies",
+      "description": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
+      "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
+      "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+850 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -178,7 +188,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -197,16 +207,16 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Clematis",
-      "icon": "skill001/skill0002",
-      "description": "6 nearest enemies dealphysical damage and inflicts Accuracy -9 DOWN for 6 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +50%, inflict 3s [], damage +50%, [Binding]+1",
-      "effect": "70% + 150",
+      "name": "Mashari Shoo Shoo",
+      "icon": "skill001/skill0003_2",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 2) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 2), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "effect": "330% + 500",
       "buffEffects": [
         {
-          "name": "Accuracy - Lv3",
-          "value": -9,
-          "type": "flat",
-          "duration": 6
+          "name": "Physical Defense - Ultimate Lv2",
+          "value": -20,
+          "type": "percent",
+          "duration": 10
         },
         {
           "name": "Bind",
@@ -224,42 +234,42 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "My beloved you...",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 10 seconds and Physical Attack +40 UP for 10 seconds , 10 Debuff Resistance UP, [], SpeedUPselfall allies",
-      "effect": "300% + 0",
+      "name": "Mashari Shoo Shoo",
+      "icon": "skill001/skill0003_3",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 3) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 3), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "effect": "380% + 600",
       "buffEffects": [
         {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -25,
           "type": "percent",
           "duration": 10
+        },
+        {
+          "name": "Bind",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
+        },
+        {
+          "name": "Bind",
+          "value": 0,
+          "type": "flat",
+          "duration": 9999
         }
       ]
     },
     {
       "rank": 4,
       "name": "Mashari Shoo Shoo",
-      "icon": "skill001/skill0003_1",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 1) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 1), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
-      "effect": "280% + 400",
+      "icon": "skill001/skill0003_4",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 4) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 4), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "effect": "420% + 700",
       "buffEffects": [
         {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -28,
+          "type": "percent",
           "duration": 10
         },
         {
@@ -279,14 +289,14 @@ export const skills = {
     {
       "rank": 5,
       "name": "Mashari Shoo Shoo",
-      "icon": "skill001/skill0003_2",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 2) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 2), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
-      "effect": "330% + 500",
+      "icon": "skill001/skill0003_5",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 5) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 5), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "effect": "450% + 800",
       "buffEffects": [
         {
-          "name": "Physical Defense - Ultimate Lv2",
-          "value": -20,
-          "type": "flat",
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -30,
+          "type": "percent",
           "duration": 10
         },
         {

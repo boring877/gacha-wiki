@@ -4,7 +4,7 @@
 export const cuteLittleThingData = {
   // Basic Memory Information
   name: 'Cute Little Thing',
-  image: '/images/games/zone-nova/memories/Horuscard.jpg',
+  image: '/images/games/zone-nova/memories/CuteLittleThing.png',
   rarity: 'SSR',
   character: 'Horus',
 

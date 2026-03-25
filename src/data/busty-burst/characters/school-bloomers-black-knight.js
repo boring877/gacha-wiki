@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Twin Demon Fist",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds , enemy has, deal damage +30%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds , enemy has, deal damage +30%",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "350% ATK",
@@ -170,76 +180,13 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv1",
           "value": 20,
-          "type": "flat",
+          "type": "percent",
           "duration": 12
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Twin Demon Fist",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
-      "effect": "350% + 500",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv5",
-          "value": -50,
-          "type": "flat",
-          "duration": 5
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Nightmare Fist",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 5s , 8s Blind for",
-      "effect": "110% + 150",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Heavenly Descent God's Broadcast",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 1)and applies Fear(MP --50 per secondBlock 0) to self for 5 seconds",
-      "effect": "1200% + 1000",
-      "buffEffects": [
-        {
-          "name": "Fear Ultimate Lv1",
-          "value": 0,
-          "type": "unknown",
-          "duration": 5
-        },
-        {
-          "name": "Magic Attack + Ultimate Lv1",
-          "value": 20,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 2)and applies Fear(MP --70 per secondBlock 0) to self for 5 seconds",
@@ -254,7 +201,70 @@ export const skills = {
         {
           "name": "Magic Attack + Ultimate Lv2",
           "value": 25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Heavenly Descent God's Broadcast",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 3)and applies Fear(MP --80 per secondBlock 0) to self for 5 seconds",
+      "effect": "1620% + 1500",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv3",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv3",
+          "value": 29,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Heavenly Descent God's Broadcast",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 4)and applies Fear(MP --90 per secondBlock 0) to self for 5 seconds",
+      "effect": "1739% + 1700",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv4",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv4",
+          "value": 32,
+          "type": "percent",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Heavenly Descent God's Broadcast",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 5)and applies Fear(MP --100 per secondBlock 0) to self for 5 seconds",
+      "effect": "1800% + 1900",
+      "buffEffects": [
+        {
+          "name": "Fear Ultimate Lv5",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Magic Attack + Ultimate Lv5",
+          "value": 35,
+          "type": "percent",
           "duration": 12
         }
       ]

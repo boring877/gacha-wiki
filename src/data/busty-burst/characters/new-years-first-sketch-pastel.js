@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "“Longevity”",
       "icon": "skill001/skill0019",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Debuff Resistance UP for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Debuff Resistance UP for 10 seconds and Accuracy 18 UP for 10 seconds",
+      "description": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 10 seconds and Accuracy 9 UP for 10 seconds",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 10 seconds and Accuracy 9 UP for 10 seconds",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Debuff Resistance 30%UP for 10 seconds and Accuracy 18 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": "2000% ATK",
@@ -123,9 +133,9 @@ export const skills = {
       "slot": 3,
       "name": "“Crane and Turtle”",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -205 DOWN for 7 seconds and Magic Attack -205 DOWN for 7 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-205 DOWN for 7 seconds and Magic Attack -11%-205 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "110.00000000000001% ATK",
@@ -180,69 +190,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "“Longevity”",
-      "icon": "skill001/skill0019",
-      "description": "Restores HP by to all allies and inflicts Debuff Resistance UP for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "effect": "2000% + 600",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance Lv2",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "“Crane and Turtle”",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -25 DOWN for 7 seconds and Magic Attack -25 DOWN for 7 seconds",
-      "effect": "110% + 120",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 7
-        },
-        {
-          "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "“Bird-and-Beast Caricatures”",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Dispel for 3 seconds and Action Speed DOWN(LV 1) for 8 seconds",
-      "effect": "380% + 600",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "“Bird-and-Beast Caricatures”",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to all enemies and inflicts Dispel for 4 seconds and Action Speed DOWN(LV 2) for 8 seconds",
@@ -257,6 +204,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "“Bird-and-Beast Caricatures”",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to all enemies and inflicts Dispel for 4 seconds and Action Speed DOWN(LV 3) for 8 seconds",
+      "effect": "509% + 950",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "“Bird-and-Beast Caricatures”",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to all enemies and inflicts Dispel for 5 seconds and Action Speed DOWN(LV 4) for 8 seconds",
+      "effect": "550% + 1100",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "“Bird-and-Beast Caricatures”",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to all enemies and inflicts Dispel for 5 seconds and Action Speed DOWN(LV 5) for 8 seconds",
+      "effect": "580% + 1200",
+      "buffEffects": [
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 8
         }

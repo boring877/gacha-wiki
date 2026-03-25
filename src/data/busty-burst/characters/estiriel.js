@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Sylvesto",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the farthest enemy and inflicts Physical Defense -30 DOWN for 5 seconds and Magic Defense-30 DOWN for 5 seconds",
-      "descriptionLv1": "Deals magic damage to the farthest enemy and inflicts Physical Defense -30 DOWN for 5 seconds and Magic Defense-30 DOWN for 5 seconds",
-      "descriptionLv90": "Deals magic damage to the farthest enemy and inflicts Physical Defense -210 DOWN for 5 seconds and Magic Defense-210 DOWN for 5 seconds",
+      "description": "Deals magic damage to the farthest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds and Magic Defense-18%-30 DOWN for 5 seconds",
+      "descriptionLv1": "Deals magic damage to the farthest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds and Magic Defense-18%-30 DOWN for 5 seconds",
+      "descriptionLv90": "Deals magic damage to the farthest enemy and inflicts Physical Defense -18%-210 DOWN for 5 seconds and Magic Defense-18%-210 DOWN for 5 seconds",
       "target": "Back Enemy",
       "castTime": 1.38,
       "damageScaling": "320% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Guardian of the Little Dwarves",
       "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
-      "descriptionLv1": "Applies HP Regeneration+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
-      "descriptionLv90": "Applies HP Regeneration+50 to all allies for 10 seconds and Block 14 UP for 10 seconds",
+      "description": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
+      "descriptionLv1": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 14 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -179,69 +189,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sylvesto",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the farthest enemy and inflicts Physical Defense -30 DOWN for 5 seconds and Magic Defense-30 DOWN for 5 seconds",
-      "effect": "320% + 150",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 5
-        },
-        {
-          "name": "Magic Defense- Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Guardian of the Little Dwarves",
-      "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv1",
-          "value": 3,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Block+ Lv2",
-          "value": 7,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "O spirits, dance Become the guiding wisdom of all things ",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds",
-      "effect": "550% + 700",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "O spirits, dance Become the guiding wisdom of all things ",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 2) for 10 seconds",
@@ -256,6 +203,69 @@ export const skills = {
         {
           "name": "Block- Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "O spirits, dance Become the guiding wisdom of all things ",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "effect": "900% + 550",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "O spirits, dance Become the guiding wisdom of all things ",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "effect": "1000% + 600",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "O spirits, dance Become the guiding wisdom of all things ",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to all enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "effect": "1100% + 680",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

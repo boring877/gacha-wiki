@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -103,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Light Orb",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-220 DOWN for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 10 seconds",
       "target": "Back Enemy",
       "castTime": 1.08,
       "damageScaling": "280% ATK",
@@ -146,33 +156,40 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Shockwave",
-      "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the nearest enemy",
-      "effect": "320% + 120",
-      "buffEffects": []
+      "name": "Shining Spear",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals magic damage to the 2 nearest enemies and inflicts Stun for 3 seconds",
+      "effect": "720% + 524",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
     },
     {
       "rank": 3,
-      "name": "Light Orb",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds",
-      "effect": "280% + 100",
+      "name": "Shining Spear",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 2 nearest enemies and inflicts Stun for 3 seconds",
+      "effect": "810% + 599",
       "buffEffects": [
         {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     },
     {
       "rank": 4,
       "name": "Shining Spear",
-      "icon": "skill001/skill0012_1",
+      "icon": "skill001/skill0012_4",
       "description": "Deals magic damage to the 2 nearest enemies and inflicts Stun for 3 seconds",
-      "effect": "600% + 500",
+      "effect": "869% + 653",
       "buffEffects": [
         {
           "name": "Stun",
@@ -185,9 +202,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Shining Spear",
-      "icon": "skill001/skill0012_2",
+      "icon": "skill001/skill0012_5",
       "description": "Deals magic damage to the 2 nearest enemies and inflicts Stun for 3 seconds",
-      "effect": "720% + 524",
+      "effect": "930% + 707",
       "buffEffects": [
         {
           "name": "Stun",

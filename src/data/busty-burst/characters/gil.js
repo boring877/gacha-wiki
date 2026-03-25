@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Liberty Bell",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -205 DOWN for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "320% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "MEGA MOOLAH",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 12 seconds and Action Speed UP for 12 seconds /",
-      "descriptionLv1": "Applies Physical Attack +35 UP to self for 12 seconds and Action Speed UP for 12 seconds /",
-      "descriptionLv90": "Applies Physical Attack +665 UP to self for 12 seconds and Action Speed UP for 12 seconds /",
+      "description": "Applies Physical Attack 18%+35 UP to self for 12 seconds and Action Speed 14%UP for 12 seconds /",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 12 seconds and Action Speed 14%UP for 12 seconds /",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 12 seconds and Action Speed 14%UP for 12 seconds /",
       "target": "Self",
       "castTime": 1.3,
       "damageScaling": null,
@@ -157,64 +167,13 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Liberty Bell",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds",
-      "effect": "320% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "MEGA MOOLAH",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to self for 12 seconds and Action Speed UP for 12 seconds /",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed + Lv3",
-          "value": 14,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Jackpot・Overcall",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 1)",
-      "effect": "860% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 2)",
@@ -223,7 +182,52 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Jackpot・Overcall",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 3)",
+      "effect": "1070% + 700",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Jackpot・Overcall",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 4)",
+      "effect": "1150% + 800",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Jackpot・Overcall",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 5)",
+      "effect": "1200% + 900",
+      "buffEffects": [
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
           "duration": 10
         }
       ]

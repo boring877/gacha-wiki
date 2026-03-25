@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Crimson Tide",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "380% ATK",
@@ -121,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Hope that is born and vanishes every night",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
-      "descriptionLv1": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
-      "descriptionLv90": "Applies Action Speed UP to self for 12 seconds and Physical Attack +665 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -177,7 +187,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -190,81 +200,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Crimson Tide",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
-      "effect": "380% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv5",
-          "value": -20,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Hope that is born and vanishes every night",
-      "icon": "skill001/skill0019",
-      "description": "Applies Action Speed UP to self for 12 seconds and Physical Attack +35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv5",
-          "value": 20,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Damage UP",
-          "value": 9999,
-          "type": "percent",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Even sealed in ice, you shall melt in the flames of love",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 2s (LV 1) and Physical Defense DOWN(LV 1) for 10 seconds , self10 Action Speed UP(LV 1), [], damage +50%, SpeedUPall allies",
-      "effect": "450% + 450",
-      "buffEffects": [
-        {
-          "name": "Freeze Ultimate Lv1",
-          "value": -3000,
-          "type": "flat",
-          "duration": 2
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the 3 nearest enemies , inflict 3s (LV 2) and Physical Defense DOWN(LV 2) for 10 seconds , self10 Action Speed UP(LV 2), [], damage +50%, SpeedUPall allies",
@@ -279,12 +214,93 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Even sealed in ice, you shall melt in the flames of love",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the 3 nearest enemies , inflict 3s (LV 3) and Physical Defense DOWN(LV 3) for 10 seconds , self10 Action Speed UP(LV 3), [], damage +50%, SpeedUPall allies",
+      "effect": "585% + 650",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv3",
+          "value": -5000,
+          "type": "flat",
+          "duration": 3
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Even sealed in ice, you shall melt in the flames of love",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the 3 nearest enemies , inflict 4s (LV 4) and Physical Defense DOWN(LV 4) for 10 seconds , self10 Action Speed UP(LV 4), [], damage +50%, SpeedUPall allies",
+      "effect": "630% + 725",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv4",
+          "value": -5500,
+          "type": "flat",
+          "duration": 4
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Even sealed in ice, you shall melt in the flames of love",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the 3 nearest enemies , inflict 4s (LV 5) and Physical Defense DOWN(LV 5) for 10 seconds , self10 Action Speed UP(LV 5), [], damage +50%, SpeedUPall allies",
+      "effect": "660% + 800",
+      "buffEffects": [
+        {
+          "name": "Freeze Ultimate Lv5",
+          "value": -6000,
+          "type": "flat",
+          "duration": 4
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

@@ -4,7 +4,7 @@
 export const shutenDojiData = {
   // Basic Character Information
   name: 'Shuten-doji',
-  image: 'Shuten-doji',
+  image: 'Shuten-doji.png',
   rarity: 'SSR',
   element: 'Wind',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

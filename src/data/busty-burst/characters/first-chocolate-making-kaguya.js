@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Chocolate... want some...?",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Shield(+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Hit-Based Shield(+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Hit-Based Shield(+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 23 UP",
+      "description": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
+      "descriptionLv1": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
+      "descriptionLv90": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 23 UP",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": "2300% ATK",
@@ -128,9 +138,9 @@ export const skills = {
       "slot": 3,
       "name": "Wonder if it's done...?",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to all allies for 15 seconds and Magic Attack +35 UP for 15 seconds , 15 Accuracy 9 UP",
-      "descriptionLv1": "Applies Physical Attack +35 UP to all allies for 15 seconds and Magic Attack +35 UP for 15 seconds , 15 Accuracy 9 UP",
-      "descriptionLv90": "Applies Physical Attack +665 UP to all allies for 15 seconds and Magic Attack +665 UP for 15 seconds , 15 Accuracy 18 UP",
+      "description": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds , 15 Accuracy 9 UP",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds , 15 Accuracy 9 UP",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to all allies for 15 seconds and Magic Attack 18%+665 UP for 15 seconds , 15 Accuracy 18 UP",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": null,
@@ -193,81 +203,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Chocolate... want some...?",
-      "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Shield(+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
-      "effect": "2300% + 500",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Shield Lv4",
-          "value": 25,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Healing Shield Lv5",
-          "value": 300,
-          "type": "percent",
-          "duration": 15
-        },
-        {
-          "name": "Block+ Lv4",
-          "value": 11,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Wonder if it's done...?",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +35 UP to all allies for 15 seconds and Magic Attack +35 UP for 15 seconds , 15 Accuracy 9 UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "I hope you like it ",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s , 4s Curse for",
-      "effect": "1000% + 800",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 4
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy, inflict 5s , 5s Curse for",
@@ -284,6 +219,69 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "I hope you like it ",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy, inflict 5s , 5s Curse for",
+      "effect": "1250% + 1200",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "I hope you like it ",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, 6s Curse for",
+      "effect": "1350% + 1350",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "I hope you like it ",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, 6s Curse for",
+      "effect": "1450% + 1500",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         }
       ]
     }

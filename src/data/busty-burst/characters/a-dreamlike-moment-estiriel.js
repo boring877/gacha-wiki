@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shaomega Tram",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds , 2s Curse for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds , 2s Curse for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-220 DOWN for 6 seconds , 2s Curse for",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds , 2s Curse for",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds , 2s Curse for",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds , 2s Curse for",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": "90% ATK",
@@ -178,94 +188,19 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack - Ultimate Lv1",
           "value": -15,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         }
       ]
     },
     {
       "rank": 2,
-      "name": "Shaomega Tram",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-40 DOWN for 6 seconds , 2s Curse for",
-      "effect": "90% + 70",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Cuvier Nereus",
-      "icon": "skill001/skill0011",
-      "description": "Inflicts Accuracy -11 DOWN on the 3 nearest enemies for 10 seconds and Block-11 DOWN for 10 seconds , 3s Charm for",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Pale Brief Utopia. Fallen Dream",
-      "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Physical Attack DOWN(LV 1) for 10 seconds , 10 Magic Attack DOWN(LV 1)",
-      "effect": "450% + 500",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_2",
       "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Physical Attack DOWN(LV 2) for 10 seconds , 10 Magic Attack DOWN(LV 2)",
@@ -280,13 +215,94 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -18,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Magic Attack - Ultimate Lv2",
           "value": -18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Pale Brief Utopia. Fallen Dream",
+      "icon": "skill001/skill0006_3",
+      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Physical Attack DOWN(LV 3) for 10 seconds , 10 Magic Attack DOWN(LV 3)",
+      "effect": "765% + 900",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
           "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -21,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv3",
+          "value": -21,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Pale Brief Utopia. Fallen Dream",
+      "icon": "skill001/skill0006_4",
+      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Physical Attack DOWN(LV 4) for 10 seconds , 10 Magic Attack DOWN(LV 4)",
+      "effect": "855% + 1000",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -23,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv4",
+          "value": -23,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Pale Brief Utopia. Fallen Dream",
+      "icon": "skill001/skill0006_5",
+      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Physical Attack DOWN(LV 5) for 10 seconds , 10 Magic Attack DOWN(LV 5)",
+      "effect": "900% + 1100",
+      "buffEffects": [
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv5",
+          "value": -25,
+          "type": "percent",
           "duration": 10
         }
       ]
@@ -295,7 +311,7 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Magic Attack +, Magic Attack +",
+      "name": "Magic Attack +",
       "icon": "skill001/skill1001",
       "effect": "Magic Attack + (+389)",
       "effectValues": [

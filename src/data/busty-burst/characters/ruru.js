@@ -80,6 +80,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Fragrant Blossoms",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 12 seconds and Action Speed UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Action Speed 17%UP for 12 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -175,67 +185,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Blooming Flowers",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 8 secondsand when defeating an enemy, gain MP Recovery 30",
-      "effect": "100% + 100",
-      "buffEffects": [
-        {
-          "name": "Block- Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "MP Recovery",
-          "value": 30,
-          "type": "percent"
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Fragrant Blossoms",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +40 UP to self for 12 seconds and Action Speed UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed + Lv4",
-          "value": 17,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "A Charming Maiden — Wrapped in Breeze, Surrounded by Blossoms",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to all enemies and inflicts Wind Type ATK UP(LV 1) for 5 secondsand when defeating an enemy, gain MP Recovery 40",
-      "effect": "500% + 600",
-      "buffEffects": [
-        {
-          "name": "Wind Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "MP Recovery Ultimate Lv1",
-          "value": 40,
-          "type": "percent"
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "A Charming Maiden — Wrapped in Breeze, Surrounded by Blossoms",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to all enemies and inflicts Wind Type ATK UP(LV 2) for 6 secondsand when defeating an enemy, gain MP Recovery 50",
@@ -250,6 +199,66 @@ export const skills = {
         {
           "name": "MP Recovery Ultimate Lv2",
           "value": 50,
+          "type": "percent"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "A Charming Maiden — Wrapped in Breeze, Surrounded by Blossoms",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to all enemies and inflicts Wind Type ATK UP(LV 3) for 6 secondsand when defeating an enemy, gain MP Recovery 60",
+      "effect": "850% + 900",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "MP Recovery Ultimate Lv3",
+          "value": 60,
+          "type": "percent"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "A Charming Maiden — Wrapped in Breeze, Surrounded by Blossoms",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to all enemies and inflicts Wind Type ATK UP(LV 4) for 7 secondsand when defeating an enemy, gain MP Recovery 70",
+      "effect": "950% + 1000",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 7
+        },
+        {
+          "name": "MP Recovery Ultimate Lv4",
+          "value": 70,
+          "type": "percent"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "A Charming Maiden — Wrapped in Breeze, Surrounded by Blossoms",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to all enemies and inflicts Wind Type ATK UP(LV 5) for 7 secondsand when defeating an enemy, gain MP Recovery 80",
+      "effect": "1000% + 1100",
+      "buffEffects": [
+        {
+          "name": "Wind Type ATK + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 7
+        },
+        {
+          "name": "MP Recovery Ultimate Lv5",
+          "value": 80,
           "type": "percent"
         }
       ]

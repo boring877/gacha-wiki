@@ -78,6 +78,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,9 +111,9 @@ export const skills = {
       "slot": 3,
       "name": "Paladin’s Awakening",
       "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +40 UP to self for 10 seconds and Mind Type ATK UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +40 UP to self for 10 seconds and Mind Type ATK UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +850 UP to self for 10 seconds and Mind Type ATK UP for 10 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 10 seconds and Mind Type ATK 10%UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 10 seconds and Mind Type ATK 10%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 10 seconds and Mind Type ATK 10%UP for 10 seconds",
       "target": "Self",
       "castTime": 0.66,
       "damageScaling": null,
@@ -157,39 +167,52 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Cross Slash",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies",
-      "effect": "145% + 100",
-      "buffEffects": []
+      "name": "Oracle of the Demon-Slaying Goddess",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to all enemies and inflicts Silence for 6 seconds and inflicts Curse for 3 seconds",
+      "effect": "760% + 500",
+      "buffEffects": [
+        {
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
+        },
+        {
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
     },
     {
       "rank": 3,
-      "name": "Paladin’s Awakening",
-      "icon": "skill001/skill0017",
-      "description": "Applies Physical Attack +40 UP to self for 10 seconds and Mind Type ATK UP for 10 seconds",
-      "effect": "300% + 0",
+      "name": "Oracle of the Demon-Slaying Goddess",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to all enemies and inflicts Silence for 6 seconds and inflicts Curse for 3 seconds",
+      "effect": "930% + 550",
       "buffEffects": [
         {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
+          "name": "Silence",
+          "value": 0,
+          "type": "unknown",
+          "duration": 6
         },
         {
-          "name": "Mind Type ATK + Lv3",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
+          "name": "Cleanse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
         }
       ]
     },
     {
       "rank": 4,
       "name": "Oracle of the Demon-Slaying Goddess",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to all enemies and inflicts Silence for 6 seconds and inflicts Curse for 3 seconds",
-      "effect": "560% + 700",
+      "effect": "1019% + 600",
       "buffEffects": [
         {
           "name": "Silence",
@@ -208,9 +231,9 @@ export const skills = {
     {
       "rank": 5,
       "name": "Oracle of the Demon-Slaying Goddess",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to all enemies and inflicts Silence for 6 seconds and inflicts Curse for 3 seconds",
-      "effect": "760% + 500",
+      "effect": "1110% + 680",
       "buffEffects": [
         {
           "name": "Silence",

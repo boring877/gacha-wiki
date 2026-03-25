@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "フィジカルリフレクト",
       "icon": "skill001/skill0019",
-      "description": "all allies6 Physical Shield (Damage Taken +) and Physical Reflect Shield(+300) for 6 seconds , 10 Physical Shield (1500)",
-      "descriptionLv1": "all allies6 Physical Shield (Damage Taken +) and Physical Reflect Shield(+300) for 6 seconds , 10 Physical Shield (1500)",
-      "descriptionLv90": "all allies6 Physical Shield (Damage Taken +) and Physical Reflect Shield(+300) for 6 seconds , 10 Physical Shield (1500)",
+      "description": "all allies6 Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds , 10 Physical Shield (1500)",
+      "descriptionLv1": "all allies6 Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds , 10 Physical Shield (1500)",
+      "descriptionLv90": "all allies6 Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds , 10 Physical Shield (1500)",
       "target": "All Allies",
       "castTime": 0.1,
       "damageScaling": null,
@@ -127,9 +137,9 @@ export const skills = {
       "slot": 3,
       "name": "マジックリフレクト",
       "icon": "skill001/skill0019",
-      "description": "all allies6 Magic Shield (Damage Taken +) and Magic Reflect Shield(+300) for 6 seconds , 10 Magic Shield (1500)",
-      "descriptionLv1": "all allies6 Magic Shield (Damage Taken +) and Magic Reflect Shield(+300) for 6 seconds , 10 Magic Shield (1500)",
-      "descriptionLv90": "all allies6 Magic Shield (Damage Taken +) and Magic Reflect Shield(+300) for 6 seconds , 10 Magic Shield (1500)",
+      "description": "all allies6 Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds , 10 Magic Shield (1500)",
+      "descriptionLv1": "all allies6 Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds , 10 Magic Shield (1500)",
+      "descriptionLv90": "all allies6 Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds , 10 Magic Shield (1500)",
       "target": "All Allies",
       "castTime": 0.1,
       "damageScaling": null,
@@ -196,87 +206,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "フィジカルリフレクト",
-      "icon": "skill001/skill0019",
-      "description": "all allies6 Physical Shield (Damage Taken +) and Physical Reflect Shield(+300) for 6 seconds , 10 Physical Shield (1500)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Shield",
-          "value": 20,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Physical Reflect Shield",
-          "value": 999,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Physical Shield",
-          "value": 1500,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "マジックリフレクト",
-      "icon": "skill001/skill0019",
-      "description": "all allies6 Magic Shield (Damage Taken +) and Magic Reflect Shield(+300) for 6 seconds , 10 Magic Shield (1500)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Shield",
-          "value": 20,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Magic Reflect Shield",
-          "value": 999,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Magic Shield",
-          "value": 1500,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "リヴァーバレイション・ブルワーク",
-      "icon": "skill001/skill0020_1",
-      "description": "all allies6 Shield (LV 1) and Reflect Shield(LV 1) for 6 seconds , 10 BlockUP(LV 1)",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Shield Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 6
-        },
-        {
-          "name": "Reflect Shield Ultimate Lv1",
-          "value": 999,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "リヴァーバレイション・ブルワーク",
       "icon": "skill001/skill0020_2",
       "description": "all allies6 Shield (LV 2) and Reflect Shield(LV 2) for 6 seconds , 10 BlockUP(LV 2)",
@@ -297,6 +226,87 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "リヴァーバレイション・ブルワーク",
+      "icon": "skill001/skill0020_3",
+      "description": "all allies6 Shield (LV 3) and Reflect Shield(LV 3) for 6 seconds , 10 BlockUP(LV 3)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv3",
+          "value": 20,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Reflect Shield Ultimate Lv3",
+          "value": 999,
+          "type": "flat",
+          "duration": 6
+        },
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "リヴァーバレイション・ブルワーク",
+      "icon": "skill001/skill0020_4",
+      "description": "all allies6 Shield (LV 4) and Reflect Shield(LV 4) for 6 seconds , 10 BlockUP(LV 4)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv4",
+          "value": 25,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Reflect Shield Ultimate Lv4",
+          "value": 999,
+          "type": "flat",
+          "duration": 6
+        },
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "リヴァーバレイション・ブルワーク",
+      "icon": "skill001/skill0020_5",
+      "description": "all allies6 Shield (LV 5) and Reflect Shield(LV 5) for 6 seconds , 10 BlockUP(LV 5)",
+      "effect": "300% + 0",
+      "buffEffects": [
+        {
+          "name": "Shield Ultimate Lv5",
+          "value": 30,
+          "type": "percent",
+          "duration": 6
+        },
+        {
+          "name": "Reflect Shield Ultimate Lv5",
+          "value": 999,
+          "type": "flat",
+          "duration": 6
+        },
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 10
         }

@@ -4,7 +4,7 @@
 export const lyraData = {
   // Basic Character Information
   name: 'Lyra',
-  image: 'Lyra', // Character image identifier
+  image: 'Lyra.png',
   rarity: 'SSR',
   element: 'Fire',
   class: 'Mage', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

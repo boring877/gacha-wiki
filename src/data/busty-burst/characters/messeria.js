@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Rhythm and Beat",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed DOWN for 5 seconds",
-      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed DOWN for 5 seconds",
+      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed -14%DOWN for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed -14%DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed -14%DOWN for 5 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 1.08,
       "damageScaling": "280% ATK",
@@ -115,9 +125,9 @@ export const skills = {
       "slot": 3,
       "name": "Dance of Resistance",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Action Speed UP for 8 seconds",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed UP for 8 seconds",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed UP for 8 seconds",
+      "description": "Restores HP by to all allies and inflicts Action Speed 7%UP for 8 seconds",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed 7%UP for 8 seconds",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed 457%UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": "1350% ATK",
@@ -158,51 +168,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rhythm and Beat",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Action Speed DOWN for 5 seconds",
-      "effect": "280% + 110",
-      "buffEffects": [
-        {
-          "name": "Action Speed - Lv3",
-          "value": -14,
-          "type": "flat",
-          "duration": 5
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Dance of Resistance",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Action Speed UP for 8 seconds",
-      "effect": "1350% + 301",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Lv1",
-          "value": 7,
-          "type": "flat",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Wish Upon the Soaring Stars",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Burn(LV 1) for 15 seconds",
-      "effect": "450% + 352",
-      "buffEffects": [
-        {
-          "name": "Burn Ultimate Lv1",
-          "value": -1000,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Wish Upon the Soaring Stars",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to all enemies and inflicts Burn(LV 2) for 15 seconds",
@@ -211,6 +176,51 @@ export const skills = {
         {
           "name": "Burn Ultimate Lv2",
           "value": -1300,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Wish Upon the Soaring Stars",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to all enemies and inflicts Burn(LV 3) for 15 seconds",
+      "effect": "620% + 554",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv3",
+          "value": -1600,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Wish Upon the Soaring Stars",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to all enemies and inflicts Burn(LV 4) for 15 seconds",
+      "effect": "700% + 625",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv4",
+          "value": -1800,
+          "type": "flat",
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Wish Upon the Soaring Stars",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to all enemies and inflicts Burn(LV 5) for 15 seconds",
+      "effect": "750% + 714",
+      "buffEffects": [
+        {
+          "name": "Burn Ultimate Lv5",
+          "value": -2000,
           "type": "flat",
           "duration": 15
         }

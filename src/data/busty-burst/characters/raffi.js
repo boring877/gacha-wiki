@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Let's go over there!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -210 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "270% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Fighting isn't my specialty ",
       "icon": "skill001/skill0025",
-      "description": "Applies Physical Defense +170 UP to self for 15 seconds and Magic Defense+170 UP for 15 seconds",
-      "descriptionLv1": "Applies Physical Defense +170 UP to self for 15 seconds and Magic Defense+170 UP for 15 seconds",
-      "descriptionLv90": "Applies Physical Defense +350 UP to self for 15 seconds and Magic Defense+350 UP for 15 seconds",
+      "description": "Applies Physical Defense 25%+170 UP to self for 15 seconds and Magic Defense 25%+170 UP for 15 seconds",
+      "descriptionLv1": "Applies Physical Defense 25%+170 UP to self for 15 seconds and Magic Defense 25%+170 UP for 15 seconds",
+      "descriptionLv90": "Applies Physical Defense 25%+350 UP to self for 15 seconds and Magic Defense 25%+350 UP for 15 seconds",
       "target": "Self",
       "castTime": 1.58,
       "damageScaling": null,
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Let's go over there!",
-      "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -30 DOWN for 6 seconds",
-      "effect": "270% + 350",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv3",
-          "value": -30,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Fighting isn't my specialty ",
-      "icon": "skill001/skill0025",
-      "description": "Applies Physical Defense +170 UP to self for 15 seconds and Magic Defense+170 UP for 15 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Defense + Lv4",
-          "value": 170,
-          "type": "flat",
-          "duration": 15
-        },
-        {
-          "name": "Magic Defense+ Lv4",
-          "value": 170,
-          "type": "flat",
-          "duration": 15
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Take this! I'm going all out!",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds",
-      "effect": "1000% + 600",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Take this! I'm going all out!",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Action Speed DOWN(LV 2) for 10 seconds",
@@ -242,6 +195,69 @@ export const skills = {
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Take this! I'm going all out!",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "effect": "1350% + 950",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Take this! I'm going all out!",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "effect": "1450% + 1100",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Take this! I'm going all out!",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "effect": "1550% + 1200",
+      "buffEffects": [
+        {
+          "name": "Stun",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Dual Demon Swords",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds and Magic Type Defense DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds and Magic Type Defense DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-220 DOWN for 10 seconds and Magic Type Defense DOWN for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 10 seconds and Magic Type Defense -20%DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "210% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Enchantment Blade",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds and Magic Attack -25 DOWN for 10 seconds",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds and Magic Attack -25 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Physical Attack -205 DOWN for 10 seconds and Magic Attack -205 DOWN for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 10 seconds and Magic Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 10 seconds and Magic Attack -11%-25 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 10 seconds and Magic Attack -11%-205 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "240% ATK",
@@ -177,69 +187,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Dual Demon Swords",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 10 seconds and Magic Type Defense DOWN for 10 seconds",
-      "effect": "210% + 160",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Type Defense - Lv5",
-          "value": -20,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Enchantment Blade",
-      "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Physical Attack -25 DOWN for 10 seconds and Magic Attack -25 DOWN for 10 seconds",
-      "effect": "240% + 160",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Taboo of the Calamity God of the Dead’s Sin Mark",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 10 seconds and Fear (Lv 1) for 3 seconds",
-      "effect": "300% + 402",
-      "buffEffects": [
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 10
-        },
-        {
-          "name": "Fear Ultimate Lv1",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Taboo of the Calamity God of the Dead’s Sin Mark",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 10 seconds and Fear (Lv 2) for 3 seconds",
@@ -253,6 +200,69 @@ export const skills = {
         },
         {
           "name": "Fear Ultimate Lv2",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Taboo of the Calamity God of the Dead’s Sin Mark",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 10 seconds and Fear (Lv 3) for 3 seconds",
+      "effect": "405% + 501",
+      "buffEffects": [
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 10
+        },
+        {
+          "name": "Fear Ultimate Lv3",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Taboo of the Calamity God of the Dead’s Sin Mark",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 10 seconds and Fear (Lv 4) for 3 seconds",
+      "effect": "434% + 566",
+      "buffEffects": [
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 10
+        },
+        {
+          "name": "Fear Ultimate Lv4",
+          "value": 0,
+          "type": "unknown",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Taboo of the Calamity God of the Dead’s Sin Mark",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 10 seconds and Fear (Lv 5) for 3 seconds",
+      "effect": "450% + 611",
+      "buffEffects": [
+        {
+          "name": "Curse",
+          "value": 0,
+          "type": "unknown",
+          "duration": 10
+        },
+        {
+          "name": "Fear Ultimate Lv5",
           "value": 0,
           "type": "unknown",
           "duration": 3

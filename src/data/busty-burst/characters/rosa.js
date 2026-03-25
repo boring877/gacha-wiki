@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Rhapsody of the Goddess",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack +40 UP to self for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack +40 UP to self for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack +850 UP to self for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack 20%+40 UP to self for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack 20%+40 UP to self for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack 20%+850 UP to self for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "450% ATK",
@@ -170,63 +180,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rhapsody of the Goddess",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, and when the skill activates, applies Physical Attack +40 UP to self for 10 seconds",
-      "effect": "450% + 500",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Glorious Triumph",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 40 UP to all allies for 7 seconds and Accuracy 9 UP for 7 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Critical Damage+ Lv3",
-          "value": 40,
-          "type": "percent",
-          "duration": 7
-        },
-        {
-          "name": "Accuracy + Lv3",
-          "value": 9,
-          "type": "flat",
-          "duration": 7
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Mutih Zeib",
-      "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds and applies BlockDOWN(LV 1) to self for 10 seconds",
-      "effect": "1000% + 800",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Holy Type ATK + Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Mutih Zeib",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds and applies BlockDOWN(LV 2) to self for 10 seconds",
@@ -243,6 +196,69 @@ export const skills = {
           "value": 13,
           "type": "percent",
           "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Mutih Zeib",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds and applies BlockDOWN(LV 3) to self for 10 seconds",
+      "effect": "1350% + 1150",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -24,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Mutih Zeib",
+      "icon": "skill001/skill0003_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds and applies BlockDOWN(LV 4) to self for 10 seconds",
+      "effect": "1450% + 1250",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -27,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Mutih Zeib",
+      "icon": "skill001/skill0003_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds and applies BlockDOWN(LV 5) to self for 10 seconds",
+      "effect": "1500% + 1300",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -30,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Holy Type ATK + Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
         }
       ]
     }

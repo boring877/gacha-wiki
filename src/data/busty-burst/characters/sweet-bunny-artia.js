@@ -82,15 +82,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Sweet Bunny ~ Showtime",
       "icon": "skill001/skill0019",
-      "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(+4 hit(s))",
-      "descriptionLv1": "All allies receive MP Recovery 110 and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(+4 hit(s))",
-      "descriptionLv90": "All allies receive MP Recovery 110 and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(+4 hit(s))",
+      "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
+      "descriptionLv1": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
+      "descriptionLv90": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
       "target": "All Allies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -130,9 +140,9 @@ export const skills = {
       "slot": 3,
       "name": "Sweet Bunny ~ Aggravation Art",
       "icon": "skill001/skill0011",
-      "description": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed DOWN",
-      "descriptionLv1": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed DOWN",
-      "descriptionLv90": "3 nearest enemies2s Charm for and Accuracy -26 DOWN for 12 seconds , 12 Action Speed DOWN",
+      "description": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
+      "descriptionLv1": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
+      "descriptionLv90": "3 nearest enemies2s Charm for and Accuracy -26 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": null,
@@ -199,86 +209,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sweet Bunny ~ Showtime",
-      "icon": "skill001/skill0019",
-      "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(+4 hit(s))",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "MP Recovery",
-          "value": 110,
-          "type": "percent"
-        },
-        {
-          "name": "Hit-Based Damage + Lv4",
-          "value": 35,
-          "type": "percent",
-          "duration": 20
-        },
-        {
-          "name": "Hit-Based Shield Lv5",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Sweet Bunny ~ Aggravation Art",
-      "icon": "skill001/skill0011",
-      "description": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed DOWN",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Charm",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Accuracy - Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Action Speed - LvMax",
-          "value": -25,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Rabit Rapid Stream",
-      "icon": "skill001/skill0006_1",
-      "description": "magic damage and inflicts BlockDOWN(LV 1) for 8 seconds, all allies8 Action Speed UP(LV 1), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
-      "effect": "400% + 400",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 8,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Rabbit",
-          "value": 0,
-          "type": "flat",
-          "duration": 999
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_2",
       "description": "magic damage and inflicts BlockDOWN(LV 2) for 8 seconds, all allies8 Action Speed UP(LV 2), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
@@ -293,6 +223,87 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 10,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Rabit Rapid Stream",
+      "icon": "skill001/skill0006_3",
+      "description": "magic damage and inflicts BlockDOWN(LV 3) for 8 seconds, all allies8 Action Speed UP(LV 3), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "effect": "600% + 600",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 12,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Rabit Rapid Stream",
+      "icon": "skill001/skill0006_4",
+      "description": "magic damage and inflicts BlockDOWN(LV 4) for 8 seconds, all allies8 Action Speed UP(LV 4), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "effect": "660% + 650",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 14,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Rabbit",
+          "value": 0,
+          "type": "flat",
+          "duration": 999
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Rabit Rapid Stream",
+      "icon": "skill001/skill0006_5",
+      "description": "magic damage and inflicts BlockDOWN(LV 5) for 8 seconds, all allies8 Action Speed UP(LV 5), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "effect": "700% + 700",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 8
+        },
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 15,
           "type": "flat",
           "duration": 8
         },

@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "I got hit...!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -220 DOWN for 6 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "320% ATK",
@@ -114,9 +124,9 @@ export const skills = {
       "slot": 3,
       "name": "Smells nice ",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
-      "descriptionLv1": "Applies Physical Attack +30 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
-      "descriptionLv90": "Applies Physical Attack +480 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
+      "description": "Applies Physical Attack 15%+30 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
+      "descriptionLv1": "Applies Physical Attack 15%+30 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -157,54 +167,34 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "I got hit...!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -40 DOWN for 6 seconds",
-      "effect": "320% + 200",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
+      "name": "Autunno・Allegro",
+      "icon": "skill001/skill0003_2",
+      "description": "Deals physical damage to the nearest enemy",
+      "effect": "1320% + 600",
+      "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Smells nice ",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to self for 10 seconds and MP Regeneration 30 for 4 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "MP Regeneration + Lv4",
-          "value": 30,
-          "type": "percent",
-          "duration": 4
-        }
-      ]
+      "name": "Autunno・Allegro",
+      "icon": "skill001/skill0003_3",
+      "description": "Deals physical damage to the nearest enemy",
+      "effect": "1470% + 700",
+      "buffEffects": []
     },
     {
       "rank": 4,
       "name": "Autunno・Allegro",
-      "icon": "skill001/skill0003_1",
+      "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy",
-      "effect": "1100% + 500",
+      "effect": "1590% + 750",
       "buffEffects": []
     },
     {
       "rank": 5,
       "name": "Autunno・Allegro",
-      "icon": "skill001/skill0003_2",
+      "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy",
-      "effect": "1320% + 600",
+      "effect": "1700% + 800",
       "buffEffects": []
     }
   ],

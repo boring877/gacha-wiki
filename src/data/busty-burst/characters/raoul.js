@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Happiness Shatter",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-220 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
       "target": "Nearest Enemy",
       "castTime": 1.4,
       "damageScaling": "330% ATK",
@@ -120,9 +130,9 @@ export const skills = {
       "slot": 3,
       "name": "Happiness Shine",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "descriptionLv1": "Applies Magic Attack +35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "descriptionLv90": "Applies Magic Attack +665 UP to self for 12 seconds and Accuracy 26 UP for 12 seconds",
+      "description": "Applies Magic Attack 18%+35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 12 seconds and Accuracy 26 UP for 12 seconds",
       "target": "Self",
       "castTime": 1.4,
       "damageScaling": null,
@@ -171,63 +181,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Happiness Shatter",
-      "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
-      "effect": "330% + 400",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Happiness",
-          "value": 4,
-          "type": "percent",
-          "duration": 999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Happiness Shine",
-      "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack +35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Magic Attack + Lv4",
-          "value": 35,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Accuracy + Lv5",
-          "value": 13,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Happy Comet☆",
-      "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 1) to self for 10 seconds",
-      "effect": "1100% + 800",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Happy Comet☆",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 2) to self for 10 seconds",
@@ -236,6 +189,51 @@ export const skills = {
         {
           "name": "Action Speed + Ultimate Lv2",
           "value": 18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Happy Comet☆",
+      "icon": "skill001/skill0006_3",
+      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 3) to self for 10 seconds",
+      "effect": "1470% + 1150",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 21,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Happy Comet☆",
+      "icon": "skill001/skill0006_4",
+      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 4) to self for 10 seconds",
+      "effect": "1590% + 1300",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 23,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Happy Comet☆",
+      "icon": "skill001/skill0006_5",
+      "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 5) to self for 10 seconds",
+      "effect": "1700% + 1400",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 25,
           "type": "flat",
           "duration": 10
         }

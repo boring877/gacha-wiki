@@ -79,6 +79,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -154,43 +164,43 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Looks like your luck isn’t so good ",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the farthest enemy and inflicts Confusion for 6 seconds",
-      "effect": "180% + 110",
+      "name": "Magic of Light and Shadow",
+      "icon": "skill001/skill0012_2",
+      "description": "Deals magic damage to all enemies and inflicts Fear Lv 2 for 4 seconds",
+      "effect": "574% + 365",
       "buffEffects": [
         {
-          "name": "Confusion",
+          "name": "Fear Ultimate Lv2",
           "value": 0,
           "type": "unknown",
-          "duration": 6
+          "duration": 4
         }
       ]
     },
     {
       "rank": 3,
-      "name": "Seems you need a little punishment ",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the farthest enemy and inflicts Sleep for 5 seconds",
-      "effect": "150% + 120",
+      "name": "Magic of Light and Shadow",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals magic damage to all enemies and inflicts Fear Lv 3 for 4 seconds",
+      "effect": "697% + 493",
       "buffEffects": [
         {
-          "name": "Sleep",
+          "name": "Fear Ultimate Lv3",
           "value": 0,
           "type": "unknown",
-          "duration": 5
+          "duration": 4
         }
       ]
     },
     {
       "rank": 4,
       "name": "Magic of Light and Shadow",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to all enemies and inflicts Fear Lv 1 for 4 seconds",
-      "effect": "409% + 297",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals magic damage to all enemies and inflicts Fear Lv 4 for 4 seconds",
+      "effect": "779% + 532",
       "buffEffects": [
         {
-          "name": "Fear Ultimate Lv1",
+          "name": "Fear Ultimate Lv4",
           "value": 0,
           "type": "unknown",
           "duration": 4
@@ -200,12 +210,12 @@ export const skills = {
     {
       "rank": 5,
       "name": "Magic of Light and Shadow",
-      "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to all enemies and inflicts Fear Lv 2 for 4 seconds",
-      "effect": "574% + 365",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals magic damage to all enemies and inflicts Fear Lv 5 for 4 seconds",
+      "effect": "819% + 602",
       "buffEffects": [
         {
-          "name": "Fear Ultimate Lv2",
+          "name": "Fear Ultimate Lv5",
           "value": 0,
           "type": "unknown",
           "duration": 4

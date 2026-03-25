@@ -4,7 +4,7 @@
 export const leviathanData = {
   // Basic Character Information
   name: 'Leviathan',
-  image: 'Leviathan', // Character image identifier
+  image: 'Leviathan.png',
   rarity: 'SR',
   element: 'Wind',
   class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

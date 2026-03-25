@@ -79,15 +79,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "ケートー",
       "icon": "skill001/skill0005",
-      "description": "1 nearest enemymagic damage and inflicts Magic Defense-60 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
-      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-60 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
-      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-420 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
+      "description": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
+      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
+      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-25%-420 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
       "target": "Nearest Enemy",
       "castTime": 0.55,
       "damageScaling": "420% ATK",
@@ -189,81 +199,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "ケートー",
-      "icon": "skill001/skill0005",
-      "description": "1 nearest enemymagic damage and inflicts Magic Defense-60 DOWN for 6 seconds , Magic Defense150 DOWN(max450 (max stacking: )",
-      "effect": "420% + 800",
-      "buffEffects": [
-        {
-          "name": "Magic Defense- LvMax",
-          "value": -60,
-          "type": "flat",
-          "duration": 6
-        },
-        {
-          "name": "Magic Defense",
-          "value": 0,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "ステパノス",
-      "icon": "skill001/skill0011",
-      "description": "Deals magic damage to 1 farthest enemy, inflict 3s , 3 , 10 Accuracy -15 DOWN",
-      "effect": "380% + 500",
-      "buffEffects": [
-        {
-          "name": "Silence",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Curse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Accuracy - LvMax",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "<ruby=></ruby>",
-      "icon": "skill001/skill0006_1",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Water Type Damage Taken UP(LV 1) for 10 seconds , on Ultimate activation,self15000magic damageUP(max75000 (max stacking: )",
-      "effect": "1300% + 1000",
-      "buffEffects": [
-        {
-          "name": "Block- Ultimate Lv1",
-          "value": -15,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Water Type Damage Taken+ Ultimate Lv1",
-          "value": 10,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Magic Damage + Ultimate Lv1",
-          "value": 9999,
-          "type": "flat",
-          "duration": 9999
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_2",
       "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Water Type Damage Taken UP(LV 2) for 10 seconds , on Ultimate activation,self18000magic damageUP(max90000 (max stacking: )",
@@ -283,6 +218,87 @@ export const skills = {
         },
         {
           "name": "Magic Damage + Ultimate Lv2",
+          "value": 9999,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_3",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Water Type Damage Taken UP(LV 3) for 10 seconds , on Ultimate activation,self21000magic damageUP(max105000 (max stacking: )",
+      "effect": "1760% + 1350",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv3",
+          "value": -21,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv3",
+          "value": 16,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Damage + Ultimate Lv3",
+          "value": 9999,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_4",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Water Type Damage Taken UP(LV 4) for 10 seconds , on Ultimate activation,self23000magic damageUP(max115000 (max stacking: )",
+      "effect": "1900% + 1500",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv4",
+          "value": -23,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv4",
+          "value": 18,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Damage + Ultimate Lv4",
+          "value": 9999,
+          "type": "flat",
+          "duration": 9999
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "<ruby=></ruby>",
+      "icon": "skill001/skill0006_5",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Water Type Damage Taken UP(LV 5) for 10 seconds , on Ultimate activation,self25000magic damageUP(max125000 (max stacking: )",
+      "effect": "2039% + 1600",
+      "buffEffects": [
+        {
+          "name": "Block- Ultimate Lv5",
+          "value": -25,
+          "type": "flat",
+          "duration": 10
+        },
+        {
+          "name": "Water Type Damage Taken+ Ultimate Lv5",
+          "value": 20,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Damage + Ultimate Lv5",
           "value": 9999,
           "type": "flat",
           "duration": 9999

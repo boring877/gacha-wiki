@@ -81,6 +81,16 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Mirror Array",
       "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+150 to self for 5 seconds and Hit-Based Shield(+10 hit(s)) for 10 seconds , 10 Debuff Resistance UP",
-      "descriptionLv1": "Applies HP Regeneration+150 to self for 5 seconds and Hit-Based Shield(+10 hit(s)) for 10 seconds , 10 Debuff Resistance UP",
-      "descriptionLv90": "Applies HP Regeneration+150 to self for 5 seconds and Hit-Based Shield(+10 hit(s)) for 10 seconds , 10 Debuff Resistance UP",
+      "description": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
+      "descriptionLv1": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
+      "descriptionLv90": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
       "target": "Self",
       "castTime": 1.22,
       "damageScaling": null,
@@ -172,13 +182,13 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
           "name": "Magic Attack - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 8
         },
         {
@@ -191,81 +201,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Bern Sacred Sword Art - Lightning Slash",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and Block-13 DOWN for 12 seconds",
-      "effect": "350% + 200",
-      "buffEffects": [
-        {
-          "name": "Cleanse",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Block- Lv5",
-          "value": -13,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Mirror Array",
-      "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration+150 to self for 5 seconds and Hit-Based Shield(+10 hit(s)) for 10 seconds , 10 Debuff Resistance UP",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 5
-        },
-        {
-          "name": "Hit-Based Shield LvMax",
-          "value": 35,
-          "type": "percent",
-          "duration": 10
-        },
-        {
-          "name": "Debuff Resistance Lv4",
-          "value": 0,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Star Bell - Curse Pitcher",
-      "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 1) for 8 seconds and Magic Attack DOWN(LV 1) for 8 seconds , apply to self8",
-      "effect": "1000% + 600",
-      "buffEffects": [
-        {
-          "name": "Physical Attack - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Magic Attack - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 8
-        },
-        {
-          "name": "Taunt",
-          "value": 0,
-          "type": "unknown",
-          "duration": 8
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Star Bell - Curse Pitcher",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 2) for 9 seconds and Magic Attack DOWN(LV 2) for 9 seconds , apply to self9",
@@ -274,13 +209,13 @@ export const skills = {
         {
           "name": "Physical Attack - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 9
         },
         {
           "name": "Magic Attack - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 9
         },
         {
@@ -288,6 +223,87 @@ export const skills = {
           "value": 0,
           "type": "unknown",
           "duration": 9
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Star Bell - Curse Pitcher",
+      "icon": "skill001/skill0012_3",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 3) for 10 seconds and Magic Attack DOWN(LV 3) for 10 seconds , apply to self10",
+      "effect": "1350% + 950",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Star Bell - Curse Pitcher",
+      "icon": "skill001/skill0012_4",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 4) for 11 seconds and Magic Attack DOWN(LV 4) for 11 seconds , apply to self11",
+      "effect": "1450% + 1050",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 11
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 11
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 11
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Star Bell - Curse Pitcher",
+      "icon": "skill001/skill0012_5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 5) for 12 seconds and Magic Attack DOWN(LV 5) for 12 seconds , apply to self12",
+      "effect": "1500% + 1100",
+      "buffEffects": [
+        {
+          "name": "Physical Attack - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Magic Attack - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 12
+        },
+        {
+          "name": "Taunt",
+          "value": 0,
+          "type": "unknown",
+          "duration": 12
         }
       ]
     }

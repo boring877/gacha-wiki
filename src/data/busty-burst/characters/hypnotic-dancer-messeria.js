@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Londo of Light",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -220 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-40 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "90% ATK",
@@ -122,9 +132,9 @@ export const skills = {
       "slot": 3,
       "name": "Dancing Performance",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
-      "descriptionLv1": "Applies Physical Attack +30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack +480 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
+      "description": "Applies Physical Attack 15%+30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
+      "descriptionLv1": "Applies Physical Attack 15%+30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -179,69 +189,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Londo of Light",
-      "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -40 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "effect": "90% + 50",
-      "buffEffects": [
-        {
-          "name": "Physical Defense - Lv4",
-          "value": -40,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Accuracy - Lv4",
-          "value": -11,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Dancing Performance",
-      "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack +30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
-      "effect": "300% + 0",
-      "buffEffects": [
-        {
-          "name": "Physical Attack + Lv3",
-          "value": 30,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Physical Critical Damage+ Lv3",
-          "value": 40,
-          "type": "percent",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Prayer in the Sea of Stars",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Action Speed UP(LV 1) for 12 seconds and BlockUP(LV 1) for 12 seconds",
-      "effect": "2000% + 1097",
-      "buffEffects": [
-        {
-          "name": "Action Speed + Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 12
-        },
-        {
-          "name": "Block+ Ultimate Lv1",
-          "value": 10,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Prayer in the Sea of Stars",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Action Speed UP(LV 2) for 12 seconds and BlockUP(LV 2) for 12 seconds",
@@ -256,6 +203,69 @@ export const skills = {
         {
           "name": "Block+ Ultimate Lv2",
           "value": 13,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Prayer in the Sea of Stars",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Action Speed UP(LV 3) for 12 seconds and BlockUP(LV 3) for 12 seconds",
+      "effect": "2500% + 1394",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Block+ Ultimate Lv3",
+          "value": 16,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Prayer in the Sea of Stars",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Action Speed UP(LV 4) for 12 seconds and BlockUP(LV 4) for 12 seconds",
+      "effect": "2700% + 1489",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Block+ Ultimate Lv4",
+          "value": 18,
+          "type": "flat",
+          "duration": 12
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Prayer in the Sea of Stars",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Action Speed UP(LV 5) for 12 seconds and BlockUP(LV 5) for 12 seconds",
+      "effect": "2800% + 1563",
+      "buffEffects": [
+        {
+          "name": "Action Speed + Ultimate Lv5",
+          "value": 20,
+          "type": "flat",
+          "duration": 12
+        },
+        {
+          "name": "Block+ Ultimate Lv5",
+          "value": 20,
           "type": "flat",
           "duration": 12
         }

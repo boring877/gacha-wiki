@@ -39,15 +39,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Smash 'em!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack +40 UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack +40 UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack +850 UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack 20%+40 UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack 20%+40 UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack 20%+850 UP",
       "target": "Nearest Enemy",
       "castTime": 1.05,
       "damageScaling": "360% ATK",
@@ -80,9 +90,9 @@ export const skills = {
       "slot": 3,
       "name": "ぶっかけろっ！",
       "icon": "skill001/skill0011",
-      "description": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-35 DOWN for 12 seconds , 12 Magic Critical Damage-35 DOWN",
-      "descriptionLv1": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-35 DOWN for 12 seconds , 12 Magic Critical Damage-35 DOWN",
-      "descriptionLv90": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-215 DOWN for 12 seconds , 12 Magic Critical Damage-35 DOWN",
+      "description": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-13%-35 DOWN for 12 seconds , 12 Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv1": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-13%-35 DOWN for 12 seconds , 12 Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv90": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-13%-215 DOWN for 12 seconds , 12 Magic Critical Damage-13%-35 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "114.99999999999999% ATK",
@@ -137,7 +147,7 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv1",
           "value": -20,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
@@ -150,81 +160,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Smash 'em!",
-      "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , on activation,self6 Physical Attack +40 UP",
-      "effect": "360% + 500",
-      "buffEffects": [
-        {
-          "name": "Stun",
-          "value": 0,
-          "type": "unknown",
-          "duration": 2
-        },
-        {
-          "name": "Physical Attack + Lv5",
-          "value": 40,
-          "type": "flat",
-          "duration": 6
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "ぶっかけろっ！",
-      "icon": "skill001/skill0011",
-      "description": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-35 DOWN for 12 seconds , 12 Magic Critical Damage-35 DOWN",
-      "effect": "114% + 200",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Critical Damage- Lv4",
-          "value": -13,
-          "type": "percent",
-          "duration": 12
-        },
-        {
-          "name": "Magic Critical Damage- Lv4",
-          "value": -35,
-          "type": "flat",
-          "duration": 12
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Pummel time!",
-      "icon": "skill001/skill0003_1",
-      "description": "3 nearest enemiesphysical damage, inflict 3s and Physical Defense DOWN(LV 1) for 10 seconds , 10 Action Speed DOWN(LV 1)",
-      "effect": "400% + 500",
-      "buffEffects": [
-        {
-          "name": "Blind",
-          "value": 0,
-          "type": "unknown",
-          "duration": 3
-        },
-        {
-          "name": "Physical Defense - Ultimate Lv1",
-          "value": -20,
-          "type": "flat",
-          "duration": 10
-        },
-        {
-          "name": "Action Speed - Ultimate Lv1",
-          "value": -10,
-          "type": "flat",
-          "duration": 10
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Pummel time!",
       "icon": "skill001/skill0003_2",
       "description": "3 nearest enemiesphysical damage, inflict 4s and Physical Defense DOWN(LV 2) for 10 seconds , 10 Action Speed DOWN(LV 2)",
@@ -239,12 +174,93 @@ export const skills = {
         {
           "name": "Physical Defense - Ultimate Lv2",
           "value": -25,
-          "type": "flat",
+          "type": "percent",
           "duration": 10
         },
         {
           "name": "Action Speed - Ultimate Lv2",
           "value": -13,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Pummel time!",
+      "icon": "skill001/skill0003_3",
+      "description": "3 nearest enemiesphysical damage, inflict 4s and Physical Defense DOWN(LV 3) for 10 seconds , 10 Action Speed DOWN(LV 3)",
+      "effect": "520% + 900",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 4
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv3",
+          "value": -29,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv3",
+          "value": -16,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Pummel time!",
+      "icon": "skill001/skill0003_4",
+      "description": "3 nearest enemiesphysical damage, inflict 5s and Physical Defense DOWN(LV 4) for 10 seconds , 10 Action Speed DOWN(LV 4)",
+      "effect": "560% + 1050",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv4",
+          "value": -32,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv4",
+          "value": -18,
+          "type": "flat",
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Pummel time!",
+      "icon": "skill001/skill0003_5",
+      "description": "3 nearest enemiesphysical damage, inflict 5s and Physical Defense DOWN(LV 5) for 10 seconds , 10 Action Speed DOWN(LV 5)",
+      "effect": "580% + 1200",
+      "buffEffects": [
+        {
+          "name": "Blind",
+          "value": 0,
+          "type": "unknown",
+          "duration": 5
+        },
+        {
+          "name": "Physical Defense - Ultimate Lv5",
+          "value": -35,
+          "type": "percent",
+          "duration": 10
+        },
+        {
+          "name": "Action Speed - Ultimate Lv5",
+          "value": -20,
           "type": "flat",
           "duration": 10
         }

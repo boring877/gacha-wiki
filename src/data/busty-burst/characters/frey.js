@@ -80,15 +80,25 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Area Heal",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts HP Regeneration+150 for 3 seconds",
-      "descriptionLv1": "Restores HP by to all allies and inflicts HP Regeneration+150 for 3 seconds",
-      "descriptionLv90": "Restores HP by to all allies and inflicts HP Regeneration+150 for 3 seconds",
+      "description": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv1": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv90": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": "2500% ATK",
@@ -160,56 +170,6 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Area Heal",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts HP Regeneration+150 for 3 seconds",
-      "effect": "2500% + 1000",
-      "buffEffects": [
-        {
-          "name": "HP Regeneration+ Lv3",
-          "value": 5,
-          "type": "percent",
-          "duration": 3
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "Cam",
-      "icon": "skill001/skill0021",
-      "description": "Restores HP by to all alliesand removes debuffs",
-      "effect": "1500% + 500",
-      "buffEffects": [
-        {
-          "name": "Debuff Resistance LvMax",
-          "value": 1,
-          "type": "percent"
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "Gentle White Lily’s Embrace",
-      "icon": "skill001/skill0022_1",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Physical Healing Shield (LV 1) for 20 seconds and Hit-Based Magic Healing Shield (LV 1) for 20 seconds",
-      "effect": "4000% + 1000",
-      "buffEffects": [
-        {
-          "name": "Hit-Based Physical Healing Shield Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        },
-        {
-          "name": "Hit-Based Magic Healing Shield Ultimate Lv1",
-          "value": 30,
-          "type": "percent",
-          "duration": 20
-        }
-      ]
-    },
-    {
-      "rank": 5,
       "name": "Gentle White Lily’s Embrace",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Hit-Based Physical Healing Shield (LV 2) for 20 seconds and Hit-Based Magic Healing Shield (LV 2) for 20 seconds",
@@ -224,6 +184,69 @@ export const skills = {
         {
           "name": "Hit-Based Magic Healing Shield Ultimate Lv2",
           "value": 36,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Gentle White Lily’s Embrace",
+      "icon": "skill001/skill0022_3",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Physical Healing Shield (LV 3) for 20 seconds and Hit-Based Magic Healing Shield (LV 3) for 20 seconds",
+      "effect": "5500% + 2000",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv3",
+          "value": 42,
+          "type": "percent",
+          "duration": 20
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv3",
+          "value": 42,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Gentle White Lily’s Embrace",
+      "icon": "skill001/skill0022_4",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Physical Healing Shield (LV 4) for 20 seconds and Hit-Based Magic Healing Shield (LV 4) for 20 seconds",
+      "effect": "6000% + 2300",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv4",
+          "value": 46,
+          "type": "percent",
+          "duration": 20
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv4",
+          "value": 46,
+          "type": "percent",
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Gentle White Lily’s Embrace",
+      "icon": "skill001/skill0022_5",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Physical Healing Shield (LV 5) for 20 seconds and Hit-Based Magic Healing Shield (LV 5) for 20 seconds",
+      "effect": "6500% + 2500",
+      "buffEffects": [
+        {
+          "name": "Hit-Based Physical Healing Shield Ultimate Lv5",
+          "value": 50,
+          "type": "percent",
+          "duration": 20
+        },
+        {
+          "name": "Hit-Based Magic Healing Shield Ultimate Lv5",
+          "value": 50,
           "type": "percent",
           "duration": 20
         }
