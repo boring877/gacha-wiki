@@ -12,11 +12,13 @@ import { horusBuild } from './character-builds/horus.js';
 import { odinBuild } from './character-builds/odin.js';
 import { guinevereBuild } from './character-builds/guinevere.js';
 import { artemisBuild } from './character-builds/artemis.js';
-import { freyeChaosBuild } from './character-builds/freye.js';
+import { friggaChaosBuild } from './character-builds/frigga.js';
 import { freyaBuild } from './character-builds/freya.js';
 import { athenaBuild } from './character-builds/athena.js';
 import { afroditeBuild } from './character-builds/afrodite.js';
+import { gluttonyBeelzebubBuild } from './character-builds/gluttony-beelzebub.js';
 import { ibarakiDojiBuild } from './character-builds/ibaraki-doji.js';
+import { lustAsmodeusBuild } from './character-builds/lust-asmodeus.js';
 import { sigurdBuild } from './character-builds/sigurd.js';
 import { ninaBuild } from './character-builds/nina.js';
 import { jorogumoBuild } from './character-builds/jorogumo.js';
@@ -67,8 +69,8 @@ export const CHARACTER_BUILDS = {
   // Artemis Build - SSR Wind Berserker DPS
   artemis: artemisBuild,
 
-  // Freye Build - SSR Chaos DOT Debuffer
-  freye: freyeChaosBuild,
+  // Frigga Build - SSR Chaos DOT Debuffer
+  frigga: friggaChaosBuild,
 
   // Freya Build - SSR Ice Normal Attack Speed Carry
   freya: freyaBuild,
@@ -79,8 +81,14 @@ export const CHARACTER_BUILDS = {
   // Afrodite Build - SSR Holy Crit Scaling Warrior DPS
   afrodite: afroditeBuild,
 
+  // Gluttony - Beelzebub Build - SSR Ice Energy Control Debuffer
+  'gluttony-beelzebub': gluttonyBeelzebubBuild,
+
   // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Debuffer
   'ibaraki-doji': ibarakiDojiBuild,
+
+  // Lust - Asmodeus Build - SSR Wind Crit Attacker
+  'lust-asmodeus': lustAsmodeusBuild,
 
   // Sigurd Build - SSR Fire Crit-based Enhanced Ultimate DPS
   sigurd: sigurdBuild,

@@ -1,5 +1,7 @@
+import { ZONE_NOVA_CHARACTERS } from './characters.js';
+
 // Zone Nova Tier List Data
-// Last Updated: September 2025
+// Last Updated: March 2026
 // Based on current meta and character performance
 //
 // ⚠️  REMINDER: When adding/moving characters in tier lists below,
@@ -7,6 +9,11 @@
 //     Search for "lastUpdated:" and update each one manually
 
 export const TIER_DEFINITIONS = {
+  UR: {
+    label: 'UR',
+    description:
+      'Beyond broken. They define the meta entirely and make everything else irrelevant.',
+  },
   SSS: {
     label: 'SSS',
     description:
@@ -31,15 +38,29 @@ export const TIER_DEFINITIONS = {
   },
 };
 
+export const TIER_ORDER = Object.keys(TIER_DEFINITIONS);
+export const ROLE_ORDER = ['Healer', 'Buffer', 'Debuffer', 'Tank', 'DPS'];
+export const CLASS_ORDER = [
+  'Healer',
+  'Buffer',
+  'Debuffer',
+  'Disruptor',
+  'Guardian',
+  'Warrior',
+  'Attacker',
+  'Rogue',
+  'Mage',
+];
+
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
-  name: 'Overall PvE Tier List',
-  lastUpdated: '2026-02-19',
-  description: 'Character rankings for PvE (story, events).',
+  name: 'PvE Rankings by Class & Role',
+  lastUpdated: '2026-03-25',
+  description:
+    'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
     SSS: [
-      { name: 'Guinevere' },
-      { name: 'Athena' },
+      { name: 'Gluttony - Beelzebub' },
       { name: 'Freya' },
       { name: 'Hela' },
       { name: 'Gaia' },
@@ -47,27 +68,28 @@ export const PVE_TIER_LIST = {
       { name: 'Morgan Le Fay' },
       { name: 'Odin' },
       { name: 'Tamamo-no-Mae' },
+      { name: 'Yuis' },
+      { name: 'Pride-Lucifer' },
+      { name: 'Thor' },
+      { name: 'Wrath-Samael' },
+      { name: 'Frigga' },
     ],
     SS: [
-      { name: 'Yuis' },
-      { name: 'Thor' },
-      { name: 'Freye' },
+      { name: 'Guinevere' },
+      { name: 'Athena' },
       { name: 'Chiya' },
       { name: 'Apollo' },
       { name: 'Leviathan' },
       { name: 'Naiya' },
       { name: 'Penny' },
-      { name: 'Mordred' },
       { name: 'Hera' },
-      { name: 'Afrodite' },
       { name: 'Jeanne D Arc' },
       { name: 'Lily' },
       { name: 'Apep' },
       { name: 'Sigurd' },
       { name: 'Jorogumo' },
       { name: 'Shuten-doji' },
-      { name: 'Pride-Lucifer' },
-      { name: 'Wrath-Samael' },
+      { name: 'Ibaraki-doji' },
     ],
     S: [
       { name: 'Shu' },
@@ -81,6 +103,8 @@ export const PVE_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Horus' },
       { name: 'Lavinia' },
+      { name: 'Mordred' },
+      { name: 'Afrodite' },
     ],
     A: [
       { name: 'Tefnut' },
@@ -95,201 +119,57 @@ export const PVE_TIER_LIST = {
       { name: 'Nini' },
       { name: 'Loki' },
       { name: 'Belphegar' },
-      { name: 'Ibaraki-doji' },
     ],
   },
 };
 
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
-  name: 'PvP Arena Tier List',
-  lastUpdated: '2026-02-19',
-  description: 'PvP character rankings.',
+  name: 'Arena PvP Rankings by Class & Role',
+  lastUpdated: '2026-03-25',
+  description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
-    SSS: [{ name: 'Guinevere' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Pride-Lucifer' }, { name: 'Wrath-Samael' }],
+    UR: [{ name: 'Pride-Lucifer' }],
+    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }],
     SS: [
-      { name: 'Freye' },
-      { name: 'Freya' },
-      { name: 'Gaia' },
-      { name: 'Athena' },
-      { name: 'Jeanne D Arc' },
-      { name: 'Artemis' },
-      { name: 'Apollo' },
-      { name: 'Yuis' },
-      { name: 'Penny' },
-      { name: 'Horus' },
-      { name: 'Cleopatra' },
-      { name: 'Naiya' },
-      { name: 'Thor' },
-      { name: 'Chiya' },
-      { name: 'Lyra' },
-      { name: 'Hela' },
-      { name: 'Sigurd' },
-      { name: 'Jorogumo' },
-    ],
-    S: [
-      { name: 'Arthur' },
-      { name: 'Merlin' },
-      { name: 'Lancelot' },
-      { name: 'Snow Girl' },
-      { name: 'Bastet' },
-      { name: 'Anubis' },
-      { name: 'Greed Mammon' },
-      { name: 'Afrodite' },
-      { name: 'Shu' },
-      { name: 'Hera' },
-      { name: 'Kela' },
-      { name: 'Shanna' },
-      { name: 'Zashiki-warashi' },
-      { name: 'Lavinia' },
-      { name: 'Apep' },
-      { name: 'Shuten-doji' },
-    ],
-    A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Mordred' }, { name: 'Leviathan' }],
-    Situational: [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-      { name: 'Ibaraki-doji' },
-    ],
-  },
-};
-
-// Rift Content Tier List
-export const RIFT_TIER_LIST = {
-  name: 'Space-Time Rift Tier List',
-  lastUpdated: '2026-02-19',
-  description:
-    'Character tiers for Rift content. Make sure to use "Map Buff" when building your team.',
-  tiers: {
-    SSS: [
       { name: 'Guinevere' },
+      { name: 'Frigga' },
       { name: 'Athena' },
+      { name: 'Jeanne D Arc' },
       { name: 'Apollo' },
       { name: 'Yuis' },
-      { name: 'Odin' },
-      { name: 'Thor' },
-      { name: 'Freya' },
-      { name: 'Hela' },
-      { name: 'Gaia' },
-      { name: 'Nina' },
-      { name: 'Morgan Le Fay' },
-      { name: 'Sigurd' },
-      { name: 'Tamamo-no-Mae' },
-      { name: 'Pride-Lucifer' },
-    ],
-    SS: [
-      { name: 'Freye' },
-      { name: 'Jeanne D Arc' },
       { name: 'Penny' },
-      { name: 'Chiya' },
-      { name: 'Horus' },
-      { name: 'Afrodite' },
-      { name: 'Hera' },
-      { name: 'Merlin' },
-      { name: 'Leviathan' },
-      { name: 'Mordred' },
-      { name: 'Kela' },
+      { name: 'Cleopatra' },
       { name: 'Naiya' },
-      { name: 'Anubis' },
-      { name: 'Lily' },
-      { name: 'Apep' },
-      { name: 'Jorogumo' },
-      { name: 'Wrath-Samael' },
+      { name: 'Chiya' },
+      { name: 'Lyra' },
+      { name: 'Hela' },
+      { name: 'Sigurd' },
     ],
     S: [
+      { name: 'Arthur' },
+      { name: 'Merlin' },
+      { name: 'Lancelot' },
+      { name: 'Snow Girl' },
+      { name: 'Bastet' },
+      { name: 'Anubis' },
+      { name: 'Greed Mammon' },
+      { name: 'Horus' },
+      { name: 'Afrodite' },
       { name: 'Shu' },
+      { name: 'Hera' },
+      { name: 'Kela' },
       { name: 'Shanna' },
       { name: 'Zashiki-warashi' },
-      { name: 'Lancelot' },
-      { name: 'Lyra' },
-      { name: 'Arthur' },
-      { name: 'Cleopatra' },
       { name: 'Lavinia' },
+      { name: 'Mordred' },
       { name: 'Shuten-doji' },
     ],
-    A: [
-      { name: 'Tefnut' },
-      { name: 'Rose' },
-      { name: 'Greed Mammon' },
-      { name: 'Bastet' },
-      { name: 'Artemis' },
-      { name: 'Snow Girl' },
-    ],
+    A: [{ name: 'Tefnut' }, { name: 'Rose' }, { name: 'Leviathan' }],
     Situational: [
       { name: 'Loki' },
       { name: 'Belphegar' },
       { name: 'Nini' },
-      { name: 'Ibaraki-doji' },
-    ],
-  },
-};
-
-// Guild Raid Tier List
-export const GUILD_RAID_TIER_LIST = {
-  name: 'Guild Raid Tier List',
-  lastUpdated: '2026-02-19',
-  description:
-    'Characters for Guild Raid bosses and scoring. You do not need healers or tanks early on.',
-  tiers: {
-    SSS: [
-      { name: 'Guinevere' },
-      { name: 'Athena' },
-      { name: 'Apollo' },
-      { name: 'Yuis' },
-      { name: 'Odin' },
-      { name: 'Afrodite' },
-      { name: 'Freya' },
-      { name: 'Hela' },
-      { name: 'Nina' },
-      { name: 'Morgan Le Fay' },
-      { name: 'Tamamo-no-Mae' },
-      { name: 'Pride-Lucifer' },
-    ],
-    SS: [
-      { name: 'Freye' },
-      { name: 'Hera' },
-      { name: 'Gaia' },
-      { name: 'Jeanne D Arc' },
-      { name: 'Horus' },
-      { name: 'Leviathan' },
-      { name: 'Naiya' },
-      { name: 'Thor' },
-      { name: 'Penny' },
-      { name: 'Shu' },
-      { name: 'Zashiki-warashi' },
-      { name: 'Mordred' },
-      { name: 'Cleopatra' },
-      { name: 'Merlin' },
-      { name: 'Shanna' },
-      { name: 'Lavinia' },
-      { name: 'Sigurd' },
-      { name: 'Jorogumo' },
-    ],
-    S: [
-      { name: 'Tefnut' },
-      { name: 'Chiya' },
-      { name: 'Lyra' },
-      { name: 'Lancelot' },
-      { name: 'Arthur' },
-      { name: 'Kela' },
-      { name: 'Anubis' },
-      { name: 'Lily' },
-      { name: 'Apep' },
-      { name: 'Shuten-doji' },
-    ],
-    A: [
-      { name: 'Rose' },
-      { name: 'Greed Mammon' },
-      { name: 'Bastet' },
-      { name: 'Artemis' },
-      { name: 'Snow Girl' },
-    ],
-    Situational: [
-      { name: 'Loki' },
-      { name: 'Belphegar' },
-      { name: 'Nini' },
-      { name: 'Ibaraki-doji' },
     ],
   },
 };
@@ -297,7 +177,7 @@ export const GUILD_RAID_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2025-10-18',
+  lastUpdated: '2026-03-25',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
@@ -336,10 +216,101 @@ export const NEW_PLAYER_TIER_LIST = {
 export const ALL_TIER_LISTS = {
   pve: PVE_TIER_LIST,
   pvp: PVP_TIER_LIST,
-  rift: RIFT_TIER_LIST,
-  'guild-raid': GUILD_RAID_TIER_LIST,
   'new-player': NEW_PLAYER_TIER_LIST,
 };
+
+const CHARACTER_BY_NAME = Object.fromEntries(
+  ZONE_NOVA_CHARACTERS.map(character => [character.name, character])
+);
+
+function getTierLookup(listType) {
+  const tierList = ALL_TIER_LISTS[listType];
+  if (!tierList) return new Map();
+
+  const lookup = new Map();
+  Object.entries(tierList.tiers).forEach(([tier, characters]) => {
+    characters.forEach(character => {
+      lookup.set(character.name, tier);
+    });
+  });
+
+  return lookup;
+}
+
+function getGroupOrder(groupBy) {
+  return groupBy === 'role' ? ROLE_ORDER : CLASS_ORDER;
+}
+
+function createEmptyTierBuckets() {
+  return Object.fromEntries(TIER_ORDER.map(tier => [tier, []]));
+}
+
+export function getGroupedTierSections(listType, groupBy = 'class') {
+  const tierList = ALL_TIER_LISTS[listType];
+  if (!tierList) return [];
+
+  const sections = new Map();
+
+  TIER_ORDER.forEach(tier => {
+    const tierCharacters = tierList.tiers[tier] || [];
+
+    tierCharacters.forEach(charInfo => {
+      const character = CHARACTER_BY_NAME[charInfo.name];
+      if (!character) return;
+
+      const groupName = character[groupBy];
+      if (!groupName) return;
+
+      if (!sections.has(groupName)) {
+        sections.set(groupName, {
+          key: groupName.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+          label: groupName,
+          groupBy,
+          tiers: createEmptyTierBuckets(),
+        });
+      }
+
+      sections.get(groupName).tiers[tier].push({ name: character.name });
+    });
+  });
+
+  const orderedGroups = getGroupOrder(groupBy);
+
+  return [...sections.values()]
+    .sort((left, right) => {
+      const leftIndex = orderedGroups.indexOf(left.label);
+      const rightIndex = orderedGroups.indexOf(right.label);
+
+      if (leftIndex === -1 && rightIndex === -1) return left.label.localeCompare(right.label);
+      if (leftIndex === -1) return 1;
+      if (rightIndex === -1) return -1;
+      return leftIndex - rightIndex;
+    })
+    .map(section => {
+      const topTier = TIER_ORDER.find(tier => section.tiers[tier].length > 0) || 'Situational';
+      const totalCharacters = TIER_ORDER.reduce(
+        (count, tier) => count + section.tiers[tier].length,
+        0
+      );
+
+      return {
+        ...section,
+        topTier,
+        topCharacters: section.tiers[topTier],
+        totalCharacters,
+      };
+    });
+}
+
+export function getRoleHighlights(listType) {
+  return getGroupedTierSections(listType, 'role').map(section => ({
+    key: section.key,
+    label: section.label,
+    topTier: section.topTier,
+    topCharacters: section.topCharacters,
+    totalCharacters: section.totalCharacters,
+  }));
+}
 
 // Get character tier across all lists
 export function getCharacterTiers(characterName) {
@@ -370,6 +341,18 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-03-25',
+    changes: [
+      'Guinevere moved to SS in PvE',
+      'PvE tier list adjusted: Yuis promoted to SSS and Athena moved to SS',
+      'Gluttony - Beelzebub added to SSS in both PvE and PvP',
+      'Freya remains in SSS for PvE',
+      'PvE and Arena PvP now use role highlights with class-based ranking sections',
+      'Space-Time Rift and Guild Raid tier lists removed from the Zone Nova tier list page',
+      'Update reflects current general PvE priority for story and event content',
+    ],
+  },
   {
     date: '2026-02-19',
     changes: [

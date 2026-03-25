@@ -1,0 +1,28 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+// Navigation removed
+import { friggaData, friggaSEO } from '../../../../data/zone-nova/characters/frigga.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+// Get faction data from factions.js
+const factionName = getFactionByCharacter('Frigga');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...friggaData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={friggaSEO.title}
+  description={friggaSEO.description}
+  gameTitle={friggaData.name}
+  character={friggaData}
+>
+  <CharacterPageTemplate characterData={characterData} />
+</CharacterIndividualLayout>

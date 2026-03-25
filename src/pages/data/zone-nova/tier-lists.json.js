@@ -5,6 +5,8 @@ import {
   ALL_TIER_LISTS,
   TIER_DEFINITIONS,
   TIER_LIST_CHANGELOG,
+  getGroupedTierSections,
+  getRoleHighlights,
 } from '../../../data/zone-nova/tier-lists.js';
 
 export const prerender = true;
@@ -13,7 +15,8 @@ export async function GET() {
   const response = {
     game: 'Zone Nova',
     type: 'tier-lists',
-    description: 'Character tier rankings for different game modes (PvE, PvP, Rifts, Guild Raid)',
+    description:
+      'Role and class-based character rankings for the main Zone Nova modes: PvE, PvP, and New Player / F2P.',
     lastUpdated: new Date().toISOString().split('T')[0],
     tierDefinitions: TIER_DEFINITIONS,
     tierLists: {
@@ -22,30 +25,24 @@ export async function GET() {
         lastUpdated: ALL_TIER_LISTS.pve.lastUpdated,
         description: ALL_TIER_LISTS.pve.description,
         tiers: ALL_TIER_LISTS.pve.tiers,
+        roleHighlights: getRoleHighlights('pve'),
+        classSections: getGroupedTierSections('pve', 'class'),
       },
       pvp: {
         name: ALL_TIER_LISTS.pvp.name,
         lastUpdated: ALL_TIER_LISTS.pvp.lastUpdated,
         description: ALL_TIER_LISTS.pvp.description,
         tiers: ALL_TIER_LISTS.pvp.tiers,
-      },
-      rift: {
-        name: ALL_TIER_LISTS.rift.name,
-        lastUpdated: ALL_TIER_LISTS.rift.lastUpdated,
-        description: ALL_TIER_LISTS.rift.description,
-        tiers: ALL_TIER_LISTS.rift.tiers,
-      },
-      guildRaid: {
-        name: ALL_TIER_LISTS['guild-raid'].name,
-        lastUpdated: ALL_TIER_LISTS['guild-raid'].lastUpdated,
-        description: ALL_TIER_LISTS['guild-raid'].description,
-        tiers: ALL_TIER_LISTS['guild-raid'].tiers,
+        roleHighlights: getRoleHighlights('pvp'),
+        classSections: getGroupedTierSections('pvp', 'class'),
       },
       newPlayer: {
         name: ALL_TIER_LISTS['new-player'].name,
         lastUpdated: ALL_TIER_LISTS['new-player'].lastUpdated,
         description: ALL_TIER_LISTS['new-player'].description,
         tiers: ALL_TIER_LISTS['new-player'].tiers,
+        roleHighlights: getRoleHighlights('new-player'),
+        classSections: getGroupedTierSections('new-player', 'class'),
       },
     },
     changelog: TIER_LIST_CHANGELOG,

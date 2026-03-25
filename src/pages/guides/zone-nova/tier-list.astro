@@ -1,403 +1,226 @@
 ---
 import TierListLayout from '../../../layouts/zone-nova/TierListLayout.astro';
 import { ZONE_NOVA_CHARACTERS } from '../../../data/zone-nova/characters.js';
-import { ALL_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/zone-nova/tier-lists.js';
-import { ZNCharacterImage } from '../../../components/zone-nova/index.astro';
+import {
+  ALL_TIER_LISTS,
+  TIER_DEFINITIONS,
+  TIER_ORDER,
+  getGroupedTierSections,
+  getRoleHighlights,
+} from '../../../data/zone-nova/tier-lists.js';
+import { ZNCharacterImage, ZNClassImage } from '../../../components/zone-nova/index.astro';
 
-// Create a map of character data for quick lookup
 const characterMap = {};
 ZONE_NOVA_CHARACTERS.forEach(char => {
   characterMap[char.name] = char;
 });
 
-// Helper function to get tier class name
 function getTierClassName(tier: string): string {
   return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
 }
+
+function getListModeLabel(listType: string): string {
+  if (listType === 'pvp') return 'Arena PvP';
+  if (listType === 'new-player') return 'New Player / F2P';
+  return 'PvE';
+}
+
+function formatCharacterNames(characters: { name: string }[], limit = 3): string {
+  const names = characters.map(character => character.name);
+  if (names.length <= limit) return names.join(', ');
+  return `${names.slice(0, limit).join(', ')} +${names.length - limit} more`;
+}
+
+const structuredListTypes = ['pve', 'pvp', 'new-player'];
+
+const structuredTierViews: Record<string, { roleHighlights: ReturnType<typeof getRoleHighlights>; classSections: ReturnType<typeof getGroupedTierSections> }> = {};
+structuredListTypes.forEach(listType => {
+  structuredTierViews[listType] = {
+    roleHighlights: getRoleHighlights(listType),
+    classSections: getGroupedTierSections(listType, 'class'),
+  };
+});
 ---
 
 <TierListLayout
   title="Zone Nova Tier List - Character Rankings & Meta Guide"
-  description="Comprehensive Zone Nova tier lists for PvE, PvP, Rifts, and Guild Raids. Find the best characters and team compositions for every game mode."
+  description="Comprehensive Zone Nova rankings for PvE, Arena PvP, and new player progression. Compare the best healers, rogues, buffers, and other classes."
 >
   <div class="tier-list-container">
     <!-- Mode Toggle -->
-    <div class="mode-toggle">
-      <button class="mode-btn active" id="view-mode-btn"> View Tier Lists </button>
-      <button class="mode-btn" id="maker-mode-btn"> Create Your Own </button>
+    <div class="tl-mode-toggle">
+      <button class="tl-mode-btn active" id="view-mode-btn">View Tier Lists</button>
+      <button class="tl-mode-btn" id="maker-mode-btn">Create Your Own</button>
     </div>
 
     <!-- View Mode Content -->
     <div id="view-mode-content">
-      <!-- Tier List Type Selector -->
-      <div class="tier-list-selector">
-        <button class="tier-type-btn active" data-list-type="pve"> Overall PvE </button>
-        <button class="tier-type-btn" data-list-type="pvp"> PvP Arena </button>
-        <button class="tier-type-btn" data-list-type="rift"> Space-Time Rifts </button>
-        <button class="tier-type-btn" data-list-type="guild-raid"> Guild Raid </button>
-        <button class="tier-type-btn" data-list-type="new-player"> New Player / F2P </button>
+      <!-- List Type Selector -->
+      <div class="tl-type-selector">
+        <button class="tl-type-btn active" data-list-type="pve">PvE Rankings</button>
+        <button class="tl-type-btn" data-list-type="pvp">PvP Arena</button>
+        <button class="tl-type-btn" data-list-type="new-player">New Player / F2P</button>
       </div>
+
+      <!-- Tier List Info -->
+      <div class="tl-info" id="tier-list-info">
+        <h2 id="list-title">{ALL_TIER_LISTS.pve.name}</h2>
+        <p id="list-description">{ALL_TIER_LISTS.pve.description}</p>
+        <p class="tl-updated" id="list-updated">Last updated: {ALL_TIER_LISTS.pve.lastUpdated}</p>
+      </div>
+
+      <!-- Structured Tier Displays -->
+      {structuredListTypes.map(listType => (
+        <div
+          class="tl-structured-display"
+          id={`${listType}-tier-display`}
+          style={listType === 'pve' ? undefined : 'display: none;'}
+        >
+          <!-- Class Rankings -->
+          <div class="tl-class-sections">
+              {structuredTierViews[listType].classSections.map(section => (
+                <section class="tl-class-section">
+                  <div class="tl-class-header">
+                    <div class="tl-class-title-row">
+                      <ZNClassImage className={section.label} alt={section.label} size="medium" class="tl-class-icon" />
+                      <div>
+                        <h4 class="tl-class-name">{section.label}</h4>
+                        <p class="tl-class-desc">
+                          Best {section.label.toLowerCase()} picks for {getListModeLabel(listType)}.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {TIER_ORDER.map(tier =>
+                    section.tiers[tier].length ? (
+                      <div class="tl-tier-row">
+                        <div class={`tl-tier-label tl-tier-${getTierClassName(tier)}`}>
+                          {TIER_DEFINITIONS[tier].label}
+                        </div>
+                        <div class="tl-tier-chars">
+                          {section.tiers[tier].map(charInfo => {
+                            const charData = characterMap[charInfo.name];
+                            if (!charData) return null;
+
+                            return (
+                              <div
+                                class="tl-char-card"
+                                onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
+                              >
+                                <div class="tl-char-img">
+                                  <ZNCharacterImage
+                                    imageName={charData.image}
+                                    alt={charData.name}
+                                    width={300}
+                                    height={300}
+                                    loading="lazy"
+                                    quality={100}
+                                    format="jpg"
+                                  />
+                                </div>
+                                <div class="tl-char-name">{charData.name}</div>
+                                <div class="tl-char-badges">
+                                  <span class={`tl-badge tl-badge-rarity-${charData.rarity.toLowerCase()}`}>
+                                    {charData.rarity}
+                                  </span>
+                                  {charData.element && (
+                                    <span class={`tl-badge tl-badge-element-${charData.element.toLowerCase()}`}>
+                                      {charData.element}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ) : null
+                  )}
+                </section>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
 
     <!-- Maker Mode Content -->
     <div id="maker-mode-content" style="display: none;">
-      <p class="maker-description" style="text-align: center; color: var(--zn-text-secondary); margin-bottom: 1rem;">
+      <p class="tl-maker-desc">
         Click a character to select, then click a tier to place it. Or drag and drop.
       </p>
-      <div class="maker-controls">
-        <button class="control-btn" id="reset-tier-list">Reset Tier List</button>
+      <div class="tl-maker-controls">
+        <button class="tl-control-btn" id="reset-tier-list">Reset Tier List</button>
       </div>
-    </div>
 
-    <!-- Tier List Info -->
-    <div class="tier-list-info" id="tier-list-info">
-      <h2 class="tier-list-title" id="list-title">Overall PvE Tier List</h2>
-      <p class="tier-list-description" id="list-description">
-        Character rankings for general PvE content including story, events, and exploration.
-      </p>
-      <p class="tier-list-updated" id="list-updated">Last updated: 2025-09-19</p>
-    </div>
-
-    <!-- Maker Mode: Character Pool (Grid Layout) -->
-    <div id="maker-pool" style="display: none;">
-      <div class="maker-pool-grid">
-        {ZONE_NOVA_CHARACTERS.map(char => (
-          <div
-            class="pool-character-card draggable"
-            data-character={char.name}
-            data-rarity={char.rarity}
-            data-element={char.element}
-            draggable="true"
-          >
-            <div class="pool-image-wrapper">
-              <ZNCharacterImage
-                imageName={char.image}
-                alt={char.name}
-                width={75}
-                height={75}
-                loading="lazy"
-                quality={90}
-                format="webp"
-              />
-            </div>
-            <div class="pool-character-name">{char.name}</div>
-            <div class="pool-character-badges">
-              <span class={`pool-mini-badge rarity-${char.rarity.toLowerCase()}`}>
-                {char.rarity}
-              </span>
-              {char.element && (
-                <span class={`pool-mini-badge element-${char.element.toLowerCase()}`}>
-                  {char.element}
+      <!-- Character Pool -->
+      <div id="maker-pool">
+        <div class="tl-maker-pool-grid">
+          {ZONE_NOVA_CHARACTERS.map(char => (
+            <div
+              class="tl-pool-card draggable"
+              data-character={char.name}
+              data-rarity={char.rarity}
+              data-element={char.element}
+              draggable="true"
+            >
+              <div class="tl-pool-img">
+                <ZNCharacterImage
+                  imageName={char.image}
+                  alt={char.name}
+                  width={75}
+                  height={75}
+                  loading="lazy"
+                  quality={90}
+                  format="webp"
+                />
+              </div>
+              <div class="tl-pool-name">{char.name}</div>
+              <div class="tl-pool-badges">
+                <span class={`tl-badge tl-badge-rarity-${char.rarity.toLowerCase()}`}>
+                  {char.rarity}
                 </span>
-              )}
+                {char.element && (
+                  <span class={`tl-badge tl-badge-element-${char.element.toLowerCase()}`}>
+                    {char.element}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Maker Tier List -->
+      <div id="maker-tier-list">
+        {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+          <div class="tl-tier-row tl-maker-row">
+            <div class={`tl-tier-label tl-tier-${getTierClassName(tier)}`}>{definition.label}</div>
+            <div class="tl-tier-chars tl-droppable" data-tier={tier}>
+              <div class="tl-drop-hint">Drop characters here</div>
             </div>
           </div>
         ))}
       </div>
     </div>
 
-    <!-- Maker Mode: Tier List -->
-    <div id="maker-tier-list" style="display: none;">
-      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-        <div class="tier-row">
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
-          <div class="tier-characters droppable" data-tier={tier}>
-            <div class="drop-zone-hint">Drop characters here</div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- PvE Tier List Display (Visible by default) -->
-    <div class="tier-list-display" id="pve-tier-display">
-      {Object.entries(ALL_TIER_LISTS['pve'].tiers).map(([tier, characters]) => (
-        <div class="tier-row" data-tier={tier}>
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {TIER_DEFINITIONS[tier].label}
-          </div>
-          <div class="tier-characters">
-            {characters.map(charInfo => {
-              const charData = characterMap[charInfo.name];
-              if (!charData) return null;
-
-              return (
-                <div
-                  class="tier-character-card"
-                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                >
-                  <div class="character-image-wrapper">
-                    <ZNCharacterImage
-                      imageName={charData.image}
-                      alt={charData.name}
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      quality={100}
-                      format="jpg"
-                    />
-                  </div>
-                  <div class="character-name">{charData.name}</div>
-                  <div class="character-badges">
-                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                      {charData.rarity}
-                    </span>
-                    {charData.element && (
-                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                        {charData.element}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- PvP Tier List Display (Hidden by default) -->
-    <div class="tier-list-display" id="pvp-tier-display" style="display: none;">
-      {Object.entries(ALL_TIER_LISTS['pvp'].tiers).map(([tier, characters]) => (
-        <div class="tier-row" data-tier={tier}>
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {TIER_DEFINITIONS[tier].label}
-          </div>
-          <div class="tier-characters">
-            {characters.map(charInfo => {
-              const charData = characterMap[charInfo.name];
-              if (!charData) return null;
-
-              return (
-                <div
-                  class="tier-character-card"
-                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                >
-                  <div class="character-image-wrapper">
-                    <ZNCharacterImage
-                      imageName={charData.image}
-                      alt={charData.name}
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      quality={100}
-                      format="jpg"
-                    />
-                  </div>
-                  <div class="character-name">{charData.name}</div>
-                  <div class="character-badges">
-                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                      {charData.rarity}
-                    </span>
-                    {charData.element && (
-                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                        {charData.element}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Rift Tier List Display (Hidden by default) -->
-    <div class="tier-list-display" id="rift-tier-display" style="display: none;">
-      {Object.entries(ALL_TIER_LISTS['rift'].tiers).map(([tier, characters]) => (
-        <div class="tier-row" data-tier={tier}>
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {TIER_DEFINITIONS[tier].label}
-          </div>
-          <div class="tier-characters">
-            {characters.map(charInfo => {
-              const charData = characterMap[charInfo.name];
-              if (!charData) return null;
-
-              return (
-                <div
-                  class="tier-character-card"
-                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                >
-                  <div class="character-image-wrapper">
-                    <ZNCharacterImage
-                      imageName={charData.image}
-                      alt={charData.name}
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      quality={100}
-                      format="jpg"
-                    />
-                  </div>
-                  <div class="character-name">{charData.name}</div>
-                  <div class="character-badges">
-                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                      {charData.rarity}
-                    </span>
-                    {charData.element && (
-                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                        {charData.element}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Guild Raid Tier List Display (Hidden by default) -->
-    <div class="tier-list-display" id="guild-raid-tier-display" style="display: none;">
-      {Object.entries(ALL_TIER_LISTS['guild-raid'].tiers).map(([tier, characters]) => (
-        <div class="tier-row" data-tier={tier}>
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {TIER_DEFINITIONS[tier].label}
-          </div>
-          <div class="tier-characters">
-            {characters.map(charInfo => {
-              const charData = characterMap[charInfo.name];
-              if (!charData) return null;
-
-              return (
-                <div
-                  class="tier-character-card"
-                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                >
-                  <div class="character-image-wrapper">
-                    <ZNCharacterImage
-                      imageName={charData.image}
-                      alt={charData.name}
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      quality={100}
-                      format="jpg"
-                    />
-                  </div>
-                  <div class="character-name">{charData.name}</div>
-                  <div class="character-badges">
-                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                      {charData.rarity}
-                    </span>
-                    {charData.element && (
-                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                        {charData.element}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- New Player Tier List Display (Hidden by default) -->
-    <div class="tier-list-display" id="new-player-tier-display" style="display: none;">
-      {Object.entries(ALL_TIER_LISTS['new-player'].tiers).map(([tier, characters]) => (
-        <div class="tier-row" data-tier={tier}>
-          <div class={`tier-label tier-${getTierClassName(tier)}`}>
-            {TIER_DEFINITIONS[tier].label}
-          </div>
-          <div class="tier-characters">
-            {characters.map(charInfo => {
-              const charData = characterMap[charInfo.name];
-              if (!charData) return null;
-
-              return (
-                <div
-                  class="tier-character-card"
-                  onclick={`window.location.href=${JSON.stringify(charData.detailUrl)}`}
-                >
-                  <div class="character-image-wrapper">
-                    <ZNCharacterImage
-                      imageName={charData.image}
-                      alt={charData.name}
-                      width={160}
-                      height={160}
-                      loading="lazy"
-                      quality={100}
-                      format="jpg"
-                    />
-                  </div>
-                  <div class="character-name">{charData.name}</div>
-                  <div class="character-badges">
-                    <span class={`mini-badge rarity-${charData.rarity.toLowerCase()}`}>
-                      {charData.rarity}
-                    </span>
-                    {charData.element && (
-                      <span class={`mini-badge element-${charData.element.toLowerCase()}`}>
-                        {charData.element}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Tier Legend -->
-    <div class="tier-legend" id="tier-legend">
-      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-        <div class="legend-item">
-          <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
-          <div class="legend-description">
-            <span class="legend-label">{definition.label} Tier</span>
-            <span class="legend-text">{definition.description}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Quick Links -->
-    <div
-      style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;"
-    >
-      <a
-        href="/guides/zone-nova/characters/"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--amber-glow), #FF9800); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Character Database
-      </a>
-      <a
-        href="/guides/zone-nova/team-synergy"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #64b5f6, #42a5f5); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Team Synergy
-      </a>
-      <a
-        href="/guides/zone-nova/character-rankings"
-        style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #66bb6a, #4caf50); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: all 0.3s ease;"
-      >
-        Stat Rankings
-      </a>
-    </div>
   </div>
 
-  <!-- Tier List Maker Script -->
   <script define:vars={{ characterMap, ALL_TIER_LISTS }}>
     document.addEventListener('DOMContentLoaded', () => {
-      // View mode elements
       const listTitle = document.getElementById('list-title');
       const listDescription = document.getElementById('list-description');
       const listUpdated = document.getElementById('list-updated');
-      const typeButtons = document.querySelectorAll('.tier-type-btn');
+      const typeButtons = document.querySelectorAll('.tl-type-btn');
       const viewModeBtn = document.getElementById('view-mode-btn');
       const makerModeBtn = document.getElementById('maker-mode-btn');
       const viewModeContent = document.getElementById('view-mode-content');
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
       const tierLegend = document.getElementById('tier-legend');
-      const tierListDisplays = document.querySelectorAll('.tier-list-display[id$="-tier-display"]');
+      const tierListDisplays = document.querySelectorAll('.tl-structured-display');
 
-      // Maker mode elements
       const makerPool = document.getElementById('maker-pool');
       const makerTierList = document.getElementById('maker-tier-list');
       const resetBtn = document.getElementById('reset-tier-list');
@@ -409,7 +232,6 @@ function getTierClassName(tier: string): string {
       const STORAGE_KEY = 'zn-custom-tier-list';
       let makerInitialized = false;
 
-      // Update tier list info
       function updateTierListInfo(listType) {
         const tierList = ALL_TIER_LISTS[listType];
         if (!tierList) return;
@@ -422,7 +244,6 @@ function getTierClassName(tier: string): string {
         });
       }
 
-      // Type button listeners
       typeButtons.forEach(button => {
         button.addEventListener('click', () => {
           const listType = button.dataset.listType;
@@ -434,7 +255,6 @@ function getTierClassName(tier: string): string {
         });
       });
 
-      // View mode button
       viewModeBtn.addEventListener('click', () => {
         currentMode = 'view';
         viewModeBtn.classList.add('active');
@@ -448,7 +268,6 @@ function getTierClassName(tier: string): string {
         updateTierListInfo(currentListType);
       });
 
-      // Maker mode button
       makerModeBtn.addEventListener('click', () => {
         currentMode = 'maker';
         makerModeBtn.classList.add('active');
@@ -466,16 +285,14 @@ function getTierClassName(tier: string): string {
         }
       });
 
-      // Initialize maker mode
       function initializeMaker() {
         setupPoolCards();
         setupDropZones();
         loadFromStorage();
       }
 
-      // Setup pool card drag events
       function setupPoolCards() {
-        document.querySelectorAll('#maker-pool .pool-character-card').forEach(card => {
+        document.querySelectorAll('#maker-pool .tl-pool-card').forEach(card => {
           const characterName = card.dataset.character;
 
           card.addEventListener('dragstart', e => {
@@ -489,29 +306,25 @@ function getTierClassName(tier: string): string {
             card.classList.remove('dragging');
           });
 
-          // Click to select (works on all devices now)
           card.addEventListener('click', () => {
-            // If clicking same card, deselect
             if (selectedCharacter === characterName) {
               card.classList.remove('selected');
               selectedCharacter = null;
-              document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              document.querySelectorAll('.tl-droppable').forEach(z => z.classList.remove('awaiting-placement'));
               return;
             }
 
-            // Select this card
-            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
-            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-pool-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-char-card.in-tier').forEach(c => c.classList.remove('selected'));
             card.classList.add('selected');
             selectedCharacter = characterName;
-            document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+            document.querySelectorAll('.tl-droppable').forEach(z => z.classList.add('awaiting-placement'));
           });
         });
       }
 
-      // Setup drop zones
       function setupDropZones() {
-        document.querySelectorAll('.tier-characters.droppable').forEach(zone => {
+        document.querySelectorAll('.tl-droppable').forEach(zone => {
           const tierName = zone.dataset.tier;
 
           zone.addEventListener('dragover', e => {
@@ -539,32 +352,28 @@ function getTierClassName(tier: string): string {
             }
           });
 
-          // Click to place (works on all devices now)
           zone.addEventListener('click', () => {
             if (!selectedCharacter) return;
             moveCardToTier(selectedCharacter, tierName);
-            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
-            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
-            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            document.querySelectorAll('.tl-pool-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-char-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-droppable').forEach(z => z.classList.remove('awaiting-placement'));
             selectedCharacter = null;
           });
         });
       }
 
-      // Move card to tier
       function moveCardToTier(characterName, tierName) {
         const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
         const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
 
         if (!poolCard || !targetZone) return;
 
-        // Hide pool card
         poolCard.style.display = 'none';
 
-        // Create tier card
         const charData = characterMap[characterName];
         const tierCard = document.createElement('div');
-        tierCard.className = 'tier-character-card draggable in-tier';
+        tierCard.className = 'tl-char-card draggable in-tier';
         tierCard.dataset.character = characterName;
         tierCard.draggable = true;
 
@@ -574,22 +383,20 @@ function getTierClassName(tier: string): string {
           : '';
 
         tierCard.innerHTML = `
-          <div class="character-image-wrapper">
+          <div class="tl-char-img">
             <img src="${poolCard.querySelector('img').src}" alt="${characterName}" loading="lazy" />
           </div>
-          <div class="character-name">${characterName}</div>
-          <div class="character-badges">
-            <span class="mini-badge rarity-${charData?.rarity?.toLowerCase() || 'sr'}">${charData?.rarity || 'SR'}</span>
-            ${charData?.element ? `<span class="mini-badge element-${elementClass}">${elementName}</span>` : ''}
+          <div class="tl-char-name">${characterName}</div>
+          <div class="tl-char-badges">
+            <span class="tl-badge tl-badge-rarity-${charData?.rarity?.toLowerCase() || 'sr'}">${charData?.rarity || 'SR'}</span>
+            ${charData?.element ? `<span class="tl-badge tl-badge-element-${elementClass}">${elementName}</span>` : ''}
           </div>
-          <button class="remove-btn" title="Remove from tier">×</button>
+          <button class="tl-remove-btn" title="Remove from tier">&times;</button>
         `;
 
-        // Setup tier card events
         setupTierCardEvents(tierCard, characterName);
 
-        // Hide hint
-        const hint = targetZone.querySelector('.drop-zone-hint');
+        const hint = targetZone.querySelector('.tl-drop-hint');
         if (hint) hint.style.display = 'none';
 
         targetZone.appendChild(tierCard);
@@ -597,7 +404,6 @@ function getTierClassName(tier: string): string {
         saveToStorage();
       }
 
-      // Setup tier card events
       function setupTierCardEvents(card, characterName) {
         card.addEventListener('dragstart', e => {
           e.dataTransfer.effectAllowed = 'move';
@@ -610,13 +416,12 @@ function getTierClassName(tier: string): string {
           card.classList.remove('dragging');
         });
 
-        card.querySelector('.remove-btn').addEventListener('click', e => {
+        card.querySelector('.tl-remove-btn').addEventListener('click', e => {
           e.stopPropagation();
           returnCardToPool(characterName);
         });
       }
 
-      // Move card between tiers
       function moveCardBetweenTiers(characterName, newTierName) {
         const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
         const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
@@ -628,20 +433,17 @@ function getTierClassName(tier: string): string {
         targetZone.appendChild(tierCard);
         tierAssignments[characterName] = newTierName;
 
-        // Show hint if old tier is empty
         if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
-          const hint = oldZone.querySelector('.drop-zone-hint');
+          const hint = oldZone.querySelector('.tl-drop-hint');
           if (hint) hint.style.display = 'block';
         }
 
-        // Hide hint in new tier
-        const hint = targetZone.querySelector('.drop-zone-hint');
+        const hint = targetZone.querySelector('.tl-drop-hint');
         if (hint) hint.style.display = 'none';
 
         saveToStorage();
       }
 
-      // Return card to pool
       function returnCardToPool(characterName) {
         const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
         const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
@@ -653,22 +455,19 @@ function getTierClassName(tier: string): string {
         tierCard.remove();
         delete tierAssignments[characterName];
 
-        // Show hint if tier is empty
         if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
-          const hint = oldZone.querySelector('.drop-zone-hint');
+          const hint = oldZone.querySelector('.tl-drop-hint');
           if (hint) hint.style.display = 'block';
         }
 
         saveToStorage();
       }
 
-      // Reset
       resetBtn?.addEventListener('click', () => {
         Object.keys(tierAssignments).forEach(returnCardToPool);
         localStorage.removeItem(STORAGE_KEY);
       });
 
-      // Storage
       function saveToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
       }
@@ -689,116 +488,7 @@ function getTierClassName(tier: string): string {
         }
       }
 
-      // Initial
       updateTierListInfo('pve');
     });
   </script>
 </TierListLayout>
-
-<style>
-  /* Maker Pool Grid - better layout than sidebar */
-  .maker-pool-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-    gap: 0.75rem;
-    padding: 1rem;
-    background: var(--zn-bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--zn-border-primary);
-    margin-bottom: 1.5rem;
-  }
-
-  #maker-tier-list {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  #maker-tier-list .tier-row {
-    display: flex;
-    background: var(--zn-bg-primary);
-    border-radius: 8px;
-    border: 1px solid var(--zn-border-primary);
-    min-height: 100px;
-    overflow: hidden;
-  }
-
-  #maker-tier-list .tier-characters.droppable {
-    border: 2px dashed transparent;
-    transition: all 0.2s;
-  }
-
-  #maker-tier-list .tier-characters.drag-over {
-    border-color: var(--zn-primary-amber);
-    background: rgba(255, 183, 77, 0.05);
-  }
-
-  #maker-tier-list .tier-characters.awaiting-placement {
-    border-color: var(--zn-primary-amber);
-    background: rgba(255, 183, 77, 0.1);
-  }
-
-  #maker-tier-list .tier-character-card.in-tier {
-    width: 80px;
-    min-width: 80px;
-    padding: 0.4rem;
-  }
-
-  #maker-tier-list .character-image-wrapper {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
-  }
-
-  #maker-tier-list .character-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-
-  #maker-tier-list .character-name {
-    font-size: 0.7rem;
-  }
-
-  /* Remove button styling */
-  .remove-btn {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--zn-badge-red);
-    color: white;
-    border: 2px solid var(--zn-bg-primary);
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  .tier-character-card:hover .remove-btn {
-    opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    .maker-pool-grid {
-      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-      gap: 0.5rem;
-    }
-
-    #maker-tier-list .tier-row {
-      flex-direction: column;
-    }
-
-    #maker-tier-list .tier-label {
-      width: 100%;
-      height: 50px;
-    }
-  }
-</style>

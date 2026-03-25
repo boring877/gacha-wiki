@@ -48,7 +48,7 @@ export const ZONE_NOVA_FACTIONS = {
   'A.S.A': {
     name: 'A.S.A',
     chineseName: '亚萨',
-    characters: ['Freye', 'Freya', 'Hela', 'Loki', 'Odin', 'Sigurd', 'Thor'],
+    characters: ['Frigga', 'Freya', 'Hela', 'Loki', 'Odin', 'Sigurd', 'Thor'],
     color: '#f44336',
     description: 'The A.S.A faction with Norse mythology influences',
   },
@@ -69,7 +69,15 @@ export const ZONE_NOVA_FACTIONS = {
   'Bicta Tower': {
     name: 'Bicta Tower',
     chineseName: '毕刻客',
-    characters: ['Leviathan', 'Greed Mammon', 'Belphegar', 'Pride-Lucifer', 'Wrath-Samael'],
+    characters: [
+      'Leviathan',
+      'Greed Mammon',
+      'Gluttony - Beelzebub',
+      'Lust - Asmodeus',
+      'Belphegar',
+      'Pride-Lucifer',
+      'Wrath-Samael',
+    ],
     color: '#673ab7',
     description: 'The Bicta Tower faction with demonic influences',
   },
