@@ -7,7 +7,7 @@
 
 ## Build Rules
 
-- Do NOT run `bun run build` - the dev server is already running locally
+- Always run `bun run build` before pushing to catch import errors and build failures early
 - Never run build tests unless explicitly asked by the user
 - The user will test changes themselves in the browser
 
