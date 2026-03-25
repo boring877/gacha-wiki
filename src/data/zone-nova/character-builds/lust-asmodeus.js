@@ -27,13 +27,12 @@ export const lustAsmodeusBuild = {
         'Cooldown: 5.0s\nDeals 5 instances of damage to the target enemy unit, each dealing 155.8% attack power as wind damage and inflicting [Armor Shatter], reducing their defense by 6.9% for 10 seconds, stacking up to 10 times.',
     },
     {
-      skill: 'Passive: Wind attack',
+      skill: 'Passive: Wind Desire',
       priority: 3,
       level: 'Level 10',
       reason:
-        'The current local character data lists her passive as the same multi-hit Armor Shatter effect, so it stays valuable after her main damage buttons.',
-      description:
-        'Deals 5 instances of damage to the target enemy unit, each dealing 155.8% attack power as wind damage and inflicting [Armor Shatter], reducing their defense by 6.9% for 10 seconds, stacking up to 10 times.',
+        'This passive adds a strong defensive payoff once her [Desire] engine is fully online, making it a solid upgrade after her main damage skills.',
+      description: 'When the [Desire] stack is 2, damage taken is reduced by 50%.',
     },
     {
       skill: 'Normal Attack: Wind cutter',

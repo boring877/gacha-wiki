@@ -41,9 +41,8 @@ export const lustAsmodeusData = {
         "Deals 1077.2% of ATK as Wind Damage to the target enemy and inflicts the [Wind Damage] debuff, reducing the enemy's incoming healing by 30% and incoming shield value by 50% for 8 seconds. After using her ultimate skill, Asmodeus gains 1 stack of [Desire], reducing Normal Attack cooldown by 25% and Skill cooldown by 10%, up to a maximum of 2 stacks.",
     },
     passive: {
-      name: 'Wind attack',
-      description:
-        'Deals 5 instances of damage to the target enemy unit, each dealing 155.8% attack power as wind damage and inflicting [Armor Shatter], reducing their defense by 6.9% for 10 seconds, stacking up to 10 times.',
+      name: 'Wind Desire',
+      description: 'When the [Desire] stack is 2, damage taken is reduced by 50%.',
     },
   },
 
