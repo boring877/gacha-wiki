@@ -64,21 +64,15 @@ function formatStat(key: string, value: number): string {
   return value.toLocaleString();
 }
 
-function formatDamageFactor(value: number | null): string {
-  if (value === null || value === undefined) return '-';
-  return (value / 100).toFixed(0) + '%';
-}
 
-function stripHtml(text: string): string {
-  return text.replace(/<[^>]+>/g, '');
-}
 
 function getVisibleEffects(seEffects: any[]): any[] {
   if (!seEffects || seEffects.length === 0) return [];
   const seen = new Set<string>();
   return seEffects.filter((e: any) => {
     const buff = e.buff || '';
-    if (buff.startsWith('BI_STAT_')) return false;
+    if (SE_HIDDEN_BUFFS.has(buff)) return false;
+    if (SE_INTERNAL_BUFFS.has(buff)) return false;
     if (!e.buffName) return false;
     if (seen.has(buff)) return false;
     seen.add(buff);
@@ -86,18 +80,6 @@ function getVisibleEffects(seEffects: any[]): any[] {
   });
 }
 
-function formatEffectLine(e: any): string {
-  const name = e.buffName || '';
-  const desc = e.buffDesc || '';
-  const turns = e.turns;
-  const rate = e.activationRate || 0;
-  const target = e.target || '';
-  let line = name;
-  if (turns > 0) line += ` (${turns} turn${turns > 1 ? 's' : ''})`;
-  if (rate > 0 && rate < 10000) line += ` ${rate / 100}% chance`;
-  if (desc) line += ` — ${desc}`;
-  return line;
-}
 
 function getSkillPhase(strId: string): string {
   if (strId.includes('_ATTACK')) return 'Attack';
@@ -134,78 +116,48 @@ function formatStatBonusType(type: string): string {
   return map[type] || type.replace('NST_NV_RATE_', '').replace('NST_RATE_', '');
 }
 
-function diffDescriptions(prevDesc: string, currDesc: string): string[] {
-  const prev = prevDesc.replace(/<[^>]*>/g, '');
-  const curr = currDesc.replace(/<[^>]*>/g, '');
-  if (prev === curr) return [];
-  const prevWords = prev.split(/\s+/);
-  const currWords = curr.split(/\s+/);
-  const minLen = Math.min(prevWords.length, currWords.length);
-  const groups: { from: string[]; to: string[] }[] = [];
-  let current: { from: string[]; to: string[] } | null = null;
-  for (let i = 0; i < minLen; i++) {
-    if (prevWords[i] !== currWords[i]) {
-      if (!current) current = { from: [], to: [] };
-      current.from.push(prevWords[i]);
-      current.to.push(currWords[i]);
-    } else {
-      if (current) { groups.push(current); current = null; }
-    }
-  }
-  if (current) groups.push(current);
-  return groups.map((g) => {
-    let from = g.from.join(' ').replace(/^\W+/, '');
-    let to = g.to.join(' ').replace(/^\W+/, '');
-    if (from === to) return to;
-    return from + ' → ' + to;
-  });
+function extractNumbers(text: string): { index: number; value: number }[] {
+  const nums: { index: number; value: number }[] = [];
+  const re = /(\d+(?:\.\d+)?)/g;
+  let m;
+  while ((m = re.exec(text)) !== null) nums.push({ index: m.index, value: parseFloat(m[1]) });
+  return nums;
 }
 
-function seToSummary(effects: any[]): string {
-  if (!effects || effects.length === 0) return '';
-  const parts: string[] = [];
-  for (const eff of effects) {
-    const buff = eff.buff || '';
-    const stats = eff.stats || [];
-    const rate = eff.activationRate || 0;
-    if (buff.includes('DAMAGE_UP') && stats.length > 0) {
-      const r = stats[0]['NKM_STAT_TYPE_RATE'];
-      if (r !== undefined) parts.push('DMG +' + (r / 100).toFixed(0) + '%');
-    } else if (buff.includes('CRITICAL_DAMAGE') && stats.length > 0 && stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
-      parts.push('Crit DMG +' + (stats[0]['NKM_STAT_TYPE_RATE'] / 100).toFixed(0) + '%');
-    } else if (buff.includes('CRITICAL') && stats.length > 0 && stats[0]['NKM_STAT_TYPE_RATE'] !== undefined) {
-      parts.push('Crit +' + (stats[0]['NKM_STAT_TYPE_RATE'] / 100).toFixed(0) + '%');
-    } else if (buff.includes('DEFENSE_DECREASE')) {
-      parts.push('DEF Down ' + (rate / 100).toFixed(0) + '%');
-    } else if (buff.includes('DEFENSE_INCREASE')) {
-      parts.push('DEF Up ' + (rate / 100).toFixed(0) + '%');
-    } else if (buff.includes('SPEED_INCREASE')) {
-      parts.push('SPD Up');
-    } else if (buff.includes('HEAL') && stats.length > 0) {
-      const r = stats[0]['NKM_STAT_TYPE_RATE'];
-      if (r !== undefined) parts.push('Heal +' + (r / 100).toFixed(0) + '%');
-    } else if (buff.includes('SUPER_ARMOR_DAMAGE') && stats.length > 0) {
-      const r = stats[0]['NKM_STAT_TYPE_RATE'];
-      if (r !== undefined) parts.push('SA DMG +' + (r / 100).toFixed(0) + '%');
-    } else if (buff.includes('BURN') || buff.includes('BLEED') || buff.includes('FREEZE')) {
-      parts.push(buff.replace('BI_', '').replace(/_/g, ' '));
-    } else if (buff.includes('RESOURCE_SUN')) parts.push('Sun +1');
-    else if (buff.includes('RESOURCE_MOON')) parts.push('Moon +1');
-    else if (buff.includes('RESOURCE_STAR')) parts.push('Star +1');
-    else if (buff.includes('RESOURCE_CHAOS')) parts.push('Chaos +1');
-    else if (buff.includes('RESOURCE_ORDER')) parts.push('Order +1');
-    else if (buff.includes('BARRIER')) parts.push('Barrier');
-    else if (buff.includes('EXTRA_TURN')) parts.push('Extra Turn');
-    else if (buff.includes('SILENCE')) parts.push('Silence');
-    else if (buff.includes('SPEED_GAUGE_UP')) parts.push('Action Gauge Up');
-    else if (buff.includes('SPEED_GAUGE_DOWN')) parts.push('Action Gauge Down');
-    else if (buff.includes('DEBUFFBAN')) parts.push('Debuff Immune');
-    else if (buff.includes('GUARD')) parts.push('Guard');
-    else if (buff.includes('HYPER_COOL_TURN_DOWN') && !buff.includes('UP')) parts.push('Hyper CD -1');
-    else if (buff.includes('SPECIAL_COOL_TURN_DOWN')) parts.push('Special CD -1');
+function diffLevels(baseDesc: string, currDesc: string): string[] {
+  const prev = baseDesc.replace(/<[^>]*>/g, '');
+  const curr = currDesc.replace(/<[^>]*>/g, '');
+  if (prev === curr) return [];
+  const prevNums = extractNumbers(prev);
+  const currNums = extractNumbers(curr);
+  if (prevNums.length === currNums.length && prevNums.length > 0) {
+    const diffs: string[] = [];
+    for (let i = 0; i < prevNums.length; i++) {
+      if (prevNums[i].value !== currNums[i].value) {
+        diffs.push(prevNums[i].value + ' \u2192 ' + currNums[i].value);
+      }
+    }
+    if (diffs.length > 0) return diffs;
   }
-  return parts.join(', ');
+  const words = prev.split(/\s+/);
+  const currWords = curr.split(/\s+/);
+  if (currWords.length > words.length) {
+    const added = currWords.slice(words.length).join(' ').trim();
+    if (added.length > 3) return [added];
+  }
+  return [];
 }
+
+const SE_HIDDEN_BUFFS = new Set([
+  'BI_STAT_NST_NV_RATE_DEF', 'BI_STAT_NST_RATE_CRITICAL', 'BI_STAT_NST_RATE_CRITICAL_DAMAGE',
+  'BI_STAT_NST_RATE_DAMAGE_UP', 'BI_STAT_NST_RATE_DAMAGE_UP_TARGET_DEBUFF_COUNT',
+  'BI_STAT_NST_RATE_HEAL_GIVE', 'BI_STAT_NST_SUPER_ARMOR_DAMAGE',
+]);
+const SE_INTERNAL_BUFFS = new Set([
+  'BI_BUNNY_PRAY_ANIMSET2', 'BI_BUNNY_SCISSORS_7', 'BI_BUNNY_SPEAR_2',
+  'BI_STARPIERCER_OMEGA_2', 'BI_BUNNY_PRAY_2', 'BI_SAINTESS_ELF_2',
+  'BI_INDEPENDENT_DRAGON_1',
+]);
 
 function seAccumDmgBonus(levels: any[], upToIdx: number): number | null {
   let best: number | null = null;
@@ -227,18 +179,21 @@ function buildLevelChanges(levels: any[], targetIdx: number): { text: string; ty
   const isPassive = (curr.statBonuses && curr.statBonuses.length > 0) && !curr.seEffects?.some((e: any) => (e.buff || '').includes('DAMAGE_UP'));
   if (isPassive) {
     const changes: { text: string; type: string }[] = [];
-    const baseMap = new Map<string, number>();
-    for (const b of (base.statBonuses || [])) baseMap.set(b.type, b.rate);
+    const baseBonuses = new Map<string, number>();
+    for (const b of (base.statBonuses || [])) baseBonuses.set(b.type, b.rate);
     for (const b of (curr.statBonuses || [])) {
       const label = formatStatBonusType(b.type);
-      changes.push({ text: label + ' +' + (b.rate / 100).toFixed(0) + '%', type: 'stat' });
+      const baseRate = baseBonuses.get(b.type) || 0;
+      const diff = b.rate - baseRate;
+      if (diff > 0) {
+        changes.push({ text: label + ' +' + (diff / 100).toFixed(0) + '%', type: 'stat' });
+      } else if (diff === 0 && baseRate === 0) {
+        changes.push({ text: label + ' +' + (b.rate / 100).toFixed(0) + '%', type: 'stat' });
+      }
     }
-    const baseDesc = (base.description || '').replace(/<[^>]*>/g, '');
-    const currDesc = (curr.description || '').replace(/<[^>]*>/g, '');
-    if (currDesc.length > baseDesc.length + 10) {
-      const added = currDesc.slice(baseDesc.length).trim();
-      if (added.length > 3) changes.push({ text: added, type: 'desc' });
-    }
+    const descDiff = diffLevels(base.description || '', curr.description || '');
+    for (const d of descDiff) changes.push({ text: d, type: 'desc' });
+    if (changes.length === 0) changes.push({ text: 'No changes at this level', type: 'none' });
     return changes;
   }
   const changes: { text: string; type: string }[] = [];
@@ -260,10 +215,8 @@ function buildLevelChanges(levels: any[], targetIdx: number): { text: string; ty
   if (totalCd > 0) {
     changes.push({ text: 'CD -' + totalCd + ' turn' + (totalCd > 1 ? 's' : ''), type: 'cd' });
   }
-  const descDiff = diffDescriptions(base.description || '', curr.description || '');
-  for (const d of descDiff) {
-    changes.push({ text: d, type: 'desc' });
-  }
+  const descDiff = diffLevels(base.description || '', curr.description || '');
+  for (const d of descDiff) changes.push({ text: d, type: 'desc' });
   if (changes.length === 0) {
     changes.push({ text: 'No changes at this level', type: 'none' });
   }
@@ -287,12 +240,6 @@ const ADJUST_TYPE_MAP: Record<string, string> = {
 };
 
 const elementLabel = data.adjustType ? (ADJUST_TYPE_MAP[data.adjustType] || data.adjustType) : '';
-
-const NB_HIGHLIGHT_MAP: Record<string, string> = {
-  'NSI_SKILL_1_ATTACK': 'Attack',
-  'NSI_SKILL_2_SPECIAL': 'Special',
-  'NSI_SKILL_3_HYPER': 'Hyper',
-};
 
 const COUNTER_CHAIN: Record<string, { counters: string; counteredBy: string }> = {
   'NUAT_SUN': { counters: 'Star', counteredBy: 'Moon' },
@@ -458,13 +405,7 @@ const maxBattlePower = calcMaxBattlePower(data);
           const displayName = skill.name && skill.name !== phase ? skill.name : phase;
           const levels = skill.levels || [];
           const hasMultiLevel = levels.length > 1;
-          const currentLv = 1;
-          const lvIdx = levels.findIndex((l: any) => l.level === currentLv);
-          const lv = lvIdx >= 0 ? levels[lvIdx] : levels[0];
-          const desc = lv ? (lv.description || '') : '';
           const dmgLabels = getSkillDamageLabel(skill, data, data.attackTagType || '');
-          const initDmgBonus = seAccumDmgBonus(levels, lvIdx);
-          const lvChanges = lvIdx > 0 ? buildLevelChanges(levels, lvIdx) : [{ text: 'Base skill', type: 'base' }];
           return (
             <div class="ss-skill-item" data-skill-idx={idx} data-max-lv={skill.maxLevel}>
               <SSSkillIcon icon={skill.icon} alt={displayName} width={72} height={72} />
@@ -484,28 +425,60 @@ const maxBattlePower = calcMaxBattlePower(data);
                           {' ' + l}
                         </Fragment>
                       ))}
-                      {initDmgBonus !== null && <span class="ss-skill-dmg-bonus" data-skill-dmg-bonus={idx}> (+{(initDmgBonus / 100).toFixed(0)}%)</span>}
                     </span>
                   )}
                   {skill.novaForce > 0 && <span class="ss-skill-nf">Nova Force +{skill.novaForce}</span>}
                 </div>
-                {desc && <div class="ss-skill-desc" data-skill-desc={idx} set:html={desc}></div>}
-                {(() => {
-                  const visibleEffects = getVisibleEffects(lv.seEffects || []);
-                  if (visibleEffects.length === 0) return null;
-                  return (
-                    <div class="ss-skill-effects" data-skill-effects={idx}>
-                      {visibleEffects.map((eff: any) => (
-                        <div class={`ss-skill-effect${eff.buffIsPositive ? '' : ' ss-effect-negative'}`}>
-                          <span class="ss-effect-name">{eff.buffName}</span>
-                          {eff.turns > 0 && <span class="ss-effect-turns">{eff.turns} turn{eff.turns > 1 ? 's' : ''}</span>}
-                          {eff.activationRate > 0 && eff.activationRate < 10000 && <span class="ss-effect-rate">{eff.activationRate / 100}%</span>}
-                          {eff.buffDesc && <span class="ss-effect-desc">{eff.buffDesc}</span>}
+                {hasMultiLevel ? (
+                  levels.map((lv: any, lvI: number) => {
+                    const lvDesc = lv ? (lv.description || '') : '';
+                    const lvChanges = lvI > 0 ? buildLevelChanges(levels, lvI) : [{ text: 'Base skill', type: 'base' }];
+                    const visibleEffects = getVisibleEffects(lv.seEffects || []);
+                    return (
+                      <div class={`ss-skill-level-data${lv.level === 1 ? ' ss-skill-level-active' : ''}`} data-skill-idx={idx} data-lv={lv.level}>
+                        {lvDesc && <div class="ss-skill-desc" set:html={lvDesc}></div>}
+                        {visibleEffects.length > 0 && (
+                          <div class="ss-skill-effects">
+                            {visibleEffects.map((eff: any) => (
+                              <div class={`ss-skill-effect${eff.buffIsPositive ? '' : ' ss-effect-negative'}`}>
+                                <span class="ss-effect-name">{eff.buffName}</span>
+                                {eff.turns > 0 && <span class="ss-effect-turns">{eff.turns} turn{eff.turns > 1 ? 's' : ''}</span>}
+                                {eff.activationRate > 0 && eff.activationRate < 10000 && <span class="ss-effect-rate">{eff.activationRate / 100}%</span>}
+                                {eff.buffDesc && <span class="ss-effect-desc">{eff.buffDesc}</span>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <div class="ss-skill-level-changes">
+                          {lvChanges.map((c: any) => <span class={`ss-skill-change-tag type-${c.type}`}>{c.text}</span>)}
                         </div>
-                      ))}
-                    </div>
-                  );
-                })()}
+                      </div>
+                    );
+                  })
+                ) : (
+                  (() => {
+                    const lv = levels[0];
+                    const lvDesc = lv ? (lv.description || '') : '';
+                    const visibleEffects = getVisibleEffects(lv.seEffects || []);
+                    return (
+                      <div class="ss-skill-level-data ss-skill-level-active" data-skill-idx={idx} data-lv={1}>
+                        {lvDesc && <div class="ss-skill-desc" set:html={lvDesc}></div>}
+                        {visibleEffects.length > 0 && (
+                          <div class="ss-skill-effects">
+                            {visibleEffects.map((eff: any) => (
+                              <div class={`ss-skill-effect${eff.buffIsPositive ? '' : ' ss-effect-negative'}`}>
+                                <span class="ss-effect-name">{eff.buffName}</span>
+                                {eff.turns > 0 && <span class="ss-effect-turns">{eff.turns} turn{eff.turns > 1 ? 's' : ''}</span>}
+                                {eff.activationRate > 0 && eff.activationRate < 10000 && <span class="ss-effect-rate">{eff.activationRate / 100}%</span>}
+                                {eff.buffDesc && <span class="ss-effect-desc">{eff.buffDesc}</span>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()
+                )}
                 {skill.novaBurst && (
                   <div class="ss-skill-nova-burst">
                     <div class="ss-nb-header">
@@ -524,9 +497,6 @@ const maxBattlePower = calcMaxBattlePower(data);
                 )}
                 {hasMultiLevel && (
                   <div class="ss-skill-levels">
-                    <div class="ss-skill-level-changes" data-skill-changes={idx}>
-                      {lvChanges.map((c: any) => <span class={`ss-skill-change-tag type-${c.type}`}>{c.text}</span>)}
-                    </div>
                     <div class="ss-skill-level-btns">
                       {levels.map((l: any) => (
                         <button
@@ -545,197 +515,21 @@ const maxBattlePower = calcMaxBattlePower(data);
           );
         })}
       </div>
-      <script is:inline set:html={`
-        var SS_SKILL_LEVELS = ${JSON.stringify(data.skills.map((s: any) => s.levels || []))};
-        function ssDiffDesc(prevDesc, currDesc) {
-          var prev = prevDesc.replace(/<[^>]*>/g, '');
-          var curr = currDesc.replace(/<[^>]*>/g, '');
-          if (prev === curr) return [];
-          var pw = prev.split(/\\s+/), cw = curr.split(/\\s+/);
-          var min = Math.min(pw.length, cw.length);
-          var groups = [], cur = null;
-          for (var i = 0; i < min; i++) {
-            if (pw[i] !== cw[i]) {
-              if (!cur) cur = { from: [], to: [] };
-              cur.from.push(pw[i]); cur.to.push(cw[i]);
-            } else { if (cur) { groups.push(cur); cur = null; } }
-          }
-          if (cur) groups.push(cur);
-          return groups.map(function(g) {
-            var from = g.from.join(' ').replace(/^\\W+/, '');
-            var to = g.to.join(' ').replace(/^\\W+/, '');
-            if (from === to) return to;
-            return from + ' \\u2192 ' + to;
-          });
-        }
-        function ssSeSummary(effects) {
-          if (!effects || effects.length === 0) return '';
-          var parts = [];
-          for (var i = 0; i < effects.length; i++) {
-            var e = effects[i], buff = e.buff || '', stats = e.stats || [], rate = e.activationRate || 0;
-            if (buff.indexOf('DAMAGE_UP') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
-              parts.push('DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
-            else if (buff.indexOf('CRITICAL_DAMAGE') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
-              parts.push('Crit DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
-            else if (buff.indexOf('CRITICAL') !== -1 && buff.indexOf('DAMAGE') === -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
-              parts.push('Crit +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
-            else if (buff.indexOf('DEFENSE_DECREASE') !== -1)
-              parts.push('DEF Down ' + (rate / 100).toFixed(0) + '%');
-            else if (buff.indexOf('DEFENSE_INCREASE') !== -1)
-              parts.push('DEF Up ' + (rate / 100).toFixed(0) + '%');
-            else if (buff.indexOf('SPEED_INCREASE') !== -1)
-              parts.push('SPD Up');
-            else if (buff.indexOf('HEAL') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
-              parts.push('Heal +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
-            else if (buff.indexOf('SUPER_ARMOR_DAMAGE') !== -1 && stats.length > 0 && stats[0].NKM_STAT_TYPE_RATE !== undefined)
-              parts.push('SA DMG +' + (stats[0].NKM_STAT_TYPE_RATE / 100).toFixed(0) + '%');
-            else if (buff.indexOf('BURN') !== -1) parts.push('Burn');
-            else if (buff.indexOf('BLEED') !== -1) parts.push('Bleed');
-            else if (buff.indexOf('FREEZE') !== -1) parts.push('Freeze');
-            else if (buff.indexOf('RESOURCE_SUN') !== -1) parts.push('Sun +1');
-            else if (buff.indexOf('RESOURCE_MOON') !== -1) parts.push('Moon +1');
-            else if (buff.indexOf('RESOURCE_STAR') !== -1) parts.push('Star +1');
-            else if (buff.indexOf('RESOURCE_CHAOS') !== -1) parts.push('Chaos +1');
-            else if (buff.indexOf('RESOURCE_ORDER') !== -1) parts.push('Order +1');
-            else if (buff.indexOf('BARRIER') !== -1) parts.push('Barrier');
-            else if (buff.indexOf('EXTRA_TURN') !== -1) parts.push('Extra Turn');
-            else if (buff.indexOf('SILENCE') !== -1) parts.push('Silence');
-            else if (buff.indexOf('SPEED_GAUGE_UP') !== -1) parts.push('Action Gauge Up');
-            else if (buff.indexOf('SPEED_GAUGE_DOWN') !== -1) parts.push('Action Gauge Down');
-            else if (buff.indexOf('DEBUFFBAN') !== -1) parts.push('Debuff Immune');
-            else if (buff.indexOf('GUARD') !== -1) parts.push('Guard');
-            else if (buff.indexOf('HYPER_COOL_TURN_DOWN') !== -1 && buff.indexOf('UP') === -1) parts.push('Hyper CD -1');
-            else if (buff.indexOf('SPECIAL_COOL_TURN_DOWN') !== -1) parts.push('Special CD -1');
-          }
-          return parts.join(', ');
-        }
-        function ssBuildChanges(levels, idx) {
-          if (idx <= 0) return [{ text: 'Base skill', type: 'base' }];
-          var curr = levels[idx], base = levels[0];
-          var hasPassiveStats = curr.statBonuses && curr.statBonuses.length > 0;
-          var hasDmgSe = false;
-          for (var p = 0; p < (curr.seEffects || []).length; p++) {
-            if ((curr.seEffects[p].buff || '').indexOf('DAMAGE_UP') !== -1) hasDmgSe = true;
-          }
-          if (hasPassiveStats && !hasDmgSe) {
-            var changes = [];
-            for (var i = 0; i < curr.statBonuses.length; i++) {
-              var b = curr.statBonuses[i];
-              var label = b.type.replace('NST_NV_RATE_', '').replace('NST_RATE_', '');
-              changes.push({ text: label + ' +' + (b.rate / 100).toFixed(0) + '%', type: 'stat' });
-            }
-            var baseDesc = (base.description || '').replace(/<[^>]*>/g, '');
-            var currDesc = (curr.description || '').replace(/<[^>]*>/g, '');
-            if (currDesc.length > baseDesc.length + 10) {
-              var added = currDesc.slice(baseDesc.length).trim();
-              if (added.length > 3) changes.push({ text: added, type: 'desc' });
-            }
-            return changes;
-          }
-          var changes = [];
-          var totalCd = 0, lastDmgRate = null;
-          for (var i = 0; i <= idx; i++) {
-            totalCd += (levels[i].cdReduce || 0);
-            var effs = levels[i].seEffects || [];
-            for (var j = 0; j < effs.length; j++) {
-              if (effs[j].buff && effs[j].buff.indexOf('DAMAGE_UP') !== -1 && effs[j].stats && effs[j].stats.length > 0 && effs[j].stats[0].NKM_STAT_TYPE_RATE !== undefined)
-                lastDmgRate = effs[j].stats[0].NKM_STAT_TYPE_RATE;
-            }
-          }
-          if (lastDmgRate !== null) changes.push({ text: 'DMG +' + (lastDmgRate / 100).toFixed(0) + '%', type: 'se' });
-          if (totalCd > 0) changes.push({ text: 'CD -' + totalCd + ' turn' + (totalCd > 1 ? 's' : ''), type: 'cd' });
-          ssDiffDesc(base.description || '', curr.description || '').forEach(function(d) { changes.push({ text: d, type: 'desc' }); });
-          if (changes.length === 0) changes.push({ text: 'No changes at this level', type: 'none' });
-          return changes;
-        }
-        function ssRenderChanges(container, changes) {
-          container.innerHTML = '';
-          changes.forEach(function(c) {
-            var tag = document.createElement('span');
-            tag.className = 'ss-skill-change-tag type-' + c.type;
-            tag.textContent = c.text;
-            container.appendChild(tag);
-          });
-        }
-        function ssGetVisibleEffects(seEffects) {
-          if (!seEffects || seEffects.length === 0) return [];
-          var seen = {};
-          return seEffects.filter(function(e) {
-            var buff = e.buff || '';
-            if (buff.indexOf('BI_STAT_') === 0) return false;
-            if (!e.buffName) return false;
-            if (seen[buff]) return false;
-            seen[buff] = true;
-            return true;
-          });
-        }
-        function ssRenderEffects(container, seEffects) {
-          container.innerHTML = '';
-          var visible = ssGetVisibleEffects(seEffects);
-          visible.forEach(function(e) {
-            var div = document.createElement('div');
-            div.className = 'ss-skill-effect' + (e.buffIsPositive ? '' : ' ss-effect-negative');
-            var name = document.createElement('span');
-            name.className = 'ss-effect-name';
-            name.textContent = e.buffName;
-            div.appendChild(name);
-            if (e.turns > 0) {
-              var turns = document.createElement('span');
-              turns.className = 'ss-effect-turns';
-              turns.textContent = e.turns + ' turn' + (e.turns > 1 ? 's' : '');
-              div.appendChild(turns);
-            }
-            var rate = e.activationRate || 0;
-            if (rate > 0 && rate < 10000) {
-              var rateEl = document.createElement('span');
-              rateEl.className = 'ss-effect-rate';
-              rateEl.textContent = (rate / 100) + '%';
-              div.appendChild(rateEl);
-            }
-            if (e.buffDesc) {
-              var desc = document.createElement('span');
-              desc.className = 'ss-effect-desc';
-              desc.textContent = e.buffDesc;
-              div.appendChild(desc);
-            }
-            container.appendChild(div);
-          });
-        }
-        document.getElementById('ss-skills-list').addEventListener('click', function(e) {
+      <script is:inline>
+        document.getElementById('ss-skills-list')?.addEventListener('click', function(e) {
           var btn = e.target.closest('.ss-skill-lv-btn');
           if (!btn) return;
-          var idx = btn.dataset.skillIdx;
-          var level = parseInt(btn.dataset.lv);
-          var item = document.querySelector('.ss-skill-item[data-skill-idx="' + idx + '"]');
-          if (!item || !SS_SKILL_LEVELS[idx]) return;
-          var levels = SS_SKILL_LEVELS[idx];
-          var lvIdx = levels.findIndex(function(l) { return l.level === level; });
-          if (lvIdx < 0) return;
-          var lv = levels[lvIdx];
-          var descEl = item.querySelector('[data-skill-desc="' + idx + '"]');
-          if (descEl) descEl.innerHTML = (lv.description || '');
-          var dmgEl = item.querySelector('[data-skill-dmg-bonus="' + idx + '"]');
-          if (dmgEl) {
-            var bonus = null;
-            for (var k = 0; k <= lvIdx; k++) {
-              var es = levels[k].seEffects || [];
-              for (var m = 0; m < es.length; m++) {
-                if (es[m].buff && es[m].buff.indexOf('DAMAGE_UP') !== -1 && es[m].stats && es[m].stats.length > 0 && es[m].stats[0].NKM_STAT_TYPE_RATE !== undefined)
-                  bonus = es[m].stats[0].NKM_STAT_TYPE_RATE;
-              }
-            }
-            dmgEl.textContent = bonus !== null ? ' (+' + (bonus / 100).toFixed(0) + '%)' : '';
-            dmgEl.style.display = bonus !== null ? '' : 'none';
-          }
-          var changesEl = item.querySelector('[data-skill-changes="' + idx + '"]');
-          if (changesEl) ssRenderChanges(changesEl, ssBuildChanges(levels, lvIdx));
-          var effectsEl = item.querySelector('[data-skill-effects="' + idx + '"]');
-          if (effectsEl) ssRenderEffects(effectsEl, lv.seEffects || []);
+          var item = btn.closest('.ss-skill-item');
+          item.querySelectorAll('.ss-skill-level-data').forEach(function(d) {
+            var show = d.dataset.lv === btn.dataset.lv;
+            d.style.display = show ? '' : 'none';
+            d.classList.toggle('ss-skill-level-active', show);
+          });
           item.querySelectorAll('.ss-skill-lv-btn').forEach(function(b) {
-            b.classList.toggle('active', parseInt(b.dataset.lv) === level);
+            b.classList.toggle('active', b === btn);
           });
         });
-      `} />
+      </script>
     </section>
   )}
 

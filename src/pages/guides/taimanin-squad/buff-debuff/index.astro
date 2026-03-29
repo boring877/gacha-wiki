@@ -1,204 +1,176 @@
 ---
-// Taimanin Squad Buff/Debuff Reference Page
-// Displays all buff and debuff effects with icons, descriptions, and value ranges
+// Taimanin Squad Buff/Debuff Database Page
+// Displays all buff and debuff effects with icons, official game descriptions, and value ranges
 
 import BuffDebuffLayout from '../../../../layouts/taimanin-squad/BuffDebuffLayout.astro';
 import TSBuffIcon from '../../../../components/taimanin-squad/TSBuffIcon.astro';
+import { TS_BUFFS_DEBUFFS, TS_BUFF_DEBUFF_CATEGORIES } from '../../../../data/taimanin-squad/ts-buffs-debuffs';
 import buffData from '../../../../data/taimanin-squad/buff_data.json';
 import debuffData from '../../../../data/taimanin-squad/debuff_data.json';
 
-// Type definitions
-interface EffectEntry {
-  ID: number;
+interface RawEntry {
   Type: string;
-  TypeID: number;
-  Description: string;
-  Target: string;
-  Value1: number;
   Value2_Duration: number;
   Value3_Percent: number;
-  Rate: number;
-  Timing: string;
-  SelfCondition: string;
-  TargetCondition: string;
 }
 
-interface AggregatedEffect {
-  type: string;
-  typeId: number;
-  description: string;
-  durationRange: [number, number] | null;
-  percentRange: [number, number] | null;
+interface ValueRange {
+  min: number;
+  max: number;
 }
 
-// Aggregate unique effect types with their value ranges
-function aggregateEffects(data: EffectEntry[]): AggregatedEffect[] {
-  const typeMap = new Map<string, {
-    type: string;
-    typeId: number;
-    description: string;
-    durations: number[];
-    percentValues: number[];
-  }>();
+type ValueMap = Map<string, { durations: number[]; percents: number[] }>;
 
+function buildValueMap(data: RawEntry[]): ValueMap {
+  const map: ValueMap = new Map();
   for (const entry of data) {
-    if (!typeMap.has(entry.Type)) {
-      typeMap.set(entry.Type, {
-        type: entry.Type,
-        typeId: entry.TypeID,
-        description: entry.Description,
-        durations: [],
-        percentValues: [],
-      });
+    if (!map.has(entry.Type)) {
+      map.set(entry.Type, { durations: [], percents: [] });
     }
-
-    const agg = typeMap.get(entry.Type)!;
-    if (entry.Value2_Duration > 0) {
-      agg.durations.push(entry.Value2_Duration);
-    }
-    if (entry.Value3_Percent !== 0) {
-      agg.percentValues.push(Math.abs(entry.Value3_Percent));
-    }
+    const agg = map.get(entry.Type)!;
+    if (entry.Value2_Duration > 0) agg.durations.push(entry.Value2_Duration);
+    if (entry.Value3_Percent !== 0) agg.percents.push(Math.abs(entry.Value3_Percent));
   }
-
-  // Convert to array and compute ranges
-  return Array.from(typeMap.values())
-    .map(agg => ({
-      type: agg.type,
-      typeId: agg.typeId,
-      description: agg.description,
-      durationRange: agg.durations.length
-        ? [Math.min(...agg.durations), Math.max(...agg.durations)] as [number, number]
-        : null,
-      percentRange: agg.percentValues.length
-        ? [Math.min(...agg.percentValues), Math.max(...agg.percentValues)] as [number, number]
-        : null,
-    }))
-    .sort((a, b) => a.type.localeCompare(b.type));
+  return map;
 }
 
-const buffs = aggregateEffects(buffData as EffectEntry[]);
-const debuffs = aggregateEffects(debuffData as EffectEntry[]);
+function getRange(values: number[]): ValueRange | null {
+  if (!values.length) return null;
+  return { min: Math.min(...values), max: Math.max(...values) };
+}
 
-// Helper to format duration range
-function formatDuration(range: [number, number] | null): string | null {
+function formatRange(range: ValueRange | null): string | null {
   if (!range) return null;
-  if (range[0] === range[1]) {
-    return `${range[0]} turn${range[0] > 1 ? 's' : ''}`;
-  }
-  return `${range[0]}-${range[1]} turns`;
+  if (range.min === range.max) return `${range.min}`;
+  return `${range.min} - ${range.max}`;
 }
 
-// Helper to format percent range
-function formatPercent(range: [number, number] | null): string | null {
-  if (!range) return null;
-  if (range[0] === range[1]) {
-    return `${range[0]}%`;
-  }
-  return `${range[0]}-${range[1]}%`;
+const buffValues = buildValueMap(buffData as RawEntry[]);
+const debuffValues = buildValueMap(debuffData as RawEntry[]);
+
+function getValueRange(type: string): { duration: ValueRange | null; effect: ValueRange | null } {
+  const source = buffValues.has(type) ? buffValues : debuffValues;
+  const agg = source.get(type);
+  if (!agg) return { duration: null, effect: null };
+  return {
+    duration: getRange(agg.durations),
+    effect: getRange(agg.percents),
+  };
 }
+
+const effects = TS_BUFFS_DEBUFFS.map(e => ({
+  ...e,
+  ...getValueRange(e.id),
+}));
+
+const buffs = effects.filter(e => e.group === 'buff');
+const debuffs = effects.filter(e => e.group === 'debuff');
+
+const categories = Object.values(TS_BUFF_DEBUFF_CATEGORIES);
 ---
 
 <BuffDebuffLayout
   title="Buffs & Debuffs - Taimanin Squad Wiki | GachaWiki"
-  description="Complete reference for all buff and debuff effects in Taimanin Squad. Learn what each status effect does, its duration, and effectiveness."
+  description="Complete database of all buff and debuff effects in Taimanin Squad with icons, descriptions, and value ranges."
   gameTitle="Buffs & Debuffs"
 >
-  <!-- Tab Navigation -->
+  <div class="ts-bd-summary">
+    <div class="ts-bd-summary-item ts-bd-summary-buff">
+      <span class="ts-bd-summary-count">{buffs.length}</span>
+      <span class="ts-bd-summary-label">Buffs</span>
+    </div>
+    <div class="ts-bd-summary-item ts-bd-summary-debuff">
+      <span class="ts-bd-summary-count">{debuffs.length}</span>
+      <span class="ts-bd-summary-label">Debuffs</span>
+    </div>
+  </div>
+
   <div class="ts-tabs">
-    <button class="ts-tab active" data-tab="buffs">
-      Buffs ({buffs.length})
-    </button>
-    <button class="ts-tab" data-tab="debuffs">
-      Debuffs ({debuffs.length})
-    </button>
+    <button class="ts-tab active" data-tab="buffs">Buffs</button>
+    <button class="ts-tab" data-tab="debuffs">Debuffs</button>
+    <button class="ts-tab" data-tab="all">All Effects</button>
   </div>
 
-  <!-- Buffs Tab Content -->
-  <div class="ts-tab-content active" id="buffs-content">
-    <div class="ts-section-intro">
-      <p>Buffs are positive status effects that enhance your characters. They can increase stats, provide protection, or grant special abilities.</p>
-    </div>
-    <div class="ts-effect-grid">
-      {buffs.map(buff => (
-        <div class="ts-effect-card">
-          <div class="ts-effect-header">
-            <div class="ts-effect-icon">
-              <TSBuffIcon icon={buff.type} alt={buff.description} width={48} height={48} />
-            </div>
-            <div class="ts-effect-info">
-              <h3 class="ts-effect-name">{buff.type}</h3>
-              <p class="ts-effect-desc">{buff.description}</p>
-            </div>
-          </div>
-          {(buff.durationRange || buff.percentRange) && (
-            <div class="ts-effect-details">
-              {formatDuration(buff.durationRange) && (
-                <span class="ts-detail-tag">Duration: {formatDuration(buff.durationRange)}</span>
-              )}
-              {formatPercent(buff.percentRange) && (
-                <span class="ts-detail-tag">Effect: {formatPercent(buff.percentRange)}</span>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- Debuffs Tab Content -->
-  <div class="ts-tab-content" id="debuffs-content">
-    <div class="ts-section-intro">
-      <p>Debuffs are negative status effects that hinder enemies. They can reduce stats, deal damage over time, or disable actions.</p>
-    </div>
-    <div class="ts-effect-grid">
-      {debuffs.map(debuff => (
-        <div class="ts-effect-card">
-          <div class="ts-effect-header">
-            <div class="ts-effect-icon">
-              <TSBuffIcon icon={debuff.type} alt={debuff.description} width={48} height={48} />
-            </div>
-            <div class="ts-effect-info">
-              <h3 class="ts-effect-name">{debuff.type}</h3>
-              <p class="ts-effect-desc">{debuff.description}</p>
+  {[
+    { id: 'buffs', items: buffs },
+    { id: 'debuffs', items: debuffs },
+    { id: 'all', items: effects },
+  ].map(({ id, items }) => (
+    <div class="ts-tab-content active" id={`${id}-content`}>
+      {categories.map(cat => {
+        const catItems = items.filter(e => e.category === cat);
+        if (!catItems.length) return null;
+        return (
+          <div class="ts-bd-category">
+            <h2 class="ts-bd-category-title">{cat}</h2>
+            <div class="ts-effect-grid">
+              {catItems.map(effect => (
+                <div class="ts-effect-card">
+                  <div class="ts-effect-header">
+                    <div class="ts-effect-icon">
+                      <TSBuffIcon icon={effect.icon} alt={effect.name} width={48} height={48} />
+                    </div>
+                    <div class="ts-effect-info">
+                      <h3 class="ts-effect-name">{effect.name}</h3>
+                      <p class="ts-effect-desc">{effect.description}</p>
+                    </div>
+                  </div>
+                  <div class="ts-effect-details">
+                    {effect.hasDuration && effect.duration && (
+                      <span class="ts-detail-tag">Duration: {formatRange(effect.duration)} turn{effect.duration.min > 1 ? 's' : ''}</span>
+                    )}
+                    {effect.hasValue && effect.effect && (
+                      <span class="ts-detail-tag">Effect: {formatRange(effect.effect)}%</span>
+                    )}
+                    <span class="ts-detail-tag ts-detail-type">{"Buff"}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          {(debuff.durationRange || debuff.percentRange) && (
-            <div class="ts-effect-details">
-              {formatDuration(debuff.durationRange) && (
-                <span class="ts-detail-tag">Duration: {formatDuration(debuff.durationRange)}</span>
-              )}
-              {formatPercent(debuff.percentRange) && (
-                <span class="ts-detail-tag">Effect: {formatPercent(debuff.percentRange)}</span>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
-  </div>
+  ))}
 </BuffDebuffLayout>
 
-<script>
-  // Tab switching functionality
+<script define:vars={{ effects }}>
   document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.ts-tab');
     const contents = document.querySelectorAll('.ts-tab-content');
 
+    function setDetailTagTypes(tabId) {
+      const typeMap = {
+        buffs: 'Buff',
+        debuffs: 'Debuff',
+        all: null,
+      };
+      document.querySelectorAll('.ts-detail-type').forEach(el => {
+        if (!typeMap[tabId]) {
+          const card = el.closest('.ts-effect-card');
+          if (card) {
+            const name = card.querySelector('.ts-effect-name')?.textContent || '';
+            const effect = effects.find(e => e.name === name);
+            el.textContent = effect?.group === 'buff' ? 'Buff' : 'Debuff';
+          }
+        } else {
+          el.textContent = typeMap[tabId];
+        }
+      });
+    }
+
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Remove active from all tabs and contents
         tabs.forEach(t => t.classList.remove('active'));
         contents.forEach(c => c.classList.remove('active'));
-
-        // Add active to clicked tab and corresponding content
         tab.classList.add('active');
         const tabId = tab.getAttribute('data-tab');
         const content = document.getElementById(`${tabId}-content`);
-        if (content) {
-          content.classList.add('active');
-        }
+        if (content) content.classList.add('active');
+        setDetailTagTypes(tabId);
       });
     });
+
+    setDetailTagTypes('buffs');
   });
 </script>

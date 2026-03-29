@@ -84,9 +84,17 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
 
   <div class="ss-char-sort-section">
     <span class="ss-char-sort-label">Sort by:</span>
+    <button class="ss-char-sort-btn" data-sort="default">Default <span class="ss-char-sort-icon">⟳</span></button>
     <button class="ss-char-sort-btn active" data-sort="name">Name <span class="ss-char-sort-icon">▲</span></button>
     <button class="ss-char-sort-btn" data-sort="role">Role <span class="ss-char-sort-icon">▲</span></button>
     <button class="ss-char-sort-btn" data-sort="atk">ATK <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="hp">HP <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="def">DEF <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="crit">CRIT <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="cdmg">CDMG <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="ehit">EHIT <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="eeva">EEVA <span class="ss-char-sort-icon">▲</span></button>
+    <button class="ss-char-sort-btn" data-sort="spd">SPD <span class="ss-char-sort-icon">▲</span></button>
   </div>
 
   <div class="ss-char-table-wrapper" id="table-view">
@@ -103,6 +111,9 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
           <th class="ss-char-stat-col">DEF</th>
           <th class="ss-char-stat-col">CRIT</th>
           <th class="ss-char-stat-col">CDMG</th>
+          <th class="ss-char-stat-col">EHIT</th>
+          <th class="ss-char-stat-col">EEVA</th>
+          <th class="ss-char-stat-col">SPD</th>
         </tr>
       </thead>
       <tbody id="char-table-body">
@@ -115,6 +126,13 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
             data-role={char.role}
             data-element={ADJUST_TYPE_MAP[char.adjustType] || ''}
             data-atk={char.statsMax?.ATK ?? 0}
+            data-hp={char.statsMax?.HP ?? 0}
+            data-def={char.statsMax?.DEF ?? 0}
+            data-crit={char.statsMax?.['Crit Rate'] ?? 0}
+            data-cdmg={char.statsMax?.['Crit Damage'] ?? 0}
+            data-ehit={char.statsMax?.['Effect Hit Rate'] ?? 0}
+            data-eeva={char.statsMax?.['Effect Evasion'] ?? 0}
+            data-spd={char.statsMax?.['Turn Speed'] ?? 0}
             onclick={`window.location.href='/guides/star-savior/characters/${char.slug}/'`}
           >
             <td class="row-num">{i + 1}</td>
@@ -134,6 +152,9 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
             <td class="ss-char-stat-cell">{(char.statsMax?.DEF ?? 0).toLocaleString()}</td>
             <td class="ss-char-stat-cell">{((char.statsMax?.['Crit Rate'] ?? 0) / 100).toFixed(0)}%</td>
             <td class="ss-char-stat-cell">{((char.statsMax?.['Crit Damage'] ?? 0) / 100).toFixed(0)}%</td>
+            <td class="ss-char-stat-cell">{((char.statsMax?.['Effect Hit Rate'] ?? 0) / 100).toFixed(0)}%</td>
+            <td class="ss-char-stat-cell">{((char.statsMax?.['Effect Evasion'] ?? 0) / 100).toFixed(0)}%</td>
+            <td class="ss-char-stat-cell">{char.statsMax?.['Turn Speed'] ?? 0}</td>
           </tr>
         ))}
       </tbody>
@@ -194,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const element = elementFilter.value;
     let visible = 0;
 
-    tableRows.forEach(row => {
+    document.querySelectorAll('.char-row').forEach(row => {
       const match = matchesFilter(row, search, role, rarity, element);
       row.style.display = match ? '' : 'none';
       if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
@@ -230,13 +251,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function compareValues(a, b, sortBy, order) {
     let valA, valB;
-    if (sortBy === 'rarity') {
+    if (sortBy === 'default') {
+      const ro = { SSR: 0, SR: 1 };
+      const rA = ro[a.dataset.rarity] ?? 99;
+      const rB = ro[b.dataset.rarity] ?? 99;
+      if (rA !== rB) return rA - rB;
+      return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+    } else if (sortBy === 'rarity') {
       const ro = { SSR: 0, SR: 1 };
       valA = ro[a.dataset.rarity] ?? 99;
       valB = ro[b.dataset.rarity] ?? 99;
-    } else if (sortBy === 'atk') {
-      valA = parseInt(a.dataset.atk) || 0;
-      valB = parseInt(b.dataset.atk) || 0;
+    } else if (['atk', 'hp', 'def', 'crit', 'cdmg', 'ehit', 'eeva', 'spd'].includes(sortBy)) {
+      valA = parseInt(a.dataset[sortBy]) || 0;
+      valB = parseInt(b.dataset[sortBy]) || 0;
       if (order === 'asc') return valA - valB;
       return valB - valA;
     } else {
@@ -255,11 +282,18 @@ document.addEventListener('DOMContentLoaded', () => {
   sortBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const sortBy = btn.dataset.sort;
-      let order = currentSort === sortBy && currentOrder === 'asc' ? 'desc' : 'asc';
+      let order = 'asc';
+      if (sortBy !== 'default') {
+        order = currentSort === sortBy && currentOrder === 'asc' ? 'desc' : 'asc';
+      }
 
       sortBtns.forEach(b => { b.classList.remove('active'); b.querySelector('.ss-char-sort-icon').textContent = '▲'; });
       btn.classList.add('active');
-      btn.querySelector('.ss-char-sort-icon').textContent = order === 'asc' ? '▲' : '▼';
+      if (sortBy === 'default') {
+        btn.querySelector('.ss-char-sort-icon').textContent = '⟳';
+      } else {
+        btn.querySelector('.ss-char-sort-icon').textContent = order === 'asc' ? '▲' : '▼';
+      }
 
       currentSort = sortBy;
       currentOrder = order;

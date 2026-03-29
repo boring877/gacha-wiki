@@ -1,0 +1,77 @@
+---
+// Taimanin Squad Artifact Icon Component
+// Displays artifact slot icons from the artifacticon folder
+
+import { Image } from 'astro:assets';
+
+const artifactImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/artifacticon/Artifacts_*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const {
+  icon,
+  alt = 'Artifact',
+  width = 36,
+  height = 36,
+  class: className = '',
+} = Astro.props;
+
+function findArtifactImage() {
+  const allKeys = Object.keys(artifactImages);
+  const exactMatch = allKeys.find(key => {
+    const normalized = key.replace(/\\/g, '/');
+    return normalized.endsWith(`/${icon}`);
+  });
+  return exactMatch || null;
+}
+
+const imageKey = findArtifactImage();
+const imageModule = imageKey ? artifactImages[imageKey].default : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    class:list={['ts-artifact-icon', className]}
+    loading="lazy"
+  />
+) : (
+  <div
+    class:list={['ts-artifact-icon-fallback', className]}
+    style={`width: ${width}px; height: ${height}px;`}
+  >
+    <span>A</span>
+  </div>
+)}
+
+<style>
+  .ts-artifact-icon {
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .ts-artifact-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 600;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

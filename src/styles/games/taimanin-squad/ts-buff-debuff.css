@@ -104,6 +104,72 @@
   color: var(--ts-accent);
 }
 
+/* Summary Stats */
+.ts-bd-summary {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-bd-summary-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--ts-bg-secondary) 0%, var(--ts-bg-tertiary) 100%);
+  border: 1px solid var(--ts-border);
+  border-radius: 12px;
+}
+
+.ts-bd-summary-count {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ts-bd-summary-buff .ts-bd-summary-count {
+  color: #4fc3f7;
+}
+
+.ts-bd-summary-debuff .ts-bd-summary-count {
+  color: #ef5350;
+}
+
+.ts-bd-summary-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ts-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Category Section */
+.ts-bd-category {
+  margin-bottom: 2rem;
+}
+
+.ts-bd-category:last-child {
+  margin-bottom: 0;
+}
+
+.ts-bd-category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ts-text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ts-border);
+}
+
+/* Buff/Debuff Type Tag */
+.ts-detail-type {
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border-light);
+  color: var(--ts-text-secondary);
+}
+
 /* Section Title */
 .ts-section-intro {
   margin-bottom: 1.5rem;

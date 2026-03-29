@@ -1,0 +1,487 @@
+---
+// Taimanin Squad Artifacts Database Page
+// Displays all artifact sets, core artifacts, and module artifacts with filters
+
+import ArtifactsLayout from '../../../../layouts/taimanin-squad/ArtifactsLayout.astro';
+import TSArtifactImage from '../../../../components/taimanin-squad/TSArtifactImage.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+import {
+  TAIMANIN_SQUAD_ARTIFACTS,
+  TAIMANIN_SQUAD_ARTIFACT_SETS,
+  TAIMANIN_SQUAD_ARTIFACT_STAT_RANGES,
+  TAIMANIN_SQUAD_ARTIFACT_META,
+} from '../../../../data/taimanin-squad/artifacts.js';
+
+const allSets = TAIMANIN_SQUAD_ARTIFACT_SETS;
+const allArtifacts = TAIMANIN_SQUAD_ARTIFACTS;
+const statRanges = TAIMANIN_SQUAD_ARTIFACT_STAT_RANGES;
+const meta = TAIMANIN_SQUAD_ARTIFACT_META;
+
+const sortedArtifacts = [...allArtifacts].sort((a, b) => a.id - b.id);
+const coreArtifacts = allArtifacts.filter(a => !a.is_module);
+const moduleArtifacts = allArtifacts.filter(a => a.is_module);
+
+const coreCount = coreArtifacts.length;
+const moduleCount = moduleArtifacts.length;
+const setCount = allSets.length;
+
+const dispositions = [...new Set(moduleArtifacts.map(m => m.disposition_name))].filter(Boolean).sort();
+---
+
+<ArtifactsLayout
+  title="Artifacts - Taimanin Squad Wiki | GachaWiki"
+  description="Browse all Taimanin Squad artifacts. Complete artifact database with 15 sets, stat ranges, grade scaling, and module stats."
+  gameTitle="Artifacts"
+>
+  <section class="content-section">
+    <p class="lore-intro">
+      {setCount} artifact sets containing {coreCount} core artifacts and {moduleCount} module artifacts.
+      Core artifacts use Section A and Section B slots; module artifacts are bound to character dispositions.
+    </p>
+
+    <div class="artifact-info-box">
+      <h3>How Artifacts Work</h3>
+      <ul>
+        <li>Core artifacts come in 6 slots: Section A (Power, Health, Shield) and Section B (Power, Health, Shield).</li>
+        <li>Each belongs to one of {setCount} sets. Equipping the required count activates the set bonus.</li>
+        <li>Artifacts have 6 grades (I-VI). Higher grades roll stronger main stat ranges.</li>
+        <li>Upgrade to +12 max. Sub-options are granted at levels 3, 6, 9, and 12 (up to 4 total).</li>
+        <li>Module artifacts (Module A and Module B) are per-disposition and provide growing stats as you level them.</li>
+      </ul>
+    </div>
+
+    <div class="artifact-stats-bar">
+      <div class="artifact-stat-item">
+        <span class="artifact-stat-label">Total Artifacts</span>
+        <span class="artifact-stat-value">{coreCount + moduleCount}</span>
+      </div>
+      <div class="artifact-stat-item">
+        <span class="artifact-stat-label">Core</span>
+        <span class="artifact-stat-value">{coreCount}</span>
+      </div>
+      <div class="artifact-stat-item">
+        <span class="artifact-stat-label">Module</span>
+        <span class="artifact-stat-value">{moduleCount}</span>
+      </div>
+      <div class="artifact-stat-item">
+        <span class="artifact-stat-label">Sets</span>
+        <span class="artifact-stat-value">{setCount}</span>
+      </div>
+      <div class="artifact-stat-item">
+        <span class="artifact-stat-label">Max Level</span>
+        <span class="artifact-stat-value">+{meta.max_level}</span>
+      </div>
+    </div>
+
+    <div class="artifact-tabs">
+      <button class="artifact-tab active" data-tab="sets">Set Bonuses</button>
+      <button class="artifact-tab" data-tab="core">Core Artifacts</button>
+      <button class="artifact-tab" data-tab="modules">Module Artifacts</button>
+      <button class="artifact-tab" data-tab="grades">Grade Ranges</button>
+    </div>
+
+    <!-- SETS TAB -->
+    <div class="artifact-tab-content active" id="tab-sets">
+      <div class="artifact-filters">
+        <div class="artifact-filter-row">
+          <select id="filter-set-type" class="artifact-filter-select">
+            <option value="">All Sets</option>
+            <option value="stat">Stat Bonus Sets</option>
+            <option value="bo">Effect Sets</option>
+          </select>
+          <select id="filter-set-req" class="artifact-filter-select">
+            <option value="">All Requirements</option>
+            <option value="2">2 Pieces</option>
+            <option value="4">4 Pieces</option>
+            <option value="6">6 Pieces</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="set-grid" id="set-grid">
+        {allSets.map(s => {
+          const setArtifacts = sortedArtifacts.filter(a => a.set_id === s.id);
+          const setType = s.is_stat_bonus ? 'stat' : 'bo';
+          return (
+            <div
+              class="set-card"
+              data-set-type={setType}
+              data-set-req={s.required_count}
+              data-set-name={s.name.toLowerCase()}
+            >
+              <div class="set-card-header">
+                <span class="set-card-name">{s.name}</span>
+                <span class="set-card-req">{s.required_count} Pieces</span>
+              </div>
+              <div class="set-card-group">
+                {s.is_stat_bonus
+                  ? `Group ${s.set_group} | Stat Bonus`
+                  : s.bo_list ? `BO: ${s.bo_list}` : 'Special Effect'}
+              </div>
+              <div class="set-card-bonus">
+                <strong>{s.desc}</strong>
+              </div>
+              <div class="set-card-slots">
+                {setArtifacts.map(a => (
+                  <TSArtifactImage
+                    icon={a.icon}
+                    alt={a.slot}
+                    width={28}
+                    height={28}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="artifact-no-results" id="set-no-results" style="display: none;">
+        No sets found matching your filter.
+      </div>
+    </div>
+
+    <!-- CORE TAB -->
+    <div class="artifact-tab-content" id="tab-core">
+      <p style="color: var(--ts-text-secondary, #d3d3d3); margin-bottom: 1.5rem; font-size: 0.9rem;">
+        All core artifacts share the same main stat per slot regardless of which set they belong to.
+        Section A and Section B slots have identical main stat types.
+      </p>
+
+      <h3 style="color: var(--ts-text-primary, #f5f5f5); margin-bottom: 0.75rem; font-size: 1rem;">Main Stat by Slot</h3>
+      <div class="artifact-table-container">
+        <table class="artifact-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Slot</th>
+              <th>Main Stat</th>
+              <th>Grade I</th>
+              <th>Grade II</th>
+              <th>Grade III</th>
+              <th>Grade IV</th>
+              <th>Grade V</th>
+              <th>Grade VI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { section: 'A', slot: 'Power', icon: 'Artifacts_Weapon.png', statGroup: 101 },
+              { section: 'A', slot: 'Health', icon: 'Artifacts_Helmet.png', statGroup: 102 },
+              { section: 'A', slot: 'Shield', icon: 'Artifacts_Shield.png', statGroup: 103 },
+              { section: 'B', slot: 'Power', icon: 'Artifacts_Gloves.png', statGroup: 104 },
+              { section: 'B', slot: 'Health', icon: 'Artifacts_Chest.png', statGroup: 105 },
+              { section: 'B', slot: 'Shield', icon: 'Artifacts_Boots.png', statGroup: 106 },
+            ].map(row => {
+              const ranges = statRanges[row.statGroup];
+              if (!ranges || !ranges.length) return null;
+              const statName = ranges[0].stat_name;
+              const gradeMap = {};
+              for (const r of ranges) { gradeMap[r.grade] = r; }
+              return (
+                <tr>
+                  <td><span class="set-badge stat-set">Section {row.section}</span></td>
+                  <td>
+                    <div class="artifact-cell">
+                      <TSArtifactImage icon={row.icon} alt={row.slot} width={36} height={36} />
+                      <span class="artifact-name">{row.slot}</span>
+                    </div>
+                  </td>
+                  <td style="font-weight: 600; color: var(--ts-accent, #9a8aaa);">{statName}</td>
+                  {[1, 2, 3, 4, 5, 6].map(g => {
+                    const r = gradeMap[g];
+                    if (!r) return <td>-</td>;
+                    return (
+                      <td style="font-variant-numeric: tabular-nums;">
+                        {r.min.toLocaleString()}~{r.max.toLocaleString()}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="artifact-info-box" style="margin-top: 1.5rem;">
+        <h3>Slot Reference</h3>
+        <ul>
+          <li><strong>Section A</strong>: Power (ATK%), Health (HP), Shield (DEF%)</li>
+          <li><strong>Section B</strong>: Power (ATK%), Health (HP), Shield (DEF%)</li>
+          <li>Same-stat slots across sections share identical grade ranges.</li>
+        </ul>
+      </div>
+
+      <h3 style="color: var(--ts-text-primary, #f5f5f5); margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1rem;">Sub-Option Pool</h3>
+      <p style="color: var(--ts-text-secondary, #d3d3d3); margin-bottom: 1rem; font-size: 0.9rem;">
+        Up to 4 sub-options are randomly rolled at levels 3, 6, 9, and 12. Higher grade artifacts roll from wider ranges, so a Grade VI artifact can roll much stronger sub-options than Grade I. Values below are approximate base ranges (divided by 10 from raw data).
+      </p>
+      {(() => {
+        const subRanges = statRanges[200];
+        if (!subRanges || !subRanges.length) return null;
+        const gradeMap = {};
+        for (const r of subRanges) {
+          if (!gradeMap[r.grade]) gradeMap[r.grade] = {};
+          gradeMap[r.grade][r.opt_type] = r;
+        }
+        const stats = [...new Set(subRanges.map(r => r.stat_name))].sort();
+        return (
+          <div class="artifact-table-container">
+            <table class="artifact-table">
+              <thead>
+                <tr>
+                  <th>Stat</th>
+                  <th>Grade I</th>
+                  <th>Grade II</th>
+                  <th>Grade III</th>
+                  <th>Grade IV</th>
+                  <th>Grade V</th>
+                  <th>Grade VI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stats.map(stat => {
+                  const entries = subRanges.filter(r => r.stat_name === stat).sort((a, b) => a.grade - b.grade);
+                  return (
+                    <tr>
+                      <td style="font-weight: 600; color: var(--ts-accent, #9a8aaa); white-space: nowrap;">{stat}</td>
+                      {[1, 2, 3, 4, 5, 6].map(g => {
+                        const r = gradeMap[g]?.[entries[0].opt_type];
+                        if (!r) return <td>-</td>;
+                        return (
+                          <td style="font-variant-numeric: tabular-nums;">
+                            {r.min.toFixed(1)}~{r.max.toFixed(1)}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+      })()}
+    </div>
+
+    <!-- MODULE TAB -->
+    <div class="artifact-tab-content" id="tab-modules">
+      <div class="artifact-info-box">
+        <h3>How Module Artifacts Work</h3>
+        <ul>
+          <li><strong>Module A</strong> and <strong>Module B</strong> are module artifacts, one pair per disposition (Mars, Venus, Mercury, Moon, Sun, Jupiter, Saturn).</li>
+          <li>They have <strong>6 grades (I-VI)</strong>, just like core artifacts. Higher grades give stronger main stat ranges.</li>
+          <li>Each has a <strong>main stat</strong> (HP, ATK, or DEF) rolled within its grade range, plus up to <strong>4 sub-options</strong> from the same pool as core artifacts.</li>
+        </ul>
+      </div>
+
+      <h3 style="color: var(--ts-text-primary, #f5f5f5); margin-bottom: 0.75rem; font-size: 1rem;">Module Artifacts by Disposition</h3>
+      <div class="disposition-grid" id="disp-grid">
+        {dispositions.map(dispName => {
+          const arts = moduleArtifacts.filter(m => m.disposition_name === dispName);
+          return (
+            <div class="disposition-card" data-disp={dispName.toLowerCase()}>
+              <div class="disposition-card-header">
+                <TSTraitIcon trait={dispName} size={22} />
+                <span class="disposition-card-name">{dispName}</span>
+              </div>
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                {arts.map(a => (
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <TSArtifactImage icon={a.icon} alt={a.slot} width={24} height={24} />
+                    <span style="font-size: 0.8rem; color: var(--ts-text-secondary, #d3d3d3);">{a.slot === 'Ring' ? 'Module A' : 'Module B'}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <h3 style="color: var(--ts-text-primary, #f5f5f5); margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1rem;">Main Stat Ranges (Module A & Module B)</h3>
+      <p style="color: var(--ts-text-secondary, #d3d3d3); margin-bottom: 1rem; font-size: 0.9rem;">
+        Both Module A and Module B share the same main stat ranges per grade. Each module artifact rolls one main stat (HP, ATK, or DEF).
+      </p>
+      <div class="artifact-table-container">
+        <table class="artifact-table">
+          <thead>
+            <tr>
+              <th>Grade</th>
+              <th>HP Min</th>
+              <th>HP Max</th>
+              <th>ATK Min</th>
+              <th>ATK Max</th>
+              <th>DEF Min</th>
+              <th>DEF Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4, 5, 6].map(g => {
+              const modRanges = statRanges[107];
+              if (!modRanges) return null;
+              const gm = {};
+              for (const r of modRanges) {
+                if (!gm[r.opt_type]) gm[r.opt_type] = {};
+                gm[r.opt_type][r.grade] = r;
+              }
+              const hp = gm[1]?.[g];
+              const atk = gm[2]?.[g];
+              const def = gm[3]?.[g];
+              return (
+                <tr>
+                  <td class="grade-label">Grade {g}</td>
+                  <td>{hp ? hp.min.toLocaleString() : '-'}</td>
+                  <td>{hp ? hp.max.toLocaleString() : '-'}</td>
+                  <td>{atk ? atk.min.toLocaleString() : '-'}</td>
+                  <td>{atk ? atk.max.toLocaleString() : '-'}</td>
+                  <td>{def ? def.min.toLocaleString() : '-'}</td>
+                  <td>{def ? def.max.toLocaleString() : '-'}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="artifact-info-box" style="margin-top: 1.5rem;">
+        <h3>Sub-Options</h3>
+        <p style="color: var(--ts-text-secondary, #d3d3d3); font-size: 0.9rem;">
+          Module artifacts draw sub-options from the <strong>same 9-stat pool</strong> as core artifacts.
+          See the <strong>Core Artifacts</strong> tab for the full sub-option grade ranges.
+        </p>
+      </div>
+    </div>
+
+    <!-- GRADES TAB -->
+    <div class="artifact-tab-content" id="tab-grades">
+      <p style="color: var(--ts-text-secondary, #d3d3d3); margin-bottom: 1.5rem; font-size: 0.9rem;">
+        Main stat ranges per grade for each slot. Sub-options are drawn from a shared pool of 9 stats.
+      </p>
+
+      <h3 style="color: var(--ts-text-primary, #f5f5f5); margin-bottom: 0.75rem; font-size: 1rem;">Main Stat Ranges by Slot</h3>
+      {[101, 102, 103, 104, 105, 106].map(group => {
+        const ranges = statRanges[group];
+        if (!ranges || !ranges.length) return null;
+        const statName = ranges[0].stat_name;
+        const slotMap = {101: 'Section A - Power', 102: 'Section A - Health', 103: 'Section A - Shield', 104: 'Section B - Power', 105: 'Section B - Health', 106: 'Section B - Shield'};
+        const slotName = slotMap[group] || `Group ${group}`;
+        const gradeMap = {};
+        for (const r of ranges) { gradeMap[r.grade] = r; }
+        return (
+          <div style="margin-bottom: 1.5rem;">
+            <div style="font-weight: 600; color: var(--ts-accent, #9a8aaa); margin-bottom: 0.5rem; font-size: 0.9rem;">
+              {slotName} - {statName}
+            </div>
+            <table class="grade-table">
+              <thead>
+                <tr>
+                  <th>Grade</th>
+                  <th>Min</th>
+                  <th>Max</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[1, 2, 3, 4, 5, 6].map(g => {
+                  const r = gradeMap[g];
+                  if (!r) return null;
+                  return (
+                    <tr>
+                      <td class="grade-label">Grade {g}</td>
+                      <td>{r.min.toLocaleString()}</td>
+                      <td>{r.max.toLocaleString()}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+      })}
+
+      <div class="artifact-info-box" style="margin-bottom: 1.5rem;">
+        <h3>Module Stat Ranges</h3>
+        <p style="color: var(--ts-text-secondary, #d3d3d3); font-size: 0.9rem;">
+          See the <strong>Module Artifacts</strong> tab for Module A & Module B main stat ranges and upgrade path bonuses.
+        </p>
+      </div>
+
+      <div class="artifact-info-box" style="margin-bottom: 1.5rem;">
+        <h3>Sub-Option Pool (Group 200)</h3>
+        <p style="color: var(--ts-text-secondary, #d3d3d3); font-size: 0.9rem;">
+          See the <strong>Core Artifacts</strong> tab for the full sub-option pool table with per-grade ranges for all 9 stats.
+        </p>
+      </div>
+
+      <div class="artifact-info-box">
+        <h3>Upgrade Info</h3>
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Success Rate</th>
+              <th>Sub-Slots</th>
+            </tr>
+          </thead>
+          <tbody>
+            {meta.lvup_rates.map((rate: number, i: number) => (
+              <tr>
+                <td class="grade-label">+{i}</td>
+                <td>{rate}%</td>
+                <td>{(meta.opt_slots_by_level as number[])[i] ?? 0}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</ArtifactsLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  // Tab switching
+  const tabs = document.querySelectorAll('.artifact-tab');
+  const tabContents = document.querySelectorAll('.artifact-tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      const targetEl = document.getElementById('tab-' + target);
+      if (targetEl) targetEl.classList.add('active');
+    });
+  });
+
+  // Set filters
+  const filterSetType = document.getElementById('filter-set-type');
+  const filterSetReq = document.getElementById('filter-set-req');
+  const setGrid = document.getElementById('set-grid');
+  const setNoResults = document.getElementById('set-no-results');
+
+  function applySetFilters() {
+    const type = filterSetType.value;
+    const req = filterSetReq.value;
+    let visible = 0;
+
+    setGrid.querySelectorAll('.set-card').forEach(card => {
+      const cardType = card.dataset.setType;
+      const cardReq = card.dataset.setReq;
+
+      const matchesType = !type || cardType === type;
+      const matchesReq = !req || cardReq === req;
+
+      const show = matchesType && matchesReq;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    setNoResults.style.display = visible === 0 ? '' : 'none';
+  }
+
+  filterSetType.addEventListener('change', applySetFilters);
+  filterSetReq.addEventListener('change', applySetFilters);
+});
+</script>

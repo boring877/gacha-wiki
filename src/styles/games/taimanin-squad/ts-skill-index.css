@@ -1,0 +1,327 @@
+/* Taimanin Squad Skill Index Page Styles */
+/* Image-based mechanic sections with popover skill details */
+
+/* Search */
+.ts-si-search {
+  margin-bottom: 1.5rem;
+}
+
+.ts-si-search-input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 8px;
+  color: var(--ts-text-primary);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.ts-si-search-input:focus {
+  border-color: var(--ts-primary, #9c27b0);
+}
+
+.ts-si-search-input::placeholder {
+  color: var(--ts-text-secondary);
+  opacity: 0.5;
+}
+
+/* Group Section */
+.ts-si-group {
+  margin-bottom: 2.5rem;
+}
+
+.ts-si-group:last-child {
+  margin-bottom: 0;
+}
+
+.ts-si-group-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ts-text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ts-border);
+}
+
+/* Mechanic List */
+.ts-si-mechanic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Mechanic Section */
+.ts-si-mechanic-section {
+  background: var(--ts-bg-secondary);
+  border: 1px solid var(--ts-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.ts-si-mechanic-section:hover {
+  border-color: rgba(156, 39, 176, 0.4);
+}
+
+.ts-si-mechanic-section.ts-si-empty {
+  opacity: 0.4;
+}
+
+/* Mechanic Title Row */
+.ts-si-mechanic-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ts-si-mechanic-icon {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.ts-si-mechanic-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ts-text-primary);
+  margin: 0;
+}
+
+.ts-si-mechanic-count {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.125rem 0.375rem;
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border-light);
+  border-radius: 4px;
+  color: var(--ts-accent, #ce93d8);
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+/* Scope Badge */
+.ts-si-scope {
+  font-size: 0.625rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  margin-left: auto;
+}
+
+.ts-si-scope-buff {
+  background: rgba(79, 195, 247, 0.15);
+  color: #4fc3f7;
+}
+
+.ts-si-scope-debuff {
+  background: rgba(239, 83, 80, 0.15);
+  color: #ef5350;
+}
+
+/* Character List */
+.ts-si-char-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+/* Character Details (popover) */
+.ts-si-char-details {
+  position: relative;
+  margin: 0;
+  border: none;
+}
+
+.ts-si-char-details + .ts-si-char-details {
+  margin-top: 0;
+}
+
+.ts-si-char-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem 0.375rem 0.375rem;
+  background: var(--ts-bg-tertiary);
+  border: 1px solid var(--ts-border-light);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  max-width: 140px;
+  list-style: none;
+  user-select: none;
+}
+
+.ts-si-char-summary::-webkit-details-marker {
+  display: none;
+}
+
+.ts-si-char-summary::marker {
+  display: none;
+  content: '';
+}
+
+.ts-si-char-summary:hover {
+  border-color: rgba(156, 39, 176, 0.5);
+  background: rgba(156, 39, 176, 0.08);
+}
+
+.ts-si-char-details[open] > .ts-si-char-summary {
+  border-color: var(--ts-primary, #9c27b0);
+  background: rgba(156, 39, 176, 0.15);
+  box-shadow: 0 0 0 1px var(--ts-primary, #9c27b0);
+  z-index: 60;
+}
+
+.ts-si-char-img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ts-si-char-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ts-si-char-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ts-bg-secondary);
+  border-radius: 4px;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: var(--ts-text-secondary);
+}
+
+.ts-si-char-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ts-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.ts-si-char-skill-type {
+  font-size: 0.5625rem;
+  color: var(--ts-text-secondary);
+  white-space: nowrap;
+  margin-left: auto;
+  line-height: 1.2;
+}
+
+/* Skill Detail (popover overlay) */
+.ts-si-skill-detail {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  z-index: 100;
+  background: linear-gradient(135deg, #1a1a2e 0%, #151525 100%);
+  border: 1px solid var(--ts-primary, #9c27b0);
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(156, 39, 176, 0.3);
+  animation: ts-si-pop-in 0.15s ease-out;
+}
+
+@keyframes ts-si-pop-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.ts-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ts-si-skill-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ts-accent, #ce93d8);
+}
+
+.ts-si-skill-meta {
+  font-size: 0.6875rem;
+  color: var(--ts-text-secondary);
+}
+
+.ts-si-skill-desc {
+  font-size: 0.75rem;
+  color: var(--ts-text-primary);
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-line;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+/* No results */
+.ts-si-no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ts-text-secondary);
+  font-size: 1rem;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .ts-si-skill-detail {
+    width: 280px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .ts-si-mechanic-section {
+    padding: 0.875rem 1rem;
+  }
+
+  .ts-si-char-summary {
+    max-width: 120px;
+    padding: 0.25rem 0.375rem 0.25rem 0.375rem;
+  }
+
+  .ts-si-char-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ts-i-char-name {
+    font-size: 0.6875rem;
+  }
+
+  .ts-si-char-skill-type {
+    display: none;
+  }
+
+  .ts-si-skill-detail {
+    width: calc(100vw - 4rem);
+    max-width: 320px;
+  }
+}

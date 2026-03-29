@@ -1,0 +1,92 @@
+---
+// Taimanin Squad Weapon Image Component
+// Displays weapon icons from the weaponicon folder
+
+import { Image } from 'astro:assets';
+
+const weaponImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/weaponicon/Weapon_*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  variant?: 'base' | 'large';
+}
+
+const {
+  icon,
+  alt = 'Weapon',
+  width = 40,
+  height = 40,
+  class: className = '',
+  variant = 'base',
+} = Astro.props;
+
+function findWeaponImage() {
+  const allKeys = Object.keys(weaponImages);
+
+  const exactMatch = allKeys.find(key => {
+    const normalized = key.replace(/\\/g, '/');
+    return normalized.endsWith(`/${icon}`);
+  });
+
+  if (exactMatch) return exactMatch;
+
+  if (variant === 'large') {
+    const baseName = icon.replace('.png', '');
+    const largeIcon = `${baseName}_l.png`;
+    return allKeys.find(key => {
+      const normalized = key.replace(/\\/g, '/');
+      return normalized.endsWith(`/${largeIcon}`);
+    });
+  }
+
+  return null;
+}
+
+const imageKey = findWeaponImage();
+const imageModule = imageKey ? weaponImages[imageKey].default : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={width}
+    height={height}
+    class:list={['ts-weapon-icon', className]}
+    loading="lazy"
+  />
+) : (
+  <div
+    class:list={['ts-weapon-icon-fallback', className]}
+    style={`width: ${width}px; height: ${height}px;`}
+  >
+    <span>W</span>
+  </div>
+)}
+
+<style>
+  .ts-weapon-icon {
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .ts-weapon-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ts-bg-tertiary, #242028);
+    color: var(--ts-text-muted, #888);
+    font-weight: 600;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    border: 1px dashed var(--ts-border, #2e2838);
+  }
+</style>

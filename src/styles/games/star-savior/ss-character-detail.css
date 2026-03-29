@@ -199,6 +199,14 @@
   gap: 0.75rem;
 }
 
+.ss-skill-level-data {
+  display: none;
+}
+
+.ss-skill-level-data.ss-skill-level-active {
+  display: block;
+}
+
 .ss-skill-item {
   display: flex;
   align-items: flex-start;
@@ -249,16 +257,6 @@
   font-size: 0.75rem;
   color: var(--ss-text-primary);
   font-weight: 500;
-}
-
-.ss-skill-dmg-bonus {
-  color: var(--ss-accent);
-  font-weight: 600;
-}
-
-.ss-skill-lv {
-  font-size: 0.75rem;
-  color: var(--ss-text-tertiary);
 }
 
 .ss-skill-nf {

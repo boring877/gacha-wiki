@@ -7,11 +7,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 20998,
+      "DEF": 1634,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -22,11 +25,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_ORDER",
     "statsMax": {
-      "ATK": 4075,
-      "HP": 25655,
-      "DEF": 2018,
+      "ATK": 3425,
+      "HP": 22902,
+      "DEF": 1783,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 104
     }
   },
   {
@@ -37,11 +43,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3682,
+      "HP": 20998,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 112
     }
   },
   {
@@ -52,11 +61,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 23058,
+      "DEF": 1780,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 95
     }
   },
   {
@@ -67,11 +79,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3940,
+      "HP": 22104,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 104
     }
   },
   {
@@ -82,11 +97,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 1700,
-      "Crit Damage": 6200
+      "Crit Damage": 6200,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -97,11 +115,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3940,
+      "HP": 22104,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 104
     }
   },
   {
@@ -112,11 +133,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -127,11 +151,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_CHAOS",
     "statsMax": {
-      "ATK": 4075,
-      "HP": 25655,
-      "DEF": 2018,
+      "ATK": 3425,
+      "HP": 23283,
+      "DEF": 1783,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 98
     }
   },
   {
@@ -142,11 +169,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 22680,
+      "DEF": 1691,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 95
     }
   },
   {
@@ -157,11 +187,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 1400,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 90
     }
   },
   {
@@ -172,11 +205,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 23058,
+      "DEF": 1780,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 95
     }
   },
   {
@@ -187,11 +223,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 4120,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 500,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -202,11 +241,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 23058,
+      "DEF": 1691,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 99
     }
   },
   {
@@ -217,11 +259,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 22680,
+      "DEF": 1780,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 95
     }
   },
   {
@@ -232,11 +277,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 23058,
+      "DEF": 1780,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 95
     }
   },
   {
@@ -247,11 +295,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3989,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 1400,
-      "Crit Damage": 6200
+      "Crit Damage": 6200,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -262,11 +313,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_CHAOS",
     "statsMax": {
-      "ATK": 4360,
-      "HP": 25057,
-      "DEF": 1960,
+      "ATK": 3710,
+      "HP": 21158,
+      "DEF": 1635,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 115
     }
   },
   {
@@ -277,11 +331,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 21546,
+      "DEF": 1629,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11600,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -292,11 +349,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 20998,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11600,
+      "Effect Evasion": 0,
+      "Turn Speed": 104
     }
   },
   {
@@ -307,11 +367,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_ORDER",
     "statsMax": {
-      "ATK": 4406,
-      "HP": 24857,
-      "DEF": 1955,
+      "ATK": 3954,
+      "HP": 20958,
+      "DEF": 1630,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 93
     }
   },
   {
@@ -322,11 +385,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_CHAOS",
     "statsMax": {
-      "ATK": 4360,
-      "HP": 25057,
-      "DEF": 1960,
+      "ATK": 3906,
+      "HP": 21158,
+      "DEF": 1635,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11600,
+      "Effect Evasion": 0,
+      "Turn Speed": 107
     }
   },
   {
@@ -337,11 +403,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 21546,
+      "DEF": 1629,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11600,
+      "Effect Evasion": 0,
+      "Turn Speed": 90
     }
   },
   {
@@ -352,11 +421,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 21912,
+      "DEF": 1629,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 96
     }
   },
   {
@@ -367,11 +439,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 20998,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11600,
+      "Effect Evasion": 0,
+      "Turn Speed": 104
     }
   },
   {
@@ -382,11 +457,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 4069,
+      "HP": 22104,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -397,11 +475,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_CHAOS",
     "statsMax": {
-      "ATK": 4360,
-      "HP": 25057,
-      "DEF": 1960,
+      "ATK": 3971,
+      "HP": 21158,
+      "DEF": 1635,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10800,
+      "Effect Evasion": 0,
+      "Turn Speed": 109
     }
   },
   {
@@ -412,11 +493,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_ORDER",
     "statsMax": {
-      "ATK": 4417,
-      "HP": 25655,
-      "DEF": 1933,
+      "ATK": 3966,
+      "HP": 21756,
+      "DEF": 1608,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 98
     }
   },
   {
@@ -427,11 +511,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 22104,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -442,11 +529,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_ORDER",
     "statsMax": {
-      "ATK": 4360,
-      "HP": 25057,
-      "DEF": 1960,
+      "ATK": 3971,
+      "HP": 22272,
+      "DEF": 1635,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 107
     }
   },
   {
@@ -457,11 +547,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 4058,
-      "HP": 25444,
-      "DEF": 2016,
+      "ATK": 3408,
+      "HP": 22680,
+      "DEF": 1691,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 1200,
+      "Turn Speed": 95
     }
   },
   {
@@ -472,11 +565,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 22104,
+      "DEF": 1634,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -487,11 +583,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3876,
+      "HP": 22104,
+      "DEF": 1720,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -502,11 +601,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4377,
-      "HP": 24715,
-      "DEF": 1953,
+      "ATK": 3924,
+      "HP": 20816,
+      "DEF": 1629,
       "Crit Rate": 1400,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 90
     }
   },
   {
@@ -517,11 +619,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SSR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 4332,
-      "HP": 24897,
-      "DEF": 1959,
+      "ATK": 3940,
+      "HP": 20998,
+      "DEF": 1634,
       "Crit Rate": 1100,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -532,11 +637,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 3559,
-      "HP": 22403,
-      "DEF": 1784,
+      "ATK": 2552,
+      "HP": 17530,
+      "DEF": 1356,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 95
     }
   },
   {
@@ -547,11 +655,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 3559,
-      "HP": 22403,
-      "DEF": 1784,
+      "ATK": 2552,
+      "HP": 17530,
+      "DEF": 1356,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 800,
+      "Turn Speed": 95
     }
   },
   {
@@ -562,11 +673,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 3878,
-      "HP": 21787,
-      "DEF": 1721,
+      "ATK": 3001,
+      "HP": 15692,
+      "DEF": 1225,
       "Crit Rate": 500,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 90
     }
   },
   {
@@ -577,11 +691,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 3838,
-      "HP": 21941,
-      "DEF": 1727,
+      "ATK": 2964,
+      "HP": 15827,
+      "DEF": 1230,
       "Crit Rate": 1400,
-      "Crit Damage": 6800
+      "Crit Damage": 6800,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -592,11 +709,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 3878,
-      "HP": 21787,
-      "DEF": 1721,
+      "ATK": 3001,
+      "HP": 15692,
+      "DEF": 1225,
       "Crit Rate": 1700,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 94
     }
   },
   {
@@ -607,11 +727,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_STAR",
     "statsMax": {
-      "ATK": 3838,
-      "HP": 21941,
-      "DEF": 1727,
+      "ATK": 2964,
+      "HP": 16776,
+      "DEF": 1230,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -622,11 +745,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_SUN",
     "statsMax": {
-      "ATK": 3838,
-      "HP": 21941,
-      "DEF": 1727,
+      "ATK": 2964,
+      "HP": 16776,
+      "DEF": 1230,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 11200,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   },
   {
@@ -637,11 +763,14 @@ export const STAR_SAVIOR_CHARACTERS = [
     "rarity": "SR",
     "adjustType": "NUAT_MOON",
     "statsMax": {
-      "ATK": 3559,
-      "HP": 22403,
-      "DEF": 1784,
+      "ATK": 2552,
+      "HP": 17205,
+      "DEF": 1331,
       "Crit Rate": 500,
-      "Crit Damage": 5000
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1600,
+      "Turn Speed": 95
     }
   }
 ];

@@ -1,0 +1,163 @@
+---
+// Taimanin Squad Skill Mechanic Index Page
+// Auto-generated index of all skill mechanics mapped to characters for teambuilding
+
+import SkillIndexLayout from '../../../../layouts/taimanin-squad/SkillIndexLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSBuffIcon from '../../../../components/taimanin-squad/TSBuffIcon.astro';
+import { TS_SKILL_INDEX_GROUPS } from '../../../../data/taimanin-squad/ts-skill-index';
+
+const MECHANIC_ICONS: Record<string, string> = {
+  'atk-up': 'AtkUp',
+  'def-up': 'DefUp',
+  'spd-up': 'SpdUp',
+  'acc-up': 'AccUp',
+  'evd-up': 'EvdUp',
+  'crit-rate-up': 'CriRateUp',
+  'crit-dmg-up': 'CriDmgUp',
+  'crit-res-up': 'CriResUp',
+  'shield': 'Shield',
+  'protective-shield': 'DmgBlockCount',
+  'damage-block': 'DmgBlock',
+  'damage-reflect': 'DmgReflect',
+  'immortal': 'Athanasia',
+  'strengthen': 'Strengthen',
+  'ally-protection': 'AllyProtection',
+  'debuff-block': 'DeBuffBlock',
+  'heal': 'HealTurn',
+  'heal-over-time': 'HealTurn',
+  'life-steal': 'Absorb',
+  'counter-attack': 'CountAttack',
+  'stealth': 'Stealth',
+  'buff-steal': 'BuffBlock',
+  'immune': 'BuffBlock',
+  'bleed': 'Bleeding',
+  'burn': 'Burn',
+  'poison': 'Poison',
+  'absorb': 'Absorb',
+  'stun': 'Stun',
+  'freeze': 'Freeze',
+  'sleep': 'Sleep',
+  'confuse': 'Confuse',
+  'taunt': 'Provocation',
+  'immobilize': 'Restraint',
+  'electrocute': 'ElecShock',
+  'atk-down': 'AtkDown',
+  'def-down': 'DefDown',
+  'spd-down': 'SpdDown',
+  'heal-reduction': 'HealRateDown',
+};
+---
+
+<SkillIndexLayout
+  title="Skill Mechanic Index - Taimanin Squad Wiki | GachaWiki"
+  description="Find characters by skill mechanic. Search for Bleed, Poison, Shield, Extra Turn, and more for teambuilding in Taimanin Squad."
+  gameTitle="Skill Mechanic Index"
+>
+  <div class="ts-si-search">
+    <input
+      type="text"
+      class="ts-si-search-input"
+      placeholder="Search mechanic or character..."
+      id="ts-si-search"
+      autocomplete="off"
+    />
+  </div>
+
+  <div id="ts-si-content">
+    {TS_SKILL_INDEX_GROUPS.map(group => (
+      <div class="ts-si-group" data-group={group.name}>
+        <h2 class="ts-si-group-title">{group.name}</h2>
+        <div class="ts-si-mechanic-list">
+          {group.mechanics.map(mechanic => {
+            const iconName = MECHANIC_ICONS[mechanic.id];
+            return (
+              <div
+                class={`ts-si-mechanic-section ${mechanic.characters.length === 0 ? 'ts-si-empty' : ''}`}
+                data-mechanic={mechanic.name.toLowerCase()}
+                data-chars={mechanic.characters.map(c => c.char_name.toLowerCase()).join(' ')}
+              >
+                <div class="ts-si-mechanic-title-row">
+                  {iconName && (
+                    <div class="ts-si-mechanic-icon">
+                      <TSBuffIcon icon={iconName} alt={mechanic.name} width={24} height={24} />
+                    </div>
+                  )}
+                  <h3 class="ts-si-mechanic-name">{mechanic.name}</h3>
+                  <span class="ts-si-mechanic-count">{mechanic.characters.length}</span>
+                  <span class={`ts-si-scope ts-si-scope-${mechanic.scope}`}>
+                    {mechanic.scope}
+                  </span>
+                </div>
+                {mechanic.characters.length > 0 && (
+                  <div class="ts-si-char-list">
+                    {mechanic.characters.map(char => (
+                      <details class="ts-si-char-details">
+                        <summary class="ts-si-char-summary">
+                          <div class="ts-si-char-img">
+                            {char.char_icon ? (
+                              <TSCharacterImage
+                                icon={char.char_icon}
+                                alt={char.char_name}
+                                width={32}
+                                height={32}
+                              />
+                            ) : (
+                              <div class="ts-si-char-placeholder">{char.char_name.slice(0, 2)}</div>
+                            )}
+                          </div>
+                          <span class="ts-si-char-name">{char.char_name}</span>
+                          <span class="ts-si-char-skill-type">{char.skill_type}</span>
+                        </summary>
+                        <div class="ts-si-skill-detail">
+                          <div class="ts-si-skill-header">
+                            <span class="ts-si-skill-name">{char.skill_name}</span>
+                            <span class="ts-si-skill-meta">{char.skill_type} &middot; {char.scope} &middot; {char.source}</span>
+                          </div>
+                          {char.skill_desc && (
+                            <p class="ts-si-skill-desc">{char.skill_desc}</p>
+                          )}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="ts-si-no-results" id="ts-si-no-results" style="display: none;">
+    No mechanics or characters match your search.
+  </div>
+</SkillIndexLayout>
+
+<script>
+  const searchInput = document.getElementById('ts-si-search') as HTMLInputElement;
+  const noResults = document.getElementById('ts-si-no-results')!;
+  const groups = document.querySelectorAll('.ts-si-group');
+  const sections = document.querySelectorAll('.ts-si-mechanic-section');
+
+  searchInput?.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    sections.forEach(section => {
+      const mechName = (section as HTMLElement).dataset.mechanic || '';
+      const chars = (section as HTMLElement).dataset.chars || '';
+      const match = !query || mechName.includes(query) || chars.includes(query);
+      (section as HTMLElement).style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    groups.forEach(group => {
+      const visibleSections = group.querySelectorAll('.ts-si-mechanic-section:not([style*="display: none"])');
+      (group as HTMLElement).style.display = visibleSections.length > 0 ? '' : 'none';
+    });
+
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+  });
+</script>

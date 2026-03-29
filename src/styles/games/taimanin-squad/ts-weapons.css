@@ -1,0 +1,333 @@
+/* Taimanin Squad Weapons Page Styles */
+
+.weapon-stats-bar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.weapon-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--ts-bg-tertiary, #242028);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.weapon-stat-label {
+  color: var(--ts-text-muted, #696969);
+}
+
+.weapon-stat-value {
+  color: var(--ts-text-primary, #f5f5f5);
+  font-weight: 600;
+}
+
+.weapon-filters {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.weapon-search-container {
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+
+.weapon-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.weapon-filter-select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--ts-border, #2e2838);
+  background: var(--ts-bg-tertiary, #242028);
+  color: var(--ts-text-primary, #fff);
+  font-size: 0.9rem;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.weapon-filter-select:focus {
+  outline: none;
+  border-color: var(--ts-primary, #6b5b7a);
+}
+
+.weapon-filter-select option {
+  background: var(--ts-bg-tertiary, #242028);
+  color: var(--ts-text-primary, #fff);
+}
+
+.weapon-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 25px;
+  border: 1px solid var(--ts-border, #2e2838);
+  background: var(--ts-bg-tertiary, #242028);
+  color: var(--ts-text-primary, #fff);
+  font-size: 1rem;
+}
+
+.weapon-search-input::placeholder {
+  color: var(--ts-text-muted, #888);
+}
+
+.weapon-search-input:focus {
+  outline: none;
+  border-color: var(--ts-primary, #6b5b7a);
+}
+
+/* Table View */
+.weapon-table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.weapon-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.weapon-table th {
+  background: var(--ts-bg-secondary, #1a171f);
+  color: var(--ts-text-secondary, #d3d3d3);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+  white-space: nowrap;
+}
+
+.weapon-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--ts-border-dark, #1a1520);
+  color: var(--ts-text-primary, #f5f5f5);
+}
+
+.weapon-table tbody tr:hover {
+  background: var(--ts-bg-hover, #2a2530);
+}
+
+.weapon-table tbody tr {
+  cursor: default;
+}
+
+.weapon-table tbody tr.weapon-row {
+  cursor: pointer;
+}
+
+.weapon-table tbody tr.weapon-row.expanded {
+  background: var(--ts-bg-hover, #2a2530);
+}
+
+.weapon-table .weapon-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 200px;
+}
+
+.weapon-icon-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.weapon-table .weapon-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.weapon-table .weapon-name-empty {
+  color: var(--ts-text-muted, #696969);
+  font-style: italic;
+}
+
+.weapon-table .char-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weapon-rarity-badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.weapon-opt-value {
+  font-weight: 600;
+}
+
+.weapon-no-results {
+  text-align: center;
+  color: var(--ts-text-muted, #888);
+  padding: 3rem;
+  font-size: 1.1rem;
+}
+
+.weapon-table-num {
+  color: var(--ts-text-muted, #696969);
+  font-size: 0.8rem;
+  min-width: 30px;
+}
+
+.weapon-char-icon-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .weapon-filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .weapon-filter-select {
+    width: 100%;
+  }
+
+  .weapon-stats-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weapon-table {
+    font-size: 0.8rem;
+  }
+
+  .weapon-table th,
+  .weapon-table td {
+    padding: 0.5rem 0.6rem;
+  }
+}
+
+/* Detail Row */
+.weapon-detail-row td {
+  padding: 0 !important;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.weapon-detail-row.visible td {
+  max-height: 500px;
+}
+
+.weapon-detail-content {
+  padding: 1rem 1.5rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-top: 1px solid var(--ts-border, #2e2838);
+}
+
+.weapon-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weapon-detail-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ts-text-primary, #f5f5f5);
+}
+
+.weapon-detail-stars {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.weapon-detail-slot {
+  font-size: 0.75rem;
+  color: var(--ts-text-muted, #696969);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 4px;
+}
+
+.weapon-detail-char {
+  font-size: 0.75rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+.weapon-detail-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.weapon-detail-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.weapon-detail-stat-label {
+  font-size: 0.7rem;
+  color: var(--ts-text-muted, #696969);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.weapon-detail-stat-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ts-text-primary, #f5f5f5);
+}
+
+/* Skill Section */
+.weapon-skill-section {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--ts-bg-tertiary, #242028);
+  border-radius: 8px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.weapon-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.weapon-skill-type {
+  font-size: 0.7rem;
+  color: var(--ts-accent, #9a8aaa);
+  font-weight: 600;
+}
+
+.weapon-skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ts-text-primary, #f5f5f5);
+}
+
+.weapon-skill-desc {
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}

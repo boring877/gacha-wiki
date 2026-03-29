@@ -1,0 +1,295 @@
+---
+// Taimanin Squad Weapons Database Page
+// Displays all character-specific weapons with filters and skill info
+
+import WeaponsLayout from '../../../../layouts/taimanin-squad/WeaponsLayout.astro';
+import TSWeaponImage from '../../../../components/taimanin-squad/TSWeaponImage.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import { TAIMANIN_SQUAD_WEAPONS } from '../../../../data/taimanin-squad/weapons.js';
+
+const allWeapons = TAIMANIN_SQUAD_WEAPONS.sort((a, b) => a.id - b.id);
+
+const totalCount = allWeapons.length;
+const star3Count = allWeapons.filter(w => w.rarity_stars === 3).length;
+const star4Count = allWeapons.filter(w => w.rarity_stars === 4).length;
+const star5Count = allWeapons.filter(w => w.rarity_stars === 5).length;
+
+const optTypeOptions = [...new Set(allWeapons.map(w => w.opt_type_name))].sort();
+const skillTypeOptions = [...new Set(allWeapons.map(w => w.skill_type))].sort();
+
+const sortedWeapons = [...allWeapons].sort((a, b) => {
+  if (a.rarity_stars !== b.rarity_stars) return b.rarity_stars - a.rarity_stars;
+  return a.id - b.id;
+});
+
+const starColors: Record<number, string> = {
+  3: '#66bb6a',
+  4: '#b8a9c8',
+  5: '#ff9800',
+};
+
+function getStars(n: number) {
+  return '\u2605'.repeat(n);
+}
+
+function cleanSkillName(name: string) {
+  if (!name) return '';
+  let cleaned = name.replace(/<\[\&[^>]*\]>/g, '').trim();
+  cleaned = cleaned.replace(/\[\s*$/, '').trim();
+  return cleaned;
+}
+
+const percentStats = new Set(['Attack %', 'HP %', 'Critical Rate', 'Critical Damage', 'Crit Resistance', 'Accuracy', 'Evasion', 'Resistance']);
+---
+
+<WeaponsLayout
+  title="Weapons - Taimanin Squad Wiki | GachaWiki"
+  description="Browse all Taimanin Squad character weapons. Complete weapon database with stats, skills, and character assignments."
+  gameTitle="Weapons"
+>
+  <section class="content-section">
+    <p class="lore-intro">
+      Browse {totalCount} weapons across {new Set(allWeapons.map(w => w.unit_id)).size} characters.
+      Click on a weapon row to see its skill details.
+    </p>
+
+    <div class="weapon-stats-bar">
+      <div class="weapon-stat-item">
+        <span class="weapon-stat-label">Total</span>
+        <span class="weapon-stat-value">{totalCount}</span>
+      </div>
+      <div class="weapon-stat-item">
+        <span class="weapon-stat-label" style={`color: ${starColors[5]}`}>
+          {'\u2605'.repeat(5)}
+        </span>
+        <span class="weapon-stat-value">{star5Count}</span>
+      </div>
+      <div class="weapon-stat-item">
+        <span class="weapon-stat-label" style={`color: ${starColors[4]}`}>
+          {'\u2605'.repeat(4)}
+        </span>
+        <span class="weapon-stat-value">{star4Count}</span>
+      </div>
+      <div class="weapon-stat-item">
+        <span class="weapon-stat-label" style={`color: ${starColors[3]}`}>
+          {'\u2605'.repeat(3)}
+        </span>
+        <span class="weapon-stat-value">{star3Count}</span>
+      </div>
+    </div>
+
+    <div class="weapon-filters">
+      <div class="weapon-search-container">
+        <input
+          type="text"
+          id="weapon-search"
+          class="weapon-search-input"
+          placeholder="Search weapons or characters..."
+        />
+      </div>
+      <div class="weapon-filter-row">
+        <select id="filter-rarity" class="weapon-filter-select">
+          <option value="">All Rarities</option>
+          <option value="5">{'\u2605'.repeat(5)}</option>
+          <option value="4">{'\u2605'.repeat(4)}</option>
+          <option value="3">{'\u2605'.repeat(3)}</option>
+        </select>
+        <select id="filter-slot" class="weapon-filter-select">
+          <option value="">All Slots</option>
+          <option value="Weapon 1">Weapon 1</option>
+          <option value="Weapon 2">Weapon 2</option>
+        </select>
+        <select id="filter-stat" class="weapon-filter-select">
+          <option value="">All Stats</option>
+          {optTypeOptions.map(opt => (
+            <option value={opt}>{opt}</option>
+          ))}
+        </select>
+        <select id="filter-skilltype" class="weapon-filter-select">
+          <option value="">All Skills</option>
+          {skillTypeOptions.map(st => (
+            <option value={st}>{st}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <div class="weapon-table-container">
+      <table class="weapon-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Weapon</th>
+            <th>Character</th>
+            <th>Slot</th>
+            <th>Rarity</th>
+            <th>Stat</th>
+            <th>Bonus</th>
+          </tr>
+        </thead>
+        <tbody id="weapon-tbody">
+          {sortedWeapons.map((w, i) => {
+            const skillName = cleanSkillName(w.skill_name);
+            const hasSkillInfo = skillName || w.skill_desc;
+            return (
+              <>
+                <tr
+                  class="weapon-row"
+                  data-name={(w.name || '').toLowerCase()}
+                  data-char={w.char_name.toLowerCase()}
+                  data-rarity={w.rarity_stars}
+                  data-slot={w.slot}
+                  data-stat={w.opt_type_name}
+                  data-skilltype={w.skill_type}
+                >
+                  <td class="weapon-table-num">{i + 1}</td>
+                  <td>
+                    <div class="weapon-cell">
+                      <TSWeaponImage
+                        icon={w.icon}
+                        alt={w.name || 'Weapon'}
+                        width={40}
+                        height={40}
+                      />
+                      <span class={w.name ? 'weapon-name' : 'weapon-name weapon-name-empty'}>
+                        {w.name || 'Unnamed'}
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="char-cell">
+                      <TSCharacterImage
+                        icon={w.char_icon}
+                        alt={w.char_name}
+                        width={32}
+                        height={32}
+                      />
+                      <span>{w.char_name}</span>
+                    </div>
+                  </td>
+                  <td>{w.slot}</td>
+                  <td>
+                    <span class="weapon-rarity-badge" style={`color: ${starColors[w.rarity_stars] || '#888'}`}>
+                      {getStars(w.rarity_stars)}
+                    </span>
+                  </td>
+                  <td>{w.opt_type_name}</td>
+                  <td class="weapon-opt-value">+{w.bonus_value}%</td>
+                </tr>
+                {hasSkillInfo && (
+                  <tr class="weapon-detail-row">
+                    <td colspan="7">
+                      <div class="weapon-detail-content">
+                        <div class="weapon-detail-stats">
+                          <div class="weapon-detail-stat">
+                            <span class="weapon-detail-stat-label">Bonus Stat</span>
+                            <span class="weapon-detail-stat-value">{w.opt_type_name} +{w.bonus_value}%</span>
+                          </div>
+                          <div class="weapon-detail-stat">
+                            <span class="weapon-detail-stat-label">Skill</span>
+                            <span class="weapon-detail-stat-value">{w.skill_type}</span>
+                          </div>
+                        </div>
+                        {skillName && (
+                          <div class="weapon-skill-section">
+                            <div class="weapon-skill-header">
+                              <span class="weapon-skill-type">[{w.skill_type}]</span>
+                              <span class="weapon-skill-name">{skillName}</span>
+                            </div>
+                            {w.skill_desc && (
+                              <p class="weapon-skill-desc">{w.skill_desc}</p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="weapon-no-results" id="no-results" style="display: none;">
+      No weapons found matching your search.
+    </div>
+  </section>
+</WeaponsLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('weapon-search');
+  const filterRarity = document.getElementById('filter-rarity');
+  const filterSlot = document.getElementById('filter-slot');
+  const filterStat = document.getElementById('filter-stat');
+  const filterSkillType = document.getElementById('filter-skilltype');
+  const noResults = document.getElementById('no-results');
+  const tbody = document.getElementById('weapon-tbody');
+  const rows = tbody.querySelectorAll('.weapon-row');
+
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      const detailRow = row.nextElementSibling;
+      if (detailRow && detailRow.classList.contains('weapon-detail-row')) {
+        row.classList.toggle('expanded');
+        detailRow.classList.toggle('visible');
+      }
+    });
+  });
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase();
+    const rarity = filterRarity.value;
+    const slot = filterSlot.value;
+    const stat = filterStat.value;
+    const skillType = filterSkillType.value;
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const name = row.dataset.name || '';
+      const char = row.dataset.char || '';
+      const rowRarity = row.dataset.rarity || '';
+      const rowSlot = row.dataset.slot || '';
+      const rowStat = row.dataset.stat || '';
+      const rowSkillType = row.dataset.skilltype || '';
+
+      const matchesSearch = name.includes(query) || char.includes(query);
+      const matchesRarity = !rarity || rowRarity === rarity;
+      const matchesSlot = !slot || rowSlot === slot;
+      const matchesStat = !stat || rowStat === stat;
+      const matchesSkillType = !skillType || rowSkillType === skillType;
+
+      const matches = matchesSearch && matchesRarity && matchesSlot && matchesStat && matchesSkillType;
+      row.style.display = matches ? '' : 'none';
+
+      const detailRow = row.nextElementSibling;
+      if (detailRow && detailRow.classList.contains('weapon-detail-row')) {
+        detailRow.style.display = matches ? '' : 'none';
+        if (!matches) {
+          row.classList.remove('expanded');
+          detailRow.classList.remove('visible');
+        }
+      }
+
+      if (matches) visibleCount++;
+    });
+
+    noResults.style.display = visibleCount === 0 ? '' : 'none';
+
+    let num = 1;
+    rows.forEach(row => {
+      if (row.style.display !== 'none') {
+        row.querySelector('.weapon-table-num').textContent = num++;
+      }
+    });
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  filterRarity.addEventListener('change', applyFilters);
+  filterSlot.addEventListener('change', applyFilters);
+  filterStat.addEventListener('change', applyFilters);
+  filterSkillType.addEventListener('change', applyFilters);
+});
+</script>
