@@ -713,6 +713,973 @@ export const blogConfig = {
 
       `,
     },
+    {
+      slug: 'damage-formula-and-stat-optimization-guide',
+      title: 'Damage Formula, Speed System & Stat Optimization Guide',
+      description:
+        'Complete breakdown of the Star Savior damage formula, defense reduction, critical hits, turn speed mechanics, and stat investment priorities -- all verified from decompiled game code.',
+      author: 'Boring877',
+      publishDate: '2026-03-30',
+      category: 'Guide',
+      tags: ['advanced', 'combat', 'damage', 'speed', 'stats', 'optimization', 'theorycraft'],
+      content: `
+        <p>This guide breaks down how damage is calculated in Star Savior, how the turn speed system works, and how to optimize your stat investments. All formulas are verified from the game's decompiled source code (NKM.decompiled.cs, TurnSpeedCalculator.cs).</p>
+
+        <h2 id="damage-formula">Damage Formula Overview</h2>
+        <p>The damage calculation happens in multiple steps. Here is the simplified pipeline:</p>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - OBF_33238 (GetFinalDamage)</div>
+        <pre><code>// Step 1: Raw Damage (from skill templet factors)
+RawDamage = (ATK * AtkFactor% + HP * HpFactor% + DEF * DefFactor%)
+            * SkillMultiplier / HitCount
+
+// Step 2: Defense Reduction
+DefReduction = DEF_target / (DEF_target + Constant)
+EffectiveDefReduction = DefReduction * (1 - Penetration% + PenResist%)
+
+// Step 3: Apply DEF to Raw Damage
+PostDef = RawDamage * (1 - EffectiveDefReduction)
+
+// Step 4: Damage Up/Down modifiers (additive)
+DamageUp   = AttributeAdvantage + DamageUp% + SkillPhaseUp%
+           + AttackTagUp% + BuffCountUp% + DebuffCountUp% + BreakUp%
+DamageDown = AttributeDisadvantage + DamageReduce%
+           + NonCritReduce% + RoleReduce% + ElementReduce%
+           + BreakReduce% + AttackTagReduce%
+
+// Step 5: Critical Hit (applied after modifiers)
+if CriticalHit:
+    CritDMG_applied = CritDamage% - CritDamageReduce%  (floor 0)
+    PostDef += PostDef * CritDMG_applied
+
+// Step 6: Random Variance (+/-5%)
+FinalDamage = PostDef * Random.Range(0.95, 1.05)
+
+// Step 7: Hard Caps
+if FinalDamage > TargetHP * DamageLimitByHP%:
+    FinalDamage = TargetHP * DamageLimitByHP%
+if TotalReduction > DamageReduceTotalLimit:
+    TotalReduction = DamageReduceTotalLimit</code></pre>
+
+        <h2 id="attribute-advantage">Attribute Advantage (Verified from Code)</h2>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - OBF_16299</div>
+        <pre><code>private static double CalcAttributeAdvantage(Unit attacker, Unit defender)
+{
+    double result = 0.0;
+    if (attacker is BattleUnit unit)
+    {
+        // Check if attacker has advantage
+        if (IsAttributeAdvantage(unit.Element, defender.Element))
+        {
+            result = 0.05;  // +5% base advantage
+            result += unit.GetStat(RATE_DAMAGE_UP_ADJUST);  // + extra from buffs
+        }
+        // Check if attacker has disadvantage
+        if (IsAttributeDisadvantage(unit.Element, defender.Element))
+        {
+            result = -0.05;  // -5% base disadvantage
+        }
+    }
+    return result;
+}
+
+// Advantage relationships (OBF_11522):
+// Sun > Star, Moon > Sun, Star > Moon
+// Order > Chaos, Chaos > Order</code></pre>
+
+        <p>Attribute advantage gives <strong>+5% damage</strong> and disadvantage gives <strong>-5% damage</strong>. This is a flat modifier applied during the damage up/down phase, not a multiplier on raw damage.</p>
+
+        <h2 id="defense-formula">Defense Reduction Formula</h2>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - OBF_10086 (CalcDefReduction)</div>
+        <pre><code>private static double CalcDefReduction(BattleState host,
+    Unit attacker, Unit defender, bool isDodge, DamageLog log)
+{
+    double defStat = defender.GetStat(NST_DEF);
+    double hpGrownDefRate = defender.GetStat(RATE_HP_GROWN_DEF);
+    hpGrownDefRate *= (1 - defender.GetBreakPercent());
+    defStat += defStat * hpGrownDefRate;
+
+    // Diminishing returns formula
+    double defReduction = defStat / (defStat + Constant);
+    // Constant differs between PVP and PVE modes
+
+    // Apply penetration
+    double penetration = attacker.GetStat(RATE_PENETRATE_DEF);
+    double penResist = defender.GetStat(RATE_PENETRATE_DEF_RESIST);
+    double effectivePen = penetration - penResist;
+    defReduction -= defReduction * effectivePen;
+
+    return Math.Max(defReduction, 0.0);
+}</code></pre>
+
+        <p>The defence constant is loaded at runtime from the game's const templet data. The actual values are:</p>
+        <ul>
+          <li><strong>PVE DefenceConst = 3,000</strong> (from CLIENT_CONST_TEMPLET.json, field "DefenceConst")</li>
+          <li><strong>PVP DefenceConst = 300</strong> (from the same file, field "PvpDefenceConst")</li>
+        </ul>
+
+        <div class="ss-code-label">CLIENT_CONST_TEMPLET.json</div>
+        <pre><code>"DefenceConst": 3000,      // PVE defense constant
+"PvpDefenceConst": 300,   // PVP defense constant (much lower)
+"RATE_DAMAGE_REDUCE_TOTAL_LIMIT": 5000  // 50% cap on total damage reduction</code></pre>
+
+        <p>Key takeaways about defense:</p>
+        <ul>
+          <li><strong>DEF has diminishing returns</strong> -- the formula is DEF / (DEF + 3000), so each additional point provides less reduction</li>
+          <li><strong>The sweet spot is around 2,500-3,000 DEF</strong> -- at DEF = Constant you hit 50% reduction, past which returns drop sharply</li>
+          <li><strong>DEF barely matters in PVP</strong> -- with a constant of only 300, even 1000 DEF gives 77% reduction, so PVP damage is mostly unmitigated</li>
+          <li><strong>Penetration directly reduces the DEF reduction</strong> -- it's a percentage subtracted from the total reduction, not from the DEF stat itself</li>
+          <li><strong>Penetration Resist</strong> on the defender counters the attacker's penetration</li>
+          <li><strong>Total damage reduction is hard-capped at 50%</strong> (RATE_DAMAGE_REDUCE_TOTAL_LIMIT = 5000 basis points)</li>
+        </ul>
+
+        <h3>Defense Reduction Examples (PVE)</h3>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">DEF Reduction Curve (PVE)</div>
+          <div class="ss-chart-subtitle">DEF / (DEF + 3000) -- Diminishing Returns</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">1,000 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width: 25%;">25%</div></div>
+              <span class="ss-chart-bar-value">75% dmg</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">2,000 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width: 40%;">40%</div></div>
+              <span class="ss-chart-bar-value">60% dmg</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">2,500 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width: 45.5%;">45.5%</div></div>
+              <span class="ss-chart-bar-value">54.5% dmg</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">3,000 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--gold" style="width: 50%;">50%</div></div>
+              <span class="ss-chart-bar-value">50% dmg</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">4,000 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--orange" style="width: 57.1%;">57.1%</div></div>
+              <span class="ss-chart-bar-value">42.9% dmg</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">5,000 DEF</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width: 62.5%;">62.5%</div></div>
+              <span class="ss-chart-bar-value">37.5% dmg</span>
+            </div>
+          </div>
+          <div class="ss-chart-legend" style="margin-top: 0.75rem; flex-direction: row; justify-content: center; gap: 1rem;">
+            <span style="font-size: 0.75rem; color: var(--ss-text-muted);">Sweet spot: 2,500 - 3,000 DEF</span>
+          </div>
+        </div>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">Marginal Value of +1,000 DEF</div>
+          <div class="ss-chart-subtitle">Extra reduction gained per 1,000 DEF at each tier</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">0 to 1k</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--green" style="width: 100%;">+25.0%</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">1k to 2k</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--green" style="width: 60%;">+15.0%</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">2k to 3k</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--gold" style="width: 40%;">+10.0%</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">3k to 4k</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--orange" style="width: 28%;">+7.1%</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">4k to 5k</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width: 21%;">+5.4%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="critical-hit">Critical Hit System</h2>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - OBF_6758</div>
+        <pre><code>private static double CalcCritDamageModifier(HitType hitType,
+    ref DamageContext ctx)
+{
+    if (hitType != HitType.CriticalHit)
+        return 0.0;
+
+    // Crit DMG = attacker's CritDamage - defender's CritDamageReduce
+    int critDMG = (attacker.GetStat(RATE_CRITICAL_DAMAGE)
+                   - defender.GetStat(RATE_CRITICAL_DAMAGE_REDUCE));
+    if (critDMG < 0) critDMG = 0;
+
+    double result = critDMG / 10000.0;  // basis points to decimal
+    return result;
+}</code></pre>
+
+        <p>Important details:</p>
+        <ul>
+          <li>Crit Damage is applied <strong>after</strong> defense reduction and damage up/down modifiers</li>
+          <li>Crit Damage Reduce (on the defender) can partially or fully negate the attacker's Crit Damage bonus</li>
+          <li>Non-critical hits can have additional <strong>NST_RATE_NONCRITICAL_DAMAGE_REDUCE</strong> applied to the defender</li>
+          <li>Evasion triggers <strong>+50% damage reduction</strong> on the attacker's output (half damage on evade)</li>
+        </ul>
+
+        <h2 id="random-variance">Random Variance</h2>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs (line 17438)</div>
+        <pre><code>// Final damage has +/-5% random variance
+double variance = RandomGenerator.Range(9500, 10500) / 10000.0;
+finalDamage *= variance;</code></pre>
+
+        <p>Every hit has a +/-5% random variance applied at the very end. This means even identical attacks will deal slightly different damage each time. Over many hits this averages out, but on any single attack the damage can vary by up to 10% (from 95% to 105% of the calculated value).</p>
+
+        <h2 id="turn-speed">Turn Speed System</h2>
+        <p>Star Savior uses an <strong>action gauge</strong> system (similar to Final Fantasy X). Every unit has a gauge that fills up over time, and whoever reaches 10000 first gets to act.</p>
+
+        <div class="ss-code-label">TurnSpeedCalculator.cs - OBF_21085 constructor</div>
+        <pre><code>// Action gauge calculation
+double speed = unit.GetStat(NST_TURN_SPEED);
+
+// Apply +/-5% random variance to speed (in certain battle modes)
+if (applyRandomVariance)
+{
+    double variance = RandomGenerator.Range(9500, 10500) / 10000.0;
+    speed *= variance;
+}
+
+// Slow debuff cuts speed to 30%
+if (isSlowed)
+{
+    speed *= 0.3;
+}
+
+// Ticks until this unit acts:
+// ticksRemaining = (10000 - currentGauge) / speed</code></pre>
+
+        <p>How it works:</p>
+        <ul>
+          <li>Each "tick", every unit's gauge fills by their <strong>speed value</strong></li>
+          <li>The unit whose gauge reaches <strong>10,000 first</strong> gets the next turn</li>
+          <li>After acting, the gauge resets (but retains leftover fill)</li>
+          <li>Speed has <strong>+/-5% random variance</strong> per tick, making close speed values unreliable</li>
+          <li>The <strong>slow debuff</strong> (IsLowTurnSpeed) reduces speed to <strong>30%</strong></li>
+        </ul>
+
+        <h3>Speed and Turns</h3>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">Turns per 1000 Ticks by Speed</div>
+          <div class="ss-chart-subtitle">More speed = more turns = more total damage over a fight</div>
+          <div class="ss-chart-line">
+            <div class="ss-chart-line-point">
+              <span class="ss-chart-line-val">10</span>
+              <div class="ss-chart-line-stem ss-chart-line-stem--gold" style="height: 25%;"></div>
+              <div class="ss-chart-line-dot ss-chart-line-dot--gold"></div>
+              <span class="ss-chart-line-label">100</span>
+            </div>
+            <div class="ss-chart-line-point">
+              <span class="ss-chart-line-val">12</span>
+              <div class="ss-chart-line-stem ss-chart-line-stem--gold" style="height: 30%;"></div>
+              <div class="ss-chart-line-dot ss-chart-line-dot--gold"></div>
+              <span class="ss-chart-line-label">120</span>
+            </div>
+            <div class="ss-chart-line-point">
+              <span class="ss-chart-line-val">14</span>
+              <div class="ss-chart-line-stem ss-chart-line-stem--gold" style="height: 35%;"></div>
+              <div class="ss-chart-line-dot ss-chart-line-dot--gold"></div>
+              <span class="ss-chart-line-label">140</span>
+            </div>
+            <div class="ss-chart-line-point">
+              <span class="ss-chart-line-val">17</span>
+              <div class="ss-chart-line-stem ss-chart-line-stem--gold" style="height: 42.5%;"></div>
+              <div class="ss-chart-line-dot ss-chart-line-dot--gold"></div>
+              <span class="ss-chart-line-label">170</span>
+            </div>
+            <div class="ss-chart-line-point">
+              <span class="ss-chart-line-val">20</span>
+              <div class="ss-chart-line-stem ss-chart-line-stem--gold" style="height: 50%;"></div>
+              <div class="ss-chart-line-dot ss-chart-line-dot--gold"></div>
+              <span class="ss-chart-line-label">200</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Speed and Enemy Turn Denial</h3>
+        <p>In a battle that ends after 7 of your turns, your speed determines how many times the enemy acts:</p>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Your SPD</th><th>Enemy Turns (120 SPD enemy)</th><th>Enemy Turns (140 SPD enemy)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>120</td><td>7 (equal)</td><td>8</td></tr>
+            <tr><td>140</td><td>6</td><td>7 (equal)</td></tr>
+            <tr><td>170</td><td>5</td><td>6</td></tr>
+            <tr><td>200</td><td>4</td><td>5</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="stat-optimization">Stat Optimization Guide</h2>
+
+        <h3>Expected Damage Formula</h3>
+        <p>The expected damage per hit (accounting for crit probability) is:</p>
+        <pre><code>Expected Damage = ATK * [1 + CritRate * CritDamage]
+</code></pre>
+
+        <p>This means Crit Rate and Crit Damage <strong>multiply each other</strong>. If one is zero, the other does nothing. They must be built together.</p>
+
+        <h3>ATK vs Crit Damage -- The Breakeven</h3>
+        <p>Given typical endgame values (ATK ~6000, base Crit Damage 50-68% bonus):</p>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Your Crit Rate</th><th>+200 ATK Damage</th><th>+10% CD Damage</th><th>+12% CD Damage</th><th>Winner</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>5%</td><td>+219</td><td>+86</td><td>+104</td><td>ATK (2.5x)</td></tr>
+            <tr><td>20%</td><td>+230</td><td>+360</td><td>+432</td><td>CD</td></tr>
+            <tr><td>30%</td><td>+234</td><td>+540</td><td>+648</td><td>CD (2.8x)</td></tr>
+            <tr><td>45%</td><td>+240</td><td>+810</td><td>+972</td><td>CD (4x)</td></tr>
+            <tr><td>50%</td><td>+242</td><td>+900</td><td>+1,080</td><td>CD (4.5x)</td></tr>
+          </tbody>
+        </table>
+
+        <p>The breakeven point: <strong>+200 ATK = +10% CD at ~42% Crit Rate</strong>, and <strong>+200 ATK = +12% CD at ~33% Crit Rate</strong>.</p>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">+200 ATK vs +10% CD Damage Bonus</div>
+          <div class="ss-chart-subtitle">ATK 6000, base CD 50%. Where each stat gives more damage.</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">5% CR</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 72%;" title="+200 ATK">+219</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 28%;" title="+10% CD">+86</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">ATK wins</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">20% CR</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 39%;" title="+200 ATK">+230</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 61%;" title="+10% CD">+360</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">CD wins</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">30% CR</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 30%;" title="+200 ATK">+234</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 70%;" title="+10% CD">+540</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">CD 2.3x</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">45% CR</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 23%;" title="+200 ATK">+240</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 77%;" title="+10% CD">+810</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">CD 3.4x</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">50% CR</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 21%;" title="+200 ATK">+242</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 79%;" title="+10% CD">+900</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">CD 3.7x</span>
+            </div>
+          </div>
+          <div class="ss-chart-legend" style="margin-top: 0.75rem; flex-direction: row; justify-content: center; gap: 1.5rem;">
+            <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--blue"></span> +200 ATK</div>
+            <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--red"></span> +10% CD</div>
+          </div>
+        </div>
+
+        <h3>20% ATK Set vs 40% CD Set</h3>
+        <pre><code>// 20% ATK set: always +20% damage
+// 40% CD set:  only works on crits
+
+// Effective bonus per hit:
+// ATK set:  +20% guaranteed
+// CD set:   CR * 40% average (and RNG-dependent)
+
+// CD set only wins when Crit Rate > 76%
+// Example at 45% CR:
+//   ATK set: 1.20 * multiplier
+//   CD set:  1 + 0.45 * 0.40 = 1.18 * multiplier  (ATK wins)
+</code></pre>
+
+        <p><strong>Result: 20% ATK set always beats 40% CD set</strong> unless you have unrealistically high Crit Rate (76%+). The ATK set gives more average damage AND perfect consistency.</p>
+
+        <h3>30 SPD vs 12% ATK</h3>
+        <pre><code>// In a battle lasting 1000 ticks:
+// 120 SPD: 12 turns * 1.00 = 12.0x damage
+// 150 SPD: 15 turns * 1.00 = 15.0x damage  (+25%)
+// vs
+// 120 SPD: 12 turns * 1.12 = 13.44x damage  (+12%)
+</code></pre>
+
+        <p><strong>30 SPD wins in any battle lasting 3+ turns.</strong> In a 7-10 turn fight, 30 SPD also denies 1-2 enemy turns, which is often more valuable than the raw damage difference.</p>
+
+        <h2 id="build-recommendations">Build Recommendations</h2>
+
+        <h3>General Priority</h3>
+        <ol>
+          <li><strong>Speed first</strong> -- get to 140-170 SPD to outspeed enemies and deny turns</li>
+          <li><strong>ATK as foundation</strong> -- maximize ATK through affection, tactics, resonance, and gear main stats (these are "free" and don't compete with substats)</li>
+          <li><strong>Crit Rate to 40-50%</strong> -- this is the minimum threshold where CD investment becomes worthwhile</li>
+          <li><strong>Crit Damage as high as possible</strong> -- at 40%+ CR, CD is the highest-value stat per point</li>
+          <li><strong>Effect Hit</strong> -- essential for debuff-reliant characters</li>
+        </ol>
+
+        <h3>Set Bonus Recommendations</h3>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">4-Piece Set Bonus Damage Comparison</div>
+          <div class="ss-chart-subtitle">ATK 6000, 45% CR, 50% base CD -- which set gives the most?</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Attack Set</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--gold" style="width: 85%;">8,640</div></div>
+              <span class="ss-chart-bar-value">+20% ATK</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Destruction</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width: 100%;">9,420</div></div>
+              <span class="ss-chart-bar-value">+40% CD</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Insight</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--purple" style="width: 89%;">8,856</div></div>
+              <span class="ss-chart-bar-value">+30% CR</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Annihilation</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--orange" style="width: 93%;">9,060</div></div>
+              <span class="ss-chart-bar-value">+20% CD+Hit</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Speed Set</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--teal" style="width: 82%;">7,200 + turns</div></div>
+              <span class="ss-chart-bar-value">+15 SPD</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">No Set</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--gray" style="width: 72%;">7,200</div></div>
+              <span class="ss-chart-bar-value">baseline</span>
+            </div>
+          </div>
+        </div>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Playstyle</th><th>4-Piece Set</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>General / Safe</td><td>Attack Set (+20% ATK)</td><td>Always works, no RNG, beats CD set at realistic crit rates</td></tr>
+            <tr><td>Crit Build (40%+ CR)</td><td>Destruction Set (+40% CD)</td><td>Best ceiling damage if you can maintain high CR</td></tr>
+            <tr><td>Speed Control</td><td>Speed Set (+15 SPD)</td><td>Turn denial is extremely valuable in 7-10 turn fights</td></tr>
+            <tr><td>Debuffer</td><td>Hit Set (+20% Effect Hit)</td><td>Essential for landing debuffs consistently</td></tr>
+          </tbody>
+        </table>
+
+        <h3>The Golden Rule</h3>
+        <blockquote><p><strong>ATK is your foundation, CD is your multiplier.</strong> You need a strong foundation before the multiplier matters. Get ATK high from free sources (affection, tactics, resonance), then decide: if your Crit Rate is below 30%, prioritize ATK substats. If it's 40%+ from buffs and gear, stack CD as your primary substat investment.</p></blockquote>
+
+        <h2 id="battle-power">Battle Power Formula</h2>
+        <p>The game uses a Battle Power score for unit ranking. This is separate from actual combat damage:</p>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - OBF_26687 (CalcBattleScore)</div>
+        <pre><code>double atkFactor = ATK / 10.0 * ATK_WEIGHT * (
+    (1 - critRate) + critRate * (1 + critDamage) );
+double hpFactor  = HP / 55.0 * HP_WEIGHT;
+double defFactor = DEF / 5.0 * DEF_WEIGHT;
+double spdFactor = (100 + (SPD - 100) / SPD_NORMALIZE) / 100.0;
+double potenFactor = 1.0 + totalPotentialPoints * POTEN_SCALE;
+double hitFactor  = max(1.0,
+    1 + (effectHit - 10000 + effectEvade) / 10.0);
+
+double rawScore = (atkFactor + hpFactor + defFactor)
+    * spdFactor * hitFactor;
+
+double bonusFromLB = limitBreakGrade * 0.02;
+double bonusFromSkills = totalSkillLevels * 0.01;
+double multiplier = 1.0 + bonusFromLB + bonusFromSkills;
+
+int battlePower = (int)(rawScore * multiplier);</code></pre>
+
+        <p>Key points about Battle Power:</p>
+        <ul>
+          <li>ATK has the highest weight (divided by 10 vs HP/55 and DEF/5)</li>
+          <li>Crit interactions are baked into the ATK factor</li>
+          <li>Limit Break grades add 2% per grade</li>
+          <li>Total skill levels add 1% per level</li>
+          <li>Potential points add a small bonus per point</li>
+        </ul>
+
+        <h2 id="sources">Source Code References</h2>
+        <p>All formulas in this guide are extracted from the game's decompiled C# source code. The key files are:</p>
+        <ul>
+          <li><strong>NKM.decompiled.cs</strong> -- Game model/logic (UnitStatManager, damage calculation, stat builder)</li>
+          <li><strong>NKC.decompiled.cs</strong> -- Client UI code (stat display, tooltips)</li>
+          <li><strong>Star.Templets.decompiled.cs</strong> -- Damage templet data structures (AtkFactor, HpFactor, DefFactor fields)</li>
+        </ul>
+        <p>The decompiled and deobfuscated source code is publicly available at <strong>github.com/boring877/star-savior-decompiled</strong>.</p>
+      `,
+    },
+    {
+      slug: 'pvp-stat-scaling-and-build-guide',
+      title: 'PvP Stat Scaling, Crit vs ATK & Build Priorities',
+      description:
+        'How PvP stat scaling works, why Crit Damage is not reduced, the Tactics/Star Link zero-out, and whether ATK or Crit builds are better for PvP -- all verified from decompiled game code.',
+      author: 'Boring877',
+      publishDate: '2026-03-30',
+      category: 'Guide',
+      tags: ['advanced', 'combat', 'pvp', 'stats', 'optimization', 'theorycraft', 'damage'],
+      content: `
+        <p>PvP in Star Savior works very differently from PvE when it comes to stats. The game doesn't just change the enemy stats -- it <strong>scales down your unit stats by a factor of 10</strong>, while leaving rate stats like Crit Rate and Crit Damage completely untouched. This creates a fundamentally different stat economy that changes which builds are optimal.</p>
+
+        <h2 id="pvp-stat-scaling">How PvP Stat Scaling Works</h2>
+        <p>In PvP, your stats are processed through a <strong>StatScaleFactorBundle</strong> -- a set of per-provider multipliers that reduce certain stat sources:</p>
+
+        <div class="ss-code-label">NKM.decompiled.cs - OBF_30634 (StatScaleFactorBundle), line 18697</div>
+        <pre><code>// Default (PvE) scales -- everything at 100%
+public static readonly StatScaleFactorBundle DEFAULT =
+    new StatScaleFactorBundle(GameMode.Default,
+        StatScale:      10000,  // 100%
+        TacticsScale:  10000,  // 100%
+        StarLinkScale: 10000,  // 100%
+        StellarScale:  10000,  // 100%
+        EquipScale:    10000   // 100%
+    );
+
+// PvP hardcoded scales
+public static readonly StatScaleFactorBundle PVP =
+    new StatScaleFactorBundle(GameMode.Pvp,
+        StatScale:      1000,  // 10%  -- base stats heavily reduced
+        TacticsScale:     0,   // 0%   -- tactics completely removed!
+        StarLinkScale:    0,   // 0%   -- star link completely removed!
+        StellarScale:   1000,  // 10%
+        EquipScale:     1000   // 10%
+    );</code></pre>
+
+        <p>These values are loaded from the game's const templet at runtime:</p>
+
+        <div class="ss-code-label">CLIENT_CONST_TEMPLET.json - PvpBattle section</div>
+        <pre><code>"PvpBattle": {
+    "PvpDefenceConst": 300,     // PvP DEF constant (vs 3000 in PvE)
+    "StatScale": 1000,          // Base stats scaled to 10%
+    "TacticsScale": 500,         // Tactics scaled to 5%
+    "StarLinkScale": 500         // Star link scaled to 5%
+}</code></pre>
+
+        <h3>What Gets Scaled</h3>
+        <p>The critical detail is that the scale factors <strong>only apply to flat stats (ATK, HP, DEF)</strong>. Rate stats pass through untouched. Here is the proof from the scale method implementation:</p>
+
+        <div class="ss-code-label">NKM.decompiled.cs - StatScaleFactorBundle, lines 18731-18758</div>
+        <pre><code>// StatScale: returns scale for HP, ATK, DEF only
+public int GetStatScale(NST_StatType stat)
+{
+    // Only NST_HP, NST_ATK, NST_DEF get scaled
+    // Everything else returns 10000 (no change)
+    if (stat == NST_HP || stat is NST_ATK or NST_DEF)
+    {
+        return this.StatScale;
+    }
+    return 10000;  // <-- Rate stats unaffected!
+}
+
+// TacticsScale: same pattern, only HP/ATK/DEF
+public int GetTacticsScale(NST_StatType stat)
+{
+    if (stat != NST_HP && stat is not (NST_ATK or NST_DEF))
+    {
+        if (GameMode is Pvp or PvpRank)
+            return 0;  // Non-HP/ATK/DEF stats get ZERO in PvP
+        return 10000;
+    }
+    return this.TacticsScale;
+}
+
+// StarLinkScale: identical pattern
+public int GetStarLinkScale(NST_StatType stat)
+{
+    if (stat != NST_HP && stat is not (NST_ATK or NST_DEF))
+    {
+        if (GameMode is Pvp or PvpRank)
+            return 0;
+        return 10000;
+    }
+    return this.StarLinkScale;
+}</code></pre>
+
+        <h3>Full Stat Impact Table</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Stat</th><th>PvE</th><th>PvP</th><th>Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ATK</td><td>6,000</td><td>~600</td><td>Scaled to 10%</td></tr>
+            <tr><td>HP</td><td>34,000</td><td>~3,400</td><td>Scaled to 10%</td></tr>
+            <tr><td>DEF</td><td>2,700</td><td>~270</td><td>Scaled to 10%</td></tr>
+            <tr><td>Crit Rate</td><td>45%</td><td>45%</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Crit Damage</td><td>150%</td><td>150%</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Effect Hit</td><td>100%</td><td>100%</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Effect Evasion</td><td>0%</td><td>0%</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Turn Speed</td><td>140</td><td>140</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Tactics Stats</td><td>Full</td><td>0</td><td><strong>Completely removed</strong></td></tr>
+            <tr><td>Star Link Stats</td><td>Full</td><td>0</td><td><strong>Completely removed</strong></td></tr>
+          </tbody>
+        </table>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">PvE to PvP Stat Scaling</div>
+          <div class="ss-chart-subtitle">Flat stats scaled to 10%, rate stats untouched, tactics/star link zeroed</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">ATK</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 90%;">6,000</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 9%;">~600</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">10%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">HP</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 90%;">34,000</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 9%;">~3,400</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">10%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">DEF</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 90%;">2,700</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 9%;">~270</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">10%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Crit Rate</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--green" style="width: 100%;">45%</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">100%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Crit Damage</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--green" style="width: 100%;">150%</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">100%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Turn Speed</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--green" style="width: 100%;">140</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">100%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Tactics</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 50%;">Full</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 0.5%;"></div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">0%</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Star Link</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 50%;">Full</div>
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 0.5%;"></div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">0%</span>
+            </div>
+          </div>
+          <div class="ss-chart-legend" style="margin-top: 0.75rem; flex-direction: row; justify-content: center; gap: 1.5rem;">
+            <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--blue"></span> PvE Value</div>
+            <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--red"></span> PvP Value</div>
+            <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--green"></span> Unchanged</div>
+          </div>
+        </div>
+
+        <h2 id="pvp-defense">PvP Defense Constant</h2>
+        <p>The PvP DEF constant is <strong>300</strong> (vs 3,000 in PvE). This means:</p>
+
+        <div class="ss-code-label">NKMUnitStatManager.cs - CalcDefReduction, line 17872</div>
+        <pre><code>// PvE: DEF / (DEF + 3000)
+// PvP: DEF / (DEF + 300)
+// The formula is identical -- only the constant changes
+
+result = defStat / (defStat + isPvpBattle
+    ? PvpDefenceConst   // 300
+    : DefenceConst);     // 3000</code></pre>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>DEF (PvP)</th><th>Reduction</th><th>Enemy Keeps</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>150</td><td>33.3%</td><td>66.7%</td></tr>
+            <tr><td>270</td><td>47.4%</td><td>52.6%</td></tr>
+            <tr><td>300</td><td>50.0%</td><td>50.0%</td></tr>
+            <tr><td>500</td><td>62.5%</td><td>37.5%</td></tr>
+          </tbody>
+        </table>
+
+        <p>Because DEF is also scaled to 10%, typical PvP units have ~200-300 DEF, which puts them right at the 40-50% reduction sweet spot. The proportional balance between ATK and DEF stays roughly the same as PvE.</p>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">PvE vs PvP Defense Reduction</div>
+          <div class="ss-chart-subtitle">Same formula, different constant. Proportionally similar results.</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">PvE 2700 DEF</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--blue" style="width: 47.4%;">47.4%</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">Constant: 3000</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">PvP 270 DEF</span>
+              <div class="ss-chart-bar-track">
+                <div class="ss-chart-bar-group" style="width: 100%;">
+                  <div class="ss-chart-bar ss-chart-bar--red" style="width: 47.4%;">47.4%</div>
+                </div>
+              </div>
+              <span class="ss-chart-bar-value">Constant: 300</span>
+            </div>
+          </div>
+          <div class="ss-chart-compare">
+            <div class="ss-chart-compare-item">
+              <div class="ss-chart-compare-label">PvE DEF Constant</div>
+              <div class="ss-chart-compare-value ss-chart-compare-value--blue">3,000</div>
+            </div>
+            <div class="ss-chart-compare-item">
+              <div class="ss-chart-compare-label">PvP DEF Constant</div>
+              <div class="ss-chart-compare-value ss-chart-compare-value--red">300</div>
+            </div>
+            <div class="ss-chart-compare-item">
+              <div class="ss-chart-compare-label">Ratio</div>
+              <div class="ss-chart-compare-value ss-chart-compare-value--gold">10x</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="pvp-crit-vs-atk">ATK Build vs Crit Build in PvP</h2>
+        <p>Here is the core comparison. Does investing in Crit outperform raw ATK when both are scaled to 10%?</p>
+
+        <h3>5000 ATK + Full Crit vs 7000 ATK + No Crit</h3>
+
+        <div class="ss-code-label">Expected damage formula</div>
+        <pre><code>Expected Damage = ATK * (1 + CritRate * CritDamage)
+
+// Build A (Crit focus): 5000 ATK, 45% CR, 150% CD
+A_PvE = 5000 * (1 + 0.45 * 1.50) = 5000 * 1.675 = 8,375
+A_PvP =  500 * (1 + 0.45 * 1.50) =  500 * 1.675 =   838
+
+// Build B (ATK focus): 7000 ATK, 10% CR, 50% CD
+B_PvE = 7000 * (1 + 0.10 * 0.50) = 7000 * 1.050 = 7,350
+B_PvP =  700 * (1 + 0.10 * 0.50) =  700 * 1.050 =   735
+
+// Crit build wins by 14% in BOTH PvE and PvP
+// The ratio is identical -- scaling doesn't change the comparison</code></pre>
+
+        <p><strong>The PvP scaling doesn't change the ATK vs Crit comparison at all.</strong> Both builds get scaled by the same 10%, so the ratio between them stays identical. Crit still wins by the same 14% on average.</p>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">Crit vs ATK Build Average Damage</div>
+          <div class="ss-chart-subtitle">Same 14% gap in both PvE and PvP</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Crit (PvE)</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width: 100%;">8,375</div></div>
+              <span class="ss-chart-bar-value">45% CR</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">ATK (PvE)</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width: 87%;">7,350</div></div>
+              <span class="ss-chart-bar-value">10% CR</span>
+            </div>
+            <div class="ss-chart-bar-row" style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.75rem;">
+              <span class="ss-chart-bar-label"></span>
+              <span class="ss-chart-bar-value" style="flex: 1; text-align: center;">-- PvP (x0.1 scaling) --</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">Crit (PvP)</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width: 100%;">838</div></div>
+              <span class="ss-chart-bar-value">45% CR</span>
+            </div>
+            <div class="ss-chart-bar-row">
+              <span class="ss-chart-bar-label">ATK (PvP)</span>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width: 87%;">735</div></div>
+              <span class="ss-chart-bar-value">10% CR</span>
+            </div>
+          </div>
+          <div class="ss-chart-compare">
+            <div class="ss-chart-compare-item">
+              <div class="ss-chart-compare-label">Crit Build Advantage</div>
+              <div class="ss-chart-compare-value ss-chart-compare-value--green">+14%</div>
+            </div>
+            <div class="ss-chart-compare-item">
+              <div class="ss-chart-compare-label">Same in PvE?</div>
+              <div class="ss-chart-compare-value ss-chart-compare-value--gold">Yes</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>With Set Bonuses</h3>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Build</th><th>Setup</th><th>Avg Damage (PvE)</th><th>Advantage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Crit (Destruction)</td><td>5000 ATK, 45% CR, 190% CD</td><td>9,275</td><td>+10.4%</td></tr>
+            <tr><td>ATK (Attack)</td><td>8400 ATK, 10% CR, 50% CD</td><td>8,820</td><td>Baseline</td></tr>
+            <tr><td>Crit (Insight)</td><td>5000 ATK, 75% CR, 150% CD</td><td>10,625</td><td>+26.5%</td></tr>
+            <tr><td>Speed (Speed)</td><td>5000 ATK, 45% CR, 150% CD, 170 SPD</td><td>9,275 + turns</td><td>Tactical</td></tr>
+          </tbody>
+        </table>
+
+        <h3>The Consistency Problem</h3>
+        <p>The average damage favors crit. But individual hits don't care about averages:</p>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">Per-Hit Damage Distribution</div>
+          <div class="ss-chart-subtitle">Build A has higher average, but 55% of the time deals less</div>
+          <div class="ss-chart-donut-wrap">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 600; color: var(--ss-text-primary); margin-bottom: 0.5rem; text-align: center;">Build A (Crit)</div>
+              <div class="ss-chart-donut" style="background: conic-gradient(
+                #bd3a3a 0deg 162deg,
+                #3a7cbd 162deg 360deg
+              );">
+                <div class="ss-chart-donut-center">
+                  <div class="ss-chart-donut-center-value">8,375</div>
+                  <div class="ss-chart-donut-center-label">avg</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 600; color: var(--ss-text-primary); margin-bottom: 0.5rem; text-align: center;">Build B (ATK)</div>
+              <div class="ss-chart-donut" style="background: conic-gradient(
+                #3a7cbd 0deg 324deg,
+                #bd3a3a 324deg 360deg
+              );">
+                <div class="ss-chart-donut-center">
+                  <div class="ss-chart-donut-center-value">7,350</div>
+                  <div class="ss-chart-donut-center-label">avg</div>
+                </div>
+              </div>
+            </div>
+            <div class="ss-chart-legend">
+              <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--red"></span> Crit hit (Build A)</div>
+              <div class="ss-chart-legend-item"><span class="ss-chart-legend-swatch ss-chart-legend-swatch--blue"></span> Non-crit hit</div>
+              <div class="ss-chart-legend-item" style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--ss-text-muted);">Build A: 55% at 5k, 45% at 14.5k</div>
+              <div class="ss-chart-legend-item" style="font-size: 0.75rem; color: var(--ss-text-muted);">Build B: 90% at 7k, 10% at 10.5k</div>
+            </div>
+          </div>
+        </div>
+
+        <pre><code>// Build A (Crit): 45% CR, 190% CD
+//   55% of the time: 5,000 damage (NO crit)
+//   45% of the time: 14,500 damage (CRIT)
+
+// Build B (ATK): 10% CR, 50% CD
+//   90% of the time: 7,000 damage (no crit)
+//   10% of the time: 10,500 damage (crit)</code></pre>
+
+        <p>Build A has a <strong>55% chance of dealing LESS damage than Build B on any given hit</strong>. Over many hits, the average favors Build A. But in PvP, where battles last 5-7 turns and every skill matters, the consistency of Build B can be more valuable.</p>
+
+        <h3>Crit Probability Over a Short Fight</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Hits</th><th>Chance of 0 Crits (45% CR)</th><th>Chance of At Least 1 Crit</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>55%</td><td>45%</td></tr>
+            <tr><td>3</td><td>17%</td><td>83%</td></tr>
+            <tr><td>5</td><td>5%</td><td>95%</td></tr>
+            <tr><td>7</td><td>1.5%</td><td>98.5%</td></tr>
+          </tbody>
+        </table>
+
+        <p>Over a full PvP match (7+ actions), you're very likely to crit at least a few times. The crit build's higher ceiling compounds over multiple turns. But on any single clutch skill (like a Nova Burst), there's a 55% chance you don't crit.</p>
+
+        <h2 id="pvp-build-recommendations">PvP Build Recommendations</h2>
+
+        <h3>If building specifically for PvP</h3>
+        <ol>
+          <li><strong>ATK set (+20% ATK) is the safe choice</strong> -- consistent damage, no RNG, works on every hit</li>
+          <li><strong>Speed is extremely valuable</strong> -- Turn Speed is NOT scaled in PvP. 170 SPD gives you the same turn denial as in PvE</li>
+          <li><strong>Effect Hit is at full value</strong> -- debuffs land just as easily as in PvE</li>
+          <li><strong>Tactics and Star Link stats are worthless in PvP</strong> -- don't invest in these for PvP teams</li>
+        </ol>
+
+        <h3>If building for general content (PvE + PvP)</h3>
+        <ol>
+          <li><strong>Crit build is fine</strong> -- it wins on average in both modes by ~10-14%</li>
+          <li><strong>Accept the variance</strong> -- you will have fights where you lose the crit rolls</li>
+          <li><strong>Speed set (+15 SPD) might be the best PvP compromise</strong> -- gives tactical advantage without relying on RNG</li>
+        </ol>
+
+        <h3>What NOT to invest in for PvP</h3>
+        <ul>
+          <li><strong>Tactics stats</strong> -- scaled to 0%, completely disabled</li>
+          <li><strong>Star Link stats</strong> -- scaled to 0%, completely disabled</li>
+          <li><strong>Excessive DEF</strong> -- the PvP DEF constant is low enough that you get diminishing returns quickly at ~300 DEF</li>
+          <li><strong>Flat HP stacking</strong> -- scaled to 10%, so HP-focused substats give minimal value</li>
+        </ul>
+
+        <h2 id="pvp-summary">Summary</h2>
+        <blockquote><p>PvP doesn't change the ATK vs Crit math -- both get scaled equally. The real PvP-specific insights are: (1) Speed, Crit Rate, and Crit Damage are your most efficient stats because they aren't reduced, (2) Tactics and Star Link investments are wasted in PvP, and (3) the short fight length makes consistency more valuable than ceiling damage, which slightly favors ATK builds for clutch PvP moments.</p></blockquote>
+
+        <h2 id="sources">Source Code References</h2>
+        <ul>
+          <li><strong>NKM.decompiled.cs</strong> -- StatScaleFactorBundle (lines 18688-18760), damage formula, DEF reduction</li>
+          <li><strong>NKM.Templets.decompiled.cs</strong> -- Stat type classification (line 29156), OBF_2137 rate stat check</li>
+          <li><strong>Star.Templets.decompiled.cs</strong> -- PvP stat scale templet loading (line 22426)</li>
+          <li><strong>CLIENT_CONST_TEMPLET.json</strong> -- PvpBattle config values</li>
+        </ul>
+        <p>Full decompiled and deobfuscated source: <strong>github.com/boring877/star-savior-decompiled</strong></p>
+      `,
+    },
   ],
 };
 
