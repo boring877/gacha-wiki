@@ -5,6 +5,25 @@
  */
 
 export const bannerTimelineData = [
+  // #14 - Swift Wind Unicorn / Giselle (Mar 31 - Apr 7) - CURRENT
+  {
+    id: 'swift-wind-unicorn-giselle-2026',
+    title: '"Swift Wind Unicorn" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Giselle',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-03-31T03:00:00Z',
+    endDate: '2026-04-07T03:00:00Z',
+    description: 'Swift Wind Unicorn Event Summon! Rate Up for Giselle, the Beast-Taming Paladin!',
+    note: 'Standard unit Giselle rate up banner. A Holy Physical Attacker riding a unicorn born from her own spiritual energy.',
+    status: 'current',
+    image: 'banner-swift-wind-unicorn',
+  },
   // #13 - Villain Halloween (Mar 24 - TBD) - CURRENT
   {
     id: 'villain-halloween-2026',

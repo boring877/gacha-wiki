@@ -1,0 +1,140 @@
+---
+// Star Savior Journey Event Choices Database Page
+// Card-based layout showing all 46 events with choices, rewards, and best choice highlighting
+import CharacterDatabaseLayout from '../../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { JOURNEY_EVENTS } from '../../../../../data/star-savior/journey-events.js';
+
+import '../../../../../styles/games/star-savior/ss-journey-events.css';
+
+const CATEGORY_CLASS_MAP: Record<string, string> = {
+  'Choice': 'choice',
+  'Random Aida': 'random',
+  'Random Charm': 'random',
+  'Random Cheer': 'random',
+  'Random Encounter': 'random',
+  'Random Find': 'random',
+  'Random Lisseth': 'random',
+  'Random Supply': 'random',
+  'Random Training': 'random',
+  'Random Weather': 'random',
+  'Standby': 'standby',
+  'Request': 'request',
+  'Training Failure': 'failure',
+};
+
+function getCategoryClass(category: string): string {
+  return CATEGORY_CLASS_MAP[category] || '';
+}
+
+const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
+  const catOrder: Record<string, number> = { Choice: 0 };
+  const randomCats = ['Random Aida', 'Random Charm', 'Random Cheer', 'Random Encounter', 'Random Find', 'Random Lisseth', 'Random Supply', 'Random Training', 'Random Weather'];
+  randomCats.forEach((c, i) => { catOrder[c] = i + 1; });
+  catOrder['Standby'] = 20;
+  catOrder['Request'] = 21;
+  catOrder['Training Failure'] = 22;
+
+  if ((catOrder[a.category] ?? 99) !== (catOrder[b.category] ?? 99)) {
+    return (catOrder[a.category] ?? 99) - (catOrder[b.category] ?? 99);
+  }
+  return a.name.localeCompare(b.name);
+});
+---
+
+<CharacterDatabaseLayout
+  title="Journey Events - Star Savior"
+  description="Complete journey event choices database for Star Savior. View all 46 events with optimal choices, rewards, and risk analysis."
+  gameTitle="Journey Event Choices"
+>
+  <div class="je-container">
+    <div class="je-note">
+      <strong>Risk events</strong> have both success and failure rewards. The success rate is calculated from your party's relevant stat minus the event's difficulty offset, then looked up in a tiered rate table.
+      Higher stats mean higher success rates. On Easy difficulty, a stat advantage of +20 gives 95% success, while a disadvantage of -40 drops to 10-14%. Training your party stats high enough can make failure impossible.
+      Choices with a <span style="color:var(--ss-warning)">requirement</span> (coins, stamina, PP, item, or stat threshold) must be met before you can select them. Requirements with costs are consumed. Stat requirements are not.
+      Rewards in <span style="color:var(--ss-success)">green</span> apply on success. Rewards in <span style="color:var(--ss-error)">red</span> apply on failure.
+      For the full journey system breakdown (training, rest, shop, grading), see the <a href="/guides/star-savior/blog/journey-system-complete-guide/">Journey System Complete Guide</a>.
+    </div>
+
+    <div class="je-search-bar">
+      <input type="text" id="je-search" class="je-search-input" placeholder="Search events..." />
+      <span class="je-search-count" id="je-search-count">{sorted.length} events</span>
+    </div>
+    <div class="je-list">
+      {
+        sorted.map((event, index) => {
+          const catClass = getCategoryClass(event.category);
+          return (
+            <div class="je-card" data-search={`${event.name} ${event.description} ${event.category} ${event.choices.map(c => c.text).join(' ')}`.toLowerCase()}>
+              <div class="je-header">
+                <span class="je-num">{index + 1}</span>
+                <span class="je-category" data-cat={catClass}>{event.category}</span>
+                {event.hasRisk && <span class="je-risk-badge">Has Risk</span>}
+              </div>
+              <h3 class="je-name">{event.name}</h3>
+              <p class="je-desc">"{event.description}"</p>
+              <div class="je-choices">
+                {event.choices.map((choice, optIndex) => {
+                  const successRewards = choice.rewards.filter(r => r.outcome === 'success');
+                  const failureRewards = choice.rewards.filter(r => r.outcome === 'failure');
+                  const req = (choice as any).requirement;
+                  let reqText = '';
+                  if (req) {
+                    if (req.type === 'coin') reqText = `${req.cost} Coins`;
+                    else if (req.type === 'stamina') reqText = `${req.cost} Stamina`;
+                    else if (req.type === 'pp') reqText = `${req.cost} PP`;
+                    else if (req.type === 'stat') reqText = `${req.stat} >= ${req.threshold}`;
+                    else if (req.type === 'item') reqText = req.label;
+                  }
+                  return (
+                    <div class={`je-choice ${choice.best ? 'best' : ''}`}>
+                      <span class="je-choice-num">{optIndex + 1}</span>
+                      <div class="je-choice-content">
+                        <span class="je-choice-text">{choice.text}</span>
+                        {reqText && <span class="je-requirement">{reqText}</span>}
+                        <div class="je-rewards">
+                          <div class="je-reward-group">
+                            <span class="je-outcome-label success">Success</span>
+                            <div class="je-reward-list">
+                              {successRewards.map(r => (
+                                <span class="je-reward success">{r.label}</span>
+                              ))}
+                            </div>
+                          </div>
+                          {failureRewards.length > 0 && (
+                            <div class="je-reward-group">
+                              <span class="je-outcome-label failure">Failure</span>
+                              <div class="je-reward-list">
+                                {failureRewards.map(r => (
+                                  <span class="je-reward failure">{r.label}</span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      {choice.best && <span class="je-best-label">Best</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.getElementById('je-search').addEventListener('input', function() {
+  var q = this.value.toLowerCase().trim();
+  var cards = document.querySelectorAll('.je-card');
+  var count = 0;
+  cards.forEach(function(card) {
+    var show = !q || card.dataset.search.includes(q);
+    card.style.display = show ? '' : 'none';
+    if (show) count++;
+  });
+  document.getElementById('je-search-count').textContent = count + ' event' + (count !== 1 ? 's' : '');
+});
+</script>

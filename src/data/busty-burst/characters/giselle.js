@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Swift Wind Unicorn Event Summon"
   },
   "characterId": 2088
 };
@@ -105,11 +105,18 @@ export const skills = {
       "baseDamage": "+80",
       "levelGrowth": "+8",
       "lvl1": "100% + 80",
-      "lvl90": "100% + -98",
+      "lvl90": "100% + 792",
       "effects": [
         "Physical Defense - Lv4"
       ],
       "buffEffects": [
+        {
+          "name": "Physical Defense -% Lv4",
+          "value": -21,
+          "type": "percent",
+          "duration": 8,
+          "levelGrowth": 0
+        },
         {
           "name": "Physical Defense - Lv4",
           "value": -40,
@@ -142,7 +149,7 @@ export const skills = {
         {
           "name": "Physical Critical Damage+ Lv4",
           "value": 50,
-          "type": "percent",
+          "type": "flat",
           "duration": 10,
           "levelGrowth": 7.0
         },

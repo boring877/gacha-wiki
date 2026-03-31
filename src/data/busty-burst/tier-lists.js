@@ -5,7 +5,7 @@ export const BUSTY_BURST_TIER_LISTS = {
     name: 'Beginner Tier List',
     description:
       'This tier list gives a general idea of what to pick early on. It is not the final tier list.',
-    lastUpdated: '2025-12-30',
+    lastUpdated: '2026-03-31',
     tiers: [
       {
         tier: 'SSS',
@@ -23,7 +23,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['messeria', 'teresia', 'dark_knight', 'shaty', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis'],
+        characters: ['messeria', 'teresia', 'dark_knight', 'shaty', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle'],
       },
       {
         tier: 'S',

@@ -712,4 +712,32 @@ export const characterBuilds = {
       };
     })(),
   },
+
+  giselle: {
+    slug: 'giselle',
+    character: {
+      name: 'Giselle',
+      fileName: 'Giselle',
+      characterId: 2088,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Spear_of_extermination.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

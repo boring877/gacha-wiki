@@ -2155,6 +2155,360 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
         <p>Full decompiled and deobfuscated source: <strong>github.com/boring877/star-savior-decompiled</strong></p>
       `,
     },
+    {
+      slug: 'journey-system-complete-guide',
+      title: 'Journey System Complete Guide: Training, Rest, Shop & Optimal Path',
+      description:
+        'Full breakdown of the 46-turn Stellar Memory journey system: training stat gains, condition/stamina mechanics, rest options, shop items, battle rewards, and optimal path to SSS grade -- all verified from decompiled game code and templet data.',
+      author: 'Boring877',
+      publishDate: '2026-03-31',
+      category: 'Guide',
+      tags: ['advanced', 'journey', 'stellar-memory', 'training', 'optimization', 'theorycraft'],
+      content: `
+        <p>The <strong>Journey</strong> (Stellar Memory) is a 46-turn schedule system where you train units, fight battles, buy items, and rest between adventures. Your choices determine the final <strong>journey grade</strong> (G to SSS) and the quality of the stellar memory you create. This guide breaks down every option and its exact numerical outcome so you can plan the optimal path.</p>
+
+        <h2 id="journey-overview">Journey Structure</h2>
+        <p>A journey has <strong>46 turns</strong> across <strong>4 towns</strong>, visited in order. Each turn you pick one activity (Train, Battle, or Rest). Boss turns force a battle and open a shop.</p>
+
+        <h3>The 7 Evaluation Bosses</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Turn</th>
+              <th>Boss Name</th>
+              <th>Town</th>
+              <th>Also Raid?</th>
+              <th>Shop</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>T7</strong></td><td>Basic Evaluation</td><td>Noa</td><td>No</td><td>Shop 101</td></tr>
+            <tr><td><strong>T14</strong></td><td>Raid Evaluation</td><td>Noa</td><td>No</td><td>Shop 101</td></tr>
+            <tr><td><strong>T22</strong></td><td>Expedition Evaluation</td><td>Aganon</td><td>Yes</td><td>Shop 201</td></tr>
+            <tr><td><strong>T29</strong></td><td>Competition Evaluation</td><td>Noa</td><td>No</td><td>Shop 2901</td></tr>
+            <tr><td><strong>T37</strong></td><td>Void Evaluation</td><td>Flora/Kalaid</td><td>Yes</td><td>Shop 301/401</td></tr>
+            <tr><td><strong>T41</strong></td><td>Void Evaluation</td><td>Noa</td><td>No</td><td>Shop 4101</td></tr>
+            <tr><td><strong>T45</strong></td><td>Final Evaluation (Final Trial)</td><td>Noa</td><td>No</td><td>Shop 4501</td></tr>
+          </tbody>
+        </table>
+
+        <p>Battle IDs: Easy = 110101-110106, Normal = 120101-120106, Hard = 130101-130106. Each difficulty has the same 6 evaluation types with different difficulty scaling.</p>
+
+        <h3>Town Progression</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Town</th>
+              <th>Turns</th>
+              <th>Boss Battles</th>
+              <th>Training Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Noa</strong> (Starting Area)</td><td>1-14</td><td>T7 Basic, T14 Raid</td><td>2011/3011/4011</td></tr>
+            <tr><td><strong>Aganon</strong></td><td>15-22</td><td>T22 Expedition</td><td>2111/3111/4111</td></tr>
+            <tr><td><strong>Flora / Kalaid</strong></td><td>30-37</td><td>T37 Void</td><td>2121/3121 or 2131/3131</td></tr>
+            <tr><td><strong>Noa</strong> (Return)</td><td>38-46</td><td>T41 Void, T45 Final Trial</td><td>Same as start</td></tr>
+          </tbody>
+        </table>
+
+        <p><small>Note: Town transitions happen at T15 (move to Aganon) and T30 (move to Flora/Kalaid). During these turns, no activities are available -- just a cutscene.</small></p>
+
+        <h3>Starting Resources</h3>
+        <table class="ss-blog-table">
+          <thead><tr><th>Resource</th><th>Easy</th><th>Normal</th><th>Hard</th></tr></thead>
+          <tbody>
+            <tr><td>Stamina</td><td>100</td><td>100</td><td>100</td></tr>
+            <tr><td>Coins</td><td>30</td><td>30</td><td>30</td></tr>
+            <tr><td>Condition</td><td>3 (Good)</td><td>3 (Good)</td><td>3 (Good)</td></tr>
+            <tr><td>Journey Stat Cap</td><td>500</td><td>750</td><td>1250</td></tr>
+            <tr><td>PP Scale</td><td>100%</td><td>150%</td><td>250%</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="condition-stamina">Condition and Stamina -- Hidden Battle Modifiers</h2>
+        <p>Two resources have <strong>direct battle effects</strong> that persist throughout the journey and cannot be dispelled in combat:</p>
+
+        <h3>Condition (Turn Speed Modifier)</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Condition</th><th>Battle Effect</th><th>Buff ID</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1 (Worst)</strong></td><td>Turn Speed -10%</td><td>BI_CONDITION_WORST</td></tr>
+            <tr><td><strong>2 (Bad)</strong></td><td>Turn Speed -5%</td><td>BI_CONDITION_BAD</td></tr>
+            <tr><td><strong>3 (Neutral)</strong></td><td>No effect</td><td>--</td></tr>
+            <tr><td><strong>4 (Good)</strong></td><td>Turn Speed +5%</td><td>BI_CONDITION_GOOD</td></tr>
+            <tr><td><strong>5 (Best)</strong></td><td>Turn Speed +10%</td><td>BI_CONDITION_BEST</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Stamina (HP Modifier)</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Stamina</th><th>Battle Effect</th><th>Buff ID</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>0-30</strong></td><td>HP -20%</td><td>BI_STAMINA_WORST</td></tr>
+            <tr><td><strong>31-50</strong></td><td>HP -10%</td><td>BI_STAMINA_BAD</td></tr>
+            <tr><td><strong>50-70</strong></td><td>HP +10%</td><td>BI_STAMINA_NORMAL</td></tr>
+            <tr><td><strong>71-90</strong></td><td>HP +20%</td><td>BI_STAMINA_GOOD</td></tr>
+            <tr><td><strong>90-100</strong></td><td>HP +30%</td><td>BI_STAMINA_BEST</td></tr>
+          </tbody>
+        </table>
+
+        <blockquote><p><strong>Key insight:</strong> Keeping stamina above 90 and condition at 4-5 gives you <strong>+30% HP and +10% SPD</strong> in every battle. This is massive. Always rest before boss fights.</p></blockquote>
+
+        <h2 id="training">Training -- Stat Gains and Stamina Efficiency</h2>
+        <p>Training costs stamina and grants <strong>Journey Stats</strong> + <strong>Potential Points (PP)</strong>. There are 5 training types, each with 10 levels:</p>
+
+        <h3>Grade 1 Training (Noa Area, TrainingIds 2001-2005)</h3>
+
+        <h4>Power Training (2001)</h4>
+        <table class="ss-blog-table">
+          <thead><tr><th>Lv</th><th>Stamina Cost</th><th>PP</th><th>Power</th><th>Endurance</th><th>Health</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>30</td><td>8</td><td>15</td><td>6</td><td>6</td></tr>
+            <tr><td>5</td><td>38</td><td>16</td><td>36</td><td>16</td><td>16</td></tr>
+            <tr><td>10</td><td>44</td><td>22</td><td>41</td><td>21</td><td>21</td></tr>
+          </tbody>
+        </table>
+        <p><small>Net stamina for all 10 levels: <strong>-400</strong> | Total: 334 Power, 171 End, 171 HP, 160 PP | Failure: +5 Power guaranteed</small></p>
+
+        <h4>Health Training (2002)</h4>
+        <p>Identical structure to Power, swaps primary stat. Net stamina: <strong>-400</strong> | Total: 334 Health, 171 End, 171 Power, 160 PP</p>
+
+        <h4>Endurance Training (2003)</h4>
+        <p>Similar but slightly lower primary (38 at Lv10 vs 41). Net stamina: <strong>-400</strong> | Total: 294 Endurance, 171 HP, 171 Power, 160 PP</p>
+
+        <h4>Focus Training (2004) -- Stamina Efficient!</h4>
+        <table class="ss-blog-table">
+          <thead><tr><th>Lv</th><th>Stamina Cost</th><th>Stamina Return</th><th>Net Cost</th><th>PP</th><th>Focus</th><th>Power</th><th>Endurance</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>24</td><td>16</td><td>8</td><td>8</td><td>12</td><td>4</td><td>4</td></tr>
+            <tr><td>5</td><td>32</td><td>24</td><td>8</td><td>16</td><td>33</td><td>14</td><td>14</td></tr>
+            <tr><td>10</td><td>37</td><td>29</td><td>8</td><td>22</td><td>38</td><td>19</td><td>19</td></tr>
+          </tbody>
+        </table>
+        <p><small>Net stamina for all 10 levels: <strong>-55</strong> (87% cheaper!) | Total: 284 Focus, 125 Power, 125 End, 160 PP</small></p>
+
+        <h4>Protect Training (2005) -- Stamina Efficient!</h4>
+        <p>Same cost structure as Focus. Net stamina: <strong>-55</strong> | Total: 295 Protect, 125 HP, 125 End, 160 PP</p>
+
+        <div class="ss-chart">
+          <div class="ss-chart-title">Net Stamina Cost for All 10 Training Levels</div>
+          <div class="ss-chart-bars">
+            <div class="ss-chart-bar-row">
+              <div class="ss-chart-bar-label">Power</div>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--red" style="width:100%">400</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <div class="ss-chart-bar-label">Health</div>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--green" style="width:100%">400</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <div class="ss-chart-bar-label">Endurance</div>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--blue" style="width:100%">400</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <div class="ss-chart-bar-label">Focus</div>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--gold" style="width:13.75%">55</div></div>
+            </div>
+            <div class="ss-chart-bar-row">
+              <div class="ss-chart-bar-label">Protect</div>
+              <div class="ss-chart-bar-track"><div class="ss-chart-bar ss-chart-bar--teal" style="width:13.75%">55</div></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Training-Affecting Buffs</h3>
+        <p>Various events can buff or debuff your training success rate and stat gains:</p>
+        <table class="ss-blog-table">
+          <thead><tr><th>Buff</th><th>Effect</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>SWEET_TASTE (story)</td><td>+30% success rate</td><td>5 turns</td></tr>
+            <tr><td>TRAINING_AWAKEN</td><td>+5% success rate</td><td>3 turns</td></tr>
+            <tr><td>WEATHER_GOOD_WIND</td><td>+10% success rate</td><td>3 turns</td></tr>
+            <tr><td>ITEM_DRUNKEN (shop)</td><td>-20% success rate</td><td>5 turns</td></tr>
+            <tr><td>CHEER_FAILURE</td><td>-5% success rate</td><td>5 turns</td></tr>
+            <tr><td>UNIQUE_INDOMITABLE_SPIRIT</td><td>+20% Endurance gains</td><td>3 turns</td></tr>
+            <tr><td>ITEM_SWEET (permanent)</td><td>+20% Focus gains</td><td>Permanent</td></tr>
+            <tr><td>ITEM_SOUR (permanent)</td><td>+20% Protect gains</td><td>Permanent</td></tr>
+            <tr><td>LEGEND_SAVIOR_PP</td><td>+20% PP from training</td><td>3 turns</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="rest">Rest Options</h2>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Option</th><th>Cost</th><th>Stamina</th><th>Condition</th><th>Special</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Homeless</strong></td><td>0 coins</td><td>+30</td><td>--</td><td>Rare negative buff chance</td></tr>
+            <tr><td><strong>Home</strong></td><td>30 coins</td><td>+30 to +50</td><td>+1 to +2</td><td>Success/Great Success events</td></tr>
+            <tr><td><strong>Meditation (Noa)</strong></td><td>60 coins</td><td>+60 to +80</td><td>--</td><td>Always positive buff, rarely removes negative buff</td></tr>
+            <tr><td><strong>Meditation (Aganon)</strong></td><td>60 coins</td><td>+60 to +80</td><td>--</td><td>+10 to +20 Endurance, rarely removes negative buff</td></tr>
+            <tr><td><strong>Meditation (Flora)</strong></td><td>60 coins</td><td>+60 to +80</td><td>--</td><td>+10 to +20 Power, rarely removes negative buff</td></tr>
+            <tr><td><strong>Meditation (Kalaid)</strong></td><td>60 coins</td><td>+60 to +80</td><td>--</td><td>+10 to +20 Health, rarely removes negative buff</td></tr>
+          </tbody>
+        </table>
+
+        <blockquote><p><strong>Pro tip:</strong> Meditation at Flora/Kalaid/Aganon gives <strong>free stats</strong> on top of stamina recovery. Save your 60-coin meditations for these towns.</p></blockquote>
+
+        <h2 id="shop">Shop (Trade) Items</h2>
+        <p>Shops open on <strong>7 boss turns</strong> (T7, T14, T22, T29, T37, T41, T45). You can pay 30 coins to <strong>reroll</strong> the shop. All items have a limit of 1 purchase each.</p>
+
+        <h3>Best Value Items</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr><th>Item</th><th>Cost</th><th>Effect</th><th>Efficiency</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>ORANGE_JUICE</strong></td><td>50</td><td>Power +25</td><td>0.50/coin</td></tr>
+            <tr><td><strong>APPLE_JUICE</strong></td><td>50</td><td>Health +25</td><td>0.50/coin</td></tr>
+            <tr><td><strong>PARFAIT</strong></td><td>60</td><td>Stamina +15, Power +15</td><td>0.50/coin</td></tr>
+            <tr><td><strong>TAKOYAKI</strong></td><td>60</td><td>Stamina +15, Health +15</td><td>0.50/coin</td></tr>
+            <tr><td><strong>WATERMELON</strong></td><td>50</td><td>Power +18</td><td>0.36/coin</td></tr>
+            <tr><td><strong>STRAWBERRY</strong></td><td>50</td><td>Health +18</td><td>0.36/coin</td></tr>
+            <tr><td><strong>Legendary stat food</strong></td><td>60-80</td><td>+36 single stat</td><td>0.45-0.60/coin</td></tr>
+            <tr><td><strong>SOFT_CAKE</strong></td><td>30</td><td>PP +30</td><td>1.0 PP/coin</td></tr>
+            <tr><td><strong>Training Book (Legendary)</strong></td><td>60</td><td>Training EXP +2500</td><td>41.7 exp/coin</td></tr>
+            <tr><td><strong>COFFEE</strong></td><td>20</td><td>PP +20</td><td>1.0 PP/coin</td></tr>
+            <tr><td><strong>FRESH_MILK</strong></td><td>30</td><td>Condition +2</td><td>0.067/coin</td></tr>
+          </tbody>
+        </table>
+
+        <h3>PP Items (for Potential investment)</h3>
+        <table class="ss-blog-table">
+          <thead><tr><th>Item</th><th>Cost</th><th>PP</th><th>Bonus</th></tr></thead>
+          <tbody>
+            <tr><td>SWEET_CAKE (Rare)</td><td>15</td><td>+10</td><td>--</td></tr>
+            <tr><td>COFFEE (Unique)</td><td>20</td><td>+20</td><td>--</td></tr>
+            <tr><td>SOFT_CAKE (Unique)</td><td>30</td><td>+30</td><td>--</td></tr>
+            <tr><td>COCA (Legendary)</td><td>20</td><td>+20</td><td>Focus +10</td></tr>
+            <tr><td>GREEN_TEA (Legendary)</td><td>20</td><td>+20</td><td>Protect +10</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="battle-rewards">Battle Rewards</h2>
+        <p>Battles grant coins (50-200 range) but very little PP. The main value of battles is progressing through the journey to unlock more shops and new towns.</p>
+
+        <ul>
+          <li><strong>Normal battles</strong>: 50-150 coins, 0 PP</li>
+          <li><strong>Boss battles</strong>: 100-200 coins, 0 PP + shop access</li>
+          <li><strong>Raid battles</strong>: Higher coin rewards, embedded in normal turns (T6, T13, T22, T28, T37)</li>
+          <li><strong>Mission bonuses</strong>: Extra 5 coins per completion tier (turn limit missions)</li>
+        </ul>
+
+        <h2 id="scoring">Journey Scoring and Grades</h2>
+        <p>Your journey grade is determined by <strong>Journey Score</strong>, calculated from stats, training, and other factors.</p>
+
+        <table class="ss-blog-table">
+          <thead><tr><th>Grade</th><th>Score Required</th><th>DeleteReward Value</th></tr></thead>
+          <tbody>
+            <tr><td>G</td><td>0</td><td>10</td></tr>
+            <tr><td>F</td><td>600</td><td>30</td></tr>
+            <tr><td>E</td><td>1300</td><td>60</td></tr>
+            <tr><td>D</td><td>2200</td><td>100</td></tr>
+            <tr><td>C</td><td>3200</td><td>150</td></tr>
+            <tr><td>B</td><td>4300</td><td>200</td></tr>
+            <tr><td>A</td><td>5500</td><td>250</td></tr>
+            <tr><td>SG</td><td>6800</td><td>310</td></tr>
+            <tr><td>SB</td><td>8200</td><td>380</td></tr>
+            <tr><td>SA</td><td>9700</td><td>460</td></tr>
+            <tr><td>SSG</td><td>11300</td><td>550</td></tr>
+            <tr><td>SSB</td><td>12500</td><td>700</td></tr>
+            <tr><td>SSA</td><td>14200</td><td>1110</td></tr>
+            <tr><td><strong>SSS</strong></td><td><strong>14600</strong></td><td><strong>1230</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Milestone Rewards (Group 1)</h3>
+        <table class="ss-blog-table">
+          <thead><tr><th>Score</th><th>Reward</th></tr></thead>
+          <tbody>
+            <tr><td>1,000</td><td>50,000 gold</td></tr>
+            <tr><td>2,000</td><td>50x item 33000011</td></tr>
+            <tr><td>3,000</td><td>1x item 301</td></tr>
+            <tr><td>4,000</td><td>200x item 103</td></tr>
+            <tr><td>5,000</td><td>1x item 207</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="optimal-path">Optimal Journey Strategy</h2>
+
+        <h3>Resource Management Priorities</h3>
+        <ol>
+          <li><strong>Keep Stamina above 90</strong> for the +30% HP battle buff. This is your #1 priority -- a boss fight at low stamina means -20% HP.</li>
+          <li><strong>Keep Condition at 4-5</strong> for the +5-10% SPD battle buff. Rest at Home (30 coins, +1-2 condition) when it drops.</li>
+          <li><strong>Maximize training actions</strong> -- every normal turn should be a training unless you desperately need rest or coins.</li>
+        </ol>
+
+        <h3>Training Priority</h3>
+        <ol>
+          <li><strong>Focus and Protect first</strong> -- they cost only 55 net stamina for all 10 levels (vs 400 for Power/Health/Endurance). This frees up stamina for more training actions overall.</li>
+          <li><strong>Power/Health/Endurance when buffed</strong> -- save these expensive trainings for turns when you have success rate buffs (+30% from SWEET_TASTE, etc.).</li>
+          <li><strong>Use training books from shop</strong> to accelerate training level ups, which unlocks higher stat gains faster.</li>
+        </ol>
+
+        <h3>Shop Strategy</h3>
+        <ol>
+          <li><strong>Buy PP items first</strong> (COFFEE 20c, SOFT_CAKE 30c) -- PP directly affects battle power and blessing quality.</li>
+          <li><strong>Buy training books</strong> (30-60 coins) to speed up training progression.</li>
+          <li><strong>Buy COCA/GREEN_TEA</strong> (20 coins each) for PP + stat bonus -- best value legendary items.</li>
+          <li><strong>Buy legendary stat food</strong> (60-80 coins) for your primary stats only.</li>
+          <li><strong>Reroll shops</strong> (30 coins) only if you have excess coins and see no useful items.</li>
+        </ol>
+
+        <h3>Rest Strategy</h3>
+        <ol>
+          <li><strong>Homeless</strong> (free, +30 stamina) when broke and need stamina for a boss fight.</li>
+          <li><strong>Home</strong> (30 coins, +30-50 stam, +1-2 condition) as your default rest option.</li>
+          <li><strong>Meditation at Aganon/Flora/Kalaid</strong> (60 coins, +60-80 stam, +10-20 free stat) when you can afford it -- the free stats make it worth the premium.</li>
+        </ol>
+
+        <h3>Turn-by-Turn Template</h3>
+        <pre><code>Normal turns:  Train (Focus/Protect preferred) unless stamina &lt; 90 or condition &lt; 4
+Boss turns:    Battle -> Shop (buy PP items, training books)
+Move turns:    Watch cutscene
+Before boss:   Rest to 90+ stamina and 4+ condition
+Ending turn:   One last training if possible</code></pre>
+
+        <h3>Difficulty Comparison</h3>
+        <table class="ss-blog-table">
+          <thead><tr><th>Aspect</th><th>Easy</th><th>Normal</th><th>Hard</th></tr></thead>
+          <tbody>
+            <tr><td>Stat Cap</td><td>500</td><td>750</td><td>1250</td></tr>
+            <tr><td>PP Scale</td><td>100%</td><td>150%</td><td>250%</td></tr>
+            <tr><td>Training Groups</td><td>2011x (base)</td><td>3011x (enhanced)</td><td>4011x (max)</td></tr>
+            <tr><td>Unlock Requirement</td><td>Always</td><td>Beat battle 11008040</td><td>Beat battle 11018060</td></tr>
+            <tr><td>Recommended Resonance</td><td>--</td><td>4</td><td>8</td></tr>
+          </tbody>
+        </table>
+
+        <blockquote><p><strong>Bottom line:</strong> Hard mode gives 2.5x PP and 2.5x the stat cap, making it the clear choice for maximizing stellar memory quality -- if your team can handle the harder battles.</p></blockquote>
+
+        <p>For a complete database of all journey event choices with exact reward outcomes, see the <a href="/guides/star-savior/journey/events/">Journey Event Choices</a> page.</p>
+
+        <h2 id="sources">Source Code References</h2>
+        <ul>
+          <li><strong>CLIENT_JOURNEY_SCENARIO_TEMPLET.json</strong> -- 4 scenarios with stat caps, PP scales, starting resources</li>
+          <li><strong>CLIENT_JOURNEY_TURN_TEMPLET.json</strong> -- 316 entries, 46-turn journey structure per scenario</li>
+          <li><strong>CLIENT_JOURNEY_TRAINING_TEMPLET.json</strong> -- 690 entries, 69 trainings x 10 levels with exact stat gains</li>
+          <li><strong>CLIENT_JOURNEY_REST_TEMPLET.json</strong> -- 15 entries, 3 rest types per town</li>
+          <li><strong>CLIENT_JOURNEY_TRADE_TEMPLET.json</strong> -- 214 shop items with costs and effects</li>
+          <li><strong>CLIENT_BATTLE_TEMPLET_JOURNEY.json</strong> -- 53 battles with coin/PP rewards</li>
+          <li><strong>CLIENT_JOURNEY_CONDITION_TEMPLET.json</strong> -- Condition = Turn Speed modifier (-10% to +10%)</li>
+          <li><strong>CLIENT_JOURNEY_STAMINA_BUFF_TEMPLET.json</strong> -- Stamina = HP modifier (-20% to +30%)</li>
+          <li><strong>CLIENT_JOURNEY_GRADE_TEMPLET.json</strong> -- 43 grade thresholds (G to SSS)</li>
+          <li><strong>CLIENT_JOURNEY_BUFF_TEMPLET.json</strong> -- Training/feel/weather buffs affecting outcomes</li>
+          <li><strong>NKC.decompiled.cs</strong> -- Training flow (line 143641), Rest flow (line 145564), Shop flow (line 144120), Battle flow (line 143222)</li>
+          <li><strong>Star.Templets.decompiled.cs</strong> -- NKCJourneyTurnTemplet (line 18665), NKCJourneyTrainingLevelTemplet (line 18220), NKCJourneyRestChoiceTemplet (line 17118)</li>
+        </ul>
+        <p>Full decompiled and deobfuscated source: <strong>github.com/boring877/star-savior-decompiled</strong></p>
+      `,
+    },
+
   ],
 };
 

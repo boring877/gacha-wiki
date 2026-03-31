@@ -738,6 +738,16 @@ export const BUSTY_BURST_PALADINS = [
     tier: 'A',
   },
   {
+    id: 'giselle',
+    characterId: 2088,
+    name: 'Giselle',
+    fileName: 'Giselle',
+    rarity: 'SSR',
+    element: 'Holy',
+    role: 'DPS',
+    tier: 'SS',
+  },
+  {
     id: 'pastel',
     characterId: 2080,
     name: 'Pastel',

@@ -359,6 +359,12 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         ],
       },
       {
+        title: 'Journey',
+        links: [
+          { name: 'Event Choices', href: '/guides/star-savior/journey/events/' },
+        ],
+      },
+      {
         title: 'Resources',
         links: [
           { name: 'Blog', href: '/guides/star-savior/blog/' },
