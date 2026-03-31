@@ -2446,8 +2446,9 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
 
         <h3>Training Priority</h3>
         <ol>
-          <li><strong>Focus and Protect first</strong> -- they cost only 55 net stamina for all 10 levels (vs 400 for Power/Health/Endurance). This frees up stamina for more training actions overall.</li>
-          <li><strong>Power/Health/Endurance when buffed</strong> -- save these expensive trainings for turns when you have success rate buffs (+30% from SWEET_TASTE, etc.).</li>
+          <li><strong>Power and Health are your main stats</strong> -- they directly contribute to ATK and HP, the most impactful combat stats for journey scoring and battles.</li>
+          <li><strong>Focus and Protect are cheap secondary stats</strong> -- they cost only 55 net stamina for all 10 levels (vs 400 for Power/Health/Endurance), so they are worth picking up early as a filler when you have spare stamina. However, their per-level gains are lower and they benefit less from training upgrades, so they should not replace Power/Health as your primary focus.</li>
+          <li><strong>Train when buffed</strong> -- save expensive Power/Health/Endurance trainings for turns when you have success rate buffs (+30% from SWEET_TASTE, etc.).</li>
           <li><strong>Use training books from shop</strong> to accelerate training level ups, which unlocks higher stat gains faster.</li>
         </ol>
 
@@ -2468,7 +2469,7 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
         </ol>
 
         <h3>Turn-by-Turn Template</h3>
-        <pre><code>Normal turns:  Train (Focus/Protect preferred) unless stamina &lt; 90 or condition &lt; 4
+        <pre><code>Normal turns:  Train (Power/Health preferred) unless stamina &lt; 90 or condition &lt; 4
 Boss turns:    Battle -> Shop (buy PP items, training books)
 Move turns:    Watch cutscene
 Before boss:   Rest to 90+ stamina and 4+ condition

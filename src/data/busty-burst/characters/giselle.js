@@ -131,9 +131,9 @@ export const skills = {
       "slot": 3,
       "name": "Knight’s Pride",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -9 DOWN on all enemies for 10 seconds",
+      "description": "Applies Physical Critical Damage UP to self for 10 seconds and inflicts Accuracy DOWN on all enemies for 10 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -9 DOWN on all enemies for 10 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -18 DOWN on all enemies for 10 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to self for 10 seconds and inflicts Accuracy -18 DOWN on all enemies for 10 seconds",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -169,7 +169,7 @@ export const skills = {
       "rank": 1,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 8 seconds and applies Physical Attack UP(LV 1) to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -10 DOWN for 8 seconds and applies Physical Attack 15% UP to self for 8 seconds",
       "effect": "280% + 300",
       "buffEffects": [
         {
@@ -190,7 +190,7 @@ export const skills = {
       "rank": 2,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 8 seconds and applies Physical Attack UP(LV 2) to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -15 DOWN for 8 seconds and applies Physical Attack 20% UP to self for 8 seconds",
       "effect": "320% + 400",
       "buffEffects": [
         {
@@ -211,7 +211,7 @@ export const skills = {
       "rank": 3,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 8 seconds and applies Physical Attack UP(LV 3) to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -19 DOWN for 8 seconds and applies Physical Attack 24% UP to self for 8 seconds",
       "effect": "350% + 450",
       "buffEffects": [
         {
@@ -232,7 +232,7 @@ export const skills = {
       "rank": 4,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 8 seconds and applies Physical Attack UP(LV 4) to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -22 DOWN for 8 seconds and applies Physical Attack 27% UP to self for 8 seconds",
       "effect": "380% + 500",
       "buffEffects": [
         {
@@ -253,7 +253,7 @@ export const skills = {
       "rank": 5,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 8 seconds and applies Physical Attack UP(LV 5) to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -25 DOWN for 8 seconds and applies Physical Attack 30% UP to self for 8 seconds",
       "effect": "400% + 550",
       "buffEffects": [
         {

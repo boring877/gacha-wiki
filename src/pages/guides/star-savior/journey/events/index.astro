@@ -56,9 +56,10 @@ const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
     </div>
 
     <div class="je-search-bar">
-      <input type="text" id="je-search" class="je-search-input" placeholder="Search events..." />
+      <input type="text" id="je-search" class="je-search-input" placeholder="Search events by name, description, or choice text..." />
       <span class="je-search-count" id="je-search-count">{sorted.length} events</span>
     </div>
+    <p class="je-search-hint">Try specific words from the event description or choice text. For example, "slime", "potion", "Lisette", or "weather".</p>
     <div class="je-list">
       {
         sorted.map((event, index) => {
