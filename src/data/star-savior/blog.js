@@ -1680,6 +1680,479 @@ B_PvP =  700 * (1 + 0.10 * 0.50) =  700 * 1.050 =   735
         <p>Full decompiled and deobfuscated source: <strong>github.com/boring877/star-savior-decompiled</strong></p>
       `,
     },
+    {
+      slug: 'blessing-potential-and-stellar-memory-guide',
+      title: 'Blessing, Potential & Stellar Memory System Guide',
+      description:
+        'Complete breakdown of the Stellar Memory blessing system, SE Potential passives, the 4-slot battle deck, blessing succession mechanics, and how blessings are selected -- all verified from decompiled game code.',
+      author: 'Boring877',
+      publishDate: '2026-03-30',
+      category: 'Guide',
+      tags: ['advanced', 'journey', 'stellar-memory', 'blessing', 'potential', 'succession', 'theorycraft'],
+      content: `
+        <p>The <strong>Stellar Memory</strong> system is one of Star Savior's most complex mechanics. It combines three overlapping concepts -- <strong>Base Stats</strong>, <strong>Potentials</strong> (passive abilities), and <strong>Blessings</strong> (inherited stat bonuses) -- into a single UI that many players find confusing. This guide breaks down each system, how they interact, and what actually happens when you start a Journey.</p>
+
+        <h2 id="three-concepts">Three Different Things (That Look the Same)</h2>
+        <p>When you open a Stellar Memory detail page, you see tabs for Stats, Potential, and Blessing. These are three <strong>distinct systems</strong> that share the same data type internally (<code>NKCSePoten</code> class) but serve different purposes:</p>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Tab</th>
+              <th>What It Is</th>
+              <th>Filter Condition</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stats</strong></td>
+              <td>Base ATK/HP/DEF/SPD from the memory's grade</td>
+              <td>Always shown</td>
+              <td>Journey grade + templet base stats</td>
+            </tr>
+            <tr>
+              <td><strong>Potential</strong></td>
+              <td>Leveled-up passive abilities (battle effects)</td>
+              <td>level &gt; 0</td>
+              <td>Upgraded with Potential Points (PP)</td>
+            </tr>
+            <tr>
+              <td><strong>Blessing</strong></td>
+              <td>Stat bonuses inherited from parent/ancestor units</td>
+              <td>value &gt; 0</td>
+              <td>Server assigns from parent data</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ss-code-label">NKCStellarMemoryPreview -- Tab filtering logic (NKC.decompiled.cs:235770)</div>
+        <pre><code>// Tab 0: Stats -- base stats from grade
+OBF_31681() -> statBundle calculation
+
+// Tab 1: Potential -- SE passives the player has leveled up
+OBF_6179() -> filter by OBF_33437 > 0  (has level)
+
+// Tab 2: Blessing -- stat bonuses from ancestors
+OBF_27095() -> filter by OBF_4421 > 0  (has value)</code></pre>
+
+        <h2 id="journey-start">Starting a Journey: Selecting Stellar Memories</h2>
+        <p>Before starting a Journey (Stellar Memory scenario), you must select <strong>2 Stellar Memories</strong> from your collection. These become the <strong>"ancestors" (parents)</strong> for that journey run.</p>
+
+        <ul>
+          <li>The selection screen (<code>NKCSubPageStellarMemorySelector</code>) has <strong>exactly 2 slots</strong></li>
+          <li>An <strong>auto-fill button</strong> picks the highest-power stellar memories, grouped by unit, sorted descending by power</li>
+          <li>A "Gene" button opens a popup showing parent/ancestor blessing info</li>
+          <li>The 2 selected memories determine which units and blessings are available during the journey</li>
+        </ul>
+
+        <div class="ss-code-label">NKCSubPageStellarMemorySelector (NKC.decompiled.cs:159879-160096)</div>
+        <pre><code>[RequiredListLength(2)]
+public OBF_0495[] OBF_15501_stellarMemories;  // exactly 2 slots
+
+// Auto-fill: highest power, grouped by unit, descending
+// JourneyStartCondition builds leader list from:
+//   1. Default player unit
+//   2. Leader unit
+//   3. The 2 selected stellar memory units (reversed)</code></pre>
+
+        <h2 id="battle-deck">The 4-Slot Battle Deck</h2>
+        <p>During a Journey, you fight battles using a <strong>4-slot deck</strong>. The server populates these slots at the start of each journey. Some slots may be <strong>locked</strong> initially and become unlocked through <strong>blessing succession</strong> events.</p>
+
+        <div class="ss-code-label">JourneyPlay state -- deck initialization (NKC.decompiled.cs:272334)</div>
+        <pre><code>private readonly List&lt;OBF_25083&gt; OBF_24840 = new(4);  // 4 deck slots
+
+// Server sends 4 slots at journey start:
+OBF_24840.Clear();
+OBF_24840.AddRange(OBF_14524.OBF_20430);  // from server response
+
+// Filtered view (only non-empty slots):
+public IEnumerable&lt;OBF_33715&gt; OBF_2917 => OBF_4055.Where(e => e.OBF_11444 != null);</code></pre>
+
+        <p>The <strong>BlessJoin popup</strong> (<code>NKCPopupBlessJoin</code>) handles the unlock animation: it clears the joining unit's current slot, plays an unlock effect, then places the unit into that slot. Locked slots get a lock visual overlay.</p>
+
+        <h2 id="blessing-succession">Blessing Succession (Inheritance)</h2>
+        <p>Throughout a Journey, parent blessings can "join" your battle deck. This is the <strong>succession</strong> system -- it is configured per-turn in the journey templet data.</p>
+
+        <h3>Succession Types</h3>
+        <p>Each journey turn has a <code>BlessSuccessionType</code> that determines what happens:</p>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Enum Value</th>
+              <th>What Happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>BST_NONE</strong></td>
+              <td><code>0</code></td>
+              <td>No succession this turn</td>
+            </tr>
+            <tr>
+              <td><strong>BST_START</strong></td>
+              <td><code>1</code></td>
+              <td>A parent's blessing joins at journey start (plays BlessSuccessionCutscene, then transitions to Succession scene)</td>
+            </tr>
+            <tr>
+              <td><strong>BST_JOIN_1</strong></td>
+              <td><code>2</code></td>
+              <td>First parent's blessing joins mid-journey (plays BlessJoinCutscene, unlocks deck slot)</td>
+            </tr>
+            <tr>
+              <td><strong>BST_JOIN_2</strong></td>
+              <td><code>3</code></td>
+              <td>Second parent's blessing joins mid-journey (same as JOIN_1 but for second parent)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ss-code-label">BlessSuccessionType enum (NKM.Templets.decompiled.cs:31869)</div>
+        <pre><code>public enum OBF_26539 {
+    BST_NONE,     // No succession
+    BST_START,    // Succession at journey start
+    BST_JOIN_1,   // First ancestor joins mid-journey
+    BST_JOIN_2    // Second ancestor joins mid-journey
+}</code></pre>
+
+        <h3>Battle Score Override</h3>
+        <p>When a parent joins via <code>BST_JOIN_1</code> or <code>BST_JOIN_2</code>, the <strong>battle score is overridden</strong> with that parent's score. This means the journey's difficulty/power rating adjusts based on which ancestor joins.</p>
+
+        <div class="ss-code-label">Battle score override (NKC.decompiled.cs:271268)</div>
+        <pre><code>public OBF_22341 OBF_33079() {
+    if (OBF_21025.OBF_27998 == null) return default;
+    var ancestors = OBF_29632.OBF_3723.OBF_1860;
+    switch (OBF_21025.OBF_27998.OBF_1887) {
+    case BST_JOIN_1:
+        // Override with ancestor 1's battle score
+        return OBF_22341.OBF_13265(ancestors[0].unitId);
+    case BST_JOIN_2:
+        // Override with ancestor 2's battle score
+        return OBF_22341.OBF_13265(ancestors[1].unitId);
+    }
+}</code></pre>
+
+        <h2 id="potential-system">SE Potential System</h2>
+        <p>Potentials are passive abilities that trigger during battle. Each stellar memory can have multiple potentials, which you upgrade using <strong>Potential Points (PP)</strong>.</p>
+
+        <h3>Potential Categories</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Count</th>
+              <th>ID Range</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PTC_UNIQUE</strong></td>
+              <td>6</td>
+              <td>11011 - 13002</td>
+              <td>Character-specific passives tied to 6 specific characters via CharacterCategoryNum</td>
+            </tr>
+            <tr>
+              <td><strong>PTC_BASIC</strong></td>
+              <td>26</td>
+              <td>20001 - 22010</td>
+              <td>Stat passives available to all units. Tier 1 (200xx), Tier 2 (210xx), Tier 3 (220xx)</td>
+            </tr>
+            <tr>
+              <td><strong>PTC_SPECIAL</strong></td>
+              <td>145</td>
+              <td>23001 - 41004</td>
+              <td>Special passives: stat combos, role-specific, scenario-specific, infinite buffs</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Role Types</h3>
+        <p>Some potentials are locked to specific roles:</p>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Role Type</th>
+              <th>Access</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PLR_PUBLIC</strong></td>
+              <td>All units (147 potentials)</td>
+              <td>Basic stat passives, generic combos</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_UNIT</strong></td>
+              <td>Specific character only (6)</td>
+              <td>PTC_UNIQUE character passives</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_DEFENDER</strong></td>
+              <td>Defenders only</td>
+              <td>30001 - 30006</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_STRIKER</strong></td>
+              <td>Strikers only</td>
+              <td>31001 - 31003</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_RANGER</strong></td>
+              <td>Rangers only</td>
+              <td>32001 - 32005</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_CASTER</strong></td>
+              <td>Casters only</td>
+              <td>33001 - 33003</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_ASSASSIN</strong></td>
+              <td>Assassins only</td>
+              <td>34001 - 34004</td>
+            </tr>
+            <tr>
+              <td><strong>PLR_SUPPORTER</strong></td>
+              <td>Supporters only</td>
+              <td>35001 - 35003</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>PP Costs by Tier</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Levels</th>
+              <th>PP Cost</th>
+              <th>Typical Effect per Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>UNIQUE</td>
+              <td>1</td>
+              <td>200 PP</td>
+              <td>Character-specific SE trigger</td>
+            </tr>
+            <tr>
+              <td>BASIC Tier 1</td>
+              <td>5</td>
+              <td>100 - 300 PP</td>
+              <td>+1% to +5% rate stat</td>
+            </tr>
+            <tr>
+              <td>BASIC Tier 2</td>
+              <td>1</td>
+              <td>200 PP</td>
+              <td>+2% to +4% rate stat, +2 SPD</td>
+            </tr>
+            <tr>
+              <td>BASIC Tier 3</td>
+              <td>1</td>
+              <td>300 PP</td>
+              <td>+3% to +6% rate stat, +3 SPD, +1.5% cross/revenge</td>
+            </tr>
+            <tr>
+              <td>SPECIAL (stat-only)</td>
+              <td>1</td>
+              <td>200 PP</td>
+              <td>Various stat combos (ATK+SPD, HP+SPD, etc.)</td>
+            </tr>
+            <tr>
+              <td>SPECIAL (SE-triggered)</td>
+              <td>1</td>
+              <td>200 PP</td>
+              <td>Conditional battle effects</td>
+            </tr>
+            <tr>
+              <td>SPECIAL (infinite)</td>
+              <td>3</td>
+              <td>200 PP each</td>
+              <td>Battle-start permanent buffs</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>How Battle Power Calculates with Potentials</h3>
+        <p>The <code>PotenBattlePowerCheck</code> flag on each potential level determines whether upgrading it increases your battle power score. Battle power is calculated as:</p>
+        <pre><code>totalPotenPoint = sum of all potential levels
+battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
+        <p>Higher battle power affects journey difficulty scaling and succession eligibility.</p>
+
+        <h2 id="battle-buffs">Battle Buffs from Potentials (BI_POTEN_PASSIVE)</h2>
+        <p>When potentials trigger in battle, they apply buffs defined in the <code>CLIENT_BUFF_TEMPLET.json</code> table. The <strong>BI_POTEN_PASSIVE</strong> buffs (24 total, BuffID 9001-9024) share common traits:</p>
+        <ul>
+          <li><strong>TurnInfinite</strong> -- lasts the entire battle (permanent)</li>
+          <li><strong>CanNotDispel</strong> -- cannot be removed by enemy abilities</li>
+          <li><strong>IsPositive</strong> -- always a beneficial effect</li>
+          <li>Most can <strong>stack</strong> via <code>IsLevel</code> + <code>BuffLevelMax</code></li>
+        </ul>
+
+        <h3>Complete BI_POTEN_PASSIVE Reference</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Buff ID</th>
+              <th>Buff Name</th>
+              <th>Stat</th>
+              <th>Value</th>
+              <th>Max Stacks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>9001</td><td>BI_POTEN_PASSIVE_24001</td><td>DEF%</td><td>1%</td><td>5</td></tr>
+            <tr><td>9002</td><td>BI_POTEN_PASSIVE_30002</td><td>DEF%</td><td>3%</td><td>5</td></tr>
+            <tr><td>9003</td><td>BI_POTEN_PASSIVE_31003</td><td>Crit Rate</td><td>15%</td><td>1</td></tr>
+            <tr><td>9004</td><td>BI_POTEN_PASSIVE_31001</td><td>ATK%</td><td>3%</td><td>5</td></tr>
+            <tr><td>9005</td><td>BI_POTEN_PASSIVE_31002</td><td>Evasion%</td><td>3%</td><td>5</td></tr>
+            <tr><td>9006</td><td>BI_POTEN_PASSIVE_32001</td><td>Skill ATK%</td><td>15%</td><td>1</td></tr>
+            <tr><td>9007</td><td>BI_POTEN_PASSIVE_33001</td><td>Crit DMG</td><td>10%</td><td>3</td></tr>
+            <tr><td>9008</td><td>BI_POTEN_PASSIVE_34001</td><td>Crit Rate</td><td>5%</td><td>3</td></tr>
+            <tr><td>9009</td><td>BI_POTEN_PASSIVE_34002</td><td>SPD (flat)</td><td>+10</td><td>3</td></tr>
+            <tr><td>9010</td><td>BI_POTEN_PASSIVE_35002</td><td>Heal%</td><td>3%</td><td>5</td></tr>
+            <tr><td>9011</td><td>BI_POTEN_PASSIVE_35003</td><td>SPD (flat)</td><td>+3</td><td>5</td></tr>
+            <tr><td>9012</td><td>BI_POTEN_PASSIVE_110111</td><td>Revenge ATK</td><td>100%</td><td>1*</td></tr>
+            <tr><td>9013</td><td>BI_POTEN_PASSIVE_110112</td><td>(marker)</td><td>--</td><td>--</td></tr>
+            <tr><td>9014</td><td>BI_POTEN_PASSIVE_25002</td><td>Special Skill%</td><td>5%</td><td>5</td></tr>
+            <tr><td>9015</td><td>BI_POTEN_PASSIVE_32003</td><td>SPD (flat)</td><td>+5</td><td>3</td></tr>
+            <tr><td>9016</td><td>BI_POTEN_PASSIVE_32004</td><td>Crit Rate</td><td>5%</td><td>5</td></tr>
+            <tr><td>9017</td><td>BI_POTEN_PASSIVE_34003</td><td>ATK%</td><td>5%</td><td>3</td></tr>
+            <tr><td>9018</td><td>BI_POTEN_PASSIVE_25003</td><td>Evasion%</td><td>5%</td><td>6</td></tr>
+            <tr><td>9019</td><td>BI_POTEN_PASSIVE_400011</td><td>ATK%</td><td>8%</td><td>5</td></tr>
+            <tr><td>9020</td><td>BI_POTEN_PASSIVE_402011</td><td>DEF%</td><td>10%</td><td>5</td></tr>
+            <tr><td>9021</td><td>BI_POTEN_PASSIVE_404011</td><td>(unused)</td><td>--</td><td>--</td></tr>
+            <tr><td>9022</td><td>BI_POTEN_PASSIVE_405011</td><td>Damage Up%</td><td>25%</td><td>1</td></tr>
+            <tr><td>9023</td><td>BI_POTEN_PASSIVE_407011</td><td>AddDamage</td><td>proc</td><td>1</td></tr>
+            <tr><td>9024</td><td>BI_POTEN_PASSIVE_32005</td><td>Crit Rate</td><td>3%</td><td>5</td></tr>
+          </tbody>
+        </table>
+        <p><small>* Buff 9012 (Revenge ATK 100%) has a <code>DispelCondition: DC_ATTACK</code> -- it is removed when the unit is attacked.</small></p>
+
+        <h2 id="se-triggers">SE Trigger Mechanics</h2>
+        <p>Potential effects are defined in <code>CLIENT_SE_TEMPLET_POTEN.json</code>. Each entry specifies <strong>when</strong> and <strong>how</strong> the buff activates:</p>
+
+        <h3>Activation Conditions</h3>
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Condition</th>
+              <th>Trigger Timing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>NSEAT_BATTLE_START</code></td><td>At the start of battle (before any turns)</td></tr>
+            <tr><td><code>NSEAT_TURN_START</code></td><td>At the beginning of the unit's turn</td></tr>
+            <tr><td><code>NSEAT_TURN_END</code></td><td>At the end of the unit's turn</td></tr>
+            <tr><td><code>NSEAT_SKILL_START</code></td><td>When the unit uses a skill</td></tr>
+            <tr><td><code>NSEAT_SKILL_END</code></td><td>After the unit's skill resolves</td></tr>
+            <tr><td><code>NSEAT_DAMAGE_START</code></td><td>When dealing damage</td></tr>
+            <tr><td><code>NSEAT_DAMAGE_END</code></td><td>After dealing damage</td></tr>
+            <tr><td><code>NSEAT_HIT</code></td><td>When hitting a target</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Notable Patterns</h3>
+        <ul>
+          <li><strong>Pair buffs</strong>: Some potentials come in pairs where one applies a buff and another removes it. For example, buff 3100301 grants a bonus at skill start, and 3100302 removes it at turn end -- creating a conditional effect.</li>
+          <li><strong>Crit counters</strong>: Some potentials trigger after a specific number of critical hits (e.g., ranger potential 3200501 triggers after 5 crits).</li>
+          <li><strong>Infinite buffs</strong>: Special potentials use <code>_INFINITE</code> buff names that last the entire battle. These come in 3 intensity levels (200 PP each).</li>
+          <li><strong>Debuff removal</strong>: Some potentials use <code>DeleteSpecificBuffStrId</code> to remove specific buffs when they expire.</li>
+        </ul>
+
+        <h2 id="stat-blessings">Stat Blessings (Inheritance)</h2>
+        <p>Separate from SE Potentials, the <strong>Stat Blessing</strong> system (<code>CLIENT_STAT_POTENTIAL_TEMPLET.json</code>) handles flat stat inheritance. There are <strong>45 entries</strong> covering 5 stats across 3 difficulty tiers and 3 levels each:</p>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Stat Values (Level 1/2/3)</th>
+              <th>CanSuccessionRatio (Lv1/Lv2/Lv3)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Easy</strong></td><td>10 / 15 / 20 flat</td><td>30% / 18% / 12%</td></tr>
+            <tr><td><strong>Normal</strong></td><td>25 / 30 / 35 flat</td><td>30% / 18% / 12%</td></tr>
+            <tr><td><strong>Hard</strong></td><td>40 / 45 / 50 flat</td><td>12% / 8% / 4%</td></tr>
+          </tbody>
+        </table>
+
+        <p>The <strong>CanSuccessionRatio</strong> is in basis points (divide by 100 for percentage). It determines the probability that a stat blessing is inherited from a parent stellar memory. Hard tier blessings are much less likely to pass down (4-12%) compared to Easy/Normal (12-30%).</p>
+
+        <p>The inheritance formula is:</p>
+        <pre><code>InheritedStat = BaseStat + floor(RawValue * ParentStatBlessApplyRatio)</code></pre>
+
+        <h2 id="rarity-groups">Blessing Rarity Groups</h2>
+        <p>The server categorizes blessings into <strong>4 rarity groups</strong>, defined in two templet tables:</p>
+
+        <table class="ss-blog-table">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>ID</th>
+              <th>Poten-to-Bless Name</th>
+              <th>Succession Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>LOW</strong></td><td>2</td><td>LOW_SE_PotenRarity</td><td>LOW_BlessRarity</td></tr>
+            <tr><td><strong>HIGH</strong></td><td>3</td><td>HIGH_SE_PotenRarity</td><td>HIGH_BlessRarity</td></tr>
+            <tr><td><strong>MID</strong></td><td>4</td><td>MID_SE_PotenRarity</td><td>MID_BlessRarity</td></tr>
+            <tr><td><strong>ZERO</strong></td><td>5</td><td>ZERO_SE_PotenRarity</td><td>ZERO_BlessRarity</td></tr>
+          </tbody>
+        </table>
+
+        <p>Each group covers PotenLv 1-5 with <code>JourneyScoreWeight: 10000</code>. All groups contribute equally to journey scoring. The actual assignment of which PotenId belongs to which group is <strong>server-side only</strong> -- the client never has this mapping.</p>
+
+        <blockquote><p><strong>Important limitation:</strong> The exact algorithm the server uses to select which rarity group a blessing falls into, and which specific blessing you receive, is <strong>not present in any client-side code</strong>. The client only receives the result and renders cutscenes/popups. This is the one part of the system we cannot verify from decompiled code alone.</p></blockquote>
+
+        <h2 id="server-flow">Full Journey Blessing Flow (End to End)</h2>
+        <p>Here is the complete flow from journey start to battle:</p>
+
+        <ol>
+          <li><strong>Select 2 Stellar Memories</strong> at the journey start screen</li>
+          <li><strong>Server assigns</strong> blessings, succession events, and deck slots via <code>OBF_20694</code> response packet</li>
+          <li><strong>BST_START succession</strong> (if applicable): Plays BlessSuccessionCutscene, transitions to Succession scene. One parent's blessing joins the deck at journey start.</li>
+          <li><strong>Player progresses</strong> through journey turns (training, battles, trading, resting)</li>
+          <li><strong>BST_JOIN_1/JOIN_2 succession</strong> (if configured for this turn): Plays BlessJoinCutscene, shows BlessJoin popup with unlock animation. Parent's blessing is added to the 4-slot deck.</li>
+          <li><strong>Battle score overrides</strong> to the joining parent's score when BST_JOIN triggers</li>
+          <li><strong>Potentials activate</strong> in battle based on their SE trigger conditions (battle start, turn start/end, skill use, damage dealt, etc.)</li>
+          <li><strong>BI_POTEN_PASSIVE buffs</strong> are applied as permanent (TurnInfinite), undispellable stat bonuses</li>
+        </ol>
+
+        <h2 id="practical-tips">Practical Tips</h2>
+        <ul>
+          <li><strong>Prioritize PTC_SPECIAL potentials</strong> for your main DPS units -- they offer the strongest battle effects (25% Damage Up, 15% Skill ATK, etc.)</li>
+          <li><strong>Stack Crit Rate potentials</strong> if you have multiple Crit Rate buffs (3%, 5%, 15% available) -- they stack via BuffLevelMax</li>
+          <li><strong>Speed is king</strong> -- flat SPD potentials (+3, +5, +10) are rare and extremely valuable since SPD is not reduced by PvP scaling</li>
+          <li><strong>Hard tier stat blessings</strong> have much lower inheritance rates (4-12%) -- don't rely on them passing down</li>
+          <li><strong>Battle Power matters</strong> -- potentials flagged with <code>PotenBattlePowerCheck: true</code> increase your score, which affects journey difficulty and succession eligibility</li>
+          <li><strong>Role-locked potentials</strong> (Defender, Striker, etc.) can only appear on units of that role -- factor this into your stellar memory selection</li>
+          <li><strong>The "Gene" button</strong> at journey start shows parent blessing info -- use it to plan which ancestors to bring for specific blessing types</li>
+        </ul>
+
+        <h2 id="sources">Source Code References</h2>
+        <ul>
+          <li><strong>Star.Templets.decompiled.cs</strong> -- NKCJourneyTurnTemplet (line 18736-18739), NKMStatPotenTemplet (line 21912-21934)</li>
+          <li><strong>NKM.Templets.decompiled.cs</strong> -- BlessSuccessionType enum (line 31869-31875)</li>
+          <li><strong>NKC.decompiled.cs</strong> -- NKCSubPageStellarMemorySelector (line 159879), BlessJoin popup (line 141564), cutscene player (line 99902), battle score override (line 271268), deck initialization (line 272334)</li>
+          <li><strong>CLIENT_SE_POTENTIAL_TEMPLET.json</strong> -- 177 potential definitions</li>
+          <li><strong>CLIENT_SE_TEMPLET_POTEN.json</strong> -- SE battle trigger definitions</li>
+          <li><strong>CLIENT_POTENTIAL_LEVEL_GROUP_TEMPLET.json</strong> -- Level scaling data (209 groups)</li>
+          <li><strong>CLIENT_BUFF_TEMPLET.json</strong> -- 24 BI_POTEN_PASSIVE buff definitions (BuffID 9001-9024)</li>
+          <li><strong>CLIENT_STAT_POTENTIAL_TEMPLET.json</strong> -- 45 stat blessing entries with CanSuccessionRatio</li>
+          <li><strong>CLIENT_POTEN_TO_BLESS_TEMPLET.json</strong> -- Rarity group mappings (20 entries)</li>
+          <li><strong>CLIENT_BLESS_SUCCESSION_TEMPLET.json</strong> -- Succession group mappings (20 entries)</li>
+        </ul>
+        <p>Full decompiled and deobfuscated source: <strong>github.com/boring877/star-savior-decompiled</strong></p>
+      `,
+    },
   ],
 };
 
