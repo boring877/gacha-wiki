@@ -1,4 +1,4 @@
-// Journey event choices data - all 46 non-NPC/Bunny reward events with requirements, rewards, and best choice analysis
+// Journey event choices data - all non-NPC/Bunny reward events with requirements, rewards, and best choice analysis
 
 export const JOURNEY_EVENTS = [
   {
@@ -1359,5 +1359,859 @@ export const JOURNEY_EVENTS = [
       },
     ],
     hasRisk: true,
+  },
+  {
+    id: 'annah-undercover-cop-02',
+    category: 'Arcana',
+    name: 'Annah: I was walking through NOA\'s streets...',
+    description: 'I was walking through NOA\'s streets when I ran into Annah.',
+    arcana: 'Annah',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +15', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: true,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'bell-deep-mourning-02',
+    category: 'Arcana',
+    name: 'Bell: While I was out enjoying a...',
+    description: 'While I was out enjoying a weekend in downtown NOA, something in the plaza caught my eye.',
+    arcana: 'Bell',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Focus +5', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21007', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Power +5', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21007', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'bell-deep-mourning-03',
+    category: 'Arcana',
+    name: 'Bell: Finally, a peaceful day off. No...',
+    description: 'Finally, a peaceful day off. No bothersome pests buzzing around.',
+    arcana: 'Bell',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +10', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +15', outcome: 'success' },
+          { type: 'PP', label: 'PP +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #32004', outcome: 'success' },
+          { type: 'Stat', label: 'Power +8', outcome: 'failure' },
+          { type: 'Stat', label: 'Focus +12', outcome: 'failure' },
+          { type: 'PP', label: 'PP +10', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #32004', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +20', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'besta-a-satisfying-meal-02',
+    category: 'Arcana',
+    name: 'Besta: Captain? What brings you here',
+    description: 'Captain? What brings you here?',
+    arcana: 'Besta',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Vitality +8', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +12', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +15', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'besta-a-satisfying-meal-03',
+    category: 'Arcana',
+    name: 'Besta: I was covering the front desk...',
+    description: 'I was covering the front desk for the librarian when some familiar faces showed up.',
+    arcana: 'Besta',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Vitality +8', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #30004', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +8', outcome: 'failure' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'failure' },
+          { type: 'Stat', label: 'Protect +15', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -20', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #30004', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Protect +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #30004', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'carmen-night-view-beyond-the-window-01',
+    category: 'Arcana',
+    name: 'Carmen: I heard rumors that a lot...',
+    description: 'I heard rumors that a lot of relief shelters had popped up in the city lately.',
+    arcana: 'Carmen',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Sure, I\'ll take a bowl.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Protect +5', outcome: 'success' },
+          { type: 'Buff', label: 'Buff (FEEL_CONFIDENT +2)', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'No, I\'ll settle for the civilian version...',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Protect +5', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'carmen-night-view-beyond-the-window-02',
+    category: 'Arcana',
+    name: 'Carmen: While I was walking through NOA\'s...',
+    description: 'While I was walking through NOA\'s streets, I heard a commotion, so I decided to check it out.',
+    arcana: 'Carmen',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Got it. I\'ll make it as hopeless as possible.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Endurance +8', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +12', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'I actually have an even better idea...',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Protect +10', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'carmen-night-view-beyond-the-window-03',
+    category: 'Arcana',
+    name: 'Carmen: While I was walking through the...',
+    description: 'While I was walking through the plaza, I spotted Carmen lingering near the entrance of the Apocalypse shop.',
+    arcana: 'Carmen',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'If it means that much to you, I\'ll buy it for you.',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Protect +5', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #11011', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Better to act on your feelings now than regret it later.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Endurance +8', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +12', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #11011', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'charlotte-a-knight-s-oath-01',
+    category: 'Arcana',
+    name: 'Charlotte: Ah, Captain. Just a moment, please',
+    description: 'Ah, Captain. Just a moment, please.',
+    arcana: 'Charlotte',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Call after her.',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Vitality +5', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+          { type: 'Stat', label: 'Power +10', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Wait quietly for her to return.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Vitality +15', outcome: 'success' },
+          { type: 'PP', label: 'PP +30', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21004', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'claire-the-perfect-bunny-girl-01',
+    category: 'Arcana',
+    name: 'Claire: I woke up to loud chatter...',
+    description: 'I woke up to loud chatter around me.',
+    arcana: 'Claire',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Confess everything.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +5', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +10', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'PP', label: 'PP +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #23039', outcome: 'success' },
+          { type: 'Stat', label: 'Power +5', outcome: 'failure' },
+          { type: 'Stat', label: 'Vitality +5', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+          { type: 'PP', label: 'PP +10', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #23039', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Make a vague excuse.',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #22002', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'elisa-divine-trial-01',
+    category: 'Arcana',
+    name: 'Elisa: When a frantic voice came from...',
+    description: 'When a frantic voice came from beyond the window of a nearby building.',
+    arcana: 'Elisa',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Tell a story the children will enjoy.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Endurance +15', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Stay strong!',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Endurance +5', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina +25', outcome: 'success' },
+          { type: 'Buff', label: 'Debuff (UNIQUE_BURNOUT -5)', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #20003', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'frey-the-indomitable-masterpiece-01',
+    category: 'Arcana',
+    name: 'Frey: I spotted an unfamiliar pair sitting...',
+    description: 'I spotted an unfamiliar pair sitting at a table across the lobby.',
+    arcana: 'Frey',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +10', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #23050', outcome: 'success' },
+          { type: 'Stat', label: 'Power +10', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'failure' },
+          { type: 'Buff', label: 'Debuff (UNIQUE_WASTED -3)', outcome: 'failure' },
+          { type: 'PP', label: 'PP +30', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #23050', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Vitality +10', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +10', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #23050', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'hilde-nostalgia-strikes-back-02',
+    category: 'Arcana',
+    name: 'Hilde: I suddenly received a quest from...',
+    description: 'I suddenly received a quest from Lyn, asking if I could help out with some work.',
+    arcana: 'Hilde',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Receive what Lyn has prepared.',
+        best: true,
+        rewards: [
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +20', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21003', outcome: 'success' },
+          { type: 'Buff', label: 'Buff (UNIQUE_OPERATION +3)', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +25', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Point to the doll lying on the floor.',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'hilde-nostalgia-strikes-back-03',
+    category: 'Arcana',
+    name: 'Hilde: Too soft',
+    description: 'Too soft!',
+    arcana: 'Hilde',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Pretend to be hurt!',
+        best: true,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +25', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #30006', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Bluff my way through it!',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Power +5', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #30006', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'kyra-as-cute-as-kyra-03',
+    category: 'Arcana',
+    name: 'Kyra: Kyra follows me around all day...',
+    description: 'Kyra follows me around all day like a puppy.',
+    arcana: 'Kyra',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +12', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #34002', outcome: 'success' },
+          { type: 'Stat', label: 'Power +10', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #34002', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Power +5', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #34002', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'lily-there-s-only-one-truth-02',
+    category: 'Arcana',
+    name: 'Lily: I was waiting in line with...',
+    description: 'I was waiting in line with Lily to buy the limited bread from Street Bakers.',
+    arcana: 'Lily',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: false,
+        rewards: [
+          { type: 'Buff', label: 'Buff (UNIQUE_KEEN_EYE +3)', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: true,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina -15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21007', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'lyn-under-the-glass-moon-over-the-pavilion-02',
+    category: 'Arcana',
+    name: 'Lyn: Journey Event',
+    description: '',
+    arcana: 'Lyn',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Choice 1',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Protect +25', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Choice 2',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Protect +10', outcome: 'success' },
+          { type: 'PP', label: 'PP +15', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'marcille-rabbit-town-01',
+    category: 'Arcana',
+    name: 'Marcille: I was gathering ingredients for a...',
+    description: 'I was gathering ingredients for a Vitality Potion in the hills when someone suddenly covered my eyes from behind.',
+    arcana: 'Marcille',
+    arcanaGrade: 'SR',
+    choices: [
+      {
+        text: 'Wait, Clarissa...!',
+        best: true,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +5', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'I heard there\'s a monster mimicking a rabbit around here!',
+        best: false,
+        rewards: [
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'Stat', label: 'Endurance +5', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'marcille-rabbit-town-02',
+    category: 'Arcana',
+    name: 'Marcille: I spotted Marcille darting into an...',
+    description: 'I spotted Marcille darting into an alleyway and followed her.',
+    arcana: 'Marcille',
+    arcanaGrade: 'SR',
+    choices: [
+      {
+        text: 'There\'s no way something like that exists.',
+        best: true,
+        rewards: [
+          { type: 'SE Potential', label: 'SE Potential #20003', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Th-that\'s terrifying...',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'omega-the-imaginary-pioneer-03',
+    category: 'Arcana',
+    name: 'Omega: We were enjoying a luxurious lunch...',
+    description: 'We were enjoying a luxurious lunch for the first time in a while.',
+    arcana: 'Omega',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Watch quietly.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +12', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #25002', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Intervene.',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Power +12', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #25002', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'petra-made-by-petra-02',
+    category: 'Arcana',
+    name: 'Petra: Laa, laa ♪',
+    description: 'Laa, laa ♪',
+    arcana: 'Petra',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'The dewy rose shade...?',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +5', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +5', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +12', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #20001', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'The tangy grapefruit orange...?',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'roberta-responsibility-atop-a-pile-of-paperwork-03',
+    category: 'Arcana',
+    name: 'Roberta: Being stuck in a corner scribbling...',
+    description: 'Being stuck in a corner scribbling reports just isn\'t my thing.',
+    arcana: 'Roberta',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Should I ask what happened?',
+        best: false,
+        rewards: [
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #11026', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'She looks busy, so I should leave her be...',
+        best: true,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #11026', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'scarlet-the-great-and-amazing-bunny-girl-01',
+    category: 'Arcana',
+    name: 'Scarlet: I can tell where you\'re hiding...',
+    description: 'I can tell where you\'re hiding at a glance!',
+    arcana: 'Scarlet',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Should we try convincing her together?',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +20', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #11043', outcome: 'success' },
+          { type: 'Stat', label: 'Power +10', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+          { type: 'SE Potential', label: 'SE Potential #11043', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Maybe she really is more comfortable alone.',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #22001', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'scarlet-the-great-and-amazing-bunny-girl-01a',
+    category: 'Arcana',
+    name: 'Scarlet: While passing through the plaza, I...',
+    description: 'While passing through the plaza, I spotted Scarlet playing with the local kids.',
+    arcana: 'Scarlet',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'I believe in you, Scarlet! I can\'t wait to see you fly!',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +10', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +8', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Be careful, Scarlet...!',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+          { type: 'Buff', label: 'Debuff (UNIQUE_MUSCLE_INJURY -3)', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +3', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #20002', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'scarlet-the-great-and-amazing-bunny-girl-02',
+    category: 'Arcana',
+    name: 'Scarlet: How did you find us, Scarlet?!...',
+    description: 'How did you find us, Scarlet?! I was sure we were hide-and-seek champions!',
+    arcana: 'Scarlet',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Root for Scarlet.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +15', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #21001', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +12', outcome: 'success' },
+          { type: 'PP', label: 'PP +15', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Root for Charlotte.',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +20', outcome: 'success' },
+          { type: 'Buff', label: 'Debuff (UNIQUE_SURFEIT -3)', outcome: 'success' },
+          { type: 'Stat', label: 'Vitality +3', outcome: 'success' },
+          { type: 'Condition', label: 'Condition -1', outcome: 'success' },
+          { type: 'Buff', label: 'Buff (ARCANAPOINT_BONUS +1)', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'smile-cats-do-not-smile-01',
+    category: 'Arcana',
+    name: 'Smile: One day, while passing through the...',
+    description: 'One day, while passing through the park, I spotted Asherah and Smile crouched quietly in a corner.',
+    arcana: 'Smile',
+    arcanaGrade: 'SR',
+    choices: [
+      {
+        text: 'Try petting its head gently.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Stat', label: 'Protect +5', outcome: 'success' },
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'Stat', label: 'Focus +8', outcome: 'failure' },
+          { type: 'Stamina', label: 'Stamina -10', outcome: 'failure' },
+        ],
+      },
+      {
+        text: 'Now\'s your chance! Go for the belly like Asherah!',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Focus +8', outcome: 'success' },
+          { type: 'Stamina', label: 'Stamina +5', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: true,
+  },
+  {
+    id: 'trish-choosing-the-next-prey-02',
+    category: 'Arcana',
+    name: 'Trish: As I was walking down the...',
+    description: 'As I was walking down the street, I heard some familiar voices.',
+    arcana: 'Trish',
+    arcanaGrade: 'SR',
+    choices: [
+      {
+        text: 'Maybe it\'s best to start with what you can do now.',
+        best: true,
+        rewards: [
+          { type: 'Stat', label: 'Power +18', outcome: 'success' },
+          { type: 'PP', label: 'PP +20', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Money isn\'t everything.',
+        best: false,
+        rewards: [
+          { type: 'Stat', label: 'Power +8', outcome: 'success' },
+          { type: 'SE Potential', label: 'SE Potential #22001', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'yoo-mina-experienced-mercenary-01',
+    category: 'Arcana',
+    name: 'Yoo Mina: At this rate, a part-time job...',
+    description: 'At this rate, a part-time job at a cafe would be better.',
+    arcana: 'Yoo Mina',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'Let\'s try something else!',
+        best: false,
+        rewards: [
+          { type: 'Stamina', label: 'Stamina +15', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Let\'s eat something good and forget about it!',
+        best: true,
+        rewards: [
+          { type: 'Condition', label: 'Condition +1', outcome: 'success' },
+          { type: 'PP', label: 'PP +10', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
+  },
+  {
+    id: 'yoo-mina-experienced-mercenary-02',
+    category: 'Arcana',
+    name: 'Yoo Mina: Do I? I didn\'t think I...',
+    description: 'Do I? I didn\'t think I was tired.',
+    arcana: 'Yoo Mina',
+    arcanaGrade: 'SSR',
+    choices: [
+      {
+        text: 'What if you replicate that old routine?',
+        best: true,
+        rewards: [
+          { type: 'PP', label: 'PP +40', outcome: 'success' },
+        ],
+      },
+      {
+        text: 'Let\'s take a long break.',
+        best: false,
+        rewards: [
+          { type: 'SE Potential', label: 'SE Potential #21006', outcome: 'success' },
+        ],
+      },
+    ],
+    hasRisk: false,
   },
 ];

@@ -20,6 +20,7 @@ const CATEGORY_CLASS_MAP: Record<string, string> = {
   'Standby': 'standby',
   'Request': 'request',
   'Training Failure': 'failure',
+  'Arcana': 'arcana',
 };
 
 function getCategoryClass(category: string): string {
@@ -33,6 +34,7 @@ const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
   catOrder['Standby'] = 20;
   catOrder['Request'] = 21;
   catOrder['Training Failure'] = 22;
+  catOrder['Arcana'] = 30;
 
   if ((catOrder[a.category] ?? 99) !== (catOrder[b.category] ?? 99)) {
     return (catOrder[a.category] ?? 99) - (catOrder[b.category] ?? 99);
@@ -64,11 +66,15 @@ const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
       {
         sorted.map((event, index) => {
           const catClass = getCategoryClass(event.category);
+          const arcanaName = (event as any).arcana;
+          const arcanaGrade = (event as any).arcanaGrade;
+          const searchData = [event.name, event.description, event.category, arcanaName, arcanaGrade, event.choices.map(c => c.text).join(' ')].filter(Boolean).join(' ').toLowerCase();
           return (
-            <div class="je-card" data-search={`${event.name} ${event.description} ${event.category} ${event.choices.map(c => c.text).join(' ')}`.toLowerCase()}>
+            <div class="je-card" data-search={searchData}>
               <div class="je-header">
                 <span class="je-num">{index + 1}</span>
                 <span class="je-category" data-cat={catClass}>{event.category}</span>
+                {arcanaName && <span class="je-arcana-badge">{arcanaName} {arcanaGrade ? `(${arcanaGrade})` : ''}</span>}
                 {event.hasRisk && <span class="je-risk-badge">Has Risk</span>}
               </div>
               <h3 class="je-name">{event.name}</h3>
