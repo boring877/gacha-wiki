@@ -1369,7 +1369,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'Do as she wishes.',
         best: false,
         rewards: [
           { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
@@ -1377,7 +1377,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Maintain my dignity.',
         best: true,
         rewards: [
           { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
@@ -1396,7 +1396,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'I liked yours better.',
         best: true,
         rewards: [
           { type: 'Stat', label: 'Focus +5', outcome: 'success' },
@@ -1405,7 +1405,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: "Let's go find a better one!",
         best: false,
         rewards: [
           { type: 'Stat', label: 'Power +5', outcome: 'success' },
@@ -1425,7 +1425,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: "You're not going to use that dangerous spell, are you?",
         best: true,
         rewards: [
           { type: 'Stat', label: 'Power +10', outcome: 'success' },
@@ -1439,7 +1439,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Bell Rhys. Hand me the vial and start running.',
         best: false,
         rewards: [
           { type: 'Stamina', label: 'Stamina +20', outcome: 'success' },
@@ -1457,14 +1457,14 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'Open the book.',
         best: false,
         rewards: [
           { type: 'Stamina', label: 'Stamina +10', outcome: 'success' },
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Let Besta have it.',
         best: true,
         rewards: [
           { type: 'Stat', label: 'Vitality +8', outcome: 'success' },
@@ -1487,7 +1487,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'Stop Besta.',
         best: true,
         rewards: [
           { type: 'Stat', label: 'Vitality +8', outcome: 'success' },
@@ -1502,7 +1502,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Stay back and watch.',
         best: false,
         rewards: [
           { type: 'Stat', label: 'Protect +15', outcome: 'success' },
@@ -1698,7 +1698,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'Bet on Frey to win.',
         best: true,
         rewards: [
           { type: 'Stat', label: 'Power +10', outcome: 'success' },
@@ -1713,7 +1713,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Bet on Luna to win.',
         best: false,
         rewards: [
           { type: 'Stat', label: 'Vitality +10', outcome: 'success' },
@@ -1795,7 +1795,7 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: 'Run away.',
         best: true,
         rewards: [
           { type: 'Stat', label: 'Power +12', outcome: 'success' },
@@ -1807,7 +1807,7 @@ export const JOURNEY_EVENTS = [
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'Accept my fate.',
         best: false,
         rewards: [
           { type: 'Stat', label: 'Power +5', outcome: 'success' },
@@ -1826,14 +1826,14 @@ export const JOURNEY_EVENTS = [
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
+        text: "You didn't do anything wrong, Lily.",
         best: false,
         rewards: [
           { type: 'Buff', label: 'Buff (UNIQUE_KEEN_EYE +3)', outcome: 'success' },
         ],
       },
       {
-        text: 'Choice 2',
+        text: 'I think you went a bit too far.',
         best: true,
         rewards: [
           { type: 'Stamina', label: 'Stamina -15', outcome: 'success' },
@@ -1846,22 +1846,22 @@ export const JOURNEY_EVENTS = [
   {
     id: 'lyn-under-the-glass-moon-over-the-pavilion-02',
     category: 'Arcana',
-    name: 'Lyn: Journey Event',
-    description: '',
+    name: 'Lyn: Discarded Wooden Box',
+    description: 'While staying at the quarters, Lyn and I found a discarded wooden box. I decided to...',
     arcana: 'Lyn',
     arcanaGrade: 'SSR',
     choices: [
       {
-        text: 'Choice 1',
-        best: false,
+        text: "Wait, I'll check it first.",
+        best: true,
         rewards: [
           { type: 'Stat', label: 'Protect +25', outcome: 'success' },
           { type: 'Stamina', label: 'Stamina -10', outcome: 'success' },
         ],
       },
       {
-        text: 'Choice 2',
-        best: true,
+        text: "...What if there's something weird inside?",
+        best: false,
         rewards: [
           { type: 'Stat', label: 'Protect +10', outcome: 'success' },
           { type: 'PP', label: 'PP +15', outcome: 'success' },
