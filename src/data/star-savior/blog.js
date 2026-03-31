@@ -1736,6 +1736,8 @@ OBF_6179() -> filter by OBF_33437 > 0  (has level)
 // Tab 2: Blessing -- stat bonuses from ancestors
 OBF_27095() -> filter by OBF_4421 > 0  (has value)</code></pre>
 
+        <blockquote><p><strong>The key difference in plain terms:</strong> <strong>Potentials</strong> (like 25% Damage Up, 15% Crit Rate) are the powerful battle buffs that <strong>you actively upgrade using Potential Points (PP)</strong>. <strong>Blessings</strong> are small flat stat bonuses (+10 to +50 ATK/HP/DEF) that are <strong>automatically assigned by the server</strong> when a parent's blessing is inherited during a journey succession event. Both are active at the same time during battle, but only Potentials require your PP investment.</p></blockquote>
+
         <h2 id="journey-start">Starting a Journey: Selecting Stellar Memories</h2>
         <p>Before starting a Journey (Stellar Memory scenario), you must select <strong>2 Stellar Memories</strong> from your collection. These become the <strong>"ancestors" (parents)</strong> for that journey run.</p>
 
