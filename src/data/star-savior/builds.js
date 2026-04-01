@@ -10,7 +10,7 @@ export const BUILD_TYPES = {
     name: 'DPS Build',
     description: 'Maximize damage output with ATK and CRIT bonuses.',
     set: 'Motivator',
-    substatPriority: ['ATK %', 'HP %', 'SPD', 'CRIT Rate', 'CRIT Damage'],
+    substatPriority: ['SPD', 'ATK %', 'CRIT Rate', 'CRIT Damage', 'HP %'],
   },
   tank: {
     name: 'Tank / Support Build',
