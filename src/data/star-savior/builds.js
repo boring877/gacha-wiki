@@ -2,7 +2,7 @@
 // Generates per-character build data based on role
 // DPS roles: Striker, Assassin, Caster, Ranger -> Motivator set
 // Tank/Support roles: Defender, Supporter -> Perses set
-// Main stats are recommended, not necessarily what the item rolls
+// Main stats shown are recommended, not necessarily what the item rolls from data
 
 import { STAR_SAVIOR_CHARACTERS } from './characters.js';
 import { STAR_SAVIOR_GEAR } from './gear.js';
@@ -12,13 +12,23 @@ export const BUILD_TYPES = {
     name: 'DPS Build',
     set: 'Motivator',
     setKey: 'MOTIVATOR',
-    substatPriority: ['ATK %', 'CRIT Rate', 'CRIT Damage', 'SPD', 'HP %'],
+    substatTiers: {
+      optimal: ['ATK %'],
+      great: ['HP %', 'CRIT Rate', 'SPD'],
+      acceptable: ['CRIT Damage', 'Effect Hit'],
+      filler: [],
+    },
   },
   tank: {
     name: 'Tank / Support Build',
     set: 'Perses',
     setKey: 'PERSES',
-    substatPriority: ['HP %', 'Effect RES', 'SPD', 'DEF %', 'ATK %'],
+    substatTiers: {
+      optimal: ['HP %'],
+      great: ['Effect RES', 'SPD', 'DEF %'],
+      acceptable: ['ATK %', 'Effect Hit'],
+      filler: [],
+    },
   },
 };
 
@@ -28,21 +38,21 @@ const DPS_ROLES = ['Striker', 'Assassin', 'Caster', 'Ranger'];
 const TANK_ROLES = ['Defender', 'Supporter'];
 
 const DPS_MAIN_STATS = {
-  Weapon: 'ATK',
-  Gloves: 'Flat HP',
-  Armor: 'DEF',
-  Boots: 'SPD',
-  Necklace: 'ATK %',
-  Ring: 'SPD',
+  Weapon: { stat: 'ATK', label: 'ATK' },
+  Gloves: { stat: 'Flat HP', label: 'HP' },
+  Armor: { stat: 'DEF', label: 'DEF' },
+  Boots: { stat: 'SPD', label: 'SPD' },
+  Necklace: { stat: 'ATK %', label: 'ATK %' },
+  Ring: { stat: 'SPD', label: 'SPD' },
 };
 
 const TANK_MAIN_STATS = {
-  Weapon: 'ATK',
-  Gloves: 'Flat HP',
-  Armor: 'DEF',
-  Boots: 'SPD',
-  Necklace: 'Flat HP',
-  Ring: 'Flat HP',
+  Weapon: { stat: 'ATK', label: 'ATK' },
+  Gloves: { stat: 'Flat HP', label: 'HP' },
+  Armor: { stat: 'DEF', label: 'DEF' },
+  Boots: { stat: 'SPD', label: 'SPD' },
+  Necklace: { stat: 'Flat HP', label: 'HP' },
+  Ring: { stat: 'Flat HP', label: 'HP' },
 };
 
 function getSlotRecs(buildType) {
@@ -52,10 +62,16 @@ function getSlotRecs(buildType) {
   const recs = {};
   SLOT_ORDER.forEach(slot => {
     const item = t2Items.find(g => g.type === slot);
+    const recommended = mainStats[slot] || { stat: '', label: '' };
     recs[slot] = {
       itemName: item?.name || slot,
       icon: item?.icon || '',
-      mainStat: mainStats[slot] || '',
+      actualMainStat: item?.mainStat || '',
+      actualMainStatValue: item?.mainStatValue || 0,
+      enchantPerStat: item?.enchantPerStat || 0,
+      maxEnchantLevel: item?.maxEnchantLevel || 15,
+      recommendedMainStat: recommended.stat,
+      recommendedMainStatLabel: recommended.label,
     };
   });
   return recs;
@@ -74,7 +90,7 @@ export const CHARACTER_BUILDS = STAR_SAVIOR_CHARACTERS.map(char => {
     buildType,
     buildName: build.name,
     set: build.set,
-    substatPriority: build.substatPriority,
+    substatTiers: build.substatTiers,
     slots: getSlotRecs(buildType),
   };
 });

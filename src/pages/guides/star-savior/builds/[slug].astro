@@ -1,6 +1,6 @@
 ---
 // Star Savior Individual Character Build Detail Page
-// Full build breakdown: portrait, build type, set, 6 equipment slots with images, substats
+// Full build: portrait, build type, set, 6 equipment slots with images/stats, tiered substats
 import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
 import { CHARACTER_BUILDS, BUILD_TYPES, SLOT_ORDER } from '../../../../data/star-savior/builds.js';
 
@@ -21,21 +21,33 @@ export function getStaticPaths() {
 const { char } = Astro.props;
 
 const STAT_ICON_MAP: Record<string, string> = {
-  'ATK %': 'ATK',
-  'HP %': 'HP',
-  'DEF %': 'DEF',
-  'CRIT Rate': 'Crit Rate',
-  'CRIT Damage': 'Crit DMG',
-  'Effect Hit': 'Effect Hit',
-  'Effect RES': 'Effect RES',
-  SPD: 'SPD',
-  ATK: 'ATK',
-  DEF: 'DEF',
-  'Flat HP': 'HP',
+  'ATK %': 'ATK', 'HP %': 'HP', 'DEF %': 'DEF',
+  'CRIT Rate': 'Crit Rate', 'CRIT Damage': 'Crit DMG',
+  'Effect Hit': 'Effect Hit', 'Effect RES': 'Effect RES',
+  SPD: 'SPD', ATK: 'ATK', DEF: 'DEF', 'Flat HP': 'HP',
 };
 
 const build = BUILD_TYPES[char.buildType];
 const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Build';
+const tiers = char.substatTiers;
+
+const TIER_LABELS: Record<string, string> = {
+  optimal: 'Optimal',
+  great: 'Great',
+  acceptable: 'Acceptable',
+  filler: 'Filler',
+};
+
+const TIER_DESCS: Record<string, string> = {
+  optimal: char.buildType === 'dps'
+    ? 'Hit this 4 times across levels 3, 6, 9, 12 for the best DPS. 2-3 hits is acceptable.'
+    : 'Hit this 4 times across levels 3, 6, 9, 12 for maximum survivability.',
+  great: char.buildType === 'dps'
+    ? 'If you cannot hit ATK%, these are the best alternatives. HP% is very strong.'
+    : 'These are excellent secondary choices for survivability and utility.',
+  acceptable: 'Decent options if you run out of the above. Minimal impact on performance.',
+  filler: 'Anything else. Wont affect your build much.',
+};
 ---
 
 <LandingLayout title={`${char.name} Build - Star Savior`} description={`Equipment build guide for ${char.name} (${char.role}). ${buildLabel} with ${char.set} set.`} gameTitle={`${char.name} Build`}>
@@ -68,6 +80,8 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
       {SLOT_ORDER.map(slot => {
         const rec = char.slots[slot];
         if (!rec) return null;
+        const isRecommended = rec.recommendedMainStat !== rec.actualMainStat;
+        const maxTotal = rec.actualMainStatValue + rec.enchantPerStat * rec.maxEnchantLevel;
         return (
           <div class="ss-build-detail-slot">
             <div class="ss-build-detail-slot-icon">
@@ -77,21 +91,20 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
               <div class="ss-build-detail-slot-name">{rec.itemName}</div>
               <div class="ss-build-detail-slot-meta">
                 <span class="ss-build-detail-slot-grade">T2 Legendary</span>
-                {rec.mainStat && (
-                  <div class="ss-build-detail-slot-main">
-                    <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
-                    <span>{rec.mainStat}</span>
-                  </div>
-                )}
               </div>
-              <div class="ss-build-detail-slot-subs">
-                <span class="ss-build-detail-slot-subs-label">Best Substats:</span>
-                <div class="ss-build-detail-slot-subs-list">
-                  {char.substatPriority.map(stat => (
-                    <span class="ss-build-detail-slot-sub-tag">{stat}</span>
-                  ))}
+              <div class="ss-build-detail-slot-main">
+                <SSStatIcon stat={STAT_ICON_MAP[rec.recommendedMainStat] || rec.recommendedMainStat} size={16} />
+                <span class="ss-build-detail-slot-stat-label">{rec.recommendedMainStatLabel}</span>
+              </div>
+              {rec.actualMainStatValue > 0 && (
+                <div class="ss-build-detail-slot-stat-value">
+                  {rec.actualMainStatValue} <span class="ss-build-detail-slot-stat-arrow">&rarr;</span> {rec.actualMainStatValue + rec.enchantPerStat * rec.maxEnchantLevel}
+                  <span class="ss-build-detail-slot-stat-lvl">(+{rec.maxEnchantLevel})</span>
                 </div>
-              </div>
+              )}
+              {isRecommended && (
+                <span class="ss-build-detail-slot-stat-rec">Recommended</span>
+              )}
             </div>
           </div>
         );
@@ -100,15 +113,31 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
   </section>
 
   <section class="ss-build-detail-section">
-    <h2 class="ss-build-detail-heading">Substat Priority</h2>
-    <div class="ss-build-detail-subs">
-      {char.substatPriority.map((stat, i) => (
-        <div class="ss-build-detail-sub-item">
-          <span class="ss-build-detail-sub-rank">{i + 1}</span>
-          <SSStatIcon stat={STAT_ICON_MAP[stat] || stat} size={20} />
-          <span class="ss-build-detail-sub-name">{stat}</span>
-        </div>
-      ))}
+    <h2 class="ss-build-detail-heading">Substats</h2>
+    <p class="ss-build-detail-subs-desc">
+      New substats unlock at enhancement levels 3, 6, 9, 12 (4 rolls total). Rerolling is not available.
+    </p>
+    <div class="ss-build-detail-subs-tiers">
+      {['optimal', 'great', 'acceptable', 'filler'].map(tier => {
+        const stats = tiers[tier];
+        if (!stats || stats.length === 0) return null;
+        return (
+          <div class={`ss-build-detail-tier ss-build-detail-tier--${tier}`}>
+            <div class="ss-build-detail-tier-header">
+              <span class="ss-build-detail-tier-label">{TIER_LABELS[tier]}</span>
+              {TIER_DESCS[tier] && <span class="ss-build-detail-tier-desc">{TIER_DESCS[tier]}</span>}
+            </div>
+            <div class="ss-build-detail-tier-stats">
+              {stats.map(stat => (
+                <span class="ss-build-detail-tier-stat">
+                  <SSStatIcon stat={STAT_ICON_MAP[stat] || stat} size={16} />
+                  <span>{stat}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   </section>
 </LandingLayout>
