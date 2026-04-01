@@ -218,6 +218,28 @@
   display: block;
 }
 
+/* Set Bonuses inside set body */
+.ss-gear-set-bonuses-row {
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ss-gear-set-bonuses-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ss-gear-set-bonuses-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 /* Type Group (Weapon, Gloves, etc.) */
 .ss-gear-type-group {
   padding-top: 1rem;
@@ -404,6 +426,10 @@
     grid-template-columns: 1fr;
   }
 
+  .ss-gear-set-bonuses-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .ss-gear-set-bonuses-grid {
     grid-template-columns: 1fr;
   }
@@ -467,6 +493,10 @@
 
   .ss-gear-set-body {
     padding: 0 0.75rem 0.875rem;
+  }
+
+  .ss-gear-set-bonuses-list {
+    grid-template-columns: 1fr;
   }
 
   .ss-gear-item-card {

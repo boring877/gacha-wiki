@@ -1951,6 +1951,12 @@ export const STAR_SAVIOR_GEAR =
 ]
 ;
 
+export const EQUIP_SET_BONUS_MAP = {
+  Motivator: [5, 6, 7, 8],
+  Perses: [9, 10, 11, 12],
+  Wendigo: [1, 2, 3, 4],
+};
+
 export const STAR_SAVIOR_SET_BONUSES = 
 [
   {

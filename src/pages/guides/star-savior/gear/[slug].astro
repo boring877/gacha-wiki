@@ -2,7 +2,7 @@
 // Star Savior Individual Equipment Detail Page
 // Shows equip info, stats, enchant scaling, and set bonuses
 import CharacterDetailLayout from '../../../../layouts/star-savior/CharacterDetailLayout.astro';
-import { STAR_SAVIOR_GEAR, STAR_SAVIOR_SET_BONUSES } from '../../../../data/star-savior/gear.js';
+import { STAR_SAVIOR_GEAR, STAR_SAVIOR_SET_BONUSES, EQUIP_SET_BONUS_MAP } from '../../../../data/star-savior/gear.js';
 
 import '../../../../styles/games/star-savior/ss-character-detail.css';
 import '../../../../styles/games/star-savior/ss-gear-database.css';
@@ -42,6 +42,8 @@ const STAT_DISPLAY_MAP: Record<string, string> = {
 
 const maxBonus = gear.enchantPerStat * gear.maxEnchantLevel;
 const totalMax = gear.mainStatValue + maxBonus;
+const relevantBonusIds = EQUIP_SET_BONUS_MAP[gear.set] || [];
+const relevantBonuses = relevantBonusIds.map(id => STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === id)).filter(Boolean);
 ---
 
 <CharacterDetailLayout title={gear.name} description={`${gear.name} - ${gear.grade} ${gear.type} from the ${gear.set} set in Star Savior.`} gameTitle={gear.name}>
@@ -163,18 +165,19 @@ const totalMax = gear.mainStatValue + maxBonus;
   </section>
 
   <section class="content-section">
-    <h2 class="section-title">Set Bonuses</h2>
-    <div class="ss-gear-sets-grid">
-      {STAR_SAVIOR_SET_BONUSES.map(set => (
-        <div class={`ss-gear-set-card ${set.name === gear.set + ' Set' ? 'ss-gear-set-active' : ''}`}>
-          <div class="ss-gear-set-header">
-            <SSEquipSetImage icon={set.icon} size={32} />
-            <div>
-              <div class="ss-gear-set-name">{set.name}</div>
-              <div class="ss-gear-set-parts">{set.needParts} pieces</div>
+    <h2 class="section-title">{gear.set} Set Bonuses</h2>
+    <p class="ss-gear-substats-info" style="margin-bottom:0.75rem">Only {gear.set} equipment can activate these bonuses. Equip the required number of pieces to trigger the effect.</p>
+    <div class="ss-gear-set-bonuses-list">
+      {relevantBonuses.map(sb => (
+        <div class="ss-gear-set-bonus-card">
+          <div class="ss-gear-set-bonus-header">
+            <SSEquipSetImage icon={sb.icon} size={28} />
+            <div class="ss-gear-set-bonus-info">
+              <div class="ss-gear-set-bonus-name">{sb.name}</div>
+              <div class="ss-gear-set-bonus-pieces">{sb.needParts} pieces</div>
             </div>
           </div>
-          <div class="ss-gear-set-stats">{set.statsDisplay}</div>
+          <div class="ss-gear-set-bonus-stats">{sb.statsDisplay}</div>
         </div>
       ))}
     </div>
