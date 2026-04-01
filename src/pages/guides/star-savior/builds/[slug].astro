@@ -71,16 +71,27 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
         return (
           <div class="ss-build-detail-slot">
             <div class="ss-build-detail-slot-icon">
-              <SSEquipImage icon={rec.icon} alt={slot} width={56} />
+              <SSEquipImage icon={rec.icon} alt={rec.itemName} width={64} />
             </div>
             <div class="ss-build-detail-slot-info">
-              <div class="ss-build-detail-slot-name">{slot}</div>
-              {rec.mainStat && (
-                <div class="ss-build-detail-slot-main">
-                  <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
-                  <span>{rec.mainStat}</span>
+              <div class="ss-build-detail-slot-name">{rec.itemName}</div>
+              <div class="ss-build-detail-slot-meta">
+                <span class="ss-build-detail-slot-grade">T2 Legendary</span>
+                {rec.mainStat && (
+                  <div class="ss-build-detail-slot-main">
+                    <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
+                    <span>{rec.mainStat}</span>
+                  </div>
+                )}
+              </div>
+              <div class="ss-build-detail-slot-subs">
+                <span class="ss-build-detail-slot-subs-label">Best Substats:</span>
+                <div class="ss-build-detail-slot-subs-list">
+                  {char.substatPriority.map(stat => (
+                    <span class="ss-build-detail-slot-sub-tag">{stat}</span>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
           </div>
         );

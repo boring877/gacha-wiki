@@ -365,18 +365,17 @@
 /* Equipment Slots */
 .ss-build-detail-slots {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0.75rem;
 }
 
 .ss-build-detail-slot {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.875rem;
+  padding: 0.875rem;
   background: var(--ss-bg-card);
   border: 1px solid var(--ss-border);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .ss-build-detail-slot-icon {
@@ -386,22 +385,65 @@
 .ss-build-detail-slot-info {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 
 .ss-build-detail-slot-name {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--ss-text-primary);
-  margin-bottom: 0.25rem;
+}
+
+.ss-build-detail-slot-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ss-build-detail-slot-grade {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  background: rgba(255, 183, 77, 0.15);
+  color: #ffb74d;
 }
 
 .ss-build-detail-slot-main {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.25rem;
   font-size: 0.8125rem;
   color: var(--ss-primary);
   font-weight: 500;
+}
+
+.ss-build-detail-slot-subs {
+  margin-top: 0.125rem;
+}
+
+.ss-build-detail-slot-subs-label {
+  font-size: 0.6875rem;
+  color: var(--ss-text-tertiary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ss-build-detail-slot-subs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.ss-build-detail-slot-sub-tag {
+  font-size: 0.6875rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-secondary);
+  border: 1px solid var(--ss-border);
 }
 
 /* === MOBILE: DATABASE === */
@@ -481,7 +523,7 @@
   }
 
   .ss-build-detail-slots {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -513,12 +555,13 @@
     font-size: 1rem;
   }
 
-  .ss-build-detail-slots {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .ss-build-detail-slot {
     padding: 0.625rem;
+    gap: 0.625rem;
+  }
+
+  .ss-build-detail-slot-icon :global(.ss-equip-image-wrapper) {
+    --equip-img-size: 48px !important;
   }
 
   .ss-build-detail-sub-item {
