@@ -100,23 +100,5 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
     </div>
   </section>
 
-  <section class="ss-build-detail-section ss-build-detail-notes-section">
-    <h2 class="ss-build-detail-heading">Build Notes</h2>
-    <ul class="ss-build-detail-notes-list">
-      <li>Only <strong>Unique</strong> and <strong>Legendary</strong> grade items contribute set bonuses.</li>
-      <li><strong>Weapon, Gloves, Armor, Boots</strong> have fixed main stats that cannot be changed.</li>
-      {char.buildType === 'dps' ? (
-        <li><strong>Necklace</strong> should have CRIT Damage (lower grades) or Flat HP (higher grades).</li>
-      ) : (
-        <li><strong>Necklace</strong> should have Flat HP for survivability.</li>
-      )}
-      {char.buildType === 'tank' ? (
-        <li><strong>Ring</strong> should have Flat HP, or Effect Hit on Legendary T2 for debuff supports.</li>
-      ) : (
-        <li><strong>Ring</strong> should have Flat HP (only practical option).</li>
-      )}
-      <li>New substats unlock at every <strong>3rd enhancement level</strong> (3, 6, 9, 12).</li>
-      <li>Substat exact values and rerolling are server-side only.</li>
-    </ul>
-  </section>
+
 </LandingLayout>
