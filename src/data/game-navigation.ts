@@ -357,6 +357,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Equipment',
         links: [
           { name: 'Database', href: '/guides/star-savior/gear/' },
+          { name: 'Builds', href: '/guides/star-savior/builds/' },
         ],
       },
       {

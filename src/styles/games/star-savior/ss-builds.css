@@ -1,0 +1,281 @@
+/* Star Savior Character Builds Page Styles */
+
+.ss-builds-intro {
+  margin-bottom: 2rem;
+}
+
+.ss-builds-intro-text {
+  font-size: 0.9375rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.ss-builds-section {
+  margin-bottom: 2.5rem;
+}
+
+.ss-builds-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ss-border);
+}
+
+/* Build Card */
+.ss-builds-card {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ss-builds-card--dps {
+  border-top: 3px solid var(--ss-error);
+}
+
+.ss-builds-card--tank {
+  border-top: 3px solid var(--ss-accent);
+}
+
+.ss-builds-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--ss-bg-tertiary);
+}
+
+.ss-builds-card-label {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+}
+
+.ss-builds-card-set {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  background: rgba(201, 168, 76, 0.12);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+}
+
+.ss-builds-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Substats */
+.ss-builds-sub-heading {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ss-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.75rem 0;
+}
+
+.ss-builds-substat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.ss-builds-substat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+}
+
+.ss-builds-substat-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ss-primary);
+  color: var(--ss-bg-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ss-builds-substat-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ss-text-primary);
+}
+
+/* Equipment Slots Grid */
+.ss-builds-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+
+.ss-builds-slot-item {
+  padding: 0.625rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+}
+
+.ss-builds-slot-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.ss-builds-slot-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.ss-builds-slot-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--ss-primary);
+  font-weight: 500;
+}
+
+.ss-builds-slot-note {
+  font-size: 0.6875rem;
+  color: var(--ss-text-tertiary);
+  margin-top: 0.25rem;
+}
+
+/* Characters */
+.ss-builds-characters {
+  margin-top: 1.25rem;
+}
+
+.ss-builds-char-heading {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ss-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.625rem 0;
+}
+
+.ss-builds-char-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ss-builds-char-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--ss-text-primary);
+}
+
+/* Notes Section */
+.ss-builds-notes-section {
+  margin-bottom: 1rem;
+}
+
+.ss-builds-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ss-builds-notes-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+}
+
+.ss-builds-notes-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ss-primary);
+}
+
+.ss-builds-notes-list li strong {
+  color: var(--ss-text-primary);
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ss-builds-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ss-builds-card-body {
+    padding: 1rem;
+  }
+
+  .ss-builds-card-header {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-builds-intro-text {
+    font-size: 0.875rem;
+  }
+
+  .ss-builds-section-title {
+    font-size: 1.1rem;
+  }
+
+  .ss-builds-card-label {
+    font-size: 1rem;
+  }
+
+  .ss-builds-card-set {
+    font-size: 0.8125rem;
+    padding: 0.2rem 0.625rem;
+  }
+
+  .ss-builds-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-builds-slot-item {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .ss-builds-char-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+  }
+
+  .ss-builds-notes-list li {
+    font-size: 0.8125rem;
+  }
+}
