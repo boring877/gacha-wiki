@@ -40,12 +40,12 @@ const TIER_LABELS: Record<string, string> = {
 
 const TIER_DESCS: Record<string, string> = {
   optimal: char.buildType === 'dps'
-    ? 'Hit this 4 times across levels 3, 6, 9, 12 for the best DPS. 2-3 hits is acceptable.'
-    : 'Hit this 4 times across levels 3, 6, 9, 12 for maximum survivability.',
+    ? 'Hit this 5 times across levels 3, 6, 9, 12, 15 for the best DPS. 2-3 hits is acceptable.'
+    : 'Hit this 5 times across levels 3, 6, 9, 12, 15 for maximum survivability.',
   great: char.buildType === 'dps'
     ? 'If you cannot hit ATK%, these are the best alternatives. HP% is very strong.'
-    : 'These are excellent secondary choices for survivability and utility.',
-  acceptable: 'Decent options if you run out of the above. Minimal impact on performance.',
+    : 'Excellent secondary choices for survivability and utility.',
+  acceptable: 'Decent options if you run out of the above.',
   filler: 'Anything else. Wont affect your build much.',
 };
 ---
@@ -115,7 +115,7 @@ const TIER_DESCS: Record<string, string> = {
   <section class="ss-build-detail-section">
     <h2 class="ss-build-detail-heading">Substats</h2>
     <p class="ss-build-detail-subs-desc">
-      New substats unlock at enhancement levels 3, 6, 9, 12 (4 rolls total). Rerolling is not available.
+      New substats unlock at enhancement levels 3, 6, 9, 12, 15 (5 rolls total).
     </p>
     <div class="ss-build-detail-subs-tiers">
       {['optimal', 'great', 'acceptable', 'filler'].map(tier => {
