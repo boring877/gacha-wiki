@@ -96,7 +96,7 @@ const TIER_DESCS: Record<string, string> = {
                 <SSStatIcon stat={STAT_ICON_MAP[rec.recommendedMainStat] || rec.recommendedMainStat} size={16} />
                 <span class="ss-build-detail-slot-stat-label">{rec.recommendedMainStatLabel}</span>
               </div>
-              {rec.actualMainStatValue > 0 && (
+              {!isRecommended && rec.actualMainStatValue > 0 && (
                 <div class="ss-build-detail-slot-stat-value">
                   {rec.actualMainStatValue} <span class="ss-build-detail-slot-stat-arrow">&rarr;</span> {rec.actualMainStatValue + rec.enchantPerStat * rec.maxEnchantLevel}
                   <span class="ss-build-detail-slot-stat-lvl">(+{rec.maxEnchantLevel})</span>
