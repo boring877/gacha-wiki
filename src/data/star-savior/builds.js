@@ -10,12 +10,14 @@ export const BUILD_TYPES = {
     name: 'DPS Build',
     description: 'Maximize damage output with ATK and CRIT bonuses.',
     set: 'Motivator',
+    setKey: 'MOTIVATOR',
     substatPriority: ['SPD', 'ATK %', 'CRIT Rate', 'CRIT Damage', 'HP %'],
   },
   tank: {
     name: 'Tank / Support Build',
     description: 'Maximize survivability with HP and resistances.',
     set: 'Perses',
+    setKey: 'PERSES',
     substatPriority: ['HP %', 'Effect RES', 'SPD', 'ATK %', 'CRIT Rate'],
   },
 };
@@ -25,26 +27,40 @@ export const SLOT_ORDER = ['Weapon', 'Gloves', 'Armor', 'Boots', 'Necklace', 'Ri
 const DPS_ROLES = ['Striker', 'Assassin', 'Caster', 'Ranger'];
 const TANK_ROLES = ['Defender', 'Supporter'];
 
+const SLOT_FILE_MAP = {
+  Weapon: 'WEAPON',
+  Gloves: 'GLOVES',
+  Armor: 'ARMOR',
+  Boots: 'SHOES',
+  Necklace: 'NECKLACE',
+  Ring: 'RING',
+};
+
 const SLOT_MAIN_STATS = {
   Weapon: { mainStat: 'ATK', note: null },
   Gloves: { mainStat: 'Flat HP', note: null },
-  Armor: { mainStat: 'DEF', note: 'Fixed stat (less important)' },
+  Armor: { mainStat: 'DEF', note: null },
   Boots: { mainStat: 'SPD', note: null },
 };
 
 function getSlotRecs(buildType) {
+  const build = BUILD_TYPES[buildType];
   const recs = {};
   SLOT_ORDER.forEach(slot => {
+    const fileName = SLOT_FILE_MAP[slot] || slot.toUpperCase();
+    const icon = `EQUIP_${build.setKey}_TIER_2_${fileName}.png`;
     if (SLOT_MAIN_STATS[slot]) {
-      recs[slot] = { ...SLOT_MAIN_STATS[slot] };
+      recs[slot] = { mainStat: SLOT_MAIN_STATS[slot].mainStat, note: SLOT_MAIN_STATS[slot].note, icon };
+    } else {
+      recs[slot] = { mainStat: null, note: null, icon };
     }
   });
   if (buildType === 'dps') {
-    recs['Necklace'] = { mainStat: 'CRIT Damage', note: 'Or Flat HP for higher tiers' };
-    recs['Ring'] = { mainStat: 'Flat HP', note: 'Only practical option' };
+    recs['Necklace'] = { mainStat: 'CRIT Damage', note: null, icon: recs['Necklace'].icon };
+    recs['Ring'] = { mainStat: 'Flat HP', note: null, icon: recs['Ring'].icon };
   } else {
-    recs['Necklace'] = { mainStat: 'Flat HP', note: 'Best for survivability' };
-    recs['Ring'] = { mainStat: 'Flat HP', note: 'Or Effect Hit on Legendary' };
+    recs['Necklace'] = { mainStat: 'Flat HP', note: null, icon: recs['Necklace'].icon };
+    recs['Ring'] = { mainStat: 'Flat HP', note: null, icon: recs['Ring'].icon };
   }
   return recs;
 }

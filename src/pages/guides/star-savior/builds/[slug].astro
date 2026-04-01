@@ -1,6 +1,6 @@
 ---
 // Star Savior Individual Character Build Detail Page
-// Full build breakdown: portrait, build type, set, 6 equipment slots, substats
+// Full build breakdown: portrait, build type, set, 6 equipment slots with images, substats
 import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
 import { CHARACTER_BUILDS, BUILD_TYPES, SLOT_ORDER } from '../../../../data/star-savior/builds.js';
 
@@ -9,7 +9,7 @@ import SSCharacterImage from '../../../../components/star-savior/SSCharacterImag
 import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
 import SSRoleImage from '../../../../components/star-savior/SSRoleImage.astro';
 import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
-import SSEquipSlotImage from '../../../../components/star-savior/SSEquipSlotImage.astro';
+import SSEquipImage from '../../../../components/star-savior/SSEquipImage.astro';
 
 export function getStaticPaths() {
   return CHARACTER_BUILDS.map(char => ({
@@ -39,8 +39,6 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
 ---
 
 <LandingLayout title={`${char.name} Build - Star Savior`} description={`Equipment build guide for ${char.name} (${char.role}). ${buildLabel} with ${char.set} set.`} gameTitle={`${char.name} Build`}>
-  <a href="/guides/star-savior/builds/" class="ss-build-detail-back">&larr; All Builds</a>
-
   <section class="ss-build-detail-header">
     <div class="ss-build-detail-portrait">
       <SSCharacterImage slug={char.slug} alt={char.name} imageType="portrait" width={280} height={280} />
@@ -65,6 +63,32 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
   </section>
 
   <section class="ss-build-detail-section">
+    <h2 class="ss-build-detail-heading">Equipment</h2>
+    <div class="ss-build-detail-slots">
+      {SLOT_ORDER.map(slot => {
+        const rec = char.slots[slot];
+        if (!rec) return null;
+        return (
+          <div class="ss-build-detail-slot">
+            <div class="ss-build-detail-slot-icon">
+              <SSEquipImage icon={rec.icon} alt={slot} width={56} />
+            </div>
+            <div class="ss-build-detail-slot-info">
+              <div class="ss-build-detail-slot-name">{slot}</div>
+              {rec.mainStat && (
+                <div class="ss-build-detail-slot-main">
+                  <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
+                  <span>{rec.mainStat}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="ss-build-detail-section">
     <h2 class="ss-build-detail-heading">Substat Priority</h2>
     <div class="ss-build-detail-subs">
       {char.substatPriority.map((stat, i) => (
@@ -76,29 +100,4 @@ const buildLabel = char.buildType === 'dps' ? 'DPS Build' : 'Tank / Support Buil
       ))}
     </div>
   </section>
-
-  <section class="ss-build-detail-section">
-    <h2 class="ss-build-detail-heading">Equipment Slots</h2>
-    <div class="ss-build-detail-slots">
-      {SLOT_ORDER.map(slot => {
-        const rec = char.slots[slot];
-        if (!rec) return null;
-        return (
-          <div class="ss-build-detail-slot">
-            <div class="ss-build-detail-slot-header">
-              <SSEquipSlotImage slot={slot} size={24} />
-              <span class="ss-build-detail-slot-name">{slot}</span>
-            </div>
-            <div class="ss-build-detail-slot-main">
-              <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={18} />
-              <span>{rec.mainStat}</span>
-            </div>
-            {rec.note && <div class="ss-build-detail-slot-note">{rec.note}</div>}
-          </div>
-        );
-      })}
-    </div>
-  </section>
-
-
 </LandingLayout>
