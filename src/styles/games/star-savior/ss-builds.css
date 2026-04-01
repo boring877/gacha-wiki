@@ -436,25 +436,6 @@
   border-radius: 10px;
 }
 
-.ss-build-detail-tier--optimal {
-  background: rgba(201, 168, 76, 0.08);
-  border-color: rgba(201, 168, 76, 0.3);
-}
-
-.ss-build-detail-tier--great {
-  background: rgba(76, 175, 80, 0.08);
-  border-color: rgba(76, 175, 80, 0.3);
-}
-
-.ss-build-detail-tier--acceptable {
-  background: rgba(91, 141, 217, 0.08);
-  border-color: rgba(91, 141, 217, 0.3);
-}
-
-.ss-build-detail-tier--filler {
-  background: var(--ss-bg-card);
-}
-
 .ss-build-detail-tier-header {
   display: flex;
   align-items: baseline;
@@ -468,22 +449,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-
-.ss-build-detail-tier--optimal .ss-build-detail-tier-label {
-  color: var(--ss-primary);
-}
-
-.ss-build-detail-tier--great .ss-build-detail-tier-label {
-  color: #4caf50;
-}
-
-.ss-build-detail-tier--acceptable .ss-build-detail-tier-label {
-  color: var(--ss-accent);
-}
-
-.ss-build-detail-tier--filler .ss-build-detail-tier-label {
-  color: var(--ss-text-tertiary);
+  color: var(--ss-text-primary);
 }
 
 .ss-build-detail-tier-desc {
@@ -509,6 +475,64 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--ss-text-primary);
+}
+
+.ss-build-detail-ring-note {
+  margin-top: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+}
+
+.ss-build-detail-set-bonuses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.ss-build-detail-set-bonus {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 8px;
+}
+
+.ss-build-detail-set-bonus--main {
+  border-color: var(--ss-primary);
+}
+
+.ss-build-detail-set-bonus-pieces {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-tertiary);
+  white-space: nowrap;
+}
+
+.ss-build-detail-set-bonus--main .ss-build-detail-set-bonus-pieces {
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--ss-primary);
+}
+
+.ss-build-detail-set-bonus-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.ss-build-detail-set-bonus-stats {
+  font-size: 0.8125rem;
+  color: var(--ss-text-secondary);
+  font-weight: 500;
 }
 
 /* === MOBILE: DATABASE === */

@@ -3,6 +3,7 @@
 // Full build: portrait, build type, set, 6 equipment slots with images/stats, tiered substats
 import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
 import { CHARACTER_BUILDS, BUILD_TYPES, SLOT_ORDER } from '../../../../data/star-savior/builds.js';
+import { STAR_SAVIOR_SET_BONUSES, EQUIP_SET_BONUS_MAP } from '../../../../data/star-savior/gear.js';
 
 import '../../../../styles/games/star-savior/ss-builds.css';
 import SSCharacterImage from '../../../../components/star-savior/SSCharacterImage.astro';
@@ -40,14 +41,20 @@ const TIER_LABELS: Record<string, string> = {
 
 const TIER_DESCS: Record<string, string> = {
   optimal: char.buildType === 'dps'
-    ? 'Hit this 5 times across levels 3, 6, 9, 12, 15 for the best DPS. 2-3 hits is acceptable.'
-    : 'Hit this 5 times across levels 3, 6, 9, 12, 15 for maximum survivability.',
+    ? 'Hit 5 times across levels 3, 6, 9, 12, 15. The most realistic case is hitting ATK% 2-3 times, which is acceptable.'
+    : 'Hit 5 times across levels 3, 6, 9, 12, 15 for maximum survivability.',
   great: char.buildType === 'dps'
     ? 'If you cannot hit ATK%, these are the best alternatives. HP% is very strong.'
     : 'Excellent secondary choices for survivability and utility.',
   acceptable: 'Decent options if you run out of the above.',
   filler: 'Anything else. Wont affect your build much.',
 };
+
+const ringNote = build.ringNote || null;
+
+const setBonusIds = EQUIP_SET_BONUS_MAP[char.set] || [];
+const fourPiece = STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === setBonusIds[0] && sb.needParts === 4);
+const twoPiece = STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === setBonusIds[2] && sb.needParts === 2);
 ---
 
 <LandingLayout title={`${char.name} Build - Star Savior`} description={`Equipment build guide for ${char.name} (${char.role}). ${buildLabel} with ${char.set} set.`} gameTitle={`${char.name} Build`}>
@@ -75,13 +82,35 @@ const TIER_DESCS: Record<string, string> = {
   </section>
 
   <section class="ss-build-detail-section">
+    <h2 class="ss-build-detail-heading">Set Bonuses</h2>
+    <div class="ss-build-detail-set-bonuses">
+      {fourPiece && (
+        <div class="ss-build-detail-set-bonus ss-build-detail-set-bonus--main">
+          <span class="ss-build-detail-set-bonus-pieces">4 pieces</span>
+          <span class="ss-build-detail-set-bonus-name">{fourPiece.name}</span>
+          <span class="ss-build-detail-set-bonus-stats">{fourPiece.statsDisplay}</span>
+        </div>
+      )}
+      {twoPiece && (
+        <div class="ss-build-detail-set-bonus">
+          <span class="ss-build-detail-set-bonus-pieces">2 pieces</span>
+          <span class="ss-build-detail-set-bonus-name">{twoPiece.name}</span>
+          <span class="ss-build-detail-set-bonus-stats">{twoPiece.statsDisplay}</span>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="ss-build-detail-section">
     <h2 class="ss-build-detail-heading">Equipment</h2>
     <div class="ss-build-detail-slots">
       {SLOT_ORDER.map(slot => {
         const rec = char.slots[slot];
         if (!rec) return null;
-        const isRecommended = rec.recommendedMainStat !== rec.actualMainStat;
-        const maxTotal = rec.actualMainStatValue + rec.enchantPerStat * rec.maxEnchantLevel;
+        const maxTotal = rec.mainStatValue + rec.enchantPerStat * rec.maxEnchantLevel;
+        const displayVal = rec.isPercent ? (rec.mainStatValue / 100).toFixed(2) : rec.mainStatValue;
+        const displayMax = rec.isPercent ? (maxTotal / 100).toFixed(2) : maxTotal;
+        const pct = rec.isPercent ? '%' : '';
         return (
           <div class="ss-build-detail-slot">
             <div class="ss-build-detail-slot-icon">
@@ -93,18 +122,13 @@ const TIER_DESCS: Record<string, string> = {
                 <span class="ss-build-detail-slot-grade">T2 Legendary</span>
               </div>
               <div class="ss-build-detail-slot-main">
-                <SSStatIcon stat={STAT_ICON_MAP[rec.recommendedMainStat] || rec.recommendedMainStat} size={16} />
-                <span class="ss-build-detail-slot-stat-label">{rec.recommendedMainStatLabel}</span>
+                <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
+                <span class="ss-build-detail-slot-stat-label">{rec.mainStatLabel}</span>
               </div>
-              {!isRecommended && rec.actualMainStatValue > 0 && (
-                <div class="ss-build-detail-slot-stat-value">
-                  {rec.actualMainStatValue} <span class="ss-build-detail-slot-stat-arrow">&rarr;</span> {rec.actualMainStatValue + rec.enchantPerStat * rec.maxEnchantLevel}
-                  <span class="ss-build-detail-slot-stat-lvl">(+{rec.maxEnchantLevel})</span>
-                </div>
-              )}
-              {isRecommended && (
-                <span class="ss-build-detail-slot-stat-rec">Recommended</span>
-              )}
+              <div class="ss-build-detail-slot-stat-value">
+                {displayVal}{pct} <span class="ss-build-detail-slot-stat-arrow">&rarr;</span> {displayMax}{pct}
+                <span class="ss-build-detail-slot-stat-lvl">(+{rec.maxEnchantLevel})</span>
+              </div>
             </div>
           </div>
         );
@@ -139,5 +163,8 @@ const TIER_DESCS: Record<string, string> = {
         );
       })}
     </div>
+    {ringNote && (
+      <div class="ss-build-detail-ring-note">{ringNote}</div>
+    )}
   </section>
 </LandingLayout>

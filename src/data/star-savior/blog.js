@@ -76,7 +76,7 @@ export const blogConfig = {
         <p>Toughness damage is <strong>blocked</strong> when:</p>
         <ul>
           <li>The attacker has an <strong>attribute disadvantage</strong> -- zero toughness damage dealt</li>
-          <li>The target triggers <strong>Evasion</strong> -- damage is reduced by 50%, debuffs not applied, no toughness damage taken</li>
+          <li>The target triggers <strong>Effect RES</strong> -- damage is reduced by 50%, debuffs not applied, no toughness damage taken</li>
         </ul>
 
         <h2>Break State</h2>
@@ -587,129 +587,107 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['beginner', 'equipment', 'gear', 'sets', 'enchanting'],
       content: `
-        <p>The equipment system in Star Savior provides stat bonuses to your characters through 6 gear slots. Each piece belongs to one of <strong>3 sets</strong>, comes in one of <strong>4 grades</strong>, and can be enchanted up to level 15. Equipping multiple pieces from the same set activates <strong>set bonuses</strong> that provide powerful stat boosts.</p>
+        <p>Characters equip 6 gear pieces across 3 sets. Each set has 4 unique set bonuses -- equip 4 pieces for the main bonus, 2 remaining pieces for a secondary bonus.</p>
 
-        <h2>Equipment Slots</h2>
-        <p>Each character can equip one item in each of the 6 slots:</p>
+        <h2 id="slots">Equipment Slots</h2>
+        <ul>
+          <li><strong>Weapon</strong> -- ATK (fixed)</li>
+          <li><strong>Gloves</strong> -- HP (fixed)</li>
+          <li><strong>Armor</strong> -- DEF (fixed)</li>
+          <li><strong>Boots</strong> -- SPD (fixed)</li>
+          <li><strong>Necklace</strong> -- ATK%, HP%, DEF%, CRIT Rate, CRIT DMG, or SPD</li>
+          <li><strong>Ring</strong> -- ATK%, HP%, DEF%, Effect Hit, or Effect RES</li>
+        </ul>
+
+        <h2 id="grades-tiers">Grades & Tiers</h2>
+        <ul>
+          <li><strong>Grades</strong> (low to high): Uncommon, Rare, Unique, Legendary -- higher grade means better base stats and higher per-level enchant bonuses</li>
+          <li><strong>Tiers</strong>: Uncommon and Rare are Tier 1 only. Unique and Legendary come in both <strong>Tier 1</strong> and <strong>Tier 2</strong> -- T2 is a direct upgrade with higher base and per-level values</li>
+        </ul>
+
+        <h2 id="main-stats">Main Stat Values (T2 Legendary, +15)</h2>
         <table class="ss-blog-table">
           <thead>
-            <tr><th>Slot</th><th>Fixed Main Stat</th></tr>
+            <tr><th>Slot</th><th>Stat</th><th>Base</th><th>Max (+15)</th></tr>
           </thead>
           <tbody>
-            <tr><td>Weapon</td><td>ATK</td></tr>
-            <tr><td>Gloves</td><td>Flat HP</td></tr>
-            <tr><td>Armor</td><td>DEF</td></tr>
-            <tr><td>Boots</td><td>SPD</td></tr>
-            <tr><td>Necklace</td><td>Varies (9 possible stats)</td></tr>
-            <tr><td>Ring</td><td>Varies (8 possible stats)</td></tr>
+            <tr><td>Weapon</td><td>ATK</td><td>70</td><td>280</td></tr>
+            <tr><td>Gloves</td><td>HP</td><td>475</td><td>1,975</td></tr>
+            <tr><td>Armor</td><td>DEF</td><td>45</td><td>180</td></tr>
+            <tr><td>Boots</td><td>SPD</td><td>15</td><td>30</td></tr>
+            <tr><td>Necklace</td><td>ATK% / HP% / DEF%</td><td>3.00%</td><td>14.25%</td></tr>
+            <tr><td>Necklace</td><td>CRIT Rate</td><td>3.50%</td><td>14.00%</td></tr>
+            <tr><td>Necklace</td><td>CRIT DMG</td><td>4.20%</td><td>16.80%</td></tr>
+            <tr><td>Necklace</td><td>SPD</td><td>15</td><td>30</td></tr>
+            <tr><td>Ring</td><td>ATK% / HP% / DEF%</td><td>3.00%</td><td>14.25%</td></tr>
+            <tr><td>Ring</td><td>Effect Hit / Effect RES</td><td>5.30%</td><td>21.80%</td></tr>
           </tbody>
         </table>
-        <p>Weapon, Gloves, Armor, and Boots always have a fixed main stat. <strong>Necklace and Ring</strong> can roll one of several main stats, so you will find multiple variants of the same necklace/ring with different stat focuses.</p>
 
-        <h2>Grades</h2>
-        <p>Equipment comes in 4 grades, listed from lowest to highest:</p>
-        <ul>
-          <li><strong>Uncommon</strong> -- lowest stats, Tier 1 only</li>
-          <li><strong>Rare</strong> -- improved stats, Tier 1 only</li>
-          <li><strong>Unique</strong> -- high stats, available in both Tier 1 and Tier 2</li>
-          <li><strong>Legendary</strong> -- highest stats, available in both Tier 1 and Tier 2</li>
-        </ul>
-        <p>Higher grade equipment has higher base main stat values and higher enchant per level bonuses, making them significantly stronger at max enchant.</p>
-
-        <h2>Tier 1 vs Tier 2</h2>
-        <p>Unique and Legendary equipment exists in two tiers. <strong>Tier 2 is a direct upgrade</strong> over Tier 1 in every way:</p>
+        <h2 id="tier-comparison">Tier 1 vs Tier 2 (Legendary)</h2>
+        <p>T2 has higher base stats and higher enchant per-level bonuses. All values below are base at +15.</p>
         <table class="ss-blog-table">
           <thead>
-            <tr><th>Stat</th><th>Tier 1 (Unique)</th><th>Tier 2 (Unique)</th></tr>
+            <tr><th>Slot</th><th>Tier 1</th><th>Tier 2</th><th>Diff</th></tr>
           </thead>
           <tbody>
-            <tr><td>Weapon ATK</td><td>40 (+120 at +15)</td><td>55 (+165 at +15)</td></tr>
-            <tr><td>Gloves HP</td><td>330 (+990 at +15)</td><td>465 (+1350 at +15)</td></tr>
-            <tr><td>Armor DEF</td><td>30 (+90 at +15)</td><td>42 (+120 at +15)</td></tr>
-            <tr><td>Boots SPD</td><td>8 (+15 at +15)</td><td>12 (+15 at +15)</td></tr>
-            <tr><td>Necklace (ATK%)</td><td>180 (+600 at +15)</td><td>240 (+900 at +15)</td></tr>
-            <tr><td>Ring (ATK%)</td><td>180 (+600 at +15)</td><td>240 (+900 at +15)</td></tr>
+            <tr><td>Weapon ATK</td><td>200</td><td>280</td><td>+40%</td></tr>
+            <tr><td>Gloves HP</td><td>1,540</td><td>1,975</td><td>+28%</td></tr>
+            <tr><td>Armor DEF</td><td>140</td><td>180</td><td>+29%</td></tr>
+            <tr><td>Boots SPD</td><td>25</td><td>30</td><td>+20%</td></tr>
+            <tr><td>Necklace ATK%/HP%/DEF%</td><td>9.75%</td><td>14.25%</td><td>+46%</td></tr>
+            <tr><td>Necklace CRIT Rate</td><td>10.00%</td><td>14.00%</td><td>+40%</td></tr>
+            <tr><td>Necklace CRIT DMG</td><td>12.00%</td><td>16.80%</td><td>+40%</td></tr>
+            <tr><td>Necklace SPD</td><td>25</td><td>30</td><td>+20%</td></tr>
+            <tr><td>Ring ATK%/HP%/DEF%</td><td>9.75%</td><td>14.25%</td><td>+46%</td></tr>
+            <tr><td>Ring Effect Hit / Effect RES</td><td>15.00%</td><td>21.80%</td><td>+45%</td></tr>
           </tbody>
         </table>
-        <p>Tier 2 also costs more to engrave (20,000 gold vs 10,000 gold) and uses a different enchant EXP curve. Uncommon and Rare equipment only exist at Tier 1.</p>
 
-        <h2>Gear Sets</h2>
-        <p>There are 3 gear sets in the game: <strong>Motivator</strong>, <strong>Wendigo</strong>, and <strong>Perses</strong>. All three sets share the same 12 set bonus pool -- any 6 equipment pieces can activate any set bonus regardless of which visual set they belong to.</p>
+        <h2 id="sets">Gear Sets</h2>
+        <p>There are 3 sets. Each has 4 unique set bonuses -- 4-piece bonuses are the primary choice, 2-piece bonuses fill remaining slots.</p>
 
-        <h2>Enchanting</h2>
-        <p>Equipment can be enchanted up to <strong>level 15</strong>. Each enchant level adds a fixed amount to the item's main stat. The bonus per level depends on the item's grade and tier:</p>
+        <h3>Motivator (Offensive)</h3>
         <ul>
-          <li>Each enchant level grants <strong>enchantPerStat</strong> bonus to the main stat</li>
-          <li>At max level (+15), the total enchant bonus is <strong>enchantPerStat x 15</strong></li>
-          <li>Higher grade and tier items have larger per-level bonuses</li>
+          <li><strong>Attack Set</strong> (4pc) -- ATK +20%</li>
+          <li><strong>Insight Set</strong> (4pc) -- CRIT Rate +30%</li>
+          <li><strong>Valor Set</strong> (2pc) -- ATK +5%, Effect RES +5%</li>
+          <li><strong>Precision Set</strong> (4pc) -- CRIT Rate +15%, Effect Hit +20%</li>
         </ul>
-        <p>For example, a Unique Tier 2 Motivator Weapon has +11 ATK per enchant level, giving +165 ATK at +15 on top of its 55 base ATK for a total of 220 ATK.</p>
 
-        <h2>Engraving</h2>
-        <p>Engraving is a separate system from enchanting. It costs gold to engrave equipment and <strong>adds +3 enchant levels to the main stat</strong>:</p>
+        <h3>Perses (Tank/Support)</h3>
         <ul>
-          <li><strong>Tier 1:</strong> 10,000 gold</li>
-          <li><strong>Tier 2:</strong> 20,000 gold</li>
+          <li><strong>Health Set</strong> (4pc) -- HP +30%</li>
+          <li><strong>Destruction Set</strong> (4pc) -- CRIT Damage +40%</li>
+          <li><strong>Barrier Set</strong> (2pc) -- HP +10%, Effect RES +5%</li>
+          <li><strong>Annihilation Set</strong> (4pc) -- CRIT Damage +20%, Effect Hit +20%</li>
+        </ul>
+
+        <h3>Wendigo (Supportive)</h3>
+        <ul>
+          <li><strong>Speed Set</strong> (4pc) -- SPD +15</li>
+          <li><strong>Defense Set</strong> (2pc) -- DEF +15%</li>
+          <li><strong>Hit Set</strong> (2pc) -- Effect Hit +20%</li>
+          <li><strong>Resistance Set</strong> (2pc) -- Effect RES +20%</li>
+        </ul>
+
+        <h2 id="enchanting">Enchanting & Engraving</h2>
+        <ul>
+          <li>Enchant up to <strong>+15</strong>, each level adds a fixed amount to the main stat</li>
+          <li>Engraving costs gold (10,000 for T1 / 20,000 for T2) and adds <strong>+3 enchant levels</strong> to the main stat (max becomes +18)</li>
           <li>Engraved gear cannot be sold, but engraving can be removed (which also unequips the gear)</li>
+          <li>T2 uses a different enchant EXP curve than T1</li>
         </ul>
 
-        <h2>Substats (Sub Options)</h2>
-        <p>In addition to the main stat, each piece of equipment has up to <strong>4 substats</strong> (called "Sub Options" in-game). Substats are randomly rolled from a pool of 11 possible stat types:</p>
-        <table class="ss-blog-table">
-          <thead>
-            <tr><th>Flat Stats</th><th>Percentage Stats</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>ATK</td><td>ATK %</td></tr>
-            <tr><td>Flat HP</td><td>HP %</td></tr>
-            <tr><td>DEF</td><td>DEF %</td></tr>
-            <tr><td>SPD</td><td>CRIT Rate</td></tr>
-            <tr><td></td><td>CRIT Damage</td></tr>
-            <tr><td></td><td>Effect Hit</td></tr>
-            <tr><td></td><td>Evasion</td></tr>
-          </tbody>
-        </table>
-        <p>The number of substats an item starts with depends on its <strong>grade</strong>. Higher grade gear starts with more substats and can unlock additional ones through enchanting:</p>
+        <h2 id="substats">Substats</h2>
         <ul>
-          <li><strong>Uncommon</strong> -- starts with fewer substats</li>
-          <li><strong>Rare</strong> -- starts with more substats</li>
-          <li><strong>Unique</strong> -- starts with 3 substats, unlocks the 4th at a certain enchant level</li>
-          <li><strong>Legendary</strong> -- starts with 3 or 4 substats</li>
+          <li>Each piece has up to <strong>4 substats</strong> randomly rolled from 11 types: ATK, HP, DEF, SPD, ATK%, HP%, DEF%, CRIT Rate, CRIT Damage, Effect Hit, Effect RES</li>
+          <li>Higher grade gear starts with more substats and can unlock additional ones through enchanting</li>
+          <li>A substat matching the main stat cannot appear on that piece (e.g., ATK% substat on a Ring with ATK% main)</li>
+          <li>New substats unlock at enhancement levels 3, 6, 9, 12, 15 (5 rolls total)</li>
+          <li>Once all slots are unlocked, further enchanting increases the values of existing substats instead of adding new ones</li>
+          <li>No duplicate substats on the same piece</li>
         </ul>
-        <p>Once all substat slots are unlocked, further enchanting increases the values of existing substats rather than adding new ones. Each substat slot can only hold one stat type -- you cannot have duplicate substats on the same piece of gear.</p>
-
-        <h2>Set Bonuses</h2>
-        <p>Equipping multiple pieces of equipment activates set bonuses. There are <strong>12 set bonuses</strong> total, and any combination of gear pieces can trigger them. Each set bonus requires a specific number of equipped pieces:</p>
-
-        <h3>2-Piece Bonuses</h3>
-        <table class="ss-blog-table">
-          <thead>
-            <tr><th>Set Bonus</th><th>Effect</th><th>Pieces Needed</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Defense Set</td><td>DEF +15%</td><td>2</td></tr>
-            <tr><td>Hit Set</td><td>Effect Hit +20%</td><td>2</td></tr>
-            <tr><td>Resistance Set</td><td>Evasion +20%</td><td>2</td></tr>
-            <tr><td>Valor Set</td><td>ATK +5%, Evasion +5%</td><td>2</td></tr>
-            <tr><td>Barrier Set</td><td>HP +10%, Evasion +5%</td><td>2</td></tr>
-          </tbody>
-        </table>
-
-        <h3>4-Piece Bonuses</h3>
-        <table class="ss-blog-table">
-          <thead>
-            <tr><th>Set Bonus</th><th>Effect</th><th>Pieces Needed</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Speed Set</td><td>SPD +15</td><td>4</td></tr>
-            <tr><td>Attack Set</td><td>ATK +20%</td><td>4</td></tr>
-            <tr><td>Insight Set</td><td>CRIT Rate +30%</td><td>4</td></tr>
-            <tr><td>Precision Set</td><td>CRIT Rate +15%, Effect Hit +20%</td><td>4</td></tr>
-            <tr><td>Health Set</td><td>HP +30%</td><td>4</td></tr>
-            <tr><td>Destruction Set</td><td>CRIT Damage +40%</td><td>4</td></tr>
-            <tr><td>Annihilation Set</td><td>CRIT Damage +20%, Effect Hit +20%</td><td>4</td></tr>
-          </tbody>
-        </table>
 
       `,
     },
@@ -927,7 +905,7 @@ if TotalReduction > DamageReduceTotalLimit:
           <li>Crit Damage is applied <strong>after</strong> defense reduction and damage up/down modifiers</li>
           <li>Crit Damage Reduce (on the defender) can partially or fully negate the attacker's Crit Damage bonus</li>
           <li>Non-critical hits can have additional <strong>NST_RATE_NONCRITICAL_DAMAGE_REDUCE</strong> applied to the defender</li>
-          <li>Evasion triggers <strong>+50% damage reduction</strong> on the attacker's output (half damage on evade)</li>
+          <li>Effect RES triggers <strong>+50% damage reduction</strong> on the attacker's output (half damage on evade)</li>
         </ul>
 
         <h2 id="random-variance">Random Variance</h2>
@@ -1340,7 +1318,7 @@ public int GetStarLinkScale(NST_StatType stat)
             <tr><td>Crit Rate</td><td>45%</td><td>45%</td><td><strong>Unchanged</strong></td></tr>
             <tr><td>Crit Damage</td><td>150%</td><td>150%</td><td><strong>Unchanged</strong></td></tr>
             <tr><td>Effect Hit</td><td>100%</td><td>100%</td><td><strong>Unchanged</strong></td></tr>
-            <tr><td>Effect Evasion</td><td>0%</td><td>0%</td><td><strong>Unchanged</strong></td></tr>
+            <tr><td>Effect Effect RES</td><td>0%</td><td>0%</td><td><strong>Unchanged</strong></td></tr>
             <tr><td>Turn Speed</td><td>140</td><td>140</td><td><strong>Unchanged</strong></td></tr>
             <tr><td>Tactics Stats</td><td>Full</td><td>0</td><td><strong>Completely removed</strong></td></tr>
             <tr><td>Star Link Stats</td><td>Full</td><td>0</td><td><strong>Completely removed</strong></td></tr>
@@ -2012,7 +1990,7 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
             <tr><td>9002</td><td>BI_POTEN_PASSIVE_30002</td><td>DEF%</td><td>3%</td><td>5</td></tr>
             <tr><td>9003</td><td>BI_POTEN_PASSIVE_31003</td><td>Crit Rate</td><td>15%</td><td>1</td></tr>
             <tr><td>9004</td><td>BI_POTEN_PASSIVE_31001</td><td>ATK%</td><td>3%</td><td>5</td></tr>
-            <tr><td>9005</td><td>BI_POTEN_PASSIVE_31002</td><td>Evasion%</td><td>3%</td><td>5</td></tr>
+            <tr><td>9005</td><td>BI_POTEN_PASSIVE_31002</td><td>Effect RES%</td><td>3%</td><td>5</td></tr>
             <tr><td>9006</td><td>BI_POTEN_PASSIVE_32001</td><td>Skill ATK%</td><td>15%</td><td>1</td></tr>
             <tr><td>9007</td><td>BI_POTEN_PASSIVE_33001</td><td>Crit DMG</td><td>10%</td><td>3</td></tr>
             <tr><td>9008</td><td>BI_POTEN_PASSIVE_34001</td><td>Crit Rate</td><td>5%</td><td>3</td></tr>
@@ -2025,7 +2003,7 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
             <tr><td>9015</td><td>BI_POTEN_PASSIVE_32003</td><td>SPD (flat)</td><td>+5</td><td>3</td></tr>
             <tr><td>9016</td><td>BI_POTEN_PASSIVE_32004</td><td>Crit Rate</td><td>5%</td><td>5</td></tr>
             <tr><td>9017</td><td>BI_POTEN_PASSIVE_34003</td><td>ATK%</td><td>5%</td><td>3</td></tr>
-            <tr><td>9018</td><td>BI_POTEN_PASSIVE_25003</td><td>Evasion%</td><td>5%</td><td>6</td></tr>
+            <tr><td>9018</td><td>BI_POTEN_PASSIVE_25003</td><td>Effect RES%</td><td>5%</td><td>6</td></tr>
             <tr><td>9019</td><td>BI_POTEN_PASSIVE_400011</td><td>ATK%</td><td>8%</td><td>5</td></tr>
             <tr><td>9020</td><td>BI_POTEN_PASSIVE_402011</td><td>DEF%</td><td>10%</td><td>5</td></tr>
             <tr><td>9021</td><td>BI_POTEN_PASSIVE_404011</td><td>(unused)</td><td>--</td><td>--</td></tr>

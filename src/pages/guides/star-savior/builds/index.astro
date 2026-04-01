@@ -96,9 +96,9 @@ const sorted = [...CHARACTER_BUILDS].sort((a, b) => {
             <span class="ss-builds-card-set">{char.set} Set</span>
           </div>
           <div class="ss-builds-card-subs">
-            {char.substatPriority.slice(0, 3).map((s, i) => (
+            {((char.substatTiers?.optimal || []).concat(char.substatTiers?.great || [])).slice(0, 4).map(s => (
               <span class="ss-builds-card-sub">
-                <span class="ss-builds-card-sub-rank">{i + 1}</span> {s}
+                {s}
               </span>
             ))}
           </div>

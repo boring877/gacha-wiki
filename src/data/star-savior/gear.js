@@ -1999,9 +1999,9 @@ export const STAR_SAVIOR_SET_BONUSES =
     "icon": "ICON_SET_2P_EFFECT_EVADE.png",
     "needParts": 2,
     "stats": [
-      "Evasion +20%"
+      "Effect RES +20%"
     ],
-    "statsDisplay": "Evasion +20%"
+    "statsDisplay": "Effect RES +20%"
   },
   {
     "id": 5,
@@ -2033,9 +2033,9 @@ export const STAR_SAVIOR_SET_BONUSES =
     "needParts": 2,
     "stats": [
       "ATK % +5%",
-      "Evasion +5%"
+      "Effect RES +5%"
     ],
-    "statsDisplay": "ATK % +5%, Evasion +5%"
+    "statsDisplay": "ATK % +5%, Effect RES +5%"
   },
   {
     "id": 8,
@@ -2079,9 +2079,9 @@ export const STAR_SAVIOR_SET_BONUSES =
     "needParts": 2,
     "stats": [
       "HP % +10%",
-      "Evasion +5%"
+      "Effect RES +5%"
     ],
-    "statsDisplay": "HP % +10%, Evasion +5%"
+    "statsDisplay": "HP % +10%, Effect RES +5%"
   },
   {
     "id": 12,

@@ -14,10 +14,11 @@ export const BUILD_TYPES = {
     setKey: 'MOTIVATOR',
     substatTiers: {
       optimal: ['ATK %'],
-      great: ['HP %', 'CRIT Rate', 'SPD'],
+      great: ['HP %', 'CRIT Rate', 'SPD', 'ATK'],
       acceptable: ['CRIT Damage', 'Effect Hit'],
       filler: [],
     },
+    ringNote: 'ATK% cannot be a substat on the Ring since it is already the main stat.',
   },
   tank: {
     name: 'Tank / Support Build',
@@ -25,10 +26,11 @@ export const BUILD_TYPES = {
     setKey: 'PERSES',
     substatTiers: {
       optimal: ['HP %'],
-      great: ['Effect RES', 'SPD', 'DEF %'],
-      acceptable: ['ATK %', 'Effect Hit'],
+      great: ['ATK %', 'SPD', 'HP'],
+      acceptable: ['DEF %', 'Effect Hit', 'Effect RES'],
       filler: [],
     },
+    ringNote: 'HP% cannot be a substat on the Ring since it is already the main stat.',
   },
 };
 
@@ -42,8 +44,8 @@ const DPS_MAIN_STATS = {
   Gloves: { stat: 'Flat HP', label: 'HP' },
   Armor: { stat: 'DEF', label: 'DEF' },
   Boots: { stat: 'SPD', label: 'SPD' },
-  Necklace: { stat: 'ATK %', label: 'ATK %' },
-  Ring: { stat: 'SPD', label: 'SPD' },
+  Necklace: { stat: 'SPD', label: 'SPD', value: 15, perLvl: 1 },
+  Ring: { stat: 'ATK %', label: 'ATK %', value: 300, perLvl: 75, isPercent: true },
 };
 
 const TANK_MAIN_STATS = {
@@ -51,8 +53,8 @@ const TANK_MAIN_STATS = {
   Gloves: { stat: 'Flat HP', label: 'HP' },
   Armor: { stat: 'DEF', label: 'DEF' },
   Boots: { stat: 'SPD', label: 'SPD' },
-  Necklace: { stat: 'Flat HP', label: 'HP' },
-  Ring: { stat: 'Flat HP', label: 'HP' },
+  Necklace: { stat: 'SPD', label: 'SPD', value: 15, perLvl: 1, isPercent: false },
+  Ring: { stat: 'HP %', label: 'HP %', value: 300, perLvl: 75, isPercent: true },
 };
 
 function getSlotRecs(buildType) {
@@ -63,15 +65,29 @@ function getSlotRecs(buildType) {
   SLOT_ORDER.forEach(slot => {
     const item = t2Items.find(g => g.type === slot);
     const recommended = mainStats[slot] || { stat: '', label: '' };
+    const isRecommended = recommended.stat && recommended.stat !== (item?.mainStat || '');
+    const maxLvl = item?.maxEnchantLevel || 15;
+    let mainStatValue = 0;
+    let enchantPerStat = 0;
+    let isPercent = false;
+    if (isRecommended && recommended.value !== undefined) {
+      mainStatValue = recommended.value;
+      enchantPerStat = recommended.perLvl;
+      isPercent = recommended.isPercent || false;
+    } else if (item) {
+      mainStatValue = item.mainStatValue || 0;
+      enchantPerStat = item.enchantPerStat || 0;
+      isPercent = item.mainStatDisplay?.includes('%') || false;
+    }
     recs[slot] = {
       itemName: item?.name || slot,
       icon: item?.icon || '',
-      actualMainStat: item?.mainStat || '',
-      actualMainStatValue: item?.mainStatValue || 0,
-      enchantPerStat: item?.enchantPerStat || 0,
-      maxEnchantLevel: item?.maxEnchantLevel || 15,
-      recommendedMainStat: recommended.stat,
-      recommendedMainStatLabel: recommended.label,
+      mainStat: recommended.stat || item?.mainStat || '',
+      mainStatLabel: recommended.label || item?.mainStat || '',
+      mainStatValue,
+      enchantPerStat,
+      maxEnchantLevel: maxLvl,
+      isPercent,
     };
   });
   return recs;
