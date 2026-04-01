@@ -6,7 +6,7 @@ export const lustAsmodeusData = {
   image: 'Asmodeus.png',
   rarity: 'SSR',
   element: 'Wind',
-  class: 'Attacker',
+  class: 'Warrior',
   role: 'DPS',
   faction: 'Bicta Tower',
 
@@ -95,7 +95,7 @@ export const lustAsmodeusData = {
     title: 'King of Lust',
     level: '80/80',
     rarity: '6-star (SSR)',
-    class: 'Attacker',
+    class: 'Warrior',
     stats: {
       hp: '5,040',
       attack: '780',
@@ -117,7 +117,7 @@ export const lustAsmodeusSEO = {
   title: `${lustAsmodeusData.name} - Zone Nova Character Guide | King of Lust`,
   description: `Complete guide for ${lustAsmodeusData.name}, a ${lustAsmodeusData.rarity} ${lustAsmodeusData.element} ${lustAsmodeusData.class} in Zone Nova. Includes skills, awakenings, and the King of Lust memory card.`,
   keywords:
-    'Lust - Asmodeus, Zone Nova, King of Lust, Bicta Tower, Wind Attacker, character guide, skills, awakenings',
+    'Lust - Asmodeus, Zone Nova, King of Lust, Bicta Tower, Wind Warrior, character guide, skills, awakenings',
 };
 
 export default lustAsmodeusData;

@@ -472,7 +472,7 @@ export const ZONE_NOVA_CHARACTERS = [
     rarity: 'SSR',
     element: 'Wind',
     role: 'DPS',
-    class: 'Attacker',
+    class: 'Warrior',
     faction: getFactionByCharacter('Lust - Asmodeus'),
     tags: ['Crit Rate', 'Crit Damage', 'Defense Reduction', 'Debuff', 'Skill Damage'],
     stats: {
