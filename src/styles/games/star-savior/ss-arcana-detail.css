@@ -222,3 +222,28 @@
 .ss-arcana-episode p {
   margin: 0 0 0.5rem;
 }
+
+@media (max-width: 480px) {
+  .ss-detail-portrait-container {
+    width: 100%;
+  }
+
+  .ss-arcana-overview {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .ss-arcana-unique-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ss-arcana-event-item {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .ss-arcana-promo-item {
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+  }
+}

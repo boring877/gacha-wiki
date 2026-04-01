@@ -1,0 +1,91 @@
+---
+// Star Savior Redeem Codes Page
+import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
+import { redeemCodes, redeemInstructions, redeemNotes } from '../../../../data/star-savior/redeem-codes.js';
+
+import '../../../../styles/games/star-savior/ss-redeem-codes.css';
+---
+
+<LandingLayout title="Redeem Codes - Star Savior" description="Active redeem codes for Star Savior. Copy and redeem for free rewards." gameTitle="Redeem Codes">
+  <section class="ss-redeem-section">
+    <div class="ss-redeem-container">
+      <div class="ss-redeem-info">
+        <p class="ss-redeem-notice">Codes are shared by the community or official announcements. Try them before they expire!</p>
+      </div>
+
+      {redeemCodes.length > 0 ? (
+        <div class="ss-redeem-codes-list">
+          {redeemCodes.map(item => (
+            <div class="ss-redeem-card">
+              <div class="ss-redeem-card-info">
+                <div class="ss-redeem-code">{item.code}</div>
+                <div class="ss-redeem-meta">
+                  <span class={`ss-redeem-status ss-redeem-status-${item.status}`}>{item.status === 'active' ? 'Active' : item.status === 'expired' ? 'Expired' : 'Unknown'}</span>
+                  <span class="ss-redeem-source">{item.source}</span>
+                </div>
+                {item.rewards && <div class="ss-redeem-rewards">Rewards: {item.rewards}</div>}
+                {item.validUntilDisplay && <div class="ss-redeem-valid-until">Valid until: {item.validUntilDisplay}</div>}
+              </div>
+              <button class="ss-redeem-copy-btn" data-code={item.code}>Copy</button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="ss-redeem-empty">
+          <p>No redeem codes available right now. Check back later!</p>
+        </div>
+      )}
+
+      <div class="ss-redeem-instructions">
+        <h2>How to Redeem</h2>
+        <ol>
+          {redeemInstructions.map(step => (
+            <li>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="ss-redeem-notes">
+        <h2>Notes</h2>
+        <ul>
+          {redeemNotes.map(note => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</LandingLayout>
+
+<script>
+  document.querySelectorAll('.ss-redeem-copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      if (!code) return;
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      } catch {
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  });
+</script>

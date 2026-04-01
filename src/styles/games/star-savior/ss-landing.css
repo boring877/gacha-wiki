@@ -387,3 +387,58 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-title,
+  .ss-title-only-heading {
+    font-size: 1.5rem;
+  }
+
+  .ss-section-title {
+    font-size: 1.25rem;
+  }
+
+  .ss-char-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-guides-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-detail-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ss-detail-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .ss-detail-info h1 {
+    font-size: 1.25rem;
+  }
+
+  .ss-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.375rem;
+  }
+
+  .ss-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ss-resource-category {
+    padding: 0.875rem;
+  }
+
+  .ss-resource-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .ss-back {
+    font-size: 0.8125rem;
+  }
+}
