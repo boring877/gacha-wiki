@@ -1,189 +1,149 @@
 ---
-// Star Savior Character Builds Page
-// Simple DPS and Tank/Support build recommendations with equipment slot breakdowns
+// Star Savior Character Builds Database Page
+// Card grid of all characters with build type, set, and substat preview
 import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
-import { BUILD_TYPES, getBuildForClass, getEquipRecommendation, SLOT_ORDER } from '../../../../data/star-savior/builds.js';
-import { STAR_SAVIOR_ARCANA } from '../../../../data/star-savior/arcana.js';
+import { CHARACTER_BUILDS, BUILD_TYPES } from '../../../../data/star-savior/builds.js';
 
 import '../../../../styles/games/star-savior/ss-builds.css';
-import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
-import SSEquipSlotImage from '../../../../components/star-savior/SSEquipSlotImage.astro';
+import SSCharacterImage from '../../../../components/star-savior/SSCharacterImage.astro';
+import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
 import SSRoleImage from '../../../../components/star-savior/SSRoleImage.astro';
 
-const STAT_ICON_MAP: Record<string, string> = {
-  'ATK %': 'ATK',
-  'HP %': 'HP',
-  'DEF %': 'DEF',
-  'CRIT Rate': 'Crit Rate',
-  'CRIT Damage': 'Crit DMG',
-  'Effect Hit': 'Effect Hit',
-  'Effect RES': 'Effect RES',
-  SPD: 'SPD',
-  ATK: 'ATK',
-  DEF: 'DEF',
-  'Flat HP': 'HP',
-};
+const roles = [...new Set(CHARACTER_BUILDS.map(c => c.role))].sort();
+const buildTypes = [...new Set(CHARACTER_BUILDS.map(c => c.buildType))];
 
-const characters = STAR_SAVIOR_ARCANA
-  .filter(a => a.classSynergy && a.classSynergy !== 'All Classes')
-  .reduce((acc, arcana) => {
-    if (!acc.find(c => c.character === arcana.character)) {
-      acc.push({
-        character: arcana.character,
-        classSynergy: arcana.classSynergy,
-        statTag: arcana.statTag,
-      });
-    }
-    return acc;
-  }, [])
-  .sort((a, b) => a.character.localeCompare(b.character));
-
-const dpsCharacters = characters.filter(c => getBuildForClass(c.classSynergy, c.statTag) === 'dps');
-const tankCharacters = characters.filter(c => getBuildForClass(c.classSynergy, c.statTag) === 'tank');
-
-const dpsRecs = getEquipRecommendation('dps');
-const tankRecs = getEquipRecommendation('tank');
+const sorted = [...CHARACTER_BUILDS].sort((a, b) => {
+  if (a.buildType !== b.buildType) return a.buildType === 'dps' ? -1 : 1;
+  if (a.rarity !== b.rarity) return a.rarity === 'SSR' ? -1 : 1;
+  return a.name.localeCompare(b.name);
+});
 ---
 
-<LandingLayout title="Character Builds - Star Savior" description="Equipment build recommendations for DPS and Tank/Support characters in Star Savior." gameTitle="Character Builds">
-  <section class="ss-builds-intro">
-    <p class="ss-builds-intro-text">
-      Equipment builds are simple in Star Savior. Characters fall into two categories based on their class and stat affinity.
-      Equip the right set, pick the correct main stats on each slot, and focus substats on the priority list below.
-    </p>
+<LandingLayout title="Character Builds - Star Savior" description="Equipment build recommendations for all Star Savior characters. DPS and Tank/Support builds with substat priorities." gameTitle="Character Builds">
+  <section class="ss-builds-stats">
+    <div class="ss-builds-stats-item">
+      <div class="ss-builds-stats-value">{CHARACTER_BUILDS.length}</div>
+      <div class="ss-builds-stats-label">Builds</div>
+    </div>
+    <div class="ss-builds-stats-divider"></div>
+    <div class="ss-builds-stats-item">
+      <div class="ss-builds-stats-value">{sorted.filter(c => c.buildType === 'dps').length}</div>
+      <div class="ss-builds-stats-label">DPS</div>
+    </div>
+    <div class="ss-builds-stats-divider"></div>
+    <div class="ss-builds-stats-item">
+      <div class="ss-builds-stats-value">{sorted.filter(c => c.buildType === 'tank').length}</div>
+      <div class="ss-builds-stats-label">Tank/Support</div>
+    </div>
   </section>
 
-  <section class="ss-builds-section">
-    <h2 class="ss-builds-section-title">DPS Build</h2>
-    <div class="ss-builds-card ss-builds-card--dps">
-      <div class="ss-builds-card-header">
-        <div class="ss-builds-card-label">DPS Build</div>
-        <div class="ss-builds-card-set">Motivator Set</div>
+  <div class="ss-builds-filter-section">
+    <div class="ss-builds-filter-row">
+      <div class="ss-builds-filter-group">
+        <label class="ss-builds-filter-label">Search</label>
+        <input type="text" id="build-search" class="ss-builds-filter-input" placeholder="Search by name..." />
       </div>
+      <div class="ss-builds-filter-group">
+        <label class="ss-builds-filter-label">Role</label>
+        <select id="filter-role" class="ss-builds-filter-input">
+          <option value="">All Roles</option>
+          {roles.map(r => <option value={r}>{r}</option>)}
+        </select>
+      </div>
+      <div class="ss-builds-filter-group">
+        <label class="ss-builds-filter-label">Build</label>
+        <select id="filter-build" class="ss-builds-filter-input">
+          <option value="">All Builds</option>
+          <option value="dps">DPS</option>
+          <option value="tank">Tank / Support</option>
+        </select>
+      </div>
+      <div class="ss-builds-filter-group">
+        <label class="ss-builds-filter-label">Rarity</label>
+        <select id="filter-rarity" class="ss-builds-filter-input">
+          <option value="">All</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-      <div class="ss-builds-card-body">
-        <div class="ss-builds-substats">
-          <h3 class="ss-builds-sub-heading">Substat Priority</h3>
-          <div class="ss-builds-substat-list">
-            {BUILD_TYPES.dps.substatPriority.map((stat, i) => (
-              <div class="ss-builds-substat-item">
-                <span class="ss-builds-substat-rank">{i + 1}</span>
-                <SSStatIcon stat={STAT_ICON_MAP[stat] || stat} size={18} />
-                <span class="ss-builds-substat-name">{stat}</span>
-              </div>
+  <div class="ss-builds-grid" id="builds-grid">
+    {sorted.map(char => (
+      <a
+        href={`/guides/star-savior/builds/${char.slug}/`}
+        class="ss-builds-card build-card"
+        data-name={char.name.toLowerCase()}
+        data-role={char.role}
+        data-build={char.buildType}
+        data-rarity={char.rarity}
+      >
+        <div class="ss-builds-card-image">
+          <SSCharacterImage slug={char.slug} alt={char.name} imageType="icon" width={160} height={160} />
+        </div>
+        <div class="ss-builds-card-body">
+          <div class="ss-builds-card-name">{char.name}</div>
+          <div class="ss-builds-card-badges">
+            <SSRarityImage rarity={char.rarity} width={48} height={24} />
+            <div class="ss-builds-card-role">
+              <SSRoleImage role={char.role} width={20} height={20} />
+              <span>{char.role}</span>
+            </div>
+          </div>
+          <div class="ss-builds-card-meta">
+            <span class={`ss-builds-card-type ss-builds-card-type--${char.buildType}`}>{char.buildType === 'dps' ? 'DPS' : 'Tank / Support'}</span>
+            <span class="ss-builds-card-set">{char.set} Set</span>
+          </div>
+          <div class="ss-builds-card-subs">
+            {char.substatPriority.slice(0, 3).map((s, i) => (
+              <span class="ss-builds-card-sub">
+                <span class="ss-builds-card-sub-rank">{i + 1}</span> {s}
+              </span>
             ))}
           </div>
         </div>
+      </a>
+    ))}
+  </div>
 
-        <div class="ss-builds-slots">
-          <h3 class="ss-builds-sub-heading">Equipment Slots</h3>
-          <div class="ss-builds-slots-grid">
-            {SLOT_ORDER.map(slot => {
-              const rec = dpsRecs[slot];
-              if (!rec) return null;
-              return (
-                <div class="ss-builds-slot-item">
-                  <div class="ss-builds-slot-header">
-                    <SSEquipSlotImage slot={slot} size={20} />
-                    <span class="ss-builds-slot-name">{slot}</span>
-                  </div>
-                  <div class="ss-builds-slot-stat">
-                    <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
-                    <span>{rec.mainStat}</span>
-                  </div>
-                  {rec.note && <div class="ss-builds-slot-note">{rec.note}</div>}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ss-builds-characters">
-      <h3 class="ss-builds-char-heading">DPS Characters</h3>
-      <div class="ss-builds-char-grid">
-        {dpsCharacters.map(c => (
-          <div class="ss-builds-char-tag">
-            <SSRoleImage role={c.classSynergy} width={16} height={16} />
-            <span>{c.character}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="ss-builds-section">
-    <h2 class="ss-builds-section-title">Tank / Support Build</h2>
-    <div class="ss-builds-card ss-builds-card--tank">
-      <div class="ss-builds-card-header">
-        <div class="ss-builds-card-label">Tank / Support Build</div>
-        <div class="ss-builds-card-set">Perses Set</div>
-      </div>
-
-      <div class="ss-builds-card-body">
-        <div class="ss-builds-substats">
-          <h3 class="ss-builds-sub-heading">Substat Priority</h3>
-          <div class="ss-builds-substat-list">
-            {BUILD_TYPES.tank.substatPriority.map((stat, i) => (
-              <div class="ss-builds-substat-item">
-                <span class="ss-builds-substat-rank">{i + 1}</span>
-                <SSStatIcon stat={STAT_ICON_MAP[stat] || stat} size={18} />
-                <span class="ss-builds-substat-name">{stat}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div class="ss-builds-slots">
-          <h3 class="ss-builds-sub-heading">Equipment Slots</h3>
-          <div class="ss-builds-slots-grid">
-            {SLOT_ORDER.map(slot => {
-              const rec = tankRecs[slot];
-              if (!rec) return null;
-              return (
-                <div class="ss-builds-slot-item">
-                  <div class="ss-builds-slot-header">
-                    <SSEquipSlotImage slot={slot} size={20} />
-                    <span class="ss-builds-slot-name">{slot}</span>
-                  </div>
-                  <div class="ss-builds-slot-stat">
-                    <SSStatIcon stat={STAT_ICON_MAP[rec.mainStat] || rec.mainStat} size={16} />
-                    <span>{rec.mainStat}</span>
-                  </div>
-                  {rec.note && <div class="ss-builds-slot-note">{rec.note}</div>}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ss-builds-characters">
-      <h3 class="ss-builds-char-heading">Tank / Support Characters</h3>
-      <div class="ss-builds-char-grid">
-        {tankCharacters.map(c => (
-          <div class="ss-builds-char-tag">
-            <SSRoleImage role={c.classSynergy} width={16} height={16} />
-            <span>{c.character}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="ss-builds-section ss-builds-notes-section">
-    <h2 class="ss-builds-section-title">Notes</h2>
-    <div class="ss-builds-notes">
-      <ul class="ss-builds-notes-list">
-        <li>Only <strong>Unique</strong> and <strong>Legendary</strong> grade items contribute set bonuses. Uncommon and Rare items do not.</li>
-        <li><strong>Weapon, Gloves, Armor, Boots</strong> have fixed main stats (ATK, HP, DEF, SPD). These cannot be changed.</li>
-        <li><strong>Necklace</strong> rolls CRIT Damage on lower grades and Flat HP on higher grades. DPS characters benefit from CRIT Damage.</li>
-        <li><strong>Ring</strong> mainly rolls Flat HP. Legendary T2 rings can roll Effect Hit, useful for debuff-reliant supports.</li>
-        <li>Substats are determined at drop time and cannot be changed. Rerolling or substat exact values are server-side only.</li>
-        <li>New substats unlock at every <strong>3rd enhancement level</strong> (3, 6, 9, 12).</li>
-      </ul>
-    </div>
-  </section>
+  <div class="ss-builds-no-results" id="no-results">
+    <div>No builds found</div>
+    <div style="font-size:0.875rem;opacity:0.7;margin-top:0.25rem">Try adjusting your filters</div>
+  </div>
 </LandingLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('build-search');
+  const roleFilter = document.getElementById('filter-role');
+  const buildFilter = document.getElementById('filter-build');
+  const rarityFilter = document.getElementById('filter-rarity');
+  const noResults = document.getElementById('no-results');
+  const cards = document.querySelectorAll('.build-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const role = roleFilter.value;
+    const build = buildFilter.value;
+    const rarity = rarityFilter.value;
+    let visible = 0;
+
+    cards.forEach(card => {
+      const match = (!search || (card.dataset.name || '').includes(search))
+        && (!role || card.dataset.role === role)
+        && (!build || card.dataset.build === build)
+        && (!rarity || card.dataset.rarity === rarity);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  roleFilter.addEventListener('change', applyFilters);
+  buildFilter.addEventListener('change', applyFilters);
+  rarityFilter.addEventListener('change', applyFilters);
+});
+</script>
