@@ -55,7 +55,7 @@ const version = packageInfo.version;
       <div class="drawer-divider"></div>
 
       <div class="mobile-support-section">
-        <h3 class="social-title">Support Us</h3>
+        <h3 class="social-title">Please Support Us nya (=^&#x03C9;^=)</h3>
         <div class="mobile-support-links">
           <a
             href="https://www.youtube.com/@GachaJunkie888"
@@ -85,6 +85,15 @@ const version = packageInfo.version;
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.424 0 9.818 4.394 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818-5.424 0-9.818-4.394-9.818-9.818 0-5.424 4.394-9.818 9.818-9.818zM5.091 16.364V12l3.273 3.273V9.818L12 13.455l3.636-3.637v5.455L18.909 12v4.364h2.182v1.454H2.909v-1.454h2.182z"/>
             </svg>
             <span>Donate XMR</span>
+          </button>
+          <button
+            class="mobile-support-link eth-support"
+            data-address="0x24B48C96876D4A56519f98bfa0A337E8E9bfCAe7"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"/>
+            </svg>
+            <span>Donate ETH</span>
           </button>
         </div>
       </div>
@@ -404,8 +413,24 @@ const version = packageInfo.version;
     color: var(--amber-glow);
   }
 
+  .eth-support {
+    background: rgba(98, 126, 234, 0.1);
+    border: 1px solid rgba(98, 126, 234, 0.3);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .eth-support svg {
+    color: #627eea;
+  }
+
+  .eth-support span {
+    color: var(--amber-glow);
+  }
+
   .btc-support::after,
-  .xmr-support::after {
+  .xmr-support::after,
+  .eth-support::after {
     content: 'Copied!';
     position: absolute;
     top: 50%;
@@ -423,7 +448,8 @@ const version = packageInfo.version;
   }
 
   .btc-support.copied::after,
-  .xmr-support.copied::after {
+  .xmr-support.copied::after,
+  .eth-support.copied::after {
     opacity: 1;
   }
 
@@ -700,14 +726,14 @@ const version = packageInfo.version;
 
 <script>
   // Crypto copy-to-clipboard functionality for mobile menu
-  document.querySelectorAll('.btc-support, .xmr-support').forEach(button => {
+  document.querySelectorAll('.btc-support, .xmr-support, .eth-support').forEach(button => {
     button.addEventListener('click', async (e) => {
       e.stopPropagation(); // Prevent menu from closing
       const address = button.getAttribute('data-address');
       if (address) {
         await navigator.clipboard.writeText(address);
         button.classList.add('copied');
-        setTimeout(() => button.classList.remove('copied'), 1500);
+        setTimeout(() => button.classList.remove('copied'), 800);
       }
     });
   });

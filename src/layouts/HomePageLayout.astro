@@ -95,7 +95,7 @@ const { title, description } = Astro.props;
 
         <!-- Crypto Donation Buttons -->
         <div class="hero-donate-section">
-          <span class="donate-label">Support Us</span>
+          <span class="donate-label">Please Support Us nya (=^&#x03C9;^=)</span>
           <div class="donate-buttons">
             <button
               class="donate-button btc-donate"
@@ -117,6 +117,16 @@ const { title, description } = Astro.props;
               </svg>
               <span>XMR</span>
             </button>
+            <button
+              class="donate-button eth-donate"
+              title="Copy ETH Address"
+              data-address="0x24B48C96876D4A56519f98bfa0A337E8E9bfCAe7"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"/>
+              </svg>
+              <span>ETH</span>
+            </button>
           </div>
         </div>
       </div>
@@ -131,7 +141,7 @@ const { title, description } = Astro.props;
         if (address) {
           await navigator.clipboard.writeText(address);
           button.classList.add('copied');
-          setTimeout(() => button.classList.remove('copied'), 1500);
+          setTimeout(() => button.classList.remove('copied'), 800);
         }
       });
     });

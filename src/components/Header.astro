@@ -32,6 +32,15 @@ import MobileHeader from './MobileHeader.astro';
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.424 0 9.818 4.394 9.818 9.818 0 5.424-4.394 9.818-9.818 9.818-5.424 0-9.818-4.394-9.818-9.818 0-5.424 4.394-9.818 9.818-9.818zM5.091 16.364V12l3.273 3.273V9.818L12 13.455l3.636-3.637v5.455L18.909 12v4.364h2.182v1.454H2.909v-1.454h2.182z"/>
           </svg>
         </button>
+        <button
+          class="crypto-button eth-button"
+          title="Copy ETH Address"
+          data-address="0x24B48C96876D4A56519f98bfa0A337E8E9bfCAe7"
+        >
+          <svg class="crypto-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"/>
+          </svg>
+        </button>
         <MobileHeader />
       </div>
     </div>
@@ -106,7 +115,7 @@ import MobileHeader from './MobileHeader.astro';
     justify-self: end;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .logo-title {
@@ -148,6 +157,12 @@ import MobileHeader from './MobileHeader.astro';
     background: rgba(255, 102, 0, 0.15);
     border: 1px solid rgba(255, 102, 0, 0.4);
     color: #ff6600;
+  }
+
+  .eth-button {
+    background: rgba(98, 126, 234, 0.15);
+    border: 1px solid rgba(98, 126, 234, 0.4);
+    color: #627eea;
   }
 
   .crypto-icon {

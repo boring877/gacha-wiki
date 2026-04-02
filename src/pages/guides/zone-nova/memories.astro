@@ -37,10 +37,15 @@ const getImageFilename = (imagePath: string): string => {
             <button class="reset-btn" id="reset-table">Reset All</button>
           </div>
 
-          <div class="filter-controls">
-            <div class="filter-row">
-              <div class="filter-group">
-                <label class="filter-label">Rarity</label>
+           <div class="filter-controls">
+             <div class="filter-row" style="margin-bottom: 0.5rem;">
+               <div class="filter-group" style="flex: 1;">
+                 <input type="text" id="memory-search" placeholder="Search memory cards..." class="search-input" style="width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--amber-glow); border-radius: 6px; background: var(--bg-secondary); color: var(--text-primary); font-size: 0.9rem;" />
+               </div>
+             </div>
+             <div class="filter-row">
+               <div class="filter-group">
+                 <label class="filter-label">Rarity</label>
                 <div class="button-group rarity-group">
                   <button class="filter-btn all active" data-rarity="">All</button>
                   <button class="filter-btn ssr" data-rarity="SSR">SSR</button>
@@ -277,6 +282,7 @@ const getImageFilename = (imagePath: string): string => {
 
       // Filter memories
       function filterMemories() {
+        const searchValue = (document.getElementById('memory-search')?.value || '').trim().toLowerCase();
         const activeRarityButton = document.querySelector(
           '.rarity-group .filter-btn.active'
         ) as HTMLElement;
@@ -287,11 +293,12 @@ const getImageFilename = (imagePath: string): string => {
         const classValue = activeClassButton?.dataset.class || '';
 
         allMemories.forEach(memory => {
+          const matchesSearch = !searchValue || memory.data.name.toLowerCase().includes(searchValue);
           const matchesRarity =
             !rarityValue || memory.data.rarity.toUpperCase() === rarityValue.toUpperCase();
           const matchesClass = !classValue || memory.data.class === classValue;
 
-          const isVisible = matchesRarity && matchesClass;
+          const isVisible = matchesSearch && matchesRarity && matchesClass;
           memory.element.style.display = isVisible ? '' : 'none';
           memory.mobileElement.style.display = isVisible ? '' : 'none';
         });
@@ -364,6 +371,10 @@ const getImageFilename = (imagePath: string): string => {
         classFilterButtons.forEach(btn => btn.classList.remove('active'));
         document.querySelector('.class-group .filter-btn[data-class=""]')?.classList.add('active');
 
+        // Clear search
+        const searchInput = document.getElementById('memory-search');
+        if (searchInput) searchInput.value = '';
+
         // Clear sorting - show alphabetical order
         currentSortKey = '';
         isAscending = false;
@@ -425,6 +436,9 @@ const getImageFilename = (imagePath: string): string => {
       });
 
       resetButton.addEventListener('click', resetTable);
+
+      const searchInput = document.getElementById('memory-search');
+      if (searchInput) searchInput.addEventListener('input', filterMemories);
 
       sortButtons.forEach(button => {
         button.addEventListener('click', function () {

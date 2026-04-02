@@ -224,6 +224,12 @@
   color: #ff6600;
 }
 
+.eth-donate {
+  background: rgba(98, 126, 234, 0.15);
+  border: 1px solid rgba(98, 126, 234, 0.4);
+  color: #627eea;
+}
+
 .donate-button span {
   color: var(--amber-glow);
 }
@@ -231,7 +237,7 @@
 .donate-button::after {
   content: 'Copied!';
   position: absolute;
-  top: -30px;
+  top: calc(100% + 6px);
   left: 50%;
   transform: translateX(-50%);
   background: var(--bg-dark);
@@ -241,9 +247,10 @@
   font-size: 0.75rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
   border: 1px solid rgba(255, 183, 77, 0.3);
   white-space: nowrap;
+  z-index: 100;
 }
 
 .donate-button.copied::after {

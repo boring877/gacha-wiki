@@ -6,6 +6,7 @@ export function initializeCharacterDatabase() {
     // --- DOM references ---
     const tableBody = document.getElementById('character-table-body');
     const mobileCardsContainer = document.getElementById('mobile-cards-container');
+    const searchInput = document.getElementById('character-search');
     const elementFilter = document.getElementById('element-filter');
     const rarityFilter = document.getElementById('rarity-filter');
     const roleFilter = document.getElementById('role-filter');
@@ -77,6 +78,7 @@ export function initializeCharacterDatabase() {
 
     // --- Filtering ---
     function filterRows() {
+      const search = (searchInput?.value || '').trim().toLowerCase();
       const element = elementFilter.value.trim();
       const rarity = rarityFilter.value.trim();
       const role = roleFilter.value.trim();
@@ -135,7 +137,10 @@ export function initializeCharacterDatabase() {
           // Filter debug info available for debugging
         }
 
+        const nameText = (row.querySelector('td:nth-child(3)')?.textContent || '').toLowerCase().trim();
+
         const matches =
+          (!search || nameText.includes(search)) &&
           (!element || elementText === element) &&
           (!rarity || rarityText === rarity) &&
           (!role || roleText === role) &&
@@ -289,6 +294,7 @@ export function initializeCharacterDatabase() {
     }
 
     // --- Event listeners ---
+    if (searchInput) searchInput.addEventListener('input', filterRows);
     elementFilter.addEventListener('change', filterRows);
     rarityFilter.addEventListener('change', filterRows);
     roleFilter.addEventListener('change', filterRows);
@@ -302,6 +308,7 @@ export function initializeCharacterDatabase() {
     });
 
     resetButton.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
       elementFilter.value = '';
       rarityFilter.value = '';
       roleFilter.value = '';
