@@ -64,6 +64,13 @@ export const CHARACTER_CLASSES = {
     icon: '/images/games/zone-nova/classes/Healer.jpg',
     memoryCompatibility: 'This unit only can equip Healer memories',
   },
+
+  Destroyer: {
+    name: 'Destroyer',
+    role: 'DPS',
+    icon: '/images/games/zone-nova/classes/Destroyer.jpg',
+    memoryCompatibility: 'This unit only can equip Destroyer memories',
+  },
 };
 
 export const CHARACTER_ROLES = {
@@ -78,7 +85,7 @@ export const CHARACTER_ROLES = {
     name: 'DPS',
     description: 'Deals damage to eliminate enemies',
     primaryFunction: 'Damage output',
-    typicalClasses: ['Warrior', 'Attacker', 'Rogue', 'Mage'],
+    typicalClasses: ['Warrior', 'Attacker', 'Rogue', 'Mage', 'Destroyer'],
   },
 
   Buffer: {
@@ -128,6 +135,7 @@ export const MEMORY_COMPATIBILITY = {
   Debuffer: 'This unit only can equip Debuffer memories',
   Disruptor: 'This unit only can equip Disruptor memories',
   Healer: 'This unit only can equip Healer memories',
+  Destroyer: 'This unit only can equip Destroyer memories',
 };
 
 // Export all class names as array for easy iteration

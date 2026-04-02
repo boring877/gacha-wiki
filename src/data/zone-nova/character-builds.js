@@ -30,6 +30,7 @@ import { lokiBuild } from './character-builds/loki.js';
 import { tamamoNoMaeBuild } from './character-builds/tamamo-no-mae.js';
 import { prideLuciferBuild } from './character-builds/pride-lucifer.js';
 import { wrathSamaelBuild } from './character-builds/wrath-samael.js';
+import { hiyoriBuild } from './character-builds/hiyori.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -122,6 +123,9 @@ export const CHARACTER_BUILDS = {
 
   // Wrath-Samael Build - SSR Chaos Guardian Tank with Neutralize
   'wrath-samael': wrathSamaelBuild,
+
+  // Hiyori Build - SSR Chaos Mage Shield Destroy DPS
+  hiyori: hiyoriBuild,
 };
 
 // Generate builds for available characters only

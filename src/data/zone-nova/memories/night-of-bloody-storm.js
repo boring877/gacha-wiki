@@ -5,7 +5,7 @@ export const nightOfBloodStormData = {
   // Basic Memory Information
   name: 'Night of Bloody Storm',
   chineseName: '腥风血雨的晚上',
-  image: '/images/games/zone-nova/memories/Arthurcard.jpg',
+  image: '/images/games/zone-nova/memories/Night-of-Bloody-Storm.png',
   rarity: 'SSR',
   character: 'Arthur',
 
@@ -20,7 +20,6 @@ export const nightOfBloodStormData = {
   effects: [
     'Attack power increased by 40%',
     "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
-    'Total Potential: 40% base attack + 40% conditional ultimate damage boost',
   ],
 
   // Character Synergy

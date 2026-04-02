@@ -222,6 +222,27 @@ export const ZONE_NOVA_MEMORIES = [
     ],
   },
   {
+    id: 'the-maids-bath',
+    slug: 'the-maids-bath',
+    name: "The maid's bath",
+    image: '/images/games/zone-nova/memories/Hiyoricard.png',
+    rarity: 'SSR',
+    element: 'Chaos',
+    character: 'Hiyori',
+    class: 'Mage',
+    detailUrl: '/guides/zone-nova/memories/the-maids-bath/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    },
+    effects: [
+      "The wearer's CRIT Rate increases by 20%.",
+      'When the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.',
+      'While in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.',
+    ],
+  },
+  {
     id: 'her-trainer',
     slug: 'her-trainer',
     name: 'Her Trainer',
@@ -559,7 +580,6 @@ export const ZONE_NOVA_MEMORIES = [
     effects: [
       'Attack power increased by 40%',
       'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds',
-      'Total Potential: 40% base attack + 40% conditional damage boost with high-cost ultimates',
     ],
   },
   {
@@ -697,7 +717,7 @@ export const ZONE_NOVA_MEMORIES = [
     id: 'behind-the-regret',
     slug: 'behind-the-regret',
     name: 'Behind the Regret',
-    image: '/images/games/zone-nova/memories/mordredcard.jpg',
+    image: '/images/games/zone-nova/memories/mordredcard.png',
     rarity: 'SR',
     element: 'Fire',
     character: 'Mordred',
@@ -1000,7 +1020,7 @@ export const ZONE_NOVA_MEMORIES = [
     id: 'night-of-bloody-storm',
     slug: 'night-of-bloody-storm',
     name: 'Night of Bloody Storm',
-    image: '/images/games/zone-nova/memories/Night-of-Bloody-Storm.jpg',
+    image: '/images/games/zone-nova/memories/Night-of-Bloody-Storm.png',
     rarity: 'SSR',
     element: 'Holy',
     character: 'Arthur',
@@ -1013,7 +1033,6 @@ export const ZONE_NOVA_MEMORIES = [
     effects: [
       'Attack power increased by 40%',
       "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
-      'Total Potential: 40% base attack + 40% conditional ultimate damage boost',
     ],
   },
   {
@@ -1249,6 +1268,7 @@ export const MEMORY_METADATA = {
     'Guinevere',
     'Hela',
     'Hera',
+    'Hiyori',
     'Horus',
     'Jeanne D Arc',
     'Jorogumo',

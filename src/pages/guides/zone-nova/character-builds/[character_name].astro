@@ -24,6 +24,7 @@ import { jorogumoData } from '../../../../data/zone-nova/characters/jorogumo.js'
 import lustAsmodeusData from '../../../../data/zone-nova/characters/lust-asmodeus.js';
 import { prideLuciferData } from '../../../../data/zone-nova/characters/pride-lucifer.js';
 import { wrathSamaelData } from '../../../../data/zone-nova/characters/wrath-samael.js';
+import { hiyoriData } from '../../../../data/zone-nova/characters/hiyori.js';
 
 export const prerender = true;
 
@@ -107,9 +108,11 @@ const characterData =
                               ? lustAsmodeusData
                             : finalCharacter.slug === 'pride-lucifer'
                               ? prideLuciferData
-                              : finalCharacter.slug === 'wrath-samael'
-                                ? wrathSamaelData
-                                : null;
+                             : finalCharacter.slug === 'wrath-samael'
+                                 ? wrathSamaelData
+                                 : finalCharacter.slug === 'hiyori'
+                                   ? hiyoriData
+                                   : null;
 
 // Memory card URL mapping for easy maintenance
 const memoryCardUrls = {
@@ -183,6 +186,10 @@ const memoryCardUrls = {
 
   // Wrath-Samael memory cards
   'Suffocating Grace': '/guides/zone-nova/memories/suffocating-grace/',
+
+  // Hiyori memory cards
+  "The maid's bath": '/guides/zone-nova/memories/the-maids-bath/',
+  'Night of Bloody Storm': '/guides/zone-nova/memories/night-of-bloody-storm/',
 };
 
 // Helper function to get badge class names

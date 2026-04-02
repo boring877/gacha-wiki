@@ -4,7 +4,7 @@
 export const behindTheRegretData = {
   // Basic Memory Information
   name: 'Behind the Regret',
-  image: '/images/games/zone-nova/memories/mordredcard.jpg',
+  image: '/images/games/zone-nova/memories/mordredcard.png',
   rarity: 'SR',
   character: 'Mordred',
 

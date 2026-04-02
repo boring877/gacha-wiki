@@ -55,7 +55,7 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-03-25',
+  lastUpdated: '2026-04-02',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
@@ -91,6 +91,7 @@ export const PVE_TIER_LIST = {
       { name: 'Jorogumo' },
       { name: 'Shuten-doji' },
       { name: 'Ibaraki-doji' },
+      { name: 'Hiyori' },
     ],
     S: [
       { name: 'Shu' },
@@ -127,11 +128,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-03-25',
+  lastUpdated: '2026-04-02',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Pride-Lucifer' }],
-    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }],
+    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -343,6 +344,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-04-02',
+    changes: [
+      'Hiyori added: SS in PvE, SSS in PvP',
+      'New Chaos Mage DPS and premier Pride-Lucifer counter with highest base ATK (1,683) and Crit Rate (57%)',
+      'Ultimate destroys all target shields and deals 1060% ATK Chaos DMG with 114% bonus Crit Rate',
+      'Passive provides 26.5% bonus DMG to shielded enemies with area explosion on shield break',
+      'A1 ignores 74% DEF, A4 grants 50% ATK, A6 enhances Shield Burst and ignores 40% Chaos Resistance',
+    ],
+  },
   {
     date: '2026-03-25',
     changes: [
