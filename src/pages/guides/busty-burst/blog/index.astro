@@ -4,6 +4,10 @@ import { blogConfig } from '../../../../data/busty-burst/blog.js';
 
 const { meta, posts } = blogConfig;
 
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
 // Format date helper
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -26,9 +30,9 @@ const formatDate = (dateString: string) => {
       <h2 class="bb-blog-section-title">Latest Posts</h2>
 
       {
-        posts.length > 0 ? (
+        sortedPosts.length > 0 ? (
           <div class="bb-blog-grid">
-            {posts.map(post => (
+            {sortedPosts.map(post => (
               <a href={`/guides/busty-burst/blog/${post.slug}`} class="bb-blog-card">
                 <div class="bb-blog-card-meta">
                   <span class="bb-blog-card-category">{post.category}</span>

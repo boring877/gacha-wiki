@@ -26,7 +26,7 @@ export const blogConfig = {
         <p>Taimanin Squad is going to be a turn-based RPG featuring 3D characters. You'll be able to choose 4 characters and fight enemies in turn-based combat. I personally didn't see a speed stat, so I'm not sure how turn order is decided—maybe it's round-based instead?</p>
 
         <h2>Combat Systems</h2>
-        <p>From what I saw, there will be a crit rate, crit resist, and crit damage system, along with an elemental system featuring fire, water, and wind. There's also what looks like a dark element with no counter? Or maybe it's a non-elemental type.</p>
+        <p>From what I saw, there will be a crit rate, crit resist, and crit damage system, along with an elemental system featuring fire, water, and wind. There's also what looks like a dark element with no counter? Or maybe it's a non-elemental type. Check our <a href="/guides/taimanin-squad/mechanics/">Mechanics</a> page for a breakdown of these systems.</p>
 
         <h2>Release Timeline</h2>
         <p>The open beta will be released on the Galaxy Store on <strong>January 15th, 2026</strong>. The full release hasn't been officially announced yet, but the community is hinting at around <strong>March 5th, 2026</strong>.</p>
@@ -35,7 +35,7 @@ export const blogConfig = {
         <p>The max level will be 90, and there's going to be a team CP system. It also looks like there will be character roles—healer, buffer, ranger, debuffer, and so on. Characters will have rarities too, with the highest being 6-star. There's also a leader system for squads, which might provide buffs or let you build teams around the leader's abilities.</p>
 
         <h2>Gacha System</h2>
-        <p>So far there's not a ton of information, but the hype and excitement in the community is huge—we've already hit 300k pre-registrations in just a few days! Oh, and it looks like there will be both weapon gacha and character summons.</p>
+        <p>So far there's not a ton of information, but the hype and excitement in the community is huge—we've already hit 300k pre-registrations in just a few days! Oh, and it looks like there will be both <a href="/guides/taimanin-squad/weapons/">weapon</a> gacha and character summons.</p>
 
         <h2>Conclusion</h2>
         <p>I really love turn-based games, and Taimanin is one of my favorite series. I personally can't wait for this one, and I'm hoping the monetization isn't too greedy. This could be something really huge for Taimanin!</p>

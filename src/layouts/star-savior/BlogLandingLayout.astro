@@ -1,4 +1,6 @@
 ---
+import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
 import Analytics from '../../components/Analytics.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -21,13 +23,15 @@ export interface Props {
 }
 
 const { title, description, gameTitle, showTitle = true } = Astro.props;
+const seoTitle = `${title} | Star Savior`;
+const seoDescription = description || 'Guides, mechanics breakdowns, and tips for Star Savior players';
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <slot name="head" />
+    <SSBaseHead title={seoTitle} description={seoDescription} />
+    <GameSEO gameKey="star-savior" title={seoTitle} description={seoDescription} />
+    <Analytics />
   </head>
   <body class="ss-body">
     <CustomScrollbar />
@@ -57,7 +61,5 @@ const { title, description, gameTitle, showTitle = true } = Astro.props;
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

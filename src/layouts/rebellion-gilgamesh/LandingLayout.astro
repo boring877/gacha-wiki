@@ -43,6 +43,7 @@ const backNavigation = generateBackNavigation(Astro.url.pathname, {
     <RGBaseHead title={title} description={description} />
     <Analytics />
     <slot name="head" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
   </head>
   <body class="rebellion-gilgamesh-body">
     <CustomScrollbar />

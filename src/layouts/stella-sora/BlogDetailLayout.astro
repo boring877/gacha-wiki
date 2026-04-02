@@ -31,7 +31,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const title = `${post.title} | Stella Sora Blog`;
+const title = post.title;
 const description = post.description;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 

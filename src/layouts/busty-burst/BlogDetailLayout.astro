@@ -31,8 +31,9 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const title = `${post.title} | Busty Burst Fantasy Blog`;
+const title = post.title;
 const description = post.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 // Format date
 const formatDate = (dateString: string) => {
@@ -42,6 +43,31 @@ const formatDate = (dateString: string) => {
     month: 'long',
     day: 'numeric',
   });
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.description,
+  author: {
+    '@type': 'Person',
+    name: post.author,
+  },
+  datePublished: post.publishDate,
+  dateModified: post.publishDate,
+  publisher: {
+    '@type': 'Organization',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: post.tags.join(', '),
+  articleSection: post.category,
+  inLanguage: 'en',
 };
 ---
 
@@ -54,6 +80,7 @@ const formatDate = (dateString: string) => {
       description={description}
       customImage="/images/games/Busty_Burst/BG/bg_02.webp"
     />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   </head>
   <body class="busty-burst-body">
     <CustomScrollbar />

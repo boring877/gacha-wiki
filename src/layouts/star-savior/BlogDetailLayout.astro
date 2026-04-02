@@ -1,4 +1,6 @@
 ---
+import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
 import Analytics from '../../components/Analytics.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -27,6 +29,9 @@ export interface Props {
 }
 
 const { post } = Astro.props;
+const title = `${post.title} | Star Savior Blog`;
+const description = post.description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -36,13 +41,39 @@ const formatDate = (dateString: string) => {
     day: 'numeric',
   });
 };
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.description,
+  author: {
+    '@type': 'Person',
+    name: post.author,
+  },
+  datePublished: post.publishDate,
+  dateModified: post.publishDate,
+  publisher: {
+    '@type': 'Organization',
+    name: 'GachaWiki',
+    url: 'https://gachawiki.info',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+  keywords: post.tags.join(', '),
+  articleSection: post.category,
+  inLanguage: 'en',
+};
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <slot name="head" />
+    <SSBaseHead title={title} description={description} />
+    <GameSEO gameKey="star-savior" title={title} description={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <Analytics />
   </head>
   <body class="ss-body">
     <CustomScrollbar />
@@ -93,7 +124,5 @@ const formatDate = (dateString: string) => {
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

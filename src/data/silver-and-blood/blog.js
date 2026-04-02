@@ -47,9 +47,9 @@ export const blogConfig = {
         <h2>Key Takeaways</h2>
         <ul>
           <li>Focus on clearing story maps first to unlock game modes.</li>
-          <li>Don't spread resources thin — upgrade a core team of 5-6 units.</li>
-          <li>Save premium currency for synergy leaders when possible.</li>
-          <li>Dungeons reset daily, so don't miss your free runs.</li>
+          <li>Don't spread resources thin — upgrade a core team of 5-6 units. Check the <a href="/guides/silver-and-blood/characters/">Characters</a> page to find which units are worth investing in.</li>
+          <li>Save premium currency for synergy leaders when possible. See our <a href="/guides/silver-and-blood/blog/summon-guide-synergy-leaders/">Summon Guide: Why Synergy Leaders Are Top Priority</a> for details.</li>
+          <li>Dungeons reset daily, so don't miss your free runs. Upgrading your <a href="/guides/silver-and-blood/artifacts">Artifacts</a> will help you clear them faster.</li>
         </ul>
       `,
     },
@@ -65,7 +65,7 @@ export const blogConfig = {
       content: `
         <h2>Why Synergy Leaders First?</h2>
         <p>Synergy leaders provide powerful team-wide bonuses that scale with your entire roster. A good synergy leader can boost your team's damage, survivability, or utility by a significant margin, making them more impactful than individual DPS units early on.</p>
-        <p>Without a synergy leader, your team is missing out on free stats and effects that make content significantly easier. Prioritize getting at least one solid synergy leader before spending on other units.</p>
+        <p>Without a synergy leader, your team is missing out on free stats and effects that make content significantly easier. Prioritize getting at least one solid synergy leader before spending on other units. Check the <a href="/guides/silver-and-blood/synergies">Synergies</a> page to see which leaders match your team composition.</p>
 
         <h2>Gem Management</h2>
         <p>Gems are your premium summoning currency, so spending them wisely matters:</p>
@@ -76,7 +76,7 @@ export const blogConfig = {
         </ul>
 
         <h2>Synergy Priority Recommendations</h2>
-        <p>Focus on synergy leaders that match the elements and team types you're already building. A synergy leader that doesn't fit your current roster is less valuable than one that amplifies what you already have.</p>
+        <p>Focus on synergy leaders that match the elements and team types you're already building. A synergy leader that doesn't fit your current roster is less valuable than one that amplifies what you already have. Use the <a href="/guides/silver-and-blood/team-synergy">Team Synergy</a> guide to plan your comps, and refer to the <a href="/guides/silver-and-blood/tier-list">Tier List</a> to see which synergy leaders rank highest overall.</p>
       `,
     },
     {
@@ -90,7 +90,7 @@ export const blogConfig = {
       tags: ['ancestral-vault', 'sirin', 'julius', 'flora', 'clan'],
       content: `
         <h2>What Is the Ancestral Vault?</h2>
-        <p>The Ancestral Vault is an end-game collection system where you earn copies of powerful characters over time through clan contributions and quests.</p>
+        <p>The Ancestral Vault is an end-game collection system where you earn copies of powerful characters over time through clan contributions and quests. For details on a similar system, see the <a href="/guides/silver-and-blood/heirloom-vault">Heirloom Vault</a> page.</p>
 
         <h2>Character Costs</h2>
         <table class="sab-blog-table">
@@ -103,13 +103,13 @@ export const blogConfig = {
             <tr><td>Flora</td><td>20,000 Vault Points</td></tr>
           </tbody>
         </table>
-        <p>Note that Flora costs double — she is a separate character with her own unique kit, not a variant of Sirin.</p>
+        <p>Note that Flora costs double — she is a separate character with her own unique kit, not a variant of Sirin. You can look up their full kits on the <a href="/guides/silver-and-blood/characters/">Characters</a> page.</p>
 
         <h2>Earning Points</h2>
         <p>Vault points are primarily earned through clan quests. Stay active in your clan and contribute regularly to accumulate points over time. The system is designed to be a long-term progression path, not something you rush.</p>
 
         <h2>Should You Worry About It?</h2>
-        <p>No. The Ancestral Vault is a marathon, not a sprint. Focus on your immediate team needs and daily progression. The vault points will accumulate naturally as you play. There is no need to grind specifically for vault points — just participate in clan activities and let the points come in over time.</p>
+        <p>No. The Ancestral Vault is a marathon, not a sprint. Focus on your immediate team needs and daily progression. The vault points will accumulate naturally as you play. There is no need to grind specifically for vault points — just participate in clan activities and let the points come in over time. If you're just starting out, our <a href="/guides/silver-and-blood/blog/beginner-guide/">Beginner Guide</a> covers what to prioritize in the early game.</p>
       `,
     },
     {
@@ -125,7 +125,7 @@ export const blogConfig = {
         <h2>The Damage Formula</h2>
         <p>Damage in Silver and Blood follows a standard formula:</p>
         <p><strong>Damage = ATK &times; Skill Multiplier &times; (K / (K + DEF))</strong></p>
-        <p>Where <strong>K = 1300</strong> is a constant that determines how quickly defense has diminishing returns.</p>
+        <p>Where <strong>K = 1300</strong> is a constant that determines how quickly defense has diminishing returns. You can see how these stats scale across characters on the <a href="/guides/silver-and-blood/character-stats">Character Stats</a> page.</p>
 
         <h2>How Defense Works</h2>
         <p>Defense reduces incoming damage through the ratio <code>K / (K + DEF)</code>. This means:</p>
@@ -139,7 +139,7 @@ export const blogConfig = {
 
         <h2>Damage Reduction vs Defense</h2>
         <p>% Damage Reduction (DR) is more powerful per point than defense, especially at higher defense values. DR multiplies directly with your effective HP, while defense follows the diminishing curve above.</p>
-        <p>In general, if you have a choice between a small amount of defense or a small amount of DR, DR is usually better. However, defense is typically easier to stack in large quantities through equipment.</p>
+        <p>In general, if you have a choice between a small amount of defense or a small amount of DR, DR is usually better. However, defense is typically easier to stack in large quantities through equipment. For end-game gear optimization strategies that factor in these formulas, check out our <a href="/guides/silver-and-blood/blog/end-game-gear-upgrades/">End-Game Gear Upgrades</a> guide, and see the <a href="/guides/silver-and-blood/tier-list">Tier List</a> for characters that naturally scale well with defensive builds.</p>
       `,
     },
     {
@@ -159,16 +159,16 @@ export const blogConfig = {
         <p>Adding slots to gear has varying success rates depending on the current number of slots and the gear tier. Higher slot counts have lower success rates, so plan your upgrades around gear you're confident in keeping.</p>
 
         <h2>Blessings</h2>
-        <p>Blessings are additional enchantments you can apply to gear. They provide significant stat boosts and can define a build.</p>
+        <p>Blessings are additional enchantments you can apply to gear. They provide significant stat boosts and can define a build. For a deeper understanding of how these stats translate into survivability, see our <a href="/guides/silver-and-blood/blog/defense-formulas/">Defense Formulas Explained</a> guide.</p>
 
         <h3>Blessing Rates</h3>
         <p>Higher-tier blessings have lower success rates. Failed attempts may result in the blessing staying at its current tier or, in some cases, being downgraded. Always check the specific rates before attempting an upgrade.</p>
 
         <h3>Blessing Priority</h3>
-        <p>Prioritize blessings that align with your character's role and build. Offensive blessings for DPS units, defensive blessings for tanks, and utility blessings for support. Don't spread your resources across too many pieces — focus on your core gear first.</p>
+        <p>Prioritize blessings that align with your character's role and build. Offensive blessings for DPS units, defensive blessings for tanks, and utility blessings for support. Don't spread your resources across too many pieces — focus on your core gear first. Use the <a href="/guides/silver-and-blood/characters/">Characters</a> page to review each character's strengths and pick blessings accordingly.</p>
 
         <h3>Blessing Tier Values</h3>
-        <p>Each blessing tier provides a noticeable jump in power. The gap between tiers scales up, making higher tiers increasingly valuable relative to their cost.</p>
+        <p>Each blessing tier provides a noticeable jump in power. The gap between tiers scales up, making higher tiers increasingly valuable relative to their cost. Pairing the right blessings with top-tier <a href="/guides/silver-and-blood/artifacts">Artifacts</a> will maximize your character's potential in end-game content.</p>
       `,
     },
     {
@@ -188,10 +188,10 @@ export const blogConfig = {
         <p>Soulshards are the main collectible in this event. They are divided into three categories:</p>
 
         <h3>Offensive Soulshards</h3>
-        <p>These enhance your damage output. Prioritize these on your main DPS units to clear event content faster.</p>
+        <p>These enhance your damage output. Prioritize these on your main DPS units to clear event content faster. Check the <a href="/guides/silver-and-blood/characters/">Characters</a> page to identify your strongest damage dealers.</p>
 
         <h3>Defensive Soulshards</h3>
-        <p>These improve survivability. Useful for tankier units or when struggling with event boss damage.</p>
+        <p>These improve survivability. Useful for tankier units or when struggling with event boss damage. Understanding the <a href="/guides/silver-and-blood/blog/defense-formulas/">Defense Formulas</a> can help you decide how much survivability you actually need.</p>
 
         <h3>Support Soulshards</h3>
         <p>These provide utility bonuses like healing, cooldown reduction, or energy regeneration. Helpful for support characters in your event team.</p>
@@ -203,10 +203,10 @@ export const blogConfig = {
         <p>Event consumables can be used during maps to provide temporary buffs. Save the stronger consumables for harder maps where they make the biggest difference.</p>
 
         <h2>Equipment</h2>
-        <p>Event-specific equipment can be earned and upgraded during the event. This gear is useful for clearing higher difficulty maps and can sometimes be used outside the event as well.</p>
+        <p>Event-specific equipment can be earned and upgraded during the event. This gear is useful for clearing higher difficulty maps and can sometimes be used outside the event as well. For general gear optimization outside of events, see our <a href="/guides/silver-and-blood/blog/end-game-gear-upgrades/">End-Game Gear Upgrades</a> guide.</p>
 
         <h2>Ranking Rewards</h2>
-        <p>Higher placements on the event leaderboard grant better rewards. Focus on clearing content efficiently rather than rushing — consistent daily progress is more important than a single strong session.</p>
+        <p>Higher placements on the event leaderboard grant better rewards. Focus on clearing content efficiently rather than rushing — consistent daily progress is more important than a single strong session. Building a strong event team starts with having well-built characters, so consult the <a href="/guides/silver-and-blood/tier-list">Tier List</a> if you need direction on who to invest in.</p>
       `,
     },
   ],

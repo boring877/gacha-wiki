@@ -20,7 +20,7 @@ export const blogConfig = {
       tags: ['gifts', 'affinity', 'beginner', 'strategy'],
       content: `
         <h2>Understanding Affinity</h2>
-        <p>Each character in Stella Sora has an Affinity system, which you can find on their individual character pages. Affinity functions similarly to intimacy or a personal bond with your character.</p>
+        <p>Each character in Stella Sora has an Affinity system, which you can find on their individual <a href="/guides/stella-sora/characters/">character pages</a>. Affinity functions similarly to intimacy or a personal bond with your character.</p>
         <p>What makes this system particularly important is that affinity actually improves your character's damage and HP. The stat increases are quite significant and well worth investing in. However, maxing out a single character requires considerable time and resources, so planning ahead is essential.</p>
         <p>Based on our observations (without access to the game's source code), we know there are currently 42 affinity levels in total. This appears to be the highest tier available in the game right now, though we expect this cap will increase later with the introduction of 5 star gifts.</p>
 
@@ -45,7 +45,7 @@ export const blogConfig = {
             <tr><td>5 Star</td><td>3,000</td><td>2,000</td><td>1,600</td></tr>
           </tbody>
         </table>
-        <p>Each character has specific gifts they love, which we have detailed on our wiki at guides/stella-sora/character-gifts/.</p>
+        <p>Each character has specific gifts they love, which we have detailed on our <a href="/guides/stella-sora/character-gifts/">Character Gifts</a> page.</p>
         <p>Matching the right gift to the right character is crucial because it increases points earned by 50%. Since you are limited to 10 gifts per day, always use the highest quality gifts available. Currently, that means 4 star gifts.</p>
         <p>To illustrate the difference: giving 10 loved 4 star gifts yields 7,500 points. Once 5 star gifts become available, just 3 loved 5 star gifts will provide 9,000 points. The efficiency jump is substantial.</p>
 
@@ -126,7 +126,7 @@ export const blogConfig = {
         <p>This requires almost 10 times fewer gifts than maxing out completely. Using 4 star loved gifts, you can reach level 30 in just 26 days.</p>
 
         <h2>Conclusion</h2>
-        <p>Focus on reaching level 30 affinity using 4 star loved gifts. This target provides excellent stat bonuses at a fraction of the total investment required for max level. Do not hoard your 4 star gifts waiting for 5 star crafting since the immediate power boost will serve you far better right now.</p>
+        <p>Focus on reaching level 30 affinity using 4 star loved gifts. This target provides excellent stat bonuses at a fraction of the total investment required for max level. Check our <a href="/guides/stella-sora/tier-list/">Tier List</a> to decide which characters are worth prioritizing. Do not hoard your 4 star gifts waiting for 5 star crafting since the immediate power boost will serve you far better right now.</p>
       `,
     },
     {
@@ -147,13 +147,13 @@ export const blogConfig = {
         <p>The first tip is to use an Ignis-type team. This allows you to break the boss's resilience much faster, enabling you to deal massive amounts of damage during the break window.</p>
 
         <h2>Tip 2: Run Fuyuka Ultimate Build</h2>
-        <p>Without Fuyuka, you will really struggle to finish the 100-point challenge. It's possible but quite hard. Using the Ultimate build makes things much easier - just wait for your ultimate to charge, then one-shot the boss!</p>
+        <p>Without <a href="/guides/stella-sora/characters/">Fuyuka</a>, you will really struggle to finish the 100-point challenge. It's possible but quite hard. Using the Ultimate build makes things much easier - just wait for your ultimate to charge, then one-shot the boss!</p>
 
         <h2>Tip 3: Use Flora and Snowish Laru as Support</h2>
         <p>Flora provides buffs, damage increase, crit rate, and crit damage to help you deal more damage. Snowish Laru uses her minion to tank and deal damage. You can replace Snowish Laru, but she is really helpful here.</p>
 
         <h2>My Build Setup</h2>
-        <p>Here are the potentials I used to clear this raid:</p>
+        <p>Here are the <a href="/guides/stella-sora/all-potentials/">potentials</a> I used to clear this raid:</p>
 
         <h3>Fuyuka - Ultimate Build</h3>
         <p><strong>Core Potentials (Lv 1):</strong> Kitty Punch, Multi-Shot Blast, Combo Punch, Pyro Mark</p>
@@ -193,7 +193,7 @@ export const blogConfig = {
         <p>Crit Rate adjustment affixes are great to get. They help increase your crit rate, even if you lose a little damage in exchange.</p>
 
         <h2>Conclusion</h2>
-        <p>You should be able to finish this boss raid and clear everything without spending too much time, whether you're F2P or spending. Don't forget that on the last week of this raid, the game gives you new buffs that will help you clear 100 points!</p>
+        <p>You should be able to finish this boss raid and clear everything without spending too much time, whether you're F2P or spending. For more team composition ideas, check out our <a href="/guides/stella-sora/tier-list/">Tier List</a>. Don't forget that on the last week of this raid, the game gives you new buffs that will help you clear 100 points!</p>
       `,
     },
   ],

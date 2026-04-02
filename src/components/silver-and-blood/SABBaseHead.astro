@@ -7,6 +7,7 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!-- Essential Metadata Only -->
@@ -65,3 +66,4 @@ const { title, description } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />

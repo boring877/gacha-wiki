@@ -18,10 +18,10 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['beginner', 'combat', 'attributes', 'toughness', 'break'],
       content: `
-        <p>Star Savior's combat revolves around two interlocking systems: the <strong>Attribute Advantage</strong> system (Sun, Moon, Star, Chaos, Order) and the <strong>Toughness/Break</strong> system. Understanding both is key to building effective teams and clearing content.</p>
+        <p>Star Savior's combat revolves around two interlocking systems: the <strong>Attribute Advantage</strong> system (Sun, Moon, Star, Chaos, Order) and the <strong>Toughness/Break</strong> system. Understanding both is key to <a href="/guides/star-savior/builds/">building effective teams</a> and clearing content.</p>
 
         <h2>Attribute System Overview</h2>
-        <p>Every playable unit belongs to one of five attributes. Each attribute has a counter relationship with others:</p>
+        <p>Every playable unit belongs to one of five attributes. You can look up each character's attribute in the <a href="/guides/star-savior/arcana/">Arcana Database</a>. Each attribute has a counter relationship with others:</p>
 
         <table class="ss-blog-table">
           <thead>
@@ -87,7 +87,7 @@ export const blogConfig = {
           <li>At the <strong>start of the broken unit's next turn</strong>, their Toughness is <strong>fully restored</strong> automatically</li>
         </ul>
 
-        <p>This creates a tactical loop: break an enemy's toughness, they take 15% more damage for the rest of the turn, then their toughness restores on their next turn.</p>
+        <p>This creates a tactical loop: break an enemy's toughness, they take 15% more damage for the rest of the turn, then their toughness restores on their next turn. For more on how the <a href="/guides/star-savior/blog/nova-burst-system-guide/">Nova Burst system</a> interacts with Toughness, see the Nova Burst guide.</p>
 
         <h2>Break Skills</h2>
         <p>When an enemy's Toughness is broken while a <strong>Break Skill</strong> is equipped, you earn Break Points:</p>
@@ -128,7 +128,7 @@ export const blogConfig = {
 
         <h2>Putting It All Together</h2>
         <ul>
-          <li>Match your team's attributes to counter enemy attributes for the +5% DMG, +30% Effect Hit, and +1 Toughness DMG</li>
+          <li>Match your team's attributes to counter enemy attributes for the +5% DMG, +30% Effect Hit, and +1 Toughness DMG -- use the <a href="/guides/star-savior/builds/">Character Builds</a> page to find strong team compositions</li>
           <li>Break enemy Toughness to trigger the 15% increased damage taken debuff</li>
           <li>Use Break Skills for powerful Domain Deployment effects</li>
           <li>Stack resource buffs (Chill, Ignition, etc.) for additional damage against specific attributes</li>
@@ -145,10 +145,10 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['beginner', 'arcana', 'journey', 'gacha', 'training', 'promotion'],
       content: `
-        <p><strong>Arcana</strong> are character bond cards that provide passive bonuses during <strong>Journey mode</strong> (the roguelike exploration mode). Each Arcana represents the bond between the Savior (player) and a specific character. You equip them before starting a Journey, and they boost your training, requests, starting stats, and more.</p>
+        <p><strong>Arcana</strong> are character bond cards that provide passive bonuses during <strong>Journey mode</strong> (the roguelike exploration mode -- see the <a href="/guides/star-savior/blog/journey-system-complete-guide/">Journey System Guide</a> for full details). Each Arcana represents the bond between the Savior (player) and a specific character. You equip them before starting a Journey, and they boost your training, requests, starting stats, and more.</p>
 
         <h2 id="overview">Overview</h2>
-        <p>The Arcana system is a <strong>card collection and progression system</strong> layered on top of Journey mode. There are <strong>67 total Arcana</strong> tied to characters from the game's roster. Each card:</p>
+        <p>The Arcana system is a <strong>card collection and progression system</strong> layered on top of Journey mode. There are <strong>67 total Arcana</strong> tied to characters from the game's roster. Browse the full list in the <a href="/guides/star-savior/arcana/">Arcana Database</a>. Each card:</p>
         <ul>
           <li>Is linked to one specific character</li>
           <li>Has a rarity grade (R, SR, or SSR)</li>
@@ -344,11 +344,11 @@ export const blogConfig = {
 
         <p>Examples of unique effect names (localized):</p>
         <ul>
-          <li>Bell -- "Mutual Arrangements" (40 BP)</li>
-          <li>Emily -- "Battle Readiness" (70 BP)</li>
-          <li>Charlotte -- "The Grand Master's Prestige" (30 BP)</li>
-          <li>Carmen -- "Secret Recipe Soup" (60 BP)</li>
-          <li>Luna -- "Lunar Blessing" (50 BP)</li>
+          <li><a href="/guides/star-savior/arcana/bell-deep-mourning/">Bell</a> -- "Mutual Arrangements" (40 BP)</li>
+          <li><a href="/guides/star-savior/arcana/emily-a-quiet-moment-of-rest/">Emily</a> -- "Battle Readiness" (70 BP)</li>
+          <li><a href="/guides/star-savior/arcana/charlotte-a-knight-s-oath/">Charlotte</a> -- "The Grand Master's Prestige" (30 BP)</li>
+          <li><a href="/guides/star-savior/arcana/carmen-night-view-beyond-the-window/">Carmen</a> -- "Secret Recipe Soup" (60 BP)</li>
+          <li><a href="/guides/star-savior/arcana/luna-beyond-the-moon/">Luna</a> -- "Lunar Blessing" (50 BP)</li>
         </ul>
 
         <h2 id="journey-events">Journey Events</h2>
@@ -489,7 +489,7 @@ export const blogConfig = {
         <h2 id="tips">Tips</h2>
         <ul>
           <li><strong>Prioritize SSR Arcana</strong> -- the Special Tag combat buff and Class Synergy make them significantly stronger than SR/R</li>
-          <li><strong>Match Class Synergy</strong> -- equipping an Arcana with class synergy matching your nurturers gives +5% training effect, which compounds over a Journey</li>
+          <li><strong>Match Class Synergy</strong> -- equipping an Arcana with class synergy matching your nurturers gives +5% training effect, which compounds over a Journey. Check <a href="/guides/star-savior/builds/">Character Builds</a> for recommended Arcana per character</li>
           <li><strong>Level multiple Arcana</strong> -- you need Bond Points from Lv30+ Arcana to activate Unique Effects, so spread your EXP items across several cards</li>
           <li><strong>Save Bond Points for key Unique Effects</strong> -- some cost 30 BP (cheap) while others cost 70 BP (expensive); plan which effects you want per Journey</li>
           <li><strong>Farm limit breaks</strong> -- duplicate Arcana convert to shards for limit break, raising the level cap and unlocking higher-tier promotions</li>
@@ -558,10 +558,10 @@ export const blogConfig = {
           <li>Utility: Heal lowest HP ally, clear 1 debuff from all allies, Action Gauge manipulation, Stealth</li>
         </ul>
 
-        <p>For example, some characters gain a shield on their unique Nova Burst skill, while others increase debuff application chance to 100%. Check each character's skill page to see their specific Nova Burst effects.</p>
+        <p>For example, some characters gain a shield on their unique Nova Burst skill, while others increase debuff application chance to 100%. Check each character's build page in the <a href="/guides/star-savior/builds/">Character Builds</a> section to see their specific Nova Burst effects.</p>
 
         <h2>Toughness Impact</h2>
-        <p>The Nova Burst toughness effect is <strong>separate from attribute advantage</strong> toughness damage. This means:</p>
+        <p>The Nova Burst toughness effect is <strong>separate from <a href="/guides/star-savior/blog/attribute-advantage-and-toughness-guide/">attribute advantage</a></strong> toughness damage. This means:</p>
         <ul>
           <li>Without Nova Burst: attribute advantage grants +1 Toughness DMG, disadvantage grants 0</li>
           <li>With Nova Burst (toughness damage type): always deals +1 Toughness DMG regardless of attribute, stacking with attribute advantage for +2 total</li>
@@ -571,7 +571,7 @@ export const blogConfig = {
         <h2>Tips</h2>
         <ul>
           <li>Nova Force generates from <strong>all team members</strong> -- using multiple Savers' skills before bursting maximizes your force</li>
-          <li>The +15% team DMG boost applies to <strong>all three active skills</strong>, not just the unique one</li>
+          <li>The +15% team DMG boost applies to <strong>all three active skills</strong>, not just the unique one -- see the <a href="/guides/star-savior/blog/damage-formula-and-stat-optimization-guide/">Damage Formula Guide</a> for how this stacks with other modifiers</li>
           <li>Plan your Nova Burst activation around the unique skill -- save the highlight skill for after you activate Nova Burst</li>
           <li>Some characters' unique Nova Burst effects increase debuff chance to 100% -- combine these with important debuff skills</li>
         </ul>
@@ -587,7 +587,7 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['beginner', 'equipment', 'gear', 'sets', 'enchanting'],
       content: `
-        <p>Characters equip 6 gear pieces across 3 sets. Each set has 4 unique set bonuses -- equip 4 pieces for the main bonus, 2 remaining pieces for a secondary bonus.</p>
+        <p>Characters equip 6 gear pieces across 3 sets. Each set has 4 unique set bonuses -- equip 4 pieces for the main bonus, 2 remaining pieces for a secondary bonus. Browse all items and their stats in the <a href="/guides/star-savior/gear/">Equipment Database</a>.</p>
 
         <h2 id="slots">Equipment Slots</h2>
         <ul>
@@ -675,13 +675,13 @@ export const blogConfig = {
         <ul>
           <li>Enchant up to <strong>+15</strong>, each level adds a fixed amount to the main stat</li>
           <li>Engraving costs gold (10,000 for T1 / 20,000 for T2) and adds <strong>+3 enchant levels</strong> to the main stat (max becomes +18)</li>
-          <li>Engraved gear cannot be sold, but engraving can be removed (which also unequips the gear)</li>
+          <li>Engraved gear cannot be sold, but engraving can be removed (which also unequips the gear). See <a href="/guides/star-savior/builds/">Character Builds</a> for recommended gear setups per character</li>
           <li>T2 uses a different enchant EXP curve than T1</li>
         </ul>
 
         <h2 id="substats">Substats</h2>
         <ul>
-          <li>Each piece has up to <strong>4 substats</strong> randomly rolled from 11 types: ATK, HP, DEF, SPD, ATK%, HP%, DEF%, CRIT Rate, CRIT Damage, Effect Hit, Effect RES</li>
+          <li>Each piece has up to <strong>4 substats</strong> randomly rolled from 11 types: ATK, HP, DEF, SPD, ATK%, HP%, DEF%, CRIT Rate, CRIT Damage, Effect Hit, Effect RES -- for help prioritizing substats, see the <a href="/guides/star-savior/blog/damage-formula-and-stat-optimization-guide/">Damage Formula &amp; Stat Optimization Guide</a></li>
           <li>Higher grade gear starts with more substats and can unlock additional ones through enchanting</li>
           <li>A substat matching the main stat cannot appear on that piece (e.g., ATK% substat on a Ring with ATK% main)</li>
           <li>New substats unlock at enhancement levels 3, 6, 9, 12, 15 (5 rolls total)</li>
@@ -1117,10 +1117,12 @@ if (isSlowed)
 
         <h2 id="build-recommendations">Build Recommendations</h2>
 
+        <p>For character-specific gear and stat recommendations, see the <a href="/guides/star-savior/builds/">Character Builds</a> page.</p>
+
         <h3>General Priority</h3>
         <ol>
-          <li><strong>Speed first</strong> -- get to 140-170 SPD to outspeed enemies and deny turns</li>
-          <li><strong>ATK as foundation</strong> -- maximize ATK through affection, tactics, resonance, and gear main stats (these are "free" and don't compete with substats)</li>
+          <li><strong>Speed first</strong> -- get to 140-170 SPD to outspeed enemies and deny turns (check the <a href="/guides/star-savior/gear/">Equipment Database</a> for SPD gear options)</li>
+          <li><strong>ATK as foundation</strong> -- maximize ATK through affection, tactics, resonance, and <a href="/guides/star-savior/blog/equipment-system-guide/">gear main stats</a> (these are "free" and don't compete with substats)</li>
           <li><strong>Crit Rate to 40-50%</strong> -- this is the minimum threshold where CD investment becomes worthwhile</li>
           <li><strong>Crit Damage as high as possible</strong> -- at 40%+ CR, CD is the highest-value stat per point</li>
           <li><strong>Effect Hit</strong> -- essential for debuff-reliant characters</li>
@@ -1230,7 +1232,7 @@ int battlePower = (int)(rawScore * multiplier);</code></pre>
       category: 'Guide',
       tags: ['advanced', 'combat', 'pvp', 'stats', 'optimization', 'theorycraft', 'damage'],
       content: `
-        <p>PvP in Star Savior works very differently from PvE when it comes to stats. The game doesn't just change the enemy stats -- it <strong>scales down your unit stats by a factor of 10</strong>, while leaving rate stats like Crit Rate and Crit Damage completely untouched. This creates a fundamentally different stat economy that changes which builds are optimal.</p>
+        <p>PvP in Star Savior works very differently from PvE when it comes to stats. The game doesn't just change the enemy stats -- it <strong>scales down your unit stats by a factor of 10</strong>, while leaving rate stats like Crit Rate and Crit Damage completely untouched. This creates a fundamentally different stat economy that changes which builds are optimal. This guide builds on the <a href="/guides/star-savior/blog/damage-formula-and-stat-optimization-guide/">PvE Damage Formula &amp; Stat Optimization Guide</a>.</p>
 
         <h2 id="pvp-stat-scaling">How PvP Stat Scaling Works</h2>
         <p>In PvP, your stats are processed through a <strong>StatScaleFactorBundle</strong> -- a set of per-provider multipliers that reduce certain stat sources:</p>
@@ -1480,7 +1482,7 @@ result = defStat / (defStat + isPvpBattle
         </div>
 
         <h2 id="pvp-crit-vs-atk">ATK Build vs Crit Build in PvP</h2>
-        <p>Here is the core comparison. Does investing in Crit outperform raw ATK when both are scaled to 10%?</p>
+        <p>Here is the core comparison. Does investing in Crit outperform raw ATK when both are scaled to 10%? For the gear sets referenced below, see the <a href="/guides/star-savior/blog/equipment-system-guide/">Equipment System Guide</a>.</p>
 
         <h3>5000 ATK + Full Crit vs 7000 ATK + No Crit</h3>
 
@@ -1618,7 +1620,7 @@ B_PvP =  700 * (1 + 0.10 * 0.50) =  700 * 1.050 =   735
           </tbody>
         </table>
 
-        <p>Over a full PvP match (7+ actions), you're very likely to crit at least a few times. The crit build's higher ceiling compounds over multiple turns. But on any single clutch skill (like a Nova Burst), there's a 55% chance you don't crit.</p>
+        <p>Over a full PvP match (7+ actions), you're very likely to crit at least a few times. The crit build's higher ceiling compounds over multiple turns. But on any single clutch skill (like a Nova Burst), there's a 55% chance you don't crit. Check <a href="/guides/star-savior/builds/">Character Builds</a> for PvP-ready team compositions.</p>
 
         <h2 id="pvp-build-recommendations">PvP Build Recommendations</h2>
 
@@ -1717,7 +1719,7 @@ OBF_27095() -> filter by OBF_4421 > 0  (has value)</code></pre>
         <blockquote><p><strong>The key difference in plain terms:</strong> <strong>Potentials</strong> (like 25% Damage Up, 15% Crit Rate) are the powerful battle buffs that <strong>you actively upgrade using Potential Points (PP)</strong>. <strong>Blessings</strong> are small flat stat bonuses (+10 to +50 ATK/HP/DEF) that are <strong>automatically assigned by the server</strong> when a parent's blessing is inherited during a journey succession event. Both are active at the same time during battle, but only Potentials require your PP investment.</p></blockquote>
 
         <h2 id="journey-start">Starting a Journey: Selecting Stellar Memories</h2>
-        <p>Before starting a Journey (Stellar Memory scenario), you must select <strong>2 Stellar Memories</strong> from your collection. These become the <strong>"ancestors" (parents)</strong> for that journey run.</p>
+        <p>Before starting a Journey (Stellar Memory scenario), you must select <strong>2 Stellar Memories</strong> from your collection. These become the <strong>"ancestors" (parents)</strong> for that journey run. For the full journey structure and turn-by-turn breakdown, see the <a href="/guides/star-savior/blog/journey-system-complete-guide/">Journey System Guide</a>.</p>
 
         <ul>
           <li>The selection screen (<code>NKCSubPageStellarMemorySelector</code>) has <strong>exactly 2 slots</strong></li>
@@ -2108,12 +2110,12 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
 
         <h2 id="practical-tips">Practical Tips</h2>
         <ul>
-          <li><strong>Prioritize PTC_SPECIAL potentials</strong> for your main DPS units -- they offer the strongest battle effects (25% Damage Up, 15% Skill ATK, etc.)</li>
+          <li><strong>Prioritize PTC_SPECIAL potentials</strong> for your main DPS units -- they offer the strongest battle effects (25% Damage Up, 15% Skill ATK, etc.). Browse character attributes in the <a href="/guides/star-savior/arcana/">Arcana Database</a> to find your main DPS units</li>
           <li><strong>Stack Crit Rate potentials</strong> if you have multiple Crit Rate buffs (3%, 5%, 15% available) -- they stack via BuffLevelMax</li>
           <li><strong>Speed is king</strong> -- flat SPD potentials (+3, +5, +10) are rare and extremely valuable since SPD is not reduced by PvP scaling</li>
           <li><strong>Hard tier stat blessings</strong> have much lower inheritance rates (4-12%) -- don't rely on them passing down</li>
           <li><strong>Battle Power matters</strong> -- potentials flagged with <code>PotenBattlePowerCheck: true</code> increase your score, which affects journey difficulty and succession eligibility</li>
-          <li><strong>Role-locked potentials</strong> (Defender, Striker, etc.) can only appear on units of that role -- factor this into your stellar memory selection</li>
+          <li><strong>Role-locked potentials</strong> (Defender, Striker, etc.) can only appear on units of that role -- factor this into your stellar memory selection. See <a href="/guides/star-savior/builds/">Character Builds</a> for role information</li>
           <li><strong>The "Gene" button</strong> at journey start shows parent blessing info -- use it to plan which ancestors to bring for specific blessing types</li>
         </ul>
 
@@ -2143,7 +2145,7 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
       category: 'Guide',
       tags: ['advanced', 'journey', 'stellar-memory', 'training', 'optimization', 'theorycraft'],
       content: `
-        <p>The <strong>Journey</strong> (Stellar Memory) is a 46-turn schedule system where you train units, fight battles, buy items, and rest between adventures. Your choices determine the final <strong>journey grade</strong> (G to SSS) and the quality of the stellar memory you create. This guide breaks down every option and its exact numerical outcome so you can plan the optimal path.</p>
+        <p>The <strong>Journey</strong> (Stellar Memory) is a 46-turn schedule system where you train units, fight battles, buy items, and rest between adventures. Your choices determine the final <strong>journey grade</strong> (G to SSS) and the quality of the stellar memory you create. This guide breaks down every option and its exact numerical outcome so you can plan the optimal path. To see which characters work best in journeys, check the <a href="/guides/star-savior/builds/">Character Builds</a> page.</p>
 
         <h2 id="journey-overview">Journey Structure</h2>
         <p>A journey has <strong>46 turns</strong> across <strong>4 towns</strong>, visited in order. Each turn you pick one activity (Train, Battle, or Rest). Boss turns force a battle and open a shop.</p>
@@ -2357,6 +2359,7 @@ battlePowerMultiplier = 1.0 + totalPotenPoint * scaleFactor</code></pre>
         </table>
 
         <h3>PP Items (for Potential investment)</h3>
+        <p>PP earned during journeys is spent on SE Potentials. For the full breakdown of how Potentials work in battle, see the <a href="/guides/star-savior/blog/blessing-potential-and-stellar-memory-guide/">Blessing, Potential &amp; Stellar Memory Guide</a>.</p>
         <table class="ss-blog-table">
           <thead><tr><th>Item</th><th>Cost</th><th>PP</th><th>Bonus</th></tr></thead>
           <tbody>
@@ -2465,7 +2468,7 @@ Ending turn:   One last training if possible</code></pre>
           </tbody>
         </table>
 
-        <blockquote><p><strong>Bottom line:</strong> Hard mode gives 2.5x PP and 2.5x the stat cap, making it the clear choice for maximizing stellar memory quality -- if your team can handle the harder battles.</p></blockquote>
+        <blockquote><p><strong>Bottom line:</strong> Hard mode gives 2.5x PP and 2.5x the stat cap, making it the clear choice for maximizing stellar memory quality -- if your team can handle the harder battles. To get free resources for powering up your team, check out the <a href="/guides/star-savior/redeem-codes/">Redeem Codes</a> page.</p></blockquote>
 
         <p>For a complete database of all journey event choices with exact reward outcomes, see the <a href="/guides/star-savior/journey/events/">Journey Event Choices</a> page.</p>
 

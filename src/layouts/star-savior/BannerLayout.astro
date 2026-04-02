@@ -1,6 +1,7 @@
 ---
 // Star Savior Banner History Layout
 import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
@@ -31,6 +32,7 @@ const {
 <html lang="en">
   <head>
     <SSBaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="star-savior" title={title} description={description} />
   </head>
   <body class="ss-body">
     <CustomScrollbar />

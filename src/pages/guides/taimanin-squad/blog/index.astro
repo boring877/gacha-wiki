@@ -4,6 +4,10 @@ import { blogConfig } from '../../../../data/taimanin-squad/blog.js';
 
 const { meta, posts } = blogConfig;
 
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
 // Format date helper
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -26,9 +30,9 @@ const formatDate = (dateString: string) => {
       <h2 class="ts-blog-section-title">Latest Posts</h2>
 
       {
-        posts.length > 0 ? (
+        sortedPosts.length > 0 ? (
           <div class="ts-blog-grid">
-            {posts.map(post => (
+            {sortedPosts.map(post => (
               <a href={`/guides/taimanin-squad/blog/${post.slug}`} class="ts-blog-card">
                 <div class="ts-blog-card-meta">
                   <span class="ts-blog-card-category">{post.category}</span>

@@ -22,7 +22,7 @@ export const blogConfig = {
         <p>A lot of players try to use Tanks early in the game to absorb hits. They keep dying early and want someone tanky enough to keep the team alive. What they don't realize is that you can use Festive Attire Estrirel to spam her healing ultimate without ever needing a tank.</p>
 
         <h2>Festive Attire Estrirel - The Infinite Healer</h2>
-        <p>Festive Attire Estrirel has high MP Charge, and once you upgrade your Annihilation Grenade weapon to higher levels, the MP Charge improves even further - letting you ultimate much faster.</p>
+        <p>Festive Attire Estrirel has high MP Charge, and once you upgrade your Annihilation Grenade weapon to higher levels, the MP Charge improves even further - letting you ultimate much faster. Check the <a href="/guides/busty-burst/characters/">Characters</a> page for her full stats and skill details.</p>
 
         <h2>Understanding MP Charge</h2>
         <p>MP Charge means that when you use your skills, you gain 150 MP. The total MP needed to activate your ultimate is 500. With this setup, you'll be able to activate your ultimate every few seconds in each fight, making tanks far less important.</p>
@@ -36,10 +36,11 @@ export const blogConfig = {
           <li>Slightly Fast</li>
           <li>Fast</li>
         </ul>
+        <p>For a detailed breakdown of how Action Speed affects combat, see our <a href="/guides/busty-burst/skill-formulas/">Skill Formulas</a> guide.</p>
 
         <h2>The Perfect Pairing: Liesel</h2>
         <p>Pairing Festive Attire Estrirel with Liesel helps with both MP generation and Action Speed. Once these two units are paired together and built properly, you won't need a tank at all.</p>
-        <p>Liesel also needs her Annihilation Staff upgraded enough to boost her MP Charge. Her Action Speed is Normal.</p>
+        <p>Liesel also needs her Annihilation Staff upgraded enough to boost her MP Charge. Her Action Speed is Normal. Refer to the <a href="/guides/busty-burst/best-weapons/">Best Weapons</a> guide to find the right weapon upgrades for each character.</p>
 
         <h2>The Result</h2>
         <p>Both units need sufficient weapon upgrades to reach enough MP Charge so you can spam both of their ultimates. This creates a cycle of constant healing and MP generation - no tank required, just good damage dealers to clear content fast!</p>
@@ -67,6 +68,7 @@ export const blogConfig = {
           <li><strong>Limited-Time Stage</strong> - Open</li>
           <li><strong>Rainbow Chest in Raid Battle Rewards</strong> - +1</li>
         </ul>
+        <p>The doubled Ruins drop rate is a great time to farm gear - check the <a href="/guides/busty-burst/weapons/">Weapons</a> guide if you're not sure what to aim for.</p>
 
         <h2>Daily Rotating Bonuses</h2>
         <p>These bonuses rotate and are highlighted during their active window:</p>
@@ -80,12 +82,12 @@ export const blogConfig = {
         </ul>
 
         <h2>Busty Emblems</h2>
-        <p>During the event, you earn Busty Emblems based on your AP and BP consumption. These emblems can be exchanged for items at the Limited-Time Exchange Shop.</p>
+        <p>During the event, you earn Busty Emblems based on your AP and BP consumption. These emblems can be exchanged for items at the Limited-Time Exchange Shop. For details on what to prioritize, see our <a href="/guides/busty-burst/blog/busty-day-exchange-shop-what-to-buy/">Busty Day Exchange Shop</a> guide.</p>
 
         <h2>Important Notes</h2>
         <ul>
           <li>If another event with the same effect is already active, the effects will not stack.</li>
-          <li>A Limited Step-Up Summon for Memory Crystals is also available during Busty Day.</li>
+          <li>A Limited Step-Up Summon for Memory Crystals is also available during Busty Day. If you pull new units, head over to the <a href="/guides/busty-burst/tier-list/">Tier List</a> to see how they rank.</li>
         </ul>
       `,
     },
@@ -100,7 +102,7 @@ export const blogConfig = {
       tags: ['event', 'busty-day', 'shop', 'guide'],
       content: `
         <p>During Busty Day, you earn Big Bust Emblems based on your stamina consumption. Each stamina spent gives you one emblem. On a typical day, you can expect to earn around 500 to 700 emblems depending on your playstyle.</p>
-        <p>If you're saving for Busty Day, you can stockpile stamina items in your mail and use them all during the event to maximize your emblem gains.</p>
+        <p>If you're saving for Busty Day, you can stockpile stamina items in your mail and use them all during the event to maximize your emblem gains. Not sure when to save? Check the <a href="/guides/busty-burst/blog/busty-day-special-event-guide/">Busty Day Event Guide</a> for event dates and bonus details.</p>
 
         <h2>Shop Items</h2>
         <table class="bb-blog-table">
@@ -141,7 +143,7 @@ export const blogConfig = {
         <p>Both cost very little and provide solid value. Ancient Artifact Coins cost 2 emblems each, while Regol Coins give you 10,000 coins for just 1 emblem.</p>
 
         <h3>4. ★5 Accessory Box, Summon Ticket, SSR Paladin's Bond</h3>
-        <p>These are fine to pick up if you have spare emblems.</p>
+        <p>These are fine to pick up if you have spare emblems. If you're pulling new units, the <a href="/guides/busty-burst/support-bonus/">Support Bonus</a> page can help you plan your bond investments.</p>
 
         <h3>5. Too Expensive - Skip These</h3>
         <p>The following items cost too much for what they offer:</p>
@@ -152,6 +154,7 @@ export const blogConfig = {
           <li>Extermination Staff Exclusive Limit Break Material</li>
           <li>Raid Battle Ticket Box</li>
         </ul>
+        <p>For a more general look at strong gear options outside of events, visit the <a href="/guides/busty-burst/best-weapons/">Best Weapons</a> page.</p>
       `,
     },
   ],

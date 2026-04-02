@@ -4,6 +4,10 @@ import { blogConfig } from '../../../../data/star-savior/blog.js';
 
 const { meta, posts } = blogConfig;
 
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', {
@@ -25,9 +29,9 @@ const formatDate = (dateString: string) => {
       <h2 class="ss-blog-section-title">Latest Posts</h2>
 
       {
-        posts.length > 0 ? (
+        sortedPosts.length > 0 ? (
           <div class="ss-blog-grid">
-            {posts.map(post => (
+            {sortedPosts.map(post => (
               <a href={`/guides/star-savior/blog/${post.slug}`} class="ss-blog-card">
                 <div class="ss-blog-card-meta">
                   <span class="ss-blog-card-category">{post.category}</span>
