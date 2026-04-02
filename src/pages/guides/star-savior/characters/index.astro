@@ -141,6 +141,7 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
                 <SSCharacterImage slug={char.slug} alt={char.name} imageType="icon" width={96} height={96} class="ss-char-table-avatar" />
                 <div>
                   <div class="ss-char-table-name">{char.name}</div>
+                  {char.title && <div class="ss-char-table-title">{char.title}</div>}
                 </div>
               </div>
             </td>
@@ -176,6 +177,7 @@ const sorted = [...STAR_SAVIOR_CHARACTERS].sort((a, b) => {
           <SSCharacterImage slug={char.slug} alt={char.name} imageType="icon" width={160} height={160} class="ss-char-card-avatar" />
           <div class="ss-char-card-info">
             <div class="ss-char-card-name">{char.name}</div>
+            {char.title && <div class="ss-char-card-title">{char.title}</div>}
             <div class="ss-char-card-badges">
               <SSRarityImage rarity={char.rarity} width={48} height={24} />
               <SSRoleImage role={char.role} width={24} height={24} /> <span class="ss-role-text">{char.role}</span>

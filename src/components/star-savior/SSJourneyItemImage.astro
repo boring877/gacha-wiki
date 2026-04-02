@@ -1,0 +1,92 @@
+---
+// Journey item icon component for Star Savior
+// Looks up journey item icon by filename from extracted game assets
+import { Image } from 'astro:assets';
+
+const journeyItemImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/journey-items/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt,
+  width = 48,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+function findImage(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(journeyItemImages).find(k =>
+    k.endsWith('/' + filename)
+  );
+  return key ? journeyItemImages[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule ? (
+  <div class={`ss-journey-item-image-wrapper ${className || ''}`} style={`--ji-img-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={95}
+      class="ss-journey-item-image"
+    />
+  </div>
+) : (
+  <div class={`ss-journey-item-image-fallback ${className || ''}`} style={`--ji-img-width: ${width}px`}>
+    <span>{(alt || '?')[0].toUpperCase()}</span>
+  </div>
+)}
+
+<style>
+  .ss-journey-item-image-wrapper {
+    width: var(--ji-img-width, 48px);
+    height: var(--ji-img-width, 48px);
+    max-width: 100%;
+    border-radius: 4px;
+    background: var(--ss-bg-tertiary);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ss-journey-item-image-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .ss-journey-item-image-fallback {
+    width: var(--ji-img-width, 48px);
+    height: var(--ji-img-width, 48px);
+    max-width: 100%;
+    border-radius: 4px;
+    background: var(--ss-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ss-text-muted);
+  }
+</style>

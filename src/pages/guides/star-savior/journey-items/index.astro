@@ -1,0 +1,237 @@
+---
+// Star Savior Journey Items Database Page
+// Displays all 287 journey items as hero cards with filters and sort
+import CharacterDatabaseLayout from '../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { STAR_SAVIOR_JOURNEY_ITEMS } from '../../../../data/star-savior/journey-items.js';
+
+import '../../../../styles/games/star-savior/ss-journey-items.css';
+import SSJourneyItemImage from '../../../../components/star-savior/SSJourneyItemImage.astro';
+
+const GRADE_ORDER: Record<string, number> = { Legendary: 0, Unique: 1, Rare: 2 };
+
+const types = [...new Set(STAR_SAVIOR_JOURNEY_ITEMS.map(i => i.type).filter(Boolean))].sort();
+const grades = [...new Set(STAR_SAVIOR_JOURNEY_ITEMS.map(i => i.grade).filter(Boolean))].sort((a, b) => (GRADE_ORDER[a] ?? 99) - (GRADE_ORDER[b] ?? 99));
+const narrativeTags = [...new Set(STAR_SAVIOR_JOURNEY_ITEMS.map(i => i.narrativeTag).filter(Boolean))].sort();
+
+const charmCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.type === 'Charm').length;
+const consumableCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.type === 'Consumable').length;
+const normalCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.type === 'Normal').length;
+const legendaryCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.grade === 'Legendary').length;
+const uniqueCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.grade === 'Unique').length;
+const rareCount = STAR_SAVIOR_JOURNEY_ITEMS.filter(i => i.grade === 'Rare').length;
+
+function getUseTagClass(useType: string): string {
+  if (useType.includes('PP')) return 'ss-ji-use-tag--pp';
+  if (useType.includes('BUFF') || useType.includes('CONDITION')) return 'ss-ji-use-tag--special';
+  return '';
+}
+
+const sorted = [...STAR_SAVIOR_JOURNEY_ITEMS].sort((a, b) => {
+  const typeOrder = { Charm: 0, Consumable: 1, Normal: 2 };
+  if (typeOrder[a.type] !== typeOrder[b.type]) return typeOrder[a.type] - typeOrder[b.type];
+  if (GRADE_ORDER[a.grade] !== GRADE_ORDER[b.grade]) return GRADE_ORDER[a.grade] - GRADE_ORDER[b.grade];
+  return a.name.localeCompare(b.name);
+});
+---
+
+<CharacterDatabaseLayout
+  title="Journey Items Database - Star Savior"
+  description="Complete journey items database for Star Savior. Browse 287 charms, consumables, and items with filters."
+  gameTitle="Journey Items"
+>
+  <div class="ss-ji-overview">
+    <div class="ss-ji-stats-row">
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{STAR_SAVIOR_JOURNEY_ITEMS.length}</span> Items</div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{charmCount}</span> Charms</div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{consumableCount}</span> Consumables</div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{normalCount}</span> Other</div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{legendaryCount}</span> <span class="ss-ji-stat-legendary">Legendary</span></div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{uniqueCount}</span> <span class="ss-ji-stat-unique">Unique</span></div>
+      <div class="ss-ji-stat-pill"><span class="ss-ji-stat-num">{rareCount}</span> <span class="ss-ji-stat-rare">Rare</span></div>
+    </div>
+  </div>
+
+  <div class="ss-ji-filter-section">
+    <div class="ss-ji-filter-row">
+      <div class="ss-ji-filter-group">
+        <label class="ss-ji-filter-label">Search</label>
+        <input type="text" id="ji-search" class="ss-ji-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="ss-ji-filter-group">
+        <label class="ss-ji-filter-label">Type</label>
+        <select id="filter-type" class="ss-ji-filter-input">
+          <option value="">All</option>
+          {types.map(t => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div class="ss-ji-filter-group">
+        <label class="ss-ji-filter-label">Grade</label>
+        <select id="filter-grade" class="ss-ji-filter-input">
+          <option value="">All</option>
+          {grades.map(g => <option value={g}>{g}</option>)}
+        </select>
+      </div>
+      <div class="ss-ji-filter-group">
+        <label class="ss-ji-filter-label">Category</label>
+        <select id="filter-narrative" class="ss-ji-filter-input">
+          <option value="">All</option>
+          {narrativeTags.map(nt => <option value={nt}>{nt}</option>)}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="ss-ji-sort-section">
+    <span class="ss-ji-sort-label">Sort by:</span>
+    <button class="ss-ji-sort-btn active" data-sort="name">Name <span class="ss-ji-sort-icon">&#9650;</span></button>
+    <button class="ss-ji-sort-btn" data-sort="grade">Grade <span class="ss-ji-sort-icon">&#9650;</span></button>
+    <button class="ss-ji-sort-btn" data-sort="type">Type <span class="ss-ji-sort-icon">&#9650;</span></button>
+    <span class="ss-ji-count-label" id="ji-visible-count">{sorted.length} items</span>
+  </div>
+
+  <div class="ss-ji-grid" id="ji-grid">
+    {sorted.map((item) => (
+      <div
+        class={`ss-ji-card ss-ji-card--${item.grade.toLowerCase()} ji-card`}
+        data-slug={item.slug}
+        data-name={item.name.toLowerCase()}
+        data-type={item.type}
+        data-grade={item.grade}
+        data-narrative={item.narrativeTag || ''}
+      >
+        <div class="ss-ji-card-top">
+          <SSJourneyItemImage icon={item.icon} alt={item.name} width={72} />
+          <div class="ss-ji-card-id">#{item.id}</div>
+        </div>
+        <div class="ss-ji-card-body">
+          <div class="ss-ji-card-name">
+            {item.name}
+            {!item.nameVerified && <span class="ss-ji-unverified" title="Name derived from icon filename">?</span>}
+          </div>
+          <div class="ss-ji-card-badges">
+            <span class={`ss-ji-badge ss-ji-badge--grade-${item.grade.toLowerCase()}`}>{item.grade}</span>
+            <span class={`ss-ji-badge ss-ji-badge--type-${item.type.toLowerCase()}`}>{item.type}</span>
+          </div>
+
+          {item.useData && item.useData.length > 0 && (
+            <div class="ss-ji-card-effects">
+              {item.useData.map(u => (
+                <span class={`ss-ji-use-tag ${getUseTagClass(u.type)}`}>
+                  {u.negative ? '' : '+'}{u.value} {u.display}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {!item.useData && item.charmConvertPP && (
+            <div class="ss-ji-card-effects">
+              <span class="ss-ji-use-tag ss-ji-use-tag--pp">{item.charmConvertPP} PP</span>
+            </div>
+          )}
+
+          {item.desc && (
+            <div class="ss-ji-card-desc">{item.desc}</div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="ss-ji-no-results" id="no-results">
+    <div class="ss-ji-no-results-icon">?</div>
+    <div>No journey items found</div>
+    <div class="ss-ji-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('ji-search');
+  const typeFilter = document.getElementById('filter-type');
+  const gradeFilter = document.getElementById('filter-grade');
+  const narrativeFilter = document.getElementById('filter-narrative');
+  const sortBtns = document.querySelectorAll('.ss-ji-sort-btn');
+  const noResults = document.getElementById('no-results');
+  const gridCards = document.querySelectorAll('.ji-card');
+  const countLabel = document.getElementById('ji-visible-count');
+
+  let currentSort = 'name';
+  let currentOrder = 'asc';
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const type = typeFilter.value;
+    const grade = gradeFilter.value;
+    const narrative = narrativeFilter.value;
+    let visible = 0;
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, type, grade, narrative);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+    if (countLabel) countLabel.textContent = visible + ' items';
+  }
+
+  function matchesFilter(el, search, type, grade, narrative) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!type || el.dataset.type === type)
+      && (!grade || el.dataset.grade === grade)
+      && (!narrative || el.dataset.narrative === narrative);
+  }
+
+  function applySort(sortBy, order) {
+    const gridEl = document.getElementById('ji-grid');
+    const cards = Array.from(gridCards);
+
+    cards.sort((a, b) => compareValues(a, b, sortBy, order));
+    cards.forEach(card => gridEl.appendChild(card));
+  }
+
+  const gradeRank = { Legendary: 0, Unique: 1, Rare: 2 };
+  const typeRank = { Charm: 0, Consumable: 1, Normal: 2 };
+
+  function compareValues(a, b, sortBy, order) {
+    let valA, valB;
+    if (sortBy === 'grade') {
+      valA = gradeRank[a.dataset.grade] ?? 99;
+      valB = gradeRank[b.dataset.grade] ?? 99;
+      if (order === 'asc') return valA - valB;
+      return valB - valA;
+    }
+    if (sortBy === 'type') {
+      valA = typeRank[a.dataset.type] ?? 99;
+      valB = typeRank[b.dataset.type] ?? 99;
+      if (order === 'asc') return valA - valB;
+      return valB - valA;
+    }
+    valA = a.dataset[sortBy] || '';
+    valB = b.dataset[sortBy] || '';
+    if (order === 'asc') return valA.localeCompare(valB);
+    return valB.localeCompare(valA);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  typeFilter.addEventListener('change', applyFilters);
+  gradeFilter.addEventListener('change', applyFilters);
+  narrativeFilter.addEventListener('change', applyFilters);
+
+  sortBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sortBy = btn.dataset.sort;
+      let order = currentSort === sortBy && currentOrder === 'asc' ? 'desc' : 'asc';
+
+      sortBtns.forEach(b => { b.classList.remove('active'); b.querySelector('.ss-ji-sort-icon').innerHTML = '&#9650;'; });
+      btn.classList.add('active');
+      btn.querySelector('.ss-ji-sort-icon').innerHTML = order === 'asc' ? '&#9650;' : '&#9660;';
+
+      currentSort = sortBy;
+      currentOrder = order;
+      applySort(sortBy, order);
+      applyFilters();
+    });
+  });
+});
+</script>

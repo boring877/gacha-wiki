@@ -59,8 +59,8 @@ if (imageType === 'portrait') {
     || findImage(illustUIImages, slug, 'illustUI.png')
     || findImage(illustImages, slug, 'illust.png');
 } else if (imageType === 'illust') {
-  imageModule = findImage(illustUIImages, slug, 'illustUI.png')
-    || findImage(illustImages, slug, 'illust.png')
+  imageModule = findImage(illustImages, slug, 'illust.png')
+    || findImage(illustUIImages, slug, 'illustUI.png')
     || findImage(faceFullImages, slug, 'faceFull.png');
 } else {
   imageModule = findImage(faceSmallImages, slug, 'faceSmall.png');

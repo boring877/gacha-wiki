@@ -364,6 +364,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Journey',
         links: [
+          { name: 'Items Database', href: '/guides/star-savior/journey-items/' },
           { name: 'Event Choices', href: '/guides/star-savior/journey/events/' },
         ],
       },

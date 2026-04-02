@@ -66,10 +66,14 @@ function formatStat(key: string, value: number): string {
 
 
 
-function getVisibleEffects(seEffects: any[]): any[] {
-  if (!seEffects || seEffects.length === 0) return [];
+function getVisibleEffects(levels: any[], targetIdx: number): any[] {
+  const allEffects: any[] = [];
+  for (let i = 0; i <= targetIdx && i < levels.length; i++) {
+    allEffects.push(...(levels[i].seEffects || []));
+  }
+  if (allEffects.length === 0) return [];
   const seen = new Set<string>();
-  return seEffects.filter((e: any) => {
+  return allEffects.filter((e: any) => {
     const buff = e.buff || '';
     if (SE_HIDDEN_BUFFS.has(buff)) return false;
     if (SE_INTERNAL_BUFFS.has(buff)) return false;
@@ -94,8 +98,18 @@ function getSkillDamageLabel(skill: any, data: any, attackTag: string): string[]
   const key = phase.toLowerCase() as keyof typeof data.damage;
   if (!data.damage || !data.damage[key]) return [];
   const dt = data.damage[key];
+  const isAOE = skill.target === 'All Enemies';
   const parts: string[] = [];
-  if (dt.atkFactor) parts.push((dt.atkFactor / 100).toFixed(0) + '% ATK');
+  if (dt.atkFactor) {
+    const total = dt.atkFactor / 100;
+    if (isAOE) {
+      const perEnemy = total / 4;
+      parts.push(perEnemy.toFixed(0) + '% ATK');
+      parts.push('(' + total.toFixed(0) + '% total / 4 enemies)');
+    } else {
+      parts.push(total.toFixed(0) + '% ATK');
+    }
+  }
   if (dt.defFactor) parts.push((dt.defFactor / 100).toFixed(0) + '% DEF');
   if (dt.hpFactor) parts.push((dt.hpFactor / 100).toFixed(0) + '% HP');
   const tag = ATTACK_TAG_MAP[attackTag];
@@ -337,7 +351,7 @@ const maxBattlePower = calcMaxBattlePower(data);
 <CharacterDetailLayout title={data.name} description={description} gameTitle={data.name}>
   <div class="ss-detail-header">
     <div class="ss-detail-portrait-container">
-      <SSCharacterImage slug={slug} alt={data.name} imageType="portrait" width={800} height={1120} format="png" quality={100} class="ss-detail-portrait-wrapper" />
+      <SSCharacterImage slug={slug} alt={data.name} imageType="illust" width={800} height={1120} format="png" quality={100} class="ss-detail-portrait-wrapper" />
     </div>
     <div class="ss-detail-info">
       <h2 class="ss-detail-name">{data.name}</h2>
@@ -417,10 +431,13 @@ const maxBattlePower = calcMaxBattlePower(data);
                   {skill.cooldown > 0 && <span class="ss-skill-cd">CD: {skill.cooldown} turns</span>}
                   {dmgLabels.length > 0 && (
                     <span class="ss-skill-dmg">
-                      {dmgLabels.filter((l: string) => !l.includes('DMG')).join(' / ')}
+                      {dmgLabels.filter((l: string) => !l.includes('DMG') && !l.startsWith('(')).join(' / ')}
+                      {dmgLabels.filter((l: string) => l.startsWith('(')).map((l: string) => (
+                        <span class="ss-skill-dmg-hint">{' ' + l}</span>
+                      ))}
                       {dmgLabels.filter((l: string) => l.includes('DMG')).map((l: string) => (
                         <Fragment>
-                          {dmgLabels.filter((d: string) => !d.includes('DMG')).length > 0 && ' / '}
+                          {(dmgLabels.filter((d: string) => !d.includes('DMG') && !d.startsWith('(')).length > 0) && ' / '}
                           <SSAttackTagImage attackTagType={data.attackTagType || ''} width={16} height={16} class="ss-attack-tag-icon" />
                           {' ' + l}
                         </Fragment>
@@ -433,7 +450,7 @@ const maxBattlePower = calcMaxBattlePower(data);
                   levels.map((lv: any, lvI: number) => {
                     const lvDesc = lv ? (lv.description || '') : '';
                     const lvChanges = lvI > 0 ? buildLevelChanges(levels, lvI) : [{ text: 'Base skill', type: 'base' }];
-                    const visibleEffects = getVisibleEffects(lv.seEffects || []);
+                    const visibleEffects = getVisibleEffects(levels, lvI);
                     return (
                       <div class={`ss-skill-level-data${lv.level === 1 ? ' ss-skill-level-active' : ''}`} data-skill-idx={idx} data-lv={lv.level}>
                         {lvDesc && <div class="ss-skill-desc" set:html={lvDesc}></div>}
@@ -459,7 +476,7 @@ const maxBattlePower = calcMaxBattlePower(data);
                   (() => {
                     const lv = levels[0];
                     const lvDesc = lv ? (lv.description || '') : '';
-                    const visibleEffects = getVisibleEffects(lv.seEffects || []);
+                    const visibleEffects = getVisibleEffects(levels, 0);
                     return (
                       <div class="ss-skill-level-data ss-skill-level-active" data-skill-idx={idx} data-lv={1}>
                         {lvDesc && <div class="ss-skill-desc" set:html={lvDesc}></div>}

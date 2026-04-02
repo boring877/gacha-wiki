@@ -12,12 +12,14 @@
 
 .ss-detail-portrait-container {
   position: relative;
-  width: 250px;
+  width: 380px;
   flex-shrink: 0;
 }
 
 .ss-detail-portrait-wrapper {
   position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   overflow: hidden;
   border: 2px solid var(--ss-border-light);
@@ -25,8 +27,9 @@
 
 .ss-detail-portrait-wrapper :global(img) {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .ss-detail-portrait-wrapper.ss-char-image-fallback {
@@ -257,6 +260,13 @@
   font-size: 0.75rem;
   color: var(--ss-text-primary);
   font-weight: 500;
+}
+
+.ss-skill-dmg-hint {
+  font-size: 0.7rem;
+  color: var(--ss-accent);
+  font-weight: 500;
+  margin-left: 0.25rem;
 }
 
 .ss-skill-nf {
