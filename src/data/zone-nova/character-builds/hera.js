@@ -53,7 +53,7 @@ export const heraBuild = {
       memoryImage: 'Heracard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
-        'Only effective for DPS, 5-price awakening. Attack power +40%, when attacking targets affected by continuous damage effects, damage increases by 40%',
+        'Attack power +40%, when attacking targets affected by continuous damage effects, damage increases by 40%',
     },
     {
       name: 'Heroes, Never Stop',

@@ -17,7 +17,7 @@ export const pervertedLittleNurseData = {
 
   // Memory Effects
   effects: [
-    'Critical Rate Boost: After causing pursuit damage, critical rate increased by 36% for 10 seconds',
+    'Critical Rate Boost: After causing pursue damage (extra damage), critical rate increased by 36% for 10 seconds',
   ],
 
   // Character Synergy Information

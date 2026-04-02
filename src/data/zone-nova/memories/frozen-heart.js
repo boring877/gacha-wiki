@@ -18,17 +18,17 @@ export const frozenHeartData = {
   // Memory Effects
   effects: [
     'Crit rate increased by 34%',
-    "Equipment wearer's pursuit damage and crit damage increased by 68%",
+    "Equipment wearer's pursue damage (extra damage) and crit damage increased by 68%",
   ],
 
   // Character Synergy Information
   characterSynergy: {
     description:
-      "This memory card transforms Yuis into the ultimate pursuit damage dealer by dramatically increasing her critical hit capabilities and pursuit damage. It synergizes perfectly with her [Heaven's Punishment] stacking and Enhanced Ultimate mechanics.",
+      "This memory card transforms Yuis into the ultimate pursue damage (extra damage) dealer by dramatically increasing her critical hit capabilities and pursue damage (extra damage). It synergizes perfectly with her [Heaven's Punishment] stacking and Enhanced Ultimate mechanics.",
     synergies: [
-      "Enhances the effectiveness of her Enhanced Ultimate's pursuit damage",
+      "Enhances the effectiveness of her Enhanced Ultimate's pursue damage (extra damage)",
       'Works with her passive that triggers from allied ultimates and pursuits',
-      "Synergizes with Awakening 6's pursuit damage mechanics and elemental penetration",
+      "Synergizes with Awakening 6's pursue damage (extra damage) mechanics and elemental penetration",
     ],
   },
 };

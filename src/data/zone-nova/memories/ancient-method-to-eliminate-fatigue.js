@@ -14,21 +14,19 @@ export const ancientMethodToEliminateFatigueData = {
   stats: {
     hp: 5000,
     attack: 500,
-    defense: 500,
+    defense: 500
   },
 
   // Memory Effects
   effects: [
-    'Restriction: Only effective for healers',
-    'Cost: 5-price awakening',
     'Healing amount increased by 30%',
-    'Each time healing, healing target gains +20% attack for 3 seconds',
-  ],
-};
+    'Each time healing, healing target gains +20% attack for 3 seconds'
+  ]
+  };
 
 // SEO Data
 export const ancientMethodToEliminateFatigueSEO = {
   title: 'Ancient Method to Eliminate Fatigue - Healer Memory Card | Zone Nova',
   description:
-    'Complete guide for Ancient Method to Eliminate Fatigue memory card in Zone Nova. Learn about its healer-specific effects, healing bonuses, and attack buff mechanics.',
-};
+    'Complete guide for Ancient Method to Eliminate Fatigue memory card in Zone Nova. Learn about its healer-specific effects, healing bonuses, and attack buff mechanics.'
+  };

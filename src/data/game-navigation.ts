@@ -100,6 +100,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Rifts', href: '/guides/zone-nova/rifts/' },
           { name: 'Rift Teams', href: '/guides/zone-nova/rift-teams/' },
           { name: 'Memories', href: '/guides/zone-nova/memories/' },
+          { name: 'Memory Tier List', href: '/guides/zone-nova/memory-tier-list/' },
           { name: 'Team Synergy', href: '/guides/zone-nova/team-synergy/' },
         ],
       },

@@ -67,7 +67,7 @@ export const athenaBuild = {
       memoryImage: 'naiyacard',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
-        'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
+        'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 5 seconds',
       spendingNote:
         "It's the free SSR memory card we get. It's not good but better than any option for now.",
     },

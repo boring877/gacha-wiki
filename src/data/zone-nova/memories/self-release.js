@@ -19,7 +19,6 @@ export const selfReleaseData = {
   effects: [
     'Ultimate Damage: Ultimate damage increased by 40%',
     "Single Target Bonus: When there's one enemy on the field, ultimate damage additionally increases by 10%, maximum 4 times",
-    'Maximum Potential: Up to 80% ultimate damage boost vs single targets (40% + 40%)',
   ],
 
   // Character Synergy Information

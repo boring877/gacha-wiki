@@ -87,7 +87,7 @@ export const yuisData = {
       defense: '474', // e.g., '690'
     },
     effects: [
-      'Crit rate increased by 34%. Equipment wearers extra attack damage, critical damage increases by 68% ',
+      'Crit rate increased by 34%. Equipment wearer\'s pursue damage (extra damage) and crit damage increased by 68%',
     ],
   },
 

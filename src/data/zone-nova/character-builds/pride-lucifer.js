@@ -42,10 +42,22 @@ export const prideLuciferBuild = {
   ],
   recommendedMemoryCards: [
     {
+      name: 'Wrong Appearance Timing',
+      effect:
+        "The best memory for Pride-Lucifer. Massive Defense increase, HP recovery when below 50%, and damage boost when above 50% - outperforms her exclusive card.",
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'Apepcard.jpg',
+      memoryStats: { hp: '8,800', attack: '480', defense: '690' },
+      slug: 'wrong-appearance-timing',
+      description:
+        'Defense increased by 64%, When HP is below 50%, after the wearer attacks, recover 2% max HP, When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
+    },
+    {
       name: 'Pride or Tsundere?',
       effect:
-        "Pride-Lucifer's exclusive memory card. Provides massive HP and Defense increase with additional normal attack damage reduction - perfect for her defense-scaling tank playstyle.",
-      priority: 'Highly Recommended',
+        "Pride-Lucifer's exclusive memory card. Provides massive HP and Defense increase with additional normal attack damage reduction.",
+      priority: 'Good Alternative',
       characterSpecific: true,
       memoryImage: 'lucifercard.jpg',
       memoryStats: { hp: '6,600', attack: '480', defense: '690' },
@@ -54,19 +66,7 @@ export const prideLuciferBuild = {
         'HP increased by 32%, Defense increased by 60%, When attacked by a normal attack, damage taken is reduced by 30%',
     },
   ],
-  alternativeMemoryCards: [
-    {
-      name: 'Wrong Appearance Timing',
-      effect:
-        "SSR memory card that provides massive Defense increase, HP recovery when below 50%, and damage boost when above 50% - perfect synergy for Pride-Lucifer's defense-scaling tank playstyle.",
-      characterSpecific: false,
-      memoryImage: 'Apepcard.jpg',
-      memoryStats: { hp: '8,800', attack: '480', defense: '690' },
-      slug: 'wrong-appearance-timing',
-      description:
-        'Defense increased by 64%, When HP is below 50%, after the wearer attacks, recover 2% max HP, When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
-    },
-  ],
+  alternativeMemoryCards: [],
   runes: {
     primary: 'Defense%',
     secondary: 'HP%',

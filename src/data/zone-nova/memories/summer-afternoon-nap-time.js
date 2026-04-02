@@ -14,21 +14,19 @@ export const summerAfternoonNapTimeData = {
   stats: {
     hp: 4200,
     attack: 650,
-    defense: 395,
+    defense: 395
   },
 
   // Memory Effects
   effects: [
-    'Restriction: Only effective for disaster units',
-    'Cost: 5-price awakening',
     'Attack power increased by 20%',
-    'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks',
-  ],
-};
+    'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks'
+  ]
+  };
 
 // SEO Data
 export const summerAfternoonNapTimeSEO = {
   title: 'Summer Afternoon Nap Time - Disaster Memory Card | Zone Nova',
   description:
-    'Complete guide for Summer Afternoon Nap Time memory card in Zone Nova. Learn about its disaster-specific effects, attack scaling, and multi-enemy mechanics.',
-};
+    'Complete guide for Summer Afternoon Nap Time memory card in Zone Nova. Learn about its disaster-specific effects, attack scaling, and multi-enemy mechanics.'
+  };

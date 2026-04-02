@@ -78,7 +78,7 @@ export const thunderKingFlameData = {
       '',
       'Space-Time Rift Rule Effects:',
       '• Characters gain 100% increased damage when pursuing enemies',
-      '• When characters deal pursuit damage to enemies, they gain 1 stack of [Mark]. When our characters deal damage to enemies with 10 stacks of [Mark], it will trigger [Mark], dealing 300% of own attack power as Holy damage, and the enemy will take 50% increased pursuit damage for the next 5 seconds',
+      '• When characters deal pursue damage (extra damage) to enemies, they gain 1 stack of [Mark]. When our characters deal damage to enemies with 10 stacks of [Mark], it will trigger [Mark], dealing 300% of own attack power as Holy damage, and the enemy will take 50% increased pursue damage (extra damage) for the next 5 seconds',
       '• Each time characters successfully [Block], they deal damage equal to 30% of their own defense to nearby enemies, with a maximum trigger of once every 0.5 seconds',
       '• Each time characters successfully [Block], the entire team gains 2% increased damage, up to 25 stacks, lasting 15 seconds',
       '',

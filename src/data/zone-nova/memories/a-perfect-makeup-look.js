@@ -12,15 +12,14 @@ export const aPerfectMakeupLookData = {
   stats: {
     hp: 6000,
     attack: 600,
-    defense: 600,
+    defense: 600
   },
 
   // Memory Effects
   effects: [
-    'Class Restriction: Only effective for Debuffer class',
     '5th Stage Awakening Required',
     'Effect 1: Attack power increases by 40%',
-    'Effect 2: When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds',
+    'Effect 2: When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds'
   ],
 
   // Character Synergy Information
@@ -31,16 +30,16 @@ export const aPerfectMakeupLookData = {
       'Stacks additively with her Skill (+38.6% all damage taken) and Ultimate (+87.9% ultimate damage taken) debuffs',
       'Combined with her passive at max stacks (+36% ultimate damage taken), nearly triples damage from teammate ultimates',
       '40% healing reduction provides utility against bosses with healing phases',
-      'The 40% attack boost increases her skill damage multipliers',
-    ],
-  },
-};
+      'The 40% attack boost increases her skill damage multipliers'
+  ]
+  }
+  };
 
 // SEO data for A Perfect Makeup Look?
 export const aPerfectMakeupLookSEO = {
   title: `${aPerfectMakeupLookData.name} - Zone Nova Memory Card Guide`,
-  description: `Complete guide for ${aPerfectMakeupLookData.name}, ${aPerfectMakeupLookData.character}'s ${aPerfectMakeupLookData.rarity} memory card in Zone Nova. Includes effects, stats, and synergies.`,
-};
+  description: `Complete guide for ${aPerfectMakeupLookData.name}, ${aPerfectMakeupLookData.character}'s ${aPerfectMakeupLookData.rarity} memory card in Zone Nova. Includes effects, stats, and synergies.`
+  };
 
 // Export default for easy importing
 export default aPerfectMakeupLookData;

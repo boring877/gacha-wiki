@@ -63,7 +63,7 @@ export const morganLeFayBuild = {
       memoryImage: 'Morning-Sunlight .jpg',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },
       description:
-        'Restriction: Only effective for supports. Cost: 5-price awakening. Attack power increased by 20%, All team skill damage increased by 20%',
+        'Attack power increased by 20%, All team skill damage increased by 20%',
     },
     {
       name: 'Sleep Treasure',

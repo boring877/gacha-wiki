@@ -1,0 +1,418 @@
+---
+// Zone Nova Memory Tier List Page
+// Memory card rankings grouped by class, mirrors character tier list structure
+import TierListLayout from '../../../layouts/zone-nova/TierListLayout.astro';
+import { ZONE_NOVA_MEMORIES } from '../../../data/zone-nova/memories.js';
+import {
+  MEMORY_TIER_LIST,
+  MEMORY_TIER_DEFINITIONS,
+  MEMORY_TIER_ORDER,
+  getGroupedMemorySections,
+  getMemoryByName,
+} from '../../../data/zone-nova/memory-tier-list.js';
+import ZNMemoryImage from '../../../components/zone-nova/ZNMemoryImage.astro';
+import ZNClassImage from '../../../components/zone-nova/ZNClassImage.astro';
+
+const memoryMap = {};
+ZONE_NOVA_MEMORIES.forEach(memory => {
+  memoryMap[memory.name] = memory;
+});
+
+function getTierClassName(tier: string): string {
+  return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
+}
+
+const classSections = getGroupedMemorySections();
+---
+
+<TierListLayout
+  title="Zone Nova Memory Tier List - Memory Card Rankings by Class"
+  description="Zone Nova memory card tier list ranked by class. Find the best memory cards for Warrior, Mage, Rogue, Guardian, Buffer, Healer, and more."
+>
+  <div class="tier-list-container">
+    <!-- Mode Toggle -->
+    <div class="tl-mode-toggle">
+      <button class="tl-mode-btn active" id="view-mode-btn">View Tier Lists</button>
+      <button class="tl-mode-btn" id="maker-mode-btn">Create Your Own</button>
+    </div>
+
+    <!-- View Mode Content -->
+    <div id="view-mode-content">
+      <!-- Tier List Info -->
+      <div class="tl-info" id="tier-list-info">
+        <h2>{MEMORY_TIER_LIST.name}</h2>
+        <p>{MEMORY_TIER_LIST.description}</p>
+        <p class="tl-updated">Last updated: {MEMORY_TIER_LIST.lastUpdated}</p>
+      </div>
+
+      <!-- Class Sections -->
+      <div class="tl-class-sections">
+        {classSections.map(section => (
+          <section class="tl-class-section">
+            <div class="tl-class-header">
+              <div class="tl-class-title-row">
+                <ZNClassImage className={section.label} alt={section.label} size="medium" class="tl-class-icon" />
+                <div>
+                  <h4 class="tl-class-name">{section.label}</h4>
+                  <p class="tl-class-desc">
+                    Best {section.label.toLowerCase()} memory cards ranked.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {MEMORY_TIER_ORDER.map(tier =>
+              section.tiers[tier].length ? (
+                <div class="tl-tier-row">
+                  <div class={`tl-tier-label tl-tier-${getTierClassName(tier)}`}>
+                    {MEMORY_TIER_DEFINITIONS[tier].label}
+                  </div>
+                  <div class="tl-tier-chars">
+                    {section.tiers[tier].map(entry => {
+                      const memory = getMemoryByName(entry.name);
+                      if (!memory) return null;
+
+                      return (
+                        <div
+                          class="tl-char-card"
+                          onclick={`window.location.href=${JSON.stringify(memory.detailUrl)}`}
+                        >
+                          <div class="tl-char-img">
+                            <ZNMemoryImage
+                              imageName={memory.image.split('/').pop()}
+                              alt={memory.name}
+                              width={300}
+                              height={300}
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="tl-char-name">{memory.name}</div>
+                          <div class="tl-char-badges">
+                            <span class={`tl-badge tl-badge-rarity-${memory.rarity.toLowerCase()}`}>
+                              {memory.rarity}
+                            </span>
+                            {memory.character && (
+                              <span class="tl-badge tl-badge-element-holy">
+                                {memory.character}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null
+            )}
+          </section>
+        ))}
+      </div>
+    </div>
+
+    <!-- Maker Mode Content -->
+    <div id="maker-mode-content" style="display: none;">
+      <p class="tl-maker-desc">
+        Click a memory card to select, then click a tier to place it. Or drag and drop.
+      </p>
+      <div class="tl-maker-controls">
+        <button class="tl-control-btn" id="reset-tier-list">Reset Tier List</button>
+      </div>
+
+      <!-- Memory Card Pool -->
+      <div id="maker-pool">
+        <div class="tl-maker-pool-grid">
+          {ZONE_NOVA_MEMORIES.map(memory => (
+            <div
+              class="tl-pool-card draggable"
+              data-memory={memory.name}
+              data-rarity={memory.rarity}
+              data-character={memory.character}
+              draggable="true"
+            >
+              <div class="tl-pool-img">
+                <ZNMemoryImage
+                  imageName={memory.image.split('/').pop()}
+                  alt={memory.name}
+                  width={75}
+                  height={75}
+                  loading="lazy"
+                />
+              </div>
+              <div class="tl-pool-name">{memory.name}</div>
+              <div class="tl-pool-badges">
+                <span class={`tl-badge tl-badge-rarity-${memory.rarity.toLowerCase()}`}>
+                  {memory.rarity}
+                </span>
+                {memory.character && (
+                  <span class="tl-badge tl-badge-element-holy">
+                    {memory.character}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Maker Tier List -->
+      <div id="maker-tier-list">
+        {Object.entries(MEMORY_TIER_DEFINITIONS).map(([tier, definition]) => (
+          <div class="tl-tier-row tl-maker-row">
+            <div class={`tl-tier-label tl-tier-${getTierClassName(tier)}`}>{definition.label}</div>
+            <div class="tl-tier-chars tl-droppable" data-tier={tier}>
+              <div class="tl-drop-hint">Drop memory cards here</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <script define:vars={{ memoryMap }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewModeBtn = document.getElementById('view-mode-btn');
+      const makerModeBtn = document.getElementById('maker-mode-btn');
+      const viewModeContent = document.getElementById('view-mode-content');
+      const makerModeContent = document.getElementById('maker-mode-content');
+      const tierListInfo = document.getElementById('tier-list-info');
+      const tierLegend = document.getElementById('tier-legend');
+
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
+      const resetBtn = document.getElementById('reset-tier-list');
+
+      let currentMode = 'view';
+      let selectedMemory = null;
+      const tierAssignments = {};
+      const STORAGE_KEY = 'zn-custom-memory-tier-list';
+      let makerInitialized = false;
+
+      viewModeBtn.addEventListener('click', () => {
+        currentMode = 'view';
+        viewModeBtn.classList.add('active');
+        makerModeBtn.classList.remove('active');
+        viewModeContent.style.display = 'block';
+        makerModeContent.style.display = 'none';
+        tierListInfo.style.display = 'block';
+        if (tierLegend) tierLegend.style.display = 'grid';
+        if (makerPool) makerPool.style.display = 'none';
+        if (makerTierList) makerTierList.style.display = 'none';
+      });
+
+      makerModeBtn.addEventListener('click', () => {
+        currentMode = 'maker';
+        makerModeBtn.classList.add('active');
+        viewModeBtn.classList.remove('active');
+        viewModeContent.style.display = 'none';
+        makerModeContent.style.display = 'block';
+        tierListInfo.style.display = 'none';
+        if (tierLegend) tierLegend.style.display = 'none';
+        if (makerPool) makerPool.style.display = 'block';
+        if (makerTierList) makerTierList.style.display = 'flex';
+        if (!makerInitialized) {
+          initializeMaker();
+          makerInitialized = true;
+        }
+      });
+
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        loadFromStorage();
+      }
+
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .tl-pool-card').forEach(card => {
+          const memoryName = card.dataset.memory;
+
+          card.addEventListener('dragstart', e => {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('memory', memoryName);
+            e.dataTransfer.setData('source', 'pool');
+            card.classList.add('dragging');
+          });
+
+          card.addEventListener('dragend', () => {
+            card.classList.remove('dragging');
+          });
+
+          card.addEventListener('click', () => {
+            if (selectedMemory === memoryName) {
+              card.classList.remove('selected');
+              selectedMemory = null;
+              document.querySelectorAll('.tl-droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
+            }
+
+            document.querySelectorAll('.tl-pool-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-char-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedMemory = memoryName;
+            document.querySelectorAll('.tl-droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
+        });
+      }
+
+      function setupDropZones() {
+        document.querySelectorAll('.tl-droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
+
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            zone.classList.add('drag-over');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('drag-over');
+          });
+
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const memoryName = e.dataTransfer.getData('memory');
+            const source = e.dataTransfer.getData('source');
+
+            if (memoryName) {
+              if (source === 'tier' && tierAssignments[memoryName]) {
+                moveCardBetweenTiers(memoryName, tierName);
+              } else {
+                moveCardToTier(memoryName, tierName);
+              }
+            }
+          });
+
+          zone.addEventListener('click', () => {
+            if (!selectedMemory) return;
+            moveCardToTier(selectedMemory, tierName);
+            document.querySelectorAll('.tl-pool-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-char-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tl-droppable').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedMemory = null;
+          });
+        });
+      }
+
+      function moveCardToTier(memoryName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-memory="${memoryName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+
+        if (!poolCard || !targetZone) return;
+
+        poolCard.style.display = 'none';
+
+        const memData = memoryMap[memoryName];
+        const tierCard = document.createElement('div');
+        tierCard.className = 'tl-char-card draggable in-tier';
+        tierCard.dataset.memory = memoryName;
+        tierCard.draggable = true;
+
+        tierCard.innerHTML = `
+          <div class="tl-char-img">
+            <img src="${poolCard.querySelector('img').src}" alt="${memoryName}" loading="lazy" />
+          </div>
+          <div class="tl-char-name">${memoryName}</div>
+          <div class="tl-char-badges">
+            <span class="tl-badge tl-badge-rarity-${memData?.rarity?.toLowerCase() || 'sr'}">${memData?.rarity || 'SR'}</span>
+            ${memData?.character ? `<span class="tl-badge tl-badge-element-holy">${memData.character}</span>` : ''}
+          </div>
+          <button class="tl-remove-btn" title="Remove from tier">&times;</button>
+        `;
+
+        setupTierCardEvents(tierCard, memoryName);
+
+        const hint = targetZone.querySelector('.tl-drop-hint');
+        if (hint) hint.style.display = 'none';
+
+        targetZone.appendChild(tierCard);
+        tierAssignments[memoryName] = tierName;
+        saveToStorage();
+      }
+
+      function setupTierCardEvents(card, memoryName) {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('memory', memoryName);
+          e.dataTransfer.setData('source', 'tier');
+          card.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+        });
+
+        card.querySelector('.tl-remove-btn').addEventListener('click', e => {
+          e.stopPropagation();
+          returnCardToPool(memoryName);
+        });
+      }
+
+      function moveCardBetweenTiers(memoryName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-memory="${memoryName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
+
+        if (!tierCard || !targetZone) return;
+
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[memoryName] = newTierName;
+
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.tl-drop-hint');
+          if (hint) hint.style.display = 'block';
+        }
+
+        const hint = targetZone.querySelector('.tl-drop-hint');
+        if (hint) hint.style.display = 'none';
+
+        saveToStorage();
+      }
+
+      function returnCardToPool(memoryName) {
+        const poolCard = document.querySelector(`#maker-pool [data-memory="${memoryName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-memory="${memoryName}"]`);
+
+        if (!poolCard || !tierCard) return;
+
+        const oldZone = tierCard.parentElement;
+        poolCard.style.display = '';
+        tierCard.remove();
+        delete tierAssignments[memoryName];
+
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.tl-drop-hint');
+          if (hint) hint.style.display = 'block';
+        }
+
+        saveToStorage();
+      }
+
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
+      });
+
+      function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
+      }
+
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => {
+            if (memoryMap[name]) {
+              moveCardToTier(name, tier);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load tier list:', e);
+        }
+      }
+    });
+  </script>
+</TierListLayout>

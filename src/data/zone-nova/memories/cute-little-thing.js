@@ -12,15 +12,14 @@ export const cuteLittleThingData = {
   stats: {
     hp: 5040,
     attack: 780,
-    defense: 474,
+    defense: 474
   },
 
   // Memory Effects
   effects: [
-    'Class Restriction: Only effective for Debuffer class',
     '5th Stage Awakening Required',
     'Effect 1: Attack power increases by 40%',
-    'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds',
+    'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds'
   ],
 
   // Character Synergy Information
@@ -30,16 +29,16 @@ export const cuteLittleThingData = {
     synergies: [
       'Amplifies the damage from [Piercing] stacks applied by his auto and ultimate skills',
       "Works with his passive's area explosion damage and continuous damage",
-      'Enhances the effectiveness of his debuff consumption mechanics',
-    ],
-  },
-};
+      'Enhances the effectiveness of his debuff consumption mechanics'
+  ]
+  }
+  };
 
 // SEO data for Cute Little Thing
 export const cuteLittleThingSEO = {
   title: `${cuteLittleThingData.name} - Zone Nova Memory Card Guide`,
-  description: `Complete guide for ${cuteLittleThingData.name}, ${cuteLittleThingData.character}'s ${cuteLittleThingData.rarity} memory card in Zone Nova. Includes effects, stats, and synergies.`,
-};
+  description: `Complete guide for ${cuteLittleThingData.name}, ${cuteLittleThingData.character}'s ${cuteLittleThingData.rarity} memory card in Zone Nova. Includes effects, stats, and synergies.`
+  };
 
 // Export default for easy importing
 export default cuteLittleThingData;

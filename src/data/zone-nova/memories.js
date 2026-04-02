@@ -17,14 +17,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Restriction: Only effective for healers',
-      'Cost: 5-price awakening',
       'Healing amount increased by 30%',
-      'Each time healing, healing target gains +20% attack for 3 seconds',
-    ],
+      'Each time healing, healing target gains +20% attack for 3 seconds'
+  ]
   },
   {
     id: 'annihilation-users-reminiscence',
@@ -39,9 +37,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 3360,
       attack: 520,
-      defense: 316,
-    },
-    effects: ['Attack increases by 32%'],
+      defense: 316
+  },
+    effects: ['Attack increases by 32%']
   },
   {
     id: 'embarrassing-pattern',
@@ -55,12 +53,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'After battle start: All allies damage +40%, normal attack damage +40%',
-      'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
-    ],
+      'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds'
+  ]
   },
   {
     id: 'frost-dominion',
@@ -74,11 +72,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
-      'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
-    ],
+      'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 5 seconds'
+  ]
   },
   {
     id: 'great-mages-role-playing',
@@ -93,33 +91,31 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'Restriction: Only effective for strikers',
-      'Cost: 5-price awakening',
       'Attack power increased by 20%',
-      'When enemies on field are fewer than 2, increases crit damage by 36%',
-    ],
+      'When enemies on field are fewer than 2, increases crit damage by 36%'
+  ]
   },
   {
     id: 'lamplight-study',
     slug: 'lamplight-study',
     name: 'Lamplight Study',
-    image: '/images/games/zone-nova/memories/Freyecard.jpg',
+    image: '/images/games/zone-nova/memories/Friggacard.png',
     rarity: 'SSR',
     element: 'Chaos',
-    character: 'Freye',
+    character: 'Frigga',
     detailUrl: '/guides/zone-nova/memories/lamplight-study/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'Attack power increased by 40%',
-      'Ultimate skill damage can apply [Fate Bind]. Each stack of [Fate Bind] increases damage taken by 3.6%, lasts 10 seconds, maximum 10 stacks',
-    ],
+      'Ultimate skill damage can apply [Fate Bind]. Each stack of [Fate Bind] increases damage taken by 3.6%, lasts 10 seconds, maximum 10 stacks'
+  ]
   },
   {
     id: 'king-of-lust',
@@ -129,20 +125,19 @@ export const ZONE_NOVA_MEMORIES = [
     rarity: 'SSR',
     element: 'Wind',
     character: 'Lust - Asmodeus',
-    class: 'Attacker',
     detailUrl: '/guides/zone-nova/memories/king-of-lust/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Critical hit rate increased by 40%',
       'Attack power increased by 40%',
       'Each time the wearer attacks and hits an enemy, they gain 1 stack of [Battle Spirit]',
       'When [Battle Spirit] reaches 10 stacks, all stacks are consumed and [Penetrating] is gained, increasing critical hit damage by 50% for 5 seconds',
-      '[Battle Spirit] cannot be gained while [Penetrating] is active',
-    ],
+      '[Battle Spirit] cannot be gained while [Penetrating] is active'
+  ]
   },
   {
     id: 'nutrition-studies',
@@ -157,14 +152,14 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'HP increased by 40%',
       'Attack power of the entire team increased by 20%',
       'After the wearer uses a skill, inflicts [Drain] on all enemies for 4 seconds',
-      '[Drain] reduces enemy energy regeneration efficiency by 10% and increases allied energy regeneration efficiency by 10%',
-    ],
+      '[Drain] reduces enemy energy regeneration efficiency by 10% and increases allied energy regeneration efficiency by 10%'
+  ]
   },
   {
     id: 'guerrilla-users-reminiscence',
@@ -179,9 +174,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 3360,
       attack: 520,
-      defense: 316,
-    },
-    effects: ['Attack increases by 32%'],
+      defense: 316
+  },
+    effects: ['Attack increases by 32%']
   },
   {
     id: 'guardian-users-reminiscence',
@@ -196,9 +191,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4400,
       attack: 320,
-      defense: 460,
-    },
-    effects: ['Defense increases by 48%'],
+      defense: 460
+  },
+    effects: ['Defense increases by 48%']
   },
   {
     id: 'healers-memory',
@@ -213,13 +208,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4000,
       attack: 400,
-      defense: 400,
-    },
+      defense: 400
+  },
     effects: [
-      'Restriction: Only effective for healers',
-      'Cost: 5-price awakening',
-      'Healing amount increased by 40%',
-    ],
+      'Healing amount increased by 40%'
+  ]
   },
   {
     id: 'the-maids-bath',
@@ -234,13 +227,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       "The wearer's CRIT Rate increases by 20%.",
       'When the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.',
-      'While in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.',
-    ],
+      'While in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.'
+  ]
   },
   {
     id: 'her-trainer',
@@ -254,13 +247,33 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 8600,
       attack: 480,
-      defense: 690,
-    },
+      defense: 690
+  },
     effects: [
       'Defense increased by 60%',
       'After using ultimate skill, equipped character takes 10% less damage for 5 seconds',
-      'Shield amount applied by ultimate skills increased by 20%',
-    ],
+      'Shield amount applied by ultimate skills increased by 20%'
+    ]
+  },
+  {
+    id: 'hot-spring-and-her',
+    slug: 'hot-spring-and-her',
+    name: 'Hot Spring & Her',
+    image: '/images/games/zone-nova/memories/Tamamo-no-maecard.jpg',
+    rarity: 'SSR',
+    element: 'Fire',
+    character: 'Tamamo-no-Mae',
+    detailUrl: '/guides/zone-nova/memories/hot-spring-and-her/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600
+    },
+    effects: [
+      'Base ATK +40%',
+      "After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks)",
+      "Every 5 stacks of [Brilliance] increases all allies' DMG by 9%",
+    ]
   },
   {
     id: 'kings-sword',
@@ -274,13 +287,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5280,
       attack: 857,
-      defense: 348,
-    },
+      defense: 348
+  },
     effects: [
       'Attack increased by 40%',
       'Execute Damage increased by 40% when the target is the only enemy',
-      'Critical rate increased by 12%',
-    ],
+      'Critical rate increased by 12%'
+  ]
   },
   {
     id: 'during-military-academy-training',
@@ -294,9 +307,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
-    effects: ['Ultimate skill boosts normal attack and skill damage by 60% for 10 seconds'],
+      defense: 395
+  },
+    effects: ['Ultimate skill boosts normal attack and skill damage by 60% for 10 seconds']
   },
   {
     id: 'the-loneliest-moment',
@@ -310,12 +323,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
-      "Battle start: All allied characters' damage increases by 40%, pursuit damage additionally increases by 40%",
-      "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds",
-    ],
+      "Battle start: All allied characters' damage increases by 40%, pursue damage (extra damage) additionally increases by 40%",
+      "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds"
+  ]
   },
   {
     id: 'absolutely-perfect-arms',
@@ -330,14 +343,14 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 7800,
       attack: 780,
-      defense: 780,
-    },
+      defense: 780
+  },
     effects: [
       'ATK increased by 30%',
       'DEF increased by 30%',
       'HP increased by 30%',
-      "When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s",
-    ],
+      "When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s"
+  ]
   },
   {
     id: 'lancelot-hertrainer',
@@ -351,12 +364,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5500,
       attack: 400,
-      defense: 575,
-    },
+      defense: 575
+  },
     effects: [
-      'Guardian class restriction, 5th stage awakening required',
-      'Defense +36%, team damage reduction +8% on battle start',
-    ],
+      'Defense +36%, team damage reduction +8% on battle start'
+  ]
   },
   {
     id: 'annoying-classroom',
@@ -370,11 +382,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)',
-    ],
+      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)'
+  ]
   },
   {
     id: 'simple-birdcage',
@@ -388,9 +400,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690,
-    },
-    effects: ['Defense boost, block enhancement, and battle start shield'],
+      defense: 690
+  },
+    effects: ['Defense boost, block enhancement, and battle start shield']
   },
   {
     id: 'sister-penny-trying-on-new-clothes',
@@ -405,12 +417,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5500,
       attack: 400,
-      defense: 575,
-    },
+      defense: 575
+  },
     effects: [
-      'Guardian class restriction, 5-price awakening',
-      'HP +24%, ultimate damage reduction +10% for 5 seconds',
-    ],
+      'HP +24%, ultimate damage reduction +10% for 5 seconds'
+  ]
   },
   {
     id: 'cute-little-thing',
@@ -424,14 +435,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
-      'Class Restriction: Only effective for Debuffer class',
       '5th Stage Awakening Required',
       'Effect 1: Attack power increases by 40%',
-      'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds',
-    ],
+      'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds'
+  ]
   },
   {
     id: 'deceptive-ultimate-temptation',
@@ -446,14 +456,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Restriction: Only effective for disruptors',
-      'Cost: 5-price awakening',
       'Attack increased by 20%',
-      'When attacking enemies with negative status, damage increased by 20%',
-    ],
+      'When attacking enemies with negative status, damage increased by 20%'
+  ]
   },
   {
     id: 'solitary-realm',
@@ -467,12 +475,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
       'Solitary Realm (一人之境): Healing amount increased by 30%',
-      'Protection Effect: When healing a target below 50% max HP, the target receives 8% damage reduction for 10 seconds',
-    ],
+      'Protection Effect: When healing a target below 50% max HP, the target receives 8% damage reduction for 10 seconds'
+  ]
   },
   {
     id: 'battlefield-flower',
@@ -486,11 +494,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Battlefield Flower: For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks',
-    ],
+      'Battlefield Flower: For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks'
+  ]
   },
   {
     id: 'busy-officer',
@@ -504,11 +512,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds',
-    ],
+      'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds'
+  ]
   },
   {
     id: 'heroes-never-stop',
@@ -522,11 +530,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
-    ],
+      'When the number of enemies on field is less than 2: Increase critical hit damage by 72%'
+  ]
   },
   {
     id: 'the-beauty-of-heijing-castle',
@@ -540,12 +548,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Only effective for healers, 5-price awakening',
-      "The Beauty of Heijing Castle: Healing amount +30%, when recovering targets' life value is full, target damage +24% for 10 seconds",
-    ],
+      "The Beauty of Heijing Castle: Healing amount +30%, when recovering targets' life value is full, target damage +24% for 10 seconds"
+  ]
   },
   {
     id: 'secret-room-reality',
@@ -559,9 +566,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
-    effects: ['Continuous Damage Penetration Rate +36%'],
+      defense: 395
+  },
+    effects: ['Continuous Damage Penetration Rate +36%']
   },
   {
     id: 'secret-garden',
@@ -575,12 +582,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6400,
       attack: 784,
-      defense: 318,
-    },
+      defense: 318
+  },
     effects: [
       'Attack power increased by 40%',
-      'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds',
-    ],
+      'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds'
+  ]
   },
   {
     id: 'frozen-heart',
@@ -594,12 +601,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Crit rate increased by 34%',
-      "Equipment wearer's pursuit damage and crit damage increased by 68%",
-    ],
+      "Equipment wearer's pursue damage (extra damage) and crit damage increased by 68%"
+  ]
   },
   {
     id: 'sleep-treasure',
@@ -613,12 +620,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
       'After releasing ultimate: Team damage increases by 24% for 10 seconds',
-      'Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds',
-    ],
+      'Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds'
+  ]
   },
   {
     id: 'perverted-little-nurse',
@@ -632,11 +639,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'Critical Rate Boost: After causing pursuit damage, critical rate increased by 36% for 10 seconds',
-    ],
+      'Critical Rate Boost: After causing pursue damage (extra damage), critical rate increased by 36% for 10 seconds'
+  ]
   },
   {
     id: 'qianjues-reminiscence',
@@ -651,9 +658,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4000,
       attack: 400,
-      defense: 400,
-    },
-    effects: ['When attacking enemies with negative status effects, damage increases by 32%'],
+      defense: 400
+  },
+    effects: ['When attacking enemies with negative status effects, damage increases by 32%']
   },
   {
     id: 'true-order',
@@ -667,12 +674,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'Attack Enhancement: Attack power increased by 40%',
-      'Vulnerability Mark: The last enemy hit by any attack takes 24% increased damage',
-    ],
+      'Vulnerability Mark: The last enemy hit by any attack takes 24% increased damage'
+  ]
   },
   {
     id: 'slaves-original-wish',
@@ -686,12 +693,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Critical Damage increased by 72%',
-      'For each enemy on the battlefield: Normal attack damage increases by 12% Maximum stacks: 4 (up to 48% bonus normal attack damage)',
-    ],
+      'For each enemy on the battlefield: Normal attack damage increases by 12% Maximum stacks: 4 (up to 48% bonus normal attack damage)'
+  ]
   },
   {
     id: 'self-release',
@@ -705,13 +712,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Ultimate Damage: Ultimate damage increased by 40%',
-      "Single Target Bonus: When there's one enemy on the field, ultimate damage additionally increases by 10%, maximum 4 times",
-      'Maximum Potential: Up to 80% ultimate damage boost vs single targets (40% + 40%)',
-    ],
+      "Single Target Bonus: When there's one enemy on the field, ultimate damage additionally increases by 10%, maximum 4 times"
+  ]
   },
   {
     id: 'behind-the-regret',
@@ -725,9 +731,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
-    effects: ['HP increased by 24%', 'Self healing amount increased by 30%'],
+      defense: 500
+  },
+    effects: ['HP increased by 24%', 'Self healing amount increased by 30%']
   },
   {
     id: 'midnight-work',
@@ -741,11 +747,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 800,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
-      'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds',
-    ],
+      'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds'
+  ]
   },
   {
     id: 'the-world-seems-to-have-stopped',
@@ -759,9 +765,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
-    effects: ['Attack power increased by 40%', 'When HP is below 50%: All damage increased by 40%'],
+      defense: 474
+  },
+    effects: ['Attack power increased by 40%', 'When HP is below 50%: All damage increased by 40%']
   },
 
   {
@@ -777,9 +783,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4000,
       attack: 400,
-      defense: 400,
-    },
-    effects: ['All team damage increases by 20%'],
+      defense: 400
+  },
+    effects: ['All team damage increases by 20%']
   },
   {
     id: 'strong-attack-users-reminiscence',
@@ -794,9 +800,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4000,
       attack: 400,
-      defense: 400,
-    },
-    effects: ['Attack increases by 16%', 'Defense increases by 24%'],
+      defense: 400
+  },
+    effects: ['Attack increases by 16%', 'Defense increases by 24%']
   },
   {
     id: 'summer-afternoon-nap-time',
@@ -811,14 +817,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'Restriction: Only effective for disaster units',
-      'Cost: 5-price awakening',
       'Attack power increased by 20%',
-      'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks',
-    ],
+      'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks'
+  ]
   },
   {
     id: 'swimsuit-sovereign-who-makes-hearts-flutter',
@@ -833,14 +837,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Restriction: Only effective for enhancers',
-      'Cost: 5-price awakening',
       'Attack increased by 20%',
-      'Defense increased by 20%',
-    ],
+      'Defense increased by 20%'
+  ]
   },
   {
     id: 'shared-bath-time',
@@ -854,12 +856,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'ATK +40%; ultimate damage +40% for the caster.',
-      'After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15% ATK Fire damage every 2s, stacks up to 5, lasts 10s.',
-    ],
+      'After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15% ATK Fire damage every 2s, stacks up to 5, lasts 10s.'
+  ]
   },
   {
     id: 'sleepy-guardian',
@@ -873,9 +875,9 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5200,
       attack: 420,
-      defense: 380,
-    },
-    effects: ['Ultimate skill can reduce targets energy regen by 18%'],
+      defense: 380
+  },
+    effects: ['Ultimate skill can reduce targets energy regen by 18%']
   },
   {
     id: 'lonely-dark-deep-night',
@@ -889,13 +891,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Critical Damage increased by 60%',
       'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle and stay until the end of the battle',
-      'Maximum 4 stacks (up to 40% attack power increase)',
-    ],
+      'Maximum 4 stacks (up to 40% attack power increase)'
+  ]
   },
   {
     id: 'revolutionary-restructuring',
@@ -909,13 +911,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Attack increases by 40%',
       'Infiltration Effect: When skill hits target, additionally adds one layer [Erosion]',
-      '[Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds',
-    ],
+      '[Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds'
+  ]
   },
   {
     id: 'method-of-revenge',
@@ -929,11 +931,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 4200,
       attack: 650,
-      defense: 395,
-    },
+      defense: 395
+  },
     effects: [
-      'Support Synergy: When a Buffer character uses their ultimate, own ultimate damage increases by 60% for 10 seconds',
-    ],
+      'Support Synergy: When a Buffer character uses their ultimate, own ultimate damage increases by 60% for 10 seconds'
+  ]
   },
   {
     id: 'morning-sunlight',
@@ -948,14 +950,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5000,
       attack: 500,
-      defense: 500,
-    },
+      defense: 500
+  },
     effects: [
-      'Restriction: Only effective for supports',
-      'Cost: 5-price awakening',
       'Attack power increased by 20%',
-      'All team skill damage increased by 20%',
-    ],
+      'All team skill damage increased by 20%'
+  ]
   },
   {
     id: 'black-face-ugly-person',
@@ -969,12 +969,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
-      'Only effective for DPS, 5-price awakening',
-      'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%',
-    ],
+      'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%'
+  ]
   },
   {
     id: 'strange-gaze-full-of-desire',
@@ -989,13 +988,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
-      'Only effective for Rogue class, 5-price awakening',
       'Crit Rate increases by 34%',
-      "When other allies cast their ultimates, the wearer's damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)",
-    ],
+      "When other allies cast their ultimates, the wearer's damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)"
+  ]
   },
   {
     id: 'the-most-real-her',
@@ -1009,12 +1007,11 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
-      'Only effective for healers, 5-price awakening',
-      'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%',
-    ],
+      'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%'
+  ]
   },
   {
     id: 'night-of-bloody-storm',
@@ -1028,12 +1025,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Attack power increased by 40%',
-      "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds",
-    ],
+      "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds"
+  ]
   },
   {
     id: 'halloween-candy',
@@ -1047,13 +1044,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'Critical damage increased by 60%',
       'When health is above 30%, equipped character recovers 2% of max health after attacking',
-      'All damage increased by 40%',
-    ],
+      'All damage increased by 40%'
+  ]
   },
   {
     id: 'gaiacard',
@@ -1067,14 +1064,14 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6300,
       attack: 580,
-      defense: 585,
-    },
+      defense: 585
+  },
     effects: [
       'Max HP +40%',
       'Healing output +40%',
       'If wearer healed within last 1 second: additional +40% healing output',
-      'Total Potential: Up to 80% healing output (40% base + 40% conditional)',
-    ],
+      'Total Potential: Up to 80% healing output (40% base + 40% conditional)'
+  ]
   },
   {
     id: 'in-the-cafe-sneaking-a-bite',
@@ -1088,12 +1085,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690,
-    },
+      defense: 690
+  },
     effects: [
       'Defense increases by 64%',
-      'After successful mitigation, damage taken is reduced by 10% for 5 seconds. When the wearer has a shield, damage taken is reduced by 18%.',
-    ],
+      'After successful mitigation, damage taken is reduced by 10% for 5 seconds. When the wearer has a shield, damage taken is reduced by 18%.'
+  ]
   },
   {
     id: 'night-assault-suspect',
@@ -1107,13 +1104,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690,
-    },
+      defense: 690
+  },
     effects: [
       'Defense increased by 64%',
       'When allied characters with shields take damage, Defense increased by 64%',
-      'When the equipper deals continuous damage to enemy targets, increase damage taken by the target by 15% for 5 seconds',
-    ],
+      'When the equipper deals continuous damage to enemy targets, increase damage taken by the target by 15% for 5 seconds'
+  ]
   },
   {
     id: 'wrong-appearance-timing',
@@ -1127,13 +1124,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 8800,
       attack: 480,
-      defense: 690,
-    },
+      defense: 690
+  },
     effects: [
       'Defense increased by 64%',
       'When HP is below 50%, after the wearer attacks, recover 2% max HP',
-      'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%',
-    ],
+      'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%'
+  ]
   },
   {
     id: 'i-am-your-christmas-present',
@@ -1148,12 +1145,12 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Critical hit rate increased by 34%, ultimate skill damage increased by 40%.',
-      'When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
-    ],
+      'When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.'
+  ]
   },
   {
     id: 'beautiful-moon',
@@ -1168,13 +1165,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600,
-    },
+      defense: 600
+  },
     effects: [
       'Healing increased by 35%.',
       "When healing a target with 'Continuous Damage' status, healing is increased by an additional 25%.",
-      "If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
-    ],
+      "If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack."
+  ]
   },
   {
     id: 'unreserved-love',
@@ -1189,14 +1186,14 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474,
-    },
+      defense: 474
+  },
     effects: [
       'Attack power increased by 40%',
       'Damage over time increased by 40%',
       'When dealing damage over time, the enemy takes 24% more damage for 3 seconds',
-      'Damage dealt to enemies with shields is increased by 35%',
-    ],
+      'Damage dealt to enemies with shields is increased by 35%'
+  ]
   },
   {
     id: 'pride-or-tsundere',
@@ -1211,13 +1208,13 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690,
-    },
+      defense: 690
+  },
     effects: [
       'HP increased by 32%',
       'Defense increased by 60%',
-      'When attacked by a normal attack, damage taken is reduced by 30%',
-    ],
+      'When attacked by a normal attack, damage taken is reduced by 30%'
+  ]
   },
   {
     id: 'suffocating-grace',
@@ -1232,16 +1229,16 @@ export const ZONE_NOVA_MEMORIES = [
     stats: {
       hp: 6800,
       attack: 480,
-      defense: 890,
-    },
+      defense: 890
+  },
     effects: [
       'Defense +64%',
       'After successfully parry, Damage Taken is reduced by 10% for 5 seconds',
       'The wearer gains [Stigma] (max 400 stacks), lasting 3 seconds',
-      'Every 40 stacks of [Stigma] increases All Resistances by 5%',
-    ],
-  },
-];
+      'Every 40 stacks of [Stigma] increases All Resistances by 5%'
+  ]
+  }
+  ];
 
 // Memory metadata for filters
 export const MEMORY_METADATA = {
@@ -1298,9 +1295,9 @@ export const MEMORY_METADATA = {
     'Thor',
     'Yuis',
     'Zashiki-warashi',
-    'Wrath-Samael',
-  ],
-};
+    'Wrath-Samael'
+  ]
+  };
 
 // Helper functions for memory management
 export function getMemoriesByRarity(rarity) {

@@ -20,7 +20,7 @@ export const frostDominionData = {
 
   // Memory Effects
   effects: [
-    'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 30 seconds',
+    'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 5 seconds',
   ],
 };
 
