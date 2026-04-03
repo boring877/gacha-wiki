@@ -45,7 +45,7 @@ export default defineConfig({
   build: {
     // Always inline stylesheets to prevent CSS loading issues on mobile
     // This prevents FOUC (Flash of Unstyled Content) and caching problems
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
     // Assets folder for better organization
     assets: 'assets/',
   },
@@ -91,11 +91,18 @@ export default defineConfig({
             if (id.includes('/data/taimanin-squad/')) {
               return 'ts-data';
             }
+            // Vendor chunks for third-party libraries
+            if (id.includes('node_modules')) {
+              if (id.includes('chart.js') || id.includes('chartjs')) {
+                return 'vendor-chart';
+              }
+              // Split other node_modules
+              return 'vendor';
+            }
+            // Utility chunks
             if (id.includes('/utils/')) {
               return 'utils';
             }
-            // Vendor chunks for third-party libraries
-            return 'vendor';
           },
         },
       },
@@ -169,7 +176,9 @@ export default defineConfig({
       }
     ],
     // Optimize dependencies
-    optimizeDeps: {},
+    optimizeDeps: {
+      include: ['chart.js'],
+    },
     // Enable esbuild for faster builds with Bun
     esbuild: {
       target: 'es2022',
