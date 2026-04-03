@@ -175,6 +175,17 @@
   color: var(--ss-text-tertiary);
 }
 
+.ss-builds-card-arcana-badge {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 3px;
+  background: rgba(156, 106, 222, 0.15);
+  color: #9c6ade;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .ss-builds-card-subs {
   display: flex;
   flex-wrap: wrap;
@@ -488,6 +499,133 @@
   line-height: 1.5;
 }
 
+/* Arcana Grid */
+.ss-build-arcana-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.ss-build-arcana-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ss-build-arcana-slot {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ss-text-tertiary);
+  padding: 0.375rem 0.625rem;
+  background: var(--ss-bg-tertiary);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.ss-build-arcana-image {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-build-arcana-image :global(.ss-arcana-image-wrapper) {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ss-build-arcana-image :global(.ss-arcana-image-wrapper img) {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.ss-build-arcana-info {
+  padding: 0.5rem 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ss-build-arcana-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+}
+
+.ss-build-arcana-character {
+  font-size: 0.6875rem;
+  color: var(--ss-text-tertiary);
+}
+
+.ss-build-arcana-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+
+.ss-build-arcana-tag {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 3px;
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--ss-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ss-build-arcana-tag--synergy {
+  background: rgba(91, 141, 217, 0.15);
+  color: #5b8dd9;
+}
+
+.ss-build-arcana-se {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.ss-build-arcana-se-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.4;
+}
+
+.ss-build-arcana-se-item :global(.ss-poten-icon) {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Arcana Alternatives */
+.ss-build-arcana-alts {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: 10px;
+}
+
+.ss-build-arcana-alts-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ss-text-tertiary);
+  margin-bottom: 0.625rem;
+}
+
 .ss-build-detail-set-bonuses {
   display: flex;
   flex-direction: column;
@@ -614,6 +752,10 @@
   .ss-build-detail-slots {
     grid-template-columns: 1fr;
   }
+
+  .ss-build-arcana-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -656,5 +798,13 @@
   .ss-build-detail-tier-stat {
     font-size: 0.75rem;
     padding: 0.25rem 0.625rem;
+  }
+
+  .ss-build-arcana-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-build-arcana-alt {
+    min-width: 140px;
   }
 }

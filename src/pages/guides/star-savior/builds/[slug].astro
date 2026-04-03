@@ -1,6 +1,6 @@
 ---
 // Star Savior Individual Character Build Detail Page
-// Full build: portrait, build type, set, 6 equipment slots with images/stats, tiered substats
+// Full build: portrait, build type, set, 6 equipment slots with images/stats, tiered substats, arcana
 import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
 import { CHARACTER_BUILDS, BUILD_TYPES, SLOT_ORDER } from '../../../../data/star-savior/builds.js';
 import { STAR_SAVIOR_SET_BONUSES, EQUIP_SET_BONUS_MAP } from '../../../../data/star-savior/gear.js';
@@ -11,6 +11,8 @@ import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astr
 import SSRoleImage from '../../../../components/star-savior/SSRoleImage.astro';
 import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
 import SSEquipImage from '../../../../components/star-savior/SSEquipImage.astro';
+import SSArcanaImage from '../../../../components/star-savior/SSArcanaImage.astro';
+import SSPotentialIcon from '../../../../components/star-savior/SSPotentialIcon.astro';
 
 export function getStaticPaths() {
   return CHARACTER_BUILDS.map(char => ({
@@ -55,6 +57,41 @@ const ringNote = build.ringNote || null;
 const setBonusIds = EQUIP_SET_BONUS_MAP[char.set] || [];
 const fourPiece = STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === setBonusIds[0] && sb.needParts === 4);
 const twoPiece = STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === setBonusIds[2] && sb.needParts === 2);
+
+interface SEPotential {
+  name: string;
+  icon: string;
+  description: string;
+  role?: string;
+  value: number;
+}
+
+async function getArcanaSEPotentials(slugs: string[]): Promise<Map<string, SEPotential[]>> {
+  const map = new Map<string, SEPotential[]>();
+  for (const slug of slugs) {
+    try {
+      const data = (await import(`../../../../data/star-savior/arcana/${slug}.json`)).default || {};
+      const potentials: SEPotential[] = [];
+      (data.journeyEvents || []).forEach((je: any) => {
+        if (je.rewards) {
+          je.rewards.forEach((r: any) => {
+            if (r.type === 'SE Potential' && r.name && !potentials.find(p => p.name === r.name)) {
+              potentials.push(r);
+            }
+          });
+        }
+      });
+      map.set(slug, potentials);
+    } catch { map.set(slug, []); }
+  }
+  return map;
+}
+
+let arcanaPotentials: Map<string, SEPotential[]> | null = null;
+if (char.arcana) {
+  const allSlugs = [...char.arcana.main.map((a: any) => a.slug), ...char.arcana.alternatives.map((a: any) => a.slug)];
+  arcanaPotentials = await getArcanaSEPotentials(allSlugs);
+}
 ---
 
 <LandingLayout title={`${char.name} Build - Star Savior`} description={`Equipment build guide for ${char.name} (${char.role}). ${buildLabel} with ${char.set} set.`} gameTitle={`${char.name} Build`}>
@@ -167,4 +204,90 @@ const twoPiece = STAR_SAVIOR_SET_BONUSES.find(sb => sb.id === setBonusIds[2] && 
       <div class="ss-build-detail-ring-note">{ringNote}</div>
     )}
   </section>
+
+  {char.arcana && (
+    <section class="ss-build-detail-section">
+      <h2 class="ss-build-detail-heading">Arcana</h2>
+      <p class="ss-build-detail-subs-desc">
+        Equip 5 Arcana to maximize damage. All 5 slots share the same priority order.
+      </p>
+      <div class="ss-build-arcana-grid">
+        {char.arcana.main.map((a: any, i: number) => {
+          const potentials = arcanaPotentials?.get(a.slug) || [];
+          return (
+            <a href={`/guides/star-savior/arcana/${a.slug}/`} class="ss-build-arcana-card">
+              <div class="ss-build-arcana-slot">Slot {i + 1}</div>
+              <div class="ss-build-arcana-image">
+                <SSArcanaImage imageSmall={a.imageSmall} alt={a.name} width={200} />
+              </div>
+              <div class="ss-build-arcana-info">
+                <div class="ss-build-arcana-name">{a.name}</div>
+                <div class="ss-build-arcana-character">{a.character}</div>
+                <div class="ss-build-arcana-tags">
+                  <SSRarityImage rarity={a.grade} width={36} height={18} />
+                  {a.specialTag && (
+                    <span class="ss-build-arcana-tag">{a.specialTag}</span>
+                  )}
+                  {a.classSynergy && a.classSynergy !== 'All Classes' && (
+                    <span class="ss-build-arcana-tag ss-build-arcana-tag--synergy">{a.classSynergy}</span>
+                  )}
+                </div>
+                {potentials.length > 0 && (
+                  <div class="ss-build-arcana-se">
+                    {potentials.map((p: any) => (
+                      <div class="ss-build-arcana-se-item">
+                        <SSPotentialIcon icon={p.icon} alt={p.name} size={16} />
+                        <span>{p.description || p.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {char.arcana.alternatives.length > 0 && (
+        <div class="ss-build-arcana-alts">
+          <div class="ss-build-arcana-alts-label">Alternatives</div>
+          <div class="ss-build-arcana-grid">
+            {char.arcana.alternatives.map((a: any) => {
+              const potentials = arcanaPotentials?.get(a.slug) || [];
+              return (
+                <a href={`/guides/star-savior/arcana/${a.slug}/`} class="ss-build-arcana-card">
+                  <div class="ss-build-arcana-slot">Alt</div>
+                  <div class="ss-build-arcana-image">
+                    <SSArcanaImage imageSmall={a.imageSmall} alt={a.name} width={200} />
+                  </div>
+                  <div class="ss-build-arcana-info">
+                    <div class="ss-build-arcana-name">{a.name}</div>
+                    <div class="ss-build-arcana-character">{a.character}</div>
+                    <div class="ss-build-arcana-tags">
+                      <SSRarityImage rarity={a.grade} width={36} height={18} />
+                      {a.specialTag && (
+                        <span class="ss-build-arcana-tag">{a.specialTag}</span>
+                      )}
+                      {a.classSynergy && a.classSynergy !== 'All Classes' && (
+                        <span class="ss-build-arcana-tag ss-build-arcana-tag--synergy">{a.classSynergy}</span>
+                      )}
+                    </div>
+                    {potentials.length > 0 && (
+                      <div class="ss-build-arcana-se">
+                        {potentials.map((p: any) => (
+                          <div class="ss-build-arcana-se-item">
+                            <SSPotentialIcon icon={p.icon} alt={p.name} size={16} />
+                            <span>{p.description || p.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </section>
+  )}
 </LandingLayout>

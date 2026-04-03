@@ -94,6 +94,7 @@ const sorted = [...CHARACTER_BUILDS].sort((a, b) => {
           <div class="ss-builds-card-meta">
             <span class={`ss-builds-card-type ss-builds-card-type--${char.buildType}`}>{char.buildType === 'dps' ? 'DPS' : 'Tank / Support'}</span>
             <span class="ss-builds-card-set">{char.set} Set</span>
+            {char.arcana && <span class="ss-builds-card-arcana-badge">Arcana</span>}
           </div>
           <div class="ss-builds-card-subs">
             {((char.substatTiers?.optimal || []).concat(char.substatTiers?.great || [])).slice(0, 4).map(s => (

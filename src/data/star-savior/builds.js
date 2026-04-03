@@ -3,9 +3,11 @@
 // DPS roles: Striker, Assassin, Caster, Ranger -> Motivator set
 // Tank/Support roles: Defender, Supporter -> Perses set
 // Main stats shown are recommended, not necessarily what the item rolls from data
+// Arcana recommendations are manually curated per character
 
 import { STAR_SAVIOR_CHARACTERS } from './characters.js';
 import { STAR_SAVIOR_GEAR } from './gear.js';
+import { STAR_SAVIOR_ARCANA } from './arcana.js';
 
 export const BUILD_TYPES = {
   dps: {
@@ -93,9 +95,35 @@ function getSlotRecs(buildType) {
   return recs;
 }
 
+export const ARCANA_BUILDS = {
+  rosaria: {
+    main: [
+      'rosaria-the-end-wears-the-face-of-a-girl',
+      'lacy-no-pain-no-gain',
+      'lyn-under-the-glass-moon-over-the-pavilion',
+      'naru-dreams-under-the-stars',
+      'claire-the-perfect-bunny-girl',
+    ],
+    alternatives: [
+      'asherah-young-lady-of-stranis',
+      'charlotte-a-knight-s-oath',
+      'frey-the-indomitable-masterpiece',
+      'muriel-divine-judgement',
+      'petra-made-by-petra',
+    ],
+  },
+};
+
+function resolveArcana(slugs) {
+  return slugs
+    .map(slug => STAR_SAVIOR_ARCANA.find(a => a.slug === slug))
+    .filter(Boolean);
+}
+
 export const CHARACTER_BUILDS = STAR_SAVIOR_CHARACTERS.map(char => {
   const buildType = TANK_ROLES.includes(char.role) ? 'tank' : 'dps';
   const build = BUILD_TYPES[buildType];
+  const arcanaBuild = ARCANA_BUILDS[char.slug];
   return {
     id: char.id,
     name: char.name,
@@ -108,5 +136,9 @@ export const CHARACTER_BUILDS = STAR_SAVIOR_CHARACTERS.map(char => {
     set: build.set,
     substatTiers: build.substatTiers,
     slots: getSlotRecs(buildType),
+    arcana: arcanaBuild ? {
+      main: resolveArcana(arcanaBuild.main),
+      alternatives: resolveArcana(arcanaBuild.alternatives),
+    } : null,
   };
 });
