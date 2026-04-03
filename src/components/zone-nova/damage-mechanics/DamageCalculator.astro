@@ -1,0 +1,112 @@
+---
+// Damage Calculator - Vanilla JS Astro component (replaces Svelte)
+// Calculates Zone Nova damage formula: (ATK x K) / (DEF + K) x (1 - DR%)
+// Props: title, description, showFormula
+export interface Props {
+  title?: string;
+  description?: string;
+  showFormula?: boolean;
+}
+
+const {
+  title = "Damage Calculator",
+  description = "Use this calculator to test the Zone Nova damage formula with your own values:",
+  showFormula = true,
+} = Astro.props;
+
+import { GAMES } from '../../../consts';
+const K = GAMES.ZONE_NOVA.DAMAGE_K_VALUE;
+---
+
+<div class="zn-cf-calculator-content" data-damage-k={K}>
+  <h2>{title}</h2>
+  <p>{description}</p>
+
+  <div class="zn-cf-calculator-layout">
+    <div class="zn-cf-inputs-section">
+      <h3>Damage Calculator</h3>
+      <p>Enter your values to calculate damage:</p>
+
+      <div class="zn-cf-input-group">
+        <label for="dmgAttack">Enemy Attack:</label>
+        <input type="number" id="dmgAttack" value="1000" min="1" aria-label="Enemy attack value" placeholder="Enter enemy attack power" />
+      </div>
+
+      <div class="zn-cf-input-group">
+        <label for="dmgDefense">Your Defense:</label>
+        <input type="number" id="dmgDefense" value={K.toFixed(2)} min="0" step="0.01" aria-label="Your defense value" placeholder="Enter your defense stat" />
+      </div>
+
+      <div class="zn-cf-input-group">
+        <label for="dmgReduction">Damage Reduction (%):</label>
+        <input type="number" id="dmgReduction" value="0" min="0" max="100" aria-label="Damage reduction percentage" placeholder="Enter damage reduction %" />
+      </div>
+    </div>
+
+    <div class="zn-cf-results-container">
+      <div class="zn-cf-result" id="dmgResult">
+        <h3>Calculation Results</h3>
+
+        <div class="zn-cf-result-item">
+          <span class="zn-cf-result-label">Final Damage:</span>
+          <span class="zn-cf-final-damage" id="dmgFinalDamage">500.00</span>
+        </div>
+
+        <div class="zn-cf-result-item">
+          <span class="zn-cf-result-label">Damage Taken:</span>
+          <span class="zn-cf-percentage" id="dmgPercentage">50.00%</span>
+        </div>
+
+        <div class="zn-cf-calculation-steps">
+          <h4>Step-by-Step Calculation:</h4>
+          <div class="zn-cf-calculation-box">
+            <pre id="dmgSteps">Step 1: (1000 x 972.95) = 972,950
+Step 2: (972.95 + 972.95) = 1,945.90
+Step 3: 972,950 / 1,945.90 = 500.00 (base damage)
+Step 4: 500.00 x (1 - 0%) = 500.00 x 1.00 = 500.00 (final damage)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {showFormula && (
+    <div class="zn-cf-formula-box">
+      <h3>Zone Nova Damage Formula</h3>
+      <p><strong>Final Damage = (Attack x K) / (Defense + K) x (1 - Damage Reduction%)</strong></p>
+      <p><em>K = {K} (Defense Coefficient)</em></p>
+    </div>
+  )}
+</div>
+
+<script is:inline>
+(function() {
+  const K = parseFloat(document.querySelector('[data-damage-k]').dataset.damageK);
+  const attackInput = document.getElementById('dmgAttack');
+  const defenseInput = document.getElementById('dmgDefense');
+  const reductionInput = document.getElementById('dmgReduction');
+
+  function calculate() {
+    const attack = parseFloat(attackInput.value) || 0;
+    const defense = parseFloat(defenseInput.value) || 0;
+    const damageReduction = parseFloat(reductionInput.value) || 0;
+
+    const baseDamage = attack > 0 ? (attack * K) / (defense + K) : 0;
+    const finalDamage = baseDamage * (1 - damageReduction / 100);
+    const percentage = attack > 0 ? (finalDamage / attack) * 100 : 0;
+
+    document.getElementById('dmgFinalDamage').textContent = finalDamage.toFixed(2);
+    document.getElementById('dmgPercentage').textContent = percentage.toFixed(2) + '%';
+
+    document.getElementById('dmgSteps').textContent =
+      `Step 1: (${attack} x ${K}) = ${(attack * K).toFixed(0)}\n` +
+      `Step 2: (${defense} + ${K}) = ${(defense + K).toFixed(2)}\n` +
+      `Step 3: ${(attack * K).toFixed(0)} / ${(defense + K).toFixed(2)} = ${baseDamage.toFixed(2)} (base damage)\n` +
+      `Step 4: ${baseDamage.toFixed(2)} x (1 - ${damageReduction}%) = ${baseDamage.toFixed(2)} x ${(1 - damageReduction / 100).toFixed(2)} = ${finalDamage.toFixed(2)} (final damage)`;
+  }
+
+  attackInput.addEventListener('input', calculate);
+  defenseInput.addEventListener('input', calculate);
+  reductionInput.addEventListener('input', calculate);
+})();
+</script>

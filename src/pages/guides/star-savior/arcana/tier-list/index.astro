@@ -1,0 +1,139 @@
+---
+// Star Savior SSR Arcana Tier List Page
+// Grouped by stat tag with tier rows inside each section (like Zone Nova)
+import CharacterDatabaseLayout from '../../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { STAR_SAVIOR_ARCANA } from '../../../../../data/star-savior/arcana.js';
+import {
+  ARCANA_TIER_LIST,
+  STAT_TAG_ORDER,
+  STAT_ICON_MAP,
+  TIER_ORDER,
+  TIER_DEFINITIONS,
+} from '../../../../../data/star-savior/arcana-tier-list.js';
+
+import '../../../../../styles/games/star-savior/ss-arcana-tier-list.css';
+import SSArcanaImage from '../../../../../components/star-savior/SSArcanaImage.astro';
+import SSArcanaTagImage from '../../../../../components/star-savior/SSArcanaTagImage.astro';
+import SSNurtureRoleImage from '../../../../../components/star-savior/SSNurtureRoleImage.astro';
+import SSStatIcon from '../../../../../components/star-savior/SSStatIcon.astro';
+
+const arcanaBySlug = new Map(STAR_SAVIOR_ARCANA.map(a => [a.slug, a]));
+
+const sections = STAT_TAG_ORDER.map(statTag => {
+  const statTiers = ARCANA_TIER_LIST[statTag];
+  if (!statTiers) return null;
+
+  const tiers = TIER_ORDER
+    .map(tier => ({
+      tier,
+      arcana: (statTiers[tier] || [])
+        .map(slug => arcanaBySlug.get(slug))
+        .filter(Boolean),
+    }))
+    .filter(t => t.arcana.length > 0);
+
+  return { statTag, tiers, total: tiers.reduce((s, t) => s + t.arcana.length, 0) };
+}).filter(Boolean);
+
+const totalArcana = sections.reduce((s, sec) => s + sec.total, 0);
+---
+
+<CharacterDatabaseLayout
+  title="Arcana Tier List - Star Savior"
+  description="SSR Arcana tier list for Star Savior grouped by stat tag."
+  gameTitle="Arcana Tier List"
+>
+  <div class="ss-tier-search-row">
+    <input type="text" id="tier-search" class="ss-tier-search-input" placeholder="Search arcana by name or character..." />
+    <span id="tier-count" class="ss-tier-count">{totalArcana} / {totalArcana}</span>
+  </div>
+
+  <div class="ss-tier-sections">
+    {sections.map(({ statTag, tiers }) => (
+      <section class="ss-tier-section" data-stat-tag={statTag}>
+        <div class="ss-tier-section-header">
+          <div class="ss-tier-section-title-row">
+            <SSStatIcon stat={STAT_ICON_MAP[statTag]} size={24} />
+            <div>
+              <h3 class="ss-tier-section-name">{statTag}</h3>
+              <p class="ss-tier-section-stat">{STAT_ICON_MAP[statTag]} stat tag</p>
+            </div>
+          </div>
+        </div>
+
+        {tiers.map(({ tier, arcana }) => (
+          <div class="ss-tier-row" data-tier={tier}>
+            <div class={`ss-tier-label ss-tier-${tier.toLowerCase()}`}>
+              <span class="ss-tier-label-text">{tier}</span>
+            </div>
+            <div class="ss-tier-cards">
+              {arcana.map((a: any) => (
+                <a href={`/guides/star-savior/arcana/${a.slug}/`} class="ss-tier-card" data-search={`${a.name} ${a.character}`.toLowerCase()}>
+                  <SSArcanaImage imageSmall={a.imageSmall} alt={a.name} width={200} class="ss-tier-card-img" />
+                  <div class="ss-tier-card-info">
+                    <div class="ss-tier-card-name">{a.name}</div>
+                    <div class="ss-tier-card-character">{a.character}</div>
+                    <div class="ss-tier-card-tags">
+                      {a.specialTag && (
+                        <div class="ss-tier-card-tag">
+                          <SSArcanaTagImage tag={a.specialTag} width={16} height={16} />
+                          <span>{a.specialTag}</span>
+                        </div>
+                      )}
+                      {a.classSynergy && (
+                        <div class="ss-tier-card-tag">
+                          <SSNurtureRoleImage role={a.classSynergy} width={16} height={16} />
+                          <span>{a.classSynergy}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+    ))}
+  </div>
+
+  <div class="ss-tier-no-results" id="tier-no-results">
+    No arcana found matching your search.
+  </div>
+</CharacterDatabaseLayout>
+
+<script>
+  const searchInput = document.getElementById('tier-search') as HTMLInputElement;
+  const countEl = document.getElementById('tier-count')!;
+  const noResults = document.getElementById('tier-no-results')!;
+  const sections = document.querySelectorAll('.ss-tier-section');
+  const totalCards = document.querySelectorAll('.ss-tier-card').length;
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+
+    sections.forEach(section => {
+      const rows = section.querySelectorAll('.ss-tier-row');
+      let sectionVisible = 0;
+
+      rows.forEach(row => {
+        const cards = row.querySelectorAll('.ss-tier-card');
+        let rowVisible = 0;
+        cards.forEach(card => {
+          const match = !q || (card as HTMLElement).dataset.search?.includes(q);
+          (card as HTMLElement).toggleAttribute('data-hidden', !match);
+          if (match) rowVisible++;
+        });
+        (row as HTMLElement).toggleAttribute('data-hidden', rowVisible === 0);
+        sectionVisible += rowVisible;
+      });
+
+      (section as HTMLElement).style.display = sectionVisible === 0 && q.length > 0 ? 'none' : '';
+      visible += sectionVisible;
+    });
+
+    countEl.textContent = `${visible} / ${totalCards}`;
+    noResults.toggleAttribute('data-visible', visible === 0 && q.length > 0);
+  });
+</script>

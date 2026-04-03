@@ -22,7 +22,10 @@ const isActive = (href: string) => {
     href.endsWith('/silver-and-blood/') ||
     href.endsWith('/horizon-walker/') ||
     href.endsWith('/stella-sora/') ||
-    href.endsWith('/busty-burst/')
+    href.endsWith('/busty-burst/') ||
+    href.endsWith('/star-savior/arcana/') ||
+    href.endsWith('/star-savior/gear/') ||
+    href.endsWith('/star-savior/characters/')
   ) {
     return currentPath === href;
   }
@@ -242,15 +245,33 @@ const isActive = (href: string) => {
     document.addEventListener('keydown', handleEscKey);
 
     // Enhanced prefetching system for instant navigation
+    const MAX_PREFETCH_LINKS = 12;
+    const prefetchCleanupInterval = setInterval(() => {
+      const oldLinks = document.querySelectorAll('link[rel="prefetch"][data-nav-prefetch]');
+      oldLinks.forEach(link => {
+        if (Date.now() - (parseInt(link.getAttribute('data-prefetch-time') || '0')) > 30000) {
+          link.remove();
+        }
+      });
+    }, 30000);
+
     function prefetchPage(url: string | null) {
       if (!url) return;
 
       const existing = document.querySelector(`link[href="${url}"]`);
       if (existing) return;
 
+      // Evict oldest prefetch links if at capacity
+      const allPrefetchLinks = document.querySelectorAll('link[rel="prefetch"][data-nav-prefetch]');
+      if (allPrefetchLinks.length >= MAX_PREFETCH_LINKS) {
+        allPrefetchLinks[0].remove();
+      }
+
       const link = document.createElement('link');
       link.rel = 'prefetch';
       link.href = url;
+      link.setAttribute('data-nav-prefetch', 'true');
+      link.setAttribute('data-prefetch-time', Date.now().toString());
       document.head.appendChild(link);
     }
 

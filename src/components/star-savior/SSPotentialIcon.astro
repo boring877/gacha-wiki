@@ -1,0 +1,47 @@
+---
+// SE Potential icon component for Star Savior
+// Displays potential node icons from extracted game assets
+import { Image } from 'astro:assets';
+
+const potentialIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/potentials/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt?: string;
+  size?: number;
+  class?: string;
+}
+
+const {
+  icon,
+  alt = '',
+  size = 20,
+  class: className,
+} = Astro.props;
+
+function findImage(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(potentialIcons).find(k =>
+    k.endsWith('/' + filename)
+  );
+  return key ? potentialIcons[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt}
+    width={size}
+    height={size}
+    class={`ss-poten-icon ${className || ''}`}
+    loading="lazy"
+    format="webp"
+    quality={95}
+  />
+) : null}

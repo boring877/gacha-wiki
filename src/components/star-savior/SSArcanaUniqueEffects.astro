@@ -1,0 +1,74 @@
+---
+// Arcana Unique Effect section component
+import { Image } from 'astro:assets';
+
+const uniqueIcons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/arcana-unique/*.png',
+  { eager: true }
+);
+
+function formatUniqueDesc(ue: any): string {
+  if (ue.effectType === 'Stat Gain') {
+    const stat = ue.statTag || 'Power';
+    const val = ue.value || 0;
+    return `When spending Bond Points during Training, gain +${val} ${stat} per level`;
+  }
+  if (ue.effectType === 'Class Training Bonus') {
+    const val = ue.value || 0;
+    return `When spending Bond Points during Class Training, gain +${val} bonus`;
+  }
+  if (ue.effectType === 'Training Efficiency') {
+    const val = ue.valueRate || 0;
+    return `When spending Bond Points during Training, gain +${(val / 100).toFixed(0)}% Training efficiency`;
+  }
+  if (ue.effectType === 'Training Condition Efficiency') {
+    const val = ue.valueRate || 0;
+    return `When spending Bond Points during Training, gain +${(val / 100).toFixed(0)}% Condition efficiency`;
+  }
+  if (ue.effectType === 'Request Coin Bonus') {
+    const val = ue.valueRate || 0;
+    return `When spending Bond Points during Requests, gain +${(val / 100).toFixed(0)}% coin reward`;
+  }
+  return ue.effectType || '--';
+}
+
+function findIcon(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(uniqueIcons).find(k => k.endsWith('/' + filename));
+  return key ? uniqueIcons[key].default : null;
+}
+
+interface Props {
+  uniqueEffects: any[];
+}
+
+const { uniqueEffects } = Astro.props;
+---
+
+{uniqueEffects.length > 0 && (
+  <section class="content-section">
+    <h2 class="section-title">Unique Effect</h2>
+    <p class="ss-arcana-unique-intro">Spend Bond Points during Training, Class Training, or Requests to activate this bonus effect. Bond Points are earned through Journey Events and conversation choices.</p>
+    <div class="ss-arcana-unique-list">
+      {uniqueEffects.map((ue: any) => {
+        const iconModule = findIcon(ue.icon);
+        return (
+          <div class="ss-arcana-unique-item">
+            <div class="ss-arcana-unique-header">
+              {iconModule && (
+                <div class="ss-arcana-unique-icon">
+                  <Image src={iconModule} alt={ue.title} width={40} height={40} loading="lazy" format="webp" quality={95} />
+                </div>
+              )}
+              <div>
+                <span class="ss-arcana-unique-title">{ue.title || '--'}</span>
+                <span class="ss-arcana-unique-meta">{ue.iconType} / {ue.cost} Bond Points</span>
+              </div>
+            </div>
+            <div class="ss-arcana-unique-desc">{formatUniqueDesc(ue)}</div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+)}

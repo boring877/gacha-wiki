@@ -1,0 +1,170 @@
+---
+// Star Savior Buff/Debuff Database Page
+// All battle buffs and debuffs with icons, descriptions, stats, and effects
+import LandingLayout from '../../../../layouts/star-savior/LandingLayout.astro';
+import { STAR_SAVIOR_BUFFS } from '../../../../data/star-savior/buffs.js';
+
+import '../../../../styles/games/star-savior/ss-buff-database.css';
+import SSBuffImage from '../../../../components/star-savior/SSBuffImage.astro';
+
+const CATEGORY_ORDER = ['stat', 'crowd-control', 'protection', 'mechanic', 'dispel', 'dot', 'cooldown', 'special'];
+
+const CATEGORY_LABELS: Record<string, string> = {
+  stat: 'Stat Modifiers',
+  'crowd-control': 'Crowd Control',
+  protection: 'Protection',
+  mechanic: 'Mechanics',
+  dispel: 'Dispel',
+  dot: 'Damage over Time',
+  cooldown: 'Cooldown',
+  special: 'Special',
+};
+
+const totalBuffs = STAR_SAVIOR_BUFFS.filter(b => b.isBuff).length;
+const totalDebuffs = STAR_SAVIOR_BUFFS.filter(b => !b.isBuff).length;
+const totalWithDesc = STAR_SAVIOR_BUFFS.filter(b => b.desc).length;
+const totalWithStats = STAR_SAVIOR_BUFFS.filter(b => b.stats.length > 0).length;
+
+const categoryCounts: Record<string, number> = {};
+for (const b of STAR_SAVIOR_BUFFS) {
+  categoryCounts[b.category] = (categoryCounts[b.category] || 0) + 1;
+}
+---
+
+<LandingLayout title="Buff & Debuff Database - Star Savior" description={`Complete buff and debuff database for Star Savior. ${STAR_SAVIOR_BUFFS.length} buffs and debuffs with icons, effects, and stat modifiers.`} gameTitle="Buff & Debuff Database">
+  <section class="ss-buff-overview">
+    <div class="ss-buff-stats-row">
+      <div class="ss-buff-stat-pill"><span class="ss-buff-stat-num">{STAR_SAVIOR_BUFFS.length}</span> Total</div>
+      <div class="ss-buff-stat-pill"><span class="ss-buff-stat-num">{totalBuffs}</span> Buffs</div>
+      <div class="ss-buff-stat-pill"><span class="ss-buff-stat-num">{totalDebuffs}</span> Debuffs</div>
+      <div class="ss-buff-stat-pill"><span class="ss-buff-stat-num">{CATEGORY_ORDER.length}</span> Categories</div>
+    </div>
+  </section>
+
+  <div class="ss-buff-search-row">
+    <input type="text" class="ss-buff-search" id="buff-search" placeholder="Search buffs and debuffs..." />
+  </div>
+
+  <div class="ss-buff-filters" id="buff-filters">
+    <button class="ss-buff-filter-btn ss-buff-filter-btn--active" data-filter="all">All</button>
+    <button class="ss-buff-filter-btn" data-filter="buff">Buffs</button>
+    <button class="ss-buff-filter-btn" data-filter="debuff">Debuffs</button>
+  </div>
+
+  {CATEGORY_ORDER.map(cat => {
+    const buffs = STAR_SAVIOR_BUFFS.filter(b => b.category === cat);
+    if (buffs.length === 0) return null;
+
+    return (
+      <section class="ss-buff-category-section" data-category={cat}>
+        <h2 class="ss-buff-category-title">
+          {CATEGORY_LABELS[cat] || cat}
+          <span class="ss-buff-category-count">{buffs.length}</span>
+        </h2>
+        <div class="ss-buff-grid">
+          {buffs.map(buff => (
+            <div class="ss-buff-card" data-buff-type={buff.isBuff ? 'buff' : 'debuff'} data-buff-name={buff.name.toLowerCase()} data-buff-category={cat}>
+              <div class="ss-buff-card-icon">
+                <SSBuffImage icon={buff.icon} alt={buff.name} width={48} />
+              </div>
+              <div class="ss-buff-card-info">
+                <div class="ss-buff-card-header">
+                  <span class="ss-buff-card-name">{buff.name}</span>
+                  <span class={`ss-buff-card-type-badge ${buff.isBuff ? 'ss-buff-card-type-badge--buff' : 'ss-buff-card-type-badge--debuff'}`}>
+                    {buff.isBuff ? 'Buff' : 'Debuff'}
+                  </span>
+                </div>
+
+                {buff.desc && (
+                  <p class="ss-buff-card-desc">{buff.desc}</p>
+                )}
+
+                {buff.stats.length > 0 && (
+                  <div class="ss-buff-card-stats">
+                    {buff.stats.map(s => (
+                      <span class={`ss-buff-card-stat ${s.value >= 0 ? 'ss-buff-card-stat--positive' : 'ss-buff-card-stat--negative'}`}>
+                        {s.display}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {buff.effects.length > 0 && (
+                  <div class="ss-buff-card-effects">
+                    {buff.effects.map(e => (
+                      <span class="ss-buff-card-effect">{e}</span>
+                    ))}
+                  </div>
+                )}
+
+                {Object.keys(buff.flags).length > 0 && (
+                  <div class="ss-buff-card-meta">
+                    {!buff.canDispel && <span class="ss-buff-card-tag">Undispellable</span>}
+                    {buff.isUnique && <span class="ss-buff-card-tag">Unique</span>}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+
+  <div class="ss-buff-no-results" id="no-results" style="display: none;">
+    No buffs or debuffs found matching your search.
+  </div>
+</LandingLayout>
+
+<script>
+  const searchInput = document.getElementById('buff-search') as HTMLInputElement;
+  const filterButtons = document.querySelectorAll('.ss-buff-filter-btn');
+  const allCards = document.querySelectorAll('.ss-buff-card');
+  const allSections = document.querySelectorAll('.ss-buff-category-section');
+  const noResults = document.getElementById('no-results');
+
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    allCards.forEach(card => {
+      const name = (card.getAttribute('data-buff-name') || '').toLowerCase();
+      const type = card.getAttribute('data-buff-type') || '';
+      const desc = card.querySelector('.ss-buff-card-desc')?.textContent?.toLowerCase() || '';
+      const effects = card.querySelector('.ss-buff-card-effects')?.textContent?.toLowerCase() || '';
+      const stats = card.querySelector('.ss-buff-card-stats')?.textContent?.toLowerCase() || '';
+
+      const matchesFilter = activeFilter === 'all' || type === activeFilter;
+      const matchesSearch = !query || name.includes(query) || desc.includes(query) || effects.includes(query) || stats.includes(query);
+
+      if (matchesFilter && matchesSearch) {
+        (card as HTMLElement).style.display = '';
+        visibleCount++;
+      } else {
+        (card as HTMLElement).style.display = 'none';
+      }
+    });
+
+    allSections.forEach(section => {
+      const visibleCards = section.querySelectorAll('.ss-buff-card:not([style*="display: none"])');
+      (section as HTMLElement).style.display = visibleCards.length > 0 ? '' : 'none';
+    });
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('ss-buff-filter-btn--active'));
+      btn.classList.add('ss-buff-filter-btn--active');
+      activeFilter = (btn as HTMLElement).getAttribute('data-filter') || 'all';
+      applyFilters();
+    });
+  });
+</script>

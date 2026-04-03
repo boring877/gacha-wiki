@@ -13,6 +13,10 @@ import SSElementImage from '../../../../components/star-savior/SSElementImage.as
 import SSJourneyStatIcon from '../../../../components/star-savior/SSJourneyStatIcon.astro';
 import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
 import SSGradeIcon from '../../../../components/star-savior/SSGradeIcon.astro';
+import SSArcanaImage from '../../../../components/star-savior/SSArcanaImage.astro';
+import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
+import SSArcpointImage from '../../../../components/star-savior/SSArcpointImage.astro';
+import { STAR_SAVIOR_ARCANA } from '../../../../data/star-savior/arcana.js';
 
 export function getStaticPaths() {
   return STAR_SAVIOR_CHARACTERS.map((c) => ({
@@ -56,6 +60,9 @@ const PROFILE_LABELS: Record<string, string> = {
   vaKR: 'VA (KR)',
   vaJP: 'VA (JP)',
 };
+
+const unitNameMatch = (data?.images?.faceSmall || '').match(/UFS_NKM_UNIT_S_(\w+)/);
+const unitName = unitNameMatch ? unitNameMatch[1] : '';
 
 function formatStat(key: string, value: number): string {
   if (['Hit Rate', 'Crit Rate', 'Crit Damage', 'Effect Hit Rate', 'Effect Evasion', 'Definite Effect Hit', 'Definite Effect Evasion'].includes(key)) {
@@ -275,6 +282,22 @@ const LABEL_TO_TYPE: Record<string, string> = {
 
 const description = `${data.name} - ${data.rarity} ${data.role} in Star Savior. View stats, skills, Nova Burst, and profile.`;
 
+const ARCANA_STAT_MAP: Record<string, string> = {
+  Power: 'ATK',
+  Health: 'HP',
+  Focus: 'Effect Hit',
+  Endurance: 'DEF',
+  Protect: 'Effect RES',
+};
+
+const characterArcana = STAR_SAVIOR_ARCANA.filter((a: any) => a.character === data.name)
+  .sort((a: any, b: any) => {
+    const gradeOrder = { SSR: 0, SR: 1, R: 2 };
+    return (gradeOrder[a.grade] ?? 9) - (gradeOrder[b.grade] ?? 9);
+  });
+
+const charTitle = data.title || '';
+
 function calcMaxBattlePower(d: any): number {
   if (!d.stats) return 0;
   const growth = d.statGrowth || {};
@@ -408,6 +431,11 @@ const maxBattlePower = calcMaxBattlePower(data);
         </div>
       )}
     </div>
+    {unitName && (
+      <div class="ss-detail-profile-icon">
+        <SSArcpointImage unitName={unitName} alt={`${data.name} Profile Icon`} width={80} loading="eager" />
+      </div>
+    )}
   </div>
 
   {data.skills && data.skills.length > 0 && (
@@ -575,20 +603,22 @@ const maxBattlePower = calcMaxBattlePower(data);
           <input type="number" id="ss-tactics-input" min="0" max="100" value="0" class="ss-level-num ss-tactics-num" />
           <button id="ss-max-btn" class="ss-max-btn" type="button">Max</button>
         </div>
-        <table class="ss-damage-table ss-stats-table" id="ss-stats-table">
-          <thead>
-            <tr>
-              <th>Stat</th>
-              <th>Total</th>
-              <th>Lv. Stats</th>
-              <th>Stars</th>
-              <th>Affection</th>
-              <th>Tactics</th>
-              <th>Resonance</th>
-            </tr>
-          </thead>
-          <tbody id="ss-stats-tbody"></tbody>
-        </table>
+        <div class="ss-stats-table-wrapper">
+          <table class="ss-damage-table ss-stats-table" id="ss-stats-table">
+            <thead>
+              <tr>
+                <th>Stat</th>
+                <th>Total</th>
+                <th>Lv. Stats</th>
+                <th>Stars</th>
+                <th>Affection</th>
+                <th>Tactics</th>
+                <th>Resonance</th>
+              </tr>
+            </thead>
+            <tbody id="ss-stats-tbody"></tbody>
+          </table>
+        </div>
         <div class="ss-resonance-active" id="ss-resonance-active"></div>
       </div>
       <script is:inline set:html={`
@@ -990,6 +1020,30 @@ const maxBattlePower = calcMaxBattlePower(data);
             </div>
             {p.description && <div class="ss-potential-desc" set:html={p.description}></div>}
           </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {characterArcana.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Arcana</h2>
+      <div class="ss-char-arcana-list">
+        {characterArcana.map((arcana: any) => (
+          <a href={`/guides/star-savior/arcana/${arcana.slug}/`} class="ss-char-arcana-card">
+            <div class="ss-char-arcana-top">
+              <div class="ss-char-arcana-name">{arcana.name}</div>
+              <div class="ss-char-arcana-char">{data.name}{charTitle ? ` - ${charTitle}` : ''}</div>
+              <div class="ss-char-arcana-badges">
+                <SSRarityImage rarity={arcana.grade} width={32} height={16} />
+                {arcana.statTag && <SSStatIcon stat={ARCANA_STAT_MAP[arcana.statTag] || arcana.statTag} size={16} />}
+              </div>
+            </div>
+            <div class="ss-char-arcana-img-wrap">
+              <SSArcanaImage image={arcana.image} alt={arcana.name} width={240} class="ss-char-arcana-img" />
+            </div>
+            <span class="ss-char-arcana-link">View Details &rarr;</span>
+          </a>
         ))}
       </div>
     </section>

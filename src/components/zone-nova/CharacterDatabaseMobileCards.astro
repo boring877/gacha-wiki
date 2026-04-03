@@ -4,6 +4,7 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
 // Helper function to categorize character tags for styling (same as CharacterPageTemplate)
 function getTagCategory(tag: string): string {
+  if (typeof tag !== 'string') return 'general-mechanic';
   const lowerTag = tag.toLowerCase();
   // Damage/Scaling tags - Orange
   if (

@@ -31,7 +31,7 @@
 }
 
 .qa-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--text-base);
   font-weight: 700;
   color: var(--ss-bg-primary);
@@ -45,7 +45,7 @@
 }
 
 .qa-character {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--ss-primary);
@@ -53,7 +53,7 @@
 
 /* Question */
 .qa-question {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--text-lg);
   font-weight: 500;
   color: var(--ss-text-primary);
@@ -74,7 +74,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-size: var(--text-sm);
   transition: background-color 0.15s ease;
 }
@@ -90,7 +90,7 @@
 }
 
 .option-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 600;
   font-size: var(--text-sm);
   min-width: 24px;
@@ -123,7 +123,7 @@
 }
 
 .correct-badge {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--text-xs);
   font-weight: 600;
   color: var(--ss-accent);

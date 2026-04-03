@@ -1,8 +1,8 @@
 ---
 // Star Savior Individual Arcana Detail Page
-// Shows arcana info, promotions, unique effects, journey events, and episode
 import CharacterDetailLayout from '../../../../layouts/star-savior/CharacterDetailLayout.astro';
 import { STAR_SAVIOR_ARCANA } from '../../../../data/star-savior/arcana.js';
+import { ARCANA_JOURNEY_BG_MAP } from '../../../../data/star-savior/arcana-journey-bg.js';
 
 import '../../../../styles/games/star-savior/ss-character-detail.css';
 import '../../../../styles/games/star-savior/ss-arcana-detail.css';
@@ -11,6 +11,10 @@ import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astr
 import SSArcanaTagImage from '../../../../components/star-savior/SSArcanaTagImage.astro';
 import SSNurtureRoleImage from '../../../../components/star-savior/SSNurtureRoleImage.astro';
 import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
+import SSPotentialIcon from '../../../../components/star-savior/SSPotentialIcon.astro';
+import SSArcanaUniqueEffects from '../../../../components/star-savior/SSArcanaUniqueEffects.astro';
+import SSArcanaPromotions from '../../../../components/star-savior/SSArcanaPromotions.astro';
+import SSJourneyBgGallery from '../../../../components/star-savior/SSJourneyBgGallery.astro';
 
 export function getStaticPaths() {
   return STAR_SAVIOR_ARCANA.map((a) => ({
@@ -20,132 +24,45 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-let data: any = null;
-try {
-  const mod = await import(`../../../../data/star-savior/arcana/${slug}.json`);
-  data = mod.default || mod;
-} catch {
+const arcanaInfo = STAR_SAVIOR_ARCANA.find((a: any) => a.slug === slug);
+
+if (!arcanaInfo) {
   return Astro.redirect('/guides/star-savior/arcana/');
 }
+
+const data = (await import(`../../../../data/star-savior/arcana/${slug}.json`)).default || {};
 
 const STAT_ICON_MAP: Record<string, string> = {
   Power: 'ATK',
   Health: 'HP',
-  Focus: 'Crit Rate',
-  Endurance: 'Toughness',
-  Protect: 'DEF',
+  Focus: 'Effect Hit',
+  Endurance: 'DEF',
+  Protect: 'Effect RES',
 };
 
 const promotions: any[] = data.promotions || [];
 const uniqueEffects: any[] = data.uniqueEffects || [];
 const journeyEvents: any[] = data.journeyEvents || [];
-
-function formatPromoDesc(p: any): string {
-  const vt = p.valueType;
-  if (vt === 'Stat Bonus') {
-    const stat = p.statTag || '';
-    const val = p.value || 0;
-    const add = p.addPerValue || 0;
-    let desc = `+${val} ${stat}`;
-    if (add > 0) desc += ` (+${add} per tick)`;
-    return desc;
-  }
-  if (vt === 'Bond Points') {
-    const val = p.value || 0;
-    const add = p.addPerValue || 0;
-    let desc = `+${val} Bond Points`;
-    if (add > 0) desc += ` (+${add} per tick)`;
-    return desc;
-  }
-  if (vt === 'Arcana Points') {
-    const val = p.value || 0;
-    const add = p.addPerValue || 0;
-    let desc = `+${val} Arcana Points`;
-    if (add > 0) desc += ` (+${add} per tick)`;
-    return desc;
-  }
-  if (vt === 'Training Efficiency') {
-    const val = p.valueRate || 0;
-    const add = p.addPerValueRate || 0;
-    let desc = `+${(val / 100).toFixed(0)}% Training efficiency`;
-    if (add > 0) desc += ` (+${(add / 100).toFixed(2)}% per level)`;
-    return desc;
-  }
-  if (vt === 'Big Success Bonus') {
-    const val = p.valueRate || 0;
-    const add = p.addPerValueRate || 0;
-    let desc = `+${(val / 100).toFixed(0)}% Big Success rate`;
-    if (add > 0) desc += ` (+${(add / 100).toFixed(2)}% per level)`;
-    return desc;
-  }
-  if (vt === 'Class Training Bonus') {
-    const val = p.value || 0;
-    const add = p.addPerValue || 0;
-    let desc = `+${val} Class Training bonus`;
-    if (add > 0) desc += ` (+${add} per tick)`;
-    return desc;
-  }
-  if (vt === 'Class Training Efficiency') {
-    const val = p.value || 0;
-    const add = p.addPerValue || 0;
-    let desc = `+${val} Class Training efficiency`;
-    if (add > 0) desc += ` (+${add} per tick)`;
-    return desc;
-  }
-  if (vt === 'Training Condition Efficiency') {
-    const val = p.valueRate || 0;
-    const add = p.addPerValueRate || 0;
-    let desc = `+${(val / 100).toFixed(0)}% Condition efficiency`;
-    if (add > 0) desc += ` (+${(add / 100).toFixed(2)}% per level)`;
-    return desc;
-  }
-  if (vt === 'Stat Gain') {
-    const stat = p.statTag || '';
-    const val = p.value || 0;
-    return `+${val} ${stat} per level`;
-  }
-  return vt || '--';
-}
-
-function formatUniqueDesc(ue: any): string {
-  if (ue.effectType === 'Stat Gain') {
-    const stat = ue.statTag || 'Power';
-    const val = ue.value || 0;
-    return `When spending Bond Points during Training, gain +${val} ${stat} per level`;
-  }
-  if (ue.effectType === 'Class Training Bonus') {
-    const val = ue.value || 0;
-    return `When spending Bond Points during Class Training, gain +${val} bonus`;
-  }
-  if (ue.effectType === 'Training Efficiency') {
-    const val = ue.valueRate || 0;
-    return `When spending Bond Points during Training, gain +${(val / 100).toFixed(0)}% Training efficiency`;
-  }
-  if (ue.effectType === 'Training Condition Efficiency') {
-    const val = ue.valueRate || 0;
-    return `When spending Bond Points during Training, gain +${(val / 100).toFixed(0)}% Condition efficiency`;
-  }
-  if (ue.effectType === 'Request Coin Bonus') {
-    const val = ue.valueRate || 0;
-    return `When spending Bond Points during Requests, gain +${(val / 100).toFixed(0)}% coin reward`;
-  }
-  return ue.effectType || '--';
-}
-
-const promoGroups: Record<string, any[]> = {
-  'Journey Start Effect': promotions.filter((p: any) => p.type === 'Journey Start'),
-  'Training Effect': promotions.filter((p: any) => p.type === 'Training'),
-  'Class Training Effect': promotions.filter((p: any) => p.type === 'Class Training'),
-  'Request Effect': promotions.filter((p: any) => p.type === 'Request'),
-};
+const journeyBgFiles = ARCANA_JOURNEY_BG_MAP[slug] || [];
 
 const description = `${data.name || data.character} - ${data.grade} Arcana in Star Savior.`;
+
+const allSEPotentials: any[] = [];
+journeyEvents.forEach((je: any) => {
+  if (je.rewards) {
+    je.rewards.forEach((r: any) => {
+      if (r.type === 'SE Potential' && r.name && !allSEPotentials.find((p: any) => p.name === r.name)) {
+        allSEPotentials.push(r);
+      }
+    });
+  }
+});
 ---
 
 <CharacterDetailLayout title={data.name || data.character} description={description} gameTitle={data.name || data.character}>
   <div class="ss-detail-header">
     <div class="ss-detail-portrait-container">
-      <SSArcanaImage imageSmall={data.imageSmall} alt={data.name || data.character} width={480} class="ss-detail-portrait-wrapper" />
+      <SSArcanaImage image={data.image} alt={data.name || data.character} width={480} class="ss-detail-portrait-wrapper" />
     </div>
     <div class="ss-detail-info">
       <h2 class="ss-detail-name">{data.name || '--'}</h2>
@@ -189,24 +106,30 @@ const description = `${data.name || data.character} - ${data.grade} Arcana in St
     <p>Higher grade arcana (SSR, SR) offer more effects -- Special Tags for combat buffs, Class Synergy for +5% Training Effect with specific classes, Unique Effects that spend Bond Points for extra gains, and Journey Event story chains with rewards.</p>
   </div>
 
-  {uniqueEffects.length > 0 && (
+  {allSEPotentials.length > 0 && (
     <section class="content-section">
-      <h2 class="section-title">Unique Effect</h2>
-      <div class="ss-arcana-unique-list">
-        {uniqueEffects.map((ue: any) => (
-          <div class="ss-arcana-unique-item">
-            <div class="ss-arcana-unique-header">
-              <div>
-                <span class="ss-arcana-unique-title">{ue.title || '--'}</span>
-                <span class="ss-arcana-unique-meta">{ue.iconType} / {ue.cost} Bond Points</span>
-              </div>
+      <h2 class="section-title">Potential</h2>
+      <p class="ss-arcana-potential-intro">Earned from Journey Events. Grants a permanent passive skill enhancement.</p>
+      <div class="ss-arcana-potential-list">
+        {allSEPotentials.map((p: any) => (
+          <div class="ss-arcana-potential-card">
+            <div class="ss-arcana-potential-icon">
+              {p.icon ? <SSPotentialIcon icon={p.icon} alt={p.name} size={48} /> : <span>?</span>}
             </div>
-            <div class="ss-arcana-unique-desc">{formatUniqueDesc(ue)}</div>
+            <div class="ss-arcana-potential-text">
+              <div class="ss-arcana-potential-name">
+                {p.name}
+                {p.role && <span class="ss-arcana-potential-role">{p.role}</span>}
+              </div>
+              <div class="ss-arcana-potential-desc">{p.description}</div>
+            </div>
           </div>
         ))}
       </div>
     </section>
   )}
+
+  <SSArcanaUniqueEffects uniqueEffects={uniqueEffects} />
 
   {journeyEvents.length > 0 && (
     <section class="content-section">
@@ -226,7 +149,8 @@ const description = `${data.name || data.character} - ${data.grade} Arcana in St
                       {r.type === 'Potential Points' && `Potential +${r.value}`}
                       {r.type === 'Coins' && `Coins +${r.value}`}
                       {r.type === 'Condition' && `Condition +${r.value}`}
-                      {r.type === 'SE Potential' && `SE Potential x${r.value}`}
+                      {r.type === 'SE Potential' && r.name && r.name}
+                      {r.type === 'SE Potential' && !r.name && `SE Potential x${r.value}`}
                       {r.type === 'Stat Potential' && `Stat Potential x${r.value}`}
                       {r.type === 'Journey Buff' && `Buff`}
                       {r.type === 'Item' && `Item x${r.value}`}
@@ -241,26 +165,7 @@ const description = `${data.name || data.character} - ${data.grade} Arcana in St
     </section>
   )}
 
-  {promotions.length > 0 && (
-    <section class="content-section">
-      <h2 class="section-title">Journey Effects</h2>
-      <div class="ss-arcana-promo-groups">
-        {Object.entries(promoGroups).filter(([, items]) => items.length > 0).map(([title, items]: [string, any[]]) => (
-          <div class="ss-arcana-promo-group">
-            <h3 class="ss-arcana-promo-group-title">{title}</h3>
-            <div class="ss-arcana-promo-list">
-              {items.map((p: any) => (
-                <div class="ss-arcana-promo-item">
-                  <span class="ss-arcana-promo-level">Lv.{p.unlockLevel}</span>
-                  <span class="ss-arcana-promo-desc">{formatPromoDesc(p)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
+  <SSArcanaPromotions promotions={promotions} />
 
   {data.episode && (
     <section class="content-section">
@@ -269,5 +174,9 @@ const description = `${data.name || data.character} - ${data.grade} Arcana in St
         {data.episode.split('\n').map((line: string) => line ? <p>{line}</p> : <br />)}
       </div>
     </section>
+  )}
+
+  {journeyBgFiles.length > 0 && (
+    <SSJourneyBgGallery files={journeyBgFiles} />
   )}
 </CharacterDetailLayout>

@@ -1,0 +1,367 @@
+---
+// Gaia HP Calculator with Chart - Vanilla JS Astro component (replaces Svelte)
+// Shows calculator inputs and Chart.js line chart for Gaia's 15% HP cap mechanic
+---
+
+<div class="gaia-calculator-chart-container">
+  <div class="calculator-section">
+    <section class="zn-cf-calculator" id="gaia-calculator">
+      <h3>Gaia Setup</h3>
+      <p>Configure Gaia's HP and abilities:</p>
+
+      <div class="zn-cf-input-group">
+        <label for="gaiaHP">Gaia's Base HP:</label>
+        <input type="number" id="gaiaHP" value="10548" min="1" aria-label="Gaia's base HP" placeholder="Enter Gaia's base HP" />
+      </div>
+
+      <div class="zn-cf-input-group">
+        <label for="allyHP">Ally's Base HP:</label>
+        <input type="number" id="allyHP" value="8000" min="1" aria-label="Ally's base HP" placeholder="Enter ally's base HP" />
+      </div>
+
+      <h4>Active Abilities:</h4>
+      <div class="ability-toggles">
+        <label class="ability-toggle">
+          <input type="checkbox" id="toggleMotherlyLove" checked />
+          <div class="ability-content">
+            <span class="ability-name">Motherly Love</span>
+            <span class="ability-desc">+60% HP increase</span>
+          </div>
+        </label>
+        <label class="ability-toggle">
+          <input type="checkbox" id="toggleUltimate" checked />
+          <div class="ability-content">
+            <span class="ability-name">Ultimate</span>
+            <span class="ability-desc">+60% HP increase</span>
+          </div>
+        </label>
+        <label class="ability-toggle">
+          <input type="checkbox" id="toggleAwakeningVI" />
+          <div class="ability-content">
+            <span class="ability-name">Awakening VI</span>
+            <span class="ability-desc">+50% bonus HP</span>
+          </div>
+        </label>
+        <label class="ability-toggle">
+          <input type="checkbox" id="toggleTeamSkill" />
+          <div class="ability-content">
+            <span class="ability-name">Team Skill</span>
+            <span class="ability-desc">+10% HP, +healing</span>
+          </div>
+        </label>
+      </div>
+
+      <h3>Calculation Results</h3>
+
+      <div class="zn-cf-result-item">
+        <span class="zn-cf-result-label">Gaia Final HP:</span>
+        <span class="zn-cf-final-damage" id="resultGaiaFinalHP">11,602</span>
+      </div>
+      <div class="zn-cf-result-item">
+        <span class="zn-cf-result-label">Ally Final HP:</span>
+        <span class="zn-cf-final-damage" id="resultAllyFinalHP">9,582</span>
+      </div>
+      <div class="zn-cf-result-item">
+        <span class="zn-cf-result-label">HP Increase:</span>
+        <span class="zn-cf-percentage" id="resultHPIncrease">+1,582 (+19.8%)</span>
+      </div>
+      <div class="zn-cf-result-item">
+        <span class="zn-cf-result-label">Emergency Heal:</span>
+        <span class="zn-cf-percentage" id="resultEmergencyHeal">1,392</span>
+      </div>
+      <div class="zn-cf-result-item" id="resultHealingBonusRow" style="display:none">
+        <span class="zn-cf-result-label">Healing Bonus:</span>
+        <span class="zn-cf-percentage" id="resultHealingBonus">+5%</span>
+      </div>
+      <div class="cap-warning" id="capWarning" style="display:none">
+        <span class="cap-text">15% cap active - total HP increase capped at 15% of Gaia's HP</span>
+      </div>
+
+      <h4>Step-by-Step Calculation:</h4>
+      <div class="zn-cf-calculation-box">
+        <div class="calc-step"><div class="step-title">Gaia Final HP</div><div class="step-calc" id="stepGaiaFinal">10548 (no team skill)</div></div>
+        <div class="calc-step"><div class="step-title">Motherly Love</div><div class="step-calc" id="stepMotherlyLove">min(8000 x 0.6, 10548 x 0.15) = min(4800, 1582) = 1582</div></div>
+        <div class="calc-step"><div class="step-title">Ultimate</div><div class="step-calc" id="stepUltimate">min(8000 x 0.6, 10548 x 0.15) = min(4800, 1582) = 1582</div></div>
+        <div class="calc-step"><div class="step-title">Awakening VI</div><div class="step-calc" id="stepAwakening">Not active</div></div>
+        <div class="calc-step"><div class="step-title">Total HP Increase</div><div class="step-calc" id="stepTotal">1582 + 0 = 1582</div></div>
+        <div class="calc-step"><div class="step-title">Emergency Heal</div><div class="step-calc" id="stepEmergency">10548 x 0.12 = 1265</div></div>
+        <div class="calc-step"><div class="step-title">Healing Bonus</div><div class="step-calc" id="stepHealing">No team skill</div></div>
+        <div class="final-result" id="stepFinal">Total HP Increase: 1,582 (capped at 15% of Gaia's HP)<br>Emergency Healing: 1,265</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="chart-section">
+    <div class="gaia-cap-chart-container">
+      <div class="chart-header">
+        <h3>HP Cap Visualization</h3>
+        <p>Shows how higher Gaia HP increases the 15% cap, allowing allies to get more HP increase</p>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="gaiaCapChart"></canvas>
+      </div>
+      <div class="chart-insights">
+        <div class="insight-item">
+          <span class="insight-label">Current Cap:</span>
+          <span class="insight-value" id="insightCap">1,582 HP</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-label">Current Increase:</span>
+          <span class="insight-value" id="insightIncrease">1,582 HP <span class="percentage">(19.8%)</span></span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-label">Ally HP + HP Increase:</span>
+          <span class="insight-value" id="insightTotal">9,582 HP</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-label">% of Ally Max HP:</span>
+          <span class="insight-value" id="insightPercent">19.8%</span>
+        </div>
+        <div class="insight-item">
+          <span class="insight-label">Cap Status:</span>
+          <span class="insight-value" id="insightCapStatus">No Cap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gaia-calculator-chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .calculator-section { order: 1; }
+  .chart-section { order: 2; }
+</style>
+
+<script is:inline>
+(function() {
+  const MOTHERLY_LOVE_PERCENT = 0.60;
+  const ULTIMATE_PERCENT = 0.60;
+  const AWAKENING_BONUS_PERCENT = 0.50;
+  const CAP_PERCENT = 0.15;
+  const EMERGENCY_HEAL_PERCENT = 0.12;
+
+  let chart = null;
+
+  function getState() {
+    return {
+      gaiaHP: parseInt(document.getElementById('gaiaHP').value) || 0,
+      allyHP: parseInt(document.getElementById('allyHP').value) || 0,
+      motherlyLove: document.getElementById('toggleMotherlyLove').checked,
+      ultimate: document.getElementById('toggleUltimate').checked,
+      awakeningVI: document.getElementById('toggleAwakeningVI').checked,
+      teamSkill: document.getElementById('toggleTeamSkill').checked,
+    };
+  }
+
+  function calculate(s) {
+    const gaiaFinalHP = s.teamSkill ? Math.floor(s.gaiaHP * 1.10) : s.gaiaHP;
+    const capAmount = Math.floor(gaiaFinalHP * CAP_PERCENT);
+    const baseIncrease = Math.min(Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT), capAmount);
+    const awakeningIncrease = s.awakeningVI && baseIncrease < capAmount
+      ? Math.min(Math.floor(s.allyHP * AWAKENING_BONUS_PERCENT), capAmount - baseIncrease) : 0;
+    const motherlyLoveIncrease = s.motherlyLove ? baseIncrease : 0;
+    const ultimateIncrease = s.ultimate ? Math.min(Math.floor(s.allyHP * ULTIMATE_PERCENT), capAmount) : 0;
+    const totalHPIncrease = motherlyLoveIncrease + awakeningIncrease + ultimateIncrease;
+    const allyFinalHP = s.allyHP + totalHPIncrease;
+    const emergencyHeal = Math.floor(gaiaFinalHP * EMERGENCY_HEAL_PERCENT);
+    const healingStacks = s.teamSkill ? Math.floor(gaiaFinalHP / 5000) : 0;
+    const healingBonus = Math.min(healingStacks * 0.05, 0.30);
+    const finalEmergencyHeal = Math.floor(emergencyHeal * (1 + healingBonus));
+    const hpIncreasePercentage = s.allyHP > 0 ? (totalHPIncrease / s.allyHP) * 100 : 0;
+    const isCapped = motherlyLoveIncrease < Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT) ||
+                     ultimateIncrease < Math.floor(s.allyHP * ULTIMATE_PERCENT);
+
+    return {
+      gaiaFinalHP, capAmount, baseIncrease, awakeningIncrease,
+      motherlyLoveIncrease, ultimateIncrease, totalHPIncrease, allyFinalHP,
+      emergencyHeal, healingStacks, healingBonus, finalEmergencyHeal,
+      hpIncreasePercentage, isCapped
+    };
+  }
+
+  function updateResults(s, r) {
+    document.getElementById('resultGaiaFinalHP').textContent = r.gaiaFinalHP.toLocaleString();
+    document.getElementById('resultAllyFinalHP').textContent = r.allyFinalHP.toLocaleString();
+    document.getElementById('resultHPIncrease').textContent = `+${r.totalHPIncrease.toLocaleString()} (+${r.hpIncreasePercentage.toFixed(1)}%)`;
+    document.getElementById('resultEmergencyHeal').textContent = r.finalEmergencyHeal.toLocaleString();
+
+    const bonusRow = document.getElementById('resultHealingBonusRow');
+    bonusRow.style.display = s.teamSkill ? '' : 'none';
+    if (s.teamSkill) {
+      document.getElementById('resultHealingBonus').textContent = `+${(r.healingBonus * 100).toFixed(0)}%`;
+    }
+
+    const capWarning = document.getElementById('capWarning');
+    capWarning.style.display = r.isCapped ? '' : 'none';
+
+    document.getElementById('stepGaiaFinal').textContent = s.teamSkill
+      ? `${s.gaiaHP} x 1.10 = ${r.gaiaFinalHP}` : `${s.gaiaHP} (no team skill)`;
+    document.getElementById('stepMotherlyLove').textContent = s.motherlyLove
+      ? `min(${s.allyHP} x ${MOTHERLY_LOVE_PERCENT}, ${r.gaiaFinalHP} x ${CAP_PERCENT}) = min(${Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT)}, ${r.capAmount}) = ${r.motherlyLoveIncrease}`
+      : 'Not active';
+    document.getElementById('stepUltimate').textContent = s.ultimate
+      ? `min(${s.allyHP} x ${ULTIMATE_PERCENT}, ${r.gaiaFinalHP} x ${CAP_PERCENT}) = min(${Math.floor(s.allyHP * ULTIMATE_PERCENT)}, ${r.capAmount}) = ${r.ultimateIncrease}`
+      : 'Not active';
+    document.getElementById('stepAwakening').textContent = s.awakeningVI && r.baseIncrease < r.capAmount
+      ? `min(${s.allyHP} x ${AWAKENING_BONUS_PERCENT}, ${r.capAmount - r.baseIncrease}) = ${r.awakeningIncrease}`
+      : (s.awakeningVI ? 'No benefit (cap reached)' : 'Not active');
+    document.getElementById('stepTotal').textContent = `${r.motherlyLoveIncrease} + ${r.awakeningIncrease} + ${r.ultimateIncrease} = ${r.totalHPIncrease}`;
+    document.getElementById('stepEmergency').textContent = `${r.gaiaFinalHP} x ${EMERGENCY_HEAL_PERCENT} = ${r.emergencyHeal}`;
+    document.getElementById('stepHealing').textContent = s.teamSkill
+      ? `${r.healingStacks} stacks x 5% = ${(r.healingBonus * 100).toFixed(0)}% bonus`
+      : 'No team skill';
+    document.getElementById('stepFinal').innerHTML =
+      `Total HP Increase: ${r.totalHPIncrease.toLocaleString()} (capped at 15% of Gaia's HP)<br>Emergency Healing: ${r.finalEmergencyHeal.toLocaleString()}`;
+
+    const chartIncrease = s.motherlyLove ? Math.min(Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT), r.capAmount) : 0;
+    const chartPercent = s.allyHP > 0 ? (chartIncrease / s.allyHP) * 100 : 0;
+    const chartIsCapped = chartIncrease < Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT);
+
+    document.getElementById('insightCap').textContent = r.capAmount.toLocaleString() + ' HP';
+    document.getElementById('insightIncrease').innerHTML = `${chartIncrease.toLocaleString()} HP <span class="percentage">(${chartPercent.toFixed(1)}%)</span>`;
+    document.getElementById('insightTotal').textContent = (s.allyHP + chartIncrease).toLocaleString() + ' HP';
+    document.getElementById('insightPercent').textContent = chartPercent.toFixed(1) + '%';
+
+    const capStatusEl = document.getElementById('insightCapStatus');
+    capStatusEl.textContent = chartIsCapped ? '15% Cap Active' : 'No Cap';
+    capStatusEl.className = 'insight-value ' + (chartIsCapped ? 'capped' : 'not-capped');
+  }
+
+  function generateChartData(s) {
+    const gaiaFinalHP = s.teamSkill ? Math.floor(s.gaiaHP * 1.10) : s.gaiaHP;
+    const maxAllyHP = Math.max(s.allyHP + 2000, 12000);
+    const capForGaia = Math.floor(gaiaFinalHP * CAP_PERCENT);
+    const stepSize = 1000;
+    const labels = [];
+    const actualData = [];
+    for (let hp = 0; hp <= maxAllyHP; hp += stepSize) {
+      labels.push(hp.toString());
+      actualData.push(Math.min(Math.floor(hp * MOTHERLY_LOVE_PERCENT), capForGaia));
+    }
+
+    const currentAllyHPIndex = Math.min(Math.floor(s.allyHP / 1000), labels.length - 1);
+    const currentIncrease = Math.min(Math.floor(s.allyHP * MOTHERLY_LOVE_PERCENT), capForGaia);
+    const currentSelectionData = new Array(labels.length).fill(null);
+    currentSelectionData[currentAllyHPIndex] = currentIncrease;
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: `Current Gaia: ${gaiaFinalHP.toLocaleString()} HP (15% Cap: ${capForGaia.toLocaleString()} HP)`,
+          data: actualData,
+          borderColor: '#ffb74d',
+          backgroundColor: 'rgba(255, 183, 77, 0.2)',
+          borderWidth: 3,
+          pointRadius: 0,
+          fill: false,
+          tension: 0.1
+        },
+        {
+          label: 'Current Selection',
+          data: currentSelectionData,
+          borderColor: '#ffffff',
+          backgroundColor: '#ffffff',
+          borderWidth: 0,
+          pointRadius: 8,
+          pointHoverRadius: 10,
+          showLine: false
+        }
+      ]
+    };
+  }
+
+  async function initChart(s) {
+    const ChartJS = (await import('https://cdn.jsdelivr.net/npm/chart.js@4/+esm')).default;
+    const ctx = document.getElementById('gaiaCapChart').getContext('2d');
+    const gaiaFinalHP = s.teamSkill ? Math.floor(s.gaiaHP * 1.10) : s.gaiaHP;
+    const capForGaia = Math.floor(gaiaFinalHP * CAP_PERCENT);
+
+    chart = new ChartJS(ctx, {
+      type: 'line',
+      data: generateChartData(s),
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          title: {
+            display: true,
+            text: `How Gaia's HP Affects the 15% Cap (Current Gaia: ${gaiaFinalHP.toLocaleString()} HP)`,
+            color: '#ffffff',
+            font: { size: 16, weight: 'bold' }
+          },
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#b3b3b3', usePointStyle: true, padding: 20 }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(26, 26, 26, 0.9)',
+            titleColor: '#ffb74d',
+            bodyColor: '#ffffff',
+            borderColor: '#ffb74d',
+            borderWidth: 1,
+            callbacks: {
+              label: function(context) {
+                const label = context.dataset.label || '';
+                const value = context.parsed.y;
+                if (label.includes('Current Selection')) {
+                  return `${label}: ${value.toLocaleString()} HP (Cap: ${capForGaia.toLocaleString()})`;
+                }
+                return `${label}: ${value.toLocaleString()} HP`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            display: true,
+            title: { display: true, text: 'Ally Base HP', color: '#b3b3b3' },
+            ticks: { color: '#999999', maxTicksLimit: 8 },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          },
+          y: {
+            display: true,
+            title: { display: true, text: 'HP Increase', color: '#b3b3b3' },
+            ticks: { color: '#999999', callback: function(v) { return v.toLocaleString(); }, maxTicksLimit: 6 },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          }
+        }
+      }
+    });
+  }
+
+  function updateChart(s) {
+    if (!chart) return;
+    chart.data = generateChartData(s);
+    const gaiaFinalHP = s.teamSkill ? Math.floor(s.gaiaHP * 1.10) : s.gaiaHP;
+    chart.options.plugins.title.text = `How Gaia's HP Affects the 15% Cap (Current Gaia: ${gaiaFinalHP.toLocaleString()} HP)`;
+    chart.update('none');
+  }
+
+  function refresh() {
+    const s = getState();
+    const r = calculate(s);
+    updateResults(s, r);
+    if (chart) {
+      updateChart(s);
+    }
+  }
+
+  document.getElementById('gaiaHP').addEventListener('input', refresh);
+  document.getElementById('allyHP').addEventListener('input', refresh);
+  document.getElementById('toggleMotherlyLove').addEventListener('change', refresh);
+  document.getElementById('toggleUltimate').addEventListener('change', refresh);
+  document.getElementById('toggleAwakeningVI').addEventListener('change', refresh);
+  document.getElementById('toggleTeamSkill').addEventListener('change', refresh);
+
+  const initialState = getState();
+  updateResults(initialState, calculate(initialState));
+  initChart(initialState);
+})();
+</script>

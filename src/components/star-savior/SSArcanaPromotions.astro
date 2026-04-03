@@ -1,0 +1,89 @@
+---
+// Arcana Journey Effects section component
+interface Props {
+  promotions: any[];
+}
+
+const { promotions } = Astro.props;
+
+const MAX_LEVEL = 50;
+
+const RATE_TYPES = new Set([
+  'Training Efficiency',
+  'Big Success Bonus',
+  'Training Condition Efficiency',
+  'Request Coin Bonus',
+  'TRAINING_SUPPORT_RATE_UP',
+  'TRAINING_FAIL_DOWN',
+  'TRAINING_EXP_RATE_UP',
+  'TRAINING_VALUE_RATE_UP_TAG',
+  'TRAINING_VALUE_UP_RATE_TAG',
+]);
+
+const LABELS: Record<string, string> = {
+  'Stat Bonus': 'STAT',
+  'Bond Points': 'Bond Points',
+  'Arcana Points': 'Arcana Points',
+  'Coins': 'Coins',
+  'Training Efficiency': 'Training efficiency',
+  'Big Success Bonus': 'Big Success rate',
+  'Class Training Bonus': 'Class Training bonus',
+  'Class Training Efficiency': 'Class Training efficiency',
+  'Training Condition Efficiency': 'Condition efficiency',
+  'Stat Gain': 'PP/level',
+  'Request Coin Bonus': 'Coin bonus',
+  'TRAINING_SUPPORT_RATE_UP': 'Support rate',
+  'TRAINING_BONUS_PP': 'Bonus PP',
+  'TRAINING_FAIL_DOWN': 'Fail rate reduction',
+  'TRAINING_EXP_RATE_UP': 'EXP rate',
+  'TRAINING_VALUE_RATE_UP_TAG': 'Tag training rate',
+  'TRAINING_VALUE_UP_TAG': 'Tag training value',
+};
+
+function formatPromo(p: any): string {
+  const vt = p.valueType;
+  const isRate = RATE_TYPES.has(vt);
+  const val = isRate ? (p.valueRate || 0) : (p.value || 0);
+  const add = isRate ? (p.addPerValueRate || 0) : (p.addPerValue || 0);
+  const steps = Math.max(Math.floor((MAX_LEVEL - (p.unlockLevel || 1)) / (p.perLevel || 1)), 0);
+  const max = steps * add + val;
+  const hasGrowth = steps > 0 && add > 0;
+
+  const fmtVal = (v: number) => isRate ? `${(v / 100).toFixed(0)}%` : `${v}`;
+  const fmtAdd = (a: number) => isRate ? `${(a / 100).toFixed(2)}%/lv` : `+${a}/tick`;
+  const label = LABELS[vt] || vt;
+
+  let desc = `+${fmtVal(val)} ${label}`;
+  if (add > 0) desc += ` (${fmtAdd(add)})`;
+  if (hasGrowth && max !== val) desc += ` -> +${fmtVal(max)} at Lv.${MAX_LEVEL}`;
+  return desc;
+}
+
+const promoGroups: Record<string, any[]> = {
+  'Journey Start Effect': promotions.filter((p: any) => p.type === 'Journey Start'),
+  'Training Effect': promotions.filter((p: any) => p.type === 'Training'),
+  'Class Training Effect': promotions.filter((p: any) => p.type === 'Class Training'),
+  'Request Effect': promotions.filter((p: any) => p.type === 'Request'),
+};
+---
+
+{promotions.length > 0 && (
+  <section class="content-section">
+    <h2 class="section-title">Journey Effects</h2>
+    <div class="ss-arcana-promo-groups">
+      {Object.entries(promoGroups).filter(([, items]) => items.length > 0).map(([title, items]: [string, any[]]) => (
+        <div class="ss-arcana-promo-group">
+          <h3 class="ss-arcana-promo-group-title">{title}</h3>
+          <div class="ss-arcana-promo-list">
+            {items.map((p: any) => (
+              <div class="ss-arcana-promo-item">
+                <span class="ss-arcana-promo-level">Lv.{p.unlockLevel}</span>
+                <span class="ss-arcana-promo-desc">{formatPromo(p)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

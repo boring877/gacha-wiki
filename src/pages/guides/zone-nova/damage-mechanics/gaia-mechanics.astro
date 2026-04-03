@@ -1,6 +1,6 @@
 ---
 import DamageMechanicsPageLayout from '../../../../layouts/zone-nova/DamageMechanicsPageLayout.astro';
-import GaiaCalculatorWithChartSvelte from '../../../../components/zone-nova/damage-mechanics/GaiaCalculatorWithChart.svelte';
+import GaiaCalculatorWithChart from '../../../../components/zone-nova/damage-mechanics/GaiaCalculatorWithChart.astro';
 
 export const prerender = true;
 ---
@@ -15,7 +15,7 @@ export const prerender = true;
     <!-- Interactive Calculator with Chart -->
     <section class="zn-cf-content-section">
       <h2>Gaia Calculator</h2>
-      <GaiaCalculatorWithChartSvelte client:load />
+      <GaiaCalculatorWithChart />
     </section>
 
     <!-- Mathematical Formulas -->

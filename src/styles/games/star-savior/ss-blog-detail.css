@@ -46,6 +46,19 @@
   color: var(--ss-text-secondary);
   font-size: 1rem;
   line-height: 1.75;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ss-blog-content table {
+  min-width: 480px;
+}
+
+.ss-blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
 }
 
 .ss-blog-content p {
@@ -95,6 +108,15 @@
 
 .ss-blog-content blockquote p:last-child {
   margin-bottom: 0;
+}
+
+.ss-blog-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .ss-blog-table {
@@ -173,7 +195,7 @@
 }
 
 .ss-blog-content code {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
 }
 
 .ss-blog-content p code,

@@ -443,7 +443,7 @@ h3 {
   border: 1px solid var(--sab-border-gray);
   font-size: 0.8rem;
   cursor: pointer;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 /* Search input styling */
@@ -454,7 +454,7 @@ h3 {
   border-radius: 8px;
   border: 1px solid var(--sab-border-gray);
   font-size: 0.85rem;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
   min-width: 180px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -488,7 +488,7 @@ h3 {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 /* Table styles */
@@ -505,7 +505,7 @@ table.character-table {
   background: var(--sab-bg-dark);
   border-radius: 12px;
 
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 table.character-table th,
@@ -785,7 +785,7 @@ table.character-table th {
 /* Enhanced typography for all skill descriptions */
 .skill-card div[set\:html] {
   font-family:
-    'Space Grotesk',
+    var(--font-display),
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;

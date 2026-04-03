@@ -1,7 +1,8 @@
 ---
-// Arcana portrait image component for Star Savior
-// Looks up arcana small portrait by imageSmall filename
-// Images are banner-style (480x264, ~1.82:1 ratio)
+// Arcana image component for Star Savior
+// Supports both full-body card images (image) and small banner images (imageSmall)
+// Full-body: card-style (704x1314, ~0.536:1 ratio)
+// Small: banner-style (480x264, ~1.82:1 ratio)
 import { Image } from 'astro:assets';
 
 const arcanaImages = import.meta.glob<{ default: ImageMetadata }>(
@@ -10,7 +11,8 @@ const arcanaImages = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 export interface Props {
-  imageSmall: string;
+  image?: string;
+  imageSmall?: string;
   alt: string;
   width?: number;
   class?: string;
@@ -18,6 +20,7 @@ export interface Props {
 }
 
 const {
+  image,
   imageSmall,
   alt,
   width = 240,
@@ -25,15 +28,19 @@ const {
   loading = 'lazy',
 } = Astro.props;
 
-function findImage(filename: string): ImageMetadata | null {
-  if (!filename) return null;
+const filename = image || imageSmall || '';
+const isCard = !!image && !imageSmall;
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
   const key = Object.keys(arcanaImages).find(k =>
-    k.endsWith('/' + filename)
+    k.endsWith('/' + fname)
   );
   return key ? arcanaImages[key].default : null;
 }
 
-const imageModule = findImage(imageSmall);
+const imageModule = findImage(filename);
+const aspectRatio = isCard ? 0.536 : 1.82;
 ---
 
 {imageModule ? (
@@ -42,7 +49,7 @@ const imageModule = findImage(imageSmall);
       src={imageModule}
       alt={alt}
       width={width}
-      height={Math.round(width / 1.82)}
+      height={Math.round(width / aspectRatio)}
       loading={loading}
       format="webp"
       quality={95}
@@ -50,7 +57,7 @@ const imageModule = findImage(imageSmall);
     />
   </div>
 ) : (
-  <div class={`ss-arcana-image-fallback ${className || ''}`}>
+  <div class={`ss-arcana-image-fallback ${className || ''}`} style={`--arcana-img-width: ${width}px`}>
     <span>{alt[0] || '?'}</span>
   </div>
 )}
@@ -76,8 +83,6 @@ const imageModule = findImage(imageSmall);
   }
 
   .ss-arcana-image-fallback {
-    width: var(--arcana-img-width, 240px);
-    max-width: 100%;
     aspect-ratio: 1.82 / 1;
     border-radius: 6px;
     background: var(--ss-bg-tertiary);

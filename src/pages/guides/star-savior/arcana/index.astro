@@ -3,6 +3,7 @@
 // Displays all 67 arcana with filters (grade, special tag, class synergy, stat tag) and sort
 import CharacterDatabaseLayout from '../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
 import { STAR_SAVIOR_ARCANA } from '../../../../data/star-savior/arcana.js';
+import { STAR_SAVIOR_CHARACTERS } from '../../../../data/star-savior/characters.js';
 
 import '../../../../styles/games/star-savior/ss-character-database.css';
 import SSArcanaImage from '../../../../components/star-savior/SSArcanaImage.astro';
@@ -14,9 +15,9 @@ import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
 const STAT_ICON_MAP: Record<string, string> = {
   Power: 'ATK',
   Health: 'HP',
-  Focus: 'Crit Rate',
-  Endurance: 'Toughness',
-  Protect: 'DEF',
+  Focus: 'Effect Hit',
+  Endurance: 'DEF',
+  Protect: 'Effect RES',
 };
 
 const specialTags = [...new Set(STAR_SAVIOR_ARCANA.map(a => a.specialTag).filter(Boolean))].sort();
@@ -32,6 +33,16 @@ const sorted = [...STAR_SAVIOR_ARCANA].sort((a, b) => {
   if (r[a.grade] !== r[b.grade]) return r[a.grade] - r[b.grade];
   return a.name.localeCompare(b.name);
 });
+
+const charMap = new Map<string, string>();
+for (const c of STAR_SAVIOR_CHARACTERS) {
+  const key = c.name + (c.title ? ` - ${c.title}` : '');
+  if (!charMap.has(c.name)) charMap.set(c.name, key);
+}
+
+function getCharFullName(name: string): string {
+  return charMap.get(name) || name;
+}
 ---
 
 <CharacterDatabaseLayout
@@ -143,7 +154,7 @@ const sorted = [...STAR_SAVIOR_ARCANA].sort((a, b) => {
               </div>
             </td>
             <td>
-              <div class="ss-char-table-name">{arcana.character}</div>
+              <div class="ss-char-table-name">{getCharFullName(arcana.character)}</div>
             </td>
             <td><SSRarityImage rarity={arcana.grade} width={32} height={16} /></td>
             <td>
@@ -187,7 +198,7 @@ const sorted = [...STAR_SAVIOR_ARCANA].sort((a, b) => {
           <SSArcanaImage imageSmall={arcana.imageSmall} alt={arcana.name || arcana.character} width={320} class="ss-char-card-avatar" />
           <div class="ss-char-card-info">
             <div class="ss-char-card-name">{arcana.name || '--'}</div>
-            <div class="ss-arcana-card-arcana-name">{arcana.character}</div>
+            <div class="ss-arcana-card-arcana-name">{getCharFullName(arcana.character)}</div>
             <div class="ss-char-card-badges">
               <SSRarityImage rarity={arcana.grade} width={48} height={24} />
               {arcana.specialTag && <SSArcanaTagImage tag={arcana.specialTag} width={20} height={20} class="ss-element-inline" />}

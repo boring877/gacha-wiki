@@ -8,7 +8,7 @@
  * typography, and accessibility optimizations.
  * 
  * Font Strategy:
- * - Inter: Primary readable font for body text and UI
+ * - DM Sans: Primary readable font for body text and UI
  * - Space Grotesk: Display font for headings and emphasis
  * - Orbitron: Accent font for futuristic/sci-fi elements
  * 
@@ -31,10 +31,11 @@
   /* === FONT FAMILY STACK === */
   /* Robust font stacks with system fallbacks for performance and reliability */
   --font-primary:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; /* Body text - excellent readability */
+    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-display:
     'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; /* Headings - modern geometric feel */
   --font-accent: 'Orbitron', monospace; /* Special text - futuristic aesthetic */
+  --font-mono: 'ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace; /* Code and data - cross-platform system monospace */
 
   /* === FLUID TYPOGRAPHY SCALE === */
   /* Responsive font sizes using clamp() for optimal readability across all devices */
@@ -89,13 +90,7 @@ body {
 h1,
 .character-name,
 .display-title {
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif; /* Hardcoded to prevent FOUC */
+  font-family: var(--font-display);
   font-size: var(--text-5xl); /* 48-64px - maximum visual impact */
   font-weight: 700; /* Bold weight for primary hierarchy */
   line-height: var(--leading-tight); /* Tight leading for display text */
@@ -185,13 +180,7 @@ small {
 
 /* Statistical values and important numbers - for game stats and metrics */
 .stat-value {
-  font-family:
-    'Space Grotesk',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    system-ui,
-    sans-serif; /* Hardcoded to prevent FOUC */
+  font-family: var(--font-display);
   font-size: var(--text-lg); /* 18-20px for clear number visibility */
   font-weight: 600; /* Semibold weight for stat emphasis */
   line-height: var(--leading-tight); /* Tight leading for compact presentation */

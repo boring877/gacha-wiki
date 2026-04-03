@@ -24,47 +24,8 @@ const {
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 <!-- Preload Critical Fonts for Performance -->
-<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
-
-<!-- Self-Hosted Fonts (no external requests) -->
-<style is:inline>
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/inter-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/inter-700.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Space Grotesk';
-    src: url('/fonts/space-grotesk-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Space Grotesk';
-    src: url('/fonts/space-grotesk-700.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Orbitron';
-    src: url('/fonts/orbitron-700.woff2') format('woff2');
-    font-weight: 400 900;
-    font-style: normal;
-    font-display: swap;
-  }
-</style>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -104,11 +65,7 @@ const {
   body {
     margin: 0;
     padding: 0;
-    font-family:
-      'Inter',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+    font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, sans-serif);
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;

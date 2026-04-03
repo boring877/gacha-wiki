@@ -1,0 +1,152 @@
+---
+// Star Savior SSR Character Tier List Page
+// Grouped by element (Sun, Moon, Star, Chaos, Order) with tier rows inside each section
+import CharacterDatabaseLayout from '../../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { STAR_SAVIOR_CHARACTERS } from '../../../../../data/star-savior/characters.js';
+import {
+  CHARACTER_TIER_LIST,
+  ELEMENT_ORDER,
+  TIER_ORDER,
+} from '../../../../../data/star-savior/character-tier-list.js';
+
+import '../../../../../styles/games/star-savior/ss-character-tier-list.css';
+import SSCharacterImage from '../../../../../components/star-savior/SSCharacterImage.astro';
+import SSRoleImage from '../../../../../components/star-savior/SSRoleImage.astro';
+import SSElementImage from '../../../../../components/star-savior/SSElementImage.astro';
+
+const ADJUST_TYPE_MAP: Record<string, string> = {
+  NUAT_SUN: 'Sun',
+  NUAT_MOON: 'Moon',
+  NUAT_STAR: 'Star',
+  NUAT_CHAOS: 'Chaos',
+  NUAT_ORDER: 'Order',
+};
+
+const ELEMENT_ADJUST_MAP: Record<string, string> = {
+  Sun: 'NUAT_SUN',
+  Moon: 'NUAT_MOON',
+  Star: 'NUAT_STAR',
+  Chaos: 'NUAT_CHAOS',
+  Order: 'NUAT_ORDER',
+};
+
+const ssrCharacters = STAR_SAVIOR_CHARACTERS.filter(c => c.rarity === 'SSR');
+const charBySlug = new Map(ssrCharacters.map(c => [c.slug, c]));
+
+const sections = ELEMENT_ORDER.map(element => {
+  const elementTiers = CHARACTER_TIER_LIST[element];
+  if (!elementTiers) return null;
+
+  const tiers = TIER_ORDER
+    .map(tier => ({
+      tier,
+      characters: (elementTiers[tier] || [])
+        .map(slug => charBySlug.get(slug))
+        .filter(Boolean),
+    }))
+    .filter(t => t.characters.length > 0);
+
+  return { element, adjustType: ELEMENT_ADJUST_MAP[element], tiers, total: tiers.reduce((s, t) => s + t.characters.length, 0) };
+}).filter(Boolean);
+
+const totalCharacters = sections.reduce((s, sec) => s + sec.total, 0);
+const totalSSR = ssrCharacters.length;
+---
+
+<CharacterDatabaseLayout
+  title="Character Tier List - Star Savior"
+  description="SSR character tier list for Star Savior grouped by element."
+  gameTitle="Character Tier List"
+>
+  <div class="ss-char-tier-note">
+    Elemental advantage provides only a small damage bonus (~5% increase, ~5% reduction when at a disadvantage). Because the gap is minor, building a strong team composition matters more than element matching.
+  </div>
+
+  <div class="ss-char-tier-search-row">
+    <input type="text" id="char-tier-search" class="ss-char-tier-search-input" placeholder="Search characters by name or title..." />
+    <span id="char-tier-count" class="ss-char-tier-count">{totalCharacters} / {totalSSR}</span>
+  </div>
+
+  <div class="ss-char-tier-sections">
+    {sections.map(({ element, adjustType, tiers }) => (
+      <section class="ss-char-tier-section" data-element={element}>
+        <div class="ss-char-tier-section-header">
+          <div class="ss-char-tier-section-title-row">
+            {adjustType && <SSElementImage adjustType={adjustType} width={24} height={24} />}
+            <div>
+              <h3 class="ss-char-tier-section-name">{element}</h3>
+              <p class="ss-char-tier-section-label">{element} element</p>
+            </div>
+          </div>
+        </div>
+
+        {tiers.map(({ tier, characters }) => (
+          <div class="ss-char-tier-row" data-tier={tier}>
+            <div class={`ss-char-tier-label ss-tier-${tier.toLowerCase()}`}>
+              <span class="ss-char-tier-label-text">{tier}</span>
+            </div>
+            <div class="ss-char-tier-cards">
+              {characters.map((c: any) => (
+                <a href={`/guides/star-savior/characters/${c.slug}/`} class="ss-char-tier-card" data-search={`${c.name} ${c.title || ''}`.toLowerCase()}>
+                  <div class="ss-char-tier-card-img">
+                    <SSCharacterImage slug={c.slug} alt={c.name} imageType="icon" width={160} height={160} />
+                  </div>
+                  <div class="ss-char-tier-card-info">
+                    <div class="ss-char-tier-card-name">{c.name}</div>
+                    {c.title && <div class="ss-char-tier-card-title">{c.title}</div>}
+                    <div class="ss-char-tier-card-tags">
+                      <div class="ss-char-tier-card-tag">
+                        <SSRoleImage role={c.role} width={16} height={16} />
+                        <span>{c.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+    ))}
+  </div>
+
+  <div class="ss-char-tier-no-results" id="char-tier-no-results">
+    No characters found matching your search.
+  </div>
+</CharacterDatabaseLayout>
+
+<script>
+  const searchInput = document.getElementById('char-tier-search') as HTMLInputElement;
+  const countEl = document.getElementById('char-tier-count')!;
+  const noResults = document.getElementById('char-tier-no-results')!;
+  const sections = document.querySelectorAll('.ss-char-tier-section');
+  const totalCards = document.querySelectorAll('.ss-char-tier-card').length;
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+
+    sections.forEach(section => {
+      const rows = section.querySelectorAll('.ss-char-tier-row');
+      let sectionVisible = 0;
+
+      rows.forEach(row => {
+        const cards = row.querySelectorAll('.ss-char-tier-card');
+        let rowVisible = 0;
+        cards.forEach(card => {
+          const match = !q || (card as HTMLElement).dataset.search?.includes(q);
+          (card as HTMLElement).toggleAttribute('data-hidden', !match);
+          if (match) rowVisible++;
+        });
+        (row as HTMLElement).toggleAttribute('data-hidden', rowVisible === 0);
+        sectionVisible += rowVisible;
+      });
+
+      (section as HTMLElement).style.display = sectionVisible === 0 && q.length > 0 ? 'none' : '';
+      visible += sectionVisible;
+    });
+
+    countEl.textContent = `${visible} / ${totalCards}`;
+    noResults.toggleAttribute('data-visible', visible === 0 && q.length > 0);
+  });
+</script>

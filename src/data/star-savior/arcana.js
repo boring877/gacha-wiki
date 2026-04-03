@@ -39,6 +39,18 @@ export const STAR_SAVIOR_ARCANA =
     "imageSmall": "ARCANA_MAID_TWOHANDER_SSR_01_S.png"
   },
   {
+    "id": 7040101,
+    "character": "Besta",
+    "name": "Forbidden Archive Vol. 1",
+    "slug": "besta-forbidden-archive-vol-1",
+    "grade": "SSR",
+    "specialTag": null,
+    "classSynergy": null,
+    "statTag": "Health",
+    "image": "ARCANA_APRIL_FOOL_SSR_01.png",
+    "imageSmall": "ARCANA_APRIL_FOOL_SSR_01_S.png"
+  },
+  {
     "id": 7150101,
     "character": "Besta",
     "name": "A Satisfying Meal",

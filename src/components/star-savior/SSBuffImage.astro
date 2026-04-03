@@ -1,0 +1,55 @@
+---
+// Buff/debuff icon component for Star Savior
+// Looks up buff icon by filename (e.g. BUFF_ATTACK_INCREASE.png)
+import { Image } from 'astro:assets';
+
+const buffImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/buffs/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  icon,
+  alt,
+  width = 48,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+function findImage(filename: string): ImageMetadata | null {
+  if (!filename) return null;
+  const key = Object.keys(buffImages).find(k =>
+    k.endsWith('/' + filename)
+  );
+  return key ? buffImages[key].default : null;
+}
+
+const imageModule = findImage(icon);
+---
+
+{imageModule ? (
+  <div class={`ss-buff-image-wrapper ${className || ''}`} style={`--buff-img-size: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={95}
+      class="ss-buff-image"
+    />
+  </div>
+) : (
+  <div class={`ss-buff-image-fallback ${className || ''}`} style={`--buff-img-size: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}

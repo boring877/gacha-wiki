@@ -1,0 +1,280 @@
+/* Star Savior Character Tier List Styles */
+
+.ss-char-tier-note {
+  padding: 0.625rem 0.875rem;
+  margin-bottom: 1.25rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+}
+
+.ss-char-tier-search-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.ss-char-tier-search-input {
+  flex: 1;
+  max-width: 360px;
+  padding: 0.5rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.ss-char-tier-search-input:focus {
+  border-color: var(--ss-primary);
+}
+
+.ss-char-tier-search-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.ss-char-tier-count {
+  font-size: 0.8125rem;
+  color: var(--ss-text-tertiary);
+}
+
+.ss-char-tier-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ss-char-tier-section {
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ss-bg-card);
+}
+
+.ss-char-tier-section-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ss-border);
+  background: var(--ss-bg-tertiary);
+}
+
+.ss-char-tier-section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.ss-char-tier-section-name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+}
+
+.ss-char-tier-section-label {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--ss-text-tertiary);
+  line-height: 1.3;
+}
+
+.ss-char-tier-row {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.ss-char-tier-row:last-child {
+  border-bottom: none;
+}
+
+.ss-char-tier-row[data-hidden] {
+  display: none;
+}
+
+.ss-char-tier-label {
+  width: 52px;
+  min-width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  background: var(--ss-bg-tertiary);
+  border-right: 1px solid var(--ss-border);
+}
+
+.ss-tier-sss {
+  color: var(--ss-primary);
+}
+
+.ss-tier-ss {
+  color: var(--ss-ssr);
+}
+
+.ss-tier-s {
+  color: var(--ss-accent);
+}
+
+.ss-tier-a {
+  color: var(--ss-text-primary);
+}
+
+.ss-tier-b {
+  color: var(--ss-text-tertiary);
+}
+
+.ss-char-tier-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  flex: 1;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.ss-char-tier-card {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.ss-char-tier-card[data-hidden] {
+  display: none;
+}
+
+.ss-char-tier-card-img {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.ss-char-tier-card-img :global(.ss-char-image-wrapper) {
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 0;
+}
+
+.ss-char-tier-card-img :global(.ss-char-image) {
+  width: 140px !important;
+  height: 140px !important;
+  object-fit: cover;
+}
+
+.ss-char-tier-card-info {
+  padding: 0.4rem 0.5rem 0.5rem;
+}
+
+.ss-char-tier-card-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.0625rem;
+}
+
+.ss-char-tier-card-title {
+  font-size: 0.625rem;
+  color: var(--ss-text-tertiary);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.ss-char-tier-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.ss-char-tier-card-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.625rem;
+  color: var(--ss-text-secondary);
+  background: var(--ss-bg-tertiary);
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
+}
+
+.ss-char-tier-card-tag :global(img) {
+  width: 12px;
+  height: 12px;
+}
+
+.ss-char-tier-no-results {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--ss-text-tertiary);
+  font-size: 0.875rem;
+}
+
+.ss-char-tier-no-results[data-visible] {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .ss-char-tier-row {
+    flex-direction: column;
+  }
+
+  .ss-char-tier-label {
+    width: 100%;
+    min-width: unset;
+    padding: 0.375rem 0.75rem;
+    justify-content: flex-start;
+    border-right: none;
+    border-bottom: 1px solid var(--ss-border);
+  }
+
+  .ss-char-tier-cards {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-char-tier-cards {
+    gap: 0.375rem;
+    padding: 0.5rem;
+  }
+
+  .ss-char-tier-card {
+    width: calc(50% - 0.25rem);
+    min-width: 120px;
+    flex: 1;
+  }
+
+  .ss-char-tier-card-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .ss-char-tier-card-img :global(.ss-char-image-wrapper) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ss-char-tier-card-img :global(.ss-char-image) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

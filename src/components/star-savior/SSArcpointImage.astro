@@ -1,0 +1,52 @@
+---
+// Character arcpoint/profile icon component for Star Savior
+// Small character profile icon extracted from game data (ICON_ARCPOINT_S_*)
+import { Image } from 'astro:assets';
+
+const arcpointImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/arcpoint/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  unitName: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  unitName,
+  alt,
+  width = 80,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+function findImage(unit: string): ImageMetadata | null {
+  if (!unit) return null;
+  const filename = `${unit}_1.png`;
+  const key = Object.keys(arcpointImages).find(k =>
+    k.endsWith('/' + filename)
+  );
+  return key ? arcpointImages[key].default : null;
+}
+
+const imageModule = findImage(unitName);
+---
+
+{imageModule ? (
+  <div class={`ss-arcpoint-wrapper ${className || ''}`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={95}
+      class="ss-arcpoint-image"
+    />
+  </div>
+) : null}

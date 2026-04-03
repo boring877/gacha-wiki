@@ -11,6 +11,16 @@
   border: 1px solid var(--ss-border);
   border-radius: 8px;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.ss-banner-card:hover {
+  border-color: var(--ss-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .ss-banner-image {
@@ -78,6 +88,19 @@
 .ss-banner-region {
   font-size: 0.6875rem;
   color: var(--ss-text-muted);
+}
+
+.ss-banner-link {
+  font-size: 0.75rem;
+  color: var(--ss-primary);
+  font-weight: 600;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.ss-banner-card:hover .ss-banner-link {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {

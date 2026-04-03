@@ -345,13 +345,16 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/star-savior/characters/' },
+          { name: 'Tier List', href: '/guides/star-savior/characters/tier-list/' },
           { name: 'Banners', href: '/guides/star-savior/banners/' },
+          { name: 'Buffs & Debuffs', href: '/guides/star-savior/buffs/' },
         ],
       },
       {
         title: 'Arcana',
         links: [
           { name: 'Database', href: '/guides/star-savior/arcana/' },
+          { name: 'Tier List', href: '/guides/star-savior/arcana/tier-list/' },
         ],
       },
       {

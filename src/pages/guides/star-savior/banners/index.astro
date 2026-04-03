@@ -38,8 +38,9 @@ const sortedBanners = [...banners].sort((a, b) => {
         const dateStr = banner.startDate
           ? `${formatDate(banner.startDate)}${banner.endDate ? ' – ' + formatDate(banner.endDate) : ''}`
           : '';
+        const charUrl = banner.characterSlug ? `/guides/star-savior/characters/${banner.characterSlug}/` : '';
         return (
-          <div class="ss-banner-card">
+          <a href={charUrl} class="ss-banner-card" title={charUrl ? `View ${banner.character}` : ''}>
             {imgUrl && <img src={imgUrl} alt={banner.character} class="ss-banner-image" loading="lazy" />}
             <div class="ss-banner-info">
               <div class="ss-banner-header">
@@ -49,8 +50,9 @@ const sortedBanners = [...banners].sort((a, b) => {
               {banner.arcana && <span class="ss-banner-arcana">Arcana: {banner.arcana}</span>}
               {dateStr && <span class="ss-banner-date">{dateStr}</span>}
               <span class="ss-banner-region">{banner.region}</span>
+              {charUrl && <span class="ss-banner-link">View Character &rarr;</span>}
             </div>
-          </div>
+          </a>
         );
       })}
     </div>

@@ -1,0 +1,48 @@
+---
+// Journey background gallery component for Star Savior arcana
+// Displays background illustrations unlocked during Journey mode
+import { Image } from 'astro:assets';
+
+const bgImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/journey-bg/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  files: string[];
+}
+
+const { files } = Astro.props;
+
+const images: { alt: string; src: ImageMetadata }[] = [];
+for (const filename of files) {
+  const key = Object.keys(bgImages).find(k => k.endsWith('/' + filename));
+  if (key) {
+    images.push({
+      alt: filename.replace('ILLUST_BG_JOURNEY_', '').replace('.png', '').replace(/_/g, ' '),
+      src: bgImages[key].default,
+    });
+  }
+}
+---
+
+{images.length > 0 && (
+  <section class="content-section">
+    <h2 class="section-title">Journey Backgrounds</h2>
+    <p class="ss-journey-bg-desc">Background illustrations unlocked during Journey mode. These scenes appear as you progress through the character's journey events.</p>
+    <div class="ss-journey-bg-gallery">
+      {images.map((img) => (
+        <div class="ss-journey-bg-item">
+          <Image
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            format="webp"
+            quality={90}
+            class="ss-journey-bg-img"
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+)}

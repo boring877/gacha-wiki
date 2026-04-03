@@ -1,0 +1,263 @@
+/* Star Savior Arcana Tier List Styles */
+
+.ss-tier-search-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.ss-tier-search-input {
+  flex: 1;
+  max-width: 360px;
+  padding: 0.5rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  color: var(--ss-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.ss-tier-search-input:focus {
+  border-color: var(--ss-primary);
+}
+
+.ss-tier-search-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.ss-tier-count {
+  font-size: 0.8125rem;
+  color: var(--ss-text-tertiary);
+}
+
+.ss-tier-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ss-tier-section {
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ss-bg-card);
+}
+
+.ss-tier-section-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ss-border);
+  background: var(--ss-bg-tertiary);
+}
+
+.ss-tier-section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.ss-tier-section-name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+}
+
+.ss-tier-section-stat {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--ss-text-tertiary);
+  line-height: 1.3;
+}
+
+.ss-tier-row {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.ss-tier-row:last-child {
+  border-bottom: none;
+}
+
+.ss-tier-row[data-hidden] {
+  display: none;
+}
+
+.ss-tier-label {
+  width: 52px;
+  min-width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  background: var(--ss-bg-tertiary);
+  border-right: 1px solid var(--ss-border);
+}
+
+.ss-tier-sss {
+  color: var(--ss-primary);
+}
+
+.ss-tier-ss {
+  color: var(--ss-ssr);
+}
+
+.ss-tier-s {
+  color: var(--ss-accent);
+}
+
+.ss-tier-a {
+  color: var(--ss-text-primary);
+}
+
+.ss-tier-b {
+  color: var(--ss-text-tertiary);
+}
+
+.ss-tier-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  flex: 1;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.ss-tier-card {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.ss-tier-card[data-hidden] {
+  display: none;
+}
+
+.ss-tier-card-img {
+  width: 170px;
+}
+
+.ss-tier-card-img :global(.ss-arcana-image-wrapper) {
+  width: 170px !important;
+  border-radius: 0;
+}
+
+.ss-tier-card-info {
+  padding: 0.5rem;
+}
+
+.ss-tier-card-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.125rem;
+}
+
+.ss-tier-card-character {
+  font-size: 0.6875rem;
+  color: var(--ss-text-tertiary);
+  margin-bottom: 0.375rem;
+}
+
+.ss-tier-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.ss-tier-card-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.625rem;
+  color: var(--ss-text-secondary);
+  background: var(--ss-bg-tertiary);
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
+}
+
+.ss-tier-card-tag :global(img) {
+  width: 12px;
+  height: 12px;
+}
+
+.ss-tier-no-results {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--ss-text-tertiary);
+  font-size: 0.875rem;
+}
+
+.ss-tier-no-results[data-visible] {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .ss-tier-row {
+    flex-direction: column;
+  }
+
+  .ss-tier-label {
+    width: 100%;
+    min-width: unset;
+    padding: 0.375rem 0.75rem;
+    justify-content: flex-start;
+    border-right: none;
+    border-bottom: 1px solid var(--ss-border);
+  }
+
+  .ss-tier-cards {
+    justify-content: center;
+  }
+
+  .ss-tier-card {
+    width: 150px;
+  }
+
+  .ss-tier-card-img {
+    width: 150px;
+  }
+
+  .ss-tier-card-img :global(.ss-arcana-image-wrapper) {
+    width: 150px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ss-tier-cards {
+    gap: 0.375rem;
+    padding: 0.5rem;
+  }
+
+  .ss-tier-card {
+    width: calc(50% - 0.25rem);
+    min-width: 140px;
+    flex: 1;
+  }
+
+  .ss-tier-card-img {
+    width: 100%;
+  }
+
+  .ss-tier-card-img :global(.ss-arcana-image-wrapper) {
+    width: 100% !important;
+  }
+}

@@ -22,6 +22,7 @@
  */
 
 /* === CORE SYSTEMS === */
+@import './fonts.css';
 @import './core/z-index-system.css';
 
 /* === MODERN CSS RESET === */
@@ -34,24 +35,19 @@
 
 /* === ROOT HTML ELEMENT CONFIGURATION === */
 html {
-  scroll-behavior: smooth; /* Smooth scrolling for anchor links - enhances UX */
-  /* Enable native pull-to-refresh on mobile */
+  scroll-behavior: smooth;
   overscroll-behavior-y: auto;
-  /* Optimize font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevent white overscroll area in Chrome and other browsers */
   background-color: #1a1a1a;
+  overflow-x: hidden;
 }
 
 /* === BODY ELEMENT FOUNDATION === */
 body {
   margin: 0; /* Remove default browser margins */
   padding: 0; /* Remove default browser padding */
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif; /* Modern system font stack */
+  font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif);
   line-height: 1.6; /* Optimal reading line height (WCAG recommended) */
   color: var(--text-primary); /* Apply primary text color for contrast */
   width: 100%; /* Ensure body takes full width */
@@ -60,7 +56,6 @@ body {
   /* Enable pull-to-refresh on mobile browsers */
   overscroll-behavior-y: auto;
   /* Prevent white space at bottom on mobile */
-  overflow-x: hidden; /* Prevent horizontal scroll */
   position: relative; /* Establish positioning context */
 }
 
