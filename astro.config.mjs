@@ -94,6 +94,9 @@ export default defineConfig({
             if (id.includes('/utils/')) {
               return 'utils';
             }
+            if (id.endsWith('/consts.ts')) {
+              return 'utils';
+            }
             // Vendor chunks for third-party libraries
             return 'vendor';
           },
