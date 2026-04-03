@@ -104,6 +104,18 @@ export const taimaninSquadConfig = {
           url: '/guides/taimanin-squad/mechanics/',
           external: false,
         },
+        {
+          id: 'weapons',
+          title: 'Weapons',
+          url: '/guides/taimanin-squad/weapons/',
+          external: false,
+        },
+        {
+          id: 'artifacts',
+          title: 'Artifacts',
+          url: '/guides/taimanin-squad/artifacts/',
+          external: false,
+        },
       ],
     },
     {
@@ -117,6 +129,12 @@ export const taimaninSquadConfig = {
           id: 'blog',
           title: 'Blog',
           url: '/guides/taimanin-squad/blog/',
+          external: false,
+        },
+        {
+          id: 'redeem-codes',
+          title: 'Redeem Codes',
+          url: '/guides/taimanin-squad/redeem-codes/',
           external: false,
         },
         {

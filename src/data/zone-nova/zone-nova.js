@@ -100,6 +100,11 @@ export const zoneNovaConfig = {
           title: 'Team Synergy',
           url: '/guides/zone-nova/team-synergy/',
         },
+        {
+          id: 'memory-tier-list',
+          title: 'Memory Tier List',
+          url: '/guides/zone-nova/memory-tier-list/',
+        },
       ],
     },
     {

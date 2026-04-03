@@ -176,21 +176,16 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           title: 'Clock',
           url: '/clock/silver-and-blood/',
         },
-    {
-      id: 'blog',
-      title: 'Blog',
-      emoji: '',
-      description:
-        'Tips, strategies, and insights for Silver and Blood players.',
-      url: '/guides/silver-and-blood/blog/',
-      category: 'tools',
-      status: 'active',
-    },
-    {
-      id: 'gifts',
-      title: 'Gifts',
-      url: '/guides/silver-and-blood/gifts/',
-    },
+        {
+          id: 'blog',
+          title: 'Blog',
+          url: '/guides/silver-and-blood/blog/',
+        },
+        {
+          id: 'gifts',
+          title: 'Gifts',
+          url: '/guides/silver-and-blood/gifts/',
+        },
         {
           id: 'character-gifts',
           title: 'Character Gifts',
@@ -205,11 +200,6 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
           id: 'redeem-codes',
           title: 'Redeem Codes',
           url: '/guides/silver-and-blood/redeem-codes/',
-        },
-        {
-          id: 'blog',
-          title: 'Blog',
-          url: '/guides/silver-and-blood/blog/',
         },
       ],
     },

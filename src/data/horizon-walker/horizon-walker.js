@@ -161,6 +161,11 @@ export const horizonWalkerConfig = {
           title: 'Traits',
           url: '/guides/horizon-walker/traits/',
         },
+        {
+          id: 'stigma-sub-stats',
+          title: 'Stigma Sub Stats',
+          url: '/guides/horizon-walker/stigma-sub-stats/',
+        },
       ],
     },
     {
