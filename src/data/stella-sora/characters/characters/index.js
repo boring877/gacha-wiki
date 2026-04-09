@@ -133,5 +133,25 @@ export const characters = [
     "id": 156,
     "name": "Nazuna",
     "file": "./characters/nazuna.js"
+  },
+  {
+    "id": 158,
+    "name": "Snowish Laru",
+    "file": "./characters/snowish-laru.js"
+  },
+  {
+    "id": 159,
+    "name": "Springseek Coronis",
+    "file": "./characters/springseek-coronis.js"
+  },
+  {
+    "id": 130,
+    "name": "Donna",
+    "file": "./characters/donna.js"
+  },
+  {
+    "id": 143,
+    "name": "Wraith",
+    "file": "./characters/wraith.js"
   }
 ];

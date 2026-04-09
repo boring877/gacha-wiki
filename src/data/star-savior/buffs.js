@@ -1,5 +1,5 @@
 // Star Savior Buff/Debuff Data
-// 462 battle buffs and debuffs from CLIENT_BUFF_TEMPLET.json
+// 468 battle buffs and debuffs from CLIENT_BUFF_TEMPLET.json
 // Names and descriptions from STRING_COMMON.json (English)
 
 export const STAR_SAVIOR_BUFFS =
@@ -192,7 +192,7 @@ export const STAR_SAVIOR_BUFFS =
     "id": 1009,
     "strId": "BI_CRITICAL_DAMAGE_AMPLIFICATION",
     "name": "Greater CRIT DMG Increase",
-    "desc": "CRIT DMG increases by 50%.",
+    "desc": "",
     "icon": "BUFF_CRITICAL_DAMAGE_INCREASE.png",
     "isBuff": true,
     "category": "stat",
@@ -2085,7 +2085,7 @@ export const STAR_SAVIOR_BUFFS =
     "id": 8032,
     "strId": "BI_RANKING_RAID_16_BATTLE_2",
     "name": "Cosmo Gate 16_2",
-    "desc": "Increases damage dealt by Ultimate Skills by 50%.",
+    "desc": "",
     "icon": "BUFF_DUMMY.png",
     "isBuff": true,
     "category": "stat",
@@ -2103,6 +2103,98 @@ export const STAR_SAVIOR_BUFFS =
     "effects": [],
     "flags": {},
     "slug": "cosmo-gate-16-2"
+  },
+  {
+    "id": 8033,
+    "strId": "BI_RANKING_RAID_17_BATTLE_1",
+    "name": "Cosmo Gate 17_1",
+    "desc": "",
+    "icon": "BUFF_DUMMY.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "Ultimate Skill DMG Increase",
+        "rawStat": "NST_RATE_DAMAGE_UP_SKILL_HYPER",
+        "value": 5000,
+        "display": "+50% Ultimate Skill DMG Increase"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "cosmo-gate-17-1"
+  },
+  {
+    "id": 8034,
+    "strId": "BI_RANKING_RAID_17_BATTLE_2",
+    "name": "Cosmo Gate 17_2",
+    "desc": "",
+    "icon": "BUFF_DUMMY.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "vs All Targets DMG Increase",
+        "rawStat": "NST_RATE_DAMAGE_UP_SKILL_ENEMY_ALL",
+        "value": 10000,
+        "display": "+100% vs All Targets DMG Increase"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "cosmo-gate-17-2"
+  },
+  {
+    "id": 8035,
+    "strId": "BI_RANKING_RAID_18_BATTLE_1",
+    "name": "Cosmo Gate 18_1",
+    "desc": "",
+    "icon": "BUFF_DUMMY.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "vs All Targets DMG Increase",
+        "rawStat": "NST_RATE_DAMAGE_UP_SKILL_ENEMY_ALL",
+        "value": 10000,
+        "display": "+100% vs All Targets DMG Increase"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "cosmo-gate-18-1"
+  },
+  {
+    "id": 8036,
+    "strId": "BI_RANKING_RAID_18_BATTLE_2",
+    "name": "Cosmo Gate 18_2",
+    "desc": "Deals 50% increased Special Skill DMG.",
+    "icon": "BUFF_DUMMY.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "Special Skill DMG Increase",
+        "rawStat": "NST_RATE_DAMAGE_UP_SKILL_SPECIAL",
+        "value": 5000,
+        "display": "+50% Special Skill DMG Increase"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "cosmo-gate-18-2"
   },
   {
     "id": 9001,
@@ -7103,6 +7195,29 @@ export const STAR_SAVIOR_BUFFS =
     "slug": "your-rules-not-mine"
   },
   {
+    "id": 300726,
+    "strId": "BI_VOIDER_DAGGER_BOSS_EVENT_01",
+    "name": "Ancient Treasure (Undispellable)",
+    "desc": "Increases DEF by 50%. Removes this effect when attacked.",
+    "icon": "BUFF_VOIDER_DAGGER_TREASURE.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "DEF",
+        "rawStat": "NST_NV_RATE_DEF",
+        "value": 5000,
+        "display": "+50% DEF"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "ancient-treasure-undispellable"
+  },
+  {
     "id": 300741,
     "strId": "BI_PILGRIM_ALIEN_RED_1",
     "name": "Forbidden Seal: Realm (Undispellable)",
@@ -7147,6 +7262,29 @@ export const STAR_SAVIOR_BUFFS =
     "effects": [],
     "flags": {},
     "slug": "forbidden-seal-prime-undispellable"
+  },
+  {
+    "id": 300761,
+    "strId": "BI_CRUNNADUN_AXE_BOSS_1",
+    "name": "Protect the Chief! (Undispellable)",
+    "desc": "Takes 30% of damage received by allies in their place. Only the highest damage-sharing effect applies.",
+    "icon": "BUFF_GUARD_CAN_NOT_DISPEL.png",
+    "isBuff": true,
+    "category": "stat",
+    "categoryLabel": "Stat Modifier",
+    "canDispel": false,
+    "isUnique": false,
+    "stats": [
+      {
+        "stat": "Damage Share",
+        "rawStat": "NST_RATE_DAMAGE_SHARE",
+        "value": 3000,
+        "display": "+30% Damage Share"
+      }
+    ],
+    "effects": [],
+    "flags": {},
+    "slug": "protect-the-chief-undispellable"
   },
   {
     "id": 9999902,
@@ -7220,7 +7358,7 @@ export const STAR_SAVIOR_BUFFS =
     "id": 9999912,
     "strId": "BI_TEST_EFFECT_HIT_INCREASE_100",
     "name": "Supreme Effect Hit Up",
-    "desc": "Effect Hit increases by 100%.",
+    "desc": "",
     "icon": "BUFF_EFFECT_HIT_INCREASE.png",
     "isBuff": true,
     "category": "stat",

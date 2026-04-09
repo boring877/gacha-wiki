@@ -149,4 +149,14 @@ export const characters = [
     name: 'Springseek Coronis',
     file: './characters/springseek-coronis.js',
   },
+  {
+    id: 130,
+    name: 'Donna',
+    file: './characters/donna.js',
+  },
+  {
+    id: 143,
+    name: 'Wraith',
+    file: './characters/wraith.js',
+  },
 ];

@@ -632,6 +632,48 @@ export const characterInfo = [
     faction: 'Freelance Trekker',
     tags: ['Versatile', 'Collector', 'Freelance Trekker'],
   },
+  {
+    id: 130,
+    slug: 'donna',
+    name: 'Donna',
+    description:
+      'Donna, brimming with energy and optimism, is the heart and leader of Post Haste. Her arrows make short work of anything standing in the mail\'s way.',
+    voiceActor: {
+      cn: 'Su Wan',
+      cnLocalized: '',
+      jp: 'Kana Asumi',
+      jpLocalized: '',
+    },
+    birthday: '10.9',
+    rarity: 5,
+    element: 'Aqua',
+    position: 'Versatile',
+    attackType: 'Ranged',
+    style: 'Creative',
+    faction: 'Post Haste',
+    tags: ['Versatile', 'Creative', 'Post Haste'],
+  },
+  {
+    id: 143,
+    slug: 'wraith',
+    name: 'Wraith',
+    description:
+      'Hailing from the frozen land of Norstheim, she is an elite warrior of the Sentinel of Dawn. A master of all weapons, she pays extra attention to cases involving Nocturn Eterna.',
+    voiceActor: {
+      cn: 'Wang Meixin',
+      cnLocalized: '',
+      jp: 'Minami Takahashi',
+      jpLocalized: '',
+    },
+    birthday: '12.24',
+    rarity: 5,
+    element: 'Ventus',
+    position: 'Vanguard',
+    attackType: 'Ranged',
+    style: 'Adventurous',
+    faction: 'Grace Imperium',
+    tags: ['Vanguard', 'Adventurous', 'Grace Imperium'],
+  },
 ];
 
 // Helper function to get character by slug

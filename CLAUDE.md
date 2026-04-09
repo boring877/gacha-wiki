@@ -11,6 +11,12 @@
 - Never run build tests unless explicitly asked by the user
 - The user will test changes themselves in the browser
 
+## Astro Config (CRITICAL)
+
+- **NEVER change `inlineStylesheets` from `'always'`** — setting it to `'auto'` or `'never'` breaks CSS on production (external CSS files fail to load, causing broken styling on all pages). This happened on 2026-04-03 and took down the entire site.
+- The `manualChunks` function in `astro.config.mjs` must keep `node_modules` check BEFORE the `/utils/` check to avoid circular dependency errors (`Cannot access 'SITE' before initialization`)
+- Always verify `astro.config.mjs` changes by running `bun run build` locally before pushing
+
 ## Data Entry Rules
 
 - **NEVER make up or copy data** from one character to another without verification

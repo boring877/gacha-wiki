@@ -1,4 +1,276 @@
 export const bannerTimelineData = [
+  // #14 - A Fateful Encounter (Mar 31 - Apr 21) - UPCOMING
+  {
+    id: 'a-fateful-encounter-apr-2026',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-03-31T00:00:00+08:00',
+      endDate: '2026-04-21T15:59:59+08:00',
+      description: 'Limited recruitment event: A Fateful Encounter will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-03-31T00:00:00+08:00',
+      endDate: '2026-04-21T15:59:59+08:00',
+      description: 'Limited recruitment event: A Heart-Tuned Melody will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #13 - Heartfelt Messages / Joy Sets Sail (Mar 17 - Apr 7) - UPCOMING
+  {
+    id: 'heartfelt-messages-delivered-on-time',
+    characterBanner: {
+      title: 'Heartfelt Messages, Delivered on Time',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-03-17T00:00:00+08:00',
+      endDate: '2026-04-07T15:59:59+08:00',
+      description: 'Limited recruitment event: Heartfelt Messages, Delivered on Time will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'Joy Sets Sail, Wishes Aloft',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-03-17T00:00:00+08:00',
+      endDate: '2026-04-07T15:59:59+08:00',
+      description: 'Limited recruitment event: Joy Sets Sail, Wishes Aloft will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #12 - A Fateful Encounter / A Heart-Tuned Melody (Mar 10 - Mar 31) - UPCOMING
+  {
+    id: 'a-fateful-encounter-mar-2026',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-03-10T00:00:00+08:00',
+      endDate: '2026-03-31T15:59:59+08:00',
+      description: 'Limited recruitment event: A Fateful Encounter will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-03-10T00:00:00+08:00',
+      endDate: '2026-03-31T15:59:59+08:00',
+      description: 'Limited recruitment event: A Heart-Tuned Melody will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #11 - Silver Shattering the Dark / Springlight Intoxication (Feb 24 - Mar 17) - UPCOMING
+  {
+    id: 'silver-shattering-the-dark',
+    characterBanner: {
+      title: 'Silver Shattering the Dark',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-02-24T00:00:00+08:00',
+      endDate: '2026-03-17T15:59:59+08:00',
+      description: 'Limited recruitment event: Silver Shattering the Dark will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'Springlight Intoxication',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-02-24T00:00:00+08:00',
+      endDate: '2026-03-17T15:59:59+08:00',
+      description: 'Limited recruitment event: Springlight Intoxication will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #10 - A Fateful Encounter / A Heart-Tuned Melody (Feb 17 - Mar 10) - UPCOMING
+  {
+    id: 'a-fateful-encounter-feb-2026',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-02-17T00:00:00+08:00',
+      endDate: '2026-03-10T15:59:59+08:00',
+      description: 'Limited recruitment event: A Fateful Encounter will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-02-17T00:00:00+08:00',
+      endDate: '2026-03-10T15:59:59+08:00',
+      description: 'Limited recruitment event: A Heart-Tuned Melody will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #9 - Warmth Lingers, Longing Stirs / Fresh Affection Awakes (Feb 3 - Feb 24) - UPCOMING
+  {
+    id: 'warmth-lingers-longing-stirs',
+    characterBanner: {
+      title: 'Warmth Lingers, Longing Stirs',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-02-03T00:00:00+08:00',
+      endDate: '2026-02-24T15:59:59+08:00',
+      description: 'Limited recruitment event: Warmth Lingers, Longing Stirs will begin soon!',
+      note: '',
+    },
+    discBanner: {
+      title: 'Fresh Affection Awakes',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-02-03T00:00:00+08:00',
+      endDate: '2026-02-24T15:59:59+08:00',
+      description: 'Limited recruitment event: Fresh Affection Awakes will begin soon!',
+      note: '',
+    },
+    status: 'upcoming',
+    image: '',
+  },
+  // #8b - Mirroring the Jade's Ideal / Tipsy Wisteria Dreams (Jan 13 - Feb 3) - ENDED
+  {
+    id: 'mirroring-the-jades-ideal',
+    characterBanner: {
+      title: "Mirroring the Jade's Ideal",
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-01-13T00:00:00+08:00',
+      endDate: '2026-02-03T15:59:59+08:00',
+      description: "Limited recruitment event: Mirroring the Jade's Ideal has ended.",
+      note: '',
+    },
+    discBanner: {
+      title: 'Tipsy Wisteria Dreams',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-01-13T00:00:00+08:00',
+      endDate: '2026-02-03T15:59:59+08:00',
+      description: 'Limited recruitment event: Tipsy Wisteria Dreams has ended.',
+      note: '',
+    },
+    status: 'ended',
+    image: '',
+  },
+  // #8b - A Fateful Encounter / A Heart-Tuned Melody (Jan 27 - Feb 17) - ENDED
+  {
+    id: 'a-fateful-encounter-jan-2026',
+    characterBanner: {
+      title: 'A Fateful Encounter',
+      featuredCharacter: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Trekker',
+        image: '',
+      },
+      boostedCharacters: [],
+      startDate: '2026-01-27T00:00:00+08:00',
+      endDate: '2026-02-17T15:59:59+08:00',
+      description: 'Limited recruitment event: A Fateful Encounter has ended.',
+      note: '',
+    },
+    discBanner: {
+      title: 'A Heart-Tuned Melody',
+      featuredDisc: {
+        name: 'TBD',
+        rarity: '★★★★★',
+        type: 'Runic Disc',
+        image: '',
+      },
+      boostedDiscs: [],
+      startDate: '2026-01-27T00:00:00+08:00',
+      endDate: '2026-02-17T15:59:59+08:00',
+      description: 'Limited recruitment event: A Heart-Tuned Melody has ended.',
+      note: '',
+    },
+    status: 'ended',
+    image: '',
+  },
   // #8 - Freesia Rerun (Dec 29 - Jan 19) - CURRENT
   {
     id: 'freesia-a-fateful-encounter-rerun',
@@ -38,10 +310,10 @@ export const bannerTimelineData = [
         "Limited recruitment event: A Heart-Tuned Melody will begin soon! During the event period, there's a higher chance to get the ★5 Runic Disc, Sunlit Blossom.",
       note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'freesia-rerun-banner.png',
   },
-  // #7 - Snowish Laru (Dec 22 - Jan 12) - CURRENT
+  // #7 - Snowish Laru (Dec 22 - Jan 12) - ENDED
   {
     id: 'snowish-laru-holy-night-gift-rush',
     characterBanner: {
@@ -82,7 +354,7 @@ export const bannerTimelineData = [
         "Limited recruitment event: Ode of the Kingdom of Fries will begin soon! During the event period, there's a higher chance to get the new ★5 Ignis Disc, Snowy Night Surprise.",
       note: '*For more recruitment information, please tap the Details button in the bottom-left corner of the recruitment screen.',
     },
-    status: 'current',
+    status: 'ended',
     image: 'snowish-laru-banner.png',
   },
   // #6 - Nazuka (Dec 8 - Dec 29) - ENDED

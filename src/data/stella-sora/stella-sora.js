@@ -19,7 +19,7 @@ export const stellaSoraConfig = {
     playUrl: 'https://play.google.com/store/apps/details?id=com.YoStarEN.StellaSora',
     iosUrl: 'https://apps.apple.com/app/stella-sora/id6737498123',
     winUrl: 'https://stellasora.global/',
-    lastUpdated: new Date('2025-10-19'),
+    lastUpdated: new Date('2026-04-04'),
     socialLinks: {
       twitter: 'https://x.com/StellaSoraEN',
       twitterJP: 'https://x.com/StellaSoraJP',

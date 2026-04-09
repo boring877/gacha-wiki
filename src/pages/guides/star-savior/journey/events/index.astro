@@ -68,9 +68,11 @@ const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
           const catClass = getCategoryClass(event.category);
           const arcanaName = (event as any).arcana;
           const arcanaGrade = (event as any).arcanaGrade;
+          const bgImage = (event as any).bgImage;
           const searchData = [event.name, event.description, event.category, arcanaName, arcanaGrade, event.choices.map(c => c.text).join(' ')].filter(Boolean).join(' ').toLowerCase();
           return (
             <div class="je-card" data-search={searchData}>
+              {bgImage && <div class="je-bg"><img src={bgImage} alt="" loading="lazy" /></div>}
               <div class="je-header">
                 <span class="je-num">{index + 1}</span>
                 <span class="je-category" data-cat={catClass}>{event.category}</span>
