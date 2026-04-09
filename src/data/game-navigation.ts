@@ -376,6 +376,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Blog', href: '/guides/star-savior/blog/' },
           { name: 'Redeem Codes', href: '/guides/star-savior/redeem-codes/' },
+          { name: 'Clock', href: '/clock/star-savior/' },
         ],
       },
     ],

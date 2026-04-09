@@ -95,21 +95,29 @@ function getSlotRecs(buildType) {
   return recs;
 }
 
+export const SUBSTAT_OVERRIDES = {
+  rosaria: {
+    optimal: ['ATK %'],
+    great: ['HP %', 'ATK'],
+    acceptable: ['SPD', 'CRIT Rate', 'CRIT Damage', 'Effect Hit'],
+    filler: [],
+  },
+};
+
 export const ARCANA_BUILDS = {
   rosaria: {
     main: [
       'rosaria-the-end-wears-the-face-of-a-girl',
       'lacy-no-pain-no-gain',
       'lyn-under-the-glass-moon-over-the-pavilion',
-      'naru-dreams-under-the-stars',
+      'petra-made-by-petra',
       'claire-the-perfect-bunny-girl',
     ],
     alternatives: [
       'asherah-young-lady-of-stranis',
       'charlotte-a-knight-s-oath',
       'frey-the-indomitable-masterpiece',
-      'muriel-divine-judgement',
-      'petra-made-by-petra',
+      'naru-dreams-under-the-stars',
     ],
   },
 };
@@ -134,7 +142,7 @@ export const CHARACTER_BUILDS = STAR_SAVIOR_CHARACTERS.map(char => {
     buildType,
     buildName: build.name,
     set: build.set,
-    substatTiers: build.substatTiers,
+    substatTiers: SUBSTAT_OVERRIDES[char.slug] || build.substatTiers,
     slots: getSlotRecs(buildType),
     arcana: arcanaBuild ? {
       main: resolveArcana(arcanaBuild.main),

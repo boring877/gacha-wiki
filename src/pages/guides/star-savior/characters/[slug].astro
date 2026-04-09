@@ -214,7 +214,14 @@ function buildLevelChanges(levels: any[], targetIdx: number): { text: string; ty
     }
     const descDiff = diffLevels(base.description || '', curr.description || '');
     for (const d of descDiff) changes.push({ text: d, type: 'desc' });
-    if (changes.length === 0) changes.push({ text: 'No changes at this level', type: 'none' });
+    if (changes.length === 0) {
+      const upgrade = curr.upgradeName || '';
+      if (upgrade && upgrade !== 'Base Effect') {
+        changes.push({ text: upgrade, type: 'upgrade' });
+      } else {
+        changes.push({ text: 'No changes at this level', type: 'none' });
+      }
+    }
     return changes;
   }
   const changes: { text: string; type: string }[] = [];
@@ -239,7 +246,12 @@ function buildLevelChanges(levels: any[], targetIdx: number): { text: string; ty
   const descDiff = diffLevels(base.description || '', curr.description || '');
   for (const d of descDiff) changes.push({ text: d, type: 'desc' });
   if (changes.length === 0) {
-    changes.push({ text: 'No changes at this level', type: 'none' });
+    const upgrade = curr.upgradeName || '';
+    if (upgrade && upgrade !== 'Base Effect') {
+      changes.push({ text: upgrade, type: 'upgrade' });
+    } else {
+      changes.push({ text: 'No changes at this level', type: 'none' });
+    }
   }
   return changes;
 }

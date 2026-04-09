@@ -1,0 +1,46 @@
+---
+// Star Savior Clock Page - Server reset timers and countdowns
+import StarSaviorClockLayout from '../../layouts/clock/StarSavior.astro';
+import { starSaviorConfig } from '../../data/clock/star-savior.js';
+import GameIcon from '../../assets/images/games/star-savior/hero.png';
+
+const title = 'Star Savior Clock - Server Reset Timer | GachaWiki';
+const description =
+  'Star Savior server reset timer - Track daily resets, maintenance, and countdowns for Korea/Japan and Global servers. Never miss dailies with our real-time Star Savior clock. Server resets at 04:00 UTC+9 daily.';
+
+const games = [
+  {
+    ...starSaviorConfig,
+    image: GameIcon,
+  },
+];
+---
+
+<StarSaviorClockLayout title={title} description={description} games={games}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Star Savior Server Reset Clock",
+      "description": "Real-time server reset timer for Star Savior gacha game. Daily reset at 04:00 UTC+9. Track Korea/Japan and Global server countdowns.",
+      "url": "https://gachawiki.info/clock/star-savior",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Star Savior Reset Clock",
+        "description": "Track Star Savior server reset times and events. Daily server reset at 04:00 UTC+9. Never miss Star Savior daily quests, energy refills, and farming cycles.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</StarSaviorClockLayout>

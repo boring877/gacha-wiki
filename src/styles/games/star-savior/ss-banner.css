@@ -17,12 +17,6 @@
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.ss-banner-card:hover {
-  border-color: var(--ss-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
 .ss-banner-image {
   width: 100%;
   aspect-ratio: 512 / 316;
@@ -75,6 +69,11 @@
   color: var(--ss-primary);
 }
 
+.ss-banner-type-rateup {
+  background: rgba(129, 199, 132, 0.15);
+  color: #81c784;
+}
+
 .ss-banner-arcana {
   font-size: 0.75rem;
   color: var(--ss-text-secondary);
@@ -97,10 +96,6 @@
   margin-top: 0.25rem;
   opacity: 0.8;
   transition: opacity 0.2s;
-}
-
-.ss-banner-card:hover .ss-banner-link {
-  opacity: 1;
 }
 
 @media (max-width: 768px) {

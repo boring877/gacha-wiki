@@ -32,9 +32,6 @@ const sortedBanners = [...banners].sort((a, b) => {
     <div class="ss-banner-grid">
       {sortedBanners.map((banner) => {
         const imgUrl = getImageUrl(banner.image);
-        const typeClass = banner.type === 'NEW' ? 'ss-banner-type-new'
-          : banner.type === 'RERUN' ? 'ss-banner-type-rerun'
-          : 'ss-banner-type-special';
         const dateStr = banner.startDate
           ? `${formatDate(banner.startDate)}${banner.endDate ? ' – ' + formatDate(banner.endDate) : ''}`
           : '';
@@ -45,7 +42,6 @@ const sortedBanners = [...banners].sort((a, b) => {
             <div class="ss-banner-info">
               <div class="ss-banner-header">
                 <span class="ss-banner-character">{banner.character}</span>
-                <span class={`ss-banner-type ${typeClass}`}>{banner.type}</span>
               </div>
               {banner.arcana && <span class="ss-banner-arcana">Arcana: {banner.arcana}</span>}
               {dateStr && <span class="ss-banner-date">{dateStr}</span>}

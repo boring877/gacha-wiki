@@ -1,0 +1,190 @@
+---
+// Star Savior Clock Layout
+import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
+import { Image } from 'astro:assets';
+
+import '../../styles/games/star-savior/ss-colors.css';
+import '../../styles/games/star-savior/ss-layout.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/star-savior.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0];
+
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SSBaseHead title={title} description={description} />
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Star Savior clock',
+        'Star Savior timer',
+        'Star Savior daily reset',
+        'Star Savior server time',
+        'Star Savior global launch',
+      ]}
+      pageType="webapp"
+    />
+    <Analytics />
+  </head>
+
+  <body class="stella-sora-body">
+    <CustomScrollbar />
+
+    <div class="bg-layer ss-bg-primary"></div>
+    <div class="bg-layer ss-bg-accent-1"></div>
+    <div class="bg-layer ss-bg-accent-2"></div>
+
+    <div class="stella-sora-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="star-savior" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <section class="title-only-section">
+              <h1 class="ss-title-only-heading">Star Savior Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Star Savior Clock' },
+              ]}
+            />
+
+            <!-- Main Server Reset Timer -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card">
+                <div class="clock-bg-animation"></div>
+                <div class="hero-top-section">
+                  <div class="utc-info"><p class="utc-note">This is based on UTC+9</p></div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentUTC">UTC+9 --:--:--</div>
+                  </div>
+                </div>
+                <div class="hero-main-content">
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container">
+                          <Image class="game-image" src={game.image} alt={game.name} loading="eager" fetchpriority="high" width={200} height={200} format="webp" quality={90} />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="ss-game-name">{game.name}</h3>
+                          <div class="region-badge"><span class="region-name">Global Server (UTC+9)</span></div>
+                          <div class="game-status">Server Resets at 04:00 UTC+9</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="ss-timer-main-label">Server Reset</div>
+                    </div>
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit"><span class="time-value clock-hours">--</span><span class="time-label">Hours</span></div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit"><span class="time-value clock-minutes">--</span><span class="time-label">Minutes</span></div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit"><span class="time-value clock-seconds">--</span><span class="time-label">Seconds</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary Timer Cards -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card">
+                <div class="clock-bg-animation"></div>
+                <div class="game-timers-header">
+                  <div class="timer-description-section">
+                    <div class="ss-timer-main-label">Star Savior Timers</div>
+                    <div class="timer-subtitle">Track all important events and milestones</div>
+                  </div>
+                </div>
+                <div class="timers-grid-wrapper">
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header"><div class="ss-timer-card-title">Weekly & Monthly Reset</div></div>
+                        <div class="timer-card-content">
+                          <div class="reset-item"><div class="reset-name">Weekly Reset</div><div class="reset-subtitle">Every Sunday at 04:00 UTC+9</div><div class="reset-time weekly-time">--:--:--</div></div>
+                          <div class="reset-item"><div class="reset-name">Monthly Reset</div><div class="reset-subtitle">1st of each month at 04:00 UTC+9</div><div class="reset-time monthly-time">--:--:--</div></div>
+                        </div>
+                      </div>
+                      <div class="timer-card launch-card">
+                        <div class="timer-card-header"><div class="ss-timer-card-title">Global Launch - Days Since</div></div>
+                        <div class="launch-card-content"><div class="launch-counter"><div class="launch-days days-since-launch" data-launch="2026-03-18T19:00:00Z">---</div><div class="launch-date">{game.globalDisplayDate}</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <div class="timer-card half-anniversary-card">
+                        <div class="timer-card-header"><div class="ss-timer-card-title">KR/JP Half Anniversary</div></div>
+                        <div class="launch-card-content"><div class="launch-counter"><div class="launch-days days-until" data-target="2026-05-19T19:00:00Z">---</div><div class="launch-date">May 20, 2026</div></div></div>
+                      </div>
+                      <div class="timer-card global-100days-card">
+                        <div class="timer-card-header"><div class="ss-timer-card-title">Global 100 Days</div></div>
+                        <div class="launch-card-content"><div class="launch-counter"><div class="launch-days days-until" data-target="2026-06-26T19:00:00Z">---</div><div class="launch-date">June 27, 2026</div></div></div>
+                      </div>
+                      <div class="timer-card anniversary-card">
+                        <div class="timer-card-header"><div class="ss-timer-card-title">KR/JP 1st Anniversary</div></div>
+                        <div class="launch-card-content"><div class="launch-counter"><div class="launch-days days-until" data-target="2026-11-19T19:00:00Z">---</div><div class="launch-date">November 20, 2026</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <script define:vars={{ config: game }}>
+      window.starSaviorConfig = config;
+    </script>
+    <script src="../../scripts/clock/star-savior.js"></script>
+  </body>
+</html>

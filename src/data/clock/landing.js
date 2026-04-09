@@ -86,6 +86,22 @@ export const clockLandingGames = [
     },
   },
   {
+    id: 'star-savior',
+    name: 'Star Savior',
+    description: 'Tactical RPG with Saviors',
+    image: '/images/games/star-savior/icon.png',
+    url: '/clock/star-savior',
+    themeColor: 'var(--ss-primary)',
+    active: true,
+    primaryTimer: {
+      name: 'Daily Reset',
+      type: 'daily',
+      resetHour: 19, // UTC (19:00 UTC = 04:00 UTC+9)
+      resetMinute: 0,
+      icon: '',
+    },
+  },
+  {
     id: 'busty-burst',
     name: 'Busty Burst Fantasy',
     description: 'Adult fantasy RPG',

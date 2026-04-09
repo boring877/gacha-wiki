@@ -3,8 +3,8 @@
 
 export const CHARACTER_TIER_LIST = {
   Sun: {
-    SSS: ['hilde', 'kyra'],
-    SS: ['charlotte-skin', 'harley'],
+    SSS: ['charlotte-skin'],
+    SS: ['hilde', 'kyra', 'harley'],
     S: ['charlotte', 'serpang', 'scarlet', 'petra', 'muriel'],
     A: [],
     B: [],
@@ -24,7 +24,8 @@ export const CHARACTER_TIER_LIST = {
     B: [],
   },
   Chaos: {
-    SSS: ['rosaria'],
+    UR: ['rosaria'],
+    SSS: [],
     SS: ['lacy', 'lydia'],
     S: ['elisa'],
     A: [],
@@ -41,4 +42,4 @@ export const CHARACTER_TIER_LIST = {
 
 export const ELEMENT_ORDER = ['Sun', 'Moon', 'Star', 'Chaos', 'Order'];
 
-export const TIER_ORDER = ['SSS', 'SS', 'S', 'A', 'B'];
+export const TIER_ORDER = ['UR', 'SSS', 'SS', 'S', 'A', 'B'];
