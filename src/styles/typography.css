@@ -86,9 +86,8 @@ body {
 
 /* === HEADING HIERARCHY === */
 
-/* Primary heading - largest and most prominent, used for page titles and character names */
+/* Primary heading - largest and most prominent, used for page titles and display text */
 h1,
-.character-name,
 .display-title {
   font-family: var(--font-display);
   font-size: var(--text-5xl); /* 48-64px - maximum visual impact */
@@ -372,7 +371,6 @@ strong {
 @media (max-width: 768px) {
   /* Reduce primary heading sizes for mobile viewport constraints */
   h1,
-  .character-name,
   .display-title {
     font-size: var(--text-4xl); /* Reduce from 5xl to 4xl for mobile */
   }
@@ -405,7 +403,6 @@ strong {
 /* High contrast mode support for accessibility */
 @media (prefers-contrast: high) {
   h1,
-  .character-name,
   .display-title,
   .game-title {
     background: none; /* Remove background effects for clarity */
