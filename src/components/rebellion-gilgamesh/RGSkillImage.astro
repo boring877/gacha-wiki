@@ -1,0 +1,131 @@
+---
+// Rebellion Gilgamesh skill icon image component
+// Displays skill icons composited on skill-type or element-colored backgrounds
+// Passive → blue bg, Trigger → green bg, Normal/Active/Ace → character element bg
+import { Image } from 'astro:assets';
+
+const icons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/skills/*.png',
+  { eager: true }
+);
+
+const bgs = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/skill-bg/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;
+  element?: number;
+  skillType?: number;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { icon, element = -1, skillType, alt, width = 48, class: className, loading = 'lazy' } = Astro.props;
+
+const elementBgMap: Record<number, string> = {
+  0: 'none.png',
+  1: 'fire.png',
+  2: 'water.png',
+  3: 'wood.png',
+  4: 'chaos.png',
+  5: 'light.png',
+  6: 'dark.png',
+  [-1]: 'none.png',
+};
+
+function getBgFile(): string {
+  if (skillType === 5) return 'passive.png';
+  if (skillType === 3) return 'trigger.png';
+  return elementBgMap[element] || elementBgMap[-1];
+}
+
+function findImg(map: Record<string, { default: ImageMetadata }>, fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(map).find(k => k.endsWith('/' + fname));
+  return key ? map[key].default : null;
+}
+
+const iconFile = (icon || '') + (icon.endsWith('.png') ? '' : '.png');
+const iconModule = findImg(icons, iconFile);
+const bgFile = getBgFile();
+const bgModule = findImg(bgs, bgFile);
+---
+
+{iconModule ? (
+  <div class={`rg-skill-icon ${className || ''}`} style={`--rg-skill-size: ${width}px`}>
+    {bgModule && (
+      <Image
+        src={bgModule}
+        alt=""
+        width={width}
+        height={width}
+        loading={loading}
+        format="webp"
+        quality={90}
+        class="rg-skill-icon-bg"
+      />
+    )}
+    <Image
+      src={iconModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-skill-icon-img"
+    />
+  </div>
+) : (
+  <div class={`rg-skill-icon-fallback ${className || ''}`} style={`--rg-skill-size: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-skill-icon {
+    width: var(--rg-skill-size, 48px);
+    height: var(--rg-skill-size, 48px);
+    border-radius: 6px;
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .rg-skill-icon-bg {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .rg-skill-icon-img {
+    position: relative;
+    width: 60% !important;
+    height: 60% !important;
+    object-fit: contain;
+  }
+
+  .rg-skill-icon-fallback {
+    width: var(--rg-skill-size, 48px);
+    height: var(--rg-skill-size, 48px);
+    border-radius: 6px;
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--rg-text-muted);
+  }
+</style>

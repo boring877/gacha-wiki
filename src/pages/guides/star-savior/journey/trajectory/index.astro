@@ -1,0 +1,413 @@
+---
+// Star Savior Starlight Trajectory Guide (Journey Hard Mode)
+// Single table view showing all trajectories with requirements
+import CharacterDatabaseLayout from '../../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
+import { TRAJECTORY_TYPES, TRAJECTORY_VARIANTS, TRAINING_MANUALS, BLESSING_PHASES, SAVIOR_SET, COMBINE_SETS, EQUIP3_CATEGORIES, EQUIPMENT_PARTS, STAT_TO_PART, QUEST_MAPS } from '../../../../../data/star-savior/trajectory.js';
+import SSJourneyItemImage from '../../../../../components/star-savior/SSJourneyItemImage.astro';
+
+import '../../../../../styles/games/star-savior/ss-trajectory.css';
+
+const trajIconImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../../../assets/images/games/star-savior/trajectory/*.png',
+  { eager: true }
+);
+
+function findTrajIcon(filename) {
+  if (!filename) return null;
+  const key = Object.keys(trajIconImages).find(k => k.endsWith('/' + filename));
+  return key ? trajIconImages[key].default : null;
+}
+
+function getVariantsForType(typeId) {
+  return TRAJECTORY_VARIANTS.filter(v => v.type === typeId);
+}
+
+function addStatValues(a, b) {
+  const parseNum = (s) => parseFloat(s.replace('+', '').replace('%', ''));
+  const suffix = a.includes('%') ? '%' : '';
+  return '+' + (parseNum(a) + parseNum(b)) + suffix;
+}
+
+function getSecondaryPartIcon(variant, primaryPartSlot) {
+  const secondaryStat = variant.stats.find(s => STAT_TO_PART[s.stat] !== primaryPartSlot);
+  if (!secondaryStat) return null;
+  const slotName = STAT_TO_PART[secondaryStat.stat];
+  return SAVIOR_SET.items.find(i => i.name === slotName);
+}
+---
+
+<CharacterDatabaseLayout
+  title="Starlight Trajectory Guide - Star Savior"
+  description="Complete guide to Starlight Trajectory potentials in Journey Hard mode. All 72 AX-BX-CX-DX-EX-FX-GX-HX-XX variants with stats, passive effects, and how to obtain them."
+  gameTitle="Starlight Trajectory Guide"
+>
+  <div class="traj-container">
+
+    <div class="traj-intro">
+      <p>Starlight Trajectories are special <strong>SE Potential blessings</strong> exclusive to <strong>Journey Hard Mode</strong>. You receive them during 3 blessing phases throughout the journey. Each trajectory type has 8 variants with different stat combinations, and all share a unique passive effect.</p>
+      <p>The <strong>type</strong> of trajectory you get (AX, BX, EX, etc.) is influenced by your training focus and items collected during the journey. The <strong>specific variant</strong> (1-8) is chosen from 3 random options offered by the server.</p>
+    </div>
+
+    <section class="traj-section">
+      <h2 class="traj-section-title">Requirements</h2>
+
+      <div class="traj-prereq">
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Clear battle <strong>18-6</strong> to unlock Hard Mode</li>
+          <li>Recommended <strong>Resonance 8+</strong></li>
+          <li>Stat cap: <strong>1,250</strong></li>
+          <li>PP Scale: <strong>250%</strong></li>
+        </ul>
+      </div>
+
+      <h3>Step 1: Pick a Training Manual</h3>
+      <p class="traj-note">Early in the journey you choose one of 3 manuals. This determines which 3 Ancient Savior parts you can pick as your primary equipment.</p>
+      <div class="traj-manual-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Manual</th>
+              <th>Primary Parts Available</th>
+              <th>Trajectory Pool</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TRAINING_MANUALS.map(m => {
+              return (
+                <tr>
+                  <td>
+                    <div class="traj-manual-cell">
+                      <SSJourneyItemImage icon={m.icon} alt={m.name} width={40} />
+                      <span>{m.focus}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="traj-parts-row">
+                      {m.primaryParts.map(slotName => {
+                        const item = SAVIOR_SET.items.find(i => i.name === slotName);
+                        return item ? (
+                          <div class="traj-part-chip">
+                            <SSJourneyItemImage icon={item.icon} alt={item.name} width={28} />
+                            <span>{item.name} <small>({item.stat} {item.statValue})</small></span>
+                          </div>
+                        ) : null;
+                      })}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="traj-traj-tags">
+                      {m.trajectories.map(t => {
+                        const type = TRAJECTORY_TYPES.find(tt => tt.id === t);
+                        const tIcon = findTrajIcon(type?.icon);
+                        return (
+                          <span class="traj-traj-tag">
+                            {tIcon && <img src={tIcon.src} alt={t} width={16} height={16} />}
+                            {t}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step 2: Collect Combine Parts</h3>
+      <p class="traj-note">After each map, Quest Hunts give combine parts from one of 3 sets (all have identical stats). You combine your primary Savior part with a secondary part.</p>
+      <div class="traj-quest-row">
+        {QUEST_MAPS.map(q => {
+          const set = COMBINE_SETS.find(s => s.id === q.set);
+          return (
+            <div class="traj-quest-chip">
+              <strong>{q.map}</strong>
+              <span>{q.name}</span>
+              <SSJourneyItemImage icon={set.items[0].icon} alt={q.name} width={24} />
+            </div>
+          );
+        })}
+      </div>
+
+      <h3>Step 3: All Combinations</h3>
+      <p class="traj-note">Primary Savior part sets the trajectory type. Secondary combine part sets the variant.</p>
+      <div class="traj-combo-grid">
+        {EQUIPMENT_PARTS.map(part => {
+          const type = TRAJECTORY_TYPES.find(t => t.id === part.trajectory);
+          const tIcon = findTrajIcon(type?.icon);
+          const saviorItem = SAVIOR_SET.items.find(i => i.name === part.slot);
+          const variants = getVariantsForType(part.trajectory);
+          return (
+            <div class="traj-combo-card">
+              <div class="traj-combo-header">
+                <span class="traj-traj-tag">
+                  {tIcon && <img src={tIcon.src} alt={part.trajectory} width={20} height={20} />}
+                  {part.trajectory}
+                </span>
+                <div class="traj-combo-primary">
+                  {saviorItem && <SSJourneyItemImage icon={saviorItem.icon} alt={part.slot} width={28} />}
+                  <span>{part.slot} ({part.stat} {part.primaryValue})</span>
+                </div>
+              </div>
+              <div class="traj-combo-variants">
+                {variants.map(v => {
+                  const secItem = getSecondaryPartIcon(v, part.slot);
+                  return (
+                    <div class="traj-combo-variant">
+                      <div class="traj-combo-icons">
+                        {saviorItem && <SSJourneyItemImage icon={saviorItem.icon} alt={part.slot} width={20} />}
+                        {secItem ? <SSJourneyItemImage icon={secItem.icon} alt={secItem.name} width={20} /> : <SSJourneyItemImage icon={saviorItem.icon} alt={part.slot} width={20} />}
+                      </div>
+                      <div class="traj-combo-info">
+                        <strong>{v.id}</strong>
+                        <span>{v.desc}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <h3>Blessing Phases</h3>
+      <div class="traj-phases">
+        <div class="traj-phase-table">
+          <table>
+            <thead>
+              <tr><th>Turn</th><th>Phase</th><th>Cutscene</th><th>What Happens</th></tr>
+            </thead>
+            <tbody>
+              {BLESSING_PHASES.map(p => (
+                <tr>
+                  <td><strong>Turn {p.turn}</strong></td>
+                  <td><code>{p.type}</code></td>
+                  <td>{p.cutscene}</td>
+                  <td>{p.desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="traj-selection-note">
+        <p>At each blessing phase, the server offers <strong>3 random variants</strong> from your trajectory pool. You pick 1 from those 3. You <strong>cannot control which 3 appear</strong> - that is determined server-side. Each pick also grants +5 Potential Points.</p>
+      </div>
+    </section>
+
+    <section class="traj-section">
+      <h2 class="traj-section-title">How to Influence Your Trajectory Type</h2>
+
+      <div class="traj-flow-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Action</th>
+              <th>What Happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="traj-flow-num">1</span></td>
+              <td><strong>Pick Training Manual</strong></td>
+              <td>Determines which 3 Ancient Savior parts you can choose from</td>
+            </tr>
+            <tr>
+              <td><span class="traj-flow-num">2</span></td>
+              <td><strong>Pick Primary Part</strong></td>
+              <td>Choose 1 of 3 Savior parts (your main stat)</td>
+            </tr>
+            <tr>
+              <td><span class="traj-flow-num">3</span></td>
+              <td><strong>Collect Combine Part</strong></td>
+              <td>Gather a secondary part from Slime/Apocalypse/Doll set</td>
+            </tr>
+            <tr>
+              <td><span class="traj-flow-num">4</span></td>
+              <td><strong>Alchemy (Combine)</strong></td>
+              <td>Combine primary + secondary. Stats add together.</td>
+            </tr>
+            <tr>
+              <td><span class="traj-flow-num">5</span></td>
+              <td><strong>Blessing Phase</strong></td>
+              <td>Server offers 3 random variants from your trajectory pool</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step 3: Combine Sets (Visual Variants)</h3>
+      <p class="traj-note">The combine material comes from one of 3 sets. They all have identical stats per part - only the appearance differs.</p>
+
+      <div class="traj-sets-compare">
+        <table>
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Stat</th>
+              <th>Trajectory</th>
+              <th>Slime-Splattered</th>
+              <th>New Apocalypse</th>
+              <th>Doll's Forgotten</th>
+            </tr>
+          </thead>
+          <tbody>
+            {EQUIPMENT_PARTS.map(part => {
+              const type = TRAJECTORY_TYPES.find(t => t.id === part.trajectory);
+              const tIcon = findTrajIcon(type?.icon);
+              const slime = COMBINE_SETS[0].items.find(i => i.name === part.slot);
+              const apo = COMBINE_SETS[1].items.find(i => i.name === part.slot);
+              const doll = COMBINE_SETS[2].items.find(i => i.name === part.slot);
+              return (
+                <tr>
+                  <td><strong>{part.slot}</strong></td>
+                  <td>{part.stat} {part.combineValue}</td>
+                  <td>
+                    <span class="traj-traj-tag">
+                      {tIcon && <img src={tIcon.src} alt={part.trajectory} width={16} height={16} />}
+                      {part.trajectory}
+                    </span>
+                  </td>
+                  <td>
+                    <div class="traj-item-cell">
+                      {slime && <SSJourneyItemImage icon={slime.icon} alt={`Slime ${part.slot}`} width={32} />}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="traj-item-cell">
+                      {apo && <SSJourneyItemImage icon={apo.icon} alt={`Apocalypse ${part.slot}`} width={32} />}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="traj-item-cell">
+                      {doll && <SSJourneyItemImage icon={doll.icon} alt={`Doll ${part.slot}`} width={32} />}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Alchemy (Combining)</h3>
+      <div class="traj-alchemy-box">
+        <p>The Alchemy NPC lets you <strong>combine your primary Savior part with a secondary part</strong>. Their stats add together to produce your final trajectory.</p>
+        <p class="traj-alchemy-quote">"This potion born from the two might've opened the door to humanity's next evolution...!!"</p>
+        <p>Example: <strong>Savior Gloves (ATK +8%) + Slime Gloves (ATK +4%) = ATK +12%</strong> gives a pure ATK result (AX1). If you instead combine <strong>Savior Gloves (ATK +8%) + Slime Armor (HP +4%)</strong>, you get a mixed ATK+HP variant. The primary stat determines the trajectory type, the secondary stat determines which variant (1-8).</p>
+      </div>
+
+      <h3>Equipment Routes (EQUIP3)</h3>
+      <p class="traj-note">The combined equipment result activates an EQUIP3 route with one of 5 categories. Each category has 10 power tiers that scale the effect.</p>
+
+      <div class="traj-equip3-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Likely Trajectory</th>
+              <th>Battle Effect</th>
+              <th>Tier Scaling</th>
+            </tr>
+          </thead>
+          <tbody>
+            {EQUIP3_CATEGORIES.map(cat => (
+              <tr>
+                <td><strong>{cat.label}</strong></td>
+                <td><code>{cat.likelyTrajectory}</code></td>
+                <td class="traj-equip3-desc">{cat.desc}</td>
+                <td class="traj-equip3-tiers">10 tiers (power increases with tier)</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="traj-unknown-note">
+        <p><strong>Part → Trajectory mapping</strong> is community-observed and consistent across runs. The exact server logic for how alchemy combines 2 parts into a route is not in client data files, but the part trait (Aggression, Vitality, etc.) strongly correlates with the resulting trajectory type.</p>
+      </div>
+    </section>
+
+    <section class="traj-section">
+      <h2 class="traj-section-title">Trajectory Types Overview</h2>
+      <div class="traj-overview-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Primary Stat</th>
+              <th>Passive Effect</th>
+              <th>Variants</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TRAJECTORY_TYPES.map(t => {
+              const icon = findTrajIcon(t.icon);
+              const variants = getVariantsForType(t.id);
+              return (
+                <tr id={`traj-type-${t.id}`}>
+                  <td>
+                    <div class="traj-type-cell">
+                      {icon && <img src={icon.src} alt={t.id} width={32} height={32} />}
+                      <strong>{t.id}</strong>
+                    </div>
+                  </td>
+                  <td>{t.primaryStat}</td>
+                  <td class="traj-passive-cell">{t.passiveShort}</td>
+                  <td>{variants.length}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="traj-section">
+      <h2 class="traj-section-title">All Variants</h2>
+      <div class="traj-full-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Variant</th>
+              <th>Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TRAJECTORY_TYPES.map(t => {
+              const icon = findTrajIcon(t.icon);
+              const variants = getVariantsForType(t.id);
+              return variants.map((v, vi) => (
+                <tr class={vi === 0 ? 'traj-type-first' : ''}>
+                  {vi === 0 && (
+                    <td class="traj-type-group" rowspan={variants.length}>
+                      <div class="traj-type-cell">
+                        {icon && <img src={icon.src} alt={t.id} width={28} height={28} />}
+                        <strong>{t.id}</strong>
+                      </div>
+                    </td>
+                  )}
+                  <td><strong>{v.id}</strong></td>
+                  <td>
+                    <div class="traj-stats-cell">
+                      {v.stats.map(s => (
+                        <span class="traj-stat-tag">{s.stat} +{s.value}{s.unit}</span>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ));
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</CharacterDatabaseLayout>

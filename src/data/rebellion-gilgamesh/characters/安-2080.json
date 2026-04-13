@@ -1,0 +1,757 @@
+{
+  "id": 2080,
+  "name": "Energetic Junior An",
+  "fullName": "Energetic Junior An",
+  "slug": "安-2080",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 1,
+  "elementName": "Fire",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Otherworlder (Disguised)",
+  "power": "Wanderer",
+  "image": "2080.png",
+  "bookTitle": "Disguised God",
+  "bookId": 67,
+  "firstAcquaintance": "A junior who always likes to follow you around. She is a female student from another world. Because she comes from another world, she is curious about everything.",
+  "personality": "A teenage girl who is wary of everything yet curious about it all at the same time. When trouble arises, she seeks help from her senior and hides behind them.",
+  "like": "Anything baseball-related, otherworldly school stories",
+  "familiarData": "The other world exists in an unobservable spacetime, and people from there occasionally cross over to this one. An is one such otherworlder who gained special powers during the crossing. However, unlike other otherworlders, An has no intention of getting involved in the conflict between the kingdom and the demon race. She treats this merely as an exchange student visiting another world.\nOtherworlders have demon horns on their heads? Well, they are from another world, so it's not strange at all.\n-- The above is all a lie.\nAn's true identity is the ancient demon god \"Flame Demon Megma,\" who was beaten to the point of doubting her demonic existence by the Demon Lord and went into hiding. Under the arrangement of a certain honorary demon citizen, An put on an otherworldly student uniform and disguised herself as \"a junior from another world.\"\nWhile it's absurd in every way, An herself quite likes this identity and has grown fond of the otherworldly sport called \"baseball.\" Unfortunately, her athletic ability leaves much to be desired, and she is still far from being able to hit a home run.\n...That thing behind her? Just pretend you didn't see it. After all, nothing is too strange when it comes to otherworlders.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2080,
+  "stats": {
+    "initialHP": 1479,
+    "hpAdd": 190.5,
+    "initialAtk": 113,
+    "atkAdd": 14.4,
+    "initialDef": 98,
+    "defAdd": 12.7
+  },
+  "features": [
+    1001,
+    1009,
+    1026
+  ],
+  "normalAtk": {
+    "id": 208000,
+    "name": "Schoolbag Smash",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "103",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208000,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 208001,
+      "name": "Stop Squirming!",
+      "comment": "Deal 135% damage\n100% chance to apply Seal (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "307",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208001,
+      "multiplier": 135.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 135.0,
+          "perLevel": 13.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2080011,
+          "buffName": "Seal",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 13.5,
+      "effectLines": [
+        "Deal 135% damage",
+        "100% chance to apply Seal (3 turns)"
+      ],
+      "multiplierMax": 202.5,
+      "effectLinesMax": [
+        "Deal 202.5% damage",
+        "100% chance to apply Seal (3 turns)"
+      ],
+      "commentMax": "Deal 202.5% damage\n100% chance to apply Seal (3 turns)"
+    },
+    {
+      "id": 208002,
+      "name": "Cheer Squad",
+      "comment": "Restore 250 ST\n100% chance to apply Ult DMG Up 18% (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "608",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208002,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2080021,
+          "buffName": "Ult DMG Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply Ult DMG Up 18% (3 turns)"
+      ]
+    },
+    {
+      "id": 208003,
+      "name": "Ah! My Bat~",
+      "comment": "Deal 176% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "206",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208003,
+      "multiplier": 176.0,
+      "multiplierPerLevel": 17.6,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 176.0,
+          "perLevel": 17.6
+        }
+      ],
+      "effectLines": [
+        "Deal 176% damage"
+      ],
+      "multiplierMax": 264.0,
+      "effectLinesMax": [
+        "Deal 264.0% damage"
+      ],
+      "commentMax": "Deal 264.0% damage"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 208004,
+      "name": "Popular",
+      "comment": "ST Down (0 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}",
+      "icon": "609",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 6,
+      "triggerCommentFormat": "【{3}】回合触发1次",
+      "effectGroupId": 208004,
+      "effects": [
+        {
+          "type": "passive_buff_timed",
+          "buffName": "ST Down",
+          "buffValue": null,
+          "duration": 0
+        }
+      ],
+      "effectLines": [
+        "ST Down (0 turns)"
+      ],
+      "triggerCondition": "Every 4 turns"
+    }
+  ],
+  "aceSkill": {
+    "id": 208007,
+    "name": "Power Swing",
+    "comment": "Deal 362% damage\n100% chance to apply Element DEF Down 36% (2 turns)\n100% chance to apply ST Recovery Down (4 turns)",
+    "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+    "icon": "502",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208007,
+    "multiplier": 362.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 362.0,
+        "perLevel": 36.2
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 2,
+        "buffId": 2080071,
+        "buffName": "Element DEF Down",
+        "buffValue": "36"
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 4,
+        "buffId": 2080072,
+        "buffName": "ST Recovery Down",
+        "buffValue": null
+      }
+    ],
+    "multiplierPerLevel": 36.2,
+    "effectLines": [
+      "Deal 362% damage",
+      "100% chance to apply Element DEF Down 36% (2 turns)",
+      "100% chance to apply ST Recovery Down (4 turns)"
+    ],
+    "multiplierMax": 543.0,
+    "effectLinesMax": [
+      "Deal 543% damage",
+      "100% chance to apply Element DEF Down 36% (2 turns)",
+      "100% chance to apply ST Recovery Down (4 turns)"
+    ],
+    "commentMax": "Deal 543% damage\n100% chance to apply Element DEF Down 36% (2 turns)\n100% chance to apply ST Recovery Down (4 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 208010,
+      "name": "Protector",
+      "comment": "100% chance to apply Cover 100%",
+      "commentFormat": "{3}",
+      "icon": "102",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208010,
+      "multiplier": 100,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2080101,
+          "buffName": "Cover",
+          "buffValue": "100"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Cover 100%"
+      ]
+    },
+    {
+      "id": 208011,
+      "name": "Junior",
+      "comment": "ST Recovery Up\nATK Up 18%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208011,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "ST Recovery Up",
+          "buffValue": null
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "ATK Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "ST Recovery Up",
+        "ATK Up 18%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/自由之手",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 50,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 14,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 64,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

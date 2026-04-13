@@ -1,0 +1,769 @@
+{
+  "id": 2087,
+  "name": "Mu Renier",
+  "fullName": "Mu Renier",
+  "slug": "沐-2087",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 5,
+  "elementName": "Light",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Elf",
+  "power": "Kingdom Alliance",
+  "image": "2087.png",
+  "bookTitle": "Elven Knight (Alt)",
+  "bookId": 69,
+  "firstAcquaintance": "The saint wanted to fight too, so Mu Renier transformed into a bunny girl.",
+  "personality": "The comfort of the bunny girl outfit shocked her, making her more proactive about engaging with civilization outside the forest. She hasn't forgotten her duties as a saint, staying true to herself and maintaining her usual calm demeanor.",
+  "like": "Golden candy, drinking alcohol",
+  "familiarData": "Mu Renier is the elven saint, but the saint's power is to maintain the forest's life force, and she has no combat ability herself. She cannot even use the bow and arrow that elves are skilled with.\nIn her powerlessness, she received power from another dimension, unleashing another form of the saint's garment -- the Divine Bunny Girl.\nThe liberated holy garment can reshape itself, and a saint with enough talent can manipulate the garment to transform into various shapes for combat.\nHowever, the prototype of the \"Divine Bunny Girl\" was created by absorbing others' magical power, and deviations in understanding the garment's functions led to creating an outfit she was unaccustomed to, causing some minor troubles.\n\n\"So what's the minor trouble? I don't see any.\"\n\"Don't ask.\"\nSetting aside the minor troubles, she herself quite likes the bunny girl outfit. Rabbits are a feature of the forest, and the close-fitting thin stockings do not hinder her sensitivity to nature's magical power, and she can use the holy garment's power to enhance her physical abilities.\nThe bunny girl outfit showed Mu Renier the good side of civilization that suits the forest, which made her more willing to try things from the outside world, and from that she discovered her own mission as a saint.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2087,
+  "stats": {
+    "initialHP": 1612,
+    "hpAdd": 207.7,
+    "initialAtk": 153,
+    "atkAdd": 19.4,
+    "initialDef": 64,
+    "defAdd": 8.3
+  },
+  "features": [
+    1003,
+    1005,
+    1034
+  ],
+  "normalAtk": {
+    "id": 208700,
+    "name": "Flying Arrow",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "135",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 130,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208700,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 208701,
+      "name": "Hammer Form",
+      "comment": "Deal 176% damage\n100% chance to apply Seal (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "129",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208701,
+      "multiplier": 176.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 176.0,
+          "perLevel": 17.6
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2087011,
+          "buffName": "Seal",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 17.6,
+      "effectLines": [
+        "Deal 176% damage",
+        "100% chance to apply Seal (3 turns)"
+      ],
+      "multiplierMax": 264.0,
+      "effectLinesMax": [
+        "Deal 264.0% damage",
+        "100% chance to apply Seal (3 turns)"
+      ],
+      "commentMax": "Deal 264.0% damage\n100% chance to apply Seal (3 turns)"
+    },
+    {
+      "id": 208702,
+      "name": "Mana Output Boost",
+      "comment": "Restore 250 ST\n100% chance to apply Ult DMG Up 80% (2 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "303",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208702,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2087021,
+          "buffName": "Ult DMG Up",
+          "buffValue": "80"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply Ult DMG Up 80% (2 turns)"
+      ]
+    },
+    {
+      "id": 208703,
+      "name": "Hammer: Mochi Pound",
+      "comment": "Deal 202% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "213",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 6,
+      "targetName": "Enemy Cross",
+      "costST": 0,
+      "addST": 188,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208703,
+      "multiplier": 202.0,
+      "multiplierPerLevel": 20.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 202.0,
+          "perLevel": 20.2
+        }
+      ],
+      "effectLines": [
+        "Deal 202% damage"
+      ],
+      "multiplierMax": 303.0,
+      "effectLinesMax": [
+        "Deal 303% damage"
+      ],
+      "commentMax": "Deal 303% damage"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 208704,
+      "name": "Rabbit's Will",
+      "comment": "Restore 50 ST\n100% chance to apply Ult DMG Up 25% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}\n‧{4}",
+      "icon": "608",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 208704,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 50
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2087041,
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Restore 50 ST",
+        "100% chance to apply Ult DMG Up 25% (2 turns)"
+      ],
+      "triggerCondition": "When self HP is 50% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 208707,
+    "name": "Firepower Suppression",
+    "comment": "Deal 295% damage\nBonus Light damage 200%\n100% chance to apply Element DEF Down 36% (3 turns)",
+    "commentFormat": "对{1}{4}\n‧{3}\n‧{5}",
+    "icon": "51_對全體傷害奧義",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 7,
+    "targetName": "Enemy X",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208707,
+    "multiplier": 295.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 295.0,
+        "perLevel": 29.5
+      },
+      {
+        "type": "element_bonus",
+        "element": "Light",
+        "value": 200.0
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 3,
+        "buffId": 2087071,
+        "buffName": "Element DEF Down",
+        "buffValue": "36"
+      }
+    ],
+    "multiplierPerLevel": 29.5,
+    "effectLines": [
+      "Deal 295% damage",
+      "Bonus Light damage 200%",
+      "100% chance to apply Element DEF Down 36% (3 turns)"
+    ],
+    "multiplierMax": 442.5,
+    "effectLinesMax": [
+      "Deal 442.5% damage",
+      "Bonus Light damage 200%",
+      "100% chance to apply Element DEF Down 36% (3 turns)"
+    ],
+    "commentMax": "Deal 442.5% damage\nBonus Light damage 200%\n100% chance to apply Element DEF Down 36% (3 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 208710,
+      "name": "Elven Eye",
+      "comment": "Trait DMG Up 48%\nTrait DMG Up 48%\nUlt DMG Up 25%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}\n‧{5}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208710,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "Trait DMG Up",
+          "buffValue": "48"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Trait DMG Up",
+          "buffValue": "48"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Trait DMG Up 48%",
+        "Trait DMG Up 48%",
+        "Ult DMG Up 25%"
+      ]
+    },
+    {
+      "id": 208711,
+      "name": "Divine Garment Release",
+      "comment": "Ult DMG Up 25%\nATK Up 25%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "304",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208711,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Ult DMG Up 25%",
+        "ATK Up 25%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/精靈_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 50,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 14,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 64,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 6,
+  "armsName": "Gun"
+}

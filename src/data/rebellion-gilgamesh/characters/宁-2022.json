@@ -1,0 +1,685 @@
+{
+  "id": 2022,
+  "name": "Ning",
+  "fullName": "Ning",
+  "slug": "宁-2022",
+  "rarity": "SR",
+  "rarityValue": 5,
+  "element": 3,
+  "elementName": "Wood",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Demon Beast Hybrid (Scorpion)",
+  "power": "Wanderer",
+  "image": "2022.png",
+  "bookTitle": "Venomous Mutt",
+  "bookId": 32,
+  "firstAcquaintance": "A scorpion tail longer than her height grows from above her rear. Despite her near-adult appearance, she has only the intelligence of a toddler.",
+  "personality": "Her behavior is far more childish than her appearance suggests. She struggles to understand what people say, but with enough patience she can be coaxed like a child.",
+  "like": "Coral sand",
+  "familiarData": "When the demon race first occupied kingdom territory, they possessed slaves from nearly an entire city. Many demons recklessly tormented the slaves and used various creatures for magical and medical research.\nNing was pronounced dead during a magical synthesis experiment between a venomous scorpion and a human, and was discarded into the waste pile. However, she later revived from her state of suspended animation and became a wanderer.\nThe fusion with the venomous scorpion gave Ning a scorpion tail capable of secreting venom and granting immunity to poison. However, due to the experiment's lack of rigor, Ning's brain functions deteriorated. Her memory capacity has greatly declined, and her mental age has regressed to that of a child.\nDue to her low intelligence making her unable to follow orders, combined with the lethal danger of her venom, Ning was sold on the market at a low price as a magical beast.\nBecause of her beast hybrid nature, she feels a special affinity for Elizabeth and plays together with her.\nBecause of the hybrid blood... she feels close to Elizabeth who has a beast aura. She always considers Elizabeth, who plays with her, to be her companion, and follows her around making a fuss.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2022,
+  "stats": {
+    "initialHP": 1238,
+    "hpAdd": 158.6,
+    "initialAtk": 105,
+    "atkAdd": 13.8,
+    "initialDef": 71,
+    "defAdd": 9.1
+  },
+  "features": [
+    1001,
+    1005,
+    1032
+  ],
+  "normalAtk": {
+    "id": 202200,
+    "name": "Tail Strike",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "136",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 119,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 202200,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 202201,
+      "name": "Poison Claw",
+      "comment": "Deal 135% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "201",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 202201,
+      "multiplier": 135.0,
+      "multiplierPerLevel": 13.5,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 135.0,
+          "perLevel": 13.5
+        }
+      ],
+      "effectLines": [
+        "Deal 135% damage"
+      ],
+      "multiplierMax": 202.5,
+      "effectLinesMax": [
+        "Deal 202.5% damage"
+      ],
+      "commentMax": "Deal 202.5% damage"
+    },
+    {
+      "id": 202202,
+      "name": "Poison Needle",
+      "comment": "Deal 128% damage\n75% chance to apply ATK Down (M) 10% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "211",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 202202,
+      "multiplier": 128.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 128.0,
+          "perLevel": 12.8
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 3,
+          "buffId": 2022021,
+          "buffName": "ATK Down (M)",
+          "buffValue": "10"
+        }
+      ],
+      "multiplierPerLevel": 12.8,
+      "effectLines": [
+        "Deal 128% damage",
+        "75% chance to apply ATK Down (M) 10% (3 turns)"
+      ],
+      "multiplierMax": 192.0,
+      "effectLinesMax": [
+        "Deal 192% damage",
+        "75% chance to apply ATK Down (M) 10% (3 turns)"
+      ],
+      "commentMax": "Deal 192% damage\n75% chance to apply ATK Down (M) 10% (3 turns)"
+    },
+    {
+      "id": 202203,
+      "name": "Skin Hardening",
+      "comment": "Restore 25% HP\n100% chance to apply CRIT Rate Up (M) 7.5% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "303",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 202203,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2022031,
+          "buffName": "CRIT Rate Up (M)",
+          "buffValue": "7.5"
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "100% chance to apply CRIT Rate Up (M) 7.5% (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 32.5% HP",
+        "100% chance to apply CRIT Rate Up (M) 7.5% (2 turns)"
+      ],
+      "commentMax": "Restore 32.5% HP\n100% chance to apply CRIT Rate Up (M) 7.5% (2 turns)"
+    }
+  ],
+  "triggerSkills": [],
+  "aceSkill": {
+    "id": 202207,
+    "name": "Scorpion Barrage",
+    "comment": "Deal 315% damage\nBonus Wood damage 100%",
+    "commentFormat": "对{1}{4}\n{3}",
+    "icon": "501",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 202207,
+    "multiplier": 315.0,
+    "multiplierPerLevel": 31.5,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 315.0,
+        "perLevel": 31.5
+      },
+      {
+        "type": "element_bonus",
+        "element": "Wood",
+        "value": 100.0
+      }
+    ],
+    "effectLines": [
+      "Deal 315% damage",
+      "Bonus Wood damage 100%"
+    ],
+    "multiplierMax": 472.5,
+    "effectLinesMax": [
+      "Deal 472.5% damage",
+      "Bonus Wood damage 100%"
+    ],
+    "commentMax": "Deal 472.5% damage\nBonus Wood damage 100%"
+  },
+  "passiveSkills": [
+    {
+      "id": 202210,
+      "name": "Poison King",
+      "comment": "100% chance to apply Status Resist Up (S) 6.3%\n100% chance to apply Status Resist Up (S) 6.3%",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "405",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 202210,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2022101,
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "6.3"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2022102,
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "6.3"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Status Resist Up (S) 6.3%",
+        "100% chance to apply Status Resist Up (S) 6.3%"
+      ]
+    }
+  ],
+  "fragments": 2,
+  "totemIconName": "Totem/其他_流浪者",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0.0308,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0.0308,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0.0308,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0.0308,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0.1232,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0.0018,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.016000000000000004,
+      "def": 0,
+      "crit": 0.036000000000000004,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.016000000000000004,
+    "def": 0,
+    "crit": 0.1592,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 3,
+  "armsName": "Fist"
+}

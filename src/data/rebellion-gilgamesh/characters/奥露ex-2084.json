@@ -1,0 +1,791 @@
+{
+  "id": 2084,
+  "name": "Oru Baid (EX)",
+  "fullName": "Oru Baid (EX)",
+  "slug": "奥露ex-2084",
+  "rarity": "SSR",
+  "rarityValue": 6,
+  "element": 4,
+  "elementName": "Chaos",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human",
+  "power": "Kingdom Alliance",
+  "image": "2084.png",
+  "bookTitle": "Princess EX",
+  "bookId": 63,
+  "firstAcquaintance": "Long story short. The princess has entered her rebellious phase and become a bratty princess.",
+  "personality": "Her personality has become haughty, constantly flaunting her identity as a princess at all times.",
+  "like": "Ketchup",
+  "familiarData": "What if Oru Baid were a bratty princess? What would she be like?\nThis is not impossible -- if certain turning points in history had gone differently, this could have been the result.\n\nThe kind and gentle Oru Baid didn't suddenly enter a rebellious phase. While recovering magical artifacts from ancient ruins, she was struck by a certain mirror, causing her counterpart from another world to cross over, putting her into a \"doppelganger\" dual-personality state.\n\nThe girl before you is undeniably Oru Baid -- to be precise, another version of her, an Oru Baid with a different personality and different abilities.\nIn her world, her mother the queen was not by her side. She was raised by a stepmother. The king was away at war, and the stepmother spoiled her excessively, which cultivated her bratty personality.\nHow will the guild master handle this willful and spoiled princess?",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 20841,
+  "stats": {
+    "initialHP": 1408,
+    "hpAdd": 180.6,
+    "initialAtk": 124,
+    "atkAdd": 16,
+    "initialDef": 93,
+    "defAdd": 11.9
+  },
+  "features": [
+    1003,
+    1005,
+    1034
+  ],
+  "normalAtk": {
+    "id": 208400,
+    "name": "Light Bullet",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "125",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 124,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208400,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 208401,
+      "name": "Practical Enchant",
+      "comment": "Deal -15% HP damage\n100% chance to apply Ult DMG Up 40% (4 turns)\n100% chance to apply CRIT DMG Up 20% (4 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+      "icon": "404",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208401,
+      "effects": [
+        {
+          "type": "hp_damage",
+          "value": -15.0
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2084011,
+          "buffName": "Ult DMG Up",
+          "buffValue": "40"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2084012,
+          "buffName": "CRIT DMG Up",
+          "buffValue": "20"
+        }
+      ],
+      "effectLines": [
+        "Deal -15% HP damage",
+        "100% chance to apply Ult DMG Up 40% (4 turns)",
+        "100% chance to apply CRIT DMG Up 20% (4 turns)"
+      ],
+      "effectLinesMax": [
+        "Deal -5.0% HP damage",
+        "100% chance to apply Ult DMG Up 40% (4 turns)",
+        "100% chance to apply CRIT DMG Up 20% (4 turns)"
+      ],
+      "commentMax": "Deal -5.0% HP damage\n100% chance to apply Ult DMG Up 40% (4 turns)\n100% chance to apply CRIT DMG Up 20% (4 turns)"
+    },
+    {
+      "id": 208402,
+      "name": "Royal Command",
+      "comment": "100% chance to apply Heal Block (9 turns)\n100% chance to apply ATK Up 60% (5 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "407",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208402,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 9,
+          "buffId": 2084021,
+          "buffName": "Heal Block",
+          "buffValue": null
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 5,
+          "buffId": 2084022,
+          "buffName": "ATK Up",
+          "buffValue": "60"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Heal Block (9 turns)",
+        "100% chance to apply ATK Up 60% (5 turns)"
+      ]
+    },
+    {
+      "id": 208403,
+      "name": "Judgment Sword",
+      "comment": "Deal 149% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "503",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208403,
+      "multiplier": 149.0,
+      "multiplierPerLevel": 14.9,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 149.0,
+          "perLevel": 14.9
+        }
+      ],
+      "effectLines": [
+        "Deal 149% damage"
+      ],
+      "multiplierMax": 223.5,
+      "effectLinesMax": [
+        "Deal 223.5% damage"
+      ],
+      "commentMax": "Deal 223.5% damage"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 208404,
+      "name": "Princess's Wrath",
+      "comment": "Restore 25% HP\n100% chance to apply ATK Up 40% (3 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}\n‧{4}",
+      "icon": "313",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{2}%以下】",
+      "effectGroupId": 208404,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 0
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2084041,
+          "buffName": "ATK Up",
+          "buffValue": "40"
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "100% chance to apply ATK Up 40% (3 turns)"
+      ],
+      "triggerCondition": "When self HP drops below 40%"
+    },
+    {
+      "id": 208405,
+      "name": "Princess's Grace",
+      "comment": "100% chance to apply Ult DMG Up 40% (3 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}",
+      "icon": "608",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 2,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 208405,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2084051,
+          "buffName": "Ult DMG Up",
+          "buffValue": "40"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Ult DMG Up 40% (3 turns)"
+      ],
+      "triggerCondition": "When self HP is 50% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 208407,
+    "name": "Judgment Sword: Bloom",
+    "comment": "Deal 378% damage",
+    "commentFormat": "对{1}{3}\n．此伤害击杀敌人时、自身ST+500",
+    "icon": "505",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208407,
+    "multiplier": 378.0,
+    "multiplierPerLevel": 37.8,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 378.0,
+        "perLevel": 37.8
+      }
+    ],
+    "effectLines": [
+      "Deal 378% damage"
+    ],
+    "multiplierMax": 567.0,
+    "effectLinesMax": [
+      "Deal 567% damage"
+    ],
+    "commentMax": "Deal 567% damage"
+  },
+  "passiveSkills": [
+    {
+      "id": 208410,
+      "name": "Bratty Princess",
+      "comment": "100% chance to apply Cover 100%",
+      "commentFormat": "{3}",
+      "icon": "316",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208410,
+      "multiplier": 100,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2084101,
+          "buffName": "Cover",
+          "buffValue": "100"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Cover 100%"
+      ]
+    },
+    {
+      "id": 208411,
+      "name": "Clone",
+      "comment": "Ult DMG Up 25%\nCRIT Rate Up 18%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "613",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208411,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "CRIT Rate Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "Ult DMG Up 25%",
+        "CRIT Rate Up 18%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 50,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 14,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 64,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

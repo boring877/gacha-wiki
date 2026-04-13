@@ -1,0 +1,82 @@
+---
+// Rebellion Gilgamesh equipment icon image component
+// Displays equipment icons from assets/images/games/rebellion-gilgamesh/equipment/
+// Icon field from data (e.g. "劍_31") is matched as substring of filename
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/equipment/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon?: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { icon, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
+
+function findImage(search: string): ImageMetadata | null {
+  if (!search) return null;
+  const key = Object.keys(images).find(k => k.includes(search));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(icon || '');
+---
+
+{imageModule ? (
+  <div class={`rg-equip-img-wrapper ${className || ''}`} style={`--rg-equip-img-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-equip-img"
+    />
+  </div>
+) : (
+  <div class={`rg-equip-img-fallback ${className || ''}`} style={`--rg-equip-img-width: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-equip-img-wrapper {
+    width: var(--rg-equip-img-width, 64px);
+    height: var(--rg-equip-img-width, 64px);
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-equip-img-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--rg-radius-md, 8px);
+  }
+
+  .rg-equip-img-fallback {
+    width: var(--rg-equip-img-width, 64px);
+    height: var(--rg-equip-img-width, 64px);
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--rg-text-muted);
+  }
+</style>

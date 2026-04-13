@@ -1,0 +1,785 @@
+{
+  "id": 2045,
+  "name": "Li Wanxiang",
+  "fullName": "Li Wanxiang",
+  "slug": "李挽香-2045",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 5,
+  "elementName": "Light",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human (Otherworlder)",
+  "power": "Wanderer",
+  "image": "2045.png",
+  "bookTitle": "Otherworld Strategist",
+  "bookId": 53,
+  "firstAcquaintance": "A homeroom teacher who was transported to another world along with her entire class. After witnessing her students die a gruesome death, she swore to kill the Demon Lord.",
+  "personality": "A mature and composed teacher who sometimes shows a childlike side, easily blending in with her students.",
+  "like": "Students, children",
+  "familiarData": "Li Wanxiang was a homeroom teacher whose entire class was transported to another world. Like her students, she gained special abilities, but early on she wasn't skilled at using them and had to rely on her students for protection.\nWhen the Demon Lord attacked, her ability to bend light created an illusion that hid her. She was only knocked unconscious by the shockwave. But because the illusion concealed her presence, her students couldn't find her, and they were separated. By the time she found them again, it was too late.\nAfter witnessing her students' deaths, her personality changed drastically. She became capable of killing without blinking an eye and mastered her supernatural abilities to wield terrifying power. Since her ability warps sunlight, a patch of the sky turns to darkness when she unleashes her strength, leading many to mistake her for a demon.\nShe harbors deep resentment toward the Royal Army that indirectly caused her students' deaths. Abandoning cooperation with the human alliance, she infiltrated demon territory alone, destroying numerous slave strongholds in search of surviving students. But...\nThe repeated blows have caused her memory to become disordered. She automatically rationalizes certain scenes and mistakes some people for her students.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2045,
+  "stats": {
+    "initialHP": 1612,
+    "hpAdd": 207.7,
+    "initialAtk": 119,
+    "atkAdd": 15.2,
+    "initialDef": 83,
+    "defAdd": 10.8
+  },
+  "features": [
+    1001,
+    1005,
+    1033
+  ],
+  "normalAtk": {
+    "id": 204500,
+    "name": "Light Refraction",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "101",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 122,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 204500,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 204501,
+      "name": "Mirage",
+      "comment": "CRIT DMG Up 32% (0 turns)\n100% chance to apply Evasion (2 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "314",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": null,
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204501,
+      "effects": [
+        {
+          "type": "passive_buff_timed",
+          "buffName": "CRIT DMG Up",
+          "buffValue": "32",
+          "duration": 0
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2045012,
+          "buffName": "Evasion",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "CRIT DMG Up 32% (0 turns)",
+        "100% chance to apply Evasion (2 turns)"
+      ]
+    },
+    {
+      "id": 204502,
+      "name": "Laser Blade",
+      "comment": "Deal 142% damage\nBonus Light damage 100%",
+      "commentFormat": "对{1}{4}\n‧{3}",
+      "icon": "501",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204502,
+      "multiplier": 142.0,
+      "multiplierPerLevel": 14.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 142.0,
+          "perLevel": 14.2
+        },
+        {
+          "type": "element_bonus",
+          "element": "Light",
+          "value": 100.0
+        }
+      ],
+      "effectLines": [
+        "Deal 142% damage",
+        "Bonus Light damage 100%"
+      ],
+      "multiplierMax": 213.0,
+      "effectLinesMax": [
+        "Deal 213% damage",
+        "Bonus Light damage 100%"
+      ],
+      "commentMax": "Deal 213% damage\nBonus Light damage 100%"
+    },
+    {
+      "id": 204503,
+      "name": "Focusing Lens",
+      "comment": "Deal 101% damage\n100% chance to apply Burn 1% (4 turns)\n100% chance to apply Blind (4 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+      "icon": "306",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 11,
+      "targetName": "Enemy Diagonal BR-TL",
+      "costST": 0,
+      "addST": 178,
+      "cdRound": 9,
+      "times": 0,
+      "showPower": "小",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204503,
+      "multiplier": 101.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 101.0,
+          "perLevel": 10.1
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2045031,
+          "buffName": "Burn",
+          "buffValue": "1"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2045032,
+          "buffName": "Blind",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 10.1,
+      "effectLines": [
+        "Deal 101% damage",
+        "100% chance to apply Burn 1% (4 turns)",
+        "100% chance to apply Blind (4 turns)"
+      ],
+      "multiplierMax": 151.5,
+      "effectLinesMax": [
+        "Deal 151.5% damage",
+        "100% chance to apply Burn 1% (4 turns)",
+        "100% chance to apply Blind (4 turns)"
+      ],
+      "commentMax": "Deal 151.5% damage\n100% chance to apply Burn 1% (4 turns)\n100% chance to apply Blind (4 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 204504,
+      "name": "Bell Tolls",
+      "comment": "Restore 250 ST\n100% chance to apply CRIT DMG Up 20% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}\n‧{4}",
+      "icon": "封印戰_銅鈴",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 1,
+      "times": 0,
+      "showPower": "-",
+      "condition": 8,
+      "triggerCommentFormat": "【{1}】角色战斗退场时发动",
+      "effectGroupId": 204504,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2045041,
+          "buffName": "CRIT DMG Up",
+          "buffValue": "20"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply CRIT DMG Up 20% (2 turns)"
+      ],
+      "triggerCondition": "When an enemy is defeated"
+    }
+  ],
+  "aceSkill": {
+    "id": 204507,
+    "name": "Sunset",
+    "comment": "Deal 271% damage\n120% chance to apply Burn 1% (2 turns)\n120% chance to apply Blind (2 turns)",
+    "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+    "icon": "512",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 6,
+    "targetName": "Enemy Cross",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 204507,
+    "multiplier": 271.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 271.0,
+        "perLevel": 27.1
+      },
+      {
+        "type": "buff",
+        "probability": 120,
+        "duration": 2,
+        "buffId": 2045071,
+        "buffName": "Burn",
+        "buffValue": "1"
+      },
+      {
+        "type": "buff",
+        "probability": 120,
+        "duration": 2,
+        "buffId": 2045072,
+        "buffName": "Blind",
+        "buffValue": null
+      }
+    ],
+    "multiplierPerLevel": 27.1,
+    "effectLines": [
+      "Deal 271% damage",
+      "120% chance to apply Burn 1% (2 turns)",
+      "120% chance to apply Blind (2 turns)"
+    ],
+    "multiplierMax": 406.5,
+    "effectLinesMax": [
+      "Deal 406.5% damage",
+      "120% chance to apply Burn 1% (2 turns)",
+      "120% chance to apply Blind (2 turns)"
+    ],
+    "commentMax": "Deal 406.5% damage\n120% chance to apply Burn 1% (2 turns)\n120% chance to apply Blind (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 204510,
+      "name": "Teacher",
+      "comment": "CRIT Rate Up 8%\nStatus Resist Up (S) 22%",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "134",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204510,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "CRIT Rate Up",
+          "buffValue": "8"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "22"
+        }
+      ],
+      "effectLines": [
+        "CRIT Rate Up 8%",
+        "Status Resist Up (S) 22%"
+      ]
+    },
+    {
+      "id": 204511,
+      "name": "Avenger",
+      "comment": "CRIT Rate Up 8%\nStatus Resist Up (S) 22%",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "313",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204511,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "CRIT Rate Up",
+          "buffValue": "8"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "22"
+        }
+      ],
+      "effectLines": [
+        "CRIT Rate Up 8%",
+        "Status Resist Up (S) 22%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_流浪者",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0739,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0739,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0739,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0739,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0.2956,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0.0042,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0.08399999999999999,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0.37959999999999994,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

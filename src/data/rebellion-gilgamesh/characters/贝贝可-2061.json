@@ -1,0 +1,769 @@
+{
+  "id": 2061,
+  "name": "Chocolate Beibeko",
+  "fullName": "Chocolate Beibeko",
+  "slug": "贝贝可-2061",
+  "rarity": "SSR",
+  "rarityValue": 4,
+  "element": 2,
+  "elementName": "Water",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human",
+  "power": "Kingdom Alliance",
+  "image": "2061.png",
+  "bookTitle": "Royal Squire",
+  "bookId": 52,
+  "firstAcquaintance": "A miraculous dessert master who creates non-fattening chocolate. By the way... is her outfit made of chocolate?",
+  "personality": "A kind-hearted big sister who gently cares for everyone. She'll go along with things even if someone is being a bit pushy.",
+  "like": "Making desserts, doing good deeds",
+  "familiarData": "Beibeko's true identity is the Kingdom's 111th Hero. By chance, she learned to use magic to create bread. Now, for Valentine's Day, she's converted her magic into chocolate, reclassifying herself as a dessert master.\nSince food made from magic is essentially magic itself, it only has half the nutritional value of regular food. Excess magic that can't be absorbed simply dissipates, so it can't replace proper meals at all. But on the flip side, this means you absolutely won't gain weight from eating it! While quite suspicious, the non-fattening aspect is beloved by women everywhere.\nHowever, turning magic into chocolate isn't easy. When Beibeko manifests chocolate, the magic in her skin also turns into chocolate. Because chocolate keeps oozing from her skin, she simply shaped it into clothing and wore it.\nShe'd definitely be seen as a weirdo if discovered. But after all, it's Valentine's Day - on this magical day, slightly unusual outfits are perfectly acceptable.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2061,
+  "stats": {
+    "initialHP": 1574,
+    "hpAdd": 202.3,
+    "initialAtk": 106,
+    "atkAdd": 13.6,
+    "initialDef": 98,
+    "defAdd": 12.7
+  },
+  "features": [
+    1003,
+    1005
+  ],
+  "normalAtk": {
+    "id": 206100,
+    "name": "Chocolate Weapon",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "133",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206100,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 206101,
+      "name": "Chocolate Armor",
+      "comment": "Restore 15% HP\n100% chance to apply ATK Up 25% (2 turns)\n100% chance to apply Element DMG Up 24% (2 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206101,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 15.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2061012,
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2061013,
+          "buffName": "Element DMG Up",
+          "buffValue": "24"
+        }
+      ],
+      "effectLines": [
+        "Restore 15% HP",
+        "100% chance to apply ATK Up 25% (2 turns)",
+        "100% chance to apply Element DMG Up 24% (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 22.5% HP",
+        "100% chance to apply ATK Up 25% (2 turns)",
+        "100% chance to apply Element DMG Up 24% (2 turns)"
+      ],
+      "commentMax": "Restore 22.5% HP\n100% chance to apply ATK Up 25% (2 turns)\n100% chance to apply Element DMG Up 24% (2 turns)"
+    },
+    {
+      "id": 206102,
+      "name": "Line Up!",
+      "comment": "Deal 122% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "205",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 9,
+      "targetName": "Enemy Row",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206102,
+      "multiplier": 122.0,
+      "multiplierPerLevel": 12.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 122.0,
+          "perLevel": 12.2
+        }
+      ],
+      "effectLines": [
+        "Deal 122% damage"
+      ],
+      "multiplierMax": 183.0,
+      "effectLinesMax": [
+        "Deal 183% damage"
+      ],
+      "commentMax": "Deal 183% damage"
+    },
+    {
+      "id": 206103,
+      "name": "Chocolate Party",
+      "comment": "Restore 50 ST\n100% chance to apply Evasion (2 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "314",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206103,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 50
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2061031,
+          "buffName": "Evasion",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "Restore 50 ST",
+        "100% chance to apply Evasion (2 turns)"
+      ]
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 206104,
+      "name": "Custom Chocolate",
+      "comment": "100% chance to apply Status Immunity (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}",
+      "icon": "608",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 206104,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2061041,
+          "buffName": "Status Immunity",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Status Immunity (2 turns)"
+      ],
+      "triggerCondition": "When self HP is 99% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 206107,
+    "name": "Chocolate Tsunami",
+    "comment": "Deal 303% damage\n100% chance to apply Element DEF Down 24% (2 turns)",
+    "commentFormat": "对{1}{3}\n‧{4}",
+    "icon": "103",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 8,
+    "targetName": "Enemy Line",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206107,
+    "multiplier": 303.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 303.0,
+        "perLevel": 30.3
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 2,
+        "buffId": 2061071,
+        "buffName": "Element DEF Down",
+        "buffValue": "24"
+      }
+    ],
+    "multiplierPerLevel": 30.3,
+    "effectLines": [
+      "Deal 303% damage",
+      "100% chance to apply Element DEF Down 24% (2 turns)"
+    ],
+    "multiplierMax": 454.5,
+    "effectLinesMax": [
+      "Deal 454.5% damage",
+      "100% chance to apply Element DEF Down 24% (2 turns)"
+    ],
+    "commentMax": "Deal 454.5% damage\n100% chance to apply Element DEF Down 24% (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 206110,
+      "name": "Cooking",
+      "comment": "100% chance to apply Ult DMG Up 25%\n100% chance to apply Element DMG Up (S) 11%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206110,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2061101,
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2061102,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "11"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Ult DMG Up 25%",
+        "100% chance to apply Element DMG Up (S) 11%"
+      ]
+    },
+    {
+      "id": 206111,
+      "name": "Magic Talent",
+      "comment": "100% chance to apply ST Auto Recovery (S)\n100% chance to apply ATK Up 18%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "404",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206111,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2061111,
+          "buffName": "ST Auto Recovery (S)",
+          "buffValue": null
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2061112,
+          "buffName": "ATK Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply ST Auto Recovery (S)",
+        "100% chance to apply ATK Up 18%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

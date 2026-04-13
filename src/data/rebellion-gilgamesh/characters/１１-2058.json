@@ -1,0 +1,767 @@
+{
+  "id": 2058,
+  "name": "Eleven",
+  "fullName": "Eleven",
+  "slug": "１１-2058",
+  "rarity": "SSR",
+  "rarityValue": 7,
+  "element": 4,
+  "elementName": "Chaos",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Dark Elf",
+  "power": "Demon Federation",
+  "image": "2058.png",
+  "bookTitle": "Dark Elf Agent",
+  "bookId": 41,
+  "firstAcquaintance": "The universally acknowledged current Sword Saint. Acts on a whim -- she will cut down anything she dislikes regardless of the other party's power, and thus has been designated a 'Natural Disaster'.",
+  "personality": "Eccentric and impulsive, difficult to read. Highly self-willed, with a sense of right and wrong that differs from others. Respects those who follow through on their convictions.",
+  "like": "Disciples, fruit wine, balance",
+  "familiarData": "A dark elf woman in tattered clothing, looking as though she has suffered some tragedy. In reality, the clothes were slashed by her own sword aura. Her true identity is the current Sword Saint, one of the strongest beings on the continent.\n\nEccentric and impulsive, she strikes at anything that displeases her. She has no consistent standard for her actions -- she once switched sides to help the resistance army during a subjugation battle, only to destroy the resistance herself afterward. Her behavior is deeply contradictory.\n\nDue to her overwhelming power, those around her dare not voice their anger and only wish to stay away. Like temperamental nature itself, she has been dubbed a 'Natural Disaster'. The greatest contradiction is that despite acting on whims, she serves as the honorary president of an underground arena in the name of order.\n\nShe possesses the ability to grasp elements, able to condense moisture from the atmosphere into an ice blade at any time, ensuring she is never without a weapon.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2058,
+  "stats": {
+    "initialHP": 1334,
+    "hpAdd": 172,
+    "initialAtk": 136,
+    "atkAdd": 17.8,
+    "initialDef": 88,
+    "defAdd": 11.3
+  },
+  "features": [
+    1002,
+    1014
+  ],
+  "normalAtk": {
+    "id": 205800,
+    "name": "Air Split Slash",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "115",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 120,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205800,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 205801,
+      "name": "Godspeed Combo Slash",
+      "comment": "Deal 122% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "101",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 9,
+      "targetName": "Enemy Row",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205801,
+      "multiplier": 122.0,
+      "multiplierPerLevel": 12.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 122.0,
+          "perLevel": 12.2
+        }
+      ],
+      "effectLines": [
+        "Deal 122% damage"
+      ],
+      "multiplierMax": 183.0,
+      "effectLinesMax": [
+        "Deal 183% damage"
+      ],
+      "commentMax": "Deal 183% damage"
+    },
+    {
+      "id": 205802,
+      "name": "Way-Breaking Slash",
+      "comment": "Deal 97% damage\n50% chance to apply Burn (S) 1% (3 turns)\n100% chance to apply Element DEF Down (S) 8% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "101",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 8,
+      "targetName": "Enemy Line",
+      "costST": 0,
+      "addST": 180,
+      "cdRound": 7,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205802,
+      "multiplier": 97.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 97.0,
+          "perLevel": 9.7
+        },
+        {
+          "type": "buff",
+          "probability": 50,
+          "duration": 3,
+          "buffId": 2058021,
+          "buffName": "Burn (S)",
+          "buffValue": "1"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2058022,
+          "buffName": "Element DEF Down (S)",
+          "buffValue": "8"
+        }
+      ],
+      "multiplierPerLevel": 9.7,
+      "effectLines": [
+        "Deal 97% damage",
+        "50% chance to apply Burn (S) 1% (3 turns)",
+        "100% chance to apply Element DEF Down (S) 8% (3 turns)"
+      ],
+      "multiplierMax": 145.5,
+      "effectLinesMax": [
+        "Deal 145.5% damage",
+        "50% chance to apply Burn (S) 1% (3 turns)",
+        "100% chance to apply Element DEF Down (S) 8% (3 turns)"
+      ],
+      "commentMax": "Deal 145.5% damage\n50% chance to apply Burn (S) 1% (3 turns)\n100% chance to apply Element DEF Down (S) 8% (3 turns)"
+    },
+    {
+      "id": 205803,
+      "name": "Nirvana",
+      "comment": "Deal 134% damage\n75% chance to apply DEF Down (M) 16% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "201",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205803,
+      "multiplier": 134.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 134.0,
+          "perLevel": 13.4
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 2,
+          "buffId": 2058031,
+          "buffName": "DEF Down (M)",
+          "buffValue": "16"
+        }
+      ],
+      "multiplierPerLevel": 13.4,
+      "effectLines": [
+        "Deal 134% damage",
+        "75% chance to apply DEF Down (M) 16% (2 turns)"
+      ],
+      "multiplierMax": 201.0,
+      "effectLinesMax": [
+        "Deal 201.0% damage",
+        "75% chance to apply DEF Down (M) 16% (2 turns)"
+      ],
+      "commentMax": "Deal 201.0% damage\n75% chance to apply DEF Down (M) 16% (2 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 205804,
+      "name": "Reform Stance",
+      "comment": "100% chance to apply ATK Up (S) 17.5% (2 turns)\nReduce cooldown by 1 turns",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n．{4}\n{2}",
+      "icon": "610",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "-",
+      "condition": 8,
+      "triggerCommentFormat": "【{1}】角色战斗不能时触发",
+      "effectGroupId": 205804,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2058041,
+          "buffName": "ATK Up (S)",
+          "buffValue": "17.5"
+        },
+        {
+          "type": "cd_reduce",
+          "value": 1
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply ATK Up (S) 17.5% (2 turns)",
+        "Reduce cooldown by 1 turns"
+      ],
+      "triggerCondition": "When an enemy is defeated"
+    }
+  ],
+  "aceSkill": {
+    "id": 205807,
+    "name": "Absolute Sword",
+    "comment": "Deal 283% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "211",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 7,
+    "targetName": "Enemy X",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205807,
+    "multiplier": 283.0,
+    "multiplierPerLevel": 28.3,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 283.0,
+        "perLevel": 28.3
+      }
+    ],
+    "effectLines": [
+      "Deal 283% damage"
+    ],
+    "multiplierMax": 424.5,
+    "effectLinesMax": [
+      "Deal 424.5% damage"
+    ],
+    "commentMax": "Deal 424.5% damage"
+  },
+  "passiveSkills": [
+    {
+      "id": 205810,
+      "name": "Sword Saint",
+      "comment": "100% chance to apply ATK Up (S) 13%\n100% chance to apply CRIT DMG Up (S) 4%",
+      "commentFormat": "对{1}\n．{3}\n．{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205810,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2058101,
+          "buffName": "ATK Up (S)",
+          "buffValue": "13"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2058102,
+          "buffName": "CRIT DMG Up (S)",
+          "buffValue": "4"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply ATK Up (S) 13%",
+        "100% chance to apply CRIT DMG Up (S) 4%"
+      ]
+    },
+    {
+      "id": 205811,
+      "name": "Moody",
+      "comment": "100% chance to apply Element DMG Up (S) 10.5%",
+      "commentFormat": "对{1}{3}",
+      "icon": "404",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205811,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2058111,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "10.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 10.5%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/暗精靈_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 1,
+  "armsName": "Sword"
+}

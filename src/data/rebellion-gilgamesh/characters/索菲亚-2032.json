@@ -1,0 +1,692 @@
+{
+  "id": 2032,
+  "name": "Sofia",
+  "fullName": "Sofia",
+  "slug": "索菲亚-2032",
+  "rarity": "SR",
+  "rarityValue": 5,
+  "element": 4,
+  "elementName": "Chaos",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Dark Elf",
+  "power": "Demon Federation",
+  "image": "2032.png",
+  "bookTitle": "Dark Elven Sorceress",
+  "bookId": 19,
+  "firstAcquaintance": "A cunning slave merchant who can treat her slaves with a kind smile while calmly selling people as merchandise without batting an eye.",
+  "personality": "She never shows her emotions, making it impossible to know what schemes lie behind her smile.",
+  "like": "Gold coins, history books",
+  "familiarData": "Sofia is a traveling slave merchant who holds considerable status in the slave market, with a wide variety of slaves under her banner.\nAlthough she always claims to be a weak merchant, her true strength is unfathomable. While traveling alone, she keenly observes her surroundings, turning the tables on anyone with hostile intentions toward her and selling them as slaves.\nShe enjoys and is well-read in historical records, believing that the rule of any nation or people will eventually change, but biological instinct drives all beings to do whatever it takes to protect their interests -- even the demon race is no exception.\nPossessing sharp merchant instincts, she noticed the guildhall purchasing many slaves and sensed something was afoot. Her merchant's intuition told her there was profit to be made, so she proactively befriended the guildhall, offering many conveniences while tactfully avoiding probing into its secrets. She could be considered an important catalyst for the Hand of Freedom's growth.\nHer friendliness toward the guildhall is merely one of her many investments and business opportunities -- if it loses its value, she will leave without hesitation. But as long as their interests align and she sees further investment potential, she will be a reliable ally.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2032,
+  "stats": {
+    "initialHP": 1097,
+    "hpAdd": 141.2,
+    "initialAtk": 119,
+    "atkAdd": 15.2,
+    "initialDef": 72,
+    "defAdd": 9.3
+  },
+  "features": [
+    1002,
+    1014
+  ],
+  "normalAtk": {
+    "id": 203200,
+    "name": "Assassinate",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "113",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 120,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 203200,
+    "multiplier": 100.0,
+    "multiplierPerLevel": 14.9,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": 14.9
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 203201,
+      "name": "Thorn Rain",
+      "comment": "Deal 76% damage\n50% chance to apply DEF Down (S) 7.0% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "213",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 7,
+      "targetName": "Enemy X",
+      "costST": 0,
+      "addST": 179,
+      "cdRound": 8,
+      "times": 0,
+      "showPower": "小",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 203201,
+      "multiplier": 76.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 76.0,
+          "perLevel": 7.6
+        },
+        {
+          "type": "buff",
+          "probability": 50,
+          "duration": 3,
+          "buffId": 2032012,
+          "buffName": "DEF Down (S)",
+          "buffValue": "7.0"
+        }
+      ],
+      "multiplierPerLevel": 7.6,
+      "effectLines": [
+        "Deal 76% damage",
+        "50% chance to apply DEF Down (S) 7.0% (3 turns)"
+      ],
+      "multiplierMax": 114.0,
+      "effectLinesMax": [
+        "Deal 114.0% damage",
+        "50% chance to apply DEF Down (S) 7.0% (3 turns)"
+      ],
+      "commentMax": "Deal 114.0% damage\n50% chance to apply DEF Down (S) 7.0% (3 turns)"
+    },
+    {
+      "id": 203202,
+      "name": "Binding Chains",
+      "comment": "Deal 90% damage\n75% chance to apply Heal Block (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "211",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 203202,
+      "multiplier": 90.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 90.0,
+          "perLevel": 24.2
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 3,
+          "buffId": 2032001,
+          "buffName": "Heal Block",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 24.2,
+      "effectLines": [
+        "Deal 90% damage",
+        "75% chance to apply Heal Block (3 turns)"
+      ],
+      "multiplierMax": 211.0,
+      "effectLinesMax": [
+        "Deal 211% damage",
+        "75% chance to apply Heal Block (3 turns)"
+      ],
+      "commentMax": "Deal 211% damage\n75% chance to apply Heal Block (3 turns)"
+    },
+    {
+      "id": 203203,
+      "name": "Flash Kill",
+      "comment": "Deal 128% damage\n75% chance to apply ATK Down (M) 10% (3 turns)",
+      "commentFormat": "对{1}{3}",
+      "icon": "201",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 203203,
+      "multiplier": 128.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 128.0,
+          "perLevel": 12.8
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 3,
+          "buffId": 2032021,
+          "buffName": "ATK Down (M)",
+          "buffValue": "10"
+        }
+      ],
+      "multiplierPerLevel": 12.8,
+      "effectLines": [
+        "Deal 128% damage",
+        "75% chance to apply ATK Down (M) 10% (3 turns)"
+      ],
+      "multiplierMax": 192.0,
+      "effectLinesMax": [
+        "Deal 192% damage",
+        "75% chance to apply ATK Down (M) 10% (3 turns)"
+      ],
+      "commentMax": "Deal 192% damage\n75% chance to apply ATK Down (M) 10% (3 turns)"
+    }
+  ],
+  "triggerSkills": [],
+  "aceSkill": {
+    "id": 203207,
+    "name": "Bloodbath",
+    "comment": "Deal 208% damage\n50% chance to apply Heal Block (1 turns)",
+    "commentFormat": "对{1}{3}\n．{4}",
+    "icon": "512",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 10,
+    "targetName": "Enemy Diagonal BL-TR",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 203207,
+    "multiplier": 208.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 208.0,
+        "perLevel": 20.8
+      },
+      {
+        "type": "buff",
+        "probability": 50,
+        "duration": 1,
+        "buffId": 2032071,
+        "buffName": "Heal Block",
+        "buffValue": null
+      }
+    ],
+    "multiplierPerLevel": 20.8,
+    "effectLines": [
+      "Deal 208% damage",
+      "50% chance to apply Heal Block (1 turns)"
+    ],
+    "multiplierMax": 312.0,
+    "effectLinesMax": [
+      "Deal 312% damage",
+      "50% chance to apply Heal Block (1 turns)"
+    ],
+    "commentMax": "Deal 312% damage\n50% chance to apply Heal Block (1 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 203210,
+      "name": "Slave Merchant",
+      "comment": "100% chance to apply Element DMG Up (S) 10.5%",
+      "commentFormat": "{1}被动效果：\n{3}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 203210,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2032101,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "10.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 10.5%"
+      ]
+    }
+  ],
+  "fragments": 2,
+  "totemIconName": "Totem/暗精靈_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.028,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.028,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.028,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.028,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0.112,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0008,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0016,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.016000000000000004,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0.03200000000000001,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.016000000000000004,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0.14400000000000002,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 1,
+  "armsName": "Sword"
+}

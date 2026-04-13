@@ -1,0 +1,158 @@
+/* Rebellion Gilgamesh Equipment Detail Styles */
+/* Equipment detail page with icon, stats, description, and scaling table */
+
+.rg-equip-detail-header {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.rg-equip-detail-icon {
+  flex-shrink: 0;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rg-equip-detail-info {
+  flex: 1;
+}
+
+.rg-equip-detail-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--rg-text-primary);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.rg-equip-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.rg-equip-detail-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rg-equip-detail-field {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.rg-equip-detail-field-label {
+  font-size: 0.8125rem;
+  color: var(--rg-text-muted);
+  min-width: 6rem;
+}
+
+.rg-equip-detail-field-value {
+  font-size: 0.875rem;
+  color: var(--rg-text-primary);
+}
+
+.rg-equip-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.rg-equip-stat-card {
+  background: var(--rg-bg-secondary);
+  border-radius: var(--rg-radius-md, 8px);
+  padding: 1rem;
+  text-align: center;
+}
+
+.rg-equip-stat-label {
+  font-size: 0.75rem;
+  color: var(--rg-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.rg-equip-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rg-text-primary);
+}
+
+.rg-equip-stat-growth {
+  font-size: 0.75rem;
+  color: var(--rg-accent, #e8c170);
+  margin-top: 0.25rem;
+}
+
+.rg-equip-desc-section {
+  background: var(--rg-bg-secondary);
+  border-radius: var(--rg-radius-md, 8px);
+  padding: 1.25rem;
+  margin-top: 0;
+}
+
+.rg-equip-desc-text {
+  font-size: 0.8125rem;
+  color: var(--rg-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.rg-equip-scaling-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  margin-top: 0.5rem;
+}
+
+.rg-equip-scaling-table th {
+  background: var(--rg-bg-secondary);
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  color: var(--rg-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--rg-border);
+}
+
+.rg-equip-scaling-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rg-border);
+  text-align: center;
+  color: var(--rg-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rg-equip-scaling-table tbody tr:nth-child(even) {
+  background: var(--rg-bg-secondary);
+}
+
+@media (max-width: 768px) {
+  .rg-equip-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .rg-equip-detail-meta {
+    justify-content: center;
+  }
+
+  .rg-equip-detail-field {
+    justify-content: center;
+  }
+
+  .rg-equip-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

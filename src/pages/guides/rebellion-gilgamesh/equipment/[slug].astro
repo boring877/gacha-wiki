@@ -1,0 +1,258 @@
+---
+// Rebellion Gilgamesh Equipment Detail Page
+// Shows equipment icon, stats, description, stat scaling table
+import CharacterDetailLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDetailLayout.astro';
+import { REBELLION_GILGAMESH_EQUIPMENT } from '../../../../data/rebellion-gilgamesh/equipment.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-equipment-detail.css';
+import '../../../../styles/games/rebellion-gilgamesh/rg-character-detail.css';
+import RGEquipImage from '../../../../components/rebellion-gilgamesh/RGEquipImage.astro';
+import RGEquipKindImage from '../../../../components/rebellion-gilgamesh/RGEquipKindImage.astro';
+import RGEquipRarityImage from '../../../../components/rebellion-gilgamesh/RGEquipRarityImage.astro';
+import RGSkillImage from '../../../../components/rebellion-gilgamesh/RGSkillImage.astro';
+
+export function getStaticPaths() {
+  return REBELLION_GILGAMESH_EQUIPMENT.map((e) => ({
+    params: { slug: e.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const equipInfo = REBELLION_GILGAMESH_EQUIPMENT.find((e: any) => e.slug === slug);
+
+if (!equipInfo) {
+  return Astro.redirect('/guides/rebellion-gilgamesh/equipment/');
+}
+
+const data = (await import(`../../../../data/rebellion-gilgamesh/equipment/${slug}.json`)).default || {};
+
+const description = `${data.name || equipInfo.name} - ${data.rareName || equipInfo.rareName} ${data.kindName || equipInfo.kindName} equipment in Rebellion Gilgamesh.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh/' },
+  { name: 'Equipment Database', url: '/guides/rebellion-gilgamesh/equipment/' },
+  { name: data.name || equipInfo.name, url: '' },
+];
+
+const stats = data.stats || {};
+const lvLimit = data.lvLimit || equipInfo.lvLimit || 5;
+const rankLimit = data.rankLimit || 5;
+const maxRank = data.rankAddLvLimit || 5;
+
+const hasAtk = stats.initialAtk > 0;
+const hasDef = stats.initialDef > 0;
+const hasHP = stats.initialHP > 0;
+const hasCrit = stats.crit > 0;
+const hasCritDmg = stats.critDamage > 0;
+const hasAtkPct = stats.atk > 0;
+const hasDefPct = stats.def > 0;
+const hasHpPct = stats.hp > 0;
+
+const statRows = [];
+for (let rank = 0; rank <= rankLimit; rank++) {
+  const row: Record<string, number | string> = { rank };
+  const maxLv = lvLimit + rank * maxRank;
+  const lvFactor = maxLv - 1;
+  row.maxLv = maxLv;
+  if (hasAtk) row.atk = Math.round(stats.initialAtk + stats.initialAtkAdd * lvFactor);
+  if (hasDef) row.def = Math.round(stats.initialDef + stats.initialDefAdd * lvFactor);
+  if (hasHP) row.hp = Math.round(stats.initialHP + stats.initialHPAdd * lvFactor);
+  if (hasAtkPct) row.atkPct = ((stats.atk + stats.atkAdd * lvFactor) * 100).toFixed(2);
+  if (hasDefPct) row.defPct = ((stats.def + stats.defAdd * lvFactor) * 100).toFixed(2);
+  if (hasHpPct) row.hpPct = ((stats.hp + stats.hpAdd * lvFactor) * 100).toFixed(2);
+  if (hasCrit) row.crit = ((stats.crit + stats.critAdd * lvFactor) * 100).toFixed(2);
+  if (hasCritDmg) row.critDmg = ((stats.critDamage + stats.critDamageAdd * lvFactor) * 100).toFixed(2);
+  statRows.push(row);
+}
+const triggerSkills: any[] = data.triggerSkills || [];
+const passiveSkills: any[] = data.passiveSkills || [];
+const hasEquipSkills = triggerSkills.length > 0 || passiveSkills.length > 0;
+
+---
+
+<CharacterDetailLayout
+  title={data.name || equipInfo.name}
+  description={description}
+  gameTitle={data.name || equipInfo.name}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="rg-equip-detail-header">
+    <div class="rg-equip-detail-icon">
+      <RGEquipImage icon={data.icon || equipInfo.icon} alt={data.name || equipInfo.name} width={200} />
+    </div>
+    <div class="rg-equip-detail-info">
+      <h2 class="rg-equip-detail-name">{data.name || equipInfo.name}</h2>
+      <div class="rg-equip-detail-meta">
+        <RGEquipRarityImage rare={data.rareName || equipInfo.rareName} alt={data.rareName || equipInfo.rareName} width={64} />
+        <RGEquipKindImage kind={data.kind || equipInfo.kind} alt={data.kindName || equipInfo.kindName} width={32} />
+      </div>
+      <div class="rg-equip-detail-fields">
+        <div class="rg-equip-detail-field">
+          <span class="rg-equip-detail-field-label">Type</span>
+          <span class="rg-equip-detail-field-value">{data.kindName || equipInfo.kindName}</span>
+        </div>
+        <div class="rg-equip-detail-field">
+          <span class="rg-equip-detail-field-label">Rarity</span>
+          <span class="rg-equip-detail-field-value">{data.rareName || equipInfo.rareName}</span>
+        </div>
+        <div class="rg-equip-detail-field">
+          <span class="rg-equip-detail-field-label">Level Limit</span>
+          <span class="rg-equip-detail-field-value">{lvLimit}</span>
+        </div>
+        <div class="rg-equip-detail-field">
+          <span class="rg-equip-detail-field-label">Rank Limit</span>
+          <span class="rg-equip-detail-field-value">{rankLimit}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {(hasAtk || hasDef || hasHP || hasAtkPct || hasDefPct || hasHpPct || hasCrit || hasCritDmg) && (
+    <section class="content-section">
+      <h2 class="section-title">Base Stats</h2>
+      <div class="rg-equip-stats-grid">
+        {hasAtk && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">ATK</div>
+            <div class="rg-equip-stat-value">{stats.initialAtk}</div>
+            <div class="rg-equip-stat-growth">+{stats.initialAtkAdd}/lv</div>
+          </div>
+        )}
+        {hasDef && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">DEF</div>
+            <div class="rg-equip-stat-value">{stats.initialDef}</div>
+            <div class="rg-equip-stat-growth">+{stats.initialDefAdd}/lv</div>
+          </div>
+        )}
+        {hasHP && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">HP</div>
+            <div class="rg-equip-stat-value">{stats.initialHP}</div>
+            <div class="rg-equip-stat-growth">+{stats.initialHPAdd}/lv</div>
+          </div>
+        )}
+        {hasAtkPct && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">ATK %</div>
+            <div class="rg-equip-stat-value">{(stats.atk * 100).toFixed(2)}%</div>
+            <div class="rg-equip-stat-growth">+{(stats.atkAdd * 100).toFixed(2)}%/lv</div>
+          </div>
+        )}
+        {hasDefPct && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">DEF %</div>
+            <div class="rg-equip-stat-value">{(stats.def * 100).toFixed(2)}%</div>
+            <div class="rg-equip-stat-growth">+{(stats.defAdd * 100).toFixed(2)}%/lv</div>
+          </div>
+        )}
+        {hasHpPct && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">HP %</div>
+            <div class="rg-equip-stat-value">{(stats.hp * 100).toFixed(2)}%</div>
+            <div class="rg-equip-stat-growth">+{(stats.hpAdd * 100).toFixed(2)}%/lv</div>
+          </div>
+        )}
+        {hasCrit && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">CRIT</div>
+            <div class="rg-equip-stat-value">{(stats.crit * 100).toFixed(2)}%</div>
+            <div class="rg-equip-stat-growth">+{(stats.critAdd * 100).toFixed(2)}%/lv</div>
+          </div>
+        )}
+        {hasCritDmg && (
+          <div class="rg-equip-stat-card">
+            <div class="rg-equip-stat-label">CRIT DMG</div>
+            <div class="rg-equip-stat-value">{(stats.critDamage * 100).toFixed(2)}%</div>
+            <div class="rg-equip-stat-growth">+{(stats.critDamageAdd * 100).toFixed(2)}%/lv</div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {statRows.length > 1 && (
+    <section class="content-section">
+      <h2 class="section-title">Stats at Max Level by Rank</h2>
+      <table class="rg-equip-scaling-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Max Lv</th>
+            {hasAtk && <th>ATK</th>}
+            {hasDef && <th>DEF</th>}
+            {hasHP && <th>HP</th>}
+            {hasAtkPct && <th>ATK %</th>}
+            {hasDefPct && <th>DEF %</th>}
+            {hasHpPct && <th>HP %</th>}
+            {hasCrit && <th>CRIT</th>}
+            {hasCritDmg && <th>CRIT DMG</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {statRows.map((row) => (
+            <tr>
+              <td>R{row.rank}</td>
+              <td>{row.maxLv}</td>
+              {hasAtk && <td>{row.atk}</td>}
+              {hasDef && <td>{row.def}</td>}
+              {hasHP && <td>{row.hp}</td>}
+              {hasAtkPct && <td>{row.atkPct}%</td>}
+              {hasDefPct && <td>{row.defPct}%</td>}
+              {hasHpPct && <td>{row.hpPct}%</td>}
+              {hasCrit && <td>{row.crit}%</td>}
+              {hasCritDmg && <td>{row.critDmg}%</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )}
+
+  {hasEquipSkills && (
+    <section class="content-section">
+      <h2 class="section-title">Equipment Skills</h2>
+      <div class="rg-detail-skills-list">
+        {triggerSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card">
+            <RGSkillImage icon={skill.icon} skillType={3} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">{skill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">Trigger</span>
+                <span class="rg-detail-skill-meta-tag">Target: {skill.targetName}</span>
+                {skill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {skill.cdRound}</span>}
+                {skill.times > 0 && <span class="rg-detail-skill-meta-tag">Uses: {skill.times}</span>}
+                {skill.showPower && <span class="rg-detail-skill-meta-tag">Power: {skill.showPower}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+        {passiveSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card">
+            <RGSkillImage icon={skill.icon} skillType={5} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">{skill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">Passive</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {(data.comment || equipInfo.comment) && (
+    <section class="content-section">
+      <h2 class="section-title">Description</h2>
+      <div class="rg-equip-desc-section">
+        <p class="rg-equip-desc-text">{data.comment || equipInfo.comment}</p>
+      </div>
+    </section>
+  )}
+</CharacterDetailLayout>

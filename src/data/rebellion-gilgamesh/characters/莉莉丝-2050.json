@@ -1,0 +1,769 @@
+{
+  "id": 2050,
+  "name": "Lilith",
+  "fullName": "Lilith",
+  "slug": "莉莉丝-2050",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 6,
+  "elementName": "Dark",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Demon",
+  "power": "Demon Federation",
+  "image": "2050.png",
+  "bookTitle": "Demon Queen",
+  "bookId": 25,
+  "firstAcquaintance": "A demon who loves performing magic tricks on the street. However, her work doesn't seem to go well -- she is often found collapsed by the roadside.",
+  "personality": "Completely lacking the arrogance of a demon, she is passionate about performing magic tricks. She eagerly helps anyone, but because demon values differ from those of ordinary people, her help often ends up making things worse.",
+  "like": "Magic tricks, apples, donating blood",
+  "familiarData": "Lilith is one of the four demon generals under the Demon Lord, with unfathomable strength. However, she is casual by nature and loves performing magic tricks for passersby on the street, often being mistaken for a low-ranking lesser demon.\nA demon marquis ranked high-ranking demon can use her own blood to baptize those weaker than her, transforming other races into half-demons and making them her servants. Other races call them \"the Fallen.\" Lilith has created more Fallen than any other demon.\nBut Lilith never intended to create Fallen. She donated her blood out of a desire to help, freely giving her blood to help pitiful people become stronger and survive crises. Those baptized by demon blood will not transform into half-demons as long as they do not use the demonic power, but most cannot resist the temptation and become half-demons, resulting in many tragedies.\nBecause she has donated blood so many times, Lilith often suffers from anemia, and her strength has dropped noticeably.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2050,
+  "stats": {
+    "initialHP": 1280,
+    "hpAdd": 164.1,
+    "initialAtk": 122,
+    "atkAdd": 15.6,
+    "initialDef": 102,
+    "defAdd": 13.4
+  },
+  "features": [
+    1002,
+    1009,
+    1029
+  ],
+  "normalAtk": {
+    "id": 205000,
+    "name": "Playing Cards",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "132",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 120,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205000,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 205001,
+      "name": "Apple Magic",
+      "comment": "Deal 122% damage\n75% chance to apply Petrify (M) 15% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "215",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 179,
+      "cdRound": 8,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205001,
+      "multiplier": 122.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 122.0,
+          "perLevel": 12.2
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 2,
+          "buffId": 2050011,
+          "buffName": "Petrify (M)",
+          "buffValue": "15"
+        }
+      ],
+      "multiplierPerLevel": 12.2,
+      "effectLines": [
+        "Deal 122% damage",
+        "75% chance to apply Petrify (M) 15% (2 turns)"
+      ],
+      "multiplierMax": 183.0,
+      "effectLinesMax": [
+        "Deal 183% damage",
+        "75% chance to apply Petrify (M) 15% (2 turns)"
+      ],
+      "commentMax": "Deal 183% damage\n75% chance to apply Petrify (M) 15% (2 turns)"
+    },
+    {
+      "id": 205002,
+      "name": "Magic Fist",
+      "comment": "Deal 142% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "205",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205002,
+      "multiplier": 142.0,
+      "multiplierPerLevel": 14.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 142.0,
+          "perLevel": 14.2
+        }
+      ],
+      "effectLines": [
+        "Deal 142% damage"
+      ],
+      "multiplierMax": 213.0,
+      "effectLinesMax": [
+        "Deal 213% damage"
+      ],
+      "commentMax": "Deal 213% damage"
+    },
+    {
+      "id": 205003,
+      "name": "Magic Stage",
+      "comment": "Restore 250 ST\n100% chance to apply ATK Up (S) 17.5% (3 turns)\n100% chance to apply DEF Up (S) 7.0% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "306",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205003,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2050031,
+          "buffName": "ATK Up (S)",
+          "buffValue": "17.5"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2050032,
+          "buffName": "DEF Up (S)",
+          "buffValue": "7.0"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply ATK Up (S) 17.5% (3 turns)",
+        "100% chance to apply DEF Up (S) 7.0% (3 turns)"
+      ]
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 205004,
+      "name": "Demon Realm Shift",
+      "comment": "100% chance to apply Freeze (M) (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "603",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 1,
+      "times": 0,
+      "showPower": "-",
+      "condition": 8,
+      "triggerCommentFormat": "【{1}】角色战斗不能时触发",
+      "effectGroupId": 205005,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2050051,
+          "buffName": "Freeze (M)",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Freeze (M) (2 turns)"
+      ],
+      "triggerCondition": "When an enemy is defeated"
+    }
+  ],
+  "aceSkill": {
+    "id": 205007,
+    "name": "Wonder Magic",
+    "comment": "Deal 326% damage\nBonus status damage 100%\n75% chance to apply Freeze (M) (1 turns)",
+    "commentFormat": "对{1}{4}\n{3}\n．{5}",
+    "icon": "511",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205007,
+    "multiplier": 326.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 326.0,
+        "perLevel": 32.6
+      },
+      {
+        "type": "status_bonus",
+        "value": 100.0
+      },
+      {
+        "type": "buff",
+        "probability": 75,
+        "duration": 1,
+        "buffId": 2050071,
+        "buffName": "Freeze (M)",
+        "buffValue": null
+      }
+    ],
+    "multiplierPerLevel": 32.6,
+    "effectLines": [
+      "Deal 326% damage",
+      "Bonus status damage 100%",
+      "75% chance to apply Freeze (M) (1 turns)"
+    ],
+    "multiplierMax": 489.0,
+    "effectLinesMax": [
+      "Deal 489.0% damage",
+      "Bonus status damage 100%",
+      "75% chance to apply Freeze (M) (1 turns)"
+    ],
+    "commentMax": "Deal 489.0% damage\nBonus status damage 100%\n75% chance to apply Freeze (M) (1 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 205010,
+      "name": "Clone Magic",
+      "comment": "100% chance to apply Element DMG Up (S) 10.5%",
+      "commentFormat": "{1}被动效果：\n{3}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205010,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2050101,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "10.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 10.5%"
+      ]
+    },
+    {
+      "id": 205011,
+      "name": "Unrestrained",
+      "comment": "100% chance to apply Status Resist Up (S) 6.3%\n100% chance to apply Status Resist Up (S) 6.3%",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "405",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205011,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2050111,
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "6.3"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2050112,
+          "buffName": "Status Resist Up (S)",
+          "buffValue": "6.3"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Status Resist Up (S) 6.3%",
+        "100% chance to apply Status Resist Up (S) 6.3%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/惡魔_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0336,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0336,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0336,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0336,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0.1344,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0.0019,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0.03799999999999999,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0.1724,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

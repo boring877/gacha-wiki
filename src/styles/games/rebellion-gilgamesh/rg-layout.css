@@ -1,38 +1,50 @@
 /* Rebellion Gilgamesh Layout Styles */
-/* Crimson/violet theme layout following other games pattern */
+/* Base layout, hero sections, and shared elements */
 
-/* Import base styles */
-@import '../../colors.css';
-@import '../../global.css';
-@import '../../typography.css';
-
-/* Body styling */
-.rebellion-gilgamesh-body {
+.rg-body {
   background: var(--rg-bg-gradient-primary);
   color: var(--rg-text-secondary);
   min-height: 100vh;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
-.rebellion-gilgamesh-content {
+.rg-content {
   position: relative;
   z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Container */
-.rebellion-gilgamesh-container {
+.rg-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
   position: relative;
+  padding-bottom: 2rem;
+  flex: 1 0 auto;
 }
 
-.rebellion-gilgamesh-main {
+.rg-content > footer {
+  flex-shrink: 0;
+}
+
+.rg-main {
+  width: 100%;
+  position: relative;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 /* Hero section */
 .hero-section {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   padding: 3rem 1rem;
 }
 
@@ -72,7 +84,6 @@
   font-weight: var(--font-bold);
   margin: 0;
   line-height: var(--leading-normal);
-  /* Gradient for page title only */
   background: linear-gradient(135deg, var(--rg-primary), var(--rg-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -80,19 +91,20 @@
 }
 
 /* Title only section */
-.title-only-section {
+.rg-title-only-section {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 0;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem 1rem;
+  position: relative;
 }
 
-.title-only-heading {
+.rg-title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
-  margin: 0;
-  line-height: var(--leading-normal);
-  /* Gradient for page title only */
+  margin: 0 0 2rem 0;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
   background: linear-gradient(135deg, var(--rg-primary), var(--rg-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -101,13 +113,33 @@
 
 /* Content area */
 .content-area {
+  width: 100%;
   position: relative;
 }
 
-/* Mobile responsive */
+/* Shared section styles */
+.content-section {
+  margin-bottom: 3rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  font-family: var(--font-display);
+  color: var(--rg-accent);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: var(--leading-tight);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .rebellion-gilgamesh-main {
-    padding: 1rem;
+  .rg-main {
+    padding: 1rem 0;
   }
 
   .hero-section {
@@ -125,18 +157,23 @@
     font-size: var(--text-3xl);
   }
 
-  .title-only-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  .rg-title-only-heading {
+    font-size: var(--text-3xl);
   }
 
-  .title-only-heading {
-    font-size: var(--text-3xl);
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
   }
 }
 
 @media (max-width: 480px) {
-  .rebellion-gilgamesh-main {
-    padding: 0.5rem;
+  .rg-main {
+    padding: 0.5rem 0;
   }
 
   .hero-image-container {
@@ -154,7 +191,150 @@
     margin-bottom: 1.5rem;
   }
 
-  .title-only-heading {
+  .rg-title-only-heading {
     font-size: var(--text-2xl);
+  }
+
+  .content-section {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: var(--text-lg);
+    margin-bottom: 1rem;
+  }
+}
+
+/* Breadcrumb Navigation */
+.rg-breadcrumb {
+  margin-bottom: 2rem;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 20;
+}
+
+.rg-breadcrumb-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rg-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: 6px;
+  color: var(--rg-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 48px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rg-back-arrow {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.rg-back-text {
+  font-size: 0.9rem;
+}
+
+.rg-breadcrumb-list {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--rg-text-secondary);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+}
+
+.rg-breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rg-breadcrumb-link {
+  color: var(--rg-text-secondary);
+  text-decoration: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rg-breadcrumb-separator {
+  color: var(--rg-text-muted);
+  user-select: none;
+  font-size: 1rem;
+}
+
+.rg-breadcrumb-current {
+  color: var(--rg-accent);
+  font-weight: 600;
+  padding: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .rg-breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .rg-breadcrumb-container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rg-breadcrumb {
+    margin-bottom: 1rem;
+  }
+
+  .rg-breadcrumb-container {
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rg-back-button {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .rg-breadcrumb-list {
+    font-size: 0.85rem;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .rg-breadcrumb-item {
+    gap: 0.5rem;
+  }
+
+  .rg-breadcrumb-link,
+  .rg-breadcrumb-current {
+    padding: 0.5rem;
   }
 }

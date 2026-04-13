@@ -1,0 +1,763 @@
+{
+  "id": 2088,
+  "name": "Metori, Disguised Nadeshiko",
+  "fullName": "Metori, Disguised Nadeshiko",
+  "slug": "梅托莉-2088",
+  "rarity": "SSR",
+  "rarityValue": 7,
+  "element": 2,
+  "elementName": "Water",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Plant Demon Beast (Mimicking Human)",
+  "power": "Hand of Freedom",
+  "image": "2088.png",
+  "bookTitle": "Little Pharmacist (Alt)",
+  "bookId": 72,
+  "firstAcquaintance": "With the New Year arrived, Metori dons a kimono and transforms into a refined, gentle young lady. Is this the mysterious power of the New Year? No, it's the power of red envelope money.",
+  "personality": "During the New Year, she starts using polite language and lowers her voice. However, her polite words always come with hints to 'be generous.' She may seem well-mannered, but she's actually transformed into a little devil who goes straight for your wallet.",
+  "like": "Grilled meat, red envelopes",
+  "familiarData": "Metori isn't really that fond of money, but money can buy what she wants. So she learned from Jiulian and decided to be a good kid during the New Year to collect red envelope money. Of course, the main reason is that it's just really fun. And so, the festival-limited Nadeshiko Metori was born.\n\nThough she's only a well-behaved child for a limited time, the docile Metori is genuinely endearing and successfully collected quite a bit of red envelope money. She did cut into Jiulian's territory a bit, though. Hopefully the two can maintain their good relationship.\n\nHer outfit was once again sent by a mysterious tailor. It fits surprisingly well and looks absolutely adorable. That white scarf in particular makes Metori look quite elegant.\n\n'Come to think of it, I don't remember this scarf being in the clothes that were sent over?'\n'Master, being too nitpicky during the New Year makes you a cheapskate, you know.'",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2088,
+  "stats": {
+    "initialHP": 1348,
+    "hpAdd": 173.4,
+    "initialAtk": 139,
+    "atkAdd": 18.1,
+    "initialDef": 85,
+    "defAdd": 10.9
+  },
+  "features": [
+    1004,
+    1032,
+    1021,
+    1027
+  ],
+  "normalAtk": {
+    "id": 208800,
+    "name": "Light Bullet",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "125",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 127,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208800,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 208801,
+      "name": "Politeness",
+      "comment": "Restore 250 ST\n100% chance to apply CRIT Rate Up 50% (2 turns)\n100% chance to apply CRIT DMG Up 50% (2 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+      "icon": "608",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208801,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2088011,
+          "buffName": "CRIT Rate Up",
+          "buffValue": "50"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2088012,
+          "buffName": "CRIT DMG Up",
+          "buffValue": "50"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply CRIT Rate Up 50% (2 turns)",
+        "100% chance to apply CRIT DMG Up 50% (2 turns)"
+      ]
+    },
+    {
+      "id": 208802,
+      "name": "Peacekeeper",
+      "comment": "Deal 176% damage\n100% chance to apply Petrify 15% (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "502",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 186,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208802,
+      "multiplier": 176.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 176.0,
+          "perLevel": 17.6
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2088021,
+          "buffName": "Petrify",
+          "buffValue": "15"
+        }
+      ],
+      "multiplierPerLevel": 17.6,
+      "effectLines": [
+        "Deal 176% damage",
+        "100% chance to apply Petrify 15% (3 turns)"
+      ],
+      "multiplierMax": 264.0,
+      "effectLinesMax": [
+        "Deal 264.0% damage",
+        "100% chance to apply Petrify 15% (3 turns)"
+      ],
+      "commentMax": "Deal 264.0% damage\n100% chance to apply Petrify 15% (3 turns)"
+    },
+    {
+      "id": 208803,
+      "name": "Prayer Light",
+      "comment": "Restore 25% HP\n100% chance to apply Evasion (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 186,
+      "cdRound": 7,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208803,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2088031,
+          "buffName": "Evasion",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "100% chance to apply Evasion (3 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 32.5% HP",
+        "100% chance to apply Evasion (3 turns)"
+      ],
+      "commentMax": "Restore 32.5% HP\n100% chance to apply Evasion (3 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 208804,
+      "name": "New Year's Money~",
+      "comment": "Restore 50 ST\n100% chance to apply Ult DMG Up 25% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}\n‧{4}",
+      "icon": "304",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 208804,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 50
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2088041,
+          "buffName": "Ult DMG Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Restore 50 ST",
+        "100% chance to apply Ult DMG Up 25% (2 turns)"
+      ],
+      "triggerCondition": "When self HP is 80% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 208807,
+    "name": "Nadeshiko Secret",
+    "comment": "Deal 295% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "505",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 6,
+    "targetName": "Enemy Cross",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 208807,
+    "multiplier": 295.0,
+    "multiplierPerLevel": 29.5,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 295.0,
+        "perLevel": 29.5
+      }
+    ],
+    "effectLines": [
+      "Deal 295% damage"
+    ],
+    "multiplierMax": 442.5,
+    "effectLinesMax": [
+      "Deal 442.5% damage"
+    ],
+    "commentMax": "Deal 442.5% damage"
+  },
+  "passiveSkills": [
+    {
+      "id": 208810,
+      "name": "Famous Pharmacist",
+      "comment": "MAX HP Up 10%\nCRIT Rate Up 18%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "公會戰_醫療所",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208810,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "MAX HP Up",
+          "buffValue": "10"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "CRIT Rate Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "MAX HP Up 10%",
+        "CRIT Rate Up 18%"
+      ]
+    },
+    {
+      "id": 208811,
+      "name": "Nadeshiko",
+      "comment": "ATK Up 25%\nElement DMG Up 36%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "407",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 208811,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Element DMG Up",
+          "buffValue": "36"
+        }
+      ],
+      "effectLines": [
+        "ATK Up 25%",
+        "Element DMG Up 36%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/自由之手",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 5,
+  "armsName": "Bow"
+}

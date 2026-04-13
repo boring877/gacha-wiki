@@ -1,0 +1,775 @@
+{
+  "id": 2062,
+  "name": "Didian",
+  "fullName": "Didian",
+  "slug": "迪迪安-2062",
+  "rarity": "SSR",
+  "rarityValue": 7,
+  "element": 1,
+  "elementName": "Fire",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Rabbit-Kin",
+  "power": "Wanderer",
+  "image": "2062.png",
+  "bookTitle": "Rabbit Ranger",
+  "bookId": 51,
+  "firstAcquaintance": "A famous phantom thief ninja in the city. Despite having a conspicuous pair of rabbit ears, she can slip into any room unnoticed.",
+  "personality": "An optimistic thief who believes in honor among thieves. She only steals from the wealthy and shares with the poor.",
+  "like": "Vegetable crackers, ninja tools, panties",
+  "familiarData": "Didian is a highly agile rabbit-kin girl who runs fast and can leap to heights silently. No matter how high the window, it becomes her entry point.\nShe claims to use ninjutsu, but ninjas use kunai, not forks. Yet despite seeming like a joke weapon, the fork is an all-purpose tool - whether picking locks, climbing walls, stealing, or even fighting, everything can be done with a fork. A real ninja would call it unbelievable.\n\nDidian is a righteous thief who only steals from the rich and shares most of it with the poor. Her beneficiaries are of all races, so many people are grateful to her and help hide her tracks, making it impossible for guards to catch her.\nIn truth, many guards are fans of this cute rabbit-kin girl, cheering for her thefts from goblins. Many guards look the other way when she steals, and they even greet each other when they cross paths.\n\nShe is sworn sisters with the wandering knight Mier, and is registered with the knight order, nominally making her a knight as well. The two once joined forces to defeat a slave hunter group a hundred strong.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2062,
+  "stats": {
+    "initialHP": 1483,
+    "hpAdd": 190.5,
+    "initialAtk": 138,
+    "atkAdd": 17.6,
+    "initialDef": 80,
+    "defAdd": 10.3
+  },
+  "features": [
+    1001
+  ],
+  "normalAtk": {
+    "id": 206200,
+    "name": "Pitchfork Stab",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "143",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206200,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 206201,
+      "name": "Paralysis (Physical)",
+      "comment": "Deal 135% damage\n100% chance to apply Paralyze (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "203",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206201,
+      "multiplier": 135.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 135.0,
+          "perLevel": 13.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2062011,
+          "buffName": "Paralyze",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 13.5,
+      "effectLines": [
+        "Deal 135% damage",
+        "100% chance to apply Paralyze (2 turns)"
+      ],
+      "multiplierMax": 202.5,
+      "effectLinesMax": [
+        "Deal 202.5% damage",
+        "100% chance to apply Paralyze (2 turns)"
+      ],
+      "commentMax": "Deal 202.5% damage\n100% chance to apply Paralyze (2 turns)"
+    },
+    {
+      "id": 206202,
+      "name": "Teleport (Physical)",
+      "comment": "Deal 142% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "211",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206202,
+      "multiplier": 142.0,
+      "multiplierPerLevel": 14.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 142.0,
+          "perLevel": 14.2
+        }
+      ],
+      "effectLines": [
+        "Deal 142% damage"
+      ],
+      "multiplierMax": 213.0,
+      "effectLinesMax": [
+        "Deal 213% damage"
+      ],
+      "commentMax": "Deal 213% damage"
+    },
+    {
+      "id": 206203,
+      "name": "Battlefield Aid",
+      "comment": "Restore 150 ST\n100% chance to apply ATK Up 25% (3 turns)\nReduce cooldown by 1 turns",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "613",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206203,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 150
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2062031,
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        },
+        {
+          "type": "cd_reduce",
+          "value": 1
+        }
+      ],
+      "effectLines": [
+        "Restore 150 ST",
+        "100% chance to apply ATK Up 25% (3 turns)",
+        "Reduce cooldown by 1 turns"
+      ]
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 206204,
+      "name": "Conceal",
+      "comment": "100% chance to apply Evasion (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}{3}",
+      "icon": "607",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{2}%以下】",
+      "effectGroupId": 206204,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2062041,
+          "buffName": "Evasion",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Evasion (2 turns)"
+      ],
+      "triggerCondition": "When self HP drops below 30%"
+    }
+  ],
+  "aceSkill": {
+    "id": 206207,
+    "name": "Disruption Arts",
+    "comment": "Deal 283% damage\n100% chance to apply DEF Down 10% (2 turns)",
+    "commentFormat": "对{1}{3}\n．{4}",
+    "icon": "215",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 6,
+    "targetName": "Enemy Cross",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206207,
+    "multiplier": 283.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 283.0,
+        "perLevel": 28.3
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 2,
+        "buffId": 2062071,
+        "buffName": "DEF Down",
+        "buffValue": "10"
+      }
+    ],
+    "multiplierPerLevel": 28.3,
+    "effectLines": [
+      "Deal 283% damage",
+      "100% chance to apply DEF Down 10% (2 turns)"
+    ],
+    "multiplierMax": 424.5,
+    "effectLinesMax": [
+      "Deal 424.5% damage",
+      "100% chance to apply DEF Down 10% (2 turns)"
+    ],
+    "commentMax": "Deal 424.5% damage\n100% chance to apply DEF Down 10% (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 206210,
+      "name": "Flexibility",
+      "comment": "100% chance to apply CRIT Rate Up 8%\n100% chance to apply CRIT DMG Up 20%",
+      "commentFormat": "对{1}\n．{3}\n．{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206210,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2062101,
+          "buffName": "CRIT Rate Up",
+          "buffValue": "8"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2062102,
+          "buffName": "CRIT DMG Up",
+          "buffValue": "20"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply CRIT Rate Up 8%",
+        "100% chance to apply CRIT DMG Up 20%"
+      ]
+    },
+    {
+      "id": 206211,
+      "name": "Master Thief",
+      "comment": "100% chance to apply Status Resist 22%\n100% chance to apply Status Resist 22%\n100% chance to apply ATK Up 25%",
+      "commentFormat": "对{1}\n．{3}\n．{4}\n．{5}",
+      "icon": "401",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206211,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2062111,
+          "buffName": "Status Resist",
+          "buffValue": "22"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2062112,
+          "buffName": "Status Resist",
+          "buffValue": "22"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2062113,
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Status Resist 22%",
+        "100% chance to apply Status Resist 22%",
+        "100% chance to apply ATK Up 25%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/動物_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 3,
+  "armsName": "Fist"
+}

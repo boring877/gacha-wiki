@@ -1,0 +1,86 @@
+---
+// Rebellion Gilgamesh equip-rarity icon image component
+// Displays equipment rarity badges from assets/images/games/rebellion-gilgamesh/equip-rarity/
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/equip-rarity/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  rare: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { rare, alt, width = 48, class: className, loading = 'lazy' } = Astro.props;
+
+const rareMap: Record<string, string> = {
+  'N': 'N.png',
+  'R': 'R.png',
+  'SR': 'SR.png',
+  'SSR': 'SSR.png',
+};
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(rareMap[rare] || '');
+---
+
+{imageModule ? (
+  <div class={`rg-equiprarity-wrapper ${className || ''}`} style={`--rg-equiprarity-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-equiprarity-img"
+    />
+  </div>
+) : (
+  <div class={`rg-equiprarity-fallback ${className || ''}`} style={`--rg-equiprarity-width: ${width}px`}>
+    <span>{rare || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-equiprarity-wrapper {
+    width: var(--rg-equiprarity-width, 48px);
+    height: var(--rg-equiprarity-width, 48px);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-equiprarity-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .rg-equiprarity-fallback {
+    width: var(--rg-equiprarity-width, 48px);
+    height: var(--rg-equiprarity-width, 48px);
+    border-radius: var(--rg-radius-sm, 4px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: var(--rg-font-bold, 700);
+    color: var(--rg-text-muted);
+  }
+</style>

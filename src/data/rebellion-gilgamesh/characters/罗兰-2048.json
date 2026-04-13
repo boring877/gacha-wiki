@@ -1,0 +1,762 @@
+{
+  "id": 2048,
+  "name": "Roland",
+  "fullName": "Roland",
+  "slug": "罗兰-2048",
+  "rarity": "SSR",
+  "rarityValue": 8,
+  "element": 4,
+  "elementName": "Chaos",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human",
+  "power": "Wanderer",
+  "image": "2048.png",
+  "bookTitle": "Wandering Knight",
+  "bookId": 28,
+  "firstAcquaintance": "A wanderer girl with extraordinary combat talent. She dresses in a gender-neutral style, speaks like a boy, and often disguises herself as a male knight.",
+  "personality": "Somewhat boyish in manner, she enjoys talking to girls. She usually appears cheerful and positive, but is actually quite devious underneath.",
+  "like": "Companions, cute girls",
+  "familiarData": "Roland is a war orphan who, like many orphans, became merchandise in the slave market. The slave farm she was at was coincidentally destroyed by a powerful female dark elf, and she was freed.\nThis dark elf had killed the farm owner out of a personal grudge, and freeing the slaves was merely to create chaos. This answer disappointed many of the slaves, but it filled Roland with deep admiration -- she wanted to be just as free-spirited as that dark elf.\nAfter joining the wanderers, Roland imitated that female dark elf by wearing men's clothing, and combined with disguise magic she learned from her wanderer group, she passes herself off as a boy.\nShe is one of the few people who can stomach Mozzarella's cooking. She actually does feel unwell after eating it, but through repeated exposure she gradually built up a tolerance and is no longer affected. Others have tried to imitate her, but most fail, which has drawn attention to Roland's extraordinary adaptability.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2048,
+  "stats": {
+    "initialHP": 1339,
+    "hpAdd": 172,
+    "initialAtk": 137,
+    "atkAdd": 17.8,
+    "initialDef": 88,
+    "defAdd": 11.3
+  },
+  "features": [
+    1001,
+    1005
+  ],
+  "normalAtk": {
+    "id": 204800,
+    "name": "Sword Strike",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "111",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 3.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 119,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 204800,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 204801,
+      "name": "Continuous Sword",
+      "comment": "Deal 135% damage\nBonus Earth damage 100%",
+      "commentFormat": "对{1}{4}\n{3}",
+      "icon": "211",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 3.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204801,
+      "multiplier": 135.0,
+      "multiplierPerLevel": 13.5,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 135.0,
+          "perLevel": 13.5
+        },
+        {
+          "type": "element_bonus",
+          "element": "Earth",
+          "value": 100.0
+        }
+      ],
+      "effectLines": [
+        "Deal 135% damage",
+        "Bonus Earth damage 100%"
+      ],
+      "multiplierMax": 202.5,
+      "effectLinesMax": [
+        "Deal 202.5% damage",
+        "Bonus Earth damage 100%"
+      ],
+      "commentMax": "Deal 202.5% damage\nBonus Earth damage 100%"
+    },
+    {
+      "id": 204802,
+      "name": "Defensive Stance",
+      "comment": "Restore 25% HP\nReduce cooldown by 1 turns\n75% chance to apply DEF Up (M) 10% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204802,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "cd_reduce",
+          "value": 1
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 3,
+          "buffId": 2048021,
+          "buffName": "DEF Up (M)",
+          "buffValue": "10"
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "Reduce cooldown by 1 turns",
+        "75% chance to apply DEF Up (M) 10% (3 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 32.5% HP",
+        "Reduce cooldown by 1 turns",
+        "75% chance to apply DEF Up (M) 10% (3 turns)"
+      ],
+      "commentMax": "Restore 32.5% HP\nReduce cooldown by 1 turns\n75% chance to apply DEF Up (M) 10% (3 turns)"
+    },
+    {
+      "id": 204803,
+      "name": "Offensive Stance",
+      "comment": "Deal 134% damage\n100% chance to apply DEF Down (M) 10% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "211",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204803,
+      "multiplier": 134.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 134.0,
+          "perLevel": 13.4
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2048031,
+          "buffName": "DEF Down (M)",
+          "buffValue": "10"
+        }
+      ],
+      "multiplierPerLevel": 13.4,
+      "effectLines": [
+        "Deal 134% damage",
+        "100% chance to apply DEF Down (M) 10% (3 turns)"
+      ],
+      "multiplierMax": 201.0,
+      "effectLinesMax": [
+        "Deal 201.0% damage",
+        "100% chance to apply DEF Down (M) 10% (3 turns)"
+      ],
+      "commentMax": "Deal 201.0% damage\n100% chance to apply DEF Down (M) 10% (3 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 204804,
+      "name": "Parry",
+      "comment": "100% chance to apply Status Immunity (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "610",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 2,
+      "times": 0,
+      "showPower": "-",
+      "condition": 5,
+      "triggerCommentFormat": "【{2}】状态获得时触发",
+      "effectGroupId": 204804,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2048041,
+          "buffName": "Status Immunity",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Status Immunity (2 turns)"
+      ],
+      "triggerCondition": "When receiving a status effect"
+    }
+  ],
+  "aceSkill": {
+    "id": 204807,
+    "name": "Absolute Sword (Fake)",
+    "comment": "Deal 362% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "501",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 204807,
+    "multiplier": 362.0,
+    "multiplierPerLevel": 36.2,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 362.0,
+        "perLevel": 36.2
+      }
+    ],
+    "effectLines": [
+      "Deal 362% damage"
+    ],
+    "multiplierMax": 543.0,
+    "effectLinesMax": [
+      "Deal 543% damage"
+    ],
+    "commentMax": "Deal 543% damage"
+  },
+  "passiveSkills": [
+    {
+      "id": 204810,
+      "name": "Brave Hero",
+      "comment": "100% chance to apply Trait DMG Up (S) 21%\n100% chance to apply Trait DMG Up (S) 21%",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "404",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204810,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2048101,
+          "buffName": "Trait DMG Up (S)",
+          "buffValue": "21"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2048102,
+          "buffName": "Trait DMG Up (S)",
+          "buffValue": "21"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DMG Up (S) 21%",
+        "100% chance to apply Trait DMG Up (S) 21%"
+      ]
+    },
+    {
+      "id": 204811,
+      "name": "Combat Genius",
+      "comment": "100% chance to apply Element DMG Up (S) 10.5%",
+      "commentFormat": "{1}被动效果：\n{3}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 204811,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2048111,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "10.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 10.5%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_流浪者",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 1,
+  "armsName": "Sword"
+}

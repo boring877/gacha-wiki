@@ -1,0 +1,79 @@
+---
+// Rebellion Gilgamesh character portrait image component
+// Displays hero large portraits from assets/images/games/rebellion-gilgamesh/characters/
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/characters/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  image?: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { image, alt, class: className, loading = 'lazy' } = Astro.props;
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(image || '');
+---
+
+{imageModule ? (
+  <div class={`rg-char-img-wrapper ${className || ''}`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      inferSize
+      loading={loading}
+      format="webp"
+      quality={95}
+      class="rg-char-img"
+    />
+  </div>
+) : (
+  <div class={`rg-char-img-fallback ${className || ''}`}>
+    <span>?</span>
+  </div>
+)}
+
+<style>
+  .rg-char-img-wrapper {
+    max-width: 100%;
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-char-img-wrapper :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--rg-radius-md, 8px);
+  }
+
+  .rg-char-img-fallback {
+    width: 200px;
+    aspect-ratio: 1 / 1.2;
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--rg-text-muted);
+  }
+</style>

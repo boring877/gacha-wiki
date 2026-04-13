@@ -1,0 +1,759 @@
+{
+  "id": 2076,
+  "name": "Gewei Morgause",
+  "fullName": "Gewei Morgause",
+  "slug": "歌薇-2076",
+  "rarity": "SSR",
+  "rarityValue": 8,
+  "element": 5,
+  "elementName": "Light",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Succubus",
+  "power": "Demon Federation",
+  "image": "2076.png",
+  "bookTitle": "Succubus Songstress",
+  "bookId": 70,
+  "firstAcquaintance": "Yasena's childhood friend and the standout among the new generation of succubi. Her tenderness can conquer anyone.",
+  "personality": "She doesn't like to show off, but always holds the upper hand. She can be quite severe at times, and when she is, you'd better watch out.",
+  "like": "Yasena, bubble tea",
+  "familiarData": "In truth, she's a sharp-tongued woman. What outsiders see as a nurse's uniform is actually her succubus work attire, primarily used for handling farm duties.\nShe inherited succubus abilities and applies them in combat and every aspect of daily life. She may not look like a typical succubus, but she constantly deploys succubus techniques with perfect control, earning her the title of 'the perfect succubus.'\n\nShe and Yasena are childhood friends of similar age. In fact, that's exactly why 'Mother' brought her into the world, to serve Yasena. Though her life was a prearranged plan, she doesn't resent it at all. She genuinely feels that being Yasena's friend is an incredibly joyful thing, and has sworn loyalty to Yasena in her heart, aspiring to support her as the future Succubus Queen.\nHer signature ability is 'Energy Storage,' allowing her to store excess magic power or absorbed life force in her womb. At full capacity, she can hold three times her normal amount. The stored power can't be released directly, so she doesn't have three times the combat strength. However, she compensates with the ability to fight continuously and her rare gift of energy transfer. In that regard, she truly is like a nurse.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2076,
+  "stats": {
+    "initialHP": 1617,
+    "hpAdd": 207.7,
+    "initialAtk": 143,
+    "atkAdd": 18.6,
+    "initialDef": 67,
+    "defAdd": 8.8
+  },
+  "features": [
+    1002,
+    1009
+  ],
+  "normalAtk": {
+    "id": 207600,
+    "name": "Slap",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "122",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 207600,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 207601,
+      "name": "Succubus Fist: Straight",
+      "comment": "Deal 127% damage\nGain +50 ST per enemy hit",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "122",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 10,
+      "targetName": "Enemy Diagonal BL-TR",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 207601,
+      "multiplier": 127.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 127.0,
+          "perLevel": 12.7
+        },
+        {
+          "type": "st_per_hit",
+          "value": 50
+        }
+      ],
+      "multiplierPerLevel": 12.7,
+      "effectLines": [
+        "Deal 127% damage",
+        "Gain +50 ST per enemy hit"
+      ],
+      "multiplierMax": 190.5,
+      "effectLinesMax": [
+        "Deal 190.5% damage",
+        "Gain +50 ST per enemy hit"
+      ],
+      "commentMax": "Deal 190.5% damage\nGain +50 ST per enemy hit"
+    },
+    {
+      "id": 207602,
+      "name": "Lady Gewei",
+      "comment": "Restore 250 ST\n100% chance to apply CRIT DMG Up 14.0% (4 turns)\n100% chance to apply CRIT Rate Up 18% (4 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+      "icon": "607",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 207602,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2076021,
+          "buffName": "CRIT DMG Up",
+          "buffValue": "14.0"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2076022,
+          "buffName": "CRIT Rate Up",
+          "buffValue": "18"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply CRIT DMG Up 14.0% (4 turns)",
+        "100% chance to apply CRIT Rate Up 18% (4 turns)"
+      ]
+    },
+    {
+      "id": 207603,
+      "name": "Peacekeeper",
+      "comment": "Deal 138% damage\n+50% multiplier per enemy hit",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "502",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 11,
+      "targetName": "Enemy Diagonal BR-TL",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 207603,
+      "multiplier": 138.0,
+      "multiplierPerLevel": 13.8,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 138.0,
+          "perLevel": 13.8
+        },
+        {
+          "type": "mult_per_hit",
+          "value": 50
+        }
+      ],
+      "effectLines": [
+        "Deal 138% damage",
+        "+50% multiplier per enemy hit"
+      ],
+      "multiplierMax": 207.0,
+      "effectLinesMax": [
+        "Deal 207.0% damage",
+        "+50% multiplier per enemy hit"
+      ],
+      "commentMax": "Deal 207.0% damage\n+50% multiplier per enemy hit"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 207604,
+      "name": "Fully Charged",
+      "comment": "Deal 200% damage",
+      "commentFormat": "发动条件：{0}\n对{1}\n‧{3}",
+      "icon": "304",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 1,
+      "times": 0,
+      "showPower": "中",
+      "condition": 11,
+      "triggerCommentFormat": "【自身ST{3}%】以上时触发",
+      "effectGroupId": 207604,
+      "multiplier": 200.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 200.0,
+          "perLevel": null
+        }
+      ],
+      "effectLines": [
+        "Deal 200% damage"
+      ],
+      "triggerCondition": "When self ST is 99% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 207607,
+    "name": "Lady Gewei's Love Time",
+    "comment": "Restore 425 ST\n100% chance to apply ATK Up 25% (4 turns)\n100% chance to apply Ult DMG Up 40% (4 turns)",
+    "commentFormat": "对{1}{3}\n‧{4}\n‧{5}",
+    "icon": "608",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 2,
+    "targetName": "Single Ally",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "-",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 207607,
+    "effects": [
+      {
+        "type": "st_recovery",
+        "value": 425
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 4,
+        "buffId": 2076071,
+        "buffName": "ATK Up",
+        "buffValue": "25"
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 4,
+        "buffId": 2076072,
+        "buffName": "Ult DMG Up",
+        "buffValue": "40"
+      }
+    ],
+    "effectLines": [
+      "Restore 425 ST",
+      "100% chance to apply ATK Up 25% (4 turns)",
+      "100% chance to apply Ult DMG Up 40% (4 turns)"
+    ]
+  },
+  "passiveSkills": [
+    {
+      "id": 207610,
+      "name": "Super Strength",
+      "comment": "ATK Up 18%\nElement DMG Up (S) 11%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "407",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 207610,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "ATK Up",
+          "buffValue": "18"
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "11"
+        }
+      ],
+      "effectLines": [
+        "ATK Up 18%",
+        "Element DMG Up (S) 11%"
+      ]
+    },
+    {
+      "id": 207611,
+      "name": "Nurse (Fake)",
+      "comment": "ST Recovery Up\nCRIT DMG Up 14.0%",
+      "commentFormat": "对{1}\n‧{3}\n‧{4}",
+      "icon": "被動_405",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 207611,
+      "effects": [
+        {
+          "type": "passive_buff",
+          "buffName": "ST Recovery Up",
+          "buffValue": null
+        },
+        {
+          "type": "passive_buff",
+          "buffName": "CRIT DMG Up",
+          "buffValue": "14.0"
+        }
+      ],
+      "effectLines": [
+        "ST Recovery Up",
+        "CRIT DMG Up 14.0%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/惡魔_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 3,
+  "armsName": "Fist"
+}

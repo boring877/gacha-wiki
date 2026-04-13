@@ -3,14 +3,7 @@ import RebellionGilgameshLandingLayout from '../../layouts/rebellion-gilgamesh/L
 import FormattedDate from '../../components/FormattedDate.astro';
 import { rebellionGilgameshConfig } from '../../data/rebellion-gilgamesh/rebellion-gilgamesh.js';
 
-// Extract data for easier use in template
-const { meta, gameInfo, sections, story, features } = rebellionGilgameshConfig;
-
-// Breadcrumb data for SEO
-const breadcrumbs = [
-  { name: 'Guides', url: '/guides' },
-  { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh' },
-];
+const { meta, gameInfo, story, categoryGroups } = rebellionGilgameshConfig;
 ---
 
 <RebellionGilgameshLandingLayout
@@ -18,67 +11,13 @@ const breadcrumbs = [
   description={meta.description}
   gameTitle={meta.gameTitle}
   heroImage={meta.heroImage}
-  breadcrumbs={breadcrumbs}
 >
-  <!-- Comprehensive Structured Data for Rebellion Gilgamesh -->
+  <!-- FAQPage + BreadcrumbList Structured Data (VideoGame/WebSite are in RGBaseHead) -->
   <script
     type="application/ld+json"
     set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@graph': [
-        {
-          '@type': 'WebSite',
-          name: 'Rebellion Gilgamesh Wiki & Download - Character Guide, Club Management & Strategy',
-          alternateName: 'Rebellion Gilgamesh ルーレット契約 Wiki',
-          url: 'https://gachawiki.info/guides/rebellion-gilgamesh/',
-          description:
-            'Download Rebellion Gilgamesh - Adult fantasy RPG set in a demon-ruled world. Complete character guides, club management tips & strategy.',
-          inLanguage: ['en', 'ja'],
-          publisher: {
-            '@type': 'Organization',
-            name: 'GachaWiki',
-            url: 'https://gachawiki.info',
-          },
-          potentialAction: {
-            '@type': 'SearchAction',
-            target:
-              'https://gachawiki.info/guides/rebellion-gilgamesh/characters/?search={search_term_string}',
-            'query-input': 'required name=search_term_string',
-          },
-        },
-        {
-          '@type': 'VideoGame',
-          name: 'Rebellion Gilgamesh ルーレット契約',
-          alternateName: 'Rebellion Gilgamesh Roulette Contract',
-          description:
-            'Adult fantasy RPG set in a demon-ruled world. As one of the 72 sons of a slave owner, run a club and save humanity. Features character collection, special moves, and club management mechanics.',
-          genre: ['Adult RPG', 'Fantasy', 'Gacha', 'Club Management'],
-          applicationCategory: 'Game',
-          operatingSystem: ['Android', 'iOS', 'Web'],
-          gamePlatform: ['Android', 'iOS', 'Web Browser'],
-          contentRating: 'Adults Only',
-          playMode: 'SinglePlayer',
-          publisher: {
-            '@type': 'Organization',
-            name: 'Erolabs',
-            url: 'https://game.erolabsshare.net/app/f302f717/Rebellion_Gilgamesh',
-          },
-          offers: {
-            '@type': 'Offer',
-            price: '0',
-            priceCurrency: 'USD',
-            availability: 'https://schema.org/InStock',
-            seller: {
-              '@type': 'Organization',
-              name: 'Erolabs',
-            },
-          },
-          sameAs: [
-            'https://x.com/rebgilgame',
-            'https://game.erolabsshare.net/app/f302f717/Rebellion_Gilgamesh',
-            'https://rebgil.funyoursjapan.pink/res/rebgil.html',
-          ],
-        },
         {
           '@type': 'FAQPage',
           mainEntity: [
@@ -120,12 +59,6 @@ const breadcrumbs = [
             {
               '@type': 'ListItem',
               position: 2,
-              name: 'Guides',
-              item: 'https://gachawiki.info/guides/',
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
               name: 'Rebellion Gilgamesh',
               item: 'https://gachawiki.info/guides/rebellion-gilgamesh/',
             },
@@ -148,16 +81,14 @@ const breadcrumbs = [
   <section class="content-section">
     <h2 class="section-title">Game Introduction</h2>
     <div class="story-content">
-      {story.content.map(paragraph => <p>{paragraph}</p>)}
+      {story.content.map(paragraph => paragraph ? <p>{paragraph}</p> : <br />)}
     </div>
 
-    <!-- Play Game Buttons -->
     <div class="play-button-container">
       <a href={gameInfo.playUrl} target="_blank" class="play-button"> Play on Erolabs </a>
       <a href={gameInfo.socialLinks.dmm} target="_blank" class="play-button"> Play on DMM </a>
     </div>
 
-    <!-- Social Links -->
     <div class="social-links-container">
       <h4>Game Social:</h4>
       <div class="social-links">
@@ -178,12 +109,30 @@ const breadcrumbs = [
     </p>
   </section>
 
-  <!-- Coming Soon Section -->
+  <!-- Resources Section -->
   <section class="content-section">
     <h2 class="section-title">Game Resources</h2>
-    <div class="coming-soon-notice">
-      <p>🚧 Game guides and character database in development</p>
-      <p>Check back soon for Rebellion Gilgamesh resources and strategy content</p>
+
+    <div class="rg-resources-grid">
+      {categoryGroups.map(category => (
+        <div class={`rg-resource-category rg-category-${category.size}`}>
+          <div class="rg-category-header">
+            <h3>{category.title}</h3>
+            <p class="rg-category-description">{category.description}</p>
+          </div>
+          <div class="rg-buttons-grid">
+            {category.guides.map(guide => (
+              <a
+                href={guide.url}
+                class="rg-resource-button"
+                aria-label={`Navigate to ${guide.title}`}
+              >
+                {guide.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 </RebellionGilgameshLandingLayout>

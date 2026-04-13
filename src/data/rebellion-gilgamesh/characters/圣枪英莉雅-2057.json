@@ -1,0 +1,759 @@
+{
+  "id": 2057,
+  "name": "Holy Lance Inlia",
+  "fullName": "Holy Lance Inlia",
+  "slug": "圣枪英莉雅-2057",
+  "rarity": "SSR",
+  "rarityValue": 7,
+  "element": 5,
+  "elementName": "Light",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human",
+  "power": "Kingdom Alliance",
+  "image": "2057.png",
+  "bookTitle": "Cursed Princess",
+  "bookId": 47,
+  "firstAcquaintance": "Inlia grasped the Holy Lance and reversed the demon power within her, returning to her youth. Her memories regressed along with her body.",
+  "personality": "A royal knight raised by the kingdom, she upholds the spirit of chivalry. Strict yet retaining the youthful innocence of a young girl.",
+  "like": "Weapons, sweets, girly accessories",
+  "familiarData": "Inlia accidentally grasped the Holy Lance, which reversed the demonic power within her and brought her back to her last turning point, freeing her body from demonic corruption. As a result, she reverted to her younger self before she ever reached the frontlines.\nInlia's demonic power came from her promise to Princess Oru Baid. With the demon power gone, her memories also rewound to the past. She only remembers being in the royal city not long ago, then suddenly finding herself in demon territory.\nHer memories of Princess Oru Baid stopped several years ago. The current Princess Oru Baid seems familiar to her, but she cannot recognize who she is.\nThe present Inlia possesses the innocence and dreams of her past, and her attitude toward the demon race has softened considerably. However, her hatred toward slave owners has only grown deeper, and her animosity toward a certain honorary demon citizen is bone-deep. Even without her memories, she still shows hostility toward that particular person.\n\nInlia cannot recall her original experiences, so the current her can be said to be an Inlia walking a completely different path.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2057,
+  "stats": {
+    "initialHP": 1697,
+    "hpAdd": 217.6,
+    "initialAtk": 106,
+    "atkAdd": 13.5,
+    "initialDef": 88,
+    "defAdd": 11.4
+  },
+  "features": [
+    1003,
+    1005
+  ],
+  "normalAtk": {
+    "id": 205700,
+    "name": "Spear Thrust",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "126",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 119,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205700,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 205701,
+      "name": "Piercing Spear",
+      "comment": "Deal 122% damage\n100% chance to apply Weak Point Expose (1 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "317",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205701,
+      "multiplier": 122.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 122.0,
+          "perLevel": 12.2
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 1,
+          "buffId": 2057011,
+          "buffName": "Weak Point Expose",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 12.2,
+      "effectLines": [
+        "Deal 122% damage",
+        "100% chance to apply Weak Point Expose (1 turns)"
+      ],
+      "multiplierMax": 183.0,
+      "effectLinesMax": [
+        "Deal 183% damage",
+        "100% chance to apply Weak Point Expose (1 turns)"
+      ],
+      "commentMax": "Deal 183% damage\n100% chance to apply Weak Point Expose (1 turns)"
+    },
+    {
+      "id": 205702,
+      "name": "Chivalry",
+      "comment": "Restore 250 ST\n100% chance to apply ATK Up 25% (3 turns)",
+      "commentFormat": "对{1}{3}\n‧{4}",
+      "icon": "301",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205702,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2057021,
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST",
+        "100% chance to apply ATK Up 25% (3 turns)"
+      ]
+    },
+    {
+      "id": 205703,
+      "name": "Spear Arts: Eagle",
+      "comment": "Deal 149% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "201",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205703,
+      "multiplier": 149.0,
+      "multiplierPerLevel": 14.9,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 149.0,
+          "perLevel": 14.9
+        }
+      ],
+      "effectLines": [
+        "Deal 149% damage"
+      ],
+      "multiplierMax": 223.5,
+      "effectLinesMax": [
+        "Deal 223.5% damage"
+      ],
+      "commentMax": "Deal 223.5% damage"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 205704,
+      "name": "Guardian",
+      "comment": "100% chance to apply Element DEF Up 15% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "403",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "-",
+      "condition": 3,
+      "triggerCommentFormat": "{1}【2人以下】时发动",
+      "effectGroupId": 205704,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2057041,
+          "buffName": "Element DEF Up",
+          "buffValue": "15"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DEF Up 15% (2 turns)"
+      ],
+      "triggerCondition": "When there are 2 or fewer enemies on the field"
+    }
+  ],
+  "aceSkill": {
+    "id": 205707,
+    "name": "Judgment Holy Lance",
+    "comment": "Deal 242% damage\nBonus Light damage 100%",
+    "commentFormat": "对{1}{4}\n{3}",
+    "icon": "501",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 6,
+    "targetName": "Enemy Cross",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205707,
+    "multiplier": 242.0,
+    "multiplierPerLevel": 24.3,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 242.0,
+        "perLevel": 24.3
+      },
+      {
+        "type": "element_bonus",
+        "element": "Light",
+        "value": 100.0
+      }
+    ],
+    "effectLines": [
+      "Deal 242% damage",
+      "Bonus Light damage 100%"
+    ],
+    "multiplierMax": 363.5,
+    "effectLinesMax": [
+      "Deal 363.5% damage",
+      "Bonus Light damage 100%"
+    ],
+    "commentMax": "Deal 363.5% damage\nBonus Light damage 100%"
+  },
+  "passiveSkills": [
+    {
+      "id": 205710,
+      "name": "Knight",
+      "comment": "100% chance to apply ATK Up 18%\n100% chance to apply DEF Up 7.0%",
+      "commentFormat": "对{1}\n{3}\n{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205710,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2057101,
+          "buffName": "ATK Up",
+          "buffValue": "18"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2057102,
+          "buffName": "DEF Up",
+          "buffValue": "7.0"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply ATK Up 18%",
+        "100% chance to apply DEF Up 7.0%"
+      ]
+    },
+    {
+      "id": 205711,
+      "name": "Holy Lance Bearer",
+      "comment": "100% chance to apply Ult DMG Up (M) 40%\n100% chance to apply Element DMG Up (S) 24%",
+      "commentFormat": "对{1}\n{3}\n{4}",
+      "icon": "610",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205711,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2057111,
+          "buffName": "Ult DMG Up (M)",
+          "buffValue": "40"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2057112,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "24"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Ult DMG Up (M) 40%",
+        "100% chance to apply Element DMG Up (S) 24%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 50,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 14,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 64,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 2,
+  "armsName": "Polearm"
+}

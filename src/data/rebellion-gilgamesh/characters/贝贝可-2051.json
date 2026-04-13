@@ -1,0 +1,751 @@
+{
+  "id": 2051,
+  "name": "Beibeko",
+  "fullName": "Beibeko",
+  "slug": "贝贝可-2051",
+  "rarity": "SSR",
+  "rarityValue": 4,
+  "element": 5,
+  "elementName": "Light",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Human",
+  "power": "Kingdom Alliance",
+  "image": "2051.png",
+  "bookTitle": "Squire",
+  "bookId": 26,
+  "firstAcquaintance": "A wandering baker of mysterious identity who can pull endless baguettes from her picnic basket and uses them as weapons.",
+  "personality": "A kind-hearted big sister who gently cares for everyone. Occasionally does delightfully scatterbrained things.",
+  "like": "Making bread, doing good deeds",
+  "familiarData": "Beibeko's true identity is the Kingdom's 111th Hero.\nShe was originally a kind-hearted village girl who dreamed of becoming a baker. A high-ranking kingdom official discovered she had hero potential and tricked her into developing it.\nSince the Demon Lord was extremely ruthless - heroes would be targeted and killed as soon as they left safe zones - being a hero was essentially a death sentence. Beibeko was tricked into going, mistakenly thinking it was baker training. The trainer, to cover up the lie, made up explanations, which resulted in her learning to materialize bread using magic...\nUpon learning she had been set up to become a hero, she liked helping people but couldn't accept a mission that would send her to her death, so she escaped the kingdom and became a wanderer. Giving up the hero role left her feeling guilty, and with her helpful nature, she worked hard to assist other wanderers. Though her bread-making skills really do need improvement.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2051,
+  "stats": {
+    "initialHP": 1533,
+    "hpAdd": 197.8,
+    "initialAtk": 132,
+    "atkAdd": 16.9,
+    "initialDef": 79,
+    "defAdd": 10.3
+  },
+  "features": [
+    1003,
+    1005
+  ],
+  "normalAtk": {
+    "id": 205100,
+    "name": "Slash",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "133",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 3.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205100,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 205101,
+      "name": "Replenish Stamina",
+      "comment": "Restore 25% HP\n100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205101,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2051011,
+          "buffName": "HP Auto Recovery (M)",
+          "buffValue": "12.5"
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 32.5% HP",
+        "100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)"
+      ],
+      "commentMax": "Restore 32.5% HP\n100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)"
+    },
+    {
+      "id": 205102,
+      "name": "Silence!",
+      "comment": "Deal 89% damage\n100% chance to apply Provoke (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "213",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 6,
+      "targetName": "Enemy Cross",
+      "costST": 0,
+      "addST": 180,
+      "cdRound": 7,
+      "times": 0,
+      "showPower": "小",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205102,
+      "multiplier": 89.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 89.0,
+          "perLevel": 8.9
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2051021,
+          "buffName": "Provoke",
+          "buffValue": null
+        }
+      ],
+      "multiplierPerLevel": 8.9,
+      "effectLines": [
+        "Deal 89% damage",
+        "100% chance to apply Provoke (2 turns)"
+      ],
+      "multiplierMax": 133.5,
+      "effectLinesMax": [
+        "Deal 133.5% damage",
+        "100% chance to apply Provoke (2 turns)"
+      ],
+      "commentMax": "Deal 133.5% damage\n100% chance to apply Provoke (2 turns)"
+    },
+    {
+      "id": 205103,
+      "name": "Bread for Everyone",
+      "comment": "Restore 250 ST",
+      "commentFormat": "对{1}{3}",
+      "icon": "306",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205103,
+      "effects": [
+        {
+          "type": "st_recovery",
+          "value": 250
+        }
+      ],
+      "effectLines": [
+        "Restore 250 ST"
+      ]
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 205104,
+      "name": "Tiny Courage",
+      "comment": "100% chance to apply DEF Up (M) 10% (1 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "609",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 2,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{2}%】以下时触发",
+      "effectGroupId": 205104,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 1,
+          "buffId": 2051041,
+          "buffName": "DEF Up (M)",
+          "buffValue": "10"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply DEF Up (M) 10% (1 turns)"
+      ],
+      "triggerCondition": "When self HP drops below 30%"
+    }
+  ],
+  "aceSkill": {
+    "id": 205107,
+    "name": "EX~Baguette",
+    "comment": "Deal 326% damage\n75% chance to apply Blind (2 turns)",
+    "commentFormat": "对{1}{3}\n．{4}",
+    "icon": "511",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "特",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205107,
+    "multiplier": 326.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 326.0,
+        "perLevel": 32.6
+      },
+      {
+        "type": "buff",
+        "probability": 75,
+        "duration": 2,
+        "buffId": 2051071,
+        "buffName": "Blind",
+        "buffValue": null
+      }
+    ],
+    "multiplierPerLevel": 32.6,
+    "effectLines": [
+      "Deal 326% damage",
+      "75% chance to apply Blind (2 turns)"
+    ],
+    "multiplierMax": 489.0,
+    "effectLinesMax": [
+      "Deal 489.0% damage",
+      "75% chance to apply Blind (2 turns)"
+    ],
+    "commentMax": "Deal 489.0% damage\n75% chance to apply Blind (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 205110,
+      "name": "Cooking",
+      "comment": "100% chance to apply Element DEF Up (S) 10.5%",
+      "commentFormat": "{1}被动效果：\n{3}",
+      "icon": "401",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205110,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2051101,
+          "buffName": "Element DEF Up (S)",
+          "buffValue": "10.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DEF Up (S) 10.5%"
+      ]
+    },
+    {
+      "id": 205111,
+      "name": "Magic Talent",
+      "comment": "100% chance to apply Trait DEF Up (S) 7.0%\n100% chance to apply Trait DEF Up (S) 7.0%",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "403",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205111,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2051111,
+          "buffName": "Trait DEF Up (S)",
+          "buffValue": "7.0"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2051112,
+          "buffName": "Trait DEF Up (S)",
+          "buffValue": "7.0"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DEF Up (S) 7.0%",
+        "100% chance to apply Trait DEF Up (S) 7.0%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/人類_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0.0756,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0.0756,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0.0756,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0.0756,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0.3024,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0.0043,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0.08599999999999998,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0.38839999999999997,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 1,
+  "armsName": "Sword"
+}

@@ -1,0 +1,215 @@
+---
+// Rebellion Gilgamesh Equipment Database Page
+// Displays all equipment with filters (kind, rarity) and table/grid view
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { REBELLION_GILGAMESH_EQUIPMENT } from '../../../../data/rebellion-gilgamesh/equipment.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-equipment-database.css';
+import RGEquipImage from '../../../../components/rebellion-gilgamesh/RGEquipImage.astro';
+import RGEquipKindImage from '../../../../components/rebellion-gilgamesh/RGEquipKindImage.astro';
+import RGEquipRarityImage from '../../../../components/rebellion-gilgamesh/RGEquipRarityImage.astro';
+
+const ssrCount = REBELLION_GILGAMESH_EQUIPMENT.filter(e => e.rareName === 'SSR').length;
+const srCount = REBELLION_GILGAMESH_EQUIPMENT.filter(e => e.rareName === 'SR').length;
+const rCount = REBELLION_GILGAMESH_EQUIPMENT.filter(e => e.rareName === 'R').length;
+const nCount = REBELLION_GILGAMESH_EQUIPMENT.filter(e => e.rareName === 'N').length;
+
+const rarityOrder: Record<string, number> = { SSR: 0, SR: 1, R: 2, N: 3 };
+const kindOrder: Record<string, number> = { Sword: 0, Polearm: 1, Fist: 2, Wand: 3, Bow: 4, Gun: 5 };
+
+const sorted = [...REBELLION_GILGAMESH_EQUIPMENT].sort((a, b) => {
+  if (rarityOrder[a.rareName] !== rarityOrder[b.rareName]) return rarityOrder[a.rareName] - rarityOrder[b.rareName];
+  const ka = kindOrder[a.kindName] ?? 99;
+  const kb = kindOrder[b.kindName] ?? 99;
+  if (ka !== kb) return ka - kb;
+  return a.id - b.id;
+});
+---
+
+<CharacterDatabaseLayout
+  title="Equipment Database - Rebellion Gilgamesh"
+  description="Complete equipment database for Rebellion Gilgamesh. Browse all weapons, armor, and accessories with stats and filters."
+  gameTitle="Equipment Database"
+>
+  <div class="rg-equip-stats-bar">
+    <div class="rg-equip-stats-item">
+      <div class="rg-equip-stats-value">{REBELLION_GILGAMESH_EQUIPMENT.length}</div>
+      <div class="rg-equip-stats-label">Total</div>
+    </div>
+    <div class="rg-equip-stats-divider"></div>
+    <div class="rg-equip-stats-item">
+      <div class="rg-equip-stats-value">{ssrCount}</div>
+      <div class="rg-equip-stats-label">SSR</div>
+    </div>
+    <div class="rg-equip-stats-divider"></div>
+    <div class="rg-equip-stats-item">
+      <div class="rg-equip-stats-value">{srCount}</div>
+      <div class="rg-equip-stats-label">SR</div>
+    </div>
+    <div class="rg-equip-stats-divider"></div>
+    <div class="rg-equip-stats-item">
+      <div class="rg-equip-stats-value">{rCount}</div>
+      <div class="rg-equip-stats-label">R</div>
+    </div>
+    <div class="rg-equip-stats-divider"></div>
+    <div class="rg-equip-stats-item">
+      <div class="rg-equip-stats-value">{nCount}</div>
+      <div class="rg-equip-stats-label">N</div>
+    </div>
+  </div>
+
+  <div class="rg-equip-filter-section">
+    <div class="rg-equip-filter-row">
+      <div class="rg-equip-filter-group">
+        <label class="rg-equip-filter-label">Search</label>
+        <input type="text" id="equip-search" class="rg-equip-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="rg-equip-filter-group">
+        <label class="rg-equip-filter-label">Type</label>
+        <select id="filter-kind" class="rg-equip-filter-input">
+          <option value="">All</option>
+          <option value="Sword">Sword</option>
+          <option value="Polearm">Polearm</option>
+          <option value="Fist">Fist</option>
+          <option value="Wand">Wand</option>
+          <option value="Bow">Bow</option>
+          <option value="Gun">Gun</option>
+        </select>
+      </div>
+      <div class="rg-equip-filter-group">
+        <label class="rg-equip-filter-label">Rarity</label>
+        <select id="filter-rarity" class="rg-equip-filter-input">
+          <option value="">All</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-equip-table-wrapper" id="table-view">
+    <table class="rg-equip-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Rarity</th>
+          <th>ATK</th>
+          <th>DEF</th>
+          <th>HP</th>
+        </tr>
+      </thead>
+      <tbody id="equip-table-body">
+        {sorted.map((equip, i) => (
+          <tr
+            class="equip-row"
+            data-slug={equip.slug}
+            data-name={equip.name.toLowerCase()}
+            data-kind={equip.kindName}
+            data-rarity={equip.rareName}
+            onclick={`window.location.href='/guides/rebellion-gilgamesh/equipment/${encodeURIComponent(equip.slug)}/'`}
+          >
+            <td class="row-num">{i + 1}</td>
+            <td>
+              <RGEquipImage icon={equip.icon} alt={equip.name} width={40} />
+            </td>
+            <td>
+              <div class="rg-equip-table-name">{equip.name}</div>
+            </td>
+            <td>
+              <div class="rg-equip-table-icon-cell">
+                <RGEquipKindImage kind={equip.kind} alt={equip.kindName} width={20} />
+                <span class="rg-equip-table-text">{equip.kindName}</span>
+              </div>
+            </td>
+            <td><RGEquipRarityImage rare={equip.rareName} alt={equip.rareName} width={36} /></td>
+            <td><span class="rg-equip-table-text">{equip.initialAtk || '--'}</span></td>
+            <td><span class="rg-equip-table-text">{equip.initialDef || '--'}</span></td>
+            <td><span class="rg-equip-table-text">{equip.initialHP || '--'}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rg-equip-grid" id="grid-view">
+    {sorted.map((equip) => (
+      <div
+        class="rg-equip-card"
+        data-slug={equip.slug}
+        data-name={equip.name.toLowerCase()}
+        data-kind={equip.kindName}
+        data-rarity={equip.rareName}
+        onclick={`window.location.href='/guides/rebellion-gilgamesh/equipment/${encodeURIComponent(equip.slug)}/'`}
+      >
+        <div class="rg-equip-card-header">
+          <RGEquipImage icon={equip.icon} alt={equip.name} width={80} />
+          <div class="rg-equip-card-info">
+            <div class="rg-equip-card-name">{equip.name}</div>
+            <div class="rg-equip-card-badges">
+              <RGEquipRarityImage rare={equip.rareName} alt={equip.rareName} width={36} />
+              <RGEquipKindImage kind={equip.kind} alt={equip.kindName} width={18} />
+              <span class="rg-equip-table-text">{equip.kindName}</span>
+            </div>
+            <div class="rg-equip-card-stats">
+              {equip.initialAtk > 0 && <span>ATK {equip.initialAtk}</span>}
+              {equip.initialDef > 0 && <span>DEF {equip.initialDef}</span>}
+              {equip.initialHP > 0 && <span>HP {equip.initialHP}</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="rg-equip-no-results" id="no-results">
+    <div class="rg-equip-stats-value">?</div>
+    <div>No equipment found</div>
+    <div class="rg-equip-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('equip-search');
+  const kindFilter = document.getElementById('filter-kind');
+  const rarityFilter = document.getElementById('filter-rarity');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.equip-row');
+  const gridCards = document.querySelectorAll('.rg-equip-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const kind = kindFilter.value;
+    const rarity = rarityFilter.value;
+    let visible = 0;
+
+    tableRows.forEach(row => {
+      const match = matchesFilter(row, search, kind, rarity);
+      row.style.display = match ? '' : 'none';
+      if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
+    });
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, kind, rarity);
+      card.style.display = match ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function matchesFilter(el, search, kind, rarity) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!kind || el.dataset.kind === kind)
+      && (!rarity || el.dataset.rarity === rarity);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  kindFilter.addEventListener('change', applyFilters);
+  rarityFilter.addEventListener('change', applyFilters);
+});
+</script>

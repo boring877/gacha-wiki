@@ -1,0 +1,51 @@
+---
+// RGWeaponImage - Displays weapon type icon for Rebellion Gilgamesh characters
+// Maps ArmsType enum values to weapon icon images
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/weapon/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  arms: number;
+  alt?: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { arms, alt, width = 24, class: className, loading = 'lazy' } = Astro.props;
+
+const weaponMap: Record<number, { file: string; name: string }> = {
+  1: { file: 'sword.png', name: 'Sword' },
+  2: { file: 'polearm.png', name: 'Polearm' },
+  3: { file: 'fist.png', name: 'Fist' },
+  4: { file: 'wand.png', name: 'Wand' },
+  5: { file: 'bow.png', name: 'Bow' },
+  6: { file: 'gun.png', name: 'Gun' },
+  7: { file: 'special-short.png', name: 'Special (Short)' },
+  8: { file: 'special-medium.png', name: 'Special (Medium)' },
+  9: { file: 'special-long.png', name: 'Special (Long)' },
+};
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const entry = weaponMap[arms];
+const imageModule = entry ? findImage(entry.file) : null;
+---
+
+{imageModule ? (
+  <Image
+    src={imageModule}
+    alt={alt || (entry?.name || 'Weapon')}
+    width={width}
+    loading={loading}
+    class={`rg-weapon-img ${className || ''}`}
+  />
+) : null}

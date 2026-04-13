@@ -1,0 +1,225 @@
+---
+// Rebellion Gilgamesh Character Database Page
+// Displays all characters with filters (rarity, element) and table/grid view
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { REBELLION_GILGAMESH_CHARACTERS } from '../../../../data/rebellion-gilgamesh/characters.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-character-database.css';
+import RGCharacterIconImage from '../../../../components/rebellion-gilgamesh/RGCharacterIconImage.astro';
+import RGRarityImage from '../../../../components/rebellion-gilgamesh/RGRarityImage.astro';
+import RGElementImage from '../../../../components/rebellion-gilgamesh/RGElementImage.astro';
+import RGWeaponImage from '../../../../components/rebellion-gilgamesh/RGWeaponImage.astro';
+
+const ssrCount = REBELLION_GILGAMESH_CHARACTERS.filter(c => c.rarity === 'SSR').length;
+const srCount = REBELLION_GILGAMESH_CHARACTERS.filter(c => c.rarity === 'SR').length;
+const rCount = REBELLION_GILGAMESH_CHARACTERS.filter(c => c.rarity === 'R').length;
+
+const sorted = [...REBELLION_GILGAMESH_CHARACTERS].sort((a, b) => {
+  const r = { SSR: 0, SR: 1, R: 2 };
+  if (r[a.rarity] !== r[b.rarity]) return r[a.rarity] - r[b.rarity];
+  return a.name.localeCompare(b.name);
+});
+---
+
+<CharacterDatabaseLayout
+  title="Character Database - Rebellion Gilgamesh"
+  description="Complete character database for Rebellion Gilgamesh. View all characters with rarities, elements, races, and affiliations."
+  gameTitle="Character Database"
+>
+  <div class="rg-char-stats-bar">
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{REBELLION_GILGAMESH_CHARACTERS.length}</div>
+      <div class="rg-char-stats-label">Total</div>
+    </div>
+    <div class="rg-char-stats-divider"></div>
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{ssrCount}</div>
+      <div class="rg-char-stats-label">SSR</div>
+    </div>
+    <div class="rg-char-stats-divider"></div>
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{srCount}</div>
+      <div class="rg-char-stats-label">SR</div>
+    </div>
+    <div class="rg-char-stats-divider"></div>
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{rCount}</div>
+      <div class="rg-char-stats-label">R</div>
+    </div>
+  </div>
+
+  <div class="rg-char-filter-section">
+    <div class="rg-char-filter-row">
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Search</label>
+        <input type="text" id="char-search" class="rg-char-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Rarity</label>
+        <select id="filter-rarity" class="rg-char-filter-input">
+          <option value="">All</option>
+          <option value="SSR">SSR</option>
+          <option value="SR">SR</option>
+          <option value="R">R</option>
+        </select>
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Element</label>
+        <select id="filter-element" class="rg-char-filter-input">
+          <option value="">All</option>
+          <option value="Fire">Fire</option>
+          <option value="Water">Water</option>
+          <option value="Wind">Wind</option>
+          <option value="Earth">Earth</option>
+          <option value="Light">Light</option>
+          <option value="Dark">Dark</option>
+          <option value="None">None</option>
+        </select>
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Weapon</label>
+        <select id="filter-weapon" class="rg-char-filter-input">
+          <option value="">All</option>
+          <option value="Sword">Sword</option>
+          <option value="Polearm">Polearm</option>
+          <option value="Fist">Fist</option>
+          <option value="Wand">Wand</option>
+          <option value="Bow">Bow</option>
+          <option value="Gun">Gun</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-char-table-container" id="table-view">
+    <table class="rg-char-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Portrait</th>
+          <th>Name</th>
+          <th>Rarity</th>
+          <th>Element</th>
+          <th>Weapon</th>
+          <th>HP</th>
+          <th>ATK</th>
+          <th>DEF</th>
+        </tr>
+      </thead>
+      <tbody id="char-table-body">
+        {sorted.map((char, i) => (
+          <tr
+            class="char-row"
+            data-slug={char.slug}
+            data-name={char.name.toLowerCase()}
+            data-rarity={char.rarity}
+            data-element={char.elementName}
+            data-weapon={char.armsName || ''}
+            onclick={`window.location.href='/guides/rebellion-gilgamesh/characters/${char.slug}/'`}
+          >
+            <td class="row-num">{i + 1}</td>
+            <td>
+              <RGCharacterIconImage image={char.image} alt={char.name} width={48} class="rg-char-table-avatar" />
+            </td>
+            <td>
+              <div class="rg-char-table-name">{char.name}</div>
+            </td>
+            <td><RGRarityImage rarity={char.rarity} alt={char.rarity} width={40} /></td>
+            <td>
+              <div class="rg-table-element-cell">
+                <RGElementImage element={char.element} alt={char.elementName} width={24} />
+                <span>{char.elementName}</span>
+              </div>
+            </td>
+            <td>
+              <div class="rg-table-weapon-cell">
+                {char.arms != null && <RGWeaponImage arms={char.arms} width={18} />}
+                <span>{char.armsName || '--'}</span>
+              </div>
+            </td>
+            <td class="rg-char-table-stat">{char.hp || '--'}</td>
+            <td class="rg-char-table-stat">{char.atk || '--'}</td>
+            <td class="rg-char-table-stat">{char.def || '--'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rg-char-grid" id="grid-view">
+    {sorted.map((char) => (
+      <div
+        class="rg-char-card"
+        data-slug={char.slug}
+        data-name={char.name.toLowerCase()}
+        data-rarity={char.rarity}
+        data-element={char.elementName}
+        data-weapon={char.armsName || ''}
+        onclick={`window.location.href='/guides/rebellion-gilgamesh/characters/${char.slug}/'`}
+      >
+        <div class="rg-char-card-header">
+          <RGCharacterIconImage image={char.image} alt={char.name} width={120} class="rg-char-card-avatar" />
+          <div class="rg-char-card-info">
+            <div class="rg-char-card-name">{char.name}</div>
+            <div class="rg-char-card-badges">
+              <RGRarityImage rarity={char.rarity} alt={char.rarity} width={48} />
+              <RGElementImage element={char.element} alt={char.elementName} width={24} class="rg-element-inline" />
+              {char.arms != null && <RGWeaponImage arms={char.arms} width={20} class="rg-weapon-inline" />}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="rg-char-no-results" id="no-results">
+    <div class="rg-char-stats-value">?</div>
+    <div>No characters found</div>
+    <div class="rg-char-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('char-search');
+  const rarityFilter = document.getElementById('filter-rarity');
+  const elementFilter = document.getElementById('filter-element');
+  const weaponFilter = document.getElementById('filter-weapon');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.char-row');
+  const gridCards = document.querySelectorAll('.rg-char-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const rarity = rarityFilter.value;
+    const element = elementFilter.value;
+    const weapon = weaponFilter.value;
+    let visible = 0;
+
+    tableRows.forEach(row => {
+      const match = matchesFilter(row, search, rarity, element, weapon);
+      row.style.display = match ? '' : 'none';
+      if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
+    });
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, rarity, element, weapon);
+      card.style.display = match ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function matchesFilter(el, search, rarity, element, weapon) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!rarity || el.dataset.rarity === rarity)
+      && (!element || el.dataset.element === element)
+      && (!weapon || el.dataset.weapon === weapon);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  rarityFilter.addEventListener('change', applyFilters);
+  elementFilter.addEventListener('change', applyFilters);
+  weaponFilter.addEventListener('change', applyFilters);
+});
+</script>

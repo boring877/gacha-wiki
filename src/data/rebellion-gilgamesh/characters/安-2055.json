@@ -1,0 +1,773 @@
+{
+  "id": 2055,
+  "name": "An Megma",
+  "fullName": "An Megma",
+  "slug": "安-2055",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 1,
+  "elementName": "Fire",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Demon God",
+  "power": "Wanderer",
+  "image": "2055.png",
+  "bookTitle": "Demon God",
+  "bookId": 34,
+  "firstAcquaintance": "An ancient demon god who slumbered for countless years. After awakening, she was severely beaten by the Demon Lord. Now she disguises herself as a firefighter and tries her best to adapt to society.",
+  "personality": "Though she is an ancient being who understands nothing of the modern world, she is essentially a child at heart. Treat her well and she will be very easy to get along with.",
+  "like": "Clay figurines (flame demon design), building blocks, being worshipped",
+  "familiarData": "A certain honorary demon citizen accidentally broke a seal and released the ancient demon god \"Flame Demon Megma.\" Flame Demon Megma prepared to destroy the world, but was coaxed by that honorary demon citizen into attacking the Demon Lord's castle instead.\n\nHowever, just as Flame Demon Megma was about to turn the castle into a living hell, the Demon Lord personally counterattacked. Although the Flame Demon possessed power surpassing the Demon Lord, the Demon Lord's combat skills far exceeded hers, beating her so thoroughly that she fled in doubt of her entire demonic existence.\nWith her power weakened, the Flame Demon's body crumbled, revealing her true form as a little girl. As an ancient being, every modern invention amazes her -- she even mistook a water fountain for a monster.\n\nHer body constantly radiates heat, so she can only wear fireproof firefighter gear as clothing. This leads people to mistake her for a firefighter, but since she can control fire, from another perspective, she is the best firefighter there is.\nTo evade the Demon Lord's pursuit, a certain honorary demon citizen renamed her \"An,\" hoping she would be safe and that she would bring peace of mind to others. An liked the name, tempered her nature, and became a reassuring presence.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2055,
+  "stats": {
+    "initialHP": 1271,
+    "hpAdd": 163.3,
+    "initialAtk": 150,
+    "atkAdd": 19.2,
+    "initialDef": 84,
+    "defAdd": 10.9
+  },
+  "features": [
+    1001,
+    1009,
+    1026
+  ],
+  "normalAtk": {
+    "id": 205500,
+    "name": "Fire Jade",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "102",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 120,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205500,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 205501,
+      "name": "Magma Bullet",
+      "comment": "Deal 122% damage\nBonus Fire damage 100%",
+      "commentFormat": "对{1}{4}\n{3}",
+      "icon": "205",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205501,
+      "multiplier": 122.0,
+      "multiplierPerLevel": 12.2,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 122.0,
+          "perLevel": 12.2
+        },
+        {
+          "type": "element_bonus",
+          "element": "Fire",
+          "value": 100.0
+        }
+      ],
+      "effectLines": [
+        "Deal 122% damage",
+        "Bonus Fire damage 100%"
+      ],
+      "multiplierMax": 183.0,
+      "effectLinesMax": [
+        "Deal 183% damage",
+        "Bonus Fire damage 100%"
+      ],
+      "commentMax": "Deal 183% damage\nBonus Fire damage 100%"
+    },
+    {
+      "id": 205502,
+      "name": "Magma Giant",
+      "comment": "Deal 109.0% damage\n75% chance to apply DEF Down (M) 10% (3 turns)",
+      "commentFormat": "对{1}{3}\n{4}",
+      "icon": "215",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 8,
+      "targetName": "Enemy Line",
+      "costST": 0,
+      "addST": 182,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205502,
+      "multiplier": 109.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 109.0,
+          "perLevel": 10.9
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 3,
+          "buffId": 2055021,
+          "buffName": "DEF Down (M)",
+          "buffValue": "10"
+        }
+      ],
+      "multiplierPerLevel": 10.9,
+      "effectLines": [
+        "Deal 109.0% damage",
+        "75% chance to apply DEF Down (M) 10% (3 turns)"
+      ],
+      "multiplierMax": 163.5,
+      "effectLinesMax": [
+        "Deal 163.5% damage",
+        "75% chance to apply DEF Down (M) 10% (3 turns)"
+      ],
+      "commentMax": "Deal 163.5% damage\n75% chance to apply DEF Down (M) 10% (3 turns)"
+    },
+    {
+      "id": 205503,
+      "name": "Safety First",
+      "comment": "100% chance to apply DEF Up (M) 5% (3 turns)\n100% chance to apply HP Auto Recovery (M) 6% (3 turns)\n100% chance to apply Element DEF Up (S) 8% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "306",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205503,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2055031,
+          "buffName": "DEF Up (M)",
+          "buffValue": "5"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2055032,
+          "buffName": "HP Auto Recovery (M)",
+          "buffValue": "6"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2055033,
+          "buffName": "Element DEF Up (S)",
+          "buffValue": "8"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply DEF Up (M) 5% (3 turns)",
+        "100% chance to apply HP Auto Recovery (M) 6% (3 turns)",
+        "100% chance to apply Element DEF Up (S) 8% (3 turns)"
+      ]
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 205504,
+      "name": "Scorching Burst",
+      "comment": "100% chance to apply Element DMG Up (S) 15% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "302",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 205504,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2055041,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "15"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 15% (2 turns)"
+      ],
+      "triggerCondition": "When self HP is 99% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 205507,
+    "name": "Great Eruption",
+    "comment": "Deal 270% damage",
+    "commentFormat": "对{1}{3}\n",
+    "icon": "502",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 6,
+    "targetName": "Enemy Cross",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 205507,
+    "multiplier": 270.0,
+    "multiplierPerLevel": 27.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 270.0,
+        "perLevel": 27.0
+      }
+    ],
+    "effectLines": [
+      "Deal 270% damage"
+    ],
+    "multiplierMax": 405.0,
+    "effectLinesMax": [
+      "Deal 405.0% damage"
+    ],
+    "commentMax": "Deal 405.0% damage"
+  },
+  "passiveSkills": [
+    {
+      "id": 205510,
+      "name": "Flame Demon",
+      "comment": "100% chance to apply Element DEF Up (S) 8%\n100% chance to apply Element DEF Up (S) 8%",
+      "commentFormat": "对{1}\n{3}\n{4}",
+      "icon": "401",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205510,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2055101,
+          "buffName": "Element DEF Up (S)",
+          "buffValue": "8"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2055102,
+          "buffName": "Element DEF Up (S)",
+          "buffValue": "8"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DEF Up (S) 8%",
+        "100% chance to apply Element DEF Up (S) 8%"
+      ]
+    },
+    {
+      "id": 205511,
+      "name": "Firefighter",
+      "comment": "100% chance to apply Element DMG Up (S) 8%\n100% chance to apply Element DMG Up (S) 8%",
+      "commentFormat": "对{1}\n{3}\n{4}",
+      "icon": "402",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 205511,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2055111,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "8"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2055112,
+          "buffName": "Element DMG Up (S)",
+          "buffValue": "8"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Element DMG Up (S) 8%",
+        "100% chance to apply Element DMG Up (S) 8%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/惡魔_魔族",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 5,
+  "armsName": "Bow"
+}

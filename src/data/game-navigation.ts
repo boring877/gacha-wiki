@@ -170,18 +170,16 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: RGIcon,
     sections: [
       {
-        title: 'Resources',
+        title: 'Characters',
         links: [
-          { name: 'Blog', href: '/guides/rebellion-gilgamesh/blog/' },
+          { name: 'Database', href: '/guides/rebellion-gilgamesh/characters/' },
         ],
       },
       {
-        title: 'Club Management',
-        links: [],
-      },
-      {
-        title: 'Combat',
-        links: [],
+        title: 'Equipment',
+        links: [
+          { name: 'Database', href: '/guides/rebellion-gilgamesh/equipment/' },
+        ],
       },
       {
         title: 'Resources',
@@ -369,6 +367,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Items Database', href: '/guides/star-savior/journey-items/' },
           { name: 'Event Choices', href: '/guides/star-savior/journey/events/' },
+          { name: 'Trajectory Guide', href: '/guides/star-savior/journey/trajectory/' },
         ],
       },
       {

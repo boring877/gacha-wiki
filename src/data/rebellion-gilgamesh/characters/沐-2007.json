@@ -1,0 +1,763 @@
+{
+  "id": 2007,
+  "name": "Mu Rainell",
+  "fullName": "Mu Rainell",
+  "slug": "沐-2007",
+  "rarity": "SSR",
+  "rarityValue": 5,
+  "element": 2,
+  "elementName": "Water",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Elf",
+  "power": "Kingdom Alliance",
+  "image": "2007.png",
+  "bookTitle": "Elven Knight",
+  "bookId": 48,
+  "firstAcquaintance": "A mysterious elf who gives off an ethereal aura. She has a habit of referring to herself using the royal 'we.'",
+  "personality": "She looks just like an elf from a storybook, emotionally detached and otherworldly, but in reality her heart is full of curiosity.",
+  "like": "Golden candy",
+  "familiarData": "Mu Rainell's true identity is a royal descendant of the legitimate elf kingdom, the nominal queen of the elf realm.\nShe was born before the demon invasion. All of her siblings and parents died on the battlefield in the decisive war against the demons.\nShe was sent alone into a sacred domain that only elves can enter, where she grew up accumulating strength and knowledge, hoping to one day reclaim the elf kingdom.\nHowever, the more she learned, the more she understood that the Kingdom Alliance's failures stemmed from internal disunity. Moreover, most elf elders chose to retreat into the forest, while the wanderers who came seeking help were mostly selfish individuals. Repeated disappointments gradually made Mu withdraw into pessimism.\nThrough her encounters with the Hand of Freedom, she grew curious about the world beyond the forest. So she boldly pretended to be kidnapped by the Hand of Freedom, giving herself a reason to leave the forest while also giving other elves a pretext to join the war.\nShe is highly knowledgeable and a master of healing magic. As a side note, the ingredients for the golden candy Mu loves cannot be produced in the sacred domain, which was yet another reason she chose to leave with the Hand of Freedom.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2007,
+  "stats": {
+    "initialHP": 1577,
+    "hpAdd": 202.3,
+    "initialAtk": 106,
+    "atkAdd": 13.6,
+    "initialDef": 99,
+    "defAdd": 12.7
+  },
+  "features": [
+    1007,
+    1025,
+    1034
+  ],
+  "normalAtk": {
+    "id": 200700,
+    "name": "Magic Bullet",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "119",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 121,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 200700,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 200701,
+      "name": "Elven Verse",
+      "comment": "Restore 15% HP\n100% chance to apply ATK Up 25% (3 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "小",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200701,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 15.0,
+          "perLevel": 0.9
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2007011,
+          "buffName": "ATK Up",
+          "buffValue": "25"
+        }
+      ],
+      "effectLines": [
+        "Restore 15% HP",
+        "100% chance to apply ATK Up 25% (3 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 19.5% HP",
+        "100% chance to apply ATK Up 25% (3 turns)"
+      ],
+      "commentMax": "Restore 19.5% HP\n100% chance to apply ATK Up 25% (3 turns)"
+    },
+    {
+      "id": 200702,
+      "name": "Ancient Ballad",
+      "comment": "Restore 15% HP\n100% chance to apply ST Recovery Up (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 179,
+      "cdRound": 8,
+      "times": 0,
+      "showPower": "小",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200702,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 15.0,
+          "perLevel": 0.9
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2007021,
+          "buffName": "ST Recovery Up",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "Restore 15% HP",
+        "100% chance to apply ST Recovery Up (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 19.5% HP",
+        "100% chance to apply ST Recovery Up (2 turns)"
+      ],
+      "commentMax": "Restore 19.5% HP\n100% chance to apply ST Recovery Up (2 turns)"
+    },
+    {
+      "id": 200703,
+      "name": "Mana Bomb",
+      "comment": "Deal 127% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "206",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 9,
+      "targetName": "Enemy Row",
+      "costST": 0,
+      "addST": 183,
+      "cdRound": 4,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200703,
+      "multiplier": 127.0,
+      "multiplierPerLevel": 12.7,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 127.0,
+          "perLevel": 12.7
+        }
+      ],
+      "effectLines": [
+        "Deal 127% damage"
+      ],
+      "multiplierMax": 190.5,
+      "effectLinesMax": [
+        "Deal 190.5% damage"
+      ],
+      "commentMax": "Deal 190.5% damage"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 200704,
+      "name": "Forest's Will",
+      "comment": "100% chance to apply DMG Taken Down (3 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n{2}",
+      "icon": "609",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 5,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{2}%】以下时触发",
+      "effectGroupId": 200704,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2007041,
+          "buffName": "DMG Taken Down",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply DMG Taken Down (3 turns)"
+      ],
+      "triggerCondition": "When self HP drops below 30%"
+    }
+  ],
+  "aceSkill": {
+    "id": 200707,
+    "name": "Last Sanctuary",
+    "comment": "Restore 30% HP\n100% chance to apply CRIT DMG Up 20% (2 turns)",
+    "commentFormat": "对{1}{3}\n．{4}",
+    "icon": "514",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 4,
+    "targetName": "All Allies",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 200707,
+    "effects": [
+      {
+        "type": "heal",
+        "value": 30.0,
+        "perLevel": 1.8
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 2,
+        "buffId": 2007071,
+        "buffName": "CRIT DMG Up",
+        "buffValue": "20"
+      }
+    ],
+    "effectLines": [
+      "Restore 30% HP",
+      "100% chance to apply CRIT DMG Up 20% (2 turns)"
+    ],
+    "effectLinesMax": [
+      "Restore 39% HP",
+      "100% chance to apply CRIT DMG Up 20% (2 turns)"
+    ],
+    "commentMax": "Restore 39% HP\n100% chance to apply CRIT DMG Up 20% (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 200710,
+      "name": "Elven Eye",
+      "comment": "100% chance to apply Trait DMG Up (S) 21%\n100% chance to apply ST Recovery Up (M)",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "404",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200710,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2007101,
+          "buffName": "Trait DMG Up (S)",
+          "buffValue": "21"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2007102,
+          "buffName": "ST Recovery Up (M)",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DMG Up (S) 21%",
+        "100% chance to apply ST Recovery Up (M)"
+      ]
+    },
+    {
+      "id": 200711,
+      "name": "Sacred Legacy",
+      "comment": "100% chance to apply Trait DEF Up (S) 7.0%\n100% chance to apply ST Recovery Up (M)",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "403",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200711,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2007111,
+          "buffName": "Trait DEF Up (S)",
+          "buffValue": "7.0"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2007112,
+          "buffName": "ST Recovery Up (M)",
+          "buffValue": null
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DEF Up (S) 7.0%",
+        "100% chance to apply ST Recovery Up (M)"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/精靈_王國",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0.0555,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0.0555,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0.0555,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0.0555,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0.222,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0.0032,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0.06400000000000002,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0.28600000000000003,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

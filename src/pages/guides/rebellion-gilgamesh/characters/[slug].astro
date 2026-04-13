@@ -1,0 +1,506 @@
+---
+import CharacterDetailLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDetailLayout.astro';
+import { REBELLION_GILGAMESH_CHARACTERS } from '../../../../data/rebellion-gilgamesh/characters.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-character-detail.css';
+import RGCharacterImage from '../../../../components/rebellion-gilgamesh/RGCharacterImage.astro';
+import RGRarityImage from '../../../../components/rebellion-gilgamesh/RGRarityImage.astro';
+import RGElementImage from '../../../../components/rebellion-gilgamesh/RGElementImage.astro';
+import RGSkillImage from '../../../../components/rebellion-gilgamesh/RGSkillImage.astro';
+import RGWeaponImage from '../../../../components/rebellion-gilgamesh/RGWeaponImage.astro';
+
+export function getStaticPaths() {
+  return REBELLION_GILGAMESH_CHARACTERS.map((c) => ({
+    params: { slug: c.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const charInfo = REBELLION_GILGAMESH_CHARACTERS.find((c: any) => c.slug === slug);
+
+if (!charInfo) {
+  return Astro.redirect('/guides/rebellion-gilgamesh/characters/');
+}
+
+const data = (await import(`../../../../data/rebellion-gilgamesh/characters/${slug}.json`)).default || {};
+
+const description = `${data.name || charInfo.name} - ${data.rarity || charInfo.rarity} character in Rebellion Gilgamesh.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh/' },
+  { name: 'Character Database', url: '/guides/rebellion-gilgamesh/characters/' },
+  { name: data.name || charInfo.name, url: '' },
+];
+
+const normalAtk = data.normalAtk || null;
+const activeSkills: any[] = data.activeSkills || [];
+const triggerSkills: any[] = data.triggerSkills || [];
+const aceSkill = data.aceSkill || null;
+const passiveSkills: any[] = data.passiveSkills || [];
+const stats = data.stats || {};
+const maxLevel = 80;
+const hp80 = stats.initialHP ? Math.round(stats.initialHP + stats.hpAdd * (maxLevel - 1)) : 0;
+const atk80 = stats.initialAtk ? Math.round(stats.initialAtk + stats.atkAdd * (maxLevel - 1)) : 0;
+const def80 = stats.initialDef ? Math.round(stats.initialDef + stats.defAdd * (maxLevel - 1)) : 0;
+
+const BASE_CRT = 5;
+const BASE_CRD = 150;
+
+const rankUp = data.rankUp || { levels: [], max: {} };
+const breakthrough = data.breakthrough || { levels: [], max: {} };
+
+const crdMax = (BASE_CRD + (data.combinedStats?.critDamage || 0) * 100) / 100;
+const totalBonus: any = data.combinedStats || {};
+const hpRecoverMax = Math.round((data.combinedStats?.hpRecover || 0) * 100) / 100;
+const stRecoverMax = Math.round((data.combinedStats?.stRecover || 0) * 100) / 100;
+const stAddMax = Math.round((data.combinedStats?.stAdd || 0) * 100) / 100;
+const negBuffHitMax = data.combinedStats?.negativeBuffHit || 0;
+const antiNegBuffMax = data.combinedStats?.antiNegativeBuff || 0;
+
+const STAT_LABELS: Record<string, string> = {
+  hp: 'HP', atk: 'ATK', def: 'DEF', crit: 'CRT', critDamage: 'CRD',
+  hpRecover: 'HP Recovery', stRecover: 'ST Recovery', stAdd: 'ST Increase',
+  negativeBuffHit: 'Abnormal Hit Rate', antiNegativeBuff: 'Abnormal Resistance',
+  initialST: 'Initial ST',
+};
+const STAT_FIELDS = Object.keys(STAT_LABELS);
+const isPercent = (k: string) => !['hpRecover', 'stRecover', 'stAdd', 'initialST'].includes(k);
+const fmtStat = (v: number, k: string) => v === 0 ? '0' : isPercent(k) ? `${(v * 100).toFixed(2)}%` : `${v}`;
+const hasNonZero = (levels: any[]) => levels.some((l: any) => STAT_FIELDS.some((k: string) => (l[k] || 0) !== 0));
+
+const hasMaxData = [normalAtk, aceSkill, ...activeSkills, ...passiveSkills, ...triggerSkills]
+  .filter(Boolean).some((s: any) => s.commentMax);
+---
+
+<CharacterDetailLayout
+  title={data.name || charInfo.name}
+  description={description}
+  gameTitle={data.name || charInfo.name}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="rg-detail-hero">
+    <div class="rg-detail-portrait">
+      <div class="rg-detail-portrait-wrapper">
+        <RGCharacterImage image={data.image || charInfo.image} alt={data.name || charInfo.name} width={300} />
+      </div>
+    </div>
+    <div class="rg-detail-info">
+      <h2 class="rg-detail-name">{data.fullName || data.name || charInfo.name}</h2>
+      <div class="rg-detail-meta">
+        <RGRarityImage rarity={data.rarity || charInfo.rarity} alt={data.rarity || charInfo.rarity} width={64} />
+        <RGElementImage element={data.element ?? charInfo.element} alt={data.elementName || charInfo.elementName} width={36} />
+      </div>
+      <div class="rg-detail-badges">
+        {data.armsName && (
+          <div class="rg-detail-tag">
+            <span class="rg-detail-tag-label">Weapon</span>
+            <span class="rg-detail-tag-value rg-detail-tag-weapon">
+              <RGWeaponImage arms={data.arms} width={18} />
+              <span>{data.armsName}</span>
+            </span>
+          </div>
+        )}
+        {data.genderName && (
+          <div class="rg-detail-tag">
+            <span class="rg-detail-tag-label">Gender</span>
+            <span class="rg-detail-tag-value">{data.genderName}</span>
+          </div>
+        )}
+        {data.race && (
+          <div class="rg-detail-tag">
+            <span class="rg-detail-tag-label">Race</span>
+            <span class="rg-detail-tag-value">{data.race}</span>
+          </div>
+        )}
+        {data.power && (
+          <div class="rg-detail-tag">
+            <span class="rg-detail-tag-label">Affiliation</span>
+            <span class="rg-detail-tag-value">{data.power}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {stats.initialHP && (
+    <section class="content-section">
+      <h2 class="section-title">Stats</h2>
+      <table class="rg-detail-stats-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Base (Lv.1)</th>
+            <th>Max (Lv.80)</th>
+            <th>Growth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rg-stat-label">HP</td>
+            <td>{stats.initialHP}</td>
+            <td class="rg-stat-max">{hp80}</td>
+            <td class="rg-stat-growth">+{stats.hpAdd}/lv</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">ATK</td>
+            <td>{stats.initialAtk}</td>
+            <td class="rg-stat-max">{atk80}</td>
+            <td class="rg-stat-growth">+{stats.atkAdd}/lv</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">DEF</td>
+            <td>{stats.initialDef}</td>
+            <td class="rg-stat-max">{def80}</td>
+            <td class="rg-stat-growth">+{stats.defAdd}/lv</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">CRT</td>
+            <td>5.00%</td>
+            <td class="rg-stat-max">5.00%</td>
+            <td class="rg-stat-growth">-</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">CRD</td>
+            <td>150.00%</td>
+            <td class="rg-stat-max">{(crdMax * 100).toFixed(2)}%</td>
+            <td class="rg-stat-growth">{totalBonus.critDamage ? `+${(totalBonus.critDamage * 100).toFixed(2)}%` : '-'}</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">HP Recovery</td>
+            <td>0</td>
+            <td class="rg-stat-max">{hpRecoverMax || 0}</td>
+            <td class="rg-stat-growth">{hpRecoverMax ? `+${hpRecoverMax}` : '-'}</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">ST Recovery</td>
+            <td>0</td>
+            <td class="rg-stat-max">{stRecoverMax || 0}</td>
+            <td class="rg-stat-growth">{stRecoverMax ? `+${stRecoverMax}` : '-'}</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">ST Increase</td>
+            <td>0</td>
+            <td class="rg-stat-max">{stAddMax || 0}</td>
+            <td class="rg-stat-growth">{stAddMax ? `+${stAddMax}` : '-'}</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">Abnormal Hit Rate</td>
+            <td>0.00%</td>
+            <td class="rg-stat-max">{(negBuffHitMax * 100).toFixed(2)}%</td>
+            <td class="rg-stat-growth">{negBuffHitMax ? `+${(negBuffHitMax * 100).toFixed(2)}%` : '-'}</td>
+          </tr>
+          <tr>
+            <td class="rg-stat-label">Abnormal Resistance</td>
+            <td>0.00%</td>
+            <td class="rg-stat-max">{(antiNegBuffMax * 100).toFixed(2)}%</td>
+            <td class="rg-stat-growth">{antiNegBuffMax ? `+${(antiNegBuffMax * 100).toFixed(2)}%` : '-'}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  )}
+
+  {rankUp.levels?.length > 0 && hasNonZero(rankUp.levels) && (
+    <section class="content-section">
+      <h2 class="section-title">Rank Up Bonuses</h2>
+      <p class="rg-progression-note">Unlocks at character level milestones (Lv.20, 40, 60, 70, 80).</p>
+      <div class="rg-progression-table-wrap">
+        <table class="rg-detail-stats-table rg-progression-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              {STAT_FIELDS.filter((k: string) => (rankUp.max as any)[k] || rankUp.levels.some((l: any) => (l[k] || 0) !== 0)).map((k: string) => (
+                <th>{STAT_LABELS[k]}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rankUp.levels.map((lvl: any, i: number) => {
+              const activeKeys = STAT_FIELDS.filter((k: string) => (rankUp.max as any)[k] || rankUp.levels.some((l: any) => (l[k] || 0) !== 0));
+              return (
+                <tr>
+                  <td class="rg-stat-label">Rank {lvl.level}</td>
+                  {activeKeys.map((k: string) => (
+                    <td class={(lvl[k] || 0) !== 0 ? 'rg-stat-max' : ''}>{fmtStat(lvl[k] || 0, k)}</td>
+                  ))}
+                </tr>
+              );
+            })}
+            <tr class="rg-progression-total">
+              <td class="rg-stat-label">Total</td>
+              {STAT_FIELDS.filter((k: string) => (rankUp.max as any)[k] || rankUp.levels.some((l: any) => (l[k] || 0) !== 0)).map((k: string) => (
+                <td class="rg-stat-max">{fmtStat((rankUp.max as any)[k] || 0, k)}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {breakthrough.levels?.length > 0 && hasNonZero(breakthrough.levels) && (
+    <section class="content-section">
+      <h2 class="section-title">Breakthrough Bonuses</h2>
+      <p class="rg-progression-note">Dupe system -- 20 breakthrough levels from duplicate copies.</p>
+      <div class="rg-progression-table-wrap">
+        <table class="rg-detail-stats-table rg-progression-table rg-progression-table--compact">
+          <thead>
+            <tr>
+              <th>BT Lv.</th>
+              {STAT_FIELDS.filter((k: string) => (breakthrough.max as any)[k] || breakthrough.levels.some((l: any) => (l[k] || 0) !== 0)).map((k: string) => (
+                <th>{STAT_LABELS[k]}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {breakthrough.levels.map((lvl: any) => {
+              const activeKeys = STAT_FIELDS.filter((k: string) => (breakthrough.max as any)[k] || breakthrough.levels.some((l: any) => (l[k] || 0) !== 0));
+              return (
+                <tr>
+                  <td class="rg-stat-label">{lvl.level}</td>
+                  {activeKeys.map((k: string) => (
+                    <td class={(lvl[k] || 0) !== 0 ? 'rg-stat-max' : ''}>{fmtStat(lvl[k] || 0, k)}</td>
+                  ))}
+                </tr>
+              );
+            })}
+            <tr class="rg-progression-total">
+              <td class="rg-stat-label">Total</td>
+              {STAT_FIELDS.filter((k: string) => (breakthrough.max as any)[k] || breakthrough.levels.some((l: any) => (l[k] || 0) !== 0)).map((k: string) => (
+                <td class="rg-stat-max">{fmtStat((breakthrough.max as any)[k] || 0, k)}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {hasMaxData && (
+    <div class="rg-level-toggle-wrap">
+      <button id="rg-level-toggle" class="rg-level-toggle" data-level="1">
+        <span class="rg-level-toggle-label rg-level-toggle-active">Lv.1</span>
+        <span class="rg-level-toggle-separator">/</span>
+        <span class="rg-level-toggle-label">Max Level</span>
+      </button>
+    </div>
+  )}
+
+  {normalAtk && (
+    <section class="content-section">
+      <h2 class="section-title">Normal Attack</h2>
+      <div class="rg-detail-skills-list">
+        <div class="rg-detail-skill-card"
+          data-comment-lv1={normalAtk.comment}
+          data-comment-max={normalAtk.commentMax || normalAtk.comment}
+          data-mult-lv1={normalAtk.multiplier?.toString()}
+          data-mult-max={normalAtk.multiplierMax?.toString() || normalAtk.multiplier?.toString()}>
+          <RGSkillImage icon={normalAtk.icon} element={data.element ?? charInfo.element} alt={normalAtk.name} width={48} />
+          <div class="rg-detail-skill-info">
+            <div class="rg-detail-skill-name">{normalAtk.name}</div>
+            <div class="rg-detail-skill-desc">
+              {normalAtk.comment.split('\n').map((line: string) => line ? <div class="rg-detail-skill-effect-line">{line}</div> : null)}
+            </div>
+            <div class="rg-detail-skill-meta">
+              {normalAtk.multiplier && <span class="rg-detail-skill-meta-tag rg-tag-mult">{normalAtk.multiplier}%</span>}
+              {normalAtk.targetName && <span class="rg-detail-skill-meta-tag">{normalAtk.targetName}</span>}
+              {normalAtk.addST > 0 && <span class="rg-detail-skill-meta-tag">ST Gain: +{normalAtk.addST}</span>}
+              {normalAtk.costST > 0 && <span class="rg-detail-skill-meta-tag">ST Cost: {normalAtk.costST}</span>}
+              {normalAtk.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {normalAtk.cdRound}</span>}
+              {normalAtk.attackDistance > 0 && <span class="rg-detail-skill-meta-tag">Range: {normalAtk.attackDistance}</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {activeSkills.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Active Skills</h2>
+      <div class="rg-detail-skills-list">
+        {activeSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card"
+            data-comment-lv1={skill.comment}
+            data-comment-max={skill.commentMax || skill.comment}
+            data-mult-lv1={skill.multiplier?.toString()}
+            data-mult-max={skill.multiplierMax?.toString() || skill.multiplier?.toString()}>
+            <RGSkillImage icon={skill.icon} element={data.element ?? charInfo.element} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">
+                {skill.comment.split('\n').map((line: string) => line ? <div class="rg-detail-skill-effect-line">{line}</div> : null)}
+              </div>
+              <div class="rg-detail-skill-meta">
+                {skill.multiplier && <span class="rg-detail-skill-meta-tag rg-tag-mult">{skill.multiplier}%</span>}
+                {skill.targetName && <span class="rg-detail-skill-meta-tag">{skill.targetName}</span>}
+                {skill.addST > 0 && <span class="rg-detail-skill-meta-tag">ST Gain: +{skill.addST}</span>}
+                {skill.costST > 0 && <span class="rg-detail-skill-meta-tag">ST Cost: {skill.costST}</span>}
+                {skill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {skill.cdRound}</span>}
+                {skill.attackDistance > 0 && <span class="rg-detail-skill-meta-tag">Range: {skill.attackDistance}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {aceSkill && (
+    <section class="content-section">
+      <h2 class="section-title">Ultimate Skill</h2>
+      <div class="rg-detail-skills-list">
+        <div class="rg-detail-skill-card rg-detail-skill-card--ace"
+          data-comment-lv1={aceSkill.comment}
+          data-comment-max={aceSkill.commentMax || aceSkill.comment}
+          data-mult-lv1={aceSkill.multiplier?.toString()}
+          data-mult-max={aceSkill.multiplierMax?.toString() || aceSkill.multiplier?.toString()}>
+          <RGSkillImage icon={aceSkill.icon} element={data.element ?? charInfo.element} alt={aceSkill.name} width={48} />
+          <div class="rg-detail-skill-info">
+            <div class="rg-detail-skill-name">{aceSkill.name}</div>
+            <div class="rg-detail-skill-desc">
+              {aceSkill.comment.split('\n').map((line: string) => line ? <div class="rg-detail-skill-effect-line">{line}</div> : null)}
+            </div>
+            <div class="rg-detail-skill-meta">
+              {aceSkill.multiplier && <span class="rg-detail-skill-meta-tag rg-tag-mult">{aceSkill.multiplier}%</span>}
+              {aceSkill.targetName && <span class="rg-detail-skill-meta-tag">{aceSkill.targetName}</span>}
+              {aceSkill.costST > 0 && <span class="rg-detail-skill-meta-tag">ST Cost: {aceSkill.costST}</span>}
+              {aceSkill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {aceSkill.cdRound}</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {passiveSkills.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Passive Skills</h2>
+      <div class="rg-detail-skills-list">
+        {passiveSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card"
+            data-comment-lv1={skill.comment}
+            data-comment-max={skill.commentMax || skill.comment}
+            data-mult-lv1={skill.multiplier?.toString()}
+            data-mult-max={skill.multiplierMax?.toString() || skill.multiplier?.toString()}>
+            <RGSkillImage icon={skill.icon} element={data.element ?? charInfo.element} skillType={5} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">
+                {skill.comment.split('\n').map((line: string) => line ? <div class="rg-detail-skill-effect-line">{line}</div> : null)}
+              </div>
+              <div class="rg-detail-skill-meta">
+                {skill.multiplier && <span class="rg-detail-skill-meta-tag rg-tag-mult">{skill.multiplier}%</span>}
+                {skill.targetName && <span class="rg-detail-skill-meta-tag">{skill.targetName}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {triggerSkills.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">Trigger Skills</h2>
+      <div class="rg-detail-skills-list">
+        {triggerSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card"
+            data-comment-lv1={skill.comment}
+            data-comment-max={skill.commentMax || skill.comment}
+            data-mult-lv1={skill.multiplier?.toString()}
+            data-mult-max={skill.multiplierMax?.toString() || skill.multiplier?.toString()}>
+            <RGSkillImage icon={skill.icon} element={data.element ?? charInfo.element} skillType={3} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              {skill.triggerCondition && <div class="rg-detail-skill-trigger">Trigger: {skill.triggerCondition}</div>}
+              <div class="rg-detail-skill-desc">
+                {skill.comment.split('\n').map((line: string) => line ? <div class="rg-detail-skill-effect-line">{line}</div> : null)}
+              </div>
+              <div class="rg-detail-skill-meta">
+                {skill.multiplier && <span class="rg-detail-skill-meta-tag rg-tag-mult">{skill.multiplier}%</span>}
+                {skill.targetName && <span class="rg-detail-skill-meta-tag">{skill.targetName}</span>}
+                {skill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {skill.cdRound}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {(data.firstAcquaintance || data.personality || data.like || data.familiarData) && (
+    <section class="content-section">
+      <h2 class="section-title">Lore</h2>
+      {data.firstAcquaintance && (
+        <div class="rg-detail-lore-block">
+          <h3 class="rg-detail-lore-label">First Acquaintance</h3>
+          <div class="rg-detail-lore">{data.firstAcquaintance}</div>
+        </div>
+      )}
+      {data.personality && (
+        <div class="rg-detail-lore-block">
+          <h3 class="rg-detail-lore-label">Personality</h3>
+          <div class="rg-detail-lore">{data.personality}</div>
+        </div>
+      )}
+      {data.like && (
+        <div class="rg-detail-lore-block">
+          <h3 class="rg-detail-lore-label">Likes</h3>
+          <div class="rg-detail-lore">{data.like}</div>
+        </div>
+      )}
+      {data.familiarData && (
+        <div class="rg-detail-lore-block">
+          <h3 class="rg-detail-lore-label">Familiar</h3>
+          <div class="rg-detail-lore">
+            {data.familiarData.split('\n').map((line: string) => line ? <p>{line}</p> : <br />)}
+          </div>
+        </div>
+      )}
+    </section>
+  )}
+</CharacterDetailLayout>
+
+{hasMaxData && (
+  <script>
+    function initLevelToggle() {
+      const btn = document.getElementById('rg-level-toggle');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const current = btn.getAttribute('data-level');
+        const isMax = current === 'max';
+        const next = isMax ? '1' : 'max';
+        btn.setAttribute('data-level', next);
+
+        const labels = btn.querySelectorAll('.rg-level-toggle-label');
+        labels.forEach((l) => l.classList.toggle('rg-level-toggle-active'));
+
+        document.querySelectorAll('.rg-detail-skill-card[data-comment-lv1]').forEach((card) => {
+          const el = card as HTMLElement;
+          const comment = isMax ? el.dataset.commentLv1! : el.dataset.commentMax!;
+          const mult = isMax ? el.dataset.multLv1 : el.dataset.multMax;
+
+          const desc = el.querySelector('.rg-detail-skill-desc');
+          if (desc && comment) {
+            desc.innerHTML = comment.split('\n')
+              .filter((line: string) => line.trim())
+              .map((line: string) => `<div class="rg-detail-skill-effect-line">${line}</div>`)
+              .join('');
+          }
+
+          const multTag = el.querySelector('.rg-tag-mult');
+          if (multTag && mult) {
+            multTag.textContent = mult + '%';
+          }
+        });
+      });
+    }
+
+    initLevelToggle();
+    document.addEventListener('astro:after-swap', initLevelToggle);
+  </script>
+)}

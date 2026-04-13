@@ -1,0 +1,85 @@
+---
+// Rebellion Gilgamesh rarity badge image component
+// Displays rarity badges (R, SR, SSR) from assets/images/games/rebellion-gilgamesh/rarity/
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/rarity/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  rarity: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { rarity, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
+
+const rarityMap: Record<string, string> = {
+  'R': 'R.png',
+  'SR': 'SR.png',
+  'SSR': 'SSR.png',
+};
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(rarityMap[rarity] || '');
+---
+
+{imageModule ? (
+  <div class={`rg-rarity-wrapper ${className || ''}`} style={`--rg-rarity-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-rarity-img"
+    />
+  </div>
+) : (
+  <div class={`rg-rarity-fallback ${className || ''}`} style={`--rg-rarity-width: ${width}px`}>
+    <span>{rarity || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-rarity-wrapper {
+    width: var(--rg-rarity-width, 64px);
+    height: var(--rg-rarity-width, 64px);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-rarity-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .rg-rarity-fallback {
+    width: var(--rg-rarity-width, 64px);
+    height: var(--rg-rarity-width, 64px);
+    border-radius: var(--rg-radius-sm, 4px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: var(--rg-font-bold, 700);
+    color: var(--rg-text-muted);
+  }
+</style>

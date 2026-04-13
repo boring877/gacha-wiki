@@ -1,0 +1,81 @@
+---
+// Rebellion Gilgamesh character battle icon image component
+// Displays hero battle icons from assets/images/games/rebellion-gilgamesh/character-icons/
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/character-icons/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  image?: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { image, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(image || '');
+---
+
+{imageModule ? (
+  <div class={`rg-char-icon-wrapper ${className || ''}`} style={`--rg-char-icon-size: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-char-icon-img"
+    />
+  </div>
+) : (
+  <div class={`rg-char-icon-fallback ${className || ''}`} style={`--rg-char-icon-size: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-char-icon-wrapper {
+    width: var(--rg-char-icon-size, 64px);
+    height: var(--rg-char-icon-size, 64px);
+    border-radius: var(--rg-radius-sm, 4px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-char-icon-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .rg-char-icon-fallback {
+    width: var(--rg-char-icon-size, 64px);
+    height: var(--rg-char-icon-size, 64px);
+    border-radius: var(--rg-radius-sm, 4px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--rg-text-muted);
+  }
+</style>

@@ -1,0 +1,592 @@
+/* Rebellion Gilgamesh Character Detail Page Styles */
+/* Character detail page with hero section, stats, skills, and lore */
+
+.rg-level-toggle-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.rg-level-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--rg-text-secondary);
+}
+
+.rg-level-toggle-label {
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.rg-level-toggle-active {
+  opacity: 1;
+  font-weight: 600;
+  color: var(--rg-accent);
+}
+
+.rg-level-toggle-separator {
+  opacity: 0.3;
+}
+
+.rg-detail-container {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.rg-detail-hero {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-lg);
+}
+
+.rg-detail-portrait {
+  width: 400px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.rg-detail-portrait-wrapper {
+  border-radius: var(--rg-radius-md);
+  overflow: hidden;
+  background: var(--rg-bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rg-detail-portrait-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rg-detail-info {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0;
+}
+
+.rg-detail-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.rg-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.rg-detail-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.rg-detail-tag-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-detail-tag-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--rg-text-primary);
+}
+
+.rg-detail-tag-weapon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.rg-detail-tag-weapon .rg-weapon-img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.rg-detail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.rg-detail-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--rg-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.rg-detail-badge-legendary {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--rg-legendary);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.rg-detail-badge-epic {
+  background: rgba(194, 107, 107, 0.15);
+  color: var(--rg-epic);
+  border: 1px solid rgba(194, 107, 107, 0.3);
+}
+
+.rg-detail-badge-rare {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--rg-rare);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.rg-detail-badge-common {
+  background: rgba(156, 163, 175, 0.15);
+  color: var(--rg-common);
+  border: 1px solid rgba(156, 163, 175, 0.3);
+}
+
+.rg-detail-section {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-lg);
+}
+
+.rg-detail-section-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rg-border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-detail-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.rg-detail-stats-table th {
+  text-align: left;
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rg-border);
+}
+
+.rg-detail-stats-table td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--rg-border);
+  color: var(--rg-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rg-detail-stats-table .rg-stat-label {
+  font-weight: 700;
+  color: var(--rg-text-primary);
+  font-size: 0.875rem;
+}
+
+.rg-detail-stats-table .rg-stat-max {
+  font-weight: 700;
+  color: var(--rg-accent);
+}
+
+.rg-detail-stats-table .rg-stat-growth {
+  color: var(--rg-text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.rg-detail-stats-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rg-detail-stats-table tbody tr:hover {
+  background: transparent;
+}
+
+/* old grid layout kept for reference */
+.rg-detail-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.rg-detail-stat-item {
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.rg-detail-stat-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.rg-detail-stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--rg-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rg-detail-stat-growth {
+  font-size: 0.6875rem;
+  color: var(--rg-accent);
+  margin-top: 0.25rem;
+}
+
+.rg-detail-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rg-detail-skill-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+}
+
+.rg-detail-skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--rg-bg-tertiary);
+  border: 1px solid var(--rg-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.rg-detail-skill-icon img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.rg-detail-skill-icon span {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--rg-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-detail-skill-card--ace .rg-detail-skill-icon {
+  background: var(--rg-accent);
+  border-color: var(--rg-accent);
+}
+
+.rg-detail-skill-card--ace .rg-detail-skill-icon span {
+  color: #1a1a2e;
+}
+
+.rg-detail-skill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rg-detail-skill-trigger {
+  font-size: 0.8125rem;
+  color: var(--rg-accent);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.rg-detail-skill-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin-bottom: 0.25rem;
+}
+
+.rg-detail-skill-desc {
+  font-size: 0.9375rem;
+  color: var(--rg-text-secondary);
+  line-height: 1.6;
+}
+
+.rg-detail-skill-effect-line {
+  padding: 0.15rem 0;
+}
+
+.rg-detail-skill-effect-line::before {
+  content: "• ";
+  color: var(--rg-text-muted);
+}
+
+.rg-detail-skill-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.rg-detail-skill-meta-tag {
+  font-size: 0.75rem;
+  color: var(--rg-text-tertiary);
+  background: var(--rg-bg-tertiary);
+  border: 1px solid var(--rg-border);
+  border-radius: 3px;
+  padding: 0.125rem 0.5rem;
+}
+
+.rg-tag-mult {
+  color: #fff;
+  background: #e74c3c;
+  border-color: #c0392b;
+  font-weight: 700;
+  font-size: 0.8125rem;
+}
+
+.rg-detail-lore {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--rg-text-secondary);
+}
+
+.rg-detail-lore-block {
+  margin-bottom: 1.25rem;
+}
+
+.rg-detail-lore-block:last-child {
+  margin-bottom: 0;
+}
+
+.rg-detail-lore-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rg-accent);
+  margin-bottom: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-detail-lore p {
+  margin: 0 0 0.75rem;
+}
+
+.rg-detail-lore p:last-child {
+  margin-bottom: 0;
+}
+
+.rg-detail-overview {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--rg-text-secondary);
+}
+
+.rg-detail-overview p {
+  margin: 0 0 0.5rem;
+}
+
+.rg-detail-overview p:last-child {
+  margin-bottom: 0;
+}
+
+.rg-progression-note {
+  font-size: 0.8125rem;
+  color: var(--rg-text-tertiary);
+  margin: 0 0 0.75rem;
+  font-style: italic;
+}
+
+.rg-progression-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rg-progression-table th,
+.rg-progression-table td {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.625rem;
+  white-space: nowrap;
+}
+
+.rg-progression-table--compact th,
+.rg-progression-table--compact td {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.rg-progression-total {
+  border-top: 2px solid var(--rg-accent);
+}
+
+.rg-progression-total td {
+  font-weight: 700;
+  color: var(--rg-accent);
+}
+
+@media (max-width: 768px) {
+  .rg-detail-hero {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .rg-detail-portrait {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .rg-detail-name {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .rg-detail-meta {
+    justify-content: center;
+  }
+
+  .rg-detail-badges {
+    justify-content: center;
+  }
+
+  .rg-detail-stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+
+  .rg-progression-table-wrap {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .rg-detail-hero {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    border-radius: var(--rg-radius-md);
+  }
+
+  .rg-detail-portrait {
+    max-width: 300px;
+  }
+
+  .rg-detail-name {
+    font-size: 1.25rem;
+  }
+
+  .rg-detail-section {
+    padding: 0.875rem;
+    border-radius: var(--rg-radius-md);
+    margin-bottom: 1.25rem;
+  }
+
+  .rg-detail-section-title {
+    font-size: 1rem;
+  }
+
+  .rg-detail-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .rg-detail-stat-item {
+    padding: 0.5rem;
+  }
+
+  .rg-detail-stat-label {
+    font-size: 0.625rem;
+  }
+
+  .rg-detail-stat-value {
+    font-size: 1rem;
+  }
+
+  .rg-detail-skill-card {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+
+  .rg-detail-skill-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rg-detail-skill-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rg-detail-skill-name {
+    font-size: 0.9375rem;
+  }
+
+  .rg-detail-skill-desc {
+    font-size: 0.875rem;
+  }
+
+  .rg-detail-lore {
+    font-size: 0.875rem;
+  }
+
+  .rg-detail-meta {
+    gap: 0.5rem;
+  }
+
+  .rg-detail-tag {
+    padding: 0.375rem 0.625rem;
+  }
+
+  .rg-detail-tag-label {
+    font-size: 0.625rem;
+  }
+
+  .rg-detail-tag-value {
+    font-size: 0.8125rem;
+  }
+
+  .rg-detail-overview {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+}

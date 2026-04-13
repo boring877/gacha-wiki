@@ -1,0 +1,789 @@
+{
+  "id": 2002,
+  "name": "Metori",
+  "fullName": "Metori",
+  "slug": "梅托莉-2002",
+  "rarity": "SSR",
+  "rarityValue": 4,
+  "element": 3,
+  "elementName": "Wood",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Plant Demon Beast (Mimicking Human)",
+  "power": "Wanderer",
+  "image": "2002.png",
+  "bookTitle": "Little Pharmacist",
+  "bookId": 2,
+  "firstAcquaintance": "A lively and adorable human girl with extensive knowledge of plants and pharmacy. For some reason, she was sold at a surprisingly low price in the slave market.",
+  "personality": "Though a bit scatterbrained and prone to inappropriate behavior, her cheerful and adorable demeanor easily wins people over.",
+  "like": "Grilled meat",
+  "familiarData": "Metori was a girl living deep in the forest. She was captured by slave hunters while gathering herbs and sold into slavery.\nWith her knowledge of pharmacy, she became the guild's pharmacist. In truth, she has no particular talent for making medicine. Her real gift lies in identifying plants. Without any tools, she can precisely determine a plant's medicinal properties by instinct alone. Using this ability, she has invented many medicines for the guild, making her an indispensable member.\nHer bubbly and goofy personality makes her the mood-maker of the guild. She can laugh heartily no matter the situation. She occasionally does things at inappropriate times, but everyone usually forgives her.\nShe absolutely loves grilled meat, a passion she shares with her master. Being able to eat grilled meat every day at the guild makes her very happy.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2002,
+  "stats": {
+    "initialHP": 1482,
+    "hpAdd": 191,
+    "initialAtk": 107,
+    "atkAdd": 13.6,
+    "initialDef": 104,
+    "defAdd": 13.5
+  },
+  "features": [
+    1001,
+    1032,
+    1021,
+    1027,
+    1004
+  ],
+  "normalAtk": {
+    "id": 200200,
+    "name": "Thorn Lash",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "117",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 122,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 200200,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 200201,
+      "name": "Bio-Chemical Flask",
+      "comment": "Restore 25% HP\n100% chance to apply ST Auto Recovery (M) 7.5% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 2,
+      "targetName": "Single Ally",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200201,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 25.0,
+          "perLevel": 1.5
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2002011,
+          "buffName": "ST Auto Recovery (M)",
+          "buffValue": "7.5"
+        }
+      ],
+      "effectLines": [
+        "Restore 25% HP",
+        "100% chance to apply ST Auto Recovery (M) 7.5% (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 32.5% HP",
+        "100% chance to apply ST Auto Recovery (M) 7.5% (2 turns)"
+      ],
+      "commentMax": "Restore 32.5% HP\n100% chance to apply ST Auto Recovery (M) 7.5% (2 turns)"
+    },
+    {
+      "id": 200202,
+      "name": "Poison Vine Barrage",
+      "comment": "Deal 128% damage\n75% chance to apply Poison (M) 1% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "215",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 180,
+      "cdRound": 7,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200202,
+      "multiplier": 128.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 128.0,
+          "perLevel": 12.8
+        },
+        {
+          "type": "buff",
+          "probability": 75,
+          "duration": 2,
+          "buffId": 2002021,
+          "buffName": "Poison (M)",
+          "buffValue": "1"
+        }
+      ],
+      "multiplierPerLevel": 12.8,
+      "effectLines": [
+        "Deal 128% damage",
+        "75% chance to apply Poison (M) 1% (2 turns)"
+      ],
+      "multiplierMax": 192.0,
+      "effectLinesMax": [
+        "Deal 192% damage",
+        "75% chance to apply Poison (M) 1% (2 turns)"
+      ],
+      "commentMax": "Deal 192% damage\n75% chance to apply Poison (M) 1% (2 turns)"
+    },
+    {
+      "id": 200203,
+      "name": "Appetite Boost",
+      "comment": "Restore 15% HP\n100% chance to apply ATK Up (S) 17.5% (3 turns)\n100% chance to apply Ult DMG Up (S) 17.5% (2 turns)",
+      "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+      "icon": "305",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200203,
+      "effects": [
+        {
+          "type": "heal",
+          "value": 15.0,
+          "perLevel": 0.9
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 3,
+          "buffId": 2002031,
+          "buffName": "ATK Up (S)",
+          "buffValue": "17.5"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2002032,
+          "buffName": "Ult DMG Up (S)",
+          "buffValue": "17.5"
+        }
+      ],
+      "effectLines": [
+        "Restore 15% HP",
+        "100% chance to apply ATK Up (S) 17.5% (3 turns)",
+        "100% chance to apply Ult DMG Up (S) 17.5% (2 turns)"
+      ],
+      "effectLinesMax": [
+        "Restore 19.5% HP",
+        "100% chance to apply ATK Up (S) 17.5% (3 turns)",
+        "100% chance to apply Ult DMG Up (S) 17.5% (2 turns)"
+      ],
+      "commentMax": "Restore 19.5% HP\n100% chance to apply ATK Up (S) 17.5% (3 turns)\n100% chance to apply Ult DMG Up (S) 17.5% (2 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 200204,
+      "name": "Famous Pharmacist",
+      "comment": "100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}",
+      "icon": "612",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 2,
+      "times": 0,
+      "showPower": "-",
+      "condition": 6,
+      "triggerCommentFormat": "【{3}】回合触发1次",
+      "effectGroupId": 200204,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2002041,
+          "buffName": "HP Auto Recovery (M)",
+          "buffValue": "12.5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply HP Auto Recovery (M) 12.5% (2 turns)"
+      ],
+      "triggerCondition": "Every 3 turns"
+    }
+  ],
+  "aceSkill": {
+    "id": 200207,
+    "name": "Let's Dig In!",
+    "comment": "Deal 290% damage\n75% chance to apply Poison (S) 1% (2 turns)\n75% chance to apply DEF Down (S) 7.0% (3 turns)",
+    "commentFormat": "对{1}{3}\n．{4}\n．{5}",
+    "icon": "511",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 200207,
+    "multiplier": 290.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 290.0,
+        "perLevel": 29.0
+      },
+      {
+        "type": "buff",
+        "probability": 75,
+        "duration": 2,
+        "buffId": 2002071,
+        "buffName": "Poison (S)",
+        "buffValue": "1"
+      },
+      {
+        "type": "buff",
+        "probability": 75,
+        "duration": 3,
+        "buffId": 2002072,
+        "buffName": "DEF Down (S)",
+        "buffValue": "7.0"
+      }
+    ],
+    "multiplierPerLevel": 29.0,
+    "effectLines": [
+      "Deal 290% damage",
+      "75% chance to apply Poison (S) 1% (2 turns)",
+      "75% chance to apply DEF Down (S) 7.0% (3 turns)"
+    ],
+    "multiplierMax": 435.0,
+    "effectLinesMax": [
+      "Deal 435.0% damage",
+      "75% chance to apply Poison (S) 1% (2 turns)",
+      "75% chance to apply DEF Down (S) 7.0% (3 turns)"
+    ],
+    "commentMax": "Deal 435.0% damage\n75% chance to apply Poison (S) 1% (2 turns)\n75% chance to apply DEF Down (S) 7.0% (3 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 200210,
+      "name": "Nature's Friend",
+      "comment": "100% chance to apply Trait DEF Up (S) 7.0%\n100% chance to apply Trait DEF Up (S) 7.0%",
+      "commentFormat": "{1}被动效果：\n{3}\n{4}",
+      "icon": "403",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200210,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2002101,
+          "buffName": "Trait DEF Up (S)",
+          "buffValue": "7.0"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2002102,
+          "buffName": "Trait DEF Up (S)",
+          "buffValue": "7.0"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DEF Up (S) 7.0%",
+        "100% chance to apply Trait DEF Up (S) 7.0%"
+      ]
+    },
+    {
+      "id": 200211,
+      "name": "BBQ Lover",
+      "comment": "100% chance to apply Trait DMG Up (S) 21%",
+      "commentFormat": "{1}被动效果：\n{3}",
+      "icon": "404",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 200211,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2002111,
+          "buffName": "Trait DMG Up (S)",
+          "buffValue": "21"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply Trait DMG Up (S) 21%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/其他_流浪者",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0555,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.222,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.0042,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.08399999999999999,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 0,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.306,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 0,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

@@ -1,0 +1,759 @@
+{
+  "id": 2067,
+  "name": "Miacosis Ocarez",
+  "fullName": "Miacosis Ocarez",
+  "slug": "苗可希丝-2067",
+  "rarity": "SSR",
+  "rarityValue": 6,
+  "element": 2,
+  "elementName": "Water",
+  "gender": 2,
+  "genderName": "Female",
+  "race": "Half-Minotaur",
+  "power": "Wanderer",
+  "image": "2067.png",
+  "bookTitle": "Alchemical Witch",
+  "bookId": 44,
+  "firstAcquaintance": "A mysterious magical tool maker. Most people know of her existence, but very few have ever seen her true face.",
+  "personality": "Loves teasing people she finds interesting. Completely ignores anything she does not care about.",
+  "like": "Alchemy tools, history books, blueberry milkshakes",
+  "familiarData": "Miacosis, an alchemist from an ancient family. She was adopted by a magical family since she was self-aware and grew up in a magic tower, so there is no trace of minotaur tribal wildness about her. Instead, she exudes refinement and mystery.\nMiacosis is fortunate. As a half-breed, she never faced discrimination. In fact, her horns resemble demon horns, which earned her respect and awe. This lucky life inspired her to share her good fortune with others, so she became a magical tool maker, crafting simple and practical magical devices for her customers.\nMagical tools are so convenient that factions often fight over them, but she personally does not care and has no interest in joining any faction. However, this means she has to relocate her workshop from time to time.\nMages tend to have messy rooms, but you would never see that in Miacosis. She is excellent at organizing and very skilled at using limited space to store a vast amount of things. This is reflected in her outfit as well -- despite wearing simple clothing, she can pull out all kinds of magical tools.\nAs for how much she actually keeps hidden in her cleavage? Nobody knows.",
+  "familiarUnlockLevel": 5,
+  "heroPicId": 2067,
+  "stats": {
+    "initialHP": 1572,
+    "hpAdd": 202.3,
+    "initialAtk": 106,
+    "atkAdd": 13.6,
+    "initialDef": 99,
+    "defAdd": 12.7
+  },
+  "features": [
+    1001,
+    1013
+  ],
+  "normalAtk": {
+    "id": 206700,
+    "name": "Magic Bullet",
+    "comment": "Deal 100% damage",
+    "commentFormat": "对{1}{3}",
+    "icon": "102",
+    "type": 1,
+    "typeName": "NormalAtk",
+    "element": -1,
+    "maxLevel": 1,
+    "attackDistance": 0.0,
+    "target": 3,
+    "targetName": "Single Enemy",
+    "costST": 0,
+    "addST": 120,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "小",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206700,
+    "multiplier": 100.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 100.0,
+        "perLevel": null
+      }
+    ],
+    "effectLines": [
+      "Deal 100% damage"
+    ]
+  },
+  "activeSkills": [
+    {
+      "id": 206701,
+      "name": "Focused Beam",
+      "comment": "Deal 135% damage",
+      "commentFormat": "对{1}{3}",
+      "icon": "205",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 3,
+      "targetName": "Single Enemy",
+      "costST": 0,
+      "addST": 184,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206701,
+      "multiplier": 135.0,
+      "multiplierPerLevel": 13.5,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 135.0,
+          "perLevel": 13.5
+        }
+      ],
+      "effectLines": [
+        "Deal 135% damage"
+      ],
+      "multiplierMax": 202.5,
+      "effectLinesMax": [
+        "Deal 202.5% damage"
+      ],
+      "commentMax": "Deal 202.5% damage"
+    },
+    {
+      "id": 206702,
+      "name": "Radiant Shield",
+      "comment": "100% chance to apply DEF Up 5% (2 turns)",
+      "commentFormat": "对{1}{3}",
+      "icon": "408",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206702,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 2,
+          "buffId": 2067021,
+          "buffName": "DEF Up",
+          "buffValue": "5"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply DEF Up 5% (2 turns)"
+      ]
+    },
+    {
+      "id": 206703,
+      "name": "Sunlight Baptism",
+      "comment": "Deal 100% damage\n100% chance to apply CRIT Rate Down 5% (4 turns)",
+      "commentFormat": "对{1}{3}\n．{4}",
+      "icon": "213",
+      "type": 2,
+      "typeName": "Active",
+      "element": -1,
+      "maxLevel": 6,
+      "attackDistance": 0.0,
+      "target": 7,
+      "targetName": "Enemy X",
+      "costST": 0,
+      "addST": 181,
+      "cdRound": 6,
+      "times": 0,
+      "showPower": "中",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206703,
+      "multiplier": 100.0,
+      "effects": [
+        {
+          "type": "damage",
+          "value": 100.0,
+          "perLevel": 10.0
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 4,
+          "buffId": 2067031,
+          "buffName": "CRIT Rate Down",
+          "buffValue": "5"
+        }
+      ],
+      "multiplierPerLevel": 10.0,
+      "effectLines": [
+        "Deal 100% damage",
+        "100% chance to apply CRIT Rate Down 5% (4 turns)"
+      ],
+      "multiplierMax": 150.0,
+      "effectLinesMax": [
+        "Deal 150% damage",
+        "100% chance to apply CRIT Rate Down 5% (4 turns)"
+      ],
+      "commentMax": "Deal 150% damage\n100% chance to apply CRIT Rate Down 5% (4 turns)"
+    }
+  ],
+  "triggerSkills": [
+    {
+      "id": 206704,
+      "name": "Charge",
+      "comment": "ATK Down Resist Up 22% (0 turns)\nDEF Down Resist Up 22% (0 turns)",
+      "commentFormat": "发动条件：{0}\n对{1}\n．{3}\n．{4}",
+      "icon": "304",
+      "type": 5,
+      "typeName": "Passive",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 4,
+      "targetName": "All Allies",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 3,
+      "times": 0,
+      "showPower": "-",
+      "condition": 1,
+      "triggerCommentFormat": "【自身HP{3}%】以上时触发",
+      "effectGroupId": 206704,
+      "effects": [
+        {
+          "type": "passive_buff_timed",
+          "buffName": "ATK Down Resist Up",
+          "buffValue": "22",
+          "duration": 0
+        },
+        {
+          "type": "passive_buff_timed",
+          "buffName": "DEF Down Resist Up",
+          "buffValue": "22",
+          "duration": 0
+        }
+      ],
+      "effectLines": [
+        "ATK Down Resist Up 22% (0 turns)",
+        "DEF Down Resist Up 22% (0 turns)"
+      ],
+      "triggerCondition": "When self HP is 70% or above"
+    }
+  ],
+  "aceSkill": {
+    "id": 206707,
+    "name": "Magic Workshop",
+    "comment": "Restore 30% HP\n100% chance to apply ATK Up 18% (2 turns)",
+    "commentFormat": "对{1}{3}\n．{4}",
+    "icon": "513",
+    "type": 4,
+    "typeName": "Ace",
+    "element": -1,
+    "maxLevel": 6,
+    "attackDistance": 0.0,
+    "target": 4,
+    "targetName": "All Allies",
+    "costST": 1000,
+    "addST": 0,
+    "cdRound": 0,
+    "times": 0,
+    "showPower": "大",
+    "condition": 0,
+    "triggerCommentFormat": null,
+    "effectGroupId": 206707,
+    "effects": [
+      {
+        "type": "heal",
+        "value": 30.0,
+        "perLevel": 1.8
+      },
+      {
+        "type": "buff",
+        "probability": 100,
+        "duration": 2,
+        "buffId": 2067071,
+        "buffName": "ATK Up",
+        "buffValue": "18"
+      }
+    ],
+    "effectLines": [
+      "Restore 30% HP",
+      "100% chance to apply ATK Up 18% (2 turns)"
+    ],
+    "effectLinesMax": [
+      "Restore 39% HP",
+      "100% chance to apply ATK Up 18% (2 turns)"
+    ],
+    "commentMax": "Restore 39% HP\n100% chance to apply ATK Up 18% (2 turns)"
+  },
+  "passiveSkills": [
+    {
+      "id": 206710,
+      "name": "Busty",
+      "comment": "100% chance to apply DEF Up 7.0%\n100% chance to apply Element DEF Up (S) 8%",
+      "commentFormat": "对{1}\n．{3}\n．{4}",
+      "icon": "302",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206710,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2067101,
+          "buffName": "DEF Up",
+          "buffValue": "7.0"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2067102,
+          "buffName": "Element DEF Up (S)",
+          "buffValue": "8"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply DEF Up 7.0%",
+        "100% chance to apply Element DEF Up (S) 8%"
+      ]
+    },
+    {
+      "id": 206711,
+      "name": "Magic Barrier",
+      "comment": "100% chance to apply ATK Down Resist Up 22%\n100% chance to apply DEF Down Resist Up 22%",
+      "commentFormat": "对{1}\n．{3}\n．{4}",
+      "icon": "505",
+      "type": 3,
+      "typeName": "Trigger",
+      "element": -1,
+      "maxLevel": 1,
+      "attackDistance": 0.0,
+      "target": 1,
+      "targetName": "Self",
+      "costST": 0,
+      "addST": 0,
+      "cdRound": 0,
+      "times": 0,
+      "showPower": "-",
+      "condition": 0,
+      "triggerCommentFormat": null,
+      "effectGroupId": 206711,
+      "effects": [
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2067111,
+          "buffName": "ATK Down Resist Up",
+          "buffValue": "22"
+        },
+        {
+          "type": "buff",
+          "probability": 100,
+          "duration": 0,
+          "buffId": 2067112,
+          "buffName": "DEF Down Resist Up",
+          "buffValue": "22"
+        }
+      ],
+      "effectLines": [
+        "100% chance to apply ATK Down Resist Up 22%",
+        "100% chance to apply DEF Down Resist Up 22%"
+      ]
+    }
+  ],
+  "fragments": 10,
+  "totemIconName": "Totem/牛人_流浪者",
+  "rankUp": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 12,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 13,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 50,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "breakthrough": {
+    "levels": [
+      {
+        "level": 1,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 2,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 3,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 4,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 5,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 6,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 7,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 8,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 9,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 10,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 11,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 12,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 1,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 13,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 14,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 15,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 16,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 17,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 18,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 19,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 0,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      },
+      {
+        "level": 20,
+        "hp": 0,
+        "atk": 0.001,
+        "def": 0,
+        "crit": 0,
+        "critDamage": 0,
+        "hpRecover": 0,
+        "stRecover": 0,
+        "stAdd": 2,
+        "negativeBuffHit": 0,
+        "antiNegativeBuff": 0,
+        "initialST": 0
+      }
+    ],
+    "max": {
+      "hp": 0,
+      "atk": 0.02000000000000001,
+      "def": 0,
+      "crit": 0,
+      "critDamage": 0,
+      "hpRecover": 0,
+      "stRecover": 0,
+      "stAdd": 14,
+      "negativeBuffHit": 0,
+      "antiNegativeBuff": 0,
+      "initialST": 0
+    }
+  },
+  "combinedStats": {
+    "hp": 0,
+    "atk": 0.02000000000000001,
+    "def": 0,
+    "crit": 0,
+    "critDamage": 0,
+    "hpRecover": 0,
+    "stRecover": 0,
+    "stAdd": 64,
+    "negativeBuffHit": 0,
+    "antiNegativeBuff": 0,
+    "initialST": 0
+  },
+  "arms": 4,
+  "armsName": "Wand"
+}

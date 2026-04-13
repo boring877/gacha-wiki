@@ -1,0 +1,92 @@
+---
+// Rebellion Gilgamesh equip-kind icon image component
+// Displays equipment type icons from assets/images/games/rebellion-gilgamesh/equip-kind/
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/equip-kind/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  kind: number;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { kind, alt, width = 24, class: className, loading = 'lazy' } = Astro.props;
+
+const kindMap: Record<number, string> = {
+  1: 'sword.png',
+  2: 'polearm.png',
+  4: 'fist.png',
+  8: 'wand.png',
+  16: 'bow.png',
+  32: 'gun.png',
+  64: 'special-short.png',
+  128: 'special-mid.png',
+  256: 'special-long.png',
+  512: 'accessory.png',
+  1024: 'charm.png',
+};
+
+function findImage(fname: string): ImageMetadata | null {
+  if (!fname) return null;
+  const key = Object.keys(images).find(k => k.endsWith('/' + fname));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(kindMap[kind] || '');
+---
+
+{imageModule ? (
+  <div class={`rg-equipkind-wrapper ${className || ''}`} style={`--rg-equipkind-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      height={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-equipkind-img"
+    />
+  </div>
+) : (
+  <div class={`rg-equipkind-fallback ${className || ''}`} style={`--rg-equipkind-width: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-equipkind-wrapper {
+    width: var(--rg-equipkind-width, 24px);
+    height: var(--rg-equipkind-width, 24px);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rg-equipkind-wrapper :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .rg-equipkind-fallback {
+    width: var(--rg-equipkind-width, 24px);
+    height: var(--rg-equipkind-width, 24px);
+    border-radius: var(--rg-radius-sm, 4px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--rg-text-muted);
+  }
+</style>

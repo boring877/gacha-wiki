@@ -1,0 +1,305 @@
+// Star Savior Starlight Trajectory Data (Journey Hard Mode Potentials)
+// 72 SE Potential blessings: 8 types x 8 variants + 4 XX specials
+// Source: CLIENT_SE_POTENTIAL_TEMPLET.json, CLIENT_POTENTIAL_LEVEL_GROUP_TEMPLET.json, STRING_COMMON.json
+
+export const TRAJECTORY_TYPES = [
+  {
+    id: "AX",
+    name: "Starlight Trajectory-AX",
+    primaryStat: "ATK",
+    icon: "POTEN_ATTACK_BUFF.png",
+    passiveShort: "+8% ATK at turn start, stacks up to 5x, resets on Ultimate",
+    passiveFull: "Increases ATK by {0}% at the start of the turn. Stacks up to {1} times, and resets all stacks after using an Ultimate Skill.",
+    passiveParams: { stackAtk: 8, maxStacks: 5 },
+  },
+  {
+    id: "BX",
+    name: "Starlight Trajectory-BX",
+    primaryStat: "HP",
+    icon: "POTEN_UTILITY_BUFF.png",
+    passiveShort: "25% chance to heal when attacked (scales with Max HP)",
+    passiveFull: "Restores self HP with a {0}% chance after being attacked. Recovery is proportional to self Max HP.",
+    passiveParams: { healChance: 25 },
+  },
+  {
+    id: "CX",
+    name: "Starlight Trajectory-CX",
+    primaryStat: "DEF",
+    icon: "POTEN_DEFENSE_OVERLAP.png",
+    passiveShort: "+10% DEF when hit, stacks up to 5x, resets on attacking",
+    passiveFull: "Increases DEF by {0}% when attacked. Stacks up to {1} times, and resets all stacks after attacking.",
+    passiveParams: { stackDef: 10, maxStacks: 5 },
+  },
+  {
+    id: "DX",
+    name: "Starlight Trajectory-DX",
+    primaryStat: "SPD",
+    icon: "POTEN_QUICK_DEBUFF.png",
+    passiveShort: "25% chance to boost Action Gauge by 10% after Basic Skill (1/turn)",
+    passiveFull: "Increases Action Gauge by {0}% with a {1}% chance after using a Basic Skill. Occurs once per turn.",
+    passiveParams: { gaugeBoost: 10, triggerChance: 25 },
+  },
+  {
+    id: "EX",
+    name: "Starlight Trajectory-EX",
+    primaryStat: "CRIT Rate",
+    icon: "POTEN_SPECIAL_RATE_CRITICAL.png",
+    passiveShort: "25% chance on crit: random ally uses Basic Skill (1/turn, works through broken Toughness)",
+    passiveFull: "Triggers a random ally's Basic Skill on a random target with a {0}% chance on Critical Hit with a Basic Skill. Occurs once per self turn. This effect can trigger while Toughness is broken.",
+    passiveParams: { triggerChance: 25 },
+  },
+  {
+    id: "FX",
+    name: "Starlight Trajectory-FX",
+    primaryStat: "CRIT DMG",
+    icon: "POTEN_SPECIAL_RATE_CRITICAL_DAMAGE.png",
+    passiveShort: "+25% bonus damage on next attack after crit",
+    passiveFull: "On Critical Hit, deals {0}% increased damage on the next attack.",
+    passiveParams: { bonusDmg: 25 },
+  },
+  {
+    id: "GX",
+    name: "Starlight Trajectory-GX",
+    primaryStat: "Effect Hit",
+    icon: "POTEN_SPECIAL_RATE_EFFECT_HIT.png",
+    passiveShort: "50% chance to inflict Bleed for 2 turns on Basic Skill hit",
+    passiveFull: "Inflicts the target with Bleed for 2 turns with a {0}% chance after attacking with a Basic Skill.",
+    passiveParams: { bleedChance: 50 },
+  },
+  {
+    id: "HX",
+    name: "Starlight Trajectory-HX",
+    primaryStat: "Effect RES",
+    icon: "POTEN_SPECIAL_RATE_EFFECT_EVADE.png",
+    passiveShort: "50% chance to counter with Chain DMG (Max HP-based) if no debuffs",
+    passiveFull: "Deals Chain DMG to the attacker proportional to self Max HP with a {0}% chance if self has no debuffs when attacked by a single-target attack.",
+    passiveParams: { counterChance: 50 },
+  },
+  {
+    id: "XX",
+    name: "Starlight Trajectory-XX",
+    primaryStat: "Special",
+    icon: "POTEN_BUFF_STAT.png",
+    passiveShort: "Varies by variant: Counterattack, Lifesteal, Toughness, or All Stats at start of first battle",
+    passiveFull: "XX1: Increases Counterattack Chance. XX2: Increases Lifesteal. XX3: Increases Max Toughness. XX4: Increases ATK, HP, DEF, SPD, CRIT Rate, CRIT DMG, Effect Hit, Effect RES by {0}% at the start of the first battle.",
+    passiveParams: { allStatsPct: 2 },
+  },
+];
+
+export const TRAJECTORY_VARIANTS = [
+  { id: "AX1", type: "AX", potenId: 40001, stats: [{ stat: "ATK", value: 12, unit: "%" }], desc: "ATK +12%" },
+  { id: "AX2", type: "AX", potenId: 40002, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "ATK +8%, HP +4%" },
+  { id: "AX3", type: "AX", potenId: 40003, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "ATK +8%, DEF +6%" },
+  { id: "AX4", type: "AX", potenId: 40004, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "ATK +8%, SPD +4" },
+  { id: "AX5", type: "AX", potenId: 40005, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "ATK +8%, CRIT Rate +5%" },
+  { id: "AX6", type: "AX", potenId: 40006, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "ATK +8%, CRIT DMG +5%" },
+  { id: "AX7", type: "AX", potenId: 40007, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "ATK +8%, Effect Hit +8%" },
+  { id: "AX8", type: "AX", potenId: 40008, stats: [{ stat: "ATK", value: 8, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "ATK +8%, Effect RES +8%" },
+
+  { id: "BX1", type: "BX", potenId: 40101, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "HP +8%, ATK +4%" },
+  { id: "BX2", type: "BX", potenId: 40102, stats: [{ stat: "HP", value: 12, unit: "%" }], desc: "HP +12%" },
+  { id: "BX3", type: "BX", potenId: 40103, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "HP +8%, DEF +6%" },
+  { id: "BX4", type: "BX", potenId: 40104, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "HP +8%, SPD +4" },
+  { id: "BX5", type: "BX", potenId: 40105, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "HP +8%, CRIT Rate +5%" },
+  { id: "BX6", type: "BX", potenId: 40106, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "HP +8%, CRIT DMG +5%" },
+  { id: "BX7", type: "BX", potenId: 40107, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "HP +8%, Effect Hit +8%" },
+  { id: "BX8", type: "BX", potenId: 40108, stats: [{ stat: "HP", value: 8, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "HP +8%, Effect RES +8%" },
+
+  { id: "CX1", type: "CX", potenId: 40201, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "DEF +12%, ATK +4%" },
+  { id: "CX2", type: "CX", potenId: 40202, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "DEF +12%, HP +4%" },
+  { id: "CX3", type: "CX", potenId: 40203, stats: [{ stat: "DEF", value: 18, unit: "%" }], desc: "DEF +18%" },
+  { id: "CX4", type: "CX", potenId: 40204, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "DEF +12%, SPD +4" },
+  { id: "CX5", type: "CX", potenId: 40205, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "DEF +12%, CRIT Rate +5%" },
+  { id: "CX6", type: "CX", potenId: 40206, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "DEF +12%, CRIT DMG +5%" },
+  { id: "CX7", type: "CX", potenId: 40207, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "DEF +12%, Effect Hit +8%" },
+  { id: "CX8", type: "CX", potenId: 40208, stats: [{ stat: "DEF", value: 12, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "DEF +12%, Effect RES +8%" },
+
+  { id: "DX1", type: "DX", potenId: 40301, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "ATK", value: 4, unit: "%" }], desc: "SPD +8, ATK +4%" },
+  { id: "DX2", type: "DX", potenId: 40302, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "HP", value: 4, unit: "%" }], desc: "SPD +8, HP +4%" },
+  { id: "DX3", type: "DX", potenId: 40303, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "DEF", value: 6, unit: "%" }], desc: "SPD +8, DEF +6%" },
+  { id: "DX4", type: "DX", potenId: 40304, stats: [{ stat: "SPD", value: 12, unit: "" }], desc: "SPD +12" },
+  { id: "DX5", type: "DX", potenId: 40305, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "SPD +8, CRIT Rate +5%" },
+  { id: "DX6", type: "DX", potenId: 40306, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "SPD +8, CRIT DMG +5%" },
+  { id: "DX7", type: "DX", potenId: 40307, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "SPD +8, Effect Hit +8%" },
+  { id: "DX8", type: "DX", potenId: 40308, stats: [{ stat: "SPD", value: 8, unit: "" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "SPD +8, Effect RES +8%" },
+
+  { id: "EX1", type: "EX", potenId: 40401, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "CRIT Rate +10%, ATK +4%" },
+  { id: "EX2", type: "EX", potenId: 40402, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "CRIT Rate +10%, HP +4%" },
+  { id: "EX3", type: "EX", potenId: 40403, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "CRIT Rate +10%, DEF +6%" },
+  { id: "EX4", type: "EX", potenId: 40404, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "CRIT Rate +10%, SPD +4" },
+  { id: "EX5", type: "EX", potenId: 40405, stats: [{ stat: "CRIT Rate", value: 15, unit: "%" }], desc: "CRIT Rate +15%" },
+  { id: "EX6", type: "EX", potenId: 40406, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "CRIT Rate +10%, CRIT DMG +5%" },
+  { id: "EX7", type: "EX", potenId: 40407, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "CRIT Rate +10%, Effect Hit +8%" },
+  { id: "EX8", type: "EX", potenId: 40408, stats: [{ stat: "CRIT Rate", value: 10, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "CRIT Rate +10%, Effect RES +8%" },
+
+  { id: "FX1", type: "FX", potenId: 40501, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "CRIT DMG +10%, ATK +4%" },
+  { id: "FX2", type: "FX", potenId: 40502, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "CRIT DMG +10%, HP +4%" },
+  { id: "FX3", type: "FX", potenId: 40503, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "CRIT DMG +10%, DEF +6%" },
+  { id: "FX4", type: "FX", potenId: 40504, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "CRIT DMG +10%, SPD +4" },
+  { id: "FX5", type: "FX", potenId: 40505, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "CRIT DMG +10%, CRIT Rate +5%" },
+  { id: "FX6", type: "FX", potenId: 40506, stats: [{ stat: "CRIT DMG", value: 15, unit: "%" }], desc: "CRIT DMG +15%" },
+  { id: "FX7", type: "FX", potenId: 40507, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "CRIT DMG +10%, Effect Hit +8%" },
+  { id: "FX8", type: "FX", potenId: 40508, stats: [{ stat: "CRIT DMG", value: 10, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "CRIT DMG +10%, Effect RES +8%" },
+
+  { id: "GX1", type: "GX", potenId: 40601, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "Effect Hit +16%, ATK +4%" },
+  { id: "GX2", type: "GX", potenId: 40602, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "Effect Hit +16%, HP +4%" },
+  { id: "GX3", type: "GX", potenId: 40603, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "Effect Hit +16%, DEF +6%" },
+  { id: "GX4", type: "GX", potenId: 40604, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "Effect Hit +16%, SPD +4" },
+  { id: "GX5", type: "GX", potenId: 40605, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "Effect Hit +16%, CRIT Rate +5%" },
+  { id: "GX6", type: "GX", potenId: 40606, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "Effect Hit +16%, CRIT DMG +5%" },
+  { id: "GX7", type: "GX", potenId: 40607, stats: [{ stat: "Effect Hit", value: 24, unit: "%" }], desc: "Effect Hit +24%" },
+  { id: "GX8", type: "GX", potenId: 40608, stats: [{ stat: "Effect Hit", value: 16, unit: "%" }, { stat: "Effect RES", value: 8, unit: "%" }], desc: "Effect Hit +16%, Effect RES +8%" },
+
+  { id: "HX1", type: "HX", potenId: 40701, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "ATK", value: 4, unit: "%" }], desc: "Effect RES +16%, ATK +4%" },
+  { id: "HX2", type: "HX", potenId: 40702, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "HP", value: 4, unit: "%" }], desc: "Effect RES +16%, HP +4%" },
+  { id: "HX3", type: "HX", potenId: 40703, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "DEF", value: 6, unit: "%" }], desc: "Effect RES +16%, DEF +6%" },
+  { id: "HX4", type: "HX", potenId: 40704, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "SPD", value: 4, unit: "" }], desc: "Effect RES +16%, SPD +4" },
+  { id: "HX5", type: "HX", potenId: 40705, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "CRIT Rate", value: 5, unit: "%" }], desc: "Effect RES +16%, CRIT Rate +5%" },
+  { id: "HX6", type: "HX", potenId: 40706, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "CRIT DMG", value: 5, unit: "%" }], desc: "Effect RES +16%, CRIT DMG +5%" },
+  { id: "HX7", type: "HX", potenId: 40707, stats: [{ stat: "Effect RES", value: 16, unit: "%" }, { stat: "Effect Hit", value: 8, unit: "%" }], desc: "Effect RES +16%, Effect Hit +8%" },
+  { id: "HX8", type: "HX", potenId: 40708, stats: [{ stat: "Effect RES", value: 24, unit: "%" }], desc: "Effect RES +24%" },
+
+  { id: "XX1", type: "XX", potenId: 41001, stats: [{ stat: "Counterattack", value: 20, unit: "%" }], desc: "Counterattack Chance +20%" },
+  { id: "XX2", type: "XX", potenId: 41002, stats: [{ stat: "Lifesteal", value: 15, unit: "%" }], desc: "Lifesteal +15%" },
+  { id: "XX3", type: "XX", potenId: 41003, stats: [{ stat: "Toughness", value: 3, unit: "" }], desc: "Max Toughness +3" },
+  { id: "XX4", type: "XX", potenId: 41004, stats: [{ stat: "All Stats", value: 2, unit: "%" }], desc: "ATK, HP, DEF, SPD, CRIT Rate, CRIT DMG, Effect Hit, Effect RES +2% at start of first battle" },
+];
+
+export const TRAINING_MANUALS = [
+  {
+    id: 5270001,
+    name: "Basic Training Manual - Offense",
+    icon: "JOURNEY_ITEM_TRAINING_GUIDE_ATTACK.png",
+    desc: "A manual for learning the flow of offense. It outlines combat methods for instantly exploiting an enemy's opening.",
+    focus: "Offense",
+    primaryParts: ["Gloves", "Hat", "Necklace"],
+    trajectories: ["AX", "EX", "FX"],
+  },
+  {
+    id: 5270002,
+    name: "Basic Training Manual - Survival",
+    icon: "JOURNEY_ITEM_TRAINING_GUIDE_SURVIVE.png",
+    desc: "A manual summarizing how to protect oneself in crisis situations. It contains the fundamentals needed for stamina management, evasion, and prolonged battles.",
+    focus: "Survival",
+    primaryParts: ["Armor", "Pants", "Boots"],
+    trajectories: ["BX", "CX", "DX"],
+  },
+  {
+    id: 5270003,
+    name: "Basic Training Manual - Applied Tactics",
+    icon: "JOURNEY_ITEM_TRAINING_GUIDE_TACTICS.png",
+    desc: "A manual describing how to respond to various situations during combat. A vast range of cases and decision criteria are organized within it.",
+    focus: "Applied Tactics",
+    primaryParts: ["Glasses", "Cloak", "Guard"],
+    trajectories: ["GX", "HX", "XX"],
+  },
+];
+
+export const BLESSING_PHASES = [
+  { turn: 1, type: "BST_START", cutscene: "Succession", desc: "Initial blessing selection. Choose your first Starlight Trajectory." },
+  { turn: 15, type: "BST_JOIN_1", cutscene: "The First Fated Bond", desc: "Second blessing. Pick another trajectory variant from 3 options." },
+  { turn: 30, type: "BST_JOIN_2", cutscene: "The Second Fated Bond", desc: "Third blessing. Final trajectory variant selection." },
+];
+
+export const SAVIOR_SET = {
+  id: "savior",
+  name: "Ancient Savior",
+  prefix: 5370,
+  items: [
+    { id: 5370001, name: "Gloves", icon: "JOURNEY_ITEM_SAVIOR_GLOVE.png", stat: "ATK", statValue: "+8%" },
+    { id: 5370002, name: "Armor", icon: "JOURNEY_ITEM_SAVIOR_ARMOR.png", stat: "HP", statValue: "+8%" },
+    { id: 5370003, name: "Pants", icon: "JOURNEY_ITEM_SAVIOR_PANTS.png", stat: "DEF", statValue: "+12%" },
+    { id: 5370004, name: "Boots", icon: "JOURNEY_ITEM_SAVIOR_SHOES.png", stat: "SPD", statValue: "+8" },
+    { id: 5370005, name: "Hat", icon: "JOURNEY_ITEM_SAVIOR_HAT.png", stat: "CRIT Rate", statValue: "+10%" },
+    { id: 5370006, name: "Necklace", icon: "JOURNEY_ITEM_SAVIOR_NECKLACE.png", stat: "CRIT DMG", statValue: "+10%" },
+    { id: 5370007, name: "Glasses", icon: "JOURNEY_ITEM_SAVIOR_GLASSES.png", stat: "Effect Hit", statValue: "+16%" },
+    { id: 5370008, name: "Cloak", icon: "JOURNEY_ITEM_SAVIOR_CLOAK.png", stat: "Effect RES", statValue: "+16%" },
+    { id: 5370009, name: "Guard", icon: "JOURNEY_ITEM_SAVIOR_GUARD.png", stat: "Super Armor", statValue: "+3" },
+    { id: 5370010, name: "Gauntlet", icon: "JOURNEY_ITEM_SAVIOR_GAUNTLET.png", stat: "Counterattack", statValue: "+20%" },
+    { id: 5370011, name: "Totem", icon: "JOURNEY_ITEM_SAVIOR_TOTEM.png", stat: "Lifesteal", statValue: "+15%" },
+  ],
+};
+
+export const COMBINE_SETS = [
+  {
+    id: "slime",
+    name: "Slime-Splattered",
+    prefix: 5070,
+    items: [
+      { id: 5070001, name: "Gloves", icon: "JOURNEY_ITEM_SLIME_GLOVE.png", stat: "ATK", statValue: "+4%" },
+      { id: 5070002, name: "Armor", icon: "JOURNEY_ITEM_SLIME_ARMOR.png", stat: "HP", statValue: "+4%" },
+      { id: 5070003, name: "Pants", icon: "JOURNEY_ITEM_SLIME_PANTS.png", stat: "DEF", statValue: "+6%" },
+      { id: 5070004, name: "Boots", icon: "JOURNEY_ITEM_SLIME_SHOES.png", stat: "SPD", statValue: "+4" },
+      { id: 5070005, name: "Hat", icon: "JOURNEY_ITEM_SLIME_HAT.png", stat: "CRIT Rate", statValue: "+5%" },
+      { id: 5070006, name: "Necklace", icon: "JOURNEY_ITEM_SLIME_NECKLACE.png", stat: "CRIT DMG", statValue: "+5%" },
+      { id: 5070007, name: "Glasses", icon: "JOURNEY_ITEM_SLIME_GLASSES.png", stat: "Effect Hit", statValue: "+8%" },
+      { id: 5070008, name: "Cloak", icon: "JOURNEY_ITEM_SLIME_CLOAK.png", stat: "Effect RES", statValue: "+8%" },
+    ],
+  },
+  {
+    id: "apocalypse",
+    name: "New Apocalypse",
+    prefix: 5071,
+    items: [
+      { id: 5071001, name: "Gloves", icon: "JOURNEY_ITEM_VETERAN_BARON_GLOVE.png", stat: "ATK", statValue: "+4%" },
+      { id: 5071002, name: "Armor", icon: "JOURNEY_ITEM_VETERAN_BARON_ARMOR.png", stat: "HP", statValue: "+4%" },
+      { id: 5071003, name: "Pants", icon: "JOURNEY_ITEM_VETERAN_BARON_PANTS.png", stat: "DEF", statValue: "+6%" },
+      { id: 5071004, name: "Boots", icon: "JOURNEY_ITEM_VETERAN_BARON_SHOES.png", stat: "SPD", statValue: "+4" },
+      { id: 5071005, name: "Hat", icon: "JOURNEY_ITEM_VETERAN_BARON_HAT.png", stat: "CRIT Rate", statValue: "+5%" },
+      { id: 5071006, name: "Necklace", icon: "JOURNEY_ITEM_VETERAN_BARON_NECKLACE.png", stat: "CRIT DMG", statValue: "+5%" },
+      { id: 5071007, name: "Glasses", icon: "JOURNEY_ITEM_VETERAN_BARON_GLASSES.png", stat: "Effect Hit", statValue: "+8%" },
+      { id: 5071008, name: "Cloak", icon: "JOURNEY_ITEM_VETERAN_BARON_CLOAK.png", stat: "Effect RES", statValue: "+8%" },
+    ],
+  },
+  {
+    id: "doll",
+    name: "Doll's Forgotten",
+    prefix: 5072,
+    items: [
+      { id: 5072001, name: "Gloves", icon: "JOURNEY_ITEM_DOLL_GLOVE.png", stat: "ATK", statValue: "+4%" },
+      { id: 5072002, name: "Armor", icon: "JOURNEY_ITEM_DOLL_ARMOR.png", stat: "HP", statValue: "+4%" },
+      { id: 5072003, name: "Pants", icon: "JOURNEY_ITEM_DOLL_PANTS.png", stat: "DEF", statValue: "+6%" },
+      { id: 5072004, name: "Boots", icon: "JOURNEY_ITEM_DOLL_SHOES.png", stat: "SPD", statValue: "+4" },
+      { id: 5072005, name: "Hat", icon: "JOURNEY_ITEM_DOLL_HAT.png", stat: "CRIT Rate", statValue: "+5%" },
+      { id: 5072006, name: "Necklace", icon: "JOURNEY_ITEM_DOLL_NECKLACE.png", stat: "CRIT DMG", statValue: "+5%" },
+      { id: 5072007, name: "Glasses", icon: "JOURNEY_ITEM_DOLL_GLASSES.png", stat: "Effect Hit", statValue: "+8%" },
+      { id: 5072008, name: "Cloak", icon: "JOURNEY_ITEM_DOLL_CLOAK.png", stat: "Effect RES", statValue: "+8%" },
+    ],
+  },
+];
+
+export const EQUIPMENT_PARTS = [
+  { slot: "Gloves", stat: "ATK", primaryValue: "+8%", combineValue: "+4%", trajectory: "AX" },
+  { slot: "Armor", stat: "HP", primaryValue: "+8%", combineValue: "+4%", trajectory: "BX" },
+  { slot: "Pants", stat: "DEF", primaryValue: "+12%", combineValue: "+6%", trajectory: "CX" },
+  { slot: "Boots", stat: "SPD", primaryValue: "+8", combineValue: "+4", trajectory: "DX" },
+  { slot: "Hat", stat: "CRIT Rate", primaryValue: "+10%", combineValue: "+5%", trajectory: "EX" },
+  { slot: "Necklace", stat: "CRIT DMG", primaryValue: "+10%", combineValue: "+5%", trajectory: "FX" },
+  { slot: "Glasses", stat: "Effect Hit", primaryValue: "+16%", combineValue: "+8%", trajectory: "GX" },
+  { slot: "Cloak", stat: "Effect RES", primaryValue: "+16%", combineValue: "+8%", trajectory: "HX" },
+];
+
+export const STAT_TO_PART = {
+  "ATK": "Gloves",
+  "HP": "Armor",
+  "DEF": "Pants",
+  "SPD": "Boots",
+  "CRIT Rate": "Hat",
+  "CRIT DMG": "Necklace",
+  "Effect Hit": "Glasses",
+  "Effect RES": "Cloak",
+};
+
+export const QUEST_MAPS = [
+  { set: "slime", name: "Slime-Splattered", map: "Quest Hunt 1" },
+  { set: "apocalypse", name: "New Apocalypse", map: "Quest Hunt 2" },
+  { set: "doll", name: "Doll's Forgotten", map: "Quest Hunt 3" },
+];
+
+export const EQUIP3_CATEGORIES = [
+  { id: "ATTACK", label: "Attack", likelyTrajectory: "AX", desc: "ATK Down on target, Speed Gauge reduction, self DMG Up" },
+  { id: "HYPER", label: "Hyper", likelyTrajectory: "EX", desc: "Hit Rate Down on all enemies, Silence chance, self DMG Up" },
+  { id: "SPECIAL", label: "Special", likelyTrajectory: "FX / GX", desc: "Summon ally, ATK Up for allies, Speed Gauge Up, Crit Chance Up" },
+  { id: "PASSIVE1", label: "Passive 1", likelyTrajectory: "BX / CX", desc: "On damage dealt: self buff stacking (3%-5% based on tier)" },
+  { id: "PASSIVE2", label: "Passive 2", likelyTrajectory: "DX / HX", desc: "On skill start: self DMG Up adjustment (30%-50% based on tier)" },
+];
