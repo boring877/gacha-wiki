@@ -137,6 +137,41 @@
   background: var(--rg-bg-secondary);
 }
 
+.rg-enchant-note {
+  font-size: 0.8125rem;
+  color: var(--rg-text-muted);
+  margin: 0 0 1rem;
+}
+
+.rg-enchant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.rg-enchant-card {
+  background: var(--rg-bg-secondary);
+  border-radius: var(--rg-radius-md, 8px);
+  padding: 0.875rem 1rem;
+  text-align: center;
+}
+
+.rg-enchant-stat-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rg-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+
+.rg-enchant-range {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--rg-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
 @media (max-width: 768px) {
   .rg-equip-detail-header {
     flex-direction: column;

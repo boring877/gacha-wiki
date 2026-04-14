@@ -70,6 +70,9 @@ const triggerSkills: any[] = data.triggerSkills || [];
 const passiveSkills: any[] = data.passiveSkills || [];
 const hasEquipSkills = triggerSkills.length > 0 || passiveSkills.length > 0;
 
+const enchantSubstats: any[] = data.enchantSubstats || [];
+const hasEnchant = enchantSubstats.length > 0;
+
 ---
 
 <CharacterDetailLayout
@@ -240,6 +243,25 @@ const hasEquipSkills = triggerSkills.length > 0 || passiveSkills.length > 0;
               <div class="rg-detail-skill-meta">
                 <span class="rg-detail-skill-meta-tag">Passive</span>
               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {hasEnchant && (
+    <section class="content-section">
+      <h2 class="section-title">Enchant Substats</h2>
+      <p class="rg-enchant-note">Possible substats obtainable through enchanting:</p>
+      <div class="rg-enchant-grid">
+        {enchantSubstats.map((sub: any) => (
+          <div class="rg-enchant-card">
+            <div class="rg-enchant-stat-name">{sub.effectName}</div>
+            <div class="rg-enchant-range">
+              {sub.isPercentage
+                ? `${(sub.min * 100).toFixed(sub.min < 0.1 ? 1 : 0)}% - ${(sub.max * 100).toFixed(sub.max < 0.1 ? 1 : 0)}%`
+                : `${sub.min} - ${sub.max}`}
             </div>
           </div>
         ))}

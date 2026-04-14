@@ -37,7 +37,7 @@
     {
       "id": 1024051,
       "name": "Power of Nature",
-      "comment": "Passive: Wood element advantage damage bonus Up (Small)",
+      "comment": "Passive: Wood element advantage damage +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -51,7 +51,7 @@
     {
       "id": 1031031,
       "name": "Will of Fire",
-      "comment": "Passive: Fire element resistance Up (Small)",
+      "comment": "Passive: Fire element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -61,6 +61,29 @@
       "costST": 0,
       "addST": 0,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 1,
+      "effectName": "HP",
+      "min": 0.1,
+      "max": 0.3,
+      "isPercentage": true
+    },
+    {
+      "effect": 3,
+      "effectName": "Def",
+      "min": 0.005,
+      "max": 0.015,
+      "isPercentage": true
+    },
+    {
+      "effect": 10,
+      "effectName": "AntiNegativeBuff",
+      "min": 0.007,
+      "max": 0.02,
+      "isPercentage": true
     }
   ]
 }

@@ -37,7 +37,7 @@
     {
       "id": 1002052,
       "name": "Cycle",
-      "comment": "Trigger Skill: Activates when 2 or fewer enemies remain\nEffect: Grants ATK Down (Small) to all enemies\nUsage Limit: 3",
+      "comment": "Trigger Skill: Activates when 2 or fewer enemies remain\nEffect: Grants ATK -10% to to all enemies\nUsage Limit: 3",
       "icon": "01_普通攻擊",
       "type": 5,
       "typeName": "Passive",
@@ -48,6 +48,29 @@
       "addST": 0,
       "times": 3,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 2,
+      "effectName": "Atk",
+      "min": 0.07,
+      "max": 0.2,
+      "isPercentage": true
+    },
+    {
+      "effect": 4,
+      "effectName": "Crit",
+      "min": 0.01,
+      "max": 0.03,
+      "isPercentage": true
+    },
+    {
+      "effect": 8,
+      "effectName": "STAdd",
+      "min": 2,
+      "max": 6,
+      "isPercentage": false
     }
   ]
 }

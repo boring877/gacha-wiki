@@ -37,7 +37,7 @@
     {
       "id": 1033031,
       "name": "Will of Fire",
-      "comment": "Passive: Fire element resistance Up (Small)",
+      "comment": "Passive: Fire element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -51,7 +51,7 @@
     {
       "id": 1034051,
       "name": "Will of Nature",
-      "comment": "Passive: Wood element resistance Up (Small)",
+      "comment": "Passive: Wood element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -61,6 +61,22 @@
       "costST": 0,
       "addST": 0,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 9,
+      "effectName": "NegativeBuffHit",
+      "min": 0.007,
+      "max": 0.02,
+      "isPercentage": true
+    },
+    {
+      "effect": 11,
+      "effectName": "InitialST",
+      "min": 7,
+      "max": 20,
+      "isPercentage": false
     }
   ]
 }

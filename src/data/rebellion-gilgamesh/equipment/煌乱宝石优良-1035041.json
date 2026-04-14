@@ -37,7 +37,7 @@
     {
       "id": 1035053,
       "name": "Will of Radiance",
-      "comment": "Passive: Light element resistance Up (Small)",
+      "comment": "Passive: Light element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -47,6 +47,29 @@
       "costST": 0,
       "addST": 0,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 7,
+      "effectName": "STRecover",
+      "min": 18,
+      "max": 36,
+      "isPercentage": false
+    },
+    {
+      "effect": 10,
+      "effectName": "AntiNegativeBuff",
+      "min": 0.05,
+      "max": 0.1,
+      "isPercentage": true
+    },
+    {
+      "effect": 11,
+      "effectName": "InitialST",
+      "min": 50,
+      "max": 200,
+      "isPercentage": false
     }
   ]
 }

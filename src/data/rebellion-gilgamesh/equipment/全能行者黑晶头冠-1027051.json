@@ -37,7 +37,7 @@
     {
       "id": 1027031,
       "name": "Power of Darkness",
-      "comment": "Passive: Dark element advantage damage bonus Up (Small)",
+      "comment": "Passive: Dark element advantage damage +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -51,7 +51,7 @@
     {
       "id": 1035052,
       "name": "Will of Chaos",
-      "comment": "Passive: Chaos element resistance Up (Small)",
+      "comment": "Passive: Chaos element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -61,6 +61,29 @@
       "costST": 0,
       "addST": 0,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 1,
+      "effectName": "HP",
+      "min": 0.07,
+      "max": 0.14,
+      "isPercentage": true
+    },
+    {
+      "effect": 3,
+      "effectName": "Def",
+      "min": 0.09,
+      "max": 0.18,
+      "isPercentage": true
+    },
+    {
+      "effect": 6,
+      "effectName": "HPRecover",
+      "min": 275,
+      "max": 550,
+      "isPercentage": false
     }
   ]
 }

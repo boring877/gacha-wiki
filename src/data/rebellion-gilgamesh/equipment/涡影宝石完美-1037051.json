@@ -37,7 +37,7 @@
     {
       "id": 1038052,
       "name": "Will of Darkness",
-      "comment": "Passive: Dark element resistance Up (Small)",
+      "comment": "Passive: Dark element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -51,7 +51,7 @@
     {
       "id": 1038051,
       "name": "Will of Chaos",
-      "comment": "Passive: Chaos element resistance Up (Small)",
+      "comment": "Passive: Chaos element resistance +20%",
       "icon": "401",
       "type": 3,
       "typeName": "Trigger",
@@ -61,6 +61,22 @@
       "costST": 0,
       "addST": 0,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 7,
+      "effectName": "STRecover",
+      "min": 13,
+      "max": 26,
+      "isPercentage": false
+    },
+    {
+      "effect": 10,
+      "effectName": "AntiNegativeBuff",
+      "min": 0.03,
+      "max": 0.06,
+      "isPercentage": true
     }
   ]
 }

@@ -37,7 +37,7 @@
     {
       "id": 1006032,
       "name": "Phantom Light",
-      "comment": "Trigger Skill: Activates when an ally besides self is defeated\nEffect: Grants ATK Up (Small) to all allies\nUsage Limit: 1",
+      "comment": "Trigger Skill: Activates when an ally besides self is defeated\nEffect: Grants ATK +7% to all allies\nUsage Limit: 1",
       "icon": "01_普通攻擊",
       "type": 5,
       "typeName": "Passive",
@@ -48,6 +48,29 @@
       "addST": 0,
       "times": 1,
       "showPower": "《小》"
+    }
+  ],
+  "enchantSubstats": [
+    {
+      "effect": 2,
+      "effectName": "Atk",
+      "min": 0.07,
+      "max": 0.14,
+      "isPercentage": true
+    },
+    {
+      "effect": 4,
+      "effectName": "Crit",
+      "min": 0.04,
+      "max": 0.08,
+      "isPercentage": true
+    },
+    {
+      "effect": 5,
+      "effectName": "CritDamage",
+      "min": 0.08,
+      "max": 0.16,
+      "isPercentage": true
     }
   ]
 }
