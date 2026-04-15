@@ -4,7 +4,7 @@
 export const sharinData = {
   name: 'Sharin',
   image: 'Sharin.png',
-  rarity: 'UR',
+  rarity: 'SSR',
   element: 'Fire',
   class: 'Buffer',
   role: 'Buffer',

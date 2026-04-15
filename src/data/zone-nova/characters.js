@@ -685,7 +685,7 @@ export const ZONE_NOVA_CHARACTERS = [
   {
     id: 4031,
     name: 'Sharin',
-    rarity: 'UR',
+    rarity: 'SSR',
     element: 'Fire',
     role: 'Buffer',
     class: 'Buffer',
