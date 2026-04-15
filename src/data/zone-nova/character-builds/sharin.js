@@ -46,7 +46,7 @@ export const sharinBuild = {
       effect:
         "Sharin's exclusive memory card. Provides 32% ATK/DEF boost to all allies and stacking HP increase on skill use.",
       priority: 'Must Have',
-      note: '32% ATK/DEF to ALL allies on equip -- no conditions. Then every skill she casts bumps team HP by 6%, capping at 60% extra HP after 10 skills. Takes a while to fully stack but the 32% ATK/DEF alone is already huge. The HP stacks are just gravy on top.',
+      note: '32% ATK/DEF to ALL allies on equip -- no conditions. Then every skill she casts bumps team HP by 6%, capping at 60% extra HP after 10 skills. Takes a while to fully stack but the 32% ATK/DEF alone is already huge.',
       characterSpecific: true,
       memoryImage: 'Sharincard',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
