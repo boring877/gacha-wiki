@@ -55,10 +55,11 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-04-02',
+  lastUpdated: '2026-04-15',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
+    UR: [{ name: 'Sharin' }],
     SSS: [
       { name: 'Gluttony - Beelzebub' },
       { name: 'Freya' },
@@ -128,10 +129,10 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-04-02',
+  lastUpdated: '2026-04-15',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
-    UR: [{ name: 'Pride-Lucifer' }],
+    UR: [{ name: 'Sharin' }, { name: 'Pride-Lucifer' }],
     SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
     SS: [
       { name: 'Guinevere' },
@@ -180,10 +181,11 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-03-25',
+  lastUpdated: '2026-04-15',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
+    UR: [{ name: 'Sharin' }],
     SSS: [
       { name: 'Naiya' },
       { name: 'Apollo' },
@@ -344,6 +346,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-04-15',
+    changes: [
+      'Sharin added: UR in PvE, PvP, and New Player tier lists',
+      'New Fire Buffer from Monochrome Nation with Qi stacking mechanic',
+      'Ultimate provides massive ATK/DEF/Crit DMG buffs to top ATK and top DEF allies',
+      'A1 doubles ultimate targets and first ULT is free, A6 grants permanent [Hold the Line]',
+      'Passive grants team-wide stacking buffs: +11.5% healing/shield/damage and +3.3% energy recovery per Qi stack (max 10)',
+    ],
+  },
   {
     date: '2026-04-02',
     changes: [

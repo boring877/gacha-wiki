@@ -1217,6 +1217,26 @@ export const ZONE_NOVA_MEMORIES = [
   ]
   },
   {
+    id: 'bath-time',
+    slug: 'bath-time',
+    name: 'Bath Time',
+    image: '/images/games/zone-nova/memories/Sharincard.png',
+    rarity: 'SSR',
+    element: 'Fire',
+    character: 'Sharin',
+    class: 'Buffer',
+    detailUrl: '/guides/zone-nova/memories/bath-time/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600
+  },
+    effects: [
+      'Increases the attack and defense of all allies by 32%',
+      'Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks)'
+    ]
+  },
+  {
     id: 'suffocating-grace',
     slug: 'suffocating-grace',
     name: 'Suffocating Grace',
@@ -1287,6 +1307,7 @@ export const MEMORY_METADATA = {
     'Penny',
     'Rose',
     'Shanna',
+    'Sharin',
     'Shuten-doji',
     'Sigurd',
     'Shu',

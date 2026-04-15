@@ -31,6 +31,7 @@ import { tamamoNoMaeBuild } from './character-builds/tamamo-no-mae.js';
 import { prideLuciferBuild } from './character-builds/pride-lucifer.js';
 import { wrathSamaelBuild } from './character-builds/wrath-samael.js';
 import { hiyoriBuild } from './character-builds/hiyori.js';
+import { sharinBuild } from './character-builds/sharin.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -126,6 +127,9 @@ export const CHARACTER_BUILDS = {
 
   // Hiyori Build - SSR Chaos Mage Shield Destroy DPS
   hiyori: hiyoriBuild,
+
+  // Sharin Build - UR Fire Ultimate Team Buffer
+  sharin: sharinBuild,
 };
 
 // Generate builds for available characters only

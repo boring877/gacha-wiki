@@ -19,6 +19,7 @@
   --zn-badge-ssr: #ffa500; /* SSR rarity badge - orange background */
   --zn-badge-sr: #7ecfff; /* SR rarity badge - light blue background */
   --zn-badge-r: #a0a0a0; /* R rarity badge - gray background */
+  --zn-badge-ur: #000000; /* UR rarity badge - black background */
 
   /* Element Badge Colors */
   --zn-badge-fire: #ff6b6b; /* Fire element badge - red background */
@@ -251,6 +252,11 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Legacy Tag Rarity Colors */
+.tag-rarity.ur {
+  background: var(--zn-badge-ur);
+  color: var(--zn-badge-white);
+  font-weight: 800;
+}
 .tag-rarity.ssr {
   background: var(--zn-badge-ssr);
   color: var(--zn-badge-black);
@@ -560,6 +566,11 @@
 }
 
 /* Legacy Rarity Badge Colors - keeping for backwards compatibility */
+.rarity-badge.ur {
+  background: var(--zn-badge-ur);
+  color: var(--zn-badge-white);
+  font-weight: 800;
+}
 .rarity-badge.ssr {
   background: var(--zn-badge-ssr);
   color: var(--zn-badge-black);

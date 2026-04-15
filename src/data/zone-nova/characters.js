@@ -683,6 +683,20 @@ export const ZONE_NOVA_CHARACTERS = [
     detailUrl: '/guides/zone-nova/characters/shanna/',
   },
   {
+    id: 4031,
+    name: 'Sharin',
+    rarity: 'UR',
+    element: 'Fire',
+    role: 'Buffer',
+    class: 'Buffer',
+    faction: getFactionByCharacter('Sharin'),
+    tags: ['Ranged', 'Buff', 'Attack Boost', 'Defense Boost', 'HP Boost', /Energy/, /Team Buff/],
+    stats: { hp: 9180, attack: 1004, defense: 729, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
+    image: '/images/games/zone-nova/characters/Sharin.png',
+    slug: 'sharin',
+    detailUrl: '/guides/zone-nova/characters/sharin/',
+  },
+  {
     id: 45,
     name: 'Sigurd',
     rarity: 'SSR',
@@ -951,7 +965,7 @@ export const ZONE_NOVA_CHARACTERS = [
 export const CHARACTER_METADATA = {
   elements: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.element))).sort(),
   rarities: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.rarity))).sort((a, b) =>
-    a === 'SSR' ? -1 : b === 'SSR' ? 1 : a.localeCompare(b)
+    a === 'UR' ? -1 : b === 'UR' ? 1 : a === 'SSR' ? -1 : b === 'SSR' ? 1 : a.localeCompare(b)
   ),
   roles: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.role))).sort(),
   classes: Array.from(new Set(ZONE_NOVA_CHARACTERS.map(c => c.class))).sort(),

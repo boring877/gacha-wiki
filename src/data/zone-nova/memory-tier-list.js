@@ -70,7 +70,7 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-04-02',
+  lastUpdated: '2026-04-15',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
@@ -128,7 +128,7 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Buffer: {
-      SSS: [{ name: 'Absolutely Perfect Arms' }, { name: 'Hot Spring & Her' }],
+      SSS: [{ name: 'Absolutely Perfect Arms' }, { name: 'Hot Spring & Her' }, { name: 'Bath Time' }],
       SS: [{ name: 'Embarrassing Pattern' }, { name: 'The Loneliest Moment' }],
       S: [
         { name: 'Frost Dominion' },

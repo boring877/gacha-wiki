@@ -62,7 +62,7 @@ export const ZONE_NOVA_FACTIONS = {
   'Monochrome Nation': {
     name: 'Monochrome Nation',
     chineseName: '黑白国度',
-    characters: ['Rose', 'Nini', 'Hiyori'],
+    characters: ['Rose', 'Nini', 'Hiyori', 'Sharin'],
     color: '#607d8b',
     description: 'The Monochrome Nation faction',
   },
