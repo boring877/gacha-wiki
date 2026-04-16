@@ -1,0 +1,154 @@
+/**
+ * Taimanin Squad - Redeem Codes Page Styles
+ */
+
+.ts-redeem-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.ts-redeem-instructions {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--ts-bg-card);
+  border: 1px solid var(--ts-border);
+  border-radius: 8px;
+}
+
+.ts-redeem-instructions h2 {
+  font-size: var(--text-lg);
+  color: var(--ts-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.ts-redeem-instructions ol {
+  padding-left: 1.5rem;
+  color: var(--ts-text-secondary);
+  line-height: 1.8;
+}
+
+.ts-redeem-instructions a {
+  color: var(--ts-primary-light);
+  text-decoration: underline;
+}
+
+.ts-codes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ts-code-card {
+  background: var(--ts-bg-card);
+  border: 1px solid var(--ts-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.ts-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ts-code-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--ts-primary-light);
+  letter-spacing: 1px;
+}
+
+.ts-code-status {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.ts-code-status.active {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.ts-code-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ts-code-reward,
+.ts-code-valid,
+.ts-code-source,
+.ts-code-notes {
+  font-size: var(--text-sm);
+  color: var(--ts-text-secondary);
+}
+
+.ts-code-reward strong,
+.ts-code-valid strong,
+.ts-code-source strong {
+  color: var(--ts-text-primary);
+}
+
+.ts-copy-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--ts-primary-light);
+  border-radius: 4px;
+  color: var(--ts-primary-light);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ts-copy-btn:hover {
+  background: var(--ts-primary-light);
+  color: var(--ts-bg-primary);
+}
+
+.ts-copy-btn.copied {
+  background: var(--ts-success);
+  border-color: var(--ts-success);
+  color: var(--ts-text-primary);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .ts-redeem-container {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .ts-code-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ts-redeem-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .ts-code-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .ts-code-text {
+    font-size: var(--text-base);
+    word-break: break-all;
+  }
+
+  .ts-copy-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

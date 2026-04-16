@@ -1,0 +1,67 @@
+---
+/**
+ * Taimanin Squad - Redeem Codes Page
+ */
+import LandingLayout from '../../../../layouts/taimanin-squad/LandingLayout.astro';
+import { redeemCodes } from '../../../../data/taimanin-squad/redeem-codes.js';
+
+import '../../../../styles/games/taimanin-squad/ts-redeem-codes.css';
+
+const title = 'Redeem Codes - Taimanin Squad | GachaWiki';
+const description =
+  'Active redeem codes for Taimanin Squad. Copy and redeem for free Gems and rewards.';
+const gameTitle = 'Redeem Codes';
+---
+
+<LandingLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="ts-redeem-container">
+    <div class="ts-redeem-instructions">
+      <h2>How to Redeem</h2>
+      <ol>
+        <li>Visit the official coupon page at <a href="https://taimaninsquad.com/coupon" target="_blank" rel="noopener noreferrer">taimaninsquad.com/coupon</a></li>
+        <li>Log in with your game account</li>
+        <li>Enter the coupon code and submit</li>
+        <li>Claim your reward in-game from the mail box</li>
+      </ol>
+    </div>
+
+    <div class="ts-codes-list">
+      {
+        redeemCodes.map((item) => (
+          <div class="ts-code-card">
+            <div class="ts-code-header">
+              <span class="ts-code-text">{item.code}</span>
+              <span class={`ts-code-status ${item.status}`}>{item.status}</span>
+            </div>
+            <div class="ts-code-details">
+              <div class="ts-code-reward"><strong>Reward:</strong> {item.rewards}</div>
+              <div class="ts-code-valid"><strong>Valid until:</strong> {item.validUntil}</div>
+              <div class="ts-code-source"><strong>Source:</strong> {item.source}</div>
+              {item.notes && <div class="ts-code-notes">{item.notes}</div>}
+            </div>
+            <button class="ts-copy-btn" data-code={item.code}>
+              Copy Code
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</LandingLayout>
+
+<script>
+  document.querySelectorAll('.ts-copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      if (code) {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy Code';
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  });
+</script>
