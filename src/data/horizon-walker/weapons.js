@@ -10,7 +10,7 @@ import { echidnaData } from './characters/echidna.js';
 import { ernesteData } from './characters/erneste.js';
 import { everetteData } from './characters/everette.js';
 import { fammeneData } from './characters/fammene.js';
-import { grideldaData } from './characters/gridelda.js';
+import { griseldaData } from './characters/griselda.js';
 import { headlessKnightData } from './characters/headless-knight.js';
 import { inesData } from './characters/ines.js';
 import { juhaData } from './characters/juha.js';
@@ -80,7 +80,7 @@ const CHARACTER_DATA = {
   erneste: ernesteData,
   everette: everetteData,
   fammene: fammeneData,
-  gridelda: grideldaData,
+  griselda: griseldaData,
   'headless-knight': headlessKnightData,
   ines: inesData,
   jua: juhaData, // Note: jua file exports as juhaData

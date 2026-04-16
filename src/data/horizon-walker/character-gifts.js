@@ -439,10 +439,10 @@ export const CHARACTER_GIFT_PREFERENCES = [
     ],
   },
   {
-    id: 'gridelda',
-    name: 'Gridelda',
+    id: 'griselda',
+    name: 'Griselda',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Gridelda.jpg',
+    image: '/images/games/horizon-walker/characters/Griselda.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',

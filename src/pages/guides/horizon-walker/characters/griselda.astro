@@ -1,0 +1,22 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  griseldaData,
+  griseldaSEO,
+  griseldaHighlighting,
+} from '../../../../data/horizon-walker/characters/griselda.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={griseldaSEO.title}
+  description={griseldaSEO.description}
+  gameTitle={griseldaData.name}
+  character={griseldaData}
+>
+  <CharacterPageTemplate
+    characterData={{ ...griseldaData, highlightPatterns: griseldaHighlighting }}
+  />
+</CharacterIndividualLayout>
