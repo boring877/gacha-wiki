@@ -15,7 +15,7 @@
   "icon": "253_Asagi",
   "model": "253_Asagi/Unit/prf_253",
   "animation_event": "253_asagi",
-  "book_index": 0,
+  "book_index": 8,
   "acquisition_id": 10002,
   "btl_power": 7950,
   "btl_rate": 502030,
@@ -464,10 +464,10 @@
       "multiplier": 504.0,
       "effects": [
         {
-          "type": "eBOFunc_TurnGaugeDown",
-          "target": "eBOTarget_HitTarget",
-          "value": 15.0,
-          "rate": 15,
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -30,
           "timing": "eBOTiming_OnAction",
           "condition": ""
         }
@@ -503,21 +503,21 @@
       "multiplier": null,
       "effects": [
         {
-          "type": "eBOFunc_Heal/MaxHp",
-          "target": "eBOTarget_Ally/1",
-          "value": 21.0,
+          "type": "eBOFunc_AddBuff/CountAttack",
+          "target": "eBOTarget_AtkMoreAllyOther",
+          "duration": 2,
+          "value": 50.0,
           "rate": 0,
           "timing": "eBOTiming_Action",
           "condition": ""
         },
         {
-          "type": "eBOFunc_AddBuff/HealTurn",
-          "target": "eBOTarget_Ally/All",
-          "duration": 3,
-          "value": 7.0,
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_HitTargetList",
+          "value": 28.0,
           "rate": 0,
-          "timing": "eBOTiming_ActionLast",
-          "condition": "eBOCond_MoreHP/100"
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_LessHP/35"
         }
       ],
       "battle_options": "2530201/2530202",
@@ -549,20 +549,10 @@
       "damage_scaling": "",
       "skill_level_scaling": "",
       "multiplier": null,
-      "effects": [
-        {
-          "type": "eBOFunc_TurnGaugeUp",
-          "target": "eBOTarget_SelfOther",
-          "value": 20.0,
-          "rate": -100,
-          "timing": "eBOTiming_ActionLast",
-          "condition": ""
-        }
-      ],
-      "battle_options": "2530301/2530302",
+      "effects": [],
+      "battle_options": "2530301",
       "battle_option_ids": [
-        2530301,
-        2530302
+        2530301
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -590,17 +580,27 @@
       "multiplier": null,
       "effects": [
         {
-          "type": "eBOFunc_Heal/MaxHp",
-          "target": "eBOTarget_Ally/All",
-          "value": 3.5,
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTargetList",
+          "value": 15.0,
+          "rate": 20,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsSkill/1"
+        },
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 60.0,
           "rate": 0,
-          "timing": "eBOTiming_ActionBefore",
-          "condition": ""
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsSkill/2"
         }
       ],
-      "battle_options": "2530401",
+      "battle_options": "2530401/2530402",
       "battle_option_ids": [
-        2530401
+        2530401,
+        2530402
       ],
       "evolution_level_required": 2,
       "trigger_keyword": "",
@@ -610,5 +610,119 @@
       "cutscene_flag": 0
     }
   ],
-  "weapons": []
+  "weapons": [
+    {
+      "id": 25301,
+      "name": "[&Color_Orange]Lily Cascade[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25301",
+      "icon": "Weapon_25301.png",
+      "rarity": 4,
+      "weapon_type": 253,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25302,
+      "skill_id": 25312,
+      "skill_data": {
+        "id": 25312,
+        "name": "[Tbl_UnitSkill_Name_25312]",
+        "name_key": "Tbl_UnitSkill_Name_25312",
+        "name_readable": "[Tbl_UnitSkill_Name_25312]",
+        "description": "",
+        "description_key": "Tbl_UnitSkill_Desc_25312",
+        "description_readable": "",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "25312",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[B:10]/[H:10]/[B:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/CountAttack",
+            "target": "eBOTarget_AtkMoreAllyOther",
+            "duration": 2,
+            "value": 50.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_LessHP/35"
+          }
+        ],
+        "battle_options": "2531201/2531202",
+        "battle_option_ids": [
+          2531201,
+          2531202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    },
+    {
+      "id": 25302,
+      "name": "[&Color_Orange]Violet Pomander[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25302",
+      "icon": "Weapon_25302.png",
+      "rarity": 4,
+      "weapon_type": 253,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25303,
+      "skill_id": 25313,
+      "skill_data": {
+        "id": 25313,
+        "name": "[Tbl_UnitSkill_Name_25313]",
+        "name_key": "Tbl_UnitSkill_Name_25313",
+        "name_readable": "[Tbl_UnitSkill_Name_25313]",
+        "description": "",
+        "description_key": "Tbl_UnitSkill_Desc_25313",
+        "description_readable": "",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "25313",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Strengthen",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 21.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "2531301/2531302",
+        "battle_option_ids": [
+          2531301,
+          2531302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
+    }
+  ]
 }

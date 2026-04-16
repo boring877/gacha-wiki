@@ -461,12 +461,11 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 504.0,
+      "multiplier": 525.0,
       "effects": [],
-      "battle_options": "2560101/2560102",
+      "battle_options": "2560101",
       "battle_option_ids": [
-        2560101,
-        2560102
+        2560101
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -483,39 +482,19 @@
       "description": "",
       "description_key": "Tbl_UnitSkill_Desc_25602",
       "description_readable": "",
-      "type_description": "[&Color_Orange][Support Skill][-]",
-      "type_description_readable": "[Support Skill]",
+      "type_description": "[&Color_Orange][Attack Skill][-]",
+      "type_description_readable": "[Attack Skill]",
       "icon": "25602",
       "cooldown": 3,
       "hit_count": 1,
       "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
-      "multiplier": null,
-      "effects": [
-        {
-          "type": "eBOFunc_AddBuff/AllyProtection",
-          "target": "eBOTarget_SelfOther",
-          "duration": 2,
-          "value": 45.0,
-          "rate": 0,
-          "timing": "eBOTiming_Action",
-          "condition": ""
-        },
-        {
-          "type": "eBOFunc_AddBuff/HealTurn",
-          "target": "eBOTarget_Self",
-          "duration": 3,
-          "value": 9.5,
-          "rate": 0,
-          "timing": "eBOTiming_OnAction",
-          "condition": "eBOCond_IsBattleActionType/AllyProtected"
-        }
-      ],
-      "battle_options": "2560201/2560202",
+      "damage_scaling": "[ATK]",
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 394.2,
+      "effects": [],
+      "battle_options": "2560201",
       "battle_option_ids": [
-        2560201,
-        2560202
+        2560201
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -538,23 +517,13 @@
       "cooldown": 5,
       "hit_count": 1,
       "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
-      "multiplier": null,
-      "effects": [
-        {
-          "type": "eBOFunc_CoolTimeTurn/All",
-          "target": "eBOTarget_SelfOther",
-          "value": 0.0,
-          "rate": 45,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        }
-      ],
-      "battle_options": "2560301/2560302",
+      "damage_scaling": "[ATK]",
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 931.9,
+      "effects": [],
+      "battle_options": "2560301",
       "battle_option_ids": [
-        2560301,
-        2560302
+        2560301
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -582,12 +551,11 @@
       "multiplier": null,
       "effects": [
         {
-          "type": "eBOFunc_AddBuff/ShieldDef",
-          "target": "eBOTarget_AllyOther/1",
-          "duration": 2,
-          "value": 340.0,
-          "rate": 0,
-          "timing": "eBOTiming_TurnStart",
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_ActionBefore",
           "condition": ""
         }
       ],
@@ -603,5 +571,88 @@
       "cutscene_flag": 0
     }
   ],
-  "weapons": []
+  "weapons": [
+    {
+      "id": 25601,
+      "name": "[&Color_Orange]Tidal Wave[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25601",
+      "icon": "Weapon_25601.png",
+      "rarity": 4,
+      "weapon_type": 256,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25601,
+      "skill_id": 25611,
+      "skill_data": {
+        "id": 25611,
+        "name": "[Tbl_UnitSkill_Name_25611]",
+        "name_key": "Tbl_UnitSkill_Name_25611",
+        "name_readable": "[Tbl_UnitSkill_Name_25611]",
+        "description": "[Tbl_UnitSkill_Desc_25611]",
+        "description_key": "Tbl_UnitSkill_Desc_25611",
+        "description_readable": "[Tbl_UnitSkill_Desc_25611]",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "25611",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 525.0,
+        "effects": [],
+        "battle_options": "2561101",
+        "battle_option_ids": [
+          2561101
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    },
+    {
+      "id": 25602,
+      "name": "[&Color_Orange]Evergreen Pilgrim[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25602",
+      "icon": "Weapon_25602.png",
+      "rarity": 4,
+      "weapon_type": 256,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25602,
+      "skill_id": 25612,
+      "skill_data": {
+        "id": 25612,
+        "name": "[Tbl_UnitSkill_Name_25612]",
+        "name_key": "Tbl_UnitSkill_Name_25612",
+        "name_readable": "[Tbl_UnitSkill_Name_25612]",
+        "description": "[Tbl_UnitSkill_Desc_25612]",
+        "description_key": "Tbl_UnitSkill_Desc_25612",
+        "description_readable": "[Tbl_UnitSkill_Desc_25612]",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "25612",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 394.2,
+        "effects": [],
+        "battle_options": "2561201",
+        "battle_option_ids": [
+          2561201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    }
+  ]
 }

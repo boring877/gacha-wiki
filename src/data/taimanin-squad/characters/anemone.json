@@ -16,7 +16,7 @@
   "model": "77_Anemone/Unit/prf_77",
   "animation_event": "77_anemone",
   "book_index": 6,
-  "acquisition_id": 10002,
+  "acquisition_id": 10003,
   "btl_power": 7950,
   "btl_rate": 324127,
   "names": {
@@ -479,9 +479,9 @@
       "name": "[&Color_Cyan]Tsuchigumo's Net[-]",
       "name_key": "Tbl_UnitSkill_Name_7701",
       "name_readable": "Tsuchigumo's Net",
-      "description": "Throws a bundle of spider webs at the enemy.\nTarget hit by the web bundle is inflicted with [&Color_Cyan]([V3:770102]%)[-] [&SpdDown] at a[&Color_Cyan][R:770102]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770102] turn(s)",
+      "description": "Attacks the enemy by hurling a bundle of webs.\nTarget hit is inflicted with [&Color_Cyan]([V3:770103]%)[-] [&SpdDown] at a [&Color_Cyan][R:770103]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:770103] turn(s)\nIf the target already has [&SpdDown], they're inflicted with [&Restraint] at a [&Color_Cyan][R:770102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:770102] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_7701",
-      "description_readable": "Throws a bundle of spider webs at the enemy.\nTarget hit by the web bundle is inflicted with ([V3:770102]%) [&SpdDown] at a[R:770102]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770102] turn(s)",
+      "description_readable": "Attacks the enemy by hurling a bundle of webs.\nTarget hit is inflicted with ([V3:770103]%) [&SpdDown] at a [R:770103]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:770103] turn(s)\nIf the target already has [&SpdDown], they're inflicted with [&Restraint] at a [R:770102]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:770102] turn(s)",
       "type_description": "[&Color_Orange][Normal Attack][-]",
       "type_description_readable": "[Normal Attack]",
       "icon": "7701",
@@ -489,9 +489,18 @@
       "hit_count": 1,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-      "multiplier": 504.0,
+      "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 472.5,
       "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Restraint",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/SpdDown"
+        },
         {
           "type": "eBOFunc_AddDeBuff/SpdDown",
           "target": "eBOTarget_HitTarget",
@@ -502,10 +511,11 @@
           "condition": ""
         }
       ],
-      "battle_options": "770101/770102",
+      "battle_options": "770101/770102/770103",
       "battle_option_ids": [
         770101,
-        770102
+        770102,
+        770103
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -519,9 +529,9 @@
       "name": "[&Color_Cyan]Call of Anubis[-]",
       "name_key": "Tbl_UnitSkill_Name_7702",
       "name_readable": "Call of Anubis",
-      "description": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with [&Color_Cyan]([V3:770202]%)[-] [&Poison] at a [&Color_Cyan][R:770202]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs [&Color_Cyan]([V3:770203]%)[-] [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:770203]%[-] chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than [&Color_Cyan]30%[-], they are inflicted with [&Color_Cyan]([V3:770204]%)[-][&Poison] at a [&Color_Cyan][R:770204]%[-] chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+      "description": "Attacks [&Common_Word_Skill_EnemyAll] by unleashing a wide web.\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:770202]%)[-] for every [&Poison] the target has.\nTarget hit is inflicted with [&Sleep] at a [&Color_Cyan][R:770203]%[-] chance if the target has more than 2 [&DeBuff]s, including [&Poison] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:770203] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_7702",
-      "description_readable": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with ([V3:770202]%) [&Poison] at a [R:770202]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs ([V3:770203]%) [&Common_Word_Skill_TurnGauge] at a [R:770203]% chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than 30%, they are inflicted with ([V3:770204]%)[&Poison] at a [R:770204]% chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+      "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] by unleashing a wide web.\n[&Common_Word_Skill_Damage] increases by ([V3:770202]%) for every [&Poison] the target has.\nTarget hit is inflicted with [&Sleep] at a [R:770203]% chance if the target has more than 2 [&DeBuff]s, including [&Poison] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:770203] turn(s)",
       "type_description": "[&Color_Orange][Attack Skill][-]",
       "type_description_readable": "[Attack Skill]",
       "icon": "7702",
@@ -529,42 +539,24 @@
       "hit_count": 3,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-      "multiplier": 110.4,
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 118.3,
       "effects": [
         {
-          "type": "eBOFunc_AddDeBuff/Poison",
-          "target": "eBOTarget_HitTarget",
-          "duration": 3,
-          "value": 2.5,
-          "rate": 15,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        },
-        {
-          "type": "eBOFunc_TurnGaugeDrain",
+          "type": "eBOFunc_AddDeBuff/Sleep",
           "target": "eBOTarget_HitTargetList",
-          "value": 12.5,
-          "rate": 35,
+          "duration": 2,
+          "value": 0.0,
+          "rate": 50,
           "timing": "eBOTiming_ActionLast",
-          "condition": "eBOCond_HasDeBuffMoreCnt/4"
-        },
-        {
-          "type": "eBOFunc_AddDeBuff/Poison",
-          "target": "eBOTarget_HitTargetList",
-          "duration": 3,
-          "value": 2.5,
-          "rate": 60,
-          "timing": "eBOTiming_ActionAfter",
-          "condition": "eBOCond_LessTurnGauge/30"
+          "condition": "eBOCond_HasDeBuffMoreCnt/2&&eBOCond_HasDeBuff/Poison"
         }
       ],
-      "battle_options": "770201/770202/770203/770204",
+      "battle_options": "770201/770202/770203",
       "battle_option_ids": [
         770201,
         770202,
-        770203,
-        770204
+        770203
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -578,44 +570,133 @@
       "name": "[&Color_Cyan]Reaper-Summoning Thread[-]",
       "name_key": "Tbl_UnitSkill_Name_7703",
       "name_readable": "Reaper-Summoning Thread",
-      "description": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:770302]%[-] of the target's current [&HP].\nTargets are inflicted with [&Color_Cyan]([V3:770303]%)[-][&HealRateDown] at a [&Color_Cyan][R:770303]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target has [&SpdDown], they are inflicted with [&Restraint] at a [&Color_Cyan][R:770304]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770304] turn(s)",
+      "description": "Sends [A:7703] spiders charging toward random enemies.\nOn [&Common_Word_Skill_ActionLast], targets hit are inflicted with [&Color_Cyan]([V3:770316]%)[-] [&PoisonDmg].\n[&Common_Word_Skill_ValueTurn]: [V2:770316] turn(s)\nTarget hit is inflicted with [&Color_Cyan]([V3:770317]%)[-] [&PoisonDmg] if the target is under [&Sleep].\n[&Common_Word_Skill_ValueTurn]: [V2:770317] turn(s)\nInflicts [&Color_Cyan]([V3:770318]%)[-] [&PoisonDmg] if the target is hit with [&Common_Word_Skill_CriticalAttack].\n[&Common_Word_Skill_ValueTurn]: [V2:770318] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_7703",
-      "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [V3:770302]% of the target's current [&HP].\nTargets are inflicted with ([V3:770303]%)[&HealRateDown] at a [R:770303]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target has [&SpdDown], they are inflicted with [&Restraint] at a [R:770304]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770304] turn(s)",
+      "description_readable": "Sends [A:7703] spiders charging toward random enemies.\nOn [&Common_Word_Skill_ActionLast], targets hit are inflicted with ([V3:770316]%) [&PoisonDmg].\n[&Common_Word_Skill_ValueTurn]: [V2:770316] turn(s)\nTarget hit is inflicted with ([V3:770317]%) [&PoisonDmg] if the target is under [&Sleep].\n[&Common_Word_Skill_ValueTurn]: [V2:770317] turn(s)\nInflicts ([V3:770318]%) [&PoisonDmg] if the target is hit with [&Common_Word_Skill_CriticalAttack].\n[&Common_Word_Skill_ValueTurn]: [V2:770318] turn(s)",
       "type_description": "[&Color_Orange][Ultimate Skill][-]",
       "type_description_readable": "[Ultimate Skill]",
       "icon": "7703",
       "cooldown": 6,
-      "hit_count": 1,
+      "hit_count": 15,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-      "multiplier": 436.2,
+      "multiplier": 607.5,
       "effects": [
         {
-          "type": "eBOFunc_AddDeBuff/HealRateDown",
-          "target": "eBOTarget_HitTarget",
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 40.5,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 40.5,
+              "target": "eBOTarget_EnemyRnd/1"
+            }
+          ],
+          "value": 607.5
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/PoisonDmg",
+          "target": "eBOTarget_HitTargetList",
           "duration": 2,
           "value": 50.0,
-          "rate": 99,
-          "timing": "eBOTiming_OnAction",
+          "rate": 0,
+          "timing": "eBOTiming_ActionLast",
           "condition": ""
         },
         {
-          "type": "eBOFunc_AddDeBuff/Restraint",
+          "type": "eBOFunc_AddDeBuff/PoisonDmg",
           "target": "eBOTarget_HitTarget",
           "duration": 2,
-          "value": 0.0,
-          "rate": 45,
+          "value": 50.0,
+          "rate": 0,
           "timing": "eBOTiming_OnAction",
-          "condition": "eBOCond_HasDeBuff/SpdDown"
+          "condition": "eBOCond_HasDeBuff/Sleep"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/PoisonDmg",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
         }
       ],
-      "battle_options": "770301/770302/770303/770304",
+      "battle_options": "770301/770302/770303/770304/770305/770306/770307/770308/770309/770310/770311/770312/770313/770314/770315/770316/770317/770318",
       "battle_option_ids": [
         770301,
         770302,
         770303,
-        770304
+        770304,
+        770305,
+        770306,
+        770307,
+        770308,
+        770309,
+        770310,
+        770311,
+        770312,
+        770313,
+        770314,
+        770315,
+        770316,
+        770317,
+        770318
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -629,9 +710,9 @@
       "name": "[&Color_Cyan]Princess of Arachne Clan[-]",
       "name_key": "Tbl_UnitSkill_Name_7704",
       "name_readable": "Princess of Arachne Clan",
-      "description": "If the target has [&Poison] when attacked, deals a [&Color_Cyan]([V3:770401]%)[-] [&Common_Word_Skill_DmgDrainHp] attack.",
+      "description": "If no damage is taken during the enemy's turn, inflicting [&Color_Cyan]([V3:770401]%)[-] [&Poison] to 1 [&Common_Word_Skill_Random] enemy is guaranteed.\n[&Common_Word_Skill_ValueTurn]: [V2:770401] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_7704",
-      "description_readable": "If the target has [&Poison] when attacked, deals a ([V3:770401]%) [&Common_Word_Skill_DmgDrainHp] attack.",
+      "description_readable": "If no damage is taken during the enemy's turn, inflicting ([V3:770401]%) [&Poison] to 1 [&Common_Word_Skill_Random] enemy is guaranteed.\n[&Common_Word_Skill_ValueTurn]: [V2:770401] turn(s)",
       "type_description": "[&Color_Orange][Passive Skill][-]",
       "type_description_readable": "[Passive Skill]",
       "icon": "7704",
@@ -641,7 +722,17 @@
       "damage_scaling": "",
       "skill_level_scaling": "",
       "multiplier": null,
-      "effects": [],
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_EnemyRnd/1",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "770401",
       "battle_option_ids": [
         770401
@@ -671,9 +762,9 @@
         "name": "<[&Tbl_UnitWeapon_Name_7701]> [&Tbl_UnitSkill_Name_7702]",
         "name_key": "Tbl_UnitSkill_Name_7712",
         "name_readable": "<[&Tbl_UnitWeapon_Name_7701]> [&Tbl_UnitSkill_Name_7702]",
-        "description": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with [&Color_Cyan]([V3:770202]%)[-] [&Poison] at a [&Color_Cyan][R:770202]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs [&Color_Cyan]([V3:770203]%)[-] [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:770203]%[-] chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than [&Color_Cyan]30%[-], increases the efficacy of [&Poison] by [&Color_Cyan][V3:771204]%[-] at a [&Color_Cyan][R:770204]%[-] chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+        "description": "Spreads a wide spider web to attack [&Common_Word_Skill_EnemyAll].\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:771202]%)[-] for every [&Poison] the target has.\nTarget hit is guaranteed to be inflicted with [&Sleep] if the target has more than 3 [&DeBuff]s, including [&Poison] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:771203] turn(s)",
         "description_key": "Tbl_UnitSkill_Desc_7712",
-        "description_readable": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with ([V3:770202]%) [&Poison] at a [R:770202]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs ([V3:770203]%) [&Common_Word_Skill_TurnGauge] at a [R:770203]% chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than 30%, increases the efficacy of [&Poison] by [V3:771204]% at a [R:770204]% chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+        "description_readable": "Spreads a wide spider web to attack [&Common_Word_Skill_EnemyAll].\n[&Common_Word_Skill_Damage] increases by ([V3:771202]%) for every [&Poison] the target has.\nTarget hit is guaranteed to be inflicted with [&Sleep] if the target has more than 3 [&DeBuff]s, including [&Poison] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:771203] turn(s)",
         "type_description": "[&Color_Orange][Attack Skill][-]",
         "type_description_readable": "[Attack Skill]",
         "icon": "7712",
@@ -681,33 +772,24 @@
         "hit_count": 3,
         "additional_hits": 0,
         "damage_scaling": "[ATK]",
-        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-        "multiplier": 110.4,
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 118.3,
         "effects": [
           {
-            "type": "eBOFunc_AddDeBuff/Poison",
-            "target": "eBOTarget_HitTarget",
-            "duration": 3,
-            "value": 2.5,
-            "rate": 15,
-            "timing": "eBOTiming_OnAction",
-            "condition": ""
-          },
-          {
-            "type": "eBOFunc_TurnGaugeDrain",
+            "type": "eBOFunc_AddDeBuff/Sleep",
             "target": "eBOTarget_HitTargetList",
-            "value": 12.5,
-            "rate": 35,
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
             "timing": "eBOTiming_ActionLast",
-            "condition": "eBOCond_HasDeBuffMoreCnt/4"
+            "condition": "eBOCond_HasDeBuffMoreCnt/3&&eBOCond_HasDeBuff/Poison"
           }
         ],
-        "battle_options": "771201/771202/771203/771204",
+        "battle_options": "771201/771202/771203",
         "battle_option_ids": [
           771201,
           771202,
-          771203,
-          771204
+          771203
         ],
         "evolution_level_required": 0,
         "trigger_keyword": "",
@@ -733,44 +815,133 @@
         "name": "<[&Tbl_UnitWeapon_Name_7702]> [&Tbl_UnitSkill_Name_7703]",
         "name_key": "Tbl_UnitSkill_Name_7713",
         "name_readable": "<[&Tbl_UnitWeapon_Name_7702]> [&Tbl_UnitSkill_Name_7703]",
-        "description": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:770302]%[-] of the target's current [&HP].\nTargets are inflicted with [&Color_Cyan]([V3:770303]%)[-][&HealRateDown] at a [&Color_Cyan][R:770303]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target is left alone, they are inflicted with [&Color_Cyan]([V3:771304]%)[-] [&Poison] at a [&Color_Cyan][R:771304]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:771304] turn(s)",
+        "description": "Sends [A:7713] spiders charging toward random enemies.\nTarget hit is inflicted with [&Color_Cyan]([V3:771316]%)[-] [&PoisonDmg] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:771316] turn(s)\nTarget is inflicted with [&Color_Cyan]([V3:771317]%)[-] [&PoisonDmg] if the target has [&SpdDown] [&DeBuff].\n[&Common_Word_Skill_ValueTurn]: [V2:771317] turn(s)\nTarget is inflicted with [&Color_Cyan]([V3:771318]%)[-] [&PoisonDmg] if the target has [&Restraint] [&DeBuff].\n[&Common_Word_Skill_ValueTurn]: [V2:771318] turn(s)",
         "description_key": "Tbl_UnitSkill_Desc_7713",
-        "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [V3:770302]% of the target's current [&HP].\nTargets are inflicted with ([V3:770303]%)[&HealRateDown] at a [R:770303]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target is left alone, they are inflicted with ([V3:771304]%) [&Poison] at a [R:771304]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:771304] turn(s)",
+        "description_readable": "Sends [A:7713] spiders charging toward random enemies.\nTarget hit is inflicted with ([V3:771316]%) [&PoisonDmg] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:771316] turn(s)\nTarget is inflicted with ([V3:771317]%) [&PoisonDmg] if the target has [&SpdDown] [&DeBuff].\n[&Common_Word_Skill_ValueTurn]: [V2:771317] turn(s)\nTarget is inflicted with ([V3:771318]%) [&PoisonDmg] if the target has [&Restraint] [&DeBuff].\n[&Common_Word_Skill_ValueTurn]: [V2:771318] turn(s)",
         "type_description": "[&Color_Orange][Ultimate Skill][-]",
         "type_description_readable": "[Ultimate Skill]",
         "icon": "7713",
         "cooldown": 6,
-        "hit_count": 1,
+        "hit_count": 15,
         "additional_hits": 0,
         "damage_scaling": "[ATK]",
         "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-        "multiplier": 436.2,
+        "multiplier": 607.5,
         "effects": [
           {
-            "type": "eBOFunc_AddDeBuff/HealRateDown",
-            "target": "eBOTarget_HitTarget",
+            "type": "multi_attack",
+            "hits": [
+              {
+                "value": 40.5,
+                "target": "eBOTarget_Enemy/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 40.5,
+                "target": "eBOTarget_EnemyRnd/1"
+              }
+            ],
+            "value": 607.5
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/PoisonDmg",
+            "target": "eBOTarget_HitTargetList",
             "duration": 2,
             "value": 50.0,
-            "rate": 99,
-            "timing": "eBOTiming_OnAction",
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
             "condition": ""
           },
           {
-            "type": "eBOFunc_AddDeBuff/Poison",
+            "type": "eBOFunc_AddDeBuff/PoisonDmg",
             "target": "eBOTarget_HitTarget",
-            "duration": 3,
-            "value": 2.5,
-            "rate": 90,
+            "duration": 2,
+            "value": 50.0,
+            "rate": 0,
             "timing": "eBOTiming_OnAction",
-            "condition": "eBOCond_IsSolo"
+            "condition": "eBOCond_HasDeBuff/SpdDown"
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/PoisonDmg",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 50.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_HasDeBuff/Restraint"
           }
         ],
-        "battle_options": "771301/771302/771303/771304",
+        "battle_options": "771301/771302/771303/771304/771305/771306/771307/771308/771309/771310/771311/771312/771313/771314/771315/771316/771317/771318",
         "battle_option_ids": [
           771301,
           771302,
           771303,
-          771304
+          771304,
+          771305,
+          771306,
+          771307,
+          771308,
+          771309,
+          771310,
+          771311,
+          771312,
+          771313,
+          771314,
+          771315,
+          771316,
+          771317,
+          771318
         ],
         "evolution_level_required": 1,
         "trigger_keyword": "",

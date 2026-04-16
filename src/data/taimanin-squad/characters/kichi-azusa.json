@@ -16,7 +16,7 @@
   "model": "14_Azusa/Unit/prf_14",
   "animation_event": "14_azusa",
   "book_index": 4,
-  "acquisition_id": 10004,
+  "acquisition_id": 0,
   "btl_power": 8950,
   "btl_rate": 254926,
   "names": {
@@ -558,9 +558,9 @@
       "name": "[&Color_Cyan]Onmyo Nenryu: Gale Charge[-]",
       "name_key": "Tbl_UnitSkill_Name_1403",
       "name_readable": "Onmyo Nenryu: Gale Charge",
-      "description": "Pierces the enemy with a powerful stab attack.\nWhen attacking, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan][V3:140302]%[-] of the character's SPD.\nWhen attacking a target with [&HP] less than [&Color_Cyan]50%[-], [&Common_Word_Skill_CriticalRate] is doubled.\nWhen killing a target with this skill, the character gains an [&Common_Word_Skill_AddTurn].",
+      "description": "Azusa pierces the enemy with a powerful stab attack.\nWhen attacking, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan][V3:140302]%[-] of the character's SPD.\nWhen attacking a target with [&HP] less than [&Color_Cyan]50%[-], [&Common_Word_Skill_CriticalRate] additionally increases equal to [&Color_Cyan][V3:140302]%[-] of SPD.\nWhen killing a target with this skill, the character gains an [&Common_Word_Skill_AddTurn].",
       "description_key": "Tbl_UnitSkill_Desc_1403",
-      "description_readable": "Pierces the enemy with a powerful stab attack.\nWhen attacking, [&Common_Word_Skill_CriticalRate] increases by [V3:140302]% of the character's SPD.\nWhen attacking a target with [&HP] less than 50%, [&Common_Word_Skill_CriticalRate] is doubled.\nWhen killing a target with this skill, the character gains an [&Common_Word_Skill_AddTurn].",
+      "description_readable": "Azusa pierces the enemy with a powerful stab attack.\nWhen attacking, [&Common_Word_Skill_CriticalRate] increases by [V3:140302]% of the character's SPD.\nWhen attacking a target with [&HP] less than 50%, [&Common_Word_Skill_CriticalRate] additionally increases equal to [V3:140302]% of SPD.\nWhen killing a target with this skill, the character gains an [&Common_Word_Skill_AddTurn].",
       "type_description": "[&Color_Orange][Ultimate Skill][-]",
       "type_description_readable": "[Ultimate Skill]",
       "icon": "1403",
@@ -580,7 +580,7 @@
         {
           "type": "eBOFunc_CriRateBySpdRate",
           "target": "NONE",
-          "value": 33.0,
+          "value": 22.5,
           "timing": "eBOTiming_OnActionCalc"
         }
       ],

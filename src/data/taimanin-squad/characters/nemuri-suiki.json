@@ -537,12 +537,22 @@
           "rate": 35,
           "timing": "eBOTiming_Action",
           "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_Self",
+          "duration": 3,
+          "value": 7.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
         }
       ],
-      "battle_options": "1280201/1280202",
+      "battle_options": "1280201/1280202/1280203",
       "battle_option_ids": [
         1280201,
-        1280202
+        1280202,
+        1280203
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -565,19 +575,10 @@
       "cooldown": 6,
       "hit_count": 1,
       "additional_hits": 0,
-      "damage_scaling": "",
+      "damage_scaling": "[ATK]",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
-      "multiplier": null,
+      "multiplier": 972.7,
       "effects": [
-        {
-          "type": "eBOFunc_AddBuff/AtkUp",
-          "target": "eBOTarget_Ally/1",
-          "duration": 2,
-          "value": 45.0,
-          "rate": 0,
-          "timing": "eBOTiming_Action",
-          "condition": ""
-        },
         {
           "type": "eBOFunc_CoolTimeClear/3",
           "target": "eBOTarget_HitTarget",
@@ -726,19 +727,10 @@
         "cooldown": 6,
         "hit_count": 1,
         "additional_hits": 0,
-        "damage_scaling": "",
+        "damage_scaling": "[ATK]",
         "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
-        "multiplier": null,
+        "multiplier": 467.4,
         "effects": [
-          {
-            "type": "eBOFunc_AddBuff/AtkUp",
-            "target": "eBOTarget_Ally/1",
-            "duration": 2,
-            "value": 45.0,
-            "rate": 0,
-            "timing": "eBOTiming_Action",
-            "condition": ""
-          },
           {
             "type": "eBOFunc_CoolTimeClear/3",
             "target": "eBOTarget_HitTarget",

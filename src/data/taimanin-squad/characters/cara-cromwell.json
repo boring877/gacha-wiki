@@ -490,12 +490,11 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 402.0,
+      "multiplier": 412.1,
       "effects": [],
-      "battle_options": "3020101/3020102",
+      "battle_options": "3020101",
       "battle_option_ids": [
-        3020101,
-        3020102
+        3020101
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -520,22 +519,24 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 255.2,
+      "multiplier": 238.1,
       "effects": [
         {
-          "type": "eBOFunc_TurnGaugeDrain",
-          "target": "eBOTarget_HitTarget",
-          "value": 12.5,
-          "rate": 15,
-          "timing": "eBOTiming_OnAction",
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 40.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
           "condition": ""
         }
       ],
-      "battle_options": "3020201/3020202/3020203",
+      "battle_options": "3020201/3020202/3020203/3020204",
       "battle_option_ids": [
         3020201,
         3020202,
-        3020203
+        3020203,
+        3020204
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -560,14 +561,23 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 662.8,
-      "effects": [],
-      "battle_options": "3020301/3020302/3020303/3020304",
+      "multiplier": 364.5,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
+      "battle_options": "3020301/3020302/3020303",
       "battle_option_ids": [
         3020301,
         3020302,
-        3020303,
-        3020304
+        3020303
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -591,24 +601,16 @@
       "hit_count": 0,
       "additional_hits": 0,
       "damage_scaling": "",
-      "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+      "skill_level_scaling": "",
       "multiplier": null,
       "effects": [
         {
           "type": "eBOFunc_Heal/MaxHp",
           "target": "eBOTarget_Self",
-          "value": 15.0,
-          "rate": 0,
-          "timing": "eBOTiming_ActionBefore",
-          "condition": ""
-        },
-        {
-          "type": "eBOFunc_TurnGaugeUp",
-          "target": "eBOTarget_Self",
           "value": 20.0,
-          "rate": -75,
-          "timing": "eBOTiming_ActionBefore",
-          "condition": ""
+          "rate": 0,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsBattleActionType/BuffTurnValue"
         }
       ],
       "battle_options": "3020401/3020402",
@@ -627,7 +629,7 @@
   "weapons": [
     {
       "id": 30201,
-      "name": "[&Color_Orange][-]",
+      "name": "[&Color_Orange]Scarlet Diadem[-]",
       "name_key": "Tbl_UnitWeapon_Name_30201",
       "icon": "Weapon_30201.png",
       "rarity": 4,
@@ -636,41 +638,11 @@
       "opt_value": 35,
       "skill_slot": 30203,
       "skill_id": 30213,
-      "skill_data": {
-        "id": 30213,
-        "name": "<[&Tbl_UnitWeapon_Name_30201]> [&Tbl_UnitSkill_Name_30203]",
-        "name_key": "Tbl_UnitSkill_Name_30213",
-        "name_readable": "<[&Tbl_UnitWeapon_Name_30201]> [&Tbl_UnitSkill_Name_30203]",
-        "description": "[Tbl_UnitSkill_Desc_30213]",
-        "description_key": "Tbl_UnitSkill_Desc_30213",
-        "description_readable": "[Tbl_UnitSkill_Desc_30213]",
-        "type_description": "[&Color_Orange][Ultimate Skill][-]",
-        "type_description_readable": "[Ultimate Skill]",
-        "icon": "30213",
-        "cooldown": 6,
-        "hit_count": 1,
-        "additional_hits": 0,
-        "damage_scaling": "[ATK]/[NowHP]",
-        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-        "multiplier": 689.2,
-        "effects": [],
-        "battle_options": "3021301/3021302/3021303",
-        "battle_option_ids": [
-          3021301,
-          3021302,
-          3021303
-        ],
-        "evolution_level_required": 1,
-        "trigger_keyword": "",
-        "aura_info": "",
-        "skill_button_type": 0,
-        "camera_type": 0,
-        "cutscene_flag": 2
-      }
+      "skill_data": null
     },
     {
       "id": 30202,
-      "name": "[&Color_Orange][-]",
+      "name": "[&Color_Orange]Lunatic Crown[-]",
       "name_key": "Tbl_UnitWeapon_Name_30202",
       "icon": "Weapon_30202.png",
       "rarity": 4,
@@ -694,26 +666,9 @@
         "hit_count": 0,
         "additional_hits": 0,
         "damage_scaling": "",
-        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "skill_level_scaling": "",
         "multiplier": null,
-        "effects": [
-          {
-            "type": "eBOFunc_Heal/MaxHp",
-            "target": "eBOTarget_Self",
-            "value": 15.0,
-            "rate": 0,
-            "timing": "eBOTiming_ActionBefore",
-            "condition": ""
-          },
-          {
-            "type": "eBOFunc_TurnGaugeUp",
-            "target": "eBOTarget_Self",
-            "value": 20.0,
-            "rate": -75,
-            "timing": "eBOTiming_ActionBefore",
-            "condition": ""
-          }
-        ],
+        "effects": [],
         "battle_options": "3021401/3021402",
         "battle_option_ids": [
           3021401,

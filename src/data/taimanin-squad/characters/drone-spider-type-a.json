@@ -15,7 +15,7 @@
   "icon": "180_Drone4",
   "model": "180_Drone4/Unit/prf_180",
   "animation_event": "180_drone4",
-  "book_index": 0,
+  "book_index": 6,
   "acquisition_id": 10001,
   "btl_power": 5800,
   "btl_rate": 282844,
@@ -27,12 +27,12 @@
   },
   "lore": {
     "key": "Tbl_Unit_Desc_180",
-    "english": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-    "japanese": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-    "korean": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-    "chinese_simplified": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-    "chinese_traditional": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-    "spanish": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy."
+    "english": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+    "japanese": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+    "korean": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+    "chinese_simplified": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+    "chinese_traditional": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+    "spanish": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation."
   },
   "base_stats": {
     "HP": 3891,
@@ -447,12 +447,12 @@
   "skills": [
     {
       "id": 18001,
-      "name": "",
+      "name": "[&Color_Cyan]Drone Tackle[-]",
       "name_key": "Tbl_UnitSkill_Name_18001",
-      "name_readable": "",
-      "description": "",
+      "name_readable": "Drone Tackle",
+      "description": "Body slams the enemy to attack.",
       "description_key": "Tbl_UnitSkill_Desc_18001",
-      "description_readable": "",
+      "description_readable": "Body slams the enemy to attack.",
       "type_description": "[&Color_Orange][Normal Attack][-]",
       "type_description_readable": "[Normal Attack]",
       "icon": "18001",
@@ -476,12 +476,12 @@
     },
     {
       "id": 18002,
-      "name": "",
+      "name": "[&Color_Cyan]Electric Shot[-]",
       "name_key": "Tbl_UnitSkill_Name_18002",
-      "name_readable": "",
-      "description": "",
+      "name_readable": "Electric Shot",
+      "description": "Deals damage by firing a powerful laser at the set target.\nWhen defeating an enemy with this skill, increases the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] by [&Color_Cyan][V3:1800202]%[-].",
       "description_key": "Tbl_UnitSkill_Desc_18002",
-      "description_readable": "",
+      "description_readable": "Deals damage by firing a powerful laser at the set target.\nWhen defeating an enemy with this skill, increases the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] by [V3:1800202]%.",
       "type_description": "[&Color_Orange][Attack Skill][-]",
       "type_description_readable": "[Attack Skill]",
       "icon": "18002",
@@ -495,8 +495,8 @@
         {
           "type": "eBOFunc_TurnGaugeUp",
           "target": "eBOTarget_Ally/All",
-          "value": 20.0,
-          "rate": -75,
+          "value": 26.0,
+          "rate": -100,
           "timing": "eBOTiming_ActionAfter",
           "condition": "eBOCond_IsKill"
         }

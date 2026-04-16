@@ -469,7 +469,7 @@
       ],
       "evolution_level_required": 3,
       "trigger_keyword": "",
-      "aura_info": "17.5,QUEST_TACTICS_ANALYSIS,Technique,SpdRate",
+      "aura_info": "20,QUEST_TACTICS_ANALYSIS,Technique,SpdRate",
       "skill_button_type": -2,
       "camera_type": 0,
       "cutscene_flag": 0
@@ -580,7 +580,7 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 782.8,
+      "multiplier": 838.7,
       "effects": [
         {
           "type": "eBOFunc_TurnGaugeDown",
@@ -598,23 +598,13 @@
           "rate": 0,
           "timing": "eBOTiming_ActionAfter",
           "condition": ""
-        },
-        {
-          "type": "eBOFunc_AddBuff/DmgBlockCount",
-          "target": "eBOTarget_Ally/All",
-          "duration": 2,
-          "value": 2.0,
-          "rate": 0,
-          "timing": "eBOTiming_ActionAfter",
-          "condition": "eBOCond_IsUnitTID/32"
         }
       ],
-      "battle_options": "800301/800302/800303/800304",
+      "battle_options": "800301/800302/800303",
       "battle_option_ids": [
         800301,
         800302,
-        800303,
-        800304
+        800303
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -652,7 +642,7 @@
         "additional_hits": 0,
         "damage_scaling": "[ATK]",
         "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-        "multiplier": 782.8,
+        "multiplier": 838.7,
         "effects": [
           {
             "type": "eBOFunc_AddDeBuff/ElecShock",
@@ -671,23 +661,13 @@
             "rate": 0,
             "timing": "eBOTiming_ActionAfter",
             "condition": ""
-          },
-          {
-            "type": "eBOFunc_AddBuff/DmgBlockCount",
-            "target": "eBOTarget_Ally/All",
-            "duration": 2,
-            "value": 2.0,
-            "rate": 0,
-            "timing": "eBOTiming_ActionAfter",
-            "condition": "eBOCond_IsUnitTID/32"
           }
         ],
-        "battle_options": "801301/801302/801303/801304",
+        "battle_options": "801301/801302/801303",
         "battle_option_ids": [
           801301,
           801302,
-          801303,
-          801304
+          801303
         ],
         "evolution_level_required": 1,
         "trigger_keyword": "",

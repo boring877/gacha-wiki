@@ -706,12 +706,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "3_Shirayuki",
     "lore": {
       "key": "Tbl_Unit_Desc_3",
-      "english": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
-      "japanese": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
-      "korean": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
-      "chinese_simplified": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
-      "chinese_traditional": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
-      "spanish": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually elves prefer not to interact with other species, but to explore the world, she was traveling the Demon Realm. After getting chased by powerful demons, she is helped by Taimanins and starts cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff."
+      "english": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
+      "japanese": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
+      "korean": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
+      "chinese_simplified": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
+      "chinese_traditional": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff.",
+      "spanish": "Demon. She's an elf who lives deep in the forests of the Dmon Realm, but among her species she's one of the rare Dark Elves. She is quiet, but also curious and wants to know everything.\n\nUsually, elves prefer not to interact with other species, but to explore the world, she was traveling through the Demon Realm. After getting chased by powerful demons, she was helped by the Taimanins and began cooperating with them.\n\nUnlike the average elf, she wields strong magical powers using the energy of nature. With her skill \"Cluster Ice Blaster\", she can mix the energy of nature and demonic energy to create a chunk of ice and fire it from her staff."
     },
     "stats": {
       "HP": 20868,
@@ -11323,12 +11323,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 34,
-    "name": "Fuuma Amane [Combat Suit]",
+    "name": "[Combat Suit] Fuuma Amane",
     "names": {
-      "english": "Fuuma Amane [Combat Suit]",
+      "english": "[Combat Suit] Fuuma Amane",
       "japanese": ""
     },
-    "slug": "fuuma-amane-[combat-suit]",
+    "slug": "[combat-suit]-fuuma-amane",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Agility",
@@ -12695,12 +12695,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 38,
-    "name": "Fuuma Saika [Butler]",
+    "name": "[Butler] Fuuma Saika",
     "names": {
-      "english": "Fuuma Saika [Butler]",
+      "english": "[Butler] Fuuma Saika",
       "japanese": ""
     },
-    "slug": "fuuma-saika-[butler]",
+    "slug": "[butler]-fuuma-saika",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Balance",
@@ -60388,12 +60388,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "177_Drone1",
     "lore": {
       "key": "Tbl_Unit_Desc_177",
-      "english": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks.",
-      "japanese": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks.",
-      "korean": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks.",
-      "chinese_simplified": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks.",
-      "chinese_traditional": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks.",
-      "spanish": "A Drone Dog that can defeat its opponents by utilizing the machine gun on its tail. Its machine gun fires rapidly and is used to hit his opponents with excellent accuracy. This fighter dog provides powerful firepower to its opponents in battle based on its excellent mobility and weapon use ability, effectively blocking enemy attacks."
+      "english": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.",
+      "japanese": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.",
+      "korean": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.",
+      "chinese_simplified": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.",
+      "chinese_traditional": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.",
+      "spanish": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system."
     },
     "stats": {
       "HP": 10752,
@@ -60731,12 +60731,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "178_Drone2",
     "lore": {
       "key": "Tbl_Unit_Desc_178",
-      "english": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents.",
-      "japanese": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents.",
-      "korean": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents.",
-      "chinese_simplified": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents.",
-      "chinese_traditional": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents.",
-      "spanish": "A Drone Dog that uses a mounted rocket launcher to unleash powerful explosive attacks on its opponents. Its rocket launcher boasts high power and long range, and the large explosion of it deals hefty damage to its opponents."
+      "english": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability.",
+      "japanese": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability.",
+      "korean": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability.",
+      "chinese_simplified": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability.",
+      "chinese_traditional": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability.",
+      "spanish": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-R model is an advanced variant equipped with a rocket launcher, greatly enhancing its destructive capability."
     },
     "stats": {
       "HP": 9600,
@@ -61074,12 +61074,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "179_Drone3",
     "lore": {
       "key": "Tbl_Unit_Desc_179",
-      "english": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. ",
-      "japanese": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. ",
-      "korean": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. ",
-      "chinese_simplified": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. ",
-      "chinese_traditional": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. ",
-      "spanish": "A Drone Dog that bites its opponents using its powerful jaws and teeth. Its bites are performed with great strength and speed, causing great damage to its opponents. He uses his bite ability to threaten his opponents in close combat and powerfully suppress his enemies. "
+      "english": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range.",
+      "japanese": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range.",
+      "korean": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range.",
+      "chinese_simplified": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range.",
+      "chinese_traditional": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range.",
+      "spanish": "A cyborg military dog from a combat drone series, developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt operates in auto-combat mode, attacking any target not identified as friendly by its IFF system.\n\nThe Type-L is a close-combat model equipped with sharp melee weapons and reinforced jaws, maximizing its lethality at close range."
     },
     "stats": {
       "HP": 14208,
@@ -61417,12 +61417,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "180_Drone4",
     "lore": {
       "key": "Tbl_Unit_Desc_180",
-      "english": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-      "japanese": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-      "korean": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-      "chinese_simplified": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-      "chinese_traditional": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy.",
-      "spanish": "A Drone Spider that can defeat its opponents using its laser attacks. His laser attack fires a powerful laser at the opponent with high speed and accuracy, striking the enemy."
+      "english": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+      "japanese": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+      "korean": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+      "chinese_simplified": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+      "chinese_traditional": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation.",
+      "spanish": "A mass-produced model specialized for close-quarters combat, developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nThanks to its high versatility, it serves as UFS's primary cyborg drone, deployed for urban suppression and control point defense.\n\nThe high-voltage stun gun mounted around its mouth can instantly neutralize not only humans but also low-rank demons, and can even eliminate them by releasing a stronger electrical discharge depending on the situation."
     },
     "stats": {
       "HP": 12992,
@@ -61760,12 +61760,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "181_Drone5",
     "lore": {
       "key": "Tbl_Unit_Desc_181",
-      "english": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies.",
-      "japanese": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies.",
-      "korean": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies.",
-      "chinese_simplified": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies.",
-      "chinese_traditional": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies.",
-      "spanish": "A Drone Spider that can subdue its opponents using its electromagnetic attacks. His electro-magnetic field inflicts powerful electric shocks on his opponents and spreads electricity over a wide area to paralyze his enemies."
+      "english": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target.",
+      "japanese": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target.",
+      "korean": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target.",
+      "chinese_simplified": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target.",
+      "chinese_traditional": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target.",
+      "spanish": "A mass-production, self-destruct model developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nHighly cost-efficient, it is deployed as a disposable cyborg drone for large-scale enemy annihilation and key point interception.\n\nIt forcibly overloads its internal power core to trigger a high-yield explosion, eliminating both itself and its target."
     },
     "stats": {
       "HP": 12992,
@@ -62103,12 +62103,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "182_Cyborg1",
     "lore": {
       "key": "Tbl_Unit_Desc_182",
-      "english": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations.",
-      "japanese": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations.",
-      "korean": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations.",
-      "chinese_simplified": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations.",
-      "chinese_traditional": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations.",
-      "spanish": "A Cyborg Agent who defeats opponents by effectively utilizing the gun mounted on his shoulder. He has a gun mounted on his shoulder that boasts powerful firepower, and hits his opponents with its fast firing rate and accurate aim. Cyborg Agents use the gun mounted on their shoulder to launch powerful attacks on their enemies, gaining the upper hand in combat situations."
+      "english": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.",
+      "japanese": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.",
+      "korean": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.",
+      "chinese_simplified": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.",
+      "chinese_traditional": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.",
+      "spanish": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets."
     },
     "stats": {
       "HP": 11600,
@@ -62446,12 +62446,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "183_Cyborg2",
     "lore": {
       "key": "Tbl_Unit_Desc_183",
-      "english": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation.",
-      "japanese": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation.",
-      "korean": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation.",
-      "chinese_simplified": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation.",
-      "chinese_traditional": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation.",
-      "spanish": "A Cyborg Agent who defeats opponents using a gun equipped in his bag. His bag is equipped with a hidden gun that appears instantly when needed and delivers a powerful attack to the enemy. Cyborg Agents use their excellent reflexes and ability to secretly hide their weapons to deploy various attack strategies depending on the situation."
+      "english": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower.",
+      "japanese": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower.",
+      "korean": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower.",
+      "chinese_simplified": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower.",
+      "chinese_traditional": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower.",
+      "spanish": "A human-modification cyborg weapon developed through the inhumane processes of State Task Force \"G\", using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nBuilt using a living human as its base, most of its body has been replaced with high-performance mechanical components. It operates with the aim of executing missions beyond human limits, leveraging a cyborg's immunity to pain and steel-like durability.\n\nTypically dressed in a suit with black sunglasses, it is specialized for infiltrating agent protected or heavily guarded urban areas or official events to eliminate targets.\n\nIts primary weapon, a specialized briefcase, can instantly transform into heavy armament depending on the situation, unleashing overwhelming firepower."
     },
     "stats": {
       "HP": 8816,
@@ -62781,369 +62781,26 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "slug": "xps-12c-marrow",
     "rarity": "SR",
     "rarity_name": "",
-    "element": "Power",
-    "type": "Power",
-    "role": "Defender",
-    "class": "Defender",
+    "element": "Agility",
+    "type": "Agility",
+    "role": "Attacker",
+    "class": "Attacker",
     "trait": "Mercury",
     "icon": "184_Xps11a",
     "lore": {
       "key": "Tbl_Unit_Desc_184",
-      "english": "XPS-12C Marrow",
-      "japanese": "XPS-12C Marrow",
-      "korean": "XPS-12C Marrow",
-      "chinese_simplified": "XPS-12C Marrow",
-      "chinese_traditional": "XPS-12C Marrow",
-      "spanish": "XPS-12C Marrow"
+      "english": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system.",
+      "japanese": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system.",
+      "korean": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system.",
+      "chinese_simplified": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system.",
+      "chinese_traditional": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system.",
+      "spanish": "An experimental robot originally developed by UFS  to replicate the flexible range of motion of the human body while achieveing extreme mobility performance.\n\nAs demons attack created a sever shortage of combat forces across its territories, the unit was urgently recovered and modernized as it was previously abanoned in storage.\n\nIts outdated systems were overhauled with the latest tactical algorithms, and its previously vulnerable armor was replaced with high-strength special alloys, significantly improving combat survivability.\n\nWhile absolutely obedient to its operator, it is also capable of independed judgment and action in response to rapidly changing combat situations through its high-performance computing system."
     },
     "stats": {
-      "HP": 14100,
-      "ATK": 958,
-      "DEF": 1156,
-      "SPD": 73,
-      "CRATE": 25,
-      "CDMG": 500,
-      "CRES": 50,
-      "ACC": 0,
-      "EVD": 25
-    },
-    "base_stats": {
-      "HP": 4413,
-      "ATK": 329,
-      "DEF": 363,
-      "SPD": 73,
-      "CRATE": 25,
-      "CDMG": 500,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "evolution_bonuses": {
-      "1": {
-        "HP": 250,
-        "ATK": 0,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "2": {
-        "HP": 500,
-        "ATK": 0,
-        "DEF": 40,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "3": {
-        "HP": 750,
-        "ATK": 0,
-        "DEF": 60,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "4": {
-        "HP": 1000,
-        "ATK": 0,
-        "DEF": 80,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "5": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "6": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "evolution_bonuses_per_grade": {
-      "1": {
-        "HP": 250,
-        "ATK": 0,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "2": {
-        "HP": 500,
-        "ATK": 0,
-        "DEF": 40,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "3": {
-        "HP": 750,
-        "ATK": 0,
-        "DEF": 60,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "4": {
-        "HP": 1000,
-        "ATK": 0,
-        "DEF": 80,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "5": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "6": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "stats_by_grade": {
-      "1": {
-        "grade": 1,
-        "max_level": 10,
-        "stats": {
-          "HP": 5700,
-          "ATK": 425,
-          "DEF": 469,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 250,
-          "ATK": 0,
-          "DEF": 20,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "2": {
-        "grade": 2,
-        "max_level": 20,
-        "stats": {
-          "HP": 7130,
-          "ATK": 532,
-          "DEF": 586,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 500,
-          "ATK": 0,
-          "DEF": 40,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "3": {
-        "grade": 3,
-        "max_level": 30,
-        "stats": {
-          "HP": 8559,
-          "ATK": 638,
-          "DEF": 704,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 750,
-          "ATK": 0,
-          "DEF": 60,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "4": {
-        "grade": 4,
-        "max_level": 40,
-        "stats": {
-          "HP": 9989,
-          "ATK": 745,
-          "DEF": 822,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 1000,
-          "ATK": 0,
-          "DEF": 80,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "5": {
-        "grade": 5,
-        "max_level": 50,
-        "stats": {
-          "HP": 11419,
-          "ATK": 851,
-          "DEF": 939,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 1250,
-          "ATK": 0,
-          "DEF": 100,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "6": {
-        "grade": 6,
-        "max_level": 60,
-        "stats": {
-          "HP": 12849,
-          "ATK": 958,
-          "DEF": 1057,
-          "SPD": 73,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 1250,
-          "ATK": 0,
-          "DEF": 100,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 50,
-          "ACC": 0,
-          "EVD": 25
-        }
-      }
-    },
-    "skills_count": 3
-  },
-  {
-    "id": 185,
-    "name": "Commodus",
-    "names": {
-      "english": "Commodus",
-      "japanese": ""
-    },
-    "slug": "commodus",
-    "rarity": "SR",
-    "rarity_name": "",
-    "element": "Balance",
-    "type": "Balance",
-    "role": "Attacker",
-    "class": "Attacker",
-    "trait": "Sun",
-    "icon": "185_Commodus",
-    "lore": {
-      "key": "Tbl_Unit_Desc_185",
-      "english": "Commodus",
-      "japanese": "Commodus",
-      "korean": "Commodus",
-      "chinese_simplified": "Commodus",
-      "chinese_traditional": "Commodus",
-      "spanish": "Commodus"
-    },
-    "stats": {
-      "HP": 15792,
-      "ATK": 1353,
-      "DEF": 676,
-      "SPD": 76,
+      "HP": 16920,
+      "ATK": 1240,
+      "DEF": 733,
+      "SPD": 78,
       "CRATE": 50,
       "CDMG": 575,
       "CRES": 0,
@@ -63151,10 +62808,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "EVD": 0
     },
     "base_stats": {
-      "HP": 5355,
-      "ATK": 454,
-      "DEF": 232,
-      "SPD": 76,
+      "HP": 5743,
+      "ATK": 416,
+      "DEF": 252,
+      "SPD": 78,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 0,
@@ -63302,10 +62959,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 1,
         "max_level": 10,
         "stats": {
-          "HP": 6917,
-          "ATK": 586,
-          "DEF": 300,
-          "SPD": 76,
+          "HP": 7418,
+          "ATK": 537,
+          "DEF": 325,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63328,10 +62985,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 2,
         "max_level": 20,
         "stats": {
-          "HP": 8652,
-          "ATK": 733,
-          "DEF": 375,
-          "SPD": 76,
+          "HP": 9278,
+          "ATK": 672,
+          "DEF": 407,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63354,10 +63011,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 3,
         "max_level": 30,
         "stats": {
-          "HP": 10387,
-          "ATK": 881,
-          "DEF": 450,
-          "SPD": 76,
+          "HP": 11139,
+          "ATK": 807,
+          "DEF": 489,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63380,10 +63037,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 4,
         "max_level": 40,
         "stats": {
-          "HP": 12122,
-          "ATK": 1028,
-          "DEF": 525,
-          "SPD": 76,
+          "HP": 13000,
+          "ATK": 942,
+          "DEF": 570,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63406,10 +63063,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 5,
         "max_level": 50,
         "stats": {
-          "HP": 13857,
-          "ATK": 1175,
-          "DEF": 600,
-          "SPD": 76,
+          "HP": 14861,
+          "ATK": 1076,
+          "DEF": 652,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63432,10 +63089,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 6,
         "max_level": 60,
         "stats": {
-          "HP": 15592,
-          "ATK": 1322,
-          "DEF": 675,
-          "SPD": 76,
+          "HP": 16721,
+          "ATK": 1211,
+          "DEF": 734,
+          "SPD": 78,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -63455,16 +63112,359 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         }
       }
     },
-    "skills_count": 3
+    "skills_count": 4
+  },
+  {
+    "id": 185,
+    "name": "Commodus",
+    "names": {
+      "english": "Commodus",
+      "japanese": ""
+    },
+    "slug": "commodus",
+    "rarity": "SR",
+    "rarity_name": "",
+    "element": "Balance",
+    "type": "Balance",
+    "role": "Attacker",
+    "class": "Attacker",
+    "trait": "Mercury",
+    "icon": "185_Commodus",
+    "lore": {
+      "key": "Tbl_Unit_Desc_185",
+      "english": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability.",
+      "japanese": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability.",
+      "korean": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability.",
+      "chinese_simplified": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability.",
+      "chinese_traditional": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability.",
+      "spanish": "A next-generation high-mobility powered exoskeleton suit developed using covertly acquired Demon Realm technology and UFS's cutting-edge science.\n\nStable power is ensured through high-density demonic-power battery packs distributed throughout the suit, while jet thrusters mounted on the back and legs enable high-speed flight and aerial maneuverability.\n\nIts primary weapon, Gatling Gun, utilizes precise calculations from an auxiliary processing system to achieve ultra-high-speed targeting and firing beyond human capability."
+    },
+    "stats": {
+      "HP": 15228,
+      "ATK": 1325,
+      "DEF": 733,
+      "SPD": 78,
+      "CRATE": 50,
+      "CDMG": 575,
+      "CRES": 0,
+      "ACC": 0,
+      "EVD": 0
+    },
+    "base_stats": {
+      "HP": 5161,
+      "ATK": 445,
+      "DEF": 252,
+      "SPD": 78,
+      "CRATE": 25,
+      "CDMG": 500,
+      "CRES": 0,
+      "ACC": 0,
+      "EVD": 0
+    },
+    "evolution_bonuses": {
+      "1": {
+        "HP": 40,
+        "ATK": 6,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "2": {
+        "HP": 80,
+        "ATK": 12,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "3": {
+        "HP": 120,
+        "ATK": 18,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "4": {
+        "HP": 160,
+        "ATK": 24,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "5": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "6": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 25,
+        "CDMG": 75,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      }
+    },
+    "evolution_bonuses_per_grade": {
+      "1": {
+        "HP": 40,
+        "ATK": 6,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "2": {
+        "HP": 80,
+        "ATK": 12,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "3": {
+        "HP": 120,
+        "ATK": 18,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "4": {
+        "HP": 160,
+        "ATK": 24,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "5": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "6": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 25,
+        "CDMG": 75,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      }
+    },
+    "stats_by_grade": {
+      "1": {
+        "grade": 1,
+        "max_level": 10,
+        "stats": {
+          "HP": 6666,
+          "ATK": 575,
+          "DEF": 325,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 40,
+          "ATK": 6,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "2": {
+        "grade": 2,
+        "max_level": 20,
+        "stats": {
+          "HP": 8338,
+          "ATK": 719,
+          "DEF": 407,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 80,
+          "ATK": 12,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "3": {
+        "grade": 3,
+        "max_level": 30,
+        "stats": {
+          "HP": 10010,
+          "ATK": 863,
+          "DEF": 489,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 120,
+          "ATK": 18,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "4": {
+        "grade": 4,
+        "max_level": 40,
+        "stats": {
+          "HP": 11682,
+          "ATK": 1007,
+          "DEF": 570,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 160,
+          "ATK": 24,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "5": {
+        "grade": 5,
+        "max_level": 50,
+        "stats": {
+          "HP": 13355,
+          "ATK": 1151,
+          "DEF": 652,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 200,
+          "ATK": 30,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "6": {
+        "grade": 6,
+        "max_level": 60,
+        "stats": {
+          "HP": 15027,
+          "ATK": 1296,
+          "DEF": 734,
+          "SPD": 78,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 200,
+          "ATK": 30,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 25,
+          "CDMG": 75,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      }
+    },
+    "skills_count": 4
   },
   {
     "id": 186,
-    "name": "Webo 1",
+    "name": "Turret Walker",
     "names": {
-      "english": "Webo 1",
+      "english": "Turret Walker",
       "japanese": ""
     },
-    "slug": "webo-1",
+    "slug": "turret-walker",
     "rarity": "R",
     "rarity_name": "",
     "element": "Agility",
@@ -63802,12 +63802,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 187,
-    "name": "Webo 2",
+    "name": "Turret Crawler",
     "names": {
-      "english": "Webo 2",
+      "english": "Turret Crawler",
       "japanese": ""
     },
-    "slug": "webo-2",
+    "slug": "turret-crawler",
     "rarity": "R",
     "rarity_name": "",
     "element": "Power",
@@ -64145,12 +64145,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 188,
-    "name": "Webo 3",
+    "name": "Turret Floater",
     "names": {
-      "english": "Webo 3",
+      "english": "Turret Floater",
       "japanese": ""
     },
-    "slug": "webo-3",
+    "slug": "turret-floater",
     "rarity": "R",
     "rarity_name": "",
     "element": "Balance",
@@ -64488,12 +64488,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 189,
-    "name": "\"G\" Soldier 1",
+    "name": "E-Soldier M-01",
     "names": {
-      "english": "\"G\" Soldier 1",
+      "english": "E-Soldier M-01",
       "japanese": ""
     },
-    "slug": "g-soldier-1",
+    "slug": "e-soldier-m-01",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -64831,12 +64831,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 190,
-    "name": "\"G\" Soldier 2",
+    "name": "E-Soldier F-01",
     "names": {
-      "english": "\"G\" Soldier 2",
+      "english": "E-Soldier F-01",
       "japanese": ""
     },
-    "slug": "g-soldier-2",
+    "slug": "e-soldier-f-01",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",
@@ -65174,12 +65174,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 191,
-    "name": "Fighter 1 (Fist)",
+    "name": "Bone Suit Brawler",
     "names": {
-      "english": "Fighter 1 (Fist)",
+      "english": "Bone Suit Brawler",
       "japanese": ""
     },
-    "slug": "fighter-1-fist",
+    "slug": "bone-suit-brawler",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",
@@ -65517,12 +65517,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 192,
-    "name": "Fighter 2 (Dual Swords)",
+    "name": "Bone Suit FIghter",
     "names": {
-      "english": "Fighter 2 (Dual Swords)",
+      "english": "Bone Suit FIghter",
       "japanese": ""
     },
-    "slug": "fighter-2-dual-swords",
+    "slug": "bone-suit-fighter",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Power",
@@ -65860,12 +65860,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 193,
-    "name": "Tremor (Earthquake)",
+    "name": "Tremor",
     "names": {
-      "english": "Tremor (Earthquake)",
+      "english": "Tremor",
       "japanese": ""
     },
-    "slug": "tremor-earthquake",
+    "slug": "tremor",
     "rarity": "SR",
     "rarity_name": "",
     "element": "Agility",
@@ -66546,12 +66546,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 195,
-    "name": "Devil's Dog 1 (Normal)",
+    "name": "Dead Hound",
     "names": {
-      "english": "Devil's Dog 1 (Normal)",
+      "english": "Dead Hound",
       "japanese": ""
     },
-    "slug": "devil-s-dog-1-normal",
+    "slug": "dead-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Agility",
@@ -66889,12 +66889,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 196,
-    "name": "Devil's Dog 2 (Poison)",
+    "name": "Poison Hound",
     "names": {
-      "english": "Devil's Dog 2 (Poison)",
+      "english": "Poison Hound",
       "japanese": ""
     },
-    "slug": "devil-s-dog-2-poison",
+    "slug": "poison-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Power",
@@ -67232,12 +67232,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 197,
-    "name": "Devil's Dog 3 (Bone)",
+    "name": "Mutant Hound",
     "names": {
-      "english": "Devil's Dog 3 (Bone)",
+      "english": "Mutant Hound",
       "japanese": ""
     },
-    "slug": "devil-s-dog-3-bone",
+    "slug": "mutant-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Balance",
@@ -67575,12 +67575,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 198,
-    "name": "Mutant Zombie Creature 1 (Poison)",
+    "name": "Mutated Zombie Creature Type-A",
     "names": {
-      "english": "Mutant Zombie Creature 1 (Poison)",
+      "english": "Mutated Zombie Creature Type-A",
       "japanese": ""
     },
-    "slug": "mutant-zombie-creature-1-poison",
+    "slug": "mutated-zombie-creature-type-a",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -67918,12 +67918,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 199,
-    "name": "Mutant Zombie Creature 2 (Sword)",
+    "name": "Mutated Zombie Creature Type-B",
     "names": {
-      "english": "Mutant Zombie Creature 2 (Sword)",
+      "english": "Mutated Zombie Creature Type-B",
       "japanese": ""
     },
-    "slug": "mutant-zombie-creature-2-sword",
+    "slug": "mutated-zombie-creature-type-b",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Power",
@@ -69633,12 +69633,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 204,
-    "name": "Zombie Creature 1 (Normal)",
+    "name": "Zombie Creature",
     "names": {
-      "english": "Zombie Creature 1 (Normal)",
+      "english": "Zombie Creature",
       "japanese": ""
     },
-    "slug": "zombie-creature-1-normal",
+    "slug": "zombie-creature",
     "rarity": "R",
     "rarity_name": "",
     "element": "Agility",
@@ -69976,12 +69976,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 205,
-    "name": "Zombie Creature 2 (Poison)",
+    "name": "Zombie Infector",
     "names": {
-      "english": "Zombie Creature 2 (Poison)",
+      "english": "Zombie Infector",
       "japanese": ""
     },
-    "slug": "zombie-creature-2-poison",
+    "slug": "zombie-infector",
     "rarity": "R",
     "rarity_name": "",
     "element": "Power",
@@ -70319,12 +70319,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 206,
-    "name": "Zombie Creature 3 (Bone)",
+    "name": "Zombie Butcher",
     "names": {
-      "english": "Zombie Creature 3 (Bone)",
+      "english": "Zombie Butcher",
       "japanese": ""
     },
-    "slug": "zombie-creature-3-bone",
+    "slug": "zombie-butcher",
     "rarity": "R",
     "rarity_name": "",
     "element": "Balance",
@@ -71348,12 +71348,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 209,
-    "name": "Revenant 1 (Scythe)",
+    "name": "Necroid Harvester",
     "names": {
-      "english": "Revenant 1 (Scythe)",
+      "english": "Necroid Harvester",
       "japanese": ""
     },
-    "slug": "revenant-1-scythe",
+    "slug": "necroid-harvester",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -71691,12 +71691,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 210,
-    "name": "Revenant 2 (Staff)",
+    "name": "Necroid Conjurer",
     "names": {
-      "english": "Revenant 2 (Staff)",
+      "english": "Necroid Conjurer",
       "japanese": ""
     },
-    "slug": "revenant-2-staff",
+    "slug": "necroid-conjurer",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",
@@ -72034,12 +72034,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 211,
-    "name": "Dead Mind",
+    "name": "Deadmind",
     "names": {
-      "english": "Dead Mind",
+      "english": "Deadmind",
       "japanese": ""
     },
-    "slug": "dead-mind",
+    "slug": "deadmind",
     "rarity": "SR",
     "rarity_name": "",
     "element": "Balance",
@@ -73063,12 +73063,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 214,
-    "name": "Skeleton 1 (Spear)",
+    "name": "Skeleton Lancer",
     "names": {
-      "english": "Skeleton 1 (Spear)",
+      "english": "Skeleton Lancer",
       "japanese": ""
     },
-    "slug": "skeleton-1-spear",
+    "slug": "skeleton-lancer",
     "rarity": "R",
     "rarity_name": "",
     "element": "Agility",
@@ -73406,12 +73406,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 215,
-    "name": "Skeleton 2 (Bow)",
+    "name": "Skeleton Archer",
     "names": {
-      "english": "Skeleton 2 (Bow)",
+      "english": "Skeleton Archer",
       "japanese": ""
     },
-    "slug": "skeleton-2-bow",
+    "slug": "skeleton-archer",
     "rarity": "R",
     "rarity_name": "",
     "element": "Power",
@@ -73749,12 +73749,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 216,
-    "name": "Skeleton 3 (Sword)",
+    "name": "Skeleton Soldier",
     "names": {
-      "english": "Skeleton 3 (Sword)",
+      "english": "Skeleton Soldier",
       "japanese": ""
     },
-    "slug": "skeleton-3-sword",
+    "slug": "skeleton-soldier",
     "rarity": "R",
     "rarity_name": "",
     "element": "Balance",
@@ -74092,12 +74092,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 217,
-    "name": "Mummy 1 (Normal)",
+    "name": "Deadman",
     "names": {
-      "english": "Mummy 1 (Normal)",
+      "english": "Deadman",
       "japanese": ""
     },
-    "slug": "mummy-1-normal",
+    "slug": "deadman",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Power",
@@ -74435,12 +74435,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 218,
-    "name": "Mummy 2 (Nailed)",
+    "name": "Bandaged Deadman",
     "names": {
-      "english": "Mummy 2 (Nailed)",
+      "english": "Bandaged Deadman",
       "japanese": ""
     },
-    "slug": "mummy-2-nailed",
+    "slug": "bandaged-deadman",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -75121,12 +75121,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 220,
-    "name": "Hell Beast 2 (Green)",
+    "name": "Ferocious Underworld Beast",
     "names": {
-      "english": "Hell Beast 2 (Green)",
+      "english": "Ferocious Underworld Beast",
       "japanese": ""
     },
-    "slug": "hell-beast-2-green",
+    "slug": "ferocious-underworld-beast",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Power",
@@ -75464,12 +75464,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 221,
-    "name": "Hell Demon 1 (Bone Axe)",
+    "name": "Underworld Demon Executioner",
     "names": {
-      "english": "Hell Demon 1 (Bone Axe)",
+      "english": "Underworld Demon Executioner",
       "japanese": ""
     },
-    "slug": "hell-demon-1-bone-axe",
+    "slug": "underworld-demon-executioner",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -75807,12 +75807,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 222,
-    "name": "Hell Demon 2 (Crossbow)",
+    "name": "Underworld Demon Tracker",
     "names": {
-      "english": "Hell Demon 2 (Crossbow)",
+      "english": "Underworld Demon Tracker",
       "japanese": ""
     },
-    "slug": "hell-demon-2-crossbow",
+    "slug": "underworld-demon-tracker",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",
@@ -76836,12 +76836,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 225,
-    "name": "Wendigo (2-8 Rare)",
+    "name": "Wendigo",
     "names": {
-      "english": "Wendigo (2-8 Rare)",
+      "english": "Wendigo",
       "japanese": ""
     },
-    "slug": "wendigo-2-8-rare",
+    "slug": "wendigo",
     "rarity": "SR",
     "rarity_name": "",
     "element": "Agility",
@@ -77522,12 +77522,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 227,
-    "name": "Devil's Dog 1 Deviant (Tail)",
+    "name": "Scavanger Hound",
     "names": {
-      "english": "Devil's Dog 1 Deviant (Tail)",
+      "english": "Scavanger Hound",
       "japanese": ""
     },
-    "slug": "devil-s-dog-1-deviant-tail",
+    "slug": "scavanger-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Agility",
@@ -77865,12 +77865,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 228,
-    "name": "Devil's Dog 2 Deviant (Jaw)",
+    "name": "Terror Hound",
     "names": {
-      "english": "Devil's Dog 2 Deviant (Jaw)",
+      "english": "Terror Hound",
       "japanese": ""
     },
-    "slug": "devil-s-dog-2-deviant-jaw",
+    "slug": "terror-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Power",
@@ -78208,12 +78208,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 229,
-    "name": "Devil's Poison 3 Deviant (Sickle Claw)",
+    "name": "Predator Hound",
     "names": {
-      "english": "Devil's Poison 3 Deviant (Sickle Claw)",
+      "english": "Predator Hound",
       "japanese": ""
     },
-    "slug": "devil-s-poison-3-deviant-sickle-claw",
+    "slug": "predator-hound",
     "rarity": "R",
     "rarity_name": "",
     "element": "Balance",
@@ -78551,12 +78551,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 230,
-    "name": "Task Force \"G\" Soldier 1 Deviant (Tentacle Gun)",
+    "name": "Infested Soldier M-01",
     "names": {
-      "english": "Task Force \"G\" Soldier 1 Deviant (Tentacle Gun)",
+      "english": "Infested Soldier M-01",
       "japanese": ""
     },
-    "slug": "task-force-g-soldier-1-deviant-tentacle-gun",
+    "slug": "infested-soldier-m-01",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Power",
@@ -78894,12 +78894,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 231,
-    "name": "Task Force \"G\" Soldier 2 Deviant (Tentacle Sword)",
+    "name": "Infested Soldier F-01",
     "names": {
-      "english": "Task Force \"G\" Soldier 2 Deviant (Tentacle Sword)",
+      "english": "Infested Soldier F-01",
       "japanese": ""
     },
-    "slug": "task-force-g-soldier-2-deviant-tentacle-sword",
+    "slug": "infested-soldier-f-01",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Agility",
@@ -79237,12 +79237,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 232,
-    "name": "Fighter 1 Deviant (Fist)",
+    "name": "Infested Brawler",
     "names": {
-      "english": "Fighter 1 Deviant (Fist)",
+      "english": "Infested Brawler",
       "japanese": ""
     },
-    "slug": "fighter-1-deviant-fist",
+    "slug": "infested-brawler",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",
@@ -79580,12 +79580,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 233,
-    "name": "Fighter 2 Deviant (Tentacle Dual Swords)",
+    "name": "Infested Fighter",
     "names": {
-      "english": "Fighter 2 Deviant (Tentacle Dual Swords)",
+      "english": "Infested Fighter",
       "japanese": ""
     },
-    "slug": "fighter-2-deviant-tentacle-dual-swords",
+    "slug": "infested-fighter",
     "rarity": "R+",
     "rarity_name": "",
     "element": "Balance",

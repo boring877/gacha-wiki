@@ -457,18 +457,18 @@
       "type_description_readable": "[Normal Attack]",
       "icon": "25701",
       "cooldown": 0,
-      "hit_count": 1,
+      "hit_count": 4,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
-      "multiplier": 504.0,
+      "multiplier": 126.0,
       "effects": [
         {
           "type": "eBOFunc_AddDeBuff/BuffBlock",
           "target": "eBOTarget_HitTarget",
           "duration": 2,
           "value": 0.0,
-          "rate": 15,
+          "rate": 5,
           "timing": "eBOTiming_OnAction",
           "condition": ""
         }
@@ -547,11 +547,11 @@
       "type_description_readable": "[Ultimate Skill]",
       "icon": "25703",
       "cooldown": 5,
-      "hit_count": 1,
+      "hit_count": 3,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 894.6,
+      "multiplier": 298.2,
       "effects": [],
       "battle_options": "2570302/2570301",
       "battle_option_ids": [
@@ -605,5 +605,88 @@
       "cutscene_flag": 0
     }
   ],
-  "weapons": []
+  "weapons": [
+    {
+      "id": 25701,
+      "name": "[&Color_Orange]Coral Spine[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25701",
+      "icon": "Weapon_25701.png",
+      "rarity": 4,
+      "weapon_type": 257,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25701,
+      "skill_id": 25711,
+      "skill_data": {
+        "id": 25711,
+        "name": "[Tbl_UnitSkill_Name_25711]",
+        "name_key": "Tbl_UnitSkill_Name_25711",
+        "name_readable": "[Tbl_UnitSkill_Name_25711]",
+        "description": "[Tbl_UnitSkill_Desc_25711]",
+        "description_key": "Tbl_UnitSkill_Desc_25711",
+        "description_readable": "[Tbl_UnitSkill_Desc_25711]",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "25711",
+        "cooldown": 0,
+        "hit_count": 4,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 131.3,
+        "effects": [],
+        "battle_options": "2571101",
+        "battle_option_ids": [
+          2571101
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    },
+    {
+      "id": 25702,
+      "name": "[&Color_Orange]Treasure Vine[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25702",
+      "icon": "Weapon_25702.png",
+      "rarity": 4,
+      "weapon_type": 257,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25702,
+      "skill_id": 25712,
+      "skill_data": {
+        "id": 25712,
+        "name": "[Tbl_UnitSkill_Name_25712]",
+        "name_key": "Tbl_UnitSkill_Name_25712",
+        "name_readable": "[Tbl_UnitSkill_Name_25712]",
+        "description": "[Tbl_UnitSkill_Desc_25712]",
+        "description_key": "Tbl_UnitSkill_Desc_25712",
+        "description_readable": "[Tbl_UnitSkill_Desc_25712]",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "25712",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 394.2,
+        "effects": [],
+        "battle_options": "2571201",
+        "battle_option_ids": [
+          2571201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    }
+  ]
 }

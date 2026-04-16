@@ -15,7 +15,7 @@
   "icon": "254_Murasaki",
   "model": "254_Murasaki/Unit/prf_254",
   "animation_event": "254_murasaki",
-  "book_index": 0,
+  "book_index": 8,
   "acquisition_id": 10002,
   "btl_power": 7950,
   "btl_rate": 303436,
@@ -460,23 +460,12 @@
       "hit_count": 1,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
-      "multiplier": 504.0,
-      "effects": [
-        {
-          "type": "eBOFunc_AddDeBuff/Stun",
-          "target": "eBOTarget_HitTarget",
-          "duration": 1,
-          "value": 0.0,
-          "rate": 5,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        }
-      ],
-      "battle_options": "2540101/2540102",
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 525.0,
+      "effects": [],
+      "battle_options": "2540101",
       "battle_option_ids": [
-        2540101,
-        2540102
+        2540101
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -500,17 +489,17 @@
       "hit_count": 1,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
       "multiplier": 378.4,
       "effects": [
         {
-          "type": "eBOFunc_AddDeBuff/ActiveSkillBlock",
+          "type": "eBOFunc_AddDeBuff/AccDown",
           "target": "eBOTarget_HitTarget",
           "duration": 2,
-          "value": 0.0,
-          "rate": 25,
+          "value": -25.0,
+          "rate": 90,
           "timing": "eBOTiming_OnAction",
-          "condition": ""
+          "condition": "eBOCond_IsDmgTypeByJudge/StrongAtk"
         }
       ],
       "battle_options": "2540201/2540202",
@@ -536,28 +525,21 @@
       "type_description": "[&Color_Orange][Ultimate Skill][-]",
       "type_description_readable": "[Ultimate Skill]",
       "icon": "25403",
-      "cooldown": 5,
+      "cooldown": 4,
       "hit_count": 1,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
-      "multiplier": 838.7,
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 765.5,
       "effects": [
         {
-          "type": "eBOFunc_TurnGaugeDown",
+          "type": "eBOFunc_AddDeBuff/ActiveSkillBlock",
           "target": "eBOTarget_HitTarget",
-          "value": 15.0,
-          "rate": 65,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        },
-        {
-          "type": "eBOFunc_CoolTimeTurn/All",
-          "target": "eBOTarget_HitTarget",
+          "duration": 2,
           "value": 0.0,
           "rate": 45,
           "timing": "eBOTiming_OnAction",
-          "condition": ""
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
         }
       ],
       "battle_options": "2540301/2540302/2540303",
@@ -590,7 +572,16 @@
       "damage_scaling": "",
       "skill_level_scaling": "",
       "multiplier": null,
-      "effects": [],
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -75,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "2540401",
       "battle_option_ids": [
         2540401
@@ -603,5 +594,111 @@
       "cutscene_flag": 0
     }
   ],
-  "weapons": []
+  "weapons": [
+    {
+      "id": 25401,
+      "name": "[&Color_Orange]Fatal Vow[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25401",
+      "icon": "Weapon_25401.png",
+      "rarity": 4,
+      "weapon_type": 254,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25402,
+      "skill_id": 25412,
+      "skill_data": {
+        "id": 25412,
+        "name": "[Tbl_UnitSkill_Name_25412]",
+        "name_key": "Tbl_UnitSkill_Name_25412",
+        "name_readable": "[Tbl_UnitSkill_Name_25412]",
+        "description": "",
+        "description_key": "Tbl_UnitSkill_Desc_25412",
+        "description_readable": "",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "25412",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 378.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/CriResDown",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": -32.5,
+            "rate": 90,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_IsDmgTypeByJudge/StrongAtk"
+          }
+        ],
+        "battle_options": "2541201/2541202",
+        "battle_option_ids": [
+          2541201,
+          2541202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    },
+    {
+      "id": 25402,
+      "name": "[&Color_Orange]White Camellia[-]",
+      "name_key": "Tbl_UnitWeapon_Name_25402",
+      "icon": "Weapon_25402.png",
+      "rarity": 4,
+      "weapon_type": 254,
+      "opt_type": 11,
+      "opt_value": 47,
+      "skill_slot": 25403,
+      "skill_id": 25413,
+      "skill_data": {
+        "id": 25413,
+        "name": "[Tbl_UnitSkill_Name_25413]",
+        "name_key": "Tbl_UnitSkill_Name_25413",
+        "name_readable": "[Tbl_UnitSkill_Name_25413]",
+        "description": "",
+        "description_key": "Tbl_UnitSkill_Desc_25413",
+        "description_readable": "",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "25413",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 765.5,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/PassiveSkillBlock",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 95,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+          }
+        ],
+        "battle_options": "2541301/2541302/2541303",
+        "battle_option_ids": [
+          2541301,
+          2541302,
+          2541303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
+    }
+  ]
 }
