@@ -643,7 +643,57 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 1102,
-      "skill_id": 1112
+      "skill_id": 1112,
+      "skill_data": {
+        "id": 1112,
+        "name": "<[&Tbl_UnitWeapon_Name_1101]> [&Tbl_UnitSkill_Name_1102]",
+        "name_key": "Tbl_UnitSkill_Name_1112",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1101]> [&Tbl_UnitSkill_Name_1102]",
+        "description": "Uses Void Art to mercilessly slash the enemy, attacking 4 times.\nEach hit performs a [&Common_Word_Skill_ShieldPenetrate] attack.\nIf the character has 2 or more [&Buff], performs 1 [&Common_Word_Skill_AddAttack].\nWhen an [&Common_Word_Skill_AddAttack] is triggered, inflicts [&Color_Cyan]([V3:111204]%)[-] [&SpdDown] on the target at a [&Color_Cyan][R:111204]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:111204] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_1112",
+        "description_readable": "Uses Void Art to mercilessly slash the enemy, attacking 4 times.\nEach hit performs a [&Common_Word_Skill_ShieldPenetrate] attack.\nIf the character has 2 or more [&Buff], performs 1 [&Common_Word_Skill_AddAttack].\nWhen an [&Common_Word_Skill_AddAttack] is triggered, inflicts ([V3:111204]%) [&SpdDown] on the target at a [R:111204]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:111204] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "1112",
+        "cooldown": 4,
+        "hit_count": 4,
+        "additional_hits": 1,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 128.6,
+        "effects": [
+          {
+            "type": "eBOFunc_AddAttack",
+            "target": "eBOTarget_HitTargetList",
+            "value": 178.6,
+            "rate": 100,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasBuffMoreCnt/2"
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/SpdDown",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": -24.0,
+            "rate": 99,
+            "timing": "eBOTiming_ActionLast",
+            "condition": "eBOCond_IsDmgTypeByAction/AddAtk"
+          }
+        ],
+        "battle_options": "111201/111202/111203/111204",
+        "battle_option_ids": [
+          111201,
+          111202,
+          111203,
+          111204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 1102,
@@ -655,7 +705,49 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 1103,
-      "skill_id": 1113
+      "skill_id": 1113,
+      "skill_data": {
+        "id": 1113,
+        "name": "<[&Tbl_UnitWeapon_Name_1102]> [&Tbl_UnitSkill_Name_1103]",
+        "name_key": "Tbl_UnitSkill_Name_1113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1102]> [&Tbl_UnitSkill_Name_1103]",
+        "description": "Summons a meteorite to attack [&Common_Word_Skill_EnemyAll].\nIf the target has [&SpdDown], increases the efficacy of [&SpdDown] by [&Color_Cyan][V3:111303]%[-].\nGains [&Color_Cyan]([V3:111301]%)[-] [&SpdUp] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:111301] turn(s)\nIf the target is the only one remaining, [&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:111304]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_1113",
+        "description_readable": "Summons a meteorite to attack [&Common_Word_Skill_EnemyAll].\nIf the target has [&SpdDown], increases the efficacy of [&SpdDown] by [V3:111303]%.\nGains ([V3:111301]%) [&SpdUp] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:111301] turn(s)\nIf the target is the only one remaining, [&Common_Word_Skill_Damage] increases by ([V3:111304]%).",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "1113",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 436.2,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/SpdUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "111301/111302/111303/111304",
+        "battle_option_ids": [
+          111301,
+          111302,
+          111303,
+          111304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

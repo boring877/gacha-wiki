@@ -636,7 +636,48 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 30103,
-      "skill_id": 30113
+      "skill_id": 30113,
+      "skill_data": {
+        "id": 30113,
+        "name": "<[&Tbl_UnitWeapon_Name_30101]> [&Tbl_UnitSkill_Name_30103]",
+        "name_key": "Tbl_UnitSkill_Name_30113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_30101]> [&Tbl_UnitSkill_Name_30103]",
+        "description": "[Tbl_UnitSkill_Desc_30113]",
+        "description_key": "Tbl_UnitSkill_Desc_30113",
+        "description_readable": "[Tbl_UnitSkill_Desc_30113]",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "30113",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 467.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Freeze",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 25.0,
+            "rate": 30,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "3011301/3011302/3011303",
+        "battle_option_ids": [
+          3011301,
+          3011302,
+          3011303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 30102,
@@ -648,7 +689,36 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 30104,
-      "skill_id": 30114
+      "skill_id": 30114,
+      "skill_data": {
+        "id": 30114,
+        "name": "<[&Tbl_UnitWeapon_Name_30102]> [&Tbl_UnitSkill_Name_30104]",
+        "name_key": "Tbl_UnitSkill_Name_30114",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_30102]> [&Tbl_UnitSkill_Name_30104]",
+        "description": "[Tbl_UnitSkill_Desc_30114]",
+        "description_key": "Tbl_UnitSkill_Desc_30114",
+        "description_readable": "[Tbl_UnitSkill_Desc_30114]",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "30114",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "3011401",
+        "battle_option_ids": [
+          3011401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

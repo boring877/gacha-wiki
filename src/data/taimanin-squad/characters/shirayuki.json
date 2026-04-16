@@ -616,7 +616,57 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 303,
-      "skill_id": 313
+      "skill_id": 313,
+      "skill_data": {
+        "id": 313,
+        "name": "<[&Tbl_UnitWeapon_Name_301]> [&Tbl_UnitSkill_Name_303]",
+        "name_key": "Tbl_UnitSkill_Name_313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_301]> [&Tbl_UnitSkill_Name_303]",
+        "description": "Creates a large ice crystal and drops it on top of [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with [&Color_Cyan]([V3:31302]%)[-] [&Freeze] at a [&Color_Cyan][R:31302]%[-] chance.\nIf the character has 2 or more [&Buff]s inflicting [&Freeze] is guaranteed.\n[&Common_Word_Skill_ValueTurn]: [V2:31303] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_313",
+        "description_readable": "Creates a large ice crystal and drops it on top of [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with ([V3:31302]%) [&Freeze] at a [R:31302]% chance.\nIf the character has 2 or more [&Buff]s inflicting [&Freeze] is guaranteed.\n[&Common_Word_Skill_ValueTurn]: [V2:31303] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "313",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 429.8,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Freeze",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 25.0,
+            "rate": 35,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Freeze",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 25.0,
+            "rate": 45,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_HasBuffMoreCnt/2"
+          }
+        ],
+        "battle_options": "31301/31302/31303",
+        "battle_option_ids": [
+          31301,
+          31302,
+          31303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

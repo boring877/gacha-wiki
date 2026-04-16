@@ -615,7 +615,47 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 7602,
-      "skill_id": 7612
+      "skill_id": 7612,
+      "skill_data": {
+        "id": 7612,
+        "name": "<[&Tbl_UnitWeapon_Name_7601]> [&Tbl_UnitSkill_Name_7602]",
+        "name_key": "Tbl_UnitSkill_Name_7612",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7601]> [&Tbl_UnitSkill_Name_7602]",
+        "description": "Focuses energy on the sword and attacks [&Common_Word_Skill_EnemyAll].\nTarget hit is inflicted with [&Color_Cyan]([V3:761202]%)[-] [&Burn] at a [&Color_Cyan][R:761202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:761202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_7612",
+        "description_readable": "Focuses energy on the sword and attacks [&Common_Word_Skill_EnemyAll].\nTarget hit is inflicted with ([V3:761202]%) [&Burn] at a [R:761202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:761202] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "7612",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 378.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 50,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "761201/761202",
+        "battle_option_ids": [
+          761201,
+          761202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

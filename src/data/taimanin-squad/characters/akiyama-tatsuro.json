@@ -595,7 +595,56 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 1202,
-      "skill_id": 1212
+      "skill_id": 1212,
+      "skill_data": {
+        "id": 1212,
+        "name": "<[&Tbl_UnitWeapon_Name_1201]> [&Tbl_UnitSkill_Name_1202]",
+        "name_key": "Tbl_UnitSkill_Name_1212",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1201]> [&Tbl_UnitSkill_Name_1202]",
+        "description": "Leaps high and slashes enemies with a sword gripped in reverse.\nTarget hit is inflicted with [&Color_Cyan]([V3:121202]%)[-] [&SpdDown] at a [&Color_Cyan][R:121202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:121202] turn(s)\nAbsorbs [&Color_Cyan]([V3:121203]%)[-] [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:121203]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_1212",
+        "description_readable": "Leaps high and slashes enemies with a sword gripped in reverse.\nTarget hit is inflicted with ([V3:121202]%) [&SpdDown] at a [R:121202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:121202] turn(s)\nAbsorbs ([V3:121203]%) [&Common_Word_Skill_TurnGauge] at a [R:121203]% chance.",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "1212",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 692.2,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/SpdDown",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": -19.5,
+            "rate": 95,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDrain",
+            "target": "eBOTarget_HitTarget",
+            "value": 12.5,
+            "rate": 35,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "121201/121202/121203",
+        "battle_option_ids": [
+          121201,
+          121202,
+          121203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

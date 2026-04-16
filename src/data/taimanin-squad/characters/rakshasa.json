@@ -684,7 +684,66 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 12503,
-      "skill_id": 12513
+      "skill_id": 12513,
+      "skill_data": {
+        "id": 12513,
+        "name": "<[&Tbl_UnitWeapon_Name_12501]> [&Tbl_UnitSkill_Name_12503]",
+        "name_key": "Tbl_UnitSkill_Name_12513",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12501]> [&Tbl_UnitSkill_Name_12503]",
+        "description": "Slashes the enemy with Iaido after while laughing.\n[&Provocation]s [&Common_Word_Skill_EnemyAll] at a [&Color_Cyan][R:1251302]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:1251302] turn(s)\nGains [&Color_Cyan]([V3:1251303]%)[-] [&Strengthen] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:1251303] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_12513",
+        "description_readable": "Slashes the enemy with Iaido after while laughing.\n[&Provocation]s [&Common_Word_Skill_EnemyAll] at a [R:1251302]% chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:1251302] turn(s)\nGains ([V3:1251303]%) [&Strengthen] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:1251303] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "12513",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 851.1,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Provocation",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 35,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/Strengthen",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/4",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsNotCoolTime/4"
+          }
+        ],
+        "battle_options": "1251301/1251302/1251303/1251304",
+        "battle_option_ids": [
+          1251301,
+          1251302,
+          1251303,
+          1251304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 12502,
@@ -696,7 +755,44 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 12504,
-      "skill_id": 12514
+      "skill_id": 12514,
+      "skill_data": {
+        "id": 12514,
+        "name": "<[&Tbl_UnitWeapon_Name_12502]> [&Tbl_UnitSkill_Name_12504]",
+        "name_key": "Tbl_UnitSkill_Name_12514",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12502]> [&Tbl_UnitSkill_Name_12504]",
+        "description": "[&Common_Word_Skill_CoolTime] for [&Tbl_UnitSkill_Name_12504] becomes 0.\n[&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan][V3:1251401]%[-] of the character's SPD.\n[&Common_Word_Skill_CriticalDamage] increases by [&Color_Cyan]([V3:1251402]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_12514",
+        "description_readable": "[&Common_Word_Skill_CoolTime] for [&Tbl_UnitSkill_Name_12504] becomes 0.\n[&Common_Word_Skill_CriticalRate] increases by [V3:1251401]% of the character's SPD.\n[&Common_Word_Skill_CriticalDamage] increases by ([V3:1251402]%).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "12514",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_CriRateBySpdRate",
+            "target": "NONE",
+            "value": 3.0,
+            "timing": "eBOTiming_OnAttackCalc"
+          }
+        ],
+        "battle_options": "1251401/1251402",
+        "battle_option_ids": [
+          1251401,
+          1251402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

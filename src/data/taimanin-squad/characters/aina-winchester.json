@@ -625,7 +625,47 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 4601,
-      "skill_id": 4611
+      "skill_id": 4611,
+      "skill_data": {
+        "id": 4611,
+        "name": "<[&Tbl_UnitWeapon_Name_4601]> [&Tbl_UnitSkill_Name_4601]",
+        "name_key": "Tbl_UnitSkill_Name_4611",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4601]> [&Tbl_UnitSkill_Name_4601]",
+        "description": "Rapidly fires both pistols to attack the enemy 5 times.\nTarget hit is inflicted with [&Color_Cyan]([V3:461102]%)[-] [&Weaken] at a [&Color_Cyan][R:461102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:461102] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_4611",
+        "description_readable": "Rapidly fires both pistols to attack the enemy 5 times.\nTarget hit is inflicted with ([V3:461102]%) [&Weaken] at a [R:461102]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:461102] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "4611",
+        "cooldown": 0,
+        "hit_count": 5,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 50.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Weaken",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 5,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "461101/461102",
+        "battle_option_ids": [
+          461101,
+          461102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 4602,
@@ -637,7 +677,48 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 4603,
-      "skill_id": 4613
+      "skill_id": 4613,
+      "skill_data": {
+        "id": 4613,
+        "name": "<[&Tbl_UnitWeapon_Name_4602]> [&Tbl_UnitSkill_Name_4603]",
+        "name_key": "Tbl_UnitSkill_Name_4613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4602]> [&Tbl_UnitSkill_Name_4603]",
+        "description": "Fires a powerful laser beam towards [&Common_Word_Skill_EnemyAll] with the drone.\nGains a [&Color_Cyan]([V3:461302]%)[-] [&AccUp] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:461302] turn(s)\nWhen attacking the only remaining enemy, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan]([V3:461303]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_4613",
+        "description_readable": "Fires a powerful laser beam towards [&Common_Word_Skill_EnemyAll] with the drone.\nGains a ([V3:461302]%) [&AccUp] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:461302] turn(s)\nWhen attacking the only remaining enemy, [&Common_Word_Skill_CriticalRate] increases by ([V3:461303]%).",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "4613",
+        "cooldown": 5,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 279.6,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AccUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 25.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "461301/461302/461303",
+        "battle_option_ids": [
+          461301,
+          461302,
+          461303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

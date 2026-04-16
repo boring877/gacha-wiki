@@ -595,7 +595,46 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 9002,
-      "skill_id": 9012
+      "skill_id": 9012,
+      "skill_data": {
+        "id": 9012,
+        "name": "<[&Tbl_UnitWeapon_Name_9001]> [&Tbl_UnitSkill_Name_9002]",
+        "name_key": "Tbl_UnitSkill_Name_9012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_9001]> [&Tbl_UnitSkill_Name_9002]",
+        "description": "Whenever an ally gets a [&DeBuff], removes 1 [&Common_Word_Skill_Random] [&DeBuff] of [&Common_Word_Skill_AllyAll].\nFills the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] by [&Color_Cyan]([V3:900202]%)[-] at a [&Color_Cyan][R:901202]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_9012",
+        "description_readable": "Whenever an ally gets a [&DeBuff], removes 1 [&Common_Word_Skill_Random] [&DeBuff] of [&Common_Word_Skill_AllyAll].\nFills the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] by ([V3:900202]%) at a [R:901202]% chance.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "9012",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_Ally/All",
+            "value": 20.0,
+            "rate": -65,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "901201/901202",
+        "battle_option_ids": [
+          901201,
+          901202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

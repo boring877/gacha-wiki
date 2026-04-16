@@ -644,7 +644,45 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 12702,
-      "skill_id": 12712
+      "skill_id": 12712,
+      "skill_data": {
+        "id": 12712,
+        "name": "<[&Tbl_UnitWeapon_Name_12701]> [&Tbl_UnitSkill_Name_12702]",
+        "name_key": "Tbl_UnitSkill_Name_12712",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12701]> [&Tbl_UnitSkill_Name_12702]",
+        "description": "Summons a warm breeze, restoring [&HP] of [&Common_Word_Skill_AllyAll] by [&Color_Cyan][V3:1271201]%[-] of the target's Max. [&HP]",
+        "description_key": "Tbl_UnitSkill_Desc_12712",
+        "description_readable": "Summons a warm breeze, restoring [&HP] of [&Common_Word_Skill_AllyAll] by [V3:1271201]% of the target's Max. [&HP]",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "12712",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/All",
+            "value": 14.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1271201",
+        "battle_option_ids": [
+          1271201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 12702,
@@ -656,7 +694,73 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 12703,
-      "skill_id": 12713
+      "skill_id": 12713,
+      "skill_data": {
+        "id": 12713,
+        "name": "<[&Tbl_UnitWeapon_Name_12702]> [&Tbl_UnitSkill_Name_12703]",
+        "name_key": "Tbl_UnitSkill_Name_12713",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12702]> [&Tbl_UnitSkill_Name_12703]",
+        "description": "Grants [&Color_Cyan]([V3:1271301]%)[-] [&HealTurn] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:1271301] turn(s)\nEach [&DeBuff] on the target restores [&Color_Cyan][V3:1271302]%[-] of the target's Max. [&HP]\nStacks up to 3.",
+        "description_key": "Tbl_UnitSkill_Desc_12713",
+        "description_readable": "Grants ([V3:1271301]%) [&HealTurn] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:1271301] turn(s)\nEach [&DeBuff] on the target restores [V3:1271302]% of the target's Max. [&HP]\nStacks up to 3.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "12713",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_Ally/All",
+            "duration": 3,
+            "value": 5.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_HitTargetList",
+            "value": 31.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasDeBuffMoreCnt/1"
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_HitTargetList",
+            "value": 31.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasDeBuffMoreCnt/2"
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_HitTargetList",
+            "value": 31.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasDeBuffMoreCnt/3"
+          }
+        ],
+        "battle_options": "1271301/1271302/1271303/1271304",
+        "battle_option_ids": [
+          1271301,
+          1271302,
+          1271303,
+          1271304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

@@ -596,7 +596,47 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 22603,
-      "skill_id": 22613
+      "skill_id": 22613,
+      "skill_data": {
+        "id": 22613,
+        "name": "<[&Tbl_UnitWeapon_Name_22601]> [&Tbl_UnitSkill_Name_22603]",
+        "name_key": "Tbl_UnitSkill_Name_22613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_22601]> [&Tbl_UnitSkill_Name_22603]",
+        "description": "Charges the plasma rifle, and fires it [A:22613] time(s) at the enemy.\nPerforms a [&Color_Cyan]([V3:2260302]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\nIf only 1 enemy is left, the last attack reduces the [&Common_Word_Skill_TurnGauge] of the target by [&Color_Cyan]([V3:2260303]%)[-] at a [&Color_Cyan][R:2261303]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_22613",
+        "description_readable": "Charges the plasma rifle, and fires it [A:22613] time(s) at the enemy.\nPerforms a ([V3:2260302]%) [&Common_Word_Skill_DefPenetrate] attack.\nIf only 1 enemy is left, the last attack reduces the [&Common_Word_Skill_TurnGauge] of the target by ([V3:2260303]%) at a [R:2261303]% chance.",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "22613",
+        "cooldown": 4,
+        "hit_count": 4,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 191.4,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTargetList",
+            "value": 15.0,
+            "rate": 85,
+            "timing": "eBOTiming_ActionLast",
+            "condition": "eBOCond_IsSolo"
+          }
+        ],
+        "battle_options": "2261301/2261302/2261303",
+        "battle_option_ids": [
+          2261301,
+          2261302,
+          2261303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

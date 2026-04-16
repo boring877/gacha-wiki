@@ -643,7 +643,48 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 3703,
-      "skill_id": 3713
+      "skill_id": 3713,
+      "skill_data": {
+        "id": 3713,
+        "name": "<[&Tbl_UnitWeapon_Name_3701]> [&Tbl_UnitSkill_Name_3703]",
+        "name_key": "Tbl_UnitSkill_Name_3713",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3701]> [&Tbl_UnitSkill_Name_3703]",
+        "description": "Makes a large tornado and sends it toward [&Common_Word_Skill_EnemyAll].\nPerforms a [&Common_Word_Skill_ShieldPenetrate] attack.\nWhen defeating an enemy with this skill, fills [&Color_Cyan]([V3:371304]%)[-] of the [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:371304]%[-] chance for [&Common_Word_Skill_AllyAll].\nSteals the [&SpdUp] [&Buff] of [&Common_Word_Skill_EnemyAll] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ATKSPD]",
+        "description_key": "Tbl_UnitSkill_Desc_3713",
+        "description_readable": "Makes a large tornado and sends it toward [&Common_Word_Skill_EnemyAll].\nPerforms a [&Common_Word_Skill_ShieldPenetrate] attack.\nWhen defeating an enemy with this skill, fills ([V3:371304]%) of the [&Common_Word_Skill_TurnGauge] at a [R:371304]% chance for [&Common_Word_Skill_AllyAll].\nSteals the [&SpdUp] [&Buff] of [&Common_Word_Skill_EnemyAll] [&Common_Word_Skill_ActionBefore].",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "3713",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[SPD]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 301.1,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_Ally/All",
+            "value": 20.0,
+            "rate": -95,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "371301/371302/371303/371304",
+        "battle_option_ids": [
+          371301,
+          371302,
+          371303,
+          371304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 3702,
@@ -655,7 +696,45 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 3704,
-      "skill_id": 3714
+      "skill_id": 3714,
+      "skill_data": {
+        "id": 3714,
+        "name": "<[&Tbl_UnitWeapon_Name_3702]> [&Tbl_UnitSkill_Name_3704]",
+        "name_key": "Tbl_UnitSkill_Name_3714",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3702]> [&Tbl_UnitSkill_Name_3704]",
+        "description": "On every [&Common_Word_Skill_CriticalAttack], absorbs [&Color_Cyan]([V3:371401]%)[-] of the [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:371401]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_3714",
+        "description_readable": "On every [&Common_Word_Skill_CriticalAttack], absorbs ([V3:371401]%) of the [&Common_Word_Skill_TurnGauge] at a [R:371401]% chance.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "3714",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDrain",
+            "target": "eBOTarget_HitTarget",
+            "value": 12.5,
+            "rate": 5,
+            "timing": "eBOTiming_OnAttack",
+            "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+          }
+        ],
+        "battle_options": "371401",
+        "battle_option_ids": [
+          371401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -616,7 +616,62 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 8401,
-      "skill_id": 8411
+      "skill_id": 8411,
+      "skill_data": {
+        "id": 8411,
+        "name": "<[&Tbl_UnitWeapon_Name_8401]> [&Tbl_UnitSkill_Name_8401]",
+        "name_key": "Tbl_UnitSkill_Name_8411",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8401]> [&Tbl_UnitSkill_Name_8401]",
+        "description": "Drives tentacles into the ground, attacking 1 [&Common_Word_Skill_Random] enemy.\nTarget hit is inflicted with [&Stun] at a [&Color_Cyan][R:841103]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:841103] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_8411",
+        "description_readable": "Drives tentacles into the ground, attacking 1 [&Common_Word_Skill_Random] enemy.\nTarget hit is inflicted with [&Stun] at a [R:841103]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:841103] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "8411",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 472.6,
+        "effects": [
+          {
+            "type": "multi_attack",
+            "hits": [
+              {
+                "value": 236.3,
+                "target": "eBOTarget_Enemy/1"
+              },
+              {
+                "value": 236.3,
+                "target": "eBOTarget_EnemyRnd/1"
+              }
+            ],
+            "value": 472.6
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Stun",
+            "target": "eBOTarget_HitTarget",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 5,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "841101/841102/841103",
+        "battle_option_ids": [
+          841101,
+          841102,
+          841103
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

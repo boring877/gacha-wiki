@@ -595,7 +595,46 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 4303,
-      "skill_id": 4313
+      "skill_id": 4313,
+      "skill_data": {
+        "id": 4313,
+        "name": "<[&Tbl_UnitWeapon_Name_4301]> [&Tbl_UnitSkill_Name_4303]",
+        "name_key": "Tbl_UnitSkill_Name_4313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4301]> [&Tbl_UnitSkill_Name_4303]",
+        "description": "If the character has a [&Buff], inflicts [&Color_Cyan]([V3:431301]%)[-] [&Burn] to the target at a [&Color_Cyan][R:431301]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:431301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_4313",
+        "description_readable": "If the character has a [&Buff], inflicts ([V3:431301]%) [&Burn] to the target at a [R:431301]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:431301] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "4313",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 15,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_HasBuff/All"
+          }
+        ],
+        "battle_options": "431301",
+        "battle_option_ids": [
+          431301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

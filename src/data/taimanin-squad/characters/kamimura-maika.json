@@ -624,7 +624,37 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 3102,
-      "skill_id": 3112
+      "skill_id": 3112,
+      "skill_data": {
+        "id": 3112,
+        "name": "<[&Tbl_UnitWeapon_Name_3101]> [&Tbl_UnitSkill_Name_3102]",
+        "name_key": "Tbl_UnitSkill_Name_3112",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3101]> [&Tbl_UnitSkill_Name_3102]",
+        "description": "Jumps into the air and fires the bazooka toward the ground, attacking [&Common_Word_Skill_EnemyAll].\n[&Common_Word_Skill_Damage] increases in proportion to their current [&HP]\nIf the target's [&HP] is less than [&Color_Cyan]50%[-], increases [&Common_Word_Skill_Damage] by [&Color_Cyan]([V3:311202]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_3112",
+        "description_readable": "Jumps into the air and fires the bazooka toward the ground, attacking [&Common_Word_Skill_EnemyAll].\n[&Common_Word_Skill_Damage] increases in proportion to their current [&HP]\nIf the target's [&HP] is less than 50%, increases [&Common_Word_Skill_Damage] by ([V3:311202]%).",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "3112",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[NowHp]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 288.9,
+        "effects": [],
+        "battle_options": "311201/311202",
+        "battle_option_ids": [
+          311201,
+          311202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 3102,
@@ -636,7 +666,56 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 3103,
-      "skill_id": 3113
+      "skill_id": 3113,
+      "skill_data": {
+        "id": 3113,
+        "name": "<[&Tbl_UnitWeapon_Name_3102]> [&Tbl_UnitSkill_Name_3103]",
+        "name_key": "Tbl_UnitSkill_Name_3113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3102]> [&Tbl_UnitSkill_Name_3103]",
+        "description": "After jumping into the air, fires a super-heated flame bullet toward the ground, attacking [&Common_Word_Skill_EnemyAll].\nWhen an enemy is defeated by this skill, resets [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_3102].\nInflicts [&Color_Cyan]([V3:311301]%)[-] [&Burn] to [&Common_Word_Skill_EnemyAll] at a [&Color_Cyan][R:311301]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:311301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_3113",
+        "description_readable": "After jumping into the air, fires a super-heated flame bullet toward the ground, attacking [&Common_Word_Skill_EnemyAll].\nWhen an enemy is defeated by this skill, resets [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_3102].\nInflicts ([V3:311301]%) [&Burn] to [&Common_Word_Skill_EnemyAll] at a [R:311301]% chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:311301] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "3113",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 467.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 75,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeClear/2",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "311301/311302/311303",
+        "battle_option_ids": [
+          311301,
+          311302,
+          311303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

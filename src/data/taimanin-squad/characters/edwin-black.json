@@ -636,7 +636,47 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 6602,
-      "skill_id": 6612
+      "skill_id": 6612,
+      "skill_data": {
+        "id": 6612,
+        "name": "<[&Tbl_UnitWeapon_Name_6601]> [&Tbl_UnitSkill_Name_6602]",
+        "name_key": "Tbl_UnitSkill_Name_6612",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6601]> [&Tbl_UnitSkill_Name_6602]",
+        "description": "Attacks [&Common_Word_Skill_EnemyAll] a total of 5 times to absorb energy.\nIf the enemy is not alone when attacking, [&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:661202]%)[-].\nDefeating an enemy with this skill resets the cooldown time of [&Tbl_UnitSkill_Name_6602].",
+        "description_key": "Tbl_UnitSkill_Desc_6612",
+        "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] a total of 5 times to absorb energy.\nIf the enemy is not alone when attacking, [&Common_Word_Skill_Damage] increases by ([V3:661202]%).\nDefeating an enemy with this skill resets the cooldown time of [&Tbl_UnitSkill_Name_6602].",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "6612",
+        "cooldown": 4,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 130.8,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeClear/2",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "661201/661202/661203",
+        "battle_option_ids": [
+          661201,
+          661202,
+          661203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 6602,
@@ -648,7 +688,48 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 6603,
-      "skill_id": 6613
+      "skill_id": 6613,
+      "skill_data": {
+        "id": 6613,
+        "name": "<[&Tbl_UnitWeapon_Name_6602]> [&Tbl_UnitSkill_Name_6603]",
+        "name_key": "Tbl_UnitSkill_Name_6613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6602]> [&Tbl_UnitSkill_Name_6603]",
+        "description": "Attacks the enemy using his ability.\nReduces the target's [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:661304]%)[-] at a [&Color_Cyan][R:661304]%[-] chance on [&Common_Word_Skill_ActionLast].\nSteals the [&Shield] the target has [&Common_Word_Skill_ActionBefore].\nIf the target's [&HP] is less than [&Color_Cyan]50%[-], increases [&Shield] by [V3:661303]% [&Common_Word_Skill_ActionAfter].",
+        "description_key": "Tbl_UnitSkill_Desc_6613",
+        "description_readable": "Attacks the enemy using his ability.\nReduces the target's [&Common_Word_Skill_TurnGauge] by ([V3:661304]%) at a [R:661304]% chance on [&Common_Word_Skill_ActionLast].\nSteals the [&Shield] the target has [&Common_Word_Skill_ActionBefore].\nIf the target's [&HP] is less than 50%, increases [&Shield] by [V3:661303]% [&Common_Word_Skill_ActionAfter].",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "6613",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[NowHp]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 662.8,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTargetList",
+            "value": 15.0,
+            "rate": 75,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "661301/661302/661303/661304",
+        "battle_option_ids": [
+          661301,
+          661302,
+          661303,
+          661304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

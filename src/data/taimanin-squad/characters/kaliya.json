@@ -646,7 +646,46 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 30001,
-      "skill_id": 30011
+      "skill_id": 30011,
+      "skill_data": {
+        "id": 30011,
+        "name": "<[&Tbl_UnitWeapon_Name_30001]> [&Tbl_UnitSkill_Name_30001]",
+        "name_key": "Tbl_UnitSkill_Name_30011",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_30001]> [&Tbl_UnitSkill_Name_30001]",
+        "description": "[Tbl_UnitSkill_Desc_30011]",
+        "description_key": "Tbl_UnitSkill_Desc_30011",
+        "description_readable": "[Tbl_UnitSkill_Desc_30011]",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "30011",
+        "cooldown": 0,
+        "hit_count": 2,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "",
+        "multiplier": 252.0,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/4",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "3001101/3001102",
+        "battle_option_ids": [
+          3001101,
+          3001102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 30002,
@@ -658,7 +697,38 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 30003,
-      "skill_id": 30013
+      "skill_id": 30013,
+      "skill_data": {
+        "id": 30013,
+        "name": "<[&Tbl_UnitWeapon_Name_30002]> [&Tbl_UnitSkill_Name_30003]",
+        "name_key": "Tbl_UnitSkill_Name_30013",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_30002]> [&Tbl_UnitSkill_Name_30003]",
+        "description": "[Tbl_UnitSkill_Desc_30013]",
+        "description_key": "Tbl_UnitSkill_Desc_30013",
+        "description_readable": "[Tbl_UnitSkill_Desc_30013]",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "30013",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "",
+        "multiplier": 467.4,
+        "effects": [],
+        "battle_options": "3001301/3001302/3001303",
+        "battle_option_ids": [
+          3001301,
+          3001302,
+          3001303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

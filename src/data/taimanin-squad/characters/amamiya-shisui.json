@@ -625,7 +625,37 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 4203,
-      "skill_id": 4213
+      "skill_id": 4213,
+      "skill_data": {
+        "id": 4213,
+        "name": "<[&Tbl_UnitWeapon_Name_4201]> [&Tbl_UnitSkill_Name_4203]",
+        "name_key": "Tbl_UnitSkill_Name_4213",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4201]> [&Tbl_UnitSkill_Name_4203]",
+        "description": "Summons a Guardian that unleashes a powerful wave at the enemy, attacking [A:4213] times.\nRemoves all of the target's [&Buff]s [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ATKDEF]",
+        "description_key": "Tbl_UnitSkill_Desc_4213",
+        "description_readable": "Summons a Guardian that unleashes a powerful wave at the enemy, attacking [A:4213] times.\nRemoves all of the target's [&Buff]s [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ATKDEF]",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "4213",
+        "cooldown": 6,
+        "hit_count": 4,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[DEF]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 183.6,
+        "effects": [],
+        "battle_options": "421302/421301",
+        "battle_option_ids": [
+          421302,
+          421301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 4202,
@@ -637,7 +667,46 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 4204,
-      "skill_id": 4214
+      "skill_id": 4214,
+      "skill_data": {
+        "id": 4214,
+        "name": "<[&Tbl_UnitWeapon_Name_4202]> [&Tbl_UnitSkill_Name_4204]",
+        "name_key": "Tbl_UnitSkill_Name_4214",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4202]> [&Tbl_UnitSkill_Name_4204]",
+        "description": "If [&HP] is less than [&Color_Cyan]50%[-], grants [&Color_Cyan]([V3:421401])[-] [&DmgBlockCount] when hit.\n[&Common_Word_Skill_ValueTurn]: [V2:421401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_4214",
+        "description_readable": "If [&HP] is less than 50%, grants ([V3:421401]) [&DmgBlockCount] when hit.\n[&Common_Word_Skill_ValueTurn]: [V2:421401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "4214",
+        "cooldown": 5,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 3.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnHit",
+            "condition": "eBOCond_LessHP/50&&eBOCond_IsNotCoolTime/4"
+          }
+        ],
+        "battle_options": "421401",
+        "battle_option_ids": [
+          421401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

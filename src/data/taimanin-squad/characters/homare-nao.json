@@ -652,7 +652,47 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 11303,
-      "skill_id": 11313
+      "skill_id": 11313,
+      "skill_data": {
+        "id": 11313,
+        "name": "<[&Tbl_UnitWeapon_Name_11301]> [&Tbl_UnitSkill_Name_11303]",
+        "name_key": "Tbl_UnitSkill_Name_11313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11301]> [&Tbl_UnitSkill_Name_11303]",
+        "description": "Fires a single laser beam at an enemy, dealing DMG.\nTarget hit has their [&Common_Word_Skill_TurnGauge] reduced by [&Color_Cyan]([V3:1131302]%)[-] at a [&Color_Cyan][R:1131302]%[-] chance.\nIf the target's [&Common_Word_Skill_TurnGauge] is less than [&Color_Cyan]10%[-], increases all [&DeBuff]s' duration the target has by [V2:1131303] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_11313",
+        "description_readable": "Fires a single laser beam at an enemy, dealing DMG.\nTarget hit has their [&Common_Word_Skill_TurnGauge] reduced by ([V3:1131302]%) at a [R:1131302]% chance.\nIf the target's [&Common_Word_Skill_TurnGauge] is less than 10%, increases all [&DeBuff]s' duration the target has by [V2:1131303] turn(s).",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "11313",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 911.9,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTarget",
+            "value": 15.0,
+            "rate": 75,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1131301/1131302/1131303",
+        "battle_option_ids": [
+          1131301,
+          1131302,
+          1131303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 11302,
@@ -664,7 +704,46 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 11304,
-      "skill_id": 11314
+      "skill_id": 11314,
+      "skill_data": {
+        "id": 11314,
+        "name": "<[&Tbl_UnitWeapon_Name_11302]> [&Tbl_UnitSkill_Name_11304]",
+        "name_key": "Tbl_UnitSkill_Name_11314",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11302]> [&Tbl_UnitSkill_Name_11304]",
+        "description": "Target hit is inflicted with [&Color_Cyan]([V3:1130401]%)[-] [&AccDown] at a [&Color_Cyan][R:1130401]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1130401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_11314",
+        "description_readable": "Target hit is inflicted with ([V3:1130401]%) [&AccDown] at a [R:1130401]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1130401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "11314",
+        "cooldown": 4,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/AccDown",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": -27.5,
+            "rate": 99,
+            "timing": "eBOTiming_OnAttack",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1131401",
+        "battle_option_ids": [
+          1131401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

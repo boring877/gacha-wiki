@@ -649,7 +649,40 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 2603,
-      "skill_id": 2613
+      "skill_id": 2613,
+      "skill_data": {
+        "id": 2613,
+        "name": "<[&Tbl_UnitWeapon_Name_2601]> [&Tbl_UnitSkill_Name_2603]",
+        "name_key": "Tbl_UnitSkill_Name_2613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2601]> [&Tbl_UnitSkill_Name_2603]",
+        "description": "Transforms into a demon and rips the enemy to shreds.\nConsumes [&Color_Cyan][V3:261304]%[-] of the character's [&HP] to increase [&Common_Word_Skill_Damage] by [&Color_Cyan]([V3:261305]%)[-] [&Common_Word_Skill_ActionBefore].\nIf [&HP] is less than [&Color_Cyan]60%[-] when attacking, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan]([V3:261302]%)[-].\nIf [&HP] is less than [&Color_Cyan]30%[-] when attacking, [&Common_Word_Skill_CriticalDamage] increases by [&Color_Cyan]([V3:261303]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_2613",
+        "description_readable": "Transforms into a demon and rips the enemy to shreds.\nConsumes [V3:261304]% of the character's [&HP] to increase [&Common_Word_Skill_Damage] by ([V3:261305]%) [&Common_Word_Skill_ActionBefore].\nIf [&HP] is less than 60% when attacking, [&Common_Word_Skill_CriticalRate] increases by ([V3:261302]%).\nIf [&HP] is less than 30% when attacking, [&Common_Word_Skill_CriticalDamage] increases by ([V3:261303]%).",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "2613",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[CostHP]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 609.8,
+        "effects": [],
+        "battle_options": "261301/261302/261303/261304/261305",
+        "battle_option_ids": [
+          261301,
+          261302,
+          261303,
+          261304,
+          261305
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 2602,
@@ -661,7 +694,54 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 2604,
-      "skill_id": 2614
+      "skill_id": 2614,
+      "skill_data": {
+        "id": 2614,
+        "name": "<[&Tbl_UnitWeapon_Name_2602]> [&Tbl_UnitSkill_Name_2604]",
+        "name_key": "Tbl_UnitSkill_Name_2614",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2602]> [&Tbl_UnitSkill_Name_2604]",
+        "description": "Recovers [&Color_Cyan][V3:261401]%[-] of Max. [&HP] whenever an enemy dies, and fills [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:261402]%)[-] at a [&Color_Cyan][R:261402]%[-] chance.\nThe [&Common_Word_Skill_Damage] of all of Noah's skills increase the lower the [&HP]. ",
+        "description_key": "Tbl_UnitSkill_Desc_2614",
+        "description_readable": "Recovers [V3:261401]% of Max. [&HP] whenever an enemy dies, and fills [&Common_Word_Skill_TurnGauge] by ([V3:261402]%) at a [R:261402]% chance.\nThe [&Common_Word_Skill_Damage] of all of Noah's skills increase the lower the [&HP].",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "2614",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Self",
+            "value": 3.5,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_Self",
+            "value": 20.0,
+            "rate": -20,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "261401/261402",
+        "battle_option_ids": [
+          261401,
+          261402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -663,7 +663,37 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 10301,
-      "skill_id": 10311
+      "skill_id": 10311,
+      "skill_data": {
+        "id": 10311,
+        "name": "<[&Tbl_UnitWeapon_Name_10301]> [&Tbl_UnitSkill_Name_10301]",
+        "name_key": "Tbl_UnitSkill_Name_10311",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10301]> [&Tbl_UnitSkill_Name_10301]",
+        "description": "Fires the rifle in short bursts at the enemy.\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].",
+        "description_key": "Tbl_UnitSkill_Desc_10311",
+        "description_readable": "Fires the rifle in short bursts at the enemy.\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "10311",
+        "cooldown": 0,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 168.0,
+        "effects": [],
+        "battle_options": "1031101/1031102",
+        "battle_option_ids": [
+          1031101,
+          1031102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 10302,
@@ -675,7 +705,57 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 10303,
-      "skill_id": 10313
+      "skill_id": 10313,
+      "skill_data": {
+        "id": 10313,
+        "name": "<[&Tbl_UnitWeapon_Name_10302]> [&Tbl_UnitSkill_Name_10303]",
+        "name_key": "Tbl_UnitSkill_Name_10313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10302]> [&Tbl_UnitSkill_Name_10303]",
+        "description": "Throws a signal beacon to mark the bomb drop location, to attack [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with [&Color_Cyan]([V3:1031302]%)[-] [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:1031302] turn(s)\nIf the target's [&HP] is less than [&Color_Cyan]30%[-] [&Common_Word_Skill_ActionAfter], additionally inflicts [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:1031303] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_10313",
+        "description_readable": "Throws a signal beacon to mark the bomb drop location, to attack [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with ([V3:1031302]%) [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:1031302] turn(s)\nIf the target's [&HP] is less than 30% [&Common_Word_Skill_ActionAfter], additionally inflicts [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:1031303] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "10313",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 467.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 75,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 90,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_LessHP/30"
+          }
+        ],
+        "battle_options": "1031301/1031302/1031303",
+        "battle_option_ids": [
+          1031301,
+          1031302,
+          1031303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

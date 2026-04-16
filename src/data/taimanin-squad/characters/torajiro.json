@@ -606,7 +606,47 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 8703,
-      "skill_id": 8713
+      "skill_id": 8713,
+      "skill_data": {
+        "id": 8713,
+        "name": "<[&Tbl_UnitWeapon_Name_8701]> [&Tbl_UnitSkill_Name_8703]",
+        "name_key": "Tbl_UnitSkill_Name_8713",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8701]> [&Tbl_UnitSkill_Name_8703]",
+        "description": "Randomly slashes the enemy 6 times.\nPerforms an [&Common_Word_Skill_AddAttack] without any conditions. \nWhen the target's [&HP] is less than [&Color_Cyan]20%[-] on every [&Common_Word_Skill_AddAttack], deals [&Common_Word_Skill_DeathDmg] at a fixed chance of [&Color_Cyan][R:871303]%[-].",
+        "description_key": "Tbl_UnitSkill_Desc_8713",
+        "description_readable": "Randomly slashes the enemy 6 times.\nPerforms an [&Common_Word_Skill_AddAttack] without any conditions. \nWhen the target's [&HP] is less than 20% on every [&Common_Word_Skill_AddAttack], deals [&Common_Word_Skill_DeathDmg] at a fixed chance of [R:871303]%.",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "8713",
+        "cooldown": 7,
+        "hit_count": 6,
+        "additional_hits": 1,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 126.7,
+        "effects": [
+          {
+            "type": "eBOFunc_AddAttack",
+            "target": "eBOTarget_HitTargetList",
+            "value": 175.9,
+            "rate": 100,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "871301/871302/871303",
+        "battle_option_ids": [
+          871301,
+          871302,
+          871303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

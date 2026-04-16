@@ -614,7 +614,56 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 8503,
-      "skill_id": 8513
+      "skill_id": 8513,
+      "skill_data": {
+        "id": 8513,
+        "name": "<[&Tbl_UnitWeapon_Name_8501]> [&Tbl_UnitSkill_Name_8503]",
+        "name_key": "Tbl_UnitSkill_Name_8513",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8501]> [&Tbl_UnitSkill_Name_8503]",
+        "description": "Grants [&Common_Word_Skill_AllyAll] [V3:851301] [&DmgBlockCount].\n[&Common_Word_Skill_ValueTurn]: [V2:851301] turn(s)\nGrants [&Common_Word_Skill_AllyAll] [&Color_Cyan]([V3:851302]%)[-] [&HealTurn].\n[&Common_Word_Skill_ValueTurn]: [V2:851302] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_8513",
+        "description_readable": "Grants [&Common_Word_Skill_AllyAll] [V3:851301] [&DmgBlockCount].\n[&Common_Word_Skill_ValueTurn]: [V2:851301] turn(s)\nGrants [&Common_Word_Skill_AllyAll] ([V3:851302]%) [&HealTurn].\n[&Common_Word_Skill_ValueTurn]: [V2:851302] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "8513",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_Ally/All",
+            "duration": 3,
+            "value": 5.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "851301/851302",
+        "battle_option_ids": [
+          851301,
+          851302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

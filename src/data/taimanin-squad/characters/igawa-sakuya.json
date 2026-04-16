@@ -603,7 +603,46 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 202,
-      "skill_id": 212
+      "skill_id": 212,
+      "skill_data": {
+        "id": 212,
+        "name": "<[&Tbl_UnitWeapon_Name_201]> [&Tbl_UnitSkill_Name_202]",
+        "name_key": "Tbl_UnitSkill_Name_212",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_201]> [&Tbl_UnitSkill_Name_202]",
+        "description": "When hit by an attack other than an all-target attack, uses [&Tbl_UnitSkill_Name_202].\nGoes into [&Stealth] mode.\n[&Common_Word_Skill_ValueTurn]: [V2:21201] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_212",
+        "description_readable": "When hit by an attack other than an all-target attack, uses [&Tbl_UnitSkill_Name_202].\nGoes into [&Stealth] mode.\n[&Common_Word_Skill_ValueTurn]: [V2:21201] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "212",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Stealth",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "21201",
+        "battle_option_ids": [
+          21201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "SelfBuff",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -613,7 +613,46 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 4901,
-      "skill_id": 4911
+      "skill_id": 4911,
+      "skill_data": {
+        "id": 4911,
+        "name": "<[&Tbl_UnitWeapon_Name_4901]> [&Tbl_UnitSkill_Name_4901]",
+        "name_key": "Tbl_UnitSkill_Name_4911",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4901]> [&Tbl_UnitSkill_Name_4901]",
+        "description": "Draws the sword from the back and slashes the enemy 3 times.\nReduces the [&Common_Word_Skill_CoolTime] of the 3rd skill of the ally with the highest [&ATK] by [V2:491102] turn(s) on the [&Common_Word_Skill_ActionLast], excluding the character.",
+        "description_key": "Tbl_UnitSkill_Desc_4911",
+        "description_readable": "Draws the sword from the back and slashes the enemy 3 times.\nReduces the [&Common_Word_Skill_CoolTime] of the 3rd skill of the ally with the highest [&ATK] by [V2:491102] turn(s) on the [&Common_Word_Skill_ActionLast], excluding the character.",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "4911",
+        "cooldown": 0,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 168.0,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/3",
+            "target": "eBOTarget_AtkMoreAllyOther",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "491101/491102",
+        "battle_option_ids": [
+          491101,
+          491102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

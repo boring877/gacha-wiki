@@ -644,7 +644,56 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 1902,
-      "skill_id": 1912
+      "skill_id": 1912,
+      "skill_data": {
+        "id": 1912,
+        "name": "<[&Tbl_UnitWeapon_Name_1901]> [&Tbl_UnitSkill_Name_1902]",
+        "name_key": "Tbl_UnitSkill_Name_1912",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1901]> [&Tbl_UnitSkill_Name_1902]",
+        "description": "Gains a [&Shield] equal to [&Color_Cyan][V3:191201]%[-] of the character's Max. HP.\n[&Common_Word_Skill_ValueTurn]: [V2:191201] turn(s)\n[&Provocation]s [&Common_Word_Skill_EnemyAll] at a fixed chance of [&Color_Cyan][R:191202]%[-]\n[&Common_Word_Skill_ValueTurn]: [V2:191202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_1912",
+        "description_readable": "Gains a [&Shield] equal to [V3:191201]% of the character's Max. HP.\n[&Common_Word_Skill_ValueTurn]: [V2:191201] turn(s)\n[&Provocation]s [&Common_Word_Skill_EnemyAll] at a fixed chance of [R:191202]%\n[&Common_Word_Skill_ValueTurn]: [V2:191202] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "1912",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Provocation",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 2,
+            "value": 0.0,
+            "rate": -30,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "191201/191202",
+        "battle_option_ids": [
+          191201,
+          191202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 1902,
@@ -656,7 +705,47 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 1904,
-      "skill_id": 1914
+      "skill_id": 1914,
+      "skill_data": {
+        "id": 1914,
+        "name": "<[&Tbl_UnitWeapon_Name_1902]> [&Tbl_UnitSkill_Name_1904]",
+        "name_key": "Tbl_UnitSkill_Name_1914",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1902]> [&Tbl_UnitSkill_Name_1904]",
+        "description": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [&Color_Cyan][V3:191401]%[-] of Max. [&HP] and enters an [&Athanasia] state.\n[&Common_Word_Skill_ValueTurn]: [V2:191402] turn(s)\n",
+        "description_key": "Tbl_UnitSkill_Desc_1914",
+        "description_readable": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [V3:191401]% of Max. [&HP] and enters an [&Athanasia] state.\n[&Common_Word_Skill_ValueTurn]: [V2:191402] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "1914",
+        "cooldown": 7,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Athanasia",
+            "target": "eBOTarget_Self",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnDie",
+            "condition": ""
+          }
+        ],
+        "battle_options": "191401/191402",
+        "battle_option_ids": [
+          191401,
+          191402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

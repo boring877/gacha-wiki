@@ -650,7 +650,56 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 12802,
-      "skill_id": 12812
+      "skill_id": 12812,
+      "skill_data": {
+        "id": 12812,
+        "name": "<[&Tbl_UnitWeapon_Name_12801]> [&Tbl_UnitSkill_Name_12802]",
+        "name_key": "Tbl_UnitSkill_Name_12812",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12801]> [&Tbl_UnitSkill_Name_12802]",
+        "description": "[Tbl_UnitSkill_Desc_12812]",
+        "description_key": "Tbl_UnitSkill_Desc_12812",
+        "description_readable": "[Tbl_UnitSkill_Desc_12812]",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "12812",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Sleep",
+            "target": "eBOTarget_EnemyRnd/2",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 30,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Sleep",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 35,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1281201/1281202",
+        "battle_option_ids": [
+          1281201,
+          1281202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 12802,
@@ -662,7 +711,56 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 12803,
-      "skill_id": 12813
+      "skill_id": 12813,
+      "skill_data": {
+        "id": 12813,
+        "name": "<[&Tbl_UnitWeapon_Name_12802]> [&Tbl_UnitSkill_Name_12803]",
+        "name_key": "Tbl_UnitSkill_Name_12813",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12802]> [&Tbl_UnitSkill_Name_12803]",
+        "description": "[Tbl_UnitSkill_Desc_12813]",
+        "description_key": "Tbl_UnitSkill_Desc_12813",
+        "description_readable": "[Tbl_UnitSkill_Desc_12813]",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "12813",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AtkUp",
+            "target": "eBOTarget_Ally/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeClear/3",
+            "target": "eBOTarget_HitTarget",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1281301/1281302/1281303",
+        "battle_option_ids": [
+          1281301,
+          1281302,
+          1281303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

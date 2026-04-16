@@ -639,7 +639,56 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 1402,
-      "skill_id": 1412
+      "skill_id": 1412,
+      "skill_data": {
+        "id": 1412,
+        "name": "<[&Tbl_UnitWeapon_Name_1401]> [&Tbl_UnitSkill_Name_1402]",
+        "name_key": "Tbl_UnitSkill_Name_1412",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1401]> [&Tbl_UnitSkill_Name_1402]",
+        "description": "Brings the hand to the mouth and recites a spell, gains [&Color_Cyan]([V3:141201]%)[-] [&HealTurn] and [&Color_Cyan]([V3:141202]%)[-] [&Strengthen].\n[&Common_Word_Skill_ValueTurn]: [V2:141202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_1412",
+        "description_readable": "Brings the hand to the mouth and recites a spell, gains ([V3:141201]%) [&HealTurn] and ([V3:141202]%) [&Strengthen].\n[&Common_Word_Skill_ValueTurn]: [V2:141202] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "1412",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_Self",
+            "duration": 3,
+            "value": 5.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/Strengthen",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "141201/141202",
+        "battle_option_ids": [
+          141201,
+          141202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 1402,
@@ -651,7 +700,36 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 1404,
-      "skill_id": 1414
+      "skill_id": 1414,
+      "skill_data": {
+        "id": 1414,
+        "name": "<[&Tbl_UnitWeapon_Name_1402]> [&Tbl_UnitSkill_Name_1404]",
+        "name_key": "Tbl_UnitSkill_Name_1414",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1402]> [&Tbl_UnitSkill_Name_1404]",
+        "description": "If the character's [&HP] is [&Color_Cyan]80%[-] or more, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan]([V3:141401]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_1414",
+        "description_readable": "If the character's [&HP] is 80% or more, [&Common_Word_Skill_CriticalRate] increases by ([V3:141401]%).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "1414",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "141401",
+        "battle_option_ids": [
+          141401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

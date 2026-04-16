@@ -630,7 +630,49 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 12603,
-      "skill_id": 12613
+      "skill_id": 12613,
+      "skill_data": {
+        "id": 12613,
+        "name": "<[&Tbl_UnitWeapon_Name_12601]> [&Tbl_UnitSkill_Name_12603]",
+        "name_key": "Tbl_UnitSkill_Name_12613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12601]> [&Tbl_UnitSkill_Name_12603]",
+        "description": "Attacks the enemy at a speed untrackable to the naked eye.\nIf the target's [&HP] is less than [&Color_Cyan]50%[-], increases [&Common_Word_Skill_Damage] by [&Color_Cyan][V3:1261302]%[-].\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].\nGains [&Stealth] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:1261303] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_12613",
+        "description_readable": "Attacks the enemy at a speed untrackable to the naked eye.\nIf the target's [&HP] is less than 50%, increases [&Common_Word_Skill_Damage] by [V3:1261302]%.\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].\nGains [&Stealth] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:1261303] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "12613",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 782.8,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Stealth",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1261301/1261302/1261303/1261304",
+        "battle_option_ids": [
+          1261301,
+          1261302,
+          1261303,
+          1261304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 12602,
@@ -642,7 +684,46 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 12604,
-      "skill_id": 12614
+      "skill_id": 12614,
+      "skill_data": {
+        "id": 12614,
+        "name": "<[&Tbl_UnitWeapon_Name_12602]> [&Tbl_UnitSkill_Name_12604]",
+        "name_key": "Tbl_UnitSkill_Name_12614",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12602]> [&Tbl_UnitSkill_Name_12604]",
+        "description": "Defeating an enemy reduces all of the character's [&Common_Word_Skill_CoolTime] by [V2:1261401] turn(s).\nIf the character is in [&Stealth], increases [&Common_Word_Skill_CriticalDamage] by [&Color_Cyan]([V3:1260402]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_12614",
+        "description_readable": "Defeating an enemy reduces all of the character's [&Common_Word_Skill_CoolTime] by [V2:1261401] turn(s).\nIf the character is in [&Stealth], increases [&Common_Word_Skill_CriticalDamage] by ([V3:1260402]%).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "12614",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "1261401/1261402",
+        "battle_option_ids": [
+          1261401,
+          1261402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

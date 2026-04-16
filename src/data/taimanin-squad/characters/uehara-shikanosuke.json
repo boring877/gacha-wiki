@@ -635,7 +635,67 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 8003,
-      "skill_id": 8013
+      "skill_id": 8013,
+      "skill_data": {
+        "id": 8013,
+        "name": "<[&Tbl_UnitWeapon_Name_8001]> [&Tbl_UnitSkill_Name_8003]",
+        "name_key": "Tbl_UnitSkill_Name_8013",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8001]> [&Tbl_UnitSkill_Name_8003]",
+        "description": "Charges at the enemy with electricity coursing through the character.\nTarget hit is guaranteed to be inflicted with [&ElecShock].\n[&Common_Word_Skill_ValueTurn]: [V2:801302] turn(s)\nGains [&Color_Cyan]([V3:801303])[-] [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:801303] turn(s)\nIf [&Color_Orange][&Tbl_Unit_Name_32][-] is deployed, applies the same effect to [&Color_Orange][&Tbl_Unit_Name_32][-].",
+        "description_key": "Tbl_UnitSkill_Desc_8013",
+        "description_readable": "Charges at the enemy with electricity coursing through the character.\nTarget hit is guaranteed to be inflicted with [&ElecShock].\n[&Common_Word_Skill_ValueTurn]: [V2:801302] turn(s)\nGains ([V3:801303]) [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:801303] turn(s)\nIf [&Tbl_Unit_Name_32] is deployed, applies the same effect to [&Tbl_Unit_Name_32].",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "8013",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 782.8,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/ElecShock",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 30,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsUnitTID/32"
+          }
+        ],
+        "battle_options": "801301/801302/801303/801304",
+        "battle_option_ids": [
+          801301,
+          801302,
+          801303,
+          801304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

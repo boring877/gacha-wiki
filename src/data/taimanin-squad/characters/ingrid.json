@@ -665,7 +665,56 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 2502,
-      "skill_id": 2512
+      "skill_id": 2512,
+      "skill_data": {
+        "id": 2512,
+        "name": "<[&Tbl_UnitWeapon_Name_2501]> [&Tbl_UnitSkill_Name_2502]",
+        "name_key": "Tbl_UnitSkill_Name_2512",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2501]> [&Tbl_UnitSkill_Name_2502]",
+        "description": "Performs a consecutive sword dance to attack the enemy 4 times.\nTarget hit has their [&Common_Word_Skill_TurnGauge] decreased by [&Color_Cyan]([V3:250203]%)[-] at a [&Color_Cyan][R:250203]%[-] chance.\nPerforms 2 additional [&Common_Word_Skill_AddAttack]s and deals [&Color_Cyan]([V3:251204]%)[-] [&Burn] [&Common_Word_Skill_DotBuffBurst].",
+        "description_key": "Tbl_UnitSkill_Desc_2512",
+        "description_readable": "Performs a consecutive sword dance to attack the enemy 4 times.\nTarget hit has their [&Common_Word_Skill_TurnGauge] decreased by ([V3:250203]%) at a [R:250203]% chance.\nPerforms 2 additional [&Common_Word_Skill_AddAttack]s and deals ([V3:251204]%) [&Burn] [&Common_Word_Skill_DotBuffBurst].",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "2512",
+        "cooldown": 4,
+        "hit_count": 4,
+        "additional_hits": 2,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 107.2,
+        "effects": [
+          {
+            "type": "eBOFunc_AddAttack",
+            "target": "eBOTarget_HitTargetList",
+            "value": 148.8,
+            "rate": 100,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTarget",
+            "value": 15.0,
+            "rate": 10,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "251201/251202/251203/251204",
+        "battle_option_ids": [
+          251201,
+          251202,
+          251203,
+          251204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 2502,
@@ -677,7 +726,57 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 2503,
-      "skill_id": 2513
+      "skill_id": 2513,
+      "skill_data": {
+        "id": 2513,
+        "name": "<[&Tbl_UnitWeapon_Name_2502]> [&Tbl_UnitSkill_Name_2503]",
+        "name_key": "Tbl_UnitSkill_Name_2513",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2502]> [&Tbl_UnitSkill_Name_2503]",
+        "description": "With a sword shrouded in black flames, swiftly pierces the enemy.\nTarget hit is inflicted with [&Color_Cyan]([V3:251302]%)[-] [&Burn] at a [&Color_Cyan][R:251302]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:251302] turn(s)\nWhen defeating the target with this skill, [&Common_Word_Skill_EnemyAll] are inflicted with [&Color_Cyan]([V3:251303]%)[-] [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:251303] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2513",
+        "description_readable": "With a sword shrouded in black flames, swiftly pierces the enemy.\nTarget hit is inflicted with ([V3:251302]%) [&Burn] at a [R:251302]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:251302] turn(s)\nWhen defeating the target with this skill, [&Common_Word_Skill_EnemyAll] are inflicted with ([V3:251303]%) [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:251303] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "2513",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 911.9,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 95,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 90,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "251301/251302/251303",
+        "battle_option_ids": [
+          251301,
+          251302,
+          251303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

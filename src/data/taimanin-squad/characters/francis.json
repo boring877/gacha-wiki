@@ -635,7 +635,56 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 6802,
-      "skill_id": 6812
+      "skill_id": 6812,
+      "skill_data": {
+        "id": 6812,
+        "name": "<[&Tbl_UnitWeapon_Name_6801]> [&Tbl_UnitSkill_Name_6802]",
+        "name_key": "Tbl_UnitSkill_Name_6812",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6801]> [&Tbl_UnitSkill_Name_6802]",
+        "description": "[Tbl_UnitSkill_Desc_6812]",
+        "description_key": "Tbl_UnitSkill_Desc_6812",
+        "description_readable": "[Tbl_UnitSkill_Desc_6812]",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "6812",
+        "cooldown": 3,
+        "hit_count": 7,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 98.9,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Self",
+            "value": 20.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "681201/681202/681203",
+        "battle_option_ids": [
+          681201,
+          681202,
+          681203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 6802,
@@ -647,7 +696,55 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 6804,
-      "skill_id": 6814
+      "skill_id": 6814,
+      "skill_data": {
+        "id": 6814,
+        "name": "<[&Tbl_UnitWeapon_Name_6802]> [&Tbl_UnitSkill_Name_6804]",
+        "name_key": "Tbl_UnitSkill_Name_6814",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6802]> [&Tbl_UnitSkill_Name_6804]",
+        "description": "[Tbl_UnitSkill_Desc_6814]",
+        "description_key": "Tbl_UnitSkill_Desc_6814",
+        "description_readable": "[Tbl_UnitSkill_Desc_6814]",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "6814",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Self",
+            "value": 5.0,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": "eBOCond_IsCoolTime/4"
+          },
+          {
+            "type": "eBOFunc_AddBuff/AllyProtection",
+            "target": "eBOTarget_HpLessAlly/1",
+            "duration": 2,
+            "value": 50.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnHit",
+            "condition": "eBOCond_IsDmgTypeByTurn/AllHit"
+          }
+        ],
+        "battle_options": "681401/681402",
+        "battle_option_ids": [
+          681401,
+          681402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

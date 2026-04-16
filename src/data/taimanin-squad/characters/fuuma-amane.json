@@ -655,7 +655,46 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 602,
-      "skill_id": 612
+      "skill_id": 612,
+      "skill_data": {
+        "id": 612,
+        "name": "<[&Tbl_UnitWeapon_Name_601]> [&Tbl_UnitSkill_Name_602]",
+        "name_key": "Tbl_UnitSkill_Name_612",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_601]> [&Tbl_UnitSkill_Name_602]",
+        "description": "On [&Common_Word_Skill_TurnStart] absorbs [&Color_Cyan]([V3:61202]%)[-] [&Common_Word_Skill_TurnGauge] of the enemy with the strongest [&ATK] at a [&Color_Cyan][R:61202]%[-] chance.\nOn [&Common_Word_Skill_TurnStart], removes [V3:61201] [&DeBuff] on the character.",
+        "description_key": "Tbl_UnitSkill_Desc_612",
+        "description_readable": "On [&Common_Word_Skill_TurnStart] absorbs ([V3:61202]%) [&Common_Word_Skill_TurnGauge] of the enemy with the strongest [&ATK] at a [R:61202]% chance.\nOn [&Common_Word_Skill_TurnStart], removes [V3:61201] [&DeBuff] on the character.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "612",
+        "cooldown": 3,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDrain",
+            "target": "eBOTarget_AtkMoreEnemy/1",
+            "value": 12.5,
+            "rate": 50,
+            "timing": "eBOTiming_TurnStart",
+            "condition": "eBOCond_HasNotDeBuff/All"
+          }
+        ],
+        "battle_options": "61201/61202",
+        "battle_option_ids": [
+          61201,
+          61202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 602,
@@ -667,7 +706,57 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 603,
-      "skill_id": 613
+      "skill_id": 613,
+      "skill_data": {
+        "id": 613,
+        "name": "<[&Tbl_UnitWeapon_Name_602]> [&Tbl_UnitSkill_Name_603]",
+        "name_key": "Tbl_UnitSkill_Name_613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_602]> [&Tbl_UnitSkill_Name_603]",
+        "description": "Smites the ground, attacking [&Common_Word_Skill_EnemyAll] [A:613] time(s).\nGrants [&Shield] equal to [&Color_Cyan][V3:61303]%[-] of ally Max. [&HP] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:61302] turn(s)\nIf the target HP is less than [&Color_Cyan]75%[-], the effect increases to [&Color_Cyan][V3:61302]%[-].",
+        "description_key": "Tbl_UnitSkill_Desc_613",
+        "description_readable": "Smites the ground, attacking [&Common_Word_Skill_EnemyAll] [A:613] time(s).\nGrants [&Shield] equal to [V3:61303]% of ally Max. [&HP] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:61302] turn(s)\nIf the target HP is less than 75%, the effect increases to [V3:61302]%.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "613",
+        "cooldown": 7,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 504.9,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 18.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_LessHP/75"
+          },
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 15.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "61301/61302/61303",
+        "battle_option_ids": [
+          61301,
+          61302,
+          61303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

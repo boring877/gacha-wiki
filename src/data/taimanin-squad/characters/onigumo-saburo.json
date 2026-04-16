@@ -596,7 +596,46 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 9402,
-      "skill_id": 9412
+      "skill_id": 9412,
+      "skill_data": {
+        "id": 9412,
+        "name": "<[&Tbl_UnitWeapon_Name_9401]> [&Tbl_UnitSkill_Name_9402]",
+        "name_key": "Tbl_UnitSkill_Name_9412",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_9401]> [&Tbl_UnitSkill_Name_9402]",
+        "description": "If the character is inflicted with a [&DeBuff], inflicts [&Common_Word_Skill_EnemyAll] with [&Color_Cyan]([V3:941201]%)[-] [&Poison] at a [&Color_Cyan][R:941201]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:941201] turn(s) ",
+        "description_key": "Tbl_UnitSkill_Desc_9412",
+        "description_readable": "If the character is inflicted with a [&DeBuff], inflicts [&Common_Word_Skill_EnemyAll] with ([V3:941201]%) [&Poison] at a [R:941201]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:941201] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "9412",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 60,
+            "timing": "eBOTiming_OnDeBuff",
+            "condition": ""
+          }
+        ],
+        "battle_options": "941201",
+        "battle_option_ids": [
+          941201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -614,7 +614,54 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 11703,
-      "skill_id": 11713
+      "skill_id": 11713,
+      "skill_data": {
+        "id": 11713,
+        "name": "<[&Tbl_UnitWeapon_Name_11701]> [&Tbl_UnitSkill_Name_11703]",
+        "name_key": "Tbl_UnitSkill_Name_11713",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11701]> [&Tbl_UnitSkill_Name_11703]",
+        "description": "Heals allies with beautiful melodies.\nRestores [&HP] of [&Common_Word_Skill_AllyAll] by [&Color_Cyan][V3:1171301]%[-] of the target's Max. [&HP].\nEverytime the character gains a [&Buff], reduces [&Common_Word_Skill_CoolTime] by [V2:1171302] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_11713",
+        "description_readable": "Heals allies with beautiful melodies.\nRestores [&HP] of [&Common_Word_Skill_AllyAll] by [V3:1171301]% of the target's Max. [&HP].\nEverytime the character gains a [&Buff], reduces [&Common_Word_Skill_CoolTime] by [V2:1171302] turn(s).",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "11713",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[B:10]/[H:10]/[B:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/All",
+            "value": 21.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnBuff",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1171301/1171302",
+        "battle_option_ids": [
+          1171301,
+          1171302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

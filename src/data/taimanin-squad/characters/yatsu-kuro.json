@@ -603,7 +603,46 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 401,
-      "skill_id": 411
+      "skill_id": 411,
+      "skill_data": {
+        "id": 411,
+        "name": "<[&Tbl_UnitWeapon_Name_401]> [&Tbl_UnitSkill_Name_401]",
+        "name_key": "Tbl_UnitSkill_Name_411",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_401]> [&Tbl_UnitSkill_Name_401]",
+        "description": "Runs toward the enemy with a dagger and attacks 2 times.\nReduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_403] by [V2:41102] turn(s) [&Common_Word_Skill_ActionAfter].",
+        "description_key": "Tbl_UnitSkill_Desc_411",
+        "description_readable": "Runs toward the enemy with a dagger and attacks 2 times.\nReduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_403] by [V2:41102] turn(s) [&Common_Word_Skill_ActionAfter].",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "411",
+        "cooldown": 0,
+        "hit_count": 2,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 252.0,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/3",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": ""
+          }
+        ],
+        "battle_options": "41101/41102",
+        "battle_option_ids": [
+          41101,
+          41102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

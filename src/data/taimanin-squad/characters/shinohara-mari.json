@@ -635,7 +635,47 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 5103,
-      "skill_id": 5113
+      "skill_id": 5113,
+      "skill_data": {
+        "id": 5113,
+        "name": "<[&Tbl_UnitWeapon_Name_5101]> [&Tbl_UnitSkill_Name_5103]",
+        "name_key": "Tbl_UnitSkill_Name_5113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5101]> [&Tbl_UnitSkill_Name_5103]",
+        "description": "Performs a [&Common_Word_Skill_StrongDamage] on the ground and attacks [&Common_Word_Skill_EnemyAll].\nIf the target has 2 or more [&DeBuff]s, inflicts them with [&Stun].\n[&Common_Word_Skill_ValueTurn]: [V2:511302] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_5113",
+        "description_readable": "Performs a [&Common_Word_Skill_StrongDamage] on the ground and attacks [&Common_Word_Skill_EnemyAll].\nIf the target has 2 or more [&DeBuff]s, inflicts them with [&Stun].\n[&Common_Word_Skill_ValueTurn]: [V2:511302] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "5113",
+        "cooldown": 7,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 538.6,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Stun",
+            "target": "eBOTarget_HitTarget",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_HasDeBuffMoreCnt/2"
+          }
+        ],
+        "battle_options": "511301/511302",
+        "battle_option_ids": [
+          511301,
+          511302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 5102,
@@ -647,7 +687,36 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 5104,
-      "skill_id": 5114
+      "skill_id": 5114,
+      "skill_data": {
+        "id": 5114,
+        "name": "<[&Tbl_UnitWeapon_Name_5102]> [&Tbl_UnitSkill_Name_5104]",
+        "name_key": "Tbl_UnitSkill_Name_5114",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5102]> [&Tbl_UnitSkill_Name_5104]",
+        "description": "When attacking an [&Common_Word_Skill_Inability] enemy, performs a [&Common_Word_Skill_ShieldPenetrate] attack.",
+        "description_key": "Tbl_UnitSkill_Desc_5114",
+        "description_readable": "When attacking an [&Common_Word_Skill_Inability] enemy, performs a [&Common_Word_Skill_ShieldPenetrate] attack.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "5114",
+        "cooldown": 3,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "511401",
+        "battle_option_ids": [
+          511401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

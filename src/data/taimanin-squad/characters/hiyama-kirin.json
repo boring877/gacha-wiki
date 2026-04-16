@@ -607,7 +607,47 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 6401,
-      "skill_id": 6411
+      "skill_id": 6411,
+      "skill_data": {
+        "id": 6411,
+        "name": "<[&Tbl_UnitWeapon_Name_6401]> [&Tbl_UnitSkill_Name_6401]",
+        "name_key": "Tbl_UnitSkill_Name_6411",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6401]> [&Tbl_UnitSkill_Name_6401]",
+        "description": "Strikes an enemy hard with a greatsword.\nInflicts [&Color_Cyan]([V3:641101]%)[-] [&CriResDown] at [&Color_Cyan][R:641101]%[-] rate to the target [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:641101] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_6411",
+        "description_readable": "Strikes an enemy hard with a greatsword.\nInflicts ([V3:641101]%) [&CriResDown] at [R:641101]% rate to the target [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:641101] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "6411",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 504.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/CriResDown",
+            "target": "eBOTarget_Enemy/1",
+            "duration": 2,
+            "value": -32.5,
+            "rate": 20,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "641101/641102",
+        "battle_option_ids": [
+          641101,
+          641102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

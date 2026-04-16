@@ -624,7 +624,45 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 10103,
-      "skill_id": 10113
+      "skill_id": 10113,
+      "skill_data": {
+        "id": 10113,
+        "name": "<[&Tbl_UnitWeapon_Name_10101]> [&Tbl_UnitSkill_Name_10103]",
+        "name_key": "Tbl_UnitSkill_Name_10113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10101]> [&Tbl_UnitSkill_Name_10103]",
+        "description": "When an enemy is killed by an ally attack, fills the [&Common_Word_Skill_TurnGauge] of the ally with the highest ATK excluding herself by [&Color_Cyan]([V3:1011301]%)[-] at a [&Color_Cyan][R:1011301]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_10113",
+        "description_readable": "When an enemy is killed by an ally attack, fills the [&Common_Word_Skill_TurnGauge] of the ally with the highest ATK excluding herself by ([V3:1011301]%) at a [R:1011301]% chance.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "10113",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_AtkMoreAllyOther/1",
+            "value": 20.0,
+            "rate": -20,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1011301",
+        "battle_option_ids": [
+          1011301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

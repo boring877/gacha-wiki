@@ -594,7 +594,47 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 10602,
-      "skill_id": 10612
+      "skill_id": 10612,
+      "skill_data": {
+        "id": 10612,
+        "name": "<[&Tbl_UnitWeapon_Name_10601]> [&Tbl_UnitSkill_Name_10602]",
+        "name_key": "Tbl_UnitSkill_Name_10612",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10601]> [&Tbl_UnitSkill_Name_10602]",
+        "description": "Uses Evil Eye: Avici to attack [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with [&PassiveSkillBlock] at a [&Color_Cyan][R:1061202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1061202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_10612",
+        "description_readable": "Uses Evil Eye: Avici to attack [&Common_Word_Skill_EnemyAll].\nTargets hit are inflicted with [&PassiveSkillBlock] at a [R:1061202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1061202] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "10612",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 418.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/PassiveSkillBlock",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 90,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1061201/1061202",
+        "battle_option_ids": [
+          1061201,
+          1061202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

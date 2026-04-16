@@ -624,7 +624,36 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 5201,
-      "skill_id": 5211
+      "skill_id": 5211,
+      "skill_data": {
+        "id": 5211,
+        "name": "<[&Tbl_UnitWeapon_Name_5201]> [&Tbl_UnitSkill_Name_5201]",
+        "name_key": "Tbl_UnitSkill_Name_5211",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5201]> [&Tbl_UnitSkill_Name_5201]",
+        "description": "Slashes the enemy using dual blades.\n[&Common_Word_Skill_Damage] increases in proportion to current [&HP].",
+        "description_key": "Tbl_UnitSkill_Desc_5211",
+        "description_readable": "Slashes the enemy using dual blades.\n[&Common_Word_Skill_Damage] increases in proportion to current [&HP].",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "5211",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[NowHp]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 412.1,
+        "effects": [],
+        "battle_options": "521101",
+        "battle_option_ids": [
+          521101
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 5202,
@@ -636,7 +665,46 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 5204,
-      "skill_id": 5214
+      "skill_id": 5214,
+      "skill_data": {
+        "id": 5214,
+        "name": "<[&Tbl_UnitWeapon_Name_5202]> [&Tbl_UnitSkill_Name_5204]",
+        "name_key": "Tbl_UnitSkill_Name_5214",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5202]> [&Tbl_UnitSkill_Name_5204]",
+        "description": "On [&Common_Word_Skill_TurnStart], grants a [&Color_Cyan]([V3:521401]%)[-] [&SpdUp].\n[&Common_Word_Skill_ValueTurn]: [V2:521401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_5214",
+        "description_readable": "On [&Common_Word_Skill_TurnStart], grants a ([V3:521401]%) [&SpdUp].\n[&Common_Word_Skill_ValueTurn]: [V2:521401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "5214",
+        "cooldown": 4,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/SpdUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 19.5,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": ""
+          }
+        ],
+        "battle_options": "521401",
+        "battle_option_ids": [
+          521401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

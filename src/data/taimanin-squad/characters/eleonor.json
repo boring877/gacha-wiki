@@ -651,7 +651,56 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 4803,
-      "skill_id": 4813
+      "skill_id": 4813,
+      "skill_data": {
+        "id": 4813,
+        "name": "<[&Tbl_UnitWeapon_Name_4801]> [&Tbl_UnitSkill_Name_4803]",
+        "name_key": "Tbl_UnitSkill_Name_4813",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4801]> [&Tbl_UnitSkill_Name_4803]",
+        "description": "Grants [&DeBuffBlock] to [&Common_Word_Skill_AllyAll] using the power of nature.\n[&Common_Word_Skill_ValueTurn]: [V2:481301] turn(s)\nIf an ally doesn't have any [&DeBuff], grants [&Color_Cyan]([V3:481302]%)[-] [&AtkUp] to them.\n[&Common_Word_Skill_ValueTurn]: [V2:481302] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_4813",
+        "description_readable": "Grants [&DeBuffBlock] to [&Common_Word_Skill_AllyAll] using the power of nature.\n[&Common_Word_Skill_ValueTurn]: [V2:481301] turn(s)\nIf an ally doesn't have any [&DeBuff], grants ([V3:481302]%) [&AtkUp] to them.\n[&Common_Word_Skill_ValueTurn]: [V2:481302] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "4813",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DeBuffBlock",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/AtkUp",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasNotDeBuff/All"
+          }
+        ],
+        "battle_options": "481301/481302",
+        "battle_option_ids": [
+          481301,
+          481302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 4802,
@@ -663,7 +712,36 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 4804,
-      "skill_id": 4814
+      "skill_id": 4814,
+      "skill_data": {
+        "id": 4814,
+        "name": "<[&Tbl_UnitWeapon_Name_4802]> [&Tbl_UnitSkill_Name_4804]",
+        "name_key": "Tbl_UnitSkill_Name_4814",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4802]> [&Tbl_UnitSkill_Name_4804]",
+        "description": "On [&Common_Word_Skill_TurnStart], if an ally holds [&Shield], increases all of their [&Buff] turns by [V2:481401] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_4814",
+        "description_readable": "On [&Common_Word_Skill_TurnStart], if an ally holds [&Shield], increases all of their [&Buff] turns by [V2:481401] turn(s).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "4814",
+        "cooldown": 7,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "481401",
+        "battle_option_ids": [
+          481401
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

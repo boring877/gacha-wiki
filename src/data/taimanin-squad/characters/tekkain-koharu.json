@@ -613,7 +613,56 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 7303,
-      "skill_id": 7313
+      "skill_id": 7313,
+      "skill_data": {
+        "id": 7313,
+        "name": "<[&Tbl_UnitWeapon_Name_7301]> [&Tbl_UnitSkill_Name_7303]",
+        "name_key": "Tbl_UnitSkill_Name_7313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7301]> [&Tbl_UnitSkill_Name_7303]",
+        "description": "Summons a flock of electronic animals and charges them toward the enemy.\nInflicts [&ActiveSkillBlock] to the target at a [&Color_Cyan][R:730302]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:730302] turn(s)\nWhen defeating an enemy with this skill, reduces [&Common_Word_Skill_CoolTime] of 2nd skill of [&Common_Word_Skill_AllyAll] by [V2:731303] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_7313",
+        "description_readable": "Summons a flock of electronic animals and charges them toward the enemy.\nInflicts [&ActiveSkillBlock] to the target at a [R:730302]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:730302] turn(s)\nWhen defeating an enemy with this skill, reduces [&Common_Word_Skill_CoolTime] of 2nd skill of [&Common_Word_Skill_AllyAll] by [V2:731303] turn(s).",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "7313",
+        "cooldown": 5,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 279.6,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/ActiveSkillBlock",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 10,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/2",
+            "target": "eBOTarget_Ally/All",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "731301/731302/731303",
+        "battle_option_ids": [
+          731301,
+          731302,
+          731303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

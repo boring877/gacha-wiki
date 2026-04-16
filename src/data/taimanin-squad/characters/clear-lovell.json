@@ -615,7 +615,58 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 8603,
-      "skill_id": 8613
+      "skill_id": 8613,
+      "skill_data": {
+        "id": 8613,
+        "name": "<[&Tbl_UnitWeapon_Name_8601]> [&Tbl_UnitSkill_Name_8603]",
+        "name_key": "Tbl_UnitSkill_Name_8613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8601]> [&Tbl_UnitSkill_Name_8603]",
+        "description": "Lovell's skill gets enhanced every 4 turns.\n[&Tbl_UnitSkill_Name_8601]: Steals enemy [&Shield]. [&Shield] effect increases by [&Color_Cyan]50%[-] after stealing.\n[&Tbl_UnitSkill_Name_8602]\n[&Shield] amount increases by [&Color_Cyan][V3:861303]%[-].\nGrants [&Color_Cyan]([V3:861304]%)[-] [&AllyProtection] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:861304] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_8613",
+        "description_readable": "Lovell's skill gets enhanced every 4 turns.\n[&Tbl_UnitSkill_Name_8601]: Steals enemy [&Shield]. [&Shield] effect increases by 50% after stealing.\n[&Tbl_UnitSkill_Name_8602]\n[&Shield] amount increases by [V3:861303]%.\nGrants ([V3:861304]%) [&AllyProtection] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:861304] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "8613",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 24.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_IsSkill/2"
+          },
+          {
+            "type": "eBOFunc_AddBuff/AllyProtection",
+            "target": "eBOTarget_SelfOther",
+            "duration": 2,
+            "value": 40.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_IsSkill/2"
+          }
+        ],
+        "battle_options": "861301/861302/861303/861304",
+        "battle_option_ids": [
+          861301,
+          861302,
+          861303,
+          861304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

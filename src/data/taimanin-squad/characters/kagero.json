@@ -596,7 +596,54 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 12303,
-      "skill_id": 12313
+      "skill_id": 12313,
+      "skill_data": {
+        "id": 12313,
+        "name": "<[&Tbl_UnitWeapon_Name_12301]> [&Tbl_UnitSkill_Name_12303]",
+        "name_key": "Tbl_UnitSkill_Name_12313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_12301]> [&Tbl_UnitSkill_Name_12303]",
+        "description": "On [&Common_Word_Skill_TurnStart], restores [&Color_Cyan][V3:1231301]%[-] of the character's Max. [&HP].",
+        "description_key": "Tbl_UnitSkill_Desc_12313",
+        "description_readable": "On [&Common_Word_Skill_TurnStart], restores [V3:1231301]% of the character's Max. [&HP].",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "12313",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Self",
+            "value": 4.5,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/All",
+            "value": 4.5,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": "eBOCond_IsUnitTID/56"
+          }
+        ],
+        "battle_options": "1231301/1231302",
+        "battle_option_ids": [
+          1231301,
+          1231302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

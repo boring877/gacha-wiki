@@ -626,7 +626,57 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 6502,
-      "skill_id": 6512
+      "skill_id": 6512,
+      "skill_data": {
+        "id": 6512,
+        "name": "<[&Tbl_UnitWeapon_Name_6501]> [&Tbl_UnitSkill_Name_6502]",
+        "name_key": "Tbl_UnitSkill_Name_6512",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6501]> [&Tbl_UnitSkill_Name_6502]",
+        "description": "Small demon insects trigger a chain of explosions, attacking [&Common_Word_Skill_EnemyAll] 3 times.\nInflicts [&Color_Cyan]([V3:651202]%)[-] [&Poison] at a [&Color_Cyan][R:651202]%[-] chance on the [&Common_Word_Skill_ActionLast] for 2 times.\n[&Common_Word_Skill_ValueTurn]: [V2:651202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_6512",
+        "description_readable": "Small demon insects trigger a chain of explosions, attacking [&Common_Word_Skill_EnemyAll] 3 times.\nInflicts ([V3:651202]%) [&Poison] at a [R:651202]% chance on the [&Common_Word_Skill_ActionLast] for 2 times.\n[&Common_Word_Skill_ValueTurn]: [V2:651202] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "6512",
+        "cooldown": 3,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 118.3,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 75,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 75,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "651201/651202/651203",
+        "battle_option_ids": [
+          651201,
+          651202,
+          651203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 6502,
@@ -638,7 +688,47 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 6503,
-      "skill_id": 6513
+      "skill_id": 6513,
+      "skill_data": {
+        "id": 6513,
+        "name": "<[&Tbl_UnitWeapon_Name_6502]> [&Tbl_UnitSkill_Name_6503]",
+        "name_key": "Tbl_UnitSkill_Name_6513",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6502]> [&Tbl_UnitSkill_Name_6503]",
+        "description": "Summons a swarm of demonic insects to attack [&Common_Word_Skill_EnemyAll] 3 times.\nEvery attack inflicts [&Color_Cyan]([V3:651302]%)[-] [&Poison] at a [&Color_Cyan][R:651302]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:651302] turn(s)\nDecreases the skill's [&Common_Word_Skill_CoolTime] by 1 turn.",
+        "description_key": "Tbl_UnitSkill_Desc_6513",
+        "description_readable": "Summons a swarm of demonic insects to attack [&Common_Word_Skill_EnemyAll] 3 times.\nEvery attack inflicts ([V3:651302]%) [&Poison] at a [R:651302]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:651302] turn(s)\nDecreases the skill's [&Common_Word_Skill_CoolTime] by 1 turn.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "6513",
+        "cooldown": 5,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 152.8,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.0,
+            "rate": 35,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "651301/651302",
+        "battle_option_ids": [
+          651301,
+          651302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

@@ -608,7 +608,37 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 3501,
-      "skill_id": 3511
+      "skill_id": 3511,
+      "skill_data": {
+        "id": 3511,
+        "name": "<[&Tbl_UnitWeapon_Name_3501]> [&Tbl_UnitSkill_Name_3501]",
+        "name_key": "Tbl_UnitSkill_Name_3511",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3501]> [&Tbl_UnitSkill_Name_3501]",
+        "description": "Charges while mounted on a spear and attacks 2 times.\nIf the target is inflicted with [&Burn], [&Common_Word_Skill_CriticalRate] increases [&Color_Cyan][V3:351102]%[-].",
+        "description_key": "Tbl_UnitSkill_Desc_3511",
+        "description_readable": "Charges while mounted on a spear and attacks 2 times.\nIf the target is inflicted with [&Burn], [&Common_Word_Skill_CriticalRate] increases [V3:351102]%.",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "3511",
+        "cooldown": 0,
+        "hit_count": 2,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 252.0,
+        "effects": [],
+        "battle_options": "351101/351102",
+        "battle_option_ids": [
+          351101,
+          351102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 3502,
@@ -620,7 +650,37 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 3504,
-      "skill_id": 3514
+      "skill_id": 3514,
+      "skill_data": {
+        "id": 3514,
+        "name": "<[&Tbl_UnitWeapon_Name_3502]> [&Tbl_UnitSkill_Name_3504]",
+        "name_key": "Tbl_UnitSkill_Name_3514",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3502]> [&Tbl_UnitSkill_Name_3504]",
+        "description": "When attacking an enemy with [&HP] at [&Color_Cyan]70%[-] or more, reduces [V3:350401] turn(s) of 1 [&Common_Word_Skill_Random] [&Buff] they possess.\nWhen attacking an enemy with [&HP] less than [&Color_Cyan]40%[-], performs a [&Color_Cyan]([V3:351402]%)[-] [&Common_Word_Skill_DefPenetrate] attack.",
+        "description_key": "Tbl_UnitSkill_Desc_3514",
+        "description_readable": "When attacking an enemy with [&HP] at 70% or more, reduces [V3:350401] turn(s) of 1 [&Common_Word_Skill_Random] [&Buff] they possess.\nWhen attacking an enemy with [&HP] less than 40%, performs a ([V3:351402]%) [&Common_Word_Skill_DefPenetrate] attack.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "3514",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "351401/351402",
+        "battle_option_ids": [
+          351401,
+          351402
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

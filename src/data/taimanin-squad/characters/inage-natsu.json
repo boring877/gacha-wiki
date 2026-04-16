@@ -637,7 +637,67 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 6201,
-      "skill_id": 6211
+      "skill_id": 6211,
+      "skill_data": {
+        "id": 6211,
+        "name": "<[&Tbl_UnitWeapon_Name_6201]> [&Tbl_UnitSkill_Name_6201]",
+        "name_key": "Tbl_UnitSkill_Name_6211",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6201]> [&Tbl_UnitSkill_Name_6201]",
+        "description": "[Tbl_UnitSkill_Desc_6211]",
+        "description_key": "Tbl_UnitSkill_Desc_6211",
+        "description_readable": "[Tbl_UnitSkill_Desc_6211]",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "6211",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 441.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 20,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 20,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Bleeding",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 10.0,
+            "rate": 20,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "621101/621102/621103/621104",
+        "battle_option_ids": [
+          621101,
+          621102,
+          621103,
+          621104
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 6202,
@@ -649,7 +709,46 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 6204,
-      "skill_id": 6214
+      "skill_id": 6214,
+      "skill_data": {
+        "id": 6214,
+        "name": "<[&Tbl_UnitWeapon_Name_6202]> [&Tbl_UnitSkill_Name_6204]",
+        "name_key": "Tbl_UnitSkill_Name_6214",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6202]> [&Tbl_UnitSkill_Name_6204]",
+        "description": "[Tbl_UnitSkill_Desc_6214]",
+        "description_key": "Tbl_UnitSkill_Desc_6214",
+        "description_readable": "[Tbl_UnitSkill_Desc_6214]",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "6214",
+        "cooldown": 4,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/EvdDown",
+            "target": "eBOTarget_Attacker",
+            "duration": 2,
+            "value": -28.5,
+            "rate": 99,
+            "timing": "eBOTiming_OnHit",
+            "condition": ""
+          }
+        ],
+        "battle_options": "621401",
+        "battle_option_ids": [
+          621401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

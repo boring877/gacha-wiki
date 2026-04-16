@@ -646,7 +646,56 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 1503,
-      "skill_id": 1513
+      "skill_id": 1513,
+      "skill_data": {
+        "id": 1513,
+        "name": "<[&Tbl_UnitWeapon_Name_1501]> [&Tbl_UnitSkill_Name_1503]",
+        "name_key": "Tbl_UnitSkill_Name_1513",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1501]> [&Tbl_UnitSkill_Name_1503]",
+        "description": "Checks the physical information of the specified target and grants a [&Color_Cyan]([V3:150301]%)[-] [&DmgReflect] and [&Athanasia].\n[&Common_Word_Skill_ValueTurn]: [V2:151301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_1513",
+        "description_readable": "Checks the physical information of the specified target and grants a ([V3:150301]%) [&DmgReflect] and [&Athanasia].\n[&Common_Word_Skill_ValueTurn]: [V2:151301] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "1513",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DmgReflect",
+            "target": "eBOTarget_Ally/1",
+            "duration": 2,
+            "value": 13.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/Athanasia",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "151301/151302",
+        "battle_option_ids": [
+          151301,
+          151302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 1502,
@@ -658,7 +707,40 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 1504,
-      "skill_id": 1514
+      "skill_id": 1514,
+      "skill_data": {
+        "id": 1514,
+        "name": "<[&Tbl_UnitWeapon_Name_1502]> [&Tbl_UnitSkill_Name_1504]",
+        "name_key": "Tbl_UnitSkill_Name_1514",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1502]> [&Tbl_UnitSkill_Name_1504]",
+        "description": "When granting a [&Buff] to an ally, if the target has a [&Common_Word_Skill_ForcedTarget], removes [&Common_Word_Skill_ForcedTarget].",
+        "description_key": "Tbl_UnitSkill_Desc_1514",
+        "description_readable": "When granting a [&Buff] to an ally, if the target has a [&Common_Word_Skill_ForcedTarget], removes [&Common_Word_Skill_ForcedTarget].",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "1514",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "151401/151402/151403/151404/151405",
+        "battle_option_ids": [
+          151401,
+          151402,
+          151403,
+          151404,
+          151405
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

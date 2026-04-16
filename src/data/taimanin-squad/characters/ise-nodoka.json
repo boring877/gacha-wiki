@@ -595,7 +595,46 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 11501,
-      "skill_id": 11511
+      "skill_id": 11511,
+      "skill_data": {
+        "id": 11511,
+        "name": "<[&Tbl_UnitWeapon_Name_11501]> [&Tbl_UnitSkill_Name_11501]",
+        "name_key": "Tbl_UnitSkill_Name_11511",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11501]> [&Tbl_UnitSkill_Name_11501]",
+        "description": "Swings the blade gracefully, attacking the enemy [A:11511] time(s).\nReduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_11503] by [V2:1151102] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_11511",
+        "description_readable": "Swings the blade gracefully, attacking the enemy [A:11511] time(s).\nReduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_11503] by [V2:1151102] turn(s).",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "11511",
+        "cooldown": 0,
+        "hit_count": 2,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 252.0,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/3",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1151101/1151102",
+        "battle_option_ids": [
+          1151101,
+          1151102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

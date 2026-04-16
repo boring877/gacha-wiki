@@ -660,7 +660,54 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 2903,
-      "skill_id": 2913
+      "skill_id": 2913,
+      "skill_data": {
+        "id": 2913,
+        "name": "<[&Tbl_UnitWeapon_Name_2901]> [&Tbl_UnitSkill_Name_2903]",
+        "name_key": "Tbl_UnitSkill_Name_2913",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2901]> [&Tbl_UnitSkill_Name_2903]",
+        "description": "With an elegant dance, petals flutter, restoring [&HP] for [&Common_Word_Skill_AllyAll] by [&Color_Cyan][V3:291301]%[-] of the target's Max. [&HP]. \nAfter recovery, if the target's [&HP] is [&Color_Cyan]65%[-] or more, additionally fills [&Color_Cyan]([V3:291302]%)[-] of the [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:291302]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_2913",
+        "description_readable": "With an elegant dance, petals flutter, restoring [&HP] for [&Common_Word_Skill_AllyAll] by [V3:291301]% of the target's Max. [&HP]. \nAfter recovery, if the target's [&HP] is 65% or more, additionally fills ([V3:291302]%) of the [&Common_Word_Skill_TurnGauge] at a [R:291302]% chance.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "2913",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/All",
+            "value": 21.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_Ally/All",
+            "value": 20.0,
+            "rate": -100,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_MoreHP/65"
+          }
+        ],
+        "battle_options": "291301/291302",
+        "battle_option_ids": [
+          291301,
+          291302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 2902,
@@ -672,7 +719,46 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 2904,
-      "skill_id": 2914
+      "skill_id": 2914,
+      "skill_data": {
+        "id": 2914,
+        "name": "<[&Tbl_UnitWeapon_Name_2902]> [&Tbl_UnitSkill_Name_2904]",
+        "name_key": "Tbl_UnitSkill_Name_2914",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2902]> [&Tbl_UnitSkill_Name_2904]",
+        "description": "When hit by an all-target attack, grants the ally with the lowest [&HP] a [&Color_Cyan]([V3:291401]%)[-] [&HealTurn].\n[&Common_Word_Skill_ValueTurn]: [V2:291401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2914",
+        "description_readable": "When hit by an all-target attack, grants the ally with the lowest [&HP] a ([V3:291401]%) [&HealTurn].\n[&Common_Word_Skill_ValueTurn]: [V2:291401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "2914",
+        "cooldown": 2,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_HpLessAlly/1",
+            "duration": 3,
+            "value": 7.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "291401",
+        "battle_option_ids": [
+          291401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

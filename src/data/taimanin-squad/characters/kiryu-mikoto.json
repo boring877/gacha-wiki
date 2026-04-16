@@ -606,7 +606,46 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 2202,
-      "skill_id": 2212
+      "skill_id": 2212,
+      "skill_data": {
+        "id": 2212,
+        "name": "<[&Tbl_UnitWeapon_Name_2201]> [&Tbl_UnitSkill_Name_2202]",
+        "name_key": "Tbl_UnitSkill_Name_2212",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2201]> [&Tbl_UnitSkill_Name_2202]",
+        "description": "On every attack, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan]([V3:220201]%)[-]\nWhen defeating the enemy, restores [&HP] of 1 ally with the lowest HP by [&Color_Cyan][V3:221202]%[-] of the target.",
+        "description_key": "Tbl_UnitSkill_Desc_2212",
+        "description_readable": "On every attack, [&Common_Word_Skill_CriticalRate] increases by ([V3:220201]%)\nWhen defeating the enemy, restores [&HP] of 1 ally with the lowest HP by [V3:221202]% of the target.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "2212",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_HpLessAlly/1",
+            "value": 5.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "221201/221202",
+        "battle_option_ids": [
+          221201,
+          221202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

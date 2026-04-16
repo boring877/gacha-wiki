@@ -605,7 +605,62 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 11001,
-      "skill_id": 11011
+      "skill_id": 11011,
+      "skill_data": {
+        "id": 11011,
+        "name": "<[&Tbl_UnitWeapon_Name_11001]> [&Tbl_UnitSkill_Name_11001]",
+        "name_key": "Tbl_UnitSkill_Name_11011",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11001]> [&Tbl_UnitSkill_Name_11001]",
+        "description": "Throws a sugar cube at a targeted enemy and 1 [&Common_Word_Skill_Random] enemy.\nTargets hit are inflicted with [&Color_Cyan]([V3:1101103]%)[-] [&Burn] at a [&Color_Cyan][R:1101103]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1101103] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_11011",
+        "description_readable": "Throws a sugar cube at a targeted enemy and 1 [&Common_Word_Skill_Random] enemy.\nTargets hit are inflicted with ([V3:1101103]%) [&Burn] at a [R:1101103]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1101103] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "11011",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 472.6,
+        "effects": [
+          {
+            "type": "multi_attack",
+            "hits": [
+              {
+                "value": 236.3,
+                "target": "eBOTarget_Enemy/1"
+              },
+              {
+                "value": 236.3,
+                "target": "eBOTarget_EnemyRnd/1"
+              }
+            ],
+            "value": 472.6
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 15,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1101101/1101102/1101103",
+        "battle_option_ids": [
+          1101101,
+          1101102,
+          1101103
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

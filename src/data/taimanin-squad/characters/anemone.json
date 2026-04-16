@@ -665,7 +665,57 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 7702,
-      "skill_id": 7712
+      "skill_id": 7712,
+      "skill_data": {
+        "id": 7712,
+        "name": "<[&Tbl_UnitWeapon_Name_7701]> [&Tbl_UnitSkill_Name_7702]",
+        "name_key": "Tbl_UnitSkill_Name_7712",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7701]> [&Tbl_UnitSkill_Name_7702]",
+        "description": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with [&Color_Cyan]([V3:770202]%)[-] [&Poison] at a [&Color_Cyan][R:770202]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs [&Color_Cyan]([V3:770203]%)[-] [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:770203]%[-] chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than [&Color_Cyan]30%[-], increases the efficacy of [&Poison] by [&Color_Cyan][V3:771204]%[-] at a [&Color_Cyan][R:770204]%[-] chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_7712",
+        "description_readable": "Spreads a wide web to attack [&Common_Word_Skill_EnemyAll].\nTargets hit by the web are inflicted with ([V3:770202]%) [&Poison] at a [R:770202]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770202] turn(s)\nIf the target has 4 or more [&DeBuff]s, absorbs ([V3:770203]%) [&Common_Word_Skill_TurnGauge] at a [R:770203]% chance on the [&Common_Word_Skill_ActionLast]. \nIf the target's [&Common_Word_Skill_TurnGauge] is less than 30%, increases the efficacy of [&Poison] by [V3:771204]% at a [R:770204]% chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn] : [V2:770204] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "7712",
+        "cooldown": 3,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 110.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 15,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDrain",
+            "target": "eBOTarget_HitTargetList",
+            "value": 12.5,
+            "rate": 35,
+            "timing": "eBOTiming_ActionLast",
+            "condition": "eBOCond_HasDeBuffMoreCnt/4"
+          }
+        ],
+        "battle_options": "771201/771202/771203/771204",
+        "battle_option_ids": [
+          771201,
+          771202,
+          771203,
+          771204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 7702,
@@ -677,7 +727,58 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 7703,
-      "skill_id": 7713
+      "skill_id": 7713,
+      "skill_data": {
+        "id": 7713,
+        "name": "<[&Tbl_UnitWeapon_Name_7702]> [&Tbl_UnitSkill_Name_7703]",
+        "name_key": "Tbl_UnitSkill_Name_7713",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7702]> [&Tbl_UnitSkill_Name_7703]",
+        "description": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:770302]%[-] of the target's current [&HP].\nTargets are inflicted with [&Color_Cyan]([V3:770303]%)[-][&HealRateDown] at a [&Color_Cyan][R:770303]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target is left alone, they are inflicted with [&Color_Cyan]([V3:771304]%)[-] [&Poison] at a [&Color_Cyan][R:771304]%[-] chance.\n[&Common_Word_Skill_ValueTurn] : [V2:771304] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_7713",
+        "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] 1 time.\n[&Common_Word_Skill_Damage] increases by [V3:770302]% of the target's current [&HP].\nTargets are inflicted with ([V3:770303]%)[&HealRateDown] at a [R:770303]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:770303] turn(s)\nIf the target is left alone, they are inflicted with ([V3:771304]%) [&Poison] at a [R:771304]% chance.\n[&Common_Word_Skill_ValueTurn] : [V2:771304] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "7713",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 436.2,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/HealRateDown",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 50.0,
+            "rate": 99,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 90,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_IsSolo"
+          }
+        ],
+        "battle_options": "771301/771302/771303/771304",
+        "battle_option_ids": [
+          771301,
+          771302,
+          771303,
+          771304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

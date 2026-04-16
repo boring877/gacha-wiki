@@ -606,7 +606,56 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 9702,
-      "skill_id": 9712
+      "skill_id": 9712,
+      "skill_data": {
+        "id": 9712,
+        "name": "<[&Tbl_UnitWeapon_Name_9701]> [&Tbl_UnitSkill_Name_9702]",
+        "name_key": "Tbl_UnitSkill_Name_9712",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_9701]> [&Tbl_UnitSkill_Name_9702]",
+        "description": "Fires a powerful laser at the enemy.\nTarget hit is inflicted with [&Restraint] at a [&Color_Cyan][R:970202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:970202] turn(s)\nIncreases all skill [&Common_Word_Skill_CoolTime] of the target by [V2:971203] turn(s). ",
+        "description_key": "Tbl_UnitSkill_Desc_9712",
+        "description_readable": "Fires a powerful laser at the enemy.\nTarget hit is inflicted with [&Restraint] at a [R:970202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:970202] turn(s)\nIncreases all skill [&Common_Word_Skill_CoolTime] of the target by [V2:971203] turn(s).",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "9712",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 692.2,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Restraint",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 30,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_HitTargetList",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "971201/971202/971203",
+        "battle_option_ids": [
+          971201,
+          971202,
+          971203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

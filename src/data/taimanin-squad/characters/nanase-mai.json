@@ -661,7 +661,74 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 3602,
-      "skill_id": 3612
+      "skill_id": 3612,
+      "skill_data": {
+        "id": 3612,
+        "name": "<[&Tbl_UnitWeapon_Name_3601]> [&Tbl_UnitSkill_Name_3602]",
+        "name_key": "Tbl_UnitSkill_Name_3612",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3601]> [&Tbl_UnitSkill_Name_3602]",
+        "description": "Protects the character and 1 ally with paper, granting [&Color_Cyan]([V3:361201]%)[-] [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:361201] turn(s)\nRestores [&Color_Cyan][V3:361202]%[-] of the ally’s Max. [&HP].\nIf the character has [&DefUp] on [&Common_Word_Skill_TurnStart], reduces the [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_3604] by [V2:361203] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_3612",
+        "description_readable": "Protects the character and 1 ally with paper, granting ([V3:361201]%) [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:361201] turn(s)\nRestores [V3:361202]% of the ally’s Max. [&HP].\nIf the character has [&DefUp] on [&Common_Word_Skill_TurnStart], reduces the [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_3604] by [V2:361203] turn(s).",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "3612",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[H:10]/[B:10]/[H:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_Ally/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_HitTargetList",
+            "value": 25.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/4",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": "eBOCond_HasBuff/DefUp"
+          },
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 55.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "361201/361202/361203/361204",
+        "battle_option_ids": [
+          361201,
+          361202,
+          361203,
+          361204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 3602,
@@ -673,7 +740,56 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 3603,
-      "skill_id": 3613
+      "skill_id": 3613,
+      "skill_data": {
+        "id": 3613,
+        "name": "<[&Tbl_UnitWeapon_Name_3602]> [&Tbl_UnitSkill_Name_3603]",
+        "name_key": "Tbl_UnitSkill_Name_3613",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3602]> [&Tbl_UnitSkill_Name_3603]",
+        "description": "Builds a giant paper wall and grants [&Color_Cyan]([V3:361302])[-] [&DmgBlockCount]s to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:361302] turn(s)\nGrants [&Color_Cyan]([V3:361301]%)[-]  [&HealTurn] to allies whose [&HP] is less than [&Color_Cyan]50%[-].\n[&Common_Word_Skill_ValueTurn]: [V2:361301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_3613",
+        "description_readable": "Builds a giant paper wall and grants ([V3:361302]) [&DmgBlockCount]s to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:361302] turn(s)\nGrants ([V3:361301]%)  [&HealTurn] to allies whose [&HP] is less than 50%.\n[&Common_Word_Skill_ValueTurn]: [V2:361301] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "3613",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_Ally/All",
+            "duration": 3,
+            "value": 7.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_LessHP/50"
+          },
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "361301/361302",
+        "battle_option_ids": [
+          361301,
+          361302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

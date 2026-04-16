@@ -602,7 +602,45 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 7002,
-      "skill_id": 7012
+      "skill_id": 7012,
+      "skill_data": {
+        "id": 7012,
+        "name": "<[&Tbl_UnitWeapon_Name_7001]> [&Tbl_UnitSkill_Name_7002]",
+        "name_key": "Tbl_UnitSkill_Name_7012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7001]> [&Tbl_UnitSkill_Name_7002]",
+        "description": "On [&Common_Word_Skill_TurnStart], fills the [&Common_Word_Skill_TurnGauge] of the ally with the highest [&ATK] by [&Color_Cyan]([V3:700201]%)[-] at a [&Color_Cyan][R:10401]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_7012",
+        "description_readable": "On [&Common_Word_Skill_TurnStart], fills the [&Common_Word_Skill_TurnGauge] of the ally with the highest [&ATK] by ([V3:700201]%) at a [R:10401]% chance.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "7012",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_AtkMoreAlly/1",
+            "value": 20.0,
+            "rate": -30,
+            "timing": "eBOTiming_TurnStart",
+            "condition": ""
+          }
+        ],
+        "battle_options": "701201",
+        "battle_option_ids": [
+          701201
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

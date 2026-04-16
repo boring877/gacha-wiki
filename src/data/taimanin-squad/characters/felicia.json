@@ -628,7 +628,57 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 3002,
-      "skill_id": 3012
+      "skill_id": 3012,
+      "skill_data": {
+        "id": 3012,
+        "name": "<[&Tbl_UnitWeapon_Name_3001]> [&Tbl_UnitSkill_Name_3002]",
+        "name_key": "Tbl_UnitSkill_Name_3012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3001]> [&Tbl_UnitSkill_Name_3002]",
+        "description": "After launching the enemy into the air, jumps up and attacks 4 times in total.\nTarget hit is inflicted [&Color_Cyan]([V3:301203]%) [&Bleeding][-] at a [&Color_Cyan][R:301203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:301203] turn(s)\nWhen [&Tbl_UnitSkill_Name_3004] is on [&Common_Word_Skill_CoolTime], performs an [&Common_Word_Skill_AddAttack] 1 time.\nOn [&Common_Word_Skill_ActionLast], increases [&Bleeding] effect by [V2:301204] turn(s).\n[&Common_Word_Skill_ValueTurn]: [V2:301204] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_3012",
+        "description_readable": "After launching the enemy into the air, jumps up and attacks 4 times in total.\nTarget hit is inflicted ([V3:301203]%) [&Bleeding] at a [R:301203]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:301203] turn(s)\nWhen [&Tbl_UnitSkill_Name_3004] is on [&Common_Word_Skill_CoolTime], performs an [&Common_Word_Skill_AddAttack] 1 time.\nOn [&Common_Word_Skill_ActionLast], increases [&Bleeding] effect by [V2:301204] turn(s).\n[&Common_Word_Skill_ValueTurn]: [V2:301204] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "3012",
+        "cooldown": 3,
+        "hit_count": 4,
+        "additional_hits": 1,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 116.3,
+        "effects": [
+          {
+            "type": "eBOFunc_AddAttack",
+            "target": "eBOTarget_HitTargetList",
+            "value": 161.5,
+            "rate": 100,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_IsCoolTime/4"
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Bleeding",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 10.0,
+            "rate": 10,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "301201/301202/301203/301204",
+        "battle_option_ids": [
+          301201,
+          301202,
+          301203,
+          301204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 3002,
@@ -640,7 +690,39 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 3003,
-      "skill_id": 3013
+      "skill_id": 3013,
+      "skill_data": {
+        "id": 3013,
+        "name": "<[&Tbl_UnitWeapon_Name_3002]> [&Tbl_UnitSkill_Name_3003]",
+        "name_key": "Tbl_UnitSkill_Name_3013",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3002]> [&Tbl_UnitSkill_Name_3003]",
+        "description": "When the target has 3 or more [&DeBuff]s, and the character's [&HP] is less than [&Color_Cyan]30%[-], attacking an enemy deals [&Common_Word_Skill_DeathDmg] at a fixed chance of [&Color_Cyan][R:301303]%[-].\nIncreases the duration of all [&Buff]s by [V2:300304] turn [&Common_Word_Skill_ActionAfter].\nSteals [&Athanasia] from the enemy [&Common_Word_Skill_ActionBefore].\nAttacks 1 enemy 1 time.",
+        "description_key": "Tbl_UnitSkill_Desc_3013",
+        "description_readable": "When the target has 3 or more [&DeBuff]s, and the character's [&HP] is less than 30%, attacking an enemy deals [&Common_Word_Skill_DeathDmg] at a fixed chance of [R:301303]%.\nIncreases the duration of all [&Buff]s by [V2:300304] turn [&Common_Word_Skill_ActionAfter].\nSteals [&Athanasia] from the enemy [&Common_Word_Skill_ActionBefore].\nAttacks 1 enemy 1 time.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "3013",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 782.8,
+        "effects": [],
+        "battle_options": "301301/301302/301303/301304",
+        "battle_option_ids": [
+          301301,
+          301302,
+          301303,
+          301304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

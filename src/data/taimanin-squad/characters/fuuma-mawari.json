@@ -615,7 +615,47 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 10802,
-      "skill_id": 10812
+      "skill_id": 10812,
+      "skill_data": {
+        "id": 10812,
+        "name": "<[&Tbl_UnitWeapon_Name_10801]> [&Tbl_UnitSkill_Name_10802]",
+        "name_key": "Tbl_UnitSkill_Name_10812",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10801]> [&Tbl_UnitSkill_Name_10802]",
+        "description": "Runs toward the enemy and trips to do a headbutt attack.\nTarget is inflicted with [&Stun] at a [&Color_Cyan][R:1081202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1081202] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_10812",
+        "description_readable": "Runs toward the enemy and trips to do a headbutt attack.\nTarget is inflicted with [&Stun] at a [R:1081202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1081202] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "10812",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 738.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Stun",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 20,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1081201/1081202",
+        "battle_option_ids": [
+          1081201,
+          1081202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -662,7 +662,76 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 5802,
-      "skill_id": 5812
+      "skill_id": 5812,
+      "skill_data": {
+        "id": 5812,
+        "name": "<[&Tbl_UnitWeapon_Name_5801]> [&Tbl_UnitSkill_Name_5802]",
+        "name_key": "Tbl_UnitSkill_Name_5812",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5801]> [&Tbl_UnitSkill_Name_5802]",
+        "description": "Yuphie grants Sophie a [&Color_Cyan]([V3:581201]%)[-] [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:581201] turn(s)\nAdditionally grants a [&Shield] equal to [&Color_Cyan][V3:581202]%[-] of Max. HP.\n[&Common_Word_Skill_ValueTurn]: [V2:581202] turn(s)\nGrants the same [&Buff] to an ally with the highest [&ATK].",
+        "description_key": "Tbl_UnitSkill_Desc_5812",
+        "description_readable": "Yuphie grants Sophie a ([V3:581201]%) [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:581201] turn(s)\nAdditionally grants a [&Shield] equal to [V3:581202]% of Max. HP.\n[&Common_Word_Skill_ValueTurn]: [V2:581202] turn(s)\nGrants the same [&Buff] to an ally with the highest [&ATK].",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "5812",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 55.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 27.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DefUp",
+            "target": "eBOTarget_AtkMoreAlly/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/Shield",
+            "target": "eBOTarget_AtkMoreAlly/1",
+            "duration": 2,
+            "value": 27.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "581201/581202/581203/581204",
+        "battle_option_ids": [
+          581201,
+          581202,
+          581203,
+          581204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 5802,
@@ -674,7 +743,46 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 5804,
-      "skill_id": 5814
+      "skill_id": 5814,
+      "skill_data": {
+        "id": 5814,
+        "name": "<[&Tbl_UnitWeapon_Name_5802]> [&Tbl_UnitSkill_Name_5804]",
+        "name_key": "Tbl_UnitSkill_Name_5814",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5802]> [&Tbl_UnitSkill_Name_5804]",
+        "description": "On [&Common_Word_Skill_TurnStart], grants a [&Color_Cyan]([V3:581401]%)[-] [&AtkUp] to an ally with the highest [&ATK].\n[&Common_Word_Skill_ValueTurn]: [V2:581401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_5814",
+        "description_readable": "On [&Common_Word_Skill_TurnStart], grants a ([V3:581401]%) [&AtkUp] to an ally with the highest [&ATK].\n[&Common_Word_Skill_ValueTurn]: [V2:581401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "5814",
+        "cooldown": 3,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AtkUp",
+            "target": "eBOTarget_AtkMoreAlly/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_TurnStart",
+            "condition": ""
+          }
+        ],
+        "battle_options": "581401",
+        "battle_option_ids": [
+          581401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

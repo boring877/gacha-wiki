@@ -654,7 +654,47 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 3901,
-      "skill_id": 3911
+      "skill_id": 3911,
+      "skill_data": {
+        "id": 3911,
+        "name": "<[&Tbl_UnitWeapon_Name_3901]> [&Tbl_UnitSkill_Name_3901]",
+        "name_key": "Tbl_UnitSkill_Name_3911",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3901]> [&Tbl_UnitSkill_Name_3901]",
+        "description": "Using the character's abilities and spear, attacks the enemy a total of 3 times.\n[&Provocation]s the target hit at a [&Color_Cyan][R:391102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:391102] turn(s)\n[&Common_Word_Skill_ATKCOSTHP]",
+        "description_key": "Tbl_UnitSkill_Desc_3911",
+        "description_readable": "Using the character's abilities and spear, attacks the enemy a total of 3 times.\n[&Provocation]s the target hit at a [R:391102]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:391102] turn(s)\n[&Common_Word_Skill_ATKCOSTHP]",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "3911",
+        "cooldown": 0,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[CostHP]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 134.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Provocation",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 5,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "391101/391102",
+        "battle_option_ids": [
+          391101,
+          391102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 3902,
@@ -666,7 +706,46 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 3902,
-      "skill_id": 3912
+      "skill_id": 3912,
+      "skill_data": {
+        "id": 3912,
+        "name": "<[&Tbl_UnitWeapon_Name_3902]> [&Tbl_UnitSkill_Name_3902]",
+        "name_key": "Tbl_UnitSkill_Name_3912",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_3902]> [&Tbl_UnitSkill_Name_3902]",
+        "description": "Assumes a battle ready stance and gains an [&Common_Word_Skill_AddTurn], restoring [&Color_Cyan][V3:391201]%[-] of Max. [&HP].",
+        "description_key": "Tbl_UnitSkill_Desc_3912",
+        "description_readable": "Assumes a battle ready stance and gains an [&Common_Word_Skill_AddTurn], restoring [V3:391201]% of Max. [&HP].",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "3912",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Self",
+            "value": 15.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "391201/391202",
+        "battle_option_ids": [
+          391201,
+          391202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

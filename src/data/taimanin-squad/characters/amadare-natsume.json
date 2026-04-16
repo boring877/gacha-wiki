@@ -604,7 +604,66 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 2002,
-      "skill_id": 2012
+      "skill_id": 2012,
+      "skill_data": {
+        "id": 2012,
+        "name": "<[&Tbl_UnitWeapon_Name_2001]> [&Tbl_UnitSkill_Name_2002]",
+        "name_key": "Tbl_UnitSkill_Name_2012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2001]> [&Tbl_UnitSkill_Name_2002]",
+        "description": "Attacks [&Common_Word_Skill_EnemyAll] with alluring gestures.\nTarget hit is [&Provocation]ed at a [&Color_Cyan][R:200202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:200202] turn(s)\nIf the target already is [&Provocation]ed, puts them in [&Confuse] state at a fixed chance of [&Color_Cyan][R:201202]%[-].\n[&Common_Word_Skill_ValueTurn]: [V2:201202] turn(s)\nIf the target is an [&Color_Cyan][&Agility][-] type, decreases [&Color_Cyan]([V3:201204]%)[-] of their [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:201204]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_2012",
+        "description_readable": "Attacks [&Common_Word_Skill_EnemyAll] with alluring gestures.\nTarget hit is [&Provocation]ed at a [R:200202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:200202] turn(s)\nIf the target already is [&Provocation]ed, puts them in [&Confuse] state at a fixed chance of [R:201202]%.\n[&Common_Word_Skill_ValueTurn]: [V2:201202] turn(s)\nIf the target is an [&Agility] type, decreases ([V3:201204]%) of their [&Common_Word_Skill_TurnGauge] at a [R:201204]% chance.",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "2012",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+        "multiplier": 366.1,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Confuse",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 30,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_HasDeBuff/Provocation"
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Provocation",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 45,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_Enemy/All",
+            "value": 15.0,
+            "rate": 95,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_IsUnitAttr/Agility"
+          }
+        ],
+        "battle_options": "201201/201202/201203/201204",
+        "battle_option_ids": [
+          201201,
+          201202,
+          201203,
+          201204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

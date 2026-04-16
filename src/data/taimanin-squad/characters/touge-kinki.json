@@ -671,7 +671,68 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 6002,
-      "skill_id": 6012
+      "skill_id": 6012,
+      "skill_data": {
+        "id": 6012,
+        "name": "<[&Tbl_UnitWeapon_Name_6001]> [&Tbl_UnitSkill_Name_6002]",
+        "name_key": "Tbl_UnitSkill_Name_6012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6001]> [&Tbl_UnitSkill_Name_6002]",
+        "description": "Scatters sword aura to attack the designated enemy and 2 [&Common_Word_Skill_Random] others.\nGains [&CountAttack] [&Common_Word_Skill_ActionAfter].\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].",
+        "description_key": "Tbl_UnitSkill_Desc_6012",
+        "description_readable": "Scatters sword aura to attack the designated enemy and 2 [&Common_Word_Skill_Random] others.\nGains [&CountAttack] [&Common_Word_Skill_ActionAfter].\nWhen defeating an enemy with this skill, gains [&Common_Word_Skill_AddTurn].",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "6012",
+        "cooldown": 3,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 600.0,
+        "effects": [
+          {
+            "type": "multi_attack",
+            "hits": [
+              {
+                "value": 200.0,
+                "target": "eBOTarget_Enemy/1"
+              },
+              {
+                "value": 200.0,
+                "target": "eBOTarget_EnemyRnd/1"
+              },
+              {
+                "value": 200.0,
+                "target": "eBOTarget_EnemyRnd/1"
+              }
+            ],
+            "value": 600.0
+          },
+          {
+            "type": "eBOFunc_AddBuff/CountAttack",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 50.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": ""
+          }
+        ],
+        "battle_options": "601201/601202/601203/601204/601205",
+        "battle_option_ids": [
+          601201,
+          601202,
+          601203,
+          601204,
+          601205
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 6002,
@@ -683,7 +744,40 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 6004,
-      "skill_id": 6014
+      "skill_id": 6014,
+      "skill_data": {
+        "id": 6014,
+        "name": "<[&Tbl_UnitWeapon_Name_6002]> [&Tbl_UnitSkill_Name_6004]",
+        "name_key": "Tbl_UnitSkill_Name_6014",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_6002]> [&Tbl_UnitSkill_Name_6004]",
+        "description": "Performs a [&Color_Cyan]([V3:601401]%)[-] [&Common_Word_Skill_DefPenetrate] attack per [&DeBuff] the target has.\nStacks up to 5.",
+        "description_key": "Tbl_UnitSkill_Desc_6014",
+        "description_readable": "Performs a ([V3:601401]%) [&Common_Word_Skill_DefPenetrate] attack per [&DeBuff] the target has.\nStacks up to 5.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "6014",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "601401/601402/601403/601404/601405",
+        "battle_option_ids": [
+          601401,
+          601402,
+          601403,
+          601404,
+          601405
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

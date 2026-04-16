@@ -671,7 +671,55 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 4101,
-      "skill_id": 4111
+      "skill_id": 4111,
+      "skill_data": {
+        "id": 4111,
+        "name": "<[&Tbl_UnitWeapon_Name_4101]> [&Tbl_UnitSkill_Name_4101]",
+        "name_key": "Tbl_UnitSkill_Name_4111",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4101]> [&Tbl_UnitSkill_Name_4101]",
+        "description": "Stabs the enemy with a stone scepter, attacking 4 times.\nRestores [&Common_Word_Skill_AllyAll]' [&HP] on [&Common_Word_Skill_ActionLast] by [&Color_Cyan][V3:411102]%[-] of Max. [&HP].",
+        "description_key": "Tbl_UnitSkill_Desc_4111",
+        "description_readable": "Stabs the enemy with a stone scepter, attacking 4 times.\nRestores [&Common_Word_Skill_AllyAll]' [&HP] on [&Common_Word_Skill_ActionLast] by [V3:411102]% of Max. [&HP].",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "4111",
+        "cooldown": 0,
+        "hit_count": 4,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[H:10]/[D:10]/[H:10]/[D:10]",
+        "multiplier": 118.1,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/All",
+            "value": 3.5,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/4",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsNotCoolTime/4"
+          }
+        ],
+        "battle_options": "411101/411102/411103",
+        "battle_option_ids": [
+          411101,
+          411102,
+          411103
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 4102,
@@ -683,7 +731,57 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 4104,
-      "skill_id": 4114
+      "skill_id": 4114,
+      "skill_data": {
+        "id": 4114,
+        "name": "<[&Tbl_UnitWeapon_Name_4102]> [&Tbl_UnitSkill_Name_4104]",
+        "name_key": "Tbl_UnitSkill_Name_4114",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4102]> [&Tbl_UnitSkill_Name_4104]",
+        "description": "Using a skill on every 4th turn grants an additional effect.\nWhen using [&Tbl_UnitSkill_Name_4101], [&HealRate] increases by [&Color_Cyan]([V3:410401]%)[-].\nWhen using [&Tbl_UnitSkill_Name_4102], inflicts [&Restraint] on the enemy.\n[&Common_Word_Skill_ValueTurn]: [V2:410402] turn(s)\nWhen using [&Tbl_UnitSkill_Name_4103], grants a [&Color_Cyan]([V3:410403]%)[-] [&HealTurn] to all allies for [V2:410402] turn(s).",
+        "description_key": "Tbl_UnitSkill_Desc_4114",
+        "description_readable": "Using a skill on every 4th turn grants an additional effect.\nWhen using [&Tbl_UnitSkill_Name_4101], [&HealRate] increases by ([V3:410401]%).\nWhen using [&Tbl_UnitSkill_Name_4102], inflicts [&Restraint] on the enemy.\n[&Common_Word_Skill_ValueTurn]: [V2:410402] turn(s)\nWhen using [&Tbl_UnitSkill_Name_4103], grants a ([V3:410403]%) [&HealTurn] to all allies for [V2:410402] turn(s).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "4114",
+        "cooldown": 4,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Restraint",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 50,
+            "timing": "eBOTiming_OnAttack",
+            "condition": "eBOCond_IsSkill/2"
+          },
+          {
+            "type": "eBOFunc_AddBuff/HealTurn",
+            "target": "eBOTarget_Ally/All",
+            "duration": 3,
+            "value": 7.0,
+            "rate": 0,
+            "timing": "eBOTiming_OnActionLast",
+            "condition": "eBOCond_IsSkill/3"
+          }
+        ],
+        "battle_options": "411401/411402/411403",
+        "battle_option_ids": [
+          411401,
+          411402,
+          411403
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

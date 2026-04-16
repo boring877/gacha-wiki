@@ -626,7 +626,55 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 2102,
-      "skill_id": 2112
+      "skill_id": 2112,
+      "skill_data": {
+        "id": 2112,
+        "name": "<[&Tbl_UnitWeapon_Name_2101]> [&Tbl_UnitSkill_Name_2102]",
+        "name_key": "Tbl_UnitSkill_Name_2112",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2101]> [&Tbl_UnitSkill_Name_2102]",
+        "description": "Uses Wind Art to to sharpen the sword further.\nGains [&Color_Cyan]([V3:211201]%)[-] [&CriRateUp].\n[&Common_Word_Skill_ValueTurn]: [V2:211201] turn(s)\nDecreases [&Color_Cyan]([V3:211202]%)[-] of the target's [&Common_Word_Skill_TurnGauge] at a [&Color_Cyan][R:211202]%[-] chance on every [&Common_Word_Skill_CriticalAttack].",
+        "description_key": "Tbl_UnitSkill_Desc_2112",
+        "description_readable": "Uses Wind Art to to sharpen the sword further.\nGains ([V3:211201]%) [&CriRateUp].\n[&Common_Word_Skill_ValueTurn]: [V2:211201] turn(s)\nDecreases ([V3:211202]%) of the target's [&Common_Word_Skill_TurnGauge] at a [R:211202]% chance on every [&Common_Word_Skill_CriticalAttack].",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "2112",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/CriRateUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 32.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTarget",
+            "value": 15.0,
+            "rate": 20,
+            "timing": "eBOTiming_OnAttack",
+            "condition": "eBOCond_IsDmgTypeByJudge/CriHit"
+          }
+        ],
+        "battle_options": "211201/211202",
+        "battle_option_ids": [
+          211201,
+          211202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 2102,
@@ -638,7 +686,36 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 2104,
-      "skill_id": 2114
+      "skill_id": 2114,
+      "skill_data": {
+        "id": 2114,
+        "name": "<[&Tbl_UnitWeapon_Name_2102]> [&Tbl_UnitSkill_Name_2104]",
+        "name_key": "Tbl_UnitSkill_Name_2114",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2102]> [&Tbl_UnitSkill_Name_2104]",
+        "description": "Attacking an enemy with [&Shield] increases their [&Common_Word_Skill_CriticalDamage] by [&Color_Cyan]([V3:211401]%)[-].\nApplies to all skills.",
+        "description_key": "Tbl_UnitSkill_Desc_2114",
+        "description_readable": "Attacking an enemy with [&Shield] increases their [&Common_Word_Skill_CriticalDamage] by ([V3:211401]%).\nApplies to all skills.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "2114",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "211401",
+        "battle_option_ids": [
+          211401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -586,7 +586,47 @@
       "opt_type": 11,
       "opt_value": 47,
       "skill_slot": 4001,
-      "skill_id": 4011
+      "skill_id": 4011,
+      "skill_data": {
+        "id": 4011,
+        "name": "<[&Tbl_UnitWeapon_Name_4001]> [&Tbl_UnitSkill_Name_4001]",
+        "name_key": "Tbl_UnitSkill_Name_4011",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4001]> [&Tbl_UnitSkill_Name_4001]",
+        "description": "Launches a cross-shaped sword aura at the enemy.\nTarget hit is inflicted with [&Color_Cyan]([V3:401102]%)[-] [&Burn] at a [&Color_Cyan][R:401102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:401102] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_4011",
+        "description_readable": "Launches a cross-shaped sword aura at the enemy.\nTarget hit is inflicted with ([V3:401102]%) [&Burn] at a [R:401102]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:401102] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "4011",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+        "multiplier": 504.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 15,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "401101/401102",
+        "battle_option_ids": [
+          401101,
+          401102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

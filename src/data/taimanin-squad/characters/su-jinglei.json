@@ -672,7 +672,47 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 1801,
-      "skill_id": 1811
+      "skill_id": 1811,
+      "skill_data": {
+        "id": 1811,
+        "name": "<[&Tbl_UnitWeapon_Name_1801]> [&Tbl_UnitSkill_Name_1801]",
+        "name_key": "Tbl_UnitSkill_Name_1811",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1801]> [&Tbl_UnitSkill_Name_1801]",
+        "description": "Delivers 3 powerful punches at the enemy. [&Common_Word_Skill_Damage] increases as [&DEF] increases.\nGrants [&Color_Cyan][V3:181102]%[-] [&AllyProtection] to the ally with the lowest [&HP] on [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:181102] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_1811",
+        "description_readable": "Delivers 3 powerful punches at the enemy. [&Common_Word_Skill_Damage] increases as [&DEF] increases.\nGrants [V3:181102]% [&AllyProtection] to the ally with the lowest [&HP] on [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:181102] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "1811",
+        "cooldown": 0,
+        "hit_count": 3,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[DEF]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 126.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AllyProtection",
+            "target": "eBOTarget_HpLessAlly/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "181101/181102",
+        "battle_option_ids": [
+          181101,
+          181102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 1802,
@@ -684,7 +724,47 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 1803,
-      "skill_id": 1813
+      "skill_id": 1813,
+      "skill_data": {
+        "id": 1813,
+        "name": "<[&Tbl_UnitWeapon_Name_1802]> [&Tbl_UnitSkill_Name_1803]",
+        "name_key": "Tbl_UnitSkill_Name_1813",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1802]> [&Tbl_UnitSkill_Name_1803]",
+        "description": "Unleashes the power of the dragon and attacks [&Common_Word_Skill_EnemyAll].\nPerforms a [&Color_Cyan]([V3:181302]%)[-] [&Common_Word_Skill_DefPenetrate] attack to the target hit.\nOn [&Common_Word_Skill_ActionLast], reduces the [&Common_Word_Skill_TurnGauge] of the enemy with the highest [&ATK] by [&Color_Cyan]([V3:181303]%)[-] at a [&Color_Cyan][R:181303]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_1813",
+        "description_readable": "Unleashes the power of the dragon and attacks [&Common_Word_Skill_EnemyAll].\nPerforms a ([V3:181302]%) [&Common_Word_Skill_DefPenetrate] attack to the target hit.\nOn [&Common_Word_Skill_ActionLast], reduces the [&Common_Word_Skill_TurnGauge] of the enemy with the highest [&ATK] by ([V3:181303]%) at a [R:181303]% chance.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "1813",
+        "cooldown": 5,
+        "hit_count": 2,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 214.9,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_AtkMoreEnemy/1",
+            "value": 15.0,
+            "rate": 65,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "181301/181302/181303",
+        "battle_option_ids": [
+          181301,
+          181302,
+          181303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

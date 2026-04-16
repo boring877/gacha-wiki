@@ -613,7 +613,47 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 1002,
-      "skill_id": 1012
+      "skill_id": 1012,
+      "skill_data": {
+        "id": 1012,
+        "name": "<[&Tbl_UnitWeapon_Name_1001]> [&Tbl_UnitSkill_Name_1002]",
+        "name_key": "Tbl_UnitSkill_Name_1012",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_1001]> [&Tbl_UnitSkill_Name_1002]",
+        "description": "Spins the gun in a flashy manner, then shoots it into the sky and gains [&Color_Cyan]([V3:101201]%)[-] [&AtkUp].\n[&Common_Word_Skill_ValueTurn]: [V2:101201] turn(s)\nGains [&Common_Word_Skill_AddTurn].",
+        "description_key": "Tbl_UnitSkill_Desc_1012",
+        "description_readable": "Spins the gun in a flashy manner, then shoots it into the sky and gains ([V3:101201]%) [&AtkUp].\n[&Common_Word_Skill_ValueTurn]: [V2:101201] turn(s)\nGains [&Common_Word_Skill_AddTurn].",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "1012",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AtkUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 40.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "101201/101202",
+        "battle_option_ids": [
+          101201,
+          101202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

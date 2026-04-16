@@ -621,7 +621,56 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 15402,
-      "skill_id": 15412
+      "skill_id": 15412,
+      "skill_data": {
+        "id": 15412,
+        "name": "<[&Tbl_UnitWeapon_Name_15401]> [&Tbl_UnitSkill_Name_15402]",
+        "name_key": "Tbl_UnitSkill_Name_15412",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_15401]> [&Tbl_UnitSkill_Name_15402]",
+        "description": "Transforms the spear into a giant sword using ninja art, and slashes [&Common_Word_Skill_EnemyAll].\nDefeating an enemy with this skill reduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_15403] by [V2:1541203] turn(s). \nIf only 1 enemy remains, increases [&Common_Word_Skill_Damage] by [&Color_Cyan]([V3:1541204]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_15412",
+        "description_readable": "Transforms the spear into a giant sword using ninja art, and slashes [&Common_Word_Skill_EnemyAll].\nDefeating an enemy with this skill reduces [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_15403] by [V2:1541203] turn(s). \nIf only 1 enemy remains, increases [&Common_Word_Skill_Damage] by ([V3:1541204]%).",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "15412",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 401.2,
+        "effects": [
+          {
+            "type": "eBOFunc_CoolTimeTurn/3",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionLast",
+            "condition": "eBOCond_IsNotCoolTime/3"
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/3",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "1541201/1541202/1541203/1541204",
+        "battle_option_ids": [
+          1541201,
+          1541202,
+          1541203,
+          1541204
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

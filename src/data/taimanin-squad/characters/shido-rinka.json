@@ -606,7 +606,47 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 903,
-      "skill_id": 913
+      "skill_id": 913,
+      "skill_data": {
+        "id": 913,
+        "name": "<[&Tbl_UnitWeapon_Name_901]> [&Tbl_UnitSkill_Name_903]",
+        "name_key": "Tbl_UnitSkill_Name_913",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_901]> [&Tbl_UnitSkill_Name_903]",
+        "description": "Jumps up high into the air and drops to attack [&Common_Word_Skill_EnemyAll].\nTarget hit is inflicted with [&Color_Cyan]([V3:91302]%)[-] [&EvdDown] at a [&Color_Cyan][R:91302]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:91302] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_913",
+        "description_readable": "Jumps up high into the air and drops to attack [&Common_Word_Skill_EnemyAll].\nTarget hit is inflicted with ([V3:91302]%) [&EvdDown] at a [R:91302]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:91302] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "913",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 458.5,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/EvdDown",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": -15.0,
+            "rate": 90,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "91301/91302",
+        "battle_option_ids": [
+          91301,
+          91302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

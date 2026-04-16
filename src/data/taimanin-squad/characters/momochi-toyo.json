@@ -660,7 +660,57 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 5302,
-      "skill_id": 5312
+      "skill_id": 5312,
+      "skill_data": {
+        "id": 5312,
+        "name": "<[&Tbl_UnitWeapon_Name_5301]> [&Tbl_UnitSkill_Name_5302]",
+        "name_key": "Tbl_UnitSkill_Name_5312",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5301]> [&Tbl_UnitSkill_Name_5302]",
+        "description": "Draws two swords from the back and stabs the enemy 7 times.\nTarget hit is inflicted with [&Restraint].\n[&Common_Word_Skill_ValueTurn]: [V2:531202] turn(s)\nWhen defeating the enemy, inflicts [&Common_Word_Skill_EnemyAll] with [&Color_Cyan]([V3:531203]%)[-] [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:531203] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_5312",
+        "description_readable": "Draws two swords from the back and stabs the enemy 7 times.\nTarget hit is inflicted with [&Restraint].\n[&Common_Word_Skill_ValueTurn]: [V2:531202] turn(s)\nWhen defeating the enemy, inflicts [&Common_Word_Skill_EnemyAll] with ([V3:531203]%) [&Burn].\n[&Common_Word_Skill_ValueTurn]: [V2:531203] turn(s)",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "5312",
+        "cooldown": 3,
+        "hit_count": 7,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 98.9,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Restraint",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 5,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_Enemy/All",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 60,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "531201/531202/531203",
+        "battle_option_ids": [
+          531201,
+          531202,
+          531203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 5302,
@@ -672,7 +722,43 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 5303,
-      "skill_id": 5313
+      "skill_id": 5313,
+      "skill_data": {
+        "id": 5313,
+        "name": "<[&Tbl_UnitWeapon_Name_5302]> [&Tbl_UnitSkill_Name_5303]",
+        "name_key": "Tbl_UnitSkill_Name_5313",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_5302]> [&Tbl_UnitSkill_Name_5303]",
+        "description": "After launching a series of attacks with the weapons covering the body, finishes the enemy with the blade on the back.\nTarget hit is inflicted with [&Bleeding], [&Poison], and [&Burn] by [&Color_Cyan][V3:531306]%[-], [&Color_Cyan][V3:531307]%[-], and [&Color_Cyan][V3:531308]%[-] respectively.\nFor each [&DeBuff] the target has, [&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:530302]%)[-].\nStacks up to 4.",
+        "description_key": "Tbl_UnitSkill_Desc_5313",
+        "description_readable": "After launching a series of attacks with the weapons covering the body, finishes the enemy with the blade on the back.\nTarget hit is inflicted with [&Bleeding], [&Poison], and [&Burn] by [V3:531306]%, [V3:531307]%, and [V3:531308]% respectively.\nFor each [&DeBuff] the target has, [&Common_Word_Skill_Damage] increases by ([V3:530302]%).\nStacks up to 4.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "5313",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 608.0,
+        "effects": [],
+        "battle_options": "531301/531302/531303/531304/531305/531306/531307/531308",
+        "battle_option_ids": [
+          531301,
+          531302,
+          531303,
+          531304,
+          531305,
+          531306,
+          531307,
+          531308
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     }
   ]
 }

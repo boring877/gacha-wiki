@@ -614,7 +614,46 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 11601,
-      "skill_id": 11611
+      "skill_id": 11611,
+      "skill_data": {
+        "id": 11611,
+        "name": "<[&Tbl_UnitWeapon_Name_11601]> [&Tbl_UnitSkill_Name_11601]",
+        "name_key": "Tbl_UnitSkill_Name_11611",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_11601]> [&Tbl_UnitSkill_Name_11601]",
+        "description": "Swings a hammer from above the head, attacking the enemy.\nIf the target has 2 or more [&DeBuff]s, absorbs [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:1161102]%)[-] at a [&Color_Cyan][R:1161102]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_11611",
+        "description_readable": "Swings a hammer from above the head, attacking the enemy.\nIf the target has 2 or more [&DeBuff]s, absorbs [&Common_Word_Skill_TurnGauge] by ([V3:1161102]%) at a [R:1161102]% chance.",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "11611",
+        "cooldown": 0,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 504.0,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeDrain",
+            "target": "eBOTarget_HitTarget",
+            "value": 12.5,
+            "rate": 10,
+            "timing": "eBOTiming_OnAction",
+            "condition": "eBOCond_HasDeBuffMoreCnt/2"
+          }
+        ],
+        "battle_options": "1161101/1161102",
+        "battle_option_ids": [
+          1161101,
+          1161102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

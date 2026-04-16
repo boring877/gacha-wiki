@@ -614,7 +614,55 @@
       "opt_type": 6,
       "opt_value": 57,
       "skill_slot": 10403,
-      "skill_id": 10413
+      "skill_id": 10413,
+      "skill_data": {
+        "id": 10413,
+        "name": "<[&Tbl_UnitWeapon_Name_10401]> [&Tbl_UnitSkill_Name_10403]",
+        "name_key": "Tbl_UnitSkill_Name_10413",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_10401]> [&Tbl_UnitSkill_Name_10403]",
+        "description": "Restores [&HP] of a targeted ally by [&Color_Cyan][V3:1041301]%[-] of their Max. [&HP].\nGrants [&Color_Cyan]([V3:1041302])[-] [&DmgBlockCount].\n[&Common_Word_Skill_ValueTurn]: [V2:1041302] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_10413",
+        "description_readable": "Restores [&HP] of a targeted ally by [V3:1041301]% of their Max. [&HP].\nGrants ([V3:1041302]) [&DmgBlockCount].\n[&Common_Word_Skill_ValueTurn]: [V2:1041302] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "10413",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_Heal/MaxHp",
+            "target": "eBOTarget_Ally/1",
+            "value": 18.5,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "1041301/1041302",
+        "battle_option_ids": [
+          1041301,
+          1041302
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

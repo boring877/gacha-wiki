@@ -604,7 +604,46 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 803,
-      "skill_id": 813
+      "skill_id": 813,
+      "skill_data": {
+        "id": 813,
+        "name": "<[&Tbl_UnitWeapon_Name_801]> [&Tbl_UnitSkill_Name_803]",
+        "name_key": "Tbl_UnitSkill_Name_813",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_801]> [&Tbl_UnitSkill_Name_803]",
+        "description": "If the enemy dies after the attack, puts 1 [&Common_Word_Skill_Random] enemy into [&Confuse] mode at a [&Color_Cyan][R:81399]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:81301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_813",
+        "description_readable": "If the enemy dies after the attack, puts 1 [&Common_Word_Skill_Random] enemy into [&Confuse] mode at a [R:81399]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:81301] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "813",
+        "cooldown": 3,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Confuse",
+            "target": "eBOTarget_EnemyRnd/1",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 20,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "81301",
+        "battle_option_ids": [
+          81301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

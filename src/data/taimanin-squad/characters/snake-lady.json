@@ -654,7 +654,58 @@
       "opt_type": 12,
       "opt_value": 47,
       "skill_slot": 7103,
-      "skill_id": 7113
+      "skill_id": 7113,
+      "skill_data": {
+        "id": 7113,
+        "name": "<[&Tbl_UnitWeapon_Name_7101]> [&Tbl_UnitSkill_Name_7103]",
+        "name_key": "Tbl_UnitSkill_Name_7113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7101]> [&Tbl_UnitSkill_Name_7103]",
+        "description": "Attacks the enemy with a powerful dropkick.\nIf the target's [&HP] is less than [&Color_Cyan]30%[-], performs a [&Common_Word_Skill_ShieldPenetrate] attack.\nInflicts 2 [&Color_Cyan]([V3:711303]%)[-] [&Poison] to the target on [&Common_Word_Skill_ActionLast] at a [&Color_Cyan][R:711303]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_7113",
+        "description_readable": "Attacks the enemy with a powerful dropkick.\nIf the target's [&HP] is less than 30%, performs a [&Common_Word_Skill_ShieldPenetrate] attack.\nInflicts 2 ([V3:711303]%) [&Poison] to the target on [&Common_Word_Skill_ActionLast] at a [R:711303]% chance.",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "7113",
+        "cooldown": 5,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 782.8,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 80,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Poison",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 3,
+            "value": 2.5,
+            "rate": 80,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "711301/711302/711303/711304",
+        "battle_option_ids": [
+          711301,
+          711302,
+          711303,
+          711304
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 7102,
@@ -666,7 +717,36 @@
       "opt_type": 13,
       "opt_value": 24,
       "skill_slot": 7104,
-      "skill_id": 7114
+      "skill_id": 7114,
+      "skill_data": {
+        "id": 7114,
+        "name": "<[&Tbl_UnitWeapon_Name_7102]> [&Tbl_UnitSkill_Name_7104]",
+        "name_key": "Tbl_UnitSkill_Name_7114",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_7102]> [&Tbl_UnitSkill_Name_7104]",
+        "description": "If the target is the only one remaining, [&Common_Word_Skill_Damage] increases by [&Color_Cyan]([V3:711401]%)[-].",
+        "description_key": "Tbl_UnitSkill_Desc_7114",
+        "description_readable": "If the target is the only one remaining, [&Common_Word_Skill_Damage] increases by ([V3:711401]%).",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "7114",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [],
+        "battle_options": "711401",
+        "battle_option_ids": [
+          711401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

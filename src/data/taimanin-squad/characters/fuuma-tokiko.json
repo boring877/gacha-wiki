@@ -682,7 +682,94 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 2802,
-      "skill_id": 2812
+      "skill_id": 2812,
+      "skill_data": {
+        "id": 2812,
+        "name": "<[&Tbl_UnitWeapon_Name_2801]> [&Tbl_UnitSkill_Name_2802]",
+        "name_key": "Tbl_UnitSkill_Name_2812",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2801]> [&Tbl_UnitSkill_Name_2802]",
+        "description": "Uses Clairvoyance to grant a [&Color_Cyan]([V3:281201]%)[-] [&SpdUp] to 1 ally and herself.\n[&Common_Word_Skill_ValueTurn]: [V2:281201] turn(s)\nReduces the [&Common_Word_Skill_CoolTime] of all affected allies' skills by [V2:281202] turn(s).\nIf the affected ally is an [&Color_Yellow]Agility type[-], additionally grants [&DeBuffBlock].\n[&Common_Word_Skill_ValueTurn]: [V2:281203] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2812",
+        "description_readable": "Uses Clairvoyance to grant a ([V3:281201]%) [&SpdUp] to 1 ally and herself.\n[&Common_Word_Skill_ValueTurn]: [V2:281201] turn(s)\nReduces the [&Common_Word_Skill_CoolTime] of all affected allies' skills by [V2:281202] turn(s).\nIf the affected ally is an Agility type, additionally grants [&DeBuffBlock].\n[&Common_Word_Skill_ValueTurn]: [V2:281203] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "2812",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/SpdUp",
+            "target": "eBOTarget_Ally/1",
+            "duration": 2,
+            "value": 27.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_HitTargetList",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DeBuffBlock",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_IsUnitAttr/Agility"
+          },
+          {
+            "type": "eBOFunc_AddBuff/SpdUp",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 27.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DeBuffBlock",
+            "target": "eBOTarget_Self",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": "eBOCond_IsUnitAttr/Agility"
+          }
+        ],
+        "battle_options": "281201/281202/281203/281204/281205/281206",
+        "battle_option_ids": [
+          281201,
+          281202,
+          281203,
+          281204,
+          281205,
+          281206
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     },
     {
       "id": 2802,
@@ -694,7 +781,65 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 2802,
-      "skill_id": 2822
+      "skill_id": 2822,
+      "skill_data": {
+        "id": 2822,
+        "name": "<[&Tbl_UnitWeapon_Name_2802]> [&Tbl_UnitSkill_Name_2802]",
+        "name_key": "Tbl_UnitSkill_Name_2822",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2802]> [&Tbl_UnitSkill_Name_2802]",
+        "description": "Uses Clairvoyance to grant a [&Color_Cyan]([V3:282201]%)[-] [&AtkUp] to 1 ally.\n[&Common_Word_Skill_ValueTurn]: [V2:282201] turn(s)\nReduces the [&Common_Word_Skill_CoolTime] of all affected allies' skills by [V2:282202] turn(s) and additionally grants [&DeBuffBlock].\n[&Common_Word_Skill_ValueTurn]: [V2:282203] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2822",
+        "description_readable": "Uses Clairvoyance to grant a ([V3:282201]%) [&AtkUp] to 1 ally.\n[&Common_Word_Skill_ValueTurn]: [V2:282201] turn(s)\nReduces the [&Common_Word_Skill_CoolTime] of all affected allies' skills by [V2:282202] turn(s) and additionally grants [&DeBuffBlock].\n[&Common_Word_Skill_ValueTurn]: [V2:282203] turn(s)",
+        "type_description": "[&Color_Orange][Support Skill][-]",
+        "type_description_readable": "[Support Skill]",
+        "icon": "2822",
+        "cooldown": 4,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/AtkUp",
+            "target": "eBOTarget_Ally/1",
+            "duration": 2,
+            "value": 45.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeTurn/All",
+            "target": "eBOTarget_HitTargetList",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DeBuffBlock",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "282201/282202/282203",
+        "battle_option_ids": [
+          282201,
+          282202,
+          282203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

@@ -654,7 +654,46 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 2403,
-      "skill_id": 2413
+      "skill_id": 2413,
+      "skill_data": {
+        "id": 2413,
+        "name": "<[&Tbl_UnitWeapon_Name_2401]> [&Tbl_UnitSkill_Name_2403]",
+        "name_key": "Tbl_UnitSkill_Name_2413",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2401]> [&Tbl_UnitSkill_Name_2403]",
+        "description": "Gathers cold air into a single point, grants [&Common_Word_Skill_AllyAll] [&Color_Cyan]([V3:241301])[-] [&DmgBlockCount]s.\n[&Common_Word_Skill_ValueTurn]: [V2:241301] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2413",
+        "description_readable": "Gathers cold air into a single point, grants [&Common_Word_Skill_AllyAll] ([V3:241301]) [&DmgBlockCount]s.\n[&Common_Word_Skill_ValueTurn]: [V2:241301] turn(s)",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "2413",
+        "cooldown": 6,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_Ally/All",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_Action",
+            "condition": ""
+          }
+        ],
+        "battle_options": "241301",
+        "battle_option_ids": [
+          241301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 2402,
@@ -666,7 +705,46 @@
       "opt_type": 7,
       "opt_value": 35,
       "skill_slot": 2404,
-      "skill_id": 2414
+      "skill_id": 2414,
+      "skill_data": {
+        "id": 2414,
+        "name": "<[&Tbl_UnitWeapon_Name_2402]> [&Tbl_UnitSkill_Name_2404]",
+        "name_key": "Tbl_UnitSkill_Name_2414",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_2402]> [&Tbl_UnitSkill_Name_2404]",
+        "description": "If the target has [&DeBuff], each hit inflicts [&BuffBlock] at a [&Color_Cyan][R:240401]%[-].\n[&Common_Word_Skill_ValueTurn]: [V2:240401] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_2414",
+        "description_readable": "If the target has [&DeBuff], each hit inflicts [&BuffBlock] at a [R:240401]%.\n[&Common_Word_Skill_ValueTurn]: [V2:240401] turn(s)",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "2414",
+        "cooldown": 0,
+        "hit_count": 0,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/BuffBlock",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 0.0,
+            "rate": 15,
+            "timing": "eBOTiming_OnAttack",
+            "condition": "eBOCond_HasDeBuffMoreCnt/1"
+          }
+        ],
+        "battle_options": "241401",
+        "battle_option_ids": [
+          241401
+        ],
+        "evolution_level_required": 2,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

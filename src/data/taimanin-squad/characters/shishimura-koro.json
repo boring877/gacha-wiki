@@ -605,7 +605,45 @@
       "opt_type": 8,
       "opt_value": 20,
       "skill_slot": 4403,
-      "skill_id": 4413
+      "skill_id": 4413,
+      "skill_data": {
+        "id": 4413,
+        "name": "<[&Tbl_UnitWeapon_Name_4401]> [&Tbl_UnitSkill_Name_4403]",
+        "name_key": "Tbl_UnitSkill_Name_4413",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_4401]> [&Tbl_UnitSkill_Name_4403]",
+        "description": "When the enemy dies, fills [&Color_Cyan]([V3:441301]%)[-] of the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] at a [&Color_Cyan][R:441301]%[-] chance.",
+        "description_key": "Tbl_UnitSkill_Desc_4413",
+        "description_readable": "When the enemy dies, fills ([V3:441301]%) of the [&Common_Word_Skill_TurnGauge] of [&Common_Word_Skill_AllyAll] at a [R:441301]% chance.",
+        "type_description": "[&Color_Orange][Passive Skill][-]",
+        "type_description_readable": "[Passive Skill]",
+        "icon": "4413",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "",
+        "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+        "multiplier": null,
+        "effects": [
+          {
+            "type": "eBOFunc_TurnGaugeUp",
+            "target": "eBOTarget_Ally/All",
+            "value": 20.0,
+            "rate": -50,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
+          }
+        ],
+        "battle_options": "441301",
+        "battle_option_ids": [
+          441301
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": -1,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

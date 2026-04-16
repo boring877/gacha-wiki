@@ -650,7 +650,56 @@
       "opt_type": 10,
       "opt_value": 47,
       "skill_slot": 103,
-      "skill_id": 113
+      "skill_id": 113,
+      "skill_data": {
+        "id": 113,
+        "name": "<[&Tbl_UnitWeapon_Name_101]> [&Tbl_UnitSkill_Name_103]",
+        "name_key": "Tbl_UnitSkill_Name_113",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_101]> [&Tbl_UnitSkill_Name_103]",
+        "description": "Moves as fast as light and instantly attacks the enemy [A:113] time(s)\nTarget hit is inflicted with [&Color_Cyan]([V3:11302]%)[-] [&SpdDown] at a [&Color_Cyan][R:11302]%[-] chance and has their [&Common_Word_Skill_TurnGauge] reduced by [&Color_Cyan]([V3:11303]%)[-] at a [&Color_Cyan][R:11303]%[-] chance on [&Common_Word_Skill_ActionLast]",
+        "description_key": "Tbl_UnitSkill_Desc_113",
+        "description_readable": "Moves as fast as light and instantly attacks the enemy [A:113] time(s)\nTarget hit is inflicted with ([V3:11302]%) [&SpdDown] at a [R:11302]% chance and has their [&Common_Word_Skill_TurnGauge] reduced by ([V3:11303]%) at a [R:11303]% chance on [&Common_Word_Skill_ActionLast]",
+        "type_description": "[&Color_Orange][Ultimate Skill][-]",
+        "type_description_readable": "[Ultimate Skill]",
+        "icon": "113",
+        "cooldown": 5,
+        "hit_count": 6,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]/[SPD]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 104.9,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/SpdDown",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": -19.5,
+            "rate": 99,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_TurnGaugeDown",
+            "target": "eBOTarget_HitTargetList",
+            "value": 15.0,
+            "rate": 65,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          }
+        ],
+        "battle_options": "11301/11302/11303",
+        "battle_option_ids": [
+          11301,
+          11302,
+          11303
+        ],
+        "evolution_level_required": 1,
+        "trigger_keyword": "CutSkill",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 2
+      }
     },
     {
       "id": 102,
@@ -662,7 +711,56 @@
       "opt_type": 5,
       "opt_value": 35,
       "skill_slot": 102,
-      "skill_id": 112
+      "skill_id": 112,
+      "skill_data": {
+        "id": 112,
+        "name": "<[&Tbl_UnitWeapon_Name_102]> [&Tbl_UnitSkill_Name_102]",
+        "name_key": "Tbl_UnitSkill_Name_112",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_102]> [&Tbl_UnitSkill_Name_102]",
+        "description": "After kicking the enemy upward, slashes them 4 times in midair for a total of 5 attacks.\nTarget hit is inflicted with [&Color_Cyan]([V3:11202]%)[-] [&HealRateDown] at a [&Color_Cyan][R:11202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:11202] turn(s)\nKilling an enmey with this skill resets the [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_103]",
+        "description_key": "Tbl_UnitSkill_Desc_112",
+        "description_readable": "After kicking the enemy upward, slashes them 4 times in midair for a total of 5 attacks.\nTarget hit is inflicted with ([V3:11202]%) [&HealRateDown] at a [R:11202]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:11202] turn(s)\nKilling an enmey with this skill resets the [&Common_Word_Skill_CoolTime] of [&Tbl_UnitSkill_Name_103]",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "112",
+        "cooldown": 4,
+        "hit_count": 5,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 153.1,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/HealRateDown",
+            "target": "eBOTarget_HitTargetList",
+            "duration": 2,
+            "value": 65.0,
+            "rate": 99,
+            "timing": "eBOTiming_ActionLast",
+            "condition": ""
+          },
+          {
+            "type": "eBOFunc_CoolTimeClear/3",
+            "target": "eBOTarget_Self",
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_IsKill"
+          }
+        ],
+        "battle_options": "11201/11202/11203",
+        "battle_option_ids": [
+          11201,
+          11202,
+          11203
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "SelfBuff",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }

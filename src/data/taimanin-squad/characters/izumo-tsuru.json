@@ -615,7 +615,47 @@
       "opt_type": 9,
       "opt_value": 20,
       "skill_slot": 8201,
-      "skill_id": 8211
+      "skill_id": 8211,
+      "skill_data": {
+        "id": 8211,
+        "name": "<[&Tbl_UnitWeapon_Name_8201]> [&Tbl_UnitSkill_Name_8201]",
+        "name_key": "Tbl_UnitSkill_Name_8211",
+        "name_readable": "<[&Tbl_UnitWeapon_Name_8201]> [&Tbl_UnitSkill_Name_8201]",
+        "description": "Sprays bullets, attacking the enemy 7 times.\nTarget hit is inflicted with [&Color_Cyan]([V3:821102]%)[-] [&Burn] at a [&Color_Cyan][R:821102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:821102] turn(s)",
+        "description_key": "Tbl_UnitSkill_Desc_8211",
+        "description_readable": "Sprays bullets, attacking the enemy 7 times.\nTarget hit is inflicted with ([V3:821102]%) [&Burn] at a [R:821102]% chance.\n[&Common_Word_Skill_ValueTurn]: [V2:821102] turn(s)",
+        "type_description": "[&Color_Orange][Normal Attack][-]",
+        "type_description_readable": "[Normal Attack]",
+        "icon": "8211",
+        "cooldown": 0,
+        "hit_count": 7,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+        "multiplier": 72.0,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Burn",
+            "target": "eBOTarget_HitTarget",
+            "duration": 3,
+            "value": 3.5,
+            "rate": 5,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "821101/821102",
+        "battle_option_ids": [
+          821101,
+          821102
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
     }
   ]
 }
