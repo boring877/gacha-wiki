@@ -140,12 +140,12 @@ const skills = skillsData.skills || [];
 
 import characterSkillsMap from '../../../../data/taimanin-squad/character-skills-map.json';
 
-function getSkillMultiplier(charId: number, skillId: number): number | null {
+function getSkillData(charId: number, skillId: number): { multiplier: number | null; hit_count: number } | null {
   const charEntry = (characterSkillsMap as any)[String(charId)];
   if (!charEntry) return null;
   const skillEntry = charEntry[String(skillId)];
   if (!skillEntry) return null;
-  return skillEntry.multiplier;
+  return { multiplier: skillEntry.multiplier, hit_count: skillEntry.hit_count || 0 };
 }
 
 // Group skills by character ID
@@ -326,16 +326,24 @@ const totalCharWithSkills = charactersWithSkills.length;
                         </div>
                         <div class="skill-meta">
                           {(() => {
-                            const mult = getSkillMultiplier(character.id, skill.id);
-                            return mult !== null && (
+                            const sd = getSkillData(character.id, skill.id);
+                            if (!sd || sd.multiplier === null) return null;
+                            const hits = sd.hit_count;
+                            const mult = sd.multiplier;
+                            if (hits > 1) {
+                              const total = Math.round(mult * hits * 10) / 10;
+                              return (
+                                <span class="skill-multiplier">
+                                  <span class="highlight">{mult}%</span> x {hits} = <span class="highlight">{total}%</span> ATK
+                                </span>
+                              );
+                            }
+                            return (
                               <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
                             );
                           })()}
                           {skill.cooldown > 0 && (
                             <span>CD: <span class="highlight">{skill.cooldown}</span></span>
-                          )}
-                          {skill.hit_count > 0 && (
-                            <span>Hits: <span class="highlight">{skill.hit_count}</span></span>
                           )}
                           {skill.evolution_level_required > 0 && (
                             <span>Evo: <span class="highlight">{skill.evolution_level_required}</span></span>
@@ -380,16 +388,24 @@ const totalCharWithSkills = charactersWithSkills.length;
                         </div>
                         <div class="skill-meta">
                           {(() => {
-                            const mult = getSkillMultiplier(character.id, skill.id);
-                            return mult !== null && (
+                            const sd = getSkillData(character.id, skill.id);
+                            if (!sd || sd.multiplier === null) return null;
+                            const hits = sd.hit_count;
+                            const mult = sd.multiplier;
+                            if (hits > 1) {
+                              const total = Math.round(mult * hits * 10) / 10;
+                              return (
+                                <span class="skill-multiplier">
+                                  <span class="highlight">{mult}%</span> x {hits} = <span class="highlight">{total}%</span> ATK
+                                </span>
+                              );
+                            }
+                            return (
                               <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
                             );
                           })()}
                           {skill.cooldown > 0 && (
                             <span>CD: <span class="highlight">{skill.cooldown}</span></span>
-                          )}
-                          {skill.hit_count > 0 && (
-                            <span>Hits: <span class="highlight">{skill.hit_count}</span></span>
                           )}
                           {skill.evolution_level_required > 0 && (
                             <span>Evo: <span class="highlight">{skill.evolution_level_required}</span></span>
