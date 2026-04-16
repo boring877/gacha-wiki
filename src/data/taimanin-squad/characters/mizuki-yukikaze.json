@@ -490,8 +490,22 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": null,
+      "multiplier": 330.8,
       "effects": [
+        {
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 141.8,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 189.0,
+              "target": "eBOTarget_HitTargetList"
+            }
+          ],
+          "value": 330.8
+        },
         {
           "type": "eBOFunc_CoolTimeTurn/3",
           "target": "eBOTarget_Self",
@@ -530,8 +544,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": null,
+      "multiplier": 598.2,
       "effects": [
+        {
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 238.1,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 238.1,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 122.0,
+              "target": "eBOTarget_Enemy/All"
+            }
+          ],
+          "value": 598.2
+        },
         {
           "type": "eBOFunc_CoolTimeClear/2",
           "target": "eBOTarget_Self",

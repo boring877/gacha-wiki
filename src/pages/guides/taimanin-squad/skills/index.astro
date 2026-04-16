@@ -140,12 +140,12 @@ const skills = skillsData.skills || [];
 
 import characterSkillsMap from '../../../../data/taimanin-squad/character-skills-map.json';
 
-function getSkillData(charId: number, skillId: number): { multiplier: number | null; hit_count: number } | null {
+function getSkillData(charId: number, skillId: number): { multiplier: number | null; hit_count: number; attack_count: number } | null {
   const charEntry = (characterSkillsMap as any)[String(charId)];
   if (!charEntry) return null;
   const skillEntry = charEntry[String(skillId)];
   if (!skillEntry) return null;
-  return { multiplier: skillEntry.multiplier, hit_count: skillEntry.hit_count || 0 };
+  return { multiplier: skillEntry.multiplier, hit_count: skillEntry.hit_count || 0, attack_count: skillEntry.attack_count || 0 };
 }
 
 // Group skills by character ID
@@ -328,8 +328,14 @@ const totalCharWithSkills = charactersWithSkills.length;
                           {(() => {
                             const sd = getSkillData(character.id, skill.id);
                             if (!sd || sd.multiplier === null) return null;
-                            const hits = sd.hit_count;
-                            const mult = sd.multiplier;
+                            const { multiplier: mult, hit_count: hits, attack_count: atks } = sd;
+                            if (atks > 1) {
+                              return (
+                                <span class="skill-multiplier">
+                                  <span class="highlight">{mult}%</span> ATK <span class="mult-note">(total)</span>
+                                </span>
+                              );
+                            }
                             if (hits > 1) {
                               const total = Math.round(mult * hits * 10) / 10;
                               return (
@@ -390,8 +396,14 @@ const totalCharWithSkills = charactersWithSkills.length;
                           {(() => {
                             const sd = getSkillData(character.id, skill.id);
                             if (!sd || sd.multiplier === null) return null;
-                            const hits = sd.hit_count;
-                            const mult = sd.multiplier;
+                            const { multiplier: mult, hit_count: hits, attack_count: atks } = sd;
+                            if (atks > 1) {
+                              return (
+                                <span class="skill-multiplier">
+                                  <span class="highlight">{mult}%</span> ATK <span class="mult-note">(total)</span>
+                                </span>
+                              );
+                            }
                             if (hits > 1) {
                               const total = Math.round(mult * hits * 10) / 10;
                               return (

@@ -530,8 +530,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-      "multiplier": null,
+      "multiplier": 600.0,
       "effects": [
+        {
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 200.0,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 200.0,
+              "target": "eBOTarget_EnemyRnd/1"
+            },
+            {
+              "value": 200.0,
+              "target": "eBOTarget_EnemyRnd/1"
+            }
+          ],
+          "value": 600.0
+        },
         {
           "type": "eBOFunc_AddBuff/CountAttack",
           "target": "eBOTarget_Self",

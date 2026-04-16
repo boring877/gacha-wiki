@@ -519,8 +519,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": null,
-      "effects": [],
+      "multiplier": 360.0,
+      "effects": [
+        {
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 96.0,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 120.0,
+              "target": "eBOTarget_HitTargetList"
+            },
+            {
+              "value": 144.0,
+              "target": "eBOTarget_HitTargetList"
+            }
+          ],
+          "value": 360.0
+        }
+      ],
       "battle_options": "160201/160202/160203/160204/160205",
       "battle_option_ids": [
         160201,
