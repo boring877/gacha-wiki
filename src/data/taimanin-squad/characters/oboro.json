@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "230001",
       "battle_option_ids": [
         230001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 168.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "230101/230102",
       "battle_option_ids": [
         230101,
@@ -516,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 354.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 50,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "230201/230202/230203",
       "battle_option_ids": [
         230201,
@@ -545,6 +571,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 894.6,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "230301/230302",
       "battle_option_ids": [
         230301,
@@ -573,6 +611,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "230401/230402",
       "battle_option_ids": [
         230401,

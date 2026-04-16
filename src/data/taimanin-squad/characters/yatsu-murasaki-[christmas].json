@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/BuffBlock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2640101/2640102",
       "battle_option_ids": [
         2640101,
@@ -489,6 +501,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 15,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2640201/2640202/2640203",
       "battle_option_ids": [
         2640201,
@@ -518,6 +542,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 641.0,
+      "effects": [],
       "battle_options": "2640301/2640302/2640303",
       "battle_option_ids": [
         2640301,
@@ -547,6 +573,26 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/CountAttack",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_Self",
+          "value": 18.5,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        }
+      ],
       "battle_options": "2640401/2640402",
       "battle_option_ids": [
         2640401,

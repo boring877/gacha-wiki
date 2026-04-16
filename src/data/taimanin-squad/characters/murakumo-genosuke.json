@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 65.0,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "560101/560102",
       "battle_option_ids": [
         560101,
@@ -489,6 +501,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_HitTargetList",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_HasDeBuff/Confuse"
+        }
+      ],
       "battle_options": "560201/560202/560203",
       "battle_option_ids": [
         560201,
@@ -518,6 +550,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AtkDown",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": -45.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "560301/560302/560303",
       "battle_option_ids": [
         560301,

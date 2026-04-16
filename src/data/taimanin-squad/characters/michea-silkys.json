@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "900001",
       "battle_option_ids": [
         900001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 126.0,
+      "effects": [],
       "battle_options": "900101/900102",
       "battle_option_ids": [
         900101,
@@ -516,6 +520,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Ally/All",
+          "value": 20.0,
+          "rate": -65,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "900201/900202",
       "battle_option_ids": [
         900201,
@@ -544,6 +559,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 182.4,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "900301/900302/900303",
       "battle_option_ids": [
         900301,

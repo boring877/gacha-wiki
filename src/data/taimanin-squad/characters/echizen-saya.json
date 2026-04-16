@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 45.0,
+      "effects": [],
       "battle_options": "1220001",
       "battle_option_ids": [
         1220001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 525.0,
+      "effects": [],
       "battle_options": "1220101",
       "battle_option_ids": [
         1220101
@@ -515,6 +519,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 246.1,
+      "effects": [],
       "battle_options": "1220201/1220202",
       "battle_option_ids": [
         1220201,
@@ -543,6 +549,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 178.9,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 40.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "1220301/1220302",
       "battle_option_ids": [
         1220301,

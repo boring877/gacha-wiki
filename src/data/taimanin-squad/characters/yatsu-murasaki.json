@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "190001",
       "battle_option_ids": [
         190001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 10,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "190101/190102",
       "battle_option_ids": [
         190101,
@@ -516,6 +529,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Strengthen",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 22.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_IsUnitTID/19"
+        },
+        {
+          "type": "eBOFunc_AddBuff/AllyProtection",
+          "target": "eBOTarget_SelfOther",
+          "duration": 2,
+          "value": 35.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "190201/190202",
       "battle_option_ids": [
         190201,
@@ -544,6 +578,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[CostHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 127.6,
+      "effects": [],
       "battle_options": "190301/190302",
       "battle_option_ids": [
         190301,
@@ -572,6 +608,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Athanasia",
+          "target": "eBOTarget_Self",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnDie",
+          "condition": ""
+        }
+      ],
       "battle_options": "190401/190402",
       "battle_option_ids": [
         190401,

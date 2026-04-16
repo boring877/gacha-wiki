@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "1080001",
       "battle_option_ids": [
         1080001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "1080101/1080102",
       "battle_option_ids": [
         1080101,
@@ -516,6 +520,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 20,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_Self",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "1080201/1080202/1080203",
       "battle_option_ids": [
         1080201,
@@ -545,6 +570,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 2,
+          "value": -21.0,
+          "rate": 99,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": -30.0,
+          "rate": 99,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "1080301/1080302",
       "battle_option_ids": [
         1080301,

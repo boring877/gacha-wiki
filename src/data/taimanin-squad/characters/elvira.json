@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 525.0,
+      "effects": [],
       "battle_options": "1000101",
       "battle_option_ids": [
         1000101
@@ -488,6 +490,35 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DefUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 40.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_Self",
+          "value": 15.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Provocation",
+          "target": "eBOTarget_Attacker",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsCoolTime/2"
+        }
+      ],
       "battle_options": "1000201/1000202/1000203",
       "battle_option_ids": [
         1000201,
@@ -517,6 +548,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 911.9,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTarget",
+          "value": 12.5,
+          "rate": 55,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_LessTurnGauge/0"
+        }
+      ],
       "battle_options": "1000301/1000302/1000303",
       "battle_option_ids": [
         1000301,
@@ -546,6 +597,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "1000401",
       "battle_option_ids": [
         1000401

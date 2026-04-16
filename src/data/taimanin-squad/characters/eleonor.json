@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "480001",
       "battle_option_ids": [
         480001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": 168.0,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAttack",
+          "condition": ""
+        }
+      ],
       "battle_options": "480101/480102",
       "battle_option_ids": [
         480101,
@@ -516,6 +529,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Shield",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 21.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "480201",
       "battle_option_ids": [
         480201
@@ -543,6 +568,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DeBuffBlock",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DefUp",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 45.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_HasNotDeBuff/All"
+        }
+      ],
       "battle_options": "480301/480302",
       "battle_option_ids": [
         480301,
@@ -571,6 +617,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_Ally/All",
+          "value": 31.5,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": "eBOCond_HasBuff/Shield"
+        }
+      ],
       "battle_options": "480401",
       "battle_option_ids": [
         480401

@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "310001",
       "battle_option_ids": [
         310001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 269.1,
+      "effects": [],
       "battle_options": "310101",
       "battle_option_ids": [
         310101
@@ -515,6 +519,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 378.4,
+      "effects": [],
       "battle_options": "310201/310202",
       "battle_option_ids": [
         310201,
@@ -543,6 +549,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 467.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 75,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 90,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "310301/310302/310303",
       "battle_option_ids": [
         310301,
@@ -572,6 +599,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "310401",
       "battle_option_ids": [
         310401

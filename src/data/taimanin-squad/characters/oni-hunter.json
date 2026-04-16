@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/CriDmgUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "1430101/1430102",
       "battle_option_ids": [
         1430101,
@@ -489,6 +501,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 330.1,
+      "effects": [],
       "battle_options": "1430201/1430202",
       "battle_option_ids": [
         1430201,

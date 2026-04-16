@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 525.0,
+      "effects": [],
       "battle_options": "2310101",
       "battle_option_ids": [
         2310101
@@ -488,6 +490,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Shield",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 40.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "2310201/2310202",
       "battle_option_ids": [
         2310201,

@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "1530001",
       "battle_option_ids": [
         1530001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Sleep",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "1530101/1530102",
       "battle_option_ids": [
         1530101,
@@ -516,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[B:10]/[P:10]/[B:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AtkDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": -70.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_HasDeBuff/All"
+        }
+      ],
       "battle_options": "1530201",
       "battle_option_ids": [
         1530201
@@ -543,6 +569,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 378.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 70.0,
+          "rate": 99,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1530301/1530302",
       "battle_option_ids": [
         1530301,

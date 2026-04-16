@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[SPD]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 393.8,
+      "effects": [],
       "battle_options": "2630101",
       "battle_option_ids": [
         2630101
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "2630201/2630202/2630203",
       "battle_option_ids": [
         2630201,
@@ -517,6 +530,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2630301/2630302/2630303",
       "battle_option_ids": [
         2630301,
@@ -546,6 +570,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AccDown",
+          "target": "eBOTarget_EnemyRnd/1",
+          "duration": 2,
+          "value": -27.5,
+          "rate": 95,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        }
+      ],
       "battle_options": "2630401",
       "battle_option_ids": [
         2630401

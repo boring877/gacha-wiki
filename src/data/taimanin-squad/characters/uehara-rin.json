@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "320001",
       "battle_option_ids": [
         320001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": 252.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "320101/320102",
       "battle_option_ids": [
         320101,
@@ -516,6 +530,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[P:10]/[D:10]/[P:10]/[D:10]/[P:10]",
+      "multiplier": 71.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/ElecShock"
+        },
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTargetList",
+          "value": 15.0,
+          "rate": 50,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasDeBuff/Stun"
+        }
+      ],
       "battle_options": "320201/320202/320203",
       "battle_option_ids": [
         320201,
@@ -545,6 +579,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": 782.8,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTarget",
+          "value": 12.5,
+          "rate": 60,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "320301/320302/320303/320304",
       "battle_option_ids": [
         320301,
@@ -575,6 +629,15 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 3.0,
+          "timing": "eBOTiming_OnAttackCalc"
+        }
+      ],
       "battle_options": "320401",
       "battle_option_ids": [
         320401

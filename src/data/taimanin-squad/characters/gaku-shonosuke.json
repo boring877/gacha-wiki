@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "930101/930102",
       "battle_option_ids": [
         930101,
@@ -489,6 +491,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 816.5,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/CountAttack",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "930201/930202",
       "battle_option_ids": [
         930201,
@@ -517,6 +531,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 919.5,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 75,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/Strengthen",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "930301/930302/930303/930304",
       "battle_option_ids": [
         930301,

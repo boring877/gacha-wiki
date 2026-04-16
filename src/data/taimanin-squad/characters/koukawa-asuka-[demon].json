@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2930101/2930102",
       "battle_option_ids": [
         2930101,
@@ -489,6 +501,25 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 70,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsNotUnitAttr/Destruction"
+        },
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTarget",
+          "value": 12.5,
+          "rate": 50,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsUnitAttr/Destruction"
+        }
+      ],
       "battle_options": "2930201/2930202/2930203",
       "battle_option_ids": [
         2930201,
@@ -518,6 +549,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [],
       "battle_options": "2930302/2930301/2930303",
       "battle_option_ids": [
         2930302,
@@ -547,6 +580,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Ally/All",
+          "value": 20.0,
+          "rate": -75,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsDmgTypeByJudge/AllHit"
+        }
+      ],
       "battle_options": "2930401",
       "battle_option_ids": [
         2930401

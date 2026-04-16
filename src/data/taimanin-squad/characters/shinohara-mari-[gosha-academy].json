@@ -461,6 +461,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_HpLessAlly/1",
+          "value": 4.5,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2480101/2480102",
       "battle_option_ids": [
         2480101,
@@ -489,6 +500,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_Ally/1",
+          "duration": 3,
+          "value": 7.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 8.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_LessHP/80"
+        }
+      ],
       "battle_options": "2480201/2480202",
       "battle_option_ids": [
         2480201,
@@ -517,6 +549,26 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_HitTarget",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DeBuffBlock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2480301/2480302/2480303",
       "battle_option_ids": [
         2480301,
@@ -546,6 +598,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeClear/All",
+          "target": "eBOTarget_TurnGaugeMoreAlly/1",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        }
+      ],
       "battle_options": "2480401",
       "battle_option_ids": [
         2480401

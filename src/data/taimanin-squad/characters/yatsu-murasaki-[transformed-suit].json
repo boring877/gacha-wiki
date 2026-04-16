@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 412.1,
+      "effects": [],
       "battle_options": "2690101",
       "battle_option_ids": [
         2690101
@@ -488,6 +490,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 75,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_MoreHP/80"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 75,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_LessHP/80"
+        }
+      ],
       "battle_options": "2690201/2690202/2690203",
       "battle_option_ids": [
         2690201,
@@ -517,6 +540,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 685.6,
+      "effects": [],
       "battle_options": "2690301/2690302",
       "battle_option_ids": [
         2690301,
@@ -545,6 +570,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2690401/2690402",
       "battle_option_ids": [
         2690401,

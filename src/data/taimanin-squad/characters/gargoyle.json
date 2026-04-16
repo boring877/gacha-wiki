@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Shield",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "1460101/1460102",
       "battle_option_ids": [
         1460101,

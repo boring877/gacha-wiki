@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "210001",
       "battle_option_ids": [
         210001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 126.0,
+      "effects": [],
       "battle_options": "210101/210102",
       "battle_option_ids": [
         210101,
@@ -516,6 +520,26 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/CriRateUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 32.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -25,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "210201/210202",
       "battle_option_ids": [
         210201,
@@ -544,6 +568,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 790.3,
+      "effects": [],
       "battle_options": "210302/210303/210304/210305/210301",
       "battle_option_ids": [
         210302,
@@ -575,6 +601,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "210401",
       "battle_option_ids": [
         210401

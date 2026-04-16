@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasNotBuff/All"
+        }
+      ],
       "battle_options": "2680101/2680102",
       "battle_option_ids": [
         2680101,
@@ -489,6 +501,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/PassiveSkillBlock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 65,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 20,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasDeBuffMoreCnt/3"
+        }
+      ],
       "battle_options": "2680201/2680202/2680203",
       "battle_option_ids": [
         2680201,
@@ -518,6 +551,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 911.9,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/CountAttack",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "2680301/2680302/2680303",
       "battle_option_ids": [
         2680301,
@@ -547,6 +592,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_HasDeBuff/Burn"
+        }
+      ],
       "battle_options": "2680401/2680402",
       "battle_option_ids": [
         2680401,

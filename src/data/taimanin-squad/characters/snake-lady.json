@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "710001",
       "battle_option_ids": [
         710001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[P:10]/[D:10]/[P:10]/[D:10]/[P:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 10,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "710101/710102",
       "battle_option_ids": [
         710101,
@@ -516,6 +530,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 346.1,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 30,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/DefDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": -50.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasDeBuffMoreCnt/3"
+        }
+      ],
       "battle_options": "710201/710202/710203",
       "battle_option_ids": [
         710201,
@@ -545,6 +580,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [],
       "battle_options": "710301/710302/710303",
       "battle_option_ids": [
         710301,
@@ -574,6 +611,25 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTargetList",
+          "value": 12.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsUnitDisposition/Mon"
+        },
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTargetList",
+          "value": 12.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsUnitDisposition/Sun"
+        }
+      ],
       "battle_options": "710401/710402",
       "battle_option_ids": [
         710401,

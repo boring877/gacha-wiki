@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "2740101/2740102",
       "battle_option_ids": [
         2740101,
@@ -489,6 +491,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 354.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 50,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 50,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2740201/2740202/2740203",
       "battle_option_ids": [
         2740201,
@@ -518,6 +541,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 429.8,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 40,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/PassiveSkillBlock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 60,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2740301/2740302/2740303",
       "battle_option_ids": [
         2740301,
@@ -547,6 +590,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[B:10]/[P:10]/[B:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_Attacker",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnHit",
+          "condition": ""
+        }
+      ],
       "battle_options": "2740401",
       "battle_option_ids": [
         2740401

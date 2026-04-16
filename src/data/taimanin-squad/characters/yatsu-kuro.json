@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "40001",
       "battle_option_ids": [
         40001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 262.5,
+      "effects": [],
       "battle_options": "40101",
       "battle_option_ids": [
         40101
@@ -515,6 +519,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 138.4,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_HitTargetList",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_IsNotBoss"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Provocation",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": -100,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "40201/40202/40203",
       "battle_option_ids": [
         40201,
@@ -544,6 +568,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Athanasia",
+          "target": "eBOTarget_Self",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_LessHP/30"
+        }
+      ],
       "battle_options": "40301",
       "battle_option_ids": [
         40301

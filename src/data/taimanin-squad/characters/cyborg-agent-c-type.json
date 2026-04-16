@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[DEF]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 54.0,
+      "effects": [],
       "battle_options": "1820101/1820102",
       "battle_option_ids": [
         1820101,
@@ -489,6 +491,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 246.1,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1820201/1820202",
       "battle_option_ids": [
         1820201,

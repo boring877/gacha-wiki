@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 30.0,
+      "effects": [],
       "battle_options": "1760001",
       "battle_option_ids": [
         1760001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1760101/1760102",
       "battle_option_ids": [
         1760101,
@@ -516,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 255.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1760201/1760202/1760203",
       "battle_option_ids": [
         1760201,
@@ -545,6 +571,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[NowHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 364.5,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeClear/3",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "1760301/1760302/1760303",
       "battle_option_ids": [
         1760301,

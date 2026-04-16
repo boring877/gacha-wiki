@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 10,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2770101/2770102",
       "battle_option_ids": [
         2770101,
@@ -489,6 +501,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 378.4,
+      "effects": [],
       "battle_options": "2770201/2770202",
       "battle_option_ids": [
         2770201,
@@ -517,6 +531,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 894.6,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTarget",
+          "value": 12.5,
+          "rate": 45,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2770301/2770302",
       "battle_option_ids": [
         2770301,
@@ -545,6 +570,26 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -20,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/CriRateUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 32.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "2770401/2770402",
       "battle_option_ids": [
         2770401,

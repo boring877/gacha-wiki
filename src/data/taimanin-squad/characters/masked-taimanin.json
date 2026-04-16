@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 20.0,
+      "effects": [],
       "battle_options": "780001",
       "battle_option_ids": [
         780001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 252.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "780101/780102",
       "battle_option_ids": [
         780101,
@@ -516,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 86.5,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AtkDown",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 2,
+          "value": -40.0,
+          "rate": 90,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "780201/780202/780203",
       "battle_option_ids": [
         780201,
@@ -545,6 +571,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [],
       "battle_options": "780301/780302/780303",
       "battle_option_ids": [
         780301,
@@ -574,6 +602,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 75.0,
+          "rate": 25,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_HasDeBuffMoreCnt/3"
+        }
+      ],
       "battle_options": "780401",
       "battle_option_ids": [
         780401

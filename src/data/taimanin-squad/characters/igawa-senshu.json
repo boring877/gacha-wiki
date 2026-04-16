@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 45.0,
+      "effects": [],
       "battle_options": "910001",
       "battle_option_ids": [
         910001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "910101/910102",
       "battle_option_ids": [
         910101,
@@ -516,6 +530,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "910201/910202",
       "battle_option_ids": [
         910201,
@@ -544,6 +560,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 429.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 60,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "910301/910302/910303",
       "battle_option_ids": [
         910301,

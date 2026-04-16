@@ -461,6 +461,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/All",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuffMoreCnt/2"
+        }
+      ],
       "battle_options": "2390101/2390102",
       "battle_option_ids": [
         2390101,
@@ -489,6 +500,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 323.0,
+      "effects": [],
       "battle_options": "2390201/2390202/2390203/2390204",
       "battle_option_ids": [
         2390201,
@@ -519,6 +532,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 782.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AccUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/AccUp",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2390301/2390302/2390303/2390304",
       "battle_option_ids": [
         2390301,
@@ -549,6 +583,25 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/2",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsSkill/2"
+        },
+        {
+          "type": "eBOFunc_CoolTimeTurn/3",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsSkill/3"
+        }
+      ],
       "battle_options": "2390401/2390402",
       "battle_option_ids": [
         2390401,

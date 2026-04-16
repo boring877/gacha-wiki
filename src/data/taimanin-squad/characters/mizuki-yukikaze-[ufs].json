@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2790101/2790102",
       "battle_option_ids": [
         2790101,
@@ -489,6 +501,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 25,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2790201/2790202/2790203",
       "battle_option_ids": [
         2790201,
@@ -518,6 +542,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 429.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2790301/2790302/2790303",
       "battle_option_ids": [
         2790301,
@@ -547,6 +583,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTargetList",
+          "value": 12.5,
+          "rate": 5,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_HasDeBuff/ElecShock"
+        }
+      ],
       "battle_options": "2790401",
       "battle_option_ids": [
         2790401

@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "60001",
       "battle_option_ids": [
         60001
@@ -488,6 +490,26 @@
       "additional_hits": 1,
       "damage_scaling": "[ATK]/[CostHP]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 53.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddAttack",
+          "target": "eBOTarget_HitTargetList",
+          "value": 67.7,
+          "rate": 100,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_LessHP/50"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "60101/60102/60103",
       "battle_option_ids": [
         60101,
@@ -517,6 +539,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Strengthen",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 24.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": "eBOCond_HasNotDeBuff/All"
+        }
+      ],
       "battle_options": "60201/60202",
       "battle_option_ids": [
         60201,
@@ -545,6 +579,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 504.9,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DmgReflect",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 9.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_LessHP/75"
+        },
+        {
+          "type": "eBOFunc_AddBuff/DmgReflect",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 7.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "60301/60302/60303",
       "battle_option_ids": [
         60301,
@@ -574,6 +629,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "60401/60402",
       "battle_option_ids": [
         60401,

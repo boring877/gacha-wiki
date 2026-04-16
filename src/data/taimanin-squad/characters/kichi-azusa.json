@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "140001",
       "battle_option_ids": [
         140001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "140101/140102",
       "battle_option_ids": [
         140101,
@@ -516,6 +520,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 40.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "140201/140202",
       "battle_option_ids": [
         140201,
@@ -544,6 +569,21 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 851.1,
+      "effects": [
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 22.5,
+          "timing": "eBOTiming_OnActionCalc"
+        },
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 33.0,
+          "timing": "eBOTiming_OnActionCalc"
+        }
+      ],
       "battle_options": "140301/140302/140303/140304",
       "battle_option_ids": [
         140301,
@@ -574,6 +614,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "140401",
       "battle_option_ids": [
         140401

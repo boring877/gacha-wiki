@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "800001",
       "battle_option_ids": [
         800001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/All",
+          "target": "eBOTarget_HitTarget",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "800101/800102",
       "battle_option_ids": [
         800101,
@@ -516,6 +529,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 161.5,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/ElecShock"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "800201/800202/800203/800204",
       "battle_option_ids": [
         800201,
@@ -546,6 +580,35 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 782.8,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 65,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DmgBlockCount",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 2.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DmgBlockCount",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 2.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsUnitTID/32"
+        }
+      ],
       "battle_options": "800301/800302/800303/800304",
       "battle_option_ids": [
         800301,

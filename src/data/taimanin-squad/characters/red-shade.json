@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 252.0,
+      "effects": [],
       "battle_options": "2070101/2070102",
       "battle_option_ids": [
         2070101,
@@ -489,6 +491,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 252.0,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/2",
+          "target": "eBOTarget_HitTargetList",
+          "value": 0.0,
+          "rate": 70,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2070201/2070202",
       "battle_option_ids": [
         2070201,

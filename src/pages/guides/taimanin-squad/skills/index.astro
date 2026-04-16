@@ -138,6 +138,16 @@ function getCharacterIdFromSkillId(skillId: number): number {
 const allCharacters = getAllCharacters().sort((a, b) => a.id - b.id);
 const skills = skillsData.skills || [];
 
+import characterSkillsMap from '../../../../data/taimanin-squad/character-skills-map.json';
+
+function getSkillMultiplier(charId: number, skillId: number): number | null {
+  const charEntry = (characterSkillsMap as any)[String(charId)];
+  if (!charEntry) return null;
+  const skillEntry = charEntry[String(skillId)];
+  if (!skillEntry) return null;
+  return skillEntry.multiplier;
+}
+
 // Group skills by character ID
 const skillsByCharacter = new Map<number, typeof skills>();
 skills.forEach(skill => {
@@ -315,6 +325,12 @@ const totalCharWithSkills = charactersWithSkills.length;
                           </span>
                         </div>
                         <div class="skill-meta">
+                          {(() => {
+                            const mult = getSkillMultiplier(character.id, skill.id);
+                            return mult !== null && (
+                              <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
+                            );
+                          })()}
                           {skill.cooldown > 0 && (
                             <span>CD: <span class="highlight">{skill.cooldown}</span></span>
                           )}
@@ -363,6 +379,12 @@ const totalCharWithSkills = charactersWithSkills.length;
                           </span>
                         </div>
                         <div class="skill-meta">
+                          {(() => {
+                            const mult = getSkillMultiplier(character.id, skill.id);
+                            return mult !== null && (
+                              <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
+                            );
+                          })()}
                           {skill.cooldown > 0 && (
                             <span>CD: <span class="highlight">{skill.cooldown}</span></span>
                           )}

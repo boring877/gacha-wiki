@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[CostHP]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 402.0,
+      "effects": [],
       "battle_options": "2700101/2700102",
       "battle_option_ids": [
         2700101,
@@ -489,6 +491,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Strengthen",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DeBuffBlock",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_MoreHP/80"
+        }
+      ],
       "battle_options": "2700201/2700202",
       "battle_option_ids": [
         2700201,
@@ -517,6 +540,45 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 599.9,
+      "effects": [
+        {
+          "type": "eBOFunc_ImmuneSkill/eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_Self",
+          "duration": 0,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsNotCoolTime/3"
+        },
+        {
+          "type": "eBOFunc_ImmuneSkill/eBOFunc_AddDeBuff/Sleep",
+          "target": "eBOTarget_Self",
+          "duration": 0,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsNotCoolTime/3"
+        },
+        {
+          "type": "eBOFunc_ImmuneSkill/eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_Self",
+          "duration": 0,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsNotCoolTime/3"
+        },
+        {
+          "type": "eBOFunc_AddBuff/Athanasia",
+          "target": "eBOTarget_Self",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "2700301/2700302/2700303/2700304/2700305",
       "battle_option_ids": [
         2700301,
@@ -548,6 +610,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2700401",
       "battle_option_ids": [
         2700401

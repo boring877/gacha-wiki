@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "70001",
       "battle_option_ids": [
         70001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/3",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": -30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "70101/70102/70103",
       "battle_option_ids": [
         70101,
@@ -517,6 +530,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeClear/2",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "70201/70202/70203/70204",
       "battle_option_ids": [
         70201,
@@ -547,6 +571,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 467.4,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 50,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/ElecShock",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 35,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_LessTurnGauge/0"
+        }
+      ],
       "battle_options": "70301/70302/70303",
       "battle_option_ids": [
         70301,
@@ -576,6 +620,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -25,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "70401",
       "battle_option_ids": [
         70401

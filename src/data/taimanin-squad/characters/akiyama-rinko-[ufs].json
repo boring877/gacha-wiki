@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[SPD]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 378.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AccUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
+        }
+      ],
       "battle_options": "2800101/2800102",
       "battle_option_ids": [
         2800101,
@@ -489,6 +501,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTarget",
+          "value": 12.5,
+          "rate": 35,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": -19.5,
+          "rate": 95,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2800201/2800202/2800203",
       "battle_option_ids": [
         2800201,
@@ -518,6 +550,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTargetList",
+          "value": 15.0,
+          "rate": 85,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasNotBuff/All"
+        }
+      ],
       "battle_options": "2800301/2800302/2800303",
       "battle_option_ids": [
         2800301,
@@ -547,6 +590,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -25,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2800401/2800402",
       "battle_option_ids": [
         2800401,

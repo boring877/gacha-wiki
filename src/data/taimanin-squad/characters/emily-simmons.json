@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 22.5,
+      "effects": [],
       "battle_options": "150001",
       "battle_option_ids": [
         150001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 134.5,
+      "effects": [],
       "battle_options": "150101",
       "battle_option_ids": [
         150101
@@ -515,6 +519,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_Ally/All",
+          "duration": 3,
+          "value": 5.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "150201",
       "battle_option_ids": [
         150201
@@ -542,6 +558,36 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Ally/1",
+          "duration": 2,
+          "value": 45.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 27.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/Athanasia",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_LessHP/40"
+        }
+      ],
       "battle_options": "150301/150302/150303",
       "battle_option_ids": [
         150301,
@@ -571,6 +617,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "150401/150402/150403/150404/150405",
       "battle_option_ids": [
         150401,

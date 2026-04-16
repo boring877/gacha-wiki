@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "1130001",
       "battle_option_ids": [
         1130001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/All",
+          "target": "eBOTarget_HitTarget",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuffMoreCnt/2"
+        }
+      ],
       "battle_options": "1130101/1130102",
       "battle_option_ids": [
         1130101,
@@ -516,6 +529,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 378.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AtkDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": -30.0,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1130201/1130202",
       "battle_option_ids": [
         1130201,
@@ -544,6 +569,25 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 911.9,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 75,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_LessTurnGauge/10"
+        }
+      ],
       "battle_options": "1130301/1130302/1130303",
       "battle_option_ids": [
         1130301,
@@ -573,6 +617,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AccDown",
+          "target": "eBOTarget_Attacker",
+          "duration": 2,
+          "value": -27.5,
+          "rate": 99,
+          "timing": "eBOTiming_OnHit",
+          "condition": ""
+        }
+      ],
       "battle_options": "1130401",
       "battle_option_ids": [
         1130401

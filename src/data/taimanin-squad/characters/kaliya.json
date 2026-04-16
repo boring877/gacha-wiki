@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "3000001",
       "battle_option_ids": [
         3000001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[SPD]",
       "skill_level_scaling": "",
+      "multiplier": 197.0,
+      "effects": [],
       "battle_options": "3000101",
       "battle_option_ids": [
         3000101
@@ -515,6 +519,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "",
+      "multiplier": 354.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 50,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 18.0,
+          "rate": 40,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_LessHP/50"
+        }
+      ],
       "battle_options": "3000201/3000202/3000203",
       "battle_option_ids": [
         3000201,
@@ -544,6 +569,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "",
+      "multiplier": 467.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 25,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_LessHP/40"
+        }
+      ],
       "battle_options": "3000301/3000302/3000303",
       "battle_option_ids": [
         3000301,
@@ -573,6 +610,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AccDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": -20.0,
+          "rate": 15,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "3000401/3000402",
       "battle_option_ids": [
         3000401,

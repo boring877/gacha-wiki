@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 65.0,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1490101/1490102",
       "battle_option_ids": [
         1490101,
@@ -489,6 +501,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 255.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": -19.5,
+          "rate": 40,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 30,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/HealRateDown"
+        }
+      ],
       "battle_options": "1490201/1490202/1490203",
       "battle_option_ids": [
         1490201,

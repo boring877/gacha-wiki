@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "2610101/2610102",
       "battle_option_ids": [
         2610101,
@@ -489,6 +491,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 30,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasNotDeBuff/All"
+        }
+      ],
       "battle_options": "2610201/2610202/2610203",
       "battle_option_ids": [
         2610201,
@@ -518,6 +532,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 429.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 25,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2610301/2610302/2610303",
       "battle_option_ids": [
         2610301,
@@ -547,6 +573,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2610401",
       "battle_option_ids": [
         2610401

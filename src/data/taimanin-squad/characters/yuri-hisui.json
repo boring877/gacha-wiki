@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 20.0,
+      "effects": [],
       "battle_options": "410001",
       "battle_option_ids": [
         410001
@@ -488,6 +490,25 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[H:10]/[D:10]/[H:10]/[D:10]",
+      "multiplier": 118.1,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_HpLessAlly/1",
+          "value": 4.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_CoolTimeTurn/4",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsNotCoolTime/4"
+        }
+      ],
       "battle_options": "410101/410102/410103",
       "battle_option_ids": [
         410101,
@@ -517,6 +538,25 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 354.8,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 50,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Ally/All",
+          "value": 20.0,
+          "rate": -100,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_MoreHP/50"
+        }
+      ],
       "battle_options": "410201/410202/410203",
       "battle_option_ids": [
         410201,
@@ -546,6 +586,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_Ally/All",
+          "value": 17.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "410301/410302",
       "battle_option_ids": [
         410301,
@@ -574,6 +625,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Restraint",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 50,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsSkill/2"
+        },
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_Ally/All",
+          "duration": 3,
+          "value": 7.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": "eBOCond_IsSkill/3"
+        }
+      ],
       "battle_options": "410401/410402/410403",
       "battle_option_ids": [
         410401,

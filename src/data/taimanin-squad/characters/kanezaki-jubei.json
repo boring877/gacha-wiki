@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "100001",
       "battle_option_ids": [
         100001
@@ -488,6 +490,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 168.0,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": -10,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "100101/100102",
       "battle_option_ids": [
         100101,
@@ -516,6 +529,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 45.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_HasNotBuff/AtkUp"
+        },
+        {
+          "type": "eBOFunc_AddBuff/AtkUp",
+          "target": "eBOTarget_SelfOther",
+          "duration": 2,
+          "value": 35.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_HasBuff/AtkUp"
+        }
+      ],
       "battle_options": "100201/100202",
       "battle_option_ids": [
         100201,
@@ -544,6 +578,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 249.3,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeClear/3",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "100301/100302",
       "battle_option_ids": [
         100301,

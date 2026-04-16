@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "2720101/2720102",
       "battle_option_ids": [
         2720101,
@@ -489,6 +491,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/BuffBlock",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 65,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2720201/2720202/2720203",
       "battle_option_ids": [
         2720201,
@@ -518,6 +532,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Stun",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 20,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_CoolTimeClear/All",
+          "target": "eBOTarget_HitTargetList",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2720301/2720302/2720303",
       "battle_option_ids": [
         2720301,
@@ -547,6 +581,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/CriDmgDown",
+          "target": "eBOTarget_Attacker",
+          "duration": 2,
+          "value": -65.0,
+          "rate": 25,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriHit"
+        }
+      ],
       "battle_options": "2720401/2720402",
       "battle_option_ids": [
         2720401,

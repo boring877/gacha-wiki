@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 441.0,
+      "effects": [],
       "battle_options": "2590101/2590102/2590103/2590104",
       "battle_option_ids": [
         2590101,
@@ -491,6 +493,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 738.4,
+      "effects": [],
       "battle_options": "2590201/2590202",
       "battle_option_ids": [
         2590201,
@@ -519,6 +523,33 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 401.2,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 40,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_CoolTimeClear/2",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        },
+        {
+          "type": "eBOFunc_CoolTimeClear/4",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2590301/2590302/2590303/2590304",
       "battle_option_ids": [
         2590301,
@@ -549,6 +580,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/Rnd",
+          "target": "eBOTarget_HitTargetList",
+          "value": 1.0,
+          "rate": 55,
+          "timing": "eBOTiming_OnActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "2590401",
       "battle_option_ids": [
         2590401

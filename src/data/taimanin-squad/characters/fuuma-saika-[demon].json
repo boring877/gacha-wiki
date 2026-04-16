@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "2950101/2950102",
       "battle_option_ids": [
         2950101,
@@ -489,6 +491,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 646.1,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/2",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "2950201/2950202/2950203/2950204",
       "battle_option_ids": [
         2950201,
@@ -519,6 +532,17 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 467.4,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 75,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsUnitClass/Class_SPT"
+        }
+      ],
       "battle_options": "2950301/2950302/2950303",
       "battle_option_ids": [
         2950301,
@@ -548,6 +572,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2950401",
       "battle_option_ids": [
         2950401

@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "690001",
       "battle_option_ids": [
         690001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 126.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/AtkDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": -40.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "690101/690102",
       "battle_option_ids": [
         690101,
@@ -516,6 +530,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 109.4,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/EvdDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": -24.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_LessTurnGauge/30"
+        }
+      ],
       "battle_options": "690201/690202/690203",
       "battle_option_ids": [
         690201,
@@ -545,6 +579,26 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[H:10]/[B:10]/[H:10]/[B:10]/[H:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_Self",
+          "value": 3.5,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/HealTurn",
+          "target": "eBOTarget_Self",
+          "duration": 3,
+          "value": 6.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": "eBOCond_LessHP/30"
+        }
+      ],
       "battle_options": "690301/690302",
       "battle_option_ids": [
         690301,

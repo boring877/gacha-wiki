@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "30001",
       "battle_option_ids": [
         30001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "30101/30102",
       "battle_option_ids": [
         30101,
@@ -516,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 738.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 45,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_IsUnitAttr/Technique"
+        }
+      ],
       "battle_options": "30201/30202",
       "battle_option_ids": [
         30201,
@@ -544,6 +570,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 429.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 45,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuffMoreCnt/3"
+        }
+      ],
       "battle_options": "30301/30302/30303",
       "battle_option_ids": [
         30301,

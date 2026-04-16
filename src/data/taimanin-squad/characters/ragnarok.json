@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "3010001",
       "battle_option_ids": [
         3010001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "3010101/3010102",
       "battle_option_ids": [
         3010101,
@@ -516,6 +520,26 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/All",
+          "target": "eBOTarget_HitTarget",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/ActiveSkillBlock",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "3010201/3010202/3010203",
       "battle_option_ids": [
         3010201,
@@ -545,6 +569,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 467.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Freeze",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 25.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_MoreHP/70"
+        }
+      ],
       "battle_options": "3010301/3010302/3010303",
       "battle_option_ids": [
         3010301,
@@ -574,6 +610,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "3010401/3010402",
       "battle_option_ids": [
         3010401,

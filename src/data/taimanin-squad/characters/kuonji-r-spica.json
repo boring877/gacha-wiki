@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "700001",
       "battle_option_ids": [
         700001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 175.0,
+      "effects": [],
       "battle_options": "700101",
       "battle_option_ids": [
         700101
@@ -515,6 +519,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_AtkMoreAlly/1",
+          "value": 20.0,
+          "rate": -40,
+          "timing": "eBOTiming_TurnStart",
+          "condition": "eBOCond_MoreHP/90"
+        }
+      ],
       "battle_options": "700201",
       "battle_option_ids": [
         700201
@@ -542,6 +557,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 21.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/Shield",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 24.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_IsUnitAttr/Destruction"
+        }
+      ],
       "battle_options": "700301/700302",
       "battle_option_ids": [
         700301,

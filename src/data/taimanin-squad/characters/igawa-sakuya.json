@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "20001",
       "battle_option_ids": [
         20001
@@ -488,6 +490,17 @@
       "additional_hits": 1,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 141.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddAttack",
+          "target": "eBOTarget_HitTargetList",
+          "value": 196.9,
+          "rate": 100,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_HasBuff/Stealth"
+        }
+      ],
       "battle_options": "20101/20102/20103",
       "battle_option_ids": [
         20101,
@@ -517,6 +530,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/Stealth",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "20201",
       "battle_option_ids": [
         20201
@@ -544,6 +569,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/2",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 50,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsDmgTypeByJudge/AllHit"
+        }
+      ],
       "battle_options": "20301",
       "battle_option_ids": [
         20301

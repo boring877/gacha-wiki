@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 15.0,
+      "effects": [],
       "battle_options": "450001",
       "battle_option_ids": [
         450001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 252.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 5,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "450101/450102",
       "battle_option_ids": [
         450101,
@@ -516,6 +530,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 173.1,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 22.5,
+          "rate": 50,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasDeBuff/Bleeding"
+        },
+        {
+          "type": "eBOFunc_AddBuff/CriRateUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 32.5,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "450201/450202/450203",
       "battle_option_ids": [
         450201,
@@ -545,6 +580,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 405.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Bleeding",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 3,
+          "value": 10.0,
+          "rate": 75,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": ""
+        }
+      ],
       "battle_options": "450301/450302/450303/450304/450305",
       "battle_option_ids": [
         450301,
@@ -576,6 +623,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "450401/450402",
       "battle_option_ids": [
         450401,

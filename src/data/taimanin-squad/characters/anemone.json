@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "770001",
       "battle_option_ids": [
         770001
@@ -488,6 +490,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": -19.5,
+          "rate": 20,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "770101/770102",
       "battle_option_ids": [
         770101,
@@ -516,6 +530,35 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 110.4,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_TurnGaugeDrain",
+          "target": "eBOTarget_HitTargetList",
+          "value": 12.5,
+          "rate": 35,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_HasDeBuffMoreCnt/4"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Poison",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 3,
+          "value": 2.5,
+          "rate": 60,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_LessTurnGauge/30"
+        }
+      ],
       "battle_options": "770201/770202/770203/770204",
       "battle_option_ids": [
         770201,
@@ -546,6 +589,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+      "multiplier": 436.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 50.0,
+          "rate": 99,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Restraint",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 45,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/SpdDown"
+        }
+      ],
       "battle_options": "770301/770302/770303/770304",
       "battle_option_ids": [
         770301,
@@ -576,6 +640,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "770401",
       "battle_option_ids": [
         770401

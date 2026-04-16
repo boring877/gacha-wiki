@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "50001",
       "battle_option_ids": [
         50001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 236.3,
+      "effects": [],
       "battle_options": "50101/50102/50103",
       "battle_option_ids": [
         50101,
@@ -517,6 +521,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/DefDown",
+          "target": "eBOTarget_Enemy/1",
+          "duration": 2,
+          "value": -50.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": "eBOCond_IsUnitClass/Class_DEF"
+        },
+        {
+          "type": "eBOFunc_AddBuff/Stealth",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "50201/50202/50203",
       "battle_option_ids": [
         50201,
@@ -546,6 +571,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 498.5,
+      "effects": [],
       "battle_options": "50301/50302",
       "battle_option_ids": [
         50301,
@@ -574,6 +601,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_HitTarget",
+          "value": 15.0,
+          "rate": 10,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
+        }
+      ],
       "battle_options": "50401",
       "battle_option_ids": [
         50401

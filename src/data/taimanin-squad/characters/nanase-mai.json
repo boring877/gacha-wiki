@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": 15.0,
+      "effects": [],
       "battle_options": "360001",
       "battle_option_ids": [
         360001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 157.5,
+      "effects": [],
       "battle_options": "360101/360102/360103",
       "battle_option_ids": [
         360101,
@@ -517,6 +521,34 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[H:10]/[B:10]/[H:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DefUp",
+          "target": "eBOTarget_Ally/1",
+          "duration": 2,
+          "value": 45.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_HitTargetList",
+          "value": 25.5,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_CoolTimeTurn/4",
+          "target": "eBOTarget_Self",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": "eBOCond_HasBuff/DefUp"
+        }
+      ],
       "battle_options": "360201/360202/360203",
       "battle_option_ids": [
         360201,
@@ -546,6 +578,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DmgBlockCount",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 3.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_LessHP/50"
+        },
+        {
+          "type": "eBOFunc_AddBuff/DmgBlockCount",
+          "target": "eBOTarget_Ally/All",
+          "duration": 2,
+          "value": 2.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        }
+      ],
       "battle_options": "360301/360302",
       "battle_option_ids": [
         360301,
@@ -574,6 +627,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CoolTimeTurn/All",
+          "target": "eBOTarget_AtkMoreAlly/1",
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        }
+      ],
       "battle_options": "360401",
       "battle_option_ids": [
         360401

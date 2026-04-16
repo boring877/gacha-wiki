@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "110001",
       "battle_option_ids": [
         110001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]/[SPD]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 393.8,
+      "effects": [],
       "battle_options": "110101",
       "battle_option_ids": [
         110101
@@ -515,6 +519,26 @@
       "additional_hits": 1,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 128.6,
+      "effects": [
+        {
+          "type": "eBOFunc_AddAttack",
+          "target": "eBOTarget_HitTargetList",
+          "value": 178.6,
+          "rate": 100,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_HasBuff/SpdUp"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Weaken",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 22.5,
+          "rate": 65,
+          "timing": "eBOTiming_ActionLast",
+          "condition": "eBOCond_IsDmgTypeByAction/AddAtk"
+        }
+      ],
       "battle_options": "110201/110202/110203/110204",
       "battle_option_ids": [
         110201,
@@ -545,6 +569,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 436.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 24.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsKill"
+        }
+      ],
       "battle_options": "110301/110302/110303/110304",
       "battle_option_ids": [
         110301,
@@ -575,6 +611,15 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 3.0,
+          "timing": "eBOTiming_OnAttackCalc"
+        }
+      ],
       "battle_options": "110401",
       "battle_option_ids": [
         110401

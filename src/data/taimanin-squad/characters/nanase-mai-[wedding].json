@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2550101/2550102/2550103",
       "battle_option_ids": [
         2550101,
@@ -490,6 +492,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 354.8,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/HealRateDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": 80.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_HasNotBuff/All"
+        }
+      ],
       "battle_options": "2550201/2550202/2550203",
       "battle_option_ids": [
         2550201,
@@ -519,6 +533,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/AllyProtection",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 60.0,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2550301/2550302",
       "battle_option_ids": [
         2550301,
@@ -547,6 +573,17 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[H:10]/[H:10]/[H:10]/[H:10]/[H:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_Heal/MaxHp",
+          "target": "eBOTarget_AllyRnd/1",
+          "value": 21.0,
+          "rate": 0,
+          "timing": "eBOTiming_TurnStart",
+          "condition": ""
+        }
+      ],
       "battle_options": "2550401",
       "battle_option_ids": [
         2550401

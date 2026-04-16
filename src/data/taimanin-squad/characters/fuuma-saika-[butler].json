@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "380001",
       "battle_option_ids": [
         380001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "380101/380102",
       "battle_option_ids": [
         380101,
@@ -516,6 +520,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 692.2,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/SpdDown",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 2,
+          "value": -24.0,
+          "rate": 99,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_IsRemoveBuffDebuff/SpdDown"
+        }
+      ],
       "battle_options": "380201/380202/380203",
       "battle_option_ids": [
         380201,
@@ -545,6 +561,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 838.7,
+      "effects": [],
       "battle_options": "380301/380302/380303",
       "battle_option_ids": [
         380301,
@@ -574,6 +592,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "380401/380402",
       "battle_option_ids": [
         380401,

@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "80001",
       "battle_option_ids": [
         80001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 262.5,
+      "effects": [],
       "battle_options": "80101",
       "battle_option_ids": [
         80101
@@ -515,6 +519,27 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[P:10]/[D:10]/[P:10]/[D:10]",
+      "multiplier": 765.5,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasNotDeBuff/Provocation"
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_HitTarget",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 35,
+          "timing": "eBOTiming_OnAction",
+          "condition": "eBOCond_HasDeBuff/Provocation"
+        }
+      ],
       "battle_options": "80201/80202/80203",
       "battle_option_ids": [
         80201,
@@ -544,6 +569,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Confuse",
+          "target": "eBOTarget_EnemyRnd/1",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 30,
+          "timing": "eBOTiming_OnAttack",
+          "condition": "eBOCond_HasDeBuff/Confuse"
+        }
+      ],
       "battle_options": "80301",
       "battle_option_ids": [
         80301

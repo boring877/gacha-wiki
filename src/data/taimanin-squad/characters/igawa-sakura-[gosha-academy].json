@@ -461,6 +461,15 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 3.0,
+          "timing": "eBOTiming_OnActionCalc"
+        }
+      ],
       "battle_options": "2350101/2350102",
       "battle_option_ids": [
         2350101,
@@ -489,6 +498,15 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 646.1,
+      "effects": [
+        {
+          "type": "eBOFunc_CriRateBySpdRate",
+          "target": "NONE",
+          "value": 15.0,
+          "timing": "eBOTiming_OnActionCalc"
+        }
+      ],
       "battle_options": "2350201/2350202/2350203/2350204",
       "battle_option_ids": [
         2350201,
@@ -519,6 +537,18 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/SpdUp",
+          "target": "eBOTarget_HitTarget",
+          "duration": 2,
+          "value": 19.5,
+          "rate": 0,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "2350301/2350302/2350303",
       "battle_option_ids": [
         2350301,
@@ -548,6 +578,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "2350401",
       "battle_option_ids": [
         2350401

@@ -461,6 +461,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_HitTargetList",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 15,
+          "timing": "eBOTiming_ActionLast",
+          "condition": ""
+        }
+      ],
       "battle_options": "1090101/1090102",
       "battle_option_ids": [
         1090101,
@@ -489,6 +501,27 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "multiplier": null,
+      "effects": [
+        {
+          "type": "eBOFunc_AddBuff/DmgReflect",
+          "target": "eBOTarget_Self",
+          "duration": 2,
+          "value": 10.0,
+          "rate": 0,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_Attacker",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 15,
+          "timing": "eBOTiming_OnHit",
+          "condition": "eBOCond_IsCoolTime/2"
+        }
+      ],
       "battle_options": "1090201/1090202",
       "battle_option_ids": [
         1090201,
@@ -517,6 +550,18 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 911.9,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Burn",
+          "target": "eBOTarget_HitTarget",
+          "duration": 3,
+          "value": 3.5,
+          "rate": 95,
+          "timing": "eBOTiming_OnAction",
+          "condition": ""
+        }
+      ],
       "battle_options": "1090301/1090302/1090303",
       "battle_option_ids": [
         1090301,

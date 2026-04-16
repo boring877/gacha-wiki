@@ -461,6 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "200001",
       "battle_option_ids": [
         200001
@@ -488,6 +490,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 504.0,
+      "effects": [],
       "battle_options": "200101/200102",
       "battle_option_ids": [
         200101,
@@ -516,6 +520,35 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
+      "multiplier": 366.1,
+      "effects": [
+        {
+          "type": "eBOFunc_AddDeBuff/Provocation",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 45,
+          "timing": "eBOTiming_Action",
+          "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Provocation",
+          "target": "eBOTarget_Enemy/All",
+          "duration": 2,
+          "value": 0.0,
+          "rate": 50,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_IsUnitAttr/Agility"
+        },
+        {
+          "type": "eBOFunc_TurnGaugeDown",
+          "target": "eBOTarget_Enemy/All",
+          "value": 15.0,
+          "rate": 95,
+          "timing": "eBOTiming_Action",
+          "condition": "eBOCond_IsUnitAttr/Agility"
+        }
+      ],
       "battle_options": "200201/200202/200203/200204",
       "battle_option_ids": [
         200201,
@@ -546,6 +579,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "",
+      "multiplier": null,
+      "effects": [],
       "battle_options": "200301",
       "battle_option_ids": [
         200301
