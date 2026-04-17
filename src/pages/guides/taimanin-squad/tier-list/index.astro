@@ -32,13 +32,6 @@ const pageDescription = `Complete tier list for ${totalChars} characters in Taim
   gameTitle="Tier List"
 >
   <div class="tier-list-container">
-    <div class="tier-list-info">
-      <p class="tier-list-description">
-        Complete character rankings for {totalChars} released characters (SR/SR+/SSR), organized by element.
-        Tiers are based on overall performance across all content.
-      </p>
-    </div>
-
     {Object.entries(tierData).map(([elementName, data]) => (
       <section class="ts-tl-section">
         <div class="ts-tl-section-header">
@@ -55,7 +48,7 @@ const pageDescription = `Complete tier list for ${totalChars} characters in Taim
               <div class={`tier-row tier-${tier.toLowerCase()}`}>
                 <div
                   class="tier-label"
-                  style={`background-color: ${TIER_BG}; color: ${TIER_DEFINITIONS[tier].color}`}
+                  style={`color: ${TIER_DEFINITIONS[tier].color}`}
                 >
                   <span class="tier-name">{tier}</span>
                 </div>
