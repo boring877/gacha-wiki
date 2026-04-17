@@ -310,6 +310,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Characters',
         links: [
+          { name: 'Database', href: '/guides/taimanin-squad/characters/' },
           { name: 'Character Lore', href: '/guides/taimanin-squad/character-lore/' },
           { name: 'Character Stats', href: '/guides/taimanin-squad/character-stats/' },
           { name: 'Weapons', href: '/guides/taimanin-squad/weapons/' },
@@ -323,6 +324,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Skill Index', href: '/guides/taimanin-squad/skill-index/' },
           { name: 'Buffs & Debuffs', href: '/guides/taimanin-squad/buff-debuff/' },
+          { name: 'Bonds & Synergy', href: '/guides/taimanin-squad/bonds/' },
           { name: 'Game Mechanics', href: '/guides/taimanin-squad/mechanics/' },
         ],
       },

@@ -1,0 +1,336 @@
+---
+// Taimanin Squad Character Database Listing Page
+import CharacterDatabaseLayout from '../../../../layouts/taimanin-squad/CharacterDatabaseLayout.astro';
+import { TAIMANIN_SQUAD_CHARACTERS } from '../../../../data/taimanin-squad/characters.js';
+import { RELEASED_IDS } from '../../../../data/taimanin-squad/tier-list-v2.js';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+
+const rarities = [...new Set(TAIMANIN_SQUAD_CHARACTERS.map(c => c.rarity))].sort();
+const elements = ['Power', 'Technique', 'Agility', 'Balance'];
+const roles = ['Attacker', 'Defender', 'Support'];
+
+const ssrCount = TAIMANIN_SQUAD_CHARACTERS.filter(c => c.rarity === 'SSR').length;
+const srpCount = TAIMANIN_SQUAD_CHARACTERS.filter(c => c.rarity === 'SR+').length;
+const srCount = TAIMANIN_SQUAD_CHARACTERS.filter(c => c.rarity === 'SR').length;
+const rpCount = TAIMANIN_SQUAD_CHARACTERS.filter(c => c.rarity === 'R+').length;
+const rCount = TAIMANIN_SQUAD_CHARACTERS.filter(c => c.rarity === 'R').length;
+
+const STAR_MAP = { 'SSR': '★★★★★', 'SR+': '★★★★', 'SR': '★★★', 'R+': '★★', 'R': '★' };
+const STAR_COUNT = { 'SSR': 5, 'SR+': 4, 'SR': 3, 'R+': 2, 'R': 1 };
+
+const rarityOrder = { SSR: 0, 'SR+': 1, SR: 2, 'R+': 3, R: 4 };
+const sorted = [...TAIMANIN_SQUAD_CHARACTERS].sort((a, b) => {
+  const aReleased = RELEASED_IDS.has(a.id) ? 0 : 1;
+  const bReleased = RELEASED_IDS.has(b.id) ? 0 : 1;
+  if (aReleased !== bReleased) return aReleased - bReleased;
+  if (rarityOrder[a.rarity] !== rarityOrder[b.rarity]) return rarityOrder[a.rarity] - rarityOrder[b.rarity];
+  return (a.names?.english || a.name).localeCompare(b.names?.english || b.name);
+});
+
+const pageTitle = 'Character Database - Taimanin Squad Wiki | GachaWiki';
+const pageDescription = `Complete character database for Taimanin Squad. Browse all ${TAIMANIN_SQUAD_CHARACTERS.length} characters with stats, skills, and details.`;
+---
+
+<CharacterDatabaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  gameTitle="Character Database"
+>
+  <div class="ts-cdb-container">
+    <!-- Stats Bar -->
+    <div class="ts-cdb-stats-bar">
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{TAIMANIN_SQUAD_CHARACTERS.length}</div>
+        <div class="ts-cdb-stats-label">Total</div>
+      </div>
+      <div class="ts-cdb-stats-divider"></div>
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{ssrCount}</div>
+        <div class="ts-cdb-stats-label">SSR</div>
+      </div>
+      <div class="ts-cdb-stats-divider"></div>
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{srpCount}</div>
+        <div class="ts-cdb-stats-label">SR+</div>
+      </div>
+      <div class="ts-cdb-stats-divider"></div>
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{srCount}</div>
+        <div class="ts-cdb-stats-label">SR</div>
+      </div>
+      <div class="ts-cdb-stats-divider"></div>
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{rpCount}</div>
+        <div class="ts-cdb-stats-label">R+</div>
+      </div>
+      <div class="ts-cdb-stats-divider"></div>
+      <div class="ts-cdb-stats-item">
+        <div class="ts-cdb-stats-value">{rCount}</div>
+        <div class="ts-cdb-stats-label">R</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="ts-cdb-filters">
+      <div class="ts-cdb-filter-row">
+        <div class="ts-cdb-filter-group">
+          <label class="ts-cdb-filter-label">Search</label>
+          <input type="text" id="char-search" class="ts-cdb-filter-input" placeholder="Search by name..." />
+        </div>
+        <div class="ts-cdb-filter-group">
+          <label class="ts-cdb-filter-label">Rarity</label>
+          <select id="filter-rarity" class="ts-cdb-filter-input">
+            <option value="">All</option>
+            {rarities.map(r => <option value={r}>{STAR_MAP[r] || r}</option>)}
+          </select>
+        </div>
+        <div class="ts-cdb-filter-group">
+          <label class="ts-cdb-filter-label">Element</label>
+          <select id="filter-element" class="ts-cdb-filter-input">
+            <option value="">All</option>
+            {elements.map(e => <option value={e}>{e}</option>)}
+          </select>
+        </div>
+        <div class="ts-cdb-filter-group">
+          <label class="ts-cdb-filter-label">Role</label>
+          <select id="filter-role" class="ts-cdb-filter-input">
+            <option value="">All</option>
+            {roles.map(r => <option value={r}>{r}</option>)}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort -->
+    <div class="ts-cdb-sort">
+      <span class="ts-cdb-sort-label">Sort by:</span>
+      <button class="ts-cdb-sort-btn active" data-sort="default">Default</button>
+      <button class="ts-cdb-sort-btn" data-sort="name">Name</button>
+      <button class="ts-cdb-sort-btn" data-sort="hp">HP</button>
+      <button class="ts-cdb-sort-btn" data-sort="atk">ATK</button>
+      <button class="ts-cdb-sort-btn" data-sort="def">DEF</button>
+      <button class="ts-cdb-sort-btn" data-sort="spd">SPD</button>
+    </div>
+
+    <!-- View Toggle -->
+    <div class="ts-cdb-view-toggle">
+      <button class="ts-cdb-view-btn active" id="view-table" title="Table view">&#9776;</button>
+      <button class="ts-cdb-view-btn" id="view-grid" title="Grid view">&#9638;</button>
+    </div>
+
+    <!-- Table View -->
+    <div class="ts-cdb-table-wrapper" id="table-view">
+      <table class="ts-cdb-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Character</th>
+            <th>Rarity</th>
+            <th>Element</th>
+            <th>Role</th>
+            <th>Trait</th>
+            <th class="ts-cdb-stat-col">HP</th>
+            <th class="ts-cdb-stat-col">ATK</th>
+            <th class="ts-cdb-stat-col">DEF</th>
+            <th class="ts-cdb-stat-col">SPD</th>
+          </tr>
+        </thead>
+        <tbody id="char-table-body">
+          {sorted.map((char, i) => (
+            <tr class="ts-cdb-row" data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role} data-hp={char.stats?.HP || 0} data-atk={char.stats?.ATK || 0} data-def={char.stats?.DEF || 0} data-spd={char.stats?.SPD || 0}>
+              <td class="ts-cdb-cell-num">{i + 1}</td>
+              <td class="ts-cdb-cell-char">
+                <a href={`/guides/taimanin-squad/characters/${char.slug}/`} class="ts-cdb-char-link">
+                  <TSCharacterImage icon={char.icon} alt={char.names?.english || 'Character'} width={40} height={40} />
+                  <span class="ts-cdb-char-name">{char.names?.english || char.name}</span>
+                </a>
+              </td>
+              <td>
+                <span class={`ts-badge-stars stars-${STAR_COUNT[char.rarity] || 1}`}>
+                  {STAR_MAP[char.rarity] || char.rarity}
+                </span>
+              </td>
+              <td>
+                <span class="ts-cdb-element">
+                  <TSTypeIcon type={char.element} size={16} />
+                  <span>{char.element}</span>
+                </span>
+              </td>
+              <td>
+                <span class="ts-cdb-role">
+                  <TSRoleIcon role={char.role} size={16} />
+                  <span>{char.role}</span>
+                </span>
+              </td>
+              <td>
+                <span class="ts-cdb-trait">
+                  <TSTraitIcon trait={char.trait} size={16} />
+                </span>
+              </td>
+              <td class="ts-cdb-stat-col">{char.stats?.HP?.toLocaleString() || '-'}</td>
+              <td class="ts-cdb-stat-col">{char.stats?.ATK?.toLocaleString() || '-'}</td>
+              <td class="ts-cdb-stat-col">{char.stats?.DEF?.toLocaleString() || '-'}</td>
+              <td class="ts-cdb-stat-col">{char.stats?.SPD ?? '-'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Grid View -->
+    <div class="ts-cdb-grid" id="grid-view" style="display: none;">
+      {sorted.map(char => (
+        <a href={`/guides/taimanin-squad/characters/${char.slug}/`} class="ts-cdb-grid-card" data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role}>
+          <div class="ts-cdb-grid-img">
+            <TSCharacterImage icon={char.icon} alt={char.names?.english || 'Character'} width={80} height={80} />
+          </div>
+          <div class="ts-cdb-grid-info">
+            <span class="ts-cdb-grid-name">{char.names?.english || char.name}</span>
+            <div class="ts-cdb-grid-badges">
+              <span class={`ts-badge-stars stars-${STAR_COUNT[char.rarity] || 1}`}>{STAR_MAP[char.rarity] || char.rarity}</span>
+              <span class="ts-cdb-grid-element"><TSTypeIcon type={char.element} size={14} /></span>
+              <span class="ts-cdb-grid-role"><TSRoleIcon role={char.role} size={14} /></span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const rows = document.querySelectorAll('.ts-cdb-row');
+  const gridCards = document.querySelectorAll('.ts-cdb-grid-card');
+  const searchInput = document.getElementById('char-search');
+  const filterRarity = document.getElementById('filter-rarity');
+  const filterElement = document.getElementById('filter-element');
+  const filterRole = document.getElementById('filter-role');
+  const sortBtns = document.querySelectorAll('.ts-cdb-sort-btn');
+  const tableView = document.getElementById('table-view');
+  const gridView = document.getElementById('grid-view');
+  const viewTable = document.getElementById('view-table');
+  const viewGrid = document.getElementById('view-grid');
+
+  const rarityOrder = { 'SSR': 0, 'SR+': 1, 'SR': 2, 'R+': 3, 'R': 4 };
+  let currentSort = 'default';
+  let sortAsc = false;
+
+  function getFiltered() {
+    const search = (searchInput?.value || '').toLowerCase();
+    const rarity = filterRarity?.value || '';
+    const element = filterElement?.value || '';
+    const role = filterRole?.value || '';
+    return { search, rarity, element, role };
+  }
+
+  function applyFilters() {
+    const f = getFiltered();
+    [rows, gridCards].forEach(items => {
+      items.forEach(item => {
+        const name = (item.dataset.name || '').toLowerCase();
+        const r = item.dataset.rarity || '';
+        const e = item.dataset.element || '';
+        const ro = item.dataset.role || '';
+        const show = name.includes(f.search) && (!f.rarity || r === f.rarity) && (!f.element || e === f.element) && (!f.role || ro === f.role);
+        item.style.display = show ? '' : 'none';
+      });
+    });
+    renumber();
+  }
+
+  function renumber() {
+    let n = 1;
+    rows.forEach(row => {
+      if (row.style.display !== 'none') {
+        const cell = row.querySelector('.ts-cdb-cell-num');
+        if (cell) cell.textContent = n++;
+      }
+    });
+  }
+
+  function sortItems(sortBy) {
+    if (currentSort === sortBy) {
+      sortAsc = !sortAsc;
+    } else {
+      currentSort = sortBy;
+      sortAsc = sortBy === 'name';
+    }
+
+    const dir = sortAsc ? 1 : -1;
+
+    const rowArray = Array.from(rows);
+    rowArray.sort((a, b) => {
+      if (sortBy === 'default') {
+        const ra = rarityOrder[a.dataset.rarity] ?? 9;
+        const rb = rarityOrder[b.dataset.rarity] ?? 9;
+        if (ra !== rb) return ra - rb;
+        return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      }
+      if (sortBy === 'name') {
+        return dir * (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      }
+      const aVal = parseFloat(a.dataset[sortBy]) || 0;
+      const bVal = parseFloat(b.dataset[sortBy]) || 0;
+      return dir * (aVal - bVal);
+    });
+
+    const tbody = document.getElementById('char-table-body');
+    if (tbody) rowArray.forEach(row => tbody.appendChild(row));
+
+    const gridArray = Array.from(gridCards);
+    gridArray.sort((a, b) => {
+      if (sortBy === 'default') {
+        const ra = rarityOrder[a.dataset.rarity] ?? 9;
+        const rb = rarityOrder[b.dataset.rarity] ?? 9;
+        if (ra !== rb) return ra - rb;
+        return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      }
+      if (sortBy === 'name') {
+        return dir * (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      }
+      return 0;
+    });
+    if (gridView) gridArray.forEach(card => gridView.appendChild(card));
+
+    sortBtns.forEach(btn => {
+      const icon = btn.querySelector('.ts-cdb-sort-icon');
+      if (btn.dataset.sort === sortBy) {
+        btn.classList.add('active');
+        if (icon) icon.textContent = sortAsc ? '▲' : '▼';
+      } else {
+        btn.classList.remove('active');
+        if (icon) icon.textContent = '▲';
+      }
+    });
+
+    renumber();
+  }
+
+  [searchInput, filterRarity, filterElement, filterRole].forEach(el => {
+    el?.addEventListener('input', applyFilters);
+    el?.addEventListener('change', applyFilters);
+  });
+
+  sortBtns.forEach(btn => {
+    btn.addEventListener('click', () => sortItems(btn.dataset.sort));
+  });
+
+  viewTable?.addEventListener('click', () => {
+    viewTable.classList.add('active');
+    viewGrid?.classList.remove('active');
+    tableView.style.display = '';
+    gridView.style.display = 'none';
+  });
+
+  viewGrid?.addEventListener('click', () => {
+    viewGrid.classList.add('active');
+    viewTable?.classList.remove('active');
+    gridView.style.display = '';
+    tableView.style.display = 'none';
+  });
+});
+</script>

@@ -43,7 +43,7 @@ function findCharacterImage() {
 
   if (charImages.length === 0) return null;
 
-  // Target dimensions based on variant
+// Target dimensions based on variant
   const targetWidth = variant === 'icon' ? 128 : 256;
   const targetHeight = variant === 'icon' ? 128 : 512;
 
@@ -107,6 +107,8 @@ const imageModule = imageKey ? characterImages[imageKey].default : null;
   .ts-char-icon {
     object-fit: contain;
     border-radius: 8px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   .ts-char-icon-fallback {

@@ -1,0 +1,236 @@
+/* Taimanin Squad Bonds & Synergy Page */
+
+.ts-bonds-intro {
+  margin-bottom: 2rem;
+  color: var(--ts-text-primary, #f5f5f5);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.ts-bonds-intro strong {
+  color: #60A5FA;
+}
+
+.ts-bonds-section {
+  margin-bottom: 2.5rem;
+}
+
+.ts-bonds-section-title {
+  font-size: 1.3rem;
+  color: var(--ts-text-primary, #fff);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ts-primary, #6b5b7a);
+}
+
+.ts-bonds-subtitle {
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+/* Bond Cards Grid */
+.ts-bonds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.ts-bond-card {
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ts-bond-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ts-bond-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ts-text-primary, #fff);
+  margin: 0;
+}
+
+.ts-bond-bonus {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255, 215, 0, 0.15);
+  color: #FFD700;
+  white-space: nowrap;
+}
+
+.ts-bond-units {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ts-bond-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  background: var(--ts-bg-tertiary, #242028);
+}
+
+.ts-bond-unit img {
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.ts-bond-unit-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ts-text-primary, #f5f5f5);
+}
+
+.ts-bond-skill {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ts-border, #2e2838);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ts-bond-skill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ts-bond-skill-label {
+  font-size: 0.8rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+.ts-bond-skill-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #60A5FA;
+}
+
+.ts-bond-skill-mult {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FFD700;
+  margin-left: 0.5rem;
+}
+
+.ts-bond-skill-desc {
+  font-size: 0.85rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+  line-height: 1.6;
+  margin: 0.2rem 0 0;
+}
+
+.ts-bond-skill-pending {
+  font-size: 0.85rem;
+  color: var(--ts-text-muted, #696969);
+  font-style: italic;
+}
+
+.ts-bond-charge {
+  font-size: 0.75rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+/* Synergy Cards */
+.ts-synergy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ts-synergy-card {
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ts-synergy-owner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ts-synergy-char {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+  background: var(--ts-bg-tertiary, #242028);
+}
+
+.ts-synergy-char img {
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.ts-synergy-char span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-synergy-arrow {
+  font-size: 1.2rem;
+  color: var(--ts-primary, #6b5b7a);
+}
+
+.ts-synergy-type-badge {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: var(--ts-bg-tertiary, #242028);
+  color: var(--ts-accent, #9a8aaa);
+}
+
+.ts-synergy-details {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ts-border, #2e2838);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ts-synergy-skill {
+  font-size: 0.8rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+.ts-synergy-condition {
+  font-size: 0.78rem;
+  color: #F59E0B;
+}
+
+.ts-synergy-bonus {
+  font-size: 0.78rem;
+  color: #34D399;
+}
+
+@media (max-width: 768px) {
+  .ts-bonds-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-synergy-owner {
+    flex-wrap: wrap;
+  }
+}

@@ -1,34 +1,29 @@
 ---
 // Taimanin Squad Tier List Page
-// Displays tier rankings for SSR and R characters
+// Unified tier list, all elements visible on one page
+// Only released SR/SR+/SSR characters
 
 import TierListLayout from '../../../../layouts/taimanin-squad/TierListLayout.astro';
 import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
 import {
-  GAME_MODES,
-  getTierListByMode,
-  getAllSSRCharacters
-} from '../../../../data/taimanin-squad/tier-lists.js';
-import {
-  AURA_TYPES,
-  getRTierList,
-  getAllRCharacters
-} from '../../../../data/taimanin-squad/r-tier-lists.js';
+  buildTierList,
+  TIER_DEFINITIONS,
+  TIER_ORDER,
+  TIER_BG,
+  ELEMENTS,
+  getTotalReleasedCount,
+} from '../../../../data/taimanin-squad/tier-list-v2.js';
 
-// Get SSR tier lists for each mode
-const mobClearList = getTierListByMode('mob-clear');
-const bossList = getTierListByMode('boss');
+const tierData = buildTierList();
+const totalChars = getTotalReleasedCount();
 
-// Get R tier list
-const rTierList = getRTierList();
+const STAR_MAP = { 'SSR': '★★★★★', 'SR+': '★★★★', 'SR': '★★★', 'R+': '★★', 'R': '★' };
+const STAR_COUNT = { 'SSR': 5, 'SR+': 4, 'SR': 3, 'R+': 2, 'R': 1 };
 
-// Count characters
-const totalSSR = getAllSSRCharacters().length;
-const totalR = getAllRCharacters().length;
-
-// Page metadata
 const pageTitle = 'Tier List - Taimanin Squad Wiki | GachaWiki';
-const pageDescription = `Complete tier list for ${totalSSR} SSR and R characters in Taimanin Squad. Rankings for all game modes.`;
+const pageDescription = `Complete tier list for ${totalChars} characters in Taimanin Squad. Rankings organized by element: Power, Technique, Agility, Balance.`;
 ---
 
 <TierListLayout
@@ -36,184 +31,56 @@ const pageDescription = `Complete tier list for ${totalSSR} SSR and R characters
   description={pageDescription}
   gameTitle="Tier List"
 >
-  <div class="ts-tier-container">
-    <!-- Rarity Toggle -->
-    <div class="ts-rarity-toggle">
-      <button class="ts-rarity-btn active" data-rarity="ssr">
-        SSR (Legend)
-      </button>
-      <button class="ts-rarity-btn" data-rarity="r">
-        R (Rare)
-      </button>
-    </div>
-
-    <!-- SSR Section -->
-    <div class="ts-rarity-section active" id="ssr-section">
-      <!-- SSR Tab Navigation -->
-      <div class="ts-tier-tabs">
-        <button class="ts-tier-tab active" data-tab="mob-clear" data-section="ssr">
-          Mob Clear
-        </button>
-        <button class="ts-tier-tab" data-tab="boss" data-section="ssr">
-          Boss / Single Target
-        </button>
-      </div>
-
-      <!-- Mob Clear Tab Content -->
-      <div class="ts-tier-content active" id="mob-clear-content">
-        <p class="ts-tier-description">
-          {mobClearList?.description || 'Best units for clearing waves of enemies and map exploration'}
-        </p>
-
-        <div class="ts-tier-grid">
-          {mobClearList?.tiers.map(tierData => (
-            <div class="ts-tier-row">
-              <div class={`ts-tier-label ts-tier-${tierData.tier.toLowerCase()}`}>
-                {tierData.definition.label}
-              </div>
-              <div class="ts-tier-characters">
-                {tierData.characters.map(char => (
-                  <div class="ts-tier-character" title={char.names?.english}>
-                    <div class="ts-tier-char-image">
-                      <TSCharacterImage
-                        icon={char.icon}
-                        alt={char.names?.english || 'Character'}
-                        width={64}
-                        height={64}
-                      />
-                    </div>
-                    <span class="ts-tier-char-name">{char.names?.english}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Boss Tab Content -->
-      <div class="ts-tier-content" id="boss-content">
-        <p class="ts-tier-description">
-          {bossList?.description || 'Best units for boss fights and single target damage'}
-        </p>
-
-        <div class="ts-tier-grid">
-          {bossList?.tiers.map(tierData => (
-            <div class="ts-tier-row">
-              <div class={`ts-tier-label ts-tier-${tierData.tier.toLowerCase()}`}>
-                {tierData.definition.label}
-              </div>
-              <div class="ts-tier-characters">
-                {tierData.characters.map(char => (
-                  <div class="ts-tier-character" title={char.names?.english}>
-                    <div class="ts-tier-char-image">
-                      <TSCharacterImage
-                        icon={char.icon}
-                        alt={char.names?.english || 'Character'}
-                        width={64}
-                        height={64}
-                      />
-                    </div>
-                    <span class="ts-tier-char-name">{char.names?.english}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <!-- R Section -->
-    <div class="ts-rarity-section" id="r-section">
-      <p class="ts-tier-description">
-        {rTierList.description}
+  <div class="tier-list-container">
+    <div class="tier-list-info">
+      <p class="tier-list-description">
+        Complete character rankings for {totalChars} released characters (SR/SR+/SSR), organized by element.
+        Tiers are based on overall performance across all content.
       </p>
-
-      <div class="ts-tier-grid">
-        {rTierList.tiers.map(tierData => (
-          <div class="ts-tier-row">
-            <div class={`ts-tier-label ts-tier-${tierData.tier.toLowerCase()}`}>
-              {tierData.definition.label}
-            </div>
-            <div class="ts-tier-characters">
-              {tierData.characters.map(char => (
-                <div class="ts-tier-character ts-tier-character-with-aura" title={`${char.names?.english} - ${char.aura?.name}`}>
-                  <div class="ts-tier-char-image">
-                    <TSCharacterImage
-                      icon={char.icon}
-                      alt={char.names?.english || 'Character'}
-                      width={64}
-                      height={64}
-                    />
-                  </div>
-                  <span class="ts-tier-char-name">{char.names?.english}</span>
-                  <span class="ts-tier-char-aura">{char.aura?.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
 
-    <!-- Last Updated -->
-    <p class="ts-tier-updated">
-      This tier list is community-driven and subject to change based on game updates and meta shifts.
-    </p>
-  </div>
+    {Object.entries(tierData).map(([elementName, data]) => (
+      <section class="ts-tl-section">
+        <div class="ts-tl-section-header">
+          <TSTypeIcon type={elementName} size={24} />
+          <h3 class="ts-tl-section-title">{elementName}</h3>
+          <span class="ts-tl-section-count">{data.total} characters</span>
+        </div>
+
+        <div class="tier-list-grid">
+          {TIER_ORDER.map(tier => {
+            const chars = data.tiers[tier];
+            if (!chars || chars.length === 0) return null;
+            return (
+              <div class={`tier-row tier-${tier.toLowerCase()}`}>
+                <div
+                  class="tier-label"
+                  style={`background-color: ${TIER_BG}; color: ${TIER_DEFINITIONS[tier].color}`}
+                >
+                  <span class="tier-name">{tier}</span>
+                </div>
+                <div class="tier-characters">
+                  {chars.map(char => (
+                    <div class="character-card" title={char.names?.english}>
+                      <TSCharacterImage
+                        icon={char.icon}
+                        alt={char.names?.english || 'Character'}
+                        width={64}
+                        height={64}
+                      />
+                      <span class={`ts-badge-stars stars-${STAR_COUNT[char.rarity] || 3}`}>
+                        {STAR_MAP[char.rarity] || char.rarity}
+                      </span>
+                      <span class="character-name">{char.names?.english}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+
+   </div>
 </TierListLayout>
-
-<script>
-  // Rarity toggle and tab switching functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const rarityBtns = document.querySelectorAll('.ts-rarity-btn');
-    const raritySections = document.querySelectorAll('.ts-rarity-section');
-
-    // Rarity toggle
-    rarityBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const rarity = btn.getAttribute('data-rarity');
-
-        // Update buttons
-        rarityBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Update sections
-        raritySections.forEach(section => {
-          section.classList.remove('active');
-          if (section.id === `${rarity}-section`) {
-            section.classList.add('active');
-          }
-        });
-      });
-    });
-
-    // Tab switching within SSR section
-    const allTabs = document.querySelectorAll('.ts-tier-tab');
-
-    allTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const tabId = tab.getAttribute('data-tab');
-        const section = tab.getAttribute('data-section');
-        const sectionEl = document.getElementById(`${section}-section`);
-
-        if (!sectionEl) return;
-
-        // Remove active from tabs in this section
-        const sectionTabs = sectionEl.querySelectorAll('.ts-tier-tab');
-        const sectionContents = sectionEl.querySelectorAll('.ts-tier-content');
-
-        sectionTabs.forEach(t => t.classList.remove('active'));
-        sectionContents.forEach(c => c.classList.remove('active'));
-
-        // Add active to clicked tab and corresponding content
-        tab.classList.add('active');
-        const content = document.getElementById(`${tabId}-content`);
-        if (content) {
-          content.classList.add('active');
-        }
-      });
-    });
-  });
-</script>

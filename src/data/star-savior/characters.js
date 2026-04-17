@@ -646,6 +646,25 @@ export const STAR_SAVIOR_CHARACTERS = [
     }
   },
   {
+    "id": 1016,
+    "name": "Lyn",
+    "slug": "lyn",
+    "title": "Wind Moon Sect",
+    "role": "Striker",
+    "rarity": "SSR",
+    "adjustType": "NUAT_STAR",
+    "statsMax": {
+      "ATK": 3388,
+      "HP": 19350,
+      "DEF": 1331,
+      "Crit Rate": 500,
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 108
+    }
+  },
+  {
     "id": 3002,
     "name": "Yoo Mina",
     "slug": "yoo-mina",

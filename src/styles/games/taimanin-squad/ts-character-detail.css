@@ -1,0 +1,502 @@
+/* Taimanin Squad Character Detail Page Styles */
+
+.ts-cd-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ts-cd-header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+  align-items: flex-start;
+}
+
+.ts-cd-header-img {
+  width: 192px;
+  height: 192px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--ts-border, #2e2838);
+  flex-shrink: 0;
+}
+
+.ts-cd-header-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ts-cd-header-info {
+  flex: 1;
+}
+
+.ts-cd-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cd-name-jp {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ts-text-muted, #888);
+  margin-bottom: 0.5rem;
+}
+
+.ts-cd-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.ts-cd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.ts-cd-badge-element, .ts-cd-badge-role, .ts-cd-badge-trait {
+  background: var(--ts-bg-tertiary, #242028);
+  color: var(--ts-text-secondary, #d3d3d3);
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-bpower {
+  font-size: 0.85rem;
+  color: var(--ts-text-muted, #888);
+}
+
+/* Sections */
+.ts-cd-section {
+  margin-bottom: 2rem;
+}
+
+.ts-cd-section-title {
+  font-size: 1.2rem;
+  color: var(--ts-text-primary, #fff);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ts-primary, #6b5b7a);
+}
+
+.ts-cd-subtitle {
+  font-size: 1rem;
+  color: var(--ts-text-primary, #fff);
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Lore */
+.ts-cd-lore {
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 10px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+/* Stats Grid */
+.ts-cd-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ts-cd-stat-card {
+  padding: 0.75rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  border: 1px solid var(--ts-border, #2e2838);
+  text-align: center;
+}
+
+.ts-cd-stat-label {
+  font-size: 0.7rem;
+  color: var(--ts-text-muted, #888);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.ts-cd-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Stats Table */
+.ts-cd-stats-table-wrapper {
+  overflow-x: auto;
+}
+
+.ts-cd-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ts-cd-stats-table th {
+  padding: 0.5rem;
+  text-align: left;
+  color: var(--ts-text-muted, #888);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-stats-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+/* Skills */
+.ts-cd-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ts-cd-skill-card {
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 10px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ts-cd-skill-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-skill-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ts-cd-skill-info {
+  flex: 1;
+}
+
+.ts-cd-skill-name {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cd-skill-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.ts-cd-skill-type {
+  font-size: 0.75rem;
+  color: #60A5FA;
+  padding: 0.1rem 0.4rem;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 4px;
+}
+
+.ts-cd-skill-cd {
+  font-size: 0.75rem;
+  color: #F59E0B;
+  padding: 0.1rem 0.4rem;
+  background: rgba(245, 158, 11, 0.15);
+  border-radius: 4px;
+}
+
+.ts-cd-skill-hits {
+  font-size: 0.75rem;
+  color: #A78BFA;
+  padding: 0.1rem 0.4rem;
+  background: rgba(167, 139, 250, 0.15);
+  border-radius: 4px;
+}
+
+.ts-cd-skill-mult {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #FFD700;
+  white-space: nowrap;
+}
+
+.ts-cd-skill-desc {
+  font-size: 0.85rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+/* Buff & Debuff Glossary */
+.ts-cd-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.ts-cd-section-header .ts-cd-section-title {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.ts-cd-glossary-link {
+  font-size: 0.8rem;
+  color: var(--ts-primary, #6b5b7a);
+  text-decoration: none;
+}
+
+.ts-cd-glossary-link:hover {
+  text-decoration: underline;
+}
+
+.ts-cd-glossary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.5rem;
+}
+
+.ts-cd-glossary-item {
+  padding: 0.6rem 0.8rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ts-cd-glossary-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ts-cd-glossary-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.glossary-buff .ts-cd-glossary-name {
+  color: #34D399;
+}
+
+.glossary-debuff .ts-cd-glossary-name {
+  color: #F87171;
+}
+
+.ts-cd-glossary-desc {
+  font-size: 0.78rem;
+  color: var(--ts-text-muted, #888);
+  line-height: 1.4;
+}
+
+/* Weapons */
+.ts-cd-weapons-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.75rem;
+}
+
+.ts-cd-weapon-card {
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 10px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-weapon-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.ts-cd-weapon-icon {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.ts-cd-weapon-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ts-cd-weapon-info {
+  flex: 1;
+}
+
+.ts-cd-weapon-name {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cd-weapon-stat {
+  font-size: 0.8rem;
+  color: #10B981;
+  margin-bottom: 0.5rem;
+}
+
+.ts-cd-weapon-skill {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cd-weapon-skill-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ts-text-primary, #fff);
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ts-cd-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ts-cd-badges {
+    justify-content: center;
+  }
+
+  .ts-cd-skill-header {
+    flex-wrap: wrap;
+  }
+
+  .ts-cd-weapons-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Bonds & Synergy */
+.ts-cd-bonds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ts-cd-bond-card {
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ts-cd-bond-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cd-bond-partners {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ts-cd-bond-partner {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  background: var(--ts-bg-tertiary, #242028);
+}
+
+.ts-cd-bond-partner img {
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.ts-cd-bond-partner span {
+  font-size: 0.8rem;
+  color: #60A5FA;
+}
+
+.ts-cd-bond-skill {
+  font-size: 0.8rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+.ts-cd-bond-skill strong {
+  color: #60A5FA;
+}
+
+.ts-cd-bond-charge {
+  font-size: 0.7rem;
+  color: var(--ts-text-muted, #888);
+  margin-left: 0.5rem;
+}
+
+.ts-cd-bond-bonus {
+  font-size: 0.75rem;
+  color: #FFD700;
+}
+
+.ts-cd-synergies {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ts-cd-synergy-card {
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-left: 3px solid #F59E0B;
+}
+
+.ts-cd-synergy-skill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cd-synergy-condition {
+  font-size: 0.75rem;
+  color: #F59E0B;
+}
+
+.ts-cd-synergy-bonus {
+  font-size: 0.75rem;
+  color: #34D399;
+}

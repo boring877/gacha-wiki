@@ -1,0 +1,107 @@
+---
+// Taimanin Squad Bonds & Synergy Page
+import BuffDebuffLayout from '../../../../layouts/taimanin-squad/BuffDebuffLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import { TS_BONDS, TS_SKILL_SYNERGIES } from '../../../../data/taimanin-squad/ts-bonds';
+import { TAIMANIN_SQUAD_CHARACTERS } from '../../../../data/taimanin-squad/characters.js';
+import '../../../../styles/games/taimanin-squad/ts-bonds.css';
+
+const charMap = new Map();
+for (const c of TAIMANIN_SQUAD_CHARACTERS) {
+  charMap.set(c.id, c);
+}
+
+const bonds = TS_BONDS.map(bond => ({
+  ...bond,
+  partners: bond.unitIds.map(uid => charMap.get(uid)).filter(Boolean),
+}));
+
+const synergies = TS_SKILL_SYNERGIES.map(syn => ({
+  ...syn,
+  ownerChar: charMap.get(syn.unitId),
+  requiresChar: syn.requiresUnitId ? charMap.get(syn.requiresUnitId) : null,
+}));
+---
+
+<BuffDebuffLayout
+  title="Bonds & Synergy - Taimanin Squad Wiki | GachaWiki"
+  description="Complete bond groups and skill synergies in Taimanin Squad."
+  gameTitle="Bonds & Synergy"
+>
+  <div class="ts-bonds-intro">
+    <p>Deploying characters that share a special <strong>Bond</strong> together charges a Bond Gauge during battle. At 100%, you can activate a powerful <strong>Bond Skill</strong> (combo ultimate). Some skills also gain bonus effects when specific characters or types are present.</p>
+  </div>
+
+  <section class="ts-bonds-section">
+    <h2 class="ts-bonds-section-title">Bond Groups</h2>
+    <div class="ts-bonds-grid">
+      {bonds.map(bond => (
+        <div class="ts-bond-card">
+          <div class="ts-bond-header">
+            <h3 class="ts-bond-name">{bond.name}</h3>
+            {bond.bonus && <span class="ts-bond-bonus">{bond.bonus}</span>}
+          </div>
+          <div class="ts-bond-units">
+            {bond.partners.map(c => (
+              <a href={`/guides/taimanin-squad/characters/${c.slug}/`} class="ts-bond-unit">
+                <TSCharacterImage icon={c.icon} alt={c.names?.english || c.name} width={48} height={48} />
+                <span class="ts-bond-unit-name">{c.names?.english || c.name}</span>
+              </a>
+            ))}
+          </div>
+          <div class="ts-bond-skill">
+            {bond.skillName ? (
+              <div class="ts-bond-skill-info">
+                <span class="ts-bond-skill-label">Bond Skill:</span>
+                <span class="ts-bond-skill-name">{bond.skillName}</span>
+                {bond.multiplier && <span class="ts-bond-skill-mult">{bond.multiplier}% {bond.scaling}</span>}
+                {bond.skillDesc && <p class="ts-bond-skill-desc">{bond.skillDesc}</p>}
+              </div>
+            ) : (
+              <div class="ts-bond-skill-info">
+                <span class="ts-bond-skill-label">Bond Skill:</span>
+                <span class="ts-bond-skill-pending">Not yet available</span>
+              </div>
+            )}
+            <span class="ts-bond-charge">Charge Speed: {bond.chargeSpeed}x</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="ts-bonds-section">
+    <h2 class="ts-bonds-section-title">Skill Synergies</h2>
+    <p class="ts-bonds-subtitle">These skills gain bonus effects when specific characters or types are deployed together.</p>
+    <div class="ts-synergy-list">
+      {synergies.map(syn => (
+        <div class="ts-synergy-card">
+          <div class="ts-synergy-owner">
+            {syn.ownerChar ? (
+              <a href={`/guides/taimanin-squad/characters/${syn.ownerChar.slug}/`} class="ts-synergy-char">
+                <TSCharacterImage icon={syn.ownerChar.icon} alt={syn.unitName} width={40} height={40} />
+                <span>{syn.unitName}</span>
+              </a>
+            ) : (
+              <span class="ts-synergy-char">{syn.unitName}</span>
+            )}
+            <span class="ts-synergy-arrow">&#8594;</span>
+            {syn.requiresChar ? (
+              <a href={`/guides/taimanin-squad/characters/${syn.requiresChar.slug}/`} class="ts-synergy-char">
+                <TSCharacterImage icon={syn.requiresChar.icon} alt={syn.requiresName} width={40} height={40} />
+                <span>{syn.requiresName}</span>
+              </a>
+            ) : (
+              <span class="ts-synergy-type-badge">{syn.requiresType} Type</span>
+            )}
+          </div>
+          <div class="ts-synergy-details">
+            <div class="ts-synergy-skill">Skill: <strong>{syn.skillName}</strong></div>
+            <div class="ts-synergy-condition">{syn.condition}</div>
+            <div class="ts-synergy-bonus">{syn.bonus}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BuffDebuffLayout>

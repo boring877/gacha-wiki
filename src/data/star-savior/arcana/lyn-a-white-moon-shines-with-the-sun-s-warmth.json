@@ -1,0 +1,172 @@
+{
+  "id": 7101602,
+  "character": "Lyn",
+  "name": "A White Moon Shines With the Sun's Warmth",
+  "slug": "lyn-a-white-moon-shines-with-the-sun-s-warmth",
+  "grade": "SSR",
+  "specialTag": "Turn Speed",
+  "classSynergy": "All Classes",
+  "statTag": "Endurance",
+  "image": "ARCANA_EASTERN_SWORDMASTER_SSR_02.png",
+  "imageSmall": "ARCANA_EASTERN_SWORDMASTER_SSR_02_S.png",
+  "characterId": 1016,
+  "episode": "\"O heaven-sent genius, the unparalleled maid!\"\nOf your talents, did the world serenade.\n\nYet, in times of darkness, it was to your heart that they prayed,\nfor a sword may shatter, but a resolute heart can never be unmade.\n\nMany abandon all in pursuit of the blade,\nbut by that path, you are not swayed.\n\nTo the meek and the powerless, alone and afraid,\nit is your hand that reaches down to offer them aid.\n\nEven when you felt lost and betrayed,\nyour heart never wavered, never strayed.\n\nAnd as long as the laughter of children does not fade,\nthe warmth of the White Moon remains ever-present in the shade.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1000,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1400,
+      "addPerValueRate": 24
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 20,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 350,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 20,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "addPerValue": 1,
+      "statTag": "Power"
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 95,
+      "addPerValue": 95
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 1,
+      "statTag": "Health"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 50,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Daycare Service",
+      "iconType": "Training",
+      "effectType": "Stat Gain",
+      "statTag": "Health",
+      "value": 1
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5101601,
+      "title": "I'm Not Embarrassed!",
+      "rewards": [
+        {
+          "type": "Journey Buff",
+          "value": 2
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5101602,
+      "title": "The Value of All Things",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 5
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 15
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 15
+        }
+      ],
+      "reqEventClear": 710160201
+    },
+    {
+      "cutsceneId": 5101604,
+      "title": "Sparring Training at Wind Moon Sect",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Endurance",
+          "value": 8
+        },
+        {
+          "type": "SE Potential",
+          "name": "Talent of Attack",
+          "icon": "POTEN_3_RATE_ATK.png",
+          "description": "Increases ATK by 3%.",
+          "value": 1
+        },
+        {
+          "type": "SE Potential",
+          "name": "Stigmata of Speed",
+          "icon": "POTEN_SPECIAL_TRUN_SPEED.png",
+          "description": "Increases SPD by 8.",
+          "value": 1
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 12
+        },
+        {
+          "type": "SE Potential",
+          "name": "Talent of Life",
+          "icon": "POTEN_3_RATE_HP.png",
+          "description": "Increases Max HP by 3%.",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 710160202
+    }
+  ]
+}

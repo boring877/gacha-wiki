@@ -38,7 +38,7 @@ function findIcon() {
 
   // Check skill icons
   const skillKey = Object.keys(skillIcons).find(key =>
-    key.includes(`/${icon}.png`)
+    key.endsWith(`/${icon}.png`)
   );
   if (skillKey) return skillIcons[skillKey].default;
 

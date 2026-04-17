@@ -10,13 +10,13 @@ const traitImages = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 const traitMapping: Record<string, number> = {
-  'Mars': 1,
-  'Venus': 2,
+  'Moon': 1,
+  'Mars': 2,
   'Mercury': 3,
-  'Moon': 4,
-  'Sun': 5,
-  'Jupiter': 6,
-  'Saturn': 7
+  'Jupiter': 4,
+  'Venus': 5,
+  'Saturn': 6,
+  'Sun': 7
 };
 
 export interface Props {

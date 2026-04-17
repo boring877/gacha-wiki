@@ -1,0 +1,507 @@
+---
+// Taimanin Squad Individual Character Detail Page
+import CharacterDatabaseLayout from '../../../../layouts/taimanin-squad/CharacterDatabaseLayout.astro';
+import { TAIMANIN_SQUAD_CHARACTERS } from '../../../../data/taimanin-squad/characters.js';
+import '../../../../styles/games/taimanin-squad/ts-character-detail.css';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
+import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
+import TSTraitIcon from '../../../../components/taimanin-squad/TSTraitIcon.astro';
+import TSSkillIcon from '../../../../components/taimanin-squad/TSSkillIcon.astro';
+import TSWeaponImage from '../../../../components/taimanin-squad/TSWeaponImage.astro';
+import TSBuffIcon from '../../../../components/taimanin-squad/TSBuffIcon.astro';
+import { getBondsForUnit, getSynergiesForUnit } from '../../../../data/taimanin-squad/ts-bonds';
+
+export function getStaticPaths() {
+  return TAIMANIN_SQUAD_CHARACTERS.map(c => ({
+    params: { slug: c.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+let data: any = null;
+try {
+  const mod = await import(`../../../../data/taimanin-squad/characters/${slug}.json`);
+  data = mod.default || mod;
+} catch {
+  return Astro.redirect('/guides/taimanin-squad/characters/');
+}
+
+if (!data) return Astro.redirect('/guides/taimanin-squad/characters/');
+
+const charName = data.names?.english || data.name || slug;
+const pageTitle = `${charName} - Taimanin Squad Wiki | GachaWiki`;
+const pageDescription = `${charName} character guide for Taimanin Squad. Stats, skills, weapons, and evolution data.`;
+
+const OPT_TYPE_MAP: Record<string, string> = {
+  5: 'Crit Rate', 6: 'Crit DMG', 7: 'Crit RES', 8: 'ACC', 9: 'EVD',
+  10: 'HP', 11: 'ATK', 12: 'DEF', 13: 'SPD',
+};
+
+const STATS_CONFIG = [
+  { key: 'HP', label: 'HP', color: '#EF4444' },
+  { key: 'ATK', label: 'ATK', color: '#F59E0B' },
+  { key: 'DEF', label: 'DEF', color: '#3B82F6' },
+  { key: 'SPD', label: 'SPD', color: '#10B981' },
+  { key: 'CRATE', label: 'Crit Rate', color: '#A855F7' },
+  { key: 'CDMG', label: 'Crit DMG', color: '#EC4899' },
+  { key: 'CRES', label: 'Crit RES', color: '#06B6D4' },
+  { key: 'ACC', label: 'ACC', color: '#84CC16' },
+  { key: 'EVD', label: 'EVD', color: '#F97316' },
+];
+
+const STAR_CLASS: Record<number, string> = {
+  5: 'stars-5',
+  4: 'stars-4',
+  3: 'stars-3',
+  2: 'stars-2',
+  1: 'stars-1',
+};
+
+function starClass(rarity: any): string {
+  const n = typeof rarity === 'number' ? rarity : String(rarity).length;
+  return STAR_CLASS[n] || 'stars-1';
+}
+
+function cleanDescription(desc: string): string {
+  if (!desc) return '';
+  return desc
+    .replace(/\[&[^\]]+\]/g, '')
+    .replace(/\[-\]/g, '')
+    .replace(/\[\/color\]/gi, '')
+    .replace(/\[color=[^\]]*\]/gi, '')
+    .replace(/\[[0-9A-Fa-f]{6,8}\]/g, '')
+    .replace(/\n/g, '<br/>');
+}
+
+function cleanName(name: string): string {
+  if (!name) return '';
+  return name
+    .replace(/\[&[^\]]+\]/g, '')
+    .replace(/\[-\]/g, '')
+    .replace(/\[\/color\]/gi, '')
+    .replace(/\[color=[^\]]*\]/gi, '')
+    .replace(/\[[0-9A-Fa-f]{6,8}\]/g, '')
+    .trim();
+}
+
+function formatStatValue(key: string, value: number): string {
+  if (!value && value !== 0) return '-';
+  if (['CRATE', 'CDMG', 'CRES', 'ACC', 'EVD'].includes(key)) {
+    return (value / 10) + '%';
+  }
+  return value.toLocaleString();
+}
+
+const BUFF_DEBUFF_INFO: Record<string, { name: string; desc: string; isDebuff: boolean }> = {
+  'AtkUp': { name: 'ATK Up', desc: 'ATK stat increases by the effect value.', isDebuff: false },
+  'DefUp': { name: 'DEF Up', desc: 'DEF stat increases by the effect value.', isDebuff: false },
+  'SpdUp': { name: 'SPD Up', desc: 'SPD stat increases by the effect value.', isDebuff: false },
+  'CriRateUp': { name: 'Crit Rate Up', desc: 'Crit Rate stat increases by the effect value.', isDebuff: false },
+  'CriDmgUp': { name: 'Crit DMG Up', desc: 'Crit DMG stat increases by the effect value.', isDebuff: false },
+  'CriResUp': { name: 'Crit RES Up', desc: 'Crit RES stat increases by the effect value.', isDebuff: false },
+  'AccUp': { name: 'ACC Up', desc: 'ACC stat increases by the effect value.', isDebuff: false },
+  'EvdUp': { name: 'EVD Up', desc: 'EVD stat increases by the effect value.', isDebuff: false },
+  'Strengthen': { name: 'Power-up', desc: 'Reduces damage taken by the effect value.', isDebuff: false },
+  'DmgBlock': { name: 'Damage Block', desc: 'Immune to all damage for the duration.', isDebuff: false },
+  'DmgBlockCount': { name: 'Protective Shield', desc: 'Gains a protective shield. When attacked, blocks damage a set number of times based on the effect value.', isDebuff: false },
+  'DmgReflect': { name: 'Damage Reflect', desc: 'Reflects a portion of damage back to the attacker.', isDebuff: false },
+  'AllyProtection': { name: 'Protect Ally', desc: 'Redirects a portion of damage taken by an ally to self.', isDebuff: false },
+  'DeBuffBlock': { name: 'Debuff Block', desc: 'Immune to debuffs for the duration.', isDebuff: false },
+  'DeBuffBlock': { name: 'Debuff Block', desc: 'Immune to all debuffs for the duration.', isDebuff: false },
+  'CountAttack': { name: 'Counterattack', desc: 'After being attacked, counterattacks the attacker with the base skill.', isDebuff: false },
+  'Shield': { name: 'Shield', desc: 'Gains a shield equal to the effect value.', isDebuff: false },
+  'Athanasia': { name: 'Immortal', desc: 'HP does not drop below 1 for the duration.', isDebuff: false },
+  'Stealth': { name: 'Stealth', desc: 'Cannot be targeted by single-target attacks.', isDebuff: false },
+  'HealTurn': { name: 'Healing Over Time', desc: 'Recovers HP equal to the effect value% of Max HP at the start of each turn.', isDebuff: false },
+  'AtkDown': { name: 'ATK Down', desc: 'ATK stat reduces by the effect value.', isDebuff: true },
+  'DefDown': { name: 'DEF Down', desc: 'DEF stat reduces by the effect value.', isDebuff: true },
+  'SpdDown': { name: 'SPD Down', desc: 'SPD stat reduces by the effect value.', isDebuff: true },
+  'CriRateDown': { name: 'Crit Rate Down', desc: 'Crit Rate stat reduces by the effect value.', isDebuff: true },
+  'CriDmgDown': { name: 'Crit DMG Down', desc: 'Crit DMG stat reduces by the effect value.', isDebuff: true },
+  'CriResDown': { name: 'Crit RES Down', desc: 'Crit RES stat reduces by the effect value.', isDebuff: true },
+  'AccDown': { name: 'ACC Down', desc: 'ACC stat reduces by the effect value.', isDebuff: true },
+  'EvdDown': { name: 'EVD Down', desc: 'EVD stat reduces by the effect value.', isDebuff: true },
+  'Stun': { name: 'Faint', desc: 'Becomes incapacitated, and skill cooldown is paused.', isDebuff: true },
+  'Freeze': { name: 'Freeze', desc: 'Becomes incapacitated, and skill cooldown is paused. When receiving damage, deals additional damage based on the attacker\'s current HP.', isDebuff: true },
+  'Sleep': { name: 'Sleep', desc: 'Becomes incapacitated, and skill cooldown is paused. Wakes up when receiving damage.', isDebuff: true },
+  'ActiveSkillBlock': { name: 'Active Skill Disable', desc: 'Active skills get disabled.', isDebuff: true },
+  'PassiveSkillBlock': { name: 'Passive Skill Disabled', desc: 'Passive skills get deactivated.', isDebuff: true },
+  'Provocation': { name: 'Taunt', desc: 'Forced to target the provoker at the start of each turn.', isDebuff: true },
+  'HealRateDown': { name: 'Heal Reduction', desc: 'Healing received is reduced by the effect value.', isDebuff: true },
+  'BuffBlock': { name: 'Buff Disabled', desc: 'Immune to buffs for the duration.', isDebuff: true },
+  'Weaken': { name: 'Weaken', desc: 'Damage taken increases by the effect value.', isDebuff: true },
+  'Poison': { name: 'Poison', desc: 'At the start of each turn, ignores DEF and deals damage equal to the effect value% of Max HP.', isDebuff: true },
+  'PoisonDmg': { name: 'Vulnerable to Poison', desc: 'Increases the chance of being inflicted with Poison by 3x, and Poison damage increases.', isDebuff: true },
+  'Burn': { name: 'Burn', desc: 'At the start of each turn, ignores DEF and deals damage equal to the effect value% of current HP.', isDebuff: true },
+  'BurnDmg': { name: 'Vulnerable to Burn', desc: 'Increases the chance of being inflicted with Burn by 3x, and Burn damage increases.', isDebuff: true },
+  'Bleeding': { name: 'Bleed', desc: 'At the start of each turn, deals damage ignoring DEF.', isDebuff: true },
+  'BleedingDmg': { name: 'Vulnerable to Bleeding', desc: 'Increases the chance of being inflicted with Bleeding by 3x, and Bleeding damage increases.', isDebuff: true },
+  'Confuse': { name: 'Confusion', desc: 'At the start of each turn, forced to target all allies except yourself with the base skill.', isDebuff: true },
+  'Restraint': { name: 'Immobilize', desc: 'Skill cooldown is paused.', isDebuff: true },
+  'ElecShock': { name: 'Electrocute', desc: 'Active skills are disabled, and passive skills do not activate.', isDebuff: true },
+  'Absorb': { name: 'Absorb', desc: 'At the start of each turn, the caster recovers HP equal to the effect value% of the target\'s Max HP.', isDebuff: true },
+};
+
+const EFFECT_TYPE_MAP: Record<string, string> = {
+  'eBOFunc_AddBuff/AtkUp': 'AtkUp',
+  'eBOFunc_AddBuff/DefUp': 'DefUp',
+  'eBOFunc_AddBuff/SpdUp': 'SpdUp',
+  'eBOFunc_AddBuff/CriUp': 'CriRateUp',
+  'eBOFunc_AddBuff/CriDmgUp': 'CriDmgUp',
+  'eBOFunc_AddBuff/AccUp': 'AccUp',
+  'eBOFunc_AddBuff/EvdUp': 'EvdUp',
+  'eBOFunc_AddBuff/HealRateUp': 'HealTurn',
+  'eBOFunc_AddBuff/Immortal': 'Athanasia',
+  'eBOFunc_AddBuff/Barrier': 'DmgBlockCount',
+  'eBOFunc_AddBuff/Reflect': 'DmgReflect',
+  'eBOFunc_AddBuff/Taunt': 'Provocation',
+  'eBOFunc_AddBuff/Invincible': 'DmgBlock',
+  'eBOFunc_AddBuff/All': 'Strengthen',
+  'eBOFunc_AddBuff/Stealth': 'Stealth',
+  'eBOFunc_AddBuff/Shield': 'Shield',
+  'eBOFunc_AddBuff/ShieldDef': 'Shield',
+  'eBOFunc_AddBuff/DeBuffBlock': 'DeBuffBlock',
+  'eBOFunc_AddBuff/Athanasia': 'Athanasia',
+  'eBOFunc_AddBuff/CountAttack': 'CountAttack',
+  'eBOFunc_AddBuff/AllyProtection': 'AllyProtection',
+  'eBOFunc_AddBuff/HealTurn': 'HealTurn',
+  'eBOFunc_AddDeBuff/AtkDown': 'AtkDown',
+  'eBOFunc_AddDeBuff/DefDown': 'DefDown',
+  'eBOFunc_AddDeBuff/SpdDown': 'SpdDown',
+  'eBOFunc_AddDeBuff/CriDown': 'CriRateDown',
+  'eBOFunc_AddDeBuff/CriDmgDown': 'CriDmgDown',
+  'eBOFunc_AddDeBuff/AccDown': 'AccDown',
+  'eBOFunc_AddDeBuff/EvdDown': 'EvdDown',
+  'eBOFunc_AddDeBuff/HealRateDown': 'HealRateDown',
+  'eBOFunc_AddDeBuff/Stun': 'Stun',
+  'eBOFunc_AddDeBuff/Silence': 'ActiveSkillBlock',
+  'eBOFunc_AddDeBuff/Freeze': 'Freeze',
+  'eBOFunc_AddDeBuff/Poison': 'Poison',
+  'eBOFunc_AddDeBuff/Burn': 'Burn',
+  'eBOFunc_AddDeBuff/Bleed': 'Bleeding',
+  'eBOFunc_AddDeBuff/Weaken': 'Weaken',
+  'eBOFunc_AddDeBuff/CriResDown': 'CriResDown',
+  'eBOFunc_AddDeBuff/PoisonDmg': 'PoisonDmg',
+  'eBOFunc_AddDeBuff/BuffBlock': 'BuffBlock',
+  'eBOFunc_AddDeBuff/ActiveSkillBlock': 'ActiveSkillBlock',
+  'eBOFunc_AddDeBuff/PassiveSkillBlock': 'PassiveSkillBlock',
+  'eBOFunc_AddDeBuff/Sleep': 'Sleep',
+  'eBOFunc_AddDeBuff/ElecShock': 'ElecShock',
+  'eBOFunc_AddDeBuff/Confuse': 'Confuse',
+  'eBOFunc_AddDeBuff/Restraint': 'Restraint',
+  'eBOFunc_AddDeBuff/Provocation': 'Provocation',
+};
+
+function getEffectKey(type: string): string | null {
+  return EFFECT_TYPE_MAP[type] || null;
+}
+
+const allEffects = new Set<string>();
+function collectEffects(skills: any[]) {
+  for (const skill of skills) {
+    if (skill.effects) {
+      for (const eff of skill.effects) {
+        const key = getEffectKey(eff.type);
+        if (key) allEffects.add(key);
+      }
+    }
+  }
+}
+if (data.skills) collectEffects(data.skills);
+if (data.weapons) {
+  for (const wp of data.weapons) {
+    if (wp.skill_data?.effects) collectEffects([wp.skill_data]);
+  }
+}
+
+function formatMultiplier(skill: any): string | null {
+  if (!skill.multiplier) return null;
+  const m = skill.multiplier;
+  const hits = skill.hit_count || 1;
+  const scaling = skill.damage_scaling || '[ATK]';
+  const extraStat = scaling.replace('[ATK]', '').replace(/[\[\]]/g, '').replace(/^\//, '').trim();
+  const scalingLabel = extraStat ? ` (Scales with ${extraStat === 'CostHP' ? 'HP Cost' : extraStat === 'NowHp' || extraStat === 'NowHP' ? 'Current HP' : extraStat})` : '';
+
+  if (hits > 1) {
+    const total = (m * hits).toFixed(1);
+    return `${m}% x ${hits} = ${total}% ATK${scalingLabel}`;
+  }
+  return `${m}% ATK${scalingLabel}`;
+}
+---
+
+<CharacterDatabaseLayout title={pageTitle} description={pageDescription}>
+  <div class="ts-cd-container">
+    <!-- Header -->
+    <div class="ts-cd-header">
+      <div class="ts-cd-header-img">
+        <TSCharacterImage icon={data.icon} alt={charName} width={192} height={192} />
+      </div>
+      <div class="ts-cd-header-info">
+        <h1 class="ts-cd-name">{charName}</h1>
+        {data.names?.japanese && <span class="ts-cd-name-jp">{data.names.japanese}</span>}
+        <div class="ts-cd-badges">
+          <span class={`ts-badge-stars ${starClass(data.rarity_stars)}`}>{data.rarity_stars}</span>
+          <span class="ts-cd-badge ts-cd-badge-element">
+            <TSTypeIcon type={data.element} size={16} />
+            {data.element}
+          </span>
+          <span class="ts-cd-badge ts-cd-badge-role">
+            <TSRoleIcon role={data.role} size={16} />
+            {data.role}
+          </span>
+          {data.trait && (
+            <span class="ts-cd-badge ts-cd-badge-trait">
+              <TSTraitIcon trait={data.trait} size={16} />
+              {data.trait}
+            </span>
+          )}
+        </div>
+        {data.btl_power && <div class="ts-cd-bpower">Battle Power: {data.btl_power?.toLocaleString()}</div>}
+      </div>
+    </div>
+
+    <!-- Lore -->
+    {data.lore?.english && (
+      <section class="ts-cd-section">
+        <h2 class="ts-cd-section-title">Lore</h2>
+        <div class="ts-cd-lore" set:html={cleanDescription(data.lore.english)} />
+      </section>
+    )}
+
+    <!-- Stats -->
+    {data.stats && (
+      <section class="ts-cd-section">
+        <h2 class="ts-cd-section-title">Max Stats (Grade 6)</h2>
+        <div class="ts-cd-stats-grid">
+          {STATS_CONFIG.map(sc => {
+            const val = data.stats[sc.key];
+            if (!val && val !== 0) return null;
+            return (
+              <div class="ts-cd-stat-card">
+                <div class="ts-cd-stat-label">{sc.label}</div>
+                <div class="ts-cd-stat-value">{formatStatValue(sc.key, val)}</div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- Stats by Level -->
+        {data.stats_by_level && Object.keys(data.stats_by_level).length > 0 && (
+          <div class="ts-cd-stats-table-wrapper">
+            <h3 class="ts-cd-subtitle">Stats by Level</h3>
+            <table class="ts-cd-stats-table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>HP</th>
+                  <th>ATK</th>
+                  <th>DEF</th>
+                  <th>SPD</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(data.stats_by_level).map(([lvl, ls]: [string, any]) => (
+                  <tr>
+                    <td>{ls.level || lvl}</td>
+                    <td>{ls.stats?.HP?.toLocaleString() || '-'}</td>
+                    <td>{ls.stats?.ATK?.toLocaleString() || '-'}</td>
+                    <td>{ls.stats?.DEF?.toLocaleString() || '-'}</td>
+                    <td>{ls.stats?.SPD ?? '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        <!-- Evolution Bonuses -->
+        {data.evolution_bonuses && Object.keys(data.evolution_bonuses).length > 0 && (
+          <div class="ts-cd-stats-table-wrapper">
+            <h3 class="ts-cd-subtitle">Evolution Bonuses</h3>
+            <table class="ts-cd-stats-table">
+              <thead>
+                <tr>
+                  <th>Grade</th>
+                  <th>HP</th>
+                  <th>ATK</th>
+                  <th>DEF</th>
+                  <th>SPD</th>
+                  <th>Crit Rate</th>
+                  <th>Crit DMG</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(data.evolution_bonuses).map(([grade, bonus]: [string, any]) => (
+                  <tr>
+                    <td>Grade {grade}</td>
+                    <td>{bonus.HP ? '+' + bonus.HP.toLocaleString() : '-'}</td>
+                    <td>{bonus.ATK ? '+' + bonus.ATK.toLocaleString() : '-'}</td>
+                    <td>{bonus.DEF ? '+' + bonus.DEF.toLocaleString() : '-'}</td>
+                    <td>{bonus.SPD ? '+' + bonus.SPD : '-'}</td>
+                    <td>{bonus.CRATE ? '+' + (bonus.CRATE / 10) + '%' : '-'}</td>
+                    <td>{bonus.CDMG ? '+' + (bonus.CDMG / 10) + '%' : '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    )}
+
+    <!-- Skills -->
+    {data.skills && data.skills.length > 0 && (
+      <section class="ts-cd-section">
+        <h2 class="ts-cd-section-title">Skills</h2>
+        <div class="ts-cd-skills-list">
+          {data.skills.map((skill: any) => (
+            <div class="ts-cd-skill-card">
+              <div class="ts-cd-skill-header">
+                <div class="ts-cd-skill-icon">
+                  <TSSkillIcon icon={skill.icon} size={56} />
+                </div>
+                <div class="ts-cd-skill-info">
+                  <h3 class="ts-cd-skill-name">{skill.name_readable || skill.name}</h3>
+                  <div class="ts-cd-skill-meta">
+                    {skill.type_description_readable && (
+                      <span class="ts-cd-skill-type">{skill.type_description_readable}</span>
+                    )}
+                    {skill.cooldown > 0 && <span class="ts-cd-skill-cd">CD: {skill.cooldown}</span>}
+                    {skill.hit_count > 1 && <span class="ts-cd-skill-hits">Hits: {skill.hit_count}</span>}
+                  </div>
+                </div>
+                {skill.multiplier && (
+                  <div class="ts-cd-skill-mult">
+                    {formatMultiplier(skill)}
+                  </div>
+                )}
+              </div>
+              {skill.description_readable && (
+                <div class="ts-cd-skill-desc" set:html={cleanDescription(skill.description_readable)} />
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Weapons -->
+    {data.weapons && data.weapons.length > 0 && (
+      <section class="ts-cd-section">
+        <h2 class="ts-cd-section-title">Weapons</h2>
+        <div class="ts-cd-weapons-list">
+          {data.weapons.map((wp: any) => (
+            <div class="ts-cd-weapon-card">
+              <div class="ts-cd-weapon-header">
+                <div class="ts-cd-weapon-icon">
+                  <TSWeaponImage icon={wp.icon} size={64} />
+                </div>
+                <div class="ts-cd-weapon-info">
+                  <h3 class="ts-cd-weapon-name">{cleanName(wp.name)}</h3>
+                  <span class={`ts-badge-stars ${starClass(wp.rarity)}`}>{'★'.repeat(Number(wp.rarity) || 0)}</span>
+                </div>
+              </div>
+              {wp.opt_value && (
+                <div class="ts-cd-weapon-stat">+{wp.opt_value / 10}% {OPT_TYPE_MAP[wp.opt_type] || `Stat ${wp.opt_type}`}</div>
+              )}
+              {wp.skill_data && (
+                <div class="ts-cd-weapon-skill">
+                  <div class="ts-cd-weapon-skill-name">
+                    <TSSkillIcon icon={wp.skill_data.icon} size={24} />
+                    {cleanName(wp.skill_data.name_readable || wp.skill_data.name)}
+                  </div>
+                  {wp.skill_data.description_readable && (
+                    <div class="ts-cd-skill-desc" set:html={cleanDescription(wp.skill_data.description_readable)} />
+                  )}
+                  {wp.skill_data.multiplier && (
+                    <div class="ts-cd-skill-mult">{formatMultiplier(wp.skill_data)}</div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {allEffects.size > 0 && (() => {
+      const glossaryEffects = [...allEffects];
+      return glossaryEffects.length > 0 ? (
+        <section class="ts-cd-section">
+          <div class="ts-cd-section-header">
+            <h2 class="ts-cd-section-title">Buff & Debuff Glossary</h2>
+            <a href="/guides/taimanin-squad/buff-debuff/" class="ts-cd-glossary-link">View All Buffs & Debuffs</a>
+          </div>
+          <div class="ts-cd-glossary">
+            {glossaryEffects.map(key => {
+              const info = BUFF_DEBUFF_INFO[key];
+              if (!info) return null;
+              return (
+                <div class={`ts-cd-glossary-item ${info.isDebuff ? 'glossary-debuff' : 'glossary-buff'}`}>
+                  <div class="ts-cd-glossary-header">
+                    <TSBuffIcon icon={key} width={28} height={28} />
+                    <span class="ts-cd-glossary-name">{info.name}</span>
+                  </div>
+                  <span class="ts-cd-glossary-desc">{info.desc}</span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ) : null;
+    })()}
+
+    {(() => {
+      const bonds = getBondsForUnit(data.id);
+      const synergies = getSynergiesForUnit(data.id);
+      if (bonds.length === 0 && synergies.length === 0) return null;
+      return (
+        <section class="ts-cd-section">
+          <h2 class="ts-cd-section-title">Bonds & Synergy</h2>
+          {bonds.length > 0 && (
+            <div class="ts-cd-bonds">
+              {bonds.map(bond => (
+                <div class="ts-cd-bond-card">
+                  <div class="ts-cd-bond-name">{bond.name}</div>
+                  <div class="ts-cd-bond-partners">
+                    {bond.unitIds.filter(uid => uid !== data.id).map(uid => {
+                      const partner = TAIMANIN_SQUAD_CHARACTERS.find(c => c.id === uid);
+                      if (!partner) return null;
+                      return (
+                        <a href={`/guides/taimanin-squad/characters/${partner.slug}/`} class="ts-cd-bond-partner">
+                          <TSCharacterImage icon={partner.icon} alt={partner.names?.english || partner.name} width={36} height={36} />
+                          <span>{partner.names?.english || partner.name}</span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  {bond.skillName && (
+                    <div class="ts-cd-bond-skill">
+                      Bond Skill: <strong>{bond.skillName}</strong>
+                      {bond.chargeSpeed !== 1.25 && <span class="ts-cd-bond-charge">({bond.chargeSpeed}x charge)</span>}
+                    </div>
+                  )}
+                  {bond.bonus && <div class="ts-cd-bond-bonus">{bond.bonus}</div>}
+                </div>
+              ))}
+            </div>
+          )}
+          {synergies.length > 0 && (
+            <div class="ts-cd-synergies">
+              {synergies.map(syn => (
+                <div class="ts-cd-synergy-card">
+                  <div class="ts-cd-synergy-skill">{syn.skillName}</div>
+                  <div class="ts-cd-synergy-condition">{syn.condition}</div>
+                  <div class="ts-cd-synergy-bonus">{syn.bonus}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      );
+    })()}
+  </div>
+</CharacterDatabaseLayout>

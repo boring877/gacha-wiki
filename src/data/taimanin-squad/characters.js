@@ -16,7 +16,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "1_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_1",
@@ -1388,7 +1388,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "5_Sakura",
     "lore": {
       "key": "Tbl_Unit_Desc_5",
@@ -2760,7 +2760,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Balance",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "9_Rinka",
     "lore": {
       "key": "Tbl_Unit_Desc_9",
@@ -3789,7 +3789,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "12_Tatsuro",
     "lore": {
       "key": "Tbl_Unit_Desc_12",
@@ -5504,7 +5504,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "17_Yuzuriha",
     "lore": {
       "key": "Tbl_Unit_Desc_17",
@@ -6533,7 +6533,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "20_Natsume",
     "lore": {
       "key": "Tbl_Unit_Desc_20",
@@ -9620,7 +9620,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "29_Shizuru",
     "lore": {
       "key": "Tbl_Unit_Desc_29",
@@ -9963,7 +9963,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "30_Felicia",
     "lore": {
       "key": "Tbl_Unit_Desc_30",
@@ -12707,7 +12707,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "38_Saika",
     "lore": {
       "key": "Tbl_Unit_Desc_38",
@@ -14079,7 +14079,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "42_Shisui",
     "lore": {
       "key": "Tbl_Unit_Desc_42",
@@ -16137,7 +16137,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Balance",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "48_Eleonor",
     "lore": {
       "key": "Tbl_Unit_Desc_48",
@@ -16823,7 +16823,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "50_Lina",
     "lore": {
       "key": "Tbl_Unit_Desc_50",
@@ -17852,7 +17852,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Balance",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "53_Toyo",
     "lore": {
       "key": "Tbl_Unit_Desc_53",
@@ -18538,7 +18538,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "55_Gaiza",
     "lore": {
       "key": "Tbl_Unit_Desc_55",
@@ -19910,7 +19910,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "59_Sayaneo",
     "lore": {
       "key": "Tbl_Unit_Desc_59",
@@ -20253,7 +20253,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "60_Tougekinki",
     "lore": {
       "key": "Tbl_Unit_Desc_60",
@@ -21968,7 +21968,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "65_Furfur",
     "lore": {
       "key": "Tbl_Unit_Desc_65",
@@ -23683,7 +23683,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "70_Spica",
     "lore": {
       "key": "Tbl_Unit_Desc_70",
@@ -28828,7 +28828,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "85_Minasaki",
     "lore": {
       "key": "Tbl_Unit_Desc_85",
@@ -29171,7 +29171,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "86_Robel",
     "lore": {
       "key": "Tbl_Unit_Desc_86",
@@ -30200,7 +30200,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "89_Taro",
     "lore": {
       "key": "Tbl_Unit_Desc_89",
@@ -30543,7 +30543,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "90_Silkys",
     "lore": {
       "key": "Tbl_Unit_Desc_90",
@@ -30886,7 +30886,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "91_Sensyu",
     "lore": {
       "key": "Tbl_Unit_Desc_91",
@@ -31915,7 +31915,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "94_Saburo",
     "lore": {
       "key": "Tbl_Unit_Desc_94",
@@ -32944,7 +32944,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "97_Yaobikuni",
     "lore": {
       "key": "Tbl_Unit_Desc_97",
@@ -33630,7 +33630,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "99_Wisp",
     "lore": {
       "key": "Tbl_Unit_Desc_99",
@@ -34316,7 +34316,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "101_Rene",
     "lore": {
       "key": "Tbl_Unit_Desc_101",
@@ -35002,7 +35002,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "103_Bell",
     "lore": {
       "key": "Tbl_Unit_Desc_103",
@@ -36031,7 +36031,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "106_Yukina",
     "lore": {
       "key": "Tbl_Unit_Desc_106",
@@ -38432,7 +38432,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "113_Nao",
     "lore": {
       "key": "Tbl_Unit_Desc_113",
@@ -39118,7 +39118,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "115_Nodoka",
     "lore": {
       "key": "Tbl_Unit_Desc_115",
@@ -40833,7 +40833,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "120_Hikage",
     "lore": {
       "key": "Tbl_Unit_Desc_120",
@@ -41176,7 +41176,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "121_Akina",
     "lore": {
       "key": "Tbl_Unit_Desc_121",
@@ -42548,7 +42548,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "125_Sokushitsuki",
     "lore": {
       "key": "Tbl_Unit_Desc_125",
@@ -43920,7 +43920,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "129_Crackle",
     "lore": {
       "key": "Tbl_Unit_Desc_129",
@@ -47350,7 +47350,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "139_Oni1",
     "lore": {
       "key": "Tbl_Unit_Desc_139",
@@ -47693,7 +47693,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "140_Oni2",
     "lore": {
       "key": "Tbl_Unit_Desc_140",
@@ -48036,7 +48036,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "141_Oni3",
     "lore": {
       "key": "Tbl_Unit_Desc_141",
@@ -48722,7 +48722,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "143_Onielite2",
     "lore": {
       "key": "Tbl_Unit_Desc_143",
@@ -49408,7 +49408,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "145_Magician2",
     "lore": {
       "key": "Tbl_Unit_Desc_145",
@@ -51466,7 +51466,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "151_Horseman1",
     "lore": {
       "key": "Tbl_Unit_Desc_151",
@@ -54896,7 +54896,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "161_Darkknight2",
     "lore": {
       "key": "Tbl_Unit_Desc_161",
@@ -55582,7 +55582,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "163_Familiar1",
     "lore": {
       "key": "Tbl_Unit_Desc_163",
@@ -55925,7 +55925,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "164_Familiar2",
     "lore": {
       "key": "Tbl_Unit_Desc_164",
@@ -56268,7 +56268,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "165_Familiar3",
     "lore": {
       "key": "Tbl_Unit_Desc_165",
@@ -56954,7 +56954,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "167_Incubus2",
     "lore": {
       "key": "Tbl_Unit_Desc_167",
@@ -57297,7 +57297,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "168_Succubus1",
     "lore": {
       "key": "Tbl_Unit_Desc_168",
@@ -60041,7 +60041,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "176_Reiko",
     "lore": {
       "key": "Tbl_Unit_Desc_176",
@@ -61756,7 +61756,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "181_Drone5",
     "lore": {
       "key": "Tbl_Unit_Desc_181",
@@ -63128,7 +63128,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "185_Commodus",
     "lore": {
       "key": "Tbl_Unit_Desc_185",
@@ -64843,7 +64843,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "190_Gsoldier2",
     "lore": {
       "key": "Tbl_Unit_Desc_190",
@@ -66215,7 +66215,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "194_Tempest",
     "lore": {
       "key": "Tbl_Unit_Desc_194",
@@ -66558,7 +66558,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "195_Devilsdog1",
     "lore": {
       "key": "Tbl_Unit_Desc_195",
@@ -66901,7 +66901,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "196_Devilsdog2",
     "lore": {
       "key": "Tbl_Unit_Desc_196",
@@ -67244,7 +67244,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "197_Devilsdog3",
     "lore": {
       "key": "Tbl_Unit_Desc_197",
@@ -67587,7 +67587,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "198_Zombie1",
     "lore": {
       "key": "Tbl_Unit_Desc_198",
@@ -69645,7 +69645,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "204_Zombie3",
     "lore": {
       "key": "Tbl_Unit_Desc_204",
@@ -70674,7 +70674,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "207_Shadow1",
     "lore": {
       "key": "Tbl_Unit_Desc_207",
@@ -71017,7 +71017,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "208_Shadow2",
     "lore": {
       "key": "Tbl_Unit_Desc_208",
@@ -73075,7 +73075,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "214_Skeleton1",
     "lore": {
       "key": "Tbl_Unit_Desc_214",
@@ -73418,7 +73418,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "215_Skeleton2",
     "lore": {
       "key": "Tbl_Unit_Desc_215",
@@ -73761,7 +73761,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Agility",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "216_Skeleton3",
     "lore": {
       "key": "Tbl_Unit_Desc_216",
@@ -74104,7 +74104,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "217_Mummy1",
     "lore": {
       "key": "Tbl_Unit_Desc_217",
@@ -74790,7 +74790,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "219_Hadesmon1",
     "lore": {
       "key": "Tbl_Unit_Desc_219",
@@ -75133,7 +75133,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "220_Hadesmon2",
     "lore": {
       "key": "Tbl_Unit_Desc_220",
@@ -76162,7 +76162,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "223_Demonbeast",
     "lore": {
       "key": "Tbl_Unit_Desc_223",
@@ -78563,7 +78563,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "230_Gsoldiermod1",
     "lore": {
       "key": "Tbl_Unit_Desc_230",
@@ -78906,7 +78906,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "231_Gsoldiermod2",
     "lore": {
       "key": "Tbl_Unit_Desc_231",
@@ -80621,7 +80621,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "236_Murasaki",
     "lore": {
       "key": "Tbl_Unit_Desc_236",
@@ -81307,7 +81307,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "238_Yukikaze",
     "lore": {
       "key": "Tbl_Unit_Desc_238",
@@ -81650,7 +81650,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "239_Rinko",
     "lore": {
       "key": "Tbl_Unit_Desc_239",
@@ -82336,7 +82336,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "241_Kurenai",
     "lore": {
       "key": "Tbl_Unit_Desc_241",
@@ -82679,7 +82679,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "242_Kotaro",
     "lore": {
       "key": "Tbl_Unit_Desc_242",
@@ -83365,7 +83365,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "244_Shisui",
     "lore": {
       "key": "Tbl_Unit_Desc_244",
@@ -84051,7 +84051,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "246_Kirara",
     "lore": {
       "key": "Tbl_Unit_Desc_246",
@@ -84394,7 +84394,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "247_Sora",
     "lore": {
       "key": "Tbl_Unit_Desc_247",
@@ -85080,7 +85080,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "249_Maika",
     "lore": {
       "key": "Tbl_Unit_Desc_249",
@@ -89539,7 +89539,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "262_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_262",
@@ -91940,7 +91940,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "269_Murasaki",
     "lore": {
       "key": "Tbl_Unit_Desc_269",
@@ -92283,7 +92283,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Defender",
     "class": "Defender",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "270_Amane",
     "lore": {
       "key": "Tbl_Unit_Desc_270",
@@ -97085,7 +97085,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "284_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_284",
@@ -100858,7 +100858,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "295_Saika",
     "lore": {
       "key": "Tbl_Unit_Desc_295",
@@ -101544,7 +101544,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mars",
+    "trait": "Jupiter",
     "icon": "297_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_297",
@@ -101887,7 +101887,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Technique",
     "role": "Support",
     "class": "Support",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "298_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_298",
@@ -103259,7 +103259,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "302_Cromwell",
     "lore": {
       "key": "Tbl_Unit_Desc_302",
@@ -103945,7 +103945,7 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "type": "Power",
     "role": "Attacker",
     "class": "Attacker",
-    "trait": "Mercury",
+    "trait": "Moon",
     "icon": "304_Yukikaze",
     "lore": {
       "key": "Tbl_Unit_Desc_304",

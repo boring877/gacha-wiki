@@ -291,4 +291,12 @@ export const ARCANA_JOURNEY_BG_MAP = {
     "ILLUST_BG_JOURNEY_VOYAGER_STRANIS_03.png",
     "ILLUST_BG_JOURNEY_VOYAGER_STRANIS_TUTO_01.png",
   ],
+  "lyn-under-the-glass-moon-over-the-pavilion": [
+    "ILLUST_BG_JOURNEY_EASTERN_SWORDMASTER_01.png",
+    "ILLUST_BG_JOURNEY_EASTERN_SWORDMASTER_02.png",
+  ],
+  "lyn-a-white-moon-shines-with-the-sun-s-warmth": [
+    "ILLUST_BG_JOURNEY_EASTERN_SWORDMASTER_01.png",
+    "ILLUST_BG_JOURNEY_EASTERN_SWORDMASTER_02.png",
+  ],
 };

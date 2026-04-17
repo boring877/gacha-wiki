@@ -1,0 +1,302 @@
+/* Taimanin Squad Character Database Styles */
+
+.ts-cdb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stats Bar */
+.ts-cdb-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-cdb-stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.ts-cdb-stats-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cdb-stats-label {
+  font-size: 0.75rem;
+  color: var(--ts-text-muted, #888);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-cdb-stats-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--ts-border, #2e2838);
+}
+
+/* Filters */
+.ts-cdb-filters {
+  margin-bottom: 1rem;
+}
+
+.ts-cdb-filter-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ts-cdb-filter-group {
+  flex: 1;
+  min-width: 140px;
+}
+
+.ts-cdb-filter-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ts-text-muted, #888);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-cdb-filter-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 8px;
+  color: var(--ts-text-primary, #fff);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.ts-cdb-filter-input:focus {
+  border-color: var(--ts-primary, #6b5b7a);
+}
+
+/* Sort + View Toggle Row */
+.ts-cdb-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.ts-cdb-sort-label {
+  font-size: 0.8rem;
+  color: var(--ts-text-muted, #888);
+  margin-right: 0.25rem;
+}
+
+.ts-cdb-sort-btn {
+  padding: 0.35rem 0.75rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 6px;
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.ts-cdb-sort-btn.active {
+  background: var(--ts-primary, #6b5b7a);
+  border-color: var(--ts-primary, #6b5b7a);
+  color: #fff;
+}
+
+.ts-cdb-view-toggle {
+  display: flex;
+  gap: 0.25rem;
+  float: right;
+  margin-bottom: 1rem;
+}
+
+.ts-cdb-view-btn {
+  padding: 0.35rem 0.6rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 6px;
+  color: var(--ts-text-secondary, #d3d3d3);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ts-cdb-view-btn.active {
+  background: var(--ts-primary, #6b5b7a);
+  color: #fff;
+}
+
+/* Table */
+.ts-cdb-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.ts-cdb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ts-cdb-table th {
+  padding: 0.6rem 0.5rem;
+  text-align: left;
+  color: var(--ts-text-muted, #888);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+  white-space: nowrap;
+}
+
+.ts-cdb-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--ts-border, #2e2838);
+  white-space: nowrap;
+}
+
+.ts-cdb-table tr:hover {
+  background: var(--ts-bg-secondary, #1a171f);
+}
+
+.ts-cdb-cell-num {
+  color: var(--ts-text-muted, #888);
+  width: 30px;
+  text-align: center;
+}
+
+.ts-cdb-cell-char {
+  min-width: 180px;
+}
+
+.ts-cdb-char-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ts-text-primary, #fff);
+}
+
+.ts-cdb-char-name {
+  font-weight: 500;
+}
+
+.ts-cdb-stat-col {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+/* Badges */
+.ts-cdb-badge {
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.ts-cdb-badge-ssr { background: #FFD700; color: #1a171f; }
+.ts-cdb-badge-srp { background: #A855F7; color: #fff; }
+.ts-cdb-badge-sr { background: #3B82F6; color: #fff; }
+.ts-cdb-badge-rp { background: #10B981; color: #fff; }
+.ts-cdb-badge-r { background: #6B7280; color: #fff; }
+
+.ts-cdb-element, .ts-cdb-role, .ts-cdb-trait {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--ts-text-secondary, #d3d3d3);
+}
+
+/* Grid View */
+.ts-cdb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ts-cdb-grid-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  background: var(--ts-bg-secondary, #1a171f);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.ts-cdb-grid-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.ts-cdb-grid-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ts-cdb-grid-info {
+  text-align: center;
+  width: 100%;
+}
+
+.ts-cdb-grid-name {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ts-text-primary, #fff);
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ts-cdb-grid-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ts-cdb-stats-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ts-cdb-stats-divider {
+    display: none;
+  }
+
+  .ts-cdb-stats-item {
+    padding: 0.5rem;
+  }
+
+  .ts-cdb-filter-row {
+    flex-direction: column;
+  }
+
+  .ts-cdb-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+}

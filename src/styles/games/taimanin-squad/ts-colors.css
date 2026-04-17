@@ -47,11 +47,12 @@
   --ts-error: #c62828;
   --ts-info: #1565c0;
 
-  /* Rarity colors - Muted */
-  --ts-legendary: #8a7a99;
-  --ts-epic: #5c4c6b;
-  --ts-rare: #2e7d32;
-  --ts-common: #757575;
+  /* Rarity colors */
+  --ts-star-5: #FFD700;
+  --ts-star-4: #A855F7;
+  --ts-star-3: #3B82F6;
+  --ts-star-2: #10B981;
+  --ts-star-1: #6B7280;
 
   /* Background Gradients - Subtle only */
   --ts-bg-gradient-primary: linear-gradient(135deg, #0f0d12 0%, #1a171f 50%, #0f0d12 100%);
@@ -90,4 +91,20 @@
   --ts-font-semibold: 600;
   --ts-font-bold: 700;
 }
+
+/* Universal star badge - used across all TS pages */
+.ts-badge-stars {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--ts-bg-tertiary, #242028);
+}
+.ts-badge-stars.stars-5 { color: var(--ts-star-5); font-size: 0.95rem; }
+.ts-badge-stars.stars-4 { color: var(--ts-star-4); font-size: 0.9rem; }
+.ts-badge-stars.stars-3 { color: var(--ts-star-3); font-size: 0.85rem; }
+.ts-badge-stars.stars-2 { color: var(--ts-star-2); font-size: 0.8rem; }
+.ts-badge-stars.stars-1 { color: var(--ts-star-1); font-size: 0.75rem; }
 

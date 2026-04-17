@@ -351,6 +351,18 @@ export const STAR_SAVIOR_ARCANA =
     "imageSmall": "ARCANA_EASTERN_SWORDMASTER_SSR_01_S.png"
   },
   {
+    "id": 7101602,
+    "character": "Lyn",
+    "name": "A White Moon Shines With the Sun's Warmth",
+    "slug": "lyn-a-white-moon-shines-with-the-sun-s-warmth",
+    "grade": "SSR",
+    "specialTag": "Turn Speed",
+    "classSynergy": "All Classes",
+    "statTag": "Endurance",
+    "image": "ARCANA_EASTERN_SWORDMASTER_SSR_02.png",
+    "imageSmall": "ARCANA_EASTERN_SWORDMASTER_SSR_02_S.png"
+  },
+  {
     "id": 7150201,
     "character": "Annah",
     "name": "Undercover Cop",

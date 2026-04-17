@@ -1,0 +1,1391 @@
+{
+  "id": 1016,
+  "name": "Lyn",
+  "title": "Wind Moon Sect",
+  "slug": "lyn",
+  "attackTagType": "UAT_SLASH",
+  "adjustType": "NUAT_STAR",
+  "class": "NKM_UNIT_S_EASTERN_SWORDMASTER",
+  "role": "Striker",
+  "rarity": "SSR",
+  "description": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self SPD Up for 1 turn after attacking.",
+  "stats": {
+    "HP": 1380,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 240,
+    "DEF": 15,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsLv200": {
+    "HP": 13320,
+    "Turn Speed": 100,
+    "Super Armor": 3,
+    "ATK": 2230,
+    "DEF": 1010,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statsMax": {
+    "HP": 19350,
+    "Turn Speed": 108,
+    "Super Armor": 3,
+    "ATK": 3388,
+    "DEF": 1331,
+    "Hit Rate": 10000,
+    "Crit Rate": 500,
+    "Crit Damage": 5000,
+    "Effect Hit Rate": 10000,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 2000,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "statGrowth": {
+    "HP": 60,
+    "Turn Speed": 0,
+    "Super Armor": 0,
+    "ATK": 10,
+    "DEF": 5,
+    "Hit Rate": 0,
+    "Crit Rate": 0,
+    "Crit Damage": 0,
+    "Effect Hit Rate": 0,
+    "Effect Evasion": 0,
+    "Definite Effect Hit": 0,
+    "Definite Effect Evasion": 0,
+    "Adj. Def. Effect Eva.": 0,
+    "NST_RATE_CROSS_ATTACK": 0,
+    "NST_RATE_REVENGE_ATTACK": 0
+  },
+  "damage": {
+    "attack": {
+      "atkFactor": 6500,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "special": {
+      "atkFactor": 16000,
+      "defFactor": null,
+      "hpFactor": null
+    },
+    "hyper": {
+      "atkFactor": 21000,
+      "defFactor": null,
+      "hpFactor": null
+    }
+  },
+  "novaBurst": {
+    "highlightSkill": "NSI_SKILL_1_ATTACK",
+    "cost": 4,
+    "damageBoost": "15%",
+    "attackDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self SPD Up for 1 turn after attacking.",
+    "specialDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack.",
+    "hyperDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+  },
+  "skills": [
+    {
+      "id": 10161,
+      "strId": "NKM_UNIT_S_EASTERN_SWORDMASTER_ATTACK",
+      "name": "Fivefold Slash",
+      "icon": "SKILL_EASTERN_SWORDMASTER_ATTACK.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "One Enemy",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "ATK increases by 1% per stack.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Commands flying swords to attack the enemy. Grants self 1 stack of Leap.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": true,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "Temporarily deals 1 more Toughness Fixed DMG on attack and grants self SPD Up for 1 turn after attacking.",
+        "commonDesc": ""
+      }
+    },
+    {
+      "id": 10162,
+      "strId": "NKM_UNIT_S_EASTERN_SWORDMASTER_SPECIAL",
+      "name": "Phantom Blade Dance",
+      "icon": "SKILL_EASTERN_SWORDMASTER_SPECIAL.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_EXTRA_TURN",
+              "buffName": "Extra Turn",
+              "buffDesc": "Grants an extra turn.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "team",
+              "buff": "BI_ADJUSTTYPE_RESOURCE_STAR",
+              "buffName": "Leap",
+              "buffDesc": "ATK increases by 1% per stack. Granted to Star Attribute allies.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 1,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_ATTACK_INCREASE",
+              "buffName": "ATK Up",
+              "buffDesc": "Increases ATK by 30%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 3000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_SPECIAL_COOL_TURN_DOWN",
+              "buffName": "Special CD -1",
+              "buffDesc": "Reduces Special skill cooldown by 1.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_EASTERN_SWORDMASTER_3",
+              "buffName": "Bright Moon",
+              "buffDesc": "Increases ATK by 20%. (Undispellable)",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_CHANGE_SKILL",
+              "buffName": "Skill Change",
+              "buffDesc": "Changes Clear Wind Bright Moon to single-target variant.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 900
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Leaps into the air to fire a slashing wave, then cleaves all enemies. Grants all Star Attribute allies 3 stacks of Leap if self has Clean Wind (Undispellable). If self doesn't have Clean Wind, grants self ATK Up for 3 turns and Bright Moon (Undispellable). Extra turn if Phantom Blade Dance makes Clear Wind Bright Moon available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10163,
+      "strId": "NKM_UNIT_S_EASTERN_SWORDMASTER_HYPER",
+      "name": "Clear Wind Bright Moon",
+      "icon": "SKILL_EASTERN_SWORDMASTER_HYPER.png",
+      "type": "Active",
+      "actionType": "SAT_ATTACK",
+      "target": "All Enemies",
+      "cooldown": 5,
+      "novaForce": 1,
+      "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+      "maxLevel": 10,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_EXTRA_TURN",
+              "buffName": "Extra Turn",
+              "buffDesc": "Grants an extra turn.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_CRITICAL_DAMAGE",
+              "buffName": "Stat: CRIT DMG",
+              "buffDesc": "CRIT DMG +50%.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL_DAMAGE",
+                  "NKM_STAT_TYPE_RATE": 5000
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_SUPER_ARMOR_DAMAGE",
+              "buffName": "Super Armor DMG",
+              "buffDesc": "Toughness Fixed DMG +1.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_SUPER_ARMOR",
+                  "NKM_STAT_TYPE_RATE": 1
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "team",
+              "buff": "BI_CRITICAL_DAMAGE_INCREASE",
+              "buffName": "CRIT DMG Up",
+              "buffDesc": "Increases CRIT DMG of Star Attribute allies.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_CRITICAL_DAMAGE",
+                  "NKM_STAT_TYPE_RATE": 2000
+                }
+              ],
+              "turns": 2,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_HYPER_COOL_TURN_DOWN",
+              "buffName": "Hyper CD -1",
+              "buffDesc": "Reduces Hyper skill cooldown by 1.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_EASTERN_SWORDMASTER_2",
+              "buffName": "Clean Wind",
+              "buffDesc": "SPD increases by 10%. (Undispellable)",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_TURN_SPEED",
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ],
+              "turns": 3,
+              "activationRate": 10000,
+              "stats": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +1%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +2%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 700
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +3%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "description": "Unleashes the ultimate form of the Wind Moon Sect's sword art to attack all enemies. If self has Bright Moon (Undispellable), attacks a single target, Crit DMG +50% on hit and Toughness DMG +1. If self doesn't have Bright Moon, grants all Star Attribute allies Crit DMG Up for 2 turns and grants self Clean Wind (Undispellable) for 3 turns. Extra turn if Clear Wind Bright Moon makes Phantom Blade Dance available.",
+          "upgradeName": "DMG +5%",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_RATE_DAMAGE_UP",
+              "buffName": "Stat: DMG Increase",
+              "buffDesc": "This stat displays DMG Increase rate.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_RATE_DAMAGE_UP",
+                  "NKM_STAT_TYPE_RATE": 100
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": {
+        "isHighlight": false,
+        "commonType": "toughness_damage",
+        "uniqueDesc": "",
+        "commonDesc": "Self Toughness Fixed DMG temporarily increases by 1 on attack."
+      }
+    },
+    {
+      "id": 10164,
+      "strId": "NKM_UNIT_S_EASTERN_SWORDMASTER_UNIQUE_PASSIVE",
+      "name": "Blade Dancer",
+      "icon": "SKILL_EASTERN_SWORDMASTER_UNIQUE_PASSIVE.png",
+      "type": "Unique Passive",
+      "actionType": "SAT_NONATTACK",
+      "target": "-",
+      "cooldown": 0,
+      "novaForce": 0,
+      "description": "Increases Lyn's ATK by 2% for each stack of Leap, up to 5 stacks, on attack. If self has Clean Wind after using Phantom Blade Dance, reduces its CD by 1. If self has Bright Moon after using Clear Wind Bright Moon, reduces its CD by 1.",
+      "maxLevel": 4,
+      "levels": [
+        {
+          "level": 1,
+          "description": "Increases Lyn's ATK by 2% for each stack of Leap, up to 5 stacks, on attack. If self has Clean Wind after using Phantom Blade Dance, reduces its CD by 1. If self has Bright Moon after using Clear Wind Bright Moon, reduces its CD by 1.",
+          "upgradeName": "Base Effect",
+          "cdReduce": 0,
+          "statBonuses": [],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_CHANGE_SKILL",
+              "buffName": "Skill Revert",
+              "buffDesc": "Reverts Clear Wind Bright Moon to AOE variant at turn start.",
+              "buffIsPositive": true,
+              "buffBaseStats": [],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": []
+            },
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_ATK",
+              "buffName": "Stat: ATK%",
+              "buffDesc": "Increases ATK by 2% per Leap stack.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 200
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Lyn's ATK +5%. Increases ATK by 2% for each stack of Leap, up to 5 stacks, on attack. If self has Clean Wind after using Phantom Blade Dance, reduces its CD by 1. If self has Bright Moon after using Clear Wind Bright Moon, reduces its CD by 1.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 500
+            }
+          ],
+          "seEffects": []
+        },
+        {
+          "level": 3,
+          "description": "Lyn's ATK +10%. Increases ATK by 3% for each stack of Leap, up to 5 stacks, on attack. If self has Clean Wind after using Phantom Blade Dance, reduces its CD by 1. If self has Bright Moon after using Clear Wind Bright Moon, reduces its CD by 1.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1000
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_ATK",
+              "buffName": "Stat: ATK%",
+              "buffDesc": "Increases ATK by 3% per Leap stack.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Lyn's ATK +15%. Increases ATK by 4% for each stack of Leap, up to 5 stacks, on attack. If self has Clean Wind after using Phantom Blade Dance, reduces its CD by 1. If self has Bright Moon after using Clear Wind Bright Moon, reduces its CD by 1.",
+          "upgradeName": "",
+          "cdReduce": 0,
+          "statBonuses": [
+            {
+              "type": "NST_NV_RATE_ATK",
+              "rate": 1500
+            }
+          ],
+          "seEffects": [
+            {
+              "target": "self",
+              "buff": "BI_STAT_NST_NV_RATE_ATK",
+              "buffName": "Stat: ATK%",
+              "buffDesc": "Increases ATK by 4% per Leap stack.",
+              "buffIsPositive": true,
+              "buffBaseStats": [
+                {
+                  "NKM_STAT_TYPE": "NST_NV_RATE_ATK",
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ],
+              "turns": 0,
+              "activationRate": 10000,
+              "stats": [
+                {
+                  "NKM_STAT_TYPE_RATE": 400
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "novaBurst": null
+    }
+  ],
+  "limitBreak": [
+    {
+      "grade": 1,
+      "maxLevel": 160,
+      "uniquePassive": "NKM_UNIT_S_EASTERN_SWORDMASTER_UNIQUE_PASSIVE",
+      "uniquePassiveId": "NKM_UNIT_S_EASTERN_SWORDMASTER_UNIQUE_PASSIVE"
+    },
+    {
+      "grade": 2,
+      "maxLevel": 180,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    },
+    {
+      "grade": 3,
+      "maxLevel": 200,
+      "uniquePassive": null,
+      "uniquePassiveId": null
+    }
+  ],
+  "starGrades": [
+    { "star": 1, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 2, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 3, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 4, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 5, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 6, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] },
+    { "star": 7, "bonuses": [{ "stat": "ATK%", "value": 200 }, { "stat": "HP%", "value": 200 }, { "stat": "DEF%", "value": 200 }] }
+  ],
+  "resonance": [
+    { "grade": 1, "unlockLevel": 20, "stats": [{ "type": "NST_ATK", "stat": "ATK", "value": 100, "display": "ATK +100" }, { "type": "NST_HP", "stat": "HP", "value": 720, "display": "HP +720" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 2, "unlockLevel": 40, "stats": [{ "type": "NST_NV_RATE_ATK", "stat": "ATK%", "value": 200, "display": "ATK% +2%" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 3, "unlockLevel": 60, "stats": [{ "type": "NST_ATK", "stat": "ATK", "value": 125, "display": "ATK +125" }, { "type": "NST_DEF", "stat": "DEF", "value": 50, "display": "DEF +50" }], "potential": "Sense of Attack", "potentialDesc": "Slightly increases self ATK by a certain percentage.", "potentialMaxLevel": 5 },
+    { "grade": 4, "unlockLevel": 80, "stats": [{ "type": "NST_NV_RATE_HP", "stat": "HP%", "value": 200, "display": "HP% +2%" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 5, "unlockLevel": 100, "stats": [{ "type": "NST_HP", "stat": "HP", "value": 900, "display": "HP +900" }, { "type": "NST_DEF", "stat": "DEF", "value": 60, "display": "DEF +60" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 6, "unlockLevel": 120, "stats": [{ "type": "NST_NV_RATE_ATK", "stat": "ATK%", "value": 400, "display": "ATK% +4%" }], "potential": "Sense of Life", "potentialDesc": "Slightly increases self Max HP by a certain percentage.", "potentialMaxLevel": 5 },
+    { "grade": 7, "unlockLevel": 140, "stats": [{ "type": "NST_ATK", "stat": "ATK", "value": 175, "display": "ATK +175" }, { "type": "NST_HP", "stat": "HP", "value": 1080, "display": "HP +1080" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 8, "unlockLevel": 160, "stats": [{ "type": "NST_NV_RATE_HP", "stat": "HP%", "value": 400, "display": "HP% +4%" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 9, "unlockLevel": 180, "stats": [{ "type": "NST_ATK", "stat": "ATK", "value": 200, "display": "ATK +200" }, { "type": "NST_DEF", "stat": "DEF", "value": 70, "display": "DEF +70" }], "potential": "", "potentialDesc": "", "potentialMaxLevel": 1 },
+    { "grade": 10, "unlockLevel": 200, "stats": [{ "type": "NST_TURN_SPEED", "stat": "Turn Speed", "value": 6, "display": "Turn Speed +6" }], "potential": "Skill of Swiftness", "potentialDesc": "Increases SPD by 2.", "potentialMaxLevel": 1 }
+  ],
+  "journeyStartInfo": {
+    "base": {
+      "power": 30,
+      "health": 30,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10
+    },
+    "resonanceBonus": {
+      "power": 150,
+      "health": 0,
+      "endurance": 0,
+      "focus": 0,
+      "protect": 0
+    },
+    "resonancePerGrade": [
+      { "grade": 1, "stat": "power", "value": 30 },
+      { "grade": 2, "stat": "health", "value": 30 },
+      { "grade": 4, "stat": "power", "value": 40 },
+      { "grade": 5, "stat": "health", "value": 40 },
+      { "grade": 7, "stat": "power", "value": 40 },
+      { "grade": 8, "stat": "power", "value": 40 },
+      { "grade": 9, "stat": "health", "value": 50 }
+    ],
+    "total": {
+      "power": 180,
+      "health": 120,
+      "endurance": 20,
+      "focus": 10,
+      "protect": 10,
+      "all": 340
+    },
+    "grade": "B+",
+    "statGrades": {
+      "power": "D+",
+      "health": "E+",
+      "endurance": "G",
+      "focus": "G",
+      "protect": "G"
+    }
+  },
+  "uniquePotentials": [],
+  "profile": {},
+  "images": {
+    "illust": "NKM_UNIT_S_EASTERN_SWORDMASTER_ILLUST.png",
+    "illustUI": "NKM_UNIT_S_EASTERN_SWORDMASTER_ILLUST_UI.png",
+    "faceSmall": "UFS_NKM_UNIT_S_EASTERN_SWORDMASTER.png",
+    "faceMedium": "UFM_NKM_UNIT_S_EASTERN_SWORDMASTER.png",
+    "faceFull": "UF_NKM_UNIT_S_EASTERN_SWORDMASTER.png"
+  }
+}
