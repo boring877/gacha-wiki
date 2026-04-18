@@ -54,7 +54,7 @@ const pageDescription = `Complete tier list for ${totalChars} characters in Taim
                 </div>
                 <div class="tier-characters">
                   {chars.map(char => (
-                    <div class="character-card" title={char.names?.english}>
+                    <a class="character-card" href={`/guides/taimanin-squad/characters/${char.slug}`} title={char.names?.english}>
                       <TSCharacterImage
                         icon={char.icon}
                         alt={char.names?.english || 'Character'}
@@ -65,7 +65,7 @@ const pageDescription = `Complete tier list for ${totalChars} characters in Taim
                         {STAR_MAP[char.rarity] || char.rarity}
                       </span>
                       <span class="character-name">{char.names?.english}</span>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
