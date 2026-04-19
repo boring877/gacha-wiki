@@ -2,6 +2,15 @@
 
 export const redeemCodes = [
   {
+    code: '04WINDMOONSECT16',
+    source: "Wind Moon Sect Lyn's Surprise Coupon Code",
+    validUntil: null,
+    validUntilDisplay: 'Unknown',
+    status: 'active',
+    rewards: 'Special gift (details in-game)',
+    addedDate: '2026-04-19',
+  },
+  {
     code: 'DONOTENTER',
     source: 'April Fools 2026 Event',
     validUntil: '2026-04-16T19:00:00Z',

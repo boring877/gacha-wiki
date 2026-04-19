@@ -2,6 +2,17 @@
 
 export const banners = [
   {
+    id: 'eastern-swordmaster',
+    type: 'NEW',
+    character: 'Lyn',
+    arcana: 'Featured Observation',
+    region: 'All',
+    image: 'TN_NEWS_SAVIOR_S_EASTERN_SWORDMASTER.png',
+    startDate: '2026-04-16',
+    endDate: '2026-04-30',
+    characterSlug: 'lyn',
+  },
+  {
     id: 'eastern-owl',
     type: 'NEW',
     character: 'Eastern Owl',
