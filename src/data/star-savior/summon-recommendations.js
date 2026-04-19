@@ -24,7 +24,7 @@ export const summonRecommendations = [
       },
       {
         title: 'Similar Alternatives Exist',
-        text: 'Trish and Rosaria offer comparable damage output in the Striker role. If you already have either of them built, the incremental upgrade from Lyn does not justify heavy investment.',
+        text: 'Bell and Rosaria offer comparable damage output in the Striker role. If you already have either of them built, the incremental upgrade from Lyn does not justify heavy investment.',
       },
     ],
     arcana: {
