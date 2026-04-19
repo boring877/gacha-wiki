@@ -1,0 +1,133 @@
+---
+// Star Savior - Summon or Skip? Banner recommendations
+import BannerLayout from '../../../../layouts/star-savior/BannerLayout.astro';
+import { summonRecommendations, VERDICT_STYLES } from '../../../../data/star-savior/summon-recommendations.js';
+import '../../../../styles/games/star-savior/ss-summon-recs.css';
+
+const bannerImages = import.meta.glob('/src/assets/images/games/star-savior/banners/*.png', { eager: true, query: '?url', import: 'default' });
+const arcanaImages = import.meta.glob('/src/assets/images/games/star-savior/arcana/*.png', { eager: true, query: '?url', import: 'default' });
+
+function getImageUrl(filename) {
+  for (const [path, url] of Object.entries(bannerImages)) {
+    if (path.endsWith('/' + filename)) return url as string;
+  }
+  return '';
+}
+
+function getArcanaImageUrl(filename) {
+  for (const [path, url] of Object.entries(arcanaImages)) {
+    if (path.endsWith('/' + filename)) return url as string;
+  }
+  return '';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+---
+
+<BannerLayout title="Summon or Skip? - Star Savior" description="Should you summon or skip? Our recommendations for Star Savior gacha banners." gameTitle="Summon or Skip?">
+  <section class="content-section">
+    <div class="ss-rec-disclaimer">
+      <div class="ss-rec-disclaimer-content">
+        <h3>Disclaimer</h3>
+        <p>These recommendations are based on our best judgment considering meta value, opportunity cost, and available alternatives. Everyone's account situation is different &mdash; if you love a character, pull for them! If you disagree with our assessment, feel free to reach out and share your perspective.</p>
+      </div>
+    </div>
+
+    <div class="ss-rec-list">
+      {summonRecommendations.map((rec) => {
+        const imgUrl = getImageUrl(rec.image);
+        const style = VERDICT_STYLES[rec.verdict];
+        const dateStr = rec.startDate
+          ? `${formatDate(rec.startDate)} – ${formatDate(rec.endDate)}`
+          : '';
+        const charUrl = rec.characterSlug ? `/guides/star-savior/characters/${rec.characterSlug}/` : '';
+        const arc = rec.arcana;
+        const arcStyle = arc ? VERDICT_STYLES[arc.verdict] : null;
+        const arcImgUrl = arc ? getArcanaImageUrl(arc.image) : '';
+        const arcUrl = arc ? `/guides/star-savior/arcana/${arc.slug}/` : '';
+        return (
+          <>
+            <div class="ss-rec-card">
+              <div class="ss-rec-header">
+                {imgUrl && <img src={imgUrl} alt={rec.character} class="ss-rec-banner-img" loading="lazy" />}
+                <div class="ss-rec-header-info">
+                  <div class="ss-rec-title-row">
+                    <h3 class="ss-rec-char-name">{rec.character}</h3>
+                    {rec.verdict === 'summon'
+                      ? <span class={`ss-rec-verdict ss-rec-verdict-${rec.verdict}`} style={`--verdict-color: ${style.color}`}>{style.label}</span>
+                      : <span class={`ss-rec-verdict-plain ss-rec-verdict-plain-${rec.verdict}`}>{style.label}</span>
+                    }
+                  </div>
+                  <div class="ss-rec-meta">
+                    {rec.bannerType && <span class="ss-rec-type">{rec.bannerType}</span>}
+                    {dateStr && <span class="ss-rec-dates">{dateStr}</span>}
+                  </div>
+                  {charUrl && <a href={charUrl} class="ss-rec-char-link">View Character &rarr;</a>}
+                </div>
+              </div>
+
+              <p class="ss-rec-summary">{rec.summary}</p>
+
+              <div class="ss-rec-reasons">
+                {rec.reasons.map((reason) => (
+                  <div class="ss-rec-reason">
+                    <h4 class="ss-rec-reason-title">{reason.title}</h4>
+                    <p class="ss-rec-reason-text">{reason.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {arc && (
+              <div class="ss-rec-card ss-rec-arcana-card">
+                <div class="ss-rec-header">
+                  {arcImgUrl && <img src={arcImgUrl} alt={arc.name} class="ss-rec-arcana-img" loading="lazy" />}
+                  <div class="ss-rec-header-info">
+                    <div class="ss-rec-title-row">
+                      <h3 class="ss-rec-char-name ss-rec-arcana-title">{arc.name}</h3>
+                      {arc.verdict === 'summon'
+                        ? <span class={`ss-rec-verdict ss-rec-verdict-${arc.verdict}`} style={`--verdict-color: ${arcStyle.color}`}>{arcStyle.label}</span>
+                        : <span class={`ss-rec-verdict-plain ss-rec-verdict-plain-${arc.verdict}`}>{arcStyle.label}</span>
+                      }
+                    </div>
+                    <div class="ss-rec-meta">
+                      <span class="ss-rec-type">Arcana</span>
+                      <span class="ss-rec-type">{rec.character}</span>
+                    </div>
+                    {arcUrl && <a href={arcUrl} class="ss-rec-char-link">View Arcana &rarr;</a>}
+                  </div>
+                </div>
+
+                <p class="ss-rec-summary">{arc.summary}</p>
+
+                {arc.keyStats && arc.keyStats.length > 0 && (
+                  <div class="ss-rec-key-stats">
+                    {arc.keyStats.map((stat) => (
+                      <div class="ss-rec-key-stat">
+                        <span class="ss-rec-key-stat-value">{stat.value}</span>
+                        <span class="ss-rec-key-stat-label">{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div class="ss-rec-reasons">
+                  {arc.reasons.map((reason) => (
+                    <div class="ss-rec-reason">
+                      <h4 class="ss-rec-reason-title">{reason.title}</h4>
+                      <p class="ss-rec-reason-text">{reason.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        );
+      })}
+    </div>
+  </section>
+</BannerLayout>

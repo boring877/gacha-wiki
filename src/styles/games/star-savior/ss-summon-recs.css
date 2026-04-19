@@ -6,15 +6,6 @@
   border-radius: 12px;
   padding: 20px 24px;
   margin-bottom: 32px;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.ss-rec-disclaimer-icon {
-  font-size: 24px;
-  flex-shrink: 0;
-  line-height: 1.4;
 }
 
 .ss-rec-disclaimer-content h3 {
@@ -100,6 +91,21 @@
   --verdict-color: #f39c12;
 }
 
+.ss-rec-verdict-plain {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ss-rec-verdict-plain-skip {
+  color: #e74c3c;
+}
+
+.ss-rec-verdict-plain-consider {
+  color: #f39c12;
+}
+
 .ss-rec-meta {
   display: flex;
   gap: 16px;
@@ -135,7 +141,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   padding: 16px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -154,37 +160,50 @@
   line-height: 1.6;
 }
 
-.ss-rec-arcana-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 16px;
+.ss-rec-arcana-card {
+  border-color: rgba(243, 156, 18, 0.15);
 }
 
-.ss-rec-arcana-header {
+.ss-rec-arcana-img {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.ss-rec-arcana-title {
+  font-size: 18px !important;
+}
+
+.ss-rec-key-stats {
   display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: rgba(243, 156, 18, 0.08);
+  border: 1px solid rgba(243, 156, 18, 0.15);
+  border-radius: 8px;
+}
+
+.ss-rec-key-stat {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 2px;
 }
 
-.ss-rec-arcana-label {
-  font-size: 14px;
+.ss-rec-key-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f39c12;
+}
+
+.ss-rec-key-stat-label {
+  font-size: 11px;
   font-weight: 600;
-  color: #c0c0c0;
-}
-
-.ss-rec-arcana-summary {
-  font-size: 14px;
-  color: #b0b0b0;
-  margin: 0 0 8px 0;
-  line-height: 1.5;
-}
-
-.ss-rec-arcana-note {
-  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: #888;
-  margin: 0;
-  line-height: 1.5;
-  font-style: italic;
 }
 
 @media (max-width: 600px) {
@@ -197,8 +216,12 @@
     max-width: 300px;
   }
 
-  .ss-rec-disclaimer {
-    flex-direction: column;
-    gap: 8px;
+  .ss-rec-arcana-img {
+    width: 100%;
+    max-width: 160px;
+  }
+
+  .ss-rec-key-stats {
+    flex-wrap: wrap;
   }
 }

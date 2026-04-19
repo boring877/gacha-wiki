@@ -17,7 +17,11 @@ const isActive = (href: string) => {
   if (
     href.endsWith('/zone-nova/') ||
     href.endsWith('/silver-and-blood/') ||
-    href.endsWith('/horizon-walker/')
+    href.endsWith('/horizon-walker/') ||
+    href.endsWith('/star-savior/arcana/') ||
+    href.endsWith('/star-savior/gear/') ||
+    href.endsWith('/star-savior/banners/') ||
+    href.endsWith('/star-savior/characters/')
   ) {
     return currentPath === href;
   }

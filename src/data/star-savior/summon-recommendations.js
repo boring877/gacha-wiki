@@ -27,15 +27,38 @@ export const summonRecommendations = [
         text: 'Trish and Rosaria offer comparable damage output in the Striker role. If you already have either of them built, the incremental upgrade from Lyn does not justify heavy investment.',
       },
     ],
-    arcanaVerdict: 'consider',
-    arcanaVerdictLabel: 'Consider',
-    arcanaSummary: 'The arcana is decent if you want to invest in Lyn long-term, but not essential.',
-    arcanaNote: 'If you really like Lyn or plan to use her as a main, her arcana provides solid value. Otherwise, skip and save for future arcana banners.',
+    arcana: {
+      slug: 'lyn-a-white-moon-shines-with-the-sun-s-warmth',
+      name: 'A White Moon Shines With the Sun\'s Warmth',
+      image: 'ARCANA_EASTERN_SWORDMASTER_SSR_02_S.png',
+      verdict: 'consider',
+      verdictLabel: 'Consider',
+      summary: 'Worth considering for the stat value alone, but not groundbreaking enough to heavily invest. If choosing between the character banner and the arcana banner, the arcana may be the better pick for one copy.',
+      keyStats: [
+        { label: 'SPD', value: '+8' },
+        { label: 'ATK', value: '+3%' },
+        { label: 'HP', value: '+3%' },
+      ],
+      reasons: [
+        {
+          title: 'Strong Stat Value',
+          text: 'The journey rewards include +8 Turn Speed, +3% ATK, and +3% Max HP -- stats that benefit any team composition and are universally useful regardless of which characters you run.',
+        },
+        {
+          title: 'Goes to Normal Banner',
+          text: 'Like all arcana, it will eventually enter the normal banner pool. You do not need to rush for it, but getting one copy early can accelerate your progress.',
+        },
+        {
+          title: 'Better Pick Than the Character',
+          text: 'If you had to choose between pulling for Lyn or her arcana, the arcana offers more lasting value. One copy gives you the full stat bonuses, whereas Lyn herself has strong alternatives in the Striker role.',
+        },
+      ],
+    },
   },
 ];
 
 export const VERDICT_STYLES = {
-  skip: { color: '#e74c3c', icon: 'x', label: 'Skip' },
-  summon: { color: '#2ecc71', icon: 'check', label: 'Summon' },
-  consider: { color: '#f39c12', icon: '?', label: 'Consider' },
+  skip: { color: '#e74c3c', label: 'Skip' },
+  summon: { color: '#2ecc71', label: 'Summon' },
+  consider: { color: '#f39c12', label: 'Consider' },
 };
