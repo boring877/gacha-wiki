@@ -1,0 +1,204 @@
+/* Star Savior Summon Recommendations */
+
+.ss-rec-disclaimer {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ss-rec-disclaimer-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.ss-rec-disclaimer-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #f0c040;
+}
+
+.ss-rec-disclaimer-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b0b0b0;
+}
+
+.ss-rec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ss-rec-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.ss-rec-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.ss-rec-banner-img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.ss-rec-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ss-rec-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ss-rec-char-name {
+  margin: 0;
+  font-size: 22px;
+  color: #e0e0e0;
+}
+
+.ss-rec-verdict {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: color-mix(in srgb, var(--verdict-color) 20%, transparent);
+  color: var(--verdict-color);
+  border: 1px solid color-mix(in srgb, var(--verdict-color) 40%, transparent);
+}
+
+.ss-rec-verdict-skip {
+  --verdict-color: #e74c3c;
+}
+
+.ss-rec-verdict-summon {
+  --verdict-color: #2ecc71;
+}
+
+.ss-rec-verdict-consider {
+  --verdict-color: #f39c12;
+}
+
+.ss-rec-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.ss-rec-type {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.ss-rec-char-link {
+  font-size: 13px;
+  color: #6fa8dc;
+  text-decoration: none;
+}
+
+.ss-rec-char-link:hover {
+  text-decoration: underline;
+}
+
+.ss-rec-summary {
+  font-size: 15px;
+  color: #c0c0c0;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.ss-rec-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.ss-rec-reason-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.ss-rec-reason-text {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.ss-rec-arcana-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+}
+
+.ss-rec-arcana-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ss-rec-arcana-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c0c0c0;
+}
+
+.ss-rec-arcana-summary {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.ss-rec-arcana-note {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .ss-rec-header {
+    flex-direction: column;
+  }
+
+  .ss-rec-banner-img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .ss-rec-disclaimer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

@@ -347,6 +347,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Database', href: '/guides/star-savior/characters/' },
           { name: 'Tier List', href: '/guides/star-savior/characters/tier-list/' },
           { name: 'Banners', href: '/guides/star-savior/banners/' },
+          { name: 'Summon Guide', href: '/guides/star-savior/banners/summon-guide/' },
           { name: 'Buffs & Debuffs', href: '/guides/star-savior/buffs/' },
         ],
       },

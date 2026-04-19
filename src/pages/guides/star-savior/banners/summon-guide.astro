@@ -1,0 +1,87 @@
+---
+// Star Savior Summon Recommendations - Skip or Summon guide
+import BannerLayout from '../../../../layouts/star-savior/BannerLayout.astro';
+import { summonRecommendations, VERDICT_STYLES } from '../../../../data/star-savior/summon-recommendations.js';
+import '../../../../styles/games/star-savior/ss-summon-recs.css';
+
+const bannerImages = import.meta.glob('/src/assets/images/games/star-savior/banners/*.png', { eager: true, query: '?url', import: 'default' });
+
+function getImageUrl(filename) {
+  for (const [path, url] of Object.entries(bannerImages)) {
+    if (path.endsWith('/' + filename)) return url as string;
+  }
+  return '';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+---
+
+<BannerLayout title="Summon Recommendations - Star Savior" description="Should you summon or skip? Our recommendations for Star Savior gacha banners." gameTitle="Summon Guide">
+  <section class="content-section">
+    <div class="ss-rec-disclaimer">
+      <div class="ss-rec-disclaimer-icon">&#9888;&#65039;</div>
+      <div class="ss-rec-disclaimer-content">
+        <h3>Disclaimer</h3>
+        <p>These recommendations are based on our best judgment considering meta value, opportunity cost, and available alternatives. Everyone's account situation is different &mdash; if you love a character, pull for them! If you disagree with our assessment, feel free to reach out and share your perspective.</p>
+      </div>
+    </div>
+
+    <div class="ss-rec-list">
+      {summonRecommendations.map((rec) => {
+        const imgUrl = getImageUrl(rec.image);
+        const style = VERDICT_STYLES[rec.verdict];
+        const arcStyle = VERDICT_STYLES[rec.arcanaVerdict];
+        const dateStr = rec.startDate
+          ? `${formatDate(rec.startDate)} – ${formatDate(rec.endDate)}`
+          : '';
+        const charUrl = rec.characterSlug ? `/guides/star-savior/characters/${rec.characterSlug}/` : '';
+        return (
+          <div class="ss-rec-card">
+            <div class="ss-rec-header">
+              {imgUrl && <img src={imgUrl} alt={rec.character} class="ss-rec-banner-img" loading="lazy" />}
+              <div class="ss-rec-header-info">
+                <div class="ss-rec-title-row">
+                  <h3 class="ss-rec-char-name">{rec.character}</h3>
+                  <span class={`ss-rec-verdict ss-rec-verdict-${rec.verdict}`} style={`--verdict-color: ${style.color}`}>
+                    {style.label}
+                  </span>
+                </div>
+                <div class="ss-rec-meta">
+                  {rec.bannerType && <span class="ss-rec-type">{rec.bannerType}</span>}
+                  {dateStr && <span class="ss-rec-dates">{dateStr}</span>}
+                </div>
+                {charUrl && <a href={charUrl} class="ss-rec-char-link">View Character &rarr;</a>}
+              </div>
+            </div>
+
+            <p class="ss-rec-summary">{rec.summary}</p>
+
+            <div class="ss-rec-reasons">
+              {rec.reasons.map((reason) => (
+                <div class="ss-rec-reason">
+                  <h4 class="ss-rec-reason-title">{reason.title}</h4>
+                  <p class="ss-rec-reason-text">{reason.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div class="ss-rec-arcana-section">
+              <div class="ss-rec-arcana-header">
+                <span class="ss-rec-arcana-label">Arcana Verdict</span>
+                <span class={`ss-rec-verdict ss-rec-verdict-${rec.arcanaVerdict}`} style={`--verdict-color: ${arcStyle.color}`}>
+                  {arcStyle.label}
+                </span>
+              </div>
+              <p class="ss-rec-arcana-summary">{rec.arcanaSummary}</p>
+              {rec.arcanaNote && <p class="ss-rec-arcana-note">{rec.arcanaNote}</p>}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</BannerLayout>
