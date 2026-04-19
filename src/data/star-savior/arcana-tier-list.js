@@ -45,7 +45,7 @@ export const ARCANA_TIER_LIST = {
     B: [],
   },
   Endurance: {
-    SSS: [],
+    SSS: ['lyn-a-white-moon-shines-with-the-sun-s-warmth'],
     SS: [],
     S: ['elisa-divine-trial', 'hilde-nostalgia-strikes-back'],
     A: ['harley-born-to-be-wild', 'annah-undercover-cop'],

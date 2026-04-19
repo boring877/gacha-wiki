@@ -17,8 +17,8 @@ export const CHARACTER_TIER_LIST = {
     B: [],
   },
   Star: {
-    SSS: ['bell'],
-    SS: ['roberta', 'yoo-mina'],
+    SSS: ['bell', 'roberta', 'lyn'],
+    SS: ['yoo-mina'],
     S: ['dana', 'frey', 'haydee', 'omega', 'smile', 'tanya', 'trish'],
     A: [],
     B: [],
