@@ -70,6 +70,15 @@ export const bustyBurstConfig = {
       size: 'regular',
     },
     {
+      id: 'bust-booty-ranking',
+      title: 'Bust & Booty',
+      emoji: '',
+      description: 'Character bust and booty measurements ranked from biggest to smallest.',
+      url: '/guides/busty-burst/bust-booty-ranking/',
+      category: 'characters',
+      size: 'regular',
+    },
+    {
       id: 'build',
       title: 'Build',
       emoji: '',

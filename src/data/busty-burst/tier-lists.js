@@ -1,10 +1,11 @@
 import { BUSTY_BURST_PALADINS } from './paladins.js';
+import { getCharacterDataBySlug } from './character-database.js';
 
 export const BUSTY_BURST_TIER_LISTS = {
   beginner: {
-    name: 'Beginner Tier List',
+    name: 'All Content Tier List',
     description:
-      'This tier list gives a general idea of what to pick early on. It is not the final tier list.',
+      'Tier list for all content. Covers general performance across all game modes.',
     lastUpdated: '2026-03-31',
     tiers: [
       {
@@ -14,7 +15,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Must-have for beginners',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa'],
+        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'shaty', 'messeria'],
       },
       {
         tier: 'SS',
@@ -23,7 +24,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['messeria', 'teresia', 'dark_knight', 'shaty', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle'],
+        characters: ['teresia', 'dark_knight', 'kaguya', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'the_strongest_witch_shaharl', 'setsuka', 'inrine', 'ruru', 'meinias', 'top_dancer_messeria'],
       },
       {
         tier: 'S',
@@ -34,9 +35,8 @@ export const BUSTY_BURST_TIER_LISTS = {
         },
         characters: [
           'festival_empress_shamshel',
-          'elegant_shamshel',
+          'elegant_portrait_shamshel',
           'nerys',
-          'soltina',
           'artia',
           'gemini',
           'estiriel',
@@ -51,6 +51,16 @@ export const BUSTY_BURST_TIER_LISTS = {
           'queen_of_pies_and_cookies_aphrodia',
           'killer_bikini_theresia',
           'lucie',
+          'viatrice',
+          'rui',
+          'sr_slightly_mischievous_devil_luca',
+          'sr_farneria',
+          'underboob_cheerleader_vanessa',
+          'sr_gracie',
+          'ishtovia',
+          'seductive_vampire_soltina',
+          'noble_succubus_empress_shamshel',
+          'warrior_of_love_and_chocolate_shaty',
         ],
       },
       {
@@ -61,11 +71,9 @@ export const BUSTY_BURST_TIER_LISTS = {
           color: '#1dd1a1',
         },
         characters: [
-          'luceria',
+          'magical_princess_luceria',
           'sobrina',
-          'ishtovia',
           'nora',
-          'meinias',
           'yu_lima_elka',
           'festive_natasha',
           'holy_night_succubus_yu_rima_elca',
@@ -76,6 +84,39 @@ export const BUSTY_BURST_TIER_LISTS = {
           'seductive_high_cut_swimsuit_nerys',
           'epic_fishing_meinias',
           'chocolate-frey',
+          'sr_azura',
+          'sr_gladys',
+          'nue',
+          'sr_constantia',
+          'sr_veronica',
+          'sr_celestia',
+          'sr_athena',
+          'sr_irina',
+          'raguen',
+          'soltina',
+          'sr_medusa',
+          'elegant_portrait_aysis',
+          'golem_summoner_nerys',
+          'want_some_beer_stenrina',
+        ],
+      },
+      {
+        tier: 'B',
+        definition: {
+          label: 'B',
+          description: 'Decent characters',
+          color: '#8b8b8b',
+        },
+        characters: [
+          'sr_henrietti',
+          'sr_paia',
+          'sr_nerys',
+          'sr_messeria',
+          'sr_emelaria',
+          'sr_zoe',
+          'sr_lynette',
+          'new_years_feast_box_lynette',
+          'sr_sobrina',
         ],
       },
     ],
@@ -102,7 +143,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent SR choices',
           color: '#feca57',
         },
-        characters: ['venus', 'artemis', 'rui', 'chocolate-shaty'],
+        characters: ['venus', 'artemis', 'chocolate-shaty'],
       },
       {
         tier: 'S',
@@ -111,7 +152,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Strong SR characters',
           color: '#48dbfb',
         },
-        characters: ['nue'],
+        characters: ['nue', 'sr_slightly_mischievous_devil_luca', 'rui'],
       },
       {
         tier: 'A',
@@ -143,6 +184,17 @@ export const BUSTY_BURST_TIER_LISTS = {
           'sr_veronica',
           'sr_celestia',
           'sr_guinevia',
+        ],
+      },
+      {
+        tier: 'B',
+        definition: {
+          label: 'B',
+          description: 'Decent SR characters',
+          color: '#8b8b8b',
+        },
+        characters: [
+          'sr_henrietti',
         ],
       },
     ],
@@ -181,3 +233,60 @@ export const getAllTierLists = () => {
     description: BUSTY_BURST_TIER_LISTS[key].description,
   }));
 };
+
+export const ELEMENT_ORDER = ['Fire', 'Water', 'Wind', 'Earth', 'Light', 'Dark', 'Mind'];
+
+const ELEMENT_MERGE = { Holy: 'Light' };
+
+export const TIER_ORDER = ['SSS', 'SS', 'S', 'A', 'B'];
+
+export function getElementTierList(listName = 'beginner') {
+  const tierList = BUSTY_BURST_TIER_LISTS[listName];
+  if (!tierList) return null;
+
+  const elementData = {};
+  ELEMENT_ORDER.forEach(el => { elementData[el] = {}; });
+  TIER_ORDER.forEach(tier => {
+    ELEMENT_ORDER.forEach(el => {
+      elementData[el][tier] = [];
+    });
+  });
+
+  tierList.tiers.forEach(tierEntry => {
+    tierEntry.characters.forEach(slug => {
+      const char = BUSTY_BURST_PALADINS.find(p => p.id === slug);
+      if (!char) return;
+
+      const dbSlug = slug.replace(/_/g, '-');
+      const dbChar = getCharacterDataBySlug(dbSlug);
+      const rawElement = dbChar?.element || char.element || 'Unknown';
+      const el = ELEMENT_MERGE[rawElement] || rawElement;
+
+      if (!elementData[el]) {
+        elementData[el] = {};
+        TIER_ORDER.forEach(t => { elementData[el][t] = []; });
+      }
+      elementData[el][tierEntry.tier].push({ ...char, element: rawElement });
+    });
+  });
+
+  const sections = ELEMENT_ORDER
+    .map(element => {
+      const tiers = TIER_ORDER
+        .map(tier => ({
+          tier,
+          definition: BUSTY_BURST_TIER_LISTS[listName].tiers.find(t => t.tier === tier)?.definition || { label: tier, color: '#888' },
+          characters: elementData[element]?.[tier] || [],
+        }))
+        .filter(t => t.characters.length > 0);
+      return { element, tiers, total: tiers.reduce((s, t) => s + t.characters.length, 0) };
+    })
+    .filter(s => s.total > 0);
+
+  return {
+    name: tierList.name,
+    description: tierList.description,
+    lastUpdated: tierList.lastUpdated,
+    sections,
+  };
+}

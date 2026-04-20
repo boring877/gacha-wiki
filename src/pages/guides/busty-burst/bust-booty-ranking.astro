@@ -1,0 +1,116 @@
+---
+import TierListLayout from "../../../layouts/busty-burst/TierListLayout.astro";
+import PaladinImage from "../../../components/busty-burst/PaladinImage.astro";
+import RarityImage from "../../../components/busty-burst/RarityImage.astro";
+import ElementImage from "../../../components/busty-burst/ElementImage.astro";
+import { BUST_TIER_LIST, HIPS_TIER_LIST } from "../../../data/busty-burst/bust-booty-tier-list.js";
+
+const title = "Bust & Booty Rankings - Busty Burst";
+const description = "Character bust and booty measurements ranked by tier.";
+const gameTitle = "Bust & Booty Rankings";
+
+const bustTotal = BUST_TIER_LIST.reduce((s, t) => s + t.characters.length, 0);
+const hipsTotal = HIPS_TIER_LIST.reduce((s, t) => s + t.characters.length, 0);
+---
+
+<TierListLayout title={title} description={description} gameTitle={gameTitle} showTitle={true}>
+  <div class="bb-bust-booty-tabs">
+    <button class="bb-bust-tab active" data-tab="bust">Boob</button>
+    <button class="bb-bust-tab" data-tab="hips">Butt</button>
+  </div>
+
+  <div class="bb-bust-search-row">
+    <input type="text" id="bb-ranking-search" class="bb-ranking-search-input" placeholder="Search by name..." />
+    <span id="bb-ranking-count" class="bb-ranking-count">{bustTotal} characters</span>
+  </div>
+
+  <!-- Bust Tab -->
+  <div id="bust-tab" class="bb-ranking-tab active">
+    {BUST_TIER_LIST.map(({ tier, label, color, characters }) => (
+      <div class="bb-booty-tier-row" data-tier={tier}>
+        <div class="bb-booty-tier-label" style={`--tier-color: ${color}`}>
+          <span class="bb-booty-tier-letter">{tier}</span>
+          <span class="bb-booty-tier-desc">{label}</span>
+        </div>
+        <div class="bb-booty-tier-cards">
+          {characters.map((char) => (
+            <a href={`/guides/busty-burst/characters/${char.slug}/`} class="bb-booty-card" data-name={char.name.toLowerCase()}>
+              <div class="bb-booty-card-img">
+                <PaladinImage characterId={char.characterId} alt={char.name} width={80} height={80} quality={90} loading="lazy" />
+              </div>
+              <div class="bb-booty-card-name">{char.name}</div>
+              <div class="bb-booty-card-value">{char.bustLabel}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Hips Tab -->
+  <div id="hips-tab" class="bb-ranking-tab">
+    {HIPS_TIER_LIST.map(({ tier, label, color, characters }) => (
+      <div class="bb-booty-tier-row" data-tier={tier}>
+        <div class="bb-booty-tier-label" style={`--tier-color: ${color}`}>
+          <span class="bb-booty-tier-letter">{tier}</span>
+          <span class="bb-booty-tier-desc">{label}</span>
+        </div>
+        <div class="bb-booty-tier-cards">
+          {characters.map((char) => (
+            <a href={`/guides/busty-burst/characters/${char.slug}/`} class="bb-booty-card" data-name={char.name.toLowerCase()}>
+              <div class="bb-booty-card-img">
+                <PaladinImage characterId={char.characterId} alt={char.name} width={80} height={80} quality={90} loading="lazy" />
+              </div>
+              <div class="bb-booty-card-name">{char.name}</div>
+              <div class="bb-booty-card-value">{char.hipsLabel}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.bb-bust-tab');
+    const tabContents = document.querySelectorAll<HTMLElement>('.bb-ranking-tab');
+    const searchInput = document.getElementById('bb-ranking-search') as HTMLInputElement;
+    const countEl = document.getElementById('bb-ranking-count') as HTMLElement;
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(tc => tc.classList.remove('active'));
+        btn.classList.add('active');
+        const tabName = btn.getAttribute('data-tab');
+        document.getElementById(`${tabName}-tab`)?.classList.add('active');
+        filterCharacters();
+      });
+    });
+
+    function filterCharacters() {
+      const q = searchInput.value.toLowerCase().trim();
+      const activeTab = document.querySelector('.bb-ranking-tab.active');
+      if (!activeTab) return;
+      const rows = activeTab.querySelectorAll('.bb-booty-tier-row');
+      let visible = 0;
+      rows.forEach(row => {
+        const cards = row.querySelectorAll('.bb-booty-card');
+        let rowVisible = 0;
+        cards.forEach(card => {
+          const name = (card as HTMLElement).dataset.name || '';
+          const match = !q || name.includes(q);
+          (card as HTMLElement).style.display = match ? '' : 'none';
+          if (match) rowVisible++;
+        });
+        (row as HTMLElement).style.display = rowVisible > 0 ? '' : 'none';
+        visible += rowVisible;
+      });
+      const total = activeTab === document.getElementById('bust-tab') ? bustTotal : hipsTotal;
+      countEl.textContent = q ? `${visible} / ${total} characters` : `${total} characters`;
+    }
+
+    const bustTotal = document.querySelectorAll('#bust-tab .bb-booty-card').length;
+    const hipsTotal = document.querySelectorAll('#hips-tab .bb-booty-card').length;
+    searchInput.addEventListener('input', filterCharacters);
+  </script>
+</TierListLayout>

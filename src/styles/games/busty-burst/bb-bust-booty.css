@@ -1,0 +1,197 @@
+/* Bust & Booty Tier List Styles */
+
+.bb-bust-booty-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bb-bust-tab {
+  padding: 0.75rem 2rem;
+  background: var(--bb-bg-secondary);
+  border: 2px solid var(--bb-border);
+  border-radius: 8px;
+  color: var(--bb-text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bb-bust-tab:hover {
+  border-color: var(--bb-primary);
+  color: var(--bb-text-primary);
+}
+
+.bb-bust-tab.active {
+  background: var(--bb-primary);
+  color: white;
+  border-color: var(--bb-primary);
+}
+
+.bb-ranking-tab {
+  display: none;
+}
+
+.bb-ranking-tab.active {
+  display: block;
+}
+
+.bb-bust-search-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bb-ranking-search-input {
+  flex: 1;
+  max-width: 360px;
+  padding: 0.5rem 0.75rem;
+  background: var(--bb-bg-secondary);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  color: var(--bb-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.bb-ranking-search-input:focus {
+  border-color: var(--bb-primary);
+}
+
+.bb-ranking-search-input::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-ranking-count {
+  font-size: 0.8125rem;
+  color: var(--bb-text-muted);
+}
+
+/* Tier Rows */
+.bb-booty-tier-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bb-bg-primary);
+}
+
+.bb-booty-tier-label {
+  width: 80px;
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: var(--bb-bg-secondary);
+  border-right: 1px solid var(--bb-border);
+}
+
+.bb-booty-tier-letter {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--tier-color);
+}
+
+.bb-booty-tier-desc {
+  font-size: 0.6rem;
+  color: var(--bb-text-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Cards */
+.bb-booty-tier-cards {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  align-items: flex-start;
+}
+
+.bb-booty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  padding: 0.5rem;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.bb-booty-card:hover {
+  border-color: var(--bb-primary);
+}
+
+.bb-booty-card-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+
+.bb-booty-card-img :global(.paladin-image-wrapper),
+.bb-booty-card-img :global(img) {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: cover;
+}
+
+.bb-booty-card-name {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  text-align: center;
+  line-height: 1.2;
+  max-height: 2.4em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.bb-booty-card-value {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--bb-primary);
+  margin-top: 0.125rem;
+}
+
+@media (max-width: 768px) {
+  .bb-booty-tier-row {
+    flex-direction: column;
+  }
+
+  .bb-booty-tier-label {
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    gap: 0.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--bb-border);
+    padding: 0.5rem 1rem;
+  }
+
+  .bb-booty-tier-desc {
+    font-size: 0.75rem;
+  }
+
+  .bb-booty-card {
+    width: calc(33% - 0.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-booty-card {
+    width: calc(50% - 0.25rem);
+  }
+}

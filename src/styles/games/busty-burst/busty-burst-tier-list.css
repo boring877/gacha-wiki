@@ -155,24 +155,18 @@
   flex-shrink: 0;
 }
 
-.bb-tier-sss {
-  background: #ff6b6b;
-  color: white;
+.bb-tier-sss,
+.bb-tier-ss,
+.bb-tier-s,
+.bb-tier-a,
+.bb-tier-b {
+  background: var(--bb-bg-secondary);
+  color: var(--bb-text-primary);
+  border: 1px solid var(--bb-border);
 }
 
-.bb-tier-ss {
-  background: #feca57;
-  color: #333;
-}
-
-.bb-tier-s {
-  background: #48dbfb;
-  color: white;
-}
-
-.bb-tier-a {
-  background: #1dd1a1;
-  color: white;
+.bb-element-tier-section .bb-tier-label {
+  color: var(--bb-element-color, var(--bb-text-primary));
 }
 
 /* Tier Characters Container - BB specific */
@@ -202,6 +196,13 @@
   border-radius: 8px;
   position: relative;
   z-index: 4;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s;
+}
+
+.bb-tier-character-card:hover {
+  border-color: var(--bb-element-color, var(--bb-primary));
 }
 
 /* Character Image Wrapper - BB specific */
@@ -397,6 +398,102 @@
 }
 
 /* Additional styles for support tier list */
+
+/* Element Tier List Section Styles */
+.bb-element-tier-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bb-element-tier-section {
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bb-bg-primary);
+}
+
+.bb-element-tier-section-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bb-border);
+  background: var(--bb-bg-secondary);
+}
+
+.bb-element-tier-section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bb-element-tier-section-name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--bb-element-color, var(--bb-text-primary));
+  line-height: 1.3;
+}
+
+.bb-element-tier-section-title-row img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.bb-element-tier-section[data-element="Fire"] { --bb-element-color: #a63d40; }
+.bb-element-tier-section[data-element="Water"] { --bb-element-color: #4a7a9b; }
+.bb-element-tier-section[data-element="Wind"] { --bb-element-color: #3d8a6b; }
+.bb-element-tier-section[data-element="Earth"] { --bb-element-color: #8a7a3a; }
+.bb-element-tier-section[data-element="Light"] { --bb-element-color: #b8960c; }
+.bb-element-tier-section[data-element="Dark"] { --bb-element-color: #7a4a8a; }
+.bb-element-tier-section[data-element="Mind"] { --bb-element-color: #8a4070; }
+
+.bb-element-tier-section[data-element="Fire"] .bb-element-tier-section-header { border-bottom-color: rgba(166, 61, 64, 0.3); }
+.bb-element-tier-section[data-element="Water"] .bb-element-tier-section-header { border-bottom-color: rgba(74, 122, 155, 0.3); }
+.bb-element-tier-section[data-element="Wind"] .bb-element-tier-section-header { border-bottom-color: rgba(61, 138, 107, 0.3); }
+.bb-element-tier-section[data-element="Earth"] .bb-element-tier-section-header { border-bottom-color: rgba(138, 122, 58, 0.3); }
+.bb-element-tier-section[data-element="Light"] .bb-element-tier-section-header { border-bottom-color: rgba(184, 150, 12, 0.3); }
+.bb-element-tier-section[data-element="Dark"] .bb-element-tier-section-header { border-bottom-color: rgba(122, 74, 138, 0.3); }
+.bb-element-tier-section[data-element="Mind"] .bb-element-tier-section-header { border-bottom-color: rgba(138, 64, 112, 0.3); }
+
+.bb-element-tier-section-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--bb-text-muted, #9ca3af);
+  background: var(--bb-bg-tertiary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.bb-element-tier-section .bb-tier-row {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--bb-border-light);
+  border-radius: 0;
+}
+
+.bb-element-tier-section .bb-tier-row:last-child {
+  border-bottom: none;
+}
+
+.bb-tier-char-count {
+  font-size: 0.8125rem;
+  color: var(--bb-text-muted, #9ca3af);
+  white-space: nowrap;
+}
+
+/* Mobile adjustments for element sections */
+@media (max-width: 768px) {
+  .bb-element-tier-section .bb-tier-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bb-element-tier-section .bb-tier-label {
+    width: 100%;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
 .bb-character-icons {
   display: flex;
   gap: 0.35rem;

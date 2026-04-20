@@ -6,7 +6,8 @@ export type GameKey =
   | 'stella-sora'
   | 'busty-burst'
   | 'taimanin-squad'
-  | 'star-savior';
+  | 'star-savior'
+  | 'last-origin-global';
 
 export interface NavigationLink {
   name: string;
@@ -29,6 +30,7 @@ import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
+import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
 
 export const GAMES_DATA: Record<GameKey, GameData> = {
   'silver-and-blood': {
@@ -261,6 +263,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Support Bonus', href: '/guides/busty-burst/support-bonus/' },
           { name: 'Support Tier List', href: '/guides/busty-burst/support-tier-list/' },
           { name: 'Tier List', href: '/guides/busty-burst/tier-list/' },
+          { name: 'Bust & Booty', href: '/guides/busty-burst/bust-booty-ranking/' },
           { name: 'Build', href: '/guides/busty-burst/build' },
         ],
       },
@@ -380,6 +383,16 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Redeem Codes', href: '/guides/star-savior/redeem-codes/' },
           { name: 'Clock', href: '/clock/star-savior/' },
         ],
+      },
+    ],
+  },
+  'last-origin-global': {
+    name: 'Last Origin Global',
+    image: LastOriginGlobalIcon,
+    sections: [
+      {
+        title: 'Resources',
+        links: [],
       },
     ],
   },
