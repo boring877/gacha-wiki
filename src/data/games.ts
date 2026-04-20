@@ -5,6 +5,7 @@ import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
+import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
 
 export interface Game {
   id: string;
@@ -106,6 +107,17 @@ export const GAMES: Game[] = [
     url: '/guides/star-savior/',
     status: 'active',
     sections: ['Characters', 'Nova Burst', 'Limit Break', 'Star Grades'],
+    lastUpdated: new Date(),
+  },
+  {
+    id: 'last-origin-global',
+    name: 'Last Origin Global',
+    slug: 'last-origin-global',
+    description: 'Turn-Based Strategy RPG • Bioroid Squad Building • 3x3 Grid Combat',
+    image: LastOriginGlobalIcon,
+    url: '/guides/last-origin-global/',
+    status: 'coming-soon',
+    sections: ['Bioroids', 'Grid Combat', 'Unit Types', 'Roles', 'Progression'],
     lastUpdated: new Date(),
   },
 ];

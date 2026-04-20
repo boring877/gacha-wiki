@@ -62,6 +62,13 @@ export const GAMES = {
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/taimanin-squad',
   },
+  LAST_ORIGIN_GLOBAL: {
+    KEY: 'last-origin-global',
+    NAME: 'Last Origin Global',
+    THEME_COLOR: '#e63946',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/last-origin-global',
+  },
 } as const;
 
 // URL patterns (centralized to prevent duplication)
@@ -135,6 +142,9 @@ export const URLS = {
   },
   TAIMANIN_SQUAD: {
     BASE: '/guides/taimanin-squad',
+  },
+  LAST_ORIGIN_GLOBAL: {
+    BASE: '/guides/last-origin-global',
   },
 } as const;
 

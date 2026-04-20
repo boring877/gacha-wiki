@@ -1,0 +1,101 @@
+---
+// Last Origin Global landing page
+import LastOriginGlobalLandingLayout from '../../layouts/last-origin-global/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { lastOriginGlobalConfig } from '../../data/last-origin-global/last-origin-global.js';
+import heroImage from '../../assets/images/games/last-origin-global/gameimg/hero.png';
+
+const { meta, gameInfo, story } = lastOriginGlobalConfig;
+---
+
+<LastOriginGlobalLandingLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={heroImage}
+>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Last Origin Global Wiki - Game Guide & Database",
+      "url": "https://gachawiki.info/guides/last-origin-global/",
+      "description": "Complete Last Origin Global wiki with character guides, unit types, combat mechanics, and game database. Turn-based strategy RPG by VFUN.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Last Origin Global",
+      "genre": ["Turn-Based Strategy RPG", "Gacha", "Tactical RPG"],
+      "description": "Post-apocalyptic turn-based strategy RPG where you play as the last surviving human. Build your squad of Bioroids on a 3x3 grid battlefield.",
+      "keywords": "Last Origin, Last Origin Global, Last Origin R+, bioroid, turn-based RPG, strategy RPG, gacha game, VFUN, tactical combat, squad building",
+      "applicationCategory": "Game",
+      "operatingSystem": "Mobile",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
+
+  <section class="content-section">
+    <h2 class="section-title">Game Introduction</h2>
+
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="game-info-box">
+      <p>{gameInfo.description}</p>
+      <p><strong>Publisher:</strong> {gameInfo.publisher}</p>
+      <p><strong>Platforms:</strong> {gameInfo.platforms.join(', ')}</p>
+    </div>
+
+    <div class="play-button-container">
+      <a href="https://vfun.valofe.com/library?service_code=lastorigin-gl" target="_blank" rel="noopener noreferrer" class="play-button">
+        Download on VFUN
+      </a>
+      <a href="https://game.erolabsshare.live/app/f302f717/LAST_ORIGIN_R" target="_blank" rel="noopener noreferrer" class="play-button">
+        Download on Erolab (TW)
+      </a>
+    </div>
+
+    <div class="lo-social-links-container">
+      <h4>Official Links:</h4>
+      <div class="lo-social-links">
+        <a
+          href={gameInfo.socialLinks.orvvit}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="lo-social-link"
+          aria-label="Visit Last Origin Global on Orvvit"
+        >
+          Orvvit
+        </a>
+        <a
+          href={gameInfo.socialLinks.discord}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="lo-social-link"
+          aria-label="Join Last Origin Global Discord"
+        >
+          Discord
+        </a>
+      </div>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+</LastOriginGlobalLandingLayout>

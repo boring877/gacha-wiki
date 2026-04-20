@@ -1,0 +1,85 @@
+/* Last Origin Global Color System - Dark Red/Crimson Theme */
+/* Post-apocalyptic military feel */
+
+:root {
+  /* Primary - Deep crimson red */
+  --lo-primary: #e63946;
+  --lo-primary-hover: #ff4d5a;
+  --lo-primary-light: #ff6b7a;
+  --lo-primary-dark: #c5303c;
+
+  /* Secondary - Dark steel */
+  --lo-secondary: #3d405b;
+  --lo-secondary-hover: #4d506b;
+  --lo-secondary-light: #5d607b;
+
+  /* Accent - Gold/amber */
+  --lo-accent: #f4a261;
+  --lo-accent-hover: #f5b37a;
+  --lo-accent-light: #f7c894;
+  --lo-accent-20: rgba(244, 162, 97, 0.1);
+
+  /* Backgrounds - Very dark with subtle warm tint */
+  --lo-bg-primary: #0d0d0f;
+  --lo-bg-secondary: #16161a;
+  --lo-bg-tertiary: #1e1e24;
+  --lo-bg-card: #1a1a20;
+  --lo-bg-hover: #24242c;
+
+  /* Text colors - High contrast */
+  --lo-text-primary: #f5f5f5;
+  --lo-text-secondary: #d3d3d3;
+  --lo-text-tertiary: #a9a9a9;
+  --lo-text-muted: #696969;
+  --lo-text-light: #c0c0c0;
+
+  /* Border colors */
+  --lo-border: #2a2a32;
+  --lo-border-light: #3a3a45;
+  --lo-border-dark: #1a1a20;
+  --lo-border-subtle: rgba(255, 255, 255, 0.05);
+  --lo-primary-subtle: rgba(230, 57, 70, 0.2);
+  --lo-primary-border: rgba(230, 57, 70, 0.3);
+
+  /* Status colors */
+  --lo-success: #2e7d32;
+  --lo-warning: #f57c00;
+  --lo-error: #c62828;
+  --lo-info: #1565c0;
+
+  /* Background Gradients */
+  --lo-bg-gradient-primary: linear-gradient(135deg, #0d0d0f 0%, #16161a 50%, #0d0d0f 100%);
+  --lo-gradient-primary: linear-gradient(
+    135deg,
+    var(--lo-bg-secondary) 0%,
+    var(--lo-bg-tertiary) 100%
+  );
+  --lo-gradient-card: linear-gradient(135deg, var(--lo-bg-card) 0%, var(--lo-bg-secondary) 100%);
+
+  /* Shadows */
+  --lo-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --lo-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --lo-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --lo-transition: all 0.2s ease-in-out;
+  --lo-transition-slow: all 0.3s ease-in-out;
+
+  /* Dimensions */
+  --lo-radius-sm: 4px;
+  --lo-radius-md: 8px;
+  --lo-radius-lg: 12px;
+
+  /* Spacing */
+  --lo-spacing-xs: 0.25rem;
+  --lo-spacing-sm: 0.5rem;
+  --lo-spacing-md: 1rem;
+  --lo-spacing-lg: 1.5rem;
+  --lo-spacing-xl: 2rem;
+
+  /* Font weights */
+  --lo-font-normal: 400;
+  --lo-font-medium: 500;
+  --lo-font-semibold: 600;
+  --lo-font-bold: 700;
+}

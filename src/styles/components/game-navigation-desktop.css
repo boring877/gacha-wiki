@@ -451,3 +451,20 @@
   background: linear-gradient(135deg, #c9a84c, #e8d48b);
   color: #0a0e1a;
 }
+
+/* ============================================
+   LAST ORIGIN GLOBAL SPECIFIC STYLING
+   ============================================ */
+.game-nav-desktop[data-game='last-origin-global'] .game-title {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #e63946;
+  background-clip: unset;
+  color: #e63946;
+  text-shadow: none;
+}
+
+.game-nav-desktop[data-game='last-origin-global'] .dropdown-link.active {
+  background: #e63946;
+  color: white;
+}
