@@ -170,6 +170,15 @@ export const bustyBurstConfig = {
       category: 'events',
       size: 'regular',
     },
+    {
+      id: 'summon-or-skip',
+      title: 'Summon or Skip?',
+      emoji: '',
+      description: 'Our pull recommendations for current gacha banners. Save gems or go all in?',
+      url: '/guides/busty-burst/summon-or-skip',
+      category: 'events',
+      size: 'regular',
+    },
     // Resources
     {
       id: 'blog',

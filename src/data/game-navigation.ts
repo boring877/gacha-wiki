@@ -258,13 +258,18 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Profiles & VAs', href: '/guides/busty-burst/character-info/' },
           { name: 'Skills', href: '/guides/busty-burst/character-skills/' },
           { name: 'Stats', href: '/guides/busty-burst/character-stats/' },
-          { name: 'Skill Formulas', href: '/guides/busty-burst/skill-formulas/' },
           { name: 'Support Stats', href: '/guides/busty-burst/support-stats/' },
           { name: 'Support Bonus', href: '/guides/busty-burst/support-bonus/' },
-          { name: 'Support Tier List', href: '/guides/busty-burst/support-tier-list/' },
+        ],
+      },
+      {
+        title: 'Guides',
+        links: [
           { name: 'Tier List', href: '/guides/busty-burst/tier-list/' },
-          { name: 'Bust & Booty', href: '/guides/busty-burst/bust-booty-ranking/' },
           { name: 'Build', href: '/guides/busty-burst/build' },
+          { name: 'Support Tier List', href: '/guides/busty-burst/support-tier-list/' },
+          { name: 'Summon or Skip?', href: '/guides/busty-burst/summon-or-skip' },
+          { name: 'Bust & Booty', href: '/guides/busty-burst/bust-booty-ranking/' },
         ],
       },
       {
@@ -272,7 +277,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Weapons', href: '/guides/busty-burst/weapons' },
           { name: 'Best Weapons', href: '/guides/busty-burst/best-weapons' },
-
           { name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats' },
           { name: 'Accessory Items', href: '/guides/busty-burst/accessory-items' },
           { name: 'Accessory Guide', href: '/guides/busty-burst/accessory-guide' },
@@ -287,6 +291,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Magic DEF Down', href: '/guides/busty-burst/magic-defense-down' },
           { name: 'Element DEF Down', href: '/guides/busty-burst/element-defense-down' },
           { name: 'Team Builder', href: '/guides/busty-burst/team-builder' },
+          { name: 'Skill Formulas', href: '/guides/busty-burst/skill-formulas/' },
         ],
       },
       {

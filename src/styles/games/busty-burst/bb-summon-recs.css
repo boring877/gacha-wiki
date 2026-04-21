@@ -1,0 +1,168 @@
+/* Busty Burst Summon Recommendations */
+
+.bb-rec-disclaimer {
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.bb-rec-disclaimer-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #f0c040;
+}
+
+.bb-rec-disclaimer-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b0b0b0;
+}
+
+.bb-rec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bb-rec-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.bb-rec-verdict-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bb-rec-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.bb-rec-banner-img {
+  width: 260px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.bb-rec-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bb-rec-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.bb-rec-char-name {
+  margin: 0;
+  font-size: 22px;
+  color: #e0e0e0;
+}
+
+.bb-rec-verdict {
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.bb-rec-verdict-skip {
+  color: #e74c3c;
+}
+
+.bb-rec-verdict-summon {
+  color: #2ecc71;
+}
+
+.bb-rec-verdict-consider {
+  color: #f39c12;
+}
+
+.bb-rec-verdict-plain {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bb-rec-verdict-plain-skip {
+  color: #e74c3c;
+}
+
+.bb-rec-verdict-plain-consider {
+  color: #f39c12;
+}
+
+.bb-rec-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.bb-rec-type {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.bb-rec-char-link {
+  font-size: 13px;
+  color: #6fa8dc;
+  text-decoration: none;
+}
+
+.bb-rec-summary {
+  font-size: 15px;
+  color: #c0c0c0;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.bb-rec-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.bb-rec-reason-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.bb-rec-reason-text {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .bb-rec-header {
+    flex-direction: column;
+  }
+
+  .bb-rec-banner-img {
+    width: 100%;
+    max-width: 340px;
+  }
+}

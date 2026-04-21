@@ -1,0 +1,65 @@
+---
+// Busty Burst Fantasy - Summon or Skip? Banner recommendations
+import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
+import { summonRecommendations, VERDICT_STYLES } from '../../../data/busty-burst/summon-recommendations.js';
+import '../../../styles/games/busty-burst/bb-summon-recs.css';
+import BBBannerImage from '../../../components/busty-burst/BBBannerImage.astro';
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+---
+
+<BannerTimelineLayout title="Summon or Skip? - Busty Burst Fantasy" description="Should you summon or skip? Our recommendations for Busty Burst Fantasy gacha banners." gameTitle="Summon or Skip?">
+  <section class="content-section">
+    <div class="bb-rec-disclaimer">
+      <div class="bb-rec-disclaimer-content">
+        <h3>Disclaimer</h3>
+        <p>These recommendations are based on our best judgment considering meta value, opportunity cost, and available alternatives. Everyone's account situation is different &mdash; if you love a character, pull for them! If you disagree with our assessment, feel free to reach out and share your perspective.</p>
+      </div>
+    </div>
+
+    <div class="bb-rec-list">
+      {summonRecommendations.map((rec) => {
+        const style = VERDICT_STYLES[rec.verdict];
+        const dateStr = rec.startDate
+          ? `${formatDate(rec.startDate)} – ${formatDate(rec.endDate)}`
+          : '';
+        const charUrl = rec.characterSlug ? `/guides/busty-burst/characters/${rec.characterSlug}/` : '';
+        return (
+          <div class="bb-rec-card">
+            <div class="bb-rec-verdict-banner">
+              <span class={`bb-rec-verdict bb-rec-verdict-${rec.verdict}`} style={`--verdict-color: ${style.color}`}>{style.label}</span>
+            </div>
+            <div class="bb-rec-header">
+              <BBBannerImage bannerId={rec.bannerId} alt={rec.character} />
+              <div class="bb-rec-header-info">
+                <div class="bb-rec-title-row">
+                  <h3 class="bb-rec-char-name">{rec.character}</h3>
+                </div>
+                <div class="bb-rec-meta">
+                  {rec.bannerType && <span class="bb-rec-type">{rec.bannerType}</span>}
+                  {dateStr && <span class="bb-rec-dates">{dateStr}</span>}
+                </div>
+                {charUrl && <a href={charUrl} class="bb-rec-char-link">View Character &rarr;</a>}
+              </div>
+            </div>
+
+            <p class="bb-rec-summary">{rec.summary}</p>
+
+            <div class="bb-rec-reasons">
+              {rec.reasons.map((reason) => (
+                <div class="bb-rec-reason">
+                  <h4 class="bb-rec-reason-title">{reason.title}</h4>
+                  <p class="bb-rec-reason-text">{reason.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</BannerTimelineLayout>
