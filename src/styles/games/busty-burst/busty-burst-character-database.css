@@ -89,10 +89,6 @@
   cursor: pointer;
 }
 
-.bb-char-filter-select:hover,
-.bb-char-filter-input:hover {
-  border-color: var(--bb-border-light);
-}
 
 .bb-char-filter-select:focus,
 .bb-char-filter-input:focus {
@@ -116,10 +112,6 @@
   transition: all 0.2s ease;
 }
 
-.bb-char-filter-btn:hover {
-  background: var(--bb-bg-hover);
-  border-color: var(--bb-border-light);
-}
 
 .bb-char-filter-btn.clear {
   background: rgba(198, 40, 40, 0.2);
@@ -127,9 +119,6 @@
   color: #ff6b6b;
 }
 
-.bb-char-filter-btn.clear:hover {
-  background: rgba(198, 40, 40, 0.3);
-}
 
 /* ============================================
    SORT CONTROLS
@@ -163,10 +152,6 @@
   gap: 0.25rem;
 }
 
-.bb-char-sort-btn:hover {
-  border-color: var(--bb-border-light);
-  color: var(--bb-text-primary);
-}
 
 .bb-char-sort-btn.active {
   background: var(--bb-primary-dark);
@@ -366,9 +351,6 @@
   white-space: nowrap;
 }
 
-.bb-char-table th:hover {
-  background: var(--bb-bg-tertiary);
-}
 
 .bb-char-table th.sorted {
   color: var(--bb-text-primary);

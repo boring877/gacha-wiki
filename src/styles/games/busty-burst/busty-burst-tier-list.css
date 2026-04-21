@@ -25,11 +25,6 @@
   z-index: 3;
 }
 
-.bb-tab-button:hover {
-  background: var(--bb-bg-hover);
-  color: var(--bb-text-primary);
-  border-color: var(--bb-primary);
-}
 
 .bb-tab-button.active {
   background: var(--bb-primary);
@@ -201,9 +196,6 @@
   transition: border-color 0.2s;
 }
 
-.bb-tier-character-card:hover {
-  border-color: var(--bb-element-color, var(--bb-primary));
-}
 
 /* Character Image Wrapper - BB specific */
 .bb-character-image-wrapper {
@@ -371,9 +363,6 @@
   transition: background 0.2s;
 }
 
-.bb-tier-clear-btn:hover {
-  background: var(--bb-bg-tertiary, #374151);
-}
 
 /* No Results Message */
 .bb-tier-no-results {
@@ -651,9 +640,6 @@
   transition: all 0.2s ease;
 }
 
-.bb-control-btn:hover {
-  background: rgba(220, 38, 38, 1);
-}
 
 .bb-maker-description {
   text-align: center;
@@ -893,15 +879,6 @@
   transition: opacity 0.2s ease;
 }
 
-.bb-tier-character-card:hover .bb-remove-btn,
-.bb-tier-character-card.in-tier:hover .bb-remove-btn {
-  opacity: 1;
-}
-
-.bb-remove-btn:hover {
-  background: linear-gradient(to bottom, rgba(220, 38, 38, 0.85), rgba(220, 38, 38, 0.3));
-  color: white;
-}
 
 /* Maker Mode Responsive */
 @media (max-width: 768px) {

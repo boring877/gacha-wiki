@@ -89,9 +89,6 @@
   transition: background 0.2s ease;
 }
 
-.skills-card-header:hover {
-  background: var(--ts-bg-primary, #0f0d12);
-}
 
 .skills-card-info {
   flex: 1;
@@ -311,11 +308,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.skill-description .skill-effect:hover::after,
-.skill-description .skill-effect.tooltip-active::after {
-  opacity: 1;
-  visibility: visible;
-}
 
 /* Tooltip arrow */
 .skill-description .skill-effect::before {
@@ -332,11 +324,6 @@
   z-index: 101;
 }
 
-.skill-description .skill-effect:hover::before,
-.skill-description .skill-effect.tooltip-active::before {
-  opacity: 1;
-  visibility: visible;
-}
 
 /* Mobile tooltip adjustments */
 @media (max-width: 768px) {

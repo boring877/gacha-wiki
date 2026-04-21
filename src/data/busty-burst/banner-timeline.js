@@ -5,7 +5,36 @@
  */
 
 export const bannerTimelineData = [
-  // #14 - Swift Wind Unicorn / Giselle (Mar 31 - Apr 7) - CURRENT
+  // #15 - Paladin Introduction - Inrine, Henrietti, Vanessa (Apr 7 - Apr 21) - CURRENT
+  {
+    id: 'paladin-introduction-inrine-2026',
+    title: '"Paladin Introduction" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Inrine',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: 'Henrietti',
+        rarity: 'SR',
+        type: 'Support',
+      },
+      {
+        name: 'Vanessa',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-04-07T03:00:00Z',
+    endDate: '2026-04-21T03:00:00Z',
+    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Inrine, the Solitary Swordmaster Knight. Henrietti, the Flawless Woman. Vanessa, the Woman Without Footsteps.',
+    note: 'Inrine (SSR Water Physical Attacker), Henrietti (SR Fire Physical Support), and Vanessa (SR Wind Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'banner-paladin-introduction-inrine',
+  },
+  // #14 - Swift Wind Unicorn / Giselle (Mar 31 - Apr 7) - ENDED
   {
     id: 'swift-wind-unicorn-giselle-2026',
     title: '"Swift Wind Unicorn" Event Summon',
@@ -21,10 +50,10 @@ export const bannerTimelineData = [
     endDate: '2026-04-07T03:00:00Z',
     description: 'Swift Wind Unicorn Event Summon! Rate Up for Giselle, the Beast-Taming Paladin!',
     note: 'Standard unit Giselle rate up banner. A Holy Physical Attacker riding a unicorn born from her own spiritual energy.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-swift-wind-unicorn',
   },
-  // #13 - Villain Halloween (Mar 24 - TBD) - CURRENT
+  // #13 - Villain Halloween (Mar 24 - Apr 7) - ENDED
   {
     id: 'villain-halloween-2026',
     title: '"Villain Halloween" Event Summon',
@@ -50,7 +79,7 @@ export const bannerTimelineData = [
     endDate: '2026-04-07T03:00:00Z',
     description: 'Villain Halloween Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'Halloween themed event featuring witch, vampire, and devil themed characters.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-villain-halloween',
   },
   // #12 - Infinite Subjugation Battle - Ruru (Mar 17 - Mar 24) - ENDED

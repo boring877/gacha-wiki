@@ -349,12 +349,7 @@
 }
 
 /* Hover effects for better interactivity */
-.zn-update-highlight-primary:hover,
-.zn-update-highlight-secondary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-}
+
 
 /* Dark mode compatibility */
 @media (prefers-color-scheme: dark) {
@@ -369,11 +364,7 @@
 
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .zn-update-highlight-primary:hover,
-  .zn-update-highlight-secondary:hover {
-    transform: none;
-    transition: none;
-  }
+  
 }
 
 /* Mobile responsiveness - reduce padding on small screens */
