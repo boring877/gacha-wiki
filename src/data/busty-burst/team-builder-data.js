@@ -71,10 +71,15 @@ const CHARACTER_ID_MAP = {
   'new_years_calligraphy_pastel': 2100,
   'overflowing_jubako_lynette': 2101,
 
-  // 2025 Summer Swimsuit Characters
-  'seductive_high_cut_swimsuit_nerys': 2077,
-  'killer_bikini_theresia': 2078,
-  'epic_fishing_meinias': 2079,
+  // 2026 Q2 New Characters
+  'giselle': 2088,
+  'inrine': 2050,
+  'henrietti': 2102,
+  'vanessa': 2103,
+  'viatrice': 2104,
+  'trish': 2105,
+  'lycorys': 2106,
+  'katisha': 2107,
 
   // SR Characters
   'gladys': 2005,
@@ -183,6 +188,14 @@ const CHARACTER_IMAGES = {
   seductive_high_cut_swimsuit_nerys: '2077.png',
   killer_bikini_theresia: '2078.png',
   epic_fishing_meinias: '2079.png',
+  giselle: '2088.png',
+  inrine: '2050.png',
+  henrietti: '2102.png',
+  vanessa: '2103.png',
+  viatrice: '2104.png',
+  trish: '2105.png',
+  lycorys: '2106.png',
+  katisha: '2107.png',
 };
 
 // Skill buff/debuff category assignments
@@ -852,6 +865,185 @@ const SKILL_CATEGORIES = {
   },
   epic_fishing_meinias: {
     // No significant buffs/debuffs - primarily damage dealer
+  },
+  giselle: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical DEF', value: '-21%-40' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical Crit Damage', value: '+50 (self)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Block', value: '-25' },
+        { stat: 'Physical ATK', value: '+30% (self)' },
+      ],
+    },
+  },
+  inrine: {
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Hit-Based Physical Damage', value: '+150%+500 (1 hit)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Physical DEF', value: '-25%' },
+        { stat: 'Block', value: '-25' },
+      ],
+    },
+  },
+  henrietti: {
+    skill2: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'Physical Healing Shield', value: '300 (restores 20%)' },
+        { stat: 'Magic Healing Shield', value: '300 (restores 20%)' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'HP Regen', value: '+5%+150' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Stun', value: '2 seconds' },
+        { stat: 'Blind', value: '6 seconds' },
+      ],
+    },
+  },
+  vanessa: {
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Accuracy', value: '+11' },
+        { stat: 'Physical Crit Damage', value: '+40%' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Block', value: '-25' },
+      ],
+    },
+  },
+  viatrice: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Burn', value: '-200/s (15s)' },
+        { stat: 'Block', value: '-11 (8s)' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Hit-Based Shield', value: '100% (1 hit)' },
+        { stat: 'Magic ATK', value: '+20%+40' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Burn', value: '-4000/s (15s)' },
+        { stat: 'Fire Type Damage Taken', value: '+20%' },
+      ],
+    },
+  },
+  trish: {
+    skill2: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'Hit-Based Damage', value: '+35%+400 (3 hits)' },
+        { stat: 'Accuracy', value: '+11' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'HP Regen', value: '+6%+200' },
+        { stat: 'Healing Shield', value: '300' },
+      ],
+    },
+    ultimate: {
+      type: 'buff',
+      category: 'B',
+      effects: [
+        { stat: 'Physical ATK', value: '+35%' },
+        { stat: 'Magic ATK', value: '+35%' },
+      ],
+    },
+  },
+  lycorys: {
+    skill2: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Action Speed', value: '-20%' },
+        { stat: 'Accuracy', value: '-11' },
+      ],
+    },
+    skill3: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Dispel', value: '1 second' },
+        { stat: 'Deadly Poison', value: '-600/s (stackable)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Paralysis', value: '6 seconds' },
+        { stat: 'Deadly Poison', value: '-10000/s (8s)' },
+      ],
+    },
+  },
+  katisha: {
+    skill3: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Block', value: '-9' },
+        { stat: 'Accuracy', value: '-9' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Action Speed', value: '-30' },
+        { stat: 'Silence', value: '5 seconds' },
+      ],
+    },
   },
 };
 

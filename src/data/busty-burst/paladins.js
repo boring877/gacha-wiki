@@ -1091,6 +1091,36 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Support',
     tier: 'B',
   },
+  {
+    id: 'lycorys',
+    characterId: 2106,
+    name: 'Lycorys',
+    fileName: 'Lycorys',
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'Attacker',
+    tier: 'S',
+  },
+  {
+    id: 'trish',
+    characterId: 2105,
+    name: 'Trish',
+    fileName: 'Trish',
+    rarity: 'SR',
+    element: 'Mind',
+    role: 'Support',
+    tier: 'A',
+  },
+  {
+    id: 'katisha',
+    characterId: 2107,
+    name: 'Katisha',
+    fileName: 'Katisha',
+    rarity: 'SR',
+    element: 'Holy',
+    role: 'Attacker',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

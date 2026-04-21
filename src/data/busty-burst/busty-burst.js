@@ -125,15 +125,6 @@ export const bustyBurstConfig = {
       size: 'regular',
     },
     {
-      id: 'character-weapons',
-      title: 'Char Weapons',
-      emoji: '',
-      description: 'Character-specific weapon recommendations.',
-      url: '/guides/busty-burst/character-weapons',
-      category: 'equipment',
-      size: 'regular',
-    },
-    {
       id: 'accessory-stats',
       title: 'Accessory Stats',
       emoji: '',

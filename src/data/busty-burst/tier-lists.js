@@ -62,6 +62,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'warrior_of_love_and_chocolate_shaty',
           'chocolate-frey',
           'fruit_basket_bianca',
+          'lycorys',
         ],
       },
       {
@@ -104,6 +105,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'kaguya',
           'mischievous_mermaid_princess_lorelia',
           'samurai_cow_girl_setsuka',
+          'trish',
+          'katisha',
         ],
       },
     ],

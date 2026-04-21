@@ -28,7 +28,6 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding-left: var(--hw-spacing-md);
-    border-left: 4px solid var(--hw-border-strong);
     position: relative;
     padding-bottom: var(--hw-spacing-lg);
   }
@@ -94,8 +93,8 @@
   }
 
   .character-hero-container {
-    border-radius: var(--hw-radius-lg);
     border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-lg);
     padding: var(--hw-spacing-lg);
     text-align: center;
     margin-bottom: var(--hw-spacing-lg);
@@ -338,7 +337,6 @@
   }
 
   .skill-card.passive-skill {
-    border-left: 4px solid var(--hw-accent-mint);
   }
 
   .skill-header {
@@ -386,7 +384,6 @@
   }
 
   .skill-damage {
-    border-left: 4px solid var(--hw-primary-warm);
     padding: var(--hw-spacing-md);
     margin-bottom: var(--hw-spacing-lg);
     border-radius: var(--hw-radius-md);
@@ -485,7 +482,6 @@
     font-family: var(--font-primary);
     font-size: var(--text-base);
     font-weight: var(--font-normal);
-    border-left: 4px solid var(--hw-accent-mint);
     padding: var(--hw-spacing-md);
     margin-bottom: var(--hw-spacing-md);
     border-radius: var(--hw-radius-md);
@@ -630,7 +626,6 @@
 
   /* Fallback using JavaScript-detectable classes */
   .skill-card.class-skill .skill-description {
-    border-left: 4px solid var(--hw-error-red);
     padding: var(--hw-spacing-md) var(--hw-spacing-lg);
     border-radius: var(--hw-radius-md);
     margin: var(--hw-spacing-md) 0;
@@ -649,7 +644,6 @@
 
   /* Base skill highlighting with subtle blue */
   .skill-card.base-skill .skill-description {
-    border-left: 4px solid var(--hw-tertiary-sky-40);
     padding: var(--hw-spacing-md) var(--hw-spacing-lg);
     border-radius: var(--hw-radius-md);
     margin: var(--hw-spacing-md) 0;

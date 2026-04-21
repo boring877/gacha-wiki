@@ -337,4 +337,103 @@ export const characterBuilds = {
       };
     })(),
   },
+
+  lycorys: {
+    slug: 'lycorys',
+    character: {
+      name: 'Lycorys',
+      fileName: 'Lycorys',
+      characterId: 2106,
+    },
+    position: {
+      name: 'Back',
+      image: 'Back.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Bullet_of_annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  trish: {
+    slug: 'trish',
+    character: {
+      name: 'Trish',
+      fileName: 'Trish',
+      characterId: 2105,
+    },
+    position: {
+      name: 'Back',
+      image: 'Back.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Magic_Grenade_of_annihilation.png'),
+    accessory: (() => {
+      const emeraldSet = getAccessorySet('emerald');
+      const getImageForSlot = slot => {
+        const piece = emeraldSet.pieces.find(p => p.type === slot);
+        return piece ? piece.imageFile : `Gold_${slot}.png`;
+      };
+      return {
+        name: 'Emerald 4 Set + 1 Random Rainbow',
+        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(emeraldSet.setEffects),
+        mainStats: [
+          { slot: 'Tiara', imageFile: getImageForSlot('Tiara'), best: 'HP', substat: 'Mag Def' },
+          { slot: 'Earrings', imageFile: getImageForSlot('Earrings'), best: 'Mag Def', substat: 'Phys Def' },
+          { slot: 'Necklace', imageFile: getImageForSlot('Necklace'), best: 'HP', substat: 'Mag Def' },
+          { slot: 'Bracelet', imageFile: getImageForSlot('Bracelet'), best: 'HP', substat: 'Phys Def' },
+          { slot: 'Ring', imageFile: getImageForSlot('Ring'), best: 'Healing', substat: 'HP' },
+        ],
+        substatPriority: {
+          priority: ['HP'],
+          secondary: ['Mag Def', 'Phys Def'],
+          other: ['Healing'],
+          tips: ['As a support, Trish prioritizes survivability to keep providing team buffs and healing.'],
+        },
+      };
+    })(),
+  },
+
+  katisha: {
+    slug: 'katisha',
+    character: {
+      name: 'Katisha',
+      fileName: 'Katisha',
+      characterId: 2107,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

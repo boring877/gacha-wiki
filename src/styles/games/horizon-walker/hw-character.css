@@ -312,6 +312,7 @@
   .sort-btn {
     padding: 0.4rem 0.7rem;
     color: var(--hw-text-light);
+    background: var(--hw-bg-dark);
     border-radius: 8px;
     border: 1px solid var(--hw-border-strong);
     font-size: var(--text-xs);
@@ -321,6 +322,7 @@
 
   .sort-btn.active {
     color: var(--hw-bg-dark);
+    background: var(--hw-primary-warm);
     border-color: var(--hw-primary-warm);
   }
 
@@ -328,6 +330,7 @@
   .sort-btn.state-desc,
   .sort-btn.state-asc {
     color: var(--hw-bg-dark);
+    background: var(--hw-primary-warm);
     border-color: var(--hw-primary-warm);
   }
 
@@ -566,7 +569,8 @@
 
     /* Cost badge styling for desktop table - consistent with HW badges */
     .cost-value {
-      color: var(--hw-text-dark);
+      color: #ffffff;
+      background: var(--hw-primary-warm);
       font-weight: var(--font-bold);
       padding: 0.4rem 0.8rem;
       border-radius: 4px;

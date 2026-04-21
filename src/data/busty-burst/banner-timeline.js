@@ -5,6 +5,54 @@
  */
 
 export const bannerTimelineData = [
+  // #17 - Paladin Introduction - Trish, Lycorys, Katisha (Apr 21 - May 5) - CURRENT
+  {
+    id: 'paladin-introduction-trish-2026',
+    title: '"Paladin Introduction" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Trish',
+        rarity: 'SR',
+        type: 'Support',
+      },
+      {
+        name: 'Lycorys',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+      {
+        name: 'Katisha',
+        rarity: 'SR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-04-21T03:00:00Z',
+    endDate: '2026-05-05T03:00:00Z',
+    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Trish, the Herbalist Who Resembles Someone. Lycorys, the Giggling Alchemist. Katisha, the Stubborn Elite Paladin.',
+    note: 'Trish (SSR Mind Physical Support), Lycorys (SSR Dark Physical Attacker), and Katisha (SR Holy Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'banner-paladin-introduction-trish',
+  },
+  // #16 - Paladin Introduction - Viatrice (Apr 14 - Apr 21) - ENDED
+  {
+    id: 'paladin-introduction-viatrice-2026',
+    title: '"Paladin Introduction" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Viatrice',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-04-14T03:00:00Z',
+    endDate: '2026-04-21T03:00:00Z',
+    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Viatrice, the Kind-Hearted Courtesan Lingering in This World. An exceptionally voluptuous courtesan who moved from the town of Haza to Elron, her gentle and loving nature made her highly sought-after — until misfortune found its way to her.',
+    note: 'Viatrice (SSR Fire Physical Attacker). New Paladin will be added to the Standard Banner after the event ends.',
+    status: 'ended',
+    image: 'banner-paladin-introduction-viatrice',
+  },
   // #15 - Paladin Introduction - Inrine, Henrietti, Vanessa (Apr 7 - Apr 21) - CURRENT
   {
     id: 'paladin-introduction-inrine-2026',
@@ -31,27 +79,8 @@ export const bannerTimelineData = [
     endDate: '2026-04-21T03:00:00Z',
     description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Inrine, the Solitary Swordmaster Knight. Henrietti, the Flawless Woman. Vanessa, the Woman Without Footsteps.',
     note: 'Inrine (SSR Water Physical Attacker), Henrietti (SR Fire Physical Support), and Vanessa (SR Wind Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
-    status: 'current',
-    image: 'banner-paladin-introduction-inrine',
-  },
-  // #14 - Swift Wind Unicorn / Giselle (Mar 31 - Apr 7) - ENDED
-  {
-    id: 'swift-wind-unicorn-giselle-2026',
-    title: '"Swift Wind Unicorn" Event Summon',
-    bannerType: 'new',
-    featuredPaladins: [
-      {
-        name: 'Giselle',
-        rarity: 'SSR',
-        type: 'Attack',
-      },
-    ],
-    startDate: '2026-03-31T03:00:00Z',
-    endDate: '2026-04-07T03:00:00Z',
-    description: 'Swift Wind Unicorn Event Summon! Rate Up for Giselle, the Beast-Taming Paladin!',
-    note: 'Standard unit Giselle rate up banner. A Holy Physical Attacker riding a unicorn born from her own spiritual energy.',
     status: 'ended',
-    image: 'banner-swift-wind-unicorn',
+    image: 'banner-paladin-introduction-inrine',
   },
   // #13 - Villain Halloween (Mar 24 - Apr 7) - ENDED
   {
@@ -82,7 +111,26 @@ export const bannerTimelineData = [
     status: 'ended',
     image: 'banner-villain-halloween',
   },
-  // #12 - Infinite Subjugation Battle - Ruru (Mar 17 - Mar 24) - ENDED
+  // #12 - Swift Wind Unicorn / Giselle (Mar 31 - Apr 7) - ENDED
+  {
+    id: 'swift-wind-unicorn-giselle-2026',
+    title: '"Swift Wind Unicorn" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Giselle',
+        rarity: 'SSR',
+        type: 'Attack',
+      },
+    ],
+    startDate: '2026-03-31T03:00:00Z',
+    endDate: '2026-04-07T03:00:00Z',
+    description: 'Swift Wind Unicorn Event Summon! Rate Up for Giselle, the Beast-Taming Paladin!',
+    note: 'Standard unit Giselle rate up banner. A Holy Physical Attacker riding a unicorn born from her own spiritual energy.',
+    status: 'ended',
+    image: 'banner-swift-wind-unicorn',
+  },
+  // #11 - Infinite Subjugation Battle - Ruru (Mar 17 - Mar 24) - ENDED
   {
     id: 'infinite-subjugation-battle-ruru-2026',
     title: '"Infinite Subjugation Battle" Event Summon',
@@ -129,25 +177,6 @@ export const bannerTimelineData = [
     note: 'Harvest festival dance event featuring Messeria, Bianca, and Stenrina.',
     status: 'ended',
     image: 'banner-smile-goddess-dance',
-  },
-  // #10 - Battle Season - Setsuka (Feb 24 - Mar 10) - ENDED
-  {
-    id: 'battle-season-setsuka-2026',
-    title: '"Battle Season" Event Summon',
-    bannerType: 'event',
-    featuredPaladins: [
-      {
-        name: '[Samurai Cowgirl] Setsuka',
-        rarity: 'SSR',
-        type: 'Attack',
-      },
-    ],
-    startDate: '2026-02-24T03:00:00Z',
-    endDate: '2026-03-10T03:00:00Z',
-    description: 'Battle Season Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
-    note: 'Battle Season event featuring Setsuka.',
-    status: 'ended',
-    image: 'banner-battle-season-setsuka',
   },
   // #9 - Lust & Raguen (Feb 24 - Mar 10) - ENDED
   {
@@ -470,6 +499,21 @@ export const bannerTimelineData = [
  */
 export const seasonalCharactersData = [
   {
+    id: 'battle-season',
+    name: 'Battle Season',
+    startDate: '2026-02-24T03:00:00Z',
+    endDate: '2026-06-02T03:00:00Z',
+    characters: [
+      {
+        name: '[Samurai Cowgirl] Setsuka',
+        rarity: 'SSR',
+        type: 'Attack',
+        image: 'banner-battle-season-setsuka',
+      },
+    ],
+    status: 'current',
+  },
+  {
     id: 'season-1',
     name: 'Season 1',
     startDate: '2025-12-04T00:00:00Z',
@@ -482,7 +526,7 @@ export const seasonalCharactersData = [
         image: 'season-1-lorelia',
       },
     ],
-    status: 'current',
+    status: 'ended',
   },
 ];
 
