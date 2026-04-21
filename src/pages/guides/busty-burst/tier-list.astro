@@ -9,6 +9,7 @@ import {
   getAllTierLists,
 } from "../../../data/busty-burst/tier-lists.js";
 import { BUSTY_BURST_PALADINS } from "../../../data/busty-burst/paladins.js";
+import { getSlugByCharacterId } from "../../../data/busty-burst/character-database.js";
 
 // Get all tier lists
 const beginnerElementTierList = getElementTierList("beginner");
@@ -32,7 +33,14 @@ const TIER_DEFINITIONS = {
 const totalBeginnerChars = beginnerElementTierList?.sections.reduce((s, sec) => s + sec.total, 0) || 0;
 const totalSrChars = srElementTierList?.sections.reduce((s, sec) => s + sec.total, 0) || 0;
 
-const charPageUrl = (id) => `/guides/busty-burst/characters/${id.replace(/_/g, '-')}/`;
+const charPageUrl = (id) => {
+  const paladin = BUSTY_BURST_PALADINS.find(p => p.id === id);
+  if (paladin?.characterId) {
+    const slug = getSlugByCharacterId(paladin.characterId);
+    if (slug) return `/guides/busty-burst/characters/${slug}/`;
+  }
+  return `/guides/busty-burst/characters/${id.replace(/_/g, '-')}/`;
+};
 
 // Page metadata
 const title = "BBB Busty - Tier List";

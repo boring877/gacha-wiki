@@ -5,11 +5,7 @@
 /* Specific selectors to override global typography styles */
 .sab-body h2.section-title,
 .sab-body .section-title {
-  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent; /* Fallback */
+  color: var(--sab-calm-red, #c26b6b);
 }
 
 .sab-body h3,
@@ -63,10 +59,7 @@
 }
 
 .section-title {
-  background: linear-gradient(135deg, var(--sab-light-red), var(--sab-calm-red));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--sab-calm-red, #c26b6b);
   margin: 0 0 2rem 0;
   border-bottom: 3px solid var(--sab-calm-red);
   padding-bottom: 0.8rem;

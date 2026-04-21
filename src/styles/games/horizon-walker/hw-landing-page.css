@@ -4,7 +4,6 @@
 @scope (.horizon-walker-main) {
   /* Content Section - Main container for landing page sections */
   .content-section {
-    background: var(--hw-bg-dark);
     padding: 2.5rem;
     border-radius: 16px;
     margin-bottom: 2rem;
@@ -18,11 +17,7 @@
     margin-bottom: 1.5rem;
     font-weight: var(--font-bold);
     text-align: center;
-    color: var(--hw-text-light);
-    background: var(--hw-gradient-warm-to-coral);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #e8a547;
   }
 
   /* Game Description */
@@ -61,10 +56,6 @@
     font-weight: var(--font-semibold);
     text-align: center;
     margin-bottom: 1rem;
-    background: var(--hw-gradient-warm-to-coral);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   .platform-notes {
@@ -101,7 +92,6 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: var(--hw-primary-warm);
     color: white;
     text-decoration: none;
     padding: 0.8rem 1.5rem;
@@ -135,7 +125,6 @@
   }
 
   .hw-social-link {
-    background: var(--hw-bg-dark);
     border: 1px solid var(--hw-border-accent);
     color: var(--hw-text-light);
     text-decoration: none;
@@ -147,7 +136,6 @@
   }
 
   .hw-social-link:hover {
-    background: var(--hw-primary-warm);
     color: var(--hw-bg-darker);
     border-color: var(--hw-primary-warm);
   }
@@ -160,10 +148,6 @@
     font-weight: var(--font-bold);
     text-align: center;
     color: var(--hw-text-light);
-    background: var(--hw-gradient-warm-to-coral);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   /* Bento Grid Layout */
@@ -195,7 +179,6 @@
 
   /* Category Cards */
   .hw-resource-category {
-    background: var(--hw-card-bg-gradient);
     border: 1px solid var(--hw-border-muted);
     border-radius: 16px;
     padding: 1.5rem;
@@ -247,7 +230,6 @@
     text-decoration: none;
     padding: 1rem;
     border-radius: 12px;
-    background: var(--hw-stat-bg);
     border: 1px solid var(--hw-border-light);
     font-size: var(--text-sm);
     font-family: var(--font-primary);

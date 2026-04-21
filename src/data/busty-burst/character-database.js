@@ -10,25 +10,19 @@ import { characterBuilds } from './character-builds.js';
 export { calculateStatAtLevel, calculateCritRate, STAT_DISPLAY_NAMES };
 export { ELEMENT_MAP, WEAPON_MAP, WEAPON_INSPIRATION_EFFECTS };
 
-// Create a mapping from characterId to slug for cross-referencing
-const characterIdToSlugMap = {};
-Object.values(BUSTY_BURST_CHARACTER_INFO).forEach(char => {
-  // We need to find the corresponding stats entry to get the characterId
-  const statsEntry = Object.values(BUSTY_BURST_CHARACTER_STATS).find(
-    stats => stats.id === char.slug || stats.name?.includes(char.baseName)
-  );
-  if (statsEntry && statsEntry.characterId) {
-    characterIdToSlugMap[statsEntry.characterId] = char.slug;
-  }
-});
-
-// Create a mapping from slug to characterId
+// Create mappings between slug and characterId
 const slugToCharacterIdMap = {};
+const characterIdToSlugMap = {};
 Object.entries(BUSTY_BURST_CHARACTER_STATS).forEach(([slug, stats]) => {
   if (stats.characterId) {
     slugToCharacterIdMap[slug] = stats.characterId;
+    characterIdToSlugMap[stats.characterId] = slug;
   }
 });
+
+export function getSlugByCharacterId(characterId) {
+  return characterIdToSlugMap[characterId] || null;
+}
 
 // Create a mapping from id to skill data
 const skillDataByIdMap = {};

@@ -161,546 +161,7 @@ export const characterBuilds = {
       name: 'Physical',
       image: 'Physical.png',
     },
-    weapon: getWeaponData('Crowwbow_of_annihilation.png'),
-    accessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-        mainStats: getMainStats('Physical', 'DPS', 'gold'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-  },
-  kaguya: {
-    slug: 'kaguya',
-    character: {
-      name: 'Kaguya',
-      fileName: 'kaguya',
-      characterId: 2071,
-    },
-    position: {
-      name: 'Back',
-      image: 'Back.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Bullet_of_annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
-  },
-  'dragon-crusher-medusa': {
-    slug: 'dragon-crusher-medusa',
-    character: {
-      name: 'Dragon Crusher Medusa',
-      fileName: 'Dragon_Crusher_Medusa',
-      characterId: 2099,
-    },
-    position: {
-      name: 'Mid',
-      image: 'Mid.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Wand_of_annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessories: [
-      (() => {
-        const amethystSet = getAccessorySet('amethyst');
-        const goldSet = getAccessorySet('gold');
-        return {
-          name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-          images: [
-            amethystSet.pieces[0].imageFile,
-            amethystSet.pieces[1].imageFile,
-            goldSet.pieces[0].imageFile,
-            goldSet.pieces[1].imageFile,
-          ],
-          setEffects: [
-            { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-            { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-          ],
-        };
-      })(),
-      (() => {
-        const goldSet = getAccessorySet('gold');
-        const sapphireSet = getAccessorySet('sapphire');
-        return {
-          name: 'Gold 2 Set + Sapphire 2 Set + 1 Random SSR',
-          images: [
-            goldSet.pieces[0].imageFile,
-            goldSet.pieces[1].imageFile,
-            sapphireSet.pieces[0].imageFile,
-            sapphireSet.pieces[1].imageFile,
-          ],
-          setEffects: [
-            { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-            { pieces: 2, effect: 'Magic Attack +10% (Sapphire)' },
-          ],
-        };
-      })(),
-    ],
-  },
-  ophelio: {
-    slug: 'ophelio',
-    character: {
-      name: 'Ophelio',
-      fileName: 'Ophelio',
-      characterId: 2076,
-    },
-    position: {
-      name: 'Back',
-      image: 'Back.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Staff_of_annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
-  },
-  'killer-bikini-theresia': {
-    slug: 'killer-bikini-theresia',
-    character: {
-      name: 'Killer Bikini Theresia',
-      fileName: 'Killer_Bikini_Theresia',
-      characterId: 2078,
-    },
-    position: {
-      name: 'Mid',
-      image: 'Mid.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Wand_of_annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'Support', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
-  },
-  'seductive-high-cut-swimsuit-nerys': {
-    slug: 'seductive-high-cut-swimsuit-nerys',
-    character: {
-      name: 'Seductive High-Cut Swimsuit Nerys',
-      fileName: 'Seductive_High_Cut_Swimsuit_Nerys',
-      characterId: 2077,
-    },
-    position: {
-      name: 'Mid',
-      image: 'Mid.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Bullet_of_annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
-  },
-  pastel: {
-    slug: 'pastel',
-    character: {
-      name: 'Pastel',
-      fileName: 'Pastel',
-      characterId: 2080,
-    },
-    position: {
-      name: 'Back',
-      image: 'Back.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
-    accessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-        mainStats: getMainStats('Physical', 'Support', 'gold'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-  },
-  lucie: {
-    slug: 'lucie',
-    character: {
-      name: 'Lucie',
-      fileName: 'Lucie',
-      characterId: 2073,
-    },
-    position: {
-      name: 'Front',
-      image: 'Front.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Sword_of_annihilation.png'),
-    accessory: (() => {
-      const emeraldSet = getAccessorySet('emerald');
-      return {
-        name: 'Emerald 4 Set + 1 Random SSR',
-        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(emeraldSet.setEffects),
-        mainStats: getMainStats('Physical', 'Support', 'emerald'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-      };
-    })(),
-  },
-  rui: {
-    slug: 'rui',
-    character: {
-      name: 'Rui',
-      fileName: 'Rui',
-      characterId: 2074,
-    },
-    position: {
-      name: 'Front',
-      image: 'Front.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Sword_of_annihilation.png'),
-    accessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-        mainStats: getMainStats('Physical', 'DPS', 'gold'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-  },
-  nue: {
-    slug: 'nue',
-    character: {
-      name: 'Nue',
-      fileName: 'Nue',
-      characterId: 2075,
-    },
-    position: {
-      name: 'Mid',
-      image: 'Mid.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
-    accessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-        mainStats: getMainStats('Physical', 'DPS', 'gold'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-  },
-  lapis: {
-    slug: 'lapis',
-    character: {
-      name: 'Lapis',
-      fileName: 'Lapis',
-      characterId: 2084,
-    },
-    position: {
-      name: 'Front',
-      image: 'Front.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Ringblade_of_Annihilation.png'),
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Amethyst 2 Set + Gold 2 Set + 1 Random SSR',
-        images: [
-          amethystSet.pieces[0].imageFile,
-          amethystSet.pieces[1].imageFile,
-          goldSet.pieces[0].imageFile,
-          goldSet.pieces[1].imageFile,
-        ],
-        setEffects: [
-          { pieces: 2, effect: 'Skill Damage +10% (Amethyst)' },
-          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
-        ],
-      };
-    })(),
-  },
-  rosa: {
-    slug: 'rosa',
-    character: {
-      name: 'Rosa',
-      fileName: 'Rosa',
-      characterId: 2085,
-    },
-    position: {
-      name: 'Front',
-      image: 'Front.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Sword_of_annihilation.png'),
-    accessory: (() => {
-      const goldSet = getAccessorySet('gold');
-      return {
-        name: 'Gold 4 Set + 1 Random SSR',
-        images: goldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(goldSet.setEffects),
-        mainStats: getMainStats('Physical', 'DPS', 'gold'),
-        substatPriority: getSubstatPriority('Physical'),
-      };
-    })(),
-  },
-
-  // Valentine's 2026 Chocolate Event Characters
-  'chocolate-frey': {
-    slug: 'chocolate-frey',
-    character: {
-      name: 'Chocolate Frey',
-      fileName: 'Chocolate_Frey',
-      characterId: 2109,
-    },
-    position: {
-      name: 'Mid',
-      image: 'Mid.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Staff_of_annihilation.png'),
-    accessory: (() => {
-      const emeraldSet = getAccessorySet('emerald');
-      const getImageForSlot = slot => {
-        const piece = emeraldSet.pieces.find(p => p.type === slot);
-        return piece ? piece.imageFile : `Gold_${slot}.png`;
-      };
-      return {
-        name: 'Emerald 4 Set + 1 Random SSR',
-        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(emeraldSet.setEffects),
-        mainStats: [
-          { slot: 'Tiara', imageFile: getImageForSlot('Tiara'), best: 'HP', substat: 'Phys Def' },
-          { slot: 'Earrings', imageFile: getImageForSlot('Earrings'), best: 'Phys Def', substat: 'Mag Def' },
-          { slot: 'Necklace', imageFile: getImageForSlot('Necklace'), best: 'HP', substat: 'Phys Def' },
-          { slot: 'Bracelet', imageFile: getImageForSlot('Bracelet'), best: 'HP', substat: 'Mag Def' },
-          { slot: 'Ring', imageFile: getImageForSlot('Ring'), best: 'Healing', substat: 'HP' },
-        ],
-        substatPriority: {
-          priority: ['HP'],
-          secondary: ['Phys Def', 'Mag Def'],
-          other: ['Healing'],
-          tips: ['As a support healer, Chocolate Frey prioritizes survivability over damage stats. You don\'t need perfect substats - decent HP and DEF rolls are enough since her main role is providing buffs and healing.'],
-        },
-      };
-    })(),
-  },
-
-  'chocolate-hildis': {
-    slug: 'chocolate-hildis',
-    character: {
-      name: 'Chocolate Hildis',
-      fileName: 'Chocolate_Hildis',
-      characterId: 2110,
-    },
-    position: {
-      name: 'Front',
-      image: 'Front.png',
-    },
-    attackType: {
-      name: 'Magic',
-      image: 'Magic.png',
-    },
-    weapon: getWeaponData('Staff_of_annihilation.png'),
-    alternativeWeapons: [
-      getWeaponData('Dragonmind_grimoire.png'),
-    ],
-    accessory: (() => {
-      const amethystSet = getAccessorySet('amethyst');
-      return {
-        name: 'Amethyst 4 Set + 1 Random SSR',
-        images: amethystSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(amethystSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'amethyst'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-    alternativeAccessory: (() => {
-      const emeraldSet = getAccessorySet('emerald');
-      return {
-        name: 'Emerald 4 Set + 1 Random SSR (Action Speed for Debuff)',
-        images: emeraldSet.pieces.slice(1).map(p => p.imageFile),
-        setEffects: formatSetEffects(emeraldSet.setEffects),
-        mainStats: getMainStats('Magic', 'DPS', 'emerald'),
-        substatPriority: getSubstatPriority('Magic'),
-      };
-    })(),
-  },
-
-  'chocolate-shaty': {
-    slug: 'chocolate-shaty',
-    character: {
-      name: 'Chocolate Shaty',
-      fileName: 'Chocolate_Shaty',
-      characterId: 2111,
-    },
-    position: {
-      name: 'Back',
-      image: 'Back.png',
-    },
-    attackType: {
-      name: 'Physical',
-      image: 'Physical.png',
-    },
-    weapon: getWeaponData('Crowwbow_of_annihilation.png'),
+    weapon: getWeaponData('Spear_of_extermination.png'),
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {
@@ -729,6 +190,142 @@ export const characterBuilds = {
       image: 'Physical.png',
     },
     weapon: getWeaponData('Spear_of_extermination.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  'festival-empress-shamshel': {
+    slug: 'festival-empress-shamshel',
+    character: {
+      name: 'Festival Empress Shamshel',
+      fileName: 'Festival_Empress_Shamshel',
+      characterId: 2068,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Magic',
+      image: 'Magic.png',
+    },
+    weapon: getWeaponData('Bullet_of_annihilation.png'),
+    accessory: (() => {
+      const sapphireSet = getAccessorySet('sapphire');
+      const goldSet = getAccessorySet('gold');
+      const sapphireImg = slot => { const p = sapphireSet.pieces.find(x => x.type === slot); return p ? p.imageFile : `Sapphire_${slot}.png`; };
+      const goldImg = slot => { const p = goldSet.pieces.find(x => x.type === slot); return p ? p.imageFile : `Gold_${slot}.png`; };
+      return {
+        name: 'Sapphire 2 Set + Gold 2 Set + 1 Random SSR',
+        images: [
+          sapphireSet.pieces.slice(1).map(p => p.imageFile),
+          goldSet.pieces.slice(1).map(p => p.imageFile),
+        ].flat(),
+        setEffects: [
+          { pieces: 2, effect: 'Magic Attack +10% (Sapphire)' },
+          { pieces: 2, effect: 'Ultimate Damage +5% (Gold)' },
+        ],
+        mainStats: [
+          { slot: 'Tiara', imageFile: 'Sapphire_Tiara.png', best: 'HP (SR)', substat: 'Mag Atk (3+ rolls)' },
+          { slot: 'Earrings', imageFile: 'Gold_Earrings.png', best: 'Mag Crit (SSR)', substat: 'Mag Atk (3+ rolls)' },
+          { slot: 'Necklace', imageFile: 'Gold_Necklace.png', best: 'Ultimate DMG (SSR)', substat: 'Mag Atk (3+ rolls)' },
+          { slot: 'Bracelet', imageFile: 'Amethyst_Bracelet.png', best: 'Mag Atk (SSR)', substat: 'Mag Crit (3+ rolls)' },
+          { slot: 'Ring', imageFile: 'Sapphire_Ring.png', best: 'Skill DMG (SR)', substat: 'Mag Atk (3+ rolls)' },
+        ],
+        substatPriority: getSubstatPriority('Magic'),
+      };
+    })(),
+    alternativeAccessory: {
+      name: 'Amethyst 4 Set + 1 Random SSR',
+      images: getAccessorySet('amethyst').pieces.slice(1).map(p => p.imageFile),
+      setEffects: formatSetEffects(getAccessorySet('amethyst').setEffects),
+    },
+  },
+
+  artia: {
+    slug: 'artia',
+    character: {
+      name: 'Artia',
+      fileName: 'Artia',
+      characterId: 2048,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Sword_of_annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  gemini: {
+    slug: 'gemini',
+    character: {
+      name: 'Gemini',
+      fileName: 'Gemini',
+      characterId: 2052,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Spear_of_extermination.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  hildis: {
+    slug: 'hildis',
+    character: {
+      name: 'Hildis',
+      fileName: 'Hildis',
+      characterId: 2054,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Gauntlet_of_Annihilation.png'),
+    alternativeWeapons: [
+      getWeaponData('Staff_of_annihilation.png'),
+    ],
+    weaponNote: 'The Annihilation Staff (Magic) is recommended over the Gauntlet because its MP Charge stat helps Hildis activate her ultimate faster, allowing her to apply debuffs more frequently. Since her main role is providing debuffs for the team, faster ult uptime is more valuable than raw physical damage.',
     accessory: (() => {
       const goldSet = getAccessorySet('gold');
       return {

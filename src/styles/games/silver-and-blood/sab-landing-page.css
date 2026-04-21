@@ -22,17 +22,13 @@
 
 .story-subtitle {
   /* Fallback color for browsers that don't support gradient text */
-  color: #c0c0c0;
+  color: var(--sab-calm-red, #c26b6b);
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
   /* Gradient background for text effect */
-  background: linear-gradient(135deg, #c0c0c0, #c26b6b);
   /* Clip background to text - WebKit browsers */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   /* Standard property for modern browsers */
-  background-clip: text;
 }
 
 /* Subtitle tagline beneath main story title */
@@ -138,19 +134,15 @@
 
 .epic-text {
   /* Fallback color for browsers that don't support gradient text */
-  color: #e0e0e0;
+  color: var(--sab-calm-red, #c26b6b);
   font-size: 1.2rem;
   font-style: italic;
   line-height: 1.6;
   margin: 0;
   font-weight: 500;
   /* Gradient background for text effect */
-  background: linear-gradient(135deg, #c0c0c0, #c26b6b);
   /* Clip background to text - WebKit browsers */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   /* Standard property for modern browsers */
-  background-clip: text;
 }
 
 /* Play Button Enhancements */
@@ -505,14 +497,10 @@
   font-weight: 700;
   text-align: center;
   /* Fallback color for browsers that don't support gradient text */
-  color: #f0f0f0;
+  color: var(--sab-calm-red, #c26b6b);
   /* Gradient background for text effect */
-  background: linear-gradient(135deg, #f0f0f0, #c26b6b);
   /* Clip background to text - WebKit browsers */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   /* Standard property for modern browsers */
-  background-clip: text;
 }
 
 .last-updated {
@@ -541,11 +529,7 @@
   margin-bottom: 1.5rem;
   font-weight: 700;
   text-align: center;
-  color: #f0f0f0;
-  background: linear-gradient(135deg, #f0f0f0, #c26b6b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--sab-calm-red, #c26b6b);
 }
 
 /* Resources Grid Layout */

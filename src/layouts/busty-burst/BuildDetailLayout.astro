@@ -48,6 +48,7 @@ export interface Props {
       ability?: string;
       stats?: Array<{ name: string; value: number; max: number }>;
     };
+    weaponNote?: string;
     alternativeWeapons?: Array<{
       name: string;
       image: string;
@@ -210,6 +211,12 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
                     </div>
                   )}
                 </div>
+
+                {build.weaponNote && (
+                  <div class="bb-build-detail-card bb-build-weapon-note" style="margin-top: 0.75rem;">
+                    <p>{build.weaponNote}</p>
+                  </div>
+                )}
 
                 <!-- Alternative Weapons -->
                 {build.alternativeWeapons && build.alternativeWeapons.length > 0 && (

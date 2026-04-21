@@ -131,10 +131,7 @@
   font-size: var(--nav-font-title);
   font-weight: var(--font-semibold);
   letter-spacing: var(--tracking-normal);
-  background: linear-gradient(135deg, var(--amber-glow), #ffd700, #ffeb3b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--amber-glow);
 }
 
 /* === SECTION NAVIGATION === */
@@ -241,45 +238,33 @@
 
 /* === GAME-SPECIFIC STYLING === */
 .game-nav-desktop[data-game='silver-and-blood'] .game-title {
-  background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red), #e57373);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--sab-dark-red, #c26b6b);
 }
 
 .game-nav-desktop[data-game='silver-and-blood'] .dropdown-link.active {
-  background: linear-gradient(135deg, var(--sab-dark-red), var(--sab-light-red));
+  background: var(--sab-dark-red, #c26b6b);
   color: white;
 }
 
 .game-nav-desktop[data-game='zone-nova'] .game-title {
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--amber-glow, #ffb74d);
 }
 
 .game-nav-desktop[data-game='horizon-walker'] .game-title {
-  background: linear-gradient(135deg, #e8a547, #ff7b7b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #e8a547;
 }
 
 .game-nav-desktop[data-game='horizon-walker'] .dropdown-link.active {
-  background: linear-gradient(135deg, #e8a547, #ff7b7b);
+  background: #e8a547;
   color: white;
 }
 
 .game-nav-desktop[data-game='rebellion-gilgamesh'] .game-title {
-  background: linear-gradient(135deg, var(--rg-primary), var(--rg-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--rg-primary, #c26b6b);
 }
 
 .game-nav-desktop[data-game='rebellion-gilgamesh'] .dropdown-link.active {
-  background: linear-gradient(135deg, var(--rg-primary), var(--rg-accent));
+  background: var(--rg-primary, #c26b6b);
   color: white;
 }
 
@@ -393,30 +378,23 @@
    STELLA SORA SPECIFIC STYLING
    ============================================ */
 .game-nav-desktop[data-game='stella-sora'] .game-title {
-  background: linear-gradient(135deg, #7dd3fc, #6ee7b7, #bae6fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #7dd3fc;
 }
 
 .game-nav-desktop[data-game='stella-sora'] .dropdown-link.active {
-  background: linear-gradient(135deg, #7dd3fc, #6ee7b7);
-  color: white;
+  background: #7dd3fc;
+  color: #0a0e1a;
 }
 
 /* ============================================
    BUSTY BURST SPECIFIC STYLING
    ============================================ */
 .game-nav-desktop[data-game='busty-burst'] .game-title {
-  background: linear-gradient(135deg, #4a8399, #7dd3fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  color: #4a8399;
 }
 
 .game-nav-desktop[data-game='busty-burst'] .dropdown-link.active {
-  background: linear-gradient(135deg, #4a8399, #7dd3fc);
+  background: #4a8399;
   color: white;
 }
 
@@ -424,15 +402,11 @@
    TAIMANIN SQUAD SPECIFIC STYLING
    ============================================ */
 .game-nav-desktop[data-game='taimanin-squad'] .game-title {
-  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  color: #6b5b7a;
 }
 
 .game-nav-desktop[data-game='taimanin-squad'] .dropdown-link.active {
-  background: linear-gradient(135deg, #6b5b7a, #9a8aaa);
+  background: #6b5b7a;
   color: white;
 }
 
@@ -440,15 +414,11 @@
    STAR SAVIOR SPECIFIC STYLING
    ============================================ */
 .game-nav-desktop[data-game='star-savior'] .game-title {
-  background: linear-gradient(135deg, #c9a84c, #e8d48b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  color: #c9a84c;
 }
 
 .game-nav-desktop[data-game='star-savior'] .dropdown-link.active {
-  background: linear-gradient(135deg, #c9a84c, #e8d48b);
+  background: #c9a84c;
   color: #0a0e1a;
 }
 
@@ -456,12 +426,7 @@
    LAST ORIGIN GLOBAL SPECIFIC STYLING
    ============================================ */
 .game-nav-desktop[data-game='last-origin-global'] .game-title {
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: #e63946;
-  background-clip: unset;
   color: #e63946;
-  text-shadow: none;
 }
 
 .game-nav-desktop[data-game='last-origin-global'] .dropdown-link.active {

@@ -35,13 +35,9 @@
     font-family: var(--font-display);
     font-size: var(--text-4xl);
     font-weight: var(--font-bold);
-    color: var(--hw-text-light);
+    color: #e8a547;
     margin: 0 0 1rem 0;
     /* Using centralized gradient from hw-colors.css */
-    background: var(--hw-gradient-warm-to-coral);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     line-height: var(--leading-tight);
   }
 
@@ -51,7 +47,6 @@
     margin: 1.5rem 0;
     padding: 1rem;
     /* Using centralized card utility class */
-    background: var(--hw-bg-dark);
     border-radius: var(--hw-radius-lg);
     border: 1px solid var(--hw-border-accent);
   }
@@ -81,7 +76,6 @@
     font-family: var(--font-primary);
     font-size: var(--text-base);
     /* Using centralized gradient from hw-colors.css */
-    background: var(--hw-gradient-dark-darker-60-40);
     border: 1px solid var(--hw-border-muted);
     border-radius: var(--hw-radius-md);
     padding: 0.75rem 1rem;
@@ -144,7 +138,6 @@
   /* Character Table (Desktop) - hidden by default (mobile-first approach) */
   .character-table-container {
     display: none;
-    background: var(--hw-bg-dark);
     border: 1px solid var(--hw-border-accent);
     border-radius: var(--hw-border-radius-lg);
     overflow-x: auto;
@@ -190,7 +183,6 @@
   } /* TEC */
 
   .character-table th {
-    background: var(--hw-bg-darker);
     color: var(--hw-primary-warm);
     font-family: var(--font-primary);
     font-size: var(--text-sm);
@@ -319,7 +311,6 @@
   .filter-select,
   .sort-btn {
     padding: 0.4rem 0.7rem;
-    background: var(--hw-bg-darker);
     color: var(--hw-text-light);
     border-radius: 8px;
     border: 1px solid var(--hw-border-strong);
@@ -329,7 +320,6 @@
   }
 
   .sort-btn.active {
-    background: var(--hw-primary-warm);
     color: var(--hw-bg-dark);
     border-color: var(--hw-primary-warm);
   }
@@ -337,7 +327,6 @@
   /* Sort button visual indicators - using color only */
   .sort-btn.state-desc,
   .sort-btn.state-asc {
-    background: var(--hw-primary-warm);
     color: var(--hw-bg-dark);
     border-color: var(--hw-primary-warm);
   }
@@ -345,7 +334,6 @@
   .reset-btn {
     padding: 0.5rem 1rem;
     /* Using centralized gradient from hw-colors.css */
-    background: var(--hw-gradient-border-muted-strong);
     color: var(--hw-primary-warm);
     border-radius: var(--hw-radius-lg);
     border: 2px solid var(--hw-border-strong);
@@ -418,7 +406,6 @@
 
   /* Enhanced mobile character cards with touch optimizations */
   .mobile-character-card {
-    background: var(--hw-bg-dark);
     border-radius: var(--hw-border-radius-xl);
     padding: 1.2rem 1rem;
     margin-bottom: 1.5rem;
@@ -438,7 +425,6 @@
   }
 
   .mobile-character-card:active {
-    background: var(--hw-border-muted);
     border-color: var(--hw-primary-warm);
   }
 
@@ -511,7 +497,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: var(--hw-spacing-sm);
     padding: 0.75rem;
-    background: var(--hw-bg-medium);
     border-radius: var(--hw-border-radius-md);
     border: 1px solid var(--hw-border-light);
   }
@@ -581,7 +566,6 @@
 
     /* Cost badge styling for desktop table - consistent with HW badges */
     .cost-value {
-      background: var(--hw-primary-warm);
       color: var(--hw-text-dark);
       font-weight: var(--font-bold);
       padding: 0.4rem 0.8rem;
