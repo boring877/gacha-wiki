@@ -154,12 +154,6 @@ const isActive = (href: string) => {
         // Prevent body scroll when menu is open
         document.body.style.overflow = 'hidden';
 
-        // Set proper height to prevent infinite scroll
-        const viewportHeight = window.innerHeight;
-        if (mobileMenu) {
-          mobileMenu.style.maxHeight = `${viewportHeight}px`;
-        }
-
         // Focus management for accessibility
         closeBtn?.focus();
       } else {
@@ -223,11 +217,6 @@ const isActive = (href: string) => {
       resizeTimeout = setTimeout(function () {
         if (window.innerWidth > 1024 && isMenuOpen) {
           closeMenu();
-        }
-        // Update height on resize if menu is open
-        if (isMenuOpen && mobileMenu) {
-          const viewportHeight = window.innerHeight;
-          mobileMenu.style.maxHeight = `${viewportHeight}px`;
         }
       }, 100);
     });

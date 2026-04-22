@@ -161,6 +161,18 @@
   color: #4a8399;
 }
 
+.game-nav-mobile[data-game='taimanin-squad'] .game-title {
+  color: #9a8aaa;
+}
+
+.game-nav-mobile[data-game='star-savior'] .game-title {
+  color: #c9a84c;
+}
+
+.game-nav-mobile[data-game='last-origin-global'] .game-title {
+  color: #e63946;
+}
+
 /* Game-specific mobile menu colors */
 
 /* Zone Nova - Inside Menu */
@@ -238,25 +250,17 @@
   inset: 0;
   background: var(--rich-black);
   backdrop-filter: blur(30px);
-  overflow-y: auto;
+  overflow: hidden;
   z-index: var(--z-modal);
   flex-direction: column;
   padding: 0;
-  /* Simple visibility - hidden by default */
   display: none;
-  /* Remove blue highlights and selections */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /* Hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  /* Keep smooth momentum scrolling on touch devices */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
 }
 
 /* Hide scrollbar for WebKit browsers */
@@ -268,8 +272,6 @@
 .mobile-links.active {
   display: flex;
 }
-
-/* Additional specificity selectors removed - simple display approach is sufficient */
 
 .close-btn {
   background: rgba(255, 255, 255, 0.12);
@@ -413,12 +415,11 @@
 
   .mobile-sections-wrapper {
     padding: 0.5rem;
-    height: calc(100vh - 90px); /* Account for header height */
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    /* Hide scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    /* Momentum scrolling for smooth mobile experience */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -456,12 +457,11 @@
 @media (max-width: 1024px) {
   .mobile-sections-wrapper {
     padding: 0.5rem;
-    height: calc(100vh - 90px); /* Account for header height */
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    /* Hide scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    /* Momentum scrolling for smooth mobile experience */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -494,7 +494,6 @@
     }
 
     .mobile-sections-wrapper {
-      height: calc(100vh - 70px);
       padding: 0.25rem;
     }
 
@@ -520,7 +519,7 @@
     }
 
     .mobile-sections-wrapper {
-      height: calc(100vh - 60px);
+      flex: 1;
     }
   }
 }
