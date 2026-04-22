@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Athena",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "attackType": "Physical",
   "position": {
@@ -306,7 +306,7 @@ export const skills = {
   "name": "Athena",
   "id": 2030,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Heal",

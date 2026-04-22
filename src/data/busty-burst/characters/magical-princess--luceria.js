@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Luceria",
   "title": "Magical Princess",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Magic",
   "position": {
@@ -295,7 +295,7 @@ export const skills = {
   "name": "Magical Princess:  Luceria",
   "id": 2041,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Heal",

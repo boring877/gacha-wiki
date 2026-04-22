@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Katisha",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -289,7 +289,7 @@ export const skills = {
   "name": "Katisha",
   "id": 2107,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

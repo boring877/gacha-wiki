@@ -301,7 +301,7 @@ export const skills = {
   "name": "捕縛杖の聖騎士: カティーシャ",
   "id": 2237,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "弱體化、妨害"

@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Messeria",
   "title": "Top Dancer",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Physical",
   "position": {
@@ -313,7 +313,7 @@ export const skills = {
   "name": "Top Dancer: Messeria",
   "id": 2089,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Buff",

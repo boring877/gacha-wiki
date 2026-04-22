@@ -301,7 +301,7 @@ export const skills = {
   "name": "伝説の勇者: ジェミニ",
   "id": 2233,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "回復、弱體化、妨害、デバフ解除"

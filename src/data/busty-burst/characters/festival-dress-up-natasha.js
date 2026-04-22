@@ -267,7 +267,7 @@ export const skills = {
   "name": "Festival Dress-Up: Natasha",
   "id": 2070,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Debuff",

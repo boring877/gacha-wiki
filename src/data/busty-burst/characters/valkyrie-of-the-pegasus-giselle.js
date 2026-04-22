@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Giselle",
   "title": "Valkyrie of the Pegasus",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -308,7 +308,7 @@ export const skills = {
   "name": "Valkyrie of the Pegasus: Giselle",
   "id": 2212,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Heal",

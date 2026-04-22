@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Nerine",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Magic",
   "position": {
@@ -256,7 +256,7 @@ export const skills = {
   "name": "Nerine",
   "id": 2195,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

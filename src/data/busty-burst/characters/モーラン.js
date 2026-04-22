@@ -8,7 +8,7 @@ export const info = {
   "baseName": "モーラン",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Magic",
   "position": {
@@ -354,7 +354,7 @@ export const skills = {
   "name": "モーラン",
   "id": 2230,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "強化、MP回復"

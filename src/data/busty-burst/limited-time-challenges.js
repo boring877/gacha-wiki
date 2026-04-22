@@ -57,7 +57,7 @@ export const limitedTimeChallengesConfig = {
         { element: 'Wind', reduction: 50, icon: 'state0083.png' },
         { element: 'Water', reduction: 50, icon: 'state0085.png' },
         { element: 'Fire', reduction: 50, icon: 'state0087.png' },
-        { element: 'Holy', reduction: 50, icon: 'state0089.png' },
+        { element: 'Light', reduction: 50, icon: 'state0089.png' },
         { element: 'Mind', reduction: 50, icon: 'state0093.png' },
       ],
 
@@ -197,7 +197,7 @@ export const limitedTimeChallengesConfig = {
             id: 4100182,
             name: '相克的調和',
             nameEn: 'Elemental Harmony',
-            effect: '+50% damage from Magic element, -50% damage from non-advantaged elements (Wind, Water, Fire, Holy, Mind)',
+            effect: '+50% damage from Magic element, -50% damage from non-advantaged elements (Wind, Water, Fire, Light, Mind)',
             skillIcon: 'skill001/skill1002',
           },
         ],
@@ -207,7 +207,7 @@ export const limitedTimeChallengesConfig = {
       strategy: {
         bestElement: 'Magic',
         bestElementNote: 'Magic element heroes deal +50% damage!',
-        avoidElements: ['Wind', 'Water', 'Fire', 'Holy', 'Mind'],
+        avoidElements: ['Wind', 'Water', 'Fire', 'Light', 'Mind'],
         exploitableDebuffs: [
           { name: 'Poison', resistChance: 0, note: 'Always lands!' },
           { name: 'Burn', resistChance: 0, note: 'Always lands!' },
@@ -307,7 +307,7 @@ export const limitedTimeChallengesConfig = {
       resistances: [
         { element: 'Water', reduction: 50, icon: 'state0085.png' },
         { element: 'Fire', reduction: 50, icon: 'state0087.png' },
-        { element: 'Holy', reduction: 50, icon: 'state0089.png' },
+        { element: 'Light', reduction: 50, icon: 'state0089.png' },
         { element: 'Magic', reduction: 50, icon: 'state0091.png' },
         { element: 'Mind', reduction: 50, icon: 'state0093.png' },
       ],
@@ -461,7 +461,7 @@ export const limitedTimeChallengesConfig = {
             id: 4007782,
             name: '相剋的調和',
             nameEn: 'Harmony of Counterplay',
-            effect: 'Increase damage taken by 50% when taking damage from an advantaged attribute (Wind), and decrease damage taken by 80% when taking damage from a non-advantaged attribute (Water, Fire, Holy, Magic, Mind).',
+            effect: 'Increase damage taken by 50% when taking damage from an advantaged attribute (Wind), and decrease damage taken by 80% when taking damage from a non-advantaged attribute (Water, Fire, Light, Magic, Mind).',
             skillIcon: 'skill001/skill1002',
           },
         ],
@@ -482,7 +482,7 @@ export const limitedTimeChallengesConfig = {
       strategy: {
         bestElement: 'Wind',
         bestElementNote: 'Wind element heroes deal +50% damage! Can increase to +80% with Blind exploit!',
-        avoidElements: ['Water', 'Fire', 'Holy', 'Magic', 'Mind'],
+        avoidElements: ['Water', 'Fire', 'Light', 'Magic', 'Mind'],
         exploitableDebuffs: [
           { name: 'Blind', resistChance: 50, note: 'KEY EXPLOIT: When blinded, boss applies Wind DMG Taken +30% to itself for 15 sec!' },
           { name: 'Taunt', resistChance: 0, note: 'Always lands!' },
@@ -528,8 +528,8 @@ export const limitedTimeChallengesConfig = {
         // Resistance Buffer (reduces debuff effects from boss poison/paralysis)
         'new-years-calligraphy-pastel', // SSR Water Support - +30% Debuff Resistance buff!
         // Healers/Support
-        'festival-attire-estiriel', // SSR Holy Support/Healer
-        'frey', // SSR Holy Support
+        'festival-attire-estiriel', // SSR Light Support/Healer
+        'frey', // SSR Light Support
         'liesel', // SR Light Support - universal support
       ],
 
@@ -544,7 +544,7 @@ export const limitedTimeChallengesConfig = {
           // Position 3 (Back)
           { slug: 'shaty', note: 'Wind DPS' },
           { slug: 'meinias', note: 'Wind DPS' },
-          { slug: 'festival-attire-estiriel', note: 'Holy Support/Healer' },
+          { slug: 'festival-attire-estiriel', note: 'Light Support/Healer' },
         ],
         alternativeTeam: [
           // Lucie and Liesel are both viable alternatives

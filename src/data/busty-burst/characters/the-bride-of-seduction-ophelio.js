@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Ophelio",
   "title": "The Bride of Seduction",
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Magic",
   "position": {
@@ -306,7 +306,7 @@ export const skills = {
   "name": "The Bride of Seduction: Ophelio",
   "id": 2142,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

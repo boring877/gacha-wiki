@@ -224,7 +224,7 @@ export const getAllTierLists = () => {
   }));
 };
 
-export const ELEMENT_ORDER = ['Fire', 'Water', 'Wind', 'Earth', 'Light', 'Dark', 'Mind'];
+export const ELEMENT_ORDER = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
 
 const ELEMENT_MERGE = { Holy: 'Light' };
 

@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Ishtovia",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Magic",
   "position": {
@@ -271,7 +271,7 @@ export const skills = {
   "name": "Ishtovia",
   "id": 2036,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Heal",

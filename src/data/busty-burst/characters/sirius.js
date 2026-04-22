@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Sirius",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -310,7 +310,7 @@ export const skills = {
   "name": "Sirius",
   "id": 2139,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff"

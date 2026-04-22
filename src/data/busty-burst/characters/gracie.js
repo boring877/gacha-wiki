@@ -268,7 +268,7 @@ export const skills = {
   "name": "Gracie",
   "id": 2086,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Debuff",

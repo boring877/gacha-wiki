@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Theresia",
   "title": "The Bride of Luck",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Magic",
   "position": {
@@ -312,7 +312,7 @@ export const skills = {
   "name": "The Bride of Luck: Theresia",
   "id": 2140,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Heal",

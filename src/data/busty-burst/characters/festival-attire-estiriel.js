@@ -306,7 +306,7 @@ export const skills = {
   "name": "Festival Attire: Estiriel",
   "id": 2069,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Heal",

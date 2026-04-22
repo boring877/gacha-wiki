@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Sonia",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -312,7 +312,7 @@ export const skills = {
   "name": "Sonia",
   "id": 2215,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Buff",

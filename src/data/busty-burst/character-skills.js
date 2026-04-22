@@ -2984,7 +2984,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'giselle',
     name: 'Giselle',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Attacker',
     skill2: {
       name: 'Piercing Strike',
@@ -3229,7 +3229,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     id: 'katisha',
     name: 'Katisha',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     role: 'Attacker',
     skill2: {
       name: "Don't bother resisting!",

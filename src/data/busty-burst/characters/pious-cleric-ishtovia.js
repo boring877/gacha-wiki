@@ -312,7 +312,7 @@ export const skills = {
   "name": "Pious Cleric: Ishtovia",
   "id": 2045,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Heal",

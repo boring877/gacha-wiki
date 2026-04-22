@@ -229,7 +229,11 @@
   color: #4a8399;
 }
 
-/* Mobile Navigation - Overlay System */
+/* ==============================================
+   MOBILE POPUP OVERLAY
+   ============================================== */
+
+/* Backdrop */
 .mobile-overlay {
   position: fixed;
   inset: 0;
@@ -237,7 +241,6 @@
   backdrop-filter: blur(8px);
   z-index: var(--z-modal-backdrop);
   cursor: pointer;
-  /* Simple visibility - hidden by default */
   display: none;
 }
 
@@ -245,16 +248,27 @@
   display: block;
 }
 
+/* Popup container - matches working MobileMenu pattern */
 .mobile-links {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   background: var(--rich-black);
   backdrop-filter: blur(30px);
-  overflow: hidden;
-  z-index: var(--z-modal);
+  overflow-y: auto;
+  display: none;
   flex-direction: column;
   padding: 0;
-  display: none;
+  z-index: var(--z-modal);
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -263,16 +277,15 @@
   user-select: none;
 }
 
-/* Hide scrollbar for WebKit browsers */
 .mobile-links::-webkit-scrollbar {
   display: none;
 }
 
-/* Simple active state - just show the menu */
 .mobile-links.active {
   display: flex;
 }
 
+/* Close button */
 .close-btn {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -295,6 +308,7 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* Header - fixed at top, never scrolls */
 .game-header-content {
   display: flex;
   align-items: center;
@@ -309,10 +323,8 @@
   padding: 1.5rem 1.5rem 1.25rem 1.5rem;
   border-bottom: 1px solid rgba(255, 183, 77, 0.1);
   min-height: 80px;
-  /* Simplified positioning without conflicts */
   flex-shrink: 0;
   background: var(--rich-black);
-  /* Sticky header for better UX */
   position: sticky;
   top: 0;
   z-index: 10;
@@ -354,47 +366,58 @@
   letter-spacing: var(--tracking-normal);
 }
 
-/* MOBILE ONLY: Match menu button colors exactly */
+/* ==============================================
+   SCROLLABLE CONTENT AREA
+   Uses gap for spacing — no trailing margins
+   ============================================== */
+
+/* MOBILE ONLY: Popup content layout */
 @media (max-width: 1024px) {
+  .mobile-sections-wrapper {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+
+  /* Grid of sections — gap spaces them evenly, no trailing space */
+  .mobile-sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Section card */
   .mobile-section {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     background: rgba(255, 255, 255, 0.08);
-    margin: 0.75rem;
     padding: 1rem;
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: auto;
-    margin-bottom: 1.25rem;
   }
-}
 
-.mobile-section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 183, 77, 0.1);
-}
+  .mobile-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 183, 77, 0.1);
+  }
 
-.mobile-section-title {
-  font-family: var(--font-display);
-  font-weight: var(--font-semibold);
-  color: #ffffff;
-  font-size: var(--text-lg);
-  letter-spacing: var(--tracking-tight);
-  margin-bottom: 1rem;
-  line-height: var(--leading-tight);
-}
+  .mobile-section-title {
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold);
+    color: #ffffff;
+    font-size: var(--text-lg);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+  }
 
-/* MOBILE ONLY: Match menu button colors exactly */
-@media (max-width: 1024px) {
+  /* Link buttons */
   .mobile-link {
     display: flex;
     color: white;
     text-decoration: none;
     padding: 1rem;
-    margin: 0.75rem 0;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -409,27 +432,13 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .mobile-link:active {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .mobile-sections-wrapper {
-    padding: 0.5rem;
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-sections-wrapper::-webkit-scrollbar {
-    display: none;
+  .mobile-game-header {
+    padding: 1rem;
+    min-height: 60px;
   }
 }
 
-/* Mobile links inherit visibility from container - no additional rules needed */
-
+/* Link states */
 .mobile-link:active {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 183, 77, 0.25);
@@ -445,47 +454,7 @@
   letter-spacing: var(--tracking-normal);
 }
 
-/* Enhanced Focus Indicators for Modal Behavior */
-
-/* ============================================== */
-/*     ENHANCED RESPONSIVE GRID LAYOUTS          */
-/* ============================================== */
-
-/* Default Mobile Portrait: 1 column for narrow screens */
-/* Content wrapper - centered layout for better touch experience */
-/* MOBILE ONLY: Compact layout to reduce scrolling */
-@media (max-width: 1024px) {
-  .mobile-sections-wrapper {
-    padding: 0.5rem;
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-sections-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  .mobile-sections-grid {
-    display: block;
-    width: 100%;
-    max-width: none;
-  }
-
-  .mobile-game-header {
-    padding: 1rem;
-    min-height: 60px;
-  }
-}
-
-/* Removed complex responsive CSS - using simple mobile-only approach above */
-
-/* All complex responsive CSS removed - using ultra simple mobile-only approach */
-
-/* Better mobile spacing for very small screens */
+/* Short screens */
 @media (max-width: 1024px) {
   @media (max-height: 600px) {
     .mobile-game-header {
@@ -497,29 +466,27 @@
       padding: 0.25rem;
     }
 
+    .mobile-sections-grid {
+      gap: 0.5rem;
+    }
+
     .mobile-section {
-      margin: 0.5rem;
       padding: 0.875rem;
-      margin-bottom: 1rem;
+      gap: 0.5rem;
     }
 
     .mobile-link {
       padding: 0.875rem;
-      margin: 0.5rem 0;
       font-size: var(--text-base);
       min-height: 44px;
     }
   }
 
-  /* Landscape mobile optimization */
+  /* Landscape mobile */
   @media (orientation: landscape) and (max-height: 500px) {
     .mobile-game-header {
       min-height: 50px;
       padding: 0.75rem;
-    }
-
-    .mobile-sections-wrapper {
-      flex: 1;
     }
   }
 }

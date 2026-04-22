@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Diana",
   "title": "Festive China Dress",
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -261,7 +261,7 @@ export const skills = {
   "name": "Festive China Dress: Diana",
   "id": 2165,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff"

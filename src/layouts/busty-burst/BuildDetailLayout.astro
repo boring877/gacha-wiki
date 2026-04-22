@@ -49,6 +49,7 @@ export interface Props {
       stats?: Array<{ name: string; value: number; max: number }>;
     };
     weaponNote?: string;
+    buildHighlight?: string;
     alternativeWeapons?: Array<{
       name: string;
       image: string;
@@ -176,6 +177,11 @@ const description = `Build guide for ${build.character.name} in Busty Burst`;
               }
 
               <!-- Weapon Section -->
+              {build.buildHighlight && (
+                <div class="bb-build-highlight">
+                  <p>{build.buildHighlight}</p>
+                </div>
+              )}
               <section class="bb-build-detail-section">
                 <h2 class="bb-build-section-title">Weapon</h2>
                 <div class="bb-build-detail-card">

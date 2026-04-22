@@ -292,7 +292,7 @@ export const skills = {
   "name": "Stenlina",
   "id": 2061,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff"

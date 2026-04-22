@@ -311,7 +311,7 @@ export const skills = {
   "name": "Seductive High-Cut Swimsuit: Nerys",
   "id": 2077,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

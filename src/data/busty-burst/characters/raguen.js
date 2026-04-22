@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Raguen",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "attackType": "Physical",
   "position": {
@@ -344,7 +344,7 @@ export const skills = {
   "name": "Raguen",
   "id": 2093,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Disrupt",

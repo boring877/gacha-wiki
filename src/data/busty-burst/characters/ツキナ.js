@@ -8,7 +8,7 @@ export const info = {
   "baseName": "ツキナ",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Physical",
   "position": {
@@ -297,7 +297,7 @@ export const skills = {
   "name": "ツキナ",
   "id": 2231,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "回復、強化"

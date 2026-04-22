@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Raguen",
   "title": "Swordsman of the Sky Festival",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -319,7 +319,7 @@ export const skills = {
   "name": "Swordsman of the Sky Festival: Raguen",
   "id": 2158,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

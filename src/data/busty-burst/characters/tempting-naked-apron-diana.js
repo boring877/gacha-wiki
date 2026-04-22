@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Diana",
   "title": "Tempting Naked Apron",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Magic",
   "position": {
@@ -326,7 +326,7 @@ export const skills = {
   "name": "Tempting Naked Apron: Diana",
   "id": 2134,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Buff",

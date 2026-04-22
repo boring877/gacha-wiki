@@ -307,7 +307,7 @@ export const skills = {
   "name": "Frey",
   "id": 2051,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Heal",

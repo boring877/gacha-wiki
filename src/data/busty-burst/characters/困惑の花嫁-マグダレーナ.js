@@ -293,7 +293,7 @@ export const skills = {
   "name": "困惑の花嫁: マグダレーナ",
   "id": 2225,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "回復、強化、弱體化、MP回復、デバフ解除"

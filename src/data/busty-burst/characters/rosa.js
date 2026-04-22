@@ -304,7 +304,7 @@ export const skills = {
   "name": "Rosa",
   "id": 2085,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Buff",

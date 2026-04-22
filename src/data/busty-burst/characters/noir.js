@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Noir",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Magic",
   "position": {
@@ -362,7 +362,7 @@ export const skills = {
   "name": "Noir",
   "id": 2193,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Debuff",

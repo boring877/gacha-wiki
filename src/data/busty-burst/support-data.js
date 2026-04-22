@@ -9,7 +9,7 @@ export const ELEMENT_MAP = {
   '火': 'Fire',
   '風': 'Wind',
   '水': 'Water',
-  '聖': 'Holy',
+  '聖': 'Light',
 };
 
 // Weapon mapping (Japanese to English)
@@ -62,7 +62,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2041,
     name: '【Magical Princess】Luceria',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'MDEF': 30 },
@@ -138,7 +138,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2045,
     name: '【Pious Healer】Ishtovia',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -252,7 +252,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2051,
     name: 'Frey',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -442,7 +442,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2061,
     name: 'Stenlina',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'MATK': 80 },
@@ -594,7 +594,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2069,
     name: '【Festive Attire】Estiriel',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'Block': 5 },
@@ -689,7 +689,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2077,
     name: '【Seductive High-Cut Swimsuit】Nerys',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'MATK': 80 },
@@ -803,7 +803,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2085,
     name: 'Rosa',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -822,7 +822,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2088,
     name: 'Giselle',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -841,7 +841,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2089,
     name: '【Top Dancer】Messeria',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -898,7 +898,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2093,
     name: 'Ran',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -1183,7 +1183,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2114,
     name: 'Diana',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -1316,7 +1316,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2123,
     name: 'Fionore',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -1487,7 +1487,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2134,
     name: '【Seductive Naked Apron】Diana',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'MATK': 80 },
@@ -1563,7 +1563,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2139,
     name: 'Sirius',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -1582,7 +1582,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2140,
     name: '【Lucky Bride】Theresia',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'MDEF': 30 },
@@ -1677,7 +1677,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2147,
     name: 'Raffine',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'HP': 500 },
@@ -1848,7 +1848,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2158,
     name: '【Sky Festival Swordswoman】Ran',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -1886,7 +1886,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2161,
     name: '【Sexy Maid Emblem Knight】Ilugio',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -1943,7 +1943,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2164,
     name: 'Captain of the Vern Holy Knights Order】Frigis',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -2342,7 +2342,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2193,
     name: '【Twin Shrine Maiden】Cluul',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'MDEF': 30 },
@@ -2570,7 +2570,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2207,
     name: '【Goddess of Wisdom and Courage】Athena',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'MDEF': 30 },
@@ -2646,7 +2646,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2212,
     name: '【Valkyrie of the Pegasus】Giselle',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -2703,7 +2703,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2215,
     name: 'Sonia',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -2874,7 +2874,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2225,
     name: '困惑の花嫁: マグダレーナ',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'MDEF': 30 },
@@ -2950,7 +2950,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2230,
     name: 'モーラン',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'DEF': 30 },
@@ -2988,7 +2988,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2233,
     name: '伝説の勇者: ジェミニ',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'MATK': 80 },
@@ -3045,7 +3045,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2237,
     name: '捕縛杖の聖騎士: カティーシャ',
     rarity: 'SSR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'ATK': 80 },
@@ -3160,7 +3160,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2014,
     name: 'Irina',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'MDEF': 20 },
@@ -3331,7 +3331,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2030,
     name: 'Athena',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'DEF': 20 },
@@ -3369,7 +3369,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2033,
     name: 'Venus',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'HP': 300 },
@@ -3407,7 +3407,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2036,
     name: 'Ishtovia',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Throw',
     supportStats: {
       lb0: { 'Block': 3 },
@@ -3483,7 +3483,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2070,
     name: '【Festive Costume】Natasha',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Pierce',
     supportStats: {
       lb0: { 'DEF': 20 },
@@ -3578,7 +3578,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2086,
     name: 'Gracie',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'DEF': 20 },
@@ -3711,7 +3711,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2107,
     name: 'Katisha',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'ATK': 50 },
@@ -3844,7 +3844,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2142,
     name: '【Charming Bride】Ophelio',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'MATK': 50 },
@@ -3939,7 +3939,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2165,
     name: '【Celebratory Cheongsam】Diana',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Slash',
     supportStats: {
       lb0: { 'ATK': 50 },
@@ -4034,7 +4034,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2195,
     name: 'Louise',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Shot',
     supportStats: {
       lb0: { 'MATK': 50 },
@@ -4129,7 +4129,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
     id: 2231,
     name: 'ツキナ',
     rarity: 'SR',
-    element: 'Holy',
+    element: 'Light',
     weapon: 'Strike',
     supportStats: {
       lb0: { 'Block': 3 },

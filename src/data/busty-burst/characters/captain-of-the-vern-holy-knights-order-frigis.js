@@ -255,7 +255,7 @@ export const skills = {
   "name": "Captain of the Vern Holy Knights Order】Frigis",
   "id": 2164,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

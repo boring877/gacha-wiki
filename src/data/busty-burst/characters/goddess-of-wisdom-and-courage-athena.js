@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Athena",
   "title": "Goddess of Wisdom and Courage",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "attackType": "Physical",
   "position": {
@@ -354,7 +354,7 @@ export const skills = {
   "name": "Goddess of Wisdom and Courage: Athena",
   "id": 2207,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Buff",

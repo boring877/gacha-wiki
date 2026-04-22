@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Ilugio",
   "title": "Maid Erotic Enchanter",
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "attackType": "Physical",
   "position": {
@@ -311,7 +311,7 @@ export const skills = {
   "name": "Maid Erotic Enchanter: Ilugio",
   "id": 2161,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Attacker",
   "tags": [
     "Debuff",

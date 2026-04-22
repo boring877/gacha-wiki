@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Irina",
   "title": null,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Magic",
   "position": {
@@ -263,7 +263,7 @@ export const skills = {
   "name": "Irina",
   "id": 2014,
   "rarity": "SR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Debuff",

@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Fionore",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "attackType": "Physical",
   "position": {
@@ -319,7 +319,7 @@ export const skills = {
   "name": "Fionore",
   "id": 2123,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Tank",
   "tags": [
     "Debuff",

@@ -77,7 +77,7 @@ export function getCharacterDataBySlug(slug) {
   const build = characterBuilds[slug] || null;
 
   const rarity = info.rarity || stats?.rarity || skills?.rarity || null;
-  const element = info.element || stats?.element || skills?.element || null;
+  const element = (info.element || stats?.element || skills?.element || null)?.replace('Holy', 'Light');
   const role = info.role || stats?.role || skills?.role || null;
 
   return {

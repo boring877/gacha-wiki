@@ -246,7 +246,7 @@ export const ZONE_NOVA_RIFT_TEAMS = [
       { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
       { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
       { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
-      { name: 'Freye', image: '/images/games/zone-nova/characters/Freye.jpg' },
+      { name: 'Freya', image: '/images/games/zone-nova/characters/Freya.jpg' },
     ],
     notes: 'Freye and hera they work really good, alot of dmg and DOT dmg !!.',
     elementWeakness: ['Holy', 'Chaos'],

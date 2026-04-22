@@ -8,7 +8,7 @@ export const info = {
   "baseName": "Raffine",
   "title": null,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "attackType": "Magic",
   "position": {
@@ -254,7 +254,7 @@ export const skills = {
   "name": "Raffine",
   "id": 2147,
   "rarity": "SSR",
-  "element": "Holy",
+  "element": "Light",
   "role": "Support",
   "tags": [
     "Heal",
