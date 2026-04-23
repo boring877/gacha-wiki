@@ -1800,4 +1800,60 @@ export const characterBuilds = {
       };
     })(),
   },
+
+  inrine: {
+    slug: 'inrine',
+    character: {
+      name: 'Inrine',
+      fileName: 'Inrine',
+      characterId: 2050,
+    },
+    position: {
+      name: 'Front',
+      image: 'Front.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Sword_of_annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
+
+  ruru: {
+    slug: 'ruru',
+    character: {
+      name: 'Ruru',
+      fileName: 'Ruru',
+      characterId: 2098,
+    },
+    position: {
+      name: 'Mid',
+      image: 'Mid.png',
+    },
+    attackType: {
+      name: 'Physical',
+      image: 'Physical.png',
+    },
+    weapon: getWeaponData('Sword_of_annihilation.png'),
+    accessory: (() => {
+      const goldSet = getAccessorySet('gold');
+      return {
+        name: 'Gold 4 Set + 1 Random SSR',
+        images: goldSet.pieces.slice(1).map(p => p.imageFile),
+        setEffects: formatSetEffects(goldSet.setEffects),
+        mainStats: getMainStats('Physical', 'DPS', 'gold'),
+        substatPriority: getSubstatPriority('Physical'),
+      };
+    })(),
+  },
 };

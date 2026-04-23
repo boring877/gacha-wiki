@@ -63,6 +63,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'chocolate-frey',
           'fruit_basket_bianca',
           'lycorys',
+          'inrine',
+          'ruru',
         ],
       },
       {
@@ -100,8 +102,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'golem_summoner_nerys',
           'want_some_beer_stenrina',
           'the_strongest_witch_shaharl',
-          'inrine',
-          'ruru',
           'kaguya',
           'mischievous_mermaid_princess_lorelia',
           'samurai_cow_girl_setsuka',
