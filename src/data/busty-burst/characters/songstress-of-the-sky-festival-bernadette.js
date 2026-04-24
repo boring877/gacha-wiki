@@ -312,11 +312,16 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Max HP +",
       "icon": "skill001/skill1005",
-      "effect": "Action Speed + (+10)",
+      "effect": "Action Speed + (+10), Max HP + (0)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
+          "type": "flat"
+        },
+        {
+          "name": "Max HP +",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -628,4 +633,4 @@ export const stats = {
       "HP": 417
     }
   ]
-};;;;;;;;
+};;;;;;;

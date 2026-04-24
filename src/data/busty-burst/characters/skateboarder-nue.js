@@ -312,14 +312,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, MP Regeneration",
+      "name": "MP Regeneration, MP Regeneration",
       "icon": "skill001/skill1001",
-      "effect": "MP Regeneration (+200%)",
+      "effect": "MP Regeneration (+200%), MP Regeneration (+200)",
       "effectValues": [
         {
           "name": "MP Regeneration",
           "value": 200,
           "type": "percent"
+        },
+        {
+          "name": "MP Regeneration",
+          "value": 200,
+          "type": "flat"
         }
       ]
     },
@@ -650,4 +655,4 @@ export const stats = {
       "HP": 465
     }
   ]
-};;;;;;;;
+};;;;;;;

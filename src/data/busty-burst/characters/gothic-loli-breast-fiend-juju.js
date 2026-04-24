@@ -297,14 +297,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Action Speed +, Damage UP",
+      "name": "Damage UP, Damage UP",
       "icon": "skill001/skill1005",
-      "effect": "Damage UP (+9999%)",
+      "effect": "Damage UP (+9999%), Damage UP",
       "effectValues": [
         {
           "name": "Damage UP",
           "value": 9999,
           "type": "percent"
+        },
+        {
+          "name": "Damage UP",
+          "value": 0,
+          "type": "unknown"
         }
       ]
     },
@@ -633,4 +638,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

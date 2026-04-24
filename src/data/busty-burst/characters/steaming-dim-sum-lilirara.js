@@ -278,12 +278,17 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Skill Enhancement",
       "icon": "skill001/skill1008",
-      "effect": "Healing Received + (+10%)",
+      "effect": "Healing Received + (+10%), Skill Enhancement (0)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 10,
           "type": "percent"
+        },
+        {
+          "name": "Skill Enhancement",
+          "value": 0,
+          "type": "flat"
         }
       ]
     },
@@ -612,4 +617,4 @@ export const stats = {
       "ATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;

@@ -117,7 +117,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "229.99999999999997% ATK",
+      "damageScaling": "229% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+15",
       "lvl1": "229% + 150",

@@ -315,11 +315,16 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Magic Attack + (0)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Attack +",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -662,4 +667,4 @@ export const stats = {
       "Magic Crit": 20
     }
   ]
-};;;;;;;;
+};;;;;;;

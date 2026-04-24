@@ -271,14 +271,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, Healing Received +",
+      "name": "Healing Received +, Healing Received +",
       "icon": "skill001/skill1008",
-      "effect": "Healing Received + (+10%)",
+      "effect": "Healing Received + (+10%), Healing Received + (+10)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 10,
           "type": "percent"
+        },
+        {
+          "name": "Healing Received +",
+          "value": 10,
+          "type": "flat"
         }
       ]
     },
@@ -286,8 +291,19 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1007",
-      "effect": "()()",
-      "effectValues": []
+      "effect": "Magic Attack + (0%), Action Speed + (0%)",
+      "effectValues": [
+        {
+          "name": "Magic Attack +",
+          "value": 0,
+          "type": "percent"
+        },
+        {
+          "name": "Action Speed +",
+          "value": 0,
+          "type": "percent"
+        }
+      ]
     }
   ],
   "name": "困惑の花嫁: マグダレーナ",

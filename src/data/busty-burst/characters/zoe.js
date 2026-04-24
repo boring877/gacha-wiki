@@ -101,7 +101,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
-      "damageScaling": "114.99999999999999% ATK",
+      "damageScaling": "114% ATK",
       "baseDamage": "+80",
       "levelGrowth": "+7",
       "lvl1": "114% + 80",

@@ -1,0 +1,213 @@
+/* Rebellion Gilgamesh Buff/Debuff Database Styles */
+
+.rg-bd-category-header {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 1.5rem 0 0.5rem 0;
+  padding-bottom: 0.375rem;
+  border-bottom: 2px solid var(--rg-primary);
+}
+
+.rg-bd-effect-block {
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.rg-bd-effect-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: var(--rg-bg-secondary);
+  cursor: default;
+}
+
+.rg-bd-effect-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rg-text-primary);
+}
+
+.rg-bd-tag {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rg-bd-tag-buff {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--rg-success);
+}
+
+.rg-bd-tag-debuff {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--rg-error);
+}
+
+.rg-bd-entry-count {
+  font-size: 0.6875rem;
+  color: var(--rg-text-muted);
+  margin-left: auto;
+}
+
+.rg-bd-table-wrap {
+  overflow-x: auto;
+}
+
+.rg-bd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.rg-bd-table th {
+  background: var(--rg-bg-tertiary);
+  padding: 0.5rem 0.625rem;
+  text-align: left;
+  color: var(--rg-text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--rg-border);
+  white-space: nowrap;
+}
+
+.rg-bd-table td {
+  padding: 0.5rem 0.625rem;
+  border-bottom: 1px solid var(--rg-border-dark);
+  color: var(--rg-text-primary);
+  vertical-align: middle;
+}
+
+.rg-bd-table tbody tr {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.rg-bd-table tbody tr:hover {
+  background: var(--rg-bg-hover);
+}
+
+.rg-bd-char-img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--rg-radius-sm);
+  object-fit: contain;
+  background: var(--rg-bg-tertiary);
+}
+
+.rg-bd-char-name {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.rg-bd-char-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.125rem;
+}
+
+.rg-bd-rarity {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.rg-bd-rarity-ssr {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--rg-legendary);
+}
+
+.rg-bd-rarity-sr {
+  background: rgba(194, 107, 107, 0.15);
+  color: var(--rg-epic);
+}
+
+.rg-bd-rarity-r {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--rg-rare);
+}
+
+.rg-bd-element-text {
+  font-size: 0.625rem;
+  color: var(--rg-text-tertiary);
+}
+
+.rg-bd-skill-name {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rg-bd-skill-cat {
+  font-size: 0.625rem;
+  color: var(--rg-text-muted);
+}
+
+.rg-bd-variant {
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+  background: var(--rg-bg-tertiary);
+  padding: 0.0625rem 0.375rem;
+  border-radius: 2px;
+}
+
+.rg-bd-target {
+  font-size: 0.75rem;
+  color: var(--rg-text-secondary);
+  white-space: nowrap;
+}
+
+.rg-bd-value {
+  font-weight: 600;
+  color: var(--rg-accent);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rg-bd-chance {
+  text-align: center;
+  color: var(--rg-text-secondary);
+  white-space: nowrap;
+}
+
+.rg-bd-duration {
+  text-align: center;
+  color: var(--rg-text-secondary);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .rg-bd-table th,
+  .rg-bd-table td {
+    padding: 0.375rem 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .rg-bd-char-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .rg-bd-effect-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .rg-bd-effect-name {
+    font-size: 0.8125rem;
+  }
+}

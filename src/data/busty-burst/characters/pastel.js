@@ -293,7 +293,7 @@ export const skills = {
     },
     {
       "slot": 2,
-      "name": "Debuff Resistance +, Block+",
+      "name": "Block+",
       "icon": "skill001/skill1006",
       "effect": "Block+ (+10)",
       "effectValues": [
@@ -615,4 +615,4 @@ export const stats = {
       "Block": 12
     }
   ]
-};;;;;;;;
+};;;;;;;

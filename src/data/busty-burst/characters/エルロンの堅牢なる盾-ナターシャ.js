@@ -297,9 +297,9 @@ export const skills = {
     },
     {
       "slot": 2,
-      "name": "Debuff Resistance+, Shield, Defense Shield",
+      "name": "Shield, Defense Shield, Defense Shield",
       "icon": "skill001/skill1006",
-      "effect": "Shield (+20%), Defense Shield (+1000%)",
+      "effect": "Shield (+20%), Defense Shield (+1000%), Defense Shield (+1000)",
       "effectValues": [
         {
           "name": "Shield",
@@ -310,6 +310,11 @@ export const skills = {
           "name": "Defense Shield",
           "value": 1000,
           "type": "percent"
+        },
+        {
+          "name": "Defense Shield",
+          "value": 1000,
+          "type": "flat"
         }
       ]
     }

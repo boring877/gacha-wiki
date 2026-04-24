@@ -135,7 +135,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+70",
       "levelGrowth": "+10",
       "lvl1": "110% + 70",
@@ -256,12 +256,17 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+2896)",
+      "effect": "Max HP + (+2896), Debuff Resistance + (+30%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
           "type": "flat"
+        },
+        {
+          "name": "Debuff Resistance +",
+          "value": 30,
+          "type": "percent"
         }
       ]
     },
@@ -590,4 +595,4 @@ export const stats = {
       "Phys Crit": 19
     }
   ]
-};;;;;;;;
+};;;;;;;

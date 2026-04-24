@@ -101,7 +101,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies",
       "target": "Nearest Enemy",
       "castTime": 1.08,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+10",
       "lvl1": "110% + 50",

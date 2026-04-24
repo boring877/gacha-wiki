@@ -129,7 +129,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind for",
       "target": "Nearest Enemy",
       "castTime": 1.5,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -265,14 +265,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Action Speed +",
+      "name": "Action Speed +, Action Speed +",
       "icon": "skill001/skill1003",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Action Speed + (0%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
           "type": "flat"
+        },
+        {
+          "name": "Action Speed +",
+          "value": 0,
+          "type": "percent"
         }
       ]
     },
@@ -601,4 +606,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

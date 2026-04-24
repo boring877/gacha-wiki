@@ -333,11 +333,16 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+10%)",
+      "effect": "Ultimate Damage + (+10%), Debuff Resistance+ (0%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
+          "type": "percent"
+        },
+        {
+          "name": "Debuff Resistance+",
+          "value": 0,
           "type": "percent"
         }
       ]
@@ -651,4 +656,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

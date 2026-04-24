@@ -284,12 +284,17 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Debuff Resistance+ (+30%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
           "type": "flat"
+        },
+        {
+          "name": "Debuff Resistance+",
+          "value": 30,
+          "type": "percent"
         }
       ]
     },
@@ -618,4 +623,4 @@ export const stats = {
       "Phys Crit": 20
     }
   ]
-};;;;;;;;
+};;;;;;;

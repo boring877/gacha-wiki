@@ -309,12 +309,22 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%)",
+      "effect": "Ultimate Damage + (+15%), Physical Attack + (0), Magic Attack + (0)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
           "type": "percent"
+        },
+        {
+          "name": "Physical Attack +",
+          "value": 0,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Attack +",
+          "value": 0,
+          "type": "flat"
         }
       ]
     }
@@ -625,4 +635,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;

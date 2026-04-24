@@ -60,7 +60,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the enemy with the highest Magical ATK and inflicts Magic Attack -9%-200 DOWN for 8 seconds",
       "target": "Highest Mag ATK Enemy",
       "castTime": 1.78,
-      "damageScaling": "220.00000000000003% ATK",
+      "damageScaling": "220% ATK",
       "baseDamage": "+100",
       "levelGrowth": "+16",
       "lvl1": "220% + 100",

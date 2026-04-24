@@ -102,7 +102,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --2000 per second) for 10 seconds and Block-23 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+6",
       "lvl1": "110% + 50",

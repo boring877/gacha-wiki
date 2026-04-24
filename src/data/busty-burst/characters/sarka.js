@@ -128,7 +128,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit",
       "target": "Nearest Enemy",
       "castTime": 1.2,
-      "damageScaling": "220.00000000000003% ATK",
+      "damageScaling": "220% ATK",
       "baseDamage": "+70",
       "levelGrowth": "+25",
       "lvl1": "220% + 70",

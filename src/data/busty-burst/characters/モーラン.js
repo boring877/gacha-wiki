@@ -318,7 +318,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+, Debuff Resistance",
       "icon": "skill001/skill1005",
-      "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
+      "effect": "Physical Defense + (+141), Magic Defense+ (+141), Debuff Resistance (+30%)",
       "effectValues": [
         {
           "name": "Physical Defense +",
@@ -329,6 +329,11 @@ export const skills = {
           "name": "Magic Defense+",
           "value": 141,
           "type": "flat"
+        },
+        {
+          "name": "Debuff Resistance",
+          "value": 30,
+          "type": "percent"
         }
       ]
     },
@@ -666,4 +671,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

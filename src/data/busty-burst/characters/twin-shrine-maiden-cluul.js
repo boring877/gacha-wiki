@@ -269,11 +269,16 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Normal Attack Magic Defense DOWN",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Normal Attack Magic Defense DOWN (0)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
+          "type": "flat"
+        },
+        {
+          "name": "Normal Attack Magic Defense DOWN",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -618,4 +623,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

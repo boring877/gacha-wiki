@@ -320,14 +320,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, MP Recovery",
+      "name": "MP Recovery, MP Recovery",
       "icon": "skill001/skill1003",
-      "effect": "MP Recovery (+100%)",
+      "effect": "MP Recovery (+100%), MP Recovery (+100)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 100,
           "type": "percent"
+        },
+        {
+          "name": "MP Recovery",
+          "value": 100,
+          "type": "flat"
         }
       ]
     },
@@ -673,4 +678,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

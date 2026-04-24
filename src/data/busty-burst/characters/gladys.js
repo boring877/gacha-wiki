@@ -128,7 +128,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%-220 DOWN for 10 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 1.08,
-      "damageScaling": "220.00000000000003% ATK",
+      "damageScaling": "220% ATK",
       "baseDamage": "+83",
       "levelGrowth": "+20",
       "lvl1": "220% + 83",

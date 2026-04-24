@@ -320,11 +320,16 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+20%)",
+      "effect": "Skill Damage + (+20%), Action Speed + (0%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
+          "type": "percent"
+        },
+        {
+          "name": "Action Speed +",
+          "value": 0,
           "type": "percent"
         }
       ]
@@ -656,4 +661,4 @@ export const stats = {
       "ATK": 87
     }
   ]
-};;;;;;;;
+};;;;;;;

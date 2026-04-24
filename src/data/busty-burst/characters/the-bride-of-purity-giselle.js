@@ -276,11 +276,16 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Normal ATK Inflicts Burn",
       "icon": "skill001/skill1001",
-      "effect": "Magic Attack + (+389)",
+      "effect": "Magic Attack + (+389), Normal ATK Inflicts Burn (0)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
+          "type": "flat"
+        },
+        {
+          "name": "Normal ATK Inflicts Burn",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -621,4 +626,4 @@ export const stats = {
       "MATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;

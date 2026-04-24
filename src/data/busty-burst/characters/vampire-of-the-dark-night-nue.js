@@ -283,11 +283,16 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Physical Attack + (0)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
+          "type": "flat"
+        },
+        {
+          "name": "Physical Attack +",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -617,4 +622,4 @@ export const stats = {
       "Phys Crit": 40
     }
   ]
-};;;;;;;;
+};;;;;;;

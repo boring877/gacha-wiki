@@ -95,7 +95,7 @@ export const skills = {
       "descriptionLv90": "3 nearest enemiesphysical damage, inflict 3s and Physical Critical Damage-13%-215 DOWN for 12 seconds , 12 Magic Critical Damage-13%-35 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.1,
-      "damageScaling": "114.99999999999999% ATK",
+      "damageScaling": "114% ATK",
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "114% + 200",
@@ -270,14 +270,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, Physical Critical Damage+",
+      "name": "Physical Critical Damage+, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+90%)",
+      "effect": "Physical Critical Damage+ (+90%), Physical Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
           "value": 90,
           "type": "percent"
+        },
+        {
+          "name": "Physical Critical Damage+",
+          "value": 90,
+          "type": "flat"
         }
       ]
     },

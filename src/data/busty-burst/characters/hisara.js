@@ -99,7 +99,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 0.88,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+8",
       "lvl1": "110% + 50",

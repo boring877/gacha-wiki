@@ -276,19 +276,35 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "effect": "()",
-      "effectValues": []
+      "effect": "Physical Defense + (0), Magic Defense+ (0)",
+      "effectValues": [
+        {
+          "name": "Physical Defense +",
+          "value": 0,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Defense+",
+          "value": 0,
+          "type": "flat"
+        }
+      ]
     },
     {
       "slot": 2,
-      "name": "Max HP +, Banquet",
+      "name": "Max HP +, 宴會",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444)",
+      "effect": "Max HP + (+3444), 宴會 (0%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
           "type": "flat"
+        },
+        {
+          "name": "宴會",
+          "value": 0,
+          "type": "percent"
         }
       ]
     }
@@ -603,4 +619,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;

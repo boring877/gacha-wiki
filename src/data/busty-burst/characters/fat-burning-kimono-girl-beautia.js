@@ -130,7 +130,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Block-23 DOWN for 10 seconds and Action Speed -11%DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -299,11 +299,16 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "effect": "Action Speed + (+15)",
+      "effect": "Action Speed + (+15), Physical Attack + (0)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
+          "type": "flat"
+        },
+        {
+          "name": "Physical Attack +",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -635,4 +640,4 @@ export const stats = {
       "ATK": 66
     }
   ]
-};;;;;;;;
+};;;;;;;

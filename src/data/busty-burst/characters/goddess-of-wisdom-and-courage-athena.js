@@ -323,12 +323,22 @@ export const skills = {
       "slot": 1,
       "name": "Damage UP, Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "effect": "Damage UP (+9999%)",
+      "effect": "Damage UP (+9999%), Physical Defense + (0), Magic Defense+ (0)",
       "effectValues": [
         {
           "name": "Damage UP",
           "value": 9999,
           "type": "percent"
+        },
+        {
+          "name": "Physical Defense +",
+          "value": 0,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Defense+",
+          "value": 0,
+          "type": "flat"
         }
       ]
     },
@@ -659,4 +669,4 @@ export const stats = {
       "ATK": 40
     }
   ]
-};;;;;;;;
+};;;;;;;

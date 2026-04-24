@@ -1,0 +1,248 @@
+---
+// Rebellion Gilgamesh Buff & Debuff Database
+// Searchable index of all buffs and debuffs across all characters
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { extractAllEffects, BUFF_CATEGORIES } from '../../../../data/rebellion-gilgamesh/buff-debuff-data.js';
+import { Image } from 'astro:assets';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-character-database.css';
+import '../../../../styles/games/rebellion-gilgamesh/rg-buff-debuff.css';
+
+const characterImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../../assets/images/games/rebellion-gilgamesh/character-icons/*.png',
+  { eager: true }
+);
+
+const imageMap = {};
+for (const [path, mod] of Object.entries(characterImages)) {
+  const fname = path.split('/').pop();
+  imageMap[fname] = mod.default.src;
+}
+
+const allEffects = extractAllEffects();
+
+const buffCount = allEffects.filter(e => e.classification === 'buff').length;
+const debuffCount = allEffects.filter(e => e.classification === 'debuff').length;
+const totalEntries = allEffects.reduce((sum, e) => sum + e.entries.length, 0);
+
+const categories = Object.keys(BUFF_CATEGORIES);
+
+const effectsJson = JSON.stringify(allEffects.map(e => ({
+  name: e.name,
+  classification: e.classification,
+  category: e.category,
+  entries: e.entries.map(en => ({
+    charName: en.character.name,
+    charSlug: en.character.slug,
+    charRarity: en.character.rarity,
+    charElement: en.character.elementName,
+    charImage: imageMap[en.character.image] || '',
+    skillName: en.skillName,
+    skillCategory: en.skillCategory,
+    target: en.target,
+    probability: en.probability,
+    duration: en.duration,
+    value: en.value,
+    originalName: en.originalName,
+  })),
+})));
+
+const safeJson = effectsJson;
+---
+
+<CharacterDatabaseLayout
+  title="Buffs & Debuffs - Rebellion Gilgamesh"
+  description="Complete buff and debuff database for Rebellion Gilgamesh. Search by effect type, target, or character."
+  gameTitle="Buffs & Debuffs Database"
+>
+  <div class="rg-char-stats-bar">
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{buffCount}</div>
+      <div class="rg-char-stats-label">Buff Types</div>
+    </div>
+    <div class="rg-char-stats-divider"></div>
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{debuffCount}</div>
+      <div class="rg-char-stats-label">Debuff Types</div>
+    </div>
+    <div class="rg-char-stats-divider"></div>
+    <div class="rg-char-stats-item">
+      <div class="rg-char-stats-value">{totalEntries}</div>
+      <div class="rg-char-stats-label">Total Effects</div>
+    </div>
+  </div>
+
+  <div class="rg-char-filter-section">
+    <div class="rg-char-filter-row">
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Search Effect</label>
+        <input type="text" id="effect-search" class="rg-char-filter-input" placeholder="e.g. ATK Up, Heal Block, Burn..." />
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Category</label>
+        <select id="filter-category" class="rg-char-filter-input">
+          <option value="">All Categories</option>
+          {categories.map(cat => <option value={cat}>{cat}</option>)}
+        </select>
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Type</label>
+        <select id="filter-type" class="rg-char-filter-input">
+          <option value="">All</option>
+          <option value="buff">Buffs</option>
+          <option value="debuff">Debuffs</option>
+        </select>
+      </div>
+      <div class="rg-char-filter-group">
+        <label class="rg-char-filter-label">Target</label>
+        <select id="filter-target" class="rg-char-filter-input">
+          <option value="">All Targets</option>
+          <option value="Self">Self</option>
+          <option value="Single Ally">Single Ally</option>
+          <option value="All Allies">All Allies</option>
+          <option value="Single Enemy">Single Enemy</option>
+          <option value="All Enemies">All Enemies</option>
+          <option value="AOE">AOE (any)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="effects-data" data-effects={safeJson} style="display:none"></div>
+  <div id="effects-container"></div>
+
+  <div class="rg-char-no-results" id="no-results">
+    <div class="rg-char-stats-value">?</div>
+    <div>No effects found</div>
+    <div class="rg-char-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+(function() {
+  var dataEl = document.getElementById('effects-data');
+  if (!dataEl) return;
+  var EFFECTS_DATA = JSON.parse(dataEl.getAttribute('data-effects'));
+
+  var searchInput = document.getElementById('effect-search');
+  var categoryFilter = document.getElementById('filter-category');
+  var typeFilter = document.getElementById('filter-type');
+  var targetFilter = document.getElementById('filter-target');
+  var container = document.getElementById('effects-container');
+  var noResults = document.getElementById('no-results');
+
+  function escapeHtml(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function escapeAttr(s) {
+    return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function render() {
+    var search = searchInput.value.toLowerCase().trim();
+    var category = categoryFilter.value;
+    var type = typeFilter.value;
+    var target = targetFilter.value;
+
+    var filtered = EFFECTS_DATA.filter(function(eff) {
+      if (category && eff.category !== category) return false;
+      if (type && eff.classification !== type) return false;
+      if (search) {
+        var match = eff.name.toLowerCase().indexOf(search) !== -1;
+        if (!match) {
+          for (var i = 0; i < eff.entries.length; i++) {
+            var en = eff.entries[i];
+            if (en.charName.toLowerCase().indexOf(search) !== -1 ||
+                en.skillName.toLowerCase().indexOf(search) !== -1 ||
+                en.originalName.toLowerCase().indexOf(search) !== -1) {
+              match = true;
+              break;
+            }
+          }
+        }
+        if (!match) return false;
+      }
+      return true;
+    });
+
+    var entriesFiltered = filtered.map(function(eff) {
+      var entries = eff.entries;
+      if (target) {
+        if (target === 'AOE') {
+          entries = entries.filter(function(en) {
+            return en.target.indexOf('All') !== -1 || en.target.indexOf('Cross') !== -1 ||
+                   en.target.indexOf('Row') !== -1 || en.target.indexOf('Line') !== -1 ||
+                   en.target.indexOf('X') !== -1 || en.target.indexOf('Diagonal') !== -1;
+          });
+        } else {
+          entries = entries.filter(function(en) { return en.target.indexOf(target) !== -1; });
+        }
+      }
+      return { name: eff.name, classification: eff.classification, category: eff.category, entries: entries, _total: eff.entries.length };
+    }).filter(function(eff) { return eff.entries.length > 0; });
+
+    noResults.style.display = entriesFiltered.length === 0 ? 'block' : 'none';
+
+    var html = '';
+    var currentCat = '';
+
+    for (var fi = 0; fi < entriesFiltered.length; fi++) {
+      var eff = entriesFiltered[fi];
+      if (eff.category !== currentCat) {
+        currentCat = eff.category;
+        html += '<div class="rg-bd-category-header">' + escapeHtml(currentCat) + '</div>';
+      }
+
+      var typeLabel = eff.classification === 'buff' ? 'Buff' : 'Debuff';
+      var typeClass = eff.classification === 'buff' ? 'rg-bd-tag-buff' : 'rg-bd-tag-debuff';
+
+      html += '<div class="rg-bd-effect-block">';
+      html += '<div class="rg-bd-effect-header">';
+      html += '<span class="rg-bd-effect-name">' + escapeHtml(eff.name) + '</span>';
+      html += '<span class="rg-bd-tag ' + typeClass + '">' + typeLabel + '</span>';
+      html += '<span class="rg-bd-entry-count">' + eff._total + ' entries</span>';
+      html += '</div>';
+
+      html += '<div class="rg-bd-table-wrap"><table class="rg-bd-table">';
+      html += '<thead><tr>';
+      html += '<th>Char</th><th>Name</th><th>Skill</th><th>Variant</th><th>Target</th><th>Value</th><th>Chance</th><th>Duration</th>';
+      html += '</tr></thead><tbody>';
+
+      for (var ei = 0; ei < eff.entries.length; ei++) {
+        var en = eff.entries[ei];
+        var rarityClass = 'rg-bd-rarity-' + en.charRarity.toLowerCase();
+        var charUrl = '/guides/rebellion-gilgamesh/characters/' + en.charSlug + '/';
+
+        html += '<tr class="rg-bd-row" onclick="window.location.href=\'' + charUrl + '\'">';
+        html += '<td>' + (en.charImage ? '<img class="rg-bd-char-img" src="' + en.charImage + '" alt="' + escapeAttr(en.charName) + '" loading="lazy" />' : '<div class="rg-bd-char-img rg-bd-char-fallback">' + escapeHtml(en.charName[0] || '?') + '</div>') + '</td>';
+        html += '<td><div class="rg-bd-char-name">' + escapeHtml(en.charName) + '</div>';
+        html += '<div class="rg-bd-char-meta"><span class="rg-bd-rarity ' + rarityClass + '">' + en.charRarity + '</span>';
+        html += ' <span class="rg-bd-element-text">' + en.charElement + '</span></div></td>';
+        html += '<td><div class="rg-bd-skill-name">' + escapeHtml(en.skillName) + '</div>';
+        html += '<div class="rg-bd-skill-cat">' + en.skillCategory + '</div></td>';
+        html += '<td>' + (en.originalName !== eff.name ? '<span class="rg-bd-variant">' + escapeHtml(en.originalName) + '</span>' : '--') + '</td>';
+        html += '<td class="rg-bd-target">' + escapeHtml(en.target) + '</td>';
+        html += '<td class="rg-bd-value">' + (en.value ? en.value + '%' : '--') + '</td>';
+        html += '<td class="rg-bd-chance">' + (en.probability ? en.probability + '%' : '--') + '</td>';
+        html += '<td class="rg-bd-duration">' + (en.duration ? en.duration + 't' : '--') + '</td>';
+        html += '</tr>';
+      }
+
+      html += '</tbody></table></div>';
+      html += '</div>';
+    }
+
+    container.innerHTML = html;
+  }
+
+  searchInput.addEventListener('input', render);
+  categoryFilter.addEventListener('change', render);
+  typeFilter.addEventListener('change', render);
+  targetFilter.addEventListener('change', render);
+
+  render();
+})();
+</script>

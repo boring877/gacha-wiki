@@ -102,7 +102,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-14%-110 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.15,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+110",
       "levelGrowth": "+6",
       "lvl1": "110% + 110",
@@ -231,8 +231,14 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "()",
-      "effectValues": []
+      "effect": "Magic Attack + (0%)",
+      "effectValues": [
+        {
+          "name": "Magic Attack +",
+          "value": 0,
+          "type": "percent"
+        }
+      ]
     },
     {
       "slot": 2,
@@ -572,4 +578,4 @@ export const stats = {
       "MATK": 85
     }
   ]
-};;;;;;;;
+};;;;;;;

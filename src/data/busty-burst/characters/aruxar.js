@@ -303,7 +303,7 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, Physical Attack +",
+      "name": "Physical Attack +",
       "icon": "skill001/skill1001",
       "effect": "Physical Attack + (+500)",
       "effectValues": [
@@ -641,4 +641,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

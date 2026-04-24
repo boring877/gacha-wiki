@@ -340,7 +340,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Regeneration, Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1005",
-      "effect": "MP Regeneration (+200%), Physical Critical Damage+ (+20)",
+      "effect": "MP Regeneration (+200%), Physical Critical Damage+ (+20), Magic Critical Damage+ (0)",
       "effectValues": [
         {
           "name": "MP Regeneration",
@@ -350,6 +350,11 @@ export const skills = {
         {
           "name": "Physical Critical Damage+",
           "value": 20,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Critical Damage+",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -674,4 +679,4 @@ export const stats = {
       "HP": 370
     }
   ]
-};;;;;;;;
+};;;;;;;

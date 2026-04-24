@@ -288,14 +288,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Action Speed +, Physical Critical Damage+",
+      "name": "Physical Critical Damage+, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+60)",
+      "effect": "Physical Critical Damage+ (+60), Physical Critical Damage+",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
           "value": 60,
           "type": "flat"
+        },
+        {
+          "name": "Physical Critical Damage+",
+          "value": 0,
+          "type": "unknown"
         }
       ]
     },
@@ -624,4 +629,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

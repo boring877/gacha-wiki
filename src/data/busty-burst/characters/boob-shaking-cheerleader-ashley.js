@@ -318,14 +318,19 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Debuff Resistance+, MP Recovery",
+      "name": "MP Recovery, MP Recovery",
       "icon": "skill001/skill1003",
-      "effect": "MP Recovery (+30%)",
+      "effect": "MP Recovery (+30%), MP Recovery (+30)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 30,
           "type": "percent"
+        },
+        {
+          "name": "MP Recovery",
+          "value": 30,
+          "type": "flat"
         }
       ]
     },
@@ -333,8 +338,19 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "HP",
-      "effectValues": []
+      "effect": "Max HP + (0), Action Speed + (0%)",
+      "effectValues": [
+        {
+          "name": "Max HP +",
+          "value": 0,
+          "type": "flat"
+        },
+        {
+          "name": "Action Speed +",
+          "value": 0,
+          "type": "percent"
+        }
+      ]
     }
   ],
   "name": "Boob-Shaking Cheerleader: Ashley",
@@ -643,4 +659,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;

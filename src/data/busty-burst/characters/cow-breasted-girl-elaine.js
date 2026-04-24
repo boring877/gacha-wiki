@@ -283,12 +283,17 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
-      "effect": "Healing Received + (+30%)",
+      "effect": "Healing Received + (+30%), Max HP + (0)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 30,
           "type": "percent"
+        },
+        {
+          "name": "Max HP +",
+          "value": 0,
+          "type": "flat"
         }
       ]
     },
@@ -617,4 +622,4 @@ export const stats = {
       "HP": 917
     }
   ]
-};;;;;;;;
+};;;;;;;

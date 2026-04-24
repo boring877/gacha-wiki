@@ -276,12 +276,17 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+2896)",
+      "effect": "Max HP + (+2896), Debuff Resistance + (+30%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
           "type": "flat"
+        },
+        {
+          "name": "Debuff Resistance +",
+          "value": 30,
+          "type": "percent"
         }
       ]
     },
@@ -623,4 +628,4 @@ export const stats = {
       "HP": 589
     }
   ]
-};;;;;;;;
+};;;;;;;

@@ -318,12 +318,17 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+10%)",
+      "effect": "Skill Damage + (+10%), Magic Critical Damage+ (0)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
           "type": "percent"
+        },
+        {
+          "name": "Magic Critical Damage+",
+          "value": 0,
+          "type": "flat"
         }
       ]
     },
@@ -661,4 +666,4 @@ export const stats = {
       "Magic Crit": 15
     }
   ]
-};;;;;;;;
+};;;;;;;

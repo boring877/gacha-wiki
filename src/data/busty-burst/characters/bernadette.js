@@ -332,8 +332,19 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1005",
-      "effect": "HP()",
-      "effectValues": []
+      "effect": "Physical Attack + (0), Max HP + (0)",
+      "effectValues": [
+        {
+          "name": "Physical Attack +",
+          "value": 0,
+          "type": "flat"
+        },
+        {
+          "name": "Max HP +",
+          "value": 0,
+          "type": "flat"
+        }
+      ]
     }
   ],
   "name": "Bernadette",
@@ -642,4 +653,4 @@ export const stats = {
       "HP": 457
     }
   ]
-};;;;;;;;
+};;;;;;;

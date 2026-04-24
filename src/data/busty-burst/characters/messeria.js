@@ -105,7 +105,7 @@ export const skills = {
       "castTime": 1.08,
       "damageScaling": "280% ATK",
       "baseDamage": "+110",
-      "levelGrowth": "+6",
+      "levelGrowth": "+20",
       "lvl1": "280% + 110",
       "lvl90": null,
       "effects": [
@@ -132,7 +132,7 @@ export const skills = {
       "castTime": 1.08,
       "damageScaling": "1350% ATK",
       "baseDamage": "+301",
-      "levelGrowth": "+5",
+      "levelGrowth": "+35",
       "lvl1": "1350% + 301",
       "lvl90": "1350% + 746",
       "effects": [

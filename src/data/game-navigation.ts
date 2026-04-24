@@ -175,6 +175,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/rebellion-gilgamesh/characters/' },
+          { name: 'Buffs & Debuffs', href: '/guides/rebellion-gilgamesh/buff-debuff/' },
         ],
       },
       {

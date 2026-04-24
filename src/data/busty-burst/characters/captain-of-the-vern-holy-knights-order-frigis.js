@@ -224,12 +224,17 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Skill Enhancement",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+20%)",
+      "effect": "Skill Damage + (+20%), Skill Enhancement (0)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
           "type": "percent"
+        },
+        {
+          "name": "Skill Enhancement",
+          "value": 0,
+          "type": "flat"
         }
       ]
     },

@@ -101,7 +101,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Fire Type Damage Taken 16%UP for 6 seconds and Block-18 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.35,
-      "damageScaling": "114.99999999999999% ATK",
+      "damageScaling": "114% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "114% + 150",

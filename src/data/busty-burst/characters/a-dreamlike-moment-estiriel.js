@@ -311,13 +311,18 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Magic Attack +",
+      "name": "Magic Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Magic Attack + (+389)",
+      "effect": "Magic Attack + (+389), Magic Attack + (0)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
+          "type": "flat"
+        },
+        {
+          "name": "Magic Attack +",
+          "value": 0,
           "type": "flat"
         }
       ]
@@ -658,4 +663,4 @@ export const stats = {
       "MATK": 93
     }
   ]
-};;;;;;;;
+};;;;;;;

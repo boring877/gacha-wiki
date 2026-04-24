@@ -57,7 +57,7 @@ export const skills = {
       "descriptionLv90": "Deals 6188 (MATK x 2.3 + 2750) magic damage to the nearest enemy",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "230% ATK",
+      "damageScaling": "229% ATK",
       "baseDamage": "+80",
       "levelGrowth": "+30",
       "lvl1": "230% + 80",

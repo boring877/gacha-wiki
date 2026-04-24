@@ -102,7 +102,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
-      "damageScaling": "110.00000000000001% ATK",
+      "damageScaling": "110% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",

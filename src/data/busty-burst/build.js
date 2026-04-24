@@ -328,7 +328,7 @@ export const buildConfig = {
       weaponType: 'Throw',
       skills: ['Heal', 'Buff', 'Cleanse'],
       actionSpeed: 'Normal',
-      tier: 'A',
+      tier: 'SS',
       buildLink: '/guides/busty-burst/build/trish',
     },
     {

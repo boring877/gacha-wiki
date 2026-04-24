@@ -234,11 +234,16 @@ export const skills = {
       "slot": 1,
       "name": "Wind Type ATK +, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "Wind Type ATK + (+4%)",
+      "effect": "Wind Type ATK + (+4%), Action Speed + (0%)",
       "effectValues": [
         {
           "name": "Wind Type ATK +",
           "value": 4,
+          "type": "percent"
+        },
+        {
+          "name": "Action Speed +",
+          "value": 0,
           "type": "percent"
         }
       ]
