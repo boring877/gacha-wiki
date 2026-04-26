@@ -138,6 +138,8 @@ const rawKalinaData = {
   // Skills and Passive
   skills: {
     harpeArt: {
+      gameKey: 'HarpeSlash',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Harpe Art',
       level: '10/10',
       type: 'Skill',
@@ -151,6 +153,8 @@ const rawKalinaData = {
         'The swamp elf extends their long arms and swiftly swings the harpe. Deals Slash DMG equal to 114% of melee ATK.',
     },
     hunterOnVine: {
+      gameKey: 'RangerOnTheVine',
+      icon: 'UI_SkillIcon_RangerOnTheVine',
       name: 'Hunter on the Vine',
       level: '10/10',
       type: 'Passive',
@@ -160,6 +164,8 @@ const rawKalinaData = {
         'Increases Mobility by 10. After attacking, Evasion increases by 570% until the end of the turn. Additionally, during a basic attack, Melee ATK increases proportionally to the straight distance moved. Up to 10m movement grants a maximum of 114% increase.',
     },
     assault: {
+      gameKey: 'DescentRaid',
+      icon: 'UI_SkillIcon_DescentRaid',
       name: 'Assault',
       level: '10/10',
       type: 'Skill',
@@ -173,6 +179,8 @@ const rawKalinaData = {
         'Leaps high and dives quickly to ambush enemies. Jumps to the designated location and deals Slash DMG equal to 190% of melee ATK to all enemies within a 1.5m circular radius. Ignores counterattacks from the target.',
     },
     bladesOfTyranny: {
+      gameKey: 'BladeOfTyranny',
+      icon: 'UI_SkillIcon_BladeOfTyranny',
       name: 'Blades of Tyranny',
       level: '10/10',
       type: 'Skill',
@@ -186,6 +194,8 @@ const rawKalinaData = {
         'The harpe slashes around with lightning-like speed. Deals Slash DMG equal to 380% of melee ATK to all enemies within a 2.5m circular radius.',
     },
     survivalExpert: {
+      gameKey: 'SurvivalExpert',
+      icon: 'UI_SkillIcon_SurvivalExpert',
       name: 'Survival Expert',
       level: '10/10',
       type: 'Passive',

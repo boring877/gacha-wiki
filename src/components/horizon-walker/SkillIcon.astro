@@ -1,0 +1,399 @@
+---
+// Skill icon component - renders game skill icons from extracted assets
+import { Image } from 'astro:assets';
+
+import UI_SkillIcon_AdaptiveMuscles from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_AdaptiveMuscles.png';
+import UI_SkillIcon_AirspaRadar from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_AirspaRadar.png';
+import UI_SkillIcon_AllOutExecution from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_AllOutExecution.png';
+import UI_SkillIcon_Ambush from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Ambush.png';
+import UI_SkillIcon_ArcaneBaptism from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ArcaneBaptism.png';
+import UI_SkillIcon_ArcaneBullet from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ArcaneBullet.png';
+import UI_SkillIcon_Assassination from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Assassination.png';
+import UI_SkillIcon_BangingExplosionUnderGround from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BangingExplosionUnderGround.png';
+import UI_SkillIcon_BecauseIAteItRight from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BecauseIAteItRight.png';
+import UI_SkillIcon_BladeOfTyranny from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BladeOfTyranny.png';
+import UI_SkillIcon_BladeOfWar from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BladeOfWar.png';
+import UI_SkillIcon_BlazingDiscipline from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BlazingDiscipline.png';
+import UI_SkillIcon_BlazingVortex from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BlazingVortex.png';
+import UI_SkillIcon_BloodContract from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BloodContract.png';
+import UI_SkillIcon_BloodCurse from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BloodCurse.png';
+import UI_SkillIcon_BloodJudgment from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BloodJudgment.png';
+import UI_SkillIcon_BloodRedFear from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BloodRedFear.png';
+import UI_SkillIcon_BogDownPrey from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BogDownPrey.png';
+import UI_SkillIcon_BranchResurrection from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BranchResurrection.png';
+import UI_SkillIcon_BurningFanaticism from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BurningFanaticism.png';
+import UI_SkillIcon_BurningTheFightingSpiritForAReversal from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_BurningTheFightingSpiritForAReversal.png';
+import UI_SkillIcon_Camouflage from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Camouflage.png';
+import UI_SkillIcon_CastingStarlightShower from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CastingStarlightShower.png';
+import UI_SkillIcon_CheckDarkSacrament from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CheckDarkSacrament.png';
+import UI_SkillIcon_Chop from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Chop.png';
+import UI_SkillIcon_CircleDance from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CircleDance.png';
+import UI_SkillIcon_CounterWave from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CounterWave.png';
+import UI_SkillIcon_CrownSplitting from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CrownSplitting.png';
+import UI_SkillIcon_CryOfProvoke from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CryOfProvoke.png';
+import UI_SkillIcon_CryOfTheAncientTimes from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CryOfTheAncientTimes.png';
+import UI_SkillIcon_CuringGrace from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CuringGrace.png';
+import UI_SkillIcon_CycloneOfVitality from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_CycloneOfVitality.png';
+import UI_SkillIcon_DanceOfBlades from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DanceOfBlades.png';
+import UI_SkillIcon_DaringLeap from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DaringLeap.png';
+import UI_SkillIcon_DarkSacrament from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DarkSacrament.png';
+import UI_SkillIcon_DeadlyPoison from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DeadlyPoison.png';
+import UI_SkillIcon_DeathBulletOfPenetration from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DeathBulletOfPenetration.png';
+import UI_SkillIcon_DeclarationOfVictory from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DeclarationOfVictory.png';
+import UI_SkillIcon_DefenseTechniqueUnderGround from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DefenseTechniqueUnderGround.png';
+import UI_SkillIcon_DelayedBombing from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DelayedBombing.png';
+import UI_SkillIcon_DescentRaid from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DescentRaid.png';
+import UI_SkillIcon_DeterminedLuck from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DeterminedLuck.png';
+import UI_SkillIcon_DistortedStarlight from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DistortedStarlight.png';
+import UI_SkillIcon_DividingWorld from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DividingWorld.png';
+import UI_SkillIcon_DoubleEdge_BA from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DoubleEdge_BA.png';
+import UI_SkillIcon_DoublePistol_BA from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DoublePistol_BA.png';
+import UI_SkillIcon_DreamShock from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DreamShock.png';
+import UI_SkillIcon_DualSword from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_DualSword.png';
+import UI_SkillIcon_EatAndGo from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EatAndGo.png';
+import UI_SkillIcon_EfficientReconstruction from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EfficientReconstruction.png';
+import UI_SkillIcon_EmberCovenant from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EmberCovenant.png';
+import UI_SkillIcon_EndlessKillingAura from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EndlessKillingAura.png';
+import UI_SkillIcon_EnergyFormConversion from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EnergyFormConversion.png';
+import UI_SkillIcon_EnergySword from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EnergySword.png';
+import UI_SkillIcon_EnforcementShooter from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EnforcementShooter.png';
+import UI_SkillIcon_EvasiveTechniqueUnderGround from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_EvasiveTechniqueUnderGround.png';
+import UI_SkillIcon_Execution from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Execution.png';
+import UI_SkillIcon_ExecutionOfBloodiness from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ExecutionOfBloodiness.png';
+import UI_SkillIcon_FaithfulBrothersAndSisters from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FaithfulBrothersAndSisters.png';
+import UI_SkillIcon_FireBall from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FireBall.png';
+import UI_SkillIcon_FireBolt from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FireBolt.png';
+import UI_SkillIcon_FireFlakes from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FireFlakes.png';
+import UI_SkillIcon_FireFlakesExplosion from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FireFlakesExplosion.png';
+import UI_SkillIcon_FleshEatingFoam from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FleshEatingFoam.png';
+import UI_SkillIcon_FocusFiring from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FocusFiring.png';
+import UI_SkillIcon_FollowingThunderBolt from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FollowingThunderBolt.png';
+import UI_SkillIcon_FormationBreakdown from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FormationBreakdown.png';
+import UI_SkillIcon_FreezingGrasph from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_FreezingGrasph.png';
+import UI_SkillIcon_GameSpice from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_GameSpice.png';
+import UI_SkillIcon_GravitationalDrop from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_GravitationalDrop.png';
+import UI_SkillIcon_GreatColdWave from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_GreatColdWave.png';
+import UI_SkillIcon_GuardianWall from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_GuardianWall.png';
+import UI_SkillIcon_Harvest from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Harvest.png';
+import UI_SkillIcon_HolyWarOfExorcism from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_HolyWarOfExorcism.png';
+import UI_SkillIcon_HolyWord from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_HolyWord.png';
+import UI_SkillIcon_ImprovisedFortress from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ImprovisedFortress.png';
+import UI_SkillIcon_InevitableSight from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_InevitableSight.png';
+import UI_SkillIcon_InfiniteBody from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_InfiniteBody.png';
+import UI_SkillIcon_IronMace_BA from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_IronMace_BA.png';
+import UI_SkillIcon_JumpAndAttack from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_JumpAndAttack.png';
+import UI_SkillIcon_KingsAnger from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_KingsAnger.png';
+import UI_SkillIcon_KingsConcern from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_KingsConcern.png';
+import UI_SkillIcon_KingsOffering from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_KingsOffering.png';
+import UI_SkillIcon_LastLuck from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LastLuck.png';
+import UI_SkillIcon_LeapOfTheGiant from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LeapOfTheGiant.png';
+import UI_SkillIcon_LifeWillEater from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LifeWillEater.png';
+import UI_SkillIcon_LightInTheDarkness from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LightInTheDarkness.png';
+import UI_SkillIcon_LightningEdge from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LightningEdge.png';
+import UI_SkillIcon_LingeringPoison from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_LingeringPoison.png';
+import UI_SkillIcon_MajestyOfTheGuardian from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MajestyOfTheGuardian.png';
+import UI_SkillIcon_MarkModulation from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MarkModulation.png';
+import UI_SkillIcon_MarkOfBloodInSecret from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MarkOfBloodInSecret.png';
+import UI_SkillIcon_Masochism from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Masochism.png';
+import UI_SkillIcon_MeleeMaster from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MeleeMaster.png';
+import UI_SkillIcon_MentalShock from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MentalShock.png';
+import UI_SkillIcon_MindCatchUp from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_MindCatchUp.png';
+import UI_SkillIcon_NaturalBody from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_NaturalBody.png';
+import UI_SkillIcon_NightmareMaterializes from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_NightmareMaterializes.png';
+import UI_SkillIcon_NoRebellion from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_NoRebellion.png';
+import UI_SkillIcon_OathOfRetributionandCrushing from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OathOfRetributionandCrushing.png';
+import UI_SkillIcon_OneHandedSword_BA from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OneHandedSword_BA.png';
+import UI_SkillIcon_OnlyOneStrike from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OnlyOneStrike.png';
+import UI_SkillIcon_OpeningMoment from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OpeningMoment.png';
+import UI_SkillIcon_OpponentsNomination from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OpponentsNomination.png';
+import UI_SkillIcon_OutlawsTaunt from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_OutlawsTaunt.png';
+import UI_SkillIcon_PeacefulPoison from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PeacefulPoison.png';
+import UI_SkillIcon_PhaseShift from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PhaseShift.png';
+import UI_SkillIcon_PlatinumCore from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PlatinumCore.png';
+import UI_SkillIcon_PoisonAccumulation from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PoisonAccumulation.png';
+import UI_SkillIcon_PossessionOfEcstaticDream from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PossessionOfEcstaticDream.png';
+import UI_SkillIcon_PrecisionFiringPosition from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PrecisionFiringPosition.png';
+import UI_SkillIcon_PredatoryDistance from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_PredatoryDistance.png';
+import UI_SkillIcon_ProhibitedPlace from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ProhibitedPlace.png';
+import UI_SkillIcon_ProminenceStorm from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ProminenceStorm.png';
+import UI_SkillIcon_ProtectMyself from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ProtectMyself.png';
+import UI_SkillIcon_QuantumSingularity from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_QuantumSingularity.png';
+import UI_SkillIcon_QuotesAboutTrials from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_QuotesAboutTrials.png';
+import UI_SkillIcon_RagingLightningStorm from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_RagingLightningStorm.png';
+import UI_SkillIcon_RampageOfTheFlow from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_RampageOfTheFlow.png';
+import UI_SkillIcon_RangerOnTheVine from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_RangerOnTheVine.png';
+import UI_SkillIcon_Remorse from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Remorse.png';
+import UI_SkillIcon_ReversedCausality from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ReversedCausality.png';
+import UI_SkillIcon_Rifle from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Rifle.png';
+import UI_SkillIcon_RobotGun from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_RobotGun.png';
+import UI_SkillIcon_RollingMove from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_RollingMove.png';
+import UI_SkillIcon_SanctuaryProclamation from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SanctuaryProclamation.png';
+import UI_SkillIcon_SeasonalWind from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SeasonalWind.png';
+import UI_SkillIcon_SensingResponseAboutFrost from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SensingResponseAboutFrost.png';
+import UI_SkillIcon_ShadowStep from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ShadowStep.png';
+import UI_SkillIcon_SharpWave from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SharpWave.png';
+import UI_SkillIcon_Shatter from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Shatter.png';
+import UI_SkillIcon_ShieldCharging from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ShieldCharging.png';
+import UI_SkillIcon_ShieldSplitting from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ShieldSplitting.png';
+import UI_SkillIcon_ShootingSupport from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ShootingSupport.png';
+import UI_SkillIcon_SilentInside from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SilentInside.png';
+import UI_SkillIcon_SilentShadowsEye from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SilentShadowsEye.png';
+import UI_SkillIcon_SniperRifle_BA from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SniperRifle_BA.png';
+import UI_SkillIcon_SoaringFire from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SoaringFire.png';
+import UI_SkillIcon_SomeonesBody from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SomeonesBody.png';
+import UI_SkillIcon_SongOfSword from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SongOfSword.png';
+import UI_SkillIcon_SpaceWarp from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpaceWarp.png';
+import UI_SkillIcon_SpiritCatRite from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpiritCatRite.png';
+import UI_SkillIcon_SpiritDecay from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpiritDecay.png';
+import UI_SkillIcon_SpiritfireClaw from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpiritfireClaw.png';
+import UI_SkillIcon_SpiritfireDescent from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpiritfireDescent.png';
+import UI_SkillIcon_SpiritsToxicPayload from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpiritsToxicPayload.png';
+import UI_SkillIcon_SpreadingLightning from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SpreadingLightning.png';
+import UI_SkillIcon_StandingLikeSky from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_StandingLikeSky.png';
+import UI_SkillIcon_StormEdge from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_StormEdge.png';
+import UI_SkillIcon_StyleExplosion from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_StyleExplosion.png';
+import UI_SkillIcon_StyleLosing from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_StyleLosing.png';
+import UI_SkillIcon_SummonEnergy from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SummonEnergy.png';
+import UI_SkillIcon_SummonLava from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SummonLava.png';
+import UI_SkillIcon_SummonStarlight from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SummonStarlight.png';
+import UI_SkillIcon_SurvivalExpert from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SurvivalExpert.png';
+import UI_SkillIcon_SwiftCatsBlessing from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SwiftCatsBlessing.png';
+import UI_SkillIcon_SwordOfTheRiverFlows from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SwordOfTheRiverFlows.png';
+import UI_SkillIcon_SwordOfUnknown from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_SwordOfUnknown.png';
+import UI_SkillIcon_TacticalSecurity from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TacticalSecurity.png';
+import UI_SkillIcon_TakeItOutAndEatIt from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TakeItOutAndEatIt.png';
+import UI_SkillIcon_TheEmbodimentOfGluttony from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TheEmbodimentOfGluttony.png';
+import UI_SkillIcon_TheFangsOfABog from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TheFangsOfABog.png';
+import UI_SkillIcon_ThePowerOfGluttony from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ThePowerOfGluttony.png';
+import UI_SkillIcon_TheReaper from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TheReaper.png';
+import UI_SkillIcon_ThousandArmed from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ThousandArmed.png';
+import UI_SkillIcon_ThreatAttack from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ThreatAttack.png';
+import UI_SkillIcon_Threatening from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_Threatening.png';
+import UI_SkillIcon_ThrillingShiver from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ThrillingShiver.png';
+import UI_SkillIcon_ThrowingFruit from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ThrowingFruit.png';
+import UI_SkillIcon_TimeToEnjoy from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TimeToEnjoy.png';
+import UI_SkillIcon_ToxicBolt from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_ToxicBolt.png';
+import UI_SkillIcon_TrailOfFatality from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TrailOfFatality.png';
+import UI_SkillIcon_TunnelMovement from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TunnelMovement.png';
+import UI_SkillIcon_TurnCrisisIntoOpportunity from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TurnCrisisIntoOpportunity.png';
+import UI_SkillIcon_TurnWaterWay from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TurnWaterWay.png';
+import UI_SkillIcon_TwoHandSword from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_TwoHandSword.png';
+import UI_SkillIcon_UncertainSpace from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_UncertainSpace.png';
+import UI_SkillIcon_UnendingSwordDance from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_UnendingSwordDance.png';
+import UI_SkillIcon_VitalityRegeneration from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_VitalityRegeneration.png';
+import UI_SkillIcon_VolcanicEruption from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_VolcanicEruption.png';
+import UI_SkillIcon_VolleyFiring from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_VolleyFiring.png';
+import UI_SkillIcon_VoltWeave from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_VoltWeave.png';
+import UI_SkillIcon_WallOfAnnihilation from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WallOfAnnihilation.png';
+import UI_SkillIcon_WaveOfBlood from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WaveOfBlood.png';
+import UI_SkillIcon_WaveOfLifeCycle from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WaveOfLifeCycle.png';
+import UI_SkillIcon_WillToResist from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WillToResist.png';
+import UI_SkillIcon_WindBarrier from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WindBarrier.png';
+import UI_SkillIcon_WindEdge from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WindEdge.png';
+import UI_SkillIcon_WindGathering from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WindGathering.png';
+import UI_SkillIcon_WireShot from '../../assets/images/games/horizon-walker/skills/UI_SkillIcon_WireShot.png';
+
+const skillIconMap: Record<string, any> = {
+  'UI_SkillIcon_AdaptiveMuscles': UI_SkillIcon_AdaptiveMuscles,
+  'UI_SkillIcon_AirspaRadar': UI_SkillIcon_AirspaRadar,
+  'UI_SkillIcon_AllOutExecution': UI_SkillIcon_AllOutExecution,
+  'UI_SkillIcon_Ambush': UI_SkillIcon_Ambush,
+  'UI_SkillIcon_ArcaneBaptism': UI_SkillIcon_ArcaneBaptism,
+  'UI_SkillIcon_ArcaneBullet': UI_SkillIcon_ArcaneBullet,
+  'UI_SkillIcon_Assassination': UI_SkillIcon_Assassination,
+  'UI_SkillIcon_BangingExplosionUnderGround': UI_SkillIcon_BangingExplosionUnderGround,
+  'UI_SkillIcon_BecauseIAteItRight': UI_SkillIcon_BecauseIAteItRight,
+  'UI_SkillIcon_BladeOfTyranny': UI_SkillIcon_BladeOfTyranny,
+  'UI_SkillIcon_BladeOfWar': UI_SkillIcon_BladeOfWar,
+  'UI_SkillIcon_BlazingDiscipline': UI_SkillIcon_BlazingDiscipline,
+  'UI_SkillIcon_BlazingVortex': UI_SkillIcon_BlazingVortex,
+  'UI_SkillIcon_BloodContract': UI_SkillIcon_BloodContract,
+  'UI_SkillIcon_BloodCurse': UI_SkillIcon_BloodCurse,
+  'UI_SkillIcon_BloodJudgment': UI_SkillIcon_BloodJudgment,
+  'UI_SkillIcon_BloodRedFear': UI_SkillIcon_BloodRedFear,
+  'UI_SkillIcon_BogDownPrey': UI_SkillIcon_BogDownPrey,
+  'UI_SkillIcon_BranchResurrection': UI_SkillIcon_BranchResurrection,
+  'UI_SkillIcon_BurningFanaticism': UI_SkillIcon_BurningFanaticism,
+  'UI_SkillIcon_BurningTheFightingSpiritForAReversal': UI_SkillIcon_BurningTheFightingSpiritForAReversal,
+  'UI_SkillIcon_Camouflage': UI_SkillIcon_Camouflage,
+  'UI_SkillIcon_CastingStarlightShower': UI_SkillIcon_CastingStarlightShower,
+  'UI_SkillIcon_CheckDarkSacrament': UI_SkillIcon_CheckDarkSacrament,
+  'UI_SkillIcon_Chop': UI_SkillIcon_Chop,
+  'UI_SkillIcon_CircleDance': UI_SkillIcon_CircleDance,
+  'UI_SkillIcon_CounterWave': UI_SkillIcon_CounterWave,
+  'UI_SkillIcon_CrownSplitting': UI_SkillIcon_CrownSplitting,
+  'UI_SkillIcon_CryOfProvoke': UI_SkillIcon_CryOfProvoke,
+  'UI_SkillIcon_CryOfTheAncientTimes': UI_SkillIcon_CryOfTheAncientTimes,
+  'UI_SkillIcon_CuringGrace': UI_SkillIcon_CuringGrace,
+  'UI_SkillIcon_CycloneOfVitality': UI_SkillIcon_CycloneOfVitality,
+  'UI_SkillIcon_DanceOfBlades': UI_SkillIcon_DanceOfBlades,
+  'UI_SkillIcon_DaringLeap': UI_SkillIcon_DaringLeap,
+  'UI_SkillIcon_DarkSacrament': UI_SkillIcon_DarkSacrament,
+  'UI_SkillIcon_DeadlyPoison': UI_SkillIcon_DeadlyPoison,
+  'UI_SkillIcon_DeathBulletOfPenetration': UI_SkillIcon_DeathBulletOfPenetration,
+  'UI_SkillIcon_DeclarationOfVictory': UI_SkillIcon_DeclarationOfVictory,
+  'UI_SkillIcon_DefenseTechniqueUnderGround': UI_SkillIcon_DefenseTechniqueUnderGround,
+  'UI_SkillIcon_DelayedBombing': UI_SkillIcon_DelayedBombing,
+  'UI_SkillIcon_DescentRaid': UI_SkillIcon_DescentRaid,
+  'UI_SkillIcon_DeterminedLuck': UI_SkillIcon_DeterminedLuck,
+  'UI_SkillIcon_DistortedStarlight': UI_SkillIcon_DistortedStarlight,
+  'UI_SkillIcon_DividingWorld': UI_SkillIcon_DividingWorld,
+  'UI_SkillIcon_DoubleEdge_BA': UI_SkillIcon_DoubleEdge_BA,
+  'UI_SkillIcon_DoublePistol_BA': UI_SkillIcon_DoublePistol_BA,
+  'UI_SkillIcon_DreamShock': UI_SkillIcon_DreamShock,
+  'UI_SkillIcon_DualSword': UI_SkillIcon_DualSword,
+  'UI_SkillIcon_EatAndGo': UI_SkillIcon_EatAndGo,
+  'UI_SkillIcon_EfficientReconstruction': UI_SkillIcon_EfficientReconstruction,
+  'UI_SkillIcon_EmberCovenant': UI_SkillIcon_EmberCovenant,
+  'UI_SkillIcon_EndlessKillingAura': UI_SkillIcon_EndlessKillingAura,
+  'UI_SkillIcon_EnergyFormConversion': UI_SkillIcon_EnergyFormConversion,
+  'UI_SkillIcon_EnergySword': UI_SkillIcon_EnergySword,
+  'UI_SkillIcon_EnforcementShooter': UI_SkillIcon_EnforcementShooter,
+  'UI_SkillIcon_EvasiveTechniqueUnderGround': UI_SkillIcon_EvasiveTechniqueUnderGround,
+  'UI_SkillIcon_Execution': UI_SkillIcon_Execution,
+  'UI_SkillIcon_ExecutionOfBloodiness': UI_SkillIcon_ExecutionOfBloodiness,
+  'UI_SkillIcon_FaithfulBrothersAndSisters': UI_SkillIcon_FaithfulBrothersAndSisters,
+  'UI_SkillIcon_FireBall': UI_SkillIcon_FireBall,
+  'UI_SkillIcon_FireBolt': UI_SkillIcon_FireBolt,
+  'UI_SkillIcon_FireFlakes': UI_SkillIcon_FireFlakes,
+  'UI_SkillIcon_FireFlakesExplosion': UI_SkillIcon_FireFlakesExplosion,
+  'UI_SkillIcon_FleshEatingFoam': UI_SkillIcon_FleshEatingFoam,
+  'UI_SkillIcon_FocusFiring': UI_SkillIcon_FocusFiring,
+  'UI_SkillIcon_FollowingThunderBolt': UI_SkillIcon_FollowingThunderBolt,
+  'UI_SkillIcon_FormationBreakdown': UI_SkillIcon_FormationBreakdown,
+  'UI_SkillIcon_FreezingGrasph': UI_SkillIcon_FreezingGrasph,
+  'UI_SkillIcon_GameSpice': UI_SkillIcon_GameSpice,
+  'UI_SkillIcon_GravitationalDrop': UI_SkillIcon_GravitationalDrop,
+  'UI_SkillIcon_GreatColdWave': UI_SkillIcon_GreatColdWave,
+  'UI_SkillIcon_GuardianWall': UI_SkillIcon_GuardianWall,
+  'UI_SkillIcon_Harvest': UI_SkillIcon_Harvest,
+  'UI_SkillIcon_HolyWarOfExorcism': UI_SkillIcon_HolyWarOfExorcism,
+  'UI_SkillIcon_HolyWord': UI_SkillIcon_HolyWord,
+  'UI_SkillIcon_ImprovisedFortress': UI_SkillIcon_ImprovisedFortress,
+  'UI_SkillIcon_InevitableSight': UI_SkillIcon_InevitableSight,
+  'UI_SkillIcon_InfiniteBody': UI_SkillIcon_InfiniteBody,
+  'UI_SkillIcon_IronMace_BA': UI_SkillIcon_IronMace_BA,
+  'UI_SkillIcon_JumpAndAttack': UI_SkillIcon_JumpAndAttack,
+  'UI_SkillIcon_KingsAnger': UI_SkillIcon_KingsAnger,
+  'UI_SkillIcon_KingsConcern': UI_SkillIcon_KingsConcern,
+  'UI_SkillIcon_KingsOffering': UI_SkillIcon_KingsOffering,
+  'UI_SkillIcon_LastLuck': UI_SkillIcon_LastLuck,
+  'UI_SkillIcon_LeapOfTheGiant': UI_SkillIcon_LeapOfTheGiant,
+  'UI_SkillIcon_LifeWillEater': UI_SkillIcon_LifeWillEater,
+  'UI_SkillIcon_LightInTheDarkness': UI_SkillIcon_LightInTheDarkness,
+  'UI_SkillIcon_LightningEdge': UI_SkillIcon_LightningEdge,
+  'UI_SkillIcon_LingeringPoison': UI_SkillIcon_LingeringPoison,
+  'UI_SkillIcon_MajestyOfTheGuardian': UI_SkillIcon_MajestyOfTheGuardian,
+  'UI_SkillIcon_MarkModulation': UI_SkillIcon_MarkModulation,
+  'UI_SkillIcon_MarkOfBloodInSecret': UI_SkillIcon_MarkOfBloodInSecret,
+  'UI_SkillIcon_Masochism': UI_SkillIcon_Masochism,
+  'UI_SkillIcon_MeleeMaster': UI_SkillIcon_MeleeMaster,
+  'UI_SkillIcon_MentalShock': UI_SkillIcon_MentalShock,
+  'UI_SkillIcon_MindCatchUp': UI_SkillIcon_MindCatchUp,
+  'UI_SkillIcon_NaturalBody': UI_SkillIcon_NaturalBody,
+  'UI_SkillIcon_NightmareMaterializes': UI_SkillIcon_NightmareMaterializes,
+  'UI_SkillIcon_NoRebellion': UI_SkillIcon_NoRebellion,
+  'UI_SkillIcon_OathOfRetributionandCrushing': UI_SkillIcon_OathOfRetributionandCrushing,
+  'UI_SkillIcon_OneHandedSword_BA': UI_SkillIcon_OneHandedSword_BA,
+  'UI_SkillIcon_OnlyOneStrike': UI_SkillIcon_OnlyOneStrike,
+  'UI_SkillIcon_OpeningMoment': UI_SkillIcon_OpeningMoment,
+  'UI_SkillIcon_OpponentsNomination': UI_SkillIcon_OpponentsNomination,
+  'UI_SkillIcon_OutlawsTaunt': UI_SkillIcon_OutlawsTaunt,
+  'UI_SkillIcon_PeacefulPoison': UI_SkillIcon_PeacefulPoison,
+  'UI_SkillIcon_PhaseShift': UI_SkillIcon_PhaseShift,
+  'UI_SkillIcon_PlatinumCore': UI_SkillIcon_PlatinumCore,
+  'UI_SkillIcon_PoisonAccumulation': UI_SkillIcon_PoisonAccumulation,
+  'UI_SkillIcon_PossessionOfEcstaticDream': UI_SkillIcon_PossessionOfEcstaticDream,
+  'UI_SkillIcon_PrecisionFiringPosition': UI_SkillIcon_PrecisionFiringPosition,
+  'UI_SkillIcon_PredatoryDistance': UI_SkillIcon_PredatoryDistance,
+  'UI_SkillIcon_ProhibitedPlace': UI_SkillIcon_ProhibitedPlace,
+  'UI_SkillIcon_ProminenceStorm': UI_SkillIcon_ProminenceStorm,
+  'UI_SkillIcon_ProtectMyself': UI_SkillIcon_ProtectMyself,
+  'UI_SkillIcon_QuantumSingularity': UI_SkillIcon_QuantumSingularity,
+  'UI_SkillIcon_QuotesAboutTrials': UI_SkillIcon_QuotesAboutTrials,
+  'UI_SkillIcon_RagingLightningStorm': UI_SkillIcon_RagingLightningStorm,
+  'UI_SkillIcon_RampageOfTheFlow': UI_SkillIcon_RampageOfTheFlow,
+  'UI_SkillIcon_RangerOnTheVine': UI_SkillIcon_RangerOnTheVine,
+  'UI_SkillIcon_Remorse': UI_SkillIcon_Remorse,
+  'UI_SkillIcon_ReversedCausality': UI_SkillIcon_ReversedCausality,
+  'UI_SkillIcon_Rifle': UI_SkillIcon_Rifle,
+  'UI_SkillIcon_RobotGun': UI_SkillIcon_RobotGun,
+  'UI_SkillIcon_RollingMove': UI_SkillIcon_RollingMove,
+  'UI_SkillIcon_SanctuaryProclamation': UI_SkillIcon_SanctuaryProclamation,
+  'UI_SkillIcon_SeasonalWind': UI_SkillIcon_SeasonalWind,
+  'UI_SkillIcon_SensingResponseAboutFrost': UI_SkillIcon_SensingResponseAboutFrost,
+  'UI_SkillIcon_ShadowStep': UI_SkillIcon_ShadowStep,
+  'UI_SkillIcon_SharpWave': UI_SkillIcon_SharpWave,
+  'UI_SkillIcon_Shatter': UI_SkillIcon_Shatter,
+  'UI_SkillIcon_ShieldCharging': UI_SkillIcon_ShieldCharging,
+  'UI_SkillIcon_ShieldSplitting': UI_SkillIcon_ShieldSplitting,
+  'UI_SkillIcon_ShootingSupport': UI_SkillIcon_ShootingSupport,
+  'UI_SkillIcon_SilentInside': UI_SkillIcon_SilentInside,
+  'UI_SkillIcon_SilentShadowsEye': UI_SkillIcon_SilentShadowsEye,
+  'UI_SkillIcon_SniperRifle_BA': UI_SkillIcon_SniperRifle_BA,
+  'UI_SkillIcon_SoaringFire': UI_SkillIcon_SoaringFire,
+  'UI_SkillIcon_SomeonesBody': UI_SkillIcon_SomeonesBody,
+  'UI_SkillIcon_SongOfSword': UI_SkillIcon_SongOfSword,
+  'UI_SkillIcon_SpaceWarp': UI_SkillIcon_SpaceWarp,
+  'UI_SkillIcon_SpiritCatRite': UI_SkillIcon_SpiritCatRite,
+  'UI_SkillIcon_SpiritDecay': UI_SkillIcon_SpiritDecay,
+  'UI_SkillIcon_SpiritfireClaw': UI_SkillIcon_SpiritfireClaw,
+  'UI_SkillIcon_SpiritfireDescent': UI_SkillIcon_SpiritfireDescent,
+  'UI_SkillIcon_SpiritsToxicPayload': UI_SkillIcon_SpiritsToxicPayload,
+  'UI_SkillIcon_SpreadingLightning': UI_SkillIcon_SpreadingLightning,
+  'UI_SkillIcon_StandingLikeSky': UI_SkillIcon_StandingLikeSky,
+  'UI_SkillIcon_StormEdge': UI_SkillIcon_StormEdge,
+  'UI_SkillIcon_StyleExplosion': UI_SkillIcon_StyleExplosion,
+  'UI_SkillIcon_StyleLosing': UI_SkillIcon_StyleLosing,
+  'UI_SkillIcon_SummonEnergy': UI_SkillIcon_SummonEnergy,
+  'UI_SkillIcon_SummonLava': UI_SkillIcon_SummonLava,
+  'UI_SkillIcon_SummonStarlight': UI_SkillIcon_SummonStarlight,
+  'UI_SkillIcon_SurvivalExpert': UI_SkillIcon_SurvivalExpert,
+  'UI_SkillIcon_SwiftCatsBlessing': UI_SkillIcon_SwiftCatsBlessing,
+  'UI_SkillIcon_SwordOfTheRiverFlows': UI_SkillIcon_SwordOfTheRiverFlows,
+  'UI_SkillIcon_SwordOfUnknown': UI_SkillIcon_SwordOfUnknown,
+  'UI_SkillIcon_TacticalSecurity': UI_SkillIcon_TacticalSecurity,
+  'UI_SkillIcon_TakeItOutAndEatIt': UI_SkillIcon_TakeItOutAndEatIt,
+  'UI_SkillIcon_TheEmbodimentOfGluttony': UI_SkillIcon_TheEmbodimentOfGluttony,
+  'UI_SkillIcon_TheFangsOfABog': UI_SkillIcon_TheFangsOfABog,
+  'UI_SkillIcon_ThePowerOfGluttony': UI_SkillIcon_ThePowerOfGluttony,
+  'UI_SkillIcon_TheReaper': UI_SkillIcon_TheReaper,
+  'UI_SkillIcon_ThousandArmed': UI_SkillIcon_ThousandArmed,
+  'UI_SkillIcon_ThreatAttack': UI_SkillIcon_ThreatAttack,
+  'UI_SkillIcon_Threatening': UI_SkillIcon_Threatening,
+  'UI_SkillIcon_ThrillingShiver': UI_SkillIcon_ThrillingShiver,
+  'UI_SkillIcon_ThrowingFruit': UI_SkillIcon_ThrowingFruit,
+  'UI_SkillIcon_TimeToEnjoy': UI_SkillIcon_TimeToEnjoy,
+  'UI_SkillIcon_ToxicBolt': UI_SkillIcon_ToxicBolt,
+  'UI_SkillIcon_TrailOfFatality': UI_SkillIcon_TrailOfFatality,
+  'UI_SkillIcon_TunnelMovement': UI_SkillIcon_TunnelMovement,
+  'UI_SkillIcon_TurnCrisisIntoOpportunity': UI_SkillIcon_TurnCrisisIntoOpportunity,
+  'UI_SkillIcon_TurnWaterWay': UI_SkillIcon_TurnWaterWay,
+  'UI_SkillIcon_TwoHandSword': UI_SkillIcon_TwoHandSword,
+  'UI_SkillIcon_UncertainSpace': UI_SkillIcon_UncertainSpace,
+  'UI_SkillIcon_UnendingSwordDance': UI_SkillIcon_UnendingSwordDance,
+  'UI_SkillIcon_VitalityRegeneration': UI_SkillIcon_VitalityRegeneration,
+  'UI_SkillIcon_VolcanicEruption': UI_SkillIcon_VolcanicEruption,
+  'UI_SkillIcon_VolleyFiring': UI_SkillIcon_VolleyFiring,
+  'UI_SkillIcon_VoltWeave': UI_SkillIcon_VoltWeave,
+  'UI_SkillIcon_WallOfAnnihilation': UI_SkillIcon_WallOfAnnihilation,
+  'UI_SkillIcon_WaveOfBlood': UI_SkillIcon_WaveOfBlood,
+  'UI_SkillIcon_WaveOfLifeCycle': UI_SkillIcon_WaveOfLifeCycle,
+  'UI_SkillIcon_WillToResist': UI_SkillIcon_WillToResist,
+  'UI_SkillIcon_WindBarrier': UI_SkillIcon_WindBarrier,
+  'UI_SkillIcon_WindEdge': UI_SkillIcon_WindEdge,
+  'UI_SkillIcon_WindGathering': UI_SkillIcon_WindGathering,
+  'UI_SkillIcon_WireShot': UI_SkillIcon_WireShot,
+};
+
+interface Props {
+  iconName: string;
+}
+
+const { iconName } = Astro.props;
+const iconSrc = skillIconMap[iconName];
+---
+
+{iconSrc && (
+  <Image src={iconSrc} alt="" class="skill-icon" width={40} height={40} />
+)}

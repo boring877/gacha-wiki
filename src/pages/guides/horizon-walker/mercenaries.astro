@@ -1,5 +1,5 @@
 ---
-import { MercenaryImage } from '../../../components/horizon-walker/index.astro';
+import { MercenaryImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 import MercenaryLayout from '../../../layouts/horizon-walker/MercenaryLayout.astro';
 import {
   HORIZON_WALKER_MERCENARIES,
@@ -40,11 +40,26 @@ export const prerender = true;
             characters.
           </p>
           <div class="hw-char-db-stats-summary">
-            <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
-            <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
-            <span class="hw-badge" data-rarity="S">{sCount} S</span>
-            <span class="hw-badge" data-rarity="A">{aCount} A</span>
-            <span class="hw-badge" data-rarity="B">{bCount} B</span>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="EX" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{exCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="SS" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{ssCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="S" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{sCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="A" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{aCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="B" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{bCount}</span>
+            </div>
           </div>
         </div>
 
@@ -113,9 +128,11 @@ export const prerender = true;
                       <span class="character-name">{mercenary.name}</span>
                     </td>
                     <td>
-                      <span class="hw-badge" data-rarity={mercenary.rarity} data-sort-key="rarity">
-                        {mercenary.rarity}
-                      </span>
+                      <HWRarityIcon
+                        rarity={mercenary.rarity}
+                        width={48}
+                        height={24}
+                      />
                     </td>
                     <td data-sort-key="cost">
                       <span class="cost-value">{mercenary.cost}</span>
@@ -173,9 +190,7 @@ export const prerender = true;
                   <div class="mobile-card-info">
                     <h3 class="character-name">{mercenary.name}</h3>
                     <div class="header-badges">
-                      <span class="hw-badge" data-rarity={mercenary.rarity}>
-                        {mercenary.rarity}
-                      </span>
+                      <HWRarityIcon rarity={mercenary.rarity} width={40} height={20} />
                       <span class="cost-badge" data-type="Cost">
                         Cost: {mercenary.cost}
                       </span>

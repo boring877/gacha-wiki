@@ -108,6 +108,8 @@ const rawDeliaData = {
   // Skills and Passive
   skills: {
     summonEnergy: {
+      gameKey: 'SummonEnergy',
+      icon: 'UI_SkillIcon_SummonEnergy',
       name: 'Summon Energy',
       level: '10/10',
       type: 'Skill',
@@ -121,6 +123,8 @@ const rawDeliaData = {
         'Releases pure energy in the form of a heat ray to attack. Deals Heat DMG equal to 152% of magic ATK to enemies within a 1m by 7m rectangular area. This skill cannot be used for a Weakness Attack.',
     },
     spatialShift: {
+      gameKey: 'SpaceWarp',
+      icon: 'UI_SkillIcon_SpaceWarp',
       name: 'Spatial Shift',
       level: '10/10',
       type: 'Skill',
@@ -130,6 +134,8 @@ const rawDeliaData = {
         'Crosses through space-time to reach the desired location. Teleports to a specified location within a radius of 18m.',
     },
     starlightGaze: {
+      gameKey: 'SummonStarlight',
+      icon: 'UI_SkillIcon_SummonStarlight',
       name: 'Starlight Gaze',
       level: '10/10',
       type: 'Skill',
@@ -139,6 +145,8 @@ const rawDeliaData = {
         'Starlight shines upon the enemy. Applies the [Starlight Gaze] effect to the enemy and grants the [Aurora] effect to the user 3 times. [Starlight Gaze]: Reduces All ATK by 38% and generates a 7m circular [Starlight] area that tracks the target. [Aurora]: While possessing this effect, allies attacking enemies with the [Starlight Gaze] effect inside the [Starlight] area will be supported by [Delayed Aurora].',
     },
     warpedStarlight: {
+      gameKey: 'DistortedStarlight',
+      icon: 'UI_SkillIcon_DistortedStarlight',
       name: 'Warped Starlight',
       level: '10/10',
       type: 'Passive',
@@ -148,6 +156,8 @@ const rawDeliaData = {
         'Distorted starlight illuminates the battlefield, twisting possibilities to forcibly turn the tide in favor. At the start of each round, increases the CRIT rate of all allies by 19% for 1R. At the start of each round, decreases the CRIT rate of all enemies by 19% for 1R.',
     },
     castStarlightShower: {
+      gameKey: 'CastingStarlightShower',
+      icon: 'UI_SkillIcon_CastingStarlightShower',
       name: 'Cast: Starlight Shower',
       level: '10/10',
       type: 'Skill',

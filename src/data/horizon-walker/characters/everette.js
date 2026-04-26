@@ -137,6 +137,8 @@ const rawEveretteData = {
   // Skills and Passive
   skills: {
     summonEnergy: {
+      gameKey: 'SummonEnergy',
+      icon: 'UI_SkillIcon_SummonEnergy',
       name: 'Summon Energy',
       level: '10/10',
       type: 'Skill',
@@ -150,6 +152,8 @@ const rawEveretteData = {
         'Releases pure energy in the form of a heat ray to attack. Deals Heat DMG equal to 152% of magic ATK to enemies within a 1m by 7m rectangular area. This skill cannot be used for a Weakness Attack.',
     },
     spatialShift: {
+      gameKey: 'SpaceWarp',
+      icon: 'UI_SkillIcon_SpaceWarp',
       name: 'Spatial Shift',
       level: '10/10',
       type: 'Skill',
@@ -159,6 +163,8 @@ const rawEveretteData = {
         'Crosses through space-time to reach the desired location. Teleports to a specified location within a radius of 18m.',
     },
     starlightGaze: {
+      gameKey: 'SummonStarlight',
+      icon: 'UI_SkillIcon_SummonStarlight',
       name: 'Starlight Gaze',
       level: '10/10',
       type: 'Skill',
@@ -168,6 +174,8 @@ const rawEveretteData = {
         'Starlight shines upon the enemy. Applies the [Starlight Gaze] effect to the enemy and grants the [Aurora] effect to the user 3 times. [Starlight Gaze]: Reduces All ATK by 38% and generates a 7m circular [Starlight] area that tracks the target. [Aurora]: While possessing this effect, allies attacking enemies with the [Starlight Gaze] effect inside the [Starlight] area will be supported by [Delayed Aurora].',
     },
     delayedAurora: {
+      gameKey: 'DistortedStarlight',
+      icon: 'UI_SkillIcon_DistortedStarlight',
       name: 'Delayed Aurora',
       level: '10/10',
       type: 'Skill',
@@ -181,6 +189,8 @@ const rawEveretteData = {
         'Deals Heat DMG equal to 152% of magic ATK to enemies with the [Starlight Gaze] effect within a 1m by 7m rectangular area. Recovers the HP of all allies within the [Starlight] area by 38% of magic ATK. Consumes one [Aurora] effect. This skill cannot be used for a Weakness Attack.',
     },
     warpedStarlight: {
+      gameKey: 'CastingStarlightShower',
+      icon: 'UI_SkillIcon_CastingStarlightShower',
       name: 'Warped Starlight',
       level: '10/10',
       type: 'Passive',
@@ -190,6 +200,8 @@ const rawEveretteData = {
         'Twisting possibilities to forcibly turn the tide in favor. At the start of each round, increases the CRIT rate of all allies by 19% for 1R. At the start of each round, decreases the CRIT rate of all enemies by 19% for 1R.',
     },
     castStarlightShower: {
+      gameKey: 'CastingStarlightShower',
+      icon: 'UI_SkillIcon_CastingStarlightShower',
       name: 'Cast: Starlight Shower',
       level: '10/10',
       type: 'Skill',
@@ -199,6 +211,8 @@ const rawEveretteData = {
         'Prepares a grand spell. During casting, movement, evasion, and response are not possible, and own Aggro Adjustment increases. On the next turn, gains 100 AP to activate the "Starlight Shower" skill. Alternatively, can prepare the spell once more in the same manner. In this case, on the following turn, gains 200 AP to activate the "Starlight Shower - Ultimate" skill.',
     },
     starlightShower: {
+      gameKey: 'CastingStarlightShower',
+      icon: 'UI_SkillIcon_CastingStarlightShower',
       name: 'Starlight Shower',
       level: '10/10',
       type: 'Skill',
@@ -212,6 +226,8 @@ const rawEveretteData = {
         'Calls forth starlight to attack enemies. Deals Immaterial DMG equal to 247% of magic ATK to all enemies within a 5m radius.',
     },
     starlightShowerUltimate: {
+      gameKey: 'CastingStarlightShower',
+      icon: 'UI_SkillIcon_CastingStarlightShower',
       name: 'Starlight Shower - Ultimate',
       level: '10/10',
       type: 'Skill',

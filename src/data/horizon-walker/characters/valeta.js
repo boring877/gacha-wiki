@@ -117,6 +117,8 @@ const rawValetaData = {
   // Skills and Passive
   skills: {
     spinningSlash: {
+      gameKey: 'MoulinetAndCut',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Spinning Slash',
       level: '10/10',
       type: 'Skill',
@@ -130,6 +132,8 @@ const rawValetaData = {
         'Swings the sabre to attack the enemy. Deals Slash DMG equal to 114% of melee ATK.',
     },
     lightInTheDarkness: {
+      gameKey: 'LightInTheDarkness',
+      icon: 'UI_SkillIcon_LightInTheDarkness',
       name: 'Light in the Darkness',
       level: '10/10',
       type: 'Passive',
@@ -139,6 +143,8 @@ const rawValetaData = {
         'On each attack, recovers HP of self and allies within a 5m radius by 95% of magic ATK.',
     },
     swordOfTheUnknown: {
+      gameKey: 'SwordOfUnknown',
+      icon: 'UI_SkillIcon_SwordOfUnknown',
       name: 'Sword of the Unknown',
       level: '10/10',
       type: 'Skill',
@@ -148,6 +154,8 @@ const rawValetaData = {
         'Channels divine power into the sword through prayer. Grants self a shield effect equal to 380% of magic ATK for 3R and the [Sword of the Unknown] effect. [Sword of the Unknown]: Basic attacks additionally deal Immaterial DMG equal to 95% of melee ATK.',
     },
     exorcistsCrusade: {
+      gameKey: 'HolyWarOfExorcism',
+      icon: 'UI_SkillIcon_HolyWarOfExorcism',
       name: "Exorcist's Crusade",
       level: '10/10',
       type: 'Passive',
@@ -157,6 +165,8 @@ const rawValetaData = {
         'On a successful attack, gains [Salvation] and [Judgment] effects. [Salvation]: Increases own magic ATK by 19%. Stacks up to 9 times. [Judgment]: Increases own melee ATK by 19%. Stacks up to 9 times.',
     },
     darkSacrament: {
+      gameKey: 'DarkSacrament',
+      icon: 'UI_SkillIcon_DarkSacrament',
       name: 'Dark Sacrament',
       level: '10/10',
       type: 'Skill',
@@ -166,6 +176,8 @@ const rawValetaData = {
         "Can only be activated when possessing 3 or more [Judgment] effects. Grants self 3 stacks of [Angel of Condemnation] effect. [Angel of Condemnation]: Changes the 'Spinning Slash' skill to 'Thornwhip of Judgment'. Consumes 1 stack of [Angel of Condemnation] at the end of own turn. Cannot gain [Judgment] or [Salvation] effects while possessing [Angel of Condemnation].",
     },
     thornwhipOfJudgment: {
+      gameKey: 'CheckDarkSacrament',
+      icon: 'UI_SkillIcon_CheckDarkSacrament',
       name: 'Thornwhip of Judgment',
       level: 'Transform',
       type: 'Transform Skill',

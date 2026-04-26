@@ -144,6 +144,8 @@ const rawLisandriaData = {
   // Skills and Passive
   skills: {
     spinningSlash: {
+      gameKey: 'MoulinetAndCut',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Spinning Slash',
       level: '10/10',
       type: 'Skill',
@@ -157,6 +159,8 @@ const rawLisandriaData = {
         'Swings the sabre to attack the enemy. Deals Slash DMG equal to 114% of melee ATK.',
     },
     lightInTheDarkness: {
+      gameKey: 'LightInTheDarkness',
+      icon: 'UI_SkillIcon_LightInTheDarkness',
       name: 'Light in the Darkness',
       level: '10/10',
       type: 'Passive',
@@ -166,6 +170,8 @@ const rawLisandriaData = {
         'On each attack, recovers HP of self and allies within a 5m radius by 95% of magic ATK.',
     },
     swordOfTheUnknown: {
+      gameKey: 'SwordOfUnknown',
+      icon: 'UI_SkillIcon_SwordOfUnknown',
       name: 'Sword of the Unknown',
       level: '10/10',
       type: 'Skill',
@@ -175,6 +181,8 @@ const rawLisandriaData = {
         'Channels divine power into the sword through prayer. Grants self a shield effect equal to 380% of magic ATK for 3R and the [Sword of the Unknown] effect. [Sword of the Unknown]: Basic attacks additionally deal Immaterial DMG equal to 95% of melee ATK.',
     },
     exorcistsCrusade: {
+      gameKey: 'HolyWarOfExorcism',
+      icon: 'UI_SkillIcon_HolyWarOfExorcism',
       name: "Exorcist's Crusade",
       level: '10/10',
       type: 'Passive',
@@ -184,6 +192,8 @@ const rawLisandriaData = {
         'On a successful attack, gains [Salvation] and [Judgment] effects. [Salvation]: Increases own magic ATK by 19%. Stacks up to 9 times. [Judgment]: Increases own melee ATK by 19%. Stacks up to 9 times.',
     },
     bloodJudgment: {
+      gameKey: 'BloodJudgment',
+      icon: 'UI_SkillIcon_BloodJudgment',
       name: 'Blood Judgment',
       level: '10/10',
       type: 'Skill',

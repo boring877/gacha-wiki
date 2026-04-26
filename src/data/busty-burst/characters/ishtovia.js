@@ -95,7 +95,7 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Receive the punishment of the gods ",
+      "name": "Receive your punishment",
       "icon": "skill001/skill0005",
       "description": "Deals magic damage to the enemy with the lowest HP, guaranteed to hit and guaranteed to crit",
       "descriptionLv1": "Deals magic damage to the enemy with the lowest HP, guaranteed to hit and guaranteed to crit",
@@ -131,7 +131,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Radiance of the Gods",
+      "name": "Radiance of Power",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 1) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "810% + 783",
@@ -152,7 +152,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Radiance of the Gods",
+      "name": "Radiance of Power",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 2) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "972% + 920",
@@ -173,7 +173,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Radiance of the Gods",
+      "name": "Radiance of Power",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 3) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1090% + 1022",
@@ -194,7 +194,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Radiance of the Gods",
+      "name": "Radiance of Power",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 4) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1175% + 1115",
@@ -215,7 +215,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Radiance of the Gods",
+      "name": "Radiance of Power",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 5) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1255% + 1209",

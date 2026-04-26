@@ -1816,7 +1816,7 @@ export const info = {
     {
       "id": "7",
       "title": "The Devil",
-      "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient god:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
+      "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient being:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
       "unlockRank": "6"
     },
     {
@@ -1888,7 +1888,7 @@ export const allInfo = [
       {
         "id": "7",
         "title": "The Devil",
-        "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient god:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
+        "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient being:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
         "unlockRank": "6"
       },
       {
@@ -1958,7 +1958,7 @@ export const allInfo = [
       {
         "id": "7",
         "title": "The Devil",
-        "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient god:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
+        "text": "Only one card remains missing from the diviner's tarot deck. Caught in the heavy iron door of the castle basement is something that looks like the Devil card—\n\nTry to pull it out!\n\nDrat, the door won't budge.\n\nIt seems the card can't be retrieved unless the door is open.\n\nWhat secrets could lie behind this heavy door?\n\nAmid uneasy speculation, a whisper seeps through the cracks, resonating like the voice of an ancient being:\n\n'Open... it...'\n\n'Face... me...'\n\nThat voice... It's the lure of the Black Blood! Grab the tarot and run!\n\nSurely, it's a demon—a creature of insatiable lust for blood, consuming life.",
         "unlockRank": "6"
       },
       {

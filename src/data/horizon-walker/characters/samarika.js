@@ -76,6 +76,8 @@ const samarikaData = {
   // Character Skills
   skills: {
     skill1: {
+      gameKey: 'HarpeSlash',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Harpe Art',
       level: '10/10',
       type: 'Active',
@@ -89,6 +91,8 @@ const samarikaData = {
         'The swamp elf extends their long arms and swiftly swings the harpe. Deals Slash DMG equal to 114% of melee ATK.',
     },
     skill2: {
+      gameKey: 'RangerOnTheVine',
+      icon: 'UI_SkillIcon_RangerOnTheVine',
       name: 'Hunter on the Vine',
       level: '10/10',
       type: 'Passive',
@@ -98,6 +102,8 @@ const samarikaData = {
         'Increases Mobility by 10. After attacking, Evasion increases by 570% until the end of the turn. Additionally, during a basic attack, Melee ATK increases proportionally to the straight distance moved. Up to 10m movement grants a maximum of 114% increase.',
     },
     skill3: {
+      gameKey: 'BogDownPrey',
+      icon: 'UI_SkillIcon_BogDownPrey',
       name: "Swamp's Arrest",
       level: '10/10',
       type: 'Active',
@@ -111,6 +117,8 @@ const samarikaData = {
         'Leaps over the target while throwing a swamp trap. Deals Slash DMG equal to 190% of melee ATK and has a 100% chance to apply [Slow] effect for 2R. Weakness attacks cannot be performed with this skill. [Slow]: Reduces SPD by 40%.',
     },
     skill4: {
+      gameKey: 'TheFangsOfABog',
+      icon: 'UI_SkillIcon_TheFangsOfABog',
       name: 'Fang of the Swamp',
       level: '10/10',
       type: 'Active',

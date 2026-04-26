@@ -116,6 +116,8 @@ const rawNymsetData = {
   // Skills and Passive
   skills: {
     guardiansStrike: {
+      gameKey: 'ProtectiveStrike',
+      icon: 'UI_SkillIcon_IronMace_BA',
       name: "Guardian's Strike",
       level: '10/10',
       type: 'Skill',
@@ -129,6 +131,8 @@ const rawNymsetData = {
         "Swings a mace to attack the enemy. Deals Crush DMG equal to 114% of melee ATK and reduces the target's AP by 5.",
     },
     graceOfHealing: {
+      gameKey: 'CuringGrace',
+      icon: 'UI_SkillIcon_CuringGrace',
       name: 'Grace of Healing',
       level: '10/10',
       type: 'Skill',
@@ -138,6 +142,8 @@ const rawNymsetData = {
         'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
     },
     consecratedDomain: {
+      gameKey: 'SanctuaryProclamation',
+      icon: 'UI_SkillIcon_SanctuaryProclamation',
       name: 'Consecrated Domain',
       level: '10/10',
       type: 'Skill',
@@ -147,6 +153,8 @@ const rawNymsetData = {
         'Invokes the name of the Goddess of the Split Twigs to declare [Consecrated Domain]. [Consecrated Domain] lasts for 3 rounds and can maintain up to 1 at a time. If the caster is within the [Consecrated Domain], they gain the [Divine Strength] effect. [Divine Strength]: Increases own Aggro Adjustment and boosts melee and magic ATK by 24% of their base max HP.',
     },
     divineTongue: {
+      gameKey: 'HolyWord',
+      icon: 'UI_SkillIcon_HolyWord',
       name: 'Divine Tongue',
       level: '10/10',
       type: 'Skill',
@@ -160,6 +168,8 @@ const rawNymsetData = {
         "Pronounces an unavoidable judgment upon nearby enemies with a passage from the sacred scripture. Ignores counterattacks and deals Immaterial DMG equal to 114% of magic ATK to all enemies within a 4.5m circular radius, pulling them forcefully towards the caster's position. During this attack, ACC temporarily increases by 300%, but weakness attacks are not possible.",
     },
     remorse: {
+      gameKey: 'Remorse',
+      icon: 'UI_SkillIcon_Remorse',
       name: 'Remorse',
       level: '10/10',
       type: 'Passive',

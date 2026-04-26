@@ -73,7 +73,7 @@ export const splitTwigsPriestMercenary = {
       apCost: 45,
       cooldown: '0R',
       description:
-        'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
+        'Prays to the Maiden of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
       tags: ['Single Target', 'Healing', 'Magic ATK Scaling', 'Prayer', 'Split Twigs'],
     },
     {
@@ -83,7 +83,7 @@ export const splitTwigsPriestMercenary = {
       apCost: 60,
       cooldown: '2R',
       description:
-        'Offers a solemn prayer for the mercy of the Goddess of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
+        'Offers a solemn prayer for the mercy of the Maiden of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
       tags: ['AoE Healing', 'Magic ATK Scaling', 'Prayer', 'Split Twigs', 'Circle AoE'],
     },
     {
@@ -93,7 +93,7 @@ export const splitTwigsPriestMercenary = {
       apCost: 90,
       cooldown: '2R',
       description:
-        "Opens the path of the branches to invoke the goddess's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
+        "Opens the path of the branches to invoke the maiden's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
       tags: ['Resurrection', 'Healing', 'Magic ATK Scaling', 'AP Grant', 'Miracle', 'Split Twigs'],
     },
   ],

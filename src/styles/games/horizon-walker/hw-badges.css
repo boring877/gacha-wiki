@@ -27,33 +27,71 @@
 
   /* Remove hover effects for simple, clean styling */
 
-  /* Rarity Badges - Use centralized utility classes */
+  /* Rarity Badges - only for pages still using text badges */
   .hw-badge[data-rarity='EX'] {
-    background: var(--hw-bg-solid-gold);
     color: var(--hw-text-dark);
     font-weight: var(--font-bold);
+    gap: 0.3rem;
   }
 
   .hw-badge[data-rarity='SS'] {
-    background: var(--hw-bg-solid-purple);
     color: var(--hw-text-white);
     font-weight: var(--font-bold);
+    gap: 0.3rem;
   }
 
   .hw-badge[data-rarity='S'] {
-    background: var(--hw-bg-solid-blue);
     color: var(--hw-text-white);
     font-weight: var(--font-bold);
+    gap: 0.3rem;
   }
 
   .hw-badge[data-rarity='A'] {
-    background: var(--hw-bg-solid-green);
     color: var(--hw-text-white);
+    gap: 0.3rem;
   }
 
   .hw-badge[data-rarity='B'] {
-    background: #607d8b;
     color: #ffffff;
+    gap: 0.3rem;
+  }
+
+  /* Rarity Icon Images */
+  .hw-rarity-icon {
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+  }
+
+  .character-table .hw-rarity-icon {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .header-badges .hw-rarity-icon {
+    flex-shrink: 0;
+  }
+
+  /* Stats Summary - rarity icon groups */
+  .hw-char-db-stats-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hw-rarity-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .hw-rarity-stat-count {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #b0b0b0;
+    line-height: 1;
   }
 
   /* Type Badges */

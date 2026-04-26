@@ -117,6 +117,8 @@ const rawMahariData = {
   // Skills and Passive
   skills: {
     gapStab: {
+      gameKey: 'StingTheGap',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Gap Stab',
       level: '10/10',
       type: 'Skill',
@@ -129,6 +131,8 @@ const rawMahariData = {
       description: 'Stabs with a sword to attack. Deals Pierce DMG equal to 114% of melee ATK.',
     },
     threatAttack: {
+      gameKey: 'ThreatAttack',
+      icon: 'UI_SkillIcon_ThreatAttack',
       name: 'Threat Attack',
       level: '10/10',
       type: 'Skill',
@@ -142,6 +146,8 @@ const rawMahariData = {
         'Deals a threatening sword strike to the enemy. Deals 114% of Melee ATK as Pierce DMG and inflicts [Taunt] effect to the target for 2R.',
     },
     wallOfAnnihilationSkill: {
+      gameKey: 'WallOfAnnihilation',
+      icon: 'UI_SkillIcon_WallOfAnnihilation',
       name: 'Wall of Annihilation',
       level: '10/10',
       type: 'Skill',
@@ -155,6 +161,8 @@ const rawMahariData = {
         "Raises a massive shield wall to draw enemy attention and protect allies. Deals Strike Damage equal to 57% of your melee attack power to enemies within a 7m, 150° cone and summons a [Shield Wall] in front of you. Enemies hit by the attack receive the [Impending Threat] effect for 2 rounds and will face you at the end of their turn. This skill applies as a Weak Point Attack if the enemy has a Weak Point. [Impending Threat]: Affected targets cannot turn toward their attacker upon being hit. [Shield Wall]: Increases the skill user's Aggro Adjustment by 57. While [Shield Wall] is active, all defenses increase by 550, and you cannot be pushed, pulled, or countered. The Shield Wall inherits 50% of the skill user's max HP and defense, and it disappears at the start of the skill user's turn.",
     },
     resolveOfReversal: {
+      gameKey: 'BurningTheFightingSpiritForAReversal',
+      icon: 'UI_SkillIcon_BurningTheFightingSpiritForAReversal',
       name: 'Resolve of Reversal',
       level: '10/10',
       type: 'Passive',
@@ -164,6 +172,8 @@ const rawMahariData = {
         'Activates once per round. After landing a Weak Point Attack, gain a [Resolve of Reversal] shield that lasts for 2 rounds. [Resolve of Reversal]: Grants a shield equal to 40% of max HP + 114% of Melee ATK.',
     },
     willOfResistance: {
+      gameKey: 'WillToResist',
+      icon: 'UI_SkillIcon_WillToResist',
       name: 'Will of Resistance',
       level: '10/10',
       type: 'Passive',

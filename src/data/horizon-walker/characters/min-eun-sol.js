@@ -135,6 +135,8 @@ const rawMinEunSolData = {
   // Skills and Passive
   skills: {
     mentalShock: {
+      gameKey: 'MentalShock',
+      icon: 'UI_SkillIcon_MentalShock',
       name: 'Mental Shock',
       level: '10/10',
       type: 'Skill',
@@ -148,6 +150,8 @@ const rawMinEunSolData = {
         "Inflicts an unavoidable attack by shocking the enemy's mind. Deals Immaterial DMG equal to 95% of magic ATK and reduces the target's AP by 5. If the target has the [One Who Disturbed the King's Offering] effect, deals an additional Immaterial DMG equal to 133% of magic ATK.",
     },
     kingsOffering: {
+      gameKey: 'KingsOffering',
+      icon: 'UI_SkillIcon_KingsOffering',
       name: "King's Offering",
       level: '10/10',
       type: 'Passive',
@@ -157,6 +161,8 @@ const rawMinEunSolData = {
         "When attacked by an enemy, deals additional Immaterial DMG equal to 50% of magic ATK to the target and applies [One Who Disturbed the King's Offering] for 2 rounds. [One Who Disturbed the King's Offering]: Reduces AP recovery by 19% and reduces all ATK by 19%.",
     },
     devourWill: {
+      gameKey: 'LifeWillEater',
+      icon: 'UI_SkillIcon_LifeWillEater',
       name: 'Devour Will',
       level: '10/10',
       type: 'Skill',
@@ -170,6 +176,8 @@ const rawMinEunSolData = {
         "The authority of the Black King devours the enemy's will to survive. Deals unblockable magic ATK equal to 57% as Immaterial DMG to an enemy, inflicting [Devour Will] for 2R and [Taunt]. [Devour Will]: Reduces Evasion by 76% and makes Counterattack impossible.",
     },
     kingsFavor: {
+      gameKey: 'KingsConcern',
+      icon: 'UI_SkillIcon_KingsConcern',
       name: "King's Favor",
       level: '10/10',
       type: 'Passive',
@@ -179,6 +187,8 @@ const rawMinEunSolData = {
         'Upon successful attack, gain a shield equal to magic ATK of 95% lasting for 2R.',
     },
     kingsWrath: {
+      gameKey: 'KingsAnger',
+      icon: 'UI_SkillIcon_KingsAnger',
       name: "The King's Wrath",
       level: '10/10',
       type: 'Skill',

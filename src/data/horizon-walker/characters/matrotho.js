@@ -113,6 +113,8 @@ const rawMatrothoData = {
   // Skills and Passive
   skills: {
     sabreStrike: {
+      gameKey: 'ArmingSwordAttack',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Sabre Strike',
       level: '10/10',
       type: 'Skill',
@@ -126,6 +128,8 @@ const rawMatrothoData = {
         'Delivers a powerful and elegant slash to a nearby enemy. Deals Slash DMG equal to 114% of melee ATK.',
     },
     determination: {
+      gameKey: 'MindCatchUp',
+      icon: 'UI_SkillIcon_MindCatchUp',
       name: 'Determination',
       level: '10/10',
       type: 'Passive',
@@ -135,6 +139,8 @@ const rawMatrothoData = {
         'When attacked, instead of the basic counterattack (once per round), use the "Sensory Concentration" skill during the counterattack phase. After activation, follow up with a support counterattack. Sensory Concentration: Steadies the mind and focuses the senses. Increases Evasion by 380% for 1R.',
     },
     nomination: {
+      gameKey: 'OpponentsNomination',
+      icon: 'UI_SkillIcon_OpponentsNomination',
       name: 'Nomination',
       level: '10/10',
       type: 'Skill',
@@ -144,6 +150,8 @@ const rawMatrothoData = {
         "Designates an enemy as the user's target, applying the [Nomination] effect. Removes any existing [Nomination] effect from other targets on the battlefield. [Nomination]: Reduces Slash DEF by 285.",
     },
     swordOfTheFlowingRiver: {
+      gameKey: 'SwordOfTheRiverFlows',
+      icon: 'UI_SkillIcon_SwordOfTheRiverFlows',
       name: 'Sword of the Flowing River',
       level: '10/10',
       type: 'Passive',
@@ -153,6 +161,8 @@ const rawMatrothoData = {
         "On a successful attack against an enemy with the [Nomination] effect, gains 6 AP and the [Sword of the Flowing River] effect for 1R. Stacks up to 5 times. [Sword of the Flowing River]: Increases Melee ATK by 57% while using the 'Sabre Strike' skill.",
     },
     bladeOfWar: {
+      gameKey: 'BladeOfWar',
+      icon: 'UI_SkillIcon_BladeOfWar',
       name: 'Blade of War',
       level: '10/10',
       type: 'Skill',

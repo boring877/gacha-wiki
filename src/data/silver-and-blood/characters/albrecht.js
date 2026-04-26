@@ -1798,7 +1798,7 @@ export const info = {
     {
       "id": "3",
       "title": "Cursed Birth",
-      "text": "I feel life hemorrhaging from my flesh, and thought crystallizing within my skull.\n\nThis body feels like a god-given cage for my disobedience—lungs that cannot draw breath, legs that cannot bear weight, a tongue that cannot form words... Like some primordial curse, this torment devours my soul with each passing day. They speak of an unknown 'disease,' seared into my marrow from my very first breath.\n\nMy future stretches before me like a funeral shroud, yet I know that within death's maw, I can still seize that 'answer' which will grant me deliverance.",
+      "text": "I feel life hemorrhaging from my flesh, and thought crystallizing within my skull.\n\nThis body feels like a cruel cage for my disobedience—lungs that cannot draw breath, legs that cannot bear weight, a tongue that cannot form words... Like some primordial curse, this torment devours my soul with each passing day. They speak of an unknown 'disease,' seared into my marrow from my very first breath.\n\nMy future stretches before me like a funeral shroud, yet I know that within death's maw, I can still seize that 'answer' which will grant me deliverance.",
       "unlockRank": "2"
     },
     {
@@ -1864,7 +1864,7 @@ export const allInfo = [
       {
         "id": "3",
         "title": "Cursed Birth",
-        "text": "I feel life hemorrhaging from my flesh, and thought crystallizing within my skull.\n\nThis body feels like a god-given cage for my disobedience—lungs that cannot draw breath, legs that cannot bear weight, a tongue that cannot form words... Like some primordial curse, this torment devours my soul with each passing day. They speak of an unknown 'disease,' seared into my marrow from my very first breath.\n\nMy future stretches before me like a funeral shroud, yet I know that within death's maw, I can still seize that 'answer' which will grant me deliverance.",
+        "text": "I feel life hemorrhaging from my flesh, and thought crystallizing within my skull.\n\nThis body feels like a cruel cage for my disobedience—lungs that cannot draw breath, legs that cannot bear weight, a tongue that cannot form words... Like some primordial curse, this torment devours my soul with each passing day. They speak of an unknown 'disease,' seared into my marrow from my very first breath.\n\nMy future stretches before me like a funeral shroud, yet I know that within death's maw, I can still seize that 'answer' which will grant me deliverance.",
         "unlockRank": "2"
       },
       {

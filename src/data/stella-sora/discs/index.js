@@ -206,8 +206,8 @@ export const discs = [
   },
   {
     id: 214001,
-    name: 'Meowing Cat God',
-    file: './discs/meowing-cat-god.js',
+    name: 'Meowing Cat',
+    file: './discs/meowing-cat.js',
   },
   {
     id: 214002,

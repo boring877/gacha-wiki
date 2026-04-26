@@ -147,6 +147,8 @@ const rawLeahData = {
   // Skills and Passive
   skills: {
     soulflameStrike: {
+      gameKey: 'SpiritfireDescent',
+      icon: 'UI_SkillIcon_SpiritfireDescent',
       name: 'Soulflame Strike',
       level: '10/10',
       type: 'Skill',
@@ -162,6 +164,8 @@ const rawLeahData = {
         "Rings the bell to summon the soul's flame. Deals 114% of Magic ATK as Immaterial DMG to the targeted enemy and 48% of Magic ATK as Splash Immaterial DMG to enemies within a 6m, 40° cone around the target.",
     },
     sereneEye: {
+      gameKey: 'SilentShadowsEye',
+      icon: 'UI_SkillIcon_SilentShadowsEye',
       name: 'Serene Eye',
       level: '10/10',
       type: 'Passive',
@@ -171,6 +175,8 @@ const rawLeahData = {
         "At the start of battle, if the user's base Evasion is 260 or higher, the user's Crit Rate increases by 24% and all enemies take 9% more damage. If the user's base Evasion is 470 or higher, the user's Crit Rate increases by 56% and all enemies take 18% more damage.",
     },
     swiftpawsBlessing: {
+      gameKey: 'SwiftCatsBlessing',
+      icon: 'UI_SkillIcon_SwiftCatsBlessing',
       name: "Swiftpaw's Blessing",
       level: '10/10',
       type: 'Skill',
@@ -202,6 +208,8 @@ const rawLeahData = {
       },
     },
     spiritclawRite: {
+      gameKey: 'SpiritCatRite',
+      icon: 'UI_SkillIcon_SpiritCatRite',
       name: 'Spiritclaw Rite',
       level: '1/1',
       type: 'Skill',
@@ -222,6 +230,8 @@ const rawLeahData = {
       },
     },
     soulflameFury: {
+      gameKey: 'SpiritfireClaw',
+      icon: 'UI_SkillIcon_SpiritfireClaw',
       name: 'Soulflame Fury',
       level: '10/10',
       type: 'Skill',

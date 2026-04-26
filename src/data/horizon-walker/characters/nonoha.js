@@ -113,6 +113,8 @@ const rawNonohaData = {
   // Skills and Passive
   skills: {
     bladewind: {
+      gameKey: 'WindEdge',
+      icon: 'UI_SkillIcon_WindEdge',
       name: 'Bladewind',
       level: '10/10',
       type: 'Skill',
@@ -126,6 +128,8 @@ const rawNonohaData = {
         'Conjures blades of wind to attack. Deals Slash DMG equal to 114% of magic ATK and knocks the target back by 1.5m.',
     },
     windsGathering: {
+      gameKey: 'WindGathering',
+      icon: 'UI_SkillIcon_WindGathering',
       name: "Wind's Gathering",
       level: '10/10',
       type: 'Passive',
@@ -135,6 +139,8 @@ const rawNonohaData = {
         "Gains the [Whirling Wind] effect whenever performing an action other than Standby. At the end of own turn, grants the [Wind's Gathering] effect to all allies. [Whirling Wind]: Increases SPD by 3%. Stacks up to 6 times. [Wind's Gathering]: Increases SPD by 9.5% per stack of [Whirling Wind] the caster possesses. This effect disappears at the end of own turn.",
     },
     windShield: {
+      gameKey: 'WindBarrier',
+      icon: 'UI_SkillIcon_WindBarrier',
       name: 'Wind Shield',
       level: '10/10',
       type: 'Skill',
@@ -144,6 +150,8 @@ const rawNonohaData = {
         "Proportionally grants the [Wind Shield] effect to one ally and self for 2R, based on own magic ATK. [Wind Shield]: Provides a shield that blocks damage equal to 190% of the caster's magic ATK.",
     },
     monsoon: {
+      gameKey: 'SeasonalWind',
+      icon: 'UI_SkillIcon_SeasonalWind',
       name: 'Monsoon',
       level: '10/10',
       type: 'Skill',

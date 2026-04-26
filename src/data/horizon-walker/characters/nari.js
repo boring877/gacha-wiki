@@ -81,6 +81,8 @@ const nariData = {
   // Character Skills
   skills: {
     skill1: {
+      gameKey: 'StandardizedShooting',
+      icon: 'UI_SkillIcon_Rifle',
       name: 'Military Shooting',
       level: '10/10',
       type: 'Active',
@@ -94,6 +96,8 @@ const nariData = {
         'Fires an accurate shot at the enemy with a rifle. On hit, deals 114% of Ranged ATK as Pierce DMG.',
     },
     skill2: {
+      gameKey: 'RollingMove',
+      icon: 'UI_SkillIcon_RollingMove',
       name: 'Combat Roll',
       level: '10/10',
       type: 'Active',
@@ -102,6 +106,8 @@ const nariData = {
       description: 'Jump low to the designated location and gain AP of 38.',
     },
     skill3: {
+      gameKey: 'PrecisionFiringPosition',
+      icon: 'UI_SkillIcon_PrecisionFiringPosition',
       name: 'Precision Shooting Stance',
       level: '10/10',
       type: 'Active',
@@ -111,6 +117,8 @@ const nariData = {
         "Assumes the optimal stance for shooting. Gains the [Precision Shooting Stance] effect, enabling the use of the 'Combat Roll' skill while the effect is active. After using the skill, it changes to 'Cancel Precision Shooting Stance'. [Precision Shooting Stance]: Increases Ranged ATK by 133%. Increases Piercing Enhancement by 8%. Increases the range of the 'Military Shooting' skill by 2.8 m. Increases AP consumption by 15. During the effect, movement is disabled, and incoming attacks cannot be evaded.",
     },
     skill4: {
+      gameKey: 'FocusFiring',
+      icon: 'UI_SkillIcon_FocusFiring',
       name: 'Pinpoint Shooting',
       level: '10/10',
       type: 'Passive',
@@ -120,6 +128,8 @@ const nariData = {
         'Using the [Combat Roll] skill or striking an enemy with [Marked Target] grants [Shooting Focus], lasting until the end of your next turn. [Shooting Focus]: Increases Ranged ATK by 133%.',
     },
     skill5: {
+      gameKey: 'DeathBulletOfPenetration',
+      icon: 'UI_SkillIcon_DeathBulletOfPenetration',
       name: 'Piercing Aether Bullet',
       level: '10/10',
       type: 'Active',
@@ -129,6 +139,8 @@ const nariData = {
         'Fires a bullet that pierces everything in its path. After using this skill, you are pushed slightly backward, and your AP Recovery decreases by 15% until the start of the next round. Deals Piercing Damage equal to 342% of your Ranged ATK to all enemies in a 0.5m x 40m rectangular area. If only one enemy is hit, it is treated as a Weak Spot Attack.',
     },
     skill6: {
+      gameKey: 'SilentInside',
+      icon: 'UI_SkillIcon_SilentInside',
       name: 'Inner Tranquility',
       level: '10/10',
       type: 'Passive',

@@ -143,6 +143,8 @@ const rawPantheriData = {
   // Skills and Passive
   skills: {
     sabreStrike: {
+      gameKey: 'ArmingSwordAttack',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Sabre Strike',
       level: '10/10',
       type: 'Skill',
@@ -156,6 +158,8 @@ const rawPantheriData = {
         'Delivers a powerful and elegant slash to a nearby enemy. Deals Slash DMG equal to 114% of melee ATK.',
     },
     determination: {
+      gameKey: 'MindCatchUp',
+      icon: 'UI_SkillIcon_MindCatchUp',
       name: 'Determination',
       level: '10/10',
       type: 'Passive',
@@ -165,6 +169,8 @@ const rawPantheriData = {
         'When attacked, instead of the basic counterattack (once per round), use the "Sensory Concentration" skill during the counterattack phase. After activation, follow up with a support counterattack. Sensory Concentration: Steadies the mind and focuses the senses. Increases Evasion by 380% for 1R.',
     },
     outlawsMockery: {
+      gameKey: 'OutlawsTaunt',
+      icon: 'UI_SkillIcon_OutlawsTaunt',
       name: "Outlaw's Mockery",
       level: '10/10',
       type: 'Skill',
@@ -174,6 +180,8 @@ const rawPantheriData = {
         'Performs an elegant sword dance to draw the attention of enemies and prepare for their attacks. Decreases ACC of enemies within a 5m radius by 57% for 2R and temporarily forces them to focus on the user. The user gains the [Counter Stance] effect for 2R, and Aggro Adjustment increases. [Counter Stance]: When attacked by enemies within basic attack range, counterattacks regardless of the normal counter limit.',
     },
     masterOfSkirmish: {
+      gameKey: 'MeleeMaster',
+      icon: 'UI_SkillIcon_MeleeMaster',
       name: 'Master of Skirmish',
       level: '10/10',
       type: 'Passive',
@@ -183,6 +191,8 @@ const rawPantheriData = {
         "The SwashBuckler's dazzling attacks create a chaotic state where friend and foe are indistinguishable. When attacking during own turn, there is a 100% chance that the attacked target will mistake their counterattack target. In this case, the enemy will attack their own ally. Additionally, own evasion increases by 190%, and attacks from behind will not be counted as weakness attacks.",
     },
     thatOneStrike: {
+      gameKey: 'OnlyOneStrike',
+      icon: 'UI_SkillIcon_OnlyOneStrike',
       name: 'That One Strike',
       level: '10/10',
       type: 'Skill',

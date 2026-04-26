@@ -1792,13 +1792,13 @@ export const info = {
     {
       "id": "1",
       "title": "Background",
-      "text": "'Mortals embrace faith out of their fear of death, then present offerings to curry favor with their beliefs.'\n\nA peculiar atheist—not one who denies the existence of gods, but who questions 'where the line between god and man truly lies' and 'why gods cannot worship men.'\n\nFrom the moment he stepped into the Bathory Castle, he immersed himself in his work. This was more than just a mad experiment; it was a meticulously planned transaction, a long-harbored wish buried deep within his soul.\n\nYet he knew well that this mission could not be accomplished alone. Gradually, those who coveted immortality, thirsted for power, and sought truth... various souls unknowingly entered this chess game called the Demon Banquet. Little did they know they were offering themselves as puppets in a game of gods.",
+      "text": "'Mortals embrace faith out of their fear of death, then present offerings to curry favor with their beliefs.'\n\nA peculiar atheist—not one who denies the existence of such a beings, but who questions 'where the line between rulers and man truly lies' and 'why those above cannot worship men.'\n\nFrom the moment he stepped into the Bathory Castle, he immersed himself in his work. This was more than just a mad experiment; it was a meticulously planned transaction, a long-harbored wish buried deep within his soul.\n\nYet he knew well that this mission could not be accomplished alone. Gradually, those who coveted immortality, thirsted for power, and sought truth... various souls unknowingly entered this chess game called the Demon Banquet. Little did they know they were offering themselves as puppets in a game of the powerful.",
       "unlockRank": null
     },
     {
       "id": "2",
       "title": "Alchemy Handbook Ⅰ",
-      "text": "While reading Cain's Alchemy Handbook, I was surprised to discover that Cain once held a position within the Church, even attaining the rank of priest with a devoted following of believers. Yet judging from Cain's usual demeanor, he absolutely despises the existence of god.\n\nSo why did he join the Church? Perhaps continuing to read these journals will answer my questions...",
+      "text": "While reading Cain's Alchemy Handbook, I was surprised to discover that Cain once held a position within the Church, even attaining the rank of priest with a devoted following of believers. Yet judging from Cain's usual demeanor, he absolutely despises the existence of such a being.\n\nSo why did he join the Church? Perhaps continuing to read these journals will answer my questions...",
       "unlockRank": "1"
     },
     {
@@ -1857,13 +1857,13 @@ export const allInfo = [
       {
         "id": "1",
         "title": "Background",
-        "text": "'Mortals embrace faith out of their fear of death, then present offerings to curry favor with their beliefs.'\n\nA peculiar atheist—not one who denies the existence of gods, but who questions 'where the line between god and man truly lies' and 'why gods cannot worship men.'\n\nFrom the moment he stepped into the Bathory Castle, he immersed himself in his work. This was more than just a mad experiment; it was a meticulously planned transaction, a long-harbored wish buried deep within his soul.\n\nYet he knew well that this mission could not be accomplished alone. Gradually, those who coveted immortality, thirsted for power, and sought truth... various souls unknowingly entered this chess game called the Demon Banquet. Little did they know they were offering themselves as puppets in a game of gods.",
+        "text": "'Mortals embrace faith out of their fear of death, then present offerings to curry favor with their beliefs.'\n\nA peculiar atheist—not one who denies the existence of such a beings, but who questions 'where the line between rulers and man truly lies' and 'why those above cannot worship men.'\n\nFrom the moment he stepped into the Bathory Castle, he immersed himself in his work. This was more than just a mad experiment; it was a meticulously planned transaction, a long-harbored wish buried deep within his soul.\n\nYet he knew well that this mission could not be accomplished alone. Gradually, those who coveted immortality, thirsted for power, and sought truth... various souls unknowingly entered this chess game called the Demon Banquet. Little did they know they were offering themselves as puppets in a game of the powerful.",
         "unlockRank": null
       },
       {
         "id": "2",
         "title": "Alchemy Handbook Ⅰ",
-        "text": "While reading Cain's Alchemy Handbook, I was surprised to discover that Cain once held a position within the Church, even attaining the rank of priest with a devoted following of believers. Yet judging from Cain's usual demeanor, he absolutely despises the existence of god.\n\nSo why did he join the Church? Perhaps continuing to read these journals will answer my questions...",
+        "text": "While reading Cain's Alchemy Handbook, I was surprised to discover that Cain once held a position within the Church, even attaining the rank of priest with a devoted following of believers. Yet judging from Cain's usual demeanor, he absolutely despises the existence of such a being.\n\nSo why did he join the Church? Perhaps continuing to read these journals will answer my questions...",
         "unlockRank": "1"
       },
       {

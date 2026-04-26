@@ -1,5 +1,5 @@
 ---
-import { MercenaryImage } from '../../components/horizon-walker/index.astro';
+import { MercenaryImage, HWRarityIcon } from '../../components/horizon-walker/index.astro';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 
 interface Trait {
@@ -74,9 +74,7 @@ function getMercenaryDescription(usage: any): string {
         <div class="character-info-grid">
           <div class="character-info-item">
             <div class="character-info-label">Rarity</div>
-            <span class="hw-badge" data-rarity={mercenaryData.rarity}>
-              {mercenaryData.rarity}
-            </span>
+            <HWRarityIcon rarity={mercenaryData.rarity} width={48} height={24} />
           </div>
           <div class="character-info-item">
             <div class="character-info-label">Deployment Cost</div>

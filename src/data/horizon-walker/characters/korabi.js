@@ -145,6 +145,8 @@ const rawKorabiData = {
   // Skills and Passive
   skills: {
     sharpWave: {
+      gameKey: 'SharpWave',
+      icon: 'UI_SkillIcon_SharpWave',
       name: 'Sharp Wave',
       level: '10/10',
       type: 'Skill',
@@ -158,6 +160,8 @@ const rawKorabiData = {
         'Targets an enemy and unleashes blades of water in a 25°, 7m cone. Deals Slash DMG equal to 114% of Magic ATK, restores HP to allies along the path by 38% of Magic ATK, and grants 1 stack of [Tip of the Wave] for 2 rounds. [Tip of the Wave]: Crit Rate increases by 4%. Stacks up to 2 times.',
     },
     counterwave: {
+      gameKey: 'CounterWave',
+      icon: 'UI_SkillIcon_CounterWave',
       name: 'Counterwave',
       level: '10/10',
       type: 'Passive',
@@ -167,6 +171,8 @@ const rawKorabiData = {
         'At the start of each round, 57% chance to gain [Counterwave] for 1 round. [Counterwave]: Grants immunity to action-forcing effects [Taunt], [Fear], [Sleep], [Madness], [Stun], and the action-restricting effect [Focus Disruption], while Fire DEF increases by 190.',
     },
     bloodPact: {
+      gameKey: 'BloodContract',
+      icon: 'UI_SkillIcon_BloodContract',
       name: 'Blood Pact',
       level: '10/10',
       type: 'Skill',
@@ -176,6 +182,8 @@ const rawKorabiData = {
         "Strengthens the pulse of blood, breathing in new vitality. Grants the targeted ally [Burning Desire] for 2R. [Burning Desire]: Aggro Adjustment decreases by 12, SPD increases by 40%, Max HP increases by 12%, and Crit DMG increases by 20% of the caster's Base Crit DMG. Crit DMG gained from this effect cannot exceed 40%. When attacking 2 or more enemies, Crit Rate temporarily increases by 72%.",
     },
     crimsonCurse: {
+      gameKey: 'BloodCurse',
+      icon: 'UI_SkillIcon_BloodCurse',
       name: 'Crimson Curse',
       level: '10/10',
       type: 'Passive',
@@ -185,6 +193,8 @@ const rawKorabiData = {
         'Breathes a crimson curse that spreads with every wound. Healing Output increases by 60%. Enemies hit by your attacks are afflicted with [Blood Plague], making them more vulnerable to damage. Vulnerability further increases if your Vitality is above 13. [Blood Plague]: Damage taken increases by 7%. For every 1 Vitality above 13, Damage taken further increases by 0.5%.',
     },
     waveOfBlood: {
+      gameKey: 'WaveOfBlood',
+      icon: 'UI_SkillIcon_WaveOfBlood',
       name: 'Wave of Blood',
       level: '10/10',
       type: 'Skill',
@@ -198,6 +208,8 @@ const rawKorabiData = {
         'When using the skill Blood Pact, this skill becomes active for 2 rounds. Unleashes a surging wave of blood that overturns the flow. Deals Slash DMG equal to 228% of Magic ATK to enemies within a 4m radius around the targeted location. Enemies hit are afflicted with [Blood Frenzy] for 2 rounds. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%. [Blood Frenzy]: When applied, gain 40 AP. While holding this effect, AP Recovery increases by 44%, but Melee and Ranged ATK decrease by 22%, and Magic ATK decreases by 28%.',
     },
     whirlwindOfBloodlust: {
+      gameKey: 'CycloneOfVitality',
+      icon: 'UI_SkillIcon_CycloneOfVitality',
       name: 'Whirlwind of Bloodlust',
       level: '10/10',
       type: 'Skill',

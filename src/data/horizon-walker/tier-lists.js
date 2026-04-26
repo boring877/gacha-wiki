@@ -69,33 +69,23 @@ const processUnitList = names => {
 
 // Tier definitions for Horizon Walker
 export const TIER_DEFINITIONS = {
+  UR: {
+    label: 'UR',
+  },
   SSS: {
     label: 'SSS',
-    description:
-      "SSS tier characters do not need anyone's help, they are broken by themselves and can do very well alone! With little help they become busted!",
-    color: '#FFD700', // Gold
   },
   SS: {
     label: 'SS',
-    description:
-      'SS tier characters are really good, but to become broken they need help from other characters to become super strong!',
-    color: '#9333EA', // Purple
   },
   S: {
     label: 'S',
-    description: 'S tier characters are weak alone, but do well with other characters!',
-    color: '#3B82F6', // Blue
   },
   A: {
     label: 'A',
-    description: 'A tier characters are quite weak alone but alright with a team.',
-    color: '#10B981', // Green
   },
   B: {
     label: 'B',
-    description:
-      'B tier characters are useless with a team or without, there might be some way to make them useful!',
-    color: '#6B7280', // Gray
   },
 };
 
@@ -127,10 +117,10 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  SSS: ['Olivia', 'Vlissing', 'Cora'],
+  UR: ['Cora'],
+  SSS: ['Olivia', 'Vlissing', 'Palekar'],
   SS: [
     'Yui',
-    'Palekar',
     'Valeta',
     'Everette',
     'Yvonna',
@@ -155,6 +145,8 @@ const MAP_CLEAR_CHARACTERS = {
     'Kaul',
     'Puppy Stepper',
     'Emilia',
+    'Maximilia',
+    'Eugenia',
   ],
   S: [
     'Echidna',
@@ -168,7 +160,7 @@ const MAP_CLEAR_CHARACTERS = {
     'Marhim',
     'Matrotho',
     'So joo-hee',
-    'Smarika',
+    'Samarika',
     'Puppy shooter',
     'Kobold mercenary',
     'Ines',
@@ -178,7 +170,7 @@ const MAP_CLEAR_CHARACTERS = {
   A: [
     'Canisk',
     'Rhasadina',
-    'Red-De-Da',
+    'Re_De_Da',
     'Gulsni',
     'Platina',
     'Grrik Mercenary',
@@ -193,16 +185,14 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  SSS: ['Cora', 'Yeonwoo', 'Yui', 'Leah', 'Nymset', 'Palekar'],
+  UR: ['Cora'],
+  SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari'],
   SS: [
     'Olivia',
-    'So Joo-Hee',
     'Yvonna',
     'Vlissing',
     'Korabi',
     'Kalma',
-    'Mahari',
-    'Juha',
     'Valeta',
     'Griselda',
     'Erneste',
@@ -210,7 +200,9 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Luise',
     'Nari',
     'Efreeti',
+    'Maximilia',
     'Emilia',
+    'Yui',
   ],
   S: [
     'Echidna',
@@ -220,7 +212,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Lisandria',
     'Araha',
     'Pantheri',
-    'Smarika',
+    'Samarika',
     'Fammene',
     'Ines',
     'Marhim',
@@ -246,27 +238,19 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
   B: [
     'Canisk',
     'Gulsni',
-    'Re-de-da',
+    'Re_De_Da',
     'Gulam',
     'Nonoha',
-    'Rhasadina',
-    'Imperial shieldbearer',
-    'Grrik mercenary',
-    'Goliath',
-    'weamp elf vigilante member',
-    'war mercenary',
-    'torta warrior',
-    'splite twigs',
   ],
 };
 
 const DOPAMIN_CHARACTERS = {
+  UR: ['Cora'],
   SSS: [
     'Olivia',
-    'cora',
     'Kaul',
     'Kalma',
-    'Yeonwwo',
+    'Yeonwoo',
     'Yui',
     'Valeta',
     'Yvonna',
@@ -287,7 +271,7 @@ const DOPAMIN_CHARACTERS = {
     'Erneste',
     'Bella',
     'luise',
-    'Nori',
+    'Nari',
     'Efreeti',
     'so joo-hee',
     'Nika',
@@ -296,17 +280,19 @@ const DOPAMIN_CHARACTERS = {
     'puppy stepper',
     'Emilia',
     'Kim ga-young',
+    'Eugenia',
+    'Maximilia',
   ],
   S: [
     'Echidna',
-    'Min un-sol',
+    'Min Eun-sol',
     'Yeon chae-young',
     'Platina',
     'araha',
     'Pantheri',
     'Lisandria',
     'Samarika',
-    'Fammena',
+    'Fammene',
     'delia',
     'ines',
     'Marhim',
@@ -314,7 +300,7 @@ const DOPAMIN_CHARACTERS = {
     'puppy shooter',
     'Koblod mercenary',
   ],
-  A: ['Canisk', 'Gulsni', 'Re-de-da', 'Gulam', 'Nonoha', 'Matrotho', 'Wizard legionnaire'],
+  A: ['Canisk', 'Gulsni', 'Re_De_Da', 'Gulam', 'Nonoha', 'Matrotho', 'Wizard legionnaire'],
   B: [
     'Rhasadina',
     'imperial shieldbearer merceneary',

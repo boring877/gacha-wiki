@@ -115,6 +115,8 @@ const rawKalmaData = {
   // Skills and Passive
   skills: {
     boltSlash: {
+      gameKey: 'LightningEdge',
+      icon: 'UI_SkillIcon_LightningEdge',
       name: 'Bolt Slash',
       level: '10/10',
       type: 'Skill',
@@ -128,6 +130,8 @@ const rawKalmaData = {
         'Launches an electrified sphere to attack. The sphere burrows into the targeted enemy before bursting outward in all directions. Deals Electric DMG equal to 152% of Magic ATK to the target, and Splash Electric DMG equal to 48% of Magic ATK to enemies within a 4m radius. The designated target cannot be hit with a standard Weakness Attack by this skill.',
     },
     chargeAccumulation: {
+      gameKey: 'VoltWeave',
+      icon: 'UI_SkillIcon_VoltWeave',
       name: 'Charge Accumulation',
       level: '1/1',
       type: 'Passive',
@@ -137,6 +141,8 @@ const rawKalmaData = {
         'When using a skill that is not Standby and not a Response skill, gain 1 stack of [Charge].',
     },
     boltChaser: {
+      gameKey: 'FollowingThunderBolt',
+      icon: 'UI_SkillIcon_FollowingThunderBolt',
       name: 'Bolt Chaser',
       level: '10/10',
       type: 'Skill',
@@ -150,6 +156,8 @@ const rawKalmaData = {
         'Dashes like lightning in the chosen direction. Charges 7m forward, dealing Electric DMG equal to 67% of Magic ATK to enemies within 3m along the path, and gains [Extra Action] once. After using this skill, Magic ATK increases by 70% for 1R and any attack made this turn via [Extra Action] is treated as a Weak Point Attack. This skill is considered a Basic Skill and cannot deal Weak Point Attack on its own.',
     },
     lightningCascade: {
+      gameKey: 'SpreadingLightning',
+      icon: 'UI_SkillIcon_SpreadingLightning',
       name: 'Lightning Cascade',
       level: '10/10',
       type: 'Skill',
@@ -163,6 +171,8 @@ const rawKalmaData = {
         'Emits a powerful current from your fingertips for a short time. Deals Electric DMG equal to 285% of Magic ATK to enemies within a 5m, 150° frontal cone, and inflicts [Volt Mark] for 1R on hit enemies. When an ally attacks an enemy with [Volt Mark], all ATK increases by 20% for 2R. While using this skill, ACC is temporarily increased by 100%.',
     },
     ragingThunderstorm: {
+      gameKey: 'RagingLightningStorm',
+      icon: 'UI_SkillIcon_RagingLightningStorm',
       name: 'Raging Thunderstorm',
       level: '10/10',
       type: 'Skill',
@@ -176,6 +186,8 @@ const rawKalmaData = {
         'If you have 5 stacks of [Charge], consumes all stacks to use this skill. Summons a storm and strikes with a fierce bolt of lightning. Deals Electric DMG equal to 342% of Magic ATK to enemies within a 2.5m radius. Upon attack, temporarily increases Crit DMG by 10% for every INT exceeding 6, and if the target has [Volt Mark], reduces their Electric DEF by 800 until the end of the turn. This attack is treated as a Weak Point Attack, and temporarily increases ACC by 300%.',
     },
     flashbreak: {
+      gameKey: 'OpeningMoment',
+      icon: 'UI_SkillIcon_OpeningMoment',
       name: 'Flashbreak',
       level: '1/1',
       type: 'Passive',

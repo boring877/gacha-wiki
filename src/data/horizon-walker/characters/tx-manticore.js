@@ -114,6 +114,8 @@ const rawTxManticoreData = {
   // Skills and Passive
   skills: {
     designatedFire: {
+      gameKey: 'PointAndShoot',
+      icon: 'UI_SkillIcon_RobotGun',
       name: 'Designated Fire',
       level: '10/10',
       type: 'Skill',
@@ -127,6 +129,8 @@ const rawTxManticoreData = {
         "Fires machine gun at the enemy. Deals Pierce DMG equal to 114% of Ranged ATK to the enemies hit by the attack. After the basic attack, performs a Support Attack with the 'Detection Shot' skill on a random enemy, dealing Pierce DMG equal to 35% of Ranged ATK.",
     },
     tacticalClearing: {
+      gameKey: 'TacticalSecurity',
+      icon: 'UI_SkillIcon_TacticalSecurity',
       name: 'Tactical Clearing',
       level: '10/10',
       type: 'Passive',
@@ -136,6 +140,8 @@ const rawTxManticoreData = {
         'During combat, CRIT rate increases by 57%. Applies the [Tactical Target] effect to enemies hit by own Support Attacks and counterattacks, lasting for 2R. [Tactical Target]: When an ally attacks the target of the effect, increases ACC by 19% temporarily.',
     },
     openFire: {
+      gameKey: 'VolleyFiring',
+      icon: 'UI_SkillIcon_VolleyFiring',
       name: 'Open Fire',
       level: '10/10',
       type: 'Skill',
@@ -149,6 +155,8 @@ const rawTxManticoreData = {
         'Fires all machine guns to suppress the frontlines. Deals Pierce DMG equal to 162% of Ranged ATK to enemies within a 60° fan range of 9m in front. Temporarily increases CRIT rate by 24% when the skill is used.',
     },
     airspaceRadar: {
+      gameKey: 'AirspaRadar',
+      icon: 'UI_SkillIcon_AirspaRadar',
       name: 'Airspace Radar',
       level: '10/10',
       type: 'Passive',
@@ -158,6 +166,8 @@ const rawTxManticoreData = {
         "When allies, excluding self, are attacked by enemies, there is a 45% chance to perform a Support Attack. If any of the attacked enemies have the [Tactical Target] effect, the chance to perform a Support Attack increases to 100%. If the Support Attack is successful through this skill, there is a 40% chance to reduce the cooldown of the 'Open Fire' skill by 1R.",
     },
     delayedBombardment: {
+      gameKey: 'DelayedBombing',
+      icon: 'UI_SkillIcon_DelayedBombing',
       name: 'Delayed Bombardment',
       level: '10/10',
       type: 'Skill',
@@ -167,6 +177,8 @@ const rawTxManticoreData = {
         'Fires guided missile into the air. Creates a circular [Guided Target] area with a 4m radius at the designated location. [Guided Target]: At the start of each round, the area is bombarded by guided missile, dealing the following damage to enemies within the area. This additional damage scales with CRIT DMG. Additional Pierce DMG equal to 152% of Ranged ATK, Additional Crush DMG equal to 152% of Ranged ATK, Additional Heat DMG equal to 152% of Ranged ATK',
     },
     detectionShot: {
+      gameKey: 'PointAndShoot',
+      icon: 'UI_SkillIcon_RobotGun',
       name: 'Detection Shot',
       level: 'Support',
       type: 'Skill',

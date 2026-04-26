@@ -1,7 +1,7 @@
 ---
 import GiftLayout from '../../../layouts/horizon-walker/GiftLayout.astro';
 import { GIFT_BOXES, GIFT_RARITIES, UNIQUE_GIFTS } from '../../../data/horizon-walker/gifts.js';
-import { GiftImage } from '../../../components/horizon-walker/index.astro';
+import { GiftImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 ---
 
 <GiftLayout
@@ -82,19 +82,13 @@ import { GiftImage } from '../../../components/horizon-walker/index.astro';
                 <h3 class="hw-gift-box-name">{box.name}</h3>
                 <div class="hw-gift-box-tier">
                   {box.id === 'brilliant-gift-box' && (
-                    <span class="hw-badge" data-rarity="SS">
-                      SS
-                    </span>
+                    <HWRarityIcon rarity="SS" width={40} height={20} />
                   )}
                   {box.id === 'luxurious-gift-box' && (
-                    <span class="hw-badge" data-rarity="S">
-                      S
-                    </span>
+                    <HWRarityIcon rarity="S" width={40} height={20} />
                   )}
                   {box.id === 'ordinary-gift-box' && (
-                    <span class="hw-badge" data-rarity="A">
-                      A
-                    </span>
+                    <HWRarityIcon rarity="A" width={40} height={20} />
                   )}
                 </div>
                 <p class="hw-gift-box-description">{box.description}</p>
@@ -119,9 +113,7 @@ import { GiftImage } from '../../../components/horizon-walker/index.astro';
                   </div>
                   <div class="hw-gift-item-info">
                     <h4 class="hw-gift-item-name">{gift.name}</h4>
-                    <span class="hw-badge" data-rarity={gift.rarity}>
-                      {gift.rarity}
-                    </span>
+                    <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
                     <div class="hw-gift-points">
                       <div class="points-levels">
                         <div class="points-item">
@@ -185,9 +177,7 @@ import { GiftImage } from '../../../components/horizon-walker/index.astro';
             <div class="hw-gift-item-info">
               <h4 class="hw-gift-item-name">{gift.name}</h4>
               <div class="hw-gift-badges">
-                <span class="hw-badge" data-rarity={gift.rarity}>
-                  {gift.rarity}
-                </span>
+                <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
                 <span class="hw-badge hw-badge-unique">{gift.type}</span>
               </div>
               {gift.description && <p class="hw-unique-description">{gift.description}</p>}

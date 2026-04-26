@@ -140,6 +140,8 @@ const rawGriseldaData = {
   // Skills and Passive
   skills: {
     arcaneExplosion: {
+      gameKey: 'ArcaneExplosion',
+      icon: 'UI_SkillIcon_ArcaneBullet',
       name: 'Arcane Explosion',
       level: '10/10',
       type: 'Skill',
@@ -153,6 +155,8 @@ const rawGriseldaData = {
         'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to 57% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to 57% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
     },
     arcanePurge: {
+      gameKey: 'ArcaneBaptism',
+      icon: 'UI_SkillIcon_ArcaneBaptism',
       name: 'Arcane Purge',
       level: '10/10',
       type: 'Passive',
@@ -162,6 +166,8 @@ const rawGriseldaData = {
         'At the start of the round, grants the [Arcane Purge] effect to allies except Arcane Elementals. When the [Arcane Purge] effect expires, the Arcane Elemental on the battlefield gains 1 stack of [Pure Energy].',
     },
     undefinedSpace: {
+      gameKey: 'UncertainSpace',
+      icon: 'UI_SkillIcon_UncertainSpace',
       name: 'Undefined Space',
       level: '10/10',
       type: 'Skill',
@@ -171,6 +177,8 @@ const rawGriseldaData = {
         "Bends space with overwhelming arcane power. Increases the SPD of all allies (excluding self) by 190% of the Arcane Elemental's base AP recovery until the end of their turn, and creates an [Undefined Space] zone at the target location for 3 rounds. Allies within the [Uncertain Space] zone recover a portion of AP spent on movement. Enemies within the zone are periodically pulled toward its center.",
     },
     certainFortune: {
+      gameKey: 'DeterminedLuck',
+      icon: 'UI_SkillIcon_DeterminedLuck',
       name: 'Certain Fortune',
       level: '10/10',
       type: 'Passive',
@@ -180,6 +188,8 @@ const rawGriseldaData = {
         "On hit, grants all allies a [Banish Misfortune] shield for 1 round (does not stack), and restores HP to allies within [Undefined Space] equal to 38% of the Arcane Elemental's Max HP. The lower the target's current HP, the more HP is restored—up to an additional 40%.",
     },
     quantumSingularity: {
+      gameKey: 'QuantumSingularity',
+      icon: 'UI_SkillIcon_QuantumSingularity',
       name: 'Quantum Singularity',
       level: '10/10',
       type: 'Skill',
@@ -193,6 +203,8 @@ const rawGriseldaData = {
         "Can be activated by consuming 3 stacks of [Pure Energy]. Unleashes overwhelming arcane force to collapse space. After use, reduces the caster's AP Recovery by 20 for 1R. Deals Immaterial DMG equal to Magic ATK × 190% and Additional Crush DMG equal to 190% of Magic ATK to enemies within a 6m radius at the target location. This Additional Crush DMG increases based on the target's missing HP, up to 10×. While using this skill, ACC is temporarily increased by 300%.",
     },
     reversalOfCausality: {
+      gameKey: 'ReversedCausality',
+      icon: 'UI_SkillIcon_ReversedCausality',
       name: 'Reversal of Causality',
       level: '10/10',
       type: 'Passive',

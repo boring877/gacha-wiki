@@ -138,6 +138,8 @@ const rawKilonData = {
   // Skills and Passive
   skills: {
     brotherhoodsStrike: {
+      gameKey: 'StrikeOfBrotherhood',
+      icon: 'UI_SkillIcon_TwoHandSword',
       name: "Brotherhood's Strike",
       level: '10/10',
       type: 'Skill',
@@ -151,6 +153,8 @@ const rawKilonData = {
         'Swings the greatsword horizontally, slashing enemies within a fan-shaped range. Deals Slash DMG equal to 114% of melee ATK.',
     },
     thousandArmsStance: {
+      gameKey: 'ThousandArmed',
+      icon: 'UI_SkillIcon_ThousandArmed',
       name: 'Thousand Arms Stance',
       level: '10/10',
       type: 'Skill',
@@ -160,6 +164,8 @@ const rawKilonData = {
         'Raises the greatsword and assumes a counterattack stance. Enters [Counterattack Posture] until the start of the next round, increasing CRIT rate by 57% and performing counterattacks regardless of the base number of counterattacks.',
     },
     tauntingRoar: {
+      gameKey: 'CryOfProvoke',
+      icon: 'UI_SkillIcon_CryOfProvoke',
       name: 'Taunting Roar',
       level: '10/10',
       type: 'Skill',
@@ -173,6 +179,8 @@ const rawKilonData = {
         'Plant your sword into the ground and unleash a roar. Deals Crush DMG equal to 57% of Magic ATK in a 5m circular AoE. Enemies hit are inflicted with [Taunt] for 2 rounds and have all ATK reduced by 38% for 2 rounds. Your Aggro Adjustment increases for the duration. This attack temporarily increases Accuracy by 300%.',
     },
     splitTheCrown: {
+      gameKey: 'CrownSplitting',
+      icon: 'UI_SkillIcon_CrownSplitting',
       name: 'Split the Crown',
       level: '10/10',
       type: 'Skill',

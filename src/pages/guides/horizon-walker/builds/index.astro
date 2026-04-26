@@ -1,6 +1,7 @@
 ---
 import BuildsLayout from '../../../../layouts/horizon-walker/BuildsLayout.astro';
 import CharacterImage from '../../../../components/horizon-walker/CharacterImage.astro';
+import { HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import {
   getTotalBuilds,
   getEnhancedBuilds,
@@ -41,9 +42,7 @@ const buildsByRarity = {
         return (
           <section class="hw-builds-rarity-section">
             <div class="hw-builds-rarity-header">
-              <span class="hw-badge" data-rarity={rarity}>
-                {rarity}
-              </span>
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
               <span class="hw-builds-rarity-count">({builds.length} builds)</span>
             </div>
 
@@ -73,9 +72,7 @@ const buildsByRarity = {
                           <span class="hw-badge" data-type="Cost">
                             {build.cost}
                           </span>
-                          <span class="hw-badge" data-rarity={build.rarity}>
-                            {build.rarity}
-                          </span>
+                          <HWRarityIcon rarity={build.rarity} width={40} height={20} />
                         </div>
                       </div>
                     </div>
@@ -105,9 +102,7 @@ const buildsByRarity = {
                         <span class="hw-badge" data-type="Cost">
                           {build.cost}
                         </span>
-                        <span class="hw-badge" data-rarity={build.rarity}>
-                          {build.rarity}
-                        </span>
+                        <HWRarityIcon rarity={build.rarity} width={40} height={20} />
                       </div>
                     </div>
                   </div>

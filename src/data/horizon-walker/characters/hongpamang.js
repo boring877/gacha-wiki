@@ -96,6 +96,8 @@ const rawHongpamangData = {
 
   skills: {
     dreamShock: {
+      gameKey: 'DreamShock',
+      icon: 'UI_SkillIcon_DreamShock',
       name: 'Dream Shock',
       level: '10/10',
       type: 'Skill',
@@ -109,6 +111,8 @@ const rawHongpamangData = {
         'Attacks the enemy precisely with the power of the void. Deals Immaterial DMG equal to 138% of Magic ATK. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
     },
     possessionOfEcstaticDream: {
+      gameKey: 'PossessionOfEcstaticDream',
+      icon: 'UI_SkillIcon_PossessionOfEcstaticDream',
       name: 'Possession of Ecstatic Dream',
       level: '10/10',
       type: 'Skill',
@@ -122,6 +126,8 @@ const rawHongpamangData = {
         'Interpenetrates the enemy\'s mind with the power of the void. Deals Immaterial DMG equal to 65% of Magic ATK and possesses the enemy by seizing control of their body. The lower the enemy\'s HP and the higher the user\'s Magic ATK, the higher the success rate. When user\'s Magic ATK matches target\'s remaining HP, possession succeeds with 70-100% probability. Cannot possess bosses or elite enemies. Upon successful possession, user\'s AP is fixed at 0, while the possessed target is controlled instead. If the controlled target is defeated, possession ends, and the user immediately gains 150 AP. Coefficient scales from 36% at Lv1 to 65% at Lv10.',
     },
     someonesBody: {
+      gameKey: 'SomeonesBody',
+      icon: 'UI_SkillIcon_SomeonesBody',
       name: "Someone's Body",
       level: '10/10',
       type: 'Passive',
@@ -131,6 +137,8 @@ const rawHongpamangData = {
         'While in a successful possession state, all ATK of the possessed target increases by 40-76%. Requires Possession of Ecstatic Dream Lv3 to unlock.',
     },
     nightmareMaterializes: {
+      gameKey: 'NightmareMaterializes',
+      icon: 'UI_SkillIcon_NightmareMaterializes',
       name: 'Nightmare Materializes',
       level: '10/10',
       type: 'Skill',

@@ -62,7 +62,7 @@ import { disc as lemonBlackTea } from './discs/lemon-black-tea.js';
 import { disc as lonelyDunes } from './discs/lonely-dunes.js';
 import { disc as loveRiversCurse } from './discs/love-river-s-curse.js';
 import { disc as meowRhythm } from './discs/meow-rhythm.js';
-import { disc as meowingCatGod } from './discs/meowing-cat-god.js';
+import { disc as meowingCat } from './discs/meowing-cat.js';
 import { disc as miraculousAnthem } from './discs/miraculous-anthem.js';
 import { disc as newStarPrelude } from './discs/new-star-prelude.js';
 import { disc as oneShotOneDown } from './discs/one-shot-one-down.js';
@@ -140,7 +140,7 @@ const allRawDiscs = [
   lonelyDunes,
   loveRiversCurse,
   meowRhythm,
-  meowingCatGod,
+  meowingCat,
   miraculousAnthem,
   newStarPrelude,
   oneShotOneDown,

@@ -1,0 +1,47 @@
+---
+// Horizon Walker Rarity Icon Component
+// Displays game-accurate tier icons for rarity grades (B, A, S, SS, EX)
+// Tier mapping: 01=B, 02=A, 03=S, 04=SS, 05=EX
+
+import { Image } from 'astro:assets';
+import tier01 from '../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_01.png';
+import tier02 from '../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_02.png';
+import tier03 from '../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_03.png';
+import tier04 from '../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_04.png';
+import tier05 from '../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_05.png';
+
+export interface Props {
+  rarity: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  rarity,
+  width = 48,
+  height = 24,
+  class: className,
+  loading = 'lazy',
+} = Astro.props;
+
+const rarityMap: Record<string, typeof tier01> = {
+  B: tier01,
+  A: tier02,
+  S: tier03,
+  SS: tier04,
+  EX: tier05,
+};
+
+const iconSrc = rarityMap[rarity] || tier01;
+---
+
+<Image
+  src={iconSrc}
+  alt={rarity}
+  width={width}
+  height={height}
+  class={className || 'hw-rarity-icon'}
+  loading={loading}
+/>

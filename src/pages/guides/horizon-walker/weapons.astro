@@ -1,5 +1,5 @@
 ---
-import { WeaponImage } from '../../../components/horizon-walker/index.astro';
+import { WeaponImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 import WeaponLayout from '../../../layouts/horizon-walker/WeaponLayout.astro';
 
 // Import weapon data
@@ -25,7 +25,8 @@ export const prerender = true;
           <!-- Header with Weapons Count and Sort Controls -->
           <div class="hw-weapons-header">
             <div class="hw-weapons-count">
-              <span class="hw-badge" data-rarity="EX">{WEAPON_METADATA.total} Weapons</span>
+              <HWRarityIcon rarity="EX" width={48} height={24} />
+              <span>{WEAPON_METADATA.total} Weapons</span>
             </div>
 
             <!-- Sort Controls -->
@@ -116,9 +117,7 @@ export const prerender = true;
                 <div class="weapon-info">
                   <div class="weapon-name-row">
                     <h3 class="weapon-name">{weapon.name}</h3>
-                    <span class="weapon-rarity hw-badge" data-rarity={weapon.rarity}>
-                      {weapon.rarity}
-                    </span>
+                    <HWRarityIcon rarity={weapon.rarity} width={40} height={20} />
                   </div>
                   <p class="weapon-type">{weapon.type}</p>
                   <div class="weapon-character">

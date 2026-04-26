@@ -113,6 +113,8 @@ const rawCoraData = {
   // Skills and Passive
   skills: {
     summonEnergy: {
+      gameKey: 'SummonEnergy',
+      icon: 'UI_SkillIcon_SummonEnergy',
       name: 'Summon Energy',
       level: '10/10',
       type: 'Skill',
@@ -126,6 +128,8 @@ const rawCoraData = {
         'Releases pure energy in the form of a heat ray to attack. Deals Heat DMG equal to 152% of magic ATK to enemies within a 1m by 7m rectangular area. This skill cannot be used for a Weakness Attack.',
     },
     spatialShift: {
+      gameKey: 'SpaceWarp',
+      icon: 'UI_SkillIcon_SpaceWarp',
       name: 'Spatial Shift',
       level: '10/10',
       type: 'Skill',
@@ -135,6 +139,8 @@ const rawCoraData = {
         'Crosses through space-time to reach the desired location. Teleports to a specified location within a radius of 18m.',
     },
     summonLava: {
+      gameKey: 'SummonLava',
+      icon: 'UI_SkillIcon_SummonLava',
       name: 'Summon Lava',
       level: '10/10',
       type: 'Skill',
@@ -148,6 +154,8 @@ const rawCoraData = {
         'Deals Heat DMG equal to 76% of magic ATK to enemies within a 3m circular range and creates a [Lava] zone for 5 rounds. Up to 3 [Lava] zones can be summoned; if more than 3 are summoned, the oldest zone disappears. [Lava]: Inflicts the [Heatflow] effect on enemies within the zone. [Heatflow]: Reduces Heat DEF by 380.',
     },
     forbiddenLand: {
+      gameKey: 'ProhibitedPlace',
+      icon: 'UI_SkillIcon_ProhibitedPlace',
       name: 'Forbidden Land',
       level: '10/10',
       type: 'Passive',
@@ -157,6 +165,8 @@ const rawCoraData = {
         "If an enemy on a [Lava] zone is hit, at the end of the turn all [Lava] zones on the battlefield will explode. This explosion deals Additional Heat DMG equal to 76% of the caster's magic ATK to all enemies within the zone. This Additional Heat DMG takes double the effect of the Heat enhancement stat.",
     },
     volcanicEruption: {
+      gameKey: 'VolcanicEruption',
+      icon: 'UI_SkillIcon_VolcanicEruption',
       name: 'Volcanic Eruption',
       level: '10/10',
       type: 'Skill',

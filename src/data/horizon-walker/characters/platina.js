@@ -141,6 +141,8 @@ const rawPlatinaData = {
   // Skills and Passive
   skills: {
     shieldBash: {
+      gameKey: 'ShieldCharging',
+      icon: 'UI_SkillIcon_ShieldCharging',
       name: 'Shield Bash',
       level: '10/10',
       type: 'Skill',
@@ -154,6 +156,8 @@ const rawPlatinaData = {
         "Designates a target, attacking with a sword and striking with a shield. Deals Slash DMG equal to 114% of melee ATK to the hit enemy and has a 38% chance to inflict [Stun]. This skill transitions to the 'Sword Strike' skill while in [Shield Deployment] state. [Sword Strike]: While in [Shield Deployment] state, designates a target and attacks with a sword. Deals Slash DMG equal to 114% of melee ATK to the hit enemy.",
     },
     songOfTheSword: {
+      gameKey: 'SongOfSword',
+      icon: 'UI_SkillIcon_SongOfSword',
       name: 'Song of the Sword',
       level: '10/10',
       type: 'Skill',
@@ -167,6 +171,8 @@ const rawPlatinaData = {
         "Rotates in place, swinging the sword to attack. Deals Slash DMG equal to 171% of melee ATK to all enemies within a 2.5m circular range, enters [Shield Deployment] state and gains [Gravity Focus] effect. [Shield Deployment]: Increases Block Rate by 15%, increases Aggro Adjustment, and increases Physical DEF by 150. This skill changes to 'Song of the Shield' while in [Shield Deployment] state. [Song of the Shield]: While in [Shield Deployment] state, rotates in place, swinging the sword to deal Slash DMG equal to 171% of melee ATK to all targets within 2.5m and cancels the [Shield Deployment] state.",
     },
     gravityFall: {
+      gameKey: 'GravitationalDrop',
+      icon: 'UI_SkillIcon_GravitationalDrop',
       name: 'Gravity Fall',
       level: '10/10',
       type: 'Skill',
@@ -180,6 +186,8 @@ const rawPlatinaData = {
         'Can only be activated by consuming the [Gravity Focus] effect if possessed. Leaps high in place and descends towards the target point. Upon landing, deals Crush DMG equal to 152% of melee ATK to enemies within a 6m radius and pulls them in by 5m. Applies [Slow] effect to all targets for 2R, and the user enters [Shield Deployment] state after using the skill. Weakness attacks cannot be performed with this skill. [Slow]: Reduces SPD by 40%.',
     },
     heartOfPlatinum: {
+      gameKey: 'PlatinumCore',
+      icon: 'UI_SkillIcon_PlatinumCore',
       name: 'Heart of Platinum',
       level: '10/10',
       type: 'Passive',

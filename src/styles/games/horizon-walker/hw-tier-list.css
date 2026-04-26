@@ -276,13 +276,29 @@
   flex-shrink: 0;
 }
 
-/* Horizon Walker Tier Colors - using HW primary color */
-.tier-label.tier-sss,
-.tier-label.tier-ss,
-.tier-label.tier-s,
-.tier-label.tier-a,
+/* Horizon Walker Tier Colors */
+.tier-label.tier-ur {
+  color: #FF4444;
+}
+
+.tier-label.tier-sss {
+  color: #FFD700;
+}
+
+.tier-label.tier-ss {
+  color: #9333EA;
+}
+
+.tier-label.tier-s {
+  color: #3B82F6;
+}
+
+.tier-label.tier-a {
+  color: #10B981;
+}
+
 .tier-label.tier-b {
-  color: var(--hw-primary-warm);
+  color: #6B7280;
 }
 
 /* ============================================ */
@@ -735,10 +751,33 @@
   justify-content: center;
   font-size: 1.2rem;
   font-weight: 900;
-  color: var(--hw-primary-warm);
   flex-shrink: 0;
   background: var(--hw-bg-medium);
   border-radius: 6px;
+}
+
+.legend-tier.tier-ur {
+  color: #FF4444;
+}
+
+.legend-tier.tier-sss {
+  color: #FFD700;
+}
+
+.legend-tier.tier-ss {
+  color: #9333EA;
+}
+
+.legend-tier.tier-s {
+  color: #3B82F6;
+}
+
+.legend-tier.tier-a {
+  color: #10B981;
+}
+
+.legend-tier.tier-b {
+  color: #6B7280;
 }
 
 .legend-description {

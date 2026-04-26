@@ -140,6 +140,8 @@ const rawArahaData = {
   // Skills and Passive
   skills: {
     sniping: {
+      gameKey: 'Sniping',
+      icon: 'UI_SkillIcon_SniperRifle_BA',
       name: 'Sniping',
       level: '10/10',
       type: 'Skill',
@@ -153,6 +155,8 @@ const rawArahaData = {
         'Snipes an enemy with a rifle. Deals Pierce DMG equal to 190% of Ranged ATK and makes the target Unable to Counterattack for 1 round. During this attack, own ACC temporarily decreases by 15%.',
     },
     supportFire: {
+      gameKey: 'ShootingSupport',
+      icon: 'UI_SkillIcon_ShootingSupport',
       name: 'Support Fire',
       level: '10/1',
       type: 'Passive',
@@ -162,6 +166,8 @@ const rawArahaData = {
         'Once per round, gains the [Reactive Support Snipe] effect. [Reactive Support: Snipe]: When an ally other than yourself is attacked, performs a support counterattack and gains 12 AP. This effect then immediately vanishes.',
     },
     camouflage: {
+      gameKey: 'Camouflage',
+      icon: 'UI_SkillIcon_Camouflage',
       name: 'Camouflage',
       level: '10/10',
       type: 'Skill',
@@ -171,6 +177,8 @@ const rawArahaData = {
         "Uses the drone's optical function to camouflage self. Gains [Camouflage: Stealth] for 3 rounds. Cannot perform Support Counterattack while stealth. [Camouflage: Stealth]: Becomes hidden and cannot be targeted by enemy skills. For one attack, CRIT rate increases by 100%, and CRIT DMG increases by 30%.",
     },
     wireManeuverShot: {
+      gameKey: 'WireShot',
+      icon: 'UI_SkillIcon_WireShot',
       name: 'Wire Maneuver Shot',
       level: '10/10',
       type: 'Skill',

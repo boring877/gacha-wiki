@@ -142,6 +142,8 @@ const rawOslaData = {
   // Skills and Passive
   skills: {
     hideSplitter: {
+      gameKey: 'CuttingLeather',
+      icon: 'UI_SkillIcon_DoubleEdge_BA',
       name: 'Hide Splitter',
       level: '10/10',
       type: 'Skill',
@@ -155,6 +157,8 @@ const rawOslaData = {
         'Swings a deadly Torturas to deal Slash DMG equal to 190% of melee ATK to the enemy.',
     },
     predatoryRange: {
+      gameKey: 'PredatoryDistance',
+      icon: 'UI_SkillIcon_PredatoryDistance',
       name: 'Predatory Range',
       level: '10/10',
       type: 'Skill',
@@ -168,6 +172,8 @@ const rawOslaData = {
         'Throws a chained Torturas to pull the enemy closer. Deals Slash DMG equal to 114% of melee ATK and removes Counterattack. If the target is a large enemy, instead of pulling them closer, moves self to the front of the enemy.',
     },
     afflictPain: {
+      gameKey: 'Threatening',
+      icon: 'UI_SkillIcon_Threatening',
       name: 'Afflict Pain',
       level: '10/10',
       type: 'Passive',
@@ -177,6 +183,8 @@ const rawOslaData = {
         'Each time an attack is successfully made, has a 57% chance to Taunt the target.',
     },
     cryOfTheAncients: {
+      gameKey: 'CryOfTheAncientTimes',
+      icon: 'UI_SkillIcon_CryOfTheAncientTimes',
       name: 'Cry of the Ancients',
       level: '10/10',
       type: 'Skill',
@@ -190,6 +198,8 @@ const rawOslaData = {
         'With a shout filled with intense determination, demoralizes enemies and boosts own resolve. Deals Immaterial DMG equal to 57% of magic ATK. Hit enemies lose 10 AP, while self gains the [Primal Regeneration] effect for 2R and Aggro Adjustment increases. [Primal Regeneration]: Whenever damaged, recovers HP by 57% of magic ATK. This recovery amount increases as the current HP ratio decreases, up to 4 times at 40% HP ratio.',
     },
     endlessMalice: {
+      gameKey: 'EndlessKillingAura',
+      icon: 'UI_SkillIcon_EndlessKillingAura',
       name: 'Endless Malice',
       level: '10/10',
       type: 'Passive',

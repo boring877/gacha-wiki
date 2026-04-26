@@ -1816,7 +1816,7 @@ export const info = {
     {
       "id": "8",
       "title": "Amulet",
-      "text": "A gift from Alexi—an amulet said to be imbued with 'mysterious magic.' Those who wear it are blessed by the gods and become favored by fortune, so Alexi told me to keep it with me at all times.",
+      "text": "A gift from Alexi—an amulet said to be imbued with 'mysterious magic.' Those who wear it are blessed and become favored by fortune, so Alexi told me to keep it with me at all times.",
       "unlockRank": "7"
     }
   ],
@@ -1882,7 +1882,7 @@ export const allInfo = [
       {
         "id": "8",
         "title": "Amulet",
-        "text": "A gift from Alexi—an amulet said to be imbued with 'mysterious magic.' Those who wear it are blessed by the gods and become favored by fortune, so Alexi told me to keep it with me at all times.",
+        "text": "A gift from Alexi—an amulet said to be imbued with 'mysterious magic.' Those who wear it are blessed and become favored by fortune, so Alexi told me to keep it with me at all times.",
         "unlockRank": "7"
       }
     ],

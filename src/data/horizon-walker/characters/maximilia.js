@@ -100,6 +100,8 @@ const rawMaximiliaData = {
 
   skills: {
     stingTheGap: {
+      gameKey: 'StingTheGap',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Sting the Gap',
       level: '10/10',
       type: 'Skill',
@@ -113,6 +115,8 @@ const rawMaximiliaData = {
         'Stabs with a sword to attack. Deals Pierce DMG equal to 138% of Melee ATK. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
     },
     guardianWall: {
+      gameKey: 'GuardianWall',
+      icon: 'UI_SkillIcon_GuardianWall',
       name: 'Guardian Wall',
       level: '10/10',
       type: 'Skill',
@@ -126,6 +130,8 @@ const rawMaximiliaData = {
         'Raises a massive [Guardian Barrier] to protect allies from enemies. Deals Crush DMG equal to 276% of Melee ATK to enemies within a wide rectangular area, knocks them back 3m, and summons [Guardian Barrier] in front. While [Guardian Barrier] is active, All DEF increases by 200-650, the unit cannot be pushed or pulled, and cannot perform Responses. [Guardian Barrier] disappears at the start of the caster\'s next turn. [Guardian Barrier] inherits 100% of the caster\'s Max HP and 100% of DEF. Coefficient scales from 145% at Lv1 to 276% at Lv10. Requires Sting the Gap Lv3 to unlock.',
     },
     shatter: {
+      gameKey: 'Shatter',
+      icon: 'UI_SkillIcon_Shatter',
       name: 'Shatter',
       level: '10/10',
       type: 'Passive',
@@ -135,6 +141,8 @@ const rawMaximiliaData = {
         'When attacking, reduces the target\'s AP by 5.5-10 with a chance equal to Crit Rate. For each point of Vitality above 16, the reduction increases by 1.',
     },
     majestyOfTheGuardian: {
+      gameKey: 'MajestyOfTheGuardian',
+      icon: 'UI_SkillIcon_MajestyOfTheGuardian',
       name: 'Majesty of the Guardian',
       level: '10/10',
       type: 'Passive',
@@ -156,14 +164,16 @@ const rawMaximiliaData = {
     },
     uniqueSkills: {
       maximiliaUnique: {
-        name: 'Maximilia Unique',
+        name: 'Imperial Aegis',
         type: 'Unique',
-        description: 'Details pending localized text extraction.',
+        description:
+          'During battle, increases your Max HP by 20-40%. Allies excluding yourself gain Slash DEF, Pierce DEF, and Crush DEF +200-360.',
       },
       maximiliaSignature: {
-        name: 'Maximilia Signature',
+        name: 'Will of the Guardian',
         type: 'Signature',
-        description: 'Signature skill. Details pending localized text extraction.',
+        description:
+          'During battle, increases your Crit Rate by 20%. If Crit Rate exceeds 100%, for every 5% exceeded, the AP reduction from Crush effect increases by 1 (max +5). The DEF reduction effect of [Pressure] increases proportionally to your Crit Rate, up to +40% at 100% Crit Rate.',
         note: 'This signature skill only activates when Maximilia equips this weapon.',
       },
     },

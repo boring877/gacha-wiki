@@ -143,6 +143,8 @@ const rawLuiseData = {
   // Skills and Passive
   skills: {
     flameArrow: {
+      gameKey: 'FireBolt',
+      icon: 'UI_SkillIcon_FireBolt',
       name: 'Flame Arrow',
       level: '10/10',
       type: 'Skill',
@@ -156,6 +158,8 @@ const rawLuiseData = {
         'Shoots an arrow of fire to burn the enemy. Deals Heat DMG equal to 114% of magic ATK.',
     },
     ember: {
+      gameKey: 'FireFlakes',
+      icon: 'UI_SkillIcon_FireFlakes',
       name: 'Ember',
       level: '10/10',
       type: 'Passive',
@@ -165,6 +169,8 @@ const rawLuiseData = {
         'On a successful attack, applies the [Ember] effect to the enemy for 3 rounds. [Ember]: Reduces Heat DEF by 380.',
     },
     fireball: {
+      gameKey: 'FireBall',
+      icon: 'UI_SkillIcon_FireBall',
       name: 'Fireball',
       level: '10/10',
       type: 'Skill',
@@ -178,6 +184,8 @@ const rawLuiseData = {
         'Launches a blazing orb of fire and causes it to explode, burning enemies. Deals Unblockable Heat DMG equal to 143% of magic ATK to all enemies within a 2m circular radius. During this attack, ACC temporarily increases by 300%.',
     },
     fireflakeExplosion: {
+      gameKey: 'FireFlakesExplosion',
+      icon: 'UI_SkillIcon_FireFlakesExplosion',
       name: 'Fireflake Explosion',
       level: '10/10',
       type: 'Passive',
@@ -187,6 +195,8 @@ const rawLuiseData = {
         'Ignites dying embers to burn enemies. At the start of the round, detonates all [Ember] effects on the battlefield, dealing additional Heat DMG equal to 38% of magic ATK.',
     },
     blazeOfAscension: {
+      gameKey: 'SoaringFire',
+      icon: 'UI_SkillIcon_SoaringFire',
       name: 'Blaze of Ascension',
       level: '10/10',
       type: 'Skill',

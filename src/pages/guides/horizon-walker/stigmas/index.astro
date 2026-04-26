@@ -1,6 +1,6 @@
 ---
 import StigmaLayout from '../../../../layouts/horizon-walker/StigmaLayout.astro';
-import { StigmaImage } from '../../../../components/horizon-walker/index.astro';
+import { StigmaImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
 
 // Helper function to determine image name for a stigma
@@ -60,9 +60,7 @@ function getStigmaImageName(stigmaName: string, rarity: string): string {
                 </div>
                 <div class="stigma-title-container">
                   <h3 class="stigma-name">{stigma.name}</h3>
-                  <span class="hw-badge" data-rarity="EX">
-                    EX
-                  </span>
+                  <HWRarityIcon rarity="EX" width={40} height={20} />
                 </div>
               </div>
 
@@ -137,9 +135,7 @@ function getStigmaImageName(stigmaName: string, rarity: string): string {
                 </div>
                 <div class="stigma-title-container">
                   <h3 class="stigma-name">{stigma.name}</h3>
-                  <span class="hw-badge" data-rarity="SS">
-                    SS
-                  </span>
+                  <HWRarityIcon rarity="SS" width={40} height={20} />
                 </div>
               </div>
 
@@ -214,9 +210,7 @@ function getStigmaImageName(stigmaName: string, rarity: string): string {
                 </div>
                 <div class="stigma-title-container">
                   <h3 class="stigma-name">{stigma.name}</h3>
-                  <span class="hw-badge" data-rarity="S">
-                    S
-                  </span>
+                  <HWRarityIcon rarity="S" width={40} height={20} />
                 </div>
               </div>
 
@@ -285,9 +279,7 @@ function getStigmaImageName(stigmaName: string, rarity: string): string {
                 </div>
                 <div class="stigma-title-container">
                   <h3 class="stigma-name">{stigma.name}</h3>
-                  <span class="hw-badge" data-rarity="A">
-                    A
-                  </span>
+                  <HWRarityIcon rarity="A" width={40} height={20} />
                 </div>
               </div>
 

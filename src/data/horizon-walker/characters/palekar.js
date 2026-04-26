@@ -139,6 +139,8 @@ const rawPalekarData = {
   // Skills and Passive
   skills: {
     danceOfPrimalGrace: {
+      gameKey: 'CircleDance',
+      icon: 'UI_SkillIcon_CircleDance',
       name: 'Dance of Primal Grace',
       level: '10/10',
       type: 'Skill',
@@ -152,6 +154,8 @@ const rawPalekarData = {
         'Elegantly slashes the target like a dance, dealing Slash DMG equal to 114% of Melee ATK.',
     },
     bladeDance: {
+      gameKey: 'DanceOfBlades',
+      icon: 'UI_SkillIcon_DanceOfBlades',
       name: 'Blade Dance',
       level: '10/10',
       type: 'Passive',
@@ -161,6 +165,8 @@ const rawPalekarData = {
         "Increases the user's Combat Skill DMG by 16.25% of their Base Evasion stat. This effect can increase Combat Skill DMG by up to 32.5%.",
     },
     trajectoryOfSeverance: {
+      gameKey: 'TrailOfFatality',
+      icon: 'UI_SkillIcon_TrailOfFatality',
       name: 'Trajectory of Severance',
       level: '10/10',
       type: 'Skill',
@@ -174,6 +180,8 @@ const rawPalekarData = {
         "Throws two chakrams, dealing Immaterial DMG equal to 285% of Magic ATK to all enemies in a rectangular area. When this skill is used, ACC is temporarily increased by 300%, and Magic ATK increases by 250% of the user's Base Evasion stat. Additionally, for every point of Intelligence exceeding 17, Immaterial Boost and Crit DMG increase by 8%. This skill can only be used when at least one target is afflicted with [Unstable].",
     },
     verseOfOrdeal: {
+      gameKey: 'QuotesAboutTrials',
+      icon: 'UI_SkillIcon_QuotesAboutTrials',
       name: 'Verse of Ordeal',
       level: '10/10',
       type: 'Skill',
@@ -187,6 +195,8 @@ const rawPalekarData = {
         "Infuses magical runes into all enemies within range, dealing Immaterial DMG equal to 190% of Magic ATK and applying [Unstable] and [Slow] for 2 rounds. [Unstable]: Reduces All DEF by 1140. Additionally, for every 1 point of Agility exceeding 9, increases the target's DMG Taken by 7.5%. [Slow]: Reduces SPD by 40%. At the start of each round, if no targets are afflicted with [Unstable], this skill's cooldown is reduced by 1 round.",
     },
     relentlessSworddance: {
+      gameKey: 'UnendingSwordDance',
+      icon: 'UI_SkillIcon_UnendingSwordDance',
       name: 'Relentless Sworddance',
       level: '10/10',
       type: 'Passive',

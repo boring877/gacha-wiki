@@ -113,6 +113,8 @@ const rawInesData = {
   // Skills and Passive
   skills: {
     skyCleaver: {
+      gameKey: 'CuttingSky',
+      icon: 'UI_SkillIcon_TwoHandSword',
       name: 'Sky Cleaver',
       level: '10/10',
       type: 'Skill',
@@ -126,6 +128,8 @@ const rawInesData = {
         'Delivers a powerful slash to enemies in front. Deals 114% Melee ATK as Slash DMG in a 3m × 5m rectangular area.',
     },
     worldCleaver: {
+      gameKey: 'DividingWorld',
+      icon: 'UI_SkillIcon_DividingWorld',
       name: 'World Cleaver',
       level: '10/10',
       type: 'Skill',
@@ -139,6 +143,8 @@ const rawInesData = {
         'Unleashes a powerful slash across a wide area in front. Deals Slash DMG equal to 190% of Melee ATK to enemies within a 7m, 150° cone.',
     },
     naturalForm: {
+      gameKey: 'NaturalBody',
+      icon: 'UI_SkillIcon_NaturalBody',
       name: 'Natural Form',
       level: '10/10',
       type: 'Passive',
@@ -148,6 +154,8 @@ const rawInesData = {
         "Increases CRIT rate by 19% and CRIT DMG by 38%. If there are enemies that were not defeated by an attack, performs a support attack with the 'Dividing the Earth' skill. If there are enemies that were not defeated by a counterattack, performs a support counterattack with the 'Dividing the Earth' skill.",
     },
     dividingTheEarth: {
+      gameKey: 'DividingWorld',
+      icon: 'UI_SkillIcon_DividingWorld',
       name: 'Dividing the Earth',
       level: 'Auto',
       type: 'Skill',

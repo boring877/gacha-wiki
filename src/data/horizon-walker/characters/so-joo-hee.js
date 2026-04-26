@@ -116,6 +116,8 @@ const rawSoJooHeeData = {
   // Skills and Passive
   skills: {
     pistolFire: {
+      gameKey: 'AkimboShot',
+      icon: 'UI_SkillIcon_DoublePistol_BA',
       name: 'Pistol Fire',
       level: '10/10',
       type: 'Skill',
@@ -128,6 +130,8 @@ const rawSoJooHeeData = {
       description: 'Calmly shoots at the target. Deals Pierce DMG equal to 114% of Ranged ATK.',
     },
     conceal: {
+      gameKey: 'Ambush',
+      icon: 'UI_SkillIcon_Ambush',
       name: 'Conceal',
       level: '10/10',
       type: 'Passive',
@@ -137,6 +141,8 @@ const rawSoJooHeeData = {
         "When attacking an enemy's weak point, uses optical camouflage to hide. Once per Round, at the end of a turn where you performed a Weak Point Attack, there is a 38% chance to gain [Conceal: Stealth]. Activation chance increases by 1% for every 1% of your missing HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
     },
     assassination: {
+      gameKey: 'Assassination',
+      icon: 'UI_SkillIcon_Assassination',
       name: 'Assassination',
       level: '10/10',
       type: 'Skill',
@@ -150,6 +156,8 @@ const rawSoJooHeeData = {
         'Approaches the enemy and delivers an Unblockable point-blank shot. Deals Pierce DMG equal to 190% of Ranged ATK. This attack is always considered to be from behind the enemy and ignores counterattack effects. During this attack, ACC temporarily increases by 300%.',
     },
     massExecution: {
+      gameKey: 'AllOutExecution',
+      icon: 'UI_SkillIcon_AllOutExecution',
       name: 'Mass Execution',
       level: '10/10',
       type: 'Skill',
@@ -163,6 +171,8 @@ const rawSoJooHeeData = {
         'Performs a quick and precise rapid shot on up to 3 enemies. Executes a distributed attack in order of proximity, dealing Pierce DMG equal to 342% of Ranged ATK divided by the number of targets.',
     },
     unavoidableEyes: {
+      gameKey: 'InevitableSight',
+      icon: 'UI_SkillIcon_InevitableSight',
       name: 'Unavoidable Eyes',
       level: '10/10',
       type: 'Passive',

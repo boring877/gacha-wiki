@@ -139,6 +139,8 @@ const rawOliviaData = {
   // Skills and Passive
   skills: {
     skyCleaver: {
+      gameKey: 'CuttingSky',
+      icon: 'UI_SkillIcon_TwoHandSword',
       name: 'Sky Cleaver',
       level: '10/10',
       type: 'Skill',
@@ -152,6 +154,8 @@ const rawOliviaData = {
         'Delivers a powerful slash to enemies in front. Deals 114% Melee ATK as Slash DMG in a 3m × 5m rectangular area.',
     },
     worldCleaver: {
+      gameKey: 'DividingWorld',
+      icon: 'UI_SkillIcon_DividingWorld',
       name: 'World Cleaver',
       level: '10/10',
       type: 'Skill',
@@ -165,6 +169,8 @@ const rawOliviaData = {
         'Unleashes a powerful slash across a wide area in front. Deals Slash DMG equal to 190% of Melee ATK to enemies within a 7m, 150° cone.',
     },
     limitlessForm: {
+      gameKey: 'InfiniteBody',
+      icon: 'UI_SkillIcon_InfiniteBody',
       name: 'Limitless Form',
       level: '10/10',
       type: 'Passive',
@@ -174,6 +180,8 @@ const rawOliviaData = {
         'Removes Critical Chance entirely but increases Melee ATK by 220% while in combat. Ignores 1500 Slash DEF when attacking.',
     },
     ascendantThousandfoldExecution: {
+      gameKey: 'StandingLikeSky',
+      icon: 'UI_SkillIcon_StandingLikeSky',
       name: 'Ascendant - Thousandfold Execution',
       level: '10/10',
       type: 'Passive',
@@ -183,6 +191,8 @@ const rawOliviaData = {
         'At the start of each round, gain 3 stacks of [Ascendant]. [Ascendant]: When it is the enemy\'s turn, perform an additional counterattack with "Thousand Execution" against the closest enemy.',
     },
     thousandExecution: {
+      gameKey: 'StandingLikeSky',
+      icon: 'UI_SkillIcon_StandingLikeSky',
       name: 'Thousand Execution',
       level: '10/10',
       type: 'Skill',

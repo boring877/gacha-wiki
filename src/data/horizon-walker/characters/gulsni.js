@@ -116,6 +116,8 @@ const rawGulsniData = {
   // Skills and Passive
   skills: {
     undergroundTwinSwords: {
+      gameKey: 'DualSwordThrust',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Underground Twin Swords',
       level: '10/10',
       type: 'Skill',
@@ -129,6 +131,8 @@ const rawGulsniData = {
         'Quickly stabs the enemy with twin blades. Deals Pierce DMG equal to 114% of melee ATK.',
     },
     burrow: {
+      gameKey: 'TunnelMovement',
+      icon: 'UI_SkillIcon_TunnelMovement',
       name: 'Burrow',
       level: '10/10',
       type: 'Skill',
@@ -138,6 +142,8 @@ const rawGulsniData = {
         'Burrows underground and gains the [Burrow] effect for 2 rounds. [Burrow]: Unable to counter, evade, block, or use general skills. Hidden and cannot be targeted by enemy skills. Can use the "Emerge" skill. Emerge: Select ground within 9m to move to that location and emerge, ending the [Burrow] state.',
     },
     undergroundDefenseTechniques: {
+      gameKey: 'DefenseTechniqueUnderGround',
+      icon: 'UI_SkillIcon_DefenseTechniqueUnderGround',
       name: 'Underground Defense Techniques',
       level: '10/10',
       type: 'Passive',
@@ -146,6 +152,8 @@ const rawGulsniData = {
       description: 'Increases Physical DEF by 285 and Block Chance by 19%.',
     },
     undergroundExplosion: {
+      gameKey: 'BangingExplosionUnderGround',
+      icon: 'UI_SkillIcon_BangingExplosionUnderGround',
       name: 'Underground Explosion',
       level: '10/10',
       type: 'Skill',
@@ -159,6 +167,8 @@ const rawGulsniData = {
         'Erupts from the ground, causing devastation. Can only be used in [Burrow] state. Deals Crush DMG equal to 190% of melee ATK, knocks back the enemy 3m, and [Taunts] for 1R. Cannot perform a weakness attack with this skill.',
     },
     improvisedFortress: {
+      gameKey: 'ImprovisedFortress',
+      icon: 'UI_SkillIcon_ImprovisedFortress',
       name: 'Improvised Fortress',
       level: '10/10',
       type: 'Passive',

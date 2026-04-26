@@ -114,6 +114,8 @@ const rawNikaData = {
   // Skills and Passive
   skills: {
     catAttack: {
+      gameKey: 'CatLikeRaid',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Cat Attack',
       level: '10/10',
       type: 'Skill',
@@ -127,6 +129,8 @@ const rawNikaData = {
         'After attacking the designated enemy, leaps low backward to move 4m away from the target. Deals Pierce DMG equal to 114% of melee ATK.',
     },
     shadowStep: {
+      gameKey: 'ShadowStep',
+      icon: 'UI_SkillIcon_ShadowStep',
       name: 'Shadow Step',
       level: '10/10',
       type: 'Passive',
@@ -136,6 +140,8 @@ const rawNikaData = {
         "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair • Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
     },
     poisonArrow: {
+      gameKey: 'ToxicBolt',
+      icon: 'UI_SkillIcon_ToxicBolt',
       name: 'Poison Arrow',
       level: '10/10',
       type: 'Skill',
@@ -149,6 +155,8 @@ const rawNikaData = {
         "Throws a poison-soaked special arrow. Deals Pierce DMG equal to 57% of melee ATK and applies the [Necrotoxin] effect, accumulating stacks equal to 133% of ACC. [Necrotoxin]: Increases accumulation based on the caster's Poison Boost when applied. At the start of the caster's round, inflicts Poison DMG equal to the accumulated [Necrotoxin] stacks. [Necrotoxin] can stack up to 6 times.",
     },
     lethalPoison: {
+      gameKey: 'DeadlyPoison',
+      icon: 'UI_SkillIcon_DeadlyPoison',
       name: 'Lethal Poison',
       level: '10/10',
       type: 'Skill',
@@ -162,6 +170,8 @@ const rawNikaData = {
         "Targets an enemy affected by the [Necrotoxin] effect and attacks with a dagger infused with potent reactive poison. Deals Pierce DMG equal to 57% of melee ATK and inflicts additional Poison DMG equal to 3.9 times the target's [Necrotoxin] stacks. If the enemy is defeated, applies 2 stacks of [Necrotoxin] to all enemies affected by [Poison Accumulation], accumulating 266% of ACC in total. [Necrotoxin]: Accumulation increases based on the caster's Poison Boost when applied. At the start of the caster's round, inflicts additional Poison DMG equal to the accumulated [Necrotoxin] stacks. [Necrotoxin] can stack up to 6 times.",
     },
     poisonAccumulation: {
+      gameKey: 'PoisonAccumulation',
+      icon: 'UI_SkillIcon_PoisonAccumulation',
       name: 'Poison Accumulation',
       level: '10/10',
       type: 'Passive',

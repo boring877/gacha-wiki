@@ -1822,7 +1822,7 @@ export const info = {
     {
       "id": "10",
       "title": "The Tidewisp's Promise",
-      "text": "Long after that, I received a package from Yakov containing a dried Tidewisp seed.\n\nThe note inside stated that when I grow this Tidewisp and it blooms, Bella will send me her next 'most unique' letter.\n\n'And don't forget to prove our promise to the gods.'",
+      "text": "Long after that, I received a package from Yakov containing a dried Tidewisp seed.\n\nThe note inside stated that when I grow this Tidewisp and it blooms, Bella will send me her next 'most unique' letter.\n\n'And don't forget to prove our promise.'",
       "unlockRank": "10"
     }
   ],
@@ -1894,7 +1894,7 @@ export const allInfo = [
       {
         "id": "10",
         "title": "The Tidewisp's Promise",
-        "text": "Long after that, I received a package from Yakov containing a dried Tidewisp seed.\n\nThe note inside stated that when I grow this Tidewisp and it blooms, Bella will send me her next 'most unique' letter.\n\n'And don't forget to prove our promise to the gods.'",
+        "text": "Long after that, I received a package from Yakov containing a dried Tidewisp seed.\n\nThe note inside stated that when I grow this Tidewisp and it blooms, Bella will send me her next 'most unique' letter.\n\n'And don't forget to prove our promise.'",
         "unlockRank": "10"
       }
     ],

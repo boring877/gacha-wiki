@@ -76,7 +76,7 @@ import { info as getting_out_of_the_pool_artia_info, skills as getting_out_of_th
 import { info as gil_info, skills as gil_skills, stats as gil_stats } from "./gil.js";
 import { info as giselle_info, skills as giselle_skills, stats as giselle_stats } from "./giselle.js";
 import { info as gladys_info, skills as gladys_skills, stats as gladys_stats } from "./gladys.js";
-import { info as goddess_of_wisdom_and_courage_athena_info, skills as goddess_of_wisdom_and_courage_athena_skills, stats as goddess_of_wisdom_and_courage_athena_stats } from "./goddess-of-wisdom-and-courage-athena.js";
+import { info as wisdom_and_courage_athena_info, skills as wisdom_and_courage_athena_skills, stats as wisdom_and_courage_athena_stats } from "./wisdom-and-courage-athena.js";
 import { info as golem_summoner_nerys_info, skills as golem_summoner_nerys_skills, stats as golem_summoner_nerys_stats } from "./golem-summoner-nerys.js";
 import { info as gorgeous_noble_summer_gracie_info, skills as gorgeous_noble_summer_gracie_skills, stats as gorgeous_noble_summer_gracie_stats } from "./gorgeous-noble-summer-gracie.js";
 import { info as gothic_loli_breast_fiend_juju_info, skills as gothic_loli_breast_fiend_juju_skills, stats as gothic_loli_breast_fiend_juju_stats } from "./gothic-loli-breast-fiend-juju.js";
@@ -295,7 +295,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "gil": gil_info,
   "giselle": giselle_info,
   "gladys": gladys_info,
-  "goddess-of-wisdom-and-courage-athena": goddess_of_wisdom_and_courage_athena_info,
+  "wisdom-and-courage-athena": wisdom_and_courage_athena_info,
   "golem-summoner-nerys": golem_summoner_nerys_info,
   "gorgeous-noble-summer-gracie": gorgeous_noble_summer_gracie_info,
   "gothic-loli-breast-fiend-juju": gothic_loli_breast_fiend_juju_info,
@@ -515,7 +515,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "gil": gil_stats,
   "giselle": giselle_stats,
   "gladys": gladys_stats,
-  "goddess-of-wisdom-and-courage-athena": goddess_of_wisdom_and_courage_athena_stats,
+  "wisdom-and-courage-athena": wisdom_and_courage_athena_stats,
   "golem-summoner-nerys": golem_summoner_nerys_stats,
   "gorgeous-noble-summer-gracie": gorgeous_noble_summer_gracie_stats,
   "gothic-loli-breast-fiend-juju": gothic_loli_breast_fiend_juju_stats,
@@ -734,7 +734,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
   gil_skills,
   giselle_skills,
   gladys_skills,
-  goddess_of_wisdom_and_courage_athena_skills,
+  wisdom_and_courage_athena_skills,
   golem_summoner_nerys_skills,
   gorgeous_noble_summer_gracie_skills,
   gothic_loli_breast_fiend_juju_skills,

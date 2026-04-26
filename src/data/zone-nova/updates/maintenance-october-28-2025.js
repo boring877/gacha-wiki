@@ -50,7 +50,7 @@ export const october28MaintenanceData = {
       'Open Time: 14:15 on 2025/11/04 ~ 03:59 on 2025/11/11',
       'Profession: Guardian',
       'Attribute: Divine',
-      'Introduction: Suo\'er is one of the "Queen\'s Vassals" and a key pillar of the "Aesir Clan," serving as the guardian of the "Mist Forest." She wields thunderous power, holds the massive hammer "Myonir," and fights alongside the goddess of war. With辉煌战绩 including single-handedly quelling a giant army, she is a guardian of order and justice. However, this fierce warrior suffers from severe face blindness, often mistaking foes for allies, and usually fights alone due to accidental injuries. Despite this, Suo\'er\'s simple heart still yearns for true friendship.',
+      'Introduction: Suo\'er is one of the "Queen\'s Vassals" and a key pillar of the "Aesir Clan," serving as the guardian of the "Mist Forest." She wields thunderous power, holds the massive hammer "Myonir," and fights alongside the greatest warrior. With辉煌战绩 including single-handedly quelling a giant army, she is a guardian of order and justice. However, this fierce warrior suffers from severe face blindness, often mistaking foes for allies, and usually fights alone due to accidental injuries. Despite this, Suo\'er\'s simple heart still yearns for true friendship.',
       '',
       "[\"Although I don't remember others' faces well, as long as someone has an evil aura, no matter where they flee, I'll chase them down like lightning!\"]",
       '',

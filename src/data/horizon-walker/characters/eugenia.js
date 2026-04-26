@@ -97,6 +97,8 @@ const rawEugeniaData = {
 
   skills: {
     energySword: {
+      gameKey: 'EnergySword',
+      icon: 'UI_SkillIcon_EnergySword',
       name: 'Energy Sword',
       level: '10/10',
       type: 'Skill',
@@ -110,6 +112,8 @@ const rawEugeniaData = {
         'Deals Immaterial DMG equal to 138% of Magic ATK to all enemies within range. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
     },
     efficientReconstruction: {
+      gameKey: 'EfficientReconstruction',
+      icon: 'UI_SkillIcon_EfficientReconstruction',
       name: 'Efficient Reconstruction',
       level: '10/10',
       type: 'Passive',
@@ -119,6 +123,8 @@ const rawEugeniaData = {
         'During battle, increases Max HP by 11-20%. For each point of Vitality above 13, increases Immaterial Boost by 16%.',
     },
     energyFormConversion: {
+      gameKey: 'EnergyFormConversion',
+      icon: 'UI_SkillIcon_EnergyFormConversion',
       name: 'Energy Form Conversion',
       level: '10/10',
       type: 'Skill',
@@ -128,6 +134,8 @@ const rawEugeniaData = {
         'Grants [Soul Resonance] to 1 selected ally for 2R and increases their Aggro Adjustment by 50. [Soul Resonance]: Increases Melee ATK and Ranged ATK by 11-20% of the target\'s Max HP. Additionally, for every 200 Max HP of the caster, the final ATK increase is further increased by 10%, up to a maximum additional 100%. When the target successfully attacks, they deal additional Immaterial DMG equal to 100-145% of their Max HP. This damage increases by 1% for every 10 HP lost, up to a maximum of 75%. When the target with the effect is hit, the attacker also takes this Additional Immaterial DMG. Requires Energy Sword Lv3 to unlock.',
     },
     markModulation: {
+      gameKey: 'MarkModulation',
+      icon: 'UI_SkillIcon_MarkModulation',
       name: 'Mark Modulation',
       level: '10/10',
       type: 'Passive',
@@ -137,6 +145,8 @@ const rawEugeniaData = {
         'Using [Soul Resonance] increases your Magic ATK by 20-38% of your Max HP. This effect can increase Magic ATK by up to 150-600. When an ally with [Soul Resonance] attacks, they apply [Trace of Light] to the target. When you attack an enemy with [Trace of Light], you deal additional Immaterial DMG equal to 85-166% of the combined value of your Magic ATK and Max HP.',
     },
     rampageOfTheFlow: {
+      gameKey: 'RampageOfTheFlow',
+      icon: 'UI_SkillIcon_RampageOfTheFlow',
       name: 'Rampage of the Flow',
       level: '10/10',
       type: 'Skill',
@@ -158,14 +168,16 @@ const rawEugeniaData = {
     },
     uniqueSkills: {
       eugeniaUnique: {
-        name: 'Eugenia Unique',
+        name: 'Eternal Cycle',
         type: 'Unique',
-        description: 'Details pending localized text extraction.',
+        description:
+          'During battle, increases your Max HP by 20-40%. When using a support skill, you gain 30-50 AP, and allies excluding yourself gain Crush Boost and Slash Boost +20-36% for 2 turns. AP can only be gained once every 2 turns.',
       },
       eugeniaSignature: {
-        name: 'Eugenia Signature',
+        name: "Crownseeker's Might",
         type: 'Signature',
-        description: 'Signature skill. Details pending localized text extraction.',
+        description:
+          'During battle, increases your Aggro Adjustment by 50 and reduces the AP cost of [Energy Form Conversion] and [Rampage of the Flow] by 15. Increases Crit Rate by 10% of the ATK increase gained from [Soul Resonance], and increases the damage boost effect of [Rampage of the Flow] by 50%.',
         note: 'This signature skill only activates when Eugenia equips this weapon.',
       },
     },

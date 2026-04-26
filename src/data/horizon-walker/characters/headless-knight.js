@@ -95,6 +95,8 @@ const rawHeadlessKnightData = {
   // Unique Traits
   uniqueTraits: {
     rake: {
+      gameKey: 'Harvest',
+      icon: 'UI_SkillIcon_Harvest',
       name: 'Rake',
       description:
         'Activates the level 1 active skill [Rake]. [Rake]: Consumes 15 AP. If possesses the [Reaper] effect, can consume it to activate this skill. Extends an auxiliary blade to attack. Deals Slash DMG equal to 60% of Melee ATK to enemies in a 5m, 120° fan-shaped area and slightly pulls them in.',
@@ -117,6 +119,8 @@ const rawHeadlessKnightData = {
   // Skills and Passive
   skills: {
     sicle: {
+      gameKey: 'Chop',
+      icon: 'UI_SkillIcon_Chop',
       name: 'Sicle',
       level: '10/10',
       type: 'Skill',
@@ -130,6 +134,8 @@ const rawHeadlessKnightData = {
         'Deals a powerful sword strike to the enemy. Deals Slash DMG equal to 114% of melee ATK to attacked enemies.',
     },
     noDefiance: {
+      gameKey: 'NoRebellion',
+      icon: 'UI_SkillIcon_NoRebellion',
       name: 'No Defiance',
       level: '10/10',
       type: 'Passive',
@@ -138,6 +144,8 @@ const rawHeadlessKnightData = {
       description: 'Increases melee ATK by 57% and guards the front during own turn.',
     },
     harvest: {
+      gameKey: 'Harvest',
+      icon: 'UI_SkillIcon_Harvest',
       name: 'Harvest',
       level: '10/10',
       type: 'Skill',
@@ -151,6 +159,8 @@ const rawHeadlessKnightData = {
         'Performs a wide sweeping slash. Deals Slash DMG equal to 114% of melee ATK to enemies within a 6m 150° fan range.',
     },
     shieldSplitting: {
+      gameKey: 'ShieldSplitting',
+      icon: 'UI_SkillIcon_ShieldSplitting',
       name: 'Shield Splitting',
       level: '10/10',
       type: 'Passive',
@@ -160,6 +170,8 @@ const rawHeadlessKnightData = {
         "Deals Additional Slash DMG equal to 16.5% of the target's current HP on attack. This damage does not exceed 180% of melee ATK.",
     },
     decapitation: {
+      gameKey: 'Execution',
+      icon: 'UI_SkillIcon_Execution',
       name: 'Decapitation',
       level: '10/10',
       type: 'Skill',
@@ -173,6 +185,8 @@ const rawHeadlessKnightData = {
         'Combines all auxiliary blades into a greatsword and strikes down powerfully. Deals Slash DMG equal to 456% of melee ATK to enemies within an 8m 20° fan range.',
     },
     theReaper: {
+      gameKey: 'TheReaper',
+      icon: 'UI_SkillIcon_TheReaper',
       name: 'The Reaper',
       level: '10/10',
       type: 'Passive',

@@ -41,7 +41,7 @@ export const TIER_DEFINITIONS = {
   SSS: {
     label: 'SSS',
     description:
-      'SSS tier characters are god-tier, broken by themselves and dominate any content with minimal support!',
+      'SSS tier characters are top-tier, broken by themselves and dominate any content with minimal support!',
     color: '#FFD700', // Gold
   },
   SS: {

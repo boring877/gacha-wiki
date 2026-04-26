@@ -280,7 +280,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'nearest enemy',
     },
     ultimate: {
-      name: "Taboo of the Calamity God of the Dead's Sin Mark",
+      name: "Taboo of the Calamity Ruler of the Dead's Sin Mark",
       description:
         'Deals magic damage to the 3 nearest enemies and inflicts Curse (no HP/MP regen) and Fear(Lv5: MP -100/s, Block 0) for 6 seconds',
       type: 'damage',
@@ -417,7 +417,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     element: 'Wind',
     role: 'Attacker',
     skill2: {
-      name: 'Goddess, grant me strength!',
+      name: 'Please, grant me strength!',
       description: 'Applies Physical ATK +18%+35 (+7/lv) to self for 10 seconds',
       type: 'buff',
       target: 'self',
@@ -800,7 +800,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'self',
     },
     ultimate: {
-      name: 'Oracle of the Demon-Slaying Goddess',
+      name: 'Oracle of the Demon-Slayer',
       description:
         'Deals physical damage to all enemies and inflicts Silence for 6 seconds and Curse for 3 seconds',
       type: 'damage',
@@ -867,13 +867,13 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'frontmost ally',
     },
     skill3: {
-      name: 'Blessing of the Love Goddess',
+      name: 'Blessing of Love',
       description: 'Applies Physical DEF +20%+140 (+2/lv) to the frontmost ally for 8 seconds',
       type: 'buff',
       target: 'frontmost ally',
     },
     ultimate: {
-      name: 'Grace Granted by the Love Goddess',
+      name: 'Grace Granted by Love',
       description:
         'Applies Physical ATK UP(Lv5: +35%) and Magic ATK UP(Lv5: +35%) to front row allies for 10 seconds',
       type: 'buff',
@@ -911,7 +911,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'self',
     },
     ultimate: {
-      name: "The Maiden Goddess's Arrow that Purges Impurity",
+      name: "The Maiden's Arrow that Purges Impurity",
       description:
         'Deals physical damage to the nearest enemy (guaranteed hit/crit) and inflicts Wind Type DEF DOWN(Lv5: -30%) for 8 seconds',
       type: 'damage',
@@ -1009,7 +1009,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     element: 'Light',
     role: 'Support',
     skill2: {
-      name: 'Receive the punishment of the gods',
+      name: 'Receive your punishment',
       description:
         'Deals [170% ATK + 100 (+13/lv)] magic damage to the enemy with the lowest HP (guaranteed hit and crit)',
       type: 'damage',
@@ -1023,7 +1023,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'ally with lowest HP',
     },
     ultimate: {
-      name: 'Radiance of the Gods',
+      name: 'Radiance of Power',
       description:
         'Deals magic damage to the nearest enemy (guaranteed hit/crit) and inflicts Magic DEF DOWN and Silence for 10 seconds',
       type: 'damage',
@@ -2475,7 +2475,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     element: 'Light',
     role: 'Attacker',
     skill2: {
-      name: 'Receive the punishment of the gods',
+      name: 'Receive your punishment',
       description:
         'Deals [170% ATK + 100 (+13/lv)] magic damage to the enemy with lowest HP (guaranteed hit/crit)',
       type: 'damage',
@@ -2488,7 +2488,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
       target: 'ally with lowest HP',
     },
     ultimate: {
-      name: 'Radiance of the Gods',
+      name: 'Radiance of Power',
       description:
         'Deals magic damage (guaranteed hit/crit) and inflicts Magic DEF DOWN and Silence for 10s',
       type: 'damage',
@@ -3057,7 +3057,7 @@ export const BUSTY_BURST_CHARACTER_SKILLS = {
     element: 'Fire',
     role: 'Support',
     skill2: {
-      name: 'Goddess, please help everyone!',
+      name: 'Please, help everyone!',
       description: 'Applies Physical Healing Shield (300, restores 20%) and Magic Healing Shield (300, restores 20%) to all allies for 15 seconds',
       type: 'buff',
       target: 'all allies',

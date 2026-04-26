@@ -115,6 +115,8 @@ const rawYeonwooData = {
   // Skills and Passive
   skills: {
     gluttonsMight: {
+      gameKey: 'ThePowerOfGluttony',
+      icon: 'UI_SkillIcon_ThePowerOfGluttony',
       name: "Glutton's Might",
       level: '10/10',
       type: 'Skill',
@@ -128,6 +130,8 @@ const rawYeonwooData = {
         "Attacks with the Glutton's Might. Deals Crush DMG equal to 63% of Magic ATK and restores HP as HP Recovery equal to 10% of Max HP.",
     },
     snackTime: {
+      gameKey: 'TakeItOutAndEatIt',
+      icon: 'UI_SkillIcon_TakeItOutAndEatIt',
       name: 'Snack Time',
       level: '1/1',
       type: 'Passive',
@@ -137,6 +141,8 @@ const rawYeonwooData = {
         "When receiving HP Recovery, if [Gluttony] is not at max stacks, gain [Room for Snacks]. Munch O'Clock: Takes something out and digs in. Gain 1~2 stacks of [Gluttony]. This skill counts as a basic skill.",
     },
     leapingChomp: {
+      gameKey: 'JumpAndAttack',
+      icon: 'UI_SkillIcon_JumpAndAttack',
       name: 'Leaping Chomp',
       level: '10/10',
       type: 'Skill',
@@ -150,6 +156,8 @@ const rawYeonwooData = {
         'Leaps up and lands at target location, dealing Crush DMG equal to 209% of Magic ATK to enemies within a 3m circular radius.',
     },
     allFueledUp: {
+      gameKey: 'BecauseIAteItRight',
+      icon: 'UI_SkillIcon_BecauseIAteItRight',
       name: 'All Fueled Up!',
       level: '10/10',
       type: 'Passive',
@@ -159,6 +167,8 @@ const rawYeonwooData = {
         'Boosts strength through great digestion. Increases Healing Intake by 20% during battle. Gains 1 stack of [Potential Calories] at turn end after receiving HP Recovery or using a combat skill.',
     },
     oneForTheRoad: {
+      gameKey: 'EatAndGo',
+      icon: 'UI_SkillIcon_EatAndGo',
       name: 'One for the Road?',
       level: '10/10',
       type: 'Skill',
@@ -168,6 +178,8 @@ const rawYeonwooData = {
         'Devours a hearty meal to restore the power of Gluttony. Recovers HP equal to 60% of missing HP and gains 4 stacks of [Gluttony]. While under the [True Gourmand] effect from Avatar of Gluttony, this skill transforms into Boom Boom Slam!! and its cooldown is reset. Shares a cooldown with Boom Boom Slam!!',
     },
     boomBoomSlam: {
+      gameKey: 'TheEmbodimentOfGluttony',
+      icon: 'UI_SkillIcon_TheEmbodimentOfGluttony',
       name: 'Boom Boom Slam!!',
       level: 'Transform',
       type: 'Skill',
@@ -181,6 +193,8 @@ const rawYeonwooData = {
         "Slams the ground wildly with your fist. Deals Crush DMG equal to 293% of Magic ATK to a designated target, and Splash Crush DMG equal to 230% of Magic ATK to enemies within a 4m radius. On a successful hit, the skill's cooldown is reset. Shares a cooldown with One for the Road?",
     },
     avatarOfGluttony: {
+      gameKey: 'TheEmbodimentOfGluttony',
+      icon: 'UI_SkillIcon_TheEmbodimentOfGluttony',
       name: 'Avatar of Gluttony',
       level: '10/10',
       type: 'Skill',
@@ -190,6 +204,8 @@ const rawYeonwooData = {
         'Can only be used when holding 8 or more stacks of [Gluttony]. Draws upon the full power of Gluttony to assume a "form befitting an Apostle of Gluttony." Grants the [True Gourmand] effect and restores 15 AP. While this effect is active, the skill is replaced with Yum-Yummy Beam!! While [True Gourmand] is active, using any skill causes you to take Fixed DMG from the [Pact • Nutrition – Gluttony Conversion] effect. After 2 rounds (including the turn this skill is used), all skills except Yum-Yummy Beam!! become unavailable on your turn.',
     },
     yumYummyBeam: {
+      gameKey: 'TheEmbodimentOfGluttony',
+      icon: 'UI_SkillIcon_TheEmbodimentOfGluttony',
       name: 'Yum-Yummy Beam!!',
       level: 'Ultimate',
       type: 'Skill',

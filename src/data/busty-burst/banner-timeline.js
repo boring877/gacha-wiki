@@ -151,7 +151,7 @@ export const bannerTimelineData = [
   },
   // #11 - Smile to the Goddess of Dance (Mar 10 - Mar 24) - ENDED
   {
-    id: 'smile-goddess-dance-2026',
+    id: 'smile-dance-2026',
     title: '"Smile to the Goddess of Dance" Event Summon',
     bannerType: 'event',
     featuredPaladins: [
@@ -176,7 +176,7 @@ export const bannerTimelineData = [
     description: 'Smile to the Goddess of Dance Event Summon! Limited-Time Paladin Rate Up! Get 50 extra memories for the corresponding Paladin when you summon a featured Paladin.',
     note: 'Harvest festival dance event featuring Messeria, Bianca, and Stenrina.',
     status: 'ended',
-    image: 'banner-smile-goddess-dance',
+    image: 'banner-smile-dance',
   },
   // #9 - Lust & Raguen (Feb 24 - Mar 10) - ENDED
   {

@@ -151,6 +151,8 @@ const rawErnesteData = {
   // Skills and Passive
   skills: {
     poleBreak: {
+      gameKey: 'PoleBreaking',
+      icon: 'UI_SkillIcon_TwoHandSword',
       name: 'Pole Break',
       level: '10/10',
       type: 'Skill',
@@ -164,6 +166,8 @@ const rawErnesteData = {
         'Swings the greatsword widely to attack enemies. Deals Slash DMG equal to 114% of melee ATK to enemies in a fan-shaped area.',
     },
     gottaProtectMyself: {
+      gameKey: 'ProtectMyself',
+      icon: 'UI_SkillIcon_ProtectMyself',
       name: 'Gotta Protect Myself!',
       level: '10/10',
       type: 'Passive',
@@ -172,6 +176,8 @@ const rawErnesteData = {
       description: 'Increases block chance by 38%.',
     },
     formationDestruction: {
+      gameKey: 'FormationBreakdown',
+      icon: 'UI_SkillIcon_FormationBreakdown',
       name: 'Formation Destruction',
       level: '10/10',
       type: 'Skill',
@@ -185,6 +191,8 @@ const rawErnesteData = {
         'Charges towards the target with a half-swording technique, colliding forcefully, then swings the sword widely to attack surrounding enemies. Leaps low at the target, dealing Slash DMG equal to 190% of melee ATK to the target and all enemies within a 2.5m radius, and knocks them back 2.5m.',
     },
     crisisToOpportunity: {
+      gameKey: 'TurnCrisisIntoOpportunity',
+      icon: 'UI_SkillIcon_TurnCrisisIntoOpportunity',
       name: 'Crisis to Opportunity!',
       level: '10/10',
       type: 'Passive',
@@ -194,6 +202,8 @@ const rawErnesteData = {
         'On a successful block, gains an immediate opportunity for a counterattack. During counterattack, melee ATK increases by 95%.',
     },
     declarationOfVictory: {
+      gameKey: 'DeclarationOfVictory',
+      icon: 'UI_SkillIcon_DeclarationOfVictory',
       name: 'Declaration of Victory',
       level: '10/10',
       type: 'Skill',

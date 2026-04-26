@@ -1728,7 +1728,7 @@ export const info = {
     {
       "id": "1",
       "title": "Background",
-      "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion to god brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
+      "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
       "unlockRank": null
     },
     {
@@ -1793,7 +1793,7 @@ export const allInfo = [
       {
         "id": "1",
         "title": "Background",
-        "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion to god brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
+        "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
         "unlockRank": null
       },
       {
@@ -1856,7 +1856,7 @@ export const allInfo = [
       {
         "id": "1",
         "title": "Background",
-        "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion to god brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
+        "text": "'I never thought we would meet like this, but perhaps this is the only way I can break free from who I once was.'\n\nThe Black Blood disease is divine punishment, and only devotion brings salvation—this was Setti's first lesson in the Church. Her exceptional performance led to her selection as Vice-Commander under Bell Ringer Agares. Her arrows, which had never missed after countless hours of practice, would one day pierce through the vicissitudes of fate itself.",
         "unlockRank": null
       },
       {

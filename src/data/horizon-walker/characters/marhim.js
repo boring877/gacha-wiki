@@ -114,6 +114,8 @@ const rawMarhimData = {
   // Skills and Passive
   skills: {
     catAttack: {
+      gameKey: 'CatLikeRaid',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Cat Attack',
       level: '10/10',
       type: 'Skill',
@@ -127,6 +129,8 @@ const rawMarhimData = {
         'After attacking the designated enemy, leaps low backward to move 4m away from the target. Deals Pierce DMG equal to 114% of melee ATK.',
     },
     shadowStep: {
+      gameKey: 'ShadowStep',
+      icon: 'UI_SkillIcon_ShadowStep',
       name: 'Shadow Step',
       level: '10/10',
       type: 'Passive',
@@ -136,6 +140,8 @@ const rawMarhimData = {
         "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair • Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
     },
     markOfSilentBlood: {
+      gameKey: 'MarkOfBloodInSecret',
+      icon: 'UI_SkillIcon_MarkOfBloodInSecret',
       name: 'Mark of Silent Blood',
       level: '10/10',
       type: 'Skill',
@@ -145,6 +151,8 @@ const rawMarhimData = {
         "Grants the [Assassin's mark] effect to the designated target for the current round, while increasing own SPD by 95% for 1R. [Assassin's mark]: Reduces Pierce DEF by 285 and prevents counterattacks.",
     },
     bloodsoakedExecution: {
+      gameKey: 'ExecutionOfBloodiness',
+      icon: 'UI_SkillIcon_ExecutionOfBloodiness',
       name: 'Bloodsoaked Execution',
       level: '10/10',
       type: 'Skill',
@@ -158,6 +166,8 @@ const rawMarhimData = {
         'Delivers a sudden deadly series of strikes to the enemy. Deals Pierce DMG equal to 228% of melee ATK. If a Weakness Attack is successful, the cooldown is immediately reset. If the enemy is defeated, gains 60 AP.',
     },
     crimsonTerror: {
+      gameKey: 'BloodRedFear',
+      icon: 'UI_SkillIcon_BloodRedFear',
       name: 'Crimson Terror',
       level: '10/10',
       type: 'Passive',

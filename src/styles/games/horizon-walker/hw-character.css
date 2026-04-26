@@ -131,8 +131,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--hw-spacing-md);
+    gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .hw-rarity-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .hw-rarity-stat-count {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #b0b0b0;
+    line-height: 1;
   }
 
   /* Character Table (Desktop) - hidden by default (mobile-first approach) */
@@ -667,7 +680,11 @@
     }
 
     .hw-char-db-stats-summary {
-      gap: var(--hw-spacing-sm);
+      gap: 0.6rem;
+    }
+
+    .hw-rarity-stat-count {
+      font-size: 0.8rem;
     }
 
     /* Character Database Header Mobile */
@@ -796,7 +813,11 @@
     }
 
     .hw-char-db-stats-summary {
-      gap: var(--hw-spacing-xs);
+      gap: 0.4rem;
+    }
+
+    .hw-rarity-stat-count {
+      font-size: 0.75rem;
     }
 
     /* Hero section small screen responsive styles */

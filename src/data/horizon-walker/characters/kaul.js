@@ -147,6 +147,8 @@ const rawKaulData = {
   // Skills and Passive
   skills: {
     gapStab: {
+      gameKey: 'StingTheGap',
+      icon: 'UI_SkillIcon_OneHandedSword_BA',
       name: 'Gap Stab',
       level: '10/10',
       type: 'Skill',
@@ -160,6 +162,8 @@ const rawKaulData = {
       replacedBy: 'slaughterTheWeak',
     },
     recklessLeap: {
+      gameKey: 'DaringLeap',
+      icon: 'UI_SkillIcon_DaringLeap',
       name: 'Reckless Leap',
       level: '10/10',
       type: 'Skill',
@@ -173,6 +177,8 @@ const rawKaulData = {
         "Leaps high into the air and strikes down at the designated location, dealing 238% of Melee ATK as Slash DMG to enemies within a 3m radius.\n\nReduces the user's Weak Point Angle by 120° until the start of their next turn. Enemies hit have a 76% chance to be inflicted with [Taunt] for 1 round.\n\n[Effect: Taunt] Inflicts Taunt on the target.",
     },
     timeToFeast: {
+      gameKey: 'TimeToEnjoy',
+      icon: 'UI_SkillIcon_TimeToEnjoy',
       name: 'Time to Feast',
       level: '10/10',
       type: 'Passive',
@@ -182,6 +188,8 @@ const rawKaulData = {
         "After using a skill other than Standby, increases All DEF by 100% of current SPD.\n\nThis effect lasts until the start of the user's next turn.",
     },
     masochisticFrenzy: {
+      gameKey: 'Masochism',
+      icon: 'UI_SkillIcon_Masochism',
       name: 'Masochistic Frenzy',
       level: '10/10',
       type: 'Skill',
@@ -192,6 +200,8 @@ const rawKaulData = {
       replacedBy: 'irresistibleUrge',
     },
     slaughterTheWeak: {
+      gameKey: 'ThrillingShiver',
+      icon: 'UI_SkillIcon_ThrillingShiver',
       name: 'Slaughter the Weak',
       level: '10/10',
       type: 'Skill',
@@ -207,6 +217,8 @@ const rawKaulData = {
       isReplacement: true,
     },
     irresistibleUrge: {
+      gameKey: 'ThrillingShiver',
+      icon: 'UI_SkillIcon_ThrillingShiver',
       name: 'Irresistible Urge',
       level: '10/10',
       type: 'Skill',
@@ -222,6 +234,8 @@ const rawKaulData = {
       isReplacement: true,
     },
     thrillOfAgony: {
+      gameKey: 'ThrillingShiver',
+      icon: 'UI_SkillIcon_ThrillingShiver',
       name: 'Thrill of Agony',
       level: '1/1',
       type: 'Passive',

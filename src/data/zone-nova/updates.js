@@ -87,7 +87,7 @@ export const zoneNovaUpdates = [
     date: 'November 7, 2025',
     type: 'recruitment',
     summary:
-      'New Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil god with scythe weapon, excellent sustained combat ability. Exclusive memory also available through Limited Memory Recruitment.',
+      'New Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil being with scythe weapon, excellent sustained combat ability. Exclusive memory also available through Limited Memory Recruitment.',
     url: '/guides/zone-nova/updates/announcement-apep-recruitment/',
   },
   {

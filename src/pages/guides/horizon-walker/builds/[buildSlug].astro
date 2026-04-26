@@ -2,6 +2,7 @@
 import CharacterBuildLayout from '../../../../layouts/horizon-walker/CharacterBuildLayout.astro';
 import CharacterImage from '../../../../components/horizon-walker/CharacterImage.astro';
 import StigmaImage from '../../../../components/horizon-walker/StigmaImage.astro';
+import { HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
 import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
@@ -158,7 +159,7 @@ if (isMixedStigma) {
       <h2 class="character-build-name">{character.name} Build</h2>
       <div class="character-build-badges">
         <span class="hw-badge" data-type="Cost">{build.cost}</span>
-        <span class="hw-badge" data-rarity={build.rarity}>{build.rarity}</span>
+        <HWRarityIcon rarity={build.rarity} width={44} height={22} />
         <span class="character-tag damage-scaling">{buildConfig.damageScaling}</span>
       </div>
     </div>
@@ -262,9 +263,7 @@ if (isMixedStigma) {
                     </div>
                     <div class="stigma-name-label">
                       <h5>{mixedStigmaPieces.stigma1Name}</h5>
-                      <span class="hw-badge" data-rarity="EX">
-                        EX
-                      </span>
+                      <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
 
@@ -283,9 +282,7 @@ if (isMixedStigma) {
                     </div>
                     <div class="stigma-name-label">
                       <h5>{mixedStigmaPieces.stigma2Name}</h5>
-                      <span class="hw-badge" data-rarity="EX">
-                        EX
-                      </span>
+                      <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
                 </div>
@@ -356,9 +353,7 @@ if (isMixedStigma) {
                     </div>
                     <div class="stigma-title-info">
                       <h4 class="stigma-name">{recommendedStigmaZeroDupe.name}</h4>
-                      <span class="hw-badge" data-rarity="EX">
-                        EX
-                      </span>
+                      <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
                 </div>
@@ -433,9 +428,7 @@ if (isMixedStigma) {
                     </div>
                     <div class="stigma-title-info">
                       <h4 class="stigma-name">{recommendedStigmaFullEx5.name}</h4>
-                      <span class="hw-badge" data-rarity="EX">
-                        EX
-                      </span>
+                      <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
                 </div>
@@ -505,9 +498,7 @@ if (isMixedStigma) {
                   </div>
                   <div class="stigma-title-info">
                     <h4 class="stigma-name">{recommendedStigma.name}</h4>
-                    <span class="hw-badge" data-rarity="EX">
-                      EX
-                    </span>
+                    <HWRarityIcon rarity="EX" width={36} height={18} />
                   </div>
                 </div>
               </div>

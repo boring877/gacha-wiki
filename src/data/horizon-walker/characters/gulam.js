@@ -116,6 +116,8 @@ const rawGulamData = {
   // Skills and Passive
   skills: {
     undergroundTwinSwords: {
+      gameKey: 'DualSwordThrust',
+      icon: 'UI_SkillIcon_DualSword',
       name: 'Underground Twin Swords',
       level: '10/10',
       type: 'Skill',
@@ -129,6 +131,8 @@ const rawGulamData = {
         'Quickly stabs the enemy with twin blades. Deals Pierce DMG equal to 114% of melee ATK.',
     },
     burrow: {
+      gameKey: 'TunnelMovement',
+      icon: 'UI_SkillIcon_TunnelMovement',
       name: 'Burrow',
       level: '10/10',
       type: 'Skill',
@@ -138,6 +142,8 @@ const rawGulamData = {
         'Burrows underground and gains the [Burrow] effect for 2 rounds. [Burrow]: Unable to counter, evade, block, or use general skills. Hidden and cannot be targeted by enemy skills. Can use the "Emerge" skill. Emerge: Select ground within 9m to move to that location and emerge, ending the [Burrow] state.',
     },
     undergroundEvasion: {
+      gameKey: 'EvasiveTechniqueUnderGround',
+      icon: 'UI_SkillIcon_EvasiveTechniqueUnderGround',
       name: 'Underground Evasion',
       level: '10/10',
       type: 'Passive',
@@ -147,6 +153,8 @@ const rawGulamData = {
         'Each time a successful evasion occurs, gains the [Underground Evasion] effect. [Underground Evasion]: Increases Evasion by 76%. Stacks up to 5 times. This effect dissipates upon gaining the [Burrow] effect.',
     },
     lostElegance: {
+      gameKey: 'StyleLosing',
+      icon: 'UI_SkillIcon_StyleLosing',
       name: 'Lost Elegance',
       level: '10/10',
       type: 'Passive',
@@ -156,6 +164,8 @@ const rawGulamData = {
         'Activates when receiving damage that would lead to incapacitation. Once per battle, HP will not fall below 1, and the user immediately burrows underground, entering [Burrow] state for 2R. Then gains 50 AP.',
     },
     explodingElegance: {
+      gameKey: 'StyleExplosion',
+      icon: 'UI_SkillIcon_StyleExplosion',
       name: 'Exploding Elegance',
       level: '10/10',
       type: 'Skill',

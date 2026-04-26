@@ -2,7 +2,7 @@
 import CharacterGiftLayout from '../../../layouts/horizon-walker/CharacterGiftLayout.astro';
 import { CHARACTER_GIFT_PREFERENCES } from '../../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../../data/horizon-walker/gifts.js';
-import { GiftImage, CharacterImage } from '../../../components/horizon-walker/index.astro';
+import { GiftImage, CharacterImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 
 // Create a mapping of gift ID to gift boxes that contain it
 const giftToBoxMapping = {};
@@ -243,9 +243,7 @@ const queensTiaraGift = {
               <div class="hw-character-info">
                 <h3 class="hw-character-name">{character.name}</h3>
                 <div class="hw-character-rarity">
-                  <span class="hw-badge" data-rarity={character.rarity}>
-                    {character.rarity}
-                  </span>
+                  <HWRarityIcon rarity={character.rarity} width={44} height={22} />
                 </div>
               </div>
             </div>
@@ -285,9 +283,7 @@ const queensTiaraGift = {
                           <div class="hw-favorite-title-group">
                             <h5 class="hw-favorite-name">{gift.name}</h5>
                             <div class="hw-favorite-badges">
-                              <span class="hw-badge" data-rarity={gift.rarity}>
-                                {gift.rarity}
-                              </span>
+                              <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
                               <span class="hw-badge hw-badge-favorites">Favorite</span>
                             </div>
                           </div>
@@ -363,9 +359,7 @@ const queensTiaraGift = {
                           <div class="hw-like-title-group">
                             <h5 class="hw-like-name">{gift.name}</h5>
                             <div class="hw-like-badges">
-                              <span class="hw-badge" data-rarity={gift.rarity}>
-                                {gift.rarity}
-                              </span>
+                              <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
                               <span class="hw-badge hw-badge-likes">Like</span>
                             </div>
                           </div>
@@ -449,9 +443,7 @@ const queensTiaraGift = {
                             <div class="hw-alternative-title-group">
                               <h5 class="hw-alternative-name">{queensTiaraGift.name}</h5>
                               <div class="hw-alternative-badges">
-                                <span class="hw-badge" data-rarity={queensTiaraGift.rarity}>
-                                  {queensTiaraGift.rarity}
-                                </span>
+                                <HWRarityIcon rarity={queensTiaraGift.rarity} width={40} height={20} />
                                 <span class="hw-badge hw-badge-value">High Value</span>
                               </div>
                             </div>

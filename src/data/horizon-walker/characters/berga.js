@@ -114,6 +114,8 @@ const rawBergaData = {
   // Skills and Passive
   skills: {
     hideSplitter: {
+      gameKey: 'CuttingLeather',
+      icon: 'UI_SkillIcon_DoubleEdge_BA',
       name: 'Hide Splitter',
       level: '10/10',
       type: 'Skill',
@@ -127,6 +129,8 @@ const rawBergaData = {
         'Swings a deadly Torturas to deal Slash DMG equal to 190% of melee ATK to the enemy.',
     },
     giantsLeap: {
+      gameKey: 'LeapOfTheGiant',
+      icon: 'UI_SkillIcon_LeapOfTheGiant',
       name: "Giant's Leap",
       level: '10/10',
       type: 'Skill',
@@ -140,6 +144,8 @@ const rawBergaData = {
         "Can only be used when the user's HP is above 15%. Consumes 12% of each ally's AP (excluding self) to activate. After use, the caster loses 12% of their current HP. Leaps toward the enemy and strikes down with force. Deals Crush DMG equal to 285% of Melee ATK to the target on hit. Can only be used once per round on the same target.",
     },
     adaptiveMuscle: {
+      gameKey: 'AdaptiveMuscles',
+      icon: 'UI_SkillIcon_AdaptiveMuscles',
       name: 'Adaptive Muscle',
       level: '10/10',
       type: 'Passive',
@@ -149,6 +155,8 @@ const rawBergaData = {
         'If HP is 50% or higher when attacking, CRIT DMG increases by 80%. If HP is 20% or lower when hit, all DEF increases by the same amount as your CRIT DMG. This DEF increase scales with missing HP, up to a maximum of 1.3X.',
     },
     bladeStorm: {
+      gameKey: 'StormEdge',
+      icon: 'UI_SkillIcon_StormEdge',
       name: 'Blade Storm',
       level: '10/10',
       type: 'Skill',
@@ -162,6 +170,8 @@ const rawBergaData = {
         'After using this skill, AP recovery is reduced by 20 for 1 round. Rushes forward while swinging a Torturas. Charges 8m forward, dealing Slash DMG equal to 171% of Melee ATK to all enemies within a 2m radius along the path. This skill cannot trigger Weak Point Attacks, but temporarily increases ACC by 100%.',
     },
     oathOfPunishmentAndCrushing: {
+      gameKey: 'OathOfRetributionandCrushing',
+      icon: 'UI_SkillIcon_OathOfRetributionandCrushing',
       name: 'Oath of Punishment and Crushing',
       level: '10/10',
       type: 'Passive',

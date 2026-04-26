@@ -118,6 +118,8 @@ const rawEfreetiData = {
   // Skills and Passive
   skills: {
     arcaneExplosion: {
+      gameKey: 'ArcaneExplosion',
+      icon: 'UI_SkillIcon_ArcaneBullet',
       name: 'Arcane Explosion',
       level: '10/10',
       type: 'Skill',
@@ -131,6 +133,8 @@ const rawEfreetiData = {
         'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to 57% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to 57% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
     },
     arcanePurge: {
+      gameKey: 'ArcaneBaptism',
+      icon: 'UI_SkillIcon_ArcaneBaptism',
       name: 'Arcane Purge',
       level: '10/10',
       type: 'Passive',
@@ -140,6 +144,8 @@ const rawEfreetiData = {
         'At the start of the round, grants the [Arcane Purge] effect to allies except Arcane Elementals. When the [Arcane Purge] effect expires, the Arcane Elemental on the battlefield gains 1 stack of [Pure Energy].',
     },
     emberVortex: {
+      gameKey: 'BlazingVortex',
+      icon: 'UI_SkillIcon_BlazingVortex',
       name: 'Ember Vortex',
       level: '10/10',
       type: 'Skill',
@@ -153,6 +159,8 @@ const rawEfreetiData = {
         'Unleashes surging flames that scorch and scatter nearby foes. Deals 143% of Magic ATK as unblockable Heat DMG to the target and 57% of Magic ATK as Splash Heat DMG to enemies within a 3m radius, pulling them slightly toward the center. This skill cannot trigger Weak Point effects.',
     },
     blazingMandate: {
+      gameKey: 'BlazingDiscipline',
+      icon: 'UI_SkillIcon_BlazingDiscipline',
       name: 'Blazing Mandate',
       level: '10/10',
       type: 'Passive',
@@ -162,6 +170,8 @@ const rawEfreetiData = {
         "Inflicts [Cinderflame] on enemies hit by a combat skill for 2 rounds. When an ally with [Arcane Purge] attacks on their turn, the caster may trigger a support attack with Ember Vortex, with a separate chance per enemy struck: Melee ATK: 30% + 10% per INT above 16, Elemental ATK: 75% + 5% per INT above 16. When a support attack is triggered this way, the acting ally's [Arcane Purge] effect expires at the end of their turn.",
     },
     eternalFlamestorm: {
+      gameKey: 'ProminenceStorm',
+      icon: 'UI_SkillIcon_ProminenceStorm',
       name: 'Eternal Flamestorm',
       level: '10/10',
       type: 'Skill',
@@ -175,6 +185,8 @@ const rawEfreetiData = {
         'Consumes 2 stacks of the [Pure Energy] effect to activate this skill. Deals 266% of Magic ATK as Heat DMG to enemies in a 5m radius around the targeted location and pulls them toward the center. Grants AP equal to 45% of base AP Recovery to allies affected by [Emberbound].',
     },
     pactOfFlame: {
+      gameKey: 'EmberCovenant',
+      icon: 'UI_SkillIcon_EmberCovenant',
       name: 'Pact of Flame',
       level: '10/10',
       type: 'Skill',

@@ -114,6 +114,8 @@ const rawRhasadinaData = {
   // Skills and Passive
   skills: {
     fruitThrow: {
+      gameKey: 'ThrowingFruit',
+      icon: 'UI_SkillIcon_ThrowingFruit',
       name: 'Fruit Throw',
       level: '10/10',
       type: 'Skill',
@@ -127,6 +129,8 @@ const rawRhasadinaData = {
         "Pulls out a fruit(?) from a mysterious fruit pouch and throws it to attack. Deals Crush DMG equal to 57% of magic ATK and applies the [Fruit Fragment] effect for 3R. [Fruit Fragment]: At the start of each round, inflicts Pierce DMG equal to 30% of the caster's magic ATK.",
     },
     aspectShift: {
+      gameKey: 'PhaseShift',
+      icon: 'UI_SkillIcon_PhaseShift',
       name: 'Aspect Shift',
       level: '10/10',
       type: 'Skill',
@@ -136,6 +140,8 @@ const rawRhasadinaData = {
         'Moves to the dimensional backside, isolating oneself from the world. Grants the [Aspect Shift] effect until the next turn. [Aspect Shift]: Cannot be targeted by enemies and is immune to all attacks, but cannot perform any responses.',
     },
     finalFortune: {
+      gameKey: 'LastLuck',
+      icon: 'UI_SkillIcon_LastLuck',
       name: 'Final Fortune',
       level: '10/10',
       type: 'Passive',
@@ -145,6 +151,8 @@ const rawRhasadinaData = {
         'When an ally takes damage that would lead to incapacitation, there is a 40% chance to allow them to survive with 1 HP. This effect can activate only once per Vanguard.',
     },
     gameSpice: {
+      gameKey: 'GameSpice',
+      icon: 'UI_SkillIcon_GameSpice',
       name: 'Game Spice',
       level: '2/2',
       type: 'Skill',

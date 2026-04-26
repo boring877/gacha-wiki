@@ -43,6 +43,10 @@ import { yeonChaeYoungData } from './characters/yeon-chae-young.js';
 import { yeonwooData } from './characters/yeonwoo.js';
 import { yuiData } from './characters/yui.js';
 import { yvonnaData } from './characters/yvonna.js';
+import { maximiliaData } from './characters/maximilia.js';
+import { eugeniaData } from './characters/eugenia.js';
+import { emiliaData } from './characters/emilia.js';
+import { palekarData } from './characters/palekar.js';
 
 // Helper function to extract weapon skills from character data
 function extractWeaponSkills(characterData) {
@@ -113,6 +117,10 @@ const CHARACTER_DATA = {
   yeonwoo: yeonwooData,
   yui: yuiData,
   yvonna: yvonnaData,
+  maximilia: maximiliaData,
+  eugenia: eugeniaData,
+  emilia: emiliaData,
+  palekar: palekarData,
 };
 
 // Dynamically build weapon skills from character data

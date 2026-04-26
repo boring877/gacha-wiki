@@ -10,13 +10,17 @@ import { validateCharacterData, validateSkillReplacements } from '../../utils/ho
 import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
+import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
 
 // Import image components from central location
 import {
   CharacterImage,
   WeaponImage,
   GiftImage,
+  HWRarityIcon,
 } from '../../components/horizon-walker/index.astro';
+import CharacterFullBodyImage from '../../components/horizon-walker/CharacterFullBodyImage.astro';
+import SkillIcon from '../../components/horizon-walker/SkillIcon.astro';
 
 interface CharacterStats {
   strength: string;
@@ -65,6 +69,8 @@ interface CharacterProfile {
 
 interface Skill {
   name: string;
+  gameKey?: string;
+  icon?: string;
   level?: string;
   type: string;
   apCost: number;
@@ -419,7 +425,39 @@ function batchValidateAllHtmlContent() {
   }
 }
 
-// Get character gift data
+const skillLevelData: Record<string, any> = {};
+if (characterData.skills) {
+  for (const [key, skill] of Object.entries(characterData.skills)) {
+    const s = skill as any;
+    const gk = s.gameKey;
+    if (gk && SKILL_LEVELS[gk]) {
+      const levels = SKILL_LEVELS[gk];
+      const maxLvl = Math.max(...Object.keys(levels).map(Number));
+      skillLevelData[key] = { gameKey: gk, maxLevel: maxLvl, levels };
+    }
+  }
+}
+const skillLevelJson = JSON.stringify(skillLevelData);
+
+function getDamageSuffix(damage: any): string {
+  if (!damage) return '';
+  const suffix = damage.type ? ` of ${damage.type}` : '';
+  const splash = damage.splash ? ` (+${damage.splash} splash)` : '';
+  return suffix + splash;
+}
+
+function formatDamage(skillKey: string, damage: any): string {
+  const ld = skillLevelData[skillKey];
+  if (!ld || !damage) return damage?.value || damage?.target || '';
+  const maxLevel = ld.maxLevel;
+  const levelInfo = ld.levels[String(maxLevel)];
+  if (!levelInfo) return damage?.value || '';
+  const val = Math.round(parseFloat(levelInfo.min) * 100);
+  const suffix = damage.type ? ` of ${damage.type}` : '';
+  const splash = damage.splash ? ` (+${damage.splash} splash)` : '';
+  return `${val}%${suffix}${splash}`;
+}
+
 // Convert character name to gift data ID format (handle spaces and special chars)
 const characterId = characterData.name
   .toLowerCase()
@@ -612,47 +650,35 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
 <!-- Character Header & Overview -->
 <section class="content-section character-overview-section">
-  <h2 class="section-title character-overview-title">Character Overview</h2>
   <div class="character-overview-flex">
-    <!-- Hero Card (Left) -->
+    <!-- Hero Card (Left) - Full Body Portrait -->
     <div class="character-hero-card">
-      <div class="character-hero-container">
-        <div class="character-portrait-container">
-          <CharacterImage
+      <div class="character-portrait-fullbody">
+        <div class="character-portrait-img-wrapper">
+          <CharacterFullBodyImage
             imageName={characterData.image}
-            alt={`${characterData.name} - ${characterData.rarity} rarity character from Horizon Walker gacha game`}
-            width={300}
-            height={300}
+            alt={`${characterData.name} - ${characterData.rarity} rarity character from Horizon Walker`}
+            loading="eager"
             format="webp"
             quality={90}
-            loading="eager"
-            class="hw-character-portrait"
+            class="hw-character-fullbody"
           />
+          <div class="character-portrait-overlay"></div>
+          <div class="character-portrait-info">
+            <h1 class="character-name">{characterData.name}</h1>
+            <div class="character-portrait-badges">
+              <HWRarityIcon rarity={characterData.rarity} width={56} height={28} />
+              <span class="hw-badge" data-type="Cost">Cost {characterData.cost}</span>
+            </div>
+          </div>
         </div>
-        <h1 class="character-name">
-          {characterData.name}
-        </h1>
+      </div>
+
+      <div class="character-info-card">
         <p class="character-description">
           {getCharacterSummary(characterData.story || characterData.description)}
         </p>
-      </div>
 
-      <!-- Character Info -->
-      <div class="character-info-card">
-        <div class="character-info-grid">
-          <div class="character-info-item">
-            <div class="character-info-label">Rarity</div>
-            <span class="hw-badge" data-rarity={characterData.rarity}>
-              {characterData.rarity}
-            </span>
-          </div>
-          <div class="character-info-item">
-            <div class="character-info-label">Deployment Cost</div>
-            <span class="hw-badge" data-type="Cost">{characterData.cost}</span>
-          </div>
-        </div>
-
-        <!-- Character Profile -->
         {
           characterData.profile && (
             <div class="character-profile-section">
@@ -682,208 +708,150 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             </div>
           )
         }
+
       </div>
     </div>
 
     <!-- Complete Stats Box (Right) -->
     <div class="character-stats-container">
       <div class="character-stats-box">
-        <!-- Base Stats -->
-        <h3 class="character-stats-title">Base Stats</h3>
-        <p class="character-stats-explanation">Stats shown at Level 60 and full EX</p>
+        <div class="character-stats-header">
+          <h3 class="character-stats-title">Base Stats</h3>
+          <p class="character-stats-explanation">Level 60, full EX</p>
+        </div>
 
-        <!-- Core Stats -->
-        <h4 class="character-stats-subtitle">Core Stats</h4>
-
-        <!-- Core Stats Explanation -->
+        <div class="character-stats-subtitle">Core Stats</div>
         <div class="core-stats-explanation">
-          <div class="stat-explanation-grid">
-            <span
-              ><span class="stat-name">Strength:</span>
-              <span class="stat-description">Increases Melee ATK</span></span
-            >
-            <span
-              ><span class="stat-name">Technic:</span>
-              <span class="stat-description">Increases Ranged ATK</span></span
-            >
-            <span
-              ><span class="stat-name">Intelligence:</span>
-              <span class="stat-description">Increases Magic ATK</span></span
-            >
-            <span
-              ><span class="stat-name">Vitality:</span>
-              <span class="stat-description">Increases Max HP</span></span
-            >
-            <span
-              ><span class="stat-name">Agility:</span>
-              <span class="stat-description">Increases evasion and AP Recovery</span></span
-            >
+          <span><span class="stat-name">STR</span> Melee ATK</span>
+          <span><span class="stat-name">TEC</span> Ranged ATK</span>
+          <span><span class="stat-name">INT</span> Magic ATK</span>
+          <span><span class="stat-name">VIT</span> Max HP</span>
+          <span><span class="stat-name">AGI</span> Evasion & AP Rec.</span>
+        </div>
+        <div class="stats-core-row">
+          <div class="stats-core-item">
+            <div class="stats-core-value">{characterData.stats.strength}</div>
+            <div class="stats-core-label">STR</div>
+          </div>
+          <div class="stats-core-item">
+            <div class="stats-core-value">{characterData.stats.technic}</div>
+            <div class="stats-core-label">TEC</div>
+          </div>
+          <div class="stats-core-item">
+            <div class="stats-core-value">{characterData.stats.intelligence}</div>
+            <div class="stats-core-label">INT</div>
+          </div>
+          <div class="stats-core-item">
+            <div class="stats-core-value">{characterData.stats.vitality}</div>
+            <div class="stats-core-label">VIT</div>
+          </div>
+          <div class="stats-core-item">
+            <div class="stats-core-value">{characterData.stats.agility}</div>
+            <div class="stats-core-label">AGI</div>
           </div>
         </div>
 
-        <div class="character-stats-grid core-stats">
-          <div class="stat-item">
-            <div class="stat-label">Strength</div>
-            <div class="stat-value">{characterData.stats.strength}</div>
+        <div class="character-stats-subtitle">Combat</div>
+        <div class="stats-table">
+          <div class="stats-row">
+            <span class="stats-row-label">Max HP</span>
+            <span class="stats-row-value">{characterData.stats.maxHp}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Technic</div>
-            <div class="stat-value">{characterData.stats.technic}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Melee ATK</span>
+            <span class="stats-row-value">{characterData.stats.meleeAtk}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Intelligence</div>
-            <div class="stat-value">{characterData.stats.intelligence}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Ranged ATK</span>
+            <span class="stats-row-value">{characterData.stats.rangedAtk}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Vitality</div>
-            <div class="stat-value">{characterData.stats.vitality}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Magic ATK</span>
+            <span class="stats-row-value">{characterData.stats.magicAtk}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Agility</div>
-            <div class="stat-value">{characterData.stats.agility}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Speed</span>
+            <span class="stats-row-value">{characterData.stats.spd}</span>
           </div>
-        </div>
-
-        <!-- Core Combat Stats -->
-        <h4 class="character-stats-subtitle">Core Combat Stats</h4>
-        <div class="character-stats-grid">
-          <div class="stat-item">
-            <div class="stat-label">Max HP</div>
-            <div class="stat-value">{characterData.stats.maxHp}</div>
+          <div class="stats-row" title="Base AP is 100. The value shown is the total, so Starting AP of 145 means +45 bonus AP at round 1.">
+            <span class="stats-row-label">Starting AP<sup class="stats-note">*</sup></span>
+            <span class="stats-row-value">{characterData.stats.startingAp}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Magic ATK</div>
-            <div class="stat-value">{characterData.stats.magicAtk}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">AP Recovery</span>
+            <span class="stats-row-value">{characterData.stats.apRecovery}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Ranged ATK</div>
-            <div class="stat-value">{characterData.stats.rangedAtk}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Accuracy</span>
+            <span class="stats-row-value">{characterData.stats.accuracy}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Melee ATK</div>
-            <div class="stat-value">{characterData.stats.meleeAtk}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Evade</span>
+            <span class="stats-row-value">{characterData.stats.evade}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Speed</div>
-            <div class="stat-value">{characterData.stats.spd}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Crit Rate</span>
+            <span class="stats-row-value">{characterData.stats.critRate}%</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">Starting AP</div>
-            <div class="stat-value">{characterData.stats.startingAp}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Crit DMG</span>
+            <span class="stats-row-value">{characterData.stats.critDmg}%</span>
           </div>
-        </div>
-
-        <!-- Additional Stats -->
-        <h4 class="character-stats-subtitle">Additional Stats</h4>
-        <div class="character-stats-grid additional-stats">
-          <div class="stat-item">
-            <div class="stat-label small">AP Recovery</div>
-            <div class="stat-value small">{characterData.stats.apRecovery}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Accuracy</div>
-            <div class="stat-value small">{characterData.stats.accuracy}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Evade</div>
-            <div class="stat-value small">{characterData.stats.evade}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Crit Rate</div>
-            <div class="stat-value small">{characterData.stats.critRate}%</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Crit DMG</div>
-            <div class="stat-value small">{characterData.stats.critDmg}%</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Block Rate</div>
-            <div class="stat-value small">{characterData.stats.blockRate}</div>
+          <div class="stats-row">
+            <span class="stats-row-label">Block Rate</span>
+            <span class="stats-row-value">{characterData.stats.blockRate}</span>
           </div>
         </div>
+        <p class="stats-footnote">* Starting AP includes a base of 100. A value of 145 means +45 bonus AP at round 1 (only the amount above 100 is the increase).</p>
 
-        <!-- Attribute Stats -->
-        <h4 class="character-stats-subtitle">Attribute Stats</h4>
-        <div class="character-stats-grid additional-stats">
-          <div class="stat-item">
-            <div class="stat-label small">Slash Boost</div>
-            <div class="stat-value small">{characterData.stats.slashBoost}</div>
+        <div class="character-stats-subtitle">Attributes</div>
+        <div class="stats-attr-table">
+          <div class="stats-attr-header">
+            <span></span>
+            <span class="stats-attr-col">Boost</span>
+            <span class="stats-attr-col">DEF</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Slash DEF</div>
-            <div class="stat-value small">{characterData.stats.slashDef}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Slash</span>
+            <span class="stats-attr-value">{characterData.stats.slashBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.slashDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Pierce Boost</div>
-            <div class="stat-value small">{characterData.stats.pierceBoost}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Pierce</span>
+            <span class="stats-attr-value">{characterData.stats.pierceBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.pierceDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Pierce DEF</div>
-            <div class="stat-value small">{characterData.stats.pierceDef}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Crush</span>
+            <span class="stats-attr-value">{characterData.stats.crushBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.crushDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Crush Boost</div>
-            <div class="stat-value small">{characterData.stats.crushBoost}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Heat</span>
+            <span class="stats-attr-value">{characterData.stats.heatBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.heatDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Crush DEF</div>
-            <div class="stat-value small">{characterData.stats.crushDef}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Cold</span>
+            <span class="stats-attr-value">{characterData.stats.coldBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.coldDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Heat Boost</div>
-            <div class="stat-value small">{characterData.stats.heatBoost}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Electric</span>
+            <span class="stats-attr-value">{characterData.stats.electricBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.electricDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Heat DEF</div>
-            <div class="stat-value small">{characterData.stats.heatDef}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Immaterial</span>
+            <span class="stats-attr-value">{characterData.stats.immaterialBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.immaterialDef}</span>
           </div>
-          <div class="stat-item">
-            <div class="stat-label small">Cold Boost</div>
-            <div class="stat-value small">{characterData.stats.coldBoost}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Cold DEF</div>
-            <div class="stat-value small">{characterData.stats.coldDef}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Electric Boost</div>
-            <div class="stat-value small">{characterData.stats.electricBoost}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Electric DEF</div>
-            <div class="stat-value small">{characterData.stats.electricDef}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Immaterial Boost</div>
-            <div class="stat-value small">{characterData.stats.immaterialBoost}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Immaterial DEF</div>
-            <div class="stat-value small">{characterData.stats.immaterialDef}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Poison Boost</div>
-            <div class="stat-value small">{characterData.stats.poisonBoost}</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label small">Poison DEF</div>
-            <div class="stat-value small">{characterData.stats.poisonDef}</div>
+          <div class="stats-attr-row">
+            <span class="stats-attr-label">Poison</span>
+            <span class="stats-attr-value">{characterData.stats.poisonBoost}</span>
+            <span class="stats-attr-value">{characterData.stats.poisonDef}</span>
           </div>
         </div>
-
-        <!-- Character Tags Section -->
-        {
-          characterData.tags && characterData.tags.length > 0 && (
-            <div class="character-tags-container">
-              <div class="character-tags-label">Gameplay Tags</div>
-              <div class="character-tags-wrapper">
-                {characterData.tags.map((tag: string) => (
-                  <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
-                ))}
-              </div>
-            </div>
-          )
-        }
       </div>
     </div>
   </div>
@@ -902,7 +870,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 }
 
 <!-- Skills Section -->
-<section class="content-section skills-section">
+<section class="content-section skills-section" data-skill-levels={skillLevelJson}>
   <h2 class="section-title">Skills</h2>
   <p class="skills-explanation">All skills shown at maximum level</p>
 
@@ -920,13 +888,21 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
               {/* Trigger skill */}
               <div class={getSkillCardClasses(triggerSkill, triggerKey, false, false, true)}>
                 <div class="skill-header">
+                  {triggerSkill.icon && (
+                    <SkillIcon iconName={triggerSkill.icon} />
+                  )}
                   <h3 class="skill-title">{triggerSkill.name}</h3>
                   <div class="skill-meta">
-                    <span class="hw-badge" data-type={triggerSkill.type === 'Passive' ? 'Passive' : 'Skill'}>
-                      {triggerSkill.type === 'Passive' ? 'Passive' : 'Skill'}
-                    </span>
-                                        {triggerSkill.cooldown !== undefined && triggerSkill.cooldown >= 0 && (
-                      <span class="skill-cooldown">Cooldown: {triggerSkill.cooldown}</span>
+                    {triggerSkill.type === 'Passive' ? (
+                      <span class="skill-type-label passive-label">Passive</span>
+                    ) : (
+                      <span class="skill-type-label skill-label">Skill</span>
+                    )}
+                    {skillLevelData[triggerKey] && (
+                      <input type="number" class="skill-level-input" data-skill={triggerKey} min="1" max={skillLevelData[triggerKey].maxLevel} value={skillLevelData[triggerKey].maxLevel} />
+                    )}
+                    {triggerSkill.type !== 'Passive' && triggerSkill.cooldown != null && triggerSkill.cooldown > 0 && (
+                      <span class="skill-cooldown">CD {triggerSkill.cooldown}</span>
                     )}
                   </div>
                 </div>
@@ -934,9 +910,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 {triggerSkill.damage && (
                   <div class="skill-damage">
                     <span class="damage-label">Damage:</span>{' '}
-                    <span class="damage-value">
-                      {triggerSkill.damage.value || triggerSkill.damage.target} of {triggerSkill.damage.type}
-                      {triggerSkill.damage.splash && ` (+${triggerSkill.damage.splash} splash)`}
+                    <span class="damage-value" data-skill-key={triggerKey} data-damage-suffix={getDamageSuffix(triggerSkill.damage)}>
+                      {formatDamage(triggerKey, triggerSkill.damage)}
                     </span>
                   </div>
                 )}
@@ -954,16 +929,24 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     {/* Base skill */}
                     <div class={getSkillCardClasses(pair.baseSkill, pair.baseKey, true, false, false)}>
                       <div class="skill-header">
+                        {pair.baseSkill.icon && (
+                          <SkillIcon iconName={pair.baseSkill.icon} />
+                        )}
                         <h3 class="skill-title">{pair.baseSkill.name}</h3>
                         <div class="skill-meta">
-                          <span class="hw-badge" data-type={pair.baseSkill.type === 'Passive' ? 'Passive' : 'Skill'}>
-                            {pair.baseSkill.type === 'Passive' ? 'Passive' : 'Skill'}
-                          </span>
-                          {pair.baseSkill.type !== 'Passive' && pair.baseSkill.apCost && pair.baseSkill.apCost > 0 && (
-                            <span class="skill-cost">AP Cost: {pair.baseSkill.apCost}</span>
+                          {pair.baseSkill.type === 'Passive' ? (
+                            <span class="skill-type-label passive-label">Passive</span>
+                          ) : (
+                            <span class="skill-type-label skill-label">Skill</span>
                           )}
-                          {pair.baseSkill.cooldown !== undefined && pair.baseSkill.cooldown >= 0 && (
-                            <span class="skill-cooldown">Cooldown: {pair.baseSkill.cooldown}</span>
+                          {skillLevelData[pair.baseKey] && (
+                            <input type="number" class="skill-level-input" data-skill={pair.baseKey} min="1" max={skillLevelData[pair.baseKey].maxLevel} value={skillLevelData[pair.baseKey].maxLevel} />
+                          )}
+                          {pair.baseSkill.type !== 'Passive' && pair.baseSkill.apCost != null && pair.baseSkill.apCost > 0 && (
+                            <span class="skill-cost">AP {pair.baseSkill.apCost}</span>
+                          )}
+                          {pair.baseSkill.type !== 'Passive' && pair.baseSkill.cooldown != null && pair.baseSkill.cooldown > 0 && (
+                            <span class="skill-cooldown">CD {pair.baseSkill.cooldown}</span>
                           )}
                         </div>
                       </div>
@@ -971,9 +954,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       {pair.baseSkill.damage && (
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
-                          <span class="damage-value">
-                            {pair.baseSkill.damage.value || pair.baseSkill.damage.target} of {pair.baseSkill.damage.type}
-                            {pair.baseSkill.damage.splash && ` (+${pair.baseSkill.damage.splash} splash)`}
+                          <span class="damage-value" data-skill-key={pair.baseKey} data-damage-suffix={getDamageSuffix(pair.baseSkill.damage)}>
+                            {formatDamage(pair.baseKey, pair.baseSkill.damage)}
                           </span>
                         </div>
                       )}
@@ -985,16 +967,24 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     {/* Replacement skill */}
                     <div class={getSkillCardClasses(pair.replacementSkill, pair.replacementKey, false, true, false)}>
                       <div class="skill-header">
+                        {pair.replacementSkill.icon && (
+                          <SkillIcon iconName={pair.replacementSkill.icon} />
+                        )}
                         <h3 class="skill-title">{pair.replacementSkill.name}</h3>
                         <div class="skill-meta">
-                          <span class="hw-badge" data-type={pair.replacementSkill.type === 'Passive' ? 'Passive' : 'Skill'}>
-                            {pair.replacementSkill.type === 'Passive' ? 'Passive' : 'Skill'}
-                          </span>
-                          {pair.replacementSkill.type !== 'Passive' && pair.replacementSkill.apCost && pair.replacementSkill.apCost > 0 && (
-                            <span class="skill-cost">AP Cost: {pair.replacementSkill.apCost}</span>
+                          {pair.replacementSkill.type === 'Passive' ? (
+                            <span class="skill-type-label passive-label">Passive</span>
+                          ) : (
+                            <span class="skill-type-label skill-label">Skill</span>
                           )}
-                          {pair.replacementSkill.cooldown !== undefined && pair.replacementSkill.cooldown >= 0 && (
-                            <span class="skill-cooldown">Cooldown: {pair.replacementSkill.cooldown}</span>
+                          {skillLevelData[pair.replacementKey] && (
+                            <input type="number" class="skill-level-input" data-skill={pair.replacementKey} min="1" max={skillLevelData[pair.replacementKey].maxLevel} value={skillLevelData[pair.replacementKey].maxLevel} />
+                          )}
+                          {pair.replacementSkill.type !== 'Passive' && pair.replacementSkill.apCost != null && pair.replacementSkill.apCost > 0 && (
+                            <span class="skill-cost">AP {pair.replacementSkill.apCost}</span>
+                          )}
+                          {pair.replacementSkill.type !== 'Passive' && pair.replacementSkill.cooldown != null && pair.replacementSkill.cooldown > 0 && (
+                            <span class="skill-cooldown">CD {pair.replacementSkill.cooldown}</span>
                           )}
                         </div>
                       </div>
@@ -1002,9 +992,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       {pair.replacementSkill.damage && (
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
-                          <span class="damage-value">
-                            {pair.replacementSkill.damage.value || pair.replacementSkill.damage.target} of {pair.replacementSkill.damage.type}
-                            {pair.replacementSkill.damage.splash && ` (+${pair.replacementSkill.damage.splash} splash)`}
+                          <span class="damage-value" data-skill-key={pair.replacementKey} data-damage-suffix={getDamageSuffix(pair.replacementSkill.damage)}>
+                            {formatDamage(pair.replacementKey, pair.replacementSkill.damage)}
                           </span>
                         </div>
                       )}
@@ -1020,16 +1009,24 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           return (
             <div class={getSkillCardClasses(skill, key)}>
               <div class="skill-header">
+                {skill.icon && (
+                  <SkillIcon iconName={skill.icon} />
+                )}
                 <h3 class="skill-title">{skill.name}</h3>
                 <div class="skill-meta">
-                  <span class="hw-badge" data-type={skill.type === 'Passive' ? 'Passive' : 'Skill'}>
-                    {skill.type === 'Passive' ? 'Passive' : 'Skill'}
-                  </span>
-                  {skill.type !== 'Passive' && skill.apCost && skill.apCost > 0 && (
-                    <span class="skill-cost">AP Cost: {skill.apCost}</span>
+                  {skill.type === 'Passive' ? (
+                    <span class="skill-type-label passive-label">Passive</span>
+                  ) : (
+                    <span class="skill-type-label skill-label">Skill</span>
                   )}
-                  {skill.cooldown !== undefined && skill.cooldown >= 0 && (
-                    <span class="skill-cooldown">Cooldown: {skill.cooldown}</span>
+                  {skillLevelData[key] && (
+                    <input type="number" class="skill-level-input" data-skill={key} min="1" max={skillLevelData[key].maxLevel} value={skillLevelData[key].maxLevel} />
+                  )}
+                  {skill.type !== 'Passive' && skill.apCost != null && skill.apCost > 0 && (
+                    <span class="skill-cost">AP {skill.apCost}</span>
+                  )}
+                  {skill.type !== 'Passive' && skill.cooldown != null && skill.cooldown > 0 && (
+                    <span class="skill-cooldown">CD {skill.cooldown}</span>
                   )}
                 </div>
               </div>
@@ -1037,9 +1034,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
               {skill.damage && (
                 <div class="skill-damage">
                   <span class="damage-label">Damage:</span>{' '}
-                  <span class="damage-value">
-                    {skill.damage.value || skill.damage.target} of {skill.damage.type}
-                      {skill.damage.splash && ` (+${skill.damage.splash} splash)`}
+                  <span class="damage-value" data-skill-key={key} data-damage-suffix={getDamageSuffix(skill.damage)}>
+                    {formatDamage(key, skill.damage)}
                   </span>
                 </div>
               )}
@@ -1049,6 +1045,41 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
       });
     })()
   }
+  <script define:vars={{ skillLevelJson }}>
+    (function() {
+      var data = JSON.parse(skillLevelJson || '{}');
+      var section = document.currentScript.closest('.skills-section');
+      if (!section || !Object.keys(data).length) return;
+
+      function updateDamage(input) {
+        var key = input.getAttribute('data-skill');
+        var level = parseInt(input.value) || 1;
+        var maxLevel = parseInt(input.getAttribute('max')) || 10;
+        if (level < 1) level = 1;
+        if (level > maxLevel) level = maxLevel;
+        input.value = level;
+
+        var skillData = data[key];
+        if (!skillData) return;
+        var levelInfo = skillData.levels[String(level)];
+        if (!levelInfo) return;
+
+        var card = input.closest('.skill-card') || input.closest('[class*=skill]');
+        if (!card) return;
+        var dmgEl = card.querySelector('[data-skill-key="' + key + '"]');
+        if (!dmgEl) return;
+
+        var val = Math.round(parseFloat(levelInfo.min) * 100);
+        var suffix = dmgEl.getAttribute('data-damage-suffix') || '';
+        dmgEl.textContent = val + '%' + suffix;
+      }
+
+      section.querySelectorAll('.skill-level-input').forEach(function(input) {
+        input.addEventListener('input', function() { updateDamage(this); });
+        input.addEventListener('change', function() { updateDamage(this); });
+      });
+    })();
+  </script>
 </section>
 
 <!-- Unique Traits Section -->
@@ -1159,9 +1190,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
               </div>
               <div class="weapon-info-item">
                 <div class="weapon-info-label">Rarity</div>
-                <span class="hw-badge" data-rarity={characterData.weapon.rarity}>
-                  {characterData.weapon.rarity}
-                </span>
+                <HWRarityIcon rarity={characterData.weapon.rarity} width={48} height={24} />
               </div>
             </div>
 
@@ -1260,9 +1289,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         loading="lazy"
                         class="gift-image"
                       />
-                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                        {gift.rarity}
-                      </span>
+                      <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
                       <h4 class="gift-name">{gift.name}</h4>
@@ -1331,9 +1358,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         loading="lazy"
                         class="gift-image"
                       />
-                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                        {gift.rarity}
-                      </span>
+                      <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
                       <h4 class="gift-name">{gift.name}</h4>
@@ -1402,9 +1427,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         loading="lazy"
                         class="gift-image"
                       />
-                      <span class="hw-badge gift-rarity-badge" data-rarity={gift.rarity}>
-                        {gift.rarity}
-                      </span>
+                      <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
                       <h4 class="gift-name">{gift.name}</h4>
@@ -1473,9 +1496,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       loading="lazy"
                       class="gift-image"
                     />
-                    <span class="hw-badge gift-rarity-badge" data-rarity={queensTiaraGift.rarity}>
-                      {queensTiaraGift.rarity}
-                    </span>
+                    <HWRarityIcon rarity={queensTiaraGift.rarity} width={36} height={18} class="gift-rarity-badge" />
                   </div>
                   <div class="gift-info">
                     <h4 class="gift-name">{queensTiaraGift.name}</h4>

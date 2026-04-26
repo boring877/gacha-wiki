@@ -12,7 +12,7 @@ import {
   getAgilityValue,
   getTechnicValue,
 } from '../../../utils/horizon-walker/character-table-utils.js';
-import { CharacterImage } from '../../../components/horizon-walker/index.astro';
+import { CharacterImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 
 // Extract filter options from enhanced data structure
 const { rarities } = gameInfo;
@@ -85,11 +85,26 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
             All stats shown at max level (Level {gameInfo.maxLevel})
           </p>
           <div class="hw-char-db-stats-summary">
-            <span class="hw-badge" data-rarity="EX">{exCount} EX</span>
-            <span class="hw-badge" data-rarity="SS">{ssCount} SS</span>
-            <span class="hw-badge" data-rarity="S">{sCount} S</span>
-            <span class="hw-badge" data-rarity="A">{aCount} A</span>
-            <span class="hw-badge" data-rarity="B">{bCount} B</span>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="EX" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{exCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="SS" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{ssCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="S" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{sCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="A" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{aCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="B" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{bCount}</span>
+            </div>
           </div>
         </div>
 
@@ -170,9 +185,11 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       </strong>
                     </td>
                     <td>
-                      <span class="hw-badge" data-rarity={character.rarity} data-sort-key="rarity">
-                        {character.rarity}
-                      </span>
+                      <HWRarityIcon
+                        rarity={character.rarity}
+                        width={48}
+                        height={24}
+                      />
                     </td>
                     <td data-sort-key="cost">
                       <strong class="cost-value">{character.cost}</strong>
@@ -235,9 +252,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       {char.name}
                     </h3>
                     <div class="header-badges">
-                      <span class="hw-badge" data-rarity={char.rarity}>
-                        {char.rarity}
-                      </span>
+                      <HWRarityIcon rarity={char.rarity} width={40} height={20} />
                       <span class="cost-badge" data-type="Cost">
                         Cost: {char.cost}
                       </span>

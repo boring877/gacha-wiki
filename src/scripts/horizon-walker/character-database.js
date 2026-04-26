@@ -101,8 +101,8 @@ const initialize = () => {
         // Sort by rarity (special ordering: EX > SS > S > A > B)
         const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
         sortedRows = rows.sort((a, b) => {
-          const rarityA = a.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
-          const rarityB = b.querySelector('.hw-badge[data-rarity]')?.textContent?.trim() || '';
+          const rarityA = a.dataset.rarity || '';
+          const rarityB = b.dataset.rarity || '';
           const valueA = rarityOrder[rarityA] || 0;
           const valueB = rarityOrder[rarityB] || 0;
           return currentSortDirection === 'desc' ? valueB - valueA : valueA - valueB;
@@ -174,9 +174,9 @@ const initialize = () => {
     // Filter desktop table rows
     if (tableBody) {
       Array.from(tableBody.children).forEach(row => {
-        const rarityCell = row.querySelector('.hw-badge[data-rarity]');
+        const rowRarity = row.dataset.rarity;
 
-        const matchesRarity = !rarityValue || rarityCell?.textContent.trim() === rarityValue;
+        const matchesRarity = !rarityValue || rowRarity === rarityValue;
 
         const isVisible = matchesRarity;
         row.style.display = isVisible ? '' : 'none';
@@ -188,9 +188,9 @@ const initialize = () => {
     // Filter mobile cards
     if (mobileCardsContainer) {
       Array.from(mobileCardsContainer.children).forEach(card => {
-        const rarityBadge = card.querySelector('.hw-badge[data-rarity]');
+        const cardRarity = card.dataset.rarity;
 
-        const matchesRarity = !rarityValue || rarityBadge?.textContent.trim() === rarityValue;
+        const matchesRarity = !rarityValue || cardRarity === rarityValue;
 
         const isVisible = matchesRarity;
         card.style.display = isVisible ? '' : 'none';

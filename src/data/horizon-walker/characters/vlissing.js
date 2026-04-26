@@ -117,6 +117,8 @@ const rawVlissingData = {
   // Skills and Passive
   skills: {
     sharpWave: {
+      gameKey: 'SharpWave',
+      icon: 'UI_SkillIcon_SharpWave',
       name: 'Sharp Wave',
       level: '10/10',
       type: 'Skill',
@@ -130,6 +132,8 @@ const rawVlissingData = {
         'Targets an enemy and unleashes blades of water in a 25° cone, 7m range. Deals Slash DMG equal to 114% of Magic ATK, heals allies along the path for 38% of Magic ATK, and grants them 1 stack of [Tip of the Wave] for 2 Rounds. [Tip of the Wave]: Increases Crit Rate by 4%. Stacks up to 2 times.',
     },
     counterWave: {
+      gameKey: 'CounterWave',
+      icon: 'UI_SkillIcon_CounterWave',
       name: 'Counter Wave',
       level: '10/10',
       type: 'Passive',
@@ -139,6 +143,8 @@ const rawVlissingData = {
         'At the start of the round, there is a 57% chance to gain the [Counter Wave] effect for 1R. [Counter Wave]: While holding this effect, immune to [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Concentration Disruption], and increases Heat DEF by 190.',
     },
     waveOfLifeCycle: {
+      gameKey: 'WaveOfLifeCycle',
+      icon: 'UI_SkillIcon_WaveOfLifeCycle',
       name: 'Wave of Life Cycle',
       level: '10/10',
       type: 'Skill',
@@ -148,6 +154,8 @@ const rawVlissingData = {
         'Targets an ally and cleanses them with a pure flow of water. Heals allies within a 4m radius around the target for 38% of Magic ATK, and grants [Purify] and 1 stack of [Clean Flow]. [Purify]: Removes [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Focus Disruption] states.',
     },
     ebbAndFlow: {
+      gameKey: 'TurnWaterWay',
+      icon: 'UI_SkillIcon_TurnWaterWay',
       name: 'Ebb and Flow',
       level: '10/10',
       type: 'Passive',

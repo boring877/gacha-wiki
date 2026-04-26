@@ -118,6 +118,8 @@ const rawJuhaData = {
   // Skills and Passive
   skills: {
     militaryShooting: {
+      gameKey: 'StandardizedShooting',
+      icon: 'UI_SkillIcon_Rifle',
       name: 'Military Shooting',
       level: '10/10',
       type: 'Skill',
@@ -131,6 +133,8 @@ const rawJuhaData = {
         'Fires an accurate shot at the enemy with a rifle. On hit, deals 114% of Ranged ATK as Pierce DMG.',
     },
     combatRoll: {
+      gameKey: 'RollingMove',
+      icon: 'UI_SkillIcon_RollingMove',
       name: 'Combat Roll',
       level: '10/10',
       type: 'Skill',
@@ -139,6 +143,8 @@ const rawJuhaData = {
       description: 'Jump low to the designated location and gain AP of 38.',
     },
     mentalCorrosion: {
+      gameKey: 'SpiritDecay',
+      icon: 'UI_SkillIcon_SpiritDecay',
       name: 'Mental Corrosion',
       level: '10/10',
       type: 'Skill',
@@ -148,6 +154,8 @@ const rawJuhaData = {
         'Applies the [Mental Defeat] effect to enemies within a 45°, 12m cone for 2R. [Mental Defeat]: Reduces Pierce DEF by 315.',
     },
     blazingZeal: {
+      gameKey: 'BurningFanaticism',
+      icon: 'UI_SkillIcon_BurningFanaticism',
       name: 'Blazing Zeal',
       level: '10/10',
       type: 'Passive',
@@ -157,6 +165,8 @@ const rawJuhaData = {
         'Allies with over 50% HP who attack using a <Firearm> based skill receive the [Blessing of Firepower] effect from the Bullet Priestess. [Blessing of Firepower]: Increases AP Recovery by 28.5%, Ranged ATK by 52%, and Pierce Boost and Crush Boost by 12% until the start of the next round. When the effect ends, inflicts fixed damage equal to 5% of current HP.',
     },
     theExecutioner: {
+      gameKey: 'EnforcementShooter',
+      icon: 'UI_SkillIcon_EnforcementShooter',
       name: 'The Executioner',
       level: '10/10',
       type: 'Skill',
@@ -166,6 +176,8 @@ const rawJuhaData = {
         "Blesses an ally with Orke's divinity for an inevitable victory. The designated ally gains 136 AP and enters [The Executioner] state for 1 round. At the end of any turn during which the ally in [The Executioner] state attacks, they gain the [Executioner's Bullet] effect, lasting for 1 round. [The Executioner]: Increases Ranged ATK by 76% of the Saint of Bullet's base Ranged ATK. [Executioner's Bullet]: Increases All ATK by 17% of the Saint of Bullet's base Ranged ATK. Can stack up to 3 times.",
     },
     brothersAndSistersOfFaith: {
+      gameKey: 'FaithfulBrothersAndSisters',
+      icon: 'UI_SkillIcon_FaithfulBrothersAndSisters',
       name: 'Brothers and Sisters of Faith',
       level: '10/10',
       type: 'Passive',

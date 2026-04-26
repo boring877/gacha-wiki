@@ -3,7 +3,21 @@ import TierListLayout from '../../../layouts/horizon-walker/TierListLayout.astro
 import { HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/horizon-walker/tier-lists.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
 import { HORIZON_WALKER_MERCENARIES } from '../../../data/horizon-walker/mercenaries.js';
-import { CharacterImage, MercenaryImage } from '../../../components/horizon-walker/index.astro';
+import { CharacterImage, MercenaryImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
+import { Image } from 'astro:assets';
+import tierIcon01 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_01.png';
+import tierIcon02 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_02.png';
+import tierIcon03 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_03.png';
+import tierIcon04 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_04.png';
+import tierIcon05 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_05.png';
+
+const rarityIconMap = {
+  B: tierIcon01.src,
+  A: tierIcon02.src,
+  S: tierIcon03.src,
+  SS: tierIcon04.src,
+  EX: tierIcon05.src,
+};
 
 // Combine all units (characters + mercenaries) for maker mode
 const allUnits = [
@@ -115,7 +129,7 @@ function getTierClassName(tier: string): string {
                 <div class="pool-character-placeholder">📷</div>
               )}
             </div>
-            <span class="hw-badge" data-rarity={unit.rarity || 'A'}>{unit.rarity || 'A'}</span>
+            <HWRarityIcon rarity={unit.rarity || 'A'} width={36} height={18} />
             <div class="pool-character-name">{unit.name}</div>
           </div>
         ))}
@@ -309,18 +323,6 @@ function getTierClassName(tier: string): string {
       </div>
     </div>
 
-    <!-- Tier Legend -->
-    <div class="tier-legend" id="tier-legend">
-      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
-        <div class="legend-item">
-          <div class={`legend-tier tier-${getTierClassName(tier)}`}>{definition.label}</div>
-          <div class="legend-description">
-            <span class="legend-label">{definition.label} Tier</span>
-            <span class="legend-text">{definition.description}</span>
-          </div>
-        </div>
-      ))}
-    </div>
   </div>
 
   <!-- View Mode Script -->
@@ -428,7 +430,7 @@ function getTierClassName(tier: string): string {
   </script>
 
   <!-- Tier List Maker Script -->
-  <script define:vars={{ unitMap, HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS }}>
+  <script define:vars={{ unitMap, HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS, rarityIconMap }}>
     document.addEventListener('DOMContentLoaded', () => {
       const viewModeBtn = document.getElementById('view-mode-btn');
       const makerModeBtn = document.getElementById('maker-mode-btn');
@@ -578,7 +580,7 @@ function getTierClassName(tier: string): string {
           <div class="character-image-wrapper">
             <img src="${poolCard.querySelector('img')?.src || ''}" alt="${characterName}" loading="lazy" />
           </div>
-          <span class="hw-badge" data-rarity="${rarity}">${rarity}</span>
+          <img class="hw-rarity-icon" src="${rarityIconMap[rarity] || rarityIconMap['A']}" alt="${rarity}" width="36" height="18" />
           <div class="character-name">${characterName}</div>
           <button class="remove-btn" title="Remove from tier">×</button>
         `;

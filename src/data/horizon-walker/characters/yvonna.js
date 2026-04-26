@@ -118,6 +118,8 @@ const rawYvonnaData = {
   // Skills and Passive
   skills: {
     surroundingFrost: {
+      gameKey: 'SharpWave',
+      icon: 'UI_SkillIcon_SharpWave',
       name: 'Surrounding Frost',
       level: '10/10',
       type: 'Skill',
@@ -131,6 +133,8 @@ const rawYvonnaData = {
         'Freezes the forward flow and attacks. Deals Cold DMG equal to 95% of magic ATK to enemies in a 25°, 7m fan-shaped area targeting a specified enemy. This attack temporarily increases ACC by 100%, but cannot perform a weakness attack.',
     },
     shroudOfFrost: {
+      gameKey: 'CounterWave',
+      icon: 'UI_SkillIcon_CounterWave',
       name: 'Shroud of Frost',
       level: '10/10',
       type: 'Passive',
@@ -140,6 +144,8 @@ const rawYvonnaData = {
         'Once per round, whenever each ally is attacked, all DEF increases temporarily by 1600. If the affected ally defeats an enemy within the same round, SPD is increased by 260% until the end of the newly started turn.',
     },
     freezingGrasp: {
+      gameKey: 'FreezingGrasph',
+      icon: 'UI_SkillIcon_FreezingGrasph',
       name: 'Freezing Grasp',
       level: '10/10',
       type: 'Skill',
@@ -153,6 +159,8 @@ const rawYvonnaData = {
         'Perceives the vast flow and stands ever ready to intervene. Designates a target within 15m and attacks enemies within a 2m radius around it, dealing Cold DMG equal to 86% of magic ATK. Afterwards, gains the [World Where Flow Stops] effect for 2 rounds. [World Where Flow Stops]: While performing a support attack with Lingering Cold, temporarily increases Cold Boost by 30% and extends its range to 15m.',
     },
     frostResonance: {
+      gameKey: 'SensingResponseAboutFrost',
+      icon: 'UI_SkillIcon_SensingResponseAboutFrost',
       name: 'Frost Resonance',
       level: '10/10',
       type: 'Passive',
@@ -162,6 +170,8 @@ const rawYvonnaData = {
         "Grants [Frost] and [Presence of Frost] effects. [Frost]: Reduces Slash, Pierce, Crush, and Cold DEF by 285. [Presence of Frost]: Performs a support attack using the 'Gathered Frost' skill, targeting the enemy attacked by the ally this turn or another available enemy within range. The effect is consumed upon activation.",
     },
     gatheredFrost: {
+      gameKey: 'GreatColdWave',
+      icon: 'UI_SkillIcon_GreatColdWave',
       name: 'Gathered Frost',
       level: 'Support',
       type: 'Skill',
@@ -175,6 +185,8 @@ const rawYvonnaData = {
         'Consumes [Presence of Frost] to activate. Harnesses nearby cold to strike enemies. Deals Cold DMG equal to 105% of Magic ATK to enemies within a 3m circular area around the support attack target (range: 7m).',
     },
     theColdsnap: {
+      gameKey: 'GreatColdWave',
+      icon: 'UI_SkillIcon_GreatColdWave',
       name: 'The Coldsnap',
       level: '10/10',
       type: 'Skill',

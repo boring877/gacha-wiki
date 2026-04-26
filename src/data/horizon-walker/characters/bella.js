@@ -143,6 +143,8 @@ const rawBellaData = {
   // Skills and Passive
   skills: {
     guardiansStrike: {
+      gameKey: 'ProtectiveStrike',
+      icon: 'UI_SkillIcon_IronMace_BA',
       name: "Guardian's Strike",
       level: '10/10',
       type: 'Skill',
@@ -156,6 +158,8 @@ const rawBellaData = {
         "Swings a mace to attack the enemy. Deals Crush DMG equal to 114% of melee ATK and reduces the target's AP by 5.",
     },
     graceOfHealing: {
+      gameKey: 'CuringGrace',
+      icon: 'UI_SkillIcon_CuringGrace',
       name: 'Grace of Healing',
       level: '10/10',
       type: 'Skill',
@@ -165,6 +169,8 @@ const rawBellaData = {
         'Prays to the Divine of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
     },
     lifeRegeneration: {
+      gameKey: 'VitalityRegeneration',
+      icon: 'UI_SkillIcon_VitalityRegeneration',
       name: 'Life Regeneration',
       level: '10/10',
       type: 'Skill',
@@ -174,6 +180,8 @@ const rawBellaData = {
         'Offers a solemn prayer for the mercy of the Divine of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
     },
     revivingBoughSkill: {
+      gameKey: 'BranchResurrection',
+      icon: 'UI_SkillIcon_BranchResurrection',
       name: 'Reviving Bough',
       level: '10/10',
       type: 'Skill',

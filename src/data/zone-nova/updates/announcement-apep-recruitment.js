@@ -4,7 +4,7 @@ export const apepRecruitmentData = {
   type: 'recruitment',
 
   tldr: [
-    'New Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil god with scythe weapon, excellent sustained combat ability. Exclusive memory also available through Limited Memory Recruitment.',
+    'New Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil being with scythe weapon, excellent sustained combat ability. Exclusive memory also available through Limited Memory Recruitment.',
   ],
 
   officialUpdate: {
@@ -20,7 +20,7 @@ export const apepRecruitmentData = {
       '',
       '**Character Introduction:**',
       '',
-      "Apep — An ancient evil god who has existed since the beginning of the world's creation. Together with her twin sister [Ra], they are witnesses to the birth of the world. In the records of the gods, Ra is revered by all things for her diligence and radiance, while Apep has long been neglected due to her gloomy personality. Even the younger gods born later deliberately avoided her existence. The isolated Apep could only wander alone to the ends of the world — that forbidden land filled with evil and chaos, where she unexpectedly gained the worship and faith of the wicked who were cast out by the world.",
+      "Apep — An ancient evil being who has existed since the beginning of the world's creation. Together with her twin sister [Ra], they are witnesses to the birth of the world. In the ancient records, Ra is revered by all things for her diligence and radiance, while Apep has long been neglected due to her gloomy personality. Even the younger ones born later deliberately avoided her existence. The isolated Apep could only wander alone to the ends of the world — that forbidden land filled with evil and chaos, where she unexpectedly gained the worship and faith of the wicked who were cast out by the world.",
       '',
       '**Event Period:**',
       '',
@@ -42,5 +42,5 @@ export const apepRecruitmentData = {
 export const apepRecruitmentSEO = {
   title: 'Limited Recruitment Character Apep (Striker, Wind) - Zone Nova - GachaWiki',
   description:
-    'Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil god with scythe weapon and sustained combat ability.',
+    'Legendary Character Apep (Striker, Wind) available through Limited Time Recruitment from November 11-25, 2025. Ancient evil being with scythe weapon and sustained combat ability.',
 };

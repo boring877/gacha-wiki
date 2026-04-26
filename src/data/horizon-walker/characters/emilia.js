@@ -97,11 +97,11 @@ const rawEmiliaData = {
         description:
           'Increases Pierce Boost by 40% during combat. On attack, gain the [Keen Lock-on] effect applied only to that attack. [Keen Lock-on]: Increases your Crit DMG and Ranged ATK by 10% for each ally on the field (excluding yourself), up to a maximum of 8 allies.',
       },
-      soulResonance: {
-        name: 'Yui Signature: Soul Resonance',
+      emiliaSignature: {
+        name: 'Precision Prescription Protocol',
         type: 'Signature',
         description:
-          'During battle, increases Basic ATK DMG of both the user and their summons by 16%. The Weak Point Hit chance triggered by the Anarchic Barrage skill is doubled. When Anarchic Barrage targets 2 or fewer enemies: Against 2 enemies: temporarily increases Combat Skill DMG by 18% and restores 12 AP. Against 1 enemy: temporarily increases Combat Skill DMG by 36% and restores 24 AP.',
+          "During battle, [Divine Prescription Protocol] is replaced with [Prescription Selection] of the same level. Using it grants 1 [Re-Action] where you can choose one of the same-level IV Solution/Potion/Pill Prescription skills. [Prescription Selection] is treated as a Wait skill. After using any non-Wait skill on your turn, if your Crit Rate exceeds 100%, all allies' (excluding yourself) Attribute Boost increases by 0.4% per 1% exceeded, refreshing each activation. This effect ends at the end of each ally's turn. At 140% Crit Rate, the Attribute Boost increase reaches its maximum of 16%, affected by clinic waiting number. For 1R after battle starts, the AP cost of [Top Priority Miracle Prescription] is reduced by 21.",
         note: 'This signature skill only activates when Emilia equips this weapon.',
       },
     },
