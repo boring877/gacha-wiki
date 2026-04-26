@@ -2,36 +2,12 @@
 import HorizonWalkerLayout from '../../layouts/horizon-walker/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js';
-import { Image } from 'astro:assets';
-
-import ArahaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Araha_N01.png';
-import YeonwooIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Yeonwoo_N01.png';
-import EchidnaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Echidna_N01.png';
-import NikaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Nika_N01.png';
-import LuiseIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Luise_N01.png';
-import RhasadinaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Rhasadina_N01.png';
-import FammeneIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Fammene_N01.png';
-import EmiliaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Emilia_N01.png';
-import BellaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Bella_N01.png';
-import KalmaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Kalma_N01.png';
-import EugeniaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Eugenia_N01.png';
-import PlatinaIcon from '../../assets/images/games/horizon-walker/icons/UI_Icon_Hero_Platina_N01.png';
-
-// Import the landing page CSS
-import '../../styles/games/horizon-walker/hw-landing-page.css';
 
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups } = horizonWalkerConfig;
 
 // Helper function to check if platforms exist
 const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
-
-// Category icons - 2 different characters per category card for variety
-const categoryIcons: Record<string, ImageMetadata[]> = {
-  characters: [ArahaIcon, YeonwooIcon, EchidnaIcon, BellaIcon],
-  mechanics: [NikaIcon, LuiseIcon, KalmaIcon],
-  resources: [RhasadinaIcon, FammeneIcon, EugeniaIcon, PlatinaIcon],
-};
 ---
 
 <HorizonWalkerLayout
@@ -172,9 +148,6 @@ const categoryIcons: Record<string, ImageMetadata[]> = {
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
     </p>
-      <div class="hw-about-deco">
-        <Image src={EmiliaIcon} alt="" class="hw-deco-icon" width={120} height={120} />
-      </div>
     </div>
   </section>
 
@@ -185,16 +158,8 @@ const categoryIcons: Record<string, ImageMetadata[]> = {
     <div class="hw-resources-grid">
       {
         categoryGroups.map(category => {
-          const icons = categoryIcons[category.id] || [];
           return (
             <div class={`hw-resource-category hw-category-${category.size}`}>
-              {icons.length > 0 && (
-                <div class="hw-category-deco">
-                  {icons.map((icon, i) => (
-                    <Image src={icon} alt="" class={`hw-deco-icon hw-deco-icon-${i + 1}`} width={64} height={64} />
-                  ))}
-                </div>
-              )}
               <div class="hw-category-header">
                 <span class="hw-category-emoji">{category.emoji}</span>
                 <h3>{category.title}</h3>
