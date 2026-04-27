@@ -6,10 +6,28 @@ export const horizonWalkerRedeemCodes = {
     title: 'Horizon Walker Redeem Codes - Free Rewards & Gift Codes | GachaWiki',
     description:
       'Working Horizon Walker redeem codes for free rewards, EX character selectors, and items. Updated codes with step-by-step redemption guide.',
-    lastUpdated: new Date('2026-01-01'),
+    lastUpdated: new Date('2026-04-27'),
   },
 
   availableCodes: [
+    {
+      id: 'applefxxk',
+      code: 'applefxxk',
+      rewards: "Prophet's Crystal Ball of Vanguards ×1",
+      status: 'working',
+      lastChecked: 'April 2026',
+      dateAdded: '2026-04-27',
+      expiryDate: 'April 30, 2026 14:59',
+    },
+    {
+      id: 'rottenapple',
+      code: 'rottenapple',
+      rewards: "Fortuneteller's Cloudy Crystal Ball of Weapons ×1",
+      status: 'working',
+      lastChecked: 'April 2026',
+      dateAdded: '2026-04-27',
+      expiryDate: 'April 30, 2026 14:59',
+    },
     {
       id: '25merrychri',
       code: '25merrychri',
