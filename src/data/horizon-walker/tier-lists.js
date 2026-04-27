@@ -117,7 +117,7 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  UR: ['Cora'],
+  UR: ['Cora', 'Luise'],
   SSS: ['Olivia', 'Vlissing', 'Palekar', 'Matrotho', 'Eugenia'],
   SS: [
     'Yui',
@@ -131,7 +131,6 @@ const MAP_CLEAR_CHARACTERS = {
     'berga',
     'korabi',
     'kalma',
-    'Luise',
     'Lisandria',
     'Headless knight',
     'Tx -Manticore',
@@ -183,7 +182,7 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  UR: ['Cora'],
+  UR: ['Cora', 'Luise'],
   SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari', 'Matrotho', 'Eugenia'],
   SS: [
     'Olivia',
@@ -195,7 +194,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Griselda',
     'Erneste',
     'Bella',
-    'Luise',
     'Nari',
     'Efreeti',
     'Maximilia',
@@ -242,7 +240,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
 };
 
 const DOPAMIN_CHARACTERS = {
-  UR: ['Cora'],
+  UR: ['Cora', 'Luise'],
   SSS: [
     'Olivia',
     'Kaul',
@@ -269,7 +267,6 @@ const DOPAMIN_CHARACTERS = {
     'Osla',
     'Erneste',
     'Bella',
-    'luise',
     'Nari',
     'Efreeti',
     'so joo-hee',
