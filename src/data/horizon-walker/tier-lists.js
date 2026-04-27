@@ -419,6 +419,11 @@ export const TIER_CHARACTER_NOTES = {
     title: 'Requires Team Synergy',
     text: 'Matrotho needs a proper team to reach SSS potential. On her own she performs much lower. A good starting point is pairing her with Eugenia and Efreeti. Not recommended for new players unfamiliar with team building.',
   },
+  Luise: {
+    type: 'info',
+    title: 'Demi Skill Required',
+    text: 'Luise needs her Demi skill unlocked to reach UR potential. Without it she performs significantly lower. She also requires a good team to enable her full potential. Unlike Cora who is easier to deal damage with, Luise has a higher skill ceiling but deals more damage when fully built.',
+  },
 };
 
 export default HORIZON_WALKER_TIER_LISTS;
