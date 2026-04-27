@@ -4,1963 +4,1961 @@
 /* ═══════════════════════════════════════════════════════════════════════ */
 
 /* Scope all HW character page styles to the main content area */
-@scope (.horizon-walker-main) {
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                               BASE STYLES                               */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .content-section {
-    background: var(--hw-gradient-content-section);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-xl);
-    margin-bottom: var(--hw-spacing-xl);
-    width: 100%;
-    max-width: none;
-    contain: paint;
-    overflow-anchor: none;
-  }
-
-  .section-title {
-    color: var(--hw-primary-warm);
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    font-weight: var(--font-extrabold);
-    margin: 0 0 3.5rem 0;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding-left: 1rem;
-    border-left: 4px solid var(--hw-border-strong);
-    position: relative;
-    padding-bottom: 1.5rem;
-  }
-
-  .section-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--hw-gradient-section-title);
-    opacity: 0.6;
-  }
-
-  .section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 120px;
-    height: 3px;
-    background: var(--hw-gradient-header-primary);
-    border-radius: var(--hw-radius-sm);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                            CHARACTER OVERVIEW                           */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .character-overview-flex {
-    display: flex;
-    gap: var(--hw-spacing-xl);
-    align-items: stretch;
-    flex-wrap: nowrap;
-    justify-content: center;
-    contain: layout;
-  }
-
-  /* Character Hero Card - Left side with full body portrait */
-  .character-hero-card {
-    flex: 0 0 auto;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  /* Full Body Portrait Container */
-  .character-portrait-fullbody {
-    position: relative;
-    border-radius: var(--hw-radius-lg);
-    overflow: hidden;
-    border: 2px solid var(--hw-border-accent);
-    background: var(--hw-bg-darker);
-    flex-shrink: 0;
-  }
-
-  .character-portrait-img-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    overflow: hidden;
-    min-height: 500px;
-  }
-
-  .hw-character-fullbody {
-    width: 100%;
-    height: auto;
-    max-height: 700px;
-    object-fit: contain;
-    display: block;
-  }
-
-  .character-portrait-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.4) 50%,
-      transparent 100%
-    );
-    pointer-events: none;
-  }
-
-  .character-portrait-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem 1.2rem;
-    z-index: 2;
-  }
-
-  .character-portrait-badges {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-  }
-
-  .character-name {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-extrabold);
-    color: var(--hw-text-light);
-    margin: 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  }
-
-  .character-description {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    line-height: 1.5;
-    margin: 0 0 1rem 0;
-  }
-
-  /* Character Info Card - Below portrait */
-  .character-info-card {
-    position: relative;
-    background: var(--hw-gradient-black-30-10);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    width: 100%;
-    margin-top: var(--hw-spacing-md);
-  }
-
-  .crystal-icon-portrait {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 3;
-    opacity: 0.9;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .crystal-icon-portrait:hover {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-
-  .crystal-icon-wrapper {
-    line-height: 0;
-  }
-
-  .crystal-icon-img {
-    display: block;
-  }
-
-  .character-info-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* Character Profile */
-  .character-profile-section {
-    margin-top: 1.2rem;
-  }
-
-  .character-profile-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--hw-spacing-sm);
-    margin-top: 0.6rem;
-  }
-
-  .profile-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid var(--hw-white-10);
-  }
-
-  .profile-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    font-weight: var(--font-semibold);
-  }
-
-  .profile-value {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-primary-warm);
-    font-weight: var(--font-medium);
-  }
-
-  /* Character Stats Container */
-  .character-stats-container {
-    flex: 1;
-    min-width: 0;
-    contain: layout style;
-  }
-
-  .character-stats-box {
-    background: var(--hw-gradient-character-stats);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    height: 100%;
-  }
-
-  .character-stats-header {
-    display: flex;
-    align-items: baseline;
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .character-stats-title {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  .character-stats-subtitle {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    color: var(--hw-primary-warm);
-    margin: 1.5rem 0 0.6rem 0;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid var(--hw-border-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .character-stats-explanation {
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    color: var(--hw-text-very-muted);
-    margin: 0;
-  }
-
-  .skills-explanation {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-very-muted);
-    text-align: center;
-    margin: 0 0 1.5rem 0;
-  }
-
-  /* Core stats explanation chips */
-  .core-stats-explanation {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    color: var(--hw-text-muted);
-    margin-bottom: 0.8rem;
-  }
-
-  .core-stats-explanation .stat-name {
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm-80);
-    margin-right: 0.2rem;
-  }
-
-  /* Core stats - horizontal row of big numbers */
-  .stats-core-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding: 0.8rem 0.5rem;
-    background: var(--hw-black-20);
-    border-radius: var(--hw-radius-md);
-    border: 1px solid var(--hw-border-muted);
-  }
-
-  .stats-core-item {
-    flex: 1;
-    text-align: center;
-  }
-
-  .stats-core-value {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-extrabold);
-    color: var(--hw-primary-warm);
-    line-height: 1.2;
-  }
-
-  .stats-core-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    color: var(--hw-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 0.2rem;
-  }
-
-  /* Combat & Additional stats - compact table rows */
-  .stats-table {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .stats-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.35rem 0.6rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-  }
-
-  .stats-row:nth-child(odd) {
-    background: var(--hw-black-10);
-  }
-
-  .stats-row-label {
-    color: var(--hw-text-muted);
-    font-weight: var(--font-medium);
-  }
-
-  .stats-row-value {
-    color: var(--hw-text-light);
-    font-weight: var(--font-bold);
-  }
-
-  /* Attribute stats - 3-column table with Boost/DEF pairs */
-  .stats-attr-table {
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-md);
-    overflow: hidden;
-  }
-
-  .stats-attr-header {
-    display: grid;
-    grid-template-columns: 1fr 80px 80px;
-    padding: 0.4rem 0.6rem;
-    background: var(--hw-black-30);
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    color: var(--hw-text-very-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: var(--font-semibold);
-  }
-
-  .stats-attr-col {
-    text-align: center;
-  }
-
-  .stats-attr-row {
-    display: grid;
-    grid-template-columns: 1fr 80px 80px;
-    padding: 0.35rem 0.6rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-  }
-
-  .stats-attr-row:nth-child(even) {
-    background: var(--hw-black-10);
-  }
-
-  .stats-attr-label {
-    color: var(--hw-text-muted);
-    font-weight: var(--font-medium);
-  }
-
-  .stats-attr-value {
-    text-align: center;
-    color: var(--hw-text-light);
-    font-weight: var(--font-bold);
-  }
-
-  .stats-note {
-    color: var(--hw-primary-warm-80);
-    font-size: 0.7em;
-    font-weight: var(--font-bold);
-  }
-
-  .stats-footnote {
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    color: var(--hw-text-very-muted);
-    margin: 0.4rem 0 0 0;
-    line-height: 1.5;
-    font-style: italic;
-  }
-
-  /* Character Tags */
-  .character-tags-container {
-    margin-top: 1.5rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid var(--hw-border-muted);
-  }
-
-  .character-tags-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    font-weight: var(--font-semibold);
-    margin-bottom: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .character-tags-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--hw-spacing-sm);
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                            CHARACTER STORY                              */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .character-story-content {
-    background: var(--hw-black-20);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-  }
-
-  .character-story-text {
-    font-family: var(--font-primary);
-    font-size: var(--text-base);
-    line-height: 1.7;
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                               SKILLS SECTION                            */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .skill-card {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-bottom: var(--hw-spacing-lg);
-    contain: layout style paint;
-  }
-
-  .skill-card.passive-skill {
-    border-color: var(--hw-border-muted);
-    background: var(--hw-gradient-skill-card);
-  }
-
-  /* Skill Replacement Grouping System */
-  .skill-trigger-complete-group {
-    margin-bottom: var(--hw-spacing-2xl);
-    contain: layout style paint;
-  }
-
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                               BASE STYLES                               */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.content-section {
+  background: var(--hw-gradient-content-section);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-xl);
+  margin-bottom: var(--hw-spacing-xl);
+  width: 100%;
+  max-width: none;
+  contain: paint;
+  overflow-anchor: none;
+}
+
+.section-title {
+  color: var(--hw-primary-warm);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  margin: 0 0 3.5rem 0;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-left: 1rem;
+  border-left: 4px solid var(--hw-border-strong);
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--hw-gradient-section-title);
+  opacity: 0.6;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 120px;
+  height: 3px;
+  background: var(--hw-gradient-header-primary);
+  border-radius: var(--hw-radius-sm);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            CHARACTER OVERVIEW                           */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.character-overview-flex {
+  display: flex;
+  gap: var(--hw-spacing-xl);
+  align-items: stretch;
+  flex-wrap: nowrap;
+  justify-content: center;
+  contain: layout;
+}
+
+/* Character Hero Card - Left side with full body portrait */
+.character-hero-card {
+  flex: 0 0 auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Full Body Portrait Container */
+.character-portrait-fullbody {
+  position: relative;
+  border-radius: var(--hw-radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--hw-border-accent);
+  background: var(--hw-bg-darker);
+  flex-shrink: 0;
+}
+
+.character-portrait-img-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.hw-character-fullbody {
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+  display: block;
+}
+
+.character-portrait-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.character-portrait-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.2rem;
+  z-index: 2;
+}
+
+.character-portrait-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.character-name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-extrabold);
+  color: var(--hw-text-light);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.character-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+/* Character Info Card - Below portrait */
+.character-info-card {
+  position: relative;
+  background: var(--hw-gradient-black-30-10);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  width: 100%;
+  margin-top: var(--hw-spacing-md);
+}
+
+.crystal-icon-portrait {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.crystal-icon-portrait:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.crystal-icon-wrapper {
+  line-height: 0;
+}
+
+.crystal-icon-img {
+  display: block;
+}
+
+.character-info-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Character Profile */
+.character-profile-section {
+  margin-top: 1.2rem;
+}
+
+.character-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--hw-spacing-sm);
+  margin-top: 0.6rem;
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--hw-white-10);
+}
+
+.profile-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  font-weight: var(--font-semibold);
+}
+
+.profile-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-primary-warm);
+  font-weight: var(--font-medium);
+}
+
+/* Character Stats Container */
+.character-stats-container {
+  flex: 1;
+  min-width: 0;
+  contain: layout style;
+}
+
+.character-stats-box {
+  background: var(--hw-gradient-character-stats);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  height: 100%;
+}
+
+.character-stats-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.character-stats-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+.character-stats-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--hw-primary-warm);
+  margin: 1.5rem 0 0.6rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--hw-border-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.character-stats-explanation {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--hw-text-very-muted);
+  margin: 0;
+}
+
+.skills-explanation {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-very-muted);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Core stats explanation chips */
+.core-stats-explanation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--hw-text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.core-stats-explanation .stat-name {
+  font-weight: var(--font-bold);
+  color: var(--hw-primary-warm-80);
+  margin-right: 0.2rem;
+}
+
+/* Core stats - horizontal row of big numbers */
+.stats-core-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem 0.5rem;
+  background: var(--hw-black-20);
+  border-radius: var(--hw-radius-md);
+  border: 1px solid var(--hw-border-muted);
+}
+
+.stats-core-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stats-core-value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-extrabold);
+  color: var(--hw-primary-warm);
+  line-height: 1.2;
+}
+
+.stats-core-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* Combat & Additional stats - compact table rows */
+.stats-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 0.5rem;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0.6rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+}
+
+.stats-row:nth-child(odd) {
+  background: var(--hw-black-10);
+}
+
+.stats-row-label {
+  color: var(--hw-text-muted);
+  font-weight: var(--font-medium);
+}
+
+.stats-row-value {
+  color: var(--hw-text-light);
+  font-weight: var(--font-bold);
+}
+
+/* Attribute stats - 3-column table with Boost/DEF pairs */
+.stats-attr-table {
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-md);
+  overflow: hidden;
+}
+
+.stats-attr-header {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px;
+  padding: 0.4rem 0.6rem;
+  background: var(--hw-black-30);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--hw-text-very-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--font-semibold);
+}
+
+.stats-attr-col {
+  text-align: center;
+}
+
+.stats-attr-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px;
+  padding: 0.35rem 0.6rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+}
+
+.stats-attr-row:nth-child(even) {
+  background: var(--hw-black-10);
+}
+
+.stats-attr-label {
+  color: var(--hw-text-muted);
+  font-weight: var(--font-medium);
+}
+
+.stats-attr-value {
+  text-align: center;
+  color: var(--hw-text-light);
+  font-weight: var(--font-bold);
+}
+
+.stats-note {
+  color: var(--hw-primary-warm-80);
+  font-size: 0.7em;
+  font-weight: var(--font-bold);
+}
+
+.stats-footnote {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  color: var(--hw-text-very-muted);
+  margin: 0.4rem 0 0 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Character Tags */
+.character-tags-container {
+  margin-top: 1.5rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--hw-border-muted);
+}
+
+.character-tags-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  font-weight: var(--font-semibold);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.character-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hw-spacing-sm);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            CHARACTER STORY                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.character-story-content {
+  background: var(--hw-black-20);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+}
+
+.character-story-text {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                               SKILLS SECTION                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.skill-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-lg);
+  contain: layout style paint;
+}
+
+.skill-card.passive-skill {
+  border-color: var(--hw-border-muted);
+  background: var(--hw-gradient-skill-card);
+}
+
+/* Skill Replacement Grouping System */
+.skill-trigger-complete-group {
+  margin-bottom: var(--hw-spacing-2xl);
+  contain: layout style paint;
+}
+
+.skill-replacement-group {
+  background: var(--hw-gradient-skill-card);
+  border: 2px solid var(--hw-accent-mint-30);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-top: var(--hw-spacing-lg);
+  contain: layout style paint;
+  position: relative;
+}
+
+/* Remove transformation tag to reduce crowding */
+
+.skill-replacement-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--hw-spacing-lg);
+  padding: var(--hw-spacing-md) var(--hw-spacing-lg);
+  background: var(--hw-gradient-mint-light);
+  border: 1px solid var(--hw-accent-mint-40);
+  border-radius: var(--hw-radius-md);
+  text-align: center;
+}
+
+.skill-replacement-condition {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--hw-accent-mint-80);
+  margin: 0;
+}
+
+.skill-replacement-pair {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hw-spacing-lg);
+  position: relative;
+}
+
+/* Replacement arrow connector */
+.skill-replacement-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--hw-spacing-lg) 0;
+  position: relative;
+  height: 60px;
+}
+
+.skill-replacement-arrow::before {
+  content: '';
+  width: 4px;
+  height: 50px;
+  background: var(--hw-accent-coral-40);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+
+.skill-replacement-arrow::after {
+  content: '⇓';
+  font-size: var(--text-3xl);
+  color: var(--hw-secondary-coral-60);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Base skill styling - simplified without badge */
+.skill-card.skill-base {
+  border-color: var(--hw-primary-warm-40);
+  border-width: 2px;
+  position: relative;
+}
+
+/* Replacement skill styling - simplified without badge */
+.skill-card.skill-replacement {
+  border-color: var(--hw-accent-coral-40);
+  border-width: 2px;
+  position: relative;
+}
+
+/* Trigger passive styling - simplified but still prominent */
+.skill-card.skill-trigger {
+  border-color: var(--hw-accent-mint-40);
+  border-width: 3px;
+  position: relative;
+}
+
+/* Responsive design for replacement groups */
+@media (max-width: 768px) {
   .skill-replacement-group {
-    background: var(--hw-gradient-skill-card);
-    border: 2px solid var(--hw-accent-mint-30);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-top: var(--hw-spacing-lg);
-    contain: layout style paint;
-    position: relative;
-  }
-
-  /* Remove transformation tag to reduce crowding */
-
-  .skill-replacement-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--hw-spacing-lg);
-    padding: var(--hw-spacing-md) var(--hw-spacing-lg);
-    background: var(--hw-gradient-mint-light);
-    border: 1px solid var(--hw-accent-mint-40);
-    border-radius: var(--hw-radius-md);
-    text-align: center;
+    padding: var(--hw-spacing-md);
   }
 
   .skill-replacement-condition {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    color: var(--hw-accent-mint-80);
-    margin: 0;
-  }
-
-  .skill-replacement-pair {
-    display: flex;
-    flex-direction: column;
-    gap: var(--hw-spacing-lg);
-    position: relative;
-  }
-
-  /* Replacement arrow connector */
-  .skill-replacement-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: var(--hw-spacing-lg) 0;
-    position: relative;
-    height: 60px;
+    font-size: var(--text-base);
   }
 
   .skill-replacement-arrow::before {
-    content: '';
-    width: 4px;
-    height: 50px;
-    background: var(--hw-accent-coral-40);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 2px;
+    height: 30px;
   }
 
   .skill-replacement-arrow::after {
-    content: '⇓';
-    font-size: var(--text-3xl);
-    color: var(--hw-secondary-coral-60);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Base skill styling - simplified without badge */
-  .skill-card.skill-base {
-    border-color: var(--hw-primary-warm-40);
-    border-width: 2px;
-    position: relative;
-  }
-
-  /* Replacement skill styling - simplified without badge */
-  .skill-card.skill-replacement {
-    border-color: var(--hw-accent-coral-40);
-    border-width: 2px;
-    position: relative;
-  }
-
-  /* Trigger passive styling - simplified but still prominent */
-  .skill-card.skill-trigger {
-    border-color: var(--hw-accent-mint-40);
-    border-width: 3px;
-    position: relative;
-  }
-
-  /* Responsive design for replacement groups */
-  @media (max-width: 768px) {
-    .skill-replacement-group {
-      padding: var(--hw-spacing-md);
-    }
-
-    .skill-replacement-condition {
-      font-size: var(--text-base);
-    }
-
-    .skill-replacement-arrow::before {
-      height: 30px;
-    }
-
-    .skill-replacement-arrow::after {
-      font-size: var(--text-xl);
-    }
-  }
-
-  .skill-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .skill-icon {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 6px;
-    flex-shrink: 0;
-    image-rendering: auto;
-  }
-
-  .skill-title {
-    font-family: var(--font-display);
     font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm);
-    margin: 0;
   }
+}
 
-  .skill-card.passive-skill .skill-title {
-    color: var(--hw-tertiary-sky);
-  }
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-  .skill-meta {
-    display: flex;
-    align-items: center;
-    gap: var(--hw-spacing-md);
-    flex-wrap: wrap;
-  }
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+  image-rendering: auto;
+}
 
-  .skill-type-label,
-  .skill-cost,
-  .skill-cooldown,
-  .skill-level {
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    font-weight: var(--font-semibold);
-    color: var(--hw-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-  }
+.skill-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-primary-warm);
+  margin: 0;
+}
 
-  .skill-level-input {
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-    font-weight: var(--font-semibold);
-    color: var(--hw-text-light);
-    background: var(--hw-black-30);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: 4px;
-    padding: 2px 4px;
-    width: 48px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    -moz-appearance: textfield;
-  }
+.skill-card.passive-skill .skill-title {
+  color: var(--hw-tertiary-sky);
+}
 
-  .skill-level-input::-webkit-outer-spin-button,
-  .skill-level-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+.skill-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--hw-spacing-md);
+  flex-wrap: wrap;
+}
 
-  .skill-level-input:focus {
-    border-color: var(--hw-primary-warm);
-  }
+.skill-type-label,
+.skill-cost,
+.skill-cooldown,
+.skill-level {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--hw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
 
-  .skill-meta .skill-type-label::after {
-    content: '·';
-    margin-left: 0.5rem;
-    color: var(--hw-text-muted);
-    opacity: 0.4;
-  }
+.skill-level-input {
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--hw-text-light);
+  background: var(--hw-black-30);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: 4px;
+  padding: 2px 4px;
+  width: 48px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  -moz-appearance: textfield;
+}
 
-  .skill-meta .skill-type-label:last-of-type::after {
-    content: none;
-  }
+.skill-level-input::-webkit-outer-spin-button,
+.skill-level-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .skill-meta {
-    gap: 0;
-  }
+.skill-level-input:focus {
+  border-color: var(--hw-primary-warm);
+}
 
-  .skill-meta > *:not(:last-child) {
-    margin-right: 0.5rem;
-  }
+.skill-meta .skill-type-label::after {
+  content: '·';
+  margin-left: 0.5rem;
+  color: var(--hw-text-muted);
+  opacity: 0.4;
+}
 
-  .skill-meta > .skill-cost,
-  .skill-meta > .skill-cooldown,
-  .skill-meta > .skill-level,
-  .skill-meta > .skill-level-input {
-    margin-right: 0;
-  }
+.skill-meta .skill-type-label:last-of-type::after {
+  content: none;
+}
 
-  .skill-meta > .skill-cost::before {
-    content: '|';
-    margin-right: 0.5rem;
-    color: var(--hw-text-muted);
-    opacity: 0.3;
-  }
+.skill-meta {
+  gap: 0;
+}
 
-  .skill-meta > .skill-level-input {
-    margin-left: 0.5rem;
-  }
+.skill-meta > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
 
-  .skill-meta > .skill-cooldown::before {
-    content: '|';
-    margin-right: 0.5rem;
-    color: var(--hw-text-muted);
-    opacity: 0.3;
-  }
+.skill-meta > .skill-cost,
+.skill-meta > .skill-cooldown,
+.skill-meta > .skill-level,
+.skill-meta > .skill-level-input {
+  margin-right: 0;
+}
 
-  .skill-description {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    line-height: 1.6;
-    color: var(--hw-text-light);
-    margin: 0 0 1rem 0;
-    white-space: pre-line;
-  }
+.skill-meta > .skill-cost::before {
+  content: '|';
+  margin-right: 0.5rem;
+  color: var(--hw-text-muted);
+  opacity: 0.3;
+}
 
-  .skill-damage {
-    padding: var(--hw-spacing-md);
-    background: var(--hw-black-30);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-md);
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-light);
-  }
+.skill-meta > .skill-level-input {
+  margin-left: 0.5rem;
+}
 
-  .skill-damage .damage-label {
-    font-weight: var(--font-semibold);
-    color: var(--hw-text-muted);
-  }
+.skill-meta > .skill-cooldown::before {
+  content: '|';
+  margin-right: 0.5rem;
+  color: var(--hw-text-muted);
+  opacity: 0.3;
+}
 
-  .skill-damage .damage-value {
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-  }
+.skill-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--hw-text-light);
+  margin: 0 0 1rem 0;
+  white-space: pre-line;
+}
 
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                            UNIQUE TRAITS SECTION                        */
-  /* ═══════════════════════════════════════════════════════════════════════ */
+.skill-damage {
+  padding: var(--hw-spacing-md);
+  background: var(--hw-black-30);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-light);
+}
 
-  .trait-card {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-accent-mint-30);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-bottom: var(--hw-spacing-lg);
-    contain: layout style paint;
-  }
+.skill-damage .damage-label {
+  font-weight: var(--font-semibold);
+  color: var(--hw-text-muted);
+}
 
-  .trait-header {
-    display: flex;
-    align-items: center;
+.skill-damage .damage-value {
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            UNIQUE TRAITS SECTION                        */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.trait-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-accent-mint-30);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-lg);
+  contain: layout style paint;
+}
+
+.trait-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.trait-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+.trait-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+/* Interested Trait Special Styling */
+.trait-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.interested-trait-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--hw-primary-warm-20);
+}
+
+.gift-affection-note {
+  font-family: var(--font-primary);
+  color: var(--hw-text-light);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  margin: 0;
+  background: var(--hw-primary-warm-10);
+  padding: var(--hw-spacing-md);
+  border-radius: var(--hw-radius-md);
+  border-left: 3px solid var(--hw-primary-warm);
+}
+
+.gift-affection-note strong {
+  color: var(--hw-primary-warm);
+}
+
+/* Trait Bonuses */
+.trait-bonuses {
+  margin-top: 1rem;
+}
+
+.trait-bonuses strong {
+  font-family: var(--font-primary);
+  color: var(--hw-primary-warm);
+  font-size: var(--text-sm);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.bonus-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bonus-list li {
+  background: var(--hw-accent-mint-15);
+  color: var(--hw-text-light);
+  padding: var(--hw-spacing-sm) var(--hw-spacing-md);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  border: 1px solid var(--hw-accent-mint-30);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           DEMISKILL SECTION                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.demiskill-section {
+  border-color: #b8860b50;
+}
+
+.demiskill-info-banner {
+  background: linear-gradient(135deg, #2a1f0a, #1a150a);
+  border: 1px solid #b8860b40;
+  border-radius: var(--hw-radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.demiskill-info-banner p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  line-height: 1.6;
+}
+
+.demiskill-authority-card {
+  background: linear-gradient(135deg, #1f1a0a, #151210);
+  border: 1px solid #b8860b30;
+  border-radius: var(--hw-radius-lg);
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.demiskill-authority-header {
+  background: linear-gradient(90deg, #2a1f0a, #1a150a);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b8860b30;
+}
+
+.demiskill-authority-title {
+  font-family: var(--font-display);
+  color: #daa520;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+}
+
+.demiskill-authority-body {
+  padding: 1.5rem;
+  font-size: var(--text-sm);
+  color: var(--hw-text-light);
+  line-height: 1.7;
+}
+
+.demiskill-authority-body p {
+  margin: 0 0 1rem 0;
+}
+
+.demiskill-authority-body p:last-child {
+  margin-bottom: 0;
+}
+
+.demiskill-enhanced {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #b8860b20;
+}
+
+.demiskill-enhanced-title {
+  font-family: var(--font-display);
+  color: #daa520;
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  margin: 0 0 1rem 0;
+}
+
+.demiskill-subtitle {
+  font-family: var(--font-display);
+  color: var(--hw-primary-warm);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 0.75rem 0;
+}
+
+.demiskill-might-intro {
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.demiskill-tier-probabilities {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.demiskill-tier-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: var(--font-bold);
+  font-family: var(--font-mono);
+}
+
+.demiskill-tier-badge { background: #1a1a2a; color: #8899bb; }
+
+.demiskill-might-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.demiskill-might-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-md);
+  overflow: hidden;
+}
+
+.demiskill-might-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--hw-border-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.demiskill-might-name {
+  font-family: var(--font-display);
+  color: var(--hw-text-light);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  margin: 0;
+}
+
+.demiskill-might-tiers {
+  padding: 0.5rem;
+}
+
+.demiskill-tier-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: var(--hw-radius-sm);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.demiskill-tier-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.demiskill-tier-label {
+  font-family: var(--font-mono);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.demiskill-tier-label { color: #8899bb; }
+
+.demiskill-tier-5 .demiskill-tier-label { color: #8899bb; }
+
+.demiskill-tier-desc {
+  color: var(--hw-text-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            EFFECTS SECTION                              */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.effects-section {
+  background: var(--hw-bg-dark);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-xl);
+  border: 1px solid var(--hw-border-accent);
+}
+
+.effects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.effect-item {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-tertiary-sky-30);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+}
+
+.effect-header {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hw-tertiary-sky-20);
+}
+
+.effect-name {
+  font-family: var(--font-display);
+  color: var(--hw-tertiary-sky);
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
+}
+
+.effect-description {
+  font-family: var(--font-primary);
+  color: var(--hw-text-light);
+  line-height: 1.6;
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                              WEAPON SECTION                             */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.weapon-flex {
+  display: flex;
+  gap: var(--hw-spacing-xl);
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+  contain: layout;
+}
+
+/* Weapon Image & Stats */
+.weapon-image-container {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weapon-image-box {
+  background: var(--hw-gradient-character-stats);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  text-align: center;
+  margin-bottom: var(--hw-spacing-lg);
+}
+
+.weapon-image-wrapper img {
+  width: 300px;
+  height: 350px;
+  object-fit: contain;
+  border-radius: var(--hw-radius-md);
+  border: 2px solid var(--hw-primary-warm-40);
+  margin: 0 auto;
+  display: block;
+}
+
+.weapon-info-card {
+  background: var(--hw-black-30);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  flex: 1;
+}
+
+.weapon-info-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.weapon-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.weapon-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.weapon-info-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-light);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.weapon-stats-title {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--hw-primary-warm);
+  margin: 1rem 0 0.8rem 0;
+  text-align: center;
+  border-top: 1px solid var(--hw-border-muted);
+  padding-top: 1rem;
+}
+
+.weapon-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Weapon Skills */
+.weapon-skills-container {
+  flex: 3;
+  min-width: 400px;
+}
+
+.weapon-skills-box {
+  background: var(--hw-gradient-character-stats);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  height: 100%;
+}
+
+.weapon-skills-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.weapon-skill-card {
+  background: var(--hw-black-30);
+  border: 1px solid var(--hw-secondary-coral-30);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-lg);
+}
+
+.weapon-skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.weapon-skill-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+.weapon-skill-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--hw-text-light);
+  margin: 0 0 1rem 0;
+}
+
+.weapon-skill-note {
+  padding: var(--hw-spacing-md);
+  background: var(--hw-primary-warm-15);
+  border: 1px solid var(--hw-primary-warm-30);
+  border-radius: var(--hw-radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-light);
+  font-weight: var(--font-medium);
+  margin-top: var(--hw-spacing-md);
+  border-left: 4px solid var(--hw-primary-warm);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         LARGE SCREEN OPTIMIZATIONS                      */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 1400px) {
+  .character-overview-flex,
+  .weapon-flex {
+    max-width: 1200px;
+    margin: 0 auto;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
   }
 
-  .trait-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0;
+  .content-section {
+    max-width: 1400px;
+    margin: 0 auto 4rem auto;
+    padding: 3rem;
   }
 
-  .trait-description {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    line-height: 1.6;
-    color: var(--hw-text-light);
-    margin: 0;
+  .character-hero-card {
+    width: 320px;
   }
 
-  /* Interested Trait Special Styling */
-  .trait-badges {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+  .character-stats-container {
+    max-width: 800px;
   }
 
-  .interested-trait-info {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--hw-primary-warm-20);
+  .weapon-image-container {
+    max-width: 400px;
   }
 
-  .gift-affection-note {
-    font-family: var(--font-primary);
-    color: var(--hw-text-light);
-    font-size: var(--text-sm);
-    line-height: 1.4;
-    margin: 0;
-    background: var(--hw-primary-warm-10);
-    padding: var(--hw-spacing-md);
-    border-radius: var(--hw-radius-md);
-    border-left: 3px solid var(--hw-primary-warm);
+  .weapon-skills-container {
+    max-width: 650px;
   }
+}
 
-  .gift-affection-note strong {
-    color: var(--hw-primary-warm);
-  }
+/* Performance optimized - no hover effects */
 
-  /* Trait Bonuses */
-  .trait-bonuses {
-    margin-top: 1rem;
-  }
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                            RESPONSIVE DESIGN                            */
+/* ═══════════════════════════════════════════════════════════════════════ */
 
-  .trait-bonuses strong {
-    font-family: var(--font-primary);
-    color: var(--hw-primary-warm);
-    font-size: var(--text-sm);
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  .bonus-list {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .bonus-list li {
-    background: var(--hw-accent-mint-15);
-    color: var(--hw-text-light);
-    padding: var(--hw-spacing-sm) var(--hw-spacing-md);
-    border-radius: var(--hw-radius-md);
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    border: 1px solid var(--hw-accent-mint-30);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                           DEMISKILL SECTION                              */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .demiskill-section {
-    border-color: #b8860b50;
-  }
-
-  .demiskill-info-banner {
-    background: linear-gradient(135deg, #2a1f0a, #1a150a);
-    border: 1px solid #b8860b40;
-    border-radius: var(--hw-radius-md);
-    padding: 1rem 1.25rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .demiskill-info-banner p {
-    margin: 0;
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    line-height: 1.6;
-  }
-
-  .demiskill-authority-card {
-    background: linear-gradient(135deg, #1f1a0a, #151210);
-    border: 1px solid #b8860b30;
-    border-radius: var(--hw-radius-lg);
-    margin-bottom: 2.5rem;
-    overflow: hidden;
+/* Demiskill responsive - tablet */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .demiskill-might-grid {
+    grid-template-columns: 1fr;
   }
 
   .demiskill-authority-header {
-    background: linear-gradient(90deg, #2a1f0a, #1a150a);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #b8860b30;
-  }
-
-  .demiskill-authority-title {
-    font-family: var(--font-display);
-    color: #daa520;
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    margin: 0;
+    padding: 1rem;
   }
 
   .demiskill-authority-body {
-    padding: 1.5rem;
-    font-size: var(--text-sm);
-    color: var(--hw-text-light);
-    line-height: 1.7;
+    padding: 1rem;
   }
 
-  .demiskill-authority-body p {
-    margin: 0 0 1rem 0;
+  .demiskill-info-banner {
+    flex-direction: column;
+    text-align: center;
   }
+}
 
-  .demiskill-authority-body p:last-child {
-    margin-bottom: 0;
-  }
-
-  .demiskill-enhanced {
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #b8860b20;
-  }
-
-  .demiskill-enhanced-title {
-    font-family: var(--font-display);
-    color: #daa520;
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    margin: 0 0 1rem 0;
+/* Demiskill responsive - mobile */
+@media (max-width: 768px) {
+  .demiskill-authority-title {
+    font-size: var(--text-lg);
   }
 
   .demiskill-subtitle {
-    font-family: var(--font-display);
-    color: var(--hw-primary-warm);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    margin: 0 0 0.75rem 0;
-  }
-
-  .demiskill-might-intro {
-    font-size: var(--text-sm);
-    color: var(--hw-text-muted);
-    margin: 0 0 1rem 0;
-    line-height: 1.6;
+    font-size: var(--text-xl);
   }
 
   .demiskill-tier-probabilities {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-
-  .demiskill-tier-badge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
-    font-weight: var(--font-bold);
-    font-family: var(--font-mono);
-  }
-
-  .demiskill-tier-badge { background: #1a1a2a; color: #8899bb; }
-
-  .demiskill-might-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-  }
-
-  .demiskill-might-card {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-md);
-    overflow: hidden;
-  }
-
-  .demiskill-might-header {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--hw-border-muted);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .demiskill-might-name {
-    font-family: var(--font-display);
-    color: var(--hw-text-light);
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    margin: 0;
-  }
-
-  .demiskill-might-tiers {
-    padding: 0.5rem;
+    justify-content: center;
   }
 
   .demiskill-tier-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    padding: 0.4rem 0.5rem;
-    border-radius: var(--hw-radius-sm);
+    font-size: 0.65rem;
+  }
+
+  .demiskill-might-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .demiskill-might-tiers {
+    padding: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .demiskill-authority-body {
     font-size: var(--text-xs);
-    line-height: 1.5;
-  }
-
-  .demiskill-tier-row:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  }
-
-  .demiskill-tier-label {
-    font-family: var(--font-mono);
-    font-weight: var(--font-bold);
-    flex-shrink: 0;
-    width: 24px;
-    text-align: center;
-  }
-
-  .demiskill-tier-label { color: #8899bb; }
-
-  .demiskill-tier-5 .demiskill-tier-label { color: #8899bb; }
-
-  .demiskill-tier-desc {
-    color: var(--hw-text-muted);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                            EFFECTS SECTION                              */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .effects-section {
-    background: var(--hw-bg-dark);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-bottom: var(--hw-spacing-xl);
-    border: 1px solid var(--hw-border-accent);
-  }
-
-  .effects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .effect-item {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-tertiary-sky-30);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-  }
-
-  .effect-header {
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--hw-tertiary-sky-20);
-  }
-
-  .effect-name {
-    font-family: var(--font-display);
-    color: var(--hw-tertiary-sky);
-    font-weight: var(--font-bold);
-    font-size: var(--text-lg);
-  }
-
-  .effect-description {
-    font-family: var(--font-primary);
-    color: var(--hw-text-light);
     line-height: 1.6;
-    margin: 0;
-    font-size: var(--text-sm);
   }
 
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                              WEAPON SECTION                             */
-  /* ═══════════════════════════════════════════════════════════════════════ */
+  .demiskill-authority-header {
+    padding: 0.75rem;
+  }
+
+  .demiskill-authority-body {
+    padding: 0.75rem;
+  }
+}
+
+/* Tablet breakpoint OR any touch device (covers iPads, Android tablets) */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .character-overview-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .character-hero-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .character-stats-container,
+  .weapon-skills-container {
+    min-width: unset;
+    touch-action: manipulation;
+  }
 
   .weapon-flex {
-    display: flex;
-    gap: var(--hw-spacing-xl);
-    align-items: stretch;
-    flex-wrap: wrap;
-    justify-content: center;
-    contain: layout;
-  }
-
-  /* Weapon Image & Stats */
-  .weapon-image-container {
-    flex: 2;
-    min-width: 300px;
-    display: flex;
     flex-direction: column;
+    touch-action: manipulation;
   }
 
-  .weapon-image-box {
-    background: var(--hw-gradient-character-stats);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    text-align: center;
-    margin-bottom: var(--hw-spacing-lg);
+  .content-section {
+    padding: 1.5rem;
+    touch-action: pan-y;
   }
 
-  .weapon-image-wrapper img {
-    width: 300px;
-    height: 350px;
-    object-fit: contain;
-    border-radius: var(--hw-radius-md);
-    border: 2px solid var(--hw-primary-warm-40);
-    margin: 0 auto;
-    display: block;
-  }
-
-  .weapon-info-card {
-    background: var(--hw-black-30);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    flex: 1;
-  }
-
-  .weapon-info-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0 0 1rem 0;
-    text-align: center;
-  }
-
-  .weapon-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .weapon-info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .weapon-info-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-light);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .weapon-stats-title {
-    font-family: var(--font-primary);
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    color: var(--hw-primary-warm);
-    margin: 1rem 0 0.8rem 0;
-    text-align: center;
-    border-top: 1px solid var(--hw-border-muted);
-    padding-top: 1rem;
-  }
-
-  .weapon-stats-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  /* Weapon Skills */
-  .weapon-skills-container {
-    flex: 3;
-    min-width: 400px;
-  }
-
-  .weapon-skills-box {
-    background: var(--hw-gradient-character-stats);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    height: 100%;
-  }
-
-  .weapon-skills-title {
-    font-family: var(--font-display);
+  .section-title {
     font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0 0 1.5rem 0;
-    text-align: center;
   }
 
-  .weapon-skill-card {
-    background: var(--hw-black-30);
-    border: 1px solid var(--hw-secondary-coral-30);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-bottom: var(--hw-spacing-lg);
-  }
-
-  .weapon-skill-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .weapon-skill-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  .weapon-skill-description {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    line-height: 1.6;
-    color: var(--hw-text-light);
-    margin: 0 0 1rem 0;
-  }
-
-  .weapon-skill-note {
-    padding: var(--hw-spacing-md);
-    background: var(--hw-primary-warm-15);
-    border: 1px solid var(--hw-primary-warm-30);
-    border-radius: var(--hw-radius-md);
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-light);
-    font-weight: var(--font-medium);
-    margin-top: var(--hw-spacing-md);
-    border-left: 4px solid var(--hw-primary-warm);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                         LARGE SCREEN OPTIMIZATIONS                      */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  @media (min-width: 1400px) {
-    .character-overview-flex,
-    .weapon-flex {
-      max-width: 1200px;
-      margin: 0 auto;
-      justify-content: space-between;
-    }
-
-    .content-section {
-      max-width: 1400px;
-      margin: 0 auto 4rem auto;
-      padding: 3rem;
-    }
-
-    .character-hero-card {
-      width: 320px;
-    }
-
-    .character-stats-container {
-      max-width: 800px;
-    }
-
-    .weapon-image-container {
-      max-width: 400px;
-    }
-
-    .weapon-skills-container {
-      max-width: 650px;
-    }
-  }
-
-  /* Performance optimized - no hover effects */
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                            RESPONSIVE DESIGN                            */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  /* Demiskill responsive - tablet */
-  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-    .demiskill-might-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .demiskill-authority-header {
-      padding: 1rem;
-    }
-
-    .demiskill-authority-body {
-      padding: 1rem;
-    }
-
-    .demiskill-info-banner {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-
-  /* Demiskill responsive - mobile */
-  @media (max-width: 768px) {
-    .demiskill-authority-title {
-      font-size: var(--text-lg);
-    }
-
-    .demiskill-subtitle {
-      font-size: var(--text-xl);
-    }
-
-    .demiskill-tier-probabilities {
-      justify-content: center;
-    }
-
-    .demiskill-tier-row {
-      font-size: 0.65rem;
-    }
-
-    .demiskill-might-header {
-      padding: 0.5rem 0.75rem;
-    }
-
-    .demiskill-might-tiers {
-      padding: 0.25rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .demiskill-authority-body {
-      font-size: var(--text-xs);
-      line-height: 1.6;
-    }
-
-    .demiskill-authority-header {
-      padding: 0.75rem;
-    }
-
-    .demiskill-authority-body {
-      padding: 0.75rem;
-    }
-  }
-
-  /* Tablet breakpoint OR any touch device (covers iPads, Android tablets) */
-  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-    .character-overview-flex {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .character-hero-card {
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .character-stats-container,
-    .weapon-skills-container {
-      min-width: unset;
-      touch-action: manipulation;
-    }
-
-    .weapon-flex {
-      flex-direction: column;
-      touch-action: manipulation;
-    }
-
-    .content-section {
-      padding: 1.5rem;
-      touch-action: pan-y;
-    }
-
-    .section-title {
-      font-size: var(--text-2xl);
-    }
-
-    .character-overview-flex,
-    .weapon-flex {
-      gap: 1.5rem;
-    }
-
-    .hw-badge,
-    .skill-cost,
-    .skill-cooldown {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  /* Mobile tablet OR touch devices with medium screens */
-  @media (max-width: 768px), ((hover: none) and (pointer: coarse) and (max-width: 900px)) {
-    .content-section {
-      padding: 1.5rem;
-      touch-action: pan-y;
-    }
-
-    .section-title {
-      font-size: var(--text-xl);
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-    }
-
-    .character-overview-flex,
-    .weapon-flex {
-      gap: 1.5rem;
-      touch-action: manipulation;
-    }
-
-    .character-hero-card {
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .character-portrait-img-wrapper {
-      min-height: 350px;
-    }
-
-    .character-info-card,
-    .character-stats-box,
-    .skill-card,
-    .trait-card,
-    .character-story-content,
-    .effects-section,
-    .effect-item,
-    .weapon-info-card,
-    .weapon-skills-box,
-    .weapon-skill-card,
-    .weapon-image-box,
-    .level5-bonus-card {
-      padding: var(--hw-spacing-md);
-    }
-
-    .skill-trigger-complete-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .skill-replacement-arrow {
-      height: 40px;
-    }
-
-    .stats-table {
-      grid-template-columns: 1fr;
-    }
-
-    .stats-core-value {
-      font-size: var(--text-xl);
-    }
-
-    .skill-header,
-    .trait-header,
-    .weapon-skill-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--hw-spacing-md);
-    }
-
-    .trait-badges {
-      gap: 0.4rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .gift-affection-note {
-      font-size: var(--text-xs);
-      padding: var(--hw-spacing-md);
-    }
-
-    .bonus-list {
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .bonus-list li {
-      font-size: var(--text-xs);
-      padding: var(--hw-spacing-sm);
-    }
-
-    .character-hero-card,
-    .weapon-image-container {
-      min-width: unset;
-    }
-
-    .character-info-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .content-section {
-      padding: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-title {
-      font-size: var(--text-lg);
-      padding-left: 0.8rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-    }
-
-    .character-hero-card,
-    .character-stats-container,
-    .weapon-image-container,
-    .weapon-skills-container {
-      min-width: unset;
-      max-width: none;
-      width: 100%;
-    }
-
-    .character-hero-card {
-      max-width: none;
-    }
-
-    .character-portrait-img-wrapper {
-      min-height: 250px;
-    }
-
-    .character-overview-flex,
-    .weapon-flex {
-      align-items: center;
-    }
-
-    .character-name {
-      font-size: var(--text-xl);
-    }
-
-    .skill-card,
-    .trait-card,
-    .character-story-content,
-    .character-stats-box {
-      padding: var(--hw-spacing-sm);
-    }
-
-    .weapon-image-wrapper img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-    }
-
-    .weapon-skills-box,
-    .weapon-skill-card {
-      padding: var(--hw-spacing-md);
-    }
-
-    .skill-trigger-complete-group {
-      margin-bottom: 1rem;
-    }
-
-    .stats-core-row {
-      flex-wrap: wrap;
-    }
-
-    .stats-core-item {
-      flex: 0 1 calc(33.333% - 0.5rem);
-    }
-
-    .stats-core-value {
-      font-size: var(--text-lg);
-    }
-
-    .stats-table {
-      grid-template-columns: 1fr;
-    }
-
-    .stats-attr-header,
-    .stats-attr-row {
-      grid-template-columns: 1fr 60px 60px;
-    }
-
-    .character-tags-wrapper {
-      justify-content: center;
-      gap: 0.4rem;
-    }
-
-    .character-tags-container {
-      margin-top: 1.5rem;
-      padding-top: 0.8rem;
-    }
-
-    .character-tags-label {
-      font-size: var(--text-xs);
-      margin-bottom: 0.6rem;
-    }
-
-    .character-overview-flex,
-    .weapon-flex {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .content-section {
-      overflow-x: hidden;
-    }
-
-    .weapon-stats-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                         SKILL HIGHLIGHTING SYSTEM                       */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  /* Single-color highlighting system for clean, non-distracting scan reading */
-  .hw-highlight-damage,
-  .hw-highlight-effects,
-  .hw-highlight-buffs,
-  .hw-highlight-attributes,
-  .hw-highlight-numbers {
-    color: var(--hw-primary-warm);
-    font-weight: var(--font-semibold);
-  }
-
-  .hw-highlight-keywords {
-    color: var(--hw-primary-warm);
-    font-weight: var(--font-medium);
-    font-style: italic;
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════════ */
-  /*                           GIFT SECTION STYLES                           */
-  /* ═══════════════════════════════════════════════════════════════════════ */
-
-  .gift-explanation {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    color: var(--hw-text-very-muted);
-    text-align: center;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .gift-container {
-    display: flex;
-    flex-direction: column;
+  .character-overview-flex,
+  .weapon-flex {
     gap: 1.5rem;
-    contain: layout style;
   }
 
-  /* Level 5 Bonus Card - matches skill-card style */
-  .level5-bonus-card {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-primary-warm-30);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    margin-bottom: var(--hw-spacing-lg);
-  }
-
-  .level5-bonus-header {
+  .hw-badge,
+  .skill-cost,
+  .skill-cooldown {
+    min-height: 44px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
+  }
+}
+
+/* Mobile tablet OR touch devices with medium screens */
+@media (max-width: 768px), ((hover: none) and (pointer: coarse) and (max-width: 900px)) {
+  .content-section {
+    padding: 1.5rem;
+    touch-action: pan-y;
   }
 
-  .level5-bonus-title {
-    font-family: var(--font-display);
+  .section-title {
     font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
   }
 
-  .level5-bonus-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
+  .character-overview-flex,
+  .weapon-flex {
+    gap: 1.5rem;
+    touch-action: manipulation;
   }
 
-  .bonus-type {
-    font-family: var(--font-primary);
-    color: var(--hw-text-light);
-    font-weight: var(--font-semibold);
+  .character-hero-card {
+    width: 100%;
+    max-width: 400px;
   }
 
-  .bonus-value {
-    font-family: var(--font-primary);
-    color: var(--hw-primary-warm-90);
-    font-weight: var(--font-bold);
+  .character-portrait-img-wrapper {
+    min-height: 350px;
   }
 
-  /* Gift Categories */
-  .gift-category {
+  .character-info-card,
+  .character-stats-box,
+  .skill-card,
+  .trait-card,
+  .character-story-content,
+  .effects-section,
+  .effect-item,
+  .weapon-info-card,
+  .weapon-skills-box,
+  .weapon-skill-card,
+  .weapon-image-box,
+  .level5-bonus-card {
+    padding: var(--hw-spacing-md);
+  }
+
+  .skill-trigger-complete-group {
     margin-bottom: 1.5rem;
   }
 
-  .gift-category-title {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0 0 0.8rem 0;
-    padding-left: 0.8rem;
-    border-left: 2px solid var(--hw-border-muted);
+  .skill-replacement-arrow {
+    height: 40px;
   }
 
-  .gift-category-description {
-    font-family: var(--font-primary);
-    color: var(--hw-text-medium);
-    font-size: var(--text-sm);
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    line-height: 1.5;
+  .stats-table {
+    grid-template-columns: 1fr;
   }
 
-  /* Gift Grid */
-  .gifts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    contain: layout style;
+  .stats-core-value {
+    font-size: var(--text-xl);
   }
 
-  /* Gift Cards - matches existing card style */
-  .gift-card {
-    background: var(--hw-gradient-skill-card);
-    border: 1px solid var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    display: flex;
+  .skill-header,
+  .trait-header,
+  .weapon-skill-header {
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--hw-spacing-md);
   }
 
-  .gift-card.favorite-gift {
-    border-color: var(--hw-primary-warm-40);
-    background: var(--hw-gradient-warm-coral-light);
-  }
-
-  .gift-card.liked-gift {
-    border-color: var(--hw-border-muted);
-  }
-
-  .gift-card.high-value-gift {
-    border-color: var(--hw-secondary-coral-40);
-    background: var(--hw-gradient-coral-light);
-  }
-
-  /* Gift Image Container */
-  .gift-image-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+  .trait-badges {
+    gap: 0.4rem;
     justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .gift-image {
-    border-radius: var(--hw-radius-md);
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border: 1px solid var(--hw-border-muted);
-  }
-
-  .gift-rarity-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-family: var(--font-primary);
-    font-size: var(--text-xs);
-  }
-
-  /* Gift Info */
-  .gift-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-
-  .gift-name {
-    font-family: var(--font-primary);
-    color: var(--hw-text-light);
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .gift-points {
-    display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 0.3rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    line-height: 1.4;
   }
 
-  .points-label {
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
-    color: var(--hw-text-muted);
-  }
-
-  .points-value {
-    font-family: var(--font-primary);
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm);
-  }
-
-  .points-value.bonus-points {
-    color: var(--hw-primary-warm);
-  }
-
-  .points-total {
-    font-family: var(--font-primary);
-    font-size: var(--text-base);
-    font-weight: var(--font-extrabold);
-    color: var(--hw-secondary-coral);
-  }
-
-  .gift-max-affection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    font-family: var(--font-primary);
-    font-size: var(--text-sm);
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--hw-border-muted-50);
-  }
-
-  .gift-max-affection .points-value {
-    font-family: var(--font-primary);
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm);
-  }
-
-  /* Gift Source Information */
-  .gift-sources {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-family: var(--font-primary);
+  .gift-affection-note {
     font-size: var(--text-xs);
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--hw-border-muted);
+    padding: var(--hw-spacing-md);
   }
 
-  .sources-label {
-    font-family: var(--font-primary);
-    color: var(--hw-text-medium);
-    font-weight: var(--font-medium);
-    margin-bottom: 0.3rem;
-  }
-
-  .gift-boxes {
-    display: flex;
+  .bonus-list {
     flex-direction: column;
     gap: 0.4rem;
   }
 
-  .gift-box-item {
-    display: flex;
-    align-items: center;
-    gap: var(--hw-spacing-sm);
-    padding: var(--hw-spacing-sm);
-    background: var(--hw-black-30);
-    border-radius: var(--hw-radius-md);
-    border: 1px solid var(--hw-border-muted);
-  }
-
-  .gift-box-image {
-    width: 24px;
-    height: 24px;
-    border-radius: var(--hw-radius-sm);
-    border: 1px solid var(--hw-border-muted);
-    flex-shrink: 0;
-  }
-
-  .gift-box-name {
-    font-family: var(--font-primary);
-    color: var(--hw-tertiary-sky-90);
-    font-weight: var(--font-semibold);
+  .bonus-list li {
     font-size: var(--text-xs);
-    line-height: 1.3;
+    padding: var(--hw-spacing-sm);
   }
 
-  /* No Gifts Card - matches existing card style */
-  .no-gifts-card {
-    background: var(--hw-gradient-skill-card);
-    border: 2px dashed var(--hw-border-muted);
-    border-radius: var(--hw-radius-lg);
-    padding: var(--hw-spacing-lg);
-    text-align: center;
+  .character-hero-card,
+  .weapon-image-container {
+    min-width: unset;
   }
 
-  .no-gifts-content {
-    max-width: 400px;
-    margin: 0 auto;
+  .character-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
   }
 
-  .no-gifts-title {
-    font-family: var(--font-display);
-    color: var(--hw-text-light);
+  .section-title {
     font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    margin: 0 0 0.8rem 0;
+    padding-left: 0.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
-  .no-gifts-description {
-    font-family: var(--font-primary);
-    color: var(--hw-text-medium);
-    font-size: var(--text-sm);
-    margin: 0;
-    opacity: 0.8;
-    line-height: 1.6;
+  .character-hero-card,
+  .character-stats-container,
+  .weapon-image-container,
+  .weapon-skills-container {
+    min-width: unset;
+    max-width: none;
+    width: 100%;
   }
 
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
-    .gifts-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .gift-card {
-      padding: var(--hw-spacing-lg);
-    }
-
-    .level5-bonus-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .level5-bonus-content {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
-    }
-
-    .gift-points {
-      flex-direction: column;
-      gap: 0.2rem;
-    }
+  .character-hero-card {
+    max-width: none;
   }
-} /* End @scope (.horizon-walker-main) */
+
+  .character-portrait-img-wrapper {
+    min-height: 250px;
+  }
+
+  .character-overview-flex,
+  .weapon-flex {
+    align-items: center;
+  }
+
+  .character-name {
+    font-size: var(--text-xl);
+  }
+
+  .skill-card,
+  .trait-card,
+  .character-story-content,
+  .character-stats-box {
+    padding: var(--hw-spacing-sm);
+  }
+
+  .weapon-image-wrapper img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .weapon-skills-box,
+  .weapon-skill-card {
+    padding: var(--hw-spacing-md);
+  }
+
+  .skill-trigger-complete-group {
+    margin-bottom: 1rem;
+  }
+
+  .stats-core-row {
+    flex-wrap: wrap;
+  }
+
+  .stats-core-item {
+    flex: 0 1 calc(33.333% - 0.5rem);
+  }
+
+  .stats-core-value {
+    font-size: var(--text-lg);
+  }
+
+  .stats-table {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-attr-header,
+  .stats-attr-row {
+    grid-template-columns: 1fr 60px 60px;
+  }
+
+  .character-tags-wrapper {
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .character-tags-container {
+    margin-top: 1.5rem;
+    padding-top: 0.8rem;
+  }
+
+  .character-tags-label {
+    font-size: var(--text-xs);
+    margin-bottom: 0.6rem;
+  }
+
+  .character-overview-flex,
+  .weapon-flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .content-section {
+    overflow-x: hidden;
+  }
+
+  .weapon-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                         SKILL HIGHLIGHTING SYSTEM                       */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+/* Single-color highlighting system for clean, non-distracting scan reading */
+.hw-highlight-damage,
+.hw-highlight-effects,
+.hw-highlight-buffs,
+.hw-highlight-attributes,
+.hw-highlight-numbers {
+  color: var(--hw-primary-warm);
+  font-weight: var(--font-semibold);
+}
+
+.hw-highlight-keywords {
+  color: var(--hw-primary-warm);
+  font-weight: var(--font-medium);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                           GIFT SECTION STYLES                           */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+.gift-explanation {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-very-muted);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.gift-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  contain: layout style;
+}
+
+/* Level 5 Bonus Card - matches skill-card style */
+.level5-bonus-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-primary-warm-30);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  margin-bottom: var(--hw-spacing-lg);
+}
+
+.level5-bonus-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.level5-bonus-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+.level5-bonus-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+}
+
+.bonus-type {
+  font-family: var(--font-primary);
+  color: var(--hw-text-light);
+  font-weight: var(--font-semibold);
+}
+
+.bonus-value {
+  font-family: var(--font-primary);
+  color: var(--hw-primary-warm-90);
+  font-weight: var(--font-bold);
+}
+
+/* Gift Categories */
+.gift-category {
+  margin-bottom: 1.5rem;
+}
+
+.gift-category-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--hw-text-light);
+  margin: 0 0 0.8rem 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid var(--hw-border-muted);
+}
+
+.gift-category-description {
+  font-family: var(--font-primary);
+  color: var(--hw-text-medium);
+  font-size: var(--text-sm);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* Gift Grid */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  contain: layout style;
+}
+
+/* Gift Cards - matches existing card style */
+.gift-card {
+  background: var(--hw-gradient-skill-card);
+  border: 1px solid var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hw-spacing-md);
+}
+
+.gift-card.favorite-gift {
+  border-color: var(--hw-primary-warm-40);
+  background: var(--hw-gradient-warm-coral-light);
+}
+
+.gift-card.liked-gift {
+  border-color: var(--hw-border-muted);
+}
+
+.gift-card.high-value-gift {
+  border-color: var(--hw-secondary-coral-40);
+  background: var(--hw-gradient-coral-light);
+}
+
+/* Gift Image Container */
+.gift-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.gift-image {
+  border-radius: var(--hw-radius-md);
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid var(--hw-border-muted);
+}
+
+.gift-rarity-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+}
+
+/* Gift Info */
+.gift-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.gift-name {
+  font-family: var(--font-primary);
+  color: var(--hw-text-light);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.gift-points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+.points-label {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--hw-text-muted);
+}
+
+.points-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--hw-primary-warm);
+}
+
+.points-value.bonus-points {
+  color: var(--hw-primary-warm);
+}
+
+.points-total {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-extrabold);
+  color: var(--hw-secondary-coral);
+}
+
+.gift-max-affection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--hw-border-muted-50);
+}
+
+.gift-max-affection .points-value {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--hw-primary-warm);
+}
+
+/* Gift Source Information */
+.gift-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--hw-border-muted);
+}
+
+.sources-label {
+  font-family: var(--font-primary);
+  color: var(--hw-text-medium);
+  font-weight: var(--font-medium);
+  margin-bottom: 0.3rem;
+}
+
+.gift-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gift-box-item {
+  display: flex;
+  align-items: center;
+  gap: var(--hw-spacing-sm);
+  padding: var(--hw-spacing-sm);
+  background: var(--hw-black-30);
+  border-radius: var(--hw-radius-md);
+  border: 1px solid var(--hw-border-muted);
+}
+
+.gift-box-image {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--hw-radius-sm);
+  border: 1px solid var(--hw-border-muted);
+  flex-shrink: 0;
+}
+
+.gift-box-name {
+  font-family: var(--font-primary);
+  color: var(--hw-tertiary-sky-90);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-xs);
+  line-height: 1.3;
+}
+
+/* No Gifts Card - matches existing card style */
+.no-gifts-card {
+  background: var(--hw-gradient-skill-card);
+  border: 2px dashed var(--hw-border-muted);
+  border-radius: var(--hw-radius-lg);
+  padding: var(--hw-spacing-lg);
+  text-align: center;
+}
+
+.no-gifts-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.no-gifts-title {
+  font-family: var(--font-display);
+  color: var(--hw-text-light);
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  margin: 0 0 0.8rem 0;
+}
+
+.no-gifts-description {
+  font-family: var(--font-primary);
+  color: var(--hw-text-medium);
+  font-size: var(--text-sm);
+  margin: 0;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .gifts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gift-card {
+    padding: var(--hw-spacing-lg);
+  }
+
+  .level5-bonus-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .level5-bonus-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .gift-points {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
