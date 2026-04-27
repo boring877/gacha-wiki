@@ -3,46 +3,6 @@
 
 export const summonRecommendations = [
   {
-    bannerId: 'little-tyrant',
-    character: 'Scarlet',
-    characterSlug: 'scarlet',
-    image: 'TN_NEWS_SAVIOR_S_BUNNY_SCISSORS.png',
-    bannerType: 'Featured Observation',
-    startDate: '2026-04-23',
-    endDate: '2026-05-06',
-    verdict: 'skip',
-    verdictLabel: 'Skip',
-    summary: 'Already in the permanent pool. Save for half anniversary.',
-    reasons: [
-      {
-        title: 'Permanent Banner',
-        text: 'Scarlet is already available in the normal banner pool. You can obtain her naturally over time without spending premium currency.',
-      },
-      {
-        title: 'Half Anniversary Coming Soon',
-        text: 'The half anniversary is expected in roughly two months, and anniversary units are typically among the strongest in the game. Saving your currency now gives you a better shot at limited-time meta-defining characters.',
-      },
-    ],
-    arcana: {
-      slug: 'scarlet-the-great-and-amazing-bunny-girl',
-      name: 'The Great and Amazing Bunny Girl',
-      image: 'ARCANA_BUNNY_SCISSORS_SSR_01.png',
-      verdict: 'skip',
-      verdictLabel: 'Skip',
-      summary: 'Already in the normal banner pool. Save up for half anniversary.',
-      reasons: [
-        {
-          title: 'Normal Banner',
-          text: 'The arcana is already available in the normal banner pool.',
-        },
-        {
-          title: 'Save for Half Anniversary',
-          text: 'Save your resources for the half anniversary, which is expected to bring limited-time meta-defining characters.',
-        },
-      ],
-    },
-  },
-  {
     bannerId: 'eastern-swordmaster',
     character: 'Lyn',
     characterSlug: 'lyn',
