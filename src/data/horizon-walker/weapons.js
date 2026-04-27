@@ -1,5 +1,7 @@
 // Horizon Walker Weapons Database - Dynamic import from character files
 
+import { NON_EX_WEAPONS } from './non-ex-weapons.js';
+
 // Import character data to extract weapon information dynamically
 import { arahaData } from './characters/araha.js';
 import { bellaData } from './characters/bella.js';
@@ -87,7 +89,7 @@ const CHARACTER_DATA = {
   griselda: griseldaData,
   'headless-knight': headlessKnightData,
   ines: inesData,
-  jua: juhaData, // Note: jua file exports as juhaData
+  juha: juhaData,
   kalina: kalinaData,
   'kim-ga-young': kimGaYoungData,
   kaul: kaulData,
@@ -171,6 +173,28 @@ Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
   };
 
   HORIZON_WALKER_WEAPONS.push(weaponEntry);
+});
+
+// Merge non-EX weapons (SS, S, A, B) from extracted game data
+NON_EX_WEAPONS.forEach(weapon => {
+  HORIZON_WALKER_WEAPONS.push({
+    id: `non-ex-${weapon.id}`,
+    name: weapon.name,
+    description: weapon.description || '',
+    type: weapon.type,
+    rarity: weapon.rarity,
+    maxLevel: weapon.maxLevel || 60,
+    image: weapon.image,
+    character: null,
+    stats: weapon.stats,
+    statGrowth: weapon.statGrowth || {},
+    specialEffect: weapon.specialEffect || null,
+    detailUrl: `/guides/horizon-walker/weapons/non-ex-${weapon.id}/`,
+    uniqueSkill: null,
+    signatureSkill: null,
+    searchName: weapon.name.toLowerCase(),
+    searchCharacter: '',
+  });
 });
 
 export { HORIZON_WALKER_WEAPONS, WEAPON_SKILLS };

@@ -1,0 +1,170 @@
+---
+// Crystal Icon component for Horizon Walker character profile pages
+// Displays the character's unique Future Crystal material icon as a decorative element
+import { Image } from 'astro:assets';
+
+import ArahaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_ArahaFutureCrystal.png';
+import BellaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_BellaFutureCrystal.png';
+import BergaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_BergaFutureCrystal.png';
+import CaniskCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_CaniskFutureCrystal.png';
+import CoraCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_CoraFutureCrystal.png';
+import CutThroatKnightCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_CutThroatKnightCrystal.png';
+import DeliaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_DeliaFutureCrystal.png';
+import EchidnaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_EchidnaFutureCrystal.png';
+import EfreetiCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_EfreetiFutureCrystal.png';
+import EmiliaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_EmiliaFutureCrystal.png';
+import ErnesteCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_ErnesteFutureCrystal.png';
+import EugeniaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_EugeniaFutureCrystal.png';
+import EveretteCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_EveretteFutureCrystal.png';
+import FammeneCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_FammeneFutureCrystal.png';
+import GoliathCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_GoliathFutureCrystal.png';
+import GriseldaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_GriseldaFutureCrystal.png';
+import GulamCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_GulamFutureCrystal.png';
+import GulsniCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_GulsniFutureCrystal.png';
+import InesCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_InesFutureCrystal.png';
+import JuhaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_JuhaFutureCrystal.png';
+import KalinaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KalinaFutureCrystal.png';
+import KalmaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KalmaFutureCrystal.png';
+import KaulCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KaulFutureCrystal.png';
+import KilonCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KilonFutureCrystal.png';
+import KorabiCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KorabiFutureCrystal.png';
+import LeahCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_LeahFutureCrystal.png';
+import LisandriaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_LisandriaFutureCrystal.png';
+import LuiseCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_LuiseFutureCrystal.png';
+import MahariCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MahariFutureCrystal.png';
+import MarhimCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MarhimFutureCrystal.png';
+import MatrothoCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MatrothoFutureCrystal.png';
+import MatsumotoYuiCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MatsumotoYuiFutureCrystal.png';
+import MaximiliaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MaximiliaFutureCrystal.png';
+import MinEunsolCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_MinEunsolFutureCrystal.png';
+import NariCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_NariFutureCrystal.png';
+import NikaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_NikaFutureCrystal.png';
+import NonohaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_NonohaFutureCrystal.png';
+import NymsetCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_NymsetFutureCrystal.png';
+import OliviaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_OliviaFutureCrystal.png';
+import OslaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_OslaFutureCrystal.png';
+import PalekarCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PalekarFutureCrystal.png';
+import PantheriCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PantheriFutureCrystal.png';
+import PlatinaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PlatinaFutureCrystal.png';
+import RhasadinaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_RhasadinaFutureCrystal.png';
+import SamarikaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_SamarikaFutureCrystal.png';
+import SoJooheeCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_SoJooheeFutureCrystal.png';
+import TXManticoreCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_TX_ManticoreFutureCrystal.png';
+import ValetaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_ValetaFutureCrystal.png';
+import VlissingCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_VlissingFutureCrystal.png';
+import YeonChaeyoungCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_YeonChaeyoungFutureCrystal.png';
+import YeonwooCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_YeonwooFutureCrystal.png';
+import YvonnaCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_YvonnaFutureCrystal.png';
+import HongpamangCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_HongpamangFutureCrystal.png';
+import KimGayeongCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KimGayeongFutureCrystal.png';
+
+import GreekMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_GreekMercenaryFutureCrystal.png';
+import KoboldApprenticeWarriorCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_KoboldApprenticeWarriorFutureCrystal.png';
+import PuppyShooterCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PuppyShooterFutureCrystal.png';
+import PuppyStepperCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PuppyStepperFutureCrystal.png';
+import PriestOfTheBranchMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_PriestOfTheBranchMercenaryFutureCrystal.png';
+import SwampRangerMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_SwampRangerMercenaryFutureCrystal.png';
+import LegionnaireMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_LegionnaireMercenaryFutureCrystal.png';
+import VisomancerMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_VisomancerMercenaryFutureCrystal.png';
+import ApprenticeDoppelsoldnerMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_ApprenticeDoppelsoldnerMercenaryFutureCrystal.png';
+import HuscarlMercenaryCrystal from '../../assets/images/games/horizon-walker/crystals/ItemIcon_RaiseMaterial_Hero_HuscarlMercenaryFutureCrystal.png';
+
+const crystalMap: Record<string, any> = {
+  'Araha': ArahaCrystal,
+  'Bella': BellaCrystal,
+  'Berga': BergaCrystal,
+  'Canisk': CaniskCrystal,
+  'Cora': CoraCrystal,
+  'Headless_Knight': CutThroatKnightCrystal,
+  'Delia': DeliaCrystal,
+  'Echidna': EchidnaCrystal,
+  'Efreeti': EfreetiCrystal,
+  'Emilia': EmiliaCrystal,
+  'Erneste': ErnesteCrystal,
+  'Eugenia': EugeniaCrystal,
+  'Everette': EveretteCrystal,
+  'Fammene': FammeneCrystal,
+  'Griselda': GriseldaCrystal,
+  'Gulam': GulamCrystal,
+  'Gulsni': GulsniCrystal,
+  'Ines': InesCrystal,
+  'Juha': JuhaCrystal,
+  'Kalina': KalinaCrystal,
+  'Kalma': KalmaCrystal,
+  'Kaul': KaulCrystal,
+  'Kilon': KilonCrystal,
+  'Korabi': KorabiCrystal,
+  'Leah': LeahCrystal,
+  'Lisandria': LisandriaCrystal,
+  'Luise': LuiseCrystal,
+  'Mahari': MahariCrystal,
+  'Marhim': MarhimCrystal,
+  'Matrotho': MatrothoCrystal,
+  'Maximilia': MaximiliaCrystal,
+  'Nari': NariCrystal,
+  'Nika': NikaCrystal,
+  'Nonoha': NonohaCrystal,
+  'Nymset': NymsetCrystal,
+  'Olivia': OliviaCrystal,
+  'Osla': OslaCrystal,
+  'Palekar': PalekarCrystal,
+  'Pantheri': PantheriCrystal,
+  'Platina': PlatinaCrystal,
+  'Rhasadina': RhasadinaCrystal,
+  'Samarika': SamarikaCrystal,
+  'TX_Manticore': TXManticoreCrystal,
+  'Valeta': ValetaCrystal,
+  'Vlissing': VlissingCrystal,
+  'Yeonwoo': YeonwooCrystal,
+  'Yvonna': YvonnaCrystal,
+  'kim_Ga_young': KimGayeongCrystal,
+  'Min_Eun_sol': MinEunsolCrystal,
+  'So_Joo_hee': SoJooheeCrystal,
+  'Yeon_Chae-Young': YeonChaeyoungCrystal,
+  'Yui': MatsumotoYuiCrystal,
+  'Re_De_Da': HongpamangCrystal,
+  'Hongpamang': HongpamangCrystal,
+  'Grrik_Mercenary': GreekMercenaryCrystal,
+  'Koblod_Mercenary': KoboldApprenticeWarriorCrystal,
+  'Puppy_Shooter': PuppyShooterCrystal,
+  'Puppy_Stepper': PuppyStepperCrystal,
+  'Split_Twigs_Priest': PriestOfTheBranchMercenaryCrystal,
+  'Swamp_Elf_Vigilante_member': SwampRangerMercenaryCrystal,
+  'Wizard_Legionnaire': LegionnaireMercenaryCrystal,
+  'War_Mercenary': VisomancerMercenaryCrystal,
+  'Torta_warrior': ApprenticeDoppelsoldnerMercenaryCrystal,
+  'Imperial_Shieldbearer_Mercenary': HuscarlMercenaryCrystal,
+  'Goliath': GoliathCrystal,
+};
+
+interface Props {
+  characterImage: string;
+  alt?: string;
+  size?: number;
+  class?: string;
+}
+
+const {
+  characterImage,
+  alt,
+  size = 48,
+  class: className,
+} = Astro.props;
+
+const crystalSrc = crystalMap[characterImage];
+---
+
+{crystalSrc && (
+  <div class={`crystal-icon-wrapper ${className || ''}`}>
+    <Image
+      src={crystalSrc}
+      alt={alt || `${characterImage} crystal icon`}
+      width={size}
+      height={size}
+      loading="lazy"
+      format="webp"
+      quality={85}
+      class="crystal-icon-img"
+    />
+  </div>
+)}

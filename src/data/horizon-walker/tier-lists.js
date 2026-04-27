@@ -118,7 +118,7 @@ export const GAME_MODES = {
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
   UR: ['Cora'],
-  SSS: ['Olivia', 'Vlissing', 'Palekar'],
+  SSS: ['Olivia', 'Vlissing', 'Palekar', 'Matrotho', 'Eugenia'],
   SS: [
     'Yui',
     'Valeta',
@@ -146,7 +146,6 @@ const MAP_CLEAR_CHARACTERS = {
     'Puppy Stepper',
     'Emilia',
     'Maximilia',
-    'Eugenia',
   ],
   S: [
     'Echidna',
@@ -158,7 +157,6 @@ const MAP_CLEAR_CHARACTERS = {
     'Araha',
     'Pantheri',
     'Marhim',
-    'Matrotho',
     'So joo-hee',
     'Samarika',
     'Puppy shooter',
@@ -186,7 +184,7 @@ const MAP_CLEAR_CHARACTERS = {
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
   UR: ['Cora'],
-  SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari'],
+  SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari', 'Matrotho', 'Eugenia'],
   SS: [
     'Olivia',
     'Yvonna',
@@ -231,7 +229,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Yeon Chae-young',
     'Platina',
     'Delia',
-    'Matrotho',
     'Puppy shooter',
     'Wizard legionnaire',
   ],
@@ -262,6 +259,8 @@ const DOPAMIN_CHARACTERS = {
     'Leah',
     'nymset',
     'Palekar',
+    'Eugenia',
+    'Matrotho',
   ],
   SS: [
     'Kalina',
@@ -280,7 +279,6 @@ const DOPAMIN_CHARACTERS = {
     'puppy stepper',
     'Emilia',
     'Kim ga-young',
-    'Eugenia',
     'Maximilia',
   ],
   S: [
@@ -300,7 +298,7 @@ const DOPAMIN_CHARACTERS = {
     'puppy shooter',
     'Koblod mercenary',
   ],
-  A: ['Canisk', 'Gulsni', 'Re_De_Da', 'Gulam', 'Nonoha', 'Matrotho', 'Wizard legionnaire'],
+  A: ['Canisk', 'Gulsni', 'Re_De_Da', 'Gulam', 'Nonoha', 'Wizard legionnaire'],
   B: [
     'Rhasadina',
     'imperial shieldbearer merceneary',
@@ -416,5 +414,14 @@ export const getCharactersWithEXWeapons = () => {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [];
+
+// Notes for specific characters displayed on tier list cards
+export const TIER_CHARACTER_NOTES = {
+  Matrotho: {
+    type: 'warning',
+    title: 'Requires Team Synergy',
+    text: 'Matrotho needs a proper team to reach SSS potential. On her own she performs much lower. A good starting point is pairing her with Eugenia and Efreeti. Not recommended for new players unfamiliar with team building.',
+  },
+};
 
 export default HORIZON_WALKER_TIER_LISTS;

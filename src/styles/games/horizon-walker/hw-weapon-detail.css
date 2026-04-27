@@ -107,7 +107,25 @@
   color: var(--hw-text-muted);
   text-transform: uppercase;
   font-weight: var(--font-semibold);
-  line-height: var(--leading-normal);
+}
+
+.weapon-detail-maxlevel {
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  color: var(--hw-text-muted);
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.4rem;
+  background: var(--hw-bg-darker);
+  border-radius: var(--hw-radius-sm);
+  border: 1px solid var(--hw-border-muted);
+}
+
+.weapon-detail-description {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--hw-text-secondary);
+  line-height: 1.7;
+  margin: 0.5rem 0 0 0;
 }
 
 .weapon-detail-character-name {

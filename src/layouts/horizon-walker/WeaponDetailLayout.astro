@@ -30,14 +30,20 @@ const { weapon, title, description, currentPageName } = Astro.props;
 
 // Extract weapon slug from URL path for navigation
 const urlParts = Astro.url.pathname.split('/');
-const weaponSlug = urlParts[urlParts.length - 1] || weapon.character.slug;
+const weaponSlug = urlParts[urlParts.length - 1] || (weapon.character ? weapon.character.slug : weapon.id);
+
+const isExWeapon = weapon.character !== null;
 
 // Use provided SEO metadata or fallback to generated ones
 const pageTitle =
-  title || `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`;
+  title || (isExWeapon
+    ? `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`
+    : `${weapon.name} - ${weapon.rarity} ${weapon.type} Weapon | Horizon Walker Wiki`);
 const pageDescription =
   description ||
-  `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`;
+  (isExWeapon
+    ? `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`
+    : `${weapon.name} - ${weapon.rarity} rarity ${weapon.type} weapon in Horizon Walker.`);
 
 // Breadcrumb navigation
 const breadcrumbs = [
@@ -87,7 +93,7 @@ const breadcrumbs = [
             <h1 class="hw-char-db-hero-title">Weapon Details</h1>
 
             <!-- Subtitle -->
-            <p class="hw-char-db-hero-subtitle">EX Weapon Information</p>
+            <p class="hw-char-db-hero-subtitle">{isExWeapon ? 'EX Weapon Information' : 'Weapon Information'}</p>
 
             <DecorativeLines />
           </section>

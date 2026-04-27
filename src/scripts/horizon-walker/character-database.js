@@ -15,6 +15,8 @@ const initialize = () => {
   const tableBody = document.getElementById('character-table-body');
   const mobileCardsContainer = document.getElementById('mobile-cards-container');
   const rarityFilter = document.getElementById('rarity-filter');
+  const raceFilter = document.getElementById('race-filter');
+  const searchInput = document.getElementById('character-search');
   const sortButtons = document.querySelectorAll('.sort-btn');
   const resetButton = document.getElementById('reset-table');
 
@@ -170,15 +172,21 @@ const initialize = () => {
    */
   function applyFilters() {
     const rarityValue = rarityFilter?.value || '';
+    const raceValue = raceFilter?.value || '';
+    const searchTerm = (searchInput?.value || '').toLowerCase().trim();
 
     // Filter desktop table rows
     if (tableBody) {
       Array.from(tableBody.children).forEach(row => {
         const rowRarity = row.dataset.rarity;
+        const rowTags = (row.dataset.tags || '').toLowerCase();
+        const rowName = (row.dataset.name || '').toLowerCase();
 
         const matchesRarity = !rarityValue || rowRarity === rarityValue;
+        const matchesRace = !raceValue || rowTags.includes(raceValue.toLowerCase());
+        const matchesSearch = !searchTerm || rowName.includes(searchTerm);
 
-        const isVisible = matchesRarity;
+        const isVisible = matchesRarity && matchesRace && matchesSearch;
         row.style.display = isVisible ? '' : 'none';
       });
 
@@ -189,10 +197,14 @@ const initialize = () => {
     if (mobileCardsContainer) {
       Array.from(mobileCardsContainer.children).forEach(card => {
         const cardRarity = card.dataset.rarity;
+        const cardTags = (card.dataset.tags || '').toLowerCase();
+        const cardName = (card.dataset.name || '').toLowerCase();
 
         const matchesRarity = !rarityValue || cardRarity === rarityValue;
+        const matchesRace = !raceValue || cardTags.includes(raceValue.toLowerCase());
+        const matchesSearch = !searchTerm || cardName.includes(searchTerm);
 
-        const isVisible = matchesRarity;
+        const isVisible = matchesRarity && matchesRace && matchesSearch;
         card.style.display = isVisible ? '' : 'none';
       });
     }
@@ -200,6 +212,8 @@ const initialize = () => {
     // Save filter state to sessionStorage
     const filterState = {
       rarity: rarityValue || null,
+      race: raceValue || null,
+      search: searchTerm || null,
     };
 
     const activeFilters = {};
@@ -227,6 +241,8 @@ const initialize = () => {
   function resetDatabase() {
     // Clear all filters
     if (rarityFilter) rarityFilter.value = '';
+    if (raceFilter) raceFilter.value = '';
+    if (searchInput) searchInput.value = '';
 
     // Show all rows and cards
     if (tableBody) {
@@ -271,6 +287,8 @@ const initialize = () => {
       if (savedFilters) {
         const filters = JSON.parse(savedFilters);
         if (filters.rarity && rarityFilter) rarityFilter.value = filters.rarity;
+        if (filters.race && raceFilter) raceFilter.value = filters.race;
+        if (filters.search && searchInput) searchInput.value = filters.search;
         applyFilters();
       }
     } catch (_error) {
@@ -355,6 +373,20 @@ const initialize = () => {
   // Filter event listeners (keep existing for compatibility)
   if (rarityFilter) {
     rarityFilter.addEventListener('change', applyFilters);
+  }
+
+  if (raceFilter) {
+    raceFilter.addEventListener('change', applyFilters);
+  }
+
+  if (searchInput) {
+    let searchTimeout;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        applyFilters();
+      }, 200);
+    });
   }
 
   // Three-state sort button event listeners

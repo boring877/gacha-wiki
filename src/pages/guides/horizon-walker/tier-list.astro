@@ -1,6 +1,6 @@
 ---
 import TierListLayout from '../../../layouts/horizon-walker/TierListLayout.astro';
-import { HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS } from '../../../data/horizon-walker/tier-lists.js';
+import { HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS, TIER_CHARACTER_NOTES } from '../../../data/horizon-walker/tier-lists.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
 import { HORIZON_WALKER_MERCENARIES } from '../../../data/horizon-walker/mercenaries.js';
 import { CharacterImage, MercenaryImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
@@ -44,6 +44,9 @@ allUnits.forEach(unit => {
 function getTierClassName(tier: string): string {
   return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
 }
+
+// Pre-compute character notes lookup
+const charNoteMap: Record<string, { type: string; title: string; text: string }> = TIER_CHARACTER_NOTES;
 ---
 
 <TierListLayout
@@ -156,11 +159,22 @@ function getTierClassName(tier: string): string {
             {tierData.definition.label}
           </div>
           <div class="tier-characters">
-            {tierData.characters.map(charData => (
+            {tierData.characters.map(charData => {
+              const note = charNoteMap[charData.name];
+              return (
               <div
-                class="tier-character-card"
+                class={`tier-character-card${note ? ' has-note' : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
+                {note && (
+                  <div class={`tier-note-badge tier-note-${note.type}`}>
+                    <span class="tier-note-icon">!</span>
+                    <div class="tier-note-tooltip">
+                      <div class="tier-note-tooltip-title">{note.title}</div>
+                      <div class="tier-note-tooltip-text" set:html={note.text} />
+                    </div>
+                  </div>
+                )}
                 <div class="character-image-wrapper">
                   {charData.isMercenary ? (
                     <MercenaryImage
@@ -186,7 +200,8 @@ function getTierClassName(tier: string): string {
                 </div>
                 <div class="character-name">{charData.name}</div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
@@ -200,11 +215,22 @@ function getTierClassName(tier: string): string {
             {tierData.definition.label}
           </div>
           <div class="tier-characters">
-            {tierData.characters.map(charData => (
+            {tierData.characters.map(charData => {
+              const note = charNoteMap[charData.name];
+              return (
               <div
-                class="tier-character-card"
+                class={`tier-character-card${note ? ' has-note' : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
+                {note && (
+                  <div class={`tier-note-badge tier-note-${note.type}`}>
+                    <span class="tier-note-icon">!</span>
+                    <div class="tier-note-tooltip">
+                      <div class="tier-note-tooltip-title">{note.title}</div>
+                      <div class="tier-note-tooltip-text" set:html={note.text} />
+                    </div>
+                  </div>
+                )}
                 <div class="character-image-wrapper">
                   {charData.isMercenary ? (
                     <MercenaryImage
@@ -230,7 +256,8 @@ function getTierClassName(tier: string): string {
                 </div>
                 <div class="character-name">{charData.name}</div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
@@ -244,11 +271,22 @@ function getTierClassName(tier: string): string {
             {tierData.definition.label}
           </div>
           <div class="tier-characters">
-            {tierData.characters.map(charData => (
+            {tierData.characters.map(charData => {
+              const note = charNoteMap[charData.name];
+              return (
               <div
-                class="tier-character-card"
+                class={`tier-character-card${note ? ' has-note' : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
+                {note && (
+                  <div class={`tier-note-badge tier-note-${note.type}`}>
+                    <span class="tier-note-icon">!</span>
+                    <div class="tier-note-tooltip">
+                      <div class="tier-note-tooltip-title">{note.title}</div>
+                      <div class="tier-note-tooltip-text" set:html={note.text} />
+                    </div>
+                  </div>
+                )}
                 <div class="character-image-wrapper">
                   {charData.isMercenary ? (
                     <MercenaryImage
@@ -274,7 +312,8 @@ function getTierClassName(tier: string): string {
                 </div>
                 <div class="character-name">{charData.name}</div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
@@ -688,6 +727,23 @@ function getTierClassName(tier: string): string {
           console.error('Failed to load tier list:', e);
         }
       }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('click', e => {
+      const badge = (e.target as HTMLElement).closest('.tier-note-badge');
+      if (badge) {
+        e.stopPropagation();
+        const tooltip = badge.querySelector('.tier-note-tooltip');
+        if (!tooltip) return;
+        document.querySelectorAll('.tier-note-tooltip.active').forEach(t => {
+          if (t !== tooltip) t.classList.remove('active');
+        });
+        tooltip.classList.toggle('active');
+        return;
+      }
+      document.querySelectorAll('.tier-note-tooltip.active').forEach(t => t.classList.remove('active'));
     });
   </script>
 </TierListLayout>

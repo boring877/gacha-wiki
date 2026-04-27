@@ -25,8 +25,15 @@ const nextWeapon =
     : null;
 
 // SEO metadata
-const title = `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`;
-const description = `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`;
+const isExWeapon = weapon.character !== null;
+const title = isExWeapon
+  ? `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`
+  : `${weapon.name} - ${weapon.rarity} ${weapon.type} Weapon | Horizon Walker Wiki`;
+const description = isExWeapon
+  ? `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`
+  : weapon.description
+    ? `${weapon.description}`
+    : `${weapon.name} - ${weapon.rarity} rarity ${weapon.type} weapon in Horizon Walker. View base stats, growth, and details.`;
 
 export const prerender = true;
 ---
@@ -49,18 +56,31 @@ export const prerender = true;
           <h1 class="weapon-detail-name">{weapon.name}</h1>
           <p class="weapon-detail-type">
             {weapon.type} • <HWRarityIcon rarity={weapon.rarity} width={44} height={22} />
+            {weapon.maxLevel && weapon.maxLevel > 1 && (
+              <span class="weapon-detail-maxlevel">Max Level {weapon.maxLevel}</span>
+            )}
           </p>
 
-          <div class="weapon-detail-character">
-            <span class="weapon-detail-character-label">Exclusive Weapon For</span>
-            <span class="weapon-detail-character-name">{weapon.character.name}</span>
-            <a
-              href={`/guides/horizon-walker/characters/${weapon.character.slug}/`}
-              class="weapon-detail-character-link"
-            >
-              View Character →
-            </a>
-          </div>
+          {weapon.character ? (
+            <div class="weapon-detail-character">
+              <span class="weapon-detail-character-label">Exclusive Weapon For</span>
+              <span class="weapon-detail-character-name">{weapon.character.name}</span>
+              <a
+                href={`/guides/horizon-walker/characters/${weapon.character.slug}/`}
+                class="weapon-detail-character-link"
+              >
+                View Character →
+              </a>
+            </div>
+          ) : (
+            <div class="weapon-detail-character">
+              <span class="weapon-detail-character-label">{weapon.rarity} Rarity • {weapon.type}</span>
+            </div>
+          )}
+
+          {weapon.description && (
+            <p class="weapon-detail-description">{weapon.description}</p>
+          )}
         </div>
       </div>
     </section>
@@ -74,114 +94,37 @@ export const prerender = true;
         {
           weapon.stats && Object.keys(weapon.stats).length > 0 ? (
             <div class="weapon-stats-list">
-              {weapon.stats.weaponMeleeAtk && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Melee Attack</span>
-                  <span class="weapon-stat-value">{weapon.stats.weaponMeleeAtk}</span>
-                </div>
-              )}
-              {weapon.stats.meleeAtkPercent && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Melee ATK Bonus</span>
-                  <span class="weapon-stat-value">+{weapon.stats.meleeAtkPercent}%</span>
-                </div>
-              )}
-              {weapon.stats.weaponRangedAtk && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Ranged Attack</span>
-                  <span class="weapon-stat-value">{weapon.stats.weaponRangedAtk}</span>
-                </div>
-              )}
-              {weapon.stats.weaponMagicAtk && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Magic Attack</span>
-                  <span class="weapon-stat-value">{weapon.stats.weaponMagicAtk}</span>
-                </div>
-              )}
-              {weapon.stats.magicAtkBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Magic ATK Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.magicAtkBonus}</span>
-                </div>
-              )}
-              {weapon.stats.critDmgBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Critical DMG Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.critDmgBonus}</span>
-                </div>
-              )}
-              {weapon.stats.evade && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Evasion</span>
-                  <span class="weapon-stat-value">{weapon.stats.evade}</span>
-                </div>
-              )}
-              {weapon.stats.evadeBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Evasion Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.evadeBonus}</span>
-                </div>
-              )}
-              {weapon.stats.meleeAtkBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Melee ATK Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.meleeAtkBonus}</span>
-                </div>
-              )}
-              {weapon.stats.rangedAtkBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Ranged ATK Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.rangedAtkBonus}</span>
-                </div>
-              )}
-              {weapon.stats.accuracyBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Accuracy Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.accuracyBonus}</span>
-                </div>
-              )}
-              {weapon.stats.maxHpBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Max HP Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.maxHpBonus}</span>
-                </div>
-              )}
-              {weapon.stats.spdBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Speed Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.spdBonus}</span>
-                </div>
-              )}
-              {weapon.stats.apRecoveryBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">AP Recovery Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.apRecoveryBonus}</span>
-                </div>
-              )}
-              {weapon.stats.startingApBonus && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Starting AP Bonus</span>
-                  <span class="weapon-stat-value">{weapon.stats.startingApBonus}</span>
-                </div>
-              )}
-              {weapon.stats.slashBoost && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Slash Boost</span>
-                  <span class="weapon-stat-value">{weapon.stats.slashBoost}</span>
-                </div>
-              )}
-              {weapon.stats.heatBoost && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Heat Boost</span>
-                  <span class="weapon-stat-value">{weapon.stats.heatBoost}</span>
-                </div>
-              )}
-              {weapon.stats.coldBoost && (
-                <div class="weapon-stat-row">
-                  <span class="weapon-stat-name">Cold Boost</span>
-                  <span class="weapon-stat-value">{weapon.stats.coldBoost}</span>
-                </div>
-              )}
+              {Object.entries(weapon.stats).map(([statKey, baseVal]) => {
+                const STAT_LABELS = {
+                  weaponMeleeAtk: 'Melee Attack',
+                  weaponRangedAtk: 'Ranged Attack',
+                  weaponMagicAtk: 'Magic Attack',
+                  meleeAtkPercent: 'Melee ATK %',
+                  rangedAtkPercent: 'Ranged ATK %',
+                  magicAtkPercent: 'Magic ATK %',
+                  critDmgPercent: 'Critical DMG %',
+                  critRatePercent: 'Critical Rate %',
+                  apRecovery: 'AP Recovery %',
+                  hpPercent: 'HP %',
+                  hpFlat: 'HP',
+                  def: 'Defense',
+                  slashBoost: 'Slash Boost',
+                  heatBoost: 'Heat Boost',
+                  coldBoost: 'Cold Boost',
+                };
+                const label = STAT_LABELS[statKey] || statKey;
+                const growth = weapon.statGrowth?.[statKey];
+                const maxLevel = weapon.maxLevel || 60;
+                const maxVal = growth ? +(baseVal + growth * (maxLevel - 1)).toFixed(2) : null;
+                return (
+                  <div class="weapon-stat-row">
+                    <span class="weapon-stat-name">{label}</span>
+                    <span class="weapon-stat-value">
+                      {baseVal}{maxVal !== null && maxVal > baseVal ? ` → ${maxVal}` : ''}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p style="color: var(--hw-text-muted); font-style: italic;">
@@ -191,11 +134,23 @@ export const prerender = true;
         }
       </section>
 
-      <!-- Skills Section -->
+      <!-- Skills / Special Effect Section -->
       <section class="weapon-skills-card">
         <div class="weapon-skills-header">
-          <h2 class="weapon-skills-title">Weapon Skills</h2>
+          <h2 class="weapon-skills-title">{weapon.specialEffect ? 'Special Effect' : 'Weapon Skills'}</h2>
         </div>
+
+        {weapon.specialEffect && (
+          <div class="weapon-skill-block">
+            <div class="weapon-skill-header">
+              <h3 class="weapon-skill-name">{weapon.specialEffect.name}</h3>
+              <span class="weapon-skill-type weapon-skill-unique">Special</span>
+            </div>
+            {weapon.specialEffect.description && (
+              <p class="weapon-skill-description">{weapon.specialEffect.description}</p>
+            )}
+          </div>
+        )}
 
         {
           weapon.uniqueSkill && (
@@ -221,9 +176,9 @@ export const prerender = true;
         }
 
         {
-          !weapon.uniqueSkill && !weapon.signatureSkill && (
+          !weapon.specialEffect && !weapon.uniqueSkill && !weapon.signatureSkill && (
             <p style="color: var(--hw-text-muted); font-style: italic;">
-              Skill information coming soon
+              No special effect
             </p>
           )
         }

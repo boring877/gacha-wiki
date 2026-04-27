@@ -3,7 +3,6 @@ import CharacterLayout from '../../../layouts/horizon-walker/CharacterLayout.ast
 import {
   HORIZON_WALKER_CHARACTERS,
   gameInfo,
-  getTagCategory,
 } from '../../../data/horizon-walker/characters.js';
 import {
   getStrengthValue,
@@ -119,6 +118,14 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
               <option value="">Race</option>
               {availableRaces.map(race => <option value={race}>{race}</option>)}
             </select>
+          </div>
+          <div class="hw-search-container">
+            <input
+              type="text"
+              class="hw-search-input"
+              id="character-search"
+              placeholder="Search by name..."
+            />
           </div>
           <div class="sort-controls">
             <button class="sort-btn" data-sort="rarity">Rarity</button>
@@ -294,17 +301,6 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                   </div>
                 </div>
 
-                {/* Gameplay Tags with categorization */}
-                {char.tags && char.tags.length > 0 && (
-                  <div class="mobile-card-tags character-tags-container">
-                    <strong class="tags-label character-tags-label">Gameplay Tags</strong>
-                    <div class="tags-container character-tags-wrapper">
-                      {char.tags.map(tag => (
-                        <span class={`character-tag ${getTagCategory(tag)}`}>{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             ))
           }

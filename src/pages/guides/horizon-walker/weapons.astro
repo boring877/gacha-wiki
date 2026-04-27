@@ -98,7 +98,7 @@ export const prerender = true;
                 data-rarity={weapon.rarity}
                 data-type={weapon.type}
                 data-name={weapon.searchName}
-                data-character={weapon.searchCharacter}
+                data-character={weapon.searchCharacter || ''}
                 data-melee-atk={weapon.stats.weaponMeleeAtk || 0}
                 data-magic-atk={weapon.stats.weaponMagicAtk || 0}
                 data-ranged-atk={weapon.stats.weaponRangedAtk || 0}
@@ -120,10 +120,12 @@ export const prerender = true;
                     <HWRarityIcon rarity={weapon.rarity} width={40} height={20} />
                   </div>
                   <p class="weapon-type">{weapon.type}</p>
-                  <div class="weapon-character">
-                    <span class="weapon-character-label">For:</span>
-                    <span class="weapon-character-name">{weapon.character.name}</span>
-                  </div>
+                  {weapon.character && (
+                    <div class="weapon-character">
+                      <span class="weapon-character-label">For:</span>
+                      <span class="weapon-character-name">{weapon.character.name}</span>
+                    </div>
+                  )}
                 </div>
               </a>
             ))

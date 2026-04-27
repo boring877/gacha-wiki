@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+
+import FY01_2 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_01_2.png';
+import FY01_8 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_01_8.png';
+import FY02_0 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_02_0.png';
+import FY02_2 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_02_2.png';
+import FY03_1 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_03_1.png';
+import FY04_2 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_04_2.png';
+import FY04_6 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_04_6.png';
+import FY05_6 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_05_6.png';
+import FY08_7 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_08_7.png';
+import FY09_1 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_09_1.png';
+import FY09_4 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_FY_09_4.png';
+import Mrm01_0 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_Mrm_01_0.png';
+import Rarina02_14 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_Rarina_02_14.png';
+import Rarina03_12 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_Rarina_03_12.png';
+import Rarina03_19 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_Rarina_03_19.png';
+import Rarina04_3 from '../../assets/images/games/horizon-walker/guide-icons/FairyMall_Deco_Rarina_04_3.png';
+
+const guideIconMap = {
+  'tier-list': FY01_2,
+  'builds': FY01_8,
+  'characters': FY02_0,
+  'mercenaries': FY02_2,
+  'weapons': FY03_1,
+  'stigmas': FY04_2,
+  'ap-guide': FY04_6,
+  'traits': FY05_6,
+  'stigma-sub-stats': FY08_7,
+  'gifts': FY09_1,
+  'character-gifts': FY09_4,
+  'clock': Mrm01_0,
+  'redeem-codes': Rarina02_14,
+  'spare-1': Rarina03_12,
+  'spare-2': Rarina03_19,
+  'spare-3': Rarina04_3,
+};
+
+export function getGuideIcon(guideId: string) {
+  return guideIconMap[guideId] || FY01_2;
+}
+
+export interface Props {
+  guideId: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const {
+  guideId,
+  alt = guideId,
+  width = 48,
+  height = 48,
+  class: className,
+} = Astro.props;
+
+const imageSrc = guideIconMap[guideId] || FY01_2;
+---
+
+<Image
+  src={imageSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading="lazy"
+  format="webp"
+  quality={85}
+/>

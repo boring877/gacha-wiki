@@ -158,12 +158,36 @@
 
   /* Character Info Card - Below portrait */
   .character-info-card {
+    position: relative;
     background: var(--hw-gradient-black-30-10);
     border: 1px solid var(--hw-border-muted);
     border-radius: var(--hw-radius-lg);
     padding: var(--hw-spacing-lg);
     width: 100%;
     margin-top: var(--hw-spacing-md);
+  }
+
+  .crystal-icon-portrait {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .crystal-icon-portrait:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .crystal-icon-wrapper {
+    line-height: 0;
+  }
+
+  .crystal-icon-img {
+    display: block;
   }
 
   .character-info-label {
@@ -842,6 +866,179 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
+  /*                           DEMISKILL SECTION                              */
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  .demiskill-section {
+    border-color: #b8860b50;
+  }
+
+  .demiskill-info-banner {
+    background: linear-gradient(135deg, #2a1f0a, #1a150a);
+    border: 1px solid #b8860b40;
+    border-radius: var(--hw-radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .demiskill-info-banner p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--hw-text-muted);
+    line-height: 1.6;
+  }
+
+  .demiskill-authority-card {
+    background: linear-gradient(135deg, #1f1a0a, #151210);
+    border: 1px solid #b8860b30;
+    border-radius: var(--hw-radius-lg);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  .demiskill-authority-header {
+    background: linear-gradient(90deg, #2a1f0a, #1a150a);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #b8860b30;
+  }
+
+  .demiskill-authority-title {
+    font-family: var(--font-display);
+    color: #daa520;
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin: 0;
+  }
+
+  .demiskill-authority-body {
+    padding: 1.5rem;
+    font-size: var(--text-sm);
+    color: var(--hw-text-light);
+    line-height: 1.7;
+  }
+
+  .demiskill-authority-body p {
+    margin: 0 0 1rem 0;
+  }
+
+  .demiskill-authority-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .demiskill-enhanced {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #b8860b20;
+  }
+
+  .demiskill-enhanced-title {
+    font-family: var(--font-display);
+    color: #daa520;
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin: 0 0 1rem 0;
+  }
+
+  .demiskill-subtitle {
+    font-family: var(--font-display);
+    color: var(--hw-primary-warm);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .demiskill-might-intro {
+    font-size: var(--text-sm);
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  .demiskill-tier-probabilities {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .demiskill-tier-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-weight: var(--font-bold);
+    font-family: var(--font-mono);
+  }
+
+  .demiskill-tier-badge { background: #1a1a2a; color: #8899bb; }
+
+  .demiskill-might-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .demiskill-might-card {
+    background: var(--hw-gradient-skill-card);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    overflow: hidden;
+  }
+
+  .demiskill-might-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--hw-border-muted);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .demiskill-might-name {
+    font-family: var(--font-display);
+    color: var(--hw-text-light);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin: 0;
+  }
+
+  .demiskill-might-tiers {
+    padding: 0.5rem;
+  }
+
+  .demiskill-tier-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--hw-radius-sm);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+  }
+
+  .demiskill-tier-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .demiskill-tier-label {
+    font-family: var(--font-mono);
+    font-weight: var(--font-bold);
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+  }
+
+  .demiskill-tier-label { color: #8899bb; }
+
+  .demiskill-tier-5 .demiskill-tier-label { color: #8899bb; }
+
+  .demiskill-tier-desc {
+    color: var(--hw-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════ */
   /*                            EFFECTS SECTION                              */
   /* ═══════════════════════════════════════════════════════════════════════ */
 
@@ -1094,6 +1291,68 @@
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                            RESPONSIVE DESIGN                            */
   /* ═══════════════════════════════════════════════════════════════════════ */
+
+  /* Demiskill responsive - tablet */
+  @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    .demiskill-might-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .demiskill-authority-header {
+      padding: 1rem;
+    }
+
+    .demiskill-authority-body {
+      padding: 1rem;
+    }
+
+    .demiskill-info-banner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* Demiskill responsive - mobile */
+  @media (max-width: 768px) {
+    .demiskill-authority-title {
+      font-size: var(--text-lg);
+    }
+
+    .demiskill-subtitle {
+      font-size: var(--text-xl);
+    }
+
+    .demiskill-tier-probabilities {
+      justify-content: center;
+    }
+
+    .demiskill-tier-row {
+      font-size: 0.65rem;
+    }
+
+    .demiskill-might-header {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .demiskill-might-tiers {
+      padding: 0.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .demiskill-authority-body {
+      font-size: var(--text-xs);
+      line-height: 1.6;
+    }
+
+    .demiskill-authority-header {
+      padding: 0.75rem;
+    }
+
+    .demiskill-authority-body {
+      padding: 0.75rem;
+    }
+  }
 
   /* Tablet breakpoint OR any touch device (covers iPads, Android tablets) */
   @media (max-width: 1024px), (hover: none) and (pointer: coarse) {

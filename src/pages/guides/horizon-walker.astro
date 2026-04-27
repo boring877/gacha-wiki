@@ -1,6 +1,7 @@
 ---
 import HorizonWalkerLayout from '../../layouts/horizon-walker/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import HWGuideIcon from '../../components/horizon-walker/HWGuideIcon.astro';
 import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js';
 
 // Extract data for easier use in template
@@ -172,7 +173,8 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
                     class="hw-resource-button"
                     aria-label={`Navigate to ${guide.title}`}
                   >
-                    {guide.title}
+                    <HWGuideIcon guideId={guide.id} alt={guide.title} class="hw-guide-icon" />
+                    <span class="hw-guide-label">{guide.title}</span>
                   </a>
                 ))}
               </div>

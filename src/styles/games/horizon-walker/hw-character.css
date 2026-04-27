@@ -361,6 +361,35 @@
     font-family: var(--font-primary);
   }
 
+  .hw-search-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 180px;
+    max-width: 320px;
+  }
+
+  .hw-search-input {
+    width: 100%;
+    padding: 0.4rem 0.7rem;
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-strong);
+    border-radius: 8px;
+    color: var(--hw-text-light);
+    font-size: var(--text-xs);
+    font-family: var(--font-primary);
+  }
+
+  .hw-search-input::placeholder {
+    color: var(--hw-text-muted);
+    opacity: 0.7;
+  }
+
+  .hw-search-input:focus {
+    outline: none;
+    border-color: var(--hw-primary-warm);
+  }
+
   /* ═══════════════════════════════════════════════════════════════════════ */
   /*                        MOBILE CHARACTER CARDS                          */
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -654,6 +683,18 @@
     .sort-controls {
       width: 100%;
       justify-content: center;
+    }
+
+    .hw-search-container {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .hw-search-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      min-height: 44px;
+      font-size: var(--text-sm);
     }
 
     /* Enhanced touch-friendly controls */

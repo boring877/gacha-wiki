@@ -57,12 +57,30 @@
 }
 
 .rg-detail-portrait-wrapper {
+  position: relative;
   border-radius: var(--rg-radius-md);
   overflow: hidden;
   background: var(--rg-bg-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.rg-detail-portrait-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  border-radius: 0 0 var(--rg-radius-md) var(--rg-radius-md);
 }
 
 .rg-detail-portrait-wrapper img {

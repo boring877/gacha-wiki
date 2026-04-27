@@ -11,6 +11,7 @@ import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
+import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
 
 // Import image components from central location
 import {
@@ -18,6 +19,7 @@ import {
   WeaponImage,
   GiftImage,
   HWRarityIcon,
+  CrystalIcon,
 } from '../../components/horizon-walker/index.astro';
 import CharacterFullBodyImage from '../../components/horizon-walker/CharacterFullBodyImage.astro';
 import SkillIcon from '../../components/horizon-walker/SkillIcon.astro';
@@ -134,6 +136,7 @@ interface Props {
 }
 
 const { characterData } = Astro.props;
+const demiskillData = getDemiskillData(characterData.name);
 
 // Character data validation
 function validateCharacterSafely() {
@@ -663,6 +666,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             quality={90}
             class="hw-character-fullbody"
           />
+          <CrystalIcon characterImage={characterData.image} alt={`${characterData.name} Future Crystal`} size={48} class="crystal-icon-portrait" />
           <div class="character-portrait-overlay"></div>
           <div class="character-portrait-info">
             <h1 class="character-name">{characterData.name}</h1>
@@ -1131,6 +1135,69 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           )}
         </div>
       ))}
+    </section>
+  )
+}
+
+<!-- Demiskill Section -->
+{
+  demiskillData && (
+    <section class="content-section demiskill-section">
+      <h2 class="section-title">Demi-Ascension</h2>
+
+      <div class="demiskill-info-banner">
+        <span class="hw-badge" data-type="EX">EX Required</span>
+        <p>Upon Demi-Ascension, this character can replace the leader as party Executor, granting the squad Oblivia immunity. Deployment costs 12 Divine Power.</p>
+      </div>
+
+      <div class="demiskill-authority-card">
+        <div class="demiskill-authority-header">
+          <h3 class="demiskill-authority-title">{demiskillData.authoritySkill.name}</h3>
+          <span class="hw-badge" data-type="Trait">Authority Skill</span>
+        </div>
+        <div class="demiskill-authority-body">
+          {demiskillData.authoritySkill.description.split('\n\n').map((paragraph: string) => (
+            <p set:html={paragraph} />
+          ))}
+          {demiskillData.authoritySkill.enhancedDescription && (
+            <div class="demiskill-enhanced">
+              <h4 class="demiskill-enhanced-title">Enhanced Passive</h4>
+              {demiskillData.authoritySkill.enhancedDescription.split('\n\n').map((paragraph: string) => (
+                <p set:html={paragraph} />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="demiskill-might-section">
+        <h3 class="demiskill-subtitle">Random Might Skill</h3>
+        <p class="demiskill-might-intro">One of these 10 Might skills is granted randomly upon Demi-Ascension. Each skill ranges from Tier 1 to Tier 5, with higher tiers being rarer.</p>
+
+        <div class="demiskill-tier-probabilities">
+          {TIER_PROBABILITIES.map((tp: any) => (
+            <span class={`demiskill-tier-badge demiskill-tier-${tp.tier}`}>T{tp.tier}: {tp.probability}</span>
+          ))}
+        </div>
+
+        <div class="demiskill-might-grid">
+          {getMightSkillList().map((might: any) => (
+            <div class="demiskill-might-card">
+              <div class="demiskill-might-header">
+                <h4 class="demiskill-might-name">{might.name}</h4>
+              </div>
+              <div class="demiskill-might-tiers">
+                {might.tiers.map((t: any) => (
+                  <div class={`demiskill-tier-row demiskill-tier-${t.tier}`}>
+                    <span class="demiskill-tier-label">T{t.tier}</span>
+                    <span class="demiskill-tier-desc">{t.description}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
