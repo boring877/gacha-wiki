@@ -14,8 +14,7 @@ const { className = '' } = Astro.props;
   <div class="decorative-lines__line decorative-lines__line--rose"></div>
 </div>
 
-<style>
-  /* Decorative Lines Component - Unique Scoped Styles */
+<style is:global>
   .decorative-lines {
     display: flex;
     justify-content: center;
@@ -32,20 +31,19 @@ const { className = '' } = Astro.props;
 
   .decorative-lines__line--amber {
     width: 3rem;
-    background: var(--amber-glow);
+    background: var(--amber-glow, #ffb74d);
   }
 
   .decorative-lines__line--teal {
     width: 2rem;
-    background: var(--teal-crystal);
+    background: var(--teal-crystal, #00acc1);
   }
 
   .decorative-lines__line--rose {
     width: 1rem;
-    background: var(--rose-quartz);
+    background: var(--rose-quartz, #e91e63);
   }
 
-  /* Mobile optimizations */
   @media (max-width: 768px) {
     .decorative-lines {
       gap: 0.75rem;
@@ -53,7 +51,7 @@ const { className = '' } = Astro.props;
     }
 
     .decorative-lines__line {
-      height: 3px; /* Slightly thicker on mobile for better visibility */
+      height: 3px;
     }
 
     .decorative-lines__line--amber {
@@ -69,7 +67,6 @@ const { className = '' } = Astro.props;
     }
   }
 
-  /* Extra small mobile */
   @media (max-width: 480px) {
     .decorative-lines {
       gap: 0.5rem;
