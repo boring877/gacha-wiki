@@ -24,165 +24,175 @@
   color: var(--text-primary);
 }
 
-.horizon-walker-content .bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-
-.horizon-walker-content .hw-bg-primary {
-}
-
-.horizon-walker-content .hw-bg-accent-1 {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.horizon-walker-content .hw-bg-accent-2 {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.horizon-walker-content .hw-bg-accent-3 {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.horizon-walker-content .horizon-walker-container {
-  position: relative;
-  contain: layout style paint;
-}
-
-.horizon-walker-content .horizon-walker-main {
-  overflow-anchor: none;
-}
-
-.horizon-walker-content .horizon-walker-content {
-  position: relative;
-  z-index: 10;
-  flex: 1;
-}
-
-.horizon-walker-content .hero-section {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 3rem 1rem;
-}
-
-.horizon-walker-content .hero-image-wrapper {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.horizon-walker-content .hero-image-container {
-  width: 100%;
-  max-width: 60rem;
-  height: 25rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  margin: 0 auto;
-  position: relative;
-}
-
-.horizon-walker-content .hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.horizon-walker-content .hero-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60%;
-}
-
-.horizon-walker-content .hero-title {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  color: #e8a547;
-  margin: 0;
-  line-height: var(--leading-tight);
-}
-
-.horizon-walker-content .title-only-section {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 0;
-}
-
-.horizon-walker-content .title-only-heading {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  color: #e8a547;
-  margin: 0;
-  line-height: var(--leading-tight);
-}
-
-.horizon-walker-content .horizon-walker-container {
-  position: relative;
-}
-
-.horizon-walker-content .horizon-walker-main {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-@media (max-width: 768px) {
-  .horizon-walker-content .horizon-walker-main {
-    padding: 1rem;
+/* Scope all HW layout styles to the horizon walker content area */
+@scope (.horizon-walker-content) {
+  /* Background layers - for client-side navigation */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
   }
 
-  .horizon-walker-content .hero-section {
-    padding: 2rem 1rem 3rem 1rem;
+  .hw-bg-primary {
+  }
+
+  .hw-bg-accent-1 {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .hw-bg-accent-2 {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .hw-bg-accent-3 {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Main container - optimized for scroll performance */
+  .horizon-walker-container {
+    position: relative;
+    contain: layout style paint;
+  }
+
+  .horizon-walker-main {
+    /* Optimized main content - minimal GPU acceleration */
+    overflow-anchor: none;
+  }
+
+  .horizon-walker-content {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+  }
+
+  /* Hero Section Styles */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 3rem 1rem;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
     margin-bottom: 2rem;
   }
 
-  .horizon-walker-content .hero-image-container {
-    height: 15rem;
-    border-radius: 12px;
-    margin: 0 1rem;
+  .hero-image-container {
+    width: 100%;
+    max-width: 60rem;
+    height: 25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
   }
 
-  .horizon-walker-content .hero-title {
-    font-size: var(--text-3xl);
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
-  .horizon-walker-content .title-only-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
   }
 
-  .horizon-walker-content .title-only-heading {
-    font-size: var(--text-3xl);
-  }
-}
-
-@media (max-width: 480px) {
-  .horizon-walker-content .horizon-walker-main {
-    padding: 0.5rem;
-  }
-
-  .horizon-walker-content .hero-image-container {
-    height: 12rem;
-    border-radius: 8px;
-    margin: 0 0.5rem;
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: #e8a547;
+    margin: 0;
+    line-height: var(--leading-tight);
   }
 
-  .horizon-walker-content .hero-title {
-    font-size: var(--text-2xl);
+  /* Title Only Section */
+  .title-only-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
   }
 
-  .horizon-walker-content .hero-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
-    margin-bottom: 1.5rem;
+  .title-only-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: #e8a547;
+    margin: 0;
+    line-height: var(--leading-tight);
   }
 
-  .horizon-walker-content .title-only-heading {
-    font-size: var(--text-2xl);
+  /* Container Styles */
+  .horizon-walker-container {
+    position: relative;
   }
-}
+
+  .horizon-walker-main {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .horizon-walker-main {
+      padding: 1rem;
+    }
+
+    .hero-section {
+      padding: 2rem 1rem 3rem 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image-container {
+      height: 15rem;
+      border-radius: 12px;
+      margin: 0 1rem;
+    }
+
+    .hero-title {
+      font-size: var(--text-3xl);
+    }
+
+    .title-only-section {
+      padding: 1.5rem 0.5rem 2rem 0.5rem;
+    }
+
+    .title-only-heading {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .horizon-walker-main {
+      padding: 0.5rem;
+    }
+
+    .hero-image-container {
+      height: 12rem;
+      border-radius: 8px;
+      margin: 0 0.5rem;
+    }
+
+    .hero-title {
+      font-size: var(--text-2xl);
+    }
+
+    .hero-section {
+      padding: 1.5rem 0.5rem 2rem 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .title-only-heading {
+      font-size: var(--text-2xl);
+    }
+  }
+} /* End @scope (.horizon-walker-content) */
