@@ -2,6 +2,17 @@
 
 export const banners = [
   {
+    id: 'little-tyrant',
+    type: 'RERUN',
+    character: 'Scarlet',
+    arcana: 'The Great and Amazing Bunny Girl',
+    region: 'All',
+    image: 'TN_NEWS_SAVIOR_S_BUNNY_SCISSORS.png',
+    startDate: '2026-04-23',
+    endDate: '2026-05-06',
+    characterSlug: 'scarlet',
+  },
+  {
     id: 'eastern-swordmaster',
     type: 'NEW',
     character: 'Lyn',
