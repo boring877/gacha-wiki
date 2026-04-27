@@ -421,8 +421,8 @@ export const TIER_CHARACTER_NOTES = {
   },
   Luise: {
     type: 'info',
-    title: 'Demi Skill Required',
-    text: 'Luise needs her Demi skill unlocked to reach UR potential. Without it she performs significantly lower. She also requires a good team to enable her full potential. Unlike Cora who is easier to deal damage with, Luise has a higher skill ceiling but deals more damage when fully built.',
+    title: 'Demi Skill & Weapon Required',
+    text: 'Luise needs her Demi skill unlocked to reach UR potential. Without it she performs significantly lower. She also requires at least a 4/5 weapon to be usable and a good team to enable her full potential. Unlike Cora who is easier to deal damage with, Luise has a higher skill ceiling but deals more damage when fully built.',
   },
 };
 
