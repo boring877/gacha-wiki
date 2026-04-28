@@ -66,11 +66,12 @@ export const MEMORY_CLASS_ORDER = [
 //           True Order (Loki), Deceptive Ultimate Temptation (generic)
 // Healer: A Smile That Topples Cities (Gaia), Beautiful Moon (Jorogumo),
 //         The Most Real Her (Jeanne D Arc), Midnight Work (Anubis),
-//         The Beauty of Heijing Castle (Snow Girl), Solitary Realm (Kela)
+//         The Beauty of Heijing Castle (Snow Girl), Solitary Realm (Kela),
+//         Gentle Morning Command (Jill)
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-04-15',
+  lastUpdated: '2026-04-28',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
@@ -161,7 +162,7 @@ export const MEMORY_TIER_LIST = {
     },
     Healer: {
       SSS: [{ name: 'The Beauty of Heijing Castle' }],
-      SS: [{ name: 'A Smile That Topples Cities' }, { name: 'Midnight Work' }],
+      SS: [{ name: 'A Smile That Topples Cities' }, { name: 'Midnight Work' }, { name: 'Gentle Morning Command' }],
       S: [
         { name: 'Beautiful Moon' },
         { name: 'The Most Real Her' },

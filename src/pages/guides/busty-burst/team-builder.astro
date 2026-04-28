@@ -2,18 +2,25 @@
 import TeamBuilderLayout from '../../../layouts/busty-burst/TeamBuilderLayout.astro';
 import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import { Image } from 'astro:assets';
 import {
   getAllCharacters,
   BUFF_CATEGORIES,
   DEBUFF_CATEGORIES,
   TEAM_BUILDER_CHARACTERS,
 } from '../../../data/busty-burst/team-builder-data.js';
+import rarityR from '../../../assets/images/games/Busty_Burst/rarity_icons/R.png';
+import raritySR from '../../../assets/images/games/Busty_Burst/rarity_icons/SR.png';
+import raritySSR from '../../../assets/images/games/Busty_Burst/rarity_icons/SSR.png';
 
 const characters = getAllCharacters();
 const title = 'Team Builder - Busty Burst Fantasy | GachaWiki';
 const description =
   'Build your Busty Burst team and detect buff/debuff conflicts. Optimize your team composition with category conflict detection for up to 6 characters.';
 const gameTitle = 'Team Builder';
+
+const rarityImageMap = JSON.stringify({ R: rarityR.src, SR: raritySR.src, SSR: raritySSR.src });
 
 // Serialize character data for client-side use
 const characterDataJSON = JSON.stringify(TEAM_BUILDER_CHARACTERS);
@@ -85,9 +92,9 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
       </div>
     </section>
 
-    <!-- Team Slots Section (6 slots) -->
+    <!-- Team Slots Section (compact 6-in-row) -->
     <section class="bb-tb-section bb-tb-team-slots">
-      <h2 class="bb-tb-section-title">Your Team (6 Characters)</h2>
+      <h2 class="bb-tb-section-title">Your Team</h2>
       <div class="bb-tb-slots-grid" id="team-slots">
         {
           [1, 2, 3, 4, 5, 6].map(slot => (
@@ -107,32 +114,11 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
       <button class="bb-tb-clear-all" id="clear-team">Clear All</button>
     </section>
 
-    <!-- Conflict Analysis Section -->
-    <section class="bb-tb-section bb-tb-conflicts" id="conflict-section">
-      <h2 class="bb-tb-section-title">Conflict Analysis</h2>
-      <div class="bb-tb-no-team" id="no-team-message">
-        <p>Select characters to see conflict analysis.</p>
-      </div>
-
-      <div class="bb-tb-conflict-results hidden" id="conflict-results">
-        <!-- Buff Conflicts -->
-        <div class="bb-tb-conflict-group" id="buff-conflicts">
-          <h3>Buff Conflicts</h3>
-          <div class="bb-tb-conflict-list"></div>
-        </div>
-
-        <!-- Debuff Conflicts -->
-        <div class="bb-tb-conflict-group" id="debuff-conflicts">
-          <h3>Debuff Conflicts</h3>
-          <div class="bb-tb-conflict-list"></div>
-        </div>
-
-        <!-- No Conflicts Message -->
-        <div class="bb-tb-no-conflicts hidden" id="no-conflicts">
-          <span class="bb-tb-success-icon">&#10003;</span>
-          <p>No category conflicts detected!</p>
-        </div>
-      </div>
+    <!-- Team Skill Breakdown (all skills per char) -->
+    <section class="bb-tb-section hidden" id="skills-section">
+      <h2 class="bb-tb-section-title">Team Skills</h2>
+      <div id="conflict-banner"></div>
+      <div class="bb-tb-char-skills-grid" id="char-skills-grid"></div>
     </section>
 
     <!-- Passives Display Section -->
@@ -190,8 +176,8 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
               <div class="bb-tb-char-info">
                 <span class="bb-tb-char-name">{char.name}</span>
                 <div class="bb-tb-char-badges">
-                  <span class="bb-badge" data-rarity={char.rarity.toLowerCase()}>
-                    {char.rarity}
+                  <span class="bb-badge bb-badge-rarity" data-rarity={char.rarity.toLowerCase()}>
+                    <RarityImage rarity={char.rarity} width={28} height={16} />
                   </span>
                   <ElementImage element={char.element} width={14} height={14} />
                 </div>
@@ -204,11 +190,12 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
   </div>
 </TeamBuilderLayout>
 
-<script define:vars={{ characterDataJSON, buffCategoriesJSON, debuffCategoriesJSON }}>
+<script define:vars={{ characterDataJSON, buffCategoriesJSON, debuffCategoriesJSON, rarityImageMap }}>
   // Parse serialized data
   const CHARACTER_DATA = JSON.parse(characterDataJSON);
   const BUFF_CATEGORIES = JSON.parse(buffCategoriesJSON);
   const DEBUFF_CATEGORIES = JSON.parse(debuffCategoriesJSON);
+  const RARITY_IMAGES = JSON.parse(rarityImageMap);
 
   // State management
   let team = [null, null, null, null, null, null]; // 6 slots
@@ -328,7 +315,6 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
     const filledDiv = slotEl.querySelector('.bb-tb-slot-filled');
     const removeBtn = slotEl.querySelector('.bb-tb-slot-remove');
 
-    // Get the original image from character grid
     const charCard = document.querySelector(`.bb-tb-char-card[data-id="${charId}"]`);
     const imgEl = charCard?.querySelector('.bb-tb-char-img img');
     const imgSrc = imgEl?.src || '';
@@ -339,7 +325,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
       </div>
       <span class="bb-tb-slot-name">${char.name}</span>
       <div class="bb-tb-slot-badges">
-        <span class="bb-badge" data-rarity="${char.rarity.toLowerCase()}">${char.rarity}</span>
+        <span class="bb-badge bb-badge-rarity" data-rarity="${char.rarity.toLowerCase()}"><img src="${RARITY_IMAGES[char.rarity] || ''}" alt="${char.rarity}" width="28" height="16" /></span>
       </div>
     `;
 
@@ -382,22 +368,119 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
     const activeCharIds = team.filter(id => id !== null);
     const activeChars = activeCharIds.map(id => CHARACTER_DATA[id]).filter(c => c);
 
-    const noTeamMessage = document.getElementById('no-team-message');
-    const conflictResults = document.getElementById('conflict-results');
+    const skillsSection = document.getElementById('skills-section');
+    const bannerEl = document.getElementById('conflict-banner');
+    const gridEl = document.getElementById('char-skills-grid');
 
     if (activeChars.length === 0) {
-      noTeamMessage.classList.remove('hidden');
-      conflictResults.classList.add('hidden');
+      skillsSection.classList.add('hidden');
       return;
     }
 
-    noTeamMessage.classList.add('hidden');
-    conflictResults.classList.remove('hidden');
+    skillsSection.classList.remove('hidden');
 
     const buffConflicts = detectBuffConflicts(activeChars);
     const debuffConflicts = detectDebuffConflicts(activeChars);
+    const allConflicts = [...buffConflicts, ...debuffConflicts];
+    const totalConflicts = allConflicts.length;
 
-    renderConflicts(buffConflicts, debuffConflicts);
+    // Build conflict lookup: charId -> skillType -> conflict info
+    const conflictLookup = {};
+    allConflicts.forEach(conflict => {
+      conflict.conflictingItems.forEach((item, idx) => {
+        const key = `${item.charId}:${item.skillType}`;
+        const others = conflict.conflictingItems.filter((_, i) => i !== idx).map(o => o.charName);
+        if (!conflictLookup[key]) conflictLookup[key] = [];
+        conflictLookup[key].push({
+          stat: conflict.statName,
+          category: conflict.category,
+          categoryName: conflict.categoryName,
+          type: buffConflicts.includes(conflict) ? 'Buff' : 'Debuff',
+          others,
+        });
+      });
+    });
+
+    // Conflict banner
+    if (totalConflicts > 0) {
+      bannerEl.innerHTML = `
+        <div class="bb-tb-conflict-banner">
+          <span class="bb-tb-conflict-banner-icon">&#9888;</span>
+          ${totalConflicts} conflict${totalConflicts > 1 ? 's' : ''} detected - overlapping skills will overwrite
+        </div>
+      `;
+    } else {
+      bannerEl.innerHTML = `
+        <div class="bb-tb-no-conflict-banner">
+          <span>&#10003;</span> No conflicts - all skills stack freely
+        </div>
+      `;
+    }
+
+    // Per-character skill cards
+    gridEl.innerHTML = activeChars.map(char => {
+      const imgSlot = document.querySelector(`.bb-tb-char-card[data-id="${char.id}"] .bb-tb-char-img img`);
+      const imgSrc = imgSlot?.src || '';
+      const hasCharConflict = (char.buffs || []).some(b => conflictLookup[`${char.id}:${b.skillType}`])
+        || (char.debuffs || []).some(d => conflictLookup[`${char.id}:${d.skillType}`]);
+
+      const allSkills = [
+        ...(char.buffs || []).map(b => ({ ...b, skillGroup: 'buff' })),
+        ...(char.debuffs || []).map(d => ({ ...d, skillGroup: 'debuff' })),
+      ];
+
+      const skillRows = allSkills.length > 0 ? allSkills.map(skill => {
+        const key = `${char.id}:${skill.skillType}`;
+        const conflicts = conflictLookup[key];
+        const isConflict = !!conflicts;
+        const effects = (skill.effects || []).map(e => `${e.stat}: ${e.value}`).join(', ');
+        const catClass = `${skill.skillGroup}-${skill.category}`;
+
+        let conflictInfo = '';
+        if (isConflict) {
+          conflictInfo = conflicts.map(c =>
+            `<span class="bb-tb-skill-row-conflict-info">CONFLICT with ${c.others.join(', ')} on ${c.stat}</span>`
+          ).join('');
+        }
+
+        return `
+          <div class="bb-tb-skill-row${isConflict ? ' conflict' : ''}">
+            <span class="bb-tb-cat ${catClass}">${skill.skillGroup === 'buff' ? 'Buff' : 'Debuff'} ${skill.category}</span>
+            <div class="bb-tb-skill-row-left">
+              <div class="bb-tb-skill-row-label">
+                <span class="bb-tb-skill-row-skill-name">${skill.skillName || skill.skillType}</span>
+              </div>
+              <div class="bb-tb-skill-row-effects">${effects}</div>
+              ${conflictInfo}
+            </div>
+          </div>
+        `;
+      }).join('') : '<div class="bb-tb-no-skills">No buffs/debuffs categorized</div>';
+
+      return `
+        <div class="bb-tb-char-skill-card${hasCharConflict ? ' has-conflict' : ''}">
+          <div class="bb-tb-char-skill-header">
+            <img src="${imgSrc}" alt="${char.name}" />
+            <div class="bb-tb-char-skill-header-info">
+              <span class="bb-tb-char-skill-header-name">${char.name}</span>
+            </div>
+          </div>
+          <div class="bb-tb-skill-rows">${skillRows}</div>
+        </div>
+      `;
+    }).join('');
+
+    // Highlight team slots with conflicts
+    document.querySelectorAll('.bb-tb-slot').forEach(s => s.classList.remove('has-conflict'));
+    const conflictedCharIds = new Set();
+    allConflicts.forEach(c => c.conflictingItems.forEach(i => conflicitedCharIds.add(i.charId)));
+    conflictedCharIds.forEach(charId => {
+      const slotIdx = team.indexOf(charId);
+      if (slotIdx !== -1) {
+        const slotEl = document.querySelector(`.bb-tb-slot[data-slot="${slotIdx + 1}"]`);
+        if (slotEl) slotEl.classList.add('has-conflict');
+      }
+    });
   }
 
   function detectBuffConflicts(chars) {
@@ -543,104 +626,6 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
     });
 
     return conflicts;
-  }
-
-  function renderConflicts(buffConflicts, debuffConflicts) {
-    const buffContainer = document.querySelector('#buff-conflicts .bb-tb-conflict-list');
-    const debuffContainer = document.querySelector('#debuff-conflicts .bb-tb-conflict-list');
-    const buffGroup = document.getElementById('buff-conflicts');
-    const debuffGroup = document.getElementById('debuff-conflicts');
-    const noConflicts = document.getElementById('no-conflicts');
-
-    buffContainer.innerHTML = '';
-    debuffContainer.innerHTML = '';
-
-    if (buffConflicts.length === 0 && debuffConflicts.length === 0) {
-      buffGroup.classList.add('hidden');
-      debuffGroup.classList.add('hidden');
-      noConflicts.classList.remove('hidden');
-      return;
-    }
-
-    noConflicts.classList.add('hidden');
-
-    // Render buff conflicts
-    if (buffConflicts.length > 0) {
-      buffGroup.classList.remove('hidden');
-      buffConflicts.forEach(conflict => {
-        buffContainer.innerHTML += createConflictCard(conflict);
-      });
-    } else {
-      buffGroup.classList.add('hidden');
-    }
-
-    // Render debuff conflicts
-    if (debuffConflicts.length > 0) {
-      debuffGroup.classList.remove('hidden');
-      debuffConflicts.forEach(conflict => {
-        debuffContainer.innerHTML += createConflictCard(conflict);
-      });
-    } else {
-      debuffGroup.classList.add('hidden');
-    }
-  }
-
-  function createConflictCard(conflict) {
-    const items = conflict.conflictingItems;
-    const statName = conflict.statName || 'Unknown';
-    const isSingleTarget = conflict.target !== null && conflict.target !== undefined;
-    const targetDisplay = isSingleTarget ? conflict.target : null;
-
-    // Build warning message based on whether it's single-target or multi-target
-    let warningMsg;
-    if (isSingleTarget) {
-      warningMsg = `These buffs target "${targetDisplay}" with the same stat "${statName}" in Category ${conflict.category} - the last one applied overwrites others`;
-    } else {
-      warningMsg = `Only one "${statName}" buff/debuff can be active in Category ${conflict.category} - the last one applied overwrites others`;
-    }
-
-    return `
-      <div class="bb-tb-conflict-card">
-        <div class="bb-tb-conflict-header">
-          <span class="bb-tb-category-badge ${conflict.cssClass}">
-            Category ${conflict.category}
-          </span>
-          <span class="bb-tb-conflict-title">${conflict.categoryName}</span>
-        </div>
-        <div class="bb-tb-conflict-stat">
-          Conflicting Stat: <strong>${statName}</strong>
-          ${isSingleTarget ? `<span style="margin-left: 0.5rem;">(Target: <strong>${targetDisplay}</strong>)</span>` : ''}
-        </div>
-        <div class="bb-tb-conflict-items">
-          ${items
-            .map(
-              item => `
-            <div class="bb-tb-conflict-item">
-              <div class="bb-tb-conflict-item-header">
-                <strong>${item.charName}</strong>
-              </div>
-              <div class="bb-tb-conflict-item-skill">
-                <span class="bb-tb-skill-name">${item.skillName}</span>
-                <span class="bb-tb-skill-type">(${item.skillType})</span>
-              </div>
-              ${item.description ? `<div class="bb-tb-conflict-item-desc">${item.description}</div>` : ''}
-              <div class="bb-tb-conflict-item-effects">
-                <span class="bb-tb-effect bb-tb-effect-highlight">${item.statName}: ${item.statValue}</span>
-              </div>
-              <div class="bb-tb-conflict-item-meta">
-                <span class="bb-tb-target">Target: ${item.target || 'N/A'}</span>
-                <span class="bb-tb-duration">Duration: ${item.duration || 'N/A'}</span>
-              </div>
-            </div>
-          `
-            )
-            .join('')}
-        </div>
-        <div class="bb-tb-conflict-warning">
-          ${warningMsg}
-        </div>
-      </div>
-    `;
   }
 
   // Update passives display

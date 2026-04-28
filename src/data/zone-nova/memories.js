@@ -1174,6 +1174,28 @@ export const ZONE_NOVA_MEMORIES = [
   ]
   },
   {
+    id: 'gentle-morning-command',
+    slug: 'gentle-morning-command',
+    name: 'Gentle Morning Command',
+    image: '/images/games/zone-nova/memories/Jillcard.jpg',
+    rarity: 'SSR',
+    element: 'Holy',
+    character: 'Jill',
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/gentle-morning-command/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600
+  },
+    effects: [
+      'ATK +33.5%',
+      'After an ally is healed, wearer gains [Military Order] (up to 50 stacks) for 6s.',
+      "Every 10 stacks of [Military Order]: all allies' healing received +16.5%, damage taken -3.3%.",
+      "When the wearer casts Ultimate: consumes all [Military Order]. Every 10 stacks increases all allies' ATK by 5% for 6s."
+    ]
+  },
+  {
     id: 'unreserved-love',
     slug: 'unreserved-love',
     name: 'Unreserved Love',

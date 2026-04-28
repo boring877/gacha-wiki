@@ -55,7 +55,7 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-04-15',
+  lastUpdated: '2026-04-28',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
@@ -93,6 +93,7 @@ export const PVE_TIER_LIST = {
       { name: 'Shuten-doji' },
       { name: 'Ibaraki-doji' },
       { name: 'Hiyori' },
+      { name: 'Jill' },
     ],
     S: [
       { name: 'Shu' },
@@ -129,7 +130,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-04-15',
+  lastUpdated: '2026-04-28',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Sharin' }, { name: 'Pride-Lucifer' }],
@@ -149,6 +150,7 @@ export const PVP_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Hela' },
       { name: 'Sigurd' },
+      { name: 'Jill' },
     ],
     S: [
       { name: 'Arthur' },
@@ -181,7 +183,7 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-04-15',
+  lastUpdated: '2026-04-28',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
@@ -203,6 +205,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Zashiki-warashi' },
       { name: 'Horus' },
       { name: 'Hera' },
+      { name: 'Jill' },
     ],
     S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }],
     A: [
@@ -346,6 +349,15 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-04-28',
+    changes: [
+      'Jill added: SS in PvE, PvP, and New Player tier lists',
+      'New Holy Healer from Monochrome Nation with Tenacity and team-wide healing',
+      'Ultimate grants all allies Tenacity for 6s and heals based on ATK',
+      'A6 enhances first 3 Ultimates with additional Tenacity stacks',
+    ],
+  },
   {
     date: '2026-04-15',
     changes: [

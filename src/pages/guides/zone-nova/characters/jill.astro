@@ -1,0 +1,26 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { jillData, jillSEO } from '../../../../data/zone-nova/characters/jill.js';
+import { getFactionByCharacter, getFactionData } from '../../../../data/zone-nova/factions.js';
+
+const factionName = getFactionByCharacter('Jill');
+const factionData = getFactionData(factionName);
+const characterData = {
+  ...jillData,
+  faction: factionName,
+  factionDescription: factionData?.description,
+  factionChineseName: factionData?.chineseName,
+};
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={jillSEO.title}
+  description={jillSEO.description}
+  gameTitle={jillData.name}
+  character={jillData}
+>
+  <CharacterPageTemplate characterData={characterData} />
+</CharacterIndividualLayout>
