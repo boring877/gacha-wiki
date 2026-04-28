@@ -6,7 +6,7 @@ export const jillBuild = {
   role: 'Healer',
   buildType: 'ATK Scaling Tenacity Healer',
   description:
-    "Jill heals based on ATK, not HP like Gaia. Everything in her kit scales off attack — her passive, auto skill, and ultimate all use ATK% for healing numbers. What makes her special is Tenacity (can't die, stay at 1 HP). Her passive hands it out at 4 marks, A1 gives 9 seconds of it at the start of every fight, and A6 slaps it on the first 3 ultimates. Stack her with ATK and she'll keep your team from dying to basically anything.",
+    "Jill heals based on ATK, not HP like Gaia. Everything in her kit scales off attack, her passive, auto skill, and ultimate all use ATK% for healing numbers. What makes her special is Tenacity (can't die, stay at 1 HP). Her passive hands it out at 4 marks, A1 gives 9 seconds of it at the start of every fight, and A6 slaps it on the first 3 ultimates. Stack her with ATK and she'll keep your team from dying to basically anything.",
 
   skillPriority: [
     {
@@ -101,7 +101,7 @@ export const jillBuild = {
     stats: ['ATK%', 'ATK', 'Healing Effectiveness%'],
     additionalStats: ['HP%', 'DEF%'],
     buildNote:
-      "Stack ATK% — everything she does scales off it. Healing Effectiveness% is a nice bonus on top. Throw in some HP% or DEF% so she doesn't die, since a dead healer heals nobody.",
+      "Stack ATK%, everything she does scales off it. Healing Effectiveness% is a nice bonus on top. Throw in some HP% or DEF% so she doesn't die, since a dead healer heals nobody.",
     recommendedSets: [
       {
         name: 'Daleth 4-piece + Zahn 2-piece',
@@ -157,7 +157,7 @@ export const jillBuild = {
         'Defense (%)',
       ],
       description:
-        "Healing Effectiveness% or ATK% — both work great. Go Healing Effectiveness% if you already have plenty of ATK from substats.",
+        "Healing Effectiveness% or ATK%, both work great. Go Healing Effectiveness% if you already have plenty of ATK from substats.",
     },
     5: {
       name: 'Position 5 — Variable Main Stats',
@@ -173,7 +173,7 @@ export const jillBuild = {
         'Defense (%)',
       ],
       description:
-        "ATK% for more healing. Don't bother with Holy DMG% — her damage doesn't matter. HP% if she's dying too fast.",
+        "ATK% for more healing. Don't bother with Holy DMG%, her damage doesn't matter. HP% if she's dying too fast.",
     },
     6: {
       name: 'Position 6 — Variable Main Stats',
@@ -234,12 +234,12 @@ export const jillBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Sharin — both Monochrome Nation so team skill activates. Sharin buffs ATK which means Jill heals more.',
-      'Wrath-Samael — Monochrome Nation tank who taunts. Enemies hit him a lot which triggers her passive marks faster.',
-      'Pride-Lucifer — Monochrome Nation warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
+      'Sharin, both Monochrome Nation so team skill activates. Sharin buffs ATK which means Jill heals more.',
+      'Wrath-Samael, Monochrome Nation tank who taunts. Enemies hit him a lot which triggers her passive marks faster.',
+      'Pride-Lucifer, Monochrome Nation warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
       'Any DPS works fine with her honestly. She keeps everyone alive regardless of team comp.',
-      'Gaia — double healer with Gaia revive + Jill Tenacity makes teams basically unkillable.',
+      'Gaia, double healer with Gaia revive + Jill Tenacity makes teams basically unkillable.',
     ],
-    note: "Her Tenacity is really good against bosses that do big burst damage. You want Monochrome Nation or Holy teammates for the team skill — Monochrome is better since Sharin buffs ATK. Her ult costs 6 energy which is steep, so Daleth 4-piece for the starting energy helps a lot. She could be a good answer to Pride-Lucifer in PvP too — 4 marks gives Chaos RES +20% and Tenacity every second, so his damage just doesn't stick.",
+    note: "Her Tenacity is really good against bosses that do big burst damage. You want Monochrome Nation or Holy teammates for the team skill, Monochrome is better since Sharin buffs ATK. Her ult costs 6 energy which is steep, so Daleth 4-piece for the starting energy helps a lot. She could be a good answer to Pride-Lucifer in PvP too, 4 marks gives Chaos RES +20% and Tenacity every second, so her damage just doesn't stick.",
   },
 };
