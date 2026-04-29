@@ -13,7 +13,7 @@ export const bannerTimelineData = [
     featuredPaladins: [
       {
         name: 'Trish',
-        rarity: 'SR',
+        rarity: 'SSR',
         type: 'Support',
       },
       {

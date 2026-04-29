@@ -321,7 +321,7 @@ export const buildConfig = {
       id: 'trish',
       name: 'Trish',
       fileName: 'Trish',
-      rarity: 'SR',
+      rarity: 'SSR',
       element: 'Mind',
       role: 'Support',
       attackType: 'Physical',

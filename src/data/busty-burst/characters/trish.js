@@ -7,7 +7,7 @@ export const info = {
   "displayName": "Trish",
   "baseName": "Trish",
   "title": null,
-  "rarity": "SR",
+  "rarity": "SSR",
   "element": "Mind",
   "role": "Support",
   "attackType": "Physical",
