@@ -1121,6 +1121,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Attacker',
     tier: 'A',
   },
+  {
+    id: 'magdalena',
+    characterId: 2108,
+    name: 'Magdalena',
+    fileName: 'Magdalena',
+    rarity: 'SSR',
+    element: 'Wind',
+    role: 'Tank',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

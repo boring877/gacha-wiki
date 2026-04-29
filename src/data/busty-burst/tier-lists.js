@@ -106,6 +106,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'mischievous_mermaid_princess_lorelia',
           'samurai_cow_girl_setsuka',
           'katisha',
+          'magdalena',
         ],
       },
     ],

@@ -176,7 +176,7 @@ const highlightValues = (text: string) => {
     .replace(/\b(dispel)\b/gi, '<span class="bb-kw-cleanse">$1</span>');
   result = result
     .replace(/(\d+(?:\.\d+)?)%/g, '<span class="bb-kw-num">$1</span>%')
-    .replace(/(\+\d+(?:\.\d+)?)(?!\s*%)/g, '<span class="bb-kw-num">$1</span>');
+    .replace(/([+-]\d+(?:\.\d+)?)(?!\s*%)/g, '<span class="bb-kw-num">$1</span>');
   return result;
 };
 
@@ -613,35 +613,40 @@ const description = `${character.displayName || character.name} - ${character.ra
         {skills.skills && skills.skills.map(skill => {
           const hasDamage = skill.damageScaling && skill.baseDamage != null;
           const baseValue = parseInt(String(skill.baseDamage || '0').replace('+', ''), 10) || 0;
-          const growth = parseInt(String(skill.levelGrowth || '0').replace('+', ''), 10) || 0;
-          const lvl90Value = baseValue + (90 - 1) * growth;
+          const dmgGrowth = parseInt(String(skill.levelGrowth || '0').replace('+', ''), 10) || 0;
+          const lvl90Dmg = baseValue + 90 * dmgGrowth;
 
           const meaningfulBuffs = skill.buffEffects?.filter(b => b.value !== 0 && b.value !== null && b.type !== 'unknown') || [];
-          const hasBuffGrowth = meaningfulBuffs.some(b => (typeof b.levelGrowth === 'number' && b.levelGrowth !== 0) || (typeof b.flatGrowth === 'number' && b.flatGrowth !== 0));
-          const buffGrowthBuffs = meaningfulBuffs.filter(b => (typeof b.levelGrowth === 'number' && b.levelGrowth !== 0) || (typeof b.flatGrowth === 'number' && b.flatGrowth !== 0));
-          const buffGrowthJson = buffGrowthBuffs.length > 0 ? JSON.stringify(buffGrowthBuffs.map(b => ({
+          const hasLevelScaling = hasDamage || meaningfulBuffs.some(b => (typeof b.levelGrowth === 'number' && b.levelGrowth !== 0) || (typeof b.flatGrowth === 'number' && b.flatGrowth !== 0));
+
+          const buffData = meaningfulBuffs.map(b => ({
             name: b.name,
             value: b.value,
             growth: b.levelGrowth ?? 0,
             type: b.type,
             flatValue: b.flatValue ?? null,
             flatGrowth: b.flatGrowth ?? null,
-            valueLv1: b.valueLv1 ?? null,
-            valueLv90: b.valueLv90 ?? null,
-          }))) : '';
+          }));
 
-          let descriptionHtml = skill.descriptionLv90 || skill.description || '';
-          if (descriptionHtml) {
-            descriptionHtml = highlightValues(descriptionHtml);
+          function computeBuffAtLevel(b, level) {
+            const parts = [];
+            if (b.type === 'percent') parts.push(`${Math.round(b.value + level * b.growth)}%`);
+            if (b.flatValue != null) parts.push(`${Math.round(b.flatValue + level * (b.flatGrowth || 0))}`);
+            if (b.growth && b.type !== 'percent' && b.flatValue == null) parts.push(`${Math.round(b.value + level * b.growth)}`);
+            return parts.join(' + ');
           }
+
+          const descLv1 = highlightValues(skill.descriptionLv1 || skill.description || '');
+          const descLv90 = highlightValues(skill.descriptionLv90 || skill.description || '');
 
           return (
             <div class="bb-skill-block action-skill"
-              data-scaling={skill.damageScaling || ''}
               data-base={(skill.baseDamage || '0').toString()}
               data-growth={(skill.levelGrowth || '0').toString()}
-              data-buff-growth={buffGrowthJson}
-              data-has-buff-growth={buffGrowthBuffs.length > 0 ? 'true' : ''}
+              data-desc-lv1={descLv1}
+              data-desc-lv90={descLv90}
+              data-buffs={JSON.stringify(buffData)}
+              data-has-damage={hasDamage ? '1' : '0'}
             >
               <div class="bb-skill-header">
                 <SkillIcon skillId={skill.icon} alt={skill.name} width={40} height={40} />
@@ -654,41 +659,25 @@ const description = `${character.displayName || character.name} - ${character.ra
                   </div>
                 </div>
               </div>
-              {descriptionHtml && <div class="bb-skill-desc" set:html={descriptionHtml} />}
-              {hasDamage ? (
+              {descLv90 && <div class="bb-skill-desc" set:html={descLv90} />}
+              {hasLevelScaling ? (
                 <div class="bb-skill-calc">
                   <span class="bb-calc-lbl">Lv</span>
-                  <input type="number" class="skill-level-input" min="1" max="90" value="90" />
+                  <input type="number" class="bb-skill-level-input" min="1" max="90" value="90" />
                   <span class="bb-calc-eq">=</span>
-                  <span class="bb-calc-formula">{skill.damageScaling}</span>
-                  <span class="bb-calc-eq">+</span>
-                  <span class="bb-calc-formula">{baseValue}{growth > 0 ? ` + (${89} \u00d7 ${growth})` : ''}</span>
-                  <span class="bb-calc-eq">=</span>
-                  <span class="bb-calc-value">{lvl90Value}</span>
-                </div>
-              ) : null}
-              {hasBuffGrowth ? (
-                <div class="bb-skill-calc bb-buff-growth-calc">
-                  <span class="bb-calc-lbl">Lv</span>
-                  <input type="number" class="bb-buff-level-input" min="1" max="90" value="90" />
-                  <span class="bb-calc-eq">=</span>
+                  {hasDamage ? (
+                    <>
+                      <span class="bb-calc-formula">{skill.damageScaling}</span>
+                      <span class="bb-calc-eq">+</span>
+                      <span class="bb-calc-formula">{baseValue}{dmgGrowth > 0 ? ` + (${90} \u00d7 ${dmgGrowth})` : ''}</span>
+                      <span class="bb-calc-eq">=</span>
+                      <span class="bb-calc-value">{lvl90Dmg}</span>
+                    </>
+                  ) : null}
                   <span class="bb-calc-values">
-                    {buffGrowthBuffs.map(b => {
-                      const parts = [];
-                      if (b.type === 'percent') {
-                        parts.push(`${b.value}%`);
-                      }
-                      if (b.flatValue != null && typeof b.flatValue === 'number') {
-                        const flatLv90 = b.flatValue + 89 * (b.flatGrowth || 0);
-                        parts.push(`${flatLv90}`);
-                      }
-                      if (b.levelGrowth && b.type !== 'percent') {
-                        const base = b.value;
-                        const lvl90 = base + 90 * b.levelGrowth;
-                        parts.push(`${Math.round(lvl90)}`);
-                      }
-                      return <span class="bb-buff-calc-item" data-buff-name={b.name} data-buff-type={b.type} data-buff-value={b.value} data-buff-growth={b.levelGrowth ?? 0} data-flat-value={b.flatValue ?? ''} data-flat-growth={b.flatGrowth ?? ''}>{b.name}: <span class="bb-buff-calc-val">{parts.join(' + ')}</span></span>;
-                    })}
+                    {buffData.map(b => (
+                      <span class="bb-buff-calc-item">{b.name}: <span class="bb-buff-calc-val">{computeBuffAtLevel(b, 90)}</span></span>
+                    ))}
                   </span>
                 </div>
               ) : null}
@@ -1048,8 +1037,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (level <= 1) return base;
     if (level >= 90) return lv90;
     const growth = lv90 - base;
-    const perLevel = growth / 89;
-    return Math.floor(base + perLevel * (level - 1));
+    const perLevel = growth / 90;
+    return Math.floor(base + perLevel * level);
   }
 
   // Map camelCase baseStats keys to titleCase bonus data keys
@@ -1336,66 +1325,82 @@ document.addEventListener('DOMContentLoaded', () => {
   // SKILL LEVEL CALCULATORS
   // ========================================
   function initSkillLevelCalc() {
-    const skillSections = document.querySelectorAll('.bb-skill-block.action-skill');
+    document.querySelectorAll('.bb-skill-block.action-skill').forEach(section => {
+      const input = section.querySelector('.bb-skill-level-input');
+      if (!input) return;
 
-    skillSections.forEach(section => {
-      const sectionEl = section;
-      const damageInput = section.querySelector('.skill-level-input');
-      const resultEl = section.querySelector('.bb-calc-value');
+      const base = parseInt((section.dataset.base || '0').replace('+', ''), 10) || 0;
+      const growth = parseInt((section.dataset.growth || '0').replace('+', ''), 10) || 0;
+      const hasDamage = section.dataset.hasDamage === '1';
+      const buffs = JSON.parse(section.dataset.buffs || '[]');
+      const descEl = section.querySelector('.bb-skill-desc');
+      const descLv1 = section.dataset.descLv1 || '';
+      const descLv90 = section.dataset.descLv90 || '';
+      const dmgResult = section.querySelector('.bb-calc-value');
+      const buffVals = section.querySelectorAll('.bb-buff-calc-val');
 
-      if (damageInput && resultEl) {
-        const base = parseInt((sectionEl.dataset.base || '0').replace('+', ''), 10) || 0;
-        const growth = parseInt((sectionEl.dataset.growth || '0').replace('+', ''), 10) || 0;
-
-        function updateDamage() {
-          let level = parseInt(damageInput.value, 10) || 1;
-          level = Math.max(1, Math.min(90, level));
-          damageInput.value = level.toString();
-          resultEl.textContent = (base + (level - 1) * growth).toString();
-        }
-
-        updateDamage();
-        damageInput.addEventListener('input', updateDamage);
-        damageInput.addEventListener('change', updateDamage);
+      function clampLevel(v) {
+        return Math.max(1, Math.min(90, parseInt(v, 10) || 1));
       }
 
-      const buffInput = sectionEl.querySelector('.bb-buff-level-input');
-      const buffItems = sectionEl.querySelectorAll('.bb-buff-calc-item');
+      function computeBuffText(b, level) {
+        const parts = [];
+        if (b.type === 'percent') parts.push(`${Math.round(b.value + level * b.growth)}%`);
+        if (b.flatValue != null) parts.push(`${Math.round(b.flatValue + level * (b.flatGrowth || 0))}`);
+        if (b.growth && b.type !== 'percent' && b.flatValue == null) parts.push(`${Math.round(b.value + level * b.growth)}`);
+        return parts.join(' + ');
+      }
 
-      if (buffInput && buffItems.length > 0) {
-        function updateBuffs() {
-          let level = parseInt(buffInput.value, 10) || 1;
-          level = Math.max(1, Math.min(90, level));
-          buffInput.value = level.toString();
+      function updateDescription(level) {
+        if (!descEl || !descLv1) return;
+        const isMax = level >= 90;
+        const base = isMax ? descLv90 : descLv1;
+        if (isMax) { descEl.innerHTML = descLv90; return; }
 
-          buffItems.forEach(item => {
-            const valEl = item.querySelector('.bb-buff-calc-val');
-            if (!valEl) return;
-            const type = item.dataset.buffType;
-            const value = parseFloat(item.dataset.buffValue) || 0;
-            const growth = parseFloat(item.dataset.buffGrowth) || 0;
-            const flatValue = item.dataset.flatValue !== '' ? parseFloat(item.dataset.flatValue) : null;
-            const flatGrowth = item.dataset.flatGrowth !== '' ? parseFloat(item.dataset.flatGrowth) : null;
+        let html = descLv1;
+        for (const b of buffs) {
+          const pairs = [];
+          if (b.type === 'percent') {
+            const from = b.value;
+            const to = Math.round(b.value + level * b.growth);
+            if (from !== to) pairs.push({ from: String(from), to: String(to) });
+          }
+          if (b.flatValue != null && b.flatGrowth) {
+            const from = b.flatValue;
+            const to = Math.round(b.flatValue + level * b.flatGrowth);
+            if (from !== to) pairs.push({ from: (from >= 0 ? '+' : '') + from, to: (to >= 0 ? '+' : '') + to });
+          }
+          if (b.growth && b.type !== 'percent' && b.flatValue == null) {
+            const from = b.value;
+            const to = Math.round(b.value + level * b.growth);
+            if (from !== to) pairs.push({ from: String(from), to: String(to) });
+          }
+          for (const p of pairs) {
+            const esc = p.from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            html = html.replace(new RegExp(`(<span class="bb-kw-num">)${esc}(</span>[% ]?)`, 'g'), `$1${p.to}$2`);
+          }
+        }
+        descEl.innerHTML = html;
+      }
 
-            const parts = [];
-            if (type === 'percent') {
-              parts.push(`${value}%`);
-            }
-            if (flatValue != null) {
-              const flatVal = flatValue + (level - 1) * (flatGrowth || 0);
-              parts.push(`${Math.round(flatVal)}`);
-            }
-            if (growth && type !== 'percent') {
-              parts.push(`${Math.round(value + level * growth)}`);
-            }
-            valEl.textContent = parts.join(' + ');
-          });
+      function update() {
+        const level = clampLevel(input.value);
+        input.value = level;
+
+        if (hasDamage && dmgResult) {
+          dmgResult.textContent = (base + level * growth).toString();
         }
 
-        updateBuffs();
-        buffInput.addEventListener('input', updateBuffs);
-        buffInput.addEventListener('change', updateBuffs);
+        buffs.forEach((b, i) => {
+          if (buffVals[i]) buffVals[i].textContent = computeBuffText(b, level);
+        });
+
+        updateDescription(level);
       }
+
+      update();
+      input.addEventListener('input', update);
+      input.addEventListener('change', update);
     });
   }
 

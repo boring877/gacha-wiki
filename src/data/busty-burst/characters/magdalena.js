@@ -114,17 +114,21 @@ export const skills = {
       "buffEffects": [
         {
           "name": "Physical Attack - Lv4",
-          "value": -25,
-          "type": "flat",
+          "value": -11,
+          "type": "percent",
           "duration": 7,
-          "levelGrowth": -2.0
+          "levelGrowth": 0.0,
+          "flatValue": -25,
+          "flatGrowth": -2.0
         },
         {
           "name": "Magic Attack - Lv4",
-          "value": -25,
-          "type": "flat",
+          "value": -11,
+          "type": "percent",
           "duration": 7,
-          "levelGrowth": -2.0
+          "levelGrowth": 0.0,
+          "flatValue": -25,
+          "flatGrowth": -2.0
         }
       ],
       "duration": 7
@@ -135,7 +139,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
       "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 18 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 18 UP for 8 seconds , 8 Magic Attack 15%+480 UP",
       "target": "All Allies",
       "castTime": 1.28,
       "damageScaling": null,
@@ -154,7 +158,7 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 40.0
+          "levelGrowth": 5.0
         },
         {
           "name": "Block+ Lv3",
@@ -165,10 +169,12 @@ export const skills = {
         },
         {
           "name": "Magic Attack + Lv3",
-          "value": 30,
-          "type": "flat",
+          "value": 15,
+          "type": "percent",
           "duration": 8,
-          "levelGrowth": 5.0
+          "levelGrowth": 0.0,
+          "flatValue": 30,
+          "flatGrowth": 5.0
         }
       ],
       "duration": 15

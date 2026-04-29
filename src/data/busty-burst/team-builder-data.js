@@ -142,6 +142,7 @@ const TEAM_BUILDER_SLUG_MAP = {
   'nue': 'nue',
   'want_some_beer_stenrina': 'want-some-beer-stenrina',
   'messeria': 'messeria',
+  'magdalena': 'magdalena',
 };
 
 // Buff category definitions (colors handled by CSS)
@@ -281,72 +282,8 @@ const CHARACTER_ID_MAP = {
   'slightly_mischievous_devil_luca': 2074,
   'nue': 2075,
   'want_some_beer_stenrina': 2091,
-};
-
-function getCharacterIdFromSlug(underscoreId, charInfo) {
-  if (CHARACTER_ID_MAP[underscoreId]) {
-    return CHARACTER_ID_MAP[underscoreId];
-  }
-  if (charInfo?.characterId) {
-    return charInfo.characterId;
-  }
-  const dashId = underscoreId.replace(/_/g, '-');
-  const stats = BUSTY_BURST_CHARACTER_STATS[dashId];
-  if (stats?.characterId) {
-    return stats.characterId;
-  }
-  return 2001;
-}
-
-// Character image mapping (character ID -> image filename)
-const CHARACTER_IMAGES = {
-  festive_attire_estiriel: 'Festive_Attire_Estiriel.jpg',
-  liesel: 'Liesel.jpg',
-  frey: 'Frey.jpg',
-  messeria: 'Trance_Dancer_Messeria.jpg',
-  teresia: 'Teresia.jpg',
-  dark_knight: 'The_Dark_Knight.jpg',
-  shaty: 'Shaty.png',
-  artia: 'Artia.jpg',
-  gemini: 'Gemini.jpg',
-  luca: 'Luca.jpg',
-  festival_empress_shamshel: 'Festival_Empress_Shamshel.jpg',
-  elegant_shamshel: 'Elegant_Portrait_Shamshel.jpg',
-  nerys: 'Messenge_of_Stone_soldiers_Nerys.jpg',
-  soltina: 'Soltina.jpg',
-  estiriel: 'Estiriel.jpg',
-  hildis: 'Hildis.jpg',
-  marina: 'Marina.jpg',
-  stenlina: 'Stenlina.jpg',
-  hisara: 'Hisara.jpg',
-  bianca: 'Bianca.jpg',
-  natasha: 'Natasha.jpg',
-  venus: 'Venus.jpg',
-  artemis: 'Artemis.jpg',
-  queen_of_pies_and_cookies_aphrodia: 'Queen_of_Pies_and_Cookies_Aphrodia.jpg',
-  luceria: 'Magical Princess Luceria.jpg',
-  ishtovia: 'Pious_Healer_Ishtovia.jpg',
-  nora: 'Nora.jpg',
-  sobrina: 'Swift-Chant_Sorceress_Sobrina.jpg',
-  meinias: 'Meinias.jpg',
-  yu_lima_elka: 'Yu_Lima_Elka.jpg',
-  festive_natasha: 'Festive_Costume_Natasha.jpg',
-  holy_night_succubus_yu_rima_elca: 'Holy_Night_Succubus_Yu_Rima_Elca.jpg',
-  magical_holy_night_festival_kaguya: 'Magical_Holy_Night_Festival_Kaguya.jpg',
-  dragon_crusher_medusa: '2099.png',
-  new_years_calligraphy_pastel: '2100.png',
-  overflowing_jubako_lynette: '2101.png',
-  seductive_high_cut_swimsuit_nerys: '2077.png',
-  killer_bikini_theresia: '2078.png',
-  epic_fishing_meinias: '2079.png',
-  giselle: '2088.png',
-  inrine: '2050.png',
-  henrietti: '2102.png',
-  vanessa: '2103.png',
-  viatrice: '2104.png',
-  trish: '2105.png',
-  lycorys: '2106.png',
-  katisha: '2107.png',
+  'messeria': 2044,
+  'magdalena': 2108,
 };
 
 // Skill buff/debuff category assignments
@@ -1765,6 +1702,34 @@ const SKILL_CATEGORIES = {
       ],
     },
   },
+  magdalena: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: '-11%-25' },
+        { stat: 'Magic ATK', value: '-11%-25' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'D',
+      effects: [
+        { stat: 'Hit-Based Healing Shield', value: '480%+40 (restores 40%, 4 hits)' },
+        { stat: 'Block', value: '+18' },
+        { stat: 'Magic ATK', value: '+15%+480' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Dispel', value: '3 seconds' },
+        { stat: 'Magic DEF', value: 'DOWN' },
+        { stat: 'HP Regen', value: 'UP (self)' },
+      ],
+    },
+  },
 };
 
 function buildTeamBuilderCharacters() {
@@ -1828,14 +1793,14 @@ function buildTeamBuilderCharacters() {
       passive2 = charSkills.passives[1]?.effect || 'None';
     }
 
-    const cid = getCharacterIdFromSlug(charId, charInfo);
+    const cid = CHARACTER_ID_MAP[charId] || charInfo.characterId;
     const paladin = PALADINS_BY_ID[cid];
 
     characters[charId] = {
       id: charId,
       characterId: cid,
       name: charInfo.name || charId,
-      image: CHARACTER_IMAGES[charId] || `${charId}.jpg`,
+      image: `${cid}.png`,
       rarity: paladin?.rarity || charInfo.rarity,
       element: paladin?.element || charInfo.element,
       role: paladin?.role || charInfo.role,

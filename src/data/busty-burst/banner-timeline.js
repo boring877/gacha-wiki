@@ -528,6 +528,21 @@ export const seasonalCharactersData = [
     ],
     status: 'ended',
   },
+  {
+    id: 'magdalena-2026-04',
+    name: 'Magdalena Banner',
+    startDate: '2026-04-28T00:00:00Z',
+    endDate: '2026-05-05T00:00:00Z',
+    characters: [
+      {
+        name: 'Magdalena',
+        rarity: 'SSR',
+        type: 'Tank',
+        image: 'magdalena-2108',
+      },
+    ],
+    status: 'current',
+  },
 ];
 
 /**
