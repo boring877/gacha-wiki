@@ -30,11 +30,13 @@ function formatDate(dateStr) {
         const charUrl = rec.characterSlug ? `/guides/busty-burst/characters/${rec.characterSlug}/` : '';
         return (
           <div class="bb-rec-card">
+            <div class="bb-rec-banner-full">
+              <BBBannerImage bannerId={rec.bannerId} alt={rec.character} />
+            </div>
             <div class="bb-rec-verdict-banner">
               <span class={`bb-rec-verdict bb-rec-verdict-${rec.verdict}`} style={`--verdict-color: ${style.color}`}>{style.label}</span>
             </div>
             <div class="bb-rec-header">
-              <BBBannerImage bannerId={rec.bannerId} alt={rec.character} />
               <div class="bb-rec-header-info">
                 <div class="bb-rec-title-row">
                   <h3 class="bb-rec-char-name">{rec.character}</h3>

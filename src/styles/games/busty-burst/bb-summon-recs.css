@@ -31,7 +31,41 @@
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 24px;
+  overflow: hidden;
+}
+
+.bb-rec-banner-full {
+  width: 100%;
+}
+
+.bb-rec-banner-full .bb-banner-image {
+  width: 100%;
+  border-radius: 0;
+  border: none;
+}
+
+.bb-rec-banner-full .bb-banner-image__img {
+  border-radius: 0;
+}
+
+.bb-rec-verdict-banner {
+  text-align: center;
+  padding: 16px 24px 0;
+}
+
+.bb-rec-header {
+  padding: 0 24px;
+  margin-bottom: 16px;
+}
+
+.bb-rec-header .bb-banner-image {
+  max-width: 260px;
+  border-radius: 8px;
+}
+
+.bb-rec-header-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .bb-rec-verdict-banner {
@@ -134,7 +168,7 @@
 .bb-rec-summary {
   font-size: 15px;
   color: #c0c0c0;
-  margin: 0 0 20px 0;
+  margin: 0 24px 20px 24px;
   line-height: 1.5;
 }
 
@@ -142,7 +176,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 0;
+  margin: 0 24px 24px 24px;
   padding: 16px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
