@@ -10,19 +10,19 @@ export const summonRecommendations = [
     startDate: '2026-04-28',
     endDate: '2026-05-05',
     verdict: 'skip',
-    summary: 'A unique Magic Wind Tank with a solid kit, but wind teams are physical-dominated and the half- anniversary is right around the corner. Save your gems.',
+    summary: 'She\'s a cool Magic Wind Tank and pretty unique, but Wind is a physical element right now so she doesn\'t really fit anywhere. Plus half-anniv is coming in about a month. Save.',
     reasons: [
       {
-        title: 'Wind Teams Are Physical',
-        text: 'Magdalena is a Magic Wind unit, but the Wind element is dominated by Physical teams. Her Magic ATK buffs and Magic DEF debuffs don\'t synergize well with the existing Wind roster.',
+        title: 'Wind Doesn\'t Need Magic',
+        text: 'Wind teams are all physical. Her Magic ATK buffs and DEF debuffs just don\'t mesh with the rest of the Wind roster. She\'s kind of on her own island.',
       },
       {
-        title: 'Half Anniversary in ~1 Month',
-        text: 'The half-anniversary event is coming soon and will likely feature powerful limited units and generous rewards. You\'ll want every gem you can save.',
+        title: 'Half Anniversary Is Coming',
+        text: 'We\'re about a month out from half-anniversary. That means limited units, free pulls, and probably something you\'ll actually want. Don\'t blow your stash here.',
       },
       {
-        title: 'Limited Impact on Current Meta',
-        text: 'Her kit (Hit-Based Healing Shield, dual ATK debuff, Dispel ultimate) is decent but not game-changing. She won\'t shift the meta or solve any problem you can\'t already handle.',
+        title: 'Decent Kit, No Must-Have',
+        text: 'Hit-Based Healing Shield, dual ATK debuff, Dispel on her ult -- it\'s fine. Not bad. Just nothing that makes you go "I need her right now." You can skip this one comfortably.',
       },
     ],
   },
