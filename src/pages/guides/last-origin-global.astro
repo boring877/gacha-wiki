@@ -51,22 +51,12 @@ const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks } } = la
   <section class="content-section">
     {preRegistration && (
       <div class="lo-prereg-banner">
-        <h2 class="section-title">Pre-Registration Now Open!</h2>
-        <p class="lo-prereg-desc">{preRegistration.description}</p>
+        <h2 class="section-title">Pre-Registration Now Open</h2>
         <p class="lo-prereg-dates">
-          <strong>{preRegistration.startDate}</strong> &ndash; <strong>{preRegistration.endDate}</strong>
+          {preRegistration.startDate} &ndash; {preRegistration.endDate}
         </p>
-        <div class="lo-prereg-milestones">
-          {preRegistration.milestones.map((ms) => (
-            <div class="lo-prereg-milestone">
-              <span class="lo-prereg-count">{ms.count} Sign-ups</span>
-              <span class="lo-prereg-reward">{ms.reward}</span>
-            </div>
-          ))}
-        </div>
-        <p class="lo-prereg-note">All milestone rewards will be sent to your account once the game officially launches.</p>
-        <a href={preRegistration.url} target="_blank" rel="noopener noreferrer" class="play-button lo-prereg-btn">
-          Join Pre-Registration
+        <a href={preRegistration.url} target="_blank" rel="noopener noreferrer" class="play-button">
+          Register on VFUN
         </a>
       </div>
     )}

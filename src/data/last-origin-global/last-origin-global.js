@@ -25,16 +25,9 @@ export const lastOriginGlobalConfig = {
       koreanWiki: 'https://lo.swaytwig.com/units/PECS_Spartoia',
     },
     preRegistration: {
-      startDate: '2026-04-30',
-      endDate: '2026-05-21',
+      startDate: 'April 30, 2026',
+      endDate: 'May 21, 2026',
       url: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
-      description: 'Pre-registration is now open! Sign up and unlock milestone rewards when the game launches.',
-      milestones: [
-        { count: '10,000', reward: 'Golden Skip Ticket x3' },
-        { count: '30,000', reward: 'SSR Guaranteed Ticket x1' },
-        { count: '50,000', reward: 'Eternal Contract x1' },
-        { count: '100,000', reward: 'SSR Spartaia Guaranteed Ticket x1' },
-      ],
     },
   },
 
