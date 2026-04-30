@@ -3,6 +3,30 @@
 
 export const summonRecommendations = [
   {
+    bannerId: 'magdalena-2108',
+    character: 'Magdalena',
+    characterSlug: 'magdalena',
+    bannerType: 'Seasonal Banner',
+    startDate: '2026-04-28',
+    endDate: '2026-05-05',
+    verdict: 'skip',
+    summary: 'A unique Magic Wind Tank with a solid kit, but wind teams are physical-dominated and the half- anniversary is right around the corner. Save your gems.',
+    reasons: [
+      {
+        title: 'Wind Teams Are Physical',
+        text: 'Magdalena is a Magic Wind unit, but the Wind element is dominated by Physical teams. Her Magic ATK buffs and Magic DEF debuffs don\'t synergize well with the existing Wind roster.',
+      },
+      {
+        title: 'Half Anniversary in ~1 Month',
+        text: 'The half-anniversary event is coming soon and will likely feature powerful limited units and generous rewards. You\'ll want every gem you can save.',
+      },
+      {
+        title: 'Limited Impact on Current Meta',
+        text: 'Her kit (Hit-Based Healing Shield, dual ATK debuff, Dispel ultimate) is decent but not game-changing. She won\'t shift the meta or solve any problem you can\'t already handle.',
+      },
+    ],
+  },
+  {
     bannerId: 'banner-paladin-introduction-trish',
     character: 'Trish',
     characterSlug: 'trish',
