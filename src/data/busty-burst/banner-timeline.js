@@ -5,6 +5,25 @@
  */
 
 export const bannerTimelineData = [
+  // #18 - Magdalena (Apr 28 - May 5) - CURRENT
+  {
+    id: 'magdalena-2026',
+    title: 'Magdalena Rate Up Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Magdalena',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+    ],
+    startDate: '2026-04-28T03:00:00Z',
+    endDate: '2026-05-05T03:00:00Z',
+    description: 'Magdalena Rate Up Summon! New Paladin Rate Up! Magdalena, the Sacred Tree Witch.',
+    note: 'Magdalena (SSR Wind Magic Tank). Features a unique Magic Wind Tank with Hit-Based Healing Shield, dual ATK debuff, and Dispel ultimate.',
+    status: 'current',
+    image: 'magdalena-2108',
+  },
   // #17 - Paladin Introduction - Trish, Lycorys, Katisha (Apr 21 - May 5) - CURRENT
   {
     id: 'paladin-introduction-trish-2026',
