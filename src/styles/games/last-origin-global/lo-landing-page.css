@@ -249,6 +249,79 @@
   margin-top: 1rem;
 }
 
+/* Pre-Registration Banner */
+.lo-prereg-banner {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(220, 40, 40, 0.15), rgba(180, 30, 30, 0.08));
+  border: 2px solid var(--lo-primary);
+  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.lo-prereg-banner .section-title {
+  margin-bottom: 1rem;
+}
+
+.lo-prereg-desc {
+  font-size: var(--text-base);
+  color: var(--lo-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.lo-prereg-dates {
+  font-size: var(--text-base);
+  color: var(--lo-accent-light);
+  margin-bottom: 2rem;
+}
+
+.lo-prereg-milestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lo-prereg-milestone {
+  background: var(--lo-bg-tertiary);
+  border: 1px solid var(--lo-border);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.lo-prereg-count {
+  font-weight: var(--lo-font-bold);
+  color: var(--lo-primary);
+  font-size: var(--text-sm);
+}
+
+.lo-prereg-reward {
+  color: var(--lo-text-secondary);
+  font-size: var(--text-sm);
+}
+
+.lo-prereg-note {
+  font-size: var(--text-sm);
+  color: var(--lo-text-muted);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.lo-prereg-btn {
+  font-size: var(--text-lg);
+  padding: 1.2rem 3rem;
+  animation: lo-pulse 2s infinite;
+}
+
+@keyframes lo-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 40, 40, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(220, 40, 40, 0); }
+}
+
 /* Resources Styles */
 .lo-resources-title {
   text-align: center;

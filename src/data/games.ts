@@ -116,8 +116,8 @@ export const GAMES: Game[] = [
     description: 'Turn-Based Strategy RPG • Bioroid Squad Building • 3x3 Grid Combat',
     image: LastOriginGlobalIcon,
     url: '/guides/last-origin-global/',
-    status: 'coming-soon',
-    sections: ['Bioroids', 'Grid Combat', 'Unit Types', 'Roles', 'Progression'],
+    status: 'active',
+    sections: ['Pre-Registration', 'Bioroids', 'Grid Combat', 'Unit Types', 'Roles', 'Progression'],
     lastUpdated: new Date(),
   },
 ];

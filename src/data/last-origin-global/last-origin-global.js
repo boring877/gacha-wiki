@@ -15,11 +15,26 @@ export const lastOriginGlobalConfig = {
       'Last Origin is a post-apocalyptic, turn-based strategy RPG where you play as the last surviving human in a world populated by Bioroids. Build your squad, master grid-based tactical combat, and lead humanity to victory.',
     publisher: 'VFUN',
     platforms: ['Mobile'],
-    status: 'coming-soon',
+    status: 'pre-registration',
     lastUpdated: new Date(),
     socialLinks: {
+      vfun: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
+      facebook: 'https://www.facebook.com/LastOriginOnVFUN',
+      discord: 'https://discord.gg/tgmbFm3JCA',
       orvvit: 'https://www.orvvit.com/page/last-origin-global',
-      discord: 'https://discord.gg/6KSPjvs',
+      koreanWiki: 'https://lo.swaytwig.com/units/PECS_Spartoia',
+    },
+    preRegistration: {
+      startDate: '2026-04-30',
+      endDate: '2026-05-21',
+      url: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
+      description: 'Pre-registration is now open! Sign up and unlock milestone rewards when the game launches.',
+      milestones: [
+        { count: '10,000', reward: 'Golden Skip Ticket x3' },
+        { count: '30,000', reward: 'SSR Guaranteed Ticket x1' },
+        { count: '50,000', reward: 'Eternal Contract x1' },
+        { count: '100,000', reward: 'SSR Spartaia Guaranteed Ticket x1' },
+      ],
     },
   },
 
@@ -116,15 +131,33 @@ export const lastOriginGlobalConfig = {
       size: 'medium',
       guides: [
         {
+          id: 'vfun',
+          title: 'VFUN (Official)',
+          url: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
+          external: true,
+        },
+        {
           id: 'orvvit',
           title: 'Orvvit (Official Info)',
           url: 'https://www.orvvit.com/page/last-origin-global',
           external: true,
         },
         {
+          id: 'facebook',
+          title: 'Facebook',
+          url: 'https://www.facebook.com/LastOriginOnVFUN',
+          external: true,
+        },
+        {
           id: 'discord',
           title: 'Discord',
-          url: 'https://discord.gg/6KSPjvs',
+          url: 'https://discord.gg/tgmbFm3JCA',
+          external: true,
+        },
+        {
+          id: 'korean-wiki',
+          title: 'Korean Wiki (Swaytwig)',
+          url: 'https://lo.swaytwig.com/units/PECS_Spartoia',
           external: true,
         },
       ],

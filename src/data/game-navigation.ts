@@ -397,8 +397,19 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     image: LastOriginGlobalIcon,
     sections: [
       {
-        title: 'Resources',
-        links: [],
+        title: 'Game',
+        links: [
+          { name: 'Pre-Registration', href: 'https://vfun.valofe.com/library?service_code=lastorigin-gl', external: true },
+          { name: 'Home', href: '/guides/last-origin-global/' },
+        ],
+      },
+      {
+        title: 'Community',
+        links: [
+          { name: 'Discord', href: 'https://discord.gg/tgmbFm3JCA', external: true },
+          { name: 'Facebook', href: 'https://www.facebook.com/LastOriginOnVFUN', external: true },
+          { name: 'Korean Wiki', href: 'https://lo.swaytwig.com/units/PECS_Spartoia', external: true },
+        ],
       },
     ],
   },
