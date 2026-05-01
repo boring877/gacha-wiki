@@ -16,7 +16,7 @@
   "model": "32_Rin/Unit/prf_32",
   "animation_event": "32_rin",
   "book_index": 7,
-  "acquisition_id": 10002,
+  "acquisition_id": 10004,
   "btl_power": 8950,
   "btl_rate": 313831,
   "names": {
@@ -489,9 +489,23 @@
       "hit_count": 2,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[P:10]/[P:10]/[P:10]/[P:10]/[P:10]",
-      "multiplier": 252.0,
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+      "multiplier": 236.2,
       "effects": [
+        {
+          "type": "multi_attack",
+          "hits": [
+            {
+              "value": 118.1,
+              "target": "eBOTarget_Enemy/1"
+            },
+            {
+              "value": 118.1,
+              "target": "eBOTarget_EnemyRnd/1"
+            }
+          ],
+          "value": 236.2
+        },
         {
           "type": "eBOFunc_AddDeBuff/ElecShock",
           "target": "eBOTarget_HitTarget",
@@ -502,10 +516,11 @@
           "condition": "eBOCond_IsDmgTypeByJudge/CriAtk"
         }
       ],
-      "battle_options": "320101/320102",
+      "battle_options": "320101/320102/320103",
       "battle_option_ids": [
         320101,
-        320102
+        320102,
+        320103
       ],
       "evolution_level_required": 0,
       "trigger_keyword": "",
@@ -519,7 +534,7 @@
       "name": "[&Color_Cyan]Volt Rush[-]",
       "name_key": "Tbl_UnitSkill_Name_3202",
       "name_readable": "Volt Rush",
-      "description": "Spins around and slashes [&Common_Word_Skill_EnemyAll] with blades attached to the back 5 times.\nIf the target is inflicted with [&ElecShock], additionally inflicts them with [&Stun] at a [&Color_Cyan][R:320202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:320202] turn(s)\nOn [&Common_Word_Skill_ActionLast], if the target is inflicted with [&Stun], reduces the [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:320203]%)[-] at a [&Color_Cyan][R:320203]%[-] chance.",
+      "description": "Spins around and slashes [&Common_Word_Skill_EnemyAll] with blades attached to the back [A:3202] times.\nIf the target is inflicted with [&ElecShock], additionally inflicts them with [&Stun] at a [&Color_Cyan][R:320202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:320202] turn(s)\nOn [&Common_Word_Skill_ActionLast], if the target is inflicted with [&Stun], reduces the [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:320203]%)[-] at a [&Color_Cyan][R:320203]%[-] chance.",
       "description_key": "Tbl_UnitSkill_Desc_3202",
       "description_readable": "Spins around and slashes ALL enemies with blades attached to the back 5 times.\nIf the target is inflicted with Electrocute, additionally inflicts them with Faint at a 5% chance.\nDuration: 1 turn(s)\nOn Last Attack, if the target is inflicted with Faint, reduces the Turn Gauge by (15%) at a 50% chance.",
       "type_description": "[&Color_Orange][Attack Skill][-]",
@@ -529,7 +544,7 @@
       "hit_count": 5,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[P:10]/[D:10]/[P:10]/[D:10]/[P:10]",
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
       "multiplier": 71.0,
       "effects": [
         {
@@ -578,7 +593,7 @@
       "hit_count": 1,
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
       "multiplier": 782.8,
       "effects": [
         {
@@ -618,9 +633,9 @@
       "name": "[&Color_Cyan]Volt Taimanin[-]",
       "name_key": "Tbl_UnitSkill_Name_3204",
       "name_readable": "Volt Taimanin",
-      "description": "Increases [&Common_Word_Skill_CriticalRate] equal to [&Color_Cyan][V3:320401]%[-] of character's [&SPD].",
+      "description": "When an ally is inflicted with [&ElecShock], reduces the duration of [&ElecShock] by [V2:320401] turn(s).\nAt the same time, increases own [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:320402]%)[-].\nIf the character is afflicted with [&ElecShock], attacks once more when using [&Tbl_UnitSkill_Name_3201].",
       "description_key": "Tbl_UnitSkill_Desc_3204",
-      "description_readable": "Increases CRIT Rate equal to 3% of character's SPD.",
+      "description_readable": "When an ally is inflicted with Electrocute, reduces the duration of Electrocute by -1 turn(s).\nAt the same time, increases own Turn Gauge by (20%).\nIf the character is afflicted with Electrocute, attacks once more when using Taimanin Art: Volt Sword.",
       "type_description": "[&Color_Orange][Passive Skill][-]",
       "type_description_readable": "[Passive Skill]",
       "icon": "3204",
@@ -632,15 +647,18 @@
       "multiplier": null,
       "effects": [
         {
-          "type": "eBOFunc_CriRateBySpdRate",
-          "target": "NONE",
-          "value": 3.0,
-          "timing": "eBOTiming_OnAttackCalc"
+          "type": "eBOFunc_TurnGaugeUp",
+          "target": "eBOTarget_Self",
+          "value": 20.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
         }
       ],
-      "battle_options": "320401",
+      "battle_options": "320401/320402",
       "battle_option_ids": [
-        320401
+        320401,
+        320402
       ],
       "evolution_level_required": 2,
       "trigger_keyword": "",
@@ -677,7 +695,7 @@
         "hit_count": 1,
         "additional_hits": 0,
         "damage_scaling": "[ATK]",
-        "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
+        "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
         "multiplier": 782.8,
         "effects": [
           {

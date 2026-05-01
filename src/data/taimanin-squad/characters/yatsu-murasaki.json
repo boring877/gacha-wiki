@@ -597,9 +597,9 @@
       "name": "[&Color_Cyan]Awakened Immortal[-]",
       "name_key": "Tbl_UnitSkill_Name_1904",
       "name_readable": "Awakened Immortal",
-      "description": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [&Color_Cyan][V3:190401]%[-] of Max. [&HP] and enters an [&Athanasia] state.\n[&Common_Word_Skill_ValueTurn]: [V2:190402] turn(s)",
+      "description": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [&Color_Cyan][V3:190401]%[-] of Max. [&HP] and enters an [&Athanasia] state.\nWhen enemy uses a skill that grants [&AtkUp] [&Buff], guranteed to [&Provocation] 2 enemies with the highest ATK. [&Common_Word_Skill_CooltimeIgnore]\n[&Common_Word_Skill_ValueTurn]: [V2:190403] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_1904",
-      "description_readable": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at 5% of Max. HP and enters an Immortal state.\nDuration: 1 turn(s)",
+      "description_readable": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at 5% of Max. HP and enters an Immortal state.\nWhen enemy uses a skill that grants ATK UP Buff, guranteed to Taunt 2 enemies with the highest ATK. [Always-active passive effect regardless of cooldown]\nDuration: 1 turn(s)",
       "type_description": "[&Color_Orange][Passive Skill][-]",
       "type_description_readable": "[Passive Skill]",
       "icon": "1904",
@@ -618,12 +618,22 @@
           "rate": 0,
           "timing": "eBOTiming_OnDie",
           "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddDeBuff/Provocation",
+          "target": "eBOTarget_AtkMoreEnemy/2",
+          "duration": 1,
+          "value": 0.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionBefore",
+          "condition": ""
         }
       ],
-      "battle_options": "190401/190402",
+      "battle_options": "190401/190402/190403",
       "battle_option_ids": [
         190401,
-        190402
+        190402,
+        190403
       ],
       "evolution_level_required": 2,
       "trigger_keyword": "",
@@ -652,7 +662,7 @@
         "name_readable": "<Combat Axe> Fortification",
         "description": "Gains a [&Shield] equal to [&Color_Cyan][V3:191201]%[-] of the character's Max. HP.\n[&Common_Word_Skill_ValueTurn]: [V2:191201] turn(s)\n[&Provocation]s [&Common_Word_Skill_EnemyAll] at a fixed chance of [&Color_Cyan][R:191202]%[-]\n[&Common_Word_Skill_ValueTurn]: [V2:191202] turn(s)",
         "description_key": "Tbl_UnitSkill_Desc_1912",
-        "description_readable": "Gains a Shield equal to 19.5% of the character's Max. HP.\nDuration: 2 turn(s)\nTaunts ALL enemies at a fixed chance of -30%\nDuration: 2 turn(s)",
+        "description_readable": "Gains a Shield equal to 19.5% of the character's Max. HP.\nDuration: 2 turn(s)\nTaunts ALL enemies at a fixed chance of -35%\nDuration: 2 turn(s)",
         "type_description": "[&Color_Orange][Support Skill][-]",
         "type_description_readable": "[Support Skill]",
         "icon": "1912",
@@ -677,7 +687,7 @@
             "target": "eBOTarget_Enemy/All",
             "duration": 2,
             "value": 0.0,
-            "rate": -30,
+            "rate": -35,
             "timing": "eBOTiming_Action",
             "condition": ""
           }
@@ -711,9 +721,9 @@
         "name": "<[&Tbl_UnitWeapon_Name_1902]> [&Tbl_UnitSkill_Name_1904]",
         "name_key": "Tbl_UnitSkill_Name_1914",
         "name_readable": "<Killing Spree> Awakened Immortal",
-        "description": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [&Color_Cyan][V3:191401]%[-] of Max. [&HP] and enters an [&Athanasia] state.\n[&Common_Word_Skill_ValueTurn]: [V2:191402] turn(s)\n",
+        "description": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at [&Color_Cyan][V3:191401]%[-] of Max. [&HP] and enters an [&Athanasia] state.\n[&Common_Word_Skill_ValueTurn]: [V2:191402] turn(s)\nWhen enemy uses a skill that grants [&AtkUp] [&Buff], guranteed to [&Provocation] 2 enemies with the highest ATK. [&Common_Word_Skill_CooltimeIgnore]\n[&Common_Word_Skill_ValueTurn]: [V2:191403] turn(s)",
         "description_key": "Tbl_UnitSkill_Desc_1914",
-        "description_readable": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at 30% of Max. HP and enters an Immortal state.\nDuration: 1 turn(s)",
+        "description_readable": "Murasaki doesn't go down easily.\nWhen defeated after being attacked by an enemy, she resurrects at 30% of Max. HP and enters an Immortal state.\nDuration: 1 turn(s)\nWhen enemy uses a skill that grants ATK UP Buff, guranteed to Taunt 2 enemies with the highest ATK. [Always-active passive effect regardless of cooldown]\nDuration: 1 turn(s)",
         "type_description": "[&Color_Orange][Passive Skill][-]",
         "type_description_readable": "[Passive Skill]",
         "icon": "1914",
@@ -732,12 +742,22 @@
             "rate": 0,
             "timing": "eBOTiming_OnDie",
             "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddDeBuff/Provocation",
+            "target": "eBOTarget_AtkMoreEnemy/2",
+            "duration": 1,
+            "value": 0.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionBefore",
+            "condition": ""
           }
         ],
-        "battle_options": "191401/191402",
+        "battle_options": "191401/191402/191403",
         "battle_option_ids": [
           191401,
-          191402
+          191402,
+          191403
         ],
         "evolution_level_required": 2,
         "trigger_keyword": "",

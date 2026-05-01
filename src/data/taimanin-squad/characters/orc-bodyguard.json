@@ -521,7 +521,7 @@
       "name_readable": "Hurricane Strike",
       "description": "Spins and attacks [&Common_Word_Skill_EnemyAll] 5 times.\nEvery time a [&Common_Word_Skill_CriticalAttack] occurs, inflicts [&Stun] at a [&Color_Cyan][R:1370202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1370202] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_13702",
-      "description_readable": "Spins and attacks ALL enemies 5 times.\nEvery time a CRIT ATK occurs, inflicts Faint at a 5% chance.\nDuration: 1 turn(s)",
+      "description_readable": "Spins and attacks ALL enemies 5 times.\nEvery time a CRIT ATK occurs, inflicts Faint at a 8% chance.\nDuration: 1 turn(s)",
       "type_description": "[&Color_Orange][Attack Skill][-]",
       "type_description_readable": "[Attack Skill]",
       "icon": "13702",
@@ -537,7 +537,7 @@
           "target": "eBOTarget_HitTarget",
           "duration": 1,
           "value": 0.0,
-          "rate": 5,
+          "rate": 8,
           "timing": "eBOTiming_OnAction",
           "condition": "eBOCond_IsDmgTypeByJudge/CriHit"
         }

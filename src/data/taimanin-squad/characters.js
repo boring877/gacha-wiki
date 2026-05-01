@@ -20600,12 +20600,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "icon": "61_Orochi",
     "lore": {
       "key": "Tbl_Unit_Desc_61",
-      "english": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power.",
-      "japanese": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power.",
-      "korean": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power.",
-      "chinese_simplified": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power.",
-      "chinese_traditional": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power.",
-      "spanish": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, widely renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with overwhelming power."
+      "english": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers.",
+      "japanese": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers.",
+      "korean": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers.",
+      "chinese_simplified": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers.",
+      "chinese_traditional": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers.",
+      "spanish": "Demon, a high-ranking female Oni warrior. She crossed over to the Human World to make money and is living day by day as a mercenary. But, being a heavy drinker, she always ends up short on money as she spends her day's earnings on drinking.\n\nAmong the Oni, she's feared by many, almost as much as a goddess, renowned for her overwhelming strength and toughness. She wields a gigantic sword forged by a legendary Oni blacksmith from the Demon Realm, and with it, it is said to be able to slay a titan-sized demon with godly powers."
     },
     "stats": {
       "HP": 14100,
@@ -79923,12 +79923,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 234,
-    "name": "Igawa Asagi [Gosha Academy]",
+    "name": "[Gosha Academy] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Gosha Academy]",
+      "english": "[Gosha Academy] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[gosha-academy]",
+    "slug": "[gosha-academy]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -80266,12 +80266,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 235,
-    "name": "Igawa Sakura [Gosha Academy]",
+    "name": "[Gosha Academy] Igawa Sakura",
     "names": {
-      "english": "Igawa Sakura [Gosha Academy]",
+      "english": "[Gosha Academy] Igawa Sakura",
       "japanese": ""
     },
-    "slug": "igawa-sakura-[gosha-academy]",
+    "slug": "[gosha-academy]-igawa-sakura",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Power",
@@ -80609,12 +80609,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 236,
-    "name": "Yatsu Murasaki [Gosha Academy]",
+    "name": "[Gosha Academy] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Gosha Academy]",
+      "english": "[Gosha Academy] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[gosha-academy]",
+    "slug": "[gosha-academy]-yatsu-murasaki",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -80952,12 +80952,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 237,
-    "name": "Mizuki Shiranui [Gosha Academy]",
+    "name": "[Gosha Academy] Mizuki Shiranui",
     "names": {
-      "english": "Mizuki Shiranui [Gosha Academy]",
+      "english": "[Gosha Academy] Mizuki Shiranui",
       "japanese": ""
     },
-    "slug": "mizuki-shiranui-[gosha-academy]",
+    "slug": "[gosha-academy]-mizuki-shiranui",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -81295,12 +81295,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 238,
-    "name": "Mizuki Yukikaze [Gosha Academy]",
+    "name": "[Gosha Academy] Mizuki Yukikaze",
     "names": {
-      "english": "Mizuki Yukikaze [Gosha Academy]",
+      "english": "[Gosha Academy] Mizuki Yukikaze",
       "japanese": ""
     },
-    "slug": "mizuki-yukikaze-[gosha-academy]",
+    "slug": "[gosha-academy]-mizuki-yukikaze",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -81638,12 +81638,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 239,
-    "name": "Akiyama Rinko [Gosha Academy]",
+    "name": "[Gosha Academy] Akiyama Rinko",
     "names": {
-      "english": "Akiyama Rinko [Gosha Academy]",
+      "english": "[Gosha Academy] Akiyama Rinko",
       "japanese": ""
     },
-    "slug": "akiyama-rinko-[gosha-academy]",
+    "slug": "[gosha-academy]-akiyama-rinko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -81981,12 +81981,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 240,
-    "name": "Kousaka Shizuru [Gosha Academy]",
+    "name": "[Gosha Academy] Kousaka Shizuru",
     "names": {
-      "english": "Kousaka Shizuru [Gosha Academy]",
+      "english": "[Gosha Academy] Kousaka Shizuru",
       "japanese": ""
     },
-    "slug": "kousaka-shizuru-[gosha-academy]",
+    "slug": "[gosha-academy]-kousaka-shizuru",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -82324,12 +82324,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 241,
-    "name": "Shinganji Kurenai [Gosha Academy]",
+    "name": "[Gosha Academy] Shinganji Kurenai",
     "names": {
-      "english": "Shinganji Kurenai [Gosha Academy]",
+      "english": "[Gosha Academy] Shinganji Kurenai",
       "japanese": ""
     },
-    "slug": "shinganji-kurenai-[gosha-academy]",
+    "slug": "[gosha-academy]-shinganji-kurenai",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -82667,12 +82667,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 242,
-    "name": "Fuuma Kotaro [Gosha Academy]",
+    "name": "[Gosha Academy] Fuuma Kotaro",
     "names": {
-      "english": "Fuuma Kotaro [Gosha Academy]",
+      "english": "[Gosha Academy] Fuuma Kotaro",
       "japanese": ""
     },
-    "slug": "fuuma-kotaro-[gosha-academy]",
+    "slug": "[gosha-academy]-fuuma-kotaro",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -83010,12 +83010,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 243,
-    "name": "Fuuma Tokiko [Gosha Academy]",
+    "name": "[Gosha Academy] Fuuma Tokiko",
     "names": {
-      "english": "Fuuma Tokiko [Gosha Academy]",
+      "english": "[Gosha Academy] Fuuma Tokiko",
       "japanese": ""
     },
-    "slug": "fuuma-tokiko-[gosha-academy]",
+    "slug": "[gosha-academy]-fuuma-tokiko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -83353,12 +83353,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 244,
-    "name": "Amamiya Shisui [Gosha Academy]",
+    "name": "[Gosha Academy] Amamiya Shisui",
     "names": {
-      "english": "Amamiya Shisui [Gosha Academy]",
+      "english": "[Gosha Academy] Amamiya Shisui",
       "japanese": ""
     },
-    "slug": "amamiya-shisui-[gosha-academy]",
+    "slug": "[gosha-academy]-amamiya-shisui",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -83696,12 +83696,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 245,
-    "name": "Aishu Hebiko [Gosha Academy]",
+    "name": "[Gosha Academy] Aishu Hebiko",
     "names": {
-      "english": "Aishu Hebiko [Gosha Academy]",
+      "english": "[Gosha Academy] Aishu Hebiko",
       "japanese": ""
     },
-    "slug": "aishu-hebiko-[gosha-academy]",
+    "slug": "[gosha-academy]-aishu-hebiko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -84039,12 +84039,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 246,
-    "name": "Onisaki Kirara [Gosha Academy]",
+    "name": "[Gosha Academy] Onisaki Kirara",
     "names": {
-      "english": "Onisaki Kirara [Gosha Academy]",
+      "english": "[Gosha Academy] Onisaki Kirara",
       "japanese": ""
     },
-    "slug": "onisaki-kirara-[gosha-academy]",
+    "slug": "[gosha-academy]-onisaki-kirara",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -84382,12 +84382,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 247,
-    "name": "Kannazuki Sora [Gosha Academy]",
+    "name": "[Gosha Academy] Kannazuki Sora",
     "names": {
-      "english": "Kannazuki Sora [Gosha Academy]",
+      "english": "[Gosha Academy] Kannazuki Sora",
       "japanese": ""
     },
-    "slug": "kannazuki-sora-[gosha-academy]",
+    "slug": "[gosha-academy]-kannazuki-sora",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -84725,12 +84725,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 248,
-    "name": "Shinohara Mari [Gosha Academy]",
+    "name": "[Gosha Academy] Shinohara Mari",
     "names": {
-      "english": "Shinohara Mari [Gosha Academy]",
+      "english": "[Gosha Academy] Shinohara Mari",
       "japanese": ""
     },
-    "slug": "shinohara-mari-[gosha-academy]",
+    "slug": "[gosha-academy]-shinohara-mari",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -85068,12 +85068,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 249,
-    "name": "Kamimura Maika [Gosha Academy]",
+    "name": "[Gosha Academy] Kamimura Maika",
     "names": {
-      "english": "Kamimura Maika [Gosha Academy]",
+      "english": "[Gosha Academy] Kamimura Maika",
       "japanese": ""
     },
-    "slug": "kamimura-maika-[gosha-academy]",
+    "slug": "[gosha-academy]-kamimura-maika",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -85411,12 +85411,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 250,
-    "name": "Mizuki Shiranui [Kimono]",
+    "name": "[Kimono] Mizuki Shiranui",
     "names": {
-      "english": "Mizuki Shiranui [Kimono]",
+      "english": "[Kimono] Mizuki Shiranui",
       "japanese": ""
     },
-    "slug": "mizuki-shiranui-[kimono]",
+    "slug": "[kimono]-mizuki-shiranui",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -85754,12 +85754,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 251,
-    "name": "Mizuki Yukikaze [Kimono]",
+    "name": "[Kimono] Mizuki Yukikaze",
     "names": {
-      "english": "Mizuki Yukikaze [Kimono]",
+      "english": "[Kimono] Mizuki Yukikaze",
       "japanese": ""
     },
-    "slug": "mizuki-yukikaze-[kimono]",
+    "slug": "[kimono]-mizuki-yukikaze",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -86097,12 +86097,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 252,
-    "name": "Igawa Asagi [Kimono]",
+    "name": "[Kimono] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Kimono]",
+      "english": "[Kimono] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[kimono]",
+    "slug": "[kimono]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -86440,19 +86440,19 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 253,
-    "name": "Igawa Asagi [Wedding]",
+    "name": "[Wedding] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Wedding]",
+      "english": "[Wedding] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[wedding]",
-    "rarity": "SR+",
-    "rarity_name": "",
-    "element": "Technique",
-    "type": "Technique",
+    "slug": "[wedding]-igawa-asagi",
+    "rarity": "SSR",
+    "rarity_name": "Legend",
+    "element": "Power",
+    "type": "Power",
     "role": "Support",
     "class": "Support",
-    "trait": "Mars",
+    "trait": "Mercury",
     "icon": "253_Asagi",
     "lore": {
       "key": "Tbl_Unit_Desc_253",
@@ -86464,10 +86464,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "spanish": "Igawa Asagi [Wedding]"
     },
     "stats": {
-      "HP": 31800,
-      "ATK": 636,
-      "DEF": 954,
-      "SPD": 84,
+      "HP": 30072,
+      "ATK": 1002,
+      "DEF": 1074,
+      "SPD": 83,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 0,
@@ -86475,10 +86475,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "EVD": 0
     },
     "base_stats": {
-      "HP": 11291,
-      "ATK": 221,
-      "DEF": 331,
-      "SPD": 84,
+      "HP": 10675,
+      "ATK": 352,
+      "DEF": 374,
+      "SPD": 83,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 0,
@@ -86626,10 +86626,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 1,
         "max_level": 10,
         "stats": {
-          "HP": 14401,
-          "ATK": 282,
-          "DEF": 422,
-          "SPD": 84,
+          "HP": 13615,
+          "ATK": 449,
+          "DEF": 477,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86652,10 +86652,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 2,
         "max_level": 20,
         "stats": {
-          "HP": 17856,
-          "ATK": 349,
-          "DEF": 523,
-          "SPD": 84,
+          "HP": 16881,
+          "ATK": 557,
+          "DEF": 591,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86678,10 +86678,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 3,
         "max_level": 30,
         "stats": {
-          "HP": 21311,
-          "ATK": 417,
-          "DEF": 625,
-          "SPD": 84,
+          "HP": 20148,
+          "ATK": 664,
+          "DEF": 706,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86704,10 +86704,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 4,
         "max_level": 40,
         "stats": {
-          "HP": 24766,
-          "ATK": 485,
-          "DEF": 726,
-          "SPD": 84,
+          "HP": 23415,
+          "ATK": 772,
+          "DEF": 820,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86730,10 +86730,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 5,
         "max_level": 50,
         "stats": {
-          "HP": 28221,
-          "ATK": 552,
-          "DEF": 827,
-          "SPD": 84,
+          "HP": 26681,
+          "ATK": 880,
+          "DEF": 935,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86756,10 +86756,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 6,
         "max_level": 60,
         "stats": {
-          "HP": 31676,
-          "ATK": 620,
-          "DEF": 929,
-          "SPD": 84,
+          "HP": 29948,
+          "ATK": 988,
+          "DEF": 1049,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86783,19 +86783,19 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 254,
-    "name": "Yatsu Murasaki [Wedding]",
+    "name": "[Wedding] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Wedding]",
+      "english": "[Wedding] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[wedding]",
+    "slug": "[wedding]-yatsu-murasaki",
     "rarity": "SR+",
     "rarity_name": "",
-    "element": "Technique",
-    "type": "Technique",
-    "role": "Defender",
-    "class": "Defender",
-    "trait": "Saturn",
+    "element": "Agility",
+    "type": "Agility",
+    "role": "Attacker",
+    "class": "Attacker",
+    "trait": "Sun",
     "icon": "254_Murasaki",
     "lore": {
       "key": "Tbl_Unit_Desc_254",
@@ -86807,10 +86807,353 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "spanish": "Yatsu Murasaki [Wedding]"
     },
     "stats": {
-      "HP": 19080,
-      "ATK": 1081,
-      "DEF": 1144,
+      "HP": 17808,
+      "ATK": 1494,
+      "DEF": 795,
       "SPD": 82,
+      "CRATE": 50,
+      "CDMG": 575,
+      "CRES": 0,
+      "ACC": 0,
+      "EVD": 0
+    },
+    "base_stats": {
+      "HP": 6276,
+      "ATK": 522,
+      "DEF": 283,
+      "SPD": 82,
+      "CRATE": 25,
+      "CDMG": 500,
+      "CRES": 0,
+      "ACC": 0,
+      "EVD": 0
+    },
+    "evolution_bonuses": {
+      "1": {
+        "HP": 40,
+        "ATK": 6,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "2": {
+        "HP": 80,
+        "ATK": 12,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "3": {
+        "HP": 120,
+        "ATK": 18,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "4": {
+        "HP": 160,
+        "ATK": 24,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "5": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "6": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 25,
+        "CDMG": 75,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      }
+    },
+    "evolution_bonuses_per_grade": {
+      "1": {
+        "HP": 40,
+        "ATK": 6,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "2": {
+        "HP": 80,
+        "ATK": 12,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "3": {
+        "HP": 120,
+        "ATK": 18,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "4": {
+        "HP": 160,
+        "ATK": 24,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "5": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 0,
+        "CDMG": 0,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      },
+      "6": {
+        "HP": 200,
+        "ATK": 30,
+        "DEF": 0,
+        "SPD": 0,
+        "CRATE": 25,
+        "CDMG": 75,
+        "CRES": 0,
+        "ACC": 0,
+        "EVD": 0
+      }
+    },
+    "stats_by_grade": {
+      "1": {
+        "grade": 1,
+        "max_level": 10,
+        "stats": {
+          "HP": 8004,
+          "ATK": 666,
+          "DEF": 361,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 40,
+          "ATK": 6,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "2": {
+        "grade": 2,
+        "max_level": 20,
+        "stats": {
+          "HP": 9925,
+          "ATK": 825,
+          "DEF": 448,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 80,
+          "ATK": 12,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "3": {
+        "grade": 3,
+        "max_level": 30,
+        "stats": {
+          "HP": 11845,
+          "ATK": 985,
+          "DEF": 534,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 120,
+          "ATK": 18,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "4": {
+        "grade": 4,
+        "max_level": 40,
+        "stats": {
+          "HP": 13766,
+          "ATK": 1145,
+          "DEF": 621,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 160,
+          "ATK": 24,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "5": {
+        "grade": 5,
+        "max_level": 50,
+        "stats": {
+          "HP": 15686,
+          "ATK": 1305,
+          "DEF": 707,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 200,
+          "ATK": 30,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 0,
+          "CDMG": 0,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      },
+      "6": {
+        "grade": 6,
+        "max_level": 60,
+        "stats": {
+          "HP": 17607,
+          "ATK": 1464,
+          "DEF": 794,
+          "SPD": 82,
+          "CRATE": 25,
+          "CDMG": 500,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        },
+        "evolution_bonus_total": {
+          "HP": 200,
+          "ATK": 30,
+          "DEF": 0,
+          "SPD": 0,
+          "CRATE": 25,
+          "CDMG": 75,
+          "CRES": 0,
+          "ACC": 0,
+          "EVD": 0
+        }
+      }
+    },
+    "skills_count": 4
+  },
+  {
+    "id": 255,
+    "name": "[Wedding] Nanase Mai",
+    "names": {
+      "english": "[Wedding] Nanase Mai",
+      "japanese": ""
+    },
+    "slug": "[wedding]-nanase-mai",
+    "rarity": "SSR",
+    "rarity_name": "Legend",
+    "element": "Agility",
+    "type": "Agility",
+    "role": "Defender",
+    "class": "Defender",
+    "trait": "Jupiter",
+    "icon": "255_Mai",
+    "lore": {
+      "key": "Tbl_Unit_Desc_255",
+      "english": "Nanase Mai [Wedding]",
+      "japanese": "Nanase Mai [Wedding]",
+      "korean": "Nanase Mai [Wedding]",
+      "chinese_simplified": "Nanase Mai [Wedding]",
+      "chinese_traditional": "Nanase Mai [Wedding]",
+      "spanish": "Nanase Mai [Wedding]"
+    },
+    "stats": {
+      "HP": 21480,
+      "ATK": 1038,
+      "DEF": 1467,
+      "SPD": 83,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 50,
@@ -86818,10 +87161,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "EVD": 25
     },
     "base_stats": {
-      "HP": 6356,
-      "ATK": 385,
-      "DEF": 372,
-      "SPD": 82,
+      "HP": 7211,
+      "ATK": 370,
+      "DEF": 487,
+      "SPD": 83,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 0,
@@ -86969,10 +87312,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 1,
         "max_level": 10,
         "stats": {
-          "HP": 8106,
-          "ATK": 491,
-          "DEF": 474,
-          "SPD": 82,
+          "HP": 9197,
+          "ATK": 472,
+          "DEF": 621,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -86995,10 +87338,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 2,
         "max_level": 20,
         "stats": {
-          "HP": 10051,
-          "ATK": 609,
-          "DEF": 588,
-          "SPD": 82,
+          "HP": 11403,
+          "ATK": 585,
+          "DEF": 770,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -87021,10 +87364,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 3,
         "max_level": 30,
         "stats": {
-          "HP": 11996,
-          "ATK": 727,
-          "DEF": 702,
-          "SPD": 82,
+          "HP": 13610,
+          "ATK": 698,
+          "DEF": 919,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -87047,10 +87390,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 4,
         "max_level": 40,
         "stats": {
-          "HP": 13941,
-          "ATK": 844,
-          "DEF": 816,
-          "SPD": 82,
+          "HP": 15817,
+          "ATK": 812,
+          "DEF": 1068,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -87073,10 +87416,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 5,
         "max_level": 50,
         "stats": {
-          "HP": 15886,
-          "ATK": 962,
-          "DEF": 930,
-          "SPD": 82,
+          "HP": 18023,
+          "ATK": 925,
+          "DEF": 1217,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -87099,10 +87442,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 6,
         "max_level": 60,
         "stats": {
-          "HP": 17831,
-          "ATK": 1080,
-          "DEF": 1044,
-          "SPD": 82,
+          "HP": 20230,
+          "ATK": 1038,
+          "DEF": 1366,
+          "SPD": 83,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -87125,356 +87468,13 @@ export const TAIMANIN_SQUAD_CHARACTERS =
     "skills_count": 4
   },
   {
-    "id": 255,
-    "name": "Nanase Mai [Wedding]",
-    "names": {
-      "english": "Nanase Mai [Wedding]",
-      "japanese": ""
-    },
-    "slug": "nanase-mai-[wedding]",
-    "rarity": "SR+",
-    "rarity_name": "",
-    "element": "Technique",
-    "type": "Technique",
-    "role": "Support",
-    "class": "Support",
-    "trait": "Mars",
-    "icon": "255_Mai",
-    "lore": {
-      "key": "Tbl_Unit_Desc_255",
-      "english": "Nanase Mai [Wedding]",
-      "japanese": "Nanase Mai [Wedding]",
-      "korean": "Nanase Mai [Wedding]",
-      "chinese_simplified": "Nanase Mai [Wedding]",
-      "chinese_traditional": "Nanase Mai [Wedding]",
-      "spanish": "Nanase Mai [Wedding]"
-    },
-    "stats": {
-      "HP": 28620,
-      "ATK": 636,
-      "DEF": 1113,
-      "SPD": 81,
-      "CRATE": 25,
-      "CDMG": 500,
-      "CRES": 0,
-      "ACC": 50,
-      "EVD": 0
-    },
-    "base_stats": {
-      "HP": 10157,
-      "ATK": 221,
-      "DEF": 388,
-      "SPD": 81,
-      "CRATE": 25,
-      "CDMG": 500,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "evolution_bonuses": {
-      "1": {
-        "HP": 25,
-        "ATK": 3,
-        "DEF": 5,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "2": {
-        "HP": 50,
-        "ATK": 6,
-        "DEF": 10,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "3": {
-        "HP": 75,
-        "ATK": 9,
-        "DEF": 15,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "4": {
-        "HP": 100,
-        "ATK": 12,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "5": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "6": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "evolution_bonuses_per_grade": {
-      "1": {
-        "HP": 25,
-        "ATK": 3,
-        "DEF": 5,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "2": {
-        "HP": 50,
-        "ATK": 6,
-        "DEF": 10,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "3": {
-        "HP": 75,
-        "ATK": 9,
-        "DEF": 15,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "4": {
-        "HP": 100,
-        "ATK": 12,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "5": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "6": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "stats_by_grade": {
-      "1": {
-        "grade": 1,
-        "max_level": 10,
-        "stats": {
-          "HP": 12954,
-          "ATK": 282,
-          "DEF": 495,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 25,
-          "ATK": 3,
-          "DEF": 5,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "2": {
-        "grade": 2,
-        "max_level": 20,
-        "stats": {
-          "HP": 16062,
-          "ATK": 349,
-          "DEF": 614,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 50,
-          "ATK": 6,
-          "DEF": 10,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "3": {
-        "grade": 3,
-        "max_level": 30,
-        "stats": {
-          "HP": 19170,
-          "ATK": 417,
-          "DEF": 732,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 75,
-          "ATK": 9,
-          "DEF": 15,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "4": {
-        "grade": 4,
-        "max_level": 40,
-        "stats": {
-          "HP": 22278,
-          "ATK": 485,
-          "DEF": 851,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 100,
-          "ATK": 12,
-          "DEF": 20,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "5": {
-        "grade": 5,
-        "max_level": 50,
-        "stats": {
-          "HP": 25386,
-          "ATK": 552,
-          "DEF": 970,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 125,
-          "ATK": 15,
-          "DEF": 25,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        }
-      },
-      "6": {
-        "grade": 6,
-        "max_level": 60,
-        "stats": {
-          "HP": 28494,
-          "ATK": 620,
-          "DEF": 1088,
-          "SPD": 81,
-          "CRATE": 25,
-          "CDMG": 500,
-          "CRES": 0,
-          "ACC": 0,
-          "EVD": 0
-        },
-        "evolution_bonus_total": {
-          "HP": 125,
-          "ATK": 15,
-          "DEF": 25,
-          "SPD": 0,
-          "CRATE": 0,
-          "CDMG": 0,
-          "CRES": 0,
-          "ACC": 50,
-          "EVD": 0
-        }
-      }
-    },
-    "skills_count": 4
-  },
-  {
     "id": 256,
-    "name": "Yuri Hisui [Swimsuit]",
+    "name": "[Swimsuit] Yuri Hisui",
     "names": {
-      "english": "Yuri Hisui [Swimsuit]",
+      "english": "[Swimsuit] Yuri Hisui",
       "japanese": ""
     },
-    "slug": "yuri-hisui-[swimsuit]",
+    "slug": "[swimsuit]-yuri-hisui",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -87812,12 +87812,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 257,
-    "name": "Kousaka Shizuru [Swimsuit]",
+    "name": "[Swimsuit] Kousaka Shizuru",
     "names": {
-      "english": "Kousaka Shizuru [Swimsuit]",
+      "english": "[Swimsuit] Kousaka Shizuru",
       "japanese": ""
     },
-    "slug": "kousaka-shizuru-[swimsuit]",
+    "slug": "[swimsuit]-kousaka-shizuru",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -88155,12 +88155,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 258,
-    "name": "Akiyama Rinko [Swimsuit]",
+    "name": "[Swimsuit] Akiyama Rinko",
     "names": {
-      "english": "Akiyama Rinko [Swimsuit]",
+      "english": "[Swimsuit] Akiyama Rinko",
       "japanese": ""
     },
-    "slug": "akiyama-rinko-[swimsuit]",
+    "slug": "[swimsuit]-akiyama-rinko",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -88498,12 +88498,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 259,
-    "name": "Aishu Hebiko [Halloween]",
+    "name": "[Halloween] Aishu Hebiko",
     "names": {
-      "english": "Aishu Hebiko [Halloween]",
+      "english": "[Halloween] Aishu Hebiko",
       "japanese": ""
     },
-    "slug": "aishu-hebiko-[halloween]",
+    "slug": "[halloween]-aishu-hebiko",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -88841,12 +88841,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 260,
-    "name": "Shinganji Kurenai [Halloween]",
+    "name": "[Halloween] Shinganji Kurenai",
     "names": {
-      "english": "Shinganji Kurenai [Halloween]",
+      "english": "[Halloween] Shinganji Kurenai",
       "japanese": ""
     },
-    "slug": "shinganji-kurenai-[halloween]",
+    "slug": "[halloween]-shinganji-kurenai",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -89184,12 +89184,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 261,
-    "name": "Onisaki Kirara [Halloween]",
+    "name": "[Halloween] Onisaki Kirara",
     "names": {
-      "english": "Onisaki Kirara [Halloween]",
+      "english": "[Halloween] Onisaki Kirara",
       "japanese": ""
     },
-    "slug": "onisaki-kirara-[halloween]",
+    "slug": "[halloween]-onisaki-kirara",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -89527,12 +89527,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 262,
-    "name": "Igawa Asagi [Christmas]",
+    "name": "[Holy Night] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Christmas]",
+      "english": "[Holy Night] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[christmas]",
+    "slug": "[holy-night]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -89870,12 +89870,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 263,
-    "name": "Igawa Sakura [Christmas]",
+    "name": "[Holy Night] Igawa Sakura",
     "names": {
-      "english": "Igawa Sakura [Christmas]",
+      "english": "[Holy Night] Igawa Sakura",
       "japanese": ""
     },
-    "slug": "igawa-sakura-[christmas]",
+    "slug": "[holy-night]-igawa-sakura",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -90213,12 +90213,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 264,
-    "name": "Yatsu Murasaki [Christmas]",
+    "name": "[Holy Night] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Christmas]",
+      "english": "[Holy Night] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[christmas]",
+    "slug": "[holy-night]-yatsu-murasaki",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -90556,12 +90556,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 265,
-    "name": "Igawa Asagi [Transformed Suit]",
+    "name": "[Demon Slayer] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Transformed Suit]",
+      "english": "[Demon Slayer] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[transformed-suit]",
+    "slug": "[demon-slayer]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -90899,12 +90899,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 266,
-    "name": "Igawa Asagi [White Transformed Suit]",
+    "name": "[White Almighty] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [White Transformed Suit]",
+      "english": "[White Almighty] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[white-transformed-suit]",
+    "slug": "[white-almighty]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -91242,12 +91242,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 267,
-    "name": "Igawa Sakura [Transformed Suit]",
+    "name": "[Innocent Shadow] Igawa Sakura",
     "names": {
-      "english": "Igawa Sakura [Transformed Suit]",
+      "english": "[Innocent Shadow] Igawa Sakura",
       "japanese": ""
     },
-    "slug": "igawa-sakura-[transformed-suit]",
+    "slug": "[innocent-shadow]-igawa-sakura",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -91585,12 +91585,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 268,
-    "name": "Kamimura Maika [Future]",
+    "name": "[Fire God] Kamimura Maika",
     "names": {
-      "english": "Kamimura Maika [Future]",
+      "english": "[Fire God] Kamimura Maika",
       "japanese": ""
     },
-    "slug": "kamimura-maika-[future]",
+    "slug": "[fire-god]-kamimura-maika",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -91928,12 +91928,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 269,
-    "name": "Yatsu Murasaki [Transformed Suit]",
+    "name": "[ZERO] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Transformed Suit]",
+      "english": "[ZERO] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[transformed-suit]",
+    "slug": "[zero]-yatsu-murasaki",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -92271,12 +92271,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 270,
-    "name": "Fuuma Amane [Transformed Suit]",
+    "name": "[Evil Spirit] Fuuma Amane",
     "names": {
-      "english": "Fuuma Amane [Transformed Suit]",
+      "english": "[Evil Spirit] Fuuma Amane",
       "japanese": ""
     },
-    "slug": "fuuma-amane-[transformed-suit]",
+    "slug": "[evil-spirit]-fuuma-amane",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -92614,12 +92614,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 271,
-    "name": "Igawa Asagi [Zero]",
+    "name": "[ZERO] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Zero]",
+      "english": "[ZERO] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[zero]",
+    "slug": "[zero]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -92957,12 +92957,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 272,
-    "name": "Mizuki Shiranui [Young]",
+    "name": "[Phantom] Mizuki Shiranui",
     "names": {
-      "english": "Mizuki Shiranui [Young]",
+      "english": "[Phantom] Mizuki Shiranui",
       "japanese": ""
     },
-    "slug": "mizuki-shiranui-[young]",
+    "slug": "[phantom]-mizuki-shiranui",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -93300,12 +93300,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 273,
-    "name": "Shinohara Mari [Future]",
+    "name": "[Strong Fist] Shinohara Mari",
     "names": {
-      "english": "Shinohara Mari [Future]",
+      "english": "[Strong Fist] Shinohara Mari",
       "japanese": ""
     },
-    "slug": "shinohara-mari-[future]",
+    "slug": "[strong-fist]-shinohara-mari",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -93643,12 +93643,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 274,
-    "name": "Aishu Hebiko [Future]",
+    "name": "[Demon God] Aishu Hebiko",
     "names": {
-      "english": "Aishu Hebiko [Future]",
+      "english": "[Demon God] Aishu Hebiko",
       "japanese": ""
     },
-    "slug": "aishu-hebiko-[future]",
+    "slug": "[demon-god]-aishu-hebiko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -93986,12 +93986,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 275,
-    "name": "Akiyama Rinko [Future]",
+    "name": "[Oni] Akiyama Rinko",
     "names": {
-      "english": "Akiyama Rinko [Future]",
+      "english": "[Oni] Akiyama Rinko",
       "japanese": ""
     },
-    "slug": "akiyama-rinko-[future]",
+    "slug": "[oni]-akiyama-rinko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -94329,12 +94329,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 276,
-    "name": "Onisaki Kirara [Future]",
+    "name": "[Frost God] Onisaki Kirara",
     "names": {
-      "english": "Onisaki Kirara [Future]",
+      "english": "[Frost God] Onisaki Kirara",
       "japanese": ""
     },
-    "slug": "onisaki-kirara-[future]",
+    "slug": "[frost-god]-onisaki-kirara",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -94672,12 +94672,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 277,
-    "name": "Igawa Asagi [UFS]",
+    "name": "[Wandering Cyborg] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [UFS]",
+      "english": "[Wandering Cyborg] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[ufs]",
+    "slug": "[wandering-cyborg]-igawa-asagi",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -95015,12 +95015,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 278,
-    "name": "Yatsu Murasaki [UFS]",
+    "name": "[M-01A] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [UFS]",
+      "english": "[M-01A] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[ufs]",
+    "slug": "[m-01a]-yatsu-murasaki",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -95358,12 +95358,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 279,
-    "name": "Mizuki Yukikaze [UFS]",
+    "name": "[Lightning Onyx] Mizuki Yukikaze",
     "names": {
-      "english": "Mizuki Yukikaze [UFS]",
+      "english": "[Lightning Onyx] Mizuki Yukikaze",
       "japanese": ""
     },
-    "slug": "mizuki-yukikaze-[ufs]",
+    "slug": "[lightning-onyx]-mizuki-yukikaze",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -95701,12 +95701,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 280,
-    "name": "Akiyama Rinko [UFS]",
+    "name": "[Sky Edge] Akiyama Rinko",
     "names": {
-      "english": "Akiyama Rinko [UFS]",
+      "english": "[Sky Edge] Akiyama Rinko",
       "japanese": ""
     },
-    "slug": "akiyama-rinko-[ufs]",
+    "slug": "[sky-edge]-akiyama-rinko",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -96044,12 +96044,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 281,
-    "name": "Shinganji Kurenai [UFS]",
+    "name": "[Divine Armor] Shinganji Kurenai",
     "names": {
-      "english": "Shinganji Kurenai [UFS]",
+      "english": "[Divine Armor] Shinganji Kurenai",
       "japanese": ""
     },
-    "slug": "shinganji-kurenai-[ufs]",
+    "slug": "[divine-armor]-shinganji-kurenai",
     "rarity": "SSR",
     "rarity_name": "Legend",
     "element": "Technique",
@@ -96387,12 +96387,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 282,
-    "name": "Fuuma Saika [UFS]",
+    "name": "[Stealth Armor] Fuuma Saika",
     "names": {
-      "english": "Fuuma Saika [UFS]",
+      "english": "[Stealth Armor] Fuuma Saika",
       "japanese": ""
     },
-    "slug": "fuuma-saika-[ufs]",
+    "slug": "[stealth-armor]-fuuma-saika",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -96730,12 +96730,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 283,
-    "name": "Uehara Rin [UFS]",
+    "name": "[Thunder Volt] Uehara Rin",
     "names": {
-      "english": "Uehara Rin [UFS]",
+      "english": "[Thunder Volt] Uehara Rin",
       "japanese": ""
     },
-    "slug": "uehara-rin-[ufs]",
+    "slug": "[thunder-volt]-uehara-rin",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -97073,12 +97073,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 284,
-    "name": "Igawa Asagi [Demon Vampire]",
+    "name": "[Reincarnation] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Demon Vampire]",
+      "english": "[Reincarnation] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[demon-vampire]",
+    "slug": "[reincarnation]-igawa-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -97416,12 +97416,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 285,
-    "name": "Igawa Asagi [Demon White]",
+    "name": "[True Awakening] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Demon White]",
+      "english": "[True Awakening] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[demon-white]",
+    "slug": "[true-awakening]-igawa-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -97759,12 +97759,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 286,
-    "name": "Igawa Asagi [Demon Black and Red]",
+    "name": "[Awakening] Igawa Asagi",
     "names": {
-      "english": "Igawa Asagi [Demon Black and Red]",
+      "english": "[Awakening] Igawa Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[demon-black-and-red]",
+    "slug": "[awakening]-igawa-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -98102,12 +98102,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 287,
-    "name": "Igawa Sakura [Demon]",
+    "name": "[Shadow Ruler] Igawa Sakura",
     "names": {
-      "english": "Igawa Sakura [Demon]",
+      "english": "[Shadow Ruler] Igawa Sakura",
       "japanese": ""
     },
-    "slug": "igawa-sakura-[demon]",
+    "slug": "[shadow-ruler]-igawa-sakura",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -98445,12 +98445,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 288,
-    "name": "Yatsu Murasaki [Demon 1]",
+    "name": "[Dark Wave] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Demon 1]",
+      "english": "[Dark Wave] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[demon-1]",
+    "slug": "[dark-wave]-yatsu-murasaki",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -98788,12 +98788,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 289,
-    "name": "Yatsu Murasaki [Demon 2]",
+    "name": "[Wraith Spirit] Yatsu Murasaki",
     "names": {
-      "english": "Yatsu Murasaki [Demon 2]",
+      "english": "[Wraith Spirit] Yatsu Murasaki",
       "japanese": ""
     },
-    "slug": "yatsu-murasaki-[demon-2]",
+    "slug": "[wraith-spirit]-yatsu-murasaki",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -99131,12 +99131,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 290,
-    "name": "Mizuki Shiranui [Demon]",
+    "name": "[Phantom Witch] Mizuki Shiranui",
     "names": {
-      "english": "Mizuki Shiranui [Demon]",
+      "english": "[Phantom Witch] Mizuki Shiranui",
       "japanese": ""
     },
-    "slug": "mizuki-shiranui-[demon]",
+    "slug": "[phantom-witch]-mizuki-shiranui",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -99474,12 +99474,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 291,
-    "name": "Mizuki Yukikaze [Demon]",
+    "name": "[Sinful Bolt] Mizuki Yukikaze",
     "names": {
-      "english": "Mizuki Yukikaze [Demon]",
+      "english": "[Sinful Bolt] Mizuki Yukikaze",
       "japanese": ""
     },
-    "slug": "mizuki-yukikaze-[demon]",
+    "slug": "[sinful-bolt]-mizuki-yukikaze",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -99817,12 +99817,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 292,
-    "name": "Akiyama Rinko [Demon]",
+    "name": "[Heavenly Moon Flower] Akiyama Rinko",
     "names": {
-      "english": "Akiyama Rinko [Demon]",
+      "english": "[Heavenly Moon Flower] Akiyama Rinko",
       "japanese": ""
     },
-    "slug": "akiyama-rinko-[demon]",
+    "slug": "[heavenly-moon-flower]-akiyama-rinko",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -100160,12 +100160,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 293,
-    "name": "Koukawa Asuka [Demon]",
+    "name": "[Tempest Legionnaire] Koukawa Asuka",
     "names": {
-      "english": "Koukawa Asuka [Demon]",
+      "english": "[Tempest Legionnaire] Koukawa Asuka",
       "japanese": ""
     },
-    "slug": "koukawa-asuka-[demon]",
+    "slug": "[tempest-legionnaire]-koukawa-asuka",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -100503,12 +100503,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 294,
-    "name": "Shinganji Kurenai [Demon]",
+    "name": "[Awakening] Shinganji Kurenai",
     "names": {
-      "english": "Shinganji Kurenai [Demon]",
+      "english": "[Awakening] Shinganji Kurenai",
       "japanese": ""
     },
-    "slug": "shinganji-kurenai-[demon]",
+    "slug": "[awakening]-shinganji-kurenai",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -100846,12 +100846,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 295,
-    "name": "Fuuma Saika [Demon]",
+    "name": "[Evil Eye Unleashed] Fuuma Saika",
     "names": {
-      "english": "Fuuma Saika [Demon]",
+      "english": "[Evil Eye Unleashed] Fuuma Saika",
       "japanese": ""
     },
-    "slug": "fuuma-saika-[demon]",
+    "slug": "[evil-eye-unleashed]-fuuma-saika",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -101189,12 +101189,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 296,
-    "name": "Igawa Asagi [Clone]",
+    "name": "Clone Asagi",
     "names": {
-      "english": "Igawa Asagi [Clone]",
+      "english": "Clone Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[clone]",
+    "slug": "clone-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -101532,12 +101532,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 297,
-    "name": "Igawa Asagi [Clone Suit]",
+    "name": "[Task Force G] Clone Asagi",
     "names": {
-      "english": "Igawa Asagi [Clone Suit]",
+      "english": "[Task Force G] Clone Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[clone-suit]",
+    "slug": "[task-force-g]-clone-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -101875,12 +101875,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 298,
-    "name": "Igawa Asagi [Clone School Uniform]",
+    "name": "[School] Clone Asagi",
     "names": {
-      "english": "Igawa Asagi [Clone School Uniform]",
+      "english": "[School] Clone Asagi",
       "japanese": ""
     },
-    "slug": "igawa-asagi-[clone-school-uniform]",
+    "slug": "[school]-clone-asagi",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -102218,12 +102218,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 299,
-    "name": "Mizuki Yukikaze [Future]",
+    "name": "[Lightning God] Mizuki Yukikaze",
     "names": {
-      "english": "Mizuki Yukikaze [Future]",
+      "english": "[Lightning God] Mizuki Yukikaze",
       "japanese": ""
     },
-    "slug": "mizuki-yukikaze-[future]",
+    "slug": "[lightning-god]-mizuki-yukikaze",
     "rarity": "SR+",
     "rarity_name": "",
     "element": "Technique",
@@ -103253,8 +103253,8 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "japanese": ""
     },
     "slug": "cara-cromwell",
-    "rarity": "SR+",
-    "rarity_name": "",
+    "rarity": "SSR",
+    "rarity_name": "Legend",
     "element": "Power",
     "type": "Power",
     "role": "Attacker",
@@ -103271,10 +103271,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "spanish": "Demon. The Queen of Vampires who rose to the throne and holds the esteemed title of \"Blood Lord\", one of the 9 nobles who rule over the Demon Realm. Uncharacteristically friendly toward humans for a vampire, she upholds the belief in \"dignified and controlled vampirism\", seeking mutual respect and coexistence between vampires and humans.\n\nRenowned for her overwhelming power even among vampires, she bears the title \"Blood Lord\", one who commands blood itself. She is a master of blood magic, capable of effortlessly defeating even the mightiest foes. Her close aide is the Hell Knight Marika Krishna, who serves as her personal bodyguard."
     },
     "stats": {
-      "HP": 16536,
-      "ATK": 1590,
-      "DEF": 763,
-      "SPD": 84,
+      "HP": 22912,
+      "ATK": 1646,
+      "DEF": 787,
+      "SPD": 87,
       "CRATE": 50,
       "CDMG": 575,
       "CRES": 0,
@@ -103282,10 +103282,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
       "EVD": 0
     },
     "base_stats": {
-      "HP": 5823,
-      "ATK": 556,
-      "DEF": 272,
-      "SPD": 84,
+      "HP": 8096,
+      "ATK": 576,
+      "DEF": 281,
+      "SPD": 87,
       "CRATE": 25,
       "CDMG": 500,
       "CRES": 0,
@@ -103433,10 +103433,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 1,
         "max_level": 10,
         "stats": {
-          "HP": 7427,
-          "ATK": 709,
-          "DEF": 347,
-          "SPD": 84,
+          "HP": 10326,
+          "ATK": 735,
+          "DEF": 358,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103459,10 +103459,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 2,
         "max_level": 20,
         "stats": {
-          "HP": 9208,
-          "ATK": 879,
-          "DEF": 430,
-          "SPD": 84,
+          "HP": 12803,
+          "ATK": 911,
+          "DEF": 444,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103485,10 +103485,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 3,
         "max_level": 30,
         "stats": {
-          "HP": 10990,
-          "ATK": 1049,
-          "DEF": 513,
-          "SPD": 84,
+          "HP": 15280,
+          "ATK": 1087,
+          "DEF": 530,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103511,10 +103511,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 4,
         "max_level": 40,
         "stats": {
-          "HP": 12772,
-          "ATK": 1220,
-          "DEF": 597,
-          "SPD": 84,
+          "HP": 17758,
+          "ATK": 1263,
+          "DEF": 616,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103537,10 +103537,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 5,
         "max_level": 50,
         "stats": {
-          "HP": 14554,
-          "ATK": 1390,
-          "DEF": 680,
-          "SPD": 84,
+          "HP": 20235,
+          "ATK": 1440,
+          "DEF": 702,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103563,10 +103563,10 @@ export const TAIMANIN_SQUAD_CHARACTERS =
         "grade": 6,
         "max_level": 60,
         "stats": {
-          "HP": 16336,
-          "ATK": 1560,
-          "DEF": 763,
-          "SPD": 84,
+          "HP": 22713,
+          "ATK": 1616,
+          "DEF": 788,
+          "SPD": 87,
           "CRATE": 25,
           "CDMG": 500,
           "CRES": 0,
@@ -103590,12 +103590,12 @@ export const TAIMANIN_SQUAD_CHARACTERS =
   },
   {
     "id": 303,
-    "name": "Rene [Psycho Kaiser]",
+    "name": "[Psycho Kaiser] Rene",
     "names": {
-      "english": "Rene [Psycho Kaiser]",
+      "english": "[Psycho Kaiser] Rene",
       "japanese": ""
     },
-    "slug": "rene-[psycho-kaiser]",
+    "slug": "[psycho-kaiser]-rene",
     "rarity": "SR",
     "rarity_name": "",
     "element": "Technique",

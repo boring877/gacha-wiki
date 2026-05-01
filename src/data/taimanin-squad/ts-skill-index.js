@@ -1,10 +1,10 @@
 // Taimanin Squad Skill Mechanic Index
-// Auto-generated from game data on 2026-03-29
+// Auto-generated from game data on 2026-04-30
 // Maps skill mechanics to characters who provide/use them
 // 48 mechanics across undefined characters
 
 export const TS_SKILL_INDEX_VERSION = "1.0";
-export const TS_SKILL_INDEX_GENERATED = "2026-03-29";
+export const TS_SKILL_INDEX_GENERATED = "2026-04-30";
 
 export const TS_SKILL_INDEX_GROUPS = [
   {

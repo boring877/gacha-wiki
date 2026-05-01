@@ -557,5 +557,58 @@
       "cutscene_flag": 0
     }
   ],
-  "weapons": []
+  "weapons": [
+    {
+      "id": 8901,
+      "name": "[&Color_Orange]Polaris Majesty[-]",
+      "name_key": "Tbl_UnitWeapon_Name_8901",
+      "icon": "Weapon_8901.png",
+      "rarity": 3,
+      "weapon_type": 89,
+      "opt_type": 7,
+      "opt_value": 35,
+      "skill_slot": 8902,
+      "skill_id": 8912,
+      "skill_data": {
+        "id": 8912,
+        "name": "[Tbl_UnitSkill_Name_8912]",
+        "name_key": "Tbl_UnitSkill_Name_8912",
+        "name_readable": "[Tbl_UnitSkill_Name_8912]",
+        "description": "[Tbl_UnitSkill_Desc_8912]",
+        "description_key": "Tbl_UnitSkill_Desc_8912",
+        "description_readable": "[Tbl_UnitSkill_Desc_8912]",
+        "type_description": "[&Color_Orange][Attack Skill][-]",
+        "type_description_readable": "[Attack Skill]",
+        "icon": "8912",
+        "cooldown": 3,
+        "hit_count": 1,
+        "additional_hits": 0,
+        "damage_scaling": "[ATK]",
+        "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+        "multiplier": 378.4,
+        "effects": [
+          {
+            "type": "eBOFunc_AddDeBuff/Weaken",
+            "target": "eBOTarget_HitTarget",
+            "duration": 2,
+            "value": 15.0,
+            "rate": 35,
+            "timing": "eBOTiming_OnAction",
+            "condition": ""
+          }
+        ],
+        "battle_options": "891201/891202",
+        "battle_option_ids": [
+          891201,
+          891202
+        ],
+        "evolution_level_required": 0,
+        "trigger_keyword": "",
+        "aura_info": "",
+        "skill_button_type": 0,
+        "camera_type": 0,
+        "cutscene_flag": 0
+      }
+    }
+  ]
 }

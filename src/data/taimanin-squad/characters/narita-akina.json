@@ -621,9 +621,9 @@
         "name": "<[&Tbl_UnitWeapon_Name_12101]> [&Tbl_UnitSkill_Name_12102]",
         "name_key": "Tbl_UnitSkill_Name_12112",
         "name_readable": "<Utopia> Stone Art: Heavyweight",
-        "description": "Charges up energy and gains [&Color_Cyan]([V3:1210201]%)[-] [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:1210201] turn(s)\nRestores [&Color_Cyan][V3:1211202]%[-] of Max. [&HP].\n[&Provocation]s 1 [&Common_Word_Skill_Random] enemy.",
+        "description": "Charges up energy and gains [&Color_Cyan]([V3:1210201]%)[-] [&DefUp].\n[&Common_Word_Skill_ValueTurn]: [V2:1210201] turn(s)\nRestores [&Color_Cyan][V3:1211202]%[-] of Max. [&HP].\n[&Provocation]s 1 [&Common_Word_Skill_Random] enemy at a [&Color_Cyan][R:1211203]%[-] chance.",
         "description_key": "Tbl_UnitSkill_Desc_12112",
-        "description_readable": "Charges up energy and gains (40%) DEF UP.\nDuration: 2 turn(s)\nRestores 15% of Max. HP.\nTaunts 1 Random enemy.",
+        "description_readable": "Charges up energy and gains (40%) DEF UP.\nDuration: 2 turn(s)\nRestores 15% of Max. HP.\nTaunts 1 Random enemy at a 45% chance.",
         "type_description": "[&Color_Orange][Support Skill][-]",
         "type_description_readable": "[Support Skill]",
         "icon": "12112",
@@ -656,7 +656,7 @@
             "target": "eBOTarget_EnemyRnd/1",
             "duration": 2,
             "value": 0.0,
-            "rate": 30,
+            "rate": 45,
             "timing": "eBOTiming_Action",
             "condition": ""
           }

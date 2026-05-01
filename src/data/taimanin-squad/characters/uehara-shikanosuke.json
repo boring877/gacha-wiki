@@ -569,9 +569,9 @@
       "name": "[&Color_Cyan]Elec Art: Lightning Tackle[-]",
       "name_key": "Tbl_UnitSkill_Name_8003",
       "name_readable": "Elec Art: Lightning Tackle",
-      "description": "Charges at the enemy with electricity coursing through the character.\nReduces the [&Common_Word_Skill_TurnGauge] of the target hit by [&Color_Cyan]([V3:800302]%)[-] at a [&Color_Cyan][R:800302]%[-] chance.\nGains [&Color_Cyan]([V3:800303])[-] [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:800303] turn(s)\nIf [&Color_Orange][&Tbl_Unit_Name_32][-] is deployed, applies the same effect to [&Color_Orange][&Tbl_Unit_Name_32][-].",
+      "description": "Charges at the enemy with electricity coursing through the character.\nReduces the [&Common_Word_Skill_TurnGauge] of the target hit by [&Color_Cyan]([V3:800302]%)[-] at a [&Color_Cyan][R:800302]%[-] chance.\nGains [&Color_Cyan]([V3:800303])[-] [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:800303] turn(s)\nIf [&Color_Orange][&Tbl_Unit_Name_32][-] is deployed, applies the same effect to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn] : [V2:800304] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_8003",
-      "description_readable": "Charges at the enemy with electricity coursing through the character.\nReduces the Turn Gauge of the target hit by (15%) at a 65% chance.\nGains (2) Protective Shield after the attack.\nDuration: 2 turn(s)\nIf Uehara Rin is deployed, applies the same effect to Uehara Rin.",
+      "description_readable": "Charges at the enemy with electricity coursing through the character.\nReduces the Turn Gauge of the target hit by (15%) at a 65% chance.\nGains (2) Protective Shield after the attack.\nDuration: 2 turn(s)\nIf Uehara Rin is deployed, applies the same effect to ALL allies.\nDuration : 2 turn(s)",
       "type_description": "[&Color_Orange][Attack Skill][-]",
       "type_description_readable": "[Attack Skill]",
       "icon": "8003",
@@ -580,7 +580,7 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 838.7,
+      "multiplier": 782.8,
       "effects": [
         {
           "type": "eBOFunc_TurnGaugeDown",
@@ -598,13 +598,23 @@
           "rate": 0,
           "timing": "eBOTiming_ActionAfter",
           "condition": ""
+        },
+        {
+          "type": "eBOFunc_AddBuff/DmgBlockCount",
+          "target": "eBOTarget_AllyOther/All",
+          "duration": 2,
+          "value": 2.0,
+          "rate": 0,
+          "timing": "eBOTiming_ActionAfter",
+          "condition": "eBOCond_HasUnitTID/32"
         }
       ],
-      "battle_options": "800301/800302/800303",
+      "battle_options": "800301/800302/800303/800304",
       "battle_option_ids": [
         800301,
         800302,
-        800303
+        800303,
+        800304
       ],
       "evolution_level_required": 1,
       "trigger_keyword": "",
@@ -631,9 +641,9 @@
         "name": "<[&Tbl_UnitWeapon_Name_8001]> [&Tbl_UnitSkill_Name_8003]",
         "name_key": "Tbl_UnitSkill_Name_8013",
         "name_readable": "<Snowflake> Elec Art: Lightning Tackle",
-        "description": "Charges at the enemy with electricity coursing through the character.\nTarget hit is guaranteed to be inflicted with [&ElecShock].\n[&Common_Word_Skill_ValueTurn]: [V2:801302] turn(s)\nGains [&Color_Cyan]([V3:801303])[-] [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:801303] turn(s)\nIf [&Color_Orange][&Tbl_Unit_Name_32][-] is deployed, applies the same effect to [&Color_Orange][&Tbl_Unit_Name_32][-].",
+        "description": "Charges at the enemy with electricity coursing through the character.\nInflicts that target with [&ElecShock] at a [&Color_Cyan][R:801302]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:801302] turn(s)\nGains [&Color_Cyan]([V3:801303])[-] [&DmgBlockCount] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:801303] turn(s)\nIf [&Color_Orange][&Tbl_Unit_Name_32][-] is deployed, applies the same effect to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:801304] turn(s)",
         "description_key": "Tbl_UnitSkill_Desc_8013",
-        "description_readable": "Charges at the enemy with electricity coursing through the character.\nTarget hit is guaranteed to be inflicted with Electrocute.\nDuration: 2 turn(s)\nGains (2) Protective Shield after the attack.\nDuration: 2 turn(s)\nIf Uehara Rin is deployed, applies the same effect to Uehara Rin.",
+        "description_readable": "Charges at the enemy with electricity coursing through the character.\nInflicts that target with Electrocute at a 30% chance.\nDuration: 2 turn(s)\nGains (2) Protective Shield after the attack.\nDuration: 2 turn(s)\nIf Uehara Rin is deployed, applies the same effect to ALL allies.\nDuration: 2 turn(s)",
         "type_description": "[&Color_Orange][Attack Skill][-]",
         "type_description_readable": "[Attack Skill]",
         "icon": "8013",
@@ -642,7 +652,7 @@
         "additional_hits": 0,
         "damage_scaling": "[ATK]",
         "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-        "multiplier": 838.7,
+        "multiplier": 782.8,
         "effects": [
           {
             "type": "eBOFunc_AddDeBuff/ElecShock",
@@ -661,13 +671,23 @@
             "rate": 0,
             "timing": "eBOTiming_ActionAfter",
             "condition": ""
+          },
+          {
+            "type": "eBOFunc_AddBuff/DmgBlockCount",
+            "target": "eBOTarget_AllyOther/All",
+            "duration": 2,
+            "value": 2.0,
+            "rate": 0,
+            "timing": "eBOTiming_ActionAfter",
+            "condition": "eBOCond_HasUnitTID/32"
           }
         ],
-        "battle_options": "801301/801302/801303",
+        "battle_options": "801301/801302/801303/801304",
         "battle_option_ids": [
           801301,
           801302,
-          801303
+          801303,
+          801304
         ],
         "evolution_level_required": 1,
         "trigger_keyword": "",
