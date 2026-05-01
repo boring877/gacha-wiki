@@ -209,6 +209,25 @@ export const STAR_SAVIOR_CHARACTERS = [
     }
   },
   {
+    "id": 1029,
+    "name": "Fei",
+    "slug": "fei",
+    "title": "Independent",
+    "role": "Assassin",
+    "rarity": "SSR",
+    "adjustType": "NUAT_MOON",
+    "statsMax": {
+      "ATK": 3616,
+      "HP": 18080,
+      "DEF": 1350,
+      "Crit Rate": 500,
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 1200,
+      "Turn Speed": 90
+    }
+  },
+  {
     "id": 1013,
     "name": "Frey",
     "slug": "frey",

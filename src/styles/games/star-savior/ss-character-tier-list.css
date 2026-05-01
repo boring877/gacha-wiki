@@ -152,8 +152,12 @@
   background: var(--ss-bg-secondary);
   border: 1px solid var(--ss-border);
   border-radius: 6px;
-  overflow: hidden;
+  overflow: visible;
   text-decoration: none;
+}
+
+.ss-char-tier-card-img :global(img) {
+  border-radius: 6px 6px 0 0;
 }
 
 .ss-char-tier-card[data-hidden] {
@@ -161,9 +165,10 @@
 }
 
 .ss-char-tier-card-img {
+  position: relative;
   width: 140px;
   height: 140px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .ss-char-tier-card-img :global(.ss-char-image-wrapper) {
@@ -221,6 +226,59 @@
 .ss-char-tier-card-tag :global(img) {
   width: 12px;
   height: 12px;
+}
+
+.ss-char-tier-card-note {
+  display: none;
+}
+
+.ss-char-tier-card-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #DD982C;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ss-char-tier-card-badge:hover .ss-char-tier-card-tooltip,
+.ss-char-tier-card-badge:focus .ss-char-tier-card-tooltip,
+.ss-char-tier-card-tooltip.active {
+  display: block;
+}
+
+.ss-char-tier-card-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: -6px;
+  z-index: 100;
+  width: 260px;
+  padding: 0.625rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid #DD982C;
+  border-radius: 8px;
+  color: var(--ss-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ss-char-tier-card-tooltip.active {
+  pointer-events: auto;
 }
 
 .ss-char-tier-no-results {

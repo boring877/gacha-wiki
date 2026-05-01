@@ -2,6 +2,17 @@
 
 export const banners = [
   {
+    id: 'independent-vagabond',
+    type: 'NEW',
+    character: 'Fei',
+    arcana: "Today's Step Forward",
+    region: 'All',
+    image: 'TN_NEWS_SAVIOR_S_INDEPENDENT_VAGABOND.png',
+    startDate: '2026-04-30',
+    endDate: '2026-05-14',
+    characterSlug: 'fei',
+  },
+  {
     id: 'little-tyrant',
     type: 'RERUN',
     character: 'Scarlet',

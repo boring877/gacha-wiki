@@ -62,7 +62,7 @@ journeyEvents.forEach((je: any) => {
 <CharacterDetailLayout title={data.name || data.character} description={description} gameTitle={data.name || data.character}>
   <div class="ss-detail-header">
     <div class="ss-detail-portrait-container">
-      <SSArcanaImage image={data.image} alt={data.name || data.character} width={480} class="ss-detail-portrait-wrapper" />
+      <SSArcanaImage image={data.image} pieceImage={data.pieceImage} alt={data.name || data.character} width={480} class="ss-detail-portrait-wrapper" />
     </div>
     <div class="ss-detail-info">
       <h2 class="ss-detail-name">{data.name || '--'}</h2>

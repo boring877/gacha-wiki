@@ -147,7 +147,7 @@ function getCharFullName(name: string): string {
             <td class="row-num">{i + 1}</td>
             <td>
               <div class="ss-char-table-char">
-                <SSArcanaImage imageSmall={arcana.imageSmall} alt={arcana.name || arcana.character} width={192} class="ss-char-table-avatar" />
+                <SSArcanaImage imageSmall={arcana.imageSmall} pieceImage={arcana.pieceImage} alt={arcana.name || arcana.character} width={192} class="ss-char-table-avatar" />
                 <div>
                   <div class="ss-char-table-name">{arcana.name || '--'}</div>
                 </div>
@@ -195,7 +195,7 @@ function getCharFullName(name: string): string {
         onclick={`window.location.href='/guides/star-savior/arcana/${arcana.slug}/'`}
       >
         <div class="ss-char-card-header ss-arcana-card-layout">
-          <SSArcanaImage imageSmall={arcana.imageSmall} alt={arcana.name || arcana.character} width={320} class="ss-char-card-avatar" />
+          <SSArcanaImage imageSmall={arcana.imageSmall} pieceImage={arcana.pieceImage} alt={arcana.name || arcana.character} width={320} class="ss-char-card-avatar" />
           <div class="ss-char-card-info">
             <div class="ss-char-card-name">{arcana.name || '--'}</div>
             <div class="ss-arcana-card-arcana-name">{getCharFullName(arcana.character)}</div>

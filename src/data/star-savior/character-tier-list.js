@@ -1,5 +1,6 @@
 // SSR Character Tier List for Star Savior
 // Grouped by element (Sun, Moon, Star, Chaos, Order)
+// Optional `notes` object maps slug to a note string shown on the card
 
 export const CHARACTER_TIER_LIST = {
   Sun: {
@@ -12,7 +13,7 @@ export const CHARACTER_TIER_LIST = {
   Moon: {
     SSS: [],
     SS: ['claire', 'emily'],
-    S: ['asherah', 'carmen', 'epindel', 'frey-skin', 'lily', 'lugh'],
+    S: ['asherah', 'carmen', 'epindel', 'frey-skin', 'lily', 'lugh', 'fei'],
     A: [],
     B: [],
   },
@@ -38,6 +39,10 @@ export const CHARACTER_TIER_LIST = {
     A: [],
     B: [],
   },
+};
+
+export const CHARACTER_TIER_NOTES = {
+  'fei': 'Can reach SS with the right team setup, but requires heavy investment. Pairing with ACC Down characters (Haydee, Bell) helps cover her evasion-reliant playstyle.',
 };
 
 export const ELEMENT_ORDER = ['Sun', 'Moon', 'Star', 'Chaos', 'Order'];

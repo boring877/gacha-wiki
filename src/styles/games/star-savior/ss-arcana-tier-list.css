@@ -134,12 +134,23 @@
   background: var(--ss-bg-secondary);
   border: 1px solid var(--ss-border);
   border-radius: 6px;
-  overflow: hidden;
+  overflow: visible;
   text-decoration: none;
+}
+
+.ss-tier-card-img-wrap :global(.ss-arcana-image-wrapper) {
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
 }
 
 .ss-tier-card[data-hidden] {
   display: none;
+}
+
+.ss-tier-card-img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: visible;
 }
 
 .ss-tier-card-img {
@@ -199,6 +210,59 @@
 .ss-tier-card-tag :global(img) {
   width: 12px;
   height: 12px;
+}
+
+.ss-tier-card-note {
+  display: none;
+}
+
+.ss-tier-card-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #DD982C;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ss-tier-card-badge:hover .ss-tier-card-tooltip,
+.ss-tier-card-badge:focus .ss-tier-card-tooltip,
+.ss-tier-card-tooltip.active {
+  display: block;
+}
+
+.ss-tier-card-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: -6px;
+  z-index: 100;
+  width: 260px;
+  padding: 0.625rem 0.75rem;
+  background: var(--ss-bg-secondary);
+  border: 1px solid #DD982C;
+  border-radius: 8px;
+  color: var(--ss-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ss-tier-card-tooltip.active {
+  pointer-events: auto;
 }
 
 .ss-tier-no-results {

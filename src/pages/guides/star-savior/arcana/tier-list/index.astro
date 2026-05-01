@@ -5,6 +5,7 @@ import CharacterDatabaseLayout from '../../../../../layouts/star-savior/Characte
 import { STAR_SAVIOR_ARCANA } from '../../../../../data/star-savior/arcana.js';
 import {
   ARCANA_TIER_LIST,
+  ARCANA_TIER_NOTES,
   STAT_TAG_ORDER,
   STAT_ICON_MAP,
   TIER_ORDER,
@@ -69,7 +70,15 @@ const totalArcana = sections.reduce((s, sec) => s + sec.total, 0);
             <div class="ss-tier-cards">
               {arcana.map((a: any) => (
                 <a href={`/guides/star-savior/arcana/${a.slug}/`} class="ss-tier-card" data-search={`${a.name} ${a.character}`.toLowerCase()}>
-                  <SSArcanaImage imageSmall={a.imageSmall} alt={a.name} width={200} class="ss-tier-card-img" />
+                  <div class="ss-tier-card-img-wrap">
+                    <SSArcanaImage imageSmall={a.imageSmall} pieceImage={a.pieceImage} alt={a.name} width={200} class="ss-tier-card-img" />
+                    {ARCANA_TIER_NOTES[a.slug] && (
+                      <div class="ss-tier-card-badge" tabindex="0">
+                        <span>!</span>
+                        <div class="ss-tier-card-tooltip">{ARCANA_TIER_NOTES[a.slug]}</div>
+                      </div>
+                    )}
+                  </div>
                   <div class="ss-tier-card-info">
                     <div class="ss-tier-card-name">{a.name}</div>
                     <div class="ss-tier-card-character">{a.character}</div>

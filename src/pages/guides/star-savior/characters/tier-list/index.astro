@@ -5,6 +5,7 @@ import CharacterDatabaseLayout from '../../../../../layouts/star-savior/Characte
 import { STAR_SAVIOR_CHARACTERS } from '../../../../../data/star-savior/characters.js';
 import {
   CHARACTER_TIER_LIST,
+  CHARACTER_TIER_NOTES,
   ELEMENT_ORDER,
   TIER_ORDER,
 } from '../../../../../data/star-savior/character-tier-list.js';
@@ -90,6 +91,12 @@ const totalSSR = ssrCharacters.length;
                 <a href={`/guides/star-savior/characters/${c.slug}/`} class="ss-char-tier-card" data-search={`${c.name} ${c.title || ''}`.toLowerCase()}>
                   <div class="ss-char-tier-card-img">
                     <SSCharacterImage slug={c.slug} alt={c.name} imageType="icon" width={160} height={160} />
+                    {CHARACTER_TIER_NOTES[c.slug] && (
+                      <div class="ss-char-tier-card-badge" tabindex="0">
+                        <span>!</span>
+                        <div class="ss-char-tier-card-tooltip">{CHARACTER_TIER_NOTES[c.slug]}</div>
+                      </div>
+                    )}
                   </div>
                   <div class="ss-char-tier-card-info">
                     <div class="ss-char-tier-card-name">{c.name}</div>

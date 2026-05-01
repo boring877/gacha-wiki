@@ -3,6 +3,60 @@
 
 export const summonRecommendations = [
   {
+    bannerId: 'independent-vagabond',
+    character: 'Fei',
+    characterSlug: 'fei',
+    image: 'TN_NEWS_SAVIOR_S_INDEPENDENT_VAGABOND.png',
+    bannerType: 'Featured Observation',
+    verdict: 'skip',
+    verdictLabel: 'Skip',
+    summary: 'She\'s mid in PvE and evasion teams aren\'t really a thing yet. Save for half anni.',
+    reasons: [
+      {
+        title: 'She\'s Okay, Not Great',
+        text: 'Fei\'s evasion gimmick is fun but her damage is inconsistent. She needs to actually evade to get anything done, and without the right setup she just... doesn\'t.',
+      },
+      {
+        title: 'Evasion Teams Aren\'t Ready',
+        text: 'Nobody has the gear or supports built for a proper evasion comp right now. Fei wants her passive maxed, evasion gear, and specific teammates to work. That\'s a lot of resources for a character that\'s just okay.',
+      },
+      {
+        title: 'Going to Normal Banner',
+        text: 'Once her banner ends she goes straight to the permanent pool. You\'ll pull her eventually anyway.',
+      },
+      {
+        title: 'Half Anniversary Is Right There',
+        text: 'Half anni is coming and those units are going to be way stronger. Save your gems.',
+      },
+      {
+        title: 'Needs Her Arcana Too',
+        text: 'To really make Fei work you need her SSR arcana on top of pulling her. That\'s two banners worth of currency for a mid PvE unit. Hard pass.',
+      },
+    ],
+    arcana: {
+      slug: 'fei-today-s-step-forward',
+      name: "Today's Step Forward",
+      image: 'ARCANA_INDEPENDENT_VAGABOND_SSR_01.png',
+      verdict: 'skip',
+      verdictLabel: 'Skip',
+      summary: 'Going to normal banner. Lone Seeker is cool but not worth chasing right now.',
+      reasons: [
+        {
+          title: 'Normal Banner Later',
+          text: 'This arcana hits the permanent pool after the featured period. No rush.',
+        },
+        {
+          title: 'Save for Half Anni',
+          text: 'Half anniversary arcana will likely be much stronger. Don\'t blow your stash here.',
+        },
+        {
+          title: 'Cool but Skippable',
+          text: 'The potentials are decent but not worth chasing right now. Check the arcana page for full details.',
+        },
+      ],
+    },
+  },
+  {
     bannerId: 'little-tyrant',
     character: 'Scarlet',
     characterSlug: 'scarlet',

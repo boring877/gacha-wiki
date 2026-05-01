@@ -339,6 +339,18 @@ export const STAR_SAVIOR_ARCANA =
     "imageSmall": "ARCANA_DETECTIVE_WATSON_SSR_01_S.png"
   },
   {
+    "id": 7102901,
+    "character": "Fei",
+    "name": "Today's Step Forward",
+    "slug": "fei-today-s-step-forward",
+    "grade": "SSR",
+    "specialTag": "Crit Rate",
+    "classSynergy": "Savior",
+    "statTag": "Health",
+    "image": "ARCANA_INDEPENDENT_VAGABOND_SSR_01.png",
+    "imageSmall": "ARCANA_INDEPENDENT_VAGABOND_SSR_01_S.png"
+  },
+  {
     "id": 7101601,
     "character": "Lyn",
     "name": "Under the Glass Moon, Over the Pavilion",

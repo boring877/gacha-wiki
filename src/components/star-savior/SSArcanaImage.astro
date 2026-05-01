@@ -1,8 +1,4 @@
 ---
-// Arcana image component for Star Savior
-// Supports both full-body card images (image) and small banner images (imageSmall)
-// Full-body: card-style (704x1314, ~0.536:1 ratio)
-// Small: banner-style (480x264, ~1.82:1 ratio)
 import { Image } from 'astro:assets';
 
 const arcanaImages = import.meta.glob<{ default: ImageMetadata }>(
@@ -10,9 +6,15 @@ const arcanaImages = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true }
 );
 
+const pieceImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/star-savior/arcana-pieces/*.png',
+  { eager: true }
+);
+
 export interface Props {
   image?: string;
   imageSmall?: string;
+  pieceImage?: string;
   alt: string;
   width?: number;
   class?: string;
@@ -22,6 +24,7 @@ export interface Props {
 const {
   image,
   imageSmall,
+  pieceImage,
   alt,
   width = 240,
   class: className,
@@ -31,15 +34,16 @@ const {
 const filename = image || imageSmall || '';
 const isCard = !!image && !imageSmall;
 
-function findImage(fname: string): ImageMetadata | null {
+function findImage(map: Record<string, { default: ImageMetadata }>, fname: string): ImageMetadata | null {
   if (!fname) return null;
-  const key = Object.keys(arcanaImages).find(k =>
+  const key = Object.keys(map).find(k =>
     k.endsWith('/' + fname)
   );
-  return key ? arcanaImages[key].default : null;
+  return key ? map[key].default : null;
 }
 
-const imageModule = findImage(filename);
+const imageModule = findImage(arcanaImages, filename);
+const pieceModule = findImage(pieceImages, pieceImage || '');
 const aspectRatio = isCard ? 0.536 : 1.82;
 ---
 
@@ -55,6 +59,20 @@ const aspectRatio = isCard ? 0.536 : 1.82;
       quality={95}
       class="ss-arcana-image"
     />
+    {pieceModule && (
+      <div class="ss-arcana-piece-badge">
+        <Image
+          src={pieceModule}
+          alt=""
+          width={Math.round(width * 0.32)}
+          height={Math.round(width * 0.32)}
+          loading={loading}
+          format="webp"
+          quality={90}
+          class="ss-arcana-piece-img"
+        />
+      </div>
+    )}
   </div>
 ) : (
   <div class={`ss-arcana-image-fallback ${className || ''}`} style={`--arcana-img-width: ${width}px`}>
@@ -73,13 +91,30 @@ const aspectRatio = isCard ? 0.536 : 1.82;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
-  .ss-arcana-image-wrapper :global(img) {
+  .ss-arcana-image-wrapper :global(img.ss-arcana-image) {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 6px;
+  }
+
+  .ss-arcana-piece-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 32%;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .ss-arcana-piece-badge :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .ss-arcana-image-fallback {

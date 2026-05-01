@@ -1,6 +1,7 @@
 // SSR Arcana Tier List for Star Savior
 // Grouped by stat tag (Power, Health, Focus, Endurance, Protect)
 // Each stat tag has tier rows (SSS, SS, S, A, B)
+// Optional `notes` object maps slug to a note string shown on the card
 
 export const TIER_DEFINITIONS = {
   SSS: { label: 'SSS', description: 'Best in slot for this stat tag.' },
@@ -33,7 +34,7 @@ export const ARCANA_TIER_LIST = {
   Health: {
     SSS: ['asherah-young-lady-of-stranis', 'claire-the-perfect-bunny-girl'],
     SS: ['charlotte-a-knight-s-oath'],
-    S: ['yoo-mina-experienced-mercenary', 'emily-a-quiet-moment-of-rest', 'frey-the-princess-ascends-the-throne'],
+    S: ['yoo-mina-experienced-mercenary', 'emily-a-quiet-moment-of-rest', 'frey-the-princess-ascends-the-throne', 'fei-today-s-step-forward'],
     A: ['vera-more-than-professional', 'roberta-responsibility-atop-a-pile-of-paperwork'],
     B: ['besta-forbidden-archive-vol-1'],
   },
@@ -58,4 +59,8 @@ export const ARCANA_TIER_LIST = {
     A: ['carmen-night-view-beyond-the-window', 'tanya-master-of-fried-food'],
     B: [],
   },
+};
+
+export const ARCANA_TIER_NOTES = {
+  'fei-today-s-step-forward': 'Must-have if running Fei. Becomes SS tier exclusive to her. All effects only benefit Fei herself.',
 };
