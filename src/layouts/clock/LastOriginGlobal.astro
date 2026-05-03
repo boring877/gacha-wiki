@@ -1,0 +1,233 @@
+---
+// Last Origin Global Clock Layout - Pre-Registration Countdown
+import LOBaseHead from '../../components/last-origin-global/LOBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/last-origin-global/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+import '../../styles/games/last-origin-global/lo-colors.css';
+import '../../styles/games/last-origin-global/lo-layout.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/last-origin-global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0];
+
+const now = new Date();
+const dateOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+};
+const currentDateString = now.toLocaleDateString('en-US', dateOptions);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <LOBaseHead title={title} description={description} />
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'Last Origin clock',
+        'Last Origin timer',
+        'Last Origin global',
+        'Last Origin global launch',
+        'Last Origin countdown',
+        'Last Origin pre-registration',
+      ]}
+      pageType="webapp"
+    />
+  </head>
+
+  <body class="last-origin-global-body lo-layout-override">
+    <CustomScrollbar />
+
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer lo-bg-accent-1"></div>
+    <div class="bg-layer lo-bg-accent-2"></div>
+
+    <div class="last-origin-global-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="last-origin-global" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <section class="title-only-section">
+              <h1 class="lo-title-only-heading">Last Origin Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'Last Origin Clock' },
+              ]}
+              showBackButton={true}
+            />
+
+            <!-- Pre-Registration Countdown -->
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <div class="clock-bg-animation"></div>
+
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">Based on UTC</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+                  </div>
+                </div>
+
+                <div class="hero-main-content">
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            fetchpriority="high"
+                            width={200}
+                            height={200}
+                            format="webp"
+                            quality={90}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="lo-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status">{game.server.status}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="lo-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownDays">--</span>
+                          <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="countdownSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Game History -->
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock server-reset-card" id="preregCard">
+                <div class="clock-bg-animation"></div>
+
+                <div class="timers-grid-wrapper">
+                  <div class="timers-row">
+                    <div class="timer-card lo-prereg-period-card">
+                      <div class="timer-card-header">
+                        <div class="lo-timer-card-title">Game Release History</div>
+                      </div>
+                      <div class="timer-card-content">
+                        <div class="lo-prereg-dates">
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">KR Google Play:</span>
+                            <span class="lo-prereg-value">January 24, 2019</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">KR One Store:</span>
+                            <span class="lo-prereg-value">March 20, 2019</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">KR iOS:</span>
+                            <span class="lo-prereg-value">November 14, 2019</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">JP Google Play:</span>
+                            <span class="lo-prereg-value">May 19, 2020</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">JP iOS:</span>
+                            <span class="lo-prereg-value">June 26, 2020</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">JP DMM:</span>
+                            <span class="lo-prereg-value">November 24, 2021</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">TW Erolabs:</span>
+                            <span class="lo-prereg-value">March 21, 2025</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">TW Fully Uncensored:</span>
+                            <span class="lo-prereg-value">March 2026</span>
+                          </div>
+                          <div class="lo-prereg-date-row">
+                            <span class="lo-prereg-label">Global Pre-Reg:</span>
+                            <span class="lo-prereg-value">April 30 - May 21, 2026</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+    <Analytics />
+  </body>
+</html>

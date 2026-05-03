@@ -7,6 +7,7 @@ import gameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.
 import stellaSoraIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import bustyBurstIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
 import taimaninSquadIcon from '../../assets/images/games/taimanin-squad/gameimg/heroimage.jpg';
+import lastOriginGlobalIcon from '../../assets/images/games/last-origin-global/gameimg/icon.jpg';
 
 // Get all active games for the landing page
 let games = getActiveLandingGames();
@@ -35,6 +36,12 @@ games = games.map(game => {
     return {
       ...game,
       image: taimaninSquadIcon,
+    };
+  }
+  if (game.id === 'last-origin-global') {
+    return {
+      ...game,
+      image: lastOriginGlobalIcon,
     };
   }
   return game;

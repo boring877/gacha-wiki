@@ -117,6 +117,23 @@ export const clockLandingGames = [
       icon: '',
     },
   },
+  {
+    id: 'last-origin-global',
+    name: 'Last Origin',
+    description: 'Global Pre-Registration',
+    image: '', // Image will be imported directly in the Astro page
+    url: '/clock/last-origin-global',
+    themeColor: '#f4a261',
+    active: true,
+    primaryTimer: {
+      name: 'Pre-Registration Ends',
+      type: 'launch',
+      resetHour: 23,
+      resetMinute: 59,
+      launchDate: '2026-05-21',
+      icon: '',
+    },
+  },
 ];
 
 /**

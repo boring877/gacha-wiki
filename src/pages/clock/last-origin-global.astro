@@ -1,0 +1,118 @@
+---
+import LastOriginGlobalClockLayout from '../../layouts/clock/LastOriginGlobal.astro';
+import { lastOriginGlobalConfig } from '../../data/clock/last-origin-global.js';
+import GameIcon from '../../assets/images/games/last-origin-global/gameimg/icon.jpg';
+
+const title = 'Last Origin Clock - Global Pre-Registration Countdown | GachaWiki';
+const description =
+  'Last Origin global pre-registration countdown timer. Pre-registration ends May 21, 2026. Track the global launch countdown in real-time.';
+
+const games = [
+  {
+    ...lastOriginGlobalConfig,
+    image: GameIcon,
+  },
+];
+---
+
+<LastOriginGlobalClockLayout title={title} description={description} games={games}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Last Origin Global Pre-Registration Countdown",
+      "description": "Real-time countdown timer for Last Origin global pre-registration. Pre-registration ends May 21, 2026.",
+      "url": "https://gachawiki.info/clock/last-origin-global",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Last Origin Global Pre-Registration Timer",
+        "description": "Track Last Origin global pre-registration countdown. Ends May 21, 2026 23:59 UTC.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</LastOriginGlobalClockLayout>
+
+<script define:vars={{ config: lastOriginGlobalConfig }}>
+  let clockInterval;
+
+  function initClock() {
+    updateCountdown();
+    updateCurrentTime();
+
+    clockInterval = setInterval(() => {
+      updateCountdown();
+      updateCurrentTime();
+    }, 1000);
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const endDate = new Date(config.openBetaDate);
+    const timeDiff = endDate.getTime() - now.getTime();
+
+    const daysEl = document.getElementById('countdownDays');
+    const hoursEl = document.getElementById('countdownHours');
+    const minutesEl = document.getElementById('countdownMinutes');
+    const secondsEl = document.getElementById('countdownSeconds');
+
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    if (timeDiff <= 0) {
+      daysEl.textContent = '00';
+      hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+
+      const descEl = document.getElementById('timerDescription');
+      if (descEl) descEl.textContent = 'Pre-Registration Ended!';
+    } else {
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days.toString().padStart(2, '0');
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+  }
+
+  function updateCurrentTime() {
+    const now = new Date();
+
+    const currentDateEl = document.getElementById('currentDate');
+    if (currentDateEl) {
+      const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      currentDateEl.textContent = now.toLocaleDateString('en-US', dateOptions);
+    }
+
+    const currentUTCEl = document.getElementById('currentUTC');
+    if (currentUTCEl) {
+      const utcTime = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'UTC' });
+      currentUTCEl.textContent = `UTC ${utcTime}`;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initClock);
+  } else {
+    initClock();
+  }
+
+  window.addEventListener('beforeunload', () => {
+    if (clockInterval) clearInterval(clockInterval);
+  });
+</script>

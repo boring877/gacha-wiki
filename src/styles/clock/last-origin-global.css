@@ -1,0 +1,97 @@
+/* Last Origin Global Clock Styles - Amber/Gold Theme */
+
+.lo-title-only-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--lo-font-bold);
+  text-align: center;
+  color: #f4a261;
+  margin-bottom: 0.5rem;
+}
+
+.lo-game-name {
+  color: #f4a261;
+  font-size: 1.5rem;
+  font-weight: var(--lo-font-bold);
+  margin: 0;
+}
+
+.lo-timer-main-label {
+  font-size: 1.25rem;
+  font-weight: var(--lo-font-semibold);
+  color: #f4a261;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.lo-timer-card-title {
+  font-size: 1rem;
+  font-weight: var(--lo-font-semibold);
+  color: #f4a261;
+}
+
+.lo-game-image-container {
+  background: var(--lo-gradient-card);
+  border: 1px solid var(--lo-border);
+  border-radius: var(--lo-radius-lg);
+}
+
+.lo-master-clock {
+  background: var(--lo-gradient-card);
+  border: 1px solid var(--lo-border);
+  box-shadow: var(--lo-shadow-lg);
+}
+
+.lo-bg-primary {
+  background: radial-gradient(ellipse at 30% 20%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
+}
+
+.lo-bg-accent-1 {
+  background: radial-gradient(ellipse at 70% 80%, rgba(244, 162, 97, 0.08) 0%, transparent 50%);
+}
+
+.lo-bg-accent-2 {
+  background: radial-gradient(ellipse at 50% 50%, rgba(244, 162, 97, 0.05) 0%, transparent 60%);
+}
+
+.lo-prereg-period-card {
+  background: linear-gradient(135deg, rgba(244, 162, 97, 0.15) 0%, rgba(244, 162, 97, 0.1) 100%);
+  border: 1px solid rgba(244, 162, 97, 0.3);
+}
+
+.lo-prereg-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lo-prereg-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lo-prereg-date-row:last-child {
+  border-bottom: none;
+}
+
+.lo-prereg-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.lo-prereg-value {
+  color: #f4a261;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .lo-prereg-date-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
