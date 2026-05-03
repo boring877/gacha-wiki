@@ -223,12 +223,8 @@ function formatMultiplier(skill: any): string | null {
   const scaling = skill.damage_scaling || '[ATK]';
   const extraStat = scaling.replace('[ATK]', '').replace(/[\[\]]/g, '').replace(/^\//, '').trim();
   const scalingLabel = extraStat ? ` (Scales with ${extraStat === 'CostHP' ? 'HP Cost' : extraStat === 'NowHp' || extraStat === 'NowHP' ? 'Current HP' : extraStat})` : '';
-
-  if (hits > 1) {
-    const total = (m * hits).toFixed(1);
-    return `${m}% x ${hits} = ${total}% ATK${scalingLabel}`;
-  }
-  return `${m}% ATK${scalingLabel}`;
+  const hitLabel = hits > 1 ? ` (${hits} hits)` : '';
+  return `${m}% ATK${hitLabel}${scalingLabel}`;
 }
 ---
 
