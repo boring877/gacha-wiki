@@ -1,20 +1,19 @@
 ---
 import StarSaviorLayout from '../../layouts/star-savior/LandingLayout.astro';
-import SSBaseHead from '../../components/star-savior/SSBaseHead.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
 import { Image } from 'astro:assets';
 import heroImg from '../../assets/images/games/star-savior/hero.png';
 
-const { meta, guides, gameInfo } = starSaviorConfig;
+const { meta, gameInfo, categoryGroups } = starSaviorConfig;
 ---
 
-<StarSaviorLayout title={meta.title} description={meta.description} gameTitle={meta.gameTitle} heroSlot="hero">
-  <Fragment slot="head">
-    <SSBaseHead title={meta.title} description={meta.description} />
-  </Fragment>
-  <Image slot="hero" src={heroImg} alt={meta.gameTitle} class="hero-image" loading="eager" />
-
+<StarSaviorLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={heroImg}
+>
   <section class="content-section">
     <div class="game-description">
       <p>{gameInfo.description}</p>
@@ -25,48 +24,31 @@ const { meta, guides, gameInfo } = starSaviorConfig;
     </p>
   </section>
 
-  <section class="content-section">
+  <section class="ss-resources-section">
     <h2 class="ss-resources-title">Guides & Resources</h2>
 
-      <div class="ss-resources-grid">
-        <div class="ss-resource-category">
-          <h3>Characters</h3>
-          <div class="ss-buttons-grid">
-            <a href="/guides/star-savior/characters/" class="ss-resource-button">Database</a>
-            <a href="/guides/star-savior/characters/tier-list/" class="ss-resource-button">Tier List</a>
-            <a href="/guides/star-savior/banners/" class="ss-resource-button">Banners</a>
-            <a href="/guides/star-savior/buffs/" class="ss-resource-button">Buffs & Debuffs</a>
+    <div class="ss-resources-grid">
+      {
+        categoryGroups.map(category => (
+          <div class={`ss-resource-category ss-category-${category.size}`}>
+            <div class="ss-category-header">
+              <h3>{category.title}</h3>
+              <p class="ss-category-description">{category.description}</p>
+            </div>
+            <div class="ss-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="ss-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class="ss-resource-category">
-          <h3>Arcana</h3>
-          <div class="ss-buttons-grid">
-            <a href="/guides/star-savior/arcana/" class="ss-resource-button">Database</a>
-            <a href="/guides/star-savior/arcana/tier-list/" class="ss-resource-button">Tier List</a>
-          </div>
-        </div>
-        <div class="ss-resource-category">
-          <h3>Equipment</h3>
-          <div class="ss-buttons-grid">
-            <a href="/guides/star-savior/gear/" class="ss-resource-button">Database</a>
-            <a href="/guides/star-savior/builds/" class="ss-resource-button">Builds</a>
-          </div>
-        </div>
-        <div class="ss-resource-category">
-          <h3>Journey</h3>
-          <div class="ss-buttons-grid">
-            <a href="/guides/star-savior/journey-items/" class="ss-resource-button">Items Database</a>
-            <a href="/guides/star-savior/journey/events/" class="ss-resource-button">Event Choices</a>
-          </div>
-        </div>
-        <div class="ss-resource-category">
-          <h3>Resources</h3>
-          <div class="ss-buttons-grid">
-            <a href="/guides/star-savior/blog/" class="ss-resource-button">Blog</a>
-            <a href="/guides/star-savior/redeem-codes/" class="ss-resource-button">Redeem Codes</a>
-            <a href="/clock/star-savior/" class="ss-resource-button">Clock</a>
-          </div>
-        </div>
-      </div>
+        ))
+      }
+    </div>
   </section>
 </StarSaviorLayout>

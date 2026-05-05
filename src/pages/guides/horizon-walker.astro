@@ -3,6 +3,7 @@ import HorizonWalkerLayout from '../../layouts/horizon-walker/LandingLayout.astr
 import FormattedDate from '../../components/FormattedDate.astro';
 import HWGuideIcon from '../../components/horizon-walker/HWGuideIcon.astro';
 import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js';
+import heroImg from '../../assets/images/games/horizon-walker/gameimg/1.png';
 
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups } = horizonWalkerConfig;
@@ -15,7 +16,7 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={meta.heroImage}
+  heroImage={heroImg}
 >
   <!-- Structured Data for Horizon Walker -->
   <script type="application/ld+json">
@@ -153,7 +154,7 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
   </section>
 
   <!-- Resources Section -->
-  <section class="content-section">
+  <section class="hw-resources-section">
     <h2 class="hw-resources-title">Resources</h2>
 
     <div class="hw-resources-grid">
@@ -162,7 +163,6 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
           return (
             <div class={`hw-resource-category hw-category-${category.size}`}>
               <div class="hw-category-header">
-                <span class="hw-category-emoji">{category.emoji}</span>
                 <h3>{category.title}</h3>
                 <p class="hw-category-description">{category.description}</p>
               </div>

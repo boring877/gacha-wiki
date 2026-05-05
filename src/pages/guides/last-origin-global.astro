@@ -5,7 +5,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { lastOriginGlobalConfig } from '../../data/last-origin-global/last-origin-global.js';
 import heroImage from '../../assets/images/games/last-origin-global/gameimg/hero.png';
 
-const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks } } = lastOriginGlobalConfig;
+const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks }, categoryGroups } = lastOriginGlobalConfig;
 ---
 
 <LastOriginGlobalLandingLayout
@@ -61,7 +61,7 @@ const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks } } = la
       </div>
     )}
 
-    <h2 class="section-title">Game Introduction</h2>
+    <h2 class="section-title">About</h2>
 
     <div class="story-content">
       {story.content.map(paragraph => <p>{paragraph}</p>)}
@@ -131,5 +131,34 @@ const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks } } = la
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
     </p>
+  </section>
+
+  <!-- Resources: Bento Grid Layout -->
+  <section class="lo-resources-section">
+    <h2 class="lo-resources-title">Resources</h2>
+
+    <div class="lo-resources-grid">
+      {
+        categoryGroups.map(category => (
+          <div class={`lo-resource-category lo-category-${category.size}`}>
+            <div class="lo-category-header">
+              <h3>{category.title}</h3>
+              <p class="lo-category-description">{category.description}</p>
+            </div>
+            <div class="lo-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="lo-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </section>
 </LastOriginGlobalLandingLayout>

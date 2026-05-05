@@ -48,6 +48,91 @@ export const bustyBurstConfig = {
     ],
   },
 
+  categoryGroups: [
+    {
+      id: 'characters',
+      title: 'Characters',
+      emoji: '',
+      description: 'Character database, skills, stats, and support info',
+      size: 'large',
+      guides: [
+        { id: 'bb-characters', title: 'Database', url: '/guides/busty-burst/characters/' },
+        { id: 'bb-char-info', title: 'Profiles & VAs', url: '/guides/busty-burst/character-info/' },
+        { id: 'bb-char-skills', title: 'Skills', url: '/guides/busty-burst/character-skills/' },
+        { id: 'bb-char-stats', title: 'Stats', url: '/guides/busty-burst/character-stats/' },
+        { id: 'bb-support-stats', title: 'Support Stats', url: '/guides/busty-burst/support-stats/' },
+        { id: 'bb-support-bonus', title: 'Support Bonus', url: '/guides/busty-burst/support-bonus/' },
+      ],
+    },
+    {
+      id: 'guides',
+      title: 'Guides',
+      emoji: '',
+      description: 'Tier lists, builds, and pull recommendations',
+      size: 'large',
+      guides: [
+        { id: 'bb-tier-list', title: 'Tier List', url: '/guides/busty-burst/tier-list/' },
+        { id: 'bb-build', title: 'Build', url: '/guides/busty-burst/build' },
+        { id: 'bb-support-tier', title: 'Support Tier List', url: '/guides/busty-burst/support-tier-list/' },
+        { id: 'bb-summon-or-skip', title: 'Summon or Skip?', url: '/guides/busty-burst/summon-or-skip' },
+        { id: 'bb-bust-booty', title: 'Bust & Booty', url: '/guides/busty-burst/bust-booty-ranking/' },
+      ],
+    },
+    {
+      id: 'equipment',
+      title: 'Equipment',
+      emoji: '',
+      description: 'Weapons, accessories, and raid drops',
+      size: 'large',
+      guides: [
+        { id: 'bb-weapons', title: 'Weapons', url: '/guides/busty-burst/weapons' },
+        { id: 'bb-best-weapons', title: 'Best Weapons', url: '/guides/busty-burst/best-weapons' },
+        { id: 'bb-acc-stats', title: 'Accessory Stats', url: '/guides/busty-burst/accessory-stats' },
+        { id: 'bb-acc-items', title: 'Accessory Items', url: '/guides/busty-burst/accessory-items' },
+        { id: 'bb-acc-guide', title: 'Accessory Guide', url: '/guides/busty-burst/accessory-guide' },
+        { id: 'bb-raid-drops', title: 'Raid Drops', url: '/guides/busty-burst/raid-drops' },
+      ],
+    },
+    {
+      id: 'mechanics',
+      title: 'Mechanics',
+      emoji: '',
+      description: 'Combat mechanics, DEF systems, and team building',
+      size: 'large',
+      guides: [
+        { id: 'bb-buff-debuff', title: 'Buff & Debuff System', url: '/guides/busty-burst/buff-debuff-guide' },
+        { id: 'bb-phys-def', title: 'Physical DEF Down', url: '/guides/busty-burst/physical-defense-down' },
+        { id: 'bb-mag-def', title: 'Magic DEF Down', url: '/guides/busty-burst/magic-defense-down' },
+        { id: 'bb-elem-def', title: 'Element DEF Down', url: '/guides/busty-burst/element-defense-down' },
+        { id: 'bb-team-builder', title: 'Team Builder', url: '/guides/busty-burst/team-builder' },
+        { id: 'bb-skill-formulas', title: 'Skill Formulas', url: '/guides/busty-burst/skill-formulas/' },
+      ],
+    },
+    {
+      id: 'events',
+      title: 'Events',
+      emoji: '',
+      description: 'Banner history and limited time events',
+      size: 'small',
+      guides: [
+        { id: 'bb-banner-timeline', title: 'Banner Timeline', url: '/guides/busty-burst/banner-timeline' },
+        { id: 'bb-limited', title: 'Limited Time Challenges', url: '/guides/busty-burst/limited-time-challenges/' },
+      ],
+    },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Blog, clock, and redeem codes',
+      size: 'medium',
+      guides: [
+        { id: 'bb-blog', title: 'Blog', url: '/guides/busty-burst/blog/' },
+        { id: 'bb-clock', title: 'Clock', url: '/clock/busty-burst/' },
+        { id: 'bb-codes', title: 'Redeem Codes', url: '/guides/busty-burst/redeem-codes' },
+      ],
+    },
+  ],
+
   guides: [
     // Characters
     {

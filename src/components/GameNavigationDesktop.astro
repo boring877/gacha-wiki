@@ -78,7 +78,9 @@ const isActive = (href: string) => {
                           ? '/guides/star-savior/'
                           : validatedGameKey === 'last-origin-global'
                             ? '/guides/last-origin-global/'
-                            : '/guides/silver-and-blood/'}
+                            : validatedGameKey === 'make-drama'
+                              ? '/guides/make-drama/'
+                              : '/guides/silver-and-blood/'}
           class="game-link"
         >
           <div class="game-image-container">

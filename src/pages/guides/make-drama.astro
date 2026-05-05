@@ -1,0 +1,71 @@
+---
+import MakeDramaLayout from '../../layouts/make-drama/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
+import { Image } from 'astro:assets';
+import bgImg from '../../assets/images/games/make-drama/logos/bg.jpg';
+
+const { meta, gameInfo, categoryGroups } = makeDramaConfig;
+---
+
+<MakeDramaLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+  heroImage={bgImg}
+>
+  <section class="content-section">
+    <div class="game-description">
+      <p>{gameInfo.description}</p>
+    </div>
+
+    <div class="md-social-links-container">
+      <div class="md-social-links">
+        <a href="https://mad.wemadeconnect.com/" class="md-social-link" target="_blank" rel="noopener">Official Site</a>
+        <a href="https://cafe.naver.com/makedrama" class="md-social-link" target="_blank" rel="noopener">Naver Cafe</a>
+        <a href="https://discord.com/invite/2VEnXd6Fwn" class="md-social-link" target="_blank" rel="noopener">Discord</a>
+        <a href="https://www.youtube.com/@MAkeDrama_KR" class="md-social-link" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://x.com/MAkeDrama_KR" class="md-social-link" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <section class="md-resources-section">
+    <h2 class="md-resources-title">Guides & Resources</h2>
+
+    <div class="md-resources-grid">
+      {
+        categoryGroups.map(category => (
+          <div class={`md-resource-category md-category-${category.size}`}>
+            <div class="md-category-header">
+              <h3>{category.title}</h3>
+              <p class="md-category-description">{category.description}</p>
+            </div>
+            <div class="md-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="md-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="md-coming-soon-banner">
+      <p><strong>Make Drama: M.A.D</strong> is currently in pre-registration (Korea). Game has not launched yet.</p>
+      <p style="margin-top: 0.5rem;">More guides and data will be added after launch.</p>
+    </div>
+  </section>
+</MakeDramaLayout>

@@ -20,7 +20,7 @@
 }
 
 .sab-body {
-  background: linear-gradient(135deg, #2a1e1e 0%, #1a1a1a 50%, #2a1e1e 100%);
+  background: #1a1a1a;
   color: var(--text-inverse);
   font-family: var(--font-primary);
   display: flex;
@@ -36,20 +36,20 @@
 }
 
 .bg-primary {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  background: #1e1e1e;
 }
 
 /* Accents updated for calm red & blue theme */
 .bg-accent-1 {
-  background: radial-gradient(circle at 15% 85%, rgba(184, 197, 209, 0.08), transparent 70%);
+  background: transparent;
 }
 
 .bg-accent-2 {
-  background: radial-gradient(circle at 85% 15%, rgba(90, 123, 167, 0.08), transparent 70%);
+  background: transparent;
 }
 
 .bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, rgba(166, 77, 77, 0.06), transparent 70%);
+  background: transparent;
 }
 
 .sab-content {
@@ -79,7 +79,7 @@
 .hero-image-container {
   width: 100%;
   max-width: 60rem;
-  height: 25rem;
+  height: auto;
   border-radius: 1rem;
   overflow: hidden;
   margin: 0 auto;
@@ -90,7 +90,6 @@
 /* Mobile Responsive Hero Image */
 @media (max-width: 768px) {
   .hero-image-container {
-    height: 15rem;
     border-radius: 12px;
     margin: 0 1rem;
   }
@@ -107,7 +106,6 @@
 
 @media (max-width: 480px) {
   .hero-image-container {
-    height: 12rem;
     border-radius: 8px;
     margin: 0 0.5rem;
   }
@@ -124,8 +122,9 @@
 
 .hero-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-video {
@@ -139,8 +138,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
-  background: linear-gradient(transparent, rgba(26, 26, 26, 0.9));
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.5) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .hero-title {

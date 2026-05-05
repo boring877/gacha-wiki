@@ -118,41 +118,13 @@ export const lastOriginGlobalConfig = {
 
   categoryGroups: [
     {
-      id: 'community',
-      title: 'Community',
-      description: 'Official links and community resources',
-      size: 'medium',
+      id: 'game',
+      title: 'Game',
+      description: 'Game home and server clock',
+      size: 'small',
       guides: [
-        {
-          id: 'vfun',
-          title: 'VFUN (Official)',
-          url: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
-          external: true,
-        },
-        {
-          id: 'orvvit',
-          title: 'Orvvit (Official Info)',
-          url: 'https://www.orvvit.com/page/last-origin-global',
-          external: true,
-        },
-        {
-          id: 'facebook',
-          title: 'Facebook',
-          url: 'https://www.facebook.com/LastOriginOnVFUN',
-          external: true,
-        },
-        {
-          id: 'discord',
-          title: 'Discord',
-          url: 'https://discord.gg/tgmbFm3JCA',
-          external: true,
-        },
-        {
-          id: 'korean-wiki',
-          title: 'Korean Wiki (Swaytwig)',
-          url: 'https://lo.swaytwig.com/units/PECS_Spartoia',
-          external: true,
-        },
+        { id: 'home', title: 'Home', url: '/guides/last-origin-global/' },
+        { id: 'clock', title: 'Clock', url: '/clock/last-origin-global/' },
       ],
     },
   ],

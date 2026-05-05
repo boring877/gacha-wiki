@@ -2,6 +2,7 @@
 import ZoneNovaLandingLayout from '../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { zoneNovaConfig } from '../../data/zone-nova/zone-nova.js';
+import heroImg from '../../assets/images/games/zone-nova/zonenova1.jpg';
 
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups } = zoneNovaConfig;
@@ -17,7 +18,7 @@ const breadcrumbs = [
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={meta.heroImage}
+  heroImage={heroImg}
 >
   <!-- Structured Data for Zone Nova -->
   <script type="application/ld+json">
@@ -100,8 +101,8 @@ const breadcrumbs = [
     </p>
   </section>
 
-  <!-- Guides Section -->
-  <section class="content-section">
+  <!-- Resources Section -->
+  <section class="zn-resources-section">
     <h2 class="zn-resources-title">Resources</h2>
 
     <div class="zn-resources-grid">
@@ -109,7 +110,6 @@ const breadcrumbs = [
         categoryGroups.map(category => (
           <div class={`zn-resource-category zn-category-${category.size}`}>
             <div class="zn-category-header">
-              <span class="zn-category-emoji">{category.emoji}</span>
               <h3>{category.title}</h3>
               <p class="zn-category-description">{category.description}</p>
             </div>

@@ -7,7 +7,8 @@ export type GameKey =
   | 'busty-burst'
   | 'taimanin-squad'
   | 'star-savior'
-  | 'last-origin-global';
+  | 'last-origin-global'
+  | 'make-drama';
 
 export interface NavigationLink {
   name: string;
@@ -322,10 +323,15 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Database', href: '/guides/taimanin-squad/characters/' },
           { name: 'Character Lore', href: '/guides/taimanin-squad/character-lore/' },
           { name: 'Character Stats', href: '/guides/taimanin-squad/character-stats/' },
+          { name: 'Tier List', href: '/guides/taimanin-squad/tier-list/' },
+        ],
+      },
+      {
+        title: 'Equipment',
+        links: [
           { name: 'Weapons', href: '/guides/taimanin-squad/weapons/' },
           { name: 'Skills', href: '/guides/taimanin-squad/skills/' },
           { name: 'Artifacts', href: '/guides/taimanin-squad/artifacts/' },
-          { name: 'Tier List', href: '/guides/taimanin-squad/tier-list/' },
         ],
       },
       {
@@ -402,6 +408,22 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
           { name: 'Home', href: '/guides/last-origin-global/' },
           { name: 'Clock', href: '/clock/last-origin-global/' },
         ],
+      },
+    ],
+  },
+  'make-drama': {
+    name: 'Make Drama',
+    image: '/images/games/make-drama/icon.png',
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/make-drama/characters/' },
+        ],
+      },
+      {
+        title: 'Resources',
+        links: [],
       },
     ],
   },

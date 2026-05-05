@@ -147,4 +147,67 @@ export const starSaviorConfig = {
       size: 'regular',
     },
   ],
+
+  categoryGroups: [
+    {
+      id: 'characters',
+      title: 'Characters',
+      emoji: '',
+      description: 'Character database, tier list, banners, and buffs',
+      size: 'large',
+      guides: [
+        { id: 'ss-characters', title: 'Database', url: '/guides/star-savior/characters/' },
+        { id: 'ss-tier-list', title: 'Tier List', url: '/guides/star-savior/characters/tier-list/' },
+        { id: 'ss-banners', title: 'Banners', url: '/guides/star-savior/banners/' },
+        { id: 'ss-summon-or-skip', title: 'Summon or Skip?', url: '/guides/star-savior/banners/summon-or-skip/' },
+        { id: 'ss-buffs', title: 'Buffs & Debuffs', url: '/guides/star-savior/buffs/' },
+      ],
+    },
+    {
+      id: 'arcana',
+      title: 'Arcana',
+      emoji: '',
+      description: 'Arcana cards database and rankings',
+      size: 'small',
+      guides: [
+        { id: 'ss-arcana', title: 'Database', url: '/guides/star-savior/arcana/' },
+        { id: 'ss-arcana-tier', title: 'Tier List', url: '/guides/star-savior/arcana/tier-list/' },
+      ],
+    },
+    {
+      id: 'equipment',
+      title: 'Equipment',
+      emoji: '',
+      description: 'Equipment database and builds',
+      size: 'small',
+      guides: [
+        { id: 'ss-gear', title: 'Database', url: '/guides/star-savior/gear/' },
+        { id: 'ss-builds', title: 'Builds', url: '/guides/star-savior/builds/' },
+      ],
+    },
+    {
+      id: 'journey',
+      title: 'Journey',
+      emoji: '',
+      description: 'Journey items, event choices, and trajectory',
+      size: 'medium',
+      guides: [
+        { id: 'ss-journey-items', title: 'Items Database', url: '/guides/star-savior/journey-items/' },
+        { id: 'ss-journey-events', title: 'Event Choices', url: '/guides/star-savior/journey/events/' },
+        { id: 'ss-journey-trajectory', title: 'Trajectory Guide', url: '/guides/star-savior/journey/trajectory/' },
+      ],
+    },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Blog, codes, and utility tools',
+      size: 'medium',
+      guides: [
+        { id: 'ss-blog', title: 'Blog', url: '/guides/star-savior/blog/' },
+        { id: 'ss-codes', title: 'Redeem Codes', url: '/guides/star-savior/redeem-codes/' },
+        { id: 'ss-clock', title: 'Clock', url: '/clock/star-savior/' },
+      ],
+    },
+  ],
 };

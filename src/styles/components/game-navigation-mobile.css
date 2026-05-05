@@ -173,6 +173,10 @@
   color: #e63946;
 }
 
+.game-nav-mobile[data-game='make-drama'] .game-title {
+  color: #34d399;
+}
+
 /* Game-specific mobile menu colors */
 
 /* Zone Nova - Inside Menu */
@@ -608,4 +612,29 @@
   }
 
   
+}
+
+/* ============================================
+   MAKE DRAMA MOBILE STYLING
+   ============================================ */
+
+/* Make Drama - Inside Menu */
+.mobile-links[data-game='make-drama'] .mobile-game-name {
+  color: #34d399;
+}
+
+.mobile-links[data-game='make-drama'] .mobile-section-title {
+  color: #34d399;
+}
+
+.mobile-links[data-game='make-drama'] {
+  .mobile-link {
+    border-bottom: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  .mobile-link.active {
+    background: #10b981;
+    color: white;
+    border-left: 3px solid #10b981;
+  }
 }

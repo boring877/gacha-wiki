@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/make-drama/characters/**/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  filename: string;
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+function findImage(filename: string): ImageMetadata | null {
+  const key = Object.keys(images).find(k => k.endsWith('/' + filename) || k.endsWith('/characters/' + filename));
+  return key ? images[key].default : null;
+}
+
+const { filename, alt = 'Character', class: className = '', loading = 'lazy' } = Astro.props;
+const imageData = findImage(filename);
+---
+
+{imageData ? (
+  <Image src={imageData} alt={alt} class={className} loading={loading} format="webp" quality={95} />
+) : (
+  <div class={`md-image-fallback ${className}`} style="background: var(--md-bg-secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--md-text-muted); font-size: 0.75rem; min-height: 100px;">
+    {alt}
+  </div>
+)}

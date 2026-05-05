@@ -78,129 +78,58 @@ This, too, is unfinished epic of Silver and Blood, its ending both foretold, yet
     },
   ],
 
-  // Main Category Groups for Bento Grid Layout
   categoryGroups: [
     {
       id: 'characters',
       title: 'Characters',
       emoji: '',
-      description: 'Character database, rankings, comparisons, and tier lists',
+      description: 'Character database, skills, stats, rankings, and tier lists',
       size: 'large',
       guides: [
-        {
-          id: 'characters',
-          title: 'Database',
-          url: '/guides/silver-and-blood/characters/',
-        },
-        {
-          id: 'characters-info',
-          title: 'Lore & Info',
-          url: '/guides/silver-and-blood/characters-info/',
-        },
-        {
-          id: 'tier-list',
-          title: 'Tier List',
-          url: '/guides/silver-and-blood/tier-list/',
-        },
-        {
-          id: 'character-rankings',
-          title: 'Rankings',
-          url: '/guides/silver-and-blood/character-rankings/',
-        },
-
-
-        {
-          id: 'character-tag-selection',
-          title: 'Tags',
-          url: '/guides/silver-and-blood/character-tag-selection/',
-        },
-        {
-          id: 'character-skills',
-          title: 'Skills',
-          url: '/guides/silver-and-blood/character-skills/',
-        },
-        {
-          id: 'character-stats',
-          title: 'Stats Database',
-          url: '/guides/silver-and-blood/character-stats/',
-        },
+        { id: 'characters', title: 'Database', url: '/guides/silver-and-blood/characters/' },
+        { id: 'characters-info', title: 'Lore & Info', url: '/guides/silver-and-blood/characters-info/' },
+        { id: 'character-skills', title: 'Skills', url: '/guides/silver-and-blood/character-skills/' },
+        { id: 'character-stats', title: 'Stats', url: '/guides/silver-and-blood/character-stats/' },
+        { id: 'tier-list', title: 'Tier List', url: '/guides/silver-and-blood/tier-list/' },
+        { id: 'character-rankings', title: 'Rankings', url: '/guides/silver-and-blood/character-rankings/' },
+        { id: 'character-tag-selection', title: 'Tags', url: '/guides/silver-and-blood/character-tag-selection/' },
       ],
     },
     {
       id: 'combat',
       title: 'Combat',
       emoji: '',
-      description: 'Damage mechanics, boss battles, clan hunts, and team strategies',
-      size: 'large',
+      description: 'Team synergies and combat strategies',
+      size: 'small',
       guides: [
-        {
-          id: 'synergies',
-          title: 'Synergies',
-          url: '/guides/silver-and-blood/synergies/',
-        },
-        {
-          id: 'team-synergy',
-          title: 'Team Synergy',
-          url: '/guides/silver-and-blood/team-synergy/',
-        },
+        { id: 'synergies', title: 'Synergies', url: '/guides/silver-and-blood/synergies/' },
+        { id: 'team-synergy', title: 'Team Builds', url: '/guides/silver-and-blood/team-synergy/' },
       ],
     },
     {
       id: 'events',
       title: 'Events',
       emoji: '',
-      description: 'Special events, puzzles, and limited content',
-      size: 'medium',
+      description: 'Special events and limited content',
+      size: 'small',
       guides: [
-        {
-          id: 'dutchmans-revenge',
-          title: "Dutchman's Revenge",
-          url: '/guides/silver-and-blood/dutchmans-revenge/',
-        },
-        {
-          id: 'heirloom-vault',
-          title: 'Heirloom Vault',
-          url: '/guides/silver-and-blood/heirloom-vault/',
-        },
+        { id: 'dutchmans-revenge', title: "Dutchman's Revenge", url: '/guides/silver-and-blood/dutchmans-revenge/' },
+        { id: 'heirloom-vault', title: 'Heirloom Vault', url: '/guides/silver-and-blood/heirloom-vault/' },
       ],
     },
     {
       id: 'resources',
       title: 'Resources',
       emoji: '',
-      description: 'Utility tools, codes, and game information',
-      size: 'medium',
+      description: 'Gifts, artifacts, codes, clock, and blog',
+      size: 'large',
       guides: [
-        {
-          id: 'clock',
-          title: 'Clock',
-          url: '/clock/silver-and-blood/',
-        },
-        {
-          id: 'blog',
-          title: 'Blog',
-          url: '/guides/silver-and-blood/blog/',
-        },
-        {
-          id: 'gifts',
-          title: 'Gifts',
-          url: '/guides/silver-and-blood/gifts/',
-        },
-        {
-          id: 'character-gifts',
-          title: 'Character Gifts',
-          url: '/guides/silver-and-blood/character-gifts/',
-        },
-        {
-          id: 'artifacts',
-          title: 'Artifacts',
-          url: '/guides/silver-and-blood/artifacts/',
-        },
-        {
-          id: 'redeem-codes',
-          title: 'Redeem Codes',
-          url: '/guides/silver-and-blood/redeem-codes/',
-        },
+        { id: 'gifts', title: 'Gifts', url: '/guides/silver-and-blood/gifts/' },
+        { id: 'character-gifts', title: 'Character Gifts', url: '/guides/silver-and-blood/character-gifts/' },
+        { id: 'artifacts', title: 'Artifacts', url: '/guides/silver-and-blood/artifacts/' },
+        { id: 'clock', title: 'Clock', url: '/clock/silver-and-blood/' },
+        { id: 'redeem-codes', title: 'Redeem Codes', url: '/guides/silver-and-blood/redeem-codes/' },
+        { id: 'blog', title: 'Blog', url: '/guides/silver-and-blood/blog/' },
       ],
     },
   ],

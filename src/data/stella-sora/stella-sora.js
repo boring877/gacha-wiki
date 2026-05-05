@@ -7,7 +7,6 @@ export const stellaSoraConfig = {
     heroImage: '/images/games/stella-sora/gameimg/BG1.jpg',
   },
 
-  // Current game version info
   version: {
     current: '1.4',
     name: 'Radiant Messenger, Holy Night Spirit',
@@ -56,6 +55,81 @@ export const stellaSoraConfig = {
       title: 'Nova Continent',
       description:
         'Explore a vast fantasy world filled with mysterious Star Towers and hidden secrets.',
+    },
+  ],
+
+  categoryGroups: [
+    {
+      id: 'characters',
+      title: 'Characters',
+      emoji: '',
+      description: 'Character database, builds, skills, and tier lists',
+      size: 'large',
+      guides: [
+        { id: 'st-characters', title: 'Database', url: '/guides/stella-sora/characters/' },
+        { id: 'st-tier-list', title: 'Tier List', url: '/guides/stella-sora/tier-list/' },
+        { id: 'st-char-skills', title: 'Skills', url: '/guides/stella-sora/character-skills/' },
+        { id: 'st-char-info', title: 'Profiles & VAs', url: '/guides/stella-sora/character-info/' },
+        { id: 'st-talents', title: 'Talents', url: '/guides/stella-sora/talents/' },
+        { id: 'st-potentials', title: 'All Potentials', url: '/guides/stella-sora/all-potentials/' },
+        { id: 'st-upgrades', title: 'Upgrades', url: '/guides/stella-sora/character-upgrades/' },
+        { id: 'st-stats', title: 'Stats', url: '/guides/stella-sora/character-stats/' },
+        { id: 'st-team-builds', title: 'Team Builds', url: '/guides/stella-sora/team-builds/' },
+      ],
+    },
+    {
+      id: 'equipment',
+      title: 'Equipment',
+      emoji: '',
+      description: 'Discs, support notes, emblem stats, and materials',
+      size: 'large',
+      guides: [
+        { id: 'st-discs', title: 'Discs', url: '/guides/stella-sora/discs/' },
+        { id: 'st-disc-skills', title: 'Disc Skills', url: '/guides/stella-sora/disc-skills/' },
+        { id: 'st-disc-stats', title: 'Disc Stats', url: '/guides/stella-sora/disc-stats/' },
+        { id: 'st-disc-upgrades', title: 'Disc Upgrades', url: '/guides/stella-sora/disc-upgrades/' },
+        { id: 'st-support-notes', title: 'Support Notes', url: '/guides/stella-sora/support-notes/' },
+        { id: 'st-emblem-stats', title: 'Emblem Stats', url: '/guides/stella-sora/emblem-stats/' },
+        { id: 'st-materials', title: 'Materials', url: '/guides/stella-sora/materials-database/' },
+      ],
+    },
+    {
+      id: 'dating',
+      title: 'Dating',
+      emoji: '',
+      description: 'Dating events and gift guides',
+      size: 'medium',
+      guides: [
+        { id: 'st-dating', title: 'Dating Events', url: '/guides/stella-sora/dating/' },
+        { id: 'st-gifts', title: 'Gifts', url: '/guides/stella-sora/gifts/' },
+        { id: 'st-char-gifts', title: 'Character Gifts', url: '/guides/stella-sora/character-gifts/' },
+      ],
+    },
+    {
+      id: 'events',
+      title: 'Events',
+      emoji: '',
+      description: 'Events, shop events, and banner history',
+      size: 'medium',
+      guides: [
+        { id: 'st-events', title: 'Events', url: '/guides/stella-sora/events/' },
+        { id: 'st-shop-events', title: 'Shop Events', url: '/guides/stella-sora/shop-events/' },
+        { id: 'st-banner-timeline', title: 'Banner Timeline', url: '/guides/stella-sora/banner-timeline/' },
+      ],
+    },
+    {
+      id: 'resources',
+      title: 'Resources',
+      emoji: '',
+      description: 'Blog, guides, codes, and utility tools',
+      size: 'large',
+      guides: [
+        { id: 'st-blog', title: 'Blog', url: '/guides/stella-sora/blog/' },
+        { id: 'st-ascension', title: 'Ascension Q&A', url: '/guides/stella-sora/ascension-qa/' },
+        { id: 'st-exclusive', title: 'Exclusive Items', url: '/guides/stella-sora/exclusive-items/' },
+        { id: 'st-clock', title: 'Clock', url: '/clock/stella-sora/' },
+        { id: 'st-codes', title: 'Redeem Codes', url: '/guides/stella-sora/redeem-codes/' },
+      ],
     },
   ],
 };

@@ -1,0 +1,54 @@
+---
+import MakeDramaLayout from '../../../../layouts/make-drama/LandingLayout.astro';
+import MDCharacterImage from '../../../../components/make-drama/MDCharacterImage.astro';
+import { MAKE_DRAMA_CHARACTERS } from '../../../../data/make-drama/characters.js';
+
+export function getStaticPaths() {
+  return MAKE_DRAMA_CHARACTERS.map(char => ({
+    params: { slug: char.slug },
+    props: { character: char },
+  }));
+}
+
+const { character } = Astro.props;
+const { character: char } = Astro.props;
+---
+
+<MakeDramaLayout
+  title={`${char.name} - Make Drama Character`}
+  description={`${char.name} character guide for Make Drama: M.A.D. ${char.factionName} faction, ${char.element} element, ${char.role} role.`}
+  gameTitle={char.name}
+>
+  <a href="/guides/make-drama/characters/" class="md-back">&larr; Back to Characters</a>
+
+  <section class="md-content-section">
+    <div class="md-detail-header">
+      <MDCharacterImage filename={char.image} alt={char.name} class="md-detail-avatar" />
+      <div class="md-detail-info">
+        <h1>{char.name}</h1>
+        <p class="md-name-ko" style="color: var(--md-text-tertiary); margin: 0 0 0.5rem; font-size: 0.875rem;">{char.nameKo}</p>
+        <div class="md-meta">
+          <span class="md-badge md-badge-faction">{char.factionName}</span>
+          <span class="md-badge md-badge-element">{char.element}</span>
+          <span class="md-badge md-badge-role">{char.role}</span>
+        </div>
+        <p style="color: var(--md-text-secondary); margin-top: 1rem; line-height: 1.6;">{char.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="md-content-section">
+    <div class="md-detail-section">
+      <h2>Ultimate Skill</h2>
+      <p class="md-ultimate-name">{char.ultimateName}</p>
+      <p style="color: var(--md-text-tertiary); font-size: 0.8125rem; margin: 0.125rem 0 0.5rem;">{char.ultimateNameKo}</p>
+      <p class="md-ultimate-desc">{char.ultimateDescription}</p>
+    </div>
+  </section>
+
+  <section class="md-content-section">
+    <div class="md-coming-soon-banner">
+      <p><strong>{char.name}</strong> is a revealed character. Detailed stats, skills, and builds will be added after game launch.</p>
+    </div>
+  </section>
+</MakeDramaLayout>

@@ -1,9 +1,7 @@
 /* Horizon Walker Layout Styles */
-/* Base layout, hero sections, and shared animations */
 
-/* Global Body Styles - Applied to actual body element, not scoped */
 .horizon-walker-body {
-  background: linear-gradient(135deg, #1a1e1a 0%, #2a2e2a 50%, #1a1e1a 100%);
+  background: #1a1e1a;
   color: var(--hw-text-light);
   min-height: 100vh;
   display: flex;
@@ -14,185 +12,169 @@
   line-height: var(--leading-relaxed);
 }
 
-/* Horizon Walker Theme Variants */
 .horizon-walker-body.dark-theme {
   background: var(--hw-bg-darker);
   color: var(--hw-text-light);
 }
 
-.horizon-walker-body.light-theme {
-  color: var(--text-primary);
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
 }
 
-/* Scope all HW layout styles to the horizon walker content area */
-@scope (.horizon-walker-content) {
-  /* Background layers - for client-side navigation */
-  .bg-layer {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+.hw-bg-primary {
+  background: #1a1a1a;
+}
+
+.hw-bg-accent-1 {
+  background: transparent;
+  pointer-events: none;
+}
+
+.hw-bg-accent-2 {
+  background: transparent;
+  pointer-events: none;
+}
+
+.hw-bg-accent-3 {
+  background: transparent;
+  pointer-events: none;
+}
+
+.horizon-walker-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+}
+
+.horizon-walker-container {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.horizon-walker-main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid var(--hw-primary-warm);
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+  margin: 0;
+}
+
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--hw-primary-warm);
+}
+
+.content-area {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    border-radius: 12px;
+    margin: 0 1rem;
   }
 
-  .hw-bg-primary {
-  }
-
-  .hw-bg-accent-1 {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  .hw-bg-accent-2 {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  .hw-bg-accent-3 {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  /* Main container - optimized for scroll performance */
   .horizon-walker-container {
-    position: relative;
-    contain: layout style paint;
+    padding: 1rem;
   }
 
   .horizon-walker-main {
-    /* Optimized main content - minimal GPU acceleration */
-    overflow-anchor: none;
+    padding: 1rem;
   }
 
-  .horizon-walker-content {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-  }
-
-  /* Hero Section Styles */
   .hero-section {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 3rem 1rem;
-  }
-
-  .hero-image-wrapper {
-    position: relative;
     margin-bottom: 2rem;
   }
 
-  .hero-image-container {
-    width: 100%;
-    max-width: 60rem;
-    height: 25rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
-  }
-
   .hero-title {
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    color: #e8a547;
-    margin: 0;
-    line-height: var(--leading-tight);
+    font-size: var(--text-3xl);
   }
 
-  /* Title Only Section */
   .title-only-section {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding: 2rem 0;
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
   }
 
   .title-only-heading {
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: var(--font-bold);
-    color: #e8a547;
-    margin: 0;
-    line-height: var(--leading-tight);
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image-container {
+    border-radius: 8px;
+    margin: 0 0.5rem;
   }
 
-  /* Container Styles */
   .horizon-walker-container {
-    position: relative;
+    padding: 0.75rem;
   }
 
   .horizon-walker-main {
-    max-width: 75rem;
-    margin: 0 auto;
-    padding: 2rem;
+    padding: 0.75rem;
   }
 
-  /* Mobile Responsive Styles */
-  @media (max-width: 768px) {
-    .horizon-walker-main {
-      padding: 1rem;
-    }
-
-    .hero-section {
-      padding: 2rem 1rem 3rem 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-image-container {
-      height: 15rem;
-      border-radius: 12px;
-      margin: 0 1rem;
-    }
-
-    .hero-title {
-      font-size: var(--text-3xl);
-    }
-
-    .title-only-section {
-      padding: 1.5rem 0.5rem 2rem 0.5rem;
-    }
-
-    .title-only-heading {
-      font-size: var(--text-3xl);
-    }
+  .hero-title {
+    font-size: var(--text-2xl);
   }
 
-  @media (max-width: 480px) {
-    .horizon-walker-main {
-      padding: 0.5rem;
-    }
-
-    .hero-image-container {
-      height: 12rem;
-      border-radius: 8px;
-      margin: 0 0.5rem;
-    }
-
-    .hero-title {
-      font-size: var(--text-2xl);
-    }
-
-    .hero-section {
-      padding: 1.5rem 0.5rem 2rem 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .title-only-heading {
-      font-size: var(--text-2xl);
-    }
+  .title-only-heading {
+    font-size: var(--text-2xl);
   }
-} /* End @scope (.horizon-walker-content) */
+}

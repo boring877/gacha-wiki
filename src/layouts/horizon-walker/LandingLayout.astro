@@ -9,9 +9,8 @@ import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
-import GameImage from '../../components/horizon-walker/GameImage.astro';
+import { Image } from 'astro:assets';
 
-// Import CSS files properly
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/horizon-walker/hw-colors.css';
@@ -22,7 +21,7 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
+  heroImage?: any;
 }
 
 const { title, description, gameTitle, heroImage } = Astro.props;
@@ -32,15 +31,14 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <head>
     <HWBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="horizon-walker" title={title} description={description} />
-    <!-- Astro handles image optimization automatically -->
     <Analytics />
   </head>
   <body class="horizon-walker-body">
     <CustomScrollbar />
-    <!-- Optimized Background layers for better scroll performance -->
     <div class="bg-layer hw-bg-primary"></div>
     <div class="bg-layer hw-bg-accent-1"></div>
     <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
 
     <div class="horizon-walker-content">
       <Header />
@@ -49,45 +47,37 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">
-          <!-- Horizon Walker Hero Section -->
           {
             heroImage && gameTitle && (
               <section class="hero-section">
-                {/* Hero Image Container */}
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
-                    <GameImage
-                      imageName={heroImage}
+                    <Image
+                      src={heroImage}
                       alt={gameTitle}
                       class="hero-image"
                       width={1200}
                       height={400}
                       loading="eager"
+                      decoding="async"
                     />
-                    {/* Overlay Gradient */}
                     <div class="hero-overlay" />
                   </div>
                 </div>
-
-                {/* Game Title */}
                 <h1 class="hero-title">{gameTitle}</h1>
-                {/* Decorative Elements */}
                 <DecorativeLines />
               </section>
             )
           }
-          <!-- Title Only Section (when no hero image) -->
           {
             !heroImage && gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
-
                 <DecorativeLines />
               </section>
             )
           }
 
-          <!-- Breadcrumb Navigation -->
           <Breadcrumb
             autoGenerate={true}
             gameKey="horizon-walker"
@@ -95,7 +85,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
             showBackButton={true}
           />
 
-          <!-- Content Area -->
           <div class="content-area">
             <slot />
           </div>

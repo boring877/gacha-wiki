@@ -1,0 +1,61 @@
+---
+import { SITE_TITLE } from '../../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = 'Make Drama Wiki - Character Database, Guides & Info',
+} = Astro.props;
+
+const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Make Drama Wiki`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta name="application-category" content="game" />
+<meta name="application-subcategory" content="rpg" />
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+
+<meta name="game:title" content="Make Drama: M.A.D" />
+<meta name="game:genre" content="Action Defense RPG, Gacha, Strategy" />
+<meta name="game:platform" content="Android, iOS" />
+<meta name="game:developer" content="Wemade Connect" />
+<meta name="game:publisher" content="Wemade Connect" />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Make Drama: M.A.D',
+    description: 'Mobile Action Defense RPG by Wemade Connect. Collect unique characters across 4 factions with strategic combat.',
+    genre: ['Action Defense RPG', 'Gacha', 'Strategy'],
+    applicationCategory: 'Game',
+    operatingSystem: 'Android, iOS',
+    playMode: 'SinglePlayer',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Wemade Connect',
+    },
+    url: canonicalURL,
+  })}
+/>

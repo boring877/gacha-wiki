@@ -8,6 +8,8 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/star-savior/Breadcrumb.astro';
+import { Image } from 'astro:assets';
 
 import '../../styles/games/star-savior/ss-colors.css';
 import '../../styles/global.css';
@@ -19,11 +21,10 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
-  heroSlot?: string;
+  heroImage?: any;
 }
 
-const { title, description, gameTitle, heroImage, heroSlot } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 const seoTitle = `${title} | Star Savior`;
 const seoDescription = description || 'Complete guide for Star Savior. Character database, equipment, builds, and strategy.';
 ---
@@ -36,9 +37,10 @@ const seoDescription = description || 'Complete guide for Star Savior. Character
   </head>
   <body class="ss-body">
     <CustomScrollbar />
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer ss-bg-primary"></div>
+    <div class="bg-layer ss-bg-accent-1"></div>
+    <div class="bg-layer ss-bg-accent-2"></div>
+    <div class="bg-layer ss-bg-accent-3"></div>
 
     <div class="ss-content">
       <Header />
@@ -46,21 +48,29 @@ const seoDescription = description || 'Complete guide for Star Savior. Character
       <MobileMenu />
 
       <div class="ss-container">
-        <main class="ss-main">
-          {(heroImage || heroSlot) && (
-            <section class="hero-section">
-              {heroSlot ? (
-                <slot name="hero" />
-              ) : (
-                <img
-                  src={heroImage}
-                  alt={gameTitle || 'Game'}
-                  class="hero-image"
-                  loading="eager"
-                />
-              )}
-            </section>
-          )}
+        <main class="ss-main" id="main-content">
+          {
+            heroImage && gameTitle && (
+              <section class="hero-section">
+                <div class="hero-image-wrapper">
+                  <div class="hero-image-container">
+                    <Image
+                      src={heroImage}
+                      alt={gameTitle}
+                      class="hero-image"
+                      width={1200}
+                      height={400}
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div class="hero-overlay" />
+                  </div>
+                </div>
+                <h1 class="hero-title">{gameTitle}</h1>
+                <DecorativeLines />
+              </section>
+            )
+          }
 
           {!heroImage && gameTitle && (
             <section class="ss-title-only-section">
@@ -68,6 +78,8 @@ const seoDescription = description || 'Complete guide for Star Savior. Character
               <DecorativeLines />
             </section>
           )}
+
+          <Breadcrumb autoGenerate={true} gameKey="star-savior" showBackButton={true} />
 
           <div class="content-area">
             <slot />
@@ -77,7 +89,5 @@ const seoDescription = description || 'Complete guide for Star Savior. Character
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

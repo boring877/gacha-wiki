@@ -9,8 +9,8 @@ import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import { Image } from 'astro:assets';
 import Analytics from '../../components/Analytics.astro';
-import GameImage from '../../components/rebellion-gilgamesh/GameImage.astro';
 
 import '../../styles/games/rebellion-gilgamesh/rg-colors.css';
 import '../../styles/global.css';
@@ -22,7 +22,7 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
+  heroImage?: any;
 }
 
 const { title, description, gameTitle, heroImage } = Astro.props;
@@ -33,9 +33,14 @@ const { title, description, gameTitle, heroImage } = Astro.props;
     <RGBaseHead title={title} description={description} />
     <slot name="head" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <Analytics />
   </head>
   <body class="rg-body">
     <CustomScrollbar />
+    <div class="bg-layer rg-bg-primary"></div>
+    <div class="bg-layer rg-bg-accent-1"></div>
+    <div class="bg-layer rg-bg-accent-2"></div>
+    <div class="bg-layer rg-bg-accent-3"></div>
 
     <div class="rg-content">
       <Header />
@@ -43,22 +48,13 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="rg-container">
-        <main class="rg-main">
+        <main class="rg-main" id="main-content">
           {
             heroImage && gameTitle && (
               <section class="hero-section">
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
-                    <GameImage
-                      imageName={heroImage}
-                      alt={gameTitle}
-                      class="hero-image"
-                      width={1200}
-                      height={400}
-                      loading="eager"
-                      format="webp"
-                      quality={85}
-                    />
+                    <Image src={heroImage} alt={gameTitle} class="hero-image" width={1200} height={400} loading="eager" decoding="async" />
                     <div class="hero-overlay" />
                   </div>
                 </div>
@@ -91,7 +87,5 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

@@ -1,51 +1,63 @@
 /* Rebellion Gilgamesh Layout Styles */
-/* Base layout, hero sections, and shared elements */
 
 .rg-body {
-  background: var(--rg-bg-gradient-primary);
+  background: #1a1a1a;
   color: var(--rg-text-secondary);
   min-height: 100vh;
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   letter-spacing: var(--tracking-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.rg-bg-primary {
+  background: #1e1e1e;
+}
+
+.rg-bg-accent-1 {
+}
+
+.rg-bg-accent-2 {
+}
+
+.rg-bg-accent-3 {
 }
 
 .rg-content {
   position: relative;
   z-index: 10;
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.rg-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  padding-bottom: 2rem;
-  flex: 1 0 auto;
 }
 
 .rg-content > footer {
   flex-shrink: 0;
 }
 
-.rg-main {
-  width: 100%;
+.rg-container {
   position: relative;
   max-width: 75rem;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
-/* Hero section */
+.rg-main {
+  width: 100%;
+  position: relative;
+}
+
 .hero-section {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 3rem 1rem;
 }
 
 .hero-image-wrapper {
@@ -56,17 +68,19 @@
 .hero-image-container {
   width: 100%;
   max-width: 60rem;
-  height: 25rem;
+  height: auto;
   border-radius: 1rem;
   overflow: hidden;
   margin: 0 auto;
   position: relative;
+  border: 2px solid rgba(194, 107, 107, 0.5);
 }
 
 .hero-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-overlay {
@@ -74,8 +88,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
-  background: linear-gradient(transparent, rgba(26, 10, 10, 0.9));
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 10, 10, 0.5) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .hero-title {
@@ -87,12 +102,10 @@
   color: var(--rg-primary);
 }
 
-/* Title only section */
 .rg-title-only-section {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem 1rem 1rem;
-  position: relative;
+  padding: 2rem 0;
 }
 
 .rg-title-only-heading {
@@ -105,44 +118,22 @@
   color: var(--rg-primary);
 }
 
-/* Content area */
 .content-area {
   width: 100%;
   position: relative;
 }
 
-/* Shared section styles */
-.content-section {
-  margin-bottom: 3rem;
-  background: var(--rg-bg-card);
-  border: 1px solid var(--rg-border);
-  border-radius: 16px;
-  padding: 2rem;
-}
-
-.section-title {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-semibold);
-  font-family: var(--font-display);
-  color: var(--rg-accent);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: var(--leading-tight);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .rg-main {
-    padding: 1rem 0;
+    padding: 0;
   }
 
   .hero-section {
-    padding: 2rem 1rem 3rem 1rem;
     margin-bottom: 2rem;
+    padding: 0 1rem;
   }
 
   .hero-image-container {
-    height: 15rem;
     border-radius: 12px;
     margin: 0 1rem;
   }
@@ -155,23 +146,13 @@
     font-size: var(--text-3xl);
   }
 
-  .content-section {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .section-title {
-    font-size: var(--text-2xl);
+  .rg-container {
+    padding: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .rg-main {
-    padding: 0.5rem 0;
-  }
-
   .hero-image-container {
-    height: 12rem;
     border-radius: 8px;
     margin: 0 0.5rem;
   }
@@ -181,27 +162,19 @@
   }
 
   .hero-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
     margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
   }
 
   .rg-title-only-heading {
     font-size: var(--text-2xl);
   }
 
-  .content-section {
-    padding: 1rem;
-    margin-bottom: 1.25rem;
-    border-radius: 12px;
-  }
-
-  .section-title {
-    font-size: var(--text-lg);
-    margin-bottom: 1rem;
+  .rg-container {
+    padding: 0.75rem;
   }
 }
 
-/* Breadcrumb Navigation */
 .rg-breadcrumb {
   margin-bottom: 2rem;
   max-width: 75rem;

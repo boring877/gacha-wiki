@@ -12,10 +12,9 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
-import GameImage from '../../components/stella-sora/GameImage.astro';
+import { Image } from 'astro:assets';
 import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 
-// Import CSS files
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
@@ -26,7 +25,7 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
+  heroImage?: any;
   breadcrumbs?: { name: string; url: string }[];
 }
 
@@ -35,7 +34,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description} image={heroImage} />
+    <SSBaseHead title={title} description={description} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
     <Analytics />
@@ -43,7 +42,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <body class="stella-sora-body">
     <CustomScrollbar />
 
-    <!-- Background layers for visual depth -->
     <div class="bg-layer ss-bg-primary"></div>
     <div class="bg-layer ss-bg-accent-1"></div>
     <div class="bg-layer ss-bg-accent-2"></div>
@@ -55,23 +53,13 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="stella-sora-container">
-        <main class="stella-sora-main">
-          <!-- Hero Section -->
+        <main class="stella-sora-main" id="main-content">
           {
             heroImage && gameTitle && (
               <section class="hero-section">
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
-                    <GameImage
-                      imageName={heroImage}
-                      alt={gameTitle}
-                      class="hero-image"
-                      width={1200}
-                      height={400}
-                      loading="eager"
-                      format="webp"
-                      quality={85}
-                    />
+                    <Image src={heroImage} alt={gameTitle} class="hero-image" width={1200} height={400} loading="eager" decoding="async" />
                     <div class="hero-overlay" />
                   </div>
                 </div>
@@ -84,7 +72,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
             )
           }
 
-          <!-- Title Only Section -->
           {
             !heroImage && gameTitle && (
               <section class="title-only-section">
@@ -94,10 +81,8 @@ const { title, description, gameTitle, heroImage } = Astro.props;
             )
           }
 
-          <!-- Breadcrumb Navigation -->
           <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={true} />
 
-          <!-- Content Area -->
           <div class="content-area">
             <slot />
           </div>

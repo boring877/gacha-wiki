@@ -88,20 +88,16 @@ export const rebellionGilgameshConfig = {
     },
   ],
 
-  // Future category groups (when content is ready)
   categoryGroups: [
     {
       id: 'characters',
       title: 'Characters',
       emoji: '',
-      description: 'Character database with stats, skills, and lore',
-      size: 'large',
+      description: 'Character database and buff/debuff reference',
+      size: 'small',
       guides: [
-        {
-          id: 'characters',
-          title: 'Character Database',
-          url: '/guides/rebellion-gilgamesh/characters/',
-        },
+        { id: 'characters', title: 'Database', url: '/guides/rebellion-gilgamesh/characters/' },
+        { id: 'buff-debuff', title: 'Buffs & Debuffs', url: '/guides/rebellion-gilgamesh/buff-debuff/' },
       ],
     },
     {
@@ -109,13 +105,9 @@ export const rebellionGilgameshConfig = {
       title: 'Equipment',
       emoji: '',
       description: 'Equipment database with stats and scaling',
-      size: 'medium',
+      size: 'small',
       guides: [
-        {
-          id: 'equipment',
-          title: 'Equipment Database',
-          url: '/guides/rebellion-gilgamesh/equipment/',
-        },
+        { id: 'equipment', title: 'Database', url: '/guides/rebellion-gilgamesh/equipment/' },
       ],
     },
   ],

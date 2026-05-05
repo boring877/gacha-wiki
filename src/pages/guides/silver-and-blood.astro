@@ -2,6 +2,7 @@
 import SilverAndBloodLandingLayout from '../../layouts/silver-and-blood/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blood.js';
+import heroImg from '../../assets/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg';
 
 // Extract data for easier use in template
 const { meta, gameInfo, storyContent, categoryGroups } = silverAndBloodConfig;
@@ -17,7 +18,7 @@ const breadcrumbs = [
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={meta.heroImage}
+  heroImage={heroImg}
   breadcrumbs={breadcrumbs}
 >
   <!-- Enhanced SEO Meta Tags -->
@@ -128,7 +129,6 @@ const breadcrumbs = [
         categoryGroups.map(category => (
           <div class={`sab-resource-category sab-category-${category.size}`}>
             <div class="sab-category-header">
-              <span class="sab-category-emoji">{category.emoji}</span>
               <h3>{category.title}</h3>
               <p class="sab-category-description">{category.description}</p>
             </div>

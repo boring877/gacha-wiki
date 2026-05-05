@@ -25,7 +25,7 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
+  heroImage?: any;
 }
 
 const { title, description, gameTitle, heroImage } = Astro.props;
@@ -38,7 +38,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       gameKey="zone-nova"
       title={title}
       description={description}
-      customImage={heroImage || '/images/games/zone-nova/zonenova.jpg'}
+      customImage="/images/games/zone-nova/zonenova.jpg"
     />
     <slot name="head" />
   </head>
@@ -56,7 +56,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="zone-nova-container">
-        <main class="zone-nova-main">
+        <main class="zone-nova-main" id="main-content">
           <!-- Zone Nova Hero Section -->
           {
             heroImage && gameTitle && (

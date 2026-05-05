@@ -1,0 +1,79 @@
+---
+import MakeDramaLayout from '../../../../layouts/make-drama/LandingLayout.astro';
+import MDCharacterImage from '../../../../components/make-drama/MDCharacterImage.astro';
+import { MAKE_DRAMA_CHARACTERS, MAKE_DRAMA_FACTIONS } from '../../../../data/make-drama/characters.js';
+
+const characters = MAKE_DRAMA_CHARACTERS;
+const factions = MAKE_DRAMA_FACTIONS;
+---
+
+<MakeDramaLayout
+  title="Character Database - Make Drama"
+  description="Complete character database for Make Drama: M.A.D. Browse all 10 revealed characters with faction, element, and role info."
+  gameTitle="Characters"
+>
+  <section class="md-content-section">
+    <div class="md-toolbar">
+      <input type="text" class="md-search" placeholder="Search characters..." id="md-search" />
+      <button class="md-filter-btn active" data-filter="all">All</button>
+      {factions.map(f => (
+        <button class="md-filter-btn" data-filter={f.id}>{f.name}</button>
+      ))}
+      <span class="md-count" id="md-count">{characters.length} characters</span>
+    </div>
+
+    <div class="md-char-grid" id="md-char-grid">
+      {characters.map(char => (
+        <a href={`/guides/make-drama/characters/${char.slug}/`} class="md-char-card" data-faction={char.faction} data-name={char.name.toLowerCase()}>
+          <div class="md-char-card-header">
+            <MDCharacterImage filename={char.thumbnail} alt={char.name} class="md-char-avatar" />
+            <div class="md-char-info">
+              <p class="md-char-name">{char.name}</p>
+              <p class="md-char-meta">
+                <span class="md-badge md-badge-faction">{char.factionName}</span>
+                <span class="md-badge md-badge-element">{char.element}</span>
+                <span class="md-badge md-badge-role">{char.role}</span>
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</MakeDramaLayout>
+
+<script>
+  const search = document.getElementById('md-search') as HTMLInputElement;
+  const grid = document.getElementById('md-char-grid');
+  const countEl = document.getElementById('md-count');
+  const filterBtns = document.querySelectorAll('.md-filter-btn');
+
+  function updateDisplay() {
+    const query = search.value.toLowerCase();
+    const activeFilter = document.querySelector('.md-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    const cards = grid?.querySelectorAll('.md-char-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const name = card.dataset.name || '';
+      const faction = card.dataset.faction || '';
+      const matchesSearch = name.includes(query);
+      const matchesFilter = activeFilter === 'all' || faction === activeFilter;
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} character${visible !== 1 ? 's' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

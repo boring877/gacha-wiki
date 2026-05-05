@@ -1,142 +1,115 @@
 /* Star Savior Layout Styles */
-/* Base layout, hero sections, and shared elements for space theme */
+
+.ss-body {
+  background: #0d1220;
+  color: var(--ss-text-primary);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.ss-bg-primary {
+  background: #0d1220;
+}
+
+.ss-bg-accent-1 {
+}
+
+.ss-bg-accent-2 {
+}
+
+.ss-bg-accent-3 {
+}
+
+.ss-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+}
+
+.ss-container {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  max-width: 60rem;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid rgba(201, 168, 76, 0.5);
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(to top, rgba(10, 14, 26, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--ss-primary, #c9a84c);
+  margin: 0;
+}
 
 .ss-title-only-section {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem 1rem 1rem;
-  position: relative;
+  padding: 2rem 0;
 }
 
 .ss-title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: 700;
-  color: var(--ss-primary);
-  margin: 0 0 2rem 0;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-}
-
-.ss-body {
-  background: var(--ss-bg-primary);
-  color: var(--ss-text-primary);
-  min-height: 100vh;
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-}
-
-.bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-}
-
-.bg-primary {
-  background: linear-gradient(
-    135deg,
-    var(--ss-bg-primary) 0%,
-    var(--ss-bg-secondary) 50%,
-    var(--ss-bg-primary) 100%
-  );
-}
-
-.bg-accent-1 {
-  background: radial-gradient(circle at 20% 80%, rgba(91, 74, 158, 0.08), transparent);
-  pointer-events: none;
-}
-
-.bg-accent-2 {
-  background: radial-gradient(circle at 80% 20%, rgba(42, 58, 110, 0.06), transparent);
-  pointer-events: none;
-}
-
-.ss-content {
-  position: relative;
-  z-index: 1;
-  isolation: isolate;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.ss-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  padding-bottom: 2rem;
-  flex: 1 0 auto;
-}
-
-.ss-content > footer {
-  flex-shrink: 0;
-}
-
-.ss-main {
-  width: 100%;
-  position: relative;
-  isolation: isolate;
-}
-
-.hero-section {
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
-}
-
-.hero-title {
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  font-family: var(--font-display);
-  color: var(--ss-primary);
-  margin: 0;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  color: var(--ss-primary, #c9a84c);
 }
 
 .content-area {
   width: 100%;
   position: relative;
-  isolation: isolate;
-  background: transparent;
-}
-
-.content-section {
-  margin-bottom: 3rem;
-  background: var(--ss-bg-card);
-  border: 1px solid var(--ss-border);
-  border-radius: 16px;
-  padding: 2rem;
-}
-
-.section-title {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-semibold);
-  font-family: var(--font-display);
-  color: var(--ss-primary-light);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
 }
 
 .game-description {
   font-size: var(--text-lg);
   font-family: var(--font-primary);
   line-height: var(--leading-relaxed);
-  color: var(--ss-text-secondary);
+  color: #b0b0b0;
   margin-bottom: 2rem;
   text-align: center;
   max-width: 800px;
@@ -144,102 +117,44 @@
   margin-right: auto;
 }
 
-.play-button-container {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.play-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--ss-gradient-primary);
-  color: var(--ss-text-primary);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: var(--font-semibold);
-  font-size: var(--text-lg);
-  border: none;
-  cursor: pointer;
-}
-
-.play-arrow {
-  font-size: 1.2rem;
-}
-
-.last-updated {
-  text-align: center;
-  color: var(--ss-text-muted);
-  font-size: var(--text-sm);
-  margin-top: 1.5rem;
-  font-style: italic;
-}
-
 @media (max-width: 768px) {
-  .ss-container {
-    padding: 0 15px;
+  .hero-image-container {
+    border-radius: 12px;
+    margin: 0 1rem;
   }
 
   .hero-section {
     margin-bottom: 2rem;
+    padding: 0 1rem;
   }
 
-  .hero-image {
-    border-radius: 12px;
-    margin-bottom: 1rem;
+  .ss-container {
+    padding: 1rem;
   }
 
-  .hero-title {
-    font-size: var(--text-3xl);
-  }
-
+  .hero-title,
   .ss-title-only-heading {
     font-size: var(--text-3xl);
-  }
-
-  .content-section {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .section-title {
-    font-size: var(--text-2xl);
-  }
-
-  .game-description {
-    font-size: var(--text-base);
   }
 }
 
 @media (max-width: 480px) {
-  .ss-container {
-    padding: 0 12px;
+  .hero-image-container {
+    border-radius: 8px;
+    margin: 0 0.5rem;
   }
 
+  .hero-section {
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .ss-container {
+    padding: 0.75rem;
+  }
+
+  .hero-title,
   .ss-title-only-heading {
     font-size: var(--text-2xl);
-    margin-bottom: 1.5rem;
-  }
-
-  .content-section {
-    padding: 1rem;
-    margin-bottom: 1.25rem;
-    border-radius: 12px;
-  }
-
-  .section-title {
-    font-size: var(--text-lg);
-    margin-bottom: 1rem;
-  }
-
-  .game-description {
-    font-size: var(--text-sm);
-  }
-
-  .play-button {
-    padding: 0.75rem 1.5rem;
-    font-size: var(--text-base);
-    border-radius: 8px;
   }
 }

@@ -2,18 +2,17 @@
 import BustyBurstLandingLayout from '../../layouts/busty-burst/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
+import heroImg from '../../assets/images/games/Busty_Burst/BG/gameLogo.webp';
 
-// Extract data for easier use in template
-const { meta, gameInfo, gameNotes } = bustyBurstConfig;
+const { meta, gameInfo, gameNotes, categoryGroups } = bustyBurstConfig;
 ---
 
 <BustyBurstLandingLayout
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={meta.heroImage}
+  heroImage={heroImg}
 >
-  <!-- Structured Data for Busty Burst Fantasy -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,7 +33,6 @@ const { meta, gameInfo, gameNotes } = bustyBurstConfig;
     }
   </script>
 
-  <!-- Game-specific structured data -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -55,7 +53,6 @@ const { meta, gameInfo, gameNotes } = bustyBurstConfig;
     }
   </script>
 
-  <!-- Game Overview Section -->
   <section class="content-section">
     <div class="game-description">
       <p>
@@ -65,17 +62,14 @@ const { meta, gameInfo, gameNotes } = bustyBurstConfig;
       </p>
     </div>
 
-    <!-- Play Game Button -->
     <div class="play-button-container">
       <a href={gameInfo.playUrl} target="_blank" class="play-button">
-        Play Busty Burst Fantasy
+        Download & Play Busty Burst Fantasy
         <span class="play-arrow">→</span>
       </a>
     </div>
 
-    <!-- Social Links -->
     <div class="bb-social-links-container">
-      <h4>Game Social:</h4>
       <div class="bb-social-links">
         <a
           href={gameInfo.discordUrl}
@@ -94,7 +88,6 @@ const { meta, gameInfo, gameNotes } = bustyBurstConfig;
     </p>
   </section>
 
-  <!-- Game Notes Section -->
   <section class="game-notes-section">
     <h2 class="game-notes-title">{gameNotes.title}</h2>
     <div class="game-notes-list">
@@ -109,86 +102,31 @@ const { meta, gameInfo, gameNotes } = bustyBurstConfig;
     </div>
   </section>
 
-  <!-- Resources Section -->
-  <section class="content-section">
+  <section class="bb-resources-section">
     <h2 class="bb-resources-title">Guides & Resources</h2>
 
     <div class="bb-resources-grid">
-      <div class="bb-resource-category">
-        <h3>Characters</h3>
-        <div class="bb-buttons-grid">
-          <a href="/guides/busty-burst/characters/" class="bb-resource-button">Database</a>
-          <a href="/guides/busty-burst/character-info/" class="bb-resource-button">Profiles & VAs</a
-          >
-          <a href="/guides/busty-burst/character-skills/" class="bb-resource-button">Skills</a>
-          <a href="/guides/busty-burst/character-stats/" class="bb-resource-button">Stats</a>
-          <a href="/guides/busty-burst/skill-formulas/" class="bb-resource-button">Skill Formulas</a
-          >
-          <a href="/guides/busty-burst/support-stats/" class="bb-resource-button">Support Stats</a>
-          <a href="/guides/busty-burst/support-bonus/" class="bb-resource-button">Support Bonus</a>
-          <a href="/guides/busty-burst/support-tier-list/" class="bb-resource-button"
-            >Support Tier List</a
-          >
-          <a href="/guides/busty-burst/tier-list#tier-list" class="bb-resource-button">Tier List</a>
-          <a href="/guides/busty-burst/build" class="bb-resource-button">Build</a>
-        </div>
-      </div>
-      <div class="bb-resource-category">
-        <h3>Equipment</h3>
-        <div class="bb-buttons-grid">
-          <a href="/guides/busty-burst/weapons" class="bb-resource-button">Weapons</a>
-          <a href="/guides/busty-burst/best-weapons" class="bb-resource-button">Best Weapons</a>
-          <a href="/guides/busty-burst/character-weapons" class="bb-resource-button">Char Weapons</a
-          >
-          <a href="/guides/busty-burst/accessory-stats" class="bb-resource-button"
-            >Accessory Stats</a
-          >
-          <a href="/guides/busty-burst/accessory-items" class="bb-resource-button"
-            >Accessory Items</a
-          >
-          <a href="/guides/busty-burst/accessory-guide" class="bb-resource-button"
-            >Accessory Guide</a
-          >
-          <a href="/guides/busty-burst/raid-drops" class="bb-resource-button">Raid Drops</a>
-        </div>
-      </div>
-      <div class="bb-resource-category">
-        <h3>Mechanics</h3>
-        <div class="bb-buttons-grid">
-          <a href="/guides/busty-burst/buff-debuff-guide" class="bb-resource-button"
-            >Buff & Debuff System</a
-          >
-          <a href="/guides/busty-burst/physical-defense-down" class="bb-resource-button"
-            >Physical DEF Down</a
-          >
-          <a href="/guides/busty-burst/magic-defense-down" class="bb-resource-button"
-            >Magic DEF Down</a
-          >
-          <a href="/guides/busty-burst/element-defense-down" class="bb-resource-button"
-            >Element DEF Down</a
-          >
-          <a href="/guides/busty-burst/team-builder" class="bb-resource-button">Team Builder</a>
-        </div>
-      </div>
-      <div class="bb-resource-category">
-        <h3>Events</h3>
-        <div class="bb-buttons-grid">
-          <a href="/guides/busty-burst/banner-timeline" class="bb-resource-button"
-            >Banner Timeline</a
-          >
-          <a href="/guides/busty-burst/limited-time-challenges/" class="bb-resource-button"
-            >Limited Time Challenges</a
-          >
-        </div>
-      </div>
-      <div class="bb-resource-category">
-        <h3>Resources</h3>
-        <div class="bb-buttons-grid">
-          <a href="/guides/busty-burst/blog/" class="bb-resource-button">Blog</a>
-          <a href="/clock/busty-burst/" class="bb-resource-button">Clock</a>
-          <a href="/guides/busty-burst/redeem-codes" class="bb-resource-button">Redeem Codes</a>
-        </div>
-      </div>
+      {
+        categoryGroups.map(category => (
+          <div class={`bb-resource-category bb-category-${category.size}`}>
+            <div class="bb-category-header">
+              <h3>{category.title}</h3>
+              <p class="bb-category-description">{category.description}</p>
+            </div>
+            <div class="bb-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="bb-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 </BustyBurstLandingLayout>

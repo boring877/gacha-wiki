@@ -1,10 +1,10 @@
 /* Taimanin Squad Layout Styles */
-/* Soft dark purple theme - simple, no flashy effects */
 
-/* Body styling */
 .taimanin-squad-body {
-  background: var(--ts-bg-gradient-primary);
-  color: var(--ts-text-secondary);
+  background: #0f0d12;
+  color: var(--text-inverse);
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -17,14 +17,39 @@
   --accent-hover: var(--ts-primary-hover);
 }
 
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg-primary {
+  background: #0f0d12;
+}
+
+.bg-accent-1 {
+  background: transparent;
+}
+
+.bg-accent-2 {
+  background: transparent;
+}
+
+.bg-accent-3 {
+  background: transparent;
+}
+
 .taimanin-squad-content {
   position: relative;
   z-index: 10;
+  flex: 1;
 }
 
-/* Container */
 .taimanin-squad-container {
   position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .taimanin-squad-main {
@@ -33,11 +58,26 @@
   padding: 2rem;
 }
 
-/* Hero section */
+.content-area {
+}
+
+.title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--ts-primary, #6b5b7a);
+  margin: 0;
+}
+
 .hero-section {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 3rem 1rem;
+  margin-bottom: 3rem;
 }
 
 .hero-image-wrapper {
@@ -48,71 +88,54 @@
 .hero-image-container {
   width: 100%;
   max-width: 60rem;
-  min-height: 20rem;
-  max-height: 40rem;
+  height: auto;
   border-radius: 1rem;
   overflow: hidden;
   margin: 0 auto;
   position: relative;
+  border: 2px solid var(--ts-primary, #6b5b7a);
 }
 
 .hero-image {
   width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
-  display: block;
 }
 
 .hero-overlay {
-  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.5) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .hero-title {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: var(--ts-font-bold);
+  font-weight: 700;
+  color: var(--ts-primary, #6b5b7a);
   margin: 0;
-  line-height: var(--leading-normal);
-  color: var(--ts-primary);
 }
 
-/* Title only section */
-.title-only-section {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 0;
-}
-
-.title-only-heading {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--ts-font-bold);
-  margin: 0;
-  line-height: var(--leading-normal);
-  color: var(--ts-primary);
-}
-
-/* Content area */
-.content-area {
-  position: relative;
-}
-
-/* Mobile responsive */
 @media (max-width: 768px) {
+  .taimanin-squad-container {
+    padding: 1rem;
+  }
+
   .taimanin-squad-main {
     padding: 1rem;
   }
 
-  .hero-section {
-    padding: 2rem 1rem 3rem 1rem;
-    margin-bottom: 2rem;
+  .hero-image-container {
+    border-radius: 12px;
   }
 
-  .hero-image-container {
-    min-height: 15rem;
-    max-height: 25rem;
-    border-radius: 12px;
-    margin: 0 1rem;
+  .hero-section {
+    margin-bottom: 2rem;
   }
 
   .hero-title {
@@ -120,7 +143,7 @@
   }
 
   .title-only-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    padding: 1.5rem 0;
   }
 
   .title-only-heading {
@@ -129,27 +152,35 @@
 }
 
 @media (max-width: 480px) {
+  .taimanin-squad-container {
+    padding: 0.75rem;
+  }
+
   .taimanin-squad-main {
-    padding: 0.5rem;
+    padding: 0.75rem;
   }
 
   .hero-image-container {
-    min-height: 12rem;
-    max-height: 20rem;
     border-radius: 8px;
-    margin: 0 0.5rem;
+  }
+
+  .hero-section {
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
     font-size: var(--text-2xl);
   }
 
-  .hero-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
   .title-only-heading {
     font-size: var(--text-2xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-wrapper,
+  .content-area,
+  .title-only-heading {
+    animation: none;
   }
 }

@@ -56,22 +56,15 @@ export const taimaninSquadConfig = {
   // Main Category Groups - Minimal for pre-registration phase
   categoryGroups: [
     {
-      id: 'getting-started',
-      title: 'Getting Started',
-      emoji: '',
-      description: 'Pre-registration info and game overview',
+      id: 'characters',
+      title: 'Characters',
+      description: 'Character database, lore, stats, and tier rankings',
       size: 'large',
       guides: [
         {
           id: 'characters',
           title: 'Database',
           url: '/guides/taimanin-squad/characters/',
-          external: false,
-        },
-        {
-          id: 'tier-list',
-          title: 'Tier List',
-          url: '/guides/taimanin-squad/tier-list/',
           external: false,
         },
         {
@@ -87,11 +80,45 @@ export const taimaninSquadConfig = {
           external: false,
         },
         {
+          id: 'tier-list',
+          title: 'Tier List',
+          url: '/guides/taimanin-squad/tier-list/',
+          external: false,
+        },
+      ],
+    },
+    {
+      id: 'equipment',
+      title: 'Equipment',
+      description: 'Weapons, skills, and artifacts',
+      size: 'medium',
+      guides: [
+        {
+          id: 'weapons',
+          title: 'Weapons',
+          url: '/guides/taimanin-squad/weapons/',
+          external: false,
+        },
+        {
           id: 'skills',
           title: 'Skills',
           url: '/guides/taimanin-squad/skills/',
           external: false,
         },
+        {
+          id: 'artifacts',
+          title: 'Artifacts',
+          url: '/guides/taimanin-squad/artifacts/',
+          external: false,
+        },
+      ],
+    },
+    {
+      id: 'guides',
+      title: 'Guides',
+      description: 'Game mechanics, skill index, and team building',
+      size: 'medium',
+      guides: [
         {
           id: 'skill-index',
           title: 'Skill Index',
@@ -116,25 +143,12 @@ export const taimaninSquadConfig = {
           url: '/guides/taimanin-squad/mechanics/',
           external: false,
         },
-        {
-          id: 'weapons',
-          title: 'Weapons',
-          url: '/guides/taimanin-squad/weapons/',
-          external: false,
-        },
-        {
-          id: 'artifacts',
-          title: 'Artifacts',
-          url: '/guides/taimanin-squad/artifacts/',
-          external: false,
-        },
       ],
     },
     {
       id: 'resources',
       title: 'Resources',
-      emoji: '',
-      description: 'Tools and useful links',
+      description: 'Blog, codes, and useful links',
       size: 'medium',
       guides: [
         {
@@ -149,12 +163,6 @@ export const taimaninSquadConfig = {
           url: '/guides/taimanin-squad/redeem-codes/',
           external: false,
         },
-        {
-          id: 'official-site',
-          title: 'Official Website',
-          url: 'https://taimaninsquad.com/',
-          external: true,
-        },
       ],
     },
   ],
@@ -164,8 +172,8 @@ export const taimaninSquadConfig = {
     {
       id: 'characters',
       title: 'Database',
-      emoji: '',
-      description: 'Complete character database with stats and skills.',
+
+           description: 'Complete character database with stats and skills.',
       url: '/guides/taimanin-squad/characters/',
       category: 'info',
       size: 'medium',
@@ -174,8 +182,8 @@ export const taimaninSquadConfig = {
     {
       id: 'tier-list',
       title: 'Tier List',
-      emoji: '',
-      description: 'Character tier rankings for Taimanin Squad PvE and PvP content.',
+
+           description: 'Character tier rankings for Taimanin Squad PvE and PvP content.',
       url: '/guides/taimanin-squad/tier-list/',
       category: 'info',
       size: 'medium',
@@ -184,8 +192,8 @@ export const taimaninSquadConfig = {
     {
       id: 'character-lore',
       title: 'Character Lore',
-      emoji: '',
-      description: 'Read the lore and backstories of all Taimanin Squad characters.',
+
+           description: 'Read the lore and backstories of all Taimanin Squad characters.',
       url: '/guides/taimanin-squad/character-lore/',
       category: 'info',
       size: 'medium',
@@ -194,8 +202,8 @@ export const taimaninSquadConfig = {
     {
       id: 'character-stats',
       title: 'Character Stats',
-      emoji: '',
-      description: 'View character stats by level including HP, ATK, DEF, SPD, and more.',
+
+           description: 'View character stats by level including HP, ATK, DEF, SPD, and more.',
       url: '/guides/taimanin-squad/character-stats/',
       category: 'info',
       size: 'medium',
@@ -204,8 +212,8 @@ export const taimaninSquadConfig = {
     {
       id: 'skills',
       title: 'Skills',
-      emoji: '',
-      description: 'Complete database of all character skills and abilities in Taimanin Squad.',
+
+           description: 'Complete database of all character skills and abilities in Taimanin Squad.',
       url: '/guides/taimanin-squad/skills/',
       category: 'info',
       size: 'medium',
@@ -214,8 +222,8 @@ export const taimaninSquadConfig = {
     {
       id: 'skill-index',
       title: 'Skill Index',
-      emoji: '',
-      description: 'Find characters by skill mechanic - Bleed, Poison, Shield, Extra Turn, and more for teambuilding.',
+
+           description: 'Find characters by skill mechanic - Bleed, Poison, Shield, Extra Turn, and more for teambuilding.',
       url: '/guides/taimanin-squad/skill-index/',
       category: 'info',
       size: 'medium',
@@ -224,8 +232,8 @@ export const taimaninSquadConfig = {
     {
       id: 'buff-debuff',
       title: 'Buffs & Debuffs',
-      emoji: '',
-      description: 'Complete reference for all buff and debuff status effects in Taimanin Squad.',
+
+           description: 'Complete reference for all buff and debuff status effects in Taimanin Squad.',
       url: '/guides/taimanin-squad/buff-debuff/',
       category: 'info',
       size: 'medium',
@@ -234,8 +242,8 @@ export const taimaninSquadConfig = {
     {
       id: 'mechanics',
       title: 'Game Mechanics',
-      emoji: '',
-      description: 'Complete guide to damage formulas, elements, classes, personalities, and stat systems.',
+
+           description: 'Complete guide to damage formulas, elements, classes, personalities, and stat systems.',
       url: '/guides/taimanin-squad/mechanics/',
       category: 'info',
       size: 'medium',
@@ -244,8 +252,8 @@ export const taimaninSquadConfig = {
     {
       id: 'bonds',
       title: 'Bonds & Synergy',
-      emoji: '',
-      description: 'Character bonds and team synergy combinations.',
+
+           description: 'Character bonds and team synergy combinations.',
       url: '/guides/taimanin-squad/bonds/',
       category: 'info',
       size: 'medium',
@@ -254,8 +262,8 @@ export const taimaninSquadConfig = {
     {
       id: 'weapons',
       title: 'Weapons',
-      emoji: '',
-      description: 'Complete weapon database and stats.',
+
+           description: 'Complete weapon database and stats.',
       url: '/guides/taimanin-squad/weapons/',
       category: 'info',
       size: 'medium',
@@ -264,8 +272,8 @@ export const taimaninSquadConfig = {
     {
       id: 'artifacts',
       title: 'Artifacts',
-      emoji: '',
-      description: 'Artifact database and best setups.',
+
+           description: 'Artifact database and best setups.',
       url: '/guides/taimanin-squad/artifacts/',
       category: 'info',
       size: 'medium',
@@ -274,8 +282,8 @@ export const taimaninSquadConfig = {
     {
       id: 'blog',
       title: 'Blog',
-      emoji: '',
-      description: 'Tips, strategies, news, and insights for Taimanin Squad players.',
+
+           description: 'Tips, strategies, news, and insights for Taimanin Squad players.',
       url: '/guides/taimanin-squad/blog/',
       category: 'resources',
       size: 'medium',
@@ -284,8 +292,8 @@ export const taimaninSquadConfig = {
     {
       id: 'redeem-codes',
       title: 'Redeem Codes',
-      emoji: '',
-      description: 'Active redeem codes for free rewards.',
+
+           description: 'Active redeem codes for free rewards.',
       url: '/guides/taimanin-squad/redeem-codes/',
       category: 'resources',
       size: 'medium',

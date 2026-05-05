@@ -1,0 +1,68 @@
+/* Make Drama Color System - Dark forest green theme */
+
+:root {
+  --md-primary: #34d399;
+  --md-primary-hover: #4ade80;
+  --md-primary-light: #6ee7b7;
+  --md-primary-dark: #10b981;
+
+  --md-secondary: #122a1c;
+  --md-secondary-hover: #1a3828;
+  --md-secondary-light: #224834;
+
+  --md-accent: #7eb8da;
+  --md-accent-hover: #98c8e4;
+  --md-accent-light: #b2d8f0;
+
+  --md-bg-primary: #070d0a;
+  --md-bg-secondary: #0c1410;
+  --md-bg-tertiary: #121c16;
+  --md-bg-card: #0f1813;
+  --md-bg-hover: #162118;
+
+  --md-text-primary: #e4f0ea;
+  --md-text-secondary: #9eb8aa;
+  --md-text-tertiary: #628070;
+  --md-text-muted: #3a5044;
+
+  --md-border: #1a2e22;
+  --md-border-light: #264030;
+  --md-border-dark: #121c16;
+
+  --md-success: #4caf50;
+  --md-warning: #ff9800;
+  --md-error: #ef5350;
+  --md-info: #42a5f5;
+
+  --md-faction-humanitas: #5b8dd9;
+  --md-faction-vermont: #ef5350;
+  --md-faction-sagunjwa: #66bb6a;
+  --md-faction-unclassifiable: #ab47bc;
+
+  --md-element-water: #42a5f5;
+  --md-element-nature: #66bb6a;
+  --md-element-fire: #ff7043;
+  --md-element-light: #ffd54f;
+  --md-element-dark: #ab47bc;
+  --md-element-ethereal: #80deea;
+
+  --md-gradient-primary: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-dark) 100%);
+  --md-gradient-secondary: linear-gradient(135deg, var(--md-secondary) 0%, var(--md-secondary-light) 100%);
+  --md-gradient-card: linear-gradient(135deg, var(--md-bg-card) 0%, var(--md-bg-secondary) 100%);
+}
+
+.md-card {
+  background: var(--md-gradient-card);
+  border: 1px solid var(--md-border);
+  border-radius: 12px;
+}
+
+.md-button {
+  background: var(--md-gradient-primary);
+  color: var(--md-bg-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -2,11 +2,10 @@
 import StellaSoraLandingLayout from '../../layouts/stella-sora/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
+import heroImg from '../../assets/images/games/stella-sora/gameimg/BG1.jpg';
 
-// Extract data for easier use in template
-const { meta, gameInfo, story } = stellaSoraConfig;
+const { meta, gameInfo, story, categoryGroups } = stellaSoraConfig;
 
-// Breadcrumb data for SEO
 const breadcrumbs = [
   { name: 'Guides', url: '/guides' },
   { name: 'Stella Sora', url: '/guides/stella-sora' },
@@ -17,7 +16,7 @@ const breadcrumbs = [
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={meta.heroImage}
+  heroImage={heroImg}
   breadcrumbs={breadcrumbs}
 >
   <!-- Comprehensive Structured Data for Stella Sora -->
@@ -148,14 +147,12 @@ const breadcrumbs = [
       {story.content.map(paragraph => <p>{paragraph}</p>)}
     </div>
 
-    <!-- Play Game Buttons -->
     <div class="play-button-container">
-      <a href={gameInfo.winUrl} target="_blank" class="play-button"> Win Client </a>
-      <a href={gameInfo.playUrl} target="_blank" class="play-button"> Play on Google Play </a>
-      <a href={gameInfo.iosUrl} target="_blank" class="play-button"> Play on App Store </a>
+      <a href={gameInfo.winUrl} target="_blank" class="play-button">Download & Play (Win) <span class="play-arrow">&rarr;</span></a>
+      <a href={gameInfo.playUrl} target="_blank" class="play-button">Download & Play (Android) <span class="play-arrow">&rarr;</span></a>
+      <a href={gameInfo.iosUrl} target="_blank" class="play-button">Download & Play (iOS) <span class="play-arrow">&rarr;</span></a>
     </div>
 
-    <!-- Social Links -->
     <div class="ss-social-links-container">
       <h4>Game Social:</h4>
       <div class="ss-social-links">
@@ -213,68 +210,28 @@ const breadcrumbs = [
   </section>
 
   <!-- Resources Section -->
-  <section class="content-section">
+  <section class="ss-resources-section">
     <h2 class="ss-resources-title">Resources</h2>
     <div class="ss-resources-grid">
-      <div class="ss-resource-category">
-        <h3>Characters</h3>
-        <div class="ss-buttons-grid">
-          <a href="/guides/stella-sora/characters/" class="ss-resource-button">Database</a>
-          <a href="/guides/stella-sora/tier-list/" class="ss-resource-button">Tier List</a>
-          <a href="/guides/stella-sora/character-info/" class="ss-resource-button">Profiles & VAs</a
-          >
-          <a href="/guides/stella-sora/character-skills/" class="ss-resource-button">Skills</a>
-          <a href="/guides/stella-sora/talents/" class="ss-resource-button">Talents</a>
-          <a href="/guides/stella-sora/character-upgrades/" class="ss-resource-button">Upgrades</a>
-          <a href="/guides/stella-sora/all-potentials/" class="ss-resource-button">Potentials</a>
-          <a href="/guides/stella-sora/character-stats/" class="ss-resource-button">Stats</a>
-          <a href="/guides/stella-sora/team-builds/" class="ss-resource-button">Team Builds</a>
+      {categoryGroups.map(category => (
+        <div class={`ss-resource-category ss-category-${category.size}`}>
+          <div class="ss-category-header">
+            <h3>{category.title}</h3>
+            <p class="ss-category-description">{category.description}</p>
+          </div>
+          <div class="ss-buttons-grid">
+            {category.guides.map(guide => (
+              <a
+                href={guide.url}
+                class="ss-resource-button"
+                aria-label={`Navigate to ${guide.title}`}
+              >
+                {guide.title}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-      <div class="ss-resource-category">
-        <h3>Equipment</h3>
-        <div class="ss-buttons-grid">
-          <a href="/guides/stella-sora/discs/" class="ss-resource-button">Discs</a>
-          <a href="/guides/stella-sora/disc-skills/" class="ss-resource-button">Disc Skills</a>
-          <a href="/guides/stella-sora/disc-stats/" class="ss-resource-button">Disc Stats</a>
-          <a href="/guides/stella-sora/disc-upgrades/" class="ss-resource-button">Disc Upgrades</a>
-          <a href="/guides/stella-sora/support-notes/" class="ss-resource-button">Support Notes</a>
-          <a href="/guides/stella-sora/emblem-stats/" class="ss-resource-button">Emblem Stats</a>
-          <a href="/guides/stella-sora/materials-database/" class="ss-resource-button">Materials</a>
-        </div>
-      </div>
-      <div class="ss-resource-category">
-        <h3>Dating</h3>
-        <div class="ss-buttons-grid">
-          <a href="/guides/stella-sora/dating/" class="ss-resource-button">Dating Events</a>
-          <a href="/guides/stella-sora/gifts/" class="ss-resource-button">Gifts</a>
-          <a href="/guides/stella-sora/character-gifts/" class="ss-resource-button"
-            >Character Gifts</a
-          >
-        </div>
-      </div>
-      <div class="ss-resource-category">
-        <h3>Events</h3>
-        <div class="ss-buttons-grid">
-          <a href="/guides/stella-sora/events/" class="ss-resource-button">Events</a>
-          <a href="/guides/stella-sora/shop-events/" class="ss-resource-button">Shop Events</a>
-          <a href="/guides/stella-sora/banner-timeline/" class="ss-resource-button"
-            >Banner Timeline</a
-          >
-        </div>
-      </div>
-      <div class="ss-resource-category">
-        <h3>Resources</h3>
-        <div class="ss-buttons-grid">
-          <a href="/guides/stella-sora/blog/" class="ss-resource-button">Blog</a>
-          <a href="/guides/stella-sora/ascension-qa/" class="ss-resource-button">Ascension Q&A</a>
-          <a href="/guides/stella-sora/exclusive-items/" class="ss-resource-button"
-            >Exclusive Items</a
-          >
-          <a href="/clock/stella-sora/" class="ss-resource-button">Clock</a>
-          <a href="/guides/stella-sora/redeem-codes/" class="ss-resource-button">Redeem Codes</a>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 </StellaSoraLandingLayout>

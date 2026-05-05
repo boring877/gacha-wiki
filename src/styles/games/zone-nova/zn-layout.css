@@ -1,55 +1,46 @@
 /* Zone Nova Layout Styles */
-/* Base layout, hero sections, and shared animations */
 
-/* Body Styles */
 .zone-nova-body {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-  color: var(--text-primary);
+  background: #1a1a1a;
+  color: var(--text-inverse);
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-/* Zone Nova Theme Variants */
-.zone-nova-body.dark-theme {
-  color: var(--zn-text-primary);
-}
-
-.zone-nova-body.light-theme {
-  color: var(--text-primary);
-}
-
-/* Background Layers - Similar to Landing Page */
 .bg-layer {
   position: fixed;
   inset: 0;
+  z-index: -1;
 }
 
 .bg-primary {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2a2a 50%, var(--bg-dark) 100%);
+  background: #1a1a1a;
 }
 
 .bg-accent-1 {
-  background: radial-gradient(circle at 20% 80%, rgba(164, 120, 100, 0.1), transparent);
-  pointer-events: none;
+  background: transparent;
 }
 
 .bg-accent-2 {
-  background: radial-gradient(circle at 80% 20%, rgba(255, 183, 77, 0.08), transparent);
-  pointer-events: none;
+  background: transparent;
 }
 
 .bg-accent-3 {
-  background: radial-gradient(circle at 50% 50%, rgba(0, 172, 193, 0.05), transparent);
-  pointer-events: none;
+  background: transparent;
 }
 
 .zone-nova-content {
   position: relative;
   z-index: 10;
+  flex: 1;
 }
 
-/* Container Styles */
 .zone-nova-container {
   position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .zone-nova-main {
@@ -58,56 +49,49 @@
   padding: 2rem;
 }
 
-/* Content Area */
 .content-area {
 }
 
-/* Title Only Section */
 .title-only-section {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 2rem 1rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
 }
 
 .title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  color: var(--amber-glow);
-  margin: 0 0 2rem 0;
-  line-height: var(--leading-tight);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  font-weight: 700;
+  color: var(--zn-primary, #ffb74d);
+  margin: 0;
 }
 
-/* Hero Section Styles */
 .hero-section {
   text-align: center;
-  margin-bottom: 4rem;
-  padding: 3rem 1rem;
+  margin-bottom: 3rem;
 }
 
 .hero-image-wrapper {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .hero-image-container {
   width: 100%;
   max-width: 60rem;
-  height: 25rem;
-  border-radius: 20px;
+  height: auto;
+  border-radius: 1rem;
   overflow: hidden;
   margin: 0 auto;
   position: relative;
+  border: 2px solid var(--zn-primary, #ffb74d);
 }
 
 .hero-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-overlay {
@@ -115,36 +99,34 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50%;
-  background: linear-gradient(transparent, rgba(28, 28, 28, 0.8));
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.5) 0%, transparent 100%);
   pointer-events: none;
 }
 
 .hero-title {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-  color: var(--amber-glow);
-  margin: 0 0 2rem 0;
-  line-height: var(--leading-tight);
+  font-weight: 700;
+  color: var(--zn-primary, #ffb74d);
+  margin: 0;
 }
 
-/* Animation Keyframes */
-
-/* Mobile Optimizations */
 @media (max-width: 768px) {
+  .zone-nova-container {
+    padding: 1rem;
+  }
+
   .zone-nova-main {
     padding: 1rem;
   }
 
-  .hero-section {
-    padding: 2rem 1rem 3rem 1rem;
+  .hero-image-container {
+    border-radius: 12px;
   }
 
-  .hero-image-container {
-    height: 15rem;
-    max-width: 100%;
-    margin: 0;
+  .hero-section {
+    margin-bottom: 2rem;
   }
 
   .hero-title {
@@ -152,49 +134,40 @@
   }
 
   .title-only-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
+    padding: 1.5rem 0;
   }
 
   .title-only-heading {
     font-size: var(--text-3xl);
-    white-space: normal;
-  }
-
-  /* Reduce background complexity on mobile for better performance */
-  .bg-accent-2,
-  .bg-accent-3 {
-    display: none;
-  }
-
-  .bg-accent-1 {
-    opacity: 0.5;
   }
 }
 
 @media (max-width: 480px) {
+  .zone-nova-container {
+    padding: 0.75rem;
+  }
+
   .zone-nova-main {
-    padding: 0.5rem;
+    padding: 0.75rem;
   }
 
   .hero-image-container {
-    height: 12rem;
-    border-radius: 15px;
+    border-radius: 8px;
+  }
+
+  .hero-section {
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
     font-size: var(--text-2xl);
   }
 
-  .hero-section {
-    padding: 1.5rem 0.5rem 2rem 0.5rem;
-  }
-
   .title-only-heading {
     font-size: var(--text-2xl);
   }
 }
 
-/* Performance Optimizations */
 @media (prefers-reduced-motion: reduce) {
   .hero-image-wrapper,
   .content-area,
@@ -203,9 +176,7 @@
   }
 }
 
-/* Zone Nova Layout, Background, and Hero Section Styles */
-/* Exclude .drawer-title to prevent mobile menu color conflicts */
 .zn-layout-override h2:not(.drawer-title),
 .zn-layout-override .section-title {
-  color: var(--amber-glow);
+  color: var(--zn-primary, #ffb74d);
 }

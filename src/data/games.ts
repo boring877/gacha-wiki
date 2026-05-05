@@ -120,6 +120,17 @@ export const GAMES: Game[] = [
     sections: ['Pre-Registration', 'Bioroids', 'Grid Combat', 'Unit Types', 'Roles', 'Progression'],
     lastUpdated: new Date(),
   },
+  {
+    id: 'make-drama',
+    name: 'Make Drama: M.A.D',
+    slug: 'make-drama',
+    description: 'Mobile Action Defense RPG • Wemade Connect • Pre-Registration • 10 Characters Revealed',
+    image: '/images/games/make-drama/icon.png',
+    url: '/guides/make-drama/',
+    status: 'coming-soon',
+    sections: ['Characters', 'Factions', 'Elements', 'Pre-Registration'],
+    lastUpdated: new Date(),
+  },
 ];
 
 export function getGameById(id: string): Game | undefined {

@@ -103,98 +103,42 @@ export const horizonWalkerConfig = {
     },
   ],
 
-  // Main Category Groups
   categoryGroups: [
     {
       id: 'characters',
       title: 'Characters',
-      emoji: '',
-      description: 'Character database and supernatural abilities',
+      description: 'Character database, builds, weapons, and stigmas',
       size: 'large',
       guides: [
-        {
-          id: 'tier-list',
-          title: 'Tier List',
-          url: '/guides/horizon-walker/tier-list/',
-        },
-        {
-          id: 'builds',
-          title: 'Builds',
-          url: '/guides/horizon-walker/builds/',
-        },
-        {
-          id: 'characters',
-          title: 'Database',
-          url: '/guides/horizon-walker/characters/',
-        },
-        {
-          id: 'mercenaries',
-          title: 'Mercenaries',
-          url: '/guides/horizon-walker/mercenaries/',
-        },
-        {
-          id: 'weapons',
-          title: 'Weapons',
-          url: '/guides/horizon-walker/weapons/',
-        },
-        {
-          id: 'stigmas',
-          title: 'Stigmas',
-          url: '/guides/horizon-walker/stigmas/',
-        },
+        { id: 'characters', title: 'Database', url: '/guides/horizon-walker/characters/' },
+        { id: 'tier-list', title: 'Tier List', url: '/guides/horizon-walker/tier-list/' },
+        { id: 'builds', title: 'Builds', url: '/guides/horizon-walker/builds/' },
+        { id: 'mercenaries', title: 'Mercenaries', url: '/guides/horizon-walker/mercenaries/' },
+        { id: 'weapons', title: 'Weapons', url: '/guides/horizon-walker/weapons/' },
+        { id: 'stigmas', title: 'Stigmas', url: '/guides/horizon-walker/stigmas/' },
       ],
     },
     {
-      id: 'mechanics',
+      id: 'game-mechanics',
       title: 'Game Mechanics',
-      emoji: '',
-      description: 'Learn how game systems work',
-      size: 'large',
+      description: 'AP system, traits, and stigma sub stats',
+      size: 'medium',
       guides: [
-        {
-          id: 'ap-guide',
-          title: 'AP Guide',
-          url: '/guides/horizon-walker/ap-guide',
-        },
-        {
-          id: 'traits',
-          title: 'Traits',
-          url: '/guides/horizon-walker/traits/',
-        },
-        {
-          id: 'stigma-sub-stats',
-          title: 'Stigma Sub Stats',
-          url: '/guides/horizon-walker/stigma-sub-stats/',
-        },
+        { id: 'ap-guide', title: 'AP Guide', url: '/guides/horizon-walker/ap-guide' },
+        { id: 'traits', title: 'Traits', url: '/guides/horizon-walker/traits/' },
+        { id: 'stigma-sub-stats', title: 'Stigma Sub Stats', url: '/guides/horizon-walker/stigma-sub-stats/' },
       ],
     },
     {
       id: 'resources',
       title: 'Resources',
-      emoji: '',
-      description: 'Tools and utilities for the game',
-      size: 'large',
+      description: 'Gifts, clock, and redeem codes',
+      size: 'medium',
       guides: [
-        {
-          id: 'gifts',
-          title: 'Gifts',
-          url: '/guides/horizon-walker/gifts/',
-        },
-        {
-          id: 'character-gifts',
-          title: 'Character Gifts',
-          url: '/guides/horizon-walker/character-gifts/',
-        },
-        {
-          id: 'clock',
-          title: 'Clock',
-          url: '/clock/horizon-walker/',
-        },
-        {
-          id: 'redeem-codes',
-          title: 'Redeem Codes',
-          url: '/guides/horizon-walker/redeem-codes/',
-        },
+        { id: 'gifts', title: 'Gifts', url: '/guides/horizon-walker/gifts/' },
+        { id: 'character-gifts', title: 'Character Gifts', url: '/guides/horizon-walker/character-gifts/' },
+        { id: 'clock', title: 'Clock', url: '/clock/horizon-walker/' },
+        { id: 'redeem-codes', title: 'Redeem Codes', url: '/guides/horizon-walker/redeem-codes/' },
       ],
     },
   ],

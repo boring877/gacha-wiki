@@ -8,10 +8,9 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
+import { Image } from 'astro:assets';
 import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
-import GameImage from '../../components/busty-burst/GameImage.astro';
 
-// Import CSS files properly
 import '../../styles/games/busty-burst/busty-burst-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
@@ -22,7 +21,7 @@ export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: string;
+  heroImage?: any;
 }
 
 const { title, description, gameTitle, heroImage } = Astro.props;
@@ -35,48 +34,55 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       gameKey="busty-burst"
       title={title}
       description={description}
-      customImage={heroImage || '/assets/images/games/Busty_Burst/BG/bg_02.webp'}
+      customImage="/assets/images/games/Busty_Burst/BG/bg_02.webp"
     />
     <slot name="head" />
+    <Analytics />
   </head>
-  <body class="busty-burst-body">
+  <body class="bb-body">
     <CustomScrollbar />
-    <!-- Background layers for visual depth -->
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bb-bg-primary"></div>
+    <div class="bg-layer bb-bg-accent-1"></div>
+    <div class="bg-layer bb-bg-accent-2"></div>
+    <div class="bg-layer bb-bg-accent-3"></div>
 
-    <div class="busty-burst-content">
+    <div class="bb-content">
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
       <MobileMenu />
 
-      <div class="busty-burst-container">
-        <main class="busty-burst-main">
-          <!-- Busty Burst Hero Section -->
+      <div class="bb-container">
+        <main class="bb-main" id="main-content">
           {
             heroImage && gameTitle && (
               <section class="hero-section">
-                <GameImage
-                  imageName={heroImage}
-                  alt={gameTitle}
-                  class="hero-image"
-                  width={1200}
-                  height={400}
-                  loading="eager"
-                  format="webp"
-                  quality={90}
-                />
+                <div class="hero-image-wrapper">
+                  <Image
+                    src={heroImage}
+                    alt={gameTitle}
+                    class="hero-image"
+                    width={1200}
+                    height={400}
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div class="hero-overlay" />
+                </div>
                 <h1 class="hero-title">{gameTitle}</h1>
                 <DecorativeLines />
               </section>
             )
           }
 
-          <!-- Breadcrumb Navigation -->
+          {!heroImage && gameTitle && (
+            <section class="bb-title-only-section">
+              <h1 class="bb-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
           <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
 
-          <!-- Content Area -->
           <div class="content-area">
             <slot />
           </div>
@@ -85,7 +91,5 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

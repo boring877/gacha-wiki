@@ -12,7 +12,6 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/last-origin-global/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 
-// Import CSS files
 import '../../styles/games/last-origin-global/lo-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
@@ -39,14 +38,14 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       customImage={heroImage || '/images/games/last-origin-global/hero.jpg'}
     />
     <slot name="head" />
+    <Analytics />
   </head>
   <body class="last-origin-global-body lo-layout-override">
     <CustomScrollbar />
-    <!-- Background layers for visual depth -->
-    <div class="bg-layer bg-primary"></div>
-    <div class="bg-layer bg-accent-1"></div>
-    <div class="bg-layer bg-accent-2"></div>
-    <div class="bg-layer bg-accent-3"></div>
+    <div class="bg-layer lo-bg-primary"></div>
+    <div class="bg-layer lo-bg-accent-1"></div>
+    <div class="bg-layer lo-bg-accent-2"></div>
+    <div class="bg-layer lo-bg-accent-3"></div>
 
     <div class="last-origin-global-content">
       <Header />
@@ -54,8 +53,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="last-origin-global-container">
-        <main class="last-origin-global-main">
-          <!-- Hero Section -->
+        <main class="last-origin-global-main" id="main-content">
           {
             heroImage && gameTitle && (
               <section class="hero-section">
@@ -78,7 +76,6 @@ const { title, description, gameTitle, heroImage } = Astro.props;
               </section>
             )
           }
-          <!-- Title Only Section (when no hero image) -->
           {
             !heroImage && gameTitle && (
               <section class="title-only-section">
@@ -88,10 +85,8 @@ const { title, description, gameTitle, heroImage } = Astro.props;
             )
           }
 
-          <!-- Breadcrumb Navigation -->
           <Breadcrumb autoGenerate={true} gameKey="last-origin-global" showBackButton={true} />
 
-          <!-- Content Area -->
           <div class="content-area">
             <slot />
           </div>
@@ -100,7 +95,5 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <Footer />
     </div>
-
-    <Analytics />
   </body>
 </html>

@@ -3,8 +3,6 @@ import TaimaninSquadLandingLayout from '../../layouts/taimanin-squad/LandingLayo
 import FormattedDate from '../../components/FormattedDate.astro';
 import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
 import heroImage from '../../assets/images/games/taimanin-squad/gameimg/hero_image.jpg';
-import '../../styles/games/taimanin-squad/ts-landing-page.css';
-
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups, story } = taimaninSquadConfig;
 
@@ -66,7 +64,6 @@ const breadcrumbs = [
     </div>
 
     <div class="game-info-box">
-      <p class="open-beta-notice">{gameInfo.openBeta}</p>
       <p>{gameInfo.description}</p>
       <p><strong>Developer:</strong> {gameInfo.developer}</p>
       <p><strong>Platforms:</strong> {gameInfo.platforms.join(', ')}</p>
@@ -109,14 +106,17 @@ const breadcrumbs = [
     </p>
   </section>
 
-  <!-- Resources Section (matching Stella Sora structure) -->
-  <section class="content-section">
+  <!-- Resources Section -->
+  <section class="ts-resources-section">
     <h2 class="ts-resources-title">Resources</h2>
     <div class="ts-resources-grid">
       {
         categoryGroups.map(category => (
-          <div class="ts-resource-category">
-            <h3>{category.title}</h3>
+          <div class={`ts-resource-category ts-category-${category.size}`}>
+            <div class="ts-category-header">
+              <h3>{category.title}</h3>
+              <p class="ts-category-description">{category.description}</p>
+            </div>
             <div class="ts-buttons-grid">
               {category.guides.map(guide => (
                 <a

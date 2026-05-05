@@ -1,461 +1,50 @@
 /* Taimanin Squad Landing Page Styles */
-/* Matching Stella Sora structure - simple, no flashy effects */
 
-/* Main Layout */
-.taimanin-squad-content {
-  min-height: 100vh;
-  background: var(--ts-bg-gradient-primary);
-  color: var(--ts-text-primary);
-}
-
-.taimanin-squad-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.taimanin-squad-main {
-  padding: 2rem 0;
-}
-
-/* Hero Section */
-.hero-section {
-  position: relative;
-  margin-bottom: 5rem;
-  text-align: center;
-}
-
-.hero-image-wrapper {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.hero-image-container {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.hero-overlay {
-  display: none;
-}
-
-.hero-title {
-  font-size: var(--text-4xl);
-  font-family: var(--font-display);
-  font-weight: var(--ts-font-bold);
-  margin: 2rem 0;
-  line-height: var(--leading-normal);
-  color: var(--ts-primary);
-}
-
-/* Title Only Section */
-.title-only-section {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.title-only-heading {
-  font-size: var(--text-4xl);
-  font-family: var(--font-display);
-  font-weight: var(--ts-font-bold);
-  margin: 2.5rem 0;
-  line-height: var(--leading-normal);
-  color: var(--ts-primary);
-}
-
-/* Content Sections */
 .content-section {
-  background: var(--ts-bg-secondary);
-  border-radius: 15px;
-  padding: 3rem;
-  margin-bottom: 3rem;
-  border: 1px solid var(--ts-border);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: rgba(35, 35, 35, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(192, 192, 192, 0.2);
 }
 
 .section-title {
-  font-size: var(--text-3xl);
-  font-family: var(--font-display);
-  font-weight: var(--ts-font-bold);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  color: var(--ts-accent);
-}
-
-/* Play Buttons */
-.play-button-container {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 3rem 0;
-  flex-wrap: wrap;
-}
-
-.play-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--ts-primary);
-  color: var(--ts-text-primary);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-weight: var(--ts-font-semibold);
-  font-size: var(--text-lg);
-  border: 1px solid var(--ts-border-light);
-}
-
-/* Social Links */
-.ts-social-links-container {
-  text-align: center;
-  margin: 3rem 0;
-}
-
-.ts-social-links-container h4 {
-  font-size: var(--text-lg);
-  font-family: var(--font-display);
-  font-weight: var(--font-semibold);
-  color: var(--ts-accent-light);
-  margin-bottom: 1rem;
-}
-
-.ts-social-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.ts-social-link {
-  display: inline-flex;
-  align-items: center;
-  background: var(--ts-accent-20);
-  color: var(--ts-text-primary);
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  border: 1px solid var(--ts-border);
-}
-
-/* Story Content */
-.story-content p {
-  font-size: var(--text-base);
-  font-family: var(--font-primary);
-  font-weight: var(--ts-font-normal);
-  line-height: 1.8;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: var(--ts-text-secondary);
-  text-align: left;
-}
-
-/* Last Updated */
-.last-updated {
+  font-weight: 700;
   text-align: center;
-  font-family: var(--font-primary);
-  color: var(--ts-text-muted);
-  font-size: var(--text-sm);
-  margin-top: 1rem;
+  color: var(--ts-primary, #6b5b7a);
 }
 
-/* Resources Styles - Matching Stella Sora */
-.ts-resources-title {
+.game-description {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
   text-align: center;
-  font-size: var(--text-2xl);
-  font-weight: var(--ts-font-bold);
-  color: var(--ts-primary);
-  margin-bottom: var(--ts-spacing-lg);
-}
-
-.ts-resources-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: var(--ts-spacing-lg);
-  max-width: 800px;
+  max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-.ts-resource-category {
-  background: var(--ts-bg-card);
-  border: 1px solid var(--ts-border);
-  border-radius: var(--ts-radius-md);
-  padding: var(--ts-spacing-md);
-  display: flex;
-  flex-direction: column;
+.last-updated {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #c0c0c0;
+  text-align: center;
+  font-weight: 500;
 }
 
-.ts-resource-category h3 {
-  font-size: var(--text-base);
-  font-weight: var(--ts-font-semibold);
-  color: var(--ts-text-primary);
-  margin: 0 0 var(--ts-spacing-sm) 0;
+/* Story Content */
+.story-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
   text-align: left;
 }
 
-.ts-buttons-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.ts-resource-button {
-  box-sizing: border-box;
-  color: var(--ts-text-primary);
-  text-decoration: none;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--ts-primary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-height: 52px;
-}
-
-/* Breadcrumb Styles */
-.ts-breadcrumb {
-  margin: 1.5rem 0;
-  padding: 0 1rem;
-}
-
-.ts-breadcrumb-container {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.ts-breadcrumb-back {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--ts-text-secondary);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  background: var(--ts-bg-secondary);
-  border: 1px solid var(--ts-border);
-  font-size: var(--text-sm);
-  font-family: var(--font-primary);
-}
-
-.ts-back-text {
-  font-size: var(--text-sm);
-}
-
-.ts-breadcrumb-list {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-
-.ts-breadcrumb-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.ts-breadcrumb-link {
-  color: var(--ts-text-secondary);
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: var(--text-sm);
-  font-family: var(--font-primary);
-}
-
-.ts-breadcrumb-separator {
-  color: var(--ts-text-muted);
-  font-size: var(--text-sm);
-  margin: 0 0.25rem;
-}
-
-.ts-breadcrumb-current {
-  color: var(--ts-primary);
-  font-weight: var(--font-semibold);
-  font-size: var(--text-sm);
-  font-family: var(--font-primary);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .taimanin-squad-container {
-    padding: 0 1rem;
-  }
-
-  .taimanin-squad-main {
-    padding: 1rem 0;
-  }
-
-  .hero-section {
-    margin-bottom: 2rem;
-  }
-
-  .hero-title,
-  .title-only-heading {
-    font-size: var(--text-3xl);
-    margin: 1.5rem 0;
-    line-height: 1.2;
-  }
-
-  .content-section {
-    padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-  }
-
-  .section-title {
-    font-size: var(--text-2xl);
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-
-  .play-button-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    padding: 0 1rem;
-  }
-
-  .play-button {
-    width: 90%;
-    max-width: 320px;
-    margin: 0 auto;
-    padding: 1.2rem 2rem;
-    font-size: var(--text-base);
-    min-height: 48px;
-    justify-content: center;
-    border-radius: 25px;
-    box-sizing: border-box;
-  }
-
-  .ts-social-links-container {
-    text-align: center;
-    margin: 3rem 0;
-  }
-
-  .ts-social-links {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .ts-social-link {
-    width: 90%;
-    max-width: 320px;
-    justify-content: center;
-    padding: 1rem 1.5rem;
-    min-height: 44px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .ts-resources-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .ts-resource-category {
-    padding: var(--ts-spacing-sm);
-  }
-
-  .ts-resource-button {
-    box-sizing: border-box;
-    padding: 0.875rem 0.625rem;
-    font-size: 0.875rem;
-    min-height: 52px;
-    border-radius: 10px;
-  }
-
-  .ts-breadcrumb {
-    margin: 1rem 0;
-  }
-
-  .ts-breadcrumb-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-  .taimanin-squad-container {
-    padding: 0 0.75rem;
-  }
-
-  .hero-title,
-  .title-only-heading {
-    font-size: var(--text-2xl);
-    margin: 1rem 0;
-    line-height: 1.2;
-  }
-
-  .content-section {
-    padding: 1.5rem 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 10px;
-  }
-
-  .section-title {
-    font-size: var(--text-xl);
-    margin-bottom: 1rem;
-  }
-
-  .play-button {
-    max-width: 260px;
-    padding: 1rem 1.5rem;
-    font-size: var(--text-sm);
-  }
-
-  .ts-social-link {
-    max-width: 280px;
-    padding: 0.875rem 1.25rem;
-    font-size: var(--text-sm);
-    width: 90%;
-  }
-
-  .ts-resources-title {
-    font-size: var(--text-xl);
-  }
-
-  .ts-resource-category {
-    padding: 0.75rem;
-  }
-
-  .ts-resource-button {
-    padding: 1rem;
-    font-size: 0.9rem;
-    min-height: 48px;
-    font-weight: 500;
-  }
-}
-
-/* Game Info Box Styles */
+/* Game Info Box */
 .game-info-box {
   margin-top: 2rem;
   padding: 1.5rem;
@@ -485,8 +74,348 @@
   border: 1px solid var(--ts-primary, #6b5b7a);
 }
 
+/* Play Buttons */
+.play-button-container {
+  text-align: center;
+  margin: 2.5rem 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ts-primary, #6b5b7a);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
 .play-button.secondary {
   background: var(--ts-bg-tertiary, #242028);
   border: 1px solid var(--ts-accent, #9a8aaa);
   color: var(--ts-accent, #9a8aaa);
+}
+
+/* Social Links */
+.ts-social-links-container {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.ts-social-links-container h4 {
+  color: #f0f0f0;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.ts-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ts-social-link {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* TS Resources Section */
+.ts-resources-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: rgba(35, 35, 35, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(192, 192, 192, 0.2);
+}
+
+.ts-resources-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ts-primary, #6b5b7a);
+}
+
+/* Bento Grid Layout */
+.ts-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.2rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Category Cards */
+.ts-resource-category {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Category Size Variants */
+.ts-category-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: #1e1e1e;
+}
+
+.ts-category-medium {
+  grid-column: span 2;
+  grid-row: span 1;
+  background: #1e1e1e;
+}
+
+.ts-category-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Category Header */
+.ts-category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.ts-category-header h3 {
+  color: #f0f0f0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.ts-category-description {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* TS Buttons Grid */
+.ts-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 80px;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.ts-resource-button {
+  box-sizing: border-box;
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #3a3a3a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  transition: all 0.2s ease;
+}
+
+.guide-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.play-emoji {
+  font-size: 1.5rem;
+}
+
+.play-arrow {
+  font-size: 1.2rem;
+}
+
+/* Tablet Landscape Responsive (1024px and below) */
+@media (max-width: 1024px) {
+  .ts-resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ts-category-large,
+  .ts-category-medium,
+  .ts-category-small {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: #1e1e1e;
+    padding: 2rem;
+  }
+
+  .ts-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .ts-resource-button {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet & Mobile (768px and below) */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .play-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    min-height: 48px;
+  }
+
+  .play-button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ts-social-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .taimanin-squad-main .ts-resources-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .taimanin-squad-main .ts-resources-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .taimanin-squad-main .ts-resources-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .taimanin-squad-main .ts-resource-category {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .taimanin-squad-main .ts-category-header {
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .taimanin-squad-main .ts-category-header {
+    margin-bottom: 1rem;
+  }
+
+  .taimanin-squad-main .ts-category-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .taimanin-squad-main .ts-category-description {
+    font-size: 0.825rem;
+    line-height: 1.3;
+  }
+
+  .taimanin-squad-main .ts-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+  }
+
+  .taimanin-squad-main .ts-resource-button {
+    box-sizing: border-box;
+    padding: 0.875rem 0.625rem;
+    font-size: 0.875rem;
+    min-height: 52px;
+    border-radius: 10px;
+    line-height: 1.2;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Extra Small Mobile (below 380px) */
+@media (max-width: 380px) {
+  .taimanin-squad-main .ts-resource-category {
+    padding: 0.875rem;
+  }
+
+  .taimanin-squad-main .ts-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .taimanin-squad-main .ts-resource-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+    font-weight: 500;
+  }
+
+  .content-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .play-button {
+    width: 95%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .content-section {
+    border-width: 2px;
+  }
+
+  .ts-resources-section {
+    border-width: 2px;
+  }
 }

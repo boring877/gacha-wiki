@@ -1,23 +1,216 @@
 /* Stella Sora Landing Page Styles */
 
-/* Main Layout */
-.stella-sora-content {
-  min-height: 100vh;
-  background: var(--ss-bg-gradient-primary);
-  color: var(--ss-text-primary);
+.content-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: rgba(35, 35, 35, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(125, 211, 252, 0.2);
 }
 
-.stella-sora-container {
-  max-width: 1200px;
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ss-primary);
+}
+
+.ss-resources-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: rgba(35, 35, 35, 0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+.ss-resources-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ss-primary);
+}
+
+.ss-resources-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
   margin: 0 auto;
-  padding: 0 20px;
+  max-width: fit-content;
+  transition: var(--ss-transition);
 }
 
-.stella-sora-main {
-  padding: 2rem 0;
+.ss-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.2rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 100%;
 }
 
-/* Hero Section */
+.ss-resource-category {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ss-category-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: #1e1e1e;
+}
+
+.ss-category-medium {
+  grid-column: span 2;
+  grid-row: span 1;
+  background: #1e1e1e;
+}
+
+.ss-category-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.ss-category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+}
+
+.ss-category-header h3 {
+  color: #f0f0f0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.ss-category-description {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ss-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 80px;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.ss-resource-button {
+  box-sizing: border-box;
+  color: #f0f0f0;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #3a3a3a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+  transition: all 0.2s ease;
+}
+
+.play-button-container {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ss-primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.play-arrow {
+  font-size: 1.2rem;
+}
+
+.last-updated {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #c0c0c0;
+  margin-top: 1.5rem;
+}
+
+.ss-social-links-container {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.ss-social-links-container h4 {
+  font-size: var(--text-lg);
+  font-family: var(--font-display);
+  font-weight: var(--font-semibold);
+  color: var(--ss-accent-light);
+  margin-bottom: 1rem;
+}
+
+.ss-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ss-social-link {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.story-content p {
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  font-weight: var(--ss-font-normal);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--ss-text-secondary);
+  text-align: left;
+}
+
+.story-heading {
+  font-size: var(--text-xl);
+  font-family: var(--font-display);
+  font-weight: var(--ss-font-bold);
+  margin: 1.5rem 0 0.75rem 0;
+  text-align: left;
+  color: var(--ss-accent);
+  border-left: 3px solid var(--ss-accent);
+  padding-left: 0.75rem;
+}
+
 .hero-section {
   position: relative;
   margin-bottom: 5rem;
@@ -44,7 +237,8 @@
 }
 
 .hero-overlay {
-  display: none; /* Remove all styling - clean image */
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.5) 0%, transparent 100%);
 }
 
 .hero-title {
@@ -53,7 +247,6 @@
   font-weight: var(--ss-font-bold);
   margin: 2rem 0;
   line-height: var(--leading-normal);
-  /* Gradient for page title only */
   color: #7dd3fc;
 }
 
@@ -65,20 +258,17 @@
     opacity 0.2s ease;
 }
 
-
 .hero-version {
   font-size: var(--text-lg);
   font-family: var(--font-display);
   font-weight: var(--ss-font-semibold);
   margin: 0.5rem 0 1rem 0;
   line-height: var(--leading-normal);
-  /* Same gradient as the main title */
   color: #7dd3fc;
   text-align: center;
   letter-spacing: 0.05em;
 }
 
-/* Title Only Section */
 .title-only-section {
   text-align: center;
   margin-bottom: 3rem;
@@ -90,125 +280,9 @@
   font-weight: var(--ss-font-bold);
   margin: 2.5rem 0;
   line-height: var(--leading-normal);
-  /* Gradient for page title only */
   color: #7dd3fc;
 }
 
-/* Content Sections */
-.content-section {
-  background: var(--ss-bg-secondary);
-  border-radius: 15px;
-  padding: 3rem;
-  margin-bottom: 3rem;
-  border: 1px solid var(--ss-border);
-}
-
-.section-title {
-  font-size: var(--text-3xl);
-  font-family: var(--font-display);
-  font-weight: var(--ss-font-bold);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  /* Purple color for section titles */
-  color: var(--ss-accent);
-}
-
-.game-description p {
-  font-size: var(--text-lg);
-  font-family: var(--font-primary);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  color: var(--ss-text-secondary);
-  text-align: center;
-}
-
-/* Play Buttons */
-.play-button-container {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 3rem 0;
-  flex-wrap: wrap;
-}
-
-.play-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--ss-primary);
-  color: var(--ss-text-primary);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-weight: var(--ss-font-semibold);
-  font-size: var(--text-lg);
-  border: 1px solid rgba(125, 211, 252, 0.4);
-}
-
-.play-arrow {
-  font-size: 1.2rem;
-}
-
-/* Social Links */
-.ss-social-links-container {
-  text-align: center;
-  margin: 3rem 0;
-}
-
-.ss-social-links-container h4 {
-  font-size: var(--text-lg);
-  font-family: var(--font-display);
-  font-weight: var(--font-semibold);
-  color: var(--ss-accent-light);
-  margin-bottom: 1rem;
-}
-
-.ss-social-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.ss-social-link {
-  display: inline-flex;
-  align-items: center;
-  background: var(--ss-accent-20);
-  color: var(--ss-text-primary);
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  border: 1px solid rgba(110, 231, 183, 0.3);
-}
-
-/* Story Content */
-.story-content p {
-  font-size: var(--text-base);
-  font-family: var(--font-primary);
-  font-weight: var(--ss-font-normal);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  color: var(--ss-text-secondary);
-  text-align: left;
-}
-
-.story-heading {
-  font-size: var(--text-xl);
-  font-family: var(--font-display);
-  font-weight: var(--ss-font-bold);
-  margin: 1.5rem 0 0.75rem 0;
-  text-align: left;
-  /* Use solid color instead of gradient for better hierarchy */
-  color: var(--ss-accent);
-  border-left: 3px solid var(--ss-accent);
-  padding-left: 0.75rem;
-}
-
-/* Features Grid */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -238,7 +312,6 @@
   line-height: 1.5;
 }
 
-/* Coming Soon Notice */
 .coming-soon-notice {
   text-align: center;
   padding: 3rem 2rem;
@@ -254,16 +327,6 @@
   line-height: 1.6;
 }
 
-/* Last Updated */
-.last-updated {
-  text-align: center;
-  font-family: var(--font-primary);
-  color: var(--ss-text-muted);
-  font-size: var(--text-sm);
-  margin-top: 1rem;
-}
-
-/* Breadcrumb Styles - Following other games pattern */
 .ss-breadcrumb {
   margin: var(--ss-spacing-lg) 0;
   padding: 0 var(--ss-spacing-md);
@@ -332,18 +395,33 @@
   font-family: var(--font-primary);
 }
 
-/* Enhanced Mobile Responsive Design */
+@media (max-width: 1024px) {
+  .ss-resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ss-category-large,
+  .ss-category-medium,
+  .ss-category-small {
+    grid-column: span 1;
+    grid-row: span 1;
+    background: #1e1e1e;
+    padding: 2rem;
+  }
+
+  .ss-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .ss-resource-button {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 768px) {
-  /* Main Layout */
-  .stella-sora-container {
-    padding: 0 1rem;
-  }
-
-  .stella-sora-main {
-    padding: 1rem 0;
-  }
-
-  /* Hero Section - Mobile Optimized */
   .hero-section {
     margin-bottom: 2rem;
   }
@@ -360,20 +438,6 @@
     margin: 0.25rem 0 0.75rem 0;
   }
 
-  /* Content Sections - Better Mobile Spacing */
-  .content-section {
-    padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-  }
-
-  .section-title {
-    font-size: var(--text-2xl);
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-
-  /* Play Buttons - Touch Optimized */
   .play-button-container {
     flex-direction: column;
     align-items: center;
@@ -396,7 +460,6 @@
     box-sizing: border-box;
   }
 
-  /* Social Links - Mobile Friendly */
   .ss-social-links-container {
     text-align: center;
     margin: 3rem 0;
@@ -421,7 +484,6 @@
     box-sizing: border-box;
   }
 
-  /* Story Content - Better Mobile Readability */
   .story-content p {
     font-size: var(--text-base);
     line-height: 1.7;
@@ -429,7 +491,6 @@
     text-align: left;
   }
 
-  /* Features Grid - Single Column */
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -439,7 +500,16 @@
     padding: 1.25rem;
   }
 
-  /* Breadcrumb - Mobile Optimized */
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
   .ss-breadcrumb {
     margin: 1rem 0;
   }
@@ -450,7 +520,6 @@
     gap: 0.75rem;
   }
 
-  /* Coming Soon Notice - Mobile */
   .coming-soon-notice {
     padding: 2rem 1.5rem;
   }
@@ -458,170 +527,100 @@
   .coming-soon-notice p {
     font-size: var(--text-base);
   }
-}
 
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-  /* Ultra Compact Layout */
-  .stella-sora-container {
-    padding: 0 0.75rem;
-  }
-
-  .hero-title,
-  .title-only-heading {
-    font-size: var(--text-2xl);
-    margin: 1rem 0;
-    line-height: 1.2;
-  }
-
-  .hero-version {
-    font-size: var(--text-sm);
-    margin: 0.125rem 0 0.5rem 0;
-  }
-
-  .content-section {
+  .stella-sora-main .ss-resources-section {
     padding: 1.5rem 1rem;
     margin-bottom: 1.5rem;
-    border-radius: 10px;
   }
 
-  .section-title {
-    font-size: var(--text-xl);
+  .stella-sora-main .ss-resources-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stella-sora-main .ss-resources-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .stella-sora-main .ss-resource-category {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .stella-sora-main .ss-category-header {
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .stella-sora-main .ss-category-header {
     margin-bottom: 1rem;
   }
 
-  .play-button {
-    max-width: 260px;
-    padding: 1rem 1.5rem;
-    font-size: var(--text-sm);
+  .stella-sora-main .ss-category-header h3 {
+    font-size: 1.15rem;
   }
 
-  .ss-social-link {
-    max-width: 280px;
-    padding: 0.875rem 1.25rem;
-    font-size: var(--text-sm);
-    width: 90%;
+  .stella-sora-main .ss-category-description {
+    font-size: 0.825rem;
+    line-height: 1.3;
   }
 
-  .story-content p {
-    font-size: var(--text-sm);
-    line-height: 1.6;
+  .stella-sora-main .ss-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
   }
 
-  .coming-soon-notice {
-    padding: 1.5rem 1rem;
-  }
-}
-
-/* Stella Sora Resources Styles - Clean Bento Style */
-.ss-resources-title {
-  text-align: center;
-  font-size: var(--text-2xl);
-  font-weight: var(--ss-font-bold);
-  color: var(--ss-primary);
-  margin-bottom: var(--ss-spacing-lg);
-}
-
-.ss-resources-title-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  margin: 0 auto;
-  max-width: fit-content;
-  transition: var(--ss-transition);
-}
-
-
-.ss-resources-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: var(--ss-spacing-lg);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ss-resource-category {
-  background: var(--ss-bg-card);
-  border: 1px solid var(--ss-border);
-  border-radius: var(--ss-radius-md);
-  padding: var(--ss-spacing-md);
-  display: flex;
-  flex-direction: column;
-}
-
-.ss-resource-category h3 {
-  font-size: var(--text-base);
-  font-weight: var(--ss-font-semibold);
-  color: var(--ss-text-primary);
-  margin: 0 0 var(--ss-spacing-sm) 0;
-  text-align: left;
-}
-
-.ss-buttons-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.ss-resource-button {
-  box-sizing: border-box;
-  color: var(--ss-text-primary);
-  text-decoration: none;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--ss-primary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-height: 52px;
-}
-
-/* Responsive Design for Resources */
-@media (max-width: 768px) {
-  .ss-resources-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .ss-resource-category {
-    padding: var(--ss-spacing-sm);
-  }
-
-  .ss-resource-button {
+  .stella-sora-main .ss-resource-button {
     box-sizing: border-box;
     padding: 0.875rem 0.625rem;
     font-size: 0.875rem;
     min-height: 52px;
     border-radius: 10px;
+    line-height: 1.2;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .ss-category-large .ss-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ss-category-medium .ss-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
-  .ss-resources-title {
-    font-size: var(--text-xl);
+@media (max-width: 380px) {
+  .stella-sora-main .ss-resource-category {
+    padding: 0.875rem;
   }
 
-  .ss-resource-category {
-    padding: 0.75rem;
+  .stella-sora-main .ss-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 
-  .ss-resource-button {
+  .stella-sora-main .ss-resource-button {
     padding: 1rem;
     font-size: 0.9rem;
     min-height: 48px;
     font-weight: 500;
   }
+
+  .content-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .play-button {
+    width: 95%;
+  }
 }
 
-/* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
   .play-button,
   .ss-social-link {

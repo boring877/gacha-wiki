@@ -69,6 +69,13 @@ export const GAMES = {
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/last-origin-global',
   },
+  MAKE_DRAMA: {
+    KEY: 'make-drama',
+    NAME: 'Make Drama',
+    THEME_COLOR: '#34d399',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/make-drama',
+  },
 } as const;
 
 // URL patterns (centralized to prevent duplication)
@@ -145,6 +152,10 @@ export const URLS = {
   },
   LAST_ORIGIN_GLOBAL: {
     BASE: '/guides/last-origin-global',
+  },
+  MAKE_DRAMA: {
+    BASE: '/guides/make-drama',
+    CHARACTERS: '/guides/make-drama/characters',
   },
 } as const;
 

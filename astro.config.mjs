@@ -91,6 +91,9 @@ export default defineConfig({
             if (id.includes('/data/taimanin-squad/')) {
               return 'ts-data';
             }
+            if (id.includes('/data/make-drama/')) {
+              return 'md-data';
+            }
             // Vendor chunks for third-party libraries
             if (id.includes('node_modules')) {
               if (id.includes('chart.js') || id.includes('chartjs')) {
