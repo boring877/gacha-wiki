@@ -41,6 +41,40 @@ export const blogConfig = {
         <p>I really love turn-based games, and Taimanin is one of my favorite series. I personally can't wait for this one, and I'm hoping the monetization isn't too greedy. This could be something really huge for Taimanin!</p>
       `,
     },
+    {
+      slug: 'equipment-guide-artifacts-sets-substats',
+      title: 'Equipment Guide: Artifacts, Sets, and Substats',
+      description:
+        'My take on artifact grades, set bonuses, substat priorities, and what actually works in practice.',
+      author: 'Boring877',
+      publishDate: '2026-05-05',
+      category: 'Guide',
+      tags: ['equipment', 'artifacts', 'substats', 'builds'],
+      content: `
+        <h2>TL;DR</h2>
+        <p>Aim for <strong>grade 5 and 6</strong>, at least <strong>Rare rarity or higher</strong>. You need to hit at least 2 good substats. That's it. Don't overcomplicate it.</p>
+
+        <h2>Grades</h2>
+        <p>I personally go for grade 5 and 6. I can sometimes use a grade 4 if it's <strong>Legendary rarity</strong> with good substat rolls, but that's a mid-game choice, not endgame. Grade 5 can absolutely be endgame gear if the sub rolls are good.</p>
+        <p>Grade 6 has the highest substat values. If you get lucky and multiple rolls hit the same stat, the item gets broken. You can reach around <strong>25% HP</strong> or <strong>15% CRIT RES</strong> from a single item's substats alone.</p>
+
+        <h2>Sets</h2>
+        <p>I've been using <strong>ATK set for DPS</strong> and <strong>HP set for tanks</strong>, and I've gotten good results so far. ATK has no diminishing returns, so the higher the value the more damage you do. And HP scales way better on tanks than DEF.</p>
+        <p>There's some consideration to use <strong>SPD set for every role</strong>, but I'm not sure about that yet. Needs more testing.</p>
+
+        <h2>Substats</h2>
+        <h3>DPS</h3>
+        <p>I aim for ATK substats, hoping to get at least 2 rolls hitting ATK, sometimes reaching 12%+ from substats alone.</p>
+        <p>But going full ATK has problems - you get less SPD and CRIT. CRIT Rate increases damage a lot, making you one-shot people. And SPD helps you not get one-shotted. If you can reach at least <strong>100 SPD</strong>, that should be fine to not lose most of the time.</p>
+
+        <h3>Tanks</h3>
+        <p>There's discussion about picking <strong>CRIT RES</strong> over HP to help not getting one-shotted, which really makes sense. Some people say even 2 CRIT RES + 1 HP set is not a bad choice. This needs more testing to confirm.</p>
+        <p>For tank substats I aim for: <strong>SPD, HP, CRIT RES, and DEF</strong>.</p>
+
+        <h2>Final Thoughts</h2>
+        <p>At the end of the day: aim for <strong>grade 5 and 6 with Rare rarity or higher</strong>, and hope for good rolls. </p>
+      `,
+    },
   ],
 };
 
