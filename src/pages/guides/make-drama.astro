@@ -5,7 +5,7 @@ import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
 import { Image } from 'astro:assets';
 import bgImg from '../../assets/images/games/make-drama/logos/bg.jpg';
 
-const { meta, gameInfo, categoryGroups } = makeDramaConfig;
+const { meta, gameInfo, story, categoryGroups } = makeDramaConfig;
 ---
 
 <MakeDramaLayout
@@ -15,6 +15,10 @@ const { meta, gameInfo, categoryGroups } = makeDramaConfig;
   heroImage={bgImg}
 >
   <section class="content-section">
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
     <div class="game-description">
       <p>{gameInfo.description}</p>
     </div>
@@ -64,7 +68,8 @@ const { meta, gameInfo, categoryGroups } = makeDramaConfig;
 
   <section class="content-section">
     <div class="md-coming-soon-banner">
-      <p><strong>Make Drama: M.A.D</strong> is currently in pre-registration (Korea). Game has not launched yet.</p>
+      <p><strong>Make Drama: M.A.D</strong> is currently in pre-registration for the <strong>Korean version only</strong>.</p>
+      <p style="margin-top: 0.5rem;">A global version and PC version are actively being considered. More info will be shared as soon as it's announced.</p>
       <p style="margin-top: 0.5rem;">More guides and data will be added after launch.</p>
     </div>
   </section>

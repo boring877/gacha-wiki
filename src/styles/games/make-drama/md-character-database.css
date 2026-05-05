@@ -1,0 +1,257 @@
+/* Make Drama Character Database Styles */
+
+.md-content-section {
+  margin-bottom: 2rem;
+}
+
+.md-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--md-bg-secondary);
+  border: 1px solid var(--md-border);
+  border-radius: 12px;
+}
+
+.md-search {
+  padding: 0.5rem 0.75rem;
+  background: var(--md-bg-tertiary);
+  border: 1px solid var(--md-border);
+  border-radius: 8px;
+  color: var(--md-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 180px;
+}
+
+.md-search:focus {
+  border-color: var(--md-primary);
+}
+
+.md-search::placeholder {
+  color: var(--md-text-muted);
+}
+
+.md-filter-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--md-bg-tertiary);
+  border: 1px solid var(--md-border);
+  border-radius: 6px;
+  color: var(--md-text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.md-filter-btn:hover {
+  background: var(--md-bg-hover);
+  border-color: var(--md-border-light);
+}
+
+.md-filter-btn.active {
+  background: var(--md-primary);
+  border-color: var(--md-primary);
+  color: var(--md-bg-primary);
+  font-weight: 600;
+}
+
+.md-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--md-text-muted);
+}
+
+.md-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.md-char-card {
+  display: block;
+  background: var(--md-bg-card);
+  border: 1px solid var(--md-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  overflow: hidden;
+}
+
+.md-char-card:hover {
+  border-color: var(--md-border-light);
+}
+
+.md-char-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.md-char-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.md-char-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.md-char-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--md-text-primary);
+  margin: 0 0 0.35rem;
+}
+
+.md-char-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.md-badge {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.md-badge-faction {
+  background: var(--md-faction-humanitas);
+  color: #fff;
+}
+
+.md-badge-element {
+  background: var(--md-bg-tertiary);
+  color: var(--md-text-secondary);
+  border: 1px solid var(--md-border);
+}
+
+.md-badge-role {
+  background: var(--md-bg-tertiary);
+  color: var(--md-text-secondary);
+  border: 1px solid var(--md-border);
+}
+
+/* Detail page styles */
+.md-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--md-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.md-back:hover {
+  color: var(--md-primary-hover);
+}
+
+.md-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.md-detail-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.md-detail-info h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  color: var(--md-text-primary);
+}
+
+.md-meta {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.md-detail-section {
+  background: var(--md-bg-card);
+  border: 1px solid var(--md-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.md-detail-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--md-text-primary);
+}
+
+.md-ultimate-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--md-primary);
+  margin: 0 0 0.25rem;
+}
+
+.md-ultimate-desc {
+  color: var(--md-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.md-coming-soon-banner {
+  background: var(--md-bg-tertiary);
+  border: 1px solid var(--md-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  color: var(--md-text-secondary);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .md-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .md-search {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .md-count {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .md-char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .md-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .md-detail-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .md-meta {
+    justify-content: center;
+  }
+}

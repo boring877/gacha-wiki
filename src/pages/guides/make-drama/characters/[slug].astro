@@ -2,6 +2,7 @@
 import MakeDramaLayout from '../../../../layouts/make-drama/LandingLayout.astro';
 import MDCharacterImage from '../../../../components/make-drama/MDCharacterImage.astro';
 import { MAKE_DRAMA_CHARACTERS } from '../../../../data/make-drama/characters.js';
+import '../../../../styles/games/make-drama/md-character-database.css';
 
 export function getStaticPaths() {
   return MAKE_DRAMA_CHARACTERS.map(char => ({
