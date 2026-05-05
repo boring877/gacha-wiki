@@ -40,8 +40,8 @@
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--amber-glow, #f59e0b);
   border-radius: 8px;
-  background: var(--bg-secondary, #1a1a2e);
-  color: var(--text-primary, #e0e0e0);
+  background: var(--zn-bg-secondary);
+  color: var(--zn-text-primary);
   font-size: 0.95rem;
   outline: none;
   box-sizing: border-box;
@@ -53,7 +53,7 @@
 }
 
 .search-input::placeholder {
-  color: var(--text-muted, #888);
+  color: var(--zn-text-muted);
 }
 
 .filter-controls,
@@ -67,10 +67,10 @@
 .filter-select,
 .sort-btn {
   padding: 0.4rem 0.7rem;
-  background: var(--bg-primary);
-  color: var(--text-secondary);
+  background: var(--zn-bg-secondary);
+  color: var(--zn-text-secondary);
   border-radius: 8px;
-  border: 1px solid var(--mocha-mousse);
+  border: 1px solid var(--zn-border);
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -112,7 +112,7 @@ table.character-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: var(--bg-primary);
+  background: var(--zn-bg-secondary);
   border-radius: 12px;
   font-family: var(--font-display), sans-serif;
 }
@@ -121,7 +121,7 @@ table.character-table th,
 table.character-table td {
   padding: 1rem 0.4rem;
   text-align: center;
-  border-bottom: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--zn-border);
   vertical-align: middle;
 }
 
@@ -154,7 +154,7 @@ table.character-table tr {
 }
 
 .mobile-character-card {
-  background: var(--bg-primary);
+  background: var(--zn-bg-secondary);
   border-radius: 14px;
   padding: 1.2rem 1rem;
   margin-bottom: 1.5rem;
@@ -230,7 +230,7 @@ table.character-table tr {
   gap: 1.2rem;
   margin-top: 0.5rem;
   font-size: 1.05em;
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-weight: 500;
   flex-wrap: wrap;
 }
@@ -240,7 +240,7 @@ table.character-table tr {
   gap: 1.2rem;
   margin-top: 0.2rem;
   font-size: 0.98em;
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-weight: 500;
 }
 

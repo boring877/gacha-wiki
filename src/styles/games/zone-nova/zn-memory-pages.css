@@ -527,7 +527,7 @@
 
 .memory-subtitle {
   font-size: var(--text-lg);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   margin: 0 0 1.5rem 0;
   position: relative;
   z-index: 1;
@@ -547,9 +547,9 @@
 .memory-content-section {
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%);
+  background: linear-gradient(135deg, var(--zn-bg-primary) 0%, var(--zn-bg-tertiary) 100%);
   border-radius: 12px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
   transition: all 0.3s ease;
 }
 
@@ -597,9 +597,9 @@
 .memory-stat-item {
   text-align: center;
   padding: 1rem;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--neutral-50) 100%);
+  background: linear-gradient(135deg, var(--zn-bg-primary) 0%, var(--zn-bg-tertiary) 100%);
   border-radius: 12px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
   min-height: 80px;
   display: flex;
   flex-direction: column;
@@ -622,7 +622,7 @@
 
 .memory-stat-label {
   font-size: var(--text-sm);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-weight: var(--font-semibold);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -649,12 +649,12 @@
 }
 
 .memory-effect-item {
-  background: linear-gradient(135deg, var(--neutral-50) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(135deg, var(--zn-bg-tertiary) 0%, var(--zn-bg-primary) 100%);
   padding: 1.5rem;
   margin: 1rem 0;
   border-radius: 12px;
   border-left: 4px solid var(--teal-crystal);
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
   position: relative;
   transition: all 0.3s ease;
   font-size: var(--text-base);
@@ -769,7 +769,7 @@
 
 /* ===== GENERAL TEXT STYLING ===== */
 p {
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   line-height: 1.6;
   margin-bottom: 0.75rem;
 }
@@ -781,7 +781,7 @@ strong {
 /* ===== UTILITY COMPONENTS ===== */
 /* Warning Box */
 .warning-box {
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.1) 0%, var(--neutral-50) 100%);
+  background: linear-gradient(135deg, rgba(255, 183, 77, 0.1) 0%, var(--zn-bg-tertiary) 100%);
   border: 1px solid var(--amber-glow);
   border-radius: 12px;
   padding: 1.5rem;
@@ -795,7 +795,7 @@ strong {
 
 /* Memory Card Title */
 .memory-card-title {
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
 }
 
 /* ===== RESPONSIVE DESIGN FOR PREMIUM LAYOUT ===== */

@@ -17,7 +17,7 @@
 
 .redeem-codes-description {
   font-size: var(--text-lg);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   line-height: var(--leading-relaxed);
   max-width: 60rem;
   margin: 0 auto 2rem;
@@ -25,7 +25,7 @@
 
 /* Warning Card - Zone Nova Style */
 .redeem-codes-warning {
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   border: 1px solid var(--amber-glow);
   border-radius: 20px;
   padding: 2rem;
@@ -55,7 +55,7 @@
 }
 
 .redeem-codes-warning p {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   line-height: var(--leading-relaxed);
   margin: 0;
   font-size: var(--text-base);
@@ -82,7 +82,7 @@
 
 .section-description {
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   margin-bottom: 2rem;
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
@@ -112,14 +112,14 @@
 /* Codes Table Design */
 .redeem-codes-table {
   width: 100%;
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
 }
 
 .redeem-codes-table-header {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(28, 28, 28, 0.95) 100%);
+  background: linear-gradient(135deg, var(--zn-bg-primary) 0%, rgba(28, 28, 28, 0.95) 100%);
   padding: 1.5rem 2rem;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -144,7 +144,7 @@
   grid-template-columns: 2fr 1fr 1fr;
   gap: 2rem;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--neutral-100);
+  border-bottom: 1px solid var(--zn-bg-hover);
   transition: all 0.3s ease;
   position: relative;
   align-items: center;
@@ -174,7 +174,7 @@
 }
 
 .code-display {
-  background: var(--bg-dark);
+  background: var(--zn-bg-primary);
   padding: 0.75rem 1.5rem;
   border-radius: 10px;
   position: relative;
@@ -192,7 +192,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-base);
   font-weight: var(--font-bold);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
   letter-spacing: 1px;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -254,7 +254,7 @@
 }
 
 .date-cell {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-size: var(--text-sm);
   text-align: center;
 }
@@ -268,8 +268,8 @@
 }
 
 .redeem-code-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-200);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
   border-radius: 16px;
   padding: 1.5rem;
   transition: all 0.3s ease;
@@ -305,7 +305,7 @@
 
 .code-label {
   font-size: var(--text-xs);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.25rem;
@@ -315,7 +315,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   letter-spacing: 1px;
   word-break: break-all;
   overflow-wrap: break-word;
@@ -343,7 +343,7 @@
 }
 
 .code-date {
-  color: var(--text-muted);
+  color: var(--zn-text-muted);
   font-size: var(--text-xs);
 }
 
@@ -353,8 +353,8 @@
 }
 
 .copy-button {
-  background: var(--bg-dark);
-  color: var(--text-inverse);
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-primary);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
@@ -379,7 +379,7 @@
 }
 
 .redeem-instructions-card {
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   border: 1px solid var(--amber-glow);
   border-radius: 20px;
   padding: 3rem;
@@ -409,7 +409,7 @@
 .redeem-instruction-step {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--zn-border);
 }
 
 .redeem-instruction-step:last-child {
@@ -426,13 +426,13 @@
 }
 
 .redeem-instruction-step p {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   margin-bottom: 1.5rem;
   line-height: var(--leading-relaxed);
 }
 
 .redeem-step-list {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   line-height: var(--leading-relaxed);
   margin-bottom: 1.5rem;
 }
@@ -443,8 +443,8 @@
 }
 
 .redeem-instruction-image {
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-200);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
@@ -461,14 +461,14 @@
 .redeem-empty-section {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   border: 1px solid var(--teal-crystal);
   border-radius: 15px;
   margin: 2rem 0;
 }
 
 .redeem-empty-message {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-size: var(--text-lg);
   margin: 0;
   font-style: italic;
@@ -476,7 +476,7 @@
 
 /* Community Section - Zone Nova Style */
 .redeem-community-card {
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   border: 1px solid var(--teal-crystal);
   border-radius: 20px;
   padding: 3rem;
@@ -522,7 +522,7 @@
 
 .redeem-contribute-btn {
   background: var(--amber-glow);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
   border: 2px solid var(--amber-glow);
 }
 

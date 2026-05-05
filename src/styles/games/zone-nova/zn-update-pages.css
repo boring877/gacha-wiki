@@ -9,7 +9,7 @@
 .zone-nova-main .tldr-section a,
 .zone-nova-main .info-card a,
 .zone-nova-main .collapsible-inner a {
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--teal-crystal);
 }
@@ -27,7 +27,7 @@
 
 .source-text {
   text-align: center;
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   font-style: italic;
   margin: 0;
 }
@@ -39,18 +39,18 @@
 
 /* ===== CONTENT SECTIONS ===== */
 .content-section {
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   padding: 3rem;
   border-radius: 20px;
   margin-bottom: 3rem;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
 }
 
 .section-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: var(--font-bold);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
   margin: 0 0 2rem 0;
   text-align: center;
   line-height: var(--leading-tight);
@@ -64,7 +64,7 @@
 }
 
 .tldr-section li {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   padding: 1.5rem;
   margin-bottom: 1rem;
   border-radius: 12px;
@@ -72,7 +72,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
 }
 
 .tldr-section li:last-child {
@@ -81,10 +81,10 @@
 
 /* ===== OFFICIAL SECTION ===== */
 .official-section .info-card {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   padding: 2rem;
   border-radius: 12px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
 }
 
 .official-section p {
@@ -92,7 +92,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
 }
 
 .official-section p:last-child {
@@ -101,10 +101,10 @@
 
 /* ===== INFO CARD ===== */
 .info-card {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   padding: 2rem;
   border-radius: 12px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
 }
 
 /* ===== RESPONSIVE VISIBILITY ===== */
@@ -118,22 +118,22 @@
 
 /* ===== COLLAPSIBLE SECTIONS ===== */
 .collapsible-section {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   border-radius: 12px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
   overflow: hidden;
 }
 
 .collapsible-header {
   width: 100%;
   padding: 1rem 1.5rem;
-  background: var(--neutral-100);
+  background: var(--zn-bg-hover);
   border: none;
   text-align: left;
   font-family: var(--font-primary);
   font-size: var(--text-base);
   font-weight: var(--font-medium);
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -169,10 +169,10 @@
 }
 
 .data-item {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid var(--neutral-200);
+  border: 1px solid var(--zn-border);
   text-align: center;
 }
 
@@ -180,7 +180,7 @@
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   margin-bottom: 0.5rem;
@@ -319,11 +319,11 @@
 
 @media (prefers-contrast: high) {
   .section-title {
-    color: var(--text-inverse) !important;
+    color: var(--zn-text-primary) !important;
   }
 
   .data-value {
-    color: var(--text-inverse) !important;
+    color: var(--zn-text-primary) !important;
   }
 }
 
@@ -381,7 +381,7 @@
 .content-section-header {
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   margin-top: 2rem !important;
   margin-bottom: 1rem !important;
   border-bottom: 2px solid var(--teal-crystal);

@@ -1,7 +1,7 @@
 /* Zone Nova Updates Page Styles */
 
 .content-section {
-  background: var(--bg-secondary);
+  background: var(--zn-bg-secondary);
   padding: 3rem;
   border-radius: 20px;
   margin-bottom: 3rem;
@@ -19,7 +19,7 @@
 }
 
 .section-description {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-family: var(--font-primary);
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
@@ -55,12 +55,12 @@
 .search-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--neutral-300);
+  border: 1px solid var(--zn-border-light);
   border-radius: 8px;
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-primary);
   min-height: 48px; /* Minimum touch target size */
   -webkit-appearance: none; /* Remove iOS styling */
   appearance: none; /* Standard property for compatibility */
@@ -78,8 +78,8 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-300);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border-light);
   border-top: none;
   border-radius: 0 0 8px 8px;
   z-index: var(--z-navigation-dropdown);
@@ -93,8 +93,8 @@
   cursor: pointer;
   font-family: var(--font-primary);
   font-size: var(--text-sm);
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--neutral-100);
+  color: var(--zn-text-secondary);
+  border-bottom: 1px solid var(--zn-bg-hover);
 }
 
 .suggestion-item:last-child {
@@ -104,7 +104,7 @@
 .search-btn {
   padding: 0.75rem 1.5rem;
   background: var(--teal-crystal);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
   border: none;
   border-radius: 8px;
   font-family: var(--font-primary);
@@ -119,8 +119,8 @@
 
 .clear-search-btn {
   padding: 0.75rem 1rem;
-  background: var(--neutral-300);
-  color: var(--text-primary);
+  background: var(--zn-border-light);
+  color: var(--zn-text-primary);
   border: none;
   border-radius: 8px;
   font-family: var(--font-primary);
@@ -140,12 +140,12 @@
 .filter-select {
   width: 100%;
   padding: 0.75rem 2.5rem 0.75rem 1rem;
-  border: 1px solid var(--neutral-300);
+  border: 1px solid var(--zn-border-light);
   border-radius: 8px;
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-primary);
   cursor: pointer;
   min-height: 48px; /* Minimum touch target size */
   -webkit-appearance: none; /* Remove iOS styling */
@@ -164,12 +164,12 @@
 
 /* Results Info */
 .results-info {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   margin-bottom: 1.5rem;
   padding: 0.75rem 1rem;
-  background: var(--neutral-50);
+  background: var(--zn-bg-tertiary);
   border-radius: 8px;
 }
 
@@ -189,10 +189,10 @@
 .no-results {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-200);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
   border-radius: 12px;
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
 }
 
 .no-results p {
@@ -203,7 +203,7 @@
 }
 
 .no-results p:first-child {
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   font-weight: var(--font-medium);
   font-size: var(--text-lg);
 }
@@ -220,10 +220,10 @@
 
 .pagination-btn {
   padding: 0.75rem 1.5rem;
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-300);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border-light);
   border-radius: 8px;
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   text-decoration: none;
   font-family: var(--font-primary);
   font-size: var(--text-base);
@@ -238,10 +238,10 @@
 
 .pagination-number {
   padding: 0.5rem 0.75rem;
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-300);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border-light);
   border-radius: 6px;
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   text-decoration: none;
   font-family: var(--font-primary);
   font-size: var(--text-sm);
@@ -251,13 +251,13 @@
 
 .pagination-number.active {
   background: var(--amber-glow);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
   border-color: var(--amber-glow);
 }
 
 .patch-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--neutral-200);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
   border-radius: 12px;
   padding: 0;
   text-decoration: none;
@@ -278,8 +278,8 @@
 /* Card Header */
 .patch-card-header {
   padding: 1.5rem 1.5rem 0 1.5rem;
-  border-bottom: 1px solid var(--neutral-100);
-  background: var(--neutral-50);
+  border-bottom: 1px solid var(--zn-bg-hover);
+  background: var(--zn-bg-tertiary);
 }
 
 .patch-header-top {
@@ -312,26 +312,26 @@
 /* Tag Colors */
 .update-tag.maintenance {
   background: linear-gradient(135deg, var(--teal-crystal), #00bcd4);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
 }
 
 .update-tag.event {
   background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
 }
 
 .update-tag.recruitment {
   background: linear-gradient(135deg, var(--amber-glow), #ffa726);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
 }
 
 .update-tag.announcement {
   background: linear-gradient(135deg, #9c27b0, #ba68c8);
-  color: var(--text-inverse);
+  color: var(--zn-text-primary);
 }
 
 .patch-card h2 {
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
@@ -341,7 +341,7 @@
 }
 
 .patch-date {
-  color: var(--text-muted);
+  color: var(--zn-text-muted);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
@@ -364,7 +364,7 @@
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   letter-spacing: var(--tracking-normal);
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
 }
 
 /* Mobile Responsive */

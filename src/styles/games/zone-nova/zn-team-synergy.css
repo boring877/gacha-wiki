@@ -50,8 +50,8 @@
 .filter-select,
 .sort-btn {
   padding: 0.4rem 0.7rem;
-  background: var(--bg-primary);
-  color: var(--text-secondary);
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-secondary);
   border-radius: 8px;
   border: 1px solid var(--mocha-mousse);
   font-size: 0.8rem;
@@ -98,7 +98,7 @@ table.team-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   border-radius: 12px;
   font-family: var(--font-display), sans-serif;
 }
@@ -107,7 +107,7 @@ table.team-table th,
 table.team-table td {
   padding: 1rem 0.6rem;
   text-align: center;
-  border-bottom: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--zn-border);
   vertical-align: middle;
 }
 
@@ -291,7 +291,7 @@ table.team-table td:nth-child(8) {
 }
 
 .team-tier-badge.situational {
-  background: linear-gradient(135deg, var(--mocha-mousse), var(--neutral-300));
+  background: linear-gradient(135deg, var(--mocha-mousse), var(--zn-border-light));
   color: #000;
   font-weight: 600;
   font-size: 0.7rem;
@@ -327,7 +327,7 @@ table.team-table td:nth-child(8) {
   padding: 0.15rem 0.35rem;
   background: rgba(255, 183, 77, 0.1);
   border-radius: 6px;
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   font-weight: 500;
   text-align: center;
   max-width: 80px;
@@ -406,7 +406,7 @@ table.team-table td:nth-child(8) {
 }
 
 .mobile-team-card {
-  background: var(--bg-primary);
+  background: var(--zn-bg-primary);
   border-radius: 14px;
   padding: 1.2rem 1rem;
   margin-bottom: 1.5rem;
@@ -476,7 +476,7 @@ table.team-table td:nth-child(8) {
   font-size: 0.7rem;
   font-weight: 700;
   z-index: 1;
-  border: 2px solid var(--bg-primary);
+  border: 2px solid var(--zn-bg-primary);
 }
 
 .mobile-character-portrait {
@@ -492,7 +492,7 @@ table.team-table td:nth-child(8) {
   padding: 0.2rem 0.4rem;
   background: rgba(255, 183, 77, 0.1);
   border-radius: 4px;
-  color: var(--text-primary);
+  color: var(--zn-text-primary);
   font-weight: 500;
   text-align: center;
   max-width: 70px;
@@ -503,7 +503,7 @@ table.team-table td:nth-child(8) {
 }
 
 .mobile-card-notes {
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-size: 0.85rem;
   line-height: 1.4;
   margin-top: 1rem;
@@ -527,7 +527,7 @@ table.team-table td:nth-child(8) {
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--zn-text-secondary);
   font-style: italic;
   border: 1px dashed rgba(255, 183, 77, 0.2);
 }
