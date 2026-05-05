@@ -24,7 +24,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'trish', 'diana', 'sarka'],
+        characters: ['teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'sarka'],
       },
       {
         tier: 'S',
@@ -105,7 +105,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'the_strongest_witch_shaharl',
           'kaguya',
           'mischievous_mermaid_princess_lorelia',
-          'samurai_cow_girl_setsuka',
           'katisha',
           'magdalena',
         ],
