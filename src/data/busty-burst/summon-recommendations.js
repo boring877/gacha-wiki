@@ -3,6 +3,34 @@
 
 export const summonRecommendations = [
   {
+    bannerId: 'banner-paladin-introduction-diana',
+    character: 'Diana & Zilka',
+    characterSlug: 'diana',
+    bannerType: 'Paladin Introduction',
+    startDate: '2026-05-05',
+    endDate: '2026-05-19',
+    verdict: 'consider',
+    summary: 'Zilka has the highest damage ultimate multiplier in the game at 2170% +1000. Diana is a strong physical attacker with Silence on ult. Sarka is free from the event. Worth considering if you need physical DPS.',
+    reasons: [
+      {
+        title: 'Zilka: Highest Damage Ult in Game',
+        text: 'Zilka\'s rank 5 ultimate hits for 2170% +1000, the highest damage multiplier of any non-healing ultimate. Combined with her self-buff skill, she can output massive burst damage.',
+      },
+      {
+        title: 'Diana: Solid Physical DPS',
+        text: 'Diana brings strong single-target physical damage with Silence and Physical DEF down on her ultimate, making her great for boss content.',
+      },
+      {
+        title: 'Sarka Is Free',
+        text: 'Sarka is the SR unit on this banner and you get her for free from the event. She also brings Physical DEF down on skill, decent for an SR.',
+      },
+      {
+        title: 'Half Anniversary Is Coming Soon',
+        text: 'Half-anniversary is right around the corner. Expect limited units, free pulls, and big rewards. Consider carefully before spending heavily here.',
+      },
+    ],
+  },
+  {
     bannerId: 'magdalena-2108',
     character: 'Magdalena',
     characterSlug: 'magdalena',

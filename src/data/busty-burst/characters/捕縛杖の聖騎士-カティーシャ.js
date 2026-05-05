@@ -265,7 +265,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15), Physical Critical Damage+ (+200%)",
+      "effect": "Action Speed + (+15), Physical Critical Damage+ (+10%)",
       "effectValues": [
         {
           "name": "Action Speed +",
@@ -274,7 +274,7 @@ export const skills = {
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 200,
+          "value": 10,
           "type": "percent"
         }
       ]
@@ -283,7 +283,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
@@ -292,7 +292,7 @@ export const skills = {
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 90,
+          "value": 4.5,
           "type": "percent"
         }
       ]

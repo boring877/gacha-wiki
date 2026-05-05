@@ -91,11 +91,8 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
 
   // Apply highlights in a specific order to avoid conflicts
   const highlightOrder = [
-    { key: 'effects', className: 'zn-highlight-effects' },
     { key: 'damage', className: 'zn-highlight-damage' },
-    { key: 'buffsDebuffs', className: 'zn-highlight-buffs' },
-    { key: 'attributes', className: 'zn-highlight-attributes' },
-    { key: 'keywords', className: 'zn-highlight-keywords' },
+    { key: 'status', className: 'zn-highlight-status' },
     { key: 'numbers', className: 'zn-highlight-numbers' },
   ];
 
@@ -218,17 +215,11 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
  */
 export const defaultZNHighlightPatterns = {
   damage:
-    /\b(?:\d{1,4}%\s+attack\s+power|holy\s+damage|fire\s+damage|ice\s+frost\s+damage|ice\s+damage|wind\s+damage|chaos\s+damage|damage|attack\s+power|original\s+attack\s+damage)\b/gi,
-  effects:
-    /(?:reduces?\s+enemy.*?by\s+\d+%|increases?\s+.*?by\s+\d+%|grants?\s+.*?for\s+\d+.*?seconds?|enters?\s+\[.*?\]\s+state|【.*?】State|become\s+\d+-stage\s+attacks?|Golden\s+Desire|Ice\s+Star)/gi,
-  buffsDebuffs:
-    /\b(?:shield|buff|debuff|heal|healing|recovery|stun|freeze|burn|poison|charm|taunt|weakness|vulnerability|immunity|resistance|regeneration|overflow|critical\s+hit|penetration|attack\s+speed|base\s+attack\s+speed)\b/gi,
+    /\b(?:\d{1,4}(?:\.\d+)?%?\s+attack\s+power|holy\s+(?:damage|resistance)|fire\s+(?:damage|resistance)|ice\s+(?:frost\s+)?(?:damage|resistance)|wind\s+(?:damage|resistance)|chaos\s+(?:damage|resistance)|elemental\s+resistance(?:\s+penetration)?|all\s+resistance|original\s+attack\s+damage|normal\s+attack\s+damage|ultimate\s+damage|skill\s+damage|continuous\s+damage|damage\s+(?:reduction|taken|dealt))\b/gi,
+  status:
+    /\[.+?\]|【.+?】/g,
   numbers:
-    /\b(?:\d{1,4}%|\d{1,3}\.?\d?\s*s|\d{1,3}\s+seconds?|\d{1,3}\s+rounds?|\d{1,2}\s+turns?|\d{1,2}\s+enemies?|cooldown:\s+\d+\.?\d?\s*s|\d{1,2}m\s+range|\d+-stage\s+attacks?)\b/gi,
-  keywords:
-    /\b(?:deals?|inflicts?|grants?|restores?|applies?|removes?|blocks?|gains?|loses?|activates?|triggers?|casts?|channels?|summons?|enhances?|reduces?|increases?|lasting|duration|while|when|after|until|once|every|maximum|equal\s+to|up\s+to|designated|target|enemy|ally|allies|additionally\s+hit|counts\s+as|cannot\s+use|stacks?|layers?|centered\s+on\s+self|nearby\s+enemies|automatically\s+exits|re-cast|while\s+in|stacking\s+up)\b/gi,
-  attributes:
-    /\b(?:HP|health|attack|defense|speed|accuracy|evasion|crit\s+rate|crit\s+dmg|AP|MP|energy|holy|fire|ice|wind|chaos|element|elemental|resistance|penetration|critical\s+rate|critical\s+damage|normal\s+attack\s+damage)\b/gi,
+    /\b\d{1,4}(?:\.\d+)?%|\b\d{1,4}(?:\.\d+)?\s*(?:seconds?|s\b|times?|stacks?|layers?|rounds?|turns?|hits?|points?)|\b\d{1,4}(?:\.\d+)?\b/gi,
 };
 
 /**

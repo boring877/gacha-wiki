@@ -6,7 +6,7 @@ export const info = {
   "name": "Sarka",
   "displayName": "Sarka",
   "baseName": "Sarka",
-  "title": null,
+  "title": "The Dream-Shattering Academy Wrecker",
   "rarity": "SR",
   "element": "Water",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Sarka",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "Possessing power on par with a Bottom Class Paladin, yet never having trained at any academy. After challenging numerous training institutes, she finally arrives at the Hagan Academy--where the protagonist serves as co-representative--.",
   "profile": {
     "height": "169cm",
     "bust": "104cm (K Cup)",
@@ -40,8 +40,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "event",
+    "source": "Paladin Introduction Event (Free)"
   },
   "characterId": 2116
 };
@@ -95,16 +95,16 @@ export const skills = {
       "slot": 2,
       "name": "Slash!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
+      "description": "Deals 270% ATK +150 physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals 270% ATK +150 physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals 270% ATK +1722 physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "270% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "270% + 150",
-      "lvl90": "270% + -28",
+      "lvl90": "270% + 1722",
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -123,9 +123,9 @@ export const skills = {
       "slot": 3,
       "name": "Pierce through!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals 220% ATK +70 physical damage to the nearest enemy, guaranteed hit",
+      "descriptionLv1": "Deals 220% ATK +70 physical damage to the nearest enemy, guaranteed hit",
+      "descriptionLv90": "Deals 220% ATK +2295 physical damage to the nearest enemy, guaranteed hit",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "220% ATK",
@@ -142,7 +142,7 @@ export const skills = {
       "rank": 1,
       "name": "Sky Fall",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy",
+      "description": "Deals 1000% +600 physical damage to the nearest enemy",
       "effect": "1000% + 600",
       "buffEffects": []
     },
@@ -150,7 +150,7 @@ export const skills = {
       "rank": 2,
       "name": "Sky Fall",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy",
+      "description": "Deals 1200% +800 physical damage to the nearest enemy",
       "effect": "1200% + 800",
       "buffEffects": []
     },
@@ -158,7 +158,7 @@ export const skills = {
       "rank": 3,
       "name": "Sky Fall",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy",
+      "description": "Deals 1350% +950 physical damage to the nearest enemy",
       "effect": "1350% + 950",
       "buffEffects": []
     },
@@ -166,7 +166,7 @@ export const skills = {
       "rank": 4,
       "name": "Sky Fall",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy",
+      "description": "Deals 1450% +1100 physical damage to the nearest enemy",
       "effect": "1450% + 1100",
       "buffEffects": []
     },
@@ -174,7 +174,7 @@ export const skills = {
       "rank": 5,
       "name": "Sky Fall",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy",
+      "description": "Deals 1550% +1200 physical damage to the nearest enemy",
       "effect": "1550% + 1200",
       "buffEffects": []
     }
@@ -246,7 +246,7 @@ export const stats = {
   "characterId": 2116,
   "name": "Sarka",
   "rarity": "SR",
-  "element": "水",
+  "element": "Water",
   "weapon": "",
   "role": "Attacker",
   "tags": [

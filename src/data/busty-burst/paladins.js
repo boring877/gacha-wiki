@@ -1131,6 +1131,36 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Tank',
     tier: 'A',
   },
+  {
+    id: 'diana',
+    characterId: 2114,
+    name: 'Diana',
+    fileName: 'Diana',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'zilka',
+    characterId: 2115,
+    name: 'Zilka',
+    fileName: 'Zilka',
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'sarka',
+    characterId: 2116,
+    name: 'Sarka',
+    fileName: 'Sarka',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'A',
+  },
 ];
 
 export const getPaladinById = id => {

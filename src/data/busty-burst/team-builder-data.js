@@ -73,6 +73,11 @@ const TEAM_BUILDER_SLUG_MAP = {
   'lycorys': 'lycorys',
   'katisha': 'katisha',
 
+  // Paladin Introduction
+  'diana': 'diana',
+  'zilka': 'zilka',
+  'sarka': 'sarka',
+
   // SR Characters
   'gladys': 'gladys',
   'emelaria': 'emelaria',
@@ -208,6 +213,11 @@ const CHARACTER_ID_MAP = {
   'trish': 2105,
   'lycorys': 2106,
   'katisha': 2107,
+
+  // Paladin Introduction
+  'diana': 2114,
+  'zilka': 2115,
+  'sarka': 2116,
 
   // SR Characters
   'gladys': 2005,
@@ -1727,6 +1737,51 @@ const SKILL_CATEGORIES = {
         { stat: 'Dispel', value: '3 seconds' },
         { stat: 'Magic DEF', value: 'DOWN' },
         { stat: 'HP Regen', value: 'UP (self)' },
+      ],
+    },
+  },
+  diana: {
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: '+20%+40 (self)' },
+        { stat: 'Accuracy', value: '+11 (self)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Silence', value: '7 seconds' },
+        { stat: 'Physical DEF', value: '-20% to -35%' },
+      ],
+    },
+  },
+  zilka: {
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: '+20%+40 (self)' },
+        { stat: 'Accuracy', value: '+11 (self)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Dispel', value: '5 seconds' },
+        { stat: 'Block', value: '-25' },
+      ],
+    },
+  },
+  sarka: {
+    skill2: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Physical DEF', value: '-18%-30' },
       ],
     },
   },

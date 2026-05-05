@@ -6,7 +6,7 @@ export const info = {
   "name": "Diana",
   "displayName": "Diana",
   "baseName": "Diana",
-  "title": null,
+  "title": "The Nursing Dual Swordswoman",
   "rarity": "SSR",
   "element": "Light",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Diana",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "Her husband was a Paladin of Hagan and a formal instructor at a swordsmanship training academy. Her stepdaughter is also a Paladin, but her refusal to accept her as a mother has caused her deep pain. Then, her husband suddenly passes away. And amid the struggle with her stepdaughter over leadership of the academy, a challenger appears--one even more powerful than herself--.",
   "profile": {
     "height": "175cm",
     "bust": "105cm (M Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Paladin Introduction Banner"
   },
   "characterId": 2114
 };
@@ -96,9 +96,9 @@ export const skills = {
       "slot": 2,
       "name": "Rathbrink Style - Flourishing Sun",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "descriptionLv1": "Deals physical damage to the nearest enemy",
-      "descriptionLv90": "Deals physical damage to the nearest enemy",
+      "description": "Deals 390% ATK +200 physical damage to the nearest enemy",
+      "descriptionLv1": "Deals 390% ATK +200 physical damage to the nearest enemy",
+      "descriptionLv90": "Deals 390% ATK +2870 physical damage to the nearest enemy",
       "target": "Nearest Enemy",
       "castTime": 0.81,
       "damageScaling": "390% ATK",
@@ -113,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Sword Aura Release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
+      "description": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack +20% and +850 UP to self for 12 seconds and Accuracy +23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.81,
       "damageScaling": null,
@@ -151,7 +151,7 @@ export const skills = {
       "rank": 1,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts 5s Silence and Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "1300% + 700",
       "buffEffects": [
         {
@@ -172,7 +172,7 @@ export const skills = {
       "rank": 2,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Silence for and Physical Defense DOWN(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts 6s Silence and Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1560% + 900",
       "buffEffects": [
         {
@@ -193,7 +193,7 @@ export const skills = {
       "rank": 3,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Silence for and Physical Defense DOWN(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts 6s Silence and Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1760% + 1050",
       "buffEffects": [
         {
@@ -214,7 +214,7 @@ export const skills = {
       "rank": 4,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy, inflict7s Silence for and Physical Defense DOWN(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts 7s Silence and Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1900% + 1100",
       "buffEffects": [
         {
@@ -235,7 +235,7 @@ export const skills = {
       "rank": 5,
       "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy, inflict7s Silence for and Physical Defense DOWN(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts 7s Silence and Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "2039% + 1200",
       "buffEffects": [
         {
@@ -276,7 +276,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
@@ -285,7 +285,7 @@ export const skills = {
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 90,
+          "value": 4.5,
           "type": "percent"
         }
       ]
@@ -326,7 +326,7 @@ export const stats = {
   "characterId": 2114,
   "name": "Diana",
   "rarity": "SSR",
-  "element": "聖",
+  "element": "Light",
   "weapon": "",
   "role": "Attacker",
   "tags": [

@@ -294,8 +294,8 @@ export const skills = {
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 60,
-          "type": "flat"
+          "value": 3,
+          "type": "percent"
         },
         {
           "name": "Physical Critical Damage+",

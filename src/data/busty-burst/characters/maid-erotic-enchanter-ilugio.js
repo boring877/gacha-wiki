@@ -275,11 +275,11 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Holy Type ATK +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+90%), Holy Type ATK + (+5%)",
+      "effect": "Physical Critical Damage+ (+4.5%), Holy Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 90,
+          "value": 4.5,
           "type": "percent"
         },
         {

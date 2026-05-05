@@ -5,7 +5,36 @@
  */
 
 export const bannerTimelineData = [
-  // #18 - Magdalena (Apr 28 - May 5) - CURRENT
+  // #19 - Paladin Introduction - Diana, Zilka, Sarka (May 5 - May 19) - CURRENT
+  {
+    id: 'paladin-introduction-diana-2026',
+    title: '"Paladin Introduction" Event Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Diana',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Zilka',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Sarka',
+        rarity: 'SR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-05-05T03:00:00Z',
+    endDate: '2026-05-19T03:00:00Z',
+    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Diana, the Nursing Dual Swordswoman. Zilka, the Dual Swordswoman Who Defies Her Mother and the Head. Sarka, the Dream-Shattering Academy Wrecker.',
+    note: 'Diana (SSR Light Physical Attacker), Zilka (SSR Water Physical Attacker), and Sarka (SR Water Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'banner-paladin-introduction-diana',
+  },
+  // #18 - Magdalena (Apr 28 - May 5) - ENDED
   {
     id: 'magdalena-2026',
     title: 'Magdalena Rate Up Summon',
@@ -21,10 +50,10 @@ export const bannerTimelineData = [
     endDate: '2026-05-05T03:00:00Z',
     description: 'Magdalena Rate Up Summon! New Paladin Rate Up! Magdalena, the Sacred Tree Witch.',
     note: 'Magdalena (SSR Wind Magic Tank). Features a unique Magic Wind Tank with Hit-Based Healing Shield, dual ATK debuff, and Dispel ultimate.',
-    status: 'current',
+    status: 'ended',
     image: 'magdalena-2108',
   },
-  // #17 - Paladin Introduction - Trish, Lycorys, Katisha (Apr 21 - May 5) - CURRENT
+  // #17 - Paladin Introduction - Trish, Lycorys, Katisha (Apr 21 - May 5) - ENDED
   {
     id: 'paladin-introduction-trish-2026',
     title: '"Paladin Introduction" Event Summon',
@@ -50,7 +79,7 @@ export const bannerTimelineData = [
     endDate: '2026-05-05T03:00:00Z',
     description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Trish, the Herbalist Who Resembles Someone. Lycorys, the Giggling Alchemist. Katisha, the Stubborn Elite Paladin.',
     note: 'Trish (SSR Mind Physical Support), Lycorys (SSR Dark Physical Attacker), and Katisha (SR Holy Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-paladin-introduction-trish',
   },
   // #16 - Paladin Introduction - Viatrice (Apr 14 - Apr 21) - ENDED

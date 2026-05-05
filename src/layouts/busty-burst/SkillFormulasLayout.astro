@@ -38,20 +38,20 @@ const { title, description, gameTitle, showTitle = true } = Astro.props;
     />
     <slot name="head" />
   </head>
-  <body class="busty-burst-body">
+  <body class="bb-body">
     <CustomScrollbar />
     <!-- Background layers for visual depth -->
     <div class="bg-layer bg-primary"></div>
     <div class="bg-layer bg-accent-1"></div>
     <div class="bg-layer bg-accent-2"></div>
 
-    <div class="busty-burst-content">
+    <div class="bb-content">
       <Header />
       <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="busty-burst" />
       <MobileMenu />
 
-      <div class="busty-burst-container">
-        <main class="busty-burst-main">
+      <div class="bb-container">
+        <main class="bb-main">
           <!-- Title Section -->
           {
             showTitle && gameTitle && (

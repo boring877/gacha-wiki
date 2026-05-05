@@ -285,25 +285,7 @@
   border: 1px solid var(--zn-border);
 }
 
-.skill-card.normal-attack {
-  border-left: 3px solid var(--amber-glow);
-}
 
-.skill-card.auto-skill {
-  border-left: 3px solid var(--teal-crystal);
-}
-
-.skill-card.ultimate {
-  border-left: 3px solid var(--deep-indigo);
-}
-
-.skill-card.passive {
-  border-left: 3px solid var(--rose-quartz);
-}
-
-.skill-card.team-skill {
-  border-left: 3px solid var(--cosmic-purple);
-}
 
 .skill-header {
   display: flex;
@@ -543,7 +525,7 @@
 }
 
 .skill-types-title {
-  color: var(--amber-glow);
+  color: var(--zn-text-primary);
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
 }
@@ -555,26 +537,11 @@
 }
 
 .skill-type-item {
-  background: rgba(255, 183, 77, 0.08);
-  border: 1px solid rgba(255, 183, 77, 0.15);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
   border-radius: 6px;
   padding: 0.5rem;
   text-align: center;
-}
-
-.skill-type-item.auto-skill {
-  background: rgba(0, 172, 193, 0.08);
-  border-color: rgba(0, 172, 193, 0.15);
-}
-
-.skill-type-item.passive {
-  background: rgba(233, 30, 99, 0.08);
-  border-color: rgba(233, 30, 99, 0.15);
-}
-
-.skill-type-item.team-skill {
-  background: rgba(138, 43, 226, 0.08);
-  border-color: rgba(138, 43, 226, 0.15);
 }
 
 .skill-type-name {
@@ -629,7 +596,7 @@
 }
 
 .stat-nodes-title {
-  color: var(--cosmic-purple);
+  color: var(--zn-text-primary);
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
 }
@@ -641,11 +608,11 @@
 }
 
 .stat-grid-item {
-  background: rgba(138, 43, 226, 0.08);
+  background: var(--zn-bg-primary);
   padding: 0.4rem 0.5rem;
   border-radius: 6px;
   text-align: center;
-  border: 1px solid rgba(138, 43, 226, 0.15);
+  border: 1px solid var(--zn-border);
 }
 
 .stat-grid-text {
@@ -658,16 +625,8 @@
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1.5rem;
-}
-
-.node-info-box.teal {
-  background: rgba(0, 172, 193, 0.06);
-  border: 1px solid rgba(0, 172, 193, 0.15);
-}
-
-.node-info-box.amber {
-  background: rgba(255, 183, 77, 0.06);
-  border: 1px solid rgba(255, 183, 77, 0.15);
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
 }
 
 .node-info-text {
@@ -690,23 +649,7 @@
   border: 1px solid var(--zn-border);
 }
 
-.awakening-card.dupe-1,
-.awakening-card.dupe-2 {
-  border-left: 3px solid var(--teal-crystal);
-}
 
-.awakening-card.dupe-3,
-.awakening-card.dupe-5 {
-  border-left: 3px solid var(--amber-glow);
-}
-
-.awakening-card.dupe-4 {
-  border-left: 3px solid var(--rose-quartz);
-}
-
-.awakening-card.dupe-6 {
-  border-left: 3px solid var(--cosmic-purple);
-}
 
 .awakening-header {
   margin-bottom: 0.6rem;
@@ -1236,12 +1179,13 @@
 
 /* Skill Highlighting */
 
-.zn-highlight-damage,
-.zn-highlight-effects,
-.zn-highlight-buffs,
-.zn-highlight-attributes,
-.zn-highlight-keywords {
-  color: #ef5350;
+.zn-highlight-damage {
+  color: var(--teal-crystal);
+  font-weight: 600;
+}
+
+.zn-highlight-status {
+  color: var(--amber-glow);
   font-weight: 600;
 }
 
@@ -1264,7 +1208,7 @@
   padding: 0.75rem 1rem;
   background: rgba(0, 172, 193, 0.06);
   border-radius: 8px;
-  border-left: 3px solid var(--teal-crystal);
+  border-left: none;
 }
 
 .damage-breakdown-container {

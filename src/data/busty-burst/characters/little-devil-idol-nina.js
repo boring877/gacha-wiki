@@ -349,8 +349,8 @@ export const skills = {
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 20,
-          "type": "flat"
+          "value": 1,
+          "type": "percent"
         },
         {
           "name": "Magic Critical Damage+",

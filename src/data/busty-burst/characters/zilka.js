@@ -6,7 +6,7 @@ export const info = {
   "name": "Zilka",
   "displayName": "Zilka",
   "baseName": "Zilka",
-  "title": null,
+  "title": "The Dual Swordswoman Who Defies Her Mother and the Head",
   "rarity": "SSR",
   "element": "Water",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Zilka",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "To Zilka, the protagonist is merely someone who once studied swordsmanship under her father at Hagan's training academy--someone with little talent, and not worthy of respect. And yet, the protagonist has become a co-representative of the academy. Zilka rises in defiance against both him and her mother--but--.",
   "profile": {
     "height": "158cm",
     "bust": "100cm (J Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Paladin Introduction Banner"
   },
   "characterId": 2115
 };
@@ -96,9 +96,9 @@ export const skills = {
       "slot": 2,
       "name": "Rathbrink Style - Flourishing Moon",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy",
-      "descriptionLv1": "Deals physical damage to the nearest enemy",
-      "descriptionLv90": "Deals physical damage to the nearest enemy",
+      "description": "Deals 405% ATK +300 physical damage to the nearest enemy",
+      "descriptionLv1": "Deals 405% ATK +300 physical damage to the nearest enemy",
+      "descriptionLv90": "Deals 405% ATK +2970 physical damage to the nearest enemy",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "405% ATK",
@@ -113,9 +113,9 @@ export const skills = {
       "slot": 3,
       "name": "Sword Aura Release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
+      "description": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack +20% and +850 UP to self for 12 seconds and Accuracy +23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.66,
       "damageScaling": null,
@@ -258,11 +258,11 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Accuracy +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+176%), Accuracy + (+20)",
+      "effect": "Physical Critical Damage+ (+8.8%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 176,
+          "value": 8.8,
           "type": "percent"
         },
         {
@@ -326,7 +326,7 @@ export const stats = {
   "characterId": 2115,
   "name": "Zilka",
   "rarity": "SSR",
-  "element": "水",
+  "element": "Water",
   "weapon": "",
   "role": "Attacker",
   "tags": [

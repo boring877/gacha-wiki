@@ -235,7 +235,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+176%)",
+      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+8.8%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
@@ -244,7 +244,7 @@ export const skills = {
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 176,
+          "value": 8.8,
           "type": "percent"
         }
       ]

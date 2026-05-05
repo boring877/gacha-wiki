@@ -1373,7 +1373,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (b.growth && b.type !== 'percent' && b.flatValue == null) {
             const from = b.value;
             const to = Math.round(b.value + level * b.growth);
-            if (from !== to) pairs.push({ from: String(from), to: String(to) });
+            if (from !== to) pairs.push({ from: (from >= 0 ? '+' : '') + from, to: (to >= 0 ? '+' : '') + to });
           }
           for (const p of pairs) {
             const esc = p.from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
