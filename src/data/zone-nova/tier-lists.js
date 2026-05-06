@@ -65,6 +65,7 @@ export const PVE_TIER_LIST = {
       { name: 'Freya' },
       { name: 'Hela' },
       { name: 'Gaia' },
+      { name: 'Jill' },
       { name: 'Lust - Asmodeus' },
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
@@ -93,7 +94,6 @@ export const PVE_TIER_LIST = {
       { name: 'Shuten-doji' },
       { name: 'Ibaraki-doji' },
       { name: 'Hiyori' },
-      { name: 'Jill' },
     ],
     S: [
       { name: 'Shu' },
@@ -134,7 +134,7 @@ export const PVP_TIER_LIST = {
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Sharin' }, { name: 'Pride-Lucifer' }],
-    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
+    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -150,7 +150,6 @@ export const PVP_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Hela' },
       { name: 'Sigurd' },
-      { name: 'Jill' },
     ],
     S: [
       { name: 'Arthur' },
@@ -187,9 +186,8 @@ export const NEW_PLAYER_TIER_LIST = {
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
-    UR: [{ name: 'Sharin' }],
+    UR: [],
     SSS: [
-      { name: 'Naiya' },
       { name: 'Apollo' },
       { name: 'Afrodite' },
       { name: 'Leviathan' },
@@ -205,7 +203,6 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Zashiki-warashi' },
       { name: 'Horus' },
       { name: 'Hera' },
-      { name: 'Jill' },
     ],
     S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }],
     A: [
