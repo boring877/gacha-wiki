@@ -1,0 +1,160 @@
+{
+  "id": 7102501,
+  "character": "Tyria",
+  "name": "Customized Training to Cover Weaknesses",
+  "slug": "tyria-customized-training-to-cover-weaknesses",
+  "grade": "SSR",
+  "specialTag": "ATK",
+  "classSynergy": "All Classes",
+  "statTag": "Power",
+  "image": "ARCANA_APOSTLE_TYRIA_SSR_01.png",
+  "imageSmall": "ARCANA_APOSTLE_TYRIA_SSR_01_S.png",
+  "characterId": 1025,
+  "episode": "Training is the act of pushing yourself beyond your limits.\n\nEven when you're out of breath and your limbs begin to shake, even when a voice inside you whispers that this is your limit, and even if the process is harsh and tedious... It is a noble act of surpassing yourself little by little, driven solely by the desire to take one more step forward.\n\n'Th-that's enough already...! Stop, please...!!'\n\n...And so, even if all you can do is cry out in frustration, there are moments of growth that can only be reached by continuing forward no matter what.",
+  "promotions": [
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 1000,
+      "addPerValueRate": 16
+    },
+    {
+      "unlockLevel": 1,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Big Success Bonus",
+      "valueRate": 1400,
+      "addPerValueRate": 24
+    },
+    {
+      "unlockLevel": 5,
+      "perLevel": 10,
+      "type": "Journey Start",
+      "valueType": "Arcana Points",
+      "value": 8,
+      "addPerValue": 1
+    },
+    {
+      "unlockLevel": 10,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Condition Efficiency",
+      "valueRate": 450,
+      "addPerValueRate": 20
+    },
+    {
+      "unlockLevel": 25,
+      "perLevel": 1,
+      "type": "Class Training",
+      "valueType": "Class Training Bonus",
+      "value": 225,
+      "addPerValue": 5
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 1,
+      "type": "Training",
+      "valueType": "Training Efficiency",
+      "valueRate": 800
+    },
+    {
+      "unlockLevel": 35,
+      "perLevel": 5,
+      "type": "Training",
+      "valueType": "Stat Gain",
+      "value": 2,
+      "addPerValue": 1,
+      "statTag": "Power"
+    }
+  ],
+  "uniqueEffects": [
+    {
+      "type": "Arcana Point",
+      "cost": 30,
+      "icon": "ICON_ARCANA_UNIQUE_TRAINING.png",
+      "title": "Unveiled Black Wings",
+      "iconType": "Training",
+      "effectType": "Training Efficiency",
+      "valueRate": 800
+    }
+  ],
+  "journeyEvents": [
+    {
+      "cutsceneId": 5102501,
+      "title": "In Search of the Legendary Bird",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 5
+        },
+        {
+          "type": "Condition",
+          "value": 1
+        }
+      ],
+      "reqEventClear": 0
+    },
+    {
+      "cutsceneId": 5102502,
+      "title": "The Customer Is Always Right!",
+      "rewards": [
+        {
+          "type": "Stamina",
+          "value": 15
+        },
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 10
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        },
+        {
+          "type": "Stamina",
+          "value": -5
+        },
+        {
+          "type": "Journey Buff",
+          "value": 3
+        }
+      ],
+      "reqEventClear": 710250101
+    },
+    {
+      "cutsceneId": 5102503,
+      "title": "Would You Be My Scene Partner?",
+      "rewards": [
+        {
+          "type": "Stat",
+          "stat": "Power",
+          "value": 12
+        },
+        {
+          "type": "Stat",
+          "stat": "Health",
+          "value": 8
+        },
+        {
+          "type": "Stamina",
+          "value": 10
+        },
+        {
+          "type": "SE Potential",
+          "value": 0
+        }
+      ],
+      "reqEventClear": 710250102
+    }
+  ]
+}

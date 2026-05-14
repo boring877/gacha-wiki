@@ -25,7 +25,7 @@ export const STAT_ICON_MAP = {
 
 export const ARCANA_TIER_LIST = {
   Power: {
-    SSS: ['lacy-no-pain-no-gain', 'lyn-under-the-glass-moon-over-the-pavilion', 'kyra-as-cute-as-kyra'],
+    SSS: ['lacy-no-pain-no-gain', 'lyn-under-the-glass-moon-over-the-pavilion', 'kyra-as-cute-as-kyra', 'tyria-customized-training-to-cover-weaknesses'],
     SS: ['rosaria-the-end-wears-the-face-of-a-girl', 'frey-the-indomitable-masterpiece', 'muriel-divine-judgement', 'dana-a-stroll-with-friends'],
     S: ['omega-the-imaginary-pioneer', 'scarlet-the-great-and-amazing-bunny-girl', 'charlotte-a-clumsy-way-to-relieve-desire'],
     A: [],

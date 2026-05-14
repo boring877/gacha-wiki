@@ -712,139 +712,6 @@ export const STAR_SAVIOR_CHARACTERS = [
     "adjustType": "NUAT_SUN",
     "statsMax": {
       "ATK": 2552,
-      "HP": 17530,
-      "DEF": 1356,
-      "Crit Rate": 500,
-      "Crit Damage": 5000,
-      "Effect Hit Rate": 10000,
-      "Effect Evasion": 800,
-      "Turn Speed": 95
-    }
-  },
-  {
-    "id": 1501,
-    "name": "Besta",
-    "slug": "besta",
-    "title": "Western Liberators",
-    "role": "Defender",
-    "rarity": "SR",
-    "adjustType": "NUAT_STAR",
-    "statsMax": {
-      "ATK": 2552,
-      "HP": 17530,
-      "DEF": 1356,
-      "Crit Rate": 500,
-      "Crit Damage": 5000,
-      "Effect Hit Rate": 10000,
-      "Effect Evasion": 800,
-      "Turn Speed": 95
-    }
-  },
-  {
-    "id": 1509,
-    "name": "Claire",
-    "slug": "claire-skin",
-    "title": "Candle Square",
-    "role": "Assassin",
-    "rarity": "SR",
-    "adjustType": "NUAT_MOON",
-    "statsMax": {
-      "ATK": 3001,
-      "HP": 15692,
-      "DEF": 1225,
-      "Crit Rate": 500,
-      "Crit Damage": 6800,
-      "Effect Hit Rate": 10000,
-      "Effect Evasion": 1200,
-      "Turn Speed": 90
-    }
-  },
-  {
-    "id": 1511,
-    "name": "Clarissa",
-    "slug": "clarissa",
-    "title": "Canopus Rangers",
-    "role": "Ranger",
-    "rarity": "SR",
-    "adjustType": "NUAT_STAR",
-    "statsMax": {
-      "ATK": 2964,
-      "HP": 15827,
-      "DEF": 1230,
-      "Crit Rate": 1400,
-      "Crit Damage": 6800,
-      "Effect Hit Rate": 10000,
-      "Effect Evasion": 0,
-      "Turn Speed": 100
-    }
-  },
-  {
-    "id": 1506,
-    "name": "Marcille",
-    "slug": "marcille",
-    "title": "Petra Construction",
-    "role": "Assassin",
-    "rarity": "SR",
-    "adjustType": "NUAT_SUN",
-    "statsMax": {
-      "ATK": 3001,
-      "HP": 15692,
-      "DEF": 1225,
-      "Crit Rate": 1700,
-      "Crit Damage": 5000,
-      "Effect Hit Rate": 10000,
-      "Effect Evasion": 0,
-      "Turn Speed": 94
-    }
-  },
-  {
-    "id": 1508,
-    "name": "Naru",
-    "slug": "naru",
-    "title": "Orbital Search Team",
-    "role": "Ranger",
-    "rarity": "SR",
-    "adjustType": "NUAT_STAR",
-    "statsMax": {
-      "ATK": 2964,
-      "HP": 16776,
-      "DEF": 1230,
-      "Crit Rate": 500,
-      "Crit Damage": 5000,
-      "Effect Hit Rate": 11200,
-      "Effect Evasion": 0,
-      "Turn Speed": 100
-    }
-  },
-  {
-    "id": 1510,
-    "name": "Scarlet",
-    "slug": "scarlet-skin",
-    "title": "Candle Square",
-    "role": "Striker",
-    "rarity": "SR",
-    "adjustType": "NUAT_SUN",
-    "statsMax": {
-      "ATK": 2964,
-      "HP": 16776,
-      "DEF": 1230,
-      "Crit Rate": 500,
-      "Crit Damage": 5000,
-      "Effect Hit Rate": 11200,
-      "Effect Evasion": 0,
-      "Turn Speed": 100
-    }
-  },
-  {
-    "id": 1507,
-    "name": "Vera",
-    "slug": "vera",
-    "title": "Courier Guild",
-    "role": "Supporter",
-    "rarity": "SR",
-    "adjustType": "NUAT_MOON",
-    "statsMax": {
-      "ATK": 2552,
       "HP": 17205,
       "DEF": 1331,
       "Crit Rate": 500,
@@ -852,6 +719,25 @@ export const STAR_SAVIOR_CHARACTERS = [
       "Effect Hit Rate": 10000,
       "Effect Evasion": 1600,
       "Turn Speed": 95
+    }
+  },
+  {
+    "id": 1025,
+    "name": "Tyria",
+    "slug": "tyria",
+    "title": "Apostle",
+    "role": "Striker",
+    "rarity": "SSR",
+    "adjustType": "NUAT_SUN",
+    "statsMax": {
+      "ATK": 4069,
+      "HP": 22104,
+      "DEF": 1634,
+      "Crit Rate": 500,
+      "Crit Damage": 5000,
+      "Effect Hit Rate": 10000,
+      "Effect Evasion": 0,
+      "Turn Speed": 100
     }
   }
 ];

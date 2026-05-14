@@ -841,5 +841,17 @@ export const STAR_SAVIOR_ARCANA =
     "statTag": "Health",
     "image": "ARCANA_VOYAGER_STRANIS_R_01.png",
     "imageSmall": "ARCANA_VOYAGER_STRANIS_R_01_S.png"
+  },
+  {
+    "id": 7102501,
+    "character": "Tyria",
+    "name": "Customized Training to Cover Weaknesses",
+    "slug": "tyria-customized-training-to-cover-weaknesses",
+    "grade": "SSR",
+    "specialTag": "ATK",
+    "classSynergy": "All Classes",
+    "statTag": "Power",
+    "image": "ARCANA_APOSTLE_TYRIA_SSR_01.png",
+    "imageSmall": "ARCANA_APOSTLE_TYRIA_SSR_01_S.png"
   }
 ];

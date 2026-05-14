@@ -3,6 +3,78 @@
 
 export const summonRecommendations = [
   {
+    bannerId: 'apostle-tyria',
+    character: 'Tyria',
+    characterSlug: 'tyria',
+    image: 'TN_NEWS_SAVIOR_S_APOSTLE_TYRIA.png',
+    bannerType: 'Featured Observation',
+    startDate: '2026-05-14',
+    endDate: '2026-05-27',
+    verdict: 'skip',
+    verdictLabel: 'Skip',
+    summary: 'Not strong enough to justify pulling. Save for half anniversary. Her arcana, however, is worth one copy.',
+    reasons: [
+      {
+        title: 'Rosaria Deals More Damage',
+        text: 'Rosaria deals more damage, however she is quite strong with her break mechanic which helps you with some of the raids.',
+      },
+      {
+        title: 'Going to Normal Banner',
+        text: 'She\'ll enter the permanent pool after her banner ends. You\'ll get her eventually from normal summon tickets.',
+      },
+      {
+        title: 'Half Anniversary Is Close',
+        text: 'Half anni units are expected to be significantly stronger. Saving your currency now is the smarter play.',
+      },
+    ],
+    arcana: {
+      slug: 'tyria-customized-training-to-cover-weaknesses',
+      name: 'Customized Training to Cover Weaknesses',
+      image: 'ARCANA_APOSTLE_TYRIA_SSR_01.png',
+      verdict: 'summon',
+      verdictLabel: 'Summon 1 Copy',
+      summary: 'Her arcana gives ATK and crit rate, pretty strong for DPS. Worth one copy.',
+      reasons: [
+        {
+          title: 'ATK and Crit Rate',
+          text: 'It gives you ATK and critical rate, pretty strong for DPS.',
+        },
+      ],
+    },
+  },
+  {
+    bannerId: 'flawless-blue-rose-claire',
+    character: 'Claire',
+    characterSlug: 'claire',
+    image: 'TN_NEWS_SAVIOR_S_BUNNY_SPEAR.png',
+    bannerType: 'Featured Observation',
+    startDate: '2026-05-07',
+    endDate: '2026-05-20',
+    verdict: 'skip',
+    verdictLabel: 'Skip',
+    summary: 'Already in the normal banner pool. Save for half anniversary.',
+    reasons: [
+      {
+        title: 'Already in Normal Banner',
+        text: 'Claire is already in the normal banner pool. You can get her from normal summon tickets.',
+      },
+    ],
+    arcana: {
+      slug: 'claire-the-perfect-bunny-girl',
+      name: 'The Perfect Bunny Girl',
+      image: 'ARCANA_BUNNY_SPEAR_SSR_01.png',
+      verdict: 'skip',
+      verdictLabel: 'Skip',
+      summary: 'Already in the normal banner pool.',
+      reasons: [
+        {
+          title: 'Already in Normal Banner',
+          text: 'This arcana is already in the normal banner pool. Save for half anniversary.',
+        },
+      ],
+    },
+  },
+  {
     bannerId: 'independent-vagabond',
     character: 'Fei',
     characterSlug: 'fei',

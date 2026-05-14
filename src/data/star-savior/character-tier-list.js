@@ -5,7 +5,7 @@
 export const CHARACTER_TIER_LIST = {
   Sun: {
     SSS: ['charlotte-skin'],
-    SS: ['hilde', 'kyra', 'harley'],
+    SS: ['hilde', 'kyra', 'harley', 'tyria'],
     S: ['charlotte', 'serpang', 'scarlet', 'petra', 'muriel'],
     A: [],
     B: [],

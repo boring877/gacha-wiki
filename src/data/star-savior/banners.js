@@ -2,7 +2,28 @@
 
 export const banners = [
   {
-    id: 'independent-vagabond',
+    id: 'apostle-tyria',
+    type: 'NEW',
+    character: 'Tyria',
+    arcana: 'Customized Training to Cover Weaknesses',
+    region: 'All',
+    image: 'TN_NEWS_SAVIOR_S_APOSTLE_TYRIA.png',
+    startDate: '2026-05-14',
+    endDate: '2026-05-27',
+    characterSlug: 'tyria',
+  },
+  {
+    id: 'flawless-blue-rose-claire',
+    type: 'RATEUP',
+    character: 'Claire',
+    arcana: 'Featured Observation',
+    region: 'All',
+    image: 'TN_NEWS_SAVIOR_S_BUNNY_SPEAR.png',
+    startDate: '2026-05-07',
+    endDate: '2026-05-20',
+    characterSlug: 'claire',
+  },
+  {
     type: 'NEW',
     character: 'Fei',
     arcana: "Today's Step Forward",
