@@ -1379,6 +1379,41 @@ export const HORIZON_WALKER_CHARACTERS = [
     detailUrl: '/guides/horizon-walker/characters/marhim',
   },
   {
+    id: 55,
+    name: 'Marika',
+    rarity: 'EX',
+    cost: 5,
+    class: 'Warrior',
+    element: 'Physical',
+    faction: 'Independent',
+    role: 'Warrior',
+    tags: [
+      'Warrior',
+      'Greatsword',
+      'Melee Damage',
+      'Slash Damage',
+      'Pierce Damage',
+      'Support Attack',
+      'Reaction Attack',
+      'Pierce Boost',
+      'Pierce DEF Down',
+      'High Mobility',
+      'Critical Damage',
+      'GreatSwordmaster',
+      'Lamora',
+    ],
+    stats: {
+      strength: 14,
+      technic: 4,
+      intelligence: 4,
+      vitality: 7,
+      agility: 10,
+    },
+    image: '/images/games/horizon-walker/characters/Marika.jpg',
+    slug: 'marika',
+    detailUrl: '/guides/horizon-walker/characters/marika',
+  },
+  {
     id: 24,
     name: 'Matrotho',
     rarity: 'EX',
@@ -2581,6 +2616,9 @@ const initializeEXWeapons = () => {
     'TX-Manticore',
     'Yeon Chae-Young',
     'Matrotho',
+
+    // Marika
+    'Marika',
 
     // Additional characters from tier lists
     'Puppy Stepper',

@@ -59,6 +59,7 @@ export const taimaninSquadConfig = {
       id: 'characters',
       title: 'Characters',
       description: 'Character database, lore, stats, and tier rankings',
+      icon: 'Emoticon_1.png',
       size: 'large',
       guides: [
         {
@@ -91,6 +92,7 @@ export const taimaninSquadConfig = {
       id: 'equipment',
       title: 'Equipment',
       description: 'Weapons, skills, and artifacts',
+      icon: 'Emoticon_4.png',
       size: 'medium',
       guides: [
         {
@@ -117,6 +119,7 @@ export const taimaninSquadConfig = {
       id: 'guides',
       title: 'Guides',
       description: 'Game mechanics, skill index, and team building',
+      icon: 'Emoticon_11.png',
       size: 'medium',
       guides: [
         {
@@ -149,6 +152,7 @@ export const taimaninSquadConfig = {
       id: 'resources',
       title: 'Resources',
       description: 'Blog, codes, and useful links',
+      icon: 'Emoticon_5.png',
       size: 'medium',
       guides: [
         {

@@ -448,7 +448,7 @@ export const GIFT_BOXES = [
           max: 30,
         },
       },
-    ],
+],
   },
 ];
 

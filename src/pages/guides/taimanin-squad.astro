@@ -3,6 +3,19 @@ import TaimaninSquadLandingLayout from '../../layouts/taimanin-squad/LandingLayo
 import FormattedDate from '../../components/FormattedDate.astro';
 import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
 import heroImage from '../../assets/images/games/taimanin-squad/gameimg/hero_image.jpg';
+import { Image } from 'astro:assets';
+import { glob } from 'astro:assets';
+
+const emoticons = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/taimanin-squad/emoticons/*.png',
+  { eager: true }
+);
+
+function getEmoticon(filename) {
+  const key = Object.keys(emoticons).find(k => k.includes(`/${filename}`));
+  return key ? emoticons[key].default : null;
+}
+
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups, story } = taimaninSquadConfig;
 
@@ -114,6 +127,15 @@ const breadcrumbs = [
         categoryGroups.map(category => (
           <div class={`ts-resource-category ts-category-${category.size}`}>
             <div class="ts-category-header">
+              {category.icon && getEmoticon(category.icon) && (
+                <Image
+                  src={getEmoticon(category.icon)}
+                  alt=""
+                  width={48}
+                  height={48}
+                  class="ts-category-icon"
+                />
+              )}
               <h3>{category.title}</h3>
               <p class="ts-category-description">{category.description}</p>
             </div>

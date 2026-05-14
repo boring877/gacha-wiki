@@ -7,9 +7,8 @@
 
 ## Build Rules
 
-- Always run `bun run build` before pushing to catch import errors and build failures early
+- **Do NOT run `bun run build` unless explicitly asked** - the user has a dev server running and will test changes themselves
 - Never run build tests unless explicitly asked by the user
-- The user will test changes themselves in the browser
 
 ## Data Entry Rules
 

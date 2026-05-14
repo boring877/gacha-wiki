@@ -14,6 +14,7 @@ export interface Props {
   alt?: string;
   width?: number;
   height?: number;
+  size?: number;
   class?: string;
   variant?: 'base' | 'large';
 }
@@ -21,8 +22,9 @@ export interface Props {
 const {
   icon,
   alt = 'Weapon',
-  width = 40,
-  height = 40,
+  size,
+  width = size ?? 40,
+  height = size ?? 40,
   class: className = '',
   variant = 'base',
 } = Astro.props;

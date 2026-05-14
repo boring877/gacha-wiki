@@ -2574,7 +2574,7 @@ export const HERO_SKILL_NAMES = {
   'Luise': ['FireBall', 'FireBolt', 'SoaringFire'],
   'Mahari': ['StingTheGap', 'ThreatAttack', 'WallOfAnnihilation'],
   'Marhim': ['CatLikeRaid', 'ExecutionOfBloodiness'],
-  'Marika': ['BladeOfColossalStrength'],
+  'Marika': ['BladeOfColossalStrength', 'BloodlineAwakening', 'SwiftSupport', 'SwiftDestruction', 'WeaponMarikaWPC', 'SpecificMarikaOnly'],
   'Matrotho': ['ArmingSwordAttack', 'BladeOfWar'],
   'Maximilia': ['GuardianWall', 'StingTheGap'],
   'Maximilia_Old': ['StingTheGap', 'ThreatAttack'],

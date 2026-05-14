@@ -54,8 +54,32 @@ function findCharacterImage() {
   });
 
   if (matchingImages.length === 0) {
-    // Fallback: return any available image
-    return charImages[0];
+    // Fallback: prefer icon-size (128x128) images as portrait stand-in
+    const iconMatch = charImages.find(key => {
+      const imgMeta = characterImages[key].default;
+      return imgMeta.width === 128 && imgMeta.height === 128;
+    });
+    if (iconMatch) return iconMatch;
+
+    // Otherwise pick largest file
+    let fallbackKey = charImages[0];
+    let fallbackSize = 0;
+
+    for (const key of charImages) {
+      try {
+        const relativePath = key.replace('../../assets/', 'src/assets/');
+        const absolutePath = path.resolve(process.cwd(), relativePath);
+        const stats = fs.statSync(absolutePath);
+        if (stats.size > fallbackSize) {
+          fallbackSize = stats.size;
+          fallbackKey = key;
+        }
+      } catch {
+        // continue
+      }
+    }
+
+    return fallbackKey;
   }
 
   if (matchingImages.length === 1) {
@@ -107,8 +131,6 @@ const imageModule = imageKey ? characterImages[imageKey].default : null;
   .ts-char-icon {
     object-fit: contain;
     border-radius: 8px;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 
   .ts-char-icon-fallback {

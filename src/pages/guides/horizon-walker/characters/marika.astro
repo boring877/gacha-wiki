@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  marikaData,
+  marikaSEO,
+  marikaHighlighting,
+} from '../../../../data/horizon-walker/characters/marika.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={marikaSEO.title}
+  description={marikaSEO.description}
+  gameTitle={marikaData.name}
+  character={marikaData}
+>
+  <CharacterPageTemplate characterData={{ ...marikaData, highlightPatterns: marikaHighlighting }} />
+</CharacterIndividualLayout>

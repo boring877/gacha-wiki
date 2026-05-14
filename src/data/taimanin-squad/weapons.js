@@ -1,5 +1,5 @@
 // Taimanin Squad Weapon Data
-// Generated from game data - 198 weapons
+// Generated from game data - 199 weapons
 
 export const TAIMANIN_SQUAD_WEAPONS =
 [
@@ -2795,6 +2795,27 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "icon": "Weapon_8701.png",
     "large_icon": "Weapon_8701_m.png",
     "portal_summon": true
+  },
+  {
+    "id": 8801,
+    "unit_id": 88,
+    "name": "Savage Scale",
+    "slot": "Weapon 1",
+    "rarity_stars": 3,
+    "opt_type": 10,
+    "opt_type_name": "HP",
+    "opt_value": 47,
+    "bonus_value": 4.7,
+    "skill_id": 8812,
+    "skill_name": "Tbl_UnitSkill_Name_8812",
+    "skill_desc": "Tbl_UnitSkill_Desc_8812",
+    "skill_type": "[Attack Skill]",
+    "skill_icon": "8812",
+    "char_name": "Werewolf",
+    "char_icon": "88_Werewolf",
+    "icon": "Weapon_8801.png",
+    "large_icon": "Weapon_8801_m.png",
+    "portal_summon": false
   },
   {
     "id": 8901,
