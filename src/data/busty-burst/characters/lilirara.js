@@ -6,7 +6,7 @@ export const info = {
   "name": "Lilirara",
   "displayName": "Lilirara",
   "baseName": "Lilirara",
-  "title": null,
+  "title": "The Sweet-Toothed Leopard Beastgirl",
   "rarity": "SSR",
   "element": "Wind",
   "role": "Tank",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Lilirara",
-  "introduction": "Front Row、Physical、Tank",
+  "introduction": "Beast-eared humanoids who stowed away from the continent to Baros Island are commonly known as Beastfolk. Lilirara, a member of the leopard tribe, came to Vern to escape Dominion, a land filled with dangerous humans. However, once word spread that a rare Beastfolk had appeared there, men from all around began gathering in Elron.",
   "profile": {
     "height": "156cm",
     "bust": "93cm (I Cup)",
@@ -40,8 +40,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Paladin Introduction Banner"
   },
   "characterId": 2118
 };

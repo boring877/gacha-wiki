@@ -5,7 +5,64 @@
  */
 
 export const bannerTimelineData = [
-  // #19 - Paladin Introduction - Diana, Zilka, Sarka (May 5 - May 19) - CURRENT
+  // #22 - Lilirara Rate Up (May 26 - Jun 2) - CURRENT
+  {
+    id: 'lilirara-2026',
+    title: 'Lilirara Rate Up Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Lilirara',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+    ],
+    startDate: '2026-05-26T03:00:00Z',
+    endDate: '2026-06-02T03:00:00Z',
+    description: 'Lilirara Rate Up Summon! New Paladin Rate Up! Lilirara, the Sweet-Toothed Leopard Beastgirl.',
+    note: 'Lilirara (SSR Wind Physical Tank). New Paladin will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'banner-lilirara',
+  },
+  // #21 - Lilith Rate Up (May 19 - May 26) - ENDED
+  {
+    id: 'lilith-2026',
+    title: 'Lilith Rate Up Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Lilith',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-05-19T03:00:00Z',
+    endDate: '2026-05-26T03:00:00Z',
+    description: 'Lilith Rate Up Summon! New Paladin Rate Up! Lilith, the Fanatic Believer of the Demon God Cult.',
+    note: 'Lilith (SSR Dark Physical Attacker). New Paladin will be added to the Standard Banner after the event ends.',
+    status: 'ended',
+    image: 'banner-lilith',
+  },
+  // #20 - Priscilla Rate Up (May 12 - May 19) - ENDED
+  {
+    id: 'priscilla-2026',
+    title: 'Priscilla Rate Up Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Priscilla',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-05-12T03:00:00Z',
+    endDate: '2026-05-19T03:00:00Z',
+    description: 'Priscilla Rate Up Summon! New Paladin Rate Up! Priscilla, the Orphan Who Commands Dolls.',
+    note: 'Priscilla (SSR Mind Magic Attacker). New Paladin will be added to the Standard Banner after the event ends.',
+    status: 'ended',
+    image: 'banner-priscilla',
+  },
+  // #19 - Paladin Introduction - Diana, Zilka, Sarka (May 5 - May 19) - ENDED
   {
     id: 'paladin-introduction-diana-2026',
     title: '"Paladin Introduction" Event Summon',
@@ -31,7 +88,7 @@ export const bannerTimelineData = [
     endDate: '2026-05-19T03:00:00Z',
     description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Diana, the Nursing Dual Swordswoman. Zilka, the Dual Swordswoman Who Defies Her Mother and the Head. Sarka, the Dream-Shattering Academy Wrecker.',
     note: 'Diana (SSR Light Physical Attacker), Zilka (SSR Water Physical Attacker), and Sarka (SR Water Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-paladin-introduction-diana',
   },
   // #18 - Magdalena (Apr 28 - May 5) - ENDED

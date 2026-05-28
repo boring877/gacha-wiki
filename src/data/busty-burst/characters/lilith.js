@@ -6,7 +6,7 @@ export const info = {
   "name": "Lilith",
   "displayName": "Lilith",
   "baseName": "Lilith",
-  "title": null,
+  "title": "The Fanatic Believer of the Demon God Cult",
   "rarity": "SSR",
   "element": "Dark",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Lilith",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "After the death of Nicephorus's hero, the protagonist rescues a woman from a waterlogged boat drifting in the pond of Elron. The woman appears to be hiding both secrets and the truth about herself. Moreover, she is not alone.",
   "profile": {
     "height": "164cm",
     "bust": "95cm (H Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Paladin Introduction Banner"
   },
   "characterId": 2113
 };

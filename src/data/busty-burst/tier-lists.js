@@ -3,10 +3,10 @@ import { getCharacterDataBySlug } from './character-database.js';
 
 export const BUSTY_BURST_TIER_LISTS = {
   beginner: {
-    name: 'All Content Tier List',
+    name: 'SSR Tier List',
     description:
-      'Tier list for all content. Covers general performance across all game modes.',
-    lastUpdated: '2026-03-31',
+      'Tier list for SSR characters. Covers general performance across all game modes.',
+    lastUpdated: '2026-05-28',
     tiers: [
       {
         tier: 'SSS',
@@ -24,7 +24,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Excellent choices for early progression',
           color: '#feca57',
         },
-        characters: ['teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'sarka'],
+        characters: ['teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'sarka', 'priscilla'],
       },
       {
         tier: 'S',
@@ -66,6 +66,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'inrine',
           'ruru',
           'zilka',
+          'lilith',
+          'lilirara',
         ],
       },
       {
@@ -112,9 +114,9 @@ export const BUSTY_BURST_TIER_LISTS = {
     ],
   },
   sr: {
-    name: 'SR Only Tier List',
+    name: 'SR Tier List',
     description:
-      'Tier list for SR Raid mode, which limits you to only use SR units.',
+      'Tier list for SR characters in SR Raid mode.',
     lastUpdated: '2025-12-30',
     tiers: [
       {

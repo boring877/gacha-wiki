@@ -77,6 +77,9 @@ const TEAM_BUILDER_SLUG_MAP = {
   'diana': 'diana',
   'zilka': 'zilka',
   'sarka': 'sarka',
+  'priscilla': 'priscilla',
+  'lilith': 'lilith',
+  'lilirara': 'lilirara',
 
   // SR Characters
   'gladys': 'gladys',
@@ -203,6 +206,9 @@ const CHARACTER_ID_MAP = {
   'dragon_crusher_medusa': 2099,
   'new_years_calligraphy_pastel': 2100,
   'overflowing_jubako_lynette': 2101,
+  'seductive_high_cut_swimsuit_nerys': 2077,
+  'epic_fishing_meinias': 2079,
+  'pastel': 2080,
 
   // 2026 Q2 New Characters
   'giselle': 2088,
@@ -218,6 +224,9 @@ const CHARACTER_ID_MAP = {
   'diana': 2114,
   'zilka': 2115,
   'sarka': 2116,
+  'priscilla': 2112,
+  'lilith': 2113,
+  'lilirara': 2118,
 
   // SR Characters
   'gladys': 2005,
@@ -1782,6 +1791,88 @@ const SKILL_CATEGORIES = {
       category: 'B',
       effects: [
         { stat: 'Physical DEF', value: '-18%-30' },
+      ],
+    },
+  },
+  priscilla: {
+    skill2: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Hit-Based Magic Damage', value: '+75%+700 (self)' },
+      ],
+    },
+    skill3: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Curse', value: '15 seconds' },
+        { stat: 'Block', value: '-11 to -23' },
+        { stat: 'Accuracy', value: '-11 to -23' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Mind Type Damage Taken', value: '+10% to +20%' },
+        { stat: 'Mind Type ATK', value: '+10% to +20% (self)' },
+      ],
+    },
+  },
+  lilith: {
+    skill2: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Deadly Poison', value: '-500 to -5000 HP/s' },
+        { stat: 'Accuracy', value: '-13 to -26' },
+      ],
+    },
+    skill3: {
+      type: 'debuff',
+      category: 'B',
+      effects: [
+        { stat: 'Stun', value: '2 seconds' },
+        { stat: 'Physical DEF', value: '-21%-40 to -220' },
+        { stat: 'Block', value: '-11 to -23' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Silence', value: '3-5 seconds' },
+        { stat: 'Curse', value: '5-7 seconds' },
+        { stat: 'Physical Crit Damage', value: '+300% to +500% (self)' },
+      ],
+    },
+  },
+  lilirara: {
+    skill2: {
+      type: 'debuff',
+      category: 'C',
+      effects: [
+        { stat: 'Physical ATK', value: '-11%-25 to -205' },
+        { stat: 'Magic ATK', value: '-11%-25 to -205' },
+      ],
+    },
+    skill3: {
+      type: 'buff',
+      category: 'C',
+      effects: [
+        { stat: 'Action Speed', value: '+20% (self)' },
+        { stat: 'Block', value: '+13 to +26' },
+        { stat: 'Debuff Resistance', value: '+50% (self)' },
+      ],
+    },
+    ultimate: {
+      type: 'debuff',
+      category: 'A',
+      effects: [
+        { stat: 'Physical DEF', value: '-15% to -30%' },
+        { stat: 'Accuracy', value: '-20 to -30' },
+        { stat: 'HP Restore', value: '6% (self)' },
       ],
     },
   },

@@ -6,7 +6,7 @@ export const info = {
   "name": "Priscilla",
   "displayName": "Priscilla",
   "baseName": "Priscilla",
-  "title": null,
+  "title": "The Orphan Who Commands Dolls",
   "rarity": "SSR",
   "element": "Mind",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Priscilla",
-  "introduction": "Middle Row、Magical、Attacker",
+  "introduction": "Priscilla, an orphan living at the Hagan Orphanage, has no friends by her side. Instead, she spends her days playing with lively dolls that can speak and move on their own. She wishes she could remain here forever. However, the time when she must leave the orphanage is steadily drawing near.",
   "profile": {
     "height": "155cm",
     "bust": "98cm (I Cup)",
@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Paladin Introduction Banner"
   },
   "characterId": 2112
 };

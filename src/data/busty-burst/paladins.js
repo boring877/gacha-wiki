@@ -56,7 +56,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Viatrice',
     rarity: 'SSR',
     element: 'Fire',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -66,7 +66,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Noble_Succubus_Empress_Shamshel',
     rarity: 'SSR',
     element: 'Dark',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -76,7 +76,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Seductive_Vampire_Soltina',
     rarity: 'SSR',
     element: 'Dark',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -116,7 +116,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Lynette',
     rarity: 'SSR',
     element: 'Mind',
-    role: 'Support',
+    role: 'Tank',
     tier: 'A',
   },
   {
@@ -136,7 +136,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Inrine',
     rarity: 'SSR',
     element: 'Water',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -146,7 +146,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Ruru',
     rarity: 'SSR',
     element: 'Wind',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -185,7 +185,7 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Liesel',
     fileName: 'Liesel',
     rarity: 'SR',
-    element: 'Light',
+    element: 'Mind',
     role: 'Support',
     tier: 'SSS',
   },
@@ -195,8 +195,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Frey',
     fileName: 'Frey',
     rarity: 'SSR',
-    element: 'Water',
-    role: 'Tank',
+    element: 'Light',
+    role: 'Support',
     tier: 'SSS',
   },
   {
@@ -226,7 +226,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'The_Dark_Knight',
     rarity: 'SSR',
     element: 'Dark',
-    role: 'Tank',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -265,8 +265,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Soltina',
     fileName: 'Soltina',
     rarity: 'SSR',
-    element: 'Water',
-    role: 'Healer',
+    element: 'Dark',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -275,8 +275,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Artia',
     fileName: 'Artia',
     rarity: 'SSR',
-    element: 'Wind',
-    role: 'DPS',
+    element: 'Fire',
+    role: 'Tank',
     tier: 'S',
   },
   {
@@ -286,7 +286,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Gemini',
     rarity: 'SSR',
     element: 'Fire',
-    role: 'Support',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -296,7 +296,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Estiriel',
     rarity: 'SSR',
     element: 'Wind',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -306,7 +306,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Hildis',
     rarity: 'SSR',
     element: 'Fire',
-    role: 'Tank',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -315,8 +315,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Luca',
     fileName: 'Luca',
     rarity: 'SSR',
-    element: 'Dark',
-    role: 'DPS',
+    element: 'Wind',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -335,8 +335,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Stenlina',
     fileName: 'Stenlina',
     rarity: 'SSR',
-    element: 'Wind',
-    role: 'Healer',
+    element: 'Light',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -345,8 +345,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Hisara',
     fileName: 'Hisara',
     rarity: 'SSR',
-    element: 'Fire',
-    role: 'DPS',
+    element: 'Wind',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -365,8 +365,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Bianca',
     fileName: 'Bianca',
     rarity: 'SSR',
-    element: 'Light',
-    role: 'Support',
+    element: 'Mind',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -375,8 +375,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Natasha',
     fileName: 'Natasha',
     rarity: 'SSR',
-    element: 'Dark',
-    role: 'Healer',
+    element: 'Water',
+    role: 'Tank',
     tier: 'S',
   },
   {
@@ -396,7 +396,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Artemis',
     rarity: 'SR',
     element: 'Wind',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'S',
   },
   {
@@ -435,8 +435,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Nora',
     fileName: 'Nora',
     rarity: 'SSR',
-    element: 'Water',
-    role: 'Support',
+    element: 'Fire',
+    role: 'Tank',
     tier: 'A',
   },
   {
@@ -445,8 +445,8 @@ export const BUSTY_BURST_PALADINS = [
     name: 'Meinias',
     fileName: 'Meinias',
     rarity: 'SSR',
-    element: 'Fire',
-    role: 'DPS',
+    element: 'Wind',
+    role: 'Attacker',
     tier: 'A',
   },
   {
@@ -476,7 +476,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Shaty',
     rarity: 'SSR',
     element: 'Wind',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -516,7 +516,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'kaguya',
     rarity: 'SSR',
     element: 'Dark',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -526,7 +526,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Ophelio',
     rarity: 'SSR',
     element: 'Fire',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'A',
   },
   // ========================================
@@ -742,7 +742,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Irina',
     rarity: 'SR',
     element: 'Light',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -752,7 +752,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Sobrina',
     rarity: 'SR',
     element: 'Mind',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -762,7 +762,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Messeria',
     rarity: 'SR',
     element: 'Wind',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -772,7 +772,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Paia',
     rarity: 'SR',
     element: 'Fire',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -782,7 +782,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Azura',
     rarity: 'SR',
     element: 'Fire',
-    role: 'Attacker',
+    role: 'Tank',
     tier: 'A',
   },
   {
@@ -792,7 +792,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Zoe',
     rarity: 'SR',
     element: 'Dark',
-    role: 'Attacker',
+    role: 'Tank',
     tier: 'A',
   },
   {
@@ -802,7 +802,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Constantia',
     rarity: 'SR',
     element: 'Water',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -822,7 +822,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Athena',
     rarity: 'SR',
     element: 'Light',
-    role: 'Attacker',
+    role: 'Tank',
     tier: 'A',
   },
   {
@@ -852,7 +852,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Ishtovia',
     rarity: 'SR',
     element: 'Light',
-    role: 'Support',
+    role: 'Attacker',
     tier: 'A',
   },
   {
@@ -862,7 +862,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Veronica',
     rarity: 'SR',
     element: 'Water',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -872,7 +872,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Celestia',
     rarity: 'SR',
     element: 'Wind',
-    role: 'Attacker',
+    role: 'Support',
     tier: 'A',
   },
   {
@@ -924,7 +924,7 @@ export const BUSTY_BURST_PALADINS = [
     fileName: 'Giselle',
     rarity: 'SSR',
     element: 'Light',
-    role: 'DPS',
+    role: 'Attacker',
     tier: 'SS',
   },
   {
@@ -1159,6 +1159,36 @@ export const BUSTY_BURST_PALADINS = [
     rarity: 'SR',
     element: 'Water',
     role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'priscilla',
+    characterId: 2112,
+    name: 'Priscilla',
+    fileName: 'Priscilla',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'lilith',
+    characterId: 2113,
+    name: 'Lilith',
+    fileName: 'Lilith',
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'Attacker',
+    tier: 'A',
+  },
+  {
+    id: 'lilirara',
+    characterId: 2118,
+    name: 'Lilirara',
+    fileName: 'Lilirara',
+    rarity: 'SSR',
+    element: 'Wind',
+    role: 'Tank',
     tier: 'A',
   },
 ];
