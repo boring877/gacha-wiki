@@ -96,15 +96,15 @@ export const wrathSamaelData = {
   // Memory Card
   memoryCard: {
     name: 'Suffocating Grace',
-    image: 'Wrath_Samaelcard.png', // Memory card image
+    image: 'SuffocatingGrace.png',
     title: 'Suffocating Grace',
     level: '80/80',
     rarity: '6-star (SSR)',
-    class: 'Guardian', // Tank class only
+    class: 'Guardian',
     stats: {
-      hp: '6,800', // Base HP for memory card
-      attack: '480', // Base Attack for memory card
-      defense: '890', // Base Defense for memory card
+      hp: '6,600',
+      attack: '480',
+      defense: '690',
     },
     effects: [
       'Defense +64%',

@@ -6,14 +6,14 @@ export const herTrainerData = {
   id: 'her-trainer',
   slug: 'her-trainer',
   name: 'Her Trainer',
-  image: '/images/games/zone-nova/memories/pennycard.jpg',
+  image: '/images/games/zone-nova/memories/LancelotHerTrainer.png',
   rarity: 'SSR',
   character: 'Penny',
   detailUrl: '/guides/zone-nova/characters/penny/',
 
   // Memory Stats
   stats: {
-    hp: 8600,
+    hp: 6600,
     attack: 480,
     defense: 690,
   },

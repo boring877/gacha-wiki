@@ -12,7 +12,7 @@ export const ZONE_NOVA_FACTIONS = {
   Sapphire: {
     name: 'Sapphire',
     chineseName: '萨纳尔',
-    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lily', 'Lyra', 'Naiya', 'Nina'],
+    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lily', 'Lyra', 'Naiya', 'Nina', 'Erika'],
     color: '#2196f3',
     description: 'The Sapphire faction',
   },
@@ -62,7 +62,7 @@ export const ZONE_NOVA_FACTIONS = {
   'Monochrome Nation': {
     name: 'Monochrome Nation',
     chineseName: '黑白国度',
-    characters: ['Rose', 'Nini', 'Hiyori', 'Sharin', 'Jill'],
+    characters: ['Rose', 'Nini', 'Hiyori', 'Sharin', 'Jill', 'Keller'],
     color: '#607d8b',
     description: 'The Monochrome Nation faction',
   },

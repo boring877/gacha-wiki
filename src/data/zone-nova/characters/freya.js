@@ -23,13 +23,13 @@ export const freyaData = {
   skills: {
     normal: {
       name: 'Golden Wind Assault (金风突袭)',
-      description: 'Deals 72% attack power as ice frost damage to designated enemy.',
+      description: 'Deals 72% attack power as ice damage to designated enemy.',
     },
     auto: {
       name: "Golden Wind's Wild Poetry (金风狂诗)",
       cooldown: '5.0s',
       description:
-        'Deals 120% attack power as ice frost damage to designated enemy and other targets within 3m range around the target. This damage counts as normal attack damage.',
+        'Deals 120% attack power as ice damage to designated enemy and other targets within 3m range around the target. This damage counts as normal attack damage.',
     },
     ultimate: {
       name: "Golden Wind's Bind (金风之缚)",
@@ -40,7 +40,7 @@ export const freyaData = {
     passive: {
       name: 'Goddess War Dance (女神战舞)',
       description:
-        'Ice Enhancement: All normal attacks additionally deal 24% attack power as ice frost damage. Multi-Hit Combo: After casting 10 normal attacks or skills, normal attacks against the main target become 5-stage attacks. Each stage deals 20% of original normal attack damage. Duration: 5 seconds.',
+        'Ice Enhancement: All normal attacks additionally deal 24% attack power as ice damage. Multi-Hit Combo: After casting 10 normal attacks or skills, normal attacks against the main target become 5-stage attacks. Each stage deals 20% of original normal attack damage. Duration: 5 seconds.',
     },
   },
 

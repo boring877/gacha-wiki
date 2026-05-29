@@ -55,7 +55,7 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-04-28',
+  lastUpdated: '2026-05-29',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
@@ -66,6 +66,7 @@ export const PVE_TIER_LIST = {
       { name: 'Hela' },
       { name: 'Gaia' },
       { name: 'Jill' },
+      { name: 'Keller' },
       { name: 'Lust - Asmodeus' },
       { name: 'Nina' },
       { name: 'Morgan Le Fay' },
@@ -94,9 +95,9 @@ export const PVE_TIER_LIST = {
       { name: 'Shuten-doji' },
       { name: 'Ibaraki-doji' },
       { name: 'Hiyori' },
+      { name: 'Erika' },
     ],
     S: [
-      { name: 'Shu' },
       { name: 'Zashiki-warashi' },
       { name: 'Kela' },
       { name: 'Lancelot' },
@@ -130,11 +131,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-04-28',
+  lastUpdated: '2026-05-29',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Sharin' }, { name: 'Pride-Lucifer' }],
-    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
+    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -150,6 +151,7 @@ export const PVP_TIER_LIST = {
       { name: 'Lyra' },
       { name: 'Hela' },
       { name: 'Sigurd' },
+      { name: 'Erika' },
     ],
     S: [
       { name: 'Arthur' },
@@ -182,7 +184,7 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-04-28',
+  lastUpdated: '2026-05-29',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {

@@ -92,10 +92,10 @@ export const apepData = {
 
   // Memory Card
   memoryCard: {
-    name: 'Wrong Appearance Timing',
+    name: 'Wrong Time of Appearance',
     image: 'Apepcard',
     stats: {
-      hp: '8,800',
+      hp: '6,600',
       attack: '480',
       defense: '690',
     },

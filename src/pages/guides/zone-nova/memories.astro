@@ -3,6 +3,7 @@
 import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
 import { Image } from 'astro:assets';
 import ZNMemoryImage from '../../../components/zone-nova/ZNMemoryImage.astro';
+import ZNClassImage from '../../../components/zone-nova/ZNClassImage.astro';
 import '../../../styles/games/zone-nova/zn-badge-colour.css';
 import '../../../styles/games/zone-nova/zn-character.css';
 import '../../../styles/games/zone-nova/zn-memories-database.css';
@@ -132,16 +133,12 @@ const getImageFilename = (imagePath: string): string => {
                       {(() => {
                         const memoryClass = getMemoryClass(memory);
                         return memoryClass ? (
-                          <Image
-                            src={`/images/games/zone-nova/classes/1${memoryClass}.jpg`}
+                          <ZNClassImage
+                            className={memoryClass}
                             alt={memoryClass}
                             class="class-icon-standalone"
                             width={32}
                             height={32}
-                            format="webp"
-                            quality={85}
-                            loading="lazy"
-                            title={memoryClass}
                           />
                         ) : (
                           <span style="color: var(--text-secondary); font-size: 0.8rem;">-</span>

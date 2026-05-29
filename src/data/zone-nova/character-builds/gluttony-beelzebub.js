@@ -15,7 +15,7 @@ export const gluttonyBeelzebubBuild = {
       reason:
         'Core support button. Applies her largest enemy debuff while giving the whole team a matching offensive and defensive buff.',
       description:
-        'Energy Cost: 3\nDeals 732.9% Frost damage to all enemies and inflicts [Gluttony], reducing enemy attack power by 60.1%, defense by 72.9%, and energy recovery efficiency by 10% for 5 seconds. At the same time, all allies gain [Return], increasing attack power by 60.1%, defense by 72.9%, and energy recovery efficiency by 20% for 5 seconds.',
+        'Energy Cost: 3\nDeals 732.9% Ice damage to all enemies and inflicts [Gluttony], reducing enemy attack power by 60.1%, defense by 72.9%, and energy recovery efficiency by 10% for 5 seconds. At the same time, all allies gain [Return], increasing attack power by 60.1%, defense by 72.9%, and energy recovery efficiency by 20% for 5 seconds.',
     },
     {
       skill: 'Passive: Taotie taxation',
@@ -33,7 +33,7 @@ export const gluttonyBeelzebubBuild = {
       reason:
         'Reliable single-target pressure that continues the energy-denial plan between ultimates.',
       description:
-        "Cooldown: 7.0s\nDeals 488.6% attack damage as Frost damage to the designated enemy unit and reduces the enemy's energy by 1.",
+        "Cooldown: 7.0s\nDeals 488.6% attack damage as Ice damage to the designated enemy unit and reduces the enemy's energy by 1.",
     },
     {
       skill: 'Normal Attack: Cold Devour',
@@ -41,7 +41,7 @@ export const gluttonyBeelzebubBuild = {
       level: 'Level 7',
       reason: 'Basic filler damage with lower overall impact than the rest of her control kit.',
       description:
-        'Cooldown: 2.0s\nDeals Frost damage equal to 120% attack power to the designated enemy unit.',
+        'Cooldown: 2.0s\nDeals Ice damage equal to 120% attack power to the designated enemy unit.',
     },
   ],
   recommendedMemoryCards: [

@@ -96,7 +96,7 @@ export const CHARACTER_BUILDS = {
   // Sigurd Build - SSR Fire Crit-based Enhanced Ultimate DPS
   sigurd: sigurdBuild,
 
-  // Nina Build - SSR Ice Frost Ash State DPS
+  // Nina Build - SSR Ice DPS
   nina: ninaBuild,
 
   // Jorogumo Build - SSR Chaos AOE Healer

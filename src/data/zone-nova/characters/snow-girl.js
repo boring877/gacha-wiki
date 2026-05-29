@@ -79,7 +79,7 @@ export const snowGirlData = {
     },
     {
       level: 2,
-      effect: 'Normal attacks deal additional frost damage equal to 50% of own attack power',
+      effect: 'Normal attacks deal additional ice damage equal to 50% of own attack power',
     },
     { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
     { level: 4, effect: 'Healing amount increased by 20%' },

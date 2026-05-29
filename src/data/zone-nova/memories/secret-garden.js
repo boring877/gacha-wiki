@@ -4,15 +4,15 @@
 export const secretGardenData = {
   // Basic Memory Information
   name: 'Secret Garden',
-  image: '/images/games/zone-nova/memories/Afroditecard.jpg',
+  image: '/images/games/zone-nova/memories/SecretGarden.png',
   character: 'Afrodite',
   rarity: 'SSR',
 
   // Memory Stats
   stats: {
-    hp: 6400,
-    attack: 784,
-    defense: 318,
+    hp: 5040,
+    attack: 780,
+    defense: 474,
   },
 
   // Memory Effects

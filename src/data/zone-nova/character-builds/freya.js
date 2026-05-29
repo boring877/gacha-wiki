@@ -24,7 +24,7 @@ export const freyaBuild = {
       reason:
         'Essential multi-hit combo and ice enhancement mechanics - core to her damage scaling',
       description:
-        'Ice Enhancement: All normal attacks additionally deal 24% attack power as ice frost damage. Multi-Hit Combo: After casting 10 normal attacks or skills, normal attacks become 5-stage attacks. Each stage deals 20% of original normal attack damage. Duration: 5 seconds.',
+        'Ice Enhancement: All normal attacks additionally deal 24% attack power as ice damage. Multi-Hit Combo: After casting 10 normal attacks or skills, normal attacks become 5-stage attacks. Each stage deals 20% of original normal attack damage. Duration: 5 seconds.',
     },
     {
       skill: "Auto Skill: Golden Wind's Wild Poetry",
@@ -32,14 +32,14 @@ export const freyaBuild = {
       level: 'Level 10',
       reason: 'Main AOE normal attack damage that builds combo stacks',
       description:
-        'Cooldown: 5.0s\nDeals 120% attack power as ice frost damage to designated enemy and other targets within 3m range around the target. This damage counts as normal attack damage.',
+        'Cooldown: 5.0s\nDeals 120% attack power as ice damage to designated enemy and other targets within 3m range around the target. This damage counts as normal attack damage.',
     },
     {
       skill: 'Normal Attack: Golden Wind Assault',
       priority: 4,
       level: 'Level 10',
       reason: 'Basic damage filler that scales with attack power and builds combo stacks',
-      description: 'Deals 72% attack power as ice frost damage to designated enemy.',
+      description: 'Deals 72% attack power as ice damage to designated enemy.',
     },
   ],
   recommendedMemoryCards: [

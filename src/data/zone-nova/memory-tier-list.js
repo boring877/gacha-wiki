@@ -48,8 +48,8 @@ export const MEMORY_CLASS_ORDER = [
 // Verified class mapping from memories.js (memory's own class field takes priority over character class)
 // ** = memory class differs from character class
 //
-// Warrior: Pride or Tsundere? (Pride-Lucifer), Secret Garden (Afrodite), Behind the Regret (Mordred),
-//         Halloween Candy (Nina), The World Seems to Have Stopped (Artemis), Wrong Appearance Timing (Apep)
+// Warrior: Afternoon Tantrums (Keller), Pride or Tsundere? (Pride-Lucifer), Secret Garden (Afrodite), Behind the Regret (Mordred),
+//         Halloween Candy (Nina), The World Seems to Have Stopped (Artemis), Wrong Time of Appearance (Apep)
 // Mage: Night of Bloody Storm (Arthur), The maid's bath (Hiyori), Annoying Classroom (Bastet),
 //        During Military Academy Training (Rose), Self-Release (Lyra), Method of Revenge (Greed Mammon),
 //        Revolutionary Restructuring (Cleopatra), Unreserved Love (Shuten-doji), Lamplight Study (Frigga)
@@ -61,22 +61,22 @@ export const MEMORY_CLASS_ORDER = [
 // Buffer: Frost Dominion (Naiya), Embarrassing Pattern (Athena),
 //         The Loneliest Moment (Apollo), Absolutely Perfect Arms (Morgan Le Fay),
 //         Sleep Treasure (Zashiki-warashi), Hot Spring & Her (Tamamo-no-Mae)
-// Debuffer: Nutrition Studies (Gluttony-Beelzebub), Cute Little Thing (Horus),
+// Debuffer: Discipline Director (Erika), Nutrition Studies (Gluttony-Beelzebub), Cute Little Thing (Horus),
 //           Battlefield Flower (Nini), Busy Officer (Shu), Sleepy Guardian (Belphegar),
 //           True Order (Loki), Deceptive Ultimate Temptation (generic)
 // Healer: A Smile That Topples Cities (Gaia), Beautiful Moon (Jorogumo),
-//         The Most Real Her (Jeanne D Arc), Midnight Work (Anubis),
+//         The Most Real Her (Jeanne D Arc), Reorganizing Revolution (Anubis),
 //         The Beauty of Heijing Castle (Snow Girl), Solitary Realm (Kela),
 //         Gentle Morning Command (Jill)
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-04-28',
+  lastUpdated: '2026-05-29',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
     Warrior: {
-      SSS: [{ name: 'Wrong Appearance Timing' }, { name: 'King of Lust' }],
+      SSS: [{ name: 'Afternoon Tantrums' }, { name: 'Wrong Time of Appearance' }, { name: 'King of Lust' }],
       SS: [{ name: 'Pride or Tsundere?' }, { name: 'Halloween Candy' }],
       S: [
         { name: 'Secret Garden' },
@@ -141,7 +141,7 @@ export const MEMORY_TIER_LIST = {
     },
     Debuffer: {
       SSS: [],
-      SS: [{ name: 'Nutrition Studies' }, { name: 'Lamplight Study' }],
+      SS: [{ name: 'Nutrition Studies' }, { name: 'Lamplight Study' }, { name: 'Discipline Director' }],
       S: [
         { name: 'Battlefield Flower' },
         { name: 'Busy Officer (忙里偷闲)' },
@@ -162,7 +162,7 @@ export const MEMORY_TIER_LIST = {
     },
     Healer: {
       SSS: [{ name: 'The Beauty of Heijing Castle' }],
-      SS: [{ name: 'A Smile That Topples Cities' }, { name: 'Midnight Work' }, { name: 'Gentle Morning Command' }],
+      SS: [{ name: 'A Smile That Topples Cities' }, { name: 'Reorganizing Revolution' }, { name: 'Gentle Morning Command' }],
       S: [
         { name: 'Beautiful Moon' },
         { name: 'The Most Real Her' },

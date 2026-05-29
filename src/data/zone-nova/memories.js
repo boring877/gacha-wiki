@@ -239,13 +239,13 @@ export const ZONE_NOVA_MEMORIES = [
     id: 'her-trainer',
     slug: 'her-trainer',
     name: 'Her Trainer',
-    image: '/images/games/zone-nova/memories/pennycard.jpg',
+    image: '/images/games/zone-nova/memories/LancelotHerTrainer.png',
     rarity: 'SSR',
     element: 'Wind',
     character: 'Penny',
     detailUrl: '/guides/zone-nova/memories/her-trainer/',
     stats: {
-      hp: 8600,
+      hp: 6600,
       attack: 480,
       defense: 690
   },
@@ -276,24 +276,24 @@ export const ZONE_NOVA_MEMORIES = [
     ]
   },
   {
-    id: 'kings-sword',
-    slug: 'kings-sword',
-    name: "King's Sword",
-    image: '/images/games/zone-nova/memories/Merlincard.jpg',
+    id: 'monster-in-the-dense-forest',
+    slug: 'monster-in-the-dense-forest',
+    name: 'Monster in the Dense Forest',
+    image: '/images/games/zone-nova/memories/MonsterInTheDenseForest.png',
     rarity: 'SSR',
     element: 'Fire',
     character: 'Merlin',
-    detailUrl: '/guides/zone-nova/memories/kings-sword/',
+    detailUrl: '/guides/zone-nova/memories/monster-in-the-dense-forest/',
     stats: {
-      hp: 5280,
-      attack: 857,
-      defense: 348
-  },
+      hp: 5040,
+      attack: 780,
+      defense: 474
+    },
     effects: [
       'Attack increased by 40%',
       'Execute Damage increased by 40% when the target is the only enemy',
       'Critical rate increased by 12%'
-  ]
+    ]
   },
   {
     id: 'during-military-academy-training',
@@ -341,9 +341,9 @@ export const ZONE_NOVA_MEMORIES = [
     class: 'Buffer',
     detailUrl: '/guides/zone-nova/memories/absolutely-perfect-arms/',
     stats: {
-      hp: 7800,
-      attack: 780,
-      defense: 780
+      hp: 6000,
+      attack: 600,
+      defense: 600
   },
     effects: [
       'ATK increased by 30%',
@@ -574,15 +574,15 @@ export const ZONE_NOVA_MEMORIES = [
     id: 'secret-garden',
     slug: 'secret-garden',
     name: 'Secret Garden',
-    image: '/images/games/zone-nova/memories/Afroditecard.jpg',
+    image: '/images/games/zone-nova/memories/SecretGarden.png',
     rarity: 'SSR',
     element: 'Holy',
     character: 'Afrodite',
     detailUrl: '/guides/zone-nova/memories/secret-garden/',
     stats: {
-      hp: 6400,
-      attack: 784,
-      defense: 318
+      hp: 5040,
+      attack: 780,
+      defense: 474
   },
     effects: [
       'Attack power increased by 40%',
@@ -736,22 +736,22 @@ export const ZONE_NOVA_MEMORIES = [
     effects: ['HP increased by 24%', 'Self healing amount increased by 30%']
   },
   {
-    id: 'midnight-work',
-    slug: 'midnight-work',
-    name: 'Midnight Work',
-    image: '/images/games/zone-nova/memories/Anubiscard.jpg',
+    id: 'reorganizing-revolution',
+    slug: 'reorganizing-revolution',
+    name: 'Reorganizing Revolution',
+    image: '/images/games/zone-nova/memories/ReorganizingRevolution.png',
     rarity: 'SSR',
     element: 'Chaos',
     character: 'Anubis',
-    detailUrl: '/guides/zone-nova/memories/midnight-work/',
+    detailUrl: '/guides/zone-nova/memories/reorganizing-revolution/',
     stats: {
-      hp: 6000,
-      attack: 800,
-      defense: 600
-  },
+      hp: 5040,
+      attack: 780,
+      defense: 474
+    },
     effects: [
       'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds'
-  ]
+    ]
   },
   {
     id: 'the-world-seems-to-have-stopped',
@@ -1113,16 +1113,16 @@ export const ZONE_NOVA_MEMORIES = [
   ]
   },
   {
-    id: 'wrong-appearance-timing',
-    slug: 'wrong-appearance-timing',
-    name: 'Wrong Appearance Timing',
+    id: 'wrong-time-of-appearance',
+    slug: 'wrong-time-of-appearance',
+    name: 'Wrong Time of Appearance',
     image: '/images/games/zone-nova/memories/Apepcard.jpg',
     rarity: 'SSR',
     element: 'Wind',
     character: 'Apep',
-    detailUrl: '/guides/zone-nova/memories/wrong-appearance-timing/',
+    detailUrl: '/guides/zone-nova/memories/wrong-time-of-appearance/',
     stats: {
-      hp: 8800,
+      hp: 6600,
       attack: 480,
       defense: 690
   },
@@ -1262,23 +1262,66 @@ export const ZONE_NOVA_MEMORIES = [
     id: 'suffocating-grace',
     slug: 'suffocating-grace',
     name: 'Suffocating Grace',
-    image: '/images/games/zone-nova/memories/Wrath_Samaelcard.jpg',
+    image: '/images/games/zone-nova/memories/SuffocatingGrace.png',
     rarity: 'SSR',
     element: 'Chaos',
     character: 'Wrath-Samael',
     class: 'Guardian',
     detailUrl: '/guides/zone-nova/memories/suffocating-grace/',
     stats: {
-      hp: 6800,
+      hp: 6600,
       attack: 480,
-      defense: 890
+      defense: 690
   },
     effects: [
       'Defense +64%',
       'After successfully parry, Damage Taken is reduced by 10% for 5 seconds',
       'The wearer gains [Stigma] (max 400 stacks), lasting 3 seconds',
       'Every 40 stacks of [Stigma] increases All Resistances by 5%'
-  ]
+    ]
+  },
+  {
+    id: 'afternoon-tantrums',
+    slug: 'afternoon-tantrums',
+    name: 'Afternoon Tantrums',
+    image: '/images/games/zone-nova/memories/Kellercard.png',
+    rarity: 'SSR',
+    element: 'Ice',
+    character: 'Keller',
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/afternoon-tantrums/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690
+    },
+    effects: [
+      'ATK +70%',
+      'Crit Damage +90%',
+      'Normal attack damage +100%',
+      'Every 3rd normal attack deals additional 75% ATK as normal attack damage'
+    ]
+  },
+  {
+    id: 'discipline-director',
+    slug: 'discipline-director',
+    name: 'Discipline Director',
+    image: '/images/games/zone-nova/memories/Erikacard.png',
+    rarity: 'SSR',
+    element: 'Wind',
+    character: 'Erika',
+    class: 'Debuffer',
+    detailUrl: '/guides/zone-nova/memories/discipline-director/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600
+    },
+    effects: [
+      'ATK +40%',
+      'When the wearer\'s skill or ultimate hits a target, that target\'s healing received -12% and shielding received -10% for 3 seconds (cannot stack)',
+      'If the target has a shield at that time, the target\'s damage dealt -18% for 3 seconds (cannot stack)'
+    ]
   }
   ];
 
@@ -1299,6 +1342,7 @@ export const MEMORY_METADATA = {
     'Belphegar',
     'Chiya',
     'Cleopatra',
+    'Erika',
     'Freya',
     'Freye',
     'Gaia',
@@ -1312,6 +1356,7 @@ export const MEMORY_METADATA = {
     'Jeanne D Arc',
     'Jorogumo',
     'Kela',
+    'Keller',
     'Lancelot',
     'Lavinia',
     'Leviathan',

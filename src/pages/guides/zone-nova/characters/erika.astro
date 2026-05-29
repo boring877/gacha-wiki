@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { erikaData, erikaSEO } from '../../../../data/zone-nova/characters/erika.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={erikaSEO.title}
+  description={erikaSEO.description}
+  gameTitle={erikaData.name}
+  character={erikaData}
+>
+  <CharacterPageTemplate characterData={erikaData} />
+</CharacterIndividualLayout>

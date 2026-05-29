@@ -1,27 +1,22 @@
-// Midnight Work Memory Data - Zone Nova
+// Reorganizing Revolution Memory Data - Zone Nova
 // Associated with Anubis character
 
-export const midnightWorkData = {
-  // Basic Information
-  name: 'Midnight Work',
-  chineseName: '熬夜工作',
-  image: '/images/games/zone-nova/memories/Anubiscard.jpg',
+export const reorganizingRevolutionData = {
+  name: 'Reorganizing Revolution',
+  image: '/images/games/zone-nova/memories/ReorganizingRevolution.png',
   character: 'Anubis',
   rarity: 'SSR',
 
-  // Stats
   stats: {
-    hp: 6000,
-    attack: 800,
-    defense: 600,
+    hp: 5040,
+    attack: 780,
+    defense: 474,
   },
 
-  // Memory Effects
   effects: [
     'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds',
   ],
 
-  // Character Synergy
   synergy: {
     character: 'Anubis',
     description:
@@ -29,9 +24,8 @@ export const midnightWorkData = {
   },
 };
 
-// SEO Data
-export const midnightWorkSEO = {
-  title: 'Midnight Work - Anubis Memory Card | Zone Nova',
+export const reorganizingRevolutionSEO = {
+  title: 'Reorganizing Revolution - Anubis Memory Card | Zone Nova',
   description:
-    'Complete guide for Midnight Work memory card in Zone Nova. Learn about its effects, synergy with Anubis, and optimal usage strategies for chaos healing builds.',
+    'Complete guide for Reorganizing Revolution memory card in Zone Nova. Learn about its effects, synergy with Anubis, and optimal usage strategies for chaos healing builds.',
 };

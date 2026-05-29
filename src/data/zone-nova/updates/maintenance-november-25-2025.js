@@ -44,7 +44,7 @@ export const november25MaintenanceData = {
       'Event 4: Rerun Character Recruitment: Freya',
       '',
       '- Opening Time: 2025/12/02 14:15 ~ 2025/12/09 03:59',
-      '- Class: Exterminator | Attribute: Ice Frost',
+      '- Class: Exterminator | Attribute: Ice',
       "- Introduction: Freya — subordinate of Hades of the Netherworld, one of the Asa Family's beloved little sisters, and caretaker of the Misty Forest. Freya possesses the ability to resonate with the souls of all things, allowing her to transcend the framework of language and understand another's inner desires on an emotional level. Therefore, Freya can always anticipate and care for others' needs, which has earned her the admiration of many spirits.",
       '',
       'Under her devoted care, the Misty Forest transformed from a desolate place into a home for wandering souls, and they deeply love this stunningly beautiful guardian, willing to go through fire and water for her.',

@@ -25,20 +25,20 @@ export const gluttonyBeelzebubData = {
     normal: {
       name: 'Cold Devour',
       cooldown: '2.0s',
-      description: 'Deals Frost damage equal to 120% attack power to the designated enemy unit.',
+      description: 'Deals Ice damage equal to 120% attack power to the designated enemy unit.',
     },
     auto: {
       name: 'Cold Deprivation',
       cooldown: '7.0s',
       description:
-        "Deals 488.6% attack damage as Frost damage to the designated enemy unit and reduces the enemy's energy by 1.",
+        "Deals 488.6% attack damage as Ice damage to the designated enemy unit and reduces the enemy's energy by 1.",
     },
     ultimate: {
       name: 'Frozen Feedback',
       cooldown: '1.0s',
       energyCost: '3',
       description:
-        'Deals 732.9% Frost damage to all enemies and inflicts [Gluttony], reducing their attack power 60.1%, defense power 72.9%, and energy recovery efficiency 10% for 5 seconds. At the same time, all allies gain [Return], increasing their attack power 60.1%, defense power 72.9%, and energy recovery efficiency 20% for 5 seconds.',
+        'Deals 732.9% Ice damage to all enemies and inflicts [Gluttony], reducing their attack power 60.1%, defense power 72.9%, and energy recovery efficiency 10% for 5 seconds. At the same time, all allies gain [Return], increasing their attack power 60.1%, defense power 72.9%, and energy recovery efficiency 20% for 5 seconds.',
     },
     passive: {
       name: 'Taotie taxation',

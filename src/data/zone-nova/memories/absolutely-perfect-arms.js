@@ -14,9 +14,9 @@ export const absolutelyPerfectArmsData = {
 
   // Memory Stats
   stats: {
-    hp: '7,800', // Base 6000 + 30% increase
-    attack: '780', // Base 600 + 30% increase
-    defense: '780', // Base 600 + 30% increase
+    hp: '6,000',
+    attack: '600',
+    defense: '600',
   },
 
   // Memory Effects
