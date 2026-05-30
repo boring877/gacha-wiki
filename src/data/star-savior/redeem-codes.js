@@ -19,6 +19,15 @@ export const redeemCodes = [
     rewards: 'Special gift (details in-game)',
     addedDate: '2026-04-01',
   },
+  {
+    code: 'STARHALFANNIVSAVIOR',
+    source: 'Half Anniversary Event',
+    validUntil: '2026-06-29T15:00:00Z',
+    validUntilDisplay: 'June 29, 2026 15:00 UTC',
+    status: 'active',
+    rewards: 'Special gift (details in-game)',
+    addedDate: '2026-05-30',
+  },
 ];
 
 export const redeemInstructions = [
