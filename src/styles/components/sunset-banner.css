@@ -1,0 +1,91 @@
+/* Site-wide sunset / shutdown notice banner shown above the header */
+
+.sunset-banner {
+  position: relative;
+  z-index: 1900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.55rem 2.5rem;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.18),
+    rgba(0, 0, 0, 0.18) 12px,
+    rgba(0, 0, 0, 0.08) 12px,
+    rgba(0, 0, 0, 0.08) 24px
+  ),
+    linear-gradient(90deg, #b3261e 0%, #d83a2e 50%, #b3261e 100%);
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  flex-wrap: wrap;
+}
+
+.sunset-banner strong {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sunset-banner .sunset-link {
+  color: #ffe0b2;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.sunset-banner .sunset-link:hover {
+  color: #fff;
+}
+
+.sunset-banner .sunset-close {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: none;
+  border-radius: 0.35rem;
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sunset-banner .sunset-close:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.sunset-banner.is-hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sunset-banner {
+    font-size: 0.78rem;
+    padding: 0.5rem 2.25rem;
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sunset-banner {
+    font-size: 0.72rem;
+    padding: 0.45rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunset-banner .sunset-close {
+    transition: none;
+  }
+}
