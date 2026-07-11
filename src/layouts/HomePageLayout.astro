@@ -3,6 +3,7 @@
 import HomeLayout from './HomeLayout.astro';
 import GeneralSEO from '../components/GeneralSEO.astro';
 import Analytics from '../components/Analytics.astro';
+import ModelShopCard from '../components/ModelShopCard.astro';
 
 export interface Props {
   title: string;
@@ -131,6 +132,9 @@ const { title, description } = Astro.props;
         </div>
       </div>
     </section>
+
+    <!-- 3D Model Shop promo section -->
+    <ModelShopCard />
   </main>
 
   <script>

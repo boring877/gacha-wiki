@@ -1,0 +1,44 @@
+---
+// 3D Model Shop promo card for the home page.
+// Casual blurb about on-demand character model extraction from any gacha game.
+// ~$19.99 per model, ordered through Discord (crypto payment).
+import { SITE } from '../consts';
+---
+
+<section class="model-shop-section">
+  <article class="model-shop-card">
+    <div class="model-shop-body">
+      <div class="model-shop-heading">
+        <h2 class="model-shop-title">3D Model Shop</h2>
+        <span class="model-shop-price">~$19</span>
+      </div>
+
+      <div class="model-shop-info">
+        <p class="model-shop-desc">
+          Looking for a model to see it without playing, or want the NSFW version for any game?
+          Hit me up on Discord.
+        </p>
+        <p class="model-shop-pay">Around 19 bucks, crypto only — we sort the details in Discord.</p>
+      </div>
+
+      <div class="model-shop-actions">
+        <a
+          href={SITE.SOCIAL.DISCORD}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="model-shop-cta"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3c-.2.36-.43.84-.59 1.23a18.27 18.27 0 0 0-3.937 0C11.87 3.84 11.64 3.36 11.44 3a19.74 19.74 0 0 0-3.76 1.37C2.62 9.04 1.86 13.58 2.24 18.06a19.9 19.9 0 0 0 6.06 3.06c.49-.67.93-1.39 1.3-2.14-.71-.27-1.39-.6-2.04-.99.17-.13.34-.26.5-.4a14.18 14.18 0 0 0 11.88 0c.16.14.33.27.5.4-.65.39-1.33.72-2.04.99.37.75.81 1.47 1.3 2.14a19.84 19.84 0 0 0 6.06-3.06c.45-5.19-.77-9.69-3.74-13.7ZM9.68 15.33c-1.18 0-2.15-1.09-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Zm4.64 0c-1.18 0-2.15-1.09-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"></path>
+          </svg>
+          <span>DM me on Discord</span>
+        </a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<style>
+  @import '../styles/components/model-shop.css';
+</style>
