@@ -1,26 +1,6 @@
 # Redirect rules for Cloudflare Pages
 # This file should be placed in your public directory
 
-# ============================================================
-# MAINTENANCE MODE (whole site)
-# ------------------------------------------------------------
-# These rules MUST stay at the TOP — Cloudflare Pages applies the
-# FIRST matching rule, and static assets do NOT bypass redirects.
-# To END maintenance: delete this block AND public/maintenance/.
-#
-# Three rewrite rules (200 = serve as-is, no client redirect) cover
-# every URL form of the maintenance page itself. The splat rule alone
-# does NOT match the bare /maintenance/ or /maintenance (nothing to
-# fill the *), which previously caused an infinite loop. All three
-# must come BEFORE the catch-all /* below.
-# ============================================================
-/maintenance/*       /maintenance/index.html    200
-/maintenance/        /maintenance/index.html    200
-/maintenance         /maintenance/index.html    200
-# Catch-all: send every other path to maintenance (302 = temporary,
-# keeps SEO intact). Must be LAST so the rewrites above win.
-/*                   /maintenance/              302
-
 # Example redirect
 /http-version    /    301
 
