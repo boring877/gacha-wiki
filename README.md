@@ -2,6 +2,13 @@
 
 Comprehensive guides and tools for gacha games.
 
+## Token
+
+The GachaWiki token (**$GW**) is deployed on **Robinhood Chain** (ChainID 4663).
+
+- **Contract address:** [`0x50bE7832849EFEdB15611799074FcC409522f27A`](https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611799074FcC409522f27A)
+- **Launchpad:** https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611799074FcC409522f27A
+
 ## Quick Start
 
 ```bash
