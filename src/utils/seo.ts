@@ -6,8 +6,6 @@ import { SITE, GAMES } from '../consts';
 // Type definitions for better code quality and IntelliSense
 export interface SocialLinks {
   readonly github: string;
-  readonly youtube: string;
-  readonly discord: string;
   readonly x: string;
 }
 
@@ -72,8 +70,6 @@ export const GLOBAL_SEO: GlobalSEOConfig = {
   defaultImage: SITE.DEFAULT_IMAGE,
   social: {
     github: SITE.SOCIAL.GITHUB,
-    youtube: SITE.SOCIAL.YOUTUBE,
-    discord: SITE.SOCIAL.DISCORD,
     x: SITE.SOCIAL.X,
   },
 } as const;
@@ -794,6 +790,53 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     genres: ['Action Defense RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile',
   },
+  [GAMES.DESIRE_IMMORTAL_REALM.KEY]: {
+    gameName: GAMES.DESIRE_IMMORTAL_REALM.NAME,
+    keywords: [
+      GAMES.DESIRE_IMMORTAL_REALM.NAME,
+      'desire immortal realm',
+      'desire immortal realm wiki',
+      'desire immortal realm guide',
+      'desire immortal realm characters',
+      'desire immortal realm database',
+      '欲界仙途',
+      '欲界仙途 攻略',
+      '欲界仙途 wiki',
+      'yu jie xian tu',
+      'yujie xiantu',
+      // Character pinyin names (high-intent)
+      'sun shangxiang',
+      'nie xiaoqian',
+      'hua mulan',
+      'diaochan',
+      'xi shi',
+      "chang'e",
+      'wang zhaojun',
+      'yang yuhuan',
+      'cai wenji',
+      'daji',
+      // Game-type keywords
+      'xianxia gacha',
+      'xianxia rpg',
+      'cultivation rpg',
+      'chinese gacha game',
+      'chinese rpg',
+      'tower defense gacha',
+      'erolabs',
+      'com.ax.erolabs',
+      // Generic
+      'gacha game',
+      'character database',
+      'character stats',
+      'character skills',
+      'gacha strategy',
+      'mobile rpg',
+    ] as const,
+    themeColor: GAMES.DESIRE_IMMORTAL_REALM.THEME_COLOR,
+    description: `Desire Immortal Realm (欲界仙途) wiki - Chinese xianxia cultivation gacha with 40 playable heroines reimagined from Chinese history and mythology. Full character database with verified stats, skills, and lore.`,
+    genres: ['Xianxia RPG', 'Gacha', 'Strategy'] as const,
+    platform: 'Mobile',
+  },
 } as const;
 
 /**
@@ -843,8 +886,6 @@ export function generateGameStructuredData(
       name: GLOBAL_SEO.siteName,
       sameAs: [
         GLOBAL_SEO.social.github,
-        GLOBAL_SEO.social.youtube,
-        GLOBAL_SEO.social.discord,
         GLOBAL_SEO.social.x,
       ].filter(Boolean),
       additionalType: 'https://schema.org/OpenSourceProject',

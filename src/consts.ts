@@ -10,8 +10,6 @@ export const SITE = {
   DEFAULT_IMAGE: '/images/about.jpg',
   SOCIAL: {
     GITHUB: 'https://github.com/boring877/gacha-wiki',
-    YOUTUBE: 'https://www.youtube.com/@GachaJunkie888',
-    DISCORD: 'https://discord.gg/JKCNtkSGNE',
     X: 'https://x.com/GachaJunkie888',
   },
   // Webhooks are handled server-side only for security
@@ -75,6 +73,13 @@ export const GAMES = {
     THEME_COLOR: '#34d399',
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/make-drama',
+  },
+  DESIRE_IMMORTAL_REALM: {
+    KEY: 'desire-immortal-realm',
+    NAME: 'Desire Immortal Realm',
+    THEME_COLOR: '#3d5a6c',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/desire-immortal-realm',
   },
 } as const;
 
@@ -156,6 +161,10 @@ export const URLS = {
   MAKE_DRAMA: {
     BASE: '/guides/make-drama',
     CHARACTERS: '/guides/make-drama/characters',
+  },
+  DESIRE_IMMORTAL_REALM: {
+    BASE: '/guides/desire-immortal-realm',
+    CHARACTERS: '/guides/desire-immortal-realm/characters',
   },
 } as const;
 
