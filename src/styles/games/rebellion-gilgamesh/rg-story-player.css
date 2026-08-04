@@ -1,0 +1,142 @@
+/* Rebellion Gilgamesh — Story Player download/info page */
+
+.rg-sp-hero {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2rem 0 2.5rem;
+  flex-wrap: wrap;
+}
+
+.rg-sp-hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.rg-sp-hero-text h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin-bottom: 0.75rem;
+}
+
+.rg-sp-tagline {
+  color: var(--rg-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 580px;
+}
+
+.rg-sp-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.rg-sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--rg-radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.rg-sp-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.rg-sp-btn-primary {
+  background: var(--rg-primary);
+  color: #fff;
+}
+.rg-sp-btn-primary svg { stroke: #fff; }
+
+.rg-sp-btn-ghost {
+  background: transparent;
+  color: var(--rg-text);
+  border: 1px solid var(--rg-border);
+}
+.rg-sp-btn-ghost:hover { background: var(--rg-bg-secondary); }
+
+.rg-sp-size {
+  font-size: 0.85rem;
+  color: var(--rg-text-muted, #888);
+}
+
+.rg-sp-hero-icon img {
+  border-radius: var(--rg-radius-md);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.rg-sp-section {
+  margin: 2rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rg-border);
+}
+.rg-sp-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin-bottom: 1rem;
+}
+
+.rg-sp-features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+.rg-sp-features li {
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+.rg-sp-features strong { color: var(--rg-primary); }
+
+.rg-sp-steps {
+  padding-left: 1.25rem;
+  line-height: 1.8;
+}
+.rg-sp-steps code {
+  background: var(--rg-bg-secondary);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.rg-sp-steps a { color: var(--rg-primary); }
+
+.rg-sp-controls {
+  border-collapse: collapse;
+}
+.rg-sp-controls td {
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--rg-border);
+}
+.rg-sp-controls td:first-child { white-space: nowrap; }
+.rg-sp-controls kbd {
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.85em;
+  font-family: monospace;
+}
+
+.rg-sp-source p {
+  line-height: 1.7;
+  color: var(--rg-text-secondary);
+}
+.rg-sp-source code {
+  background: var(--rg-bg-secondary);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.rg-sp-source a { color: var(--rg-primary); }
+
+@media (max-width: 640px) {
+  .rg-sp-hero-icon { display: none; }
+}

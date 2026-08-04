@@ -1,0 +1,72 @@
+---
+// Rebellion Gilgamesh — Story Player download/info page
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { Image } from 'astro:assets';
+import gameIcon from '../../../../assets/images/games/rebellion-gilgamesh/story-player/icon.jpg';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-story-player.css';
+
+const RELEASE_URL = 'https://github.com/boring877/rebellion-gilgamesh-player/releases/latest';
+const REPO_URL = 'https://github.com/boring877/rebellion-gilgamesh-player';
+---
+
+<CharacterDatabaseLayout
+  title="Story Player - Rebellion Gilgamesh"
+  description="Download the standalone Rebellion Gilgamesh Story Player — a self-contained desktop app that plays all story scenes, voices, and CGs."
+  gameTitle="Story Player"
+>
+  <section class="rg-sp-hero">
+    <div class="rg-sp-hero-text">
+      <h1>Rebellion Gilgamesh Story Player</h1>
+      <p class="rg-sp-tagline">A standalone desktop app that plays every story scene — backgrounds, character sprites, voices, branching choices, and CGs. No Java, Node, or Unity install required.</p>
+      <div class="rg-sp-actions">
+        <a class="rg-sp-btn rg-sp-btn-primary" href={RELEASE_URL}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download for Windows
+        </a>
+        <a class="rg-sp-btn rg-sp-btn-ghost" href={REPO_URL} target="_blank" rel="noopener">
+          View Source on GitHub
+        </a>
+      </div>
+      <p class="rg-sp-size">Installer ~1.7 GB (bundles the engine + Java runtime + all game assets)</p>
+    </div>
+    <div class="rg-sp-hero-icon">
+      <Image src={gameIcon} alt="Rebellion Gilgamesh" width={200} height={200} />
+    </div>
+  </section>
+
+  <section class="rg-sp-section">
+    <h2>What it does</h2>
+    <ul class="rg-sp-features">
+      <li><strong>All 634 stories</strong> — a searchable story browser with every main-line, event, and affection scene.</li>
+      <li><strong>Full fidelity</strong> — runs the original Java engine with animated Spine/Live2D CGs, auto-decensoring, and correct rendering.</li>
+      <li><strong>Voice &amp; BGM</strong> — full audio with seeking support.</li>
+      <li><strong>Branching choices</strong> — interactive dialog options that route the story.</li>
+      <li><strong>Self-contained</strong> — one installer, no prerequisites. Bundles its own Java runtime.</li>
+    </ul>
+  </section>
+
+  <section class="rg-sp-section">
+    <h2>Install</h2>
+    <ol class="rg-sp-steps">
+      <li>Download <code>RebellionGilgamesh-Setup.exe</code> from the <a href={RELEASE_URL} target="_blank" rel="noopener">latest release</a>.</li>
+      <li>Run it — standard setup wizard, no admin rights required (per-user install).</li>
+      <li>Launch <strong>Rebellion Gilgamesh</strong> from the Start Menu.</li>
+      <li>Pick a story from the browser and click to advance dialog.</li>
+    </ol>
+  </section>
+
+  <section class="rg-sp-section">
+    <h2>Controls</h2>
+    <table class="rg-sp-controls">
+      <tr><td><kbd>Left-click</kbd> / <kbd>Space</kbd> / <kbd>Enter</kbd></td><td>Advance dialog</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Back to story menu</td></tr>
+      <tr><td>☰ ▶▶ ⏭</td><td>Menu / auto-advance / skip</td></tr>
+    </table>
+  </section>
+
+  <section class="rg-sp-section rg-sp-source">
+    <h2>Source &amp; the engine fix</h2>
+    <p>The original Java engine crashed on launch — the story menu's thumbnail generator called <code>getSpine()</code> on every story, and one missing Spine folder threw an exception that killed the app. This player ships a one-line patch (return <code>null</code> instead of crashing) plus the full source to rebuild it. See the <a href={REPO_URL} target="_blank" rel="noopener">GitHub repo</a> for details.</p>
+  </section>
+</CharacterDatabaseLayout>
