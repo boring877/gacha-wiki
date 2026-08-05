@@ -1,0 +1,690 @@
+---
+// Header wallet button — Connect Wallet / connected-address dropdown.
+// Placed at the end of the desktop nav (after "About") and in the mobile nav
+// cluster, so it's reachable on every device. Powered by Reown AppKit via
+// src/scripts/wallet.ts (lazy-loaded on first interaction).
+//
+// Multiple instances may be rendered (desktop + mobile nav share the page):
+// the controller below queries ALL .wallet-wrap instances and keeps them in
+// sync — one AppKit singleton, one modal, every button reflects the same state.
+//
+// States:
+//   - Disconnected: "Connect Wallet" pill.
+//   - Connected:    truncated address pill → click opens a dropdown with the
+//                   full address, live $GW balance, copy-address, view-on-
+//                   explorer, and Disconnect.
+import { EXPLORER_URL } from '../scripts/wallet';
+---
+
+<!--
+  Each instance is self-contained: the controller scopes all queries to the
+  .wallet-wrap it's wiring up. Class-based selectors (no IDs) avoid collisions
+  when desktop + mobile instances coexist in the DOM.
+-->
+<div class="wallet-wrap">
+  <!-- Disconnected: connect button -->
+  <button class="wallet-btn wallet-btn--connect js-wallet-connect" type="button">
+    <svg class="wallet-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1h2v2h-2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Zm16 3h-4a2 2 0 0 0 0 4h4v-4Z" fill="currentColor"/>
+    </svg>
+    <span class="wallet-btn-label">Connect Wallet</span>
+  </button>
+
+  <!-- Connected: address pill + dropdown -->
+  <button
+    class="wallet-btn wallet-btn--connected js-wallet-account"
+    type="button"
+    aria-haspopup="true"
+    aria-expanded="false"
+    hidden
+  >
+    <svg class="wallet-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1h2v2h-2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Zm16 3h-4a2 2 0 0 0 0 4h4v-4Z" fill="currentColor"/>
+    </svg>
+    <span class="wallet-account-short js-wallet-short">0x…</span>
+    <svg class="wallet-caret" width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Dropdown menu -->
+  <div class="wallet-menu js-wallet-menu" role="menu" hidden>
+    <div class="wallet-menu-header">
+      <div class="wallet-menu-account">
+        <span class="wallet-menu-label">Connected</span>
+        <span class="wallet-menu-address js-wallet-address" title="">0x…</span>
+      </div>
+    </div>
+
+    <div class="wallet-menu-balance">
+      <span class="wallet-menu-balance-label">$GW Balance</span>
+      <span class="wallet-menu-balance-value js-wallet-balance">…</span>
+    </div>
+
+    <div class="wallet-menu-actions">
+      <button class="wallet-menu-item js-wallet-copy" type="button" role="menuitem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Copy address</span>
+      </button>
+      <a class="wallet-menu-item js-wallet-explorer" href={EXPLORER_URL} target="_blank" rel="noopener noreferrer" role="menuitem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M14 5h5v5M19 5l-9 9M12 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>View on explorer</span>
+      </a>
+      <button class="wallet-menu-item wallet-menu-item--danger js-wallet-disconnect" type="button" role="menuitem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M16 17l5-5-5-5M21 12H9M9 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Disconnect</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wallet-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .wallet-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 36px;
+    padding: 0 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 183, 77, 0.4);
+    background: rgba(255, 183, 77, 0.12);
+    color: var(--amber-glow, #ffb74d);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    touch-action: manipulation;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .wallet-btn:hover {
+    background: rgba(255, 183, 77, 0.2);
+    border-color: rgba(255, 183, 77, 0.6);
+  }
+
+  .wallet-btn:active {
+    transform: scale(0.97);
+  }
+
+  .wallet-btn[hidden] {
+    display: none;
+  }
+
+  .wallet-btn-icon {
+    flex-shrink: 0;
+  }
+
+  .wallet-btn--connect {
+    background: var(--amber-glow, #ffb74d);
+    color: var(--bg-dark, #1c1c1c);
+    border-color: var(--amber-glow, #ffb74d);
+  }
+
+  .wallet-btn--connect:hover {
+    background: #ffc870;
+    border-color: #ffc870;
+  }
+
+  /* Connected pill — uses the same .wallet-btn-icon as the connect button
+     (the wallet SVG), so the icon stays consistent before/after connecting. */
+
+  .wallet-account-short {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+  }
+
+  .wallet-caret {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: transform 0.15s ease;
+  }
+
+  .wallet-btn--connected[aria-expanded='true'] .wallet-caret {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown menu.
+     The menu is teleported to <body> on open (see the controller) to escape
+     the header's `contain: paint`. Note: <body> and <html> carry
+     `transform: translateZ(0)` (from CustomScrollbar.astro), which turns
+     position:fixed into position:absolute relative to the body — so we use
+     position:absolute and add window.scrollY/scrollX in JS. The scroll/resize
+     handler keeps it pinned to the trigger button. */
+  .wallet-menu {
+    position: absolute;
+    z-index: var(--z-modal, 1000);
+    min-width: 260px;
+    background: var(--bg-dark, #1c1c1c);
+    border: 1px solid rgba(255, 183, 77, 0.3);
+    border-radius: 0.75rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-inverse, #ffffff);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+  }
+
+  .wallet-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .wallet-menu[hidden] {
+    display: none;
+  }
+
+  .wallet-menu-header {
+    padding: 0.85rem 1rem 0.7rem;
+    border-bottom: 1px solid rgba(255, 183, 77, 0.15);
+    background: linear-gradient(135deg, rgba(255, 183, 77, 0.06), rgba(0, 172, 193, 0.04));
+  }
+
+  .wallet-menu-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--success-color, #4caf50);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .wallet-menu-address {
+    display: block;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    color: var(--amber-glow, #ffb74d);
+    word-break: break-all;
+  }
+
+  .wallet-menu-balance {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 183, 77, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .wallet-menu-balance-label {
+    font-size: 0.78rem;
+    opacity: 0.7;
+  }
+
+  .wallet-menu-balance-value {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--amber-glow, #ffb74d);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wallet-menu-actions {
+    padding: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .wallet-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--text-inverse, #ffffff);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.12s ease;
+  }
+
+  .wallet-menu-item:hover {
+    background: rgba(255, 183, 77, 0.1);
+  }
+
+  .wallet-menu-item svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .wallet-menu-item--danger {
+    color: #ff7676;
+  }
+
+  .wallet-menu-item--danger:hover {
+    background: rgba(255, 118, 118, 0.12);
+  }
+
+  /* Copy feedback */
+  .wallet-menu-item.is-copied {
+    color: var(--success-color, #4caf50);
+  }
+
+  /* Connecting state */
+  .wallet-btn.is-loading {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  /* Mobile sizing */
+  @media (max-width: 480px) {
+    .wallet-btn {
+      height: 32px;
+      padding: 0 0.6rem;
+      font-size: 0.74rem;
+      gap: 0.3rem;
+    }
+
+    .wallet-btn-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .wallet-menu {
+      min-width: 230px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .wallet-btn--connect .wallet-btn-label {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wallet-btn,
+    .wallet-menu,
+    .wallet-caret {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // WalletButton controller (multi-instance safe).
+  // Astro renders this <script> once no matter how many <WalletButton /> tags
+  // exist on a page, so we query ALL .wallet-wrap nodes and wire each up. They
+  // share a single AppKit singleton + modal and stay visually in sync.
+  // Mirrors the site's pattern of plain TS inside an Astro <script>.
+  let walletPromise: Promise<typeof import('../scripts/wallet')> | null = null;
+  const WALLET_MODULE = '../scripts/wallet';
+
+  function loadWallet(): Promise<typeof import('../scripts/wallet')> {
+    if (!walletPromise) {
+      walletPromise = import(/* @vite-ignore */ WALLET_MODULE);
+    }
+    return walletPromise;
+  }
+
+  function shortAddr(addr: string): string {
+    return addr.length >= 11 ? `${addr.slice(0, 6)}…${addr.slice(-4)}` : addr;
+  }
+
+  // Global state shared across instances — every button reflects this.
+  let currentAddress: string | undefined;
+  let balanceTimer: ReturnType<typeof setInterval> | undefined;
+  // True once the user has clicked Connect on this page. We don't reflect
+  // AppKit's background auto-restore until then, so the button stays
+  // "Connect Wallet" on every load (no flicker) until the user opts in.
+  let userClickedConnect = false;
+
+  // NOTE: we intentionally do NOT cache/restore the connected address across
+  // page loads. Auto-restore fought the reload lifecycle (no View Transitions
+  // here) and caused flicker; instead the button starts as "Connect Wallet"
+  // every load and one click silently reconnects if a session exists.
+
+  /** Update one instance's DOM to reflect the current shared address. */
+  async function refreshBalance(address: string, balanceEls: HTMLElement[]) {
+    if (balanceEls.length === 0) return;
+    let text = '— $GW';
+    try {
+      const { readGwBalance } = await loadWallet();
+      const res = await readGwBalance(address);
+      text = res.display;
+    } catch {
+      /* keep placeholder */
+    }
+    for (const el of balanceEls) el.textContent = text;
+  }
+
+  /** Sync ALL wallet instances to the disconnected view. */
+  function syncAllDisconnected() {
+    currentAddress = undefined;
+    const wraps = document.querySelectorAll<HTMLElement>('.wallet-wrap');
+    for (const wrap of wraps) {
+      const connect = wrap.querySelector<HTMLElement>('.js-wallet-connect');
+      const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
+      if (connect) connect.hidden = false;
+      if (account) account.hidden = true;
+      closeMenu(wrap);
+    }
+    if (balanceTimer) {
+      clearInterval(balanceTimer);
+      balanceTimer = undefined;
+    }
+  }
+
+  /** Sync ALL wallet instances to the connected view for `address`. */
+  async function syncAllConnected(address: string) {
+    currentAddress = address;
+    const wraps = document.querySelectorAll<HTMLElement>('.wallet-wrap');
+    const balanceEls: HTMLElement[] = [];
+    for (const wrap of wraps) {
+      const connect = wrap.querySelector<HTMLElement>('.js-wallet-connect');
+      const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
+      const shortEl = wrap.querySelector<HTMLElement>('.js-wallet-short');
+      const addrEl = wrap.querySelector<HTMLElement>('.js-wallet-address');
+      const explorer = wrap.querySelector<HTMLAnchorElement>('.js-wallet-explorer');
+      const balanceEl = wrap.querySelector<HTMLElement>('.js-wallet-balance');
+      if (connect) connect.hidden = true;
+      if (account) account.hidden = false;
+      if (shortEl) shortEl.textContent = shortAddr(address);
+      if (addrEl) {
+        addrEl.textContent = address;
+        addrEl.title = address;
+      }
+      if (explorer) {
+        explorer.href = `https://robinhoodchain.blockscout.com/address/${address}`;
+      }
+      if (balanceEl) balanceEls.push(balanceEl);
+    }
+    await refreshBalance(address, balanceEls);
+    if (balanceTimer) clearInterval(balanceTimer);
+    balanceTimer = setInterval(() => {
+      const all = Array.from(document.querySelectorAll<HTMLElement>('.js-wallet-balance'));
+      if (currentAddress) void refreshBalance(currentAddress, all);
+    }, 30_000);
+  }
+
+  // --- dropdown open/close, scoped per instance ----------------------------
+  // The menu is teleported to <body> on open. The header has `contain: paint`,
+  // which creates a containing block that traps BOTH absolute AND fixed
+  // descendants — so the menu must live OUTSIDE the header to float over the
+  // page. We anchor it to the trigger button via getBoundingClientRect() and
+  // move it back into its wrap on close (so HMR/cleanup stays clean).
+
+  /** Find this wrap's menu, whether it's still inside the wrap or teleported. */
+  function getMenu(wrap: HTMLElement): HTMLElement | null {
+    // Prefer the menu still inside the wrap; fall back to the teleported one.
+    const inside = wrap.querySelector<HTMLElement>('.js-wallet-menu');
+    if (inside) return inside;
+    const id = wrap.dataset.menuId;
+    if (id) return document.getElementById(id);
+    return null;
+  }
+
+  /** Position the dropdown just below + right-aligned to the trigger.
+   *  getBoundingClientRect() is viewport-relative; since the menu is
+   *  position:absolute inside <body>, add scroll offsets to convert. */
+  function positionMenu(wrap: HTMLElement) {
+    const menu = getMenu(wrap);
+    const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
+    if (!menu || !account) return;
+    const r = account.getBoundingClientRect();
+    const menuWidth = menu.offsetWidth || 260;
+    let left = r.right - menuWidth + window.scrollX;
+    left = Math.max(8, Math.min(left, window.innerWidth + window.scrollX - menuWidth - 8));
+    const top = r.bottom + 8 + window.scrollY; // 0.5rem gap below button
+    menu.style.top = `${top}px`;
+    menu.style.left = `${left}px`;
+  }
+
+  function openMenu(wrap: HTMLElement) {
+    let menu = wrap.querySelector<HTMLElement>('.js-wallet-menu');
+    const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
+    if (!menu || !account) return;
+
+    // Teleport to <body> so no `contain` ancestor can trap it. Give it a
+    // stable id so getMenu() can find it after the move.
+    if (menu.parentElement !== document.body) {
+      if (!menu.id) menu.id = `wallet-menu-${Math.random().toString(36).slice(2, 9)}`;
+      wrap.dataset.menuId = menu.id;
+      document.body.appendChild(menu);
+    }
+
+    menu.hidden = false;
+    positionMenu(wrap);
+    void menu.offsetWidth; // reflow so the CSS transition runs
+    menu.classList.add('is-open');
+    account.setAttribute('aria-expanded', 'true');
+    // Track open state on the wrap so document-click handler can find it.
+    wrap.dataset.menuOpen = 'true';
+  }
+
+  function closeMenu(wrap: HTMLElement) {
+    const menu = getMenu(wrap);
+    const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
+    if (!menu || !account) return;
+    delete wrap.dataset.menuOpen;
+    menu.classList.remove('is-open');
+    account.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      if (wrap.dataset.menuOpen !== 'true' && menu) {
+        menu.hidden = true;
+        // Move it back into its wrap so the DOM matches the source order.
+        if (menu.parentElement === document.body) {
+          wrap.appendChild(menu);
+        }
+      }
+    }, 160);
+  }
+
+  function toggleMenu(wrap: HTMLElement) {
+    if (wrap.dataset.menuOpen === 'true') closeMenu(wrap);
+    else openMenu(wrap);
+  }
+
+  // --- connect / disconnect / copy (global, triggered from any instance) --
+
+  async function connect(triggerConnectBtn?: HTMLElement) {
+    userClickedConnect = true; // opt in to reflecting wallet state on this page
+    triggerConnectBtn?.classList.add('is-loading');
+    try {
+      const {
+        openConnectModal,
+        ensureRobinhoodChain,
+        getAppKit,
+        getConnectedAddress,
+      } = await loadWallet();
+      await getAppKit();
+
+      // If a wallet session still exists from a previous connect (common right
+      // after a page refresh), reconnect silently instead of re-showing the
+      // full wallet picker. The onWalletChange subscription then renders the
+      // connected pill. Only open the modal when there's no prior session.
+      const existing = getConnectedAddress();
+      if (!existing) {
+        await openConnectModal();
+      }
+
+      // Nudge onto Robinhood Chain so the balance read targets the right
+      // network. Non-fatal if the user declines.
+      await ensureRobinhoodChain().catch(() => {});
+
+      // If we silently reconnected, render it now (onWalletChange may have
+      // already done so, but this guarantees the pill shows).
+      const addr = getConnectedAddress();
+      if (addr) {
+        await syncAllConnected(addr);
+      }
+    } catch (err) {
+      console.error('Wallet connect failed', err);
+    } finally {
+      triggerConnectBtn?.classList.remove('is-loading');
+    }
+  }
+
+  async function disconnect() {
+    // After an explicit disconnect, ignore background reconnects until the
+    // user clicks connect again.
+    userClickedConnect = false;
+    try {
+      const { disconnectWallet } = await loadWallet();
+      await disconnectWallet();
+    } catch (err) {
+      console.error('Wallet disconnect failed', err);
+    }
+    syncAllDisconnected();
+  }
+
+  async function copyAddress(copyBtn: HTMLElement) {
+    if (!currentAddress) return;
+    try {
+      await navigator.clipboard.writeText(currentAddress);
+      const label = copyBtn.querySelector('span');
+      if (label) {
+        const prev = label.textContent;
+        label.textContent = 'Copied!';
+        copyBtn.classList.add('is-copied');
+        setTimeout(() => {
+          label.textContent = prev;
+          copyBtn.classList.remove('is-copied');
+        }, 1400);
+      }
+    } catch {
+      /* clipboard may be unavailable */
+    }
+  }
+
+  // --- per-instance wiring -------------------------------------------------
+
+  function wireInstance(wrap: HTMLElement) {
+    const connectBtn = wrap.querySelector<HTMLElement>('.js-wallet-connect');
+    const accountBtn = wrap.querySelector<HTMLElement>('.js-wallet-account');
+    const copyBtn = wrap.querySelector<HTMLElement>('.js-wallet-copy');
+    const disconnectBtn = wrap.querySelector<HTMLElement>('.js-wallet-disconnect');
+
+    connectBtn?.addEventListener('click', () => void connect(connectBtn));
+    accountBtn?.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleMenu(wrap);
+    });
+    copyBtn?.addEventListener('click', () => void copyAddress(copyBtn));
+    disconnectBtn?.addEventListener('click', () => void disconnect());
+  }
+
+  function init() {
+    const wraps = document.querySelectorAll<HTMLElement>('.wallet-wrap');
+    if (wraps.length === 0) return;
+
+    // Render the initial disconnected state immediately — no auto-restore, so
+    // the connect button must be visible from first paint (no flicker).
+    syncAllDisconnected();
+
+    // Wire each instance's buttons.
+    for (const wrap of wraps) wireInstance(wrap);
+
+    // Document-level handlers (single subscription, not per-instance).
+    document.addEventListener('click', e => {
+      const target = e.target as Node;
+      for (const wrap of document.querySelectorAll<HTMLElement>('.wallet-wrap')) {
+        if (wrap.dataset.menuOpen !== 'true') continue;
+        // The menu is teleported to <body>, so a click ON the menu is still
+        // "outside" the wrap — treat the menu itself as part of the wrap.
+        const menu = getMenu(wrap);
+        const clickedInside = wrap.contains(target) || (menu && menu.contains(target));
+        if (!clickedInside) closeMenu(wrap);
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      for (const wrap of document.querySelectorAll<HTMLElement>('.wallet-wrap')) {
+        if (wrap.dataset.menuOpen === 'true') closeMenu(wrap);
+      }
+    });
+
+    // Keep the dropdown anchored to its trigger while scrolling/resizing.
+    // Throttled via requestAnimationFrame so we don't reposition dozens of
+    // times per scroll tick (which fought the CSS transition → "jittery push").
+    let rafPending = false;
+    const repositionOpen = () => {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        for (const wrap of document.querySelectorAll<HTMLElement>('.wallet-wrap')) {
+          if (wrap.dataset.menuOpen === 'true') positionMenu(wrap);
+        }
+      });
+    };
+    window.addEventListener('scroll', repositionOpen, { passive: true });
+    window.addEventListener('resize', repositionOpen);
+
+    // --- wallet subscription (no auto-restore on load) --------------------
+    // We deliberately do NOT auto-restore a previous connection on page load.
+    // The site has no View Transitions (every nav is a full reload), and
+    // AppKit's async session-restore caused a visible flicker no matter how we
+    // guarded it. Instead the button shows "Connect Wallet" immediately, and
+    // clicking it reconnects silently if a session still exists (one click,
+    // no modal) — clean and flicker-free. See connect() for the logic.
+    const idle = (cb: () => void) => {
+      if ('requestIdleCallback' in window) {
+        (window as Window).requestIdleCallback(cb, { timeout: 3000 });
+      } else {
+        setTimeout(cb, 1500);
+      }
+    };
+
+    idle(() => {
+      void (async () => {
+        try {
+          const { getAppKit, onWalletChange } = await loadWallet();
+          await getAppKit();
+
+          // Per the user's request, do NOT auto-restore on page load — the
+          // button stays "Connect Wallet" until they click. AppKit may still
+          // auto-restore the session in the background (so a click reconnects
+          // instantly), but we ignore those events until the user has opted in
+          // by clicking connect at least once on this page.
+          onWalletChange(state => {
+            if (state.status === 'connecting' || state.status === 'reconnecting') return;
+            // Only reflect connected state after an explicit user click.
+            if (!userClickedConnect) return;
+            if (state.isConnected && state.address) {
+              void syncAllConnected(state.address);
+            } else {
+              syncAllDisconnected();
+            }
+          });
+        } catch (err) {
+          // Wallet init failed (e.g. network/projectId) — connect button stays ready.
+          console.warn('Wallet init skipped; connect button stays ready.', err);
+        }
+      })();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
