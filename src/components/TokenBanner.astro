@@ -59,7 +59,7 @@ const CA_SHORT = '0x50bE…f27A';
     align-items: center;
     justify-content: center;
     gap: 0.7rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* never wrap — the arrow must stay on the same line */
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 0.88rem;
     color: var(--text-inverse, #ffffff);
@@ -101,6 +101,15 @@ const CA_SHORT = '0x50bE…f27A';
     color: var(--amber-glow, #ffb74d);
     font-weight: 700;
     margin-right: 0.15rem;
+  }
+
+  /* Allow the announcement text to truncate instead of forcing a wrap.
+     min-width: 0 is required for flex children to shrink below content size. */
+  .token-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* Live stats chip — cycles through price/change/mcap/volume/liquidity.
