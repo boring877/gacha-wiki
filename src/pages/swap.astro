@@ -388,15 +388,14 @@ import { SITE_TITLE } from '../consts';
       tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
     }
 
-    // Load the token list. fetchTokenList() returns the curated list fast,
-    // then indexes all ~76k on-chain pools (cached 24h after first index).
+    // Phase 1: load curated tokens FAST (instant — no on-chain scanning).
     if (tokenList.length <= 3) {
       try {
-        const { fetchTokenList } = await loadSwap();
-        const full = await fetchTokenList();
-        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
+        const { fetchCuratedTokens } = await loadSwap();
+        const curated = await fetchCuratedTokens();
+        tokenList = curated.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
       } catch {
-        /* fall back to whatever we have */
+        /* fall back to defaults */
       }
       if (!q) tokenListEl.innerHTML = '';
     }
@@ -583,6 +582,30 @@ import { SITE_TITLE } from '../consts';
 
     // Eagerly preload the swap module so the first quote is instant.
     void loadSwap();
+
+    // Background-index the full on-chain token set (76k+). Doesn't block the
+    // UI — the curated list is already usable. When done, updates tokenList
+    // so the picker shows everything. Cached 24h after first run.
+    void backgroundIndexTokens();
+  }
+
+  /** Index all on-chain pools in the background; refresh tokenList when done. */
+  async function backgroundIndexTokens() {
+    try {
+      const { fetchTokenList } = await loadSwap();
+      const full = await fetchTokenList();
+      // Only replace if we got more tokens than the curated set.
+      if (full.length > tokenList.length) {
+        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
+        // If the picker is currently open, re-render with the full list.
+        const modal = document.getElementById('swap-token-modal');
+        if (modal && !modal.hasAttribute('hidden')) {
+          renderTokenList(tokenSearchEl.value);
+        }
+      }
+    } catch {
+      /* indexing failed — curated list stays, which is still usable */
+    }
   }
 
   if (document.readyState === 'loading') {

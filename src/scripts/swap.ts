@@ -180,21 +180,12 @@ export async function indexAllPoolTokens(): Promise<Set<string>> {
  * This is the definitive token set — every token that has a Uniswap pool,
  * read straight from the chain. No API key, no curated-list limit.
  */
-export async function fetchTokenList(): Promise<TokenInfo[]> {
-  // cache check
-  try {
-    const raw = sessionStorage.getItem(TOKENLIST_CACHE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[]; complete?: boolean };
-      if (Date.now() - parsed.ts < TOKENLIST_TTL && parsed.tokens.length > 3) {
-        return parsed.tokens;
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-
-  // 1) Fast seed: Uniswap's curated list (full metadata).
+/**
+ * Fast seed: curated tokens only (ETH + $GW + WETH + Uniswap's 100-token list).
+ * Returns immediately — used for instant picker rendering while the full
+ * on-chain index runs in the background via fetchTokenList().
+ */
+export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
   const curated: TokenInfo[] = [];
   try {
     const res = await fetch(UNISWAP_TOKENLIST_URL);
@@ -215,43 +206,86 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
   } catch {
     /* offline — proceed with defaults */
   }
-
-  // 2) On-chain index: discover every token with a pool.
-  //    Only addresses here — metadata (symbol/decimals) resolved lazily via
-  //    resolveToken() when the user actually selects one.
-  const indexedAddrs = await indexAllPoolTokens();
-
-  // 3) Merge: curated tokens first (full metadata), then indexed-only tokens
-  //    (address only, metadata filled as '---' until resolved on selection).
+  // Dedupe with defaults prepended.
   const seen = new Set<string>();
-  const merged: TokenInfo[] = [];
-  for (const t of [...DEFAULT_TOKENS, ...curated]) {
+  return [...DEFAULT_TOKENS, ...curated].filter(t => {
     const key = t.address.toLowerCase();
-    if (seen.has(key)) continue;
+    if (seen.has(key)) return false;
     seen.add(key);
-    merged.push(t);
-  }
-  for (const addr of indexedAddrs) {
-    if (seen.has(addr)) continue;
-    seen.add(addr);
-    merged.push({
-      address: addr as Address,
-      symbol: '', // resolved lazily on selection
-      name: '',
-      decimals: 18, // most ERC-20s are 18; corrected on selection
-    });
+    return true;
+  });
+}
+
+let indexingInProgress: Promise<TokenInfo[]> | null = null;
+
+/**
+ * Fetch ALL swappable tokens on Robinhood Chain. Returns the FULL set:
+ * curated (fast) + every token discovered by scanning PoolCreated events
+ * on-chain (76k+). This is slow on first run (~30s) — callers that need an
+ * instant response should use fetchCuratedTokens() first, then call this.
+ *
+ * Idempotent + deduplicated. If already indexing, returns the in-flight
+ * promise. Cached 24h in sessionStorage (pools are append-only).
+ */
+export async function fetchTokenList(): Promise<TokenInfo[]> {
+  // cache check — if we already have the full indexed list, return instantly.
+  try {
+    const raw = sessionStorage.getItem(TOKENLIST_CACHE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[]; complete?: boolean };
+      if (parsed.complete && Date.now() - parsed.ts < TOKENLIST_TTL && parsed.tokens.length > 100) {
+        return parsed.tokens;
+      }
+    }
+  } catch {
+    /* ignore */
   }
 
-  try {
-    sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({
-      ts: Date.now(),
-      tokens: merged,
-      complete: indexedAddrs.size > 0,
-    }));
-  } catch {
-    // sessionStorage may be full (76k tokens is large) — keep going anyway.
-  }
-  return merged;
+  // Dedupe in-flight indexing.
+  if (indexingInProgress) return indexingInProgress;
+
+  indexingInProgress = (async () => {
+    // 1) Fast seed: curated tokens (full metadata).
+    const curated = await fetchCuratedTokens();
+
+    // 2) On-chain index: discover every token with a pool.
+    const indexedAddrs = await indexAllPoolTokens();
+
+    // 3) Merge: curated tokens first (full metadata), then indexed-only.
+    const seen = new Set<string>();
+    const merged: TokenInfo[] = [];
+    for (const t of curated) {
+      const key = t.address.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      merged.push(t);
+    }
+    for (const addr of indexedAddrs) {
+      if (seen.has(addr)) continue;
+      seen.add(addr);
+      merged.push({
+        address: addr as Address,
+        symbol: '', // resolved lazily on selection
+        name: '',
+        decimals: 18,
+      });
+    }
+
+    try {
+      sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({
+        ts: Date.now(),
+        tokens: merged,
+        complete: indexedAddrs.size > 0,
+      }));
+    } catch {
+      // sessionStorage may be full (76k tokens ~10MB) — skip caching, the
+      // merge result is still returned in-memory.
+    }
+    indexingInProgress = null;
+    return merged;
+  })();
+
+  return indexingInProgress;
 }
 
 // ---------------------------------------------------------------------------
