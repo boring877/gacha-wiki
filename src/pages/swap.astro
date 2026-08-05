@@ -378,16 +378,32 @@ import { SITE_TITLE } from '../consts';
     tokenListEl.innerHTML = '';
     const q = query.trim().toLowerCase();
 
-    // Build the candidate list: defaults + (if search looks like an address) resolve it.
-    const { DEFAULT_TOKENS } = await loadSwap();
-    const candidates: SwapToken[] = [...(tokenList.length ? tokenList : DEFAULT_TOKENS.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals })))];
+    // Show a loading state if the list isn't populated yet.
+    if (tokenList.length === 0) {
+      tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
+    }
 
-    // If the query looks like a contract address, resolve its metadata.
+    // Ensure the full token list (defaults + liquid tokens from DexScreener).
+    if (tokenList.length <= 3) {
+      try {
+        const { fetchTokenList } = await loadSwap();
+        const full = await fetchTokenList();
+        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals }));
+      } catch {
+        /* fall back to whatever we have */
+      }
+      // Re-render if the query is empty (first open).
+      if (!q) tokenListEl.innerHTML = '';
+    }
+
+    let candidates: SwapToken[] = [...tokenList];
+
+    // If the query looks like a contract address, resolve its metadata + prepend.
     if (q.startsWith('0x') && q.length >= 40) {
       try {
         const { fetchTokenMeta } = await loadSwap();
         const meta = await fetchTokenMeta(q as `0x${string}`);
-        candidates.unshift({ address: meta.address, symbol: meta.symbol, decimals: meta.decimals });
+        candidates = [{ address: meta.address, symbol: meta.symbol, decimals: meta.decimals }, ...candidates];
       } catch {
         /* invalid address / not a token — ignore */
       }
@@ -406,11 +422,16 @@ import { SITE_TITLE } from '../consts';
       const btn = document.createElement('button');
       btn.className = 'swap-token-option';
       btn.type = 'button';
+      const isNative = tok.address.toLowerCase() === NATIVE.toLowerCase();
+      const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
+      const initial = (tok.symbol || '?').charAt(0).toUpperCase();
       btn.innerHTML = `
-        <span>
-          <div class="swap-token-option-symbol">${tok.symbol}</div>
-          <div class="swap-token-option-name">${tok.address.toLowerCase() === NATIVE.toLowerCase() ? 'Native' : tok.address.slice(0, 8) + '…'}</div>
+        <span class="swap-token-badge">${initial}</span>
+        <span class="swap-token-info">
+          <span class="swap-token-option-symbol">${tok.symbol}</span>
+          <span class="swap-token-option-name">${shortAddr}</span>
         </span>
+        <span class="swap-token-option-balance" id="picker-bal-${tok.address.slice(2, 8)}"></span>
       `;
       btn.addEventListener('click', () => {
         if (pickingFor === 'in') {
@@ -420,13 +441,35 @@ import { SITE_TITLE } from '../consts';
         }
         updateTokenLabels();
         closePicker();
+        amountInEl.value = '';
         amountOutEl.value = '';
         detailEl.hidden = true;
         currentQuote = null;
-        scheduleQuote();
+        updateActionButton();
         if (walletConnected) void refreshBalances();
       });
       tokenListEl.appendChild(btn);
+    }
+
+    // Optionally fill in balances for the visible tokens (best-effort).
+    if (walletConnected && connectedAccount) {
+      void fillPickerBalances(filtered);
+    }
+  }
+
+  /** Best-effort: show each token's balance next to it in the picker. */
+  async function fillPickerBalances(tokens: SwapToken[]) {
+    try {
+      const { getBalance } = await loadSwap();
+      for (const tok of tokens.slice(0, 12)) {
+        const bal = await getBalance(tok.address as `0x${string}`, connectedAccount as `0x${string}`);
+        const el = document.getElementById(`picker-bal-${tok.address.slice(2, 8)}`);
+        if (el && bal > 0n) {
+          el.textContent = fmtAmount(bal, tok.decimals);
+        }
+      }
+    } catch {
+      /* rpc failure — skip balances */
     }
   }
 

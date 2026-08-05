@@ -69,6 +69,89 @@ export const DEFAULT_TOKENS: TokenInfo[] = [
   { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18 },
 ];
 
+const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist';
+const TOKENLIST_TTL = 5 * 60_000; // 5 minutes
+
+/**
+ * Fetch the most-liquid ERC-20 tokens on Robinhood Chain by querying the WETH
+ * pair set from DexScreener (free, no key). Returns ETH + $GW + WETH prepended,
+ * then the top tokens by liquidity. Cached 5 min in sessionStorage.
+ */
+export async function fetchTokenList(): Promise<TokenInfo[]> {
+  // cache check
+  try {
+    const raw = sessionStorage.getItem(TOKENLIST_CACHE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[] };
+      if (Date.now() - parsed.ts < TOKENLIST_TTL && parsed.tokens.length > 3) {
+        return parsed.tokens;
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
+  let remote: TokenInfo[] = [];
+  try {
+    const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${WETH_TOKEN}`);
+    if (res.ok) {
+      const json = (await res.json()) as {
+        pairs?: Array<{
+          chainId?: string;
+          liquidity?: { usd?: number };
+          baseToken?: { address?: string; symbol?: string; name?: string };
+          quoteToken?: { address?: string; symbol?: string; name?: string };
+        }>;
+      };
+      const byAddr = new Map<string, TokenInfo & { liq: number }>();
+      for (const p of json.pairs ?? []) {
+        if (p.chainId !== 'robinhood') continue;
+        const isBaseWeth = p.baseToken?.address?.toLowerCase() === WETH_TOKEN.toLowerCase();
+        const t = isBaseWeth ? p.quoteToken : p.baseToken;
+        if (!t?.address) continue;
+        const addr = t.address.toLowerCase() as Address;
+        const liq = p.liquidity?.usd ?? 0;
+        const existing = byAddr.get(addr);
+        if (!existing || liq > existing.liq) {
+          byAddr.set(addr, {
+            address: addr,
+            symbol: t.symbol ?? '???',
+            name: t.name ?? t.symbol ?? '',
+            decimals: 18, // DexScreener doesn't reliably give decimals; assume 18 (verified on-chain at swap time)
+            liq,
+          });
+        }
+      }
+      remote = [...byAddr.values()]
+        .sort((a, b) => b.liq - a.liq)
+        .slice(0, 40)
+        .map(({ liq, ...info }) => {
+          void liq;
+          return info;
+        });
+    }
+  } catch {
+    /* network failure — fall back to defaults only */
+  }
+
+  // Prepend the curated tokens (ETH/GW/WETH) and dedupe by address.
+  const seen = new Set<string>();
+  const merged: TokenInfo[] = [];
+  for (const t of [...DEFAULT_TOKENS, ...remote]) {
+    const key = t.address.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push(t);
+  }
+
+  try {
+    sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({ ts: Date.now(), tokens: merged }));
+  } catch {
+    /* ignore */
+  }
+  return merged;
+}
+
 // ---------------------------------------------------------------------------
 // viem clients
 // ---------------------------------------------------------------------------

@@ -325,14 +325,37 @@
   background: rgba(255, 183, 77, 0.08);
 }
 
+/* Circular token badge — first letter of the symbol, gradient background. */
+.swap-token-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber-glow, #ffb74d), var(--teal-crystal, #00acc1));
+  color: var(--bg-dark, #1c1c1c);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.swap-token-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
 .swap-token-option-symbol {
   font-weight: 700;
   font-size: 0.95rem;
 }
 
 .swap-token-option-name {
-  font-size: 0.75rem;
-  opacity: 0.5;
+  font-size: 0.72rem;
+  opacity: 0.45;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 .swap-token-option-balance {
