@@ -1,9 +1,9 @@
 ---
 // Site-wide banner announcing the GachaWiki ($GW) token launch.
-// Token is LIVE on Robinhood Chain (4663). The entire banner is a static link
-// to the launchpad — the interactive Connect Wallet flow lives in the header
-// (WalletButton.astro), per the user's request to keep the wallet button
-// visible up top. This strip stays as an informational announcement.
+// Token is LIVE on Robinhood Chain (4663). The banner links to the launchpad
+// and shows a LIVE $GW price + market cap chip, fetched from DexScreener's
+// free API (no key required, Robinhood Chain supported).
+// The interactive Connect Wallet flow lives in the header (WalletButton.astro).
 // Uses the SAME dark gradient + amber border as the Header/Footer so it
 // reads as a natural part of the chrome, not a foreign element.
 // Rendered in HomeLayout.astro (below the Header) so it shows on every page.
@@ -24,6 +24,15 @@ const CA_SHORT = '0x50bE…f27A';
       <strong>$GW Token</strong>
       is now live on Robinhood Chain
     </span>
+
+    <!-- Live price + market cap chip (populated by the script below).
+         Hidden until data loads so there's no flash of "—". -->
+    <span class="token-price" id="gw-price-chip" hidden>
+      <span class="token-price-value" id="gw-price-value">$GW …</span>
+      <span class="token-price-change" id="gw-price-change" hidden></span>
+      <span class="token-mc" id="gw-mc" hidden></span>
+    </span>
+
     <span class="token-ca" title={CA}>{CA_SHORT}</span>
     <svg class="token-arrow" width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M4 10h12m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2"
@@ -95,6 +104,38 @@ const CA_SHORT = '0x50bE…f27A';
     margin-right: 0.15rem;
   }
 
+  /* Live price + market cap chip.
+     Separated from the announcement by a faint divider, monospace numbers. */
+  .token-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid rgba(255, 183, 77, 0.25);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .token-price-value {
+    color: var(--amber-glow, #ffb74d);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .token-price-change {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .token-price-change.is-up { color: var(--success-color, #4caf50); }
+  .token-price-change.is-down { color: #ff7676; }
+
+  .token-mc {
+    color: var(--text-inverse, #ffffff);
+    opacity: 0.6;
+    font-size: 0.72rem;
+  }
+
   /* Contract address — muted, monospace, prefixed with a separator */
   .token-ca {
     color: var(--text-inverse, #ffffff);
@@ -120,14 +161,141 @@ const CA_SHORT = '0x50bE…f27A';
       padding: 0.45rem 1rem;
     }
 
-    /* Hide the CA on small screens to avoid crowding; full CA is on the token page */
-    .token-ca {
+    /* Hide the CA + market cap on small screens to avoid crowding;
+       keep the live price since that's the headline number. */
+    .token-ca,
+    .token-mc {
       display: none;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .token-dot { animation: none; }
-    .token-arrow { transition: none; }
   }
 </style>
+
+<script>
+  // Live $GW price + market cap, fetched from DexScreener's free public API.
+  // No API key required; Robinhood Chain (4663) is supported. The result is
+  // cached in sessionStorage for 60s so navigating between pages doesn't spam
+  // the API (DexScreener's free tier is rate-limited to 60 req/min, and this
+  // banner renders on every page via HomeLayout).
+  const GW_CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
+  const CACHE_KEY = 'gacha-wiki:gw-price';
+  const CACHE_TTL = 60_000; // 60 seconds
+
+  interface PriceCache {
+    ts: number;
+    price: number | null;
+    change: number | null;
+    mc: number | null;
+  }
+
+  function readCache(): PriceCache | null {
+    try {
+      const raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw) as PriceCache;
+      if (Date.now() - parsed.ts < CACHE_TTL) return parsed;
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function writeCache(data: PriceCache): void {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    } catch {
+      /* sessionStorage may be unavailable */
+    }
+  }
+
+  function formatPrice(usd: number): string {
+    // $GW is a micro-cap token; show enough significant digits.
+    if (usd >= 1) return `$${usd.toFixed(4)}`;
+    if (usd >= 0.0001) return `$${usd.toFixed(6)}`;
+    // Very small numbers — use scientific-ish notation with enough precision.
+    return `$${usd.toPrecision(4)}`;
+  }
+
+  function formatMc(usd: number | null): string {
+    if (usd == null || !isFinite(usd)) return '';
+    if (usd >= 1e6) return `MC $${(usd / 1e6).toFixed(2)}M`;
+    if (usd >= 1e3) return `MC $${(usd / 1e3).toFixed(1)}K`;
+    return `MC $${usd.toFixed(0)}`;
+  }
+
+  function render(price: number | null, change: number | null, mc: number | null) {
+    const chip = document.getElementById('gw-price-chip');
+    const priceEl = document.getElementById('gw-price-value');
+    const changeEl = document.getElementById('gw-price-change');
+    const mcEl = document.getElementById('gw-mc');
+    if (!chip || !priceEl || price == null) return;
+
+    priceEl.textContent = `$GW ${formatPrice(price)}`;
+    chip.hidden = false;
+
+    if (changeEl && change != null && isFinite(change)) {
+      const sign = change >= 0 ? '+' : '';
+      changeEl.textContent = `${sign}${change.toFixed(1)}%`;
+      changeEl.classList.toggle('is-up', change >= 0);
+      changeEl.classList.toggle('is-down', change < 0);
+      changeEl.hidden = false;
+    }
+
+    if (mcEl && mc != null && isFinite(mc)) {
+      const txt = formatMc(mc);
+      if (txt) {
+        mcEl.textContent = txt;
+        mcEl.hidden = false;
+      }
+    }
+  }
+
+  async function fetchPrice(): Promise<void> {
+    // 1) Try the cache first (instant, no network).
+    const cached = readCache();
+    if (cached) {
+      render(cached.price, cached.change, cached.mc);
+      return;
+    }
+
+    // 2) Fetch fresh data from DexScreener.
+    try {
+      const res = await fetch(
+        `https://api.dexscreener.com/latest/dex/tokens/${GW_CA}`,
+      );
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        pairs?: Array<{
+          chainId?: string;
+          priceUsd?: string;
+          fdv?: number;
+          priceChange?: { h24?: number };
+        }>;
+      };
+
+      // Prefer the Robinhood Chain pair; fall back to the first pair.
+      const pairs = json.pairs ?? [];
+      const pair =
+        pairs.find(p => p.chainId === 'robinhood') ?? pairs[0];
+      if (!pair) return;
+
+      const price = pair.priceUsd ? parseFloat(pair.priceUsd) : null;
+      const change = pair.priceChange?.h24 ?? null;
+      const mc = pair.fdv ?? null;
+
+      render(price, change, mc);
+      writeCache({ ts: Date.now(), price, change, mc });
+    } catch {
+      /* network/parse failure — leave the chip hidden */
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fetchPrice);
+  } else {
+    fetchPrice();
+  }
+</script>
