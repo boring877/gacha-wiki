@@ -129,6 +129,29 @@ import { SITE_TITLE } from '../consts';
   // Swap page controller. Lazy-loads src/scripts/swap.ts (which pulls viem) so
   // the heavy bundle only downloads on /swap. Mirrors the wallet.ts lazy pattern.
   // All on-chain calls are client-side (site output is 'static').
+
+  // Multi-source token icon fallback: when an <img> fails, advance to the next
+  // URL in its data-sources array; when all fail, show the letter badge.
+  // Registered on window so inline onerror handlers can call it.
+  (window as unknown as { __tokenIconFallback: (img: HTMLImageElement) => void }).__tokenIconFallback = (img: HTMLImageElement) => {
+    try {
+      const sources: string[] = JSON.parse(img.dataset.sources || '[]');
+      const nextIdx = parseInt(img.dataset.idx || '0', 10) + 1;
+      if (nextIdx < sources.length) {
+        img.dataset.idx = String(nextIdx);
+        img.src = sources[nextIdx];
+      } else {
+        img.style.display = 'none';
+        const badge = img.nextElementSibling as HTMLElement | null;
+        if (badge) badge.style.display = 'inline-flex';
+      }
+    } catch {
+      img.style.display = 'none';
+      const badge = img.nextElementSibling as HTMLElement | null;
+      if (badge) badge.style.display = 'inline-flex';
+    }
+  };
+
   let swapModPromise: Promise<typeof import('../scripts/swap')> | null = null;
   function loadSwap(): Promise<typeof import('../scripts/swap')> {
     if (!swapModPromise) swapModPromise = import('../scripts/swap');
@@ -436,23 +459,20 @@ import { SITE_TITLE } from '../consts';
       const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
       const displaySymbol = tok.symbol || shortAddr;
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
-      // Multi-source icon: try each source in order via onerror fallback.
-      // Sources: 1inch logo → TrustWallet assets → DexScreener (if known) → badge.
-      // The browser tries each URL automatically; no API calls needed.
       const addrLower = tok.address.toLowerCase();
+      // Multi-source icon fallback chain. The onerror handler advances through
+      // data-sources (JSON array of URLs); when all fail, shows the letter badge.
       const iconSources = [
-        tok.logoUri, // 1inch/known logo (if available)
+        tok.logoUri,
         `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/robinhoodchain/assets/${addrLower}/logo.png`,
-      ].filter(Boolean); // remove nulls
-      // Build the onerror chain: src=first, onerror tries next, finally badge.
+        `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/robinhood/assets/${addrLower}/logo.png`,
+        `https://assets.trustwallet.com/blockchains/robinhoodchain/assets/${addrLower}/logo.png`,
+        `https://tokens-data.1inch.io/images/4663/${addrLower}.png`,
+      ].filter(Boolean) as string[];
       let iconHtml;
       if (iconSources.length > 0) {
-        // Chain: each onerror swaps to the next source; the last falls to badge.
-        let onerrorChain = "this.style.display='none';this.nextElementSibling.style.display='inline-flex'";
-        for (let si = iconSources.length - 2; si >= 0; si--) {
-          onerrorChain = `this.onerror=null;this.src='${iconSources[si + 1]}'`;
-        }
-        iconHtml = `<img class="swap-token-icon" src="${iconSources[0]}" alt="" loading="lazy" onerror="${onerrorChain}"><span class="swap-token-badge" style="display:none">${initial}</span>`;
+        const allSrcs = JSON.stringify(iconSources);
+        iconHtml = `<img class="swap-token-icon" src="${iconSources[0]}" alt="" loading="lazy" data-sources='${allSrcs}' data-idx="0" onerror="window.__tokenIconFallback(this)"><span class="swap-token-badge" style="display:none">${initial}</span>`;
       } else {
         iconHtml = `<span class="swap-token-badge">${initial}</span>`;
       }
