@@ -153,23 +153,23 @@ const version = packageInfo.version;
     justify-content: center;
   }
 
-  /* About button — matches the version pill style, sits inline on the left. */
+  /* About button — identical to the version pill (solid amber, dark text). */
   .footer-pill {
-    background: rgba(255, 183, 77, 0.15);
-    border: 1px solid rgba(255, 183, 77, 0.4);
+    background: var(--amber-glow);
     padding: 0.35rem 0.75rem;
     border-radius: 8px;
     font-family: var(--font-display), sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--amber-glow);
-    text-decoration: none;
+    color: var(--bg-dark);
+    text-align: center;
     cursor: pointer;
     min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    text-decoration: none;
   }
 
   .license-text {
