@@ -148,6 +148,7 @@ import { SITE_TITLE } from '../consts';
     address: string;
     symbol: string;
     decimals: number;
+    logoUri?: string;
   }
   // Defaults: ETH -> $GW. NATIVE_TOKEN sentinel = 0x0.
   const NATIVE = '0x0000000000000000000000000000000000000000';
@@ -392,7 +393,7 @@ import { SITE_TITLE } from '../consts';
       try {
         const { fetchTokenList } = await loadSwap();
         const full = await fetchTokenList();
-        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals }));
+        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
       } catch {
         /* fall back to whatever we have */
       }
@@ -429,8 +430,12 @@ import { SITE_TITLE } from '../consts';
       const isNative = tok.address.toLowerCase() === NATIVE.toLowerCase();
       const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
+      // Token icon: use the DexScreener logo if present, else a letter badge.
+      const iconHtml = tok.logoUri
+        ? `<img class="swap-token-icon" src="${tok.logoUri}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'"><span class="swap-token-badge" style="display:none">${initial}</span>`
+        : `<span class="swap-token-badge">${initial}</span>`;
       btn.innerHTML = `
-        <span class="swap-token-badge">${initial}</span>
+        ${iconHtml}
         <span class="swap-token-info">
           <span class="swap-token-option-symbol">${tok.symbol}</span>
           <span class="swap-token-option-name">${shortAddr}</span>

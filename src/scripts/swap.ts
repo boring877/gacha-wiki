@@ -101,6 +101,7 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
           liquidity?: { usd?: number };
           baseToken?: { address?: string; symbol?: string; name?: string };
           quoteToken?: { address?: string; symbol?: string; name?: string };
+          info?: { imageUrl?: string };
         }>;
       };
       const byAddr = new Map<string, TokenInfo & { liq: number }>();
@@ -118,6 +119,7 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
             symbol: t.symbol ?? '???',
             name: t.name ?? t.symbol ?? '',
             decimals: 18, // DexScreener doesn't reliably give decimals; assume 18 (verified on-chain at swap time)
+            logoUri: p.info?.imageUrl, // token icon from DexScreener CDN
             liq,
           });
         }

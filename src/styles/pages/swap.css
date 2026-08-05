@@ -307,6 +307,26 @@
   padding: 0.4rem;
 }
 
+/* Custom scrollbar for the token list — matches the dark theme. */
+.swap-token-list::-webkit-scrollbar {
+  width: 8px;
+}
+.swap-token-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.swap-token-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 183, 77, 0.25);
+  border-radius: 4px;
+}
+.swap-token-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 183, 77, 0.4);
+}
+/* Firefox */
+.swap-token-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 183, 77, 0.25) transparent;
+}
+
 .swap-token-option {
   display: flex;
   align-items: center;
@@ -325,7 +345,8 @@
   background: rgba(255, 183, 77, 0.08);
 }
 
-/* Circular token badge — first letter of the symbol, gradient background. */
+/* Circular token badge — first letter of the symbol, gradient background.
+   Used as a fallback when a token has no logoUri icon. */
 .swap-token-badge {
   width: 34px;
   height: 34px;
@@ -338,6 +359,16 @@
   font-weight: 700;
   font-size: 0.95rem;
   flex-shrink: 0;
+}
+
+/* Token icon image — same size/shape as the badge, sits on top of it. */
+.swap-token-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .swap-token-info {
