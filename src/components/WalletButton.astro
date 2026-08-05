@@ -13,7 +13,12 @@
 //   - Connected:    truncated address pill → click opens a dropdown with the
 //                   full address, live $GW balance, copy-address, view-on-
 //                   explorer, and Disconnect.
-import { EXPLORER_URL } from '../scripts/wallet';
+// NOTE: wallet.ts is loaded ONLY via a dynamic import in the client script
+// (below) so the heavy @reown/appkit + ethers bundle stays lazy. We do NOT
+// statically import anything from it here — that would pull the whole wallet
+// stack into the page's main bundle. The explorer URL below is inlined and
+// also re-fetched at runtime via the lazy import when connected.
+const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
 ---
 
 <!--
@@ -109,17 +114,7 @@ import { EXPLORER_URL } from '../scripts/wallet';
     cursor: pointer;
     white-space: nowrap;
     touch-action: manipulation;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  .wallet-btn:hover {
-    background: rgba(255, 183, 77, 0.2);
-    border-color: rgba(255, 183, 77, 0.6);
-  }
-
-  .wallet-btn:active {
-    transform: scale(0.97);
   }
 
   .wallet-btn[hidden] {
@@ -136,11 +131,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
     border-color: var(--amber-glow, #ffb74d);
   }
 
-  .wallet-btn--connect:hover {
-    background: #ffc870;
-    border-color: #ffc870;
-  }
-
   /* Connected pill — uses the same .wallet-btn-icon as the connect button
      (the wallet SVG), so the icon stays consistent before/after connecting. */
 
@@ -152,11 +142,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
   .wallet-caret {
     flex-shrink: 0;
     opacity: 0.7;
-    transition: transform 0.15s ease;
-  }
-
-  .wallet-btn--connected[aria-expanded='true'] .wallet-caret {
-    transform: rotate(180deg);
   }
 
   /* Dropdown menu.
@@ -165,7 +150,8 @@ import { EXPLORER_URL } from '../scripts/wallet';
      `transform: translateZ(0)` (from CustomScrollbar.astro), which turns
      position:fixed into position:absolute relative to the body — so we use
      position:absolute and add window.scrollY/scrollX in JS. The scroll/resize
-     handler keeps it pinned to the trigger button. */
+     handler keeps it pinned to the trigger button. No open/close animation —
+     the menu appears/disappears instantly via the `hidden` attribute. */
   .wallet-menu {
     position: absolute;
     z-index: var(--z-modal, 1000);
@@ -177,16 +163,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
     overflow: hidden;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     color: var(--text-inverse, #ffffff);
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
-    pointer-events: none;
-  }
-
-  .wallet-menu.is-open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
   }
 
   .wallet-menu[hidden] {
@@ -262,11 +238,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
     text-align: left;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.12s ease;
-  }
-
-  .wallet-menu-item:hover {
-    background: rgba(255, 183, 77, 0.1);
   }
 
   .wallet-menu-item svg {
@@ -276,10 +247,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
 
   .wallet-menu-item--danger {
     color: #ff7676;
-  }
-
-  .wallet-menu-item--danger:hover {
-    background: rgba(255, 118, 118, 0.12);
   }
 
   /* Copy feedback */
@@ -317,14 +284,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
       display: none;
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wallet-btn,
-    .wallet-menu,
-    .wallet-caret {
-      transition: none;
-    }
-  }
 </style>
 
 <script>
@@ -334,11 +293,15 @@ import { EXPLORER_URL } from '../scripts/wallet';
   // share a single AppKit singleton + modal and stay visually in sync.
   // Mirrors the site's pattern of plain TS inside an Astro <script>.
   let walletPromise: Promise<typeof import('../scripts/wallet')> | null = null;
-  const WALLET_MODULE = '../scripts/wallet';
 
   function loadWallet(): Promise<typeof import('../scripts/wallet')> {
     if (!walletPromise) {
-      walletPromise = import(/* @vite-ignore */ WALLET_MODULE);
+      // Direct dynamic import (NO @vite-ignore) so Vite statically analyzes the
+      // path at build time and emits a separate lazy-loaded chunk. Earlier this
+      // used a runtime variable + @vite-ignore, which made Vite skip code-
+      // splitting — so the import silently failed in production (click did
+      // nothing) while working fine in dev.
+      walletPromise = import('../scripts/wallet');
     }
     return walletPromise;
   }
@@ -471,8 +434,6 @@ import { EXPLORER_URL } from '../scripts/wallet';
 
     menu.hidden = false;
     positionMenu(wrap);
-    void menu.offsetWidth; // reflow so the CSS transition runs
-    menu.classList.add('is-open');
     account.setAttribute('aria-expanded', 'true');
     // Track open state on the wrap so document-click handler can find it.
     wrap.dataset.menuOpen = 'true';
@@ -483,17 +444,12 @@ import { EXPLORER_URL } from '../scripts/wallet';
     const account = wrap.querySelector<HTMLElement>('.js-wallet-account');
     if (!menu || !account) return;
     delete wrap.dataset.menuOpen;
-    menu.classList.remove('is-open');
     account.setAttribute('aria-expanded', 'false');
-    setTimeout(() => {
-      if (wrap.dataset.menuOpen !== 'true' && menu) {
-        menu.hidden = true;
-        // Move it back into its wrap so the DOM matches the source order.
-        if (menu.parentElement === document.body) {
-          wrap.appendChild(menu);
-        }
-      }
-    }, 160);
+    menu.hidden = true;
+    // Move it back into its wrap so the DOM matches the source order.
+    if (menu.parentElement === document.body) {
+      wrap.appendChild(menu);
+    }
   }
 
   function toggleMenu(wrap: HTMLElement) {

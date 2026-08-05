@@ -27,11 +27,6 @@ import TokenBanner from './TokenBanner.astro';
 
   .simple-title {
     color: var(--amber-glow);
-    transition:
-      color 0.2s ease,
-      background-color 0.2s ease,
-      transform 0.2s ease;
-    will-change: transform, background-color;
   }
 
   /* Header optimizations for CLS prevention */
@@ -100,8 +95,6 @@ import TokenBanner from './TokenBanner.astro';
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--amber-glow);
-    transition: all 0.3s ease;
-    will-change: transform;
     /* Touch optimization */
     touch-action: manipulation;
     /* Ensure proper vertical centering within fixed header height */
