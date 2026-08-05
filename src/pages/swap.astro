@@ -463,7 +463,10 @@ import { SITE_TITLE } from '../consts';
       // Multi-source icon fallback chain. The onerror handler advances through
       // data-sources (JSON array of URLs); when all fail, shows the letter badge.
       const iconSources = [
-        tok.logoUri,
+        tok.logoUri, // known logo (1inch — includes cdn.robinhood.com stock logos)
+        // Robinhood's own asset CDN — has correct company logos for stock tokens.
+        `https://cdn.robinhood.com/ncw_assets/logos/${addrLower}`,
+        `https://cdn.robinhood.com/ncw_assets/logos/${tok.address}`,
         `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/robinhoodchain/assets/${addrLower}/logo.png`,
         `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/robinhood/assets/${addrLower}/logo.png`,
         `https://assets.trustwallet.com/blockchains/robinhoodchain/assets/${addrLower}/logo.png`,
