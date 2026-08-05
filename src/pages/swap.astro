@@ -436,10 +436,26 @@ import { SITE_TITLE } from '../consts';
       const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
       const displaySymbol = tok.symbol || shortAddr;
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
-      // Token icon: use the DexScreener logo if present, else a letter badge.
-      const iconHtml = tok.logoUri
-        ? `<img class="swap-token-icon" src="${tok.logoUri}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'"><span class="swap-token-badge" style="display:none">${initial}</span>`
-        : `<span class="swap-token-badge">${initial}</span>`;
+      // Multi-source icon: try each source in order via onerror fallback.
+      // Sources: 1inch logo → TrustWallet assets → DexScreener (if known) → badge.
+      // The browser tries each URL automatically; no API calls needed.
+      const addrLower = tok.address.toLowerCase();
+      const iconSources = [
+        tok.logoUri, // 1inch/known logo (if available)
+        `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/robinhoodchain/assets/${addrLower}/logo.png`,
+      ].filter(Boolean); // remove nulls
+      // Build the onerror chain: src=first, onerror tries next, finally badge.
+      let iconHtml;
+      if (iconSources.length > 0) {
+        // Chain: each onerror swaps to the next source; the last falls to badge.
+        let onerrorChain = "this.style.display='none';this.nextElementSibling.style.display='inline-flex'";
+        for (let si = iconSources.length - 2; si >= 0; si--) {
+          onerrorChain = `this.onerror=null;this.src='${iconSources[si + 1]}'`;
+        }
+        iconHtml = `<img class="swap-token-icon" src="${iconSources[0]}" alt="" loading="lazy" onerror="${onerrorChain}"><span class="swap-token-badge" style="display:none">${initial}</span>`;
+      } else {
+        iconHtml = `<span class="swap-token-badge">${initial}</span>`;
+      }
       btn.innerHTML = `
         ${iconHtml}
         <span class="swap-token-info">
