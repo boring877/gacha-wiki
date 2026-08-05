@@ -25,6 +25,9 @@ const version = packageInfo.version;
             Open source under <a href="/LICENSE" class="license-link">MIT License</a>
           </span>
         </div>
+        <div class="footer-links">
+          <a href="/about" class="footer-link">About</a>
+        </div>
       </div>
 
       <!-- Center: Copyright -->
@@ -169,11 +172,17 @@ const version = packageInfo.version;
   .license-link {
     color: var(--amber-glow);
     text-decoration: none;
-    transition: color 0.3s ease;
   }
 
-  .license-link:hover {
-    color: rgba(255, 183, 77, 0.8);
+  .footer-links {
+    margin-top: 0.35rem;
+  }
+
+  .footer-link {
+    color: var(--text-inverse);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 0.75rem;
   }
 
   /* Hide footer completely on touch devices and small screens for cleaner mobile experience */
