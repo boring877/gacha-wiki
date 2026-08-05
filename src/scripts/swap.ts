@@ -69,13 +69,19 @@ export const DEFAULT_TOKENS: TokenInfo[] = [
   { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18 },
 ];
 
-const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist';
-const TOKENLIST_TTL = 5 * 60_000; // 5 minutes
+const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist-v2'; // v2: invalidate old cache
+const TOKENLIST_TTL = 30 * 60_000; // 30 minutes (the official list rarely changes)
+
+// Uniswap's official default token list for Robinhood Chain. This is the
+// authoritative source — Uniswap maintains it directly.
+const UNISWAP_TOKENLIST_URL =
+  'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/robinhood.json';
 
 /**
- * Fetch the most-liquid ERC-20 tokens on Robinhood Chain by querying the WETH
- * pair set from DexScreener (free, no key). Returns ETH + $GW + WETH prepended,
- * then the top tokens by liquidity. Cached 5 min in sessionStorage.
+ * Fetch ALL swappable tokens on Robinhood Chain from Uniswap's official
+ * default-token-list (100 tokens: NVDA, TSLA, AAPL, MSFT, SPY, META, etc).
+ * Falls back to DexScreener WETH pairs if the official list is unreachable.
+ * Returns ETH + $GW + WETH prepended, then the official tokens. Cached 30 min.
  */
 export async function fetchTokenList(): Promise<TokenInfo[]> {
   // cache check
@@ -92,48 +98,72 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
   }
 
   let remote: TokenInfo[] = [];
+
+  // Primary: Uniswap's official token list for Robinhood Chain.
   try {
-    const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${WETH_TOKEN}`);
+    const res = await fetch(UNISWAP_TOKENLIST_URL);
     if (res.ok) {
-      const json = (await res.json()) as {
-        pairs?: Array<{
-          chainId?: string;
-          liquidity?: { usd?: number };
-          baseToken?: { address?: string; symbol?: string; name?: string };
-          quoteToken?: { address?: string; symbol?: string; name?: string };
-          info?: { imageUrl?: string };
-        }>;
-      };
-      const byAddr = new Map<string, TokenInfo & { liq: number }>();
-      for (const p of json.pairs ?? []) {
-        if (p.chainId !== 'robinhood') continue;
-        const isBaseWeth = p.baseToken?.address?.toLowerCase() === WETH_TOKEN.toLowerCase();
-        const t = isBaseWeth ? p.quoteToken : p.baseToken;
-        if (!t?.address) continue;
-        const addr = t.address.toLowerCase() as Address;
-        const liq = p.liquidity?.usd ?? 0;
-        const existing = byAddr.get(addr);
-        if (!existing || liq > existing.liq) {
-          byAddr.set(addr, {
-            address: addr,
-            symbol: t.symbol ?? '???',
-            name: t.name ?? t.symbol ?? '',
-            decimals: 18, // DexScreener doesn't reliably give decimals; assume 18 (verified on-chain at swap time)
-            logoUri: p.info?.imageUrl, // token icon from DexScreener CDN
-            liq,
-          });
+      const json = (await res.json()) as Array<{
+        address: string;
+        symbol: string;
+        name: string;
+        decimals: number;
+        logoURI?: string;
+      }>;
+      remote = json.map(t => ({
+        address: t.address as Address,
+        symbol: t.symbol,
+        name: t.name,
+        decimals: t.decimals,
+        logoUri: t.logoURI,
+      }));
+    }
+  } catch {
+    /* fall through to DexScreener fallback */
+  }
+
+  // Fallback: DexScreener WETH pairs (smaller set, but works offline-of-git).
+  if (remote.length === 0) {
+    try {
+      const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${WETH_TOKEN}`);
+      if (res.ok) {
+        const json = (await res.json()) as {
+          pairs?: Array<{
+            chainId?: string;
+            liquidity?: { usd?: number };
+            baseToken?: { address?: string; symbol?: string; name?: string };
+            quoteToken?: { address?: string; symbol?: string; name?: string };
+            info?: { imageUrl?: string };
+          }>;
+        };
+        const byAddr = new Map<string, TokenInfo & { liq: number }>();
+        for (const p of json.pairs ?? []) {
+          if (p.chainId !== 'robinhood') continue;
+          const isBaseWeth = p.baseToken?.address?.toLowerCase() === WETH_TOKEN.toLowerCase();
+          const t = isBaseWeth ? p.quoteToken : p.baseToken;
+          if (!t?.address) continue;
+          const addr = t.address.toLowerCase() as Address;
+          const liq = p.liquidity?.usd ?? 0;
+          const existing = byAddr.get(addr);
+          if (!existing || liq > existing.liq) {
+            byAddr.set(addr, {
+              address: addr,
+              symbol: t.symbol ?? '???',
+              name: t.name ?? t.symbol ?? '',
+              decimals: 18,
+              logoUri: p.info?.imageUrl,
+              liq,
+            });
+          }
         }
-      }
-      remote = [...byAddr.values()]
-        .sort((a, b) => b.liq - a.liq)
-        .slice(0, 40)
-        .map(({ liq, ...info }) => {
+        remote = [...byAddr.values()].map(({ liq, ...info }) => {
           void liq;
           return info;
         });
+      }
+    } catch {
+      /* both sources failed — return defaults only */
     }
-  } catch {
-    /* network failure — fall back to defaults only */
   }
 
   // Prepend the curated tokens (ETH/GW/WETH) and dedupe by address.
