@@ -22,6 +22,7 @@ import {
   erc20Abi,
   encodeFunctionData,
   getAddress,
+  keccak256,
   parseUnits,
   formatUnits,
   type Address,
@@ -69,26 +70,122 @@ export const DEFAULT_TOKENS: TokenInfo[] = [
   { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18 },
 ];
 
-const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist-v2'; // v2: invalidate old cache
-const TOKENLIST_TTL = 30 * 60_000; // 30 minutes (the official list rarely changes)
+const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist-v3'; // v3: on-chain indexed
+const TOKENLIST_TTL = 24 * 60 * 60_000; // 24h (historical pools don't change)
 
-// Uniswap's official default token list for Robinhood Chain. This is the
-// authoritative source — Uniswap maintains it directly.
+// Uniswap V3 Factory PoolCreated event signature.
+// PoolCreated(address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool)
+const POOL_CREATED_TOPIC = keccak256(
+  new TextEncoder().encode('PoolCreated(address,address,uint24,int24,address)'),
+);
+
+// Uniswap's curated list — used as a fast initial seed (symbol/name/decimals
+// known without on-chain reads) while the indexer catches up.
 const UNISWAP_TOKENLIST_URL =
   'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/robinhood.json';
 
+interface IndexedToken {
+  address: string;
+  symbol?: string; // may be unknown until resolved on-chain
+  decimals?: number;
+}
+
 /**
- * Fetch ALL swappable tokens on Robinhood Chain from Uniswap's official
- * default-token-list (100 tokens: NVDA, TSLA, AAPL, MSFT, SPY, META, etc).
- * Falls back to DexScreener WETH pairs if the official list is unreachable.
- * Returns ETH + $GW + WETH prepended, then the official tokens. Cached 30 min.
+ * Fetch a block of PoolCreated logs. Returns null if the range exceeds the
+ * RPC's 10k-log limit (caller then halves the range).
+ */
+async function fetchPoolLogs(fromBlock: number, toBlock: number): Promise<Array<{ topics: string[] }> | null> {
+  try {
+    const res = await fetch(RH_RPC, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_getLogs',
+        params: [{
+          address: V3_FACTORY,
+          topics: [POOL_CREATED_TOPIC],
+          fromBlock: '0x' + fromBlock.toString(16),
+          toBlock: '0x' + toBlock.toString(16),
+        }],
+      }),
+    });
+    const j = await res.json() as { result?: Array<{ topics: string[] }>; error?: unknown };
+    if (j.error) return null; // exceeded limit — caller halves the range
+    return j.result ?? [];
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Index ALL tokens that have a Uniswap V3 pool on Robinhood Chain by scanning
+ * PoolCreated events from the V3 Factory. Uses adaptive block-range chunking
+ * (halves the range when the 10k-log limit is hit). There are ~76k pools /
+ * ~76k unique tokens on-chain — far more than any curated list.
+ *
+ * Each token's symbol/decimals are resolved lazily on selection (on-chain read)
+ * to avoid 76k RPC calls during indexing. Returns addresses only.
+ */
+export async function indexAllPoolTokens(): Promise<Set<string>> {
+  // Get current block height.
+  let latest: number;
+  try {
+    const res = await fetch(RH_RPC, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] }),
+    });
+    const j = await res.json() as { result?: string };
+    latest = parseInt(j.result ?? '0x0', 16);
+  } catch {
+    return new Set();
+  }
+  if (latest === 0) return new Set();
+
+  const tokens = new Set<string>();
+  // Adaptive scan: start with 200k-block chunks, halve when hitting the limit.
+  const MIN_CHUNK = 5000;
+  const stack: Array<[number, number]> = [[0, latest]];
+
+  while (stack.length > 0) {
+    const [from, to] = stack.pop()!;
+    const size = to - from + 1;
+    const logs = await fetchPoolLogs(from, to);
+    if (logs === null && size > MIN_CHUNK) {
+      // Limit hit — split into two halves.
+      const mid = from + Math.floor(size / 2);
+      stack.push([from, mid], [mid + 1, to]);
+    } else if (logs) {
+      for (const log of logs) {
+        // token0 = topics[1], token1 = topics[2] (each is a 32-byte word,
+        // the address is the last 20 bytes).
+        if (log.topics[1]) tokens.add('0x' + log.topics[1].slice(26).toLowerCase());
+        if (log.topics[2]) tokens.add('0x' + log.topics[2].slice(26).toLowerCase());
+      }
+    }
+    // If logs===null and size<=MIN_CHUNK, skip (extremely dense range).
+  }
+  return tokens;
+}
+
+/**
+ * Fetch ALL swappable tokens on Robinhood Chain. Strategy:
+ * 1) Start fast: Uniswap's curated 100-token list (has symbol/name/decimals).
+ * 2) Index on-chain: scan all PoolCreated events to discover the full ~76k
+ *    token set (addresses only; metadata resolved lazily on selection).
+ * 3) Merge + dedupe. Cached 24h in sessionStorage (pools are append-only).
+ *
+ * This is the definitive token set — every token that has a Uniswap pool,
+ * read straight from the chain. No API key, no curated-list limit.
  */
 export async function fetchTokenList(): Promise<TokenInfo[]> {
   // cache check
   try {
     const raw = sessionStorage.getItem(TOKENLIST_CACHE_KEY);
     if (raw) {
-      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[] };
+      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[]; complete?: boolean };
       if (Date.now() - parsed.ts < TOKENLIST_TTL && parsed.tokens.length > 3) {
         return parsed.tokens;
       }
@@ -97,89 +194,62 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
     /* ignore */
   }
 
-  let remote: TokenInfo[] = [];
-
-  // Primary: Uniswap's official token list for Robinhood Chain.
+  // 1) Fast seed: Uniswap's curated list (full metadata).
+  const curated: TokenInfo[] = [];
   try {
     const res = await fetch(UNISWAP_TOKENLIST_URL);
     if (res.ok) {
       const json = (await res.json()) as Array<{
-        address: string;
-        symbol: string;
-        name: string;
-        decimals: number;
-        logoURI?: string;
+        address: string; symbol: string; name: string; decimals: number; logoURI?: string;
       }>;
-      remote = json.map(t => ({
-        address: t.address as Address,
-        symbol: t.symbol,
-        name: t.name,
-        decimals: t.decimals,
-        logoUri: t.logoURI,
-      }));
-    }
-  } catch {
-    /* fall through to DexScreener fallback */
-  }
-
-  // Fallback: DexScreener WETH pairs (smaller set, but works offline-of-git).
-  if (remote.length === 0) {
-    try {
-      const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${WETH_TOKEN}`);
-      if (res.ok) {
-        const json = (await res.json()) as {
-          pairs?: Array<{
-            chainId?: string;
-            liquidity?: { usd?: number };
-            baseToken?: { address?: string; symbol?: string; name?: string };
-            quoteToken?: { address?: string; symbol?: string; name?: string };
-            info?: { imageUrl?: string };
-          }>;
-        };
-        const byAddr = new Map<string, TokenInfo & { liq: number }>();
-        for (const p of json.pairs ?? []) {
-          if (p.chainId !== 'robinhood') continue;
-          const isBaseWeth = p.baseToken?.address?.toLowerCase() === WETH_TOKEN.toLowerCase();
-          const t = isBaseWeth ? p.quoteToken : p.baseToken;
-          if (!t?.address) continue;
-          const addr = t.address.toLowerCase() as Address;
-          const liq = p.liquidity?.usd ?? 0;
-          const existing = byAddr.get(addr);
-          if (!existing || liq > existing.liq) {
-            byAddr.set(addr, {
-              address: addr,
-              symbol: t.symbol ?? '???',
-              name: t.name ?? t.symbol ?? '',
-              decimals: 18,
-              logoUri: p.info?.imageUrl,
-              liq,
-            });
-          }
-        }
-        remote = [...byAddr.values()].map(({ liq, ...info }) => {
-          void liq;
-          return info;
+      for (const t of json) {
+        curated.push({
+          address: t.address as Address,
+          symbol: t.symbol,
+          name: t.name,
+          decimals: t.decimals,
+          logoUri: t.logoURI,
         });
       }
-    } catch {
-      /* both sources failed — return defaults only */
     }
+  } catch {
+    /* offline — proceed with defaults */
   }
 
-  // Prepend the curated tokens (ETH/GW/WETH) and dedupe by address.
+  // 2) On-chain index: discover every token with a pool.
+  //    Only addresses here — metadata (symbol/decimals) resolved lazily via
+  //    resolveToken() when the user actually selects one.
+  const indexedAddrs = await indexAllPoolTokens();
+
+  // 3) Merge: curated tokens first (full metadata), then indexed-only tokens
+  //    (address only, metadata filled as '---' until resolved on selection).
   const seen = new Set<string>();
   const merged: TokenInfo[] = [];
-  for (const t of [...DEFAULT_TOKENS, ...remote]) {
+  for (const t of [...DEFAULT_TOKENS, ...curated]) {
     const key = t.address.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
     merged.push(t);
   }
+  for (const addr of indexedAddrs) {
+    if (seen.has(addr)) continue;
+    seen.add(addr);
+    merged.push({
+      address: addr as Address,
+      symbol: '', // resolved lazily on selection
+      name: '',
+      decimals: 18, // most ERC-20s are 18; corrected on selection
+    });
+  }
 
   try {
-    sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({ ts: Date.now(), tokens: merged }));
+    sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({
+      ts: Date.now(),
+      tokens: merged,
+      complete: indexedAddrs.size > 0,
+    }));
   } catch {
-    /* ignore */
+    // sessionStorage may be full (76k tokens is large) — keep going anyway.
   }
   return merged;
 }

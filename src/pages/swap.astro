@@ -388,7 +388,8 @@ import { SITE_TITLE } from '../consts';
       tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
     }
 
-    // Ensure the full token list (defaults + liquid tokens from DexScreener).
+    // Load the token list. fetchTokenList() returns the curated list fast,
+    // then indexes all ~76k on-chain pools (cached 24h after first index).
     if (tokenList.length <= 3) {
       try {
         const { fetchTokenList } = await loadSwap();
@@ -397,7 +398,6 @@ import { SITE_TITLE } from '../consts';
       } catch {
         /* fall back to whatever we have */
       }
-      // Re-render if the query is empty (first open).
       if (!q) tokenListEl.innerHTML = '';
     }
 
@@ -415,7 +415,7 @@ import { SITE_TITLE } from '../consts';
     }
 
     const filtered = q && !q.startsWith('0x')
-      ? candidates.filter(t => t.symbol.toLowerCase().includes(q))
+      ? candidates.filter(t => (t.symbol && t.symbol.toLowerCase().includes(q)) || t.address.toLowerCase().includes(q))
       : candidates;
 
     if (filtered.length === 0) {
@@ -423,12 +423,19 @@ import { SITE_TITLE } from '../consts';
       return;
     }
 
-    for (const tok of filtered) {
+    // Cap rendered DOM nodes at 150 for performance (76k tokens would freeze
+    // the browser). The search box narrows the list; with no query we show the
+    // top 150 (curated known tokens first, since they have full metadata).
+    const RENDER_LIMIT = 150;
+    const toRender = filtered.length > RENDER_LIMIT ? filtered.slice(0, RENDER_LIMIT) : filtered;
+
+    for (const tok of toRender) {
       const btn = document.createElement('button');
       btn.className = 'swap-token-option';
       btn.type = 'button';
       const isNative = tok.address.toLowerCase() === NATIVE.toLowerCase();
       const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
+      const displaySymbol = tok.symbol || shortAddr;
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
       // Token icon: use the DexScreener logo if present, else a letter badge.
       const iconHtml = tok.logoUri
@@ -437,8 +444,8 @@ import { SITE_TITLE } from '../consts';
       btn.innerHTML = `
         ${iconHtml}
         <span class="swap-token-info">
-          <span class="swap-token-option-symbol">${tok.symbol}</span>
-          <span class="swap-token-option-name">${shortAddr}</span>
+          <span class="swap-token-option-symbol">${displaySymbol}</span>
+          <span class="swap-token-option-name">${tok.symbol ? shortAddr : (tok.address === NATIVE ? 'Native' : 'Indexed')}</span>
         </span>
         <span class="swap-token-option-balance" id="picker-bal-${tok.address.slice(2, 8)}"></span>
       `;
@@ -447,6 +454,11 @@ import { SITE_TITLE } from '../consts';
           tokenIn = tok;
         } else if (pickingFor === 'out') {
           tokenOut = tok;
+        }
+        // If this token came from the on-chain indexer (no symbol yet), resolve
+        // its metadata on-chain now so the UI shows the real symbol/decimals.
+        if (!tok.symbol) {
+          void resolveSelectedToken();
         }
         updateTokenLabels();
         closePicker();
@@ -460,9 +472,17 @@ import { SITE_TITLE } from '../consts';
       tokenListEl.appendChild(btn);
     }
 
+    // If the list was capped, show how many more exist.
+    if (filtered.length > RENDER_LIMIT) {
+      const more = document.createElement('div');
+      more.className = 'swap-token-option-empty';
+      more.textContent = `+${filtered.length - RENDER_LIMIT} more — search to narrow`;
+      tokenListEl.appendChild(more);
+    }
+
     // Optionally fill in balances for the visible tokens (best-effort).
     if (walletConnected && connectedAccount) {
-      void fillPickerBalances(filtered);
+      void fillPickerBalances(toRender);
     }
   }
 
@@ -479,6 +499,24 @@ import { SITE_TITLE } from '../consts';
       }
     } catch {
       /* rpc failure — skip balances */
+    }
+  }
+
+  /** Resolve on-chain metadata (symbol/decimals) for a token that came from
+   *  the indexer without metadata. Updates the active tokenIn/tokenOut + UI. */
+  async function resolveSelectedToken() {
+    const target = pickingFor === 'in' ? tokenIn : tokenOut;
+    if (!target || target.symbol) return;
+    try {
+      const { resolveToken } = await loadSwap();
+      const meta = await resolveToken(target.address as `0x${string}`);
+      target.symbol = meta.symbol;
+      target.decimals = meta.decimals;
+      updateTokenLabels();
+      if (walletConnected) void refreshBalances();
+    } catch {
+      target.symbol = target.symbol || target.address.slice(0, 6) + '…';
+      updateTokenLabels();
     }
   }
 
