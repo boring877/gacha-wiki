@@ -25,12 +25,11 @@ const CA_SHORT = '0x50bE…f27A';
       is now live on Robinhood Chain
     </span>
 
-    <!-- Live price + market cap chip (populated by the script below).
-         Hidden until data loads so there's no flash of "—". -->
+    <!-- Live stats chip — cycles through price / 24h change / market cap /
+         volume / liquidity every few seconds. Hidden until data loads. -->
     <span class="token-price" id="gw-price-chip" hidden>
-      <span class="token-price-value" id="gw-price-value">$GW …</span>
-      <span class="token-price-change" id="gw-price-change" hidden></span>
-      <span class="token-mc" id="gw-mc" hidden></span>
+      <span class="token-price-label">$GW</span>
+      <span class="token-price-stat" id="gw-stat">…</span>
     </span>
 
     <span class="token-ca" title={CA}>{CA_SHORT}</span>
@@ -104,37 +103,35 @@ const CA_SHORT = '0x50bE…f27A';
     margin-right: 0.15rem;
   }
 
-  /* Live price + market cap chip.
+  /* Live stats chip — cycles through price/change/mcap/volume/liquidity.
      Separated from the announcement by a faint divider, monospace numbers. */
   .token-price {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
     padding-left: 0.65rem;
     border-left: 1px solid rgba(255, 183, 77, 0.25);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 
-  .token-price-value {
+  .token-price-label {
     color: var(--amber-glow, #ffb74d);
     font-weight: 700;
     font-size: 0.8rem;
   }
 
-  .token-price-change {
-    font-size: 0.7rem;
-    font-weight: 600;
+  .token-price-stat {
+    font-weight: 700;
+    font-size: 0.8rem;
   }
 
-  .token-price-change.is-up { color: var(--success-color, #4caf50); }
-  .token-price-change.is-down { color: #ff7676; }
-
-  .token-mc {
-    color: var(--text-inverse, #ffffff);
-    opacity: 0.6;
-    font-size: 0.72rem;
-  }
+  /* Color states — set by JS per-stat so each metric has its own accent */
+  .token-price-stat.c-amber { color: var(--amber-glow, #ffb74d); }
+  .token-price-stat.c-up { color: var(--success-color, #4caf50); }
+  .token-price-stat.c-down { color: #ff7676; }
+  .token-price-stat.c-teal { color: var(--teal-crystal, #00acc1); }
+  .token-price-stat.c-muted { color: var(--text-inverse, #ffffff); opacity: 0.75; }
 
   /* Contract address — muted, monospace, prefixed with a separator */
   .token-ca {
@@ -161,10 +158,8 @@ const CA_SHORT = '0x50bE…f27A';
       padding: 0.45rem 1rem;
     }
 
-    /* Hide the CA + market cap on small screens to avoid crowding;
-       keep the live price since that's the headline number. */
-    .token-ca,
-    .token-mc {
+    /* Hide the CA on small screens to avoid crowding; keep the cycling stat. */
+    .token-ca {
       display: none;
     }
   }
@@ -175,27 +170,32 @@ const CA_SHORT = '0x50bE…f27A';
 </style>
 
 <script>
-  // Live $GW price + market cap, fetched from DexScreener's free public API.
-  // No API key required; Robinhood Chain (4663) is supported. The result is
-  // cached in sessionStorage for 60s so navigating between pages doesn't spam
-  // the API (DexScreener's free tier is rate-limited to 60 req/min, and this
-  // banner renders on every page via HomeLayout).
+  // Live $GW stats, fetched from DexScreener's free public API (no key,
+  // Robinhood Chain 4663 supported). The banner CYCLES through several
+  // metrics every few seconds so a single compact slot shows price, 24h
+  // change, market cap, volume, and liquidity in turn — each color-coded.
+  // Result cached in sessionStorage for 60s so navigating between pages
+  // doesn't spam the API (free tier = 60 req/min).
   const GW_CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
-  const CACHE_KEY = 'gacha-wiki:gw-price';
+  const CACHE_KEY = 'gacha-wiki:gw-stats';
   const CACHE_TTL = 60_000; // 60 seconds
+  const ROTATE_MS = 3000; // how long each stat shows before cycling
 
-  interface PriceCache {
+  interface Stats {
     ts: number;
     price: number | null;
-    change: number | null;
+    change24h: number | null;
+    change1h: number | null;
     mc: number | null;
+    volume24h: number | null;
+    liquidity: number | null;
   }
 
-  function readCache(): PriceCache | null {
+  function readCache(): Stats | null {
     try {
       const raw = sessionStorage.getItem(CACHE_KEY);
       if (!raw) return null;
-      const parsed = JSON.parse(raw) as PriceCache;
+      const parsed = JSON.parse(raw) as Stats;
       if (Date.now() - parsed.ts < CACHE_TTL) return parsed;
     } catch {
       /* ignore */
@@ -203,7 +203,7 @@ const CA_SHORT = '0x50bE…f27A';
     return null;
   }
 
-  function writeCache(data: PriceCache): void {
+  function writeCache(data: Stats): void {
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
     } catch {
@@ -211,53 +211,85 @@ const CA_SHORT = '0x50bE…f27A';
     }
   }
 
-  function formatPrice(usd: number): string {
-    // $GW is a micro-cap token; show enough significant digits.
+  // --- formatting helpers ------------------------------------------------
+
+  function fmtPrice(usd: number): string {
     if (usd >= 1) return `$${usd.toFixed(4)}`;
     if (usd >= 0.0001) return `$${usd.toFixed(6)}`;
-    // Very small numbers — use scientific-ish notation with enough precision.
     return `$${usd.toPrecision(4)}`;
   }
 
-  function formatMc(usd: number | null): string {
+  function fmtUsd(usd: number | null): string {
     if (usd == null || !isFinite(usd)) return '';
-    if (usd >= 1e6) return `MC $${(usd / 1e6).toFixed(2)}M`;
-    if (usd >= 1e3) return `MC $${(usd / 1e3).toFixed(1)}K`;
-    return `MC $${usd.toFixed(0)}`;
+    if (usd >= 1e6) return `$${(usd / 1e6).toFixed(2)}M`;
+    if (usd >= 1e3) return `$${(usd / 1e3).toFixed(1)}K`;
+    return `$${usd.toFixed(0)}`;
   }
 
-  function render(price: number | null, change: number | null, mc: number | null) {
+  function fmtPct(p: number | null): string {
+    if (p == null || !isFinite(p)) return '';
+    const sign = p >= 0 ? '+' : '';
+    return `${sign}${p.toFixed(1)}%`;
+  }
+
+  // --- build the list of stats to cycle through --------------------------
+
+  interface StatItem {
+    text: string;
+    colorClass: string;
+  }
+
+  function buildStats(s: Stats): StatItem[] {
+    const items: StatItem[] = [];
+    if (s.price != null) items.push({ text: fmtPrice(s.price), colorClass: 'c-amber' });
+    if (s.change24h != null) {
+      items.push({
+        text: `24h ${fmtPct(s.change24h)}`,
+        colorClass: s.change24h >= 0 ? 'c-up' : 'c-down',
+      });
+    }
+    if (s.change1h != null) {
+      items.push({
+        text: `1h ${fmtPct(s.change1h)}`,
+        colorClass: s.change1h >= 0 ? 'c-up' : 'c-down',
+      });
+    }
+    if (s.mc != null) items.push({ text: `MC ${fmtUsd(s.mc)}`, colorClass: 'c-teal' });
+    if (s.volume24h != null) items.push({ text: `Vol ${fmtUsd(s.volume24h)}`, colorClass: 'c-muted' });
+    if (s.liquidity != null) items.push({ text: `Liq ${fmtUsd(s.liquidity)}`, colorClass: 'c-muted' });
+    return items;
+  }
+
+  // --- render + cycle ----------------------------------------------------
+
+  let rotateTimer: ReturnType<typeof setInterval> | undefined;
+
+  function startCycling(stats: StatItem[]) {
     const chip = document.getElementById('gw-price-chip');
-    const priceEl = document.getElementById('gw-price-value');
-    const changeEl = document.getElementById('gw-price-change');
-    const mcEl = document.getElementById('gw-mc');
-    if (!chip || !priceEl || price == null) return;
+    const statEl = document.getElementById('gw-stat');
+    if (!chip || !statEl || stats.length === 0) return;
 
-    priceEl.textContent = `$GW ${formatPrice(price)}`;
     chip.hidden = false;
+    let i = 0;
 
-    if (changeEl && change != null && isFinite(change)) {
-      const sign = change >= 0 ? '+' : '';
-      changeEl.textContent = `${sign}${change.toFixed(1)}%`;
-      changeEl.classList.toggle('is-up', change >= 0);
-      changeEl.classList.toggle('is-down', change < 0);
-      changeEl.hidden = false;
-    }
+    const show = () => {
+      const item = stats[i % stats.length];
+      statEl.textContent = item.text;
+      // reset color classes, apply this stat's color
+      statEl.className = `token-price-stat ${item.colorClass}`;
+      i++;
+    };
 
-    if (mcEl && mc != null && isFinite(mc)) {
-      const txt = formatMc(mc);
-      if (txt) {
-        mcEl.textContent = txt;
-        mcEl.hidden = false;
-      }
-    }
+    show(); // render the first stat immediately
+    if (rotateTimer) clearInterval(rotateTimer);
+    rotateTimer = setInterval(show, ROTATE_MS);
   }
 
-  async function fetchPrice(): Promise<void> {
+  async function loadStats(): Promise<void> {
     // 1) Try the cache first (instant, no network).
     const cached = readCache();
     if (cached) {
-      render(cached.price, cached.change, cached.mc);
+      startCycling(buildStats(cached));
       return;
     }
 
@@ -272,30 +304,37 @@ const CA_SHORT = '0x50bE…f27A';
           chainId?: string;
           priceUsd?: string;
           fdv?: number;
-          priceChange?: { h24?: number };
+          liquidity?: { usd?: number };
+          volume?: { h24?: number };
+          priceChange?: { h24?: number; h1?: number };
         }>;
       };
 
       // Prefer the Robinhood Chain pair; fall back to the first pair.
       const pairs = json.pairs ?? [];
-      const pair =
-        pairs.find(p => p.chainId === 'robinhood') ?? pairs[0];
+      const pair = pairs.find(p => p.chainId === 'robinhood') ?? pairs[0];
       if (!pair) return;
 
-      const price = pair.priceUsd ? parseFloat(pair.priceUsd) : null;
-      const change = pair.priceChange?.h24 ?? null;
-      const mc = pair.fdv ?? null;
+      const stats: Stats = {
+        ts: Date.now(),
+        price: pair.priceUsd ? parseFloat(pair.priceUsd) : null,
+        change24h: pair.priceChange?.h24 ?? null,
+        change1h: pair.priceChange?.h1 ?? null,
+        mc: pair.fdv ?? null,
+        volume24h: pair.volume?.h24 ?? null,
+        liquidity: pair.liquidity?.usd ?? null,
+      };
 
-      render(price, change, mc);
-      writeCache({ ts: Date.now(), price, change, mc });
+      startCycling(buildStats(stats));
+      writeCache(stats);
     } catch {
       /* network/parse failure — leave the chip hidden */
     }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fetchPrice);
+    document.addEventListener('DOMContentLoaded', loadStats);
   } else {
-    fetchPrice();
+    loadStats();
   }
 </script>
