@@ -441,14 +441,13 @@ import { SITE_TITLE } from '../consts';
       const displaySymbol = tok.symbol || shortAddr;
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
       const addrLower = tok.address.toLowerCase();
-      // Token icon: use the known logoUri if available. If it fails (onerror),
-      // try the Robinhood CDN directly (correct stock logos), then fall to badge.
-      const robinhoodLogo = `https://cdn.robinhood.com/ncw_assets/logos/${addrLower}.png`;
-      const primaryLogo = esc(tok.logoUri || robinhoodLogo);
-      const escRobinhoodLogo = esc(robinhoodLogo);
+      // Token icon — clean pattern like Uniswap: ONE logo URL, badge fallback.
+      // The logoUri comes from Blockscout (correct CoinGecko + Robinhood CDN
+      // logos). If it fails to load, the badge with the symbol initial shows.
+      const logoSrc = tok.logoUri;
       let iconHtml;
-      if (primaryLogo) {
-        iconHtml = `<img class="swap-token-icon" src="${primaryLogo}" alt="" loading="lazy" onerror="if(this.dataset.f){this.style.display='none';this.nextElementSibling.style.display='inline-flex'}else{this.dataset.f='1';this.src='${escRobinhoodLogo}'}"><span class="swap-token-badge" style="display:none">${esc(initial)}</span>`;
+      if (logoSrc) {
+        iconHtml = `<img class="swap-token-icon" src="${esc(logoSrc)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'"><span class="swap-token-badge" style="display:none">${esc(initial)}</span>`;
       } else {
         iconHtml = `<span class="swap-token-badge">${esc(initial)}</span>`;
       }
