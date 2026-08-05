@@ -11,11 +11,9 @@ const DECIMALS = 18;
 // Keep this in sync with on-chain state.
 const FALLBACK_CIRCULATING = 989999990n;
 
-interface Env {
-  ASSETS: { fetch: typeof fetch };
-}
-
-export const onRequestGet: PagesFunction<Env> = async () => {
+// Cloudflare Pages recognizes `onRequestGet` by export name at runtime;
+// no ambient type dependency is needed.
+export const onRequestGet = async (): Promise<Response> => {
   try {
     // Fetch token metadata (total_supply) and holders (burn balance) in parallel.
     const [tokenRes, holdersRes] = await Promise.all([
