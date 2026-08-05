@@ -1,11 +1,17 @@
 ---
 // Site-wide banner announcing the GachaWiki ($GW) token launch.
-// Token is LIVE on Robinhood Chain (4663). The entire banner is a link.
+// Token is LIVE on Robinhood Chain (4663). The entire banner is a static link
+// to the launchpad — the interactive Connect Wallet flow lives in the header
+// (WalletButton.astro), per the user's request to keep the wallet button
+// visible up top. This strip stays as an informational announcement.
 // Uses the SAME dark gradient + amber border as the Header/Footer so it
 // reads as a natural part of the chrome, not a foreign element.
 // Rendered in HomeLayout.astro (below the Header) so it shows on every page.
 // To take down: remove this component and its import in HomeLayout.astro.
 const LAUNCH_URL = 'https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611799074FcC409522f27A';
+// Full contract address for verification (shown shortened in the banner)
+const CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
+const CA_SHORT = '0x50bE…f27A';
 ---
 
 <a class="token-banner" href={LAUNCH_URL} target="_blank" rel="noopener noreferrer" aria-label="GachaWiki ($GW) token is now live on Robinhood Chain — view token">
@@ -18,6 +24,7 @@ const LAUNCH_URL = 'https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611
       <strong>$GW Token</strong>
       is now live on Robinhood Chain
     </span>
+    <span class="token-ca" title={CA}>{CA_SHORT}</span>
     <svg class="token-arrow" width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M4 10h12m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round"></path>
@@ -88,6 +95,18 @@ const LAUNCH_URL = 'https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611
     margin-right: 0.15rem;
   }
 
+  /* Contract address — muted, monospace, prefixed with a separator */
+  .token-ca {
+    color: var(--text-inverse, #ffffff);
+    opacity: 0.55;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid rgba(255, 183, 77, 0.25);
+    white-space: nowrap;
+    cursor: help;
+  }
+
   .token-arrow {
     color: var(--amber-glow, #ffb74d);
     opacity: 0.7;
@@ -99,6 +118,11 @@ const LAUNCH_URL = 'https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611
       font-size: 0.8rem;
       gap: 0.5rem;
       padding: 0.45rem 1rem;
+    }
+
+    /* Hide the CA on small screens to avoid crowding; full CA is on the token page */
+    .token-ca {
+      display: none;
     }
   }
 

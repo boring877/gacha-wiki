@@ -1,10 +1,13 @@
 ---
-
+import WalletButton from './WalletButton.astro';
 ---
 
 <div class="mobile-nav">
   <!-- Apps Link (Left) -->
   <a href="/apps" class="mobile-nav-link">Apps</a>
+
+  <!-- Wallet (center) — same component as desktop, keeps the menu in sync -->
+  <WalletButton />
 
   <!-- Main Menu Button (Right) -->
   <button id="hamburger" class="main-menu-btn" aria-label="Open Menu" aria-expanded="false">
