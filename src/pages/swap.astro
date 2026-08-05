@@ -392,8 +392,8 @@ import { SITE_TITLE } from '../consts';
       tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
     }
 
-    // Phase 1: load curated tokens. fetchCuratedTokens merges Blockscout +
-    // Uniswap list — this takes a few seconds (4 Blockscout pages). While it
+    // Phase 1: load curated tokens. fetchCuratedTokens fetches Uniswap's
+    // official token list (100 stock tokens + metadata). One fetch, ~1s.
     // loads, show the 3 defaults (ETH/GW/WETH) so the picker isn't empty.
     if (tokenList.length <= 3) {
       // Render defaults immediately (don't await anything).
@@ -404,7 +404,7 @@ import { SITE_TITLE } from '../consts';
         } catch { /* ignore */ }
       }
 
-      // Then fetch the full curated set (Blockscout + Uniswap) in the background.
+      // Then fetch the full curated set (Uniswap's 100 tokens) in the background.
       try {
         const { fetchCuratedTokens } = await loadSwap();
         const curated = await fetchCuratedTokens();
@@ -455,7 +455,7 @@ import { SITE_TITLE } from '../consts';
       const initial = (tok.symbol || '?').charAt(0).toUpperCase();
       const addrLower = tok.address.toLowerCase();
       // Token icon — clean pattern like Uniswap: ONE logo URL, badge fallback.
-      // The logoUri comes from Blockscout (correct CoinGecko + Robinhood CDN
+      // The logoUri comes from Robinhood CDN (cdn.robinhood.com).
       // logos). If it fails to load, the badge with the symbol initial shows.
       const logoSrc = tok.logoUri;
       let iconHtml;

@@ -173,80 +173,19 @@ export async function indexAllPoolTokens(): Promise<Set<string>> {
  * This is the definitive token set — every token that has a Uniswap pool,
  * read straight from the chain. No API key, no curated-list limit.
  */
-// Blockscout (the chain's own explorer) API — returns tokens with curated
-// icon_url logos (CoinGecko + Robinhood CDN). 50 per page, paginated.
-const BLOCKSCOUT_API = 'https://robinhoodchain.blockscout.com/api/v2/tokens';
-
-interface BlockscoutToken {
-  address_hash: string;
-  symbol: string;
-  name: string;
-  decimals: number;
-  icon_url?: string | null;
-}
-
 /**
- * Fetch tokens from Blockscout (the chain's own explorer). Each token has a
- * curated icon_url (CoinGecko images + Robinhood's own CDN for stock tokens).
- * Paginates 50/page. Stops after a few pages to avoid hitting rate limits.
- */
-export async function fetchBlockscoutTokens(maxPages = 6): Promise<TokenInfo[]> {
-  const tokens: TokenInfo[] = [];
-  let nextParams: Record<string, unknown> | null = null;
-
-  for (let page = 0; page < maxPages; page++) {
-    try {
-      const url = nextParams
-        ? `${BLOCKSCOUT_API}?type=ERC-20&${new URLSearchParams(
-            Object.entries(nextParams).map(([k, v]) => [k, String(v)]),
-          )}`
-        : `${BLOCKSCOUT_API}?type=ERC-20`;
-      const res = await fetch(url);
-      if (!res.ok) break;
-      const json = (await res.json()) as { items?: BlockscoutToken[]; next_page_params?: Record<string, unknown> | null };
-      const items = json.items ?? [];
-      for (const t of items) {
-        tokens.push({
-          address: t.address_hash as Address,
-          symbol: t.symbol,
-          name: t.name,
-          decimals: t.decimals ?? 18,
-          logoUri: t.icon_url ?? undefined,
-        });
-      }
-      nextParams = json.next_page_params ?? null;
-      if (!nextParams) break; // no more pages
-    } catch {
-      break;
-    }
-  }
-  return tokens;
-}
-
-/**
- * Fast seed: ALL known tokens with logos. Merges three sources in parallel:
- *   1) DEFAULT_TOKENS (ETH, GW, WETH — hardcoded logos)
- *   2) Uniswap's curated 100 (stock tokens: NVDA, TSLA, AAPL)
- *   3) Blockscout explorer tokens (correct logos via CoinGecko + Robinhood CDN)
- * Used for instant picker rendering before the full on-chain index completes.
+ * Fast seed: Uniswap's official token list for Robinhood Chain (100 tokens)
+ * + defaults. Logos via Robinhood CDN (cdn.robinhood.com/ncw_assets/logos).
+ * One fetch, instant. Used for picker rendering before the on-chain index.
  */
 export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
-  // Fetch both sources in parallel. Blockscout is the primary logo source
-  // (correct Robinhood CDN logos for stocks + CoinGecko for crypto).
-  const [uniswapRes, blockscout] = await Promise.all([
-    fetch(UNISWAP_TOKENLIST_URL).then(r => r.ok ? r.json() : []).catch(() => []),
-    fetchBlockscoutTokens(1), // 4 pages (200 tokens) — Blockscout has correct logos
-  ]);
+  const uniswapRes = await fetch(UNISWAP_TOKENLIST_URL)
+    .then(r => r.ok ? r.json() : [])
+    .catch(() => []);
 
   const uniswapList = uniswapRes as Array<{
     address: string; symbol: string; name: string; decimals: number;
   }>;
-
-  // Build a Blockscout logo map (address → icon_url).
-  const blockscoutLogos = new Map<string, string>();
-  for (const t of blockscout) {
-    if (t.logoUri) blockscoutLogos.set(t.address.toLowerCase(), t.logoUri);
-  }
 
   const seen = new Set<string>();
   const merged: TokenInfo[] = [];
@@ -259,8 +198,7 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
     merged.push(t);
   }
 
-  // 2) Uniswap curated stock tokens — logos from Blockscout (correct Robinhood
-  //    CDN), fallback to Robinhood CDN direct URL.
+  // 2) Uniswap's 100 stock tokens — logo via Robinhood CDN.
   for (const t of uniswapList) {
     const key = t.address.toLowerCase();
     if (seen.has(key)) continue;
@@ -270,23 +208,8 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
       symbol: t.symbol,
       name: t.name,
       decimals: t.decimals,
-      logoUri: blockscoutLogos.get(key)
-        ?? `https://cdn.robinhood.com/ncw_assets/logos/${key}.png`,
+      logoUri: `https://cdn.robinhood.com/ncw_assets/logos/${key}.png`,
     });
-  }
-
-  // 3) Blockscout explorer tokens — crypto tokens with correct CoinGecko +
-  //    Robinhood CDN logos. Adds tokens not in the Uniswap list.
-  for (const t of blockscout) {
-    const key = t.address.toLowerCase();
-    if (seen.has(key)) {
-      // Already listed — fill in the logo if it was missing.
-      const existing = merged.find(m => m.address.toLowerCase() === key);
-      if (existing && !existing.logoUri && t.logoUri) existing.logoUri = t.logoUri;
-      continue;
-    }
-    seen.add(key);
-    merged.push(t);
   }
 
   return merged;
@@ -336,20 +259,17 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
       seen.add(key);
       merged.push(t);
     }
-    // Enrich indexed tokens with Blockscout metadata (symbol/logo/decimals)
-    // where available; the rest stay address-only until resolved on selection.
-    const blockscout = await fetchBlockscoutTokens(1);
-    const bsMap = new Map(blockscout.map(t => [t.address.toLowerCase(), t]));
+    // Indexed tokens: address-only, logo via Robinhood CDN, metadata resolved
+    // lazily on selection (on-chain read).
     for (const addr of indexedAddrs) {
       if (seen.has(addr)) continue;
       seen.add(addr);
-      const info = bsMap.get(addr);
       merged.push({
         address: addr as Address,
-        symbol: info?.symbol ?? '',
-        name: info?.name ?? '',
-        decimals: info?.decimals ?? 18,
-        logoUri: info?.logoUri ?? `https://cdn.robinhood.com/ncw_assets/logos/${addr}.png`,
+        symbol: '',
+        name: '',
+        decimals: 18,
+        logoUri: `https://cdn.robinhood.com/ncw_assets/logos/${addr}.png`,
       });
     }
 
