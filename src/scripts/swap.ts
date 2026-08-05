@@ -230,44 +230,68 @@ export async function resolveTokenLogo(address: Address): Promise<string | null>
 }
 
 /**
- * Fast seed: curated tokens with logos from 1inch (one bulk fetch covers all
- * 282 tokens on RH chain). Returns ETH + $GW + WETH + Uniswap's 100 tokens,
- * each enriched with its logo. Used for instant picker rendering.
+ * Fast seed: ALL known tokens with logos. Merges three sources:
+ *   1) DEFAULT_TOKENS (ETH, GW, WETH — hardcoded logos)
+ *   2) Uniswap's curated 100 (stock tokens: NVDA, TSLA, AAPL — logos from
+ *      1inch where available, else Google favicons)
+ *   3) 1inch's 282 crypto tokens (full metadata + logos)
+ * Returns immediately after two parallel fetches. Used for instant picker
+ * rendering before the full on-chain index completes.
  */
 export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
-  // Fetch 1inch data (one call, covers everything including stock token logos).
-  const oneinch = await getOneinchData();
+  // Fetch both sources in parallel.
+  const [oneinch, uniswapRes] = await Promise.all([
+    getOneinchData(),
+    fetch(UNISWAP_TOKENLIST_URL).then(r => r.ok ? r.json() : []).catch(() => []),
+  ]);
 
-  const curated: TokenInfo[] = [];
-  try {
-    const res = await fetch(UNISWAP_TOKENLIST_URL);
-    if (res.ok) {
-      const json = (await res.json()) as Array<{
-        address: string; symbol: string; name: string; decimals: number; logoURI?: string;
-      }>;
-      for (const t of json) {
-        // Logo: prefer 1inch's logoURI (covers NVDA, TSLA, etc.).
-        const oneinchInfo = oneinch?.[t.address]?.logoURI;
-        curated.push({
-          address: t.address as Address,
-          symbol: t.symbol,
-          name: t.name,
-          decimals: t.decimals,
-          logoUri: oneinchInfo,
-        });
-      }
-    }
-  } catch {
-    /* offline — proceed with defaults */
-  }
-  // Dedupe with defaults prepended.
+  const uniswapList = uniswapRes as Array<{
+    address: string; symbol: string; name: string; decimals: number;
+  }>;
+
   const seen = new Set<string>();
-  return [...DEFAULT_TOKENS, ...curated].filter(t => {
+  const merged: TokenInfo[] = [];
+
+  // 1) Defaults first (ETH, GW, WETH).
+  for (const t of DEFAULT_TOKENS) {
     const key = t.address.toLowerCase();
-    if (seen.has(key)) return false;
+    if (seen.has(key)) continue;
     seen.add(key);
-    return true;
-  });
+    merged.push(t);
+  }
+
+  // 2) Uniswap curated stock tokens — enrich with 1inch logo if available,
+  //    else fall back to Google favicon by symbol.
+  for (const t of uniswapList) {
+    const key = t.address.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push({
+      address: t.address as Address,
+      symbol: t.symbol,
+      name: t.name,
+      decimals: t.decimals,
+      logoUri: oneinch?.[key]?.logoURI,
+    });
+  }
+
+  // 3) 1inch crypto tokens not already in the list.
+  if (oneinch) {
+    for (const [addr, info] of Object.entries(oneinch)) {
+      const key = addr.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      merged.push({
+        address: addr as Address,
+        symbol: info.symbol ?? '',
+        name: '',
+        decimals: info.decimals ?? 18,
+        logoUri: info.logoURI,
+      });
+    }
+  }
+
+  return merged;
 }
 
 let indexingInProgress: Promise<TokenInfo[]> | null = null;
