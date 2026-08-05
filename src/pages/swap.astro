@@ -1,0 +1,503 @@
+---
+// GachaWiki Swap — a branded swap page executing on Uniswap V3 / Robinhood Chain.
+// Custom frontend, Uniswap handles routing/execution. The heavy swap module
+// (src/scripts/swap.ts) is lazy-loaded so it only downloads on this page.
+import HomeLayout from '../layouts/HomeLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<HomeLayout title={`${SITE_TITLE} - Swap`} description="Swap tokens on Robinhood Chain. Powered by Uniswap.">
+  <div class="swap-page">
+    <h1 class="swap-page-title">Swap</h1>
+    <p class="swap-page-subtitle">Trade tokens on Robinhood Chain · Powered by Uniswap V3</p>
+
+    <div class="swap-card">
+      <!-- Token IN -->
+      <div class="swap-field">
+        <span class="swap-field-label">You pay</span>
+        <div class="swap-field-row">
+          <input
+            class="swap-amount-input"
+            id="swap-amount-in"
+            type="text"
+            inputmode="decimal"
+            placeholder="0.0"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="swap-token-select" id="swap-select-in" type="button">
+            <span class="swap-token-symbol" id="swap-symbol-in">ETH</span>
+            <svg class="swap-token-caret" width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="swap-field-balance">
+          <span>Balance: <span id="swap-balance-in">—</span></span>
+          <button class="swap-max-btn" id="swap-max-btn" type="button">MAX</button>
+        </div>
+      </div>
+
+      <!-- Flip -->
+      <div class="swap-flip-wrap">
+        <button class="swap-flip-btn" id="swap-flip-btn" type="button" aria-label="Flip tokens">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 10l-3-3 3-3M4 7h13a4 4 0 0 1 0 8h-1M17 14l3 3-3 3M20 17H7a4 4 0 0 1 0-8h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Token OUT -->
+      <div class="swap-field">
+        <span class="swap-field-label">You receive</span>
+        <div class="swap-field-row">
+          <input
+            class="swap-amount-input"
+            id="swap-amount-out"
+            type="text"
+            placeholder="0.0"
+            readonly
+            tabindex="-1"
+          />
+          <button class="swap-token-select" id="swap-select-out" type="button">
+            <span class="swap-token-symbol" id="swap-symbol-out">GW</span>
+            <svg class="swap-token-caret" width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="swap-field-balance">
+          <span>Balance: <span id="swap-balance-out">—</span></span>
+        </div>
+      </div>
+
+      <!-- Quote details -->
+      <div class="swap-detail" id="swap-detail" hidden>
+        <div class="swap-detail-row">
+          <span>Rate</span>
+          <span class="swap-detail-value" id="swap-rate">—</span>
+        </div>
+        <div class="swap-detail-row">
+          <span>Price impact</span>
+          <span class="swap-detail-value" id="swap-impact">—</span>
+        </div>
+        <div class="swap-detail-row">
+          <span>Min. received</span>
+          <span class="swap-detail-value" id="swap-min-received">—</span>
+        </div>
+        <div class="swap-detail-row">
+          <span>Route</span>
+          <span class="swap-detail-value" id="swap-route">—</span>
+        </div>
+      </div>
+
+      <!-- Action -->
+      <button class="swap-action-btn" id="swap-action-btn" type="button" disabled>Connect Wallet</button>
+      <div class="swap-status" id="swap-status"></div>
+    </div>
+  </div>
+
+  <!-- Token picker modal -->
+  <div class="swap-token-modal" id="swap-token-modal" hidden>
+    <div class="swap-token-modal-inner">
+      <div class="swap-token-modal-header">
+        <span class="swap-token-modal-title">Select a token</span>
+        <button class="swap-token-modal-close" id="swap-token-close" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="swap-token-search">
+        <input
+          class="swap-token-search-input"
+          id="swap-token-search"
+          type="text"
+          placeholder="Search name or paste address"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div class="swap-token-list" id="swap-token-list"></div>
+    </div>
+  </div>
+
+  <style>@import '../styles/pages/swap.css';</style>
+</HomeLayout>
+
+<script>
+  // Swap page controller. Lazy-loads src/scripts/swap.ts (which pulls viem) so
+  // the heavy bundle only downloads on /swap. Mirrors the wallet.ts lazy pattern.
+  // All on-chain calls are client-side (site output is 'static').
+  let swapModPromise: Promise<typeof import('../scripts/swap')> | null = null;
+  function loadSwap(): Promise<typeof import('../scripts/swap')> {
+    if (!swapModPromise) swapModPromise = import('../scripts/swap');
+    return swapModPromise;
+  }
+
+  // Lightweight wallet access without loading the full wallet module eagerly —
+  // we reuse the existing singleton via a dynamic import.
+  let walletModPromise: Promise<typeof import('../scripts/wallet')> | null = null;
+  function loadWallet(): Promise<typeof import('../scripts/wallet')> {
+    if (!walletModPromise) walletModPromise = import('../scripts/wallet');
+    return walletModPromise;
+  }
+
+  // --- state -------------------------------------------------------------
+  interface SwapToken {
+    address: string;
+    symbol: string;
+    decimals: number;
+  }
+  // Defaults: ETH -> $GW. NATIVE_TOKEN sentinel = 0x0.
+  const NATIVE = '0x0000000000000000000000000000000000000000';
+  let tokenIn: SwapToken = { address: NATIVE, symbol: 'ETH', decimals: 18 };
+  let tokenOut: SwapToken = { address: '0x50bE7832849EFEdB15611799074FcC409522f27A', symbol: 'GW', decimals: 18 };
+
+  let tokenList: SwapToken[] = [];
+  let pickingFor: 'in' | 'out' | null = null;
+  let quoteTimer: ReturnType<typeof setTimeout> | undefined;
+  let currentQuote: { amountOut: bigint; impact: number; route: string } | null = null;
+
+  // --- element refs ------------------------------------------------------
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const amountInEl = $<HTMLInputElement>('swap-amount-in');
+  const amountOutEl = $<HTMLInputElement>('swap-amount-out');
+  const symbolInEl = $('swap-symbol-in');
+  const symbolOutEl = $('swap-symbol-out');
+  const balanceInEl = $('swap-balance-in');
+  const balanceOutEl = $('swap-balance-out');
+  const maxBtn = $<HTMLButtonElement>('swap-max-btn');
+  const flipBtn = $('swap-flip-btn');
+  const actionBtn = $<HTMLButtonElement>('swap-action-btn');
+  const statusEl = $('swap-status');
+  const detailEl = $('swap-detail');
+  const rateEl = $('swap-rate');
+  const impactEl = $('swap-impact');
+  const minReceivedEl = $('swap-min-received');
+  const routeEl = $('swap-route');
+  const selectInBtn = $('swap-select-in');
+  const selectOutBtn = $('swap-select-out');
+  const tokenModal = $('swap-token-modal');
+  const tokenSearchEl = $<HTMLInputElement>('swap-token-search');
+  const tokenListEl = $('swap-token-list');
+  const tokenCloseBtn = $('swap-token-close');
+
+  // --- helpers -----------------------------------------------------------
+  function fmtAmount(bi: bigint, decimals: number): string {
+    const whole = bi / 10n ** BigInt(decimals);
+    const frac = bi % 10n ** BigInt(decimals);
+    let s = whole.toString();
+    if (decimals > 0 && frac > 0n) {
+      let f = frac.toString().padStart(decimals, '0').replace(/0+$/, '').slice(0, 6);
+      if (f) s += '.' + f;
+    }
+    return s;
+  }
+
+  function setStatus(msg: string, kind: '' | 'error' | 'success' = '') {
+    statusEl.textContent = msg;
+    statusEl.className = 'swap-status' + (kind ? ` is-${kind}` : '');
+  }
+
+  function updateTokenLabels() {
+    symbolInEl.textContent = tokenIn.symbol;
+    symbolOutEl.textContent = tokenOut.symbol;
+  }
+
+  // --- quote (debounced) -------------------------------------------------
+  function scheduleQuote() {
+    if (quoteTimer) clearTimeout(quoteTimer);
+    quoteTimer = setTimeout(runQuote, 350);
+  }
+
+  async function runQuote() {
+    const raw = amountInEl.value.trim();
+    if (!raw || isNaN(Number(raw)) || Number(raw) <= 0) {
+      amountOutEl.value = '';
+      detailEl.hidden = true;
+      currentQuote = null;
+      updateActionButton();
+      return;
+    }
+
+    try {
+      const { parseUnits, getQuote } = await loadSwap();
+      // parse with the token's decimals (cap fractional digits)
+      const amountIn = parseUnits(raw, tokenIn.decimals);
+      const q = await getQuote(tokenIn.address as `0x${string}`, tokenOut.address as `0x${string}`, amountIn);
+      if (!q) {
+        amountOutEl.value = '';
+        detailEl.hidden = true;
+        currentQuote = null;
+        setStatus('No liquidity for this pair', 'error');
+        updateActionButton();
+        return;
+      }
+      setStatus('');
+      currentQuote = { amountOut: q.amountOut, impact: q.priceImpactPct, route: q.routeDescription };
+      amountOutEl.value = fmtAmount(q.amountOut, tokenOut.decimals);
+
+      // details
+      const rate = Number(raw) > 0 ? q.amountOut / 10n ** BigInt(tokenOut.decimals) : 0n;
+      const rateNum = Number(q.amountOut) / Number(10n ** BigInt(tokenOut.decimals)) / Number(raw);
+      rateEl.textContent = `1 ${tokenIn.symbol} ≈ ${rateNum ? rateNum.toPrecision(4) : '—'} ${tokenOut.symbol}`;
+      impactEl.textContent = q.priceImpactPct > 0 ? `${q.priceImpactPct.toFixed(2)}%` : '—';
+      impactEl.className = 'swap-detail-value' + (q.priceImpactPct >= 5 ? ' is-danger' : q.priceImpactPct >= 1 ? ' is-warning' : '');
+      // min received = 99.5% of quoted (0.5% slippage tolerance)
+      const minOut = (q.amountOut * 995n) / 1000n;
+      minReceivedEl.textContent = `${fmtAmount(minOut, tokenOut.decimals)} ${tokenOut.symbol}`;
+      routeEl.textContent = q.routeDescription;
+      detailEl.hidden = false;
+      void rate;
+    } catch (err) {
+      amountOutEl.value = '';
+      detailEl.hidden = true;
+      currentQuote = null;
+      setStatus('Quote failed — check your input', 'error');
+    }
+    updateActionButton();
+  }
+
+  // --- wallet connection state ------------------------------------------
+  let walletConnected = false;
+  let connectedAccount: string | undefined;
+
+  async function refreshWalletState() {
+    try {
+      const { getConnectedAddress } = await loadWallet();
+      const addr = getConnectedAddress();
+      walletConnected = !!addr;
+      connectedAccount = addr;
+      if (walletConnected && connectedAccount) {
+        await refreshBalances();
+      } else {
+        balanceInEl.textContent = '—';
+        balanceOutEl.textContent = '—';
+      }
+    } catch {
+      /* wallet not ready yet */
+    }
+    updateActionButton();
+  }
+
+  async function refreshBalances() {
+    if (!connectedAccount) return;
+    try {
+      const { getBalance } = await loadSwap();
+      const [bIn, bOut] = await Promise.all([
+        getBalance(tokenIn.address as `0x${string}`, connectedAccount as `0x${string}`),
+        getBalance(tokenOut.address as `0x${string}`, connectedAccount as `0x${string}`),
+      ]);
+      balanceInEl.textContent = fmtAmount(bIn, tokenIn.decimals);
+      balanceOutEl.textContent = fmtAmount(bOut, tokenOut.decimals);
+    } catch {
+      /* rpc failure — leave dashes */
+    }
+  }
+
+  function updateActionButton() {
+    if (actionBtn.classList.contains('is-loading')) return;
+    if (!walletConnected) {
+      actionBtn.textContent = 'Connect Wallet';
+      actionBtn.disabled = false;
+      return;
+    }
+    const hasAmount = Number(amountInEl.value) > 0;
+    const hasQuote = !!currentQuote;
+    if (!hasAmount) {
+      actionBtn.textContent = 'Enter an amount';
+      actionBtn.disabled = true;
+    } else if (!hasQuote) {
+      actionBtn.textContent = 'Finding price…';
+      actionBtn.disabled = true;
+    } else if (tokenIn.address.toLowerCase() === tokenOut.address.toLowerCase()) {
+      actionBtn.textContent = 'Select different tokens';
+      actionBtn.disabled = true;
+    } else {
+      actionBtn.textContent = `Swap ${tokenIn.symbol} for ${tokenOut.symbol}`;
+      actionBtn.disabled = false;
+    }
+  }
+
+  // --- swap execution ----------------------------------------------------
+  async function handleAction() {
+    if (!walletConnected) {
+      // Trigger the header connect flow.
+      const { openConnectModal, ensureRobinhoodChain } = await loadWallet();
+      try {
+        await openConnectModal();
+        await ensureRobinhoodChain().catch(() => {});
+      } catch {
+        /* user cancelled */
+      }
+      await refreshWalletState();
+      return;
+    }
+
+    // Execute the swap.
+    actionBtn.classList.add('is-loading');
+    actionBtn.textContent = 'Working…';
+    try {
+      const { parseUnits, executeSwap } = await loadSwap();
+      const amountIn = parseUnits(amountInEl.value.trim(), tokenIn.decimals);
+      if (!currentQuote) throw new Error('No quote');
+      const minOut = (currentQuote.amountOut * 995n) / 1000n; // 0.5% slippage
+      const result = await executeSwap(
+        tokenIn.address as `0x${string}`,
+        tokenOut.address as `0x${string}`,
+        amountIn,
+        minOut,
+        (msg) => setStatus(msg),
+      );
+      if ('error' in result) {
+        setStatus(result.error, 'error');
+      } else {
+        setStatus(`Swap submitted! Tx ${result.txHash.slice(0, 10)}…`, 'success');
+        await refreshBalances();
+      }
+    } catch (err) {
+      setStatus(err instanceof Error ? err.message : 'Swap failed', 'error');
+    } finally {
+      actionBtn.classList.remove('is-loading');
+      updateActionButton();
+    }
+  }
+
+  // --- token picker modal ------------------------------------------------
+  function openPicker(forSide: 'in' | 'out') {
+    pickingFor = forSide;
+    tokenSearchEl.value = '';
+    renderTokenList('');
+    tokenModal.hidden = false;
+    tokenSearchEl.focus();
+  }
+
+  function closePicker() {
+    tokenModal.hidden = true;
+    pickingFor = null;
+  }
+
+  async function renderTokenList(query: string) {
+    tokenListEl.innerHTML = '';
+    const q = query.trim().toLowerCase();
+
+    // Build the candidate list: defaults + (if search looks like an address) resolve it.
+    const { DEFAULT_TOKENS } = await loadSwap();
+    const candidates: SwapToken[] = [...(tokenList.length ? tokenList : DEFAULT_TOKENS.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals })))];
+
+    // If the query looks like a contract address, resolve its metadata.
+    if (q.startsWith('0x') && q.length >= 40) {
+      try {
+        const { fetchTokenMeta } = await loadSwap();
+        const meta = await fetchTokenMeta(q as `0x${string}`);
+        candidates.unshift({ address: meta.address, symbol: meta.symbol, decimals: meta.decimals });
+      } catch {
+        /* invalid address / not a token — ignore */
+      }
+    }
+
+    const filtered = q && !q.startsWith('0x')
+      ? candidates.filter(t => t.symbol.toLowerCase().includes(q))
+      : candidates;
+
+    if (filtered.length === 0) {
+      tokenListEl.innerHTML = '<div class="swap-token-option-empty">No tokens found</div>';
+      return;
+    }
+
+    for (const tok of filtered) {
+      const btn = document.createElement('button');
+      btn.className = 'swap-token-option';
+      btn.type = 'button';
+      btn.innerHTML = `
+        <span>
+          <div class="swap-token-option-symbol">${tok.symbol}</div>
+          <div class="swap-token-option-name">${tok.address.toLowerCase() === NATIVE.toLowerCase() ? 'Native' : tok.address.slice(0, 8) + '…'}</div>
+        </span>
+      `;
+      btn.addEventListener('click', () => {
+        if (pickingFor === 'in') {
+          tokenIn = tok;
+        } else if (pickingFor === 'out') {
+          tokenOut = tok;
+        }
+        updateTokenLabels();
+        closePicker();
+        amountOutEl.value = '';
+        detailEl.hidden = true;
+        currentQuote = null;
+        scheduleQuote();
+        if (walletConnected) void refreshBalances();
+      });
+      tokenListEl.appendChild(btn);
+    }
+  }
+
+  // --- event wiring ------------------------------------------------------
+  amountInEl.addEventListener('input', () => {
+    // sanitize: allow only digits and one dot
+    amountInEl.value = amountInEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    scheduleQuote();
+  });
+
+  flipBtn.addEventListener('click', () => {
+    const tmp = tokenIn;
+    tokenIn = tokenOut;
+    tokenOut = tmp;
+    updateTokenLabels();
+    amountInEl.value = amountOutEl.value;
+    amountOutEl.value = '';
+    detailEl.hidden = true;
+    currentQuote = null;
+    scheduleQuote();
+    if (walletConnected) void refreshBalances();
+  });
+
+  maxBtn.addEventListener('click', () => {
+    const balText = balanceInEl.textContent;
+    if (balText && balText !== '—') {
+      amountInEl.value = balText;
+      scheduleQuote();
+    }
+  });
+
+  selectInBtn.addEventListener('click', () => openPicker('in'));
+  selectOutBtn.addEventListener('click', () => openPicker('out'));
+  tokenCloseBtn.addEventListener('click', closePicker);
+  tokenModal.addEventListener('click', (e) => {
+    if (e.target === tokenModal) closePicker();
+  });
+  tokenSearchEl.addEventListener('input', () => renderTokenList(tokenSearchEl.value));
+  actionBtn.addEventListener('click', () => void handleAction());
+
+  // --- init --------------------------------------------------------------
+  async function init() {
+    updateTokenLabels();
+
+    // Subscribe to wallet changes (account switch / connect / disconnect) so
+    // the page reacts without a reload. Kept off the critical path.
+    try {
+      const { onWalletChange } = await loadWallet();
+      onWalletChange((state) => {
+        const wasConnected = walletConnected;
+        walletConnected = !!(state.isConnected && state.address);
+        connectedAccount = state.address;
+        if (walletConnected !== wasConnected || walletConnected) {
+          void refreshWalletState();
+        }
+      });
+    } catch {
+      /* wallet module not ready */
+    }
+
+    // Check current connection (best-effort; the wallet singleton initializes
+    // lazily on the header button — it's fine if it's not ready yet here).
+    void refreshWalletState();
+
+    // Eagerly preload the swap module so the first quote is instant.
+    void loadSwap();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

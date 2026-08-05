@@ -1,0 +1,364 @@
+/* Swap page styles — GachaWiki-branded swap card.
+   Reuses site tokens (--bg-dark, --amber-glow, --teal-crystal) and the
+   z-index system. No animations/transitions (per site policy). */
+
+.swap-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3rem 1rem 5rem;
+}
+
+.swap-page-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--amber-glow, #ffb74d);
+  margin: 0 0 0.4rem;
+  text-align: center;
+}
+
+.swap-page-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-inverse, #fff);
+  opacity: 0.6;
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+/* --- Swap card ---------------------------------------------------------- */
+
+.swap-card {
+  width: 100%;
+  max-width: 28rem;
+  background: linear-gradient(160deg, rgba(42, 42, 42, 0.6), rgba(28, 28, 28, 0.9));
+  border: 1px solid rgba(255, 183, 77, 0.25);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Token field (input amount + token selector button side by side) */
+.swap-field {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.swap-field-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.swap-field-label {
+  font-size: 0.72rem;
+  color: var(--text-inverse, #fff);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.swap-amount-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-inverse, #fff);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0;
+}
+
+.swap-amount-input::placeholder {
+  color: var(--text-inverse, #fff);
+  opacity: 0.25;
+}
+
+/* Token selector button */
+.swap-token-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 183, 77, 0.12);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  color: var(--text-inverse, #fff);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.swap-token-symbol {
+  color: var(--amber-glow, #ffb74d);
+}
+
+.swap-token-caret {
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* Balance hint under each field */
+.swap-field-balance {
+  font-size: 0.74rem;
+  color: var(--text-inverse, #fff);
+  opacity: 0.45;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.swap-max-btn {
+  background: none;
+  border: none;
+  color: var(--amber-glow, #ffb74d);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Flip button between the two fields */
+.swap-flip-wrap {
+  display: flex;
+  justify-content: center;
+  margin: -0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.swap-flip-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-dark, #1c1c1c);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  color: var(--amber-glow, #ffb74d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Quote detail row (rate, price impact, min received) */
+.swap-detail {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+}
+
+.swap-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-inverse, #fff);
+  opacity: 0.6;
+}
+
+.swap-detail-value {
+  font-variant-numeric: tabular-nums;
+  opacity: 1;
+}
+
+.swap-detail-value.is-warning {
+  color: #ffb74d;
+  opacity: 0.9;
+}
+
+.swap-detail-value.is-danger {
+  color: #ff7676;
+  opacity: 0.9;
+}
+
+/* Main action button */
+.swap-action-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: var(--amber-glow, #ffb74d);
+  color: var(--bg-dark, #1c1c1c);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.swap-action-btn:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+}
+
+.swap-action-btn.is-loading {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Status / error message */
+.swap-status {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+.swap-status.is-error {
+  color: #ff7676;
+}
+
+.swap-status.is-success {
+  color: var(--success-color, #4caf50);
+}
+
+/* --- Token picker modal ------------------------------------------------- */
+
+.swap-token-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 2000);
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.swap-token-modal[hidden] {
+  display: none;
+}
+
+.swap-token-modal-inner {
+  width: 100%;
+  max-width: 26rem;
+  max-height: 80vh;
+  background: var(--bg-dark, #1c1c1c);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.swap-token-modal-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 183, 77, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swap-token-modal-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-inverse, #fff);
+}
+
+.swap-token-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-inverse, #fff);
+  opacity: 0.6;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0.4rem;
+  line-height: 1;
+}
+
+.swap-token-search {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.swap-token-search-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-inverse, #fff);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.swap-token-search-input::placeholder {
+  color: var(--text-inverse, #fff);
+  opacity: 0.3;
+}
+
+.swap-token-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.4rem;
+}
+
+.swap-token-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: none;
+  background: transparent;
+  color: var(--text-inverse, #fff);
+  text-align: left;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.swap-token-option:hover {
+  background: rgba(255, 183, 77, 0.08);
+}
+
+.swap-token-option-symbol {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.swap-token-option-name {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.swap-token-option-balance {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.swap-token-option-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-inverse, #fff);
+  opacity: 0.4;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .swap-page {
+    padding: 1.5rem 0.75rem 4rem;
+  }
+  .swap-page-title {
+    font-size: 1.4rem;
+  }
+  .swap-amount-input {
+    font-size: 1.15rem;
+  }
+}
