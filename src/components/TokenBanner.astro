@@ -22,7 +22,7 @@ const CA_SHORT = '0x50bE…f27A';
     </span>
     <span class="token-text">
       <strong>$GW Token</strong>
-      is now live on Robinhood Chain
+      <span class="token-text-tail">is now live on Robinhood Chain</span>
     </span>
 
     <!-- Live stats chip — cycles through price / 24h change / market cap /
@@ -153,14 +153,49 @@ const CA_SHORT = '0x50bE…f27A';
 
   @media (max-width: 600px) {
     .token-banner-inner {
-      font-size: 0.8rem;
-      gap: 0.5rem;
-      padding: 0.45rem 1rem;
+      font-size: 0.78rem;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      flex-wrap: nowrap; /* keep everything on ONE line */
     }
 
-    /* Hide the CA on small screens to avoid crowding; keep the cycling stat. */
+    /* Shorten the announcement on mobile — the full "is now live on Robinhood
+       Chain" is too long and forces a second line. Just show "$GW Token". */
+    .token-text-tail {
+      display: none;
+    }
+
+    /* Hide the CA on small screens; keep the cycling stat. */
     .token-ca {
       display: none;
+    }
+
+    .token-badge {
+      padding: 0.14rem 0.45rem 0.14rem 0.4rem;
+      font-size: 0.6rem;
+      gap: 0.25rem;
+    }
+
+    .token-price-label,
+    .token-price-stat {
+      font-size: 0.74rem;
+    }
+
+    .token-price {
+      padding-left: 0.5rem;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    /* Very narrow phones — drop the LIVE badge text, keep just the dot. */
+    .token-badge {
+      font-size: 0;
+      padding: 0.25rem;
+    }
+    .token-badge .token-dot {
+      width: 7px;
+      height: 7px;
     }
   }
 
