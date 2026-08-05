@@ -235,7 +235,7 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
   // (correct Robinhood CDN logos for stocks + CoinGecko for crypto).
   const [uniswapRes, blockscout] = await Promise.all([
     fetch(UNISWAP_TOKENLIST_URL).then(r => r.ok ? r.json() : []).catch(() => []),
-    fetchBlockscoutTokens(4), // 4 pages (200 tokens) — Blockscout has correct logos
+    fetchBlockscoutTokens(1), // 4 pages (200 tokens) — Blockscout has correct logos
   ]);
 
   const uniswapList = uniswapRes as Array<{
@@ -338,7 +338,7 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
     }
     // Enrich indexed tokens with Blockscout metadata (symbol/logo/decimals)
     // where available; the rest stay address-only until resolved on selection.
-    const blockscout = await fetchBlockscoutTokens(4);
+    const blockscout = await fetchBlockscoutTokens(1);
     const bsMap = new Map(blockscout.map(t => [t.address.toLowerCase(), t]));
     for (const addr of indexedAddrs) {
       if (seen.has(addr)) continue;

@@ -392,14 +392,27 @@ import { SITE_TITLE } from '../consts';
       tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
     }
 
-    // Phase 1: load curated tokens FAST (instant — no on-chain scanning).
+    // Phase 1: load curated tokens. fetchCuratedTokens merges Blockscout +
+    // Uniswap list — this takes a few seconds (4 Blockscout pages). While it
+    // loads, show the 3 defaults (ETH/GW/WETH) so the picker isn't empty.
     if (tokenList.length <= 3) {
+      // Render defaults immediately (don't await anything).
+      if (tokenList.length === 0) {
+        try {
+          const { DEFAULT_TOKENS } = await loadSwap();
+          tokenList = DEFAULT_TOKENS.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
+        } catch { /* ignore */ }
+      }
+
+      // Then fetch the full curated set (Blockscout + Uniswap) in the background.
       try {
         const { fetchCuratedTokens } = await loadSwap();
         const curated = await fetchCuratedTokens();
-        tokenList = curated.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
+        if (curated.length > tokenList.length) {
+          tokenList = curated.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
+        }
       } catch {
-        /* fall back to defaults */
+        /* fall back to whatever we have */
       }
       if (!q) tokenListEl.innerHTML = '';
     }
