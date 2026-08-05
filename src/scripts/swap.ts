@@ -293,7 +293,7 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
   const [oneinch, uniswapRes, blockscout] = await Promise.all([
     getOneinchData(),
     fetch(UNISWAP_TOKENLIST_URL).then(r => r.ok ? r.json() : []).catch(() => []),
-    fetchBlockscoutTokens(6),
+    fetchBlockscoutTokens(1), // 1 page (50 tokens) for speed; full set via background indexer
   ]);
 
   const uniswapList = uniswapRes as Array<{
