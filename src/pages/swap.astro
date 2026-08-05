@@ -118,7 +118,11 @@ import { SITE_TITLE } from '../consts';
     </div>
   </div>
 
-  <style>@import '../styles/pages/swap.css';</style>
+  <!-- is:global so dynamically-created elements (token picker options built
+       via createElement) also get styled. Astro's default scoping adds a
+       data-astro-cid attr that JS-created elements don't carry, leaving them
+       unstyled (browser default = black text). -->
+  <style is:global>@import '../styles/pages/swap.css';</style>
 </HomeLayout>
 
 <script>
