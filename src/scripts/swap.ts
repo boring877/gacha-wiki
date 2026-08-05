@@ -62,12 +62,11 @@ export interface TokenInfo {
   logoUri?: string;
 }
 
-// Curated default token list. ETH (native) + $GW + WETH. The full liquid list
-// is fetched from DexScreener at runtime (see fetchTokenList).
+// Curated default token list. ETH (native) + $GW + WETH, with logos.
 export const DEFAULT_TOKENS: TokenInfo[] = [
-  { address: NATIVE_TOKEN, symbol: 'ETH', name: 'Ether', decimals: 18 },
-  { address: GW_TOKEN, symbol: 'GW', name: 'GachaWiki', decimals: 18 },
-  { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18 },
+  { address: NATIVE_TOKEN, symbol: 'ETH', name: 'Ether', decimals: 18, logoUri: 'https://www.google.com/s2/favicons?domain=ethereum.org&sz=64' },
+  { address: GW_TOKEN, symbol: 'GW', name: 'GachaWiki', decimals: 18, logoUri: 'https://www.google.com/s2/favicons?domain=gachawiki.info&sz=64' },
+  { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18, logoUri: 'https://www.google.com/s2/favicons?domain=ethereum.org&sz=64' },
 ];
 
 const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist-v3'; // v3: on-chain indexed
@@ -181,9 +180,87 @@ export async function indexAllPoolTokens(): Promise<Set<string>> {
  * read straight from the chain. No API key, no curated-list limit.
  */
 /**
+ * Resolve a logo URL for a token using multiple sources (fallback chain):
+ *   1. DexScreener CDN (crypto tokens — fetched on-demand)
+ *   2. Google favicon service (stock tokens — keyed by symbol→domain)
+ *   3. null (caller falls back to the letter badge)
+ *
+ * For stock tokens (NVDA, TSLA, etc.) we map the symbol to the company's
+ * website domain and pull the favicon via Google's free service.
+ */
+
+// Symbol → company domain for stock tokens on Robinhood Chain (xStock tokens).
+const STOCK_DOMAINS: Record<string, string> = {
+  NVDA: 'nvidia.com', TSLA: 'tesla.com', AAPL: 'apple.com', MSFT: 'microsoft.com',
+  AMD: 'amd.com', META: 'meta.com', GOOGL: 'google.com', AMZN: 'amazon.com',
+  NFLX: 'netflix.com', COIN: 'coinbase.com', SPY: 'statestreet.com', QQQ: 'invesco.com',
+  INTC: 'intel.com', PLTR: 'palantir.com', ORCL: 'oracle.com', AVGO: 'broadcom.com',
+  ARM: 'arm.com', SHOP: 'shopify.com', MSTR: 'microstrategy.com', GME: 'gamestop.com',
+  BABA: 'alibaba.com', TSM: 'tsmc.com', ASML: 'asml.com', COST: 'costco.com',
+  LLY: 'lilly.com', NOW: 'servicenow.com', CRWD: 'crowdstrike.com', DDOG: 'datadoghq.com',
+  ZM: 'zoom.us', RDDT: 'reddit.com', RKLB: 'rocketlabusa.com', RIVN: 'rivian.com',
+  HOOD: 'robinhood.com', U: 'unity.com', BA: 'boeing.com', F: 'ford.com',
+  XOM: 'exxonmobil.com', LULU: 'lululemon.com', UMC: 'umc.com', NOK: 'nokia.com',
+  SOFI: 'sofi.org', RBLX: 'roblox.com', DELL: 'dell.com', MRVL: 'marvell.com',
+  SMCI: 'supermicro.com', QCOM: 'qualcomm.com', MU: 'micron.com', NNE: 'nanonuclearenergy.com',
+  IREN: 'iren.com', CLSK: 'cleanspark.com', IONQ: 'ionq.com', RGTI: 'rigetti.com',
+  QBTS: 'dwavesys.com', AAOI: 'ao-inc.com', GLW: 'corning.com', FLNC: 'fluenceenergy.com',
+  ASTS: 'ast-science.com', SATS: 'echostar.com', LUNR: 'intuitivemachines.com',
+  RDW: 'redwirespace.com', APLD: 'applieddigital.com', NBIS: 'nebius.com', CORE: 'coreweave.com',
+  CBRS: 'cerebras.net', FUTU: 'futunn.com', INTU: 'intuit.com', MDB: 'mongodb.com',
+  WDAY: 'workday.com', ZS: 'zscaler.com', ELF: 'elfcosmetics.com', CCL: 'carnival.com',
+  UPS: 'ups.com', BE: 'bloomenergy.com', P: 'peloton.com',
+};
+
+const dexscreenerLogoCache = new Map<string, string | null>();
+
+/** Fetch a token's logo from DexScreener's CDN (covers crypto tokens). */
+async function fetchDexscreenerLogo(address: Address): Promise<string | null> {
+  const key = address.toLowerCase();
+  if (dexscreenerLogoCache.has(key)) return dexscreenerLogoCache.get(key) ?? null;
+  try {
+    const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${address}`);
+    if (res.ok) {
+      const json = (await res.json()) as { pairs?: Array<{ chainId?: string; info?: { imageUrl?: string } }> };
+      const rh = (json.pairs ?? []).find(p => p.chainId === 'robinhood');
+      const logo = rh?.info?.imageUrl ?? null;
+      dexscreenerLogoCache.set(key, logo);
+      return logo;
+    }
+  } catch {
+    /* network failure */
+  }
+  dexscreenerLogoCache.set(key, null);
+  return null;
+}
+
+/**
+ * Resolve the best available logo URL for a token. Async because DexScreener
+ * requires a network call. Returns null if no logo is available (caller uses
+ * the letter badge fallback).
+ */
+export async function resolveTokenLogo(symbol: string, address: Address): Promise<string | null> {
+  // 1. Stock tokens: Google favicon by company domain.
+  const domain = STOCK_DOMAINS[symbol.toUpperCase()];
+  if (domain) {
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  }
+  // 2. Crypto tokens: DexScreener CDN.
+  if (address.toLowerCase() === NATIVE_TOKEN.toLowerCase()) {
+    // Native ETH has a well-known logo.
+    return 'https://www.google.com/s2/favicons?domain=ethereum.org&sz=64';
+  }
+  return fetchDexscreenerLogo(address);
+}
+
+/**
  * Fast seed: curated tokens only (ETH + $GW + WETH + Uniswap's 100-token list).
  * Returns immediately — used for instant picker rendering while the full
  * on-chain index runs in the background via fetchTokenList().
+ *
+ * Enriches each token with a logo: stock tokens get Google favicon URLs
+ * instantly (no network call), crypto tokens get DexScreener logos resolved
+ * lazily by the picker (resolvedTokenLogo).
  */
 export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
   const curated: TokenInfo[] = [];
@@ -194,12 +271,17 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
         address: string; symbol: string; name: string; decimals: number; logoURI?: string;
       }>;
       for (const t of json) {
+        // Stock tokens get an instant logo via Google favicons (no network).
+        const domain = STOCK_DOMAINS[t.symbol.toUpperCase()];
+        const logoUri = domain
+          ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
+          : undefined;
         curated.push({
           address: t.address as Address,
           symbol: t.symbol,
           name: t.name,
           decimals: t.decimals,
-          logoUri: t.logoURI,
+          logoUri,
         });
       }
     }
